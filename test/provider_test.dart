@@ -1,6 +1,4 @@
 import 'dart:convert';
-import 'package:json_diff/json_diff.dart';
-import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:http/http.dart';
 import 'package:starknet/starknet.dart';
 import 'package:test/test.dart';
@@ -13,31 +11,23 @@ void main() {
       provider = getDevNetProvider();
     });
 
-    group('DefaultProvider()', () {
-      test('should initialize class porperties properly', () {
-        expect(provider.baseURL, 'http://127.0.0.1:5050');
-      });
+    test('constructor initializes class porperties properly', () {
+      expect(provider.baseURL, hasLength(allOf(isPositive, isNot(0))));
     });
 
-    group('.getBlock()', () {
-      test('return strictly positive block number', () async {
+    group('getBlock', () {
+      test('returns a strictly positive block number', () async {
         final block = await provider.getBlock();
         expect(block.blockNumber, allOf([isPositive, isNot(0)]));
       });
 
-      test('make sure the data model maps 100% the object returned by the API',
-          () async {
+      test('returns an object that matches 100% the API response', () async {
         final url = Uri.parse('${provider.feederGatewayURL}/get_block');
-        var response = await get(url);
+        final response = await get(url);
         final block = await provider.getBlock();
         final expected = json.decode(response.body);
         final actual = block.toJson();
-        // final isEqual = DeepCollectionEquality().equals(expected, actual);
         expect(actual, equals(expected));
-        // final diff = JsonDiffer.fromJson(expected, actual).diff();
-        // print(diff.added);
-        // print(diff.removed);
-        // print(diff.changed);
       });
     });
   });
