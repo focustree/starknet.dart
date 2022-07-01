@@ -43,3 +43,9 @@ Alternatively, you can hit `Cmd + Shift + B` in vscode.
 ## Additional information
 
 If you have any questions or suggestions, please [contact us on telegram](https://t.me/+Kj7KO-ZVOms2ZWJk).
+
+### Publish new version of the package
+
+```
+dart pub publish
+```
