@@ -1,0 +1,8 @@
+version: "3"
+
+services:
+  starknet:
+    image: shardlabs/starknet-devnet
+    restart: always
+    ports:
+      - 5050:5050
