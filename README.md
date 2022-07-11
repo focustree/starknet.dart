@@ -12,9 +12,30 @@ Docs: [pub.dev/packages/starknet](https://pub.dev/packages/starknet)
 
 This SDK should support all features supported by other StarkNet SDKs (e.g. [starknet.js](https://www.starknetjs.com/)).
 
-- [ ] Implement Provider
-- [ ] Implement Signer
-- [ ] Implement Account
+Checkout the [official feeder_gateway_client API](https://github.com/starkware-libs/cairo-lang/blob/167b28bcd940fd25ea3816204fa882a0b0a49603/src/starkware/starknet/services/api/feeder_gateway/feeder_gateway_client.py) for more details.
+
+- [ ] `Provider`
+  - [x] `get_block`
+  - [ ] `deploy_contract`
+  - [ ] `call_contract`
+  - [ ] `get_contract_addresses`
+  - [ ] `estimate_fee`
+  - [ ] `get_state_update`
+  - [ ] `get_code`
+  - [ ] `get_full_contract`
+  - [ ] `get_class_hash_at`
+  - [ ] `get_class_by_hash`
+  - [ ] `get_storage_at`
+  - [ ] `get_transaction_status`
+  - [ ] `get_transaction`
+  - [ ] `get_transaction_receipt`
+  - [ ] `get_block_hash_by_id`
+  - [ ] `get_block_id_by_hash`
+  - [ ] `get_transaction_hash_by_id`
+  - [ ] `get_transaction_id_by_hash`
+  - [ ] `add_transaction`
+- [ ] `Signer`
+- [ ] `Account`
 
 ### Infra
 
