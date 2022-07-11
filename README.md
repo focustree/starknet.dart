@@ -49,6 +49,14 @@ If you want to contribute to this project or have any suggestion, please [contac
 starknet --gateway_url http://127.0.0.1:5050/gateway --feeder_gateway_url http://127.0.0.1:5050/feeder_gateway deploy --contract ./assets/compiled_contracts/erc20.json
 ```
 
+### Tests
+
+You can run the tests with the following command:
+
+```
+dart test
+```
+
 ### Generate freezed model classes
 
 To avoid writing too much boilerplate, we use the [freezed](https://github.com/rrousselGit/freezed) library to automatically generate serializer logic.
