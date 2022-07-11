@@ -27,10 +27,6 @@ This SDK should support all features supported by other StarkNet SDKs (e.g. [sta
 - [ ] Write a tutorial to show how to use this SDK in the context of a flutter app
 - [ ] Setup a `docs` website containing multiple user guides
 
-## Docs
-
-Check out the [docs](https://pub.dev/packages/starknet)
-
 ## Contribution Guide
 
 If you want to contribute to this project or have any suggestion, please [contact me on telegram](https://t.me/gabinmarignier).
@@ -74,3 +70,13 @@ Alternatively, you can hit `Cmd + Shift + B` in vscode.
 ```
 dart pub publish
 ```
+
+### Generate docs
+
+To generate docs, run:
+
+```
+dart doc .
+```
+
+For more advanced features, check out the [dartdoc package](https://pub.dev/packages/dartdoc).
