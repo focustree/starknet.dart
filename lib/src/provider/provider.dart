@@ -1,7 +1,9 @@
 import 'dart:convert';
 
 import 'package:http/http.dart' as http;
-import 'package:starknet/src/provider/model.dart';
+
+import 'model/deploy_contract.dart';
+import 'model/get_block.dart';
 
 abstract class Provider {
   String get baseURL;
@@ -15,6 +17,11 @@ abstract class Provider {
   ///
   /// Returns a [GetBlockResponse] class with the block information.
   Future<GetBlockResponse> getBlock();
+
+  /// Deploys a given compiled contract (json) to starknet
+  ///
+  /// Returns a [AddTransactionResponse] with the confirmation of sending a transaction on the starknet contract.
+  Future<AddTransactionResponse> deployContract(DeployContractPayload payload);
 }
 
 class DefaultProvider implements Provider {
@@ -38,5 +45,12 @@ class DefaultProvider implements Provider {
     final url = Uri.parse('$feederGatewayURL/get_block');
     var response = await http.get(url);
     return GetBlockResponse.fromJson(json.decode(response.body));
+  }
+
+  @override
+  Future<AddTransactionResponse> deployContract(
+      DeployContractPayload payload) async {
+    // TODO: implement deployContract
+    return AddTransactionResponse();
   }
 }

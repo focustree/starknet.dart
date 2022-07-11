@@ -1,7 +1,7 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-part 'model.freezed.dart';
-part 'model.g.dart';
+part 'get_block.freezed.dart';
+part 'get_block.g.dart';
 
 @freezed
 class GetBlockResponse with _$GetBlockResponse {
