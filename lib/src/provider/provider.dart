@@ -3,14 +3,7 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:starknet/src/provider/model/block_number.dart';
 
-import 'model/deploy_contract.dart';
-
 abstract class Provider {
-  /// Deploys a given compiled contract (json) to starknet
-  ///
-  /// Returns a [AddTransactionResponse] with the confirmation of sending a transaction on the starknet contract.
-  Future<AddTransactionResponse> deployContract(DeployContractPayload payload);
-
   /// Returns the latest block number
   ///
   /// [Spec](https://github.com/starkware-libs/starknet-specs/blob/3d3b2d7ad6899f64043c0deaa8a40d3d8c9b1788/api/starknet_api_openrpc.json#L467-L483)
@@ -57,12 +50,5 @@ class JsonRpcProvider implements Provider {
   @override
   Future<BlockNumberResponse> blockNumber() async {
     return _callRpcEndpoint().then(BlockNumberResponse.fromJson);
-  }
-
-  @override
-  Future<AddTransactionResponse> deployContract(
-      DeployContractPayload payload) async {
-    // TODO: implement deployContract
-    return AddTransactionResponse();
   }
 }
