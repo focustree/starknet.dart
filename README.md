@@ -4,35 +4,81 @@
 
 Dart SDK for StarkNet ✨
 
-## Features
+Docs: [pub.dev/packages/starknet](https://pub.dev/packages/starknet)
 
-All features supported by other StarkNet SDK (e.g. [starknet.js](https://www.starknetjs.com/)).
+## Roadmap
 
-## Getting started
+### Features
 
-1. Install [starknet-devnet](https://github.com/Shard-Labs/starknet-devnet) and run it. Make sure it's up and running by visiting http://127.0.0.1:5050/is_alive.
+This SDK should support all features supported by other StarkNet SDKs (e.g. [starknet.js](https://www.starknetjs.com/)).
 
-```
-starknet-devnet
-```
+Checkout the [official feeder_gateway_client API](https://github.com/starkware-libs/cairo-lang/blob/167b28bcd940fd25ea3816204fa882a0b0a49603/src/starkware/starknet/services/api/feeder_gateway/feeder_gateway_client.py) for more details.
 
-2. Install the [cairo-lang](https://starknet.io/docs/quickstart.html#quickstart) environment to get access to the `starknet` CLI.
+- [ ] `Provider`
+  - [x] `get_block`
+  - [ ] `deploy_contract`
+  - [ ] `call_contract`
+  - [ ] `get_contract_addresses`
+  - [ ] `estimate_fee`
+  - [ ] `get_state_update`
+  - [ ] `get_code`
+  - [ ] `get_full_contract`
+  - [ ] `get_class_hash_at`
+  - [ ] `get_class_by_hash`
+  - [ ] `get_storage_at`
+  - [ ] `get_transaction_status`
+  - [ ] `get_transaction`
+  - [ ] `get_transaction_receipt`
+  - [ ] `get_block_hash_by_id`
+  - [ ] `get_block_id_by_hash`
+  - [ ] `get_transaction_hash_by_id`
+  - [ ] `get_transaction_id_by_hash`
+  - [ ] `add_transaction`
+- [ ] `Signer`
+- [ ] `Account`
 
-3. Setup your current shell environment to connect to the local devnet.
+### Infra
 
-```
-source .dev.env
-```
+- [ ] Setup CI for unit tests
+- [ ] Setup github workflow to publish to the [pub.dev](https://pub.dev) registry
+
+### Education
+
+- [ ] Implement a small flutter app example
+- [ ] Write a tutorial to show how to use this SDK in the context of a flutter app
+- [ ] Setup a `docs` website containing multiple user guides
+
+## Contribution Guide
+
+If you want to contribute to this project or have any suggestion, please [contact me on telegram](https://t.me/gabinmarignier).
+
+### Dev Setup
+
+1. Install [docker](https://docs.docker.com/get-docker/). If you're on Mac, you should probably use [colima](https://github.com/abiosoft/colima) instead of the official docker engine since it's more efficient.
+
+2. Start `starknet-devnet` locally with `docker-compose up`. Make sure it's up and running by visiting http://127.0.0.1:5050/is_alive.
+
+3. Install the [cairo-lang](https://starknet.io/docs/quickstart.html#quickstart) environment to get access to the `starknet` CLI.
 
 4. Make sure everything is setup correctly by deploying an erc20 contract.
 
 ```
-starknet deploy --contract ./assets/compiled_contracts/erc20.json
+starknet --gateway_url http://127.0.0.1:5050/gateway --feeder_gateway_url http://127.0.0.1:5050/feeder_gateway deploy --contract ./assets/compiled_contracts/erc20.json
 ```
 
-## Usage
+### Tests
+
+You can run the tests with the following command:
+
+```
+dart test
+```
 
 ### Generate freezed model classes
+
+To avoid writing too much boilerplate, we use the [freezed](https://github.com/rrousselGit/freezed) library to automatically generate serializer logic.
+
+You can run the following command to generate those classes:
 
 ```
 dart run build_runner build
@@ -40,12 +86,18 @@ dart run build_runner build
 
 Alternatively, you can hit `Cmd + Shift + B` in vscode.
 
-## Additional information
-
-If you have any questions or suggestions, please [contact us on telegram](https://t.me/+Kj7KO-ZVOms2ZWJk).
-
 ### Publish new version of the package
 
 ```
 dart pub publish
 ```
+
+### Generate docs
+
+To generate docs, run:
+
+```
+dart doc .
+```
+
+For more advanced features, check out the [dartdoc package](https://pub.dev/packages/dartdoc).
