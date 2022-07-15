@@ -52,6 +52,13 @@ void main() {
             });
       });
     });
+
+    group('call', () {
+      test('', () async {
+        final response = await provider.call();
+        print(response);
+      });
+    });
   });
 }
 
