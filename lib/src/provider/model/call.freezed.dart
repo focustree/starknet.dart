@@ -31,19 +31,19 @@ Call _$CallFromJson(Map<String, dynamic> json) {
 mixin _$Call {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(int result) result,
+    required TResult Function(List<BigInt> result) result,
     required TResult Function(JsonRpcApiError error) error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(int result)? result,
+    TResult Function(List<BigInt> result)? result,
     TResult Function(JsonRpcApiError error)? error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(int result)? result,
+    TResult Function(List<BigInt> result)? result,
     TResult Function(JsonRpcApiError error)? error,
     required TResult orElse(),
   }) =>
@@ -90,7 +90,7 @@ abstract class _$$CallResultCopyWith<$Res> {
   factory _$$CallResultCopyWith(
           _$CallResult value, $Res Function(_$CallResult) then) =
       __$$CallResultCopyWithImpl<$Res>;
-  $Res call({int result});
+  $Res call({List<BigInt> result});
 }
 
 /// @nodoc
@@ -109,9 +109,9 @@ class __$$CallResultCopyWithImpl<$Res> extends _$CallCopyWithImpl<$Res>
   }) {
     return _then(_$CallResult(
       result: result == freezed
-          ? _value.result
+          ? _value._result
           : result // ignore: cast_nullable_to_non_nullable
-              as int,
+              as List<BigInt>,
     ));
   }
 }
@@ -119,14 +119,19 @@ class __$$CallResultCopyWithImpl<$Res> extends _$CallCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$CallResult implements CallResult {
-  const _$CallResult({required this.result, final String? $type})
-      : $type = $type ?? 'result';
+  const _$CallResult({required final List<BigInt> result, final String? $type})
+      : _result = result,
+        $type = $type ?? 'result';
 
   factory _$CallResult.fromJson(Map<String, dynamic> json) =>
       _$$CallResultFromJson(json);
 
+  final List<BigInt> _result;
   @override
-  final int result;
+  List<BigInt> get result {
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_result);
+  }
 
   @JsonKey(name: 'runtimeType')
   final String $type;
@@ -141,13 +146,13 @@ class _$CallResult implements CallResult {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$CallResult &&
-            const DeepCollectionEquality().equals(other.result, result));
+            const DeepCollectionEquality().equals(other._result, _result));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(result));
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(_result));
 
   @JsonKey(ignore: true)
   @override
@@ -157,7 +162,7 @@ class _$CallResult implements CallResult {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(int result) result,
+    required TResult Function(List<BigInt> result) result,
     required TResult Function(JsonRpcApiError error) error,
   }) {
     return result(this.result);
@@ -166,7 +171,7 @@ class _$CallResult implements CallResult {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(int result)? result,
+    TResult Function(List<BigInt> result)? result,
     TResult Function(JsonRpcApiError error)? error,
   }) {
     return result?.call(this.result);
@@ -175,7 +180,7 @@ class _$CallResult implements CallResult {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(int result)? result,
+    TResult Function(List<BigInt> result)? result,
     TResult Function(JsonRpcApiError error)? error,
     required TResult orElse(),
   }) {
@@ -223,12 +228,12 @@ class _$CallResult implements CallResult {
 }
 
 abstract class CallResult implements Call {
-  const factory CallResult({required final int result}) = _$CallResult;
+  const factory CallResult({required final List<BigInt> result}) = _$CallResult;
 
   factory CallResult.fromJson(Map<String, dynamic> json) =
       _$CallResult.fromJson;
 
-  int get result => throw _privateConstructorUsedError;
+  List<BigInt> get result => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   _$$CallResultCopyWith<_$CallResult> get copyWith =>
       throw _privateConstructorUsedError;
@@ -315,7 +320,7 @@ class _$CallError implements CallError {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(int result) result,
+    required TResult Function(List<BigInt> result) result,
     required TResult Function(JsonRpcApiError error) error,
   }) {
     return error(this.error);
@@ -324,7 +329,7 @@ class _$CallError implements CallError {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(int result)? result,
+    TResult Function(List<BigInt> result)? result,
     TResult Function(JsonRpcApiError error)? error,
   }) {
     return error?.call(this.error);
@@ -333,7 +338,7 @@ class _$CallError implements CallError {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(int result)? result,
+    TResult Function(List<BigInt> result)? result,
     TResult Function(JsonRpcApiError error)? error,
     required TResult orElse(),
   }) {
@@ -399,6 +404,7 @@ CallRequest _$CallRequestFromJson(Map<String, dynamic> json) {
 mixin _$CallRequest {
   String get contractAddress => throw _privateConstructorUsedError;
   String get entryPointSelector => throw _privateConstructorUsedError;
+  List<BigInt> get calldata => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -411,7 +417,10 @@ abstract class $CallRequestCopyWith<$Res> {
   factory $CallRequestCopyWith(
           CallRequest value, $Res Function(CallRequest) then) =
       _$CallRequestCopyWithImpl<$Res>;
-  $Res call({String contractAddress, String entryPointSelector});
+  $Res call(
+      {String contractAddress,
+      String entryPointSelector,
+      List<BigInt> calldata});
 }
 
 /// @nodoc
@@ -426,6 +435,7 @@ class _$CallRequestCopyWithImpl<$Res> implements $CallRequestCopyWith<$Res> {
   $Res call({
     Object? contractAddress = freezed,
     Object? entryPointSelector = freezed,
+    Object? calldata = freezed,
   }) {
     return _then(_value.copyWith(
       contractAddress: contractAddress == freezed
@@ -436,6 +446,10 @@ class _$CallRequestCopyWithImpl<$Res> implements $CallRequestCopyWith<$Res> {
           ? _value.entryPointSelector
           : entryPointSelector // ignore: cast_nullable_to_non_nullable
               as String,
+      calldata: calldata == freezed
+          ? _value.calldata
+          : calldata // ignore: cast_nullable_to_non_nullable
+              as List<BigInt>,
     ));
   }
 }
@@ -447,7 +461,10 @@ abstract class _$$_CallRequestCopyWith<$Res>
           _$_CallRequest value, $Res Function(_$_CallRequest) then) =
       __$$_CallRequestCopyWithImpl<$Res>;
   @override
-  $Res call({String contractAddress, String entryPointSelector});
+  $Res call(
+      {String contractAddress,
+      String entryPointSelector,
+      List<BigInt> calldata});
 }
 
 /// @nodoc
@@ -464,6 +481,7 @@ class __$$_CallRequestCopyWithImpl<$Res> extends _$CallRequestCopyWithImpl<$Res>
   $Res call({
     Object? contractAddress = freezed,
     Object? entryPointSelector = freezed,
+    Object? calldata = freezed,
   }) {
     return _then(_$_CallRequest(
       contractAddress: contractAddress == freezed
@@ -474,6 +492,10 @@ class __$$_CallRequestCopyWithImpl<$Res> extends _$CallRequestCopyWithImpl<$Res>
           ? _value.entryPointSelector
           : entryPointSelector // ignore: cast_nullable_to_non_nullable
               as String,
+      calldata: calldata == freezed
+          ? _value._calldata
+          : calldata // ignore: cast_nullable_to_non_nullable
+              as List<BigInt>,
     ));
   }
 }
@@ -482,7 +504,10 @@ class __$$_CallRequestCopyWithImpl<$Res> extends _$CallRequestCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_CallRequest implements _CallRequest {
   const _$_CallRequest(
-      {required this.contractAddress, required this.entryPointSelector});
+      {required this.contractAddress,
+      required this.entryPointSelector,
+      required final List<BigInt> calldata})
+      : _calldata = calldata;
 
   factory _$_CallRequest.fromJson(Map<String, dynamic> json) =>
       _$$_CallRequestFromJson(json);
@@ -491,10 +516,16 @@ class _$_CallRequest implements _CallRequest {
   final String contractAddress;
   @override
   final String entryPointSelector;
+  final List<BigInt> _calldata;
+  @override
+  List<BigInt> get calldata {
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_calldata);
+  }
 
   @override
   String toString() {
-    return 'CallRequest(contractAddress: $contractAddress, entryPointSelector: $entryPointSelector)';
+    return 'CallRequest(contractAddress: $contractAddress, entryPointSelector: $entryPointSelector, calldata: $calldata)';
   }
 
   @override
@@ -505,7 +536,8 @@ class _$_CallRequest implements _CallRequest {
             const DeepCollectionEquality()
                 .equals(other.contractAddress, contractAddress) &&
             const DeepCollectionEquality()
-                .equals(other.entryPointSelector, entryPointSelector));
+                .equals(other.entryPointSelector, entryPointSelector) &&
+            const DeepCollectionEquality().equals(other._calldata, _calldata));
   }
 
   @JsonKey(ignore: true)
@@ -513,7 +545,8 @@ class _$_CallRequest implements _CallRequest {
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(contractAddress),
-      const DeepCollectionEquality().hash(entryPointSelector));
+      const DeepCollectionEquality().hash(entryPointSelector),
+      const DeepCollectionEquality().hash(_calldata));
 
   @JsonKey(ignore: true)
   @override
@@ -529,7 +562,8 @@ class _$_CallRequest implements _CallRequest {
 abstract class _CallRequest implements CallRequest {
   const factory _CallRequest(
       {required final String contractAddress,
-      required final String entryPointSelector}) = _$_CallRequest;
+      required final String entryPointSelector,
+      required final List<BigInt> calldata}) = _$_CallRequest;
 
   factory _CallRequest.fromJson(Map<String, dynamic> json) =
       _$_CallRequest.fromJson;
@@ -538,6 +572,8 @@ abstract class _CallRequest implements CallRequest {
   String get contractAddress => throw _privateConstructorUsedError;
   @override
   String get entryPointSelector => throw _privateConstructorUsedError;
+  @override
+  List<BigInt> get calldata => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$$_CallRequestCopyWith<_$_CallRequest> get copyWith =>

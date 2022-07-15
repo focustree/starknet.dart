@@ -1,4 +1,5 @@
 import 'package:starknet/src/provider/model/block_number.dart';
+import 'package:starknet/src/provider/model/call.dart';
 import 'package:starknet/starknet.dart';
 import 'package:test/test.dart';
 
@@ -54,9 +55,21 @@ void main() {
     });
 
     group('call', () {
-      test('', () async {
-        final response = await provider.call();
-        print(response);
+      test(
+          'returns the right name when calling the `name` method on Briq contract',
+          () async {
+        final response = await provider.call(
+            request: CallRequest(
+                contractAddress:
+                    '0x0266b1276d23ffb53d99da3f01be7e29fa024dd33cd7f7b1eb7a46c67891c9d0',
+                entryPointSelector: getStringSelectorByName('name'),
+                calldata: []));
+        response.when(
+            error: (error) => fail("Shouldn't fail"),
+            result: (result) {
+              expect(result, hasLength(1));
+              expect(result[0], stringToBigInt('briq'));
+            });
       });
     });
   });

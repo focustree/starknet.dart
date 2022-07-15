@@ -40,4 +40,12 @@ void main() {
       expect(() => getSelectorByName('✨'), throwsArgumentError);
     });
   });
+  group('getStringSelectorByName', () {
+    test('returns the right string', () {
+      expect(
+          getStringSelectorByName('balanceOf'),
+          equals(
+              "0x2e4263afad30923c891518314c3c95dbe830a16874e8abc5777a9a20b54c76e"));
+    });
+  });
 }

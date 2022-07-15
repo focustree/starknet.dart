@@ -8,7 +8,7 @@ part 'call.g.dart';
 @freezed
 class Call with _$Call {
   const factory Call.result({
-    required int result,
+    required List<BigInt> result,
   }) = CallResult;
   const factory Call.error({
     required JsonRpcApiError error,
@@ -24,6 +24,7 @@ class CallRequest with _$CallRequest {
   const factory CallRequest({
     required String contractAddress,
     required String entryPointSelector,
+    required List<BigInt> calldata,
   }) = _CallRequest;
 
   factory CallRequest.fromJson(Map<String, Object?> json) =>

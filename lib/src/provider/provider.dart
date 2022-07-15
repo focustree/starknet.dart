@@ -19,7 +19,7 @@ abstract class Provider {
   /// Calls a starknet function without creating a starknet transaction
   ///
   /// [Spec](https://github.com/starkware-libs/starknet-specs/blob/3d3b2d7ad6899f64043c0deaa8a40d3d8c9b1788/api/starknet_api_openrpc.json#L369-L419)
-  Future<Call> call();
+  Future<Call> call({required CallRequest request, String blockId});
 }
 
 class JsonRpcProvider implements Provider {
@@ -41,7 +41,7 @@ class JsonRpcProvider implements Provider {
           'https://starknet-mainnet.infura.io/v3/f54befa531584e2d8516addbf285a560'));
 
   Future<Map<String, dynamic>> _callRpcEndpoint(
-      {required String method, List<dynamic>? params}) async {
+      {required String method, List<Object>? params}) async {
     const headers = {
       'Content-Type': 'application/json',
     };
@@ -72,12 +72,9 @@ class JsonRpcProvider implements Provider {
   }
 
   @override
-  Future<Call> call() async {
-    return _callRpcEndpoint(method: 'starknet_call', params: [
-      CallRequest(
-          contractAddress:
-              '0x0266b1276d23ffb53d99da3f01be7e29fa024dd33cd7f7b1eb7a46c67891c9d0',
-          entryPointSelector: 'name')
-    ]).then(Call.fromJson);
+  Future<Call> call(
+      {required CallRequest request, String blockId = 'pending'}) async {
+    return _callRpcEndpoint(method: 'starknet_call', params: [request, blockId])
+        .then(Call.fromJson);
   }
 }

@@ -4,6 +4,7 @@ import 'dart:convert';
 import 'dart:typed_data';
 import "package:pointycastle/src/utils.dart";
 import 'package:pointycastle/digests/keccak.dart';
+import 'package:starknet/starknet.dart';
 
 /// [fieldElementMask] is used to make sure a big int has less than 250 digits.
 final fieldElementMask = BigInt.two.pow(250) - BigInt.one;
@@ -26,6 +27,10 @@ BigInt getSelectorByName(String name) {
     return BigInt.zero;
   }
   return starknetKeccak(ascii.encode(name));
+}
+
+String getStringSelectorByName(String name) {
+  return bigIntToHexString(getSelectorByName(name));
 }
 
 final KeccakDigest keccakDigest = KeccakDigest(256);
