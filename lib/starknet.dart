@@ -4,3 +4,4 @@
 library starknet;
 
 export 'src/provider/provider.dart';
+export 'src/keccak.dart' show starknetKeccak, getSelectorByName;
