@@ -6,16 +6,16 @@ part 'block_number.freezed.dart';
 part 'block_number.g.dart';
 
 @freezed
-class BlockNumberResponse with _$BlockNumberResponse {
-  const factory BlockNumberResponse.result({
+class BlockNumber with _$BlockNumber {
+  const factory BlockNumber.result({
     required int result,
-  }) = BlockNumberResponseResult;
-  const factory BlockNumberResponse.error({
+  }) = BlockNumberResult;
+  const factory BlockNumber.error({
     required JsonRpcApiError error,
-  }) = BlockNumberResponseError;
+  }) = BlockNumberError;
 
-  factory BlockNumberResponse.fromJson(Map<String, Object?> json) =>
+  factory BlockNumber.fromJson(Map<String, Object?> json) =>
       json.containsKey('error')
-          ? BlockNumberResponseError.fromJson(json)
-          : BlockNumberResponseResult.fromJson(json);
+          ? BlockNumberError.fromJson(json)
+          : BlockNumberResult.fromJson(json);
 }

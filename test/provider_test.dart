@@ -34,14 +34,28 @@ void main() {
       test('returns a strictly positive block number', () async {
         final blockNumber = await provider.blockNumber();
         expect(
-            blockNumber is BlockNumberResponseResult && blockNumber.result > 0,
-            isTrue);
+            blockNumber is BlockNumberResult && blockNumber.result > 0, isTrue);
+      });
+    });
+
+    group('getBlockWithTxHashes', () {
+      test('returns an unimplemented method error', () async {
+        final response = await provider.getBlockWithTxHashes('1');
+        response.when(
+            result: () => fail('Expected to return an unimplemented error'),
+            error: (error) {
+              expect(error.code, equals(-32601));
+              expect(
+                  error.message,
+                  contains(
+                      'method \'starknet_getBlockWithTxHashes\' not found'));
+            });
       });
     });
   });
 }
 
-Provider getJsonRpcProvider() {
+getJsonRpcProvider() {
   const network = String.fromEnvironment('NETWORK', defaultValue: 'testnet');
   if (network == 'testnet') {
     return JsonRpcProvider.infuraGoerliTestnet;

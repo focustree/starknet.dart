@@ -1,30 +1,32 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'block_number.dart';
+part of 'get_block_with_tx_hashes.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$BlockNumberResult _$$BlockNumberResultFromJson(Map<String, dynamic> json) =>
-    _$BlockNumberResult(
-      result: json['result'] as int,
+_$GetBlockWithTxHashesResult _$$GetBlockWithTxHashesResultFromJson(
+        Map<String, dynamic> json) =>
+    _$GetBlockWithTxHashesResult(
       $type: json['runtimeType'] as String?,
     );
 
-Map<String, dynamic> _$$BlockNumberResultToJson(_$BlockNumberResult instance) =>
+Map<String, dynamic> _$$GetBlockWithTxHashesResultToJson(
+        _$GetBlockWithTxHashesResult instance) =>
     <String, dynamic>{
-      'result': instance.result,
       'runtimeType': instance.$type,
     };
 
-_$BlockNumberError _$$BlockNumberErrorFromJson(Map<String, dynamic> json) =>
-    _$BlockNumberError(
+_$GetBlockWithTxHashesError _$$GetBlockWithTxHashesErrorFromJson(
+        Map<String, dynamic> json) =>
+    _$GetBlockWithTxHashesError(
       error: JsonRpcApiError.fromJson(json['error'] as Map<String, dynamic>),
       $type: json['runtimeType'] as String?,
     );
 
-Map<String, dynamic> _$$BlockNumberErrorToJson(_$BlockNumberError instance) =>
+Map<String, dynamic> _$$GetBlockWithTxHashesErrorToJson(
+        _$GetBlockWithTxHashesError instance) =>
     <String, dynamic>{
       'error': instance.error.toJson(),
       'runtimeType': instance.$type,
