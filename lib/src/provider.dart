@@ -1,5 +1,3 @@
-import 'dart:convert';
-import 'package:http/http.dart' as http;
 import 'package:starknet/starknet.dart';
 
 abstract class Provider {
@@ -26,52 +24,32 @@ class JsonRpcProvider implements Provider {
     required this.nodeUri,
   });
 
-  static final devnet =
-      JsonRpcProvider(nodeUri: Uri.parse('http://localhost:5050/rpc'));
-
-  static final infuraGoerliTestnet = JsonRpcProvider(
-      nodeUri: Uri.parse(
-          'https://starknet-goerli.infura.io/v3/f54befa531584e2d8516addbf285a560'));
-
-  static final infuraMainnet = JsonRpcProvider(
-      nodeUri: Uri.parse(
-          'https://starknet-mainnet.infura.io/v3/f54befa531584e2d8516addbf285a560'));
-
-  Future<Map<String, dynamic>> _callRpcEndpoint(
-      {required String method, List<Object>? params}) async {
-    const headers = {
-      'Content-Type': 'application/json',
-    };
-
-    final body = {
-      'jsonrpc': '2.0',
-      'method': method,
-      'params': params ?? [],
-      'id': 0
-    };
-
-    final response =
-        await http.post(nodeUri, headers: headers, body: json.encode(body));
-
-    return json.decode(response.body);
-  }
-
   @override
   Future<BlockNumber> blockNumber() async {
-    return _callRpcEndpoint(method: 'starknet_blockNumber')
+    return callRpcEndpoint(nodeUri: nodeUri, method: 'starknet_blockNumber')
         .then(BlockNumber.fromJson);
   }
 
   @override
   Future<GetBlockWithTxHashes> getBlockWithTxHashes(String blockId) async {
-    return _callRpcEndpoint(method: 'starknet_getBlockWithTxHashes')
+    return callRpcEndpoint(
+            nodeUri: nodeUri, method: 'starknet_getBlockWithTxHashes')
         .then(GetBlockWithTxHashes.fromJson);
   }
 
   @override
   Future<Call> call(
       {required CallRequest request, String blockId = 'pending'}) async {
-    return _callRpcEndpoint(method: 'starknet_call', params: [request, blockId])
-        .then(Call.fromJson);
+    return callRpcEndpoint(
+        nodeUri: nodeUri,
+        method: 'starknet_call',
+        params: [request, blockId]).then(Call.fromJson);
   }
+
+  static final devnet = JsonRpcProvider(nodeUri: devnetUri);
+
+  static final infuraGoerliTestnet =
+      JsonRpcProvider(nodeUri: infuraGoerliTestnetUri);
+
+  static final infuraMainnet = JsonRpcProvider(nodeUri: infuraMainnetUri);
 }

@@ -1,6 +1,8 @@
 import 'package:starknet/starknet.dart';
 import 'package:test/test.dart';
 
+import 'utils.dart';
+
 void main() {
   group('Provider', () {
     late Provider provider;
@@ -71,15 +73,4 @@ void main() {
       });
     });
   });
-}
-
-getJsonRpcProvider() {
-  const network = String.fromEnvironment('NETWORK', defaultValue: 'testnet');
-  if (network == 'testnet') {
-    return JsonRpcProvider.infuraGoerliTestnet;
-  } else if (network == 'mainnet') {
-    return JsonRpcProvider.infuraMainnet;
-  } else {
-    return JsonRpcProvider.devnet;
-  }
 }
