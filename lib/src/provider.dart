@@ -14,7 +14,7 @@ abstract class Provider {
   /// Calls a starknet function without creating a starknet transaction
   ///
   /// [Spec](https://github.com/starkware-libs/starknet-specs/blob/3d3b2d7ad6899f64043c0deaa8a40d3d8c9b1788/api/starknet_api_openrpc.json#L369-L419)
-  Future<Call> call({required CallRequest request, String blockId});
+  Future<Call> call({required FunctionCall request, String blockId});
 }
 
 class JsonRpcProvider implements Provider {
@@ -39,7 +39,7 @@ class JsonRpcProvider implements Provider {
 
   @override
   Future<Call> call(
-      {required CallRequest request, String blockId = 'pending'}) async {
+      {required FunctionCall request, String blockId = 'pending'}) async {
     return callRpcEndpoint(
         nodeUri: nodeUri,
         method: 'starknet_call',

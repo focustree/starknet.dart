@@ -1,7 +1,7 @@
 import 'package:starknet/starknet.dart';
 
 abstract class Account extends Provider {
-  Future<String> invokeTransaction();
+  Future<InvokeTransaction> invokeTransaction(InvokeTransactionRequest request);
 }
 
 class JsonRpcAccount extends JsonRpcProvider implements Account {
@@ -10,11 +10,13 @@ class JsonRpcAccount extends JsonRpcProvider implements Account {
   }) : super(nodeUri: nodeUri);
 
   @override
-  Future<String> invokeTransaction() async {
-    final toto = await callRpcEndpoint(
-        nodeUri: nodeUri, method: 'starknet_addInvokeTransaction');
-    print(toto);
-    return 'toto';
+  Future<InvokeTransaction> invokeTransaction(
+      InvokeTransactionRequest request) async {
+    return callRpcEndpoint(
+            nodeUri: nodeUri,
+            method: 'starknet_addInvokeTransaction',
+            params: request)
+        .then(InvokeTransaction.fromJson);
   }
 
   static final devnet = JsonRpcAccount(nodeUri: devnetUri);

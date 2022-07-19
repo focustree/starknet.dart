@@ -1,6 +1,6 @@
 import 'package:starknet/starknet.dart';
 
-getJsonRpcProvider() {
+Provider getJsonRpcProvider() {
   const network = String.fromEnvironment('NETWORK', defaultValue: 'testnet');
   if (network == 'testnet') {
     return JsonRpcProvider.infuraGoerliTestnet;
@@ -11,7 +11,7 @@ getJsonRpcProvider() {
   }
 }
 
-getJsonRpcAccount() {
+Account getJsonRpcAccount() {
   const network = String.fromEnvironment('NETWORK', defaultValue: 'testnet');
   if (network == 'testnet') {
     return JsonRpcAccount.infuraGoerliTestnet;

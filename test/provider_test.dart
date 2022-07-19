@@ -59,7 +59,7 @@ void main() {
           'returns the right name when calling the `name` method on Briq contract',
           () async {
         final response = await provider.call(
-            request: CallRequest(
+            request: FunctionCall(
                 contractAddress:
                     '0x0266b1276d23ffb53d99da3f01be7e29fa024dd33cd7f7b1eb7a46c67891c9d0',
                 entryPointSelector: getStringSelectorByName('name'),

@@ -18,15 +18,3 @@ class Call with _$Call {
       ? CallError.fromJson(json)
       : CallResult.fromJson(json);
 }
-
-@freezed
-class CallRequest with _$CallRequest {
-  const factory CallRequest({
-    required String contractAddress,
-    required String entryPointSelector,
-    required List<BigInt> calldata,
-  }) = _CallRequest;
-
-  factory CallRequest.fromJson(Map<String, Object?> json) =>
-      _$CallRequestFromJson(json);
-}

@@ -10,6 +10,4 @@ export 'src/keccak.dart';
 export 'src/convert.dart';
 export 'src/utils.dart';
 export 'src/default_networks.dart';
-export 'src/model/block_number.dart';
-export 'src/model/call.dart';
-export 'src/model/get_block_with_tx_hashes.dart';
+export 'src/model/index.dart';

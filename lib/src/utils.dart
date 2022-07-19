@@ -7,9 +7,7 @@ prettyPrintJson(Map<String, dynamic> json) {
 }
 
 Future<Map<String, dynamic>> callRpcEndpoint(
-    {required Uri nodeUri,
-    required String method,
-    List<Object>? params}) async {
+    {required Uri nodeUri, required String method, Object? params}) async {
   const headers = {
     'Content-Type': 'application/json',
   };
