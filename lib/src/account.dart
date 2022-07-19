@@ -9,6 +9,8 @@ class JsonRpcAccount extends JsonRpcProvider implements Account {
     required Uri nodeUri,
   }) : super(nodeUri: nodeUri);
 
+  execute(List<Call> calls) async {}
+
   @override
   Future<InvokeTransaction> invokeTransaction(
       InvokeTransactionRequest request) async {

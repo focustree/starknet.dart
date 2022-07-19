@@ -8,7 +8,7 @@ class FunctionCall with _$FunctionCall {
   const factory FunctionCall({
     required String contractAddress,
     required String entryPointSelector,
-    required List<BigInt> calldata,
+    required List<String> calldata,
   }) = _FunctionCall;
 
   factory FunctionCall.fromJson(Map<String, Object?> json) =>

@@ -22,7 +22,7 @@ FunctionCall _$FunctionCallFromJson(Map<String, dynamic> json) {
 mixin _$FunctionCall {
   String get contractAddress => throw _privateConstructorUsedError;
   String get entryPointSelector => throw _privateConstructorUsedError;
-  List<BigInt> get calldata => throw _privateConstructorUsedError;
+  List<String> get calldata => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -38,7 +38,7 @@ abstract class $FunctionCallCopyWith<$Res> {
   $Res call(
       {String contractAddress,
       String entryPointSelector,
-      List<BigInt> calldata});
+      List<String> calldata});
 }
 
 /// @nodoc
@@ -67,7 +67,7 @@ class _$FunctionCallCopyWithImpl<$Res> implements $FunctionCallCopyWith<$Res> {
       calldata: calldata == freezed
           ? _value.calldata
           : calldata // ignore: cast_nullable_to_non_nullable
-              as List<BigInt>,
+              as List<String>,
     ));
   }
 }
@@ -82,7 +82,7 @@ abstract class _$$_FunctionCallCopyWith<$Res>
   $Res call(
       {String contractAddress,
       String entryPointSelector,
-      List<BigInt> calldata});
+      List<String> calldata});
 }
 
 /// @nodoc
@@ -114,7 +114,7 @@ class __$$_FunctionCallCopyWithImpl<$Res>
       calldata: calldata == freezed
           ? _value._calldata
           : calldata // ignore: cast_nullable_to_non_nullable
-              as List<BigInt>,
+              as List<String>,
     ));
   }
 }
@@ -125,7 +125,7 @@ class _$_FunctionCall implements _FunctionCall {
   const _$_FunctionCall(
       {required this.contractAddress,
       required this.entryPointSelector,
-      required final List<BigInt> calldata})
+      required final List<String> calldata})
       : _calldata = calldata;
 
   factory _$_FunctionCall.fromJson(Map<String, dynamic> json) =>
@@ -135,9 +135,9 @@ class _$_FunctionCall implements _FunctionCall {
   final String contractAddress;
   @override
   final String entryPointSelector;
-  final List<BigInt> _calldata;
+  final List<String> _calldata;
   @override
-  List<BigInt> get calldata {
+  List<String> get calldata {
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_calldata);
   }
@@ -182,7 +182,7 @@ abstract class _FunctionCall implements FunctionCall {
   const factory _FunctionCall(
       {required final String contractAddress,
       required final String entryPointSelector,
-      required final List<BigInt> calldata}) = _$_FunctionCall;
+      required final List<String> calldata}) = _$_FunctionCall;
 
   factory _FunctionCall.fromJson(Map<String, dynamic> json) =
       _$_FunctionCall.fromJson;
@@ -192,7 +192,7 @@ abstract class _FunctionCall implements FunctionCall {
   @override
   String get entryPointSelector => throw _privateConstructorUsedError;
   @override
-  List<BigInt> get calldata => throw _privateConstructorUsedError;
+  List<String> get calldata => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$$_FunctionCallCopyWith<_$_FunctionCall> get copyWith =>
