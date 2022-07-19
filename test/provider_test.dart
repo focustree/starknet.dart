@@ -1,5 +1,3 @@
-import 'package:starknet/src/provider/model/block_number.dart';
-import 'package:starknet/src/provider/model/call.dart';
 import 'package:starknet/starknet.dart';
 import 'package:test/test.dart';
 

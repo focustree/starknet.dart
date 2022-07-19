@@ -1,9 +1,6 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
-
-import 'provider/model/block_number.dart';
-import 'provider/model/call.dart';
-import 'provider/model/get_block_with_tx_hashes.dart';
+import 'package:starknet/starknet.dart';
 
 abstract class Provider {
   /// Gets the most recent accepted block number
