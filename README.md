@@ -53,4 +53,4 @@ Checkout the [official feeder_gateway_client API](https://github.com/starkware-l
 
 ## Contributing
 
-If you want to contribute to this project or have any suggestion, please check out our [Contributor Guide]().
+If you want to contribute to this project or have any suggestion, please check out our [Contributor Guide](CONTRIBUTING.md).
