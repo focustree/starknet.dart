@@ -4,9 +4,12 @@
 
 Dart SDK for StarkNet ✨
 
-Docs: [pub.dev/packages/starknet](https://pub.dev/packages/starknet)
+📚 [docs](https://pub.dev/packages/starknet)
+💬 [telegram chat](https://t.me/+CWezjfLIRYc0MDY0)
 
 ## Roadmap
+
+See the [roadmap kanban](https://github.com/users/gabsn/projects/1). Talk to us on telgram if you want to challenge the priorities.
 
 ### Features
 
@@ -48,56 +51,6 @@ Checkout the [official feeder_gateway_client API](https://github.com/starkware-l
 - [ ] Write a tutorial to show how to use this SDK in the context of a flutter app
 - [ ] Setup a `docs` website containing multiple user guides
 
-## Contribution Guide
+## Contributing
 
-If you want to contribute to this project or have any suggestion, please [contact me on telegram](https://t.me/gabinmarignier).
-
-### Dev Setup
-
-1. Install [docker](https://docs.docker.com/get-docker/). If you're on Mac, you should probably use [colima](https://github.com/abiosoft/colima) instead of the official docker engine since it's more efficient.
-
-2. Start `starknet-devnet` locally with `docker-compose up`. Make sure it's up and running by visiting http://127.0.0.1:5050/is_alive.
-
-3. Install the [cairo-lang](https://starknet.io/docs/quickstart.html#quickstart) environment to get access to the `starknet` CLI.
-
-4. Make sure everything is setup correctly by deploying an erc20 contract.
-
-```
-starknet --gateway_url http://127.0.0.1:5050/gateway --feeder_gateway_url http://127.0.0.1:5050/feeder_gateway deploy --contract ./assets/compiled_contracts/erc20.json
-```
-
-### Tests
-
-You can run the tests with the following command:
-
-```
-dart test
-```
-
-### Generate freezed model classes
-
-To avoid writing too much boilerplate, we use the [freezed](https://github.com/rrousselGit/freezed) library to automatically generate serializer logic.
-
-You can run the following command to generate those classes:
-
-```
-dart run build_runner build
-```
-
-Alternatively, you can hit `Cmd + Shift + B` in vscode.
-
-### Publish new version of the package
-
-```
-dart pub publish
-```
-
-### Generate docs
-
-To generate docs, run:
-
-```
-dart doc .
-```
-
-For more advanced features, check out the [dartdoc package](https://pub.dev/packages/dartdoc).
+If you want to contribute to this project or have any suggestion, please check out our [Contributor Guide]().
