@@ -1,6 +1,5 @@
 import 'dart:convert';
 
-export 'keccak.dart';
 export 'convert.dart';
 export 'rpc.dart';
 
