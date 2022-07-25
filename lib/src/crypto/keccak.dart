@@ -2,7 +2,6 @@
 
 import 'dart:convert';
 import 'dart:typed_data';
-import "package:pointycastle/src/utils.dart";
 import 'package:pointycastle/digests/keccak.dart';
 import 'package:starknet/starknet.dart';
 
@@ -13,7 +12,7 @@ final fieldElementMask = BigInt.two.pow(250) - BigInt.one;
 ///
 /// See: https://github.com/starkware-libs/cairo-lang/blob/167b28bcd940fd25ea3816204fa882a0b0a49603/src/starkware/starknet/public/abi.py#L27-L32
 BigInt starknetKeccak(Uint8List bytes) {
-  return decodeBigInt(_keccak256(bytes)) & fieldElementMask;
+  return bytesToBigInt(_keccak256(bytes)) & fieldElementMask;
 }
 
 const defaultEntrypointName = "__default__";

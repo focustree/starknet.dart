@@ -4,6 +4,30 @@ export 'keccak.dart';
 export 'pedersen.dart';
 export 'pedersen_params.dart';
 
+BigInt calculateTransactionHashCommon({
+  required BigInt txHashPrefix,
+  required BigInt version,
+  required BigInt contractAddress,
+  required BigInt entryPointSelector,
+  required List<BigInt> calldata,
+  required BigInt maxFee,
+  required BigInt chainId,
+  required List<BigInt> additionalData,
+}) {
+  final calldataHash = computeHashOnElements(calldata);
+  final List<BigInt> dataToHash = [
+    txHashPrefix,
+    version,
+    contractAddress,
+    entryPointSelector,
+    calldataHash,
+    maxFee,
+    chainId,
+    ...additionalData,
+  ];
+  return computeHashOnElements(dataToHash);
+}
+
 /// Computes a hash chain over the data, in the following order:
 /// h(h(h(h(0, data[0]), data[1]), ...), data[n-1]), n)
 ///
