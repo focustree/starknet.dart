@@ -6,7 +6,7 @@ library starknet;
 export 'src/provider.dart';
 export 'src/signer.dart';
 export 'src/account.dart';
-export 'src/default_networks.dart';
+export 'src/static_config.dart';
 export 'src/model/index.dart';
 export 'src/crypto/index.dart';
 export 'src/utils/index.dart';

@@ -6,9 +6,9 @@ part 'function_call.g.dart';
 @freezed
 class FunctionCall with _$FunctionCall {
   const factory FunctionCall({
-    required String contractAddress,
-    required String entryPointSelector,
-    required List<String> calldata,
+    required BigInt contractAddress,
+    required BigInt entryPointSelector,
+    required List<BigInt> calldata,
   }) = _FunctionCall;
 
   factory FunctionCall.fromJson(Map<String, Object?> json) =>
