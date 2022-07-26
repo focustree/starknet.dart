@@ -29,6 +29,7 @@ void main() {
     });
     test('mintAspectNFT', () async {
       final account = getJsonRpcAccount();
+      // TODO: fix this
       final request = InvokeTransactionRequest(
           functionInvocation: FunctionCall(
               contractAddress:
