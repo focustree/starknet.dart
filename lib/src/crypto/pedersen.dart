@@ -10,6 +10,12 @@ final starknetCurve = fp.ECCurve(
 final starknetECDomainParams = ECDomainParametersImpl(
     'starknet', starknetCurve, shiftPoint, pedersenParams.ecOrder);
 
+final starknetSignatureECDomainParams = ECDomainParametersImpl(
+    'starknetSignature',
+    starknetCurve,
+    signatureGeneratorPoint,
+    pedersenParams.ecOrder);
+
 ECPoint getPoint(List<BigInt> constantPoint) => fp.ECPoint(
     starknetCurve,
     fp.ECFieldElement(pedersenParams.fieldPrime, constantPoint[0]),
@@ -19,6 +25,7 @@ final lowPartBits = 248;
 final nElementBitsHash = 252;
 final lowPartMask = BigInt.two.pow(lowPartBits) - BigInt.one;
 final shiftPoint = getPoint(pedersenParams.constantPoints[0]);
+final signatureGeneratorPoint = getPoint(pedersenParams.constantPoints[1]);
 final p0 = getPoint(pedersenParams.constantPoints[2]);
 final p1 = getPoint(pedersenParams.constantPoints[2 + lowPartBits]);
 final p2 = getPoint(pedersenParams.constantPoints[2 + nElementBitsHash]);

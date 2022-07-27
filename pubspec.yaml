@@ -7,6 +7,9 @@ environment:
   sdk: ">=2.17.3 <3.0.0"
 
 dependencies:
+  crypto: ^3.0.2
+  ecdsa: ^0.0.4
+  elliptic: ^0.3.8
   freezed_annotation: ^2.0.3
   http: ^0.13.4
   json_annotation: ^4.5.0
