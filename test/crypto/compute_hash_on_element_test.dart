@@ -7,7 +7,7 @@ void main() {
       expect(
           computeHashOnElements([]),
           equals(hexStringToBigInt(
-              'Ox049ee3eba8c1600700ee1b87eb599f16716b0b1022947733551fde4050ca6804')));
+              '0x049ee3eba8c1600700ee1b87eb599f16716b0b1022947733551fde4050ca6804')));
     });
     test('computes the right hash value for non-empty list', () {
       expect(

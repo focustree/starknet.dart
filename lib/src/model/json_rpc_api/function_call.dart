@@ -2,7 +2,6 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:starknet/starknet.dart';
 
 part 'function_call.freezed.dart';
-// TODO: fix generation by implementing JsonConverter for field element
 part 'function_call.g.dart';
 
 @freezed

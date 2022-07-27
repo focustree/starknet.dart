@@ -12,8 +12,11 @@ String bigIntToString(BigInt bigInt) {
   return utf8.decode(encodeBigInt(bigInt));
 }
 
-BigInt hexStringToBigInt(String hexString) {
-  return BigInt.parse(hexString.substring(2), radix: 16);
+BigInt hexStringToBigInt(String hex) {
+  if (hex.substring(0, 2) != '0x') {
+    throw ArgumentError('Invalid hex string: $hex');
+  }
+  return BigInt.parse(hex.substring(2), radix: 16);
 }
 
 BigInt stringToBigInt(String string) {
