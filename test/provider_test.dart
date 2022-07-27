@@ -60,9 +60,9 @@ void main() {
           () async {
         final response = await provider.call(
             request: FunctionCall(
-                contractAddress:
-                    '0x0266b1276d23ffb53d99da3f01be7e29fa024dd33cd7f7b1eb7a46c67891c9d0',
-                entryPointSelector: getStringSelectorByName('name'),
+                contractAddress: StarknetFieldElement.fromHex(
+                    '0x0266b1276d23ffb53d99da3f01be7e29fa024dd33cd7f7b1eb7a46c67891c9d0'),
+                entryPointSelector: getSelectorByName('name'),
                 calldata: []));
         response.when(
             error: (error) => fail("Shouldn't fail"),

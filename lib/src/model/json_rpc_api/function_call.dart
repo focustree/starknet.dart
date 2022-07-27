@@ -1,4 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:starknet/starknet.dart';
 
 part 'function_call.freezed.dart';
 part 'function_call.g.dart';
@@ -6,9 +7,9 @@ part 'function_call.g.dart';
 @freezed
 class FunctionCall with _$FunctionCall {
   const factory FunctionCall({
-    required String contractAddress,
-    required String entryPointSelector,
-    required List<String> calldata,
+    required StarknetFieldElement contractAddress,
+    required StarknetFieldElement entryPointSelector,
+    required List<StarknetFieldElement> calldata,
   }) = _FunctionCall;
 
   factory FunctionCall.fromJson(Map<String, Object?> json) =>
