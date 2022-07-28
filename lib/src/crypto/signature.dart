@@ -62,7 +62,7 @@ BigInt generateK(BigInt privateKey, BigInt messageHash) {
   // print("bx0: ${bx0.length} ${bx0}");
   final bx1 = bits2Octets(hashBytes, order);
   // print("bx1: ${bx1.length} ${bx1}");
-  var bx = [...bx0, ...bx1];
+  var bx = bx0 + bx1;
   // print(bx);
   // print(bx.length);
 
@@ -78,7 +78,7 @@ BigInt generateK(BigInt privateKey, BigInt messageHash) {
   // var toto = [...v, 0x00, ...bx];
   // print(toto.length);
   // print(toto);
-  k = crypto.Hmac(hashFunction, k).convert([...v, 0x00, ...bx]).bytes;
+  k = crypto.Hmac(hashFunction, k).convert(v + [0x00] + bx).bytes;
   // print("kDigest: (${kDigest.bytes.length}) ${kDigest.bytes}");
   // assert(kDigest.toString() ==
   //     "a3e7776dd1fc680d83b09551d2b1177a5c810bdbdb61b023909c6f0a42c2d204");
@@ -88,14 +88,28 @@ BigInt generateK(BigInt privateKey, BigInt messageHash) {
   // print("v: (${v.length}) $v");
 
   // Step F
-  k = crypto.Hmac(hashFunction, k).convert([...v, 0x01, ...bx]).bytes;
+  k = crypto.Hmac(hashFunction, k).convert(v + [0x01] + bx).bytes;
   // print("k: (${k.length}) $k");
 
   // Step G
   v = crypto.Hmac(hashFunction, k).convert(v).bytes;
-  print("v: (${v.length}) $v");
+  // print("v: (${v.length}) $v");
 
-  return BigInt.one;
+  while (true) {
+    var t = <int>[];
+    while (t.length * 8 < qlen) {
+      v = crypto.Hmac(hashFunction, k).convert(v).bytes;
+      t = t + v;
+    }
+
+    var secret = bits2Int(t, qlen);
+    if (secret >= BigInt.one && secret < order) {
+      return secret;
+    }
+
+    k = crypto.Hmac(hashFunction, k).convert(v + [0x00]).bytes;
+    v = crypto.Hmac(hashFunction, k).convert(v).bytes;
+  }
 }
 
 // BigInt generateK2(BigInt q, BigIt x, List<int> hash) {
