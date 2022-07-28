@@ -1,7 +1,5 @@
 import 'package:pointycastle/api.dart' as pc;
 import 'package:pointycastle/pointycastle.dart';
-import 'package:pointycastle/signers/ecdsa_signer.dart';
-import 'package:starknet/starknet.dart';
 
 abstract class Signer {
   PublicKey getPublicKey();
