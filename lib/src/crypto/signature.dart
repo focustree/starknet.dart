@@ -41,7 +41,7 @@ BigInt generateSecret(BigInt privateKey, BigInt messageHash) {
 }
 
 BigInt generateK(BigInt privateKey, BigInt messageHash) {
-  final digest = crypto.sha256;
+  final hashFunction = crypto.sha256;
   final order = pedersenParams.ecOrder;
   final qlen = order.bitLength;
   final holen = 32; // digest length is 256 bits for sha256
@@ -78,14 +78,22 @@ BigInt generateK(BigInt privateKey, BigInt messageHash) {
   // var toto = [...v, 0x00, ...bx];
   // print(toto.length);
   // print(toto);
-  k = crypto.Hmac(digest, k).convert([...v, 0x00, ...bx]).bytes;
+  k = crypto.Hmac(hashFunction, k).convert([...v, 0x00, ...bx]).bytes;
   // print("kDigest: (${kDigest.bytes.length}) ${kDigest.bytes}");
   // assert(kDigest.toString() ==
   //     "a3e7776dd1fc680d83b09551d2b1177a5c810bdbdb61b023909c6f0a42c2d204");
 
   // Step E
-  v = crypto.Hmac(digest, k).convert(v).bytes;
+  v = crypto.Hmac(hashFunction, k).convert(v).bytes;
   // print("v: (${v.length}) $v");
+
+  // Step F
+  k = crypto.Hmac(hashFunction, k).convert([...v, 0x01, ...bx]).bytes;
+  // print("k: (${k.length}) $k");
+
+  // Step G
+  v = crypto.Hmac(hashFunction, k).convert(v).bytes;
+  print("v: (${v.length}) $v");
 
   return BigInt.one;
 }
