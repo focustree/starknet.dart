@@ -31,3 +31,7 @@ BigInt stringToBigInt(String string) {
 BigInt bytesToBigInt(List<int> bytes) {
   return decodeBigInt(bytes);
 }
+
+String bytesToHexString(List<int> bytes) {
+  return bigIntToHexString(bytesToBigInt(bytes));
+}

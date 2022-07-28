@@ -1,19 +1,19 @@
 import 'dart:typed_data';
 
-import 'package:pointycastle/export.dart';
+import 'package:pointycastle/export.dart' as pc;
 import 'package:ecdsa/ecdsa.dart' as ecdsa;
 
-import 'package:crypto/crypto.dart';
+import 'package:crypto/crypto.dart' as crypto;
 // import 'package:ecdsa/src/utils.dart';
 // import 'package:elliptic/elliptic.dart';
 import 'package:starknet/starknet.dart';
 
-ECSignature ecdsaSign(BigInt privateKey, BigInt messageHash) {
-  final digest = SHA256Digest();
-  final signer = ECDSASigner(null, HMac(digest, 64));
-  final key = ECPrivateKey(privateKey, starknetSignatureECDomainParams);
-  signer.init(true, PrivateKeyParameter(key));
-  return signer.generateSignature(bigIntToBytes(messageHash)) as ECSignature;
+pc.ECSignature ecdsaSign(BigInt privateKey, BigInt messageHash) {
+  final digest = pc.SHA256Digest();
+  final signer = pc.ECDSASigner(null, pc.HMac(digest, 64));
+  final key = pc.ECPrivateKey(privateKey, starknetSignatureECDomainParams);
+  signer.init(true, pc.PrivateKeyParameter(key));
+  return signer.generateSignature(bigIntToBytes(messageHash)) as pc.ECSignature;
 }
 
 BigInt generateK_rfc6979(BigInt privateKey, BigInt messageHash) {
@@ -41,18 +41,51 @@ BigInt generateSecret(BigInt privateKey, BigInt messageHash) {
 }
 
 BigInt generateK(BigInt privateKey, BigInt messageHash) {
-  final digest = SHA256Digest();
-  final qlen = pedersenParams.ecOrder.bitLength;
-  final holen = digest.digestSize; // 32
-  final rolen = (qlen + 7) ~/ 8; // 32
+  final digest = crypto.sha256;
+  final order = pedersenParams.ecOrder;
+  final qlen = order.bitLength;
+  final holen = 32; // digest length is 256 bits for sha256
+  final rolen = orderlen(order);
+  // assert(rolen == 32);
 
+  // var bx1 = numberToString(privateKey, rolen);
+  // print(bx1);
+  // assert(bytesToBigInt(bx1) ==
+  //     BigInt.parse(
+  //         "0139fe4d6f02e666e86a6f58e65060f115cd3c185bd9e98bd829636931458f79",
+  //         radix: 16));
+  var hashBytes = bigIntToBytes(messageHash);
+  // print(hashBytes.lengthInBytes);
+  // print(bytesToHexString(hashBytes));
+  // print(hashBytes);
+  final bx0 = numberToString(privateKey, order);
+  // print("bx0: ${bx0.length} ${bx0}");
+  final bx1 = bits2Octets(hashBytes, order);
+  // print("bx1: ${bx1.length} ${bx1}");
+  var bx = [...bx0, ...bx1];
+  // print(bx);
+  // print(bx.length);
+
+  // Step B
   var v = List<int>.filled(holen, 0x01);
-  // print(v);
+  // print("v: ${v.length} ${v}");
+
+  // Step C
   var k = List<int>.filled(holen, 0x00);
   // print(k);
 
-  final hmac = HMac(digest, digest.digestSize);
-  k = hmac.process(k);
+  // Step D
+  // var toto = [...v, 0x00, ...bx];
+  // print(toto.length);
+  // print(toto);
+  k = crypto.Hmac(digest, k).convert([...v, 0x00, ...bx]).bytes;
+  // print("kDigest: (${kDigest.bytes.length}) ${kDigest.bytes}");
+  // assert(kDigest.toString() ==
+  //     "a3e7776dd1fc680d83b09551d2b1177a5c810bdbdb61b023909c6f0a42c2d204");
+
+  // Step E
+  v = crypto.Hmac(digest, k).convert(v).bytes;
+  // print("v: (${v.length}) $v");
 
   return BigInt.one;
 }
@@ -90,3 +123,42 @@ BigInt generateK(BigInt privateKey, BigInt messageHash) {
 //     v = Hmac(hasher, k).convert(v).bytes;
 //   }
 // }
+
+// https://tools.ietf.org/html/rfc6979#section-2.3.4
+List<int> bits2Octets(List<int> data, BigInt order) {
+  var z1 = bits2Int(data, order.bitLength);
+  // print(z1);
+  var z2 = z1 - order;
+
+  if (z2 < BigInt.zero) {
+    z2 = z1;
+  }
+
+  return numberToString(z2, order);
+}
+
+BigInt bits2Int(List<int> data, int qlen) {
+  var x = bytesToBigInt(data);
+  var l = data.length * 8;
+
+  if (l > qlen) {
+    return x >> (l - qlen);
+  }
+  return x;
+}
+
+List<int> numberToString(BigInt v, BigInt order) {
+  var l = orderlen(order);
+  // print("orderlen: $l");
+
+  var vBytes = bigIntToBytes(v);
+  vBytes =
+      Uint8List.fromList([...List.filled(l - vBytes.length, 0x00), ...vBytes]);
+
+  // print(vBytes);
+  return vBytes;
+}
+
+orderlen(BigInt order) {
+  return (order.bitLength + 7) ~/ 8;
+}
