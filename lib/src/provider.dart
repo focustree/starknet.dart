@@ -15,6 +15,14 @@ abstract class Provider {
   ///
   /// [Spec](https://github.com/starkware-libs/starknet-specs/blob/3d3b2d7ad6899f64043c0deaa8a40d3d8c9b1788/api/starknet_api_openrpc.json#L369-L419)
   Future<Call> call({required FunctionCall request, String blockId});
+
+  /// Get the value of the storage at the given address and key
+  ///
+  /// [Spec](https://github.com/starkware-libs/starknet-specs/blob/3d3b2d7ad6899f64043c0deaa8a40d3d8c9b1788/api/starknet_api_openrpc.json#L103-L149)
+  Future<GetStorage> getStorageAt(
+      {required StarknetFieldElement contractAddress,
+      required StarknetFieldElement key,
+      String blockId});
 }
 
 class JsonRpcProvider implements Provider {
@@ -44,6 +52,19 @@ class JsonRpcProvider implements Provider {
         nodeUri: nodeUri,
         method: 'starknet_call',
         params: [request, blockId]).then(Call.fromJson);
+  }
+
+  @override
+  Future<GetStorage> getStorageAt({
+    required StarknetFieldElement contractAddress,
+    required StarknetFieldElement key,
+    String blockId = 'latest',
+  }) async {
+    return callRpcEndpoint(
+      nodeUri: nodeUri,
+      method: 'starknet_getStorageAt',
+      params: [contractAddress, key, blockId],
+    ).then(GetStorage.fromJson);
   }
 
   static final devnet = JsonRpcProvider(nodeUri: devnetUri);

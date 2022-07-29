@@ -72,5 +72,35 @@ void main() {
             });
       });
     });
+
+    group('getStorageAt', () {
+      test('returns the ERC20_symbol value for a ERC20 contract', () async {
+        final response = await provider.getStorageAt(
+          contractAddress: StarknetFieldElement.fromHex(
+              '0x0335c0d0c2b25730b7ed46e0fceed2a55d7743e300f393535c88470e5e15ae64'),
+          key: getSelectorByName('ERC20_symbol'),
+        );
+
+        response.when(
+            error: (error) => fail("Shouldn't fail"),
+            result: (result) {
+              expect(result, StarknetFieldElement.fromHex("0x5a475157"));
+            });
+      });
+
+      test('reading key from invalid contract should fail', () async {
+        final response = await provider.getStorageAt(
+          contractAddress: StarknetFieldElement.fromHex(
+              '0x0000000000000000000000000000000000000000000000000000000000000000'),
+          key: getSelectorByName('ERC20_symbol'),
+        );
+
+        response.when(error: (error) {
+          expect(error.code, 20); // contract not found
+        }, result: (result) {
+          fail("Should fail");
+        });
+      });
+    });
   });
 }
