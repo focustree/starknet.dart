@@ -1,38 +1,45 @@
-import 'package:pointycastle/api.dart' as pc;
-import 'package:pointycastle/pointycastle.dart';
+import 'package:starknet/starknet.dart';
 
 abstract class Signer {
-  PublicKey getPublicKey();
-
-  Future<String> signMessage(
-      {required String typedData, required String accountAddress});
-
-  Future<String> signTransaction({
-    required List<String> transactions,
-    required List<String> transactionsDetails,
+  Signature signTransactions({
+    required List<FunctionCall> transactions,
+    int nonce,
+    required StarknetFieldElement contractAddress,
+    int maxFee,
+    required BigInt chainId,
+    String entryPointSelectorName,
   });
 }
 
 class SignerBase implements Signer {
-  late pc.AsymmetricKeyPair keyPair;
+  BigInt privateKey;
+
+  SignerBase({required this.privateKey});
 
   @override
-  pc.PublicKey getPublicKey() {
-    return keyPair.publicKey;
-  }
-
-  @override
-  Future<String> signMessage(
-      {required String typedData, required String accountAddress}) {
-    // TODO: implement signMessage
-    throw UnimplementedError();
-  }
-
-  @override
-  Future<String> signTransaction({
-    required List<String> transactions,
-    required List<String> transactionsDetails,
+  Signature signTransactions({
+    required List<FunctionCall> transactions,
+    int nonce = 0,
+    required StarknetFieldElement contractAddress,
+    int maxFee = 0,
+    required BigInt chainId,
+    String entryPointSelectorName = "__execute__",
   }) {
-    throw UnimplementedError();
+    final calldata = computeCalldata(functionCalls: transactions, nonce: nonce);
+
+    final transactionHash = calculateTransactionHashCommon(
+        txHashPrefix: TransactionHashPrefix.invoke,
+        contractAddress: contractAddress,
+        entryPointSelector: getSelectorByName(entryPointSelectorName),
+        calldata: calldata,
+        maxFee: BigInt.from(maxFee),
+        chainId: chainId);
+
+    final signature = starknet_sign(
+        privateKey: privateKey,
+        messageHash: transactionHash,
+        seed: BigInt.from(32));
+
+    return signature;
   }
 }

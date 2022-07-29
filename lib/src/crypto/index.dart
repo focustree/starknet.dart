@@ -3,6 +3,7 @@ import 'package:starknet/starknet.dart';
 export 'keccak.dart';
 export 'pedersen.dart';
 export 'pedersen_params.dart';
+export 'signature.dart';
 
 /// Calculates the transaction hash in the StarkNet network - a unique
 /// identifier of the transaction.
@@ -24,7 +25,7 @@ export 'pedersen_params.dart';
 /// Impl Ref: https://github.com/starkware-libs/cairo-lang/blob/167b28bcd940fd25ea3816204fa882a0b0a49603/src/starkware/starknet/core/os/transaction_hash/transaction_hash.py#L18
 BigInt calculateTransactionHashCommon({
   required BigInt txHashPrefix,
-  required BigInt version,
+  int version = 0,
   required BigInt contractAddress,
   required BigInt entryPointSelector,
   required List<BigInt> calldata,
@@ -35,7 +36,7 @@ BigInt calculateTransactionHashCommon({
   final calldataHash = computeHashOnElements(calldata);
   final List<BigInt> dataToHash = [
     txHashPrefix,
-    version,
+    BigInt.from(version),
     contractAddress,
     entryPointSelector,
     calldataHash,
@@ -61,7 +62,7 @@ BigInt computeHashOnElements(List<BigInt> elements) {
 }
 
 List<BigInt> computeCalldata(
-    {required List<FunctionCall> functionCalls, required BigInt nonce}) {
+    {required List<FunctionCall> functionCalls, int nonce = 0}) {
   List<BigInt> calldata = [];
   List<BigInt> calls = [];
   for (final call in functionCalls) {
@@ -78,6 +79,6 @@ List<BigInt> computeCalldata(
     ...calls,
     BigInt.from(calldata.length),
     ...calldata,
-    nonce
+    BigInt.from(nonce)
   ];
 }
