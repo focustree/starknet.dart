@@ -176,7 +176,9 @@ class _$_FunctionCall implements _FunctionCall {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_FunctionCallToJson(this);
+    return _$$_FunctionCallToJson(
+      this,
+    );
   }
 }
 
@@ -190,13 +192,11 @@ abstract class _FunctionCall implements FunctionCall {
       _$_FunctionCall.fromJson;
 
   @override
-  StarknetFieldElement get contractAddress =>
-      throw _privateConstructorUsedError;
+  StarknetFieldElement get contractAddress;
   @override
-  StarknetFieldElement get entryPointSelector =>
-      throw _privateConstructorUsedError;
+  StarknetFieldElement get entryPointSelector;
   @override
-  List<StarknetFieldElement> get calldata => throw _privateConstructorUsedError;
+  List<StarknetFieldElement> get calldata;
   @override
   @JsonKey(ignore: true)
   _$$_FunctionCallCopyWith<_$_FunctionCall> get copyWith =>

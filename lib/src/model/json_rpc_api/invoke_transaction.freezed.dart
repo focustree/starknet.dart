@@ -233,7 +233,9 @@ class _$InvokeTransactionResult implements InvokeTransactionResult {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$InvokeTransactionResultToJson(this);
+    return _$$InvokeTransactionResultToJson(
+      this,
+    );
   }
 }
 
@@ -245,8 +247,7 @@ abstract class InvokeTransactionResult implements InvokeTransaction {
   factory InvokeTransactionResult.fromJson(Map<String, dynamic> json) =
       _$InvokeTransactionResult.fromJson;
 
-  InvokeTransactionResponseResult get result =>
-      throw _privateConstructorUsedError;
+  InvokeTransactionResponseResult get result;
   @JsonKey(ignore: true)
   _$$InvokeTransactionResultCopyWith<_$InvokeTransactionResult> get copyWith =>
       throw _privateConstructorUsedError;
@@ -397,7 +398,9 @@ class _$InvokeTransactionError implements InvokeTransactionError {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$InvokeTransactionErrorToJson(this);
+    return _$$InvokeTransactionErrorToJson(
+      this,
+    );
   }
 }
 
@@ -408,7 +411,7 @@ abstract class InvokeTransactionError implements InvokeTransaction {
   factory InvokeTransactionError.fromJson(Map<String, dynamic> json) =
       _$InvokeTransactionError.fromJson;
 
-  JsonRpcApiError get error => throw _privateConstructorUsedError;
+  JsonRpcApiError get error;
   @JsonKey(ignore: true)
   _$$InvokeTransactionErrorCopyWith<_$InvokeTransactionError> get copyWith =>
       throw _privateConstructorUsedError;
@@ -610,7 +613,9 @@ class _$_InvokeTransactionRequest implements _InvokeTransactionRequest {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_InvokeTransactionRequestToJson(this);
+    return _$$_InvokeTransactionRequestToJson(
+      this,
+    );
   }
 }
 
@@ -625,13 +630,13 @@ abstract class _InvokeTransactionRequest implements InvokeTransactionRequest {
       _$_InvokeTransactionRequest.fromJson;
 
   @override
-  FunctionCall get functionInvocation => throw _privateConstructorUsedError;
+  FunctionCall get functionInvocation;
   @override
-  List<String> get signature => throw _privateConstructorUsedError;
+  List<String> get signature;
   @override
-  String get maxFee => throw _privateConstructorUsedError;
+  String get maxFee;
   @override
-  String get version => throw _privateConstructorUsedError;
+  String get version;
   @override
   @JsonKey(ignore: true)
   _$$_InvokeTransactionRequestCopyWith<_$_InvokeTransactionRequest>
@@ -762,7 +767,9 @@ class _$_InvokeTransactionResponseResult
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_InvokeTransactionResponseResultToJson(this);
+    return _$$_InvokeTransactionResponseResultToJson(
+      this,
+    );
   }
 }
 
@@ -776,7 +783,7 @@ abstract class _InvokeTransactionResponseResult
       _$_InvokeTransactionResponseResult.fromJson;
 
   @override
-  String get transaction_hash => throw _privateConstructorUsedError;
+  String get transaction_hash;
   @override
   @JsonKey(ignore: true)
   _$$_InvokeTransactionResponseResultCopyWith<

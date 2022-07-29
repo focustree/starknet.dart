@@ -230,7 +230,9 @@ class _$_PedersenParams implements _PedersenParams {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_PedersenParamsToJson(this);
+    return _$$_PedersenParamsToJson(
+      this,
+    );
   }
 }
 
@@ -247,17 +249,17 @@ abstract class _PedersenParams implements PedersenParams {
       _$_PedersenParams.fromJson;
 
   @override
-  BigInt get fieldPrime => throw _privateConstructorUsedError;
+  BigInt get fieldPrime;
   @override
-  BigInt get fieldGen => throw _privateConstructorUsedError;
+  BigInt get fieldGen;
   @override
-  BigInt get ecOrder => throw _privateConstructorUsedError;
+  BigInt get ecOrder;
   @override
-  BigInt get alpha => throw _privateConstructorUsedError;
+  BigInt get alpha;
   @override
-  BigInt get beta => throw _privateConstructorUsedError;
+  BigInt get beta;
   @override
-  List<List<BigInt>> get constantPoints => throw _privateConstructorUsedError;
+  List<List<BigInt>> get constantPoints;
   @override
   @JsonKey(ignore: true)
   _$$_PedersenParamsCopyWith<_$_PedersenParams> get copyWith =>
