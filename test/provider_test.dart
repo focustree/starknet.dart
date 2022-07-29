@@ -74,12 +74,11 @@ void main() {
     });
 
     group('getStorageAt', () {
-      test('returns the ERC20_name value for a ERC20 contract', () async {
+      test('returns the ERC20_symbol value for a ERC20 contract', () async {
         final response = await provider.getStorageAt(
           contractAddress: StarknetFieldElement.fromHex(
               '0x0335c0d0c2b25730b7ed46e0fceed2a55d7743e300f393535c88470e5e15ae64'),
-          key: StarknetFieldElement.fromHex(
-              '0xb6ce5410fca59d078ee9b2a4371a9d684c530d697c64fbef0ae6d5e8f0ac72'), // keccak256('ERC20_name') & ((1 << 250) - 1)
+          key: getSelectorByName('ERC20_symbol'),
         );
 
         response.when(
@@ -93,8 +92,7 @@ void main() {
         final response = await provider.getStorageAt(
           contractAddress: StarknetFieldElement.fromHex(
               '0x0000000000000000000000000000000000000000000000000000000000000000'),
-          key: StarknetFieldElement.fromHex(
-              '0xb6ce5410fca59d078ee9b2a4371a9d684c530d697c64fbef0ae6d5e8f0ac72'), // keccak256('ERC20_name') & ((1 << 250) - 1)
+          key: getSelectorByName('ERC20_symbol'),
         );
 
         response.when(error: (error) {
