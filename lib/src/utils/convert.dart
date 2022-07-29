@@ -1,6 +1,7 @@
 // ignore_for_file: implementation_imports
 
 import 'dart:convert';
+import 'dart:typed_data';
 
 import "package:pointycastle/src/utils.dart";
 
@@ -10,6 +11,10 @@ String bigIntToHexString(BigInt bigInt) {
 
 String bigIntToString(BigInt bigInt) {
   return utf8.decode(encodeBigInt(bigInt));
+}
+
+Uint8List bigIntToBytes(BigInt bigInt) {
+  return encodeBigInt(bigInt);
 }
 
 BigInt hexStringToBigInt(String hex) {
@@ -25,4 +30,8 @@ BigInt stringToBigInt(String string) {
 
 BigInt bytesToBigInt(List<int> bytes) {
   return decodeBigInt(bytes);
+}
+
+String bytesToHexString(List<int> bytes) {
+  return bigIntToHexString(bytesToBigInt(bytes));
 }
