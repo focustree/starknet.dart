@@ -4,22 +4,45 @@ import 'package:starknet/starknet.dart';
 
 const nbFieldPrimeBits = 251;
 final maxHash = BigInt.two.pow(nbFieldPrimeBits);
-final seed = 1;
 
 class Signature {
   final BigInt r;
   final BigInt s;
+
   Signature(this.r, this.s);
+
+  @override
+  String toString() {
+    return "Signature($r, $s)";
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return other is Signature && (r == other.r) && (s == other.s);
+  }
+
+  @override
+  int get hashCode =>
+      bytesToBigInt(bigIntToBytes(r) + bigIntToBytes(s)).hashCode;
 }
 
 /// Signs a message hash using the given private key according to Starknet specs.
 ///
 /// Spec: https://github.com/starkware-libs/cairo-lang/blob/13cef109cd811474de114925ee61fd5ac84a25eb/src/starkware/crypto/starkware/crypto/signature/signature.py#L135-L171
-Signature starknet_sign(BigInt privateKey, BigInt messageHash) {
-  assert(messageHash >= BigInt.zero && messageHash < maxHash);
+Signature starknet_sign(
+    {required BigInt privateKey, required BigInt messageHash, BigInt? seed}) {
+  assert(messageHash >= BigInt.zero && messageHash < maxHash,
+      "Message not signable.");
 
   while (true) {
-    final k = starknet_generateK(privateKey, messageHash);
+    final k = starknet_generateK(
+        privateKey: privateKey, messageHash: messageHash, seed: seed);
+
+    if (seed == null) {
+      seed = BigInt.one;
+    } else {
+      seed += BigInt.one;
+    }
 
     final x = (generatorPoint * k)!.x;
 
@@ -48,26 +71,40 @@ Signature starknet_sign(BigInt privateKey, BigInt messageHash) {
 /// Generates a k value according to Starknet specs.
 ///
 /// Spec: https://github.com/starkware-libs/cairo-lang/blob/13cef109cd811474de114925ee61fd5ac84a25eb/src/starkware/crypto/starkware/crypto/signature/signature.py#L115-L132
-BigInt starknet_generateK(BigInt privateKey, BigInt messageHash) {
+BigInt starknet_generateK(
+    {required BigInt privateKey, required BigInt messageHash, BigInt? seed}) {
   // Pad the message hash, for consistency with the elliptic.js library.
   final bytesLength = messageHash.bitLength % 8;
   if (bytesLength >= 1 && bytesLength <= 4 && messageHash.bitLength >= 248) {
     messageHash *= BigInt.from(16);
   }
 
-  return generateK(pedersenParams.ecOrder, privateKey, crypto.sha256,
-      bigIntToBytes(messageHash));
+  final extraEntropy = seed == null ? Uint8List(0) : bigIntToBytes(seed);
+
+  return generateK(
+      order: pedersenParams.ecOrder,
+      privateKey: privateKey,
+      hashFunction: crypto.sha256,
+      data: bigIntToBytes(messageHash),
+      extraEntropy: extraEntropy);
 }
 
 /// Generates a k value, the nonce for DSA.
 ///
 /// Spec: https://tools.ietf.org/html/rfc6979#section-3.2
 BigInt generateK(
-    BigInt order, BigInt privateKey, crypto.Hash hashFunction, List<int> data) {
+    {required BigInt order,
+    required BigInt privateKey,
+    required crypto.Hash hashFunction,
+    required List<int> data,
+    int retryGen = 0,
+    List<int> extraEntropy = const []}) {
   final qlen = order.bitLength;
   final holen = 32; // digest length is 256 bits for sha256
   final rolen = orderlen(order);
-  var bx = numberToString(privateKey, order) + bits2Octets(data, order);
+  var bx = numberToString(privateKey, order) +
+      bits2Octets(data, order) +
+      extraEntropy;
 
   // Step B
   var v = List<int>.filled(holen, 0x01);
@@ -101,7 +138,10 @@ BigInt generateK(
     var secret = bits2Int(t, qlen);
 
     if (secret >= BigInt.one && secret < order) {
-      return secret;
+      if (retryGen <= 0) {
+        return secret;
+      }
+      retryGen -= 1;
     }
 
     k = crypto.Hmac(hashFunction, k).convert(v + [0x00]).bytes;

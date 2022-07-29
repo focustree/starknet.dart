@@ -3,13 +3,12 @@ import 'package:test/test.dart';
 
 void main() {
   group('calculateTransactionHashCommon', () {
+    // Values come from starknet.js unit tests:
+    // https://github.com/0xs34n/starknet.js/blob/2c08e5d8fe80469ba41222767193823b3d516536/__tests__/utils/ellipticalCurve.test.ts#L40
     test('computes the right transaction hash', () {
-      // Values come from starknet.js unit tests:
-      // https://github.com/0xs34n/starknet.js/blob/2c08e5d8fe80469ba41222767193823b3d516536/__tests__/utils/ellipticalCurve.test.ts#L40
       expect(
           calculateTransactionHashCommon(
               txHashPrefix: TransactionHashPrefix.invoke,
-              version: BigInt.zero,
               // Note: the address is larger than a field element, so we must use BigInt
               contractAddress: BigInt.parse(
                   '2007067565103695475819120104515800035851923905855118399071773059478896040938'),
