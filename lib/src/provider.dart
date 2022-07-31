@@ -1,3 +1,5 @@
+import 'package:starknet/src/model/json_rpc_api/get_transaction.dart';
+import 'package:starknet/src/model/json_rpc_api/get_transaction_receipt.dart';
 import 'package:starknet/starknet.dart';
 
 abstract class Provider {
@@ -23,6 +25,17 @@ abstract class Provider {
       {required StarknetFieldElement contractAddress,
       required StarknetFieldElement key,
       String blockId});
+
+  /// Gets the details and status of a submitted transaction from hash of a transaction.
+  ///
+  /// [Spec](https://github.com/starkware-libs/starknet-specs/blob/30e5bafcda60c31b5fb4021b4f5ddcfc18d2ff7d/api/starknet_api_openrpc.json#L150-L175)
+  Future<GetTransaction> getTransactionByHash(StarknetFieldElement txnHash);
+
+  /// Gets the details and status of a submitted transaction from hash of a transaction.
+  ///
+  /// [Spec](https://github.com/starkware-libs/starknet-specs/blob/30e5bafcda60c31b5fb4021b4f5ddcfc18d2ff7d/api/starknet_api_openrpc.json#L214-L239)
+  Future<GetTransactionReceipt> getTransactionReceipt(
+      StarknetFieldElement txnHash);
 }
 
 class JsonRpcProvider implements Provider {
@@ -65,6 +78,25 @@ class JsonRpcProvider implements Provider {
       method: 'starknet_getStorageAt',
       params: [contractAddress, key, blockId],
     ).then(GetStorage.fromJson);
+  }
+
+  @override
+  Future<GetTransaction> getTransactionByHash(StarknetFieldElement txnHash) {
+    return callRpcEndpoint(
+      nodeUri: nodeUri,
+      method: 'starknet_getTransactionByHash',
+      params: [txnHash],
+    ).then(GetTransaction.fromJson);
+  }
+
+  @override
+  Future<GetTransactionReceipt> getTransactionReceipt(
+      StarknetFieldElement txnHash) {
+    return callRpcEndpoint(
+      nodeUri: nodeUri,
+      method: 'starknet_getTransactionReceipt',
+      params: [txnHash],
+    ).then(GetTransactionReceipt.fromJson);
   }
 
   static final devnet = JsonRpcProvider(nodeUri: devnetUri);

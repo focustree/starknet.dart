@@ -102,5 +102,71 @@ void main() {
         });
       });
     });
+
+    group('getTransactionByHash', () {
+      test('returns the transaction details based on the transaction hash',
+          () async {
+        final response = await provider.getTransactionByHash(
+          StarknetFieldElement.fromHex(
+              '0x54633821b88433a6ecab8e849beebdcccd353f3306d446830dadc42ef35046e'),
+        );
+
+        response.when(
+            error: (error) => fail("Should fail"),
+            result: (result) {
+              expect(
+                  result.txnHash,
+                  StarknetFieldElement.fromHex(
+                      "0x54633821b88433a6ecab8e849beebdcccd353f3306d446830dadc42ef35046e"));
+            });
+      });
+
+      test('reading transaction from invalid transaction hash should fail',
+          () async {
+        final response = await provider.getTransactionByHash(
+          StarknetFieldElement.fromHex(
+              '0x000000000000000000000000000000000000000000000000000000000000000'),
+        );
+
+        response.when(
+            error: (error) => expect(error.code, 25),
+            result: (result) => fail('Should fail'));
+      });
+    });
+
+    group('getTransactionReceipt', () {
+      test('returns the transaction receipt based on the transaction hash',
+          () async {
+        final response = await provider.getTransactionReceipt(
+          StarknetFieldElement.fromHex(
+              '0x136e5212e37cd44606058fc155d725a8b865b2fba4874f650f524d22e1312b9'),
+        );
+
+        response.when(
+            error: (error) => fail("Should fail"),
+            result: (result) {
+              expect(
+                  result.txnHash,
+                  StarknetFieldElement.fromHex(
+                      '0x136e5212e37cd44606058fc155d725a8b865b2fba4874f650f524d22e1312b9'));
+
+              expect(result.actualFee,
+                  StarknetFieldElement.fromHex('0x22426b1c1f16'));
+            });
+      });
+
+      test(
+          'reading transaction receipt from invalid transaction hash should fail',
+          () async {
+        final response = await provider.getTransactionByHash(
+          StarknetFieldElement.fromHex(
+              '0x000000000000000000000000000000000000000000000000000000000000000'),
+        );
+
+        response.when(
+            error: (error) => expect(error.code, 25),
+            result: (result) => fail('Should fail'));
+      });
+    });
   });
 }
