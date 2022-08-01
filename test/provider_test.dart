@@ -105,7 +105,7 @@ void main() {
       test('returns the transaction details based on the transaction hash',
           () async {
         final response = await provider.getTransactionByHash(
-          StarknetFieldElement.fromHex(
+          StarknetFieldElement.fromHexString(
               '0x54633821b88433a6ecab8e849beebdcccd353f3306d446830dadc42ef35046e'),
         );
 
@@ -114,7 +114,7 @@ void main() {
             result: (result) {
               expect(
                   result.txnHash,
-                  StarknetFieldElement.fromHex(
+                  StarknetFieldElement.fromHexString(
                       "0x54633821b88433a6ecab8e849beebdcccd353f3306d446830dadc42ef35046e"));
             });
       });
@@ -122,7 +122,7 @@ void main() {
       test('reading transaction from invalid transaction hash should fail',
           () async {
         final response = await provider.getTransactionByHash(
-          StarknetFieldElement.fromHex(
+          StarknetFieldElement.fromHexString(
               '0x000000000000000000000000000000000000000000000000000000000000000'),
         );
 
@@ -136,7 +136,7 @@ void main() {
       test('returns the transaction receipt based on the transaction hash',
           () async {
         final response = await provider.getTransactionReceipt(
-          StarknetFieldElement.fromHex(
+          StarknetFieldElement.fromHexString(
               '0x136e5212e37cd44606058fc155d725a8b865b2fba4874f650f524d22e1312b9'),
         );
 
@@ -145,11 +145,11 @@ void main() {
             result: (result) {
               expect(
                   result.txnHash,
-                  StarknetFieldElement.fromHex(
+                  StarknetFieldElement.fromHexString(
                       '0x136e5212e37cd44606058fc155d725a8b865b2fba4874f650f524d22e1312b9'));
 
               expect(result.actualFee,
-                  StarknetFieldElement.fromHex('0x22426b1c1f16'));
+                  StarknetFieldElement.fromHexString('0x22426b1c1f16'));
             });
       });
 
@@ -157,7 +157,7 @@ void main() {
           'reading transaction receipt from invalid transaction hash should fail',
           () async {
         final response = await provider.getTransactionByHash(
-          StarknetFieldElement.fromHex(
+          StarknetFieldElement.fromHexString(
               '0x000000000000000000000000000000000000000000000000000000000000000'),
         );
 
@@ -174,7 +174,7 @@ void main() {
           'returns unimplemented method error for getTransactionByBlockIdAndIndex',
           () async {
         BlockId blockId = BlockId.blockHash(
-            blockHash: StarknetFieldElement.fromHex(
+            blockHash: StarknetFieldElement.fromHexString(
                 '0x4b7ca197f1e80a4503f122a8f4d96d71c6467e92d1025f2216cc480b317cc75'));
 
         final response =
