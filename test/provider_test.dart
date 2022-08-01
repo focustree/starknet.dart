@@ -11,26 +11,6 @@ void main() {
       provider = getJsonRpcProvider();
     });
 
-    // test('constructor initializes class porperties properly', () {
-    //   expect(provider.baseURL, hasLength(allOf(isPositive, isNot(0))));
-    // });
-
-    // group('getBlock', () {
-    //   test('returns a strictly positive block number', () async {
-    //     final block = await provider.getBlock();
-    //     expect(block.blockNumber, allOf([isPositive, isNot(0)]));
-    //   });
-
-    //   // test('returns an object that matches 100% the API response', () async {
-    //   //   final url = Uri.parse('${provider.feederGatewayURL}/get_block');
-    //   //   final response = await get(url);
-    //   //   final block = await provider.getBlock();
-    //   //   final expected = json.decode(response.body);
-    //   //   final actual = block.toJson();
-    //   //   expect(actual, equals(expected));
-    //   // });
-    // });
-
     group('blockNumber', () {
       test('returns a strictly positive block number', () async {
         final blockNumber = await provider.blockNumber();
