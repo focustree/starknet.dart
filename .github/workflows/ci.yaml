@@ -55,15 +55,16 @@ jobs:
       - id: install
         name: Install dependencies
         run: dart pub get
-      - name: Run VM tests
-        run: dart test --platform vm
+      - name: Run tests
+        run: dart test
         if: always() && steps.install.outcome == 'success'
       - name: Run Chrome tests
         run: dart test --platform chrome
-        if: always() && steps.install.outcome == 'success'
+        if: always() && steps.install.outcome == 'success' && github.event_name == 'push' && github.ref == 'refs/heads/main'
 
   package-analysis:
     runs-on: ubuntu-latest
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
     steps:
       - uses: actions/checkout@v2
       - uses: axel-op/dart-package-analyzer@v3
@@ -73,7 +74,7 @@ jobs:
   publish:
     needs: test
     runs-on: ubuntu-latest
-    if: ${{ github.event_name == 'push'  && github.ref == 'refs/heads/main' }}
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
     steps:
       - name: "Checkout"
         uses: actions/checkout@v2
