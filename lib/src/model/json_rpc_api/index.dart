@@ -9,3 +9,4 @@ export 'get_transaction.dart';
 export 'get_transaction_receipt.dart';
 export 'invoke_transaction.dart';
 export 'pending_transactions.dart';
+export 'protocol_version.dart';
