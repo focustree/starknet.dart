@@ -179,6 +179,21 @@ void main() {
       });
     });
 
+    group('syncing', () {
+      test('returns the state of synchronized node', () async {
+        final response = await provider.syncing();
+
+        response.when(
+            error: (error) => fail("Shouldn't fail"),
+            synchronized: (SyncStatus result) {
+              expect(result.currentBlockHash, isNotNull);
+            },
+            notSynchronized: (bool result) {
+              expect(result, isFalse);
+            });
+      });
+    });
+
     // Tests for unimplemented methods
 
     group('starknet_getTransactionByBlockIdAndIndex', () {

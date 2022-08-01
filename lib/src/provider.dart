@@ -57,6 +57,11 @@ abstract class Provider {
   ///
   /// [Spec](https://github.com/starkware-libs/starknet-specs/blob/30e5bafcda60c31b5fb4021b4f5ddcfc18d2ff7d/api/starknet_api_openrpc.json#L536-L548)
   Future<ProtocolVersion> protocolVersion();
+
+  /// Gets the current starknet protocol version identifier, as supported by this sequencer.
+  ///
+  /// [Spec](https://github.com/starkware-libs/starknet-specs/blob/30e5bafcda60c31b5fb4021b4f5ddcfc18d2ff7d/api/starknet_api_openrpc.json#L549-L569)
+  Future<Syncing> syncing();
 }
 
 class JsonRpcProvider implements Provider {
@@ -156,6 +161,15 @@ class JsonRpcProvider implements Provider {
       method: 'starknet_protocolVersion',
       params: [],
     ).then(ProtocolVersion.fromJson);
+  }
+
+  @override
+  Future<Syncing> syncing() {
+    return callRpcEndpoint(
+      nodeUri: nodeUri,
+      method: 'starknet_syncing',
+      params: [],
+    ).then(Syncing.fromJson);
   }
 
   static final devnet = JsonRpcProvider(nodeUri: devnetUri);
