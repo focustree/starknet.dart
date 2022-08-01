@@ -23,11 +23,15 @@ class StarknetFieldElement implements BigInt {
     return StarknetFieldElement(BigInt.from(int));
   }
 
-  factory StarknetFieldElement.fromString(String value, {int? radix = 10}) {
+  factory StarknetFieldElement.fromIntString(String value, {int? radix = 10}) {
     return StarknetFieldElement(BigInt.parse(value, radix: radix));
   }
 
-  factory StarknetFieldElement.fromHex(String hex) {
+  factory StarknetFieldElement.fromString(String value) {
+    return StarknetFieldElement(stringToBigInt(value));
+  }
+
+  factory StarknetFieldElement.fromHexString(String hex) {
     return StarknetFieldElement(hexStringToBigInt(hex));
   }
 
@@ -40,7 +44,7 @@ class StarknetFieldElement implements BigInt {
   ///////////////////
 
   factory StarknetFieldElement.fromJson(String json) {
-    return StarknetFieldElement.fromHex(json);
+    return StarknetFieldElement.fromHexString(json);
   }
 
   String toJson() {
@@ -49,7 +53,7 @@ class StarknetFieldElement implements BigInt {
 
   @override
   String toString() {
-    return toJson();
+    return "StarknetFieldElement(${bigInt.toString()})";
   }
 
   ////////////
@@ -225,7 +229,8 @@ class StarknetFieldElement implements BigInt {
 
   @override
   bool operator ==(Object other) {
-    return other is StarknetFieldElement && hashCode == other.hashCode;
+    return other is StarknetFieldElement &&
+        (bigInt - other.bigInt) == BigInt.zero;
   }
 
   @override

@@ -35,12 +35,11 @@ void main() {
     });
 
     group('call', () {
-      test(
-          'returns the right name when calling the `name` method on Briq contract',
-          () async {
+      test('calls a read-only method with empty calldata', () async {
         final response = await provider.call(
             request: FunctionCall(
-                contractAddress: StarknetFieldElement.fromHex(
+                // Briq NFT contract address
+                contractAddress: StarknetFieldElement.fromHexString(
                     '0x0266b1276d23ffb53d99da3f01be7e29fa024dd33cd7f7b1eb7a46c67891c9d0'),
                 entryPointSelector: getSelectorByName('name'),
                 calldata: []));
@@ -48,7 +47,26 @@ void main() {
             error: (error) => fail("Shouldn't fail"),
             result: (result) {
               expect(result, hasLength(1));
-              expect(result[0], stringToBigInt('briq'));
+              expect(result[0], StarknetFieldElement.fromString('briq'));
+            });
+      });
+      test('calls a read-only method with non-empty calldata', () async {
+        final response = await provider.call(
+            request: FunctionCall(
+                // Starknet ID contract address
+                contractAddress: StarknetFieldElement.fromHexString(
+                    '0x033233531959c1da39c28daf337e25e2deadda80ce988290306ffabcd735ccbd'),
+                entryPointSelector: getSelectorByName('balance_of'),
+                calldata: [
+              // Address owning 5 Starknet IDs
+              StarknetFieldElement.fromHexString(
+                  '0x0367c0c4603a29Bc5aCA8E07C6A2776D7C0d325945aBB4f772f448b345Ca4Cf7')
+            ]));
+        response.when(
+            error: (error) => fail("Shouldn't fail"),
+            result: (result) {
+              expect(result, hasLength(2));
+              expect(result[0], StarknetFieldElement.fromInt(5));
             });
       });
     });
@@ -56,7 +74,7 @@ void main() {
     group('getStorageAt', () {
       test('returns the ERC20_symbol value for a ERC20 contract', () async {
         final response = await provider.getStorageAt(
-          contractAddress: StarknetFieldElement.fromHex(
+          contractAddress: StarknetFieldElement.fromHexString(
               '0x0335c0d0c2b25730b7ed46e0fceed2a55d7743e300f393535c88470e5e15ae64'),
           key: getSelectorByName('ERC20_symbol'),
         );
@@ -64,13 +82,13 @@ void main() {
         response.when(
             error: (error) => fail("Shouldn't fail"),
             result: (result) {
-              expect(result, StarknetFieldElement.fromHex("0x5a475157"));
+              expect(result, StarknetFieldElement.fromHexString("0x5a475157"));
             });
       });
 
       test('reading key from invalid contract should fail', () async {
         final response = await provider.getStorageAt(
-          contractAddress: StarknetFieldElement.fromHex(
+          contractAddress: StarknetFieldElement.fromHexString(
               '0x0000000000000000000000000000000000000000000000000000000000000000'),
           key: getSelectorByName('ERC20_symbol'),
         );

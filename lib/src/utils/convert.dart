@@ -4,6 +4,7 @@ import 'dart:convert';
 import 'dart:typed_data';
 
 import "package:pointycastle/src/utils.dart";
+import 'package:starknet/starknet.dart';
 
 String bigIntToHexString(BigInt bigInt) {
   return '0x${bigInt.toRadixString(16)}';
