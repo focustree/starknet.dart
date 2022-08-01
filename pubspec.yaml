@@ -2,7 +2,7 @@ name: starknet
 description: >
   The Dart SDK for StarkNet.
   It implements all the JSON-RPC endpoints plus higher level abstractions to deal with smart contracts.
-version: 0.0.1
+version: 0.0.2
 repository: https://github.com/gabsn/starknet.dart
 
 environment:
