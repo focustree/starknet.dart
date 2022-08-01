@@ -81,21 +81,22 @@ class JsonRpcProvider implements Provider {
   }
 
   @override
-  Future<GetTransaction> getTransactionByHash(StarknetFieldElement txnHash) {
+  Future<GetTransaction> getTransactionByHash(
+      StarknetFieldElement transactionHash) {
     return callRpcEndpoint(
       nodeUri: nodeUri,
       method: 'starknet_getTransactionByHash',
-      params: [txnHash],
+      params: [transactionHash],
     ).then(GetTransaction.fromJson);
   }
 
   @override
   Future<GetTransactionReceipt> getTransactionReceipt(
-      StarknetFieldElement txnHash) {
+      StarknetFieldElement transactionHash) {
     return callRpcEndpoint(
       nodeUri: nodeUri,
       method: 'starknet_getTransactionReceipt',
-      params: [txnHash],
+      params: [transactionHash],
     ).then(GetTransactionReceipt.fromJson);
   }
 
