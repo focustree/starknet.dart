@@ -63,10 +63,13 @@ abstract class Provider {
   /// [Spec](https://github.com/starkware-libs/starknet-specs/blob/30e5bafcda60c31b5fb4021b4f5ddcfc18d2ff7d/api/starknet_api_openrpc.json#L549-L569)
   Future<Syncing> syncing();
 
-  /// Gets the latest nonce associated with the given address.
+  /// Gets the nonce associated with the given address in the given block
   ///
-  /// [Spec](https://github.com/starkware-libs/starknet-specs/blob/30e5bafcda60c31b5fb4021b4f5ddcfc18d2ff7d/api/starknet_api_openrpc.json#L628-L653)
-  Future<GetNonce> getNonce();
+  /// [Spec](https://github.com/starkware-libs/starknet-specs/blob/5cafa4cbaf5e4596bf309dfbde1bd0c4fa2ce1ce/api/starknet_api_openrpc.json#L628-L664)
+  Future<GetNonce> getNonce(
+    BlockId blockId,
+    StarknetFieldElement contractAddress,
+  );
 }
 
 class JsonRpcProvider implements Provider {
@@ -178,11 +181,14 @@ class JsonRpcProvider implements Provider {
   }
 
   @override
-  Future<GetNonce> getNonce() {
+  Future<GetNonce> getNonce(
+    BlockId blockId,
+    StarknetFieldElement contractAddress,
+  ) {
     return callRpcEndpoint(
       nodeUri: nodeUri,
       method: 'starknet_getNonce',
-      params: [],
+      params: [blockId, contractAddress],
     ).then(GetNonce.fromJson);
   }
 

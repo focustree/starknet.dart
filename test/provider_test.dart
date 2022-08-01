@@ -251,7 +251,13 @@ void main() {
 
     group('starknet_getNonce', () {
       test('returns unimplemented method error for getNonce', () async {
-        final response = await provider.getNonce();
+        final response = await provider.getNonce(
+          BlockId.blockHash(
+              blockHash: StarknetFieldElement.fromHexString(
+                  '0x3e506ab93bb22e483c5ddeee5db90a815cced1189805630673bbf86dbce1d79')),
+          StarknetFieldElement.fromHexString(
+              '0x7cda35873823b661b560e5eb5fa901d2190512ea2006b7d504082ace819094f'),
+        );
 
         response.when(
             error: (error) {
