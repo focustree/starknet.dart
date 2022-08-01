@@ -1,7 +1,7 @@
-name: Dart CI
+name: CI
 
+# Run on PRs and pushes to the default branch.
 on:
-  # Run on PRs and pushes to the default branch.
   push:
     branches: [main]
   pull_request:
@@ -61,3 +61,11 @@ jobs:
       - name: Run Chrome tests
         run: dart test --platform chrome
         if: always() && steps.install.outcome == 'success'
+
+  package-analysis:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: axel-op/dart-package-analyzer@v3
+        with:
+          githubToken: ${{ secrets.GITHUB_TOKEN }}
