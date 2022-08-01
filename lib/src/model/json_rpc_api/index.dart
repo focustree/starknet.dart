@@ -4,6 +4,7 @@ export 'call.dart';
 export 'chain_id.dart';
 export 'function_call.dart';
 export 'get_block_with_tx_hashes.dart';
+export 'get_nonce.dart';
 export 'get_storage.dart';
 export 'get_transaction.dart';
 export 'get_transaction_receipt.dart';
