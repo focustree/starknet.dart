@@ -1,4 +1,5 @@
 import 'package:starknet/src/model/json_rpc_api/block_id.dart';
+import 'package:starknet/src/model/json_rpc_api/chain_id.dart';
 import 'package:starknet/src/model/json_rpc_api/get_transaction.dart';
 import 'package:starknet/src/model/json_rpc_api/get_transaction_receipt.dart';
 import 'package:starknet/starknet.dart';
@@ -45,6 +46,11 @@ abstract class Provider {
   /// [Spec](https://github.com/starkware-libs/starknet-specs/blob/30e5bafcda60c31b5fb4021b4f5ddcfc18d2ff7d/api/starknet_api_openrpc.json#L214-L239)
   Future<GetTransactionReceipt> getTransactionReceipt(
       StarknetFieldElement txnHash);
+
+  /// Gets the currently configured StarkNet chain id.
+  ///
+  /// [Spec](https://github.com/starkware-libs/starknet-specs/blob/30e5bafcda60c31b5fb4021b4f5ddcfc18d2ff7d/api/starknet_api_openrpc.json#L509-L520)
+  Future<ChainId> chainId();
 }
 
 class JsonRpcProvider implements Provider {
@@ -117,6 +123,15 @@ class JsonRpcProvider implements Provider {
       method: 'starknet_getTransactionReceipt',
       params: [transactionHash],
     ).then(GetTransactionReceipt.fromJson);
+  }
+
+  @override
+  Future<ChainId> chainId() {
+    return callRpcEndpoint(
+      nodeUri: nodeUri,
+      method: 'starknet_chainId',
+      params: [],
+    ).then(ChainId.fromJson);
   }
 
   static final devnet = JsonRpcProvider(nodeUri: devnetUri);

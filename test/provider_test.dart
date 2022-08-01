@@ -110,7 +110,7 @@ void main() {
         );
 
         response.when(
-            error: (error) => fail("Should fail"),
+            error: (error) => fail("Shouldn't fail"),
             result: (result) {
               expect(
                   result.txnHash,
@@ -141,7 +141,7 @@ void main() {
         );
 
         response.when(
-            error: (error) => fail("Should fail"),
+            error: (error) => fail("Shouldn't fail"),
             result: (result) {
               expect(
                   result.txnHash,
@@ -163,7 +163,19 @@ void main() {
 
         response.when(
             error: (error) => expect(error.code, 25),
-            result: (result) => fail('Should fail'));
+            result: (result) => fail("Shouldn't fail"));
+      });
+    });
+
+    group('chainId', () {
+      test('returns the current StarkNet chain id', () async {
+        final response = await provider.chainId();
+
+        response.when(
+            error: (error) => fail("Shouldn't fail"),
+            result: (result) {
+              expect(result, isNotEmpty);
+            });
       });
     });
 
