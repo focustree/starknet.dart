@@ -168,5 +168,29 @@ void main() {
             result: (result) => fail('Should fail'));
       });
     });
+
+    // Tests for unimplemented methods
+
+    group('starknet_getTransactionByBlockIdAndIndex', () {
+      test(
+          'returns unimplemented method error for getTransactionByBlockIdAndIndex',
+          () async {
+        BlockId blockId = BlockId.blockHash(
+            blockHash: StarknetFieldElement.fromHex(
+                '0x4b7ca197f1e80a4503f122a8f4d96d71c6467e92d1025f2216cc480b317cc75'));
+
+        final response =
+            await provider.getTransactionByBlockIdAndIndex(blockId, 4);
+        response.when(
+            result: (_) => fail('Expected to return an unimplemented error'),
+            error: (error) {
+              expect(error.code, equals(-32601));
+              expect(
+                  error.message,
+                  contains(
+                      'method \'starknet_getTransactionByBlockIdAndIndex\' not found'));
+            });
+      });
+    });
   });
 }

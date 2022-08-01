@@ -1,3 +1,4 @@
+import 'package:starknet/src/model/json_rpc_api/block_id.dart';
 import 'package:starknet/src/model/json_rpc_api/get_transaction.dart';
 import 'package:starknet/src/model/json_rpc_api/get_transaction_receipt.dart';
 import 'package:starknet/starknet.dart';
@@ -30,6 +31,14 @@ abstract class Provider {
   ///
   /// [Spec](https://github.com/starkware-libs/starknet-specs/blob/30e5bafcda60c31b5fb4021b4f5ddcfc18d2ff7d/api/starknet_api_openrpc.json#L150-L175)
   Future<GetTransaction> getTransactionByHash(StarknetFieldElement txnHash);
+
+  /// Gets the details and status of a submitted transaction from block id and index.
+  ///
+  /// [Spec](https://github.com/starkware-libs/starknet-specs/blob/30e5bafcda60c31b5fb4021b4f5ddcfc18d2ff7d/api/starknet_api_openrpc.json#L176-L213)
+  Future<GetTransaction> getTransactionByBlockIdAndIndex(
+    BlockId blockId,
+    int index,
+  );
 
   /// Gets the details and status of a submitted transaction from hash of a transaction.
   ///
@@ -87,6 +96,16 @@ class JsonRpcProvider implements Provider {
       nodeUri: nodeUri,
       method: 'starknet_getTransactionByHash',
       params: [transactionHash],
+    ).then(GetTransaction.fromJson);
+  }
+
+  @override
+  Future<GetTransaction> getTransactionByBlockIdAndIndex(
+      BlockId blockId, int index) {
+    return callRpcEndpoint(
+      nodeUri: nodeUri,
+      method: 'starknet_getTransactionByBlockIdAndIndex',
+      params: [blockId, index],
     ).then(GetTransaction.fromJson);
   }
 
