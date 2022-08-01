@@ -31,19 +31,19 @@ Call _$CallFromJson(Map<String, dynamic> json) {
 mixin _$Call {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(List<BigInt> result) result,
+    required TResult Function(List<StarknetFieldElement> result) result,
     required TResult Function(JsonRpcApiError error) error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(List<BigInt> result)? result,
+    TResult Function(List<StarknetFieldElement> result)? result,
     TResult Function(JsonRpcApiError error)? error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(List<BigInt> result)? result,
+    TResult Function(List<StarknetFieldElement> result)? result,
     TResult Function(JsonRpcApiError error)? error,
     required TResult orElse(),
   }) =>
@@ -90,7 +90,7 @@ abstract class _$$CallResultCopyWith<$Res> {
   factory _$$CallResultCopyWith(
           _$CallResult value, $Res Function(_$CallResult) then) =
       __$$CallResultCopyWithImpl<$Res>;
-  $Res call({List<BigInt> result});
+  $Res call({List<StarknetFieldElement> result});
 }
 
 /// @nodoc
@@ -111,7 +111,7 @@ class __$$CallResultCopyWithImpl<$Res> extends _$CallCopyWithImpl<$Res>
       result: result == freezed
           ? _value._result
           : result // ignore: cast_nullable_to_non_nullable
-              as List<BigInt>,
+              as List<StarknetFieldElement>,
     ));
   }
 }
@@ -119,16 +119,17 @@ class __$$CallResultCopyWithImpl<$Res> extends _$CallCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$CallResult implements CallResult {
-  const _$CallResult({required final List<BigInt> result, final String? $type})
+  const _$CallResult(
+      {required final List<StarknetFieldElement> result, final String? $type})
       : _result = result,
         $type = $type ?? 'result';
 
   factory _$CallResult.fromJson(Map<String, dynamic> json) =>
       _$$CallResultFromJson(json);
 
-  final List<BigInt> _result;
+  final List<StarknetFieldElement> _result;
   @override
-  List<BigInt> get result {
+  List<StarknetFieldElement> get result {
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_result);
   }
@@ -162,7 +163,7 @@ class _$CallResult implements CallResult {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(List<BigInt> result) result,
+    required TResult Function(List<StarknetFieldElement> result) result,
     required TResult Function(JsonRpcApiError error) error,
   }) {
     return result(this.result);
@@ -171,7 +172,7 @@ class _$CallResult implements CallResult {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(List<BigInt> result)? result,
+    TResult Function(List<StarknetFieldElement> result)? result,
     TResult Function(JsonRpcApiError error)? error,
   }) {
     return result?.call(this.result);
@@ -180,7 +181,7 @@ class _$CallResult implements CallResult {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(List<BigInt> result)? result,
+    TResult Function(List<StarknetFieldElement> result)? result,
     TResult Function(JsonRpcApiError error)? error,
     required TResult orElse(),
   }) {
@@ -223,17 +224,20 @@ class _$CallResult implements CallResult {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$CallResultToJson(this);
+    return _$$CallResultToJson(
+      this,
+    );
   }
 }
 
 abstract class CallResult implements Call {
-  const factory CallResult({required final List<BigInt> result}) = _$CallResult;
+  const factory CallResult({required final List<StarknetFieldElement> result}) =
+      _$CallResult;
 
   factory CallResult.fromJson(Map<String, dynamic> json) =
       _$CallResult.fromJson;
 
-  List<BigInt> get result => throw _privateConstructorUsedError;
+  List<StarknetFieldElement> get result;
   @JsonKey(ignore: true)
   _$$CallResultCopyWith<_$CallResult> get copyWith =>
       throw _privateConstructorUsedError;
@@ -320,7 +324,7 @@ class _$CallError implements CallError {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(List<BigInt> result) result,
+    required TResult Function(List<StarknetFieldElement> result) result,
     required TResult Function(JsonRpcApiError error) error,
   }) {
     return error(this.error);
@@ -329,7 +333,7 @@ class _$CallError implements CallError {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(List<BigInt> result)? result,
+    TResult Function(List<StarknetFieldElement> result)? result,
     TResult Function(JsonRpcApiError error)? error,
   }) {
     return error?.call(this.error);
@@ -338,7 +342,7 @@ class _$CallError implements CallError {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(List<BigInt> result)? result,
+    TResult Function(List<StarknetFieldElement> result)? result,
     TResult Function(JsonRpcApiError error)? error,
     required TResult orElse(),
   }) {
@@ -381,7 +385,9 @@ class _$CallError implements CallError {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$CallErrorToJson(this);
+    return _$$CallErrorToJson(
+      this,
+    );
   }
 }
 
@@ -390,7 +396,7 @@ abstract class CallError implements Call {
 
   factory CallError.fromJson(Map<String, dynamic> json) = _$CallError.fromJson;
 
-  JsonRpcApiError get error => throw _privateConstructorUsedError;
+  JsonRpcApiError get error;
   @JsonKey(ignore: true)
   _$$CallErrorCopyWith<_$CallError> get copyWith =>
       throw _privateConstructorUsedError;

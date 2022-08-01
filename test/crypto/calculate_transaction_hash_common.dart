@@ -15,11 +15,11 @@ void main() {
               entryPointSelector: getSelectorByName('__execute__'),
               calldata: computeCalldata(functionCalls: [
                 FunctionCall(
-                    contractAddress: StarknetFieldElement.fromString(
+                    contractAddress: StarknetFieldElement.fromIntString(
                         '3290661298119599979891444342541795905081168856323302956721669397616389152866'),
                     entryPointSelector: getSelectorByName('set_number'),
                     calldata: [StarknetFieldElement.fromInt(47)])
-              ], nonce: BigInt.from(3)),
+              ], nonce: 3),
               maxFee: BigInt.zero,
               chainId: StarknetChainId.testNet),
           equals(hexStringToBigInt(

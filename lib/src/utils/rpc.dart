@@ -17,5 +17,7 @@ Future<Map<String, dynamic>> callRpcEndpoint(
   final response =
       await http.post(nodeUri, headers: headers, body: json.encode(body));
 
-  return json.decode(response.body);
+  final jsonResponse = json.decode(response.body);
+
+  return jsonResponse;
 }

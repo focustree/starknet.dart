@@ -6,12 +6,11 @@ import 'package:pointycastle/src/utils.dart';
 void main() {
   group('starknetKeccak', () {
     test('computes the right hash value', () {
-      final hash = starknetKeccak(ascii.encode('test'));
-      expect(
-          hash,
-          equals(StarknetFieldElement.fromHex(
-            '0x22ff5f21f0b81b113e63f7db6da94fedef11b2119b4088b89664fb9a3cb658',
-          )));
+      final actualHash = starknetKeccak(ascii.encode('test'));
+      final expectedHash = StarknetFieldElement.fromHexString(
+        '0x22ff5f21f0b81b113e63f7db6da94fedef11b2119b4088b89664fb9a3cb658',
+      );
+      expect(actualHash, equals(expectedHash));
     });
     test('makes sure the produced hash fits a field element (<=250 digits)',
         () {
@@ -29,12 +28,12 @@ void main() {
     test('computes the right selector hash', () {
       expect(
           getSelectorByName('execute'),
-          equals(StarknetFieldElement.fromHex(
+          equals(StarknetFieldElement.fromHexString(
             '0x0240060cdb34fcc260f41eac7474ee1d7c80b7e3607daff9ac67c7ea2ebb1c44',
           )));
       expect(
           getSelectorByName('mint'),
-          equals(StarknetFieldElement.fromHex(
+          equals(StarknetFieldElement.fromHexString(
             '0x2f0b3c5710379609eb5495f1ecd348cb28167711b73609fe565a72734550354',
           )));
     });
@@ -46,7 +45,7 @@ void main() {
     test('returns the right string', () {
       expect(
           getSelectorByName('balanceOf'),
-          equals(StarknetFieldElement.fromHex(
+          equals(StarknetFieldElement.fromHexString(
               "0x2e4263afad30923c891518314c3c95dbe830a16874e8abc5777a9a20b54c76e")));
     });
   });
