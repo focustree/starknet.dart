@@ -202,5 +202,22 @@ void main() {
             });
       });
     });
+
+    group('starknet_pendingTransactions', () {
+      test('returns unimplemented method error for pendingTransactions',
+          () async {
+        final response = await provider.pendingTransactions();
+
+        response.when(
+            error: (error) {
+              expect(error.code, equals(-32601));
+              expect(
+                  error.message,
+                  contains(
+                      'method \'starknet_pendingTransactions\' not found'));
+            },
+            result: (_) => fail('Expected to return an unimplemented error'));
+      });
+    });
   });
 }
