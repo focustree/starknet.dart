@@ -11,26 +11,6 @@ void main() {
       provider = getJsonRpcProvider();
     });
 
-    // test('constructor initializes class porperties properly', () {
-    //   expect(provider.baseURL, hasLength(allOf(isPositive, isNot(0))));
-    // });
-
-    // group('getBlock', () {
-    //   test('returns a strictly positive block number', () async {
-    //     final block = await provider.getBlock();
-    //     expect(block.blockNumber, allOf([isPositive, isNot(0)]));
-    //   });
-
-    //   // test('returns an object that matches 100% the API response', () async {
-    //   //   final url = Uri.parse('${provider.feederGatewayURL}/get_block');
-    //   //   final response = await get(url);
-    //   //   final block = await provider.getBlock();
-    //   //   final expected = json.decode(response.body);
-    //   //   final actual = block.toJson();
-    //   //   expect(actual, equals(expected));
-    //   // });
-    // });
-
     group('blockNumber', () {
       test('returns a strictly positive block number', () async {
         final blockNumber = await provider.blockNumber();
@@ -100,6 +80,96 @@ void main() {
         }, result: (result) {
           fail("Should fail");
         });
+      });
+    });
+
+    group('getTransactionByHash', () {
+      test('returns the transaction details based on the transaction hash',
+          () async {
+        final response = await provider.getTransactionByHash(
+          StarknetFieldElement.fromHex(
+              '0x54633821b88433a6ecab8e849beebdcccd353f3306d446830dadc42ef35046e'),
+        );
+
+        response.when(
+            error: (error) => fail("Should fail"),
+            result: (result) {
+              expect(
+                  result.txnHash,
+                  StarknetFieldElement.fromHex(
+                      "0x54633821b88433a6ecab8e849beebdcccd353f3306d446830dadc42ef35046e"));
+            });
+      });
+
+      test('reading transaction from invalid transaction hash should fail',
+          () async {
+        final response = await provider.getTransactionByHash(
+          StarknetFieldElement.fromHex(
+              '0x000000000000000000000000000000000000000000000000000000000000000'),
+        );
+
+        response.when(
+            error: (error) => expect(error.code, 25),
+            result: (result) => fail('Should fail'));
+      });
+    });
+
+    group('getTransactionReceipt', () {
+      test('returns the transaction receipt based on the transaction hash',
+          () async {
+        final response = await provider.getTransactionReceipt(
+          StarknetFieldElement.fromHex(
+              '0x136e5212e37cd44606058fc155d725a8b865b2fba4874f650f524d22e1312b9'),
+        );
+
+        response.when(
+            error: (error) => fail("Should fail"),
+            result: (result) {
+              expect(
+                  result.txnHash,
+                  StarknetFieldElement.fromHex(
+                      '0x136e5212e37cd44606058fc155d725a8b865b2fba4874f650f524d22e1312b9'));
+
+              expect(result.actualFee,
+                  StarknetFieldElement.fromHex('0x22426b1c1f16'));
+            });
+      });
+
+      test(
+          'reading transaction receipt from invalid transaction hash should fail',
+          () async {
+        final response = await provider.getTransactionByHash(
+          StarknetFieldElement.fromHex(
+              '0x000000000000000000000000000000000000000000000000000000000000000'),
+        );
+
+        response.when(
+            error: (error) => expect(error.code, 25),
+            result: (result) => fail('Should fail'));
+      });
+    });
+
+    // Tests for unimplemented methods
+
+    group('starknet_getTransactionByBlockIdAndIndex', () {
+      test(
+          'returns unimplemented method error for getTransactionByBlockIdAndIndex',
+          () async {
+        BlockId blockId = BlockId.blockHash(
+            blockHash: StarknetFieldElement.fromHex(
+                '0x4b7ca197f1e80a4503f122a8f4d96d71c6467e92d1025f2216cc480b317cc75'));
+
+        final response =
+            await provider.getTransactionByBlockIdAndIndex(blockId, 4);
+        response.when(
+            result: (_) => fail('Expected to return an unimplemented error'),
+            error: (error) {
+              expect(error.code, equals(-32601));
+              expect(
+                  error.message,
+                  contains(
+                      'method \'starknet_getTransactionByBlockIdAndIndex\' not found'));
+            });
       });
     });
   });

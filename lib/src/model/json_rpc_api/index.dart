@@ -1,6 +1,9 @@
+export 'block_id.dart';
 export 'block_number.dart';
 export 'call.dart';
-export 'get_block_with_tx_hashes.dart';
 export 'function_call.dart';
-export 'invoke_transaction.dart';
+export 'get_block_with_tx_hashes.dart';
 export 'get_storage.dart';
+export 'get_transaction.dart';
+export 'get_transaction_receipt.dart';
+export 'invoke_transaction.dart';
