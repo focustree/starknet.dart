@@ -1,0 +1,87 @@
+name: CI
+
+# Run on PRs and pushes to the default branch.
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  schedule:
+    - cron: "0 0 * * 0"
+
+env:
+  ENVIRONMENT: Github CI
+
+jobs:
+  # Check code formatting and static analysis on a single OS (linux)
+  # against dev, stable, and 2.17.3 (the package's lower bound).
+  analyze:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        sdk: [dev, stable, 2.17.3]
+    steps:
+      - uses: actions/checkout@v2
+      - uses: dart-lang/setup-dart@v1.0
+        with:
+          sdk: ${{ matrix.sdk }}
+      - id: install
+        name: Install dependencies
+        run: dart pub get
+      - name: Check formatting
+        run: dart format --output=none --set-exit-if-changed .
+        if: matrix.sdk == 'dev' && steps.install.outcome == 'success'
+      - name: Analyze code
+        run: dart analyze --fatal-infos
+        if: always() && steps.install.outcome == 'success'
+
+  # Run tests on a matrix consisting of two dimensions:
+  # 1. OS: ubuntu-latest
+  # 2. Release channel: dev, stable, and 2.17.3 (the package's lower bound)
+  test:
+    needs: analyze
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest]
+        sdk: [dev, stable, 2.17.3]
+    steps:
+      - uses: actions/checkout@v2
+      - uses: dart-lang/setup-dart@v1.0
+        with:
+          sdk: ${{ matrix.sdk }}
+      - id: install
+        name: Install dependencies
+        run: dart pub get
+      - name: Run VM tests
+        run: dart test --platform vm
+        if: always() && steps.install.outcome == 'success'
+      - name: Run Chrome tests
+        run: dart test --platform chrome
+        if: always() && steps.install.outcome == 'success'
+
+  package-analysis:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: axel-op/dart-package-analyzer@v3
+        with:
+          githubToken: ${{ secrets.GITHUB_TOKEN }}
+
+  publish:
+    needs: test
+    runs-on: ubuntu-latest
+    if: ${{ github.event_name == 'push'  && github.ref == 'refs/heads/main' }}
+    steps:
+      - name: "Checkout"
+        uses: actions/checkout@v2
+      # Only publishes if package version is different from the latest published on pub.dev
+      # See the docs: https://github.com/marketplace/actions/dart-and-flutter-package-publisher
+      - name: "Publish package"
+        uses: k-paxian/dart-package-publisher@master
+        with:
+          accessToken: ${{ secrets.OAUTH_ACCESS_TOKEN }}
+          refreshToken: ${{ secrets.OAUTH_REFRESH_TOKEN }}
+          skipTests: true # Tests have already been run before

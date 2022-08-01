@@ -1,6 +1,3 @@
-import 'package:starknet/src/model/json_rpc_api/block_id.dart';
-import 'package:starknet/src/model/json_rpc_api/get_transaction.dart';
-import 'package:starknet/src/model/json_rpc_api/get_transaction_receipt.dart';
 import 'package:starknet/starknet.dart';
 
 abstract class Provider {
