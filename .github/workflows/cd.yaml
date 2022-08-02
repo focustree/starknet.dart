@@ -98,7 +98,6 @@ jobs:
           githubToken: ${{ secrets.GITHUB_TOKEN }}
 
   publish:
-    if: github.event.push.head.repo.fork == false
     needs: test
     runs-on: ubuntu-latest
     steps:
