@@ -1,4 +1,4 @@
-# starknet.dart
+# starknet.dart (Test)
 
 The goal of this SDK is to be able to interact with StarkNet smart contracts in a type-safe way.
 
