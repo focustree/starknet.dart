@@ -42,6 +42,34 @@ abstract class Provider {
   /// [Spec](https://github.com/starkware-libs/starknet-specs/blob/30e5bafcda60c31b5fb4021b4f5ddcfc18d2ff7d/api/starknet_api_openrpc.json#L214-L239)
   Future<GetTransactionReceipt> getTransactionReceipt(
       StarknetFieldElement txnHash);
+
+  /// Gets the currently configured StarkNet chain id.
+  ///
+  /// [Spec](https://github.com/starkware-libs/starknet-specs/blob/30e5bafcda60c31b5fb4021b4f5ddcfc18d2ff7d/api/starknet_api_openrpc.json#L509-L520)
+  Future<ChainId> chainId();
+
+  /// Gets the transactions in the transaction pool, recognized by the sequencer.
+  ///
+  /// [Spec](https://github.com/starkware-libs/starknet-specs/blob/30e5bafcda60c31b5fb4021b4f5ddcfc18d2ff7d/api/starknet_api_openrpc.json#L521-L535)
+  Future<PendingTransactions> pendingTransactions();
+
+  /// Gets the current starknet protocol version identifier, as supported by this sequencer.
+  ///
+  /// [Spec](https://github.com/starkware-libs/starknet-specs/blob/30e5bafcda60c31b5fb4021b4f5ddcfc18d2ff7d/api/starknet_api_openrpc.json#L536-L548)
+  Future<ProtocolVersion> protocolVersion();
+
+  /// Returns an object about the sync status, or false if the node is not synching
+  ///
+  /// [Spec](https://github.com/starkware-libs/starknet-specs/blob/30e5bafcda60c31b5fb4021b4f5ddcfc18d2ff7d/api/starknet_api_openrpc.json#L549-L569)
+  Future<Syncing> syncing();
+
+  /// Gets the nonce associated with the given address in the given block
+  ///
+  /// [Spec](https://github.com/starkware-libs/starknet-specs/blob/5cafa4cbaf5e4596bf309dfbde1bd0c4fa2ce1ce/api/starknet_api_openrpc.json#L628-L664)
+  Future<GetNonce> getNonce(
+    BlockId blockId,
+    StarknetFieldElement contractAddress,
+  );
 }
 
 class JsonRpcProvider implements Provider {
@@ -114,6 +142,54 @@ class JsonRpcProvider implements Provider {
       method: 'starknet_getTransactionReceipt',
       params: [transactionHash],
     ).then(GetTransactionReceipt.fromJson);
+  }
+
+  @override
+  Future<ChainId> chainId() {
+    return callRpcEndpoint(
+      nodeUri: nodeUri,
+      method: 'starknet_chainId',
+      params: [],
+    ).then(ChainId.fromJson);
+  }
+
+  @override
+  Future<PendingTransactions> pendingTransactions() {
+    return callRpcEndpoint(
+      nodeUri: nodeUri,
+      method: 'starknet_pendingTransactions',
+      params: [],
+    ).then(PendingTransactions.fromJson);
+  }
+
+  @override
+  Future<ProtocolVersion> protocolVersion() {
+    return callRpcEndpoint(
+      nodeUri: nodeUri,
+      method: 'starknet_protocolVersion',
+      params: [],
+    ).then(ProtocolVersion.fromJson);
+  }
+
+  @override
+  Future<Syncing> syncing() {
+    return callRpcEndpoint(
+      nodeUri: nodeUri,
+      method: 'starknet_syncing',
+      params: [],
+    ).then(Syncing.fromJson);
+  }
+
+  @override
+  Future<GetNonce> getNonce(
+    BlockId blockId,
+    StarknetFieldElement contractAddress,
+  ) {
+    return callRpcEndpoint(
+      nodeUri: nodeUri,
+      method: 'starknet_getNonce',
+      params: [blockId, contractAddress],
+    ).then(GetNonce.fromJson);
   }
 
   static final devnet = JsonRpcProvider(nodeUri: devnetUri);

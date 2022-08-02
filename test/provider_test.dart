@@ -110,7 +110,7 @@ void main() {
         );
 
         response.when(
-            error: (error) => fail("Should fail"),
+            error: (error) => fail("Shouldn't fail"),
             result: (result) {
               expect(
                   result.txnHash,
@@ -141,7 +141,7 @@ void main() {
         );
 
         response.when(
-            error: (error) => fail("Should fail"),
+            error: (error) => fail("Shouldn't fail"),
             result: (result) {
               expect(
                   result.txnHash,
@@ -163,7 +163,34 @@ void main() {
 
         response.when(
             error: (error) => expect(error.code, 25),
-            result: (result) => fail('Should fail'));
+            result: (result) => fail("Shouldn't fail"));
+      });
+    });
+
+    group('chainId', () {
+      test('returns the current StarkNet chain id', () async {
+        final response = await provider.chainId();
+
+        response.when(
+            error: (error) => fail("Shouldn't fail"),
+            result: (result) {
+              expect(result, isNotEmpty);
+            });
+      });
+    });
+
+    group('syncing', () {
+      test('returns the state of synchronized node', () async {
+        final response = await provider.syncing();
+
+        response.when(
+            error: (error) => fail("Shouldn't fail"),
+            synchronized: (SyncStatus result) {
+              expect(result.currentBlockHash, isNotNull);
+            },
+            notSynchronized: (bool result) {
+              expect(result, isFalse);
+            });
       });
     });
 
@@ -188,6 +215,57 @@ void main() {
                   contains(
                       'method \'starknet_getTransactionByBlockIdAndIndex\' not found'));
             });
+      });
+    });
+
+    group('starknet_pendingTransactions', () {
+      test('returns unimplemented method error for pendingTransactions',
+          () async {
+        final response = await provider.pendingTransactions();
+
+        response.when(
+            error: (error) {
+              expect(error.code, equals(-32601));
+              expect(
+                  error.message,
+                  contains(
+                      'method \'starknet_pendingTransactions\' not found'));
+            },
+            result: (_) => fail('Expected to return an unimplemented error'));
+      });
+    });
+
+    group('starknet_protocolVersion', () {
+      test('returns unimplemented method error for protocolVersion', () async {
+        final response = await provider.protocolVersion();
+
+        response.when(
+            error: (error) {
+              expect(error.code, equals(-32601));
+              expect(error.message,
+                  contains('method \'starknet_protocolVersion\' not found'));
+            },
+            result: (_) => fail('Expected to return an unimplemented error'));
+      });
+    });
+
+    group('starknet_getNonce', () {
+      test('returns unimplemented method error for getNonce', () async {
+        final response = await provider.getNonce(
+          BlockId.blockHash(
+              blockHash: StarknetFieldElement.fromHexString(
+                  '0x3e506ab93bb22e483c5ddeee5db90a815cced1189805630673bbf86dbce1d79')),
+          StarknetFieldElement.fromHexString(
+              '0x7cda35873823b661b560e5eb5fa901d2190512ea2006b7d504082ace819094f'),
+        );
+
+        response.when(
+            error: (error) {
+              expect(error.code, equals(-32601));
+              expect(error.message,
+                  contains('method \'starknet_getNonce\' not found'));
+            },
+            result: (_) => fail('Expected to return an unimplemented error'));
       });
     });
   });
