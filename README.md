@@ -1,10 +1,8 @@
-⚠️⚠️⚠️ This package is a work in progress. Do not use in production. ⚠️⚠️⚠️
-
 # starknet.dart
 
-Dart SDK for StarkNet ✨
+The goal of this SDK is to be able to interact with StarkNet smart contracts in a type-safe way.
 
-The goal of this dart package is to be able to call any JSON-RPC endpoint exposed by the StarkNet nodes (see the [specs](https://github.com/starkware-libs/starknet-specs)) in a type-safe way from any dart application.
+You can also call the JSON-RPC endpoint exposed by the StarkNet full nodes (see the [specs](https://github.com/starkware-libs/starknet-specs)).
 
 📚 [docs](https://pub.dev/packages/starknet)
 
@@ -20,24 +18,7 @@ That's why it's a priority to **build the best possible Starknet SDK for dart ap
 
 ## Roadmap
 
-You can check out the full roadmap [here](https://github.com/users/gabsn/projects/1). Talk to us on telgram if you want to challenge the priorities.
-
-### Features
-
-- [ ] `Provider`
-- [ ] `Signer`
-- [ ] `Account`
-
-### Infra
-
-- [ ] Setup CI for unit tests
-- [ ] Setup github workflow to publish to the [pub.dev](https://pub.dev) registry
-
-### Education
-
-- [ ] Implement a small flutter app example
-- [ ] Write a tutorial to show how to use this SDK in the context of a flutter app
-- [ ] Setup a `docs` website containing multiple user guides
+You can follow the progress of the project directly on the [kanban](https://github.com/users/gabsn/projects/1).
 
 ## Contributing
 
