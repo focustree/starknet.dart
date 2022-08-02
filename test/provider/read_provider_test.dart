@@ -299,5 +299,24 @@ void main() {
             result: (_) => fail('Expected to return an unimplemented error'));
       });
     });
+
+    group('starknet_getClass*', () {
+      test('returns class hash for a known contract', () async {
+        final response = await provider.getClassHashAt(
+          contractAddress: Felt.fromHexString(
+              '0x6fbd460228d843b7fbef670ff15607bf72e19fa94de21e29811ada167b4ca39'),
+          blockId: BlockId.blockTag(blockTag: "latest"),
+        );
+
+        response.when(
+            error: (error) => fail("Shouldn't fail"),
+            result: (result) {
+              expect(
+                  result,
+                  Felt.fromHexString(
+                      "0x21a7f43387573b68666669a0ed764252ce5367708e696e31967764a90b429c2"));
+            });
+      });
+    });
   });
 }

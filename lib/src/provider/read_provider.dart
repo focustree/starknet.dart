@@ -77,6 +77,11 @@ abstract class ReadProvider {
   ///
   /// [Spec](https://github.com/starkware-libs/starknet-specs/blob/5cafa4cbaf5e4596bf309dfbde1bd0c4fa2ce1ce/api/starknet_api_openrpc.json#L76-L101)
   Future<GetStateUpdate> getStateUpdate(BlockId blockId);
+
+  Future<GetClassHashAt> getClassHashAt({
+    required Felt contractAddress,
+    required BlockId blockId, // 2022-08-02: not supported by Infura
+  });
 }
 
 class JsonRpcReadProvider implements ReadProvider {
@@ -211,6 +216,18 @@ class JsonRpcReadProvider implements ReadProvider {
       method: 'starknet_getStateUpdate',
       params: [blockId],
     ).then(GetStateUpdate.fromJson);
+  }
+
+  @override
+  Future<GetClassHashAt> getClassHashAt({
+    required Felt contractAddress,
+    required BlockId blockId, // 2022-08-02: not supported by Infura
+  }) {
+    return callRpcEndpoint(
+      nodeUri: nodeUri,
+      method: 'starknet_getClassHashAt',
+      params: [contractAddress],
+    ).then(GetClassHashAt.fromJson);
   }
 
   static final devnet = JsonRpcReadProvider(nodeUri: devnetUri);

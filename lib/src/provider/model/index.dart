@@ -22,3 +22,4 @@ export 'protocol_version.dart';
 export 'storage_diff_item.dart';
 export 'sync_status.dart';
 export 'syncing.dart';
+export 'get_class_hash_at.dart';
