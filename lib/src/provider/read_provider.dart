@@ -6,6 +6,11 @@ abstract class ReadProvider {
   /// [Spec](https://github.com/starkware-libs/starknet-specs/blob/3d3b2d7ad6899f64043c0deaa8a40d3d8c9b1788/api/starknet_api_openrpc.json#L467-L483)
   Future<BlockNumber> blockNumber();
 
+  /// Get the most recent accepted block hash and number
+  ///
+  /// [Spec](https://github.com/starkware-libs/starknet-specs/blob/5cafa4cbaf5e4596bf309dfbde1bd0c4fa2ce1ce/api/starknet_api_openrpc.json#L484-L508)
+  Future<BlockHashAndNumber> blockHashAndNumber();
+
   /// Gets block information with transaction hashes given the block id
   ///
   /// [Spec](https://github.com/starkware-libs/starknet-specs/blob/3d3b2d7ad6899f64043c0deaa8a40d3d8c9b1788/api/starknet_api_openrpc.json#L10-L42)
@@ -80,6 +85,13 @@ class JsonRpcReadProvider implements ReadProvider {
   Future<BlockNumber> blockNumber() async {
     return callRpcEndpoint(nodeUri: nodeUri, method: 'starknet_blockNumber')
         .then(BlockNumber.fromJson);
+  }
+
+  @override
+  Future<BlockHashAndNumber> blockHashAndNumber() async {
+    return callRpcEndpoint(
+            nodeUri: nodeUri, method: 'starknet_blockHashAndNumber')
+        .then(BlockHashAndNumber.fromJson);
   }
 
   @override
