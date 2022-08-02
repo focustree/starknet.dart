@@ -78,15 +78,24 @@ abstract class ReadProvider {
   /// [Spec](https://github.com/starkware-libs/starknet-specs/blob/5cafa4cbaf5e4596bf309dfbde1bd0c4fa2ce1ce/api/starknet_api_openrpc.json#L76-L101)
   Future<GetStateUpdate> getStateUpdate(BlockId blockId);
 
+  /// Get the contract class hash in the given block for the contract deployed at the given address
+  ///
+  /// [Spec](https://github.com/starkware-libs/starknet-specs/blob/v0.1.0/api/starknet_api_openrpc.json#L266-L302)
   Future<GetClassHashAt> getClassHashAt({
     required Felt contractAddress,
     required BlockId blockId, // 2022-08-02: not supported by Infura
   });
 
+  /// Get the contract class definition associated with the given hash
+  ///
+  /// [Spec](https://github.com/starkware-libs/starknet-specs/blob/v0.1.0/api/starknet_api_openrpc.json#L240-L265)
   Future<GetClass> getClass(
     Felt classHash,
   );
 
+  /// Get the contract class definition in the given block at the given address
+  ///
+  /// [Spec](https://github.com/starkware-libs/starknet-specs/blob/v0.1.0/api/starknet_api_openrpc.json#L303-L339)
   Future<GetClass> getClassAt({
     required Felt contractAddress,
     required BlockId blockId,
