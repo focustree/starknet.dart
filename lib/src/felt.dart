@@ -53,7 +53,7 @@ class Felt implements BigInt {
 
   @override
   String toString() {
-    return "StarknetFieldElement(${bigInt.toString()})";
+    return "Felt(${bigInt.toString()})";
   }
 
   ////////////
