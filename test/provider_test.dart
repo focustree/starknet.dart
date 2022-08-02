@@ -5,7 +5,7 @@ import 'utils.dart';
 
 void main() {
   group('Provider', () {
-    late Provider provider;
+    late ReadProvider provider;
 
     setUp(() {
       provider = getJsonRpcProvider();
