@@ -8,7 +8,7 @@ part of 'get_storage.dart';
 
 _$GetStorageResult _$$GetStorageResultFromJson(Map<String, dynamic> json) =>
     _$GetStorageResult(
-      result: StarknetFieldElement.fromJson(json['result'] as String),
+      result: Felt.fromJson(json['result'] as String),
       $type: json['runtimeType'] as String?,
     );
 

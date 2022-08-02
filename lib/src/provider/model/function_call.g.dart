@@ -8,12 +8,10 @@ part of 'function_call.dart';
 
 _$_FunctionCall _$$_FunctionCallFromJson(Map<String, dynamic> json) =>
     _$_FunctionCall(
-      contractAddress:
-          StarknetFieldElement.fromJson(json['contract_address'] as String),
-      entryPointSelector:
-          StarknetFieldElement.fromJson(json['entry_point_selector'] as String),
+      contractAddress: Felt.fromJson(json['contract_address'] as String),
+      entryPointSelector: Felt.fromJson(json['entry_point_selector'] as String),
       calldata: (json['calldata'] as List<dynamic>)
-          .map((e) => StarknetFieldElement.fromJson(e as String))
+          .map((e) => Felt.fromJson(e as String))
           .toList(),
     );
 

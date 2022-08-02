@@ -9,7 +9,7 @@ part of 'msg_to_l2.dart';
 _$_MsgToL2 _$$_MsgToL2FromJson(Map<String, dynamic> json) => _$_MsgToL2(
       fromAddress: json['from_address'] as String?,
       payload: (json['payload'] as List<dynamic>?)
-          ?.map((e) => StarknetFieldElement.fromJson(e as String))
+          ?.map((e) => Felt.fromJson(e as String))
           .toList(),
     );
 

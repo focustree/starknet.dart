@@ -8,7 +8,7 @@ part of 'block_id.dart';
 
 _$BlockIdHash _$$BlockIdHashFromJson(Map<String, dynamic> json) =>
     _$BlockIdHash(
-      blockHash: StarknetFieldElement.fromJson(json['block_hash'] as String),
+      blockHash: Felt.fromJson(json['block_hash'] as String),
       $type: json['runtimeType'] as String?,
     );
 

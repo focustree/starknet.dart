@@ -7,7 +7,7 @@ part 'get_nonce.g.dart';
 @freezed
 class GetNonce with _$GetNonce {
   const factory GetNonce.result({
-    required StarknetFieldElement result,
+    required Felt result,
   }) = GetNonceResult;
   const factory GetNonce.error({
     required JsonRpcApiError error,

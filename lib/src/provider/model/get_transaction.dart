@@ -23,41 +23,41 @@ class GetTransaction with _$GetTransaction {
 class Txn with _$Txn {
   const factory Txn.invokeTxn({
     // start of COMMON_TXN_PROPERTIES
-    required StarknetFieldElement? txnHash,
-    required StarknetFieldElement? maxFee,
+    required Felt? txnHash,
+    required Felt? maxFee,
     required String? version,
-    required List<StarknetFieldElement>? signature,
-    required StarknetFieldElement? nonce,
+    required List<Felt>? signature,
+    required Felt? nonce,
     required String? type,
     // end of COMMON_TXN_PROPERTIES
     // start of FUNCTION_CALL
-    required StarknetFieldElement? contractAddress,
-    required StarknetFieldElement? entryPointSelector,
-    required List<StarknetFieldElement>? calldata,
+    required Felt? contractAddress,
+    required Felt? entryPointSelector,
+    required List<Felt>? calldata,
     // end of FUNCTION_CALL
   }) = InvokeTxn;
 
   const factory Txn.declareTxn({
     // start of COMMON_TXN_PROPERTIES
-    required StarknetFieldElement? txnHash,
-    required StarknetFieldElement? maxFee,
+    required Felt? txnHash,
+    required Felt? maxFee,
     required String? version,
-    required List<StarknetFieldElement>? signature,
-    required StarknetFieldElement? nonce,
+    required List<Felt>? signature,
+    required Felt? nonce,
     required String? type,
     // end of COMMON_TXN_PROPERTIES
-    required StarknetFieldElement? classHash,
-    required StarknetFieldElement? senderAddress,
+    required Felt? classHash,
+    required Felt? senderAddress,
   }) = DeclareTxn;
 
   const factory Txn.deployTxn({
-    required StarknetFieldElement? txnHash,
-    required StarknetFieldElement? classHash,
+    required Felt? txnHash,
+    required Felt? classHash,
     required String? version,
     required String? type,
-    required StarknetFieldElement? contractAddress,
-    required StarknetFieldElement? contractAddressSalt,
-    required List<StarknetFieldElement>? constructorCalldata,
+    required Felt? contractAddress,
+    required Felt? contractAddressSalt,
+    required List<Felt>? constructorCalldata,
   }) = DeployTxn;
 
   // TODO: The json response doesn't have type attribute.

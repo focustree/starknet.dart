@@ -33,21 +33,21 @@ BlockId _$BlockIdFromJson(Map<String, dynamic> json) {
 mixin _$BlockId {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(StarknetFieldElement blockHash) blockHash,
+    required TResult Function(Felt blockHash) blockHash,
     required TResult Function(int blockNumber) blockNumber,
     required TResult Function(String blockTag) blockTag,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(StarknetFieldElement blockHash)? blockHash,
+    TResult Function(Felt blockHash)? blockHash,
     TResult Function(int blockNumber)? blockNumber,
     TResult Function(String blockTag)? blockTag,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(StarknetFieldElement blockHash)? blockHash,
+    TResult Function(Felt blockHash)? blockHash,
     TResult Function(int blockNumber)? blockNumber,
     TResult Function(String blockTag)? blockTag,
     required TResult orElse(),
@@ -98,7 +98,7 @@ abstract class _$$BlockIdHashCopyWith<$Res> {
   factory _$$BlockIdHashCopyWith(
           _$BlockIdHash value, $Res Function(_$BlockIdHash) then) =
       __$$BlockIdHashCopyWithImpl<$Res>;
-  $Res call({StarknetFieldElement blockHash});
+  $Res call({Felt blockHash});
 }
 
 /// @nodoc
@@ -119,7 +119,7 @@ class __$$BlockIdHashCopyWithImpl<$Res> extends _$BlockIdCopyWithImpl<$Res>
       blockHash: blockHash == freezed
           ? _value.blockHash
           : blockHash // ignore: cast_nullable_to_non_nullable
-              as StarknetFieldElement,
+              as Felt,
     ));
   }
 }
@@ -134,7 +134,7 @@ class _$BlockIdHash implements BlockIdHash {
       _$$BlockIdHashFromJson(json);
 
   @override
-  final StarknetFieldElement blockHash;
+  final Felt blockHash;
 
   @JsonKey(name: 'runtimeType')
   final String $type;
@@ -165,7 +165,7 @@ class _$BlockIdHash implements BlockIdHash {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(StarknetFieldElement blockHash) blockHash,
+    required TResult Function(Felt blockHash) blockHash,
     required TResult Function(int blockNumber) blockNumber,
     required TResult Function(String blockTag) blockTag,
   }) {
@@ -175,7 +175,7 @@ class _$BlockIdHash implements BlockIdHash {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(StarknetFieldElement blockHash)? blockHash,
+    TResult Function(Felt blockHash)? blockHash,
     TResult Function(int blockNumber)? blockNumber,
     TResult Function(String blockTag)? blockTag,
   }) {
@@ -185,7 +185,7 @@ class _$BlockIdHash implements BlockIdHash {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(StarknetFieldElement blockHash)? blockHash,
+    TResult Function(Felt blockHash)? blockHash,
     TResult Function(int blockNumber)? blockNumber,
     TResult Function(String blockTag)? blockTag,
     required TResult orElse(),
@@ -239,13 +239,12 @@ class _$BlockIdHash implements BlockIdHash {
 }
 
 abstract class BlockIdHash implements BlockId {
-  const factory BlockIdHash({required final StarknetFieldElement blockHash}) =
-      _$BlockIdHash;
+  const factory BlockIdHash({required final Felt blockHash}) = _$BlockIdHash;
 
   factory BlockIdHash.fromJson(Map<String, dynamic> json) =
       _$BlockIdHash.fromJson;
 
-  StarknetFieldElement get blockHash;
+  Felt get blockHash;
   @JsonKey(ignore: true)
   _$$BlockIdHashCopyWith<_$BlockIdHash> get copyWith =>
       throw _privateConstructorUsedError;
@@ -324,7 +323,7 @@ class _$BlockIdNumber implements BlockIdNumber {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(StarknetFieldElement blockHash) blockHash,
+    required TResult Function(Felt blockHash) blockHash,
     required TResult Function(int blockNumber) blockNumber,
     required TResult Function(String blockTag) blockTag,
   }) {
@@ -334,7 +333,7 @@ class _$BlockIdNumber implements BlockIdNumber {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(StarknetFieldElement blockHash)? blockHash,
+    TResult Function(Felt blockHash)? blockHash,
     TResult Function(int blockNumber)? blockNumber,
     TResult Function(String blockTag)? blockTag,
   }) {
@@ -344,7 +343,7 @@ class _$BlockIdNumber implements BlockIdNumber {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(StarknetFieldElement blockHash)? blockHash,
+    TResult Function(Felt blockHash)? blockHash,
     TResult Function(int blockNumber)? blockNumber,
     TResult Function(String blockTag)? blockTag,
     required TResult orElse(),
@@ -482,7 +481,7 @@ class _$BlockIdTag implements BlockIdTag {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(StarknetFieldElement blockHash) blockHash,
+    required TResult Function(Felt blockHash) blockHash,
     required TResult Function(int blockNumber) blockNumber,
     required TResult Function(String blockTag) blockTag,
   }) {
@@ -492,7 +491,7 @@ class _$BlockIdTag implements BlockIdTag {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(StarknetFieldElement blockHash)? blockHash,
+    TResult Function(Felt blockHash)? blockHash,
     TResult Function(int blockNumber)? blockNumber,
     TResult Function(String blockTag)? blockTag,
   }) {
@@ -502,7 +501,7 @@ class _$BlockIdTag implements BlockIdTag {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(StarknetFieldElement blockHash)? blockHash,
+    TResult Function(Felt blockHash)? blockHash,
     TResult Function(int blockNumber)? blockNumber,
     TResult Function(String blockTag)? blockTag,
     required TResult orElse(),

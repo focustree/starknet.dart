@@ -7,10 +7,10 @@ part 'event.g.dart';
 @freezed
 class Event with _$Event {
   const factory Event({
-    required StarknetFieldElement? fromAddress,
+    required Felt? fromAddress,
     // start of EVENT_CONTENT
-    required List<StarknetFieldElement>? keys,
-    required List<StarknetFieldElement>? data,
+    required List<Felt>? keys,
+    required List<Felt>? data,
     // end of EVENT_CONTENT
   }) = _Event;
 

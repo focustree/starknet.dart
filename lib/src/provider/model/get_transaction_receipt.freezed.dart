@@ -446,128 +446,87 @@ TxnReceipt _$TxnReceiptFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$TxnReceipt {
 // start of COMMON_RECEIPT_PROPERTIES
-  StarknetFieldElement get txnHash => throw _privateConstructorUsedError;
-  StarknetFieldElement get actualFee => throw _privateConstructorUsedError;
+  Felt get txnHash => throw _privateConstructorUsedError;
+  Felt get actualFee => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(
-            StarknetFieldElement txnHash,
-            StarknetFieldElement actualFee,
+            Felt txnHash,
+            Felt actualFee,
             String status,
             String? statusData,
-            StarknetFieldElement? blockHash,
+            Felt? blockHash,
             int? blockNumber,
             List<MsgToL1> messagesSent,
             MsgToL2? l1OriginMessage,
             List<Event> events)
         invokeTxnReceipt,
-    required TResult Function(
-            StarknetFieldElement txnHash,
-            StarknetFieldElement actualFee,
-            String status,
-            String? statusData,
-            StarknetFieldElement? blockHash,
-            int? blockNumber)
+    required TResult Function(Felt txnHash, Felt actualFee, String status,
+            String? statusData, Felt? blockHash, int? blockNumber)
         declareTxnReceipt,
-    required TResult Function(
-            StarknetFieldElement txnHash,
-            StarknetFieldElement actualFee,
-            String status,
-            String? statusData,
-            StarknetFieldElement? blockHash,
-            int? blockNumber)
+    required TResult Function(Felt txnHash, Felt actualFee, String status,
+            String? statusData, Felt? blockHash, int? blockNumber)
         deployTxnReceipt,
     required TResult Function(
-            StarknetFieldElement txnHash,
-            StarknetFieldElement actualFee,
+            Felt txnHash,
+            Felt actualFee,
             List<MsgToL1> messagesSent,
             MsgToL2? l1OriginMessage,
             List<Event> events)
         pendingInvokeTxnReceipt,
-    required TResult Function(
-            StarknetFieldElement txnHash, StarknetFieldElement actualFee)
+    required TResult Function(Felt txnHash, Felt actualFee)
         pendingCommonReceiptProperties,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(
-            StarknetFieldElement txnHash,
-            StarknetFieldElement actualFee,
+            Felt txnHash,
+            Felt actualFee,
             String status,
             String? statusData,
-            StarknetFieldElement? blockHash,
+            Felt? blockHash,
             int? blockNumber,
             List<MsgToL1> messagesSent,
             MsgToL2? l1OriginMessage,
             List<Event> events)?
         invokeTxnReceipt,
-    TResult Function(
-            StarknetFieldElement txnHash,
-            StarknetFieldElement actualFee,
-            String status,
-            String? statusData,
-            StarknetFieldElement? blockHash,
-            int? blockNumber)?
+    TResult Function(Felt txnHash, Felt actualFee, String status,
+            String? statusData, Felt? blockHash, int? blockNumber)?
         declareTxnReceipt,
-    TResult Function(
-            StarknetFieldElement txnHash,
-            StarknetFieldElement actualFee,
-            String status,
-            String? statusData,
-            StarknetFieldElement? blockHash,
-            int? blockNumber)?
+    TResult Function(Felt txnHash, Felt actualFee, String status,
+            String? statusData, Felt? blockHash, int? blockNumber)?
         deployTxnReceipt,
-    TResult Function(
-            StarknetFieldElement txnHash,
-            StarknetFieldElement actualFee,
-            List<MsgToL1> messagesSent,
-            MsgToL2? l1OriginMessage,
-            List<Event> events)?
+    TResult Function(Felt txnHash, Felt actualFee, List<MsgToL1> messagesSent,
+            MsgToL2? l1OriginMessage, List<Event> events)?
         pendingInvokeTxnReceipt,
-    TResult Function(
-            StarknetFieldElement txnHash, StarknetFieldElement actualFee)?
+    TResult Function(Felt txnHash, Felt actualFee)?
         pendingCommonReceiptProperties,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(
-            StarknetFieldElement txnHash,
-            StarknetFieldElement actualFee,
+            Felt txnHash,
+            Felt actualFee,
             String status,
             String? statusData,
-            StarknetFieldElement? blockHash,
+            Felt? blockHash,
             int? blockNumber,
             List<MsgToL1> messagesSent,
             MsgToL2? l1OriginMessage,
             List<Event> events)?
         invokeTxnReceipt,
-    TResult Function(
-            StarknetFieldElement txnHash,
-            StarknetFieldElement actualFee,
-            String status,
-            String? statusData,
-            StarknetFieldElement? blockHash,
-            int? blockNumber)?
+    TResult Function(Felt txnHash, Felt actualFee, String status,
+            String? statusData, Felt? blockHash, int? blockNumber)?
         declareTxnReceipt,
-    TResult Function(
-            StarknetFieldElement txnHash,
-            StarknetFieldElement actualFee,
-            String status,
-            String? statusData,
-            StarknetFieldElement? blockHash,
-            int? blockNumber)?
+    TResult Function(Felt txnHash, Felt actualFee, String status,
+            String? statusData, Felt? blockHash, int? blockNumber)?
         deployTxnReceipt,
-    TResult Function(
-            StarknetFieldElement txnHash,
-            StarknetFieldElement actualFee,
-            List<MsgToL1> messagesSent,
-            MsgToL2? l1OriginMessage,
-            List<Event> events)?
+    TResult Function(Felt txnHash, Felt actualFee, List<MsgToL1> messagesSent,
+            MsgToL2? l1OriginMessage, List<Event> events)?
         pendingInvokeTxnReceipt,
-    TResult Function(
-            StarknetFieldElement txnHash, StarknetFieldElement actualFee)?
+    TResult Function(Felt txnHash, Felt actualFee)?
         pendingCommonReceiptProperties,
     required TResult orElse(),
   }) =>
@@ -615,7 +574,7 @@ abstract class $TxnReceiptCopyWith<$Res> {
   factory $TxnReceiptCopyWith(
           TxnReceipt value, $Res Function(TxnReceipt) then) =
       _$TxnReceiptCopyWithImpl<$Res>;
-  $Res call({StarknetFieldElement txnHash, StarknetFieldElement actualFee});
+  $Res call({Felt txnHash, Felt actualFee});
 }
 
 /// @nodoc
@@ -635,11 +594,11 @@ class _$TxnReceiptCopyWithImpl<$Res> implements $TxnReceiptCopyWith<$Res> {
       txnHash: txnHash == freezed
           ? _value.txnHash
           : txnHash // ignore: cast_nullable_to_non_nullable
-              as StarknetFieldElement,
+              as Felt,
       actualFee: actualFee == freezed
           ? _value.actualFee
           : actualFee // ignore: cast_nullable_to_non_nullable
-              as StarknetFieldElement,
+              as Felt,
     ));
   }
 }
@@ -652,11 +611,11 @@ abstract class _$$InvokeTxnReceiptCopyWith<$Res>
       __$$InvokeTxnReceiptCopyWithImpl<$Res>;
   @override
   $Res call(
-      {StarknetFieldElement txnHash,
-      StarknetFieldElement actualFee,
+      {Felt txnHash,
+      Felt actualFee,
       String status,
       String? statusData,
-      StarknetFieldElement? blockHash,
+      Felt? blockHash,
       int? blockNumber,
       List<MsgToL1> messagesSent,
       MsgToL2? l1OriginMessage,
@@ -692,11 +651,11 @@ class __$$InvokeTxnReceiptCopyWithImpl<$Res>
       txnHash: txnHash == freezed
           ? _value.txnHash
           : txnHash // ignore: cast_nullable_to_non_nullable
-              as StarknetFieldElement,
+              as Felt,
       actualFee: actualFee == freezed
           ? _value.actualFee
           : actualFee // ignore: cast_nullable_to_non_nullable
-              as StarknetFieldElement,
+              as Felt,
       status: status == freezed
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
@@ -708,7 +667,7 @@ class __$$InvokeTxnReceiptCopyWithImpl<$Res>
       blockHash: blockHash == freezed
           ? _value.blockHash
           : blockHash // ignore: cast_nullable_to_non_nullable
-              as StarknetFieldElement?,
+              as Felt?,
       blockNumber: blockNumber == freezed
           ? _value.blockNumber
           : blockNumber // ignore: cast_nullable_to_non_nullable
@@ -763,15 +722,15 @@ class _$InvokeTxnReceipt implements InvokeTxnReceipt {
 
 // start of COMMON_RECEIPT_PROPERTIES
   @override
-  final StarknetFieldElement txnHash;
+  final Felt txnHash;
   @override
-  final StarknetFieldElement actualFee;
+  final Felt actualFee;
   @override
   final String status;
   @override
   final String? statusData;
   @override
-  final StarknetFieldElement? blockHash;
+  final Felt? blockHash;
   @override
   final int? blockNumber;
 // end of COMMON_RECEIPT_PROPERTIES
@@ -845,41 +804,30 @@ class _$InvokeTxnReceipt implements InvokeTxnReceipt {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(
-            StarknetFieldElement txnHash,
-            StarknetFieldElement actualFee,
+            Felt txnHash,
+            Felt actualFee,
             String status,
             String? statusData,
-            StarknetFieldElement? blockHash,
+            Felt? blockHash,
             int? blockNumber,
             List<MsgToL1> messagesSent,
             MsgToL2? l1OriginMessage,
             List<Event> events)
         invokeTxnReceipt,
-    required TResult Function(
-            StarknetFieldElement txnHash,
-            StarknetFieldElement actualFee,
-            String status,
-            String? statusData,
-            StarknetFieldElement? blockHash,
-            int? blockNumber)
+    required TResult Function(Felt txnHash, Felt actualFee, String status,
+            String? statusData, Felt? blockHash, int? blockNumber)
         declareTxnReceipt,
-    required TResult Function(
-            StarknetFieldElement txnHash,
-            StarknetFieldElement actualFee,
-            String status,
-            String? statusData,
-            StarknetFieldElement? blockHash,
-            int? blockNumber)
+    required TResult Function(Felt txnHash, Felt actualFee, String status,
+            String? statusData, Felt? blockHash, int? blockNumber)
         deployTxnReceipt,
     required TResult Function(
-            StarknetFieldElement txnHash,
-            StarknetFieldElement actualFee,
+            Felt txnHash,
+            Felt actualFee,
             List<MsgToL1> messagesSent,
             MsgToL2? l1OriginMessage,
             List<Event> events)
         pendingInvokeTxnReceipt,
-    required TResult Function(
-            StarknetFieldElement txnHash, StarknetFieldElement actualFee)
+    required TResult Function(Felt txnHash, Felt actualFee)
         pendingCommonReceiptProperties,
   }) {
     return invokeTxnReceipt(txnHash, actualFee, status, statusData, blockHash,
@@ -890,41 +838,26 @@ class _$InvokeTxnReceipt implements InvokeTxnReceipt {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(
-            StarknetFieldElement txnHash,
-            StarknetFieldElement actualFee,
+            Felt txnHash,
+            Felt actualFee,
             String status,
             String? statusData,
-            StarknetFieldElement? blockHash,
+            Felt? blockHash,
             int? blockNumber,
             List<MsgToL1> messagesSent,
             MsgToL2? l1OriginMessage,
             List<Event> events)?
         invokeTxnReceipt,
-    TResult Function(
-            StarknetFieldElement txnHash,
-            StarknetFieldElement actualFee,
-            String status,
-            String? statusData,
-            StarknetFieldElement? blockHash,
-            int? blockNumber)?
+    TResult Function(Felt txnHash, Felt actualFee, String status,
+            String? statusData, Felt? blockHash, int? blockNumber)?
         declareTxnReceipt,
-    TResult Function(
-            StarknetFieldElement txnHash,
-            StarknetFieldElement actualFee,
-            String status,
-            String? statusData,
-            StarknetFieldElement? blockHash,
-            int? blockNumber)?
+    TResult Function(Felt txnHash, Felt actualFee, String status,
+            String? statusData, Felt? blockHash, int? blockNumber)?
         deployTxnReceipt,
-    TResult Function(
-            StarknetFieldElement txnHash,
-            StarknetFieldElement actualFee,
-            List<MsgToL1> messagesSent,
-            MsgToL2? l1OriginMessage,
-            List<Event> events)?
+    TResult Function(Felt txnHash, Felt actualFee, List<MsgToL1> messagesSent,
+            MsgToL2? l1OriginMessage, List<Event> events)?
         pendingInvokeTxnReceipt,
-    TResult Function(
-            StarknetFieldElement txnHash, StarknetFieldElement actualFee)?
+    TResult Function(Felt txnHash, Felt actualFee)?
         pendingCommonReceiptProperties,
   }) {
     return invokeTxnReceipt?.call(txnHash, actualFee, status, statusData,
@@ -935,41 +868,26 @@ class _$InvokeTxnReceipt implements InvokeTxnReceipt {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(
-            StarknetFieldElement txnHash,
-            StarknetFieldElement actualFee,
+            Felt txnHash,
+            Felt actualFee,
             String status,
             String? statusData,
-            StarknetFieldElement? blockHash,
+            Felt? blockHash,
             int? blockNumber,
             List<MsgToL1> messagesSent,
             MsgToL2? l1OriginMessage,
             List<Event> events)?
         invokeTxnReceipt,
-    TResult Function(
-            StarknetFieldElement txnHash,
-            StarknetFieldElement actualFee,
-            String status,
-            String? statusData,
-            StarknetFieldElement? blockHash,
-            int? blockNumber)?
+    TResult Function(Felt txnHash, Felt actualFee, String status,
+            String? statusData, Felt? blockHash, int? blockNumber)?
         declareTxnReceipt,
-    TResult Function(
-            StarknetFieldElement txnHash,
-            StarknetFieldElement actualFee,
-            String status,
-            String? statusData,
-            StarknetFieldElement? blockHash,
-            int? blockNumber)?
+    TResult Function(Felt txnHash, Felt actualFee, String status,
+            String? statusData, Felt? blockHash, int? blockNumber)?
         deployTxnReceipt,
-    TResult Function(
-            StarknetFieldElement txnHash,
-            StarknetFieldElement actualFee,
-            List<MsgToL1> messagesSent,
-            MsgToL2? l1OriginMessage,
-            List<Event> events)?
+    TResult Function(Felt txnHash, Felt actualFee, List<MsgToL1> messagesSent,
+            MsgToL2? l1OriginMessage, List<Event> events)?
         pendingInvokeTxnReceipt,
-    TResult Function(
-            StarknetFieldElement txnHash, StarknetFieldElement actualFee)?
+    TResult Function(Felt txnHash, Felt actualFee)?
         pendingCommonReceiptProperties,
     required TResult orElse(),
   }) {
@@ -1034,11 +952,11 @@ class _$InvokeTxnReceipt implements InvokeTxnReceipt {
 
 abstract class InvokeTxnReceipt implements TxnReceipt {
   const factory InvokeTxnReceipt(
-      {required final StarknetFieldElement txnHash,
-      required final StarknetFieldElement actualFee,
+      {required final Felt txnHash,
+      required final Felt actualFee,
       required final String status,
       required final String? statusData,
-      required final StarknetFieldElement? blockHash,
+      required final Felt? blockHash,
       required final int? blockNumber,
       required final List<MsgToL1> messagesSent,
       required final MsgToL2? l1OriginMessage,
@@ -1048,12 +966,12 @@ abstract class InvokeTxnReceipt implements TxnReceipt {
       _$InvokeTxnReceipt.fromJson;
 
   @override // start of COMMON_RECEIPT_PROPERTIES
-  StarknetFieldElement get txnHash;
+  Felt get txnHash;
   @override
-  StarknetFieldElement get actualFee;
+  Felt get actualFee;
   String get status;
   String? get statusData;
-  StarknetFieldElement? get blockHash;
+  Felt? get blockHash;
   int? get blockNumber; // end of COMMON_RECEIPT_PROPERTIES
 // start of INVOKE_TXN_RECEIPT_PROPERTIES
   List<MsgToL1> get messagesSent;
@@ -1073,11 +991,11 @@ abstract class _$$DeclareTxnReceiptCopyWith<$Res>
       __$$DeclareTxnReceiptCopyWithImpl<$Res>;
   @override
   $Res call(
-      {StarknetFieldElement txnHash,
-      StarknetFieldElement actualFee,
+      {Felt txnHash,
+      Felt actualFee,
       String status,
       String? statusData,
-      StarknetFieldElement? blockHash,
+      Felt? blockHash,
       int? blockNumber});
 }
 
@@ -1105,11 +1023,11 @@ class __$$DeclareTxnReceiptCopyWithImpl<$Res>
       txnHash: txnHash == freezed
           ? _value.txnHash
           : txnHash // ignore: cast_nullable_to_non_nullable
-              as StarknetFieldElement,
+              as Felt,
       actualFee: actualFee == freezed
           ? _value.actualFee
           : actualFee // ignore: cast_nullable_to_non_nullable
-              as StarknetFieldElement,
+              as Felt,
       status: status == freezed
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
@@ -1121,7 +1039,7 @@ class __$$DeclareTxnReceiptCopyWithImpl<$Res>
       blockHash: blockHash == freezed
           ? _value.blockHash
           : blockHash // ignore: cast_nullable_to_non_nullable
-              as StarknetFieldElement?,
+              as Felt?,
       blockNumber: blockNumber == freezed
           ? _value.blockNumber
           : blockNumber // ignore: cast_nullable_to_non_nullable
@@ -1148,15 +1066,15 @@ class _$DeclareTxnReceipt implements DeclareTxnReceipt {
 
 // start of COMMON_RECEIPT_PROPERTIES
   @override
-  final StarknetFieldElement txnHash;
+  final Felt txnHash;
   @override
-  final StarknetFieldElement actualFee;
+  final Felt actualFee;
   @override
   final String status;
   @override
   final String? statusData;
   @override
-  final StarknetFieldElement? blockHash;
+  final Felt? blockHash;
   @override
   final int? blockNumber;
 
@@ -1203,41 +1121,30 @@ class _$DeclareTxnReceipt implements DeclareTxnReceipt {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(
-            StarknetFieldElement txnHash,
-            StarknetFieldElement actualFee,
+            Felt txnHash,
+            Felt actualFee,
             String status,
             String? statusData,
-            StarknetFieldElement? blockHash,
+            Felt? blockHash,
             int? blockNumber,
             List<MsgToL1> messagesSent,
             MsgToL2? l1OriginMessage,
             List<Event> events)
         invokeTxnReceipt,
-    required TResult Function(
-            StarknetFieldElement txnHash,
-            StarknetFieldElement actualFee,
-            String status,
-            String? statusData,
-            StarknetFieldElement? blockHash,
-            int? blockNumber)
+    required TResult Function(Felt txnHash, Felt actualFee, String status,
+            String? statusData, Felt? blockHash, int? blockNumber)
         declareTxnReceipt,
-    required TResult Function(
-            StarknetFieldElement txnHash,
-            StarknetFieldElement actualFee,
-            String status,
-            String? statusData,
-            StarknetFieldElement? blockHash,
-            int? blockNumber)
+    required TResult Function(Felt txnHash, Felt actualFee, String status,
+            String? statusData, Felt? blockHash, int? blockNumber)
         deployTxnReceipt,
     required TResult Function(
-            StarknetFieldElement txnHash,
-            StarknetFieldElement actualFee,
+            Felt txnHash,
+            Felt actualFee,
             List<MsgToL1> messagesSent,
             MsgToL2? l1OriginMessage,
             List<Event> events)
         pendingInvokeTxnReceipt,
-    required TResult Function(
-            StarknetFieldElement txnHash, StarknetFieldElement actualFee)
+    required TResult Function(Felt txnHash, Felt actualFee)
         pendingCommonReceiptProperties,
   }) {
     return declareTxnReceipt(
@@ -1248,41 +1155,26 @@ class _$DeclareTxnReceipt implements DeclareTxnReceipt {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(
-            StarknetFieldElement txnHash,
-            StarknetFieldElement actualFee,
+            Felt txnHash,
+            Felt actualFee,
             String status,
             String? statusData,
-            StarknetFieldElement? blockHash,
+            Felt? blockHash,
             int? blockNumber,
             List<MsgToL1> messagesSent,
             MsgToL2? l1OriginMessage,
             List<Event> events)?
         invokeTxnReceipt,
-    TResult Function(
-            StarknetFieldElement txnHash,
-            StarknetFieldElement actualFee,
-            String status,
-            String? statusData,
-            StarknetFieldElement? blockHash,
-            int? blockNumber)?
+    TResult Function(Felt txnHash, Felt actualFee, String status,
+            String? statusData, Felt? blockHash, int? blockNumber)?
         declareTxnReceipt,
-    TResult Function(
-            StarknetFieldElement txnHash,
-            StarknetFieldElement actualFee,
-            String status,
-            String? statusData,
-            StarknetFieldElement? blockHash,
-            int? blockNumber)?
+    TResult Function(Felt txnHash, Felt actualFee, String status,
+            String? statusData, Felt? blockHash, int? blockNumber)?
         deployTxnReceipt,
-    TResult Function(
-            StarknetFieldElement txnHash,
-            StarknetFieldElement actualFee,
-            List<MsgToL1> messagesSent,
-            MsgToL2? l1OriginMessage,
-            List<Event> events)?
+    TResult Function(Felt txnHash, Felt actualFee, List<MsgToL1> messagesSent,
+            MsgToL2? l1OriginMessage, List<Event> events)?
         pendingInvokeTxnReceipt,
-    TResult Function(
-            StarknetFieldElement txnHash, StarknetFieldElement actualFee)?
+    TResult Function(Felt txnHash, Felt actualFee)?
         pendingCommonReceiptProperties,
   }) {
     return declareTxnReceipt?.call(
@@ -1293,41 +1185,26 @@ class _$DeclareTxnReceipt implements DeclareTxnReceipt {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(
-            StarknetFieldElement txnHash,
-            StarknetFieldElement actualFee,
+            Felt txnHash,
+            Felt actualFee,
             String status,
             String? statusData,
-            StarknetFieldElement? blockHash,
+            Felt? blockHash,
             int? blockNumber,
             List<MsgToL1> messagesSent,
             MsgToL2? l1OriginMessage,
             List<Event> events)?
         invokeTxnReceipt,
-    TResult Function(
-            StarknetFieldElement txnHash,
-            StarknetFieldElement actualFee,
-            String status,
-            String? statusData,
-            StarknetFieldElement? blockHash,
-            int? blockNumber)?
+    TResult Function(Felt txnHash, Felt actualFee, String status,
+            String? statusData, Felt? blockHash, int? blockNumber)?
         declareTxnReceipt,
-    TResult Function(
-            StarknetFieldElement txnHash,
-            StarknetFieldElement actualFee,
-            String status,
-            String? statusData,
-            StarknetFieldElement? blockHash,
-            int? blockNumber)?
+    TResult Function(Felt txnHash, Felt actualFee, String status,
+            String? statusData, Felt? blockHash, int? blockNumber)?
         deployTxnReceipt,
-    TResult Function(
-            StarknetFieldElement txnHash,
-            StarknetFieldElement actualFee,
-            List<MsgToL1> messagesSent,
-            MsgToL2? l1OriginMessage,
-            List<Event> events)?
+    TResult Function(Felt txnHash, Felt actualFee, List<MsgToL1> messagesSent,
+            MsgToL2? l1OriginMessage, List<Event> events)?
         pendingInvokeTxnReceipt,
-    TResult Function(
-            StarknetFieldElement txnHash, StarknetFieldElement actualFee)?
+    TResult Function(Felt txnHash, Felt actualFee)?
         pendingCommonReceiptProperties,
     required TResult orElse(),
   }) {
@@ -1392,23 +1269,23 @@ class _$DeclareTxnReceipt implements DeclareTxnReceipt {
 
 abstract class DeclareTxnReceipt implements TxnReceipt {
   const factory DeclareTxnReceipt(
-      {required final StarknetFieldElement txnHash,
-      required final StarknetFieldElement actualFee,
+      {required final Felt txnHash,
+      required final Felt actualFee,
       required final String status,
       required final String? statusData,
-      required final StarknetFieldElement? blockHash,
+      required final Felt? blockHash,
       required final int? blockNumber}) = _$DeclareTxnReceipt;
 
   factory DeclareTxnReceipt.fromJson(Map<String, dynamic> json) =
       _$DeclareTxnReceipt.fromJson;
 
   @override // start of COMMON_RECEIPT_PROPERTIES
-  StarknetFieldElement get txnHash;
+  Felt get txnHash;
   @override
-  StarknetFieldElement get actualFee;
+  Felt get actualFee;
   String get status;
   String? get statusData;
-  StarknetFieldElement? get blockHash;
+  Felt? get blockHash;
   int? get blockNumber;
   @override
   @JsonKey(ignore: true)
@@ -1424,11 +1301,11 @@ abstract class _$$DeployTxnReceiptCopyWith<$Res>
       __$$DeployTxnReceiptCopyWithImpl<$Res>;
   @override
   $Res call(
-      {StarknetFieldElement txnHash,
-      StarknetFieldElement actualFee,
+      {Felt txnHash,
+      Felt actualFee,
       String status,
       String? statusData,
-      StarknetFieldElement? blockHash,
+      Felt? blockHash,
       int? blockNumber});
 }
 
@@ -1456,11 +1333,11 @@ class __$$DeployTxnReceiptCopyWithImpl<$Res>
       txnHash: txnHash == freezed
           ? _value.txnHash
           : txnHash // ignore: cast_nullable_to_non_nullable
-              as StarknetFieldElement,
+              as Felt,
       actualFee: actualFee == freezed
           ? _value.actualFee
           : actualFee // ignore: cast_nullable_to_non_nullable
-              as StarknetFieldElement,
+              as Felt,
       status: status == freezed
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
@@ -1472,7 +1349,7 @@ class __$$DeployTxnReceiptCopyWithImpl<$Res>
       blockHash: blockHash == freezed
           ? _value.blockHash
           : blockHash // ignore: cast_nullable_to_non_nullable
-              as StarknetFieldElement?,
+              as Felt?,
       blockNumber: blockNumber == freezed
           ? _value.blockNumber
           : blockNumber // ignore: cast_nullable_to_non_nullable
@@ -1499,15 +1376,15 @@ class _$DeployTxnReceipt implements DeployTxnReceipt {
 
 // start of COMMON_RECEIPT_PROPERTIES
   @override
-  final StarknetFieldElement txnHash;
+  final Felt txnHash;
   @override
-  final StarknetFieldElement actualFee;
+  final Felt actualFee;
   @override
   final String status;
   @override
   final String? statusData;
   @override
-  final StarknetFieldElement? blockHash;
+  final Felt? blockHash;
   @override
   final int? blockNumber;
 
@@ -1554,41 +1431,30 @@ class _$DeployTxnReceipt implements DeployTxnReceipt {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(
-            StarknetFieldElement txnHash,
-            StarknetFieldElement actualFee,
+            Felt txnHash,
+            Felt actualFee,
             String status,
             String? statusData,
-            StarknetFieldElement? blockHash,
+            Felt? blockHash,
             int? blockNumber,
             List<MsgToL1> messagesSent,
             MsgToL2? l1OriginMessage,
             List<Event> events)
         invokeTxnReceipt,
-    required TResult Function(
-            StarknetFieldElement txnHash,
-            StarknetFieldElement actualFee,
-            String status,
-            String? statusData,
-            StarknetFieldElement? blockHash,
-            int? blockNumber)
+    required TResult Function(Felt txnHash, Felt actualFee, String status,
+            String? statusData, Felt? blockHash, int? blockNumber)
         declareTxnReceipt,
-    required TResult Function(
-            StarknetFieldElement txnHash,
-            StarknetFieldElement actualFee,
-            String status,
-            String? statusData,
-            StarknetFieldElement? blockHash,
-            int? blockNumber)
+    required TResult Function(Felt txnHash, Felt actualFee, String status,
+            String? statusData, Felt? blockHash, int? blockNumber)
         deployTxnReceipt,
     required TResult Function(
-            StarknetFieldElement txnHash,
-            StarknetFieldElement actualFee,
+            Felt txnHash,
+            Felt actualFee,
             List<MsgToL1> messagesSent,
             MsgToL2? l1OriginMessage,
             List<Event> events)
         pendingInvokeTxnReceipt,
-    required TResult Function(
-            StarknetFieldElement txnHash, StarknetFieldElement actualFee)
+    required TResult Function(Felt txnHash, Felt actualFee)
         pendingCommonReceiptProperties,
   }) {
     return deployTxnReceipt(
@@ -1599,41 +1465,26 @@ class _$DeployTxnReceipt implements DeployTxnReceipt {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(
-            StarknetFieldElement txnHash,
-            StarknetFieldElement actualFee,
+            Felt txnHash,
+            Felt actualFee,
             String status,
             String? statusData,
-            StarknetFieldElement? blockHash,
+            Felt? blockHash,
             int? blockNumber,
             List<MsgToL1> messagesSent,
             MsgToL2? l1OriginMessage,
             List<Event> events)?
         invokeTxnReceipt,
-    TResult Function(
-            StarknetFieldElement txnHash,
-            StarknetFieldElement actualFee,
-            String status,
-            String? statusData,
-            StarknetFieldElement? blockHash,
-            int? blockNumber)?
+    TResult Function(Felt txnHash, Felt actualFee, String status,
+            String? statusData, Felt? blockHash, int? blockNumber)?
         declareTxnReceipt,
-    TResult Function(
-            StarknetFieldElement txnHash,
-            StarknetFieldElement actualFee,
-            String status,
-            String? statusData,
-            StarknetFieldElement? blockHash,
-            int? blockNumber)?
+    TResult Function(Felt txnHash, Felt actualFee, String status,
+            String? statusData, Felt? blockHash, int? blockNumber)?
         deployTxnReceipt,
-    TResult Function(
-            StarknetFieldElement txnHash,
-            StarknetFieldElement actualFee,
-            List<MsgToL1> messagesSent,
-            MsgToL2? l1OriginMessage,
-            List<Event> events)?
+    TResult Function(Felt txnHash, Felt actualFee, List<MsgToL1> messagesSent,
+            MsgToL2? l1OriginMessage, List<Event> events)?
         pendingInvokeTxnReceipt,
-    TResult Function(
-            StarknetFieldElement txnHash, StarknetFieldElement actualFee)?
+    TResult Function(Felt txnHash, Felt actualFee)?
         pendingCommonReceiptProperties,
   }) {
     return deployTxnReceipt?.call(
@@ -1644,41 +1495,26 @@ class _$DeployTxnReceipt implements DeployTxnReceipt {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(
-            StarknetFieldElement txnHash,
-            StarknetFieldElement actualFee,
+            Felt txnHash,
+            Felt actualFee,
             String status,
             String? statusData,
-            StarknetFieldElement? blockHash,
+            Felt? blockHash,
             int? blockNumber,
             List<MsgToL1> messagesSent,
             MsgToL2? l1OriginMessage,
             List<Event> events)?
         invokeTxnReceipt,
-    TResult Function(
-            StarknetFieldElement txnHash,
-            StarknetFieldElement actualFee,
-            String status,
-            String? statusData,
-            StarknetFieldElement? blockHash,
-            int? blockNumber)?
+    TResult Function(Felt txnHash, Felt actualFee, String status,
+            String? statusData, Felt? blockHash, int? blockNumber)?
         declareTxnReceipt,
-    TResult Function(
-            StarknetFieldElement txnHash,
-            StarknetFieldElement actualFee,
-            String status,
-            String? statusData,
-            StarknetFieldElement? blockHash,
-            int? blockNumber)?
+    TResult Function(Felt txnHash, Felt actualFee, String status,
+            String? statusData, Felt? blockHash, int? blockNumber)?
         deployTxnReceipt,
-    TResult Function(
-            StarknetFieldElement txnHash,
-            StarknetFieldElement actualFee,
-            List<MsgToL1> messagesSent,
-            MsgToL2? l1OriginMessage,
-            List<Event> events)?
+    TResult Function(Felt txnHash, Felt actualFee, List<MsgToL1> messagesSent,
+            MsgToL2? l1OriginMessage, List<Event> events)?
         pendingInvokeTxnReceipt,
-    TResult Function(
-            StarknetFieldElement txnHash, StarknetFieldElement actualFee)?
+    TResult Function(Felt txnHash, Felt actualFee)?
         pendingCommonReceiptProperties,
     required TResult orElse(),
   }) {
@@ -1743,23 +1579,23 @@ class _$DeployTxnReceipt implements DeployTxnReceipt {
 
 abstract class DeployTxnReceipt implements TxnReceipt {
   const factory DeployTxnReceipt(
-      {required final StarknetFieldElement txnHash,
-      required final StarknetFieldElement actualFee,
+      {required final Felt txnHash,
+      required final Felt actualFee,
       required final String status,
       required final String? statusData,
-      required final StarknetFieldElement? blockHash,
+      required final Felt? blockHash,
       required final int? blockNumber}) = _$DeployTxnReceipt;
 
   factory DeployTxnReceipt.fromJson(Map<String, dynamic> json) =
       _$DeployTxnReceipt.fromJson;
 
   @override // start of COMMON_RECEIPT_PROPERTIES
-  StarknetFieldElement get txnHash;
+  Felt get txnHash;
   @override
-  StarknetFieldElement get actualFee;
+  Felt get actualFee;
   String get status;
   String? get statusData;
-  StarknetFieldElement? get blockHash;
+  Felt? get blockHash;
   int? get blockNumber;
   @override
   @JsonKey(ignore: true)
@@ -1775,8 +1611,8 @@ abstract class _$$PendingInvokeTxnReceiptCopyWith<$Res>
       __$$PendingInvokeTxnReceiptCopyWithImpl<$Res>;
   @override
   $Res call(
-      {StarknetFieldElement txnHash,
-      StarknetFieldElement actualFee,
+      {Felt txnHash,
+      Felt actualFee,
       List<MsgToL1> messagesSent,
       MsgToL2? l1OriginMessage,
       List<Event> events});
@@ -1808,11 +1644,11 @@ class __$$PendingInvokeTxnReceiptCopyWithImpl<$Res>
       txnHash: txnHash == freezed
           ? _value.txnHash
           : txnHash // ignore: cast_nullable_to_non_nullable
-              as StarknetFieldElement,
+              as Felt,
       actualFee: actualFee == freezed
           ? _value.actualFee
           : actualFee // ignore: cast_nullable_to_non_nullable
-              as StarknetFieldElement,
+              as Felt,
       messagesSent: messagesSent == freezed
           ? _value._messagesSent
           : messagesSent // ignore: cast_nullable_to_non_nullable
@@ -1859,9 +1695,9 @@ class _$PendingInvokeTxnReceipt implements PendingInvokeTxnReceipt {
 
 // start of PENDING_COMMON_RECEIPT_PROPERTIES
   @override
-  final StarknetFieldElement txnHash;
+  final Felt txnHash;
   @override
-  final StarknetFieldElement actualFee;
+  final Felt actualFee;
 // end of PENDING_COMMON_RECEIPT_PROPERTIES
 // start of INVOKE_TXN_RECEIPT_PROPERTIES
   final List<MsgToL1> _messagesSent;
@@ -1924,41 +1760,30 @@ class _$PendingInvokeTxnReceipt implements PendingInvokeTxnReceipt {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(
-            StarknetFieldElement txnHash,
-            StarknetFieldElement actualFee,
+            Felt txnHash,
+            Felt actualFee,
             String status,
             String? statusData,
-            StarknetFieldElement? blockHash,
+            Felt? blockHash,
             int? blockNumber,
             List<MsgToL1> messagesSent,
             MsgToL2? l1OriginMessage,
             List<Event> events)
         invokeTxnReceipt,
-    required TResult Function(
-            StarknetFieldElement txnHash,
-            StarknetFieldElement actualFee,
-            String status,
-            String? statusData,
-            StarknetFieldElement? blockHash,
-            int? blockNumber)
+    required TResult Function(Felt txnHash, Felt actualFee, String status,
+            String? statusData, Felt? blockHash, int? blockNumber)
         declareTxnReceipt,
-    required TResult Function(
-            StarknetFieldElement txnHash,
-            StarknetFieldElement actualFee,
-            String status,
-            String? statusData,
-            StarknetFieldElement? blockHash,
-            int? blockNumber)
+    required TResult Function(Felt txnHash, Felt actualFee, String status,
+            String? statusData, Felt? blockHash, int? blockNumber)
         deployTxnReceipt,
     required TResult Function(
-            StarknetFieldElement txnHash,
-            StarknetFieldElement actualFee,
+            Felt txnHash,
+            Felt actualFee,
             List<MsgToL1> messagesSent,
             MsgToL2? l1OriginMessage,
             List<Event> events)
         pendingInvokeTxnReceipt,
-    required TResult Function(
-            StarknetFieldElement txnHash, StarknetFieldElement actualFee)
+    required TResult Function(Felt txnHash, Felt actualFee)
         pendingCommonReceiptProperties,
   }) {
     return pendingInvokeTxnReceipt(
@@ -1969,41 +1794,26 @@ class _$PendingInvokeTxnReceipt implements PendingInvokeTxnReceipt {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(
-            StarknetFieldElement txnHash,
-            StarknetFieldElement actualFee,
+            Felt txnHash,
+            Felt actualFee,
             String status,
             String? statusData,
-            StarknetFieldElement? blockHash,
+            Felt? blockHash,
             int? blockNumber,
             List<MsgToL1> messagesSent,
             MsgToL2? l1OriginMessage,
             List<Event> events)?
         invokeTxnReceipt,
-    TResult Function(
-            StarknetFieldElement txnHash,
-            StarknetFieldElement actualFee,
-            String status,
-            String? statusData,
-            StarknetFieldElement? blockHash,
-            int? blockNumber)?
+    TResult Function(Felt txnHash, Felt actualFee, String status,
+            String? statusData, Felt? blockHash, int? blockNumber)?
         declareTxnReceipt,
-    TResult Function(
-            StarknetFieldElement txnHash,
-            StarknetFieldElement actualFee,
-            String status,
-            String? statusData,
-            StarknetFieldElement? blockHash,
-            int? blockNumber)?
+    TResult Function(Felt txnHash, Felt actualFee, String status,
+            String? statusData, Felt? blockHash, int? blockNumber)?
         deployTxnReceipt,
-    TResult Function(
-            StarknetFieldElement txnHash,
-            StarknetFieldElement actualFee,
-            List<MsgToL1> messagesSent,
-            MsgToL2? l1OriginMessage,
-            List<Event> events)?
+    TResult Function(Felt txnHash, Felt actualFee, List<MsgToL1> messagesSent,
+            MsgToL2? l1OriginMessage, List<Event> events)?
         pendingInvokeTxnReceipt,
-    TResult Function(
-            StarknetFieldElement txnHash, StarknetFieldElement actualFee)?
+    TResult Function(Felt txnHash, Felt actualFee)?
         pendingCommonReceiptProperties,
   }) {
     return pendingInvokeTxnReceipt?.call(
@@ -2014,41 +1824,26 @@ class _$PendingInvokeTxnReceipt implements PendingInvokeTxnReceipt {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(
-            StarknetFieldElement txnHash,
-            StarknetFieldElement actualFee,
+            Felt txnHash,
+            Felt actualFee,
             String status,
             String? statusData,
-            StarknetFieldElement? blockHash,
+            Felt? blockHash,
             int? blockNumber,
             List<MsgToL1> messagesSent,
             MsgToL2? l1OriginMessage,
             List<Event> events)?
         invokeTxnReceipt,
-    TResult Function(
-            StarknetFieldElement txnHash,
-            StarknetFieldElement actualFee,
-            String status,
-            String? statusData,
-            StarknetFieldElement? blockHash,
-            int? blockNumber)?
+    TResult Function(Felt txnHash, Felt actualFee, String status,
+            String? statusData, Felt? blockHash, int? blockNumber)?
         declareTxnReceipt,
-    TResult Function(
-            StarknetFieldElement txnHash,
-            StarknetFieldElement actualFee,
-            String status,
-            String? statusData,
-            StarknetFieldElement? blockHash,
-            int? blockNumber)?
+    TResult Function(Felt txnHash, Felt actualFee, String status,
+            String? statusData, Felt? blockHash, int? blockNumber)?
         deployTxnReceipt,
-    TResult Function(
-            StarknetFieldElement txnHash,
-            StarknetFieldElement actualFee,
-            List<MsgToL1> messagesSent,
-            MsgToL2? l1OriginMessage,
-            List<Event> events)?
+    TResult Function(Felt txnHash, Felt actualFee, List<MsgToL1> messagesSent,
+            MsgToL2? l1OriginMessage, List<Event> events)?
         pendingInvokeTxnReceipt,
-    TResult Function(
-            StarknetFieldElement txnHash, StarknetFieldElement actualFee)?
+    TResult Function(Felt txnHash, Felt actualFee)?
         pendingCommonReceiptProperties,
     required TResult orElse(),
   }) {
@@ -2113,8 +1908,8 @@ class _$PendingInvokeTxnReceipt implements PendingInvokeTxnReceipt {
 
 abstract class PendingInvokeTxnReceipt implements TxnReceipt {
   const factory PendingInvokeTxnReceipt(
-      {required final StarknetFieldElement txnHash,
-      required final StarknetFieldElement actualFee,
+      {required final Felt txnHash,
+      required final Felt actualFee,
       required final List<MsgToL1> messagesSent,
       required final MsgToL2? l1OriginMessage,
       required final List<Event> events}) = _$PendingInvokeTxnReceipt;
@@ -2123,10 +1918,9 @@ abstract class PendingInvokeTxnReceipt implements TxnReceipt {
       _$PendingInvokeTxnReceipt.fromJson;
 
   @override // start of PENDING_COMMON_RECEIPT_PROPERTIES
-  StarknetFieldElement get txnHash;
+  Felt get txnHash;
   @override
-  StarknetFieldElement
-      get actualFee; // end of PENDING_COMMON_RECEIPT_PROPERTIES
+  Felt get actualFee; // end of PENDING_COMMON_RECEIPT_PROPERTIES
 // start of INVOKE_TXN_RECEIPT_PROPERTIES
   List<MsgToL1> get messagesSent;
   MsgToL2? get l1OriginMessage;
@@ -2145,7 +1939,7 @@ abstract class _$$PendingCommonReceiptPropertiesCopyWith<$Res>
           $Res Function(_$PendingCommonReceiptProperties) then) =
       __$$PendingCommonReceiptPropertiesCopyWithImpl<$Res>;
   @override
-  $Res call({StarknetFieldElement txnHash, StarknetFieldElement actualFee});
+  $Res call({Felt txnHash, Felt actualFee});
 }
 
 /// @nodoc
@@ -2170,11 +1964,11 @@ class __$$PendingCommonReceiptPropertiesCopyWithImpl<$Res>
       txnHash: txnHash == freezed
           ? _value.txnHash
           : txnHash // ignore: cast_nullable_to_non_nullable
-              as StarknetFieldElement,
+              as Felt,
       actualFee: actualFee == freezed
           ? _value.actualFee
           : actualFee // ignore: cast_nullable_to_non_nullable
-              as StarknetFieldElement,
+              as Felt,
     ));
   }
 }
@@ -2192,9 +1986,9 @@ class _$PendingCommonReceiptProperties
       _$$PendingCommonReceiptPropertiesFromJson(json);
 
   @override
-  final StarknetFieldElement txnHash;
+  final Felt txnHash;
   @override
-  final StarknetFieldElement actualFee;
+  final Felt actualFee;
 
   @JsonKey(name: 'runtimeType')
   final String $type;
@@ -2230,41 +2024,30 @@ class _$PendingCommonReceiptProperties
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(
-            StarknetFieldElement txnHash,
-            StarknetFieldElement actualFee,
+            Felt txnHash,
+            Felt actualFee,
             String status,
             String? statusData,
-            StarknetFieldElement? blockHash,
+            Felt? blockHash,
             int? blockNumber,
             List<MsgToL1> messagesSent,
             MsgToL2? l1OriginMessage,
             List<Event> events)
         invokeTxnReceipt,
-    required TResult Function(
-            StarknetFieldElement txnHash,
-            StarknetFieldElement actualFee,
-            String status,
-            String? statusData,
-            StarknetFieldElement? blockHash,
-            int? blockNumber)
+    required TResult Function(Felt txnHash, Felt actualFee, String status,
+            String? statusData, Felt? blockHash, int? blockNumber)
         declareTxnReceipt,
-    required TResult Function(
-            StarknetFieldElement txnHash,
-            StarknetFieldElement actualFee,
-            String status,
-            String? statusData,
-            StarknetFieldElement? blockHash,
-            int? blockNumber)
+    required TResult Function(Felt txnHash, Felt actualFee, String status,
+            String? statusData, Felt? blockHash, int? blockNumber)
         deployTxnReceipt,
     required TResult Function(
-            StarknetFieldElement txnHash,
-            StarknetFieldElement actualFee,
+            Felt txnHash,
+            Felt actualFee,
             List<MsgToL1> messagesSent,
             MsgToL2? l1OriginMessage,
             List<Event> events)
         pendingInvokeTxnReceipt,
-    required TResult Function(
-            StarknetFieldElement txnHash, StarknetFieldElement actualFee)
+    required TResult Function(Felt txnHash, Felt actualFee)
         pendingCommonReceiptProperties,
   }) {
     return pendingCommonReceiptProperties(txnHash, actualFee);
@@ -2274,41 +2057,26 @@ class _$PendingCommonReceiptProperties
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(
-            StarknetFieldElement txnHash,
-            StarknetFieldElement actualFee,
+            Felt txnHash,
+            Felt actualFee,
             String status,
             String? statusData,
-            StarknetFieldElement? blockHash,
+            Felt? blockHash,
             int? blockNumber,
             List<MsgToL1> messagesSent,
             MsgToL2? l1OriginMessage,
             List<Event> events)?
         invokeTxnReceipt,
-    TResult Function(
-            StarknetFieldElement txnHash,
-            StarknetFieldElement actualFee,
-            String status,
-            String? statusData,
-            StarknetFieldElement? blockHash,
-            int? blockNumber)?
+    TResult Function(Felt txnHash, Felt actualFee, String status,
+            String? statusData, Felt? blockHash, int? blockNumber)?
         declareTxnReceipt,
-    TResult Function(
-            StarknetFieldElement txnHash,
-            StarknetFieldElement actualFee,
-            String status,
-            String? statusData,
-            StarknetFieldElement? blockHash,
-            int? blockNumber)?
+    TResult Function(Felt txnHash, Felt actualFee, String status,
+            String? statusData, Felt? blockHash, int? blockNumber)?
         deployTxnReceipt,
-    TResult Function(
-            StarknetFieldElement txnHash,
-            StarknetFieldElement actualFee,
-            List<MsgToL1> messagesSent,
-            MsgToL2? l1OriginMessage,
-            List<Event> events)?
+    TResult Function(Felt txnHash, Felt actualFee, List<MsgToL1> messagesSent,
+            MsgToL2? l1OriginMessage, List<Event> events)?
         pendingInvokeTxnReceipt,
-    TResult Function(
-            StarknetFieldElement txnHash, StarknetFieldElement actualFee)?
+    TResult Function(Felt txnHash, Felt actualFee)?
         pendingCommonReceiptProperties,
   }) {
     return pendingCommonReceiptProperties?.call(txnHash, actualFee);
@@ -2318,41 +2086,26 @@ class _$PendingCommonReceiptProperties
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(
-            StarknetFieldElement txnHash,
-            StarknetFieldElement actualFee,
+            Felt txnHash,
+            Felt actualFee,
             String status,
             String? statusData,
-            StarknetFieldElement? blockHash,
+            Felt? blockHash,
             int? blockNumber,
             List<MsgToL1> messagesSent,
             MsgToL2? l1OriginMessage,
             List<Event> events)?
         invokeTxnReceipt,
-    TResult Function(
-            StarknetFieldElement txnHash,
-            StarknetFieldElement actualFee,
-            String status,
-            String? statusData,
-            StarknetFieldElement? blockHash,
-            int? blockNumber)?
+    TResult Function(Felt txnHash, Felt actualFee, String status,
+            String? statusData, Felt? blockHash, int? blockNumber)?
         declareTxnReceipt,
-    TResult Function(
-            StarknetFieldElement txnHash,
-            StarknetFieldElement actualFee,
-            String status,
-            String? statusData,
-            StarknetFieldElement? blockHash,
-            int? blockNumber)?
+    TResult Function(Felt txnHash, Felt actualFee, String status,
+            String? statusData, Felt? blockHash, int? blockNumber)?
         deployTxnReceipt,
-    TResult Function(
-            StarknetFieldElement txnHash,
-            StarknetFieldElement actualFee,
-            List<MsgToL1> messagesSent,
-            MsgToL2? l1OriginMessage,
-            List<Event> events)?
+    TResult Function(Felt txnHash, Felt actualFee, List<MsgToL1> messagesSent,
+            MsgToL2? l1OriginMessage, List<Event> events)?
         pendingInvokeTxnReceipt,
-    TResult Function(
-            StarknetFieldElement txnHash, StarknetFieldElement actualFee)?
+    TResult Function(Felt txnHash, Felt actualFee)?
         pendingCommonReceiptProperties,
     required TResult orElse(),
   }) {
@@ -2416,17 +2169,16 @@ class _$PendingCommonReceiptProperties
 
 abstract class PendingCommonReceiptProperties implements TxnReceipt {
   const factory PendingCommonReceiptProperties(
-          {required final StarknetFieldElement txnHash,
-          required final StarknetFieldElement actualFee}) =
-      _$PendingCommonReceiptProperties;
+      {required final Felt txnHash,
+      required final Felt actualFee}) = _$PendingCommonReceiptProperties;
 
   factory PendingCommonReceiptProperties.fromJson(Map<String, dynamic> json) =
       _$PendingCommonReceiptProperties.fromJson;
 
   @override
-  StarknetFieldElement get txnHash;
+  Felt get txnHash;
   @override
-  StarknetFieldElement get actualFee;
+  Felt get actualFee;
   @override
   @JsonKey(ignore: true)
   _$$PendingCommonReceiptPropertiesCopyWith<_$PendingCommonReceiptProperties>

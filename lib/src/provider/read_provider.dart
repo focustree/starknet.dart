@@ -20,14 +20,12 @@ abstract class ReadProvider {
   ///
   /// [Spec](https://github.com/starkware-libs/starknet-specs/blob/3d3b2d7ad6899f64043c0deaa8a40d3d8c9b1788/api/starknet_api_openrpc.json#L103-L149)
   Future<GetStorage> getStorageAt(
-      {required StarknetFieldElement contractAddress,
-      required StarknetFieldElement key,
-      String blockId});
+      {required Felt contractAddress, required Felt key, String blockId});
 
   /// Gets the details and status of a submitted transaction from hash of a transaction.
   ///
   /// [Spec](https://github.com/starkware-libs/starknet-specs/blob/30e5bafcda60c31b5fb4021b4f5ddcfc18d2ff7d/api/starknet_api_openrpc.json#L150-L175)
-  Future<GetTransaction> getTransactionByHash(StarknetFieldElement txnHash);
+  Future<GetTransaction> getTransactionByHash(Felt txnHash);
 
   /// Gets the details and status of a submitted transaction from block id and index.
   ///
@@ -40,8 +38,7 @@ abstract class ReadProvider {
   /// Gets the details and status of a submitted transaction from hash of a transaction.
   ///
   /// [Spec](https://github.com/starkware-libs/starknet-specs/blob/30e5bafcda60c31b5fb4021b4f5ddcfc18d2ff7d/api/starknet_api_openrpc.json#L214-L239)
-  Future<GetTransactionReceipt> getTransactionReceipt(
-      StarknetFieldElement txnHash);
+  Future<GetTransactionReceipt> getTransactionReceipt(Felt txnHash);
 
   /// Gets the currently configured StarkNet chain id.
   ///
@@ -68,7 +65,7 @@ abstract class ReadProvider {
   /// [Spec](https://github.com/starkware-libs/starknet-specs/blob/5cafa4cbaf5e4596bf309dfbde1bd0c4fa2ce1ce/api/starknet_api_openrpc.json#L628-L664)
   Future<GetNonce> getNonce(
     BlockId blockId,
-    StarknetFieldElement contractAddress,
+    Felt contractAddress,
   );
 }
 
@@ -103,8 +100,8 @@ class JsonRpcReadProvider implements ReadProvider {
 
   @override
   Future<GetStorage> getStorageAt({
-    required StarknetFieldElement contractAddress,
-    required StarknetFieldElement key,
+    required Felt contractAddress,
+    required Felt key,
     String blockId = 'latest',
   }) async {
     return callRpcEndpoint(
@@ -115,8 +112,7 @@ class JsonRpcReadProvider implements ReadProvider {
   }
 
   @override
-  Future<GetTransaction> getTransactionByHash(
-      StarknetFieldElement transactionHash) {
+  Future<GetTransaction> getTransactionByHash(Felt transactionHash) {
     return callRpcEndpoint(
       nodeUri: nodeUri,
       method: 'starknet_getTransactionByHash',
@@ -135,8 +131,7 @@ class JsonRpcReadProvider implements ReadProvider {
   }
 
   @override
-  Future<GetTransactionReceipt> getTransactionReceipt(
-      StarknetFieldElement transactionHash) {
+  Future<GetTransactionReceipt> getTransactionReceipt(Felt transactionHash) {
     return callRpcEndpoint(
       nodeUri: nodeUri,
       method: 'starknet_getTransactionReceipt',
@@ -183,7 +178,7 @@ class JsonRpcReadProvider implements ReadProvider {
   @override
   Future<GetNonce> getNonce(
     BlockId blockId,
-    StarknetFieldElement contractAddress,
+    Felt contractAddress,
   ) {
     return callRpcEndpoint(
       nodeUri: nodeUri,

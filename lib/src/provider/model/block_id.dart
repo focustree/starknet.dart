@@ -10,7 +10,7 @@ part 'block_id.g.dart';
 //@JsonSerializable(converters: [BlockIdConverter()])
 class BlockId with _$BlockId {
   const factory BlockId.blockHash({
-    required StarknetFieldElement blockHash,
+    required Felt blockHash,
   }) = BlockIdHash;
   const factory BlockId.blockNumber({
     required int blockNumber,
@@ -48,7 +48,7 @@ class BlockIdConverter implements JsonConverter<BlockId, dynamic> {
 
   @override
   dynamic toJson(BlockId data) {
-    return data.when<dynamic>(blockHash: (StarknetFieldElement blockHash) {
+    return data.when<dynamic>(blockHash: (Felt blockHash) {
       return <String, dynamic>{'block_hash': blockHash};
     }, blockNumber: (int blockNumber) {
       return <String, dynamic>{'block_number': blockNumber};

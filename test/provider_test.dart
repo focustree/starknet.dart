@@ -39,7 +39,7 @@ void main() {
         final response = await provider.call(
             request: FunctionCall(
                 // Briq NFT contract address
-                contractAddress: StarknetFieldElement.fromHexString(
+                contractAddress: Felt.fromHexString(
                     '0x0266b1276d23ffb53d99da3f01be7e29fa024dd33cd7f7b1eb7a46c67891c9d0'),
                 entryPointSelector: getSelectorByName('name'),
                 calldata: []));
@@ -47,26 +47,26 @@ void main() {
             error: (error) => fail("Shouldn't fail"),
             result: (result) {
               expect(result, hasLength(1));
-              expect(result[0], StarknetFieldElement.fromString('briq'));
+              expect(result[0], Felt.fromString('briq'));
             });
       });
       test('calls a read-only method with non-empty calldata', () async {
         final response = await provider.call(
             request: FunctionCall(
                 // Starknet ID contract address
-                contractAddress: StarknetFieldElement.fromHexString(
+                contractAddress: Felt.fromHexString(
                     '0x033233531959c1da39c28daf337e25e2deadda80ce988290306ffabcd735ccbd'),
                 entryPointSelector: getSelectorByName('balance_of'),
                 calldata: [
               // Address owning 5 Starknet IDs
-              StarknetFieldElement.fromHexString(
+              Felt.fromHexString(
                   '0x0367c0c4603a29Bc5aCA8E07C6A2776D7C0d325945aBB4f772f448b345Ca4Cf7')
             ]));
         response.when(
             error: (error) => fail("Shouldn't fail"),
             result: (result) {
               expect(result, hasLength(2));
-              expect(result[0], StarknetFieldElement.fromInt(5));
+              expect(result[0], Felt.fromInt(5));
             });
       });
     });
@@ -74,7 +74,7 @@ void main() {
     group('getStorageAt', () {
       test('returns the ERC20_symbol value for a ERC20 contract', () async {
         final response = await provider.getStorageAt(
-          contractAddress: StarknetFieldElement.fromHexString(
+          contractAddress: Felt.fromHexString(
               '0x0335c0d0c2b25730b7ed46e0fceed2a55d7743e300f393535c88470e5e15ae64'),
           key: getSelectorByName('ERC20_symbol'),
         );
@@ -82,13 +82,13 @@ void main() {
         response.when(
             error: (error) => fail("Shouldn't fail"),
             result: (result) {
-              expect(result, StarknetFieldElement.fromHexString("0x5a475157"));
+              expect(result, Felt.fromHexString("0x5a475157"));
             });
       });
 
       test('reading key from invalid contract should fail', () async {
         final response = await provider.getStorageAt(
-          contractAddress: StarknetFieldElement.fromHexString(
+          contractAddress: Felt.fromHexString(
               '0x0000000000000000000000000000000000000000000000000000000000000000'),
           key: getSelectorByName('ERC20_symbol'),
         );
@@ -105,7 +105,7 @@ void main() {
       test('returns the transaction details based on the transaction hash',
           () async {
         final response = await provider.getTransactionByHash(
-          StarknetFieldElement.fromHexString(
+          Felt.fromHexString(
               '0x54633821b88433a6ecab8e849beebdcccd353f3306d446830dadc42ef35046e'),
         );
 
@@ -114,7 +114,7 @@ void main() {
             result: (result) {
               expect(
                   result.txnHash,
-                  StarknetFieldElement.fromHexString(
+                  Felt.fromHexString(
                       "0x54633821b88433a6ecab8e849beebdcccd353f3306d446830dadc42ef35046e"));
             });
       });
@@ -122,7 +122,7 @@ void main() {
       test('reading transaction from invalid transaction hash should fail',
           () async {
         final response = await provider.getTransactionByHash(
-          StarknetFieldElement.fromHexString(
+          Felt.fromHexString(
               '0x000000000000000000000000000000000000000000000000000000000000000'),
         );
 
@@ -136,7 +136,7 @@ void main() {
       test('returns the transaction receipt based on the transaction hash',
           () async {
         final response = await provider.getTransactionReceipt(
-          StarknetFieldElement.fromHexString(
+          Felt.fromHexString(
               '0x136e5212e37cd44606058fc155d725a8b865b2fba4874f650f524d22e1312b9'),
         );
 
@@ -145,11 +145,10 @@ void main() {
             result: (result) {
               expect(
                   result.txnHash,
-                  StarknetFieldElement.fromHexString(
+                  Felt.fromHexString(
                       '0x136e5212e37cd44606058fc155d725a8b865b2fba4874f650f524d22e1312b9'));
 
-              expect(result.actualFee,
-                  StarknetFieldElement.fromHexString('0x22426b1c1f16'));
+              expect(result.actualFee, Felt.fromHexString('0x22426b1c1f16'));
             });
       });
 
@@ -157,7 +156,7 @@ void main() {
           'reading transaction receipt from invalid transaction hash should fail',
           () async {
         final response = await provider.getTransactionByHash(
-          StarknetFieldElement.fromHexString(
+          Felt.fromHexString(
               '0x000000000000000000000000000000000000000000000000000000000000000'),
         );
 
@@ -201,7 +200,7 @@ void main() {
           'returns unimplemented method error for getTransactionByBlockIdAndIndex',
           () async {
         BlockId blockId = BlockId.blockHash(
-            blockHash: StarknetFieldElement.fromHexString(
+            blockHash: Felt.fromHexString(
                 '0x4b7ca197f1e80a4503f122a8f4d96d71c6467e92d1025f2216cc480b317cc75'));
 
         final response =
@@ -253,9 +252,9 @@ void main() {
       test('returns unimplemented method error for getNonce', () async {
         final response = await provider.getNonce(
           BlockId.blockHash(
-              blockHash: StarknetFieldElement.fromHexString(
+              blockHash: Felt.fromHexString(
                   '0x3e506ab93bb22e483c5ddeee5db90a815cced1189805630673bbf86dbce1d79')),
-          StarknetFieldElement.fromHexString(
+          Felt.fromHexString(
               '0x7cda35873823b661b560e5eb5fa901d2190512ea2006b7d504082ace819094f'),
         );
 

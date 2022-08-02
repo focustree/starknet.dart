@@ -8,7 +8,7 @@ part 'msg_to_l2.g.dart';
 class MsgToL2 with _$MsgToL2 {
   const factory MsgToL2({
     required String? fromAddress,
-    required List<StarknetFieldElement>? payload,
+    required List<Felt>? payload,
   }) = _MsgToL2;
 
   factory MsgToL2.fromJson(Map<String, Object?> json) =>

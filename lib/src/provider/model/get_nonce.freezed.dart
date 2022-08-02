@@ -31,19 +31,19 @@ GetNonce _$GetNonceFromJson(Map<String, dynamic> json) {
 mixin _$GetNonce {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(StarknetFieldElement result) result,
+    required TResult Function(Felt result) result,
     required TResult Function(JsonRpcApiError error) error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(StarknetFieldElement result)? result,
+    TResult Function(Felt result)? result,
     TResult Function(JsonRpcApiError error)? error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(StarknetFieldElement result)? result,
+    TResult Function(Felt result)? result,
     TResult Function(JsonRpcApiError error)? error,
     required TResult orElse(),
   }) =>
@@ -90,7 +90,7 @@ abstract class _$$GetNonceResultCopyWith<$Res> {
   factory _$$GetNonceResultCopyWith(
           _$GetNonceResult value, $Res Function(_$GetNonceResult) then) =
       __$$GetNonceResultCopyWithImpl<$Res>;
-  $Res call({StarknetFieldElement result});
+  $Res call({Felt result});
 }
 
 /// @nodoc
@@ -111,7 +111,7 @@ class __$$GetNonceResultCopyWithImpl<$Res> extends _$GetNonceCopyWithImpl<$Res>
       result: result == freezed
           ? _value.result
           : result // ignore: cast_nullable_to_non_nullable
-              as StarknetFieldElement,
+              as Felt,
     ));
   }
 }
@@ -126,7 +126,7 @@ class _$GetNonceResult implements GetNonceResult {
       _$$GetNonceResultFromJson(json);
 
   @override
-  final StarknetFieldElement result;
+  final Felt result;
 
   @JsonKey(name: 'runtimeType')
   final String $type;
@@ -157,7 +157,7 @@ class _$GetNonceResult implements GetNonceResult {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(StarknetFieldElement result) result,
+    required TResult Function(Felt result) result,
     required TResult Function(JsonRpcApiError error) error,
   }) {
     return result(this.result);
@@ -166,7 +166,7 @@ class _$GetNonceResult implements GetNonceResult {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(StarknetFieldElement result)? result,
+    TResult Function(Felt result)? result,
     TResult Function(JsonRpcApiError error)? error,
   }) {
     return result?.call(this.result);
@@ -175,7 +175,7 @@ class _$GetNonceResult implements GetNonceResult {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(StarknetFieldElement result)? result,
+    TResult Function(Felt result)? result,
     TResult Function(JsonRpcApiError error)? error,
     required TResult orElse(),
   }) {
@@ -225,13 +225,12 @@ class _$GetNonceResult implements GetNonceResult {
 }
 
 abstract class GetNonceResult implements GetNonce {
-  const factory GetNonceResult({required final StarknetFieldElement result}) =
-      _$GetNonceResult;
+  const factory GetNonceResult({required final Felt result}) = _$GetNonceResult;
 
   factory GetNonceResult.fromJson(Map<String, dynamic> json) =
       _$GetNonceResult.fromJson;
 
-  StarknetFieldElement get result;
+  Felt get result;
   @JsonKey(ignore: true)
   _$$GetNonceResultCopyWith<_$GetNonceResult> get copyWith =>
       throw _privateConstructorUsedError;
@@ -318,7 +317,7 @@ class _$GetNonceError implements GetNonceError {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(StarknetFieldElement result) result,
+    required TResult Function(Felt result) result,
     required TResult Function(JsonRpcApiError error) error,
   }) {
     return error(this.error);
@@ -327,7 +326,7 @@ class _$GetNonceError implements GetNonceError {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(StarknetFieldElement result)? result,
+    TResult Function(Felt result)? result,
     TResult Function(JsonRpcApiError error)? error,
   }) {
     return error?.call(this.error);
@@ -336,7 +335,7 @@ class _$GetNonceError implements GetNonceError {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(StarknetFieldElement result)? result,
+    TResult Function(Felt result)? result,
     TResult Function(JsonRpcApiError error)? error,
     required TResult orElse(),
   }) {

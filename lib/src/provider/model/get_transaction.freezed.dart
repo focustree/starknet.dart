@@ -431,108 +431,108 @@ Txn _$TxnFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$Txn {
 // start of COMMON_TXN_PROPERTIES
-  StarknetFieldElement? get txnHash => throw _privateConstructorUsedError;
+  Felt? get txnHash => throw _privateConstructorUsedError;
   String? get version => throw _privateConstructorUsedError;
   String? get type => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(
-            StarknetFieldElement? txnHash,
-            StarknetFieldElement? maxFee,
+            Felt? txnHash,
+            Felt? maxFee,
             String? version,
-            List<StarknetFieldElement>? signature,
-            StarknetFieldElement? nonce,
+            List<Felt>? signature,
+            Felt? nonce,
             String? type,
-            StarknetFieldElement? contractAddress,
-            StarknetFieldElement? entryPointSelector,
-            List<StarknetFieldElement>? calldata)
+            Felt? contractAddress,
+            Felt? entryPointSelector,
+            List<Felt>? calldata)
         invokeTxn,
     required TResult Function(
-            StarknetFieldElement? txnHash,
-            StarknetFieldElement? maxFee,
+            Felt? txnHash,
+            Felt? maxFee,
             String? version,
-            List<StarknetFieldElement>? signature,
-            StarknetFieldElement? nonce,
+            List<Felt>? signature,
+            Felt? nonce,
             String? type,
-            StarknetFieldElement? classHash,
-            StarknetFieldElement? senderAddress)
+            Felt? classHash,
+            Felt? senderAddress)
         declareTxn,
     required TResult Function(
-            StarknetFieldElement? txnHash,
-            StarknetFieldElement? classHash,
+            Felt? txnHash,
+            Felt? classHash,
             String? version,
             String? type,
-            StarknetFieldElement? contractAddress,
-            StarknetFieldElement? contractAddressSalt,
-            List<StarknetFieldElement>? constructorCalldata)
+            Felt? contractAddress,
+            Felt? contractAddressSalt,
+            List<Felt>? constructorCalldata)
         deployTxn,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(
-            StarknetFieldElement? txnHash,
-            StarknetFieldElement? maxFee,
+            Felt? txnHash,
+            Felt? maxFee,
             String? version,
-            List<StarknetFieldElement>? signature,
-            StarknetFieldElement? nonce,
+            List<Felt>? signature,
+            Felt? nonce,
             String? type,
-            StarknetFieldElement? contractAddress,
-            StarknetFieldElement? entryPointSelector,
-            List<StarknetFieldElement>? calldata)?
+            Felt? contractAddress,
+            Felt? entryPointSelector,
+            List<Felt>? calldata)?
         invokeTxn,
     TResult Function(
-            StarknetFieldElement? txnHash,
-            StarknetFieldElement? maxFee,
+            Felt? txnHash,
+            Felt? maxFee,
             String? version,
-            List<StarknetFieldElement>? signature,
-            StarknetFieldElement? nonce,
+            List<Felt>? signature,
+            Felt? nonce,
             String? type,
-            StarknetFieldElement? classHash,
-            StarknetFieldElement? senderAddress)?
+            Felt? classHash,
+            Felt? senderAddress)?
         declareTxn,
     TResult Function(
-            StarknetFieldElement? txnHash,
-            StarknetFieldElement? classHash,
+            Felt? txnHash,
+            Felt? classHash,
             String? version,
             String? type,
-            StarknetFieldElement? contractAddress,
-            StarknetFieldElement? contractAddressSalt,
-            List<StarknetFieldElement>? constructorCalldata)?
+            Felt? contractAddress,
+            Felt? contractAddressSalt,
+            List<Felt>? constructorCalldata)?
         deployTxn,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(
-            StarknetFieldElement? txnHash,
-            StarknetFieldElement? maxFee,
+            Felt? txnHash,
+            Felt? maxFee,
             String? version,
-            List<StarknetFieldElement>? signature,
-            StarknetFieldElement? nonce,
+            List<Felt>? signature,
+            Felt? nonce,
             String? type,
-            StarknetFieldElement? contractAddress,
-            StarknetFieldElement? entryPointSelector,
-            List<StarknetFieldElement>? calldata)?
+            Felt? contractAddress,
+            Felt? entryPointSelector,
+            List<Felt>? calldata)?
         invokeTxn,
     TResult Function(
-            StarknetFieldElement? txnHash,
-            StarknetFieldElement? maxFee,
+            Felt? txnHash,
+            Felt? maxFee,
             String? version,
-            List<StarknetFieldElement>? signature,
-            StarknetFieldElement? nonce,
+            List<Felt>? signature,
+            Felt? nonce,
             String? type,
-            StarknetFieldElement? classHash,
-            StarknetFieldElement? senderAddress)?
+            Felt? classHash,
+            Felt? senderAddress)?
         declareTxn,
     TResult Function(
-            StarknetFieldElement? txnHash,
-            StarknetFieldElement? classHash,
+            Felt? txnHash,
+            Felt? classHash,
             String? version,
             String? type,
-            StarknetFieldElement? contractAddress,
-            StarknetFieldElement? contractAddressSalt,
-            List<StarknetFieldElement>? constructorCalldata)?
+            Felt? contractAddress,
+            Felt? contractAddressSalt,
+            List<Felt>? constructorCalldata)?
         deployTxn,
     required TResult orElse(),
   }) =>
@@ -568,7 +568,7 @@ mixin _$Txn {
 abstract class $TxnCopyWith<$Res> {
   factory $TxnCopyWith(Txn value, $Res Function(Txn) then) =
       _$TxnCopyWithImpl<$Res>;
-  $Res call({StarknetFieldElement? txnHash, String? version, String? type});
+  $Res call({Felt? txnHash, String? version, String? type});
 }
 
 /// @nodoc
@@ -589,7 +589,7 @@ class _$TxnCopyWithImpl<$Res> implements $TxnCopyWith<$Res> {
       txnHash: txnHash == freezed
           ? _value.txnHash
           : txnHash // ignore: cast_nullable_to_non_nullable
-              as StarknetFieldElement?,
+              as Felt?,
       version: version == freezed
           ? _value.version
           : version // ignore: cast_nullable_to_non_nullable
@@ -609,15 +609,15 @@ abstract class _$$InvokeTxnCopyWith<$Res> implements $TxnCopyWith<$Res> {
       __$$InvokeTxnCopyWithImpl<$Res>;
   @override
   $Res call(
-      {StarknetFieldElement? txnHash,
-      StarknetFieldElement? maxFee,
+      {Felt? txnHash,
+      Felt? maxFee,
       String? version,
-      List<StarknetFieldElement>? signature,
-      StarknetFieldElement? nonce,
+      List<Felt>? signature,
+      Felt? nonce,
       String? type,
-      StarknetFieldElement? contractAddress,
-      StarknetFieldElement? entryPointSelector,
-      List<StarknetFieldElement>? calldata});
+      Felt? contractAddress,
+      Felt? entryPointSelector,
+      List<Felt>? calldata});
 }
 
 /// @nodoc
@@ -646,11 +646,11 @@ class __$$InvokeTxnCopyWithImpl<$Res> extends _$TxnCopyWithImpl<$Res>
       txnHash: txnHash == freezed
           ? _value.txnHash
           : txnHash // ignore: cast_nullable_to_non_nullable
-              as StarknetFieldElement?,
+              as Felt?,
       maxFee: maxFee == freezed
           ? _value.maxFee
           : maxFee // ignore: cast_nullable_to_non_nullable
-              as StarknetFieldElement?,
+              as Felt?,
       version: version == freezed
           ? _value.version
           : version // ignore: cast_nullable_to_non_nullable
@@ -658,11 +658,11 @@ class __$$InvokeTxnCopyWithImpl<$Res> extends _$TxnCopyWithImpl<$Res>
       signature: signature == freezed
           ? _value._signature
           : signature // ignore: cast_nullable_to_non_nullable
-              as List<StarknetFieldElement>?,
+              as List<Felt>?,
       nonce: nonce == freezed
           ? _value.nonce
           : nonce // ignore: cast_nullable_to_non_nullable
-              as StarknetFieldElement?,
+              as Felt?,
       type: type == freezed
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
@@ -670,15 +670,15 @@ class __$$InvokeTxnCopyWithImpl<$Res> extends _$TxnCopyWithImpl<$Res>
       contractAddress: contractAddress == freezed
           ? _value.contractAddress
           : contractAddress // ignore: cast_nullable_to_non_nullable
-              as StarknetFieldElement?,
+              as Felt?,
       entryPointSelector: entryPointSelector == freezed
           ? _value.entryPointSelector
           : entryPointSelector // ignore: cast_nullable_to_non_nullable
-              as StarknetFieldElement?,
+              as Felt?,
       calldata: calldata == freezed
           ? _value._calldata
           : calldata // ignore: cast_nullable_to_non_nullable
-              as List<StarknetFieldElement>?,
+              as List<Felt>?,
     ));
   }
 }
@@ -690,12 +690,12 @@ class _$InvokeTxn implements InvokeTxn {
       {required this.txnHash,
       required this.maxFee,
       required this.version,
-      required final List<StarknetFieldElement>? signature,
+      required final List<Felt>? signature,
       required this.nonce,
       required this.type,
       required this.contractAddress,
       required this.entryPointSelector,
-      required final List<StarknetFieldElement>? calldata,
+      required final List<Felt>? calldata,
       final String? $type})
       : _signature = signature,
         _calldata = calldata,
@@ -706,14 +706,14 @@ class _$InvokeTxn implements InvokeTxn {
 
 // start of COMMON_TXN_PROPERTIES
   @override
-  final StarknetFieldElement? txnHash;
+  final Felt? txnHash;
   @override
-  final StarknetFieldElement? maxFee;
+  final Felt? maxFee;
   @override
   final String? version;
-  final List<StarknetFieldElement>? _signature;
+  final List<Felt>? _signature;
   @override
-  List<StarknetFieldElement>? get signature {
+  List<Felt>? get signature {
     final value = _signature;
     if (value == null) return null;
     // ignore: implicit_dynamic_type
@@ -721,18 +721,18 @@ class _$InvokeTxn implements InvokeTxn {
   }
 
   @override
-  final StarknetFieldElement? nonce;
+  final Felt? nonce;
   @override
   final String? type;
 // end of COMMON_TXN_PROPERTIES
 // start of FUNCTION_CALL
   @override
-  final StarknetFieldElement? contractAddress;
+  final Felt? contractAddress;
   @override
-  final StarknetFieldElement? entryPointSelector;
-  final List<StarknetFieldElement>? _calldata;
+  final Felt? entryPointSelector;
+  final List<Felt>? _calldata;
   @override
-  List<StarknetFieldElement>? get calldata {
+  List<Felt>? get calldata {
     final value = _calldata;
     if (value == null) return null;
     // ignore: implicit_dynamic_type
@@ -789,34 +789,34 @@ class _$InvokeTxn implements InvokeTxn {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(
-            StarknetFieldElement? txnHash,
-            StarknetFieldElement? maxFee,
+            Felt? txnHash,
+            Felt? maxFee,
             String? version,
-            List<StarknetFieldElement>? signature,
-            StarknetFieldElement? nonce,
+            List<Felt>? signature,
+            Felt? nonce,
             String? type,
-            StarknetFieldElement? contractAddress,
-            StarknetFieldElement? entryPointSelector,
-            List<StarknetFieldElement>? calldata)
+            Felt? contractAddress,
+            Felt? entryPointSelector,
+            List<Felt>? calldata)
         invokeTxn,
     required TResult Function(
-            StarknetFieldElement? txnHash,
-            StarknetFieldElement? maxFee,
+            Felt? txnHash,
+            Felt? maxFee,
             String? version,
-            List<StarknetFieldElement>? signature,
-            StarknetFieldElement? nonce,
+            List<Felt>? signature,
+            Felt? nonce,
             String? type,
-            StarknetFieldElement? classHash,
-            StarknetFieldElement? senderAddress)
+            Felt? classHash,
+            Felt? senderAddress)
         declareTxn,
     required TResult Function(
-            StarknetFieldElement? txnHash,
-            StarknetFieldElement? classHash,
+            Felt? txnHash,
+            Felt? classHash,
             String? version,
             String? type,
-            StarknetFieldElement? contractAddress,
-            StarknetFieldElement? contractAddressSalt,
-            List<StarknetFieldElement>? constructorCalldata)
+            Felt? contractAddress,
+            Felt? contractAddressSalt,
+            List<Felt>? constructorCalldata)
         deployTxn,
   }) {
     return invokeTxn(txnHash, maxFee, version, signature, nonce, type,
@@ -827,34 +827,34 @@ class _$InvokeTxn implements InvokeTxn {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(
-            StarknetFieldElement? txnHash,
-            StarknetFieldElement? maxFee,
+            Felt? txnHash,
+            Felt? maxFee,
             String? version,
-            List<StarknetFieldElement>? signature,
-            StarknetFieldElement? nonce,
+            List<Felt>? signature,
+            Felt? nonce,
             String? type,
-            StarknetFieldElement? contractAddress,
-            StarknetFieldElement? entryPointSelector,
-            List<StarknetFieldElement>? calldata)?
+            Felt? contractAddress,
+            Felt? entryPointSelector,
+            List<Felt>? calldata)?
         invokeTxn,
     TResult Function(
-            StarknetFieldElement? txnHash,
-            StarknetFieldElement? maxFee,
+            Felt? txnHash,
+            Felt? maxFee,
             String? version,
-            List<StarknetFieldElement>? signature,
-            StarknetFieldElement? nonce,
+            List<Felt>? signature,
+            Felt? nonce,
             String? type,
-            StarknetFieldElement? classHash,
-            StarknetFieldElement? senderAddress)?
+            Felt? classHash,
+            Felt? senderAddress)?
         declareTxn,
     TResult Function(
-            StarknetFieldElement? txnHash,
-            StarknetFieldElement? classHash,
+            Felt? txnHash,
+            Felt? classHash,
             String? version,
             String? type,
-            StarknetFieldElement? contractAddress,
-            StarknetFieldElement? contractAddressSalt,
-            List<StarknetFieldElement>? constructorCalldata)?
+            Felt? contractAddress,
+            Felt? contractAddressSalt,
+            List<Felt>? constructorCalldata)?
         deployTxn,
   }) {
     return invokeTxn?.call(txnHash, maxFee, version, signature, nonce, type,
@@ -865,34 +865,34 @@ class _$InvokeTxn implements InvokeTxn {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(
-            StarknetFieldElement? txnHash,
-            StarknetFieldElement? maxFee,
+            Felt? txnHash,
+            Felt? maxFee,
             String? version,
-            List<StarknetFieldElement>? signature,
-            StarknetFieldElement? nonce,
+            List<Felt>? signature,
+            Felt? nonce,
             String? type,
-            StarknetFieldElement? contractAddress,
-            StarknetFieldElement? entryPointSelector,
-            List<StarknetFieldElement>? calldata)?
+            Felt? contractAddress,
+            Felt? entryPointSelector,
+            List<Felt>? calldata)?
         invokeTxn,
     TResult Function(
-            StarknetFieldElement? txnHash,
-            StarknetFieldElement? maxFee,
+            Felt? txnHash,
+            Felt? maxFee,
             String? version,
-            List<StarknetFieldElement>? signature,
-            StarknetFieldElement? nonce,
+            List<Felt>? signature,
+            Felt? nonce,
             String? type,
-            StarknetFieldElement? classHash,
-            StarknetFieldElement? senderAddress)?
+            Felt? classHash,
+            Felt? senderAddress)?
         declareTxn,
     TResult Function(
-            StarknetFieldElement? txnHash,
-            StarknetFieldElement? classHash,
+            Felt? txnHash,
+            Felt? classHash,
             String? version,
             String? type,
-            StarknetFieldElement? contractAddress,
-            StarknetFieldElement? contractAddressSalt,
-            List<StarknetFieldElement>? constructorCalldata)?
+            Felt? contractAddress,
+            Felt? contractAddressSalt,
+            List<Felt>? constructorCalldata)?
         deployTxn,
     required TResult orElse(),
   }) {
@@ -947,31 +947,31 @@ class _$InvokeTxn implements InvokeTxn {
 
 abstract class InvokeTxn implements Txn {
   const factory InvokeTxn(
-      {required final StarknetFieldElement? txnHash,
-      required final StarknetFieldElement? maxFee,
+      {required final Felt? txnHash,
+      required final Felt? maxFee,
       required final String? version,
-      required final List<StarknetFieldElement>? signature,
-      required final StarknetFieldElement? nonce,
+      required final List<Felt>? signature,
+      required final Felt? nonce,
       required final String? type,
-      required final StarknetFieldElement? contractAddress,
-      required final StarknetFieldElement? entryPointSelector,
-      required final List<StarknetFieldElement>? calldata}) = _$InvokeTxn;
+      required final Felt? contractAddress,
+      required final Felt? entryPointSelector,
+      required final List<Felt>? calldata}) = _$InvokeTxn;
 
   factory InvokeTxn.fromJson(Map<String, dynamic> json) = _$InvokeTxn.fromJson;
 
   @override // start of COMMON_TXN_PROPERTIES
-  StarknetFieldElement? get txnHash;
-  StarknetFieldElement? get maxFee;
+  Felt? get txnHash;
+  Felt? get maxFee;
   @override
   String? get version;
-  List<StarknetFieldElement>? get signature;
-  StarknetFieldElement? get nonce;
+  List<Felt>? get signature;
+  Felt? get nonce;
   @override
   String? get type; // end of COMMON_TXN_PROPERTIES
 // start of FUNCTION_CALL
-  StarknetFieldElement? get contractAddress;
-  StarknetFieldElement? get entryPointSelector;
-  List<StarknetFieldElement>? get calldata;
+  Felt? get contractAddress;
+  Felt? get entryPointSelector;
+  List<Felt>? get calldata;
   @override
   @JsonKey(ignore: true)
   _$$InvokeTxnCopyWith<_$InvokeTxn> get copyWith =>
@@ -985,14 +985,14 @@ abstract class _$$DeclareTxnCopyWith<$Res> implements $TxnCopyWith<$Res> {
       __$$DeclareTxnCopyWithImpl<$Res>;
   @override
   $Res call(
-      {StarknetFieldElement? txnHash,
-      StarknetFieldElement? maxFee,
+      {Felt? txnHash,
+      Felt? maxFee,
       String? version,
-      List<StarknetFieldElement>? signature,
-      StarknetFieldElement? nonce,
+      List<Felt>? signature,
+      Felt? nonce,
       String? type,
-      StarknetFieldElement? classHash,
-      StarknetFieldElement? senderAddress});
+      Felt? classHash,
+      Felt? senderAddress});
 }
 
 /// @nodoc
@@ -1020,11 +1020,11 @@ class __$$DeclareTxnCopyWithImpl<$Res> extends _$TxnCopyWithImpl<$Res>
       txnHash: txnHash == freezed
           ? _value.txnHash
           : txnHash // ignore: cast_nullable_to_non_nullable
-              as StarknetFieldElement?,
+              as Felt?,
       maxFee: maxFee == freezed
           ? _value.maxFee
           : maxFee // ignore: cast_nullable_to_non_nullable
-              as StarknetFieldElement?,
+              as Felt?,
       version: version == freezed
           ? _value.version
           : version // ignore: cast_nullable_to_non_nullable
@@ -1032,11 +1032,11 @@ class __$$DeclareTxnCopyWithImpl<$Res> extends _$TxnCopyWithImpl<$Res>
       signature: signature == freezed
           ? _value._signature
           : signature // ignore: cast_nullable_to_non_nullable
-              as List<StarknetFieldElement>?,
+              as List<Felt>?,
       nonce: nonce == freezed
           ? _value.nonce
           : nonce // ignore: cast_nullable_to_non_nullable
-              as StarknetFieldElement?,
+              as Felt?,
       type: type == freezed
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
@@ -1044,11 +1044,11 @@ class __$$DeclareTxnCopyWithImpl<$Res> extends _$TxnCopyWithImpl<$Res>
       classHash: classHash == freezed
           ? _value.classHash
           : classHash // ignore: cast_nullable_to_non_nullable
-              as StarknetFieldElement?,
+              as Felt?,
       senderAddress: senderAddress == freezed
           ? _value.senderAddress
           : senderAddress // ignore: cast_nullable_to_non_nullable
-              as StarknetFieldElement?,
+              as Felt?,
     ));
   }
 }
@@ -1060,7 +1060,7 @@ class _$DeclareTxn implements DeclareTxn {
       {required this.txnHash,
       required this.maxFee,
       required this.version,
-      required final List<StarknetFieldElement>? signature,
+      required final List<Felt>? signature,
       required this.nonce,
       required this.type,
       required this.classHash,
@@ -1074,14 +1074,14 @@ class _$DeclareTxn implements DeclareTxn {
 
 // start of COMMON_TXN_PROPERTIES
   @override
-  final StarknetFieldElement? txnHash;
+  final Felt? txnHash;
   @override
-  final StarknetFieldElement? maxFee;
+  final Felt? maxFee;
   @override
   final String? version;
-  final List<StarknetFieldElement>? _signature;
+  final List<Felt>? _signature;
   @override
-  List<StarknetFieldElement>? get signature {
+  List<Felt>? get signature {
     final value = _signature;
     if (value == null) return null;
     // ignore: implicit_dynamic_type
@@ -1089,14 +1089,14 @@ class _$DeclareTxn implements DeclareTxn {
   }
 
   @override
-  final StarknetFieldElement? nonce;
+  final Felt? nonce;
   @override
   final String? type;
 // end of COMMON_TXN_PROPERTIES
   @override
-  final StarknetFieldElement? classHash;
+  final Felt? classHash;
   @override
-  final StarknetFieldElement? senderAddress;
+  final Felt? senderAddress;
 
   @JsonKey(name: 'runtimeType')
   final String $type;
@@ -1145,34 +1145,34 @@ class _$DeclareTxn implements DeclareTxn {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(
-            StarknetFieldElement? txnHash,
-            StarknetFieldElement? maxFee,
+            Felt? txnHash,
+            Felt? maxFee,
             String? version,
-            List<StarknetFieldElement>? signature,
-            StarknetFieldElement? nonce,
+            List<Felt>? signature,
+            Felt? nonce,
             String? type,
-            StarknetFieldElement? contractAddress,
-            StarknetFieldElement? entryPointSelector,
-            List<StarknetFieldElement>? calldata)
+            Felt? contractAddress,
+            Felt? entryPointSelector,
+            List<Felt>? calldata)
         invokeTxn,
     required TResult Function(
-            StarknetFieldElement? txnHash,
-            StarknetFieldElement? maxFee,
+            Felt? txnHash,
+            Felt? maxFee,
             String? version,
-            List<StarknetFieldElement>? signature,
-            StarknetFieldElement? nonce,
+            List<Felt>? signature,
+            Felt? nonce,
             String? type,
-            StarknetFieldElement? classHash,
-            StarknetFieldElement? senderAddress)
+            Felt? classHash,
+            Felt? senderAddress)
         declareTxn,
     required TResult Function(
-            StarknetFieldElement? txnHash,
-            StarknetFieldElement? classHash,
+            Felt? txnHash,
+            Felt? classHash,
             String? version,
             String? type,
-            StarknetFieldElement? contractAddress,
-            StarknetFieldElement? contractAddressSalt,
-            List<StarknetFieldElement>? constructorCalldata)
+            Felt? contractAddress,
+            Felt? contractAddressSalt,
+            List<Felt>? constructorCalldata)
         deployTxn,
   }) {
     return declareTxn(txnHash, maxFee, version, signature, nonce, type,
@@ -1183,34 +1183,34 @@ class _$DeclareTxn implements DeclareTxn {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(
-            StarknetFieldElement? txnHash,
-            StarknetFieldElement? maxFee,
+            Felt? txnHash,
+            Felt? maxFee,
             String? version,
-            List<StarknetFieldElement>? signature,
-            StarknetFieldElement? nonce,
+            List<Felt>? signature,
+            Felt? nonce,
             String? type,
-            StarknetFieldElement? contractAddress,
-            StarknetFieldElement? entryPointSelector,
-            List<StarknetFieldElement>? calldata)?
+            Felt? contractAddress,
+            Felt? entryPointSelector,
+            List<Felt>? calldata)?
         invokeTxn,
     TResult Function(
-            StarknetFieldElement? txnHash,
-            StarknetFieldElement? maxFee,
+            Felt? txnHash,
+            Felt? maxFee,
             String? version,
-            List<StarknetFieldElement>? signature,
-            StarknetFieldElement? nonce,
+            List<Felt>? signature,
+            Felt? nonce,
             String? type,
-            StarknetFieldElement? classHash,
-            StarknetFieldElement? senderAddress)?
+            Felt? classHash,
+            Felt? senderAddress)?
         declareTxn,
     TResult Function(
-            StarknetFieldElement? txnHash,
-            StarknetFieldElement? classHash,
+            Felt? txnHash,
+            Felt? classHash,
             String? version,
             String? type,
-            StarknetFieldElement? contractAddress,
-            StarknetFieldElement? contractAddressSalt,
-            List<StarknetFieldElement>? constructorCalldata)?
+            Felt? contractAddress,
+            Felt? contractAddressSalt,
+            List<Felt>? constructorCalldata)?
         deployTxn,
   }) {
     return declareTxn?.call(txnHash, maxFee, version, signature, nonce, type,
@@ -1221,34 +1221,34 @@ class _$DeclareTxn implements DeclareTxn {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(
-            StarknetFieldElement? txnHash,
-            StarknetFieldElement? maxFee,
+            Felt? txnHash,
+            Felt? maxFee,
             String? version,
-            List<StarknetFieldElement>? signature,
-            StarknetFieldElement? nonce,
+            List<Felt>? signature,
+            Felt? nonce,
             String? type,
-            StarknetFieldElement? contractAddress,
-            StarknetFieldElement? entryPointSelector,
-            List<StarknetFieldElement>? calldata)?
+            Felt? contractAddress,
+            Felt? entryPointSelector,
+            List<Felt>? calldata)?
         invokeTxn,
     TResult Function(
-            StarknetFieldElement? txnHash,
-            StarknetFieldElement? maxFee,
+            Felt? txnHash,
+            Felt? maxFee,
             String? version,
-            List<StarknetFieldElement>? signature,
-            StarknetFieldElement? nonce,
+            List<Felt>? signature,
+            Felt? nonce,
             String? type,
-            StarknetFieldElement? classHash,
-            StarknetFieldElement? senderAddress)?
+            Felt? classHash,
+            Felt? senderAddress)?
         declareTxn,
     TResult Function(
-            StarknetFieldElement? txnHash,
-            StarknetFieldElement? classHash,
+            Felt? txnHash,
+            Felt? classHash,
             String? version,
             String? type,
-            StarknetFieldElement? contractAddress,
-            StarknetFieldElement? contractAddressSalt,
-            List<StarknetFieldElement>? constructorCalldata)?
+            Felt? contractAddress,
+            Felt? contractAddressSalt,
+            List<Felt>? constructorCalldata)?
         deployTxn,
     required TResult orElse(),
   }) {
@@ -1303,29 +1303,29 @@ class _$DeclareTxn implements DeclareTxn {
 
 abstract class DeclareTxn implements Txn {
   const factory DeclareTxn(
-      {required final StarknetFieldElement? txnHash,
-      required final StarknetFieldElement? maxFee,
+      {required final Felt? txnHash,
+      required final Felt? maxFee,
       required final String? version,
-      required final List<StarknetFieldElement>? signature,
-      required final StarknetFieldElement? nonce,
+      required final List<Felt>? signature,
+      required final Felt? nonce,
       required final String? type,
-      required final StarknetFieldElement? classHash,
-      required final StarknetFieldElement? senderAddress}) = _$DeclareTxn;
+      required final Felt? classHash,
+      required final Felt? senderAddress}) = _$DeclareTxn;
 
   factory DeclareTxn.fromJson(Map<String, dynamic> json) =
       _$DeclareTxn.fromJson;
 
   @override // start of COMMON_TXN_PROPERTIES
-  StarknetFieldElement? get txnHash;
-  StarknetFieldElement? get maxFee;
+  Felt? get txnHash;
+  Felt? get maxFee;
   @override
   String? get version;
-  List<StarknetFieldElement>? get signature;
-  StarknetFieldElement? get nonce;
+  List<Felt>? get signature;
+  Felt? get nonce;
   @override
   String? get type; // end of COMMON_TXN_PROPERTIES
-  StarknetFieldElement? get classHash;
-  StarknetFieldElement? get senderAddress;
+  Felt? get classHash;
+  Felt? get senderAddress;
   @override
   @JsonKey(ignore: true)
   _$$DeclareTxnCopyWith<_$DeclareTxn> get copyWith =>
@@ -1339,13 +1339,13 @@ abstract class _$$DeployTxnCopyWith<$Res> implements $TxnCopyWith<$Res> {
       __$$DeployTxnCopyWithImpl<$Res>;
   @override
   $Res call(
-      {StarknetFieldElement? txnHash,
-      StarknetFieldElement? classHash,
+      {Felt? txnHash,
+      Felt? classHash,
       String? version,
       String? type,
-      StarknetFieldElement? contractAddress,
-      StarknetFieldElement? contractAddressSalt,
-      List<StarknetFieldElement>? constructorCalldata});
+      Felt? contractAddress,
+      Felt? contractAddressSalt,
+      List<Felt>? constructorCalldata});
 }
 
 /// @nodoc
@@ -1372,11 +1372,11 @@ class __$$DeployTxnCopyWithImpl<$Res> extends _$TxnCopyWithImpl<$Res>
       txnHash: txnHash == freezed
           ? _value.txnHash
           : txnHash // ignore: cast_nullable_to_non_nullable
-              as StarknetFieldElement?,
+              as Felt?,
       classHash: classHash == freezed
           ? _value.classHash
           : classHash // ignore: cast_nullable_to_non_nullable
-              as StarknetFieldElement?,
+              as Felt?,
       version: version == freezed
           ? _value.version
           : version // ignore: cast_nullable_to_non_nullable
@@ -1388,15 +1388,15 @@ class __$$DeployTxnCopyWithImpl<$Res> extends _$TxnCopyWithImpl<$Res>
       contractAddress: contractAddress == freezed
           ? _value.contractAddress
           : contractAddress // ignore: cast_nullable_to_non_nullable
-              as StarknetFieldElement?,
+              as Felt?,
       contractAddressSalt: contractAddressSalt == freezed
           ? _value.contractAddressSalt
           : contractAddressSalt // ignore: cast_nullable_to_non_nullable
-              as StarknetFieldElement?,
+              as Felt?,
       constructorCalldata: constructorCalldata == freezed
           ? _value._constructorCalldata
           : constructorCalldata // ignore: cast_nullable_to_non_nullable
-              as List<StarknetFieldElement>?,
+              as List<Felt>?,
     ));
   }
 }
@@ -1411,7 +1411,7 @@ class _$DeployTxn implements DeployTxn {
       required this.type,
       required this.contractAddress,
       required this.contractAddressSalt,
-      required final List<StarknetFieldElement>? constructorCalldata,
+      required final List<Felt>? constructorCalldata,
       final String? $type})
       : _constructorCalldata = constructorCalldata,
         $type = $type ?? 'deployTxn';
@@ -1420,20 +1420,20 @@ class _$DeployTxn implements DeployTxn {
       _$$DeployTxnFromJson(json);
 
   @override
-  final StarknetFieldElement? txnHash;
+  final Felt? txnHash;
   @override
-  final StarknetFieldElement? classHash;
+  final Felt? classHash;
   @override
   final String? version;
   @override
   final String? type;
   @override
-  final StarknetFieldElement? contractAddress;
+  final Felt? contractAddress;
   @override
-  final StarknetFieldElement? contractAddressSalt;
-  final List<StarknetFieldElement>? _constructorCalldata;
+  final Felt? contractAddressSalt;
+  final List<Felt>? _constructorCalldata;
   @override
-  List<StarknetFieldElement>? get constructorCalldata {
+  List<Felt>? get constructorCalldata {
     final value = _constructorCalldata;
     if (value == null) return null;
     // ignore: implicit_dynamic_type
@@ -1486,34 +1486,34 @@ class _$DeployTxn implements DeployTxn {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(
-            StarknetFieldElement? txnHash,
-            StarknetFieldElement? maxFee,
+            Felt? txnHash,
+            Felt? maxFee,
             String? version,
-            List<StarknetFieldElement>? signature,
-            StarknetFieldElement? nonce,
+            List<Felt>? signature,
+            Felt? nonce,
             String? type,
-            StarknetFieldElement? contractAddress,
-            StarknetFieldElement? entryPointSelector,
-            List<StarknetFieldElement>? calldata)
+            Felt? contractAddress,
+            Felt? entryPointSelector,
+            List<Felt>? calldata)
         invokeTxn,
     required TResult Function(
-            StarknetFieldElement? txnHash,
-            StarknetFieldElement? maxFee,
+            Felt? txnHash,
+            Felt? maxFee,
             String? version,
-            List<StarknetFieldElement>? signature,
-            StarknetFieldElement? nonce,
+            List<Felt>? signature,
+            Felt? nonce,
             String? type,
-            StarknetFieldElement? classHash,
-            StarknetFieldElement? senderAddress)
+            Felt? classHash,
+            Felt? senderAddress)
         declareTxn,
     required TResult Function(
-            StarknetFieldElement? txnHash,
-            StarknetFieldElement? classHash,
+            Felt? txnHash,
+            Felt? classHash,
             String? version,
             String? type,
-            StarknetFieldElement? contractAddress,
-            StarknetFieldElement? contractAddressSalt,
-            List<StarknetFieldElement>? constructorCalldata)
+            Felt? contractAddress,
+            Felt? contractAddressSalt,
+            List<Felt>? constructorCalldata)
         deployTxn,
   }) {
     return deployTxn(txnHash, classHash, version, type, contractAddress,
@@ -1524,34 +1524,34 @@ class _$DeployTxn implements DeployTxn {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(
-            StarknetFieldElement? txnHash,
-            StarknetFieldElement? maxFee,
+            Felt? txnHash,
+            Felt? maxFee,
             String? version,
-            List<StarknetFieldElement>? signature,
-            StarknetFieldElement? nonce,
+            List<Felt>? signature,
+            Felt? nonce,
             String? type,
-            StarknetFieldElement? contractAddress,
-            StarknetFieldElement? entryPointSelector,
-            List<StarknetFieldElement>? calldata)?
+            Felt? contractAddress,
+            Felt? entryPointSelector,
+            List<Felt>? calldata)?
         invokeTxn,
     TResult Function(
-            StarknetFieldElement? txnHash,
-            StarknetFieldElement? maxFee,
+            Felt? txnHash,
+            Felt? maxFee,
             String? version,
-            List<StarknetFieldElement>? signature,
-            StarknetFieldElement? nonce,
+            List<Felt>? signature,
+            Felt? nonce,
             String? type,
-            StarknetFieldElement? classHash,
-            StarknetFieldElement? senderAddress)?
+            Felt? classHash,
+            Felt? senderAddress)?
         declareTxn,
     TResult Function(
-            StarknetFieldElement? txnHash,
-            StarknetFieldElement? classHash,
+            Felt? txnHash,
+            Felt? classHash,
             String? version,
             String? type,
-            StarknetFieldElement? contractAddress,
-            StarknetFieldElement? contractAddressSalt,
-            List<StarknetFieldElement>? constructorCalldata)?
+            Felt? contractAddress,
+            Felt? contractAddressSalt,
+            List<Felt>? constructorCalldata)?
         deployTxn,
   }) {
     return deployTxn?.call(txnHash, classHash, version, type, contractAddress,
@@ -1562,34 +1562,34 @@ class _$DeployTxn implements DeployTxn {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(
-            StarknetFieldElement? txnHash,
-            StarknetFieldElement? maxFee,
+            Felt? txnHash,
+            Felt? maxFee,
             String? version,
-            List<StarknetFieldElement>? signature,
-            StarknetFieldElement? nonce,
+            List<Felt>? signature,
+            Felt? nonce,
             String? type,
-            StarknetFieldElement? contractAddress,
-            StarknetFieldElement? entryPointSelector,
-            List<StarknetFieldElement>? calldata)?
+            Felt? contractAddress,
+            Felt? entryPointSelector,
+            List<Felt>? calldata)?
         invokeTxn,
     TResult Function(
-            StarknetFieldElement? txnHash,
-            StarknetFieldElement? maxFee,
+            Felt? txnHash,
+            Felt? maxFee,
             String? version,
-            List<StarknetFieldElement>? signature,
-            StarknetFieldElement? nonce,
+            List<Felt>? signature,
+            Felt? nonce,
             String? type,
-            StarknetFieldElement? classHash,
-            StarknetFieldElement? senderAddress)?
+            Felt? classHash,
+            Felt? senderAddress)?
         declareTxn,
     TResult Function(
-            StarknetFieldElement? txnHash,
-            StarknetFieldElement? classHash,
+            Felt? txnHash,
+            Felt? classHash,
             String? version,
             String? type,
-            StarknetFieldElement? contractAddress,
-            StarknetFieldElement? contractAddressSalt,
-            List<StarknetFieldElement>? constructorCalldata)?
+            Felt? contractAddress,
+            Felt? contractAddressSalt,
+            List<Felt>? constructorCalldata)?
         deployTxn,
     required TResult orElse(),
   }) {
@@ -1644,27 +1644,26 @@ class _$DeployTxn implements DeployTxn {
 
 abstract class DeployTxn implements Txn {
   const factory DeployTxn(
-          {required final StarknetFieldElement? txnHash,
-          required final StarknetFieldElement? classHash,
-          required final String? version,
-          required final String? type,
-          required final StarknetFieldElement? contractAddress,
-          required final StarknetFieldElement? contractAddressSalt,
-          required final List<StarknetFieldElement>? constructorCalldata}) =
-      _$DeployTxn;
+      {required final Felt? txnHash,
+      required final Felt? classHash,
+      required final String? version,
+      required final String? type,
+      required final Felt? contractAddress,
+      required final Felt? contractAddressSalt,
+      required final List<Felt>? constructorCalldata}) = _$DeployTxn;
 
   factory DeployTxn.fromJson(Map<String, dynamic> json) = _$DeployTxn.fromJson;
 
   @override
-  StarknetFieldElement? get txnHash;
-  StarknetFieldElement? get classHash;
+  Felt? get txnHash;
+  Felt? get classHash;
   @override
   String? get version;
   @override
   String? get type;
-  StarknetFieldElement? get contractAddress;
-  StarknetFieldElement? get contractAddressSalt;
-  List<StarknetFieldElement>? get constructorCalldata;
+  Felt? get contractAddress;
+  Felt? get contractAddressSalt;
+  List<Felt>? get constructorCalldata;
   @override
   @JsonKey(ignore: true)
   _$$DeployTxnCopyWith<_$DeployTxn> get copyWith =>

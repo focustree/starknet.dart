@@ -20,10 +20,10 @@ Event _$EventFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$Event {
-  StarknetFieldElement? get fromAddress =>
+  Felt? get fromAddress =>
       throw _privateConstructorUsedError; // start of EVENT_CONTENT
-  List<StarknetFieldElement>? get keys => throw _privateConstructorUsedError;
-  List<StarknetFieldElement>? get data => throw _privateConstructorUsedError;
+  List<Felt>? get keys => throw _privateConstructorUsedError;
+  List<Felt>? get data => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -34,10 +34,7 @@ mixin _$Event {
 abstract class $EventCopyWith<$Res> {
   factory $EventCopyWith(Event value, $Res Function(Event) then) =
       _$EventCopyWithImpl<$Res>;
-  $Res call(
-      {StarknetFieldElement? fromAddress,
-      List<StarknetFieldElement>? keys,
-      List<StarknetFieldElement>? data});
+  $Res call({Felt? fromAddress, List<Felt>? keys, List<Felt>? data});
 }
 
 /// @nodoc
@@ -58,15 +55,15 @@ class _$EventCopyWithImpl<$Res> implements $EventCopyWith<$Res> {
       fromAddress: fromAddress == freezed
           ? _value.fromAddress
           : fromAddress // ignore: cast_nullable_to_non_nullable
-              as StarknetFieldElement?,
+              as Felt?,
       keys: keys == freezed
           ? _value.keys
           : keys // ignore: cast_nullable_to_non_nullable
-              as List<StarknetFieldElement>?,
+              as List<Felt>?,
       data: data == freezed
           ? _value.data
           : data // ignore: cast_nullable_to_non_nullable
-              as List<StarknetFieldElement>?,
+              as List<Felt>?,
     ));
   }
 }
@@ -76,10 +73,7 @@ abstract class _$$_EventCopyWith<$Res> implements $EventCopyWith<$Res> {
   factory _$$_EventCopyWith(_$_Event value, $Res Function(_$_Event) then) =
       __$$_EventCopyWithImpl<$Res>;
   @override
-  $Res call(
-      {StarknetFieldElement? fromAddress,
-      List<StarknetFieldElement>? keys,
-      List<StarknetFieldElement>? data});
+  $Res call({Felt? fromAddress, List<Felt>? keys, List<Felt>? data});
 }
 
 /// @nodoc
@@ -101,15 +95,15 @@ class __$$_EventCopyWithImpl<$Res> extends _$EventCopyWithImpl<$Res>
       fromAddress: fromAddress == freezed
           ? _value.fromAddress
           : fromAddress // ignore: cast_nullable_to_non_nullable
-              as StarknetFieldElement?,
+              as Felt?,
       keys: keys == freezed
           ? _value._keys
           : keys // ignore: cast_nullable_to_non_nullable
-              as List<StarknetFieldElement>?,
+              as List<Felt>?,
       data: data == freezed
           ? _value._data
           : data // ignore: cast_nullable_to_non_nullable
-              as List<StarknetFieldElement>?,
+              as List<Felt>?,
     ));
   }
 }
@@ -119,8 +113,8 @@ class __$$_EventCopyWithImpl<$Res> extends _$EventCopyWithImpl<$Res>
 class _$_Event implements _Event {
   const _$_Event(
       {required this.fromAddress,
-      required final List<StarknetFieldElement>? keys,
-      required final List<StarknetFieldElement>? data})
+      required final List<Felt>? keys,
+      required final List<Felt>? data})
       : _keys = keys,
         _data = data;
 
@@ -128,21 +122,21 @@ class _$_Event implements _Event {
       _$$_EventFromJson(json);
 
   @override
-  final StarknetFieldElement? fromAddress;
+  final Felt? fromAddress;
 // start of EVENT_CONTENT
-  final List<StarknetFieldElement>? _keys;
+  final List<Felt>? _keys;
 // start of EVENT_CONTENT
   @override
-  List<StarknetFieldElement>? get keys {
+  List<Felt>? get keys {
     final value = _keys;
     if (value == null) return null;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(value);
   }
 
-  final List<StarknetFieldElement>? _data;
+  final List<Felt>? _data;
   @override
-  List<StarknetFieldElement>? get data {
+  List<Felt>? get data {
     final value = _data;
     if (value == null) return null;
     // ignore: implicit_dynamic_type
@@ -188,18 +182,18 @@ class _$_Event implements _Event {
 
 abstract class _Event implements Event {
   const factory _Event(
-      {required final StarknetFieldElement? fromAddress,
-      required final List<StarknetFieldElement>? keys,
-      required final List<StarknetFieldElement>? data}) = _$_Event;
+      {required final Felt? fromAddress,
+      required final List<Felt>? keys,
+      required final List<Felt>? data}) = _$_Event;
 
   factory _Event.fromJson(Map<String, dynamic> json) = _$_Event.fromJson;
 
   @override
-  StarknetFieldElement? get fromAddress;
+  Felt? get fromAddress;
   @override // start of EVENT_CONTENT
-  List<StarknetFieldElement>? get keys;
+  List<Felt>? get keys;
   @override
-  List<StarknetFieldElement>? get data;
+  List<Felt>? get data;
   @override
   @JsonKey(ignore: true)
   _$$_EventCopyWith<_$_Event> get copyWith =>

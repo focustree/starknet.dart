@@ -8,14 +8,11 @@ part of 'sync_status.dart';
 
 _$_SyncStatus _$$_SyncStatusFromJson(Map<String, dynamic> json) =>
     _$_SyncStatus(
-      startingBlockHash:
-          StarknetFieldElement.fromJson(json['starting_block_hash'] as String),
+      startingBlockHash: Felt.fromJson(json['starting_block_hash'] as String),
       startingBlockNum: json['starting_block_num'] as String,
-      currentBlockHash:
-          StarknetFieldElement.fromJson(json['current_block_hash'] as String),
+      currentBlockHash: Felt.fromJson(json['current_block_hash'] as String),
       currentBlockNum: json['current_block_num'] as String,
-      highestBlockHash:
-          StarknetFieldElement.fromJson(json['highest_block_hash'] as String),
+      highestBlockHash: Felt.fromJson(json['highest_block_hash'] as String),
       highestBlockNum: json['highest_block_num'] as String,
     );
 

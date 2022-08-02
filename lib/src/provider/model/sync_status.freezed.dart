@@ -20,14 +20,11 @@ SyncStatus _$SyncStatusFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$SyncStatus {
-  StarknetFieldElement get startingBlockHash =>
-      throw _privateConstructorUsedError;
+  Felt get startingBlockHash => throw _privateConstructorUsedError;
   String get startingBlockNum => throw _privateConstructorUsedError;
-  StarknetFieldElement get currentBlockHash =>
-      throw _privateConstructorUsedError;
+  Felt get currentBlockHash => throw _privateConstructorUsedError;
   String get currentBlockNum => throw _privateConstructorUsedError;
-  StarknetFieldElement get highestBlockHash =>
-      throw _privateConstructorUsedError;
+  Felt get highestBlockHash => throw _privateConstructorUsedError;
   String get highestBlockNum => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -42,11 +39,11 @@ abstract class $SyncStatusCopyWith<$Res> {
           SyncStatus value, $Res Function(SyncStatus) then) =
       _$SyncStatusCopyWithImpl<$Res>;
   $Res call(
-      {StarknetFieldElement startingBlockHash,
+      {Felt startingBlockHash,
       String startingBlockNum,
-      StarknetFieldElement currentBlockHash,
+      Felt currentBlockHash,
       String currentBlockNum,
-      StarknetFieldElement highestBlockHash,
+      Felt highestBlockHash,
       String highestBlockNum});
 }
 
@@ -71,7 +68,7 @@ class _$SyncStatusCopyWithImpl<$Res> implements $SyncStatusCopyWith<$Res> {
       startingBlockHash: startingBlockHash == freezed
           ? _value.startingBlockHash
           : startingBlockHash // ignore: cast_nullable_to_non_nullable
-              as StarknetFieldElement,
+              as Felt,
       startingBlockNum: startingBlockNum == freezed
           ? _value.startingBlockNum
           : startingBlockNum // ignore: cast_nullable_to_non_nullable
@@ -79,7 +76,7 @@ class _$SyncStatusCopyWithImpl<$Res> implements $SyncStatusCopyWith<$Res> {
       currentBlockHash: currentBlockHash == freezed
           ? _value.currentBlockHash
           : currentBlockHash // ignore: cast_nullable_to_non_nullable
-              as StarknetFieldElement,
+              as Felt,
       currentBlockNum: currentBlockNum == freezed
           ? _value.currentBlockNum
           : currentBlockNum // ignore: cast_nullable_to_non_nullable
@@ -87,7 +84,7 @@ class _$SyncStatusCopyWithImpl<$Res> implements $SyncStatusCopyWith<$Res> {
       highestBlockHash: highestBlockHash == freezed
           ? _value.highestBlockHash
           : highestBlockHash // ignore: cast_nullable_to_non_nullable
-              as StarknetFieldElement,
+              as Felt,
       highestBlockNum: highestBlockNum == freezed
           ? _value.highestBlockNum
           : highestBlockNum // ignore: cast_nullable_to_non_nullable
@@ -104,11 +101,11 @@ abstract class _$$_SyncStatusCopyWith<$Res>
       __$$_SyncStatusCopyWithImpl<$Res>;
   @override
   $Res call(
-      {StarknetFieldElement startingBlockHash,
+      {Felt startingBlockHash,
       String startingBlockNum,
-      StarknetFieldElement currentBlockHash,
+      Felt currentBlockHash,
       String currentBlockNum,
-      StarknetFieldElement highestBlockHash,
+      Felt highestBlockHash,
       String highestBlockNum});
 }
 
@@ -135,7 +132,7 @@ class __$$_SyncStatusCopyWithImpl<$Res> extends _$SyncStatusCopyWithImpl<$Res>
       startingBlockHash: startingBlockHash == freezed
           ? _value.startingBlockHash
           : startingBlockHash // ignore: cast_nullable_to_non_nullable
-              as StarknetFieldElement,
+              as Felt,
       startingBlockNum: startingBlockNum == freezed
           ? _value.startingBlockNum
           : startingBlockNum // ignore: cast_nullable_to_non_nullable
@@ -143,7 +140,7 @@ class __$$_SyncStatusCopyWithImpl<$Res> extends _$SyncStatusCopyWithImpl<$Res>
       currentBlockHash: currentBlockHash == freezed
           ? _value.currentBlockHash
           : currentBlockHash // ignore: cast_nullable_to_non_nullable
-              as StarknetFieldElement,
+              as Felt,
       currentBlockNum: currentBlockNum == freezed
           ? _value.currentBlockNum
           : currentBlockNum // ignore: cast_nullable_to_non_nullable
@@ -151,7 +148,7 @@ class __$$_SyncStatusCopyWithImpl<$Res> extends _$SyncStatusCopyWithImpl<$Res>
       highestBlockHash: highestBlockHash == freezed
           ? _value.highestBlockHash
           : highestBlockHash // ignore: cast_nullable_to_non_nullable
-              as StarknetFieldElement,
+              as Felt,
       highestBlockNum: highestBlockNum == freezed
           ? _value.highestBlockNum
           : highestBlockNum // ignore: cast_nullable_to_non_nullable
@@ -175,15 +172,15 @@ class _$_SyncStatus implements _SyncStatus {
       _$$_SyncStatusFromJson(json);
 
   @override
-  final StarknetFieldElement startingBlockHash;
+  final Felt startingBlockHash;
   @override
   final String startingBlockNum;
   @override
-  final StarknetFieldElement currentBlockHash;
+  final Felt currentBlockHash;
   @override
   final String currentBlockNum;
   @override
-  final StarknetFieldElement highestBlockHash;
+  final Felt highestBlockHash;
   @override
   final String highestBlockNum;
 
@@ -237,26 +234,26 @@ class _$_SyncStatus implements _SyncStatus {
 
 abstract class _SyncStatus implements SyncStatus {
   const factory _SyncStatus(
-      {required final StarknetFieldElement startingBlockHash,
+      {required final Felt startingBlockHash,
       required final String startingBlockNum,
-      required final StarknetFieldElement currentBlockHash,
+      required final Felt currentBlockHash,
       required final String currentBlockNum,
-      required final StarknetFieldElement highestBlockHash,
+      required final Felt highestBlockHash,
       required final String highestBlockNum}) = _$_SyncStatus;
 
   factory _SyncStatus.fromJson(Map<String, dynamic> json) =
       _$_SyncStatus.fromJson;
 
   @override
-  StarknetFieldElement get startingBlockHash;
+  Felt get startingBlockHash;
   @override
   String get startingBlockNum;
   @override
-  StarknetFieldElement get currentBlockHash;
+  Felt get currentBlockHash;
   @override
   String get currentBlockNum;
   @override
-  StarknetFieldElement get highestBlockHash;
+  Felt get highestBlockHash;
   @override
   String get highestBlockNum;
   @override

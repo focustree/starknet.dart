@@ -8,7 +8,7 @@ part of 'call.dart';
 
 _$CallResult _$$CallResultFromJson(Map<String, dynamic> json) => _$CallResult(
       result: (json['result'] as List<dynamic>)
-          .map((e) => StarknetFieldElement.fromJson(e as String))
+          .map((e) => Felt.fromJson(e as String))
           .toList(),
       $type: json['runtimeType'] as String?,
     );

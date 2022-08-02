@@ -9,9 +9,9 @@ part of 'msg_to_l1.dart';
 _$_MsgToL1 _$$_MsgToL1FromJson(Map<String, dynamic> json) => _$_MsgToL1(
       toAddress: json['to_address'] == null
           ? null
-          : StarknetFieldElement.fromJson(json['to_address'] as String),
+          : Felt.fromJson(json['to_address'] as String),
       payload: (json['payload'] as List<dynamic>?)
-          ?.map((e) => StarknetFieldElement.fromJson(e as String))
+          ?.map((e) => Felt.fromJson(e as String))
           .toList(),
     );
 

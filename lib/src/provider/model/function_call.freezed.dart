@@ -20,11 +20,9 @@ FunctionCall _$FunctionCallFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$FunctionCall {
-  StarknetFieldElement get contractAddress =>
-      throw _privateConstructorUsedError;
-  StarknetFieldElement get entryPointSelector =>
-      throw _privateConstructorUsedError;
-  List<StarknetFieldElement> get calldata => throw _privateConstructorUsedError;
+  Felt get contractAddress => throw _privateConstructorUsedError;
+  Felt get entryPointSelector => throw _privateConstructorUsedError;
+  List<Felt> get calldata => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -38,9 +36,7 @@ abstract class $FunctionCallCopyWith<$Res> {
           FunctionCall value, $Res Function(FunctionCall) then) =
       _$FunctionCallCopyWithImpl<$Res>;
   $Res call(
-      {StarknetFieldElement contractAddress,
-      StarknetFieldElement entryPointSelector,
-      List<StarknetFieldElement> calldata});
+      {Felt contractAddress, Felt entryPointSelector, List<Felt> calldata});
 }
 
 /// @nodoc
@@ -61,15 +57,15 @@ class _$FunctionCallCopyWithImpl<$Res> implements $FunctionCallCopyWith<$Res> {
       contractAddress: contractAddress == freezed
           ? _value.contractAddress
           : contractAddress // ignore: cast_nullable_to_non_nullable
-              as StarknetFieldElement,
+              as Felt,
       entryPointSelector: entryPointSelector == freezed
           ? _value.entryPointSelector
           : entryPointSelector // ignore: cast_nullable_to_non_nullable
-              as StarknetFieldElement,
+              as Felt,
       calldata: calldata == freezed
           ? _value.calldata
           : calldata // ignore: cast_nullable_to_non_nullable
-              as List<StarknetFieldElement>,
+              as List<Felt>,
     ));
   }
 }
@@ -82,9 +78,7 @@ abstract class _$$_FunctionCallCopyWith<$Res>
       __$$_FunctionCallCopyWithImpl<$Res>;
   @override
   $Res call(
-      {StarknetFieldElement contractAddress,
-      StarknetFieldElement entryPointSelector,
-      List<StarknetFieldElement> calldata});
+      {Felt contractAddress, Felt entryPointSelector, List<Felt> calldata});
 }
 
 /// @nodoc
@@ -108,15 +102,15 @@ class __$$_FunctionCallCopyWithImpl<$Res>
       contractAddress: contractAddress == freezed
           ? _value.contractAddress
           : contractAddress // ignore: cast_nullable_to_non_nullable
-              as StarknetFieldElement,
+              as Felt,
       entryPointSelector: entryPointSelector == freezed
           ? _value.entryPointSelector
           : entryPointSelector // ignore: cast_nullable_to_non_nullable
-              as StarknetFieldElement,
+              as Felt,
       calldata: calldata == freezed
           ? _value._calldata
           : calldata // ignore: cast_nullable_to_non_nullable
-              as List<StarknetFieldElement>,
+              as List<Felt>,
     ));
   }
 }
@@ -127,19 +121,19 @@ class _$_FunctionCall implements _FunctionCall {
   const _$_FunctionCall(
       {required this.contractAddress,
       required this.entryPointSelector,
-      required final List<StarknetFieldElement> calldata})
+      required final List<Felt> calldata})
       : _calldata = calldata;
 
   factory _$_FunctionCall.fromJson(Map<String, dynamic> json) =>
       _$$_FunctionCallFromJson(json);
 
   @override
-  final StarknetFieldElement contractAddress;
+  final Felt contractAddress;
   @override
-  final StarknetFieldElement entryPointSelector;
-  final List<StarknetFieldElement> _calldata;
+  final Felt entryPointSelector;
+  final List<Felt> _calldata;
   @override
-  List<StarknetFieldElement> get calldata {
+  List<Felt> get calldata {
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_calldata);
   }
@@ -184,19 +178,19 @@ class _$_FunctionCall implements _FunctionCall {
 
 abstract class _FunctionCall implements FunctionCall {
   const factory _FunctionCall(
-      {required final StarknetFieldElement contractAddress,
-      required final StarknetFieldElement entryPointSelector,
-      required final List<StarknetFieldElement> calldata}) = _$_FunctionCall;
+      {required final Felt contractAddress,
+      required final Felt entryPointSelector,
+      required final List<Felt> calldata}) = _$_FunctionCall;
 
   factory _FunctionCall.fromJson(Map<String, dynamic> json) =
       _$_FunctionCall.fromJson;
 
   @override
-  StarknetFieldElement get contractAddress;
+  Felt get contractAddress;
   @override
-  StarknetFieldElement get entryPointSelector;
+  Felt get entryPointSelector;
   @override
-  List<StarknetFieldElement> get calldata;
+  List<Felt> get calldata;
   @override
   @JsonKey(ignore: true)
   _$$_FunctionCallCopyWith<_$_FunctionCall> get copyWith =>

@@ -8,7 +8,7 @@ part of 'get_nonce.dart';
 
 _$GetNonceResult _$$GetNonceResultFromJson(Map<String, dynamic> json) =>
     _$GetNonceResult(
-      result: StarknetFieldElement.fromJson(json['result'] as String),
+      result: Felt.fromJson(json['result'] as String),
       $type: json['runtimeType'] as String?,
     );
 

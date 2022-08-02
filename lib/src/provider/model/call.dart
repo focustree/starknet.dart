@@ -7,7 +7,7 @@ part 'call.g.dart';
 @freezed
 class Call with _$Call {
   const factory Call.result({
-    required List<StarknetFieldElement> result,
+    required List<Felt> result,
   }) = CallResult;
   const factory Call.error({
     required JsonRpcApiError error,

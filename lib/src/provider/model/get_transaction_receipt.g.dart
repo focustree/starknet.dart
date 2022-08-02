@@ -36,13 +36,13 @@ Map<String, dynamic> _$$GetTransactionReceiptErrorToJson(
 
 _$InvokeTxnReceipt _$$InvokeTxnReceiptFromJson(Map<String, dynamic> json) =>
     _$InvokeTxnReceipt(
-      txnHash: StarknetFieldElement.fromJson(json['txn_hash'] as String),
-      actualFee: StarknetFieldElement.fromJson(json['actual_fee'] as String),
+      txnHash: Felt.fromJson(json['txn_hash'] as String),
+      actualFee: Felt.fromJson(json['actual_fee'] as String),
       status: json['status'] as String,
       statusData: json['status_data'] as String?,
       blockHash: json['block_hash'] == null
           ? null
-          : StarknetFieldElement.fromJson(json['block_hash'] as String),
+          : Felt.fromJson(json['block_hash'] as String),
       blockNumber: json['block_number'] as int?,
       messagesSent: (json['messages_sent'] as List<dynamic>)
           .map((e) => MsgToL1.fromJson(e as Map<String, dynamic>))
@@ -72,13 +72,13 @@ Map<String, dynamic> _$$InvokeTxnReceiptToJson(_$InvokeTxnReceipt instance) =>
 
 _$DeclareTxnReceipt _$$DeclareTxnReceiptFromJson(Map<String, dynamic> json) =>
     _$DeclareTxnReceipt(
-      txnHash: StarknetFieldElement.fromJson(json['txn_hash'] as String),
-      actualFee: StarknetFieldElement.fromJson(json['actual_fee'] as String),
+      txnHash: Felt.fromJson(json['txn_hash'] as String),
+      actualFee: Felt.fromJson(json['actual_fee'] as String),
       status: json['status'] as String,
       statusData: json['status_data'] as String?,
       blockHash: json['block_hash'] == null
           ? null
-          : StarknetFieldElement.fromJson(json['block_hash'] as String),
+          : Felt.fromJson(json['block_hash'] as String),
       blockNumber: json['block_number'] as int?,
       $type: json['runtimeType'] as String?,
     );
@@ -96,13 +96,13 @@ Map<String, dynamic> _$$DeclareTxnReceiptToJson(_$DeclareTxnReceipt instance) =>
 
 _$DeployTxnReceipt _$$DeployTxnReceiptFromJson(Map<String, dynamic> json) =>
     _$DeployTxnReceipt(
-      txnHash: StarknetFieldElement.fromJson(json['txn_hash'] as String),
-      actualFee: StarknetFieldElement.fromJson(json['actual_fee'] as String),
+      txnHash: Felt.fromJson(json['txn_hash'] as String),
+      actualFee: Felt.fromJson(json['actual_fee'] as String),
       status: json['status'] as String,
       statusData: json['status_data'] as String?,
       blockHash: json['block_hash'] == null
           ? null
-          : StarknetFieldElement.fromJson(json['block_hash'] as String),
+          : Felt.fromJson(json['block_hash'] as String),
       blockNumber: json['block_number'] as int?,
       $type: json['runtimeType'] as String?,
     );
@@ -121,8 +121,8 @@ Map<String, dynamic> _$$DeployTxnReceiptToJson(_$DeployTxnReceipt instance) =>
 _$PendingInvokeTxnReceipt _$$PendingInvokeTxnReceiptFromJson(
         Map<String, dynamic> json) =>
     _$PendingInvokeTxnReceipt(
-      txnHash: StarknetFieldElement.fromJson(json['txn_hash'] as String),
-      actualFee: StarknetFieldElement.fromJson(json['actual_fee'] as String),
+      txnHash: Felt.fromJson(json['txn_hash'] as String),
+      actualFee: Felt.fromJson(json['actual_fee'] as String),
       messagesSent: (json['messages_sent'] as List<dynamic>)
           .map((e) => MsgToL1.fromJson(e as Map<String, dynamic>))
           .toList(),
@@ -149,8 +149,8 @@ Map<String, dynamic> _$$PendingInvokeTxnReceiptToJson(
 _$PendingCommonReceiptProperties _$$PendingCommonReceiptPropertiesFromJson(
         Map<String, dynamic> json) =>
     _$PendingCommonReceiptProperties(
-      txnHash: StarknetFieldElement.fromJson(json['txn_hash'] as String),
-      actualFee: StarknetFieldElement.fromJson(json['actual_fee'] as String),
+      txnHash: Felt.fromJson(json['txn_hash'] as String),
+      actualFee: Felt.fromJson(json['actual_fee'] as String),
       $type: json['runtimeType'] as String?,
     );
 

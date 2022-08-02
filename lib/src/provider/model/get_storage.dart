@@ -7,7 +7,7 @@ part 'get_storage.g.dart';
 @freezed
 class GetStorage with _$GetStorage {
   const factory GetStorage.result({
-    required StarknetFieldElement result,
+    required Felt result,
   }) = GetStorageResult;
   const factory GetStorage.error({
     required JsonRpcApiError error,

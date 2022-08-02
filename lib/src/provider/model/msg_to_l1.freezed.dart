@@ -20,8 +20,8 @@ MsgToL1 _$MsgToL1FromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$MsgToL1 {
-  StarknetFieldElement? get toAddress => throw _privateConstructorUsedError;
-  List<StarknetFieldElement>? get payload => throw _privateConstructorUsedError;
+  Felt? get toAddress => throw _privateConstructorUsedError;
+  List<Felt>? get payload => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -32,8 +32,7 @@ mixin _$MsgToL1 {
 abstract class $MsgToL1CopyWith<$Res> {
   factory $MsgToL1CopyWith(MsgToL1 value, $Res Function(MsgToL1) then) =
       _$MsgToL1CopyWithImpl<$Res>;
-  $Res call(
-      {StarknetFieldElement? toAddress, List<StarknetFieldElement>? payload});
+  $Res call({Felt? toAddress, List<Felt>? payload});
 }
 
 /// @nodoc
@@ -53,11 +52,11 @@ class _$MsgToL1CopyWithImpl<$Res> implements $MsgToL1CopyWith<$Res> {
       toAddress: toAddress == freezed
           ? _value.toAddress
           : toAddress // ignore: cast_nullable_to_non_nullable
-              as StarknetFieldElement?,
+              as Felt?,
       payload: payload == freezed
           ? _value.payload
           : payload // ignore: cast_nullable_to_non_nullable
-              as List<StarknetFieldElement>?,
+              as List<Felt>?,
     ));
   }
 }
@@ -68,8 +67,7 @@ abstract class _$$_MsgToL1CopyWith<$Res> implements $MsgToL1CopyWith<$Res> {
           _$_MsgToL1 value, $Res Function(_$_MsgToL1) then) =
       __$$_MsgToL1CopyWithImpl<$Res>;
   @override
-  $Res call(
-      {StarknetFieldElement? toAddress, List<StarknetFieldElement>? payload});
+  $Res call({Felt? toAddress, List<Felt>? payload});
 }
 
 /// @nodoc
@@ -90,11 +88,11 @@ class __$$_MsgToL1CopyWithImpl<$Res> extends _$MsgToL1CopyWithImpl<$Res>
       toAddress: toAddress == freezed
           ? _value.toAddress
           : toAddress // ignore: cast_nullable_to_non_nullable
-              as StarknetFieldElement?,
+              as Felt?,
       payload: payload == freezed
           ? _value._payload
           : payload // ignore: cast_nullable_to_non_nullable
-              as List<StarknetFieldElement>?,
+              as List<Felt>?,
     ));
   }
 }
@@ -103,18 +101,17 @@ class __$$_MsgToL1CopyWithImpl<$Res> extends _$MsgToL1CopyWithImpl<$Res>
 @JsonSerializable()
 class _$_MsgToL1 implements _MsgToL1 {
   const _$_MsgToL1(
-      {required this.toAddress,
-      required final List<StarknetFieldElement>? payload})
+      {required this.toAddress, required final List<Felt>? payload})
       : _payload = payload;
 
   factory _$_MsgToL1.fromJson(Map<String, dynamic> json) =>
       _$$_MsgToL1FromJson(json);
 
   @override
-  final StarknetFieldElement? toAddress;
-  final List<StarknetFieldElement>? _payload;
+  final Felt? toAddress;
+  final List<Felt>? _payload;
   @override
-  List<StarknetFieldElement>? get payload {
+  List<Felt>? get payload {
     final value = _payload;
     if (value == null) return null;
     // ignore: implicit_dynamic_type
@@ -157,15 +154,15 @@ class _$_MsgToL1 implements _MsgToL1 {
 
 abstract class _MsgToL1 implements MsgToL1 {
   const factory _MsgToL1(
-      {required final StarknetFieldElement? toAddress,
-      required final List<StarknetFieldElement>? payload}) = _$_MsgToL1;
+      {required final Felt? toAddress,
+      required final List<Felt>? payload}) = _$_MsgToL1;
 
   factory _MsgToL1.fromJson(Map<String, dynamic> json) = _$_MsgToL1.fromJson;
 
   @override
-  StarknetFieldElement? get toAddress;
+  Felt? get toAddress;
   @override
-  List<StarknetFieldElement>? get payload;
+  List<Felt>? get payload;
   @override
   @JsonKey(ignore: true)
   _$$_MsgToL1CopyWith<_$_MsgToL1> get copyWith =>

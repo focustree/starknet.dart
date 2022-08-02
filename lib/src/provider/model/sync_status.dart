@@ -7,11 +7,11 @@ part 'sync_status.g.dart';
 @freezed
 class SyncStatus with _$SyncStatus {
   const factory SyncStatus({
-    required StarknetFieldElement startingBlockHash,
+    required Felt startingBlockHash,
     required String startingBlockNum,
-    required StarknetFieldElement currentBlockHash,
+    required Felt currentBlockHash,
     required String currentBlockNum,
-    required StarknetFieldElement highestBlockHash,
+    required Felt highestBlockHash,
     required String highestBlockNum,
   }) = _SyncStatus;
 
