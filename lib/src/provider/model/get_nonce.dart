@@ -1,7 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-
-import '../../field_element.dart';
-import 'json_rpc_api_error.dart';
+import 'package:starknet/starknet.dart';
 
 part 'get_nonce.freezed.dart';
 part 'get_nonce.g.dart';

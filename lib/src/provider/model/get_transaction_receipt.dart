@@ -1,8 +1,4 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:starknet/src/model/json_rpc_api/event.dart';
-import 'package:starknet/src/model/json_rpc_api/json_rpc_api_error.dart';
-import 'package:starknet/src/model/json_rpc_api/msg_to_l1.dart';
-import 'package:starknet/src/model/json_rpc_api/msg_to_l2.dart';
 import 'package:starknet/starknet.dart';
 
 part 'get_transaction_receipt.freezed.dart';
