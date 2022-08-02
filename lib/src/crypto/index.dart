@@ -1,8 +1,8 @@
 import 'package:starknet/starknet.dart';
 
+export 'model/pedersen_params.dart';
 export 'keccak.dart';
 export 'pedersen.dart';
-export 'pedersen_params.dart';
 export 'signature.dart';
 
 /// Calculates the transaction hash in the StarkNet network - a unique

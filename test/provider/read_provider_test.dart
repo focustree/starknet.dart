@@ -1,14 +1,14 @@
 import 'package:starknet/starknet.dart';
 import 'package:test/test.dart';
 
-import 'utils.dart';
+import '../utils.dart';
 
 void main() {
-  group('Provider', () {
+  group('ReadProvider', () {
     late ReadProvider provider;
 
     setUp(() {
-      provider = getJsonRpcProvider();
+      provider = getJsonRpcReadProvider();
     });
 
     group('blockNumber', () {

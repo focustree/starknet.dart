@@ -1,12 +1,12 @@
 import 'package:starknet/starknet.dart';
 import 'package:test/test.dart';
 
-import 'utils.dart';
+import '../utils.dart';
 
 void main() {
-  group('Account', () {
+  group('WriteProvider', () {
     test('invokeTransaction', () async {
-      final account = getJsonRpcAccount();
+      final account = getJsonRpcProvider();
       final request = InvokeTransactionRequest(
           functionInvocation: FunctionCall(
               contractAddress: Felt.fromHexString(
@@ -28,7 +28,7 @@ void main() {
           });
     });
     test('mintAspectNFT', () async {
-      final account = getJsonRpcAccount();
+      final account = getJsonRpcProvider();
       final request = InvokeTransactionRequest(
           functionInvocation: FunctionCall(
               contractAddress: Felt.fromHexString(
