@@ -82,6 +82,15 @@ abstract class ReadProvider {
     required Felt contractAddress,
     required BlockId blockId, // 2022-08-02: not supported by Infura
   });
+
+  Future<GetClass> getClass(
+    Felt classHash,
+  );
+
+  Future<GetClass> getClassAt({
+    required Felt contractAddress,
+    required BlockId blockId,
+  });
 }
 
 class JsonRpcReadProvider implements ReadProvider {
@@ -228,6 +237,27 @@ class JsonRpcReadProvider implements ReadProvider {
       method: 'starknet_getClassHashAt',
       params: [contractAddress],
     ).then(GetClassHashAt.fromJson);
+  }
+
+  @override
+  Future<GetClass> getClass(Felt classHash) {
+    return callRpcEndpoint(
+      nodeUri: nodeUri,
+      method: 'starknet_getClass',
+      params: [classHash],
+    ).then(GetClass.fromJson);
+  }
+
+  @override
+  Future<GetClass> getClassAt({
+    required Felt contractAddress,
+    required BlockId blockId, // 2022-08-02: not supported by Infura
+  }) {
+    return callRpcEndpoint(
+      nodeUri: nodeUri,
+      method: 'starknet_getClassAt',
+      params: [contractAddress],
+    ).then(GetClass.fromJson);
   }
 
   static final devnet = JsonRpcReadProvider(nodeUri: devnetUri);

@@ -317,6 +317,43 @@ void main() {
                       "0x21a7f43387573b68666669a0ed764252ce5367708e696e31967764a90b429c2"));
             });
       });
+
+      test('returns class for a known class hash', () async {
+        final response = await provider.getClass(
+          Felt.fromHexString(
+              "0x21a7f43387573b68666669a0ed764252ce5367708e696e31967764a90b429c2"),
+        );
+
+        response.when(
+            error: (error) => fail("Shouldn't fail"),
+            result: (result) {
+              final entry_points = result.entryPointsByType;
+              expect(entry_points.CONSTRUCTOR.length, 0);
+              expect(entry_points.L1_HANDLER.length, 0);
+              expect(entry_points.EXTERNAL.length, 2);
+              expect(entry_points.EXTERNAL[0].offset, "0x3a");
+              expect(entry_points.EXTERNAL[1].offset, "0x5b");
+            });
+      });
+
+      test('returns class for a known adress and block id', () async {
+        final response = await provider.getClassAt(
+          contractAddress: Felt.fromHexString(
+              "0x6fbd460228d843b7fbef670ff15607bf72e19fa94de21e29811ada167b4ca39"),
+          blockId: BlockId.blockTag(blockTag: "latest"),
+        );
+
+        response.when(
+            error: (error) => fail("Shouldn't fail"),
+            result: (result) {
+              final entry_points = result.entryPointsByType;
+              expect(entry_points.CONSTRUCTOR.length, 0);
+              expect(entry_points.L1_HANDLER.length, 0);
+              expect(entry_points.EXTERNAL.length, 2);
+              expect(entry_points.EXTERNAL[0].offset, "0x3a");
+              expect(entry_points.EXTERNAL[1].offset, "0x5b");
+            });
+      });
     });
   });
 }
