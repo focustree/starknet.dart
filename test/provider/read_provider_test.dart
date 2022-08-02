@@ -283,5 +283,21 @@ void main() {
                 fail('Expected to return an unimplemented error'));
       });
     });
+
+    group('starknet_getStateUpdate', () {
+      test('returns unimplemented method error for getStateUpdate', () async {
+        final response = await provider.getStateUpdate(BlockId.blockHash(
+            blockHash: Felt.fromHexString(
+                '0x3fbf1b9a9ed822423e87365923103a9577ebed2612afccf4c9f69c126eeeeb7')));
+
+        response.when(
+            error: (error) {
+              expect(error.code, equals(-32601));
+              expect(error.message,
+                  contains('method \'starknet_getStateUpdate\' not found'));
+            },
+            result: (_) => fail('Expected to return an unimplemented error'));
+      });
+    });
   });
 }
