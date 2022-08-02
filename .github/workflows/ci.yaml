@@ -9,6 +9,9 @@ jobs:
   analyze:
     runs-on: ubuntu-latest
     steps:
+      - name: Print $GITHUB_CONTEXT
+        shell: bash
+        run: echo "$GITHUB_CONTEXT"
       - uses: actions/checkout@v2
       - uses: dart-lang/setup-dart@v1.0
         with:
