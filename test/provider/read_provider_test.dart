@@ -267,5 +267,21 @@ void main() {
             result: (_) => fail('Expected to return an unimplemented error'));
       });
     });
+
+    group('starknet_blockHashAndNumber', () {
+      test('returns unimplemented method error for blockHashAndNumber',
+          () async {
+        final response = await provider.blockHashAndNumber();
+
+        response.when(
+            error: (error) {
+              expect(error.code, equals(-32601));
+              expect(error.message,
+                  contains('method \'starknet_blockHashAndNumber\' not found'));
+            },
+            result: (_, __) =>
+                fail('Expected to return an unimplemented error'));
+      });
+    });
   });
 }
