@@ -4,7 +4,7 @@ abstract class Signer {
   Signature signTransactions({
     required List<FunctionCall> transactions,
     int nonce,
-    required StarknetFieldElement contractAddress,
+    required Felt contractAddress,
     int maxFee,
     required BigInt chainId,
     String entryPointSelectorName,
@@ -20,7 +20,7 @@ class SignerBase implements Signer {
   Signature signTransactions({
     required List<FunctionCall> transactions,
     int nonce = 0,
-    required StarknetFieldElement contractAddress,
+    required Felt contractAddress,
     int maxFee = 0,
     required BigInt chainId,
     String entryPointSelectorName = "__execute__",

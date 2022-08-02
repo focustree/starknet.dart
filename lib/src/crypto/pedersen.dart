@@ -1,8 +1,7 @@
 import 'package:pointycastle/ecc/api.dart';
 import 'package:pointycastle/ecc/ecc_base.dart';
 import 'package:pointycastle/ecc/ecc_fp.dart' as fp;
-
-import 'pedersen_params.dart';
+import 'package:starknet/starknet.dart';
 
 final starknetCurve = fp.ECCurve(
     pedersenParams.fieldPrime, pedersenParams.alpha, pedersenParams.beta);

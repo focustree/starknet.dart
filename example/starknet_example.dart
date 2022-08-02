@@ -3,7 +3,7 @@ import 'dart:convert';
 import 'package:starknet/starknet.dart';
 
 void main() async {
-  final blockNumber = await JsonRpcProvider.devnet.blockNumber();
+  final blockNumber = await JsonRpcReadProvider.devnet.blockNumber();
   print(blockNumber);
 }
 
