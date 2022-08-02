@@ -63,6 +63,7 @@ jobs:
           githubToken: ${{ secrets.GITHUB_TOKEN }}
 
   publish:
+    if: github.repository == 'gabsn/starknet.dart'
     needs: test
     runs-on: ubuntu-latest
     steps:
