@@ -15,12 +15,14 @@ void main() {
                   '0x15d40a3d6ca2ac30f4031e42be28da9b056fef9bb7357ac5e85627ee876e5ad'),
               calldata: []),
           signature: [
-            '3557065757165699682249469970267166698995647077461960906176449260016084767701',
-            '3202126414680946801789588986259466145787792017299869598314522555275920413944'
+            Felt.fromIntString(
+                '3557065757165699682249469970267166698995647077461960906176449260016084767701'),
+            Felt.fromIntString(
+                '3202126414680946801789588986259466145787792017299869598314522555275920413944')
           ],
-          maxFee: '0x4f388496839',
-          version: '0x0');
-      final response = await account.invokeTransaction(request);
+          maxFee: Felt.fromHexString('0x4f388496839'),
+          version: Felt.fromInt(0));
+      final response = await account.addInvokeTransaction(request);
       response.when(
           error: (error) => fail("Shouldn't fail"),
           result: (result) {
@@ -54,12 +56,14 @@ void main() {
                 Felt.fromHexString('0x17')
               ]),
           signature: [
-            '2777899979600126634193936054796555098097316678100225872753094174221331105551',
-            '863853327069559098710870250576085487290864397745972533018002104991732941969'
+            Felt.fromIntString(
+                '2777899979600126634193936054796555098097316678100225872753094174221331105551'),
+            Felt.fromIntString(
+                '863853327069559098710870250576085487290864397745972533018002104991732941969')
           ],
-          maxFee: '0x235b4d91ad0e',
-          version: '0x0');
-      final response = await account.invokeTransaction(request);
+          maxFee: Felt.fromHexString('0x235b4d91ad0e'),
+          version: Felt.fromInt(0));
+      final response = await account.addInvokeTransaction(request);
       response.when(
           error: (error) => fail("Shouldn't fail"),
           result: (result) {

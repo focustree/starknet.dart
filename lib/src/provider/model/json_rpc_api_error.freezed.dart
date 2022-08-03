@@ -144,7 +144,9 @@ class _$_JsonRpcApiError implements _JsonRpcApiError {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_JsonRpcApiErrorToJson(this);
+    return _$$_JsonRpcApiErrorToJson(
+      this,
+    );
   }
 }
 
@@ -157,9 +159,9 @@ abstract class _JsonRpcApiError implements JsonRpcApiError {
       _$_JsonRpcApiError.fromJson;
 
   @override
-  int get code => throw _privateConstructorUsedError;
+  int get code;
   @override
-  String get message => throw _privateConstructorUsedError;
+  String get message;
   @override
   @JsonKey(ignore: true)
   _$$_JsonRpcApiErrorCopyWith<_$_JsonRpcApiError> get copyWith =>

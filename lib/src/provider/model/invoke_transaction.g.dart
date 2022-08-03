@@ -40,19 +40,20 @@ _$_InvokeTransactionRequest _$$_InvokeTransactionRequestFromJson(
     _$_InvokeTransactionRequest(
       functionInvocation: FunctionCall.fromJson(
           json['function_invocation'] as Map<String, dynamic>),
-      signature:
-          (json['signature'] as List<dynamic>).map((e) => e as String).toList(),
-      maxFee: json['max_fee'] as String,
-      version: json['version'] as String,
+      signature: (json['signature'] as List<dynamic>)
+          .map((e) => Felt.fromJson(e as String))
+          .toList(),
+      maxFee: Felt.fromJson(json['max_fee'] as String),
+      version: Felt.fromJson(json['version'] as String),
     );
 
 Map<String, dynamic> _$$_InvokeTransactionRequestToJson(
         _$_InvokeTransactionRequest instance) =>
     <String, dynamic>{
       'function_invocation': instance.functionInvocation.toJson(),
-      'signature': instance.signature,
-      'max_fee': instance.maxFee,
-      'version': instance.version,
+      'signature': instance.signature.map((e) => e.toJson()).toList(),
+      'max_fee': instance.maxFee.toJson(),
+      'version': instance.version.toJson(),
     };
 
 _$_InvokeTransactionResponseResult _$$_InvokeTransactionResponseResultFromJson(
