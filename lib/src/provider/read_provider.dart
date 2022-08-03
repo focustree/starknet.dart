@@ -239,12 +239,12 @@ class JsonRpcReadProvider implements ReadProvider {
   @override
   Future<GetClassHashAt> getClassHashAt({
     required Felt contractAddress,
-    required BlockId blockId, // 2022-08-02: not supported by Infura
+    required BlockId blockId,
   }) {
     return callRpcEndpoint(
       nodeUri: nodeUri,
       method: 'starknet_getClassHashAt',
-      params: [contractAddress],
+      params: [blockId, contractAddress],
     ).then(GetClassHashAt.fromJson);
   }
 
@@ -260,12 +260,12 @@ class JsonRpcReadProvider implements ReadProvider {
   @override
   Future<GetClass> getClassAt({
     required Felt contractAddress,
-    required BlockId blockId, // 2022-08-02: not supported by Infura
+    required BlockId blockId,
   }) {
     return callRpcEndpoint(
       nodeUri: nodeUri,
       method: 'starknet_getClassAt',
-      params: [contractAddress],
+      params: [blockId, contractAddress],
     ).then(GetClass.fromJson);
   }
 
