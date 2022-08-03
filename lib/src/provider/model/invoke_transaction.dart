@@ -1,7 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-
-import 'function_call.dart';
-import 'json_rpc_api_error.dart';
+import 'package:starknet/starknet.dart';
 
 part 'invoke_transaction.freezed.dart';
 part 'invoke_transaction.g.dart';
@@ -25,9 +23,9 @@ class InvokeTransaction with _$InvokeTransaction {
 class InvokeTransactionRequest with _$InvokeTransactionRequest {
   const factory InvokeTransactionRequest({
     required FunctionCall functionInvocation,
-    required List<String> signature,
-    required String maxFee,
-    required String version,
+    required List<Felt> signature,
+    required Felt maxFee,
+    required Felt version,
   }) = _InvokeTransactionRequest;
 
   factory InvokeTransactionRequest.fromJson(Map<String, Object?> json) =>

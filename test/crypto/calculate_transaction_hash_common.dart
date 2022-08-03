@@ -8,20 +8,20 @@ void main() {
     test('computes the right transaction hash', () {
       expect(
           calculateTransactionHashCommon(
-              txHashPrefix: TransactionHashPrefix.invoke,
+              txHashPrefix: TransactionHashPrefix.invoke.toBigInt(),
               // Note: the address is larger than a field element, so we must use BigInt
               contractAddress: BigInt.parse(
                   '2007067565103695475819120104515800035851923905855118399071773059478896040938'),
-              entryPointSelector: getSelectorByName('__execute__'),
-              calldata: computeCalldata(functionCalls: [
+              entryPointSelector: getSelectorByName('__execute__').toBigInt(),
+              calldata: toBigIntList(computeCalldata(functionCalls: [
                 FunctionCall(
                     contractAddress: Felt.fromIntString(
                         '3290661298119599979891444342541795905081168856323302956721669397616389152866'),
                     entryPointSelector: getSelectorByName('set_number'),
                     calldata: [Felt.fromInt(47)])
-              ], nonce: 3),
+              ], nonce: 3)),
               maxFee: BigInt.zero,
-              chainId: StarknetChainId.testNet),
+              chainId: StarknetChainId.testNet.toBigInt()),
           equals(hexStringToBigInt(
               '0x4c337c6bf32b2cf2b8ae54064e4b982c214660e8d0423b431a3fde10b9b9c02')));
     });

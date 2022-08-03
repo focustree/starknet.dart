@@ -4,6 +4,7 @@ import 'dart:convert';
 import 'dart:typed_data';
 
 import "package:pointycastle/src/utils.dart";
+import 'package:starknet/starknet.dart';
 
 String bigIntToHexString(BigInt bigInt) {
   return '0x${bigInt.toRadixString(16)}';
@@ -34,4 +35,8 @@ BigInt bytesToBigInt(List<int> bytes) {
 
 String bytesToHexString(List<int> bytes) {
   return bigIntToHexString(bytesToBigInt(bytes));
+}
+
+List<BigInt> toBigIntList(List<Felt> feltList) {
+  return feltList.map((felt) => felt.toBigInt()).toList();
 }

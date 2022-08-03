@@ -220,7 +220,9 @@ class _$BlockNumberResult implements BlockNumberResult {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$BlockNumberResultToJson(this);
+    return _$$BlockNumberResultToJson(
+      this,
+    );
   }
 }
 
@@ -231,7 +233,7 @@ abstract class BlockNumberResult implements BlockNumber {
   factory BlockNumberResult.fromJson(Map<String, dynamic> json) =
       _$BlockNumberResult.fromJson;
 
-  int get result => throw _privateConstructorUsedError;
+  int get result;
   @JsonKey(ignore: true)
   _$$BlockNumberResultCopyWith<_$BlockNumberResult> get copyWith =>
       throw _privateConstructorUsedError;
@@ -380,7 +382,9 @@ class _$BlockNumberError implements BlockNumberError {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$BlockNumberErrorToJson(this);
+    return _$$BlockNumberErrorToJson(
+      this,
+    );
   }
 }
 
@@ -391,7 +395,7 @@ abstract class BlockNumberError implements BlockNumber {
   factory BlockNumberError.fromJson(Map<String, dynamic> json) =
       _$BlockNumberError.fromJson;
 
-  JsonRpcApiError get error => throw _privateConstructorUsedError;
+  JsonRpcApiError get error;
   @JsonKey(ignore: true)
   _$$BlockNumberErrorCopyWith<_$BlockNumberError> get copyWith =>
       throw _privateConstructorUsedError;

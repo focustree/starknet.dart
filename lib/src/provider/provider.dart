@@ -1,7 +1,8 @@
 import 'package:starknet/starknet.dart';
 
 abstract class Provider implements ReadProvider {
-  Future<InvokeTransaction> invokeTransaction(InvokeTransactionRequest request);
+  Future<InvokeTransaction> addInvokeTransaction(
+      InvokeTransactionRequest request);
 }
 
 class JsonRpcProvider extends JsonRpcReadProvider implements Provider {
@@ -12,7 +13,7 @@ class JsonRpcProvider extends JsonRpcReadProvider implements Provider {
   execute(List<Call> calls) async {}
 
   @override
-  Future<InvokeTransaction> invokeTransaction(
+  Future<InvokeTransaction> addInvokeTransaction(
       InvokeTransactionRequest request) async {
     return callRpcEndpoint(
             nodeUri: nodeUri,

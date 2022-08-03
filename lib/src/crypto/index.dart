@@ -61,24 +61,24 @@ BigInt computeHashOnElements(List<BigInt> elements) {
   );
 }
 
-List<BigInt> computeCalldata(
+List<Felt> computeCalldata(
     {required List<FunctionCall> functionCalls, int nonce = 0}) {
-  List<BigInt> calldata = [];
-  List<BigInt> calls = [];
+  List<Felt> calldata = [];
+  List<Felt> calls = [];
   for (final call in functionCalls) {
     calls.addAll([
       call.contractAddress, // to
       call.entryPointSelector, // selector
-      BigInt.from(calldata.length), // data_offset
-      BigInt.from(call.calldata.length), // data_length
+      Felt.fromInt(calldata.length), // data_offset
+      Felt.fromInt(call.calldata.length), // data_length
     ]);
     calldata.addAll(call.calldata);
   }
   return [
-    BigInt.from(functionCalls.length),
+    Felt.fromInt(functionCalls.length),
     ...calls,
-    BigInt.from(calldata.length),
+    Felt.fromInt(calldata.length),
     ...calldata,
-    BigInt.from(nonce)
+    Felt.fromInt(nonce)
   ];
 }

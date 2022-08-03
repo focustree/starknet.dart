@@ -425,9 +425,9 @@ InvokeTransactionRequest _$InvokeTransactionRequestFromJson(
 /// @nodoc
 mixin _$InvokeTransactionRequest {
   FunctionCall get functionInvocation => throw _privateConstructorUsedError;
-  List<String> get signature => throw _privateConstructorUsedError;
-  String get maxFee => throw _privateConstructorUsedError;
-  String get version => throw _privateConstructorUsedError;
+  List<Felt> get signature => throw _privateConstructorUsedError;
+  Felt get maxFee => throw _privateConstructorUsedError;
+  Felt get version => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -442,9 +442,9 @@ abstract class $InvokeTransactionRequestCopyWith<$Res> {
       _$InvokeTransactionRequestCopyWithImpl<$Res>;
   $Res call(
       {FunctionCall functionInvocation,
-      List<String> signature,
-      String maxFee,
-      String version});
+      List<Felt> signature,
+      Felt maxFee,
+      Felt version});
 
   $FunctionCallCopyWith<$Res> get functionInvocation;
 }
@@ -473,15 +473,15 @@ class _$InvokeTransactionRequestCopyWithImpl<$Res>
       signature: signature == freezed
           ? _value.signature
           : signature // ignore: cast_nullable_to_non_nullable
-              as List<String>,
+              as List<Felt>,
       maxFee: maxFee == freezed
           ? _value.maxFee
           : maxFee // ignore: cast_nullable_to_non_nullable
-              as String,
+              as Felt,
       version: version == freezed
           ? _value.version
           : version // ignore: cast_nullable_to_non_nullable
-              as String,
+              as Felt,
     ));
   }
 
@@ -503,9 +503,9 @@ abstract class _$$_InvokeTransactionRequestCopyWith<$Res>
   @override
   $Res call(
       {FunctionCall functionInvocation,
-      List<String> signature,
-      String maxFee,
-      String version});
+      List<Felt> signature,
+      Felt maxFee,
+      Felt version});
 
   @override
   $FunctionCallCopyWith<$Res> get functionInvocation;
@@ -538,15 +538,15 @@ class __$$_InvokeTransactionRequestCopyWithImpl<$Res>
       signature: signature == freezed
           ? _value._signature
           : signature // ignore: cast_nullable_to_non_nullable
-              as List<String>,
+              as List<Felt>,
       maxFee: maxFee == freezed
           ? _value.maxFee
           : maxFee // ignore: cast_nullable_to_non_nullable
-              as String,
+              as Felt,
       version: version == freezed
           ? _value.version
           : version // ignore: cast_nullable_to_non_nullable
-              as String,
+              as Felt,
     ));
   }
 }
@@ -556,7 +556,7 @@ class __$$_InvokeTransactionRequestCopyWithImpl<$Res>
 class _$_InvokeTransactionRequest implements _InvokeTransactionRequest {
   const _$_InvokeTransactionRequest(
       {required this.functionInvocation,
-      required final List<String> signature,
+      required final List<Felt> signature,
       required this.maxFee,
       required this.version})
       : _signature = signature;
@@ -566,17 +566,17 @@ class _$_InvokeTransactionRequest implements _InvokeTransactionRequest {
 
   @override
   final FunctionCall functionInvocation;
-  final List<String> _signature;
+  final List<Felt> _signature;
   @override
-  List<String> get signature {
+  List<Felt> get signature {
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_signature);
   }
 
   @override
-  final String maxFee;
+  final Felt maxFee;
   @override
-  final String version;
+  final Felt version;
 
   @override
   String toString() {
@@ -622,9 +622,9 @@ class _$_InvokeTransactionRequest implements _InvokeTransactionRequest {
 abstract class _InvokeTransactionRequest implements InvokeTransactionRequest {
   const factory _InvokeTransactionRequest(
       {required final FunctionCall functionInvocation,
-      required final List<String> signature,
-      required final String maxFee,
-      required final String version}) = _$_InvokeTransactionRequest;
+      required final List<Felt> signature,
+      required final Felt maxFee,
+      required final Felt version}) = _$_InvokeTransactionRequest;
 
   factory _InvokeTransactionRequest.fromJson(Map<String, dynamic> json) =
       _$_InvokeTransactionRequest.fromJson;
@@ -632,11 +632,11 @@ abstract class _InvokeTransactionRequest implements InvokeTransactionRequest {
   @override
   FunctionCall get functionInvocation;
   @override
-  List<String> get signature;
+  List<Felt> get signature;
   @override
-  String get maxFee;
+  Felt get maxFee;
   @override
-  String get version;
+  Felt get version;
   @override
   @JsonKey(ignore: true)
   _$$_InvokeTransactionRequestCopyWith<_$_InvokeTransactionRequest>
