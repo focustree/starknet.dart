@@ -12,21 +12,29 @@ class Account {
       required this.accountAddress,
       required this.chainId});
 
-  execute(List<FunctionCall> calls) async {
+  Future<InvokeTransaction> execute(
+      {required List<FunctionCall> functionCalls,
+      Felt? maxFee,
+      Felt? version,
+      Felt? nonce}) async {
     final signature = signer.signTransactions(
-        transactions: calls, contractAddress: accountAddress, chainId: chainId);
+        transactions: functionCalls,
+        contractAddress: accountAddress,
+        chainId: chainId);
 
-    final calldata = computeCalldata(functionCalls: calls, nonce: 0);
+    final calldata = functionCallsToCalldata(
+        functionCalls: functionCalls, nonce: nonce ?? Felt.fromInt(0));
 
-    await provider.addInvokeTransaction(InvokeTransactionRequest(
-        functionInvocation: FunctionCall(
-          contractAddress: accountAddress,
-          entryPointSelector: getSelectorByName('__execute__'),
-          calldata: calldata,
-        ),
-        maxFee: Felt.fromInt(1000000000000000),
-        signature: signature,
-        version: Felt.fromInt(0)));
-    print(signature);
+    return provider.addInvokeTransaction(
+      InvokeTransactionRequest(
+          functionInvocation: FunctionCall(
+            contractAddress: accountAddress,
+            entryPointSelector: getSelectorByName('__execute__'),
+            calldata: calldata,
+          ),
+          maxFee: maxFee ?? Felt.fromInt(1000000000000000000),
+          signature: signature,
+          version: version ?? Felt.fromInt(0)),
+    );
   }
 }
