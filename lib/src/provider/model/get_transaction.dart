@@ -21,43 +21,46 @@ class GetTransaction with _$GetTransaction {
 
 @freezed
 class Txn with _$Txn {
+  @JsonSerializable(includeIfNull: false)
   const factory Txn.invokeTxn({
     // start of COMMON_TXN_PROPERTIES
-    required Felt? txnHash,
-    required Felt? maxFee,
-    required String? version,
-    required List<Felt>? signature,
-    required Felt? nonce,
-    required String? type,
+    Felt? txnHash,
+    Felt? maxFee,
+    String? version,
+    List<Felt>? signature,
+    Felt? nonce,
+    String? type,
     // end of COMMON_TXN_PROPERTIES
     // start of FUNCTION_CALL
-    required Felt? contractAddress,
-    required Felt? entryPointSelector,
-    required List<Felt>? calldata,
+    Felt? contractAddress,
+    Felt? entryPointSelector,
+    List<Felt>? calldata,
     // end of FUNCTION_CALL
   }) = InvokeTxn;
 
+  @JsonSerializable(includeIfNull: false)
   const factory Txn.declareTxn({
     // start of COMMON_TXN_PROPERTIES
-    required Felt? txnHash,
-    required Felt? maxFee,
-    required String? version,
-    required List<Felt>? signature,
-    required Felt? nonce,
-    required String? type,
+    Felt? txnHash,
+    Felt? maxFee,
+    String? version,
+    List<Felt>? signature,
+    Felt? nonce,
+    String? type,
     // end of COMMON_TXN_PROPERTIES
-    required Felt? classHash,
-    required Felt? senderAddress,
+    Felt? classHash,
+    Felt? senderAddress,
   }) = DeclareTxn;
 
+  @JsonSerializable(includeIfNull: false)
   const factory Txn.deployTxn({
-    required Felt? txnHash,
-    required Felt? classHash,
-    required String? version,
-    required String? type,
-    required Felt? contractAddress,
-    required Felt? contractAddressSalt,
-    required List<Felt>? constructorCalldata,
+    Felt? txnHash,
+    Felt? classHash,
+    String? version,
+    String? type,
+    Felt? contractAddress,
+    Felt? contractAddressSalt,
+    List<Felt>? constructorCalldata,
   }) = DeployTxn;
 
   // TODO: The json response doesn't have type attribute.
