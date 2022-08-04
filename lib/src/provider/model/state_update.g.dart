@@ -11,9 +11,7 @@ _$_StateUpdate _$$_StateUpdateFromJson(Map<String, dynamic> json) =>
       blockHash: Felt.fromJson(json['block_hash'] as String),
       newRoot: Felt.fromJson(json['new_root'] as String),
       oldRoot: Felt.fromJson(json['old_root'] as String),
-      payload: (json['payload'] as List<dynamic>?)
-          ?.map((e) => Felt.fromJson(e as String))
-          .toList(),
+      stateDiff: StateDiff.fromJson(json['state_diff'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$$_StateUpdateToJson(_$_StateUpdate instance) =>
@@ -21,7 +19,7 @@ Map<String, dynamic> _$$_StateUpdateToJson(_$_StateUpdate instance) =>
       'block_hash': instance.blockHash.toJson(),
       'new_root': instance.newRoot.toJson(),
       'old_root': instance.oldRoot.toJson(),
-      'payload': instance.payload?.map((e) => e.toJson()).toList(),
+      'state_diff': instance.stateDiff.toJson(),
     };
 
 _$_StateDiff _$$_StateDiffFromJson(Map<String, dynamic> json) => _$_StateDiff(

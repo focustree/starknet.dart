@@ -10,7 +10,7 @@ class StateUpdate with _$StateUpdate {
     required Felt blockHash,
     required Felt newRoot,
     required Felt oldRoot,
-    required List<Felt>? payload,
+    required StateDiff stateDiff,
   }) = _StateUpdate;
 
   factory StateUpdate.fromJson(Map<String, Object?> json) =>

@@ -23,7 +23,7 @@ mixin _$StateUpdate {
   Felt get blockHash => throw _privateConstructorUsedError;
   Felt get newRoot => throw _privateConstructorUsedError;
   Felt get oldRoot => throw _privateConstructorUsedError;
-  List<Felt>? get payload => throw _privateConstructorUsedError;
+  StateDiff get stateDiff => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -36,7 +36,9 @@ abstract class $StateUpdateCopyWith<$Res> {
   factory $StateUpdateCopyWith(
           StateUpdate value, $Res Function(StateUpdate) then) =
       _$StateUpdateCopyWithImpl<$Res>;
-  $Res call({Felt blockHash, Felt newRoot, Felt oldRoot, List<Felt>? payload});
+  $Res call({Felt blockHash, Felt newRoot, Felt oldRoot, StateDiff stateDiff});
+
+  $StateDiffCopyWith<$Res> get stateDiff;
 }
 
 /// @nodoc
@@ -52,7 +54,7 @@ class _$StateUpdateCopyWithImpl<$Res> implements $StateUpdateCopyWith<$Res> {
     Object? blockHash = freezed,
     Object? newRoot = freezed,
     Object? oldRoot = freezed,
-    Object? payload = freezed,
+    Object? stateDiff = freezed,
   }) {
     return _then(_value.copyWith(
       blockHash: blockHash == freezed
@@ -67,11 +69,18 @@ class _$StateUpdateCopyWithImpl<$Res> implements $StateUpdateCopyWith<$Res> {
           ? _value.oldRoot
           : oldRoot // ignore: cast_nullable_to_non_nullable
               as Felt,
-      payload: payload == freezed
-          ? _value.payload
-          : payload // ignore: cast_nullable_to_non_nullable
-              as List<Felt>?,
+      stateDiff: stateDiff == freezed
+          ? _value.stateDiff
+          : stateDiff // ignore: cast_nullable_to_non_nullable
+              as StateDiff,
     ));
+  }
+
+  @override
+  $StateDiffCopyWith<$Res> get stateDiff {
+    return $StateDiffCopyWith<$Res>(_value.stateDiff, (value) {
+      return _then(_value.copyWith(stateDiff: value));
+    });
   }
 }
 
@@ -82,7 +91,10 @@ abstract class _$$_StateUpdateCopyWith<$Res>
           _$_StateUpdate value, $Res Function(_$_StateUpdate) then) =
       __$$_StateUpdateCopyWithImpl<$Res>;
   @override
-  $Res call({Felt blockHash, Felt newRoot, Felt oldRoot, List<Felt>? payload});
+  $Res call({Felt blockHash, Felt newRoot, Felt oldRoot, StateDiff stateDiff});
+
+  @override
+  $StateDiffCopyWith<$Res> get stateDiff;
 }
 
 /// @nodoc
@@ -100,7 +112,7 @@ class __$$_StateUpdateCopyWithImpl<$Res> extends _$StateUpdateCopyWithImpl<$Res>
     Object? blockHash = freezed,
     Object? newRoot = freezed,
     Object? oldRoot = freezed,
-    Object? payload = freezed,
+    Object? stateDiff = freezed,
   }) {
     return _then(_$_StateUpdate(
       blockHash: blockHash == freezed
@@ -115,10 +127,10 @@ class __$$_StateUpdateCopyWithImpl<$Res> extends _$StateUpdateCopyWithImpl<$Res>
           ? _value.oldRoot
           : oldRoot // ignore: cast_nullable_to_non_nullable
               as Felt,
-      payload: payload == freezed
-          ? _value._payload
-          : payload // ignore: cast_nullable_to_non_nullable
-              as List<Felt>?,
+      stateDiff: stateDiff == freezed
+          ? _value.stateDiff
+          : stateDiff // ignore: cast_nullable_to_non_nullable
+              as StateDiff,
     ));
   }
 }
@@ -130,8 +142,7 @@ class _$_StateUpdate implements _StateUpdate {
       {required this.blockHash,
       required this.newRoot,
       required this.oldRoot,
-      required final List<Felt>? payload})
-      : _payload = payload;
+      required this.stateDiff});
 
   factory _$_StateUpdate.fromJson(Map<String, dynamic> json) =>
       _$$_StateUpdateFromJson(json);
@@ -142,18 +153,12 @@ class _$_StateUpdate implements _StateUpdate {
   final Felt newRoot;
   @override
   final Felt oldRoot;
-  final List<Felt>? _payload;
   @override
-  List<Felt>? get payload {
-    final value = _payload;
-    if (value == null) return null;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(value);
-  }
+  final StateDiff stateDiff;
 
   @override
   String toString() {
-    return 'StateUpdate(blockHash: $blockHash, newRoot: $newRoot, oldRoot: $oldRoot, payload: $payload)';
+    return 'StateUpdate(blockHash: $blockHash, newRoot: $newRoot, oldRoot: $oldRoot, stateDiff: $stateDiff)';
   }
 
   @override
@@ -164,7 +169,7 @@ class _$_StateUpdate implements _StateUpdate {
             const DeepCollectionEquality().equals(other.blockHash, blockHash) &&
             const DeepCollectionEquality().equals(other.newRoot, newRoot) &&
             const DeepCollectionEquality().equals(other.oldRoot, oldRoot) &&
-            const DeepCollectionEquality().equals(other._payload, _payload));
+            const DeepCollectionEquality().equals(other.stateDiff, stateDiff));
   }
 
   @JsonKey(ignore: true)
@@ -174,7 +179,7 @@ class _$_StateUpdate implements _StateUpdate {
       const DeepCollectionEquality().hash(blockHash),
       const DeepCollectionEquality().hash(newRoot),
       const DeepCollectionEquality().hash(oldRoot),
-      const DeepCollectionEquality().hash(_payload));
+      const DeepCollectionEquality().hash(stateDiff));
 
   @JsonKey(ignore: true)
   @override
@@ -194,7 +199,7 @@ abstract class _StateUpdate implements StateUpdate {
       {required final Felt blockHash,
       required final Felt newRoot,
       required final Felt oldRoot,
-      required final List<Felt>? payload}) = _$_StateUpdate;
+      required final StateDiff stateDiff}) = _$_StateUpdate;
 
   factory _StateUpdate.fromJson(Map<String, dynamic> json) =
       _$_StateUpdate.fromJson;
@@ -206,7 +211,7 @@ abstract class _StateUpdate implements StateUpdate {
   @override
   Felt get oldRoot;
   @override
-  List<Felt>? get payload;
+  StateDiff get stateDiff;
   @override
   @JsonKey(ignore: true)
   _$$_StateUpdateCopyWith<_$_StateUpdate> get copyWith =>
