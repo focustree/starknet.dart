@@ -15,3 +15,5 @@ build/
 # Miscellaneous
 coverage/
 .DS_Store
+
+.idea

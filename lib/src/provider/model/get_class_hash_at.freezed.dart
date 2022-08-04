@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
-part of 'block_number.dart';
+part of 'get_class_hash_at.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -14,56 +14,56 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
-BlockNumber _$BlockNumberFromJson(Map<String, dynamic> json) {
+GetClassHashAt _$GetClassHashAtFromJson(Map<String, dynamic> json) {
   switch (json['runtimeType']) {
     case 'result':
-      return BlockNumberResult.fromJson(json);
+      return GetClassHashAtResult.fromJson(json);
     case 'error':
-      return BlockNumberError.fromJson(json);
+      return GetClassHashAtError.fromJson(json);
 
     default:
-      throw CheckedFromJsonException(json, 'runtimeType', 'BlockNumber',
+      throw CheckedFromJsonException(json, 'runtimeType', 'GetClassHashAt',
           'Invalid union type "${json['runtimeType']}"!');
   }
 }
 
 /// @nodoc
-mixin _$BlockNumber {
+mixin _$GetClassHashAt {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(int result) result,
+    required TResult Function(Felt result) result,
     required TResult Function(JsonRpcApiError error) error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(int result)? result,
+    TResult Function(Felt result)? result,
     TResult Function(JsonRpcApiError error)? error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(int result)? result,
+    TResult Function(Felt result)? result,
     TResult Function(JsonRpcApiError error)? error,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(BlockNumberResult value) result,
-    required TResult Function(BlockNumberError value) error,
+    required TResult Function(GetClassHashAtResult value) result,
+    required TResult Function(GetClassHashAtError value) error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(BlockNumberResult value)? result,
-    TResult Function(BlockNumberError value)? error,
+    TResult Function(GetClassHashAtResult value)? result,
+    TResult Function(GetClassHashAtError value)? error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(BlockNumberResult value)? result,
-    TResult Function(BlockNumberError value)? error,
+    TResult Function(GetClassHashAtResult value)? result,
+    TResult Function(GetClassHashAtError value)? error,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -71,78 +71,79 @@ mixin _$BlockNumber {
 }
 
 /// @nodoc
-abstract class $BlockNumberCopyWith<$Res> {
-  factory $BlockNumberCopyWith(
-          BlockNumber value, $Res Function(BlockNumber) then) =
-      _$BlockNumberCopyWithImpl<$Res>;
+abstract class $GetClassHashAtCopyWith<$Res> {
+  factory $GetClassHashAtCopyWith(
+          GetClassHashAt value, $Res Function(GetClassHashAt) then) =
+      _$GetClassHashAtCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$BlockNumberCopyWithImpl<$Res> implements $BlockNumberCopyWith<$Res> {
-  _$BlockNumberCopyWithImpl(this._value, this._then);
+class _$GetClassHashAtCopyWithImpl<$Res>
+    implements $GetClassHashAtCopyWith<$Res> {
+  _$GetClassHashAtCopyWithImpl(this._value, this._then);
 
-  final BlockNumber _value;
+  final GetClassHashAt _value;
   // ignore: unused_field
-  final $Res Function(BlockNumber) _then;
+  final $Res Function(GetClassHashAt) _then;
 }
 
 /// @nodoc
-abstract class _$$BlockNumberResultCopyWith<$Res> {
-  factory _$$BlockNumberResultCopyWith(
-          _$BlockNumberResult value, $Res Function(_$BlockNumberResult) then) =
-      __$$BlockNumberResultCopyWithImpl<$Res>;
-  $Res call({int result});
+abstract class _$$GetClassHashAtResultCopyWith<$Res> {
+  factory _$$GetClassHashAtResultCopyWith(_$GetClassHashAtResult value,
+          $Res Function(_$GetClassHashAtResult) then) =
+      __$$GetClassHashAtResultCopyWithImpl<$Res>;
+  $Res call({Felt result});
 }
 
 /// @nodoc
-class __$$BlockNumberResultCopyWithImpl<$Res>
-    extends _$BlockNumberCopyWithImpl<$Res>
-    implements _$$BlockNumberResultCopyWith<$Res> {
-  __$$BlockNumberResultCopyWithImpl(
-      _$BlockNumberResult _value, $Res Function(_$BlockNumberResult) _then)
-      : super(_value, (v) => _then(v as _$BlockNumberResult));
+class __$$GetClassHashAtResultCopyWithImpl<$Res>
+    extends _$GetClassHashAtCopyWithImpl<$Res>
+    implements _$$GetClassHashAtResultCopyWith<$Res> {
+  __$$GetClassHashAtResultCopyWithImpl(_$GetClassHashAtResult _value,
+      $Res Function(_$GetClassHashAtResult) _then)
+      : super(_value, (v) => _then(v as _$GetClassHashAtResult));
 
   @override
-  _$BlockNumberResult get _value => super._value as _$BlockNumberResult;
+  _$GetClassHashAtResult get _value => super._value as _$GetClassHashAtResult;
 
   @override
   $Res call({
     Object? result = freezed,
   }) {
-    return _then(_$BlockNumberResult(
+    return _then(_$GetClassHashAtResult(
       result: result == freezed
           ? _value.result
           : result // ignore: cast_nullable_to_non_nullable
-              as int,
+              as Felt,
     ));
   }
 }
 
 /// @nodoc
 @JsonSerializable()
-class _$BlockNumberResult implements BlockNumberResult {
-  const _$BlockNumberResult({required this.result, final String? $type})
+class _$GetClassHashAtResult implements GetClassHashAtResult {
+  const _$GetClassHashAtResult({required this.result, final String? $type})
       : $type = $type ?? 'result';
 
-  factory _$BlockNumberResult.fromJson(Map<String, dynamic> json) =>
-      _$$BlockNumberResultFromJson(json);
+  factory _$GetClassHashAtResult.fromJson(Map<String, dynamic> json) =>
+      _$$GetClassHashAtResultFromJson(json);
 
   @override
-  final int result;
+  final Felt result;
 
   @JsonKey(name: 'runtimeType')
   final String $type;
 
   @override
   String toString() {
-    return 'BlockNumber.result(result: $result)';
+    return 'GetClassHashAt.result(result: $result)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$BlockNumberResult &&
+            other is _$GetClassHashAtResult &&
             const DeepCollectionEquality().equals(other.result, result));
   }
 
@@ -153,13 +154,14 @@ class _$BlockNumberResult implements BlockNumberResult {
 
   @JsonKey(ignore: true)
   @override
-  _$$BlockNumberResultCopyWith<_$BlockNumberResult> get copyWith =>
-      __$$BlockNumberResultCopyWithImpl<_$BlockNumberResult>(this, _$identity);
+  _$$GetClassHashAtResultCopyWith<_$GetClassHashAtResult> get copyWith =>
+      __$$GetClassHashAtResultCopyWithImpl<_$GetClassHashAtResult>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(int result) result,
+    required TResult Function(Felt result) result,
     required TResult Function(JsonRpcApiError error) error,
   }) {
     return result(this.result);
@@ -168,7 +170,7 @@ class _$BlockNumberResult implements BlockNumberResult {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(int result)? result,
+    TResult Function(Felt result)? result,
     TResult Function(JsonRpcApiError error)? error,
   }) {
     return result?.call(this.result);
@@ -177,7 +179,7 @@ class _$BlockNumberResult implements BlockNumberResult {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(int result)? result,
+    TResult Function(Felt result)? result,
     TResult Function(JsonRpcApiError error)? error,
     required TResult orElse(),
   }) {
@@ -190,8 +192,8 @@ class _$BlockNumberResult implements BlockNumberResult {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(BlockNumberResult value) result,
-    required TResult Function(BlockNumberError value) error,
+    required TResult Function(GetClassHashAtResult value) result,
+    required TResult Function(GetClassHashAtError value) error,
   }) {
     return result(this);
   }
@@ -199,8 +201,8 @@ class _$BlockNumberResult implements BlockNumberResult {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(BlockNumberResult value)? result,
-    TResult Function(BlockNumberError value)? error,
+    TResult Function(GetClassHashAtResult value)? result,
+    TResult Function(GetClassHashAtError value)? error,
   }) {
     return result?.call(this);
   }
@@ -208,8 +210,8 @@ class _$BlockNumberResult implements BlockNumberResult {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(BlockNumberResult value)? result,
-    TResult Function(BlockNumberError value)? error,
+    TResult Function(GetClassHashAtResult value)? result,
+    TResult Function(GetClassHashAtError value)? error,
     required TResult orElse(),
   }) {
     if (result != null) {
@@ -220,51 +222,51 @@ class _$BlockNumberResult implements BlockNumberResult {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$BlockNumberResultToJson(
+    return _$$GetClassHashAtResultToJson(
       this,
     );
   }
 }
 
-abstract class BlockNumberResult implements BlockNumber {
-  const factory BlockNumberResult({required final int result}) =
-      _$BlockNumberResult;
+abstract class GetClassHashAtResult implements GetClassHashAt {
+  const factory GetClassHashAtResult({required final Felt result}) =
+      _$GetClassHashAtResult;
 
-  factory BlockNumberResult.fromJson(Map<String, dynamic> json) =
-      _$BlockNumberResult.fromJson;
+  factory GetClassHashAtResult.fromJson(Map<String, dynamic> json) =
+      _$GetClassHashAtResult.fromJson;
 
-  int get result;
+  Felt get result;
   @JsonKey(ignore: true)
-  _$$BlockNumberResultCopyWith<_$BlockNumberResult> get copyWith =>
+  _$$GetClassHashAtResultCopyWith<_$GetClassHashAtResult> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$BlockNumberErrorCopyWith<$Res> {
-  factory _$$BlockNumberErrorCopyWith(
-          _$BlockNumberError value, $Res Function(_$BlockNumberError) then) =
-      __$$BlockNumberErrorCopyWithImpl<$Res>;
+abstract class _$$GetClassHashAtErrorCopyWith<$Res> {
+  factory _$$GetClassHashAtErrorCopyWith(_$GetClassHashAtError value,
+          $Res Function(_$GetClassHashAtError) then) =
+      __$$GetClassHashAtErrorCopyWithImpl<$Res>;
   $Res call({JsonRpcApiError error});
 
   $JsonRpcApiErrorCopyWith<$Res> get error;
 }
 
 /// @nodoc
-class __$$BlockNumberErrorCopyWithImpl<$Res>
-    extends _$BlockNumberCopyWithImpl<$Res>
-    implements _$$BlockNumberErrorCopyWith<$Res> {
-  __$$BlockNumberErrorCopyWithImpl(
-      _$BlockNumberError _value, $Res Function(_$BlockNumberError) _then)
-      : super(_value, (v) => _then(v as _$BlockNumberError));
+class __$$GetClassHashAtErrorCopyWithImpl<$Res>
+    extends _$GetClassHashAtCopyWithImpl<$Res>
+    implements _$$GetClassHashAtErrorCopyWith<$Res> {
+  __$$GetClassHashAtErrorCopyWithImpl(
+      _$GetClassHashAtError _value, $Res Function(_$GetClassHashAtError) _then)
+      : super(_value, (v) => _then(v as _$GetClassHashAtError));
 
   @override
-  _$BlockNumberError get _value => super._value as _$BlockNumberError;
+  _$GetClassHashAtError get _value => super._value as _$GetClassHashAtError;
 
   @override
   $Res call({
     Object? error = freezed,
   }) {
-    return _then(_$BlockNumberError(
+    return _then(_$GetClassHashAtError(
       error: error == freezed
           ? _value.error
           : error // ignore: cast_nullable_to_non_nullable
@@ -282,12 +284,12 @@ class __$$BlockNumberErrorCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$BlockNumberError implements BlockNumberError {
-  const _$BlockNumberError({required this.error, final String? $type})
+class _$GetClassHashAtError implements GetClassHashAtError {
+  const _$GetClassHashAtError({required this.error, final String? $type})
       : $type = $type ?? 'error';
 
-  factory _$BlockNumberError.fromJson(Map<String, dynamic> json) =>
-      _$$BlockNumberErrorFromJson(json);
+  factory _$GetClassHashAtError.fromJson(Map<String, dynamic> json) =>
+      _$$GetClassHashAtErrorFromJson(json);
 
   @override
   final JsonRpcApiError error;
@@ -297,14 +299,14 @@ class _$BlockNumberError implements BlockNumberError {
 
   @override
   String toString() {
-    return 'BlockNumber.error(error: $error)';
+    return 'GetClassHashAt.error(error: $error)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$BlockNumberError &&
+            other is _$GetClassHashAtError &&
             const DeepCollectionEquality().equals(other.error, error));
   }
 
@@ -315,13 +317,14 @@ class _$BlockNumberError implements BlockNumberError {
 
   @JsonKey(ignore: true)
   @override
-  _$$BlockNumberErrorCopyWith<_$BlockNumberError> get copyWith =>
-      __$$BlockNumberErrorCopyWithImpl<_$BlockNumberError>(this, _$identity);
+  _$$GetClassHashAtErrorCopyWith<_$GetClassHashAtError> get copyWith =>
+      __$$GetClassHashAtErrorCopyWithImpl<_$GetClassHashAtError>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(int result) result,
+    required TResult Function(Felt result) result,
     required TResult Function(JsonRpcApiError error) error,
   }) {
     return error(this.error);
@@ -330,7 +333,7 @@ class _$BlockNumberError implements BlockNumberError {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(int result)? result,
+    TResult Function(Felt result)? result,
     TResult Function(JsonRpcApiError error)? error,
   }) {
     return error?.call(this.error);
@@ -339,7 +342,7 @@ class _$BlockNumberError implements BlockNumberError {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(int result)? result,
+    TResult Function(Felt result)? result,
     TResult Function(JsonRpcApiError error)? error,
     required TResult orElse(),
   }) {
@@ -352,8 +355,8 @@ class _$BlockNumberError implements BlockNumberError {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(BlockNumberResult value) result,
-    required TResult Function(BlockNumberError value) error,
+    required TResult Function(GetClassHashAtResult value) result,
+    required TResult Function(GetClassHashAtError value) error,
   }) {
     return error(this);
   }
@@ -361,8 +364,8 @@ class _$BlockNumberError implements BlockNumberError {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(BlockNumberResult value)? result,
-    TResult Function(BlockNumberError value)? error,
+    TResult Function(GetClassHashAtResult value)? result,
+    TResult Function(GetClassHashAtError value)? error,
   }) {
     return error?.call(this);
   }
@@ -370,8 +373,8 @@ class _$BlockNumberError implements BlockNumberError {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(BlockNumberResult value)? result,
-    TResult Function(BlockNumberError value)? error,
+    TResult Function(GetClassHashAtResult value)? result,
+    TResult Function(GetClassHashAtError value)? error,
     required TResult orElse(),
   }) {
     if (error != null) {
@@ -382,21 +385,21 @@ class _$BlockNumberError implements BlockNumberError {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$BlockNumberErrorToJson(
+    return _$$GetClassHashAtErrorToJson(
       this,
     );
   }
 }
 
-abstract class BlockNumberError implements BlockNumber {
-  const factory BlockNumberError({required final JsonRpcApiError error}) =
-      _$BlockNumberError;
+abstract class GetClassHashAtError implements GetClassHashAt {
+  const factory GetClassHashAtError({required final JsonRpcApiError error}) =
+      _$GetClassHashAtError;
 
-  factory BlockNumberError.fromJson(Map<String, dynamic> json) =
-      _$BlockNumberError.fromJson;
+  factory GetClassHashAtError.fromJson(Map<String, dynamic> json) =
+      _$GetClassHashAtError.fromJson;
 
   JsonRpcApiError get error;
   @JsonKey(ignore: true)
-  _$$BlockNumberErrorCopyWith<_$BlockNumberError> get copyWith =>
+  _$$GetClassHashAtErrorCopyWith<_$GetClassHashAtError> get copyWith =>
       throw _privateConstructorUsedError;
 }

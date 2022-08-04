@@ -9,13 +9,13 @@ final infuraMainnetUri = Uri.parse(
     'https://starknet-mainnet.infura.io/v3/f54befa531584e2d8516addbf285a560');
 
 class StarknetChainId {
-  static final mainnet = stringToBigInt('SN_MAIN');
-  static final testNet = stringToBigInt('SN_GOERLI');
+  static final mainnet = Felt.fromString('SN_MAIN');
+  static final testNet = Felt.fromString('SN_GOERLI');
 }
 
 class TransactionHashPrefix {
-  static final declare = stringToBigInt('declare');
-  static final deploy = stringToBigInt('deploy');
-  static final invoke = stringToBigInt('invoke');
-  static final l1Handler = stringToBigInt('l1_handler');
+  static final declare = Felt.fromString('declare');
+  static final deploy = Felt.fromString('deploy');
+  static final invoke = Felt.fromString('invoke');
+  static final l1Handler = Felt.fromString('l1_handler');
 }

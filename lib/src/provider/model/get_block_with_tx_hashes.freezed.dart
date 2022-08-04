@@ -204,7 +204,9 @@ class _$GetBlockWithTxHashesResult implements GetBlockWithTxHashesResult {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$GetBlockWithTxHashesResultToJson(this);
+    return _$$GetBlockWithTxHashesResultToJson(
+      this,
+    );
   }
 }
 
@@ -361,7 +363,9 @@ class _$GetBlockWithTxHashesError implements GetBlockWithTxHashesError {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$GetBlockWithTxHashesErrorToJson(this);
+    return _$$GetBlockWithTxHashesErrorToJson(
+      this,
+    );
   }
 }
 
@@ -372,7 +376,7 @@ abstract class GetBlockWithTxHashesError implements GetBlockWithTxHashes {
   factory GetBlockWithTxHashesError.fromJson(Map<String, dynamic> json) =
       _$GetBlockWithTxHashesError.fromJson;
 
-  JsonRpcApiError get error => throw _privateConstructorUsedError;
+  JsonRpcApiError get error;
   @JsonKey(ignore: true)
   _$$GetBlockWithTxHashesErrorCopyWith<_$GetBlockWithTxHashesError>
       get copyWith => throw _privateConstructorUsedError;

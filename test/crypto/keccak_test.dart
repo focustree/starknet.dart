@@ -14,7 +14,10 @@ void main() {
     });
     test('makes sure the produced hash fits a field element (<=250 digits)',
         () {
-      expect(starknetKeccak(encodeBigInt(BigInt.two.pow(250))).bitLength,
+      expect(
+          starknetKeccak(encodeBigInt(BigInt.two.pow(250)))
+              .toBigInt()
+              .bitLength,
           lessThanOrEqualTo(250));
     });
   });
