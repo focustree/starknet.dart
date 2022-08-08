@@ -173,11 +173,11 @@ EntryPointsByType _$EntryPointsByTypeFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$EntryPointsByType {
   @JsonKey(name: 'CONSTRUCTOR')
-  List<EntryPoint> get CONSTRUCTOR => throw _privateConstructorUsedError;
+  List<EntryPoint> get constructor => throw _privateConstructorUsedError;
   @JsonKey(name: 'EXTERNAL')
-  List<EntryPoint> get EXTERNAL => throw _privateConstructorUsedError;
+  List<EntryPoint> get external => throw _privateConstructorUsedError;
   @JsonKey(name: 'L1_HANDLER')
-  List<EntryPoint> get L1_HANDLER => throw _privateConstructorUsedError;
+  List<EntryPoint> get L1Handler => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -191,9 +191,9 @@ abstract class $EntryPointsByTypeCopyWith<$Res> {
           EntryPointsByType value, $Res Function(EntryPointsByType) then) =
       _$EntryPointsByTypeCopyWithImpl<$Res>;
   $Res call(
-      {@JsonKey(name: 'CONSTRUCTOR') List<EntryPoint> CONSTRUCTOR,
-      @JsonKey(name: 'EXTERNAL') List<EntryPoint> EXTERNAL,
-      @JsonKey(name: 'L1_HANDLER') List<EntryPoint> L1_HANDLER});
+      {@JsonKey(name: 'CONSTRUCTOR') List<EntryPoint> constructor,
+      @JsonKey(name: 'EXTERNAL') List<EntryPoint> external,
+      @JsonKey(name: 'L1_HANDLER') List<EntryPoint> L1Handler});
 }
 
 /// @nodoc
@@ -207,22 +207,22 @@ class _$EntryPointsByTypeCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? CONSTRUCTOR = freezed,
-    Object? EXTERNAL = freezed,
-    Object? L1_HANDLER = freezed,
+    Object? constructor = freezed,
+    Object? external = freezed,
+    Object? L1Handler = freezed,
   }) {
     return _then(_value.copyWith(
-      CONSTRUCTOR: CONSTRUCTOR == freezed
-          ? _value.CONSTRUCTOR
-          : CONSTRUCTOR // ignore: cast_nullable_to_non_nullable
+      constructor: constructor == freezed
+          ? _value.constructor
+          : constructor // ignore: cast_nullable_to_non_nullable
               as List<EntryPoint>,
-      EXTERNAL: EXTERNAL == freezed
-          ? _value.EXTERNAL
-          : EXTERNAL // ignore: cast_nullable_to_non_nullable
+      external: external == freezed
+          ? _value.external
+          : external // ignore: cast_nullable_to_non_nullable
               as List<EntryPoint>,
-      L1_HANDLER: L1_HANDLER == freezed
-          ? _value.L1_HANDLER
-          : L1_HANDLER // ignore: cast_nullable_to_non_nullable
+      L1Handler: L1Handler == freezed
+          ? _value.L1Handler
+          : L1Handler // ignore: cast_nullable_to_non_nullable
               as List<EntryPoint>,
     ));
   }
@@ -236,9 +236,9 @@ abstract class _$$_EntryPointsByTypeCopyWith<$Res>
       __$$_EntryPointsByTypeCopyWithImpl<$Res>;
   @override
   $Res call(
-      {@JsonKey(name: 'CONSTRUCTOR') List<EntryPoint> CONSTRUCTOR,
-      @JsonKey(name: 'EXTERNAL') List<EntryPoint> EXTERNAL,
-      @JsonKey(name: 'L1_HANDLER') List<EntryPoint> L1_HANDLER});
+      {@JsonKey(name: 'CONSTRUCTOR') List<EntryPoint> constructor,
+      @JsonKey(name: 'EXTERNAL') List<EntryPoint> external,
+      @JsonKey(name: 'L1_HANDLER') List<EntryPoint> L1Handler});
 }
 
 /// @nodoc
@@ -254,22 +254,22 @@ class __$$_EntryPointsByTypeCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? CONSTRUCTOR = freezed,
-    Object? EXTERNAL = freezed,
-    Object? L1_HANDLER = freezed,
+    Object? constructor = freezed,
+    Object? external = freezed,
+    Object? L1Handler = freezed,
   }) {
     return _then(_$_EntryPointsByType(
-      CONSTRUCTOR: CONSTRUCTOR == freezed
-          ? _value._CONSTRUCTOR
-          : CONSTRUCTOR // ignore: cast_nullable_to_non_nullable
+      constructor: constructor == freezed
+          ? _value._constructor
+          : constructor // ignore: cast_nullable_to_non_nullable
               as List<EntryPoint>,
-      EXTERNAL: EXTERNAL == freezed
-          ? _value._EXTERNAL
-          : EXTERNAL // ignore: cast_nullable_to_non_nullable
+      external: external == freezed
+          ? _value._external
+          : external // ignore: cast_nullable_to_non_nullable
               as List<EntryPoint>,
-      L1_HANDLER: L1_HANDLER == freezed
-          ? _value._L1_HANDLER
-          : L1_HANDLER // ignore: cast_nullable_to_non_nullable
+      L1Handler: L1Handler == freezed
+          ? _value._L1Handler
+          : L1Handler // ignore: cast_nullable_to_non_nullable
               as List<EntryPoint>,
     ));
   }
@@ -280,45 +280,45 @@ class __$$_EntryPointsByTypeCopyWithImpl<$Res>
 class _$_EntryPointsByType implements _EntryPointsByType {
   const _$_EntryPointsByType(
       {@JsonKey(name: 'CONSTRUCTOR')
-          required final List<EntryPoint> CONSTRUCTOR,
+          required final List<EntryPoint> constructor,
       @JsonKey(name: 'EXTERNAL')
-          required final List<EntryPoint> EXTERNAL,
+          required final List<EntryPoint> external,
       @JsonKey(name: 'L1_HANDLER')
-          required final List<EntryPoint> L1_HANDLER})
-      : _CONSTRUCTOR = CONSTRUCTOR,
-        _EXTERNAL = EXTERNAL,
-        _L1_HANDLER = L1_HANDLER;
+          required final List<EntryPoint> L1Handler})
+      : _constructor = constructor,
+        _external = external,
+        _L1Handler = L1Handler;
 
   factory _$_EntryPointsByType.fromJson(Map<String, dynamic> json) =>
       _$$_EntryPointsByTypeFromJson(json);
 
-  final List<EntryPoint> _CONSTRUCTOR;
+  final List<EntryPoint> _constructor;
   @override
   @JsonKey(name: 'CONSTRUCTOR')
-  List<EntryPoint> get CONSTRUCTOR {
+  List<EntryPoint> get constructor {
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_CONSTRUCTOR);
+    return EqualUnmodifiableListView(_constructor);
   }
 
-  final List<EntryPoint> _EXTERNAL;
+  final List<EntryPoint> _external;
   @override
   @JsonKey(name: 'EXTERNAL')
-  List<EntryPoint> get EXTERNAL {
+  List<EntryPoint> get external {
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_EXTERNAL);
+    return EqualUnmodifiableListView(_external);
   }
 
-  final List<EntryPoint> _L1_HANDLER;
+  final List<EntryPoint> _L1Handler;
   @override
   @JsonKey(name: 'L1_HANDLER')
-  List<EntryPoint> get L1_HANDLER {
+  List<EntryPoint> get L1Handler {
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_L1_HANDLER);
+    return EqualUnmodifiableListView(_L1Handler);
   }
 
   @override
   String toString() {
-    return 'EntryPointsByType(CONSTRUCTOR: $CONSTRUCTOR, EXTERNAL: $EXTERNAL, L1_HANDLER: $L1_HANDLER)';
+    return 'EntryPointsByType(constructor: $constructor, external: $external, L1Handler: $L1Handler)';
   }
 
   @override
@@ -327,19 +327,19 @@ class _$_EntryPointsByType implements _EntryPointsByType {
         (other.runtimeType == runtimeType &&
             other is _$_EntryPointsByType &&
             const DeepCollectionEquality()
-                .equals(other._CONSTRUCTOR, _CONSTRUCTOR) &&
-            const DeepCollectionEquality().equals(other._EXTERNAL, _EXTERNAL) &&
+                .equals(other._constructor, _constructor) &&
+            const DeepCollectionEquality().equals(other._external, _external) &&
             const DeepCollectionEquality()
-                .equals(other._L1_HANDLER, _L1_HANDLER));
+                .equals(other._L1Handler, _L1Handler));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      const DeepCollectionEquality().hash(_CONSTRUCTOR),
-      const DeepCollectionEquality().hash(_EXTERNAL),
-      const DeepCollectionEquality().hash(_L1_HANDLER));
+      const DeepCollectionEquality().hash(_constructor),
+      const DeepCollectionEquality().hash(_external),
+      const DeepCollectionEquality().hash(_L1Handler));
 
   @JsonKey(ignore: true)
   @override
@@ -358,24 +358,24 @@ class _$_EntryPointsByType implements _EntryPointsByType {
 abstract class _EntryPointsByType implements EntryPointsByType {
   const factory _EntryPointsByType(
       {@JsonKey(name: 'CONSTRUCTOR')
-          required final List<EntryPoint> CONSTRUCTOR,
+          required final List<EntryPoint> constructor,
       @JsonKey(name: 'EXTERNAL')
-          required final List<EntryPoint> EXTERNAL,
+          required final List<EntryPoint> external,
       @JsonKey(name: 'L1_HANDLER')
-          required final List<EntryPoint> L1_HANDLER}) = _$_EntryPointsByType;
+          required final List<EntryPoint> L1Handler}) = _$_EntryPointsByType;
 
   factory _EntryPointsByType.fromJson(Map<String, dynamic> json) =
       _$_EntryPointsByType.fromJson;
 
   @override
   @JsonKey(name: 'CONSTRUCTOR')
-  List<EntryPoint> get CONSTRUCTOR;
+  List<EntryPoint> get constructor;
   @override
   @JsonKey(name: 'EXTERNAL')
-  List<EntryPoint> get EXTERNAL;
+  List<EntryPoint> get external;
   @override
   @JsonKey(name: 'L1_HANDLER')
-  List<EntryPoint> get L1_HANDLER;
+  List<EntryPoint> get L1Handler;
   @override
   @JsonKey(ignore: true)
   _$$_EntryPointsByTypeCopyWith<_$_EntryPointsByType> get copyWith =>
