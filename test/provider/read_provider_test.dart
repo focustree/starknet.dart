@@ -330,7 +330,7 @@ void main() {
             result: (result) {
               final entry_points = result.entryPointsByType;
               expect(entry_points.constructor.length, 0);
-              expect(entry_points.L1Handler.length, 0);
+              expect(entry_points.l1Handler.length, 0);
               expect(entry_points.external.length, 2);
               expect(entry_points.external[0].offset, "0x3a");
               expect(entry_points.external[1].offset, "0x5b");
@@ -350,7 +350,7 @@ void main() {
         }, result: (result) {
           final entry_points = result.entryPointsByType;
           expect(entry_points.constructor.length, 0);
-          expect(entry_points.L1Handler.length, 0);
+          expect(entry_points.l1Handler.length, 0);
           expect(entry_points.external.length, 2);
           expect(entry_points.external[0].offset, "0x3a");
           expect(entry_points.external[1].offset, "0x5b");

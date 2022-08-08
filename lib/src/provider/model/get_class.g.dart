@@ -26,7 +26,7 @@ _$_EntryPointsByType _$$_EntryPointsByTypeFromJson(Map<String, dynamic> json) =>
       external: (json['EXTERNAL'] as List<dynamic>)
           .map((e) => EntryPoint.fromJson(e as Map<String, dynamic>))
           .toList(),
-      L1Handler: (json['L1_HANDLER'] as List<dynamic>)
+      l1Handler: (json['L1_HANDLER'] as List<dynamic>)
           .map((e) => EntryPoint.fromJson(e as Map<String, dynamic>))
           .toList(),
     );
@@ -36,7 +36,7 @@ Map<String, dynamic> _$$_EntryPointsByTypeToJson(
     <String, dynamic>{
       'CONSTRUCTOR': instance.constructor.map((e) => e.toJson()).toList(),
       'EXTERNAL': instance.external.map((e) => e.toJson()).toList(),
-      'L1_HANDLER': instance.L1Handler.map((e) => e.toJson()).toList(),
+      'L1_HANDLER': instance.l1Handler.map((e) => e.toJson()).toList(),
     };
 
 _$_ContractClass _$$_ContractClassFromJson(Map<String, dynamic> json) =>

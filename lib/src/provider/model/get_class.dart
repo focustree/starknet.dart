@@ -18,7 +18,7 @@ class EntryPointsByType with _$EntryPointsByType {
   const factory EntryPointsByType({
     @JsonKey(name: 'CONSTRUCTOR') required List<EntryPoint> constructor,
     @JsonKey(name: 'EXTERNAL') required List<EntryPoint> external,
-    @JsonKey(name: 'L1_HANDLER') required List<EntryPoint> L1Handler,
+    @JsonKey(name: 'L1_HANDLER') required List<EntryPoint> l1Handler,
   }) = _EntryPointsByType;
 
   factory EntryPointsByType.fromJson(Map<String, Object?> json) =>
