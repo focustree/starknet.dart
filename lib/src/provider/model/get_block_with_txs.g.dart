@@ -73,10 +73,10 @@ Map<String, dynamic> _$$BlockWithTxsResponseToJson(
     };
 
 const _$BlockStatusEnumMap = {
-  BlockStatus.PENDING: 'PENDING',
-  BlockStatus.ACCEPTED_ON_L2: 'ACCEPTED_ON_L2',
-  BlockStatus.ACCEPTED_ON_L1: 'ACCEPTED_ON_L1',
-  BlockStatus.REJECTED: 'REJECTED',
+  BlockStatus.pending: 'pending',
+  BlockStatus.acceptedOnL2: 'acceptedOnL2',
+  BlockStatus.acceptedOnL1: 'acceptedOnL1',
+  BlockStatus.rejected: 'rejected',
 };
 
 _$InvokeTxn _$$InvokeTxnFromJson(Map<String, dynamic> json) => _$InvokeTxn(
@@ -111,9 +111,9 @@ Map<String, dynamic> _$$InvokeTxnToJson(_$InvokeTxn instance) =>
     };
 
 const _$TxnTypeEnumMap = {
-  TxnType.INVOKE: 'INVOKE',
-  TxnType.DECLARE: 'DECLARE',
-  TxnType.DEPLOY: 'DEPLOY',
+  TxnType.invoke: 'invoke',
+  TxnType.declare: 'declare',
+  TxnType.deploy: 'deploy',
 };
 
 _$DeclareTxn _$$DeclareTxnFromJson(Map<String, dynamic> json) => _$DeclareTxn(

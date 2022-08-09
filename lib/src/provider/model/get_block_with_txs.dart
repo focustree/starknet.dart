@@ -106,9 +106,24 @@ class Transaction with _$Transaction {
               : DeployTxn.fromJson(json);
 }
 
-enum BlockStatus { PENDING, ACCEPTED_ON_L2, ACCEPTED_ON_L1, REJECTED }
+enum BlockStatus {
+  pending("PENDING"),
+  acceptedOnL2("ACCEPTED_ON_L2"),
+  acceptedOnL1("ACCEPTED_ON_L1"),
+  rejected("REJECTED");
 
-enum TxnType { INVOKE, DECLARE, DEPLOY }
+  const BlockStatus(this.value);
+  final String value;
+}
+
+enum TxnType {
+  invoke("INVOKE"),
+  declare("DECLARE"),
+  deploy("DEPLOY");
+
+  const TxnType(this.value);
+  final String value;
+}
 
 @freezed
 class DeclarationInfo with _$DeclarationInfo {
@@ -123,15 +138,15 @@ class DeclarationInfo with _$DeclarationInfo {
 
 @freezed
 class PendingBlockWithTxs with _$PendingBlockWithTxs {
-  const factory PendingBlockWithTxs.result({
-    // Start of BLOCK_BODY_WITH_TXS
-    required List<Transaction> transactions,
-    // End of BLOCK_BODY_WITH_TXS
-    required int timestamp,
-    required Felt sequencerAddress,
-    required Felt blockHash,
-    required 
-  }) = PendingBlockWithTxsResult; 
+  const factory PendingBlockWithTxs.result(
+      {
+      // Start of BLOCK_BODY_WITH_TXS
+      required List<Transaction> transactions,
+      // End of BLOCK_BODY_WITH_TXS
+      required int timestamp,
+      required Felt sequencerAddress,
+      required Felt blockHash,
+      required}) = PendingBlockWithTxsResult;
   factory PendingBlockWithTxs.fromJson(Map<String, Object?> json) =>
       PendingBlockWithTxsResult.fromJson(json);
 }
