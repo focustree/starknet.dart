@@ -28,27 +28,25 @@ class GetBlockWithTxs with _$GetBlockWithTxs {
 
 @freezed
 class BlockWithTxs with _$BlockWithTxs {
-  const factory BlockWithTxs.result({
-    required BlockStatus status,
+  const factory BlockWithTxs.result(
+      {required BlockStatus status,
 
-    //Start of BLOCK_BODY_WITH_TXS
-    required List<Transaction> transactions,
-    //End of BLOCK_BODY_WITH_TXS
+      //Start of BLOCK_BODY_WITH_TXS
+      required List<Transaction> transactions,
+      //End of BLOCK_BODY_WITH_TXS
 
-    //Start of BLOCK_HEADER
-    required Felt blockHash,
-    required Felt parentHash,
-    required int blockNumber,
-    required Felt newRoot,
-    required int timestamp,
-    required Felt sequencerAddress
-    //End of BLOCK_HEADER
-  }) = BlockWithTxsResponse;
+      //Start of BLOCK_HEADER
+      required Felt blockHash,
+      required Felt parentHash,
+      required int blockNumber,
+      required Felt newRoot,
+      required int timestamp,
+      required Felt sequencerAddress
+      //End of BLOCK_HEADER
+      }) = BlockWithTxsResponse;
 
   factory BlockWithTxs.fromJson(Map<String, Object?> json) =>
-      json.containsKey('error')
-          ? BlockWithTxsResponse.fromJson(json)
-          : BlockWithTxsResponse.fromJson(json);
+      BlockWithTxsResponse.fromJson(json);
 }
 
 @freezed
@@ -70,9 +68,10 @@ class Transaction with _$Transaction {
     //End of COMMON_TXN_PROPERTIES
   }) = InvokeTxn;
   const factory Transaction.declare({
-    //Gave this name but the object doesn't have a name even if its inside allOf
+    // Gave this name but the object doesn't have a name even if its inside allOf
     // So I gave it a name here but i believe it should be changed later when we
     // Have an idea about how the API will look like
+    // Most probably it will need to be flattened out
     required DeclarationInfo declarationInfo,
     //Start of COMMON_TXN_PROPERTIES
     required Felt transactionHash,
@@ -125,14 +124,14 @@ class DeclarationInfo with _$DeclarationInfo {
 @freezed
 class PendingBlockWithTxs with _$PendingBlockWithTxs {
   const factory PendingBlockWithTxs.result({
-    required BlockWithTxs result,
-  }) = PendingBlockWithTxsResult;
-  const factory PendingBlockWithTxs.error({
-    required JsonRpcApiError error,
-  }) = PendingBlockWithTxsError;
-
+    // Start of BLOCK_BODY_WITH_TXS
+    required List<Transaction> transactions,
+    // End of BLOCK_BODY_WITH_TXS
+    required int timestamp,
+    required Felt sequencerAddress,
+    required Felt blockHash,
+    required 
+  }) = PendingBlockWithTxsResult; 
   factory PendingBlockWithTxs.fromJson(Map<String, Object?> json) =>
-      json.containsKey('error')
-          ? PendingBlockWithTxsError.fromJson(json)
-          : PendingBlockWithTxsResult.fromJson(json);
+      PendingBlockWithTxsResult.fromJson(json);
 }

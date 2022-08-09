@@ -1679,9 +1679,10 @@ class _$DeclareTxn implements DeclareTxn {
   factory _$DeclareTxn.fromJson(Map<String, dynamic> json) =>
       _$$DeclareTxnFromJson(json);
 
-//Gave this name but the object doesn't have a name even if its inside allOf
+// Gave this name but the object doesn't have a name even if its inside allOf
 // So I gave it a name here but i believe it should be changed later when we
 // Have an idea about how the API will look like
+// Most probably it will need to be flattened out
   @override
   final DeclarationInfo declarationInfo;
 //Start of COMMON_TXN_PROPERTIES
@@ -1921,9 +1922,10 @@ abstract class DeclareTxn implements Transaction {
   factory DeclareTxn.fromJson(Map<String, dynamic> json) =
       _$DeclareTxn.fromJson;
 
-//Gave this name but the object doesn't have a name even if its inside allOf
+// Gave this name but the object doesn't have a name even if its inside allOf
 // So I gave it a name here but i believe it should be changed later when we
 // Have an idea about how the API will look like
+// Most probably it will need to be flattened out
   DeclarationInfo get declarationInfo; //Start of COMMON_TXN_PROPERTIES
   Felt get transactionHash;
   Felt get maxFree;
@@ -2769,59 +2771,60 @@ abstract class DeclarationInfoResult implements DeclarationInfo {
 }
 
 PendingBlockWithTxs _$PendingBlockWithTxsFromJson(Map<String, dynamic> json) {
-  switch (json['runtimeType']) {
-    case 'result':
-      return PendingBlockWithTxsResult.fromJson(json);
-    case 'error':
-      return PendingBlockWithTxsError.fromJson(json);
-
-    default:
-      throw CheckedFromJsonException(json, 'runtimeType', 'PendingBlockWithTxs',
-          'Invalid union type "${json['runtimeType']}"!');
-  }
+  return PendingBlockWithTxsResult.fromJson(json);
 }
 
 /// @nodoc
 mixin _$PendingBlockWithTxs {
+// Start of BLOCK_BODY_WITH_TXS
+  List<Transaction> get transactions =>
+      throw _privateConstructorUsedError; // End of BLOCK_BODY_WITH_TXS
+  int get timestamp => throw _privateConstructorUsedError;
+  Felt get sequencerAddress => throw _privateConstructorUsedError;
+  Felt get blockHash => throw _privateConstructorUsedError;
+  dynamic get required => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(BlockWithTxs result) result,
-    required TResult Function(JsonRpcApiError error) error,
+    required TResult Function(List<Transaction> transactions, int timestamp,
+            Felt sequencerAddress, Felt blockHash, dynamic required)
+        result,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(BlockWithTxs result)? result,
-    TResult Function(JsonRpcApiError error)? error,
+    TResult Function(List<Transaction> transactions, int timestamp,
+            Felt sequencerAddress, Felt blockHash, dynamic required)?
+        result,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(BlockWithTxs result)? result,
-    TResult Function(JsonRpcApiError error)? error,
+    TResult Function(List<Transaction> transactions, int timestamp,
+            Felt sequencerAddress, Felt blockHash, dynamic required)?
+        result,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(PendingBlockWithTxsResult value) result,
-    required TResult Function(PendingBlockWithTxsError value) error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(PendingBlockWithTxsResult value)? result,
-    TResult Function(PendingBlockWithTxsError value)? error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(PendingBlockWithTxsResult value)? result,
-    TResult Function(PendingBlockWithTxsError value)? error,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $PendingBlockWithTxsCopyWith<PendingBlockWithTxs> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -2829,6 +2832,12 @@ abstract class $PendingBlockWithTxsCopyWith<$Res> {
   factory $PendingBlockWithTxsCopyWith(
           PendingBlockWithTxs value, $Res Function(PendingBlockWithTxs) then) =
       _$PendingBlockWithTxsCopyWithImpl<$Res>;
+  $Res call(
+      {List<Transaction> transactions,
+      int timestamp,
+      Felt sequencerAddress,
+      Felt blockHash,
+      dynamic required});
 }
 
 /// @nodoc
@@ -2839,17 +2848,54 @@ class _$PendingBlockWithTxsCopyWithImpl<$Res>
   final PendingBlockWithTxs _value;
   // ignore: unused_field
   final $Res Function(PendingBlockWithTxs) _then;
+
+  @override
+  $Res call({
+    Object? transactions = freezed,
+    Object? timestamp = freezed,
+    Object? sequencerAddress = freezed,
+    Object? blockHash = freezed,
+    Object? required = freezed,
+  }) {
+    return _then(_value.copyWith(
+      transactions: transactions == freezed
+          ? _value.transactions
+          : transactions // ignore: cast_nullable_to_non_nullable
+              as List<Transaction>,
+      timestamp: timestamp == freezed
+          ? _value.timestamp
+          : timestamp // ignore: cast_nullable_to_non_nullable
+              as int,
+      sequencerAddress: sequencerAddress == freezed
+          ? _value.sequencerAddress
+          : sequencerAddress // ignore: cast_nullable_to_non_nullable
+              as Felt,
+      blockHash: blockHash == freezed
+          ? _value.blockHash
+          : blockHash // ignore: cast_nullable_to_non_nullable
+              as Felt,
+      required: required == freezed
+          ? _value.required
+          : required // ignore: cast_nullable_to_non_nullable
+              as dynamic,
+    ));
+  }
 }
 
 /// @nodoc
-abstract class _$$PendingBlockWithTxsResultCopyWith<$Res> {
+abstract class _$$PendingBlockWithTxsResultCopyWith<$Res>
+    implements $PendingBlockWithTxsCopyWith<$Res> {
   factory _$$PendingBlockWithTxsResultCopyWith(
           _$PendingBlockWithTxsResult value,
           $Res Function(_$PendingBlockWithTxsResult) then) =
       __$$PendingBlockWithTxsResultCopyWithImpl<$Res>;
-  $Res call({BlockWithTxs result});
-
-  $BlockWithTxsCopyWith<$Res> get result;
+  @override
+  $Res call(
+      {List<Transaction> transactions,
+      int timestamp,
+      Felt sequencerAddress,
+      Felt blockHash,
+      dynamic required});
 }
 
 /// @nodoc
@@ -2866,42 +2912,70 @@ class __$$PendingBlockWithTxsResultCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? result = freezed,
+    Object? transactions = freezed,
+    Object? timestamp = freezed,
+    Object? sequencerAddress = freezed,
+    Object? blockHash = freezed,
+    Object? required = freezed,
   }) {
     return _then(_$PendingBlockWithTxsResult(
-      result: result == freezed
-          ? _value.result
-          : result // ignore: cast_nullable_to_non_nullable
-              as BlockWithTxs,
+      transactions: transactions == freezed
+          ? _value._transactions
+          : transactions // ignore: cast_nullable_to_non_nullable
+              as List<Transaction>,
+      timestamp: timestamp == freezed
+          ? _value.timestamp
+          : timestamp // ignore: cast_nullable_to_non_nullable
+              as int,
+      sequencerAddress: sequencerAddress == freezed
+          ? _value.sequencerAddress
+          : sequencerAddress // ignore: cast_nullable_to_non_nullable
+              as Felt,
+      blockHash: blockHash == freezed
+          ? _value.blockHash
+          : blockHash // ignore: cast_nullable_to_non_nullable
+              as Felt,
+      required: required == freezed ? _value.required : required,
     ));
-  }
-
-  @override
-  $BlockWithTxsCopyWith<$Res> get result {
-    return $BlockWithTxsCopyWith<$Res>(_value.result, (value) {
-      return _then(_value.copyWith(result: value));
-    });
   }
 }
 
 /// @nodoc
 @JsonSerializable()
 class _$PendingBlockWithTxsResult implements PendingBlockWithTxsResult {
-  const _$PendingBlockWithTxsResult({required this.result, final String? $type})
-      : $type = $type ?? 'result';
+  const _$PendingBlockWithTxsResult(
+      {required final List<Transaction> transactions,
+      required this.timestamp,
+      required this.sequencerAddress,
+      required this.blockHash,
+      this.required})
+      : _transactions = transactions;
 
   factory _$PendingBlockWithTxsResult.fromJson(Map<String, dynamic> json) =>
       _$$PendingBlockWithTxsResultFromJson(json);
 
+// Start of BLOCK_BODY_WITH_TXS
+  final List<Transaction> _transactions;
+// Start of BLOCK_BODY_WITH_TXS
   @override
-  final BlockWithTxs result;
+  List<Transaction> get transactions {
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_transactions);
+  }
 
-  @JsonKey(name: 'runtimeType')
-  final String $type;
+// End of BLOCK_BODY_WITH_TXS
+  @override
+  final int timestamp;
+  @override
+  final Felt sequencerAddress;
+  @override
+  final Felt blockHash;
+  @override
+  final dynamic required;
 
   @override
   String toString() {
-    return 'PendingBlockWithTxs.result(result: $result)';
+    return 'PendingBlockWithTxs.result(transactions: $transactions, timestamp: $timestamp, sequencerAddress: $sequencerAddress, blockHash: $blockHash, required: $required)';
   }
 
   @override
@@ -2909,13 +2983,24 @@ class _$PendingBlockWithTxsResult implements PendingBlockWithTxsResult {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$PendingBlockWithTxsResult &&
-            const DeepCollectionEquality().equals(other.result, result));
+            const DeepCollectionEquality()
+                .equals(other._transactions, _transactions) &&
+            const DeepCollectionEquality().equals(other.timestamp, timestamp) &&
+            const DeepCollectionEquality()
+                .equals(other.sequencerAddress, sequencerAddress) &&
+            const DeepCollectionEquality().equals(other.blockHash, blockHash) &&
+            const DeepCollectionEquality().equals(other.required, required));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(result));
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(_transactions),
+      const DeepCollectionEquality().hash(timestamp),
+      const DeepCollectionEquality().hash(sequencerAddress),
+      const DeepCollectionEquality().hash(blockHash),
+      const DeepCollectionEquality().hash(required));
 
   @JsonKey(ignore: true)
   @override
@@ -2926,30 +3011,36 @@ class _$PendingBlockWithTxsResult implements PendingBlockWithTxsResult {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(BlockWithTxs result) result,
-    required TResult Function(JsonRpcApiError error) error,
+    required TResult Function(List<Transaction> transactions, int timestamp,
+            Felt sequencerAddress, Felt blockHash, dynamic required)
+        result,
   }) {
-    return result(this.result);
+    return result(
+        transactions, timestamp, sequencerAddress, blockHash, required);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(BlockWithTxs result)? result,
-    TResult Function(JsonRpcApiError error)? error,
+    TResult Function(List<Transaction> transactions, int timestamp,
+            Felt sequencerAddress, Felt blockHash, dynamic required)?
+        result,
   }) {
-    return result?.call(this.result);
+    return result?.call(
+        transactions, timestamp, sequencerAddress, blockHash, required);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(BlockWithTxs result)? result,
-    TResult Function(JsonRpcApiError error)? error,
+    TResult Function(List<Transaction> transactions, int timestamp,
+            Felt sequencerAddress, Felt blockHash, dynamic required)?
+        result,
     required TResult orElse(),
   }) {
     if (result != null) {
-      return result(this.result);
+      return result(
+          transactions, timestamp, sequencerAddress, blockHash, required);
     }
     return orElse();
   }
@@ -2958,7 +3049,6 @@ class _$PendingBlockWithTxsResult implements PendingBlockWithTxsResult {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(PendingBlockWithTxsResult value) result,
-    required TResult Function(PendingBlockWithTxsError value) error,
   }) {
     return result(this);
   }
@@ -2967,7 +3057,6 @@ class _$PendingBlockWithTxsResult implements PendingBlockWithTxsResult {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(PendingBlockWithTxsResult value)? result,
-    TResult Function(PendingBlockWithTxsError value)? error,
   }) {
     return result?.call(this);
   }
@@ -2976,7 +3065,6 @@ class _$PendingBlockWithTxsResult implements PendingBlockWithTxsResult {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(PendingBlockWithTxsResult value)? result,
-    TResult Function(PendingBlockWithTxsError value)? error,
     required TResult orElse(),
   }) {
     if (result != null) {
@@ -2995,178 +3083,27 @@ class _$PendingBlockWithTxsResult implements PendingBlockWithTxsResult {
 
 abstract class PendingBlockWithTxsResult implements PendingBlockWithTxs {
   const factory PendingBlockWithTxsResult(
-      {required final BlockWithTxs result}) = _$PendingBlockWithTxsResult;
+      {required final List<Transaction> transactions,
+      required final int timestamp,
+      required final Felt sequencerAddress,
+      required final Felt blockHash,
+      final dynamic required}) = _$PendingBlockWithTxsResult;
 
   factory PendingBlockWithTxsResult.fromJson(Map<String, dynamic> json) =
       _$PendingBlockWithTxsResult.fromJson;
 
-  BlockWithTxs get result;
+  @override // Start of BLOCK_BODY_WITH_TXS
+  List<Transaction> get transactions;
+  @override // End of BLOCK_BODY_WITH_TXS
+  int get timestamp;
+  @override
+  Felt get sequencerAddress;
+  @override
+  Felt get blockHash;
+  @override
+  dynamic get required;
+  @override
   @JsonKey(ignore: true)
   _$$PendingBlockWithTxsResultCopyWith<_$PendingBlockWithTxsResult>
-      get copyWith => throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class _$$PendingBlockWithTxsErrorCopyWith<$Res> {
-  factory _$$PendingBlockWithTxsErrorCopyWith(_$PendingBlockWithTxsError value,
-          $Res Function(_$PendingBlockWithTxsError) then) =
-      __$$PendingBlockWithTxsErrorCopyWithImpl<$Res>;
-  $Res call({JsonRpcApiError error});
-
-  $JsonRpcApiErrorCopyWith<$Res> get error;
-}
-
-/// @nodoc
-class __$$PendingBlockWithTxsErrorCopyWithImpl<$Res>
-    extends _$PendingBlockWithTxsCopyWithImpl<$Res>
-    implements _$$PendingBlockWithTxsErrorCopyWith<$Res> {
-  __$$PendingBlockWithTxsErrorCopyWithImpl(_$PendingBlockWithTxsError _value,
-      $Res Function(_$PendingBlockWithTxsError) _then)
-      : super(_value, (v) => _then(v as _$PendingBlockWithTxsError));
-
-  @override
-  _$PendingBlockWithTxsError get _value =>
-      super._value as _$PendingBlockWithTxsError;
-
-  @override
-  $Res call({
-    Object? error = freezed,
-  }) {
-    return _then(_$PendingBlockWithTxsError(
-      error: error == freezed
-          ? _value.error
-          : error // ignore: cast_nullable_to_non_nullable
-              as JsonRpcApiError,
-    ));
-  }
-
-  @override
-  $JsonRpcApiErrorCopyWith<$Res> get error {
-    return $JsonRpcApiErrorCopyWith<$Res>(_value.error, (value) {
-      return _then(_value.copyWith(error: value));
-    });
-  }
-}
-
-/// @nodoc
-@JsonSerializable()
-class _$PendingBlockWithTxsError implements PendingBlockWithTxsError {
-  const _$PendingBlockWithTxsError({required this.error, final String? $type})
-      : $type = $type ?? 'error';
-
-  factory _$PendingBlockWithTxsError.fromJson(Map<String, dynamic> json) =>
-      _$$PendingBlockWithTxsErrorFromJson(json);
-
-  @override
-  final JsonRpcApiError error;
-
-  @JsonKey(name: 'runtimeType')
-  final String $type;
-
-  @override
-  String toString() {
-    return 'PendingBlockWithTxs.error(error: $error)';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$PendingBlockWithTxsError &&
-            const DeepCollectionEquality().equals(other.error, error));
-  }
-
-  @JsonKey(ignore: true)
-  @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(error));
-
-  @JsonKey(ignore: true)
-  @override
-  _$$PendingBlockWithTxsErrorCopyWith<_$PendingBlockWithTxsError>
-      get copyWith =>
-          __$$PendingBlockWithTxsErrorCopyWithImpl<_$PendingBlockWithTxsError>(
-              this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(BlockWithTxs result) result,
-    required TResult Function(JsonRpcApiError error) error,
-  }) {
-    return error(this.error);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(BlockWithTxs result)? result,
-    TResult Function(JsonRpcApiError error)? error,
-  }) {
-    return error?.call(this.error);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(BlockWithTxs result)? result,
-    TResult Function(JsonRpcApiError error)? error,
-    required TResult orElse(),
-  }) {
-    if (error != null) {
-      return error(this.error);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(PendingBlockWithTxsResult value) result,
-    required TResult Function(PendingBlockWithTxsError value) error,
-  }) {
-    return error(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(PendingBlockWithTxsResult value)? result,
-    TResult Function(PendingBlockWithTxsError value)? error,
-  }) {
-    return error?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(PendingBlockWithTxsResult value)? result,
-    TResult Function(PendingBlockWithTxsError value)? error,
-    required TResult orElse(),
-  }) {
-    if (error != null) {
-      return error(this);
-    }
-    return orElse();
-  }
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$PendingBlockWithTxsErrorToJson(
-      this,
-    );
-  }
-}
-
-abstract class PendingBlockWithTxsError implements PendingBlockWithTxs {
-  const factory PendingBlockWithTxsError(
-      {required final JsonRpcApiError error}) = _$PendingBlockWithTxsError;
-
-  factory PendingBlockWithTxsError.fromJson(Map<String, dynamic> json) =
-      _$PendingBlockWithTxsError.fromJson;
-
-  JsonRpcApiError get error;
-  @JsonKey(ignore: true)
-  _$$PendingBlockWithTxsErrorCopyWith<_$PendingBlockWithTxsError>
       get copyWith => throw _privateConstructorUsedError;
 }

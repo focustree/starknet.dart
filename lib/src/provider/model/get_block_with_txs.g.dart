@@ -198,27 +198,21 @@ Map<String, dynamic> _$$DeclarationInfoResultToJson(
 _$PendingBlockWithTxsResult _$$PendingBlockWithTxsResultFromJson(
         Map<String, dynamic> json) =>
     _$PendingBlockWithTxsResult(
-      result: BlockWithTxs.fromJson(json['result'] as Map<String, dynamic>),
-      $type: json['runtimeType'] as String?,
+      transactions: (json['transactions'] as List<dynamic>)
+          .map((e) => Transaction.fromJson(e as Map<String, dynamic>))
+          .toList(),
+      timestamp: json['timestamp'] as int,
+      sequencerAddress: Felt.fromJson(json['sequencer_address'] as String),
+      blockHash: Felt.fromJson(json['block_hash'] as String),
+      required: json['required'],
     );
 
 Map<String, dynamic> _$$PendingBlockWithTxsResultToJson(
         _$PendingBlockWithTxsResult instance) =>
     <String, dynamic>{
-      'result': instance.result.toJson(),
-      'runtimeType': instance.$type,
-    };
-
-_$PendingBlockWithTxsError _$$PendingBlockWithTxsErrorFromJson(
-        Map<String, dynamic> json) =>
-    _$PendingBlockWithTxsError(
-      error: JsonRpcApiError.fromJson(json['error'] as Map<String, dynamic>),
-      $type: json['runtimeType'] as String?,
-    );
-
-Map<String, dynamic> _$$PendingBlockWithTxsErrorToJson(
-        _$PendingBlockWithTxsError instance) =>
-    <String, dynamic>{
-      'error': instance.error.toJson(),
-      'runtimeType': instance.$type,
+      'transactions': instance.transactions.map((e) => e.toJson()).toList(),
+      'timestamp': instance.timestamp,
+      'sequencer_address': instance.sequencerAddress.toJson(),
+      'block_hash': instance.blockHash.toJson(),
+      'required': instance.required,
     };
