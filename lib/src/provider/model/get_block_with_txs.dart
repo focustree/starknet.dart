@@ -22,7 +22,7 @@ class GetBlockWithTxs with _$GetBlockWithTxs {
   factory GetBlockWithTxs.fromJson(Map<String, Object?> json) =>
       json.containsKey('error')
           ? GetBlockWithTxsError.fromJson(json)
-          : json['result'] is PendingBlockWithTxs
-              ? PendingBlock.fromJson(json)
-              : BlockWithTxs.fromJson(json);
+          : json.containsKey('status')
+              ? BlockWithTxs.fromJson(json)
+              : PendingBlock.fromJson(json);
 }
