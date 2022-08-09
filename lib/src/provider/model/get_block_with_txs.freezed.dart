@@ -605,23 +605,54 @@ BlockWithTxs _$BlockWithTxsFromJson(Map<String, dynamic> json) {
 mixin _$BlockWithTxs {
   BlockStatus get status =>
       throw _privateConstructorUsedError; //Start of BLOCK_BODY_WITH_TXS
-  List<Transaction> get transactions => throw _privateConstructorUsedError;
+  List<Transaction> get transactions =>
+      throw _privateConstructorUsedError; //End of BLOCK_BODY_WITH_TXS
+//Start of BLOCK_HEADER
+  Felt get blockHash => throw _privateConstructorUsedError;
+  Felt get parentHash => throw _privateConstructorUsedError;
+  int get blockNumber => throw _privateConstructorUsedError;
+  Felt get newRoot => throw _privateConstructorUsedError;
+  int get timestamp => throw _privateConstructorUsedError;
+  Felt get sequencerAddress => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(
-            BlockStatus status, List<Transaction> transactions)
+            BlockStatus status,
+            List<Transaction> transactions,
+            Felt blockHash,
+            Felt parentHash,
+            int blockNumber,
+            Felt newRoot,
+            int timestamp,
+            Felt sequencerAddress)
         result,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(BlockStatus status, List<Transaction> transactions)?
+    TResult Function(
+            BlockStatus status,
+            List<Transaction> transactions,
+            Felt blockHash,
+            Felt parentHash,
+            int blockNumber,
+            Felt newRoot,
+            int timestamp,
+            Felt sequencerAddress)?
         result,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(BlockStatus status, List<Transaction> transactions)?
+    TResult Function(
+            BlockStatus status,
+            List<Transaction> transactions,
+            Felt blockHash,
+            Felt parentHash,
+            int blockNumber,
+            Felt newRoot,
+            int timestamp,
+            Felt sequencerAddress)?
         result,
     required TResult orElse(),
   }) =>
@@ -653,7 +684,15 @@ abstract class $BlockWithTxsCopyWith<$Res> {
   factory $BlockWithTxsCopyWith(
           BlockWithTxs value, $Res Function(BlockWithTxs) then) =
       _$BlockWithTxsCopyWithImpl<$Res>;
-  $Res call({BlockStatus status, List<Transaction> transactions});
+  $Res call(
+      {BlockStatus status,
+      List<Transaction> transactions,
+      Felt blockHash,
+      Felt parentHash,
+      int blockNumber,
+      Felt newRoot,
+      int timestamp,
+      Felt sequencerAddress});
 }
 
 /// @nodoc
@@ -668,6 +707,12 @@ class _$BlockWithTxsCopyWithImpl<$Res> implements $BlockWithTxsCopyWith<$Res> {
   $Res call({
     Object? status = freezed,
     Object? transactions = freezed,
+    Object? blockHash = freezed,
+    Object? parentHash = freezed,
+    Object? blockNumber = freezed,
+    Object? newRoot = freezed,
+    Object? timestamp = freezed,
+    Object? sequencerAddress = freezed,
   }) {
     return _then(_value.copyWith(
       status: status == freezed
@@ -678,6 +723,30 @@ class _$BlockWithTxsCopyWithImpl<$Res> implements $BlockWithTxsCopyWith<$Res> {
           ? _value.transactions
           : transactions // ignore: cast_nullable_to_non_nullable
               as List<Transaction>,
+      blockHash: blockHash == freezed
+          ? _value.blockHash
+          : blockHash // ignore: cast_nullable_to_non_nullable
+              as Felt,
+      parentHash: parentHash == freezed
+          ? _value.parentHash
+          : parentHash // ignore: cast_nullable_to_non_nullable
+              as Felt,
+      blockNumber: blockNumber == freezed
+          ? _value.blockNumber
+          : blockNumber // ignore: cast_nullable_to_non_nullable
+              as int,
+      newRoot: newRoot == freezed
+          ? _value.newRoot
+          : newRoot // ignore: cast_nullable_to_non_nullable
+              as Felt,
+      timestamp: timestamp == freezed
+          ? _value.timestamp
+          : timestamp // ignore: cast_nullable_to_non_nullable
+              as int,
+      sequencerAddress: sequencerAddress == freezed
+          ? _value.sequencerAddress
+          : sequencerAddress // ignore: cast_nullable_to_non_nullable
+              as Felt,
     ));
   }
 }
@@ -689,7 +758,15 @@ abstract class _$$BlockWithTxsResponseCopyWith<$Res>
           $Res Function(_$BlockWithTxsResponse) then) =
       __$$BlockWithTxsResponseCopyWithImpl<$Res>;
   @override
-  $Res call({BlockStatus status, List<Transaction> transactions});
+  $Res call(
+      {BlockStatus status,
+      List<Transaction> transactions,
+      Felt blockHash,
+      Felt parentHash,
+      int blockNumber,
+      Felt newRoot,
+      int timestamp,
+      Felt sequencerAddress});
 }
 
 /// @nodoc
@@ -707,6 +784,12 @@ class __$$BlockWithTxsResponseCopyWithImpl<$Res>
   $Res call({
     Object? status = freezed,
     Object? transactions = freezed,
+    Object? blockHash = freezed,
+    Object? parentHash = freezed,
+    Object? blockNumber = freezed,
+    Object? newRoot = freezed,
+    Object? timestamp = freezed,
+    Object? sequencerAddress = freezed,
   }) {
     return _then(_$BlockWithTxsResponse(
       status: status == freezed
@@ -717,6 +800,30 @@ class __$$BlockWithTxsResponseCopyWithImpl<$Res>
           ? _value._transactions
           : transactions // ignore: cast_nullable_to_non_nullable
               as List<Transaction>,
+      blockHash: blockHash == freezed
+          ? _value.blockHash
+          : blockHash // ignore: cast_nullable_to_non_nullable
+              as Felt,
+      parentHash: parentHash == freezed
+          ? _value.parentHash
+          : parentHash // ignore: cast_nullable_to_non_nullable
+              as Felt,
+      blockNumber: blockNumber == freezed
+          ? _value.blockNumber
+          : blockNumber // ignore: cast_nullable_to_non_nullable
+              as int,
+      newRoot: newRoot == freezed
+          ? _value.newRoot
+          : newRoot // ignore: cast_nullable_to_non_nullable
+              as Felt,
+      timestamp: timestamp == freezed
+          ? _value.timestamp
+          : timestamp // ignore: cast_nullable_to_non_nullable
+              as int,
+      sequencerAddress: sequencerAddress == freezed
+          ? _value.sequencerAddress
+          : sequencerAddress // ignore: cast_nullable_to_non_nullable
+              as Felt,
     ));
   }
 }
@@ -725,7 +832,14 @@ class __$$BlockWithTxsResponseCopyWithImpl<$Res>
 @JsonSerializable()
 class _$BlockWithTxsResponse implements BlockWithTxsResponse {
   const _$BlockWithTxsResponse(
-      {required this.status, required final List<Transaction> transactions})
+      {required this.status,
+      required final List<Transaction> transactions,
+      required this.blockHash,
+      required this.parentHash,
+      required this.blockNumber,
+      required this.newRoot,
+      required this.timestamp,
+      required this.sequencerAddress})
       : _transactions = transactions;
 
   factory _$BlockWithTxsResponse.fromJson(Map<String, dynamic> json) =>
@@ -742,9 +856,24 @@ class _$BlockWithTxsResponse implements BlockWithTxsResponse {
     return EqualUnmodifiableListView(_transactions);
   }
 
+//End of BLOCK_BODY_WITH_TXS
+//Start of BLOCK_HEADER
+  @override
+  final Felt blockHash;
+  @override
+  final Felt parentHash;
+  @override
+  final int blockNumber;
+  @override
+  final Felt newRoot;
+  @override
+  final int timestamp;
+  @override
+  final Felt sequencerAddress;
+
   @override
   String toString() {
-    return 'BlockWithTxs.result(status: $status, transactions: $transactions)';
+    return 'BlockWithTxs.result(status: $status, transactions: $transactions, blockHash: $blockHash, parentHash: $parentHash, blockNumber: $blockNumber, newRoot: $newRoot, timestamp: $timestamp, sequencerAddress: $sequencerAddress)';
   }
 
   @override
@@ -754,7 +883,16 @@ class _$BlockWithTxsResponse implements BlockWithTxsResponse {
             other is _$BlockWithTxsResponse &&
             const DeepCollectionEquality().equals(other.status, status) &&
             const DeepCollectionEquality()
-                .equals(other._transactions, _transactions));
+                .equals(other._transactions, _transactions) &&
+            const DeepCollectionEquality().equals(other.blockHash, blockHash) &&
+            const DeepCollectionEquality()
+                .equals(other.parentHash, parentHash) &&
+            const DeepCollectionEquality()
+                .equals(other.blockNumber, blockNumber) &&
+            const DeepCollectionEquality().equals(other.newRoot, newRoot) &&
+            const DeepCollectionEquality().equals(other.timestamp, timestamp) &&
+            const DeepCollectionEquality()
+                .equals(other.sequencerAddress, sequencerAddress));
   }
 
   @JsonKey(ignore: true)
@@ -762,7 +900,13 @@ class _$BlockWithTxsResponse implements BlockWithTxsResponse {
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(status),
-      const DeepCollectionEquality().hash(_transactions));
+      const DeepCollectionEquality().hash(_transactions),
+      const DeepCollectionEquality().hash(blockHash),
+      const DeepCollectionEquality().hash(parentHash),
+      const DeepCollectionEquality().hash(blockNumber),
+      const DeepCollectionEquality().hash(newRoot),
+      const DeepCollectionEquality().hash(timestamp),
+      const DeepCollectionEquality().hash(sequencerAddress));
 
   @JsonKey(ignore: true)
   @override
@@ -774,30 +918,56 @@ class _$BlockWithTxsResponse implements BlockWithTxsResponse {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(
-            BlockStatus status, List<Transaction> transactions)
+            BlockStatus status,
+            List<Transaction> transactions,
+            Felt blockHash,
+            Felt parentHash,
+            int blockNumber,
+            Felt newRoot,
+            int timestamp,
+            Felt sequencerAddress)
         result,
   }) {
-    return result(status, transactions);
+    return result(status, transactions, blockHash, parentHash, blockNumber,
+        newRoot, timestamp, sequencerAddress);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(BlockStatus status, List<Transaction> transactions)?
+    TResult Function(
+            BlockStatus status,
+            List<Transaction> transactions,
+            Felt blockHash,
+            Felt parentHash,
+            int blockNumber,
+            Felt newRoot,
+            int timestamp,
+            Felt sequencerAddress)?
         result,
   }) {
-    return result?.call(status, transactions);
+    return result?.call(status, transactions, blockHash, parentHash,
+        blockNumber, newRoot, timestamp, sequencerAddress);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(BlockStatus status, List<Transaction> transactions)?
+    TResult Function(
+            BlockStatus status,
+            List<Transaction> transactions,
+            Felt blockHash,
+            Felt parentHash,
+            int blockNumber,
+            Felt newRoot,
+            int timestamp,
+            Felt sequencerAddress)?
         result,
     required TResult orElse(),
   }) {
     if (result != null) {
-      return result(status, transactions);
+      return result(status, transactions, blockHash, parentHash, blockNumber,
+          newRoot, timestamp, sequencerAddress);
     }
     return orElse();
   }
@@ -841,7 +1011,13 @@ class _$BlockWithTxsResponse implements BlockWithTxsResponse {
 abstract class BlockWithTxsResponse implements BlockWithTxs {
   const factory BlockWithTxsResponse(
       {required final BlockStatus status,
-      required final List<Transaction> transactions}) = _$BlockWithTxsResponse;
+      required final List<Transaction> transactions,
+      required final Felt blockHash,
+      required final Felt parentHash,
+      required final int blockNumber,
+      required final Felt newRoot,
+      required final int timestamp,
+      required final Felt sequencerAddress}) = _$BlockWithTxsResponse;
 
   factory BlockWithTxsResponse.fromJson(Map<String, dynamic> json) =
       _$BlockWithTxsResponse.fromJson;
@@ -850,6 +1026,19 @@ abstract class BlockWithTxsResponse implements BlockWithTxs {
   BlockStatus get status;
   @override //Start of BLOCK_BODY_WITH_TXS
   List<Transaction> get transactions;
+  @override //End of BLOCK_BODY_WITH_TXS
+//Start of BLOCK_HEADER
+  Felt get blockHash;
+  @override
+  Felt get parentHash;
+  @override
+  int get blockNumber;
+  @override
+  Felt get newRoot;
+  @override
+  int get timestamp;
+  @override
+  Felt get sequencerAddress;
   @override
   @JsonKey(ignore: true)
   _$$BlockWithTxsResponseCopyWith<_$BlockWithTxsResponse> get copyWith =>

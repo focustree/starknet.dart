@@ -51,6 +51,12 @@ _$BlockWithTxsResponse _$$BlockWithTxsResponseFromJson(
       transactions: (json['transactions'] as List<dynamic>)
           .map((e) => Transaction.fromJson(e as Map<String, dynamic>))
           .toList(),
+      blockHash: Felt.fromJson(json['block_hash'] as String),
+      parentHash: Felt.fromJson(json['parent_hash'] as String),
+      blockNumber: json['block_number'] as int,
+      newRoot: Felt.fromJson(json['new_root'] as String),
+      timestamp: json['timestamp'] as int,
+      sequencerAddress: Felt.fromJson(json['sequencer_address'] as String),
     );
 
 Map<String, dynamic> _$$BlockWithTxsResponseToJson(
@@ -58,6 +64,12 @@ Map<String, dynamic> _$$BlockWithTxsResponseToJson(
     <String, dynamic>{
       'status': _$BlockStatusEnumMap[instance.status]!,
       'transactions': instance.transactions.map((e) => e.toJson()).toList(),
+      'block_hash': instance.blockHash.toJson(),
+      'parent_hash': instance.parentHash.toJson(),
+      'block_number': instance.blockNumber,
+      'new_root': instance.newRoot.toJson(),
+      'timestamp': instance.timestamp,
+      'sequencer_address': instance.sequencerAddress.toJson(),
     };
 
 const _$BlockStatusEnumMap = {

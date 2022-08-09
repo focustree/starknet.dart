@@ -36,7 +36,12 @@ class BlockWithTxs with _$BlockWithTxs {
     //End of BLOCK_BODY_WITH_TXS
 
     //Start of BLOCK_HEADER
-
+    required Felt blockHash,
+    required Felt parentHash,
+    required int blockNumber,
+    required Felt newRoot,
+    required int timestamp,
+    required Felt sequencerAddress
     //End of BLOCK_HEADER
   }) = BlockWithTxsResponse;
 
