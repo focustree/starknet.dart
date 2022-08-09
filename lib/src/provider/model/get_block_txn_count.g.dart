@@ -1,33 +1,22 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'get_block_with_txs.dart';
+part of 'get_block_txn_count.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$BlockWithTxs _$$BlockWithTxsFromJson(Map<String, dynamic> json) =>
-    _$BlockWithTxs(
-      result: BlockWithTxs.fromJson(json['result'] as Map<String, dynamic>),
+_$BlockTxnCountResult _$$BlockTxnCountResultFromJson(
+        Map<String, dynamic> json) =>
+    _$BlockTxnCountResult(
+      result: json['result'] as int,
       $type: json['runtimeType'] as String?,
     );
 
-Map<String, dynamic> _$$BlockWithTxsToJson(_$BlockWithTxs instance) =>
+Map<String, dynamic> _$$BlockTxnCountResultToJson(
+        _$BlockTxnCountResult instance) =>
     <String, dynamic>{
-      'result': instance.result.toJson(),
-      'runtimeType': instance.$type,
-    };
-
-_$PendingBlock _$$PendingBlockFromJson(Map<String, dynamic> json) =>
-    _$PendingBlock(
-      pendingBlock: PendingBlockWithTxs.fromJson(
-          json['pending_block'] as Map<String, dynamic>),
-      $type: json['runtimeType'] as String?,
-    );
-
-Map<String, dynamic> _$$PendingBlockToJson(_$PendingBlock instance) =>
-    <String, dynamic>{
-      'pending_block': instance.pendingBlock.toJson(),
+      'result': instance.result,
       'runtimeType': instance.$type,
     };
 

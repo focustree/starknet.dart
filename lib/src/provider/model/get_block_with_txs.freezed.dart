@@ -16,8 +16,10 @@ final _privateConstructorUsedError = UnsupportedError(
 
 GetBlockWithTxs _$GetBlockWithTxsFromJson(Map<String, dynamic> json) {
   switch (json['runtimeType']) {
-    case 'result':
-      return GetBlockWithTxsResult.fromJson(json);
+    case 'block':
+      return BlockWithTxs.fromJson(json);
+    case 'pending':
+      return PendingBlock.fromJson(json);
     case 'error':
       return GetBlockWithTxsError.fromJson(json);
 
@@ -31,38 +33,44 @@ GetBlockWithTxs _$GetBlockWithTxsFromJson(Map<String, dynamic> json) {
 mixin _$GetBlockWithTxs {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(BlockWithTxs result) result,
+    required TResult Function(BlockWithTxs result) block,
+    required TResult Function(PendingBlockWithTxs pendingBlock) pending,
     required TResult Function(JsonRpcApiError error) error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(BlockWithTxs result)? result,
+    TResult Function(BlockWithTxs result)? block,
+    TResult Function(PendingBlockWithTxs pendingBlock)? pending,
     TResult Function(JsonRpcApiError error)? error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(BlockWithTxs result)? result,
+    TResult Function(BlockWithTxs result)? block,
+    TResult Function(PendingBlockWithTxs pendingBlock)? pending,
     TResult Function(JsonRpcApiError error)? error,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(GetBlockWithTxsResult value) result,
+    required TResult Function(BlockWithTxs value) block,
+    required TResult Function(PendingBlock value) pending,
     required TResult Function(GetBlockWithTxsError value) error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(GetBlockWithTxsResult value)? result,
+    TResult Function(BlockWithTxs value)? block,
+    TResult Function(PendingBlock value)? pending,
     TResult Function(GetBlockWithTxsError value)? error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(GetBlockWithTxsResult value)? result,
+    TResult Function(BlockWithTxs value)? block,
+    TResult Function(PendingBlock value)? pending,
     TResult Function(GetBlockWithTxsError value)? error,
     required TResult orElse(),
   }) =>
@@ -88,54 +96,45 @@ class _$GetBlockWithTxsCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$$GetBlockWithTxsResultCopyWith<$Res> {
-  factory _$$GetBlockWithTxsResultCopyWith(_$GetBlockWithTxsResult value,
-          $Res Function(_$GetBlockWithTxsResult) then) =
-      __$$GetBlockWithTxsResultCopyWithImpl<$Res>;
+abstract class _$$BlockWithTxsCopyWith<$Res> {
+  factory _$$BlockWithTxsCopyWith(
+          _$BlockWithTxs value, $Res Function(_$BlockWithTxs) then) =
+      __$$BlockWithTxsCopyWithImpl<$Res>;
   $Res call({BlockWithTxs result});
-
-  $BlockWithTxsCopyWith<$Res> get result;
 }
 
 /// @nodoc
-class __$$GetBlockWithTxsResultCopyWithImpl<$Res>
+class __$$BlockWithTxsCopyWithImpl<$Res>
     extends _$GetBlockWithTxsCopyWithImpl<$Res>
-    implements _$$GetBlockWithTxsResultCopyWith<$Res> {
-  __$$GetBlockWithTxsResultCopyWithImpl(_$GetBlockWithTxsResult _value,
-      $Res Function(_$GetBlockWithTxsResult) _then)
-      : super(_value, (v) => _then(v as _$GetBlockWithTxsResult));
+    implements _$$BlockWithTxsCopyWith<$Res> {
+  __$$BlockWithTxsCopyWithImpl(
+      _$BlockWithTxs _value, $Res Function(_$BlockWithTxs) _then)
+      : super(_value, (v) => _then(v as _$BlockWithTxs));
 
   @override
-  _$GetBlockWithTxsResult get _value => super._value as _$GetBlockWithTxsResult;
+  _$BlockWithTxs get _value => super._value as _$BlockWithTxs;
 
   @override
   $Res call({
     Object? result = freezed,
   }) {
-    return _then(_$GetBlockWithTxsResult(
+    return _then(_$BlockWithTxs(
       result: result == freezed
           ? _value.result
           : result // ignore: cast_nullable_to_non_nullable
               as BlockWithTxs,
     ));
   }
-
-  @override
-  $BlockWithTxsCopyWith<$Res> get result {
-    return $BlockWithTxsCopyWith<$Res>(_value.result, (value) {
-      return _then(_value.copyWith(result: value));
-    });
-  }
 }
 
 /// @nodoc
 @JsonSerializable()
-class _$GetBlockWithTxsResult implements GetBlockWithTxsResult {
-  const _$GetBlockWithTxsResult({required this.result, final String? $type})
-      : $type = $type ?? 'result';
+class _$BlockWithTxs implements BlockWithTxs {
+  const _$BlockWithTxs({required this.result, final String? $type})
+      : $type = $type ?? 'block';
 
-  factory _$GetBlockWithTxsResult.fromJson(Map<String, dynamic> json) =>
-      _$$GetBlockWithTxsResultFromJson(json);
+  factory _$BlockWithTxs.fromJson(Map<String, dynamic> json) =>
+      _$$BlockWithTxsFromJson(json);
 
   @override
   final BlockWithTxs result;
@@ -145,14 +144,14 @@ class _$GetBlockWithTxsResult implements GetBlockWithTxsResult {
 
   @override
   String toString() {
-    return 'GetBlockWithTxs.result(result: $result)';
+    return 'GetBlockWithTxs.block(result: $result)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$GetBlockWithTxsResult &&
+            other is _$BlockWithTxs &&
             const DeepCollectionEquality().equals(other.result, result));
   }
 
@@ -163,37 +162,39 @@ class _$GetBlockWithTxsResult implements GetBlockWithTxsResult {
 
   @JsonKey(ignore: true)
   @override
-  _$$GetBlockWithTxsResultCopyWith<_$GetBlockWithTxsResult> get copyWith =>
-      __$$GetBlockWithTxsResultCopyWithImpl<_$GetBlockWithTxsResult>(
-          this, _$identity);
+  _$$BlockWithTxsCopyWith<_$BlockWithTxs> get copyWith =>
+      __$$BlockWithTxsCopyWithImpl<_$BlockWithTxs>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(BlockWithTxs result) result,
+    required TResult Function(BlockWithTxs result) block,
+    required TResult Function(PendingBlockWithTxs pendingBlock) pending,
     required TResult Function(JsonRpcApiError error) error,
   }) {
-    return result(this.result);
+    return block(result);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(BlockWithTxs result)? result,
+    TResult Function(BlockWithTxs result)? block,
+    TResult Function(PendingBlockWithTxs pendingBlock)? pending,
     TResult Function(JsonRpcApiError error)? error,
   }) {
-    return result?.call(this.result);
+    return block?.call(result);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(BlockWithTxs result)? result,
+    TResult Function(BlockWithTxs result)? block,
+    TResult Function(PendingBlockWithTxs pendingBlock)? pending,
     TResult Function(JsonRpcApiError error)? error,
     required TResult orElse(),
   }) {
-    if (result != null) {
-      return result(this.result);
+    if (block != null) {
+      return block(result);
     }
     return orElse();
   }
@@ -201,52 +202,224 @@ class _$GetBlockWithTxsResult implements GetBlockWithTxsResult {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(GetBlockWithTxsResult value) result,
+    required TResult Function(BlockWithTxs value) block,
+    required TResult Function(PendingBlock value) pending,
     required TResult Function(GetBlockWithTxsError value) error,
   }) {
-    return result(this);
+    return block(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(GetBlockWithTxsResult value)? result,
+    TResult Function(BlockWithTxs value)? block,
+    TResult Function(PendingBlock value)? pending,
     TResult Function(GetBlockWithTxsError value)? error,
   }) {
-    return result?.call(this);
+    return block?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(GetBlockWithTxsResult value)? result,
+    TResult Function(BlockWithTxs value)? block,
+    TResult Function(PendingBlock value)? pending,
     TResult Function(GetBlockWithTxsError value)? error,
     required TResult orElse(),
   }) {
-    if (result != null) {
-      return result(this);
+    if (block != null) {
+      return block(this);
     }
     return orElse();
   }
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$GetBlockWithTxsResultToJson(
+    return _$$BlockWithTxsToJson(
       this,
     );
   }
 }
 
-abstract class GetBlockWithTxsResult implements GetBlockWithTxs {
-  const factory GetBlockWithTxsResult({required final BlockWithTxs result}) =
-      _$GetBlockWithTxsResult;
+abstract class BlockWithTxs implements GetBlockWithTxs {
+  const factory BlockWithTxs({required final BlockWithTxs result}) =
+      _$BlockWithTxs;
 
-  factory GetBlockWithTxsResult.fromJson(Map<String, dynamic> json) =
-      _$GetBlockWithTxsResult.fromJson;
+  factory BlockWithTxs.fromJson(Map<String, dynamic> json) =
+      _$BlockWithTxs.fromJson;
 
   BlockWithTxs get result;
   @JsonKey(ignore: true)
-  _$$GetBlockWithTxsResultCopyWith<_$GetBlockWithTxsResult> get copyWith =>
+  _$$BlockWithTxsCopyWith<_$BlockWithTxs> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$PendingBlockCopyWith<$Res> {
+  factory _$$PendingBlockCopyWith(
+          _$PendingBlock value, $Res Function(_$PendingBlock) then) =
+      __$$PendingBlockCopyWithImpl<$Res>;
+  $Res call({PendingBlockWithTxs pendingBlock});
+
+  $PendingBlockWithTxsCopyWith<$Res> get pendingBlock;
+}
+
+/// @nodoc
+class __$$PendingBlockCopyWithImpl<$Res>
+    extends _$GetBlockWithTxsCopyWithImpl<$Res>
+    implements _$$PendingBlockCopyWith<$Res> {
+  __$$PendingBlockCopyWithImpl(
+      _$PendingBlock _value, $Res Function(_$PendingBlock) _then)
+      : super(_value, (v) => _then(v as _$PendingBlock));
+
+  @override
+  _$PendingBlock get _value => super._value as _$PendingBlock;
+
+  @override
+  $Res call({
+    Object? pendingBlock = freezed,
+  }) {
+    return _then(_$PendingBlock(
+      pendingBlock: pendingBlock == freezed
+          ? _value.pendingBlock
+          : pendingBlock // ignore: cast_nullable_to_non_nullable
+              as PendingBlockWithTxs,
+    ));
+  }
+
+  @override
+  $PendingBlockWithTxsCopyWith<$Res> get pendingBlock {
+    return $PendingBlockWithTxsCopyWith<$Res>(_value.pendingBlock, (value) {
+      return _then(_value.copyWith(pendingBlock: value));
+    });
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$PendingBlock implements PendingBlock {
+  const _$PendingBlock({required this.pendingBlock, final String? $type})
+      : $type = $type ?? 'pending';
+
+  factory _$PendingBlock.fromJson(Map<String, dynamic> json) =>
+      _$$PendingBlockFromJson(json);
+
+  @override
+  final PendingBlockWithTxs pendingBlock;
+
+  @JsonKey(name: 'runtimeType')
+  final String $type;
+
+  @override
+  String toString() {
+    return 'GetBlockWithTxs.pending(pendingBlock: $pendingBlock)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$PendingBlock &&
+            const DeepCollectionEquality()
+                .equals(other.pendingBlock, pendingBlock));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(pendingBlock));
+
+  @JsonKey(ignore: true)
+  @override
+  _$$PendingBlockCopyWith<_$PendingBlock> get copyWith =>
+      __$$PendingBlockCopyWithImpl<_$PendingBlock>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(BlockWithTxs result) block,
+    required TResult Function(PendingBlockWithTxs pendingBlock) pending,
+    required TResult Function(JsonRpcApiError error) error,
+  }) {
+    return pending(pendingBlock);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(BlockWithTxs result)? block,
+    TResult Function(PendingBlockWithTxs pendingBlock)? pending,
+    TResult Function(JsonRpcApiError error)? error,
+  }) {
+    return pending?.call(pendingBlock);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(BlockWithTxs result)? block,
+    TResult Function(PendingBlockWithTxs pendingBlock)? pending,
+    TResult Function(JsonRpcApiError error)? error,
+    required TResult orElse(),
+  }) {
+    if (pending != null) {
+      return pending(pendingBlock);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(BlockWithTxs value) block,
+    required TResult Function(PendingBlock value) pending,
+    required TResult Function(GetBlockWithTxsError value) error,
+  }) {
+    return pending(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(BlockWithTxs value)? block,
+    TResult Function(PendingBlock value)? pending,
+    TResult Function(GetBlockWithTxsError value)? error,
+  }) {
+    return pending?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(BlockWithTxs value)? block,
+    TResult Function(PendingBlock value)? pending,
+    TResult Function(GetBlockWithTxsError value)? error,
+    required TResult orElse(),
+  }) {
+    if (pending != null) {
+      return pending(this);
+    }
+    return orElse();
+  }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$PendingBlockToJson(
+      this,
+    );
+  }
+}
+
+abstract class PendingBlock implements GetBlockWithTxs {
+  const factory PendingBlock(
+      {required final PendingBlockWithTxs pendingBlock}) = _$PendingBlock;
+
+  factory PendingBlock.fromJson(Map<String, dynamic> json) =
+      _$PendingBlock.fromJson;
+
+  PendingBlockWithTxs get pendingBlock;
+  @JsonKey(ignore: true)
+  _$$PendingBlockCopyWith<_$PendingBlock> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -333,7 +506,8 @@ class _$GetBlockWithTxsError implements GetBlockWithTxsError {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(BlockWithTxs result) result,
+    required TResult Function(BlockWithTxs result) block,
+    required TResult Function(PendingBlockWithTxs pendingBlock) pending,
     required TResult Function(JsonRpcApiError error) error,
   }) {
     return error(this.error);
@@ -342,7 +516,8 @@ class _$GetBlockWithTxsError implements GetBlockWithTxsError {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(BlockWithTxs result)? result,
+    TResult Function(BlockWithTxs result)? block,
+    TResult Function(PendingBlockWithTxs pendingBlock)? pending,
     TResult Function(JsonRpcApiError error)? error,
   }) {
     return error?.call(this.error);
@@ -351,7 +526,8 @@ class _$GetBlockWithTxsError implements GetBlockWithTxsError {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(BlockWithTxs result)? result,
+    TResult Function(BlockWithTxs result)? block,
+    TResult Function(PendingBlockWithTxs pendingBlock)? pending,
     TResult Function(JsonRpcApiError error)? error,
     required TResult orElse(),
   }) {
@@ -364,7 +540,8 @@ class _$GetBlockWithTxsError implements GetBlockWithTxsError {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(GetBlockWithTxsResult value) result,
+    required TResult Function(BlockWithTxs value) block,
+    required TResult Function(PendingBlock value) pending,
     required TResult Function(GetBlockWithTxsError value) error,
   }) {
     return error(this);
@@ -373,7 +550,8 @@ class _$GetBlockWithTxsError implements GetBlockWithTxsError {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(GetBlockWithTxsResult value)? result,
+    TResult Function(BlockWithTxs value)? block,
+    TResult Function(PendingBlock value)? pending,
     TResult Function(GetBlockWithTxsError value)? error,
   }) {
     return error?.call(this);
@@ -382,7 +560,8 @@ class _$GetBlockWithTxsError implements GetBlockWithTxsError {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(GetBlockWithTxsResult value)? result,
+    TResult Function(BlockWithTxs value)? block,
+    TResult Function(PendingBlock value)? pending,
     TResult Function(GetBlockWithTxsError value)? error,
     required TResult orElse(),
   }) {

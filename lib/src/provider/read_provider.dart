@@ -1,4 +1,7 @@
+import 'package:starknet/src/provider/model/get_block_txn_count.dart';
 import 'package:starknet/starknet.dart';
+
+import 'model/get_block_txn_count.dart';
 
 abstract class ReadProvider {
   /// Gets the most recent accepted block number
@@ -31,6 +34,11 @@ abstract class ReadProvider {
   ///
   /// [Spec](https://github.com/starkware-libs/starknet-specs/blob/30e5bafcda60c31b5fb4021b4f5ddcfc18d2ff7d/api/starknet_api_openrpc.json#L150-L175)
   Future<GetTransaction> getTransactionByHash(Felt txnHash);
+  
+  /// Get the number of transactions in a block given a block id
+  /// 
+  /// [Specs](https://github.com/starkware-libs/starknet-specs/blob/30e5bafcda60c31b5fb4021b4f5ddcfc18d2ff7d/api/starknet_api_openrpc.json#L340-L68)
+  Future<GetBlockTxnCount> getBlockTxnCount(BlockId blockId);
 
   /// Gets the details and status of a submitted transaction from block id and index.
   ///
@@ -234,6 +242,15 @@ class JsonRpcReadProvider implements ReadProvider {
       method: 'starknet_getStateUpdate',
       params: [blockId],
     ).then(GetStateUpdate.fromJson);
+  }
+
+  @override
+  Future<GetBlockTxnCount> getBlockTxnCount(BlockId blockId) {
+    return callRpcEndpoint(
+      nodeUri: nodeUri,
+      method: 'starknet_getBlockTransactionCount',
+      params: [blockId],
+    ).then(GetBlockTxnCount.fromJson);
   }
 
   @override

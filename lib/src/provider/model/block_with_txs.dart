@@ -7,7 +7,7 @@ part 'block_with_txs.g.dart';
 @freezed
 class BlockWithTxs with _$BlockWithTxs {
   const factory BlockWithTxs.result({
-    required String blockStatus,
+    required String status,
     required BlockHeader blockHeader,
     required BlockBodyWithTxs blockBodyWithTxs,
   }) = BlockWithTxsResult;

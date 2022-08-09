@@ -31,7 +31,7 @@ BlockWithTxs _$BlockWithTxsFromJson(Map<String, dynamic> json) {
 mixin _$BlockWithTxs {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String blockStatus, BlockHeader blockHeader,
+    required TResult Function(String status, BlockHeader blockHeader,
             BlockBodyWithTxs blockBodyWithTxs)
         result,
     required TResult Function(JsonRpcApiError error) error,
@@ -39,7 +39,7 @@ mixin _$BlockWithTxs {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(String blockStatus, BlockHeader blockHeader,
+    TResult Function(String status, BlockHeader blockHeader,
             BlockBodyWithTxs blockBodyWithTxs)?
         result,
     TResult Function(JsonRpcApiError error)? error,
@@ -47,7 +47,7 @@ mixin _$BlockWithTxs {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String blockStatus, BlockHeader blockHeader,
+    TResult Function(String status, BlockHeader blockHeader,
             BlockBodyWithTxs blockBodyWithTxs)?
         result,
     TResult Function(JsonRpcApiError error)? error,
@@ -98,7 +98,7 @@ abstract class _$$BlockWithTxsResultCopyWith<$Res> {
           $Res Function(_$BlockWithTxsResult) then) =
       __$$BlockWithTxsResultCopyWithImpl<$Res>;
   $Res call(
-      {String blockStatus,
+      {String status,
       BlockHeader blockHeader,
       BlockBodyWithTxs blockBodyWithTxs});
 
@@ -119,14 +119,14 @@ class __$$BlockWithTxsResultCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? blockStatus = freezed,
+    Object? status = freezed,
     Object? blockHeader = freezed,
     Object? blockBodyWithTxs = freezed,
   }) {
     return _then(_$BlockWithTxsResult(
-      blockStatus: blockStatus == freezed
-          ? _value.blockStatus
-          : blockStatus // ignore: cast_nullable_to_non_nullable
+      status: status == freezed
+          ? _value.status
+          : status // ignore: cast_nullable_to_non_nullable
               as String,
       blockHeader: blockHeader == freezed
           ? _value.blockHeader
@@ -158,7 +158,7 @@ class __$$BlockWithTxsResultCopyWithImpl<$Res>
 @JsonSerializable()
 class _$BlockWithTxsResult implements BlockWithTxsResult {
   const _$BlockWithTxsResult(
-      {required this.blockStatus,
+      {required this.status,
       required this.blockHeader,
       required this.blockBodyWithTxs,
       final String? $type})
@@ -168,7 +168,7 @@ class _$BlockWithTxsResult implements BlockWithTxsResult {
       _$$BlockWithTxsResultFromJson(json);
 
   @override
-  final String blockStatus;
+  final String status;
   @override
   final BlockHeader blockHeader;
   @override
@@ -179,7 +179,7 @@ class _$BlockWithTxsResult implements BlockWithTxsResult {
 
   @override
   String toString() {
-    return 'BlockWithTxs.result(blockStatus: $blockStatus, blockHeader: $blockHeader, blockBodyWithTxs: $blockBodyWithTxs)';
+    return 'BlockWithTxs.result(status: $status, blockHeader: $blockHeader, blockBodyWithTxs: $blockBodyWithTxs)';
   }
 
   @override
@@ -187,8 +187,7 @@ class _$BlockWithTxsResult implements BlockWithTxsResult {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$BlockWithTxsResult &&
-            const DeepCollectionEquality()
-                .equals(other.blockStatus, blockStatus) &&
+            const DeepCollectionEquality().equals(other.status, status) &&
             const DeepCollectionEquality()
                 .equals(other.blockHeader, blockHeader) &&
             const DeepCollectionEquality()
@@ -199,7 +198,7 @@ class _$BlockWithTxsResult implements BlockWithTxsResult {
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      const DeepCollectionEquality().hash(blockStatus),
+      const DeepCollectionEquality().hash(status),
       const DeepCollectionEquality().hash(blockHeader),
       const DeepCollectionEquality().hash(blockBodyWithTxs));
 
@@ -212,36 +211,36 @@ class _$BlockWithTxsResult implements BlockWithTxsResult {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String blockStatus, BlockHeader blockHeader,
+    required TResult Function(String status, BlockHeader blockHeader,
             BlockBodyWithTxs blockBodyWithTxs)
         result,
     required TResult Function(JsonRpcApiError error) error,
   }) {
-    return result(blockStatus, blockHeader, blockBodyWithTxs);
+    return result(status, blockHeader, blockBodyWithTxs);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(String blockStatus, BlockHeader blockHeader,
+    TResult Function(String status, BlockHeader blockHeader,
             BlockBodyWithTxs blockBodyWithTxs)?
         result,
     TResult Function(JsonRpcApiError error)? error,
   }) {
-    return result?.call(blockStatus, blockHeader, blockBodyWithTxs);
+    return result?.call(status, blockHeader, blockBodyWithTxs);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String blockStatus, BlockHeader blockHeader,
+    TResult Function(String status, BlockHeader blockHeader,
             BlockBodyWithTxs blockBodyWithTxs)?
         result,
     TResult Function(JsonRpcApiError error)? error,
     required TResult orElse(),
   }) {
     if (result != null) {
-      return result(blockStatus, blockHeader, blockBodyWithTxs);
+      return result(status, blockHeader, blockBodyWithTxs);
     }
     return orElse();
   }
@@ -287,14 +286,14 @@ class _$BlockWithTxsResult implements BlockWithTxsResult {
 
 abstract class BlockWithTxsResult implements BlockWithTxs {
   const factory BlockWithTxsResult(
-      {required final String blockStatus,
+      {required final String status,
       required final BlockHeader blockHeader,
       required final BlockBodyWithTxs blockBodyWithTxs}) = _$BlockWithTxsResult;
 
   factory BlockWithTxsResult.fromJson(Map<String, dynamic> json) =
       _$BlockWithTxsResult.fromJson;
 
-  String get blockStatus;
+  String get status;
   BlockHeader get blockHeader;
   BlockBodyWithTxs get blockBodyWithTxs;
   @JsonKey(ignore: true)
@@ -384,7 +383,7 @@ class _$BlockWithTxsError implements BlockWithTxsError {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String blockStatus, BlockHeader blockHeader,
+    required TResult Function(String status, BlockHeader blockHeader,
             BlockBodyWithTxs blockBodyWithTxs)
         result,
     required TResult Function(JsonRpcApiError error) error,
@@ -395,7 +394,7 @@ class _$BlockWithTxsError implements BlockWithTxsError {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(String blockStatus, BlockHeader blockHeader,
+    TResult Function(String status, BlockHeader blockHeader,
             BlockBodyWithTxs blockBodyWithTxs)?
         result,
     TResult Function(JsonRpcApiError error)? error,
@@ -406,7 +405,7 @@ class _$BlockWithTxsError implements BlockWithTxsError {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String blockStatus, BlockHeader blockHeader,
+    TResult Function(String status, BlockHeader blockHeader,
             BlockBodyWithTxs blockBodyWithTxs)?
         result,
     TResult Function(JsonRpcApiError error)? error,

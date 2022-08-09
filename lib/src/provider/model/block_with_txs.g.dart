@@ -8,7 +8,7 @@ part of 'block_with_txs.dart';
 
 _$BlockWithTxsResult _$$BlockWithTxsResultFromJson(Map<String, dynamic> json) =>
     _$BlockWithTxsResult(
-      blockStatus: json['block_status'] as String,
+      status: json['status'] as String,
       blockHeader:
           BlockHeader.fromJson(json['block_header'] as Map<String, dynamic>),
       blockBodyWithTxs: BlockBodyWithTxs.fromJson(
@@ -19,7 +19,7 @@ _$BlockWithTxsResult _$$BlockWithTxsResultFromJson(Map<String, dynamic> json) =>
 Map<String, dynamic> _$$BlockWithTxsResultToJson(
         _$BlockWithTxsResult instance) =>
     <String, dynamic>{
-      'block_status': instance.blockStatus,
+      'status': instance.status,
       'block_header': instance.blockHeader.toJson(),
       'block_body_with_txs': instance.blockBodyWithTxs.toJson(),
       'runtimeType': instance.$type,
