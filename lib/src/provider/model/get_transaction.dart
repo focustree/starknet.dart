@@ -67,3 +67,4 @@ class Txn with _$Txn {
           ? DeployTxn.fromJson(json)
           : InvokeTxn.fromJson(json);
 }
+ 

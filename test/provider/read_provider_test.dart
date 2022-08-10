@@ -1,3 +1,5 @@
+import 'package:starknet/src/provider/model/get_block_txn_count.dart';
+import 'package:starknet/src/provider/model/get_block_with_txs.dart';
 import 'package:starknet/starknet.dart';
 import 'package:test/test.dart';
 
@@ -286,9 +288,10 @@ void main() {
 
     group('starknet_getStateUpdate', () {
       test('returns unimplemented method error for getStateUpdate', () async {
-        final response = await provider.getStateUpdate(BlockId.blockHash(
-            blockHash: Felt.fromHexString(
-                '0x3fbf1b9a9ed822423e87365923103a9577ebed2612afccf4c9f69c126eeeeb7')));
+        final GetStateUpdate response = await provider.getStateUpdate(
+            BlockId.blockHash(
+                blockHash: Felt.fromHexString(
+                    '0x3fbf1b9a9ed822423e87365923103a9577ebed2612afccf4c9f69c126eeeeb7')));
 
         response.when(
             error: (error) {
@@ -297,6 +300,40 @@ void main() {
                   contains('method \'starknet_getStateUpdate\' not found'));
             },
             result: (_) => fail('Expected to return an unimplemented error'));
+      });
+    });
+
+    group('starknet_getBlockWithTxs', () {
+      test('returns unimplemented method error for getStateUpdate', () async {
+        final GetBlockWithTxs response = await provider.getBlockWithTxs(
+            BlockId.blockHash(
+                blockHash: Felt.fromHexString(
+                    '0x3fbf1b9a9ed822423e87365923103a9577ebed2612afccf4c9f69c126eeeeb7')));
+        response.when(
+            error: (error) {
+              expect(error.code, equals(-32601));
+              expect(error.message,
+                  contains('method \'starknet_getBlockWithTxs\' not found'));
+            },
+            block: (_) => fail('Expected to return an unimplemented error'),
+            pending: (_) => fail('Expected to return an unimplemented error'));
+      });
+    });
+
+    group('starknet_getBlockTransactionCount', () {
+      test('returns unimplemented method error for getStateUpdate', () async {
+        final GetBlockTxnCount response = await provider.getBlockTxnCount(
+            BlockId.blockHash(
+                blockHash: Felt.fromHexString(
+                    '0x3fbf1b9a9ed822423e87365923103a9577ebed2612afccf4c9f69c126eeeeb7')));
+        response.when(
+          error: (error) {
+            expect(error.code, equals(-32601));
+            expect(error.message,
+                contains('method \'starknet_getBlockTransactionCount\' not found'));
+          },
+          result: (_) => fail('Expected to return an unimplemented error'),
+        );
       });
     });
 
