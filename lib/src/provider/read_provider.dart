@@ -271,6 +271,9 @@ class JsonRpcReadProvider implements ReadProvider {
 
   static final devnet = JsonRpcReadProvider(nodeUri: devnetUri);
 
+  static final v010PathfinderGoerliTestnet =
+      JsonRpcReadProvider(nodeUri: v010PathfinderGoerliTestnetUri);
+
   static final infuraGoerliTestnet =
       JsonRpcReadProvider(nodeUri: infuraGoerliTestnetUri);
 

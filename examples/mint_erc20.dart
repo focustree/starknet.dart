@@ -7,7 +7,7 @@ final accountAddress = Felt.fromHexString(
     "0x156f74a2136c893c61df343a68f1f893857f3ca6454b89688b02ef6a0fba8b8");
 
 void main() async {
-  final provider = JsonRpcProvider(nodeUri: infuraGoerliTestnetUri);
+  final provider = JsonRpcProvider(nodeUri: v010PathfinderGoerliTestnetUri);
 
   final signer = Signer(privateKey: privateKey);
 
