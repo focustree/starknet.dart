@@ -75,7 +75,6 @@ mixin _$BlockId {
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -125,10 +124,11 @@ class __$$BlockIdHashCopyWithImpl<$Res> extends _$BlockIdCopyWithImpl<$Res>
 }
 
 /// @nodoc
-@JsonSerializable()
-class _$BlockIdHash implements BlockIdHash {
+@JsonSerializable(createToJson: false)
+class _$BlockIdHash extends BlockIdHash {
   const _$BlockIdHash({required this.blockHash, final String? $type})
-      : $type = $type ?? 'blockHash';
+      : $type = $type ?? 'blockHash',
+        super._();
 
   factory _$BlockIdHash.fromJson(Map<String, dynamic> json) =>
       _$$BlockIdHashFromJson(json);
@@ -229,17 +229,11 @@ class _$BlockIdHash implements BlockIdHash {
     }
     return orElse();
   }
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$BlockIdHashToJson(
-      this,
-    );
-  }
 }
 
-abstract class BlockIdHash implements BlockId {
+abstract class BlockIdHash extends BlockId {
   const factory BlockIdHash({required final Felt blockHash}) = _$BlockIdHash;
+  const BlockIdHash._() : super._();
 
   factory BlockIdHash.fromJson(Map<String, dynamic> json) =
       _$BlockIdHash.fromJson;
@@ -282,10 +276,11 @@ class __$$BlockIdNumberCopyWithImpl<$Res> extends _$BlockIdCopyWithImpl<$Res>
 }
 
 /// @nodoc
-@JsonSerializable()
-class _$BlockIdNumber implements BlockIdNumber {
+@JsonSerializable(createToJson: false)
+class _$BlockIdNumber extends BlockIdNumber {
   const _$BlockIdNumber({required this.blockNumber, final String? $type})
-      : $type = $type ?? 'blockNumber';
+      : $type = $type ?? 'blockNumber',
+        super._();
 
   factory _$BlockIdNumber.fromJson(Map<String, dynamic> json) =>
       _$$BlockIdNumberFromJson(json);
@@ -387,18 +382,12 @@ class _$BlockIdNumber implements BlockIdNumber {
     }
     return orElse();
   }
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$BlockIdNumberToJson(
-      this,
-    );
-  }
 }
 
-abstract class BlockIdNumber implements BlockId {
+abstract class BlockIdNumber extends BlockId {
   const factory BlockIdNumber({required final int blockNumber}) =
       _$BlockIdNumber;
+  const BlockIdNumber._() : super._();
 
   factory BlockIdNumber.fromJson(Map<String, dynamic> json) =
       _$BlockIdNumber.fromJson;
@@ -441,10 +430,11 @@ class __$$BlockIdTagCopyWithImpl<$Res> extends _$BlockIdCopyWithImpl<$Res>
 }
 
 /// @nodoc
-@JsonSerializable()
-class _$BlockIdTag implements BlockIdTag {
+@JsonSerializable(createToJson: false)
+class _$BlockIdTag extends BlockIdTag {
   const _$BlockIdTag({required this.blockTag, final String? $type})
-      : $type = $type ?? 'blockTag';
+      : $type = $type ?? 'blockTag',
+        super._();
 
   factory _$BlockIdTag.fromJson(Map<String, dynamic> json) =>
       _$$BlockIdTagFromJson(json);
@@ -545,17 +535,11 @@ class _$BlockIdTag implements BlockIdTag {
     }
     return orElse();
   }
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$BlockIdTagToJson(
-      this,
-    );
-  }
 }
 
-abstract class BlockIdTag implements BlockId {
+abstract class BlockIdTag extends BlockId {
   const factory BlockIdTag({required final String blockTag}) = _$BlockIdTag;
+  const BlockIdTag._() : super._();
 
   factory BlockIdTag.fromJson(Map<String, dynamic> json) =
       _$BlockIdTag.fromJson;

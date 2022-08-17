@@ -6,9 +6,11 @@ import 'package:starknet/starknet.dart';
 part 'block_id.freezed.dart';
 part 'block_id.g.dart';
 
-@freezed
+@Freezed(fromJson: true, toJson: false)
 //@JsonSerializable(converters: [BlockIdConverter()])
 class BlockId with _$BlockId {
+  const BlockId._();
+
   const factory BlockId.blockHash({
     required Felt blockHash,
   }) = BlockIdHash;
@@ -21,6 +23,20 @@ class BlockId with _$BlockId {
 
   factory BlockId.fromJson(Map<String, dynamic> json) =>
       _$BlockIdFromJson(json);
+
+  dynamic toJson() {
+    return map(
+      blockHash: (blockIdHash) {
+        return {'block_hash': blockIdHash.blockHash.toJson()};
+      },
+      blockNumber: (blockIdNumber) {
+        return {'block_number': blockIdNumber.blockNumber};
+      },
+      blockTag: (blockIdTag) {
+        return blockIdTag.blockTag;
+      },
+    );
+  }
 }
 
 // Currently not used.
