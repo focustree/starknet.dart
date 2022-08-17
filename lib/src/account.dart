@@ -20,7 +20,10 @@ class Account {
     final signature = signer.signTransactions(
         transactions: functionCalls,
         contractAddress: accountAddress,
-        chainId: chainId);
+        chainId: chainId,
+        entryPointSelectorName: "__execute__",
+        maxFee: maxFee,
+        nonce: nonce);
 
     final calldata = functionCallsToCalldata(
         functionCalls: functionCalls, nonce: nonce ?? Felt.fromInt(0));
