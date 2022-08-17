@@ -18,3 +18,24 @@ class EstimateFee with _$EstimateFee {
           ? EstimateFeeError.fromJson(json)
           : EstimateFeeResult.fromJson(json);
 }
+
+class EstimateFeeRequest {
+  final InvokeTxn request;
+  final BlockId blockId;
+  EstimateFeeRequest({
+    required this.request,
+    required this.blockId,
+  });
+
+  Map<String, dynamic> toJson(){
+    var invokeToJson = request.toJson();
+    invokeToJson.remove('runtimeType');
+    invokeToJson.remove('txn_hash');
+    invokeToJson.remove('type');
+
+    return {
+      'request':invokeToJson,
+      'block_id':blockId.toJson()
+    };
+  }
+}

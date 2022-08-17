@@ -200,8 +200,6 @@ void main() {
             blockHash: Felt.fromHexString(
                 '0x3fbf1b9a9ed822423e87365923103a9577ebed2612afccf4c9f69c126eeeeb7'));
 
-        print('11: ${blockId.toJson()}');
-
         InvokeTxn invokeTxn = InvokeTxn(
           txnHash: Felt.fromHexString(
               '0x2527cbcdc9384ddd805ef388861086dcc5397f8a4083b9fdecec4804ff05468'),
@@ -257,16 +255,14 @@ void main() {
           ],
         );
 
-        print('invokeTxn: ${invokeTxn.toJson()}');
-        final response = await provider.estimateFee(invokeTxn, blockId);
+        EstimateFeeRequest estimateFeeRequest =
+            EstimateFeeRequest(request: invokeTxn, blockId: blockId);
+        final response = await provider.estimateFee(estimateFeeRequest);
 
         response.when(error: (error) {
           print(error);
           expect(error.code, equals(-32602));
-          expect(
-              error.message,
-              contains(
-                  'unknown field `runtimeType`, expected one of `contract_address`, `calldata`, `entry_point_selector`, `signature`, `max_fee`, `version` at line 1 column 962'));
+          expect(error.message, contains('missing field `block_hash`'));
         }, result: (result) {
           fail('Expected to return an Internal error');
         });
