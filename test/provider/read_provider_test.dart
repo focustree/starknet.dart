@@ -137,18 +137,18 @@ void main() {
           () async {
         final response = await provider.getTransactionReceipt(
           Felt.fromHexString(
-              '0x136e5212e37cd44606058fc155d725a8b865b2fba4874f650f524d22e1312b9'),
+              '0x74ec6667e6057becd3faff77d9ab14aecf5dde46edb7c599ee771f70f9e80ba'),
         );
 
         response.when(
             error: (error) => fail("Shouldn't fail"),
             result: (result) {
               expect(
-                  result.txnHash,
+                  result.transactionHash,
                   Felt.fromHexString(
-                      '0x136e5212e37cd44606058fc155d725a8b865b2fba4874f650f524d22e1312b9'));
+                      '0x74ec6667e6057becd3faff77d9ab14aecf5dde46edb7c599ee771f70f9e80ba'));
 
-              expect(result.actualFee, Felt.fromHexString('0x22426b1c1f16'));
+              expect(result.actualFee, Felt.fromHexString('0x0'));
             });
       });
 
