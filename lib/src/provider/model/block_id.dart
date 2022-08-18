@@ -8,15 +8,15 @@ part 'block_id.g.dart';
 class BlockId with _$BlockId {
   const BlockId._();
 
-  const factory BlockId.blockHash({
-    required Felt blockHash,
-  }) = BlockIdHash;
-  const factory BlockId.blockNumber({
-    required int blockNumber,
-  }) = BlockIdNumber;
-  const factory BlockId.blockTag({
-    required String blockTag,
-  }) = BlockIdTag;
+  const factory BlockId.blockHash(
+    Felt blockHash,
+  ) = BlockIdHash;
+  const factory BlockId.blockNumber(
+    int blockNumber,
+  ) = BlockIdNumber;
+  const factory BlockId.blockTag(
+    String blockTag,
+  ) = BlockIdTag;
 
   factory BlockId.fromJson(Map<String, dynamic> json) =>
       _$BlockIdFromJson(json);

@@ -115,7 +115,7 @@ class __$$BlockIdHashCopyWithImpl<$Res> extends _$BlockIdCopyWithImpl<$Res>
     Object? blockHash = freezed,
   }) {
     return _then(_$BlockIdHash(
-      blockHash: blockHash == freezed
+      blockHash == freezed
           ? _value.blockHash
           : blockHash // ignore: cast_nullable_to_non_nullable
               as Felt,
@@ -126,7 +126,7 @@ class __$$BlockIdHashCopyWithImpl<$Res> extends _$BlockIdCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable(createToJson: false)
 class _$BlockIdHash extends BlockIdHash {
-  const _$BlockIdHash({required this.blockHash, final String? $type})
+  const _$BlockIdHash(this.blockHash, {final String? $type})
       : $type = $type ?? 'blockHash',
         super._();
 
@@ -232,7 +232,7 @@ class _$BlockIdHash extends BlockIdHash {
 }
 
 abstract class BlockIdHash extends BlockId {
-  const factory BlockIdHash({required final Felt blockHash}) = _$BlockIdHash;
+  const factory BlockIdHash(final Felt blockHash) = _$BlockIdHash;
   const BlockIdHash._() : super._();
 
   factory BlockIdHash.fromJson(Map<String, dynamic> json) =
@@ -267,7 +267,7 @@ class __$$BlockIdNumberCopyWithImpl<$Res> extends _$BlockIdCopyWithImpl<$Res>
     Object? blockNumber = freezed,
   }) {
     return _then(_$BlockIdNumber(
-      blockNumber: blockNumber == freezed
+      blockNumber == freezed
           ? _value.blockNumber
           : blockNumber // ignore: cast_nullable_to_non_nullable
               as int,
@@ -278,7 +278,7 @@ class __$$BlockIdNumberCopyWithImpl<$Res> extends _$BlockIdCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable(createToJson: false)
 class _$BlockIdNumber extends BlockIdNumber {
-  const _$BlockIdNumber({required this.blockNumber, final String? $type})
+  const _$BlockIdNumber(this.blockNumber, {final String? $type})
       : $type = $type ?? 'blockNumber',
         super._();
 
@@ -385,8 +385,7 @@ class _$BlockIdNumber extends BlockIdNumber {
 }
 
 abstract class BlockIdNumber extends BlockId {
-  const factory BlockIdNumber({required final int blockNumber}) =
-      _$BlockIdNumber;
+  const factory BlockIdNumber(final int blockNumber) = _$BlockIdNumber;
   const BlockIdNumber._() : super._();
 
   factory BlockIdNumber.fromJson(Map<String, dynamic> json) =
@@ -421,7 +420,7 @@ class __$$BlockIdTagCopyWithImpl<$Res> extends _$BlockIdCopyWithImpl<$Res>
     Object? blockTag = freezed,
   }) {
     return _then(_$BlockIdTag(
-      blockTag: blockTag == freezed
+      blockTag == freezed
           ? _value.blockTag
           : blockTag // ignore: cast_nullable_to_non_nullable
               as String,
@@ -432,7 +431,7 @@ class __$$BlockIdTagCopyWithImpl<$Res> extends _$BlockIdCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable(createToJson: false)
 class _$BlockIdTag extends BlockIdTag {
-  const _$BlockIdTag({required this.blockTag, final String? $type})
+  const _$BlockIdTag(this.blockTag, {final String? $type})
       : $type = $type ?? 'blockTag',
         super._();
 
@@ -538,7 +537,7 @@ class _$BlockIdTag extends BlockIdTag {
 }
 
 abstract class BlockIdTag extends BlockId {
-  const factory BlockIdTag({required final String blockTag}) = _$BlockIdTag;
+  const factory BlockIdTag(final String blockTag) = _$BlockIdTag;
   const BlockIdTag._() : super._();
 
   factory BlockIdTag.fromJson(Map<String, dynamic> json) =

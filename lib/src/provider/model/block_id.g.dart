@@ -8,17 +8,17 @@ part of 'block_id.dart';
 
 _$BlockIdHash _$$BlockIdHashFromJson(Map<String, dynamic> json) =>
     _$BlockIdHash(
-      blockHash: Felt.fromJson(json['block_hash'] as String),
+      Felt.fromJson(json['block_hash'] as String),
       $type: json['runtimeType'] as String?,
     );
 
 _$BlockIdNumber _$$BlockIdNumberFromJson(Map<String, dynamic> json) =>
     _$BlockIdNumber(
-      blockNumber: json['block_number'] as int,
+      json['block_number'] as int,
       $type: json['runtimeType'] as String?,
     );
 
 _$BlockIdTag _$$BlockIdTagFromJson(Map<String, dynamic> json) => _$BlockIdTag(
-      blockTag: json['block_tag'] as String,
+      json['block_tag'] as String,
       $type: json['runtimeType'] as String?,
     );
