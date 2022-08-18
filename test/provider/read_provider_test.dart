@@ -132,6 +132,57 @@ void main() {
       });
     });
 
+    group('getTransactionByBlockIdAndIndex', () {
+      test('returns transaction details based on block hash and index',
+          () async {
+        BlockId blockId = BlockId.blockHash(Felt.fromHexString(
+            '0x3871c8a0c3555687515a07f365f6f5b1d8c2ae953f7844575b8bde2b2efed27'));
+
+        final response =
+            await provider.getTransactionByBlockIdAndIndex(blockId, 4);
+        response.when(
+            result: (result) {
+              expect(
+                  result.transactionHash,
+                  Felt.fromHexString(
+                      "0x74ec6667e6057becd3faff77d9ab14aecf5dde46edb7c599ee771f70f9e80ba"));
+            },
+            error: (error) => fail("Shouldn't fail"));
+      });
+
+      test(
+          'reading transaction details from invalid block hash and index should fail',
+          () async {
+        BlockId blockId = BlockId.blockHash(Felt.fromHexString(
+            '0x00000000000000000000000000000000000000000000000000000000000'));
+
+        final response =
+            await provider.getTransactionByBlockIdAndIndex(blockId, 4);
+        response.when(
+            result: (_) => fail('Should fail'),
+            error: (error) {
+              expect(error.code, 24);
+              expect(error.message, "Invalid block id");
+            });
+      });
+
+      test('returns transaction details based on block number and index',
+          () async {
+        BlockId blockId = BlockId.blockNumber(21348);
+
+        final response =
+            await provider.getTransactionByBlockIdAndIndex(blockId, 4);
+        response.when(
+            result: (result) {
+              expect(
+                  result.transactionHash,
+                  Felt.fromHexString(
+                      "0x74ec6667e6057becd3faff77d9ab14aecf5dde46edb7c599ee771f70f9e80ba"));
+            },
+            error: (error) => fail("Shouldn't fail"));
+      });
+    });
+
     group('getTransactionReceipt', () {
       test('returns the transaction receipt based on the transaction hash',
           () async {
@@ -195,28 +246,6 @@ void main() {
 
     // Tests for unimplemented methods
 
-    group('starknet_getTransactionByBlockIdAndIndex', () {
-      test(
-          'returns unimplemented method error for getTransactionByBlockIdAndIndex',
-          () async {
-        BlockId blockId = BlockId.blockHash(
-            blockHash: Felt.fromHexString(
-                '0x4b7ca197f1e80a4503f122a8f4d96d71c6467e92d1025f2216cc480b317cc75'));
-
-        final response =
-            await provider.getTransactionByBlockIdAndIndex(blockId, 4);
-        response.when(
-            result: (_) => fail('Expected to return an unimplemented error'),
-            error: (error) {
-              expect(error.code, equals(-32601));
-              expect(
-                  error.message,
-                  contains(
-                      'method \'starknet_getTransactionByBlockIdAndIndex\' not found'));
-            });
-      });
-    });
-
     group('starknet_pendingTransactions', () {
       test('returns unimplemented method error for pendingTransactions',
           () async {
@@ -251,9 +280,8 @@ void main() {
     group('starknet_getNonce', () {
       test('returns unimplemented method error for getNonce', () async {
         final response = await provider.getNonce(
-          BlockId.blockHash(
-              blockHash: Felt.fromHexString(
-                  '0x3e506ab93bb22e483c5ddeee5db90a815cced1189805630673bbf86dbce1d79')),
+          BlockId.blockHash(Felt.fromHexString(
+              '0x3e506ab93bb22e483c5ddeee5db90a815cced1189805630673bbf86dbce1d79')),
           Felt.fromHexString(
               '0x7cda35873823b661b560e5eb5fa901d2190512ea2006b7d504082ace819094f'),
         );
@@ -287,7 +315,7 @@ void main() {
     group('starknet_getStateUpdate', () {
       test('returns unimplemented method error for getStateUpdate', () async {
         final response = await provider.getStateUpdate(BlockId.blockHash(
-            blockHash: Felt.fromHexString(
+            Felt.fromHexString(
                 '0x3fbf1b9a9ed822423e87365923103a9577ebed2612afccf4c9f69c126eeeeb7')));
 
         response.when(
@@ -305,7 +333,7 @@ void main() {
         final response = await provider.getClassHashAt(
           contractAddress: Felt.fromHexString(
               '0x6fbd460228d843b7fbef670ff15607bf72e19fa94de21e29811ada167b4ca39'),
-          blockId: BlockId.blockTag(blockTag: "latest"),
+          blockId: BlockId.blockTag("latest"),
         );
 
         response.when(error: (error) {
@@ -341,7 +369,7 @@ void main() {
         final response = await provider.getClassAt(
           contractAddress: Felt.fromHexString(
               "0x6fbd460228d843b7fbef670ff15607bf72e19fa94de21e29811ada167b4ca39"),
-          blockId: BlockId.blockTag(blockTag: "latest"),
+          blockId: BlockId.blockTag("latest"),
         );
 
         response.when(error: (error) {
