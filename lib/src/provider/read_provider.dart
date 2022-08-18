@@ -55,11 +55,6 @@ abstract class ReadProvider {
   /// [Spec](https://github.com/starkware-libs/starknet-specs/blob/30e5bafcda60c31b5fb4021b4f5ddcfc18d2ff7d/api/starknet_api_openrpc.json#L521-L535)
   Future<PendingTransactions> pendingTransactions();
 
-  /// Gets the current starknet protocol version identifier, as supported by this sequencer.
-  ///
-  /// [Spec](https://github.com/starkware-libs/starknet-specs/blob/30e5bafcda60c31b5fb4021b4f5ddcfc18d2ff7d/api/starknet_api_openrpc.json#L536-L548)
-  Future<ProtocolVersion> protocolVersion();
-
   /// Returns an object about the sync status, or false if the node is not synching
   ///
   /// [Spec](https://github.com/starkware-libs/starknet-specs/blob/30e5bafcda60c31b5fb4021b4f5ddcfc18d2ff7d/api/starknet_api_openrpc.json#L549-L569)
@@ -195,15 +190,6 @@ class JsonRpcReadProvider implements ReadProvider {
       method: 'starknet_pendingTransactions',
       params: [],
     ).then(PendingTransactions.fromJson);
-  }
-
-  @override
-  Future<ProtocolVersion> protocolVersion() {
-    return callRpcEndpoint(
-      nodeUri: nodeUri,
-      method: 'starknet_protocolVersion',
-      params: [],
-    ).then(ProtocolVersion.fromJson);
   }
 
   @override

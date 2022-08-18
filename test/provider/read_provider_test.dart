@@ -260,20 +260,6 @@ void main() {
       });
     });
 
-    group('starknet_protocolVersion', () {
-      test('returns unimplemented method error for protocolVersion', () async {
-        final response = await provider.protocolVersion();
-
-        response.when(
-            error: (error) {
-              expect(error.code, equals(-32601));
-              expect(error.message,
-                  contains('method \'starknet_protocolVersion\' not found'));
-            },
-            result: (_) => fail('Expected to return an unimplemented error'));
-      });
-    });
-
     group('starknet_getNonce', () {
       test('returns unimplemented method error for getNonce', () async {
         final response = await provider.getNonce(
