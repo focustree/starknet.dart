@@ -244,6 +244,33 @@ void main() {
       });
     });
 
+    group('starknet_getNonce', () {
+      test('returns latest nonce associated with the given address', () async {
+        final response = await provider.getNonce(
+          Felt.fromHexString(
+              '0x019245f0f49d23f2379d3e3f20d1f3f46207d1c4a1d09cac8dd50e8d528aabe1'),
+        );
+
+        response.when(
+            error: (error) => fail("Shouldn't fail"),
+            result: (result) => expect(result, Felt.fromHexString("0x0")));
+      });
+
+      test('reading nonce from invalid contract', () async {
+        final response = await provider.getNonce(
+          Felt.fromHexString(
+              '0x000000000000000000000000000000000000000000000000000000000000000'),
+        );
+
+        response.when(
+            error: (error) {
+              expect(error.code, 20);
+              expect(error.message, "Contract not found");
+            },
+            result: (result) => fail("Should fail"));
+      });
+    });
+
     // Tests for unimplemented methods
 
     group('starknet_pendingTransactions', () {
@@ -257,25 +284,6 @@ void main() {
                   contains('Pending data not supported in this configuration'));
             },
             result: (_) => fail('Expected to return "not supported" error'));
-      });
-    });
-
-    group('starknet_getNonce', () {
-      test('returns unimplemented method error for getNonce', () async {
-        final response = await provider.getNonce(
-          BlockId.blockHash(Felt.fromHexString(
-              '0x3e506ab93bb22e483c5ddeee5db90a815cced1189805630673bbf86dbce1d79')),
-          Felt.fromHexString(
-              '0x7cda35873823b661b560e5eb5fa901d2190512ea2006b7d504082ace819094f'),
-        );
-
-        response.when(
-            error: (error) {
-              expect(error.code, equals(-32601));
-              expect(error.message,
-                  contains('method \'starknet_getNonce\' not found'));
-            },
-            result: (_) => fail('Expected to return an unimplemented error'));
       });
     });
 
