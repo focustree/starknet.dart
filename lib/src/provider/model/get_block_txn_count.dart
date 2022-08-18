@@ -12,10 +12,10 @@ class GetBlockTxnCount with _$GetBlockTxnCount {
 
   const factory GetBlockTxnCount.error({
     required JsonRpcApiError error,
-  }) = GetBlockWithTxsError;
+  }) = GetBlockTxnCountError;
 
   factory GetBlockTxnCount.fromJson(Map<String, Object?> json) =>
       json.containsKey('error')
-          ? GetBlockTxnCount.fromJson(json)
+          ? GetBlockTxnCountError.fromJson(json)
           : BlockTxnCountResult.fromJson(json);
 }

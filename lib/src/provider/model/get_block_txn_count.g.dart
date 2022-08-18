@@ -20,15 +20,15 @@ Map<String, dynamic> _$$BlockTxnCountResultToJson(
       'runtimeType': instance.$type,
     };
 
-_$GetBlockWithTxsError _$$GetBlockWithTxsErrorFromJson(
+_$GetBlockTxnCountError _$$GetBlockTxnCountErrorFromJson(
         Map<String, dynamic> json) =>
-    _$GetBlockWithTxsError(
+    _$GetBlockTxnCountError(
       error: JsonRpcApiError.fromJson(json['error'] as Map<String, dynamic>),
       $type: json['runtimeType'] as String?,
     );
 
-Map<String, dynamic> _$$GetBlockWithTxsErrorToJson(
-        _$GetBlockWithTxsError instance) =>
+Map<String, dynamic> _$$GetBlockTxnCountErrorToJson(
+        _$GetBlockTxnCountError instance) =>
     <String, dynamic>{
       'error': instance.error.toJson(),
       'runtimeType': instance.$type,

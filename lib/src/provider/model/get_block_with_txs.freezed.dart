@@ -1048,11 +1048,11 @@ abstract class BlockWithTxsResponse implements BlockWithTxs {
 Transaction _$TransactionFromJson(Map<String, dynamic> json) {
   switch (json['runtimeType']) {
     case 'invoke':
-      return InvokeTxn.fromJson(json);
+      return InvokeBlockTxn.fromJson(json);
     case 'declare':
-      return DeclareTxn.fromJson(json);
+      return DeclareBlockTxn.fromJson(json);
     case 'deploy':
-      return DeployTxn.fromJson(json);
+      return DeployBlockTxn.fromJson(json);
     case 'error':
       return TransactionError.fromJson(json);
 
@@ -1169,25 +1169,25 @@ mixin _$Transaction {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(InvokeTxn value) invoke,
-    required TResult Function(DeclareTxn value) declare,
-    required TResult Function(DeployTxn value) deploy,
+    required TResult Function(InvokeBlockTxn value) invoke,
+    required TResult Function(DeclareBlockTxn value) declare,
+    required TResult Function(DeployBlockTxn value) deploy,
     required TResult Function(TransactionError value) error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(InvokeTxn value)? invoke,
-    TResult Function(DeclareTxn value)? declare,
-    TResult Function(DeployTxn value)? deploy,
+    TResult Function(InvokeBlockTxn value)? invoke,
+    TResult Function(DeclareBlockTxn value)? declare,
+    TResult Function(DeployBlockTxn value)? deploy,
     TResult Function(TransactionError value)? error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(InvokeTxn value)? invoke,
-    TResult Function(DeclareTxn value)? declare,
-    TResult Function(DeployTxn value)? deploy,
+    TResult Function(InvokeBlockTxn value)? invoke,
+    TResult Function(DeclareBlockTxn value)? declare,
+    TResult Function(DeployBlockTxn value)? deploy,
     TResult Function(TransactionError value)? error,
     required TResult orElse(),
   }) =>
@@ -1212,10 +1212,10 @@ class _$TransactionCopyWithImpl<$Res> implements $TransactionCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class _$$InvokeTxnCopyWith<$Res> {
-  factory _$$InvokeTxnCopyWith(
-          _$InvokeTxn value, $Res Function(_$InvokeTxn) then) =
-      __$$InvokeTxnCopyWithImpl<$Res>;
+abstract class _$$InvokeBlockTxnCopyWith<$Res> {
+  factory _$$InvokeBlockTxnCopyWith(
+          _$InvokeBlockTxn value, $Res Function(_$InvokeBlockTxn) then) =
+      __$$InvokeBlockTxnCopyWithImpl<$Res>;
   $Res call(
       {Felt contractAddress,
       Felt entryPointSelector,
@@ -1229,14 +1229,15 @@ abstract class _$$InvokeTxnCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$InvokeTxnCopyWithImpl<$Res> extends _$TransactionCopyWithImpl<$Res>
-    implements _$$InvokeTxnCopyWith<$Res> {
-  __$$InvokeTxnCopyWithImpl(
-      _$InvokeTxn _value, $Res Function(_$InvokeTxn) _then)
-      : super(_value, (v) => _then(v as _$InvokeTxn));
+class __$$InvokeBlockTxnCopyWithImpl<$Res>
+    extends _$TransactionCopyWithImpl<$Res>
+    implements _$$InvokeBlockTxnCopyWith<$Res> {
+  __$$InvokeBlockTxnCopyWithImpl(
+      _$InvokeBlockTxn _value, $Res Function(_$InvokeBlockTxn) _then)
+      : super(_value, (v) => _then(v as _$InvokeBlockTxn));
 
   @override
-  _$InvokeTxn get _value => super._value as _$InvokeTxn;
+  _$InvokeBlockTxn get _value => super._value as _$InvokeBlockTxn;
 
   @override
   $Res call({
@@ -1250,7 +1251,7 @@ class __$$InvokeTxnCopyWithImpl<$Res> extends _$TransactionCopyWithImpl<$Res>
     Object? nonce = freezed,
     Object? type = freezed,
   }) {
-    return _then(_$InvokeTxn(
+    return _then(_$InvokeBlockTxn(
       contractAddress: contractAddress == freezed
           ? _value.contractAddress
           : contractAddress // ignore: cast_nullable_to_non_nullable
@@ -1293,8 +1294,8 @@ class __$$InvokeTxnCopyWithImpl<$Res> extends _$TransactionCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$InvokeTxn implements InvokeTxn {
-  const _$InvokeTxn(
+class _$InvokeBlockTxn implements InvokeBlockTxn {
+  const _$InvokeBlockTxn(
       {required this.contractAddress,
       required this.entryPointSelector,
       required final List<Felt> calldata,
@@ -1309,8 +1310,8 @@ class _$InvokeTxn implements InvokeTxn {
         _signature = signature,
         $type = $type ?? 'invoke';
 
-  factory _$InvokeTxn.fromJson(Map<String, dynamic> json) =>
-      _$$InvokeTxnFromJson(json);
+  factory _$InvokeBlockTxn.fromJson(Map<String, dynamic> json) =>
+      _$$InvokeBlockTxnFromJson(json);
 
 //Start of FUNCTION_CALL
   @override
@@ -1356,7 +1357,7 @@ class _$InvokeTxn implements InvokeTxn {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$InvokeTxn &&
+            other is _$InvokeBlockTxn &&
             const DeepCollectionEquality()
                 .equals(other.contractAddress, contractAddress) &&
             const DeepCollectionEquality()
@@ -1388,8 +1389,8 @@ class _$InvokeTxn implements InvokeTxn {
 
   @JsonKey(ignore: true)
   @override
-  _$$InvokeTxnCopyWith<_$InvokeTxn> get copyWith =>
-      __$$InvokeTxnCopyWithImpl<_$InvokeTxn>(this, _$identity);
+  _$$InvokeBlockTxnCopyWith<_$InvokeBlockTxn> get copyWith =>
+      __$$InvokeBlockTxnCopyWithImpl<_$InvokeBlockTxn>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1512,9 +1513,9 @@ class _$InvokeTxn implements InvokeTxn {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(InvokeTxn value) invoke,
-    required TResult Function(DeclareTxn value) declare,
-    required TResult Function(DeployTxn value) deploy,
+    required TResult Function(InvokeBlockTxn value) invoke,
+    required TResult Function(DeclareBlockTxn value) declare,
+    required TResult Function(DeployBlockTxn value) deploy,
     required TResult Function(TransactionError value) error,
   }) {
     return invoke(this);
@@ -1523,9 +1524,9 @@ class _$InvokeTxn implements InvokeTxn {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(InvokeTxn value)? invoke,
-    TResult Function(DeclareTxn value)? declare,
-    TResult Function(DeployTxn value)? deploy,
+    TResult Function(InvokeBlockTxn value)? invoke,
+    TResult Function(DeclareBlockTxn value)? declare,
+    TResult Function(DeployBlockTxn value)? deploy,
     TResult Function(TransactionError value)? error,
   }) {
     return invoke?.call(this);
@@ -1534,9 +1535,9 @@ class _$InvokeTxn implements InvokeTxn {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(InvokeTxn value)? invoke,
-    TResult Function(DeclareTxn value)? declare,
-    TResult Function(DeployTxn value)? deploy,
+    TResult Function(InvokeBlockTxn value)? invoke,
+    TResult Function(DeclareBlockTxn value)? declare,
+    TResult Function(DeployBlockTxn value)? deploy,
     TResult Function(TransactionError value)? error,
     required TResult orElse(),
   }) {
@@ -1548,14 +1549,14 @@ class _$InvokeTxn implements InvokeTxn {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$InvokeTxnToJson(
+    return _$$InvokeBlockTxnToJson(
       this,
     );
   }
 }
 
-abstract class InvokeTxn implements Transaction {
-  const factory InvokeTxn(
+abstract class InvokeBlockTxn implements Transaction {
+  const factory InvokeBlockTxn(
       {required final Felt contractAddress,
       required final Felt entryPointSelector,
       required final List<Felt> calldata,
@@ -1564,9 +1565,10 @@ abstract class InvokeTxn implements Transaction {
       required final String version,
       required final List<Felt> signature,
       required final Felt nonce,
-      required final TxnType type}) = _$InvokeTxn;
+      required final TxnType type}) = _$InvokeBlockTxn;
 
-  factory InvokeTxn.fromJson(Map<String, dynamic> json) = _$InvokeTxn.fromJson;
+  factory InvokeBlockTxn.fromJson(Map<String, dynamic> json) =
+      _$InvokeBlockTxn.fromJson;
 
 //Start of FUNCTION_CALL
   Felt get contractAddress;
@@ -1580,15 +1582,15 @@ abstract class InvokeTxn implements Transaction {
   Felt get nonce;
   TxnType get type;
   @JsonKey(ignore: true)
-  _$$InvokeTxnCopyWith<_$InvokeTxn> get copyWith =>
+  _$$InvokeBlockTxnCopyWith<_$InvokeBlockTxn> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$DeclareTxnCopyWith<$Res> {
-  factory _$$DeclareTxnCopyWith(
-          _$DeclareTxn value, $Res Function(_$DeclareTxn) then) =
-      __$$DeclareTxnCopyWithImpl<$Res>;
+abstract class _$$DeclareBlockTxnCopyWith<$Res> {
+  factory _$$DeclareBlockTxnCopyWith(
+          _$DeclareBlockTxn value, $Res Function(_$DeclareBlockTxn) then) =
+      __$$DeclareBlockTxnCopyWithImpl<$Res>;
   $Res call(
       {DeclarationInfo declarationInfo,
       Felt transactionHash,
@@ -1602,14 +1604,15 @@ abstract class _$$DeclareTxnCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$DeclareTxnCopyWithImpl<$Res> extends _$TransactionCopyWithImpl<$Res>
-    implements _$$DeclareTxnCopyWith<$Res> {
-  __$$DeclareTxnCopyWithImpl(
-      _$DeclareTxn _value, $Res Function(_$DeclareTxn) _then)
-      : super(_value, (v) => _then(v as _$DeclareTxn));
+class __$$DeclareBlockTxnCopyWithImpl<$Res>
+    extends _$TransactionCopyWithImpl<$Res>
+    implements _$$DeclareBlockTxnCopyWith<$Res> {
+  __$$DeclareBlockTxnCopyWithImpl(
+      _$DeclareBlockTxn _value, $Res Function(_$DeclareBlockTxn) _then)
+      : super(_value, (v) => _then(v as _$DeclareBlockTxn));
 
   @override
-  _$DeclareTxn get _value => super._value as _$DeclareTxn;
+  _$DeclareBlockTxn get _value => super._value as _$DeclareBlockTxn;
 
   @override
   $Res call({
@@ -1621,7 +1624,7 @@ class __$$DeclareTxnCopyWithImpl<$Res> extends _$TransactionCopyWithImpl<$Res>
     Object? nonce = freezed,
     Object? type = freezed,
   }) {
-    return _then(_$DeclareTxn(
+    return _then(_$DeclareBlockTxn(
       declarationInfo: declarationInfo == freezed
           ? _value.declarationInfo
           : declarationInfo // ignore: cast_nullable_to_non_nullable
@@ -1663,8 +1666,8 @@ class __$$DeclareTxnCopyWithImpl<$Res> extends _$TransactionCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$DeclareTxn implements DeclareTxn {
-  const _$DeclareTxn(
+class _$DeclareBlockTxn implements DeclareBlockTxn {
+  const _$DeclareBlockTxn(
       {required this.declarationInfo,
       required this.transactionHash,
       required this.maxFree,
@@ -1676,8 +1679,8 @@ class _$DeclareTxn implements DeclareTxn {
       : _signature = signature,
         $type = $type ?? 'declare';
 
-  factory _$DeclareTxn.fromJson(Map<String, dynamic> json) =>
-      _$$DeclareTxnFromJson(json);
+  factory _$DeclareBlockTxn.fromJson(Map<String, dynamic> json) =>
+      _$$DeclareBlockTxnFromJson(json);
 
 // Gave this name but the object doesn't have a name even if its inside allOf
 // So I gave it a name here but i believe it should be changed later when we
@@ -1716,7 +1719,7 @@ class _$DeclareTxn implements DeclareTxn {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$DeclareTxn &&
+            other is _$DeclareBlockTxn &&
             const DeepCollectionEquality()
                 .equals(other.declarationInfo, declarationInfo) &&
             const DeepCollectionEquality()
@@ -1743,8 +1746,8 @@ class _$DeclareTxn implements DeclareTxn {
 
   @JsonKey(ignore: true)
   @override
-  _$$DeclareTxnCopyWith<_$DeclareTxn> get copyWith =>
-      __$$DeclareTxnCopyWithImpl<_$DeclareTxn>(this, _$identity);
+  _$$DeclareBlockTxnCopyWith<_$DeclareBlockTxn> get copyWith =>
+      __$$DeclareBlockTxnCopyWithImpl<_$DeclareBlockTxn>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1867,9 +1870,9 @@ class _$DeclareTxn implements DeclareTxn {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(InvokeTxn value) invoke,
-    required TResult Function(DeclareTxn value) declare,
-    required TResult Function(DeployTxn value) deploy,
+    required TResult Function(InvokeBlockTxn value) invoke,
+    required TResult Function(DeclareBlockTxn value) declare,
+    required TResult Function(DeployBlockTxn value) deploy,
     required TResult Function(TransactionError value) error,
   }) {
     return declare(this);
@@ -1878,9 +1881,9 @@ class _$DeclareTxn implements DeclareTxn {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(InvokeTxn value)? invoke,
-    TResult Function(DeclareTxn value)? declare,
-    TResult Function(DeployTxn value)? deploy,
+    TResult Function(InvokeBlockTxn value)? invoke,
+    TResult Function(DeclareBlockTxn value)? declare,
+    TResult Function(DeployBlockTxn value)? deploy,
     TResult Function(TransactionError value)? error,
   }) {
     return declare?.call(this);
@@ -1889,9 +1892,9 @@ class _$DeclareTxn implements DeclareTxn {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(InvokeTxn value)? invoke,
-    TResult Function(DeclareTxn value)? declare,
-    TResult Function(DeployTxn value)? deploy,
+    TResult Function(InvokeBlockTxn value)? invoke,
+    TResult Function(DeclareBlockTxn value)? declare,
+    TResult Function(DeployBlockTxn value)? deploy,
     TResult Function(TransactionError value)? error,
     required TResult orElse(),
   }) {
@@ -1903,24 +1906,24 @@ class _$DeclareTxn implements DeclareTxn {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$DeclareTxnToJson(
+    return _$$DeclareBlockTxnToJson(
       this,
     );
   }
 }
 
-abstract class DeclareTxn implements Transaction {
-  const factory DeclareTxn(
+abstract class DeclareBlockTxn implements Transaction {
+  const factory DeclareBlockTxn(
       {required final DeclarationInfo declarationInfo,
       required final Felt transactionHash,
       required final Felt maxFree,
       required final String version,
       required final List<Felt> signature,
       required final Felt nonce,
-      required final TxnType type}) = _$DeclareTxn;
+      required final TxnType type}) = _$DeclareBlockTxn;
 
-  factory DeclareTxn.fromJson(Map<String, dynamic> json) =
-      _$DeclareTxn.fromJson;
+  factory DeclareBlockTxn.fromJson(Map<String, dynamic> json) =
+      _$DeclareBlockTxn.fromJson;
 
 // Gave this name but the object doesn't have a name even if its inside allOf
 // So I gave it a name here but i believe it should be changed later when we
@@ -1934,15 +1937,15 @@ abstract class DeclareTxn implements Transaction {
   Felt get nonce;
   TxnType get type;
   @JsonKey(ignore: true)
-  _$$DeclareTxnCopyWith<_$DeclareTxn> get copyWith =>
+  _$$DeclareBlockTxnCopyWith<_$DeclareBlockTxn> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$DeployTxnCopyWith<$Res> {
-  factory _$$DeployTxnCopyWith(
-          _$DeployTxn value, $Res Function(_$DeployTxn) then) =
-      __$$DeployTxnCopyWithImpl<$Res>;
+abstract class _$$DeployBlockTxnCopyWith<$Res> {
+  factory _$$DeployBlockTxnCopyWith(
+          _$DeployBlockTxn value, $Res Function(_$DeployBlockTxn) then) =
+      __$$DeployBlockTxnCopyWithImpl<$Res>;
   $Res call(
       {Felt transactionHash,
       Felt classHash,
@@ -1954,14 +1957,15 @@ abstract class _$$DeployTxnCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$DeployTxnCopyWithImpl<$Res> extends _$TransactionCopyWithImpl<$Res>
-    implements _$$DeployTxnCopyWith<$Res> {
-  __$$DeployTxnCopyWithImpl(
-      _$DeployTxn _value, $Res Function(_$DeployTxn) _then)
-      : super(_value, (v) => _then(v as _$DeployTxn));
+class __$$DeployBlockTxnCopyWithImpl<$Res>
+    extends _$TransactionCopyWithImpl<$Res>
+    implements _$$DeployBlockTxnCopyWith<$Res> {
+  __$$DeployBlockTxnCopyWithImpl(
+      _$DeployBlockTxn _value, $Res Function(_$DeployBlockTxn) _then)
+      : super(_value, (v) => _then(v as _$DeployBlockTxn));
 
   @override
-  _$DeployTxn get _value => super._value as _$DeployTxn;
+  _$DeployBlockTxn get _value => super._value as _$DeployBlockTxn;
 
   @override
   $Res call({
@@ -1973,7 +1977,7 @@ class __$$DeployTxnCopyWithImpl<$Res> extends _$TransactionCopyWithImpl<$Res>
     Object? version = freezed,
     Object? type = freezed,
   }) {
-    return _then(_$DeployTxn(
+    return _then(_$DeployBlockTxn(
       transactionHash: transactionHash == freezed
           ? _value.transactionHash
           : transactionHash // ignore: cast_nullable_to_non_nullable
@@ -2008,8 +2012,8 @@ class __$$DeployTxnCopyWithImpl<$Res> extends _$TransactionCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$DeployTxn implements DeployTxn {
-  const _$DeployTxn(
+class _$DeployBlockTxn implements DeployBlockTxn {
+  const _$DeployBlockTxn(
       {required this.transactionHash,
       required this.classHash,
       required this.contractAddress,
@@ -2021,8 +2025,8 @@ class _$DeployTxn implements DeployTxn {
       : _constructor_Calldata = constructor_Calldata,
         $type = $type ?? 'deploy';
 
-  factory _$DeployTxn.fromJson(Map<String, dynamic> json) =>
-      _$$DeployTxnFromJson(json);
+  factory _$DeployBlockTxn.fromJson(Map<String, dynamic> json) =>
+      _$$DeployBlockTxnFromJson(json);
 
   @override
   final Felt transactionHash;
@@ -2056,7 +2060,7 @@ class _$DeployTxn implements DeployTxn {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$DeployTxn &&
+            other is _$DeployBlockTxn &&
             const DeepCollectionEquality()
                 .equals(other.transactionHash, transactionHash) &&
             const DeepCollectionEquality().equals(other.classHash, classHash) &&
@@ -2084,8 +2088,8 @@ class _$DeployTxn implements DeployTxn {
 
   @JsonKey(ignore: true)
   @override
-  _$$DeployTxnCopyWith<_$DeployTxn> get copyWith =>
-      __$$DeployTxnCopyWithImpl<_$DeployTxn>(this, _$identity);
+  _$$DeployBlockTxnCopyWith<_$DeployBlockTxn> get copyWith =>
+      __$$DeployBlockTxnCopyWithImpl<_$DeployBlockTxn>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -2208,9 +2212,9 @@ class _$DeployTxn implements DeployTxn {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(InvokeTxn value) invoke,
-    required TResult Function(DeclareTxn value) declare,
-    required TResult Function(DeployTxn value) deploy,
+    required TResult Function(InvokeBlockTxn value) invoke,
+    required TResult Function(DeclareBlockTxn value) declare,
+    required TResult Function(DeployBlockTxn value) deploy,
     required TResult Function(TransactionError value) error,
   }) {
     return deploy(this);
@@ -2219,9 +2223,9 @@ class _$DeployTxn implements DeployTxn {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(InvokeTxn value)? invoke,
-    TResult Function(DeclareTxn value)? declare,
-    TResult Function(DeployTxn value)? deploy,
+    TResult Function(InvokeBlockTxn value)? invoke,
+    TResult Function(DeclareBlockTxn value)? declare,
+    TResult Function(DeployBlockTxn value)? deploy,
     TResult Function(TransactionError value)? error,
   }) {
     return deploy?.call(this);
@@ -2230,9 +2234,9 @@ class _$DeployTxn implements DeployTxn {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(InvokeTxn value)? invoke,
-    TResult Function(DeclareTxn value)? declare,
-    TResult Function(DeployTxn value)? deploy,
+    TResult Function(InvokeBlockTxn value)? invoke,
+    TResult Function(DeclareBlockTxn value)? declare,
+    TResult Function(DeployBlockTxn value)? deploy,
     TResult Function(TransactionError value)? error,
     required TResult orElse(),
   }) {
@@ -2244,23 +2248,24 @@ class _$DeployTxn implements DeployTxn {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$DeployTxnToJson(
+    return _$$DeployBlockTxnToJson(
       this,
     );
   }
 }
 
-abstract class DeployTxn implements Transaction {
-  const factory DeployTxn(
+abstract class DeployBlockTxn implements Transaction {
+  const factory DeployBlockTxn(
       {required final Felt transactionHash,
       required final Felt classHash,
       required final Felt contractAddress,
       required final Felt contractAddressSalt,
       required final List<Felt> constructor_Calldata,
       required final String version,
-      required final TxnType type}) = _$DeployTxn;
+      required final TxnType type}) = _$DeployBlockTxn;
 
-  factory DeployTxn.fromJson(Map<String, dynamic> json) = _$DeployTxn.fromJson;
+  factory DeployBlockTxn.fromJson(Map<String, dynamic> json) =
+      _$DeployBlockTxn.fromJson;
 
   Felt get transactionHash;
   Felt get classHash;
@@ -2270,7 +2275,7 @@ abstract class DeployTxn implements Transaction {
   String get version;
   TxnType get type;
   @JsonKey(ignore: true)
-  _$$DeployTxnCopyWith<_$DeployTxn> get copyWith =>
+  _$$DeployBlockTxnCopyWith<_$DeployBlockTxn> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -2471,9 +2476,9 @@ class _$TransactionError implements TransactionError {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(InvokeTxn value) invoke,
-    required TResult Function(DeclareTxn value) declare,
-    required TResult Function(DeployTxn value) deploy,
+    required TResult Function(InvokeBlockTxn value) invoke,
+    required TResult Function(DeclareBlockTxn value) declare,
+    required TResult Function(DeployBlockTxn value) deploy,
     required TResult Function(TransactionError value) error,
   }) {
     return error(this);
@@ -2482,9 +2487,9 @@ class _$TransactionError implements TransactionError {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(InvokeTxn value)? invoke,
-    TResult Function(DeclareTxn value)? declare,
-    TResult Function(DeployTxn value)? deploy,
+    TResult Function(InvokeBlockTxn value)? invoke,
+    TResult Function(DeclareBlockTxn value)? declare,
+    TResult Function(DeployBlockTxn value)? deploy,
     TResult Function(TransactionError value)? error,
   }) {
     return error?.call(this);
@@ -2493,9 +2498,9 @@ class _$TransactionError implements TransactionError {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(InvokeTxn value)? invoke,
-    TResult Function(DeclareTxn value)? declare,
-    TResult Function(DeployTxn value)? deploy,
+    TResult Function(InvokeBlockTxn value)? invoke,
+    TResult Function(DeclareBlockTxn value)? declare,
+    TResult Function(DeployBlockTxn value)? deploy,
     TResult Function(TransactionError value)? error,
     required TResult orElse(),
   }) {

@@ -66,7 +66,7 @@ class Transaction with _$Transaction {
     required Felt nonce,
     required TxnType type,
     //End of COMMON_TXN_PROPERTIES
-  }) = InvokeTxn;
+  }) = InvokeBlockTxn;
   const factory Transaction.declare({
     // Gave this name but the object doesn't have a name even if its inside allOf
     // So I gave it a name here but i believe it should be changed later when we
@@ -81,7 +81,7 @@ class Transaction with _$Transaction {
     required Felt nonce,
     required TxnType type,
     //End of COMMON_TXN_PROPERTIES
-  }) = DeclareTxn;
+  }) = DeclareBlockTxn;
   const factory Transaction.deploy({
     required Felt transactionHash,
     required Felt classHash,
@@ -93,17 +93,17 @@ class Transaction with _$Transaction {
     //Start of BLOCK_BODY_WITH_TXS
 
     //End of BLOCK_BODY_WITH_TXS
-  }) = DeployTxn;
+  }) = DeployBlockTxn;
   const factory Transaction.error({
     required JsonRpcApiError error,
   }) = TransactionError;
 
   factory Transaction.fromJson(Map<String, Object?> json) =>
       json['type'] == "INVOKE"
-          ? InvokeTxn.fromJson(json)
+          ? InvokeBlockTxn.fromJson(json)
           : json['type'] == "DECLARE"
-              ? DeclareTxn.fromJson(json)
-              : DeployTxn.fromJson(json);
+              ? DeclareBlockTxn.fromJson(json)
+              : DeployBlockTxn.fromJson(json);
 }
 
 enum BlockStatus {

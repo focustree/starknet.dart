@@ -19,7 +19,7 @@ GetBlockTxnCount _$GetBlockTxnCountFromJson(Map<String, dynamic> json) {
     case 'result':
       return BlockTxnCountResult.fromJson(json);
     case 'error':
-      return GetBlockWithTxsError.fromJson(json);
+      return GetBlockTxnCountError.fromJson(json);
 
     default:
       throw CheckedFromJsonException(json, 'runtimeType', 'GetBlockTxnCount',
@@ -51,19 +51,19 @@ mixin _$GetBlockTxnCount {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(BlockTxnCountResult value) result,
-    required TResult Function(GetBlockWithTxsError value) error,
+    required TResult Function(GetBlockTxnCountError value) error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(BlockTxnCountResult value)? result,
-    TResult Function(GetBlockWithTxsError value)? error,
+    TResult Function(GetBlockTxnCountError value)? error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(BlockTxnCountResult value)? result,
-    TResult Function(GetBlockWithTxsError value)? error,
+    TResult Function(GetBlockTxnCountError value)? error,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -193,7 +193,7 @@ class _$BlockTxnCountResult implements BlockTxnCountResult {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(BlockTxnCountResult value) result,
-    required TResult Function(GetBlockWithTxsError value) error,
+    required TResult Function(GetBlockTxnCountError value) error,
   }) {
     return result(this);
   }
@@ -202,7 +202,7 @@ class _$BlockTxnCountResult implements BlockTxnCountResult {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(BlockTxnCountResult value)? result,
-    TResult Function(GetBlockWithTxsError value)? error,
+    TResult Function(GetBlockTxnCountError value)? error,
   }) {
     return result?.call(this);
   }
@@ -211,7 +211,7 @@ class _$BlockTxnCountResult implements BlockTxnCountResult {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(BlockTxnCountResult value)? result,
-    TResult Function(GetBlockWithTxsError value)? error,
+    TResult Function(GetBlockTxnCountError value)? error,
     required TResult orElse(),
   }) {
     if (result != null) {
@@ -242,31 +242,31 @@ abstract class BlockTxnCountResult implements GetBlockTxnCount {
 }
 
 /// @nodoc
-abstract class _$$GetBlockWithTxsErrorCopyWith<$Res> {
-  factory _$$GetBlockWithTxsErrorCopyWith(_$GetBlockWithTxsError value,
-          $Res Function(_$GetBlockWithTxsError) then) =
-      __$$GetBlockWithTxsErrorCopyWithImpl<$Res>;
+abstract class _$$GetBlockTxnCountErrorCopyWith<$Res> {
+  factory _$$GetBlockTxnCountErrorCopyWith(_$GetBlockTxnCountError value,
+          $Res Function(_$GetBlockTxnCountError) then) =
+      __$$GetBlockTxnCountErrorCopyWithImpl<$Res>;
   $Res call({JsonRpcApiError error});
 
   $JsonRpcApiErrorCopyWith<$Res> get error;
 }
 
 /// @nodoc
-class __$$GetBlockWithTxsErrorCopyWithImpl<$Res>
+class __$$GetBlockTxnCountErrorCopyWithImpl<$Res>
     extends _$GetBlockTxnCountCopyWithImpl<$Res>
-    implements _$$GetBlockWithTxsErrorCopyWith<$Res> {
-  __$$GetBlockWithTxsErrorCopyWithImpl(_$GetBlockWithTxsError _value,
-      $Res Function(_$GetBlockWithTxsError) _then)
-      : super(_value, (v) => _then(v as _$GetBlockWithTxsError));
+    implements _$$GetBlockTxnCountErrorCopyWith<$Res> {
+  __$$GetBlockTxnCountErrorCopyWithImpl(_$GetBlockTxnCountError _value,
+      $Res Function(_$GetBlockTxnCountError) _then)
+      : super(_value, (v) => _then(v as _$GetBlockTxnCountError));
 
   @override
-  _$GetBlockWithTxsError get _value => super._value as _$GetBlockWithTxsError;
+  _$GetBlockTxnCountError get _value => super._value as _$GetBlockTxnCountError;
 
   @override
   $Res call({
     Object? error = freezed,
   }) {
-    return _then(_$GetBlockWithTxsError(
+    return _then(_$GetBlockTxnCountError(
       error: error == freezed
           ? _value.error
           : error // ignore: cast_nullable_to_non_nullable
@@ -284,12 +284,12 @@ class __$$GetBlockWithTxsErrorCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$GetBlockWithTxsError implements GetBlockWithTxsError {
-  const _$GetBlockWithTxsError({required this.error, final String? $type})
+class _$GetBlockTxnCountError implements GetBlockTxnCountError {
+  const _$GetBlockTxnCountError({required this.error, final String? $type})
       : $type = $type ?? 'error';
 
-  factory _$GetBlockWithTxsError.fromJson(Map<String, dynamic> json) =>
-      _$$GetBlockWithTxsErrorFromJson(json);
+  factory _$GetBlockTxnCountError.fromJson(Map<String, dynamic> json) =>
+      _$$GetBlockTxnCountErrorFromJson(json);
 
   @override
   final JsonRpcApiError error;
@@ -306,7 +306,7 @@ class _$GetBlockWithTxsError implements GetBlockWithTxsError {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$GetBlockWithTxsError &&
+            other is _$GetBlockTxnCountError &&
             const DeepCollectionEquality().equals(other.error, error));
   }
 
@@ -317,8 +317,8 @@ class _$GetBlockWithTxsError implements GetBlockWithTxsError {
 
   @JsonKey(ignore: true)
   @override
-  _$$GetBlockWithTxsErrorCopyWith<_$GetBlockWithTxsError> get copyWith =>
-      __$$GetBlockWithTxsErrorCopyWithImpl<_$GetBlockWithTxsError>(
+  _$$GetBlockTxnCountErrorCopyWith<_$GetBlockTxnCountError> get copyWith =>
+      __$$GetBlockTxnCountErrorCopyWithImpl<_$GetBlockTxnCountError>(
           this, _$identity);
 
   @override
@@ -356,7 +356,7 @@ class _$GetBlockWithTxsError implements GetBlockWithTxsError {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(BlockTxnCountResult value) result,
-    required TResult Function(GetBlockWithTxsError value) error,
+    required TResult Function(GetBlockTxnCountError value) error,
   }) {
     return error(this);
   }
@@ -365,7 +365,7 @@ class _$GetBlockWithTxsError implements GetBlockWithTxsError {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(BlockTxnCountResult value)? result,
-    TResult Function(GetBlockWithTxsError value)? error,
+    TResult Function(GetBlockTxnCountError value)? error,
   }) {
     return error?.call(this);
   }
@@ -374,7 +374,7 @@ class _$GetBlockWithTxsError implements GetBlockWithTxsError {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(BlockTxnCountResult value)? result,
-    TResult Function(GetBlockWithTxsError value)? error,
+    TResult Function(GetBlockTxnCountError value)? error,
     required TResult orElse(),
   }) {
     if (error != null) {
@@ -385,21 +385,21 @@ class _$GetBlockWithTxsError implements GetBlockWithTxsError {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$GetBlockWithTxsErrorToJson(
+    return _$$GetBlockTxnCountErrorToJson(
       this,
     );
   }
 }
 
-abstract class GetBlockWithTxsError implements GetBlockTxnCount {
-  const factory GetBlockWithTxsError({required final JsonRpcApiError error}) =
-      _$GetBlockWithTxsError;
+abstract class GetBlockTxnCountError implements GetBlockTxnCount {
+  const factory GetBlockTxnCountError({required final JsonRpcApiError error}) =
+      _$GetBlockTxnCountError;
 
-  factory GetBlockWithTxsError.fromJson(Map<String, dynamic> json) =
-      _$GetBlockWithTxsError.fromJson;
+  factory GetBlockTxnCountError.fromJson(Map<String, dynamic> json) =
+      _$GetBlockTxnCountError.fromJson;
 
   JsonRpcApiError get error;
   @JsonKey(ignore: true)
-  _$$GetBlockWithTxsErrorCopyWith<_$GetBlockWithTxsError> get copyWith =>
+  _$$GetBlockTxnCountErrorCopyWith<_$GetBlockTxnCountError> get copyWith =>
       throw _privateConstructorUsedError;
 }

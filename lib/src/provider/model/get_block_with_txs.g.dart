@@ -79,7 +79,8 @@ const _$BlockStatusEnumMap = {
   BlockStatus.rejected: 'rejected',
 };
 
-_$InvokeTxn _$$InvokeTxnFromJson(Map<String, dynamic> json) => _$InvokeTxn(
+_$InvokeBlockTxn _$$InvokeBlockTxnFromJson(Map<String, dynamic> json) =>
+    _$InvokeBlockTxn(
       contractAddress: Felt.fromJson(json['contract_address'] as String),
       entryPointSelector: Felt.fromJson(json['entry_point_selector'] as String),
       calldata: (json['calldata'] as List<dynamic>)
@@ -96,7 +97,7 @@ _$InvokeTxn _$$InvokeTxnFromJson(Map<String, dynamic> json) => _$InvokeTxn(
       $type: json['runtimeType'] as String?,
     );
 
-Map<String, dynamic> _$$InvokeTxnToJson(_$InvokeTxn instance) =>
+Map<String, dynamic> _$$InvokeBlockTxnToJson(_$InvokeBlockTxn instance) =>
     <String, dynamic>{
       'contract_address': instance.contractAddress.toJson(),
       'entry_point_selector': instance.entryPointSelector.toJson(),
@@ -116,7 +117,8 @@ const _$TxnTypeEnumMap = {
   TxnType.deploy: 'deploy',
 };
 
-_$DeclareTxn _$$DeclareTxnFromJson(Map<String, dynamic> json) => _$DeclareTxn(
+_$DeclareBlockTxn _$$DeclareBlockTxnFromJson(Map<String, dynamic> json) =>
+    _$DeclareBlockTxn(
       declarationInfo: DeclarationInfo.fromJson(
           json['declaration_info'] as Map<String, dynamic>),
       transactionHash: Felt.fromJson(json['transaction_hash'] as String),
@@ -130,7 +132,7 @@ _$DeclareTxn _$$DeclareTxnFromJson(Map<String, dynamic> json) => _$DeclareTxn(
       $type: json['runtimeType'] as String?,
     );
 
-Map<String, dynamic> _$$DeclareTxnToJson(_$DeclareTxn instance) =>
+Map<String, dynamic> _$$DeclareBlockTxnToJson(_$DeclareBlockTxn instance) =>
     <String, dynamic>{
       'declaration_info': instance.declarationInfo.toJson(),
       'transaction_hash': instance.transactionHash.toJson(),
@@ -142,7 +144,8 @@ Map<String, dynamic> _$$DeclareTxnToJson(_$DeclareTxn instance) =>
       'runtimeType': instance.$type,
     };
 
-_$DeployTxn _$$DeployTxnFromJson(Map<String, dynamic> json) => _$DeployTxn(
+_$DeployBlockTxn _$$DeployBlockTxnFromJson(Map<String, dynamic> json) =>
+    _$DeployBlockTxn(
       transactionHash: Felt.fromJson(json['transaction_hash'] as String),
       classHash: Felt.fromJson(json['class_hash'] as String),
       contractAddress: Felt.fromJson(json['contract_address'] as String),
@@ -156,7 +159,7 @@ _$DeployTxn _$$DeployTxnFromJson(Map<String, dynamic> json) => _$DeployTxn(
       $type: json['runtimeType'] as String?,
     );
 
-Map<String, dynamic> _$$DeployTxnToJson(_$DeployTxn instance) =>
+Map<String, dynamic> _$$DeployBlockTxnToJson(_$DeployBlockTxn instance) =>
     <String, dynamic>{
       'transaction_hash': instance.transactionHash.toJson(),
       'class_hash': instance.classHash.toJson(),
