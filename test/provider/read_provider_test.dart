@@ -271,6 +271,19 @@ void main() {
       });
     });
 
+    group('starknet_blockHashAndNumber', () {
+      test('returns the most recent accepted block hash and number', () async {
+        final response = await provider.blockHashAndNumber();
+
+        response.when(
+            error: (error) => fail("Shouldn't fail"),
+            result: (blockHashAndNumber) {
+              expect(blockHashAndNumber.blockHash, isNotNull);
+              expect(blockHashAndNumber.blockNumber, isNonNegative);
+            });
+      });
+    });
+
     // Tests for unimplemented methods
 
     group('starknet_pendingTransactions', () {
@@ -284,22 +297,6 @@ void main() {
                   contains('Pending data not supported in this configuration'));
             },
             result: (_) => fail('Expected to return "not supported" error'));
-      });
-    });
-
-    group('starknet_blockHashAndNumber', () {
-      test('returns unimplemented method error for blockHashAndNumber',
-          () async {
-        final response = await provider.blockHashAndNumber();
-
-        response.when(
-            error: (error) {
-              expect(error.code, equals(-32601));
-              expect(error.message,
-                  contains('method \'starknet_blockHashAndNumber\' not found'));
-            },
-            result: (_, __) =>
-                fail('Expected to return an unimplemented error'));
       });
     });
 
