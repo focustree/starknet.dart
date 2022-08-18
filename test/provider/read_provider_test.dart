@@ -328,22 +328,6 @@ void main() {
       });
     });
 
-    // Tests for unimplemented methods
-
-    group('starknet_pendingTransactions', () {
-      test('returns not supported error for pendingTransactions', () async {
-        final response = await provider.pendingTransactions();
-
-        response.when(
-            error: (error) {
-              expect(error.code, equals(-32000));
-              expect(error.message,
-                  contains('Pending data not supported in this configuration'));
-            },
-            result: (_) => fail('Expected to return "not supported" error'));
-      });
-    });
-
     group('starknet_getClass*', () {
       test('returns class hash for a known contract', () async {
         final response = await provider.getClassHashAt(
@@ -352,15 +336,15 @@ void main() {
           blockId: BlockId.blockTag("latest"),
         );
 
-        response.when(error: (error) {
-          // 2022-08-03: current Infura implementation doesn't support block_id
-          expect(error.code, equals(-32602));
-        }, result: (result) {
-          expect(
-              result,
-              Felt.fromHexString(
-                  "0x21a7f43387573b68666669a0ed764252ce5367708e696e31967764a90b429c2"));
-        });
+        response.when(
+          error: (error) => fail("Shouldn't fail"),
+          result: (result) {
+            expect(
+                result,
+                Felt.fromHexString(
+                    "0x21a7f43387573b68666669a0ed764252ce5367708e696e31967764a90b429c2"));
+          },
+        );
       });
 
       test('returns class for a known class hash', () async {
@@ -381,7 +365,7 @@ void main() {
             });
       });
 
-      test('returns class for a known adress and block id', () async {
+      test('returns class for a known address and block id', () async {
         final response = await provider.getClassAt(
           contractAddress: Felt.fromHexString(
               "0x6fbd460228d843b7fbef670ff15607bf72e19fa94de21e29811ada167b4ca39"),
@@ -399,6 +383,21 @@ void main() {
           expect(entry_points.external[0].offset, "0x3a");
           expect(entry_points.external[1].offset, "0x5b");
         });
+      });
+    });
+
+    // Tests for unimplemented methods
+    group('starknet_pendingTransactions', () {
+      test('returns not supported error for pendingTransactions', () async {
+        final response = await provider.pendingTransactions();
+
+        response.when(
+            error: (error) {
+              expect(error.code, equals(-32000));
+              expect(error.message,
+                  contains('Pending data not supported in this configuration'));
+            },
+            result: (_) => fail('Expected to return "not supported" error'));
       });
     });
   });
