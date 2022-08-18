@@ -35,9 +35,9 @@ Map<String, dynamic> _$$GetTransactionErrorToJson(
     };
 
 _$InvokeTxn _$$InvokeTxnFromJson(Map<String, dynamic> json) => _$InvokeTxn(
-      txnHash: json['txn_hash'] == null
+      transactionHash: json['transaction_hash'] == null
           ? null
-          : Felt.fromJson(json['txn_hash'] as String),
+          : Felt.fromJson(json['transaction_hash'] as String),
       maxFee: json['max_fee'] == null
           ? null
           : Felt.fromJson(json['max_fee'] as String),
@@ -62,7 +62,7 @@ _$InvokeTxn _$$InvokeTxnFromJson(Map<String, dynamic> json) => _$InvokeTxn(
 
 Map<String, dynamic> _$$InvokeTxnToJson(_$InvokeTxn instance) =>
     <String, dynamic>{
-      'txn_hash': instance.txnHash?.toJson(),
+      'transaction_hash': instance.transactionHash?.toJson(),
       'max_fee': instance.maxFee?.toJson(),
       'version': instance.version,
       'signature': instance.signature?.map((e) => e.toJson()).toList(),
@@ -75,9 +75,9 @@ Map<String, dynamic> _$$InvokeTxnToJson(_$InvokeTxn instance) =>
     };
 
 _$DeclareTxn _$$DeclareTxnFromJson(Map<String, dynamic> json) => _$DeclareTxn(
-      txnHash: json['txn_hash'] == null
+      transactionHash: json['transaction_hash'] == null
           ? null
-          : Felt.fromJson(json['txn_hash'] as String),
+          : Felt.fromJson(json['transaction_hash'] as String),
       maxFee: json['max_fee'] == null
           ? null
           : Felt.fromJson(json['max_fee'] as String),
@@ -99,7 +99,7 @@ _$DeclareTxn _$$DeclareTxnFromJson(Map<String, dynamic> json) => _$DeclareTxn(
 
 Map<String, dynamic> _$$DeclareTxnToJson(_$DeclareTxn instance) =>
     <String, dynamic>{
-      'txn_hash': instance.txnHash?.toJson(),
+      'transaction_hash': instance.transactionHash?.toJson(),
       'max_fee': instance.maxFee?.toJson(),
       'version': instance.version,
       'signature': instance.signature?.map((e) => e.toJson()).toList(),
@@ -111,9 +111,9 @@ Map<String, dynamic> _$$DeclareTxnToJson(_$DeclareTxn instance) =>
     };
 
 _$DeployTxn _$$DeployTxnFromJson(Map<String, dynamic> json) => _$DeployTxn(
-      txnHash: json['txn_hash'] == null
+      transactionHash: json['transaction_hash'] == null
           ? null
-          : Felt.fromJson(json['txn_hash'] as String),
+          : Felt.fromJson(json['transaction_hash'] as String),
       classHash: json['class_hash'] == null
           ? null
           : Felt.fromJson(json['class_hash'] as String),
@@ -133,7 +133,7 @@ _$DeployTxn _$$DeployTxnFromJson(Map<String, dynamic> json) => _$DeployTxn(
 
 Map<String, dynamic> _$$DeployTxnToJson(_$DeployTxn instance) =>
     <String, dynamic>{
-      'txn_hash': instance.txnHash?.toJson(),
+      'transaction_hash': instance.transactionHash?.toJson(),
       'class_hash': instance.classHash?.toJson(),
       'version': instance.version,
       'type': instance.type,
