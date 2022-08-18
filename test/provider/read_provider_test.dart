@@ -106,16 +106,16 @@ void main() {
           () async {
         final response = await provider.getTransactionByHash(
           Felt.fromHexString(
-              '0x54633821b88433a6ecab8e849beebdcccd353f3306d446830dadc42ef35046e'),
+              '0x74ec6667e6057becd3faff77d9ab14aecf5dde46edb7c599ee771f70f9e80ba'),
         );
 
         response.when(
             error: (error) => fail("Shouldn't fail"),
             result: (result) {
               expect(
-                  result.txnHash,
+                  result.transactionHash,
                   Felt.fromHexString(
-                      "0x54633821b88433a6ecab8e849beebdcccd353f3306d446830dadc42ef35046e"));
+                      "0x74ec6667e6057becd3faff77d9ab14aecf5dde46edb7c599ee771f70f9e80ba"));
             });
       });
 
