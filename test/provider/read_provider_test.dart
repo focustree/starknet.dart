@@ -284,6 +284,50 @@ void main() {
       });
     });
 
+    group('starknet_getStateUpdate', () {
+      test(
+          'returns the information about the result of executing the requested block using block hash',
+          () async {
+        final response = await provider.getStateUpdate(BlockId.blockHash(
+            Felt.fromHexString(
+                '0x7d328a71faf48c5c3857e99f20a77b18522480956d1cd5bff1ff2df3c8b427b')));
+
+        response.when(
+            error: (error) => fail("Shouldn't fail"),
+            result: (result) {
+              expect(
+                  result.blockHash,
+                  Felt.fromHexString(
+                      '0x7d328a71faf48c5c3857e99f20a77b18522480956d1cd5bff1ff2df3c8b427b'));
+            });
+      });
+
+      test(
+          'returns the information about the result of executing the requested block using block number',
+          () async {
+        final response = await provider.getStateUpdate(BlockId.blockNumber(0));
+
+        response.when(
+            error: (error) => fail("Shouldn't fail"),
+            result: (result) {
+              expect(result.blockHash, isNotNull);
+            });
+      });
+
+      test('reading the state update from an invalid block id', () async {
+        final response = await provider.getStateUpdate(BlockId.blockHash(
+            Felt.fromHexString(
+                '0x000000000000000000000000000000000000000000000000000000000000000')));
+
+        response.when(
+            error: (error) {
+              expect(error.code, 24);
+              expect(error.message, "Invalid block id");
+            },
+            result: (result) => fail("Should fail"));
+      });
+    });
+
     // Tests for unimplemented methods
 
     group('starknet_pendingTransactions', () {
@@ -297,22 +341,6 @@ void main() {
                   contains('Pending data not supported in this configuration'));
             },
             result: (_) => fail('Expected to return "not supported" error'));
-      });
-    });
-
-    group('starknet_getStateUpdate', () {
-      test('returns unimplemented method error for getStateUpdate', () async {
-        final response = await provider.getStateUpdate(BlockId.blockHash(
-            Felt.fromHexString(
-                '0x3fbf1b9a9ed822423e87365923103a9577ebed2612afccf4c9f69c126eeeeb7')));
-
-        response.when(
-            error: (error) {
-              expect(error.code, equals(-32601));
-              expect(error.message,
-                  contains('method \'starknet_getStateUpdate\' not found'));
-            },
-            result: (_) => fail('Expected to return an unimplemented error'));
       });
     });
 
