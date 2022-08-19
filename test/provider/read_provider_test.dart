@@ -48,39 +48,116 @@ void main() {
     });
 
     group('call', () {
-      test('calls a read-only method with empty calldata', () async {
-        final response = await provider.call(
-            request: FunctionCall(
-                // Briq NFT contract address
-                contractAddress: Felt.fromHexString(
-                    '0x0266b1276d23ffb53d99da3f01be7e29fa024dd33cd7f7b1eb7a46c67891c9d0'),
-                entryPointSelector: getSelectorByName('name'),
-                calldata: []));
-        response.when(
-            error: (error) => fail("Shouldn't fail"),
-            result: (result) {
-              expect(result, hasLength(1));
-              expect(result[0], Felt.fromString('briq'));
-            });
-      });
+      // TODO: needs to be updated for v0.10.0 specs url
+      // test('calls a read-only method with empty calldata', () async {
+      //   final response = await provider.call(
+      //       request: FunctionCall(
+      //           // Briq NFT contract address
+      //           contractAddress: Felt.fromHexString(
+      //               '0x019245f0f49d23f2379d3e3f20d1f3f46207d1c4a1d09cac8dd50e8d528aabe1'),
+      //           entryPointSelector: getSelectorByName('name'),
+      //           calldata: []));
+      //   response.when(
+      //       error: (error) => fail("Shouldn't fail"),
+      //       result: (result) {
+      //         expect(result, hasLength(1));
+      //         expect(result[0], Felt.fromString('briq'));
+      //       });
+      // });
+      // test('calls a read-only method with non-empty calldata', () async {
+      //   final response = await provider.call(
+      //       request: FunctionCall(
+      //           // Starknet ID contract address
+      //           contractAddress: Felt.fromHexString(
+      //               '0x019245f0f49d23f2379d3e3f20d1f3f46207d1c4a1d09cac8dd50e8d528aabe1'),
+      //           entryPointSelector: getSelectorByName('balance_of'),
+      //           calldata: [
+      //         // Address owning 5 Starknet IDs
+      //         Felt.fromHexString(
+      //             '0x0367c0c4603a29Bc5aCA8E07C6A2776D7C0d325945aBB4f772f448b345Ca4Cf7')
+      //       ]));
+      //   response.when(
+      //       error: (error) => fail("Shouldn't fail"),
+      //       result: (result) {
+      //         expect(result, hasLength(2));
+      //         expect(result[0], Felt.fromInt(5));
+      //       });
+      // });
+
       test('calls a read-only method with non-empty calldata', () async {
         final response = await provider.call(
             request: FunctionCall(
                 // Starknet ID contract address
                 contractAddress: Felt.fromHexString(
-                    '0x033233531959c1da39c28daf337e25e2deadda80ce988290306ffabcd735ccbd'),
-                entryPointSelector: getSelectorByName('balance_of'),
+                    '0x019245f0f49d23f2379d3e3f20d1f3f46207d1c4a1d09cac8dd50e8d528aabe1'),
+                entryPointSelector: Felt.fromHexString('0x026813d396fdb198e9ead934e4f7a592a8b88a059e45ab0eb6ee53494e8d45b0'),
                 calldata: [
-              // Address owning 5 Starknet IDs
-              Felt.fromHexString(
-                  '0x0367c0c4603a29Bc5aCA8E07C6A2776D7C0d325945aBB4f772f448b345Ca4Cf7')
-            ]));
+                  Felt.fromHexString('0x5')
+                ]),
+            blockId: BlockId.blockHash(Felt.fromHexString(
+                '0x7d328a71faf48c5c3857e99f20a77b18522480956d1cd5bff1ff2df3c8b427b')));
         response.when(
             error: (error) => fail("Shouldn't fail"),
             result: (result) {
-              expect(result, hasLength(2));
-              expect(result[0], Felt.fromInt(5));
+              expect(result[0], Felt.fromHexString('0x22b'));
             });
+      });
+
+      test('calls a read-only method with invalid contract address', () async {
+        final response = await provider.call(
+            request: FunctionCall(
+                contractAddress: Felt.fromHexString(
+                    '0x000000000000000000000000000000000000000000000000000000000000000'),
+                entryPointSelector: Felt.fromHexString('0x026813d396fdb198e9ead934e4f7a592a8b88a059e45ab0eb6ee53494e8d45b0'),
+                calldata: [
+                  Felt.fromHexString('0x5')
+                ]),
+            blockId: BlockId.blockHash(Felt.fromHexString(
+                '0x7d328a71faf48c5c3857e99f20a77b18522480956d1cd5bff1ff2df3c8b427b')));
+        response.when(
+            error: (error) {
+              expect(error.code, 20);
+              expect(error.message, contains("Contract not found"));
+            },
+            result: (result) => fail("Should fail"));
+      });
+
+      test('calls a read-only method with invalid block id', () async {
+        final response = await provider.call(
+            request: FunctionCall(
+                contractAddress: Felt.fromHexString(
+                    '0x019245f0f49d23f2379d3e3f20d1f3f46207d1c4a1d09cac8dd50e8d528aabe1'),
+                entryPointSelector: Felt.fromHexString('0x026813d396fdb198e9ead934e4f7a592a8b88a059e45ab0eb6ee53494e8d45b0'),
+                calldata: [
+                  Felt.fromHexString('0x5')
+                ]),
+            blockId: BlockId.blockHash(Felt.fromHexString(
+                '0x000000000000000000000000000000000000000000000000000000000000000')));
+        response.when(
+            error: (error) {
+              expect(error.code, 24);
+              expect(error.message, contains("Invalid block id"));
+            },
+            result: (result) => fail("Should fail"));
+      });
+
+      test('calls a read-only method with invalid message selector', () async {
+        final response = await provider.call(
+            request: FunctionCall(
+                contractAddress: Felt.fromHexString(
+                    '0x019245f0f49d23f2379d3e3f20d1f3f46207d1c4a1d09cac8dd50e8d528aabe1'),
+                entryPointSelector: Felt.fromHexString('0x0000000000000000000000000000000000000000000000000000000000000000'),
+                calldata: [
+                  Felt.fromHexString('0x5')
+                ]),
+            blockId: BlockId.blockHash(Felt.fromHexString(
+                '0x7d328a71faf48c5c3857e99f20a77b18522480956d1cd5bff1ff2df3c8b427b')));
+        response.when(
+            error: (error) {
+              expect(error.code, 21);
+              expect(error.message, contains("Invalid message selector"));
+            },
+            result: (result) => fail("Should fail"));
       });
     });
 
