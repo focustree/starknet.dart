@@ -19,17 +19,30 @@ void main() {
       });
     });
 
-    group('getBlockWithTxHashes', () {
-      test('returns an unimplemented method error', () async {
-        final response = await provider.getBlockWithTxHashes('1');
+    group('getBlockWithTxnHashes', () {
+      test(
+          'returns block information with transaction hashes from the Block Id',
+          () async {
+        final response =
+            await provider.getBlockWithTxHashes(BlockId.blockNumber(41000));
         response.when(
-            result: () => fail('Expected to return an unimplemented error'),
+            result: (result) => expect(
+                result.parentHash,
+                Felt.fromHexString(
+                    '0x61f493df4897c86692eae4196f9fa05448bd44e8065e4b289a5236814e7fb8d')),
+            error: (error) => fail("Shouldn't fail"));
+      });
+
+      test(
+          'returns block information with transaction hashes from the Block Id',
+          () async {
+        final response =
+            await provider.getBlockWithTxHashes(BlockId.blockNumber(-1));
+        response.when(
+            result: (result) => fail("Should fail"),
             error: (error) {
-              expect(error.code, equals(-32601));
-              expect(
-                  error.message,
-                  contains(
-                      'method \'starknet_getBlockWithTxHashes\' not found'));
+              expect(error.code, -32602);
+              expect(error.message, contains("invalid value: integer `-1`"));
             });
       });
     });

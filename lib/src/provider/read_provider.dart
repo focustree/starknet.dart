@@ -13,8 +13,8 @@ abstract class ReadProvider {
 
   /// Gets block information with transaction hashes given the block id
   ///
-  /// [Spec](https://github.com/starkware-libs/starknet-specs/blob/3d3b2d7ad6899f64043c0deaa8a40d3d8c9b1788/api/starknet_api_openrpc.json#L10-L42)
-  Future<GetBlockWithTxHashes> getBlockWithTxHashes(String blockId);
+  /// [Spec](https://github.com/starkware-libs/starknet-specs/blob/v0.1.0/api/starknet_api_openrpc.json#L10-L42)
+  Future<GetBlockWithTxHashes> getBlockWithTxHashes(BlockId blockId);
 
   /// Calls a starknet function without creating a starknet transaction
   ///
@@ -120,10 +120,12 @@ class JsonRpcReadProvider implements ReadProvider {
   }
 
   @override
-  Future<GetBlockWithTxHashes> getBlockWithTxHashes(String blockId) async {
+  Future<GetBlockWithTxHashes> getBlockWithTxHashes(BlockId blockId) async {
     return callRpcEndpoint(
-            nodeUri: nodeUri, method: 'starknet_getBlockWithTxHashes')
-        .then(GetBlockWithTxHashes.fromJson);
+      nodeUri: nodeUri,
+      method: 'starknet_getBlockWithTxHashes',
+      params: [blockId],
+    ).then(GetBlockWithTxHashes.fromJson);
   }
 
   @override
