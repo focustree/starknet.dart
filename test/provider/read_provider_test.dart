@@ -77,6 +77,7 @@ void main() {
           contractAddress: Felt.fromHexString(
               '0x0335c0d0c2b25730b7ed46e0fceed2a55d7743e300f393535c88470e5e15ae64'),
           key: getSelectorByName('ERC20_symbol'),
+          blockId: BlockId.blockTag("latest"),
         );
 
         response.when(
@@ -91,6 +92,7 @@ void main() {
           contractAddress: Felt.fromHexString(
               '0x0000000000000000000000000000000000000000000000000000000000000000'),
           key: getSelectorByName('ERC20_symbol'),
+          blockId: BlockId.blockTag("latest"),
         );
 
         response.when(error: (error) {

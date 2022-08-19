@@ -24,8 +24,11 @@ abstract class ReadProvider {
   /// Get the value of the storage at the given address and key
   ///
   /// [Spec](https://github.com/starkware-libs/starknet-specs/blob/3d3b2d7ad6899f64043c0deaa8a40d3d8c9b1788/api/starknet_api_openrpc.json#L103-L149)
-  Future<GetStorage> getStorageAt(
-      {required Felt contractAddress, required Felt key, String blockId});
+  Future<GetStorage> getStorageAt({
+    required Felt contractAddress,
+    required Felt key,
+    required BlockId blockId,
+  });
 
   /// Gets the details and status of a submitted transaction from hash of a transaction.
   ///
@@ -136,7 +139,7 @@ class JsonRpcReadProvider implements ReadProvider {
   Future<GetStorage> getStorageAt({
     required Felt contractAddress,
     required Felt key,
-    String blockId = 'latest',
+    required BlockId blockId,
   }) async {
     return callRpcEndpoint(
       nodeUri: nodeUri,
