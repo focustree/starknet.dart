@@ -1,9 +1,4 @@
-import 'package:starknet/src/provider/model/get_block_txn_count.dart';
 import 'package:starknet/starknet.dart';
-
-import 'model/get_block_txn_count.dart';
-import 'model/get_block_with_txs.dart';
-
 abstract class ReadProvider {
   /// Gets the most recent accepted block number
   ///
