@@ -100,6 +100,11 @@ abstract class ReadProvider {
     required Felt contractAddress,
     required BlockId blockId,
   });
+
+  /// Gets all events matching the given filter.
+  ///
+  /// [Spec](https://github.com/starkware-libs/starknet-specs/blob/v0.1.0/api/starknet_api_openrpc.json#L570-L627)
+  Future<GetEvents> getEvents(GetEventsRequest request);
 }
 
 class JsonRpcReadProvider implements ReadProvider {
@@ -261,6 +266,15 @@ class JsonRpcReadProvider implements ReadProvider {
       method: 'starknet_getClassAt',
       params: [blockId, contractAddress],
     ).then(GetClass.fromJson);
+  }
+
+  @override
+  Future<GetEvents> getEvents(GetEventsRequest request) {
+    return callRpcEndpoint(
+      nodeUri: nodeUri,
+      method: 'starknet_getEvents',
+      params: [request],
+    ).then(GetEvents.fromJson);
   }
 
   static final devnet = JsonRpcReadProvider(nodeUri: devnetUri);
