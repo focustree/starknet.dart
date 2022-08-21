@@ -10,6 +10,7 @@ export 'function_call.dart';
 export 'get_block_with_tx_hashes.dart';
 export 'get_class.dart';
 export 'get_class_hash_at.dart';
+export 'get_events.dart';
 export 'get_nonce.dart';
 export 'get_state_update.dart';
 export 'get_storage.dart';
