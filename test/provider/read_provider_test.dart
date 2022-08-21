@@ -364,11 +364,11 @@ void main() {
             error: (error) => fail("Shouldn't fail"),
             result: (result) {
               final entry_points = result.entryPointsByType;
-              expect(entry_points.CONSTRUCTOR.length, 0);
-              expect(entry_points.L1_HANDLER.length, 0);
-              expect(entry_points.EXTERNAL.length, 2);
-              expect(entry_points.EXTERNAL[0].offset, "0x3a");
-              expect(entry_points.EXTERNAL[1].offset, "0x5b");
+              expect(entry_points.constructor.length, 0);
+              expect(entry_points.l1Handler.length, 0);
+              expect(entry_points.external.length, 2);
+              expect(entry_points.external[0].offset, "0x3a");
+              expect(entry_points.external[1].offset, "0x5b");
             });
       });
 
@@ -384,11 +384,11 @@ void main() {
           expect(error.code, equals(-32602));
         }, result: (result) {
           final entry_points = result.entryPointsByType;
-          expect(entry_points.CONSTRUCTOR.length, 0);
-          expect(entry_points.L1_HANDLER.length, 0);
-          expect(entry_points.EXTERNAL.length, 2);
-          expect(entry_points.EXTERNAL[0].offset, "0x3a");
-          expect(entry_points.EXTERNAL[1].offset, "0x5b");
+          expect(entry_points.constructor.length, 0);
+          expect(entry_points.l1Handler.length, 0);
+          expect(entry_points.external.length, 2);
+          expect(entry_points.external[0].offset, "0x3a");
+          expect(entry_points.external[1].offset, "0x5b");
         });
       });
     });

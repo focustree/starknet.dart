@@ -9,11 +9,14 @@ class Signer {
     required List<FunctionCall> transactions,
     required Felt contractAddress,
     required Felt chainId,
-    int nonce = 0,
-    int maxFee = 0,
+    Felt? nonce,
+    Felt? maxFee,
     String entryPointSelectorName = "__execute__",
   }) {
-    final calldata = computeCalldata(functionCalls: transactions, nonce: nonce);
+    nonce = nonce ?? Felt.fromInt(0);
+    maxFee = maxFee ?? defaultMaxFee;
+    final calldata =
+        functionCallsToCalldata(functionCalls: transactions, nonce: nonce);
 
     final transactionHash = calculateTransactionHashCommon(
         txHashPrefix: TransactionHashPrefix.invoke.toBigInt(),
@@ -21,7 +24,7 @@ class Signer {
         entryPointSelector:
             getSelectorByName(entryPointSelectorName).toBigInt(),
         calldata: toBigIntList(calldata),
-        maxFee: BigInt.from(maxFee),
+        maxFee: maxFee.toBigInt(),
         chainId: chainId.toBigInt());
 
     final signature = starknet_sign(
