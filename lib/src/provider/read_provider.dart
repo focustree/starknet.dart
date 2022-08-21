@@ -1,4 +1,5 @@
 import 'package:starknet/starknet.dart';
+
 abstract class ReadProvider {
   /// Gets the most recent accepted block number
   ///
@@ -140,8 +141,7 @@ class JsonRpcReadProvider implements ReadProvider {
 
   @override
   Future<GetBlockWithTxs> getBlockWithTxs(BlockId blockId) async {
-    return callRpcEndpoint(
-            nodeUri: nodeUri, method: 'starknet_getBlockWithTxs')
+    return callRpcEndpoint(nodeUri: nodeUri, method: 'starknet_getBlockWithTxs')
         .then(GetBlockWithTxs.fromJson);
   }
 

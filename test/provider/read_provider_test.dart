@@ -327,8 +327,10 @@ void main() {
         response.when(
           error: (error) {
             expect(error.code, equals(-32601));
-            expect(error.message,
-                contains('method \'starknet_getBlockTransactionCount\' not found'));
+            expect(
+                error.message,
+                contains(
+                    'method \'starknet_getBlockTransactionCount\' not found'));
           },
           result: (_) => fail('Expected to return an unimplemented error'),
         );
