@@ -1,5 +1,3 @@
-import 'package:starknet/src/provider/model/get_block_txn_count.dart';
-import 'package:starknet/src/provider/model/get_block_with_txs.dart';
 import 'package:starknet/starknet.dart';
 import 'package:test/test.dart';
 
