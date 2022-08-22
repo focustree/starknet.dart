@@ -31,19 +31,19 @@ BlockHashAndNumber _$BlockHashAndNumberFromJson(Map<String, dynamic> json) {
 mixin _$BlockHashAndNumber {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(Felt blockHash, int blockNumber) result,
+    required TResult Function(BlockHashAndNumberResponseResult result) result,
     required TResult Function(JsonRpcApiError error) error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(Felt blockHash, int blockNumber)? result,
+    TResult Function(BlockHashAndNumberResponseResult result)? result,
     TResult Function(JsonRpcApiError error)? error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(Felt blockHash, int blockNumber)? result,
+    TResult Function(BlockHashAndNumberResponseResult result)? result,
     TResult Function(JsonRpcApiError error)? error,
     required TResult orElse(),
   }) =>
@@ -92,7 +92,9 @@ abstract class _$$BlockHashAndNumberResultCopyWith<$Res> {
   factory _$$BlockHashAndNumberResultCopyWith(_$BlockHashAndNumberResult value,
           $Res Function(_$BlockHashAndNumberResult) then) =
       __$$BlockHashAndNumberResultCopyWithImpl<$Res>;
-  $Res call({Felt blockHash, int blockNumber});
+  $Res call({BlockHashAndNumberResponseResult result});
+
+  $BlockHashAndNumberResponseResultCopyWith<$Res> get result;
 }
 
 /// @nodoc
@@ -109,43 +111,43 @@ class __$$BlockHashAndNumberResultCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? blockHash = freezed,
-    Object? blockNumber = freezed,
+    Object? result = freezed,
   }) {
     return _then(_$BlockHashAndNumberResult(
-      blockHash: blockHash == freezed
-          ? _value.blockHash
-          : blockHash // ignore: cast_nullable_to_non_nullable
-              as Felt,
-      blockNumber: blockNumber == freezed
-          ? _value.blockNumber
-          : blockNumber // ignore: cast_nullable_to_non_nullable
-              as int,
+      result: result == freezed
+          ? _value.result
+          : result // ignore: cast_nullable_to_non_nullable
+              as BlockHashAndNumberResponseResult,
     ));
+  }
+
+  @override
+  $BlockHashAndNumberResponseResultCopyWith<$Res> get result {
+    return $BlockHashAndNumberResponseResultCopyWith<$Res>(_value.result,
+        (value) {
+      return _then(_value.copyWith(result: value));
+    });
   }
 }
 
 /// @nodoc
 @JsonSerializable()
 class _$BlockHashAndNumberResult implements BlockHashAndNumberResult {
-  const _$BlockHashAndNumberResult(
-      {required this.blockHash, required this.blockNumber, final String? $type})
+  const _$BlockHashAndNumberResult({required this.result, final String? $type})
       : $type = $type ?? 'result';
 
   factory _$BlockHashAndNumberResult.fromJson(Map<String, dynamic> json) =>
       _$$BlockHashAndNumberResultFromJson(json);
 
   @override
-  final Felt blockHash;
-  @override
-  final int blockNumber;
+  final BlockHashAndNumberResponseResult result;
 
   @JsonKey(name: 'runtimeType')
   final String $type;
 
   @override
   String toString() {
-    return 'BlockHashAndNumber.result(blockHash: $blockHash, blockNumber: $blockNumber)';
+    return 'BlockHashAndNumber.result(result: $result)';
   }
 
   @override
@@ -153,17 +155,13 @@ class _$BlockHashAndNumberResult implements BlockHashAndNumberResult {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$BlockHashAndNumberResult &&
-            const DeepCollectionEquality().equals(other.blockHash, blockHash) &&
-            const DeepCollectionEquality()
-                .equals(other.blockNumber, blockNumber));
+            const DeepCollectionEquality().equals(other.result, result));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(blockHash),
-      const DeepCollectionEquality().hash(blockNumber));
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(result));
 
   @JsonKey(ignore: true)
   @override
@@ -175,30 +173,30 @@ class _$BlockHashAndNumberResult implements BlockHashAndNumberResult {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(Felt blockHash, int blockNumber) result,
+    required TResult Function(BlockHashAndNumberResponseResult result) result,
     required TResult Function(JsonRpcApiError error) error,
   }) {
-    return result(blockHash, blockNumber);
+    return result(this.result);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(Felt blockHash, int blockNumber)? result,
+    TResult Function(BlockHashAndNumberResponseResult result)? result,
     TResult Function(JsonRpcApiError error)? error,
   }) {
-    return result?.call(blockHash, blockNumber);
+    return result?.call(this.result);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(Felt blockHash, int blockNumber)? result,
+    TResult Function(BlockHashAndNumberResponseResult result)? result,
     TResult Function(JsonRpcApiError error)? error,
     required TResult orElse(),
   }) {
     if (result != null) {
-      return result(blockHash, blockNumber);
+      return result(this.result);
     }
     return orElse();
   }
@@ -244,14 +242,13 @@ class _$BlockHashAndNumberResult implements BlockHashAndNumberResult {
 
 abstract class BlockHashAndNumberResult implements BlockHashAndNumber {
   const factory BlockHashAndNumberResult(
-      {required final Felt blockHash,
-      required final int blockNumber}) = _$BlockHashAndNumberResult;
+          {required final BlockHashAndNumberResponseResult result}) =
+      _$BlockHashAndNumberResult;
 
   factory BlockHashAndNumberResult.fromJson(Map<String, dynamic> json) =
       _$BlockHashAndNumberResult.fromJson;
 
-  Felt get blockHash;
-  int get blockNumber;
+  BlockHashAndNumberResponseResult get result;
   @JsonKey(ignore: true)
   _$$BlockHashAndNumberResultCopyWith<_$BlockHashAndNumberResult>
       get copyWith => throw _privateConstructorUsedError;
@@ -341,7 +338,7 @@ class _$BlockHashAndNumberError implements BlockHashAndNumberError {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(Felt blockHash, int blockNumber) result,
+    required TResult Function(BlockHashAndNumberResponseResult result) result,
     required TResult Function(JsonRpcApiError error) error,
   }) {
     return error(this.error);
@@ -350,7 +347,7 @@ class _$BlockHashAndNumberError implements BlockHashAndNumberError {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(Felt blockHash, int blockNumber)? result,
+    TResult Function(BlockHashAndNumberResponseResult result)? result,
     TResult Function(JsonRpcApiError error)? error,
   }) {
     return error?.call(this.error);
@@ -359,7 +356,7 @@ class _$BlockHashAndNumberError implements BlockHashAndNumberError {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(Felt blockHash, int blockNumber)? result,
+    TResult Function(BlockHashAndNumberResponseResult result)? result,
     TResult Function(JsonRpcApiError error)? error,
     required TResult orElse(),
   }) {
@@ -419,4 +416,171 @@ abstract class BlockHashAndNumberError implements BlockHashAndNumber {
   @JsonKey(ignore: true)
   _$$BlockHashAndNumberErrorCopyWith<_$BlockHashAndNumberError> get copyWith =>
       throw _privateConstructorUsedError;
+}
+
+BlockHashAndNumberResponseResult _$BlockHashAndNumberResponseResultFromJson(
+    Map<String, dynamic> json) {
+  return _BlockHashAndNumberResponseResult.fromJson(json);
+}
+
+/// @nodoc
+mixin _$BlockHashAndNumberResponseResult {
+  Felt get blockHash => throw _privateConstructorUsedError;
+  int get blockNumber => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $BlockHashAndNumberResponseResultCopyWith<BlockHashAndNumberResponseResult>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $BlockHashAndNumberResponseResultCopyWith<$Res> {
+  factory $BlockHashAndNumberResponseResultCopyWith(
+          BlockHashAndNumberResponseResult value,
+          $Res Function(BlockHashAndNumberResponseResult) then) =
+      _$BlockHashAndNumberResponseResultCopyWithImpl<$Res>;
+  $Res call({Felt blockHash, int blockNumber});
+}
+
+/// @nodoc
+class _$BlockHashAndNumberResponseResultCopyWithImpl<$Res>
+    implements $BlockHashAndNumberResponseResultCopyWith<$Res> {
+  _$BlockHashAndNumberResponseResultCopyWithImpl(this._value, this._then);
+
+  final BlockHashAndNumberResponseResult _value;
+  // ignore: unused_field
+  final $Res Function(BlockHashAndNumberResponseResult) _then;
+
+  @override
+  $Res call({
+    Object? blockHash = freezed,
+    Object? blockNumber = freezed,
+  }) {
+    return _then(_value.copyWith(
+      blockHash: blockHash == freezed
+          ? _value.blockHash
+          : blockHash // ignore: cast_nullable_to_non_nullable
+              as Felt,
+      blockNumber: blockNumber == freezed
+          ? _value.blockNumber
+          : blockNumber // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
+  }
+}
+
+/// @nodoc
+abstract class _$$_BlockHashAndNumberResponseResultCopyWith<$Res>
+    implements $BlockHashAndNumberResponseResultCopyWith<$Res> {
+  factory _$$_BlockHashAndNumberResponseResultCopyWith(
+          _$_BlockHashAndNumberResponseResult value,
+          $Res Function(_$_BlockHashAndNumberResponseResult) then) =
+      __$$_BlockHashAndNumberResponseResultCopyWithImpl<$Res>;
+  @override
+  $Res call({Felt blockHash, int blockNumber});
+}
+
+/// @nodoc
+class __$$_BlockHashAndNumberResponseResultCopyWithImpl<$Res>
+    extends _$BlockHashAndNumberResponseResultCopyWithImpl<$Res>
+    implements _$$_BlockHashAndNumberResponseResultCopyWith<$Res> {
+  __$$_BlockHashAndNumberResponseResultCopyWithImpl(
+      _$_BlockHashAndNumberResponseResult _value,
+      $Res Function(_$_BlockHashAndNumberResponseResult) _then)
+      : super(_value, (v) => _then(v as _$_BlockHashAndNumberResponseResult));
+
+  @override
+  _$_BlockHashAndNumberResponseResult get _value =>
+      super._value as _$_BlockHashAndNumberResponseResult;
+
+  @override
+  $Res call({
+    Object? blockHash = freezed,
+    Object? blockNumber = freezed,
+  }) {
+    return _then(_$_BlockHashAndNumberResponseResult(
+      blockHash: blockHash == freezed
+          ? _value.blockHash
+          : blockHash // ignore: cast_nullable_to_non_nullable
+              as Felt,
+      blockNumber: blockNumber == freezed
+          ? _value.blockNumber
+          : blockNumber // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$_BlockHashAndNumberResponseResult
+    implements _BlockHashAndNumberResponseResult {
+  const _$_BlockHashAndNumberResponseResult(
+      {required this.blockHash, required this.blockNumber});
+
+  factory _$_BlockHashAndNumberResponseResult.fromJson(
+          Map<String, dynamic> json) =>
+      _$$_BlockHashAndNumberResponseResultFromJson(json);
+
+  @override
+  final Felt blockHash;
+  @override
+  final int blockNumber;
+
+  @override
+  String toString() {
+    return 'BlockHashAndNumberResponseResult(blockHash: $blockHash, blockNumber: $blockNumber)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_BlockHashAndNumberResponseResult &&
+            const DeepCollectionEquality().equals(other.blockHash, blockHash) &&
+            const DeepCollectionEquality()
+                .equals(other.blockNumber, blockNumber));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(blockHash),
+      const DeepCollectionEquality().hash(blockNumber));
+
+  @JsonKey(ignore: true)
+  @override
+  _$$_BlockHashAndNumberResponseResultCopyWith<
+          _$_BlockHashAndNumberResponseResult>
+      get copyWith => __$$_BlockHashAndNumberResponseResultCopyWithImpl<
+          _$_BlockHashAndNumberResponseResult>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_BlockHashAndNumberResponseResultToJson(
+      this,
+    );
+  }
+}
+
+abstract class _BlockHashAndNumberResponseResult
+    implements BlockHashAndNumberResponseResult {
+  const factory _BlockHashAndNumberResponseResult(
+      {required final Felt blockHash,
+      required final int blockNumber}) = _$_BlockHashAndNumberResponseResult;
+
+  factory _BlockHashAndNumberResponseResult.fromJson(
+      Map<String, dynamic> json) = _$_BlockHashAndNumberResponseResult.fromJson;
+
+  @override
+  Felt get blockHash;
+  @override
+  int get blockNumber;
+  @override
+  @JsonKey(ignore: true)
+  _$$_BlockHashAndNumberResponseResultCopyWith<
+          _$_BlockHashAndNumberResponseResult>
+      get copyWith => throw _privateConstructorUsedError;
 }

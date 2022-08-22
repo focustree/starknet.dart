@@ -431,13 +431,13 @@ Txn _$TxnFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$Txn {
 // start of COMMON_TXN_PROPERTIES
-  Felt? get txnHash => throw _privateConstructorUsedError;
+  Felt? get transactionHash => throw _privateConstructorUsedError;
   String? get version => throw _privateConstructorUsedError;
   String? get type => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(
-            Felt? txnHash,
+            Felt? transactionHash,
             Felt? maxFee,
             String? version,
             List<Felt>? signature,
@@ -448,7 +448,7 @@ mixin _$Txn {
             List<Felt>? calldata)
         invokeTxn,
     required TResult Function(
-            Felt? txnHash,
+            Felt? transactionHash,
             Felt? maxFee,
             String? version,
             List<Felt>? signature,
@@ -458,7 +458,7 @@ mixin _$Txn {
             Felt? senderAddress)
         declareTxn,
     required TResult Function(
-            Felt? txnHash,
+            Felt? transactionHash,
             Felt? classHash,
             String? version,
             String? type,
@@ -471,7 +471,7 @@ mixin _$Txn {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(
-            Felt? txnHash,
+            Felt? transactionHash,
             Felt? maxFee,
             String? version,
             List<Felt>? signature,
@@ -482,7 +482,7 @@ mixin _$Txn {
             List<Felt>? calldata)?
         invokeTxn,
     TResult Function(
-            Felt? txnHash,
+            Felt? transactionHash,
             Felt? maxFee,
             String? version,
             List<Felt>? signature,
@@ -492,7 +492,7 @@ mixin _$Txn {
             Felt? senderAddress)?
         declareTxn,
     TResult Function(
-            Felt? txnHash,
+            Felt? transactionHash,
             Felt? classHash,
             String? version,
             String? type,
@@ -505,7 +505,7 @@ mixin _$Txn {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(
-            Felt? txnHash,
+            Felt? transactionHash,
             Felt? maxFee,
             String? version,
             List<Felt>? signature,
@@ -516,7 +516,7 @@ mixin _$Txn {
             List<Felt>? calldata)?
         invokeTxn,
     TResult Function(
-            Felt? txnHash,
+            Felt? transactionHash,
             Felt? maxFee,
             String? version,
             List<Felt>? signature,
@@ -526,7 +526,7 @@ mixin _$Txn {
             Felt? senderAddress)?
         declareTxn,
     TResult Function(
-            Felt? txnHash,
+            Felt? transactionHash,
             Felt? classHash,
             String? version,
             String? type,
@@ -568,7 +568,7 @@ mixin _$Txn {
 abstract class $TxnCopyWith<$Res> {
   factory $TxnCopyWith(Txn value, $Res Function(Txn) then) =
       _$TxnCopyWithImpl<$Res>;
-  $Res call({Felt? txnHash, String? version, String? type});
+  $Res call({Felt? transactionHash, String? version, String? type});
 }
 
 /// @nodoc
@@ -581,14 +581,14 @@ class _$TxnCopyWithImpl<$Res> implements $TxnCopyWith<$Res> {
 
   @override
   $Res call({
-    Object? txnHash = freezed,
+    Object? transactionHash = freezed,
     Object? version = freezed,
     Object? type = freezed,
   }) {
     return _then(_value.copyWith(
-      txnHash: txnHash == freezed
-          ? _value.txnHash
-          : txnHash // ignore: cast_nullable_to_non_nullable
+      transactionHash: transactionHash == freezed
+          ? _value.transactionHash
+          : transactionHash // ignore: cast_nullable_to_non_nullable
               as Felt?,
       version: version == freezed
           ? _value.version
@@ -609,7 +609,7 @@ abstract class _$$InvokeTxnCopyWith<$Res> implements $TxnCopyWith<$Res> {
       __$$InvokeTxnCopyWithImpl<$Res>;
   @override
   $Res call(
-      {Felt? txnHash,
+      {Felt? transactionHash,
       Felt? maxFee,
       String? version,
       List<Felt>? signature,
@@ -632,7 +632,7 @@ class __$$InvokeTxnCopyWithImpl<$Res> extends _$TxnCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? txnHash = freezed,
+    Object? transactionHash = freezed,
     Object? maxFee = freezed,
     Object? version = freezed,
     Object? signature = freezed,
@@ -643,9 +643,9 @@ class __$$InvokeTxnCopyWithImpl<$Res> extends _$TxnCopyWithImpl<$Res>
     Object? calldata = freezed,
   }) {
     return _then(_$InvokeTxn(
-      txnHash: txnHash == freezed
-          ? _value.txnHash
-          : txnHash // ignore: cast_nullable_to_non_nullable
+      transactionHash: transactionHash == freezed
+          ? _value.transactionHash
+          : transactionHash // ignore: cast_nullable_to_non_nullable
               as Felt?,
       maxFee: maxFee == freezed
           ? _value.maxFee
@@ -687,7 +687,7 @@ class __$$InvokeTxnCopyWithImpl<$Res> extends _$TxnCopyWithImpl<$Res>
 @JsonSerializable()
 class _$InvokeTxn implements InvokeTxn {
   const _$InvokeTxn(
-      {required this.txnHash,
+      {required this.transactionHash,
       required this.maxFee,
       required this.version,
       required final List<Felt>? signature,
@@ -706,7 +706,7 @@ class _$InvokeTxn implements InvokeTxn {
 
 // start of COMMON_TXN_PROPERTIES
   @override
-  final Felt? txnHash;
+  final Felt? transactionHash;
   @override
   final Felt? maxFee;
   @override
@@ -744,7 +744,7 @@ class _$InvokeTxn implements InvokeTxn {
 
   @override
   String toString() {
-    return 'Txn.invokeTxn(txnHash: $txnHash, maxFee: $maxFee, version: $version, signature: $signature, nonce: $nonce, type: $type, contractAddress: $contractAddress, entryPointSelector: $entryPointSelector, calldata: $calldata)';
+    return 'Txn.invokeTxn(transactionHash: $transactionHash, maxFee: $maxFee, version: $version, signature: $signature, nonce: $nonce, type: $type, contractAddress: $contractAddress, entryPointSelector: $entryPointSelector, calldata: $calldata)';
   }
 
   @override
@@ -752,7 +752,8 @@ class _$InvokeTxn implements InvokeTxn {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$InvokeTxn &&
-            const DeepCollectionEquality().equals(other.txnHash, txnHash) &&
+            const DeepCollectionEquality()
+                .equals(other.transactionHash, transactionHash) &&
             const DeepCollectionEquality().equals(other.maxFee, maxFee) &&
             const DeepCollectionEquality().equals(other.version, version) &&
             const DeepCollectionEquality()
@@ -770,7 +771,7 @@ class _$InvokeTxn implements InvokeTxn {
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      const DeepCollectionEquality().hash(txnHash),
+      const DeepCollectionEquality().hash(transactionHash),
       const DeepCollectionEquality().hash(maxFee),
       const DeepCollectionEquality().hash(version),
       const DeepCollectionEquality().hash(_signature),
@@ -789,7 +790,7 @@ class _$InvokeTxn implements InvokeTxn {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(
-            Felt? txnHash,
+            Felt? transactionHash,
             Felt? maxFee,
             String? version,
             List<Felt>? signature,
@@ -800,7 +801,7 @@ class _$InvokeTxn implements InvokeTxn {
             List<Felt>? calldata)
         invokeTxn,
     required TResult Function(
-            Felt? txnHash,
+            Felt? transactionHash,
             Felt? maxFee,
             String? version,
             List<Felt>? signature,
@@ -810,7 +811,7 @@ class _$InvokeTxn implements InvokeTxn {
             Felt? senderAddress)
         declareTxn,
     required TResult Function(
-            Felt? txnHash,
+            Felt? transactionHash,
             Felt? classHash,
             String? version,
             String? type,
@@ -819,7 +820,7 @@ class _$InvokeTxn implements InvokeTxn {
             List<Felt>? constructorCalldata)
         deployTxn,
   }) {
-    return invokeTxn(txnHash, maxFee, version, signature, nonce, type,
+    return invokeTxn(transactionHash, maxFee, version, signature, nonce, type,
         contractAddress, entryPointSelector, calldata);
   }
 
@@ -827,7 +828,7 @@ class _$InvokeTxn implements InvokeTxn {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(
-            Felt? txnHash,
+            Felt? transactionHash,
             Felt? maxFee,
             String? version,
             List<Felt>? signature,
@@ -838,7 +839,7 @@ class _$InvokeTxn implements InvokeTxn {
             List<Felt>? calldata)?
         invokeTxn,
     TResult Function(
-            Felt? txnHash,
+            Felt? transactionHash,
             Felt? maxFee,
             String? version,
             List<Felt>? signature,
@@ -848,7 +849,7 @@ class _$InvokeTxn implements InvokeTxn {
             Felt? senderAddress)?
         declareTxn,
     TResult Function(
-            Felt? txnHash,
+            Felt? transactionHash,
             Felt? classHash,
             String? version,
             String? type,
@@ -857,15 +858,15 @@ class _$InvokeTxn implements InvokeTxn {
             List<Felt>? constructorCalldata)?
         deployTxn,
   }) {
-    return invokeTxn?.call(txnHash, maxFee, version, signature, nonce, type,
-        contractAddress, entryPointSelector, calldata);
+    return invokeTxn?.call(transactionHash, maxFee, version, signature, nonce,
+        type, contractAddress, entryPointSelector, calldata);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(
-            Felt? txnHash,
+            Felt? transactionHash,
             Felt? maxFee,
             String? version,
             List<Felt>? signature,
@@ -876,7 +877,7 @@ class _$InvokeTxn implements InvokeTxn {
             List<Felt>? calldata)?
         invokeTxn,
     TResult Function(
-            Felt? txnHash,
+            Felt? transactionHash,
             Felt? maxFee,
             String? version,
             List<Felt>? signature,
@@ -886,7 +887,7 @@ class _$InvokeTxn implements InvokeTxn {
             Felt? senderAddress)?
         declareTxn,
     TResult Function(
-            Felt? txnHash,
+            Felt? transactionHash,
             Felt? classHash,
             String? version,
             String? type,
@@ -897,7 +898,7 @@ class _$InvokeTxn implements InvokeTxn {
     required TResult orElse(),
   }) {
     if (invokeTxn != null) {
-      return invokeTxn(txnHash, maxFee, version, signature, nonce, type,
+      return invokeTxn(transactionHash, maxFee, version, signature, nonce, type,
           contractAddress, entryPointSelector, calldata);
     }
     return orElse();
@@ -947,7 +948,7 @@ class _$InvokeTxn implements InvokeTxn {
 
 abstract class InvokeTxn implements Txn {
   const factory InvokeTxn(
-      {required final Felt? txnHash,
+      {required final Felt? transactionHash,
       required final Felt? maxFee,
       required final String? version,
       required final List<Felt>? signature,
@@ -960,7 +961,7 @@ abstract class InvokeTxn implements Txn {
   factory InvokeTxn.fromJson(Map<String, dynamic> json) = _$InvokeTxn.fromJson;
 
   @override // start of COMMON_TXN_PROPERTIES
-  Felt? get txnHash;
+  Felt? get transactionHash;
   Felt? get maxFee;
   @override
   String? get version;
@@ -985,7 +986,7 @@ abstract class _$$DeclareTxnCopyWith<$Res> implements $TxnCopyWith<$Res> {
       __$$DeclareTxnCopyWithImpl<$Res>;
   @override
   $Res call(
-      {Felt? txnHash,
+      {Felt? transactionHash,
       Felt? maxFee,
       String? version,
       List<Felt>? signature,
@@ -1007,7 +1008,7 @@ class __$$DeclareTxnCopyWithImpl<$Res> extends _$TxnCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? txnHash = freezed,
+    Object? transactionHash = freezed,
     Object? maxFee = freezed,
     Object? version = freezed,
     Object? signature = freezed,
@@ -1017,9 +1018,9 @@ class __$$DeclareTxnCopyWithImpl<$Res> extends _$TxnCopyWithImpl<$Res>
     Object? senderAddress = freezed,
   }) {
     return _then(_$DeclareTxn(
-      txnHash: txnHash == freezed
-          ? _value.txnHash
-          : txnHash // ignore: cast_nullable_to_non_nullable
+      transactionHash: transactionHash == freezed
+          ? _value.transactionHash
+          : transactionHash // ignore: cast_nullable_to_non_nullable
               as Felt?,
       maxFee: maxFee == freezed
           ? _value.maxFee
@@ -1057,7 +1058,7 @@ class __$$DeclareTxnCopyWithImpl<$Res> extends _$TxnCopyWithImpl<$Res>
 @JsonSerializable()
 class _$DeclareTxn implements DeclareTxn {
   const _$DeclareTxn(
-      {required this.txnHash,
+      {required this.transactionHash,
       required this.maxFee,
       required this.version,
       required final List<Felt>? signature,
@@ -1074,7 +1075,7 @@ class _$DeclareTxn implements DeclareTxn {
 
 // start of COMMON_TXN_PROPERTIES
   @override
-  final Felt? txnHash;
+  final Felt? transactionHash;
   @override
   final Felt? maxFee;
   @override
@@ -1103,7 +1104,7 @@ class _$DeclareTxn implements DeclareTxn {
 
   @override
   String toString() {
-    return 'Txn.declareTxn(txnHash: $txnHash, maxFee: $maxFee, version: $version, signature: $signature, nonce: $nonce, type: $type, classHash: $classHash, senderAddress: $senderAddress)';
+    return 'Txn.declareTxn(transactionHash: $transactionHash, maxFee: $maxFee, version: $version, signature: $signature, nonce: $nonce, type: $type, classHash: $classHash, senderAddress: $senderAddress)';
   }
 
   @override
@@ -1111,7 +1112,8 @@ class _$DeclareTxn implements DeclareTxn {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$DeclareTxn &&
-            const DeepCollectionEquality().equals(other.txnHash, txnHash) &&
+            const DeepCollectionEquality()
+                .equals(other.transactionHash, transactionHash) &&
             const DeepCollectionEquality().equals(other.maxFee, maxFee) &&
             const DeepCollectionEquality().equals(other.version, version) &&
             const DeepCollectionEquality()
@@ -1127,7 +1129,7 @@ class _$DeclareTxn implements DeclareTxn {
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      const DeepCollectionEquality().hash(txnHash),
+      const DeepCollectionEquality().hash(transactionHash),
       const DeepCollectionEquality().hash(maxFee),
       const DeepCollectionEquality().hash(version),
       const DeepCollectionEquality().hash(_signature),
@@ -1145,7 +1147,7 @@ class _$DeclareTxn implements DeclareTxn {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(
-            Felt? txnHash,
+            Felt? transactionHash,
             Felt? maxFee,
             String? version,
             List<Felt>? signature,
@@ -1156,7 +1158,7 @@ class _$DeclareTxn implements DeclareTxn {
             List<Felt>? calldata)
         invokeTxn,
     required TResult Function(
-            Felt? txnHash,
+            Felt? transactionHash,
             Felt? maxFee,
             String? version,
             List<Felt>? signature,
@@ -1166,7 +1168,7 @@ class _$DeclareTxn implements DeclareTxn {
             Felt? senderAddress)
         declareTxn,
     required TResult Function(
-            Felt? txnHash,
+            Felt? transactionHash,
             Felt? classHash,
             String? version,
             String? type,
@@ -1175,7 +1177,7 @@ class _$DeclareTxn implements DeclareTxn {
             List<Felt>? constructorCalldata)
         deployTxn,
   }) {
-    return declareTxn(txnHash, maxFee, version, signature, nonce, type,
+    return declareTxn(transactionHash, maxFee, version, signature, nonce, type,
         classHash, senderAddress);
   }
 
@@ -1183,7 +1185,7 @@ class _$DeclareTxn implements DeclareTxn {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(
-            Felt? txnHash,
+            Felt? transactionHash,
             Felt? maxFee,
             String? version,
             List<Felt>? signature,
@@ -1194,7 +1196,7 @@ class _$DeclareTxn implements DeclareTxn {
             List<Felt>? calldata)?
         invokeTxn,
     TResult Function(
-            Felt? txnHash,
+            Felt? transactionHash,
             Felt? maxFee,
             String? version,
             List<Felt>? signature,
@@ -1204,7 +1206,7 @@ class _$DeclareTxn implements DeclareTxn {
             Felt? senderAddress)?
         declareTxn,
     TResult Function(
-            Felt? txnHash,
+            Felt? transactionHash,
             Felt? classHash,
             String? version,
             String? type,
@@ -1213,15 +1215,15 @@ class _$DeclareTxn implements DeclareTxn {
             List<Felt>? constructorCalldata)?
         deployTxn,
   }) {
-    return declareTxn?.call(txnHash, maxFee, version, signature, nonce, type,
-        classHash, senderAddress);
+    return declareTxn?.call(transactionHash, maxFee, version, signature, nonce,
+        type, classHash, senderAddress);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(
-            Felt? txnHash,
+            Felt? transactionHash,
             Felt? maxFee,
             String? version,
             List<Felt>? signature,
@@ -1232,7 +1234,7 @@ class _$DeclareTxn implements DeclareTxn {
             List<Felt>? calldata)?
         invokeTxn,
     TResult Function(
-            Felt? txnHash,
+            Felt? transactionHash,
             Felt? maxFee,
             String? version,
             List<Felt>? signature,
@@ -1242,7 +1244,7 @@ class _$DeclareTxn implements DeclareTxn {
             Felt? senderAddress)?
         declareTxn,
     TResult Function(
-            Felt? txnHash,
+            Felt? transactionHash,
             Felt? classHash,
             String? version,
             String? type,
@@ -1253,8 +1255,8 @@ class _$DeclareTxn implements DeclareTxn {
     required TResult orElse(),
   }) {
     if (declareTxn != null) {
-      return declareTxn(txnHash, maxFee, version, signature, nonce, type,
-          classHash, senderAddress);
+      return declareTxn(transactionHash, maxFee, version, signature, nonce,
+          type, classHash, senderAddress);
     }
     return orElse();
   }
@@ -1303,7 +1305,7 @@ class _$DeclareTxn implements DeclareTxn {
 
 abstract class DeclareTxn implements Txn {
   const factory DeclareTxn(
-      {required final Felt? txnHash,
+      {required final Felt? transactionHash,
       required final Felt? maxFee,
       required final String? version,
       required final List<Felt>? signature,
@@ -1316,7 +1318,7 @@ abstract class DeclareTxn implements Txn {
       _$DeclareTxn.fromJson;
 
   @override // start of COMMON_TXN_PROPERTIES
-  Felt? get txnHash;
+  Felt? get transactionHash;
   Felt? get maxFee;
   @override
   String? get version;
@@ -1339,7 +1341,7 @@ abstract class _$$DeployTxnCopyWith<$Res> implements $TxnCopyWith<$Res> {
       __$$DeployTxnCopyWithImpl<$Res>;
   @override
   $Res call(
-      {Felt? txnHash,
+      {Felt? transactionHash,
       Felt? classHash,
       String? version,
       String? type,
@@ -1360,7 +1362,7 @@ class __$$DeployTxnCopyWithImpl<$Res> extends _$TxnCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? txnHash = freezed,
+    Object? transactionHash = freezed,
     Object? classHash = freezed,
     Object? version = freezed,
     Object? type = freezed,
@@ -1369,9 +1371,9 @@ class __$$DeployTxnCopyWithImpl<$Res> extends _$TxnCopyWithImpl<$Res>
     Object? constructorCalldata = freezed,
   }) {
     return _then(_$DeployTxn(
-      txnHash: txnHash == freezed
-          ? _value.txnHash
-          : txnHash // ignore: cast_nullable_to_non_nullable
+      transactionHash: transactionHash == freezed
+          ? _value.transactionHash
+          : transactionHash // ignore: cast_nullable_to_non_nullable
               as Felt?,
       classHash: classHash == freezed
           ? _value.classHash
@@ -1405,7 +1407,7 @@ class __$$DeployTxnCopyWithImpl<$Res> extends _$TxnCopyWithImpl<$Res>
 @JsonSerializable()
 class _$DeployTxn implements DeployTxn {
   const _$DeployTxn(
-      {required this.txnHash,
+      {required this.transactionHash,
       required this.classHash,
       required this.version,
       required this.type,
@@ -1420,7 +1422,7 @@ class _$DeployTxn implements DeployTxn {
       _$$DeployTxnFromJson(json);
 
   @override
-  final Felt? txnHash;
+  final Felt? transactionHash;
   @override
   final Felt? classHash;
   @override
@@ -1445,7 +1447,7 @@ class _$DeployTxn implements DeployTxn {
 
   @override
   String toString() {
-    return 'Txn.deployTxn(txnHash: $txnHash, classHash: $classHash, version: $version, type: $type, contractAddress: $contractAddress, contractAddressSalt: $contractAddressSalt, constructorCalldata: $constructorCalldata)';
+    return 'Txn.deployTxn(transactionHash: $transactionHash, classHash: $classHash, version: $version, type: $type, contractAddress: $contractAddress, contractAddressSalt: $contractAddressSalt, constructorCalldata: $constructorCalldata)';
   }
 
   @override
@@ -1453,7 +1455,8 @@ class _$DeployTxn implements DeployTxn {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$DeployTxn &&
-            const DeepCollectionEquality().equals(other.txnHash, txnHash) &&
+            const DeepCollectionEquality()
+                .equals(other.transactionHash, transactionHash) &&
             const DeepCollectionEquality().equals(other.classHash, classHash) &&
             const DeepCollectionEquality().equals(other.version, version) &&
             const DeepCollectionEquality().equals(other.type, type) &&
@@ -1469,7 +1472,7 @@ class _$DeployTxn implements DeployTxn {
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      const DeepCollectionEquality().hash(txnHash),
+      const DeepCollectionEquality().hash(transactionHash),
       const DeepCollectionEquality().hash(classHash),
       const DeepCollectionEquality().hash(version),
       const DeepCollectionEquality().hash(type),
@@ -1486,7 +1489,7 @@ class _$DeployTxn implements DeployTxn {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(
-            Felt? txnHash,
+            Felt? transactionHash,
             Felt? maxFee,
             String? version,
             List<Felt>? signature,
@@ -1497,7 +1500,7 @@ class _$DeployTxn implements DeployTxn {
             List<Felt>? calldata)
         invokeTxn,
     required TResult Function(
-            Felt? txnHash,
+            Felt? transactionHash,
             Felt? maxFee,
             String? version,
             List<Felt>? signature,
@@ -1507,7 +1510,7 @@ class _$DeployTxn implements DeployTxn {
             Felt? senderAddress)
         declareTxn,
     required TResult Function(
-            Felt? txnHash,
+            Felt? transactionHash,
             Felt? classHash,
             String? version,
             String? type,
@@ -1516,7 +1519,7 @@ class _$DeployTxn implements DeployTxn {
             List<Felt>? constructorCalldata)
         deployTxn,
   }) {
-    return deployTxn(txnHash, classHash, version, type, contractAddress,
+    return deployTxn(transactionHash, classHash, version, type, contractAddress,
         contractAddressSalt, constructorCalldata);
   }
 
@@ -1524,7 +1527,7 @@ class _$DeployTxn implements DeployTxn {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(
-            Felt? txnHash,
+            Felt? transactionHash,
             Felt? maxFee,
             String? version,
             List<Felt>? signature,
@@ -1535,7 +1538,7 @@ class _$DeployTxn implements DeployTxn {
             List<Felt>? calldata)?
         invokeTxn,
     TResult Function(
-            Felt? txnHash,
+            Felt? transactionHash,
             Felt? maxFee,
             String? version,
             List<Felt>? signature,
@@ -1545,7 +1548,7 @@ class _$DeployTxn implements DeployTxn {
             Felt? senderAddress)?
         declareTxn,
     TResult Function(
-            Felt? txnHash,
+            Felt? transactionHash,
             Felt? classHash,
             String? version,
             String? type,
@@ -1554,15 +1557,15 @@ class _$DeployTxn implements DeployTxn {
             List<Felt>? constructorCalldata)?
         deployTxn,
   }) {
-    return deployTxn?.call(txnHash, classHash, version, type, contractAddress,
-        contractAddressSalt, constructorCalldata);
+    return deployTxn?.call(transactionHash, classHash, version, type,
+        contractAddress, contractAddressSalt, constructorCalldata);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(
-            Felt? txnHash,
+            Felt? transactionHash,
             Felt? maxFee,
             String? version,
             List<Felt>? signature,
@@ -1573,7 +1576,7 @@ class _$DeployTxn implements DeployTxn {
             List<Felt>? calldata)?
         invokeTxn,
     TResult Function(
-            Felt? txnHash,
+            Felt? transactionHash,
             Felt? maxFee,
             String? version,
             List<Felt>? signature,
@@ -1583,7 +1586,7 @@ class _$DeployTxn implements DeployTxn {
             Felt? senderAddress)?
         declareTxn,
     TResult Function(
-            Felt? txnHash,
+            Felt? transactionHash,
             Felt? classHash,
             String? version,
             String? type,
@@ -1594,8 +1597,8 @@ class _$DeployTxn implements DeployTxn {
     required TResult orElse(),
   }) {
     if (deployTxn != null) {
-      return deployTxn(txnHash, classHash, version, type, contractAddress,
-          contractAddressSalt, constructorCalldata);
+      return deployTxn(transactionHash, classHash, version, type,
+          contractAddress, contractAddressSalt, constructorCalldata);
     }
     return orElse();
   }
@@ -1644,7 +1647,7 @@ class _$DeployTxn implements DeployTxn {
 
 abstract class DeployTxn implements Txn {
   const factory DeployTxn(
-      {required final Felt? txnHash,
+      {required final Felt? transactionHash,
       required final Felt? classHash,
       required final String? version,
       required final String? type,
@@ -1655,7 +1658,7 @@ abstract class DeployTxn implements Txn {
   factory DeployTxn.fromJson(Map<String, dynamic> json) = _$DeployTxn.fromJson;
 
   @override
-  Felt? get txnHash;
+  Felt? get transactionHash;
   Felt? get classHash;
   @override
   String? get version;

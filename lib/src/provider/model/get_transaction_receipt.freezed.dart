@@ -446,87 +446,95 @@ TxnReceipt _$TxnReceiptFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$TxnReceipt {
 // start of COMMON_RECEIPT_PROPERTIES
-  Felt get txnHash => throw _privateConstructorUsedError;
+  Felt get transactionHash => throw _privateConstructorUsedError;
   Felt get actualFee => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(
-            Felt txnHash,
+            Felt transactionHash,
             Felt actualFee,
             String status,
             String? statusData,
-            Felt? blockHash,
-            int? blockNumber,
+            Felt blockHash,
+            int blockNumber,
             List<MsgToL1> messagesSent,
             MsgToL2? l1OriginMessage,
             List<Event> events)
         invokeTxnReceipt,
-    required TResult Function(Felt txnHash, Felt actualFee, String status,
-            String? statusData, Felt? blockHash, int? blockNumber)
+    required TResult Function(Felt transactionHash, Felt actualFee,
+            String status, String? statusData, Felt blockHash, int blockNumber)
         declareTxnReceipt,
-    required TResult Function(Felt txnHash, Felt actualFee, String status,
-            String? statusData, Felt? blockHash, int? blockNumber)
+    required TResult Function(Felt transactionHash, Felt actualFee,
+            String status, String? statusData, Felt blockHash, int blockNumber)
         deployTxnReceipt,
     required TResult Function(
-            Felt txnHash,
+            Felt transactionHash,
             Felt actualFee,
             List<MsgToL1> messagesSent,
             MsgToL2? l1OriginMessage,
             List<Event> events)
         pendingInvokeTxnReceipt,
-    required TResult Function(Felt txnHash, Felt actualFee)
+    required TResult Function(Felt transactionHash, Felt actualFee)
         pendingCommonReceiptProperties,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(
-            Felt txnHash,
+            Felt transactionHash,
             Felt actualFee,
             String status,
             String? statusData,
-            Felt? blockHash,
-            int? blockNumber,
+            Felt blockHash,
+            int blockNumber,
             List<MsgToL1> messagesSent,
             MsgToL2? l1OriginMessage,
             List<Event> events)?
         invokeTxnReceipt,
-    TResult Function(Felt txnHash, Felt actualFee, String status,
-            String? statusData, Felt? blockHash, int? blockNumber)?
+    TResult Function(Felt transactionHash, Felt actualFee, String status,
+            String? statusData, Felt blockHash, int blockNumber)?
         declareTxnReceipt,
-    TResult Function(Felt txnHash, Felt actualFee, String status,
-            String? statusData, Felt? blockHash, int? blockNumber)?
+    TResult Function(Felt transactionHash, Felt actualFee, String status,
+            String? statusData, Felt blockHash, int blockNumber)?
         deployTxnReceipt,
-    TResult Function(Felt txnHash, Felt actualFee, List<MsgToL1> messagesSent,
-            MsgToL2? l1OriginMessage, List<Event> events)?
+    TResult Function(
+            Felt transactionHash,
+            Felt actualFee,
+            List<MsgToL1> messagesSent,
+            MsgToL2? l1OriginMessage,
+            List<Event> events)?
         pendingInvokeTxnReceipt,
-    TResult Function(Felt txnHash, Felt actualFee)?
+    TResult Function(Felt transactionHash, Felt actualFee)?
         pendingCommonReceiptProperties,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(
-            Felt txnHash,
+            Felt transactionHash,
             Felt actualFee,
             String status,
             String? statusData,
-            Felt? blockHash,
-            int? blockNumber,
+            Felt blockHash,
+            int blockNumber,
             List<MsgToL1> messagesSent,
             MsgToL2? l1OriginMessage,
             List<Event> events)?
         invokeTxnReceipt,
-    TResult Function(Felt txnHash, Felt actualFee, String status,
-            String? statusData, Felt? blockHash, int? blockNumber)?
+    TResult Function(Felt transactionHash, Felt actualFee, String status,
+            String? statusData, Felt blockHash, int blockNumber)?
         declareTxnReceipt,
-    TResult Function(Felt txnHash, Felt actualFee, String status,
-            String? statusData, Felt? blockHash, int? blockNumber)?
+    TResult Function(Felt transactionHash, Felt actualFee, String status,
+            String? statusData, Felt blockHash, int blockNumber)?
         deployTxnReceipt,
-    TResult Function(Felt txnHash, Felt actualFee, List<MsgToL1> messagesSent,
-            MsgToL2? l1OriginMessage, List<Event> events)?
+    TResult Function(
+            Felt transactionHash,
+            Felt actualFee,
+            List<MsgToL1> messagesSent,
+            MsgToL2? l1OriginMessage,
+            List<Event> events)?
         pendingInvokeTxnReceipt,
-    TResult Function(Felt txnHash, Felt actualFee)?
+    TResult Function(Felt transactionHash, Felt actualFee)?
         pendingCommonReceiptProperties,
     required TResult orElse(),
   }) =>
@@ -574,7 +582,7 @@ abstract class $TxnReceiptCopyWith<$Res> {
   factory $TxnReceiptCopyWith(
           TxnReceipt value, $Res Function(TxnReceipt) then) =
       _$TxnReceiptCopyWithImpl<$Res>;
-  $Res call({Felt txnHash, Felt actualFee});
+  $Res call({Felt transactionHash, Felt actualFee});
 }
 
 /// @nodoc
@@ -587,13 +595,13 @@ class _$TxnReceiptCopyWithImpl<$Res> implements $TxnReceiptCopyWith<$Res> {
 
   @override
   $Res call({
-    Object? txnHash = freezed,
+    Object? transactionHash = freezed,
     Object? actualFee = freezed,
   }) {
     return _then(_value.copyWith(
-      txnHash: txnHash == freezed
-          ? _value.txnHash
-          : txnHash // ignore: cast_nullable_to_non_nullable
+      transactionHash: transactionHash == freezed
+          ? _value.transactionHash
+          : transactionHash // ignore: cast_nullable_to_non_nullable
               as Felt,
       actualFee: actualFee == freezed
           ? _value.actualFee
@@ -611,12 +619,12 @@ abstract class _$$InvokeTxnReceiptCopyWith<$Res>
       __$$InvokeTxnReceiptCopyWithImpl<$Res>;
   @override
   $Res call(
-      {Felt txnHash,
+      {Felt transactionHash,
       Felt actualFee,
       String status,
       String? statusData,
-      Felt? blockHash,
-      int? blockNumber,
+      Felt blockHash,
+      int blockNumber,
       List<MsgToL1> messagesSent,
       MsgToL2? l1OriginMessage,
       List<Event> events});
@@ -637,7 +645,7 @@ class __$$InvokeTxnReceiptCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? txnHash = freezed,
+    Object? transactionHash = freezed,
     Object? actualFee = freezed,
     Object? status = freezed,
     Object? statusData = freezed,
@@ -648,9 +656,9 @@ class __$$InvokeTxnReceiptCopyWithImpl<$Res>
     Object? events = freezed,
   }) {
     return _then(_$InvokeTxnReceipt(
-      txnHash: txnHash == freezed
-          ? _value.txnHash
-          : txnHash // ignore: cast_nullable_to_non_nullable
+      transactionHash: transactionHash == freezed
+          ? _value.transactionHash
+          : transactionHash // ignore: cast_nullable_to_non_nullable
               as Felt,
       actualFee: actualFee == freezed
           ? _value.actualFee
@@ -667,11 +675,11 @@ class __$$InvokeTxnReceiptCopyWithImpl<$Res>
       blockHash: blockHash == freezed
           ? _value.blockHash
           : blockHash // ignore: cast_nullable_to_non_nullable
-              as Felt?,
+              as Felt,
       blockNumber: blockNumber == freezed
           ? _value.blockNumber
           : blockNumber // ignore: cast_nullable_to_non_nullable
-              as int?,
+              as int,
       messagesSent: messagesSent == freezed
           ? _value._messagesSent
           : messagesSent // ignore: cast_nullable_to_non_nullable
@@ -703,7 +711,7 @@ class __$$InvokeTxnReceiptCopyWithImpl<$Res>
 @JsonSerializable()
 class _$InvokeTxnReceipt implements InvokeTxnReceipt {
   const _$InvokeTxnReceipt(
-      {required this.txnHash,
+      {required this.transactionHash,
       required this.actualFee,
       required this.status,
       required this.statusData,
@@ -722,7 +730,7 @@ class _$InvokeTxnReceipt implements InvokeTxnReceipt {
 
 // start of COMMON_RECEIPT_PROPERTIES
   @override
-  final Felt txnHash;
+  final Felt transactionHash;
   @override
   final Felt actualFee;
   @override
@@ -730,9 +738,9 @@ class _$InvokeTxnReceipt implements InvokeTxnReceipt {
   @override
   final String? statusData;
   @override
-  final Felt? blockHash;
+  final Felt blockHash;
   @override
-  final int? blockNumber;
+  final int blockNumber;
 // end of COMMON_RECEIPT_PROPERTIES
 // start of INVOKE_TXN_RECEIPT_PROPERTIES
   final List<MsgToL1> _messagesSent;
@@ -758,7 +766,7 @@ class _$InvokeTxnReceipt implements InvokeTxnReceipt {
 
   @override
   String toString() {
-    return 'TxnReceipt.invokeTxnReceipt(txnHash: $txnHash, actualFee: $actualFee, status: $status, statusData: $statusData, blockHash: $blockHash, blockNumber: $blockNumber, messagesSent: $messagesSent, l1OriginMessage: $l1OriginMessage, events: $events)';
+    return 'TxnReceipt.invokeTxnReceipt(transactionHash: $transactionHash, actualFee: $actualFee, status: $status, statusData: $statusData, blockHash: $blockHash, blockNumber: $blockNumber, messagesSent: $messagesSent, l1OriginMessage: $l1OriginMessage, events: $events)';
   }
 
   @override
@@ -766,7 +774,8 @@ class _$InvokeTxnReceipt implements InvokeTxnReceipt {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$InvokeTxnReceipt &&
-            const DeepCollectionEquality().equals(other.txnHash, txnHash) &&
+            const DeepCollectionEquality()
+                .equals(other.transactionHash, transactionHash) &&
             const DeepCollectionEquality().equals(other.actualFee, actualFee) &&
             const DeepCollectionEquality().equals(other.status, status) &&
             const DeepCollectionEquality()
@@ -785,7 +794,7 @@ class _$InvokeTxnReceipt implements InvokeTxnReceipt {
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      const DeepCollectionEquality().hash(txnHash),
+      const DeepCollectionEquality().hash(transactionHash),
       const DeepCollectionEquality().hash(actualFee),
       const DeepCollectionEquality().hash(status),
       const DeepCollectionEquality().hash(statusData),
@@ -804,96 +813,112 @@ class _$InvokeTxnReceipt implements InvokeTxnReceipt {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(
-            Felt txnHash,
+            Felt transactionHash,
             Felt actualFee,
             String status,
             String? statusData,
-            Felt? blockHash,
-            int? blockNumber,
+            Felt blockHash,
+            int blockNumber,
             List<MsgToL1> messagesSent,
             MsgToL2? l1OriginMessage,
             List<Event> events)
         invokeTxnReceipt,
-    required TResult Function(Felt txnHash, Felt actualFee, String status,
-            String? statusData, Felt? blockHash, int? blockNumber)
+    required TResult Function(Felt transactionHash, Felt actualFee,
+            String status, String? statusData, Felt blockHash, int blockNumber)
         declareTxnReceipt,
-    required TResult Function(Felt txnHash, Felt actualFee, String status,
-            String? statusData, Felt? blockHash, int? blockNumber)
+    required TResult Function(Felt transactionHash, Felt actualFee,
+            String status, String? statusData, Felt blockHash, int blockNumber)
         deployTxnReceipt,
     required TResult Function(
-            Felt txnHash,
+            Felt transactionHash,
             Felt actualFee,
             List<MsgToL1> messagesSent,
             MsgToL2? l1OriginMessage,
             List<Event> events)
         pendingInvokeTxnReceipt,
-    required TResult Function(Felt txnHash, Felt actualFee)
+    required TResult Function(Felt transactionHash, Felt actualFee)
         pendingCommonReceiptProperties,
   }) {
-    return invokeTxnReceipt(txnHash, actualFee, status, statusData, blockHash,
-        blockNumber, messagesSent, l1OriginMessage, events);
+    return invokeTxnReceipt(transactionHash, actualFee, status, statusData,
+        blockHash, blockNumber, messagesSent, l1OriginMessage, events);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(
-            Felt txnHash,
+            Felt transactionHash,
             Felt actualFee,
             String status,
             String? statusData,
-            Felt? blockHash,
-            int? blockNumber,
+            Felt blockHash,
+            int blockNumber,
             List<MsgToL1> messagesSent,
             MsgToL2? l1OriginMessage,
             List<Event> events)?
         invokeTxnReceipt,
-    TResult Function(Felt txnHash, Felt actualFee, String status,
-            String? statusData, Felt? blockHash, int? blockNumber)?
+    TResult Function(Felt transactionHash, Felt actualFee, String status,
+            String? statusData, Felt blockHash, int blockNumber)?
         declareTxnReceipt,
-    TResult Function(Felt txnHash, Felt actualFee, String status,
-            String? statusData, Felt? blockHash, int? blockNumber)?
+    TResult Function(Felt transactionHash, Felt actualFee, String status,
+            String? statusData, Felt blockHash, int blockNumber)?
         deployTxnReceipt,
-    TResult Function(Felt txnHash, Felt actualFee, List<MsgToL1> messagesSent,
-            MsgToL2? l1OriginMessage, List<Event> events)?
+    TResult Function(
+            Felt transactionHash,
+            Felt actualFee,
+            List<MsgToL1> messagesSent,
+            MsgToL2? l1OriginMessage,
+            List<Event> events)?
         pendingInvokeTxnReceipt,
-    TResult Function(Felt txnHash, Felt actualFee)?
+    TResult Function(Felt transactionHash, Felt actualFee)?
         pendingCommonReceiptProperties,
   }) {
-    return invokeTxnReceipt?.call(txnHash, actualFee, status, statusData,
-        blockHash, blockNumber, messagesSent, l1OriginMessage, events);
+    return invokeTxnReceipt?.call(
+        transactionHash,
+        actualFee,
+        status,
+        statusData,
+        blockHash,
+        blockNumber,
+        messagesSent,
+        l1OriginMessage,
+        events);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(
-            Felt txnHash,
+            Felt transactionHash,
             Felt actualFee,
             String status,
             String? statusData,
-            Felt? blockHash,
-            int? blockNumber,
+            Felt blockHash,
+            int blockNumber,
             List<MsgToL1> messagesSent,
             MsgToL2? l1OriginMessage,
             List<Event> events)?
         invokeTxnReceipt,
-    TResult Function(Felt txnHash, Felt actualFee, String status,
-            String? statusData, Felt? blockHash, int? blockNumber)?
+    TResult Function(Felt transactionHash, Felt actualFee, String status,
+            String? statusData, Felt blockHash, int blockNumber)?
         declareTxnReceipt,
-    TResult Function(Felt txnHash, Felt actualFee, String status,
-            String? statusData, Felt? blockHash, int? blockNumber)?
+    TResult Function(Felt transactionHash, Felt actualFee, String status,
+            String? statusData, Felt blockHash, int blockNumber)?
         deployTxnReceipt,
-    TResult Function(Felt txnHash, Felt actualFee, List<MsgToL1> messagesSent,
-            MsgToL2? l1OriginMessage, List<Event> events)?
+    TResult Function(
+            Felt transactionHash,
+            Felt actualFee,
+            List<MsgToL1> messagesSent,
+            MsgToL2? l1OriginMessage,
+            List<Event> events)?
         pendingInvokeTxnReceipt,
-    TResult Function(Felt txnHash, Felt actualFee)?
+    TResult Function(Felt transactionHash, Felt actualFee)?
         pendingCommonReceiptProperties,
     required TResult orElse(),
   }) {
     if (invokeTxnReceipt != null) {
-      return invokeTxnReceipt(txnHash, actualFee, status, statusData, blockHash,
-          blockNumber, messagesSent, l1OriginMessage, events);
+      return invokeTxnReceipt(transactionHash, actualFee, status, statusData,
+          blockHash, blockNumber, messagesSent, l1OriginMessage, events);
     }
     return orElse();
   }
@@ -952,12 +977,12 @@ class _$InvokeTxnReceipt implements InvokeTxnReceipt {
 
 abstract class InvokeTxnReceipt implements TxnReceipt {
   const factory InvokeTxnReceipt(
-      {required final Felt txnHash,
+      {required final Felt transactionHash,
       required final Felt actualFee,
       required final String status,
       required final String? statusData,
-      required final Felt? blockHash,
-      required final int? blockNumber,
+      required final Felt blockHash,
+      required final int blockNumber,
       required final List<MsgToL1> messagesSent,
       required final MsgToL2? l1OriginMessage,
       required final List<Event> events}) = _$InvokeTxnReceipt;
@@ -966,13 +991,13 @@ abstract class InvokeTxnReceipt implements TxnReceipt {
       _$InvokeTxnReceipt.fromJson;
 
   @override // start of COMMON_RECEIPT_PROPERTIES
-  Felt get txnHash;
+  Felt get transactionHash;
   @override
   Felt get actualFee;
   String get status;
   String? get statusData;
-  Felt? get blockHash;
-  int? get blockNumber; // end of COMMON_RECEIPT_PROPERTIES
+  Felt get blockHash;
+  int get blockNumber; // end of COMMON_RECEIPT_PROPERTIES
 // start of INVOKE_TXN_RECEIPT_PROPERTIES
   List<MsgToL1> get messagesSent;
   MsgToL2? get l1OriginMessage;
@@ -991,12 +1016,12 @@ abstract class _$$DeclareTxnReceiptCopyWith<$Res>
       __$$DeclareTxnReceiptCopyWithImpl<$Res>;
   @override
   $Res call(
-      {Felt txnHash,
+      {Felt transactionHash,
       Felt actualFee,
       String status,
       String? statusData,
-      Felt? blockHash,
-      int? blockNumber});
+      Felt blockHash,
+      int blockNumber});
 }
 
 /// @nodoc
@@ -1012,7 +1037,7 @@ class __$$DeclareTxnReceiptCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? txnHash = freezed,
+    Object? transactionHash = freezed,
     Object? actualFee = freezed,
     Object? status = freezed,
     Object? statusData = freezed,
@@ -1020,9 +1045,9 @@ class __$$DeclareTxnReceiptCopyWithImpl<$Res>
     Object? blockNumber = freezed,
   }) {
     return _then(_$DeclareTxnReceipt(
-      txnHash: txnHash == freezed
-          ? _value.txnHash
-          : txnHash // ignore: cast_nullable_to_non_nullable
+      transactionHash: transactionHash == freezed
+          ? _value.transactionHash
+          : transactionHash // ignore: cast_nullable_to_non_nullable
               as Felt,
       actualFee: actualFee == freezed
           ? _value.actualFee
@@ -1039,11 +1064,11 @@ class __$$DeclareTxnReceiptCopyWithImpl<$Res>
       blockHash: blockHash == freezed
           ? _value.blockHash
           : blockHash // ignore: cast_nullable_to_non_nullable
-              as Felt?,
+              as Felt,
       blockNumber: blockNumber == freezed
           ? _value.blockNumber
           : blockNumber // ignore: cast_nullable_to_non_nullable
-              as int?,
+              as int,
     ));
   }
 }
@@ -1052,7 +1077,7 @@ class __$$DeclareTxnReceiptCopyWithImpl<$Res>
 @JsonSerializable()
 class _$DeclareTxnReceipt implements DeclareTxnReceipt {
   const _$DeclareTxnReceipt(
-      {required this.txnHash,
+      {required this.transactionHash,
       required this.actualFee,
       required this.status,
       required this.statusData,
@@ -1066,7 +1091,7 @@ class _$DeclareTxnReceipt implements DeclareTxnReceipt {
 
 // start of COMMON_RECEIPT_PROPERTIES
   @override
-  final Felt txnHash;
+  final Felt transactionHash;
   @override
   final Felt actualFee;
   @override
@@ -1074,16 +1099,16 @@ class _$DeclareTxnReceipt implements DeclareTxnReceipt {
   @override
   final String? statusData;
   @override
-  final Felt? blockHash;
+  final Felt blockHash;
   @override
-  final int? blockNumber;
+  final int blockNumber;
 
   @JsonKey(name: 'runtimeType')
   final String $type;
 
   @override
   String toString() {
-    return 'TxnReceipt.declareTxnReceipt(txnHash: $txnHash, actualFee: $actualFee, status: $status, statusData: $statusData, blockHash: $blockHash, blockNumber: $blockNumber)';
+    return 'TxnReceipt.declareTxnReceipt(transactionHash: $transactionHash, actualFee: $actualFee, status: $status, statusData: $statusData, blockHash: $blockHash, blockNumber: $blockNumber)';
   }
 
   @override
@@ -1091,7 +1116,8 @@ class _$DeclareTxnReceipt implements DeclareTxnReceipt {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$DeclareTxnReceipt &&
-            const DeepCollectionEquality().equals(other.txnHash, txnHash) &&
+            const DeepCollectionEquality()
+                .equals(other.transactionHash, transactionHash) &&
             const DeepCollectionEquality().equals(other.actualFee, actualFee) &&
             const DeepCollectionEquality().equals(other.status, status) &&
             const DeepCollectionEquality()
@@ -1105,7 +1131,7 @@ class _$DeclareTxnReceipt implements DeclareTxnReceipt {
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      const DeepCollectionEquality().hash(txnHash),
+      const DeepCollectionEquality().hash(transactionHash),
       const DeepCollectionEquality().hash(actualFee),
       const DeepCollectionEquality().hash(status),
       const DeepCollectionEquality().hash(statusData),
@@ -1121,96 +1147,104 @@ class _$DeclareTxnReceipt implements DeclareTxnReceipt {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(
-            Felt txnHash,
+            Felt transactionHash,
             Felt actualFee,
             String status,
             String? statusData,
-            Felt? blockHash,
-            int? blockNumber,
+            Felt blockHash,
+            int blockNumber,
             List<MsgToL1> messagesSent,
             MsgToL2? l1OriginMessage,
             List<Event> events)
         invokeTxnReceipt,
-    required TResult Function(Felt txnHash, Felt actualFee, String status,
-            String? statusData, Felt? blockHash, int? blockNumber)
+    required TResult Function(Felt transactionHash, Felt actualFee,
+            String status, String? statusData, Felt blockHash, int blockNumber)
         declareTxnReceipt,
-    required TResult Function(Felt txnHash, Felt actualFee, String status,
-            String? statusData, Felt? blockHash, int? blockNumber)
+    required TResult Function(Felt transactionHash, Felt actualFee,
+            String status, String? statusData, Felt blockHash, int blockNumber)
         deployTxnReceipt,
     required TResult Function(
-            Felt txnHash,
+            Felt transactionHash,
             Felt actualFee,
             List<MsgToL1> messagesSent,
             MsgToL2? l1OriginMessage,
             List<Event> events)
         pendingInvokeTxnReceipt,
-    required TResult Function(Felt txnHash, Felt actualFee)
+    required TResult Function(Felt transactionHash, Felt actualFee)
         pendingCommonReceiptProperties,
   }) {
     return declareTxnReceipt(
-        txnHash, actualFee, status, statusData, blockHash, blockNumber);
+        transactionHash, actualFee, status, statusData, blockHash, blockNumber);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(
-            Felt txnHash,
+            Felt transactionHash,
             Felt actualFee,
             String status,
             String? statusData,
-            Felt? blockHash,
-            int? blockNumber,
+            Felt blockHash,
+            int blockNumber,
             List<MsgToL1> messagesSent,
             MsgToL2? l1OriginMessage,
             List<Event> events)?
         invokeTxnReceipt,
-    TResult Function(Felt txnHash, Felt actualFee, String status,
-            String? statusData, Felt? blockHash, int? blockNumber)?
+    TResult Function(Felt transactionHash, Felt actualFee, String status,
+            String? statusData, Felt blockHash, int blockNumber)?
         declareTxnReceipt,
-    TResult Function(Felt txnHash, Felt actualFee, String status,
-            String? statusData, Felt? blockHash, int? blockNumber)?
+    TResult Function(Felt transactionHash, Felt actualFee, String status,
+            String? statusData, Felt blockHash, int blockNumber)?
         deployTxnReceipt,
-    TResult Function(Felt txnHash, Felt actualFee, List<MsgToL1> messagesSent,
-            MsgToL2? l1OriginMessage, List<Event> events)?
+    TResult Function(
+            Felt transactionHash,
+            Felt actualFee,
+            List<MsgToL1> messagesSent,
+            MsgToL2? l1OriginMessage,
+            List<Event> events)?
         pendingInvokeTxnReceipt,
-    TResult Function(Felt txnHash, Felt actualFee)?
+    TResult Function(Felt transactionHash, Felt actualFee)?
         pendingCommonReceiptProperties,
   }) {
     return declareTxnReceipt?.call(
-        txnHash, actualFee, status, statusData, blockHash, blockNumber);
+        transactionHash, actualFee, status, statusData, blockHash, blockNumber);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(
-            Felt txnHash,
+            Felt transactionHash,
             Felt actualFee,
             String status,
             String? statusData,
-            Felt? blockHash,
-            int? blockNumber,
+            Felt blockHash,
+            int blockNumber,
             List<MsgToL1> messagesSent,
             MsgToL2? l1OriginMessage,
             List<Event> events)?
         invokeTxnReceipt,
-    TResult Function(Felt txnHash, Felt actualFee, String status,
-            String? statusData, Felt? blockHash, int? blockNumber)?
+    TResult Function(Felt transactionHash, Felt actualFee, String status,
+            String? statusData, Felt blockHash, int blockNumber)?
         declareTxnReceipt,
-    TResult Function(Felt txnHash, Felt actualFee, String status,
-            String? statusData, Felt? blockHash, int? blockNumber)?
+    TResult Function(Felt transactionHash, Felt actualFee, String status,
+            String? statusData, Felt blockHash, int blockNumber)?
         deployTxnReceipt,
-    TResult Function(Felt txnHash, Felt actualFee, List<MsgToL1> messagesSent,
-            MsgToL2? l1OriginMessage, List<Event> events)?
+    TResult Function(
+            Felt transactionHash,
+            Felt actualFee,
+            List<MsgToL1> messagesSent,
+            MsgToL2? l1OriginMessage,
+            List<Event> events)?
         pendingInvokeTxnReceipt,
-    TResult Function(Felt txnHash, Felt actualFee)?
+    TResult Function(Felt transactionHash, Felt actualFee)?
         pendingCommonReceiptProperties,
     required TResult orElse(),
   }) {
     if (declareTxnReceipt != null) {
-      return declareTxnReceipt(
-          txnHash, actualFee, status, statusData, blockHash, blockNumber);
+      return declareTxnReceipt(transactionHash, actualFee, status, statusData,
+          blockHash, blockNumber);
     }
     return orElse();
   }
@@ -1269,24 +1303,24 @@ class _$DeclareTxnReceipt implements DeclareTxnReceipt {
 
 abstract class DeclareTxnReceipt implements TxnReceipt {
   const factory DeclareTxnReceipt(
-      {required final Felt txnHash,
+      {required final Felt transactionHash,
       required final Felt actualFee,
       required final String status,
       required final String? statusData,
-      required final Felt? blockHash,
-      required final int? blockNumber}) = _$DeclareTxnReceipt;
+      required final Felt blockHash,
+      required final int blockNumber}) = _$DeclareTxnReceipt;
 
   factory DeclareTxnReceipt.fromJson(Map<String, dynamic> json) =
       _$DeclareTxnReceipt.fromJson;
 
   @override // start of COMMON_RECEIPT_PROPERTIES
-  Felt get txnHash;
+  Felt get transactionHash;
   @override
   Felt get actualFee;
   String get status;
   String? get statusData;
-  Felt? get blockHash;
-  int? get blockNumber;
+  Felt get blockHash;
+  int get blockNumber;
   @override
   @JsonKey(ignore: true)
   _$$DeclareTxnReceiptCopyWith<_$DeclareTxnReceipt> get copyWith =>
@@ -1301,12 +1335,12 @@ abstract class _$$DeployTxnReceiptCopyWith<$Res>
       __$$DeployTxnReceiptCopyWithImpl<$Res>;
   @override
   $Res call(
-      {Felt txnHash,
+      {Felt transactionHash,
       Felt actualFee,
       String status,
       String? statusData,
-      Felt? blockHash,
-      int? blockNumber});
+      Felt blockHash,
+      int blockNumber});
 }
 
 /// @nodoc
@@ -1322,7 +1356,7 @@ class __$$DeployTxnReceiptCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? txnHash = freezed,
+    Object? transactionHash = freezed,
     Object? actualFee = freezed,
     Object? status = freezed,
     Object? statusData = freezed,
@@ -1330,9 +1364,9 @@ class __$$DeployTxnReceiptCopyWithImpl<$Res>
     Object? blockNumber = freezed,
   }) {
     return _then(_$DeployTxnReceipt(
-      txnHash: txnHash == freezed
-          ? _value.txnHash
-          : txnHash // ignore: cast_nullable_to_non_nullable
+      transactionHash: transactionHash == freezed
+          ? _value.transactionHash
+          : transactionHash // ignore: cast_nullable_to_non_nullable
               as Felt,
       actualFee: actualFee == freezed
           ? _value.actualFee
@@ -1349,11 +1383,11 @@ class __$$DeployTxnReceiptCopyWithImpl<$Res>
       blockHash: blockHash == freezed
           ? _value.blockHash
           : blockHash // ignore: cast_nullable_to_non_nullable
-              as Felt?,
+              as Felt,
       blockNumber: blockNumber == freezed
           ? _value.blockNumber
           : blockNumber // ignore: cast_nullable_to_non_nullable
-              as int?,
+              as int,
     ));
   }
 }
@@ -1362,7 +1396,7 @@ class __$$DeployTxnReceiptCopyWithImpl<$Res>
 @JsonSerializable()
 class _$DeployTxnReceipt implements DeployTxnReceipt {
   const _$DeployTxnReceipt(
-      {required this.txnHash,
+      {required this.transactionHash,
       required this.actualFee,
       required this.status,
       required this.statusData,
@@ -1376,7 +1410,7 @@ class _$DeployTxnReceipt implements DeployTxnReceipt {
 
 // start of COMMON_RECEIPT_PROPERTIES
   @override
-  final Felt txnHash;
+  final Felt transactionHash;
   @override
   final Felt actualFee;
   @override
@@ -1384,16 +1418,16 @@ class _$DeployTxnReceipt implements DeployTxnReceipt {
   @override
   final String? statusData;
   @override
-  final Felt? blockHash;
+  final Felt blockHash;
   @override
-  final int? blockNumber;
+  final int blockNumber;
 
   @JsonKey(name: 'runtimeType')
   final String $type;
 
   @override
   String toString() {
-    return 'TxnReceipt.deployTxnReceipt(txnHash: $txnHash, actualFee: $actualFee, status: $status, statusData: $statusData, blockHash: $blockHash, blockNumber: $blockNumber)';
+    return 'TxnReceipt.deployTxnReceipt(transactionHash: $transactionHash, actualFee: $actualFee, status: $status, statusData: $statusData, blockHash: $blockHash, blockNumber: $blockNumber)';
   }
 
   @override
@@ -1401,7 +1435,8 @@ class _$DeployTxnReceipt implements DeployTxnReceipt {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$DeployTxnReceipt &&
-            const DeepCollectionEquality().equals(other.txnHash, txnHash) &&
+            const DeepCollectionEquality()
+                .equals(other.transactionHash, transactionHash) &&
             const DeepCollectionEquality().equals(other.actualFee, actualFee) &&
             const DeepCollectionEquality().equals(other.status, status) &&
             const DeepCollectionEquality()
@@ -1415,7 +1450,7 @@ class _$DeployTxnReceipt implements DeployTxnReceipt {
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      const DeepCollectionEquality().hash(txnHash),
+      const DeepCollectionEquality().hash(transactionHash),
       const DeepCollectionEquality().hash(actualFee),
       const DeepCollectionEquality().hash(status),
       const DeepCollectionEquality().hash(statusData),
@@ -1431,96 +1466,104 @@ class _$DeployTxnReceipt implements DeployTxnReceipt {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(
-            Felt txnHash,
+            Felt transactionHash,
             Felt actualFee,
             String status,
             String? statusData,
-            Felt? blockHash,
-            int? blockNumber,
+            Felt blockHash,
+            int blockNumber,
             List<MsgToL1> messagesSent,
             MsgToL2? l1OriginMessage,
             List<Event> events)
         invokeTxnReceipt,
-    required TResult Function(Felt txnHash, Felt actualFee, String status,
-            String? statusData, Felt? blockHash, int? blockNumber)
+    required TResult Function(Felt transactionHash, Felt actualFee,
+            String status, String? statusData, Felt blockHash, int blockNumber)
         declareTxnReceipt,
-    required TResult Function(Felt txnHash, Felt actualFee, String status,
-            String? statusData, Felt? blockHash, int? blockNumber)
+    required TResult Function(Felt transactionHash, Felt actualFee,
+            String status, String? statusData, Felt blockHash, int blockNumber)
         deployTxnReceipt,
     required TResult Function(
-            Felt txnHash,
+            Felt transactionHash,
             Felt actualFee,
             List<MsgToL1> messagesSent,
             MsgToL2? l1OriginMessage,
             List<Event> events)
         pendingInvokeTxnReceipt,
-    required TResult Function(Felt txnHash, Felt actualFee)
+    required TResult Function(Felt transactionHash, Felt actualFee)
         pendingCommonReceiptProperties,
   }) {
     return deployTxnReceipt(
-        txnHash, actualFee, status, statusData, blockHash, blockNumber);
+        transactionHash, actualFee, status, statusData, blockHash, blockNumber);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(
-            Felt txnHash,
+            Felt transactionHash,
             Felt actualFee,
             String status,
             String? statusData,
-            Felt? blockHash,
-            int? blockNumber,
+            Felt blockHash,
+            int blockNumber,
             List<MsgToL1> messagesSent,
             MsgToL2? l1OriginMessage,
             List<Event> events)?
         invokeTxnReceipt,
-    TResult Function(Felt txnHash, Felt actualFee, String status,
-            String? statusData, Felt? blockHash, int? blockNumber)?
+    TResult Function(Felt transactionHash, Felt actualFee, String status,
+            String? statusData, Felt blockHash, int blockNumber)?
         declareTxnReceipt,
-    TResult Function(Felt txnHash, Felt actualFee, String status,
-            String? statusData, Felt? blockHash, int? blockNumber)?
+    TResult Function(Felt transactionHash, Felt actualFee, String status,
+            String? statusData, Felt blockHash, int blockNumber)?
         deployTxnReceipt,
-    TResult Function(Felt txnHash, Felt actualFee, List<MsgToL1> messagesSent,
-            MsgToL2? l1OriginMessage, List<Event> events)?
+    TResult Function(
+            Felt transactionHash,
+            Felt actualFee,
+            List<MsgToL1> messagesSent,
+            MsgToL2? l1OriginMessage,
+            List<Event> events)?
         pendingInvokeTxnReceipt,
-    TResult Function(Felt txnHash, Felt actualFee)?
+    TResult Function(Felt transactionHash, Felt actualFee)?
         pendingCommonReceiptProperties,
   }) {
     return deployTxnReceipt?.call(
-        txnHash, actualFee, status, statusData, blockHash, blockNumber);
+        transactionHash, actualFee, status, statusData, blockHash, blockNumber);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(
-            Felt txnHash,
+            Felt transactionHash,
             Felt actualFee,
             String status,
             String? statusData,
-            Felt? blockHash,
-            int? blockNumber,
+            Felt blockHash,
+            int blockNumber,
             List<MsgToL1> messagesSent,
             MsgToL2? l1OriginMessage,
             List<Event> events)?
         invokeTxnReceipt,
-    TResult Function(Felt txnHash, Felt actualFee, String status,
-            String? statusData, Felt? blockHash, int? blockNumber)?
+    TResult Function(Felt transactionHash, Felt actualFee, String status,
+            String? statusData, Felt blockHash, int blockNumber)?
         declareTxnReceipt,
-    TResult Function(Felt txnHash, Felt actualFee, String status,
-            String? statusData, Felt? blockHash, int? blockNumber)?
+    TResult Function(Felt transactionHash, Felt actualFee, String status,
+            String? statusData, Felt blockHash, int blockNumber)?
         deployTxnReceipt,
-    TResult Function(Felt txnHash, Felt actualFee, List<MsgToL1> messagesSent,
-            MsgToL2? l1OriginMessage, List<Event> events)?
+    TResult Function(
+            Felt transactionHash,
+            Felt actualFee,
+            List<MsgToL1> messagesSent,
+            MsgToL2? l1OriginMessage,
+            List<Event> events)?
         pendingInvokeTxnReceipt,
-    TResult Function(Felt txnHash, Felt actualFee)?
+    TResult Function(Felt transactionHash, Felt actualFee)?
         pendingCommonReceiptProperties,
     required TResult orElse(),
   }) {
     if (deployTxnReceipt != null) {
-      return deployTxnReceipt(
-          txnHash, actualFee, status, statusData, blockHash, blockNumber);
+      return deployTxnReceipt(transactionHash, actualFee, status, statusData,
+          blockHash, blockNumber);
     }
     return orElse();
   }
@@ -1579,24 +1622,24 @@ class _$DeployTxnReceipt implements DeployTxnReceipt {
 
 abstract class DeployTxnReceipt implements TxnReceipt {
   const factory DeployTxnReceipt(
-      {required final Felt txnHash,
+      {required final Felt transactionHash,
       required final Felt actualFee,
       required final String status,
       required final String? statusData,
-      required final Felt? blockHash,
-      required final int? blockNumber}) = _$DeployTxnReceipt;
+      required final Felt blockHash,
+      required final int blockNumber}) = _$DeployTxnReceipt;
 
   factory DeployTxnReceipt.fromJson(Map<String, dynamic> json) =
       _$DeployTxnReceipt.fromJson;
 
   @override // start of COMMON_RECEIPT_PROPERTIES
-  Felt get txnHash;
+  Felt get transactionHash;
   @override
   Felt get actualFee;
   String get status;
   String? get statusData;
-  Felt? get blockHash;
-  int? get blockNumber;
+  Felt get blockHash;
+  int get blockNumber;
   @override
   @JsonKey(ignore: true)
   _$$DeployTxnReceiptCopyWith<_$DeployTxnReceipt> get copyWith =>
@@ -1611,7 +1654,7 @@ abstract class _$$PendingInvokeTxnReceiptCopyWith<$Res>
       __$$PendingInvokeTxnReceiptCopyWithImpl<$Res>;
   @override
   $Res call(
-      {Felt txnHash,
+      {Felt transactionHash,
       Felt actualFee,
       List<MsgToL1> messagesSent,
       MsgToL2? l1OriginMessage,
@@ -1634,16 +1677,16 @@ class __$$PendingInvokeTxnReceiptCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? txnHash = freezed,
+    Object? transactionHash = freezed,
     Object? actualFee = freezed,
     Object? messagesSent = freezed,
     Object? l1OriginMessage = freezed,
     Object? events = freezed,
   }) {
     return _then(_$PendingInvokeTxnReceipt(
-      txnHash: txnHash == freezed
-          ? _value.txnHash
-          : txnHash // ignore: cast_nullable_to_non_nullable
+      transactionHash: transactionHash == freezed
+          ? _value.transactionHash
+          : transactionHash // ignore: cast_nullable_to_non_nullable
               as Felt,
       actualFee: actualFee == freezed
           ? _value.actualFee
@@ -1680,7 +1723,7 @@ class __$$PendingInvokeTxnReceiptCopyWithImpl<$Res>
 @JsonSerializable()
 class _$PendingInvokeTxnReceipt implements PendingInvokeTxnReceipt {
   const _$PendingInvokeTxnReceipt(
-      {required this.txnHash,
+      {required this.transactionHash,
       required this.actualFee,
       required final List<MsgToL1> messagesSent,
       required this.l1OriginMessage,
@@ -1695,7 +1738,7 @@ class _$PendingInvokeTxnReceipt implements PendingInvokeTxnReceipt {
 
 // start of PENDING_COMMON_RECEIPT_PROPERTIES
   @override
-  final Felt txnHash;
+  final Felt transactionHash;
   @override
   final Felt actualFee;
 // end of PENDING_COMMON_RECEIPT_PROPERTIES
@@ -1723,7 +1766,7 @@ class _$PendingInvokeTxnReceipt implements PendingInvokeTxnReceipt {
 
   @override
   String toString() {
-    return 'TxnReceipt.pendingInvokeTxnReceipt(txnHash: $txnHash, actualFee: $actualFee, messagesSent: $messagesSent, l1OriginMessage: $l1OriginMessage, events: $events)';
+    return 'TxnReceipt.pendingInvokeTxnReceipt(transactionHash: $transactionHash, actualFee: $actualFee, messagesSent: $messagesSent, l1OriginMessage: $l1OriginMessage, events: $events)';
   }
 
   @override
@@ -1731,7 +1774,8 @@ class _$PendingInvokeTxnReceipt implements PendingInvokeTxnReceipt {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$PendingInvokeTxnReceipt &&
-            const DeepCollectionEquality().equals(other.txnHash, txnHash) &&
+            const DeepCollectionEquality()
+                .equals(other.transactionHash, transactionHash) &&
             const DeepCollectionEquality().equals(other.actualFee, actualFee) &&
             const DeepCollectionEquality()
                 .equals(other._messagesSent, _messagesSent) &&
@@ -1744,7 +1788,7 @@ class _$PendingInvokeTxnReceipt implements PendingInvokeTxnReceipt {
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      const DeepCollectionEquality().hash(txnHash),
+      const DeepCollectionEquality().hash(transactionHash),
       const DeepCollectionEquality().hash(actualFee),
       const DeepCollectionEquality().hash(_messagesSent),
       const DeepCollectionEquality().hash(l1OriginMessage),
@@ -1760,96 +1804,104 @@ class _$PendingInvokeTxnReceipt implements PendingInvokeTxnReceipt {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(
-            Felt txnHash,
+            Felt transactionHash,
             Felt actualFee,
             String status,
             String? statusData,
-            Felt? blockHash,
-            int? blockNumber,
+            Felt blockHash,
+            int blockNumber,
             List<MsgToL1> messagesSent,
             MsgToL2? l1OriginMessage,
             List<Event> events)
         invokeTxnReceipt,
-    required TResult Function(Felt txnHash, Felt actualFee, String status,
-            String? statusData, Felt? blockHash, int? blockNumber)
+    required TResult Function(Felt transactionHash, Felt actualFee,
+            String status, String? statusData, Felt blockHash, int blockNumber)
         declareTxnReceipt,
-    required TResult Function(Felt txnHash, Felt actualFee, String status,
-            String? statusData, Felt? blockHash, int? blockNumber)
+    required TResult Function(Felt transactionHash, Felt actualFee,
+            String status, String? statusData, Felt blockHash, int blockNumber)
         deployTxnReceipt,
     required TResult Function(
-            Felt txnHash,
+            Felt transactionHash,
             Felt actualFee,
             List<MsgToL1> messagesSent,
             MsgToL2? l1OriginMessage,
             List<Event> events)
         pendingInvokeTxnReceipt,
-    required TResult Function(Felt txnHash, Felt actualFee)
+    required TResult Function(Felt transactionHash, Felt actualFee)
         pendingCommonReceiptProperties,
   }) {
     return pendingInvokeTxnReceipt(
-        txnHash, actualFee, messagesSent, l1OriginMessage, events);
+        transactionHash, actualFee, messagesSent, l1OriginMessage, events);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(
-            Felt txnHash,
+            Felt transactionHash,
             Felt actualFee,
             String status,
             String? statusData,
-            Felt? blockHash,
-            int? blockNumber,
+            Felt blockHash,
+            int blockNumber,
             List<MsgToL1> messagesSent,
             MsgToL2? l1OriginMessage,
             List<Event> events)?
         invokeTxnReceipt,
-    TResult Function(Felt txnHash, Felt actualFee, String status,
-            String? statusData, Felt? blockHash, int? blockNumber)?
+    TResult Function(Felt transactionHash, Felt actualFee, String status,
+            String? statusData, Felt blockHash, int blockNumber)?
         declareTxnReceipt,
-    TResult Function(Felt txnHash, Felt actualFee, String status,
-            String? statusData, Felt? blockHash, int? blockNumber)?
+    TResult Function(Felt transactionHash, Felt actualFee, String status,
+            String? statusData, Felt blockHash, int blockNumber)?
         deployTxnReceipt,
-    TResult Function(Felt txnHash, Felt actualFee, List<MsgToL1> messagesSent,
-            MsgToL2? l1OriginMessage, List<Event> events)?
+    TResult Function(
+            Felt transactionHash,
+            Felt actualFee,
+            List<MsgToL1> messagesSent,
+            MsgToL2? l1OriginMessage,
+            List<Event> events)?
         pendingInvokeTxnReceipt,
-    TResult Function(Felt txnHash, Felt actualFee)?
+    TResult Function(Felt transactionHash, Felt actualFee)?
         pendingCommonReceiptProperties,
   }) {
     return pendingInvokeTxnReceipt?.call(
-        txnHash, actualFee, messagesSent, l1OriginMessage, events);
+        transactionHash, actualFee, messagesSent, l1OriginMessage, events);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(
-            Felt txnHash,
+            Felt transactionHash,
             Felt actualFee,
             String status,
             String? statusData,
-            Felt? blockHash,
-            int? blockNumber,
+            Felt blockHash,
+            int blockNumber,
             List<MsgToL1> messagesSent,
             MsgToL2? l1OriginMessage,
             List<Event> events)?
         invokeTxnReceipt,
-    TResult Function(Felt txnHash, Felt actualFee, String status,
-            String? statusData, Felt? blockHash, int? blockNumber)?
+    TResult Function(Felt transactionHash, Felt actualFee, String status,
+            String? statusData, Felt blockHash, int blockNumber)?
         declareTxnReceipt,
-    TResult Function(Felt txnHash, Felt actualFee, String status,
-            String? statusData, Felt? blockHash, int? blockNumber)?
+    TResult Function(Felt transactionHash, Felt actualFee, String status,
+            String? statusData, Felt blockHash, int blockNumber)?
         deployTxnReceipt,
-    TResult Function(Felt txnHash, Felt actualFee, List<MsgToL1> messagesSent,
-            MsgToL2? l1OriginMessage, List<Event> events)?
+    TResult Function(
+            Felt transactionHash,
+            Felt actualFee,
+            List<MsgToL1> messagesSent,
+            MsgToL2? l1OriginMessage,
+            List<Event> events)?
         pendingInvokeTxnReceipt,
-    TResult Function(Felt txnHash, Felt actualFee)?
+    TResult Function(Felt transactionHash, Felt actualFee)?
         pendingCommonReceiptProperties,
     required TResult orElse(),
   }) {
     if (pendingInvokeTxnReceipt != null) {
       return pendingInvokeTxnReceipt(
-          txnHash, actualFee, messagesSent, l1OriginMessage, events);
+          transactionHash, actualFee, messagesSent, l1OriginMessage, events);
     }
     return orElse();
   }
@@ -1908,7 +1960,7 @@ class _$PendingInvokeTxnReceipt implements PendingInvokeTxnReceipt {
 
 abstract class PendingInvokeTxnReceipt implements TxnReceipt {
   const factory PendingInvokeTxnReceipt(
-      {required final Felt txnHash,
+      {required final Felt transactionHash,
       required final Felt actualFee,
       required final List<MsgToL1> messagesSent,
       required final MsgToL2? l1OriginMessage,
@@ -1918,7 +1970,7 @@ abstract class PendingInvokeTxnReceipt implements TxnReceipt {
       _$PendingInvokeTxnReceipt.fromJson;
 
   @override // start of PENDING_COMMON_RECEIPT_PROPERTIES
-  Felt get txnHash;
+  Felt get transactionHash;
   @override
   Felt get actualFee; // end of PENDING_COMMON_RECEIPT_PROPERTIES
 // start of INVOKE_TXN_RECEIPT_PROPERTIES
@@ -1939,7 +1991,7 @@ abstract class _$$PendingCommonReceiptPropertiesCopyWith<$Res>
           $Res Function(_$PendingCommonReceiptProperties) then) =
       __$$PendingCommonReceiptPropertiesCopyWithImpl<$Res>;
   @override
-  $Res call({Felt txnHash, Felt actualFee});
+  $Res call({Felt transactionHash, Felt actualFee});
 }
 
 /// @nodoc
@@ -1957,13 +2009,13 @@ class __$$PendingCommonReceiptPropertiesCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? txnHash = freezed,
+    Object? transactionHash = freezed,
     Object? actualFee = freezed,
   }) {
     return _then(_$PendingCommonReceiptProperties(
-      txnHash: txnHash == freezed
-          ? _value.txnHash
-          : txnHash // ignore: cast_nullable_to_non_nullable
+      transactionHash: transactionHash == freezed
+          ? _value.transactionHash
+          : transactionHash // ignore: cast_nullable_to_non_nullable
               as Felt,
       actualFee: actualFee == freezed
           ? _value.actualFee
@@ -1978,7 +2030,9 @@ class __$$PendingCommonReceiptPropertiesCopyWithImpl<$Res>
 class _$PendingCommonReceiptProperties
     implements PendingCommonReceiptProperties {
   const _$PendingCommonReceiptProperties(
-      {required this.txnHash, required this.actualFee, final String? $type})
+      {required this.transactionHash,
+      required this.actualFee,
+      final String? $type})
       : $type = $type ?? 'pendingCommonReceiptProperties';
 
   factory _$PendingCommonReceiptProperties.fromJson(
@@ -1986,7 +2040,7 @@ class _$PendingCommonReceiptProperties
       _$$PendingCommonReceiptPropertiesFromJson(json);
 
   @override
-  final Felt txnHash;
+  final Felt transactionHash;
   @override
   final Felt actualFee;
 
@@ -1995,7 +2049,7 @@ class _$PendingCommonReceiptProperties
 
   @override
   String toString() {
-    return 'TxnReceipt.pendingCommonReceiptProperties(txnHash: $txnHash, actualFee: $actualFee)';
+    return 'TxnReceipt.pendingCommonReceiptProperties(transactionHash: $transactionHash, actualFee: $actualFee)';
   }
 
   @override
@@ -2003,7 +2057,8 @@ class _$PendingCommonReceiptProperties
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$PendingCommonReceiptProperties &&
-            const DeepCollectionEquality().equals(other.txnHash, txnHash) &&
+            const DeepCollectionEquality()
+                .equals(other.transactionHash, transactionHash) &&
             const DeepCollectionEquality().equals(other.actualFee, actualFee));
   }
 
@@ -2011,7 +2066,7 @@ class _$PendingCommonReceiptProperties
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      const DeepCollectionEquality().hash(txnHash),
+      const DeepCollectionEquality().hash(transactionHash),
       const DeepCollectionEquality().hash(actualFee));
 
   @JsonKey(ignore: true)
@@ -2024,93 +2079,101 @@ class _$PendingCommonReceiptProperties
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(
-            Felt txnHash,
+            Felt transactionHash,
             Felt actualFee,
             String status,
             String? statusData,
-            Felt? blockHash,
-            int? blockNumber,
+            Felt blockHash,
+            int blockNumber,
             List<MsgToL1> messagesSent,
             MsgToL2? l1OriginMessage,
             List<Event> events)
         invokeTxnReceipt,
-    required TResult Function(Felt txnHash, Felt actualFee, String status,
-            String? statusData, Felt? blockHash, int? blockNumber)
+    required TResult Function(Felt transactionHash, Felt actualFee,
+            String status, String? statusData, Felt blockHash, int blockNumber)
         declareTxnReceipt,
-    required TResult Function(Felt txnHash, Felt actualFee, String status,
-            String? statusData, Felt? blockHash, int? blockNumber)
+    required TResult Function(Felt transactionHash, Felt actualFee,
+            String status, String? statusData, Felt blockHash, int blockNumber)
         deployTxnReceipt,
     required TResult Function(
-            Felt txnHash,
+            Felt transactionHash,
             Felt actualFee,
             List<MsgToL1> messagesSent,
             MsgToL2? l1OriginMessage,
             List<Event> events)
         pendingInvokeTxnReceipt,
-    required TResult Function(Felt txnHash, Felt actualFee)
+    required TResult Function(Felt transactionHash, Felt actualFee)
         pendingCommonReceiptProperties,
   }) {
-    return pendingCommonReceiptProperties(txnHash, actualFee);
+    return pendingCommonReceiptProperties(transactionHash, actualFee);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(
-            Felt txnHash,
+            Felt transactionHash,
             Felt actualFee,
             String status,
             String? statusData,
-            Felt? blockHash,
-            int? blockNumber,
+            Felt blockHash,
+            int blockNumber,
             List<MsgToL1> messagesSent,
             MsgToL2? l1OriginMessage,
             List<Event> events)?
         invokeTxnReceipt,
-    TResult Function(Felt txnHash, Felt actualFee, String status,
-            String? statusData, Felt? blockHash, int? blockNumber)?
+    TResult Function(Felt transactionHash, Felt actualFee, String status,
+            String? statusData, Felt blockHash, int blockNumber)?
         declareTxnReceipt,
-    TResult Function(Felt txnHash, Felt actualFee, String status,
-            String? statusData, Felt? blockHash, int? blockNumber)?
+    TResult Function(Felt transactionHash, Felt actualFee, String status,
+            String? statusData, Felt blockHash, int blockNumber)?
         deployTxnReceipt,
-    TResult Function(Felt txnHash, Felt actualFee, List<MsgToL1> messagesSent,
-            MsgToL2? l1OriginMessage, List<Event> events)?
+    TResult Function(
+            Felt transactionHash,
+            Felt actualFee,
+            List<MsgToL1> messagesSent,
+            MsgToL2? l1OriginMessage,
+            List<Event> events)?
         pendingInvokeTxnReceipt,
-    TResult Function(Felt txnHash, Felt actualFee)?
+    TResult Function(Felt transactionHash, Felt actualFee)?
         pendingCommonReceiptProperties,
   }) {
-    return pendingCommonReceiptProperties?.call(txnHash, actualFee);
+    return pendingCommonReceiptProperties?.call(transactionHash, actualFee);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(
-            Felt txnHash,
+            Felt transactionHash,
             Felt actualFee,
             String status,
             String? statusData,
-            Felt? blockHash,
-            int? blockNumber,
+            Felt blockHash,
+            int blockNumber,
             List<MsgToL1> messagesSent,
             MsgToL2? l1OriginMessage,
             List<Event> events)?
         invokeTxnReceipt,
-    TResult Function(Felt txnHash, Felt actualFee, String status,
-            String? statusData, Felt? blockHash, int? blockNumber)?
+    TResult Function(Felt transactionHash, Felt actualFee, String status,
+            String? statusData, Felt blockHash, int blockNumber)?
         declareTxnReceipt,
-    TResult Function(Felt txnHash, Felt actualFee, String status,
-            String? statusData, Felt? blockHash, int? blockNumber)?
+    TResult Function(Felt transactionHash, Felt actualFee, String status,
+            String? statusData, Felt blockHash, int blockNumber)?
         deployTxnReceipt,
-    TResult Function(Felt txnHash, Felt actualFee, List<MsgToL1> messagesSent,
-            MsgToL2? l1OriginMessage, List<Event> events)?
+    TResult Function(
+            Felt transactionHash,
+            Felt actualFee,
+            List<MsgToL1> messagesSent,
+            MsgToL2? l1OriginMessage,
+            List<Event> events)?
         pendingInvokeTxnReceipt,
-    TResult Function(Felt txnHash, Felt actualFee)?
+    TResult Function(Felt transactionHash, Felt actualFee)?
         pendingCommonReceiptProperties,
     required TResult orElse(),
   }) {
     if (pendingCommonReceiptProperties != null) {
-      return pendingCommonReceiptProperties(txnHash, actualFee);
+      return pendingCommonReceiptProperties(transactionHash, actualFee);
     }
     return orElse();
   }
@@ -2169,14 +2232,14 @@ class _$PendingCommonReceiptProperties
 
 abstract class PendingCommonReceiptProperties implements TxnReceipt {
   const factory PendingCommonReceiptProperties(
-      {required final Felt txnHash,
+      {required final Felt transactionHash,
       required final Felt actualFee}) = _$PendingCommonReceiptProperties;
 
   factory PendingCommonReceiptProperties.fromJson(Map<String, dynamic> json) =
       _$PendingCommonReceiptProperties.fromJson;
 
   @override
-  Felt get txnHash;
+  Felt get transactionHash;
   @override
   Felt get actualFee;
   @override
