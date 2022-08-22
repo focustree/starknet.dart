@@ -10,3 +10,4 @@ export 'src/account.dart';
 export 'src/static_config.dart';
 export 'src/felt.dart';
 export 'src/convert.dart';
+export 'src/util.dart';

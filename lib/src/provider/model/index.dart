@@ -22,7 +22,6 @@ export 'json_rpc_api_error.dart';
 export 'msg_to_l1.dart';
 export 'msg_to_l2.dart';
 export 'pending_transactions.dart';
-export 'protocol_version.dart';
 export 'storage_diff_item.dart';
 export 'sync_status.dart';
 export 'syncing.dart';

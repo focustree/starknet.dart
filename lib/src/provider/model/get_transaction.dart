@@ -24,7 +24,7 @@ class Txn with _$Txn {
   @JsonSerializable(includeIfNull: false)
   const factory Txn.invokeTxn({
     // start of COMMON_TXN_PROPERTIES
-    Felt? txnHash,
+    Felt? transactionHash,
     Felt? maxFee,
     String? version,
     List<Felt>? signature,
@@ -41,7 +41,7 @@ class Txn with _$Txn {
   @JsonSerializable(includeIfNull: false)
   const factory Txn.declareTxn({
     // start of COMMON_TXN_PROPERTIES
-    Felt? txnHash,
+    Felt? transactionHash,
     Felt? maxFee,
     String? version,
     List<Felt>? signature,
@@ -54,7 +54,7 @@ class Txn with _$Txn {
 
   @JsonSerializable(includeIfNull: false)
   const factory Txn.deployTxn({
-    Felt? txnHash,
+    Felt? transactionHash,
     Felt? classHash,
     String? version,
     String? type,

@@ -15,7 +15,7 @@ void main() {
             ],
             contractAddress: Felt.fromIntString(
                 "219128243976675829890319084714200810078954121337483207856443222019910998953"),
-            maxFee: 10000000000000000,
+            maxFee: Felt.fromInt(10000000000000000),
             chainId: StarknetChainId.testNet);
         expect(
             signature,
