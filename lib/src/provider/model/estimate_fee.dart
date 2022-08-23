@@ -27,15 +27,12 @@ class EstimateFeeRequest {
     required this.blockId,
   });
 
-  Map<String, dynamic> toJson(){
+  Map<String, dynamic> toJson() {
     var invokeToJson = request.toJson();
     invokeToJson.remove('runtimeType');
-    invokeToJson.remove('txn_hash');
+    invokeToJson.remove('transaction_hash');
     invokeToJson.remove('type');
 
-    return {
-      'request':invokeToJson,
-      'block_id':blockId.toJson()
-    };
+    return {'request': invokeToJson, 'block_id': blockId.toJson()};
   }
 }

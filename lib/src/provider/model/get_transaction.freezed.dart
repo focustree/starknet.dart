@@ -684,18 +684,19 @@ class __$$InvokeTxnCopyWithImpl<$Res> extends _$TxnCopyWithImpl<$Res>
 }
 
 /// @nodoc
-@JsonSerializable()
+
+@JsonSerializable(includeIfNull: false)
 class _$InvokeTxn implements InvokeTxn {
   const _$InvokeTxn(
-      {required this.transactionHash,
-      required this.maxFee,
-      required this.version,
-      required final List<Felt>? signature,
-      required this.nonce,
-      required this.type,
-      required this.contractAddress,
-      required this.entryPointSelector,
-      required final List<Felt>? calldata,
+      {this.transactionHash,
+      this.maxFee,
+      this.version,
+      final List<Felt>? signature,
+      this.nonce,
+      this.type,
+      this.contractAddress,
+      this.entryPointSelector,
+      final List<Felt>? calldata,
       final String? $type})
       : _signature = signature,
         _calldata = calldata,
@@ -948,15 +949,15 @@ class _$InvokeTxn implements InvokeTxn {
 
 abstract class InvokeTxn implements Txn {
   const factory InvokeTxn(
-      {required final Felt? transactionHash,
-      required final Felt? maxFee,
-      required final String? version,
-      required final List<Felt>? signature,
-      required final Felt? nonce,
-      required final String? type,
-      required final Felt? contractAddress,
-      required final Felt? entryPointSelector,
-      required final List<Felt>? calldata}) = _$InvokeTxn;
+      {final Felt? transactionHash,
+      final Felt? maxFee,
+      final String? version,
+      final List<Felt>? signature,
+      final Felt? nonce,
+      final String? type,
+      final Felt? contractAddress,
+      final Felt? entryPointSelector,
+      final List<Felt>? calldata}) = _$InvokeTxn;
 
   factory InvokeTxn.fromJson(Map<String, dynamic> json) = _$InvokeTxn.fromJson;
 
@@ -1055,17 +1056,18 @@ class __$$DeclareTxnCopyWithImpl<$Res> extends _$TxnCopyWithImpl<$Res>
 }
 
 /// @nodoc
-@JsonSerializable()
+
+@JsonSerializable(includeIfNull: false)
 class _$DeclareTxn implements DeclareTxn {
   const _$DeclareTxn(
-      {required this.transactionHash,
-      required this.maxFee,
-      required this.version,
-      required final List<Felt>? signature,
-      required this.nonce,
-      required this.type,
-      required this.classHash,
-      required this.senderAddress,
+      {this.transactionHash,
+      this.maxFee,
+      this.version,
+      final List<Felt>? signature,
+      this.nonce,
+      this.type,
+      this.classHash,
+      this.senderAddress,
       final String? $type})
       : _signature = signature,
         $type = $type ?? 'declareTxn';
@@ -1305,14 +1307,14 @@ class _$DeclareTxn implements DeclareTxn {
 
 abstract class DeclareTxn implements Txn {
   const factory DeclareTxn(
-      {required final Felt? transactionHash,
-      required final Felt? maxFee,
-      required final String? version,
-      required final List<Felt>? signature,
-      required final Felt? nonce,
-      required final String? type,
-      required final Felt? classHash,
-      required final Felt? senderAddress}) = _$DeclareTxn;
+      {final Felt? transactionHash,
+      final Felt? maxFee,
+      final String? version,
+      final List<Felt>? signature,
+      final Felt? nonce,
+      final String? type,
+      final Felt? classHash,
+      final Felt? senderAddress}) = _$DeclareTxn;
 
   factory DeclareTxn.fromJson(Map<String, dynamic> json) =
       _$DeclareTxn.fromJson;
@@ -1404,16 +1406,17 @@ class __$$DeployTxnCopyWithImpl<$Res> extends _$TxnCopyWithImpl<$Res>
 }
 
 /// @nodoc
-@JsonSerializable()
+
+@JsonSerializable(includeIfNull: false)
 class _$DeployTxn implements DeployTxn {
   const _$DeployTxn(
-      {required this.transactionHash,
-      required this.classHash,
-      required this.version,
-      required this.type,
-      required this.contractAddress,
-      required this.contractAddressSalt,
-      required final List<Felt>? constructorCalldata,
+      {this.transactionHash,
+      this.classHash,
+      this.version,
+      this.type,
+      this.contractAddress,
+      this.contractAddressSalt,
+      final List<Felt>? constructorCalldata,
       final String? $type})
       : _constructorCalldata = constructorCalldata,
         $type = $type ?? 'deployTxn';
@@ -1647,13 +1650,13 @@ class _$DeployTxn implements DeployTxn {
 
 abstract class DeployTxn implements Txn {
   const factory DeployTxn(
-      {required final Felt? transactionHash,
-      required final Felt? classHash,
-      required final String? version,
-      required final String? type,
-      required final Felt? contractAddress,
-      required final Felt? contractAddressSalt,
-      required final List<Felt>? constructorCalldata}) = _$DeployTxn;
+      {final Felt? transactionHash,
+      final Felt? classHash,
+      final String? version,
+      final String? type,
+      final Felt? contractAddress,
+      final Felt? contractAddressSalt,
+      final List<Felt>? constructorCalldata}) = _$DeployTxn;
 
   factory DeployTxn.fromJson(Map<String, dynamic> json) = _$DeployTxn.fromJson;
 

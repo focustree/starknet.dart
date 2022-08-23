@@ -60,19 +60,28 @@ _$InvokeTxn _$$InvokeTxnFromJson(Map<String, dynamic> json) => _$InvokeTxn(
       $type: json['runtimeType'] as String?,
     );
 
-Map<String, dynamic> _$$InvokeTxnToJson(_$InvokeTxn instance) =>
-    <String, dynamic>{
-      'transaction_hash': instance.transactionHash?.toJson(),
-      'max_fee': instance.maxFee?.toJson(),
-      'version': instance.version,
-      'signature': instance.signature?.map((e) => e.toJson()).toList(),
-      'nonce': instance.nonce?.toJson(),
-      'type': instance.type,
-      'contract_address': instance.contractAddress?.toJson(),
-      'entry_point_selector': instance.entryPointSelector?.toJson(),
-      'calldata': instance.calldata?.map((e) => e.toJson()).toList(),
-      'runtimeType': instance.$type,
-    };
+Map<String, dynamic> _$$InvokeTxnToJson(_$InvokeTxn instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('transaction_hash', instance.transactionHash?.toJson());
+  writeNotNull('max_fee', instance.maxFee?.toJson());
+  writeNotNull('version', instance.version);
+  writeNotNull(
+      'signature', instance.signature?.map((e) => e.toJson()).toList());
+  writeNotNull('nonce', instance.nonce?.toJson());
+  writeNotNull('type', instance.type);
+  writeNotNull('contract_address', instance.contractAddress?.toJson());
+  writeNotNull('entry_point_selector', instance.entryPointSelector?.toJson());
+  writeNotNull('calldata', instance.calldata?.map((e) => e.toJson()).toList());
+  val['runtimeType'] = instance.$type;
+  return val;
+}
 
 _$DeclareTxn _$$DeclareTxnFromJson(Map<String, dynamic> json) => _$DeclareTxn(
       transactionHash: json['transaction_hash'] == null
@@ -97,18 +106,27 @@ _$DeclareTxn _$$DeclareTxnFromJson(Map<String, dynamic> json) => _$DeclareTxn(
       $type: json['runtimeType'] as String?,
     );
 
-Map<String, dynamic> _$$DeclareTxnToJson(_$DeclareTxn instance) =>
-    <String, dynamic>{
-      'transaction_hash': instance.transactionHash?.toJson(),
-      'max_fee': instance.maxFee?.toJson(),
-      'version': instance.version,
-      'signature': instance.signature?.map((e) => e.toJson()).toList(),
-      'nonce': instance.nonce?.toJson(),
-      'type': instance.type,
-      'class_hash': instance.classHash?.toJson(),
-      'sender_address': instance.senderAddress?.toJson(),
-      'runtimeType': instance.$type,
-    };
+Map<String, dynamic> _$$DeclareTxnToJson(_$DeclareTxn instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('transaction_hash', instance.transactionHash?.toJson());
+  writeNotNull('max_fee', instance.maxFee?.toJson());
+  writeNotNull('version', instance.version);
+  writeNotNull(
+      'signature', instance.signature?.map((e) => e.toJson()).toList());
+  writeNotNull('nonce', instance.nonce?.toJson());
+  writeNotNull('type', instance.type);
+  writeNotNull('class_hash', instance.classHash?.toJson());
+  writeNotNull('sender_address', instance.senderAddress?.toJson());
+  val['runtimeType'] = instance.$type;
+  return val;
+}
 
 _$DeployTxn _$$DeployTxnFromJson(Map<String, dynamic> json) => _$DeployTxn(
       transactionHash: json['transaction_hash'] == null
@@ -131,15 +149,23 @@ _$DeployTxn _$$DeployTxnFromJson(Map<String, dynamic> json) => _$DeployTxn(
       $type: json['runtimeType'] as String?,
     );
 
-Map<String, dynamic> _$$DeployTxnToJson(_$DeployTxn instance) =>
-    <String, dynamic>{
-      'transaction_hash': instance.transactionHash?.toJson(),
-      'class_hash': instance.classHash?.toJson(),
-      'version': instance.version,
-      'type': instance.type,
-      'contract_address': instance.contractAddress?.toJson(),
-      'contract_address_salt': instance.contractAddressSalt?.toJson(),
-      'constructor_calldata':
-          instance.constructorCalldata?.map((e) => e.toJson()).toList(),
-      'runtimeType': instance.$type,
-    };
+Map<String, dynamic> _$$DeployTxnToJson(_$DeployTxn instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('transaction_hash', instance.transactionHash?.toJson());
+  writeNotNull('class_hash', instance.classHash?.toJson());
+  writeNotNull('version', instance.version);
+  writeNotNull('type', instance.type);
+  writeNotNull('contract_address', instance.contractAddress?.toJson());
+  writeNotNull('contract_address_salt', instance.contractAddressSalt?.toJson());
+  writeNotNull('constructor_calldata',
+      instance.constructorCalldata?.map((e) => e.toJson()).toList());
+  val['runtimeType'] = instance.$type;
+  return val;
+}

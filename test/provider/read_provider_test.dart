@@ -373,83 +373,6 @@ void main() {
       });
     });
 
-    // Tests expecting failure.
-    group('estimateFee', () {
-      test('estimate the fee for a given StarkNet transaction', () async {
-        BlockId blockId = BlockId.blockHash(
-            blockHash: Felt.fromHexString(
-                '0x3fbf1b9a9ed822423e87365923103a9577ebed2612afccf4c9f69c126eeeeb7'));
-
-        InvokeTxn invokeTxn = InvokeTxn(
-          txnHash: Felt.fromHexString(
-              '0x2527cbcdc9384ddd805ef388861086dcc5397f8a4083b9fdecec4804ff05468'),
-          maxFee: Felt.fromHexString('0x2c63111c1bc4'),
-          version: "0x0",
-          signature: [
-            Felt.fromHexString(
-                '0x2409609b16b762755fd1cbb6e03b8ea78faecee1eb437b60abd5c80c7fca3b1'),
-            Felt.fromHexString(
-                '0x362e41ac487bec908149a01b497e32dd3798018ab4974126d956fe005f4674f')
-          ],
-          type: 'INVOKE',
-          contractAddress: Felt.fromHexString(
-              '0x769bd10cbc9d6e1b6d590489c5b74f3e7dace788869c7477335c3353e3dab42'),
-          entryPointSelector: Felt.fromHexString(
-              '0x15d40a3d6ca2ac30f4031e42be28da9b056fef9bb7357ac5e85627ee876e5ad'),
-          calldata: [
-            Felt.fromHexString('0x03'),
-            Felt.fromHexString(
-                '0x2a844fa9872228579fafc521f377015d8a0fc7438746638eed8c9cf863fef78'),
-            Felt.fromHexString(
-                '0x219209e083275171774dab1df80982e9df2096516f06319c5c6d71ae0a8480c'),
-            Felt.fromHexString('0x0'),
-            Felt.fromHexString('0x03'),
-            Felt.fromHexString(
-                '0xe417692a0bd68d7014ed8283cfbbc5e15cd955c95644607a023c4d433839a3'),
-            Felt.fromHexString(
-                '0x219209e083275171774dab1df80982e9df2096516f06319c5c6d71ae0a8480c'),
-            Felt.fromHexString('0x3'),
-            Felt.fromHexString('0x3'),
-            Felt.fromHexString(
-                '0x37e502802a8dc06b509651f1ccc0ba09064947a4afb0f3ece45b6525f9611ad'),
-            Felt.fromHexString(
-                '0x3f35dbce7a07ce455b128890d383c554afbc1b07cf7390a13e2d602a38c1a0a'),
-            Felt.fromHexString('0x6'),
-            Felt.fromHexString('0x6'),
-            Felt.fromHexString('0xc'),
-            Felt.fromHexString(
-                '0x37e502802a8dc06b509651f1ccc0ba09064947a4afb0f3ece45b6525f9611ad'),
-            Felt.fromHexString('0x1153fc28c82c47e18'),
-            Felt.fromHexString('0x0'),
-            Felt.fromHexString(
-                '0x37e502802a8dc06b509651f1ccc0ba09064947a4afb0f3ece45b6525f9611ad'),
-            Felt.fromHexString('0x130f95600f63e9090'),
-            Felt.fromHexString('0x0'),
-            Felt.fromHexString('0x1153fc28c82c47e18'),
-            Felt.fromHexString('0x0'),
-            Felt.fromHexString('0x12f5a6aee'),
-            Felt.fromHexString('0x0'),
-            Felt.fromHexString('0x130f95600f63e9090'),
-            Felt.fromHexString('0x0'),
-            Felt.fromHexString('0x6')
-          ],
-        );
-
-        EstimateFeeRequest estimateFeeRequest =
-            EstimateFeeRequest(request: invokeTxn, blockId: blockId);
-        final response = await provider.estimateFee(estimateFeeRequest);
-
-        response.when(error: (error) {
-          print(error);
-          expect(error.code, equals(-32602));
-          expect(error.message, contains('missing field `block_hash`'));
-        }, result: (result) {
-          fail('Expected to return an Internal error');
-        });
-      });
-    });
-
-    // Tests for unimplemented methods
     group('starknet_getNonce', () {
       test('returns latest nonce associated with the given address', () async {
         final response = await provider.getNonce(
@@ -588,6 +511,81 @@ void main() {
           expect(entry_points.external.length, 2);
           expect(entry_points.external[0].offset, "0x3a");
           expect(entry_points.external[1].offset, "0x5b");
+        });
+      });
+    });
+
+    // Tests expecting failure.
+    group('estimateFee', () {
+      test('estimate the fee for a given StarkNet transaction', () async {
+        BlockId blockId = BlockId.blockHash(Felt.fromHexString(
+            '0x3fbf1b9a9ed822423e87365923103a9577ebed2612afccf4c9f69c126eeeeb7'));
+
+        InvokeTxn invokeTxn = InvokeTxn(
+          transactionHash: Felt.fromHexString(
+              '0x2527cbcdc9384ddd805ef388861086dcc5397f8a4083b9fdecec4804ff05468'),
+          maxFee: Felt.fromHexString('0x2c63111c1bc4'),
+          version: "0x0",
+          signature: [
+            Felt.fromHexString(
+                '0x2409609b16b762755fd1cbb6e03b8ea78faecee1eb437b60abd5c80c7fca3b1'),
+            Felt.fromHexString(
+                '0x362e41ac487bec908149a01b497e32dd3798018ab4974126d956fe005f4674f')
+          ],
+          type: 'INVOKE',
+          contractAddress: Felt.fromHexString(
+              '0x769bd10cbc9d6e1b6d590489c5b74f3e7dace788869c7477335c3353e3dab42'),
+          entryPointSelector: Felt.fromHexString(
+              '0x15d40a3d6ca2ac30f4031e42be28da9b056fef9bb7357ac5e85627ee876e5ad'),
+          calldata: [
+            Felt.fromHexString('0x03'),
+            Felt.fromHexString(
+                '0x2a844fa9872228579fafc521f377015d8a0fc7438746638eed8c9cf863fef78'),
+            Felt.fromHexString(
+                '0x219209e083275171774dab1df80982e9df2096516f06319c5c6d71ae0a8480c'),
+            Felt.fromHexString('0x0'),
+            Felt.fromHexString('0x03'),
+            Felt.fromHexString(
+                '0xe417692a0bd68d7014ed8283cfbbc5e15cd955c95644607a023c4d433839a3'),
+            Felt.fromHexString(
+                '0x219209e083275171774dab1df80982e9df2096516f06319c5c6d71ae0a8480c'),
+            Felt.fromHexString('0x3'),
+            Felt.fromHexString('0x3'),
+            Felt.fromHexString(
+                '0x37e502802a8dc06b509651f1ccc0ba09064947a4afb0f3ece45b6525f9611ad'),
+            Felt.fromHexString(
+                '0x3f35dbce7a07ce455b128890d383c554afbc1b07cf7390a13e2d602a38c1a0a'),
+            Felt.fromHexString('0x6'),
+            Felt.fromHexString('0x6'),
+            Felt.fromHexString('0xc'),
+            Felt.fromHexString(
+                '0x37e502802a8dc06b509651f1ccc0ba09064947a4afb0f3ece45b6525f9611ad'),
+            Felt.fromHexString('0x1153fc28c82c47e18'),
+            Felt.fromHexString('0x0'),
+            Felt.fromHexString(
+                '0x37e502802a8dc06b509651f1ccc0ba09064947a4afb0f3ece45b6525f9611ad'),
+            Felt.fromHexString('0x130f95600f63e9090'),
+            Felt.fromHexString('0x0'),
+            Felt.fromHexString('0x1153fc28c82c47e18'),
+            Felt.fromHexString('0x0'),
+            Felt.fromHexString('0x12f5a6aee'),
+            Felt.fromHexString('0x0'),
+            Felt.fromHexString('0x130f95600f63e9090'),
+            Felt.fromHexString('0x0'),
+            Felt.fromHexString('0x6')
+          ],
+        );
+
+        EstimateFeeRequest estimateFeeRequest =
+            EstimateFeeRequest(request: invokeTxn, blockId: blockId);
+        final response = await provider.estimateFee(estimateFeeRequest);
+
+        response.when(error: (error) {
+          print(error);
+          expect(error.code, equals(24));
+          expect(error.message, "Invalid block id");
+        }, result: (result) {
+          fail('Expected to return an Internal error');
         });
       });
     });
