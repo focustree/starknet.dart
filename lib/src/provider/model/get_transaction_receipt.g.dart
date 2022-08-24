@@ -36,14 +36,12 @@ Map<String, dynamic> _$$GetTransactionReceiptErrorToJson(
 
 _$InvokeTxnReceipt _$$InvokeTxnReceiptFromJson(Map<String, dynamic> json) =>
     _$InvokeTxnReceipt(
-      txnHash: Felt.fromJson(json['txn_hash'] as String),
+      transactionHash: Felt.fromJson(json['transaction_hash'] as String),
       actualFee: Felt.fromJson(json['actual_fee'] as String),
       status: json['status'] as String,
       statusData: json['status_data'] as String?,
-      blockHash: json['block_hash'] == null
-          ? null
-          : Felt.fromJson(json['block_hash'] as String),
-      blockNumber: json['block_number'] as int?,
+      blockHash: Felt.fromJson(json['block_hash'] as String),
+      blockNumber: json['block_number'] as int,
       messagesSent: (json['messages_sent'] as List<dynamic>)
           .map((e) => MsgToL1.fromJson(e as Map<String, dynamic>))
           .toList(),
@@ -58,11 +56,11 @@ _$InvokeTxnReceipt _$$InvokeTxnReceiptFromJson(Map<String, dynamic> json) =>
 
 Map<String, dynamic> _$$InvokeTxnReceiptToJson(_$InvokeTxnReceipt instance) =>
     <String, dynamic>{
-      'txn_hash': instance.txnHash.toJson(),
+      'transaction_hash': instance.transactionHash.toJson(),
       'actual_fee': instance.actualFee.toJson(),
       'status': instance.status,
       'status_data': instance.statusData,
-      'block_hash': instance.blockHash?.toJson(),
+      'block_hash': instance.blockHash.toJson(),
       'block_number': instance.blockNumber,
       'messages_sent': instance.messagesSent.map((e) => e.toJson()).toList(),
       'l1_origin_message': instance.l1OriginMessage?.toJson(),
@@ -72,48 +70,44 @@ Map<String, dynamic> _$$InvokeTxnReceiptToJson(_$InvokeTxnReceipt instance) =>
 
 _$DeclareTxnReceipt _$$DeclareTxnReceiptFromJson(Map<String, dynamic> json) =>
     _$DeclareTxnReceipt(
-      txnHash: Felt.fromJson(json['txn_hash'] as String),
+      transactionHash: Felt.fromJson(json['transaction_hash'] as String),
       actualFee: Felt.fromJson(json['actual_fee'] as String),
       status: json['status'] as String,
       statusData: json['status_data'] as String?,
-      blockHash: json['block_hash'] == null
-          ? null
-          : Felt.fromJson(json['block_hash'] as String),
-      blockNumber: json['block_number'] as int?,
+      blockHash: Felt.fromJson(json['block_hash'] as String),
+      blockNumber: json['block_number'] as int,
       $type: json['runtimeType'] as String?,
     );
 
 Map<String, dynamic> _$$DeclareTxnReceiptToJson(_$DeclareTxnReceipt instance) =>
     <String, dynamic>{
-      'txn_hash': instance.txnHash.toJson(),
+      'transaction_hash': instance.transactionHash.toJson(),
       'actual_fee': instance.actualFee.toJson(),
       'status': instance.status,
       'status_data': instance.statusData,
-      'block_hash': instance.blockHash?.toJson(),
+      'block_hash': instance.blockHash.toJson(),
       'block_number': instance.blockNumber,
       'runtimeType': instance.$type,
     };
 
 _$DeployTxnReceipt _$$DeployTxnReceiptFromJson(Map<String, dynamic> json) =>
     _$DeployTxnReceipt(
-      txnHash: Felt.fromJson(json['txn_hash'] as String),
+      transactionHash: Felt.fromJson(json['transaction_hash'] as String),
       actualFee: Felt.fromJson(json['actual_fee'] as String),
       status: json['status'] as String,
       statusData: json['status_data'] as String?,
-      blockHash: json['block_hash'] == null
-          ? null
-          : Felt.fromJson(json['block_hash'] as String),
-      blockNumber: json['block_number'] as int?,
+      blockHash: Felt.fromJson(json['block_hash'] as String),
+      blockNumber: json['block_number'] as int,
       $type: json['runtimeType'] as String?,
     );
 
 Map<String, dynamic> _$$DeployTxnReceiptToJson(_$DeployTxnReceipt instance) =>
     <String, dynamic>{
-      'txn_hash': instance.txnHash.toJson(),
+      'transaction_hash': instance.transactionHash.toJson(),
       'actual_fee': instance.actualFee.toJson(),
       'status': instance.status,
       'status_data': instance.statusData,
-      'block_hash': instance.blockHash?.toJson(),
+      'block_hash': instance.blockHash.toJson(),
       'block_number': instance.blockNumber,
       'runtimeType': instance.$type,
     };
@@ -121,7 +115,7 @@ Map<String, dynamic> _$$DeployTxnReceiptToJson(_$DeployTxnReceipt instance) =>
 _$PendingInvokeTxnReceipt _$$PendingInvokeTxnReceiptFromJson(
         Map<String, dynamic> json) =>
     _$PendingInvokeTxnReceipt(
-      txnHash: Felt.fromJson(json['txn_hash'] as String),
+      transactionHash: Felt.fromJson(json['transaction_hash'] as String),
       actualFee: Felt.fromJson(json['actual_fee'] as String),
       messagesSent: (json['messages_sent'] as List<dynamic>)
           .map((e) => MsgToL1.fromJson(e as Map<String, dynamic>))
@@ -138,7 +132,7 @@ _$PendingInvokeTxnReceipt _$$PendingInvokeTxnReceiptFromJson(
 Map<String, dynamic> _$$PendingInvokeTxnReceiptToJson(
         _$PendingInvokeTxnReceipt instance) =>
     <String, dynamic>{
-      'txn_hash': instance.txnHash.toJson(),
+      'transaction_hash': instance.transactionHash.toJson(),
       'actual_fee': instance.actualFee.toJson(),
       'messages_sent': instance.messagesSent.map((e) => e.toJson()).toList(),
       'l1_origin_message': instance.l1OriginMessage?.toJson(),
@@ -149,7 +143,7 @@ Map<String, dynamic> _$$PendingInvokeTxnReceiptToJson(
 _$PendingCommonReceiptProperties _$$PendingCommonReceiptPropertiesFromJson(
         Map<String, dynamic> json) =>
     _$PendingCommonReceiptProperties(
-      txnHash: Felt.fromJson(json['txn_hash'] as String),
+      transactionHash: Felt.fromJson(json['transaction_hash'] as String),
       actualFee: Felt.fromJson(json['actual_fee'] as String),
       $type: json['runtimeType'] as String?,
     );
@@ -157,7 +151,7 @@ _$PendingCommonReceiptProperties _$$PendingCommonReceiptPropertiesFromJson(
 Map<String, dynamic> _$$PendingCommonReceiptPropertiesToJson(
         _$PendingCommonReceiptProperties instance) =>
     <String, dynamic>{
-      'txn_hash': instance.txnHash.toJson(),
+      'transaction_hash': instance.transactionHash.toJson(),
       'actual_fee': instance.actualFee.toJson(),
       'runtimeType': instance.$type,
     };

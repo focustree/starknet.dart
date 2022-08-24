@@ -23,7 +23,7 @@ class GetTransaction with _$GetTransaction {
 class Txn with _$Txn {
   const factory Txn.invokeTxn({
     // start of COMMON_TXN_PROPERTIES
-    required Felt? txnHash,
+    required Felt? transactionHash,
     required Felt? maxFee,
     required String? version,
     required List<Felt>? signature,
@@ -39,7 +39,7 @@ class Txn with _$Txn {
 
   const factory Txn.declareTxn({
     // start of COMMON_TXN_PROPERTIES
-    required Felt? txnHash,
+    required Felt? transactionHash,
     required Felt? maxFee,
     required String? version,
     required List<Felt>? signature,
@@ -51,7 +51,7 @@ class Txn with _$Txn {
   }) = DeclareTxn;
 
   const factory Txn.deployTxn({
-    required Felt? txnHash,
+    required Felt? transactionHash,
     required Felt? classHash,
     required String? version,
     required String? type,

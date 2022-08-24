@@ -18,8 +18,8 @@ abstract class ReadProvider {
 
   /// Gets block information with transaction hashes given the block id
   ///
-  /// [Spec](https://github.com/starkware-libs/starknet-specs/blob/3d3b2d7ad6899f64043c0deaa8a40d3d8c9b1788/api/starknet_api_openrpc.json#L10-L42)
-  Future<GetBlockWithTxHashes> getBlockWithTxHashes(String blockId);
+  /// [Spec](https://github.com/starkware-libs/starknet-specs/blob/v0.1.0/api/starknet_api_openrpc.json#L10-L42)
+  Future<GetBlockWithTxHashes> getBlockWithTxHashes(BlockId blockId);
 
   /// Get the number of transactions in a block given a block id
   ///
@@ -28,14 +28,20 @@ abstract class ReadProvider {
 
   /// Calls a starknet function without creating a starknet transaction
   ///
-  /// [Spec](https://github.com/starkware-libs/starknet-specs/blob/3d3b2d7ad6899f64043c0deaa8a40d3d8c9b1788/api/starknet_api_openrpc.json#L369-L419)
-  Future<Call> call({required FunctionCall request, String blockId});
+  /// [Spec](https://github.com/starkware-libs/starknet-specs/blob/v0.1.0/api/starknet_api_openrpc.json#L369-L419)
+  Future<Call> call({
+    required FunctionCall request,
+    required BlockId blockId,
+  });
 
   /// Get the value of the storage at the given address and key
   ///
   /// [Spec](https://github.com/starkware-libs/starknet-specs/blob/3d3b2d7ad6899f64043c0deaa8a40d3d8c9b1788/api/starknet_api_openrpc.json#L103-L149)
-  Future<GetStorage> getStorageAt(
-      {required Felt contractAddress, required Felt key, String blockId});
+  Future<GetStorage> getStorageAt({
+    required Felt contractAddress,
+    required Felt key,
+    required BlockId blockId,
+  });
 
   /// Gets the details and status of a submitted transaction from hash of a transaction.
   ///
@@ -65,11 +71,6 @@ abstract class ReadProvider {
   /// [Spec](https://github.com/starkware-libs/starknet-specs/blob/30e5bafcda60c31b5fb4021b4f5ddcfc18d2ff7d/api/starknet_api_openrpc.json#L521-L535)
   Future<PendingTransactions> pendingTransactions();
 
-  /// Gets the current starknet protocol version identifier, as supported by this sequencer.
-  ///
-  /// [Spec](https://github.com/starkware-libs/starknet-specs/blob/30e5bafcda60c31b5fb4021b4f5ddcfc18d2ff7d/api/starknet_api_openrpc.json#L536-L548)
-  Future<ProtocolVersion> protocolVersion();
-
   /// Returns an object about the sync status, or false if the node is not synching
   ///
   /// [Spec](https://github.com/starkware-libs/starknet-specs/blob/30e5bafcda60c31b5fb4021b4f5ddcfc18d2ff7d/api/starknet_api_openrpc.json#L549-L569)
@@ -77,9 +78,8 @@ abstract class ReadProvider {
 
   /// Gets the nonce associated with the given address in the given block
   ///
-  /// [Spec](https://github.com/starkware-libs/starknet-specs/blob/5cafa4cbaf5e4596bf309dfbde1bd0c4fa2ce1ce/api/starknet_api_openrpc.json#L628-L664)
+  /// [Spec](https://github.com/starkware-libs/starknet-specs/blob/v0.1.0/api/starknet_api_openrpc.json#L628-L653)
   Future<GetNonce> getNonce(
-    BlockId blockId,
     Felt contractAddress,
   );
 
@@ -133,10 +133,12 @@ class JsonRpcReadProvider implements ReadProvider {
   }
 
   @override
-  Future<GetBlockWithTxHashes> getBlockWithTxHashes(String blockId) async {
+  Future<GetBlockWithTxHashes> getBlockWithTxHashes(BlockId blockId) async {
     return callRpcEndpoint(
-            nodeUri: nodeUri, method: 'starknet_getBlockWithTxHashes')
-        .then(GetBlockWithTxHashes.fromJson);
+      nodeUri: nodeUri,
+      method: 'starknet_getBlockWithTxHashes',
+      params: [blockId],
+    ).then(GetBlockWithTxHashes.fromJson);
   }
 
   @override
@@ -155,8 +157,10 @@ class JsonRpcReadProvider implements ReadProvider {
   }
 
   @override
-  Future<Call> call(
-      {required FunctionCall request, String blockId = 'pending'}) async {
+  Future<Call> call({
+    required FunctionCall request,
+    required BlockId blockId,
+  }) async {
     return callRpcEndpoint(
         nodeUri: nodeUri,
         method: 'starknet_call',
@@ -167,7 +171,7 @@ class JsonRpcReadProvider implements ReadProvider {
   Future<GetStorage> getStorageAt({
     required Felt contractAddress,
     required Felt key,
-    String blockId = 'latest',
+    required BlockId blockId,
   }) async {
     return callRpcEndpoint(
       nodeUri: nodeUri,
@@ -223,15 +227,6 @@ class JsonRpcReadProvider implements ReadProvider {
   }
 
   @override
-  Future<ProtocolVersion> protocolVersion() {
-    return callRpcEndpoint(
-      nodeUri: nodeUri,
-      method: 'starknet_protocolVersion',
-      params: [],
-    ).then(ProtocolVersion.fromJson);
-  }
-
-  @override
   Future<Syncing> syncing() {
     return callRpcEndpoint(
       nodeUri: nodeUri,
@@ -242,13 +237,12 @@ class JsonRpcReadProvider implements ReadProvider {
 
   @override
   Future<GetNonce> getNonce(
-    BlockId blockId,
     Felt contractAddress,
   ) {
     return callRpcEndpoint(
       nodeUri: nodeUri,
       method: 'starknet_getNonce',
-      params: [blockId, contractAddress],
+      params: [contractAddress],
     ).then(GetNonce.fromJson);
   }
 

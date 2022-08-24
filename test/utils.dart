@@ -1,8 +1,8 @@
 import 'package:starknet/starknet.dart';
 
 ReadProvider getJsonRpcReadProvider() {
-  const network =
-      String.fromEnvironment('NETWORK', defaultValue: 'infuraGoerliTestnet');
+  const network = String.fromEnvironment('NETWORK',
+      defaultValue: 'v010PathfinderGoerliTestnet');
   if (network == 'infuraGoerliTestnet') {
     return JsonRpcReadProvider.infuraGoerliTestnet;
   } else if (network == 'v010PathfinderGoerliTestnet') {

@@ -23,12 +23,12 @@ class GetTransactionReceipt with _$GetTransactionReceipt {
 class TxnReceipt with _$TxnReceipt {
   const factory TxnReceipt.invokeTxnReceipt({
     // start of COMMON_RECEIPT_PROPERTIES
-    required Felt txnHash,
+    required Felt transactionHash,
     required Felt actualFee,
     required String status,
     required String? statusData,
-    required Felt? blockHash,
-    required int? blockNumber,
+    required Felt blockHash,
+    required int blockNumber,
     // end of COMMON_RECEIPT_PROPERTIES
     // start of INVOKE_TXN_RECEIPT_PROPERTIES
     required List<MsgToL1> messagesSent,
@@ -39,29 +39,29 @@ class TxnReceipt with _$TxnReceipt {
 
   const factory TxnReceipt.declareTxnReceipt({
     // start of COMMON_RECEIPT_PROPERTIES
-    required Felt txnHash,
+    required Felt transactionHash,
     required Felt actualFee,
     required String status,
     required String? statusData,
-    required Felt? blockHash,
-    required int? blockNumber,
+    required Felt blockHash,
+    required int blockNumber,
     // end of COMMON_RECEIPT_PROPERTIES
   }) = DeclareTxnReceipt;
 
   const factory TxnReceipt.deployTxnReceipt({
     // start of COMMON_RECEIPT_PROPERTIES
-    required Felt txnHash,
+    required Felt transactionHash,
     required Felt actualFee,
     required String status,
     required String? statusData,
-    required Felt? blockHash,
-    required int? blockNumber,
+    required Felt blockHash,
+    required int blockNumber,
     // end of COMMON_RECEIPT_PROPERTIES
   }) = DeployTxnReceipt;
 
   const factory TxnReceipt.pendingInvokeTxnReceipt({
     // start of PENDING_COMMON_RECEIPT_PROPERTIES
-    required Felt txnHash,
+    required Felt transactionHash,
     required Felt actualFee,
     // end of PENDING_COMMON_RECEIPT_PROPERTIES
     // start of INVOKE_TXN_RECEIPT_PROPERTIES
@@ -72,7 +72,7 @@ class TxnReceipt with _$TxnReceipt {
   }) = PendingInvokeTxnReceipt;
 
   const factory TxnReceipt.pendingCommonReceiptProperties({
-    required Felt txnHash,
+    required Felt transactionHash,
     required Felt actualFee,
   }) = PendingCommonReceiptProperties;
 

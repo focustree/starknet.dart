@@ -8,11 +8,11 @@ part 'get_block_with_txs.g.dart';
 class GetBlockWithTxs with _$GetBlockWithTxs {
   const factory GetBlockWithTxs.block({
     required BlockWithTxs result,
-  }) = TxsBlock;
+  }) = Block;
 
   const factory GetBlockWithTxs.pending({
     required PendingBlockWithTxs pendingBlock,
-  }) = PendingBlock;
+  }) = Pending;
 
   const factory GetBlockWithTxs.error({
     required JsonRpcApiError error,
@@ -22,8 +22,8 @@ class GetBlockWithTxs with _$GetBlockWithTxs {
       json.containsKey('error')
           ? GetBlockWithTxsError.fromJson(json)
           : json.containsKey('status')
-              ? TxsBlock.fromJson(json)
-              : PendingBlock.fromJson(json);
+              ? Block.fromJson(json)
+              : Pending.fromJson(json);
 }
 
 @freezed

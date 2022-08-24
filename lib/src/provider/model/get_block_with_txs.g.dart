@@ -6,26 +6,23 @@ part of 'get_block_with_txs.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$TxsBlock _$$TxsBlockFromJson(Map<String, dynamic> json) => _$TxsBlock(
+_$Block _$$BlockFromJson(Map<String, dynamic> json) => _$Block(
       result: BlockWithTxs.fromJson(json['result'] as Map<String, dynamic>),
       $type: json['runtimeType'] as String?,
     );
 
-Map<String, dynamic> _$$TxsBlockToJson(_$TxsBlock instance) =>
-    <String, dynamic>{
+Map<String, dynamic> _$$BlockToJson(_$Block instance) => <String, dynamic>{
       'result': instance.result.toJson(),
       'runtimeType': instance.$type,
     };
 
-_$PendingBlock _$$PendingBlockFromJson(Map<String, dynamic> json) =>
-    _$PendingBlock(
+_$Pending _$$PendingFromJson(Map<String, dynamic> json) => _$Pending(
       pendingBlock: PendingBlockWithTxs.fromJson(
           json['pending_block'] as Map<String, dynamic>),
       $type: json['runtimeType'] as String?,
     );
 
-Map<String, dynamic> _$$PendingBlockToJson(_$PendingBlock instance) =>
-    <String, dynamic>{
+Map<String, dynamic> _$$PendingToJson(_$Pending instance) => <String, dynamic>{
       'pending_block': instance.pendingBlock.toJson(),
       'runtimeType': instance.$type,
     };
