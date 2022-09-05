@@ -515,6 +515,39 @@ void main() {
       });
     });
 
+    group('starknet_getEvents', () {
+      test('returns all events matching the given filter', () async {
+        final response = await provider.getEvents(GetEventsRequest(
+          pageSize: 1,
+          pageNumber: 0,
+          fromBlock: BlockId.blockNumber(12000),
+          toBlock: BlockId.blockNumber(200000),
+        ));
+
+        response.when(
+            error: (error) => fail("Shouldn't fail"),
+            result: (result) {
+              expect(result.events.length, 1);
+            });
+      });
+
+      test('requesting the events with big page size', () async {
+        final response = await provider.getEvents(GetEventsRequest(
+          pageSize: 1025,
+          pageNumber: 0,
+          fromBlock: BlockId.blockNumber(100),
+          toBlock: BlockId.blockTag("latest"),
+        ));
+
+        response.when(
+            error: (error) {
+              expect(error.code, 31);
+              expect(error.message, "Requested page size is too big");
+            },
+            result: (result) => fail("Should fail"));
+      });
+    });
+
     // Tests for unimplemented methods
     group('starknet_pendingTransactions', () {
       test('returns not supported error for pendingTransactions', () async {
