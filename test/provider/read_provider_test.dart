@@ -458,23 +458,24 @@ void main() {
     });
 
     group('starknet_getBlockWithTxs', () {
-      test('returns unimplemented method error for getStateUpdate', () async {
+      test(
+          'returns block information with full transactions given the block id',
+          () async {
         final GetBlockWithTxs response = await provider.getBlockWithTxs(
             BlockId.blockHash(Felt.fromHexString(
                 '0x3fbf1b9a9ed822423e87365923103a9577ebed2612afccf4c9f69c126eeeeb7')));
         response.when(
-            error: (error) => fail("Shouldn't fail"),
-            block: (BlockWithTxs block) {
-              expect(block, isNotNull);
-            },
-            pending: (PendingBlockWithTxs result) {
-              expect(result, isNull);
-            });
+          error: (error) => fail(error.message),
+          block: (BlockWithTxs block) {
+            expect(block, isNotNull);
+          },
+        );
       });
     });
 
     group('starknet_getBlockTransactionCount', () {
-      test('returns unimplemented method error for getStateUpdate', () async {
+      test('returns the number of transactions in a block given a block id',
+          () async {
         final GetBlockTxnCount response = await provider.getBlockTxnCount(
             BlockId.blockHash(Felt.fromHexString(
                 '0x3fbf1b9a9ed822423e87365923103a9577ebed2612afccf4c9f69c126eeeeb7')));

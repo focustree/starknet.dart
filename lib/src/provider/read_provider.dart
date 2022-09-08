@@ -143,8 +143,11 @@ class JsonRpcReadProvider implements ReadProvider {
 
   @override
   Future<GetBlockWithTxs> getBlockWithTxs(BlockId blockId) async {
-    return callRpcEndpoint(nodeUri: nodeUri, method: 'starknet_getBlockWithTxs')
-        .then(GetBlockWithTxs.fromJson);
+    return callRpcEndpoint(
+      nodeUri: nodeUri,
+      method: 'starknet_getBlockWithTxs',
+      params: [blockId],
+    ).then(GetBlockWithTxs.fromJson);
   }
 
   @override

@@ -8,28 +8,21 @@ part 'get_block_with_txs.g.dart';
 class GetBlockWithTxs with _$GetBlockWithTxs {
   const factory GetBlockWithTxs.block({
     required BlockWithTxs result,
-  }) = Block;
-
-  const factory GetBlockWithTxs.pending({
-    required PendingBlockWithTxs pendingBlock,
-  }) = Pending;
+  }) = GetBlockWithTxsResult;
 
   const factory GetBlockWithTxs.error({
     required JsonRpcApiError error,
   }) = GetBlockWithTxsError;
-
   factory GetBlockWithTxs.fromJson(Map<String, Object?> json) =>
       json.containsKey('error')
           ? GetBlockWithTxsError.fromJson(json)
-          : json.containsKey('status')
-              ? Block.fromJson(json)
-              : Pending.fromJson(json);
+          : GetBlockWithTxsResult.fromJson(json);
 }
 
 @freezed
 class BlockWithTxs with _$BlockWithTxs {
-  const factory BlockWithTxs.result(
-      {required BlockStatus status,
+  const factory BlockWithTxs.resultingBlock(
+      {required String status,
 
       //Start of BLOCK_BODY_WITH_TXS
       required List<Transaction> transactions,
@@ -45,8 +38,20 @@ class BlockWithTxs with _$BlockWithTxs {
       //End of BLOCK_HEADER
       }) = BlockWithTxsResponse;
 
+  const factory BlockWithTxs.pendingBlock(
+      {
+      // Start of BLOCK_BODY_WITH_TXS
+      required List<Transaction> transactions,
+      // End of BLOCK_BODY_WITH_TXS
+      required int timestamp,
+      required Felt sequencerAddress,
+      required Felt blockHash,
+      required}) = PendingBlockWithTxsResult;
+
   factory BlockWithTxs.fromJson(Map<String, Object?> json) =>
-      BlockWithTxsResponse.fromJson(json);
+      json['status'] != null
+          ? BlockWithTxsResponse.fromJson(json)
+          : PendingBlockWithTxsResult.fromJson(json);
 }
 
 @freezed
@@ -60,26 +65,23 @@ class Transaction with _$Transaction {
 
     //Start of COMMON_TXN_PROPERTIES
     required Felt transactionHash,
-    required Felt maxFree,
+    required Felt maxFee,
     required String version,
     required List<Felt> signature,
     required Felt nonce,
-    required TxnType type,
+    required String type,
     //End of COMMON_TXN_PROPERTIES
   }) = InvokeBlockTxn;
   const factory Transaction.declare({
-    // Gave this name but the object doesn't have a name even if its inside allOf
-    // So I gave it a name here but i believe it should be changed later when we
-    // Have an idea about how the API will look like
-    // Most probably it will need to be flattened out
-    required DeclarationInfo declarationInfo,
+    required Felt classHash,
+    required Felt senderAddress,
     //Start of COMMON_TXN_PROPERTIES
     required Felt transactionHash,
-    required Felt maxFree,
+    required Felt maxFee,
     required String version,
     required List<Felt> signature,
     required Felt nonce,
-    required TxnType type,
+    required String type,
     //End of COMMON_TXN_PROPERTIES
   }) = DeclareBlockTxn;
   const factory Transaction.deploy({
@@ -89,7 +91,7 @@ class Transaction with _$Transaction {
     required Felt contractAddressSalt,
     required List<Felt> constructor_Calldata,
     required String version,
-    required TxnType type,
+    required String type,
     //Start of BLOCK_BODY_WITH_TXS
 
     //End of BLOCK_BODY_WITH_TXS
@@ -104,49 +106,4 @@ class Transaction with _$Transaction {
           : json['type'] == "DECLARE"
               ? DeclareBlockTxn.fromJson(json)
               : DeployBlockTxn.fromJson(json);
-}
-
-enum BlockStatus {
-  pending("PENDING"),
-  acceptedOnL2("ACCEPTED_ON_L2"),
-  acceptedOnL1("ACCEPTED_ON_L1"),
-  rejected("REJECTED");
-
-  const BlockStatus(this.value);
-  final String value;
-}
-
-enum TxnType {
-  invoke("INVOKE"),
-  declare("DECLARE"),
-  deploy("DEPLOY");
-
-  const TxnType(this.value);
-  final String value;
-}
-
-@freezed
-class DeclarationInfo with _$DeclarationInfo {
-  const factory DeclarationInfo.result({
-    required Felt classHash,
-    required Felt senderAddress,
-  }) = DeclarationInfoResult;
-
-  factory DeclarationInfo.fromJson(Map<String, Object?> json) =>
-      DeclarationInfoResult.fromJson(json);
-}
-
-@freezed
-class PendingBlockWithTxs with _$PendingBlockWithTxs {
-  const factory PendingBlockWithTxs.result(
-      {
-      // Start of BLOCK_BODY_WITH_TXS
-      required List<Transaction> transactions,
-      // End of BLOCK_BODY_WITH_TXS
-      required int timestamp,
-      required Felt sequencerAddress,
-      required Felt blockHash,
-      required}) = PendingBlockWithTxsResult;
-  factory PendingBlockWithTxs.fromJson(Map<String, Object?> json) =>
-      PendingBlockWithTxsResult.fromJson(json);
 }
