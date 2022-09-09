@@ -24,3 +24,7 @@ export 'pending_transactions.dart';
 export 'storage_diff_item.dart';
 export 'sync_status.dart';
 export 'syncing.dart';
+export 'get_class_hash_at.dart';
+export 'get_class.dart';
+export 'get_block_txn_count.dart';
+export 'get_block_with_txs.dart';
