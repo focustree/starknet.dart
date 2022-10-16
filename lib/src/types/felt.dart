@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'dart:typed_data';
 
 import 'package:starknet/starknet.dart';
@@ -59,4 +60,24 @@ class Felt {
 
   @override
   int get hashCode => _bigInt.hashCode;
+
+  Uint8List _bigIntToUint8List(BigInt bigInt) =>
+      _bigIntToByteData(bigInt).buffer.asUint8List();
+
+  ByteData _bigIntToByteData(BigInt bigInt) {
+    final data = ByteData((bigInt.bitLength / 8).ceil());
+    var val = bigInt;
+
+    for (var i = 1; i <= data.lengthInBytes; i++) {
+      data.setUint8(data.lengthInBytes - i, val.toUnsigned(8).toInt());
+      val = val >> 8;
+    }
+
+    return data;
+  }
+
+  /// Interprets felt as a string
+  String toSymbol() {
+    return Utf8Codec().decode(_bigIntToUint8List(_bigInt));
+  }
 }
