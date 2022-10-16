@@ -26,17 +26,29 @@ class Contract {
     ));
   }
 
+  /// Get Nonce from account contract
   Future<Felt> getNonce() async {
-    final response = await account.provider.getNonce(account.accountAddress);
+    final response = await account.provider.call(
+      request: FunctionCall(
+        contractAddress: account.accountAddress,
+        entryPointSelector: getSelectorByName("get_nonce"),
+        calldata: [],
+      ),
+      blockId: BlockId.blockTag("latest"),
+    );
     return (response.when(error: (error) {
       throw Exception("Failed to retrieve nonce");
     }, result: ((result) {
-      return Felt.fromInt(4);
+      return result[0];
     })));
   }
 
-  Future execute(String selector, List<Felt> calldata) async {
+  Future<InvokeTransaction> execute(
+      String selector, List<Felt> calldata) async {
     final Felt nonce = await getNonce();
+    final Felt maxFee = Felt.fromInt(16000000000001);
+    final Felt version = Felt.fromInt(0);
+
     final trx = await account.execute(
       functionCalls: [
         FunctionCall(
@@ -46,6 +58,8 @@ class Contract {
         ),
       ],
       nonce: nonce,
+      maxFee: maxFee,
+      version: version,
     );
     return trx;
   }
