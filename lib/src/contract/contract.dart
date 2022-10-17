@@ -45,10 +45,9 @@ class Contract {
 
   Future<InvokeTransaction> execute(
       String selector, List<Felt> calldata) async {
-    final Felt accountNonce = await getNonce();
-    final Felt nonce = Felt(accountNonce.toBigInt() + BigInt.from(1));
-    final Felt maxFee = defaultMaxFee;
-    final Felt version = defaultVersion;
+    final Felt nonce = await getNonce();
+    final Felt maxFee = Felt.fromInt(16000000000001);
+    final Felt version = Felt.fromInt(0);
 
     final trx = await account.execute(
       functionCalls: [
