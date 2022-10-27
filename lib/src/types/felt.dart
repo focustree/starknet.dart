@@ -44,6 +44,10 @@ class Felt {
     return bigIntToHexString(_bigInt);
   }
 
+  String toHexString() {
+    return bigIntToHexString(_bigInt);
+  }
+
   @override
   String toString() {
     return "Felt(${_bigInt.toString()})";
