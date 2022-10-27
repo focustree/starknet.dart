@@ -12,7 +12,7 @@ final myWalletAddress = Felt.fromHexString(
     "0x0367c0c4603a29Bc5aCA8E07C6A2776D7C0d325945aBB4f772f448b345Ca4Cf7");
 
 void main() async {
-  final provider = JsonRpcProvider(nodeUri: v010PathfinderGoerliTestnetUri);
+  final provider = JsonRpcProvider(nodeUri: infuraGoerliTestnetUri);
 
   final signer = Signer(privateKey: privateKey);
 
@@ -24,6 +24,12 @@ void main() async {
 
   final erc20 = ERC20(account: account, address: erc20Address);
 
+  Future<Uint256> account_balance(Felt account) async {
+    final balance = await erc20.balanceOf(account);
+    print('Balance of ${account.toHexString()}: $balance');
+    return balance;
+  }
+
   final name = await erc20.name();
   print('Name: $name');
 
@@ -33,9 +39,21 @@ void main() async {
   final supply = await erc20.totalSupply();
   print('Supply: $supply');
 
-  final balance = await erc20.balanceOf(myWalletAddress);
-  print('Balance of $myWalletAddress: $balance');
+  await account_balance(myWalletAddress);
+  await account_balance(accountAddress);
 
   final allowance = await erc20.allowance(accountAddress, myWalletAddress);
   print('Allowance: $allowance');
+
+  var trx = await erc20.transfer(
+    myWalletAddress,
+    Uint256(low: Felt.fromInt(1), high: Felt.fromInt(0)),
+  );
+  print('Transfer Transaction: $trx');
+  // wait for transaction ....
+  trx = await erc20.approve(
+    myWalletAddress,
+    Uint256(low: Felt.fromInt(2), high: Felt.fromInt(0)),
+  );
+  print('Approve transaction: $trx');
 }
