@@ -36,8 +36,24 @@ class Contract {
       ),
       blockId: BlockId.blockTag("latest"),
     );
-    return (response.when(error: (error) {
-      throw Exception("Failed to retrieve nonce");
+    return (response.when(error: (error) async {
+      if (error.code == 21 && error.message == "Invalid message selector") {
+        // Fallback on provider getNonce
+        final nonceResp =
+            await account.provider.getNonce(account.accountAddress);
+        return (nonceResp.when(
+          error: (error) {
+            throw Exception(
+                "Error provider getNonce (${error.code}): ${error.message}");
+          },
+          result: ((result) {
+            return result;
+          }),
+        ));
+      } else {
+        throw Exception(
+            "Error call get_nonce (${error.code}): ${error.message}");
+      }
     }, result: ((result) {
       return result[0];
     })));
@@ -46,8 +62,8 @@ class Contract {
   Future<InvokeTransaction> execute(
       String selector, List<Felt> calldata) async {
     final Felt nonce = await getNonce();
-    final Felt maxFee = Felt.fromInt(16000000000001);
-    final Felt version = Felt.fromInt(0);
+    final Felt maxFee = defaultMaxFee;
+    final Felt version = defaultVersion;
 
     final trx = await account.execute(
       functionCalls: [
