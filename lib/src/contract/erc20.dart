@@ -50,18 +50,56 @@ class ERC20 extends Contract {
 
   /// Moves `amount` tokens from the caller’s account to `recipient`.
   ///
-  /// Returns a boolean value indicating whether the operation succeeded.
-  // Future<Bool> transfer(Felt recipient, Uint256 value) async {}
+  /// Returns transaction hash.
+  Future<String> transfer(Felt recipient, Uint256 value) async {
+    final InvokeTransaction trx = await execute(
+      "transfer",
+      [recipient, value.low, value.high],
+    );
+    return (trx.when(
+      result: (result) {
+        return result.transaction_hash;
+      },
+      error: (error) {
+        throw Exception("Error transfer (${error.code}): ${error.message}");
+      },
+    ));
+  }
 
   /// Moves `amount` tokens from `sender` to `recipient` using the allowance mechanism.
   /// amount is then deducted from the caller’s allowance.
   ///
-  /// Returns a boolean value indicating whether the operation succeeded.
-  // Future<Bool> transferFrom(Felt from, Felt to, Uint256 value) async {}
+  /// Returns transaction hash.
+  Future<String> transferFrom(Felt from, Felt to, Uint256 value) async {
+    final InvokeTransaction trx = await execute(
+      "transferFrom",
+      [from, to, value.low, value.high],
+    );
+    return (trx.when(
+      result: (result) {
+        return result.transaction_hash;
+      },
+      error: (error) {
+        throw Exception("Error transferFrom (${error.code}): ${error.message}");
+      },
+    ));
+  }
 
   /// Sets `amount` as the allowance of `spender` over the caller’s tokens.
   ///
-  /// Returns a boolean value indicating whether the operation succeeded.
-  // Future<Bool> approve(Felt spender, Uint256 amount) async {}
-
+  /// Returns transaction hash.
+  Future<String> approve(Felt spender, Uint256 amount) async {
+    final InvokeTransaction trx = await execute(
+      "approve",
+      [spender, amount.low, amount.high],
+    );
+    return (trx.when(
+      result: (result) {
+        return result.transaction_hash;
+      },
+      error: (error) {
+        throw Exception("Error transfer (${error.code}): ${error.message}");
+      },
+    ));
+  }
 }
