@@ -80,6 +80,7 @@ abstract class ReadProvider {
   ///
   /// [Spec](https://github.com/starkware-libs/starknet-specs/blob/v0.1.0/api/starknet_api_openrpc.json#L628-L653)
   Future<GetNonce> getNonce(
+    BlockId blockId,
     Felt contractAddress,
   );
 
@@ -245,12 +246,13 @@ class JsonRpcReadProvider implements ReadProvider {
 
   @override
   Future<GetNonce> getNonce(
+    BlockId blockId,
     Felt contractAddress,
   ) {
     return callRpcEndpoint(
       nodeUri: nodeUri,
       method: 'starknet_getNonce',
-      params: [contractAddress],
+      params: [blockId, contractAddress],
     ).then(GetNonce.fromJson);
   }
 

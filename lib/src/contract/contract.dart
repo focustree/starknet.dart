@@ -27,20 +27,20 @@ class Contract {
   }
 
   /// Get Nonce from account contract
-  Future<Felt> getNonce() async {
+  Future<Felt> getNonce([BlockId blockId = BlockId.latest]) async {
     final response = await account.provider.call(
       request: FunctionCall(
         contractAddress: account.accountAddress,
         entryPointSelector: getSelectorByName("get_nonce"),
         calldata: [],
       ),
-      blockId: BlockId.blockTag("latest"),
+      blockId: blockId,
     );
     return (response.when(error: (error) async {
       if (error.code == 21 && error.message == "Invalid message selector") {
         // Fallback on provider getNonce
         final nonceResp =
-            await account.provider.getNonce(account.accountAddress);
+            await account.provider.getNonce(blockId, account.accountAddress);
         return (nonceResp.when(
           error: (error) {
             throw Exception(
