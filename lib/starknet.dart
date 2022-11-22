@@ -8,6 +8,7 @@ export 'src/provider/index.dart';
 export 'src/signer.dart';
 export 'src/account.dart';
 export 'src/static_config.dart';
-export 'src/felt.dart';
+export 'src/types/index.dart';
 export 'src/convert.dart';
 export 'src/util.dart';
+export 'src/contract/index.dart';
