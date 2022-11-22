@@ -18,6 +18,8 @@ class BlockId with _$BlockId {
     String blockTag,
   ) = BlockIdTag;
 
+  static const BlockId latest = BlockId.blockTag('latest');
+
   factory BlockId.fromJson(Map<String, dynamic> json) =>
       _$BlockIdFromJson(json);
 
