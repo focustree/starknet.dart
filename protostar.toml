@@ -1,0 +1,18 @@
+[project]
+protostar-version = "0.8.1"
+lib-path = "contracts/lib"
+cairo-path = ["contracts/lib/cairo_contracts/src"]
+
+[contracts]
+proxy = [
+    "contracts/lib/cairo_contracts/src/openzeppelin/upgrades/presets/Proxy.cairo"
+]
+erc20_mintable = [
+    "contracts/lib/cairo_contracts/src/openzeppelin/token/erc20/presets/ERC20Mintable.cairo"
+]
+erc20_upgradeable = [
+    "contracts/lib/cairo_contracts/src/openzeppelin/token/erc20/presets/ERC20Upgradeable.cairo"
+]
+erc721_mintable_burnable = [
+    "contracts/lib/cairo_contracts/src/openzeppelin/token/erc721/presets/ERC721MintableBurnable.cairo"
+]

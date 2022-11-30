@@ -15,5 +15,9 @@ build/
 # Miscellaneous
 coverage/
 .DS_Store
+.vscode/settings.json
 
 .idea
+
+# Python
+**/__pycache__
