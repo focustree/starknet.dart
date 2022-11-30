@@ -5,6 +5,7 @@
 
 from starkware.cairo.common.cairo_builtins import HashBuiltin
 from starkware.starknet.common.syscalls import library_call, library_call_l1_handler
+from starkware.cairo.common.math import assert_not_zero, assert_le
 
 from openzeppelin.upgrades.library import Proxy
 

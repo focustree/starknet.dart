@@ -23,3 +23,66 @@ You can follow the progress of the project directly on the [kanban](https://gith
 ## Contributing
 
 If you want to contribute to this project or have any suggestion, please check out our [Contributor Guide](CONTRIBUTING.md).
+
+## Dev Guide
+
+### Initial Setup
+
+1. Install python deps. Make sure to select the python interpreter from the local .venv created by poetry if you're using VS Code.
+
+```sh
+poetry install
+```
+
+2. Run devnet in one terminal
+
+```sh
+poetry run devnet start
+```
+
+3. Deploy erc20 to devnet
+
+```sh
+poetry run deploy erc20_upgradeable
+```
+
+### Run Tests
+
+You can run the tests with the following command:
+
+```
+dart test
+```
+
+### Release a new version to pub.dev
+
+You simply need to create a PR where you:
+
+1. Bump the package version
+2. Add an entry to the `CHANGELOG`
+
+Make sure it passes all the CI tests, then merge it to release a new version of the package.
+
+### Generate freezed model classes
+
+To avoid writing too much boilerplate, we use the [freezed](https://github.com/rrousselGit/freezed) library to automatically generate serializer logic.
+
+You can run the following command to generate those classes:
+
+```
+dart run build_runner build
+```
+
+Alternatively, you can hit `Cmd + Shift + B` in vscode.
+
+### Generate docs
+
+To generate docs, run:
+
+```
+dart doc .
+```
+
+For more advanced features, check out the [dartdoc package](https://pub.dev/packages/dartdoc).
+
+### R
