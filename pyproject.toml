@@ -10,7 +10,7 @@ declare = "scripts.python.commands.declare:main"
 devnet = "scripts.python.commands.devnet:main"
 
 [tool.poetry.dependencies]
-python = "3.9.8"
+python = ">=3.8,<3.10"
 starknet-devnet = "0.4.0"
 cairo-lang = "0.10.1"
 starknet-py = "^0.10.1-alpha.0"
