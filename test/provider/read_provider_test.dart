@@ -230,20 +230,78 @@ void main() {
     });
 
     group('getTransactionByHash', () {
-      test('returns the transaction details based on the transaction hash',
+      test(
+          'returns the INVOKE transaction details based on the transaction hash',
           () async {
-        final response = await provider.getTransactionByHash(
-          Felt.fromHexString(
-              '0x74ec6667e6057becd3faff77d9ab14aecf5dde46edb7c599ee771f70f9e80ba'),
-        );
+        Felt transactionHash = Felt.fromHexString(
+            '0x24b618238d733af1697882e2c3071152bd167b6d22a5975689e5c87cb69547');
+        final response = await provider.getTransactionByHash(transactionHash);
 
         response.when(
             error: (error) => fail("Shouldn't fail"),
             result: (result) {
-              expect(
-                  result.transactionHash,
-                  Felt.fromHexString(
-                      "0x74ec6667e6057becd3faff77d9ab14aecf5dde46edb7c599ee771f70f9e80ba"));
+              expect(result.transactionHash, transactionHash);
+              expect(result.type, 'INVOKE');
+            });
+      });
+
+      test(
+          'returns the DEPLOY_ACCOUNT transaction details based on the transaction hash',
+          () async {
+        Felt transactionHash = Felt.fromHexString(
+            '0x3bc1e6e5a0e67b2a16ef241b53e834b721ed85d4e3a76b7250070a20161a996');
+        final response = await provider.getTransactionByHash(transactionHash);
+
+        response.when(
+            error: (error) => fail("Shouldn't fail"),
+            result: (result) {
+              expect(result.transactionHash, transactionHash);
+              expect(result.type, "DEPLOY_ACCOUNT");
+            });
+      });
+
+      test(
+          'returns the L1_HANDLER transaction details based on the transaction hash',
+          () async {
+        Felt transactionHash = Felt.fromHexString(
+            '0x66419c805e106cefb4662fd292f5ddb7f16ce5e6a1cef3a19c67cbf45bdddbd');
+        final response = await provider.getTransactionByHash(transactionHash);
+
+        response.when(
+            error: (error) => fail("Shouldn't fail"),
+            result: (result) {
+              expect(result.transactionHash, transactionHash);
+              expect(result.type, "L1_HANDLER");
+            });
+      });
+
+      test(
+          'returns the DEPLOY transaction details based on the transaction hash',
+          () async {
+        Felt transactionHash = Felt.fromHexString(
+            '0xfc0a5f56c4c1fc3765691ffe06de6ec41b43d66567fa9467bf90e77b21d3c3');
+        final response = await provider.getTransactionByHash(transactionHash);
+
+        response.when(
+            error: (error) => fail("Shouldn't fail"),
+            result: (result) {
+              expect(result.transactionHash, transactionHash);
+              expect(result.type, "DEPLOY");
+            });
+      });
+
+      test(
+          'returns the DECLARE transaction details based on the transaction hash',
+          () async {
+        Felt transactionHash = Felt.fromHexString(
+            '0x6e6b911afbc844baa36c5b211ad445abd2203b9a89d69347e02135629ebf202');
+        final response = await provider.getTransactionByHash(transactionHash);
+
+        response.when(
+            error: (error) => fail("Shouldn't fail"),
+            result: (result) {
+              expect(result.transactionHash, transactionHash);
+              expect(result.type, "DECLARE");
             });
       });
 
