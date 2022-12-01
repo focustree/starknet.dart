@@ -10,6 +10,17 @@ void main() {
     Felt blockHash = Felt.fromHexString(
         '0x161eebae9b292aaa92556b18770219c4a7ff4700294eddb6a821b966c0c02da');
     int blockNumber = 13334;
+    Felt invokeTransactionHash = Felt.fromHexString(
+        '0x7bb25e0671975289102bb9d1d8ea671f65c4a17dfbe4d7f0565b920c4257a79');
+    Felt declareTransactionHash = Felt.fromHexString(
+        '0x6e6b911afbc844baa36c5b211ad445abd2203b9a89d69347e02135629ebf202');
+    Felt deployTransactionHash = Felt.fromHexString(
+        '0x62fd4ae55e4f2b5005201cbfb4cbb78680617f2c4c9b2c31f42add6cc91405a');
+    Felt deployAccountTransactionHash = Felt.fromHexString(
+        '0x2f5e4490f69337eb0949603c67d7613bd3cf7b2246ccbef55fa9dbff27ccdfa');
+    Felt l1HandlerTransactionHash = Felt.fromHexString(
+        '0x686d552c96822b6b89b4fa8f52b1acd9a6d8c767870171b10ea85475beb06d7');
+
     Felt invalidBlockHash =
         Felt.fromHexString('0x00000000000000000000000000000000000000000000');
 
@@ -397,22 +408,69 @@ void main() {
     });
 
     group('getTransactionReceipt', () {
-      test('returns the transaction receipt based on the transaction hash',
+      test(
+          'returns the transaction receipt based on the INVOKE transaction hash',
           () async {
-        final response = await provider.getTransactionReceipt(
-          Felt.fromHexString(
-              '0x74ec6667e6057becd3faff77d9ab14aecf5dde46edb7c599ee771f70f9e80ba'),
-        );
+        final response =
+            await provider.getTransactionReceipt(invokeTransactionHash);
 
         response.when(
             error: (error) => fail("Shouldn't fail"),
             result: (result) {
-              expect(
-                  result.transactionHash,
-                  Felt.fromHexString(
-                      '0x74ec6667e6057becd3faff77d9ab14aecf5dde46edb7c599ee771f70f9e80ba'));
+              expect(result.transactionHash, invokeTransactionHash);
+              expect(result.actualFee, Felt.fromHexString('0x4342b1c0b68d'));
+            });
+      });
 
-              expect(result.actualFee, Felt.fromHexString('0x0'));
+      test(
+          'returns the transaction receipt based on the DECLARE transaction hash',
+          () async {
+        final response =
+            await provider.getTransactionReceipt(declareTransactionHash);
+
+        response.when(
+            error: (error) => fail("Shouldn't fail"),
+            result: (result) {
+              expect(result.transactionHash, declareTransactionHash);
+            });
+      });
+
+      test(
+          'returns the transaction receipt based on the DEPLOY transaction hash',
+          () async {
+        final response =
+            await provider.getTransactionReceipt(deployTransactionHash);
+
+        response.when(
+            error: (error) => fail("Shouldn't fail"),
+            result: (result) {
+              expect(result.transactionHash, deployTransactionHash);
+            });
+      });
+
+      test(
+          'returns the transaction receipt based on the DEPLOY_ACCOUNT transaction hash',
+          () async {
+        final response =
+            await provider.getTransactionReceipt(deployAccountTransactionHash);
+
+        response.when(
+            error: (error) => fail("Shouldn't fail"),
+            result: (result) {
+              expect(result.transactionHash, deployAccountTransactionHash);
+            });
+      });
+
+      test(
+          'returns the transaction receipt based on the L1_HANDLER transaction hash',
+          () async {
+        final response =
+            await provider.getTransactionReceipt(l1HandlerTransactionHash);
+
+        response.when(
+            error: (error) => fail("Shouldn't fail"),
+            result: (result) {
+              expect(result.transactionHash, l1HandlerTransactionHash);
             });
       });
 
