@@ -99,9 +99,10 @@ abstract class ReadProvider {
   /// Get the contract class definition associated with the given hash
   ///
   /// [Spec](https://github.com/starkware-libs/starknet-specs/blob/v0.1.0/api/starknet_api_openrpc.json#L240-L265)
-  Future<GetClass> getClass(
-    Felt classHash,
-  );
+  Future<GetClass> getClass({
+    required BlockId blockId,
+    required Felt classHash,
+  });
 
   /// Get the contract class definition in the given block at the given address
   ///
@@ -276,11 +277,14 @@ class JsonRpcReadProvider implements ReadProvider {
   }
 
   @override
-  Future<GetClass> getClass(Felt classHash) {
+  Future<GetClass> getClass({
+    required BlockId blockId,
+    required Felt classHash,
+  }) {
     return callRpcEndpoint(
       nodeUri: nodeUri,
       method: 'starknet_getClass',
-      params: [classHash],
+      params: [blockId, classHash],
     ).then(GetClass.fromJson);
   }
 

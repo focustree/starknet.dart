@@ -7,6 +7,8 @@ void main() {
   group('ReadProvider', () {
     late ReadProvider provider;
 
+    Felt invalidHexString = Felt.fromHexString(
+        '0x0000000000000000000000000000000000000000000000000000000000000000');
     Felt blockHash = Felt.fromHexString(
         '0x161eebae9b292aaa92556b18770219c4a7ff4700294eddb6a821b966c0c02da');
     int blockNumber = 13334;
@@ -21,12 +23,14 @@ void main() {
     Felt l1HandlerTransactionHash = Felt.fromHexString(
         '0x686d552c96822b6b89b4fa8f52b1acd9a6d8c767870171b10ea85475beb06d7');
 
-    Felt invalidBlockHash =
-        Felt.fromHexString('0x00000000000000000000000000000000000000000000');
-
     BlockId blockIdFromBlockHash = BlockId.blockHash(blockHash);
     BlockId blockIdFromBlockNumber = BlockId.blockNumber(blockNumber);
-    BlockId invalidBlockIdFromBlockHash = BlockId.blockHash(invalidBlockHash);
+    BlockId invalidBlockIdFromBlockHash = BlockId.blockHash(invalidHexString);
+
+    Felt classHash = Felt.fromHexString(
+        '0x025ec026985a3bf9d0cc1fe17326b245dfdc3ff89b8fde106542a3ea56c5a918');
+    Felt contractAddress = Felt.fromHexString(
+        '0x054B5e0582e7698b2B9Ec00232603b271a489fe6cADcC641262812B4B64A052f');
 
     setUp(() {
       provider = getJsonRpcReadProvider();
@@ -633,61 +637,146 @@ void main() {
       });
     });
 
-    group('starknet_getClass*', () {
-      test('returns class hash for a known contract', () async {
-        final response = await provider.getClassHashAt(
-          contractAddress: Felt.fromHexString(
-              '0x6fbd460228d843b7fbef670ff15607bf72e19fa94de21e29811ada167b4ca39'),
+    group('starknet_getClass', () {
+      test('returns contract class definition for a known class hash',
+          () async {
+        final response = await provider.getClass(
+          classHash: classHash,
           blockId: BlockId.blockTag("latest"),
         );
 
         response.when(
           error: (error) => fail("Shouldn't fail"),
           result: (result) {
-            expect(
-                result,
-                Felt.fromHexString(
-                    "0x21a7f43387573b68666669a0ed764252ce5367708e696e31967764a90b429c2"));
+            expect(result.program, isNotNull);
           },
         );
       });
 
-      test('returns class for a known class hash', () async {
+      test('returns BLOCK_NOT_FOUND error when invalid block id is given.',
+          () async {
         final response = await provider.getClass(
-          Felt.fromHexString(
-              "0x21a7f43387573b68666669a0ed764252ce5367708e696e31967764a90b429c2"),
+          classHash: classHash,
+          blockId: BlockId.blockHash(invalidHexString),
         );
 
         response.when(
-            error: (error) => fail("Shouldn't fail"),
-            result: (result) {
-              final entry_points = result.entryPointsByType;
-              expect(entry_points.constructor.length, 0);
-              expect(entry_points.l1Handler.length, 0);
-              expect(entry_points.external.length, 2);
-              expect(entry_points.external[0].offset, "0x3a");
-              expect(entry_points.external[1].offset, "0x5b");
-            });
+          error: (error) => expect(error.code, 24),
+          result: (result) => fail("Should fail"),
+        );
       });
 
-      test('returns class for a known address and block id', () async {
-        final response = await provider.getClassAt(
-          contractAddress: Felt.fromHexString(
-              "0x6fbd460228d843b7fbef670ff15607bf72e19fa94de21e29811ada167b4ca39"),
+      test(
+          'returns CLASS_HASH_NOT_FOUND error when invalid class hash is given.',
+          () async {
+        final response = await provider.getClass(
+          classHash: invalidHexString,
           blockId: BlockId.blockTag("latest"),
         );
 
-        response.when(error: (error) {
-          // 2022-08-03: current Infura implementation doesn't support block_id
-          expect(error.code, equals(-32602));
-        }, result: (result) {
-          final entry_points = result.entryPointsByType;
-          expect(entry_points.constructor.length, 0);
-          expect(entry_points.l1Handler.length, 0);
-          expect(entry_points.external.length, 2);
-          expect(entry_points.external[0].offset, "0x3a");
-          expect(entry_points.external[1].offset, "0x5b");
-        });
+        response.when(
+          error: (error) {
+            expect(error.code, 28);
+            expect(error.message, 'Class hash not found');
+          },
+          result: (result) => fail("Should fail"),
+        );
+      });
+    });
+
+    group('starknet_getClassHashAt', () {
+      test(
+          'returns contract class hash in the given block for the deployed contract address.',
+          () async {
+        final response = await provider.getClassHashAt(
+          contractAddress: contractAddress,
+          blockId: BlockId.blockTag("latest"),
+        );
+
+        response.when(
+          error: (error) => fail("Shouldn't fail"),
+          result: (result) {
+            expect(result, isNotNull);
+          },
+        );
+      });
+
+      test('returns BLOCK_NOT_FOUND error when invalid block id is given.',
+          () async {
+        final response = await provider.getClassHashAt(
+          contractAddress: contractAddress,
+          blockId: BlockId.blockHash(invalidHexString),
+        );
+
+        response.when(
+          error: (error) => expect(error.code, 24),
+          result: (result) => fail("Should fail"),
+        );
+      });
+
+      test(
+          'returns CONTRACT_NOT_FOUND error when invalid contract address is given.',
+          () async {
+        final response = await provider.getClassHashAt(
+          contractAddress: invalidHexString,
+          blockId: BlockId.blockTag("latest"),
+        );
+
+        response.when(
+          error: (error) {
+            expect(error.code, 20);
+            expect(error.message, 'Contract not found');
+          },
+          result: (result) => fail("Should fail"),
+        );
+      });
+    });
+
+    group('starknet_getClassAt', () {
+      test(
+          'returns contract class definition in the given block for given contract address.',
+          () async {
+        final response = await provider.getClassAt(
+          contractAddress: contractAddress,
+          blockId: BlockId.blockTag("latest"),
+        );
+
+        response.when(
+          error: (error) => fail("Shouldn't fail"),
+          result: (result) {
+            expect(result.program, isNotNull);
+          },
+        );
+      });
+
+      test('returns BLOCK_NOT_FOUND error when invalid block id is given.',
+          () async {
+        final response = await provider.getClassAt(
+          contractAddress: contractAddress,
+          blockId: BlockId.blockHash(invalidHexString),
+        );
+
+        response.when(
+          error: (error) => expect(error.code, 24),
+          result: (result) => fail("Should fail"),
+        );
+      });
+
+      test(
+          'returns CONTRACT_NOT_FOUND error when invalid contract address is given.',
+          () async {
+        final response = await provider.getClassAt(
+          contractAddress: invalidHexString,
+          blockId: BlockId.blockTag("latest"),
+        );
+
+        response.when(
+          error: (error) {
+            expect(error.code, 20);
+            expect(error.message, 'Contract not found');
+          },
+          result: (result) => fail("Should fail"),
+        );
       });
     });
 
