@@ -23,19 +23,18 @@ void main() {
       test(
           'returns block information with transaction hashes from the Block Id',
           () async {
-        final response =
-            await provider.getBlockWithTxHashes(BlockId.blockNumber(41000));
+        int blockNumber = 13249;
+        final response = await provider
+            .getBlockWithTxHashes(BlockId.blockNumber(blockNumber));
         response.when(
             result: (result) => expect(
                 result.parentHash,
                 Felt.fromHexString(
-                    '0x61f493df4897c86692eae4196f9fa05448bd44e8065e4b289a5236814e7fb8d')),
+                    '0x6ff5fdfef5e8b40b9cac6111efc7f25d583e9830b8e4f2d044d71db6e971ede')),
             error: (error) => fail("Shouldn't fail"));
       });
 
-      test(
-          'returns block information with transaction hashes from the Block Id',
-          () async {
+      test('returns block not found error when block id is invalid.', () async {
         final response =
             await provider.getBlockWithTxHashes(BlockId.blockNumber(-1));
         response.when(
