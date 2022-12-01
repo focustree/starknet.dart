@@ -538,22 +538,20 @@ void main() {
     group('starknet_getBlockWithTxs', () {
       test(
           'returns block information with full transactions given the block id',
-              () async {
-            final GetBlockWithTxs response = await provider.getBlockWithTxs(
-                BlockId.blockHash(Felt.fromHexString(
-                    '0x4e82eaf59f74da4b18efefd58477fa5546a7fb705c6d166bff7cfe472da713d')));
-            response.when(
-              error: (error) => fail(error.message),
-              block: (BlockWithTxs block) {
-                expect(block, isNotNull);
-              },
-            );
-          });
+          () async {
+        final GetBlockWithTxs response =
+            await provider.getBlockWithTxs(blockIdFromBlockHash);
+        response.when(
+          error: (error) => fail(error.message),
+          block: (BlockWithTxs block) {
+            expect(block, isNotNull);
+          },
+        );
+      });
 
       test('returns block not found error when block id is invalid', () async {
-        final GetBlockWithTxs response = await provider.getBlockWithTxs(
-            BlockId.blockHash(Felt.fromHexString(
-                '0x00000000000000000000000000000000000000000000000')));
+        final GetBlockWithTxs response =
+            await provider.getBlockWithTxs(invalidBlockIdFromBlockHash);
         response.when(
           error: (error) => expect(error.code, 24),
           block: (_) => fail('Expecting BLOCK_NOT_FOUND error'),
