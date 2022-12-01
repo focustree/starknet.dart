@@ -7,6 +7,16 @@ void main() {
   group('ReadProvider', () {
     late ReadProvider provider;
 
+    Felt blockHash = Felt.fromHexString(
+        '0x161eebae9b292aaa92556b18770219c4a7ff4700294eddb6a821b966c0c02da');
+    int blockNumber = 13334;
+    Felt invalidBlockHash =
+        Felt.fromHexString('0x00000000000000000000000000000000000000000000');
+
+    BlockId blockIdFromBlockHash = BlockId.blockHash(blockHash);
+    BlockId blockIdFromBlockNumber = BlockId.blockNumber(blockNumber);
+    BlockId invalidBlockIdFromBlockHash = BlockId.blockHash(invalidBlockHash);
+
     setUp(() {
       provider = getJsonRpcReadProvider();
     });
@@ -373,10 +383,8 @@ void main() {
 
       test('returns transaction details based on block number and index',
           () async {
-        BlockId blockId = BlockId.blockNumber(13334);
-
-        final response =
-            await provider.getTransactionByBlockIdAndIndex(blockId, 4);
+        final response = await provider.getTransactionByBlockIdAndIndex(
+            blockIdFromBlockNumber, 4);
         response.when(
             result: (result) {
               expect(
@@ -493,24 +501,19 @@ void main() {
       test(
           'returns the information about the result of executing the requested block using block hash',
           () async {
-        final response = await provider.getStateUpdate(BlockId.blockHash(
-            Felt.fromHexString(
-                '0x7d328a71faf48c5c3857e99f20a77b18522480956d1cd5bff1ff2df3c8b427b')));
+        final response = await provider.getStateUpdate(blockIdFromBlockHash);
 
         response.when(
             error: (error) => fail("Shouldn't fail"),
             result: (result) {
-              expect(
-                  result.blockHash,
-                  Felt.fromHexString(
-                      '0x7d328a71faf48c5c3857e99f20a77b18522480956d1cd5bff1ff2df3c8b427b'));
+              expect(result.blockHash, blockHash);
             });
       });
 
       test(
           'returns the information about the result of executing the requested block using block number',
           () async {
-        final response = await provider.getStateUpdate(BlockId.blockNumber(0));
+        final response = await provider.getStateUpdate(blockIdFromBlockNumber);
 
         response.when(
             error: (error) => fail("Shouldn't fail"),
@@ -520,14 +523,13 @@ void main() {
       });
 
       test('reading the state update from an invalid block id', () async {
-        final response = await provider.getStateUpdate(BlockId.blockHash(
-            Felt.fromHexString(
-                '0x000000000000000000000000000000000000000000000000000000000000000')));
+        final response =
+            await provider.getStateUpdate(invalidBlockIdFromBlockHash);
 
         response.when(
             error: (error) {
               expect(error.code, 24);
-              expect(error.message, "Invalid block id");
+              expect(error.message, "Block not found");
             },
             result: (result) => fail("Should fail"));
       });
