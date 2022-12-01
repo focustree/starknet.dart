@@ -321,8 +321,9 @@ void main() {
     group('getTransactionByBlockIdAndIndex', () {
       test('returns transaction details based on block hash and index',
           () async {
-        BlockId blockId = BlockId.blockHash(Felt.fromHexString(
-            '0x3871c8a0c3555687515a07f365f6f5b1d8c2ae953f7844575b8bde2b2efed27'));
+        Felt blockHash = Felt.fromHexString(
+            '0x161eebae9b292aaa92556b18770219c4a7ff4700294eddb6a821b966c0c02da');
+        BlockId blockId = BlockId.blockHash(blockHash);
 
         final response =
             await provider.getTransactionByBlockIdAndIndex(blockId, 4);
@@ -331,9 +332,27 @@ void main() {
               expect(
                   result.transactionHash,
                   Felt.fromHexString(
-                      "0x74ec6667e6057becd3faff77d9ab14aecf5dde46edb7c599ee771f70f9e80ba"));
+                      '0x3c6837071cfd034344dff5ee08f85474c41e588f350de2551fabc35f7dcb5ec'));
             },
             error: (error) => fail("Shouldn't fail"));
+      });
+
+      test('reading transaction details from invalid index should fail',
+          () async {
+        Felt blockHash = Felt.fromHexString(
+            '0x161eebae9b292aaa92556b18770219c4a7ff4700294eddb6a821b966c0c02da');
+        BlockId blockId = BlockId.blockHash(blockHash);
+
+        int invalidIndex = 20000000000;
+
+        final response = await provider.getTransactionByBlockIdAndIndex(
+            blockId, invalidIndex);
+        response.when(
+            result: (_) => fail('Should fail'),
+            error: (error) {
+              expect(error.code, 27);
+              expect(error.message, "Invalid transaction index in a block");
+            });
       });
 
       test(
@@ -348,13 +367,13 @@ void main() {
             result: (_) => fail('Should fail'),
             error: (error) {
               expect(error.code, 24);
-              expect(error.message, "Invalid block id");
+              expect(error.message, "Block not found");
             });
       });
 
       test('returns transaction details based on block number and index',
           () async {
-        BlockId blockId = BlockId.blockNumber(21348);
+        BlockId blockId = BlockId.blockNumber(13334);
 
         final response =
             await provider.getTransactionByBlockIdAndIndex(blockId, 4);
@@ -363,7 +382,7 @@ void main() {
               expect(
                   result.transactionHash,
                   Felt.fromHexString(
-                      "0x74ec6667e6057becd3faff77d9ab14aecf5dde46edb7c599ee771f70f9e80ba"));
+                      "0x66fed2abcb1b770d7e8a7c4a9fbd09551cd379183e744e37e9f437dac1486d9"));
             },
             error: (error) => fail("Shouldn't fail"));
       });
