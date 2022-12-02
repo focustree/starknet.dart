@@ -448,7 +448,7 @@ mixin _$BlockWithTxs {
             Felt sequencerAddress)
         resultingBlock,
     required TResult Function(List<Txn> transactions, int timestamp,
-            Felt sequencerAddress, Felt blockHash, dynamic required)
+            Felt sequencerAddress, Felt blockHash)
         pendingBlock,
   }) =>
       throw _privateConstructorUsedError;
@@ -465,7 +465,7 @@ mixin _$BlockWithTxs {
             Felt sequencerAddress)?
         resultingBlock,
     TResult Function(List<Txn> transactions, int timestamp,
-            Felt sequencerAddress, Felt blockHash, dynamic required)?
+            Felt sequencerAddress, Felt blockHash)?
         pendingBlock,
   }) =>
       throw _privateConstructorUsedError;
@@ -482,7 +482,7 @@ mixin _$BlockWithTxs {
             Felt sequencerAddress)?
         resultingBlock,
     TResult Function(List<Txn> transactions, int timestamp,
-            Felt sequencerAddress, Felt blockHash, dynamic required)?
+            Felt sequencerAddress, Felt blockHash)?
         pendingBlock,
     required TResult orElse(),
   }) =>
@@ -742,7 +742,7 @@ class _$BlockWithTxsResponse implements BlockWithTxsResponse {
             Felt sequencerAddress)
         resultingBlock,
     required TResult Function(List<Txn> transactions, int timestamp,
-            Felt sequencerAddress, Felt blockHash, dynamic required)
+            Felt sequencerAddress, Felt blockHash)
         pendingBlock,
   }) {
     return resultingBlock(status, transactions, blockHash, parentHash,
@@ -763,7 +763,7 @@ class _$BlockWithTxsResponse implements BlockWithTxsResponse {
             Felt sequencerAddress)?
         resultingBlock,
     TResult Function(List<Txn> transactions, int timestamp,
-            Felt sequencerAddress, Felt blockHash, dynamic required)?
+            Felt sequencerAddress, Felt blockHash)?
         pendingBlock,
   }) {
     return resultingBlock?.call(status, transactions, blockHash, parentHash,
@@ -784,7 +784,7 @@ class _$BlockWithTxsResponse implements BlockWithTxsResponse {
             Felt sequencerAddress)?
         resultingBlock,
     TResult Function(List<Txn> transactions, int timestamp,
-            Felt sequencerAddress, Felt blockHash, dynamic required)?
+            Felt sequencerAddress, Felt blockHash)?
         pendingBlock,
     required TResult orElse(),
   }) {
@@ -879,8 +879,7 @@ abstract class _$$PendingBlockWithTxsResultCopyWith<$Res>
       {List<Txn> transactions,
       int timestamp,
       Felt sequencerAddress,
-      Felt blockHash,
-      dynamic required});
+      Felt blockHash});
 }
 
 /// @nodoc
@@ -901,7 +900,6 @@ class __$$PendingBlockWithTxsResultCopyWithImpl<$Res>
     Object? timestamp = freezed,
     Object? sequencerAddress = freezed,
     Object? blockHash = freezed,
-    Object? required = freezed,
   }) {
     return _then(_$PendingBlockWithTxsResult(
       transactions: transactions == freezed
@@ -920,7 +918,6 @@ class __$$PendingBlockWithTxsResultCopyWithImpl<$Res>
           ? _value.blockHash
           : blockHash // ignore: cast_nullable_to_non_nullable
               as Felt,
-      required: required == freezed ? _value.required : required,
     ));
   }
 }
@@ -933,7 +930,6 @@ class _$PendingBlockWithTxsResult implements PendingBlockWithTxsResult {
       required this.timestamp,
       required this.sequencerAddress,
       required this.blockHash,
-      this.required,
       final String? $type})
       : _transactions = transactions,
         $type = $type ?? 'pendingBlock';
@@ -957,15 +953,13 @@ class _$PendingBlockWithTxsResult implements PendingBlockWithTxsResult {
   final Felt sequencerAddress;
   @override
   final Felt blockHash;
-  @override
-  final dynamic required;
 
   @JsonKey(name: 'runtimeType')
   final String $type;
 
   @override
   String toString() {
-    return 'BlockWithTxs.pendingBlock(transactions: $transactions, timestamp: $timestamp, sequencerAddress: $sequencerAddress, blockHash: $blockHash, required: $required)';
+    return 'BlockWithTxs.pendingBlock(transactions: $transactions, timestamp: $timestamp, sequencerAddress: $sequencerAddress, blockHash: $blockHash)';
   }
 
   @override
@@ -978,8 +972,7 @@ class _$PendingBlockWithTxsResult implements PendingBlockWithTxsResult {
             const DeepCollectionEquality().equals(other.timestamp, timestamp) &&
             const DeepCollectionEquality()
                 .equals(other.sequencerAddress, sequencerAddress) &&
-            const DeepCollectionEquality().equals(other.blockHash, blockHash) &&
-            const DeepCollectionEquality().equals(other.required, required));
+            const DeepCollectionEquality().equals(other.blockHash, blockHash));
   }
 
   @JsonKey(ignore: true)
@@ -989,8 +982,7 @@ class _$PendingBlockWithTxsResult implements PendingBlockWithTxsResult {
       const DeepCollectionEquality().hash(_transactions),
       const DeepCollectionEquality().hash(timestamp),
       const DeepCollectionEquality().hash(sequencerAddress),
-      const DeepCollectionEquality().hash(blockHash),
-      const DeepCollectionEquality().hash(required));
+      const DeepCollectionEquality().hash(blockHash));
 
   @JsonKey(ignore: true)
   @override
@@ -1012,11 +1004,10 @@ class _$PendingBlockWithTxsResult implements PendingBlockWithTxsResult {
             Felt sequencerAddress)
         resultingBlock,
     required TResult Function(List<Txn> transactions, int timestamp,
-            Felt sequencerAddress, Felt blockHash, dynamic required)
+            Felt sequencerAddress, Felt blockHash)
         pendingBlock,
   }) {
-    return pendingBlock(
-        transactions, timestamp, sequencerAddress, blockHash, required);
+    return pendingBlock(transactions, timestamp, sequencerAddress, blockHash);
   }
 
   @override
@@ -1033,11 +1024,11 @@ class _$PendingBlockWithTxsResult implements PendingBlockWithTxsResult {
             Felt sequencerAddress)?
         resultingBlock,
     TResult Function(List<Txn> transactions, int timestamp,
-            Felt sequencerAddress, Felt blockHash, dynamic required)?
+            Felt sequencerAddress, Felt blockHash)?
         pendingBlock,
   }) {
     return pendingBlock?.call(
-        transactions, timestamp, sequencerAddress, blockHash, required);
+        transactions, timestamp, sequencerAddress, blockHash);
   }
 
   @override
@@ -1054,13 +1045,12 @@ class _$PendingBlockWithTxsResult implements PendingBlockWithTxsResult {
             Felt sequencerAddress)?
         resultingBlock,
     TResult Function(List<Txn> transactions, int timestamp,
-            Felt sequencerAddress, Felt blockHash, dynamic required)?
+            Felt sequencerAddress, Felt blockHash)?
         pendingBlock,
     required TResult orElse(),
   }) {
     if (pendingBlock != null) {
-      return pendingBlock(
-          transactions, timestamp, sequencerAddress, blockHash, required);
+      return pendingBlock(transactions, timestamp, sequencerAddress, blockHash);
     }
     return orElse();
   }
@@ -1109,8 +1099,7 @@ abstract class PendingBlockWithTxsResult implements BlockWithTxs {
       {required final List<Txn> transactions,
       required final int timestamp,
       required final Felt sequencerAddress,
-      required final Felt blockHash,
-      final dynamic required}) = _$PendingBlockWithTxsResult;
+      required final Felt blockHash}) = _$PendingBlockWithTxsResult;
 
   factory PendingBlockWithTxsResult.fromJson(Map<String, dynamic> json) =
       _$PendingBlockWithTxsResult.fromJson;
@@ -1123,7 +1112,6 @@ abstract class PendingBlockWithTxsResult implements BlockWithTxs {
   Felt get sequencerAddress;
   @override
   Felt get blockHash;
-  dynamic get required;
   @override
   @JsonKey(ignore: true)
   _$$PendingBlockWithTxsResultCopyWith<_$PendingBlockWithTxsResult>

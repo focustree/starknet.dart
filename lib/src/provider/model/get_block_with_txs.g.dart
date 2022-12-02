@@ -73,7 +73,6 @@ _$PendingBlockWithTxsResult _$$PendingBlockWithTxsResultFromJson(
       timestamp: json['timestamp'] as int,
       sequencerAddress: Felt.fromJson(json['sequencer_address'] as String),
       blockHash: Felt.fromJson(json['block_hash'] as String),
-      required: json['required'],
       $type: json['runtimeType'] as String?,
     );
 
@@ -84,6 +83,5 @@ Map<String, dynamic> _$$PendingBlockWithTxsResultToJson(
       'timestamp': instance.timestamp,
       'sequencer_address': instance.sequencerAddress.toJson(),
       'block_hash': instance.blockHash.toJson(),
-      'required': instance.required,
       'runtimeType': instance.$type,
     };
