@@ -622,17 +622,28 @@ void main() {
     });
 
     group('starknet_getBlockTransactionCount', () {
-      test('returns the number of transactions in a block given a block id',
+      test(
+          'returns the number of transactions in a block with the given block id',
           () async {
-        final GetBlockTxnCount response = await provider.getBlockTxnCount(
-            BlockId.blockHash(Felt.fromHexString(
-                '0x3fbf1b9a9ed822423e87365923103a9577ebed2612afccf4c9f69c126eeeeb7')));
+        final GetBlockTxnCount response =
+            await provider.getBlockTxnCount(blockIdFromBlockHash);
 
         response.when(
           error: (error) => fail("Shouldn't fail"),
           result: (result) {
             expect(result, isNotNull);
           },
+        );
+      });
+
+      test('returns BLOCK_NOT_FOUND error when invalid block id is given.',
+          () async {
+        final GetBlockTxnCount response =
+            await provider.getBlockTxnCount(invalidBlockIdFromBlockHash);
+
+        response.when(
+          error: (error) => expect(error.code, 24),
+          result: (result) => fail("Should fail"),
         );
       });
     });
