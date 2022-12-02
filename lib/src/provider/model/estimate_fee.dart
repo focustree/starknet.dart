@@ -20,7 +20,7 @@ class EstimateFee with _$EstimateFee {
 }
 
 class EstimateFeeRequest {
-  final InvokeTxn request;
+  final BroadcastedTxn request;
   final BlockId blockId;
   EstimateFeeRequest({
     required this.request,
@@ -35,4 +35,91 @@ class EstimateFeeRequest {
 
     return {'request': invokeToJson, 'block_id': blockId.toJson()};
   }
+}
+
+@freezed
+class BroadcastedTxn with _$BroadcastedTxn {
+  @JsonSerializable(includeIfNull: false)
+  const factory BroadcastedTxn.broadcastedInvokeTxnV0({
+    // start of BROADCASTED_TXN_COMMON_PROPERTIES
+    required String type,
+    required Felt maxFee,
+    required String version,
+    required List<Felt> signature,
+    Felt? nonce,
+    // end of BROADCASTED_TXN_COMMON_PROPERTIES
+
+    // start of INVOKE_TXN_V0
+    required Felt contractAddress,
+    required Felt entryPointSelector,
+    required List<Felt> calldata,
+    // end of INVOKE_TXN_V0
+  }) = BroadcastedInvokeTxnV0;
+
+  @JsonSerializable(includeIfNull: false)
+  const factory BroadcastedTxn.broadcastedInvokeTxnV1({
+    // start of BROADCASTED_TXN_COMMON_PROPERTIES
+    required String type,
+    required Felt maxFee,
+    required String version,
+    required List<Felt> signature,
+    Felt? nonce,
+    // end of BROADCASTED_TXN_COMMON_PROPERTIES
+
+    // start of INVOKE_TXN_V1
+    required Felt sender_address,
+    required List<Felt> calldata,
+    // end of INVOKE_TXN_V1
+  }) = BroadcastedInvokeTxnV1;
+
+  @JsonSerializable(includeIfNull: false)
+  const factory BroadcastedTxn.broadcastedDeclareTxn({
+    // start of BROADCASTED_TXN_COMMON_PROPERTIES
+    required String type,
+    required Felt maxFee,
+    required String version,
+    required List<Felt> signature,
+    Felt? nonce,
+    // end of BROADCASTED_TXN_COMMON_PROPERTIES
+
+    required ContractClass contractClass,
+    required Felt senderAddress,
+  }) = BroadcastedDeclareTxn;
+
+  @JsonSerializable(includeIfNull: false)
+  const factory BroadcastedTxn.broadcastedDeployTxn({
+    required ContractClass contractClass,
+    // start of DEPLOY_TXN_PROPERTIES
+    required String version,
+    required String type,
+    required Felt contractAddressSalt,
+    required List<Felt> constructorCalldata,
+    // end of DEPLOY_TXN_PROPERTIES
+  }) = BroadcastedDeployTxn;
+
+  @JsonSerializable(includeIfNull: false)
+  const factory BroadcastedTxn.broadcastedDeployAccountTxn({
+    required Felt contractAddressSalt,
+    required Felt classHash,
+    required List<Felt> constructorCalldata,
+
+    // start of BROADCASTED_TXN_COMMON_PROPERTIES
+    required String type,
+    required Felt maxFee,
+    required String version,
+    required List<Felt> signature,
+    Felt? nonce,
+    // end of BROADCASTED_TXN_COMMON_PROPERTIES
+  }) = BroadcastedDeployAccountTxn;
+
+  factory BroadcastedTxn.fromJson(Map<String, Object?> json) =>
+      json['type'] == 'DECLARE'
+          ? BroadcastedDeclareTxn.fromJson(json)
+          : json['type'] == 'DEPLOY'
+              ? BroadcastedDeployTxn.fromJson(json)
+              : json['type'] == 'INVOKE'
+                  ? json['version'] == '0x1'
+                      ? BroadcastedInvokeTxnV1.fromJson(json)
+                      : BroadcastedInvokeTxnV0.fromJson(json)
+                  : BroadcastedDeployAccountTxn.fromJson(json);
 }

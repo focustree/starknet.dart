@@ -409,3 +409,2241 @@ abstract class EstimateFeeError implements EstimateFee {
   _$$EstimateFeeErrorCopyWith<_$EstimateFeeError> get copyWith =>
       throw _privateConstructorUsedError;
 }
+
+BroadcastedTxn _$BroadcastedTxnFromJson(Map<String, dynamic> json) {
+  switch (json['runtimeType']) {
+    case 'broadcastedInvokeTxnV0':
+      return BroadcastedInvokeTxnV0.fromJson(json);
+    case 'broadcastedInvokeTxnV1':
+      return BroadcastedInvokeTxnV1.fromJson(json);
+    case 'broadcastedDeclareTxn':
+      return BroadcastedDeclareTxn.fromJson(json);
+    case 'broadcastedDeployTxn':
+      return BroadcastedDeployTxn.fromJson(json);
+    case 'broadcastedDeployAccountTxn':
+      return BroadcastedDeployAccountTxn.fromJson(json);
+
+    default:
+      throw CheckedFromJsonException(json, 'runtimeType', 'BroadcastedTxn',
+          'Invalid union type "${json['runtimeType']}"!');
+  }
+}
+
+/// @nodoc
+mixin _$BroadcastedTxn {
+// start of BROADCASTED_TXN_COMMON_PROPERTIES
+  String get type => throw _privateConstructorUsedError;
+  String get version => throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(
+            String type,
+            Felt maxFee,
+            String version,
+            List<Felt> signature,
+            Felt? nonce,
+            Felt contractAddress,
+            Felt entryPointSelector,
+            List<Felt> calldata)
+        broadcastedInvokeTxnV0,
+    required TResult Function(
+            String type,
+            Felt maxFee,
+            String version,
+            List<Felt> signature,
+            Felt? nonce,
+            Felt sender_address,
+            List<Felt> calldata)
+        broadcastedInvokeTxnV1,
+    required TResult Function(
+            String type,
+            Felt maxFee,
+            String version,
+            List<Felt> signature,
+            Felt? nonce,
+            ContractClass contractClass,
+            Felt senderAddress)
+        broadcastedDeclareTxn,
+    required TResult Function(
+            ContractClass contractClass,
+            String version,
+            String type,
+            Felt contractAddressSalt,
+            List<Felt> constructorCalldata)
+        broadcastedDeployTxn,
+    required TResult Function(
+            Felt contractAddressSalt,
+            Felt classHash,
+            List<Felt> constructorCalldata,
+            String type,
+            Felt maxFee,
+            String version,
+            List<Felt> signature,
+            Felt? nonce)
+        broadcastedDeployAccountTxn,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(
+            String type,
+            Felt maxFee,
+            String version,
+            List<Felt> signature,
+            Felt? nonce,
+            Felt contractAddress,
+            Felt entryPointSelector,
+            List<Felt> calldata)?
+        broadcastedInvokeTxnV0,
+    TResult Function(
+            String type,
+            Felt maxFee,
+            String version,
+            List<Felt> signature,
+            Felt? nonce,
+            Felt sender_address,
+            List<Felt> calldata)?
+        broadcastedInvokeTxnV1,
+    TResult Function(
+            String type,
+            Felt maxFee,
+            String version,
+            List<Felt> signature,
+            Felt? nonce,
+            ContractClass contractClass,
+            Felt senderAddress)?
+        broadcastedDeclareTxn,
+    TResult Function(ContractClass contractClass, String version, String type,
+            Felt contractAddressSalt, List<Felt> constructorCalldata)?
+        broadcastedDeployTxn,
+    TResult Function(
+            Felt contractAddressSalt,
+            Felt classHash,
+            List<Felt> constructorCalldata,
+            String type,
+            Felt maxFee,
+            String version,
+            List<Felt> signature,
+            Felt? nonce)?
+        broadcastedDeployAccountTxn,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(
+            String type,
+            Felt maxFee,
+            String version,
+            List<Felt> signature,
+            Felt? nonce,
+            Felt contractAddress,
+            Felt entryPointSelector,
+            List<Felt> calldata)?
+        broadcastedInvokeTxnV0,
+    TResult Function(
+            String type,
+            Felt maxFee,
+            String version,
+            List<Felt> signature,
+            Felt? nonce,
+            Felt sender_address,
+            List<Felt> calldata)?
+        broadcastedInvokeTxnV1,
+    TResult Function(
+            String type,
+            Felt maxFee,
+            String version,
+            List<Felt> signature,
+            Felt? nonce,
+            ContractClass contractClass,
+            Felt senderAddress)?
+        broadcastedDeclareTxn,
+    TResult Function(ContractClass contractClass, String version, String type,
+            Felt contractAddressSalt, List<Felt> constructorCalldata)?
+        broadcastedDeployTxn,
+    TResult Function(
+            Felt contractAddressSalt,
+            Felt classHash,
+            List<Felt> constructorCalldata,
+            String type,
+            Felt maxFee,
+            String version,
+            List<Felt> signature,
+            Felt? nonce)?
+        broadcastedDeployAccountTxn,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(BroadcastedInvokeTxnV0 value)
+        broadcastedInvokeTxnV0,
+    required TResult Function(BroadcastedInvokeTxnV1 value)
+        broadcastedInvokeTxnV1,
+    required TResult Function(BroadcastedDeclareTxn value)
+        broadcastedDeclareTxn,
+    required TResult Function(BroadcastedDeployTxn value) broadcastedDeployTxn,
+    required TResult Function(BroadcastedDeployAccountTxn value)
+        broadcastedDeployAccountTxn,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(BroadcastedInvokeTxnV0 value)? broadcastedInvokeTxnV0,
+    TResult Function(BroadcastedInvokeTxnV1 value)? broadcastedInvokeTxnV1,
+    TResult Function(BroadcastedDeclareTxn value)? broadcastedDeclareTxn,
+    TResult Function(BroadcastedDeployTxn value)? broadcastedDeployTxn,
+    TResult Function(BroadcastedDeployAccountTxn value)?
+        broadcastedDeployAccountTxn,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(BroadcastedInvokeTxnV0 value)? broadcastedInvokeTxnV0,
+    TResult Function(BroadcastedInvokeTxnV1 value)? broadcastedInvokeTxnV1,
+    TResult Function(BroadcastedDeclareTxn value)? broadcastedDeclareTxn,
+    TResult Function(BroadcastedDeployTxn value)? broadcastedDeployTxn,
+    TResult Function(BroadcastedDeployAccountTxn value)?
+        broadcastedDeployAccountTxn,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $BroadcastedTxnCopyWith<BroadcastedTxn> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $BroadcastedTxnCopyWith<$Res> {
+  factory $BroadcastedTxnCopyWith(
+          BroadcastedTxn value, $Res Function(BroadcastedTxn) then) =
+      _$BroadcastedTxnCopyWithImpl<$Res>;
+  $Res call({String type, String version});
+}
+
+/// @nodoc
+class _$BroadcastedTxnCopyWithImpl<$Res>
+    implements $BroadcastedTxnCopyWith<$Res> {
+  _$BroadcastedTxnCopyWithImpl(this._value, this._then);
+
+  final BroadcastedTxn _value;
+  // ignore: unused_field
+  final $Res Function(BroadcastedTxn) _then;
+
+  @override
+  $Res call({
+    Object? type = freezed,
+    Object? version = freezed,
+  }) {
+    return _then(_value.copyWith(
+      type: type == freezed
+          ? _value.type
+          : type // ignore: cast_nullable_to_non_nullable
+              as String,
+      version: version == freezed
+          ? _value.version
+          : version // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+abstract class _$$BroadcastedInvokeTxnV0CopyWith<$Res>
+    implements $BroadcastedTxnCopyWith<$Res> {
+  factory _$$BroadcastedInvokeTxnV0CopyWith(_$BroadcastedInvokeTxnV0 value,
+          $Res Function(_$BroadcastedInvokeTxnV0) then) =
+      __$$BroadcastedInvokeTxnV0CopyWithImpl<$Res>;
+  @override
+  $Res call(
+      {String type,
+      Felt maxFee,
+      String version,
+      List<Felt> signature,
+      Felt? nonce,
+      Felt contractAddress,
+      Felt entryPointSelector,
+      List<Felt> calldata});
+}
+
+/// @nodoc
+class __$$BroadcastedInvokeTxnV0CopyWithImpl<$Res>
+    extends _$BroadcastedTxnCopyWithImpl<$Res>
+    implements _$$BroadcastedInvokeTxnV0CopyWith<$Res> {
+  __$$BroadcastedInvokeTxnV0CopyWithImpl(_$BroadcastedInvokeTxnV0 _value,
+      $Res Function(_$BroadcastedInvokeTxnV0) _then)
+      : super(_value, (v) => _then(v as _$BroadcastedInvokeTxnV0));
+
+  @override
+  _$BroadcastedInvokeTxnV0 get _value =>
+      super._value as _$BroadcastedInvokeTxnV0;
+
+  @override
+  $Res call({
+    Object? type = freezed,
+    Object? maxFee = freezed,
+    Object? version = freezed,
+    Object? signature = freezed,
+    Object? nonce = freezed,
+    Object? contractAddress = freezed,
+    Object? entryPointSelector = freezed,
+    Object? calldata = freezed,
+  }) {
+    return _then(_$BroadcastedInvokeTxnV0(
+      type: type == freezed
+          ? _value.type
+          : type // ignore: cast_nullable_to_non_nullable
+              as String,
+      maxFee: maxFee == freezed
+          ? _value.maxFee
+          : maxFee // ignore: cast_nullable_to_non_nullable
+              as Felt,
+      version: version == freezed
+          ? _value.version
+          : version // ignore: cast_nullable_to_non_nullable
+              as String,
+      signature: signature == freezed
+          ? _value._signature
+          : signature // ignore: cast_nullable_to_non_nullable
+              as List<Felt>,
+      nonce: nonce == freezed
+          ? _value.nonce
+          : nonce // ignore: cast_nullable_to_non_nullable
+              as Felt?,
+      contractAddress: contractAddress == freezed
+          ? _value.contractAddress
+          : contractAddress // ignore: cast_nullable_to_non_nullable
+              as Felt,
+      entryPointSelector: entryPointSelector == freezed
+          ? _value.entryPointSelector
+          : entryPointSelector // ignore: cast_nullable_to_non_nullable
+              as Felt,
+      calldata: calldata == freezed
+          ? _value._calldata
+          : calldata // ignore: cast_nullable_to_non_nullable
+              as List<Felt>,
+    ));
+  }
+}
+
+/// @nodoc
+
+@JsonSerializable(includeIfNull: false)
+class _$BroadcastedInvokeTxnV0 implements BroadcastedInvokeTxnV0 {
+  const _$BroadcastedInvokeTxnV0(
+      {required this.type,
+      required this.maxFee,
+      required this.version,
+      required final List<Felt> signature,
+      this.nonce,
+      required this.contractAddress,
+      required this.entryPointSelector,
+      required final List<Felt> calldata,
+      final String? $type})
+      : _signature = signature,
+        _calldata = calldata,
+        $type = $type ?? 'broadcastedInvokeTxnV0';
+
+  factory _$BroadcastedInvokeTxnV0.fromJson(Map<String, dynamic> json) =>
+      _$$BroadcastedInvokeTxnV0FromJson(json);
+
+// start of BROADCASTED_TXN_COMMON_PROPERTIES
+  @override
+  final String type;
+  @override
+  final Felt maxFee;
+  @override
+  final String version;
+  final List<Felt> _signature;
+  @override
+  List<Felt> get signature {
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_signature);
+  }
+
+  @override
+  final Felt? nonce;
+// end of BROADCASTED_TXN_COMMON_PROPERTIES
+// start of INVOKE_TXN_V0
+  @override
+  final Felt contractAddress;
+  @override
+  final Felt entryPointSelector;
+  final List<Felt> _calldata;
+  @override
+  List<Felt> get calldata {
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_calldata);
+  }
+
+  @JsonKey(name: 'runtimeType')
+  final String $type;
+
+  @override
+  String toString() {
+    return 'BroadcastedTxn.broadcastedInvokeTxnV0(type: $type, maxFee: $maxFee, version: $version, signature: $signature, nonce: $nonce, contractAddress: $contractAddress, entryPointSelector: $entryPointSelector, calldata: $calldata)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$BroadcastedInvokeTxnV0 &&
+            const DeepCollectionEquality().equals(other.type, type) &&
+            const DeepCollectionEquality().equals(other.maxFee, maxFee) &&
+            const DeepCollectionEquality().equals(other.version, version) &&
+            const DeepCollectionEquality()
+                .equals(other._signature, _signature) &&
+            const DeepCollectionEquality().equals(other.nonce, nonce) &&
+            const DeepCollectionEquality()
+                .equals(other.contractAddress, contractAddress) &&
+            const DeepCollectionEquality()
+                .equals(other.entryPointSelector, entryPointSelector) &&
+            const DeepCollectionEquality().equals(other._calldata, _calldata));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(type),
+      const DeepCollectionEquality().hash(maxFee),
+      const DeepCollectionEquality().hash(version),
+      const DeepCollectionEquality().hash(_signature),
+      const DeepCollectionEquality().hash(nonce),
+      const DeepCollectionEquality().hash(contractAddress),
+      const DeepCollectionEquality().hash(entryPointSelector),
+      const DeepCollectionEquality().hash(_calldata));
+
+  @JsonKey(ignore: true)
+  @override
+  _$$BroadcastedInvokeTxnV0CopyWith<_$BroadcastedInvokeTxnV0> get copyWith =>
+      __$$BroadcastedInvokeTxnV0CopyWithImpl<_$BroadcastedInvokeTxnV0>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(
+            String type,
+            Felt maxFee,
+            String version,
+            List<Felt> signature,
+            Felt? nonce,
+            Felt contractAddress,
+            Felt entryPointSelector,
+            List<Felt> calldata)
+        broadcastedInvokeTxnV0,
+    required TResult Function(
+            String type,
+            Felt maxFee,
+            String version,
+            List<Felt> signature,
+            Felt? nonce,
+            Felt sender_address,
+            List<Felt> calldata)
+        broadcastedInvokeTxnV1,
+    required TResult Function(
+            String type,
+            Felt maxFee,
+            String version,
+            List<Felt> signature,
+            Felt? nonce,
+            ContractClass contractClass,
+            Felt senderAddress)
+        broadcastedDeclareTxn,
+    required TResult Function(
+            ContractClass contractClass,
+            String version,
+            String type,
+            Felt contractAddressSalt,
+            List<Felt> constructorCalldata)
+        broadcastedDeployTxn,
+    required TResult Function(
+            Felt contractAddressSalt,
+            Felt classHash,
+            List<Felt> constructorCalldata,
+            String type,
+            Felt maxFee,
+            String version,
+            List<Felt> signature,
+            Felt? nonce)
+        broadcastedDeployAccountTxn,
+  }) {
+    return broadcastedInvokeTxnV0(type, maxFee, version, signature, nonce,
+        contractAddress, entryPointSelector, calldata);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(
+            String type,
+            Felt maxFee,
+            String version,
+            List<Felt> signature,
+            Felt? nonce,
+            Felt contractAddress,
+            Felt entryPointSelector,
+            List<Felt> calldata)?
+        broadcastedInvokeTxnV0,
+    TResult Function(
+            String type,
+            Felt maxFee,
+            String version,
+            List<Felt> signature,
+            Felt? nonce,
+            Felt sender_address,
+            List<Felt> calldata)?
+        broadcastedInvokeTxnV1,
+    TResult Function(
+            String type,
+            Felt maxFee,
+            String version,
+            List<Felt> signature,
+            Felt? nonce,
+            ContractClass contractClass,
+            Felt senderAddress)?
+        broadcastedDeclareTxn,
+    TResult Function(ContractClass contractClass, String version, String type,
+            Felt contractAddressSalt, List<Felt> constructorCalldata)?
+        broadcastedDeployTxn,
+    TResult Function(
+            Felt contractAddressSalt,
+            Felt classHash,
+            List<Felt> constructorCalldata,
+            String type,
+            Felt maxFee,
+            String version,
+            List<Felt> signature,
+            Felt? nonce)?
+        broadcastedDeployAccountTxn,
+  }) {
+    return broadcastedInvokeTxnV0?.call(type, maxFee, version, signature, nonce,
+        contractAddress, entryPointSelector, calldata);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(
+            String type,
+            Felt maxFee,
+            String version,
+            List<Felt> signature,
+            Felt? nonce,
+            Felt contractAddress,
+            Felt entryPointSelector,
+            List<Felt> calldata)?
+        broadcastedInvokeTxnV0,
+    TResult Function(
+            String type,
+            Felt maxFee,
+            String version,
+            List<Felt> signature,
+            Felt? nonce,
+            Felt sender_address,
+            List<Felt> calldata)?
+        broadcastedInvokeTxnV1,
+    TResult Function(
+            String type,
+            Felt maxFee,
+            String version,
+            List<Felt> signature,
+            Felt? nonce,
+            ContractClass contractClass,
+            Felt senderAddress)?
+        broadcastedDeclareTxn,
+    TResult Function(ContractClass contractClass, String version, String type,
+            Felt contractAddressSalt, List<Felt> constructorCalldata)?
+        broadcastedDeployTxn,
+    TResult Function(
+            Felt contractAddressSalt,
+            Felt classHash,
+            List<Felt> constructorCalldata,
+            String type,
+            Felt maxFee,
+            String version,
+            List<Felt> signature,
+            Felt? nonce)?
+        broadcastedDeployAccountTxn,
+    required TResult orElse(),
+  }) {
+    if (broadcastedInvokeTxnV0 != null) {
+      return broadcastedInvokeTxnV0(type, maxFee, version, signature, nonce,
+          contractAddress, entryPointSelector, calldata);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(BroadcastedInvokeTxnV0 value)
+        broadcastedInvokeTxnV0,
+    required TResult Function(BroadcastedInvokeTxnV1 value)
+        broadcastedInvokeTxnV1,
+    required TResult Function(BroadcastedDeclareTxn value)
+        broadcastedDeclareTxn,
+    required TResult Function(BroadcastedDeployTxn value) broadcastedDeployTxn,
+    required TResult Function(BroadcastedDeployAccountTxn value)
+        broadcastedDeployAccountTxn,
+  }) {
+    return broadcastedInvokeTxnV0(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(BroadcastedInvokeTxnV0 value)? broadcastedInvokeTxnV0,
+    TResult Function(BroadcastedInvokeTxnV1 value)? broadcastedInvokeTxnV1,
+    TResult Function(BroadcastedDeclareTxn value)? broadcastedDeclareTxn,
+    TResult Function(BroadcastedDeployTxn value)? broadcastedDeployTxn,
+    TResult Function(BroadcastedDeployAccountTxn value)?
+        broadcastedDeployAccountTxn,
+  }) {
+    return broadcastedInvokeTxnV0?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(BroadcastedInvokeTxnV0 value)? broadcastedInvokeTxnV0,
+    TResult Function(BroadcastedInvokeTxnV1 value)? broadcastedInvokeTxnV1,
+    TResult Function(BroadcastedDeclareTxn value)? broadcastedDeclareTxn,
+    TResult Function(BroadcastedDeployTxn value)? broadcastedDeployTxn,
+    TResult Function(BroadcastedDeployAccountTxn value)?
+        broadcastedDeployAccountTxn,
+    required TResult orElse(),
+  }) {
+    if (broadcastedInvokeTxnV0 != null) {
+      return broadcastedInvokeTxnV0(this);
+    }
+    return orElse();
+  }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$BroadcastedInvokeTxnV0ToJson(
+      this,
+    );
+  }
+}
+
+abstract class BroadcastedInvokeTxnV0 implements BroadcastedTxn {
+  const factory BroadcastedInvokeTxnV0(
+      {required final String type,
+      required final Felt maxFee,
+      required final String version,
+      required final List<Felt> signature,
+      final Felt? nonce,
+      required final Felt contractAddress,
+      required final Felt entryPointSelector,
+      required final List<Felt> calldata}) = _$BroadcastedInvokeTxnV0;
+
+  factory BroadcastedInvokeTxnV0.fromJson(Map<String, dynamic> json) =
+      _$BroadcastedInvokeTxnV0.fromJson;
+
+  @override // start of BROADCASTED_TXN_COMMON_PROPERTIES
+  String get type;
+  Felt get maxFee;
+  @override
+  String get version;
+  List<Felt> get signature;
+  Felt? get nonce; // end of BROADCASTED_TXN_COMMON_PROPERTIES
+// start of INVOKE_TXN_V0
+  Felt get contractAddress;
+  Felt get entryPointSelector;
+  List<Felt> get calldata;
+  @override
+  @JsonKey(ignore: true)
+  _$$BroadcastedInvokeTxnV0CopyWith<_$BroadcastedInvokeTxnV0> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$BroadcastedInvokeTxnV1CopyWith<$Res>
+    implements $BroadcastedTxnCopyWith<$Res> {
+  factory _$$BroadcastedInvokeTxnV1CopyWith(_$BroadcastedInvokeTxnV1 value,
+          $Res Function(_$BroadcastedInvokeTxnV1) then) =
+      __$$BroadcastedInvokeTxnV1CopyWithImpl<$Res>;
+  @override
+  $Res call(
+      {String type,
+      Felt maxFee,
+      String version,
+      List<Felt> signature,
+      Felt? nonce,
+      Felt sender_address,
+      List<Felt> calldata});
+}
+
+/// @nodoc
+class __$$BroadcastedInvokeTxnV1CopyWithImpl<$Res>
+    extends _$BroadcastedTxnCopyWithImpl<$Res>
+    implements _$$BroadcastedInvokeTxnV1CopyWith<$Res> {
+  __$$BroadcastedInvokeTxnV1CopyWithImpl(_$BroadcastedInvokeTxnV1 _value,
+      $Res Function(_$BroadcastedInvokeTxnV1) _then)
+      : super(_value, (v) => _then(v as _$BroadcastedInvokeTxnV1));
+
+  @override
+  _$BroadcastedInvokeTxnV1 get _value =>
+      super._value as _$BroadcastedInvokeTxnV1;
+
+  @override
+  $Res call({
+    Object? type = freezed,
+    Object? maxFee = freezed,
+    Object? version = freezed,
+    Object? signature = freezed,
+    Object? nonce = freezed,
+    Object? sender_address = freezed,
+    Object? calldata = freezed,
+  }) {
+    return _then(_$BroadcastedInvokeTxnV1(
+      type: type == freezed
+          ? _value.type
+          : type // ignore: cast_nullable_to_non_nullable
+              as String,
+      maxFee: maxFee == freezed
+          ? _value.maxFee
+          : maxFee // ignore: cast_nullable_to_non_nullable
+              as Felt,
+      version: version == freezed
+          ? _value.version
+          : version // ignore: cast_nullable_to_non_nullable
+              as String,
+      signature: signature == freezed
+          ? _value._signature
+          : signature // ignore: cast_nullable_to_non_nullable
+              as List<Felt>,
+      nonce: nonce == freezed
+          ? _value.nonce
+          : nonce // ignore: cast_nullable_to_non_nullable
+              as Felt?,
+      sender_address: sender_address == freezed
+          ? _value.sender_address
+          : sender_address // ignore: cast_nullable_to_non_nullable
+              as Felt,
+      calldata: calldata == freezed
+          ? _value._calldata
+          : calldata // ignore: cast_nullable_to_non_nullable
+              as List<Felt>,
+    ));
+  }
+}
+
+/// @nodoc
+
+@JsonSerializable(includeIfNull: false)
+class _$BroadcastedInvokeTxnV1 implements BroadcastedInvokeTxnV1 {
+  const _$BroadcastedInvokeTxnV1(
+      {required this.type,
+      required this.maxFee,
+      required this.version,
+      required final List<Felt> signature,
+      this.nonce,
+      required this.sender_address,
+      required final List<Felt> calldata,
+      final String? $type})
+      : _signature = signature,
+        _calldata = calldata,
+        $type = $type ?? 'broadcastedInvokeTxnV1';
+
+  factory _$BroadcastedInvokeTxnV1.fromJson(Map<String, dynamic> json) =>
+      _$$BroadcastedInvokeTxnV1FromJson(json);
+
+// start of BROADCASTED_TXN_COMMON_PROPERTIES
+  @override
+  final String type;
+  @override
+  final Felt maxFee;
+  @override
+  final String version;
+  final List<Felt> _signature;
+  @override
+  List<Felt> get signature {
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_signature);
+  }
+
+  @override
+  final Felt? nonce;
+// end of BROADCASTED_TXN_COMMON_PROPERTIES
+// start of INVOKE_TXN_V1
+  @override
+  final Felt sender_address;
+  final List<Felt> _calldata;
+  @override
+  List<Felt> get calldata {
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_calldata);
+  }
+
+  @JsonKey(name: 'runtimeType')
+  final String $type;
+
+  @override
+  String toString() {
+    return 'BroadcastedTxn.broadcastedInvokeTxnV1(type: $type, maxFee: $maxFee, version: $version, signature: $signature, nonce: $nonce, sender_address: $sender_address, calldata: $calldata)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$BroadcastedInvokeTxnV1 &&
+            const DeepCollectionEquality().equals(other.type, type) &&
+            const DeepCollectionEquality().equals(other.maxFee, maxFee) &&
+            const DeepCollectionEquality().equals(other.version, version) &&
+            const DeepCollectionEquality()
+                .equals(other._signature, _signature) &&
+            const DeepCollectionEquality().equals(other.nonce, nonce) &&
+            const DeepCollectionEquality()
+                .equals(other.sender_address, sender_address) &&
+            const DeepCollectionEquality().equals(other._calldata, _calldata));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(type),
+      const DeepCollectionEquality().hash(maxFee),
+      const DeepCollectionEquality().hash(version),
+      const DeepCollectionEquality().hash(_signature),
+      const DeepCollectionEquality().hash(nonce),
+      const DeepCollectionEquality().hash(sender_address),
+      const DeepCollectionEquality().hash(_calldata));
+
+  @JsonKey(ignore: true)
+  @override
+  _$$BroadcastedInvokeTxnV1CopyWith<_$BroadcastedInvokeTxnV1> get copyWith =>
+      __$$BroadcastedInvokeTxnV1CopyWithImpl<_$BroadcastedInvokeTxnV1>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(
+            String type,
+            Felt maxFee,
+            String version,
+            List<Felt> signature,
+            Felt? nonce,
+            Felt contractAddress,
+            Felt entryPointSelector,
+            List<Felt> calldata)
+        broadcastedInvokeTxnV0,
+    required TResult Function(
+            String type,
+            Felt maxFee,
+            String version,
+            List<Felt> signature,
+            Felt? nonce,
+            Felt sender_address,
+            List<Felt> calldata)
+        broadcastedInvokeTxnV1,
+    required TResult Function(
+            String type,
+            Felt maxFee,
+            String version,
+            List<Felt> signature,
+            Felt? nonce,
+            ContractClass contractClass,
+            Felt senderAddress)
+        broadcastedDeclareTxn,
+    required TResult Function(
+            ContractClass contractClass,
+            String version,
+            String type,
+            Felt contractAddressSalt,
+            List<Felt> constructorCalldata)
+        broadcastedDeployTxn,
+    required TResult Function(
+            Felt contractAddressSalt,
+            Felt classHash,
+            List<Felt> constructorCalldata,
+            String type,
+            Felt maxFee,
+            String version,
+            List<Felt> signature,
+            Felt? nonce)
+        broadcastedDeployAccountTxn,
+  }) {
+    return broadcastedInvokeTxnV1(
+        type, maxFee, version, signature, nonce, sender_address, calldata);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(
+            String type,
+            Felt maxFee,
+            String version,
+            List<Felt> signature,
+            Felt? nonce,
+            Felt contractAddress,
+            Felt entryPointSelector,
+            List<Felt> calldata)?
+        broadcastedInvokeTxnV0,
+    TResult Function(
+            String type,
+            Felt maxFee,
+            String version,
+            List<Felt> signature,
+            Felt? nonce,
+            Felt sender_address,
+            List<Felt> calldata)?
+        broadcastedInvokeTxnV1,
+    TResult Function(
+            String type,
+            Felt maxFee,
+            String version,
+            List<Felt> signature,
+            Felt? nonce,
+            ContractClass contractClass,
+            Felt senderAddress)?
+        broadcastedDeclareTxn,
+    TResult Function(ContractClass contractClass, String version, String type,
+            Felt contractAddressSalt, List<Felt> constructorCalldata)?
+        broadcastedDeployTxn,
+    TResult Function(
+            Felt contractAddressSalt,
+            Felt classHash,
+            List<Felt> constructorCalldata,
+            String type,
+            Felt maxFee,
+            String version,
+            List<Felt> signature,
+            Felt? nonce)?
+        broadcastedDeployAccountTxn,
+  }) {
+    return broadcastedInvokeTxnV1?.call(
+        type, maxFee, version, signature, nonce, sender_address, calldata);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(
+            String type,
+            Felt maxFee,
+            String version,
+            List<Felt> signature,
+            Felt? nonce,
+            Felt contractAddress,
+            Felt entryPointSelector,
+            List<Felt> calldata)?
+        broadcastedInvokeTxnV0,
+    TResult Function(
+            String type,
+            Felt maxFee,
+            String version,
+            List<Felt> signature,
+            Felt? nonce,
+            Felt sender_address,
+            List<Felt> calldata)?
+        broadcastedInvokeTxnV1,
+    TResult Function(
+            String type,
+            Felt maxFee,
+            String version,
+            List<Felt> signature,
+            Felt? nonce,
+            ContractClass contractClass,
+            Felt senderAddress)?
+        broadcastedDeclareTxn,
+    TResult Function(ContractClass contractClass, String version, String type,
+            Felt contractAddressSalt, List<Felt> constructorCalldata)?
+        broadcastedDeployTxn,
+    TResult Function(
+            Felt contractAddressSalt,
+            Felt classHash,
+            List<Felt> constructorCalldata,
+            String type,
+            Felt maxFee,
+            String version,
+            List<Felt> signature,
+            Felt? nonce)?
+        broadcastedDeployAccountTxn,
+    required TResult orElse(),
+  }) {
+    if (broadcastedInvokeTxnV1 != null) {
+      return broadcastedInvokeTxnV1(
+          type, maxFee, version, signature, nonce, sender_address, calldata);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(BroadcastedInvokeTxnV0 value)
+        broadcastedInvokeTxnV0,
+    required TResult Function(BroadcastedInvokeTxnV1 value)
+        broadcastedInvokeTxnV1,
+    required TResult Function(BroadcastedDeclareTxn value)
+        broadcastedDeclareTxn,
+    required TResult Function(BroadcastedDeployTxn value) broadcastedDeployTxn,
+    required TResult Function(BroadcastedDeployAccountTxn value)
+        broadcastedDeployAccountTxn,
+  }) {
+    return broadcastedInvokeTxnV1(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(BroadcastedInvokeTxnV0 value)? broadcastedInvokeTxnV0,
+    TResult Function(BroadcastedInvokeTxnV1 value)? broadcastedInvokeTxnV1,
+    TResult Function(BroadcastedDeclareTxn value)? broadcastedDeclareTxn,
+    TResult Function(BroadcastedDeployTxn value)? broadcastedDeployTxn,
+    TResult Function(BroadcastedDeployAccountTxn value)?
+        broadcastedDeployAccountTxn,
+  }) {
+    return broadcastedInvokeTxnV1?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(BroadcastedInvokeTxnV0 value)? broadcastedInvokeTxnV0,
+    TResult Function(BroadcastedInvokeTxnV1 value)? broadcastedInvokeTxnV1,
+    TResult Function(BroadcastedDeclareTxn value)? broadcastedDeclareTxn,
+    TResult Function(BroadcastedDeployTxn value)? broadcastedDeployTxn,
+    TResult Function(BroadcastedDeployAccountTxn value)?
+        broadcastedDeployAccountTxn,
+    required TResult orElse(),
+  }) {
+    if (broadcastedInvokeTxnV1 != null) {
+      return broadcastedInvokeTxnV1(this);
+    }
+    return orElse();
+  }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$BroadcastedInvokeTxnV1ToJson(
+      this,
+    );
+  }
+}
+
+abstract class BroadcastedInvokeTxnV1 implements BroadcastedTxn {
+  const factory BroadcastedInvokeTxnV1(
+      {required final String type,
+      required final Felt maxFee,
+      required final String version,
+      required final List<Felt> signature,
+      final Felt? nonce,
+      required final Felt sender_address,
+      required final List<Felt> calldata}) = _$BroadcastedInvokeTxnV1;
+
+  factory BroadcastedInvokeTxnV1.fromJson(Map<String, dynamic> json) =
+      _$BroadcastedInvokeTxnV1.fromJson;
+
+  @override // start of BROADCASTED_TXN_COMMON_PROPERTIES
+  String get type;
+  Felt get maxFee;
+  @override
+  String get version;
+  List<Felt> get signature;
+  Felt? get nonce; // end of BROADCASTED_TXN_COMMON_PROPERTIES
+// start of INVOKE_TXN_V1
+  Felt get sender_address;
+  List<Felt> get calldata;
+  @override
+  @JsonKey(ignore: true)
+  _$$BroadcastedInvokeTxnV1CopyWith<_$BroadcastedInvokeTxnV1> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$BroadcastedDeclareTxnCopyWith<$Res>
+    implements $BroadcastedTxnCopyWith<$Res> {
+  factory _$$BroadcastedDeclareTxnCopyWith(_$BroadcastedDeclareTxn value,
+          $Res Function(_$BroadcastedDeclareTxn) then) =
+      __$$BroadcastedDeclareTxnCopyWithImpl<$Res>;
+  @override
+  $Res call(
+      {String type,
+      Felt maxFee,
+      String version,
+      List<Felt> signature,
+      Felt? nonce,
+      ContractClass contractClass,
+      Felt senderAddress});
+
+  $ContractClassCopyWith<$Res> get contractClass;
+}
+
+/// @nodoc
+class __$$BroadcastedDeclareTxnCopyWithImpl<$Res>
+    extends _$BroadcastedTxnCopyWithImpl<$Res>
+    implements _$$BroadcastedDeclareTxnCopyWith<$Res> {
+  __$$BroadcastedDeclareTxnCopyWithImpl(_$BroadcastedDeclareTxn _value,
+      $Res Function(_$BroadcastedDeclareTxn) _then)
+      : super(_value, (v) => _then(v as _$BroadcastedDeclareTxn));
+
+  @override
+  _$BroadcastedDeclareTxn get _value => super._value as _$BroadcastedDeclareTxn;
+
+  @override
+  $Res call({
+    Object? type = freezed,
+    Object? maxFee = freezed,
+    Object? version = freezed,
+    Object? signature = freezed,
+    Object? nonce = freezed,
+    Object? contractClass = freezed,
+    Object? senderAddress = freezed,
+  }) {
+    return _then(_$BroadcastedDeclareTxn(
+      type: type == freezed
+          ? _value.type
+          : type // ignore: cast_nullable_to_non_nullable
+              as String,
+      maxFee: maxFee == freezed
+          ? _value.maxFee
+          : maxFee // ignore: cast_nullable_to_non_nullable
+              as Felt,
+      version: version == freezed
+          ? _value.version
+          : version // ignore: cast_nullable_to_non_nullable
+              as String,
+      signature: signature == freezed
+          ? _value._signature
+          : signature // ignore: cast_nullable_to_non_nullable
+              as List<Felt>,
+      nonce: nonce == freezed
+          ? _value.nonce
+          : nonce // ignore: cast_nullable_to_non_nullable
+              as Felt?,
+      contractClass: contractClass == freezed
+          ? _value.contractClass
+          : contractClass // ignore: cast_nullable_to_non_nullable
+              as ContractClass,
+      senderAddress: senderAddress == freezed
+          ? _value.senderAddress
+          : senderAddress // ignore: cast_nullable_to_non_nullable
+              as Felt,
+    ));
+  }
+
+  @override
+  $ContractClassCopyWith<$Res> get contractClass {
+    return $ContractClassCopyWith<$Res>(_value.contractClass, (value) {
+      return _then(_value.copyWith(contractClass: value));
+    });
+  }
+}
+
+/// @nodoc
+
+@JsonSerializable(includeIfNull: false)
+class _$BroadcastedDeclareTxn implements BroadcastedDeclareTxn {
+  const _$BroadcastedDeclareTxn(
+      {required this.type,
+      required this.maxFee,
+      required this.version,
+      required final List<Felt> signature,
+      this.nonce,
+      required this.contractClass,
+      required this.senderAddress,
+      final String? $type})
+      : _signature = signature,
+        $type = $type ?? 'broadcastedDeclareTxn';
+
+  factory _$BroadcastedDeclareTxn.fromJson(Map<String, dynamic> json) =>
+      _$$BroadcastedDeclareTxnFromJson(json);
+
+// start of BROADCASTED_TXN_COMMON_PROPERTIES
+  @override
+  final String type;
+  @override
+  final Felt maxFee;
+  @override
+  final String version;
+  final List<Felt> _signature;
+  @override
+  List<Felt> get signature {
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_signature);
+  }
+
+  @override
+  final Felt? nonce;
+// end of BROADCASTED_TXN_COMMON_PROPERTIES
+  @override
+  final ContractClass contractClass;
+  @override
+  final Felt senderAddress;
+
+  @JsonKey(name: 'runtimeType')
+  final String $type;
+
+  @override
+  String toString() {
+    return 'BroadcastedTxn.broadcastedDeclareTxn(type: $type, maxFee: $maxFee, version: $version, signature: $signature, nonce: $nonce, contractClass: $contractClass, senderAddress: $senderAddress)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$BroadcastedDeclareTxn &&
+            const DeepCollectionEquality().equals(other.type, type) &&
+            const DeepCollectionEquality().equals(other.maxFee, maxFee) &&
+            const DeepCollectionEquality().equals(other.version, version) &&
+            const DeepCollectionEquality()
+                .equals(other._signature, _signature) &&
+            const DeepCollectionEquality().equals(other.nonce, nonce) &&
+            const DeepCollectionEquality()
+                .equals(other.contractClass, contractClass) &&
+            const DeepCollectionEquality()
+                .equals(other.senderAddress, senderAddress));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(type),
+      const DeepCollectionEquality().hash(maxFee),
+      const DeepCollectionEquality().hash(version),
+      const DeepCollectionEquality().hash(_signature),
+      const DeepCollectionEquality().hash(nonce),
+      const DeepCollectionEquality().hash(contractClass),
+      const DeepCollectionEquality().hash(senderAddress));
+
+  @JsonKey(ignore: true)
+  @override
+  _$$BroadcastedDeclareTxnCopyWith<_$BroadcastedDeclareTxn> get copyWith =>
+      __$$BroadcastedDeclareTxnCopyWithImpl<_$BroadcastedDeclareTxn>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(
+            String type,
+            Felt maxFee,
+            String version,
+            List<Felt> signature,
+            Felt? nonce,
+            Felt contractAddress,
+            Felt entryPointSelector,
+            List<Felt> calldata)
+        broadcastedInvokeTxnV0,
+    required TResult Function(
+            String type,
+            Felt maxFee,
+            String version,
+            List<Felt> signature,
+            Felt? nonce,
+            Felt sender_address,
+            List<Felt> calldata)
+        broadcastedInvokeTxnV1,
+    required TResult Function(
+            String type,
+            Felt maxFee,
+            String version,
+            List<Felt> signature,
+            Felt? nonce,
+            ContractClass contractClass,
+            Felt senderAddress)
+        broadcastedDeclareTxn,
+    required TResult Function(
+            ContractClass contractClass,
+            String version,
+            String type,
+            Felt contractAddressSalt,
+            List<Felt> constructorCalldata)
+        broadcastedDeployTxn,
+    required TResult Function(
+            Felt contractAddressSalt,
+            Felt classHash,
+            List<Felt> constructorCalldata,
+            String type,
+            Felt maxFee,
+            String version,
+            List<Felt> signature,
+            Felt? nonce)
+        broadcastedDeployAccountTxn,
+  }) {
+    return broadcastedDeclareTxn(
+        type, maxFee, version, signature, nonce, contractClass, senderAddress);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(
+            String type,
+            Felt maxFee,
+            String version,
+            List<Felt> signature,
+            Felt? nonce,
+            Felt contractAddress,
+            Felt entryPointSelector,
+            List<Felt> calldata)?
+        broadcastedInvokeTxnV0,
+    TResult Function(
+            String type,
+            Felt maxFee,
+            String version,
+            List<Felt> signature,
+            Felt? nonce,
+            Felt sender_address,
+            List<Felt> calldata)?
+        broadcastedInvokeTxnV1,
+    TResult Function(
+            String type,
+            Felt maxFee,
+            String version,
+            List<Felt> signature,
+            Felt? nonce,
+            ContractClass contractClass,
+            Felt senderAddress)?
+        broadcastedDeclareTxn,
+    TResult Function(ContractClass contractClass, String version, String type,
+            Felt contractAddressSalt, List<Felt> constructorCalldata)?
+        broadcastedDeployTxn,
+    TResult Function(
+            Felt contractAddressSalt,
+            Felt classHash,
+            List<Felt> constructorCalldata,
+            String type,
+            Felt maxFee,
+            String version,
+            List<Felt> signature,
+            Felt? nonce)?
+        broadcastedDeployAccountTxn,
+  }) {
+    return broadcastedDeclareTxn?.call(
+        type, maxFee, version, signature, nonce, contractClass, senderAddress);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(
+            String type,
+            Felt maxFee,
+            String version,
+            List<Felt> signature,
+            Felt? nonce,
+            Felt contractAddress,
+            Felt entryPointSelector,
+            List<Felt> calldata)?
+        broadcastedInvokeTxnV0,
+    TResult Function(
+            String type,
+            Felt maxFee,
+            String version,
+            List<Felt> signature,
+            Felt? nonce,
+            Felt sender_address,
+            List<Felt> calldata)?
+        broadcastedInvokeTxnV1,
+    TResult Function(
+            String type,
+            Felt maxFee,
+            String version,
+            List<Felt> signature,
+            Felt? nonce,
+            ContractClass contractClass,
+            Felt senderAddress)?
+        broadcastedDeclareTxn,
+    TResult Function(ContractClass contractClass, String version, String type,
+            Felt contractAddressSalt, List<Felt> constructorCalldata)?
+        broadcastedDeployTxn,
+    TResult Function(
+            Felt contractAddressSalt,
+            Felt classHash,
+            List<Felt> constructorCalldata,
+            String type,
+            Felt maxFee,
+            String version,
+            List<Felt> signature,
+            Felt? nonce)?
+        broadcastedDeployAccountTxn,
+    required TResult orElse(),
+  }) {
+    if (broadcastedDeclareTxn != null) {
+      return broadcastedDeclareTxn(type, maxFee, version, signature, nonce,
+          contractClass, senderAddress);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(BroadcastedInvokeTxnV0 value)
+        broadcastedInvokeTxnV0,
+    required TResult Function(BroadcastedInvokeTxnV1 value)
+        broadcastedInvokeTxnV1,
+    required TResult Function(BroadcastedDeclareTxn value)
+        broadcastedDeclareTxn,
+    required TResult Function(BroadcastedDeployTxn value) broadcastedDeployTxn,
+    required TResult Function(BroadcastedDeployAccountTxn value)
+        broadcastedDeployAccountTxn,
+  }) {
+    return broadcastedDeclareTxn(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(BroadcastedInvokeTxnV0 value)? broadcastedInvokeTxnV0,
+    TResult Function(BroadcastedInvokeTxnV1 value)? broadcastedInvokeTxnV1,
+    TResult Function(BroadcastedDeclareTxn value)? broadcastedDeclareTxn,
+    TResult Function(BroadcastedDeployTxn value)? broadcastedDeployTxn,
+    TResult Function(BroadcastedDeployAccountTxn value)?
+        broadcastedDeployAccountTxn,
+  }) {
+    return broadcastedDeclareTxn?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(BroadcastedInvokeTxnV0 value)? broadcastedInvokeTxnV0,
+    TResult Function(BroadcastedInvokeTxnV1 value)? broadcastedInvokeTxnV1,
+    TResult Function(BroadcastedDeclareTxn value)? broadcastedDeclareTxn,
+    TResult Function(BroadcastedDeployTxn value)? broadcastedDeployTxn,
+    TResult Function(BroadcastedDeployAccountTxn value)?
+        broadcastedDeployAccountTxn,
+    required TResult orElse(),
+  }) {
+    if (broadcastedDeclareTxn != null) {
+      return broadcastedDeclareTxn(this);
+    }
+    return orElse();
+  }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$BroadcastedDeclareTxnToJson(
+      this,
+    );
+  }
+}
+
+abstract class BroadcastedDeclareTxn implements BroadcastedTxn {
+  const factory BroadcastedDeclareTxn(
+      {required final String type,
+      required final Felt maxFee,
+      required final String version,
+      required final List<Felt> signature,
+      final Felt? nonce,
+      required final ContractClass contractClass,
+      required final Felt senderAddress}) = _$BroadcastedDeclareTxn;
+
+  factory BroadcastedDeclareTxn.fromJson(Map<String, dynamic> json) =
+      _$BroadcastedDeclareTxn.fromJson;
+
+  @override // start of BROADCASTED_TXN_COMMON_PROPERTIES
+  String get type;
+  Felt get maxFee;
+  @override
+  String get version;
+  List<Felt> get signature;
+  Felt? get nonce; // end of BROADCASTED_TXN_COMMON_PROPERTIES
+  ContractClass get contractClass;
+  Felt get senderAddress;
+  @override
+  @JsonKey(ignore: true)
+  _$$BroadcastedDeclareTxnCopyWith<_$BroadcastedDeclareTxn> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$BroadcastedDeployTxnCopyWith<$Res>
+    implements $BroadcastedTxnCopyWith<$Res> {
+  factory _$$BroadcastedDeployTxnCopyWith(_$BroadcastedDeployTxn value,
+          $Res Function(_$BroadcastedDeployTxn) then) =
+      __$$BroadcastedDeployTxnCopyWithImpl<$Res>;
+  @override
+  $Res call(
+      {ContractClass contractClass,
+      String version,
+      String type,
+      Felt contractAddressSalt,
+      List<Felt> constructorCalldata});
+
+  $ContractClassCopyWith<$Res> get contractClass;
+}
+
+/// @nodoc
+class __$$BroadcastedDeployTxnCopyWithImpl<$Res>
+    extends _$BroadcastedTxnCopyWithImpl<$Res>
+    implements _$$BroadcastedDeployTxnCopyWith<$Res> {
+  __$$BroadcastedDeployTxnCopyWithImpl(_$BroadcastedDeployTxn _value,
+      $Res Function(_$BroadcastedDeployTxn) _then)
+      : super(_value, (v) => _then(v as _$BroadcastedDeployTxn));
+
+  @override
+  _$BroadcastedDeployTxn get _value => super._value as _$BroadcastedDeployTxn;
+
+  @override
+  $Res call({
+    Object? contractClass = freezed,
+    Object? version = freezed,
+    Object? type = freezed,
+    Object? contractAddressSalt = freezed,
+    Object? constructorCalldata = freezed,
+  }) {
+    return _then(_$BroadcastedDeployTxn(
+      contractClass: contractClass == freezed
+          ? _value.contractClass
+          : contractClass // ignore: cast_nullable_to_non_nullable
+              as ContractClass,
+      version: version == freezed
+          ? _value.version
+          : version // ignore: cast_nullable_to_non_nullable
+              as String,
+      type: type == freezed
+          ? _value.type
+          : type // ignore: cast_nullable_to_non_nullable
+              as String,
+      contractAddressSalt: contractAddressSalt == freezed
+          ? _value.contractAddressSalt
+          : contractAddressSalt // ignore: cast_nullable_to_non_nullable
+              as Felt,
+      constructorCalldata: constructorCalldata == freezed
+          ? _value._constructorCalldata
+          : constructorCalldata // ignore: cast_nullable_to_non_nullable
+              as List<Felt>,
+    ));
+  }
+
+  @override
+  $ContractClassCopyWith<$Res> get contractClass {
+    return $ContractClassCopyWith<$Res>(_value.contractClass, (value) {
+      return _then(_value.copyWith(contractClass: value));
+    });
+  }
+}
+
+/// @nodoc
+
+@JsonSerializable(includeIfNull: false)
+class _$BroadcastedDeployTxn implements BroadcastedDeployTxn {
+  const _$BroadcastedDeployTxn(
+      {required this.contractClass,
+      required this.version,
+      required this.type,
+      required this.contractAddressSalt,
+      required final List<Felt> constructorCalldata,
+      final String? $type})
+      : _constructorCalldata = constructorCalldata,
+        $type = $type ?? 'broadcastedDeployTxn';
+
+  factory _$BroadcastedDeployTxn.fromJson(Map<String, dynamic> json) =>
+      _$$BroadcastedDeployTxnFromJson(json);
+
+  @override
+  final ContractClass contractClass;
+// start of DEPLOY_TXN_PROPERTIES
+  @override
+  final String version;
+  @override
+  final String type;
+  @override
+  final Felt contractAddressSalt;
+  final List<Felt> _constructorCalldata;
+  @override
+  List<Felt> get constructorCalldata {
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_constructorCalldata);
+  }
+
+  @JsonKey(name: 'runtimeType')
+  final String $type;
+
+  @override
+  String toString() {
+    return 'BroadcastedTxn.broadcastedDeployTxn(contractClass: $contractClass, version: $version, type: $type, contractAddressSalt: $contractAddressSalt, constructorCalldata: $constructorCalldata)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$BroadcastedDeployTxn &&
+            const DeepCollectionEquality()
+                .equals(other.contractClass, contractClass) &&
+            const DeepCollectionEquality().equals(other.version, version) &&
+            const DeepCollectionEquality().equals(other.type, type) &&
+            const DeepCollectionEquality()
+                .equals(other.contractAddressSalt, contractAddressSalt) &&
+            const DeepCollectionEquality()
+                .equals(other._constructorCalldata, _constructorCalldata));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(contractClass),
+      const DeepCollectionEquality().hash(version),
+      const DeepCollectionEquality().hash(type),
+      const DeepCollectionEquality().hash(contractAddressSalt),
+      const DeepCollectionEquality().hash(_constructorCalldata));
+
+  @JsonKey(ignore: true)
+  @override
+  _$$BroadcastedDeployTxnCopyWith<_$BroadcastedDeployTxn> get copyWith =>
+      __$$BroadcastedDeployTxnCopyWithImpl<_$BroadcastedDeployTxn>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(
+            String type,
+            Felt maxFee,
+            String version,
+            List<Felt> signature,
+            Felt? nonce,
+            Felt contractAddress,
+            Felt entryPointSelector,
+            List<Felt> calldata)
+        broadcastedInvokeTxnV0,
+    required TResult Function(
+            String type,
+            Felt maxFee,
+            String version,
+            List<Felt> signature,
+            Felt? nonce,
+            Felt sender_address,
+            List<Felt> calldata)
+        broadcastedInvokeTxnV1,
+    required TResult Function(
+            String type,
+            Felt maxFee,
+            String version,
+            List<Felt> signature,
+            Felt? nonce,
+            ContractClass contractClass,
+            Felt senderAddress)
+        broadcastedDeclareTxn,
+    required TResult Function(
+            ContractClass contractClass,
+            String version,
+            String type,
+            Felt contractAddressSalt,
+            List<Felt> constructorCalldata)
+        broadcastedDeployTxn,
+    required TResult Function(
+            Felt contractAddressSalt,
+            Felt classHash,
+            List<Felt> constructorCalldata,
+            String type,
+            Felt maxFee,
+            String version,
+            List<Felt> signature,
+            Felt? nonce)
+        broadcastedDeployAccountTxn,
+  }) {
+    return broadcastedDeployTxn(
+        contractClass, version, type, contractAddressSalt, constructorCalldata);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(
+            String type,
+            Felt maxFee,
+            String version,
+            List<Felt> signature,
+            Felt? nonce,
+            Felt contractAddress,
+            Felt entryPointSelector,
+            List<Felt> calldata)?
+        broadcastedInvokeTxnV0,
+    TResult Function(
+            String type,
+            Felt maxFee,
+            String version,
+            List<Felt> signature,
+            Felt? nonce,
+            Felt sender_address,
+            List<Felt> calldata)?
+        broadcastedInvokeTxnV1,
+    TResult Function(
+            String type,
+            Felt maxFee,
+            String version,
+            List<Felt> signature,
+            Felt? nonce,
+            ContractClass contractClass,
+            Felt senderAddress)?
+        broadcastedDeclareTxn,
+    TResult Function(ContractClass contractClass, String version, String type,
+            Felt contractAddressSalt, List<Felt> constructorCalldata)?
+        broadcastedDeployTxn,
+    TResult Function(
+            Felt contractAddressSalt,
+            Felt classHash,
+            List<Felt> constructorCalldata,
+            String type,
+            Felt maxFee,
+            String version,
+            List<Felt> signature,
+            Felt? nonce)?
+        broadcastedDeployAccountTxn,
+  }) {
+    return broadcastedDeployTxn?.call(
+        contractClass, version, type, contractAddressSalt, constructorCalldata);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(
+            String type,
+            Felt maxFee,
+            String version,
+            List<Felt> signature,
+            Felt? nonce,
+            Felt contractAddress,
+            Felt entryPointSelector,
+            List<Felt> calldata)?
+        broadcastedInvokeTxnV0,
+    TResult Function(
+            String type,
+            Felt maxFee,
+            String version,
+            List<Felt> signature,
+            Felt? nonce,
+            Felt sender_address,
+            List<Felt> calldata)?
+        broadcastedInvokeTxnV1,
+    TResult Function(
+            String type,
+            Felt maxFee,
+            String version,
+            List<Felt> signature,
+            Felt? nonce,
+            ContractClass contractClass,
+            Felt senderAddress)?
+        broadcastedDeclareTxn,
+    TResult Function(ContractClass contractClass, String version, String type,
+            Felt contractAddressSalt, List<Felt> constructorCalldata)?
+        broadcastedDeployTxn,
+    TResult Function(
+            Felt contractAddressSalt,
+            Felt classHash,
+            List<Felt> constructorCalldata,
+            String type,
+            Felt maxFee,
+            String version,
+            List<Felt> signature,
+            Felt? nonce)?
+        broadcastedDeployAccountTxn,
+    required TResult orElse(),
+  }) {
+    if (broadcastedDeployTxn != null) {
+      return broadcastedDeployTxn(contractClass, version, type,
+          contractAddressSalt, constructorCalldata);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(BroadcastedInvokeTxnV0 value)
+        broadcastedInvokeTxnV0,
+    required TResult Function(BroadcastedInvokeTxnV1 value)
+        broadcastedInvokeTxnV1,
+    required TResult Function(BroadcastedDeclareTxn value)
+        broadcastedDeclareTxn,
+    required TResult Function(BroadcastedDeployTxn value) broadcastedDeployTxn,
+    required TResult Function(BroadcastedDeployAccountTxn value)
+        broadcastedDeployAccountTxn,
+  }) {
+    return broadcastedDeployTxn(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(BroadcastedInvokeTxnV0 value)? broadcastedInvokeTxnV0,
+    TResult Function(BroadcastedInvokeTxnV1 value)? broadcastedInvokeTxnV1,
+    TResult Function(BroadcastedDeclareTxn value)? broadcastedDeclareTxn,
+    TResult Function(BroadcastedDeployTxn value)? broadcastedDeployTxn,
+    TResult Function(BroadcastedDeployAccountTxn value)?
+        broadcastedDeployAccountTxn,
+  }) {
+    return broadcastedDeployTxn?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(BroadcastedInvokeTxnV0 value)? broadcastedInvokeTxnV0,
+    TResult Function(BroadcastedInvokeTxnV1 value)? broadcastedInvokeTxnV1,
+    TResult Function(BroadcastedDeclareTxn value)? broadcastedDeclareTxn,
+    TResult Function(BroadcastedDeployTxn value)? broadcastedDeployTxn,
+    TResult Function(BroadcastedDeployAccountTxn value)?
+        broadcastedDeployAccountTxn,
+    required TResult orElse(),
+  }) {
+    if (broadcastedDeployTxn != null) {
+      return broadcastedDeployTxn(this);
+    }
+    return orElse();
+  }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$BroadcastedDeployTxnToJson(
+      this,
+    );
+  }
+}
+
+abstract class BroadcastedDeployTxn implements BroadcastedTxn {
+  const factory BroadcastedDeployTxn(
+      {required final ContractClass contractClass,
+      required final String version,
+      required final String type,
+      required final Felt contractAddressSalt,
+      required final List<Felt> constructorCalldata}) = _$BroadcastedDeployTxn;
+
+  factory BroadcastedDeployTxn.fromJson(Map<String, dynamic> json) =
+      _$BroadcastedDeployTxn.fromJson;
+
+  ContractClass get contractClass;
+  @override // start of DEPLOY_TXN_PROPERTIES
+  String get version;
+  @override
+  String get type;
+  Felt get contractAddressSalt;
+  List<Felt> get constructorCalldata;
+  @override
+  @JsonKey(ignore: true)
+  _$$BroadcastedDeployTxnCopyWith<_$BroadcastedDeployTxn> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$BroadcastedDeployAccountTxnCopyWith<$Res>
+    implements $BroadcastedTxnCopyWith<$Res> {
+  factory _$$BroadcastedDeployAccountTxnCopyWith(
+          _$BroadcastedDeployAccountTxn value,
+          $Res Function(_$BroadcastedDeployAccountTxn) then) =
+      __$$BroadcastedDeployAccountTxnCopyWithImpl<$Res>;
+  @override
+  $Res call(
+      {Felt contractAddressSalt,
+      Felt classHash,
+      List<Felt> constructorCalldata,
+      String type,
+      Felt maxFee,
+      String version,
+      List<Felt> signature,
+      Felt? nonce});
+}
+
+/// @nodoc
+class __$$BroadcastedDeployAccountTxnCopyWithImpl<$Res>
+    extends _$BroadcastedTxnCopyWithImpl<$Res>
+    implements _$$BroadcastedDeployAccountTxnCopyWith<$Res> {
+  __$$BroadcastedDeployAccountTxnCopyWithImpl(
+      _$BroadcastedDeployAccountTxn _value,
+      $Res Function(_$BroadcastedDeployAccountTxn) _then)
+      : super(_value, (v) => _then(v as _$BroadcastedDeployAccountTxn));
+
+  @override
+  _$BroadcastedDeployAccountTxn get _value =>
+      super._value as _$BroadcastedDeployAccountTxn;
+
+  @override
+  $Res call({
+    Object? contractAddressSalt = freezed,
+    Object? classHash = freezed,
+    Object? constructorCalldata = freezed,
+    Object? type = freezed,
+    Object? maxFee = freezed,
+    Object? version = freezed,
+    Object? signature = freezed,
+    Object? nonce = freezed,
+  }) {
+    return _then(_$BroadcastedDeployAccountTxn(
+      contractAddressSalt: contractAddressSalt == freezed
+          ? _value.contractAddressSalt
+          : contractAddressSalt // ignore: cast_nullable_to_non_nullable
+              as Felt,
+      classHash: classHash == freezed
+          ? _value.classHash
+          : classHash // ignore: cast_nullable_to_non_nullable
+              as Felt,
+      constructorCalldata: constructorCalldata == freezed
+          ? _value._constructorCalldata
+          : constructorCalldata // ignore: cast_nullable_to_non_nullable
+              as List<Felt>,
+      type: type == freezed
+          ? _value.type
+          : type // ignore: cast_nullable_to_non_nullable
+              as String,
+      maxFee: maxFee == freezed
+          ? _value.maxFee
+          : maxFee // ignore: cast_nullable_to_non_nullable
+              as Felt,
+      version: version == freezed
+          ? _value.version
+          : version // ignore: cast_nullable_to_non_nullable
+              as String,
+      signature: signature == freezed
+          ? _value._signature
+          : signature // ignore: cast_nullable_to_non_nullable
+              as List<Felt>,
+      nonce: nonce == freezed
+          ? _value.nonce
+          : nonce // ignore: cast_nullable_to_non_nullable
+              as Felt?,
+    ));
+  }
+}
+
+/// @nodoc
+
+@JsonSerializable(includeIfNull: false)
+class _$BroadcastedDeployAccountTxn implements BroadcastedDeployAccountTxn {
+  const _$BroadcastedDeployAccountTxn(
+      {required this.contractAddressSalt,
+      required this.classHash,
+      required final List<Felt> constructorCalldata,
+      required this.type,
+      required this.maxFee,
+      required this.version,
+      required final List<Felt> signature,
+      this.nonce,
+      final String? $type})
+      : _constructorCalldata = constructorCalldata,
+        _signature = signature,
+        $type = $type ?? 'broadcastedDeployAccountTxn';
+
+  factory _$BroadcastedDeployAccountTxn.fromJson(Map<String, dynamic> json) =>
+      _$$BroadcastedDeployAccountTxnFromJson(json);
+
+  @override
+  final Felt contractAddressSalt;
+  @override
+  final Felt classHash;
+  final List<Felt> _constructorCalldata;
+  @override
+  List<Felt> get constructorCalldata {
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_constructorCalldata);
+  }
+
+// start of BROADCASTED_TXN_COMMON_PROPERTIES
+  @override
+  final String type;
+  @override
+  final Felt maxFee;
+  @override
+  final String version;
+  final List<Felt> _signature;
+  @override
+  List<Felt> get signature {
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_signature);
+  }
+
+  @override
+  final Felt? nonce;
+
+  @JsonKey(name: 'runtimeType')
+  final String $type;
+
+  @override
+  String toString() {
+    return 'BroadcastedTxn.broadcastedDeployAccountTxn(contractAddressSalt: $contractAddressSalt, classHash: $classHash, constructorCalldata: $constructorCalldata, type: $type, maxFee: $maxFee, version: $version, signature: $signature, nonce: $nonce)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$BroadcastedDeployAccountTxn &&
+            const DeepCollectionEquality()
+                .equals(other.contractAddressSalt, contractAddressSalt) &&
+            const DeepCollectionEquality().equals(other.classHash, classHash) &&
+            const DeepCollectionEquality()
+                .equals(other._constructorCalldata, _constructorCalldata) &&
+            const DeepCollectionEquality().equals(other.type, type) &&
+            const DeepCollectionEquality().equals(other.maxFee, maxFee) &&
+            const DeepCollectionEquality().equals(other.version, version) &&
+            const DeepCollectionEquality()
+                .equals(other._signature, _signature) &&
+            const DeepCollectionEquality().equals(other.nonce, nonce));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(contractAddressSalt),
+      const DeepCollectionEquality().hash(classHash),
+      const DeepCollectionEquality().hash(_constructorCalldata),
+      const DeepCollectionEquality().hash(type),
+      const DeepCollectionEquality().hash(maxFee),
+      const DeepCollectionEquality().hash(version),
+      const DeepCollectionEquality().hash(_signature),
+      const DeepCollectionEquality().hash(nonce));
+
+  @JsonKey(ignore: true)
+  @override
+  _$$BroadcastedDeployAccountTxnCopyWith<_$BroadcastedDeployAccountTxn>
+      get copyWith => __$$BroadcastedDeployAccountTxnCopyWithImpl<
+          _$BroadcastedDeployAccountTxn>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(
+            String type,
+            Felt maxFee,
+            String version,
+            List<Felt> signature,
+            Felt? nonce,
+            Felt contractAddress,
+            Felt entryPointSelector,
+            List<Felt> calldata)
+        broadcastedInvokeTxnV0,
+    required TResult Function(
+            String type,
+            Felt maxFee,
+            String version,
+            List<Felt> signature,
+            Felt? nonce,
+            Felt sender_address,
+            List<Felt> calldata)
+        broadcastedInvokeTxnV1,
+    required TResult Function(
+            String type,
+            Felt maxFee,
+            String version,
+            List<Felt> signature,
+            Felt? nonce,
+            ContractClass contractClass,
+            Felt senderAddress)
+        broadcastedDeclareTxn,
+    required TResult Function(
+            ContractClass contractClass,
+            String version,
+            String type,
+            Felt contractAddressSalt,
+            List<Felt> constructorCalldata)
+        broadcastedDeployTxn,
+    required TResult Function(
+            Felt contractAddressSalt,
+            Felt classHash,
+            List<Felt> constructorCalldata,
+            String type,
+            Felt maxFee,
+            String version,
+            List<Felt> signature,
+            Felt? nonce)
+        broadcastedDeployAccountTxn,
+  }) {
+    return broadcastedDeployAccountTxn(contractAddressSalt, classHash,
+        constructorCalldata, type, maxFee, version, signature, nonce);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(
+            String type,
+            Felt maxFee,
+            String version,
+            List<Felt> signature,
+            Felt? nonce,
+            Felt contractAddress,
+            Felt entryPointSelector,
+            List<Felt> calldata)?
+        broadcastedInvokeTxnV0,
+    TResult Function(
+            String type,
+            Felt maxFee,
+            String version,
+            List<Felt> signature,
+            Felt? nonce,
+            Felt sender_address,
+            List<Felt> calldata)?
+        broadcastedInvokeTxnV1,
+    TResult Function(
+            String type,
+            Felt maxFee,
+            String version,
+            List<Felt> signature,
+            Felt? nonce,
+            ContractClass contractClass,
+            Felt senderAddress)?
+        broadcastedDeclareTxn,
+    TResult Function(ContractClass contractClass, String version, String type,
+            Felt contractAddressSalt, List<Felt> constructorCalldata)?
+        broadcastedDeployTxn,
+    TResult Function(
+            Felt contractAddressSalt,
+            Felt classHash,
+            List<Felt> constructorCalldata,
+            String type,
+            Felt maxFee,
+            String version,
+            List<Felt> signature,
+            Felt? nonce)?
+        broadcastedDeployAccountTxn,
+  }) {
+    return broadcastedDeployAccountTxn?.call(contractAddressSalt, classHash,
+        constructorCalldata, type, maxFee, version, signature, nonce);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(
+            String type,
+            Felt maxFee,
+            String version,
+            List<Felt> signature,
+            Felt? nonce,
+            Felt contractAddress,
+            Felt entryPointSelector,
+            List<Felt> calldata)?
+        broadcastedInvokeTxnV0,
+    TResult Function(
+            String type,
+            Felt maxFee,
+            String version,
+            List<Felt> signature,
+            Felt? nonce,
+            Felt sender_address,
+            List<Felt> calldata)?
+        broadcastedInvokeTxnV1,
+    TResult Function(
+            String type,
+            Felt maxFee,
+            String version,
+            List<Felt> signature,
+            Felt? nonce,
+            ContractClass contractClass,
+            Felt senderAddress)?
+        broadcastedDeclareTxn,
+    TResult Function(ContractClass contractClass, String version, String type,
+            Felt contractAddressSalt, List<Felt> constructorCalldata)?
+        broadcastedDeployTxn,
+    TResult Function(
+            Felt contractAddressSalt,
+            Felt classHash,
+            List<Felt> constructorCalldata,
+            String type,
+            Felt maxFee,
+            String version,
+            List<Felt> signature,
+            Felt? nonce)?
+        broadcastedDeployAccountTxn,
+    required TResult orElse(),
+  }) {
+    if (broadcastedDeployAccountTxn != null) {
+      return broadcastedDeployAccountTxn(contractAddressSalt, classHash,
+          constructorCalldata, type, maxFee, version, signature, nonce);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(BroadcastedInvokeTxnV0 value)
+        broadcastedInvokeTxnV0,
+    required TResult Function(BroadcastedInvokeTxnV1 value)
+        broadcastedInvokeTxnV1,
+    required TResult Function(BroadcastedDeclareTxn value)
+        broadcastedDeclareTxn,
+    required TResult Function(BroadcastedDeployTxn value) broadcastedDeployTxn,
+    required TResult Function(BroadcastedDeployAccountTxn value)
+        broadcastedDeployAccountTxn,
+  }) {
+    return broadcastedDeployAccountTxn(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(BroadcastedInvokeTxnV0 value)? broadcastedInvokeTxnV0,
+    TResult Function(BroadcastedInvokeTxnV1 value)? broadcastedInvokeTxnV1,
+    TResult Function(BroadcastedDeclareTxn value)? broadcastedDeclareTxn,
+    TResult Function(BroadcastedDeployTxn value)? broadcastedDeployTxn,
+    TResult Function(BroadcastedDeployAccountTxn value)?
+        broadcastedDeployAccountTxn,
+  }) {
+    return broadcastedDeployAccountTxn?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(BroadcastedInvokeTxnV0 value)? broadcastedInvokeTxnV0,
+    TResult Function(BroadcastedInvokeTxnV1 value)? broadcastedInvokeTxnV1,
+    TResult Function(BroadcastedDeclareTxn value)? broadcastedDeclareTxn,
+    TResult Function(BroadcastedDeployTxn value)? broadcastedDeployTxn,
+    TResult Function(BroadcastedDeployAccountTxn value)?
+        broadcastedDeployAccountTxn,
+    required TResult orElse(),
+  }) {
+    if (broadcastedDeployAccountTxn != null) {
+      return broadcastedDeployAccountTxn(this);
+    }
+    return orElse();
+  }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$BroadcastedDeployAccountTxnToJson(
+      this,
+    );
+  }
+}
+
+abstract class BroadcastedDeployAccountTxn implements BroadcastedTxn {
+  const factory BroadcastedDeployAccountTxn(
+      {required final Felt contractAddressSalt,
+      required final Felt classHash,
+      required final List<Felt> constructorCalldata,
+      required final String type,
+      required final Felt maxFee,
+      required final String version,
+      required final List<Felt> signature,
+      final Felt? nonce}) = _$BroadcastedDeployAccountTxn;
+
+  factory BroadcastedDeployAccountTxn.fromJson(Map<String, dynamic> json) =
+      _$BroadcastedDeployAccountTxn.fromJson;
+
+  Felt get contractAddressSalt;
+  Felt get classHash;
+  List<Felt> get constructorCalldata;
+  @override // start of BROADCASTED_TXN_COMMON_PROPERTIES
+  String get type;
+  Felt get maxFee;
+  @override
+  String get version;
+  List<Felt> get signature;
+  Felt? get nonce;
+  @override
+  @JsonKey(ignore: true)
+  _$$BroadcastedDeployAccountTxnCopyWith<_$BroadcastedDeployAccountTxn>
+      get copyWith => throw _privateConstructorUsedError;
+}
