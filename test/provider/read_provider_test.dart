@@ -34,6 +34,8 @@ void main() {
     BlockId blockIdForTheGivenContractAddress = BlockId.blockHash(
         Felt.fromHexString(
             '0x509c1a46261c466b25690af5052685f74c49e578c9f38fabb05f67064f581e3'));
+    Felt entryPointSelector = Felt.fromHexString(
+        '0x9278fa5f64a571de10741418f1c4c0c4322aef645dd9d94a429c1f3e99a8a5');
 
     setUp(() {
       provider = getJsonRpcReadProvider();
@@ -75,7 +77,6 @@ void main() {
     });
 
     group('call', () {
-      // TODO: needs to be updated for v0.10.0 specs url
       // test('calls a read-only method with empty calldata', () async {
       //   final response = await provider.call(
       //       request: FunctionCall(
@@ -111,36 +112,51 @@ void main() {
       //       });
       // });
 
-      test('calls a read-only method with non-empty calldata', () async {
+      // "request": {
+      // "contract_address": "0x049d36570d4e46f48e99674bd3fcc84644ddd6b96f7c741b1562b82f9e004dc7",
+      // "calldata": [
+      // "482897216855731661454536211069019800727046035263556664864595629742230851611"
+      // ],
+      // "entry_point_selector": "0x2e4263afad30923c891518314c3c95dbe830a16874e8abc5777a9a20b54c76e",
+      // "signature": [
+      // ],
+      // "max_fee": "0x12C72866EFA9B",
+      // "version": "0x0"
+      // },
+      // "block_id": {
+      // "block_hash": "0x3533e345cbad40b29246fbbc58d0a679e8ab7726bfb727953725581287a96b1"
+      // }
+      //
+      //
+      // [
+      // "482897216855731661454536211069019800727046035263556664864595629742230851611"
+      // ]
+
+      test('calls a read-only method with empty calldata', () async {
         final response = await provider.call(
             request: FunctionCall(
-                // Starknet ID contract address
-                contractAddress: Felt.fromHexString(
-                    '0x019245f0f49d23f2379d3e3f20d1f3f46207d1c4a1d09cac8dd50e8d528aabe1'),
-                entryPointSelector: Felt.fromHexString('0x026813d396fdb198e9ead934e4f7a592a8b88a059e45ab0eb6ee53494e8d45b0'),
-                calldata: [
-                  Felt.fromHexString('0x5')
-                ]),
-            blockId: BlockId.blockHash(Felt.fromHexString(
-                '0x7d328a71faf48c5c3857e99f20a77b18522480956d1cd5bff1ff2df3c8b427b')));
+              contractAddress: contractAddress,
+              entryPointSelector: entryPointSelector,
+              calldata: [],
+            ),
+            blockId: blockIdForTheGivenContractAddress);
         response.when(
             error: (error) => fail("Shouldn't fail"),
             result: (result) {
-              expect(result[0], Felt.fromHexString('0x22b'));
+              expect(result[0],
+                  Felt.fromHexString('0x417267656e744163636f756e74'));
             });
       });
 
       test('calls a read-only method with invalid contract address', () async {
         final response = await provider.call(
             request: FunctionCall(
-                contractAddress: Felt.fromHexString(
-                    '0x000000000000000000000000000000000000000000000000000000000000000'),
-                entryPointSelector: Felt.fromHexString('0x026813d396fdb198e9ead934e4f7a592a8b88a059e45ab0eb6ee53494e8d45b0'),
-                calldata: [
-                  Felt.fromHexString('0x5')
-                ]),
-            blockId: BlockId.blockHash(Felt.fromHexString(
-                '0x7d328a71faf48c5c3857e99f20a77b18522480956d1cd5bff1ff2df3c8b427b')));
+              contractAddress: Felt.fromHexString(
+                  '0x019245f0f49d23f2379d3e3f20d1f3f46207d1c4a1d09cac8dd50e8d528aabe2'),
+              entryPointSelector: entryPointSelector,
+              calldata: [Felt.fromHexString('0x5')],
+            ),
+            blockId: blockIdForTheGivenContractAddress);
         response.when(
             error: (error) {
               expect(error.code, 20);
@@ -152,33 +168,28 @@ void main() {
       test('calls a read-only method with invalid block id', () async {
         final response = await provider.call(
             request: FunctionCall(
-                contractAddress: Felt.fromHexString(
-                    '0x019245f0f49d23f2379d3e3f20d1f3f46207d1c4a1d09cac8dd50e8d528aabe1'),
-                entryPointSelector: Felt.fromHexString('0x026813d396fdb198e9ead934e4f7a592a8b88a059e45ab0eb6ee53494e8d45b0'),
-                calldata: [
-                  Felt.fromHexString('0x5')
-                ]),
-            blockId: BlockId.blockHash(Felt.fromHexString(
-                '0x000000000000000000000000000000000000000000000000000000000000000')));
+              contractAddress: contractAddress,
+              entryPointSelector: entryPointSelector,
+              calldata: [],
+            ),
+            blockId: invalidBlockIdFromBlockHash);
         response.when(
             error: (error) {
               expect(error.code, 24);
-              expect(error.message, contains("Invalid block id"));
+              expect(error.message, contains('Block not found'));
             },
             result: (result) => fail("Should fail"));
       });
 
-      test('calls a read-only method with invalid message selector', () async {
+      test('calls a read-only method with invalid entry point selector',
+          () async {
         final response = await provider.call(
             request: FunctionCall(
-                contractAddress: Felt.fromHexString(
-                    '0x019245f0f49d23f2379d3e3f20d1f3f46207d1c4a1d09cac8dd50e8d528aabe1'),
-                entryPointSelector: Felt.fromHexString('0x0000000000000000000000000000000000000000000000000000000000000000'),
-                calldata: [
-                  Felt.fromHexString('0x5')
-                ]),
-            blockId: BlockId.blockHash(Felt.fromHexString(
-                '0x7d328a71faf48c5c3857e99f20a77b18522480956d1cd5bff1ff2df3c8b427b')));
+              contractAddress: contractAddress,
+              entryPointSelector: invalidHexString,
+              calldata: [],
+            ),
+            blockId: blockIdForTheGivenContractAddress);
         response.when(
             error: (error) {
               expect(error.code, 21);
