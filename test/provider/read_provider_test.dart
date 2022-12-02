@@ -189,7 +189,6 @@ void main() {
     });
 
     group('getStorageAt', () {
-      // TODO: needs to be updated for v0.10.0 specs url
       // test('returns the ERC20_symbol value for a ERC20 contract', () async {
       //   final response = await provider.getStorageAt(
       //     contractAddress: Felt.fromHexString(
@@ -208,27 +207,24 @@ void main() {
       test('returns the value of the storage at the given address and key',
           () async {
         final response = await provider.getStorageAt(
-          contractAddress: Felt.fromHexString(
-              '0x6fbd460228d843b7fbef670ff15607bf72e19fa94de21e29811ada167b4ca39'),
+          contractAddress: contractAddress,
           key: Felt.fromHexString(
               '0x0206F38F7E4F15E87567361213C28F235CCCDAA1D7FD34C9DB1DFE9489C6A091'),
-          blockId: BlockId.blockHash(Felt.fromHexString(
-              '0x3871c8a0c3555687515a07f365f6f5b1d8c2ae953f7844575b8bde2b2efed27')),
+          blockId: BlockId.latest,
         );
 
         response.when(
             error: (error) => fail("Shouldn't fail"),
             result: (result) {
-              expect(result, Felt.fromHexString("0x1e240"));
+              expect(result, Felt.fromHexString("0x0"));
             });
       });
 
       test('reading key from invalid contract should fail', () async {
         final response = await provider.getStorageAt(
-          contractAddress: Felt.fromHexString(
-              '0x0000000000000000000000000000000000000000000000000000000000000000'),
+          contractAddress: invalidHexString,
           key: getSelectorByName('ERC20_symbol'),
-          blockId: BlockId.blockTag("latest"),
+          blockId: BlockId.latest,
         );
 
         response.when(error: (error) {
@@ -240,18 +236,16 @@ void main() {
 
       test('reading value from invalid Block Id', () async {
         final response = await provider.getStorageAt(
-          contractAddress: Felt.fromHexString(
-              '0x6fbd460228d843b7fbef670ff15607bf72e19fa94de21e29811ada167b4ca39'),
+          contractAddress: contractAddress,
           key: Felt.fromHexString(
               '0x0206F38F7E4F15E87567361213C28F235CCCDAA1D7FD34C9DB1DFE9489C6A091'),
-          blockId: BlockId.blockHash(Felt.fromHexString(
-              '0x000000000000000000000000000000000000000000000000000000000000000')),
+          blockId: invalidBlockIdFromBlockHash,
         );
 
         response.when(
             error: (error) {
               expect(error.code, 24);
-              expect(error.message, "Invalid block id");
+              expect(error.message, "Block not found");
             },
             result: (_) => fail("Should fail"));
       });
