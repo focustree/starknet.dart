@@ -25,7 +25,7 @@ class BlockWithTxs with _$BlockWithTxs {
       {required String status,
 
       //Start of BLOCK_BODY_WITH_TXS
-      required List<Transaction> transactions,
+      required List<Txn> transactions,
       //End of BLOCK_BODY_WITH_TXS
 
       //Start of BLOCK_HEADER
@@ -41,7 +41,7 @@ class BlockWithTxs with _$BlockWithTxs {
   const factory BlockWithTxs.pendingBlock(
       {
       // Start of BLOCK_BODY_WITH_TXS
-      required List<Transaction> transactions,
+      required List<Txn> transactions,
       // End of BLOCK_BODY_WITH_TXS
       required int timestamp,
       required Felt sequencerAddress,
@@ -54,56 +54,3 @@ class BlockWithTxs with _$BlockWithTxs {
           : PendingBlockWithTxsResult.fromJson(json);
 }
 
-@freezed
-class Transaction with _$Transaction {
-  const factory Transaction.invoke({
-    //Start of FUNCTION_CALL
-    required Felt contractAddress,
-    required Felt entryPointSelector,
-    required List<Felt> calldata,
-    //End of FUNCTION_CALL
-
-    //Start of COMMON_TXN_PROPERTIES
-    required Felt transactionHash,
-    required Felt maxFee,
-    required String version,
-    required List<Felt> signature,
-    required Felt nonce,
-    required String type,
-    //End of COMMON_TXN_PROPERTIES
-  }) = InvokeBlockTxn;
-  const factory Transaction.declare({
-    required Felt classHash,
-    required Felt senderAddress,
-    //Start of COMMON_TXN_PROPERTIES
-    required Felt transactionHash,
-    required Felt maxFee,
-    required String version,
-    required List<Felt> signature,
-    required Felt nonce,
-    required String type,
-    //End of COMMON_TXN_PROPERTIES
-  }) = DeclareBlockTxn;
-  const factory Transaction.deploy({
-    required Felt transactionHash,
-    required Felt classHash,
-    required Felt contractAddress,
-    required Felt contractAddressSalt,
-    required List<Felt> constructor_Calldata,
-    required String version,
-    required String type,
-    //Start of BLOCK_BODY_WITH_TXS
-
-    //End of BLOCK_BODY_WITH_TXS
-  }) = DeployBlockTxn;
-  const factory Transaction.error({
-    required JsonRpcApiError error,
-  }) = TransactionError;
-
-  factory Transaction.fromJson(Map<String, Object?> json) =>
-      json['type'] == "INVOKE"
-          ? InvokeBlockTxn.fromJson(json)
-          : json['type'] == "DECLARE"
-              ? DeclareBlockTxn.fromJson(json)
-              : DeployBlockTxn.fromJson(json);
-}
