@@ -874,18 +874,16 @@ void main() {
       });
     });
 
-    // Tests for unimplemented methods
     group('starknet_pendingTransactions', () {
       test('returns not supported error for pendingTransactions', () async {
         final response = await provider.pendingTransactions();
 
+        var felt = Felt.fromIntString(
+            '482897216855731661454536211069019800727046035263556664864595629742230851611');
+        print('felt: ${felt.toJson()}');
+
         response.when(
-            error: (error) {
-              expect(error.code, equals(-32000));
-              expect(error.message,
-                  contains('Pending data not supported in this configuration'));
-            },
-            result: (_) => fail('Expected to return "not supported" error'));
+            error: (error) => fail('Should not fail'), result: (_) {});
       });
     });
   });
