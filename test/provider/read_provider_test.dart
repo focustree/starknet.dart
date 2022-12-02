@@ -31,6 +31,9 @@ void main() {
         '0x025ec026985a3bf9d0cc1fe17326b245dfdc3ff89b8fde106542a3ea56c5a918');
     Felt contractAddress = Felt.fromHexString(
         '0x054B5e0582e7698b2B9Ec00232603b271a489fe6cADcC641262812B4B64A052f');
+    BlockId blockIdForTheGivenContractAddress = BlockId.blockHash(
+        Felt.fromHexString(
+            '0x509c1a46261c466b25690af5052685f74c49e578c9f38fabb05f67064f581e3'));
 
     setUp(() {
       provider = getJsonRpcReadProvider();
@@ -522,20 +525,35 @@ void main() {
     group('starknet_getNonce', () {
       test('returns latest nonce associated with the given address', () async {
         final response = await provider.getNonce(
-          Felt.fromHexString(
-              '0x019245f0f49d23f2379d3e3f20d1f3f46207d1c4a1d09cac8dd50e8d528aabe1'),
-        );
+            contractAddress: contractAddress,
+            blockId: blockIdForTheGivenContractAddress);
 
         response.when(
             error: (error) => fail("Shouldn't fail"),
-            result: (result) => expect(result, Felt.fromHexString("0x0")));
+            result: (result) => expect(result, Felt.fromHexString("0x2")));
       });
 
-      test('reading nonce from invalid contract', () async {
+      test('reading nonce from invalid block id returns BLOCK_NOT_FOUND error',
+          () async {
         final response = await provider.getNonce(
-          Felt.fromHexString(
-              '0x000000000000000000000000000000000000000000000000000000000000000'),
+          contractAddress: contractAddress,
+          blockId: invalidBlockIdFromBlockHash,
         );
+
+        response.when(
+            error: (error) {
+              expect(error.code, 24);
+              expect(error.message, "Block not found");
+            },
+            result: (result) => fail("Should fail"));
+      });
+
+      test(
+          'reading nonce from invalid contract returns CONTRACT_NOT_FOUND error',
+          () async {
+        final response = await provider.getNonce(
+            contractAddress: invalidHexString,
+            blockId: blockIdForTheGivenContractAddress);
 
         response.when(
             error: (error) {
