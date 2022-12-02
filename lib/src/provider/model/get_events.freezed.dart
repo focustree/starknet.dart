@@ -415,16 +415,14 @@ GetEventsRequest _$GetEventsRequestFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$GetEventsRequest {
 // start of EVENT_FILTER
-  @JsonKey(name: 'fromBlock')
   BlockId? get fromBlock => throw _privateConstructorUsedError;
-  @JsonKey(name: 'toBlock')
   BlockId? get toBlock => throw _privateConstructorUsedError;
   Felt? get address => throw _privateConstructorUsedError;
   List<Felt>? get keys =>
       throw _privateConstructorUsedError; // end of EVENT_FILTER
 // start of RESULT_PAGE_REQUEST
-  int get pageSize => throw _privateConstructorUsedError;
-  int get pageNumber => throw _privateConstructorUsedError;
+  int get chunkSize => throw _privateConstructorUsedError;
+  String? get continuationToken => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -438,12 +436,12 @@ abstract class $GetEventsRequestCopyWith<$Res> {
           GetEventsRequest value, $Res Function(GetEventsRequest) then) =
       _$GetEventsRequestCopyWithImpl<$Res>;
   $Res call(
-      {@JsonKey(name: 'fromBlock') BlockId? fromBlock,
-      @JsonKey(name: 'toBlock') BlockId? toBlock,
+      {BlockId? fromBlock,
+      BlockId? toBlock,
       Felt? address,
       List<Felt>? keys,
-      int pageSize,
-      int pageNumber});
+      int chunkSize,
+      String? continuationToken});
 
   $BlockIdCopyWith<$Res>? get fromBlock;
   $BlockIdCopyWith<$Res>? get toBlock;
@@ -464,8 +462,8 @@ class _$GetEventsRequestCopyWithImpl<$Res>
     Object? toBlock = freezed,
     Object? address = freezed,
     Object? keys = freezed,
-    Object? pageSize = freezed,
-    Object? pageNumber = freezed,
+    Object? chunkSize = freezed,
+    Object? continuationToken = freezed,
   }) {
     return _then(_value.copyWith(
       fromBlock: fromBlock == freezed
@@ -484,14 +482,14 @@ class _$GetEventsRequestCopyWithImpl<$Res>
           ? _value.keys
           : keys // ignore: cast_nullable_to_non_nullable
               as List<Felt>?,
-      pageSize: pageSize == freezed
-          ? _value.pageSize
-          : pageSize // ignore: cast_nullable_to_non_nullable
+      chunkSize: chunkSize == freezed
+          ? _value.chunkSize
+          : chunkSize // ignore: cast_nullable_to_non_nullable
               as int,
-      pageNumber: pageNumber == freezed
-          ? _value.pageNumber
-          : pageNumber // ignore: cast_nullable_to_non_nullable
-              as int,
+      continuationToken: continuationToken == freezed
+          ? _value.continuationToken
+          : continuationToken // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 
@@ -526,12 +524,12 @@ abstract class _$$_GetEventsRequestCopyWith<$Res>
       __$$_GetEventsRequestCopyWithImpl<$Res>;
   @override
   $Res call(
-      {@JsonKey(name: 'fromBlock') BlockId? fromBlock,
-      @JsonKey(name: 'toBlock') BlockId? toBlock,
+      {BlockId? fromBlock,
+      BlockId? toBlock,
       Felt? address,
       List<Felt>? keys,
-      int pageSize,
-      int pageNumber});
+      int chunkSize,
+      String? continuationToken});
 
   @override
   $BlockIdCopyWith<$Res>? get fromBlock;
@@ -556,8 +554,8 @@ class __$$_GetEventsRequestCopyWithImpl<$Res>
     Object? toBlock = freezed,
     Object? address = freezed,
     Object? keys = freezed,
-    Object? pageSize = freezed,
-    Object? pageNumber = freezed,
+    Object? chunkSize = freezed,
+    Object? continuationToken = freezed,
   }) {
     return _then(_$_GetEventsRequest(
       fromBlock: fromBlock == freezed
@@ -576,14 +574,14 @@ class __$$_GetEventsRequestCopyWithImpl<$Res>
           ? _value._keys
           : keys // ignore: cast_nullable_to_non_nullable
               as List<Felt>?,
-      pageSize: pageSize == freezed
-          ? _value.pageSize
-          : pageSize // ignore: cast_nullable_to_non_nullable
+      chunkSize: chunkSize == freezed
+          ? _value.chunkSize
+          : chunkSize // ignore: cast_nullable_to_non_nullable
               as int,
-      pageNumber: pageNumber == freezed
-          ? _value.pageNumber
-          : pageNumber // ignore: cast_nullable_to_non_nullable
-              as int,
+      continuationToken: continuationToken == freezed
+          ? _value.continuationToken
+          : continuationToken // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -593,12 +591,12 @@ class __$$_GetEventsRequestCopyWithImpl<$Res>
 @JsonSerializable(includeIfNull: false)
 class _$_GetEventsRequest implements _GetEventsRequest {
   const _$_GetEventsRequest(
-      {@JsonKey(name: 'fromBlock') this.fromBlock,
-      @JsonKey(name: 'toBlock') this.toBlock,
+      {this.fromBlock,
+      this.toBlock,
       this.address,
       final List<Felt>? keys,
-      required this.pageSize,
-      required this.pageNumber})
+      required this.chunkSize,
+      this.continuationToken})
       : _keys = keys;
 
   factory _$_GetEventsRequest.fromJson(Map<String, dynamic> json) =>
@@ -606,10 +604,8 @@ class _$_GetEventsRequest implements _GetEventsRequest {
 
 // start of EVENT_FILTER
   @override
-  @JsonKey(name: 'fromBlock')
   final BlockId? fromBlock;
   @override
-  @JsonKey(name: 'toBlock')
   final BlockId? toBlock;
   @override
   final Felt? address;
@@ -625,13 +621,13 @@ class _$_GetEventsRequest implements _GetEventsRequest {
 // end of EVENT_FILTER
 // start of RESULT_PAGE_REQUEST
   @override
-  final int pageSize;
+  final int chunkSize;
   @override
-  final int pageNumber;
+  final String? continuationToken;
 
   @override
   String toString() {
-    return 'GetEventsRequest(fromBlock: $fromBlock, toBlock: $toBlock, address: $address, keys: $keys, pageSize: $pageSize, pageNumber: $pageNumber)';
+    return 'GetEventsRequest(fromBlock: $fromBlock, toBlock: $toBlock, address: $address, keys: $keys, chunkSize: $chunkSize, continuationToken: $continuationToken)';
   }
 
   @override
@@ -643,9 +639,9 @@ class _$_GetEventsRequest implements _GetEventsRequest {
             const DeepCollectionEquality().equals(other.toBlock, toBlock) &&
             const DeepCollectionEquality().equals(other.address, address) &&
             const DeepCollectionEquality().equals(other._keys, _keys) &&
-            const DeepCollectionEquality().equals(other.pageSize, pageSize) &&
+            const DeepCollectionEquality().equals(other.chunkSize, chunkSize) &&
             const DeepCollectionEquality()
-                .equals(other.pageNumber, pageNumber));
+                .equals(other.continuationToken, continuationToken));
   }
 
   @JsonKey(ignore: true)
@@ -656,8 +652,8 @@ class _$_GetEventsRequest implements _GetEventsRequest {
       const DeepCollectionEquality().hash(toBlock),
       const DeepCollectionEquality().hash(address),
       const DeepCollectionEquality().hash(_keys),
-      const DeepCollectionEquality().hash(pageSize),
-      const DeepCollectionEquality().hash(pageNumber));
+      const DeepCollectionEquality().hash(chunkSize),
+      const DeepCollectionEquality().hash(continuationToken));
 
   @JsonKey(ignore: true)
   @override
@@ -674,21 +670,19 @@ class _$_GetEventsRequest implements _GetEventsRequest {
 
 abstract class _GetEventsRequest implements GetEventsRequest {
   const factory _GetEventsRequest(
-      {@JsonKey(name: 'fromBlock') final BlockId? fromBlock,
-      @JsonKey(name: 'toBlock') final BlockId? toBlock,
+      {final BlockId? fromBlock,
+      final BlockId? toBlock,
       final Felt? address,
       final List<Felt>? keys,
-      required final int pageSize,
-      required final int pageNumber}) = _$_GetEventsRequest;
+      required final int chunkSize,
+      final String? continuationToken}) = _$_GetEventsRequest;
 
   factory _GetEventsRequest.fromJson(Map<String, dynamic> json) =
       _$_GetEventsRequest.fromJson;
 
   @override // start of EVENT_FILTER
-  @JsonKey(name: 'fromBlock')
   BlockId? get fromBlock;
   @override
-  @JsonKey(name: 'toBlock')
   BlockId? get toBlock;
   @override
   Felt? get address;
@@ -696,9 +690,9 @@ abstract class _GetEventsRequest implements GetEventsRequest {
   List<Felt>? get keys;
   @override // end of EVENT_FILTER
 // start of RESULT_PAGE_REQUEST
-  int get pageSize;
+  int get chunkSize;
   @override
-  int get pageNumber;
+  String? get continuationToken;
   @override
   @JsonKey(ignore: true)
   _$$_GetEventsRequestCopyWith<_$_GetEventsRequest> get copyWith =>
@@ -712,8 +706,7 @@ GetEventsResponse _$GetEventsResponseFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$GetEventsResponse {
   List<EmittedEvent> get events => throw _privateConstructorUsedError;
-  int get pageNumber => throw _privateConstructorUsedError;
-  bool get isLastPage => throw _privateConstructorUsedError;
+  String? get continuation_token => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -726,7 +719,7 @@ abstract class $GetEventsResponseCopyWith<$Res> {
   factory $GetEventsResponseCopyWith(
           GetEventsResponse value, $Res Function(GetEventsResponse) then) =
       _$GetEventsResponseCopyWithImpl<$Res>;
-  $Res call({List<EmittedEvent> events, int pageNumber, bool isLastPage});
+  $Res call({List<EmittedEvent> events, String? continuation_token});
 }
 
 /// @nodoc
@@ -741,22 +734,17 @@ class _$GetEventsResponseCopyWithImpl<$Res>
   @override
   $Res call({
     Object? events = freezed,
-    Object? pageNumber = freezed,
-    Object? isLastPage = freezed,
+    Object? continuation_token = freezed,
   }) {
     return _then(_value.copyWith(
       events: events == freezed
           ? _value.events
           : events // ignore: cast_nullable_to_non_nullable
               as List<EmittedEvent>,
-      pageNumber: pageNumber == freezed
-          ? _value.pageNumber
-          : pageNumber // ignore: cast_nullable_to_non_nullable
-              as int,
-      isLastPage: isLastPage == freezed
-          ? _value.isLastPage
-          : isLastPage // ignore: cast_nullable_to_non_nullable
-              as bool,
+      continuation_token: continuation_token == freezed
+          ? _value.continuation_token
+          : continuation_token // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -768,7 +756,7 @@ abstract class _$$_GetEventsResponseCopyWith<$Res>
           $Res Function(_$_GetEventsResponse) then) =
       __$$_GetEventsResponseCopyWithImpl<$Res>;
   @override
-  $Res call({List<EmittedEvent> events, int pageNumber, bool isLastPage});
+  $Res call({List<EmittedEvent> events, String? continuation_token});
 }
 
 /// @nodoc
@@ -785,22 +773,17 @@ class __$$_GetEventsResponseCopyWithImpl<$Res>
   @override
   $Res call({
     Object? events = freezed,
-    Object? pageNumber = freezed,
-    Object? isLastPage = freezed,
+    Object? continuation_token = freezed,
   }) {
     return _then(_$_GetEventsResponse(
       events: events == freezed
           ? _value._events
           : events // ignore: cast_nullable_to_non_nullable
               as List<EmittedEvent>,
-      pageNumber: pageNumber == freezed
-          ? _value.pageNumber
-          : pageNumber // ignore: cast_nullable_to_non_nullable
-              as int,
-      isLastPage: isLastPage == freezed
-          ? _value.isLastPage
-          : isLastPage // ignore: cast_nullable_to_non_nullable
-              as bool,
+      continuation_token: continuation_token == freezed
+          ? _value.continuation_token
+          : continuation_token // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -810,9 +793,7 @@ class __$$_GetEventsResponseCopyWithImpl<$Res>
 @JsonSerializable(includeIfNull: false)
 class _$_GetEventsResponse implements _GetEventsResponse {
   const _$_GetEventsResponse(
-      {required final List<EmittedEvent> events,
-      required this.pageNumber,
-      required this.isLastPage})
+      {required final List<EmittedEvent> events, this.continuation_token})
       : _events = events;
 
   factory _$_GetEventsResponse.fromJson(Map<String, dynamic> json) =>
@@ -826,13 +807,11 @@ class _$_GetEventsResponse implements _GetEventsResponse {
   }
 
   @override
-  final int pageNumber;
-  @override
-  final bool isLastPage;
+  final String? continuation_token;
 
   @override
   String toString() {
-    return 'GetEventsResponse(events: $events, pageNumber: $pageNumber, isLastPage: $isLastPage)';
+    return 'GetEventsResponse(events: $events, continuation_token: $continuation_token)';
   }
 
   @override
@@ -842,9 +821,7 @@ class _$_GetEventsResponse implements _GetEventsResponse {
             other is _$_GetEventsResponse &&
             const DeepCollectionEquality().equals(other._events, _events) &&
             const DeepCollectionEquality()
-                .equals(other.pageNumber, pageNumber) &&
-            const DeepCollectionEquality()
-                .equals(other.isLastPage, isLastPage));
+                .equals(other.continuation_token, continuation_token));
   }
 
   @JsonKey(ignore: true)
@@ -852,8 +829,7 @@ class _$_GetEventsResponse implements _GetEventsResponse {
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(_events),
-      const DeepCollectionEquality().hash(pageNumber),
-      const DeepCollectionEquality().hash(isLastPage));
+      const DeepCollectionEquality().hash(continuation_token));
 
   @JsonKey(ignore: true)
   @override
@@ -872,8 +848,7 @@ class _$_GetEventsResponse implements _GetEventsResponse {
 abstract class _GetEventsResponse implements GetEventsResponse {
   const factory _GetEventsResponse(
       {required final List<EmittedEvent> events,
-      required final int pageNumber,
-      required final bool isLastPage}) = _$_GetEventsResponse;
+      final String? continuation_token}) = _$_GetEventsResponse;
 
   factory _GetEventsResponse.fromJson(Map<String, dynamic> json) =
       _$_GetEventsResponse.fromJson;
@@ -881,9 +856,7 @@ abstract class _GetEventsResponse implements GetEventsResponse {
   @override
   List<EmittedEvent> get events;
   @override
-  int get pageNumber;
-  @override
-  bool get isLastPage;
+  String? get continuation_token;
   @override
   @JsonKey(ignore: true)
   _$$_GetEventsResponseCopyWith<_$_GetEventsResponse> get copyWith =>

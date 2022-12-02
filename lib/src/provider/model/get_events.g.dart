@@ -33,20 +33,20 @@ Map<String, dynamic> _$$GetEventsErrorToJson(_$GetEventsError instance) =>
 
 _$_GetEventsRequest _$$_GetEventsRequestFromJson(Map<String, dynamic> json) =>
     _$_GetEventsRequest(
-      fromBlock: json['fromBlock'] == null
+      fromBlock: json['from_block'] == null
           ? null
-          : BlockId.fromJson(json['fromBlock'] as Map<String, dynamic>),
-      toBlock: json['toBlock'] == null
+          : BlockId.fromJson(json['from_block'] as Map<String, dynamic>),
+      toBlock: json['to_block'] == null
           ? null
-          : BlockId.fromJson(json['toBlock'] as Map<String, dynamic>),
+          : BlockId.fromJson(json['to_block'] as Map<String, dynamic>),
       address: json['address'] == null
           ? null
           : Felt.fromJson(json['address'] as String),
       keys: (json['keys'] as List<dynamic>?)
           ?.map((e) => Felt.fromJson(e as String))
           .toList(),
-      pageSize: json['page_size'] as int,
-      pageNumber: json['page_number'] as int,
+      chunkSize: json['chunk_size'] as int,
+      continuationToken: json['continuation_token'] as String?,
     );
 
 Map<String, dynamic> _$$_GetEventsRequestToJson(_$_GetEventsRequest instance) {
@@ -58,12 +58,12 @@ Map<String, dynamic> _$$_GetEventsRequestToJson(_$_GetEventsRequest instance) {
     }
   }
 
-  writeNotNull('fromBlock', instance.fromBlock?.toJson());
-  writeNotNull('toBlock', instance.toBlock?.toJson());
+  writeNotNull('from_block', instance.fromBlock?.toJson());
+  writeNotNull('to_block', instance.toBlock?.toJson());
   writeNotNull('address', instance.address?.toJson());
   writeNotNull('keys', instance.keys?.map((e) => e.toJson()).toList());
-  val['page_size'] = instance.pageSize;
-  val['page_number'] = instance.pageNumber;
+  val['chunk_size'] = instance.chunkSize;
+  writeNotNull('continuation_token', instance.continuationToken);
   return val;
 }
 
@@ -72,17 +72,24 @@ _$_GetEventsResponse _$$_GetEventsResponseFromJson(Map<String, dynamic> json) =>
       events: (json['events'] as List<dynamic>)
           .map((e) => EmittedEvent.fromJson(e as Map<String, dynamic>))
           .toList(),
-      pageNumber: json['page_number'] as int,
-      isLastPage: json['is_last_page'] as bool,
+      continuation_token: json['continuation_token'] as String?,
     );
 
 Map<String, dynamic> _$$_GetEventsResponseToJson(
-        _$_GetEventsResponse instance) =>
-    <String, dynamic>{
-      'events': instance.events.map((e) => e.toJson()).toList(),
-      'page_number': instance.pageNumber,
-      'is_last_page': instance.isLastPage,
-    };
+    _$_GetEventsResponse instance) {
+  final val = <String, dynamic>{
+    'events': instance.events.map((e) => e.toJson()).toList(),
+  };
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('continuation_token', instance.continuation_token);
+  return val;
+}
 
 _$_EmittedEvent _$$_EmittedEventFromJson(Map<String, dynamic> json) =>
     _$_EmittedEvent(

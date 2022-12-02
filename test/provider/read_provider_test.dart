@@ -783,8 +783,7 @@ void main() {
     group('starknet_getEvents', () {
       test('returns all events matching the given filter', () async {
         final response = await provider.getEvents(GetEventsRequest(
-          pageSize: 1,
-          pageNumber: 0,
+          chunkSize: 2,
           fromBlock: BlockId.blockNumber(12000),
           toBlock: BlockId.blockNumber(200000),
         ));
@@ -792,16 +791,67 @@ void main() {
         response.when(
             error: (error) => fail("Shouldn't fail"),
             result: (result) {
-              expect(result.events.length, 1);
+              expect(result.events.length, 2);
             });
       });
 
-      test('requesting the events with big page size', () async {
+      test('requesting the events with invalid chunk size', () async {
         final response = await provider.getEvents(GetEventsRequest(
-          pageSize: 1025,
-          pageNumber: 0,
+          chunkSize: 0,
           fromBlock: BlockId.blockNumber(100),
           toBlock: BlockId.blockTag("latest"),
+        ));
+
+        response.when(
+            error: (error) {
+              expect(error.message, "Invalid page size");
+            },
+            result: (result) => fail("Should fail"));
+      });
+
+      test(
+          'requesting the events with invalid continuation token returns INVALID_CONTINUATION_TOKEN error',
+          () async {
+        final response = await provider.getEvents(GetEventsRequest(
+          chunkSize: 1,
+          continuationToken: "invalid token",
+          fromBlock: BlockId.blockNumber(100),
+          toBlock: BlockId.blockTag("latest"),
+        ));
+
+        response.when(
+            error: (error) {
+              expect(error.code, 33);
+              expect(error.message,
+                  "The supplied continuation token is invalid or unknown");
+            },
+            result: (result) => fail("Should fail"));
+      });
+
+      test(
+          'requesting the events with invalid block id returns BLOCK_NOT_FOUND error',
+          () async {
+        final response = await provider.getEvents(GetEventsRequest(
+          chunkSize: 1,
+          fromBlock: BlockId.blockNumber(100),
+          toBlock: invalidBlockIdFromBlockHash,
+        ));
+
+        response.when(
+            error: (error) {
+              expect(error.code, 24);
+              expect(error.message, 'Block not found');
+            },
+            result: (result) => fail("Should fail"));
+      });
+
+      test(
+          'requesting the events with big chunk size returns PAGE_SIZE_TOO_BIG error',
+          () async {
+        final response = await provider.getEvents(GetEventsRequest(
+          chunkSize: 100000000,
+          fromBlock: BlockId.blockNumber(100),
+          toBlock: blockIdFromBlockHash,
         ));
 
         response.when(
