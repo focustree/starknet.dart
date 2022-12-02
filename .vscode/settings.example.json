@@ -1,0 +1,10 @@
+{
+  "cairols.useVenv": true,
+  "cairols.venvCommand": "source .venv/bin/activate",
+  "cairols.nileUseVenv": true,
+  "cairols.nileVenvCommand": "source .venv/bin/activate",
+  "cairols.highlightingCompiler": "starknet",
+  "cairols.cairoPath": [
+    "/Users/gabin/src/gabsn/starknet.dart/contracts/lib/cairo_contracts/src"
+  ]
+}

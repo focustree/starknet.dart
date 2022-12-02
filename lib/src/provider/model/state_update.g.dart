@@ -24,11 +24,13 @@ Map<String, dynamic> _$$_StateUpdateToJson(_$_StateUpdate instance) =>
 
 _$_StateDiff _$$_StateDiffFromJson(Map<String, dynamic> json) => _$_StateDiff(
       storageDiffs: (json['storage_diffs'] as List<dynamic>)
-          .map((e) => StorageDiffItem.fromJson(e as Map<String, dynamic>))
+          .map((e) =>
+              ContractStorageDiffItem.fromJson(e as Map<String, dynamic>))
           .toList(),
-      declaredContracts: (json['declared_contracts'] as List<dynamic>)
-          .map((e) => DeclaredContractItem.fromJson(e as Map<String, dynamic>))
-          .toList(),
+      declaredContractHashes:
+          (json['declared_contract_hashes'] as List<dynamic>)
+              .map((e) => Felt.fromJson(e as String))
+              .toList(),
       deployedContracts: (json['deployed_contracts'] as List<dynamic>)
           .map((e) => DeployedContractItem.fromJson(e as Map<String, dynamic>))
           .toList(),
@@ -41,8 +43,8 @@ _$_StateDiff _$$_StateDiffFromJson(Map<String, dynamic> json) => _$_StateDiff(
 Map<String, dynamic> _$$_StateDiffToJson(_$_StateDiff instance) =>
     <String, dynamic>{
       'storage_diffs': instance.storageDiffs.map((e) => e.toJson()).toList(),
-      'declared_contracts':
-          instance.declaredContracts.map((e) => e.toJson()).toList(),
+      'declared_contract_hashes':
+          instance.declaredContractHashes.map((e) => e.toJson()).toList(),
       'deployed_contracts':
           instance.deployedContracts.map((e) => e.toJson()).toList(),
       'nonces': instance.nonces.map((e) => e.toJson()).toList(),

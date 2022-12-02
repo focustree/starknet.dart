@@ -11,10 +11,20 @@ abstract class ReadProvider {
   /// [Spec](https://github.com/starkware-libs/starknet-specs/blob/5cafa4cbaf5e4596bf309dfbde1bd0c4fa2ce1ce/api/starknet_api_openrpc.json#L484-L508)
   Future<BlockHashAndNumber> blockHashAndNumber();
 
+  /// Get block information with full transactions given the block id
+  ///
+  /// [Spec](https://github.com/starkware-libs/starknet-specs/blob/30e5bafcda60c31b5fb4021b4f5ddcfc18d2ff7d/api/starknet_api_openrpc.json#L44-L75)
+  Future<GetBlockWithTxs> getBlockWithTxs(BlockId blockId);
+
   /// Gets block information with transaction hashes given the block id
   ///
   /// [Spec](https://github.com/starkware-libs/starknet-specs/blob/v0.1.0/api/starknet_api_openrpc.json#L10-L42)
   Future<GetBlockWithTxHashes> getBlockWithTxHashes(BlockId blockId);
+
+  /// Get the number of transactions in a block given a block id
+  ///
+  /// [Specs](https://github.com/starkware-libs/starknet-specs/blob/30e5bafcda60c31b5fb4021b4f5ddcfc18d2ff7d/api/starknet_api_openrpc.json#L340-L68)
+  Future<GetBlockTxnCount> getBlockTxnCount(BlockId blockId);
 
   /// Calls a starknet function without creating a starknet transaction
   ///
@@ -69,9 +79,10 @@ abstract class ReadProvider {
   /// Gets the nonce associated with the given address in the given block
   ///
   /// [Spec](https://github.com/starkware-libs/starknet-specs/blob/v0.1.0/api/starknet_api_openrpc.json#L628-L653)
-  Future<GetNonce> getNonce(
-    Felt contractAddress,
-  );
+  Future<GetNonce> getNonce({
+    required Felt contractAddress,
+    required BlockId blockId,
+  });
 
   /// Gets the information about the result of executing the requested block
   ///
@@ -89,9 +100,10 @@ abstract class ReadProvider {
   /// Get the contract class definition associated with the given hash
   ///
   /// [Spec](https://github.com/starkware-libs/starknet-specs/blob/v0.1.0/api/starknet_api_openrpc.json#L240-L265)
-  Future<GetClass> getClass(
-    Felt classHash,
-  );
+  Future<GetClass> getClass({
+    required BlockId blockId,
+    required Felt classHash,
+  });
 
   /// Get the contract class definition in the given block at the given address
   ///
@@ -101,10 +113,10 @@ abstract class ReadProvider {
     required BlockId blockId,
   });
 
-  /// estimates the fee for a given StarkNet transaction
+  /// Gets all events matching the given filter.
   ///
-  /// [Spec](https://github.com/starkware-libs/starknet-specs/blob/5cafa4cbaf5e4596bf309dfbde1bd0c4fa2ce1ce/api/starknet_api_openrpc.json#L420-L466)
-  Future<EstimateFee> estimateFee(EstimateFeeRequest estimateFeeRequest);
+  /// [Spec](https://github.com/starkware-libs/starknet-specs/blob/v0.1.0/api/starknet_api_openrpc.json#L570-L627)
+  Future<GetEvents> getEvents(GetEventsRequest request);
 }
 
 class JsonRpcReadProvider implements ReadProvider {
@@ -134,6 +146,24 @@ class JsonRpcReadProvider implements ReadProvider {
       method: 'starknet_getBlockWithTxHashes',
       params: [blockId],
     ).then(GetBlockWithTxHashes.fromJson);
+  }
+
+  @override
+  Future<GetBlockWithTxs> getBlockWithTxs(BlockId blockId) async {
+    return callRpcEndpoint(
+      nodeUri: nodeUri,
+      method: 'starknet_getBlockWithTxs',
+      params: [blockId],
+    ).then(GetBlockWithTxs.fromJson);
+  }
+
+  @override
+  Future<GetBlockTxnCount> getBlockTxnCount(BlockId blockId) {
+    return callRpcEndpoint(
+      nodeUri: nodeUri,
+      method: 'starknet_getBlockTransactionCount',
+      params: [blockId],
+    ).then(GetBlockTxnCount.fromJson);
   }
 
   @override
@@ -216,13 +246,14 @@ class JsonRpcReadProvider implements ReadProvider {
   }
 
   @override
-  Future<GetNonce> getNonce(
-    Felt contractAddress,
-  ) {
+  Future<GetNonce> getNonce({
+    required Felt contractAddress,
+    required BlockId blockId,
+  }) {
     return callRpcEndpoint(
       nodeUri: nodeUri,
       method: 'starknet_getNonce',
-      params: [contractAddress],
+      params: [blockId, contractAddress],
     ).then(GetNonce.fromJson);
   }
 
@@ -248,11 +279,14 @@ class JsonRpcReadProvider implements ReadProvider {
   }
 
   @override
-  Future<GetClass> getClass(Felt classHash) {
+  Future<GetClass> getClass({
+    required BlockId blockId,
+    required Felt classHash,
+  }) {
     return callRpcEndpoint(
       nodeUri: nodeUri,
       method: 'starknet_getClass',
-      params: [classHash],
+      params: [blockId, classHash],
     ).then(GetClass.fromJson);
   }
 
@@ -269,12 +303,12 @@ class JsonRpcReadProvider implements ReadProvider {
   }
 
   @override
-  Future<EstimateFee> estimateFee(EstimateFeeRequest estimateFeeRequest) {
+  Future<GetEvents> getEvents(GetEventsRequest request) {
     return callRpcEndpoint(
       nodeUri: nodeUri,
-      method: 'starknet_estimateFee',
-      params: estimateFeeRequest,
-    ).then(EstimateFee.fromJson);
+      method: 'starknet_getEvents',
+      params: [request],
+    ).then(GetEvents.fromJson);
   }
 
   static final devnet = JsonRpcReadProvider(nodeUri: devnetUri);

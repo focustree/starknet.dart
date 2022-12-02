@@ -39,15 +39,12 @@ _$InvokeTxnReceipt _$$InvokeTxnReceiptFromJson(Map<String, dynamic> json) =>
       transactionHash: Felt.fromJson(json['transaction_hash'] as String),
       actualFee: Felt.fromJson(json['actual_fee'] as String),
       status: json['status'] as String,
-      statusData: json['status_data'] as String?,
       blockHash: Felt.fromJson(json['block_hash'] as String),
       blockNumber: json['block_number'] as int,
+      type: json['type'] as String,
       messagesSent: (json['messages_sent'] as List<dynamic>)
           .map((e) => MsgToL1.fromJson(e as Map<String, dynamic>))
           .toList(),
-      l1OriginMessage: json['l1_origin_message'] == null
-          ? null
-          : MsgToL2.fromJson(json['l1_origin_message'] as Map<String, dynamic>),
       events: (json['events'] as List<dynamic>)
           .map((e) => Event.fromJson(e as Map<String, dynamic>))
           .toList(),
@@ -59,11 +56,10 @@ Map<String, dynamic> _$$InvokeTxnReceiptToJson(_$InvokeTxnReceipt instance) =>
       'transaction_hash': instance.transactionHash.toJson(),
       'actual_fee': instance.actualFee.toJson(),
       'status': instance.status,
-      'status_data': instance.statusData,
       'block_hash': instance.blockHash.toJson(),
       'block_number': instance.blockNumber,
+      'type': instance.type,
       'messages_sent': instance.messagesSent.map((e) => e.toJson()).toList(),
-      'l1_origin_message': instance.l1OriginMessage?.toJson(),
       'events': instance.events.map((e) => e.toJson()).toList(),
       'runtimeType': instance.$type,
     };
@@ -73,9 +69,15 @@ _$DeclareTxnReceipt _$$DeclareTxnReceiptFromJson(Map<String, dynamic> json) =>
       transactionHash: Felt.fromJson(json['transaction_hash'] as String),
       actualFee: Felt.fromJson(json['actual_fee'] as String),
       status: json['status'] as String,
-      statusData: json['status_data'] as String?,
       blockHash: Felt.fromJson(json['block_hash'] as String),
       blockNumber: json['block_number'] as int,
+      type: json['type'] as String,
+      messagesSent: (json['messages_sent'] as List<dynamic>)
+          .map((e) => MsgToL1.fromJson(e as Map<String, dynamic>))
+          .toList(),
+      events: (json['events'] as List<dynamic>)
+          .map((e) => Event.fromJson(e as Map<String, dynamic>))
+          .toList(),
       $type: json['runtimeType'] as String?,
     );
 
@@ -84,9 +86,43 @@ Map<String, dynamic> _$$DeclareTxnReceiptToJson(_$DeclareTxnReceipt instance) =>
       'transaction_hash': instance.transactionHash.toJson(),
       'actual_fee': instance.actualFee.toJson(),
       'status': instance.status,
-      'status_data': instance.statusData,
       'block_hash': instance.blockHash.toJson(),
       'block_number': instance.blockNumber,
+      'type': instance.type,
+      'messages_sent': instance.messagesSent.map((e) => e.toJson()).toList(),
+      'events': instance.events.map((e) => e.toJson()).toList(),
+      'runtimeType': instance.$type,
+    };
+
+_$L1HandlerTxnReceipt _$$L1HandlerTxnReceiptFromJson(
+        Map<String, dynamic> json) =>
+    _$L1HandlerTxnReceipt(
+      transactionHash: Felt.fromJson(json['transaction_hash'] as String),
+      actualFee: Felt.fromJson(json['actual_fee'] as String),
+      status: json['status'] as String,
+      blockHash: Felt.fromJson(json['block_hash'] as String),
+      blockNumber: json['block_number'] as int,
+      type: json['type'] as String,
+      messagesSent: (json['messages_sent'] as List<dynamic>)
+          .map((e) => MsgToL1.fromJson(e as Map<String, dynamic>))
+          .toList(),
+      events: (json['events'] as List<dynamic>)
+          .map((e) => Event.fromJson(e as Map<String, dynamic>))
+          .toList(),
+      $type: json['runtimeType'] as String?,
+    );
+
+Map<String, dynamic> _$$L1HandlerTxnReceiptToJson(
+        _$L1HandlerTxnReceipt instance) =>
+    <String, dynamic>{
+      'transaction_hash': instance.transactionHash.toJson(),
+      'actual_fee': instance.actualFee.toJson(),
+      'status': instance.status,
+      'block_hash': instance.blockHash.toJson(),
+      'block_number': instance.blockNumber,
+      'type': instance.type,
+      'messages_sent': instance.messagesSent.map((e) => e.toJson()).toList(),
+      'events': instance.events.map((e) => e.toJson()).toList(),
       'runtimeType': instance.$type,
     };
 
@@ -95,9 +131,16 @@ _$DeployTxnReceipt _$$DeployTxnReceiptFromJson(Map<String, dynamic> json) =>
       transactionHash: Felt.fromJson(json['transaction_hash'] as String),
       actualFee: Felt.fromJson(json['actual_fee'] as String),
       status: json['status'] as String,
-      statusData: json['status_data'] as String?,
       blockHash: Felt.fromJson(json['block_hash'] as String),
       blockNumber: json['block_number'] as int,
+      type: json['type'] as String,
+      messagesSent: (json['messages_sent'] as List<dynamic>)
+          .map((e) => MsgToL1.fromJson(e as Map<String, dynamic>))
+          .toList(),
+      events: (json['events'] as List<dynamic>)
+          .map((e) => Event.fromJson(e as Map<String, dynamic>))
+          .toList(),
+      contractAddress: Felt.fromJson(json['contract_address'] as String),
       $type: json['runtimeType'] as String?,
     );
 
@@ -106,37 +149,74 @@ Map<String, dynamic> _$$DeployTxnReceiptToJson(_$DeployTxnReceipt instance) =>
       'transaction_hash': instance.transactionHash.toJson(),
       'actual_fee': instance.actualFee.toJson(),
       'status': instance.status,
-      'status_data': instance.statusData,
       'block_hash': instance.blockHash.toJson(),
       'block_number': instance.blockNumber,
+      'type': instance.type,
+      'messages_sent': instance.messagesSent.map((e) => e.toJson()).toList(),
+      'events': instance.events.map((e) => e.toJson()).toList(),
+      'contract_address': instance.contractAddress.toJson(),
       'runtimeType': instance.$type,
     };
 
-_$PendingInvokeTxnReceipt _$$PendingInvokeTxnReceiptFromJson(
+_$DeployAccountTxnReceipt _$$DeployAccountTxnReceiptFromJson(
         Map<String, dynamic> json) =>
-    _$PendingInvokeTxnReceipt(
+    _$DeployAccountTxnReceipt(
       transactionHash: Felt.fromJson(json['transaction_hash'] as String),
       actualFee: Felt.fromJson(json['actual_fee'] as String),
+      status: json['status'] as String,
+      blockHash: Felt.fromJson(json['block_hash'] as String),
+      blockNumber: json['block_number'] as int,
+      type: json['type'] as String,
       messagesSent: (json['messages_sent'] as List<dynamic>)
           .map((e) => MsgToL1.fromJson(e as Map<String, dynamic>))
           .toList(),
-      l1OriginMessage: json['l1_origin_message'] == null
-          ? null
-          : MsgToL2.fromJson(json['l1_origin_message'] as Map<String, dynamic>),
       events: (json['events'] as List<dynamic>)
           .map((e) => Event.fromJson(e as Map<String, dynamic>))
           .toList(),
+      contractAddress: Felt.fromJson(json['contract_address'] as String),
       $type: json['runtimeType'] as String?,
     );
 
-Map<String, dynamic> _$$PendingInvokeTxnReceiptToJson(
-        _$PendingInvokeTxnReceipt instance) =>
+Map<String, dynamic> _$$DeployAccountTxnReceiptToJson(
+        _$DeployAccountTxnReceipt instance) =>
     <String, dynamic>{
       'transaction_hash': instance.transactionHash.toJson(),
       'actual_fee': instance.actualFee.toJson(),
+      'status': instance.status,
+      'block_hash': instance.blockHash.toJson(),
+      'block_number': instance.blockNumber,
+      'type': instance.type,
       'messages_sent': instance.messagesSent.map((e) => e.toJson()).toList(),
-      'l1_origin_message': instance.l1OriginMessage?.toJson(),
       'events': instance.events.map((e) => e.toJson()).toList(),
+      'contract_address': instance.contractAddress.toJson(),
+      'runtimeType': instance.$type,
+    };
+
+_$PendingDeployTxnReceipt _$$PendingDeployTxnReceiptFromJson(
+        Map<String, dynamic> json) =>
+    _$PendingDeployTxnReceipt(
+      transactionHash: Felt.fromJson(json['transaction_hash'] as String),
+      actualFee: Felt.fromJson(json['actual_fee'] as String),
+      type: json['type'] as String?,
+      messagesSent: (json['messages_sent'] as List<dynamic>)
+          .map((e) => MsgToL1.fromJson(e as Map<String, dynamic>))
+          .toList(),
+      events: (json['events'] as List<dynamic>)
+          .map((e) => Event.fromJson(e as Map<String, dynamic>))
+          .toList(),
+      contractAddress: Felt.fromJson(json['contract_address'] as String),
+      $type: json['runtimeType'] as String?,
+    );
+
+Map<String, dynamic> _$$PendingDeployTxnReceiptToJson(
+        _$PendingDeployTxnReceipt instance) =>
+    <String, dynamic>{
+      'transaction_hash': instance.transactionHash.toJson(),
+      'actual_fee': instance.actualFee.toJson(),
+      'type': instance.type,
+      'messages_sent': instance.messagesSent.map((e) => e.toJson()).toList(),
+      'events': instance.events.map((e) => e.toJson()).toList(),
+      'contract_address': instance.contractAddress.toJson(),
       'runtimeType': instance.$type,
     };
 
@@ -145,6 +225,13 @@ _$PendingCommonReceiptProperties _$$PendingCommonReceiptPropertiesFromJson(
     _$PendingCommonReceiptProperties(
       transactionHash: Felt.fromJson(json['transaction_hash'] as String),
       actualFee: Felt.fromJson(json['actual_fee'] as String),
+      type: json['type'] as String?,
+      messagesSent: (json['messages_sent'] as List<dynamic>)
+          .map((e) => MsgToL1.fromJson(e as Map<String, dynamic>))
+          .toList(),
+      events: (json['events'] as List<dynamic>)
+          .map((e) => Event.fromJson(e as Map<String, dynamic>))
+          .toList(),
       $type: json['runtimeType'] as String?,
     );
 
@@ -153,5 +240,8 @@ Map<String, dynamic> _$$PendingCommonReceiptPropertiesToJson(
     <String, dynamic>{
       'transaction_hash': instance.transactionHash.toJson(),
       'actual_fee': instance.actualFee.toJson(),
+      'type': instance.type,
+      'messages_sent': instance.messagesSent.map((e) => e.toJson()).toList(),
+      'events': instance.events.map((e) => e.toJson()).toList(),
       'runtimeType': instance.$type,
     };
