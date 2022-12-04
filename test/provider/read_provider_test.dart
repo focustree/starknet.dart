@@ -376,6 +376,7 @@ void main() {
     group('starknet_getNonce', () {
       test('returns latest nonce associated with the given address', () async {
         final response = await provider.getNonce(
+          BlockId.blockTag('latest'),
           Felt.fromHexString(
               '0x019245f0f49d23f2379d3e3f20d1f3f46207d1c4a1d09cac8dd50e8d528aabe1'),
         );
@@ -387,6 +388,7 @@ void main() {
 
       test('reading nonce from invalid contract', () async {
         final response = await provider.getNonce(
+          BlockId.blockTag('latest'),
           Felt.fromHexString(
               '0x000000000000000000000000000000000000000000000000000000000000000'),
         );
