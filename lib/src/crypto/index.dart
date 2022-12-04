@@ -62,8 +62,7 @@ BigInt computeHashOnElements(List<BigInt> elements) {
 }
 
 List<Felt> functionCallsToCalldata(
-    {required List<FunctionCall> functionCalls, Felt? nonce}) {
-  nonce = nonce ?? Felt.fromInt(0);
+    {required List<FunctionCall> functionCalls}) {
   List<Felt> calldata = [];
   List<Felt> calls = [];
   for (final call in functionCalls) {
@@ -80,6 +79,5 @@ List<Felt> functionCallsToCalldata(
     ...calls,
     Felt.fromInt(calldata.length),
     ...calldata,
-    nonce
   ];
 }

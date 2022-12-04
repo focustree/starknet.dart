@@ -5,7 +5,7 @@ void main() {
   group('Signer', () {
     group('signTransactions', () {
       test('returns the right signature', () {
-        final signature = Signer(privateKey: Felt.fromInt(1234)).signTransactions(
+        final signature = Signer(privateKey: Felt.fromInt(1234)).signTransactionsV0(
             transactions: [
               FunctionCall(
                   contractAddress: Felt.fromHexString(
