@@ -5,31 +5,73 @@ part 'invoke_transaction.freezed.dart';
 part 'invoke_transaction.g.dart';
 
 @freezed
-class InvokeTransaction with _$InvokeTransaction {
-  const factory InvokeTransaction.result({
-    required InvokeTransactionResponseResult result,
-  }) = InvokeTransactionResult;
-  const factory InvokeTransaction.error({
-    required JsonRpcApiError error,
-  }) = InvokeTransactionError;
-
-  factory InvokeTransaction.fromJson(Map<String, Object?> json) =>
-      json.containsKey('error')
-          ? InvokeTransactionError.fromJson(json)
-          : InvokeTransactionResult.fromJson(json);
-}
-
-@freezed
 class InvokeTransactionRequest with _$InvokeTransactionRequest {
   const factory InvokeTransactionRequest({
-    required FunctionCall functionInvocation,
-    required List<Felt> signature,
-    required Felt maxFee,
-    required Felt version,
+    required InvokeTransaction invokeTransaction,
   }) = _InvokeTransactionRequest;
 
   factory InvokeTransactionRequest.fromJson(Map<String, Object?> json) =>
       _$InvokeTransactionRequestFromJson(json);
+}
+
+abstract class InvokeTransaction {
+  factory InvokeTransaction.fromJson(Map<String, Object?> json) =>
+      json['version'] == '0x01'
+          ? InvokeTransactionV1.fromJson(json)
+          : InvokeTransactionV0.fromJson(json);
+
+  Map<String, dynamic> toJson();
+}
+
+@freezed
+class InvokeTransactionV0
+    with _$InvokeTransactionV0
+    implements InvokeTransaction {
+  const factory InvokeTransactionV0({
+    @Default('INVOKE') String type,
+    required Felt maxFee,
+    @Default('0x00') String version,
+    required List<Felt> signature,
+    required Felt contractAddress,
+    required Felt entryPointSelector,
+    required List<Felt> calldata,
+  }) = _InvokeTransactionV0;
+
+  factory InvokeTransactionV0.fromJson(Map<String, Object?> json) =>
+      _$InvokeTransactionV0FromJson(json);
+}
+
+@freezed
+class InvokeTransactionV1
+    with _$InvokeTransactionV1
+    implements InvokeTransaction {
+  const factory InvokeTransactionV1({
+    required List<Felt> signature,
+    required Felt maxFee,
+    required Felt nonce,
+    required Felt senderAddress,
+    required List<Felt> calldata,
+    @Default('0x01') String version,
+    @Default('INVOKE') String type,
+  }) = _InvokeTransactionV1;
+
+  factory InvokeTransactionV1.fromJson(Map<String, Object?> json) =>
+      _$InvokeTransactionV1FromJson(json);
+}
+
+@freezed
+class InvokeTransactionResponse with _$InvokeTransactionResponse {
+  const factory InvokeTransactionResponse.result({
+    required InvokeTransactionResponseResult result,
+  }) = InvokeTransactionResult;
+  const factory InvokeTransactionResponse.error({
+    required JsonRpcApiError error,
+  }) = InvokeTransactionError;
+
+  factory InvokeTransactionResponse.fromJson(Map<String, Object?> json) =>
+      json.containsKey('error')
+          ? InvokeTransactionError.fromJson(json)
+          : InvokeTransactionResult.fromJson(json);
 }
 
 @freezed

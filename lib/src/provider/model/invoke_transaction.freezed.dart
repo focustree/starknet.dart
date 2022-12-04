@@ -14,7 +14,713 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
-InvokeTransaction _$InvokeTransactionFromJson(Map<String, dynamic> json) {
+InvokeTransactionRequest _$InvokeTransactionRequestFromJson(
+    Map<String, dynamic> json) {
+  return _InvokeTransactionRequest.fromJson(json);
+}
+
+/// @nodoc
+mixin _$InvokeTransactionRequest {
+  InvokeTransaction get invokeTransaction => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $InvokeTransactionRequestCopyWith<InvokeTransactionRequest> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $InvokeTransactionRequestCopyWith<$Res> {
+  factory $InvokeTransactionRequestCopyWith(InvokeTransactionRequest value,
+          $Res Function(InvokeTransactionRequest) then) =
+      _$InvokeTransactionRequestCopyWithImpl<$Res>;
+  $Res call({InvokeTransaction invokeTransaction});
+}
+
+/// @nodoc
+class _$InvokeTransactionRequestCopyWithImpl<$Res>
+    implements $InvokeTransactionRequestCopyWith<$Res> {
+  _$InvokeTransactionRequestCopyWithImpl(this._value, this._then);
+
+  final InvokeTransactionRequest _value;
+  // ignore: unused_field
+  final $Res Function(InvokeTransactionRequest) _then;
+
+  @override
+  $Res call({
+    Object? invokeTransaction = freezed,
+  }) {
+    return _then(_value.copyWith(
+      invokeTransaction: invokeTransaction == freezed
+          ? _value.invokeTransaction
+          : invokeTransaction // ignore: cast_nullable_to_non_nullable
+              as InvokeTransaction,
+    ));
+  }
+}
+
+/// @nodoc
+abstract class _$$_InvokeTransactionRequestCopyWith<$Res>
+    implements $InvokeTransactionRequestCopyWith<$Res> {
+  factory _$$_InvokeTransactionRequestCopyWith(
+          _$_InvokeTransactionRequest value,
+          $Res Function(_$_InvokeTransactionRequest) then) =
+      __$$_InvokeTransactionRequestCopyWithImpl<$Res>;
+  @override
+  $Res call({InvokeTransaction invokeTransaction});
+}
+
+/// @nodoc
+class __$$_InvokeTransactionRequestCopyWithImpl<$Res>
+    extends _$InvokeTransactionRequestCopyWithImpl<$Res>
+    implements _$$_InvokeTransactionRequestCopyWith<$Res> {
+  __$$_InvokeTransactionRequestCopyWithImpl(_$_InvokeTransactionRequest _value,
+      $Res Function(_$_InvokeTransactionRequest) _then)
+      : super(_value, (v) => _then(v as _$_InvokeTransactionRequest));
+
+  @override
+  _$_InvokeTransactionRequest get _value =>
+      super._value as _$_InvokeTransactionRequest;
+
+  @override
+  $Res call({
+    Object? invokeTransaction = freezed,
+  }) {
+    return _then(_$_InvokeTransactionRequest(
+      invokeTransaction: invokeTransaction == freezed
+          ? _value.invokeTransaction
+          : invokeTransaction // ignore: cast_nullable_to_non_nullable
+              as InvokeTransaction,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$_InvokeTransactionRequest implements _InvokeTransactionRequest {
+  const _$_InvokeTransactionRequest({required this.invokeTransaction});
+
+  factory _$_InvokeTransactionRequest.fromJson(Map<String, dynamic> json) =>
+      _$$_InvokeTransactionRequestFromJson(json);
+
+  @override
+  final InvokeTransaction invokeTransaction;
+
+  @override
+  String toString() {
+    return 'InvokeTransactionRequest(invokeTransaction: $invokeTransaction)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_InvokeTransactionRequest &&
+            const DeepCollectionEquality()
+                .equals(other.invokeTransaction, invokeTransaction));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(invokeTransaction));
+
+  @JsonKey(ignore: true)
+  @override
+  _$$_InvokeTransactionRequestCopyWith<_$_InvokeTransactionRequest>
+      get copyWith => __$$_InvokeTransactionRequestCopyWithImpl<
+          _$_InvokeTransactionRequest>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_InvokeTransactionRequestToJson(
+      this,
+    );
+  }
+}
+
+abstract class _InvokeTransactionRequest implements InvokeTransactionRequest {
+  const factory _InvokeTransactionRequest(
+          {required final InvokeTransaction invokeTransaction}) =
+      _$_InvokeTransactionRequest;
+
+  factory _InvokeTransactionRequest.fromJson(Map<String, dynamic> json) =
+      _$_InvokeTransactionRequest.fromJson;
+
+  @override
+  InvokeTransaction get invokeTransaction;
+  @override
+  @JsonKey(ignore: true)
+  _$$_InvokeTransactionRequestCopyWith<_$_InvokeTransactionRequest>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+InvokeTransactionV0 _$InvokeTransactionV0FromJson(Map<String, dynamic> json) {
+  return _InvokeTransactionV0.fromJson(json);
+}
+
+/// @nodoc
+mixin _$InvokeTransactionV0 {
+  String get type => throw _privateConstructorUsedError;
+  Felt get maxFee => throw _privateConstructorUsedError;
+  String get version => throw _privateConstructorUsedError;
+  List<Felt> get signature => throw _privateConstructorUsedError;
+  Felt get contractAddress => throw _privateConstructorUsedError;
+  Felt get entryPointSelector => throw _privateConstructorUsedError;
+  List<Felt> get calldata => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $InvokeTransactionV0CopyWith<InvokeTransactionV0> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $InvokeTransactionV0CopyWith<$Res> {
+  factory $InvokeTransactionV0CopyWith(
+          InvokeTransactionV0 value, $Res Function(InvokeTransactionV0) then) =
+      _$InvokeTransactionV0CopyWithImpl<$Res>;
+  $Res call(
+      {String type,
+      Felt maxFee,
+      String version,
+      List<Felt> signature,
+      Felt contractAddress,
+      Felt entryPointSelector,
+      List<Felt> calldata});
+}
+
+/// @nodoc
+class _$InvokeTransactionV0CopyWithImpl<$Res>
+    implements $InvokeTransactionV0CopyWith<$Res> {
+  _$InvokeTransactionV0CopyWithImpl(this._value, this._then);
+
+  final InvokeTransactionV0 _value;
+  // ignore: unused_field
+  final $Res Function(InvokeTransactionV0) _then;
+
+  @override
+  $Res call({
+    Object? type = freezed,
+    Object? maxFee = freezed,
+    Object? version = freezed,
+    Object? signature = freezed,
+    Object? contractAddress = freezed,
+    Object? entryPointSelector = freezed,
+    Object? calldata = freezed,
+  }) {
+    return _then(_value.copyWith(
+      type: type == freezed
+          ? _value.type
+          : type // ignore: cast_nullable_to_non_nullable
+              as String,
+      maxFee: maxFee == freezed
+          ? _value.maxFee
+          : maxFee // ignore: cast_nullable_to_non_nullable
+              as Felt,
+      version: version == freezed
+          ? _value.version
+          : version // ignore: cast_nullable_to_non_nullable
+              as String,
+      signature: signature == freezed
+          ? _value.signature
+          : signature // ignore: cast_nullable_to_non_nullable
+              as List<Felt>,
+      contractAddress: contractAddress == freezed
+          ? _value.contractAddress
+          : contractAddress // ignore: cast_nullable_to_non_nullable
+              as Felt,
+      entryPointSelector: entryPointSelector == freezed
+          ? _value.entryPointSelector
+          : entryPointSelector // ignore: cast_nullable_to_non_nullable
+              as Felt,
+      calldata: calldata == freezed
+          ? _value.calldata
+          : calldata // ignore: cast_nullable_to_non_nullable
+              as List<Felt>,
+    ));
+  }
+}
+
+/// @nodoc
+abstract class _$$_InvokeTransactionV0CopyWith<$Res>
+    implements $InvokeTransactionV0CopyWith<$Res> {
+  factory _$$_InvokeTransactionV0CopyWith(_$_InvokeTransactionV0 value,
+          $Res Function(_$_InvokeTransactionV0) then) =
+      __$$_InvokeTransactionV0CopyWithImpl<$Res>;
+  @override
+  $Res call(
+      {String type,
+      Felt maxFee,
+      String version,
+      List<Felt> signature,
+      Felt contractAddress,
+      Felt entryPointSelector,
+      List<Felt> calldata});
+}
+
+/// @nodoc
+class __$$_InvokeTransactionV0CopyWithImpl<$Res>
+    extends _$InvokeTransactionV0CopyWithImpl<$Res>
+    implements _$$_InvokeTransactionV0CopyWith<$Res> {
+  __$$_InvokeTransactionV0CopyWithImpl(_$_InvokeTransactionV0 _value,
+      $Res Function(_$_InvokeTransactionV0) _then)
+      : super(_value, (v) => _then(v as _$_InvokeTransactionV0));
+
+  @override
+  _$_InvokeTransactionV0 get _value => super._value as _$_InvokeTransactionV0;
+
+  @override
+  $Res call({
+    Object? type = freezed,
+    Object? maxFee = freezed,
+    Object? version = freezed,
+    Object? signature = freezed,
+    Object? contractAddress = freezed,
+    Object? entryPointSelector = freezed,
+    Object? calldata = freezed,
+  }) {
+    return _then(_$_InvokeTransactionV0(
+      type: type == freezed
+          ? _value.type
+          : type // ignore: cast_nullable_to_non_nullable
+              as String,
+      maxFee: maxFee == freezed
+          ? _value.maxFee
+          : maxFee // ignore: cast_nullable_to_non_nullable
+              as Felt,
+      version: version == freezed
+          ? _value.version
+          : version // ignore: cast_nullable_to_non_nullable
+              as String,
+      signature: signature == freezed
+          ? _value._signature
+          : signature // ignore: cast_nullable_to_non_nullable
+              as List<Felt>,
+      contractAddress: contractAddress == freezed
+          ? _value.contractAddress
+          : contractAddress // ignore: cast_nullable_to_non_nullable
+              as Felt,
+      entryPointSelector: entryPointSelector == freezed
+          ? _value.entryPointSelector
+          : entryPointSelector // ignore: cast_nullable_to_non_nullable
+              as Felt,
+      calldata: calldata == freezed
+          ? _value._calldata
+          : calldata // ignore: cast_nullable_to_non_nullable
+              as List<Felt>,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$_InvokeTransactionV0 implements _InvokeTransactionV0 {
+  const _$_InvokeTransactionV0(
+      {this.type = 'INVOKE',
+      required this.maxFee,
+      this.version = '0x00',
+      required final List<Felt> signature,
+      required this.contractAddress,
+      required this.entryPointSelector,
+      required final List<Felt> calldata})
+      : _signature = signature,
+        _calldata = calldata;
+
+  factory _$_InvokeTransactionV0.fromJson(Map<String, dynamic> json) =>
+      _$$_InvokeTransactionV0FromJson(json);
+
+  @override
+  @JsonKey()
+  final String type;
+  @override
+  final Felt maxFee;
+  @override
+  @JsonKey()
+  final String version;
+  final List<Felt> _signature;
+  @override
+  List<Felt> get signature {
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_signature);
+  }
+
+  @override
+  final Felt contractAddress;
+  @override
+  final Felt entryPointSelector;
+  final List<Felt> _calldata;
+  @override
+  List<Felt> get calldata {
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_calldata);
+  }
+
+  @override
+  String toString() {
+    return 'InvokeTransactionV0(type: $type, maxFee: $maxFee, version: $version, signature: $signature, contractAddress: $contractAddress, entryPointSelector: $entryPointSelector, calldata: $calldata)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_InvokeTransactionV0 &&
+            const DeepCollectionEquality().equals(other.type, type) &&
+            const DeepCollectionEquality().equals(other.maxFee, maxFee) &&
+            const DeepCollectionEquality().equals(other.version, version) &&
+            const DeepCollectionEquality()
+                .equals(other._signature, _signature) &&
+            const DeepCollectionEquality()
+                .equals(other.contractAddress, contractAddress) &&
+            const DeepCollectionEquality()
+                .equals(other.entryPointSelector, entryPointSelector) &&
+            const DeepCollectionEquality().equals(other._calldata, _calldata));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(type),
+      const DeepCollectionEquality().hash(maxFee),
+      const DeepCollectionEquality().hash(version),
+      const DeepCollectionEquality().hash(_signature),
+      const DeepCollectionEquality().hash(contractAddress),
+      const DeepCollectionEquality().hash(entryPointSelector),
+      const DeepCollectionEquality().hash(_calldata));
+
+  @JsonKey(ignore: true)
+  @override
+  _$$_InvokeTransactionV0CopyWith<_$_InvokeTransactionV0> get copyWith =>
+      __$$_InvokeTransactionV0CopyWithImpl<_$_InvokeTransactionV0>(
+          this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_InvokeTransactionV0ToJson(
+      this,
+    );
+  }
+}
+
+abstract class _InvokeTransactionV0 implements InvokeTransactionV0 {
+  const factory _InvokeTransactionV0(
+      {final String type,
+      required final Felt maxFee,
+      final String version,
+      required final List<Felt> signature,
+      required final Felt contractAddress,
+      required final Felt entryPointSelector,
+      required final List<Felt> calldata}) = _$_InvokeTransactionV0;
+
+  factory _InvokeTransactionV0.fromJson(Map<String, dynamic> json) =
+      _$_InvokeTransactionV0.fromJson;
+
+  @override
+  String get type;
+  @override
+  Felt get maxFee;
+  @override
+  String get version;
+  @override
+  List<Felt> get signature;
+  @override
+  Felt get contractAddress;
+  @override
+  Felt get entryPointSelector;
+  @override
+  List<Felt> get calldata;
+  @override
+  @JsonKey(ignore: true)
+  _$$_InvokeTransactionV0CopyWith<_$_InvokeTransactionV0> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+InvokeTransactionV1 _$InvokeTransactionV1FromJson(Map<String, dynamic> json) {
+  return _InvokeTransactionV1.fromJson(json);
+}
+
+/// @nodoc
+mixin _$InvokeTransactionV1 {
+  List<Felt> get signature => throw _privateConstructorUsedError;
+  Felt get maxFee => throw _privateConstructorUsedError;
+  Felt get nonce => throw _privateConstructorUsedError;
+  Felt get senderAddress => throw _privateConstructorUsedError;
+  List<Felt> get calldata => throw _privateConstructorUsedError;
+  String get version => throw _privateConstructorUsedError;
+  String get type => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $InvokeTransactionV1CopyWith<InvokeTransactionV1> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $InvokeTransactionV1CopyWith<$Res> {
+  factory $InvokeTransactionV1CopyWith(
+          InvokeTransactionV1 value, $Res Function(InvokeTransactionV1) then) =
+      _$InvokeTransactionV1CopyWithImpl<$Res>;
+  $Res call(
+      {List<Felt> signature,
+      Felt maxFee,
+      Felt nonce,
+      Felt senderAddress,
+      List<Felt> calldata,
+      String version,
+      String type});
+}
+
+/// @nodoc
+class _$InvokeTransactionV1CopyWithImpl<$Res>
+    implements $InvokeTransactionV1CopyWith<$Res> {
+  _$InvokeTransactionV1CopyWithImpl(this._value, this._then);
+
+  final InvokeTransactionV1 _value;
+  // ignore: unused_field
+  final $Res Function(InvokeTransactionV1) _then;
+
+  @override
+  $Res call({
+    Object? signature = freezed,
+    Object? maxFee = freezed,
+    Object? nonce = freezed,
+    Object? senderAddress = freezed,
+    Object? calldata = freezed,
+    Object? version = freezed,
+    Object? type = freezed,
+  }) {
+    return _then(_value.copyWith(
+      signature: signature == freezed
+          ? _value.signature
+          : signature // ignore: cast_nullable_to_non_nullable
+              as List<Felt>,
+      maxFee: maxFee == freezed
+          ? _value.maxFee
+          : maxFee // ignore: cast_nullable_to_non_nullable
+              as Felt,
+      nonce: nonce == freezed
+          ? _value.nonce
+          : nonce // ignore: cast_nullable_to_non_nullable
+              as Felt,
+      senderAddress: senderAddress == freezed
+          ? _value.senderAddress
+          : senderAddress // ignore: cast_nullable_to_non_nullable
+              as Felt,
+      calldata: calldata == freezed
+          ? _value.calldata
+          : calldata // ignore: cast_nullable_to_non_nullable
+              as List<Felt>,
+      version: version == freezed
+          ? _value.version
+          : version // ignore: cast_nullable_to_non_nullable
+              as String,
+      type: type == freezed
+          ? _value.type
+          : type // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+abstract class _$$_InvokeTransactionV1CopyWith<$Res>
+    implements $InvokeTransactionV1CopyWith<$Res> {
+  factory _$$_InvokeTransactionV1CopyWith(_$_InvokeTransactionV1 value,
+          $Res Function(_$_InvokeTransactionV1) then) =
+      __$$_InvokeTransactionV1CopyWithImpl<$Res>;
+  @override
+  $Res call(
+      {List<Felt> signature,
+      Felt maxFee,
+      Felt nonce,
+      Felt senderAddress,
+      List<Felt> calldata,
+      String version,
+      String type});
+}
+
+/// @nodoc
+class __$$_InvokeTransactionV1CopyWithImpl<$Res>
+    extends _$InvokeTransactionV1CopyWithImpl<$Res>
+    implements _$$_InvokeTransactionV1CopyWith<$Res> {
+  __$$_InvokeTransactionV1CopyWithImpl(_$_InvokeTransactionV1 _value,
+      $Res Function(_$_InvokeTransactionV1) _then)
+      : super(_value, (v) => _then(v as _$_InvokeTransactionV1));
+
+  @override
+  _$_InvokeTransactionV1 get _value => super._value as _$_InvokeTransactionV1;
+
+  @override
+  $Res call({
+    Object? signature = freezed,
+    Object? maxFee = freezed,
+    Object? nonce = freezed,
+    Object? senderAddress = freezed,
+    Object? calldata = freezed,
+    Object? version = freezed,
+    Object? type = freezed,
+  }) {
+    return _then(_$_InvokeTransactionV1(
+      signature: signature == freezed
+          ? _value._signature
+          : signature // ignore: cast_nullable_to_non_nullable
+              as List<Felt>,
+      maxFee: maxFee == freezed
+          ? _value.maxFee
+          : maxFee // ignore: cast_nullable_to_non_nullable
+              as Felt,
+      nonce: nonce == freezed
+          ? _value.nonce
+          : nonce // ignore: cast_nullable_to_non_nullable
+              as Felt,
+      senderAddress: senderAddress == freezed
+          ? _value.senderAddress
+          : senderAddress // ignore: cast_nullable_to_non_nullable
+              as Felt,
+      calldata: calldata == freezed
+          ? _value._calldata
+          : calldata // ignore: cast_nullable_to_non_nullable
+              as List<Felt>,
+      version: version == freezed
+          ? _value.version
+          : version // ignore: cast_nullable_to_non_nullable
+              as String,
+      type: type == freezed
+          ? _value.type
+          : type // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$_InvokeTransactionV1 implements _InvokeTransactionV1 {
+  const _$_InvokeTransactionV1(
+      {required final List<Felt> signature,
+      required this.maxFee,
+      required this.nonce,
+      required this.senderAddress,
+      required final List<Felt> calldata,
+      this.version = '0x01',
+      this.type = 'INVOKE'})
+      : _signature = signature,
+        _calldata = calldata;
+
+  factory _$_InvokeTransactionV1.fromJson(Map<String, dynamic> json) =>
+      _$$_InvokeTransactionV1FromJson(json);
+
+  final List<Felt> _signature;
+  @override
+  List<Felt> get signature {
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_signature);
+  }
+
+  @override
+  final Felt maxFee;
+  @override
+  final Felt nonce;
+  @override
+  final Felt senderAddress;
+  final List<Felt> _calldata;
+  @override
+  List<Felt> get calldata {
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_calldata);
+  }
+
+  @override
+  @JsonKey()
+  final String version;
+  @override
+  @JsonKey()
+  final String type;
+
+  @override
+  String toString() {
+    return 'InvokeTransactionV1(signature: $signature, maxFee: $maxFee, nonce: $nonce, senderAddress: $senderAddress, calldata: $calldata, version: $version, type: $type)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_InvokeTransactionV1 &&
+            const DeepCollectionEquality()
+                .equals(other._signature, _signature) &&
+            const DeepCollectionEquality().equals(other.maxFee, maxFee) &&
+            const DeepCollectionEquality().equals(other.nonce, nonce) &&
+            const DeepCollectionEquality()
+                .equals(other.senderAddress, senderAddress) &&
+            const DeepCollectionEquality().equals(other._calldata, _calldata) &&
+            const DeepCollectionEquality().equals(other.version, version) &&
+            const DeepCollectionEquality().equals(other.type, type));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(_signature),
+      const DeepCollectionEquality().hash(maxFee),
+      const DeepCollectionEquality().hash(nonce),
+      const DeepCollectionEquality().hash(senderAddress),
+      const DeepCollectionEquality().hash(_calldata),
+      const DeepCollectionEquality().hash(version),
+      const DeepCollectionEquality().hash(type));
+
+  @JsonKey(ignore: true)
+  @override
+  _$$_InvokeTransactionV1CopyWith<_$_InvokeTransactionV1> get copyWith =>
+      __$$_InvokeTransactionV1CopyWithImpl<_$_InvokeTransactionV1>(
+          this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_InvokeTransactionV1ToJson(
+      this,
+    );
+  }
+}
+
+abstract class _InvokeTransactionV1 implements InvokeTransactionV1 {
+  const factory _InvokeTransactionV1(
+      {required final List<Felt> signature,
+      required final Felt maxFee,
+      required final Felt nonce,
+      required final Felt senderAddress,
+      required final List<Felt> calldata,
+      final String version,
+      final String type}) = _$_InvokeTransactionV1;
+
+  factory _InvokeTransactionV1.fromJson(Map<String, dynamic> json) =
+      _$_InvokeTransactionV1.fromJson;
+
+  @override
+  List<Felt> get signature;
+  @override
+  Felt get maxFee;
+  @override
+  Felt get nonce;
+  @override
+  Felt get senderAddress;
+  @override
+  List<Felt> get calldata;
+  @override
+  String get version;
+  @override
+  String get type;
+  @override
+  @JsonKey(ignore: true)
+  _$$_InvokeTransactionV1CopyWith<_$_InvokeTransactionV1> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+InvokeTransactionResponse _$InvokeTransactionResponseFromJson(
+    Map<String, dynamic> json) {
   switch (json['runtimeType']) {
     case 'result':
       return InvokeTransactionResult.fromJson(json);
@@ -22,13 +728,16 @@ InvokeTransaction _$InvokeTransactionFromJson(Map<String, dynamic> json) {
       return InvokeTransactionError.fromJson(json);
 
     default:
-      throw CheckedFromJsonException(json, 'runtimeType', 'InvokeTransaction',
+      throw CheckedFromJsonException(
+          json,
+          'runtimeType',
+          'InvokeTransactionResponse',
           'Invalid union type "${json['runtimeType']}"!');
   }
 }
 
 /// @nodoc
-mixin _$InvokeTransaction {
+mixin _$InvokeTransactionResponse {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(InvokeTransactionResponseResult result) result,
@@ -71,20 +780,20 @@ mixin _$InvokeTransaction {
 }
 
 /// @nodoc
-abstract class $InvokeTransactionCopyWith<$Res> {
-  factory $InvokeTransactionCopyWith(
-          InvokeTransaction value, $Res Function(InvokeTransaction) then) =
-      _$InvokeTransactionCopyWithImpl<$Res>;
+abstract class $InvokeTransactionResponseCopyWith<$Res> {
+  factory $InvokeTransactionResponseCopyWith(InvokeTransactionResponse value,
+          $Res Function(InvokeTransactionResponse) then) =
+      _$InvokeTransactionResponseCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$InvokeTransactionCopyWithImpl<$Res>
-    implements $InvokeTransactionCopyWith<$Res> {
-  _$InvokeTransactionCopyWithImpl(this._value, this._then);
+class _$InvokeTransactionResponseCopyWithImpl<$Res>
+    implements $InvokeTransactionResponseCopyWith<$Res> {
+  _$InvokeTransactionResponseCopyWithImpl(this._value, this._then);
 
-  final InvokeTransaction _value;
+  final InvokeTransactionResponse _value;
   // ignore: unused_field
-  final $Res Function(InvokeTransaction) _then;
+  final $Res Function(InvokeTransactionResponse) _then;
 }
 
 /// @nodoc
@@ -99,7 +808,7 @@ abstract class _$$InvokeTransactionResultCopyWith<$Res> {
 
 /// @nodoc
 class __$$InvokeTransactionResultCopyWithImpl<$Res>
-    extends _$InvokeTransactionCopyWithImpl<$Res>
+    extends _$InvokeTransactionResponseCopyWithImpl<$Res>
     implements _$$InvokeTransactionResultCopyWith<$Res> {
   __$$InvokeTransactionResultCopyWithImpl(_$InvokeTransactionResult _value,
       $Res Function(_$InvokeTransactionResult) _then)
@@ -147,7 +856,7 @@ class _$InvokeTransactionResult implements InvokeTransactionResult {
 
   @override
   String toString() {
-    return 'InvokeTransaction.result(result: $result)';
+    return 'InvokeTransactionResponse.result(result: $result)';
   }
 
   @override
@@ -239,7 +948,7 @@ class _$InvokeTransactionResult implements InvokeTransactionResult {
   }
 }
 
-abstract class InvokeTransactionResult implements InvokeTransaction {
+abstract class InvokeTransactionResult implements InvokeTransactionResponse {
   const factory InvokeTransactionResult(
           {required final InvokeTransactionResponseResult result}) =
       _$InvokeTransactionResult;
@@ -265,7 +974,7 @@ abstract class _$$InvokeTransactionErrorCopyWith<$Res> {
 
 /// @nodoc
 class __$$InvokeTransactionErrorCopyWithImpl<$Res>
-    extends _$InvokeTransactionCopyWithImpl<$Res>
+    extends _$InvokeTransactionResponseCopyWithImpl<$Res>
     implements _$$InvokeTransactionErrorCopyWith<$Res> {
   __$$InvokeTransactionErrorCopyWithImpl(_$InvokeTransactionError _value,
       $Res Function(_$InvokeTransactionError) _then)
@@ -312,7 +1021,7 @@ class _$InvokeTransactionError implements InvokeTransactionError {
 
   @override
   String toString() {
-    return 'InvokeTransaction.error(error: $error)';
+    return 'InvokeTransactionResponse.error(error: $error)';
   }
 
   @override
@@ -404,7 +1113,7 @@ class _$InvokeTransactionError implements InvokeTransactionError {
   }
 }
 
-abstract class InvokeTransactionError implements InvokeTransaction {
+abstract class InvokeTransactionError implements InvokeTransactionResponse {
   const factory InvokeTransactionError({required final JsonRpcApiError error}) =
       _$InvokeTransactionError;
 
@@ -415,232 +1124,6 @@ abstract class InvokeTransactionError implements InvokeTransaction {
   @JsonKey(ignore: true)
   _$$InvokeTransactionErrorCopyWith<_$InvokeTransactionError> get copyWith =>
       throw _privateConstructorUsedError;
-}
-
-InvokeTransactionRequest _$InvokeTransactionRequestFromJson(
-    Map<String, dynamic> json) {
-  return _InvokeTransactionRequest.fromJson(json);
-}
-
-/// @nodoc
-mixin _$InvokeTransactionRequest {
-  FunctionCall get functionInvocation => throw _privateConstructorUsedError;
-  List<Felt> get signature => throw _privateConstructorUsedError;
-  Felt get maxFee => throw _privateConstructorUsedError;
-  Felt get version => throw _privateConstructorUsedError;
-
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
-  $InvokeTransactionRequestCopyWith<InvokeTransactionRequest> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $InvokeTransactionRequestCopyWith<$Res> {
-  factory $InvokeTransactionRequestCopyWith(InvokeTransactionRequest value,
-          $Res Function(InvokeTransactionRequest) then) =
-      _$InvokeTransactionRequestCopyWithImpl<$Res>;
-  $Res call(
-      {FunctionCall functionInvocation,
-      List<Felt> signature,
-      Felt maxFee,
-      Felt version});
-
-  $FunctionCallCopyWith<$Res> get functionInvocation;
-}
-
-/// @nodoc
-class _$InvokeTransactionRequestCopyWithImpl<$Res>
-    implements $InvokeTransactionRequestCopyWith<$Res> {
-  _$InvokeTransactionRequestCopyWithImpl(this._value, this._then);
-
-  final InvokeTransactionRequest _value;
-  // ignore: unused_field
-  final $Res Function(InvokeTransactionRequest) _then;
-
-  @override
-  $Res call({
-    Object? functionInvocation = freezed,
-    Object? signature = freezed,
-    Object? maxFee = freezed,
-    Object? version = freezed,
-  }) {
-    return _then(_value.copyWith(
-      functionInvocation: functionInvocation == freezed
-          ? _value.functionInvocation
-          : functionInvocation // ignore: cast_nullable_to_non_nullable
-              as FunctionCall,
-      signature: signature == freezed
-          ? _value.signature
-          : signature // ignore: cast_nullable_to_non_nullable
-              as List<Felt>,
-      maxFee: maxFee == freezed
-          ? _value.maxFee
-          : maxFee // ignore: cast_nullable_to_non_nullable
-              as Felt,
-      version: version == freezed
-          ? _value.version
-          : version // ignore: cast_nullable_to_non_nullable
-              as Felt,
-    ));
-  }
-
-  @override
-  $FunctionCallCopyWith<$Res> get functionInvocation {
-    return $FunctionCallCopyWith<$Res>(_value.functionInvocation, (value) {
-      return _then(_value.copyWith(functionInvocation: value));
-    });
-  }
-}
-
-/// @nodoc
-abstract class _$$_InvokeTransactionRequestCopyWith<$Res>
-    implements $InvokeTransactionRequestCopyWith<$Res> {
-  factory _$$_InvokeTransactionRequestCopyWith(
-          _$_InvokeTransactionRequest value,
-          $Res Function(_$_InvokeTransactionRequest) then) =
-      __$$_InvokeTransactionRequestCopyWithImpl<$Res>;
-  @override
-  $Res call(
-      {FunctionCall functionInvocation,
-      List<Felt> signature,
-      Felt maxFee,
-      Felt version});
-
-  @override
-  $FunctionCallCopyWith<$Res> get functionInvocation;
-}
-
-/// @nodoc
-class __$$_InvokeTransactionRequestCopyWithImpl<$Res>
-    extends _$InvokeTransactionRequestCopyWithImpl<$Res>
-    implements _$$_InvokeTransactionRequestCopyWith<$Res> {
-  __$$_InvokeTransactionRequestCopyWithImpl(_$_InvokeTransactionRequest _value,
-      $Res Function(_$_InvokeTransactionRequest) _then)
-      : super(_value, (v) => _then(v as _$_InvokeTransactionRequest));
-
-  @override
-  _$_InvokeTransactionRequest get _value =>
-      super._value as _$_InvokeTransactionRequest;
-
-  @override
-  $Res call({
-    Object? functionInvocation = freezed,
-    Object? signature = freezed,
-    Object? maxFee = freezed,
-    Object? version = freezed,
-  }) {
-    return _then(_$_InvokeTransactionRequest(
-      functionInvocation: functionInvocation == freezed
-          ? _value.functionInvocation
-          : functionInvocation // ignore: cast_nullable_to_non_nullable
-              as FunctionCall,
-      signature: signature == freezed
-          ? _value._signature
-          : signature // ignore: cast_nullable_to_non_nullable
-              as List<Felt>,
-      maxFee: maxFee == freezed
-          ? _value.maxFee
-          : maxFee // ignore: cast_nullable_to_non_nullable
-              as Felt,
-      version: version == freezed
-          ? _value.version
-          : version // ignore: cast_nullable_to_non_nullable
-              as Felt,
-    ));
-  }
-}
-
-/// @nodoc
-@JsonSerializable()
-class _$_InvokeTransactionRequest implements _InvokeTransactionRequest {
-  const _$_InvokeTransactionRequest(
-      {required this.functionInvocation,
-      required final List<Felt> signature,
-      required this.maxFee,
-      required this.version})
-      : _signature = signature;
-
-  factory _$_InvokeTransactionRequest.fromJson(Map<String, dynamic> json) =>
-      _$$_InvokeTransactionRequestFromJson(json);
-
-  @override
-  final FunctionCall functionInvocation;
-  final List<Felt> _signature;
-  @override
-  List<Felt> get signature {
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_signature);
-  }
-
-  @override
-  final Felt maxFee;
-  @override
-  final Felt version;
-
-  @override
-  String toString() {
-    return 'InvokeTransactionRequest(functionInvocation: $functionInvocation, signature: $signature, maxFee: $maxFee, version: $version)';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$_InvokeTransactionRequest &&
-            const DeepCollectionEquality()
-                .equals(other.functionInvocation, functionInvocation) &&
-            const DeepCollectionEquality()
-                .equals(other._signature, _signature) &&
-            const DeepCollectionEquality().equals(other.maxFee, maxFee) &&
-            const DeepCollectionEquality().equals(other.version, version));
-  }
-
-  @JsonKey(ignore: true)
-  @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(functionInvocation),
-      const DeepCollectionEquality().hash(_signature),
-      const DeepCollectionEquality().hash(maxFee),
-      const DeepCollectionEquality().hash(version));
-
-  @JsonKey(ignore: true)
-  @override
-  _$$_InvokeTransactionRequestCopyWith<_$_InvokeTransactionRequest>
-      get copyWith => __$$_InvokeTransactionRequestCopyWithImpl<
-          _$_InvokeTransactionRequest>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$_InvokeTransactionRequestToJson(
-      this,
-    );
-  }
-}
-
-abstract class _InvokeTransactionRequest implements InvokeTransactionRequest {
-  const factory _InvokeTransactionRequest(
-      {required final FunctionCall functionInvocation,
-      required final List<Felt> signature,
-      required final Felt maxFee,
-      required final Felt version}) = _$_InvokeTransactionRequest;
-
-  factory _InvokeTransactionRequest.fromJson(Map<String, dynamic> json) =
-      _$_InvokeTransactionRequest.fromJson;
-
-  @override
-  FunctionCall get functionInvocation;
-  @override
-  List<Felt> get signature;
-  @override
-  Felt get maxFee;
-  @override
-  Felt get version;
-  @override
-  @JsonKey(ignore: true)
-  _$$_InvokeTransactionRequestCopyWith<_$_InvokeTransactionRequest>
-      get copyWith => throw _privateConstructorUsedError;
 }
 
 InvokeTransactionResponseResult _$InvokeTransactionResponseResultFromJson(
