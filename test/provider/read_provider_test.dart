@@ -10,30 +10,30 @@ void main() {
     Felt invalidHexString = Felt.fromHexString(
         '0x0000000000000000000000000000000000000000000000000000000000000000');
     Felt blockHash = Felt.fromHexString(
-        '0x161eebae9b292aaa92556b18770219c4a7ff4700294eddb6a821b966c0c02da');
+        '0x7ed2fde2b82d70368db9ae0a53e88bd9a50e50a202f20e7ff07d0c18338d8c6');
     int blockNumber = 13334;
     Felt invokeTransactionHash = Felt.fromHexString(
-        '0x7bb25e0671975289102bb9d1d8ea671f65c4a17dfbe4d7f0565b920c4257a79');
+        '0x6c2d47ae348f465317528c500e91cd8845f3d8e5c9fd2fde30de9772faa40cc');
     Felt declareTransactionHash = Felt.fromHexString(
-        '0x6e6b911afbc844baa36c5b211ad445abd2203b9a89d69347e02135629ebf202');
+        '0x1363b8d4b4ef14e872e78b2fc65cc939b2a7a535b76f9146dbd6cd259119e44');
     Felt deployTransactionHash = Felt.fromHexString(
-        '0x62fd4ae55e4f2b5005201cbfb4cbb78680617f2c4c9b2c31f42add6cc91405a');
+        '0x5682042c671663e3b6077bb94d3ad94063b7dcc4be8866e6d78bfadd60587e9');
     Felt deployAccountTransactionHash = Felt.fromHexString(
-        '0x2f5e4490f69337eb0949603c67d7613bd3cf7b2246ccbef55fa9dbff27ccdfa');
+        '0x4ba967e16553ffc32d0120c9b30162255a5c928be5db381fe67e5e560221609');
     Felt l1HandlerTransactionHash = Felt.fromHexString(
-        '0x686d552c96822b6b89b4fa8f52b1acd9a6d8c767870171b10ea85475beb06d7');
+        '0x5ba26613f632e8bf8d3ca83202d06edf371b60dd07cfcc3f3b04dc0fff04687');
 
     BlockId blockIdFromBlockHash = BlockId.blockHash(blockHash);
     BlockId blockIdFromBlockNumber = BlockId.blockNumber(blockNumber);
     BlockId invalidBlockIdFromBlockHash = BlockId.blockHash(invalidHexString);
 
     Felt classHash = Felt.fromHexString(
-        '0x025ec026985a3bf9d0cc1fe17326b245dfdc3ff89b8fde106542a3ea56c5a918');
+        '0x06234338a4c4644b88e1548b35d5f51570847f05157ca762d8d5492fd9ba702c');
     Felt contractAddress = Felt.fromHexString(
-        '0x054B5e0582e7698b2B9Ec00232603b271a489fe6cADcC641262812B4B64A052f');
+        '0x04e76f8708774c8162fb4da7abefb3cae94cc51cf3f9b40e0d44f24aabf8a521');
     BlockId blockIdForTheGivenContractAddress = BlockId.blockHash(
         Felt.fromHexString(
-            '0x509c1a46261c466b25690af5052685f74c49e578c9f38fabb05f67064f581e3'));
+            '0x6a39eb5c273a221b99b08323bed9ec1ef1bc3d232a668c941b23cca3bf1164a'));
     Felt entryPointSelector = Felt.fromHexString(
         '0x9278fa5f64a571de10741418f1c4c0c4322aef645dd9d94a429c1f3e99a8a5');
 
@@ -53,14 +53,13 @@ void main() {
       test(
           'returns block information with transaction hashes from the Block Id',
           () async {
-        int blockNumber = 13249;
         final response = await provider
             .getBlockWithTxHashes(BlockId.blockNumber(blockNumber));
         response.when(
             result: (result) => expect(
                 result.parentHash,
                 Felt.fromHexString(
-                    '0x6ff5fdfef5e8b40b9cac6111efc7f25d583e9830b8e4f2d044d71db6e971ede')),
+                    '0x14f741bf6ace9f582fa02b95a7065af3e7925bf25c8cb3a69ac1cb1c5762473')),
             error: (error) => fail("Shouldn't fail"));
       });
 
@@ -77,74 +76,41 @@ void main() {
     });
 
     group('call', () {
-      // test('calls a read-only method with empty calldata', () async {
-      //   final response = await provider.call(
-      //       request: FunctionCall(
-      //           // Briq NFT contract address
-      //           contractAddress: Felt.fromHexString(
-      //               '0x019245f0f49d23f2379d3e3f20d1f3f46207d1c4a1d09cac8dd50e8d528aabe1'),
-      //           entryPointSelector: getSelectorByName('name'),
-      //           calldata: []));
-      //   response.when(
-      //       error: (error) => fail("Shouldn't fail"),
-      //       result: (result) {
-      //         expect(result, hasLength(1));
-      //         expect(result[0], Felt.fromString('briq'));
-      //       });
-      // });
-      // test('calls a read-only method with non-empty calldata', () async {
-      //   final response = await provider.call(
-      //       request: FunctionCall(
-      //           // Starknet ID contract address
-      //           contractAddress: Felt.fromHexString(
-      //               '0x019245f0f49d23f2379d3e3f20d1f3f46207d1c4a1d09cac8dd50e8d528aabe1'),
-      //           entryPointSelector: getSelectorByName('balance_of'),
-      //           calldata: [
-      //         // Address owning 5 Starknet IDs
-      //         Felt.fromHexString(
-      //             '0x0367c0c4603a29Bc5aCA8E07C6A2776D7C0d325945aBB4f772f448b345Ca4Cf7')
-      //       ]));
-      //   response.when(
-      //       error: (error) => fail("Shouldn't fail"),
-      //       result: (result) {
-      //         expect(result, hasLength(2));
-      //         expect(result[0], Felt.fromInt(5));
-      //       });
-      // });
-
-      // "request": {
-      // "contract_address": "0x049d36570d4e46f48e99674bd3fcc84644ddd6b96f7c741b1562b82f9e004dc7",
-      // "calldata": [
-      // "482897216855731661454536211069019800727046035263556664864595629742230851611"
-      // ],
-      // "entry_point_selector": "0x2e4263afad30923c891518314c3c95dbe830a16874e8abc5777a9a20b54c76e",
-      // "signature": [
-      // ],
-      // "max_fee": "0x12C72866EFA9B",
-      // "version": "0x0"
-      // },
-      // "block_id": {
-      // "block_hash": "0x3533e345cbad40b29246fbbc58d0a679e8ab7726bfb727953725581287a96b1"
-      // }
-      //
-      //
-      // [
-      // "482897216855731661454536211069019800727046035263556664864595629742230851611"
-      // ]
+      test('calls a read-only method with non-empty calldata', () async {
+        final response = await provider.call(
+          request: FunctionCall(
+            contractAddress: contractAddress,
+            entryPointSelector: getSelectorByName('allowance'),
+            calldata: [
+              Felt.fromHexString(
+                  '0x032d5c7a7953996056caf92ff4dd83f01ad72a3c418c05f15eb2f472d1e9c9f2'),
+              Felt.fromHexString(
+                  '0x0367c0c4603a29Bc5aCA8E07C6A2776D7C0d325945aBB4f772f448b345Ca4Cf7'),
+            ],
+          ),
+          blockId: BlockId.latest,
+        );
+        response.when(
+            error: (error) => fail("Shouldn't fail"),
+            result: (result) {
+              expect(result, hasLength(2));
+              expect(result[0], Felt.fromInt(5));
+            });
+      });
 
       test('calls a read-only method with empty calldata', () async {
         final response = await provider.call(
             request: FunctionCall(
               contractAddress: contractAddress,
-              entryPointSelector: entryPointSelector,
+              entryPointSelector: getSelectorByName('totalSupply'),
               calldata: [],
             ),
-            blockId: blockIdForTheGivenContractAddress);
+            blockId: BlockId.latest);
         response.when(
             error: (error) => fail("Shouldn't fail"),
             result: (result) {
-              expect(result[0],
-                  Felt.fromHexString('0x417267656e744163636f756e74'));
+              expect(result, hasLength(2));
+              expect(result[0], Felt.fromInt(1000));
             });
       });
 
@@ -200,20 +166,20 @@ void main() {
     });
 
     group('getStorageAt', () {
-      // test('returns the ERC20_symbol value for a ERC20 contract', () async {
-      //   final response = await provider.getStorageAt(
-      //     contractAddress: Felt.fromHexString(
-      //         '0x0335c0d0c2b25730b7ed46e0fceed2a55d7743e300f393535c88470e5e15ae64'),
-      //     key: getSelectorByName('ERC20_symbol'),
-      //     blockId: BlockId.blockTag("latest"),
-      //   );
-      //
-      //   response.when(
-      //       error: (error) => fail("Shouldn't fail"),
-      //       result: (result) {
-      //         expect(result, Felt.fromHexString("0x5a475157"));
-      //       });
-      // });
+      test('returns the ERC20_symbol value for a ERC20 contract', () async {
+        final response = await provider.getStorageAt(
+          contractAddress: Felt.fromHexString(
+              '0x0335c0d0c2b25730b7ed46e0fceed2a55d7743e300f393535c88470e5e15ae64'),
+          key: getSelectorByName('ERC20_symbol'),
+          blockId: BlockId.blockTag("latest"),
+        );
+
+        response.when(
+            error: (error) => fail("Shouldn't fail"),
+            result: (result) {
+              expect(result, Felt.fromHexString("0x5a475157"));
+            });
+      });
 
       test('returns the value of the storage at the given address and key',
           () async {
@@ -266,14 +232,13 @@ void main() {
       test(
           'returns the INVOKE transaction details based on the transaction hash',
           () async {
-        Felt transactionHash = Felt.fromHexString(
-            '0x24b618238d733af1697882e2c3071152bd167b6d22a5975689e5c87cb69547');
-        final response = await provider.getTransactionByHash(transactionHash);
+        final response =
+            await provider.getTransactionByHash(invokeTransactionHash);
 
         response.when(
             error: (error) => fail("Shouldn't fail"),
             result: (result) {
-              expect(result.transactionHash, transactionHash);
+              expect(result.transactionHash, invokeTransactionHash);
               expect(result.type, 'INVOKE');
             });
       });
@@ -281,14 +246,13 @@ void main() {
       test(
           'returns the DEPLOY_ACCOUNT transaction details based on the transaction hash',
           () async {
-        Felt transactionHash = Felt.fromHexString(
-            '0x3bc1e6e5a0e67b2a16ef241b53e834b721ed85d4e3a76b7250070a20161a996');
-        final response = await provider.getTransactionByHash(transactionHash);
+        final response =
+            await provider.getTransactionByHash(deployAccountTransactionHash);
 
         response.when(
             error: (error) => fail("Shouldn't fail"),
             result: (result) {
-              expect(result.transactionHash, transactionHash);
+              expect(result.transactionHash, deployAccountTransactionHash);
               expect(result.type, "DEPLOY_ACCOUNT");
             });
       });
@@ -296,14 +260,13 @@ void main() {
       test(
           'returns the L1_HANDLER transaction details based on the transaction hash',
           () async {
-        Felt transactionHash = Felt.fromHexString(
-            '0x66419c805e106cefb4662fd292f5ddb7f16ce5e6a1cef3a19c67cbf45bdddbd');
-        final response = await provider.getTransactionByHash(transactionHash);
+        final response =
+            await provider.getTransactionByHash(l1HandlerTransactionHash);
 
         response.when(
             error: (error) => fail("Shouldn't fail"),
             result: (result) {
-              expect(result.transactionHash, transactionHash);
+              expect(result.transactionHash, l1HandlerTransactionHash);
               expect(result.type, "L1_HANDLER");
             });
       });
@@ -311,14 +274,13 @@ void main() {
       test(
           'returns the DEPLOY transaction details based on the transaction hash',
           () async {
-        Felt transactionHash = Felt.fromHexString(
-            '0xfc0a5f56c4c1fc3765691ffe06de6ec41b43d66567fa9467bf90e77b21d3c3');
-        final response = await provider.getTransactionByHash(transactionHash);
+        final response =
+            await provider.getTransactionByHash(deployTransactionHash);
 
         response.when(
             error: (error) => fail("Shouldn't fail"),
             result: (result) {
-              expect(result.transactionHash, transactionHash);
+              expect(result.transactionHash, deployTransactionHash);
               expect(result.type, "DEPLOY");
             });
       });
@@ -326,14 +288,13 @@ void main() {
       test(
           'returns the DECLARE transaction details based on the transaction hash',
           () async {
-        Felt transactionHash = Felt.fromHexString(
-            '0x6e6b911afbc844baa36c5b211ad445abd2203b9a89d69347e02135629ebf202');
-        final response = await provider.getTransactionByHash(transactionHash);
+        final response =
+            await provider.getTransactionByHash(declareTransactionHash);
 
         response.when(
             error: (error) => fail("Shouldn't fail"),
             result: (result) {
-              expect(result.transactionHash, transactionHash);
+              expect(result.transactionHash, declareTransactionHash);
               expect(result.type, "DECLARE");
             });
       });
@@ -354,32 +315,24 @@ void main() {
     group('getTransactionByBlockIdAndIndex', () {
       test('returns transaction details based on block hash and index',
           () async {
-        Felt blockHash = Felt.fromHexString(
-            '0x161eebae9b292aaa92556b18770219c4a7ff4700294eddb6a821b966c0c02da');
-        BlockId blockId = BlockId.blockHash(blockHash);
-
-        final response =
-            await provider.getTransactionByBlockIdAndIndex(blockId, 4);
+        final response = await provider.getTransactionByBlockIdAndIndex(
+            blockIdFromBlockHash, 4);
         response.when(
             result: (result) {
               expect(
                   result.transactionHash,
                   Felt.fromHexString(
-                      '0x3c6837071cfd034344dff5ee08f85474c41e588f350de2551fabc35f7dcb5ec'));
+                      '0x793c49cba2ac05f29d726017792192a19cc40d8da8000dd7936ce03fdfdd1f5'));
             },
             error: (error) => fail("Shouldn't fail"));
       });
 
       test('reading transaction details from invalid index should fail',
           () async {
-        Felt blockHash = Felt.fromHexString(
-            '0x161eebae9b292aaa92556b18770219c4a7ff4700294eddb6a821b966c0c02da');
-        BlockId blockId = BlockId.blockHash(blockHash);
-
         int invalidIndex = 20000000000;
 
         final response = await provider.getTransactionByBlockIdAndIndex(
-            blockId, invalidIndex);
+            blockIdFromBlockHash, invalidIndex);
         response.when(
             result: (_) => fail('Should fail'),
             error: (error) {
@@ -391,11 +344,8 @@ void main() {
       test(
           'reading transaction details from invalid block hash and index should fail',
           () async {
-        BlockId blockId = BlockId.blockHash(Felt.fromHexString(
-            '0x00000000000000000000000000000000000000000000000000000000000'));
-
-        final response =
-            await provider.getTransactionByBlockIdAndIndex(blockId, 4);
+        final response = await provider.getTransactionByBlockIdAndIndex(
+            invalidBlockIdFromBlockHash, 4);
         response.when(
             result: (_) => fail('Should fail'),
             error: (error) {
@@ -407,13 +357,13 @@ void main() {
       test('returns transaction details based on block number and index',
           () async {
         final response = await provider.getTransactionByBlockIdAndIndex(
-            blockIdFromBlockNumber, 4);
+            blockIdFromBlockNumber, 1);
         response.when(
             result: (result) {
               expect(
                   result.transactionHash,
                   Felt.fromHexString(
-                      "0x66fed2abcb1b770d7e8a7c4a9fbd09551cd379183e744e37e9f437dac1486d9"));
+                      "0x226570876fb6bdd8257b048c0dfc02a7579ab1083c4b28b6b9a1a86aea39180"));
             },
             error: (error) => fail("Shouldn't fail"));
       });
@@ -430,7 +380,7 @@ void main() {
             error: (error) => fail("Shouldn't fail"),
             result: (result) {
               expect(result.transactionHash, invokeTransactionHash);
-              expect(result.actualFee, Felt.fromHexString('0x4342b1c0b68d'));
+              expect(result.actualFee, Felt.fromHexString('0x827e39d0'));
             });
       });
 
@@ -530,12 +480,13 @@ void main() {
     group('starknet_getNonce', () {
       test('returns latest nonce associated with the given address', () async {
         final response = await provider.getNonce(
-            contractAddress: contractAddress,
-            blockId: blockIdForTheGivenContractAddress);
+          contractAddress: contractAddress,
+          blockId: BlockId.latest,
+        );
 
         response.when(
             error: (error) => fail("Shouldn't fail"),
-            result: (result) => expect(result, Felt.fromHexString("0x2")));
+            result: (result) => expect(result, Felt.fromHexString("0x0")));
       });
 
       test('reading nonce from invalid block id returns BLOCK_NOT_FOUND error',

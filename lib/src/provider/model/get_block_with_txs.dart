@@ -21,36 +21,32 @@ class GetBlockWithTxs with _$GetBlockWithTxs {
 
 @freezed
 class BlockWithTxs with _$BlockWithTxs {
-  const factory BlockWithTxs.resultingBlock(
-      {required String status,
+  const factory BlockWithTxs.resultingBlock({
+    required String status,
+    //Start of BLOCK_BODY_WITH_TXS
+    required List<Txn> transactions,
+    //End of BLOCK_BODY_WITH_TXS
+    //Start of BLOCK_HEADER
+    required Felt blockHash,
+    required Felt parentHash,
+    required int blockNumber,
+    required Felt newRoot,
+    required int timestamp,
+    required Felt sequencerAddress,
+    //End of BLOCK_HEADER
+  }) = BlockWithTxsResponse;
 
-      //Start of BLOCK_BODY_WITH_TXS
-      required List<Txn> transactions,
-      //End of BLOCK_BODY_WITH_TXS
-
-      //Start of BLOCK_HEADER
-      required Felt blockHash,
-      required Felt parentHash,
-      required int blockNumber,
-      required Felt newRoot,
-      required int timestamp,
-      required Felt sequencerAddress
-      //End of BLOCK_HEADER
-      }) = BlockWithTxsResponse;
-
-  const factory BlockWithTxs.pendingBlock(
-      {
-      // Start of BLOCK_BODY_WITH_TXS
-      required List<Txn> transactions,
-      // End of BLOCK_BODY_WITH_TXS
-      required int timestamp,
-      required Felt sequencerAddress,
-      required Felt blockHash,
-      required}) = PendingBlockWithTxsResult;
+  const factory BlockWithTxs.pendingBlock({
+    // Start of BLOCK_BODY_WITH_TXS
+    required List<Txn> transactions,
+    // End of BLOCK_BODY_WITH_TXS
+    required int timestamp,
+    required Felt sequencerAddress,
+    required Felt blockHash,
+  }) = PendingBlockWithTxsResult;
 
   factory BlockWithTxs.fromJson(Map<String, Object?> json) =>
       json['status'] != null
           ? BlockWithTxsResponse.fromJson(json)
           : PendingBlockWithTxsResult.fromJson(json);
 }
-
