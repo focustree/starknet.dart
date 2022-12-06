@@ -79,10 +79,12 @@ abstract class ReadProvider {
   /// Gets the nonce associated with the given address in the given block
   ///
   /// [Spec](https://github.com/starkware-libs/starknet-specs/blob/v0.1.0/api/starknet_api_openrpc.json#L628-L653)
+
   Future<GetNonce> getNonce({
     required Felt contractAddress,
     required BlockId blockId,
   });
+
 
   /// Gets the information about the result of executing the requested block
   ///

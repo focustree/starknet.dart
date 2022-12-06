@@ -43,6 +43,7 @@ class Contract {
           blockId: blockId,
           contractAddress: account.accountAddress,
         );
+
         return (nonceResp.when(
           error: (error) {
             throw Exception(
