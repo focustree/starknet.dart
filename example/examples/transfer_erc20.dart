@@ -22,16 +22,12 @@ void main() async {
       accountAddress: accountAddress,
       chainId: StarknetChainId.testNet);
 
-  final response = await account.execute(
-      functionCalls: [
-        FunctionCall(
-            contractAddress: erc20Address,
-            entryPointSelector: getSelectorByName("transfer"),
-            calldata: [myWalletAddress, Felt.fromInt(1), Felt.fromInt(0)])
-      ],
-      maxFee: Felt.fromInt(16000000000001),
-      version: Felt.fromInt(0),
-      nonce: Felt.fromInt(3));
+  final response = await account.execute(functionCalls: [
+    FunctionCall(
+        contractAddress: erc20Address,
+        entryPointSelector: getSelectorByName("transfer"),
+        calldata: [myWalletAddress, Felt.fromInt(1), Felt.fromInt(0)])
+  ], maxFee: Felt.fromInt(16000000000001), nonce: Felt.fromInt(3));
 
   print(response);
 }

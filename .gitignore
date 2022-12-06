@@ -21,6 +21,8 @@ coverage/
 
 # Python
 **/__pycache__
+.venv
 
 # Cairo
 !contracts/build
+
