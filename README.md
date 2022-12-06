@@ -85,4 +85,10 @@ dart doc .
 
 For more advanced features, check out the [dartdoc package](https://pub.dev/packages/dartdoc).
 
-### R
+### Complie cairo contracts
+
+```sh
+protostar build
+```
+
+You can see compiled contracts in the `contracts/build` folder.
