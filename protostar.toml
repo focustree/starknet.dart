@@ -2,6 +2,7 @@
 protostar-version = "0.8.1"
 lib-path = "contracts/lib"
 cairo-path = ["contracts/lib/cairo_contracts/src"]
+compiled-contracts-dir = "contracts/build"
 
 [contracts]
 proxy = [
