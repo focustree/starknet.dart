@@ -20,8 +20,8 @@ class StateUpdate with _$StateUpdate {
 @freezed
 class StateDiff with _$StateDiff {
   const factory StateDiff({
-    required List<StorageDiffItem> storageDiffs,
-    required List<DeclaredContractItem> declaredContracts,
+    required List<ContractStorageDiffItem> storageDiffs,
+    required List<Felt> declaredContractHashes,
     required List<DeployedContractItem> deployedContracts,
     required List<NonceAndContractAddress> nonces,
   }) = _StateDiff;

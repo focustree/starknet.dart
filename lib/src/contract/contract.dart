@@ -39,8 +39,11 @@ class Contract {
     return (response.when(error: (error) async {
       if (error.code == 21 && error.message == "Invalid message selector") {
         // Fallback on provider getNonce
-        final nonceResp =
-            await account.provider.getNonce(blockId, account.accountAddress);
+        final nonceResp = await account.provider.getNonce(
+          blockId: blockId,
+          contractAddress: account.accountAddress,
+        );
+
         return (nonceResp.when(
           error: (error) {
             throw Exception(

@@ -79,10 +79,10 @@ abstract class ReadProvider {
   /// Gets the nonce associated with the given address in the given block
   ///
   /// [Spec](https://github.com/starkware-libs/starknet-specs/blob/v0.1.0/api/starknet_api_openrpc.json#L628-L653)
-  Future<GetNonce> getNonce(
-    BlockId blockId,
-    Felt contractAddress,
-  );
+  Future<GetNonce> getNonce({
+    required Felt contractAddress,
+    required BlockId blockId,
+  });
 
   /// Gets the information about the result of executing the requested block
   ///
@@ -100,9 +100,10 @@ abstract class ReadProvider {
   /// Get the contract class definition associated with the given hash
   ///
   /// [Spec](https://github.com/starkware-libs/starknet-specs/blob/v0.1.0/api/starknet_api_openrpc.json#L240-L265)
-  Future<GetClass> getClass(
-    Felt classHash,
-  );
+  Future<GetClass> getClass({
+    required BlockId blockId,
+    required Felt classHash,
+  });
 
   /// Get the contract class definition in the given block at the given address
   ///
@@ -245,10 +246,10 @@ class JsonRpcReadProvider implements ReadProvider {
   }
 
   @override
-  Future<GetNonce> getNonce(
-    BlockId blockId,
-    Felt contractAddress,
-  ) {
+  Future<GetNonce> getNonce({
+    required Felt contractAddress,
+    required BlockId blockId,
+  }) {
     return callRpcEndpoint(
       nodeUri: nodeUri,
       method: 'starknet_getNonce',
@@ -278,11 +279,14 @@ class JsonRpcReadProvider implements ReadProvider {
   }
 
   @override
-  Future<GetClass> getClass(Felt classHash) {
+  Future<GetClass> getClass({
+    required BlockId blockId,
+    required Felt classHash,
+  }) {
     return callRpcEndpoint(
       nodeUri: nodeUri,
       method: 'starknet_getClass',
-      params: [classHash],
+      params: [blockId, classHash],
     ).then(GetClass.fromJson);
   }
 

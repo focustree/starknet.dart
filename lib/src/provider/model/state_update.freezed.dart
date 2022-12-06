@@ -224,9 +224,9 @@ StateDiff _$StateDiffFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$StateDiff {
-  List<StorageDiffItem> get storageDiffs => throw _privateConstructorUsedError;
-  List<DeclaredContractItem> get declaredContracts =>
+  List<ContractStorageDiffItem> get storageDiffs =>
       throw _privateConstructorUsedError;
+  List<Felt> get declaredContractHashes => throw _privateConstructorUsedError;
   List<DeployedContractItem> get deployedContracts =>
       throw _privateConstructorUsedError;
   List<NonceAndContractAddress> get nonces =>
@@ -243,8 +243,8 @@ abstract class $StateDiffCopyWith<$Res> {
   factory $StateDiffCopyWith(StateDiff value, $Res Function(StateDiff) then) =
       _$StateDiffCopyWithImpl<$Res>;
   $Res call(
-      {List<StorageDiffItem> storageDiffs,
-      List<DeclaredContractItem> declaredContracts,
+      {List<ContractStorageDiffItem> storageDiffs,
+      List<Felt> declaredContractHashes,
       List<DeployedContractItem> deployedContracts,
       List<NonceAndContractAddress> nonces});
 }
@@ -260,7 +260,7 @@ class _$StateDiffCopyWithImpl<$Res> implements $StateDiffCopyWith<$Res> {
   @override
   $Res call({
     Object? storageDiffs = freezed,
-    Object? declaredContracts = freezed,
+    Object? declaredContractHashes = freezed,
     Object? deployedContracts = freezed,
     Object? nonces = freezed,
   }) {
@@ -268,11 +268,11 @@ class _$StateDiffCopyWithImpl<$Res> implements $StateDiffCopyWith<$Res> {
       storageDiffs: storageDiffs == freezed
           ? _value.storageDiffs
           : storageDiffs // ignore: cast_nullable_to_non_nullable
-              as List<StorageDiffItem>,
-      declaredContracts: declaredContracts == freezed
-          ? _value.declaredContracts
-          : declaredContracts // ignore: cast_nullable_to_non_nullable
-              as List<DeclaredContractItem>,
+              as List<ContractStorageDiffItem>,
+      declaredContractHashes: declaredContractHashes == freezed
+          ? _value.declaredContractHashes
+          : declaredContractHashes // ignore: cast_nullable_to_non_nullable
+              as List<Felt>,
       deployedContracts: deployedContracts == freezed
           ? _value.deployedContracts
           : deployedContracts // ignore: cast_nullable_to_non_nullable
@@ -292,8 +292,8 @@ abstract class _$$_StateDiffCopyWith<$Res> implements $StateDiffCopyWith<$Res> {
       __$$_StateDiffCopyWithImpl<$Res>;
   @override
   $Res call(
-      {List<StorageDiffItem> storageDiffs,
-      List<DeclaredContractItem> declaredContracts,
+      {List<ContractStorageDiffItem> storageDiffs,
+      List<Felt> declaredContractHashes,
       List<DeployedContractItem> deployedContracts,
       List<NonceAndContractAddress> nonces});
 }
@@ -311,7 +311,7 @@ class __$$_StateDiffCopyWithImpl<$Res> extends _$StateDiffCopyWithImpl<$Res>
   @override
   $Res call({
     Object? storageDiffs = freezed,
-    Object? declaredContracts = freezed,
+    Object? declaredContractHashes = freezed,
     Object? deployedContracts = freezed,
     Object? nonces = freezed,
   }) {
@@ -319,11 +319,11 @@ class __$$_StateDiffCopyWithImpl<$Res> extends _$StateDiffCopyWithImpl<$Res>
       storageDiffs: storageDiffs == freezed
           ? _value._storageDiffs
           : storageDiffs // ignore: cast_nullable_to_non_nullable
-              as List<StorageDiffItem>,
-      declaredContracts: declaredContracts == freezed
-          ? _value._declaredContracts
-          : declaredContracts // ignore: cast_nullable_to_non_nullable
-              as List<DeclaredContractItem>,
+              as List<ContractStorageDiffItem>,
+      declaredContractHashes: declaredContractHashes == freezed
+          ? _value._declaredContractHashes
+          : declaredContractHashes // ignore: cast_nullable_to_non_nullable
+              as List<Felt>,
       deployedContracts: deployedContracts == freezed
           ? _value._deployedContracts
           : deployedContracts // ignore: cast_nullable_to_non_nullable
@@ -340,30 +340,30 @@ class __$$_StateDiffCopyWithImpl<$Res> extends _$StateDiffCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_StateDiff implements _StateDiff {
   const _$_StateDiff(
-      {required final List<StorageDiffItem> storageDiffs,
-      required final List<DeclaredContractItem> declaredContracts,
+      {required final List<ContractStorageDiffItem> storageDiffs,
+      required final List<Felt> declaredContractHashes,
       required final List<DeployedContractItem> deployedContracts,
       required final List<NonceAndContractAddress> nonces})
       : _storageDiffs = storageDiffs,
-        _declaredContracts = declaredContracts,
+        _declaredContractHashes = declaredContractHashes,
         _deployedContracts = deployedContracts,
         _nonces = nonces;
 
   factory _$_StateDiff.fromJson(Map<String, dynamic> json) =>
       _$$_StateDiffFromJson(json);
 
-  final List<StorageDiffItem> _storageDiffs;
+  final List<ContractStorageDiffItem> _storageDiffs;
   @override
-  List<StorageDiffItem> get storageDiffs {
+  List<ContractStorageDiffItem> get storageDiffs {
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_storageDiffs);
   }
 
-  final List<DeclaredContractItem> _declaredContracts;
+  final List<Felt> _declaredContractHashes;
   @override
-  List<DeclaredContractItem> get declaredContracts {
+  List<Felt> get declaredContractHashes {
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_declaredContracts);
+    return EqualUnmodifiableListView(_declaredContractHashes);
   }
 
   final List<DeployedContractItem> _deployedContracts;
@@ -382,7 +382,7 @@ class _$_StateDiff implements _StateDiff {
 
   @override
   String toString() {
-    return 'StateDiff(storageDiffs: $storageDiffs, declaredContracts: $declaredContracts, deployedContracts: $deployedContracts, nonces: $nonces)';
+    return 'StateDiff(storageDiffs: $storageDiffs, declaredContractHashes: $declaredContractHashes, deployedContracts: $deployedContracts, nonces: $nonces)';
   }
 
   @override
@@ -392,8 +392,8 @@ class _$_StateDiff implements _StateDiff {
             other is _$_StateDiff &&
             const DeepCollectionEquality()
                 .equals(other._storageDiffs, _storageDiffs) &&
-            const DeepCollectionEquality()
-                .equals(other._declaredContracts, _declaredContracts) &&
+            const DeepCollectionEquality().equals(
+                other._declaredContractHashes, _declaredContractHashes) &&
             const DeepCollectionEquality()
                 .equals(other._deployedContracts, _deployedContracts) &&
             const DeepCollectionEquality().equals(other._nonces, _nonces));
@@ -404,7 +404,7 @@ class _$_StateDiff implements _StateDiff {
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(_storageDiffs),
-      const DeepCollectionEquality().hash(_declaredContracts),
+      const DeepCollectionEquality().hash(_declaredContractHashes),
       const DeepCollectionEquality().hash(_deployedContracts),
       const DeepCollectionEquality().hash(_nonces));
 
@@ -423,8 +423,8 @@ class _$_StateDiff implements _StateDiff {
 
 abstract class _StateDiff implements StateDiff {
   const factory _StateDiff(
-      {required final List<StorageDiffItem> storageDiffs,
-      required final List<DeclaredContractItem> declaredContracts,
+      {required final List<ContractStorageDiffItem> storageDiffs,
+      required final List<Felt> declaredContractHashes,
       required final List<DeployedContractItem> deployedContracts,
       required final List<NonceAndContractAddress> nonces}) = _$_StateDiff;
 
@@ -432,9 +432,9 @@ abstract class _StateDiff implements StateDiff {
       _$_StateDiff.fromJson;
 
   @override
-  List<StorageDiffItem> get storageDiffs;
+  List<ContractStorageDiffItem> get storageDiffs;
   @override
-  List<DeclaredContractItem> get declaredContracts;
+  List<Felt> get declaredContractHashes;
   @override
   List<DeployedContractItem> get deployedContracts;
   @override

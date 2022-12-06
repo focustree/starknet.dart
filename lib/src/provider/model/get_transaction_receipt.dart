@@ -26,15 +26,12 @@ class TxnReceipt with _$TxnReceipt {
     required Felt transactionHash,
     required Felt actualFee,
     required String status,
-    required String? statusData,
     required Felt blockHash,
     required int blockNumber,
-    // end of COMMON_RECEIPT_PROPERTIES
-    // start of INVOKE_TXN_RECEIPT_PROPERTIES
+    required String type,
     required List<MsgToL1> messagesSent,
-    required MsgToL2? l1OriginMessage,
     required List<Event> events,
-    // end of INVOKE_TXN_RECEIPT_PROPERTIES
+    // end of COMMON_RECEIPT_PROPERTIES
   }) = InvokeTxnReceipt;
 
   const factory TxnReceipt.declareTxnReceipt({
@@ -42,49 +39,91 @@ class TxnReceipt with _$TxnReceipt {
     required Felt transactionHash,
     required Felt actualFee,
     required String status,
-    required String? statusData,
     required Felt blockHash,
     required int blockNumber,
+    required String type,
+    required List<MsgToL1> messagesSent,
+    required List<Event> events,
     // end of COMMON_RECEIPT_PROPERTIES
   }) = DeclareTxnReceipt;
+
+  const factory TxnReceipt.l1HandlerTxnReceipt({
+    // start of COMMON_RECEIPT_PROPERTIES
+    required Felt transactionHash,
+    required Felt actualFee,
+    required String status,
+    required Felt blockHash,
+    required int blockNumber,
+    required String type,
+    required List<MsgToL1> messagesSent,
+    required List<Event> events,
+    // end of COMMON_RECEIPT_PROPERTIES
+  }) = L1HandlerTxnReceipt;
 
   const factory TxnReceipt.deployTxnReceipt({
     // start of COMMON_RECEIPT_PROPERTIES
     required Felt transactionHash,
     required Felt actualFee,
     required String status,
-    required String? statusData,
     required Felt blockHash,
     required int blockNumber,
+    required String type,
+    required List<MsgToL1> messagesSent,
+    required List<Event> events,
     // end of COMMON_RECEIPT_PROPERTIES
+    required Felt contractAddress,
   }) = DeployTxnReceipt;
 
-  const factory TxnReceipt.pendingInvokeTxnReceipt({
+  const factory TxnReceipt.deployAccountTxnReceipt({
+    // start of COMMON_RECEIPT_PROPERTIES
+    required Felt transactionHash,
+    required Felt actualFee,
+    required String status,
+    required Felt blockHash,
+    required int blockNumber,
+    required String type,
+    required List<MsgToL1> messagesSent,
+    required List<Event> events,
+    // end of COMMON_RECEIPT_PROPERTIES
+    required Felt contractAddress,
+  }) = DeployAccountTxnReceipt;
+
+  const factory TxnReceipt.pendingDeployTxnReceipt({
     // start of PENDING_COMMON_RECEIPT_PROPERTIES
     required Felt transactionHash,
     required Felt actualFee,
-    // end of PENDING_COMMON_RECEIPT_PROPERTIES
-    // start of INVOKE_TXN_RECEIPT_PROPERTIES
+    required String? type,
     required List<MsgToL1> messagesSent,
-    required MsgToL2? l1OriginMessage,
     required List<Event> events,
-    // end of INVOKE_TXN_RECEIPT_PROPERTIES
-  }) = PendingInvokeTxnReceipt;
+    // end of PENDING_COMMON_RECEIPT_PROPERTIES
+    required Felt contractAddress,
+  }) = PendingDeployTxnReceipt;
 
   const factory TxnReceipt.pendingCommonReceiptProperties({
+    // start of PENDING_COMMON_RECEIPT_PROPERTIES
     required Felt transactionHash,
     required Felt actualFee,
+    required String? type,
+    required List<MsgToL1> messagesSent,
+    required List<Event> events,
+    // end of PENDING_COMMON_RECEIPT_PROPERTIES
   }) = PendingCommonReceiptProperties;
 
   // TODO: Better way to classify json.
   factory TxnReceipt.fromJson(Map<String, Object?> json) =>
-      json['status'] == 'PENDING'
-          ? json.containsKey('messages_sent')
-              ? PendingInvokeTxnReceipt.fromJson(json)
-              : PendingCommonReceiptProperties.fromJson(json)
-          : json.containsKey('events')
-              ? InvokeTxnReceipt.fromJson(json)
-              : DeclareTxnReceipt.fromJson(json);
+      json['type'] == 'INVOKE'
+          ? InvokeTxnReceipt.fromJson(json)
+          : json['type'] == 'DECLARE'
+              ? DeclareTxnReceipt.fromJson(json)
+              : json['type'] == 'DEPLOY'
+                  ? DeployTxnReceipt.fromJson(json)
+                  : json['type'] == 'DEPLOY_ACCOUNT'
+                      ? DeployAccountTxnReceipt.fromJson(json)
+                      : json['type'] == 'L1_HANDLER'
+                          ? L1HandlerTxnReceipt.fromJson(json)
+                          : json.containsKey('contract_address')
+                              ? PendingDeployTxnReceipt.fromJson(json)
+                              : PendingCommonReceiptProperties.fromJson(json);
 }
 
 // abstract class CommonReceiptProperties {

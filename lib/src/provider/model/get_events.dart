@@ -24,14 +24,14 @@ class GetEventsRequest with _$GetEventsRequest {
   @JsonSerializable(includeIfNull: false)
   const factory GetEventsRequest({
     // start of EVENT_FILTER
-    @JsonKey(name: 'fromBlock') BlockId? fromBlock,
-    @JsonKey(name: 'toBlock') BlockId? toBlock,
+    BlockId? fromBlock,
+    BlockId? toBlock,
     Felt? address,
     List<Felt>? keys,
     // end of EVENT_FILTER
     // start of RESULT_PAGE_REQUEST
-    required int pageSize,
-    required int pageNumber,
+    required int chunkSize,
+    String? continuationToken,
     // end of RESULT_PAGE_REQUEST
   }) = _GetEventsRequest;
 
@@ -44,8 +44,7 @@ class GetEventsResponse with _$GetEventsResponse {
   @JsonSerializable(includeIfNull: false)
   const factory GetEventsResponse({
     required List<EmittedEvent> events,
-    required int pageNumber,
-    required bool isLastPage,
+    String? continuation_token,
     // end of RESULT_PAGE_REQUEST
   }) = _GetEventsResponse;
 
