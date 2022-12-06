@@ -62,7 +62,11 @@ Future<bool> waitForAcceptance(
               status = receipt.status,
           deployTxnReceipt: (DeployTxnReceipt receipt) =>
               status = receipt.status,
-          pendingInvokeTxnReceipt: (PendingInvokeTxnReceipt receipt) =>
+          deployAccountTxnReceipt: (DeployAccountTxnReceipt receipt) =>
+              status = receipt.status,
+          l1HandlerTxnReceipt: (L1HandlerTxnReceipt receipt) =>
+              status = receipt.status,
+          pendingDeployTxnReceipt: (PendingDeployTxnReceipt receipt) =>
               status = 'PENDING',
           pendingCommonReceiptProperties:
               (PendingCommonReceiptProperties receipt) => status = 'PENDING',
