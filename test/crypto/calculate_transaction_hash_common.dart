@@ -14,12 +14,13 @@ void main() {
                   '2007067565103695475819120104515800035851923905855118399071773059478896040938'),
               entryPointSelector: getSelectorByName('__execute__').toBigInt(),
               calldata: toBigIntList(functionCallsToCalldata(functionCalls: [
-                FunctionCall(
-                    contractAddress: Felt.fromIntString(
-                        '3290661298119599979891444342541795905081168856323302956721669397616389152866'),
-                    entryPointSelector: getSelectorByName('set_number'),
-                    calldata: [Felt.fromInt(47)])
-              ], nonce: Felt.fromInt(3))),
+                    FunctionCall(
+                        contractAddress: Felt.fromIntString(
+                            '3290661298119599979891444342541795905081168856323302956721669397616389152866'),
+                        entryPointSelector: getSelectorByName('set_number'),
+                        calldata: [Felt.fromInt(47)])
+                  ]) +
+                  [Felt.fromInt(3)]),
               maxFee: BigInt.zero,
               chainId: StarknetChainId.testNet.toBigInt()),
           equals(hexStringToBigInt(

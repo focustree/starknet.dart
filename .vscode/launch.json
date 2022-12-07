@@ -6,6 +6,12 @@
       "request": "launch",
       "type": "dart",
       "program": "test"
+    },
+    {
+      "name": "Example ERC20",
+      "request": "launch",
+      "type": "dart",
+      "program": "${workspaceFolder}/example/examples/erc20.dart",
     }
   ]
 }

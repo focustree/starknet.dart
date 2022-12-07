@@ -52,7 +52,7 @@ class ERC20 extends Contract {
   ///
   /// Returns transaction hash.
   Future<String> transfer(Felt recipient, Uint256 value) async {
-    final InvokeTransaction trx = await execute(
+    final InvokeTransactionResponse trx = await execute(
       "transfer",
       [recipient, value.low, value.high],
     );
@@ -71,7 +71,7 @@ class ERC20 extends Contract {
   ///
   /// Returns transaction hash.
   Future<String> transferFrom(Felt from, Felt to, Uint256 value) async {
-    final InvokeTransaction trx = await execute(
+    final InvokeTransactionResponse trx = await execute(
       "transferFrom",
       [from, to, value.low, value.high],
     );
@@ -89,7 +89,7 @@ class ERC20 extends Contract {
   ///
   /// Returns transaction hash.
   Future<String> approve(Felt spender, Uint256 amount) async {
-    final InvokeTransaction trx = await execute(
+    final InvokeTransactionResponse trx = await execute(
       "approve",
       [spender, amount.low, amount.high],
     );

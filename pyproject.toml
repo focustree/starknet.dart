@@ -8,6 +8,7 @@ authors = ["gabsn <gabin.contact@gmail.com>"]
 deploy = "scripts.python.commands.deploy:main"
 declare = "scripts.python.commands.declare:main"
 devnet = "scripts.python.commands.devnet:main"
+interact = "scripts.python.commands.interact:main"
 
 [tool.poetry.dependencies]
 python = ">=3.8,<3.10"
