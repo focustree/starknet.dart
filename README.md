@@ -40,10 +40,23 @@ poetry install
 poetry run devnet start
 ```
 
-3. Deploy erc20 to devnet
+3. Setup devnet by deploying contracts
 
 ```sh
-poetry run deploy erc20_upgradeable
+poetry run devnet setup
+```
+
+You can also deploy contracts one by one:
+
+```sh
+poetry run deploy balance
+```
+
+4. Interact with deployed contracts:
+
+```sh
+poetry run interact get_balance
+poetry run interact increase_balance 10
 ```
 
 ### Run Tests
