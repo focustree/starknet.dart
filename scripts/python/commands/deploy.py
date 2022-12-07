@@ -11,23 +11,51 @@ from starknet_py.cairo.felt import (
 
 from scripts.python.client import get_account_client
 from scripts.python.commands.declare import declare
-from scripts.python.config import get_config
+from scripts.python.config import COMPILED_CONTRACTS_PATH, MAX_FEE, SALT, get_config
 
 
-async def erc20_upgradeable(name=encode_shortstring("starknet.dart"),
-                            symbol=encode_shortstring("DART"),
-                            decimals=18,
-                            initial_supply=1000,
-                            recipient=None,
-                            proxy_admin=None,
-                            env="local"):
+async def deploy_balance(env="local", max_fee=MAX_FEE, salt=SALT):
+    print("Deploying balance contract...")
+    config = get_config(env)
+
+    balance_hash = await declare("balance", env=env, max_fee=max_fee)
+    balance_abi = json.loads(
+        Path(f"{COMPILED_CONTRACTS_PATH}/balance_abi.json").read_text())
+
+    deploy_call, address = Deployer().create_deployment_call(
+        salt=salt,
+        class_hash=balance_hash,
+        abi=balance_abi,
+        calldata=[]
+    )
+    print(f"Deploying to address: {hex(address)}")
+
+    account_client = get_account_client(config)
+
+    invoke_tx = await account_client.sign_invoke_transaction(calls=[deploy_call], max_fee=max_fee, version=1)
+    resp = await account_client.send_transaction(invoke_tx)
+
+    print(f"Waiting for tx: {hex(resp.transaction_hash)}")
+    await account_client.wait_for_tx(resp.transaction_hash)
+
+    print("Done.")
+
+
+async def deploy_erc20_upgradeable(name=encode_shortstring("starknet.dart"),
+                                   symbol=encode_shortstring("DART"),
+                                   decimals=18,
+                                   initial_supply=1000,
+                                   recipient=None,
+                                   proxy_admin=None,
+                                   max_fee=MAX_FEE,
+                                   env="local"):
+    print("Deploying erc20_upgradeable contract...")
     config = get_config(env)
 
     recipient = recipient or config.deployer_account_address
     proxy_admin = proxy_admin or config.deployer_account_address
-    print(recipient)
 
-    implem_hash = await declare("erc20_upgradeable", env)
+    implem_hash = await declare("erc20_upgradeable", env=env, max_fee=max_fee)
     selector = get_selector_from_name("initializer")
     calldata = [
         name,
@@ -37,13 +65,21 @@ async def erc20_upgradeable(name=encode_shortstring("starknet.dart"),
         recipient,
         proxy_admin,
     ]
-    await deploy_upgradeable(implem_hash=implem_hash, selector=selector, calldata=calldata, env=env)
+    await _deploy_upgradeable(implem_hash=implem_hash, selector=selector, calldata=calldata, env=env, max_fee=max_fee)
 
 
-async def deploy_upgradeable(implem_hash: str,
-                             selector=0,
-                             calldata=[],
-                             env="local"):
+def main():
+    fire.Fire({
+        "balance": deploy_balance,
+        "erc20_upgradeable": deploy_erc20_upgradeable,
+    })
+
+
+async def _deploy_upgradeable(implem_hash: str,
+                              selector=0,
+                              calldata=[],
+                              max_fee=MAX_FEE,
+                              env="local"):
     config = get_config(env)
 
     account_client = get_account_client(config)
@@ -51,10 +87,10 @@ async def deploy_upgradeable(implem_hash: str,
 
     proxy_hash = await declare("proxy", env)
     proxy_abi = json.loads(
-        Path(f"{config.compiled_contracts_path}/proxy_abi.json").read_text())
+        Path(f"{COMPILED_CONTRACTS_PATH}/proxy_abi.json").read_text())
 
     deploy_call, address = deployer.create_deployment_call(
-        # salt=config.salt,
+        salt=SALT,
         class_hash=proxy_hash,
         abi=proxy_abi,
         calldata={
@@ -65,14 +101,10 @@ async def deploy_upgradeable(implem_hash: str,
     )
     print(f"Deploying to address: {hex(address)}")
 
-    invoke_tx = await account_client.sign_invoke_transaction(calls=[deploy_call], max_fee=config.max_fee, version=1)
+    invoke_tx = await account_client.sign_invoke_transaction(calls=[deploy_call], max_fee=max_fee, version=1)
     resp = await account_client.send_transaction(invoke_tx)
 
     print(f"Waiting for tx: {hex(resp.transaction_hash)}")
     await account_client.wait_for_tx(resp.transaction_hash)
 
     print("Done.")
-
-
-def main():
-    fire.Fire()
