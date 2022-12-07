@@ -15,10 +15,12 @@ class AccountSetup {
 class TestSetup {
   final String erc20Address;
   final String walletAddress;
+  final Uri nodeUri;
 
   TestSetup({
     required this.erc20Address,
     required this.walletAddress,
+    required this.nodeUri,
   });
 }
 
@@ -41,67 +43,27 @@ final testnetSetup = TestSetup(
   erc20Address:
       "0x4e76f8708774c8162fb4da7abefb3cae94cc51cf3f9b40e0d44f24aabf8a521",
   walletAddress:
-      "0x7e00d496e324876bbc8531f2d9a82bf154d1a04a50218ee74cdd372f75a551a",
+      "0x04FF446995457B7Cd0E0A54De94426E27CB253F556fE3a2025304Ba4FD5D60D0",
+  nodeUri: infuraGoerliTestnetUri,
 );
 
-Future<bool> waitForAcceptance(
-  String transactionHash,
-  JsonRpcProvider provider,
-) async {
-  bool done = false;
-  bool succeed = false;
-  String status = 'PENDING';
-  final txHash = Felt.fromHexString(transactionHash);
-  while (done != true) {
-    final receipt = await provider.getTransactionReceipt(txHash);
-    //print(receipt);
-    receipt.when(
-      result: (result) {
-        result.map(
-          declareTxnReceipt: (DeclareTxnReceipt receipt) =>
-              status = receipt.status,
-          deployTxnReceipt: (DeployTxnReceipt receipt) =>
-              status = receipt.status,
-          deployAccountTxnReceipt: (DeployAccountTxnReceipt receipt) =>
-              status = receipt.status,
-          l1HandlerTxnReceipt: (L1HandlerTxnReceipt receipt) =>
-              status = receipt.status,
-          pendingDeployTxnReceipt: (PendingDeployTxnReceipt receipt) =>
-              status = 'PENDING',
-          pendingCommonReceiptProperties:
-              (PendingCommonReceiptProperties receipt) => status = 'PENDING',
-          invokeTxnReceipt: (InvokeTxnReceipt receipt) =>
-              status = receipt.status,
-        );
-      },
-      error: (error) {
-        print('An error occured: $error');
-        done = true;
-        return false;
-      },
-    );
-    if ('PENDING' == status) {
-      await Future<void>.delayed(const Duration(seconds: 2));
-    } else {
-      if ('ACCEPTED_ON_L2' == status) {
-        succeed = true;
-      }
-      break;
-    }
-  }
-
-  return succeed;
-}
-
+final devnetSetup = TestSetup(
+  erc20Address:
+      "0x4e76f8708774c8162fb4da7abefb3cae94cc51cf3f9b40e0d44f24aabf8a521",
+  walletAddress:
+      "0x7e00d496e324876bbc8531f2d9a82bf154d1a04a50218ee74cdd372f75a551a",
+  nodeUri: devnetUri,
+);
 void main() async {
-  final accountSetup = accountV0Testnet;
-  final networkSetup = testnetSetup;
+  final accountSetup = accountV1Testnet;
+  final networkSetup = devnetSetup;
   final privateKey = accountSetup.privateKey;
   final accountAddress = Felt.fromHexString(accountSetup.accountAddress);
   final erc20Address = Felt.fromHexString(networkSetup.erc20Address);
   final walletAddress = Felt.fromHexString(networkSetup.walletAddress);
+  final nodeUri = networkSetup.nodeUri;
 
-  final provider = JsonRpcProvider(nodeUri: devnetUri);
+  final provider = JsonRpcProvider(nodeUri: nodeUri);
 
   final signer = Signer(privateKey: privateKey);
 
@@ -133,7 +95,7 @@ void main() async {
   await account_balance(walletAddress);
   await account_balance(accountAddress);
 
-  final allowance = await erc20.allowance(accountAddress, walletAddress);
+  var allowance = await erc20.allowance(accountAddress, walletAddress);
   print('Allowance: $allowance');
 
   var trx = await erc20.transfer(
@@ -141,15 +103,24 @@ void main() async {
     Uint256(low: Felt.fromInt(2), high: Felt.fromInt(0)),
   );
   print('Transfer Transaction: $trx');
-  await waitForAcceptance(trx, provider);
+  var accepted = await waitForAcceptance(
+    transactionHash: trx,
+    provider: provider,
+  );
+  print(accepted ? '$trx accepted' : '$trx not accepted');
   await account_balance(walletAddress);
 
-  // wait for transaction ....
-  /*
+  final new_allowance = Felt(allowance.low.toBigInt() + BigInt.from(1));
   trx = await erc20.approve(
-    myWalletAddress,
-    Uint256(low: Felt.fromInt(2), high: Felt.fromInt(0)),
+    walletAddress,
+    Uint256(low: new_allowance, high: Felt.fromInt(0)),
   );
   print('Approve transaction: $trx');
-  */
+  accepted = await waitForAcceptance(
+    transactionHash: trx,
+    provider: provider,
+  );
+  print(accepted ? '$trx accepted' : '$trx not accepted');
+  allowance = await erc20.allowance(accountAddress, walletAddress);
+  print('Allowance: $allowance');
 }
