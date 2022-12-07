@@ -13,6 +13,11 @@ prettyPrintJson(Map<String, dynamic> json) {
 const _defaultInterval = Duration(seconds: 5);
 const _errorStates = ['REJECTED', 'NOT_RECEIVED'];
 
+/// Returns `true` when [transactionHash] status is in [states]
+///
+///
+/// The [provider] will be query with a period of [interval]
+/// Return `false` in case of error
 Future<bool> waitForState({
   required String transactionHash,
   required JsonRpcProvider provider,
@@ -70,6 +75,11 @@ Future<bool> waitForState({
   return succeed;
 }
 
+/// Returns `true` when [transactionHash] status is in `{PENDING, ACCEPTED_ON_L2, ACCEPTED_ON_L2}`
+///
+///
+/// The [provider] will be query with a period of [interval]
+/// Return `false` in case of error
 Future<bool> waitForTransaction({
   required String transactionHash,
   required JsonRpcProvider provider,
@@ -86,6 +96,13 @@ Future<bool> waitForTransaction({
   );
 }
 
+/// Returns `true` if [transactionHash] is accepted
+///
+/// A transaction is **accepted** if its state is
+/// `ACCEPTED_ON_L2` or `ACCEPTED_ON_L1`
+///
+/// The [provider] will be query with a period of [interval]
+/// Return `false` in case of error
 Future<bool> waitForAcceptance({
   required String transactionHash,
   required JsonRpcProvider provider,
