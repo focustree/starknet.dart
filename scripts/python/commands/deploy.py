@@ -19,6 +19,8 @@ async def deploy_balance(env="local", max_fee=MAX_FEE, salt=SALT):
     config = get_config(env)
 
     balance_hash = await declare("balance", env=env, max_fee=max_fee)
+    print(f"Class hash for balance: {balance_hash}")
+
     balance_abi = json.loads(
         Path(f"{COMPILED_CONTRACTS_PATH}/balance_abi.json").read_text())
 

@@ -1,3 +1,5 @@
+import os
+
 from starknet_py.net.models.chains import StarknetChainId
 
 COMPILED_CONTRACTS_PATH = "contracts/build"
@@ -26,9 +28,21 @@ class Config:
 
 local_config = Config(env="local")
 
+ACCOUNT_ADDRESS = int(os.environ['STARKNET_ACCOUNT_ADDRESS'], 0)
+ACCOUNT_PRIVATE_KEY = int(os.environ['STARKNET_ACCOUNT_PRIVATE_KEY'], 0)
+
+testnet_config = Config(
+    env="testnet",
+    gateway_base_url="https://alpha4.starknet.io",
+    deployer_account_address=ACCOUNT_ADDRESS,
+    deployer_account_private_key=ACCOUNT_PRIVATE_KEY,
+)
+
 
 def get_config(env: str):
     if env == "local":
         return local_config
+    if env == "testnet":
+        return testnet_config
     else:
         raise Exception(f"{env} not a valid env")
