@@ -12,6 +12,10 @@ async def get_balance(env="local"):
     result = await contract.functions['get_balance'].call()
     return result.balance
 
+async def get_answer(env="local"):
+    contract = _get_balance_contract(env)
+    result = (await contract.functions['get_answer'].call()).answer
+    return result
 
 async def increase_balance(amount=1, max_fee=MAX_FEE, env="local"):
     contract = _get_balance_contract(env)
@@ -21,17 +25,24 @@ async def increase_balance(amount=1, max_fee=MAX_FEE, env="local"):
     new_balance = await get_balance()
     return new_balance
 
+async def sum(a=1, b=2, env="local"):
+    contract = _get_balance_contract(env)
+    result = (await contract.functions['sum'].call(a, b)).sum
+    return result
+
 
 def main():
     fire.Fire({
         "get_balance": get_balance,
+        "get_answer": get_answer,
         "increase_balance": increase_balance,
+        "sum": sum,
     })
 
 
 def _get_balance_contract(
     env: str,
-    address="0x42e6cf892643cc529540748c9ecf03b7b25efe468fb9ef7d657414ebc7327a5",
+    address="0x713883739a929f57b5f4dd82cd38d25dbf76e3bdd54deb7319d339c5060a8cd",
     contract_name="balance"
 ):
     config = get_config(env)
