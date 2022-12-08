@@ -321,37 +321,7 @@ class JsonRpcReadProvider implements ReadProvider {
     return callRpcEndpoint(
       nodeUri: nodeUri,
       method: 'starknet_estimateFee',
-      params: {
-        "request": {
-          "max_fee": "0x12c72866efa9b",
-          "type": "INVOKE",
-          "version": "0x0",
-          "signature": [
-            "0x10e400d046147777c2ac5645024e1ee81c86d90b52d76ab8a8125e5f49612f9",
-            "0xadb92739205b4626fefb533b38d0071eb018e6ff096c98c17a6826b536817b"
-          ],
-          "contract_address":
-              "0x19fcae2482de8fb3afaf8d4b219449bec93a5928f02f58eef645cc071767f4",
-          "entry_point_selector":
-              "0x15d40a3d6ca2ac30f4031e42be28da9b056fef9bb7357ac5e85627ee876e5ad",
-          "calldata": [
-            "0x1",
-            "0x49d36570d4e46f48e99674bd3fcc84644ddd6b96f7c741b1562b82f9e004dc7",
-            "0x83afd3f4caedc6eebf44246fe54e38c95e3179a5ec9ea81740eca5b482d12e",
-            "0x0",
-            "0x3",
-            "0x3",
-            "0x4681402a7ab16c41f7e5d091f32fe9b78de096e0bd5962ce5bd7aaa4a441f64",
-            "0x1d41f6331e6800",
-            "0x0",
-            "0x1"
-          ]
-        },
-        "block_id": {
-          "block_hash":
-              "0x147c4b0f702079384e26d9d34a15e7758881e32b219fc68c076b09d0be13f8c"
-        }
-      },
+      params: request,
     ).then(EstimateFee.fromJson);
   }
 

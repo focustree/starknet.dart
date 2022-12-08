@@ -861,57 +861,96 @@ void main() {
       });
     });
 
-    // Tests expecting failure.
     group('estimateFee', () {
-      test('estimate the fee for a given StarkNet transaction', () async {
-        BlockId blockId = BlockId.blockHash(Felt.fromHexString(
-            '0x147c4b0f702079384e26d9d34a15e7758881e32b219fc68c076b09d0be13f8c'));
+      BlockId parentBlockId = BlockId.blockHash(Felt.fromHexString(
+          '0x03e509987d3624a22929111cd407a9b60b069c82650873d3a8e688a1071d936a'));
+      BroadcastedInvokeTxnV1 broadcastedInvokeTxnV1 = BroadcastedInvokeTxnV1(
+        maxFee: Felt.fromHexString('0xe3a12d8'),
+        version: "0x1",
+        signature: [
+          Felt.fromHexString(
+              '0x79e8097b96b1e41ead06b1562aa2c0c6664d118aa13d13e2421ab3fbd0d6f1e'),
+          Felt.fromHexString(
+              '0x16aca0b17bcb270bf22a42a6c39f64a51793d88e0e8892a86b338c76de12af'),
+        ],
+        nonce: Felt.fromHexString('0xc'),
+        type: 'INVOKE',
+        senderAddress: Felt.fromHexString(
+            '0x01114f6544e4784bfab52097b129804292e32e97af051fbf9c9e399567d3d01b'),
+        calldata: [
+          Felt.fromHexString('0x1'),
+          Felt.fromHexString(
+              '0xca87395d8f4fc2a87f310410b721c4df91a21aa8aa7a46831d41049a14405f'),
+          Felt.fromHexString(
+              '0x362398bec32bc0ebb411203221a35a0301193a96f317ebe5e40be9f60d15320'),
+          Felt.fromHexString('0x0'),
+          Felt.fromHexString('0x1'),
+          Felt.fromHexString('0x1'),
+          Felt.fromHexString('0x3'),
+        ],
+      );
 
-        BroadcastedInvokeTxnV0 broadcastedInvokeTxnV0 = BroadcastedInvokeTxnV0(
-          maxFee: Felt.fromHexString('0x12c72866efa9b'),
-          version: "0x0",
-          signature: [
-            Felt.fromHexString(
-                '0x10e400d046147777c2ac5645024e1ee81c86d90b52d76ab8a8125e5f49612f9'),
-            Felt.fromHexString(
-                '0xadb92739205b4626fefb533b38d0071eb018e6ff096c98c17a6826b536817b')
-          ],
-          type: 'INVOKE',
-          contractAddress: Felt.fromHexString(
-              '0x019fcae2482de8fb3afaf8d4b219449bec93a5928f02f58eef645cc071767f4'),
-          entryPointSelector: Felt.fromHexString(
-              '0x15d40a3d6ca2ac30f4031e42be28da9b056fef9bb7357ac5e85627ee876e5ad'),
-          calldata: [
-            Felt.fromHexString('0x1'),
-            Felt.fromHexString(
-                '0x49d36570d4e46f48e99674bd3fcc84644ddd6b96f7c741b1562b82f9e004dc7'),
-            Felt.fromHexString(
-                '0x83afd3f4caedc6eebf44246fe54e38c95e3179a5ec9ea81740eca5b482d12e'),
-            Felt.fromHexString('0x0'),
-            Felt.fromHexString('0x3'),
-            Felt.fromHexString('0x3'),
-            Felt.fromHexString(
-                '0x4681402a7ab16c41f7e5d091f32fe9b78de096e0bd5962ce5bd7aaa4a441f64'),
-            Felt.fromHexString('0x1d41f6331e6800'),
-            Felt.fromHexString('0x0'),
-            Felt.fromHexString('0x1'),
-          ],
-        );
-
+      test('estimate the fee for a given V1 Invoke StarkNet transaction',
+          () async {
         EstimateFeeRequest estimateFeeRequest = EstimateFeeRequest(
-          request: broadcastedInvokeTxnV0,
-          blockId: blockId,
+          request: broadcastedInvokeTxnV1,
+          blockId: parentBlockId,
         );
 
         final response = await provider.estimateFee(estimateFeeRequest);
 
-        response.when(error: (error) {
-          print(error);
-          expect(error.code, equals(24));
-          expect(error.message, "Invalid block id");
-        }, result: (result) {
-          fail('Expected to return an Internal error');
-        });
+        response.when(
+          error: (error) {
+            fail('Should not fail.');
+          },
+          result: (result) {
+            expect(result.gasConsumed, "0xf68");
+            expect(result.gasPrice, "0x4ecd");
+            expect(result.overallFee, "0x4be0648");
+          },
+        );
+      });
+
+      test('returns CONTRACT_NOT_FOUND with invalid sender address', () async {
+        BroadcastedInvokeTxnV1 invalidContractTxn = broadcastedInvokeTxnV1.copyWith(
+            senderAddress: Felt.fromHexString(
+                '0x079D9923B256aD3E6f77bFccb6449C52bb6971F352318ab19fA8802A7b7FbdFD')); // contract address from main net.
+        EstimateFeeRequest estimateFeeRequest = EstimateFeeRequest(
+          request: invalidContractTxn,
+          blockId: parentBlockId,
+        );
+
+        final response = await provider.estimateFee(estimateFeeRequest);
+
+        response.when(
+          error: (error) {
+            expect(error.code, 20);
+            expect(error.message, 'Contract not found');
+          },
+          result: (result) {
+            fail('Should fail.');
+          },
+        );
+      });
+
+      test('returns BLOCK_NOT_FOUND with invalid block id', () async {
+        // contract address from main net.
+        EstimateFeeRequest estimateFeeRequest = EstimateFeeRequest(
+          request: broadcastedInvokeTxnV1,
+          blockId: invalidBlockIdFromBlockHash,
+        );
+
+        final response = await provider.estimateFee(estimateFeeRequest);
+
+        response.when(
+          error: (error) {
+            expect(error.code, 24);
+            expect(error.message, 'Block not found');
+          },
+          result: (result) {
+            fail('Should fail.');
+          },
+        );
       });
     });
   });
