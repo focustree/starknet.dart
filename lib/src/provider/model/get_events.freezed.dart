@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'get_events.dart';
 
@@ -37,8 +37,8 @@ mixin _$GetEvents {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(GetEventsResponse result)? result,
-    TResult Function(JsonRpcApiError error)? error,
+    TResult? Function(GetEventsResponse result)? result,
+    TResult? Function(JsonRpcApiError error)? error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -56,8 +56,8 @@ mixin _$GetEvents {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(GetEventsResult value)? result,
-    TResult Function(GetEventsError value)? error,
+    TResult? Function(GetEventsResult value)? result,
+    TResult? Function(GetEventsError value)? error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -73,16 +73,18 @@ mixin _$GetEvents {
 /// @nodoc
 abstract class $GetEventsCopyWith<$Res> {
   factory $GetEventsCopyWith(GetEvents value, $Res Function(GetEvents) then) =
-      _$GetEventsCopyWithImpl<$Res>;
+      _$GetEventsCopyWithImpl<$Res, GetEvents>;
 }
 
 /// @nodoc
-class _$GetEventsCopyWithImpl<$Res> implements $GetEventsCopyWith<$Res> {
+class _$GetEventsCopyWithImpl<$Res, $Val extends GetEvents>
+    implements $GetEventsCopyWith<$Res> {
   _$GetEventsCopyWithImpl(this._value, this._then);
 
-  final GetEvents _value;
   // ignore: unused_field
-  final $Res Function(GetEvents) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 }
 
 /// @nodoc
@@ -90,6 +92,7 @@ abstract class _$$GetEventsResultCopyWith<$Res> {
   factory _$$GetEventsResultCopyWith(
           _$GetEventsResult value, $Res Function(_$GetEventsResult) then) =
       __$$GetEventsResultCopyWithImpl<$Res>;
+  @useResult
   $Res call({GetEventsResponse result});
 
   $GetEventsResponseCopyWith<$Res> get result;
@@ -97,21 +100,19 @@ abstract class _$$GetEventsResultCopyWith<$Res> {
 
 /// @nodoc
 class __$$GetEventsResultCopyWithImpl<$Res>
-    extends _$GetEventsCopyWithImpl<$Res>
+    extends _$GetEventsCopyWithImpl<$Res, _$GetEventsResult>
     implements _$$GetEventsResultCopyWith<$Res> {
   __$$GetEventsResultCopyWithImpl(
       _$GetEventsResult _value, $Res Function(_$GetEventsResult) _then)
-      : super(_value, (v) => _then(v as _$GetEventsResult));
+      : super(_value, _then);
 
-  @override
-  _$GetEventsResult get _value => super._value as _$GetEventsResult;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? result = freezed,
+    Object? result = null,
   }) {
     return _then(_$GetEventsResult(
-      result: result == freezed
+      result: null == result
           ? _value.result
           : result // ignore: cast_nullable_to_non_nullable
               as GetEventsResponse,
@@ -119,6 +120,7 @@ class __$$GetEventsResultCopyWithImpl<$Res>
   }
 
   @override
+  @pragma('vm:prefer-inline')
   $GetEventsResponseCopyWith<$Res> get result {
     return $GetEventsResponseCopyWith<$Res>(_value.result, (value) {
       return _then(_value.copyWith(result: value));
@@ -151,16 +153,16 @@ class _$GetEventsResult implements GetEventsResult {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$GetEventsResult &&
-            const DeepCollectionEquality().equals(other.result, result));
+            (identical(other.result, result) || other.result == result));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(result));
+  int get hashCode => Object.hash(runtimeType, result);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$GetEventsResultCopyWith<_$GetEventsResult> get copyWith =>
       __$$GetEventsResultCopyWithImpl<_$GetEventsResult>(this, _$identity);
 
@@ -176,8 +178,8 @@ class _$GetEventsResult implements GetEventsResult {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(GetEventsResponse result)? result,
-    TResult Function(JsonRpcApiError error)? error,
+    TResult? Function(GetEventsResponse result)? result,
+    TResult? Function(JsonRpcApiError error)? error,
   }) {
     return result?.call(this.result);
   }
@@ -207,8 +209,8 @@ class _$GetEventsResult implements GetEventsResult {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(GetEventsResult value)? result,
-    TResult Function(GetEventsError value)? error,
+    TResult? Function(GetEventsResult value)? result,
+    TResult? Function(GetEventsError value)? error,
   }) {
     return result?.call(this);
   }
@@ -252,27 +254,27 @@ abstract class _$$GetEventsErrorCopyWith<$Res> {
   factory _$$GetEventsErrorCopyWith(
           _$GetEventsError value, $Res Function(_$GetEventsError) then) =
       __$$GetEventsErrorCopyWithImpl<$Res>;
+  @useResult
   $Res call({JsonRpcApiError error});
 
   $JsonRpcApiErrorCopyWith<$Res> get error;
 }
 
 /// @nodoc
-class __$$GetEventsErrorCopyWithImpl<$Res> extends _$GetEventsCopyWithImpl<$Res>
+class __$$GetEventsErrorCopyWithImpl<$Res>
+    extends _$GetEventsCopyWithImpl<$Res, _$GetEventsError>
     implements _$$GetEventsErrorCopyWith<$Res> {
   __$$GetEventsErrorCopyWithImpl(
       _$GetEventsError _value, $Res Function(_$GetEventsError) _then)
-      : super(_value, (v) => _then(v as _$GetEventsError));
+      : super(_value, _then);
 
-  @override
-  _$GetEventsError get _value => super._value as _$GetEventsError;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? error = freezed,
+    Object? error = null,
   }) {
     return _then(_$GetEventsError(
-      error: error == freezed
+      error: null == error
           ? _value.error
           : error // ignore: cast_nullable_to_non_nullable
               as JsonRpcApiError,
@@ -280,6 +282,7 @@ class __$$GetEventsErrorCopyWithImpl<$Res> extends _$GetEventsCopyWithImpl<$Res>
   }
 
   @override
+  @pragma('vm:prefer-inline')
   $JsonRpcApiErrorCopyWith<$Res> get error {
     return $JsonRpcApiErrorCopyWith<$Res>(_value.error, (value) {
       return _then(_value.copyWith(error: value));
@@ -312,16 +315,16 @@ class _$GetEventsError implements GetEventsError {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$GetEventsError &&
-            const DeepCollectionEquality().equals(other.error, error));
+            (identical(other.error, error) || other.error == error));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(error));
+  int get hashCode => Object.hash(runtimeType, error);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$GetEventsErrorCopyWith<_$GetEventsError> get copyWith =>
       __$$GetEventsErrorCopyWithImpl<_$GetEventsError>(this, _$identity);
 
@@ -337,8 +340,8 @@ class _$GetEventsError implements GetEventsError {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(GetEventsResponse result)? result,
-    TResult Function(JsonRpcApiError error)? error,
+    TResult? Function(GetEventsResponse result)? result,
+    TResult? Function(JsonRpcApiError error)? error,
   }) {
     return error?.call(this.error);
   }
@@ -368,8 +371,8 @@ class _$GetEventsError implements GetEventsError {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(GetEventsResult value)? result,
-    TResult Function(GetEventsError value)? error,
+    TResult? Function(GetEventsResult value)? result,
+    TResult? Function(GetEventsError value)? error,
   }) {
     return error?.call(this);
   }
@@ -434,7 +437,8 @@ mixin _$GetEventsRequest {
 abstract class $GetEventsRequestCopyWith<$Res> {
   factory $GetEventsRequestCopyWith(
           GetEventsRequest value, $Res Function(GetEventsRequest) then) =
-      _$GetEventsRequestCopyWithImpl<$Res>;
+      _$GetEventsRequestCopyWithImpl<$Res, GetEventsRequest>;
+  @useResult
   $Res call(
       {BlockId? fromBlock,
       BlockId? toBlock,
@@ -448,70 +452,74 @@ abstract class $GetEventsRequestCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$GetEventsRequestCopyWithImpl<$Res>
+class _$GetEventsRequestCopyWithImpl<$Res, $Val extends GetEventsRequest>
     implements $GetEventsRequestCopyWith<$Res> {
   _$GetEventsRequestCopyWithImpl(this._value, this._then);
 
-  final GetEventsRequest _value;
   // ignore: unused_field
-  final $Res Function(GetEventsRequest) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? fromBlock = freezed,
     Object? toBlock = freezed,
     Object? address = freezed,
     Object? keys = freezed,
-    Object? chunkSize = freezed,
+    Object? chunkSize = null,
     Object? continuationToken = freezed,
   }) {
     return _then(_value.copyWith(
-      fromBlock: fromBlock == freezed
+      fromBlock: freezed == fromBlock
           ? _value.fromBlock
           : fromBlock // ignore: cast_nullable_to_non_nullable
               as BlockId?,
-      toBlock: toBlock == freezed
+      toBlock: freezed == toBlock
           ? _value.toBlock
           : toBlock // ignore: cast_nullable_to_non_nullable
               as BlockId?,
-      address: address == freezed
+      address: freezed == address
           ? _value.address
           : address // ignore: cast_nullable_to_non_nullable
               as Felt?,
-      keys: keys == freezed
+      keys: freezed == keys
           ? _value.keys
           : keys // ignore: cast_nullable_to_non_nullable
               as List<Felt>?,
-      chunkSize: chunkSize == freezed
+      chunkSize: null == chunkSize
           ? _value.chunkSize
           : chunkSize // ignore: cast_nullable_to_non_nullable
               as int,
-      continuationToken: continuationToken == freezed
+      continuationToken: freezed == continuationToken
           ? _value.continuationToken
           : continuationToken // ignore: cast_nullable_to_non_nullable
               as String?,
-    ));
+    ) as $Val);
   }
 
   @override
+  @pragma('vm:prefer-inline')
   $BlockIdCopyWith<$Res>? get fromBlock {
     if (_value.fromBlock == null) {
       return null;
     }
 
     return $BlockIdCopyWith<$Res>(_value.fromBlock!, (value) {
-      return _then(_value.copyWith(fromBlock: value));
+      return _then(_value.copyWith(fromBlock: value) as $Val);
     });
   }
 
   @override
+  @pragma('vm:prefer-inline')
   $BlockIdCopyWith<$Res>? get toBlock {
     if (_value.toBlock == null) {
       return null;
     }
 
     return $BlockIdCopyWith<$Res>(_value.toBlock!, (value) {
-      return _then(_value.copyWith(toBlock: value));
+      return _then(_value.copyWith(toBlock: value) as $Val);
     });
   }
 }
@@ -523,6 +531,7 @@ abstract class _$$_GetEventsRequestCopyWith<$Res>
           _$_GetEventsRequest value, $Res Function(_$_GetEventsRequest) then) =
       __$$_GetEventsRequestCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {BlockId? fromBlock,
       BlockId? toBlock,
@@ -539,46 +548,44 @@ abstract class _$$_GetEventsRequestCopyWith<$Res>
 
 /// @nodoc
 class __$$_GetEventsRequestCopyWithImpl<$Res>
-    extends _$GetEventsRequestCopyWithImpl<$Res>
+    extends _$GetEventsRequestCopyWithImpl<$Res, _$_GetEventsRequest>
     implements _$$_GetEventsRequestCopyWith<$Res> {
   __$$_GetEventsRequestCopyWithImpl(
       _$_GetEventsRequest _value, $Res Function(_$_GetEventsRequest) _then)
-      : super(_value, (v) => _then(v as _$_GetEventsRequest));
+      : super(_value, _then);
 
-  @override
-  _$_GetEventsRequest get _value => super._value as _$_GetEventsRequest;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? fromBlock = freezed,
     Object? toBlock = freezed,
     Object? address = freezed,
     Object? keys = freezed,
-    Object? chunkSize = freezed,
+    Object? chunkSize = null,
     Object? continuationToken = freezed,
   }) {
     return _then(_$_GetEventsRequest(
-      fromBlock: fromBlock == freezed
+      fromBlock: freezed == fromBlock
           ? _value.fromBlock
           : fromBlock // ignore: cast_nullable_to_non_nullable
               as BlockId?,
-      toBlock: toBlock == freezed
+      toBlock: freezed == toBlock
           ? _value.toBlock
           : toBlock // ignore: cast_nullable_to_non_nullable
               as BlockId?,
-      address: address == freezed
+      address: freezed == address
           ? _value.address
           : address // ignore: cast_nullable_to_non_nullable
               as Felt?,
-      keys: keys == freezed
+      keys: freezed == keys
           ? _value._keys
           : keys // ignore: cast_nullable_to_non_nullable
               as List<Felt>?,
-      chunkSize: chunkSize == freezed
+      chunkSize: null == chunkSize
           ? _value.chunkSize
           : chunkSize // ignore: cast_nullable_to_non_nullable
               as int,
-      continuationToken: continuationToken == freezed
+      continuationToken: freezed == continuationToken
           ? _value.continuationToken
           : continuationToken // ignore: cast_nullable_to_non_nullable
               as String?,
@@ -614,6 +621,7 @@ class _$_GetEventsRequest implements _GetEventsRequest {
   List<Felt>? get keys {
     final value = _keys;
     if (value == null) return null;
+    if (_keys is EqualUnmodifiableListView) return _keys;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(value);
   }
@@ -635,28 +643,25 @@ class _$_GetEventsRequest implements _GetEventsRequest {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_GetEventsRequest &&
-            const DeepCollectionEquality().equals(other.fromBlock, fromBlock) &&
-            const DeepCollectionEquality().equals(other.toBlock, toBlock) &&
-            const DeepCollectionEquality().equals(other.address, address) &&
+            (identical(other.fromBlock, fromBlock) ||
+                other.fromBlock == fromBlock) &&
+            (identical(other.toBlock, toBlock) || other.toBlock == toBlock) &&
+            (identical(other.address, address) || other.address == address) &&
             const DeepCollectionEquality().equals(other._keys, _keys) &&
-            const DeepCollectionEquality().equals(other.chunkSize, chunkSize) &&
-            const DeepCollectionEquality()
-                .equals(other.continuationToken, continuationToken));
+            (identical(other.chunkSize, chunkSize) ||
+                other.chunkSize == chunkSize) &&
+            (identical(other.continuationToken, continuationToken) ||
+                other.continuationToken == continuationToken));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(fromBlock),
-      const DeepCollectionEquality().hash(toBlock),
-      const DeepCollectionEquality().hash(address),
-      const DeepCollectionEquality().hash(_keys),
-      const DeepCollectionEquality().hash(chunkSize),
-      const DeepCollectionEquality().hash(continuationToken));
+  int get hashCode => Object.hash(runtimeType, fromBlock, toBlock, address,
+      const DeepCollectionEquality().hash(_keys), chunkSize, continuationToken);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_GetEventsRequestCopyWith<_$_GetEventsRequest> get copyWith =>
       __$$_GetEventsRequestCopyWithImpl<_$_GetEventsRequest>(this, _$identity);
 
@@ -718,34 +723,37 @@ mixin _$GetEventsResponse {
 abstract class $GetEventsResponseCopyWith<$Res> {
   factory $GetEventsResponseCopyWith(
           GetEventsResponse value, $Res Function(GetEventsResponse) then) =
-      _$GetEventsResponseCopyWithImpl<$Res>;
+      _$GetEventsResponseCopyWithImpl<$Res, GetEventsResponse>;
+  @useResult
   $Res call({List<EmittedEvent> events, String? continuation_token});
 }
 
 /// @nodoc
-class _$GetEventsResponseCopyWithImpl<$Res>
+class _$GetEventsResponseCopyWithImpl<$Res, $Val extends GetEventsResponse>
     implements $GetEventsResponseCopyWith<$Res> {
   _$GetEventsResponseCopyWithImpl(this._value, this._then);
 
-  final GetEventsResponse _value;
   // ignore: unused_field
-  final $Res Function(GetEventsResponse) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? events = freezed,
+    Object? events = null,
     Object? continuation_token = freezed,
   }) {
     return _then(_value.copyWith(
-      events: events == freezed
+      events: null == events
           ? _value.events
           : events // ignore: cast_nullable_to_non_nullable
               as List<EmittedEvent>,
-      continuation_token: continuation_token == freezed
+      continuation_token: freezed == continuation_token
           ? _value.continuation_token
           : continuation_token // ignore: cast_nullable_to_non_nullable
               as String?,
-    ));
+    ) as $Val);
   }
 }
 
@@ -756,31 +764,30 @@ abstract class _$$_GetEventsResponseCopyWith<$Res>
           $Res Function(_$_GetEventsResponse) then) =
       __$$_GetEventsResponseCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call({List<EmittedEvent> events, String? continuation_token});
 }
 
 /// @nodoc
 class __$$_GetEventsResponseCopyWithImpl<$Res>
-    extends _$GetEventsResponseCopyWithImpl<$Res>
+    extends _$GetEventsResponseCopyWithImpl<$Res, _$_GetEventsResponse>
     implements _$$_GetEventsResponseCopyWith<$Res> {
   __$$_GetEventsResponseCopyWithImpl(
       _$_GetEventsResponse _value, $Res Function(_$_GetEventsResponse) _then)
-      : super(_value, (v) => _then(v as _$_GetEventsResponse));
+      : super(_value, _then);
 
-  @override
-  _$_GetEventsResponse get _value => super._value as _$_GetEventsResponse;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? events = freezed,
+    Object? events = null,
     Object? continuation_token = freezed,
   }) {
     return _then(_$_GetEventsResponse(
-      events: events == freezed
+      events: null == events
           ? _value._events
           : events // ignore: cast_nullable_to_non_nullable
               as List<EmittedEvent>,
-      continuation_token: continuation_token == freezed
+      continuation_token: freezed == continuation_token
           ? _value.continuation_token
           : continuation_token // ignore: cast_nullable_to_non_nullable
               as String?,
@@ -802,6 +809,7 @@ class _$_GetEventsResponse implements _GetEventsResponse {
   final List<EmittedEvent> _events;
   @override
   List<EmittedEvent> get events {
+    if (_events is EqualUnmodifiableListView) return _events;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_events);
   }
@@ -820,19 +828,18 @@ class _$_GetEventsResponse implements _GetEventsResponse {
         (other.runtimeType == runtimeType &&
             other is _$_GetEventsResponse &&
             const DeepCollectionEquality().equals(other._events, _events) &&
-            const DeepCollectionEquality()
-                .equals(other.continuation_token, continuation_token));
+            (identical(other.continuation_token, continuation_token) ||
+                other.continuation_token == continuation_token));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(_events),
-      const DeepCollectionEquality().hash(continuation_token));
+  int get hashCode => Object.hash(runtimeType,
+      const DeepCollectionEquality().hash(_events), continuation_token);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_GetEventsResponseCopyWith<_$_GetEventsResponse> get copyWith =>
       __$$_GetEventsResponseCopyWithImpl<_$_GetEventsResponse>(
           this, _$identity);
@@ -886,7 +893,8 @@ mixin _$EmittedEvent {
 abstract class $EmittedEventCopyWith<$Res> {
   factory $EmittedEventCopyWith(
           EmittedEvent value, $Res Function(EmittedEvent) then) =
-      _$EmittedEventCopyWithImpl<$Res>;
+      _$EmittedEventCopyWithImpl<$Res, EmittedEvent>;
+  @useResult
   $Res call(
       {Felt? fromAddress,
       List<Felt>? keys,
@@ -897,13 +905,16 @@ abstract class $EmittedEventCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$EmittedEventCopyWithImpl<$Res> implements $EmittedEventCopyWith<$Res> {
+class _$EmittedEventCopyWithImpl<$Res, $Val extends EmittedEvent>
+    implements $EmittedEventCopyWith<$Res> {
   _$EmittedEventCopyWithImpl(this._value, this._then);
 
-  final EmittedEvent _value;
   // ignore: unused_field
-  final $Res Function(EmittedEvent) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? fromAddress = freezed,
@@ -914,31 +925,31 @@ class _$EmittedEventCopyWithImpl<$Res> implements $EmittedEventCopyWith<$Res> {
     Object? blockNumber = freezed,
   }) {
     return _then(_value.copyWith(
-      fromAddress: fromAddress == freezed
+      fromAddress: freezed == fromAddress
           ? _value.fromAddress
           : fromAddress // ignore: cast_nullable_to_non_nullable
               as Felt?,
-      keys: keys == freezed
+      keys: freezed == keys
           ? _value.keys
           : keys // ignore: cast_nullable_to_non_nullable
               as List<Felt>?,
-      data: data == freezed
+      data: freezed == data
           ? _value.data
           : data // ignore: cast_nullable_to_non_nullable
               as List<Felt>?,
-      transactionHash: transactionHash == freezed
+      transactionHash: freezed == transactionHash
           ? _value.transactionHash
           : transactionHash // ignore: cast_nullable_to_non_nullable
               as Felt?,
-      blockHash: blockHash == freezed
+      blockHash: freezed == blockHash
           ? _value.blockHash
           : blockHash // ignore: cast_nullable_to_non_nullable
               as Felt?,
-      blockNumber: blockNumber == freezed
+      blockNumber: freezed == blockNumber
           ? _value.blockNumber
           : blockNumber // ignore: cast_nullable_to_non_nullable
               as int?,
-    ));
+    ) as $Val);
   }
 }
 
@@ -949,6 +960,7 @@ abstract class _$$_EmittedEventCopyWith<$Res>
           _$_EmittedEvent value, $Res Function(_$_EmittedEvent) then) =
       __$$_EmittedEventCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {Felt? fromAddress,
       List<Felt>? keys,
@@ -960,15 +972,13 @@ abstract class _$$_EmittedEventCopyWith<$Res>
 
 /// @nodoc
 class __$$_EmittedEventCopyWithImpl<$Res>
-    extends _$EmittedEventCopyWithImpl<$Res>
+    extends _$EmittedEventCopyWithImpl<$Res, _$_EmittedEvent>
     implements _$$_EmittedEventCopyWith<$Res> {
   __$$_EmittedEventCopyWithImpl(
       _$_EmittedEvent _value, $Res Function(_$_EmittedEvent) _then)
-      : super(_value, (v) => _then(v as _$_EmittedEvent));
+      : super(_value, _then);
 
-  @override
-  _$_EmittedEvent get _value => super._value as _$_EmittedEvent;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? fromAddress = freezed,
@@ -979,27 +989,27 @@ class __$$_EmittedEventCopyWithImpl<$Res>
     Object? blockNumber = freezed,
   }) {
     return _then(_$_EmittedEvent(
-      fromAddress: fromAddress == freezed
+      fromAddress: freezed == fromAddress
           ? _value.fromAddress
           : fromAddress // ignore: cast_nullable_to_non_nullable
               as Felt?,
-      keys: keys == freezed
+      keys: freezed == keys
           ? _value._keys
           : keys // ignore: cast_nullable_to_non_nullable
               as List<Felt>?,
-      data: data == freezed
+      data: freezed == data
           ? _value._data
           : data // ignore: cast_nullable_to_non_nullable
               as List<Felt>?,
-      transactionHash: transactionHash == freezed
+      transactionHash: freezed == transactionHash
           ? _value.transactionHash
           : transactionHash // ignore: cast_nullable_to_non_nullable
               as Felt?,
-      blockHash: blockHash == freezed
+      blockHash: freezed == blockHash
           ? _value.blockHash
           : blockHash // ignore: cast_nullable_to_non_nullable
               as Felt?,
-      blockNumber: blockNumber == freezed
+      blockNumber: freezed == blockNumber
           ? _value.blockNumber
           : blockNumber // ignore: cast_nullable_to_non_nullable
               as int?,
@@ -1031,6 +1041,7 @@ class _$_EmittedEvent implements _EmittedEvent {
   List<Felt>? get keys {
     final value = _keys;
     if (value == null) return null;
+    if (_keys is EqualUnmodifiableListView) return _keys;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(value);
   }
@@ -1040,6 +1051,7 @@ class _$_EmittedEvent implements _EmittedEvent {
   List<Felt>? get data {
     final value = _data;
     if (value == null) return null;
+    if (_data is EqualUnmodifiableListView) return _data;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(value);
   }
@@ -1061,30 +1073,32 @@ class _$_EmittedEvent implements _EmittedEvent {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_EmittedEvent &&
-            const DeepCollectionEquality()
-                .equals(other.fromAddress, fromAddress) &&
+            (identical(other.fromAddress, fromAddress) ||
+                other.fromAddress == fromAddress) &&
             const DeepCollectionEquality().equals(other._keys, _keys) &&
             const DeepCollectionEquality().equals(other._data, _data) &&
-            const DeepCollectionEquality()
-                .equals(other.transactionHash, transactionHash) &&
-            const DeepCollectionEquality().equals(other.blockHash, blockHash) &&
-            const DeepCollectionEquality()
-                .equals(other.blockNumber, blockNumber));
+            (identical(other.transactionHash, transactionHash) ||
+                other.transactionHash == transactionHash) &&
+            (identical(other.blockHash, blockHash) ||
+                other.blockHash == blockHash) &&
+            (identical(other.blockNumber, blockNumber) ||
+                other.blockNumber == blockNumber));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      const DeepCollectionEquality().hash(fromAddress),
+      fromAddress,
       const DeepCollectionEquality().hash(_keys),
       const DeepCollectionEquality().hash(_data),
-      const DeepCollectionEquality().hash(transactionHash),
-      const DeepCollectionEquality().hash(blockHash),
-      const DeepCollectionEquality().hash(blockNumber));
+      transactionHash,
+      blockHash,
+      blockNumber);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_EmittedEventCopyWith<_$_EmittedEvent> get copyWith =>
       __$$_EmittedEventCopyWithImpl<_$_EmittedEvent>(this, _$identity);
 

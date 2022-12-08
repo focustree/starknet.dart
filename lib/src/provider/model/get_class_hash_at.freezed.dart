@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'get_class_hash_at.dart';
 
@@ -37,8 +37,8 @@ mixin _$GetClassHashAt {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(Felt result)? result,
-    TResult Function(JsonRpcApiError error)? error,
+    TResult? Function(Felt result)? result,
+    TResult? Function(JsonRpcApiError error)? error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -56,8 +56,8 @@ mixin _$GetClassHashAt {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(GetClassHashAtResult value)? result,
-    TResult Function(GetClassHashAtError value)? error,
+    TResult? Function(GetClassHashAtResult value)? result,
+    TResult? Function(GetClassHashAtError value)? error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -74,17 +74,18 @@ mixin _$GetClassHashAt {
 abstract class $GetClassHashAtCopyWith<$Res> {
   factory $GetClassHashAtCopyWith(
           GetClassHashAt value, $Res Function(GetClassHashAt) then) =
-      _$GetClassHashAtCopyWithImpl<$Res>;
+      _$GetClassHashAtCopyWithImpl<$Res, GetClassHashAt>;
 }
 
 /// @nodoc
-class _$GetClassHashAtCopyWithImpl<$Res>
+class _$GetClassHashAtCopyWithImpl<$Res, $Val extends GetClassHashAt>
     implements $GetClassHashAtCopyWith<$Res> {
   _$GetClassHashAtCopyWithImpl(this._value, this._then);
 
-  final GetClassHashAt _value;
   // ignore: unused_field
-  final $Res Function(GetClassHashAt) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 }
 
 /// @nodoc
@@ -92,26 +93,25 @@ abstract class _$$GetClassHashAtResultCopyWith<$Res> {
   factory _$$GetClassHashAtResultCopyWith(_$GetClassHashAtResult value,
           $Res Function(_$GetClassHashAtResult) then) =
       __$$GetClassHashAtResultCopyWithImpl<$Res>;
+  @useResult
   $Res call({Felt result});
 }
 
 /// @nodoc
 class __$$GetClassHashAtResultCopyWithImpl<$Res>
-    extends _$GetClassHashAtCopyWithImpl<$Res>
+    extends _$GetClassHashAtCopyWithImpl<$Res, _$GetClassHashAtResult>
     implements _$$GetClassHashAtResultCopyWith<$Res> {
   __$$GetClassHashAtResultCopyWithImpl(_$GetClassHashAtResult _value,
       $Res Function(_$GetClassHashAtResult) _then)
-      : super(_value, (v) => _then(v as _$GetClassHashAtResult));
+      : super(_value, _then);
 
-  @override
-  _$GetClassHashAtResult get _value => super._value as _$GetClassHashAtResult;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? result = freezed,
+    Object? result = null,
   }) {
     return _then(_$GetClassHashAtResult(
-      result: result == freezed
+      result: null == result
           ? _value.result
           : result // ignore: cast_nullable_to_non_nullable
               as Felt,
@@ -144,16 +144,16 @@ class _$GetClassHashAtResult implements GetClassHashAtResult {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$GetClassHashAtResult &&
-            const DeepCollectionEquality().equals(other.result, result));
+            (identical(other.result, result) || other.result == result));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(result));
+  int get hashCode => Object.hash(runtimeType, result);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$GetClassHashAtResultCopyWith<_$GetClassHashAtResult> get copyWith =>
       __$$GetClassHashAtResultCopyWithImpl<_$GetClassHashAtResult>(
           this, _$identity);
@@ -170,8 +170,8 @@ class _$GetClassHashAtResult implements GetClassHashAtResult {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(Felt result)? result,
-    TResult Function(JsonRpcApiError error)? error,
+    TResult? Function(Felt result)? result,
+    TResult? Function(JsonRpcApiError error)? error,
   }) {
     return result?.call(this.result);
   }
@@ -201,8 +201,8 @@ class _$GetClassHashAtResult implements GetClassHashAtResult {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(GetClassHashAtResult value)? result,
-    TResult Function(GetClassHashAtError value)? error,
+    TResult? Function(GetClassHashAtResult value)? result,
+    TResult? Function(GetClassHashAtError value)? error,
   }) {
     return result?.call(this);
   }
@@ -246,6 +246,7 @@ abstract class _$$GetClassHashAtErrorCopyWith<$Res> {
   factory _$$GetClassHashAtErrorCopyWith(_$GetClassHashAtError value,
           $Res Function(_$GetClassHashAtError) then) =
       __$$GetClassHashAtErrorCopyWithImpl<$Res>;
+  @useResult
   $Res call({JsonRpcApiError error});
 
   $JsonRpcApiErrorCopyWith<$Res> get error;
@@ -253,21 +254,19 @@ abstract class _$$GetClassHashAtErrorCopyWith<$Res> {
 
 /// @nodoc
 class __$$GetClassHashAtErrorCopyWithImpl<$Res>
-    extends _$GetClassHashAtCopyWithImpl<$Res>
+    extends _$GetClassHashAtCopyWithImpl<$Res, _$GetClassHashAtError>
     implements _$$GetClassHashAtErrorCopyWith<$Res> {
   __$$GetClassHashAtErrorCopyWithImpl(
       _$GetClassHashAtError _value, $Res Function(_$GetClassHashAtError) _then)
-      : super(_value, (v) => _then(v as _$GetClassHashAtError));
+      : super(_value, _then);
 
-  @override
-  _$GetClassHashAtError get _value => super._value as _$GetClassHashAtError;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? error = freezed,
+    Object? error = null,
   }) {
     return _then(_$GetClassHashAtError(
-      error: error == freezed
+      error: null == error
           ? _value.error
           : error // ignore: cast_nullable_to_non_nullable
               as JsonRpcApiError,
@@ -275,6 +274,7 @@ class __$$GetClassHashAtErrorCopyWithImpl<$Res>
   }
 
   @override
+  @pragma('vm:prefer-inline')
   $JsonRpcApiErrorCopyWith<$Res> get error {
     return $JsonRpcApiErrorCopyWith<$Res>(_value.error, (value) {
       return _then(_value.copyWith(error: value));
@@ -307,16 +307,16 @@ class _$GetClassHashAtError implements GetClassHashAtError {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$GetClassHashAtError &&
-            const DeepCollectionEquality().equals(other.error, error));
+            (identical(other.error, error) || other.error == error));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(error));
+  int get hashCode => Object.hash(runtimeType, error);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$GetClassHashAtErrorCopyWith<_$GetClassHashAtError> get copyWith =>
       __$$GetClassHashAtErrorCopyWithImpl<_$GetClassHashAtError>(
           this, _$identity);
@@ -333,8 +333,8 @@ class _$GetClassHashAtError implements GetClassHashAtError {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(Felt result)? result,
-    TResult Function(JsonRpcApiError error)? error,
+    TResult? Function(Felt result)? result,
+    TResult? Function(JsonRpcApiError error)? error,
   }) {
     return error?.call(this.error);
   }
@@ -364,8 +364,8 @@ class _$GetClassHashAtError implements GetClassHashAtError {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(GetClassHashAtResult value)? result,
-    TResult Function(GetClassHashAtError value)? error,
+    TResult? Function(GetClassHashAtResult value)? result,
+    TResult? Function(GetClassHashAtError value)? error,
   }) {
     return error?.call(this);
   }

@@ -14,9 +14,7 @@ ReadProvider getJsonRpcReadProvider() {
   }
 }
 
-Provider getJsonRpcProvider() {
-  const network =
-      String.fromEnvironment('NETWORK', defaultValue: 'infuraGoerliTestnet');
+Provider getJsonRpcProvider({network = 'infuraGoerliTestnet'}) {
   if (network == 'infuraGoerliTestnet') {
     return JsonRpcProvider.infuraGoerliTestnet;
   } else if (network == 'v010PathfinderGoerliTestnet') {

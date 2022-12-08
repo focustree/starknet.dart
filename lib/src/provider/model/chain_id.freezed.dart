@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'chain_id.dart';
 
@@ -37,8 +37,8 @@ mixin _$ChainId {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(String result)? result,
-    TResult Function(JsonRpcApiError error)? error,
+    TResult? Function(String result)? result,
+    TResult? Function(JsonRpcApiError error)? error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -56,8 +56,8 @@ mixin _$ChainId {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(ChainIdResult value)? result,
-    TResult Function(ChainIdError value)? error,
+    TResult? Function(ChainIdResult value)? result,
+    TResult? Function(ChainIdError value)? error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -73,16 +73,18 @@ mixin _$ChainId {
 /// @nodoc
 abstract class $ChainIdCopyWith<$Res> {
   factory $ChainIdCopyWith(ChainId value, $Res Function(ChainId) then) =
-      _$ChainIdCopyWithImpl<$Res>;
+      _$ChainIdCopyWithImpl<$Res, ChainId>;
 }
 
 /// @nodoc
-class _$ChainIdCopyWithImpl<$Res> implements $ChainIdCopyWith<$Res> {
+class _$ChainIdCopyWithImpl<$Res, $Val extends ChainId>
+    implements $ChainIdCopyWith<$Res> {
   _$ChainIdCopyWithImpl(this._value, this._then);
 
-  final ChainId _value;
   // ignore: unused_field
-  final $Res Function(ChainId) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 }
 
 /// @nodoc
@@ -90,25 +92,25 @@ abstract class _$$ChainIdResultCopyWith<$Res> {
   factory _$$ChainIdResultCopyWith(
           _$ChainIdResult value, $Res Function(_$ChainIdResult) then) =
       __$$ChainIdResultCopyWithImpl<$Res>;
+  @useResult
   $Res call({String result});
 }
 
 /// @nodoc
-class __$$ChainIdResultCopyWithImpl<$Res> extends _$ChainIdCopyWithImpl<$Res>
+class __$$ChainIdResultCopyWithImpl<$Res>
+    extends _$ChainIdCopyWithImpl<$Res, _$ChainIdResult>
     implements _$$ChainIdResultCopyWith<$Res> {
   __$$ChainIdResultCopyWithImpl(
       _$ChainIdResult _value, $Res Function(_$ChainIdResult) _then)
-      : super(_value, (v) => _then(v as _$ChainIdResult));
+      : super(_value, _then);
 
-  @override
-  _$ChainIdResult get _value => super._value as _$ChainIdResult;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? result = freezed,
+    Object? result = null,
   }) {
     return _then(_$ChainIdResult(
-      result: result == freezed
+      result: null == result
           ? _value.result
           : result // ignore: cast_nullable_to_non_nullable
               as String,
@@ -141,16 +143,16 @@ class _$ChainIdResult implements ChainIdResult {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ChainIdResult &&
-            const DeepCollectionEquality().equals(other.result, result));
+            (identical(other.result, result) || other.result == result));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(result));
+  int get hashCode => Object.hash(runtimeType, result);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$ChainIdResultCopyWith<_$ChainIdResult> get copyWith =>
       __$$ChainIdResultCopyWithImpl<_$ChainIdResult>(this, _$identity);
 
@@ -166,8 +168,8 @@ class _$ChainIdResult implements ChainIdResult {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(String result)? result,
-    TResult Function(JsonRpcApiError error)? error,
+    TResult? Function(String result)? result,
+    TResult? Function(JsonRpcApiError error)? error,
   }) {
     return result?.call(this.result);
   }
@@ -197,8 +199,8 @@ class _$ChainIdResult implements ChainIdResult {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(ChainIdResult value)? result,
-    TResult Function(ChainIdError value)? error,
+    TResult? Function(ChainIdResult value)? result,
+    TResult? Function(ChainIdError value)? error,
   }) {
     return result?.call(this);
   }
@@ -241,27 +243,27 @@ abstract class _$$ChainIdErrorCopyWith<$Res> {
   factory _$$ChainIdErrorCopyWith(
           _$ChainIdError value, $Res Function(_$ChainIdError) then) =
       __$$ChainIdErrorCopyWithImpl<$Res>;
+  @useResult
   $Res call({JsonRpcApiError error});
 
   $JsonRpcApiErrorCopyWith<$Res> get error;
 }
 
 /// @nodoc
-class __$$ChainIdErrorCopyWithImpl<$Res> extends _$ChainIdCopyWithImpl<$Res>
+class __$$ChainIdErrorCopyWithImpl<$Res>
+    extends _$ChainIdCopyWithImpl<$Res, _$ChainIdError>
     implements _$$ChainIdErrorCopyWith<$Res> {
   __$$ChainIdErrorCopyWithImpl(
       _$ChainIdError _value, $Res Function(_$ChainIdError) _then)
-      : super(_value, (v) => _then(v as _$ChainIdError));
+      : super(_value, _then);
 
-  @override
-  _$ChainIdError get _value => super._value as _$ChainIdError;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? error = freezed,
+    Object? error = null,
   }) {
     return _then(_$ChainIdError(
-      error: error == freezed
+      error: null == error
           ? _value.error
           : error // ignore: cast_nullable_to_non_nullable
               as JsonRpcApiError,
@@ -269,6 +271,7 @@ class __$$ChainIdErrorCopyWithImpl<$Res> extends _$ChainIdCopyWithImpl<$Res>
   }
 
   @override
+  @pragma('vm:prefer-inline')
   $JsonRpcApiErrorCopyWith<$Res> get error {
     return $JsonRpcApiErrorCopyWith<$Res>(_value.error, (value) {
       return _then(_value.copyWith(error: value));
@@ -301,16 +304,16 @@ class _$ChainIdError implements ChainIdError {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ChainIdError &&
-            const DeepCollectionEquality().equals(other.error, error));
+            (identical(other.error, error) || other.error == error));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(error));
+  int get hashCode => Object.hash(runtimeType, error);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$ChainIdErrorCopyWith<_$ChainIdError> get copyWith =>
       __$$ChainIdErrorCopyWithImpl<_$ChainIdError>(this, _$identity);
 
@@ -326,8 +329,8 @@ class _$ChainIdError implements ChainIdError {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(String result)? result,
-    TResult Function(JsonRpcApiError error)? error,
+    TResult? Function(String result)? result,
+    TResult? Function(JsonRpcApiError error)? error,
   }) {
     return error?.call(this.error);
   }
@@ -357,8 +360,8 @@ class _$ChainIdError implements ChainIdError {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(ChainIdResult value)? result,
-    TResult Function(ChainIdError value)? error,
+    TResult? Function(ChainIdResult value)? result,
+    TResult? Function(ChainIdError value)? error,
   }) {
     return error?.call(this);
   }

@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'get_state_update.dart';
 
@@ -37,8 +37,8 @@ mixin _$GetStateUpdate {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(StateUpdate result)? result,
-    TResult Function(JsonRpcApiError error)? error,
+    TResult? Function(StateUpdate result)? result,
+    TResult? Function(JsonRpcApiError error)? error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -56,8 +56,8 @@ mixin _$GetStateUpdate {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(GetStateUpdateResult value)? result,
-    TResult Function(GetStateUpdateError value)? error,
+    TResult? Function(GetStateUpdateResult value)? result,
+    TResult? Function(GetStateUpdateError value)? error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -74,17 +74,18 @@ mixin _$GetStateUpdate {
 abstract class $GetStateUpdateCopyWith<$Res> {
   factory $GetStateUpdateCopyWith(
           GetStateUpdate value, $Res Function(GetStateUpdate) then) =
-      _$GetStateUpdateCopyWithImpl<$Res>;
+      _$GetStateUpdateCopyWithImpl<$Res, GetStateUpdate>;
 }
 
 /// @nodoc
-class _$GetStateUpdateCopyWithImpl<$Res>
+class _$GetStateUpdateCopyWithImpl<$Res, $Val extends GetStateUpdate>
     implements $GetStateUpdateCopyWith<$Res> {
   _$GetStateUpdateCopyWithImpl(this._value, this._then);
 
-  final GetStateUpdate _value;
   // ignore: unused_field
-  final $Res Function(GetStateUpdate) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 }
 
 /// @nodoc
@@ -92,6 +93,7 @@ abstract class _$$GetStateUpdateResultCopyWith<$Res> {
   factory _$$GetStateUpdateResultCopyWith(_$GetStateUpdateResult value,
           $Res Function(_$GetStateUpdateResult) then) =
       __$$GetStateUpdateResultCopyWithImpl<$Res>;
+  @useResult
   $Res call({StateUpdate result});
 
   $StateUpdateCopyWith<$Res> get result;
@@ -99,21 +101,19 @@ abstract class _$$GetStateUpdateResultCopyWith<$Res> {
 
 /// @nodoc
 class __$$GetStateUpdateResultCopyWithImpl<$Res>
-    extends _$GetStateUpdateCopyWithImpl<$Res>
+    extends _$GetStateUpdateCopyWithImpl<$Res, _$GetStateUpdateResult>
     implements _$$GetStateUpdateResultCopyWith<$Res> {
   __$$GetStateUpdateResultCopyWithImpl(_$GetStateUpdateResult _value,
       $Res Function(_$GetStateUpdateResult) _then)
-      : super(_value, (v) => _then(v as _$GetStateUpdateResult));
+      : super(_value, _then);
 
-  @override
-  _$GetStateUpdateResult get _value => super._value as _$GetStateUpdateResult;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? result = freezed,
+    Object? result = null,
   }) {
     return _then(_$GetStateUpdateResult(
-      result: result == freezed
+      result: null == result
           ? _value.result
           : result // ignore: cast_nullable_to_non_nullable
               as StateUpdate,
@@ -121,6 +121,7 @@ class __$$GetStateUpdateResultCopyWithImpl<$Res>
   }
 
   @override
+  @pragma('vm:prefer-inline')
   $StateUpdateCopyWith<$Res> get result {
     return $StateUpdateCopyWith<$Res>(_value.result, (value) {
       return _then(_value.copyWith(result: value));
@@ -153,16 +154,16 @@ class _$GetStateUpdateResult implements GetStateUpdateResult {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$GetStateUpdateResult &&
-            const DeepCollectionEquality().equals(other.result, result));
+            (identical(other.result, result) || other.result == result));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(result));
+  int get hashCode => Object.hash(runtimeType, result);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$GetStateUpdateResultCopyWith<_$GetStateUpdateResult> get copyWith =>
       __$$GetStateUpdateResultCopyWithImpl<_$GetStateUpdateResult>(
           this, _$identity);
@@ -179,8 +180,8 @@ class _$GetStateUpdateResult implements GetStateUpdateResult {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(StateUpdate result)? result,
-    TResult Function(JsonRpcApiError error)? error,
+    TResult? Function(StateUpdate result)? result,
+    TResult? Function(JsonRpcApiError error)? error,
   }) {
     return result?.call(this.result);
   }
@@ -210,8 +211,8 @@ class _$GetStateUpdateResult implements GetStateUpdateResult {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(GetStateUpdateResult value)? result,
-    TResult Function(GetStateUpdateError value)? error,
+    TResult? Function(GetStateUpdateResult value)? result,
+    TResult? Function(GetStateUpdateError value)? error,
   }) {
     return result?.call(this);
   }
@@ -255,6 +256,7 @@ abstract class _$$GetStateUpdateErrorCopyWith<$Res> {
   factory _$$GetStateUpdateErrorCopyWith(_$GetStateUpdateError value,
           $Res Function(_$GetStateUpdateError) then) =
       __$$GetStateUpdateErrorCopyWithImpl<$Res>;
+  @useResult
   $Res call({JsonRpcApiError error});
 
   $JsonRpcApiErrorCopyWith<$Res> get error;
@@ -262,21 +264,19 @@ abstract class _$$GetStateUpdateErrorCopyWith<$Res> {
 
 /// @nodoc
 class __$$GetStateUpdateErrorCopyWithImpl<$Res>
-    extends _$GetStateUpdateCopyWithImpl<$Res>
+    extends _$GetStateUpdateCopyWithImpl<$Res, _$GetStateUpdateError>
     implements _$$GetStateUpdateErrorCopyWith<$Res> {
   __$$GetStateUpdateErrorCopyWithImpl(
       _$GetStateUpdateError _value, $Res Function(_$GetStateUpdateError) _then)
-      : super(_value, (v) => _then(v as _$GetStateUpdateError));
+      : super(_value, _then);
 
-  @override
-  _$GetStateUpdateError get _value => super._value as _$GetStateUpdateError;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? error = freezed,
+    Object? error = null,
   }) {
     return _then(_$GetStateUpdateError(
-      error: error == freezed
+      error: null == error
           ? _value.error
           : error // ignore: cast_nullable_to_non_nullable
               as JsonRpcApiError,
@@ -284,6 +284,7 @@ class __$$GetStateUpdateErrorCopyWithImpl<$Res>
   }
 
   @override
+  @pragma('vm:prefer-inline')
   $JsonRpcApiErrorCopyWith<$Res> get error {
     return $JsonRpcApiErrorCopyWith<$Res>(_value.error, (value) {
       return _then(_value.copyWith(error: value));
@@ -316,16 +317,16 @@ class _$GetStateUpdateError implements GetStateUpdateError {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$GetStateUpdateError &&
-            const DeepCollectionEquality().equals(other.error, error));
+            (identical(other.error, error) || other.error == error));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(error));
+  int get hashCode => Object.hash(runtimeType, error);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$GetStateUpdateErrorCopyWith<_$GetStateUpdateError> get copyWith =>
       __$$GetStateUpdateErrorCopyWithImpl<_$GetStateUpdateError>(
           this, _$identity);
@@ -342,8 +343,8 @@ class _$GetStateUpdateError implements GetStateUpdateError {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(StateUpdate result)? result,
-    TResult Function(JsonRpcApiError error)? error,
+    TResult? Function(StateUpdate result)? result,
+    TResult? Function(JsonRpcApiError error)? error,
   }) {
     return error?.call(this.error);
   }
@@ -373,8 +374,8 @@ class _$GetStateUpdateError implements GetStateUpdateError {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(GetStateUpdateResult value)? result,
-    TResult Function(GetStateUpdateError value)? error,
+    TResult? Function(GetStateUpdateResult value)? result,
+    TResult? Function(GetStateUpdateError value)? error,
   }) {
     return error?.call(this);
   }

@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'get_class.dart';
 
@@ -33,33 +33,37 @@ mixin _$EntryPoint {
 abstract class $EntryPointCopyWith<$Res> {
   factory $EntryPointCopyWith(
           EntryPoint value, $Res Function(EntryPoint) then) =
-      _$EntryPointCopyWithImpl<$Res>;
+      _$EntryPointCopyWithImpl<$Res, EntryPoint>;
+  @useResult
   $Res call({String offset, Felt selector});
 }
 
 /// @nodoc
-class _$EntryPointCopyWithImpl<$Res> implements $EntryPointCopyWith<$Res> {
+class _$EntryPointCopyWithImpl<$Res, $Val extends EntryPoint>
+    implements $EntryPointCopyWith<$Res> {
   _$EntryPointCopyWithImpl(this._value, this._then);
 
-  final EntryPoint _value;
   // ignore: unused_field
-  final $Res Function(EntryPoint) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? offset = freezed,
-    Object? selector = freezed,
+    Object? offset = null,
+    Object? selector = null,
   }) {
     return _then(_value.copyWith(
-      offset: offset == freezed
+      offset: null == offset
           ? _value.offset
           : offset // ignore: cast_nullable_to_non_nullable
               as String,
-      selector: selector == freezed
+      selector: null == selector
           ? _value.selector
           : selector // ignore: cast_nullable_to_non_nullable
               as Felt,
-    ));
+    ) as $Val);
   }
 }
 
@@ -70,30 +74,30 @@ abstract class _$$_EntryPointCopyWith<$Res>
           _$_EntryPoint value, $Res Function(_$_EntryPoint) then) =
       __$$_EntryPointCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call({String offset, Felt selector});
 }
 
 /// @nodoc
-class __$$_EntryPointCopyWithImpl<$Res> extends _$EntryPointCopyWithImpl<$Res>
+class __$$_EntryPointCopyWithImpl<$Res>
+    extends _$EntryPointCopyWithImpl<$Res, _$_EntryPoint>
     implements _$$_EntryPointCopyWith<$Res> {
   __$$_EntryPointCopyWithImpl(
       _$_EntryPoint _value, $Res Function(_$_EntryPoint) _then)
-      : super(_value, (v) => _then(v as _$_EntryPoint));
+      : super(_value, _then);
 
-  @override
-  _$_EntryPoint get _value => super._value as _$_EntryPoint;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? offset = freezed,
-    Object? selector = freezed,
+    Object? offset = null,
+    Object? selector = null,
   }) {
     return _then(_$_EntryPoint(
-      offset: offset == freezed
+      offset: null == offset
           ? _value.offset
           : offset // ignore: cast_nullable_to_non_nullable
               as String,
-      selector: selector == freezed
+      selector: null == selector
           ? _value.selector
           : selector // ignore: cast_nullable_to_non_nullable
               as Felt,
@@ -124,19 +128,18 @@ class _$_EntryPoint implements _EntryPoint {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_EntryPoint &&
-            const DeepCollectionEquality().equals(other.offset, offset) &&
-            const DeepCollectionEquality().equals(other.selector, selector));
+            (identical(other.offset, offset) || other.offset == offset) &&
+            (identical(other.selector, selector) ||
+                other.selector == selector));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(offset),
-      const DeepCollectionEquality().hash(selector));
+  int get hashCode => Object.hash(runtimeType, offset, selector);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_EntryPointCopyWith<_$_EntryPoint> get copyWith =>
       __$$_EntryPointCopyWithImpl<_$_EntryPoint>(this, _$identity);
 
@@ -189,7 +192,8 @@ mixin _$EntryPointsByType {
 abstract class $EntryPointsByTypeCopyWith<$Res> {
   factory $EntryPointsByTypeCopyWith(
           EntryPointsByType value, $Res Function(EntryPointsByType) then) =
-      _$EntryPointsByTypeCopyWithImpl<$Res>;
+      _$EntryPointsByTypeCopyWithImpl<$Res, EntryPointsByType>;
+  @useResult
   $Res call(
       {@JsonKey(name: 'CONSTRUCTOR') List<EntryPoint> constructor,
       @JsonKey(name: 'EXTERNAL') List<EntryPoint> external,
@@ -197,34 +201,36 @@ abstract class $EntryPointsByTypeCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$EntryPointsByTypeCopyWithImpl<$Res>
+class _$EntryPointsByTypeCopyWithImpl<$Res, $Val extends EntryPointsByType>
     implements $EntryPointsByTypeCopyWith<$Res> {
   _$EntryPointsByTypeCopyWithImpl(this._value, this._then);
 
-  final EntryPointsByType _value;
   // ignore: unused_field
-  final $Res Function(EntryPointsByType) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? constructor = freezed,
-    Object? external = freezed,
-    Object? l1Handler = freezed,
+    Object? constructor = null,
+    Object? external = null,
+    Object? l1Handler = null,
   }) {
     return _then(_value.copyWith(
-      constructor: constructor == freezed
+      constructor: null == constructor
           ? _value.constructor
           : constructor // ignore: cast_nullable_to_non_nullable
               as List<EntryPoint>,
-      external: external == freezed
+      external: null == external
           ? _value.external
           : external // ignore: cast_nullable_to_non_nullable
               as List<EntryPoint>,
-      l1Handler: l1Handler == freezed
+      l1Handler: null == l1Handler
           ? _value.l1Handler
           : l1Handler // ignore: cast_nullable_to_non_nullable
               as List<EntryPoint>,
-    ));
+    ) as $Val);
   }
 }
 
@@ -235,6 +241,7 @@ abstract class _$$_EntryPointsByTypeCopyWith<$Res>
           $Res Function(_$_EntryPointsByType) then) =
       __$$_EntryPointsByTypeCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {@JsonKey(name: 'CONSTRUCTOR') List<EntryPoint> constructor,
       @JsonKey(name: 'EXTERNAL') List<EntryPoint> external,
@@ -243,31 +250,29 @@ abstract class _$$_EntryPointsByTypeCopyWith<$Res>
 
 /// @nodoc
 class __$$_EntryPointsByTypeCopyWithImpl<$Res>
-    extends _$EntryPointsByTypeCopyWithImpl<$Res>
+    extends _$EntryPointsByTypeCopyWithImpl<$Res, _$_EntryPointsByType>
     implements _$$_EntryPointsByTypeCopyWith<$Res> {
   __$$_EntryPointsByTypeCopyWithImpl(
       _$_EntryPointsByType _value, $Res Function(_$_EntryPointsByType) _then)
-      : super(_value, (v) => _then(v as _$_EntryPointsByType));
+      : super(_value, _then);
 
-  @override
-  _$_EntryPointsByType get _value => super._value as _$_EntryPointsByType;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? constructor = freezed,
-    Object? external = freezed,
-    Object? l1Handler = freezed,
+    Object? constructor = null,
+    Object? external = null,
+    Object? l1Handler = null,
   }) {
     return _then(_$_EntryPointsByType(
-      constructor: constructor == freezed
+      constructor: null == constructor
           ? _value._constructor
           : constructor // ignore: cast_nullable_to_non_nullable
               as List<EntryPoint>,
-      external: external == freezed
+      external: null == external
           ? _value._external
           : external // ignore: cast_nullable_to_non_nullable
               as List<EntryPoint>,
-      l1Handler: l1Handler == freezed
+      l1Handler: null == l1Handler
           ? _value._l1Handler
           : l1Handler // ignore: cast_nullable_to_non_nullable
               as List<EntryPoint>,
@@ -296,6 +301,7 @@ class _$_EntryPointsByType implements _EntryPointsByType {
   @override
   @JsonKey(name: 'CONSTRUCTOR')
   List<EntryPoint> get constructor {
+    if (_constructor is EqualUnmodifiableListView) return _constructor;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_constructor);
   }
@@ -304,6 +310,7 @@ class _$_EntryPointsByType implements _EntryPointsByType {
   @override
   @JsonKey(name: 'EXTERNAL')
   List<EntryPoint> get external {
+    if (_external is EqualUnmodifiableListView) return _external;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_external);
   }
@@ -312,6 +319,7 @@ class _$_EntryPointsByType implements _EntryPointsByType {
   @override
   @JsonKey(name: 'L1_HANDLER')
   List<EntryPoint> get l1Handler {
+    if (_l1Handler is EqualUnmodifiableListView) return _l1Handler;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_l1Handler);
   }
@@ -343,6 +351,7 @@ class _$_EntryPointsByType implements _EntryPointsByType {
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_EntryPointsByTypeCopyWith<_$_EntryPointsByType> get copyWith =>
       __$$_EntryPointsByTypeCopyWithImpl<_$_EntryPointsByType>(
           this, _$identity);
@@ -402,7 +411,8 @@ mixin _$ContractClass {
 abstract class $ContractClassCopyWith<$Res> {
   factory $ContractClassCopyWith(
           ContractClass value, $Res Function(ContractClass) then) =
-      _$ContractClassCopyWithImpl<$Res>;
+      _$ContractClassCopyWithImpl<$Res, ContractClass>;
+  @useResult
   $Res call(
       {String program,
       EntryPointsByType entryPointsByType,
@@ -412,40 +422,43 @@ abstract class $ContractClassCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$ContractClassCopyWithImpl<$Res>
+class _$ContractClassCopyWithImpl<$Res, $Val extends ContractClass>
     implements $ContractClassCopyWith<$Res> {
   _$ContractClassCopyWithImpl(this._value, this._then);
 
-  final ContractClass _value;
   // ignore: unused_field
-  final $Res Function(ContractClass) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? program = freezed,
-    Object? entryPointsByType = freezed,
+    Object? program = null,
+    Object? entryPointsByType = null,
     Object? abi = freezed,
   }) {
     return _then(_value.copyWith(
-      program: program == freezed
+      program: null == program
           ? _value.program
           : program // ignore: cast_nullable_to_non_nullable
               as String,
-      entryPointsByType: entryPointsByType == freezed
+      entryPointsByType: null == entryPointsByType
           ? _value.entryPointsByType
           : entryPointsByType // ignore: cast_nullable_to_non_nullable
               as EntryPointsByType,
-      abi: abi == freezed
+      abi: freezed == abi
           ? _value.abi
           : abi // ignore: cast_nullable_to_non_nullable
               as List<ContractAbiEntry>?,
-    ));
+    ) as $Val);
   }
 
   @override
+  @pragma('vm:prefer-inline')
   $EntryPointsByTypeCopyWith<$Res> get entryPointsByType {
     return $EntryPointsByTypeCopyWith<$Res>(_value.entryPointsByType, (value) {
-      return _then(_value.copyWith(entryPointsByType: value));
+      return _then(_value.copyWith(entryPointsByType: value) as $Val);
     });
   }
 }
@@ -457,6 +470,7 @@ abstract class _$$_ContractClassCopyWith<$Res>
           _$_ContractClass value, $Res Function(_$_ContractClass) then) =
       __$$_ContractClassCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {String program,
       EntryPointsByType entryPointsByType,
@@ -468,31 +482,29 @@ abstract class _$$_ContractClassCopyWith<$Res>
 
 /// @nodoc
 class __$$_ContractClassCopyWithImpl<$Res>
-    extends _$ContractClassCopyWithImpl<$Res>
+    extends _$ContractClassCopyWithImpl<$Res, _$_ContractClass>
     implements _$$_ContractClassCopyWith<$Res> {
   __$$_ContractClassCopyWithImpl(
       _$_ContractClass _value, $Res Function(_$_ContractClass) _then)
-      : super(_value, (v) => _then(v as _$_ContractClass));
+      : super(_value, _then);
 
-  @override
-  _$_ContractClass get _value => super._value as _$_ContractClass;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? program = freezed,
-    Object? entryPointsByType = freezed,
+    Object? program = null,
+    Object? entryPointsByType = null,
     Object? abi = freezed,
   }) {
     return _then(_$_ContractClass(
-      program: program == freezed
+      program: null == program
           ? _value.program
           : program // ignore: cast_nullable_to_non_nullable
               as String,
-      entryPointsByType: entryPointsByType == freezed
+      entryPointsByType: null == entryPointsByType
           ? _value.entryPointsByType
           : entryPointsByType // ignore: cast_nullable_to_non_nullable
               as EntryPointsByType,
-      abi: abi == freezed
+      abi: freezed == abi
           ? _value._abi
           : abi // ignore: cast_nullable_to_non_nullable
               as List<ContractAbiEntry>?,
@@ -521,6 +533,7 @@ class _$_ContractClass implements _ContractClass {
   List<ContractAbiEntry>? get abi {
     final value = _abi;
     if (value == null) return null;
+    if (_abi is EqualUnmodifiableListView) return _abi;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(value);
   }
@@ -535,22 +548,20 @@ class _$_ContractClass implements _ContractClass {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_ContractClass &&
-            const DeepCollectionEquality().equals(other.program, program) &&
-            const DeepCollectionEquality()
-                .equals(other.entryPointsByType, entryPointsByType) &&
+            (identical(other.program, program) || other.program == program) &&
+            (identical(other.entryPointsByType, entryPointsByType) ||
+                other.entryPointsByType == entryPointsByType) &&
             const DeepCollectionEquality().equals(other._abi, _abi));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(program),
-      const DeepCollectionEquality().hash(entryPointsByType),
+  int get hashCode => Object.hash(runtimeType, program, entryPointsByType,
       const DeepCollectionEquality().hash(_abi));
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_ContractClassCopyWith<_$_ContractClass> get copyWith =>
       __$$_ContractClassCopyWithImpl<_$_ContractClass>(this, _$identity);
 
@@ -606,8 +617,8 @@ mixin _$GetClass {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(ContractClass result)? result,
-    TResult Function(JsonRpcApiError error)? error,
+    TResult? Function(ContractClass result)? result,
+    TResult? Function(JsonRpcApiError error)? error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -625,8 +636,8 @@ mixin _$GetClass {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(GetClassResult value)? result,
-    TResult Function(GetClassError value)? error,
+    TResult? Function(GetClassResult value)? result,
+    TResult? Function(GetClassError value)? error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -642,16 +653,18 @@ mixin _$GetClass {
 /// @nodoc
 abstract class $GetClassCopyWith<$Res> {
   factory $GetClassCopyWith(GetClass value, $Res Function(GetClass) then) =
-      _$GetClassCopyWithImpl<$Res>;
+      _$GetClassCopyWithImpl<$Res, GetClass>;
 }
 
 /// @nodoc
-class _$GetClassCopyWithImpl<$Res> implements $GetClassCopyWith<$Res> {
+class _$GetClassCopyWithImpl<$Res, $Val extends GetClass>
+    implements $GetClassCopyWith<$Res> {
   _$GetClassCopyWithImpl(this._value, this._then);
 
-  final GetClass _value;
   // ignore: unused_field
-  final $Res Function(GetClass) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 }
 
 /// @nodoc
@@ -659,27 +672,27 @@ abstract class _$$GetClassResultCopyWith<$Res> {
   factory _$$GetClassResultCopyWith(
           _$GetClassResult value, $Res Function(_$GetClassResult) then) =
       __$$GetClassResultCopyWithImpl<$Res>;
+  @useResult
   $Res call({ContractClass result});
 
   $ContractClassCopyWith<$Res> get result;
 }
 
 /// @nodoc
-class __$$GetClassResultCopyWithImpl<$Res> extends _$GetClassCopyWithImpl<$Res>
+class __$$GetClassResultCopyWithImpl<$Res>
+    extends _$GetClassCopyWithImpl<$Res, _$GetClassResult>
     implements _$$GetClassResultCopyWith<$Res> {
   __$$GetClassResultCopyWithImpl(
       _$GetClassResult _value, $Res Function(_$GetClassResult) _then)
-      : super(_value, (v) => _then(v as _$GetClassResult));
+      : super(_value, _then);
 
-  @override
-  _$GetClassResult get _value => super._value as _$GetClassResult;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? result = freezed,
+    Object? result = null,
   }) {
     return _then(_$GetClassResult(
-      result: result == freezed
+      result: null == result
           ? _value.result
           : result // ignore: cast_nullable_to_non_nullable
               as ContractClass,
@@ -687,6 +700,7 @@ class __$$GetClassResultCopyWithImpl<$Res> extends _$GetClassCopyWithImpl<$Res>
   }
 
   @override
+  @pragma('vm:prefer-inline')
   $ContractClassCopyWith<$Res> get result {
     return $ContractClassCopyWith<$Res>(_value.result, (value) {
       return _then(_value.copyWith(result: value));
@@ -719,16 +733,16 @@ class _$GetClassResult implements GetClassResult {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$GetClassResult &&
-            const DeepCollectionEquality().equals(other.result, result));
+            (identical(other.result, result) || other.result == result));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(result));
+  int get hashCode => Object.hash(runtimeType, result);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$GetClassResultCopyWith<_$GetClassResult> get copyWith =>
       __$$GetClassResultCopyWithImpl<_$GetClassResult>(this, _$identity);
 
@@ -744,8 +758,8 @@ class _$GetClassResult implements GetClassResult {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(ContractClass result)? result,
-    TResult Function(JsonRpcApiError error)? error,
+    TResult? Function(ContractClass result)? result,
+    TResult? Function(JsonRpcApiError error)? error,
   }) {
     return result?.call(this.result);
   }
@@ -775,8 +789,8 @@ class _$GetClassResult implements GetClassResult {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(GetClassResult value)? result,
-    TResult Function(GetClassError value)? error,
+    TResult? Function(GetClassResult value)? result,
+    TResult? Function(GetClassError value)? error,
   }) {
     return result?.call(this);
   }
@@ -820,27 +834,27 @@ abstract class _$$GetClassErrorCopyWith<$Res> {
   factory _$$GetClassErrorCopyWith(
           _$GetClassError value, $Res Function(_$GetClassError) then) =
       __$$GetClassErrorCopyWithImpl<$Res>;
+  @useResult
   $Res call({JsonRpcApiError error});
 
   $JsonRpcApiErrorCopyWith<$Res> get error;
 }
 
 /// @nodoc
-class __$$GetClassErrorCopyWithImpl<$Res> extends _$GetClassCopyWithImpl<$Res>
+class __$$GetClassErrorCopyWithImpl<$Res>
+    extends _$GetClassCopyWithImpl<$Res, _$GetClassError>
     implements _$$GetClassErrorCopyWith<$Res> {
   __$$GetClassErrorCopyWithImpl(
       _$GetClassError _value, $Res Function(_$GetClassError) _then)
-      : super(_value, (v) => _then(v as _$GetClassError));
+      : super(_value, _then);
 
-  @override
-  _$GetClassError get _value => super._value as _$GetClassError;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? error = freezed,
+    Object? error = null,
   }) {
     return _then(_$GetClassError(
-      error: error == freezed
+      error: null == error
           ? _value.error
           : error // ignore: cast_nullable_to_non_nullable
               as JsonRpcApiError,
@@ -848,6 +862,7 @@ class __$$GetClassErrorCopyWithImpl<$Res> extends _$GetClassCopyWithImpl<$Res>
   }
 
   @override
+  @pragma('vm:prefer-inline')
   $JsonRpcApiErrorCopyWith<$Res> get error {
     return $JsonRpcApiErrorCopyWith<$Res>(_value.error, (value) {
       return _then(_value.copyWith(error: value));
@@ -880,16 +895,16 @@ class _$GetClassError implements GetClassError {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$GetClassError &&
-            const DeepCollectionEquality().equals(other.error, error));
+            (identical(other.error, error) || other.error == error));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(error));
+  int get hashCode => Object.hash(runtimeType, error);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$GetClassErrorCopyWith<_$GetClassError> get copyWith =>
       __$$GetClassErrorCopyWithImpl<_$GetClassError>(this, _$identity);
 
@@ -905,8 +920,8 @@ class _$GetClassError implements GetClassError {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(ContractClass result)? result,
-    TResult Function(JsonRpcApiError error)? error,
+    TResult? Function(ContractClass result)? result,
+    TResult? Function(JsonRpcApiError error)? error,
   }) {
     return error?.call(this.error);
   }
@@ -936,8 +951,8 @@ class _$GetClassError implements GetClassError {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(GetClassResult value)? result,
-    TResult Function(GetClassError value)? error,
+    TResult? Function(GetClassResult value)? result,
+    TResult? Function(GetClassError value)? error,
   }) {
     return error?.call(this);
   }
@@ -1010,13 +1025,13 @@ mixin _$ContractAbiEntry {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(String type, String name, List<TypedParameter> inputs,
+    TResult? Function(String type, String name, List<TypedParameter> inputs,
             List<TypedParameter> outputs)?
         functionAbiEntry,
-    TResult Function(String type, String name, List<TypedParameter> keys,
+    TResult? Function(String type, String name, List<TypedParameter> keys,
             List<TypedParameter> data)?
         eventAbiEntry,
-    TResult Function(
+    TResult? Function(
             String type, String name, int size, List<StructMember> members)?
         structAbiEntry,
   }) =>
@@ -1044,9 +1059,9 @@ mixin _$ContractAbiEntry {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(FunctionAbiEntry value)? functionAbiEntry,
-    TResult Function(EventAbiEntry value)? eventAbiEntry,
-    TResult Function(StructAbiEntry value)? structAbiEntry,
+    TResult? Function(FunctionAbiEntry value)? functionAbiEntry,
+    TResult? Function(EventAbiEntry value)? eventAbiEntry,
+    TResult? Function(StructAbiEntry value)? structAbiEntry,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -1067,34 +1082,37 @@ mixin _$ContractAbiEntry {
 abstract class $ContractAbiEntryCopyWith<$Res> {
   factory $ContractAbiEntryCopyWith(
           ContractAbiEntry value, $Res Function(ContractAbiEntry) then) =
-      _$ContractAbiEntryCopyWithImpl<$Res>;
+      _$ContractAbiEntryCopyWithImpl<$Res, ContractAbiEntry>;
+  @useResult
   $Res call({String type, String name});
 }
 
 /// @nodoc
-class _$ContractAbiEntryCopyWithImpl<$Res>
+class _$ContractAbiEntryCopyWithImpl<$Res, $Val extends ContractAbiEntry>
     implements $ContractAbiEntryCopyWith<$Res> {
   _$ContractAbiEntryCopyWithImpl(this._value, this._then);
 
-  final ContractAbiEntry _value;
   // ignore: unused_field
-  final $Res Function(ContractAbiEntry) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? type = freezed,
-    Object? name = freezed,
+    Object? type = null,
+    Object? name = null,
   }) {
     return _then(_value.copyWith(
-      type: type == freezed
+      type: null == type
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
               as String,
-      name: name == freezed
+      name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
-    ));
+    ) as $Val);
   }
 }
 
@@ -1105,6 +1123,7 @@ abstract class _$$FunctionAbiEntryCopyWith<$Res>
           _$FunctionAbiEntry value, $Res Function(_$FunctionAbiEntry) then) =
       __$$FunctionAbiEntryCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {String type,
       String name,
@@ -1114,36 +1133,34 @@ abstract class _$$FunctionAbiEntryCopyWith<$Res>
 
 /// @nodoc
 class __$$FunctionAbiEntryCopyWithImpl<$Res>
-    extends _$ContractAbiEntryCopyWithImpl<$Res>
+    extends _$ContractAbiEntryCopyWithImpl<$Res, _$FunctionAbiEntry>
     implements _$$FunctionAbiEntryCopyWith<$Res> {
   __$$FunctionAbiEntryCopyWithImpl(
       _$FunctionAbiEntry _value, $Res Function(_$FunctionAbiEntry) _then)
-      : super(_value, (v) => _then(v as _$FunctionAbiEntry));
+      : super(_value, _then);
 
-  @override
-  _$FunctionAbiEntry get _value => super._value as _$FunctionAbiEntry;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? type = freezed,
-    Object? name = freezed,
-    Object? inputs = freezed,
-    Object? outputs = freezed,
+    Object? type = null,
+    Object? name = null,
+    Object? inputs = null,
+    Object? outputs = null,
   }) {
     return _then(_$FunctionAbiEntry(
-      type: type == freezed
+      type: null == type
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
               as String,
-      name: name == freezed
+      name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
-      inputs: inputs == freezed
+      inputs: null == inputs
           ? _value._inputs
           : inputs // ignore: cast_nullable_to_non_nullable
               as List<TypedParameter>,
-      outputs: outputs == freezed
+      outputs: null == outputs
           ? _value._outputs
           : outputs // ignore: cast_nullable_to_non_nullable
               as List<TypedParameter>,
@@ -1174,6 +1191,7 @@ class _$FunctionAbiEntry implements FunctionAbiEntry {
   final List<TypedParameter> _inputs;
   @override
   List<TypedParameter> get inputs {
+    if (_inputs is EqualUnmodifiableListView) return _inputs;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_inputs);
   }
@@ -1181,6 +1199,7 @@ class _$FunctionAbiEntry implements FunctionAbiEntry {
   final List<TypedParameter> _outputs;
   @override
   List<TypedParameter> get outputs {
+    if (_outputs is EqualUnmodifiableListView) return _outputs;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_outputs);
   }
@@ -1198,8 +1217,8 @@ class _$FunctionAbiEntry implements FunctionAbiEntry {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$FunctionAbiEntry &&
-            const DeepCollectionEquality().equals(other.type, type) &&
-            const DeepCollectionEquality().equals(other.name, name) &&
+            (identical(other.type, type) || other.type == type) &&
+            (identical(other.name, name) || other.name == name) &&
             const DeepCollectionEquality().equals(other._inputs, _inputs) &&
             const DeepCollectionEquality().equals(other._outputs, _outputs));
   }
@@ -1208,13 +1227,14 @@ class _$FunctionAbiEntry implements FunctionAbiEntry {
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      const DeepCollectionEquality().hash(type),
-      const DeepCollectionEquality().hash(name),
+      type,
+      name,
       const DeepCollectionEquality().hash(_inputs),
       const DeepCollectionEquality().hash(_outputs));
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$FunctionAbiEntryCopyWith<_$FunctionAbiEntry> get copyWith =>
       __$$FunctionAbiEntryCopyWithImpl<_$FunctionAbiEntry>(this, _$identity);
 
@@ -1237,13 +1257,13 @@ class _$FunctionAbiEntry implements FunctionAbiEntry {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(String type, String name, List<TypedParameter> inputs,
+    TResult? Function(String type, String name, List<TypedParameter> inputs,
             List<TypedParameter> outputs)?
         functionAbiEntry,
-    TResult Function(String type, String name, List<TypedParameter> keys,
+    TResult? Function(String type, String name, List<TypedParameter> keys,
             List<TypedParameter> data)?
         eventAbiEntry,
-    TResult Function(
+    TResult? Function(
             String type, String name, int size, List<StructMember> members)?
         structAbiEntry,
   }) {
@@ -1283,9 +1303,9 @@ class _$FunctionAbiEntry implements FunctionAbiEntry {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(FunctionAbiEntry value)? functionAbiEntry,
-    TResult Function(EventAbiEntry value)? eventAbiEntry,
-    TResult Function(StructAbiEntry value)? structAbiEntry,
+    TResult? Function(FunctionAbiEntry value)? functionAbiEntry,
+    TResult? Function(EventAbiEntry value)? eventAbiEntry,
+    TResult? Function(StructAbiEntry value)? structAbiEntry,
   }) {
     return functionAbiEntry?.call(this);
   }
@@ -1341,6 +1361,7 @@ abstract class _$$EventAbiEntryCopyWith<$Res>
           _$EventAbiEntry value, $Res Function(_$EventAbiEntry) then) =
       __$$EventAbiEntryCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {String type,
       String name,
@@ -1350,36 +1371,34 @@ abstract class _$$EventAbiEntryCopyWith<$Res>
 
 /// @nodoc
 class __$$EventAbiEntryCopyWithImpl<$Res>
-    extends _$ContractAbiEntryCopyWithImpl<$Res>
+    extends _$ContractAbiEntryCopyWithImpl<$Res, _$EventAbiEntry>
     implements _$$EventAbiEntryCopyWith<$Res> {
   __$$EventAbiEntryCopyWithImpl(
       _$EventAbiEntry _value, $Res Function(_$EventAbiEntry) _then)
-      : super(_value, (v) => _then(v as _$EventAbiEntry));
+      : super(_value, _then);
 
-  @override
-  _$EventAbiEntry get _value => super._value as _$EventAbiEntry;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? type = freezed,
-    Object? name = freezed,
-    Object? keys = freezed,
-    Object? data = freezed,
+    Object? type = null,
+    Object? name = null,
+    Object? keys = null,
+    Object? data = null,
   }) {
     return _then(_$EventAbiEntry(
-      type: type == freezed
+      type: null == type
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
               as String,
-      name: name == freezed
+      name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
-      keys: keys == freezed
+      keys: null == keys
           ? _value._keys
           : keys // ignore: cast_nullable_to_non_nullable
               as List<TypedParameter>,
-      data: data == freezed
+      data: null == data
           ? _value._data
           : data // ignore: cast_nullable_to_non_nullable
               as List<TypedParameter>,
@@ -1410,6 +1429,7 @@ class _$EventAbiEntry implements EventAbiEntry {
   final List<TypedParameter> _keys;
   @override
   List<TypedParameter> get keys {
+    if (_keys is EqualUnmodifiableListView) return _keys;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_keys);
   }
@@ -1417,6 +1437,7 @@ class _$EventAbiEntry implements EventAbiEntry {
   final List<TypedParameter> _data;
   @override
   List<TypedParameter> get data {
+    if (_data is EqualUnmodifiableListView) return _data;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_data);
   }
@@ -1434,8 +1455,8 @@ class _$EventAbiEntry implements EventAbiEntry {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$EventAbiEntry &&
-            const DeepCollectionEquality().equals(other.type, type) &&
-            const DeepCollectionEquality().equals(other.name, name) &&
+            (identical(other.type, type) || other.type == type) &&
+            (identical(other.name, name) || other.name == name) &&
             const DeepCollectionEquality().equals(other._keys, _keys) &&
             const DeepCollectionEquality().equals(other._data, _data));
   }
@@ -1444,13 +1465,14 @@ class _$EventAbiEntry implements EventAbiEntry {
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      const DeepCollectionEquality().hash(type),
-      const DeepCollectionEquality().hash(name),
+      type,
+      name,
       const DeepCollectionEquality().hash(_keys),
       const DeepCollectionEquality().hash(_data));
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$EventAbiEntryCopyWith<_$EventAbiEntry> get copyWith =>
       __$$EventAbiEntryCopyWithImpl<_$EventAbiEntry>(this, _$identity);
 
@@ -1473,13 +1495,13 @@ class _$EventAbiEntry implements EventAbiEntry {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(String type, String name, List<TypedParameter> inputs,
+    TResult? Function(String type, String name, List<TypedParameter> inputs,
             List<TypedParameter> outputs)?
         functionAbiEntry,
-    TResult Function(String type, String name, List<TypedParameter> keys,
+    TResult? Function(String type, String name, List<TypedParameter> keys,
             List<TypedParameter> data)?
         eventAbiEntry,
-    TResult Function(
+    TResult? Function(
             String type, String name, int size, List<StructMember> members)?
         structAbiEntry,
   }) {
@@ -1519,9 +1541,9 @@ class _$EventAbiEntry implements EventAbiEntry {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(FunctionAbiEntry value)? functionAbiEntry,
-    TResult Function(EventAbiEntry value)? eventAbiEntry,
-    TResult Function(StructAbiEntry value)? structAbiEntry,
+    TResult? Function(FunctionAbiEntry value)? functionAbiEntry,
+    TResult? Function(EventAbiEntry value)? eventAbiEntry,
+    TResult? Function(StructAbiEntry value)? structAbiEntry,
   }) {
     return eventAbiEntry?.call(this);
   }
@@ -1577,41 +1599,40 @@ abstract class _$$StructAbiEntryCopyWith<$Res>
           _$StructAbiEntry value, $Res Function(_$StructAbiEntry) then) =
       __$$StructAbiEntryCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call({String type, String name, int size, List<StructMember> members});
 }
 
 /// @nodoc
 class __$$StructAbiEntryCopyWithImpl<$Res>
-    extends _$ContractAbiEntryCopyWithImpl<$Res>
+    extends _$ContractAbiEntryCopyWithImpl<$Res, _$StructAbiEntry>
     implements _$$StructAbiEntryCopyWith<$Res> {
   __$$StructAbiEntryCopyWithImpl(
       _$StructAbiEntry _value, $Res Function(_$StructAbiEntry) _then)
-      : super(_value, (v) => _then(v as _$StructAbiEntry));
+      : super(_value, _then);
 
-  @override
-  _$StructAbiEntry get _value => super._value as _$StructAbiEntry;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? type = freezed,
-    Object? name = freezed,
-    Object? size = freezed,
-    Object? members = freezed,
+    Object? type = null,
+    Object? name = null,
+    Object? size = null,
+    Object? members = null,
   }) {
     return _then(_$StructAbiEntry(
-      type: type == freezed
+      type: null == type
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
               as String,
-      name: name == freezed
+      name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
-      size: size == freezed
+      size: null == size
           ? _value.size
           : size // ignore: cast_nullable_to_non_nullable
               as int,
-      members: members == freezed
+      members: null == members
           ? _value._members
           : members // ignore: cast_nullable_to_non_nullable
               as List<StructMember>,
@@ -1643,6 +1664,7 @@ class _$StructAbiEntry implements StructAbiEntry {
   final List<StructMember> _members;
   @override
   List<StructMember> get members {
+    if (_members is EqualUnmodifiableListView) return _members;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_members);
   }
@@ -1660,23 +1682,20 @@ class _$StructAbiEntry implements StructAbiEntry {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$StructAbiEntry &&
-            const DeepCollectionEquality().equals(other.type, type) &&
-            const DeepCollectionEquality().equals(other.name, name) &&
-            const DeepCollectionEquality().equals(other.size, size) &&
+            (identical(other.type, type) || other.type == type) &&
+            (identical(other.name, name) || other.name == name) &&
+            (identical(other.size, size) || other.size == size) &&
             const DeepCollectionEquality().equals(other._members, _members));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(type),
-      const DeepCollectionEquality().hash(name),
-      const DeepCollectionEquality().hash(size),
+  int get hashCode => Object.hash(runtimeType, type, name, size,
       const DeepCollectionEquality().hash(_members));
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$StructAbiEntryCopyWith<_$StructAbiEntry> get copyWith =>
       __$$StructAbiEntryCopyWithImpl<_$StructAbiEntry>(this, _$identity);
 
@@ -1699,13 +1718,13 @@ class _$StructAbiEntry implements StructAbiEntry {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(String type, String name, List<TypedParameter> inputs,
+    TResult? Function(String type, String name, List<TypedParameter> inputs,
             List<TypedParameter> outputs)?
         functionAbiEntry,
-    TResult Function(String type, String name, List<TypedParameter> keys,
+    TResult? Function(String type, String name, List<TypedParameter> keys,
             List<TypedParameter> data)?
         eventAbiEntry,
-    TResult Function(
+    TResult? Function(
             String type, String name, int size, List<StructMember> members)?
         structAbiEntry,
   }) {
@@ -1745,9 +1764,9 @@ class _$StructAbiEntry implements StructAbiEntry {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(FunctionAbiEntry value)? functionAbiEntry,
-    TResult Function(EventAbiEntry value)? eventAbiEntry,
-    TResult Function(StructAbiEntry value)? structAbiEntry,
+    TResult? Function(FunctionAbiEntry value)? functionAbiEntry,
+    TResult? Function(EventAbiEntry value)? eventAbiEntry,
+    TResult? Function(StructAbiEntry value)? structAbiEntry,
   }) {
     return structAbiEntry?.call(this);
   }
@@ -1815,34 +1834,37 @@ mixin _$TypedParameter {
 abstract class $TypedParameterCopyWith<$Res> {
   factory $TypedParameterCopyWith(
           TypedParameter value, $Res Function(TypedParameter) then) =
-      _$TypedParameterCopyWithImpl<$Res>;
+      _$TypedParameterCopyWithImpl<$Res, TypedParameter>;
+  @useResult
   $Res call({String name, String type});
 }
 
 /// @nodoc
-class _$TypedParameterCopyWithImpl<$Res>
+class _$TypedParameterCopyWithImpl<$Res, $Val extends TypedParameter>
     implements $TypedParameterCopyWith<$Res> {
   _$TypedParameterCopyWithImpl(this._value, this._then);
 
-  final TypedParameter _value;
   // ignore: unused_field
-  final $Res Function(TypedParameter) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? name = freezed,
-    Object? type = freezed,
+    Object? name = null,
+    Object? type = null,
   }) {
     return _then(_value.copyWith(
-      name: name == freezed
+      name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
-      type: type == freezed
+      type: null == type
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
               as String,
-    ));
+    ) as $Val);
   }
 }
 
@@ -1853,31 +1875,30 @@ abstract class _$$_TypedParameterCopyWith<$Res>
           _$_TypedParameter value, $Res Function(_$_TypedParameter) then) =
       __$$_TypedParameterCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call({String name, String type});
 }
 
 /// @nodoc
 class __$$_TypedParameterCopyWithImpl<$Res>
-    extends _$TypedParameterCopyWithImpl<$Res>
+    extends _$TypedParameterCopyWithImpl<$Res, _$_TypedParameter>
     implements _$$_TypedParameterCopyWith<$Res> {
   __$$_TypedParameterCopyWithImpl(
       _$_TypedParameter _value, $Res Function(_$_TypedParameter) _then)
-      : super(_value, (v) => _then(v as _$_TypedParameter));
+      : super(_value, _then);
 
-  @override
-  _$_TypedParameter get _value => super._value as _$_TypedParameter;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? name = freezed,
-    Object? type = freezed,
+    Object? name = null,
+    Object? type = null,
   }) {
     return _then(_$_TypedParameter(
-      name: name == freezed
+      name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
-      type: type == freezed
+      type: null == type
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
               as String,
@@ -1908,19 +1929,17 @@ class _$_TypedParameter implements _TypedParameter {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_TypedParameter &&
-            const DeepCollectionEquality().equals(other.name, name) &&
-            const DeepCollectionEquality().equals(other.type, type));
+            (identical(other.name, name) || other.name == name) &&
+            (identical(other.type, type) || other.type == type));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(name),
-      const DeepCollectionEquality().hash(type));
+  int get hashCode => Object.hash(runtimeType, name, type);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_TypedParameterCopyWith<_$_TypedParameter> get copyWith =>
       __$$_TypedParameterCopyWithImpl<_$_TypedParameter>(this, _$identity);
 
@@ -1970,38 +1989,42 @@ mixin _$StructMember {
 abstract class $StructMemberCopyWith<$Res> {
   factory $StructMemberCopyWith(
           StructMember value, $Res Function(StructMember) then) =
-      _$StructMemberCopyWithImpl<$Res>;
+      _$StructMemberCopyWithImpl<$Res, StructMember>;
+  @useResult
   $Res call({String name, String type, int offset});
 }
 
 /// @nodoc
-class _$StructMemberCopyWithImpl<$Res> implements $StructMemberCopyWith<$Res> {
+class _$StructMemberCopyWithImpl<$Res, $Val extends StructMember>
+    implements $StructMemberCopyWith<$Res> {
   _$StructMemberCopyWithImpl(this._value, this._then);
 
-  final StructMember _value;
   // ignore: unused_field
-  final $Res Function(StructMember) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? name = freezed,
-    Object? type = freezed,
-    Object? offset = freezed,
+    Object? name = null,
+    Object? type = null,
+    Object? offset = null,
   }) {
     return _then(_value.copyWith(
-      name: name == freezed
+      name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
-      type: type == freezed
+      type: null == type
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
               as String,
-      offset: offset == freezed
+      offset: null == offset
           ? _value.offset
           : offset // ignore: cast_nullable_to_non_nullable
               as int,
-    ));
+    ) as $Val);
   }
 }
 
@@ -2012,36 +2035,35 @@ abstract class _$$_StructMemberCopyWith<$Res>
           _$_StructMember value, $Res Function(_$_StructMember) then) =
       __$$_StructMemberCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call({String name, String type, int offset});
 }
 
 /// @nodoc
 class __$$_StructMemberCopyWithImpl<$Res>
-    extends _$StructMemberCopyWithImpl<$Res>
+    extends _$StructMemberCopyWithImpl<$Res, _$_StructMember>
     implements _$$_StructMemberCopyWith<$Res> {
   __$$_StructMemberCopyWithImpl(
       _$_StructMember _value, $Res Function(_$_StructMember) _then)
-      : super(_value, (v) => _then(v as _$_StructMember));
+      : super(_value, _then);
 
-  @override
-  _$_StructMember get _value => super._value as _$_StructMember;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? name = freezed,
-    Object? type = freezed,
-    Object? offset = freezed,
+    Object? name = null,
+    Object? type = null,
+    Object? offset = null,
   }) {
     return _then(_$_StructMember(
-      name: name == freezed
+      name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
-      type: type == freezed
+      type: null == type
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
               as String,
-      offset: offset == freezed
+      offset: null == offset
           ? _value.offset
           : offset // ignore: cast_nullable_to_non_nullable
               as int,
@@ -2075,21 +2097,18 @@ class _$_StructMember implements _StructMember {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_StructMember &&
-            const DeepCollectionEquality().equals(other.name, name) &&
-            const DeepCollectionEquality().equals(other.type, type) &&
-            const DeepCollectionEquality().equals(other.offset, offset));
+            (identical(other.name, name) || other.name == name) &&
+            (identical(other.type, type) || other.type == type) &&
+            (identical(other.offset, offset) || other.offset == offset));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(name),
-      const DeepCollectionEquality().hash(type),
-      const DeepCollectionEquality().hash(offset));
+  int get hashCode => Object.hash(runtimeType, name, type, offset);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_StructMemberCopyWith<_$_StructMember> get copyWith =>
       __$$_StructMemberCopyWithImpl<_$_StructMember>(this, _$identity);
 

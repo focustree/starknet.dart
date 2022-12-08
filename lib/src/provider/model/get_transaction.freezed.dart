@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'get_transaction.dart';
 
@@ -37,8 +37,8 @@ mixin _$GetTransaction {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(Txn result)? result,
-    TResult Function(JsonRpcApiError error)? error,
+    TResult? Function(Txn result)? result,
+    TResult? Function(JsonRpcApiError error)? error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -56,8 +56,8 @@ mixin _$GetTransaction {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(GetTransactionResult value)? result,
-    TResult Function(GetTransactionError value)? error,
+    TResult? Function(GetTransactionResult value)? result,
+    TResult? Function(GetTransactionError value)? error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -74,17 +74,18 @@ mixin _$GetTransaction {
 abstract class $GetTransactionCopyWith<$Res> {
   factory $GetTransactionCopyWith(
           GetTransaction value, $Res Function(GetTransaction) then) =
-      _$GetTransactionCopyWithImpl<$Res>;
+      _$GetTransactionCopyWithImpl<$Res, GetTransaction>;
 }
 
 /// @nodoc
-class _$GetTransactionCopyWithImpl<$Res>
+class _$GetTransactionCopyWithImpl<$Res, $Val extends GetTransaction>
     implements $GetTransactionCopyWith<$Res> {
   _$GetTransactionCopyWithImpl(this._value, this._then);
 
-  final GetTransaction _value;
   // ignore: unused_field
-  final $Res Function(GetTransaction) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 }
 
 /// @nodoc
@@ -92,6 +93,7 @@ abstract class _$$GetTransactionResultCopyWith<$Res> {
   factory _$$GetTransactionResultCopyWith(_$GetTransactionResult value,
           $Res Function(_$GetTransactionResult) then) =
       __$$GetTransactionResultCopyWithImpl<$Res>;
+  @useResult
   $Res call({Txn result});
 
   $TxnCopyWith<$Res> get result;
@@ -99,21 +101,19 @@ abstract class _$$GetTransactionResultCopyWith<$Res> {
 
 /// @nodoc
 class __$$GetTransactionResultCopyWithImpl<$Res>
-    extends _$GetTransactionCopyWithImpl<$Res>
+    extends _$GetTransactionCopyWithImpl<$Res, _$GetTransactionResult>
     implements _$$GetTransactionResultCopyWith<$Res> {
   __$$GetTransactionResultCopyWithImpl(_$GetTransactionResult _value,
       $Res Function(_$GetTransactionResult) _then)
-      : super(_value, (v) => _then(v as _$GetTransactionResult));
+      : super(_value, _then);
 
-  @override
-  _$GetTransactionResult get _value => super._value as _$GetTransactionResult;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? result = freezed,
+    Object? result = null,
   }) {
     return _then(_$GetTransactionResult(
-      result: result == freezed
+      result: null == result
           ? _value.result
           : result // ignore: cast_nullable_to_non_nullable
               as Txn,
@@ -121,6 +121,7 @@ class __$$GetTransactionResultCopyWithImpl<$Res>
   }
 
   @override
+  @pragma('vm:prefer-inline')
   $TxnCopyWith<$Res> get result {
     return $TxnCopyWith<$Res>(_value.result, (value) {
       return _then(_value.copyWith(result: value));
@@ -153,16 +154,16 @@ class _$GetTransactionResult implements GetTransactionResult {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$GetTransactionResult &&
-            const DeepCollectionEquality().equals(other.result, result));
+            (identical(other.result, result) || other.result == result));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(result));
+  int get hashCode => Object.hash(runtimeType, result);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$GetTransactionResultCopyWith<_$GetTransactionResult> get copyWith =>
       __$$GetTransactionResultCopyWithImpl<_$GetTransactionResult>(
           this, _$identity);
@@ -179,8 +180,8 @@ class _$GetTransactionResult implements GetTransactionResult {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(Txn result)? result,
-    TResult Function(JsonRpcApiError error)? error,
+    TResult? Function(Txn result)? result,
+    TResult? Function(JsonRpcApiError error)? error,
   }) {
     return result?.call(this.result);
   }
@@ -210,8 +211,8 @@ class _$GetTransactionResult implements GetTransactionResult {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(GetTransactionResult value)? result,
-    TResult Function(GetTransactionError value)? error,
+    TResult? Function(GetTransactionResult value)? result,
+    TResult? Function(GetTransactionError value)? error,
   }) {
     return result?.call(this);
   }
@@ -255,6 +256,7 @@ abstract class _$$GetTransactionErrorCopyWith<$Res> {
   factory _$$GetTransactionErrorCopyWith(_$GetTransactionError value,
           $Res Function(_$GetTransactionError) then) =
       __$$GetTransactionErrorCopyWithImpl<$Res>;
+  @useResult
   $Res call({JsonRpcApiError error});
 
   $JsonRpcApiErrorCopyWith<$Res> get error;
@@ -262,21 +264,19 @@ abstract class _$$GetTransactionErrorCopyWith<$Res> {
 
 /// @nodoc
 class __$$GetTransactionErrorCopyWithImpl<$Res>
-    extends _$GetTransactionCopyWithImpl<$Res>
+    extends _$GetTransactionCopyWithImpl<$Res, _$GetTransactionError>
     implements _$$GetTransactionErrorCopyWith<$Res> {
   __$$GetTransactionErrorCopyWithImpl(
       _$GetTransactionError _value, $Res Function(_$GetTransactionError) _then)
-      : super(_value, (v) => _then(v as _$GetTransactionError));
+      : super(_value, _then);
 
-  @override
-  _$GetTransactionError get _value => super._value as _$GetTransactionError;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? error = freezed,
+    Object? error = null,
   }) {
     return _then(_$GetTransactionError(
-      error: error == freezed
+      error: null == error
           ? _value.error
           : error // ignore: cast_nullable_to_non_nullable
               as JsonRpcApiError,
@@ -284,6 +284,7 @@ class __$$GetTransactionErrorCopyWithImpl<$Res>
   }
 
   @override
+  @pragma('vm:prefer-inline')
   $JsonRpcApiErrorCopyWith<$Res> get error {
     return $JsonRpcApiErrorCopyWith<$Res>(_value.error, (value) {
       return _then(_value.copyWith(error: value));
@@ -316,16 +317,16 @@ class _$GetTransactionError implements GetTransactionError {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$GetTransactionError &&
-            const DeepCollectionEquality().equals(other.error, error));
+            (identical(other.error, error) || other.error == error));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(error));
+  int get hashCode => Object.hash(runtimeType, error);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$GetTransactionErrorCopyWith<_$GetTransactionError> get copyWith =>
       __$$GetTransactionErrorCopyWithImpl<_$GetTransactionError>(
           this, _$identity);
@@ -342,8 +343,8 @@ class _$GetTransactionError implements GetTransactionError {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(Txn result)? result,
-    TResult Function(JsonRpcApiError error)? error,
+    TResult? Function(Txn result)? result,
+    TResult? Function(JsonRpcApiError error)? error,
   }) {
     return error?.call(this.error);
   }
@@ -373,8 +374,8 @@ class _$GetTransactionError implements GetTransactionError {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(GetTransactionResult value)? result,
-    TResult Function(GetTransactionError value)? error,
+    TResult? Function(GetTransactionResult value)? result,
+    TResult? Function(GetTransactionError value)? error,
   }) {
     return error?.call(this);
   }
@@ -505,7 +506,7 @@ mixin _$Txn {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(
+    TResult? Function(
             Felt? transactionHash,
             Felt? maxFee,
             String? version,
@@ -516,7 +517,7 @@ mixin _$Txn {
             Felt? entryPointSelector,
             List<Felt>? calldata)?
         invokeTxnV0,
-    TResult Function(
+    TResult? Function(
             Felt? transactionHash,
             Felt? maxFee,
             String? version,
@@ -526,7 +527,7 @@ mixin _$Txn {
             Felt? sender_address,
             List<Felt>? calldata)?
         invokeTxnV1,
-    TResult Function(
+    TResult? Function(
             Felt? transactionHash,
             Felt? maxFee,
             String? version,
@@ -536,7 +537,7 @@ mixin _$Txn {
             Felt? classHash,
             Felt? senderAddress)?
         declareTxn,
-    TResult Function(
+    TResult? Function(
             Felt? transactionHash,
             Felt? classHash,
             String? version,
@@ -544,7 +545,7 @@ mixin _$Txn {
             Felt? contractAddressSalt,
             List<Felt>? constructorCalldata)?
         deployTxn,
-    TResult Function(
+    TResult? Function(
             Felt? transactionHash,
             Felt? maxFee,
             String? version,
@@ -555,7 +556,7 @@ mixin _$Txn {
             Felt? classHash,
             List<Felt>? constructorCalldata)?
         deployAccountTxn,
-    TResult Function(
+    TResult? Function(
             Felt? transactionHash,
             String? version,
             Felt? nonce,
@@ -642,12 +643,12 @@ mixin _$Txn {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(InvokeTxnV0 value)? invokeTxnV0,
-    TResult Function(InvokeTxnV1 value)? invokeTxnV1,
-    TResult Function(DeclareTxn value)? declareTxn,
-    TResult Function(DeployTxn value)? deployTxn,
-    TResult Function(DeployAccountTxn value)? deployAccountTxn,
-    TResult Function(L1HandlerTxn value)? l1HandlerTxn,
+    TResult? Function(InvokeTxnV0 value)? invokeTxnV0,
+    TResult? Function(InvokeTxnV1 value)? invokeTxnV1,
+    TResult? Function(DeclareTxn value)? declareTxn,
+    TResult? Function(DeployTxn value)? deployTxn,
+    TResult? Function(DeployAccountTxn value)? deployAccountTxn,
+    TResult? Function(L1HandlerTxn value)? l1HandlerTxn,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -669,18 +670,21 @@ mixin _$Txn {
 /// @nodoc
 abstract class $TxnCopyWith<$Res> {
   factory $TxnCopyWith(Txn value, $Res Function(Txn) then) =
-      _$TxnCopyWithImpl<$Res>;
+      _$TxnCopyWithImpl<$Res, Txn>;
+  @useResult
   $Res call({Felt? transactionHash, String? version, String? type});
 }
 
 /// @nodoc
-class _$TxnCopyWithImpl<$Res> implements $TxnCopyWith<$Res> {
+class _$TxnCopyWithImpl<$Res, $Val extends Txn> implements $TxnCopyWith<$Res> {
   _$TxnCopyWithImpl(this._value, this._then);
 
-  final Txn _value;
   // ignore: unused_field
-  final $Res Function(Txn) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? transactionHash = freezed,
@@ -688,19 +692,19 @@ class _$TxnCopyWithImpl<$Res> implements $TxnCopyWith<$Res> {
     Object? type = freezed,
   }) {
     return _then(_value.copyWith(
-      transactionHash: transactionHash == freezed
+      transactionHash: freezed == transactionHash
           ? _value.transactionHash
           : transactionHash // ignore: cast_nullable_to_non_nullable
               as Felt?,
-      version: version == freezed
+      version: freezed == version
           ? _value.version
           : version // ignore: cast_nullable_to_non_nullable
               as String?,
-      type: type == freezed
+      type: freezed == type
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
               as String?,
-    ));
+    ) as $Val);
   }
 }
 
@@ -710,6 +714,7 @@ abstract class _$$InvokeTxnV0CopyWith<$Res> implements $TxnCopyWith<$Res> {
           _$InvokeTxnV0 value, $Res Function(_$InvokeTxnV0) then) =
       __$$InvokeTxnV0CopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {Felt? transactionHash,
       Felt? maxFee,
@@ -723,15 +728,14 @@ abstract class _$$InvokeTxnV0CopyWith<$Res> implements $TxnCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$InvokeTxnV0CopyWithImpl<$Res> extends _$TxnCopyWithImpl<$Res>
+class __$$InvokeTxnV0CopyWithImpl<$Res>
+    extends _$TxnCopyWithImpl<$Res, _$InvokeTxnV0>
     implements _$$InvokeTxnV0CopyWith<$Res> {
   __$$InvokeTxnV0CopyWithImpl(
       _$InvokeTxnV0 _value, $Res Function(_$InvokeTxnV0) _then)
-      : super(_value, (v) => _then(v as _$InvokeTxnV0));
+      : super(_value, _then);
 
-  @override
-  _$InvokeTxnV0 get _value => super._value as _$InvokeTxnV0;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? transactionHash = freezed,
@@ -745,39 +749,39 @@ class __$$InvokeTxnV0CopyWithImpl<$Res> extends _$TxnCopyWithImpl<$Res>
     Object? calldata = freezed,
   }) {
     return _then(_$InvokeTxnV0(
-      transactionHash: transactionHash == freezed
+      transactionHash: freezed == transactionHash
           ? _value.transactionHash
           : transactionHash // ignore: cast_nullable_to_non_nullable
               as Felt?,
-      maxFee: maxFee == freezed
+      maxFee: freezed == maxFee
           ? _value.maxFee
           : maxFee // ignore: cast_nullable_to_non_nullable
               as Felt?,
-      version: version == freezed
+      version: freezed == version
           ? _value.version
           : version // ignore: cast_nullable_to_non_nullable
               as String?,
-      signature: signature == freezed
+      signature: freezed == signature
           ? _value._signature
           : signature // ignore: cast_nullable_to_non_nullable
               as List<Felt>?,
-      nonce: nonce == freezed
+      nonce: freezed == nonce
           ? _value.nonce
           : nonce // ignore: cast_nullable_to_non_nullable
               as Felt?,
-      type: type == freezed
+      type: freezed == type
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
               as String?,
-      contractAddress: contractAddress == freezed
+      contractAddress: freezed == contractAddress
           ? _value.contractAddress
           : contractAddress // ignore: cast_nullable_to_non_nullable
               as Felt?,
-      entryPointSelector: entryPointSelector == freezed
+      entryPointSelector: freezed == entryPointSelector
           ? _value.entryPointSelector
           : entryPointSelector // ignore: cast_nullable_to_non_nullable
               as Felt?,
-      calldata: calldata == freezed
+      calldata: freezed == calldata
           ? _value._calldata
           : calldata // ignore: cast_nullable_to_non_nullable
               as List<Felt>?,
@@ -819,6 +823,7 @@ class _$InvokeTxnV0 implements InvokeTxnV0 {
   List<Felt>? get signature {
     final value = _signature;
     if (value == null) return null;
+    if (_signature is EqualUnmodifiableListView) return _signature;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(value);
   }
@@ -839,6 +844,7 @@ class _$InvokeTxnV0 implements InvokeTxnV0 {
   List<Felt>? get calldata {
     final value = _calldata;
     if (value == null) return null;
+    if (_calldata is EqualUnmodifiableListView) return _calldata;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(value);
   }
@@ -856,18 +862,18 @@ class _$InvokeTxnV0 implements InvokeTxnV0 {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$InvokeTxnV0 &&
-            const DeepCollectionEquality()
-                .equals(other.transactionHash, transactionHash) &&
-            const DeepCollectionEquality().equals(other.maxFee, maxFee) &&
-            const DeepCollectionEquality().equals(other.version, version) &&
+            (identical(other.transactionHash, transactionHash) ||
+                other.transactionHash == transactionHash) &&
+            (identical(other.maxFee, maxFee) || other.maxFee == maxFee) &&
+            (identical(other.version, version) || other.version == version) &&
             const DeepCollectionEquality()
                 .equals(other._signature, _signature) &&
-            const DeepCollectionEquality().equals(other.nonce, nonce) &&
-            const DeepCollectionEquality().equals(other.type, type) &&
-            const DeepCollectionEquality()
-                .equals(other.contractAddress, contractAddress) &&
-            const DeepCollectionEquality()
-                .equals(other.entryPointSelector, entryPointSelector) &&
+            (identical(other.nonce, nonce) || other.nonce == nonce) &&
+            (identical(other.type, type) || other.type == type) &&
+            (identical(other.contractAddress, contractAddress) ||
+                other.contractAddress == contractAddress) &&
+            (identical(other.entryPointSelector, entryPointSelector) ||
+                other.entryPointSelector == entryPointSelector) &&
             const DeepCollectionEquality().equals(other._calldata, _calldata));
   }
 
@@ -875,18 +881,19 @@ class _$InvokeTxnV0 implements InvokeTxnV0 {
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      const DeepCollectionEquality().hash(transactionHash),
-      const DeepCollectionEquality().hash(maxFee),
-      const DeepCollectionEquality().hash(version),
+      transactionHash,
+      maxFee,
+      version,
       const DeepCollectionEquality().hash(_signature),
-      const DeepCollectionEquality().hash(nonce),
-      const DeepCollectionEquality().hash(type),
-      const DeepCollectionEquality().hash(contractAddress),
-      const DeepCollectionEquality().hash(entryPointSelector),
+      nonce,
+      type,
+      contractAddress,
+      entryPointSelector,
       const DeepCollectionEquality().hash(_calldata));
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$InvokeTxnV0CopyWith<_$InvokeTxnV0> get copyWith =>
       __$$InvokeTxnV0CopyWithImpl<_$InvokeTxnV0>(this, _$identity);
 
@@ -960,7 +967,7 @@ class _$InvokeTxnV0 implements InvokeTxnV0 {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(
+    TResult? Function(
             Felt? transactionHash,
             Felt? maxFee,
             String? version,
@@ -971,7 +978,7 @@ class _$InvokeTxnV0 implements InvokeTxnV0 {
             Felt? entryPointSelector,
             List<Felt>? calldata)?
         invokeTxnV0,
-    TResult Function(
+    TResult? Function(
             Felt? transactionHash,
             Felt? maxFee,
             String? version,
@@ -981,7 +988,7 @@ class _$InvokeTxnV0 implements InvokeTxnV0 {
             Felt? sender_address,
             List<Felt>? calldata)?
         invokeTxnV1,
-    TResult Function(
+    TResult? Function(
             Felt? transactionHash,
             Felt? maxFee,
             String? version,
@@ -991,7 +998,7 @@ class _$InvokeTxnV0 implements InvokeTxnV0 {
             Felt? classHash,
             Felt? senderAddress)?
         declareTxn,
-    TResult Function(
+    TResult? Function(
             Felt? transactionHash,
             Felt? classHash,
             String? version,
@@ -999,7 +1006,7 @@ class _$InvokeTxnV0 implements InvokeTxnV0 {
             Felt? contractAddressSalt,
             List<Felt>? constructorCalldata)?
         deployTxn,
-    TResult Function(
+    TResult? Function(
             Felt? transactionHash,
             Felt? maxFee,
             String? version,
@@ -1010,7 +1017,7 @@ class _$InvokeTxnV0 implements InvokeTxnV0 {
             Felt? classHash,
             List<Felt>? constructorCalldata)?
         deployAccountTxn,
-    TResult Function(
+    TResult? Function(
             Felt? transactionHash,
             String? version,
             Felt? nonce,
@@ -1111,12 +1118,12 @@ class _$InvokeTxnV0 implements InvokeTxnV0 {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(InvokeTxnV0 value)? invokeTxnV0,
-    TResult Function(InvokeTxnV1 value)? invokeTxnV1,
-    TResult Function(DeclareTxn value)? declareTxn,
-    TResult Function(DeployTxn value)? deployTxn,
-    TResult Function(DeployAccountTxn value)? deployAccountTxn,
-    TResult Function(L1HandlerTxn value)? l1HandlerTxn,
+    TResult? Function(InvokeTxnV0 value)? invokeTxnV0,
+    TResult? Function(InvokeTxnV1 value)? invokeTxnV1,
+    TResult? Function(DeclareTxn value)? declareTxn,
+    TResult? Function(DeployTxn value)? deployTxn,
+    TResult? Function(DeployAccountTxn value)? deployAccountTxn,
+    TResult? Function(L1HandlerTxn value)? l1HandlerTxn,
   }) {
     return invokeTxnV0?.call(this);
   }
@@ -1187,6 +1194,7 @@ abstract class _$$InvokeTxnV1CopyWith<$Res> implements $TxnCopyWith<$Res> {
           _$InvokeTxnV1 value, $Res Function(_$InvokeTxnV1) then) =
       __$$InvokeTxnV1CopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {Felt? transactionHash,
       Felt? maxFee,
@@ -1199,15 +1207,14 @@ abstract class _$$InvokeTxnV1CopyWith<$Res> implements $TxnCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$InvokeTxnV1CopyWithImpl<$Res> extends _$TxnCopyWithImpl<$Res>
+class __$$InvokeTxnV1CopyWithImpl<$Res>
+    extends _$TxnCopyWithImpl<$Res, _$InvokeTxnV1>
     implements _$$InvokeTxnV1CopyWith<$Res> {
   __$$InvokeTxnV1CopyWithImpl(
       _$InvokeTxnV1 _value, $Res Function(_$InvokeTxnV1) _then)
-      : super(_value, (v) => _then(v as _$InvokeTxnV1));
+      : super(_value, _then);
 
-  @override
-  _$InvokeTxnV1 get _value => super._value as _$InvokeTxnV1;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? transactionHash = freezed,
@@ -1220,35 +1227,35 @@ class __$$InvokeTxnV1CopyWithImpl<$Res> extends _$TxnCopyWithImpl<$Res>
     Object? calldata = freezed,
   }) {
     return _then(_$InvokeTxnV1(
-      transactionHash: transactionHash == freezed
+      transactionHash: freezed == transactionHash
           ? _value.transactionHash
           : transactionHash // ignore: cast_nullable_to_non_nullable
               as Felt?,
-      maxFee: maxFee == freezed
+      maxFee: freezed == maxFee
           ? _value.maxFee
           : maxFee // ignore: cast_nullable_to_non_nullable
               as Felt?,
-      version: version == freezed
+      version: freezed == version
           ? _value.version
           : version // ignore: cast_nullable_to_non_nullable
               as String?,
-      signature: signature == freezed
+      signature: freezed == signature
           ? _value._signature
           : signature // ignore: cast_nullable_to_non_nullable
               as List<Felt>?,
-      nonce: nonce == freezed
+      nonce: freezed == nonce
           ? _value.nonce
           : nonce // ignore: cast_nullable_to_non_nullable
               as Felt?,
-      type: type == freezed
+      type: freezed == type
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
               as String?,
-      sender_address: sender_address == freezed
+      sender_address: freezed == sender_address
           ? _value.sender_address
           : sender_address // ignore: cast_nullable_to_non_nullable
               as Felt?,
-      calldata: calldata == freezed
+      calldata: freezed == calldata
           ? _value._calldata
           : calldata // ignore: cast_nullable_to_non_nullable
               as List<Felt>?,
@@ -1289,6 +1296,7 @@ class _$InvokeTxnV1 implements InvokeTxnV1 {
   List<Felt>? get signature {
     final value = _signature;
     if (value == null) return null;
+    if (_signature is EqualUnmodifiableListView) return _signature;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(value);
   }
@@ -1307,6 +1315,7 @@ class _$InvokeTxnV1 implements InvokeTxnV1 {
   List<Felt>? get calldata {
     final value = _calldata;
     if (value == null) return null;
+    if (_calldata is EqualUnmodifiableListView) return _calldata;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(value);
   }
@@ -1324,16 +1333,16 @@ class _$InvokeTxnV1 implements InvokeTxnV1 {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$InvokeTxnV1 &&
-            const DeepCollectionEquality()
-                .equals(other.transactionHash, transactionHash) &&
-            const DeepCollectionEquality().equals(other.maxFee, maxFee) &&
-            const DeepCollectionEquality().equals(other.version, version) &&
+            (identical(other.transactionHash, transactionHash) ||
+                other.transactionHash == transactionHash) &&
+            (identical(other.maxFee, maxFee) || other.maxFee == maxFee) &&
+            (identical(other.version, version) || other.version == version) &&
             const DeepCollectionEquality()
                 .equals(other._signature, _signature) &&
-            const DeepCollectionEquality().equals(other.nonce, nonce) &&
-            const DeepCollectionEquality().equals(other.type, type) &&
-            const DeepCollectionEquality()
-                .equals(other.sender_address, sender_address) &&
+            (identical(other.nonce, nonce) || other.nonce == nonce) &&
+            (identical(other.type, type) || other.type == type) &&
+            (identical(other.sender_address, sender_address) ||
+                other.sender_address == sender_address) &&
             const DeepCollectionEquality().equals(other._calldata, _calldata));
   }
 
@@ -1341,17 +1350,18 @@ class _$InvokeTxnV1 implements InvokeTxnV1 {
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      const DeepCollectionEquality().hash(transactionHash),
-      const DeepCollectionEquality().hash(maxFee),
-      const DeepCollectionEquality().hash(version),
+      transactionHash,
+      maxFee,
+      version,
       const DeepCollectionEquality().hash(_signature),
-      const DeepCollectionEquality().hash(nonce),
-      const DeepCollectionEquality().hash(type),
-      const DeepCollectionEquality().hash(sender_address),
+      nonce,
+      type,
+      sender_address,
       const DeepCollectionEquality().hash(_calldata));
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$InvokeTxnV1CopyWith<_$InvokeTxnV1> get copyWith =>
       __$$InvokeTxnV1CopyWithImpl<_$InvokeTxnV1>(this, _$identity);
 
@@ -1425,7 +1435,7 @@ class _$InvokeTxnV1 implements InvokeTxnV1 {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(
+    TResult? Function(
             Felt? transactionHash,
             Felt? maxFee,
             String? version,
@@ -1436,7 +1446,7 @@ class _$InvokeTxnV1 implements InvokeTxnV1 {
             Felt? entryPointSelector,
             List<Felt>? calldata)?
         invokeTxnV0,
-    TResult Function(
+    TResult? Function(
             Felt? transactionHash,
             Felt? maxFee,
             String? version,
@@ -1446,7 +1456,7 @@ class _$InvokeTxnV1 implements InvokeTxnV1 {
             Felt? sender_address,
             List<Felt>? calldata)?
         invokeTxnV1,
-    TResult Function(
+    TResult? Function(
             Felt? transactionHash,
             Felt? maxFee,
             String? version,
@@ -1456,7 +1466,7 @@ class _$InvokeTxnV1 implements InvokeTxnV1 {
             Felt? classHash,
             Felt? senderAddress)?
         declareTxn,
-    TResult Function(
+    TResult? Function(
             Felt? transactionHash,
             Felt? classHash,
             String? version,
@@ -1464,7 +1474,7 @@ class _$InvokeTxnV1 implements InvokeTxnV1 {
             Felt? contractAddressSalt,
             List<Felt>? constructorCalldata)?
         deployTxn,
-    TResult Function(
+    TResult? Function(
             Felt? transactionHash,
             Felt? maxFee,
             String? version,
@@ -1475,7 +1485,7 @@ class _$InvokeTxnV1 implements InvokeTxnV1 {
             Felt? classHash,
             List<Felt>? constructorCalldata)?
         deployAccountTxn,
-    TResult Function(
+    TResult? Function(
             Felt? transactionHash,
             String? version,
             Felt? nonce,
@@ -1576,12 +1586,12 @@ class _$InvokeTxnV1 implements InvokeTxnV1 {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(InvokeTxnV0 value)? invokeTxnV0,
-    TResult Function(InvokeTxnV1 value)? invokeTxnV1,
-    TResult Function(DeclareTxn value)? declareTxn,
-    TResult Function(DeployTxn value)? deployTxn,
-    TResult Function(DeployAccountTxn value)? deployAccountTxn,
-    TResult Function(L1HandlerTxn value)? l1HandlerTxn,
+    TResult? Function(InvokeTxnV0 value)? invokeTxnV0,
+    TResult? Function(InvokeTxnV1 value)? invokeTxnV1,
+    TResult? Function(DeclareTxn value)? declareTxn,
+    TResult? Function(DeployTxn value)? deployTxn,
+    TResult? Function(DeployAccountTxn value)? deployAccountTxn,
+    TResult? Function(L1HandlerTxn value)? l1HandlerTxn,
   }) {
     return invokeTxnV1?.call(this);
   }
@@ -1650,6 +1660,7 @@ abstract class _$$DeclareTxnCopyWith<$Res> implements $TxnCopyWith<$Res> {
           _$DeclareTxn value, $Res Function(_$DeclareTxn) then) =
       __$$DeclareTxnCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {Felt? transactionHash,
       Felt? maxFee,
@@ -1662,15 +1673,14 @@ abstract class _$$DeclareTxnCopyWith<$Res> implements $TxnCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$DeclareTxnCopyWithImpl<$Res> extends _$TxnCopyWithImpl<$Res>
+class __$$DeclareTxnCopyWithImpl<$Res>
+    extends _$TxnCopyWithImpl<$Res, _$DeclareTxn>
     implements _$$DeclareTxnCopyWith<$Res> {
   __$$DeclareTxnCopyWithImpl(
       _$DeclareTxn _value, $Res Function(_$DeclareTxn) _then)
-      : super(_value, (v) => _then(v as _$DeclareTxn));
+      : super(_value, _then);
 
-  @override
-  _$DeclareTxn get _value => super._value as _$DeclareTxn;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? transactionHash = freezed,
@@ -1683,35 +1693,35 @@ class __$$DeclareTxnCopyWithImpl<$Res> extends _$TxnCopyWithImpl<$Res>
     Object? senderAddress = freezed,
   }) {
     return _then(_$DeclareTxn(
-      transactionHash: transactionHash == freezed
+      transactionHash: freezed == transactionHash
           ? _value.transactionHash
           : transactionHash // ignore: cast_nullable_to_non_nullable
               as Felt?,
-      maxFee: maxFee == freezed
+      maxFee: freezed == maxFee
           ? _value.maxFee
           : maxFee // ignore: cast_nullable_to_non_nullable
               as Felt?,
-      version: version == freezed
+      version: freezed == version
           ? _value.version
           : version // ignore: cast_nullable_to_non_nullable
               as String?,
-      signature: signature == freezed
+      signature: freezed == signature
           ? _value._signature
           : signature // ignore: cast_nullable_to_non_nullable
               as List<Felt>?,
-      nonce: nonce == freezed
+      nonce: freezed == nonce
           ? _value.nonce
           : nonce // ignore: cast_nullable_to_non_nullable
               as Felt?,
-      type: type == freezed
+      type: freezed == type
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
               as String?,
-      classHash: classHash == freezed
+      classHash: freezed == classHash
           ? _value.classHash
           : classHash // ignore: cast_nullable_to_non_nullable
               as Felt?,
-      senderAddress: senderAddress == freezed
+      senderAddress: freezed == senderAddress
           ? _value.senderAddress
           : senderAddress // ignore: cast_nullable_to_non_nullable
               as Felt?,
@@ -1751,6 +1761,7 @@ class _$DeclareTxn implements DeclareTxn {
   List<Felt>? get signature {
     final value = _signature;
     if (value == null) return null;
+    if (_signature is EqualUnmodifiableListView) return _signature;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(value);
   }
@@ -1779,34 +1790,36 @@ class _$DeclareTxn implements DeclareTxn {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$DeclareTxn &&
-            const DeepCollectionEquality()
-                .equals(other.transactionHash, transactionHash) &&
-            const DeepCollectionEquality().equals(other.maxFee, maxFee) &&
-            const DeepCollectionEquality().equals(other.version, version) &&
+            (identical(other.transactionHash, transactionHash) ||
+                other.transactionHash == transactionHash) &&
+            (identical(other.maxFee, maxFee) || other.maxFee == maxFee) &&
+            (identical(other.version, version) || other.version == version) &&
             const DeepCollectionEquality()
                 .equals(other._signature, _signature) &&
-            const DeepCollectionEquality().equals(other.nonce, nonce) &&
-            const DeepCollectionEquality().equals(other.type, type) &&
-            const DeepCollectionEquality().equals(other.classHash, classHash) &&
-            const DeepCollectionEquality()
-                .equals(other.senderAddress, senderAddress));
+            (identical(other.nonce, nonce) || other.nonce == nonce) &&
+            (identical(other.type, type) || other.type == type) &&
+            (identical(other.classHash, classHash) ||
+                other.classHash == classHash) &&
+            (identical(other.senderAddress, senderAddress) ||
+                other.senderAddress == senderAddress));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      const DeepCollectionEquality().hash(transactionHash),
-      const DeepCollectionEquality().hash(maxFee),
-      const DeepCollectionEquality().hash(version),
+      transactionHash,
+      maxFee,
+      version,
       const DeepCollectionEquality().hash(_signature),
-      const DeepCollectionEquality().hash(nonce),
-      const DeepCollectionEquality().hash(type),
-      const DeepCollectionEquality().hash(classHash),
-      const DeepCollectionEquality().hash(senderAddress));
+      nonce,
+      type,
+      classHash,
+      senderAddress);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$DeclareTxnCopyWith<_$DeclareTxn> get copyWith =>
       __$$DeclareTxnCopyWithImpl<_$DeclareTxn>(this, _$identity);
 
@@ -1880,7 +1893,7 @@ class _$DeclareTxn implements DeclareTxn {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(
+    TResult? Function(
             Felt? transactionHash,
             Felt? maxFee,
             String? version,
@@ -1891,7 +1904,7 @@ class _$DeclareTxn implements DeclareTxn {
             Felt? entryPointSelector,
             List<Felt>? calldata)?
         invokeTxnV0,
-    TResult Function(
+    TResult? Function(
             Felt? transactionHash,
             Felt? maxFee,
             String? version,
@@ -1901,7 +1914,7 @@ class _$DeclareTxn implements DeclareTxn {
             Felt? sender_address,
             List<Felt>? calldata)?
         invokeTxnV1,
-    TResult Function(
+    TResult? Function(
             Felt? transactionHash,
             Felt? maxFee,
             String? version,
@@ -1911,7 +1924,7 @@ class _$DeclareTxn implements DeclareTxn {
             Felt? classHash,
             Felt? senderAddress)?
         declareTxn,
-    TResult Function(
+    TResult? Function(
             Felt? transactionHash,
             Felt? classHash,
             String? version,
@@ -1919,7 +1932,7 @@ class _$DeclareTxn implements DeclareTxn {
             Felt? contractAddressSalt,
             List<Felt>? constructorCalldata)?
         deployTxn,
-    TResult Function(
+    TResult? Function(
             Felt? transactionHash,
             Felt? maxFee,
             String? version,
@@ -1930,7 +1943,7 @@ class _$DeclareTxn implements DeclareTxn {
             Felt? classHash,
             List<Felt>? constructorCalldata)?
         deployAccountTxn,
-    TResult Function(
+    TResult? Function(
             Felt? transactionHash,
             String? version,
             Felt? nonce,
@@ -2031,12 +2044,12 @@ class _$DeclareTxn implements DeclareTxn {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(InvokeTxnV0 value)? invokeTxnV0,
-    TResult Function(InvokeTxnV1 value)? invokeTxnV1,
-    TResult Function(DeclareTxn value)? declareTxn,
-    TResult Function(DeployTxn value)? deployTxn,
-    TResult Function(DeployAccountTxn value)? deployAccountTxn,
-    TResult Function(L1HandlerTxn value)? l1HandlerTxn,
+    TResult? Function(InvokeTxnV0 value)? invokeTxnV0,
+    TResult? Function(InvokeTxnV1 value)? invokeTxnV1,
+    TResult? Function(DeclareTxn value)? declareTxn,
+    TResult? Function(DeployTxn value)? deployTxn,
+    TResult? Function(DeployAccountTxn value)? deployAccountTxn,
+    TResult? Function(L1HandlerTxn value)? l1HandlerTxn,
   }) {
     return declareTxn?.call(this);
   }
@@ -2104,6 +2117,7 @@ abstract class _$$DeployTxnCopyWith<$Res> implements $TxnCopyWith<$Res> {
           _$DeployTxn value, $Res Function(_$DeployTxn) then) =
       __$$DeployTxnCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {Felt? transactionHash,
       Felt? classHash,
@@ -2114,15 +2128,14 @@ abstract class _$$DeployTxnCopyWith<$Res> implements $TxnCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$DeployTxnCopyWithImpl<$Res> extends _$TxnCopyWithImpl<$Res>
+class __$$DeployTxnCopyWithImpl<$Res>
+    extends _$TxnCopyWithImpl<$Res, _$DeployTxn>
     implements _$$DeployTxnCopyWith<$Res> {
   __$$DeployTxnCopyWithImpl(
       _$DeployTxn _value, $Res Function(_$DeployTxn) _then)
-      : super(_value, (v) => _then(v as _$DeployTxn));
+      : super(_value, _then);
 
-  @override
-  _$DeployTxn get _value => super._value as _$DeployTxn;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? transactionHash = freezed,
@@ -2133,27 +2146,27 @@ class __$$DeployTxnCopyWithImpl<$Res> extends _$TxnCopyWithImpl<$Res>
     Object? constructorCalldata = freezed,
   }) {
     return _then(_$DeployTxn(
-      transactionHash: transactionHash == freezed
+      transactionHash: freezed == transactionHash
           ? _value.transactionHash
           : transactionHash // ignore: cast_nullable_to_non_nullable
               as Felt?,
-      classHash: classHash == freezed
+      classHash: freezed == classHash
           ? _value.classHash
           : classHash // ignore: cast_nullable_to_non_nullable
               as Felt?,
-      version: version == freezed
+      version: freezed == version
           ? _value.version
           : version // ignore: cast_nullable_to_non_nullable
               as String?,
-      type: type == freezed
+      type: freezed == type
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
               as String?,
-      contractAddressSalt: contractAddressSalt == freezed
+      contractAddressSalt: freezed == contractAddressSalt
           ? _value.contractAddressSalt
           : contractAddressSalt // ignore: cast_nullable_to_non_nullable
               as Felt?,
-      constructorCalldata: constructorCalldata == freezed
+      constructorCalldata: freezed == constructorCalldata
           ? _value._constructorCalldata
           : constructorCalldata // ignore: cast_nullable_to_non_nullable
               as List<Felt>?,
@@ -2194,6 +2207,8 @@ class _$DeployTxn implements DeployTxn {
   List<Felt>? get constructorCalldata {
     final value = _constructorCalldata;
     if (value == null) return null;
+    if (_constructorCalldata is EqualUnmodifiableListView)
+      return _constructorCalldata;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(value);
   }
@@ -2211,13 +2226,14 @@ class _$DeployTxn implements DeployTxn {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$DeployTxn &&
-            const DeepCollectionEquality()
-                .equals(other.transactionHash, transactionHash) &&
-            const DeepCollectionEquality().equals(other.classHash, classHash) &&
-            const DeepCollectionEquality().equals(other.version, version) &&
-            const DeepCollectionEquality().equals(other.type, type) &&
-            const DeepCollectionEquality()
-                .equals(other.contractAddressSalt, contractAddressSalt) &&
+            (identical(other.transactionHash, transactionHash) ||
+                other.transactionHash == transactionHash) &&
+            (identical(other.classHash, classHash) ||
+                other.classHash == classHash) &&
+            (identical(other.version, version) || other.version == version) &&
+            (identical(other.type, type) || other.type == type) &&
+            (identical(other.contractAddressSalt, contractAddressSalt) ||
+                other.contractAddressSalt == contractAddressSalt) &&
             const DeepCollectionEquality()
                 .equals(other._constructorCalldata, _constructorCalldata));
   }
@@ -2226,15 +2242,16 @@ class _$DeployTxn implements DeployTxn {
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      const DeepCollectionEquality().hash(transactionHash),
-      const DeepCollectionEquality().hash(classHash),
-      const DeepCollectionEquality().hash(version),
-      const DeepCollectionEquality().hash(type),
-      const DeepCollectionEquality().hash(contractAddressSalt),
+      transactionHash,
+      classHash,
+      version,
+      type,
+      contractAddressSalt,
       const DeepCollectionEquality().hash(_constructorCalldata));
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$DeployTxnCopyWith<_$DeployTxn> get copyWith =>
       __$$DeployTxnCopyWithImpl<_$DeployTxn>(this, _$identity);
 
@@ -2308,7 +2325,7 @@ class _$DeployTxn implements DeployTxn {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(
+    TResult? Function(
             Felt? transactionHash,
             Felt? maxFee,
             String? version,
@@ -2319,7 +2336,7 @@ class _$DeployTxn implements DeployTxn {
             Felt? entryPointSelector,
             List<Felt>? calldata)?
         invokeTxnV0,
-    TResult Function(
+    TResult? Function(
             Felt? transactionHash,
             Felt? maxFee,
             String? version,
@@ -2329,7 +2346,7 @@ class _$DeployTxn implements DeployTxn {
             Felt? sender_address,
             List<Felt>? calldata)?
         invokeTxnV1,
-    TResult Function(
+    TResult? Function(
             Felt? transactionHash,
             Felt? maxFee,
             String? version,
@@ -2339,7 +2356,7 @@ class _$DeployTxn implements DeployTxn {
             Felt? classHash,
             Felt? senderAddress)?
         declareTxn,
-    TResult Function(
+    TResult? Function(
             Felt? transactionHash,
             Felt? classHash,
             String? version,
@@ -2347,7 +2364,7 @@ class _$DeployTxn implements DeployTxn {
             Felt? contractAddressSalt,
             List<Felt>? constructorCalldata)?
         deployTxn,
-    TResult Function(
+    TResult? Function(
             Felt? transactionHash,
             Felt? maxFee,
             String? version,
@@ -2358,7 +2375,7 @@ class _$DeployTxn implements DeployTxn {
             Felt? classHash,
             List<Felt>? constructorCalldata)?
         deployAccountTxn,
-    TResult Function(
+    TResult? Function(
             Felt? transactionHash,
             String? version,
             Felt? nonce,
@@ -2459,12 +2476,12 @@ class _$DeployTxn implements DeployTxn {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(InvokeTxnV0 value)? invokeTxnV0,
-    TResult Function(InvokeTxnV1 value)? invokeTxnV1,
-    TResult Function(DeclareTxn value)? declareTxn,
-    TResult Function(DeployTxn value)? deployTxn,
-    TResult Function(DeployAccountTxn value)? deployAccountTxn,
-    TResult Function(L1HandlerTxn value)? l1HandlerTxn,
+    TResult? Function(InvokeTxnV0 value)? invokeTxnV0,
+    TResult? Function(InvokeTxnV1 value)? invokeTxnV1,
+    TResult? Function(DeclareTxn value)? declareTxn,
+    TResult? Function(DeployTxn value)? deployTxn,
+    TResult? Function(DeployAccountTxn value)? deployAccountTxn,
+    TResult? Function(L1HandlerTxn value)? l1HandlerTxn,
   }) {
     return deployTxn?.call(this);
   }
@@ -2526,6 +2543,7 @@ abstract class _$$DeployAccountTxnCopyWith<$Res> implements $TxnCopyWith<$Res> {
           _$DeployAccountTxn value, $Res Function(_$DeployAccountTxn) then) =
       __$$DeployAccountTxnCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {Felt? transactionHash,
       Felt? maxFee,
@@ -2539,15 +2557,14 @@ abstract class _$$DeployAccountTxnCopyWith<$Res> implements $TxnCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$DeployAccountTxnCopyWithImpl<$Res> extends _$TxnCopyWithImpl<$Res>
+class __$$DeployAccountTxnCopyWithImpl<$Res>
+    extends _$TxnCopyWithImpl<$Res, _$DeployAccountTxn>
     implements _$$DeployAccountTxnCopyWith<$Res> {
   __$$DeployAccountTxnCopyWithImpl(
       _$DeployAccountTxn _value, $Res Function(_$DeployAccountTxn) _then)
-      : super(_value, (v) => _then(v as _$DeployAccountTxn));
+      : super(_value, _then);
 
-  @override
-  _$DeployAccountTxn get _value => super._value as _$DeployAccountTxn;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? transactionHash = freezed,
@@ -2561,39 +2578,39 @@ class __$$DeployAccountTxnCopyWithImpl<$Res> extends _$TxnCopyWithImpl<$Res>
     Object? constructorCalldata = freezed,
   }) {
     return _then(_$DeployAccountTxn(
-      transactionHash: transactionHash == freezed
+      transactionHash: freezed == transactionHash
           ? _value.transactionHash
           : transactionHash // ignore: cast_nullable_to_non_nullable
               as Felt?,
-      maxFee: maxFee == freezed
+      maxFee: freezed == maxFee
           ? _value.maxFee
           : maxFee // ignore: cast_nullable_to_non_nullable
               as Felt?,
-      version: version == freezed
+      version: freezed == version
           ? _value.version
           : version // ignore: cast_nullable_to_non_nullable
               as String?,
-      signature: signature == freezed
+      signature: freezed == signature
           ? _value._signature
           : signature // ignore: cast_nullable_to_non_nullable
               as List<Felt>?,
-      nonce: nonce == freezed
+      nonce: freezed == nonce
           ? _value.nonce
           : nonce // ignore: cast_nullable_to_non_nullable
               as Felt?,
-      type: type == freezed
+      type: freezed == type
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
               as String?,
-      contractAddressSalt: contractAddressSalt == freezed
+      contractAddressSalt: freezed == contractAddressSalt
           ? _value.contractAddressSalt
           : contractAddressSalt // ignore: cast_nullable_to_non_nullable
               as Felt?,
-      classHash: classHash == freezed
+      classHash: freezed == classHash
           ? _value.classHash
           : classHash // ignore: cast_nullable_to_non_nullable
               as Felt?,
-      constructorCalldata: constructorCalldata == freezed
+      constructorCalldata: freezed == constructorCalldata
           ? _value._constructorCalldata
           : constructorCalldata // ignore: cast_nullable_to_non_nullable
               as List<Felt>?,
@@ -2635,6 +2652,7 @@ class _$DeployAccountTxn implements DeployAccountTxn {
   List<Felt>? get signature {
     final value = _signature;
     if (value == null) return null;
+    if (_signature is EqualUnmodifiableListView) return _signature;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(value);
   }
@@ -2655,6 +2673,8 @@ class _$DeployAccountTxn implements DeployAccountTxn {
   List<Felt>? get constructorCalldata {
     final value = _constructorCalldata;
     if (value == null) return null;
+    if (_constructorCalldata is EqualUnmodifiableListView)
+      return _constructorCalldata;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(value);
   }
@@ -2672,17 +2692,18 @@ class _$DeployAccountTxn implements DeployAccountTxn {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$DeployAccountTxn &&
-            const DeepCollectionEquality()
-                .equals(other.transactionHash, transactionHash) &&
-            const DeepCollectionEquality().equals(other.maxFee, maxFee) &&
-            const DeepCollectionEquality().equals(other.version, version) &&
+            (identical(other.transactionHash, transactionHash) ||
+                other.transactionHash == transactionHash) &&
+            (identical(other.maxFee, maxFee) || other.maxFee == maxFee) &&
+            (identical(other.version, version) || other.version == version) &&
             const DeepCollectionEquality()
                 .equals(other._signature, _signature) &&
-            const DeepCollectionEquality().equals(other.nonce, nonce) &&
-            const DeepCollectionEquality().equals(other.type, type) &&
-            const DeepCollectionEquality()
-                .equals(other.contractAddressSalt, contractAddressSalt) &&
-            const DeepCollectionEquality().equals(other.classHash, classHash) &&
+            (identical(other.nonce, nonce) || other.nonce == nonce) &&
+            (identical(other.type, type) || other.type == type) &&
+            (identical(other.contractAddressSalt, contractAddressSalt) ||
+                other.contractAddressSalt == contractAddressSalt) &&
+            (identical(other.classHash, classHash) ||
+                other.classHash == classHash) &&
             const DeepCollectionEquality()
                 .equals(other._constructorCalldata, _constructorCalldata));
   }
@@ -2691,18 +2712,19 @@ class _$DeployAccountTxn implements DeployAccountTxn {
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      const DeepCollectionEquality().hash(transactionHash),
-      const DeepCollectionEquality().hash(maxFee),
-      const DeepCollectionEquality().hash(version),
+      transactionHash,
+      maxFee,
+      version,
       const DeepCollectionEquality().hash(_signature),
-      const DeepCollectionEquality().hash(nonce),
-      const DeepCollectionEquality().hash(type),
-      const DeepCollectionEquality().hash(contractAddressSalt),
-      const DeepCollectionEquality().hash(classHash),
+      nonce,
+      type,
+      contractAddressSalt,
+      classHash,
       const DeepCollectionEquality().hash(_constructorCalldata));
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$DeployAccountTxnCopyWith<_$DeployAccountTxn> get copyWith =>
       __$$DeployAccountTxnCopyWithImpl<_$DeployAccountTxn>(this, _$identity);
 
@@ -2776,7 +2798,7 @@ class _$DeployAccountTxn implements DeployAccountTxn {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(
+    TResult? Function(
             Felt? transactionHash,
             Felt? maxFee,
             String? version,
@@ -2787,7 +2809,7 @@ class _$DeployAccountTxn implements DeployAccountTxn {
             Felt? entryPointSelector,
             List<Felt>? calldata)?
         invokeTxnV0,
-    TResult Function(
+    TResult? Function(
             Felt? transactionHash,
             Felt? maxFee,
             String? version,
@@ -2797,7 +2819,7 @@ class _$DeployAccountTxn implements DeployAccountTxn {
             Felt? sender_address,
             List<Felt>? calldata)?
         invokeTxnV1,
-    TResult Function(
+    TResult? Function(
             Felt? transactionHash,
             Felt? maxFee,
             String? version,
@@ -2807,7 +2829,7 @@ class _$DeployAccountTxn implements DeployAccountTxn {
             Felt? classHash,
             Felt? senderAddress)?
         declareTxn,
-    TResult Function(
+    TResult? Function(
             Felt? transactionHash,
             Felt? classHash,
             String? version,
@@ -2815,7 +2837,7 @@ class _$DeployAccountTxn implements DeployAccountTxn {
             Felt? contractAddressSalt,
             List<Felt>? constructorCalldata)?
         deployTxn,
-    TResult Function(
+    TResult? Function(
             Felt? transactionHash,
             Felt? maxFee,
             String? version,
@@ -2826,7 +2848,7 @@ class _$DeployAccountTxn implements DeployAccountTxn {
             Felt? classHash,
             List<Felt>? constructorCalldata)?
         deployAccountTxn,
-    TResult Function(
+    TResult? Function(
             Felt? transactionHash,
             String? version,
             Felt? nonce,
@@ -2927,12 +2949,12 @@ class _$DeployAccountTxn implements DeployAccountTxn {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(InvokeTxnV0 value)? invokeTxnV0,
-    TResult Function(InvokeTxnV1 value)? invokeTxnV1,
-    TResult Function(DeclareTxn value)? declareTxn,
-    TResult Function(DeployTxn value)? deployTxn,
-    TResult Function(DeployAccountTxn value)? deployAccountTxn,
-    TResult Function(L1HandlerTxn value)? l1HandlerTxn,
+    TResult? Function(InvokeTxnV0 value)? invokeTxnV0,
+    TResult? Function(InvokeTxnV1 value)? invokeTxnV1,
+    TResult? Function(DeclareTxn value)? declareTxn,
+    TResult? Function(DeployTxn value)? deployTxn,
+    TResult? Function(DeployAccountTxn value)? deployAccountTxn,
+    TResult? Function(L1HandlerTxn value)? l1HandlerTxn,
   }) {
     return deployAccountTxn?.call(this);
   }
@@ -3003,6 +3025,7 @@ abstract class _$$L1HandlerTxnCopyWith<$Res> implements $TxnCopyWith<$Res> {
           _$L1HandlerTxn value, $Res Function(_$L1HandlerTxn) then) =
       __$$L1HandlerTxnCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {Felt? transactionHash,
       String? version,
@@ -3014,15 +3037,14 @@ abstract class _$$L1HandlerTxnCopyWith<$Res> implements $TxnCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$L1HandlerTxnCopyWithImpl<$Res> extends _$TxnCopyWithImpl<$Res>
+class __$$L1HandlerTxnCopyWithImpl<$Res>
+    extends _$TxnCopyWithImpl<$Res, _$L1HandlerTxn>
     implements _$$L1HandlerTxnCopyWith<$Res> {
   __$$L1HandlerTxnCopyWithImpl(
       _$L1HandlerTxn _value, $Res Function(_$L1HandlerTxn) _then)
-      : super(_value, (v) => _then(v as _$L1HandlerTxn));
+      : super(_value, _then);
 
-  @override
-  _$L1HandlerTxn get _value => super._value as _$L1HandlerTxn;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? transactionHash = freezed,
@@ -3034,31 +3056,31 @@ class __$$L1HandlerTxnCopyWithImpl<$Res> extends _$TxnCopyWithImpl<$Res>
     Object? calldata = freezed,
   }) {
     return _then(_$L1HandlerTxn(
-      transactionHash: transactionHash == freezed
+      transactionHash: freezed == transactionHash
           ? _value.transactionHash
           : transactionHash // ignore: cast_nullable_to_non_nullable
               as Felt?,
-      version: version == freezed
+      version: freezed == version
           ? _value.version
           : version // ignore: cast_nullable_to_non_nullable
               as String?,
-      nonce: nonce == freezed
+      nonce: freezed == nonce
           ? _value.nonce
           : nonce // ignore: cast_nullable_to_non_nullable
               as Felt?,
-      type: type == freezed
+      type: freezed == type
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
               as String?,
-      contractAddress: contractAddress == freezed
+      contractAddress: freezed == contractAddress
           ? _value.contractAddress
           : contractAddress // ignore: cast_nullable_to_non_nullable
               as Felt?,
-      entryPointSelector: entryPointSelector == freezed
+      entryPointSelector: freezed == entryPointSelector
           ? _value.entryPointSelector
           : entryPointSelector // ignore: cast_nullable_to_non_nullable
               as Felt?,
-      calldata: calldata == freezed
+      calldata: freezed == calldata
           ? _value._calldata
           : calldata // ignore: cast_nullable_to_non_nullable
               as List<Felt>?,
@@ -3102,6 +3124,7 @@ class _$L1HandlerTxn implements L1HandlerTxn {
   List<Felt>? get calldata {
     final value = _calldata;
     if (value == null) return null;
+    if (_calldata is EqualUnmodifiableListView) return _calldata;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(value);
   }
@@ -3119,15 +3142,15 @@ class _$L1HandlerTxn implements L1HandlerTxn {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$L1HandlerTxn &&
-            const DeepCollectionEquality()
-                .equals(other.transactionHash, transactionHash) &&
-            const DeepCollectionEquality().equals(other.version, version) &&
-            const DeepCollectionEquality().equals(other.nonce, nonce) &&
-            const DeepCollectionEquality().equals(other.type, type) &&
-            const DeepCollectionEquality()
-                .equals(other.contractAddress, contractAddress) &&
-            const DeepCollectionEquality()
-                .equals(other.entryPointSelector, entryPointSelector) &&
+            (identical(other.transactionHash, transactionHash) ||
+                other.transactionHash == transactionHash) &&
+            (identical(other.version, version) || other.version == version) &&
+            (identical(other.nonce, nonce) || other.nonce == nonce) &&
+            (identical(other.type, type) || other.type == type) &&
+            (identical(other.contractAddress, contractAddress) ||
+                other.contractAddress == contractAddress) &&
+            (identical(other.entryPointSelector, entryPointSelector) ||
+                other.entryPointSelector == entryPointSelector) &&
             const DeepCollectionEquality().equals(other._calldata, _calldata));
   }
 
@@ -3135,16 +3158,17 @@ class _$L1HandlerTxn implements L1HandlerTxn {
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      const DeepCollectionEquality().hash(transactionHash),
-      const DeepCollectionEquality().hash(version),
-      const DeepCollectionEquality().hash(nonce),
-      const DeepCollectionEquality().hash(type),
-      const DeepCollectionEquality().hash(contractAddress),
-      const DeepCollectionEquality().hash(entryPointSelector),
+      transactionHash,
+      version,
+      nonce,
+      type,
+      contractAddress,
+      entryPointSelector,
       const DeepCollectionEquality().hash(_calldata));
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$L1HandlerTxnCopyWith<_$L1HandlerTxn> get copyWith =>
       __$$L1HandlerTxnCopyWithImpl<_$L1HandlerTxn>(this, _$identity);
 
@@ -3218,7 +3242,7 @@ class _$L1HandlerTxn implements L1HandlerTxn {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(
+    TResult? Function(
             Felt? transactionHash,
             Felt? maxFee,
             String? version,
@@ -3229,7 +3253,7 @@ class _$L1HandlerTxn implements L1HandlerTxn {
             Felt? entryPointSelector,
             List<Felt>? calldata)?
         invokeTxnV0,
-    TResult Function(
+    TResult? Function(
             Felt? transactionHash,
             Felt? maxFee,
             String? version,
@@ -3239,7 +3263,7 @@ class _$L1HandlerTxn implements L1HandlerTxn {
             Felt? sender_address,
             List<Felt>? calldata)?
         invokeTxnV1,
-    TResult Function(
+    TResult? Function(
             Felt? transactionHash,
             Felt? maxFee,
             String? version,
@@ -3249,7 +3273,7 @@ class _$L1HandlerTxn implements L1HandlerTxn {
             Felt? classHash,
             Felt? senderAddress)?
         declareTxn,
-    TResult Function(
+    TResult? Function(
             Felt? transactionHash,
             Felt? classHash,
             String? version,
@@ -3257,7 +3281,7 @@ class _$L1HandlerTxn implements L1HandlerTxn {
             Felt? contractAddressSalt,
             List<Felt>? constructorCalldata)?
         deployTxn,
-    TResult Function(
+    TResult? Function(
             Felt? transactionHash,
             Felt? maxFee,
             String? version,
@@ -3268,7 +3292,7 @@ class _$L1HandlerTxn implements L1HandlerTxn {
             Felt? classHash,
             List<Felt>? constructorCalldata)?
         deployAccountTxn,
-    TResult Function(
+    TResult? Function(
             Felt? transactionHash,
             String? version,
             Felt? nonce,
@@ -3369,12 +3393,12 @@ class _$L1HandlerTxn implements L1HandlerTxn {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(InvokeTxnV0 value)? invokeTxnV0,
-    TResult Function(InvokeTxnV1 value)? invokeTxnV1,
-    TResult Function(DeclareTxn value)? declareTxn,
-    TResult Function(DeployTxn value)? deployTxn,
-    TResult Function(DeployAccountTxn value)? deployAccountTxn,
-    TResult Function(L1HandlerTxn value)? l1HandlerTxn,
+    TResult? Function(InvokeTxnV0 value)? invokeTxnV0,
+    TResult? Function(InvokeTxnV1 value)? invokeTxnV1,
+    TResult? Function(DeclareTxn value)? declareTxn,
+    TResult? Function(DeployTxn value)? deployTxn,
+    TResult? Function(DeployAccountTxn value)? deployAccountTxn,
+    TResult? Function(L1HandlerTxn value)? l1HandlerTxn,
   }) {
     return l1HandlerTxn?.call(this);
   }

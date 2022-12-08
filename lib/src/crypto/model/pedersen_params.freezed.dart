@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'pedersen_params.dart';
 
@@ -37,7 +37,8 @@ mixin _$PedersenParams {
 abstract class $PedersenParamsCopyWith<$Res> {
   factory $PedersenParamsCopyWith(
           PedersenParams value, $Res Function(PedersenParams) then) =
-      _$PedersenParamsCopyWithImpl<$Res>;
+      _$PedersenParamsCopyWithImpl<$Res, PedersenParams>;
+  @useResult
   $Res call(
       {BigInt fieldPrime,
       BigInt fieldGen,
@@ -48,49 +49,51 @@ abstract class $PedersenParamsCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$PedersenParamsCopyWithImpl<$Res>
+class _$PedersenParamsCopyWithImpl<$Res, $Val extends PedersenParams>
     implements $PedersenParamsCopyWith<$Res> {
   _$PedersenParamsCopyWithImpl(this._value, this._then);
 
-  final PedersenParams _value;
   // ignore: unused_field
-  final $Res Function(PedersenParams) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? fieldPrime = freezed,
-    Object? fieldGen = freezed,
-    Object? ecOrder = freezed,
-    Object? alpha = freezed,
-    Object? beta = freezed,
-    Object? constantPoints = freezed,
+    Object? fieldPrime = null,
+    Object? fieldGen = null,
+    Object? ecOrder = null,
+    Object? alpha = null,
+    Object? beta = null,
+    Object? constantPoints = null,
   }) {
     return _then(_value.copyWith(
-      fieldPrime: fieldPrime == freezed
+      fieldPrime: null == fieldPrime
           ? _value.fieldPrime
           : fieldPrime // ignore: cast_nullable_to_non_nullable
               as BigInt,
-      fieldGen: fieldGen == freezed
+      fieldGen: null == fieldGen
           ? _value.fieldGen
           : fieldGen // ignore: cast_nullable_to_non_nullable
               as BigInt,
-      ecOrder: ecOrder == freezed
+      ecOrder: null == ecOrder
           ? _value.ecOrder
           : ecOrder // ignore: cast_nullable_to_non_nullable
               as BigInt,
-      alpha: alpha == freezed
+      alpha: null == alpha
           ? _value.alpha
           : alpha // ignore: cast_nullable_to_non_nullable
               as BigInt,
-      beta: beta == freezed
+      beta: null == beta
           ? _value.beta
           : beta // ignore: cast_nullable_to_non_nullable
               as BigInt,
-      constantPoints: constantPoints == freezed
+      constantPoints: null == constantPoints
           ? _value.constantPoints
           : constantPoints // ignore: cast_nullable_to_non_nullable
               as List<List<BigInt>>,
-    ));
+    ) as $Val);
   }
 }
 
@@ -101,6 +104,7 @@ abstract class _$$_PedersenParamsCopyWith<$Res>
           _$_PedersenParams value, $Res Function(_$_PedersenParams) then) =
       __$$_PedersenParamsCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {BigInt fieldPrime,
       BigInt fieldGen,
@@ -112,46 +116,44 @@ abstract class _$$_PedersenParamsCopyWith<$Res>
 
 /// @nodoc
 class __$$_PedersenParamsCopyWithImpl<$Res>
-    extends _$PedersenParamsCopyWithImpl<$Res>
+    extends _$PedersenParamsCopyWithImpl<$Res, _$_PedersenParams>
     implements _$$_PedersenParamsCopyWith<$Res> {
   __$$_PedersenParamsCopyWithImpl(
       _$_PedersenParams _value, $Res Function(_$_PedersenParams) _then)
-      : super(_value, (v) => _then(v as _$_PedersenParams));
+      : super(_value, _then);
 
-  @override
-  _$_PedersenParams get _value => super._value as _$_PedersenParams;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? fieldPrime = freezed,
-    Object? fieldGen = freezed,
-    Object? ecOrder = freezed,
-    Object? alpha = freezed,
-    Object? beta = freezed,
-    Object? constantPoints = freezed,
+    Object? fieldPrime = null,
+    Object? fieldGen = null,
+    Object? ecOrder = null,
+    Object? alpha = null,
+    Object? beta = null,
+    Object? constantPoints = null,
   }) {
     return _then(_$_PedersenParams(
-      fieldPrime: fieldPrime == freezed
+      fieldPrime: null == fieldPrime
           ? _value.fieldPrime
           : fieldPrime // ignore: cast_nullable_to_non_nullable
               as BigInt,
-      fieldGen: fieldGen == freezed
+      fieldGen: null == fieldGen
           ? _value.fieldGen
           : fieldGen // ignore: cast_nullable_to_non_nullable
               as BigInt,
-      ecOrder: ecOrder == freezed
+      ecOrder: null == ecOrder
           ? _value.ecOrder
           : ecOrder // ignore: cast_nullable_to_non_nullable
               as BigInt,
-      alpha: alpha == freezed
+      alpha: null == alpha
           ? _value.alpha
           : alpha // ignore: cast_nullable_to_non_nullable
               as BigInt,
-      beta: beta == freezed
+      beta: null == beta
           ? _value.beta
           : beta // ignore: cast_nullable_to_non_nullable
               as BigInt,
-      constantPoints: constantPoints == freezed
+      constantPoints: null == constantPoints
           ? _value._constantPoints
           : constantPoints // ignore: cast_nullable_to_non_nullable
               as List<List<BigInt>>,
@@ -188,6 +190,7 @@ class _$_PedersenParams implements _PedersenParams {
   final List<List<BigInt>> _constantPoints;
   @override
   List<List<BigInt>> get constantPoints {
+    if (_constantPoints is EqualUnmodifiableListView) return _constantPoints;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_constantPoints);
   }
@@ -202,29 +205,25 @@ class _$_PedersenParams implements _PedersenParams {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_PedersenParams &&
-            const DeepCollectionEquality()
-                .equals(other.fieldPrime, fieldPrime) &&
-            const DeepCollectionEquality().equals(other.fieldGen, fieldGen) &&
-            const DeepCollectionEquality().equals(other.ecOrder, ecOrder) &&
-            const DeepCollectionEquality().equals(other.alpha, alpha) &&
-            const DeepCollectionEquality().equals(other.beta, beta) &&
+            (identical(other.fieldPrime, fieldPrime) ||
+                other.fieldPrime == fieldPrime) &&
+            (identical(other.fieldGen, fieldGen) ||
+                other.fieldGen == fieldGen) &&
+            (identical(other.ecOrder, ecOrder) || other.ecOrder == ecOrder) &&
+            (identical(other.alpha, alpha) || other.alpha == alpha) &&
+            (identical(other.beta, beta) || other.beta == beta) &&
             const DeepCollectionEquality()
                 .equals(other._constantPoints, _constantPoints));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(fieldPrime),
-      const DeepCollectionEquality().hash(fieldGen),
-      const DeepCollectionEquality().hash(ecOrder),
-      const DeepCollectionEquality().hash(alpha),
-      const DeepCollectionEquality().hash(beta),
-      const DeepCollectionEquality().hash(_constantPoints));
+  int get hashCode => Object.hash(runtimeType, fieldPrime, fieldGen, ecOrder,
+      alpha, beta, const DeepCollectionEquality().hash(_constantPoints));
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_PedersenParamsCopyWith<_$_PedersenParams> get copyWith =>
       __$$_PedersenParamsCopyWithImpl<_$_PedersenParams>(this, _$identity);
 

@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'contract_storage_diff_item.dart';
 
@@ -34,34 +34,38 @@ mixin _$ContractStorageDiffItem {
 abstract class $ContractStorageDiffItemCopyWith<$Res> {
   factory $ContractStorageDiffItemCopyWith(ContractStorageDiffItem value,
           $Res Function(ContractStorageDiffItem) then) =
-      _$ContractStorageDiffItemCopyWithImpl<$Res>;
+      _$ContractStorageDiffItemCopyWithImpl<$Res, ContractStorageDiffItem>;
+  @useResult
   $Res call({Felt address, List<StorageItem> storageEntries});
 }
 
 /// @nodoc
-class _$ContractStorageDiffItemCopyWithImpl<$Res>
+class _$ContractStorageDiffItemCopyWithImpl<$Res,
+        $Val extends ContractStorageDiffItem>
     implements $ContractStorageDiffItemCopyWith<$Res> {
   _$ContractStorageDiffItemCopyWithImpl(this._value, this._then);
 
-  final ContractStorageDiffItem _value;
   // ignore: unused_field
-  final $Res Function(ContractStorageDiffItem) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? address = freezed,
-    Object? storageEntries = freezed,
+    Object? address = null,
+    Object? storageEntries = null,
   }) {
     return _then(_value.copyWith(
-      address: address == freezed
+      address: null == address
           ? _value.address
           : address // ignore: cast_nullable_to_non_nullable
               as Felt,
-      storageEntries: storageEntries == freezed
+      storageEntries: null == storageEntries
           ? _value.storageEntries
           : storageEntries // ignore: cast_nullable_to_non_nullable
               as List<StorageItem>,
-    ));
+    ) as $Val);
   }
 }
 
@@ -72,32 +76,31 @@ abstract class _$$_ContractStorageDiffItemCopyWith<$Res>
           $Res Function(_$_ContractStorageDiffItem) then) =
       __$$_ContractStorageDiffItemCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call({Felt address, List<StorageItem> storageEntries});
 }
 
 /// @nodoc
 class __$$_ContractStorageDiffItemCopyWithImpl<$Res>
-    extends _$ContractStorageDiffItemCopyWithImpl<$Res>
+    extends _$ContractStorageDiffItemCopyWithImpl<$Res,
+        _$_ContractStorageDiffItem>
     implements _$$_ContractStorageDiffItemCopyWith<$Res> {
   __$$_ContractStorageDiffItemCopyWithImpl(_$_ContractStorageDiffItem _value,
       $Res Function(_$_ContractStorageDiffItem) _then)
-      : super(_value, (v) => _then(v as _$_ContractStorageDiffItem));
+      : super(_value, _then);
 
-  @override
-  _$_ContractStorageDiffItem get _value =>
-      super._value as _$_ContractStorageDiffItem;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? address = freezed,
-    Object? storageEntries = freezed,
+    Object? address = null,
+    Object? storageEntries = null,
   }) {
     return _then(_$_ContractStorageDiffItem(
-      address: address == freezed
+      address: null == address
           ? _value.address
           : address // ignore: cast_nullable_to_non_nullable
               as Felt,
-      storageEntries: storageEntries == freezed
+      storageEntries: null == storageEntries
           ? _value._storageEntries
           : storageEntries // ignore: cast_nullable_to_non_nullable
               as List<StorageItem>,
@@ -120,6 +123,7 @@ class _$_ContractStorageDiffItem implements _ContractStorageDiffItem {
   final List<StorageItem> _storageEntries;
   @override
   List<StorageItem> get storageEntries {
+    if (_storageEntries is EqualUnmodifiableListView) return _storageEntries;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_storageEntries);
   }
@@ -134,20 +138,19 @@ class _$_ContractStorageDiffItem implements _ContractStorageDiffItem {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_ContractStorageDiffItem &&
-            const DeepCollectionEquality().equals(other.address, address) &&
+            (identical(other.address, address) || other.address == address) &&
             const DeepCollectionEquality()
                 .equals(other._storageEntries, _storageEntries));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(address),
+  int get hashCode => Object.hash(runtimeType, address,
       const DeepCollectionEquality().hash(_storageEntries));
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_ContractStorageDiffItemCopyWith<_$_ContractStorageDiffItem>
       get copyWith =>
           __$$_ContractStorageDiffItemCopyWithImpl<_$_ContractStorageDiffItem>(
@@ -199,33 +202,37 @@ mixin _$StorageItem {
 abstract class $StorageItemCopyWith<$Res> {
   factory $StorageItemCopyWith(
           StorageItem value, $Res Function(StorageItem) then) =
-      _$StorageItemCopyWithImpl<$Res>;
+      _$StorageItemCopyWithImpl<$Res, StorageItem>;
+  @useResult
   $Res call({Felt key, Felt value});
 }
 
 /// @nodoc
-class _$StorageItemCopyWithImpl<$Res> implements $StorageItemCopyWith<$Res> {
+class _$StorageItemCopyWithImpl<$Res, $Val extends StorageItem>
+    implements $StorageItemCopyWith<$Res> {
   _$StorageItemCopyWithImpl(this._value, this._then);
 
-  final StorageItem _value;
   // ignore: unused_field
-  final $Res Function(StorageItem) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? key = freezed,
-    Object? value = freezed,
+    Object? key = null,
+    Object? value = null,
   }) {
     return _then(_value.copyWith(
-      key: key == freezed
+      key: null == key
           ? _value.key
           : key // ignore: cast_nullable_to_non_nullable
               as Felt,
-      value: value == freezed
+      value: null == value
           ? _value.value
           : value // ignore: cast_nullable_to_non_nullable
               as Felt,
-    ));
+    ) as $Val);
   }
 }
 
@@ -236,30 +243,30 @@ abstract class _$$_StorageItemCopyWith<$Res>
           _$_StorageItem value, $Res Function(_$_StorageItem) then) =
       __$$_StorageItemCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call({Felt key, Felt value});
 }
 
 /// @nodoc
-class __$$_StorageItemCopyWithImpl<$Res> extends _$StorageItemCopyWithImpl<$Res>
+class __$$_StorageItemCopyWithImpl<$Res>
+    extends _$StorageItemCopyWithImpl<$Res, _$_StorageItem>
     implements _$$_StorageItemCopyWith<$Res> {
   __$$_StorageItemCopyWithImpl(
       _$_StorageItem _value, $Res Function(_$_StorageItem) _then)
-      : super(_value, (v) => _then(v as _$_StorageItem));
+      : super(_value, _then);
 
-  @override
-  _$_StorageItem get _value => super._value as _$_StorageItem;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? key = freezed,
-    Object? value = freezed,
+    Object? key = null,
+    Object? value = null,
   }) {
     return _then(_$_StorageItem(
-      key: key == freezed
+      key: null == key
           ? _value.key
           : key // ignore: cast_nullable_to_non_nullable
               as Felt,
-      value: value == freezed
+      value: null == value
           ? _value.value
           : value // ignore: cast_nullable_to_non_nullable
               as Felt,
@@ -290,19 +297,17 @@ class _$_StorageItem implements _StorageItem {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_StorageItem &&
-            const DeepCollectionEquality().equals(other.key, key) &&
-            const DeepCollectionEquality().equals(other.value, value));
+            (identical(other.key, key) || other.key == key) &&
+            (identical(other.value, value) || other.value == value));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(key),
-      const DeepCollectionEquality().hash(value));
+  int get hashCode => Object.hash(runtimeType, key, value);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_StorageItemCopyWith<_$_StorageItem> get copyWith =>
       __$$_StorageItemCopyWithImpl<_$_StorageItem>(this, _$identity);
 

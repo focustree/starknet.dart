@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'get_block_txn_count.dart';
 
@@ -37,8 +37,8 @@ mixin _$GetBlockTxnCount {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(int result)? result,
-    TResult Function(JsonRpcApiError error)? error,
+    TResult? Function(int result)? result,
+    TResult? Function(JsonRpcApiError error)? error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -56,8 +56,8 @@ mixin _$GetBlockTxnCount {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(BlockTxnCountResult value)? result,
-    TResult Function(GetBlockTxnCountError value)? error,
+    TResult? Function(BlockTxnCountResult value)? result,
+    TResult? Function(GetBlockTxnCountError value)? error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -74,17 +74,18 @@ mixin _$GetBlockTxnCount {
 abstract class $GetBlockTxnCountCopyWith<$Res> {
   factory $GetBlockTxnCountCopyWith(
           GetBlockTxnCount value, $Res Function(GetBlockTxnCount) then) =
-      _$GetBlockTxnCountCopyWithImpl<$Res>;
+      _$GetBlockTxnCountCopyWithImpl<$Res, GetBlockTxnCount>;
 }
 
 /// @nodoc
-class _$GetBlockTxnCountCopyWithImpl<$Res>
+class _$GetBlockTxnCountCopyWithImpl<$Res, $Val extends GetBlockTxnCount>
     implements $GetBlockTxnCountCopyWith<$Res> {
   _$GetBlockTxnCountCopyWithImpl(this._value, this._then);
 
-  final GetBlockTxnCount _value;
   // ignore: unused_field
-  final $Res Function(GetBlockTxnCount) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 }
 
 /// @nodoc
@@ -92,26 +93,25 @@ abstract class _$$BlockTxnCountResultCopyWith<$Res> {
   factory _$$BlockTxnCountResultCopyWith(_$BlockTxnCountResult value,
           $Res Function(_$BlockTxnCountResult) then) =
       __$$BlockTxnCountResultCopyWithImpl<$Res>;
+  @useResult
   $Res call({int result});
 }
 
 /// @nodoc
 class __$$BlockTxnCountResultCopyWithImpl<$Res>
-    extends _$GetBlockTxnCountCopyWithImpl<$Res>
+    extends _$GetBlockTxnCountCopyWithImpl<$Res, _$BlockTxnCountResult>
     implements _$$BlockTxnCountResultCopyWith<$Res> {
   __$$BlockTxnCountResultCopyWithImpl(
       _$BlockTxnCountResult _value, $Res Function(_$BlockTxnCountResult) _then)
-      : super(_value, (v) => _then(v as _$BlockTxnCountResult));
+      : super(_value, _then);
 
-  @override
-  _$BlockTxnCountResult get _value => super._value as _$BlockTxnCountResult;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? result = freezed,
+    Object? result = null,
   }) {
     return _then(_$BlockTxnCountResult(
-      result: result == freezed
+      result: null == result
           ? _value.result
           : result // ignore: cast_nullable_to_non_nullable
               as int,
@@ -144,16 +144,16 @@ class _$BlockTxnCountResult implements BlockTxnCountResult {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$BlockTxnCountResult &&
-            const DeepCollectionEquality().equals(other.result, result));
+            (identical(other.result, result) || other.result == result));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(result));
+  int get hashCode => Object.hash(runtimeType, result);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$BlockTxnCountResultCopyWith<_$BlockTxnCountResult> get copyWith =>
       __$$BlockTxnCountResultCopyWithImpl<_$BlockTxnCountResult>(
           this, _$identity);
@@ -170,8 +170,8 @@ class _$BlockTxnCountResult implements BlockTxnCountResult {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(int result)? result,
-    TResult Function(JsonRpcApiError error)? error,
+    TResult? Function(int result)? result,
+    TResult? Function(JsonRpcApiError error)? error,
   }) {
     return result?.call(this.result);
   }
@@ -201,8 +201,8 @@ class _$BlockTxnCountResult implements BlockTxnCountResult {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(BlockTxnCountResult value)? result,
-    TResult Function(GetBlockTxnCountError value)? error,
+    TResult? Function(BlockTxnCountResult value)? result,
+    TResult? Function(GetBlockTxnCountError value)? error,
   }) {
     return result?.call(this);
   }
@@ -246,6 +246,7 @@ abstract class _$$GetBlockTxnCountErrorCopyWith<$Res> {
   factory _$$GetBlockTxnCountErrorCopyWith(_$GetBlockTxnCountError value,
           $Res Function(_$GetBlockTxnCountError) then) =
       __$$GetBlockTxnCountErrorCopyWithImpl<$Res>;
+  @useResult
   $Res call({JsonRpcApiError error});
 
   $JsonRpcApiErrorCopyWith<$Res> get error;
@@ -253,21 +254,19 @@ abstract class _$$GetBlockTxnCountErrorCopyWith<$Res> {
 
 /// @nodoc
 class __$$GetBlockTxnCountErrorCopyWithImpl<$Res>
-    extends _$GetBlockTxnCountCopyWithImpl<$Res>
+    extends _$GetBlockTxnCountCopyWithImpl<$Res, _$GetBlockTxnCountError>
     implements _$$GetBlockTxnCountErrorCopyWith<$Res> {
   __$$GetBlockTxnCountErrorCopyWithImpl(_$GetBlockTxnCountError _value,
       $Res Function(_$GetBlockTxnCountError) _then)
-      : super(_value, (v) => _then(v as _$GetBlockTxnCountError));
+      : super(_value, _then);
 
-  @override
-  _$GetBlockTxnCountError get _value => super._value as _$GetBlockTxnCountError;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? error = freezed,
+    Object? error = null,
   }) {
     return _then(_$GetBlockTxnCountError(
-      error: error == freezed
+      error: null == error
           ? _value.error
           : error // ignore: cast_nullable_to_non_nullable
               as JsonRpcApiError,
@@ -275,6 +274,7 @@ class __$$GetBlockTxnCountErrorCopyWithImpl<$Res>
   }
 
   @override
+  @pragma('vm:prefer-inline')
   $JsonRpcApiErrorCopyWith<$Res> get error {
     return $JsonRpcApiErrorCopyWith<$Res>(_value.error, (value) {
       return _then(_value.copyWith(error: value));
@@ -307,16 +307,16 @@ class _$GetBlockTxnCountError implements GetBlockTxnCountError {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$GetBlockTxnCountError &&
-            const DeepCollectionEquality().equals(other.error, error));
+            (identical(other.error, error) || other.error == error));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(error));
+  int get hashCode => Object.hash(runtimeType, error);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$GetBlockTxnCountErrorCopyWith<_$GetBlockTxnCountError> get copyWith =>
       __$$GetBlockTxnCountErrorCopyWithImpl<_$GetBlockTxnCountError>(
           this, _$identity);
@@ -333,8 +333,8 @@ class _$GetBlockTxnCountError implements GetBlockTxnCountError {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(int result)? result,
-    TResult Function(JsonRpcApiError error)? error,
+    TResult? Function(int result)? result,
+    TResult? Function(JsonRpcApiError error)? error,
   }) {
     return error?.call(this.error);
   }
@@ -364,8 +364,8 @@ class _$GetBlockTxnCountError implements GetBlockTxnCountError {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(BlockTxnCountResult value)? result,
-    TResult Function(GetBlockTxnCountError value)? error,
+    TResult? Function(BlockTxnCountResult value)? result,
+    TResult? Function(GetBlockTxnCountError value)? error,
   }) {
     return error?.call(this);
   }

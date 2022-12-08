@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'block_number.dart';
 
@@ -37,8 +37,8 @@ mixin _$BlockNumber {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(int result)? result,
-    TResult Function(JsonRpcApiError error)? error,
+    TResult? Function(int result)? result,
+    TResult? Function(JsonRpcApiError error)? error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -56,8 +56,8 @@ mixin _$BlockNumber {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(BlockNumberResult value)? result,
-    TResult Function(BlockNumberError value)? error,
+    TResult? Function(BlockNumberResult value)? result,
+    TResult? Function(BlockNumberError value)? error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -74,16 +74,18 @@ mixin _$BlockNumber {
 abstract class $BlockNumberCopyWith<$Res> {
   factory $BlockNumberCopyWith(
           BlockNumber value, $Res Function(BlockNumber) then) =
-      _$BlockNumberCopyWithImpl<$Res>;
+      _$BlockNumberCopyWithImpl<$Res, BlockNumber>;
 }
 
 /// @nodoc
-class _$BlockNumberCopyWithImpl<$Res> implements $BlockNumberCopyWith<$Res> {
+class _$BlockNumberCopyWithImpl<$Res, $Val extends BlockNumber>
+    implements $BlockNumberCopyWith<$Res> {
   _$BlockNumberCopyWithImpl(this._value, this._then);
 
-  final BlockNumber _value;
   // ignore: unused_field
-  final $Res Function(BlockNumber) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 }
 
 /// @nodoc
@@ -91,26 +93,25 @@ abstract class _$$BlockNumberResultCopyWith<$Res> {
   factory _$$BlockNumberResultCopyWith(
           _$BlockNumberResult value, $Res Function(_$BlockNumberResult) then) =
       __$$BlockNumberResultCopyWithImpl<$Res>;
+  @useResult
   $Res call({int result});
 }
 
 /// @nodoc
 class __$$BlockNumberResultCopyWithImpl<$Res>
-    extends _$BlockNumberCopyWithImpl<$Res>
+    extends _$BlockNumberCopyWithImpl<$Res, _$BlockNumberResult>
     implements _$$BlockNumberResultCopyWith<$Res> {
   __$$BlockNumberResultCopyWithImpl(
       _$BlockNumberResult _value, $Res Function(_$BlockNumberResult) _then)
-      : super(_value, (v) => _then(v as _$BlockNumberResult));
+      : super(_value, _then);
 
-  @override
-  _$BlockNumberResult get _value => super._value as _$BlockNumberResult;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? result = freezed,
+    Object? result = null,
   }) {
     return _then(_$BlockNumberResult(
-      result: result == freezed
+      result: null == result
           ? _value.result
           : result // ignore: cast_nullable_to_non_nullable
               as int,
@@ -143,16 +144,16 @@ class _$BlockNumberResult implements BlockNumberResult {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$BlockNumberResult &&
-            const DeepCollectionEquality().equals(other.result, result));
+            (identical(other.result, result) || other.result == result));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(result));
+  int get hashCode => Object.hash(runtimeType, result);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$BlockNumberResultCopyWith<_$BlockNumberResult> get copyWith =>
       __$$BlockNumberResultCopyWithImpl<_$BlockNumberResult>(this, _$identity);
 
@@ -168,8 +169,8 @@ class _$BlockNumberResult implements BlockNumberResult {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(int result)? result,
-    TResult Function(JsonRpcApiError error)? error,
+    TResult? Function(int result)? result,
+    TResult? Function(JsonRpcApiError error)? error,
   }) {
     return result?.call(this.result);
   }
@@ -199,8 +200,8 @@ class _$BlockNumberResult implements BlockNumberResult {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(BlockNumberResult value)? result,
-    TResult Function(BlockNumberError value)? error,
+    TResult? Function(BlockNumberResult value)? result,
+    TResult? Function(BlockNumberError value)? error,
   }) {
     return result?.call(this);
   }
@@ -244,6 +245,7 @@ abstract class _$$BlockNumberErrorCopyWith<$Res> {
   factory _$$BlockNumberErrorCopyWith(
           _$BlockNumberError value, $Res Function(_$BlockNumberError) then) =
       __$$BlockNumberErrorCopyWithImpl<$Res>;
+  @useResult
   $Res call({JsonRpcApiError error});
 
   $JsonRpcApiErrorCopyWith<$Res> get error;
@@ -251,21 +253,19 @@ abstract class _$$BlockNumberErrorCopyWith<$Res> {
 
 /// @nodoc
 class __$$BlockNumberErrorCopyWithImpl<$Res>
-    extends _$BlockNumberCopyWithImpl<$Res>
+    extends _$BlockNumberCopyWithImpl<$Res, _$BlockNumberError>
     implements _$$BlockNumberErrorCopyWith<$Res> {
   __$$BlockNumberErrorCopyWithImpl(
       _$BlockNumberError _value, $Res Function(_$BlockNumberError) _then)
-      : super(_value, (v) => _then(v as _$BlockNumberError));
+      : super(_value, _then);
 
-  @override
-  _$BlockNumberError get _value => super._value as _$BlockNumberError;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? error = freezed,
+    Object? error = null,
   }) {
     return _then(_$BlockNumberError(
-      error: error == freezed
+      error: null == error
           ? _value.error
           : error // ignore: cast_nullable_to_non_nullable
               as JsonRpcApiError,
@@ -273,6 +273,7 @@ class __$$BlockNumberErrorCopyWithImpl<$Res>
   }
 
   @override
+  @pragma('vm:prefer-inline')
   $JsonRpcApiErrorCopyWith<$Res> get error {
     return $JsonRpcApiErrorCopyWith<$Res>(_value.error, (value) {
       return _then(_value.copyWith(error: value));
@@ -305,16 +306,16 @@ class _$BlockNumberError implements BlockNumberError {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$BlockNumberError &&
-            const DeepCollectionEquality().equals(other.error, error));
+            (identical(other.error, error) || other.error == error));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(error));
+  int get hashCode => Object.hash(runtimeType, error);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$BlockNumberErrorCopyWith<_$BlockNumberError> get copyWith =>
       __$$BlockNumberErrorCopyWithImpl<_$BlockNumberError>(this, _$identity);
 
@@ -330,8 +331,8 @@ class _$BlockNumberError implements BlockNumberError {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(int result)? result,
-    TResult Function(JsonRpcApiError error)? error,
+    TResult? Function(int result)? result,
+    TResult? Function(JsonRpcApiError error)? error,
   }) {
     return error?.call(this.error);
   }
@@ -361,8 +362,8 @@ class _$BlockNumberError implements BlockNumberError {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(BlockNumberResult value)? result,
-    TResult Function(BlockNumberError value)? error,
+    TResult? Function(BlockNumberResult value)? result,
+    TResult? Function(BlockNumberError value)? error,
   }) {
     return error?.call(this);
   }

@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'block_hash_and_number.dart';
 
@@ -37,8 +37,8 @@ mixin _$BlockHashAndNumber {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(BlockHashAndNumberResponseResult result)? result,
-    TResult Function(JsonRpcApiError error)? error,
+    TResult? Function(BlockHashAndNumberResponseResult result)? result,
+    TResult? Function(JsonRpcApiError error)? error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -56,8 +56,8 @@ mixin _$BlockHashAndNumber {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(BlockHashAndNumberResult value)? result,
-    TResult Function(BlockHashAndNumberError value)? error,
+    TResult? Function(BlockHashAndNumberResult value)? result,
+    TResult? Function(BlockHashAndNumberError value)? error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -74,17 +74,18 @@ mixin _$BlockHashAndNumber {
 abstract class $BlockHashAndNumberCopyWith<$Res> {
   factory $BlockHashAndNumberCopyWith(
           BlockHashAndNumber value, $Res Function(BlockHashAndNumber) then) =
-      _$BlockHashAndNumberCopyWithImpl<$Res>;
+      _$BlockHashAndNumberCopyWithImpl<$Res, BlockHashAndNumber>;
 }
 
 /// @nodoc
-class _$BlockHashAndNumberCopyWithImpl<$Res>
+class _$BlockHashAndNumberCopyWithImpl<$Res, $Val extends BlockHashAndNumber>
     implements $BlockHashAndNumberCopyWith<$Res> {
   _$BlockHashAndNumberCopyWithImpl(this._value, this._then);
 
-  final BlockHashAndNumber _value;
   // ignore: unused_field
-  final $Res Function(BlockHashAndNumber) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 }
 
 /// @nodoc
@@ -92,6 +93,7 @@ abstract class _$$BlockHashAndNumberResultCopyWith<$Res> {
   factory _$$BlockHashAndNumberResultCopyWith(_$BlockHashAndNumberResult value,
           $Res Function(_$BlockHashAndNumberResult) then) =
       __$$BlockHashAndNumberResultCopyWithImpl<$Res>;
+  @useResult
   $Res call({BlockHashAndNumberResponseResult result});
 
   $BlockHashAndNumberResponseResultCopyWith<$Res> get result;
@@ -99,22 +101,19 @@ abstract class _$$BlockHashAndNumberResultCopyWith<$Res> {
 
 /// @nodoc
 class __$$BlockHashAndNumberResultCopyWithImpl<$Res>
-    extends _$BlockHashAndNumberCopyWithImpl<$Res>
+    extends _$BlockHashAndNumberCopyWithImpl<$Res, _$BlockHashAndNumberResult>
     implements _$$BlockHashAndNumberResultCopyWith<$Res> {
   __$$BlockHashAndNumberResultCopyWithImpl(_$BlockHashAndNumberResult _value,
       $Res Function(_$BlockHashAndNumberResult) _then)
-      : super(_value, (v) => _then(v as _$BlockHashAndNumberResult));
+      : super(_value, _then);
 
-  @override
-  _$BlockHashAndNumberResult get _value =>
-      super._value as _$BlockHashAndNumberResult;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? result = freezed,
+    Object? result = null,
   }) {
     return _then(_$BlockHashAndNumberResult(
-      result: result == freezed
+      result: null == result
           ? _value.result
           : result // ignore: cast_nullable_to_non_nullable
               as BlockHashAndNumberResponseResult,
@@ -122,6 +121,7 @@ class __$$BlockHashAndNumberResultCopyWithImpl<$Res>
   }
 
   @override
+  @pragma('vm:prefer-inline')
   $BlockHashAndNumberResponseResultCopyWith<$Res> get result {
     return $BlockHashAndNumberResponseResultCopyWith<$Res>(_value.result,
         (value) {
@@ -155,16 +155,16 @@ class _$BlockHashAndNumberResult implements BlockHashAndNumberResult {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$BlockHashAndNumberResult &&
-            const DeepCollectionEquality().equals(other.result, result));
+            (identical(other.result, result) || other.result == result));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(result));
+  int get hashCode => Object.hash(runtimeType, result);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$BlockHashAndNumberResultCopyWith<_$BlockHashAndNumberResult>
       get copyWith =>
           __$$BlockHashAndNumberResultCopyWithImpl<_$BlockHashAndNumberResult>(
@@ -182,8 +182,8 @@ class _$BlockHashAndNumberResult implements BlockHashAndNumberResult {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(BlockHashAndNumberResponseResult result)? result,
-    TResult Function(JsonRpcApiError error)? error,
+    TResult? Function(BlockHashAndNumberResponseResult result)? result,
+    TResult? Function(JsonRpcApiError error)? error,
   }) {
     return result?.call(this.result);
   }
@@ -213,8 +213,8 @@ class _$BlockHashAndNumberResult implements BlockHashAndNumberResult {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(BlockHashAndNumberResult value)? result,
-    TResult Function(BlockHashAndNumberError value)? error,
+    TResult? Function(BlockHashAndNumberResult value)? result,
+    TResult? Function(BlockHashAndNumberError value)? error,
   }) {
     return result?.call(this);
   }
@@ -259,6 +259,7 @@ abstract class _$$BlockHashAndNumberErrorCopyWith<$Res> {
   factory _$$BlockHashAndNumberErrorCopyWith(_$BlockHashAndNumberError value,
           $Res Function(_$BlockHashAndNumberError) then) =
       __$$BlockHashAndNumberErrorCopyWithImpl<$Res>;
+  @useResult
   $Res call({JsonRpcApiError error});
 
   $JsonRpcApiErrorCopyWith<$Res> get error;
@@ -266,22 +267,19 @@ abstract class _$$BlockHashAndNumberErrorCopyWith<$Res> {
 
 /// @nodoc
 class __$$BlockHashAndNumberErrorCopyWithImpl<$Res>
-    extends _$BlockHashAndNumberCopyWithImpl<$Res>
+    extends _$BlockHashAndNumberCopyWithImpl<$Res, _$BlockHashAndNumberError>
     implements _$$BlockHashAndNumberErrorCopyWith<$Res> {
   __$$BlockHashAndNumberErrorCopyWithImpl(_$BlockHashAndNumberError _value,
       $Res Function(_$BlockHashAndNumberError) _then)
-      : super(_value, (v) => _then(v as _$BlockHashAndNumberError));
+      : super(_value, _then);
 
-  @override
-  _$BlockHashAndNumberError get _value =>
-      super._value as _$BlockHashAndNumberError;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? error = freezed,
+    Object? error = null,
   }) {
     return _then(_$BlockHashAndNumberError(
-      error: error == freezed
+      error: null == error
           ? _value.error
           : error // ignore: cast_nullable_to_non_nullable
               as JsonRpcApiError,
@@ -289,6 +287,7 @@ class __$$BlockHashAndNumberErrorCopyWithImpl<$Res>
   }
 
   @override
+  @pragma('vm:prefer-inline')
   $JsonRpcApiErrorCopyWith<$Res> get error {
     return $JsonRpcApiErrorCopyWith<$Res>(_value.error, (value) {
       return _then(_value.copyWith(error: value));
@@ -321,16 +320,16 @@ class _$BlockHashAndNumberError implements BlockHashAndNumberError {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$BlockHashAndNumberError &&
-            const DeepCollectionEquality().equals(other.error, error));
+            (identical(other.error, error) || other.error == error));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(error));
+  int get hashCode => Object.hash(runtimeType, error);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$BlockHashAndNumberErrorCopyWith<_$BlockHashAndNumberError> get copyWith =>
       __$$BlockHashAndNumberErrorCopyWithImpl<_$BlockHashAndNumberError>(
           this, _$identity);
@@ -347,8 +346,8 @@ class _$BlockHashAndNumberError implements BlockHashAndNumberError {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(BlockHashAndNumberResponseResult result)? result,
-    TResult Function(JsonRpcApiError error)? error,
+    TResult? Function(BlockHashAndNumberResponseResult result)? result,
+    TResult? Function(JsonRpcApiError error)? error,
   }) {
     return error?.call(this.error);
   }
@@ -378,8 +377,8 @@ class _$BlockHashAndNumberError implements BlockHashAndNumberError {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(BlockHashAndNumberResult value)? result,
-    TResult Function(BlockHashAndNumberError value)? error,
+    TResult? Function(BlockHashAndNumberResult value)? result,
+    TResult? Function(BlockHashAndNumberError value)? error,
   }) {
     return error?.call(this);
   }
@@ -439,34 +438,39 @@ abstract class $BlockHashAndNumberResponseResultCopyWith<$Res> {
   factory $BlockHashAndNumberResponseResultCopyWith(
           BlockHashAndNumberResponseResult value,
           $Res Function(BlockHashAndNumberResponseResult) then) =
-      _$BlockHashAndNumberResponseResultCopyWithImpl<$Res>;
+      _$BlockHashAndNumberResponseResultCopyWithImpl<$Res,
+          BlockHashAndNumberResponseResult>;
+  @useResult
   $Res call({Felt blockHash, int blockNumber});
 }
 
 /// @nodoc
-class _$BlockHashAndNumberResponseResultCopyWithImpl<$Res>
+class _$BlockHashAndNumberResponseResultCopyWithImpl<$Res,
+        $Val extends BlockHashAndNumberResponseResult>
     implements $BlockHashAndNumberResponseResultCopyWith<$Res> {
   _$BlockHashAndNumberResponseResultCopyWithImpl(this._value, this._then);
 
-  final BlockHashAndNumberResponseResult _value;
   // ignore: unused_field
-  final $Res Function(BlockHashAndNumberResponseResult) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? blockHash = freezed,
-    Object? blockNumber = freezed,
+    Object? blockHash = null,
+    Object? blockNumber = null,
   }) {
     return _then(_value.copyWith(
-      blockHash: blockHash == freezed
+      blockHash: null == blockHash
           ? _value.blockHash
           : blockHash // ignore: cast_nullable_to_non_nullable
               as Felt,
-      blockNumber: blockNumber == freezed
+      blockNumber: null == blockNumber
           ? _value.blockNumber
           : blockNumber // ignore: cast_nullable_to_non_nullable
               as int,
-    ));
+    ) as $Val);
   }
 }
 
@@ -478,33 +482,32 @@ abstract class _$$_BlockHashAndNumberResponseResultCopyWith<$Res>
           $Res Function(_$_BlockHashAndNumberResponseResult) then) =
       __$$_BlockHashAndNumberResponseResultCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call({Felt blockHash, int blockNumber});
 }
 
 /// @nodoc
 class __$$_BlockHashAndNumberResponseResultCopyWithImpl<$Res>
-    extends _$BlockHashAndNumberResponseResultCopyWithImpl<$Res>
+    extends _$BlockHashAndNumberResponseResultCopyWithImpl<$Res,
+        _$_BlockHashAndNumberResponseResult>
     implements _$$_BlockHashAndNumberResponseResultCopyWith<$Res> {
   __$$_BlockHashAndNumberResponseResultCopyWithImpl(
       _$_BlockHashAndNumberResponseResult _value,
       $Res Function(_$_BlockHashAndNumberResponseResult) _then)
-      : super(_value, (v) => _then(v as _$_BlockHashAndNumberResponseResult));
+      : super(_value, _then);
 
-  @override
-  _$_BlockHashAndNumberResponseResult get _value =>
-      super._value as _$_BlockHashAndNumberResponseResult;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? blockHash = freezed,
-    Object? blockNumber = freezed,
+    Object? blockHash = null,
+    Object? blockNumber = null,
   }) {
     return _then(_$_BlockHashAndNumberResponseResult(
-      blockHash: blockHash == freezed
+      blockHash: null == blockHash
           ? _value.blockHash
           : blockHash // ignore: cast_nullable_to_non_nullable
               as Felt,
-      blockNumber: blockNumber == freezed
+      blockNumber: null == blockNumber
           ? _value.blockNumber
           : blockNumber // ignore: cast_nullable_to_non_nullable
               as int,
@@ -538,20 +541,19 @@ class _$_BlockHashAndNumberResponseResult
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_BlockHashAndNumberResponseResult &&
-            const DeepCollectionEquality().equals(other.blockHash, blockHash) &&
-            const DeepCollectionEquality()
-                .equals(other.blockNumber, blockNumber));
+            (identical(other.blockHash, blockHash) ||
+                other.blockHash == blockHash) &&
+            (identical(other.blockNumber, blockNumber) ||
+                other.blockNumber == blockNumber));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(blockHash),
-      const DeepCollectionEquality().hash(blockNumber));
+  int get hashCode => Object.hash(runtimeType, blockHash, blockNumber);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_BlockHashAndNumberResponseResultCopyWith<
           _$_BlockHashAndNumberResponseResult>
       get copyWith => __$$_BlockHashAndNumberResponseResultCopyWithImpl<
