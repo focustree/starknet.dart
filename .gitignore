@@ -19,6 +19,8 @@ coverage/
 
 .idea
 
+.env
+
 # Python
 **/__pycache__
 .venv
