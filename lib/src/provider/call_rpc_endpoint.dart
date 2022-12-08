@@ -13,6 +13,7 @@ Future<Map<String, dynamic>> callRpcEndpoint(
     'params': params ?? [],
     'id': 0
   };
+  print(json.encode(body));
 
   final response =
       await http.post(nodeUri, headers: headers, body: json.encode(body));
