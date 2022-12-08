@@ -5,7 +5,7 @@ cairo-path = ["contracts/lib/cairo_contracts/src"]
 compiled-contracts-dir = "contracts/build"
 
 [contracts]
-balance = ["contracts/src/balance.cairo"]
+balance = ["contracts/src/Balance.cairo"]
 proxy = [
     "contracts/lib/cairo_contracts/src/openzeppelin/upgrades/presets/Proxy.cairo"
 ]
