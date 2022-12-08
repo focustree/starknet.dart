@@ -451,8 +451,8 @@ mixin _$BroadcastedTxn {
             Felt maxFee,
             String version,
             List<Felt> signature,
-            Felt? nonce,
-            Felt sender_address,
+            Felt nonce,
+            Felt senderAddress,
             List<Felt> calldata)
         broadcastedInvokeTxnV1,
     required TResult Function(
@@ -460,7 +460,7 @@ mixin _$BroadcastedTxn {
             Felt maxFee,
             String version,
             List<Felt> signature,
-            Felt? nonce,
+            Felt nonce,
             ContractClass contractClass,
             Felt senderAddress)
         broadcastedDeclareTxn,
@@ -479,7 +479,7 @@ mixin _$BroadcastedTxn {
             Felt maxFee,
             String version,
             List<Felt> signature,
-            Felt? nonce)
+            Felt nonce)
         broadcastedDeployAccountTxn,
   }) =>
       throw _privateConstructorUsedError;
@@ -500,8 +500,8 @@ mixin _$BroadcastedTxn {
             Felt maxFee,
             String version,
             List<Felt> signature,
-            Felt? nonce,
-            Felt sender_address,
+            Felt nonce,
+            Felt senderAddress,
             List<Felt> calldata)?
         broadcastedInvokeTxnV1,
     TResult Function(
@@ -509,7 +509,7 @@ mixin _$BroadcastedTxn {
             Felt maxFee,
             String version,
             List<Felt> signature,
-            Felt? nonce,
+            Felt nonce,
             ContractClass contractClass,
             Felt senderAddress)?
         broadcastedDeclareTxn,
@@ -524,7 +524,7 @@ mixin _$BroadcastedTxn {
             Felt maxFee,
             String version,
             List<Felt> signature,
-            Felt? nonce)?
+            Felt nonce)?
         broadcastedDeployAccountTxn,
   }) =>
       throw _privateConstructorUsedError;
@@ -545,8 +545,8 @@ mixin _$BroadcastedTxn {
             Felt maxFee,
             String version,
             List<Felt> signature,
-            Felt? nonce,
-            Felt sender_address,
+            Felt nonce,
+            Felt senderAddress,
             List<Felt> calldata)?
         broadcastedInvokeTxnV1,
     TResult Function(
@@ -554,7 +554,7 @@ mixin _$BroadcastedTxn {
             Felt maxFee,
             String version,
             List<Felt> signature,
-            Felt? nonce,
+            Felt nonce,
             ContractClass contractClass,
             Felt senderAddress)?
         broadcastedDeclareTxn,
@@ -569,7 +569,7 @@ mixin _$BroadcastedTxn {
             Felt maxFee,
             String version,
             List<Felt> signature,
-            Felt? nonce)?
+            Felt nonce)?
         broadcastedDeployAccountTxn,
     required TResult orElse(),
   }) =>
@@ -840,8 +840,8 @@ class _$BroadcastedInvokeTxnV0 implements BroadcastedInvokeTxnV0 {
             Felt maxFee,
             String version,
             List<Felt> signature,
-            Felt? nonce,
-            Felt sender_address,
+            Felt nonce,
+            Felt senderAddress,
             List<Felt> calldata)
         broadcastedInvokeTxnV1,
     required TResult Function(
@@ -849,7 +849,7 @@ class _$BroadcastedInvokeTxnV0 implements BroadcastedInvokeTxnV0 {
             Felt maxFee,
             String version,
             List<Felt> signature,
-            Felt? nonce,
+            Felt nonce,
             ContractClass contractClass,
             Felt senderAddress)
         broadcastedDeclareTxn,
@@ -868,7 +868,7 @@ class _$BroadcastedInvokeTxnV0 implements BroadcastedInvokeTxnV0 {
             Felt maxFee,
             String version,
             List<Felt> signature,
-            Felt? nonce)
+            Felt nonce)
         broadcastedDeployAccountTxn,
   }) {
     return broadcastedInvokeTxnV0(type, maxFee, version, signature, nonce,
@@ -893,8 +893,8 @@ class _$BroadcastedInvokeTxnV0 implements BroadcastedInvokeTxnV0 {
             Felt maxFee,
             String version,
             List<Felt> signature,
-            Felt? nonce,
-            Felt sender_address,
+            Felt nonce,
+            Felt senderAddress,
             List<Felt> calldata)?
         broadcastedInvokeTxnV1,
     TResult Function(
@@ -902,7 +902,7 @@ class _$BroadcastedInvokeTxnV0 implements BroadcastedInvokeTxnV0 {
             Felt maxFee,
             String version,
             List<Felt> signature,
-            Felt? nonce,
+            Felt nonce,
             ContractClass contractClass,
             Felt senderAddress)?
         broadcastedDeclareTxn,
@@ -917,7 +917,7 @@ class _$BroadcastedInvokeTxnV0 implements BroadcastedInvokeTxnV0 {
             Felt maxFee,
             String version,
             List<Felt> signature,
-            Felt? nonce)?
+            Felt nonce)?
         broadcastedDeployAccountTxn,
   }) {
     return broadcastedInvokeTxnV0?.call(type, maxFee, version, signature, nonce,
@@ -942,8 +942,8 @@ class _$BroadcastedInvokeTxnV0 implements BroadcastedInvokeTxnV0 {
             Felt maxFee,
             String version,
             List<Felt> signature,
-            Felt? nonce,
-            Felt sender_address,
+            Felt nonce,
+            Felt senderAddress,
             List<Felt> calldata)?
         broadcastedInvokeTxnV1,
     TResult Function(
@@ -951,7 +951,7 @@ class _$BroadcastedInvokeTxnV0 implements BroadcastedInvokeTxnV0 {
             Felt maxFee,
             String version,
             List<Felt> signature,
-            Felt? nonce,
+            Felt nonce,
             ContractClass contractClass,
             Felt senderAddress)?
         broadcastedDeclareTxn,
@@ -966,7 +966,7 @@ class _$BroadcastedInvokeTxnV0 implements BroadcastedInvokeTxnV0 {
             Felt maxFee,
             String version,
             List<Felt> signature,
-            Felt? nonce)?
+            Felt nonce)?
         broadcastedDeployAccountTxn,
     required TResult orElse(),
   }) {
@@ -1074,8 +1074,8 @@ abstract class _$$BroadcastedInvokeTxnV1CopyWith<$Res>
       Felt maxFee,
       String version,
       List<Felt> signature,
-      Felt? nonce,
-      Felt sender_address,
+      Felt nonce,
+      Felt senderAddress,
       List<Felt> calldata});
 }
 
@@ -1098,7 +1098,7 @@ class __$$BroadcastedInvokeTxnV1CopyWithImpl<$Res>
     Object? version = freezed,
     Object? signature = freezed,
     Object? nonce = freezed,
-    Object? sender_address = freezed,
+    Object? senderAddress = freezed,
     Object? calldata = freezed,
   }) {
     return _then(_$BroadcastedInvokeTxnV1(
@@ -1121,10 +1121,10 @@ class __$$BroadcastedInvokeTxnV1CopyWithImpl<$Res>
       nonce: nonce == freezed
           ? _value.nonce
           : nonce // ignore: cast_nullable_to_non_nullable
-              as Felt?,
-      sender_address: sender_address == freezed
-          ? _value.sender_address
-          : sender_address // ignore: cast_nullable_to_non_nullable
+              as Felt,
+      senderAddress: senderAddress == freezed
+          ? _value.senderAddress
+          : senderAddress // ignore: cast_nullable_to_non_nullable
               as Felt,
       calldata: calldata == freezed
           ? _value._calldata
@@ -1143,8 +1143,8 @@ class _$BroadcastedInvokeTxnV1 implements BroadcastedInvokeTxnV1 {
       required this.maxFee,
       required this.version,
       required final List<Felt> signature,
-      this.nonce,
-      required this.sender_address,
+      required this.nonce,
+      required this.senderAddress,
       required final List<Felt> calldata,
       final String? $type})
       : _signature = signature,
@@ -1169,11 +1169,11 @@ class _$BroadcastedInvokeTxnV1 implements BroadcastedInvokeTxnV1 {
   }
 
   @override
-  final Felt? nonce;
+  final Felt nonce;
 // end of BROADCASTED_TXN_COMMON_PROPERTIES
 // start of INVOKE_TXN_V1
   @override
-  final Felt sender_address;
+  final Felt senderAddress;
   final List<Felt> _calldata;
   @override
   List<Felt> get calldata {
@@ -1186,7 +1186,7 @@ class _$BroadcastedInvokeTxnV1 implements BroadcastedInvokeTxnV1 {
 
   @override
   String toString() {
-    return 'BroadcastedTxn.broadcastedInvokeTxnV1(type: $type, maxFee: $maxFee, version: $version, signature: $signature, nonce: $nonce, sender_address: $sender_address, calldata: $calldata)';
+    return 'BroadcastedTxn.broadcastedInvokeTxnV1(type: $type, maxFee: $maxFee, version: $version, signature: $signature, nonce: $nonce, senderAddress: $senderAddress, calldata: $calldata)';
   }
 
   @override
@@ -1201,7 +1201,7 @@ class _$BroadcastedInvokeTxnV1 implements BroadcastedInvokeTxnV1 {
                 .equals(other._signature, _signature) &&
             const DeepCollectionEquality().equals(other.nonce, nonce) &&
             const DeepCollectionEquality()
-                .equals(other.sender_address, sender_address) &&
+                .equals(other.senderAddress, senderAddress) &&
             const DeepCollectionEquality().equals(other._calldata, _calldata));
   }
 
@@ -1214,7 +1214,7 @@ class _$BroadcastedInvokeTxnV1 implements BroadcastedInvokeTxnV1 {
       const DeepCollectionEquality().hash(version),
       const DeepCollectionEquality().hash(_signature),
       const DeepCollectionEquality().hash(nonce),
-      const DeepCollectionEquality().hash(sender_address),
+      const DeepCollectionEquality().hash(senderAddress),
       const DeepCollectionEquality().hash(_calldata));
 
   @JsonKey(ignore: true)
@@ -1241,8 +1241,8 @@ class _$BroadcastedInvokeTxnV1 implements BroadcastedInvokeTxnV1 {
             Felt maxFee,
             String version,
             List<Felt> signature,
-            Felt? nonce,
-            Felt sender_address,
+            Felt nonce,
+            Felt senderAddress,
             List<Felt> calldata)
         broadcastedInvokeTxnV1,
     required TResult Function(
@@ -1250,7 +1250,7 @@ class _$BroadcastedInvokeTxnV1 implements BroadcastedInvokeTxnV1 {
             Felt maxFee,
             String version,
             List<Felt> signature,
-            Felt? nonce,
+            Felt nonce,
             ContractClass contractClass,
             Felt senderAddress)
         broadcastedDeclareTxn,
@@ -1269,11 +1269,11 @@ class _$BroadcastedInvokeTxnV1 implements BroadcastedInvokeTxnV1 {
             Felt maxFee,
             String version,
             List<Felt> signature,
-            Felt? nonce)
+            Felt nonce)
         broadcastedDeployAccountTxn,
   }) {
     return broadcastedInvokeTxnV1(
-        type, maxFee, version, signature, nonce, sender_address, calldata);
+        type, maxFee, version, signature, nonce, senderAddress, calldata);
   }
 
   @override
@@ -1294,8 +1294,8 @@ class _$BroadcastedInvokeTxnV1 implements BroadcastedInvokeTxnV1 {
             Felt maxFee,
             String version,
             List<Felt> signature,
-            Felt? nonce,
-            Felt sender_address,
+            Felt nonce,
+            Felt senderAddress,
             List<Felt> calldata)?
         broadcastedInvokeTxnV1,
     TResult Function(
@@ -1303,7 +1303,7 @@ class _$BroadcastedInvokeTxnV1 implements BroadcastedInvokeTxnV1 {
             Felt maxFee,
             String version,
             List<Felt> signature,
-            Felt? nonce,
+            Felt nonce,
             ContractClass contractClass,
             Felt senderAddress)?
         broadcastedDeclareTxn,
@@ -1318,11 +1318,11 @@ class _$BroadcastedInvokeTxnV1 implements BroadcastedInvokeTxnV1 {
             Felt maxFee,
             String version,
             List<Felt> signature,
-            Felt? nonce)?
+            Felt nonce)?
         broadcastedDeployAccountTxn,
   }) {
     return broadcastedInvokeTxnV1?.call(
-        type, maxFee, version, signature, nonce, sender_address, calldata);
+        type, maxFee, version, signature, nonce, senderAddress, calldata);
   }
 
   @override
@@ -1343,8 +1343,8 @@ class _$BroadcastedInvokeTxnV1 implements BroadcastedInvokeTxnV1 {
             Felt maxFee,
             String version,
             List<Felt> signature,
-            Felt? nonce,
-            Felt sender_address,
+            Felt nonce,
+            Felt senderAddress,
             List<Felt> calldata)?
         broadcastedInvokeTxnV1,
     TResult Function(
@@ -1352,7 +1352,7 @@ class _$BroadcastedInvokeTxnV1 implements BroadcastedInvokeTxnV1 {
             Felt maxFee,
             String version,
             List<Felt> signature,
-            Felt? nonce,
+            Felt nonce,
             ContractClass contractClass,
             Felt senderAddress)?
         broadcastedDeclareTxn,
@@ -1367,13 +1367,13 @@ class _$BroadcastedInvokeTxnV1 implements BroadcastedInvokeTxnV1 {
             Felt maxFee,
             String version,
             List<Felt> signature,
-            Felt? nonce)?
+            Felt nonce)?
         broadcastedDeployAccountTxn,
     required TResult orElse(),
   }) {
     if (broadcastedInvokeTxnV1 != null) {
       return broadcastedInvokeTxnV1(
-          type, maxFee, version, signature, nonce, sender_address, calldata);
+          type, maxFee, version, signature, nonce, senderAddress, calldata);
     }
     return orElse();
   }
@@ -1438,8 +1438,8 @@ abstract class BroadcastedInvokeTxnV1 implements BroadcastedTxn {
       required final Felt maxFee,
       required final String version,
       required final List<Felt> signature,
-      final Felt? nonce,
-      required final Felt sender_address,
+      required final Felt nonce,
+      required final Felt senderAddress,
       required final List<Felt> calldata}) = _$BroadcastedInvokeTxnV1;
 
   factory BroadcastedInvokeTxnV1.fromJson(Map<String, dynamic> json) =
@@ -1451,9 +1451,9 @@ abstract class BroadcastedInvokeTxnV1 implements BroadcastedTxn {
   @override
   String get version;
   List<Felt> get signature;
-  Felt? get nonce; // end of BROADCASTED_TXN_COMMON_PROPERTIES
+  Felt get nonce; // end of BROADCASTED_TXN_COMMON_PROPERTIES
 // start of INVOKE_TXN_V1
-  Felt get sender_address;
+  Felt get senderAddress;
   List<Felt> get calldata;
   @override
   @JsonKey(ignore: true)
@@ -1473,7 +1473,7 @@ abstract class _$$BroadcastedDeclareTxnCopyWith<$Res>
       Felt maxFee,
       String version,
       List<Felt> signature,
-      Felt? nonce,
+      Felt nonce,
       ContractClass contractClass,
       Felt senderAddress});
 
@@ -1521,7 +1521,7 @@ class __$$BroadcastedDeclareTxnCopyWithImpl<$Res>
       nonce: nonce == freezed
           ? _value.nonce
           : nonce // ignore: cast_nullable_to_non_nullable
-              as Felt?,
+              as Felt,
       contractClass: contractClass == freezed
           ? _value.contractClass
           : contractClass // ignore: cast_nullable_to_non_nullable
@@ -1550,7 +1550,7 @@ class _$BroadcastedDeclareTxn implements BroadcastedDeclareTxn {
       required this.maxFee,
       required this.version,
       required final List<Felt> signature,
-      this.nonce,
+      required this.nonce,
       required this.contractClass,
       required this.senderAddress,
       final String? $type})
@@ -1575,7 +1575,7 @@ class _$BroadcastedDeclareTxn implements BroadcastedDeclareTxn {
   }
 
   @override
-  final Felt? nonce;
+  final Felt nonce;
 // end of BROADCASTED_TXN_COMMON_PROPERTIES
   @override
   final ContractClass contractClass;
@@ -1643,8 +1643,8 @@ class _$BroadcastedDeclareTxn implements BroadcastedDeclareTxn {
             Felt maxFee,
             String version,
             List<Felt> signature,
-            Felt? nonce,
-            Felt sender_address,
+            Felt nonce,
+            Felt senderAddress,
             List<Felt> calldata)
         broadcastedInvokeTxnV1,
     required TResult Function(
@@ -1652,7 +1652,7 @@ class _$BroadcastedDeclareTxn implements BroadcastedDeclareTxn {
             Felt maxFee,
             String version,
             List<Felt> signature,
-            Felt? nonce,
+            Felt nonce,
             ContractClass contractClass,
             Felt senderAddress)
         broadcastedDeclareTxn,
@@ -1671,7 +1671,7 @@ class _$BroadcastedDeclareTxn implements BroadcastedDeclareTxn {
             Felt maxFee,
             String version,
             List<Felt> signature,
-            Felt? nonce)
+            Felt nonce)
         broadcastedDeployAccountTxn,
   }) {
     return broadcastedDeclareTxn(
@@ -1696,8 +1696,8 @@ class _$BroadcastedDeclareTxn implements BroadcastedDeclareTxn {
             Felt maxFee,
             String version,
             List<Felt> signature,
-            Felt? nonce,
-            Felt sender_address,
+            Felt nonce,
+            Felt senderAddress,
             List<Felt> calldata)?
         broadcastedInvokeTxnV1,
     TResult Function(
@@ -1705,7 +1705,7 @@ class _$BroadcastedDeclareTxn implements BroadcastedDeclareTxn {
             Felt maxFee,
             String version,
             List<Felt> signature,
-            Felt? nonce,
+            Felt nonce,
             ContractClass contractClass,
             Felt senderAddress)?
         broadcastedDeclareTxn,
@@ -1720,7 +1720,7 @@ class _$BroadcastedDeclareTxn implements BroadcastedDeclareTxn {
             Felt maxFee,
             String version,
             List<Felt> signature,
-            Felt? nonce)?
+            Felt nonce)?
         broadcastedDeployAccountTxn,
   }) {
     return broadcastedDeclareTxn?.call(
@@ -1745,8 +1745,8 @@ class _$BroadcastedDeclareTxn implements BroadcastedDeclareTxn {
             Felt maxFee,
             String version,
             List<Felt> signature,
-            Felt? nonce,
-            Felt sender_address,
+            Felt nonce,
+            Felt senderAddress,
             List<Felt> calldata)?
         broadcastedInvokeTxnV1,
     TResult Function(
@@ -1754,7 +1754,7 @@ class _$BroadcastedDeclareTxn implements BroadcastedDeclareTxn {
             Felt maxFee,
             String version,
             List<Felt> signature,
-            Felt? nonce,
+            Felt nonce,
             ContractClass contractClass,
             Felt senderAddress)?
         broadcastedDeclareTxn,
@@ -1769,7 +1769,7 @@ class _$BroadcastedDeclareTxn implements BroadcastedDeclareTxn {
             Felt maxFee,
             String version,
             List<Felt> signature,
-            Felt? nonce)?
+            Felt nonce)?
         broadcastedDeployAccountTxn,
     required TResult orElse(),
   }) {
@@ -1840,7 +1840,7 @@ abstract class BroadcastedDeclareTxn implements BroadcastedTxn {
       required final Felt maxFee,
       required final String version,
       required final List<Felt> signature,
-      final Felt? nonce,
+      required final Felt nonce,
       required final ContractClass contractClass,
       required final Felt senderAddress}) = _$BroadcastedDeclareTxn;
 
@@ -1853,7 +1853,7 @@ abstract class BroadcastedDeclareTxn implements BroadcastedTxn {
   @override
   String get version;
   List<Felt> get signature;
-  Felt? get nonce; // end of BROADCASTED_TXN_COMMON_PROPERTIES
+  Felt get nonce; // end of BROADCASTED_TXN_COMMON_PROPERTIES
   ContractClass get contractClass;
   Felt get senderAddress;
   @override
@@ -2020,8 +2020,8 @@ class _$BroadcastedDeployTxn implements BroadcastedDeployTxn {
             Felt maxFee,
             String version,
             List<Felt> signature,
-            Felt? nonce,
-            Felt sender_address,
+            Felt nonce,
+            Felt senderAddress,
             List<Felt> calldata)
         broadcastedInvokeTxnV1,
     required TResult Function(
@@ -2029,7 +2029,7 @@ class _$BroadcastedDeployTxn implements BroadcastedDeployTxn {
             Felt maxFee,
             String version,
             List<Felt> signature,
-            Felt? nonce,
+            Felt nonce,
             ContractClass contractClass,
             Felt senderAddress)
         broadcastedDeclareTxn,
@@ -2048,7 +2048,7 @@ class _$BroadcastedDeployTxn implements BroadcastedDeployTxn {
             Felt maxFee,
             String version,
             List<Felt> signature,
-            Felt? nonce)
+            Felt nonce)
         broadcastedDeployAccountTxn,
   }) {
     return broadcastedDeployTxn(
@@ -2073,8 +2073,8 @@ class _$BroadcastedDeployTxn implements BroadcastedDeployTxn {
             Felt maxFee,
             String version,
             List<Felt> signature,
-            Felt? nonce,
-            Felt sender_address,
+            Felt nonce,
+            Felt senderAddress,
             List<Felt> calldata)?
         broadcastedInvokeTxnV1,
     TResult Function(
@@ -2082,7 +2082,7 @@ class _$BroadcastedDeployTxn implements BroadcastedDeployTxn {
             Felt maxFee,
             String version,
             List<Felt> signature,
-            Felt? nonce,
+            Felt nonce,
             ContractClass contractClass,
             Felt senderAddress)?
         broadcastedDeclareTxn,
@@ -2097,7 +2097,7 @@ class _$BroadcastedDeployTxn implements BroadcastedDeployTxn {
             Felt maxFee,
             String version,
             List<Felt> signature,
-            Felt? nonce)?
+            Felt nonce)?
         broadcastedDeployAccountTxn,
   }) {
     return broadcastedDeployTxn?.call(
@@ -2122,8 +2122,8 @@ class _$BroadcastedDeployTxn implements BroadcastedDeployTxn {
             Felt maxFee,
             String version,
             List<Felt> signature,
-            Felt? nonce,
-            Felt sender_address,
+            Felt nonce,
+            Felt senderAddress,
             List<Felt> calldata)?
         broadcastedInvokeTxnV1,
     TResult Function(
@@ -2131,7 +2131,7 @@ class _$BroadcastedDeployTxn implements BroadcastedDeployTxn {
             Felt maxFee,
             String version,
             List<Felt> signature,
-            Felt? nonce,
+            Felt nonce,
             ContractClass contractClass,
             Felt senderAddress)?
         broadcastedDeclareTxn,
@@ -2146,7 +2146,7 @@ class _$BroadcastedDeployTxn implements BroadcastedDeployTxn {
             Felt maxFee,
             String version,
             List<Felt> signature,
-            Felt? nonce)?
+            Felt nonce)?
         broadcastedDeployAccountTxn,
     required TResult orElse(),
   }) {
@@ -2251,7 +2251,7 @@ abstract class _$$BroadcastedDeployAccountTxnCopyWith<$Res>
       Felt maxFee,
       String version,
       List<Felt> signature,
-      Felt? nonce});
+      Felt nonce});
 }
 
 /// @nodoc
@@ -2310,7 +2310,7 @@ class __$$BroadcastedDeployAccountTxnCopyWithImpl<$Res>
       nonce: nonce == freezed
           ? _value.nonce
           : nonce // ignore: cast_nullable_to_non_nullable
-              as Felt?,
+              as Felt,
     ));
   }
 }
@@ -2327,7 +2327,7 @@ class _$BroadcastedDeployAccountTxn implements BroadcastedDeployAccountTxn {
       required this.maxFee,
       required this.version,
       required final List<Felt> signature,
-      this.nonce,
+      required this.nonce,
       final String? $type})
       : _constructorCalldata = constructorCalldata,
         _signature = signature,
@@ -2362,7 +2362,7 @@ class _$BroadcastedDeployAccountTxn implements BroadcastedDeployAccountTxn {
   }
 
   @override
-  final Felt? nonce;
+  final Felt nonce;
 
   @JsonKey(name: 'runtimeType')
   final String $type;
@@ -2427,8 +2427,8 @@ class _$BroadcastedDeployAccountTxn implements BroadcastedDeployAccountTxn {
             Felt maxFee,
             String version,
             List<Felt> signature,
-            Felt? nonce,
-            Felt sender_address,
+            Felt nonce,
+            Felt senderAddress,
             List<Felt> calldata)
         broadcastedInvokeTxnV1,
     required TResult Function(
@@ -2436,7 +2436,7 @@ class _$BroadcastedDeployAccountTxn implements BroadcastedDeployAccountTxn {
             Felt maxFee,
             String version,
             List<Felt> signature,
-            Felt? nonce,
+            Felt nonce,
             ContractClass contractClass,
             Felt senderAddress)
         broadcastedDeclareTxn,
@@ -2455,7 +2455,7 @@ class _$BroadcastedDeployAccountTxn implements BroadcastedDeployAccountTxn {
             Felt maxFee,
             String version,
             List<Felt> signature,
-            Felt? nonce)
+            Felt nonce)
         broadcastedDeployAccountTxn,
   }) {
     return broadcastedDeployAccountTxn(contractAddressSalt, classHash,
@@ -2480,8 +2480,8 @@ class _$BroadcastedDeployAccountTxn implements BroadcastedDeployAccountTxn {
             Felt maxFee,
             String version,
             List<Felt> signature,
-            Felt? nonce,
-            Felt sender_address,
+            Felt nonce,
+            Felt senderAddress,
             List<Felt> calldata)?
         broadcastedInvokeTxnV1,
     TResult Function(
@@ -2489,7 +2489,7 @@ class _$BroadcastedDeployAccountTxn implements BroadcastedDeployAccountTxn {
             Felt maxFee,
             String version,
             List<Felt> signature,
-            Felt? nonce,
+            Felt nonce,
             ContractClass contractClass,
             Felt senderAddress)?
         broadcastedDeclareTxn,
@@ -2504,7 +2504,7 @@ class _$BroadcastedDeployAccountTxn implements BroadcastedDeployAccountTxn {
             Felt maxFee,
             String version,
             List<Felt> signature,
-            Felt? nonce)?
+            Felt nonce)?
         broadcastedDeployAccountTxn,
   }) {
     return broadcastedDeployAccountTxn?.call(contractAddressSalt, classHash,
@@ -2529,8 +2529,8 @@ class _$BroadcastedDeployAccountTxn implements BroadcastedDeployAccountTxn {
             Felt maxFee,
             String version,
             List<Felt> signature,
-            Felt? nonce,
-            Felt sender_address,
+            Felt nonce,
+            Felt senderAddress,
             List<Felt> calldata)?
         broadcastedInvokeTxnV1,
     TResult Function(
@@ -2538,7 +2538,7 @@ class _$BroadcastedDeployAccountTxn implements BroadcastedDeployAccountTxn {
             Felt maxFee,
             String version,
             List<Felt> signature,
-            Felt? nonce,
+            Felt nonce,
             ContractClass contractClass,
             Felt senderAddress)?
         broadcastedDeclareTxn,
@@ -2553,7 +2553,7 @@ class _$BroadcastedDeployAccountTxn implements BroadcastedDeployAccountTxn {
             Felt maxFee,
             String version,
             List<Felt> signature,
-            Felt? nonce)?
+            Felt nonce)?
         broadcastedDeployAccountTxn,
     required TResult orElse(),
   }) {
@@ -2627,7 +2627,7 @@ abstract class BroadcastedDeployAccountTxn implements BroadcastedTxn {
       required final Felt maxFee,
       required final String version,
       required final List<Felt> signature,
-      final Felt? nonce}) = _$BroadcastedDeployAccountTxn;
+      required final Felt nonce}) = _$BroadcastedDeployAccountTxn;
 
   factory BroadcastedDeployAccountTxn.fromJson(Map<String, dynamic> json) =
       _$BroadcastedDeployAccountTxn.fromJson;
@@ -2641,7 +2641,7 @@ abstract class BroadcastedDeployAccountTxn implements BroadcastedTxn {
   @override
   String get version;
   List<Felt> get signature;
-  Felt? get nonce;
+  Felt get nonce;
   @override
   @JsonKey(ignore: true)
   _$$BroadcastedDeployAccountTxnCopyWith<_$BroadcastedDeployAccountTxn>

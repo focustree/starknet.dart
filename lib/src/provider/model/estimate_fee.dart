@@ -31,7 +31,6 @@ class EstimateFeeRequest {
     var invokeToJson = request.toJson();
     invokeToJson.remove('runtimeType');
     invokeToJson.remove('transaction_hash');
-    invokeToJson.remove('type');
 
     return {'request': invokeToJson, 'block_id': blockId.toJson()};
   }
@@ -63,11 +62,11 @@ class BroadcastedTxn with _$BroadcastedTxn {
     required Felt maxFee,
     required String version,
     required List<Felt> signature,
-    Felt? nonce,
+    required Felt nonce,
     // end of BROADCASTED_TXN_COMMON_PROPERTIES
 
     // start of INVOKE_TXN_V1
-    required Felt sender_address,
+    required Felt senderAddress,
     required List<Felt> calldata,
     // end of INVOKE_TXN_V1
   }) = BroadcastedInvokeTxnV1;
@@ -79,7 +78,7 @@ class BroadcastedTxn with _$BroadcastedTxn {
     required Felt maxFee,
     required String version,
     required List<Felt> signature,
-    Felt? nonce,
+    required Felt nonce,
     // end of BROADCASTED_TXN_COMMON_PROPERTIES
 
     required ContractClass contractClass,
@@ -108,7 +107,7 @@ class BroadcastedTxn with _$BroadcastedTxn {
     required Felt maxFee,
     required String version,
     required List<Felt> signature,
-    Felt? nonce,
+    required Felt nonce,
     // end of BROADCASTED_TXN_COMMON_PROPERTIES
   }) = BroadcastedDeployAccountTxn;
 

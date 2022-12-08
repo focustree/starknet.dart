@@ -81,9 +81,8 @@ _$BroadcastedInvokeTxnV1 _$$BroadcastedInvokeTxnV1FromJson(
       signature: (json['signature'] as List<dynamic>)
           .map((e) => Felt.fromJson(e as String))
           .toList(),
-      nonce:
-          json['nonce'] == null ? null : Felt.fromJson(json['nonce'] as String),
-      sender_address: Felt.fromJson(json['sender_address'] as String),
+      nonce: Felt.fromJson(json['nonce'] as String),
+      senderAddress: Felt.fromJson(json['sender_address'] as String),
       calldata: (json['calldata'] as List<dynamic>)
           .map((e) => Felt.fromJson(e as String))
           .toList(),
@@ -91,26 +90,17 @@ _$BroadcastedInvokeTxnV1 _$$BroadcastedInvokeTxnV1FromJson(
     );
 
 Map<String, dynamic> _$$BroadcastedInvokeTxnV1ToJson(
-    _$BroadcastedInvokeTxnV1 instance) {
-  final val = <String, dynamic>{
-    'type': instance.type,
-    'max_fee': instance.maxFee.toJson(),
-    'version': instance.version,
-    'signature': instance.signature.map((e) => e.toJson()).toList(),
-  };
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('nonce', instance.nonce?.toJson());
-  val['sender_address'] = instance.sender_address.toJson();
-  val['calldata'] = instance.calldata.map((e) => e.toJson()).toList();
-  val['runtimeType'] = instance.$type;
-  return val;
-}
+        _$BroadcastedInvokeTxnV1 instance) =>
+    <String, dynamic>{
+      'type': instance.type,
+      'max_fee': instance.maxFee.toJson(),
+      'version': instance.version,
+      'signature': instance.signature.map((e) => e.toJson()).toList(),
+      'nonce': instance.nonce.toJson(),
+      'sender_address': instance.senderAddress.toJson(),
+      'calldata': instance.calldata.map((e) => e.toJson()).toList(),
+      'runtimeType': instance.$type,
+    };
 
 _$BroadcastedDeclareTxn _$$BroadcastedDeclareTxnFromJson(
         Map<String, dynamic> json) =>
@@ -121,8 +111,7 @@ _$BroadcastedDeclareTxn _$$BroadcastedDeclareTxnFromJson(
       signature: (json['signature'] as List<dynamic>)
           .map((e) => Felt.fromJson(e as String))
           .toList(),
-      nonce:
-          json['nonce'] == null ? null : Felt.fromJson(json['nonce'] as String),
+      nonce: Felt.fromJson(json['nonce'] as String),
       contractClass: ContractClass.fromJson(
           json['contract_class'] as Map<String, dynamic>),
       senderAddress: Felt.fromJson(json['sender_address'] as String),
@@ -130,26 +119,17 @@ _$BroadcastedDeclareTxn _$$BroadcastedDeclareTxnFromJson(
     );
 
 Map<String, dynamic> _$$BroadcastedDeclareTxnToJson(
-    _$BroadcastedDeclareTxn instance) {
-  final val = <String, dynamic>{
-    'type': instance.type,
-    'max_fee': instance.maxFee.toJson(),
-    'version': instance.version,
-    'signature': instance.signature.map((e) => e.toJson()).toList(),
-  };
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('nonce', instance.nonce?.toJson());
-  val['contract_class'] = instance.contractClass.toJson();
-  val['sender_address'] = instance.senderAddress.toJson();
-  val['runtimeType'] = instance.$type;
-  return val;
-}
+        _$BroadcastedDeclareTxn instance) =>
+    <String, dynamic>{
+      'type': instance.type,
+      'max_fee': instance.maxFee.toJson(),
+      'version': instance.version,
+      'signature': instance.signature.map((e) => e.toJson()).toList(),
+      'nonce': instance.nonce.toJson(),
+      'contract_class': instance.contractClass.toJson(),
+      'sender_address': instance.senderAddress.toJson(),
+      'runtimeType': instance.$type,
+    };
 
 _$BroadcastedDeployTxn _$$BroadcastedDeployTxnFromJson(
         Map<String, dynamic> json) =>
@@ -193,31 +173,21 @@ _$BroadcastedDeployAccountTxn _$$BroadcastedDeployAccountTxnFromJson(
       signature: (json['signature'] as List<dynamic>)
           .map((e) => Felt.fromJson(e as String))
           .toList(),
-      nonce:
-          json['nonce'] == null ? null : Felt.fromJson(json['nonce'] as String),
+      nonce: Felt.fromJson(json['nonce'] as String),
       $type: json['runtimeType'] as String?,
     );
 
 Map<String, dynamic> _$$BroadcastedDeployAccountTxnToJson(
-    _$BroadcastedDeployAccountTxn instance) {
-  final val = <String, dynamic>{
-    'contract_address_salt': instance.contractAddressSalt.toJson(),
-    'class_hash': instance.classHash.toJson(),
-    'constructor_calldata':
-        instance.constructorCalldata.map((e) => e.toJson()).toList(),
-    'type': instance.type,
-    'max_fee': instance.maxFee.toJson(),
-    'version': instance.version,
-    'signature': instance.signature.map((e) => e.toJson()).toList(),
-  };
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('nonce', instance.nonce?.toJson());
-  val['runtimeType'] = instance.$type;
-  return val;
-}
+        _$BroadcastedDeployAccountTxn instance) =>
+    <String, dynamic>{
+      'contract_address_salt': instance.contractAddressSalt.toJson(),
+      'class_hash': instance.classHash.toJson(),
+      'constructor_calldata':
+          instance.constructorCalldata.map((e) => e.toJson()).toList(),
+      'type': instance.type,
+      'max_fee': instance.maxFee.toJson(),
+      'version': instance.version,
+      'signature': instance.signature.map((e) => e.toJson()).toList(),
+      'nonce': instance.nonce.toJson(),
+      'runtimeType': instance.$type,
+    };
