@@ -127,7 +127,7 @@ jobs:
       - name: Run tests on devnet
         env:
           NETWORK: devnet
-        run: dart test --exclude-tags nodevnet
+        run: dart test --exclude-tags nodevnet,blockId
 
 
   publish:
