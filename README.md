@@ -67,6 +67,11 @@ You can run the tests with the following command:
 dart test
 ```
 
+To run the tests on **devnet** use the following command:
+```
+NETWORK=devnet dart test --exclude-tags nodevnet,blockId
+```
+
 ### Release a new version to pub.dev
 
 You simply need to create a PR where you:
