@@ -28,7 +28,7 @@ async def deploy_balance(env="local", max_fee=MAX_FEE, salt=SALT):
         salt=salt,
         class_hash=balance_hash,
         abi=balance_abi,
-        calldata=[]
+        calldata={"answer_": 42}
     )
     print(f"Deploying to address: {hex(address)}")
 

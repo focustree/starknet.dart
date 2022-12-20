@@ -71,8 +71,64 @@ jobs:
       - id: install
         name: Install dependencies
         run: dart pub get
-      - name: Run tests
+      - name: Run tests on testnet
         run: dart test
+  
+  test-devnet:
+    needs: analyze
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      #
+      # devnet setup
+      #
+      - name: Setup python
+        id: setup-python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.9'
+      - name: Install Poetry
+        uses: snok/install-poetry@v1
+        with:
+          virtualenvs-create: true
+          virtualenvs-in-project: true
+      - name: Load cached env
+        id: cached-poetry-dependencies
+        uses: actions/cache@v3
+        with:
+          path: .venv
+          key: venv-${{ runner.os }}-${{ steps.setup-python.outputs.python-version }}-${{ hashFiles('**/poetry.lock') }}
+      - name: Install Poetry dependencies
+        if: steps.cached-poetry-dependencies.outputs.cache-hit != true
+        run: poetry install --no-interaction
+      - name: Start devnet
+        uses: JarvusInnovations/background-action@v1
+        id: start-devnet
+        with:
+          run: |
+            poetry run devnet start &
+          wait-on: http://localhost:5050/is_alive
+          tail: true
+          log-output-resume: stderr
+          wait-for: 1m
+          log-output: stderr,stdout
+          log-output-if: failure
+      - name: Setup devnet
+        run: poetry run devnet setup
+      #
+      # End of devnet setup
+      #
+      - uses: dart-lang/setup-dart@v1.0
+        with:
+          sdk: stable
+      - id: install
+        name: Install dependencies
+        run: dart pub get
+      - name: Run tests on devnet
+        env:
+          NETWORK: devnet
+        run: dart test --exclude-tags nodevnet,blockId
+
 
   publish:
     if: github.event.pull_request.head.repo.fork == false
