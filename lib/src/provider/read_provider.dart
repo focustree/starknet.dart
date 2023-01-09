@@ -117,6 +117,11 @@ abstract class ReadProvider {
   ///
   /// [Spec](https://github.com/starkware-libs/starknet-specs/blob/v0.1.0/api/starknet_api_openrpc.json#L570-L627)
   Future<GetEvents> getEvents(GetEventsRequest request);
+
+  /// Estimate the fee for a given StarkNet transaction.
+  ///
+  /// [Spec](https://github.com/starkware-libs/starknet-specs/blob/v0.2.1/api/starknet_api_openrpc.json#L432-L477)
+  Future<EstimateFee> estimateFee(EstimateFeeRequest request);
 }
 
 class JsonRpcReadProvider implements ReadProvider {
@@ -309,6 +314,15 @@ class JsonRpcReadProvider implements ReadProvider {
       method: 'starknet_getEvents',
       params: [request],
     ).then(GetEvents.fromJson);
+  }
+
+  @override
+  Future<EstimateFee> estimateFee(EstimateFeeRequest request) {
+    return callRpcEndpoint(
+      nodeUri: nodeUri,
+      method: 'starknet_estimateFee',
+      params: request,
+    ).then(EstimateFee.fromJson);
   }
 
   static final devnet = JsonRpcReadProvider(nodeUri: devnetUri);
