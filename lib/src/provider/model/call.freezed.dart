@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'call.dart';
 
@@ -37,8 +37,8 @@ mixin _$Call {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(List<Felt> result)? result,
-    TResult Function(JsonRpcApiError error)? error,
+    TResult? Function(List<Felt> result)? result,
+    TResult? Function(JsonRpcApiError error)? error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -56,8 +56,8 @@ mixin _$Call {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(CallResult value)? result,
-    TResult Function(CallError value)? error,
+    TResult? Function(CallResult value)? result,
+    TResult? Function(CallError value)? error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -73,16 +73,18 @@ mixin _$Call {
 /// @nodoc
 abstract class $CallCopyWith<$Res> {
   factory $CallCopyWith(Call value, $Res Function(Call) then) =
-      _$CallCopyWithImpl<$Res>;
+      _$CallCopyWithImpl<$Res, Call>;
 }
 
 /// @nodoc
-class _$CallCopyWithImpl<$Res> implements $CallCopyWith<$Res> {
+class _$CallCopyWithImpl<$Res, $Val extends Call>
+    implements $CallCopyWith<$Res> {
   _$CallCopyWithImpl(this._value, this._then);
 
-  final Call _value;
   // ignore: unused_field
-  final $Res Function(Call) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 }
 
 /// @nodoc
@@ -90,25 +92,25 @@ abstract class _$$CallResultCopyWith<$Res> {
   factory _$$CallResultCopyWith(
           _$CallResult value, $Res Function(_$CallResult) then) =
       __$$CallResultCopyWithImpl<$Res>;
+  @useResult
   $Res call({List<Felt> result});
 }
 
 /// @nodoc
-class __$$CallResultCopyWithImpl<$Res> extends _$CallCopyWithImpl<$Res>
+class __$$CallResultCopyWithImpl<$Res>
+    extends _$CallCopyWithImpl<$Res, _$CallResult>
     implements _$$CallResultCopyWith<$Res> {
   __$$CallResultCopyWithImpl(
       _$CallResult _value, $Res Function(_$CallResult) _then)
-      : super(_value, (v) => _then(v as _$CallResult));
+      : super(_value, _then);
 
-  @override
-  _$CallResult get _value => super._value as _$CallResult;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? result = freezed,
+    Object? result = null,
   }) {
     return _then(_$CallResult(
-      result: result == freezed
+      result: null == result
           ? _value._result
           : result // ignore: cast_nullable_to_non_nullable
               as List<Felt>,
@@ -129,6 +131,7 @@ class _$CallResult implements CallResult {
   final List<Felt> _result;
   @override
   List<Felt> get result {
+    if (_result is EqualUnmodifiableListView) return _result;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_result);
   }
@@ -156,6 +159,7 @@ class _$CallResult implements CallResult {
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$CallResultCopyWith<_$CallResult> get copyWith =>
       __$$CallResultCopyWithImpl<_$CallResult>(this, _$identity);
 
@@ -171,8 +175,8 @@ class _$CallResult implements CallResult {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(List<Felt> result)? result,
-    TResult Function(JsonRpcApiError error)? error,
+    TResult? Function(List<Felt> result)? result,
+    TResult? Function(JsonRpcApiError error)? error,
   }) {
     return result?.call(this.result);
   }
@@ -202,8 +206,8 @@ class _$CallResult implements CallResult {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(CallResult value)? result,
-    TResult Function(CallError value)? error,
+    TResult? Function(CallResult value)? result,
+    TResult? Function(CallError value)? error,
   }) {
     return result?.call(this);
   }
@@ -246,27 +250,27 @@ abstract class _$$CallErrorCopyWith<$Res> {
   factory _$$CallErrorCopyWith(
           _$CallError value, $Res Function(_$CallError) then) =
       __$$CallErrorCopyWithImpl<$Res>;
+  @useResult
   $Res call({JsonRpcApiError error});
 
   $JsonRpcApiErrorCopyWith<$Res> get error;
 }
 
 /// @nodoc
-class __$$CallErrorCopyWithImpl<$Res> extends _$CallCopyWithImpl<$Res>
+class __$$CallErrorCopyWithImpl<$Res>
+    extends _$CallCopyWithImpl<$Res, _$CallError>
     implements _$$CallErrorCopyWith<$Res> {
   __$$CallErrorCopyWithImpl(
       _$CallError _value, $Res Function(_$CallError) _then)
-      : super(_value, (v) => _then(v as _$CallError));
+      : super(_value, _then);
 
-  @override
-  _$CallError get _value => super._value as _$CallError;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? error = freezed,
+    Object? error = null,
   }) {
     return _then(_$CallError(
-      error: error == freezed
+      error: null == error
           ? _value.error
           : error // ignore: cast_nullable_to_non_nullable
               as JsonRpcApiError,
@@ -274,6 +278,7 @@ class __$$CallErrorCopyWithImpl<$Res> extends _$CallCopyWithImpl<$Res>
   }
 
   @override
+  @pragma('vm:prefer-inline')
   $JsonRpcApiErrorCopyWith<$Res> get error {
     return $JsonRpcApiErrorCopyWith<$Res>(_value.error, (value) {
       return _then(_value.copyWith(error: value));
@@ -306,16 +311,16 @@ class _$CallError implements CallError {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$CallError &&
-            const DeepCollectionEquality().equals(other.error, error));
+            (identical(other.error, error) || other.error == error));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(error));
+  int get hashCode => Object.hash(runtimeType, error);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$CallErrorCopyWith<_$CallError> get copyWith =>
       __$$CallErrorCopyWithImpl<_$CallError>(this, _$identity);
 
@@ -331,8 +336,8 @@ class _$CallError implements CallError {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(List<Felt> result)? result,
-    TResult Function(JsonRpcApiError error)? error,
+    TResult? Function(List<Felt> result)? result,
+    TResult? Function(JsonRpcApiError error)? error,
   }) {
     return error?.call(this.error);
   }
@@ -362,8 +367,8 @@ class _$CallError implements CallError {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(CallResult value)? result,
-    TResult Function(CallError value)? error,
+    TResult? Function(CallResult value)? result,
+    TResult? Function(CallError value)? error,
   }) {
     return error?.call(this);
   }

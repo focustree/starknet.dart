@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'deployed_contract_item.dart';
 
@@ -33,34 +33,38 @@ mixin _$DeployedContractItem {
 abstract class $DeployedContractItemCopyWith<$Res> {
   factory $DeployedContractItemCopyWith(DeployedContractItem value,
           $Res Function(DeployedContractItem) then) =
-      _$DeployedContractItemCopyWithImpl<$Res>;
+      _$DeployedContractItemCopyWithImpl<$Res, DeployedContractItem>;
+  @useResult
   $Res call({Felt address, Felt classHash});
 }
 
 /// @nodoc
-class _$DeployedContractItemCopyWithImpl<$Res>
+class _$DeployedContractItemCopyWithImpl<$Res,
+        $Val extends DeployedContractItem>
     implements $DeployedContractItemCopyWith<$Res> {
   _$DeployedContractItemCopyWithImpl(this._value, this._then);
 
-  final DeployedContractItem _value;
   // ignore: unused_field
-  final $Res Function(DeployedContractItem) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? address = freezed,
-    Object? classHash = freezed,
+    Object? address = null,
+    Object? classHash = null,
   }) {
     return _then(_value.copyWith(
-      address: address == freezed
+      address: null == address
           ? _value.address
           : address // ignore: cast_nullable_to_non_nullable
               as Felt,
-      classHash: classHash == freezed
+      classHash: null == classHash
           ? _value.classHash
           : classHash // ignore: cast_nullable_to_non_nullable
               as Felt,
-    ));
+    ) as $Val);
   }
 }
 
@@ -71,31 +75,30 @@ abstract class _$$_DeployedContractItemCopyWith<$Res>
           $Res Function(_$_DeployedContractItem) then) =
       __$$_DeployedContractItemCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call({Felt address, Felt classHash});
 }
 
 /// @nodoc
 class __$$_DeployedContractItemCopyWithImpl<$Res>
-    extends _$DeployedContractItemCopyWithImpl<$Res>
+    extends _$DeployedContractItemCopyWithImpl<$Res, _$_DeployedContractItem>
     implements _$$_DeployedContractItemCopyWith<$Res> {
   __$$_DeployedContractItemCopyWithImpl(_$_DeployedContractItem _value,
       $Res Function(_$_DeployedContractItem) _then)
-      : super(_value, (v) => _then(v as _$_DeployedContractItem));
+      : super(_value, _then);
 
-  @override
-  _$_DeployedContractItem get _value => super._value as _$_DeployedContractItem;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? address = freezed,
-    Object? classHash = freezed,
+    Object? address = null,
+    Object? classHash = null,
   }) {
     return _then(_$_DeployedContractItem(
-      address: address == freezed
+      address: null == address
           ? _value.address
           : address // ignore: cast_nullable_to_non_nullable
               as Felt,
-      classHash: classHash == freezed
+      classHash: null == classHash
           ? _value.classHash
           : classHash // ignore: cast_nullable_to_non_nullable
               as Felt,
@@ -127,19 +130,18 @@ class _$_DeployedContractItem implements _DeployedContractItem {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_DeployedContractItem &&
-            const DeepCollectionEquality().equals(other.address, address) &&
-            const DeepCollectionEquality().equals(other.classHash, classHash));
+            (identical(other.address, address) || other.address == address) &&
+            (identical(other.classHash, classHash) ||
+                other.classHash == classHash));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(address),
-      const DeepCollectionEquality().hash(classHash));
+  int get hashCode => Object.hash(runtimeType, address, classHash);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_DeployedContractItemCopyWith<_$_DeployedContractItem> get copyWith =>
       __$$_DeployedContractItemCopyWithImpl<_$_DeployedContractItem>(
           this, _$identity);

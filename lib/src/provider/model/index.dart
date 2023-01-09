@@ -28,3 +28,4 @@ export 'msg_to_l2.dart';
 export 'pending_transactions.dart';
 export 'sync_status.dart';
 export 'syncing.dart';
+export 'declare_transaction.dart';

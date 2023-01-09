@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'block_id.dart';
 
@@ -40,9 +40,9 @@ mixin _$BlockId {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(Felt blockHash)? blockHash,
-    TResult Function(int blockNumber)? blockNumber,
-    TResult Function(String blockTag)? blockTag,
+    TResult? Function(Felt blockHash)? blockHash,
+    TResult? Function(int blockNumber)? blockNumber,
+    TResult? Function(String blockTag)? blockTag,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -62,9 +62,9 @@ mixin _$BlockId {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(BlockIdHash value)? blockHash,
-    TResult Function(BlockIdNumber value)? blockNumber,
-    TResult Function(BlockIdTag value)? blockTag,
+    TResult? Function(BlockIdHash value)? blockHash,
+    TResult? Function(BlockIdNumber value)? blockNumber,
+    TResult? Function(BlockIdTag value)? blockTag,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -80,16 +80,18 @@ mixin _$BlockId {
 /// @nodoc
 abstract class $BlockIdCopyWith<$Res> {
   factory $BlockIdCopyWith(BlockId value, $Res Function(BlockId) then) =
-      _$BlockIdCopyWithImpl<$Res>;
+      _$BlockIdCopyWithImpl<$Res, BlockId>;
 }
 
 /// @nodoc
-class _$BlockIdCopyWithImpl<$Res> implements $BlockIdCopyWith<$Res> {
+class _$BlockIdCopyWithImpl<$Res, $Val extends BlockId>
+    implements $BlockIdCopyWith<$Res> {
   _$BlockIdCopyWithImpl(this._value, this._then);
 
-  final BlockId _value;
   // ignore: unused_field
-  final $Res Function(BlockId) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 }
 
 /// @nodoc
@@ -97,25 +99,25 @@ abstract class _$$BlockIdHashCopyWith<$Res> {
   factory _$$BlockIdHashCopyWith(
           _$BlockIdHash value, $Res Function(_$BlockIdHash) then) =
       __$$BlockIdHashCopyWithImpl<$Res>;
+  @useResult
   $Res call({Felt blockHash});
 }
 
 /// @nodoc
-class __$$BlockIdHashCopyWithImpl<$Res> extends _$BlockIdCopyWithImpl<$Res>
+class __$$BlockIdHashCopyWithImpl<$Res>
+    extends _$BlockIdCopyWithImpl<$Res, _$BlockIdHash>
     implements _$$BlockIdHashCopyWith<$Res> {
   __$$BlockIdHashCopyWithImpl(
       _$BlockIdHash _value, $Res Function(_$BlockIdHash) _then)
-      : super(_value, (v) => _then(v as _$BlockIdHash));
+      : super(_value, _then);
 
-  @override
-  _$BlockIdHash get _value => super._value as _$BlockIdHash;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? blockHash = freezed,
+    Object? blockHash = null,
   }) {
     return _then(_$BlockIdHash(
-      blockHash == freezed
+      null == blockHash
           ? _value.blockHash
           : blockHash // ignore: cast_nullable_to_non_nullable
               as Felt,
@@ -149,16 +151,17 @@ class _$BlockIdHash extends BlockIdHash {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$BlockIdHash &&
-            const DeepCollectionEquality().equals(other.blockHash, blockHash));
+            (identical(other.blockHash, blockHash) ||
+                other.blockHash == blockHash));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(blockHash));
+  int get hashCode => Object.hash(runtimeType, blockHash);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$BlockIdHashCopyWith<_$BlockIdHash> get copyWith =>
       __$$BlockIdHashCopyWithImpl<_$BlockIdHash>(this, _$identity);
 
@@ -175,9 +178,9 @@ class _$BlockIdHash extends BlockIdHash {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(Felt blockHash)? blockHash,
-    TResult Function(int blockNumber)? blockNumber,
-    TResult Function(String blockTag)? blockTag,
+    TResult? Function(Felt blockHash)? blockHash,
+    TResult? Function(int blockNumber)? blockNumber,
+    TResult? Function(String blockTag)? blockTag,
   }) {
     return blockHash?.call(this.blockHash);
   }
@@ -209,9 +212,9 @@ class _$BlockIdHash extends BlockIdHash {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(BlockIdHash value)? blockHash,
-    TResult Function(BlockIdNumber value)? blockNumber,
-    TResult Function(BlockIdTag value)? blockTag,
+    TResult? Function(BlockIdHash value)? blockHash,
+    TResult? Function(BlockIdNumber value)? blockNumber,
+    TResult? Function(BlockIdTag value)? blockTag,
   }) {
     return blockHash?.call(this);
   }
@@ -249,25 +252,25 @@ abstract class _$$BlockIdNumberCopyWith<$Res> {
   factory _$$BlockIdNumberCopyWith(
           _$BlockIdNumber value, $Res Function(_$BlockIdNumber) then) =
       __$$BlockIdNumberCopyWithImpl<$Res>;
+  @useResult
   $Res call({int blockNumber});
 }
 
 /// @nodoc
-class __$$BlockIdNumberCopyWithImpl<$Res> extends _$BlockIdCopyWithImpl<$Res>
+class __$$BlockIdNumberCopyWithImpl<$Res>
+    extends _$BlockIdCopyWithImpl<$Res, _$BlockIdNumber>
     implements _$$BlockIdNumberCopyWith<$Res> {
   __$$BlockIdNumberCopyWithImpl(
       _$BlockIdNumber _value, $Res Function(_$BlockIdNumber) _then)
-      : super(_value, (v) => _then(v as _$BlockIdNumber));
+      : super(_value, _then);
 
-  @override
-  _$BlockIdNumber get _value => super._value as _$BlockIdNumber;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? blockNumber = freezed,
+    Object? blockNumber = null,
   }) {
     return _then(_$BlockIdNumber(
-      blockNumber == freezed
+      null == blockNumber
           ? _value.blockNumber
           : blockNumber // ignore: cast_nullable_to_non_nullable
               as int,
@@ -301,17 +304,17 @@ class _$BlockIdNumber extends BlockIdNumber {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$BlockIdNumber &&
-            const DeepCollectionEquality()
-                .equals(other.blockNumber, blockNumber));
+            (identical(other.blockNumber, blockNumber) ||
+                other.blockNumber == blockNumber));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType, const DeepCollectionEquality().hash(blockNumber));
+  int get hashCode => Object.hash(runtimeType, blockNumber);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$BlockIdNumberCopyWith<_$BlockIdNumber> get copyWith =>
       __$$BlockIdNumberCopyWithImpl<_$BlockIdNumber>(this, _$identity);
 
@@ -328,9 +331,9 @@ class _$BlockIdNumber extends BlockIdNumber {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(Felt blockHash)? blockHash,
-    TResult Function(int blockNumber)? blockNumber,
-    TResult Function(String blockTag)? blockTag,
+    TResult? Function(Felt blockHash)? blockHash,
+    TResult? Function(int blockNumber)? blockNumber,
+    TResult? Function(String blockTag)? blockTag,
   }) {
     return blockNumber?.call(this.blockNumber);
   }
@@ -362,9 +365,9 @@ class _$BlockIdNumber extends BlockIdNumber {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(BlockIdHash value)? blockHash,
-    TResult Function(BlockIdNumber value)? blockNumber,
-    TResult Function(BlockIdTag value)? blockTag,
+    TResult? Function(BlockIdHash value)? blockHash,
+    TResult? Function(BlockIdNumber value)? blockNumber,
+    TResult? Function(BlockIdTag value)? blockTag,
   }) {
     return blockNumber?.call(this);
   }
@@ -402,25 +405,25 @@ abstract class _$$BlockIdTagCopyWith<$Res> {
   factory _$$BlockIdTagCopyWith(
           _$BlockIdTag value, $Res Function(_$BlockIdTag) then) =
       __$$BlockIdTagCopyWithImpl<$Res>;
+  @useResult
   $Res call({String blockTag});
 }
 
 /// @nodoc
-class __$$BlockIdTagCopyWithImpl<$Res> extends _$BlockIdCopyWithImpl<$Res>
+class __$$BlockIdTagCopyWithImpl<$Res>
+    extends _$BlockIdCopyWithImpl<$Res, _$BlockIdTag>
     implements _$$BlockIdTagCopyWith<$Res> {
   __$$BlockIdTagCopyWithImpl(
       _$BlockIdTag _value, $Res Function(_$BlockIdTag) _then)
-      : super(_value, (v) => _then(v as _$BlockIdTag));
+      : super(_value, _then);
 
-  @override
-  _$BlockIdTag get _value => super._value as _$BlockIdTag;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? blockTag = freezed,
+    Object? blockTag = null,
   }) {
     return _then(_$BlockIdTag(
-      blockTag == freezed
+      null == blockTag
           ? _value.blockTag
           : blockTag // ignore: cast_nullable_to_non_nullable
               as String,
@@ -454,16 +457,17 @@ class _$BlockIdTag extends BlockIdTag {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$BlockIdTag &&
-            const DeepCollectionEquality().equals(other.blockTag, blockTag));
+            (identical(other.blockTag, blockTag) ||
+                other.blockTag == blockTag));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(blockTag));
+  int get hashCode => Object.hash(runtimeType, blockTag);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$BlockIdTagCopyWith<_$BlockIdTag> get copyWith =>
       __$$BlockIdTagCopyWithImpl<_$BlockIdTag>(this, _$identity);
 
@@ -480,9 +484,9 @@ class _$BlockIdTag extends BlockIdTag {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(Felt blockHash)? blockHash,
-    TResult Function(int blockNumber)? blockNumber,
-    TResult Function(String blockTag)? blockTag,
+    TResult? Function(Felt blockHash)? blockHash,
+    TResult? Function(int blockNumber)? blockNumber,
+    TResult? Function(String blockTag)? blockTag,
   }) {
     return blockTag?.call(this.blockTag);
   }
@@ -514,9 +518,9 @@ class _$BlockIdTag extends BlockIdTag {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(BlockIdHash value)? blockHash,
-    TResult Function(BlockIdNumber value)? blockNumber,
-    TResult Function(BlockIdTag value)? blockTag,
+    TResult? Function(BlockIdHash value)? blockHash,
+    TResult? Function(BlockIdNumber value)? blockNumber,
+    TResult? Function(BlockIdTag value)? blockTag,
   }) {
     return blockTag?.call(this);
   }

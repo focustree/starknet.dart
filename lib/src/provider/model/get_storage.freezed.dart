@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'get_storage.dart';
 
@@ -37,8 +37,8 @@ mixin _$GetStorage {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(Felt result)? result,
-    TResult Function(JsonRpcApiError error)? error,
+    TResult? Function(Felt result)? result,
+    TResult? Function(JsonRpcApiError error)? error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -56,8 +56,8 @@ mixin _$GetStorage {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(GetStorageResult value)? result,
-    TResult Function(GetStorageError value)? error,
+    TResult? Function(GetStorageResult value)? result,
+    TResult? Function(GetStorageError value)? error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -74,16 +74,18 @@ mixin _$GetStorage {
 abstract class $GetStorageCopyWith<$Res> {
   factory $GetStorageCopyWith(
           GetStorage value, $Res Function(GetStorage) then) =
-      _$GetStorageCopyWithImpl<$Res>;
+      _$GetStorageCopyWithImpl<$Res, GetStorage>;
 }
 
 /// @nodoc
-class _$GetStorageCopyWithImpl<$Res> implements $GetStorageCopyWith<$Res> {
+class _$GetStorageCopyWithImpl<$Res, $Val extends GetStorage>
+    implements $GetStorageCopyWith<$Res> {
   _$GetStorageCopyWithImpl(this._value, this._then);
 
-  final GetStorage _value;
   // ignore: unused_field
-  final $Res Function(GetStorage) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 }
 
 /// @nodoc
@@ -91,26 +93,25 @@ abstract class _$$GetStorageResultCopyWith<$Res> {
   factory _$$GetStorageResultCopyWith(
           _$GetStorageResult value, $Res Function(_$GetStorageResult) then) =
       __$$GetStorageResultCopyWithImpl<$Res>;
+  @useResult
   $Res call({Felt result});
 }
 
 /// @nodoc
 class __$$GetStorageResultCopyWithImpl<$Res>
-    extends _$GetStorageCopyWithImpl<$Res>
+    extends _$GetStorageCopyWithImpl<$Res, _$GetStorageResult>
     implements _$$GetStorageResultCopyWith<$Res> {
   __$$GetStorageResultCopyWithImpl(
       _$GetStorageResult _value, $Res Function(_$GetStorageResult) _then)
-      : super(_value, (v) => _then(v as _$GetStorageResult));
+      : super(_value, _then);
 
-  @override
-  _$GetStorageResult get _value => super._value as _$GetStorageResult;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? result = freezed,
+    Object? result = null,
   }) {
     return _then(_$GetStorageResult(
-      result: result == freezed
+      result: null == result
           ? _value.result
           : result // ignore: cast_nullable_to_non_nullable
               as Felt,
@@ -143,16 +144,16 @@ class _$GetStorageResult implements GetStorageResult {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$GetStorageResult &&
-            const DeepCollectionEquality().equals(other.result, result));
+            (identical(other.result, result) || other.result == result));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(result));
+  int get hashCode => Object.hash(runtimeType, result);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$GetStorageResultCopyWith<_$GetStorageResult> get copyWith =>
       __$$GetStorageResultCopyWithImpl<_$GetStorageResult>(this, _$identity);
 
@@ -168,8 +169,8 @@ class _$GetStorageResult implements GetStorageResult {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(Felt result)? result,
-    TResult Function(JsonRpcApiError error)? error,
+    TResult? Function(Felt result)? result,
+    TResult? Function(JsonRpcApiError error)? error,
   }) {
     return result?.call(this.result);
   }
@@ -199,8 +200,8 @@ class _$GetStorageResult implements GetStorageResult {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(GetStorageResult value)? result,
-    TResult Function(GetStorageError value)? error,
+    TResult? Function(GetStorageResult value)? result,
+    TResult? Function(GetStorageError value)? error,
   }) {
     return result?.call(this);
   }
@@ -244,6 +245,7 @@ abstract class _$$GetStorageErrorCopyWith<$Res> {
   factory _$$GetStorageErrorCopyWith(
           _$GetStorageError value, $Res Function(_$GetStorageError) then) =
       __$$GetStorageErrorCopyWithImpl<$Res>;
+  @useResult
   $Res call({JsonRpcApiError error});
 
   $JsonRpcApiErrorCopyWith<$Res> get error;
@@ -251,21 +253,19 @@ abstract class _$$GetStorageErrorCopyWith<$Res> {
 
 /// @nodoc
 class __$$GetStorageErrorCopyWithImpl<$Res>
-    extends _$GetStorageCopyWithImpl<$Res>
+    extends _$GetStorageCopyWithImpl<$Res, _$GetStorageError>
     implements _$$GetStorageErrorCopyWith<$Res> {
   __$$GetStorageErrorCopyWithImpl(
       _$GetStorageError _value, $Res Function(_$GetStorageError) _then)
-      : super(_value, (v) => _then(v as _$GetStorageError));
+      : super(_value, _then);
 
-  @override
-  _$GetStorageError get _value => super._value as _$GetStorageError;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? error = freezed,
+    Object? error = null,
   }) {
     return _then(_$GetStorageError(
-      error: error == freezed
+      error: null == error
           ? _value.error
           : error // ignore: cast_nullable_to_non_nullable
               as JsonRpcApiError,
@@ -273,6 +273,7 @@ class __$$GetStorageErrorCopyWithImpl<$Res>
   }
 
   @override
+  @pragma('vm:prefer-inline')
   $JsonRpcApiErrorCopyWith<$Res> get error {
     return $JsonRpcApiErrorCopyWith<$Res>(_value.error, (value) {
       return _then(_value.copyWith(error: value));
@@ -305,16 +306,16 @@ class _$GetStorageError implements GetStorageError {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$GetStorageError &&
-            const DeepCollectionEquality().equals(other.error, error));
+            (identical(other.error, error) || other.error == error));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(error));
+  int get hashCode => Object.hash(runtimeType, error);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$GetStorageErrorCopyWith<_$GetStorageError> get copyWith =>
       __$$GetStorageErrorCopyWithImpl<_$GetStorageError>(this, _$identity);
 
@@ -330,8 +331,8 @@ class _$GetStorageError implements GetStorageError {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(Felt result)? result,
-    TResult Function(JsonRpcApiError error)? error,
+    TResult? Function(Felt result)? result,
+    TResult? Function(JsonRpcApiError error)? error,
   }) {
     return error?.call(this.error);
   }
@@ -361,8 +362,8 @@ class _$GetStorageError implements GetStorageError {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(GetStorageResult value)? result,
-    TResult Function(GetStorageError value)? error,
+    TResult? Function(GetStorageResult value)? result,
+    TResult? Function(GetStorageError value)? error,
   }) {
     return error?.call(this);
   }

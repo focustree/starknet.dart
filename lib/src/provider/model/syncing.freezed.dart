@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'syncing.dart';
 
@@ -40,9 +40,9 @@ mixin _$Syncing {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(SyncStatus result)? synchronized,
-    TResult Function(bool result)? notSynchronized,
-    TResult Function(JsonRpcApiError error)? error,
+    TResult? Function(SyncStatus result)? synchronized,
+    TResult? Function(bool result)? notSynchronized,
+    TResult? Function(JsonRpcApiError error)? error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -62,9 +62,9 @@ mixin _$Syncing {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(Synchronized value)? synchronized,
-    TResult Function(NotSynchronized value)? notSynchronized,
-    TResult Function(SyncingError value)? error,
+    TResult? Function(Synchronized value)? synchronized,
+    TResult? Function(NotSynchronized value)? notSynchronized,
+    TResult? Function(SyncingError value)? error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -81,16 +81,18 @@ mixin _$Syncing {
 /// @nodoc
 abstract class $SyncingCopyWith<$Res> {
   factory $SyncingCopyWith(Syncing value, $Res Function(Syncing) then) =
-      _$SyncingCopyWithImpl<$Res>;
+      _$SyncingCopyWithImpl<$Res, Syncing>;
 }
 
 /// @nodoc
-class _$SyncingCopyWithImpl<$Res> implements $SyncingCopyWith<$Res> {
+class _$SyncingCopyWithImpl<$Res, $Val extends Syncing>
+    implements $SyncingCopyWith<$Res> {
   _$SyncingCopyWithImpl(this._value, this._then);
 
-  final Syncing _value;
   // ignore: unused_field
-  final $Res Function(Syncing) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 }
 
 /// @nodoc
@@ -98,27 +100,27 @@ abstract class _$$SynchronizedCopyWith<$Res> {
   factory _$$SynchronizedCopyWith(
           _$Synchronized value, $Res Function(_$Synchronized) then) =
       __$$SynchronizedCopyWithImpl<$Res>;
+  @useResult
   $Res call({SyncStatus result});
 
   $SyncStatusCopyWith<$Res> get result;
 }
 
 /// @nodoc
-class __$$SynchronizedCopyWithImpl<$Res> extends _$SyncingCopyWithImpl<$Res>
+class __$$SynchronizedCopyWithImpl<$Res>
+    extends _$SyncingCopyWithImpl<$Res, _$Synchronized>
     implements _$$SynchronizedCopyWith<$Res> {
   __$$SynchronizedCopyWithImpl(
       _$Synchronized _value, $Res Function(_$Synchronized) _then)
-      : super(_value, (v) => _then(v as _$Synchronized));
+      : super(_value, _then);
 
-  @override
-  _$Synchronized get _value => super._value as _$Synchronized;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? result = freezed,
+    Object? result = null,
   }) {
     return _then(_$Synchronized(
-      result: result == freezed
+      result: null == result
           ? _value.result
           : result // ignore: cast_nullable_to_non_nullable
               as SyncStatus,
@@ -126,6 +128,7 @@ class __$$SynchronizedCopyWithImpl<$Res> extends _$SyncingCopyWithImpl<$Res>
   }
 
   @override
+  @pragma('vm:prefer-inline')
   $SyncStatusCopyWith<$Res> get result {
     return $SyncStatusCopyWith<$Res>(_value.result, (value) {
       return _then(_value.copyWith(result: value));
@@ -158,16 +161,16 @@ class _$Synchronized implements Synchronized {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$Synchronized &&
-            const DeepCollectionEquality().equals(other.result, result));
+            (identical(other.result, result) || other.result == result));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(result));
+  int get hashCode => Object.hash(runtimeType, result);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$SynchronizedCopyWith<_$Synchronized> get copyWith =>
       __$$SynchronizedCopyWithImpl<_$Synchronized>(this, _$identity);
 
@@ -184,9 +187,9 @@ class _$Synchronized implements Synchronized {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(SyncStatus result)? synchronized,
-    TResult Function(bool result)? notSynchronized,
-    TResult Function(JsonRpcApiError error)? error,
+    TResult? Function(SyncStatus result)? synchronized,
+    TResult? Function(bool result)? notSynchronized,
+    TResult? Function(JsonRpcApiError error)? error,
   }) {
     return synchronized?.call(result);
   }
@@ -218,9 +221,9 @@ class _$Synchronized implements Synchronized {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(Synchronized value)? synchronized,
-    TResult Function(NotSynchronized value)? notSynchronized,
-    TResult Function(SyncingError value)? error,
+    TResult? Function(Synchronized value)? synchronized,
+    TResult? Function(NotSynchronized value)? notSynchronized,
+    TResult? Function(SyncingError value)? error,
   }) {
     return synchronized?.call(this);
   }
@@ -265,25 +268,25 @@ abstract class _$$NotSynchronizedCopyWith<$Res> {
   factory _$$NotSynchronizedCopyWith(
           _$NotSynchronized value, $Res Function(_$NotSynchronized) then) =
       __$$NotSynchronizedCopyWithImpl<$Res>;
+  @useResult
   $Res call({bool result});
 }
 
 /// @nodoc
-class __$$NotSynchronizedCopyWithImpl<$Res> extends _$SyncingCopyWithImpl<$Res>
+class __$$NotSynchronizedCopyWithImpl<$Res>
+    extends _$SyncingCopyWithImpl<$Res, _$NotSynchronized>
     implements _$$NotSynchronizedCopyWith<$Res> {
   __$$NotSynchronizedCopyWithImpl(
       _$NotSynchronized _value, $Res Function(_$NotSynchronized) _then)
-      : super(_value, (v) => _then(v as _$NotSynchronized));
+      : super(_value, _then);
 
-  @override
-  _$NotSynchronized get _value => super._value as _$NotSynchronized;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? result = freezed,
+    Object? result = null,
   }) {
     return _then(_$NotSynchronized(
-      result: result == freezed
+      result: null == result
           ? _value.result
           : result // ignore: cast_nullable_to_non_nullable
               as bool,
@@ -316,16 +319,16 @@ class _$NotSynchronized implements NotSynchronized {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$NotSynchronized &&
-            const DeepCollectionEquality().equals(other.result, result));
+            (identical(other.result, result) || other.result == result));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(result));
+  int get hashCode => Object.hash(runtimeType, result);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$NotSynchronizedCopyWith<_$NotSynchronized> get copyWith =>
       __$$NotSynchronizedCopyWithImpl<_$NotSynchronized>(this, _$identity);
 
@@ -342,9 +345,9 @@ class _$NotSynchronized implements NotSynchronized {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(SyncStatus result)? synchronized,
-    TResult Function(bool result)? notSynchronized,
-    TResult Function(JsonRpcApiError error)? error,
+    TResult? Function(SyncStatus result)? synchronized,
+    TResult? Function(bool result)? notSynchronized,
+    TResult? Function(JsonRpcApiError error)? error,
   }) {
     return notSynchronized?.call(result);
   }
@@ -376,9 +379,9 @@ class _$NotSynchronized implements NotSynchronized {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(Synchronized value)? synchronized,
-    TResult Function(NotSynchronized value)? notSynchronized,
-    TResult Function(SyncingError value)? error,
+    TResult? Function(Synchronized value)? synchronized,
+    TResult? Function(NotSynchronized value)? notSynchronized,
+    TResult? Function(SyncingError value)? error,
   }) {
     return notSynchronized?.call(this);
   }
@@ -423,27 +426,27 @@ abstract class _$$SyncingErrorCopyWith<$Res> {
   factory _$$SyncingErrorCopyWith(
           _$SyncingError value, $Res Function(_$SyncingError) then) =
       __$$SyncingErrorCopyWithImpl<$Res>;
+  @useResult
   $Res call({JsonRpcApiError error});
 
   $JsonRpcApiErrorCopyWith<$Res> get error;
 }
 
 /// @nodoc
-class __$$SyncingErrorCopyWithImpl<$Res> extends _$SyncingCopyWithImpl<$Res>
+class __$$SyncingErrorCopyWithImpl<$Res>
+    extends _$SyncingCopyWithImpl<$Res, _$SyncingError>
     implements _$$SyncingErrorCopyWith<$Res> {
   __$$SyncingErrorCopyWithImpl(
       _$SyncingError _value, $Res Function(_$SyncingError) _then)
-      : super(_value, (v) => _then(v as _$SyncingError));
+      : super(_value, _then);
 
-  @override
-  _$SyncingError get _value => super._value as _$SyncingError;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? error = freezed,
+    Object? error = null,
   }) {
     return _then(_$SyncingError(
-      error: error == freezed
+      error: null == error
           ? _value.error
           : error // ignore: cast_nullable_to_non_nullable
               as JsonRpcApiError,
@@ -451,6 +454,7 @@ class __$$SyncingErrorCopyWithImpl<$Res> extends _$SyncingCopyWithImpl<$Res>
   }
 
   @override
+  @pragma('vm:prefer-inline')
   $JsonRpcApiErrorCopyWith<$Res> get error {
     return $JsonRpcApiErrorCopyWith<$Res>(_value.error, (value) {
       return _then(_value.copyWith(error: value));
@@ -483,16 +487,16 @@ class _$SyncingError implements SyncingError {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$SyncingError &&
-            const DeepCollectionEquality().equals(other.error, error));
+            (identical(other.error, error) || other.error == error));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(error));
+  int get hashCode => Object.hash(runtimeType, error);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$SyncingErrorCopyWith<_$SyncingError> get copyWith =>
       __$$SyncingErrorCopyWithImpl<_$SyncingError>(this, _$identity);
 
@@ -509,9 +513,9 @@ class _$SyncingError implements SyncingError {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(SyncStatus result)? synchronized,
-    TResult Function(bool result)? notSynchronized,
-    TResult Function(JsonRpcApiError error)? error,
+    TResult? Function(SyncStatus result)? synchronized,
+    TResult? Function(bool result)? notSynchronized,
+    TResult? Function(JsonRpcApiError error)? error,
   }) {
     return error?.call(this.error);
   }
@@ -543,9 +547,9 @@ class _$SyncingError implements SyncingError {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(Synchronized value)? synchronized,
-    TResult Function(NotSynchronized value)? notSynchronized,
-    TResult Function(SyncingError value)? error,
+    TResult? Function(Synchronized value)? synchronized,
+    TResult? Function(NotSynchronized value)? notSynchronized,
+    TResult? Function(SyncingError value)? error,
   }) {
     return error?.call(this);
   }

@@ -109,7 +109,7 @@ class TxnReceipt with _$TxnReceipt {
     // end of PENDING_COMMON_RECEIPT_PROPERTIES
   }) = PendingCommonReceiptProperties;
 
-  // TODO: Better way to classify json.
+  // User arrow func to have freezed generator work properly
   factory TxnReceipt.fromJson(Map<String, Object?> json) =>
       json['type'] == 'INVOKE'
           ? InvokeTxnReceipt.fromJson(json)

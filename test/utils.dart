@@ -15,9 +15,7 @@ ReadProvider getJsonRpcReadProvider() {
   }
 }
 
-Provider getJsonRpcProvider() {
-  final network = Platform.environment['NETWORK'] ?? 'infuraGoerliTestnet';
-
+Provider getJsonRpcProvider({network = 'infuraGoerliTestnet'}) {
   if (network == 'infuraGoerliTestnet') {
     return JsonRpcProvider.infuraGoerliTestnet;
   } else if (network == 'v010PathfinderGoerliTestnet') {

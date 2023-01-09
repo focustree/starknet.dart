@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'declared_contract_item.dart';
 
@@ -32,29 +32,33 @@ mixin _$DeclaredContractItem {
 abstract class $DeclaredContractItemCopyWith<$Res> {
   factory $DeclaredContractItemCopyWith(DeclaredContractItem value,
           $Res Function(DeclaredContractItem) then) =
-      _$DeclaredContractItemCopyWithImpl<$Res>;
+      _$DeclaredContractItemCopyWithImpl<$Res, DeclaredContractItem>;
+  @useResult
   $Res call({Felt classHash});
 }
 
 /// @nodoc
-class _$DeclaredContractItemCopyWithImpl<$Res>
+class _$DeclaredContractItemCopyWithImpl<$Res,
+        $Val extends DeclaredContractItem>
     implements $DeclaredContractItemCopyWith<$Res> {
   _$DeclaredContractItemCopyWithImpl(this._value, this._then);
 
-  final DeclaredContractItem _value;
   // ignore: unused_field
-  final $Res Function(DeclaredContractItem) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? classHash = freezed,
+    Object? classHash = null,
   }) {
     return _then(_value.copyWith(
-      classHash: classHash == freezed
+      classHash: null == classHash
           ? _value.classHash
           : classHash // ignore: cast_nullable_to_non_nullable
               as Felt,
-    ));
+    ) as $Val);
   }
 }
 
@@ -65,26 +69,25 @@ abstract class _$$_DeclaredContractItemCopyWith<$Res>
           $Res Function(_$_DeclaredContractItem) then) =
       __$$_DeclaredContractItemCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call({Felt classHash});
 }
 
 /// @nodoc
 class __$$_DeclaredContractItemCopyWithImpl<$Res>
-    extends _$DeclaredContractItemCopyWithImpl<$Res>
+    extends _$DeclaredContractItemCopyWithImpl<$Res, _$_DeclaredContractItem>
     implements _$$_DeclaredContractItemCopyWith<$Res> {
   __$$_DeclaredContractItemCopyWithImpl(_$_DeclaredContractItem _value,
       $Res Function(_$_DeclaredContractItem) _then)
-      : super(_value, (v) => _then(v as _$_DeclaredContractItem));
+      : super(_value, _then);
 
-  @override
-  _$_DeclaredContractItem get _value => super._value as _$_DeclaredContractItem;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? classHash = freezed,
+    Object? classHash = null,
   }) {
     return _then(_$_DeclaredContractItem(
-      classHash: classHash == freezed
+      classHash: null == classHash
           ? _value.classHash
           : classHash // ignore: cast_nullable_to_non_nullable
               as Felt,
@@ -113,16 +116,17 @@ class _$_DeclaredContractItem implements _DeclaredContractItem {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_DeclaredContractItem &&
-            const DeepCollectionEquality().equals(other.classHash, classHash));
+            (identical(other.classHash, classHash) ||
+                other.classHash == classHash));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(classHash));
+  int get hashCode => Object.hash(runtimeType, classHash);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_DeclaredContractItemCopyWith<_$_DeclaredContractItem> get copyWith =>
       __$$_DeclaredContractItemCopyWithImpl<_$_DeclaredContractItem>(
           this, _$identity);

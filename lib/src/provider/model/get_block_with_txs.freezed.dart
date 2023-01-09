@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'get_block_with_txs.dart';
 
@@ -37,8 +37,8 @@ mixin _$GetBlockWithTxs {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(BlockWithTxs result)? block,
-    TResult Function(JsonRpcApiError error)? error,
+    TResult? Function(BlockWithTxs result)? block,
+    TResult? Function(JsonRpcApiError error)? error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -56,8 +56,8 @@ mixin _$GetBlockWithTxs {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(GetBlockWithTxsResult value)? block,
-    TResult Function(GetBlockWithTxsError value)? error,
+    TResult? Function(GetBlockWithTxsResult value)? block,
+    TResult? Function(GetBlockWithTxsError value)? error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -74,17 +74,18 @@ mixin _$GetBlockWithTxs {
 abstract class $GetBlockWithTxsCopyWith<$Res> {
   factory $GetBlockWithTxsCopyWith(
           GetBlockWithTxs value, $Res Function(GetBlockWithTxs) then) =
-      _$GetBlockWithTxsCopyWithImpl<$Res>;
+      _$GetBlockWithTxsCopyWithImpl<$Res, GetBlockWithTxs>;
 }
 
 /// @nodoc
-class _$GetBlockWithTxsCopyWithImpl<$Res>
+class _$GetBlockWithTxsCopyWithImpl<$Res, $Val extends GetBlockWithTxs>
     implements $GetBlockWithTxsCopyWith<$Res> {
   _$GetBlockWithTxsCopyWithImpl(this._value, this._then);
 
-  final GetBlockWithTxs _value;
   // ignore: unused_field
-  final $Res Function(GetBlockWithTxs) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 }
 
 /// @nodoc
@@ -92,6 +93,7 @@ abstract class _$$GetBlockWithTxsResultCopyWith<$Res> {
   factory _$$GetBlockWithTxsResultCopyWith(_$GetBlockWithTxsResult value,
           $Res Function(_$GetBlockWithTxsResult) then) =
       __$$GetBlockWithTxsResultCopyWithImpl<$Res>;
+  @useResult
   $Res call({BlockWithTxs result});
 
   $BlockWithTxsCopyWith<$Res> get result;
@@ -99,21 +101,19 @@ abstract class _$$GetBlockWithTxsResultCopyWith<$Res> {
 
 /// @nodoc
 class __$$GetBlockWithTxsResultCopyWithImpl<$Res>
-    extends _$GetBlockWithTxsCopyWithImpl<$Res>
+    extends _$GetBlockWithTxsCopyWithImpl<$Res, _$GetBlockWithTxsResult>
     implements _$$GetBlockWithTxsResultCopyWith<$Res> {
   __$$GetBlockWithTxsResultCopyWithImpl(_$GetBlockWithTxsResult _value,
       $Res Function(_$GetBlockWithTxsResult) _then)
-      : super(_value, (v) => _then(v as _$GetBlockWithTxsResult));
+      : super(_value, _then);
 
-  @override
-  _$GetBlockWithTxsResult get _value => super._value as _$GetBlockWithTxsResult;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? result = freezed,
+    Object? result = null,
   }) {
     return _then(_$GetBlockWithTxsResult(
-      result: result == freezed
+      result: null == result
           ? _value.result
           : result // ignore: cast_nullable_to_non_nullable
               as BlockWithTxs,
@@ -121,6 +121,7 @@ class __$$GetBlockWithTxsResultCopyWithImpl<$Res>
   }
 
   @override
+  @pragma('vm:prefer-inline')
   $BlockWithTxsCopyWith<$Res> get result {
     return $BlockWithTxsCopyWith<$Res>(_value.result, (value) {
       return _then(_value.copyWith(result: value));
@@ -153,16 +154,16 @@ class _$GetBlockWithTxsResult implements GetBlockWithTxsResult {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$GetBlockWithTxsResult &&
-            const DeepCollectionEquality().equals(other.result, result));
+            (identical(other.result, result) || other.result == result));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(result));
+  int get hashCode => Object.hash(runtimeType, result);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$GetBlockWithTxsResultCopyWith<_$GetBlockWithTxsResult> get copyWith =>
       __$$GetBlockWithTxsResultCopyWithImpl<_$GetBlockWithTxsResult>(
           this, _$identity);
@@ -179,8 +180,8 @@ class _$GetBlockWithTxsResult implements GetBlockWithTxsResult {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(BlockWithTxs result)? block,
-    TResult Function(JsonRpcApiError error)? error,
+    TResult? Function(BlockWithTxs result)? block,
+    TResult? Function(JsonRpcApiError error)? error,
   }) {
     return block?.call(result);
   }
@@ -210,8 +211,8 @@ class _$GetBlockWithTxsResult implements GetBlockWithTxsResult {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(GetBlockWithTxsResult value)? block,
-    TResult Function(GetBlockWithTxsError value)? error,
+    TResult? Function(GetBlockWithTxsResult value)? block,
+    TResult? Function(GetBlockWithTxsError value)? error,
   }) {
     return block?.call(this);
   }
@@ -255,6 +256,7 @@ abstract class _$$GetBlockWithTxsErrorCopyWith<$Res> {
   factory _$$GetBlockWithTxsErrorCopyWith(_$GetBlockWithTxsError value,
           $Res Function(_$GetBlockWithTxsError) then) =
       __$$GetBlockWithTxsErrorCopyWithImpl<$Res>;
+  @useResult
   $Res call({JsonRpcApiError error});
 
   $JsonRpcApiErrorCopyWith<$Res> get error;
@@ -262,21 +264,19 @@ abstract class _$$GetBlockWithTxsErrorCopyWith<$Res> {
 
 /// @nodoc
 class __$$GetBlockWithTxsErrorCopyWithImpl<$Res>
-    extends _$GetBlockWithTxsCopyWithImpl<$Res>
+    extends _$GetBlockWithTxsCopyWithImpl<$Res, _$GetBlockWithTxsError>
     implements _$$GetBlockWithTxsErrorCopyWith<$Res> {
   __$$GetBlockWithTxsErrorCopyWithImpl(_$GetBlockWithTxsError _value,
       $Res Function(_$GetBlockWithTxsError) _then)
-      : super(_value, (v) => _then(v as _$GetBlockWithTxsError));
+      : super(_value, _then);
 
-  @override
-  _$GetBlockWithTxsError get _value => super._value as _$GetBlockWithTxsError;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? error = freezed,
+    Object? error = null,
   }) {
     return _then(_$GetBlockWithTxsError(
-      error: error == freezed
+      error: null == error
           ? _value.error
           : error // ignore: cast_nullable_to_non_nullable
               as JsonRpcApiError,
@@ -284,6 +284,7 @@ class __$$GetBlockWithTxsErrorCopyWithImpl<$Res>
   }
 
   @override
+  @pragma('vm:prefer-inline')
   $JsonRpcApiErrorCopyWith<$Res> get error {
     return $JsonRpcApiErrorCopyWith<$Res>(_value.error, (value) {
       return _then(_value.copyWith(error: value));
@@ -316,16 +317,16 @@ class _$GetBlockWithTxsError implements GetBlockWithTxsError {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$GetBlockWithTxsError &&
-            const DeepCollectionEquality().equals(other.error, error));
+            (identical(other.error, error) || other.error == error));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(error));
+  int get hashCode => Object.hash(runtimeType, error);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$GetBlockWithTxsErrorCopyWith<_$GetBlockWithTxsError> get copyWith =>
       __$$GetBlockWithTxsErrorCopyWithImpl<_$GetBlockWithTxsError>(
           this, _$identity);
@@ -342,8 +343,8 @@ class _$GetBlockWithTxsError implements GetBlockWithTxsError {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(BlockWithTxs result)? block,
-    TResult Function(JsonRpcApiError error)? error,
+    TResult? Function(BlockWithTxs result)? block,
+    TResult? Function(JsonRpcApiError error)? error,
   }) {
     return error?.call(this.error);
   }
@@ -373,8 +374,8 @@ class _$GetBlockWithTxsError implements GetBlockWithTxsError {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(GetBlockWithTxsResult value)? block,
-    TResult Function(GetBlockWithTxsError value)? error,
+    TResult? Function(GetBlockWithTxsResult value)? block,
+    TResult? Function(GetBlockWithTxsError value)? error,
   }) {
     return error?.call(this);
   }
@@ -454,7 +455,7 @@ mixin _$BlockWithTxs {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(
+    TResult? Function(
             String status,
             List<Txn> transactions,
             Felt blockHash,
@@ -464,7 +465,7 @@ mixin _$BlockWithTxs {
             int timestamp,
             Felt sequencerAddress)?
         resultingBlock,
-    TResult Function(List<Txn> transactions, int timestamp,
+    TResult? Function(List<Txn> transactions, int timestamp,
             Felt sequencerAddress, Felt blockHash)?
         pendingBlock,
   }) =>
@@ -495,8 +496,8 @@ mixin _$BlockWithTxs {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(BlockWithTxsResponse value)? resultingBlock,
-    TResult Function(PendingBlockWithTxsResult value)? pendingBlock,
+    TResult? Function(BlockWithTxsResponse value)? resultingBlock,
+    TResult? Function(PendingBlockWithTxsResult value)? pendingBlock,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -516,7 +517,8 @@ mixin _$BlockWithTxs {
 abstract class $BlockWithTxsCopyWith<$Res> {
   factory $BlockWithTxsCopyWith(
           BlockWithTxs value, $Res Function(BlockWithTxs) then) =
-      _$BlockWithTxsCopyWithImpl<$Res>;
+      _$BlockWithTxsCopyWithImpl<$Res, BlockWithTxs>;
+  @useResult
   $Res call(
       {List<Txn> transactions,
       Felt blockHash,
@@ -525,38 +527,41 @@ abstract class $BlockWithTxsCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$BlockWithTxsCopyWithImpl<$Res> implements $BlockWithTxsCopyWith<$Res> {
+class _$BlockWithTxsCopyWithImpl<$Res, $Val extends BlockWithTxs>
+    implements $BlockWithTxsCopyWith<$Res> {
   _$BlockWithTxsCopyWithImpl(this._value, this._then);
 
-  final BlockWithTxs _value;
   // ignore: unused_field
-  final $Res Function(BlockWithTxs) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? transactions = freezed,
-    Object? blockHash = freezed,
-    Object? timestamp = freezed,
-    Object? sequencerAddress = freezed,
+    Object? transactions = null,
+    Object? blockHash = null,
+    Object? timestamp = null,
+    Object? sequencerAddress = null,
   }) {
     return _then(_value.copyWith(
-      transactions: transactions == freezed
+      transactions: null == transactions
           ? _value.transactions
           : transactions // ignore: cast_nullable_to_non_nullable
               as List<Txn>,
-      blockHash: blockHash == freezed
+      blockHash: null == blockHash
           ? _value.blockHash
           : blockHash // ignore: cast_nullable_to_non_nullable
               as Felt,
-      timestamp: timestamp == freezed
+      timestamp: null == timestamp
           ? _value.timestamp
           : timestamp // ignore: cast_nullable_to_non_nullable
               as int,
-      sequencerAddress: sequencerAddress == freezed
+      sequencerAddress: null == sequencerAddress
           ? _value.sequencerAddress
           : sequencerAddress // ignore: cast_nullable_to_non_nullable
               as Felt,
-    ));
+    ) as $Val);
   }
 }
 
@@ -567,6 +572,7 @@ abstract class _$$BlockWithTxsResponseCopyWith<$Res>
           $Res Function(_$BlockWithTxsResponse) then) =
       __$$BlockWithTxsResponseCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {String status,
       List<Txn> transactions,
@@ -580,56 +586,54 @@ abstract class _$$BlockWithTxsResponseCopyWith<$Res>
 
 /// @nodoc
 class __$$BlockWithTxsResponseCopyWithImpl<$Res>
-    extends _$BlockWithTxsCopyWithImpl<$Res>
+    extends _$BlockWithTxsCopyWithImpl<$Res, _$BlockWithTxsResponse>
     implements _$$BlockWithTxsResponseCopyWith<$Res> {
   __$$BlockWithTxsResponseCopyWithImpl(_$BlockWithTxsResponse _value,
       $Res Function(_$BlockWithTxsResponse) _then)
-      : super(_value, (v) => _then(v as _$BlockWithTxsResponse));
+      : super(_value, _then);
 
-  @override
-  _$BlockWithTxsResponse get _value => super._value as _$BlockWithTxsResponse;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? status = freezed,
-    Object? transactions = freezed,
-    Object? blockHash = freezed,
-    Object? parentHash = freezed,
-    Object? blockNumber = freezed,
-    Object? newRoot = freezed,
-    Object? timestamp = freezed,
-    Object? sequencerAddress = freezed,
+    Object? status = null,
+    Object? transactions = null,
+    Object? blockHash = null,
+    Object? parentHash = null,
+    Object? blockNumber = null,
+    Object? newRoot = null,
+    Object? timestamp = null,
+    Object? sequencerAddress = null,
   }) {
     return _then(_$BlockWithTxsResponse(
-      status: status == freezed
+      status: null == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
               as String,
-      transactions: transactions == freezed
+      transactions: null == transactions
           ? _value._transactions
           : transactions // ignore: cast_nullable_to_non_nullable
               as List<Txn>,
-      blockHash: blockHash == freezed
+      blockHash: null == blockHash
           ? _value.blockHash
           : blockHash // ignore: cast_nullable_to_non_nullable
               as Felt,
-      parentHash: parentHash == freezed
+      parentHash: null == parentHash
           ? _value.parentHash
           : parentHash // ignore: cast_nullable_to_non_nullable
               as Felt,
-      blockNumber: blockNumber == freezed
+      blockNumber: null == blockNumber
           ? _value.blockNumber
           : blockNumber // ignore: cast_nullable_to_non_nullable
               as int,
-      newRoot: newRoot == freezed
+      newRoot: null == newRoot
           ? _value.newRoot
           : newRoot // ignore: cast_nullable_to_non_nullable
               as Felt,
-      timestamp: timestamp == freezed
+      timestamp: null == timestamp
           ? _value.timestamp
           : timestamp // ignore: cast_nullable_to_non_nullable
               as int,
-      sequencerAddress: sequencerAddress == freezed
+      sequencerAddress: null == sequencerAddress
           ? _value.sequencerAddress
           : sequencerAddress // ignore: cast_nullable_to_non_nullable
               as Felt,
@@ -663,6 +667,7 @@ class _$BlockWithTxsResponse implements BlockWithTxsResponse {
 //Start of BLOCK_BODY_WITH_TXS
   @override
   List<Txn> get transactions {
+    if (_transactions is EqualUnmodifiableListView) return _transactions;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_transactions);
   }
@@ -695,35 +700,38 @@ class _$BlockWithTxsResponse implements BlockWithTxsResponse {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$BlockWithTxsResponse &&
-            const DeepCollectionEquality().equals(other.status, status) &&
+            (identical(other.status, status) || other.status == status) &&
             const DeepCollectionEquality()
                 .equals(other._transactions, _transactions) &&
-            const DeepCollectionEquality().equals(other.blockHash, blockHash) &&
-            const DeepCollectionEquality()
-                .equals(other.parentHash, parentHash) &&
-            const DeepCollectionEquality()
-                .equals(other.blockNumber, blockNumber) &&
-            const DeepCollectionEquality().equals(other.newRoot, newRoot) &&
-            const DeepCollectionEquality().equals(other.timestamp, timestamp) &&
-            const DeepCollectionEquality()
-                .equals(other.sequencerAddress, sequencerAddress));
+            (identical(other.blockHash, blockHash) ||
+                other.blockHash == blockHash) &&
+            (identical(other.parentHash, parentHash) ||
+                other.parentHash == parentHash) &&
+            (identical(other.blockNumber, blockNumber) ||
+                other.blockNumber == blockNumber) &&
+            (identical(other.newRoot, newRoot) || other.newRoot == newRoot) &&
+            (identical(other.timestamp, timestamp) ||
+                other.timestamp == timestamp) &&
+            (identical(other.sequencerAddress, sequencerAddress) ||
+                other.sequencerAddress == sequencerAddress));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      const DeepCollectionEquality().hash(status),
+      status,
       const DeepCollectionEquality().hash(_transactions),
-      const DeepCollectionEquality().hash(blockHash),
-      const DeepCollectionEquality().hash(parentHash),
-      const DeepCollectionEquality().hash(blockNumber),
-      const DeepCollectionEquality().hash(newRoot),
-      const DeepCollectionEquality().hash(timestamp),
-      const DeepCollectionEquality().hash(sequencerAddress));
+      blockHash,
+      parentHash,
+      blockNumber,
+      newRoot,
+      timestamp,
+      sequencerAddress);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$BlockWithTxsResponseCopyWith<_$BlockWithTxsResponse> get copyWith =>
       __$$BlockWithTxsResponseCopyWithImpl<_$BlockWithTxsResponse>(
           this, _$identity);
@@ -752,7 +760,7 @@ class _$BlockWithTxsResponse implements BlockWithTxsResponse {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(
+    TResult? Function(
             String status,
             List<Txn> transactions,
             Felt blockHash,
@@ -762,7 +770,7 @@ class _$BlockWithTxsResponse implements BlockWithTxsResponse {
             int timestamp,
             Felt sequencerAddress)?
         resultingBlock,
-    TResult Function(List<Txn> transactions, int timestamp,
+    TResult? Function(List<Txn> transactions, int timestamp,
             Felt sequencerAddress, Felt blockHash)?
         pendingBlock,
   }) {
@@ -807,8 +815,8 @@ class _$BlockWithTxsResponse implements BlockWithTxsResponse {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(BlockWithTxsResponse value)? resultingBlock,
-    TResult Function(PendingBlockWithTxsResult value)? pendingBlock,
+    TResult? Function(BlockWithTxsResponse value)? resultingBlock,
+    TResult? Function(PendingBlockWithTxsResult value)? pendingBlock,
   }) {
     return resultingBlock?.call(this);
   }
@@ -875,6 +883,7 @@ abstract class _$$PendingBlockWithTxsResultCopyWith<$Res>
           $Res Function(_$PendingBlockWithTxsResult) then) =
       __$$PendingBlockWithTxsResultCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {List<Txn> transactions,
       int timestamp,
@@ -884,37 +893,34 @@ abstract class _$$PendingBlockWithTxsResultCopyWith<$Res>
 
 /// @nodoc
 class __$$PendingBlockWithTxsResultCopyWithImpl<$Res>
-    extends _$BlockWithTxsCopyWithImpl<$Res>
+    extends _$BlockWithTxsCopyWithImpl<$Res, _$PendingBlockWithTxsResult>
     implements _$$PendingBlockWithTxsResultCopyWith<$Res> {
   __$$PendingBlockWithTxsResultCopyWithImpl(_$PendingBlockWithTxsResult _value,
       $Res Function(_$PendingBlockWithTxsResult) _then)
-      : super(_value, (v) => _then(v as _$PendingBlockWithTxsResult));
+      : super(_value, _then);
 
-  @override
-  _$PendingBlockWithTxsResult get _value =>
-      super._value as _$PendingBlockWithTxsResult;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? transactions = freezed,
-    Object? timestamp = freezed,
-    Object? sequencerAddress = freezed,
-    Object? blockHash = freezed,
+    Object? transactions = null,
+    Object? timestamp = null,
+    Object? sequencerAddress = null,
+    Object? blockHash = null,
   }) {
     return _then(_$PendingBlockWithTxsResult(
-      transactions: transactions == freezed
+      transactions: null == transactions
           ? _value._transactions
           : transactions // ignore: cast_nullable_to_non_nullable
               as List<Txn>,
-      timestamp: timestamp == freezed
+      timestamp: null == timestamp
           ? _value.timestamp
           : timestamp // ignore: cast_nullable_to_non_nullable
               as int,
-      sequencerAddress: sequencerAddress == freezed
+      sequencerAddress: null == sequencerAddress
           ? _value.sequencerAddress
           : sequencerAddress // ignore: cast_nullable_to_non_nullable
               as Felt,
-      blockHash: blockHash == freezed
+      blockHash: null == blockHash
           ? _value.blockHash
           : blockHash // ignore: cast_nullable_to_non_nullable
               as Felt,
@@ -942,6 +948,7 @@ class _$PendingBlockWithTxsResult implements PendingBlockWithTxsResult {
 // Start of BLOCK_BODY_WITH_TXS
   @override
   List<Txn> get transactions {
+    if (_transactions is EqualUnmodifiableListView) return _transactions;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_transactions);
   }
@@ -969,10 +976,12 @@ class _$PendingBlockWithTxsResult implements PendingBlockWithTxsResult {
             other is _$PendingBlockWithTxsResult &&
             const DeepCollectionEquality()
                 .equals(other._transactions, _transactions) &&
-            const DeepCollectionEquality().equals(other.timestamp, timestamp) &&
-            const DeepCollectionEquality()
-                .equals(other.sequencerAddress, sequencerAddress) &&
-            const DeepCollectionEquality().equals(other.blockHash, blockHash));
+            (identical(other.timestamp, timestamp) ||
+                other.timestamp == timestamp) &&
+            (identical(other.sequencerAddress, sequencerAddress) ||
+                other.sequencerAddress == sequencerAddress) &&
+            (identical(other.blockHash, blockHash) ||
+                other.blockHash == blockHash));
   }
 
   @JsonKey(ignore: true)
@@ -980,12 +989,13 @@ class _$PendingBlockWithTxsResult implements PendingBlockWithTxsResult {
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(_transactions),
-      const DeepCollectionEquality().hash(timestamp),
-      const DeepCollectionEquality().hash(sequencerAddress),
-      const DeepCollectionEquality().hash(blockHash));
+      timestamp,
+      sequencerAddress,
+      blockHash);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$PendingBlockWithTxsResultCopyWith<_$PendingBlockWithTxsResult>
       get copyWith => __$$PendingBlockWithTxsResultCopyWithImpl<
           _$PendingBlockWithTxsResult>(this, _$identity);
@@ -1013,7 +1023,7 @@ class _$PendingBlockWithTxsResult implements PendingBlockWithTxsResult {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(
+    TResult? Function(
             String status,
             List<Txn> transactions,
             Felt blockHash,
@@ -1023,7 +1033,7 @@ class _$PendingBlockWithTxsResult implements PendingBlockWithTxsResult {
             int timestamp,
             Felt sequencerAddress)?
         resultingBlock,
-    TResult Function(List<Txn> transactions, int timestamp,
+    TResult? Function(List<Txn> transactions, int timestamp,
             Felt sequencerAddress, Felt blockHash)?
         pendingBlock,
   }) {
@@ -1067,8 +1077,8 @@ class _$PendingBlockWithTxsResult implements PendingBlockWithTxsResult {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(BlockWithTxsResponse value)? resultingBlock,
-    TResult Function(PendingBlockWithTxsResult value)? pendingBlock,
+    TResult? Function(BlockWithTxsResponse value)? resultingBlock,
+    TResult? Function(PendingBlockWithTxsResult value)? pendingBlock,
   }) {
     return pendingBlock?.call(this);
   }

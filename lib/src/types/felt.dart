@@ -20,6 +20,10 @@ class Felt {
     return Felt(BigInt.from(int));
   }
 
+  factory Felt.fromDouble(double double) {
+    return Felt(BigInt.from(double));
+  }
+
   factory Felt.fromIntString(String value, {int? radix = 10}) {
     return Felt(BigInt.parse(value, radix: radix));
   }

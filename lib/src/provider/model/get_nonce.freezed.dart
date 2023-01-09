@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'get_nonce.dart';
 
@@ -37,8 +37,8 @@ mixin _$GetNonce {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(Felt result)? result,
-    TResult Function(JsonRpcApiError error)? error,
+    TResult? Function(Felt result)? result,
+    TResult? Function(JsonRpcApiError error)? error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -56,8 +56,8 @@ mixin _$GetNonce {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(GetNonceResult value)? result,
-    TResult Function(GetNonceError value)? error,
+    TResult? Function(GetNonceResult value)? result,
+    TResult? Function(GetNonceError value)? error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -73,16 +73,18 @@ mixin _$GetNonce {
 /// @nodoc
 abstract class $GetNonceCopyWith<$Res> {
   factory $GetNonceCopyWith(GetNonce value, $Res Function(GetNonce) then) =
-      _$GetNonceCopyWithImpl<$Res>;
+      _$GetNonceCopyWithImpl<$Res, GetNonce>;
 }
 
 /// @nodoc
-class _$GetNonceCopyWithImpl<$Res> implements $GetNonceCopyWith<$Res> {
+class _$GetNonceCopyWithImpl<$Res, $Val extends GetNonce>
+    implements $GetNonceCopyWith<$Res> {
   _$GetNonceCopyWithImpl(this._value, this._then);
 
-  final GetNonce _value;
   // ignore: unused_field
-  final $Res Function(GetNonce) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 }
 
 /// @nodoc
@@ -90,25 +92,25 @@ abstract class _$$GetNonceResultCopyWith<$Res> {
   factory _$$GetNonceResultCopyWith(
           _$GetNonceResult value, $Res Function(_$GetNonceResult) then) =
       __$$GetNonceResultCopyWithImpl<$Res>;
+  @useResult
   $Res call({Felt result});
 }
 
 /// @nodoc
-class __$$GetNonceResultCopyWithImpl<$Res> extends _$GetNonceCopyWithImpl<$Res>
+class __$$GetNonceResultCopyWithImpl<$Res>
+    extends _$GetNonceCopyWithImpl<$Res, _$GetNonceResult>
     implements _$$GetNonceResultCopyWith<$Res> {
   __$$GetNonceResultCopyWithImpl(
       _$GetNonceResult _value, $Res Function(_$GetNonceResult) _then)
-      : super(_value, (v) => _then(v as _$GetNonceResult));
+      : super(_value, _then);
 
-  @override
-  _$GetNonceResult get _value => super._value as _$GetNonceResult;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? result = freezed,
+    Object? result = null,
   }) {
     return _then(_$GetNonceResult(
-      result: result == freezed
+      result: null == result
           ? _value.result
           : result // ignore: cast_nullable_to_non_nullable
               as Felt,
@@ -141,16 +143,16 @@ class _$GetNonceResult implements GetNonceResult {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$GetNonceResult &&
-            const DeepCollectionEquality().equals(other.result, result));
+            (identical(other.result, result) || other.result == result));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(result));
+  int get hashCode => Object.hash(runtimeType, result);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$GetNonceResultCopyWith<_$GetNonceResult> get copyWith =>
       __$$GetNonceResultCopyWithImpl<_$GetNonceResult>(this, _$identity);
 
@@ -166,8 +168,8 @@ class _$GetNonceResult implements GetNonceResult {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(Felt result)? result,
-    TResult Function(JsonRpcApiError error)? error,
+    TResult? Function(Felt result)? result,
+    TResult? Function(JsonRpcApiError error)? error,
   }) {
     return result?.call(this.result);
   }
@@ -197,8 +199,8 @@ class _$GetNonceResult implements GetNonceResult {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(GetNonceResult value)? result,
-    TResult Function(GetNonceError value)? error,
+    TResult? Function(GetNonceResult value)? result,
+    TResult? Function(GetNonceError value)? error,
   }) {
     return result?.call(this);
   }
@@ -241,27 +243,27 @@ abstract class _$$GetNonceErrorCopyWith<$Res> {
   factory _$$GetNonceErrorCopyWith(
           _$GetNonceError value, $Res Function(_$GetNonceError) then) =
       __$$GetNonceErrorCopyWithImpl<$Res>;
+  @useResult
   $Res call({JsonRpcApiError error});
 
   $JsonRpcApiErrorCopyWith<$Res> get error;
 }
 
 /// @nodoc
-class __$$GetNonceErrorCopyWithImpl<$Res> extends _$GetNonceCopyWithImpl<$Res>
+class __$$GetNonceErrorCopyWithImpl<$Res>
+    extends _$GetNonceCopyWithImpl<$Res, _$GetNonceError>
     implements _$$GetNonceErrorCopyWith<$Res> {
   __$$GetNonceErrorCopyWithImpl(
       _$GetNonceError _value, $Res Function(_$GetNonceError) _then)
-      : super(_value, (v) => _then(v as _$GetNonceError));
+      : super(_value, _then);
 
-  @override
-  _$GetNonceError get _value => super._value as _$GetNonceError;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? error = freezed,
+    Object? error = null,
   }) {
     return _then(_$GetNonceError(
-      error: error == freezed
+      error: null == error
           ? _value.error
           : error // ignore: cast_nullable_to_non_nullable
               as JsonRpcApiError,
@@ -269,6 +271,7 @@ class __$$GetNonceErrorCopyWithImpl<$Res> extends _$GetNonceCopyWithImpl<$Res>
   }
 
   @override
+  @pragma('vm:prefer-inline')
   $JsonRpcApiErrorCopyWith<$Res> get error {
     return $JsonRpcApiErrorCopyWith<$Res>(_value.error, (value) {
       return _then(_value.copyWith(error: value));
@@ -301,16 +304,16 @@ class _$GetNonceError implements GetNonceError {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$GetNonceError &&
-            const DeepCollectionEquality().equals(other.error, error));
+            (identical(other.error, error) || other.error == error));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(error));
+  int get hashCode => Object.hash(runtimeType, error);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$GetNonceErrorCopyWith<_$GetNonceError> get copyWith =>
       __$$GetNonceErrorCopyWithImpl<_$GetNonceError>(this, _$identity);
 
@@ -326,8 +329,8 @@ class _$GetNonceError implements GetNonceError {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(Felt result)? result,
-    TResult Function(JsonRpcApiError error)? error,
+    TResult? Function(Felt result)? result,
+    TResult? Function(JsonRpcApiError error)? error,
   }) {
     return error?.call(this.error);
   }
@@ -357,8 +360,8 @@ class _$GetNonceError implements GetNonceError {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(GetNonceResult value)? result,
-    TResult Function(GetNonceError value)? error,
+    TResult? Function(GetNonceResult value)? result,
+    TResult? Function(GetNonceError value)? error,
   }) {
     return error?.call(this);
   }

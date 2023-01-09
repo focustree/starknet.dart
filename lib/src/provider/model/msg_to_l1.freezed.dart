@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'msg_to_l1.dart';
 
@@ -31,33 +31,37 @@ mixin _$MsgToL1 {
 /// @nodoc
 abstract class $MsgToL1CopyWith<$Res> {
   factory $MsgToL1CopyWith(MsgToL1 value, $Res Function(MsgToL1) then) =
-      _$MsgToL1CopyWithImpl<$Res>;
+      _$MsgToL1CopyWithImpl<$Res, MsgToL1>;
+  @useResult
   $Res call({Felt? toAddress, List<Felt>? payload});
 }
 
 /// @nodoc
-class _$MsgToL1CopyWithImpl<$Res> implements $MsgToL1CopyWith<$Res> {
+class _$MsgToL1CopyWithImpl<$Res, $Val extends MsgToL1>
+    implements $MsgToL1CopyWith<$Res> {
   _$MsgToL1CopyWithImpl(this._value, this._then);
 
-  final MsgToL1 _value;
   // ignore: unused_field
-  final $Res Function(MsgToL1) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? toAddress = freezed,
     Object? payload = freezed,
   }) {
     return _then(_value.copyWith(
-      toAddress: toAddress == freezed
+      toAddress: freezed == toAddress
           ? _value.toAddress
           : toAddress // ignore: cast_nullable_to_non_nullable
               as Felt?,
-      payload: payload == freezed
+      payload: freezed == payload
           ? _value.payload
           : payload // ignore: cast_nullable_to_non_nullable
               as List<Felt>?,
-    ));
+    ) as $Val);
   }
 }
 
@@ -67,29 +71,29 @@ abstract class _$$_MsgToL1CopyWith<$Res> implements $MsgToL1CopyWith<$Res> {
           _$_MsgToL1 value, $Res Function(_$_MsgToL1) then) =
       __$$_MsgToL1CopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call({Felt? toAddress, List<Felt>? payload});
 }
 
 /// @nodoc
-class __$$_MsgToL1CopyWithImpl<$Res> extends _$MsgToL1CopyWithImpl<$Res>
+class __$$_MsgToL1CopyWithImpl<$Res>
+    extends _$MsgToL1CopyWithImpl<$Res, _$_MsgToL1>
     implements _$$_MsgToL1CopyWith<$Res> {
   __$$_MsgToL1CopyWithImpl(_$_MsgToL1 _value, $Res Function(_$_MsgToL1) _then)
-      : super(_value, (v) => _then(v as _$_MsgToL1));
+      : super(_value, _then);
 
-  @override
-  _$_MsgToL1 get _value => super._value as _$_MsgToL1;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? toAddress = freezed,
     Object? payload = freezed,
   }) {
     return _then(_$_MsgToL1(
-      toAddress: toAddress == freezed
+      toAddress: freezed == toAddress
           ? _value.toAddress
           : toAddress // ignore: cast_nullable_to_non_nullable
               as Felt?,
-      payload: payload == freezed
+      payload: freezed == payload
           ? _value._payload
           : payload // ignore: cast_nullable_to_non_nullable
               as List<Felt>?,
@@ -114,6 +118,7 @@ class _$_MsgToL1 implements _MsgToL1 {
   List<Felt>? get payload {
     final value = _payload;
     if (value == null) return null;
+    if (_payload is EqualUnmodifiableListView) return _payload;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(value);
   }
@@ -128,19 +133,19 @@ class _$_MsgToL1 implements _MsgToL1 {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_MsgToL1 &&
-            const DeepCollectionEquality().equals(other.toAddress, toAddress) &&
+            (identical(other.toAddress, toAddress) ||
+                other.toAddress == toAddress) &&
             const DeepCollectionEquality().equals(other._payload, _payload));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(toAddress),
-      const DeepCollectionEquality().hash(_payload));
+      runtimeType, toAddress, const DeepCollectionEquality().hash(_payload));
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_MsgToL1CopyWith<_$_MsgToL1> get copyWith =>
       __$$_MsgToL1CopyWithImpl<_$_MsgToL1>(this, _$identity);
 

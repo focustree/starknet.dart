@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'function_call.dart';
 
@@ -34,39 +34,43 @@ mixin _$FunctionCall {
 abstract class $FunctionCallCopyWith<$Res> {
   factory $FunctionCallCopyWith(
           FunctionCall value, $Res Function(FunctionCall) then) =
-      _$FunctionCallCopyWithImpl<$Res>;
+      _$FunctionCallCopyWithImpl<$Res, FunctionCall>;
+  @useResult
   $Res call(
       {Felt contractAddress, Felt entryPointSelector, List<Felt> calldata});
 }
 
 /// @nodoc
-class _$FunctionCallCopyWithImpl<$Res> implements $FunctionCallCopyWith<$Res> {
+class _$FunctionCallCopyWithImpl<$Res, $Val extends FunctionCall>
+    implements $FunctionCallCopyWith<$Res> {
   _$FunctionCallCopyWithImpl(this._value, this._then);
 
-  final FunctionCall _value;
   // ignore: unused_field
-  final $Res Function(FunctionCall) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? contractAddress = freezed,
-    Object? entryPointSelector = freezed,
-    Object? calldata = freezed,
+    Object? contractAddress = null,
+    Object? entryPointSelector = null,
+    Object? calldata = null,
   }) {
     return _then(_value.copyWith(
-      contractAddress: contractAddress == freezed
+      contractAddress: null == contractAddress
           ? _value.contractAddress
           : contractAddress // ignore: cast_nullable_to_non_nullable
               as Felt,
-      entryPointSelector: entryPointSelector == freezed
+      entryPointSelector: null == entryPointSelector
           ? _value.entryPointSelector
           : entryPointSelector // ignore: cast_nullable_to_non_nullable
               as Felt,
-      calldata: calldata == freezed
+      calldata: null == calldata
           ? _value.calldata
           : calldata // ignore: cast_nullable_to_non_nullable
               as List<Felt>,
-    ));
+    ) as $Val);
   }
 }
 
@@ -77,37 +81,36 @@ abstract class _$$_FunctionCallCopyWith<$Res>
           _$_FunctionCall value, $Res Function(_$_FunctionCall) then) =
       __$$_FunctionCallCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {Felt contractAddress, Felt entryPointSelector, List<Felt> calldata});
 }
 
 /// @nodoc
 class __$$_FunctionCallCopyWithImpl<$Res>
-    extends _$FunctionCallCopyWithImpl<$Res>
+    extends _$FunctionCallCopyWithImpl<$Res, _$_FunctionCall>
     implements _$$_FunctionCallCopyWith<$Res> {
   __$$_FunctionCallCopyWithImpl(
       _$_FunctionCall _value, $Res Function(_$_FunctionCall) _then)
-      : super(_value, (v) => _then(v as _$_FunctionCall));
+      : super(_value, _then);
 
-  @override
-  _$_FunctionCall get _value => super._value as _$_FunctionCall;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? contractAddress = freezed,
-    Object? entryPointSelector = freezed,
-    Object? calldata = freezed,
+    Object? contractAddress = null,
+    Object? entryPointSelector = null,
+    Object? calldata = null,
   }) {
     return _then(_$_FunctionCall(
-      contractAddress: contractAddress == freezed
+      contractAddress: null == contractAddress
           ? _value.contractAddress
           : contractAddress // ignore: cast_nullable_to_non_nullable
               as Felt,
-      entryPointSelector: entryPointSelector == freezed
+      entryPointSelector: null == entryPointSelector
           ? _value.entryPointSelector
           : entryPointSelector // ignore: cast_nullable_to_non_nullable
               as Felt,
-      calldata: calldata == freezed
+      calldata: null == calldata
           ? _value._calldata
           : calldata // ignore: cast_nullable_to_non_nullable
               as List<Felt>,
@@ -134,6 +137,7 @@ class _$_FunctionCall implements _FunctionCall {
   final List<Felt> _calldata;
   @override
   List<Felt> get calldata {
+    if (_calldata is EqualUnmodifiableListView) return _calldata;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_calldata);
   }
@@ -148,23 +152,21 @@ class _$_FunctionCall implements _FunctionCall {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_FunctionCall &&
-            const DeepCollectionEquality()
-                .equals(other.contractAddress, contractAddress) &&
-            const DeepCollectionEquality()
-                .equals(other.entryPointSelector, entryPointSelector) &&
+            (identical(other.contractAddress, contractAddress) ||
+                other.contractAddress == contractAddress) &&
+            (identical(other.entryPointSelector, entryPointSelector) ||
+                other.entryPointSelector == entryPointSelector) &&
             const DeepCollectionEquality().equals(other._calldata, _calldata));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(contractAddress),
-      const DeepCollectionEquality().hash(entryPointSelector),
-      const DeepCollectionEquality().hash(_calldata));
+  int get hashCode => Object.hash(runtimeType, contractAddress,
+      entryPointSelector, const DeepCollectionEquality().hash(_calldata));
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_FunctionCallCopyWith<_$_FunctionCall> get copyWith =>
       __$$_FunctionCallCopyWithImpl<_$_FunctionCall>(this, _$identity);
 

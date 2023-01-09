@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'pending_transactions.dart';
 
@@ -37,8 +37,8 @@ mixin _$PendingTransactions {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(List<Txn> result)? result,
-    TResult Function(JsonRpcApiError error)? error,
+    TResult? Function(List<Txn> result)? result,
+    TResult? Function(JsonRpcApiError error)? error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -56,8 +56,8 @@ mixin _$PendingTransactions {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(PendingTransactionsResult value)? result,
-    TResult Function(PendingTransactionsError value)? error,
+    TResult? Function(PendingTransactionsResult value)? result,
+    TResult? Function(PendingTransactionsError value)? error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -74,17 +74,18 @@ mixin _$PendingTransactions {
 abstract class $PendingTransactionsCopyWith<$Res> {
   factory $PendingTransactionsCopyWith(
           PendingTransactions value, $Res Function(PendingTransactions) then) =
-      _$PendingTransactionsCopyWithImpl<$Res>;
+      _$PendingTransactionsCopyWithImpl<$Res, PendingTransactions>;
 }
 
 /// @nodoc
-class _$PendingTransactionsCopyWithImpl<$Res>
+class _$PendingTransactionsCopyWithImpl<$Res, $Val extends PendingTransactions>
     implements $PendingTransactionsCopyWith<$Res> {
   _$PendingTransactionsCopyWithImpl(this._value, this._then);
 
-  final PendingTransactions _value;
   // ignore: unused_field
-  final $Res Function(PendingTransactions) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 }
 
 /// @nodoc
@@ -93,27 +94,25 @@ abstract class _$$PendingTransactionsResultCopyWith<$Res> {
           _$PendingTransactionsResult value,
           $Res Function(_$PendingTransactionsResult) then) =
       __$$PendingTransactionsResultCopyWithImpl<$Res>;
+  @useResult
   $Res call({List<Txn> result});
 }
 
 /// @nodoc
 class __$$PendingTransactionsResultCopyWithImpl<$Res>
-    extends _$PendingTransactionsCopyWithImpl<$Res>
+    extends _$PendingTransactionsCopyWithImpl<$Res, _$PendingTransactionsResult>
     implements _$$PendingTransactionsResultCopyWith<$Res> {
   __$$PendingTransactionsResultCopyWithImpl(_$PendingTransactionsResult _value,
       $Res Function(_$PendingTransactionsResult) _then)
-      : super(_value, (v) => _then(v as _$PendingTransactionsResult));
+      : super(_value, _then);
 
-  @override
-  _$PendingTransactionsResult get _value =>
-      super._value as _$PendingTransactionsResult;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? result = freezed,
+    Object? result = null,
   }) {
     return _then(_$PendingTransactionsResult(
-      result: result == freezed
+      result: null == result
           ? _value._result
           : result // ignore: cast_nullable_to_non_nullable
               as List<Txn>,
@@ -135,6 +134,7 @@ class _$PendingTransactionsResult implements PendingTransactionsResult {
   final List<Txn> _result;
   @override
   List<Txn> get result {
+    if (_result is EqualUnmodifiableListView) return _result;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_result);
   }
@@ -162,6 +162,7 @@ class _$PendingTransactionsResult implements PendingTransactionsResult {
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$PendingTransactionsResultCopyWith<_$PendingTransactionsResult>
       get copyWith => __$$PendingTransactionsResultCopyWithImpl<
           _$PendingTransactionsResult>(this, _$identity);
@@ -178,8 +179,8 @@ class _$PendingTransactionsResult implements PendingTransactionsResult {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(List<Txn> result)? result,
-    TResult Function(JsonRpcApiError error)? error,
+    TResult? Function(List<Txn> result)? result,
+    TResult? Function(JsonRpcApiError error)? error,
   }) {
     return result?.call(this.result);
   }
@@ -209,8 +210,8 @@ class _$PendingTransactionsResult implements PendingTransactionsResult {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(PendingTransactionsResult value)? result,
-    TResult Function(PendingTransactionsError value)? error,
+    TResult? Function(PendingTransactionsResult value)? result,
+    TResult? Function(PendingTransactionsError value)? error,
   }) {
     return result?.call(this);
   }
@@ -254,6 +255,7 @@ abstract class _$$PendingTransactionsErrorCopyWith<$Res> {
   factory _$$PendingTransactionsErrorCopyWith(_$PendingTransactionsError value,
           $Res Function(_$PendingTransactionsError) then) =
       __$$PendingTransactionsErrorCopyWithImpl<$Res>;
+  @useResult
   $Res call({JsonRpcApiError error});
 
   $JsonRpcApiErrorCopyWith<$Res> get error;
@@ -261,22 +263,19 @@ abstract class _$$PendingTransactionsErrorCopyWith<$Res> {
 
 /// @nodoc
 class __$$PendingTransactionsErrorCopyWithImpl<$Res>
-    extends _$PendingTransactionsCopyWithImpl<$Res>
+    extends _$PendingTransactionsCopyWithImpl<$Res, _$PendingTransactionsError>
     implements _$$PendingTransactionsErrorCopyWith<$Res> {
   __$$PendingTransactionsErrorCopyWithImpl(_$PendingTransactionsError _value,
       $Res Function(_$PendingTransactionsError) _then)
-      : super(_value, (v) => _then(v as _$PendingTransactionsError));
+      : super(_value, _then);
 
-  @override
-  _$PendingTransactionsError get _value =>
-      super._value as _$PendingTransactionsError;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? error = freezed,
+    Object? error = null,
   }) {
     return _then(_$PendingTransactionsError(
-      error: error == freezed
+      error: null == error
           ? _value.error
           : error // ignore: cast_nullable_to_non_nullable
               as JsonRpcApiError,
@@ -284,6 +283,7 @@ class __$$PendingTransactionsErrorCopyWithImpl<$Res>
   }
 
   @override
+  @pragma('vm:prefer-inline')
   $JsonRpcApiErrorCopyWith<$Res> get error {
     return $JsonRpcApiErrorCopyWith<$Res>(_value.error, (value) {
       return _then(_value.copyWith(error: value));
@@ -316,16 +316,16 @@ class _$PendingTransactionsError implements PendingTransactionsError {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$PendingTransactionsError &&
-            const DeepCollectionEquality().equals(other.error, error));
+            (identical(other.error, error) || other.error == error));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(error));
+  int get hashCode => Object.hash(runtimeType, error);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$PendingTransactionsErrorCopyWith<_$PendingTransactionsError>
       get copyWith =>
           __$$PendingTransactionsErrorCopyWithImpl<_$PendingTransactionsError>(
@@ -343,8 +343,8 @@ class _$PendingTransactionsError implements PendingTransactionsError {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(List<Txn> result)? result,
-    TResult Function(JsonRpcApiError error)? error,
+    TResult? Function(List<Txn> result)? result,
+    TResult? Function(JsonRpcApiError error)? error,
   }) {
     return error?.call(this.error);
   }
@@ -374,8 +374,8 @@ class _$PendingTransactionsError implements PendingTransactionsError {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(PendingTransactionsResult value)? result,
-    TResult Function(PendingTransactionsError value)? error,
+    TResult? Function(PendingTransactionsResult value)? result,
+    TResult? Function(PendingTransactionsError value)? error,
   }) {
     return error?.call(this);
   }

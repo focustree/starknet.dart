@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'state_update.dart';
 
@@ -35,51 +35,56 @@ mixin _$StateUpdate {
 abstract class $StateUpdateCopyWith<$Res> {
   factory $StateUpdateCopyWith(
           StateUpdate value, $Res Function(StateUpdate) then) =
-      _$StateUpdateCopyWithImpl<$Res>;
+      _$StateUpdateCopyWithImpl<$Res, StateUpdate>;
+  @useResult
   $Res call({Felt blockHash, Felt newRoot, Felt oldRoot, StateDiff stateDiff});
 
   $StateDiffCopyWith<$Res> get stateDiff;
 }
 
 /// @nodoc
-class _$StateUpdateCopyWithImpl<$Res> implements $StateUpdateCopyWith<$Res> {
+class _$StateUpdateCopyWithImpl<$Res, $Val extends StateUpdate>
+    implements $StateUpdateCopyWith<$Res> {
   _$StateUpdateCopyWithImpl(this._value, this._then);
 
-  final StateUpdate _value;
   // ignore: unused_field
-  final $Res Function(StateUpdate) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? blockHash = freezed,
-    Object? newRoot = freezed,
-    Object? oldRoot = freezed,
-    Object? stateDiff = freezed,
+    Object? blockHash = null,
+    Object? newRoot = null,
+    Object? oldRoot = null,
+    Object? stateDiff = null,
   }) {
     return _then(_value.copyWith(
-      blockHash: blockHash == freezed
+      blockHash: null == blockHash
           ? _value.blockHash
           : blockHash // ignore: cast_nullable_to_non_nullable
               as Felt,
-      newRoot: newRoot == freezed
+      newRoot: null == newRoot
           ? _value.newRoot
           : newRoot // ignore: cast_nullable_to_non_nullable
               as Felt,
-      oldRoot: oldRoot == freezed
+      oldRoot: null == oldRoot
           ? _value.oldRoot
           : oldRoot // ignore: cast_nullable_to_non_nullable
               as Felt,
-      stateDiff: stateDiff == freezed
+      stateDiff: null == stateDiff
           ? _value.stateDiff
           : stateDiff // ignore: cast_nullable_to_non_nullable
               as StateDiff,
-    ));
+    ) as $Val);
   }
 
   @override
+  @pragma('vm:prefer-inline')
   $StateDiffCopyWith<$Res> get stateDiff {
     return $StateDiffCopyWith<$Res>(_value.stateDiff, (value) {
-      return _then(_value.copyWith(stateDiff: value));
+      return _then(_value.copyWith(stateDiff: value) as $Val);
     });
   }
 }
@@ -91,6 +96,7 @@ abstract class _$$_StateUpdateCopyWith<$Res>
           _$_StateUpdate value, $Res Function(_$_StateUpdate) then) =
       __$$_StateUpdateCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call({Felt blockHash, Felt newRoot, Felt oldRoot, StateDiff stateDiff});
 
   @override
@@ -98,36 +104,35 @@ abstract class _$$_StateUpdateCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_StateUpdateCopyWithImpl<$Res> extends _$StateUpdateCopyWithImpl<$Res>
+class __$$_StateUpdateCopyWithImpl<$Res>
+    extends _$StateUpdateCopyWithImpl<$Res, _$_StateUpdate>
     implements _$$_StateUpdateCopyWith<$Res> {
   __$$_StateUpdateCopyWithImpl(
       _$_StateUpdate _value, $Res Function(_$_StateUpdate) _then)
-      : super(_value, (v) => _then(v as _$_StateUpdate));
+      : super(_value, _then);
 
-  @override
-  _$_StateUpdate get _value => super._value as _$_StateUpdate;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? blockHash = freezed,
-    Object? newRoot = freezed,
-    Object? oldRoot = freezed,
-    Object? stateDiff = freezed,
+    Object? blockHash = null,
+    Object? newRoot = null,
+    Object? oldRoot = null,
+    Object? stateDiff = null,
   }) {
     return _then(_$_StateUpdate(
-      blockHash: blockHash == freezed
+      blockHash: null == blockHash
           ? _value.blockHash
           : blockHash // ignore: cast_nullable_to_non_nullable
               as Felt,
-      newRoot: newRoot == freezed
+      newRoot: null == newRoot
           ? _value.newRoot
           : newRoot // ignore: cast_nullable_to_non_nullable
               as Felt,
-      oldRoot: oldRoot == freezed
+      oldRoot: null == oldRoot
           ? _value.oldRoot
           : oldRoot // ignore: cast_nullable_to_non_nullable
               as Felt,
-      stateDiff: stateDiff == freezed
+      stateDiff: null == stateDiff
           ? _value.stateDiff
           : stateDiff // ignore: cast_nullable_to_non_nullable
               as StateDiff,
@@ -166,23 +171,22 @@ class _$_StateUpdate implements _StateUpdate {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_StateUpdate &&
-            const DeepCollectionEquality().equals(other.blockHash, blockHash) &&
-            const DeepCollectionEquality().equals(other.newRoot, newRoot) &&
-            const DeepCollectionEquality().equals(other.oldRoot, oldRoot) &&
-            const DeepCollectionEquality().equals(other.stateDiff, stateDiff));
+            (identical(other.blockHash, blockHash) ||
+                other.blockHash == blockHash) &&
+            (identical(other.newRoot, newRoot) || other.newRoot == newRoot) &&
+            (identical(other.oldRoot, oldRoot) || other.oldRoot == oldRoot) &&
+            (identical(other.stateDiff, stateDiff) ||
+                other.stateDiff == stateDiff));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(blockHash),
-      const DeepCollectionEquality().hash(newRoot),
-      const DeepCollectionEquality().hash(oldRoot),
-      const DeepCollectionEquality().hash(stateDiff));
+  int get hashCode =>
+      Object.hash(runtimeType, blockHash, newRoot, oldRoot, stateDiff);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_StateUpdateCopyWith<_$_StateUpdate> get copyWith =>
       __$$_StateUpdateCopyWithImpl<_$_StateUpdate>(this, _$identity);
 
@@ -241,7 +245,8 @@ mixin _$StateDiff {
 /// @nodoc
 abstract class $StateDiffCopyWith<$Res> {
   factory $StateDiffCopyWith(StateDiff value, $Res Function(StateDiff) then) =
-      _$StateDiffCopyWithImpl<$Res>;
+      _$StateDiffCopyWithImpl<$Res, StateDiff>;
+  @useResult
   $Res call(
       {List<ContractStorageDiffItem> storageDiffs,
       List<Felt> declaredContractHashes,
@@ -250,38 +255,41 @@ abstract class $StateDiffCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$StateDiffCopyWithImpl<$Res> implements $StateDiffCopyWith<$Res> {
+class _$StateDiffCopyWithImpl<$Res, $Val extends StateDiff>
+    implements $StateDiffCopyWith<$Res> {
   _$StateDiffCopyWithImpl(this._value, this._then);
 
-  final StateDiff _value;
   // ignore: unused_field
-  final $Res Function(StateDiff) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? storageDiffs = freezed,
-    Object? declaredContractHashes = freezed,
-    Object? deployedContracts = freezed,
-    Object? nonces = freezed,
+    Object? storageDiffs = null,
+    Object? declaredContractHashes = null,
+    Object? deployedContracts = null,
+    Object? nonces = null,
   }) {
     return _then(_value.copyWith(
-      storageDiffs: storageDiffs == freezed
+      storageDiffs: null == storageDiffs
           ? _value.storageDiffs
           : storageDiffs // ignore: cast_nullable_to_non_nullable
               as List<ContractStorageDiffItem>,
-      declaredContractHashes: declaredContractHashes == freezed
+      declaredContractHashes: null == declaredContractHashes
           ? _value.declaredContractHashes
           : declaredContractHashes // ignore: cast_nullable_to_non_nullable
               as List<Felt>,
-      deployedContracts: deployedContracts == freezed
+      deployedContracts: null == deployedContracts
           ? _value.deployedContracts
           : deployedContracts // ignore: cast_nullable_to_non_nullable
               as List<DeployedContractItem>,
-      nonces: nonces == freezed
+      nonces: null == nonces
           ? _value.nonces
           : nonces // ignore: cast_nullable_to_non_nullable
               as List<NonceAndContractAddress>,
-    ));
+    ) as $Val);
   }
 }
 
@@ -291,6 +299,7 @@ abstract class _$$_StateDiffCopyWith<$Res> implements $StateDiffCopyWith<$Res> {
           _$_StateDiff value, $Res Function(_$_StateDiff) then) =
       __$$_StateDiffCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {List<ContractStorageDiffItem> storageDiffs,
       List<Felt> declaredContractHashes,
@@ -299,36 +308,35 @@ abstract class _$$_StateDiffCopyWith<$Res> implements $StateDiffCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_StateDiffCopyWithImpl<$Res> extends _$StateDiffCopyWithImpl<$Res>
+class __$$_StateDiffCopyWithImpl<$Res>
+    extends _$StateDiffCopyWithImpl<$Res, _$_StateDiff>
     implements _$$_StateDiffCopyWith<$Res> {
   __$$_StateDiffCopyWithImpl(
       _$_StateDiff _value, $Res Function(_$_StateDiff) _then)
-      : super(_value, (v) => _then(v as _$_StateDiff));
+      : super(_value, _then);
 
-  @override
-  _$_StateDiff get _value => super._value as _$_StateDiff;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? storageDiffs = freezed,
-    Object? declaredContractHashes = freezed,
-    Object? deployedContracts = freezed,
-    Object? nonces = freezed,
+    Object? storageDiffs = null,
+    Object? declaredContractHashes = null,
+    Object? deployedContracts = null,
+    Object? nonces = null,
   }) {
     return _then(_$_StateDiff(
-      storageDiffs: storageDiffs == freezed
+      storageDiffs: null == storageDiffs
           ? _value._storageDiffs
           : storageDiffs // ignore: cast_nullable_to_non_nullable
               as List<ContractStorageDiffItem>,
-      declaredContractHashes: declaredContractHashes == freezed
+      declaredContractHashes: null == declaredContractHashes
           ? _value._declaredContractHashes
           : declaredContractHashes // ignore: cast_nullable_to_non_nullable
               as List<Felt>,
-      deployedContracts: deployedContracts == freezed
+      deployedContracts: null == deployedContracts
           ? _value._deployedContracts
           : deployedContracts // ignore: cast_nullable_to_non_nullable
               as List<DeployedContractItem>,
-      nonces: nonces == freezed
+      nonces: null == nonces
           ? _value._nonces
           : nonces // ignore: cast_nullable_to_non_nullable
               as List<NonceAndContractAddress>,
@@ -355,6 +363,7 @@ class _$_StateDiff implements _StateDiff {
   final List<ContractStorageDiffItem> _storageDiffs;
   @override
   List<ContractStorageDiffItem> get storageDiffs {
+    if (_storageDiffs is EqualUnmodifiableListView) return _storageDiffs;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_storageDiffs);
   }
@@ -362,6 +371,8 @@ class _$_StateDiff implements _StateDiff {
   final List<Felt> _declaredContractHashes;
   @override
   List<Felt> get declaredContractHashes {
+    if (_declaredContractHashes is EqualUnmodifiableListView)
+      return _declaredContractHashes;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_declaredContractHashes);
   }
@@ -369,6 +380,8 @@ class _$_StateDiff implements _StateDiff {
   final List<DeployedContractItem> _deployedContracts;
   @override
   List<DeployedContractItem> get deployedContracts {
+    if (_deployedContracts is EqualUnmodifiableListView)
+      return _deployedContracts;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_deployedContracts);
   }
@@ -376,6 +389,7 @@ class _$_StateDiff implements _StateDiff {
   final List<NonceAndContractAddress> _nonces;
   @override
   List<NonceAndContractAddress> get nonces {
+    if (_nonces is EqualUnmodifiableListView) return _nonces;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_nonces);
   }
@@ -410,6 +424,7 @@ class _$_StateDiff implements _StateDiff {
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_StateDiffCopyWith<_$_StateDiff> get copyWith =>
       __$$_StateDiffCopyWithImpl<_$_StateDiff>(this, _$identity);
 
@@ -465,34 +480,38 @@ mixin _$NonceAndContractAddress {
 abstract class $NonceAndContractAddressCopyWith<$Res> {
   factory $NonceAndContractAddressCopyWith(NonceAndContractAddress value,
           $Res Function(NonceAndContractAddress) then) =
-      _$NonceAndContractAddressCopyWithImpl<$Res>;
+      _$NonceAndContractAddressCopyWithImpl<$Res, NonceAndContractAddress>;
+  @useResult
   $Res call({Felt nonce, Felt contractAddress});
 }
 
 /// @nodoc
-class _$NonceAndContractAddressCopyWithImpl<$Res>
+class _$NonceAndContractAddressCopyWithImpl<$Res,
+        $Val extends NonceAndContractAddress>
     implements $NonceAndContractAddressCopyWith<$Res> {
   _$NonceAndContractAddressCopyWithImpl(this._value, this._then);
 
-  final NonceAndContractAddress _value;
   // ignore: unused_field
-  final $Res Function(NonceAndContractAddress) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? nonce = freezed,
-    Object? contractAddress = freezed,
+    Object? nonce = null,
+    Object? contractAddress = null,
   }) {
     return _then(_value.copyWith(
-      nonce: nonce == freezed
+      nonce: null == nonce
           ? _value.nonce
           : nonce // ignore: cast_nullable_to_non_nullable
               as Felt,
-      contractAddress: contractAddress == freezed
+      contractAddress: null == contractAddress
           ? _value.contractAddress
           : contractAddress // ignore: cast_nullable_to_non_nullable
               as Felt,
-    ));
+    ) as $Val);
   }
 }
 
@@ -503,32 +522,31 @@ abstract class _$$_NonceAndContractAddressCopyWith<$Res>
           $Res Function(_$_NonceAndContractAddress) then) =
       __$$_NonceAndContractAddressCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call({Felt nonce, Felt contractAddress});
 }
 
 /// @nodoc
 class __$$_NonceAndContractAddressCopyWithImpl<$Res>
-    extends _$NonceAndContractAddressCopyWithImpl<$Res>
+    extends _$NonceAndContractAddressCopyWithImpl<$Res,
+        _$_NonceAndContractAddress>
     implements _$$_NonceAndContractAddressCopyWith<$Res> {
   __$$_NonceAndContractAddressCopyWithImpl(_$_NonceAndContractAddress _value,
       $Res Function(_$_NonceAndContractAddress) _then)
-      : super(_value, (v) => _then(v as _$_NonceAndContractAddress));
+      : super(_value, _then);
 
-  @override
-  _$_NonceAndContractAddress get _value =>
-      super._value as _$_NonceAndContractAddress;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? nonce = freezed,
-    Object? contractAddress = freezed,
+    Object? nonce = null,
+    Object? contractAddress = null,
   }) {
     return _then(_$_NonceAndContractAddress(
-      nonce: nonce == freezed
+      nonce: null == nonce
           ? _value.nonce
           : nonce // ignore: cast_nullable_to_non_nullable
               as Felt,
-      contractAddress: contractAddress == freezed
+      contractAddress: null == contractAddress
           ? _value.contractAddress
           : contractAddress // ignore: cast_nullable_to_non_nullable
               as Felt,
@@ -560,20 +578,18 @@ class _$_NonceAndContractAddress implements _NonceAndContractAddress {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_NonceAndContractAddress &&
-            const DeepCollectionEquality().equals(other.nonce, nonce) &&
-            const DeepCollectionEquality()
-                .equals(other.contractAddress, contractAddress));
+            (identical(other.nonce, nonce) || other.nonce == nonce) &&
+            (identical(other.contractAddress, contractAddress) ||
+                other.contractAddress == contractAddress));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(nonce),
-      const DeepCollectionEquality().hash(contractAddress));
+  int get hashCode => Object.hash(runtimeType, nonce, contractAddress);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_NonceAndContractAddressCopyWith<_$_NonceAndContractAddress>
       get copyWith =>
           __$$_NonceAndContractAddressCopyWithImpl<_$_NonceAndContractAddress>(

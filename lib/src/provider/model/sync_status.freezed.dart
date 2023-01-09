@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'sync_status.dart';
 
@@ -37,7 +37,8 @@ mixin _$SyncStatus {
 abstract class $SyncStatusCopyWith<$Res> {
   factory $SyncStatusCopyWith(
           SyncStatus value, $Res Function(SyncStatus) then) =
-      _$SyncStatusCopyWithImpl<$Res>;
+      _$SyncStatusCopyWithImpl<$Res, SyncStatus>;
+  @useResult
   $Res call(
       {Felt startingBlockHash,
       String startingBlockNum,
@@ -48,48 +49,51 @@ abstract class $SyncStatusCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$SyncStatusCopyWithImpl<$Res> implements $SyncStatusCopyWith<$Res> {
+class _$SyncStatusCopyWithImpl<$Res, $Val extends SyncStatus>
+    implements $SyncStatusCopyWith<$Res> {
   _$SyncStatusCopyWithImpl(this._value, this._then);
 
-  final SyncStatus _value;
   // ignore: unused_field
-  final $Res Function(SyncStatus) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? startingBlockHash = freezed,
-    Object? startingBlockNum = freezed,
-    Object? currentBlockHash = freezed,
-    Object? currentBlockNum = freezed,
-    Object? highestBlockHash = freezed,
-    Object? highestBlockNum = freezed,
+    Object? startingBlockHash = null,
+    Object? startingBlockNum = null,
+    Object? currentBlockHash = null,
+    Object? currentBlockNum = null,
+    Object? highestBlockHash = null,
+    Object? highestBlockNum = null,
   }) {
     return _then(_value.copyWith(
-      startingBlockHash: startingBlockHash == freezed
+      startingBlockHash: null == startingBlockHash
           ? _value.startingBlockHash
           : startingBlockHash // ignore: cast_nullable_to_non_nullable
               as Felt,
-      startingBlockNum: startingBlockNum == freezed
+      startingBlockNum: null == startingBlockNum
           ? _value.startingBlockNum
           : startingBlockNum // ignore: cast_nullable_to_non_nullable
               as String,
-      currentBlockHash: currentBlockHash == freezed
+      currentBlockHash: null == currentBlockHash
           ? _value.currentBlockHash
           : currentBlockHash // ignore: cast_nullable_to_non_nullable
               as Felt,
-      currentBlockNum: currentBlockNum == freezed
+      currentBlockNum: null == currentBlockNum
           ? _value.currentBlockNum
           : currentBlockNum // ignore: cast_nullable_to_non_nullable
               as String,
-      highestBlockHash: highestBlockHash == freezed
+      highestBlockHash: null == highestBlockHash
           ? _value.highestBlockHash
           : highestBlockHash // ignore: cast_nullable_to_non_nullable
               as Felt,
-      highestBlockNum: highestBlockNum == freezed
+      highestBlockNum: null == highestBlockNum
           ? _value.highestBlockNum
           : highestBlockNum // ignore: cast_nullable_to_non_nullable
               as String,
-    ));
+    ) as $Val);
   }
 }
 
@@ -100,6 +104,7 @@ abstract class _$$_SyncStatusCopyWith<$Res>
           _$_SyncStatus value, $Res Function(_$_SyncStatus) then) =
       __$$_SyncStatusCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {Felt startingBlockHash,
       String startingBlockNum,
@@ -110,46 +115,45 @@ abstract class _$$_SyncStatusCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_SyncStatusCopyWithImpl<$Res> extends _$SyncStatusCopyWithImpl<$Res>
+class __$$_SyncStatusCopyWithImpl<$Res>
+    extends _$SyncStatusCopyWithImpl<$Res, _$_SyncStatus>
     implements _$$_SyncStatusCopyWith<$Res> {
   __$$_SyncStatusCopyWithImpl(
       _$_SyncStatus _value, $Res Function(_$_SyncStatus) _then)
-      : super(_value, (v) => _then(v as _$_SyncStatus));
+      : super(_value, _then);
 
-  @override
-  _$_SyncStatus get _value => super._value as _$_SyncStatus;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? startingBlockHash = freezed,
-    Object? startingBlockNum = freezed,
-    Object? currentBlockHash = freezed,
-    Object? currentBlockNum = freezed,
-    Object? highestBlockHash = freezed,
-    Object? highestBlockNum = freezed,
+    Object? startingBlockHash = null,
+    Object? startingBlockNum = null,
+    Object? currentBlockHash = null,
+    Object? currentBlockNum = null,
+    Object? highestBlockHash = null,
+    Object? highestBlockNum = null,
   }) {
     return _then(_$_SyncStatus(
-      startingBlockHash: startingBlockHash == freezed
+      startingBlockHash: null == startingBlockHash
           ? _value.startingBlockHash
           : startingBlockHash // ignore: cast_nullable_to_non_nullable
               as Felt,
-      startingBlockNum: startingBlockNum == freezed
+      startingBlockNum: null == startingBlockNum
           ? _value.startingBlockNum
           : startingBlockNum // ignore: cast_nullable_to_non_nullable
               as String,
-      currentBlockHash: currentBlockHash == freezed
+      currentBlockHash: null == currentBlockHash
           ? _value.currentBlockHash
           : currentBlockHash // ignore: cast_nullable_to_non_nullable
               as Felt,
-      currentBlockNum: currentBlockNum == freezed
+      currentBlockNum: null == currentBlockNum
           ? _value.currentBlockNum
           : currentBlockNum // ignore: cast_nullable_to_non_nullable
               as String,
-      highestBlockHash: highestBlockHash == freezed
+      highestBlockHash: null == highestBlockHash
           ? _value.highestBlockHash
           : highestBlockHash // ignore: cast_nullable_to_non_nullable
               as Felt,
-      highestBlockNum: highestBlockNum == freezed
+      highestBlockNum: null == highestBlockNum
           ? _value.highestBlockNum
           : highestBlockNum // ignore: cast_nullable_to_non_nullable
               as String,
@@ -194,33 +198,34 @@ class _$_SyncStatus implements _SyncStatus {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_SyncStatus &&
-            const DeepCollectionEquality()
-                .equals(other.startingBlockHash, startingBlockHash) &&
-            const DeepCollectionEquality()
-                .equals(other.startingBlockNum, startingBlockNum) &&
-            const DeepCollectionEquality()
-                .equals(other.currentBlockHash, currentBlockHash) &&
-            const DeepCollectionEquality()
-                .equals(other.currentBlockNum, currentBlockNum) &&
-            const DeepCollectionEquality()
-                .equals(other.highestBlockHash, highestBlockHash) &&
-            const DeepCollectionEquality()
-                .equals(other.highestBlockNum, highestBlockNum));
+            (identical(other.startingBlockHash, startingBlockHash) ||
+                other.startingBlockHash == startingBlockHash) &&
+            (identical(other.startingBlockNum, startingBlockNum) ||
+                other.startingBlockNum == startingBlockNum) &&
+            (identical(other.currentBlockHash, currentBlockHash) ||
+                other.currentBlockHash == currentBlockHash) &&
+            (identical(other.currentBlockNum, currentBlockNum) ||
+                other.currentBlockNum == currentBlockNum) &&
+            (identical(other.highestBlockHash, highestBlockHash) ||
+                other.highestBlockHash == highestBlockHash) &&
+            (identical(other.highestBlockNum, highestBlockNum) ||
+                other.highestBlockNum == highestBlockNum));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      const DeepCollectionEquality().hash(startingBlockHash),
-      const DeepCollectionEquality().hash(startingBlockNum),
-      const DeepCollectionEquality().hash(currentBlockHash),
-      const DeepCollectionEquality().hash(currentBlockNum),
-      const DeepCollectionEquality().hash(highestBlockHash),
-      const DeepCollectionEquality().hash(highestBlockNum));
+      startingBlockHash,
+      startingBlockNum,
+      currentBlockHash,
+      currentBlockNum,
+      highestBlockHash,
+      highestBlockNum);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_SyncStatusCopyWith<_$_SyncStatus> get copyWith =>
       __$$_SyncStatusCopyWithImpl<_$_SyncStatus>(this, _$identity);
 

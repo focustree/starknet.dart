@@ -70,5 +70,26 @@ void main() {
             expect(result.transaction_hash, hasLength(greaterThan(64)));
           });
     });
+    test('declareTransaction', () async {
+      final account = getJsonRpcProvider(network: 'devnet');
+      final request = DeclareTransactionRequest(
+        declareTransaction: DeclareTransaction(
+          max_fee: defaultMaxFee,
+          nonce: defaultNonce,
+          program: "",
+          senderAddress: Felt.fromHexString("0x123"),
+          signature: [],
+          type: 'DECLARE',
+        ),
+      );
+      print(request.toJson());
+      final response = await account.addDeclareTransaction(request);
+      response.when(
+        error: (error) => fail("Shouldn't fail"),
+        result: (result) {
+          expect(result, equals(1));
+        },
+      );
+    });
   });
 }
