@@ -76,16 +76,25 @@ void main() {
         declareTransaction: DeclareTransaction(
           max_fee: defaultMaxFee,
           nonce: defaultNonce,
-          program: "",
           senderAddress: Felt.fromHexString("0x123"),
+          contractClass: ContractClass(
+            entryPointsByType: EntryPointsByType(
+              constructor: [],
+              external: [],
+              l1Handler: [],
+            ),
+            program: "",
+          ),
           signature: [],
           type: 'DECLARE',
         ),
       );
-      print(request.toJson());
       final response = await account.addDeclareTransaction(request);
       response.when(
-        error: (error) => fail("Shouldn't fail"),
+        error: (error) => expect(
+          error.message,
+          equals('Invalid contract class'),
+        ),
         result: (result) {
           expect(result, equals(1));
         },

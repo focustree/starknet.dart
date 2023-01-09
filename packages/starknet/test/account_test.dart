@@ -7,14 +7,13 @@ void main() {
       test('succeeds', () async {
         final balanceContract =
             await parseContract('../../contracts/build/balance.json');
-        final classHash = Felt.fromHexString(
-            '0x51e40e9cabcb7c45f9447247ee2d9ccb5428252885600ebc3163abf71961f1c');
-        final res = await account0.declare(
-          compiledContract: balanceContract,
-          classHash: classHash,
-        );
+        final res = await account0.declare(compiledContract: balanceContract);
         res.when(
-          result: (result) => print(result),
+          result: (result) => expect(
+            result.classHash,
+            equals(Felt.fromHexString(
+                "0x05d9e4f806fe3780e29388fe3f3f900e8f8ab0bab71dbec74d6e7198ee5348a6")),
+          ),
           error: (error) => fail(error.message),
         );
       });

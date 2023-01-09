@@ -20,6 +20,7 @@ CompiledContract _$CompiledContractFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$CompiledContract {
+  Map<String, Object?> get program => throw _privateConstructorUsedError;
   EntryPointsByType get entryPointsByType => throw _privateConstructorUsedError;
   List<ContractAbiEntry>? get abi => throw _privateConstructorUsedError;
 
@@ -35,7 +36,10 @@ abstract class $CompiledContractCopyWith<$Res> {
           CompiledContract value, $Res Function(CompiledContract) then) =
       _$CompiledContractCopyWithImpl<$Res, CompiledContract>;
   @useResult
-  $Res call({EntryPointsByType entryPointsByType, List<ContractAbiEntry>? abi});
+  $Res call(
+      {Map<String, Object?> program,
+      EntryPointsByType entryPointsByType,
+      List<ContractAbiEntry>? abi});
 
   $EntryPointsByTypeCopyWith<$Res> get entryPointsByType;
 }
@@ -53,10 +57,15 @@ class _$CompiledContractCopyWithImpl<$Res, $Val extends CompiledContract>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? program = null,
     Object? entryPointsByType = null,
     Object? abi = freezed,
   }) {
     return _then(_value.copyWith(
+      program: null == program
+          ? _value.program
+          : program // ignore: cast_nullable_to_non_nullable
+              as Map<String, Object?>,
       entryPointsByType: null == entryPointsByType
           ? _value.entryPointsByType
           : entryPointsByType // ignore: cast_nullable_to_non_nullable
@@ -85,7 +94,10 @@ abstract class _$$_CompiledContractCopyWith<$Res>
       __$$_CompiledContractCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({EntryPointsByType entryPointsByType, List<ContractAbiEntry>? abi});
+  $Res call(
+      {Map<String, Object?> program,
+      EntryPointsByType entryPointsByType,
+      List<ContractAbiEntry>? abi});
 
   @override
   $EntryPointsByTypeCopyWith<$Res> get entryPointsByType;
@@ -102,10 +114,15 @@ class __$$_CompiledContractCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? program = null,
     Object? entryPointsByType = null,
     Object? abi = freezed,
   }) {
     return _then(_$_CompiledContract(
+      program: null == program
+          ? _value._program
+          : program // ignore: cast_nullable_to_non_nullable
+              as Map<String, Object?>,
       entryPointsByType: null == entryPointsByType
           ? _value.entryPointsByType
           : entryPointsByType // ignore: cast_nullable_to_non_nullable
@@ -120,13 +137,25 @@ class __$$_CompiledContractCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_CompiledContract implements _CompiledContract {
+class _$_CompiledContract extends _CompiledContract {
   const _$_CompiledContract(
-      {required this.entryPointsByType, final List<ContractAbiEntry>? abi})
-      : _abi = abi;
+      {required final Map<String, Object?> program,
+      required this.entryPointsByType,
+      final List<ContractAbiEntry>? abi})
+      : _program = program,
+        _abi = abi,
+        super._();
 
   factory _$_CompiledContract.fromJson(Map<String, dynamic> json) =>
       _$$_CompiledContractFromJson(json);
+
+  final Map<String, Object?> _program;
+  @override
+  Map<String, Object?> get program {
+    if (_program is EqualUnmodifiableMapView) return _program;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableMapView(_program);
+  }
 
   @override
   final EntryPointsByType entryPointsByType;
@@ -142,7 +171,7 @@ class _$_CompiledContract implements _CompiledContract {
 
   @override
   String toString() {
-    return 'CompiledContract(entryPointsByType: $entryPointsByType, abi: $abi)';
+    return 'CompiledContract(program: $program, entryPointsByType: $entryPointsByType, abi: $abi)';
   }
 
   @override
@@ -150,6 +179,7 @@ class _$_CompiledContract implements _CompiledContract {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_CompiledContract &&
+            const DeepCollectionEquality().equals(other._program, _program) &&
             (identical(other.entryPointsByType, entryPointsByType) ||
                 other.entryPointsByType == entryPointsByType) &&
             const DeepCollectionEquality().equals(other._abi, _abi));
@@ -157,7 +187,10 @@ class _$_CompiledContract implements _CompiledContract {
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, entryPointsByType,
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(_program),
+      entryPointsByType,
       const DeepCollectionEquality().hash(_abi));
 
   @JsonKey(ignore: true)
@@ -174,14 +207,18 @@ class _$_CompiledContract implements _CompiledContract {
   }
 }
 
-abstract class _CompiledContract implements CompiledContract {
+abstract class _CompiledContract extends CompiledContract {
   const factory _CompiledContract(
-      {required final EntryPointsByType entryPointsByType,
+      {required final Map<String, Object?> program,
+      required final EntryPointsByType entryPointsByType,
       final List<ContractAbiEntry>? abi}) = _$_CompiledContract;
+  const _CompiledContract._() : super._();
 
   factory _CompiledContract.fromJson(Map<String, dynamic> json) =
       _$_CompiledContract.fromJson;
 
+  @override
+  Map<String, Object?> get program;
   @override
   EntryPointsByType get entryPointsByType;
   @override

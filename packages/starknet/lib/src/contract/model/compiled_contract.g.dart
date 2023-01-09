@@ -8,6 +8,7 @@ part of 'compiled_contract.dart';
 
 _$_CompiledContract _$$_CompiledContractFromJson(Map<String, dynamic> json) =>
     _$_CompiledContract(
+      program: json['program'] as Map<String, dynamic>,
       entryPointsByType: EntryPointsByType.fromJson(
           json['entry_points_by_type'] as Map<String, dynamic>),
       abi: (json['abi'] as List<dynamic>?)
@@ -17,6 +18,7 @@ _$_CompiledContract _$$_CompiledContractFromJson(Map<String, dynamic> json) =>
 
 Map<String, dynamic> _$$_CompiledContractToJson(_$_CompiledContract instance) =>
     <String, dynamic>{
+      'program': instance.program,
       'entry_points_by_type': instance.entryPointsByType.toJson(),
       'abi': instance.abi?.map((e) => e.toJson()).toList(),
     };
