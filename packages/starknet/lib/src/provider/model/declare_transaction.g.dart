@@ -30,7 +30,8 @@ _$_DeclareTransaction _$$_DeclareTransactionFromJson(
           .map((e) => Felt.fromJson(e as String))
           .toList(),
       senderAddress: Felt.fromJson(json['sender_address'] as String),
-      program: json['program'] as String,
+      contractClass: ContractClass.fromJson(
+          json['contract_class'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$$_DeclareTransactionToJson(
@@ -42,7 +43,7 @@ Map<String, dynamic> _$$_DeclareTransactionToJson(
       'nonce': instance.nonce.toJson(),
       'signature': instance.signature.map((e) => e.toJson()).toList(),
       'sender_address': instance.senderAddress.toJson(),
-      'program': instance.program,
+      'contract_class': instance.contractClass.toJson(),
     };
 
 _$DeclareTransactionResult _$$DeclareTransactionResultFromJson(

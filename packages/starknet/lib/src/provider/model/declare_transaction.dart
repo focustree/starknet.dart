@@ -23,7 +23,7 @@ class DeclareTransaction with _$DeclareTransaction {
     required Felt nonce,
     required List<Felt> signature,
     required Felt senderAddress,
-    required String program,
+    required ContractClass contractClass,
   }) = _DeclareTransaction;
 
   factory DeclareTransaction.fromJson(Map<String, Object?> json) =>

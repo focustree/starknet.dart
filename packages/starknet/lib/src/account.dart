@@ -76,7 +76,14 @@ class Account {
         declareTransaction: DeclareTransaction(
           max_fee: defaultMaxFee,
           nonce: defaultNonce,
-          program: "",
+          contractClass: ContractClass(
+            entryPointsByType: EntryPointsByType(
+              constructor: [],
+              external: [],
+              l1Handler: [],
+            ),
+            program: "",
+          ),
           senderAddress: Felt.fromHexString("0x123"),
           signature: [],
           type: 'DECLARE',

@@ -733,7 +733,7 @@ class _$TxnReceiptCopyWithImpl<$Res, $Val extends TxnReceipt>
   $Res call({
     Object? transactionHash = null,
     Object? actualFee = null,
-    Object? type = freezed,
+    Object? type = null,
     Object? messagesSent = null,
     Object? events = null,
   }) {
@@ -746,7 +746,7 @@ class _$TxnReceiptCopyWithImpl<$Res, $Val extends TxnReceipt>
           ? _value.actualFee
           : actualFee // ignore: cast_nullable_to_non_nullable
               as Felt,
-      type: freezed == type
+      type: null == type
           ? _value.type!
           : type // ignore: cast_nullable_to_non_nullable
               as String,

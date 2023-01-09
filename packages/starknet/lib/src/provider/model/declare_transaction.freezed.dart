@@ -186,7 +186,7 @@ mixin _$DeclareTransaction {
   Felt get nonce => throw _privateConstructorUsedError;
   List<Felt> get signature => throw _privateConstructorUsedError;
   Felt get senderAddress => throw _privateConstructorUsedError;
-  String get program => throw _privateConstructorUsedError;
+  ContractClass get contractClass => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -207,7 +207,9 @@ abstract class $DeclareTransactionCopyWith<$Res> {
       Felt nonce,
       List<Felt> signature,
       Felt senderAddress,
-      String program});
+      ContractClass contractClass});
+
+  $ContractClassCopyWith<$Res> get contractClass;
 }
 
 /// @nodoc
@@ -229,7 +231,7 @@ class _$DeclareTransactionCopyWithImpl<$Res, $Val extends DeclareTransaction>
     Object? nonce = null,
     Object? signature = null,
     Object? senderAddress = null,
-    Object? program = null,
+    Object? contractClass = null,
   }) {
     return _then(_value.copyWith(
       type: null == type
@@ -256,11 +258,19 @@ class _$DeclareTransactionCopyWithImpl<$Res, $Val extends DeclareTransaction>
           ? _value.senderAddress
           : senderAddress // ignore: cast_nullable_to_non_nullable
               as Felt,
-      program: null == program
-          ? _value.program
-          : program // ignore: cast_nullable_to_non_nullable
-              as String,
+      contractClass: null == contractClass
+          ? _value.contractClass
+          : contractClass // ignore: cast_nullable_to_non_nullable
+              as ContractClass,
     ) as $Val);
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $ContractClassCopyWith<$Res> get contractClass {
+    return $ContractClassCopyWith<$Res>(_value.contractClass, (value) {
+      return _then(_value.copyWith(contractClass: value) as $Val);
+    });
   }
 }
 
@@ -279,7 +289,10 @@ abstract class _$$_DeclareTransactionCopyWith<$Res>
       Felt nonce,
       List<Felt> signature,
       Felt senderAddress,
-      String program});
+      ContractClass contractClass});
+
+  @override
+  $ContractClassCopyWith<$Res> get contractClass;
 }
 
 /// @nodoc
@@ -299,7 +312,7 @@ class __$$_DeclareTransactionCopyWithImpl<$Res>
     Object? nonce = null,
     Object? signature = null,
     Object? senderAddress = null,
-    Object? program = null,
+    Object? contractClass = null,
   }) {
     return _then(_$_DeclareTransaction(
       type: null == type
@@ -326,10 +339,10 @@ class __$$_DeclareTransactionCopyWithImpl<$Res>
           ? _value.senderAddress
           : senderAddress // ignore: cast_nullable_to_non_nullable
               as Felt,
-      program: null == program
-          ? _value.program
-          : program // ignore: cast_nullable_to_non_nullable
-              as String,
+      contractClass: null == contractClass
+          ? _value.contractClass
+          : contractClass // ignore: cast_nullable_to_non_nullable
+              as ContractClass,
     ));
   }
 }
@@ -344,7 +357,7 @@ class _$_DeclareTransaction implements _DeclareTransaction {
       required this.nonce,
       required final List<Felt> signature,
       required this.senderAddress,
-      required this.program})
+      required this.contractClass})
       : _signature = signature;
 
   factory _$_DeclareTransaction.fromJson(Map<String, dynamic> json) =>
@@ -371,11 +384,11 @@ class _$_DeclareTransaction implements _DeclareTransaction {
   @override
   final Felt senderAddress;
   @override
-  final String program;
+  final ContractClass contractClass;
 
   @override
   String toString() {
-    return 'DeclareTransaction(type: $type, version: $version, max_fee: $max_fee, nonce: $nonce, signature: $signature, senderAddress: $senderAddress, program: $program)';
+    return 'DeclareTransaction(type: $type, version: $version, max_fee: $max_fee, nonce: $nonce, signature: $signature, senderAddress: $senderAddress, contractClass: $contractClass)';
   }
 
   @override
@@ -391,13 +404,21 @@ class _$_DeclareTransaction implements _DeclareTransaction {
                 .equals(other._signature, _signature) &&
             (identical(other.senderAddress, senderAddress) ||
                 other.senderAddress == senderAddress) &&
-            (identical(other.program, program) || other.program == program));
+            (identical(other.contractClass, contractClass) ||
+                other.contractClass == contractClass));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, type, version, max_fee, nonce,
-      const DeepCollectionEquality().hash(_signature), senderAddress, program);
+  int get hashCode => Object.hash(
+      runtimeType,
+      type,
+      version,
+      max_fee,
+      nonce,
+      const DeepCollectionEquality().hash(_signature),
+      senderAddress,
+      contractClass);
 
   @JsonKey(ignore: true)
   @override
@@ -422,7 +443,7 @@ abstract class _DeclareTransaction implements DeclareTransaction {
       required final Felt nonce,
       required final List<Felt> signature,
       required final Felt senderAddress,
-      required final String program}) = _$_DeclareTransaction;
+      required final ContractClass contractClass}) = _$_DeclareTransaction;
 
   factory _DeclareTransaction.fromJson(Map<String, dynamic> json) =
       _$_DeclareTransaction.fromJson;
@@ -440,7 +461,7 @@ abstract class _DeclareTransaction implements DeclareTransaction {
   @override
   Felt get senderAddress;
   @override
-  String get program;
+  ContractClass get contractClass;
   @override
   @JsonKey(ignore: true)
   _$$_DeclareTransactionCopyWith<_$_DeclareTransaction> get copyWith =>

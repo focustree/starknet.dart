@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'fee_estimate.dart';
 
@@ -34,38 +34,42 @@ mixin _$FeeEstimate {
 abstract class $FeeEstimateCopyWith<$Res> {
   factory $FeeEstimateCopyWith(
           FeeEstimate value, $Res Function(FeeEstimate) then) =
-      _$FeeEstimateCopyWithImpl<$Res>;
+      _$FeeEstimateCopyWithImpl<$Res, FeeEstimate>;
+  @useResult
   $Res call({String gasConsumed, String gasPrice, String overallFee});
 }
 
 /// @nodoc
-class _$FeeEstimateCopyWithImpl<$Res> implements $FeeEstimateCopyWith<$Res> {
+class _$FeeEstimateCopyWithImpl<$Res, $Val extends FeeEstimate>
+    implements $FeeEstimateCopyWith<$Res> {
   _$FeeEstimateCopyWithImpl(this._value, this._then);
 
-  final FeeEstimate _value;
   // ignore: unused_field
-  final $Res Function(FeeEstimate) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? gasConsumed = freezed,
-    Object? gasPrice = freezed,
-    Object? overallFee = freezed,
+    Object? gasConsumed = null,
+    Object? gasPrice = null,
+    Object? overallFee = null,
   }) {
     return _then(_value.copyWith(
-      gasConsumed: gasConsumed == freezed
+      gasConsumed: null == gasConsumed
           ? _value.gasConsumed
           : gasConsumed // ignore: cast_nullable_to_non_nullable
               as String,
-      gasPrice: gasPrice == freezed
+      gasPrice: null == gasPrice
           ? _value.gasPrice
           : gasPrice // ignore: cast_nullable_to_non_nullable
               as String,
-      overallFee: overallFee == freezed
+      overallFee: null == overallFee
           ? _value.overallFee
           : overallFee // ignore: cast_nullable_to_non_nullable
               as String,
-    ));
+    ) as $Val);
   }
 }
 
@@ -76,35 +80,35 @@ abstract class _$$_FeeEstimateCopyWith<$Res>
           _$_FeeEstimate value, $Res Function(_$_FeeEstimate) then) =
       __$$_FeeEstimateCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call({String gasConsumed, String gasPrice, String overallFee});
 }
 
 /// @nodoc
-class __$$_FeeEstimateCopyWithImpl<$Res> extends _$FeeEstimateCopyWithImpl<$Res>
+class __$$_FeeEstimateCopyWithImpl<$Res>
+    extends _$FeeEstimateCopyWithImpl<$Res, _$_FeeEstimate>
     implements _$$_FeeEstimateCopyWith<$Res> {
   __$$_FeeEstimateCopyWithImpl(
       _$_FeeEstimate _value, $Res Function(_$_FeeEstimate) _then)
-      : super(_value, (v) => _then(v as _$_FeeEstimate));
+      : super(_value, _then);
 
-  @override
-  _$_FeeEstimate get _value => super._value as _$_FeeEstimate;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? gasConsumed = freezed,
-    Object? gasPrice = freezed,
-    Object? overallFee = freezed,
+    Object? gasConsumed = null,
+    Object? gasPrice = null,
+    Object? overallFee = null,
   }) {
     return _then(_$_FeeEstimate(
-      gasConsumed: gasConsumed == freezed
+      gasConsumed: null == gasConsumed
           ? _value.gasConsumed
           : gasConsumed // ignore: cast_nullable_to_non_nullable
               as String,
-      gasPrice: gasPrice == freezed
+      gasPrice: null == gasPrice
           ? _value.gasPrice
           : gasPrice // ignore: cast_nullable_to_non_nullable
               as String,
-      overallFee: overallFee == freezed
+      overallFee: null == overallFee
           ? _value.overallFee
           : overallFee // ignore: cast_nullable_to_non_nullable
               as String,
@@ -140,23 +144,22 @@ class _$_FeeEstimate implements _FeeEstimate {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_FeeEstimate &&
-            const DeepCollectionEquality()
-                .equals(other.gasConsumed, gasConsumed) &&
-            const DeepCollectionEquality().equals(other.gasPrice, gasPrice) &&
-            const DeepCollectionEquality()
-                .equals(other.overallFee, overallFee));
+            (identical(other.gasConsumed, gasConsumed) ||
+                other.gasConsumed == gasConsumed) &&
+            (identical(other.gasPrice, gasPrice) ||
+                other.gasPrice == gasPrice) &&
+            (identical(other.overallFee, overallFee) ||
+                other.overallFee == overallFee));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(gasConsumed),
-      const DeepCollectionEquality().hash(gasPrice),
-      const DeepCollectionEquality().hash(overallFee));
+  int get hashCode =>
+      Object.hash(runtimeType, gasConsumed, gasPrice, overallFee);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_FeeEstimateCopyWith<_$_FeeEstimate> get copyWith =>
       __$$_FeeEstimateCopyWithImpl<_$_FeeEstimate>(this, _$identity);
 
