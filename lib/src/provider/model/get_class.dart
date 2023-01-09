@@ -1,5 +1,4 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:starknet/src/provider/model/contract_class.dart';
 import 'package:starknet/starknet.dart';
 
 part 'get_class.freezed.dart';
