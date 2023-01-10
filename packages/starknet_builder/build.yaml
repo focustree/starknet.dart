@@ -1,0 +1,8 @@
+builders:
+  contract_generator:
+    import: "package:starknet_builder/src/builder.dart"
+    builder_factories: ["contractGenerator"]
+    build_extensions: {".abi.json": [".g.dart"]}
+    auto_apply: root_package
+    build_to: source
+
