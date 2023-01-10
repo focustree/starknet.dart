@@ -16,6 +16,7 @@ _$FunctionAbiEntry _$$FunctionAbiEntryFromJson(Map<String, dynamic> json) =>
       outputs: (json['outputs'] as List<dynamic>)
           .map((e) => TypedParameter.fromJson(e as Map<String, dynamic>))
           .toList(),
+      stateMutability: json['stateMutability'] as String?,
       $type: json['runtimeType'] as String?,
     );
 
@@ -25,6 +26,7 @@ Map<String, dynamic> _$$FunctionAbiEntryToJson(_$FunctionAbiEntry instance) =>
       'name': instance.name,
       'inputs': instance.inputs.map((e) => e.toJson()).toList(),
       'outputs': instance.outputs.map((e) => e.toJson()).toList(),
+      'stateMutability': instance.stateMutability,
       'runtimeType': instance.$type,
     };
 

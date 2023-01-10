@@ -37,8 +37,12 @@ mixin _$ContractAbiEntry {
   String get name => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String type, String name,
-            List<TypedParameter> inputs, List<TypedParameter> outputs)
+    required TResult Function(
+            String type,
+            String name,
+            List<TypedParameter> inputs,
+            List<TypedParameter> outputs,
+            @JsonKey(name: 'stateMutability') String? stateMutability)
         function,
     required TResult Function(String type, String name,
             List<TypedParameter> keys, List<TypedParameter> data)
@@ -53,8 +57,12 @@ mixin _$ContractAbiEntry {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String type, String name, List<TypedParameter> inputs,
-            List<TypedParameter> outputs)?
+    TResult? Function(
+            String type,
+            String name,
+            List<TypedParameter> inputs,
+            List<TypedParameter> outputs,
+            @JsonKey(name: 'stateMutability') String? stateMutability)?
         function,
     TResult? Function(String type, String name, List<TypedParameter> keys,
             List<TypedParameter> data)?
@@ -69,8 +77,12 @@ mixin _$ContractAbiEntry {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String type, String name, List<TypedParameter> inputs,
-            List<TypedParameter> outputs)?
+    TResult Function(
+            String type,
+            String name,
+            List<TypedParameter> inputs,
+            List<TypedParameter> outputs,
+            @JsonKey(name: 'stateMutability') String? stateMutability)?
         function,
     TResult Function(String type, String name, List<TypedParameter> keys,
             List<TypedParameter> data)?
@@ -165,7 +177,8 @@ abstract class _$$FunctionAbiEntryCopyWith<$Res>
       {String type,
       String name,
       List<TypedParameter> inputs,
-      List<TypedParameter> outputs});
+      List<TypedParameter> outputs,
+      @JsonKey(name: 'stateMutability') String? stateMutability});
 }
 
 /// @nodoc
@@ -183,6 +196,7 @@ class __$$FunctionAbiEntryCopyWithImpl<$Res>
     Object? name = null,
     Object? inputs = null,
     Object? outputs = null,
+    Object? stateMutability = freezed,
   }) {
     return _then(_$FunctionAbiEntry(
       type: null == type
@@ -201,6 +215,10 @@ class __$$FunctionAbiEntryCopyWithImpl<$Res>
           ? _value._outputs
           : outputs // ignore: cast_nullable_to_non_nullable
               as List<TypedParameter>,
+      stateMutability: freezed == stateMutability
+          ? _value.stateMutability
+          : stateMutability // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -213,6 +231,7 @@ class _$FunctionAbiEntry implements FunctionAbiEntry {
       required this.name,
       required final List<TypedParameter> inputs,
       required final List<TypedParameter> outputs,
+      @JsonKey(name: 'stateMutability') this.stateMutability,
       final String? $type})
       : _inputs = inputs,
         _outputs = outputs,
@@ -241,12 +260,16 @@ class _$FunctionAbiEntry implements FunctionAbiEntry {
     return EqualUnmodifiableListView(_outputs);
   }
 
+  @override
+  @JsonKey(name: 'stateMutability')
+  final String? stateMutability;
+
   @JsonKey(name: 'runtimeType')
   final String $type;
 
   @override
   String toString() {
-    return 'ContractAbiEntry.function(type: $type, name: $name, inputs: $inputs, outputs: $outputs)';
+    return 'ContractAbiEntry.function(type: $type, name: $name, inputs: $inputs, outputs: $outputs, stateMutability: $stateMutability)';
   }
 
   @override
@@ -257,7 +280,9 @@ class _$FunctionAbiEntry implements FunctionAbiEntry {
             (identical(other.type, type) || other.type == type) &&
             (identical(other.name, name) || other.name == name) &&
             const DeepCollectionEquality().equals(other._inputs, _inputs) &&
-            const DeepCollectionEquality().equals(other._outputs, _outputs));
+            const DeepCollectionEquality().equals(other._outputs, _outputs) &&
+            (identical(other.stateMutability, stateMutability) ||
+                other.stateMutability == stateMutability));
   }
 
   @JsonKey(ignore: true)
@@ -267,7 +292,8 @@ class _$FunctionAbiEntry implements FunctionAbiEntry {
       type,
       name,
       const DeepCollectionEquality().hash(_inputs),
-      const DeepCollectionEquality().hash(_outputs));
+      const DeepCollectionEquality().hash(_outputs),
+      stateMutability);
 
   @JsonKey(ignore: true)
   @override
@@ -278,8 +304,12 @@ class _$FunctionAbiEntry implements FunctionAbiEntry {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String type, String name,
-            List<TypedParameter> inputs, List<TypedParameter> outputs)
+    required TResult Function(
+            String type,
+            String name,
+            List<TypedParameter> inputs,
+            List<TypedParameter> outputs,
+            @JsonKey(name: 'stateMutability') String? stateMutability)
         function,
     required TResult Function(String type, String name,
             List<TypedParameter> keys, List<TypedParameter> data)
@@ -291,14 +321,18 @@ class _$FunctionAbiEntry implements FunctionAbiEntry {
             List<TypedParameter> inputs, List<TypedParameter> outputs)
         constructor,
   }) {
-    return function(type, name, inputs, outputs);
+    return function(type, name, inputs, outputs, stateMutability);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String type, String name, List<TypedParameter> inputs,
-            List<TypedParameter> outputs)?
+    TResult? Function(
+            String type,
+            String name,
+            List<TypedParameter> inputs,
+            List<TypedParameter> outputs,
+            @JsonKey(name: 'stateMutability') String? stateMutability)?
         function,
     TResult? Function(String type, String name, List<TypedParameter> keys,
             List<TypedParameter> data)?
@@ -310,14 +344,18 @@ class _$FunctionAbiEntry implements FunctionAbiEntry {
             List<TypedParameter> outputs)?
         constructor,
   }) {
-    return function?.call(type, name, inputs, outputs);
+    return function?.call(type, name, inputs, outputs, stateMutability);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String type, String name, List<TypedParameter> inputs,
-            List<TypedParameter> outputs)?
+    TResult Function(
+            String type,
+            String name,
+            List<TypedParameter> inputs,
+            List<TypedParameter> outputs,
+            @JsonKey(name: 'stateMutability') String? stateMutability)?
         function,
     TResult Function(String type, String name, List<TypedParameter> keys,
             List<TypedParameter> data)?
@@ -331,7 +369,7 @@ class _$FunctionAbiEntry implements FunctionAbiEntry {
     required TResult orElse(),
   }) {
     if (function != null) {
-      return function(type, name, inputs, outputs);
+      return function(type, name, inputs, outputs, stateMutability);
     }
     return orElse();
   }
@@ -383,10 +421,12 @@ class _$FunctionAbiEntry implements FunctionAbiEntry {
 
 abstract class FunctionAbiEntry implements ContractAbiEntry {
   const factory FunctionAbiEntry(
-      {required final String type,
-      required final String name,
-      required final List<TypedParameter> inputs,
-      required final List<TypedParameter> outputs}) = _$FunctionAbiEntry;
+          {required final String type,
+          required final String name,
+          required final List<TypedParameter> inputs,
+          required final List<TypedParameter> outputs,
+          @JsonKey(name: 'stateMutability') final String? stateMutability}) =
+      _$FunctionAbiEntry;
 
   factory FunctionAbiEntry.fromJson(Map<String, dynamic> json) =
       _$FunctionAbiEntry.fromJson;
@@ -397,6 +437,8 @@ abstract class FunctionAbiEntry implements ContractAbiEntry {
   String get name;
   List<TypedParameter> get inputs;
   List<TypedParameter> get outputs;
+  @JsonKey(name: 'stateMutability')
+  String? get stateMutability;
   @override
   @JsonKey(ignore: true)
   _$$FunctionAbiEntryCopyWith<_$FunctionAbiEntry> get copyWith =>
@@ -528,8 +570,12 @@ class _$EventAbiEntry implements EventAbiEntry {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String type, String name,
-            List<TypedParameter> inputs, List<TypedParameter> outputs)
+    required TResult Function(
+            String type,
+            String name,
+            List<TypedParameter> inputs,
+            List<TypedParameter> outputs,
+            @JsonKey(name: 'stateMutability') String? stateMutability)
         function,
     required TResult Function(String type, String name,
             List<TypedParameter> keys, List<TypedParameter> data)
@@ -547,8 +593,12 @@ class _$EventAbiEntry implements EventAbiEntry {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String type, String name, List<TypedParameter> inputs,
-            List<TypedParameter> outputs)?
+    TResult? Function(
+            String type,
+            String name,
+            List<TypedParameter> inputs,
+            List<TypedParameter> outputs,
+            @JsonKey(name: 'stateMutability') String? stateMutability)?
         function,
     TResult? Function(String type, String name, List<TypedParameter> keys,
             List<TypedParameter> data)?
@@ -566,8 +616,12 @@ class _$EventAbiEntry implements EventAbiEntry {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String type, String name, List<TypedParameter> inputs,
-            List<TypedParameter> outputs)?
+    TResult Function(
+            String type,
+            String name,
+            List<TypedParameter> inputs,
+            List<TypedParameter> outputs,
+            @JsonKey(name: 'stateMutability') String? stateMutability)?
         function,
     TResult Function(String type, String name, List<TypedParameter> keys,
             List<TypedParameter> data)?
@@ -763,8 +817,12 @@ class _$StructAbiEntry implements StructAbiEntry {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String type, String name,
-            List<TypedParameter> inputs, List<TypedParameter> outputs)
+    required TResult Function(
+            String type,
+            String name,
+            List<TypedParameter> inputs,
+            List<TypedParameter> outputs,
+            @JsonKey(name: 'stateMutability') String? stateMutability)
         function,
     required TResult Function(String type, String name,
             List<TypedParameter> keys, List<TypedParameter> data)
@@ -782,8 +840,12 @@ class _$StructAbiEntry implements StructAbiEntry {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String type, String name, List<TypedParameter> inputs,
-            List<TypedParameter> outputs)?
+    TResult? Function(
+            String type,
+            String name,
+            List<TypedParameter> inputs,
+            List<TypedParameter> outputs,
+            @JsonKey(name: 'stateMutability') String? stateMutability)?
         function,
     TResult? Function(String type, String name, List<TypedParameter> keys,
             List<TypedParameter> data)?
@@ -801,8 +863,12 @@ class _$StructAbiEntry implements StructAbiEntry {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String type, String name, List<TypedParameter> inputs,
-            List<TypedParameter> outputs)?
+    TResult Function(
+            String type,
+            String name,
+            List<TypedParameter> inputs,
+            List<TypedParameter> outputs,
+            @JsonKey(name: 'stateMutability') String? stateMutability)?
         function,
     TResult Function(String type, String name, List<TypedParameter> keys,
             List<TypedParameter> data)?
@@ -1014,8 +1080,12 @@ class _$ConstructorAbiEntry implements ConstructorAbiEntry {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String type, String name,
-            List<TypedParameter> inputs, List<TypedParameter> outputs)
+    required TResult Function(
+            String type,
+            String name,
+            List<TypedParameter> inputs,
+            List<TypedParameter> outputs,
+            @JsonKey(name: 'stateMutability') String? stateMutability)
         function,
     required TResult Function(String type, String name,
             List<TypedParameter> keys, List<TypedParameter> data)
@@ -1033,8 +1103,12 @@ class _$ConstructorAbiEntry implements ConstructorAbiEntry {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String type, String name, List<TypedParameter> inputs,
-            List<TypedParameter> outputs)?
+    TResult? Function(
+            String type,
+            String name,
+            List<TypedParameter> inputs,
+            List<TypedParameter> outputs,
+            @JsonKey(name: 'stateMutability') String? stateMutability)?
         function,
     TResult? Function(String type, String name, List<TypedParameter> keys,
             List<TypedParameter> data)?
@@ -1052,8 +1126,12 @@ class _$ConstructorAbiEntry implements ConstructorAbiEntry {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String type, String name, List<TypedParameter> inputs,
-            List<TypedParameter> outputs)?
+    TResult Function(
+            String type,
+            String name,
+            List<TypedParameter> inputs,
+            List<TypedParameter> outputs,
+            @JsonKey(name: 'stateMutability') String? stateMutability)?
         function,
     TResult Function(String type, String name, List<TypedParameter> keys,
             List<TypedParameter> data)?
