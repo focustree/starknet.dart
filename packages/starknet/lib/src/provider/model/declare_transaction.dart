@@ -23,7 +23,7 @@ class DeclareTransaction with _$DeclareTransaction {
     required Felt nonce,
     required List<Felt> signature,
     required Felt senderAddress,
-    required String program,
+    required ContractClass contractClass,
   }) = _DeclareTransaction;
 
   factory DeclareTransaction.fromJson(Map<String, Object?> json) =>
@@ -33,7 +33,7 @@ class DeclareTransaction with _$DeclareTransaction {
 @freezed
 class DeclareTransactionResponse with _$DeclareTransactionResponse {
   const factory DeclareTransactionResponse.result({
-    required Felt transaction_hash,
+    required DeclareTransactionResponseResult result,
   }) = DeclareTransactionResult;
   const factory DeclareTransactionResponse.error({
     required JsonRpcApiError error,
@@ -43,4 +43,16 @@ class DeclareTransactionResponse with _$DeclareTransactionResponse {
       json.containsKey('error')
           ? DeclareTransactionError.fromJson(json)
           : DeclareTransactionResult.fromJson(json);
+}
+
+@freezed
+class DeclareTransactionResponseResult with _$DeclareTransactionResponseResult {
+  const factory DeclareTransactionResponseResult({
+    required Felt classHash,
+    required Felt transactionHash,
+  }) = _DeclareTransactionResponseResult;
+
+  factory DeclareTransactionResponseResult.fromJson(
+          Map<String, Object?> json) =>
+      _$DeclareTransactionResponseResultFromJson(json);
 }

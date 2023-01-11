@@ -186,7 +186,7 @@ mixin _$DeclareTransaction {
   Felt get nonce => throw _privateConstructorUsedError;
   List<Felt> get signature => throw _privateConstructorUsedError;
   Felt get senderAddress => throw _privateConstructorUsedError;
-  String get program => throw _privateConstructorUsedError;
+  ContractClass get contractClass => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -207,7 +207,9 @@ abstract class $DeclareTransactionCopyWith<$Res> {
       Felt nonce,
       List<Felt> signature,
       Felt senderAddress,
-      String program});
+      ContractClass contractClass});
+
+  $ContractClassCopyWith<$Res> get contractClass;
 }
 
 /// @nodoc
@@ -229,7 +231,7 @@ class _$DeclareTransactionCopyWithImpl<$Res, $Val extends DeclareTransaction>
     Object? nonce = null,
     Object? signature = null,
     Object? senderAddress = null,
-    Object? program = null,
+    Object? contractClass = null,
   }) {
     return _then(_value.copyWith(
       type: null == type
@@ -256,11 +258,19 @@ class _$DeclareTransactionCopyWithImpl<$Res, $Val extends DeclareTransaction>
           ? _value.senderAddress
           : senderAddress // ignore: cast_nullable_to_non_nullable
               as Felt,
-      program: null == program
-          ? _value.program
-          : program // ignore: cast_nullable_to_non_nullable
-              as String,
+      contractClass: null == contractClass
+          ? _value.contractClass
+          : contractClass // ignore: cast_nullable_to_non_nullable
+              as ContractClass,
     ) as $Val);
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $ContractClassCopyWith<$Res> get contractClass {
+    return $ContractClassCopyWith<$Res>(_value.contractClass, (value) {
+      return _then(_value.copyWith(contractClass: value) as $Val);
+    });
   }
 }
 
@@ -279,7 +289,10 @@ abstract class _$$_DeclareTransactionCopyWith<$Res>
       Felt nonce,
       List<Felt> signature,
       Felt senderAddress,
-      String program});
+      ContractClass contractClass});
+
+  @override
+  $ContractClassCopyWith<$Res> get contractClass;
 }
 
 /// @nodoc
@@ -299,7 +312,7 @@ class __$$_DeclareTransactionCopyWithImpl<$Res>
     Object? nonce = null,
     Object? signature = null,
     Object? senderAddress = null,
-    Object? program = null,
+    Object? contractClass = null,
   }) {
     return _then(_$_DeclareTransaction(
       type: null == type
@@ -326,10 +339,10 @@ class __$$_DeclareTransactionCopyWithImpl<$Res>
           ? _value.senderAddress
           : senderAddress // ignore: cast_nullable_to_non_nullable
               as Felt,
-      program: null == program
-          ? _value.program
-          : program // ignore: cast_nullable_to_non_nullable
-              as String,
+      contractClass: null == contractClass
+          ? _value.contractClass
+          : contractClass // ignore: cast_nullable_to_non_nullable
+              as ContractClass,
     ));
   }
 }
@@ -344,7 +357,7 @@ class _$_DeclareTransaction implements _DeclareTransaction {
       required this.nonce,
       required final List<Felt> signature,
       required this.senderAddress,
-      required this.program})
+      required this.contractClass})
       : _signature = signature;
 
   factory _$_DeclareTransaction.fromJson(Map<String, dynamic> json) =>
@@ -371,11 +384,11 @@ class _$_DeclareTransaction implements _DeclareTransaction {
   @override
   final Felt senderAddress;
   @override
-  final String program;
+  final ContractClass contractClass;
 
   @override
   String toString() {
-    return 'DeclareTransaction(type: $type, version: $version, max_fee: $max_fee, nonce: $nonce, signature: $signature, senderAddress: $senderAddress, program: $program)';
+    return 'DeclareTransaction(type: $type, version: $version, max_fee: $max_fee, nonce: $nonce, signature: $signature, senderAddress: $senderAddress, contractClass: $contractClass)';
   }
 
   @override
@@ -391,13 +404,21 @@ class _$_DeclareTransaction implements _DeclareTransaction {
                 .equals(other._signature, _signature) &&
             (identical(other.senderAddress, senderAddress) ||
                 other.senderAddress == senderAddress) &&
-            (identical(other.program, program) || other.program == program));
+            (identical(other.contractClass, contractClass) ||
+                other.contractClass == contractClass));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, type, version, max_fee, nonce,
-      const DeepCollectionEquality().hash(_signature), senderAddress, program);
+  int get hashCode => Object.hash(
+      runtimeType,
+      type,
+      version,
+      max_fee,
+      nonce,
+      const DeepCollectionEquality().hash(_signature),
+      senderAddress,
+      contractClass);
 
   @JsonKey(ignore: true)
   @override
@@ -422,7 +443,7 @@ abstract class _DeclareTransaction implements DeclareTransaction {
       required final Felt nonce,
       required final List<Felt> signature,
       required final Felt senderAddress,
-      required final String program}) = _$_DeclareTransaction;
+      required final ContractClass contractClass}) = _$_DeclareTransaction;
 
   factory _DeclareTransaction.fromJson(Map<String, dynamic> json) =
       _$_DeclareTransaction.fromJson;
@@ -440,7 +461,7 @@ abstract class _DeclareTransaction implements DeclareTransaction {
   @override
   Felt get senderAddress;
   @override
-  String get program;
+  ContractClass get contractClass;
   @override
   @JsonKey(ignore: true)
   _$$_DeclareTransactionCopyWith<_$_DeclareTransaction> get copyWith =>
@@ -468,19 +489,19 @@ DeclareTransactionResponse _$DeclareTransactionResponseFromJson(
 mixin _$DeclareTransactionResponse {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(Felt transaction_hash) result,
+    required TResult Function(DeclareTransactionResponseResult result) result,
     required TResult Function(JsonRpcApiError error) error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(Felt transaction_hash)? result,
+    TResult? Function(DeclareTransactionResponseResult result)? result,
     TResult? Function(JsonRpcApiError error)? error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(Felt transaction_hash)? result,
+    TResult Function(DeclareTransactionResponseResult result)? result,
     TResult Function(JsonRpcApiError error)? error,
     required TResult orElse(),
   }) =>
@@ -533,7 +554,9 @@ abstract class _$$DeclareTransactionResultCopyWith<$Res> {
           $Res Function(_$DeclareTransactionResult) then) =
       __$$DeclareTransactionResultCopyWithImpl<$Res>;
   @useResult
-  $Res call({Felt transaction_hash});
+  $Res call({DeclareTransactionResponseResult result});
+
+  $DeclareTransactionResponseResultCopyWith<$Res> get result;
 }
 
 /// @nodoc
@@ -548,36 +571,44 @@ class __$$DeclareTransactionResultCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? transaction_hash = null,
+    Object? result = null,
   }) {
     return _then(_$DeclareTransactionResult(
-      transaction_hash: null == transaction_hash
-          ? _value.transaction_hash
-          : transaction_hash // ignore: cast_nullable_to_non_nullable
-              as Felt,
+      result: null == result
+          ? _value.result
+          : result // ignore: cast_nullable_to_non_nullable
+              as DeclareTransactionResponseResult,
     ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $DeclareTransactionResponseResultCopyWith<$Res> get result {
+    return $DeclareTransactionResponseResultCopyWith<$Res>(_value.result,
+        (value) {
+      return _then(_value.copyWith(result: value));
+    });
   }
 }
 
 /// @nodoc
 @JsonSerializable()
 class _$DeclareTransactionResult implements DeclareTransactionResult {
-  const _$DeclareTransactionResult(
-      {required this.transaction_hash, final String? $type})
+  const _$DeclareTransactionResult({required this.result, final String? $type})
       : $type = $type ?? 'result';
 
   factory _$DeclareTransactionResult.fromJson(Map<String, dynamic> json) =>
       _$$DeclareTransactionResultFromJson(json);
 
   @override
-  final Felt transaction_hash;
+  final DeclareTransactionResponseResult result;
 
   @JsonKey(name: 'runtimeType')
   final String $type;
 
   @override
   String toString() {
-    return 'DeclareTransactionResponse.result(transaction_hash: $transaction_hash)';
+    return 'DeclareTransactionResponse.result(result: $result)';
   }
 
   @override
@@ -585,13 +616,12 @@ class _$DeclareTransactionResult implements DeclareTransactionResult {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$DeclareTransactionResult &&
-            (identical(other.transaction_hash, transaction_hash) ||
-                other.transaction_hash == transaction_hash));
+            (identical(other.result, result) || other.result == result));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, transaction_hash);
+  int get hashCode => Object.hash(runtimeType, result);
 
   @JsonKey(ignore: true)
   @override
@@ -604,30 +634,30 @@ class _$DeclareTransactionResult implements DeclareTransactionResult {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(Felt transaction_hash) result,
+    required TResult Function(DeclareTransactionResponseResult result) result,
     required TResult Function(JsonRpcApiError error) error,
   }) {
-    return result(transaction_hash);
+    return result(this.result);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(Felt transaction_hash)? result,
+    TResult? Function(DeclareTransactionResponseResult result)? result,
     TResult? Function(JsonRpcApiError error)? error,
   }) {
-    return result?.call(transaction_hash);
+    return result?.call(this.result);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(Felt transaction_hash)? result,
+    TResult Function(DeclareTransactionResponseResult result)? result,
     TResult Function(JsonRpcApiError error)? error,
     required TResult orElse(),
   }) {
     if (result != null) {
-      return result(transaction_hash);
+      return result(this.result);
     }
     return orElse();
   }
@@ -673,12 +703,13 @@ class _$DeclareTransactionResult implements DeclareTransactionResult {
 
 abstract class DeclareTransactionResult implements DeclareTransactionResponse {
   const factory DeclareTransactionResult(
-      {required final Felt transaction_hash}) = _$DeclareTransactionResult;
+          {required final DeclareTransactionResponseResult result}) =
+      _$DeclareTransactionResult;
 
   factory DeclareTransactionResult.fromJson(Map<String, dynamic> json) =
       _$DeclareTransactionResult.fromJson;
 
-  Felt get transaction_hash;
+  DeclareTransactionResponseResult get result;
   @JsonKey(ignore: true)
   _$$DeclareTransactionResultCopyWith<_$DeclareTransactionResult>
       get copyWith => throw _privateConstructorUsedError;
@@ -768,7 +799,7 @@ class _$DeclareTransactionError implements DeclareTransactionError {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(Felt transaction_hash) result,
+    required TResult Function(DeclareTransactionResponseResult result) result,
     required TResult Function(JsonRpcApiError error) error,
   }) {
     return error(this.error);
@@ -777,7 +808,7 @@ class _$DeclareTransactionError implements DeclareTransactionError {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(Felt transaction_hash)? result,
+    TResult? Function(DeclareTransactionResponseResult result)? result,
     TResult? Function(JsonRpcApiError error)? error,
   }) {
     return error?.call(this.error);
@@ -786,7 +817,7 @@ class _$DeclareTransactionError implements DeclareTransactionError {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(Felt transaction_hash)? result,
+    TResult Function(DeclareTransactionResponseResult result)? result,
     TResult Function(JsonRpcApiError error)? error,
     required TResult orElse(),
   }) {
@@ -846,4 +877,175 @@ abstract class DeclareTransactionError implements DeclareTransactionResponse {
   @JsonKey(ignore: true)
   _$$DeclareTransactionErrorCopyWith<_$DeclareTransactionError> get copyWith =>
       throw _privateConstructorUsedError;
+}
+
+DeclareTransactionResponseResult _$DeclareTransactionResponseResultFromJson(
+    Map<String, dynamic> json) {
+  return _DeclareTransactionResponseResult.fromJson(json);
+}
+
+/// @nodoc
+mixin _$DeclareTransactionResponseResult {
+  Felt get classHash => throw _privateConstructorUsedError;
+  Felt get transactionHash => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $DeclareTransactionResponseResultCopyWith<DeclareTransactionResponseResult>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $DeclareTransactionResponseResultCopyWith<$Res> {
+  factory $DeclareTransactionResponseResultCopyWith(
+          DeclareTransactionResponseResult value,
+          $Res Function(DeclareTransactionResponseResult) then) =
+      _$DeclareTransactionResponseResultCopyWithImpl<$Res,
+          DeclareTransactionResponseResult>;
+  @useResult
+  $Res call({Felt classHash, Felt transactionHash});
+}
+
+/// @nodoc
+class _$DeclareTransactionResponseResultCopyWithImpl<$Res,
+        $Val extends DeclareTransactionResponseResult>
+    implements $DeclareTransactionResponseResultCopyWith<$Res> {
+  _$DeclareTransactionResponseResultCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? classHash = null,
+    Object? transactionHash = null,
+  }) {
+    return _then(_value.copyWith(
+      classHash: null == classHash
+          ? _value.classHash
+          : classHash // ignore: cast_nullable_to_non_nullable
+              as Felt,
+      transactionHash: null == transactionHash
+          ? _value.transactionHash
+          : transactionHash // ignore: cast_nullable_to_non_nullable
+              as Felt,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$_DeclareTransactionResponseResultCopyWith<$Res>
+    implements $DeclareTransactionResponseResultCopyWith<$Res> {
+  factory _$$_DeclareTransactionResponseResultCopyWith(
+          _$_DeclareTransactionResponseResult value,
+          $Res Function(_$_DeclareTransactionResponseResult) then) =
+      __$$_DeclareTransactionResponseResultCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({Felt classHash, Felt transactionHash});
+}
+
+/// @nodoc
+class __$$_DeclareTransactionResponseResultCopyWithImpl<$Res>
+    extends _$DeclareTransactionResponseResultCopyWithImpl<$Res,
+        _$_DeclareTransactionResponseResult>
+    implements _$$_DeclareTransactionResponseResultCopyWith<$Res> {
+  __$$_DeclareTransactionResponseResultCopyWithImpl(
+      _$_DeclareTransactionResponseResult _value,
+      $Res Function(_$_DeclareTransactionResponseResult) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? classHash = null,
+    Object? transactionHash = null,
+  }) {
+    return _then(_$_DeclareTransactionResponseResult(
+      classHash: null == classHash
+          ? _value.classHash
+          : classHash // ignore: cast_nullable_to_non_nullable
+              as Felt,
+      transactionHash: null == transactionHash
+          ? _value.transactionHash
+          : transactionHash // ignore: cast_nullable_to_non_nullable
+              as Felt,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$_DeclareTransactionResponseResult
+    implements _DeclareTransactionResponseResult {
+  const _$_DeclareTransactionResponseResult(
+      {required this.classHash, required this.transactionHash});
+
+  factory _$_DeclareTransactionResponseResult.fromJson(
+          Map<String, dynamic> json) =>
+      _$$_DeclareTransactionResponseResultFromJson(json);
+
+  @override
+  final Felt classHash;
+  @override
+  final Felt transactionHash;
+
+  @override
+  String toString() {
+    return 'DeclareTransactionResponseResult(classHash: $classHash, transactionHash: $transactionHash)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_DeclareTransactionResponseResult &&
+            (identical(other.classHash, classHash) ||
+                other.classHash == classHash) &&
+            (identical(other.transactionHash, transactionHash) ||
+                other.transactionHash == transactionHash));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(runtimeType, classHash, transactionHash);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_DeclareTransactionResponseResultCopyWith<
+          _$_DeclareTransactionResponseResult>
+      get copyWith => __$$_DeclareTransactionResponseResultCopyWithImpl<
+          _$_DeclareTransactionResponseResult>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_DeclareTransactionResponseResultToJson(
+      this,
+    );
+  }
+}
+
+abstract class _DeclareTransactionResponseResult
+    implements DeclareTransactionResponseResult {
+  const factory _DeclareTransactionResponseResult(
+          {required final Felt classHash,
+          required final Felt transactionHash}) =
+      _$_DeclareTransactionResponseResult;
+
+  factory _DeclareTransactionResponseResult.fromJson(
+      Map<String, dynamic> json) = _$_DeclareTransactionResponseResult.fromJson;
+
+  @override
+  Felt get classHash;
+  @override
+  Felt get transactionHash;
+  @override
+  @JsonKey(ignore: true)
+  _$$_DeclareTransactionResponseResultCopyWith<
+          _$_DeclareTransactionResponseResult>
+      get copyWith => throw _privateConstructorUsedError;
 }

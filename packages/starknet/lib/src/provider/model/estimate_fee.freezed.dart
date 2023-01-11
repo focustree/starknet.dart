@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'estimate_fee.dart';
 
@@ -37,8 +37,8 @@ mixin _$EstimateFee {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(FeeEstimate result)? result,
-    TResult Function(JsonRpcApiError error)? error,
+    TResult? Function(FeeEstimate result)? result,
+    TResult? Function(JsonRpcApiError error)? error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -56,8 +56,8 @@ mixin _$EstimateFee {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(EstimateFeeResult value)? result,
-    TResult Function(EstimateFeeError value)? error,
+    TResult? Function(EstimateFeeResult value)? result,
+    TResult? Function(EstimateFeeError value)? error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -74,16 +74,18 @@ mixin _$EstimateFee {
 abstract class $EstimateFeeCopyWith<$Res> {
   factory $EstimateFeeCopyWith(
           EstimateFee value, $Res Function(EstimateFee) then) =
-      _$EstimateFeeCopyWithImpl<$Res>;
+      _$EstimateFeeCopyWithImpl<$Res, EstimateFee>;
 }
 
 /// @nodoc
-class _$EstimateFeeCopyWithImpl<$Res> implements $EstimateFeeCopyWith<$Res> {
+class _$EstimateFeeCopyWithImpl<$Res, $Val extends EstimateFee>
+    implements $EstimateFeeCopyWith<$Res> {
   _$EstimateFeeCopyWithImpl(this._value, this._then);
 
-  final EstimateFee _value;
   // ignore: unused_field
-  final $Res Function(EstimateFee) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 }
 
 /// @nodoc
@@ -91,6 +93,7 @@ abstract class _$$EstimateFeeResultCopyWith<$Res> {
   factory _$$EstimateFeeResultCopyWith(
           _$EstimateFeeResult value, $Res Function(_$EstimateFeeResult) then) =
       __$$EstimateFeeResultCopyWithImpl<$Res>;
+  @useResult
   $Res call({FeeEstimate result});
 
   $FeeEstimateCopyWith<$Res> get result;
@@ -98,21 +101,19 @@ abstract class _$$EstimateFeeResultCopyWith<$Res> {
 
 /// @nodoc
 class __$$EstimateFeeResultCopyWithImpl<$Res>
-    extends _$EstimateFeeCopyWithImpl<$Res>
+    extends _$EstimateFeeCopyWithImpl<$Res, _$EstimateFeeResult>
     implements _$$EstimateFeeResultCopyWith<$Res> {
   __$$EstimateFeeResultCopyWithImpl(
       _$EstimateFeeResult _value, $Res Function(_$EstimateFeeResult) _then)
-      : super(_value, (v) => _then(v as _$EstimateFeeResult));
+      : super(_value, _then);
 
-  @override
-  _$EstimateFeeResult get _value => super._value as _$EstimateFeeResult;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? result = freezed,
+    Object? result = null,
   }) {
     return _then(_$EstimateFeeResult(
-      result: result == freezed
+      result: null == result
           ? _value.result
           : result // ignore: cast_nullable_to_non_nullable
               as FeeEstimate,
@@ -120,6 +121,7 @@ class __$$EstimateFeeResultCopyWithImpl<$Res>
   }
 
   @override
+  @pragma('vm:prefer-inline')
   $FeeEstimateCopyWith<$Res> get result {
     return $FeeEstimateCopyWith<$Res>(_value.result, (value) {
       return _then(_value.copyWith(result: value));
@@ -152,16 +154,16 @@ class _$EstimateFeeResult implements EstimateFeeResult {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$EstimateFeeResult &&
-            const DeepCollectionEquality().equals(other.result, result));
+            (identical(other.result, result) || other.result == result));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(result));
+  int get hashCode => Object.hash(runtimeType, result);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$EstimateFeeResultCopyWith<_$EstimateFeeResult> get copyWith =>
       __$$EstimateFeeResultCopyWithImpl<_$EstimateFeeResult>(this, _$identity);
 
@@ -177,8 +179,8 @@ class _$EstimateFeeResult implements EstimateFeeResult {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(FeeEstimate result)? result,
-    TResult Function(JsonRpcApiError error)? error,
+    TResult? Function(FeeEstimate result)? result,
+    TResult? Function(JsonRpcApiError error)? error,
   }) {
     return result?.call(this.result);
   }
@@ -208,8 +210,8 @@ class _$EstimateFeeResult implements EstimateFeeResult {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(EstimateFeeResult value)? result,
-    TResult Function(EstimateFeeError value)? error,
+    TResult? Function(EstimateFeeResult value)? result,
+    TResult? Function(EstimateFeeError value)? error,
   }) {
     return result?.call(this);
   }
@@ -253,6 +255,7 @@ abstract class _$$EstimateFeeErrorCopyWith<$Res> {
   factory _$$EstimateFeeErrorCopyWith(
           _$EstimateFeeError value, $Res Function(_$EstimateFeeError) then) =
       __$$EstimateFeeErrorCopyWithImpl<$Res>;
+  @useResult
   $Res call({JsonRpcApiError error});
 
   $JsonRpcApiErrorCopyWith<$Res> get error;
@@ -260,21 +263,19 @@ abstract class _$$EstimateFeeErrorCopyWith<$Res> {
 
 /// @nodoc
 class __$$EstimateFeeErrorCopyWithImpl<$Res>
-    extends _$EstimateFeeCopyWithImpl<$Res>
+    extends _$EstimateFeeCopyWithImpl<$Res, _$EstimateFeeError>
     implements _$$EstimateFeeErrorCopyWith<$Res> {
   __$$EstimateFeeErrorCopyWithImpl(
       _$EstimateFeeError _value, $Res Function(_$EstimateFeeError) _then)
-      : super(_value, (v) => _then(v as _$EstimateFeeError));
+      : super(_value, _then);
 
-  @override
-  _$EstimateFeeError get _value => super._value as _$EstimateFeeError;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? error = freezed,
+    Object? error = null,
   }) {
     return _then(_$EstimateFeeError(
-      error: error == freezed
+      error: null == error
           ? _value.error
           : error // ignore: cast_nullable_to_non_nullable
               as JsonRpcApiError,
@@ -282,6 +283,7 @@ class __$$EstimateFeeErrorCopyWithImpl<$Res>
   }
 
   @override
+  @pragma('vm:prefer-inline')
   $JsonRpcApiErrorCopyWith<$Res> get error {
     return $JsonRpcApiErrorCopyWith<$Res>(_value.error, (value) {
       return _then(_value.copyWith(error: value));
@@ -314,16 +316,16 @@ class _$EstimateFeeError implements EstimateFeeError {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$EstimateFeeError &&
-            const DeepCollectionEquality().equals(other.error, error));
+            (identical(other.error, error) || other.error == error));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(error));
+  int get hashCode => Object.hash(runtimeType, error);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$EstimateFeeErrorCopyWith<_$EstimateFeeError> get copyWith =>
       __$$EstimateFeeErrorCopyWithImpl<_$EstimateFeeError>(this, _$identity);
 
@@ -339,8 +341,8 @@ class _$EstimateFeeError implements EstimateFeeError {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(FeeEstimate result)? result,
-    TResult Function(JsonRpcApiError error)? error,
+    TResult? Function(FeeEstimate result)? result,
+    TResult? Function(JsonRpcApiError error)? error,
   }) {
     return error?.call(this.error);
   }
@@ -370,8 +372,8 @@ class _$EstimateFeeError implements EstimateFeeError {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(EstimateFeeResult value)? result,
-    TResult Function(EstimateFeeError value)? error,
+    TResult? Function(EstimateFeeResult value)? result,
+    TResult? Function(EstimateFeeError value)? error,
   }) {
     return error?.call(this);
   }
@@ -485,7 +487,7 @@ mixin _$BroadcastedTxn {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(
+    TResult? Function(
             String type,
             Felt maxFee,
             String version,
@@ -495,7 +497,7 @@ mixin _$BroadcastedTxn {
             Felt entryPointSelector,
             List<Felt> calldata)?
         broadcastedInvokeTxnV0,
-    TResult Function(
+    TResult? Function(
             String type,
             Felt maxFee,
             String version,
@@ -504,7 +506,7 @@ mixin _$BroadcastedTxn {
             Felt senderAddress,
             List<Felt> calldata)?
         broadcastedInvokeTxnV1,
-    TResult Function(
+    TResult? Function(
             String type,
             Felt maxFee,
             String version,
@@ -513,10 +515,10 @@ mixin _$BroadcastedTxn {
             ContractClass contractClass,
             Felt senderAddress)?
         broadcastedDeclareTxn,
-    TResult Function(ContractClass contractClass, String version, String type,
+    TResult? Function(ContractClass contractClass, String version, String type,
             Felt contractAddressSalt, List<Felt> constructorCalldata)?
         broadcastedDeployTxn,
-    TResult Function(
+    TResult? Function(
             Felt contractAddressSalt,
             Felt classHash,
             List<Felt> constructorCalldata,
@@ -589,11 +591,11 @@ mixin _$BroadcastedTxn {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(BroadcastedInvokeTxnV0 value)? broadcastedInvokeTxnV0,
-    TResult Function(BroadcastedInvokeTxnV1 value)? broadcastedInvokeTxnV1,
-    TResult Function(BroadcastedDeclareTxn value)? broadcastedDeclareTxn,
-    TResult Function(BroadcastedDeployTxn value)? broadcastedDeployTxn,
-    TResult Function(BroadcastedDeployAccountTxn value)?
+    TResult? Function(BroadcastedInvokeTxnV0 value)? broadcastedInvokeTxnV0,
+    TResult? Function(BroadcastedInvokeTxnV1 value)? broadcastedInvokeTxnV1,
+    TResult? Function(BroadcastedDeclareTxn value)? broadcastedDeclareTxn,
+    TResult? Function(BroadcastedDeployTxn value)? broadcastedDeployTxn,
+    TResult? Function(BroadcastedDeployAccountTxn value)?
         broadcastedDeployAccountTxn,
   }) =>
       throw _privateConstructorUsedError;
@@ -618,34 +620,37 @@ mixin _$BroadcastedTxn {
 abstract class $BroadcastedTxnCopyWith<$Res> {
   factory $BroadcastedTxnCopyWith(
           BroadcastedTxn value, $Res Function(BroadcastedTxn) then) =
-      _$BroadcastedTxnCopyWithImpl<$Res>;
+      _$BroadcastedTxnCopyWithImpl<$Res, BroadcastedTxn>;
+  @useResult
   $Res call({String type, String version});
 }
 
 /// @nodoc
-class _$BroadcastedTxnCopyWithImpl<$Res>
+class _$BroadcastedTxnCopyWithImpl<$Res, $Val extends BroadcastedTxn>
     implements $BroadcastedTxnCopyWith<$Res> {
   _$BroadcastedTxnCopyWithImpl(this._value, this._then);
 
-  final BroadcastedTxn _value;
   // ignore: unused_field
-  final $Res Function(BroadcastedTxn) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? type = freezed,
-    Object? version = freezed,
+    Object? type = null,
+    Object? version = null,
   }) {
     return _then(_value.copyWith(
-      type: type == freezed
+      type: null == type
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
               as String,
-      version: version == freezed
+      version: null == version
           ? _value.version
           : version // ignore: cast_nullable_to_non_nullable
               as String,
-    ));
+    ) as $Val);
   }
 }
 
@@ -656,6 +661,7 @@ abstract class _$$BroadcastedInvokeTxnV0CopyWith<$Res>
           $Res Function(_$BroadcastedInvokeTxnV0) then) =
       __$$BroadcastedInvokeTxnV0CopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {String type,
       Felt maxFee,
@@ -669,57 +675,54 @@ abstract class _$$BroadcastedInvokeTxnV0CopyWith<$Res>
 
 /// @nodoc
 class __$$BroadcastedInvokeTxnV0CopyWithImpl<$Res>
-    extends _$BroadcastedTxnCopyWithImpl<$Res>
+    extends _$BroadcastedTxnCopyWithImpl<$Res, _$BroadcastedInvokeTxnV0>
     implements _$$BroadcastedInvokeTxnV0CopyWith<$Res> {
   __$$BroadcastedInvokeTxnV0CopyWithImpl(_$BroadcastedInvokeTxnV0 _value,
       $Res Function(_$BroadcastedInvokeTxnV0) _then)
-      : super(_value, (v) => _then(v as _$BroadcastedInvokeTxnV0));
+      : super(_value, _then);
 
-  @override
-  _$BroadcastedInvokeTxnV0 get _value =>
-      super._value as _$BroadcastedInvokeTxnV0;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? type = freezed,
-    Object? maxFee = freezed,
-    Object? version = freezed,
-    Object? signature = freezed,
+    Object? type = null,
+    Object? maxFee = null,
+    Object? version = null,
+    Object? signature = null,
     Object? nonce = freezed,
-    Object? contractAddress = freezed,
-    Object? entryPointSelector = freezed,
-    Object? calldata = freezed,
+    Object? contractAddress = null,
+    Object? entryPointSelector = null,
+    Object? calldata = null,
   }) {
     return _then(_$BroadcastedInvokeTxnV0(
-      type: type == freezed
+      type: null == type
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
               as String,
-      maxFee: maxFee == freezed
+      maxFee: null == maxFee
           ? _value.maxFee
           : maxFee // ignore: cast_nullable_to_non_nullable
               as Felt,
-      version: version == freezed
+      version: null == version
           ? _value.version
           : version // ignore: cast_nullable_to_non_nullable
               as String,
-      signature: signature == freezed
+      signature: null == signature
           ? _value._signature
           : signature // ignore: cast_nullable_to_non_nullable
               as List<Felt>,
-      nonce: nonce == freezed
+      nonce: freezed == nonce
           ? _value.nonce
           : nonce // ignore: cast_nullable_to_non_nullable
               as Felt?,
-      contractAddress: contractAddress == freezed
+      contractAddress: null == contractAddress
           ? _value.contractAddress
           : contractAddress // ignore: cast_nullable_to_non_nullable
               as Felt,
-      entryPointSelector: entryPointSelector == freezed
+      entryPointSelector: null == entryPointSelector
           ? _value.entryPointSelector
           : entryPointSelector // ignore: cast_nullable_to_non_nullable
               as Felt,
-      calldata: calldata == freezed
+      calldata: null == calldata
           ? _value._calldata
           : calldata // ignore: cast_nullable_to_non_nullable
               as List<Felt>,
@@ -758,6 +761,7 @@ class _$BroadcastedInvokeTxnV0 implements BroadcastedInvokeTxnV0 {
   final List<Felt> _signature;
   @override
   List<Felt> get signature {
+    if (_signature is EqualUnmodifiableListView) return _signature;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_signature);
   }
@@ -773,6 +777,7 @@ class _$BroadcastedInvokeTxnV0 implements BroadcastedInvokeTxnV0 {
   final List<Felt> _calldata;
   @override
   List<Felt> get calldata {
+    if (_calldata is EqualUnmodifiableListView) return _calldata;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_calldata);
   }
@@ -790,16 +795,16 @@ class _$BroadcastedInvokeTxnV0 implements BroadcastedInvokeTxnV0 {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$BroadcastedInvokeTxnV0 &&
-            const DeepCollectionEquality().equals(other.type, type) &&
-            const DeepCollectionEquality().equals(other.maxFee, maxFee) &&
-            const DeepCollectionEquality().equals(other.version, version) &&
+            (identical(other.type, type) || other.type == type) &&
+            (identical(other.maxFee, maxFee) || other.maxFee == maxFee) &&
+            (identical(other.version, version) || other.version == version) &&
             const DeepCollectionEquality()
                 .equals(other._signature, _signature) &&
-            const DeepCollectionEquality().equals(other.nonce, nonce) &&
-            const DeepCollectionEquality()
-                .equals(other.contractAddress, contractAddress) &&
-            const DeepCollectionEquality()
-                .equals(other.entryPointSelector, entryPointSelector) &&
+            (identical(other.nonce, nonce) || other.nonce == nonce) &&
+            (identical(other.contractAddress, contractAddress) ||
+                other.contractAddress == contractAddress) &&
+            (identical(other.entryPointSelector, entryPointSelector) ||
+                other.entryPointSelector == entryPointSelector) &&
             const DeepCollectionEquality().equals(other._calldata, _calldata));
   }
 
@@ -807,17 +812,18 @@ class _$BroadcastedInvokeTxnV0 implements BroadcastedInvokeTxnV0 {
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      const DeepCollectionEquality().hash(type),
-      const DeepCollectionEquality().hash(maxFee),
-      const DeepCollectionEquality().hash(version),
+      type,
+      maxFee,
+      version,
       const DeepCollectionEquality().hash(_signature),
-      const DeepCollectionEquality().hash(nonce),
-      const DeepCollectionEquality().hash(contractAddress),
-      const DeepCollectionEquality().hash(entryPointSelector),
+      nonce,
+      contractAddress,
+      entryPointSelector,
       const DeepCollectionEquality().hash(_calldata));
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$BroadcastedInvokeTxnV0CopyWith<_$BroadcastedInvokeTxnV0> get copyWith =>
       __$$BroadcastedInvokeTxnV0CopyWithImpl<_$BroadcastedInvokeTxnV0>(
           this, _$identity);
@@ -878,7 +884,7 @@ class _$BroadcastedInvokeTxnV0 implements BroadcastedInvokeTxnV0 {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(
+    TResult? Function(
             String type,
             Felt maxFee,
             String version,
@@ -888,7 +894,7 @@ class _$BroadcastedInvokeTxnV0 implements BroadcastedInvokeTxnV0 {
             Felt entryPointSelector,
             List<Felt> calldata)?
         broadcastedInvokeTxnV0,
-    TResult Function(
+    TResult? Function(
             String type,
             Felt maxFee,
             String version,
@@ -897,7 +903,7 @@ class _$BroadcastedInvokeTxnV0 implements BroadcastedInvokeTxnV0 {
             Felt senderAddress,
             List<Felt> calldata)?
         broadcastedInvokeTxnV1,
-    TResult Function(
+    TResult? Function(
             String type,
             Felt maxFee,
             String version,
@@ -906,10 +912,10 @@ class _$BroadcastedInvokeTxnV0 implements BroadcastedInvokeTxnV0 {
             ContractClass contractClass,
             Felt senderAddress)?
         broadcastedDeclareTxn,
-    TResult Function(ContractClass contractClass, String version, String type,
+    TResult? Function(ContractClass contractClass, String version, String type,
             Felt contractAddressSalt, List<Felt> constructorCalldata)?
         broadcastedDeployTxn,
-    TResult Function(
+    TResult? Function(
             Felt contractAddressSalt,
             Felt classHash,
             List<Felt> constructorCalldata,
@@ -996,11 +1002,11 @@ class _$BroadcastedInvokeTxnV0 implements BroadcastedInvokeTxnV0 {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(BroadcastedInvokeTxnV0 value)? broadcastedInvokeTxnV0,
-    TResult Function(BroadcastedInvokeTxnV1 value)? broadcastedInvokeTxnV1,
-    TResult Function(BroadcastedDeclareTxn value)? broadcastedDeclareTxn,
-    TResult Function(BroadcastedDeployTxn value)? broadcastedDeployTxn,
-    TResult Function(BroadcastedDeployAccountTxn value)?
+    TResult? Function(BroadcastedInvokeTxnV0 value)? broadcastedInvokeTxnV0,
+    TResult? Function(BroadcastedInvokeTxnV1 value)? broadcastedInvokeTxnV1,
+    TResult? Function(BroadcastedDeclareTxn value)? broadcastedDeclareTxn,
+    TResult? Function(BroadcastedDeployTxn value)? broadcastedDeployTxn,
+    TResult? Function(BroadcastedDeployAccountTxn value)?
         broadcastedDeployAccountTxn,
   }) {
     return broadcastedInvokeTxnV0?.call(this);
@@ -1069,6 +1075,7 @@ abstract class _$$BroadcastedInvokeTxnV1CopyWith<$Res>
           $Res Function(_$BroadcastedInvokeTxnV1) then) =
       __$$BroadcastedInvokeTxnV1CopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {String type,
       Felt maxFee,
@@ -1081,52 +1088,49 @@ abstract class _$$BroadcastedInvokeTxnV1CopyWith<$Res>
 
 /// @nodoc
 class __$$BroadcastedInvokeTxnV1CopyWithImpl<$Res>
-    extends _$BroadcastedTxnCopyWithImpl<$Res>
+    extends _$BroadcastedTxnCopyWithImpl<$Res, _$BroadcastedInvokeTxnV1>
     implements _$$BroadcastedInvokeTxnV1CopyWith<$Res> {
   __$$BroadcastedInvokeTxnV1CopyWithImpl(_$BroadcastedInvokeTxnV1 _value,
       $Res Function(_$BroadcastedInvokeTxnV1) _then)
-      : super(_value, (v) => _then(v as _$BroadcastedInvokeTxnV1));
+      : super(_value, _then);
 
-  @override
-  _$BroadcastedInvokeTxnV1 get _value =>
-      super._value as _$BroadcastedInvokeTxnV1;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? type = freezed,
-    Object? maxFee = freezed,
-    Object? version = freezed,
-    Object? signature = freezed,
-    Object? nonce = freezed,
-    Object? senderAddress = freezed,
-    Object? calldata = freezed,
+    Object? type = null,
+    Object? maxFee = null,
+    Object? version = null,
+    Object? signature = null,
+    Object? nonce = null,
+    Object? senderAddress = null,
+    Object? calldata = null,
   }) {
     return _then(_$BroadcastedInvokeTxnV1(
-      type: type == freezed
+      type: null == type
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
               as String,
-      maxFee: maxFee == freezed
+      maxFee: null == maxFee
           ? _value.maxFee
           : maxFee // ignore: cast_nullable_to_non_nullable
               as Felt,
-      version: version == freezed
+      version: null == version
           ? _value.version
           : version // ignore: cast_nullable_to_non_nullable
               as String,
-      signature: signature == freezed
+      signature: null == signature
           ? _value._signature
           : signature // ignore: cast_nullable_to_non_nullable
               as List<Felt>,
-      nonce: nonce == freezed
+      nonce: null == nonce
           ? _value.nonce
           : nonce // ignore: cast_nullable_to_non_nullable
               as Felt,
-      senderAddress: senderAddress == freezed
+      senderAddress: null == senderAddress
           ? _value.senderAddress
           : senderAddress // ignore: cast_nullable_to_non_nullable
               as Felt,
-      calldata: calldata == freezed
+      calldata: null == calldata
           ? _value._calldata
           : calldata // ignore: cast_nullable_to_non_nullable
               as List<Felt>,
@@ -1164,6 +1168,7 @@ class _$BroadcastedInvokeTxnV1 implements BroadcastedInvokeTxnV1 {
   final List<Felt> _signature;
   @override
   List<Felt> get signature {
+    if (_signature is EqualUnmodifiableListView) return _signature;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_signature);
   }
@@ -1177,6 +1182,7 @@ class _$BroadcastedInvokeTxnV1 implements BroadcastedInvokeTxnV1 {
   final List<Felt> _calldata;
   @override
   List<Felt> get calldata {
+    if (_calldata is EqualUnmodifiableListView) return _calldata;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_calldata);
   }
@@ -1194,14 +1200,14 @@ class _$BroadcastedInvokeTxnV1 implements BroadcastedInvokeTxnV1 {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$BroadcastedInvokeTxnV1 &&
-            const DeepCollectionEquality().equals(other.type, type) &&
-            const DeepCollectionEquality().equals(other.maxFee, maxFee) &&
-            const DeepCollectionEquality().equals(other.version, version) &&
+            (identical(other.type, type) || other.type == type) &&
+            (identical(other.maxFee, maxFee) || other.maxFee == maxFee) &&
+            (identical(other.version, version) || other.version == version) &&
             const DeepCollectionEquality()
                 .equals(other._signature, _signature) &&
-            const DeepCollectionEquality().equals(other.nonce, nonce) &&
-            const DeepCollectionEquality()
-                .equals(other.senderAddress, senderAddress) &&
+            (identical(other.nonce, nonce) || other.nonce == nonce) &&
+            (identical(other.senderAddress, senderAddress) ||
+                other.senderAddress == senderAddress) &&
             const DeepCollectionEquality().equals(other._calldata, _calldata));
   }
 
@@ -1209,16 +1215,17 @@ class _$BroadcastedInvokeTxnV1 implements BroadcastedInvokeTxnV1 {
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      const DeepCollectionEquality().hash(type),
-      const DeepCollectionEquality().hash(maxFee),
-      const DeepCollectionEquality().hash(version),
+      type,
+      maxFee,
+      version,
       const DeepCollectionEquality().hash(_signature),
-      const DeepCollectionEquality().hash(nonce),
-      const DeepCollectionEquality().hash(senderAddress),
+      nonce,
+      senderAddress,
       const DeepCollectionEquality().hash(_calldata));
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$BroadcastedInvokeTxnV1CopyWith<_$BroadcastedInvokeTxnV1> get copyWith =>
       __$$BroadcastedInvokeTxnV1CopyWithImpl<_$BroadcastedInvokeTxnV1>(
           this, _$identity);
@@ -1279,7 +1286,7 @@ class _$BroadcastedInvokeTxnV1 implements BroadcastedInvokeTxnV1 {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(
+    TResult? Function(
             String type,
             Felt maxFee,
             String version,
@@ -1289,7 +1296,7 @@ class _$BroadcastedInvokeTxnV1 implements BroadcastedInvokeTxnV1 {
             Felt entryPointSelector,
             List<Felt> calldata)?
         broadcastedInvokeTxnV0,
-    TResult Function(
+    TResult? Function(
             String type,
             Felt maxFee,
             String version,
@@ -1298,7 +1305,7 @@ class _$BroadcastedInvokeTxnV1 implements BroadcastedInvokeTxnV1 {
             Felt senderAddress,
             List<Felt> calldata)?
         broadcastedInvokeTxnV1,
-    TResult Function(
+    TResult? Function(
             String type,
             Felt maxFee,
             String version,
@@ -1307,10 +1314,10 @@ class _$BroadcastedInvokeTxnV1 implements BroadcastedInvokeTxnV1 {
             ContractClass contractClass,
             Felt senderAddress)?
         broadcastedDeclareTxn,
-    TResult Function(ContractClass contractClass, String version, String type,
+    TResult? Function(ContractClass contractClass, String version, String type,
             Felt contractAddressSalt, List<Felt> constructorCalldata)?
         broadcastedDeployTxn,
-    TResult Function(
+    TResult? Function(
             Felt contractAddressSalt,
             Felt classHash,
             List<Felt> constructorCalldata,
@@ -1397,11 +1404,11 @@ class _$BroadcastedInvokeTxnV1 implements BroadcastedInvokeTxnV1 {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(BroadcastedInvokeTxnV0 value)? broadcastedInvokeTxnV0,
-    TResult Function(BroadcastedInvokeTxnV1 value)? broadcastedInvokeTxnV1,
-    TResult Function(BroadcastedDeclareTxn value)? broadcastedDeclareTxn,
-    TResult Function(BroadcastedDeployTxn value)? broadcastedDeployTxn,
-    TResult Function(BroadcastedDeployAccountTxn value)?
+    TResult? Function(BroadcastedInvokeTxnV0 value)? broadcastedInvokeTxnV0,
+    TResult? Function(BroadcastedInvokeTxnV1 value)? broadcastedInvokeTxnV1,
+    TResult? Function(BroadcastedDeclareTxn value)? broadcastedDeclareTxn,
+    TResult? Function(BroadcastedDeployTxn value)? broadcastedDeployTxn,
+    TResult? Function(BroadcastedDeployAccountTxn value)?
         broadcastedDeployAccountTxn,
   }) {
     return broadcastedInvokeTxnV1?.call(this);
@@ -1468,6 +1475,7 @@ abstract class _$$BroadcastedDeclareTxnCopyWith<$Res>
           $Res Function(_$BroadcastedDeclareTxn) then) =
       __$$BroadcastedDeclareTxnCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {String type,
       Felt maxFee,
@@ -1482,51 +1490,49 @@ abstract class _$$BroadcastedDeclareTxnCopyWith<$Res>
 
 /// @nodoc
 class __$$BroadcastedDeclareTxnCopyWithImpl<$Res>
-    extends _$BroadcastedTxnCopyWithImpl<$Res>
+    extends _$BroadcastedTxnCopyWithImpl<$Res, _$BroadcastedDeclareTxn>
     implements _$$BroadcastedDeclareTxnCopyWith<$Res> {
   __$$BroadcastedDeclareTxnCopyWithImpl(_$BroadcastedDeclareTxn _value,
       $Res Function(_$BroadcastedDeclareTxn) _then)
-      : super(_value, (v) => _then(v as _$BroadcastedDeclareTxn));
+      : super(_value, _then);
 
-  @override
-  _$BroadcastedDeclareTxn get _value => super._value as _$BroadcastedDeclareTxn;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? type = freezed,
-    Object? maxFee = freezed,
-    Object? version = freezed,
-    Object? signature = freezed,
-    Object? nonce = freezed,
-    Object? contractClass = freezed,
-    Object? senderAddress = freezed,
+    Object? type = null,
+    Object? maxFee = null,
+    Object? version = null,
+    Object? signature = null,
+    Object? nonce = null,
+    Object? contractClass = null,
+    Object? senderAddress = null,
   }) {
     return _then(_$BroadcastedDeclareTxn(
-      type: type == freezed
+      type: null == type
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
               as String,
-      maxFee: maxFee == freezed
+      maxFee: null == maxFee
           ? _value.maxFee
           : maxFee // ignore: cast_nullable_to_non_nullable
               as Felt,
-      version: version == freezed
+      version: null == version
           ? _value.version
           : version // ignore: cast_nullable_to_non_nullable
               as String,
-      signature: signature == freezed
+      signature: null == signature
           ? _value._signature
           : signature // ignore: cast_nullable_to_non_nullable
               as List<Felt>,
-      nonce: nonce == freezed
+      nonce: null == nonce
           ? _value.nonce
           : nonce // ignore: cast_nullable_to_non_nullable
               as Felt,
-      contractClass: contractClass == freezed
+      contractClass: null == contractClass
           ? _value.contractClass
           : contractClass // ignore: cast_nullable_to_non_nullable
               as ContractClass,
-      senderAddress: senderAddress == freezed
+      senderAddress: null == senderAddress
           ? _value.senderAddress
           : senderAddress // ignore: cast_nullable_to_non_nullable
               as Felt,
@@ -1534,6 +1540,7 @@ class __$$BroadcastedDeclareTxnCopyWithImpl<$Res>
   }
 
   @override
+  @pragma('vm:prefer-inline')
   $ContractClassCopyWith<$Res> get contractClass {
     return $ContractClassCopyWith<$Res>(_value.contractClass, (value) {
       return _then(_value.copyWith(contractClass: value));
@@ -1570,6 +1577,7 @@ class _$BroadcastedDeclareTxn implements BroadcastedDeclareTxn {
   final List<Felt> _signature;
   @override
   List<Felt> get signature {
+    if (_signature is EqualUnmodifiableListView) return _signature;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_signature);
   }
@@ -1595,32 +1603,33 @@ class _$BroadcastedDeclareTxn implements BroadcastedDeclareTxn {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$BroadcastedDeclareTxn &&
-            const DeepCollectionEquality().equals(other.type, type) &&
-            const DeepCollectionEquality().equals(other.maxFee, maxFee) &&
-            const DeepCollectionEquality().equals(other.version, version) &&
+            (identical(other.type, type) || other.type == type) &&
+            (identical(other.maxFee, maxFee) || other.maxFee == maxFee) &&
+            (identical(other.version, version) || other.version == version) &&
             const DeepCollectionEquality()
                 .equals(other._signature, _signature) &&
-            const DeepCollectionEquality().equals(other.nonce, nonce) &&
-            const DeepCollectionEquality()
-                .equals(other.contractClass, contractClass) &&
-            const DeepCollectionEquality()
-                .equals(other.senderAddress, senderAddress));
+            (identical(other.nonce, nonce) || other.nonce == nonce) &&
+            (identical(other.contractClass, contractClass) ||
+                other.contractClass == contractClass) &&
+            (identical(other.senderAddress, senderAddress) ||
+                other.senderAddress == senderAddress));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      const DeepCollectionEquality().hash(type),
-      const DeepCollectionEquality().hash(maxFee),
-      const DeepCollectionEquality().hash(version),
+      type,
+      maxFee,
+      version,
       const DeepCollectionEquality().hash(_signature),
-      const DeepCollectionEquality().hash(nonce),
-      const DeepCollectionEquality().hash(contractClass),
-      const DeepCollectionEquality().hash(senderAddress));
+      nonce,
+      contractClass,
+      senderAddress);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$BroadcastedDeclareTxnCopyWith<_$BroadcastedDeclareTxn> get copyWith =>
       __$$BroadcastedDeclareTxnCopyWithImpl<_$BroadcastedDeclareTxn>(
           this, _$identity);
@@ -1681,7 +1690,7 @@ class _$BroadcastedDeclareTxn implements BroadcastedDeclareTxn {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(
+    TResult? Function(
             String type,
             Felt maxFee,
             String version,
@@ -1691,7 +1700,7 @@ class _$BroadcastedDeclareTxn implements BroadcastedDeclareTxn {
             Felt entryPointSelector,
             List<Felt> calldata)?
         broadcastedInvokeTxnV0,
-    TResult Function(
+    TResult? Function(
             String type,
             Felt maxFee,
             String version,
@@ -1700,7 +1709,7 @@ class _$BroadcastedDeclareTxn implements BroadcastedDeclareTxn {
             Felt senderAddress,
             List<Felt> calldata)?
         broadcastedInvokeTxnV1,
-    TResult Function(
+    TResult? Function(
             String type,
             Felt maxFee,
             String version,
@@ -1709,10 +1718,10 @@ class _$BroadcastedDeclareTxn implements BroadcastedDeclareTxn {
             ContractClass contractClass,
             Felt senderAddress)?
         broadcastedDeclareTxn,
-    TResult Function(ContractClass contractClass, String version, String type,
+    TResult? Function(ContractClass contractClass, String version, String type,
             Felt contractAddressSalt, List<Felt> constructorCalldata)?
         broadcastedDeployTxn,
-    TResult Function(
+    TResult? Function(
             Felt contractAddressSalt,
             Felt classHash,
             List<Felt> constructorCalldata,
@@ -1799,11 +1808,11 @@ class _$BroadcastedDeclareTxn implements BroadcastedDeclareTxn {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(BroadcastedInvokeTxnV0 value)? broadcastedInvokeTxnV0,
-    TResult Function(BroadcastedInvokeTxnV1 value)? broadcastedInvokeTxnV1,
-    TResult Function(BroadcastedDeclareTxn value)? broadcastedDeclareTxn,
-    TResult Function(BroadcastedDeployTxn value)? broadcastedDeployTxn,
-    TResult Function(BroadcastedDeployAccountTxn value)?
+    TResult? Function(BroadcastedInvokeTxnV0 value)? broadcastedInvokeTxnV0,
+    TResult? Function(BroadcastedInvokeTxnV1 value)? broadcastedInvokeTxnV1,
+    TResult? Function(BroadcastedDeclareTxn value)? broadcastedDeclareTxn,
+    TResult? Function(BroadcastedDeployTxn value)? broadcastedDeployTxn,
+    TResult? Function(BroadcastedDeployAccountTxn value)?
         broadcastedDeployAccountTxn,
   }) {
     return broadcastedDeclareTxn?.call(this);
@@ -1869,6 +1878,7 @@ abstract class _$$BroadcastedDeployTxnCopyWith<$Res>
           $Res Function(_$BroadcastedDeployTxn) then) =
       __$$BroadcastedDeployTxnCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {ContractClass contractClass,
       String version,
@@ -1881,41 +1891,39 @@ abstract class _$$BroadcastedDeployTxnCopyWith<$Res>
 
 /// @nodoc
 class __$$BroadcastedDeployTxnCopyWithImpl<$Res>
-    extends _$BroadcastedTxnCopyWithImpl<$Res>
+    extends _$BroadcastedTxnCopyWithImpl<$Res, _$BroadcastedDeployTxn>
     implements _$$BroadcastedDeployTxnCopyWith<$Res> {
   __$$BroadcastedDeployTxnCopyWithImpl(_$BroadcastedDeployTxn _value,
       $Res Function(_$BroadcastedDeployTxn) _then)
-      : super(_value, (v) => _then(v as _$BroadcastedDeployTxn));
+      : super(_value, _then);
 
-  @override
-  _$BroadcastedDeployTxn get _value => super._value as _$BroadcastedDeployTxn;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? contractClass = freezed,
-    Object? version = freezed,
-    Object? type = freezed,
-    Object? contractAddressSalt = freezed,
-    Object? constructorCalldata = freezed,
+    Object? contractClass = null,
+    Object? version = null,
+    Object? type = null,
+    Object? contractAddressSalt = null,
+    Object? constructorCalldata = null,
   }) {
     return _then(_$BroadcastedDeployTxn(
-      contractClass: contractClass == freezed
+      contractClass: null == contractClass
           ? _value.contractClass
           : contractClass // ignore: cast_nullable_to_non_nullable
               as ContractClass,
-      version: version == freezed
+      version: null == version
           ? _value.version
           : version // ignore: cast_nullable_to_non_nullable
               as String,
-      type: type == freezed
+      type: null == type
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
               as String,
-      contractAddressSalt: contractAddressSalt == freezed
+      contractAddressSalt: null == contractAddressSalt
           ? _value.contractAddressSalt
           : contractAddressSalt // ignore: cast_nullable_to_non_nullable
               as Felt,
-      constructorCalldata: constructorCalldata == freezed
+      constructorCalldata: null == constructorCalldata
           ? _value._constructorCalldata
           : constructorCalldata // ignore: cast_nullable_to_non_nullable
               as List<Felt>,
@@ -1923,6 +1931,7 @@ class __$$BroadcastedDeployTxnCopyWithImpl<$Res>
   }
 
   @override
+  @pragma('vm:prefer-inline')
   $ContractClassCopyWith<$Res> get contractClass {
     return $ContractClassCopyWith<$Res>(_value.contractClass, (value) {
       return _then(_value.copyWith(contractClass: value));
@@ -1959,6 +1968,8 @@ class _$BroadcastedDeployTxn implements BroadcastedDeployTxn {
   final List<Felt> _constructorCalldata;
   @override
   List<Felt> get constructorCalldata {
+    if (_constructorCalldata is EqualUnmodifiableListView)
+      return _constructorCalldata;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_constructorCalldata);
   }
@@ -1976,12 +1987,12 @@ class _$BroadcastedDeployTxn implements BroadcastedDeployTxn {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$BroadcastedDeployTxn &&
-            const DeepCollectionEquality()
-                .equals(other.contractClass, contractClass) &&
-            const DeepCollectionEquality().equals(other.version, version) &&
-            const DeepCollectionEquality().equals(other.type, type) &&
-            const DeepCollectionEquality()
-                .equals(other.contractAddressSalt, contractAddressSalt) &&
+            (identical(other.contractClass, contractClass) ||
+                other.contractClass == contractClass) &&
+            (identical(other.version, version) || other.version == version) &&
+            (identical(other.type, type) || other.type == type) &&
+            (identical(other.contractAddressSalt, contractAddressSalt) ||
+                other.contractAddressSalt == contractAddressSalt) &&
             const DeepCollectionEquality()
                 .equals(other._constructorCalldata, _constructorCalldata));
   }
@@ -1990,14 +2001,15 @@ class _$BroadcastedDeployTxn implements BroadcastedDeployTxn {
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      const DeepCollectionEquality().hash(contractClass),
-      const DeepCollectionEquality().hash(version),
-      const DeepCollectionEquality().hash(type),
-      const DeepCollectionEquality().hash(contractAddressSalt),
+      contractClass,
+      version,
+      type,
+      contractAddressSalt,
       const DeepCollectionEquality().hash(_constructorCalldata));
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$BroadcastedDeployTxnCopyWith<_$BroadcastedDeployTxn> get copyWith =>
       __$$BroadcastedDeployTxnCopyWithImpl<_$BroadcastedDeployTxn>(
           this, _$identity);
@@ -2058,7 +2070,7 @@ class _$BroadcastedDeployTxn implements BroadcastedDeployTxn {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(
+    TResult? Function(
             String type,
             Felt maxFee,
             String version,
@@ -2068,7 +2080,7 @@ class _$BroadcastedDeployTxn implements BroadcastedDeployTxn {
             Felt entryPointSelector,
             List<Felt> calldata)?
         broadcastedInvokeTxnV0,
-    TResult Function(
+    TResult? Function(
             String type,
             Felt maxFee,
             String version,
@@ -2077,7 +2089,7 @@ class _$BroadcastedDeployTxn implements BroadcastedDeployTxn {
             Felt senderAddress,
             List<Felt> calldata)?
         broadcastedInvokeTxnV1,
-    TResult Function(
+    TResult? Function(
             String type,
             Felt maxFee,
             String version,
@@ -2086,10 +2098,10 @@ class _$BroadcastedDeployTxn implements BroadcastedDeployTxn {
             ContractClass contractClass,
             Felt senderAddress)?
         broadcastedDeclareTxn,
-    TResult Function(ContractClass contractClass, String version, String type,
+    TResult? Function(ContractClass contractClass, String version, String type,
             Felt contractAddressSalt, List<Felt> constructorCalldata)?
         broadcastedDeployTxn,
-    TResult Function(
+    TResult? Function(
             Felt contractAddressSalt,
             Felt classHash,
             List<Felt> constructorCalldata,
@@ -2176,11 +2188,11 @@ class _$BroadcastedDeployTxn implements BroadcastedDeployTxn {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(BroadcastedInvokeTxnV0 value)? broadcastedInvokeTxnV0,
-    TResult Function(BroadcastedInvokeTxnV1 value)? broadcastedInvokeTxnV1,
-    TResult Function(BroadcastedDeclareTxn value)? broadcastedDeclareTxn,
-    TResult Function(BroadcastedDeployTxn value)? broadcastedDeployTxn,
-    TResult Function(BroadcastedDeployAccountTxn value)?
+    TResult? Function(BroadcastedInvokeTxnV0 value)? broadcastedInvokeTxnV0,
+    TResult? Function(BroadcastedInvokeTxnV1 value)? broadcastedInvokeTxnV1,
+    TResult? Function(BroadcastedDeclareTxn value)? broadcastedDeclareTxn,
+    TResult? Function(BroadcastedDeployTxn value)? broadcastedDeployTxn,
+    TResult? Function(BroadcastedDeployAccountTxn value)?
         broadcastedDeployAccountTxn,
   }) {
     return broadcastedDeployTxn?.call(this);
@@ -2243,6 +2255,7 @@ abstract class _$$BroadcastedDeployAccountTxnCopyWith<$Res>
           $Res Function(_$BroadcastedDeployAccountTxn) then) =
       __$$BroadcastedDeployAccountTxnCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {Felt contractAddressSalt,
       Felt classHash,
@@ -2256,58 +2269,55 @@ abstract class _$$BroadcastedDeployAccountTxnCopyWith<$Res>
 
 /// @nodoc
 class __$$BroadcastedDeployAccountTxnCopyWithImpl<$Res>
-    extends _$BroadcastedTxnCopyWithImpl<$Res>
+    extends _$BroadcastedTxnCopyWithImpl<$Res, _$BroadcastedDeployAccountTxn>
     implements _$$BroadcastedDeployAccountTxnCopyWith<$Res> {
   __$$BroadcastedDeployAccountTxnCopyWithImpl(
       _$BroadcastedDeployAccountTxn _value,
       $Res Function(_$BroadcastedDeployAccountTxn) _then)
-      : super(_value, (v) => _then(v as _$BroadcastedDeployAccountTxn));
+      : super(_value, _then);
 
-  @override
-  _$BroadcastedDeployAccountTxn get _value =>
-      super._value as _$BroadcastedDeployAccountTxn;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? contractAddressSalt = freezed,
-    Object? classHash = freezed,
-    Object? constructorCalldata = freezed,
-    Object? type = freezed,
-    Object? maxFee = freezed,
-    Object? version = freezed,
-    Object? signature = freezed,
-    Object? nonce = freezed,
+    Object? contractAddressSalt = null,
+    Object? classHash = null,
+    Object? constructorCalldata = null,
+    Object? type = null,
+    Object? maxFee = null,
+    Object? version = null,
+    Object? signature = null,
+    Object? nonce = null,
   }) {
     return _then(_$BroadcastedDeployAccountTxn(
-      contractAddressSalt: contractAddressSalt == freezed
+      contractAddressSalt: null == contractAddressSalt
           ? _value.contractAddressSalt
           : contractAddressSalt // ignore: cast_nullable_to_non_nullable
               as Felt,
-      classHash: classHash == freezed
+      classHash: null == classHash
           ? _value.classHash
           : classHash // ignore: cast_nullable_to_non_nullable
               as Felt,
-      constructorCalldata: constructorCalldata == freezed
+      constructorCalldata: null == constructorCalldata
           ? _value._constructorCalldata
           : constructorCalldata // ignore: cast_nullable_to_non_nullable
               as List<Felt>,
-      type: type == freezed
+      type: null == type
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
               as String,
-      maxFee: maxFee == freezed
+      maxFee: null == maxFee
           ? _value.maxFee
           : maxFee // ignore: cast_nullable_to_non_nullable
               as Felt,
-      version: version == freezed
+      version: null == version
           ? _value.version
           : version // ignore: cast_nullable_to_non_nullable
               as String,
-      signature: signature == freezed
+      signature: null == signature
           ? _value._signature
           : signature // ignore: cast_nullable_to_non_nullable
               as List<Felt>,
-      nonce: nonce == freezed
+      nonce: null == nonce
           ? _value.nonce
           : nonce // ignore: cast_nullable_to_non_nullable
               as Felt,
@@ -2343,6 +2353,8 @@ class _$BroadcastedDeployAccountTxn implements BroadcastedDeployAccountTxn {
   final List<Felt> _constructorCalldata;
   @override
   List<Felt> get constructorCalldata {
+    if (_constructorCalldata is EqualUnmodifiableListView)
+      return _constructorCalldata;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_constructorCalldata);
   }
@@ -2357,6 +2369,7 @@ class _$BroadcastedDeployAccountTxn implements BroadcastedDeployAccountTxn {
   final List<Felt> _signature;
   @override
   List<Felt> get signature {
+    if (_signature is EqualUnmodifiableListView) return _signature;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_signature);
   }
@@ -2377,34 +2390,36 @@ class _$BroadcastedDeployAccountTxn implements BroadcastedDeployAccountTxn {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$BroadcastedDeployAccountTxn &&
-            const DeepCollectionEquality()
-                .equals(other.contractAddressSalt, contractAddressSalt) &&
-            const DeepCollectionEquality().equals(other.classHash, classHash) &&
+            (identical(other.contractAddressSalt, contractAddressSalt) ||
+                other.contractAddressSalt == contractAddressSalt) &&
+            (identical(other.classHash, classHash) ||
+                other.classHash == classHash) &&
             const DeepCollectionEquality()
                 .equals(other._constructorCalldata, _constructorCalldata) &&
-            const DeepCollectionEquality().equals(other.type, type) &&
-            const DeepCollectionEquality().equals(other.maxFee, maxFee) &&
-            const DeepCollectionEquality().equals(other.version, version) &&
+            (identical(other.type, type) || other.type == type) &&
+            (identical(other.maxFee, maxFee) || other.maxFee == maxFee) &&
+            (identical(other.version, version) || other.version == version) &&
             const DeepCollectionEquality()
                 .equals(other._signature, _signature) &&
-            const DeepCollectionEquality().equals(other.nonce, nonce));
+            (identical(other.nonce, nonce) || other.nonce == nonce));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      const DeepCollectionEquality().hash(contractAddressSalt),
-      const DeepCollectionEquality().hash(classHash),
+      contractAddressSalt,
+      classHash,
       const DeepCollectionEquality().hash(_constructorCalldata),
-      const DeepCollectionEquality().hash(type),
-      const DeepCollectionEquality().hash(maxFee),
-      const DeepCollectionEquality().hash(version),
+      type,
+      maxFee,
+      version,
       const DeepCollectionEquality().hash(_signature),
-      const DeepCollectionEquality().hash(nonce));
+      nonce);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$BroadcastedDeployAccountTxnCopyWith<_$BroadcastedDeployAccountTxn>
       get copyWith => __$$BroadcastedDeployAccountTxnCopyWithImpl<
           _$BroadcastedDeployAccountTxn>(this, _$identity);
@@ -2465,7 +2480,7 @@ class _$BroadcastedDeployAccountTxn implements BroadcastedDeployAccountTxn {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(
+    TResult? Function(
             String type,
             Felt maxFee,
             String version,
@@ -2475,7 +2490,7 @@ class _$BroadcastedDeployAccountTxn implements BroadcastedDeployAccountTxn {
             Felt entryPointSelector,
             List<Felt> calldata)?
         broadcastedInvokeTxnV0,
-    TResult Function(
+    TResult? Function(
             String type,
             Felt maxFee,
             String version,
@@ -2484,7 +2499,7 @@ class _$BroadcastedDeployAccountTxn implements BroadcastedDeployAccountTxn {
             Felt senderAddress,
             List<Felt> calldata)?
         broadcastedInvokeTxnV1,
-    TResult Function(
+    TResult? Function(
             String type,
             Felt maxFee,
             String version,
@@ -2493,10 +2508,10 @@ class _$BroadcastedDeployAccountTxn implements BroadcastedDeployAccountTxn {
             ContractClass contractClass,
             Felt senderAddress)?
         broadcastedDeclareTxn,
-    TResult Function(ContractClass contractClass, String version, String type,
+    TResult? Function(ContractClass contractClass, String version, String type,
             Felt contractAddressSalt, List<Felt> constructorCalldata)?
         broadcastedDeployTxn,
-    TResult Function(
+    TResult? Function(
             Felt contractAddressSalt,
             Felt classHash,
             List<Felt> constructorCalldata,
@@ -2583,11 +2598,11 @@ class _$BroadcastedDeployAccountTxn implements BroadcastedDeployAccountTxn {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(BroadcastedInvokeTxnV0 value)? broadcastedInvokeTxnV0,
-    TResult Function(BroadcastedInvokeTxnV1 value)? broadcastedInvokeTxnV1,
-    TResult Function(BroadcastedDeclareTxn value)? broadcastedDeclareTxn,
-    TResult Function(BroadcastedDeployTxn value)? broadcastedDeployTxn,
-    TResult Function(BroadcastedDeployAccountTxn value)?
+    TResult? Function(BroadcastedInvokeTxnV0 value)? broadcastedInvokeTxnV0,
+    TResult? Function(BroadcastedInvokeTxnV1 value)? broadcastedInvokeTxnV1,
+    TResult? Function(BroadcastedDeclareTxn value)? broadcastedDeclareTxn,
+    TResult? Function(BroadcastedDeployTxn value)? broadcastedDeployTxn,
+    TResult? Function(BroadcastedDeployAccountTxn value)?
         broadcastedDeployAccountTxn,
   }) {
     return broadcastedDeployAccountTxn?.call(this);

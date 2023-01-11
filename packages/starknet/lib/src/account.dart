@@ -66,4 +66,41 @@ class Account {
         );
     }
   }
+
+  Future<DeclareTransactionResponse> declare({
+    required CompiledContract compiledContract,
+  }) async {
+    return provider.addDeclareTransaction(
+      DeclareTransactionRequest(
+        declareTransaction: DeclareTransaction(
+          max_fee: defaultMaxFee,
+          nonce: defaultNonce,
+          contractClass: compiledContract.compress(),
+          senderAddress: accountAddress,
+          signature: [],
+          type: 'DECLARE',
+        ),
+      ),
+    );
+  }
+}
+
+Account getAccount({
+  required Felt accountAddress,
+  required Felt privateKey,
+  Uri? nodeUri,
+  Felt? chainId,
+}) {
+  nodeUri ??= devnetUri;
+  chainId ??= StarknetChainId.testNet;
+
+  final provider = JsonRpcProvider(nodeUri: nodeUri);
+  final signer = Signer(privateKey: privateKey);
+
+  return Account(
+    provider: provider,
+    signer: signer,
+    accountAddress: accountAddress,
+    chainId: StarknetChainId.testNet,
+  );
 }

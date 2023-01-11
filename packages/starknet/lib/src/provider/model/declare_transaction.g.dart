@@ -30,7 +30,8 @@ _$_DeclareTransaction _$$_DeclareTransactionFromJson(
           .map((e) => Felt.fromJson(e as String))
           .toList(),
       senderAddress: Felt.fromJson(json['sender_address'] as String),
-      program: json['program'] as String,
+      contractClass: ContractClass.fromJson(
+          json['contract_class'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$$_DeclareTransactionToJson(
@@ -42,20 +43,21 @@ Map<String, dynamic> _$$_DeclareTransactionToJson(
       'nonce': instance.nonce.toJson(),
       'signature': instance.signature.map((e) => e.toJson()).toList(),
       'sender_address': instance.senderAddress.toJson(),
-      'program': instance.program,
+      'contract_class': instance.contractClass.toJson(),
     };
 
 _$DeclareTransactionResult _$$DeclareTransactionResultFromJson(
         Map<String, dynamic> json) =>
     _$DeclareTransactionResult(
-      transaction_hash: Felt.fromJson(json['transaction_hash'] as String),
+      result: DeclareTransactionResponseResult.fromJson(
+          json['result'] as Map<String, dynamic>),
       $type: json['runtimeType'] as String?,
     );
 
 Map<String, dynamic> _$$DeclareTransactionResultToJson(
         _$DeclareTransactionResult instance) =>
     <String, dynamic>{
-      'transaction_hash': instance.transaction_hash.toJson(),
+      'result': instance.result.toJson(),
       'runtimeType': instance.$type,
     };
 
@@ -71,4 +73,18 @@ Map<String, dynamic> _$$DeclareTransactionErrorToJson(
     <String, dynamic>{
       'error': instance.error.toJson(),
       'runtimeType': instance.$type,
+    };
+
+_$_DeclareTransactionResponseResult
+    _$$_DeclareTransactionResponseResultFromJson(Map<String, dynamic> json) =>
+        _$_DeclareTransactionResponseResult(
+          classHash: Felt.fromJson(json['class_hash'] as String),
+          transactionHash: Felt.fromJson(json['transaction_hash'] as String),
+        );
+
+Map<String, dynamic> _$$_DeclareTransactionResponseResultToJson(
+        _$_DeclareTransactionResponseResult instance) =>
+    <String, dynamic>{
+      'class_hash': instance.classHash.toJson(),
+      'transaction_hash': instance.transactionHash.toJson(),
     };

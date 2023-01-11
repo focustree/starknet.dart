@@ -1,6 +1,8 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 
+import '../../starknet.dart';
+
 Future<Map<String, dynamic>> callRpcEndpoint(
     {required Uri nodeUri, required String method, Object? params}) async {
   const headers = {
@@ -13,7 +15,6 @@ Future<Map<String, dynamic>> callRpcEndpoint(
     'params': params ?? [],
     'id': 0
   };
-  print(json.encode(body));
 
   final response =
       await http.post(nodeUri, headers: headers, body: json.encode(body));
