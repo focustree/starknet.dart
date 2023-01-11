@@ -8,6 +8,11 @@ import 'package:path/path.dart';
 
 import 'package:starknet/starknet.dart';
 
+final CALL_DATA_VAR = "callData";
+final CALL_DATA_TYPE = refer('List<Felt>');
+final TO_CALL_DATA = "toCallData";
+final FROM_CALL_DATA = "fromCallData";
+
 class ContractGenerator implements Builder {
   const ContractGenerator();
   @override
@@ -58,10 +63,9 @@ class _ContractAbiGenerator {
 
   List<FunctionAbiEntry> calls = [];
   List<FunctionAbiEntry> executes = [];
+  Map<String, StructAbiEntry> structs = {};
 
-  _ContractAbiGenerator(this.abi, this.name);
-
-  void _createContractClass(ClassBuilder b) {
+  _ContractAbiGenerator(this.abi, this.name) {
     for (var element in abi) {
       final entry = ContractAbiEntry.fromJson(element);
       switch (entry.type) {
@@ -73,8 +77,102 @@ class _ContractAbiGenerator {
             calls.add(functionAbi);
           }
           break;
+        case "struct":
+          structs[entry.name] = entry as StructAbiEntry;
+          break;
       }
     }
+  }
+
+  Library generate() {
+    return Library((b) {
+      b.directives.addAll([
+        Directive.import('package:starknet/starknet.dart'),
+      ]);
+      for (var s in structs.values) {
+        b.body..add(Class(_createCustomClass(s)));
+      }
+      b.body..add(Class(_createContractClass));
+    });
+  }
+
+  void Function(ClassBuilder) _createCustomClass(StructAbiEntry custom) {
+    void innerFunction(ClassBuilder b) {
+      b.name = custom.name;
+      b.fields.addAll(custom.members.map(
+        (e) => Field((f) => f
+          ..name = e.name
+          ..type = _convertType(e.type)),
+      ));
+      b
+        ..constructors.add(Constructor((c) => {
+              c
+                ..optionalParameters.addAll(custom.members.map(
+                  (e) => Parameter((p) => p
+                    ..name = e.name
+                    ..type = _convertType(e.type)
+                    ..required = true
+                    ..named = true
+                    ..toThis = true),
+                ))
+            }))
+        ..constructors.add(Constructor((c) => {
+              c
+                ..factory = true
+                ..name = FROM_CALL_DATA
+                ..requiredParameters.add(Parameter((p) => p
+                  ..name = CALL_DATA_VAR
+                  ..type = CALL_DATA_TYPE))
+                ..body = Block((b) {
+                  for (var member in custom.members) {
+                    if (member.type == "felt") {
+                      b
+                        ..addExpression(declareFinal(member.name)
+                            .assign(refer('$CALL_DATA_VAR[${member.offset}]')));
+                    }
+                  }
+                  b.addExpression(refer(custom.name).call(
+                      [],
+                      Map.fromIterable(custom.members,
+                          key: (e) => e.name,
+                          value: (e) => refer(e.name))).returned);
+                })
+            }))
+        ..methods.add(Method((m) => m
+          ..name = TO_CALL_DATA
+          ..returns = CALL_DATA_TYPE
+          ..body = Block((b) {
+            b
+              ..addExpression(declareVar('ret', type: CALL_DATA_TYPE)
+                  .assign(CALL_DATA_TYPE.property('filled').call([
+                refer('${custom.members.length}'),
+                refer('Felt').property('fromInt').call([literalNum(0)])
+              ])));
+            for (var member in custom.members) {
+              if (member.type == "felt") {
+                b.addExpression(
+                    refer('ret[${member.offset}]').assign(refer(member.name)));
+              }
+            }
+            b.addExpression(refer('ret').returned);
+          })))
+        ..methods.add(Method((m) => m
+          ..name = 'toString'
+          ..returns = refer('String')
+          ..body = Block((b) {
+            String display = '${custom.name}(';
+            for (var member in custom.members) {
+              display += '${member.name}: \$${member.name}, ';
+            }
+            display += ")";
+            b..addExpression(literalString(display).returned);
+          })));
+    }
+
+    return innerFunction;
+  }
+
+  void _createContractClass(ClassBuilder b) {
     b
       ..name = name
       ..extend = refer('Contract')
@@ -106,15 +204,6 @@ class _ContractAbiGenerator {
       ]);
   }
 
-  Library generate() {
-    return Library((b) {
-      b.directives.addAll([
-        Directive.import('package:starknet/starknet.dart'),
-      ]);
-      b.body..add(Class(_createContractClass));
-    });
-  }
-
   void _methodFor(FunctionAbiEntry fun, MethodBuilder b) {
     b
       ..modifier = MethodModifier.async
@@ -127,9 +216,9 @@ class _ContractAbiGenerator {
   // An 'invoke' will alwas return transaction hash as a String
   Reference _returnType(FunctionAbiEntry fun) {
     if (fun.stateMutability == 'view') {
-      return _returnsForCall(fun);
+      return _returnTypeForCall(fun);
     } else {
-      return futurize(refer("String"));
+      return _futurize(refer("String"));
     }
   }
 
@@ -150,28 +239,32 @@ class _ContractAbiGenerator {
       case 'felt':
         return refer('Felt');
       default:
-        throw Exception("Unsupported type for conversion: $paramType");
+        if (structs.containsKey(paramType)) {
+          return refer(paramType);
+        } else {
+          throw Exception("Unsupported type for conversion: $paramType");
+        }
     }
   }
 
   Expression _assignParams(FunctionAbiEntry fun) {
     final params = fun.inputs
-        .map((e) =>
-            e.type == 'felt' ? refer(e.name) : refer('...${e.name}.toFelts()'))
+        .map((e) => e.type == 'felt'
+            ? refer(e.name)
+            : refer('...${e.name}.$TO_CALL_DATA()')) // FIXME
         .toList();
-    return declareFinal('params', type: refer('List<Felt>'))
+    return declareFinal('params', type: CALL_DATA_TYPE)
         .assign(literalList(params));
   }
 
   // Generate method body for a 'call' method
   Code _bodyForCall(FunctionAbiEntry fun) {
-    Reference _return = refer('res[0]');
     return Block((b) {
       b
         ..addExpression(_assignParams(fun))
         ..addExpression(declareFinal('res').assign(refer("call")
-            .call([literalString(fun.name), refer('params')]).awaited))
-        ..addExpression(_return.returned);
+            .call([literalString(fun.name), refer('params')]).awaited));
+      _returnBodyForCall(fun, b);
     });
   }
 
@@ -216,18 +309,36 @@ class _ContractAbiGenerator {
     }
   }
 
-  Reference _returnsForCall(FunctionAbiEntry fun) {
+  void _returnBodyForCall(FunctionAbiEntry fun, BlockBuilder b) {
+    if (fun.outputs.isNotEmpty) {
+      final output = fun.outputs[0];
+      switch (output.type) {
+        case 'felt':
+          b.addExpression(refer('res[0]').returned);
+          break;
+        case 'felt*':
+          break;
+        default:
+          b.addExpression(_convertType(output.type)
+              .property(FROM_CALL_DATA)
+              .call([refer('res')]).returned);
+          break;
+      }
+    }
+  }
+
+  Reference _returnTypeForCall(FunctionAbiEntry fun) {
     if (fun.outputs.isEmpty) {
-      return futurize(refer('void'));
+      return _futurize(refer('void'));
     }
     if (fun.outputs.length != 1) {
       throw Exception("Multiple outputs is not supported");
     }
     final output = fun.outputs[0];
-    return futurize(_convertType(output.type));
+    return _futurize(_convertType(output.type));
   }
 
-  Reference futurize(Reference r) {
+  Reference _futurize(Reference r) {
     return TypeReference((b) => b
       ..symbol = 'Future'
       ..types.add(r));
