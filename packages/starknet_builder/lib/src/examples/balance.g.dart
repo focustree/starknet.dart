@@ -77,9 +77,14 @@ class MultipleOutputsResult {
   });
 
   factory MultipleOutputsResult.fromCallData(List<Felt> callData) {
-    final account = MyAccount.fromCallData(callData.sublist(0));
-    final total = Uint256.fromCallData(callData.sublist(3));
-    final ref = callData[5];
+    int offset = 0;
+    int _tmpSize = 0;
+    final account = MyAccount.fromCallData(callData.sublist(offset));
+    offset = offset + 3;
+    final total = Uint256.fromCallData(callData.sublist(offset));
+    offset = offset + 2;
+    final ref = callData[offset];
+    offset = offset + 1;
     return MultipleOutputsResult(
       account: account,
       total: total,
@@ -95,6 +100,46 @@ class MultipleOutputsResult {
 
   String toString() {
     return 'MultipleOutputsResult(account: $account, total: $total, ref: $ref, )';
+  }
+}
+
+class MultipleOutputsWithArrayResult {
+  MultipleOutputsWithArrayResult({
+    required Felt this.id,
+    required List<Felt> this.b,
+    required Felt this.answer,
+  });
+
+  factory MultipleOutputsWithArrayResult.fromCallData(List<Felt> callData) {
+    int offset = 0;
+    int _tmpSize = 0;
+    final id = callData[offset];
+    offset = offset + 1;
+    _tmpSize = callData[offset].toInt();
+    final b = callData
+        .sublist(
+          offset,
+          offset + _tmpSize + 1,
+        )
+        .fromCallData();
+    offset = offset + _tmpSize + 1;
+    final answer = callData[offset];
+    offset = offset + 1;
+    return MultipleOutputsWithArrayResult(
+      id: id,
+      b: b,
+      answer: answer,
+    );
+  }
+
+  Felt id;
+
+  List<Felt> b;
+
+  Felt answer;
+
+  String toString() {
+    return 'MultipleOutputsWithArrayResult(id: $id, b: $b, answer: $answer, )';
   }
 }
 
@@ -153,6 +198,21 @@ class Balance extends Contract {
       params,
     );
     return MultipleOutputsResult.fromCallData(res);
+  }
+
+  Future<MultipleOutputsWithArrayResult> multiple_outputs_with_array(
+    List<Felt> a,
+    Felt id,
+  ) async {
+    final List<Felt> params = [
+      ...a.toCallData(),
+      id,
+    ];
+    final res = await call(
+      'multiple_outputs_with_array',
+      params,
+    );
+    return MultipleOutputsWithArrayResult.fromCallData(res);
   }
 
   Future<String> increase_balance(Felt amount) async {
