@@ -1,0 +1,88 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "starknet; dart build runner",
+            "type": "dart",
+            "command": "dart",
+            "args": [
+                "run",
+                "build_runner",
+                "build"
+            ],
+            "options": {"cwd": "${workspaceFolder}/packages/starknet"},
+            "problemMatcher": [
+                "$dart-build_runner"
+            ],
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared",
+                "showReuseMessage": true,
+                "clear": true,
+                "group": "build"
+            }
+        },
+        {
+            "label": "starknet_builder: dart build runner",
+            "type": "dart",
+            "command": "dart",
+            "args": [
+                "run",
+                "build_runner",
+                "build"
+            ],
+            "options": {"cwd": "${workspaceFolder}/packages/starknet_builder"},
+            "problemMatcher": [
+                "$dart-build_runner"
+            ],
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared",
+                "showReuseMessage": true,
+                "clear": true,
+                "group": "build"
+            }
+        },
+        {
+            "label": "devnet start",
+            "type": "shell",
+            "command": "poetry",
+            "args": [ 
+                "run",
+                "devnet",
+                "start"
+            ],
+            "problemMatcher": [],
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "new",
+                "group": "development"
+            }
+        },
+        {
+            "label": "devnet setup",
+            "type": "shell",
+            "command": "poetry",
+            "args": [
+                "run",
+                "devnet",
+                "setup"
+            ],
+            "problemMatcher": [],
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared",
+                "clear": false,
+                "group": "development"
+            }
+        }
+    ]
+}
