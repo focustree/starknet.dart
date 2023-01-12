@@ -25,7 +25,7 @@ void main() async {
   final privateKey = accountSetup.privateKey;
   final accountAddress = Felt.fromHexString(accountSetup.accountAddress);
   final balanceAddress = Felt.fromHexString(
-      "0x55adbde549a1ee50009281c5d10433122086485eb19949ca7c2fdcb7e64af41");
+      "0x5a1467984635037f29a7b4282cb1baeda223959f8428bfbce0c6db68129bd9c");
   final nodeUri = devnetUri;
 
   final provider = JsonRpcProvider(nodeUri: nodeUri);
@@ -58,4 +58,7 @@ void main() async {
   List<Felt> my_array = List.generate(5, (index) => Felt.fromInt(index));
   final check_array = await contract.copy_array(my_array);
   print(check_array);
+
+  final check_multi = await contract.multiple_outputs(Felt.fromInt(4));
+  print(check_multi);
 }

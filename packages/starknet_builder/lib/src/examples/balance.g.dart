@@ -2,6 +2,102 @@
 
 import 'package:starknet/starknet.dart';
 
+class MyAccount {
+  MyAccount({
+    required Uint256 this.amount,
+    required Felt this.id,
+  });
+
+  factory MyAccount.fromCallData(List<Felt> callData) {
+    final amount = Uint256.fromCallData(callData.sublist(0));
+    final id = callData[2];
+    return MyAccount(
+      amount: amount,
+      id: id,
+    );
+  }
+
+  Uint256 amount;
+
+  Felt id;
+
+  List<Felt> toCallData() {
+    List<Felt> ret = List<Felt>.filled(
+      2,
+      Felt.fromInt(0),
+    );
+    ret[2] = id;
+    return ret;
+  }
+
+  String toString() {
+    return 'MyAccount(amount: $amount, id: $id, )';
+  }
+}
+
+class Uint256 {
+  Uint256({
+    required Felt this.low,
+    required Felt this.high,
+  });
+
+  factory Uint256.fromCallData(List<Felt> callData) {
+    final low = callData[0];
+    final high = callData[1];
+    return Uint256(
+      low: low,
+      high: high,
+    );
+  }
+
+  Felt low;
+
+  Felt high;
+
+  List<Felt> toCallData() {
+    List<Felt> ret = List<Felt>.filled(
+      2,
+      Felt.fromInt(0),
+    );
+    ret[0] = low;
+    ret[1] = high;
+    return ret;
+  }
+
+  String toString() {
+    return 'Uint256(low: $low, high: $high, )';
+  }
+}
+
+class MultipleOutputsResult {
+  MultipleOutputsResult({
+    required MyAccount this.account,
+    required Uint256 this.total,
+    required Felt this.ref,
+  });
+
+  factory MultipleOutputsResult.fromCallData(List<Felt> callData) {
+    final account = MyAccount.fromCallData(callData.sublist(0));
+    final total = Uint256.fromCallData(callData.sublist(3));
+    final ref = callData[5];
+    return MultipleOutputsResult(
+      account: account,
+      total: total,
+      ref: ref,
+    );
+  }
+
+  MyAccount account;
+
+  Uint256 total;
+
+  Felt ref;
+
+  String toString() {
+    return 'MultipleOutputsResult(account: $account, total: $total, ref: $ref, )';
+  }
+}
+
 class Balance extends Contract {
   Balance({
     required super.account,
@@ -48,6 +144,15 @@ class Balance extends Contract {
       params,
     );
     return res.fromCallData();
+  }
+
+  Future<MultipleOutputsResult> multiple_outputs(Felt id) async {
+    final List<Felt> params = [id];
+    final res = await call(
+      'multiple_outputs',
+      params,
+    );
+    return MultipleOutputsResult.fromCallData(res);
   }
 
   Future<String> increase_balance(Felt amount) async {
