@@ -50,3 +50,10 @@ func sum{syscall_ptr: felt*, pedersen_ptr: HashBuiltin*, range_check_ptr}(a: fel
     let sum_ = a + b;
     return (sum=sum_);
 }
+
+@view
+func copy_array{syscall_ptr: felt*, pedersen_ptr: HashBuiltin*, range_check_ptr}(a_len: felt, a: felt*) -> (
+b_len: felt, b: felt*
+) { 
+    return (b_len=a_len, b=a);
+}
