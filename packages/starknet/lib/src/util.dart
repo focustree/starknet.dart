@@ -20,7 +20,7 @@ const _errorStates = ['REJECTED', 'NOT_RECEIVED'];
 /// Return `false` in case of error
 Future<bool> waitForState({
   required String transactionHash,
-  required JsonRpcProvider provider,
+  required Provider provider,
   required List<String> states,
   Duration interval = _defaultInterval,
 }) async {
@@ -53,7 +53,7 @@ Future<bool> waitForState({
         // 2022-12-07: a REJECTED transaction is not part of the blockchain
         // so transaction hash will not be known by Infura node
         if (!(error.code == 25 &&
-            (provider.nodeUri == infuraGoerliTestnetUri ||
+            ((provider as JsonRpcProvider).nodeUri == infuraGoerliTestnetUri ||
                 provider.nodeUri == infuraMainnetUri))) {
           print('An error occured: $error');
         }
@@ -105,7 +105,7 @@ Future<bool> waitForTransaction({
 /// Return `false` in case of error
 Future<bool> waitForAcceptance({
   required String transactionHash,
-  required JsonRpcProvider provider,
+  required Provider provider,
   Duration interval = _defaultInterval,
 }) async {
   return waitForState(

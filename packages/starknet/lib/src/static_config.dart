@@ -16,6 +16,9 @@ final defaultMaxFee = Felt.fromDouble(0.1 * 1e18); // 0.1 ETH
 final defaultNonce = Felt.fromInt(0);
 final defaultVersion = Felt.fromInt(0);
 
+final udcAddress = Felt.fromHexString(
+    '0x041a78e741e5af2fec34b695679bc6891742439f7afb8484ecd7766661ad02bf');
+
 // Devnet
 
 final devnetUri = Uri.parse('http://localhost:5050/rpc');

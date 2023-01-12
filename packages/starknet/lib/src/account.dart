@@ -83,6 +83,19 @@ class Account {
       ),
     );
   }
+
+  deploy({
+    required Felt classHash,
+  }) async {
+    final res = await execute(functionCalls: [
+      FunctionCall(
+        contractAddress: udcAddress,
+        entryPointSelector: getSelectorByName('deployContract'),
+        calldata: [],
+      )
+    ]);
+    print(res);
+  }
 }
 
 Account getAccount({

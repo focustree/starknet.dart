@@ -16,13 +16,11 @@ async def declare(contract_name: str, env="local", max_fee=MAX_FEE):
     declare_tx = await account_client.sign_declare_transaction(
         compiled_contract=compiled_contract, max_fee=max_fee
     )
-    print(declare_tx.dumps())
     declare = await account_client.declare(
         transaction=declare_tx
     )
     print(f"Wait for tx: {hex(declare.transaction_hash)}")
     await account_client.wait_for_tx(declare.transaction_hash, check_interval=2)
-
     return declare.class_hash
 
 

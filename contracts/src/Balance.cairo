@@ -17,9 +17,7 @@ func answer() -> (answer: felt) {
 }
 
 @constructor
-func constructor{syscall_ptr: felt*, pedersen_ptr: HashBuiltin*, range_check_ptr,}(
-    answer_: felt
-) {
+func constructor{syscall_ptr: felt*, pedersen_ptr: HashBuiltin*, range_check_ptr}(answer_: felt) {
     answer.write(answer_);
     return ();
 }
@@ -31,6 +29,13 @@ func increase_balance{syscall_ptr: felt*, pedersen_ptr: HashBuiltin*, range_chec
     let (balance_) = balance.read();
     balance.write(balance_ + amount);
     return ();
+}
+
+@external
+func array{syscall_ptr: felt*, pedersen_ptr: HashBuiltin*, range_check_ptr}(
+    a_len: felt, a: felt*
+) -> (b_len: felt, b: felt*) {
+    return (b_len=a_len, b=a);
 }
 
 @view
