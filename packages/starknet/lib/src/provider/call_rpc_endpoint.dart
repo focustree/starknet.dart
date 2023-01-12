@@ -1,8 +1,6 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 
-import '../../starknet.dart';
-
 Future<Map<String, dynamic>> callRpcEndpoint(
     {required Uri nodeUri, required String method, Object? params}) async {
   const headers = {

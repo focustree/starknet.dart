@@ -22,7 +22,7 @@ class CompiledContract with _$CompiledContract {
 
   ContractClass compress() {
     return ContractClass(
-      program: compressProgram(this.program),
+      program: compressProgram(program),
       entryPointsByType: entryPointsByType,
       abi: abi,
     );
