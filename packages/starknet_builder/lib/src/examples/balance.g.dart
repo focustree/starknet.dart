@@ -41,6 +41,15 @@ class Balance extends Contract {
     return res[0];
   }
 
+  Future<List<Felt>> copy_array(List<Felt> a) async {
+    final List<Felt> params = [...a.toCallData()];
+    final res = await call(
+      'copy_array',
+      params,
+    );
+    return res.fromCallData();
+  }
+
   Future<String> increase_balance(Felt amount) async {
     final List<Felt> params = [amount];
     final trx = await execute(
@@ -52,5 +61,18 @@ class Balance extends Contract {
       error: (error) => throw Exception,
     );
     return trxHash;
+  }
+}
+
+extension on List<Felt> {
+  List<Felt> toCallData() {
+    return [
+      Felt.fromInt(this.length),
+      ...this,
+    ];
+  }
+
+  List<Felt> fromCallData() {
+    return this.sublist(1);
   }
 }

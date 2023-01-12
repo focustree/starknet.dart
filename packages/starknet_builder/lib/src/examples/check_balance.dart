@@ -56,6 +56,6 @@ void main() async {
   print('Balance: $new_balance');
 
   List<Felt> my_array = List.generate(5, (index) => Felt.fromInt(index));
-  final check_array = contract.copy_array(my_array);
+  final check_array = await contract.copy_array(my_array);
   print(check_array);
 }
