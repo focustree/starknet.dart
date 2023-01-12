@@ -236,14 +236,44 @@ class _ContractAbiGenerator {
                   ..name = CALL_DATA_VAR
                   ..type = CALL_DATA_TYPE))
                 ..body = Block((b) {
-                  int offset = 0;
+                  String offsetVar = "offset";
+                  Reference offset = refer(offsetVar);
+                  String tmpSizeVar = "_tmpSize";
+                  Reference tmpSize = refer(tmpSizeVar);
+                  b.addExpression(declareVar(offsetVar, type: refer('int'))
+                      .assign(literalNum(0)));
+                  b.addExpression(declareVar(tmpSizeVar, type: refer('int'))
+                      .assign(literalNum(0)));
                   for (var output in fun.outputsFiltered) {
                     switch (output.type) {
                       case "felt":
                         b
+                          ..addExpression(declareFinal(output.name)
+                              .assign(refer(CALL_DATA_VAR).index(offset)))
+                          ..addExpression(
+                              offset.assign(offset.operatorAdd(literalNum(1))));
+                        break;
+                      case "felt*":
+                        b
+                          ..addExpression(tmpSize.assign(refer(CALL_DATA_VAR)
+                              .index(offset)
+                              .property('toInt')
+                              .call([])))
                           ..addExpression(declareFinal(output.name).assign(
-                              refer(CALL_DATA_VAR).index(literalNum(offset))));
-                        offset += 1;
+                              refer(CALL_DATA_VAR)
+                                  .property('sublist')
+                                  .call([
+                                    offset,
+                                    offset
+                                        .operatorAdd(tmpSize)
+                                        .operatorAdd(literalNum(1))
+                                  ])
+                                  .property(FROM_CALL_DATA)
+                                  .call([])))
+                          ..addExpression(offset.assign(offset
+                              .operatorAdd(tmpSize)
+                              .operatorAdd(literalNum(1))));
+
                         break;
                       default:
                         b
@@ -253,13 +283,10 @@ class _ContractAbiGenerator {
                                   .call([
                             refer(CALL_DATA_VAR)
                                 .property('sublist')
-                                .call([literalNum(offset)])
-                          ])));
-                        if (output.type == "felt*") {
-                          offset += 1;
-                        } else {
-                          offset += structs[output.type]!.size;
-                        }
+                                .call([offset])
+                          ])))
+                          ..addExpression(offset.assign(offset.operatorAdd(
+                              literalNum(structs[output.type]!.size))));
                         break;
                     }
                   }
