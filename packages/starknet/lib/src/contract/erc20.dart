@@ -23,7 +23,7 @@ class ERC20 extends Contract {
   /// should be displayed to a user as 5,05 (505 / 10 ** 2).
   Future<Felt> decimals() async {
     final res = await call("decimals", []);
-    return res;
+    return res[0];
   }
 
   /// Returns the amount of tokens in existence.

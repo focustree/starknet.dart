@@ -239,3 +239,16 @@ class Erc20_upgradeable extends Contract {
     return trxHash;
   }
 }
+
+extension on List<Felt> {
+  List<Felt> toCallData() {
+    return [
+      Felt.fromInt(this.length),
+      ...this,
+    ];
+  }
+
+  List<Felt> fromCallData() {
+    return this.sublist(1);
+  }
+}

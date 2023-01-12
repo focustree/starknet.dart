@@ -92,7 +92,34 @@ class _ContractAbiGenerator {
       for (var s in structs.values) {
         b.body..add(Class(_createCustomClass(s)));
       }
+      for (var fun in calls) {
+        if (fun.outputsFiltered.length > 1) {
+          b.body..add(Class(_createOutputClass(fun)));
+        }
+      }
       b.body..add(Class(_createContractClass));
+      b.body.add(Extension((e) {
+        e.on = CALL_DATA_TYPE;
+        e.methods.add(Method((m) => m
+          ..name = TO_CALL_DATA
+          ..returns = CALL_DATA_TYPE
+          ..body = Block((b) {
+            b.addExpression(literalList([
+              refer('Felt')
+                  .property('fromInt')
+                  .call([refer('this').property('length')]),
+              refer('this').spread,
+            ]).returned);
+          })));
+        e.methods.add(Method((m) => m
+          ..name = FROM_CALL_DATA
+          ..returns = CALL_DATA_TYPE
+          ..body = Block((b) {
+            b.addExpression(refer('this')
+                .property('sublist')
+                .call([literalNum(1)]).returned);
+          })));
+      }));
     });
   }
 
@@ -129,6 +156,14 @@ class _ContractAbiGenerator {
                       b
                         ..addExpression(declareFinal(member.name)
                             .assign(refer('$CALL_DATA_VAR[${member.offset}]')));
+                    } else {
+                      b
+                        ..addExpression(declareFinal(member.name).assign(
+                            refer(member.type).property(FROM_CALL_DATA).call([
+                          refer(CALL_DATA_VAR)
+                              .property('sublist')
+                              .call([literalNum(member.offset)])
+                        ])));
                     }
                   }
                   b.addExpression(refer(custom.name).call(
@@ -167,6 +202,113 @@ class _ContractAbiGenerator {
             display += ")";
             b..addExpression(literalString(display).returned);
           })));
+    }
+
+    return innerFunction;
+  }
+
+  void Function(ClassBuilder) _createOutputClass(FunctionAbiEntry fun) {
+    void innerFunction(ClassBuilder b) {
+      final name = _getOutputClassName(fun);
+      b
+        ..name = name
+        ..fields.addAll(fun.outputsFiltered.map(
+          (e) => Field((f) => f
+            ..name = e.name
+            ..type = _convertType(e.type)),
+        ))
+        ..constructors.add(Constructor((c) => {
+              c
+                ..optionalParameters.addAll(fun.outputsFiltered.map(
+                  (e) => Parameter((p) => p
+                    ..name = e.name
+                    ..type = _convertType(e.type)
+                    ..required = true
+                    ..named = true
+                    ..toThis = true),
+                ))
+            }))
+        ..constructors.add(Constructor((c) => {
+              c
+                ..factory = true
+                ..name = FROM_CALL_DATA
+                ..requiredParameters.add(Parameter((p) => p
+                  ..name = CALL_DATA_VAR
+                  ..type = CALL_DATA_TYPE))
+                ..body = Block((b) {
+                  String offsetVar = "offset";
+                  Reference offset = refer(offsetVar);
+                  String tmpSizeVar = "_tmpSize";
+                  Reference tmpSize = refer(tmpSizeVar);
+                  b.addExpression(declareVar(offsetVar, type: refer('int'))
+                      .assign(literalNum(0)));
+                  b.addExpression(declareVar(tmpSizeVar, type: refer('int'))
+                      .assign(literalNum(0)));
+                  for (var output in fun.outputsFiltered) {
+                    switch (output.type) {
+                      case "felt":
+                        b
+                          ..addExpression(declareFinal(output.name)
+                              .assign(refer(CALL_DATA_VAR).index(offset)))
+                          ..addExpression(
+                              offset.assign(offset.operatorAdd(literalNum(1))));
+                        break;
+                      case "felt*":
+                        b
+                          ..addExpression(tmpSize.assign(refer(CALL_DATA_VAR)
+                              .index(offset)
+                              .property('toInt')
+                              .call([])))
+                          ..addExpression(declareFinal(output.name).assign(
+                              refer(CALL_DATA_VAR)
+                                  .property('sublist')
+                                  .call([
+                                    offset,
+                                    offset
+                                        .operatorAdd(tmpSize)
+                                        .operatorAdd(literalNum(1))
+                                  ])
+                                  .property(FROM_CALL_DATA)
+                                  .call([])))
+                          ..addExpression(offset.assign(offset
+                              .operatorAdd(tmpSize)
+                              .operatorAdd(literalNum(1))));
+
+                        break;
+                      default:
+                        b
+                          ..addExpression(declareFinal(output.name).assign(
+                              _convertType(output.type)
+                                  .property(FROM_CALL_DATA)
+                                  .call([
+                            refer(CALL_DATA_VAR)
+                                .property('sublist')
+                                .call([offset])
+                          ])))
+                          ..addExpression(offset.assign(offset.operatorAdd(
+                              literalNum(structs[output.type]!.size))));
+                        break;
+                    }
+                  }
+                  b.addExpression(refer(name).call(
+                      [],
+                      Map.fromIterable(fun.outputsFiltered,
+                          key: (e) => e.name,
+                          value: (e) => refer(e.name))).returned);
+                })
+            }));
+
+      b.methods.add(Method((m) => m
+        ..name = 'toString'
+        ..returns = refer('String')
+        ..body = Block((b) {
+          String display = '${name}(';
+          for (var output in fun.outputsFiltered) {
+            display += '${output.name}: \$${output.name}, ';
+          }
+          display += ")";
+          b..addExpression(literalString(display).returned);
+        })));
     }
 
     return innerFunction;
@@ -224,7 +366,7 @@ class _ContractAbiGenerator {
 
   List<Parameter> _parametersFor(FunctionAbiEntry fun) {
     final parameters = <Parameter>[];
-    for (final param in fun.inputs) {
+    for (final param in fun.inputsFiltered) {
       parameters.add(Parameter((b) => b
         ..name = param.name
         ..type = _convertType(param.type)));
@@ -238,6 +380,8 @@ class _ContractAbiGenerator {
       case 'Felt':
       case 'felt':
         return refer('Felt');
+      case 'felt*':
+        return CALL_DATA_TYPE;
       default:
         if (structs.containsKey(paramType)) {
           return refer(paramType);
@@ -248,7 +392,7 @@ class _ContractAbiGenerator {
   }
 
   Expression _assignParams(FunctionAbiEntry fun) {
-    final params = fun.inputs
+    final params = fun.inputsFiltered
         .map((e) => e.type == 'felt'
             ? refer(e.name)
             : refer('...${e.name}.$TO_CALL_DATA()')) // FIXME
@@ -310,37 +454,86 @@ class _ContractAbiGenerator {
   }
 
   void _returnBodyForCall(FunctionAbiEntry fun, BlockBuilder b) {
-    if (fun.outputs.isNotEmpty) {
-      final output = fun.outputs[0];
-      switch (output.type) {
-        case 'felt':
-          b.addExpression(refer('res[0]').returned);
-          break;
-        case 'felt*':
-          break;
-        default:
-          b.addExpression(_convertType(output.type)
-              .property(FROM_CALL_DATA)
-              .call([refer('res')]).returned);
-          break;
+    if (fun.outputsFiltered.isNotEmpty) {
+      if (fun.outputsFiltered.length == 1) {
+        final output = fun.outputsFiltered[0];
+        switch (output.type) {
+          case 'felt':
+            b.addExpression(refer('res[0]').returned);
+            break;
+          case 'felt*':
+            b.addExpression(
+                refer('res').property('fromCallData').call([]).returned);
+            break;
+          default:
+            b.addExpression(_convertType(output.type)
+                .property(FROM_CALL_DATA)
+                .call([refer('res')]).returned);
+            break;
+        }
+      } else {
+        b.addExpression(refer(_getOutputClassName(fun))
+            .property(FROM_CALL_DATA)
+            .call([refer('res')]).returned);
       }
     }
   }
 
   Reference _returnTypeForCall(FunctionAbiEntry fun) {
-    if (fun.outputs.isEmpty) {
+    if (fun.outputsFiltered.isEmpty) {
       return _futurize(refer('void'));
     }
-    if (fun.outputs.length != 1) {
-      throw Exception("Multiple outputs is not supported");
+    switch (fun.outputsFiltered.length) {
+      case 1:
+        final output = fun.outputsFiltered[0];
+        return _futurize(_convertType(output.type));
+
+      default:
+        return _futurize(refer(_getOutputClassName(fun)));
     }
-    final output = fun.outputs[0];
-    return _futurize(_convertType(output.type));
   }
 
   Reference _futurize(Reference r) {
     return TypeReference((b) => b
       ..symbol = 'Future'
       ..types.add(r));
+  }
+
+  String _getOutputClassName(FunctionAbiEntry fun) {
+    return '${fun.name.snakeCasetoCamelCase()}Result';
+  }
+}
+
+extension on List<TypedParameter> {
+  List<TypedParameter> filterArray() {
+    List<TypedParameter> ret = [];
+    for (var i = 0; i < this.length - 1; i++) {
+      if ('${this[i].name}' != '${this[i + 1].name}_len') {
+        ret.add(this[i]);
+      }
+    }
+    if (this.isNotEmpty) {
+      ret.add(this.last);
+    }
+    return ret;
+  }
+}
+
+extension on FunctionAbiEntry {
+  List<TypedParameter> get inputsFiltered {
+    return this.inputs.filterArray();
+  }
+
+  List<TypedParameter> get outputsFiltered {
+    return this.outputs.filterArray();
+  }
+}
+
+extension on String {
+  String snakeCasetoCamelCase() {
+    String ret = this[0].toUpperCase();
+    ret += this.substring(1).split('_').reduce((value, element) =>
+        value + element[0].toUpperCase() + element.substring(1));
+    return ret;
   }
 }

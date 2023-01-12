@@ -61,6 +61,10 @@ class Felt {
     return _bigInt;
   }
 
+  int toInt() {
+    return _bigInt.toInt();
+  }
+
   @override
   bool operator ==(Object other) {
     return other is Felt && (_bigInt - other._bigInt) == BigInt.zero;

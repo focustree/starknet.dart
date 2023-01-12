@@ -6,7 +6,7 @@ class Contract {
 
   Contract({required this.account, required this.address});
 
-  Future call(String selector, List<Felt> calldata) async {
+  Future<List<Felt>> call(String selector, List<Felt> calldata) async {
     final response = await account.provider.call(
       request: FunctionCall(
         contractAddress: address,
@@ -17,8 +17,7 @@ class Contract {
     );
     return (response.when(
       error: (error) {
-        print('Error: $error');
-        return null;
+        throw Exception(error);
       },
       result: (result) {
         return result;

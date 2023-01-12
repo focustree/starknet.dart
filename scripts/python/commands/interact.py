@@ -42,7 +42,7 @@ def main():
 
 def _get_balance_contract(
     env: str,
-    address="0x713883739a929f57b5f4dd82cd38d25dbf76e3bdd54deb7319d339c5060a8cd",
+    address="0x795595609782473a2836b4bf554431c84593935fddd9d15b4ba552063d82f21",
     contract_name="balance"
 ):
     config = get_config(env)
