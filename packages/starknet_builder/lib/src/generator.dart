@@ -76,6 +76,7 @@ class _ContractAbiGenerator {
           } else {
             calls.add(functionAbi);
           }
+
           break;
         case "struct":
           structs[entry.name] = entry as StructAbiEntry;
@@ -93,6 +94,28 @@ class _ContractAbiGenerator {
         b.body..add(Class(_createCustomClass(s)));
       }
       b.body..add(Class(_createContractClass));
+      b.body.add(Extension((e) {
+        e.on = CALL_DATA_TYPE;
+        e.methods.add(Method((m) => m
+          ..name = TO_CALL_DATA
+          ..returns = CALL_DATA_TYPE
+          ..body = Block((b) {
+            b.addExpression(literalList([
+              refer('Felt')
+                  .property('fromInt')
+                  .call([refer('this').property('length')]),
+              refer('this').spread,
+            ]).returned);
+          })));
+        e.methods.add(Method((m) => m
+          ..name = FROM_CALL_DATA
+          ..returns = CALL_DATA_TYPE
+          ..body = Block((b) {
+            b.addExpression(refer('this')
+                .property('sublist')
+                .call([literalNum(1)]).returned);
+          })));
+      }));
     });
   }
 
@@ -224,7 +247,7 @@ class _ContractAbiGenerator {
 
   List<Parameter> _parametersFor(FunctionAbiEntry fun) {
     final parameters = <Parameter>[];
-    for (final param in fun.inputs) {
+    for (final param in fun.inputsFiltered) {
       parameters.add(Parameter((b) => b
         ..name = param.name
         ..type = _convertType(param.type)));
@@ -238,6 +261,8 @@ class _ContractAbiGenerator {
       case 'Felt':
       case 'felt':
         return refer('Felt');
+      case 'felt*':
+        return CALL_DATA_TYPE;
       default:
         if (structs.containsKey(paramType)) {
           return refer(paramType);
@@ -248,7 +273,7 @@ class _ContractAbiGenerator {
   }
 
   Expression _assignParams(FunctionAbiEntry fun) {
-    final params = fun.inputs
+    final params = fun.inputsFiltered
         .map((e) => e.type == 'felt'
             ? refer(e.name)
             : refer('...${e.name}.$TO_CALL_DATA()')) // FIXME
@@ -310,13 +335,15 @@ class _ContractAbiGenerator {
   }
 
   void _returnBodyForCall(FunctionAbiEntry fun, BlockBuilder b) {
-    if (fun.outputs.isNotEmpty) {
-      final output = fun.outputs[0];
+    if (fun.outputsFiltered.isNotEmpty) {
+      final output = fun.outputsFiltered[0];
       switch (output.type) {
         case 'felt':
           b.addExpression(refer('res[0]').returned);
           break;
         case 'felt*':
+          b.addExpression(
+              refer('res').property('fromCallData').call([]).returned);
           break;
         default:
           b.addExpression(_convertType(output.type)
@@ -328,19 +355,47 @@ class _ContractAbiGenerator {
   }
 
   Reference _returnTypeForCall(FunctionAbiEntry fun) {
-    if (fun.outputs.isEmpty) {
+    if (fun.outputsFiltered.isEmpty) {
       return _futurize(refer('void'));
     }
-    if (fun.outputs.length != 1) {
-      throw Exception("Multiple outputs is not supported");
+    switch (fun.outputsFiltered.length) {
+      case 1:
+        final output = fun.outputsFiltered[0];
+        return _futurize(_convertType(output.type));
+
+      default:
+        throw Exception("Multiple output is not supported");
     }
-    final output = fun.outputs[0];
-    return _futurize(_convertType(output.type));
   }
 
   Reference _futurize(Reference r) {
     return TypeReference((b) => b
       ..symbol = 'Future'
       ..types.add(r));
+  }
+}
+
+extension on List<TypedParameter> {
+  List<TypedParameter> filterArray() {
+    List<TypedParameter> ret = [];
+    for (var i = 0; i < this.length - 1; i++) {
+      if ('${this[i].name}' != '${this[i + 1].name}_len') {
+        ret.add(this[i]);
+      }
+    }
+    if (this.isNotEmpty) {
+      ret.add(this.last);
+    }
+    return ret;
+  }
+}
+
+extension on FunctionAbiEntry {
+  List<TypedParameter> get inputsFiltered {
+    return this.inputs.filterArray();
+  }
+
+  List<TypedParameter> get outputsFiltered {
+    return this.outputs.filterArray();
   }
 }

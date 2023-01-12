@@ -25,7 +25,7 @@ void main() async {
   final privateKey = accountSetup.privateKey;
   final accountAddress = Felt.fromHexString(accountSetup.accountAddress);
   final balanceAddress = Felt.fromHexString(
-      "0x713883739a929f57b5f4dd82cd38d25dbf76e3bdd54deb7319d339c5060a8cd");
+      "0x55adbde549a1ee50009281c5d10433122086485eb19949ca7c2fdcb7e64af41");
   final nodeUri = devnetUri;
 
   final provider = JsonRpcProvider(nodeUri: nodeUri);
@@ -54,4 +54,8 @@ void main() async {
   print(accepted ? '$trxHash accepted' : '$trxHash not accepted');
   final new_balance = await contract.get_balance();
   print('Balance: $new_balance');
+
+  List<Felt> my_array = List.generate(5, (index) => Felt.fromInt(index));
+  final check_array = contract.copy_array(my_array);
+  print(check_array);
 }
