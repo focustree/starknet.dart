@@ -76,7 +76,6 @@ class _ContractAbiGenerator {
           } else {
             calls.add(functionAbi);
           }
-
           break;
         case "struct":
           structs[entry.name] = entry as StructAbiEntry;
@@ -92,6 +91,11 @@ class _ContractAbiGenerator {
       ]);
       for (var s in structs.values) {
         b.body..add(Class(_createCustomClass(s)));
+      }
+      for (var fun in calls) {
+        if (fun.outputsFiltered.length > 1) {
+          b.body..add(Class(_createOutputClass(fun)));
+        }
       }
       b.body..add(Class(_createContractClass));
       b.body.add(Extension((e) {
@@ -152,6 +156,14 @@ class _ContractAbiGenerator {
                       b
                         ..addExpression(declareFinal(member.name)
                             .assign(refer('$CALL_DATA_VAR[${member.offset}]')));
+                    } else {
+                      b
+                        ..addExpression(declareFinal(member.name).assign(
+                            refer(member.type).property(FROM_CALL_DATA).call([
+                          refer(CALL_DATA_VAR)
+                              .property('sublist')
+                              .call([literalNum(member.offset)])
+                        ])));
                     }
                   }
                   b.addExpression(refer(custom.name).call(
@@ -190,6 +202,86 @@ class _ContractAbiGenerator {
             display += ")";
             b..addExpression(literalString(display).returned);
           })));
+    }
+
+    return innerFunction;
+  }
+
+  void Function(ClassBuilder) _createOutputClass(FunctionAbiEntry fun) {
+    void innerFunction(ClassBuilder b) {
+      final name = _getOutputClassName(fun);
+      b
+        ..name = name
+        ..fields.addAll(fun.outputsFiltered.map(
+          (e) => Field((f) => f
+            ..name = e.name
+            ..type = _convertType(e.type)),
+        ))
+        ..constructors.add(Constructor((c) => {
+              c
+                ..optionalParameters.addAll(fun.outputsFiltered.map(
+                  (e) => Parameter((p) => p
+                    ..name = e.name
+                    ..type = _convertType(e.type)
+                    ..required = true
+                    ..named = true
+                    ..toThis = true),
+                ))
+            }))
+        ..constructors.add(Constructor((c) => {
+              c
+                ..factory = true
+                ..name = FROM_CALL_DATA
+                ..requiredParameters.add(Parameter((p) => p
+                  ..name = CALL_DATA_VAR
+                  ..type = CALL_DATA_TYPE))
+                ..body = Block((b) {
+                  int offset = 0;
+                  for (var output in fun.outputsFiltered) {
+                    switch (output.type) {
+                      case "felt":
+                        b
+                          ..addExpression(declareFinal(output.name).assign(
+                              refer(CALL_DATA_VAR).index(literalNum(offset))));
+                        offset += 1;
+                        break;
+                      default:
+                        b
+                          ..addExpression(declareFinal(output.name).assign(
+                              _convertType(output.type)
+                                  .property(FROM_CALL_DATA)
+                                  .call([
+                            refer(CALL_DATA_VAR)
+                                .property('sublist')
+                                .call([literalNum(offset)])
+                          ])));
+                        if (output.type == "felt*") {
+                          offset += 1;
+                        } else {
+                          offset += structs[output.type]!.size;
+                        }
+                        break;
+                    }
+                  }
+                  b.addExpression(refer(name).call(
+                      [],
+                      Map.fromIterable(fun.outputsFiltered,
+                          key: (e) => e.name,
+                          value: (e) => refer(e.name))).returned);
+                })
+            }));
+
+      b.methods.add(Method((m) => m
+        ..name = 'toString'
+        ..returns = refer('String')
+        ..body = Block((b) {
+          String display = '${name}(';
+          for (var output in fun.outputsFiltered) {
+            display += '${output.name}: \$${output.name}, ';
+          }
+          display += ")";
+          b..addExpression(literalString(display).returned);
+        })));
     }
 
     return innerFunction;
@@ -336,20 +428,26 @@ class _ContractAbiGenerator {
 
   void _returnBodyForCall(FunctionAbiEntry fun, BlockBuilder b) {
     if (fun.outputsFiltered.isNotEmpty) {
-      final output = fun.outputsFiltered[0];
-      switch (output.type) {
-        case 'felt':
-          b.addExpression(refer('res[0]').returned);
-          break;
-        case 'felt*':
-          b.addExpression(
-              refer('res').property('fromCallData').call([]).returned);
-          break;
-        default:
-          b.addExpression(_convertType(output.type)
-              .property(FROM_CALL_DATA)
-              .call([refer('res')]).returned);
-          break;
+      if (fun.outputsFiltered.length == 1) {
+        final output = fun.outputsFiltered[0];
+        switch (output.type) {
+          case 'felt':
+            b.addExpression(refer('res[0]').returned);
+            break;
+          case 'felt*':
+            b.addExpression(
+                refer('res').property('fromCallData').call([]).returned);
+            break;
+          default:
+            b.addExpression(_convertType(output.type)
+                .property(FROM_CALL_DATA)
+                .call([refer('res')]).returned);
+            break;
+        }
+      } else {
+        b.addExpression(refer(_getOutputClassName(fun))
+            .property(FROM_CALL_DATA)
+            .call([refer('res')]).returned);
       }
     }
   }
@@ -364,7 +462,7 @@ class _ContractAbiGenerator {
         return _futurize(_convertType(output.type));
 
       default:
-        throw Exception("Multiple output is not supported");
+        return _futurize(refer(_getOutputClassName(fun)));
     }
   }
 
@@ -372,6 +470,10 @@ class _ContractAbiGenerator {
     return TypeReference((b) => b
       ..symbol = 'Future'
       ..types.add(r));
+  }
+
+  String _getOutputClassName(FunctionAbiEntry fun) {
+    return '${fun.name.snakeCasetoCamelCase()}Result';
   }
 }
 
@@ -397,5 +499,14 @@ extension on FunctionAbiEntry {
 
   List<TypedParameter> get outputsFiltered {
     return this.outputs.filterArray();
+  }
+}
+
+extension on String {
+  String snakeCasetoCamelCase() {
+    String ret = this[0].toUpperCase();
+    ret += this.substring(1).split('_').reduce((value, element) =>
+        value + element[0].toUpperCase() + element.substring(1));
+    return ret;
   }
 }
