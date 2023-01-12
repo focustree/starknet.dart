@@ -149,5 +149,42 @@
         ],
         "stateMutability": "view",
         "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "name": "a_len",
+                "type": "felt"
+            },
+            {
+                "name": "a",
+                "type": "felt*"
+            },
+            {
+                "name": "id",
+                "type": "felt"
+            }
+        ],
+        "name": "multiple_outputs_with_array",
+        "outputs": [
+            {
+                "name": "id",
+                "type": "felt"
+            },
+            {
+                "name": "b_len",
+                "type": "felt"
+            },
+            {
+                "name": "b",
+                "type": "felt*"
+            },
+            {
+                "name": "answer",
+                "type": "felt"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
     }
 ]

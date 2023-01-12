@@ -74,3 +74,11 @@ func multiple_outputs{syscall_ptr: felt*, pedersen_ptr: HashBuiltin*, range_chec
     let ref = id + 1;
     return(account=account, total=total, ref=ref);
 }
+
+@view
+func multiple_outputs_with_array{syscall_ptr: felt*, pedersen_ptr: HashBuiltin*, range_check_ptr}(a_len: felt, a: felt*, id: felt) -> (
+    id: felt, b_len: felt, b: felt*, answer: felt
+) {
+    let (answer_) = answer.read();
+    return(id=id, b_len=a_len, b=a, answer=answer_);
+}
