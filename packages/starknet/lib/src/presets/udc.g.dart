@@ -1,4 +1,5 @@
 // Generated code, do not modify. Run `build_runner build` to re-generate!
+// ignore_for_file: unused_element
 
 import 'package:starknet/starknet.dart';
 
@@ -35,12 +36,12 @@ class Udc extends Contract {
 extension on List<Felt> {
   List<Felt> toCallData() {
     return [
-      Felt.fromInt(this.length),
+      Felt.fromInt(length),
       ...this,
     ];
   }
 
   List<Felt> fromCallData() {
-    return this.sublist(1);
+    return sublist(1);
   }
 }
