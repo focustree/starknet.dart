@@ -8,7 +8,7 @@ void main() {
         final balanceContract =
             await parseContract('../../contracts/build/balance.json');
         final res = await account0.declare(compiledContract: balanceContract);
-        final txHash = res.when(
+        res.when(
           result: (result) {
             expect(
               result.classHash,
@@ -19,14 +19,6 @@ void main() {
           },
           error: (error) => fail(error.message),
         );
-        print(txHash.toHexString());
-        final tutu = await account0.provider.getTransactionReceipt(txHash);
-        print(tutu);
-        final toto = await waitForAcceptance(
-          transactionHash: txHash.toHexString(),
-          provider: account0.provider,
-        );
-        print(toto);
       });
     });
     group('deploy', () {
