@@ -18,11 +18,11 @@ If you want to contribute to the web3 adoption and more specifically StarkNet on
 
 ### You have a feature suggestion or want to report a bug
 
-Then you should first [check out if this issue does not exit already](https://github.com/gabsn/starknet.dart/issues). If it does, you can upvote the existing one. If it's a new issue, please go on the project [telegram chat](https://t.me/+CWezjfLIRYc0MDY0) and explain what's your problem and why it should be top priority. We'll then add your issue to the roadmap.
+Then you should first [check out if this issue does not exist already](https://github.com/gabsn/starknet.dart/issues). If it does, you can upvote the existing one. If it's a new issue, please go on the project [telegram chat](https://t.me/+CWezjfLIRYc0MDY0) and explain what's your problem and why it should be top priority. We'll then add your issue to the roadmap.
 
 ### You want to implement a feature / fix a bug / update the doc
 
-1. ⚠️ Very important: if you want to get involved, please go to the [telegram chat](https://t.me/+CWezjfLIRYc0MDY0) and explain which isssue you want to tackle. We'll try to do our best to support you and help you.
+1. ⚠️ Very important: if you want to get involved, please go to the [telegram chat](https://t.me/+CWezjfLIRYc0MDY0) and explain which issue you want to tackle. We'll try to do our best to support you and help you.
 2. Fork the repository and create a branch prefixed by the issue number.
 3. Implement your feature / bug fix and push it to your remote fork. We strongly recommend you to write the test first, then implement the feature (see [TDD](https://en.wikipedia.org/wiki/Test-driven_development)).
 4. Go on github and create a Pull Request from your forked repo to the original one.
