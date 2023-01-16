@@ -13,6 +13,12 @@ final CALL_DATA_TYPE = refer('List<Felt>');
 final TO_CALL_DATA = "toCallData";
 final FROM_CALL_DATA = "fromCallData";
 
+final CONTRACT_FIELD_VAR = "_contract";
+final CONTRACT_FIELD = refer(CONTRACT_FIELD_VAR);
+final CONTRACT_FIELD_TYPE = refer("Contract");
+final CONTRACT_METHOD_CALL = "call";
+final CONTRACT_METHOD_EXECUTE = "execute";
+
 class ContractGenerator implements Builder {
   const ContractGenerator();
   @override
@@ -97,29 +103,30 @@ class _ContractAbiGenerator {
           b.body..add(Class(_createOutputClass(fun)));
         }
       }
-      b.body..add(Class(_createContractClass));
-      b.body.add(Extension((e) {
-        e.on = CALL_DATA_TYPE;
-        e.methods.add(Method((m) => m
-          ..name = TO_CALL_DATA
-          ..returns = CALL_DATA_TYPE
-          ..body = Block((b) {
-            b.addExpression(literalList([
-              refer('Felt')
-                  .property('fromInt')
-                  .call([refer('this').property('length')]),
-              refer('this').spread,
-            ]).returned);
-          })));
-        e.methods.add(Method((m) => m
-          ..name = FROM_CALL_DATA
-          ..returns = CALL_DATA_TYPE
-          ..body = Block((b) {
-            b.addExpression(refer('this')
-                .property('sublist')
-                .call([literalNum(1)]).returned);
-          })));
-      }));
+      b.body
+        ..add(Class(_createContractClass))
+        ..add(Extension((e) {
+          e.on = CALL_DATA_TYPE;
+          e.methods.add(Method((m) => m
+            ..name = TO_CALL_DATA
+            ..returns = CALL_DATA_TYPE
+            ..body = Block((b) {
+              b.addExpression(literalList([
+                refer('Felt')
+                    .property('fromInt')
+                    .call([refer('this').property('length')]),
+                refer('this').spread,
+              ]).returned);
+            })));
+          e.methods.add(Method((m) => m
+            ..name = FROM_CALL_DATA
+            ..returns = CALL_DATA_TYPE
+            ..body = Block((b) {
+              b.addExpression(refer('this')
+                  .property('sublist')
+                  .call([literalNum(1)]).returned);
+            })));
+        }));
     });
   }
 
@@ -317,7 +324,10 @@ class _ContractAbiGenerator {
   void _createContractClass(ClassBuilder b) {
     b
       ..name = name
-      ..extend = refer('Contract')
+      ..fields.add(Field((f) => f
+        ..name = CONTRACT_FIELD_VAR
+        ..type = CONTRACT_FIELD_TYPE
+        ..modifier = FieldModifier.final$))
       ..constructors.add(Constructor(_createContractConstructor));
 
     for (var fun in calls) {
@@ -331,19 +341,25 @@ class _ContractAbiGenerator {
 
   // Generated contract constructor
   void _createContractConstructor(ConstructorBuilder b) {
+    String _accountVar = "account";
+    String _addressVar = "address";
     b
       ..optionalParameters.addAll([
         Parameter((b) => b
-          ..name = "account"
+          ..name = _accountVar
           ..required = true
-          ..toSuper = true
           ..named = true),
         Parameter((b) => b
-          ..name = "address"
+          ..name = _addressVar
           ..required = true
-          ..toSuper = true
           ..named = true),
-      ]);
+      ])
+      ..initializers.add(CONTRACT_FIELD
+          .assign(CONTRACT_FIELD_TYPE.call([], {
+            _accountVar: refer(_accountVar),
+            _addressVar: refer(_addressVar)
+          }))
+          .code);
   }
 
   void _methodFor(FunctionAbiEntry fun, MethodBuilder b) {
@@ -406,7 +422,8 @@ class _ContractAbiGenerator {
     return Block((b) {
       b
         ..addExpression(_assignParams(fun))
-        ..addExpression(declareFinal('res').assign(refer("call")
+        ..addExpression(declareFinal('res').assign(CONTRACT_FIELD
+            .property(CONTRACT_METHOD_CALL)
             .call([literalString(fun.name), refer('params')]).awaited));
       _returnBodyForCall(fun, b);
     });
@@ -422,7 +439,8 @@ class _ContractAbiGenerator {
     return Block((b) {
       b
         ..addExpression(_assignParams(fun))
-        ..addExpression(declareFinal(trxVar).assign(refer("execute")
+        ..addExpression(declareFinal(trxVar).assign(CONTRACT_FIELD
+            .property(CONTRACT_METHOD_EXECUTE)
             .call([literalString(fun.name), refer('params')]).awaited))
         // caller of the 'invoke' method only need a transaction hash
         // and not the InvokeTransactionResult object
