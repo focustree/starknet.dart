@@ -103,7 +103,7 @@ dart doc .
 
 For more advanced features, check out the [dartdoc package](https://pub.dev/packages/dartdoc).
 
-### Complie cairo contracts
+### Compile cairo contracts
 
 ```sh
 protostar build
