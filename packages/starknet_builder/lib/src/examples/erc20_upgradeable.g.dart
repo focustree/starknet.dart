@@ -36,15 +36,20 @@ class Uint256 {
   }
 }
 
-class Erc20_upgradeable extends Contract {
+class Erc20_upgradeable {
   Erc20_upgradeable({
-    required super.account,
-    required super.address,
-  });
+    required account,
+    required address,
+  }) : _contract = Contract(
+          account: account,
+          address: address,
+        );
+
+  final Contract _contract;
 
   Future<Felt> name() async {
     final List<Felt> params = [];
-    final res = await call(
+    final res = await _contract.call(
       'name',
       params,
     );
@@ -53,7 +58,7 @@ class Erc20_upgradeable extends Contract {
 
   Future<Felt> symbol() async {
     final List<Felt> params = [];
-    final res = await call(
+    final res = await _contract.call(
       'symbol',
       params,
     );
@@ -62,7 +67,7 @@ class Erc20_upgradeable extends Contract {
 
   Future<Uint256> totalSupply() async {
     final List<Felt> params = [];
-    final res = await call(
+    final res = await _contract.call(
       'totalSupply',
       params,
     );
@@ -71,7 +76,7 @@ class Erc20_upgradeable extends Contract {
 
   Future<Felt> decimals() async {
     final List<Felt> params = [];
-    final res = await call(
+    final res = await _contract.call(
       'decimals',
       params,
     );
@@ -80,7 +85,7 @@ class Erc20_upgradeable extends Contract {
 
   Future<Uint256> balanceOf(Felt account) async {
     final List<Felt> params = [account];
-    final res = await call(
+    final res = await _contract.call(
       'balanceOf',
       params,
     );
@@ -95,7 +100,7 @@ class Erc20_upgradeable extends Contract {
       owner,
       spender,
     ];
-    final res = await call(
+    final res = await _contract.call(
       'allowance',
       params,
     );
@@ -118,7 +123,7 @@ class Erc20_upgradeable extends Contract {
       recipient,
       proxy_admin,
     ];
-    final trx = await execute(
+    final trx = await _contract.execute(
       'initializer',
       params,
     );
@@ -131,7 +136,7 @@ class Erc20_upgradeable extends Contract {
 
   Future<String> upgrade(Felt new_implementation) async {
     final List<Felt> params = [new_implementation];
-    final trx = await execute(
+    final trx = await _contract.execute(
       'upgrade',
       params,
     );
@@ -150,7 +155,7 @@ class Erc20_upgradeable extends Contract {
       recipient,
       ...amount.toCallData(),
     ];
-    final trx = await execute(
+    final trx = await _contract.execute(
       'transfer',
       params,
     );
@@ -171,7 +176,7 @@ class Erc20_upgradeable extends Contract {
       recipient,
       ...amount.toCallData(),
     ];
-    final trx = await execute(
+    final trx = await _contract.execute(
       'transferFrom',
       params,
     );
@@ -190,7 +195,7 @@ class Erc20_upgradeable extends Contract {
       spender,
       ...amount.toCallData(),
     ];
-    final trx = await execute(
+    final trx = await _contract.execute(
       'approve',
       params,
     );
@@ -209,7 +214,7 @@ class Erc20_upgradeable extends Contract {
       spender,
       ...added_value.toCallData(),
     ];
-    final trx = await execute(
+    final trx = await _contract.execute(
       'increaseAllowance',
       params,
     );
@@ -228,7 +233,7 @@ class Erc20_upgradeable extends Contract {
       spender,
       ...subtracted_value.toCallData(),
     ];
-    final trx = await execute(
+    final trx = await _contract.execute(
       'decreaseAllowance',
       params,
     );

@@ -143,15 +143,20 @@ class MultipleOutputsWithArrayResult {
   }
 }
 
-class Balance extends Contract {
+class Balance {
   Balance({
-    required super.account,
-    required super.address,
-  });
+    required account,
+    required address,
+  }) : _contract = Contract(
+          account: account,
+          address: address,
+        );
+
+  final Contract _contract;
 
   Future<Felt> get_balance() async {
     final List<Felt> params = [];
-    final res = await call(
+    final res = await _contract.call(
       'get_balance',
       params,
     );
@@ -160,7 +165,7 @@ class Balance extends Contract {
 
   Future<Felt> get_answer() async {
     final List<Felt> params = [];
-    final res = await call(
+    final res = await _contract.call(
       'get_answer',
       params,
     );
@@ -175,7 +180,7 @@ class Balance extends Contract {
       a,
       b,
     ];
-    final res = await call(
+    final res = await _contract.call(
       'sum',
       params,
     );
@@ -184,7 +189,7 @@ class Balance extends Contract {
 
   Future<List<Felt>> copy_array(List<Felt> a) async {
     final List<Felt> params = [...a.toCallData()];
-    final res = await call(
+    final res = await _contract.call(
       'copy_array',
       params,
     );
@@ -193,7 +198,7 @@ class Balance extends Contract {
 
   Future<MultipleOutputsResult> multiple_outputs(Felt id) async {
     final List<Felt> params = [id];
-    final res = await call(
+    final res = await _contract.call(
       'multiple_outputs',
       params,
     );
@@ -208,7 +213,7 @@ class Balance extends Contract {
       ...a.toCallData(),
       id,
     ];
-    final res = await call(
+    final res = await _contract.call(
       'multiple_outputs_with_array',
       params,
     );
@@ -217,7 +222,7 @@ class Balance extends Contract {
 
   Future<String> increase_balance(Felt amount) async {
     final List<Felt> params = [amount];
-    final trx = await execute(
+    final trx = await _contract.execute(
       'increase_balance',
       params,
     );
