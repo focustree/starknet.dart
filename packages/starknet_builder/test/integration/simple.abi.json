@@ -1,0 +1,14 @@
+[
+    {
+        "inputs": [],
+        "name": "answer",
+        "outputs": [
+            {
+                "name": "answer",
+                "type": "felt"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    }
+]
