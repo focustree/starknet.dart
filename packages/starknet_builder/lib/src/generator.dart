@@ -71,6 +71,13 @@ class _ContractAbiGenerator {
   List<FunctionAbiEntry> executes = [];
   Map<String, StructAbiEntry> structs = {};
 
+  // #98: only add List<Felt> extension if needed
+  // The following bool are used to check if we have a
+  // - felt* parameter in input parameters
+  // - felt* parameter in output parameters
+  bool needListFeltToCallData = false;
+  bool needListFeltFromCallData = false;
+
   _ContractAbiGenerator(this.abi, this.name) {
     for (var element in abi) {
       final entry = ContractAbiEntry.fromJson(element);
@@ -81,6 +88,22 @@ class _ContractAbiGenerator {
             executes.add(functionAbi);
           } else {
             calls.add(functionAbi);
+          }
+          if (false == needListFeltToCallData) {
+            for (var ii in functionAbi.inputsFiltered) {
+              if (ii.type == "felt*") {
+                needListFeltToCallData = true;
+                break;
+              }
+            }
+          }
+          if (false == needListFeltFromCallData) {
+            for (var oo in functionAbi.outputsFiltered) {
+              if (oo.type == "felt*") {
+                needListFeltFromCallData = true;
+                break;
+              }
+            }
           }
           break;
         case "struct":
@@ -103,30 +126,35 @@ class _ContractAbiGenerator {
           b.body..add(Class(_createOutputClass(fun)));
         }
       }
-      b.body
-        ..add(Class(_createContractClass))
-        ..add(Extension((e) {
+      b.body..add(Class(_createContractClass));
+      if (needListFeltFromCallData || needListFeltToCallData) {
+        b.body.add(Extension((e) {
           e.on = CALL_DATA_TYPE;
-          e.methods.add(Method((m) => m
-            ..name = TO_CALL_DATA
-            ..returns = CALL_DATA_TYPE
-            ..body = Block((b) {
-              b.addExpression(literalList([
-                refer('Felt')
-                    .property('fromInt')
-                    .call([refer('this').property('length')]),
-                refer('this').spread,
-              ]).returned);
-            })));
-          e.methods.add(Method((m) => m
-            ..name = FROM_CALL_DATA
-            ..returns = CALL_DATA_TYPE
-            ..body = Block((b) {
-              b.addExpression(refer('this')
-                  .property('sublist')
-                  .call([literalNum(1)]).returned);
-            })));
+          if (needListFeltToCallData) {
+            e.methods.add(Method((m) => m
+              ..name = TO_CALL_DATA
+              ..returns = CALL_DATA_TYPE
+              ..body = Block((b) {
+                b.addExpression(literalList([
+                  refer('Felt')
+                      .property('fromInt')
+                      .call([refer('this').property('length')]),
+                  refer('this').spread,
+                ]).returned);
+              })));
+          }
+          if (needListFeltFromCallData) {
+            e.methods.add(Method((m) => m
+              ..name = FROM_CALL_DATA
+              ..returns = CALL_DATA_TYPE
+              ..body = Block((b) {
+                b.addExpression(refer('this')
+                    .property('sublist')
+                    .call([literalNum(1)]).returned);
+              })));
+          }
         }));
+      }
     });
   }
 
@@ -411,7 +439,7 @@ class _ContractAbiGenerator {
     final params = fun.inputsFiltered
         .map((e) => e.type == 'felt'
             ? refer(e.name)
-            : refer('...${e.name}.$TO_CALL_DATA()')) // FIXME
+            : refer('...${e.name}.$TO_CALL_DATA()'))
         .toList();
     return declareFinal('params', type: CALL_DATA_TYPE)
         .assign(literalList(params));
@@ -481,7 +509,7 @@ class _ContractAbiGenerator {
             break;
           case 'felt*':
             b.addExpression(
-                refer('res').property('fromCallData').call([]).returned);
+                refer('res').property(FROM_CALL_DATA).call([]).returned);
             break;
           default:
             b.addExpression(_convertType(output.type)
