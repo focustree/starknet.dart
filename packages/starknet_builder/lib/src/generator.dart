@@ -90,19 +90,15 @@ class _ContractAbiGenerator {
             calls.add(functionAbi);
           }
           if (false == needListFeltToCallData) {
-            for (var ii in functionAbi.inputsFiltered) {
-              if (ii.type == "felt*") {
-                needListFeltToCallData = true;
-                break;
-              }
+            if (functionAbi.inputsHas("felt*")) {
+              needListFeltToCallData = true;
+              break;
             }
           }
           if (false == needListFeltFromCallData) {
-            for (var oo in functionAbi.outputsFiltered) {
-              if (oo.type == "felt*") {
-                needListFeltFromCallData = true;
-                break;
-              }
+            if (functionAbi.outputsHas("felt*")) {
+              needListFeltFromCallData = true;
+              break;
             }
           }
           break;
@@ -273,12 +269,15 @@ class _ContractAbiGenerator {
                 ..body = Block((b) {
                   String offsetVar = "offset";
                   Reference offset = refer(offsetVar);
-                  String tmpSizeVar = "_tmpSize";
-                  Reference tmpSize = refer(tmpSizeVar);
                   b.addExpression(declareVar(offsetVar, type: refer('int'))
                       .assign(literalNum(0)));
-                  b.addExpression(declareVar(tmpSizeVar, type: refer('int'))
-                      .assign(literalNum(0)));
+                  String tmpSizeVar = "_tmpSize";
+                  Reference tmpSize = refer(tmpSizeVar);
+
+                  if (fun.outputsHas("felt*")) {
+                    b.addExpression(declareVar(tmpSizeVar, type: refer('int'))
+                        .assign(literalNum(0)));
+                  }
                   for (var output in fun.outputsFiltered) {
                     switch (output.type) {
                       case "felt":
@@ -572,6 +571,14 @@ extension on FunctionAbiEntry {
 
   List<TypedParameter> get outputsFiltered {
     return this.outputs.filterArray();
+  }
+
+  bool inputsHas(String type_) {
+    return this.inputsFiltered.where((e) => e.type == type_).isNotEmpty;
+  }
+
+  bool outputsHas(String type_) {
+    return this.outputsFiltered.where((e) => e.type == type_).isNotEmpty;
   }
 }
 
