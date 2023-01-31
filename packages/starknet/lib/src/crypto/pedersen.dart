@@ -34,7 +34,7 @@ ECPoint processSingleElement(BigInt x, ECPoint p1, ECPoint p2) {
   final lowPart = x & lowPartMask;
   final result = (p1 * lowPart)! + (p2 * highNibble)!;
   if (result == null) {
-    throw NullThrownError();
+    throw TypeError();
   }
   return result;
 }
@@ -43,15 +43,15 @@ BigInt pedersenHash(BigInt x, BigInt y) {
   final hashPoint = ((shiftPoint + processSingleElement(x, p0, p1))! +
       processSingleElement(y, p2, p3));
   if (hashPoint == null) {
-    throw NullThrownError();
+    throw TypeError();
   }
   final hashedFieldElement = hashPoint.x;
   if (hashedFieldElement == null) {
-    throw NullThrownError();
+    throw TypeError();
   }
   final pedersenHash = hashedFieldElement.toBigInteger();
   if (pedersenHash == null) {
-    throw NullThrownError();
+    throw TypeError();
   }
   return pedersenHash;
 }
