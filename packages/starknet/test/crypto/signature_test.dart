@@ -19,7 +19,7 @@ void main() {
           equals(hexStringToBigInt(
               '0x326715c35f69882c04af9f70d37db977a57bf74252c0ecde0a8d01006bccb9f')));
     });
-  });
+  }, tags: ['unit']);
   group('starknet_generateK', () {
     test('computes the right k value', () {
       final k = starknet_generateK(
@@ -31,7 +31,7 @@ void main() {
           k,
           equals(hexStringToBigInt(
               '0x738245b914bff42937b4cb377be9920abd5e8476e8998bfc74cb6cca4b9167f')));
-    });
+    }, tags: ['unit']);
     test('computes the right k value with seed', () {
       final k = starknet_generateK(
           privateKey: BigInt.from(1234),
@@ -59,5 +59,5 @@ void main() {
       expect(signature.r, equals(expectedSignatureR));
       expect(signature.s, equals(expectedSignatureS));
     });
-  });
+  }, tags: ['unit']);
 }

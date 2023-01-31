@@ -20,7 +20,7 @@ void main() {
               '3141592653589793238462643383279502884197169399375105820974944592307816406665')));
       expect(pedersenParams.constantPoints, hasLength(506));
     });
-  });
+  }, tags: ['unit']);
   group('pedersenHash', () {
     test('computes the right pedersen hash', () {
       expect(
@@ -35,5 +35,5 @@ void main() {
               '030e480bed5fe53fa909cc0f8c4d99b8f9f2c016be4c41e13a4848797979c662',
               radix: 16)));
     });
-  });
+  }, tags: ['unit']);
 }

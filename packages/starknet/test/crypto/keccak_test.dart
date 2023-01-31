@@ -20,7 +20,7 @@ void main() {
               .bitLength,
           lessThanOrEqualTo(250));
     });
-  });
+  }, tags: ['unit']);
   group('getSelectorByName', () {
     test('returns 0 for default entrypoint selectors', () {
       expect(getSelectorByName('__default__'), equals(Felt.fromInt(0)));
@@ -41,7 +41,7 @@ void main() {
     test('throws on non-ascii selector names', () {
       expect(() => getSelectorByName('✨'), throwsArgumentError);
     });
-  });
+  }, tags: ['unit']);
   group('getStringSelectorByName', () {
     test('returns the right string', () {
       expect(
@@ -49,5 +49,5 @@ void main() {
           equals(Felt.fromHexString(
               "0x2e4263afad30923c891518314c3c95dbe830a16874e8abc5777a9a20b54c76e")));
     });
-  });
+  }, tags: ['unit']);
 }

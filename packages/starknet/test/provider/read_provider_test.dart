@@ -77,7 +77,7 @@ void main() {
                 Felt.fromHexString(
                     '0x14f741bf6ace9f582fa02b95a7065af3e7925bf25c8cb3a69ac1cb1c5762473')),
             error: (error) => fail("Shouldn't fail"));
-      }, tags: ['blockId']);
+      }, tags: ['integration-testnet']);
 
       test('returns block not found error when block id is invalid.', () async {
         final response =
@@ -88,7 +88,7 @@ void main() {
               expect(error.code, -32602);
               expect(error.message, contains("invalid value: integer `-1`"));
             });
-      }, tags: ['blockId']);
+      }, tags: ['integration-testnet']);
     });
 
     group('call', () {
@@ -143,7 +143,7 @@ void main() {
               expect(error.message, contains("Contract not found"));
             },
             result: (result) => fail("Should fail"));
-      }, tags: ['blockId']);
+      }, tags: ['integration-testnet']);
 
       test('calls a read-only method with invalid block id', () async {
         final response = await provider.call(
@@ -159,7 +159,7 @@ void main() {
               expect(error.message, contains('Block not found'));
             },
             result: (result) => fail("Should fail"));
-      }, tags: ['blockId']);
+      }, tags: ['integration-testnet']);
 
       test('calls a read-only method with invalid entry point selector',
           () async {
@@ -239,7 +239,7 @@ void main() {
               expect(error.message, "Block not found");
             },
             result: (_) => fail("Should fail"));
-      }, tags: ['blockId']);
+      }, tags: ['integration-testnet']);
     });
 
     group('getTransactionByHash', () {
@@ -339,7 +339,7 @@ void main() {
                       '0x793c49cba2ac05f29d726017792192a19cc40d8da8000dd7936ce03fdfdd1f5'));
             },
             error: (error) => fail("Shouldn't fail"));
-      }, tags: ['blockId']);
+      }, tags: ['integration-testnet']);
 
       test('reading transaction details from invalid index should fail',
           () async {
@@ -353,7 +353,7 @@ void main() {
               expect(error.code, 27);
               expect(error.message, "Invalid transaction index in a block");
             });
-      }, tags: ['blockId']);
+      }, tags: ['integration-testnet']);
 
       test(
           'reading transaction details from invalid block hash and index should fail',
@@ -366,7 +366,7 @@ void main() {
               expect(error.code, 24);
               expect(error.message, "Block not found");
             });
-      }, tags: ['blockId']);
+      }, tags: ['integration-testnet']);
 
       test('returns transaction details based on block number and index',
           () async {
@@ -380,7 +380,7 @@ void main() {
                       "0x226570876fb6bdd8257b048c0dfc02a7579ab1083c4b28b6b9a1a86aea39180"));
             },
             error: (error) => fail("Shouldn't fail"));
-      }, tags: ['blockId']);
+      }, tags: ['integration-testnet']);
     });
 
     group('getTransactionReceipt', () {
@@ -516,7 +516,7 @@ void main() {
               expect(error.message, "Block not found");
             },
             result: (result) => fail("Should fail"));
-      }, tags: ['blockId']);
+      }, tags: ['integration-testnet']);
 
       test(
           'reading nonce from invalid contract returns CONTRACT_NOT_FOUND error',
@@ -531,7 +531,7 @@ void main() {
               expect(error.message, "Contract not found");
             },
             result: (result) => fail("Should fail"));
-      }, tags: ['blockId']);
+      }, tags: ['integration-testnet']);
     });
 
     group('starknet_blockHashAndNumber', () {
@@ -558,7 +558,7 @@ void main() {
             result: (result) {
               expect(result.blockHash, blockHash);
             });
-      }, tags: ['blockId']);
+      }, tags: ['integration-testnet']);
 
       test(
           'returns the information about the result of executing the requested block using block number',
@@ -570,7 +570,7 @@ void main() {
             result: (result) {
               expect(result.blockHash, isNotNull);
             });
-      }, tags: ['blockId']);
+      }, tags: ['integration-testnet']);
 
       test('reading the state update from an invalid block id', () async {
         final response =
@@ -582,7 +582,7 @@ void main() {
               expect(error.message, "Block not found");
             },
             result: (result) => fail("Should fail"));
-      }, tags: ['blockId']);
+      }, tags: ['integration-testnet']);
     });
 
     group('starknet_getBlockWithTxs', () {
@@ -597,7 +597,7 @@ void main() {
             expect(block, isNotNull);
           },
         );
-      }, tags: ['blockId']);
+      }, tags: ['integration-testnet']);
 
       test('returns block not found error when block id is invalid', () async {
         final GetBlockWithTxs response =
@@ -606,7 +606,7 @@ void main() {
           error: (error) => expect(error.code, 24),
           block: (_) => fail('Expecting BLOCK_NOT_FOUND error'),
         );
-      }, tags: ['blockId']);
+      }, tags: ['integration-testnet']);
     });
 
     group('starknet_getBlockTransactionCount', () {
@@ -622,7 +622,7 @@ void main() {
             expect(result, isNotNull);
           },
         );
-      }, tags: ['blockId']);
+      }, tags: ['integration-testnet']);
 
       test('returns BLOCK_NOT_FOUND error when invalid block id is given.',
           () async {
@@ -633,7 +633,7 @@ void main() {
           error: (error) => expect(error.code, 24),
           result: (result) => fail("Should fail"),
         );
-      }, tags: ['blockId']);
+      }, tags: ['integration-testnet']);
     });
 
     group('starknet_getClass', () {
@@ -663,7 +663,7 @@ void main() {
           error: (error) => expect(error.code, 24),
           result: (result) => fail("Should fail"),
         );
-      }, tags: ['blockId']);
+      }, tags: ['integration-testnet']);
 
       test(
           'returns CLASS_HASH_NOT_FOUND error when invalid class hash is given.',
@@ -711,7 +711,7 @@ void main() {
           error: (error) => expect(error.code, 24),
           result: (result) => fail("Should fail"),
         );
-      }, tags: ['blockId']);
+      }, tags: ['integration-testnet']);
 
       test(
           'returns CONTRACT_NOT_FOUND error when invalid contract address is given.',
@@ -759,7 +759,7 @@ void main() {
           error: (error) => expect(error.code, 24),
           result: (result) => fail("Should fail"),
         );
-      }, tags: ['blockId']);
+      }, tags: ['integration-testnet']);
 
       test(
           'returns CONTRACT_NOT_FOUND error when invalid contract address is given.',
@@ -792,7 +792,7 @@ void main() {
             result: (result) {
               expect(result.events.length, 2);
             });
-      }, tags: ['blockId']);
+      }, tags: ['integration-testnet']);
 
       test('requesting the events with invalid chunk size', () async {
         final response = await provider.getEvents(GetEventsRequest(
@@ -806,7 +806,7 @@ void main() {
               expect(error.message, "Invalid page size");
             },
             result: (result) => fail("Should fail"));
-      }, tags: ['blockId']);
+      }, tags: ['integration-testnet']);
 
       test(
           'requesting the events with invalid continuation token returns INVALID_CONTINUATION_TOKEN error',
@@ -825,7 +825,7 @@ void main() {
                   "The supplied continuation token is invalid or unknown");
             },
             result: (result) => fail("Should fail"));
-      }, tags: ['blockId']);
+      }, tags: ['integration-testnet']);
 
       test(
           'requesting the events with invalid block id returns BLOCK_NOT_FOUND error',
@@ -842,7 +842,7 @@ void main() {
               expect(error.message, 'Block not found');
             },
             result: (result) => fail("Should fail"));
-      }, tags: ['blockId']);
+      }, tags: ['integration-testnet']);
 
       test(
           'requesting the events with big chunk size returns PAGE_SIZE_TOO_BIG error',
@@ -859,16 +859,12 @@ void main() {
               expect(error.message, "Requested page size is too big");
             },
             result: (result) => fail("Should fail"));
-      }, tags: ['blockId']);
+      }, tags: ['integration-testnet']);
     });
 
     group('starknet_pendingTransactions', () {
       test('returns not supported error for pendingTransactions', () async {
         final response = await provider.pendingTransactions();
-
-        var felt = Felt.fromIntString(
-            '482897216855731661454536211069019800727046035263556664864595629742230851611');
-        print('felt: ${felt.toJson()}');
 
         response.when(
             error: (error) => fail('Should not fail'), result: (_) {});
@@ -967,5 +963,5 @@ void main() {
         );
       });
     });
-  });
+  }, tags: ['integration-testnet']);
 }

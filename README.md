@@ -68,8 +68,9 @@ dart test
 ```
 
 To run the tests on **devnet** use the following command:
+
 ```
-NETWORK=devnet dart test --exclude-tags nodevnet,blockId
+NETWORK=devnet dart test -t integration-devnet-040
 ```
 
 ### Release a new version to pub.dev
