@@ -20,5 +20,5 @@ void main() {
           equals(hexStringToBigInt(
               '0x025cde77210b1c223b2c6e69db6e9021aa1599177ab177474d5326cd2a62cb69')));
     });
-  });
+  }, tags: ['unit']);
 }

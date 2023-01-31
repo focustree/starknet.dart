@@ -29,7 +29,7 @@ void main() {
           result: (result) {
             expect(result.transaction_hash, hasLength(greaterThan(64)));
           });
-    });
+    }, tags: ['integration-testnet']);
     test('mintAspectNFT', () async {
       final account = getJsonRpcProvider();
       final request = InvokeTransactionRequest(
@@ -69,9 +69,9 @@ void main() {
           result: (result) {
             expect(result.transaction_hash, hasLength(greaterThan(64)));
           });
-    });
+    }, tags: ['integration-testnet']);
     test('declareTransaction', () async {
-      final account = getJsonRpcProvider(network: 'devnet');
+      final account = getJsonRpcProvider(network: 'integration-devnet-040');
       final request = DeclareTransactionRequest(
         declareTransaction: DeclareTransaction(
           max_fee: defaultMaxFee,
@@ -99,6 +99,6 @@ void main() {
           expect(result, equals(1));
         },
       );
-    });
+    }, tags: ['integration-devnet-040']);
   });
 }
