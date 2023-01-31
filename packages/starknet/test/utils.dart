@@ -2,12 +2,11 @@ import 'dart:io';
 import 'package:starknet/starknet.dart';
 
 ReadProvider getJsonRpcReadProvider() {
-  final network =
-      Platform.environment['NETWORK'] ?? 'infuraGoerliintegration-testnet';
+  final network = Platform.environment['NETWORK'] ?? 'infuraGoerliTestnet';
 
-  if (network == 'infuraGoerliintegration-testnet') {
+  if (network == 'infuraGoerliTestnet') {
     return JsonRpcReadProvider.infuraGoerliTestnet;
-  } else if (network == 'v010PathfinderGoerliintegration-testnet') {
+  } else if (network == 'v010PathfinderGoerliTestnet') {
     return JsonRpcReadProvider.v010PathfinderGoerliTestnet;
   } else if (network == 'infuraMainnet') {
     return JsonRpcReadProvider.infuraMainnet;
@@ -16,10 +15,10 @@ ReadProvider getJsonRpcReadProvider() {
   }
 }
 
-Provider getJsonRpcProvider({network = 'infuraGoerliintegration-testnet'}) {
-  if (network == 'infuraGoerliintegration-testnet') {
+Provider getJsonRpcProvider({network = 'infuraGoerliTestnet'}) {
+  if (network == 'infuraGoerliTestnet') {
     return JsonRpcProvider.infuraGoerliTestnet;
-  } else if (network == 'v010PathfinderGoerliintegration-testnet') {
+  } else if (network == 'v010PathfinderGoerliTestnet') {
     return JsonRpcProvider.v010PathfinderGoerliTestnet;
   } else if (network == 'infuraMainnet') {
     return JsonRpcProvider.infuraMainnet;
