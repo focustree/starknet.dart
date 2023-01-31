@@ -63,10 +63,9 @@ jobs:
         if: always() && steps.install.outcome == 'success'
         working-directory: packages/starknet
 
-
-  test:
+  test-unit:
     needs: analyze
-    defaults: 
+    defaults:
       run:
         working-directory: packages/starknet
     runs-on: ubuntu-latest
@@ -79,9 +78,26 @@ jobs:
         name: Install dependencies
         run: dart pub get
       - name: Run tests on testnet
-        run: dart test
-  
-  test-devnet:
+        run: dart test -t unit
+
+  test-integration-testnet:
+    needs: analyze
+    defaults:
+      run:
+        working-directory: packages/starknet
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: dart-lang/setup-dart@v1.0
+        with:
+          sdk: stable
+      - id: install
+        name: Install dependencies
+        run: dart pub get
+      - name: Run tests on testnet
+        run: dart test -t integration-testnet
+
+  test-integration-devnet:
     needs: analyze
     runs-on: ubuntu-latest
     steps:
@@ -93,7 +109,7 @@ jobs:
         id: setup-python
         uses: actions/setup-python@v4
         with:
-          python-version: '3.9'
+          python-version: "3.9"
       - name: Install Poetry
         uses: snok/install-poetry@v1
         with:
@@ -135,9 +151,8 @@ jobs:
       - name: Run tests on devnet
         env:
           NETWORK: devnet
-        run: dart test --exclude-tags nodevnet,blockId
+        run: dart test -t integration-devnet-040
         working-directory: packages/starknet
-
 
   publish:
     if: github.event.pull_request.head.repo.fork == false
