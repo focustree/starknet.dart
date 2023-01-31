@@ -463,8 +463,8 @@ mixin _$TxnReceipt {
             Felt transactionHash,
             Felt actualFee,
             String status,
-            Felt blockHash,
-            int blockNumber,
+            Felt? blockHash,
+            int? blockNumber,
             String type,
             List<MsgToL1> messagesSent,
             List<Event> events)
@@ -473,8 +473,8 @@ mixin _$TxnReceipt {
             Felt transactionHash,
             Felt actualFee,
             String status,
-            Felt blockHash,
-            int blockNumber,
+            Felt? blockHash,
+            int? blockNumber,
             String type,
             List<MsgToL1> messagesSent,
             List<Event> events)
@@ -483,8 +483,8 @@ mixin _$TxnReceipt {
             Felt transactionHash,
             Felt actualFee,
             String status,
-            Felt blockHash,
-            int blockNumber,
+            Felt? blockHash,
+            int? blockNumber,
             String type,
             List<MsgToL1> messagesSent,
             List<Event> events)
@@ -493,8 +493,8 @@ mixin _$TxnReceipt {
             Felt transactionHash,
             Felt actualFee,
             String status,
-            Felt blockHash,
-            int blockNumber,
+            Felt? blockHash,
+            int? blockNumber,
             String type,
             List<MsgToL1> messagesSent,
             List<Event> events,
@@ -504,8 +504,8 @@ mixin _$TxnReceipt {
             Felt transactionHash,
             Felt actualFee,
             String status,
-            Felt blockHash,
-            int blockNumber,
+            Felt? blockHash,
+            int? blockNumber,
             String type,
             List<MsgToL1> messagesSent,
             List<Event> events,
@@ -530,8 +530,8 @@ mixin _$TxnReceipt {
             Felt transactionHash,
             Felt actualFee,
             String status,
-            Felt blockHash,
-            int blockNumber,
+            Felt? blockHash,
+            int? blockNumber,
             String type,
             List<MsgToL1> messagesSent,
             List<Event> events)?
@@ -540,8 +540,8 @@ mixin _$TxnReceipt {
             Felt transactionHash,
             Felt actualFee,
             String status,
-            Felt blockHash,
-            int blockNumber,
+            Felt? blockHash,
+            int? blockNumber,
             String type,
             List<MsgToL1> messagesSent,
             List<Event> events)?
@@ -550,8 +550,8 @@ mixin _$TxnReceipt {
             Felt transactionHash,
             Felt actualFee,
             String status,
-            Felt blockHash,
-            int blockNumber,
+            Felt? blockHash,
+            int? blockNumber,
             String type,
             List<MsgToL1> messagesSent,
             List<Event> events)?
@@ -560,8 +560,8 @@ mixin _$TxnReceipt {
             Felt transactionHash,
             Felt actualFee,
             String status,
-            Felt blockHash,
-            int blockNumber,
+            Felt? blockHash,
+            int? blockNumber,
             String type,
             List<MsgToL1> messagesSent,
             List<Event> events,
@@ -571,8 +571,8 @@ mixin _$TxnReceipt {
             Felt transactionHash,
             Felt actualFee,
             String status,
-            Felt blockHash,
-            int blockNumber,
+            Felt? blockHash,
+            int? blockNumber,
             String type,
             List<MsgToL1> messagesSent,
             List<Event> events,
@@ -597,8 +597,8 @@ mixin _$TxnReceipt {
             Felt transactionHash,
             Felt actualFee,
             String status,
-            Felt blockHash,
-            int blockNumber,
+            Felt? blockHash,
+            int? blockNumber,
             String type,
             List<MsgToL1> messagesSent,
             List<Event> events)?
@@ -607,8 +607,8 @@ mixin _$TxnReceipt {
             Felt transactionHash,
             Felt actualFee,
             String status,
-            Felt blockHash,
-            int blockNumber,
+            Felt? blockHash,
+            int? blockNumber,
             String type,
             List<MsgToL1> messagesSent,
             List<Event> events)?
@@ -617,8 +617,8 @@ mixin _$TxnReceipt {
             Felt transactionHash,
             Felt actualFee,
             String status,
-            Felt blockHash,
-            int blockNumber,
+            Felt? blockHash,
+            int? blockNumber,
             String type,
             List<MsgToL1> messagesSent,
             List<Event> events)?
@@ -627,8 +627,8 @@ mixin _$TxnReceipt {
             Felt transactionHash,
             Felt actualFee,
             String status,
-            Felt blockHash,
-            int blockNumber,
+            Felt? blockHash,
+            int? blockNumber,
             String type,
             List<MsgToL1> messagesSent,
             List<Event> events,
@@ -638,8 +638,8 @@ mixin _$TxnReceipt {
             Felt transactionHash,
             Felt actualFee,
             String status,
-            Felt blockHash,
-            int blockNumber,
+            Felt? blockHash,
+            int? blockNumber,
             String type,
             List<MsgToL1> messagesSent,
             List<Event> events,
@@ -774,8 +774,8 @@ abstract class _$$InvokeTxnReceiptCopyWith<$Res>
       {Felt transactionHash,
       Felt actualFee,
       String status,
-      Felt blockHash,
-      int blockNumber,
+      Felt? blockHash,
+      int? blockNumber,
       String type,
       List<MsgToL1> messagesSent,
       List<Event> events});
@@ -795,8 +795,8 @@ class __$$InvokeTxnReceiptCopyWithImpl<$Res>
     Object? transactionHash = null,
     Object? actualFee = null,
     Object? status = null,
-    Object? blockHash = null,
-    Object? blockNumber = null,
+    Object? blockHash = freezed,
+    Object? blockNumber = freezed,
     Object? type = null,
     Object? messagesSent = null,
     Object? events = null,
@@ -814,14 +814,14 @@ class __$$InvokeTxnReceiptCopyWithImpl<$Res>
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
               as String,
-      blockHash: null == blockHash
+      blockHash: freezed == blockHash
           ? _value.blockHash
           : blockHash // ignore: cast_nullable_to_non_nullable
-              as Felt,
-      blockNumber: null == blockNumber
+              as Felt?,
+      blockNumber: freezed == blockNumber
           ? _value.blockNumber
           : blockNumber // ignore: cast_nullable_to_non_nullable
-              as int,
+              as int?,
       type: null == type
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
@@ -845,8 +845,8 @@ class _$InvokeTxnReceipt implements InvokeTxnReceipt {
       {required this.transactionHash,
       required this.actualFee,
       required this.status,
-      required this.blockHash,
-      required this.blockNumber,
+      this.blockHash,
+      this.blockNumber,
       required this.type,
       required final List<MsgToL1> messagesSent,
       required final List<Event> events,
@@ -866,9 +866,9 @@ class _$InvokeTxnReceipt implements InvokeTxnReceipt {
   @override
   final String status;
   @override
-  final Felt blockHash;
+  final Felt? blockHash;
   @override
-  final int blockNumber;
+  final int? blockNumber;
   @override
   final String type;
   final List<MsgToL1> _messagesSent;
@@ -941,8 +941,8 @@ class _$InvokeTxnReceipt implements InvokeTxnReceipt {
             Felt transactionHash,
             Felt actualFee,
             String status,
-            Felt blockHash,
-            int blockNumber,
+            Felt? blockHash,
+            int? blockNumber,
             String type,
             List<MsgToL1> messagesSent,
             List<Event> events)
@@ -951,8 +951,8 @@ class _$InvokeTxnReceipt implements InvokeTxnReceipt {
             Felt transactionHash,
             Felt actualFee,
             String status,
-            Felt blockHash,
-            int blockNumber,
+            Felt? blockHash,
+            int? blockNumber,
             String type,
             List<MsgToL1> messagesSent,
             List<Event> events)
@@ -961,8 +961,8 @@ class _$InvokeTxnReceipt implements InvokeTxnReceipt {
             Felt transactionHash,
             Felt actualFee,
             String status,
-            Felt blockHash,
-            int blockNumber,
+            Felt? blockHash,
+            int? blockNumber,
             String type,
             List<MsgToL1> messagesSent,
             List<Event> events)
@@ -971,8 +971,8 @@ class _$InvokeTxnReceipt implements InvokeTxnReceipt {
             Felt transactionHash,
             Felt actualFee,
             String status,
-            Felt blockHash,
-            int blockNumber,
+            Felt? blockHash,
+            int? blockNumber,
             String type,
             List<MsgToL1> messagesSent,
             List<Event> events,
@@ -982,8 +982,8 @@ class _$InvokeTxnReceipt implements InvokeTxnReceipt {
             Felt transactionHash,
             Felt actualFee,
             String status,
-            Felt blockHash,
-            int blockNumber,
+            Felt? blockHash,
+            int? blockNumber,
             String type,
             List<MsgToL1> messagesSent,
             List<Event> events,
@@ -1012,8 +1012,8 @@ class _$InvokeTxnReceipt implements InvokeTxnReceipt {
             Felt transactionHash,
             Felt actualFee,
             String status,
-            Felt blockHash,
-            int blockNumber,
+            Felt? blockHash,
+            int? blockNumber,
             String type,
             List<MsgToL1> messagesSent,
             List<Event> events)?
@@ -1022,8 +1022,8 @@ class _$InvokeTxnReceipt implements InvokeTxnReceipt {
             Felt transactionHash,
             Felt actualFee,
             String status,
-            Felt blockHash,
-            int blockNumber,
+            Felt? blockHash,
+            int? blockNumber,
             String type,
             List<MsgToL1> messagesSent,
             List<Event> events)?
@@ -1032,8 +1032,8 @@ class _$InvokeTxnReceipt implements InvokeTxnReceipt {
             Felt transactionHash,
             Felt actualFee,
             String status,
-            Felt blockHash,
-            int blockNumber,
+            Felt? blockHash,
+            int? blockNumber,
             String type,
             List<MsgToL1> messagesSent,
             List<Event> events)?
@@ -1042,8 +1042,8 @@ class _$InvokeTxnReceipt implements InvokeTxnReceipt {
             Felt transactionHash,
             Felt actualFee,
             String status,
-            Felt blockHash,
-            int blockNumber,
+            Felt? blockHash,
+            int? blockNumber,
             String type,
             List<MsgToL1> messagesSent,
             List<Event> events,
@@ -1053,8 +1053,8 @@ class _$InvokeTxnReceipt implements InvokeTxnReceipt {
             Felt transactionHash,
             Felt actualFee,
             String status,
-            Felt blockHash,
-            int blockNumber,
+            Felt? blockHash,
+            int? blockNumber,
             String type,
             List<MsgToL1> messagesSent,
             List<Event> events,
@@ -1083,8 +1083,8 @@ class _$InvokeTxnReceipt implements InvokeTxnReceipt {
             Felt transactionHash,
             Felt actualFee,
             String status,
-            Felt blockHash,
-            int blockNumber,
+            Felt? blockHash,
+            int? blockNumber,
             String type,
             List<MsgToL1> messagesSent,
             List<Event> events)?
@@ -1093,8 +1093,8 @@ class _$InvokeTxnReceipt implements InvokeTxnReceipt {
             Felt transactionHash,
             Felt actualFee,
             String status,
-            Felt blockHash,
-            int blockNumber,
+            Felt? blockHash,
+            int? blockNumber,
             String type,
             List<MsgToL1> messagesSent,
             List<Event> events)?
@@ -1103,8 +1103,8 @@ class _$InvokeTxnReceipt implements InvokeTxnReceipt {
             Felt transactionHash,
             Felt actualFee,
             String status,
-            Felt blockHash,
-            int blockNumber,
+            Felt? blockHash,
+            int? blockNumber,
             String type,
             List<MsgToL1> messagesSent,
             List<Event> events)?
@@ -1113,8 +1113,8 @@ class _$InvokeTxnReceipt implements InvokeTxnReceipt {
             Felt transactionHash,
             Felt actualFee,
             String status,
-            Felt blockHash,
-            int blockNumber,
+            Felt? blockHash,
+            int? blockNumber,
             String type,
             List<MsgToL1> messagesSent,
             List<Event> events,
@@ -1124,8 +1124,8 @@ class _$InvokeTxnReceipt implements InvokeTxnReceipt {
             Felt transactionHash,
             Felt actualFee,
             String status,
-            Felt blockHash,
-            int blockNumber,
+            Felt? blockHash,
+            int? blockNumber,
             String type,
             List<MsgToL1> messagesSent,
             List<Event> events,
@@ -1215,8 +1215,8 @@ abstract class InvokeTxnReceipt implements TxnReceipt {
       {required final Felt transactionHash,
       required final Felt actualFee,
       required final String status,
-      required final Felt blockHash,
-      required final int blockNumber,
+      final Felt? blockHash,
+      final int? blockNumber,
       required final String type,
       required final List<MsgToL1> messagesSent,
       required final List<Event> events}) = _$InvokeTxnReceipt;
@@ -1229,8 +1229,8 @@ abstract class InvokeTxnReceipt implements TxnReceipt {
   @override
   Felt get actualFee;
   String get status;
-  Felt get blockHash;
-  int get blockNumber;
+  Felt? get blockHash;
+  int? get blockNumber;
   @override
   String get type;
   @override
@@ -1255,8 +1255,8 @@ abstract class _$$DeclareTxnReceiptCopyWith<$Res>
       {Felt transactionHash,
       Felt actualFee,
       String status,
-      Felt blockHash,
-      int blockNumber,
+      Felt? blockHash,
+      int? blockNumber,
       String type,
       List<MsgToL1> messagesSent,
       List<Event> events});
@@ -1276,8 +1276,8 @@ class __$$DeclareTxnReceiptCopyWithImpl<$Res>
     Object? transactionHash = null,
     Object? actualFee = null,
     Object? status = null,
-    Object? blockHash = null,
-    Object? blockNumber = null,
+    Object? blockHash = freezed,
+    Object? blockNumber = freezed,
     Object? type = null,
     Object? messagesSent = null,
     Object? events = null,
@@ -1295,14 +1295,14 @@ class __$$DeclareTxnReceiptCopyWithImpl<$Res>
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
               as String,
-      blockHash: null == blockHash
+      blockHash: freezed == blockHash
           ? _value.blockHash
           : blockHash // ignore: cast_nullable_to_non_nullable
-              as Felt,
-      blockNumber: null == blockNumber
+              as Felt?,
+      blockNumber: freezed == blockNumber
           ? _value.blockNumber
           : blockNumber // ignore: cast_nullable_to_non_nullable
-              as int,
+              as int?,
       type: null == type
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
@@ -1326,8 +1326,8 @@ class _$DeclareTxnReceipt implements DeclareTxnReceipt {
       {required this.transactionHash,
       required this.actualFee,
       required this.status,
-      required this.blockHash,
-      required this.blockNumber,
+      this.blockHash,
+      this.blockNumber,
       required this.type,
       required final List<MsgToL1> messagesSent,
       required final List<Event> events,
@@ -1347,9 +1347,9 @@ class _$DeclareTxnReceipt implements DeclareTxnReceipt {
   @override
   final String status;
   @override
-  final Felt blockHash;
+  final Felt? blockHash;
   @override
-  final int blockNumber;
+  final int? blockNumber;
   @override
   final String type;
   final List<MsgToL1> _messagesSent;
@@ -1422,8 +1422,8 @@ class _$DeclareTxnReceipt implements DeclareTxnReceipt {
             Felt transactionHash,
             Felt actualFee,
             String status,
-            Felt blockHash,
-            int blockNumber,
+            Felt? blockHash,
+            int? blockNumber,
             String type,
             List<MsgToL1> messagesSent,
             List<Event> events)
@@ -1432,8 +1432,8 @@ class _$DeclareTxnReceipt implements DeclareTxnReceipt {
             Felt transactionHash,
             Felt actualFee,
             String status,
-            Felt blockHash,
-            int blockNumber,
+            Felt? blockHash,
+            int? blockNumber,
             String type,
             List<MsgToL1> messagesSent,
             List<Event> events)
@@ -1442,8 +1442,8 @@ class _$DeclareTxnReceipt implements DeclareTxnReceipt {
             Felt transactionHash,
             Felt actualFee,
             String status,
-            Felt blockHash,
-            int blockNumber,
+            Felt? blockHash,
+            int? blockNumber,
             String type,
             List<MsgToL1> messagesSent,
             List<Event> events)
@@ -1452,8 +1452,8 @@ class _$DeclareTxnReceipt implements DeclareTxnReceipt {
             Felt transactionHash,
             Felt actualFee,
             String status,
-            Felt blockHash,
-            int blockNumber,
+            Felt? blockHash,
+            int? blockNumber,
             String type,
             List<MsgToL1> messagesSent,
             List<Event> events,
@@ -1463,8 +1463,8 @@ class _$DeclareTxnReceipt implements DeclareTxnReceipt {
             Felt transactionHash,
             Felt actualFee,
             String status,
-            Felt blockHash,
-            int blockNumber,
+            Felt? blockHash,
+            int? blockNumber,
             String type,
             List<MsgToL1> messagesSent,
             List<Event> events,
@@ -1493,8 +1493,8 @@ class _$DeclareTxnReceipt implements DeclareTxnReceipt {
             Felt transactionHash,
             Felt actualFee,
             String status,
-            Felt blockHash,
-            int blockNumber,
+            Felt? blockHash,
+            int? blockNumber,
             String type,
             List<MsgToL1> messagesSent,
             List<Event> events)?
@@ -1503,8 +1503,8 @@ class _$DeclareTxnReceipt implements DeclareTxnReceipt {
             Felt transactionHash,
             Felt actualFee,
             String status,
-            Felt blockHash,
-            int blockNumber,
+            Felt? blockHash,
+            int? blockNumber,
             String type,
             List<MsgToL1> messagesSent,
             List<Event> events)?
@@ -1513,8 +1513,8 @@ class _$DeclareTxnReceipt implements DeclareTxnReceipt {
             Felt transactionHash,
             Felt actualFee,
             String status,
-            Felt blockHash,
-            int blockNumber,
+            Felt? blockHash,
+            int? blockNumber,
             String type,
             List<MsgToL1> messagesSent,
             List<Event> events)?
@@ -1523,8 +1523,8 @@ class _$DeclareTxnReceipt implements DeclareTxnReceipt {
             Felt transactionHash,
             Felt actualFee,
             String status,
-            Felt blockHash,
-            int blockNumber,
+            Felt? blockHash,
+            int? blockNumber,
             String type,
             List<MsgToL1> messagesSent,
             List<Event> events,
@@ -1534,8 +1534,8 @@ class _$DeclareTxnReceipt implements DeclareTxnReceipt {
             Felt transactionHash,
             Felt actualFee,
             String status,
-            Felt blockHash,
-            int blockNumber,
+            Felt? blockHash,
+            int? blockNumber,
             String type,
             List<MsgToL1> messagesSent,
             List<Event> events,
@@ -1564,8 +1564,8 @@ class _$DeclareTxnReceipt implements DeclareTxnReceipt {
             Felt transactionHash,
             Felt actualFee,
             String status,
-            Felt blockHash,
-            int blockNumber,
+            Felt? blockHash,
+            int? blockNumber,
             String type,
             List<MsgToL1> messagesSent,
             List<Event> events)?
@@ -1574,8 +1574,8 @@ class _$DeclareTxnReceipt implements DeclareTxnReceipt {
             Felt transactionHash,
             Felt actualFee,
             String status,
-            Felt blockHash,
-            int blockNumber,
+            Felt? blockHash,
+            int? blockNumber,
             String type,
             List<MsgToL1> messagesSent,
             List<Event> events)?
@@ -1584,8 +1584,8 @@ class _$DeclareTxnReceipt implements DeclareTxnReceipt {
             Felt transactionHash,
             Felt actualFee,
             String status,
-            Felt blockHash,
-            int blockNumber,
+            Felt? blockHash,
+            int? blockNumber,
             String type,
             List<MsgToL1> messagesSent,
             List<Event> events)?
@@ -1594,8 +1594,8 @@ class _$DeclareTxnReceipt implements DeclareTxnReceipt {
             Felt transactionHash,
             Felt actualFee,
             String status,
-            Felt blockHash,
-            int blockNumber,
+            Felt? blockHash,
+            int? blockNumber,
             String type,
             List<MsgToL1> messagesSent,
             List<Event> events,
@@ -1605,8 +1605,8 @@ class _$DeclareTxnReceipt implements DeclareTxnReceipt {
             Felt transactionHash,
             Felt actualFee,
             String status,
-            Felt blockHash,
-            int blockNumber,
+            Felt? blockHash,
+            int? blockNumber,
             String type,
             List<MsgToL1> messagesSent,
             List<Event> events,
@@ -1696,8 +1696,8 @@ abstract class DeclareTxnReceipt implements TxnReceipt {
       {required final Felt transactionHash,
       required final Felt actualFee,
       required final String status,
-      required final Felt blockHash,
-      required final int blockNumber,
+      final Felt? blockHash,
+      final int? blockNumber,
       required final String type,
       required final List<MsgToL1> messagesSent,
       required final List<Event> events}) = _$DeclareTxnReceipt;
@@ -1710,8 +1710,8 @@ abstract class DeclareTxnReceipt implements TxnReceipt {
   @override
   Felt get actualFee;
   String get status;
-  Felt get blockHash;
-  int get blockNumber;
+  Felt? get blockHash;
+  int? get blockNumber;
   @override
   String get type;
   @override
@@ -1736,8 +1736,8 @@ abstract class _$$L1HandlerTxnReceiptCopyWith<$Res>
       {Felt transactionHash,
       Felt actualFee,
       String status,
-      Felt blockHash,
-      int blockNumber,
+      Felt? blockHash,
+      int? blockNumber,
       String type,
       List<MsgToL1> messagesSent,
       List<Event> events});
@@ -1757,8 +1757,8 @@ class __$$L1HandlerTxnReceiptCopyWithImpl<$Res>
     Object? transactionHash = null,
     Object? actualFee = null,
     Object? status = null,
-    Object? blockHash = null,
-    Object? blockNumber = null,
+    Object? blockHash = freezed,
+    Object? blockNumber = freezed,
     Object? type = null,
     Object? messagesSent = null,
     Object? events = null,
@@ -1776,14 +1776,14 @@ class __$$L1HandlerTxnReceiptCopyWithImpl<$Res>
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
               as String,
-      blockHash: null == blockHash
+      blockHash: freezed == blockHash
           ? _value.blockHash
           : blockHash // ignore: cast_nullable_to_non_nullable
-              as Felt,
-      blockNumber: null == blockNumber
+              as Felt?,
+      blockNumber: freezed == blockNumber
           ? _value.blockNumber
           : blockNumber // ignore: cast_nullable_to_non_nullable
-              as int,
+              as int?,
       type: null == type
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
@@ -1807,8 +1807,8 @@ class _$L1HandlerTxnReceipt implements L1HandlerTxnReceipt {
       {required this.transactionHash,
       required this.actualFee,
       required this.status,
-      required this.blockHash,
-      required this.blockNumber,
+      this.blockHash,
+      this.blockNumber,
       required this.type,
       required final List<MsgToL1> messagesSent,
       required final List<Event> events,
@@ -1828,9 +1828,9 @@ class _$L1HandlerTxnReceipt implements L1HandlerTxnReceipt {
   @override
   final String status;
   @override
-  final Felt blockHash;
+  final Felt? blockHash;
   @override
-  final int blockNumber;
+  final int? blockNumber;
   @override
   final String type;
   final List<MsgToL1> _messagesSent;
@@ -1904,8 +1904,8 @@ class _$L1HandlerTxnReceipt implements L1HandlerTxnReceipt {
             Felt transactionHash,
             Felt actualFee,
             String status,
-            Felt blockHash,
-            int blockNumber,
+            Felt? blockHash,
+            int? blockNumber,
             String type,
             List<MsgToL1> messagesSent,
             List<Event> events)
@@ -1914,8 +1914,8 @@ class _$L1HandlerTxnReceipt implements L1HandlerTxnReceipt {
             Felt transactionHash,
             Felt actualFee,
             String status,
-            Felt blockHash,
-            int blockNumber,
+            Felt? blockHash,
+            int? blockNumber,
             String type,
             List<MsgToL1> messagesSent,
             List<Event> events)
@@ -1924,8 +1924,8 @@ class _$L1HandlerTxnReceipt implements L1HandlerTxnReceipt {
             Felt transactionHash,
             Felt actualFee,
             String status,
-            Felt blockHash,
-            int blockNumber,
+            Felt? blockHash,
+            int? blockNumber,
             String type,
             List<MsgToL1> messagesSent,
             List<Event> events)
@@ -1934,8 +1934,8 @@ class _$L1HandlerTxnReceipt implements L1HandlerTxnReceipt {
             Felt transactionHash,
             Felt actualFee,
             String status,
-            Felt blockHash,
-            int blockNumber,
+            Felt? blockHash,
+            int? blockNumber,
             String type,
             List<MsgToL1> messagesSent,
             List<Event> events,
@@ -1945,8 +1945,8 @@ class _$L1HandlerTxnReceipt implements L1HandlerTxnReceipt {
             Felt transactionHash,
             Felt actualFee,
             String status,
-            Felt blockHash,
-            int blockNumber,
+            Felt? blockHash,
+            int? blockNumber,
             String type,
             List<MsgToL1> messagesSent,
             List<Event> events,
@@ -1975,8 +1975,8 @@ class _$L1HandlerTxnReceipt implements L1HandlerTxnReceipt {
             Felt transactionHash,
             Felt actualFee,
             String status,
-            Felt blockHash,
-            int blockNumber,
+            Felt? blockHash,
+            int? blockNumber,
             String type,
             List<MsgToL1> messagesSent,
             List<Event> events)?
@@ -1985,8 +1985,8 @@ class _$L1HandlerTxnReceipt implements L1HandlerTxnReceipt {
             Felt transactionHash,
             Felt actualFee,
             String status,
-            Felt blockHash,
-            int blockNumber,
+            Felt? blockHash,
+            int? blockNumber,
             String type,
             List<MsgToL1> messagesSent,
             List<Event> events)?
@@ -1995,8 +1995,8 @@ class _$L1HandlerTxnReceipt implements L1HandlerTxnReceipt {
             Felt transactionHash,
             Felt actualFee,
             String status,
-            Felt blockHash,
-            int blockNumber,
+            Felt? blockHash,
+            int? blockNumber,
             String type,
             List<MsgToL1> messagesSent,
             List<Event> events)?
@@ -2005,8 +2005,8 @@ class _$L1HandlerTxnReceipt implements L1HandlerTxnReceipt {
             Felt transactionHash,
             Felt actualFee,
             String status,
-            Felt blockHash,
-            int blockNumber,
+            Felt? blockHash,
+            int? blockNumber,
             String type,
             List<MsgToL1> messagesSent,
             List<Event> events,
@@ -2016,8 +2016,8 @@ class _$L1HandlerTxnReceipt implements L1HandlerTxnReceipt {
             Felt transactionHash,
             Felt actualFee,
             String status,
-            Felt blockHash,
-            int blockNumber,
+            Felt? blockHash,
+            int? blockNumber,
             String type,
             List<MsgToL1> messagesSent,
             List<Event> events,
@@ -2046,8 +2046,8 @@ class _$L1HandlerTxnReceipt implements L1HandlerTxnReceipt {
             Felt transactionHash,
             Felt actualFee,
             String status,
-            Felt blockHash,
-            int blockNumber,
+            Felt? blockHash,
+            int? blockNumber,
             String type,
             List<MsgToL1> messagesSent,
             List<Event> events)?
@@ -2056,8 +2056,8 @@ class _$L1HandlerTxnReceipt implements L1HandlerTxnReceipt {
             Felt transactionHash,
             Felt actualFee,
             String status,
-            Felt blockHash,
-            int blockNumber,
+            Felt? blockHash,
+            int? blockNumber,
             String type,
             List<MsgToL1> messagesSent,
             List<Event> events)?
@@ -2066,8 +2066,8 @@ class _$L1HandlerTxnReceipt implements L1HandlerTxnReceipt {
             Felt transactionHash,
             Felt actualFee,
             String status,
-            Felt blockHash,
-            int blockNumber,
+            Felt? blockHash,
+            int? blockNumber,
             String type,
             List<MsgToL1> messagesSent,
             List<Event> events)?
@@ -2076,8 +2076,8 @@ class _$L1HandlerTxnReceipt implements L1HandlerTxnReceipt {
             Felt transactionHash,
             Felt actualFee,
             String status,
-            Felt blockHash,
-            int blockNumber,
+            Felt? blockHash,
+            int? blockNumber,
             String type,
             List<MsgToL1> messagesSent,
             List<Event> events,
@@ -2087,8 +2087,8 @@ class _$L1HandlerTxnReceipt implements L1HandlerTxnReceipt {
             Felt transactionHash,
             Felt actualFee,
             String status,
-            Felt blockHash,
-            int blockNumber,
+            Felt? blockHash,
+            int? blockNumber,
             String type,
             List<MsgToL1> messagesSent,
             List<Event> events,
@@ -2178,8 +2178,8 @@ abstract class L1HandlerTxnReceipt implements TxnReceipt {
       {required final Felt transactionHash,
       required final Felt actualFee,
       required final String status,
-      required final Felt blockHash,
-      required final int blockNumber,
+      final Felt? blockHash,
+      final int? blockNumber,
       required final String type,
       required final List<MsgToL1> messagesSent,
       required final List<Event> events}) = _$L1HandlerTxnReceipt;
@@ -2192,8 +2192,8 @@ abstract class L1HandlerTxnReceipt implements TxnReceipt {
   @override
   Felt get actualFee;
   String get status;
-  Felt get blockHash;
-  int get blockNumber;
+  Felt? get blockHash;
+  int? get blockNumber;
   @override
   String get type;
   @override
@@ -2218,8 +2218,8 @@ abstract class _$$DeployTxnReceiptCopyWith<$Res>
       {Felt transactionHash,
       Felt actualFee,
       String status,
-      Felt blockHash,
-      int blockNumber,
+      Felt? blockHash,
+      int? blockNumber,
       String type,
       List<MsgToL1> messagesSent,
       List<Event> events,
@@ -2240,8 +2240,8 @@ class __$$DeployTxnReceiptCopyWithImpl<$Res>
     Object? transactionHash = null,
     Object? actualFee = null,
     Object? status = null,
-    Object? blockHash = null,
-    Object? blockNumber = null,
+    Object? blockHash = freezed,
+    Object? blockNumber = freezed,
     Object? type = null,
     Object? messagesSent = null,
     Object? events = null,
@@ -2260,14 +2260,14 @@ class __$$DeployTxnReceiptCopyWithImpl<$Res>
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
               as String,
-      blockHash: null == blockHash
+      blockHash: freezed == blockHash
           ? _value.blockHash
           : blockHash // ignore: cast_nullable_to_non_nullable
-              as Felt,
-      blockNumber: null == blockNumber
+              as Felt?,
+      blockNumber: freezed == blockNumber
           ? _value.blockNumber
           : blockNumber // ignore: cast_nullable_to_non_nullable
-              as int,
+              as int?,
       type: null == type
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
@@ -2295,8 +2295,8 @@ class _$DeployTxnReceipt implements DeployTxnReceipt {
       {required this.transactionHash,
       required this.actualFee,
       required this.status,
-      required this.blockHash,
-      required this.blockNumber,
+      this.blockHash,
+      this.blockNumber,
       required this.type,
       required final List<MsgToL1> messagesSent,
       required final List<Event> events,
@@ -2317,9 +2317,9 @@ class _$DeployTxnReceipt implements DeployTxnReceipt {
   @override
   final String status;
   @override
-  final Felt blockHash;
+  final Felt? blockHash;
   @override
-  final int blockNumber;
+  final int? blockNumber;
   @override
   final String type;
   final List<MsgToL1> _messagesSent;
@@ -2399,8 +2399,8 @@ class _$DeployTxnReceipt implements DeployTxnReceipt {
             Felt transactionHash,
             Felt actualFee,
             String status,
-            Felt blockHash,
-            int blockNumber,
+            Felt? blockHash,
+            int? blockNumber,
             String type,
             List<MsgToL1> messagesSent,
             List<Event> events)
@@ -2409,8 +2409,8 @@ class _$DeployTxnReceipt implements DeployTxnReceipt {
             Felt transactionHash,
             Felt actualFee,
             String status,
-            Felt blockHash,
-            int blockNumber,
+            Felt? blockHash,
+            int? blockNumber,
             String type,
             List<MsgToL1> messagesSent,
             List<Event> events)
@@ -2419,8 +2419,8 @@ class _$DeployTxnReceipt implements DeployTxnReceipt {
             Felt transactionHash,
             Felt actualFee,
             String status,
-            Felt blockHash,
-            int blockNumber,
+            Felt? blockHash,
+            int? blockNumber,
             String type,
             List<MsgToL1> messagesSent,
             List<Event> events)
@@ -2429,8 +2429,8 @@ class _$DeployTxnReceipt implements DeployTxnReceipt {
             Felt transactionHash,
             Felt actualFee,
             String status,
-            Felt blockHash,
-            int blockNumber,
+            Felt? blockHash,
+            int? blockNumber,
             String type,
             List<MsgToL1> messagesSent,
             List<Event> events,
@@ -2440,8 +2440,8 @@ class _$DeployTxnReceipt implements DeployTxnReceipt {
             Felt transactionHash,
             Felt actualFee,
             String status,
-            Felt blockHash,
-            int blockNumber,
+            Felt? blockHash,
+            int? blockNumber,
             String type,
             List<MsgToL1> messagesSent,
             List<Event> events,
@@ -2470,8 +2470,8 @@ class _$DeployTxnReceipt implements DeployTxnReceipt {
             Felt transactionHash,
             Felt actualFee,
             String status,
-            Felt blockHash,
-            int blockNumber,
+            Felt? blockHash,
+            int? blockNumber,
             String type,
             List<MsgToL1> messagesSent,
             List<Event> events)?
@@ -2480,8 +2480,8 @@ class _$DeployTxnReceipt implements DeployTxnReceipt {
             Felt transactionHash,
             Felt actualFee,
             String status,
-            Felt blockHash,
-            int blockNumber,
+            Felt? blockHash,
+            int? blockNumber,
             String type,
             List<MsgToL1> messagesSent,
             List<Event> events)?
@@ -2490,8 +2490,8 @@ class _$DeployTxnReceipt implements DeployTxnReceipt {
             Felt transactionHash,
             Felt actualFee,
             String status,
-            Felt blockHash,
-            int blockNumber,
+            Felt? blockHash,
+            int? blockNumber,
             String type,
             List<MsgToL1> messagesSent,
             List<Event> events)?
@@ -2500,8 +2500,8 @@ class _$DeployTxnReceipt implements DeployTxnReceipt {
             Felt transactionHash,
             Felt actualFee,
             String status,
-            Felt blockHash,
-            int blockNumber,
+            Felt? blockHash,
+            int? blockNumber,
             String type,
             List<MsgToL1> messagesSent,
             List<Event> events,
@@ -2511,8 +2511,8 @@ class _$DeployTxnReceipt implements DeployTxnReceipt {
             Felt transactionHash,
             Felt actualFee,
             String status,
-            Felt blockHash,
-            int blockNumber,
+            Felt? blockHash,
+            int? blockNumber,
             String type,
             List<MsgToL1> messagesSent,
             List<Event> events,
@@ -2541,8 +2541,8 @@ class _$DeployTxnReceipt implements DeployTxnReceipt {
             Felt transactionHash,
             Felt actualFee,
             String status,
-            Felt blockHash,
-            int blockNumber,
+            Felt? blockHash,
+            int? blockNumber,
             String type,
             List<MsgToL1> messagesSent,
             List<Event> events)?
@@ -2551,8 +2551,8 @@ class _$DeployTxnReceipt implements DeployTxnReceipt {
             Felt transactionHash,
             Felt actualFee,
             String status,
-            Felt blockHash,
-            int blockNumber,
+            Felt? blockHash,
+            int? blockNumber,
             String type,
             List<MsgToL1> messagesSent,
             List<Event> events)?
@@ -2561,8 +2561,8 @@ class _$DeployTxnReceipt implements DeployTxnReceipt {
             Felt transactionHash,
             Felt actualFee,
             String status,
-            Felt blockHash,
-            int blockNumber,
+            Felt? blockHash,
+            int? blockNumber,
             String type,
             List<MsgToL1> messagesSent,
             List<Event> events)?
@@ -2571,8 +2571,8 @@ class _$DeployTxnReceipt implements DeployTxnReceipt {
             Felt transactionHash,
             Felt actualFee,
             String status,
-            Felt blockHash,
-            int blockNumber,
+            Felt? blockHash,
+            int? blockNumber,
             String type,
             List<MsgToL1> messagesSent,
             List<Event> events,
@@ -2582,8 +2582,8 @@ class _$DeployTxnReceipt implements DeployTxnReceipt {
             Felt transactionHash,
             Felt actualFee,
             String status,
-            Felt blockHash,
-            int blockNumber,
+            Felt? blockHash,
+            int? blockNumber,
             String type,
             List<MsgToL1> messagesSent,
             List<Event> events,
@@ -2673,8 +2673,8 @@ abstract class DeployTxnReceipt implements TxnReceipt {
       {required final Felt transactionHash,
       required final Felt actualFee,
       required final String status,
-      required final Felt blockHash,
-      required final int blockNumber,
+      final Felt? blockHash,
+      final int? blockNumber,
       required final String type,
       required final List<MsgToL1> messagesSent,
       required final List<Event> events,
@@ -2688,8 +2688,8 @@ abstract class DeployTxnReceipt implements TxnReceipt {
   @override
   Felt get actualFee;
   String get status;
-  Felt get blockHash;
-  int get blockNumber;
+  Felt? get blockHash;
+  int? get blockNumber;
   @override
   String get type;
   @override
@@ -2715,8 +2715,8 @@ abstract class _$$DeployAccountTxnReceiptCopyWith<$Res>
       {Felt transactionHash,
       Felt actualFee,
       String status,
-      Felt blockHash,
-      int blockNumber,
+      Felt? blockHash,
+      int? blockNumber,
       String type,
       List<MsgToL1> messagesSent,
       List<Event> events,
@@ -2737,8 +2737,8 @@ class __$$DeployAccountTxnReceiptCopyWithImpl<$Res>
     Object? transactionHash = null,
     Object? actualFee = null,
     Object? status = null,
-    Object? blockHash = null,
-    Object? blockNumber = null,
+    Object? blockHash = freezed,
+    Object? blockNumber = freezed,
     Object? type = null,
     Object? messagesSent = null,
     Object? events = null,
@@ -2757,14 +2757,14 @@ class __$$DeployAccountTxnReceiptCopyWithImpl<$Res>
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
               as String,
-      blockHash: null == blockHash
+      blockHash: freezed == blockHash
           ? _value.blockHash
           : blockHash // ignore: cast_nullable_to_non_nullable
-              as Felt,
-      blockNumber: null == blockNumber
+              as Felt?,
+      blockNumber: freezed == blockNumber
           ? _value.blockNumber
           : blockNumber // ignore: cast_nullable_to_non_nullable
-              as int,
+              as int?,
       type: null == type
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
@@ -2792,8 +2792,8 @@ class _$DeployAccountTxnReceipt implements DeployAccountTxnReceipt {
       {required this.transactionHash,
       required this.actualFee,
       required this.status,
-      required this.blockHash,
-      required this.blockNumber,
+      this.blockHash,
+      this.blockNumber,
       required this.type,
       required final List<MsgToL1> messagesSent,
       required final List<Event> events,
@@ -2814,9 +2814,9 @@ class _$DeployAccountTxnReceipt implements DeployAccountTxnReceipt {
   @override
   final String status;
   @override
-  final Felt blockHash;
+  final Felt? blockHash;
   @override
-  final int blockNumber;
+  final int? blockNumber;
   @override
   final String type;
   final List<MsgToL1> _messagesSent;
@@ -2897,8 +2897,8 @@ class _$DeployAccountTxnReceipt implements DeployAccountTxnReceipt {
             Felt transactionHash,
             Felt actualFee,
             String status,
-            Felt blockHash,
-            int blockNumber,
+            Felt? blockHash,
+            int? blockNumber,
             String type,
             List<MsgToL1> messagesSent,
             List<Event> events)
@@ -2907,8 +2907,8 @@ class _$DeployAccountTxnReceipt implements DeployAccountTxnReceipt {
             Felt transactionHash,
             Felt actualFee,
             String status,
-            Felt blockHash,
-            int blockNumber,
+            Felt? blockHash,
+            int? blockNumber,
             String type,
             List<MsgToL1> messagesSent,
             List<Event> events)
@@ -2917,8 +2917,8 @@ class _$DeployAccountTxnReceipt implements DeployAccountTxnReceipt {
             Felt transactionHash,
             Felt actualFee,
             String status,
-            Felt blockHash,
-            int blockNumber,
+            Felt? blockHash,
+            int? blockNumber,
             String type,
             List<MsgToL1> messagesSent,
             List<Event> events)
@@ -2927,8 +2927,8 @@ class _$DeployAccountTxnReceipt implements DeployAccountTxnReceipt {
             Felt transactionHash,
             Felt actualFee,
             String status,
-            Felt blockHash,
-            int blockNumber,
+            Felt? blockHash,
+            int? blockNumber,
             String type,
             List<MsgToL1> messagesSent,
             List<Event> events,
@@ -2938,8 +2938,8 @@ class _$DeployAccountTxnReceipt implements DeployAccountTxnReceipt {
             Felt transactionHash,
             Felt actualFee,
             String status,
-            Felt blockHash,
-            int blockNumber,
+            Felt? blockHash,
+            int? blockNumber,
             String type,
             List<MsgToL1> messagesSent,
             List<Event> events,
@@ -2968,8 +2968,8 @@ class _$DeployAccountTxnReceipt implements DeployAccountTxnReceipt {
             Felt transactionHash,
             Felt actualFee,
             String status,
-            Felt blockHash,
-            int blockNumber,
+            Felt? blockHash,
+            int? blockNumber,
             String type,
             List<MsgToL1> messagesSent,
             List<Event> events)?
@@ -2978,8 +2978,8 @@ class _$DeployAccountTxnReceipt implements DeployAccountTxnReceipt {
             Felt transactionHash,
             Felt actualFee,
             String status,
-            Felt blockHash,
-            int blockNumber,
+            Felt? blockHash,
+            int? blockNumber,
             String type,
             List<MsgToL1> messagesSent,
             List<Event> events)?
@@ -2988,8 +2988,8 @@ class _$DeployAccountTxnReceipt implements DeployAccountTxnReceipt {
             Felt transactionHash,
             Felt actualFee,
             String status,
-            Felt blockHash,
-            int blockNumber,
+            Felt? blockHash,
+            int? blockNumber,
             String type,
             List<MsgToL1> messagesSent,
             List<Event> events)?
@@ -2998,8 +2998,8 @@ class _$DeployAccountTxnReceipt implements DeployAccountTxnReceipt {
             Felt transactionHash,
             Felt actualFee,
             String status,
-            Felt blockHash,
-            int blockNumber,
+            Felt? blockHash,
+            int? blockNumber,
             String type,
             List<MsgToL1> messagesSent,
             List<Event> events,
@@ -3009,8 +3009,8 @@ class _$DeployAccountTxnReceipt implements DeployAccountTxnReceipt {
             Felt transactionHash,
             Felt actualFee,
             String status,
-            Felt blockHash,
-            int blockNumber,
+            Felt? blockHash,
+            int? blockNumber,
             String type,
             List<MsgToL1> messagesSent,
             List<Event> events,
@@ -3039,8 +3039,8 @@ class _$DeployAccountTxnReceipt implements DeployAccountTxnReceipt {
             Felt transactionHash,
             Felt actualFee,
             String status,
-            Felt blockHash,
-            int blockNumber,
+            Felt? blockHash,
+            int? blockNumber,
             String type,
             List<MsgToL1> messagesSent,
             List<Event> events)?
@@ -3049,8 +3049,8 @@ class _$DeployAccountTxnReceipt implements DeployAccountTxnReceipt {
             Felt transactionHash,
             Felt actualFee,
             String status,
-            Felt blockHash,
-            int blockNumber,
+            Felt? blockHash,
+            int? blockNumber,
             String type,
             List<MsgToL1> messagesSent,
             List<Event> events)?
@@ -3059,8 +3059,8 @@ class _$DeployAccountTxnReceipt implements DeployAccountTxnReceipt {
             Felt transactionHash,
             Felt actualFee,
             String status,
-            Felt blockHash,
-            int blockNumber,
+            Felt? blockHash,
+            int? blockNumber,
             String type,
             List<MsgToL1> messagesSent,
             List<Event> events)?
@@ -3069,8 +3069,8 @@ class _$DeployAccountTxnReceipt implements DeployAccountTxnReceipt {
             Felt transactionHash,
             Felt actualFee,
             String status,
-            Felt blockHash,
-            int blockNumber,
+            Felt? blockHash,
+            int? blockNumber,
             String type,
             List<MsgToL1> messagesSent,
             List<Event> events,
@@ -3080,8 +3080,8 @@ class _$DeployAccountTxnReceipt implements DeployAccountTxnReceipt {
             Felt transactionHash,
             Felt actualFee,
             String status,
-            Felt blockHash,
-            int blockNumber,
+            Felt? blockHash,
+            int? blockNumber,
             String type,
             List<MsgToL1> messagesSent,
             List<Event> events,
@@ -3171,8 +3171,8 @@ abstract class DeployAccountTxnReceipt implements TxnReceipt {
       {required final Felt transactionHash,
       required final Felt actualFee,
       required final String status,
-      required final Felt blockHash,
-      required final int blockNumber,
+      final Felt? blockHash,
+      final int? blockNumber,
       required final String type,
       required final List<MsgToL1> messagesSent,
       required final List<Event> events,
@@ -3186,8 +3186,8 @@ abstract class DeployAccountTxnReceipt implements TxnReceipt {
   @override
   Felt get actualFee;
   String get status;
-  Felt get blockHash;
-  int get blockNumber;
+  Felt? get blockHash;
+  int? get blockNumber;
   @override
   String get type;
   @override
@@ -3360,8 +3360,8 @@ class _$PendingDeployTxnReceipt implements PendingDeployTxnReceipt {
             Felt transactionHash,
             Felt actualFee,
             String status,
-            Felt blockHash,
-            int blockNumber,
+            Felt? blockHash,
+            int? blockNumber,
             String type,
             List<MsgToL1> messagesSent,
             List<Event> events)
@@ -3370,8 +3370,8 @@ class _$PendingDeployTxnReceipt implements PendingDeployTxnReceipt {
             Felt transactionHash,
             Felt actualFee,
             String status,
-            Felt blockHash,
-            int blockNumber,
+            Felt? blockHash,
+            int? blockNumber,
             String type,
             List<MsgToL1> messagesSent,
             List<Event> events)
@@ -3380,8 +3380,8 @@ class _$PendingDeployTxnReceipt implements PendingDeployTxnReceipt {
             Felt transactionHash,
             Felt actualFee,
             String status,
-            Felt blockHash,
-            int blockNumber,
+            Felt? blockHash,
+            int? blockNumber,
             String type,
             List<MsgToL1> messagesSent,
             List<Event> events)
@@ -3390,8 +3390,8 @@ class _$PendingDeployTxnReceipt implements PendingDeployTxnReceipt {
             Felt transactionHash,
             Felt actualFee,
             String status,
-            Felt blockHash,
-            int blockNumber,
+            Felt? blockHash,
+            int? blockNumber,
             String type,
             List<MsgToL1> messagesSent,
             List<Event> events,
@@ -3401,8 +3401,8 @@ class _$PendingDeployTxnReceipt implements PendingDeployTxnReceipt {
             Felt transactionHash,
             Felt actualFee,
             String status,
-            Felt blockHash,
-            int blockNumber,
+            Felt? blockHash,
+            int? blockNumber,
             String type,
             List<MsgToL1> messagesSent,
             List<Event> events,
@@ -3431,8 +3431,8 @@ class _$PendingDeployTxnReceipt implements PendingDeployTxnReceipt {
             Felt transactionHash,
             Felt actualFee,
             String status,
-            Felt blockHash,
-            int blockNumber,
+            Felt? blockHash,
+            int? blockNumber,
             String type,
             List<MsgToL1> messagesSent,
             List<Event> events)?
@@ -3441,8 +3441,8 @@ class _$PendingDeployTxnReceipt implements PendingDeployTxnReceipt {
             Felt transactionHash,
             Felt actualFee,
             String status,
-            Felt blockHash,
-            int blockNumber,
+            Felt? blockHash,
+            int? blockNumber,
             String type,
             List<MsgToL1> messagesSent,
             List<Event> events)?
@@ -3451,8 +3451,8 @@ class _$PendingDeployTxnReceipt implements PendingDeployTxnReceipt {
             Felt transactionHash,
             Felt actualFee,
             String status,
-            Felt blockHash,
-            int blockNumber,
+            Felt? blockHash,
+            int? blockNumber,
             String type,
             List<MsgToL1> messagesSent,
             List<Event> events)?
@@ -3461,8 +3461,8 @@ class _$PendingDeployTxnReceipt implements PendingDeployTxnReceipt {
             Felt transactionHash,
             Felt actualFee,
             String status,
-            Felt blockHash,
-            int blockNumber,
+            Felt? blockHash,
+            int? blockNumber,
             String type,
             List<MsgToL1> messagesSent,
             List<Event> events,
@@ -3472,8 +3472,8 @@ class _$PendingDeployTxnReceipt implements PendingDeployTxnReceipt {
             Felt transactionHash,
             Felt actualFee,
             String status,
-            Felt blockHash,
-            int blockNumber,
+            Felt? blockHash,
+            int? blockNumber,
             String type,
             List<MsgToL1> messagesSent,
             List<Event> events,
@@ -3502,8 +3502,8 @@ class _$PendingDeployTxnReceipt implements PendingDeployTxnReceipt {
             Felt transactionHash,
             Felt actualFee,
             String status,
-            Felt blockHash,
-            int blockNumber,
+            Felt? blockHash,
+            int? blockNumber,
             String type,
             List<MsgToL1> messagesSent,
             List<Event> events)?
@@ -3512,8 +3512,8 @@ class _$PendingDeployTxnReceipt implements PendingDeployTxnReceipt {
             Felt transactionHash,
             Felt actualFee,
             String status,
-            Felt blockHash,
-            int blockNumber,
+            Felt? blockHash,
+            int? blockNumber,
             String type,
             List<MsgToL1> messagesSent,
             List<Event> events)?
@@ -3522,8 +3522,8 @@ class _$PendingDeployTxnReceipt implements PendingDeployTxnReceipt {
             Felt transactionHash,
             Felt actualFee,
             String status,
-            Felt blockHash,
-            int blockNumber,
+            Felt? blockHash,
+            int? blockNumber,
             String type,
             List<MsgToL1> messagesSent,
             List<Event> events)?
@@ -3532,8 +3532,8 @@ class _$PendingDeployTxnReceipt implements PendingDeployTxnReceipt {
             Felt transactionHash,
             Felt actualFee,
             String status,
-            Felt blockHash,
-            int blockNumber,
+            Felt? blockHash,
+            int? blockNumber,
             String type,
             List<MsgToL1> messagesSent,
             List<Event> events,
@@ -3543,8 +3543,8 @@ class _$PendingDeployTxnReceipt implements PendingDeployTxnReceipt {
             Felt transactionHash,
             Felt actualFee,
             String status,
-            Felt blockHash,
-            int blockNumber,
+            Felt? blockHash,
+            int? blockNumber,
             String type,
             List<MsgToL1> messagesSent,
             List<Event> events,
@@ -3807,8 +3807,8 @@ class _$PendingCommonReceiptProperties
             Felt transactionHash,
             Felt actualFee,
             String status,
-            Felt blockHash,
-            int blockNumber,
+            Felt? blockHash,
+            int? blockNumber,
             String type,
             List<MsgToL1> messagesSent,
             List<Event> events)
@@ -3817,8 +3817,8 @@ class _$PendingCommonReceiptProperties
             Felt transactionHash,
             Felt actualFee,
             String status,
-            Felt blockHash,
-            int blockNumber,
+            Felt? blockHash,
+            int? blockNumber,
             String type,
             List<MsgToL1> messagesSent,
             List<Event> events)
@@ -3827,8 +3827,8 @@ class _$PendingCommonReceiptProperties
             Felt transactionHash,
             Felt actualFee,
             String status,
-            Felt blockHash,
-            int blockNumber,
+            Felt? blockHash,
+            int? blockNumber,
             String type,
             List<MsgToL1> messagesSent,
             List<Event> events)
@@ -3837,8 +3837,8 @@ class _$PendingCommonReceiptProperties
             Felt transactionHash,
             Felt actualFee,
             String status,
-            Felt blockHash,
-            int blockNumber,
+            Felt? blockHash,
+            int? blockNumber,
             String type,
             List<MsgToL1> messagesSent,
             List<Event> events,
@@ -3848,8 +3848,8 @@ class _$PendingCommonReceiptProperties
             Felt transactionHash,
             Felt actualFee,
             String status,
-            Felt blockHash,
-            int blockNumber,
+            Felt? blockHash,
+            int? blockNumber,
             String type,
             List<MsgToL1> messagesSent,
             List<Event> events,
@@ -3878,8 +3878,8 @@ class _$PendingCommonReceiptProperties
             Felt transactionHash,
             Felt actualFee,
             String status,
-            Felt blockHash,
-            int blockNumber,
+            Felt? blockHash,
+            int? blockNumber,
             String type,
             List<MsgToL1> messagesSent,
             List<Event> events)?
@@ -3888,8 +3888,8 @@ class _$PendingCommonReceiptProperties
             Felt transactionHash,
             Felt actualFee,
             String status,
-            Felt blockHash,
-            int blockNumber,
+            Felt? blockHash,
+            int? blockNumber,
             String type,
             List<MsgToL1> messagesSent,
             List<Event> events)?
@@ -3898,8 +3898,8 @@ class _$PendingCommonReceiptProperties
             Felt transactionHash,
             Felt actualFee,
             String status,
-            Felt blockHash,
-            int blockNumber,
+            Felt? blockHash,
+            int? blockNumber,
             String type,
             List<MsgToL1> messagesSent,
             List<Event> events)?
@@ -3908,8 +3908,8 @@ class _$PendingCommonReceiptProperties
             Felt transactionHash,
             Felt actualFee,
             String status,
-            Felt blockHash,
-            int blockNumber,
+            Felt? blockHash,
+            int? blockNumber,
             String type,
             List<MsgToL1> messagesSent,
             List<Event> events,
@@ -3919,8 +3919,8 @@ class _$PendingCommonReceiptProperties
             Felt transactionHash,
             Felt actualFee,
             String status,
-            Felt blockHash,
-            int blockNumber,
+            Felt? blockHash,
+            int? blockNumber,
             String type,
             List<MsgToL1> messagesSent,
             List<Event> events,
@@ -3949,8 +3949,8 @@ class _$PendingCommonReceiptProperties
             Felt transactionHash,
             Felt actualFee,
             String status,
-            Felt blockHash,
-            int blockNumber,
+            Felt? blockHash,
+            int? blockNumber,
             String type,
             List<MsgToL1> messagesSent,
             List<Event> events)?
@@ -3959,8 +3959,8 @@ class _$PendingCommonReceiptProperties
             Felt transactionHash,
             Felt actualFee,
             String status,
-            Felt blockHash,
-            int blockNumber,
+            Felt? blockHash,
+            int? blockNumber,
             String type,
             List<MsgToL1> messagesSent,
             List<Event> events)?
@@ -3969,8 +3969,8 @@ class _$PendingCommonReceiptProperties
             Felt transactionHash,
             Felt actualFee,
             String status,
-            Felt blockHash,
-            int blockNumber,
+            Felt? blockHash,
+            int? blockNumber,
             String type,
             List<MsgToL1> messagesSent,
             List<Event> events)?
@@ -3979,8 +3979,8 @@ class _$PendingCommonReceiptProperties
             Felt transactionHash,
             Felt actualFee,
             String status,
-            Felt blockHash,
-            int blockNumber,
+            Felt? blockHash,
+            int? blockNumber,
             String type,
             List<MsgToL1> messagesSent,
             List<Event> events,
@@ -3990,8 +3990,8 @@ class _$PendingCommonReceiptProperties
             Felt transactionHash,
             Felt actualFee,
             String status,
-            Felt blockHash,
-            int blockNumber,
+            Felt? blockHash,
+            int? blockNumber,
             String type,
             List<MsgToL1> messagesSent,
             List<Event> events,

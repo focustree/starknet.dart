@@ -1,4 +1,5 @@
 // Generated code, do not modify. Run `build_runner build` to re-generate!
+// ignore_for_file: unused_element
 
 import 'package:starknet/starknet.dart';
 

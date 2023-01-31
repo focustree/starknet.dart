@@ -78,7 +78,6 @@ class MultipleOutputsResult {
 
   factory MultipleOutputsResult.fromCallData(List<Felt> callData) {
     int offset = 0;
-    int _tmpSize = 0;
     final account = MyAccount.fromCallData(callData.sublist(offset));
     offset = offset + 3;
     final total = Uint256.fromCallData(callData.sublist(offset));

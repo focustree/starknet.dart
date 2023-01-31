@@ -1,3 +1,4 @@
+import 'package:starknet/src/presets/udc.g.dart';
 import 'package:starknet/starknet.dart';
 
 enum AccountSupportedTxVersion {
@@ -17,7 +18,7 @@ class Account {
     required this.signer,
     required this.accountAddress,
     required this.chainId,
-    this.supportedTxVersion = AccountSupportedTxVersion.v0,
+    this.supportedTxVersion = AccountSupportedTxVersion.v1,
   });
 
   Future<InvokeTransactionResponse> execute({
@@ -83,6 +84,25 @@ class Account {
       ),
     );
   }
+
+  Future<Felt?> deploy({
+    required Felt classHash,
+    Felt? salt,
+    Felt? unique,
+    List<Felt>? calldata,
+  }) async {
+    salt ??= Felt.fromInt(0);
+    unique ??= Felt.fromInt(0);
+    calldata ??= [];
+
+    final txHash = await Udc(account: this, address: udcAddress)
+        .deployContract(classHash, salt, unique, calldata);
+
+    final txReceipt = await account0.provider
+        .getTransactionReceipt(Felt.fromHexString(txHash));
+
+    return getDeployedContractAddress(txReceipt);
+  }
 }
 
 Account getAccount({
@@ -103,4 +123,14 @@ Account getAccount({
     accountAddress: accountAddress,
     chainId: StarknetChainId.testNet,
   );
+}
+
+Felt? getDeployedContractAddress(GetTransactionReceipt txReceipt) {
+  return txReceipt.when(
+      result: (r) {
+        final contractDeployedEvent = r.events[0];
+        var contractAddress = contractDeployedEvent.data?[0];
+        return contractAddress;
+      },
+      error: (e) => throw Exception(e.message));
 }

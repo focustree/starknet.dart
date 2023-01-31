@@ -39,8 +39,10 @@ _$InvokeTxnReceipt _$$InvokeTxnReceiptFromJson(Map<String, dynamic> json) =>
       transactionHash: Felt.fromJson(json['transaction_hash'] as String),
       actualFee: Felt.fromJson(json['actual_fee'] as String),
       status: json['status'] as String,
-      blockHash: Felt.fromJson(json['block_hash'] as String),
-      blockNumber: json['block_number'] as int,
+      blockHash: json['block_hash'] == null
+          ? null
+          : Felt.fromJson(json['block_hash'] as String),
+      blockNumber: json['block_number'] as int?,
       type: json['type'] as String,
       messagesSent: (json['messages_sent'] as List<dynamic>)
           .map((e) => MsgToL1.fromJson(e as Map<String, dynamic>))
@@ -56,7 +58,7 @@ Map<String, dynamic> _$$InvokeTxnReceiptToJson(_$InvokeTxnReceipt instance) =>
       'transaction_hash': instance.transactionHash.toJson(),
       'actual_fee': instance.actualFee.toJson(),
       'status': instance.status,
-      'block_hash': instance.blockHash.toJson(),
+      'block_hash': instance.blockHash?.toJson(),
       'block_number': instance.blockNumber,
       'type': instance.type,
       'messages_sent': instance.messagesSent.map((e) => e.toJson()).toList(),
@@ -69,8 +71,10 @@ _$DeclareTxnReceipt _$$DeclareTxnReceiptFromJson(Map<String, dynamic> json) =>
       transactionHash: Felt.fromJson(json['transaction_hash'] as String),
       actualFee: Felt.fromJson(json['actual_fee'] as String),
       status: json['status'] as String,
-      blockHash: Felt.fromJson(json['block_hash'] as String),
-      blockNumber: json['block_number'] as int,
+      blockHash: json['block_hash'] == null
+          ? null
+          : Felt.fromJson(json['block_hash'] as String),
+      blockNumber: json['block_number'] as int?,
       type: json['type'] as String,
       messagesSent: (json['messages_sent'] as List<dynamic>)
           .map((e) => MsgToL1.fromJson(e as Map<String, dynamic>))
@@ -86,7 +90,7 @@ Map<String, dynamic> _$$DeclareTxnReceiptToJson(_$DeclareTxnReceipt instance) =>
       'transaction_hash': instance.transactionHash.toJson(),
       'actual_fee': instance.actualFee.toJson(),
       'status': instance.status,
-      'block_hash': instance.blockHash.toJson(),
+      'block_hash': instance.blockHash?.toJson(),
       'block_number': instance.blockNumber,
       'type': instance.type,
       'messages_sent': instance.messagesSent.map((e) => e.toJson()).toList(),
@@ -100,8 +104,10 @@ _$L1HandlerTxnReceipt _$$L1HandlerTxnReceiptFromJson(
       transactionHash: Felt.fromJson(json['transaction_hash'] as String),
       actualFee: Felt.fromJson(json['actual_fee'] as String),
       status: json['status'] as String,
-      blockHash: Felt.fromJson(json['block_hash'] as String),
-      blockNumber: json['block_number'] as int,
+      blockHash: json['block_hash'] == null
+          ? null
+          : Felt.fromJson(json['block_hash'] as String),
+      blockNumber: json['block_number'] as int?,
       type: json['type'] as String,
       messagesSent: (json['messages_sent'] as List<dynamic>)
           .map((e) => MsgToL1.fromJson(e as Map<String, dynamic>))
@@ -118,7 +124,7 @@ Map<String, dynamic> _$$L1HandlerTxnReceiptToJson(
       'transaction_hash': instance.transactionHash.toJson(),
       'actual_fee': instance.actualFee.toJson(),
       'status': instance.status,
-      'block_hash': instance.blockHash.toJson(),
+      'block_hash': instance.blockHash?.toJson(),
       'block_number': instance.blockNumber,
       'type': instance.type,
       'messages_sent': instance.messagesSent.map((e) => e.toJson()).toList(),
@@ -131,8 +137,10 @@ _$DeployTxnReceipt _$$DeployTxnReceiptFromJson(Map<String, dynamic> json) =>
       transactionHash: Felt.fromJson(json['transaction_hash'] as String),
       actualFee: Felt.fromJson(json['actual_fee'] as String),
       status: json['status'] as String,
-      blockHash: Felt.fromJson(json['block_hash'] as String),
-      blockNumber: json['block_number'] as int,
+      blockHash: json['block_hash'] == null
+          ? null
+          : Felt.fromJson(json['block_hash'] as String),
+      blockNumber: json['block_number'] as int?,
       type: json['type'] as String,
       messagesSent: (json['messages_sent'] as List<dynamic>)
           .map((e) => MsgToL1.fromJson(e as Map<String, dynamic>))
@@ -149,7 +157,7 @@ Map<String, dynamic> _$$DeployTxnReceiptToJson(_$DeployTxnReceipt instance) =>
       'transaction_hash': instance.transactionHash.toJson(),
       'actual_fee': instance.actualFee.toJson(),
       'status': instance.status,
-      'block_hash': instance.blockHash.toJson(),
+      'block_hash': instance.blockHash?.toJson(),
       'block_number': instance.blockNumber,
       'type': instance.type,
       'messages_sent': instance.messagesSent.map((e) => e.toJson()).toList(),
@@ -164,8 +172,10 @@ _$DeployAccountTxnReceipt _$$DeployAccountTxnReceiptFromJson(
       transactionHash: Felt.fromJson(json['transaction_hash'] as String),
       actualFee: Felt.fromJson(json['actual_fee'] as String),
       status: json['status'] as String,
-      blockHash: Felt.fromJson(json['block_hash'] as String),
-      blockNumber: json['block_number'] as int,
+      blockHash: json['block_hash'] == null
+          ? null
+          : Felt.fromJson(json['block_hash'] as String),
+      blockNumber: json['block_number'] as int?,
       type: json['type'] as String,
       messagesSent: (json['messages_sent'] as List<dynamic>)
           .map((e) => MsgToL1.fromJson(e as Map<String, dynamic>))
@@ -183,7 +193,7 @@ Map<String, dynamic> _$$DeployAccountTxnReceiptToJson(
       'transaction_hash': instance.transactionHash.toJson(),
       'actual_fee': instance.actualFee.toJson(),
       'status': instance.status,
-      'block_hash': instance.blockHash.toJson(),
+      'block_hash': instance.blockHash?.toJson(),
       'block_number': instance.blockNumber,
       'type': instance.type,
       'messages_sent': instance.messagesSent.map((e) => e.toJson()).toList(),

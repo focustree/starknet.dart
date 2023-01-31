@@ -13,6 +13,7 @@ DEVNET_ACCOUNT0_PRIVATE_KEY = int(0xe3e70682c2094cac629f6fbed82c07cd)
 
 load_dotenv()  # take environment variables from .env.
 
+
 class Config:
     def __init__(self,
                  env: str,
@@ -31,13 +32,13 @@ class Config:
 local_config = Config(env="local")
 
 
-
 def get_config(env: str):
     if env == "local":
         return local_config
     if env == "testnet":
         ACCOUNT_ADDRESS = int(os.environ['STARKNET_ACCOUNT_ADDRESS'], 0)
-        ACCOUNT_PRIVATE_KEY = int(os.environ['STARKNET_ACCOUNT_PRIVATE_KEY'], 0)
+        ACCOUNT_PRIVATE_KEY = int(
+            os.environ['STARKNET_ACCOUNT_PRIVATE_KEY'], 0)
 
         return Config(
             env="testnet",

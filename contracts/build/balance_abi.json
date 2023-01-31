@@ -56,6 +56,30 @@
         "type": "function"
     },
     {
+        "inputs": [
+            {
+                "name": "a_len",
+                "type": "felt"
+            },
+            {
+                "name": "a",
+                "type": "felt*"
+            }
+        ],
+        "name": "array",
+        "outputs": [
+            {
+                "name": "b_len",
+                "type": "felt"
+            },
+            {
+                "name": "b",
+                "type": "felt*"
+            }
+        ],
+        "type": "function"
+    },
+    {
         "inputs": [],
         "name": "get_balance",
         "outputs": [
