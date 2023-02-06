@@ -1,13 +1,17 @@
 // Generated code, do not modify. Run `build_runner build` to re-generate!
-// ignore_for_file: unused_element
 
 import 'package:starknet/starknet.dart';
 
-class Udc extends Contract {
+class Udc {
   Udc({
-    required super.account,
-    required super.address,
-  });
+    required account,
+    required address,
+  }) : _contract = Contract(
+          account: account,
+          address: address,
+        );
+
+  final Contract _contract;
 
   Future<String> deployContract(
     Felt classHash,
@@ -21,7 +25,7 @@ class Udc extends Contract {
       unique,
       ...calldata.toCallData(),
     ];
-    final trx = await execute(
+    final trx = await _contract.execute(
       'deployContract',
       params,
     );
@@ -39,9 +43,5 @@ extension on List<Felt> {
       Felt.fromInt(this.length),
       ...this,
     ];
-  }
-
-  List<Felt> fromCallData() {
-    return this.sublist(1);
   }
 }
