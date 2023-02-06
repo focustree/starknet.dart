@@ -4,6 +4,9 @@ on:
   push:
     branches: [main]
 
+env:
+  WORK_DIR: packages/starknet
+
 jobs:
   dump-context:
     runs-on: ubuntu-latest
@@ -55,19 +58,25 @@ jobs:
           sdk: ${{ matrix.sdk }}
       - id: install
         name: Install dependencies
-        run: dart pub get
+        run: dart pub get        
+        working-directory: ${{ env.WORK_DIR }}
       - name: Check formatting
         run: dart format --output=none --set-exit-if-changed .
         if: matrix.sdk == 'dev' && steps.install.outcome == 'success'
+        working-directory: ${{ env.WORK_DIR }}
       - name: Analyze code
         run: dart analyze --fatal-infos
         if: always() && steps.install.outcome == 'success'
+        working-directory: ${{ env.WORK_DIR }}
 
   # Run tests on a matrix consisting of two dimensions:
   # 1. OS: ubuntu-latest
   # 2. Release channel: dev, stable, and 2.17.3 (the package's lower bound)
   test:
     needs: analyze
+    defaults:
+      run:
+        working-directory: ${{ env.WORK_DIR }}
     runs-on: ${{ matrix.os }}
     strategy:
       fail-fast: false
@@ -91,6 +100,9 @@ jobs:
 
   package-analysis:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ${{ env.WORK_DIR }}
     steps:
       - uses: actions/checkout@v2
       - uses: axel-op/dart-package-analyzer@v3
@@ -100,6 +112,9 @@ jobs:
   publish:
     if: github.event.pull_request.head.repo.fork == false
     needs: test
+    defaults:
+      run:
+        working-directory: ${{ env.WORK_DIR }}
     runs-on: ubuntu-latest
     steps:
       - name: "Checkout"
