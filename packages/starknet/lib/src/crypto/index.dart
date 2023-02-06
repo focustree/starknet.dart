@@ -11,7 +11,7 @@ export 'signature.dart';
 /// The transaction hash is a hash chain of the following information:
 ///   1. A prefix that depends on the transaction type.
 ///   2. The transaction's version.
-///   3. Contract address.
+///   3. Contract or sender address.
 ///   4. Entry point selector.
 ///   5. A hash chain of the calldata.
 ///   6. The transaction's maximum fee.
@@ -26,7 +26,7 @@ export 'signature.dart';
 BigInt calculateTransactionHashCommon({
   required BigInt txHashPrefix,
   int version = 0,
-  required BigInt contractAddress,
+  required BigInt address,
   required BigInt entryPointSelector,
   required List<BigInt> calldata,
   required BigInt maxFee,
@@ -37,7 +37,7 @@ BigInt calculateTransactionHashCommon({
   final List<BigInt> dataToHash = [
     txHashPrefix,
     BigInt.from(version),
-    contractAddress,
+    address,
     entryPointSelector,
     calldataHash,
     maxFee,

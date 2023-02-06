@@ -10,7 +10,7 @@ void main() {
           calculateTransactionHashCommon(
               txHashPrefix: TransactionHashPrefix.invoke.toBigInt(),
               // Note: the address is larger than a field element, so we must use BigInt
-              contractAddress: BigInt.parse(
+              address: BigInt.parse(
                   '2007067565103695475819120104515800035851923905855118399071773059478896040938'),
               entryPointSelector: getSelectorByName('__execute__').toBigInt(),
               calldata: toBigIntList(functionCallsToCalldata(functionCalls: [
