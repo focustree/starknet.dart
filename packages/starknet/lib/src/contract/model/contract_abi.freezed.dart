@@ -42,7 +42,8 @@ mixin _$ContractAbiEntry {
             String name,
             List<TypedParameter> inputs,
             List<TypedParameter> outputs,
-            @JsonKey(name: 'stateMutability') String? stateMutability)
+            @JsonKey(name: 'stateMutability', includeIfNull: false)
+                String? stateMutability)
         function,
     required TResult Function(String type, String name,
             List<TypedParameter> keys, List<TypedParameter> data)
@@ -62,7 +63,8 @@ mixin _$ContractAbiEntry {
             String name,
             List<TypedParameter> inputs,
             List<TypedParameter> outputs,
-            @JsonKey(name: 'stateMutability') String? stateMutability)?
+            @JsonKey(name: 'stateMutability', includeIfNull: false)
+                String? stateMutability)?
         function,
     TResult? Function(String type, String name, List<TypedParameter> keys,
             List<TypedParameter> data)?
@@ -82,7 +84,8 @@ mixin _$ContractAbiEntry {
             String name,
             List<TypedParameter> inputs,
             List<TypedParameter> outputs,
-            @JsonKey(name: 'stateMutability') String? stateMutability)?
+            @JsonKey(name: 'stateMutability', includeIfNull: false)
+                String? stateMutability)?
         function,
     TResult Function(String type, String name, List<TypedParameter> keys,
             List<TypedParameter> data)?
@@ -178,7 +181,8 @@ abstract class _$$FunctionAbiEntryCopyWith<$Res>
       String name,
       List<TypedParameter> inputs,
       List<TypedParameter> outputs,
-      @JsonKey(name: 'stateMutability') String? stateMutability});
+      @JsonKey(name: 'stateMutability', includeIfNull: false)
+          String? stateMutability});
 }
 
 /// @nodoc
@@ -231,7 +235,8 @@ class _$FunctionAbiEntry implements FunctionAbiEntry {
       required this.name,
       required final List<TypedParameter> inputs,
       required final List<TypedParameter> outputs,
-      @JsonKey(name: 'stateMutability') this.stateMutability,
+      @JsonKey(name: 'stateMutability', includeIfNull: false)
+          this.stateMutability,
       final String? $type})
       : _inputs = inputs,
         _outputs = outputs,
@@ -261,7 +266,7 @@ class _$FunctionAbiEntry implements FunctionAbiEntry {
   }
 
   @override
-  @JsonKey(name: 'stateMutability')
+  @JsonKey(name: 'stateMutability', includeIfNull: false)
   final String? stateMutability;
 
   @JsonKey(name: 'runtimeType')
@@ -309,7 +314,8 @@ class _$FunctionAbiEntry implements FunctionAbiEntry {
             String name,
             List<TypedParameter> inputs,
             List<TypedParameter> outputs,
-            @JsonKey(name: 'stateMutability') String? stateMutability)
+            @JsonKey(name: 'stateMutability', includeIfNull: false)
+                String? stateMutability)
         function,
     required TResult Function(String type, String name,
             List<TypedParameter> keys, List<TypedParameter> data)
@@ -332,7 +338,8 @@ class _$FunctionAbiEntry implements FunctionAbiEntry {
             String name,
             List<TypedParameter> inputs,
             List<TypedParameter> outputs,
-            @JsonKey(name: 'stateMutability') String? stateMutability)?
+            @JsonKey(name: 'stateMutability', includeIfNull: false)
+                String? stateMutability)?
         function,
     TResult? Function(String type, String name, List<TypedParameter> keys,
             List<TypedParameter> data)?
@@ -355,7 +362,8 @@ class _$FunctionAbiEntry implements FunctionAbiEntry {
             String name,
             List<TypedParameter> inputs,
             List<TypedParameter> outputs,
-            @JsonKey(name: 'stateMutability') String? stateMutability)?
+            @JsonKey(name: 'stateMutability', includeIfNull: false)
+                String? stateMutability)?
         function,
     TResult Function(String type, String name, List<TypedParameter> keys,
             List<TypedParameter> data)?
@@ -421,12 +429,12 @@ class _$FunctionAbiEntry implements FunctionAbiEntry {
 
 abstract class FunctionAbiEntry implements ContractAbiEntry {
   const factory FunctionAbiEntry(
-          {required final String type,
-          required final String name,
-          required final List<TypedParameter> inputs,
-          required final List<TypedParameter> outputs,
-          @JsonKey(name: 'stateMutability') final String? stateMutability}) =
-      _$FunctionAbiEntry;
+      {required final String type,
+      required final String name,
+      required final List<TypedParameter> inputs,
+      required final List<TypedParameter> outputs,
+      @JsonKey(name: 'stateMutability', includeIfNull: false)
+          final String? stateMutability}) = _$FunctionAbiEntry;
 
   factory FunctionAbiEntry.fromJson(Map<String, dynamic> json) =
       _$FunctionAbiEntry.fromJson;
@@ -437,7 +445,7 @@ abstract class FunctionAbiEntry implements ContractAbiEntry {
   String get name;
   List<TypedParameter> get inputs;
   List<TypedParameter> get outputs;
-  @JsonKey(name: 'stateMutability')
+  @JsonKey(name: 'stateMutability', includeIfNull: false)
   String? get stateMutability;
   @override
   @JsonKey(ignore: true)
@@ -575,7 +583,8 @@ class _$EventAbiEntry implements EventAbiEntry {
             String name,
             List<TypedParameter> inputs,
             List<TypedParameter> outputs,
-            @JsonKey(name: 'stateMutability') String? stateMutability)
+            @JsonKey(name: 'stateMutability', includeIfNull: false)
+                String? stateMutability)
         function,
     required TResult Function(String type, String name,
             List<TypedParameter> keys, List<TypedParameter> data)
@@ -598,7 +607,8 @@ class _$EventAbiEntry implements EventAbiEntry {
             String name,
             List<TypedParameter> inputs,
             List<TypedParameter> outputs,
-            @JsonKey(name: 'stateMutability') String? stateMutability)?
+            @JsonKey(name: 'stateMutability', includeIfNull: false)
+                String? stateMutability)?
         function,
     TResult? Function(String type, String name, List<TypedParameter> keys,
             List<TypedParameter> data)?
@@ -621,7 +631,8 @@ class _$EventAbiEntry implements EventAbiEntry {
             String name,
             List<TypedParameter> inputs,
             List<TypedParameter> outputs,
-            @JsonKey(name: 'stateMutability') String? stateMutability)?
+            @JsonKey(name: 'stateMutability', includeIfNull: false)
+                String? stateMutability)?
         function,
     TResult Function(String type, String name, List<TypedParameter> keys,
             List<TypedParameter> data)?
@@ -822,7 +833,8 @@ class _$StructAbiEntry implements StructAbiEntry {
             String name,
             List<TypedParameter> inputs,
             List<TypedParameter> outputs,
-            @JsonKey(name: 'stateMutability') String? stateMutability)
+            @JsonKey(name: 'stateMutability', includeIfNull: false)
+                String? stateMutability)
         function,
     required TResult Function(String type, String name,
             List<TypedParameter> keys, List<TypedParameter> data)
@@ -845,7 +857,8 @@ class _$StructAbiEntry implements StructAbiEntry {
             String name,
             List<TypedParameter> inputs,
             List<TypedParameter> outputs,
-            @JsonKey(name: 'stateMutability') String? stateMutability)?
+            @JsonKey(name: 'stateMutability', includeIfNull: false)
+                String? stateMutability)?
         function,
     TResult? Function(String type, String name, List<TypedParameter> keys,
             List<TypedParameter> data)?
@@ -868,7 +881,8 @@ class _$StructAbiEntry implements StructAbiEntry {
             String name,
             List<TypedParameter> inputs,
             List<TypedParameter> outputs,
-            @JsonKey(name: 'stateMutability') String? stateMutability)?
+            @JsonKey(name: 'stateMutability', includeIfNull: false)
+                String? stateMutability)?
         function,
     TResult Function(String type, String name, List<TypedParameter> keys,
             List<TypedParameter> data)?
@@ -1085,7 +1099,8 @@ class _$ConstructorAbiEntry implements ConstructorAbiEntry {
             String name,
             List<TypedParameter> inputs,
             List<TypedParameter> outputs,
-            @JsonKey(name: 'stateMutability') String? stateMutability)
+            @JsonKey(name: 'stateMutability', includeIfNull: false)
+                String? stateMutability)
         function,
     required TResult Function(String type, String name,
             List<TypedParameter> keys, List<TypedParameter> data)
@@ -1108,7 +1123,8 @@ class _$ConstructorAbiEntry implements ConstructorAbiEntry {
             String name,
             List<TypedParameter> inputs,
             List<TypedParameter> outputs,
-            @JsonKey(name: 'stateMutability') String? stateMutability)?
+            @JsonKey(name: 'stateMutability', includeIfNull: false)
+                String? stateMutability)?
         function,
     TResult? Function(String type, String name, List<TypedParameter> keys,
             List<TypedParameter> data)?
@@ -1131,7 +1147,8 @@ class _$ConstructorAbiEntry implements ConstructorAbiEntry {
             String name,
             List<TypedParameter> inputs,
             List<TypedParameter> outputs,
-            @JsonKey(name: 'stateMutability') String? stateMutability)?
+            @JsonKey(name: 'stateMutability', includeIfNull: false)
+                String? stateMutability)?
         function,
     TResult Function(String type, String name, List<TypedParameter> keys,
             List<TypedParameter> data)?

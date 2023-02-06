@@ -20,15 +20,24 @@ _$FunctionAbiEntry _$$FunctionAbiEntryFromJson(Map<String, dynamic> json) =>
       $type: json['runtimeType'] as String?,
     );
 
-Map<String, dynamic> _$$FunctionAbiEntryToJson(_$FunctionAbiEntry instance) =>
-    <String, dynamic>{
-      'type': instance.type,
-      'name': instance.name,
-      'inputs': instance.inputs.map((e) => e.toJson()).toList(),
-      'outputs': instance.outputs.map((e) => e.toJson()).toList(),
-      'stateMutability': instance.stateMutability,
-      'runtimeType': instance.$type,
-    };
+Map<String, dynamic> _$$FunctionAbiEntryToJson(_$FunctionAbiEntry instance) {
+  final val = <String, dynamic>{
+    'type': instance.type,
+    'name': instance.name,
+    'inputs': instance.inputs.map((e) => e.toJson()).toList(),
+    'outputs': instance.outputs.map((e) => e.toJson()).toList(),
+  };
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('stateMutability', instance.stateMutability);
+  val['runtimeType'] = instance.$type;
+  return val;
+}
 
 _$EventAbiEntry _$$EventAbiEntryFromJson(Map<String, dynamic> json) =>
     _$EventAbiEntry(
