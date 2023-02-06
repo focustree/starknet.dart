@@ -21,8 +21,10 @@ class CompiledContract with _$CompiledContract {
       _$CompiledContractFromJson(json);
 
   ContractClass compress() {
+    final new_program = Map.of(program);
+    final program_json = CompiledContractJsonEncoder().convert(new_program);
     return ContractClass(
-      program: compressProgram(program),
+      program: base64.encode(gzip.encode(utf8.encode(program_json))),
       entryPointsByType: entryPointsByType,
       abi: abi,
     );
@@ -32,7 +34,8 @@ class CompiledContract with _$CompiledContract {
   String encode() {
     final new_program = Map.of(program);
     new_program.remove("attributes");
-    final encoded = CompiledContractJsonEncoder().convert({
+    final encoded =
+        CompiledContractJsonEncoder(filterRuntimeType: false).convert({
       "abi": abi,
       "program": new_program,
     });
@@ -105,21 +108,6 @@ class CompiledContract with _$CompiledContract {
   }
 }
 
-// freezed/json_serializable add 'runtimeType' and 'stateMutability: null'
-Object? _contractJsonCleanup(dynamic object) {
-  if (object is ContractAbiEntry) {
-    var res = object.toJson();
-    res.remove("runtimeType");
-    if (object is FunctionAbiEntry) {
-      if (object.stateMutability == null) {
-        res.remove("stateMutability");
-      }
-    }
-    return res;
-  }
-  return object.toJson();
-}
-
 class EntryPointsHashes {
   final BigInt externals;
   final BigInt l1handlers;
@@ -134,9 +122,27 @@ String compressProgram(Map<String, Object?> program) {
 
 /// JSON encoder to mimic Python json dumps
 class CompiledContractJsonEncoder extends JsonEncoder {
+  final bool filterRuntimeType;
+
+  CompiledContractJsonEncoder({this.filterRuntimeType = true});
+
   @override
   String convert(Object? object) =>
       _JsonStringStringifier.stringify(object, _contractJsonCleanup, indent);
+
+  Object? _contractJsonCleanup(
+    dynamic object,
+  ) {
+    // freezed/json serializable add 'runtimeType'
+    if (filterRuntimeType) {
+      if (object is ContractAbiEntry) {
+        var res = object.toJson();
+        res.remove("runtimeType");
+        return res;
+      }
+    }
+    return object.toJson();
+  }
 }
 
 // 2023-02-03: since these symbols is not exported by dart sdk,
