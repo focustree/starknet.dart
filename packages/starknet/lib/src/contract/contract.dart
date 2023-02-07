@@ -4,6 +4,25 @@ class Contract {
   final Account account;
   final Felt address;
 
+  // see https://docs.starknet.io/documentation/architecture_and_concepts/Contracts/contract-address/
+  static Felt computeAddress({
+    required Felt classHash,
+    required List<Felt> callData,
+    required Felt salt,
+  }) {
+    final deployerAddress = BigInt.from(0); // always zero
+    List<BigInt> elements = [];
+    elements.add(Felt.fromString("STARKNET_CONTRACT_ADDRESS").toBigInt());
+    // caller address is always zero
+    elements.add(deployerAddress);
+    elements.add(salt.toBigInt());
+    elements.add(classHash.toBigInt());
+    elements
+        .add(computeHashOnElements(callData.map((e) => e.toBigInt()).toList()));
+    final address = computeHashOnElements(elements);
+    return Felt(address);
+  }
+
   Contract({required this.account, required this.address});
 
   Future<List<Felt>> call(String selector, List<Felt> calldata) async {
