@@ -21,12 +21,48 @@ class Account {
     this.supportedTxVersion = AccountSupportedTxVersion.v1,
   });
 
+  /// Get Nonce for account at given [blockId]
+  Future<Felt> getNonce([BlockId blockId = BlockId.latest]) async {
+    final response = await provider.call(
+      request: FunctionCall(
+        contractAddress: accountAddress,
+        entryPointSelector: getSelectorByName("get_nonce"),
+        calldata: [],
+      ),
+      blockId: blockId,
+    );
+    return (response.when(error: (error) async {
+      if (error.code == 21 && error.message == "Invalid message selector") {
+        // Fallback on provider getNonce
+        final nonceResp = await provider.getNonce(
+          blockId: blockId,
+          contractAddress: accountAddress,
+        );
+
+        return (nonceResp.when(
+          error: (error) {
+            throw Exception(
+                "Error provider getNonce (${error.code}): ${error.message}");
+          },
+          result: ((result) {
+            return result;
+          }),
+        ));
+      } else {
+        throw Exception(
+            "Error call get_nonce (${error.code}): ${error.message}");
+      }
+    }, result: ((result) {
+      return result[0];
+    })));
+  }
+
   Future<InvokeTransactionResponse> execute({
     required List<FunctionCall> functionCalls,
     Felt? maxFee,
     Felt? nonce,
   }) async {
-    nonce = nonce ?? Felt.fromInt(0);
+    nonce = nonce ?? await getNonce();
     maxFee = maxFee ?? defaultMaxFee;
 
     final signature = signer.signTransactions(
@@ -73,7 +109,7 @@ class Account {
     Felt? maxFee,
     Felt? nonce,
   }) async {
-    nonce = nonce ?? Felt.fromInt(0);
+    nonce = nonce ?? await getNonce();
     maxFee = maxFee ?? defaultMaxFee;
 
     final signature = signer.signDeclareTransaction(
@@ -85,8 +121,8 @@ class Account {
     return provider.addDeclareTransaction(
       DeclareTransactionRequest(
         declareTransaction: DeclareTransaction(
-          max_fee: defaultMaxFee,
-          nonce: defaultNonce,
+          max_fee: maxFee,
+          nonce: nonce,
           contractClass: compiledContract.compress(),
           senderAddress: accountAddress,
           signature: signature,
