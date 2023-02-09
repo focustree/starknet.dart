@@ -49,6 +49,16 @@ final account1 = getAccount(
   privateKey: devnetAccount1PrivateKey,
 );
 
+final devnetAccount9Address = Felt.fromHexString(
+    "0x7f61fa3893ad0637b2ff76fed23ebbb91835aacd4f743c2347716f856438429");
+final devnetAccount9PublicKey = Felt.fromHexString(
+    "0xc11e246b1d54515a26204d2d3c8586ea25ed9eecae00df173405974cb86dbc");
+final devnetAccount9PrivateKey =
+    Felt.fromHexString("0x259f4329e6f4590b9a164106cf6a659e");
+final account9 = getAccount(
+  accountAddress: devnetAccount9Address,
+  privateKey: devnetAccount9PrivateKey,
+);
 // Testnet
 
 final v010PathfinderGoerliTestnetUri = Uri.parse('http://35.180.61.64');

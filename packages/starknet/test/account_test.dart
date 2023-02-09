@@ -3,6 +3,12 @@ import 'package:test/test.dart';
 
 void main() {
   group('Account', () {
+    group('nonce', () {
+      test('get nonce', () async {
+        final nonce = await account9.getNonce();
+        expect(nonce, equals(Felt.fromInt(0)));
+      });
+    });
     group('declare', () {
       test('succeeds', () async {
         final balanceContract =
