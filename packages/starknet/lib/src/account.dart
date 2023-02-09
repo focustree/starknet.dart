@@ -103,6 +103,15 @@ class Account {
 
     return getDeployedContractAddress(txReceipt);
   }
+
+  Future<Uint256> balance() async =>
+      ERC20(account: this, address: ethAddress).balanceOf(accountAddress);
+
+  Future<bool> send({required Felt recipient, required Uint256 amount}) async {
+    final txHash = await ERC20(account: this, address: ethAddress)
+        .transfer(recipient, amount);
+    return waitForAcceptance(transactionHash: txHash, provider: provider);
+  }
 }
 
 Account getAccount({
