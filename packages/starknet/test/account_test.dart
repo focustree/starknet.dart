@@ -48,9 +48,11 @@ void main() {
       });
       test('send', () async {
         final previousBalance = await account1.balance();
-        final success = await account0.send(
+        final txHash = await account0.send(
             recipient: account1.accountAddress,
             amount: Uint256(low: Felt.fromInt(100), high: Felt.fromInt(0)));
+        final success = await waitForAcceptance(
+            transactionHash: txHash, provider: account1.provider);
         expect(success, equals(true));
         final newBalance = await account1.balance();
         final diffHigh =
@@ -63,9 +65,11 @@ void main() {
 
       test('send without enough amount', () async {
         final previousBalance = await account1.balance();
-        final success = await account0.send(
+        final txHash = await account0.send(
             recipient: account1.accountAddress,
             amount: Uint256(low: Felt.fromInt(0), high: Felt.fromInt(100)));
+        final success = await waitForAcceptance(
+            transactionHash: txHash, provider: account1.provider);
         expect(success, equals(false));
         final newBalance = await account1.balance();
         expect(newBalance, equals(previousBalance));
