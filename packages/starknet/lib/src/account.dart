@@ -70,7 +70,18 @@ class Account {
 
   Future<DeclareTransactionResponse> declare({
     required CompiledContract compiledContract,
+    Felt? maxFee,
+    Felt? nonce,
   }) async {
+    nonce = nonce ?? Felt.fromInt(0);
+    maxFee = maxFee ?? defaultMaxFee;
+
+    final signature = signer.signDeclareTransaction(
+      compiledContract: compiledContract,
+      senderAddress: accountAddress,
+      chainId: chainId,
+    );
+
     return provider.addDeclareTransaction(
       DeclareTransactionRequest(
         declareTransaction: DeclareTransaction(
@@ -78,7 +89,7 @@ class Account {
           nonce: defaultNonce,
           contractClass: compiledContract.compress(),
           senderAddress: accountAddress,
-          signature: [],
+          signature: signature,
           type: 'DECLARE',
         ),
       ),

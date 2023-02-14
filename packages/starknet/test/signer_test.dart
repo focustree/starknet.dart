@@ -4,7 +4,7 @@ import 'package:test/test.dart';
 void main() {
   group('Signer', () {
     group('signTransactions', () {
-      test('returns the right signature', () {
+      test('returns the right signature for invoke transaction version 0', () {
         final signature = Signer(privateKey: Felt.fromInt(1234)).signTransactions(
             transactions: [
               FunctionCall(

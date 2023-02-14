@@ -1,9 +1,25 @@
+import 'dart:io';
+
 import 'package:starknet/starknet.dart';
 import '../lib/src/udc.g.dart';
 
 void main() async {
-  final classHash = Felt.fromHexString(
-      "0x31a7b73457f4edebcbb21a6c164bafc3415232de0257821e9521f8ae4bd0227");
+  Felt classHash = Felt.fromInt(0);
+  final compiledContract =
+      await parseContract("../../contracts/build/balance.json");
+  print("Local class hash: ${compiledContract.classHash()}");
+  final declareTx = await account0.declare(compiledContract: compiledContract);
+  declareTx.when(
+    result: (result) {
+      print("Contract ClassHash: ${result.classHash}");
+      classHash = result.classHash;
+    },
+    error: (error) {
+      print("Failed to declare contract: ${error.code}: ${error.message}");
+      exit(32);
+    },
+  );
+
   final salt = Felt.fromInt(0);
   final unique = Felt.fromInt(0);
 
@@ -16,5 +32,23 @@ void main() async {
 
   final txReceipt =
       await account0.provider.getTransactionReceipt(Felt.fromHexString(txHash));
-  prettyPrintJson(txReceipt.toJson());
+  final balanceContractAddr = txReceipt.when(
+    result: (result) {
+      if (result is InvokeTxnReceipt) {
+        if (result.status != "REJECTED") {
+          return result.events[0].data![0];
+        } else {
+          print("Transaction failed!");
+          prettyPrintJson(txReceipt.toJson());
+          exit(5);
+        }
+      }
+      ;
+    },
+    error: (error) {
+      print("Deploy failed: ${error.code} ${error.message}");
+      exit(2);
+    },
+  );
+  print("Contract deployed to ${balanceContractAddr?.toHexString()}");
 }

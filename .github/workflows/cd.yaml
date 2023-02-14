@@ -108,6 +108,7 @@ jobs:
       - uses: axel-op/dart-package-analyzer@v3
         with:
           githubToken: ${{ secrets.GITHUB_TOKEN }}
+          relativePath: ${{ env.WORK_DIR }}
 
   publish:
     if: github.event.pull_request.head.repo.fork == false
