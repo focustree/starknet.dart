@@ -1,3 +1,7 @@
+import 'package:example/screens/choose_network_screen.dart';
+import 'package:example/screens/seed_screen.dart';
+import 'package:example/screens/wallet/wallet_screen.dart';
+import 'package:example/screens/welcome_screen.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -9,12 +13,14 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      home: Scaffold(
-        body: Center(
-          child: Text('Hello World!'),
-        ),
-      ),
+    return MaterialApp(
+      title: "StarkNet Wallet in Flutter",
+      routes: {
+        WelcomeScreen.routeName: (context) => const WelcomeScreen(),
+        SeedScreen.routeName: (context) => const SeedScreen(),
+        ChooseNetworkScreen.routeName: (context) => const ChooseNetworkScreen(),
+        WalletScreen.routeName: (context) => const WalletScreen(),
+      },
     );
   }
 }

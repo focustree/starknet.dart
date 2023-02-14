@@ -10,6 +10,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  flutter_secure_storage: ^8.0.0
   starknet: ^0.0.2
 
 dev_dependencies:
