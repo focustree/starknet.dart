@@ -15,12 +15,7 @@ class MainApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: "StarkNet Wallet in Flutter",
-      routes: {
-        WelcomeScreen.routeName: (context) => const WelcomeScreen(),
-        SeedScreen.routeName: (context) => const SeedScreen(),
-        ChooseNetworkScreen.routeName: (context) => const ChooseNetworkScreen(),
-        WalletScreen.routeName: (context) => const WalletScreen(),
-      },
+      home: Center(child: Text("Hello World")),
     );
   }
 }
