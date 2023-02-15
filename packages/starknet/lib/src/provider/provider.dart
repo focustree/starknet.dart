@@ -5,6 +5,8 @@ abstract class Provider implements ReadProvider {
       InvokeTransactionRequest request);
   Future<DeclareTransactionResponse> addDeclareTransaction(
       DeclareTransactionRequest request);
+  Future<DeployAccountTransactionResponse> addDeployAccountTransaction(
+      DeployAccountTransactionRequest request);
 }
 
 class JsonRpcProvider extends JsonRpcReadProvider implements Provider {
@@ -32,6 +34,16 @@ class JsonRpcProvider extends JsonRpcReadProvider implements Provider {
             method: 'starknet_addDeclareTransaction',
             params: request)
         .then(DeclareTransactionResponse.fromJson);
+  }
+
+  @override
+  Future<DeployAccountTransactionResponse> addDeployAccountTransaction(
+      DeployAccountTransactionRequest request) async {
+    return callRpcEndpoint(
+            nodeUri: nodeUri,
+            method: 'starknet_addDeployAccountTransaction',
+            params: request)
+        .then(DeployAccountTransactionResponse.fromJson);
   }
 
   static final devnet = JsonRpcProvider(nodeUri: devnetUri);
