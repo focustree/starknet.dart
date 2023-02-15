@@ -13,7 +13,7 @@ void main() {
             expect(
               result.classHash,
               equals(Felt.fromIntString(
-                  "3137515840355711948086108918138944421885262760143101541325567680247897769336")),
+                  "2629893875186532358210942156370932694899207790379996755057537765547495171435")), // 2023-02-06: class hash with 'runtimeType' included
             );
             return result.transactionHash;
           },
@@ -25,16 +25,55 @@ void main() {
       test('succeeds', () async {
         // Balance contract
         final classHash = Felt.fromHexString(
-            "0x31a7b73457f4edebcbb21a6c164bafc3415232de0257821e9521f8ae4bd0227");
+            "0x5d077995ffe1356cfd48aa5990ece8bf420dacab9b7d3e6941e0c53c208a56b"); // 2023-02-06: class hash with 'runtimeType' included
 
         final contractAddress = await account0
             .deploy(classHash: classHash, calldata: [Felt.fromInt(42)]);
         expect(
             contractAddress,
             equals(Felt.fromHexString(
-                '0x45bd3e6ed7b0f5804f4adbfd60033beb09684f3beb468bca08cc6ffc7e64b5b')));
+                '0x149867a6ce95f2d20ed96187abd430d7c2c48cdfb7dd541fb1337563ff8d9b9')));
       });
       // }, tags: ['integration-devnet-040']);
     }, tags: ['to-be-fixed']);
+
+    group('fee token', () {
+      test('get balance', () async {
+        final balance = await account1.balance();
+        expect(
+            balance,
+            equals(Uint256(
+                low: Felt(BigInt.parse("1000000000000000000000")),
+                high: Felt.fromInt(0))));
+      });
+      test('send', () async {
+        final previousBalance = await account1.balance();
+        final txHash = await account0.send(
+            recipient: account1.accountAddress,
+            amount: Uint256(low: Felt.fromInt(100), high: Felt.fromInt(0)));
+        final success = await waitForAcceptance(
+            transactionHash: txHash, provider: account1.provider);
+        expect(success, equals(true));
+        final newBalance = await account1.balance();
+        final diffHigh =
+            newBalance.high.toBigInt() - previousBalance.high.toBigInt();
+        final diffLow =
+            newBalance.low.toBigInt() - previousBalance.low.toBigInt();
+        expect(diffHigh, equals(BigInt.from(0)));
+        expect(diffLow, equals(BigInt.from(100)));
+      });
+
+      test('send without enough amount', () async {
+        final previousBalance = await account1.balance();
+        final txHash = await account0.send(
+            recipient: account1.accountAddress,
+            amount: Uint256(low: Felt.fromInt(0), high: Felt.fromInt(100)));
+        final success = await waitForAcceptance(
+            transactionHash: txHash, provider: account1.provider);
+        expect(success, equals(false));
+        final newBalance = await account1.balance();
+        expect(newBalance, equals(previousBalance));
+      });
+    });
   });
 }

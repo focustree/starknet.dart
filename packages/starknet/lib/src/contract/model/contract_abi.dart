@@ -10,7 +10,8 @@ class ContractAbiEntry with _$ContractAbiEntry {
     required String name,
     required List<TypedParameter> inputs,
     required List<TypedParameter> outputs,
-    @JsonKey(name: 'stateMutability') String? stateMutability,
+    @JsonKey(name: 'stateMutability', includeIfNull: false)
+        String? stateMutability,
   }) = FunctionAbiEntry;
 
   const factory ContractAbiEntry.event({

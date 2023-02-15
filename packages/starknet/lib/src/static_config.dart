@@ -19,6 +19,10 @@ final defaultVersion = Felt.fromInt(0);
 final udcAddress = Felt.fromHexString(
     '0x041a78e741e5af2fec34b695679bc6891742439f7afb8484ecd7766661ad02bf');
 
+// address is the same for mainnet & testnet
+final ethAddress = Felt.fromHexString(
+    "0x049d36570d4e46f48e99674bd3fcc84644ddd6b96f7c741b1562b82f9e004dc7");
+
 // Devnet
 
 final devnetUri = Uri.parse('http://localhost:5050/rpc');

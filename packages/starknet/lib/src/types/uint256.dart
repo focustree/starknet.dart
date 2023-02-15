@@ -14,4 +14,11 @@ class Uint256 {
   String toString() {
     return toBigInt().toString();
   }
+
+  @override
+  bool operator ==(Object other) =>
+      other is Uint256 && high == other.high && low == other.low;
+
+  @override
+  int get hashCode => Object.hash(low, high);
 }
