@@ -8,6 +8,7 @@ class StarknetChainId {
 class TransactionHashPrefix {
   static final declare = Felt.fromString('declare');
   static final deploy = Felt.fromString('deploy');
+  static final deployAccount = Felt.fromString('deploy_account');
   static final invoke = Felt.fromString('invoke');
   static final l1Handler = Felt.fromString('l1_handler');
 }
@@ -22,6 +23,10 @@ final udcAddress = Felt.fromHexString(
 // address is the same for mainnet & testnet
 final ethAddress = Felt.fromHexString(
     "0x049d36570d4e46f48e99674bd3fcc84644ddd6b96f7c741b1562b82f9e004dc7");
+
+// from starknet-devnet 0.4.0
+final openZeppelinAccountClassHash = Felt.fromHexString(
+    "0x1fac3074c9d5282f0acc5c69a4781a1c711efea5e73c550c5d9fb253cf7fd3d");
 
 // Devnet
 

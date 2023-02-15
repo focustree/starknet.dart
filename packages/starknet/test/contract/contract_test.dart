@@ -38,9 +38,9 @@ void main() {
       });
 
       test('Compute account address', () async {
-        // value are from devnet account #1
+        // value are from devnet (0.4.0) account #1
         final salt = Felt.fromInt(20);
-        // OpenZeppelin account class hash
+        // devnet (0.4.0) account class hash
         final classHash = Felt.fromHexString(
             "0x3FCBF77B28C96F4F2FB5BD2D176AB083A12A5E123ADEB0DE955D7EE228C9854");
         // devnet account#1 public key

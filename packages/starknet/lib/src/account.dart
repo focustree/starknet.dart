@@ -160,6 +160,43 @@ class Account {
         .transfer(recipient, amount);
     return txHash;
   }
+
+  static Future<DeployAccountTransactionResponse> deployAccount({
+    required Signer signer,
+    required Provider provider,
+    required List<Felt> constructorCalldata,
+    Felt? classHash,
+    Felt? contractAddressSalt,
+    Felt? maxFee,
+    Felt? nonce,
+  }) async {
+    final chainId = (await provider.chainId()).when(
+      result: (result) => Felt.fromHexString(result),
+      error: (error) => StarknetChainId.testNet,
+    );
+
+    classHash = classHash ?? openZeppelinAccountClassHash;
+    maxFee = maxFee ?? defaultMaxFee;
+    nonce = nonce ?? defaultNonce;
+    contractAddressSalt = contractAddressSalt ?? Felt.fromInt(42);
+
+    final signature = signer.signDeployAccountTransactionV1(
+      contractAddressSalt: contractAddressSalt,
+      classHash: classHash,
+      constructorCalldata: constructorCalldata,
+      chainId: chainId,
+    );
+
+    return provider.addDeployAccountTransaction(DeployAccountTransactionRequest(
+        deployAccountTransaction: DeployAccountTransactionV1(
+      classHash: classHash,
+      signature: signature,
+      maxFee: maxFee,
+      nonce: nonce,
+      contractAddressSalt: contractAddressSalt,
+      constructorCalldata: constructorCalldata,
+    )));
+  }
 }
 
 Account getAccount({
