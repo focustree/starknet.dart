@@ -36,5 +36,44 @@ void main() {
       });
       // }, tags: ['integration-devnet-040']);
     }, tags: ['to-be-fixed']);
+
+    group('fee token', () {
+      test('get balance', () async {
+        final balance = await account1.balance();
+        expect(
+            balance,
+            equals(Uint256(
+                low: Felt(BigInt.parse("1000000000000000000000")),
+                high: Felt.fromInt(0))));
+      });
+      test('send', () async {
+        final previousBalance = await account1.balance();
+        final txHash = await account0.send(
+            recipient: account1.accountAddress,
+            amount: Uint256(low: Felt.fromInt(100), high: Felt.fromInt(0)));
+        final success = await waitForAcceptance(
+            transactionHash: txHash, provider: account1.provider);
+        expect(success, equals(true));
+        final newBalance = await account1.balance();
+        final diffHigh =
+            newBalance.high.toBigInt() - previousBalance.high.toBigInt();
+        final diffLow =
+            newBalance.low.toBigInt() - previousBalance.low.toBigInt();
+        expect(diffHigh, equals(BigInt.from(0)));
+        expect(diffLow, equals(BigInt.from(100)));
+      });
+
+      test('send without enough amount', () async {
+        final previousBalance = await account1.balance();
+        final txHash = await account0.send(
+            recipient: account1.accountAddress,
+            amount: Uint256(low: Felt.fromInt(0), high: Felt.fromInt(100)));
+        final success = await waitForAcceptance(
+            transactionHash: txHash, provider: account1.provider);
+        expect(success, equals(false));
+        final newBalance = await account1.balance();
+        expect(newBalance, equals(previousBalance));
+      });
+    });
   });
 }
