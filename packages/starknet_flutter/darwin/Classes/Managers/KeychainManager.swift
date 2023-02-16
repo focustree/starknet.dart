@@ -20,18 +20,21 @@ class KeychainManager {
       kSecAttrAccount: KeychainManager.starknetCipherKey
     ] as CFDictionary
     
-    // Adds the encrypted data to the keychain
-    let writeStatus = SecItemAdd(query, nil)
-    
-    // If data already exists, update it.
-    if writeStatus == errSecDuplicateItem {
-      let query = [
-        kSecAttrAccount: KeychainManager.starknetCipherKey,
-        kSecClass: kSecClassGenericPassword,
-      ] as CFDictionary
+    // Perform actions in background preventing freezing UI
+    DispatchQueue.global(qos: .background).async {
+      // Adds the encrypted data to the keychain
+      let writeStatus = SecItemAdd(query, nil)
       
-      let attributesToUpdate = [kSecValueData: cipher] as CFDictionary
-      SecItemUpdate(query, attributesToUpdate)
+      // If data already exists, update it.
+      if writeStatus == errSecDuplicateItem {
+        let query = [
+          kSecAttrAccount: KeychainManager.starknetCipherKey,
+          kSecClass: kSecClassGenericPassword,
+        ] as CFDictionary
+        
+        let attributesToUpdate = [kSecValueData: cipher] as CFDictionary
+        SecItemUpdate(query, attributesToUpdate)
+      }
     }
   }
   
