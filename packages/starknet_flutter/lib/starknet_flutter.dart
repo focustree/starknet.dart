@@ -2,6 +2,8 @@ import 'dart:typed_data';
 
 import 'package:starknet_flutter/pigeon.dart';
 
+export 'src/store/store.dart';
+
 class StarknetFlutter {
   Future<void> storeSecret(String key, Uint8List privateKey) {
     return StarknetInterface().storeSecret(key, privateKey);

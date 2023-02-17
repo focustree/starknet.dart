@@ -3,6 +3,7 @@ import 'dart:typed_data';
 
 import 'package:flutter/material.dart';
 import 'package:starknet_flutter/starknet_flutter.dart';
+import 'package:starknet_flutter_example/store_tester.dart';
 
 void main() {
   runApp(const StarknetDemoApp());
@@ -136,6 +137,7 @@ class _StarknetDemoState extends State<StarknetDemo> {
         closeIconColor: Colors.white,
         backgroundColor: success ? Colors.green : Colors.red,
         content: Text(message),
+        body: StoreTester(),
       ),
     );
   }

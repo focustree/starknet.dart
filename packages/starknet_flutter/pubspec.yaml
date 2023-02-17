@@ -10,7 +10,10 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  biometric_storage: ^4.1.3
   plugin_platform_interface: ^2.0.2
+  pointycastle: ^3.6.2
+  shared_preferences: ^2.0.17
 
 dev_dependencies:
   flutter_test:
