@@ -1,15 +1,17 @@
 # starknet_flutter
 
-A new Flutter plugin project.
+A package to ease the use of [starknet](https://pub.dev/packages/starknet) in your Flutter app.
 
-## Getting Started
+## Installation
 
-This project is a starting point for a Flutter
-[plug-in package](https://flutter.dev/developing-packages/),
-a specialized package that includes platform-specific implementation code for
-Android and/or iOS.
+### iOS && MacOS
 
-For help getting started with Flutter development, view the
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Uses a custom made plugin to communicate with Secure Enclave.
 
+### Android, Windows, Linux
+
+Same requirements as [biometric_storage](https://pub.dev/packages/biometric_storage).
+
+### Web
+
+TBD
