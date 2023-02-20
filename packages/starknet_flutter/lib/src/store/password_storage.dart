@@ -18,7 +18,7 @@ class PasswordStorage extends SecureStore {
     if (cipherText == null) {
       return null;
     } else {
-      return CryptoHelper().decode(
+      return CryptoHelper().decrypt(
         password: password,
         cipherText: cipherText,
       );
@@ -34,10 +34,11 @@ class PasswordStorage extends SecureStore {
     final helper = CryptoHelper();
     await prefs.setString(
       _privateKeyTitle,
-      helper.encode(
+      helper.encrypt(
         password: password,
         plainText: privateKey,
-        iv: helper.getNonce(),
+        // helper.getIV() is the default behaviour of the encrypt method
+        iv: helper.getIV(),
       ),
     );
   }
