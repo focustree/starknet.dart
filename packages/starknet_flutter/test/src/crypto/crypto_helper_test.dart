@@ -1,7 +1,7 @@
 import 'dart:typed_data';
 
 import 'package:flutter_test/flutter_test.dart';
-import 'package:starknet_flutter/src/store/crypto_helper.dart';
+import 'package:starknet_flutter/src/crypto/crypto_helper.dart';
 
 main() {
   final cryptoHelper = CryptoHelper();
@@ -68,12 +68,12 @@ main() {
           [for (int i = 0; i < CryptoHelper.ivLength; i++) i]),
       plainText: plainText,
     );
-    expect(cipherText, equals("AAECAwQFBgcICQoLleIx+yVefIPAtKoCDifEJQ=="));
+    expect(cipherText, equals("AAECAwQFBgcICQoLDA0OD7t5Gg1C4hrl8RAxdzEfIu8="));
   });
 
   test("Decode with AES 256 GCM", () {
     String password = "aStringOf16Bytes";
-    String cipherText = "AAECAwQFBgcICQoLleIx+yVefIPAtKoCDifEJQ==";
+    String cipherText = "AAECAwQFBgcICQoLDA0OD7t5Gg1C4hrl8RAxdzEfIu8=";
 
     String plainText = cryptoHelper.decrypt(
       password: password,

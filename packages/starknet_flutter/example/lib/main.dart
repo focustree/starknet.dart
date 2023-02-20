@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:starknet_flutter_example/store_tester.dart';
+import 'package:starknet_flutter_example/store_example.dart';
 
 void main() {
   runApp(const MainApp());
@@ -13,7 +13,7 @@ class MainApp extends StatelessWidget {
     return const MaterialApp(
       title: "StarkNet Wallet in Flutter",
       home: Scaffold(
-        body: StoreTester(),
+        body: StoreExample(),
       ),
     );
   }

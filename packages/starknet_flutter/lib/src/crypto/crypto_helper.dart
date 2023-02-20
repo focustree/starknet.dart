@@ -2,12 +2,17 @@ import 'dart:convert';
 import 'dart:math';
 import 'dart:typed_data';
 
-import 'package:crypto/crypto.dart';
-import 'package:pointycastle/export.dart';
+// Import individual files from the pointycastle library to limit size of the package
+import 'package:pointycastle/api.dart';
+import 'package:pointycastle/block/aes.dart';
+import 'package:pointycastle/block/modes/gcm.dart';
+import 'package:pointycastle/digests/sha256.dart';
+import 'package:pointycastle/padded_block_cipher/padded_block_cipher_impl.dart';
+import 'package:pointycastle/paddings/pkcs7.dart';
 
 class CryptoHelper {
   /// Length of the initialization vector used by AES 256 GCM.
-  static const ivLength = 12;
+  static const ivLength = 16;
 
   /// Encrypt [plainText] with AES 256 GCM using [password] and [iv].
   /// The returned String is the base64 encoding of the IV and the cipher text.
@@ -17,6 +22,11 @@ class CryptoHelper {
     Uint8List? iv,
     required String plainText,
   }) {
+    assert(
+      iv == null || iv.length == ivLength,
+      "IV must be $ivLength bytes long",
+    );
+
     final usedIV = iv ?? getIV();
     final cipherText = _cipherAes(
       key: _hashSha256(password),
@@ -88,8 +98,10 @@ class CryptoHelper {
 
   /// Hash [text] with SHA256.
   Uint8List _hashSha256(String text) {
-    return Uint8List.fromList(
-      sha256.convert(utf8.encode(text)).bytes,
+    return SHA256Digest().process(
+      Uint8List.fromList(
+        utf8.encode(text),
+      ),
     );
   }
 
@@ -106,6 +118,7 @@ class CryptoHelper {
     // On the other hand, xrandom seems to be a better implementation:
     // https://pub.dev/packages/xrandom
     final rand = Random();
+    // IV values for each byte should be between 0 and 255.
     return Uint8List.fromList(
       [for (int i = 0; i < ivLength; i++) rand.nextInt(256)],
     );
