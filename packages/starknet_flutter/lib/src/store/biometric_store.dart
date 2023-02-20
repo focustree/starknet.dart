@@ -40,8 +40,6 @@ class BiometricStore extends SecureStore {
       options: StorageFileInitOptions(
         authenticationValidityDurationSeconds:
             androidOptions.authenticationValidityDurationSeconds,
-        authenticationRequired: androidOptions.authenticationRequired,
-        androidBiometricOnly: androidOptions.biometricsOnly,
       ),
     );
   }
