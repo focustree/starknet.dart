@@ -1,28 +1,19 @@
 import 'package:flutter/material.dart';
-import 'package:starknet_flutter_example/ui/widgets/exchange_rates_view.dart';
+import 'package:starknet_flutter_example/store_example.dart';
 
 void main() {
-  runApp(const StarknetDemoApp());
+  runApp(const MainApp());
 }
 
-class StarknetDemoApp extends StatelessWidget {
-  const StarknetDemoApp({super.key});
+class MainApp extends StatelessWidget {
+  const MainApp({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'SnackBar Demo',
+    return const MaterialApp(
+      title: "StarkNet Wallet in Flutter",
       home: Scaffold(
-        appBar: AppBar(
-          title: const Text('Starknet Flutter Demo'),
-        ),
-        body: Column(
-          children: const [
-            Expanded(
-              child: ExchangeRatesView(),
-            ),
-          ],
-        ),
+        body: StoreExample(),
       ),
     );
   }
