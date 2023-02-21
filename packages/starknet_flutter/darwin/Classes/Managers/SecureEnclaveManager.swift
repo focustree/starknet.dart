@@ -53,7 +53,7 @@ class SecureEnclaveManager {
   
   // Generates a new public-private key pair and returns the private key as a SecKey object.
   // The private key is created with certain attributes that are specified in the 'parameters' dictionary.
-  private func generatePublicPrivateKeyPair() throws -> SecKey  {
+  private func generateKeypair() throws -> SecKey  {
     // Create an attribute representing the application tag for the key.
     // The Secure Enclave uses this tag to identify the key.
     guard let secAttrApplicationTag = SecureEnclaveManager.starknetTag.data(using: .utf8) else {
@@ -128,7 +128,7 @@ class SecureEnclaveManager {
     
     // If the secret key does not exist, generate a new key pair and save the private key in the secure enclave.
     if (secretKey == nil) {
-      secretKey = try generatePublicPrivateKeyPair()
+      secretKey = try generateKeypair()
     }
     
     // Get the public key from the secret key.
