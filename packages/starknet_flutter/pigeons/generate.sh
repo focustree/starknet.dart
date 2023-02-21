@@ -1,3 +1,4 @@
+#!/bin/bash
 flutter pub run pigeon \
   --input pigeons/interface.dart \
   --dart_out lib/pigeon.dart \
