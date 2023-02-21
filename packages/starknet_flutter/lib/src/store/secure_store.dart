@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:convert';
 import 'dart:io';
 
 import 'package:biometric_storage/biometric_storage.dart';
@@ -10,6 +11,27 @@ import 'package:starknet_flutter/src/store/secure_store_options.dart';
 import 'exceptions/exceptions.dart';
 
 abstract class SecureStore {
+  final _privateKeyPrefix = "starknetPrivateKey";
+  final _seedPhrasePrefix = "starknetSeedPhrase";
+
+  String privateKeyOf(String id) => "$_privateKeyPrefix-$id";
+
+  String seedPhraseOf(String id) => "$_seedPhrasePrefix-$id";
+
+  /// Converts a [Uint8List] to a list of words by decoding it as UTF-8 and
+  /// splitting it by spaces.
+  List<String> bytesToWords(Uint8List secret) {
+    return utf8.decode(secret).split(" ");
+  }
+
+  /// Converts words to [Uint8List] by concatenating them with a space separator
+  /// and encoding them as UTF-8.
+  Uint8List wordsToBytes(List<String> words) {
+    return Uint8List.fromList(
+      utf8.encode(words.join(" ")),
+    );
+  }
+
   /// Returns a [SecureStore] that uses biometric authentication if available.
   static Future<SecureStore> get({
     AndroidSecureStoreOptions androidOptions =

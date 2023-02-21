@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'dart:typed_data';
 
 import 'package:flutter_test/flutter_test.dart';
@@ -43,43 +44,49 @@ main() {
     for (var password in passwords) {
       test("Using ${password.length} chars password: $password", () {
         const plainText = "azerty";
-        final cipherText = cryptoHelper.encrypt(
+        final encryptedSecret = cryptoHelper.encrypt(
           password: password,
-          plainText: plainText,
+          secret: Uint8List.fromList(
+            utf8.encode(plainText),
+          ),
         );
-        final decodedText = cryptoHelper.decrypt(
+        final decodedSecret = cryptoHelper.decrypt(
           password: password,
-          cipherText: cipherText,
+          encryptedSecret: encryptedSecret,
         );
-        expect(decodedText, equals(plainText));
+        expect(utf8.decode(decodedSecret), equals(plainText));
       });
     }
   });
 
   test("Encode with AES 256 GCM", () {
-    // TODO the password must be 16 bytes long or it will fail
     String password = "aStringOf16Bytes";
     String plainText = "azerty";
 
-    String cipherText = cryptoHelper.encrypt(
+    Uint8List encryptedSecret = cryptoHelper.encrypt(
       password: password,
       // Always the same IV for testing
       iv: Uint8List.fromList(
           [for (int i = 0; i < CryptoHelper.ivLength; i++) i]),
-      plainText: plainText,
+      secret: Uint8List.fromList(
+        utf8.encode(plainText),
+      ),
     );
-    expect(cipherText, equals("AAECAwQFBgcICQoLDA0OD7t5Gg1C4hrl8RAxdzEfIu8="));
+    expect(
+      base64Encode(encryptedSecret),
+      equals("AAECAwQFBgcICQoLDA0OD7t5Gg1C4hrl8RAxdzEfIu8="),
+    );
   });
 
   test("Decode with AES 256 GCM", () {
     String password = "aStringOf16Bytes";
-    String cipherText = "AAECAwQFBgcICQoLDA0OD7t5Gg1C4hrl8RAxdzEfIu8=";
+    String encryptedSecret = "AAECAwQFBgcICQoLDA0OD7t5Gg1C4hrl8RAxdzEfIu8=";
 
-    String plainText = cryptoHelper.decrypt(
+    Uint8List decryptedSecret = cryptoHelper.decrypt(
       password: password,
-      cipherText: cipherText,
+      encryptedSecret: base64Decode(encryptedSecret),
     );
-    expect(plainText, equals("azerty"));
+    expect(utf8.decode(decryptedSecret), equals("azerty"));
   });
 
   // TODO This group test is not bullet proof, it might fail on occasions

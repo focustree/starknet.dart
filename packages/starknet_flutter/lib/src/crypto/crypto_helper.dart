@@ -14,13 +14,13 @@ class CryptoHelper {
   /// Length of the initialization vector used by AES 256 GCM.
   static const ivLength = 16;
 
-  /// Encrypt [plainText] with AES 256 GCM using [password] and [iv].
-  /// The returned String is the base64 encoding of the IV and the cipher text.
+  /// Encrypt [secret] with AES 256 GCM using [password] and [iv].
   /// If [iv] is not provided, a random IV will be generated using [getIV].
-  String encrypt({
+  /// The returned [Uint8List] is the concatenation of the IV and the secret.
+  Uint8List encrypt({
     required String password,
     Uint8List? iv,
-    required String plainText,
+    required Uint8List secret,
   }) {
     assert(
       iv == null || iv.length == ivLength,
@@ -28,43 +28,36 @@ class CryptoHelper {
     );
 
     final usedIV = iv ?? getIV();
-    final cipherText = _cipherAes(
+    final encryptedSecret = _cipherAes(
       key: _hashSha256(password),
       iv: usedIV,
-      toProcess: Uint8List.fromList(utf8.encode(plainText)),
+      toProcess: secret,
       encrypt: true,
     );
-    return base64Encode(
-      Uint8List.fromList([
-        // Concatenate IV and cipher text to be able to decrypt it later
-        ...usedIV.toList(),
-        ...cipherText.toList(),
-      ]),
-    );
+    return Uint8List.fromList([
+      // Concatenate IV and cipher text to be able to decrypt it later
+      ...usedIV.toList(),
+      ...encryptedSecret.toList(),
+    ]);
   }
 
-  /// Decrypt [cipherText] with AES 256 GCM using [password]. The IV will be
-  /// read from the beginning of [cipherText].
-  /// The cipherText is expected to be base64 encoded.
-  String decrypt({
+  /// Decrypt [encryptedSecret] with AES 256 GCM using [password]. The IV will be
+  /// read from the beginning of [encryptedSecret].
+  Uint8List decrypt({
     required String password,
-    required String cipherText,
+    required Uint8List encryptedSecret,
   }) {
-    // TODO Handle decode failures (wrong password...)
-    // cipherText is encoded in base64 so decode it first
-    Uint8List decodedBytes = base64Decode(cipherText);
-
     // Split IV and cipher bytes
-    final iv = decodedBytes.sublist(0, ivLength);
-    final cipherBytes = decodedBytes.sublist(ivLength);
+    final iv = encryptedSecret.sublist(0, ivLength);
+    final encryptedSecretBytes = encryptedSecret.sublist(ivLength);
 
-    final plainText = _cipherAes(
+    final decryptedSecret = _cipherAes(
       key: _hashSha256(password),
       iv: iv,
-      toProcess: cipherBytes,
+      toProcess: encryptedSecretBytes,
       encrypt: false,
     );
-    return utf8.decode(plainText);
+    return decryptedSecret;
   }
 
   /// Process [toProcess] with AES 256 GCM using [key] and [iv].

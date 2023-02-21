@@ -105,13 +105,18 @@ Use `BiomericStore.storePrivateKey` or `PasswordStore.storePrivateKey` to store 
 ```dart
 final store = await SecureStore.get();
 await store.when(
-  biometric: (biometric) => biometric.storePrivateKey(_privateKey),
+  biometric: (biometric) => biometric.storePrivateKey(
+    id: "uuid1",
+    privateKey: _privateKey,
+  ),
   password: (password) => password.storePrivateKey(
+    id: "uuid1",
     password: _password,
     privateKey: _privateKey,
   ),
 );
 ```
+Each private key is identified by an `id` (a `String`).
 When using the `PasswordStore`, the password is used to encrypt the private key using AES 256 GCM.
 The password is hashed using SHA 256.
 The IV for AES is generated randomly, but you can also provide your own if needed. It must be 16 bytes long.
@@ -123,8 +128,9 @@ Similarly, you can retrieve the key using `BiomericStore.getPrivateKey` or `Pass
 ```dart
 final store = await SecureStore.get();
 await store.when(
-  biometric: (biometric) => biometric.getPrivateKey(),
+  biometric: (biometric) => biometric.getPrivateKey(id: "uuid1"),
   password: (password) => password.getPrivateKey(
+    id: "uuid1",
     password: _password,
   ),
 );

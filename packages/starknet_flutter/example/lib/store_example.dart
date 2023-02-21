@@ -1,5 +1,8 @@
 // ignore_for_file: avoid_print
 
+import 'dart:convert';
+import 'dart:typed_data';
+
 import 'package:flutter/material.dart';
 import 'package:starknet_flutter/starknet_flutter.dart';
 
@@ -11,6 +14,7 @@ class StoreExample extends StatefulWidget {
 }
 
 class _StoreExampleState extends State<StoreExample> {
+  final _privateKeyId = "uuid1";
   String _password = "";
   String _privateKey = "";
   bool _biometricOnly = false;
@@ -80,13 +84,20 @@ class _StoreExampleState extends State<StoreExample> {
                                     authenticationValidityDurationSeconds: -1,
                                   ),
                                 );
+                                final privateKey = Uint8List.fromList(
+                                  utf8.encode(_privateKey),
+                                );
                                 await store.when(
                                   biometric: (biometric) =>
-                                      biometric.storePrivateKey(_privateKey),
+                                      biometric.storePrivateKey(
+                                    id: _privateKeyId,
+                                    privateKey: privateKey,
+                                  ),
                                   password: (password) =>
                                       password.storePrivateKey(
+                                    id: _privateKeyId,
                                     password: _password,
-                                    privateKey: _privateKey,
+                                    privateKey: privateKey,
                                   ),
                                 );
                                 setState(() {
@@ -116,13 +127,16 @@ You should notify the user that they can't use this secure feature.""";
                     );
                     try {
                       final result = await store.when(
-                        biometric: (biometric) => biometric.getPrivateKey(),
+                        biometric: (biometric) => biometric.getPrivateKey(
+                          id: _privateKeyId,
+                        ),
                         password: (password) => password.getPrivateKey(
+                          id: "uuid1",
                           password: _password,
                         ),
                       );
                       setState(() {
-                        _readKey = result;
+                        _readKey = result != null ? utf8.decode(result) : null;
                       });
                     } on FailedToDecryptException catch (e) {
                       setState(() {
