@@ -59,6 +59,14 @@ class BiometricStore extends SecureStore {
     }
   }
 
+  /// Deletes the secret encrypted with biometric under [key].
+  Future<void> deleteSecret({
+    required String key,
+  }) async {
+    final store = await _biometricStore(key);
+    await store.delete();
+  }
+
   /// Stores the private key associated with [id] in a file encrypted with
   /// biometric.
   Future<void> storePrivateKey({
@@ -73,6 +81,13 @@ class BiometricStore extends SecureStore {
     required String id,
   }) {
     return getSecret(key: privateKeyOf(id));
+  }
+
+  /// Deletes the private key identified by [id].
+  Future<void> deletePrivateKey({
+    required String id,
+  }) {
+    return deleteSecret(key: privateKeyOf(id));
   }
 
   /// Stores the [seedPhrase] corresponding to [id] encrypted with biometric.
@@ -98,5 +113,12 @@ class BiometricStore extends SecureStore {
     } else {
       return bytesToWords(secret);
     }
+  }
+
+  /// Deletes the seed phrase identified by [id].
+  Future<void> deleteSeedPhrase({
+    required String id,
+  }) {
+    return deleteSecret(key: seedPhraseOf(id));
   }
 }

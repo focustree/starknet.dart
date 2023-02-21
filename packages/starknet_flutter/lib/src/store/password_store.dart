@@ -60,6 +60,14 @@ class PasswordStore extends SecureStore {
     }
   }
 
+  /// Deletes the secret encrypted with [password] under [key].
+  Future<void> deleteSecret({
+    required String key,
+  }) async {
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.remove(key);
+  }
+
   /// Stores the [privateKey] identified as [id] encrypted with [password].
   /// If not set, a random generated IV will be used.
   Future<void> storePrivateKey({
@@ -82,6 +90,13 @@ class PasswordStore extends SecureStore {
     required String password,
   }) {
     return getSecret(key: privateKeyOf(id), password: password);
+  }
+
+  /// Deletes the private key identified by [id].
+  Future<void> deletePrivateKey({
+    required String id,
+  }) {
+    return deleteSecret(key: privateKeyOf(id));
   }
 
   /// Stores the [seedPhrase] corresponding to [id] encrypted with [password].
@@ -113,5 +128,12 @@ class PasswordStore extends SecureStore {
     } else {
       return bytesToWords(secret);
     }
+  }
+
+  /// Deletes the seed phrase corresponding to [id].
+  Future<void> deleteSeedPhrase({
+    required String id,
+  }) {
+    return deleteSecret(key: seedPhraseOf(id));
   }
 }

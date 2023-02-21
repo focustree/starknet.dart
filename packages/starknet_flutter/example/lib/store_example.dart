@@ -147,6 +147,27 @@ You should notify the user that they can't use this secure feature.""";
                   },
                   child: const Text("Read private key"),
                 ),
+                TextButton(
+                  onPressed: () async {
+                    final store = await SecureStore.get(
+                      passwordFallbackEnabled: !_biometricOnly,
+                    );
+                    await store.when(
+                      biometric: (biometric) =>
+                          biometric.deletePrivateKey(id: _privateKeyId),
+                      password: (password) =>
+                          password.deletePrivateKey(id: _privateKeyId),
+                    );
+                    setState(() {
+                      _readKey = null;
+                      _readError = null;
+                    });
+                  },
+                  child: const Text(
+                    "Delete private key",
+                    style: TextStyle(color: Colors.red),
+                  ),
+                ),
               ],
             );
           }),
