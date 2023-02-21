@@ -9,31 +9,48 @@ import Flutter
 import UIKit
 
 class StarknetApi : NSObject, StarknetInterface {
-  func storePrivateKey(privateKey: String, completion: @escaping (Result<Void, Error>) -> Void) {
+  func removeSecret(key: String, completion: @escaping (Result<Void, Error>) -> Void) {
     let secureEnclaveManager = SecureEnclaveManager()
     let keychainManager = KeychainManager()
-
+    
     do {
-      let cipher = try secureEnclaveManager.encrypt(message: privateKey)
-      keychainManager.save(cipher)
+      // Remove key from secure enclave
+      try secureEnclaveManager.delete(key: key)
+      
+      // Remove cipher from keychain
+      keychainManager.delete(key: key)
+      
       completion(.success(()))
     } catch let error {
       completion(.failure(error))
     }
   }
   
-  func getPrivateKey(completion: @escaping (Result<String, Error>) -> Void) {
+  func storeSecret(key: String, privateKey: FlutterStandardTypedData, completion: @escaping (Result<Void, Error>) -> Void) {
+    let secureEnclaveManager = SecureEnclaveManager()
+    let keychainManager = KeychainManager()
+
+    do {
+      let cipher = try secureEnclaveManager.encrypt(key: key, message: privateKey.data)
+      keychainManager.save(key: key, cipher: cipher)
+      completion(.success(()))
+    } catch let error {
+      completion(.failure(error))
+    }
+  }
+  
+  func getSecret(key: String, completion: @escaping (Result<FlutterStandardTypedData, Error>) -> Void) {
     let secureEnclaveManager = SecureEnclaveManager()
     let keychainManager = KeychainManager()
     
-    guard let data = keychainManager.read() else {
+    guard let data = keychainManager.read(key: key) else {
       return
     }
     
     do {
-      let result = try secureEnclaveManager.decrypt(cipherData: data)
+      let result = try secureEnclaveManager.decrypt(key: key, cipherData: data)
       if let result = result {
-        completion(.success(result))
+        completion(.success(FlutterStandardTypedData(bytes: result)))
       }
     } catch let error {
       completion(.failure(error))

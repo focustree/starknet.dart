@@ -10,14 +10,15 @@ import Foundation
 // Provides a set of methods to manage encrypted data stored in the keychain.
 class KeychainManager {
   static let starknetCipherKey = "StarknetCipher"
+  static let tagSeparator = "_"
   
   // Try to save or update the encrypted cipher private key to the keychain.
-  func save(_ cipher: Data) {
+  func save(key: String, cipher: Data) {
     let query = [
       kSecValueData: cipher,
       kSecClass: kSecClassGenericPassword,
       kSecAttrSynchronizable: false,
-      kSecAttrAccount: KeychainManager.starknetCipherKey
+      kSecAttrAccount: "\(KeychainManager.starknetCipherKey)\(KeychainManager.tagSeparator)\(key)",
     ] as CFDictionary
     
     // Perform actions in background preventing freezing UI
@@ -28,7 +29,7 @@ class KeychainManager {
       // If data already exists, update it.
       if writeStatus == errSecDuplicateItem {
         let query = [
-          kSecAttrAccount: KeychainManager.starknetCipherKey,
+          kSecAttrAccount: "\(KeychainManager.starknetCipherKey)\(KeychainManager.tagSeparator)\(key)",
           kSecClass: kSecClassGenericPassword,
         ] as CFDictionary
         
@@ -39,9 +40,9 @@ class KeychainManager {
   }
   
   // Read the encrypted cipher private key from the keychain.
-  func read() -> Data? {
+  func read(key: String) -> Data? {
     let query = [
-      kSecAttrAccount: KeychainManager.starknetCipherKey,
+      kSecAttrAccount: "\(KeychainManager.starknetCipherKey)\(KeychainManager.tagSeparator)\(key)",
       kSecClass: kSecClassGenericPassword,
       kSecReturnData: true
     ] as CFDictionary
@@ -53,12 +54,15 @@ class KeychainManager {
   }
   
   // Delete the encrypted cipher private key from the keychain.
-  func delete() {
+  func delete(key: String) {
     let query = [
-      kSecAttrAccount: KeychainManager.starknetCipherKey,
+      kSecAttrAccount: "\(KeychainManager.starknetCipherKey)\(KeychainManager.tagSeparator)\(key)",
       kSecClass: kSecClassGenericPassword,
     ] as CFDictionary
-    
-    SecItemDelete(query)
+
+    // Perform actions in background preventing freezing UI
+    DispatchQueue.global(qos: .background).async {
+      SecItemDelete(query)
+    }
   }
 }

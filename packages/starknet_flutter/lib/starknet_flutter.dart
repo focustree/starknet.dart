@@ -1,11 +1,17 @@
+import 'dart:typed_data';
+
 import 'package:starknet_flutter/pigeon.dart';
 
 class StarknetFlutter {
-  Future<String> getPrivateKey() {
-    return StarknetInterface().getPrivateKey();
+  Future<void> storeSecret(String key, Uint8List privateKey) {
+    return StarknetInterface().storeSecret(key, privateKey);
   }
-  
-  Future<void> storePrivateKey(String privateKey) {
-    return StarknetInterface().storePrivateKey(privateKey);
+
+  Future<Uint8List> getSecret(String key) {
+    return StarknetInterface().getSecret(key);
+  }
+
+  Future removeSecret(String key) {
+    return StarknetInterface().removeSecret(key);
   }
 }

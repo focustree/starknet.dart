@@ -14,18 +14,22 @@ enum SecureEnclaveErrors: Error {
   case unsuportedAlgorithm
   case encryption(String?)
   case decryption(String?)
+  case deletion
   case access(String)
   case emptyPublicKey
 }
 
 class SecureEnclaveManager {
   static let starknetTag = "StarknetPrivateKey"
+  static let tagSeparator = "_"
   static let secretKeyAlgorithm = SecKeyAlgorithm.eciesEncryptionCofactorVariableIVX963SHA256AESGCM
   static let keySizeBits = 256;
   
   // Attempts to retrieve a secret key from the Secure Enclave. If successful, it returns the key as a SecKey object.
-  private func getSecretKey() throws -> SecKey?  {
-    let secAttrApplicationTag = SecureEnclaveManager.starknetTag.data(using: .utf8)!
+  private func getSecretKey(key: String) throws -> SecKey?  {
+    guard let secAttrApplicationTag = "\(SecureEnclaveManager.starknetTag)\(SecureEnclaveManager.tagSeparator)\(key)".data(using: .utf8) else {
+      throw SecureEnclaveErrors.tagConvertion
+    }
     
     // Create a dictionary of attributes that will be used to search for the private key.
     // The search criteria includes the application tag, the key type (Elliptic curve), and a limit of one result.
@@ -53,10 +57,10 @@ class SecureEnclaveManager {
   
   // Generates a new public-private key pair and returns the private key as a SecKey object.
   // The private key is created with certain attributes that are specified in the 'parameters' dictionary.
-  private func generateKeypair() throws -> SecKey  {
+  private func generateKeypair(key: String) throws -> SecKey  {
     // Create an attribute representing the application tag for the key.
     // The Secure Enclave uses this tag to identify the key.
-    guard let secAttrApplicationTag = SecureEnclaveManager.starknetTag.data(using: .utf8) else {
+    guard let secAttrApplicationTag = "\(SecureEnclaveManager.starknetTag)\(SecureEnclaveManager.tagSeparator)\(key)".data(using: .utf8) else {
       throw SecureEnclaveErrors.tagConvertion
     }
     
@@ -72,12 +76,12 @@ class SecureEnclaveManager {
     }
     
     var accessibleParam: CFString;
-    #if os(macOS)
+#if os(macOS)
     params = .userPresence
     accessibleParam = kSecAttrAccessibleWhenUnlocked
-    #elseif os(iOS)
+#elseif os(iOS)
     accessibleParam = kSecAttrAccessibleWhenUnlockedThisDeviceOnly
-    #endif
+#endif
     
     let secAttrAccessControl =
     SecAccessControlCreateWithFlags(
@@ -122,13 +126,13 @@ class SecureEnclaveManager {
   }
   
   // This function encrypts a message using the secret key in the secure enclave.
-  func encrypt(message: String) throws -> Data {
+  func encrypt(key: String, message: Data) throws -> Data {
     // Attempt to retrieve the secret key from the secure enclave.
-    var secretKey = try getSecretKey()
+    var secretKey = try getSecretKey(key: key)
     
     // If the secret key does not exist, generate a new key pair and save the private key in the secure enclave.
     if (secretKey == nil) {
-      secretKey = try generateKeypair()
+      secretKey = try generateKeypair(key: key)
     }
     
     // Get the public key from the secret key.
@@ -146,7 +150,7 @@ class SecureEnclaveManager {
     let cipherTextData = SecKeyCreateEncryptedData(
       publicKey,
       SecureEnclaveManager.secretKeyAlgorithm,
-      (message.data(using: .utf8)!) as CFData,
+      message as CFData,
       &error) as Data?
     
     if (error != nil) || (cipherTextData == nil) {
@@ -158,9 +162,9 @@ class SecureEnclaveManager {
   }
   
   // Attempts to decrypt a given cipher data using a secret key retrieved from the secure enclave
-  func decrypt(cipherData: Data) throws -> String?  {
+  func decrypt(key: String, cipherData: Data) throws -> Data?  {
     // Attempts to retrieve the secret key from the secure enclave
-    guard let secretKey = try getSecretKey() else {
+    guard let secretKey = try getSecretKey(key: key) else {
       throw SecureEnclaveErrors.secretKeyNotExist
     }
     
@@ -182,6 +186,29 @@ class SecureEnclaveManager {
     }
     
     // Returns the plaintext string resulting from the decryption
-    return String(decoding: plainTextData!, as: UTF8.self)
+    return plainTextData
+  }
+  
+  // Attempts to delete the secret key from the secure enclave
+  func delete(key: String) throws {
+    guard let secAttrApplicationTag = "\(SecureEnclaveManager.starknetTag)\(SecureEnclaveManager.tagSeparator)\(key)".data(using: .utf8) else {
+      throw SecureEnclaveErrors.tagConvertion
+    }
+    
+    // Attempt to retrieve the secret key from the secure enclave.
+    let secretKey = try getSecretKey(key: key)
+    if (secretKey == nil) {
+      throw SecureEnclaveErrors.secretKeyNotExist
+    }
+    
+    let query: [String: Any] = [
+      kSecClass as String               : kSecClassKey,
+      kSecAttrApplicationTag as String  : secAttrApplicationTag
+    ]
+    
+    // Remove the key from the secure enclave.
+    if (SecItemDelete(query as CFDictionary) != errSecSuccess) {
+      throw SecureEnclaveErrors.deletion
+    }
   }
 }

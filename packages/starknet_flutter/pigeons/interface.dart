@@ -3,8 +3,11 @@ import 'package:pigeon/pigeon.dart';
 @HostApi()
 abstract class StarknetInterface {
   @async
-  void storePrivateKey(String privateKey);
+  void storeSecret(String key, Uint8List privateKey);
 
   @async
-  String getPrivateKey();
+  void removeSecret(String key);
+
+  @async
+  Uint8List getSecret(String key);
 }

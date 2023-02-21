@@ -18,12 +18,12 @@ class StarknetInterface {
 
   static const MessageCodec<Object?> codec = StandardMessageCodec();
 
-  Future<void> storePrivateKey(String arg_privateKey) async {
+  Future<void> storeSecret(String arg_key, Uint8List arg_privateKey) async {
     final BasicMessageChannel<Object?> channel = BasicMessageChannel<Object?>(
-        'dev.flutter.pigeon.StarknetInterface.storePrivateKey', codec,
+        'dev.flutter.pigeon.StarknetInterface.storeSecret', codec,
         binaryMessenger: _binaryMessenger);
     final List<Object?>? replyList =
-        await channel.send(<Object?>[arg_privateKey]) as List<Object?>?;
+        await channel.send(<Object?>[arg_key, arg_privateKey]) as List<Object?>?;
     if (replyList == null) {
       throw PlatformException(
         code: 'channel-error',
@@ -40,12 +40,34 @@ class StarknetInterface {
     }
   }
 
-  Future<String> getPrivateKey() async {
+  Future<void> removeSecret(String arg_key) async {
     final BasicMessageChannel<Object?> channel = BasicMessageChannel<Object?>(
-        'dev.flutter.pigeon.StarknetInterface.getPrivateKey', codec,
+        'dev.flutter.pigeon.StarknetInterface.removeSecret', codec,
         binaryMessenger: _binaryMessenger);
     final List<Object?>? replyList =
-        await channel.send(null) as List<Object?>?;
+        await channel.send(<Object?>[arg_key]) as List<Object?>?;
+    if (replyList == null) {
+      throw PlatformException(
+        code: 'channel-error',
+        message: 'Unable to establish connection on channel.',
+      );
+    } else if (replyList.length > 1) {
+      throw PlatformException(
+        code: replyList[0]! as String,
+        message: replyList[1] as String?,
+        details: replyList[2],
+      );
+    } else {
+      return;
+    }
+  }
+
+  Future<Uint8List> getSecret(String arg_key) async {
+    final BasicMessageChannel<Object?> channel = BasicMessageChannel<Object?>(
+        'dev.flutter.pigeon.StarknetInterface.getSecret', codec,
+        binaryMessenger: _binaryMessenger);
+    final List<Object?>? replyList =
+        await channel.send(<Object?>[arg_key]) as List<Object?>?;
     if (replyList == null) {
       throw PlatformException(
         code: 'channel-error',
@@ -63,7 +85,7 @@ class StarknetInterface {
         message: 'Host platform returned null value for non-null return value.',
       );
     } else {
-      return (replyList[0] as String?)!;
+      return (replyList[0] as Uint8List?)!;
     }
   }
 }
