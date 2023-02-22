@@ -5,6 +5,7 @@ export 'call.dart';
 export 'chain_id.dart';
 export 'contract_storage_diff_item.dart';
 export 'declared_contract_item.dart';
+export 'deploy_account_transaction.dart';
 export 'deployed_contract_item.dart';
 export 'estimate_fee.dart';
 export 'event.dart';

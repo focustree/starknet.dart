@@ -8,6 +8,7 @@ class StarknetChainId {
 class TransactionHashPrefix {
   static final declare = Felt.fromString('declare');
   static final deploy = Felt.fromString('deploy');
+  static final deployAccount = Felt.fromString('deploy_account');
   static final invoke = Felt.fromString('invoke');
   static final l1Handler = Felt.fromString('l1_handler');
 }
@@ -22,6 +23,10 @@ final udcAddress = Felt.fromHexString(
 // address is the same for mainnet & testnet
 final ethAddress = Felt.fromHexString(
     "0x049d36570d4e46f48e99674bd3fcc84644ddd6b96f7c741b1562b82f9e004dc7");
+
+// from starknet-devnet 0.4.0
+final openZeppelinAccountClassHash = Felt.fromHexString(
+    "0x1fac3074c9d5282f0acc5c69a4781a1c711efea5e73c550c5d9fb253cf7fd3d");
 
 // Devnet
 
@@ -49,6 +54,16 @@ final account1 = getAccount(
   privateKey: devnetAccount1PrivateKey,
 );
 
+final devnetAccount9Address = Felt.fromHexString(
+    "0x7f61fa3893ad0637b2ff76fed23ebbb91835aacd4f743c2347716f856438429");
+final devnetAccount9PublicKey = Felt.fromHexString(
+    "0xc11e246b1d54515a26204d2d3c8586ea25ed9eecae00df173405974cb86dbc");
+final devnetAccount9PrivateKey =
+    Felt.fromHexString("0x259f4329e6f4590b9a164106cf6a659e");
+final account9 = getAccount(
+  accountAddress: devnetAccount9Address,
+  privateKey: devnetAccount9PrivateKey,
+);
 // Testnet
 
 final v010PathfinderGoerliTestnetUri = Uri.parse('http://35.180.61.64');

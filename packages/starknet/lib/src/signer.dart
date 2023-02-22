@@ -125,4 +125,41 @@ class Signer {
 
     return [Felt(signature.r), Felt(signature.s)];
   }
+
+  List<Felt> signDeployAccountTransactionV1({
+    required Felt contractAddressSalt,
+    required Felt classHash,
+    required List<Felt> constructorCalldata,
+    required Felt chainId,
+    Felt? nonce,
+    Felt? maxFee,
+  }) {
+    maxFee = maxFee ?? defaultMaxFee;
+    nonce = nonce ?? defaultNonce;
+    final contractAddress = Contract.computeAddress(
+        classHash: classHash,
+        calldata: constructorCalldata,
+        salt: contractAddressSalt);
+
+    final transactionHash = calculateTransactionHashCommon(
+        txHashPrefix: TransactionHashPrefix.deployAccount.toBigInt(),
+        version: 1,
+        address: contractAddress.toBigInt(),
+        entryPointSelector: BigInt.from(0),
+        calldata: toBigIntList([
+          classHash,
+          contractAddressSalt,
+          ...constructorCalldata,
+        ]),
+        maxFee: maxFee.toBigInt(),
+        chainId: chainId.toBigInt(),
+        additionalData: [nonce.toBigInt()]);
+
+    final signature = starknet_sign(
+      privateKey: privateKey.toBigInt(),
+      messageHash: transactionHash,
+    );
+
+    return [Felt(signature.r), Felt(signature.s)];
+  }
 }
