@@ -6,6 +6,15 @@ import 'dart:typed_data';
 import 'package:flutter/material.dart';
 import 'package:starknet_flutter/starknet_flutter.dart';
 
+void main() {
+  runApp(
+    const MaterialApp(
+      title: "StarkNet Wallet in Flutter",
+      home: StoreExample(),
+    ),
+  );
+}
+
 class StoreExample extends StatefulWidget {
   const StoreExample({super.key});
 
