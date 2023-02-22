@@ -140,6 +140,13 @@ class SecureEnclaveManager {
     // If the secret key does not exist, generate a new key pair and save the private key in the secure enclave.
     if (secretKey == nil) {
       secretKey = try generateKeypair(key: key)
+    } else {
+#if os(iOS)
+      let biometricResult = promptBiometric()
+      if (!biometricResult) {
+        throw SecureEnclaveErrors.biometricNotAvailable
+      }
+#endif
     }
     
     // Get the public key from the secret key.
@@ -201,6 +208,13 @@ class SecureEnclaveManager {
     guard let secAttrApplicationTag = "\(SecureEnclaveManager.starknetTag)\(SecureEnclaveManager.tagSeparator)\(key)".data(using: .utf8) else {
       throw SecureEnclaveErrors.tagConvertion
     }
+
+#if os(iOS)
+    let biometricResult = promptBiometric()
+    if (!biometricResult) {
+      throw SecureEnclaveErrors.biometricNotAvailable
+    }
+#endif
     
     // Attempt to retrieve the secret key from the secure enclave.
     let secretKey = try getSecretKey(key: key)
