@@ -90,6 +90,7 @@ class CryptoHelper {
   }
 
   /// Hash [text] with SHA256.
+  /// TODO This function could be a parameter that could be replaced to include a salt. See #129
   Uint8List _hashSha256(String text) {
     return SHA256Digest().process(
       Uint8List.fromList(
