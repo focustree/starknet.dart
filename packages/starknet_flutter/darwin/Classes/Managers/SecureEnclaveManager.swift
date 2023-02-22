@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import LocalAuthentication
 
 enum SecureEnclaveErrors: Error {
   case tagConvertion
@@ -17,6 +18,7 @@ enum SecureEnclaveErrors: Error {
   case deletion
   case access(String)
   case emptyPublicKey
+  case biometricNotAvailable
 }
 
 class SecureEnclaveManager {
@@ -62,6 +64,11 @@ class SecureEnclaveManager {
     // The Secure Enclave uses this tag to identify the key.
     guard let secAttrApplicationTag = "\(SecureEnclaveManager.starknetTag)\(SecureEnclaveManager.tagSeparator)\(key)".data(using: .utf8) else {
       throw SecureEnclaveErrors.tagConvertion
+    }
+
+    let biometricResult = promptBiometric()
+    if (!biometricResult) {
+      throw SecureEnclaveErrors.biometricNotAvailable
     }
     
     // Create an access control object that specifies how the key can be used.
@@ -210,5 +217,27 @@ class SecureEnclaveManager {
     if (SecItemDelete(query as CFDictionary) != errSecSuccess) {
       throw SecureEnclaveErrors.deletion
     }
+  }
+
+  // Prompt for biometric authentication
+  func promptBiometric() -> Bool {
+    let context = LAContext()
+    let permissions = context.canEvaluatePolicy(
+      .deviceOwnerAuthentication,
+      error: nil
+    )
+    // Biometric permissions not granted
+    if !permissions {
+      return false
+    }
+    
+    var success = false
+    let sema = DispatchSemaphore(value: 0)
+    context.evaluatePolicy(.deviceOwnerAuthentication, localizedReason: "Authenticate with biometrics to store private key.", reply: { (result, error) in
+      success = result && error == nil
+      sema.signal()
+    })
+    sema.wait()
+    return success
   }
 }
