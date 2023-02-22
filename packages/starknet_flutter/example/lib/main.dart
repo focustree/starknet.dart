@@ -25,10 +25,10 @@ class StarknetDemoApp extends StatelessWidget {
       routes: {
         WelcomeScreen.routeName: (context) => const WelcomeScreen(),
         RestoreWalletScreen.routeName: (context) => const RestoreWalletScreen(),
-        ProtectWalletScreen.routeName: (context) => const ProtectWalletScreen(),
         CreateSeedScreen.routeName: (context) => const CreateSeedScreen(),
         ChooseNetworkScreen.routeName: (context) => const ChooseNetworkScreen(),
         WalletScreen.routeName: (context) => const WalletScreen(),
+        ProtectWalletScreen.routeName: (context) => const ProtectWalletScreen(),
       },
     );
   }
