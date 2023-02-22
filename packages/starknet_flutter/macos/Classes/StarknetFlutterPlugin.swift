@@ -3,17 +3,7 @@ import FlutterMacOS
 
 public class StarknetFlutterPlugin: NSObject, FlutterPlugin {
   public static func register(with registrar: FlutterPluginRegistrar) {
-    let channel = FlutterMethodChannel(name: "starknet_flutter", binaryMessenger: registrar.messenger)
-    let instance = StarknetFlutterPlugin()
-    registrar.addMethodCallDelegate(instance, channel: channel)
-  }
-
-  public func handle(_ call: FlutterMethodCall, result: @escaping FlutterResult) {
-    switch call.method {
-    case "getPlatformVersion":
-      result("macOS " + ProcessInfo.processInfo.operatingSystemVersionString)
-    default:
-      result(FlutterMethodNotImplemented)
-    }
+    let api = StarknetApi()
+    StarknetInterfaceSetup.setUp(binaryMessenger: registrar.messenger, api: api)
   }
 }
