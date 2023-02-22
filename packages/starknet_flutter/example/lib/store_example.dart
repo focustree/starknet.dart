@@ -7,6 +7,15 @@ import 'package:flutter/material.dart';
 import 'package:starknet_flutter/starknet_flutter.dart';
 import 'package:starknet_flutter_example/ui/widgets/emoji_input.dart';
 
+void main() {
+  runApp(
+    const MaterialApp(
+      title: "StarkNet Wallet in Flutter",
+      home: StoreExample(),
+    ),
+  );
+}
+
 class StoreExample extends StatefulWidget {
   const StoreExample({super.key});
 

@@ -1,20 +1,28 @@
 import 'package:flutter/material.dart';
-import 'package:starknet_flutter_example/store_example.dart';
+import 'package:starknet_flutter_example/ui/screens/choose_network_screen.dart';
+import 'package:starknet_flutter_example/ui/screens/create_seed_screen.dart';
+import 'package:starknet_flutter_example/ui/screens/restore_wallet/restore_wallet_screen.dart';
+import 'package:starknet_flutter_example/ui/screens/wallet/wallet_screen.dart';
+import 'package:starknet_flutter_example/ui/screens/welcome_screen.dart';
 
 void main() {
-  runApp(const MainApp());
+  runApp(const StarknetDemoApp());
 }
 
-class MainApp extends StatelessWidget {
-  const MainApp({super.key});
+class StarknetDemoApp extends StatelessWidget {
+  const StarknetDemoApp({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
       title: "StarkNet Wallet in Flutter",
-      home: Scaffold(
-        body: StoreExample(),
-      ),
+      routes: {
+        WelcomeScreen.routeName: (context) => const WelcomeScreen(),
+        RestoreWalletScreen.routeName: (context) => const RestoreWalletScreen(),
+        CreateSeedScreen.routeName: (context) => const CreateSeedScreen(),
+        ChooseNetworkScreen.routeName: (context) => const ChooseNetworkScreen(),
+        WalletScreen.routeName: (context) => const WalletScreen(),
+      },
     );
   }
 }
