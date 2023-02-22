@@ -1,18 +1,18 @@
 # Contributor Guide
 
-**starknet.dart** is a dart package allowing any dart program (mainly Flutter apps) to communicate with the [StarkNet](https://starknet.io/docs/) blockchain.
+**starknet.dart** is a dart package allowing any dart program (mainly Flutter apps) to communicate with the [Starknet](https://starknet.io/docs/) blockchain.
 
-The [StarkNet nodes](https://github.com/eqlabs/pathfinder/blob/06ea631557937d4319aa539a2021e312ec757ac2/crates/pathfinder/src/rpc.rs) expose a JSON-RPC API (see the [specs](https://github.com/starkware-libs/starknet-specs)) that we can call to call Smart Contract methods or even get information on blocks and past transactions.
+The [Starknet nodes](https://github.com/eqlabs/pathfinder/blob/06ea631557937d4319aa539a2021e312ec757ac2/crates/pathfinder/src/rpc.rs) expose a JSON-RPC API (see the [specs](https://github.com/starkware-libs/starknet-specs)) that we can call to call Smart Contract methods or even get information on blocks and past transactions.
 
 The goal of the project is thus to build a bridge between dart applications and Starknet, while staying consistent with the common abstractions used in other blockchain SDKs (see [ethers.js](https://docs.ethers.io/v5/)).
 
 ## Why contributing to starknet.dart?
 
-StarkNet is a revolution in the web3 world: it allows to [scale Ethereum](https://docs.ethhub.io/ethereum-roadmap/layer-2-scaling/zk-rollups/) and offers the best UX one can dream of on a blockchain thanks to unique features like [account abstraction](https://www.argent.xyz/blog/wtf-is-account-abstraction/) or [session keys](https://github.com/dontpanicdao/starknet-burner).
+Starknet is a revolution in the web3 world: it allows to [scale Ethereum](https://docs.ethhub.io/ethereum-roadmap/layer-2-scaling/zk-rollups/) and offers the best UX one can dream of on a blockchain thanks to unique features like [account abstraction](https://www.argent.xyz/blog/wtf-is-account-abstraction/) or [session keys](https://github.com/dontpanicdao/starknet-burner).
 
 But web3 mainstream adoption won't happen unless decentralized applications go to mobile. That's why it's a priority to build the best possible Starknet SDK for Flutter, one of the most used cross-platform mobile framework.
 
-If you want to contribute to the web3 adoption and more specifically StarkNet one, then you probably **can't have more impact than working on this SDK** that will be used by the majority of Flutter dApps on StarkNet!
+If you want to contribute to the web3 adoption and more specifically Starknet one, then you probably **can't have more impact than working on this SDK** that will be used by the majority of Flutter dApps on Starknet!
 
 ## How to contribute
 
