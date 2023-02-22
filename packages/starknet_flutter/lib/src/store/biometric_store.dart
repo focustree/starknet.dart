@@ -3,6 +3,8 @@ import 'dart:io';
 
 import 'package:biometric_storage/biometric_storage.dart';
 import 'package:flutter/foundation.dart';
+import 'package:starknet_flutter/pigeon.dart';
+import 'package:starknet_flutter/src/store/exceptions/biometric_store_not_available_exception.dart';
 import 'package:starknet_flutter/src/store/secure_store.dart';
 import 'package:starknet_flutter/src/store/secure_store_options.dart';
 
@@ -30,13 +32,15 @@ class BiometricStore extends SecureStore {
     required String key,
     required Uint8List secret,
   }) async {
-    if (!kIsWeb && !(Platform.isIOS || Platform.isMacOS)) {
+    if (!kIsWeb && (Platform.isIOS || Platform.isMacOS)) {
+      // Store in Secure Enclave
+      return StarknetInterface().storeSecret(key, secret);
+    } else if (!kIsWeb && !(Platform.isIOS || Platform.isMacOS)) {
       // Store in biometric storage
       final store = await _biometricStore(key);
       return store.write(base64Encode(secret));
     } else {
-      // if (!kIsWeb && (Platform.isIOS || Platform.isMacOS))
-      // return StarknetInterface().storePrivateKey(privateKey);
+      throw const BiometricStoreNotAvailableException();
     }
   }
 
@@ -44,7 +48,9 @@ class BiometricStore extends SecureStore {
   Future<Uint8List?> getSecret({
     required String key,
   }) async {
-    if (!kIsWeb && !(Platform.isIOS || Platform.isMacOS)) {
+    if (!kIsWeb && (Platform.isIOS || Platform.isMacOS)) {
+      return StarknetInterface().getSecret(key);
+    } else if (!kIsWeb && !(Platform.isIOS || Platform.isMacOS)) {
       // Get from biometric storage
       final store = await _biometricStore(key);
       final content = await store.read();
@@ -53,9 +59,7 @@ class BiometricStore extends SecureStore {
       }
       return base64Decode(content);
     } else {
-      // if (!kIsWeb && (Platform.isIOS || Platform.isMacOS))
-      // return StarknetInterface().getPrivateKey();
-      return null;
+      throw const BiometricStoreNotAvailableException();
     }
   }
 
@@ -63,8 +67,14 @@ class BiometricStore extends SecureStore {
   Future<void> deleteSecret({
     required String key,
   }) async {
-    final store = await _biometricStore(key);
-    await store.delete();
+    if (!kIsWeb && !(Platform.isIOS || Platform.isMacOS)) {
+      final store = await _biometricStore(key);
+      await store.delete();
+    } else if (!kIsWeb && (Platform.isIOS || Platform.isMacOS)) {
+      return StarknetInterface().removeSecret(key);
+    } else {
+      throw const BiometricStoreNotAvailableException();
+    }
   }
 
   /// Stores the private key associated with [id] in a file encrypted with

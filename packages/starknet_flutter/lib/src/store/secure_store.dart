@@ -69,7 +69,12 @@ abstract class SecureStore {
 
   /// Returns true if the device has biometric capabilities and has them setup.
   static Future<bool> hasBiometricStore() async {
-    final response = await BiometricStorage().canAuthenticate();
-    return response == CanAuthenticateResponse.success;
+    if (!kIsWeb && (Platform.isIOS || Platform.isMacOS)) {
+      // TODO Using Secure Enclave doesn't mean that we will use biometric authentication for every access
+      return true;
+    } else {
+      final response = await BiometricStorage().canAuthenticate();
+      return response == CanAuthenticateResponse.success;
+    }
   }
 }
