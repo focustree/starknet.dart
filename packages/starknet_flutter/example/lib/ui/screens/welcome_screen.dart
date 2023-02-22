@@ -12,10 +12,11 @@ class WelcomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: Padding(
-          padding: const EdgeInsets.all(20),
-          child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
+      body: Padding(
+        padding: const EdgeInsets.all(20),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
             Expanded(
               child: ConstrainedBox(
                 constraints: const BoxConstraints(maxWidth: 200),
@@ -40,7 +41,6 @@ class WelcomeScreen extends StatelessWidget {
             ),
           ]),
         ),
-      ),
     );
   }
 }
