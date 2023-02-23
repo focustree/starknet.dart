@@ -36,15 +36,22 @@ class PasscodeView extends StatefulWidget {
 
 class _PasscodeViewState extends State<PasscodeView> {
   @override
-  void initState() {
-    super.initState();
-  }
-
-  @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-        child: _buildFragment(),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            _buildFragment(),
+            const SizedBox(height: 10),
+            TextButton(
+              onPressed: () {
+                Navigator.pop(context);
+              },
+              child: Text('Cancel'),
+            )
+          ],
+        ),
       ),
     );
   }
