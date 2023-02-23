@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:starknet_flutter_example/ui/screens/wallet/wallet_screen.dart';
 
 class ChooseNetworkScreen extends StatelessWidget {
   static const routeName = '/choose_network';
@@ -16,14 +17,14 @@ class ChooseNetworkScreen extends StatelessWidget {
             const SizedBox(height: 32),
             ElevatedButton(
               onPressed: () {
-                Navigator.of(context).pushNamed('/wallet');
+                Navigator.of(context).pushNamed(WalletScreen.routeName);
               },
               child: const Text("StarkNet Goerli Alpha"),
             ),
             const SizedBox(height: 16),
             ElevatedButton(
               onPressed: () {
-                Navigator.of(context).pushNamed('/wallet');
+                Navigator.of(context).pushNamed(WalletScreen.routeName);
               },
               child: const Text("StarkNet Mainnet Alpha"),
             ),

@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:starknet_flutter_example/ui/screens/choose_network_screen.dart';
+import 'package:starknet_flutter_example/ui/widgets/main_button.dart';
+import 'package:starknet_flutter_example/ui/widgets/secondary_button.dart';
 
 class CreateSeedScreen extends StatelessWidget {
   static const routeName = '/seed';
@@ -64,29 +67,17 @@ class CreateSeedScreen extends StatelessWidget {
                 },
               ),
             ),
-            Row(
-              children: [
-                Expanded(
-                  child: TextButton.icon(
-                    onPressed: () {},
-                    icon: const Icon(Icons.copy),
-                    label: const Text("Copy to clipboard"),
-                  ),
-                )
-              ],
+            SecondaryButton.expanded(
+              onTap: () {},
+              icon: const Icon(Icons.copy),
+              text: "Copy to clipboard",
             ),
             const SizedBox(height: 8),
-            Row(
-              children: [
-                Expanded(
-                  child: ElevatedButton(
-                    onPressed: () {
-                      Navigator.of(context).pushNamed('/choose_network');
-                    },
-                    child: const Text("Done"),
-                  ),
-                )
-              ],
+            MainButton.expanded(
+              onTap: () {
+                Navigator.of(context).pushNamed(ChooseNetworkScreen.routeName);
+              },
+              text: "Done",
             ),
           ],
         ),
