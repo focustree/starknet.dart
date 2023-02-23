@@ -32,7 +32,7 @@ class _RestoreWalletScreenState extends State<RestoreWalletScreen> {
         backgroundColor: Colors.transparent,
         elevation: 0,
         foregroundColor: Colors.black87,
-        title: const Text("Protect your wallet"),
+        title: const Text("Restore your wallet"),
       ),
       body: Column(
         children: [
