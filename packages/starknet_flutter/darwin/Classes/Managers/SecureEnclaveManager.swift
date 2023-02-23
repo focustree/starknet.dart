@@ -22,7 +22,7 @@ enum SecureEnclaveErrors: Error {
 }
 
 class SecureEnclaveManager {
-  static let starknetTag = "StarknetPrivateKey"
+  static let starknetTag = "starknet.private.key"
   static let tagSeparator = "_"
   static let secretKeyAlgorithm = SecKeyAlgorithm.eciesEncryptionCofactorVariableIVX963SHA256AESGCM
   static let keySizeBits = 256;
@@ -66,7 +66,8 @@ class SecureEnclaveManager {
       throw SecureEnclaveErrors.tagConvertion
     }
 
-    let biometricResult = promptBiometric()
+    // Prompt for biometric authentication
+    let biometricResult = AuthenticationUtil.promptBiometric()
     if (!biometricResult) {
       throw SecureEnclaveErrors.biometricNotAvailable
     }
@@ -75,18 +76,17 @@ class SecureEnclaveManager {
     var accessError: Unmanaged<CFError>?
     var params: SecAccessControlCreateFlags;
     
+    var accessibleParam: CFString;
+#if os(macOS)
+    params = .userPresence
+    accessibleParam = kSecAttrAccessibleWhenUnlocked
+#elseif os(iOS)
     // Set control flag according iOS version.
     if #available(iOS 11.3, *) {
       params = [.privateKeyUsage, .biometryCurrentSet]
     } else {
       params = [.privateKeyUsage, .touchIDCurrentSet]
     }
-    
-    var accessibleParam: CFString;
-#if os(macOS)
-    params = .userPresence
-    accessibleParam = kSecAttrAccessibleWhenUnlocked
-#elseif os(iOS)
     accessibleParam = kSecAttrAccessibleWhenUnlockedThisDeviceOnly
 #endif
     
@@ -217,27 +217,5 @@ class SecureEnclaveManager {
     if (SecItemDelete(query as CFDictionary) != errSecSuccess) {
       throw SecureEnclaveErrors.deletion
     }
-  }
-
-  // Prompt for biometric authentication
-  func promptBiometric() -> Bool {
-    let context = LAContext()
-    let permissions = context.canEvaluatePolicy(
-      .deviceOwnerAuthentication,
-      error: nil
-    )
-    // Biometric permissions not granted
-    if !permissions {
-      return false
-    }
-    
-    var success = false
-    let sema = DispatchSemaphore(value: 0)
-    context.evaluatePolicy(.deviceOwnerAuthentication, localizedReason: "Authenticate with biometrics to store private key.", reply: { (result, error) in
-      success = result && error == nil
-      sema.signal()
-    })
-    sema.wait()
-    return success
   }
 }
