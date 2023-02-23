@@ -1,0 +1,11 @@
+name: Starknet.dart
+description: Dart SDK for Starknet ✨
+logo: "/assets/logo.webp"
+sidebar:
+  - - Getting Started
+    - "/"
+  - - Advanced
+    - - - Reference API
+        - "/reference"
+      - - FAQs
+        - "/faqs"
