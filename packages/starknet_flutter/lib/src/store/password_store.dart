@@ -111,6 +111,7 @@ class PasswordStore extends SecureStore {
       key: seedPhraseOf(id),
       password: password,
       secret: wordsToBytes(seedPhrase),
+      iv: iv,
     );
   }
 
