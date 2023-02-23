@@ -11,14 +11,14 @@ class Swap extends StatelessWidget {
         const TextField(
           decoration: InputDecoration(
             border: OutlineInputBorder(),
-            labelText: "Swap From",
+            labelText: "From",
             hintText: '0',
           ),
         ),
         const TextField(
           decoration: InputDecoration(
             border: OutlineInputBorder(),
-            labelText: "Swap From",
+            labelText: "To",
             hintText: '0',
           ),
         ),

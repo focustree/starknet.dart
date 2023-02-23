@@ -4,7 +4,12 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 class AdaptiveBackButton extends StatelessWidget {
-  const AdaptiveBackButton({super.key});
+  final VoidCallback? onBack;
+
+  const AdaptiveBackButton({
+    super.key,
+    this.onBack,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -17,9 +22,10 @@ class AdaptiveBackButton extends StatelessWidget {
             ? Icons.arrow_back_ios
             : Icons.arrow_back,
       ),
-      onPressed: () {
-        Navigator.of(context).pop();
-      },
+      onPressed: onBack ??
+          () {
+            Navigator.of(context).pop();
+          },
     );
   }
 }
