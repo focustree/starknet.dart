@@ -1,6 +1,10 @@
 name: Starknet.dart
 description: Dart SDK for Starknet ✨
 logo: "/assets/logo.webp"
+anchors:
+  - title: Telegram
+    icon: telegram
+    link: https://t.me/+CWezjfLIRYc0MDY0
 sidebar:
   - - Getting Started
     - "/"
