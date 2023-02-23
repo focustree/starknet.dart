@@ -195,7 +195,10 @@ You should notify the user that they can't use this secure feature.""";
                     ),
                     TextButton(
                       onPressed: () async {
-                        final result = await Passcode.showScreen(context);
+                        final result = await Passcode.showScreen(
+                          context,
+                          action: PasscodeAction.create,
+                        );
                         print(result);
                       },
                       child: const Text(

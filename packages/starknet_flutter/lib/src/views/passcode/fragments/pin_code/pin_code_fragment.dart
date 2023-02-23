@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/foundation.dart';
 import 'package:starknet_flutter/src/views/passcode/fragments/pin_code/widgets/pin_button.dart';
 import 'package:starknet_flutter/src/views/passcode/fragments/pin_code/widgets/pin_entry.dart';
-import 'package:starknet_flutter/src/views/passcode/passcode_view.dart';
+import 'package:starknet_flutter/src/views/passcode/passcode_enums.dart';
 import 'package:starknet_flutter/src/views/widgets/bouncing_button.dart';
 import 'package:starknet_flutter/src/views/widgets/shake.dart';
 
@@ -27,14 +27,7 @@ class _PinCodeFragmentState extends State<PinCodeFragment> {
   List<int> _pinCode = [];
   List<int> _pinCodeToConfirm = [];
   final _titleShakeKey = GlobalKey<ShakeWidgetState>();
-  late PasscodeAction _action;
-
-  @override
-  void initState() {
-    super.initState();
-
-    _action = widget.action;
-  }
+  bool _confirmPinCode = false;
 
   @override
   Widget build(BuildContext context) {
@@ -124,11 +117,13 @@ class _PinCodeFragmentState extends State<PinCodeFragment> {
   }
 
   String get title {
-    switch (_action) {
+    switch (widget.action) {
       case PasscodeAction.create:
-        return 'Create your PIN code';
-      case PasscodeAction.confirm:
-        return 'Confirm';
+        if (_confirmPinCode) {
+          return 'Confirm your PIN code';
+        } else {
+          return 'Create your PIN code';
+        }
       default:
         return 'Enter your PIN code';
     }
@@ -165,26 +160,24 @@ class _PinCodeFragmentState extends State<PinCodeFragment> {
       return;
     }
 
-    if (_action == PasscodeAction.create) {
-      _pinCodeToConfirm = _pinCode;
+    if (widget.action == PasscodeAction.create) {
+      if (_confirmPinCode) {
+        if (!listEquals(_pinCodeToConfirm, _pinCode)) {
+          _titleShakeKey.currentState?.shake();
 
-      setState(() {
-        _action = PasscodeAction.confirm;
-        _pinCode = [];
-      });
-
-      return;
-    }
-
-    if (_action == PasscodeAction.confirm) {
-      if (!listEquals(_pinCodeToConfirm, _pinCode)) {
-        _titleShakeKey.currentState?.shake();
+          setState(() {
+            _confirmPinCode = false;
+            _pinCode = [];
+          });
+          return;
+        }
+      } else {
+        _pinCodeToConfirm = _pinCode;
 
         setState(() {
-          _action = PasscodeAction.create;
+          _confirmPinCode = true;
           _pinCode = [];
         });
-
         return;
       }
     }

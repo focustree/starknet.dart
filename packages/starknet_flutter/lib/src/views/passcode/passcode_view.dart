@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:starknet_flutter/src/views/passcode/fragments/pin_code/pin_code_fragment.dart';
-
-enum PasscodeType { pin_code, password, schema }
-enum PasscodeAction { create, confirm, unlock }
+import 'package:starknet_flutter/src/views/passcode/passcode_enums.dart';
 
 class Passcode {
   static Future showScreen(
