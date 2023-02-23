@@ -28,7 +28,7 @@ class _StoreExampleState extends State<StoreExample> {
         padding: const EdgeInsets.all(16),
         child: FutureBuilder<bool>(
             future: SecureStore.hasBiometricStore(),
-            builder: (context, snapshot) {
+            builder: (builderContext, snapshot) {
               final hasBiometrics = snapshot.data ?? false;
               return SingleChildScrollView(
                 child: Column(
@@ -191,6 +191,15 @@ You should notify the user that they can't use this secure feature.""";
                       child: const Text(
                         "🗑️ Remove private key",
                         style: TextStyle(color: Colors.red),
+                      ),
+                    ),
+                    TextButton(
+                      onPressed: () async {
+                        final result = await Passcode.showScreen(context);
+                        print(result);
+                      },
+                      child: const Text(
+                        "🔏 Show passcode view",
                       ),
                     ),
                   ].separated(const SizedBox(height: 20)),
