@@ -28,36 +28,7 @@ If you want to contribute to this project or have any suggestion, please check o
 
 ### Initial Setup
 
-1. Install python deps. Make sure to select the python interpreter from the local .venv created by poetry if you're using VS Code.
-
-```sh
-poetry install
-```
-
-2. Run devnet in one terminal
-
-```sh
-poetry run devnet start
-```
-
-3. Setup devnet by deploying contracts
-
-```sh
-poetry run devnet setup
-```
-
-You can also deploy contracts one by one:
-
-```sh
-poetry run deploy balance
-```
-
-4. Interact with deployed contracts:
-
-```sh
-poetry run interact get_balance
-poetry run interact increase_balance 10
-```
+Refer to the [main README](../../README.md) for the initial setup.
 
 ### Run Tests
 
@@ -106,8 +77,7 @@ For more advanced features, check out the [dartdoc package](https://pub.dev/pack
 
 ### Compile cairo contracts
 
-```sh
-protostar build
-```
+Refer to the [main README](../../README.md) for compiling cairo contracts.
 
-You can see compiled contracts in the `contracts/build` folder.
+
+You can also see compiled contracts in [this folder](../../contracts/build).
