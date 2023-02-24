@@ -195,7 +195,8 @@ You should notify the user that they can't use this secure feature.""";
                     ),
                     TextButton(
                       onPressed: () async {
-                        final result = await Passcode.showScreen(
+                        final result =
+                            await Passcode.pinCode().showScreen(
                           context,
                           action: PasscodeAction.create,
                         );
