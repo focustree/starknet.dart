@@ -34,14 +34,14 @@ class Passcode {
     );
   }
 
-  Future showScreen(
+  Future<String?> showScreen(
     BuildContext parentContext, {
     PasscodeAction action = PasscodeAction.create,
     PasscodeType type = PasscodeType.pin_code,
     PinCodeConfig? pinCodeConfig,
     PasscodeConfig? config,
   }) {
-    return showModalBottomSheet(
+    return showModalBottomSheet<String?>(
       isScrollControlled: true,
       context: parentContext,
       builder: (context) {
@@ -111,7 +111,6 @@ class PasscodeView extends StatelessWidget {
           pinCodeConfig: pinCodeConfig,
           onPasscodeEntered: (passcode) {
             print('Passcode: $passcode');
-
             Navigator.pop(context, passcode);
           },
         );
