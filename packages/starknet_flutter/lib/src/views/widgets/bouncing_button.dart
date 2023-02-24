@@ -54,16 +54,20 @@ class _BouncingWidgetState extends State<BouncingWidget>
 
     return IgnorePointer(
       ignoring: widget.onTap == null,
-      child: AnimatedOpacity(
-        duration: const Duration(milliseconds: 200),
-        opacity: (widget.onTap != null) ? 1.0 : widget.disabledOpacity ?? 0.3,
-        child: GestureDetector(
-          onTapDown: _onTapDown,
-          onTapUp: _onTapUp,
-          onTapCancel: _onTapCancel,
-          child: Transform.scale(
-            scale: _scale,
-            child: widget.child,
+      child: MouseRegion(
+        cursor:
+            widget.onTap == null ? MouseCursor.defer : SystemMouseCursors.click,
+        child: AnimatedOpacity(
+          duration: const Duration(milliseconds: 200),
+          opacity: (widget.onTap != null) ? 1.0 : widget.disabledOpacity ?? 0.3,
+          child: GestureDetector(
+            onTapDown: _onTapDown,
+            onTapUp: _onTapUp,
+            onTapCancel: _onTapCancel,
+            child: Transform.scale(
+              scale: _scale,
+              child: widget.child,
+            ),
           ),
         ),
       ),
