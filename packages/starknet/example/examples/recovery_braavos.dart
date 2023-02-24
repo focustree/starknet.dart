@@ -14,7 +14,11 @@ void main() async {
   while (valid) {
     print("########################");
     final account = Account.fromMnemonic(
-        mnemonic: mnemonic, provider: provider, chainId: chainId, index: index);
+      mnemonic: mnemonic,
+      provider: provider,
+      chainId: chainId,
+      index: index,
+    );
     index += 1;
     valid = await account.isValid;
     if (valid) {
