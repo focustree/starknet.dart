@@ -55,21 +55,27 @@ class _PasswordFragmentState extends State<PasswordFragment> {
             child: widget.config!.subtitle!,
           ),
           const SizedBox(height: 22),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 40.0),
-            child: TextFormField(
-              controller: _passwordTextController,
-              autocorrect: false,
-              obscureText: true,
-              style: widget.config?.inputConfig?.style,
-              decoration: widget.config?.inputConfig?.decoration,
-              validator: widget.config?.validator ??
-                  (value) {
-                    if (value == null || value.isEmpty) {
-                      return 'Please enter a password';
-                    }
-                    return null;
-                  },
+          ConstrainedBox(
+            constraints: const BoxConstraints(maxWidth: 550),
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 40.0),
+              child: TextFormField(
+                controller: _passwordTextController,
+                autocorrect: false,
+                obscureText: true,
+                style: widget.config?.inputConfig?.style,
+                decoration: widget.config?.inputConfig?.decoration ?? InputDecoration(
+                  border: const OutlineInputBorder(),
+                  labelText: inputPlaceholder,
+                ),
+                validator: widget.config?.validator ??
+                    (value) {
+                      if (value == null || value.isEmpty) {
+                        return 'Please enter a password';
+                      }
+                      return null;
+                    },
+              ),
             ),
           ),
           const SizedBox(height: 22),
@@ -100,6 +106,14 @@ class _PasswordFragmentState extends State<PasswordFragment> {
       return 'Validate';
     } else {
       return 'Next';
+    }
+  }
+
+  String get inputPlaceholder {
+    if (widget.action == PasscodeAction.create && _confirmPassword) {
+      return 'Confirm password';
+    } else {
+      return 'Password';
     }
   }
 
