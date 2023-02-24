@@ -5,6 +5,7 @@ import 'package:starknet_flutter/src/views/passcode/fragments/pin_code/widgets/p
 import 'package:starknet_flutter/src/views/passcode/passcode_enums.dart';
 import 'package:starknet_flutter/src/views/widgets/bouncing_button.dart';
 import 'package:starknet_flutter/src/views/widgets/shake.dart';
+import 'package:starknet_flutter/src/views/passcode/fragments/pin_code/pin_code_config.dart';
 
 enum PinCodeSize { four, six }
 
@@ -12,10 +13,12 @@ class PinCodeFragment extends StatefulWidget {
   final PasscodeAction action;
   final PinCodeSize size;
   final Function(String) onPasscodeEntered;
+  final PinCodeConfig? pinCodeConfig;
   const PinCodeFragment({
     Key? key,
     required this.action,
     required this.onPasscodeEntered,
+    this.pinCodeConfig,
     this.size = PinCodeSize.six,
   }) : super(key: key);
 
