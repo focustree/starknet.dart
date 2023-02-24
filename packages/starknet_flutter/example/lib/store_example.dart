@@ -202,7 +202,29 @@ You should notify the user that they can't use this secure feature.""";
                         print("Received pinCode: $result");
                       },
                       child: const Text(
-                        "🔏 Show passcode view",
+                        "🔏 Show passcode view (PIN code)",
+                      ),
+                    ),
+                    TextButton(
+                      onPressed: () async {
+                        final result = await Passcode.password(
+                          passwordConfig: PasswordConfig(
+                            subtitle: const Text('Enter at least 6 characters'),
+                            validator: (entry) {
+                              if (entry != null && entry.length < 6) {
+                                return 'Password must be at least 6 characters';
+                              }
+                              return null;
+                            },
+                          ),
+                        ).showScreen(
+                          context,
+                          action: PasscodeAction.create,
+                        );
+                        print("Received password: $result");
+                      },
+                      child: const Text(
+                        "🔏 Show passcode view (password)",
                       ),
                     ),
                   ].separated(const SizedBox(height: 20)),

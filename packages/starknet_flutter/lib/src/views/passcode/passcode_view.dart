@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:starknet_flutter/src/views/passcode/fragments/password/password_config.dart';
+import 'package:starknet_flutter/src/views/passcode/fragments/password/password_fragment.dart';
 import 'package:starknet_flutter/src/views/passcode/fragments/pin_code/pin_code_fragment.dart';
 import 'package:starknet_flutter/src/views/passcode/fragments/pin_code/pin_code_config.dart';
 import 'package:starknet_flutter/src/views/passcode/passcode_config.dart';
 import 'package:starknet_flutter/src/views/passcode/passcode_enums.dart';
 
 class Passcode {
-  final PasscodeAction action;
   final PasscodeType type;
 
   // passcode screen config
@@ -13,23 +14,33 @@ class Passcode {
 
   // fragments configs
   final PinCodeConfig? pinCodeConfig;
+  final PasswordConfig? passwordConfig;
 
   Passcode._({
-    required this.action,
     required this.type,
     this.pinCodeConfig,
+    this.passwordConfig,
     this.config,
   });
 
   factory Passcode.pinCode({
-    PasscodeAction action = PasscodeAction.create,
     PinCodeConfig? pinCodeConfig,
     PasscodeConfig? config,
   }) {
     return Passcode._(
-      action: action,
       type: PasscodeType.pin_code,
       pinCodeConfig: pinCodeConfig,
+      config: config,
+    );
+  }
+
+  factory Passcode.password({
+    PasswordConfig? passwordConfig,
+    PasscodeConfig? config,
+  }) {
+    return Passcode._(
+      type: PasscodeType.password,
+      passwordConfig: passwordConfig,
       config: config,
     );
   }
@@ -37,9 +48,6 @@ class Passcode {
   Future<String?> showScreen(
     BuildContext parentContext, {
     PasscodeAction action = PasscodeAction.create,
-    PasscodeType type = PasscodeType.pin_code,
-    PinCodeConfig? pinCodeConfig,
-    PasscodeConfig? config,
   }) {
     return showModalBottomSheet<String?>(
       isScrollControlled: true,
@@ -49,6 +57,7 @@ class Passcode {
           type: type,
           action: action,
           pinCodeConfig: pinCodeConfig,
+          passwordConfig: passwordConfig,
           config: config,
         );
       },
@@ -65,11 +74,13 @@ class PasscodeView extends StatelessWidget {
 
   // fragments style
   final PinCodeConfig? pinCodeConfig;
+  final PasswordConfig? passwordConfig;
 
   const PasscodeView({
     super.key,
     required this.type,
     required this.action,
+    this.passwordConfig,
     this.config,
     this.pinCodeConfig,
   });
@@ -85,6 +96,7 @@ class PasscodeView extends StatelessWidget {
             _buildFragment(
               context,
               pinCodeConfig: pinCodeConfig,
+              passwordConfig: passwordConfig,
             ),
             const SizedBox(height: 10),
             config?.cancelButtonConfig?.child ??
@@ -103,6 +115,7 @@ class PasscodeView extends StatelessWidget {
   Widget _buildFragment(
     BuildContext context, {
     PinCodeConfig? pinCodeConfig,
+    PasswordConfig? passwordConfig,
   }) {
     switch (type) {
       case PasscodeType.pin_code:
@@ -115,7 +128,14 @@ class PasscodeView extends StatelessWidget {
           },
         );
       case PasscodeType.password:
-        return Container();
+        return PasswordFragment(
+          action: action,
+          config: passwordConfig,
+          onPasscodeEntered: (passcode) {
+            print('Passcode: $passcode');
+            Navigator.pop(context, passcode);
+          },
+        );
       case PasscodeType.schema:
         return Container();
       default:
