@@ -73,12 +73,18 @@ class Felt {
   @override
   int get hashCode => _bigInt.hashCode;
 
-  Uint8List _bigIntToUint8List(BigInt bigInt) =>
-      _bigIntToByteData(bigInt).buffer.asUint8List();
+  /// Interprets felt as a string
+  String toSymbol() {
+    return Utf8Codec().decode(_bigInt.toUint8List());
+  }
+}
 
-  ByteData _bigIntToByteData(BigInt bigInt) {
-    final data = ByteData((bigInt.bitLength / 8).ceil());
-    var val = bigInt;
+extension Starknet on BigInt {
+  Uint8List toUint8List() => toByteData().buffer.asUint8List();
+
+  ByteData toByteData() {
+    final data = ByteData((bitLength / 8).ceil());
+    var val = this;
 
     for (var i = 1; i <= data.lengthInBytes; i++) {
       data.setUint8(data.lengthInBytes - i, val.toUnsigned(8).toInt());
@@ -86,10 +92,5 @@ class Felt {
     }
 
     return data;
-  }
-
-  /// Interprets felt as a string
-  String toSymbol() {
-    return Utf8Codec().decode(_bigIntToUint8List(_bigInt));
   }
 }

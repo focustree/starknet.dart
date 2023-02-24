@@ -5,6 +5,11 @@ class Signer {
 
   Signer({required this.privateKey});
 
+  Felt get publicKey {
+    final point = generatorPoint * privateKey.toBigInt();
+    return Felt(point!.x!.toBigInteger()!);
+  }
+
   List<Felt> signInvokeTransactionsV1(
       {required List<FunctionCall> transactions,
       required Felt senderAddress,

@@ -127,5 +127,43 @@ void main() {
         expect(newBalance, equals(previousBalance));
       });
     });
+
+    group('recovery from seed phrase', () {
+      final mnemonic =
+          "toward antenna indicate reject must artist expect angry fit easy cupboard require"
+              .split(" ");
+      final provider = JsonRpcProvider(nodeUri: devnetUri);
+      final chainId = StarknetChainId.testNet;
+      test('braavos account private key', () async {
+        Signer signer =
+            BraavosAccountDerivation(provider: provider, chainId: chainId)
+                .deriveSigner(mnemonic: mnemonic, index: 0);
+        expect(
+            signer.privateKey,
+            equals(Felt.fromHexString(
+                "0x079474858947854da7c14f19cb5d2edb39414d358a7da68b9436caff9dfb04a6")));
+        signer = BraavosAccountDerivation(provider: provider, chainId: chainId)
+            .deriveSigner(mnemonic: mnemonic, index: 1);
+        expect(
+            signer.privateKey,
+            equals(Felt.fromHexString(
+                "0x06b79a30ac27b1b29a559e84cfe538ea2a35e5460d58558d3d1cd8487a363633")));
+      });
+      test('braavos account public key', () async {
+        Signer signer =
+            BraavosAccountDerivation(provider: provider, chainId: chainId)
+                .deriveSigner(mnemonic: mnemonic, index: 0);
+        expect(
+            signer.publicKey,
+            equals(Felt.fromHexString(
+                "0x04e633f0627b70c55eb53afdfd368c464f5767efe600e36157487bf988a2a106")));
+        signer = BraavosAccountDerivation(provider: provider, chainId: chainId)
+            .deriveSigner(mnemonic: mnemonic, index: 1);
+        expect(
+            signer.publicKey,
+            equals(Felt.fromHexString(
+                "0x01ff0cdadb901570e76dc764dca53101b3c388203e0867243760d90494850d44")));
+      });
+    });
   });
 }
