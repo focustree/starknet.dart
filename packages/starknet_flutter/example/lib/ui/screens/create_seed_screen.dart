@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:starknet_flutter_example/ui/screens/choose_network_screen.dart';
 import 'package:starknet_flutter_example/ui/widgets/main_button.dart';
 import 'package:starknet_flutter_example/ui/widgets/secondary_button.dart';
@@ -27,59 +28,92 @@ class CreateSeedScreen extends StatelessWidget {
     return Scaffold(
       body: Padding(
         padding: const EdgeInsets.all(16),
-        child: Column(
-          children: [
-            const Text('Secret Recovery Phrase'),
-            const SizedBox(height: 16),
-            const Text(
-              'Keep this phrase safe and secret. It can be used to recover your wallet.',
-              textAlign: TextAlign.center,
-            ),
-            const SizedBox(height: 16),
-            Flexible(
-              child: GridView.builder(
-                itemCount: words.length,
-                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 2,
-                  childAspectRatio: 30 / 10,
-                  crossAxisSpacing: 4,
-                  mainAxisSpacing: 4,
-                ),
-                itemBuilder: (context, index) {
-                  return Container(
-                    decoration: BoxDecoration(
-                      border: Border.all(
-                        color: Colors.blue,
-                        strokeAlign: BorderSide.strokeAlignCenter,
-                        width: 1,
-                      ),
-                    ),
-                    child: Row(
-                      children: [
-                        CircleAvatar(
-                          child: Text("${index + 1}"),
-                        ),
-                        const SizedBox(width: 8),
-                        Text(words[index]),
-                      ],
-                    ),
-                  );
-                },
+        child: Center(
+          child: Column(
+            children: [
+              const Text('Secret Recovery Phrase'),
+              const SizedBox(height: 16),
+              const Text(
+                'Keep this phrase safe and secret. It can be used to recover your wallet.',
+                textAlign: TextAlign.center,
               ),
-            ),
-            SecondaryButton.expanded(
-              onTap: () {},
-              icon: const Icon(Icons.copy),
-              text: "Copy to clipboard",
-            ),
-            const SizedBox(height: 8),
-            MainButton.expanded(
-              onTap: () {
-                Navigator.of(context).pushNamed(ChooseNetworkScreen.routeName);
-              },
-              text: "Done",
-            ),
-          ],
+              const SizedBox(height: 16),
+              Flexible(
+                child: ConstrainedBox(
+                  constraints: const BoxConstraints(maxWidth: 400),
+                  child: GridView.builder(
+                    itemCount: words.length,
+                    gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisSpacing: 10,
+                      mainAxisSpacing: 10,
+                      crossAxisCount: 2,
+                      childAspectRatio: (1 / .3),
+                      // crossAxisCount: 2,
+                      // childAspectRatio: 40 / 10,
+                      // crossAxisSpacing: 4,
+                      // mainAxisSpacing: 4,
+                    ),
+                    itemBuilder: (context, index) {
+                      return Container(
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 20,
+                        ),
+                        decoration: BoxDecoration(
+                          color: Colors.grey[200],
+                          borderRadius: BorderRadius.circular(30),
+                        ),
+                        child: Row(
+                          children: [
+                            Text(
+                              "${index + 1}.",
+                              style: const TextStyle(
+                                color: Colors.grey,
+                                fontSize: 15,
+                              ),
+                              maxLines: 1,
+                              overflow: TextOverflow.ellipsis,
+                            ),
+                            const SizedBox(width: 7),
+                            Expanded(
+                              child: Text(
+                                words[index],
+                                style: const TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                ),
+                                maxLines: 2,
+                                overflow: TextOverflow.ellipsis,
+                              ),
+                            ),
+                          ],
+                        ),
+                      );
+                    },
+                  ),
+                ),
+              ),
+              SecondaryButton.expanded(
+                onTap: () {
+                  Clipboard.setData(ClipboardData(text: words.join(' ')))
+                      .then((_) {
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      const SnackBar(
+                        content: Text("Secret recovery phrase copied to clipboard"),
+                      ),
+                    );
+                  });
+                },
+                icon: const Icon(Icons.copy),
+                text: "Copy to clipboard",
+              ),
+              const SizedBox(height: 8),
+              MainButton.expanded(
+                onTap: () {
+                  Navigator.of(context).pushNamed(ChooseNetworkScreen.routeName);
+                },
+                text: "Done",
+              ),
+            ],
+          ),
         ),
       ),
     );
