@@ -1,55 +1,55 @@
 import 'package:flutter/material.dart';
-import 'package:starknet_flutter/src/views/wallet/wallet_initialisation_observer.dart';
+import 'package:starknet_flutter/src/views/wallet/wallet_initialization_observer.dart';
 import 'package:starknet_flutter/src/views/wallet/routes/welcome/wallet_welcome_view.dart';
-import 'package:starknet_flutter/src/views/wallet/wallet_initialisation_router.dart';
+import 'package:starknet_flutter/src/views/wallet/wallet_initialization_router.dart';
 import 'package:starknet_flutter/src/views/widgets/bouncing_button.dart';
 
-import 'wallet_initialisation_presenter.dart';
-import 'wallet_initialisation_viewmodel.dart';
+import 'wallet_initialization_presenter.dart';
+import 'wallet_initialization_viewmodel.dart';
 
 class StarknetWallet {
-  static Future showInitialisationModal(BuildContext context) {
+  static Future showInitializationModal(BuildContext context) {
     // TODO: send configuration
     return showModalBottomSheet<String?>(
       isScrollControlled: true,
       context: context,
       builder: (context) {
-        return const WalletInitialisationPage();
+        return const WalletInitializationPage();
       },
     );
   }
 }
 
-abstract class WalletInitialisationView {
+abstract class WalletInitializationView {
   void refresh();
   void closeModal();
   void goBack();
   Future navigateToSubRoute(String routeName);
 }
 
-class WalletInitialisationArguments {
-  WalletInitialisationArguments();
+class WalletInitializationArguments {
+  WalletInitializationArguments();
 }
 
-class WalletInitialisationPage extends StatefulWidget {
-  final WalletInitialisationArguments? args;
-  const WalletInitialisationPage({
+class WalletInitializationPage extends StatefulWidget {
+  final WalletInitializationArguments? args;
+  const WalletInitializationPage({
     Key? key,
     this.args,
   }) : super(key: key);
 
   @override
-  State<WalletInitialisationPage> createState() =>
-      _WalletInitialisationPageState();
+  State<WalletInitializationPage> createState() =>
+      _WalletInitializationPageState();
 }
 
-class _WalletInitialisationPageState extends State<WalletInitialisationPage>
-    implements WalletInitialisationView {
-  late WalletInitialisationPresenter presenter;
-  late WalletInitialisationViewModel model;
+class _WalletInitializationPageState extends State<WalletInitializationPage>
+    implements WalletInitializationView {
+  late WalletInitializationPresenter presenter;
+  late WalletInitializationViewModel model;
 
   final GlobalKey<NavigatorState> _navigatorKey = GlobalKey<NavigatorState>();
-  late final WalletInitialisationNavigatorObserver observer;
+  late final WalletInitializationNavigatorObserver observer;
 
   @override
   void dispose() {
@@ -60,12 +60,12 @@ class _WalletInitialisationPageState extends State<WalletInitialisationPage>
   @override
   void initState() {
     super.initState();
-    presenter = WalletInitialisationPresenter(
-      WalletInitialisationViewModel(),
+    presenter = WalletInitializationPresenter(
+      WalletInitializationViewModel(),
       this,
     ).init();
     model = presenter.viewModel;
-    observer = WalletInitialisationNavigatorObserver(model.didChange);
+    observer = WalletInitializationNavigatorObserver(model.didChange);
   }
 
   @override
@@ -103,7 +103,7 @@ class _WalletInitialisationPageState extends State<WalletInitialisationPage>
         key: _navigatorKey,
         observers: [observer],
         onGenerateRoute: (settings) =>
-            WalletInitialisationRouter.onGenerateRoute(
+            WalletInitializationRouter.onGenerateRoute(
           settings,
           model,
           presenter,

@@ -26,7 +26,7 @@ enum StarknetNetworkType {
   const StarknetNetworkType(this.title);
 }
 
-class WalletInitialisationViewModel {
+class WalletInitializationViewModel {
   StreamController<String?> didChange = StreamController<String?>();
 
   String? routeName;

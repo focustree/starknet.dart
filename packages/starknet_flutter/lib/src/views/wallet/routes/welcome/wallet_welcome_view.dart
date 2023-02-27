@@ -2,16 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:starknet_flutter/src/views/wallet/routes/create_wallet/create_seed_screen.dart';
 import 'package:starknet_flutter/src/views/wallet/routes/restore_wallet/restore_wallet_screen.dart';
-import 'package:starknet_flutter/src/views/wallet/wallet_initialisation_presenter.dart';
-import 'package:starknet_flutter/src/views/wallet/wallet_initialisation_viewmodel.dart';
+import 'package:starknet_flutter/src/views/wallet/wallet_initialization_presenter.dart';
+import 'package:starknet_flutter/src/views/wallet/wallet_initialization_viewmodel.dart';
 import 'package:starknet_flutter/src/views/widgets/starknet_button.dart';
 
 // TODO: add config to change textstyle / logo
 class WalletWelcomeView extends StatelessWidget {
   static const routeName = '/';
 
-  final WalletInitialisationPresenter presenter;
-  final WalletInitialisationViewModel model;
+  final WalletInitializationPresenter presenter;
+  final WalletInitializationViewModel model;
 
   const WalletWelcomeView({
     Key? key,

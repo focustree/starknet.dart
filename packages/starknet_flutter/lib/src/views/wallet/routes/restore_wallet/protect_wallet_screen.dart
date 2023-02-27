@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:starknet_flutter/src/views/wallet/wallet_initialisation_presenter.dart';
-import 'package:starknet_flutter/src/views/wallet/wallet_initialisation_viewmodel.dart';
+import 'package:starknet_flutter/src/views/wallet/wallet_initialization_presenter.dart';
+import 'package:starknet_flutter/src/views/wallet/wallet_initialization_viewmodel.dart';
 import 'package:starknet_flutter/src/views/widgets/starknet_button.dart';
 import 'package:starknet_flutter/starknet_flutter.dart';
 
 class ProtectWalletScreen extends StatelessWidget {
   static const routeName = '/protect_wallet';
 
-  final WalletInitialisationPresenter presenter;
-  final WalletInitialisationViewModel model;
+  final WalletInitializationPresenter presenter;
+  final WalletInitializationViewModel model;
 
   const ProtectWalletScreen({
     Key? key,

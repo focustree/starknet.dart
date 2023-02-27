@@ -96,7 +96,7 @@ class _WalletScreenState extends State<WalletScreen> {
           ),
           TextButton(
             onPressed: () {
-              StarknetWallet.showInitialisationModal(context);
+              StarknetWallet.showInitializationModal(context);
             },
             child: const Text("Let's go!"),
           ),
