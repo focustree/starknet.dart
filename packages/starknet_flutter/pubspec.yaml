@@ -52,6 +52,7 @@ flutter:
     - assets/images/wallets/argent_x.svg
     - assets/images/wallets/braavos.svg
     - assets/images/wallets/open_zeppelin.svg
+    - assets/images/logo.svg
   #
   # For details regarding assets in packages, see
   # https://flutter.dev/assets-and-images/#from-packages

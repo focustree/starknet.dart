@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:starknet_flutter/src/views/wallet/routes/create_wallet/create_seed_screen.dart';
 import 'package:starknet_flutter/src/views/wallet/routes/restore_wallet/restore_wallet_screen.dart';
 import 'package:starknet_flutter/src/views/wallet/wallet_initialisation_presenter.dart';
@@ -30,7 +31,10 @@ class WalletWelcomeView extends StatelessWidget {
               child: ConstrainedBox(
                 constraints: const BoxConstraints(maxWidth: 200),
                 child: LayoutBuilder(builder: (context, constraints) {
-                  return FlutterLogo(size: constraints.maxWidth * 0.8);
+                  return SvgPicture.asset(
+                    'packages/starknet_flutter/assets/images/logo.svg',
+                    height: constraints.maxWidth * 0.8,
+                  );
                 }),
               ),
             ),
