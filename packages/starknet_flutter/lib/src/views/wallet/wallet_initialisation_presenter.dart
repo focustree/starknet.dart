@@ -21,4 +21,8 @@ class WalletInitialisationPresenter {
   }
 
   void dispose() {}
+
+  void createWallet() {
+    viewInterface.closeModal();
+  }
 }
