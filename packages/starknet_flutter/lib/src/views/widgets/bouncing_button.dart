@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
+// TODO: rename to BouncingWidget
+
 class BouncingWidget extends StatefulWidget {
   const BouncingWidget({
     Key? key,

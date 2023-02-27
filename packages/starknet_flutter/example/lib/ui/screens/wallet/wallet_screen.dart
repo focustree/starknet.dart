@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:starknet_flutter/starknet_flutter.dart';
 import 'package:starknet_flutter_example/ui/screens/wallet/widgets/account_balance.dart';
 import 'package:starknet_flutter_example/ui/screens/wallet/widgets/collectibles.dart';
 import 'package:starknet_flutter_example/ui/screens/wallet/widgets/dapps.dart';
@@ -21,7 +22,7 @@ class _WalletScreenState extends State<WalletScreen> {
   void initState() {
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      _showDialogCreatedAccount(context);
+      _showDialogWalletMissing(context);
     });
   }
 
@@ -80,23 +81,47 @@ class _WalletScreenState extends State<WalletScreen> {
     );
   }
 
-  Future<void> _showDialogCreatedAccount(BuildContext context) {
+  Future<void> _showDialogWalletMissing(BuildContext context) {
     return showDialog(
       context: context,
       builder: (context) => AlertDialog(
-        title: const Text("Account created"),
-        content: const Text("How do you want to fund your account?"),
+        title: const Text("It seems you don't have a wallet yet"),
+        content: const Text("Do you want to create/import one?"),
         actions: [
           TextButton(
-            onPressed: () {},
-            child: const Text("Fund with Goerli ETH"),
+            onPressed: () {
+              Navigator.pop(context);
+            },
+            child: const Text("Ignore"),
           ),
           TextButton(
-            onPressed: () {},
-            child: const Text("Fund with Goerli DAI"),
+            onPressed: () {
+              StarknetWallet.showInitialisationModal(context);
+            },
+            child: const Text("Let's go!"),
           ),
         ],
       ),
     );
   }
+
+  // Future<void> _showDialogCreatedAccount(BuildContext context) {
+  //   return showDialog(
+  //     context: context,
+  //     builder: (context) => AlertDialog(
+  //       title: const Text("Account created"),
+  //       content: const Text("How do you want to fund your account?"),
+  //       actions: [
+  //         TextButton(
+  //           onPressed: () {},
+  //           child: const Text("Fund with Goerli ETH"),
+  //         ),
+  //         TextButton(
+  //           onPressed: () {},
+  //           child: const Text("Fund with Goerli DAI"),
+  //         ),
+  //       ],
+  //     ),
+  //   );
+  // }
 }

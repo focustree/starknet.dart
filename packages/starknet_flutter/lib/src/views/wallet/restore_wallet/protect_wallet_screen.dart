@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:starknet_flutter/src/views/wallet/restore_wallet/restore_wallet_screen.dart';
+import 'package:starknet_flutter/src/views/widgets/starknet_button.dart';
 import 'package:starknet_flutter/starknet_flutter.dart';
-import 'package:starknet_flutter_example/ui/screens/restore_wallet/restore_wallet_screen.dart';
-import 'package:starknet_flutter_example/ui/widgets/main_button.dart';
 
 class ProtectWalletArgs {
   final List<String> seedPhrase;
@@ -47,9 +47,9 @@ class ProtectWalletScreen extends StatelessWidget {
                   return FutureBuilder(
                     future: snapshot.requireData.when(
                       biometric: (biometric) {
-                        return MainButton.expanded(
+                        return StarknetButton(
                           icon: const Icon(Icons.fingerprint),
-                          text: "Protect my wallet with biometric",
+                          text: 'Protect my wallet with biometric',
                           onTap: () async {
                             // Store seed phrase and private key
                             await biometric.storeSeedPhrase(
@@ -63,9 +63,9 @@ class ProtectWalletScreen extends StatelessWidget {
                         );
                       },
                       password: (password) {
-                        return MainButton.expanded(
+                        return StarknetButton(
                           icon: const Icon(Icons.key),
-                          text: "Protect my wallet with a password",
+                          text: 'Protect my wallet with a password',
                           onTap: () async {
                             // Store seed phrase and private key
                             // TODO Prompt user for password
