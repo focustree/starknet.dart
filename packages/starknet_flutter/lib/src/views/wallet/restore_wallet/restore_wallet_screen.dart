@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:starknet_flutter_example/ui/screens/restore_wallet/protect_wallet_screen.dart';
-import 'package:starknet_flutter_example/ui/widgets/main_button.dart';
+import 'package:starknet_flutter/src/views/wallet/restore_wallet/protect_wallet_screen.dart';
+import 'package:starknet_flutter/src/views/widgets/bouncing_button.dart';
+import 'package:starknet_flutter/src/views/widgets/starknet_button.dart';
 
 enum StarknetAccountType {
   braavos("Braavos"),
@@ -27,14 +28,9 @@ class _RestoreWalletScreenState extends State<RestoreWalletScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.transparent,
-        elevation: 0,
-        foregroundColor: Colors.black87,
-        title: const Text("Restore your wallet"),
-      ),
-      body: Column(
+    return Container(
+      color: Theme.of(context).scaffoldBackgroundColor,
+      child: Column(
         children: [
           Expanded(
             child: Padding(
@@ -82,7 +78,7 @@ class _RestoreWalletScreenState extends State<RestoreWalletScreen> {
                           StarknetAccountType.values[i].title,
                           style: TextStyle(
                             color: _accountType == StarknetAccountType.values[i]
-                                ? Colors.white
+                                ? Theme.of(context).primaryColor
                                 : Colors.black87,
                           ),
                         ),
@@ -98,7 +94,7 @@ class _RestoreWalletScreenState extends State<RestoreWalletScreen> {
                     },
                   ),
                   const Spacer(),
-                  MainButton.expanded(
+                  StarknetButton.plain(
                     onTap: _accountType != null &&
                             _seedPhrase?.trim().isNotEmpty == true &&
                             _seedPhrase!.trim().split(" ").length == 12
@@ -133,7 +129,7 @@ class _RestoreWalletScreenState extends State<RestoreWalletScreen> {
                             }
                           }
                         : null,
-                    text: "Continue",
+                    text: 'Continue',
                   ),
                   const SizedBox(height: 16),
                 ],

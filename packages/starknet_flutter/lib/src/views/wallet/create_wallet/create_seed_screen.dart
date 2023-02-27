@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:starknet_flutter_example/ui/screens/choose_network_screen.dart';
-import 'package:starknet_flutter_example/ui/widgets/main_button.dart';
-import 'package:starknet_flutter_example/ui/widgets/secondary_button.dart';
+import 'package:starknet_flutter/src/views/wallet/create_wallet/choose_network_screen.dart';
+import 'package:starknet_flutter/src/views/widgets/starknet_button.dart';
 
 class CreateSeedScreen extends StatelessWidget {
   static const routeName = '/seed';
@@ -25,8 +24,9 @@ class CreateSeedScreen extends StatelessWidget {
       "rocket",
       "space",
     ];
-    return Scaffold(
-      body: Padding(
+    return Container(
+      color: Theme.of(context).scaffoldBackgroundColor,
+      child: Padding(
         padding: const EdgeInsets.all(16),
         child: Center(
           child: Column(
@@ -43,15 +43,12 @@ class CreateSeedScreen extends StatelessWidget {
                   constraints: const BoxConstraints(maxWidth: 400),
                   child: GridView.builder(
                     itemCount: words.length,
-                    gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                    gridDelegate:
+                        const SliverGridDelegateWithFixedCrossAxisCount(
                       crossAxisSpacing: 10,
                       mainAxisSpacing: 10,
                       crossAxisCount: 2,
                       childAspectRatio: (1 / .3),
-                      // crossAxisCount: 2,
-                      // childAspectRatio: 40 / 10,
-                      // crossAxisSpacing: 4,
-                      // mainAxisSpacing: 4,
                     ),
                     itemBuilder: (context, index) {
                       return Container(
@@ -91,26 +88,34 @@ class CreateSeedScreen extends StatelessWidget {
                   ),
                 ),
               ),
-              SecondaryButton.expanded(
+              StarknetButton.text(
                 onTap: () {
                   Clipboard.setData(ClipboardData(text: words.join(' ')))
                       .then((_) {
                     ScaffoldMessenger.of(context).showSnackBar(
                       const SnackBar(
-                        content: Text("Secret recovery phrase copied to clipboard"),
+                        content:
+                            Text("Secret recovery phrase copied to clipboard"),
                       ),
                     );
                   });
                 },
-                icon: const Icon(Icons.copy),
-                text: "Copy to clipboard",
+                icon: Icon(
+                  Icons.copy,
+                  color: Theme.of(context).primaryColor,
+                ),
+                text: 'Copy to clipboard',
+                textStyle: TextStyle(
+                  color: Theme.of(context).primaryColor,
+                ),
               ),
               const SizedBox(height: 8),
-              MainButton.expanded(
+              StarknetButton.plain(
                 onTap: () {
-                  Navigator.of(context).pushNamed(ChooseNetworkScreen.routeName);
+                  Navigator.of(context)
+                      .pushNamed(ChooseNetworkScreen.routeName);
                 },
-                text: "Done",
+                text: 'Done',
               ),
             ],
           ),
