@@ -14,32 +14,34 @@ class WelcomeScreen extends StatelessWidget {
     return Scaffold(
       body: Padding(
         padding: const EdgeInsets.all(20),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Expanded(
-              child: ConstrainedBox(
-                constraints: const BoxConstraints(maxWidth: 200),
-                child: LayoutBuilder(builder: (context, constraints) {
-                  return FlutterLogo(size: constraints.maxWidth * 0.8);
-                }),
+        child: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Expanded(
+                child: ConstrainedBox(
+                  constraints: const BoxConstraints(maxWidth: 200),
+                  child: LayoutBuilder(builder: (context, constraints) {
+                    return FlutterLogo(size: constraints.maxWidth * 0.8);
+                  }),
+                ),
               ),
-            ),
-            const SizedBox(height: 16),
-            MainButton.expanded(
-              onTap: () {
-                Navigator.of(context).pushNamed(CreateSeedScreen.routeName);
-              },
-              text: 'Create new wallet',
-            ),
-            const SizedBox(height: 8),
-            SecondaryButton.expanded(
-              onTap: () {
-                Navigator.of(context).pushNamed(RestoreWalletScreen.routeName);
-              },
-              text: "I already have a wallet",
-            ),
-          ]),
+              const SizedBox(height: 16),
+              MainButton.expanded(
+                onTap: () {
+                  Navigator.of(context).pushNamed(CreateSeedScreen.routeName);
+                },
+                text: 'Create new wallet',
+              ),
+              const SizedBox(height: 8),
+              SecondaryButton.expanded(
+                onTap: () {
+                  Navigator.of(context).pushNamed(RestoreWalletScreen.routeName);
+                },
+                text: "I already have a wallet",
+              ),
+            ]),
+        ),
         ),
     );
   }
