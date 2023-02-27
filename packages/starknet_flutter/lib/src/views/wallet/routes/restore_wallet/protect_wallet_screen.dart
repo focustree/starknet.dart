@@ -1,28 +1,19 @@
 import 'package:flutter/material.dart';
-import 'package:starknet_flutter/src/views/wallet/restore_wallet/restore_wallet_screen.dart';
+import 'package:starknet_flutter/src/views/wallet/wallet_initialisation_presenter.dart';
+import 'package:starknet_flutter/src/views/wallet/wallet_initialisation_viewmodel.dart';
 import 'package:starknet_flutter/src/views/widgets/starknet_button.dart';
 import 'package:starknet_flutter/starknet_flutter.dart';
-
-class ProtectWalletArgs {
-  final List<String> seedPhrase;
-  final String privateKey;
-  final StarknetAccountType accountType;
-
-  const ProtectWalletArgs({
-    required this.seedPhrase,
-    required this.privateKey,
-    required this.accountType,
-  });
-}
 
 class ProtectWalletScreen extends StatelessWidget {
   static const routeName = '/protect_wallet';
 
-  final ProtectWalletArgs args;
+  final WalletInitialisationPresenter presenter;
+  final WalletInitialisationViewModel model;
 
   const ProtectWalletScreen({
     Key? key,
-    required this.args,
+    required this.presenter,
+    required this.model,
   }) : super(key: key);
 
   @override
@@ -54,7 +45,7 @@ class ProtectWalletScreen extends StatelessWidget {
                             // Store seed phrase and private key
                             await biometric.storeSeedPhrase(
                               id: "uuid1",
-                              seedPhrase: args.seedPhrase,
+                              seedPhrase: model.seedPhrase!,
                             );
                             // TODO Store private key
 
@@ -76,7 +67,7 @@ class ProtectWalletScreen extends StatelessWidget {
                             // TODO Prompt user for password
                             await password.storeSeedPhrase(
                               id: "uuid1",
-                              seedPhrase: args.seedPhrase,
+                              seedPhrase: model.seedPhrase!,
                               password: "password",
                             );
                             // TODO Store private key

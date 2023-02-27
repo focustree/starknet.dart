@@ -1,11 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:starknet_flutter/src/views/wallet/wallet_initialisation_presenter.dart';
+import 'package:starknet_flutter/src/views/wallet/wallet_initialisation_viewmodel.dart';
 import 'package:starknet_flutter/src/views/widgets/starknet_button.dart';
 
 class ChooseNetworkScreen extends StatelessWidget {
   static const routeName = '/choose_network';
-  final Function() onNetworkSelected;
 
-  const ChooseNetworkScreen({super.key, required this.onNetworkSelected});
+  final WalletInitialisationPresenter presenter;
+  final WalletInitialisationViewModel model;
+
+  const ChooseNetworkScreen({
+    Key? key,
+    required this.presenter,
+    required this.model,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -21,14 +29,16 @@ class ChooseNetworkScreen extends StatelessWidget {
               const SizedBox(height: 32),
               StarknetButton.plain(
                 onTap: () {
-                  onNetworkSelected();
+                  model.networkType = StarknetNetworkType.goerli;
+                  presenter.createWallet();
                 },
                 text: 'StarkNet Goerli Alpha',
               ),
               const SizedBox(height: 16),
               StarknetButton.plain(
                 onTap: () {
-                  onNetworkSelected();
+                  model.networkType = StarknetNetworkType.mainnet;
+                  presenter.createWallet();
                 },
                 text: 'StarkNet Mainnet Alpha',
               ),

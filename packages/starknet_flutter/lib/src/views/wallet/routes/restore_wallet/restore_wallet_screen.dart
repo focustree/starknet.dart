@@ -1,22 +1,20 @@
 import 'package:flutter/material.dart';
-import 'package:starknet_flutter/src/views/wallet/restore_wallet/protect_wallet_screen.dart';
-import 'package:starknet_flutter/src/views/widgets/bouncing_button.dart';
+import 'package:starknet_flutter/src/views/wallet/routes/restore_wallet/protect_wallet_screen.dart';
+import 'package:starknet_flutter/src/views/wallet/wallet_initialisation_presenter.dart';
+import 'package:starknet_flutter/src/views/wallet/wallet_initialisation_viewmodel.dart';
 import 'package:starknet_flutter/src/views/widgets/starknet_button.dart';
-
-enum StarknetAccountType {
-  braavos("Braavos"),
-  argentX("Argent X"),
-  openZeppelin("OpenZeppelin");
-
-  final String title;
-
-  const StarknetAccountType(this.title);
-}
 
 class RestoreWalletScreen extends StatefulWidget {
   static const routeName = "/restore";
 
-  const RestoreWalletScreen({super.key});
+  final WalletInitialisationPresenter presenter;
+  final WalletInitialisationViewModel model;
+
+  const RestoreWalletScreen({
+    Key? key,
+    required this.presenter,
+    required this.model,
+  }) : super(key: key);
 
   @override
   _RestoreWalletScreenState createState() => _RestoreWalletScreenState();
@@ -107,14 +105,12 @@ class _RestoreWalletScreenState extends State<RestoreWalletScreen> {
 
                             bool success = true;
                             if (success) {
+                              widget.model.seedPhrase = seedPhrase;
+                              widget.model.accountType = _accountType!;
+
                               // Navigate to the protect screen
                               Navigator.of(context).pushReplacementNamed(
                                 ProtectWalletScreen.routeName,
-                                arguments: ProtectWalletArgs(
-                                  seedPhrase: seedPhrase,
-                                  privateKey: "",
-                                  accountType: _accountType!,
-                                ),
                               );
                             } else {
                               ScaffoldMessenger.of(context).showSnackBar(

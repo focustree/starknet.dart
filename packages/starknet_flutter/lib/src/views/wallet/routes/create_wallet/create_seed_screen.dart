@@ -1,12 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:starknet_flutter/src/views/wallet/create_wallet/choose_network_screen.dart';
+import 'package:starknet_flutter/src/views/wallet/routes/create_wallet/choose_network_screen.dart';
+import 'package:starknet_flutter/src/views/wallet/wallet_initialisation_presenter.dart';
+import 'package:starknet_flutter/src/views/wallet/wallet_initialisation_viewmodel.dart';
 import 'package:starknet_flutter/src/views/widgets/starknet_button.dart';
 
 class CreateSeedScreen extends StatelessWidget {
   static const routeName = '/seed';
 
-  const CreateSeedScreen({super.key});
+  final WalletInitialisationPresenter presenter;
+  final WalletInitialisationViewModel model;
+
+  const CreateSeedScreen({
+    Key? key,
+    required this.presenter,
+    required this.model,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
