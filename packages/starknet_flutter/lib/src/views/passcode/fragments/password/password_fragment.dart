@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:starknet_flutter/src/views/passcode/fragments/password/password_config.dart';
 import 'package:starknet_flutter/src/views/passcode/passcode_enums.dart';
 import 'package:starknet_flutter/src/views/widgets/shake.dart';
-import 'package:starknet_flutter/src/views/passcode/fragments/password/password_config.dart';
 
 class PasswordFragment extends StatefulWidget {
   final PasscodeAction action;
   final Function(String) onPasscodeEntered;
   final PasswordConfig? config;
+
   const PasswordFragment({
     Key? key,
     required this.action,
@@ -50,10 +51,11 @@ class _PasswordFragmentState extends State<PasswordFragment> {
               ),
             ),
           ),
-          if (widget.config?.subtitle != null) Padding(
-            padding: const EdgeInsets.only(top: 10.0),
-            child: widget.config!.subtitle!,
-          ),
+          if (widget.config?.subtitle != null)
+            Padding(
+              padding: const EdgeInsets.only(top: 10.0),
+              child: widget.config!.subtitle!,
+            ),
           const SizedBox(height: 22),
           ConstrainedBox(
             constraints: const BoxConstraints(maxWidth: 550),
@@ -64,10 +66,11 @@ class _PasswordFragmentState extends State<PasswordFragment> {
                 autocorrect: false,
                 obscureText: true,
                 style: widget.config?.inputConfig?.style,
-                decoration: widget.config?.inputConfig?.decoration ?? InputDecoration(
-                  border: const OutlineInputBorder(),
-                  labelText: inputPlaceholder,
-                ),
+                decoration: widget.config?.inputConfig?.decoration ??
+                    InputDecoration(
+                      border: const OutlineInputBorder(),
+                      labelText: inputPlaceholder,
+                    ),
                 validator: widget.config?.validator ??
                     (value) {
                       if (value == null || value.isEmpty) {
