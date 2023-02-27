@@ -23,14 +23,27 @@ class ExchangeRatesView extends StatelessWidget {
             final rate = listOfRates[index];
             final icon = CryptoCoinIcons.getCryptoIcon(rate.key);
             return ListTile(
-              leading: CircleAvatar(
-                child: icon == null
-                    ? Text(
-                        rate.key.characters.first,
-                      )
-                    : Icon(
-                        icon,
-                      ),
+              contentPadding: const EdgeInsets.symmetric(
+                horizontal: 16,
+                vertical: 4,
+              ),
+              // TODO Make a plugin to retrieve crypto icons (either as SVG or PNG)
+              leading: Image.network(
+                "https://cryptoicons.org/api/color/${rate.key.toLowerCase()}/200",
+                width: 64,
+                height: 64,
+                errorBuilder: (context, object, stacktrace) {
+                  return CircleAvatar(
+                    radius: 32,
+                    child: icon == null
+                        ? Text(
+                            rate.key.characters.first,
+                          )
+                        : Icon(
+                            icon,
+                          ),
+                  );
+                },
               ),
               title: Text(rate.key),
               trailing: Text(formatter.format(rate.value)),
