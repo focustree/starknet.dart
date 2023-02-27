@@ -4,14 +4,14 @@ import 'package:starknet_flutter/src/views/wallet/routes/create_wallet/create_se
 import 'package:starknet_flutter/src/views/wallet/routes/restore_wallet/protect_wallet_screen.dart';
 import 'package:starknet_flutter/src/views/wallet/routes/restore_wallet/restore_wallet_screen.dart';
 import 'package:starknet_flutter/src/views/wallet/routes/welcome/wallet_welcome_view.dart';
-import 'package:starknet_flutter/src/views/wallet/wallet_initialisation_presenter.dart';
-import 'package:starknet_flutter/src/views/wallet/wallet_initialisation_viewmodel.dart';
+import 'package:starknet_flutter/src/views/wallet/wallet_initialization_presenter.dart';
+import 'package:starknet_flutter/src/views/wallet/wallet_initialization_viewmodel.dart';
 
-class WalletInitialisationRouter {
+class WalletInitializationRouter {
   static onGenerateRoute(
     RouteSettings settings,
-    WalletInitialisationViewModel model,
-    WalletInitialisationPresenter presenter,
+    WalletInitializationViewModel model,
+    WalletInitializationPresenter presenter,
   ) {
     switch (settings.name) {
       case WalletWelcomeView.routeName:

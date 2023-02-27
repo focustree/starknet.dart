@@ -2,10 +2,10 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 
-class WalletInitialisationNavigatorObserver extends RouteObserver<PageRoute<dynamic>> {
+class WalletInitializationNavigatorObserver extends RouteObserver<PageRoute<dynamic>> {
   final StreamController<String?> didChange;
 
-  WalletInitialisationNavigatorObserver(
+  WalletInitializationNavigatorObserver(
     this.didChange,
   );
 

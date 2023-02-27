@@ -6,21 +6,21 @@ import 'package:starknet_flutter/src/views/wallet/routes/restore_wallet/protect_
 import 'package:starknet_flutter/src/views/wallet/routes/restore_wallet/restore_wallet_screen.dart';
 import 'package:starknet_flutter/src/views/wallet/routes/welcome/wallet_welcome_view.dart';
 
-import 'wallet_initialisation.dart';
-import 'wallet_initialisation_viewmodel.dart';
+import 'wallet_initialization.dart';
+import 'wallet_initialization_viewmodel.dart';
 
-class WalletInitialisationPresenter {
-  final WalletInitialisationViewModel viewModel;
-  final WalletInitialisationView viewInterface;
+class WalletInitializationPresenter {
+  final WalletInitializationViewModel viewModel;
+  final WalletInitializationView viewInterface;
 
   StreamSubscription<String?>? _subscription;
 
-  WalletInitialisationPresenter(
+  WalletInitializationPresenter(
     this.viewModel,
     this.viewInterface,
   );
 
-  WalletInitialisationPresenter init() {
+  WalletInitializationPresenter init() {
     _subscription = viewModel.didChange.stream.listen((routeName) {
       viewModel.routeName = routeName;
       viewInterface.refresh();
