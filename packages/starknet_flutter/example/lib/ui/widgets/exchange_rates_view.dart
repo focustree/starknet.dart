@@ -46,7 +46,7 @@ class ExchangeRatesView extends StatelessWidget {
                 },
               ),
               title: Text(rate.key),
-              trailing: Text(formatter.format(rate.value)),
+              trailing: Text(formatter.format(1 / rate.value)),
             );
           },
         );
