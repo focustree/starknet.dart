@@ -197,17 +197,13 @@ You should notify the user that they can't use this secure feature.""";
                   ),
                   TextButton(
                     onPressed: () async {
-                      final result = await UnlockInputView.showPinCode(
+                      final result = await PasscodeInputView.showPinCode(
                         context,
                         actionConfig: const PasscodeActionConfig.create(
                           createTitle: "Enter your pin code",
                           confirmTitle: "Confirm your pin code",
                         ),
                       );
-                      // final result = await Passcode.pinCode().showScreen(
-                      //   context,
-                      //   action: PasscodeAction.create,
-                      // );
                       print("Received pinCode: $result");
                     },
                     child: const Text(
@@ -216,7 +212,7 @@ You should notify the user that they can't use this secure feature.""";
                   ),
                   TextButton(
                     onPressed: () async {
-                      final result = UnlockInputView.showPassword(
+                      final result = PasscodeInputView.showPassword(
                         context,
                         actionConfig: const PasscodeActionConfig.create(
                           createTitle: "Enter your password",
@@ -232,20 +228,6 @@ You should notify the user that they can't use this secure feature.""";
                           },
                         ),
                       );
-                      // final result = await Passcode.password(
-                      //   passwordConfig: PasswordConfig(
-                      //     subtitle: const Text('Enter at least 6 characters'),
-                      //     validator: (entry) {
-                      //       if (entry != null && entry.length < 6) {
-                      //         return 'Password must be at least 6 characters';
-                      //       }
-                      //       return null;
-                      //     },
-                      //   ),
-                      // ).showScreen(
-                      //   context,
-                      //   action: PasscodeAction.create,
-                      // );
                       print("Received password: $result");
                     },
                     child: const Text(
@@ -254,7 +236,7 @@ You should notify the user that they can't use this secure feature.""";
                   ),
                   TextButton(
                     onPressed: () async {
-                      final result = await UnlockInputView.showPattern(
+                      final result = await PasscodeInputView.showPattern(
                         context,
                         actionConfig: const PasscodeActionConfig.create(
                           createTitle: "Draw your pattern",
@@ -269,7 +251,7 @@ You should notify the user that they can't use this secure feature.""";
                   ),
                   TextButton(
                     onPressed: () async {
-                      final result = await UnlockInputView.showCustom(
+                      final result = await PasscodeInputView.showCustom(
                         context,
                         actionConfig: const PasscodeActionConfig.create(
                           createTitle: "Type your emoji password",
@@ -281,6 +263,15 @@ You should notify the user that they can't use this secure feature.""";
                             success: false,
                           );
                         },
+                        passcodeConfig: const PasscodeConfig(
+                          backgroundColor: Colors.lightBlueAccent,
+                          cancelButtonConfig: PasscodeCancelButtonConfig(
+                            child: Text(
+                              "❌ Mission aborted",
+                              style: TextStyle(color: Colors.white),
+                            ),
+                          ),
+                        ),
                         inputBuilder: (
                           OnInputValidated onInputValidated,
                           bool isConfirming,

@@ -8,19 +8,22 @@ class PatternInput extends StatelessWidget {
   final PasscodeActionConfig actionConfig;
   final VoidCallback? onWrongRepeatInput;
   final PatternConfig patternConfig;
+  final PasscodeConfig? passcodeConfig;
 
   const PatternInput({
     super.key,
     required this.actionConfig,
     this.onWrongRepeatInput,
     this.patternConfig = const PatternConfig(),
+    this.passcodeConfig,
   });
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: passcodeConfig?.backgroundColor,
       body: Builder(
-        builder: (ctx) => UnlockInputView(
+        builder: (ctx) => PasscodeInputView(
           actionConfig: actionConfig,
           onWrongRepeatInput: onWrongRepeatInput ??
               () {
@@ -30,6 +33,7 @@ class PatternInput extends StatelessWidget {
                   ),
                 );
               },
+          passcodeConfig: passcodeConfig,
           inputBuilder: (onInputValidated, isConfirming) {
             return PatternLock(
               notSelectedColor: patternConfig.notSelectedColor,

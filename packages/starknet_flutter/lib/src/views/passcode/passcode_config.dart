@@ -1,11 +1,21 @@
 import 'package:flutter/widgets.dart';
 
 class PasscodeConfig {
-  Color? backgroundColor;
-  PasscodeCancelButtonConfig? cancelButtonConfig;
+  final Color? backgroundColor;
+  final PasscodeCancelButtonConfig? cancelButtonConfig;
+
+  const PasscodeConfig({
+    this.backgroundColor,
+    this.cancelButtonConfig,
+  });
 }
 
 class PasscodeCancelButtonConfig {
-  Function()? onPressed;
-  Widget? child;
+  final VoidCallback? onPressed;
+  final Widget? child;
+
+  const PasscodeCancelButtonConfig({
+    this.onPressed,
+    this.child,
+  });
 }

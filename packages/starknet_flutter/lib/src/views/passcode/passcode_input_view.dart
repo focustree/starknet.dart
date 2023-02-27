@@ -13,21 +13,23 @@ typedef InputPasswordBuilder = Widget Function(
   bool isConfirming,
 );
 
-class UnlockInputView extends StatefulWidget {
+class PasscodeInputView extends StatefulWidget {
   final VoidCallback? onWrongRepeatInput;
   final PasscodeActionConfig actionConfig;
   final InputPasswordBuilder inputBuilder;
+  final PasscodeConfig? passcodeConfig;
 
-  const UnlockInputView({
+  const PasscodeInputView({
     Key? key,
     this.onWrongRepeatInput,
     required this.actionConfig,
     required this.inputBuilder,
+    required this.passcodeConfig,
   }) : super(key: key);
 
   @override
   State<StatefulWidget> createState() {
-    return _UnlockInputViewState();
+    return _PasscodeInputViewState();
   }
 
   static Future showPattern(
@@ -36,15 +38,18 @@ class UnlockInputView extends StatefulWidget {
     PasscodeActionConfig actionConfig =
         const PasscodeActionConfig.unlock(unlockTitle: "Draw your pattern"),
     PatternConfig patternConfig = const PatternConfig(),
+    PasscodeConfig? passcodeConfig,
   }) {
     return showModalBottomSheet(
       isScrollControlled: true,
       context: parentContext,
+      backgroundColor: passcodeConfig?.backgroundColor,
       builder: (context) {
         return PatternInput(
           actionConfig: actionConfig,
           onWrongRepeatInput: onWrongRepeatInput,
           patternConfig: patternConfig,
+          passcodeConfig: passcodeConfig,
         );
       },
     );
@@ -55,15 +60,18 @@ class UnlockInputView extends StatefulWidget {
     VoidCallback? onWrongRepeatInput,
     required PasscodeActionConfig actionConfig,
     PinCodeConfig pinCodeConfig = const PinCodeConfig(),
+    PasscodeConfig? passcodeConfig,
   }) {
     return showModalBottomSheet(
       isScrollControlled: true,
       context: parentContext,
+      backgroundColor: passcodeConfig?.backgroundColor,
       builder: (context) {
         return PinCodeInput(
           actionConfig: actionConfig,
           onWrongRepeatInput: onWrongRepeatInput,
           pinCodeConfig: pinCodeConfig,
+          passcodeConfig: passcodeConfig,
         );
       },
     );
@@ -74,15 +82,18 @@ class UnlockInputView extends StatefulWidget {
     VoidCallback? onWrongRepeatInput,
     required PasscodeActionConfig actionConfig,
     required PasswordConfig passwordConfig,
+    PasscodeConfig? passcodeConfig,
   }) {
     return showModalBottomSheet(
       isScrollControlled: true,
       context: parentContext,
+      backgroundColor: passcodeConfig?.backgroundColor,
       builder: (context) {
         return PasswordInput(
           actionConfig: actionConfig,
           onWrongRepeatInput: onWrongRepeatInput,
           passwordConfig: passwordConfig,
+          passcodeConfig: passcodeConfig,
         );
       },
     );
@@ -93,15 +104,18 @@ class UnlockInputView extends StatefulWidget {
     Function(BuildContext)? onWrongRepeatInput,
     required PasscodeActionConfig actionConfig,
     required InputPasswordBuilder inputBuilder,
+    PasscodeConfig? passcodeConfig,
   }) {
     return showModalBottomSheet(
       isScrollControlled: true,
       context: parentContext,
+      backgroundColor: passcodeConfig?.backgroundColor,
       builder: (context) {
         return Scaffold(
+          backgroundColor: passcodeConfig?.backgroundColor,
           body: Center(
             child: Builder(
-              builder: (ctx) => UnlockInputView(
+              builder: (ctx) => PasscodeInputView(
                 actionConfig: actionConfig,
                 onWrongRepeatInput: onWrongRepeatInput == null
                     ? null
@@ -109,6 +123,7 @@ class UnlockInputView extends StatefulWidget {
                         onWrongRepeatInput(ctx);
                       },
                 inputBuilder: inputBuilder,
+                passcodeConfig: passcodeConfig,
               ),
             ),
           ),
@@ -118,7 +133,7 @@ class UnlockInputView extends StatefulWidget {
   }
 }
 
-class _UnlockInputViewState extends State<UnlockInputView> {
+class _PasscodeInputViewState extends State<PasscodeInputView> {
   final _titleShakeKey = GlobalKey<ShakeWidgetState>();
   bool isConfirm = false;
   String? input;
@@ -148,10 +163,12 @@ class _UnlockInputViewState extends State<UnlockInputView> {
         ),
         const SizedBox(height: 10),
         TextButton(
-          onPressed: () {
-            Navigator.pop(context);
-          },
-          child: const Text('Cancel'),
+          onPressed: widget.passcodeConfig?.cancelButtonConfig?.onPressed ??
+              () {
+                Navigator.pop(context);
+              },
+          child: widget.passcodeConfig?.cancelButtonConfig?.child ??
+              const Text('Cancel'),
         ),
         const SizedBox(height: 32),
       ],

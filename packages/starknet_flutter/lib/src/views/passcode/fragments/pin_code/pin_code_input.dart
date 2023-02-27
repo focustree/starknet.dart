@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:starknet_flutter/src/views/passcode/fragments/pin_code/pin_code_config.dart';
 import 'package:starknet_flutter/src/views/passcode/fragments/pin_code/widgets/pin_button.dart';
 import 'package:starknet_flutter/src/views/passcode/fragments/pin_code/widgets/pin_entry.dart';
+import 'package:starknet_flutter/src/views/passcode/passcode_config.dart';
 import 'package:starknet_flutter/src/views/passcode/passcode_enums.dart';
-import 'package:starknet_flutter/src/views/passcode/unlock_input_view.dart';
+import 'package:starknet_flutter/src/views/passcode/passcode_input_view.dart';
 import 'package:starknet_flutter/src/views/utils/snackbar_utils.dart';
 import 'package:starknet_flutter/src/views/widgets/bouncing_button.dart';
 
@@ -14,6 +15,7 @@ class PinCodeInput extends StatefulWidget {
   final VoidCallback? onWrongRepeatInput;
   final PinCodeSize size;
   final PinCodeConfig? pinCodeConfig;
+  final PasscodeConfig? passcodeConfig;
 
   const PinCodeInput({
     super.key,
@@ -21,6 +23,7 @@ class PinCodeInput extends StatefulWidget {
     this.onWrongRepeatInput,
     this.pinCodeConfig,
     this.size = PinCodeSize.six,
+    this.passcodeConfig,
   });
 
   @override
@@ -36,9 +39,10 @@ class _PinCodeInputState extends State<PinCodeInput> {
     const kHorizontalSpacing = 20.0;
 
     return Scaffold(
+      backgroundColor: widget.passcodeConfig?.backgroundColor,
       body: Center(
         child: Builder(
-          builder: (ctx) => UnlockInputView(
+          builder: (ctx) => PasscodeInputView(
               actionConfig: widget.actionConfig,
               onWrongRepeatInput: widget.onWrongRepeatInput ??
                   () {
@@ -48,6 +52,7 @@ class _PinCodeInputState extends State<PinCodeInput> {
                       ),
                     );
                   },
+              passcodeConfig: widget.passcodeConfig,
               inputBuilder: (onInputValidated, isConfirming) {
                 return Column(
                   mainAxisSize: MainAxisSize.min,

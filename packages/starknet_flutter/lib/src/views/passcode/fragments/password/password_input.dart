@@ -1,19 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:starknet_flutter/src/views/passcode/fragments/password/password_config.dart';
+import 'package:starknet_flutter/src/views/passcode/passcode_config.dart';
 import 'package:starknet_flutter/src/views/passcode/passcode_enums.dart';
-import 'package:starknet_flutter/src/views/passcode/unlock_input_view.dart';
+import 'package:starknet_flutter/src/views/passcode/passcode_input_view.dart';
 import 'package:starknet_flutter/src/views/utils/snackbar_utils.dart';
 
 class PasswordInput extends StatefulWidget {
   final PasscodeActionConfig actionConfig;
   final PasswordConfig? passwordConfig;
   final VoidCallback? onWrongRepeatInput;
+  final PasscodeConfig? passcodeConfig;
 
   const PasswordInput({
     Key? key,
     required this.actionConfig,
     this.onWrongRepeatInput,
     this.passwordConfig,
+    this.passcodeConfig,
   }) : super(key: key);
 
   @override
@@ -33,9 +36,10 @@ class _PasswordInputState extends State<PasswordInput> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: widget.passcodeConfig?.backgroundColor,
       body: Center(
         child: Builder(
-          builder: (ctx) => UnlockInputView(
+          builder: (ctx) => PasscodeInputView(
             actionConfig: widget.actionConfig,
             onWrongRepeatInput: widget.onWrongRepeatInput ??
                 () {
@@ -45,6 +49,7 @@ class _PasswordInputState extends State<PasswordInput> {
                     ),
                   );
                 },
+            passcodeConfig: widget.passcodeConfig,
             inputBuilder: (onInputValidated, isConfirming) {
               return Form(
                 key: _formKey,
