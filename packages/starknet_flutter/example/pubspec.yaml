@@ -17,6 +17,7 @@ dependencies:
   flutter:
     sdk: flutter
 
+  cryptocoins_icons: ^0.3.0
   starknet_flutter:
     # When depending on this package from a real application you should use:
     #   starknet_flutter: ^x.y.z
