@@ -1,5 +1,11 @@
 import 'dart:async';
 
+import 'package:starknet_flutter/src/views/wallet/routes/create_wallet/choose_network_screen.dart';
+import 'package:starknet_flutter/src/views/wallet/routes/create_wallet/create_seed_screen.dart';
+import 'package:starknet_flutter/src/views/wallet/routes/restore_wallet/protect_wallet_screen.dart';
+import 'package:starknet_flutter/src/views/wallet/routes/restore_wallet/restore_wallet_screen.dart';
+import 'package:starknet_flutter/src/views/wallet/routes/welcome/wallet_welcome_view.dart';
+
 enum StarknetAccountType {
   braavos("Braavos", 'braavos.svg'),
   argent_x("Argent X", 'argent_x.svg'),
@@ -23,8 +29,25 @@ enum StarknetNetworkType {
 class WalletInitialisationViewModel {
   StreamController<String?> didChange = StreamController<String?>();
 
+  String? routeName;
+
   List<String>? seedPhrase;
   String? privateKey;
   StarknetAccountType? accountType;
   StarknetNetworkType? networkType;
+
+  String? get title {
+    switch (routeName) {
+      case CreateSeedScreen.routeName:
+        return 'Seed phrase';
+      case ChooseNetworkScreen.routeName:
+        return 'Choose network';
+      case ProtectWalletScreen.routeName:
+        return 'Protect';
+      case RestoreWalletScreen.routeName:
+        return 'Restore wallet';
+      default:
+        return null;
+    }
+  }
 }

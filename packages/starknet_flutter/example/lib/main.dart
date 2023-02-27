@@ -18,6 +18,7 @@ class StarknetDemoApp extends StatelessWidget {
         primarySwatch: Colors.blue,
         fontFamily: GoogleFonts.inter().fontFamily,
       ),
+      debugShowCheckedModeBanner: false,
       home: const WalletScreen(),
       // routes: {
       //   WelcomeScreen.routeName: (context) => const WelcomeScreen(),

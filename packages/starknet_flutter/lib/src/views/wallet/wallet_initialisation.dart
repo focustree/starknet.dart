@@ -9,6 +9,7 @@ import 'wallet_initialisation_viewmodel.dart';
 
 class StarknetWallet {
   static Future showInitialisationModal(BuildContext context) {
+    // TODO: send configuration
     return showModalBottomSheet<String?>(
       isScrollControlled: true,
       context: context,
@@ -73,27 +74,29 @@ class _WalletInitialisationPageState extends State<WalletInitialisationPage>
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
-        leading: StreamBuilder(
-          stream: model.didChange.stream,
-          builder: (context, snapshot) {
-            return AnimatedSwitcher(
-              duration: const Duration(milliseconds: 300),
-              child: snapshot.data == WalletWelcomeView.routeName
-                  ? const SizedBox.shrink()
-                  : BouncingWidget(
-                      onTap: goBack,
-                      child: Container(
-                        color: Colors.transparent,
-                        width: 50,
-                        height: 50,
-                        child: Icon(
-                          Icons.arrow_back_ios_new_rounded,
-                          color: Theme.of(context).primaryColor,
-                        ),
-                      ),
+        title: model.title != null ? Text(
+          model.title!,
+          style: TextStyle(
+            color: Theme.of(context).colorScheme.onSurface,
+            fontSize: 16,
+          ),
+        ) : const SizedBox.shrink(),
+        leading: AnimatedSwitcher(
+          duration: const Duration(milliseconds: 300),
+          child: model.routeName == WalletWelcomeView.routeName
+              ? const SizedBox.shrink()
+              : BouncingWidget(
+                  onTap: goBack,
+                  child: Container(
+                    color: Colors.transparent,
+                    width: 50,
+                    height: 50,
+                    child: Icon(
+                      Icons.arrow_back_ios_new_rounded,
+                      color: Theme.of(context).primaryColor,
                     ),
-            );
-          },
+                  ),
+                ),
         ),
       ),
       body: Navigator(

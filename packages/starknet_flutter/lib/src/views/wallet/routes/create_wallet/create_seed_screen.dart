@@ -124,7 +124,7 @@ class CreateSeedScreen extends StatelessWidget {
                   Navigator.of(context)
                       .pushNamed(ChooseNetworkScreen.routeName);
                 },
-                text: 'Done',
+                text: 'Continue',
               ),
             ],
           ),
