@@ -1,13 +1,14 @@
 import 'dart:async';
 
 enum StarknetAccountType {
-  braavos("Braavos"),
-  argentX("Argent X"),
-  openZeppelin("OpenZeppelin");
+  braavos("Braavos", 'braavos.svg'),
+  argent_x("Argent X", 'argent_x.svg'),
+  open_zeppelin("OpenZeppelin", 'open_zeppelin.svg');
 
   final String title;
+  final String logoAssetPath;
 
-  const StarknetAccountType(this.title);
+  const StarknetAccountType(this.title, this.logoAssetPath);
 }
 
 enum StarknetNetworkType {

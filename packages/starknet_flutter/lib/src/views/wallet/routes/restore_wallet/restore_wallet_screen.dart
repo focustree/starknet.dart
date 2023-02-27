@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:starknet_flutter/src/views/wallet/routes/restore_wallet/protect_wallet_screen.dart';
 import 'package:starknet_flutter/src/views/wallet/wallet_initialisation_presenter.dart';
 import 'package:starknet_flutter/src/views/wallet/wallet_initialisation_viewmodel.dart';
+import 'package:starknet_flutter/src/views/widgets/bouncing_button.dart';
 import 'package:starknet_flutter/src/views/widgets/starknet_button.dart';
 
 class RestoreWalletScreen extends StatefulWidget {
@@ -34,18 +36,21 @@ class _RestoreWalletScreenState extends State<RestoreWalletScreen> {
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16),
               child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
                     "This is a 12-word phrase you were given when you created your previous wallet.",
                     textAlign: TextAlign.center,
                     style: Theme.of(context).textTheme.labelMedium,
                   ),
-                  SizedBox(height: 16),
+                  const SizedBox(height: 16),
                   TextField(
                     decoration: const InputDecoration(
-                        hintText: "Enter your recovery phrase",
-                        labelText: "Your recovery phrase",
-                        border: OutlineInputBorder()),
+                      hintText: "Enter your recovery phrase",
+                      // labelText: "Your recovery phrase",
+                      border: OutlineInputBorder(),
+                    ),
+                    maxLines: 5,
                     style: TextStyle(
                       color: Theme.of(context).primaryColor,
                     ),
@@ -56,33 +61,53 @@ class _RestoreWalletScreenState extends State<RestoreWalletScreen> {
                     },
                   ),
                   const SizedBox(height: 32),
-                  Row(
-                    children: [
-                      Expanded(
-                        child: Text(
-                          "Select your account type",
-                          style: Theme.of(context).textTheme.bodyMedium,
-                        ),
-                      ),
-                    ],
+                  Text(
+                    "Select your account type",
+                    style: Theme.of(context).textTheme.bodyMedium,
                   ),
-                  const SizedBox(height: 8),
-                  ListView.builder(
+                  const SizedBox(height: 15),
+                  ListView.separated(
                     shrinkWrap: true,
                     itemCount: StarknetAccountType.values.length,
+                    separatorBuilder: (context, i) =>
+                        const SizedBox(height: 10),
                     itemBuilder: (context, i) {
-                      return ListTile(
-                        title: Text(
-                          StarknetAccountType.values[i].title,
-                          style: TextStyle(
-                            color: _accountType == StarknetAccountType.values[i]
+                      final accountType = StarknetAccountType.values[i];
+
+                      return BouncingWidget(
+                        child: AnimatedContainer(
+                          duration: const Duration(milliseconds: 200),
+                          padding: const EdgeInsets.all(16),
+                          decoration: BoxDecoration(
+                            color: _accountType == accountType
                                 ? Theme.of(context).primaryColor
-                                : Colors.black87,
+                                : Theme.of(context)
+                                    .primaryColor
+                                    .withOpacity(0.08),
+                            borderRadius: BorderRadius.circular(30),
+                          ),
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 10),
+                            child: Row(
+                              children: [
+                                SvgPicture.asset(
+                                  "packages/starknet_flutter/assets/images/wallets/${accountType.logoAssetPath}",
+                                  width: 20,
+                                  height: 20,
+                                ),
+                                const SizedBox(width: 15),
+                                Text(
+                                  accountType.title,
+                                  style: TextStyle(
+                                    color: _accountType == accountType
+                                        ? Theme.of(context).colorScheme.onPrimary
+                                        : Colors.black87,
+                                  ),
+                                ),
+                              ],
+                            ),
                           ),
                         ),
-                        tileColor: _accountType == StarknetAccountType.values[i]
-                            ? Theme.of(context).primaryColor
-                            : null,
                         onTap: () {
                           setState(() {
                             _accountType = StarknetAccountType.values[i];
