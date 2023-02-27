@@ -13,7 +13,7 @@ class StarknetWallet {
       isScrollControlled: true,
       context: context,
       builder: (context) {
-        return WalletInitialisationPage();
+        return const WalletInitialisationPage();
       },
     );
   }
@@ -22,6 +22,7 @@ class StarknetWallet {
 abstract class WalletInitialisationView {
   void refresh();
   void closeModal();
+  void goBack();
   Future navigateToSubRoute(String routeName);
 }
 
@@ -80,7 +81,7 @@ class _WalletInitialisationPageState extends State<WalletInitialisationPage>
               child: snapshot.data == WalletWelcomeView.routeName
                   ? const SizedBox.shrink()
                   : BouncingWidget(
-                      onTap: closeModal,
+                      onTap: goBack,
                       child: Container(
                         color: Colors.transparent,
                         width: 50,
@@ -119,5 +120,10 @@ class _WalletInitialisationPageState extends State<WalletInitialisationPage>
   @override
   Future navigateToSubRoute(String routeName) {
     return _navigatorKey.currentState!.pushNamed(routeName);
+  }
+
+  @override
+  void goBack() {
+    Navigator.of(_navigatorKey.currentContext!).pop();
   }
 }
