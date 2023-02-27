@@ -18,21 +18,18 @@ class ProtectWalletArgs {
 class ProtectWalletScreen extends StatelessWidget {
   static const routeName = '/protect_wallet';
 
-  const ProtectWalletScreen({super.key});
+  final ProtectWalletArgs args;
+
+  const ProtectWalletScreen({
+    Key? key,
+    required this.args,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    final args =
-        ModalRoute.of(context)!.settings.arguments as ProtectWalletArgs;
-
-    return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.transparent,
-        elevation: 0,
-        foregroundColor: Colors.black87,
-        title: const Text("Protect your wallet"),
-      ),
-      body: Padding(
+    return Container(
+      color: Theme.of(context).scaffoldBackgroundColor,
+      child: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
           children: [
@@ -47,8 +44,11 @@ class ProtectWalletScreen extends StatelessWidget {
                   return FutureBuilder(
                     future: snapshot.requireData.when(
                       biometric: (biometric) {
-                        return StarknetButton(
-                          icon: const Icon(Icons.fingerprint),
+                        return StarknetButton.plain(
+                          icon: const Icon(
+                            Icons.fingerprint,
+                            color: Colors.white,
+                          ),
                           text: 'Protect my wallet with biometric',
                           onTap: () async {
                             // Store seed phrase and private key
@@ -59,12 +59,17 @@ class ProtectWalletScreen extends StatelessWidget {
                             // TODO Store private key
 
                             // Store uuids into hive or similar
+
+                            // TODO Navigate to home screen
                           },
                         );
                       },
                       password: (password) {
-                        return StarknetButton(
-                          icon: const Icon(Icons.key),
+                        return StarknetButton.plain(
+                          icon: const Icon(
+                            Icons.key,
+                            color: Colors.white,
+                          ),
                           text: 'Protect my wallet with a password',
                           onTap: () async {
                             // Store seed phrase and private key
@@ -77,6 +82,8 @@ class ProtectWalletScreen extends StatelessWidget {
                             // TODO Store private key
 
                             // Store uuids into hive or similar
+
+                            // TODO Navigate to home screen
                           },
                         );
                       },

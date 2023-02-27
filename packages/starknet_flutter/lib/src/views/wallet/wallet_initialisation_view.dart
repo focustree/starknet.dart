@@ -70,8 +70,11 @@ class _WalletInitialisationViewState extends State<WalletInitialisationView> {
                 ),
               );
             case ProtectWalletScreen.routeName:
+              final args = settings.arguments as ProtectWalletArgs;
               return MaterialPageRoute(
-                builder: (context) => ProtectWalletScreen(),
+                builder: (context) => ProtectWalletScreen(
+                  args: args,
+                ),
               );
             case RestoreWalletScreen.routeName:
               return MaterialPageRoute(
