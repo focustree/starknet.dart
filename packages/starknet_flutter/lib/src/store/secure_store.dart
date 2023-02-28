@@ -39,10 +39,7 @@ abstract class SecureStore {
     bool passwordFallbackEnabled = true,
   }) async {
     // Check if the device has biometric capabilities
-    final response = await BiometricStorage().canAuthenticate();
-    if (!kIsWeb &&
-        Platform.isAndroid &&
-        response == CanAuthenticateResponse.success) {
+    if (await hasBiometricStore()) {
       // Only use BiometricStore on Android
       return BiometricStore(androidOptions: androidOptions);
     } else if (!passwordFallbackEnabled) {
