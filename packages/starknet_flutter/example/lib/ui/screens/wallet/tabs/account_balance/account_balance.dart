@@ -3,8 +3,15 @@ import 'package:starknet_flutter/starknet_flutter.dart';
 import 'package:starknet_flutter_example/ui/screens/wallet/tabs/account_balance/widgets/account_indicator.dart';
 import 'package:starknet_flutter_example/ui/screens/wallet/tabs/account_balance/widgets/action_button.dart';
 
-class AccountBalance extends StatelessWidget {
+class AccountBalance extends StatefulWidget {
   const AccountBalance({super.key});
+
+  @override
+  State<AccountBalance> createState() => _AccountBalanceState();
+}
+
+class _AccountBalanceState extends State<AccountBalance> {
+  AssociatedWallet? _selectedWallet;
 
   @override
   Widget build(BuildContext context) {
@@ -15,10 +22,13 @@ class AccountBalance extends StatelessWidget {
         children: [
           AccountIndicator(
             avatarUrl: 'https://i.pravatar.cc/150?img=1',
-            walletName: 'Wallet A',
-            accountName: 'Account 1',
-            onPressed: () {
-              StarknetWalletList.showInitializationModal(context);
+            selectedWallet: _selectedWallet,
+            onPressed: () async {
+              final selectedWallet =
+                  await StarknetWalletList.showInitializationModal(context);
+              setState(() {
+                _selectedWallet = selectedWallet;
+              });
             },
           ),
           const Padding(
