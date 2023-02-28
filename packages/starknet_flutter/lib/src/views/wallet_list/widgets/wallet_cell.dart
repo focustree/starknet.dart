@@ -1,25 +1,20 @@
-import 'dart:math';
-
 import 'package:expandable/expandable.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:starknet_flutter/src/views/wallet/wallet_initialization_viewmodel.dart';
 import 'package:starknet_flutter/src/views/wallet_list/widgets/account_cell.dart';
+import 'package:starknet_flutter/src/views/wallet_types.dart';
 import 'package:starknet_flutter/src/views/widgets/starknet_button.dart';
 
 class WalletCell extends StatelessWidget {
-  final String name;
-  final StarknetAccountType accountType;
+  final Wallet wallet;
   const WalletCell({
     Key? key,
-    required this.name,
-    required this.accountType,
+    required this.wallet,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    final accountCount = Random().nextInt(6);
-
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 15.0),
       child: ExpandableNotifier(
@@ -33,37 +28,43 @@ class WalletCell extends StatelessWidget {
             child: Expandable(
               theme: const ExpandableThemeData(useInkWell: false),
               collapsed: _WalletCellContent(
-                accountType: accountType,
-                name: name,
-                accountsCount: accountCount,
+                accountType: wallet.accountType,
+                name: wallet.name,
+                accountsCount: wallet.accounts.length,
               ),
               expanded: Column(
                 children: [
                   _WalletCellContent(
-                    accountType: accountType,
-                    name: name,
+                    accountType: wallet.accountType,
+                    name: wallet.name,
                     isExpanded: true,
-                    accountsCount: accountCount,
+                    accountsCount: wallet.accounts.length,
                   ),
-                  if (accountCount > 0)
+                  if (wallet.accounts.isNotEmpty)
                     ListView.separated(
                       shrinkWrap: true,
                       padding: const EdgeInsets.only(top: 0.0, bottom: 12.0),
                       physics: const NeverScrollableScrollPhysics(),
                       itemBuilder: (_, index) {
+                        final account = wallet.accounts[index];
                         return AccountCell(
-                          accountBalance:
-                              Random().nextDouble() * Random().nextInt(20),
-                          accountName: 'Account ${index + 1}',
+                          accountBalance: account.balance,
+                          accountName: account.name,
                           onPressed: () {
-                            Navigator.pop(context, index.toString());
+                            Navigator.pop(
+                              context,
+                              AssociatedWallet(
+                                account: account,
+                                wallet: wallet,
+                              ),
+                            );
                           },
                         );
                       },
                       separatorBuilder: (context, index) {
                         return const SizedBox(height: 5.0);
                       },
-                      itemCount: accountCount,
+                      itemCount: wallet.accounts.length,
                     ),
                   StarknetButton.text(
                     onTap: () {},
