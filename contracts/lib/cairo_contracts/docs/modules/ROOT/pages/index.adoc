@@ -1,6 +1,6 @@
 = Contracts for Cairo
 
-*A library for secure smart contract development* written in Cairo for https://starkware.co/product/starknet/[Starknet], a decentralized ZK Rollup.
+*A library for secure smart contract development* written in Cairo for https://starkware.co/product/starknet/[StarkNet], a decentralized ZK Rollup.
 
 == Usage
 
@@ -45,6 +45,9 @@ nile init
 ----
 pip install openzeppelin-cairo-contracts
 ----
+
+WARNING: Installing directly through GitHub may contain incomplete or breaking implementations.
+While we aim not to introduce such changes, we still strongly recommend installing through https://github.com/OpenZeppelin/cairo-contracts/releases/[official releases].
 
 === Use a basic preset
 

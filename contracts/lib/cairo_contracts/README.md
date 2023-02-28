@@ -3,7 +3,7 @@
 [![Tests and linter](https://github.com/OpenZeppelin/cairo-contracts/actions/workflows/coverage.yml/badge.svg)](https://github.com/OpenZeppelin/cairo-contracts/actions/workflows/coverage.yml)
 [![codecov](https://codecov.io/github/OpenZeppelin/cairo-contracts/branch/main/graph/badge.svg?token=LFSZH8RPOL)](https://codecov.io/github/OpenZeppelin/cairo-contracts)
 
-**A library for secure smart contract development** written in Cairo for [Starknet](https://starkware.co/product/starknet/), a decentralized ZK Rollup.
+**A library for secure smart contract development** written in Cairo for [StarkNet](https://starkware.co/product/starknet/), a decentralized ZK Rollup.
 
 ## Usage
 
@@ -48,9 +48,12 @@ nile init
 pip install openzeppelin-cairo-contracts
 ```
 
+> ⚠️ Warning! ⚠️  
+Installing directly the `main` branch may contain incomplete or breaking implementations, download [official releases](https://github.com/OpenZeppelin/cairo-contracts/releases/) only.
+
 ### Use a basic preset
 
-Presets are ready-to-use contracts that you can deploy right away. They also serve as examples of how to use library modules. [Read more about presets](https://docs.openzeppelin.com/contracts-cairo/0.5.1/extensibility#presets).
+Presets are ready-to-use contracts that you can deploy right away. They also serve as examples of how to use library modules. [Read more about presets](https://docs.openzeppelin.com/contracts-cairo/0.6.1/extensibility#presets).
 
 ```cairo
 // contracts/MyToken.cairo
@@ -81,11 +84,11 @@ nile compile
 nile deploy MyToken <name> <symbol> <decimals> <initial_supply> <recipient> --alias my_token
 ```
 
-> Note that `<initial_supply>` is expected to be two integers i.e. `1` `0`. See [Uint256](https://docs.openzeppelin.com/contracts-cairo/0.5.1/utilities#uint256) for more information.
+> Note that `<initial_supply>` is expected to be two integers i.e. `1` `0`. See [Uint256](https://docs.openzeppelin.com/contracts-cairo/0.6.1/utilities#uint256) for more information.
 
 ### Write a custom contract using library modules
 
-[Read more about libraries](https://docs.openzeppelin.com/contracts-cairo/0.5.1/extensibility#libraries).
+[Read more about libraries](https://docs.openzeppelin.com/contracts-cairo/0.6.1/extensibility#libraries).
 
 ```cairo
 %lang starknet
@@ -112,24 +115,25 @@ func transfer{syscall_ptr: felt*, pedersen_ptr: HashBuiltin*, range_check_ptr}(
 
 Check out the [full documentation site](https://docs.openzeppelin.com/contracts-cairo)! Featuring:
 
-- [Accounts](https://docs.openzeppelin.com/contracts-cairo/0.5.1/accounts)
-- [ERC20](https://docs.openzeppelin.com/contracts-cairo/0.5.1/erc20)
-- [ERC721](https://docs.openzeppelin.com/contracts-cairo/0.5.1/erc721)
-- [Contract extensibility pattern](https://docs.openzeppelin.com/contracts-cairo/0.5.1/extensibility)
-- [Proxies and upgrades](https://docs.openzeppelin.com/contracts-cairo/0.5.1/proxies)
-- [Security](https://docs.openzeppelin.com/contracts-cairo/0.5.1/security)
-- [Utilities](https://docs.openzeppelin.com/contracts-cairo/0.5.1/utilities)
+- [Accounts](https://docs.openzeppelin.com/contracts-cairo/0.6.1/accounts)
+- [ERC20](https://docs.openzeppelin.com/contracts-cairo/0.6.1/erc20)
+- [ERC721](https://docs.openzeppelin.com/contracts-cairo/0.6.1/erc721)
+- [ERC1155](https://docs.openzeppelin.com/contracts-cairo/0.6.1/erc1155)
+- [Contract extensibility pattern](https://docs.openzeppelin.com/contracts-cairo/0.6.1/extensibility)
+- [Proxies and upgrades](https://docs.openzeppelin.com/contracts-cairo/0.6.1/proxies)
+- [Security](https://docs.openzeppelin.com/contracts-cairo/0.6.1/security)
+- [Utilities](https://docs.openzeppelin.com/contracts-cairo/0.6.1/utilities)
 
 ### Cairo
 
-- [Starknet official documentation](https://www.cairo-lang.org/docs/hello_starknet/index.html#hello-starknet)
+- [StarkNet official documentation](https://www.cairo-lang.org/docs/hello_starknet/index.html#hello-starknet)
 - [Cairo language documentation](https://www.cairo-lang.org/docs/hello_cairo/index.html#hello-cairo)
 - Perama's [Cairo by example](https://perama-v.github.io/cairo/by-example/)
 - [Cairo 101 workshops](https://www.youtube.com/playlist?list=PLcIyXLwiPilV5RBZj43AX1FY4FJMWHFTY)
 
 ### Nile
 
-- [Getting started with Starknet using Nile](https://medium.com/coinmonks/starknet-tutorial-for-beginners-using-nile-6af9c2270c15)
+- [Getting started with StarkNet using Nile](https://medium.com/coinmonks/starknet-tutorial-for-beginners-using-nile-6af9c2270c15)
 - [How to manage smart contract deployments with Nile](https://medium.com/@martriay/manage-your-starknet-deployments-with-nile-%EF%B8%8F-e849d40546dd)
 
 ## Development
@@ -258,7 +262,7 @@ def foo_factory():
     return cached_foo
 ```
 
-See [Memoization](https://docs.openzeppelin.com/contracts-cairo/0.5.1/utilities#memoization) in the Utilities documentation for a more thorough example on caching contracts.
+See [Memoization](https://docs.openzeppelin.com/contracts-cairo/0.6.1/utilities#memoization) in the Utilities documentation for a more thorough example on caching contracts.
 
 > Note that this does not apply for stateless libraries such as SafeMath.
 
