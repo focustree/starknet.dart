@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
-import 'package:starknet_flutter/src/views/wallet/wallet_initialization_viewmodel.dart';
 import 'package:starknet_flutter/src/views/wallet_list/widgets/appbar.dart';
 import 'package:starknet_flutter/src/views/wallet_list/widgets/wallet_cell.dart';
 import 'package:starknet_flutter/src/views/wallet_types.dart';
-import 'package:starknet_flutter/src/views/widgets/bouncing_button.dart';
 import 'package:starknet_flutter/src/views/widgets/starknet_button.dart';
 
 import 'wallet_list_presenter.dart';
