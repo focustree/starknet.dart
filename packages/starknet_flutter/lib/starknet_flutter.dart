@@ -9,4 +9,6 @@ export 'src/views/passcode/fragments/pin_code/pin_code_config.dart';
 export 'src/views/wallet/wallet_initialization.dart';
 export 'src/views/wallet_list/wallet_list.dart';
 
+export 'src/views/wallet_types.dart';
+
 class StarknetFlutter {}
