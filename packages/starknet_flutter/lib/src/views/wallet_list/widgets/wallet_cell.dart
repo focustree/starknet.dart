@@ -43,7 +43,7 @@ class WalletCell extends StatelessWidget {
                   if (wallet.accounts.isNotEmpty)
                     ListView.separated(
                       shrinkWrap: true,
-                      padding: const EdgeInsets.only(top: 0.0, bottom: 12.0),
+                      padding: const EdgeInsets.only(top: 5.0, bottom: 3.0),
                       physics: const NeverScrollableScrollPhysics(),
                       itemBuilder: (_, index) {
                         final account = wallet.accounts[index];
