@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:starknet_flutter_example/store_example.dart';
+import 'package:starknet_flutter_example/ui/widgets/exchange_rates_view.dart';
 
 void main() {
   runApp(const StarknetDemoApp());
@@ -16,7 +16,13 @@ class StarknetDemoApp extends StatelessWidget {
         appBar: AppBar(
           title: const Text('Starknet Flutter Demo'),
         ),
-        body: const StoreExample(),
+        body: Column(
+          children: const [
+            Expanded(
+              child: ExchangeRatesView(),
+            ),
+          ],
+        ),
       ),
     );
   }

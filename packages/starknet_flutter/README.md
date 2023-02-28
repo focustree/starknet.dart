@@ -135,3 +135,17 @@ await store.when(
   ),
 );
 ```
+
+## List exchange rates for a currency
+
+```dart
+import 'package:starknet_flutter/starknet_flutter.dart';
+
+void main() async {
+  final starknet = await StarknetFlutter.get();
+  final exchangeRates = await starknet.getExchangeRates(
+    currency: "USD",
+  );
+  print(exchangeRates);
+}
+```
