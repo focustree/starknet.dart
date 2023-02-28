@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:starknet_flutter/starknet_flutter.dart';
 import 'package:starknet_flutter_example/ui/screens/wallet/tabs/account_balance/widgets/account_indicator.dart';
 import 'package:starknet_flutter_example/ui/screens/wallet/tabs/account_balance/widgets/action_button.dart';
 
@@ -8,7 +9,7 @@ class AccountBalance extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 30),
+      padding: const EdgeInsets.only(left: 30, right: 30, top: 20),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -16,10 +17,12 @@ class AccountBalance extends StatelessWidget {
             avatarUrl: 'https://i.pravatar.cc/150?img=1',
             walletName: 'Wallet A',
             accountName: 'Account 1',
-            onPressed: () {},
+            onPressed: () {
+              StarknetWalletList.showInitializationModal(context);
+            },
           ),
-          Padding(
-            padding: const EdgeInsets.only(top: 12, bottom: 20),
+          const Padding(
+            padding: EdgeInsets.only(top: 12, bottom: 20),
             child: Text(
               '\$43,234.23',
               style: TextStyle(
