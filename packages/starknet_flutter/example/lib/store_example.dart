@@ -16,6 +16,15 @@ void main() {
   );
 }
 
+void main() {
+  runApp(
+    const MaterialApp(
+      title: "StarkNet Wallet in Flutter",
+      home: StoreExample(),
+    ),
+  );
+}
+
 class StoreExample extends StatefulWidget {
   const StoreExample({super.key});
 
