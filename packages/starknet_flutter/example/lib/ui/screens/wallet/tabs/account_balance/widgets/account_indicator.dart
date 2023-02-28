@@ -1,16 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:starknet_flutter/starknet_flutter.dart';
 import 'package:starknet_flutter_example/ui/widgets/bouncing_button.dart';
 
 class AccountIndicator extends StatelessWidget {
   final String avatarUrl;
-  final String walletName;
-  final String accountName;
+  final AssociatedWallet? selectedWallet;
   final Function()? onPressed;
   const AccountIndicator({
     Key? key,
     required this.avatarUrl,
-    required this.walletName,
-    required this.accountName,
+    this.selectedWallet,
     this.onPressed,
   }) : super(key: key);
 
@@ -34,18 +33,29 @@ class AccountIndicator extends StatelessWidget {
                 backgroundImage: NetworkImage(avatarUrl),
               ),
               const SizedBox(width: 10),
-              Row(
-                children: [
-                  Text(
-                    walletName,
-                    style: const TextStyle(
-                      fontWeight: FontWeight.bold,
+              selectedWallet == null
+                  ? const Text(
+                      'Select wallet',
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                      ),
+                    )
+                  : Row(
+                      children: [
+                        Row(
+                          children: [
+                            Text(
+                              selectedWallet!.wallet.name,
+                              style: const TextStyle(
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                            const Text(' | '),
+                            Text(selectedWallet!.account.name),
+                          ],
+                        ),
+                      ],
                     ),
-                  ),
-                  const Text(' | '),
-                  Text(accountName),
-                ],
-              ),
               const SizedBox(width: 5),
               const Icon(Icons.keyboard_arrow_down),
             ],
