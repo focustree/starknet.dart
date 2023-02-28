@@ -4,7 +4,6 @@ import 'package:starknet_flutter/src/views/wallet/routes/create_wallet/choose_ne
 import 'package:starknet_flutter/src/views/wallet/routes/create_wallet/create_seed_screen.dart';
 import 'package:starknet_flutter/src/views/wallet/routes/restore_wallet/protect_wallet_screen.dart';
 import 'package:starknet_flutter/src/views/wallet/routes/restore_wallet/restore_wallet_screen.dart';
-import 'package:starknet_flutter/src/views/wallet/routes/welcome/wallet_welcome_view.dart';
 
 enum StarknetAccountType {
   braavos("Braavos", 'braavos.svg'),

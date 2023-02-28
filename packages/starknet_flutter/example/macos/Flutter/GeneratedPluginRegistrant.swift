@@ -6,8 +6,8 @@ import FlutterMacOS
 import Foundation
 
 import biometric_storage
-import path_provider_foundation
 import emoji_picker_flutter
+import path_provider_foundation
 import shared_preferences_foundation
 import starknet_flutter
 

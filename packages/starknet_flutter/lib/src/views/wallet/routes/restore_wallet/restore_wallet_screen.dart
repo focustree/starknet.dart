@@ -66,11 +66,10 @@ class _RestoreWalletScreenState extends State<RestoreWalletScreen> {
             Expanded(
               child: ListView.separated(
                 itemCount: StarknetAccountType.values.length,
-                separatorBuilder: (context, i) =>
-                    const SizedBox(height: 10),
+                separatorBuilder: (context, i) => const SizedBox(height: 10),
                 itemBuilder: (context, i) {
                   final accountType = StarknetAccountType.values[i];
-            
+
                   return BouncingWidget(
                     child: AnimatedContainer(
                       duration: const Duration(milliseconds: 200),
@@ -78,9 +77,7 @@ class _RestoreWalletScreenState extends State<RestoreWalletScreen> {
                       decoration: BoxDecoration(
                         color: _accountType == accountType
                             ? Theme.of(context).primaryColor
-                            : Theme.of(context)
-                                .primaryColor
-                                .withOpacity(0.08),
+                            : Theme.of(context).primaryColor.withOpacity(0.08),
                         borderRadius: BorderRadius.circular(30),
                       ),
                       child: Padding(
