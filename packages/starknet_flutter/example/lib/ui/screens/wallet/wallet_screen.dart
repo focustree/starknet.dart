@@ -29,20 +29,22 @@ class _WalletScreenState extends State<WalletScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: PageView.builder(
-        controller: _controller,
-        itemBuilder: (context, index) {
-          switch (index) {
-            case 0:
-              return const AccountBalance();
-            case 1:
-              return const Swap();
-            case 2:
-              return const Collectibles();
-            default:
-              return const DApps();
-          }
-        },
+      body: SafeArea(
+        child: PageView.builder(
+          controller: _controller,
+          itemBuilder: (context, index) {
+            switch (index) {
+              case 0:
+                return const AccountBalance();
+              case 1:
+                return const Swap();
+              case 2:
+                return const Collectibles();
+              default:
+                return const DApps();
+            }
+          },
+        ),
       ),
       bottomNavigationBar: BottomNavigationBar(
         items: const <BottomNavigationBarItem>[
@@ -104,24 +106,4 @@ class _WalletScreenState extends State<WalletScreen> {
       ),
     );
   }
-
-  // Future<void> _showDialogCreatedAccount(BuildContext context) {
-  //   return showDialog(
-  //     context: context,
-  //     builder: (context) => AlertDialog(
-  //       title: const Text("Account created"),
-  //       content: const Text("How do you want to fund your account?"),
-  //       actions: [
-  //         TextButton(
-  //           onPressed: () {},
-  //           child: const Text("Fund with Goerli ETH"),
-  //         ),
-  //         TextButton(
-  //           onPressed: () {},
-  //           child: const Text("Fund with Goerli DAI"),
-  //         ),
-  //       ],
-  //     ),
-  //   );
-  // }
 }
