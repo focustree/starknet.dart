@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 import 'package:starknet_flutter/src/views/wallet/wallet_initialization_observer.dart';
 import 'package:starknet_flutter/src/views/wallet/routes/welcome/wallet_welcome_view.dart';
 import 'package:starknet_flutter/src/views/wallet/wallet_initialization_router.dart';
@@ -10,8 +11,7 @@ import 'wallet_initialization_viewmodel.dart';
 class StarknetWallet {
   static Future showInitializationModal(BuildContext context) {
     // TODO: send configuration
-    return showModalBottomSheet<String?>(
-      isScrollControlled: true,
+    return showBarModalBottomSheet<String?>(
       context: context,
       builder: (context) {
         return const WalletInitializationPage();
@@ -99,14 +99,16 @@ class _WalletInitializationPageState extends State<WalletInitializationPage>
                 ),
         ),
       ),
-      body: Navigator(
-        key: _navigatorKey,
-        observers: [observer],
-        onGenerateRoute: (settings) =>
-            WalletInitializationRouter.onGenerateRoute(
-          settings,
-          model,
-          presenter,
+      body: SafeArea(
+        child: Navigator(
+          key: _navigatorKey,
+          observers: [observer],
+          onGenerateRoute: (settings) =>
+              WalletInitializationRouter.onGenerateRoute(
+            settings,
+            model,
+            presenter,
+          ),
         ),
       ),
     );

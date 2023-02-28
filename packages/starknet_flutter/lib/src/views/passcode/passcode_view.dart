@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 import 'package:starknet_flutter/src/views/passcode/fragments/password/password_config.dart';
 import 'package:starknet_flutter/src/views/passcode/fragments/password/password_fragment.dart';
 import 'package:starknet_flutter/src/views/passcode/fragments/pin_code/pin_code_fragment.dart';
@@ -49,8 +50,7 @@ class Passcode {
     BuildContext parentContext, {
     PasscodeAction action = PasscodeAction.create,
   }) {
-    return showModalBottomSheet<String?>(
-      isScrollControlled: true,
+    return showMaterialModalBottomSheet<String?>(
       context: parentContext,
       builder: (context) {
         return PasscodeView(
