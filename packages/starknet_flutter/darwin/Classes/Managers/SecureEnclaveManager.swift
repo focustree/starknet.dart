@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import LocalAuthentication
 
 enum SecureEnclaveErrors: Error {
   case tagConvertion
@@ -17,10 +18,11 @@ enum SecureEnclaveErrors: Error {
   case deletion
   case access(String)
   case emptyPublicKey
+  case biometricNotAvailable
 }
 
 class SecureEnclaveManager {
-  static let starknetTag = "StarknetPrivateKey"
+  static let starknetTag = "starknet.private.key"
   static let tagSeparator = "_"
   static let secretKeyAlgorithm = SecKeyAlgorithm.eciesEncryptionCofactorVariableIVX963SHA256AESGCM
   static let keySizeBits = 256;
@@ -63,23 +65,28 @@ class SecureEnclaveManager {
     guard let secAttrApplicationTag = "\(SecureEnclaveManager.starknetTag)\(SecureEnclaveManager.tagSeparator)\(key)".data(using: .utf8) else {
       throw SecureEnclaveErrors.tagConvertion
     }
+
+    // Prompt for biometric authentication
+    let biometricResult = AuthenticationUtil.promptBiometric()
+    if (!biometricResult) {
+      throw SecureEnclaveErrors.biometricNotAvailable
+    }
     
     // Create an access control object that specifies how the key can be used.
     var accessError: Unmanaged<CFError>?
     var params: SecAccessControlCreateFlags;
-    
-    // Set control flag according iOS version.
-    if #available(iOS 11.3, *) {
-      params = [.privateKeyUsage, .biometryCurrentSet]
-    } else {
-      params = [.privateKeyUsage, .touchIDCurrentSet]
-    }
     
     var accessibleParam: CFString;
 #if os(macOS)
     params = .userPresence
     accessibleParam = kSecAttrAccessibleWhenUnlocked
 #elseif os(iOS)
+    // Set control flag according iOS version.
+    if #available(iOS 11.3, *) {
+      params = [.privateKeyUsage, .biometryCurrentSet]
+    } else {
+      params = [.privateKeyUsage, .touchIDCurrentSet]
+    }
     accessibleParam = kSecAttrAccessibleWhenUnlockedThisDeviceOnly
 #endif
     

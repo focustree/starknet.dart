@@ -1,3 +1,4 @@
+export 'src/exchange_rates/exchange_rates.dart';
 export 'src/store/store.dart';
 export 'src/views/views.dart';
 

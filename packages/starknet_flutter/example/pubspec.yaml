@@ -16,6 +16,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  cryptocoins_icons: ^0.3.0
   emoji_picker_flutter: ^1.5.2
   starknet_flutter:
     # When depending on this package from a real application you should use:

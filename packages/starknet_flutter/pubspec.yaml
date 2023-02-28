@@ -11,6 +11,8 @@ dependencies:
   flutter:
     sdk: flutter
   biometric_storage: ^4.1.3
+  http: ^0.13.5
+  intl: ^0.18.0
   pattern_lock: ^2.0.0
   plugin_platform_interface: ^2.0.2
   pointycastle: ^3.6.2
