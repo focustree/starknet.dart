@@ -24,7 +24,7 @@ void main() async {
     result: (result) {
       final ethBalance = Uint256.fromFeltList(result).toBigInt() /
           BigInt.from(10).pow(ethDecimals);
-      print("ETH balance: ${ethBalance}"); // ETH balance: 8.142616847371661
+      print("ETH balance: $ethBalance"); // ETH balance: 8.142616847371661
     },
   );
 }
