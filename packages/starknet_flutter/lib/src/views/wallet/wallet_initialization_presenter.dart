@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import '../../models/wallet.dart';
 import 'wallet_initialization.dart';
 import 'wallet_initialization_viewmodel.dart';
 
@@ -32,7 +33,12 @@ class WalletInitializationPresenter {
     _subscription?.cancel();
   }
 
-  void createWallet() {
-    viewInterface.closeModal();
+  void createWallet(Wallet wallet) {
+    viewInterface.closeModal(wallet);
+  }
+
+  void onWalletRestored(Wallet wallet){
+    viewModel.clearEverything();
+    viewInterface.closeModal(wallet);
   }
 }

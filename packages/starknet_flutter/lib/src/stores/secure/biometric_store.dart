@@ -4,9 +4,8 @@ import 'dart:io';
 import 'package:biometric_storage/biometric_storage.dart';
 import 'package:flutter/foundation.dart';
 import 'package:starknet_flutter/pigeon.dart';
-import 'package:starknet_flutter/src/store/exceptions/biometric_store_not_available_exception.dart';
-import 'package:starknet_flutter/src/store/secure_store.dart';
-import 'package:starknet_flutter/src/store/secure_store_options.dart';
+import 'package:starknet_flutter/src/stores/secure/exceptions/biometric_store_not_available_exception.dart';
+import 'package:starknet_flutter/src/stores/secure/secure_store.dart';
 
 /// Stores secrets encrypted with biometric authentication when available.
 class BiometricStore extends SecureStore {

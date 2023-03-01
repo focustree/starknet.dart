@@ -21,7 +21,7 @@ class EmojiInput extends StatefulWidget {
 }
 
 class _EmojiInputState extends State<EmojiInput> {
-  List<String> _emojiInput = [];
+  final List<String> _emojiInput = [];
 
   @override
   Widget build(BuildContext context) {

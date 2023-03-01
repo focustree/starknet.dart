@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:starknet/starknet.dart';
 import 'package:starknet_flutter/src/views/wallet/routes/create_wallet/choose_network_screen.dart';
 import 'package:starknet_flutter/src/views/wallet/routes/create_wallet/create_seed_screen.dart';
 import 'package:starknet_flutter/src/views/wallet/routes/restore_wallet/protect_wallet_screen.dart';
@@ -7,8 +8,8 @@ import 'package:starknet_flutter/src/views/wallet/routes/restore_wallet/restore_
 
 enum StarknetAccountType {
   braavos("Braavos", 'braavos.svg'),
-  argent_x("Argent X", 'argent_x.svg'),
-  open_zeppelin("OpenZeppelin", 'open_zeppelin.svg');
+  argentX("Argent X", 'argent_x.svg'),
+  openZeppelin("OpenZeppelin", 'open_zeppelin.svg');
 
   final String title;
   final String logoAssetPath;
@@ -31,9 +32,9 @@ class WalletInitializationViewModel {
   String? routeName;
 
   List<String>? seedPhrase;
-  String? privateKey;
   StarknetAccountType? accountType;
   StarknetNetworkType? networkType;
+  Account? account;
 
   String? get title {
     switch (routeName) {
@@ -48,5 +49,13 @@ class WalletInitializationViewModel {
       default:
         return null;
     }
+  }
+
+  /// Set every important variable to null explicitely
+  void clearEverything() {
+    seedPhrase = null;
+    accountType = null;
+    networkType = null;
+    account = null;
   }
 }

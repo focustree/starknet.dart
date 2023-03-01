@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:starknet/starknet.dart';
 import 'package:starknet_flutter/src/views/wallet/routes/restore_wallet/protect_wallet_screen.dart';
 import 'package:starknet_flutter/src/views/wallet/wallet_initialization_presenter.dart';
 import 'package:starknet_flutter/src/views/wallet/wallet_initialization_viewmodel.dart';
@@ -24,7 +25,13 @@ class RestoreWalletScreen extends StatefulWidget {
 
 class _RestoreWalletScreenState extends State<RestoreWalletScreen> {
   String? _seedPhrase;
-  StarknetAccountType? _accountType;
+  StarknetAccountType _accountType = StarknetAccountType.braavos;
+
+  int get _nbWordsInSeedPhrase => (_seedPhrase ?? "")
+      .trim()
+      .split(" ")
+      .where((element) => element.isNotEmpty)
+      .length;
 
   @override
   Widget build(BuildContext context) {
@@ -42,10 +49,15 @@ class _RestoreWalletScreenState extends State<RestoreWalletScreen> {
             ),
             const SizedBox(height: 16),
             TextField(
-              decoration: const InputDecoration(
+              decoration: InputDecoration(
                 hintText: "Enter your recovery phrase",
                 // labelText: "Your recovery phrase",
-                border: OutlineInputBorder(),
+                border: const OutlineInputBorder(),
+                counterText: "$_nbWordsInSeedPhrase/12",
+                counterStyle: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  color: _nbWordsInSeedPhrase == 12 ? Colors.green : Colors.red,
+                ),
               ),
               maxLines: 5,
               style: TextStyle(
@@ -113,35 +125,46 @@ class _RestoreWalletScreenState extends State<RestoreWalletScreen> {
             ),
             const SizedBox(height: 15),
             StarknetButton.plain(
-              onTap: _accountType != null &&
-                      _seedPhrase?.trim().isNotEmpty == true &&
+              onTap: _seedPhrase?.trim().isNotEmpty == true &&
                       _seedPhrase!.trim().split(" ").length == 12
                   ? () async {
+                      // Test if seedPhrase with selected accountType resolve to a smart contract address
                       final seedPhrase = _seedPhrase!.trim().split(" ");
 
-                      // Test if that seedPhrase with that accountType resolve to a smart contract address
-
+                      final provider =
+                          JsonRpcProvider(nodeUri: infuraGoerliTestnetUri);
                       // Derivate the first account
-
-                      bool success = true;
+                      final account = Account.fromMnemonic(
+                        mnemonic: seedPhrase,
+                        provider: provider,
+                        // TODO chainId should be mainnet by default. Setting it to testNet should be an hidden option
+                        chainId: StarknetChainId.testNet,
+                        index: 0,
+                      );
+                      final success = await account.isValid;
                       if (success) {
                         widget.model.seedPhrase = seedPhrase;
-                        widget.model.accountType = _accountType!;
+                        widget.model.accountType = _accountType;
+                        widget.model.account = account;
 
                         // Navigate to the protect screen
-                        Navigator.of(context).pushReplacementNamed(
-                          ProtectWalletScreen.routeName,
-                        );
+                        if (context.mounted) {
+                          Navigator.of(context).pushReplacementNamed(
+                            ProtectWalletScreen.routeName,
+                          );
+                        }
                       } else {
-                        ScaffoldMessenger.of(context).showSnackBar(
-                          SnackBar(
-                            showCloseIcon: true,
-                            closeIconColor: Colors.white,
-                            backgroundColor: Colors.red,
-                            content: Text(
-                                "Could not find your account. Check your seed phrase."),
-                          ),
-                        );
+                        if (context.mounted) {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            const SnackBar(
+                              showCloseIcon: true,
+                              closeIconColor: Colors.white,
+                              backgroundColor: Colors.red,
+                              content: Text(
+                                  "Could not find your account. Check your seed phrase."),
+                            ),
+                          );
+                        }
                       }
                     }
                   : null,
