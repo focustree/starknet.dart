@@ -983,7 +983,7 @@
             "pedersen",
             "range_check"
         ],
-        "compiler_version": "0.10.1",
+        "compiler_version": "0.10.3",
         "data": [
             "0x40780017fff7fff",
             "0x1",
@@ -19553,6 +19553,18 @@
                 "type": "const",
                 "value": 2792084853
             },
+            "openzeppelin.utils.constants.library.IERC1155_ID": {
+                "type": "const",
+                "value": 3652614694
+            },
+            "openzeppelin.utils.constants.library.IERC1155_METADATA_ID": {
+                "type": "const",
+                "value": 243872796
+            },
+            "openzeppelin.utils.constants.library.IERC1155_RECEIVER_ID": {
+                "type": "const",
+                "value": 1310921440
+            },
             "openzeppelin.utils.constants.library.IERC165_ID": {
                 "type": "const",
                 "value": 33540519
@@ -19576,6 +19588,14 @@
             "openzeppelin.utils.constants.library.INVALID_ID": {
                 "type": "const",
                 "value": 4294967295
+            },
+            "openzeppelin.utils.constants.library.ON_ERC1155_BATCH_RECEIVED_SELECTOR": {
+                "type": "const",
+                "value": 3155786881
+            },
+            "openzeppelin.utils.constants.library.ON_ERC1155_RECEIVED_SELECTOR": {
+                "type": "const",
+                "value": 4063915617
             },
             "openzeppelin.utils.constants.library.TRANSACTION_VERSION": {
                 "type": "const",
