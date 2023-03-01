@@ -30,10 +30,33 @@ class CompiledContract with _$CompiledContract {
     );
   }
 
-  /// Return program encoded as Python json.dumps
-  String encode() {
+  Map<String, Object?> _filtering(Map<String, Object?> program) {
     final new_program = Map.of(program);
-    new_program.remove("attributes");
+    if ((new_program["attributes"] as List<Object?>).isEmpty) {
+      // Remove attributes field from raw dictionary, for hash backward compatibility of
+      // contracts deployed prior to adding this feature.
+      new_program.remove("attributes");
+    } else {
+      // Remove accessible_scopes and flow_tracking_data fields from raw dictionary, for hash
+      // backward compatibility of contracts deployed prior to adding this feature.
+      for (Map<String, Object?> attr
+          in (new_program["attributes"] as List<dynamic>)) {
+        if ((attr["accessible_scopes"] as List<Object?>).isEmpty) {
+          attr.remove("accessible_scopes");
+        }
+        if (attr.containsKey("flow") &&
+            ((attr["flow"] as List<Object?>).isEmpty)) {
+          attr.remove("flow");
+        }
+      }
+    }
+    return new_program;
+  }
+
+  /// Return program filtered and encoded as Python json.dumps
+  String encode() {
+    final new_program = _filtering(program);
+
     final encoded =
         CompiledContractJsonEncoder(filterRuntimeType: false).convert({
       "abi": abi,
@@ -71,9 +94,11 @@ class CompiledContract with _$CompiledContract {
   /// Compute hash for builtins
   /// https://docs.starknet.io/documentation/architecture_and_concepts/Contracts/contract-hash/
   BigInt builtinsHash() {
-    return computeHashOnElements((program["builtins"] as List)
-        .map((e) => Felt.fromString(e).toBigInt())
-        .toList());
+    return computeHashOnElements(
+      (program["builtins"] as List)
+          .map((e) => Felt.fromString(e).toBigInt())
+          .toList(),
+    );
   }
 
   /// Compute program hash
@@ -86,9 +111,11 @@ class CompiledContract with _$CompiledContract {
   /// Compute bytecode hash
   /// https://docs.starknet.io/documentation/architecture_and_concepts/Contracts/contract-hash/
   BigInt byteCodeHash() {
-    return computeHashOnElements((program["data"] as List)
-        .map((e) => Felt.fromHexString(e).toBigInt())
-        .toList());
+    return computeHashOnElements(
+      (program["data"] as List)
+          .map((e) => Felt.fromHexString(e).toBigInt())
+          .toList(),
+    );
   }
 
   /// Compute contract class hash
@@ -315,8 +342,11 @@ abstract class _JsonStringifier {
       }
       _removeSeen(object);
     } catch (e) {
-      throw JsonUnsupportedObjectError(object,
-          cause: e, partialResult: _partialResult);
+      throw JsonUnsupportedObjectError(
+        object,
+        cause: e,
+        partialResult: _partialResult,
+      );
     }
   }
 
@@ -386,10 +416,12 @@ abstract class _JsonStringifier {
     var keyValueList = List<Object?>.filled(map.length * 2, null);
     var i = 0;
     var allStringKeys = true;
-    Map.fromEntries(map.entries.toList()
-          ..sort((e1, e2) =>
-              (e1.key as String).naturalCompareTo(e2.key as String)))
-        .forEach((key, value) {
+    Map.fromEntries(
+      map.entries.toList()
+        ..sort(
+          (e1, e2) => (e1.key as String).naturalCompareTo(e2.key as String),
+        ),
+    ).forEach((key, value) {
       if (key is! String) {
         allStringKeys = false;
       }
@@ -416,8 +448,9 @@ class _JsonStringStringifier extends _JsonStringifier {
   final StringSink _sink;
 
   _JsonStringStringifier(
-      this._sink, dynamic Function(dynamic object)? _toEncodable)
-      : super(_toEncodable);
+    this._sink,
+    dynamic Function(dynamic object)? _toEncodable,
+  ) : super(_toEncodable);
 
   /// Convert object to a string.
   ///
@@ -429,7 +462,10 @@ class _JsonStringStringifier extends _JsonStringifier {
   /// for each indentation level. It should only contain valid JSON whitespace
   /// characters (space, tab, carriage return or line feed).
   static String stringify(
-      Object? object, dynamic toEncodable(dynamic object)?, String? indent) {
+    Object? object,
+    dynamic toEncodable(dynamic object)?,
+    String? indent,
+  ) {
     var output = StringBuffer();
     printOn(object, output, toEncodable, indent);
     return output.toString();
@@ -438,8 +474,12 @@ class _JsonStringStringifier extends _JsonStringifier {
   /// Convert object to a string, and write the result to the [output] sink.
   ///
   /// The result is written piecemally to the sink.
-  static void printOn(Object? object, StringSink output,
-      dynamic toEncodable(dynamic o)?, String? indent) {
+  static void printOn(
+    Object? object,
+    StringSink output,
+    dynamic toEncodable(dynamic o)?,
+    String? indent,
+  ) {
     _JsonStringifier stringifier;
     stringifier = _JsonStringStringifier(output, toEncodable);
     stringifier.writeObject(object);
