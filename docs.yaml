@@ -8,6 +8,8 @@ anchors:
 sidebar:
   - - Getting Started
     - "/"
+  - - Provider
+    - "/provider"
   - - Advanced
     - - - Reference API
         - "/reference"
