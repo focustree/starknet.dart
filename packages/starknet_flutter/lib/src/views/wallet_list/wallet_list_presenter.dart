@@ -21,6 +21,7 @@ class WalletListPresenter {
   }
 
   void loadWallets() {
+    // TODO: data is mocked for now
     viewModel.wallets = [
       Wallet(
         accountType: StarknetAccountType.argent_x,

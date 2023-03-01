@@ -9,7 +9,9 @@ import 'wallet_list_presenter.dart';
 import 'wallet_list_viewmodel.dart';
 
 class StarknetWalletList {
-  static Future<AssociatedWallet?> showInitializationModal(BuildContext context) {
+  static Future<AssociatedWallet?> showInitializationModal(
+    BuildContext context,
+  ) {
     // TODO: send configuration
     return showBarModalBottomSheet<AssociatedWallet?>(
       context: context,
@@ -68,32 +70,49 @@ class _WalletListPageState extends State<WalletListPage>
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
+            // TODO: added in next PR
             WalletListAppBar(
-              onEditPressed: () {
-                // TODO:
-              },
-            ),
+                // onEditPressed: () {
+                // },
+                ),
+            const SizedBox(height: 7),
             Flexible(
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   Flexible(
-                    child: ListView.separated(
-                      shrinkWrap: true,
-                      itemBuilder: (context, index) {
-                        final wallet = model.wallets[index];
-                        return WalletCell(
-                          wallet: wallet,
-                        );
-                      },
-                      separatorBuilder: (context, index) {
-                        return const SizedBox(height: 10);
-                      },
-                      itemCount: model.wallets.length,
+                    child: AnimatedSwitcher(
+                      duration: const Duration(milliseconds: 600),
+                      child: model.wallets.isNotEmpty
+                          ? ListView.separated(
+                              shrinkWrap: true,
+                              itemBuilder: (context, index) {
+                                final wallet = model.wallets[index];
+                                return WalletCell(
+                                  wallet: wallet,
+                                );
+                              },
+                              separatorBuilder: (context, index) {
+                                return const SizedBox(height: 10);
+                              },
+                              itemCount: model.wallets.length,
+                            )
+                          : const Padding(
+                              padding: EdgeInsets.symmetric(vertical: 30),
+                              child: Text(
+                                'No wallets added yet',
+                                style: TextStyle(
+                                  color: Colors.grey,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                            ),
                     ),
                   ),
                   StarknetButton.text(
-                    onTap: () {},
+                    onTap: () {
+                      // TODO: added in next PR
+                    },
                     text: 'Add another wallet',
                     textStyle: TextStyle(
                       color: Theme.of(context).primaryColor,
