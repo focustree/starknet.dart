@@ -56,4 +56,8 @@ class StarknetApi : NSObject, StarknetInterface {
       completion(.failure(error))
     }
   }
+  
+  func biometryAvailable() throws -> Bool {
+    return AuthenticationUtil.biometryAvailable()
+  }
 }

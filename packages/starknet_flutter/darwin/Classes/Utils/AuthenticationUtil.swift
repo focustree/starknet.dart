@@ -22,4 +22,15 @@ struct AuthenticationUtil {
     sema.wait()
     return success
   }
+  
+  static func biometryAvailable() -> Bool {
+    let context = LAContext()
+    var error: NSError?
+    let biometryAvailable = context.canEvaluatePolicy(
+      .deviceOwnerAuthenticationWithBiometrics,
+      error: &error
+    )
+    
+    return (biometryAvailable && error == nil)
+  }
 }
