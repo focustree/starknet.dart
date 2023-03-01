@@ -1,17 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
-import 'package:starknet_flutter/src/views/wallet/wallet_initialization_observer.dart';
 import 'package:starknet_flutter/src/views/wallet/routes/welcome/wallet_welcome_view.dart';
+import 'package:starknet_flutter/src/views/wallet/wallet_initialization_observer.dart';
 import 'package:starknet_flutter/src/views/wallet/wallet_initialization_router.dart';
 import 'package:starknet_flutter/src/views/widgets/bouncing_button.dart';
 
+import '../../models/wallet.dart';
 import 'wallet_initialization_presenter.dart';
 import 'wallet_initialization_viewmodel.dart';
 
 class StarknetWallet {
-  static Future showInitializationModal(BuildContext context) {
+  static Future<Wallet?> showInitializationModal(BuildContext context) {
     // TODO: send configuration
-    return showBarModalBottomSheet<String?>(
+    return showBarModalBottomSheet<Wallet?>(
       context: context,
       builder: (context) {
         return const WalletInitializationPage();
@@ -22,8 +23,11 @@ class StarknetWallet {
 
 abstract class WalletInitializationView {
   void refresh();
-  void closeModal();
+
+  void closeModal(Wallet? wallet);
+
   void goBack();
+
   Future navigateToSubRoute(String routeName);
 }
 
@@ -33,6 +37,7 @@ class WalletInitializationArguments {
 
 class WalletInitializationPage extends StatefulWidget {
   final WalletInitializationArguments? args;
+
   const WalletInitializationPage({
     Key? key,
     this.args,
@@ -74,13 +79,15 @@ class _WalletInitializationPageState extends State<WalletInitializationPage>
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
-        title: model.title != null ? Text(
-          model.title!,
-          style: TextStyle(
-            color: Theme.of(context).colorScheme.onSurface,
-            fontSize: 16,
-          ),
-        ) : const SizedBox.shrink(),
+        title: model.title != null
+            ? Text(
+                model.title!,
+                style: TextStyle(
+                  color: Theme.of(context).colorScheme.onSurface,
+                  fontSize: 16,
+                ),
+              )
+            : const SizedBox.shrink(),
         leading: AnimatedSwitcher(
           duration: const Duration(milliseconds: 300),
           child: model.routeName == WalletWelcomeView.routeName
@@ -118,8 +125,8 @@ class _WalletInitializationPageState extends State<WalletInitializationPage>
   void refresh() => setState(() {});
 
   @override
-  void closeModal() {
-    Navigator.of(context).pop();
+  void closeModal(Wallet? wallet) {
+    Navigator.of(context).pop(wallet);
   }
 
   @override

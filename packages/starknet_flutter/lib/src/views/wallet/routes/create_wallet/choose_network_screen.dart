@@ -3,6 +3,8 @@ import 'package:starknet_flutter/src/views/wallet/wallet_initialization_presente
 import 'package:starknet_flutter/src/views/wallet/wallet_initialization_viewmodel.dart';
 import 'package:starknet_flutter/src/views/widgets/starknet_button.dart';
 
+import '../../../../models/wallet.dart';
+
 class ChooseNetworkScreen extends StatelessWidget {
   static const routeName = '/choose_network';
 
@@ -30,7 +32,13 @@ class ChooseNetworkScreen extends StatelessWidget {
               StarknetButton.plain(
                 onTap: () {
                   model.networkType = StarknetNetworkType.goerli;
-                  presenter.createWallet();
+                  // TODO Create a real wallet
+                  presenter.createWallet(
+                    Wallet(
+                      name: "Wallet 1",
+                      order: 0,
+                    ),
+                  );
                 },
                 text: 'StarkNet Goerli Alpha',
               ),
@@ -38,7 +46,13 @@ class ChooseNetworkScreen extends StatelessWidget {
               StarknetButton.plain(
                 onTap: () {
                   model.networkType = StarknetNetworkType.mainnet;
-                  presenter.createWallet();
+                  // TODO Create a real wallet
+                  presenter.createWallet(
+                    Wallet(
+                      name: "Wallet 1",
+                      order: 0,
+                    ),
+                  );
                 },
                 text: 'StarkNet Mainnet Alpha',
               ),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:starknet/starknet.dart';
 import 'package:starknet_flutter/src/views/wallet/wallet_initialization_presenter.dart';
 import 'package:starknet_flutter/src/views/wallet/wallet_initialization_viewmodel.dart';
 import 'package:starknet_flutter/src/views/widgets/starknet_button.dart';
@@ -29,7 +30,7 @@ class ProtectWalletScreen extends StatelessWidget {
             ),
             const SizedBox(height: 32),
             FutureBuilder(
-              future: SecureStore.get(),
+              future: StarknetStore.secure(),
               builder: (context, snapshot) {
                 if (snapshot.hasData) {
                   return FutureBuilder(
@@ -42,16 +43,37 @@ class ProtectWalletScreen extends StatelessWidget {
                           ),
                           text: 'Protect my wallet with biometric',
                           onTap: () async {
-                            // Store seed phrase and private key
+                            // Create wallet and account
+                            final wallet = Wallet(
+                              name: "Wallet 1",
+                              order: 0,
+                            );
+                            final account = PublicAccount.from(
+                              account: model.account!,
+                              walletId: wallet.walletId,
+                            );
+
+                            final publicStore = StarknetStore.public();
+                            // First store the account in the public store
+                            await publicStore.storeAccount(account);
+                            // Now, add this account in the previously created wallet
+                            wallet.accounts.add(account);
+                            // Finally, store the wallet (which now contains the account)
+                            await publicStore.storeWallet(wallet);
+
+                            // Store seed phrase and private key securely
                             await biometric.storeSeedPhrase(
-                              id: "uuid1",
+                              id: wallet.walletId,
                               seedPhrase: model.seedPhrase!,
                             );
-                            // TODO Store private key
+                            await biometric.storePrivateKey(
+                              id: account.privateKeyId,
+                              privateKey: model.account!.signer.privateKey
+                                  .toBigInt()
+                                  .toUint8List(),
+                            );
 
-                            // Store uuids into hive or similar
-
-                            // TODO Navigate to home screen
+                            presenter.onWalletRestored(wallet);
                           },
                         );
                       },

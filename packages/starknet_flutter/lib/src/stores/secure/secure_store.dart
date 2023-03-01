@@ -4,13 +4,16 @@ import 'dart:io';
 
 import 'package:biometric_storage/biometric_storage.dart';
 import 'package:flutter/foundation.dart';
-import 'package:starknet_flutter/src/store/biometric_store.dart';
-import 'package:starknet_flutter/src/store/password_store.dart';
-import 'package:starknet_flutter/src/store/secure_store_options.dart';
+import 'package:starknet_flutter/src/stores/starknet_store.dart';
 
-import 'exceptions/exceptions.dart';
+export 'biometric_store.dart';
+export 'exceptions/exceptions.dart';
+export 'password_store.dart';
+export 'secure_store.dart';
+export 'secure_store_options.dart';
 
-abstract class SecureStore {
+
+abstract class SecureStore extends StarknetStore {
   final _privateKeyPrefix = "starknetPrivateKey";
   final _seedPhrasePrefix = "starknetSeedPhrase";
 

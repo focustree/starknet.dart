@@ -20,6 +20,8 @@ dependencies:
   emoji_picker_flutter: ^1.5.2
   google_fonts: ^4.0.3
   intl: ^0.18.0
+  starknet:
+    path: ../../starknet
   starknet_flutter:
     # When depending on this package from a real application you should use:
     #   starknet_flutter: ^x.y.z
