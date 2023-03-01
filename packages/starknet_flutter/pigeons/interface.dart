@@ -10,4 +10,6 @@ abstract class StarknetInterface {
 
   @async
   Uint8List getSecret(String key);
+
+  bool biometryAvailable();
 }
