@@ -7,10 +7,12 @@ import 'package:starknet/src/presets/udc.g.dart';
 import 'package:starknet/starknet.dart';
 
 enum AccountSupportedTxVersion {
+  @Deprecated("Transaction version 0 will be removed with Starknet alpha v0.11")
   v0,
   v1,
 }
 
+/// Account abstraction class
 class Account {
   Provider provider;
   Signer signer;
@@ -67,6 +69,7 @@ class Account {
     ));
   }
 
+  /// Call account contract `__execute__` with given [functionCalls]
   Future<InvokeTransactionResponse> execute({
     required List<FunctionCall> functionCalls,
     Felt? maxFee,
@@ -118,6 +121,7 @@ class Account {
     }
   }
 
+  /// Declares a [compiledContract]
   Future<DeclareTransactionResponse> declare({
     required CompiledContract compiledContract,
     Felt? maxFee,
@@ -130,6 +134,8 @@ class Account {
       compiledContract: compiledContract,
       senderAddress: accountAddress,
       chainId: chainId,
+      nonce: nonce,
+      maxFee: maxFee,
     );
 
     return provider.addDeclareTransaction(
@@ -146,6 +152,10 @@ class Account {
     );
   }
 
+  /// Deploys an instance of [classHash] with given [salt], [unique] and [calldata]
+  ///
+  /// Contract is deployed with UDC: https://docs.openzeppelin.com/contracts-cairo/0.6.1/udc
+  /// Returns deployed contract address
   Future<Felt?> deploy({
     required Felt classHash,
     Felt? salt,
@@ -165,9 +175,13 @@ class Account {
     return getDeployedContractAddress(txReceipt);
   }
 
+  /// Get token balance of account
   Future<Uint256> balance() async =>
       ERC20(account: this, address: ethAddress).balanceOf(accountAddress);
 
+  /// Sends [amount] of token to [recipient]
+  ///
+  /// Returns transaction hash
   Future<String> send({
     required Felt recipient,
     required Uint256 amount,
@@ -192,6 +206,10 @@ class Account {
     return accountClassHash != Felt.fromInt(0);
   }
 
+  /// Deploy an account with given [signer], [provider] and [constructorCalldata]
+  ///
+  /// Default value for [classHash] is [devnetOpenZeppelinAccountClassHash]
+  /// Default value for [contractAddressSalt] is 42
   static Future<DeployAccountTransactionResponse> deployAccount({
     required Signer signer,
     required Provider provider,
@@ -206,7 +224,7 @@ class Account {
       error: (error) => StarknetChainId.testNet,
     );
 
-    classHash = classHash ?? openZeppelinAccountClassHash;
+    classHash = classHash ?? devnetOpenZeppelinAccountClassHash;
     maxFee = maxFee ?? defaultMaxFee;
     nonce = nonce ?? defaultNonce;
     contractAddressSalt = contractAddressSalt ?? Felt.fromInt(42);
@@ -216,6 +234,8 @@ class Account {
       classHash: classHash,
       constructorCalldata: constructorCalldata,
       chainId: chainId,
+      nonce: nonce,
+      maxFee: maxFee,
     );
 
     return provider.addDeployAccountTransaction(
@@ -232,6 +252,9 @@ class Account {
     );
   }
 
+  /// Retrieves an account from given [mnemonic], [provider] and [chainId]
+  ///
+  /// Default [accountDerivation] is [BraavosAccountDerivation]
   factory Account.fromMnemonic({
     required List<String> mnemonic,
     required Provider provider,
@@ -274,10 +297,11 @@ Account getAccount({
     provider: provider,
     signer: signer,
     accountAddress: accountAddress,
-    chainId: StarknetChainId.testNet,
+    chainId: chainId,
   );
 }
 
+/// Get deployed contract address from [txReceipt]
 Felt? getDeployedContractAddress(GetTransactionReceipt txReceipt) {
   return txReceipt.when(
     result: (r) {
