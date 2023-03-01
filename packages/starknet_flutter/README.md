@@ -11,6 +11,9 @@ dependencies:
   starknet_flutter: [version]
 ```
 
+Then, run `flutter pub get`.
+
+
 You need to `init()` `starknet_flutter` before using it. A good place to do this in your `main.dart`:
 ```dart
 Future<void> main() async {
@@ -18,13 +21,6 @@ Future<void> main() async {
   runApp(const StarknetDemoApp());
 }
 ```
-    
-```dart
-await StarknetFlutter.init();
-```
-
-
-Then, run `flutter pub get`.
 
 ## Platform setup
 
