@@ -146,7 +146,6 @@ class Account {
           contractClass: compiledContract.compress(),
           senderAddress: accountAddress,
           signature: signature,
-          type: 'DECLARE',
         ),
       ),
     );
@@ -313,10 +312,20 @@ Felt? getDeployedContractAddress(GetTransactionReceipt txReceipt) {
   );
 }
 
+/// Account derivation interface
 abstract class AccountDerivation {
+  /// Derive [Signer] from given [mnemonic] and [index]
   Signer deriveSigner({required List<String> mnemonic, int index = 0});
+
+  /// Returns expected constructor call data
+  List<Felt> constructorCalldata({required Felt publicKey});
+
+  /// Returns account address from given [publicKey]
   Felt computeAddress({required Felt publicKey});
 
+  /// To ensure that private key is less that [pedersenParams.ecOrder]
+  ///
+  /// See https://community.starknet.io/t/account-keys-and-addresses-derivation-standard/1230
   Uint8List grindKey(Uint8List keySeed) {
     final BigInt keyValLimit = pedersenParams.ecOrder;
     final BigInt sha256MaxDigest = BigInt.parse(
@@ -343,6 +352,42 @@ abstract class AccountDerivation {
   }
 }
 
+class OpenzeppelinAccountDerivation extends AccountDerivation {
+  final Felt classHash;
+  final String pathPrefix = "m/44'/9004'/0'/0";
+
+  OpenzeppelinAccountDerivation({required this.classHash});
+
+  @override
+  Signer deriveSigner({required List<String> mnemonic, int index = 0}) {
+    final seed = bip39.mnemonicToSeed(mnemonic.join(" "));
+    final nodeFromSeed = bip32.BIP32.fromSeed(seed);
+    final child = nodeFromSeed.derivePath('$pathPrefix/$index');
+    Uint8List key = child.privateKey!;
+    key = grindKey(key);
+    final privateKey = Felt(bytesToBigInt(key));
+    return Signer(privateKey: privateKey);
+  }
+
+  @override
+  Felt computeAddress({required Felt publicKey}) {
+    final calldata = constructorCalldata(publicKey: publicKey);
+    final salt = publicKey;
+    final accountAddress = Contract.computeAddress(
+      classHash: classHash,
+      calldata: calldata,
+      salt: salt,
+    );
+    return accountAddress;
+  }
+
+  @override
+  List<Felt> constructorCalldata({required Felt publicKey}) {
+    return [publicKey];
+  }
+}
+
+/// Account derivation used by Braavos account
 class BraavosAccountDerivation extends AccountDerivation {
   final Provider provider;
   final Felt chainId;
@@ -352,6 +397,8 @@ class BraavosAccountDerivation extends AccountDerivation {
   final classHash = Felt.fromHexString(
     "0x03131fa018d520a037686ce3efddeab8f28895662f019ca3ca18a626650f7d1e",
   );
+
+  /// FIXME: implementation address should be retrieved at runtime
   final implementationAddress = Felt.fromHexString(
     "0x5aa23d5bb71ddaa783da7ea79d405315bafa7cf0387a74f4593578c3e9e6570",
   );
@@ -376,14 +423,18 @@ class BraavosAccountDerivation extends AccountDerivation {
   }
 
   @override
-  Felt computeAddress({required Felt publicKey}) {
-    final initializeData = [publicKey];
-    final calldata = [
+  List<Felt> constructorCalldata({required Felt publicKey}) {
+    return [
       implementationAddress,
       initializerSelector,
-      Felt.fromInt(initializeData.length),
-      ...initializeData,
+      Felt.fromInt(1),
+      publicKey
     ];
+  }
+
+  @override
+  Felt computeAddress({required Felt publicKey}) {
+    final calldata = constructorCalldata(publicKey: publicKey);
     final salt = publicKey;
     final accountAddress = Contract.computeAddress(
       classHash: classHash,
