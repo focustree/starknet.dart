@@ -204,7 +204,7 @@ class _$_DeployAccountTransactionV1 implements _DeployAccountTransactionV1 {
       required final List<Felt> constructorCalldata,
       required this.classHash,
       this.version = '0x01',
-      this.type = 'DEPOY_ACCOUNT'})
+      this.type = 'DEPLOY_ACCOUNT'})
       : _signature = signature,
         _constructorCalldata = constructorCalldata;
 
