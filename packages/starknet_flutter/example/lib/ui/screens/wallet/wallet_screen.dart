@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:starknet_flutter/starknet_flutter.dart';
-import 'package:starknet_flutter_example/ui/screens/wallet/widgets/account_balance.dart';
-import 'package:starknet_flutter_example/ui/screens/wallet/widgets/collectibles.dart';
-import 'package:starknet_flutter_example/ui/screens/wallet/widgets/dapps.dart';
-import 'package:starknet_flutter_example/ui/screens/wallet/widgets/swap.dart';
+import 'package:starknet_flutter_example/ui/screens/wallet/tabs/account_balance/account_balance.dart';
+import 'package:starknet_flutter_example/ui/screens/wallet/tabs/collectibles.dart';
+import 'package:starknet_flutter_example/ui/screens/wallet/tabs/dapps.dart';
+import 'package:starknet_flutter_example/ui/screens/wallet/tabs/swap.dart';
 
 class WalletScreen extends StatefulWidget {
   static const routeName = '/wallet';
