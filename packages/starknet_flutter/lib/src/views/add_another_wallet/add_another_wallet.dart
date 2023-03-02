@@ -12,13 +12,20 @@ class StarknetAddAnotherWallet {
   static Future<SelectedAccount?> showAddAnotherWalletModal(
     BuildContext context,
   ) async {
-    return showBarModalBottomSheet<SelectedAccount?>(
+    // AddAnotherWalletPage might need to show an other bottom modal sheet at
+    // some point. In that case, we want to close the first one before showing
+    // it.
+    // The first pop() call will be resolved to close the first modal sheet
+    // THEN the second modal will be shown by calling the returned function.
+    final then =
+        await showBarModalBottomSheet<Future<SelectedAccount?> Function()>(
       context: context,
       barrierColor: Colors.black.withOpacity(0.6),
       builder: (context) {
         return const AddAnotherWalletPage();
       },
     );
+    return then?.call();
   }
 }
 
@@ -29,7 +36,7 @@ abstract class AddAnotherWalletView {
     String? initialRoute,
   });
 
-  void closeModal(Future<SelectedAccount?> then);
+  void closeModal(Future<SelectedAccount?> Function() then);
 }
 
 class AddAnotherWalletArguments {
@@ -119,19 +126,14 @@ class _AddAnotherWalletPageState extends State<AddAnotherWalletPage>
   void openWalletInitializationModal({
     String? initialRoute,
   }) {
-    closeModal(StarknetWallet.showInitializationModal(
-      context,
-      initialRoute: initialRoute,
-    ));
+    closeModal(() async => await StarknetWallet.showInitializationModal(
+          context,
+          initialRoute: initialRoute,
+        ));
   }
 
   @override
-  void closeModal(Future<SelectedAccount?> then) {
-    // Navigator.of(context).pop();
-    then.then((value) {
-      if (value != null) {
-        Navigator.of(context).pop(value);
-      }
-    });
+  void closeModal(Future<SelectedAccount?> Function() then) {
+    Navigator.pop(context, then);
   }
 }

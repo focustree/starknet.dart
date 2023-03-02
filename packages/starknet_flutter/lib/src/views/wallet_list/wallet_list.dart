@@ -15,19 +15,23 @@ class StarknetWalletList {
     BuildContext context,
   ) async {
     // TODO: send style configuration
-    return await showBarModalBottomSheet<Future<SelectedAccount>?>(
+    final then =
+        await showBarModalBottomSheet<Future<SelectedAccount?> Function()>(
       context: context,
       barrierColor: Colors.black.withOpacity(0.6),
       builder: (context) {
         return const WalletListPage();
       },
     );
+    return then?.call();
   }
 }
 
 abstract class WalletListView {
   void refresh();
-  void closeModal();
+
+  void closeModal(Future<SelectedAccount?> Function() then);
+
   Future openAddAnotherWalletModal();
 }
 
@@ -132,8 +136,7 @@ class _WalletListPageState extends State<WalletListPage>
                   const SizedBox(height: 5),
                   StarknetButton.text(
                     onTap: () {
-                      closeModal();
-                      openAddAnotherWalletModal();
+                      closeModal(() => openAddAnotherWalletModal());
                     },
                     text: 'Add another wallet',
                     textStyle: TextStyle(
@@ -159,8 +162,8 @@ class _WalletListPageState extends State<WalletListPage>
   void refresh() => setState(() {});
 
   @override
-  void closeModal() {
-    Navigator.pop(context);
+  void closeModal(Future<SelectedAccount?> Function() then) {
+    Navigator.pop(context, then);
   }
 
   @override
