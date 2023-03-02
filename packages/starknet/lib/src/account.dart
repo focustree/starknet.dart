@@ -293,7 +293,7 @@ abstract class AccountDerivation {
   Signer deriveSigner({required List<String> mnemonic, int index = 0});
   Felt computeAddress({required Felt publicKey});
 
-  Uint8List grindKey(Uint8List key) {
+  Uint8List grindKey(Uint8List keySeed) {
     final BigInt keyValLimit = pedersenParams.ecOrder;
     final BigInt sha256MaxDigest = BigInt.parse(
       '10000000000000000000000000000000000000000000000000000000000000000',
@@ -302,10 +302,10 @@ abstract class AccountDerivation {
 
     final maxAllowed = sha256MaxDigest - (sha256MaxDigest % keyValLimit);
     int index = 0;
-    key = _hashKeyWithIndex(key, index);
+    Uint8List key = _hashKeyWithIndex(keySeed, index);
     index++;
     while (bytesToBigInt(key) > maxAllowed) {
-      key = _hashKeyWithIndex(key, index);
+      key = _hashKeyWithIndex(keySeed, index);
       index++;
     }
     final result = bytesToBigInt(key) % keyValLimit;
