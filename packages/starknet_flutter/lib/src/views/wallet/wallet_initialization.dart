@@ -9,12 +9,19 @@ import 'wallet_initialization_presenter.dart';
 import 'wallet_initialization_viewmodel.dart';
 
 class StarknetWallet {
-  static Future showInitializationModal(BuildContext context) {
+  static Future showInitializationModal(
+    BuildContext context, {
+    String? initialRoute,
+  }) {
     // TODO: send configuration
     return showBarModalBottomSheet<String?>(
       context: context,
       builder: (context) {
-        return const WalletInitializationPage();
+        return WalletInitializationPage(
+          args: WalletInitializationArguments(
+            initialRoute: initialRoute,
+          ),
+        );
       },
     );
   }
@@ -28,7 +35,11 @@ abstract class WalletInitializationView {
 }
 
 class WalletInitializationArguments {
-  WalletInitializationArguments();
+  String? initialRoute;
+
+  WalletInitializationArguments({
+    this.initialRoute,
+  });
 }
 
 class WalletInitializationPage extends StatefulWidget {
@@ -74,16 +85,18 @@ class _WalletInitializationPageState extends State<WalletInitializationPage>
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
-        title: model.title != null ? Text(
-          model.title!,
-          style: TextStyle(
-            color: Theme.of(context).colorScheme.onSurface,
-            fontSize: 16,
-          ),
-        ) : const SizedBox.shrink(),
+        title: model.title != null
+            ? Text(
+                model.title!,
+                style: TextStyle(
+                  color: Theme.of(context).colorScheme.onSurface,
+                  fontSize: 16,
+                ),
+              )
+            : const SizedBox.shrink(),
         leading: AnimatedSwitcher(
           duration: const Duration(milliseconds: 300),
-          child: model.routeName == WalletWelcomeView.routeName
+          child: isRootPage
               ? const SizedBox.shrink()
               : BouncingWidget(
                   onTap: goBack,
@@ -102,6 +115,8 @@ class _WalletInitializationPageState extends State<WalletInitializationPage>
       body: SafeArea(
         child: Navigator(
           key: _navigatorKey,
+          initialRoute:
+              widget.args?.initialRoute ?? WalletWelcomeView.routeName,
           observers: [observer],
           onGenerateRoute: (settings) =>
               WalletInitializationRouter.onGenerateRoute(
@@ -113,6 +128,10 @@ class _WalletInitializationPageState extends State<WalletInitializationPage>
       ),
     );
   }
+
+  bool get isRootPage =>
+      model.routeName == WalletWelcomeView.routeName ||
+      model.routeName == widget.args?.initialRoute;
 
   @override
   void refresh() => setState(() {});

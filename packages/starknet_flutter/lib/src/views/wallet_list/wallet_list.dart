@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
+import 'package:starknet_flutter/src/views/add_another_wallet/add_another_wallet.dart';
 import 'package:starknet_flutter/src/views/wallet_list/widgets/appbar.dart';
 import 'package:starknet_flutter/src/views/wallet_list/widgets/wallet_cell.dart';
 import 'package:starknet_flutter/src/views/wallet_types.dart';
@@ -15,6 +16,7 @@ class StarknetWalletList {
     // TODO: send configuration
     return showBarModalBottomSheet<AssociatedWallet?>(
       context: context,
+      barrierColor: Colors.black.withOpacity(0.6),
       builder: (context) {
         return const WalletListPage();
       },
@@ -24,6 +26,8 @@ class StarknetWalletList {
 
 abstract class WalletListView {
   void refresh();
+  void closeModal();
+  Future openAddAnotherWalletModal();
 }
 
 class WalletListArguments {
@@ -109,9 +113,11 @@ class _WalletListPageState extends State<WalletListPage>
                             ),
                     ),
                   ),
+                  const SizedBox(height: 5),
                   StarknetButton.text(
                     onTap: () {
-                      // TODO: added in next PR
+                      closeModal();
+                      openAddAnotherWalletModal();
                     },
                     text: 'Add another wallet',
                     textStyle: TextStyle(
@@ -135,4 +141,14 @@ class _WalletListPageState extends State<WalletListPage>
 
   @override
   void refresh() => setState(() {});
+  
+  @override
+  void closeModal() {
+    Navigator.pop(context);
+  }
+  
+  @override
+  Future openAddAnotherWalletModal() {
+    return StarknetAddAnotherWallet.showAddAnotherWalletModal(context);
+  }
 }
