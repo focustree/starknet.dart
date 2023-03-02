@@ -21,6 +21,7 @@ dependencies:
   modal_bottom_sheet: ^3.0.0-pre
   expandable: ^5.0.1
   google_fonts: ^4.0.3
+  animations: ^2.0.7
 
 dev_dependencies:
   flutter_test:
