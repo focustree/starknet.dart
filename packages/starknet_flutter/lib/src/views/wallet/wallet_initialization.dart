@@ -120,8 +120,7 @@ class _WalletInitializationPageState extends State<WalletInitializationPage>
       body: SafeArea(
         child: Navigator(
           key: _navigatorKey,
-          initialRoute:
-              widget.args?.initialRoute ?? WalletWelcomeView.routeName,
+          initialRoute: widget.args?.initialRoute,
           observers: [observer],
           onGenerateRoute: (settings) =>
               WalletInitializationRouter.onGenerateRoute(
@@ -153,6 +152,6 @@ class _WalletInitializationPageState extends State<WalletInitializationPage>
 
   @override
   void goBack() {
-    Navigator.of(_navigatorKey.currentContext!).pop();
+    Navigator.maybePop(_navigatorKey.currentContext!);
   }
 }

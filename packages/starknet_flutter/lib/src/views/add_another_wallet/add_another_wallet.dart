@@ -121,7 +121,7 @@ class _AddAnotherWalletPageState extends State<AddAnotherWalletPage>
       initialRoute: initialRoute,
     );
   }
-  
+
   @override
   void closeModal() {
     Navigator.of(context).pop();
