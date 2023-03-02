@@ -36,6 +36,7 @@ protocol StarknetInterface {
   func storeSecret(key: String, privateKey: FlutterStandardTypedData, completion: @escaping (Result<Void, Error>) -> Void)
   func removeSecret(key: String, completion: @escaping (Result<Void, Error>) -> Void)
   func getSecret(key: String, completion: @escaping (Result<FlutterStandardTypedData, Error>) -> Void)
+  func biometryAvailable() throws -> Bool
 }
 
 /// Generated setup class from Pigeon to handle messages through the `binaryMessenger`.
@@ -94,6 +95,19 @@ class StarknetInterfaceSetup {
       }
     } else {
       getSecretChannel.setMessageHandler(nil)
+    }
+    let biometryAvailableChannel = FlutterBasicMessageChannel(name: "dev.flutter.pigeon.StarknetInterface.biometryAvailable", binaryMessenger: binaryMessenger)
+    if let api = api {
+      biometryAvailableChannel.setMessageHandler { _, reply in
+        do {
+          let result = try api.biometryAvailable()
+          reply(wrapResult(result))
+        } catch {
+          reply(wrapError(error))
+        }
+      }
+    } else {
+      biometryAvailableChannel.setMessageHandler(nil)
     }
   }
 }

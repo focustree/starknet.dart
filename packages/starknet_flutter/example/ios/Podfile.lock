@@ -1,6 +1,8 @@
 PODS:
   - biometric_storage (0.0.1):
     - Flutter
+  - emoji_picker_flutter (0.0.1):
+    - Flutter
   - Flutter (1.0.0)
   - path_provider_foundation (0.0.1):
     - Flutter
@@ -13,6 +15,7 @@ PODS:
 
 DEPENDENCIES:
   - biometric_storage (from `.symlinks/plugins/biometric_storage/ios`)
+  - emoji_picker_flutter (from `.symlinks/plugins/emoji_picker_flutter/ios`)
   - Flutter (from `Flutter`)
   - path_provider_foundation (from `.symlinks/plugins/path_provider_foundation/ios`)
   - shared_preferences_foundation (from `.symlinks/plugins/shared_preferences_foundation/ios`)
@@ -21,6 +24,8 @@ DEPENDENCIES:
 EXTERNAL SOURCES:
   biometric_storage:
     :path: ".symlinks/plugins/biometric_storage/ios"
+  emoji_picker_flutter:
+    :path: ".symlinks/plugins/emoji_picker_flutter/ios"
   Flutter:
     :path: Flutter
   path_provider_foundation:
@@ -32,6 +37,7 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   biometric_storage: 1400f1382af3a4cc2bf05340e13c3d8de873ceb9
+  emoji_picker_flutter: df19dac03a2b39ac667dc8d1da939ef3a9e21347
   Flutter: f04841e97a9d0b0a8025694d0796dd46242b2854
   path_provider_foundation: c68054786f1b4f3343858c1e1d0caaded73f0be9
   shared_preferences_foundation: 986fc17f3d3251412d18b0265f9c64113a8c2472

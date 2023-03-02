@@ -4,6 +4,7 @@ import 'dart:io';
 
 import 'package:biometric_storage/biometric_storage.dart';
 import 'package:flutter/foundation.dart';
+import 'package:starknet_flutter/pigeon.dart';
 import 'package:starknet_flutter/src/store/biometric_store.dart';
 import 'package:starknet_flutter/src/store/password_store.dart';
 import 'package:starknet_flutter/src/store/secure_store_options.dart';
@@ -67,8 +68,7 @@ abstract class SecureStore {
   /// Returns true if the device has biometric capabilities and has them setup.
   static Future<bool> hasBiometricStore() async {
     if (!kIsWeb && (Platform.isIOS || Platform.isMacOS)) {
-      // TODO Using Secure Enclave doesn't mean that we will use biometric authentication for every access
-      return true;
+      return StarknetInterface().biometryAvailable();
     } else {
       final response = await BiometricStorage().canAuthenticate();
       return response == CanAuthenticateResponse.success;
