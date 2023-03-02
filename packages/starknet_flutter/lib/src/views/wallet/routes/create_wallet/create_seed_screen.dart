@@ -33,101 +33,98 @@ class CreateSeedScreen extends StatelessWidget {
       "rocket",
       "space",
     ];
-    return Container(
-      color: Theme.of(context).scaffoldBackgroundColor,
-      child: Padding(
-        padding: const EdgeInsets.all(16),
-        child: Center(
-          child: Column(
-            children: [
-              const Text('Secret Recovery Phrase'),
-              const SizedBox(height: 16),
-              const Text(
-                'Keep this phrase safe and secret. It can be used to recover your wallet.',
-                textAlign: TextAlign.center,
-              ),
-              const SizedBox(height: 16),
-              Flexible(
-                child: ConstrainedBox(
-                  constraints: const BoxConstraints(maxWidth: 400),
-                  child: GridView.builder(
-                    itemCount: words.length,
-                    gridDelegate:
-                        const SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisSpacing: 10,
-                      mainAxisSpacing: 10,
-                      crossAxisCount: 2,
-                      childAspectRatio: (1 / .3),
-                    ),
-                    itemBuilder: (context, index) {
-                      return Container(
-                        padding: const EdgeInsets.symmetric(
-                          horizontal: 20,
-                        ),
-                        decoration: BoxDecoration(
-                          color: Colors.grey[200],
-                          borderRadius: BorderRadius.circular(30),
-                        ),
-                        child: Row(
-                          children: [
-                            Text(
-                              "${index + 1}.",
+    return Padding(
+      padding: const EdgeInsets.all(16),
+      child: Center(
+        child: Column(
+          children: [
+            const Text('Secret Recovery Phrase'),
+            const SizedBox(height: 16),
+            const Text(
+              'Keep this phrase safe and secret. It can be used to recover your wallet.',
+              textAlign: TextAlign.center,
+            ),
+            const SizedBox(height: 16),
+            Flexible(
+              child: ConstrainedBox(
+                constraints: const BoxConstraints(maxWidth: 400),
+                child: GridView.builder(
+                  itemCount: words.length,
+                  gridDelegate:
+                      const SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisSpacing: 10,
+                    mainAxisSpacing: 10,
+                    crossAxisCount: 2,
+                    childAspectRatio: (1 / .3),
+                  ),
+                  itemBuilder: (context, index) {
+                    return Container(
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 20,
+                      ),
+                      decoration: BoxDecoration(
+                        color: Colors.grey[200],
+                        borderRadius: BorderRadius.circular(30),
+                      ),
+                      child: Row(
+                        children: [
+                          Text(
+                            "${index + 1}.",
+                            style: const TextStyle(
+                              color: Colors.grey,
+                              fontSize: 15,
+                            ),
+                            maxLines: 1,
+                            overflow: TextOverflow.ellipsis,
+                          ),
+                          const SizedBox(width: 7),
+                          Expanded(
+                            child: Text(
+                              words[index],
                               style: const TextStyle(
-                                color: Colors.grey,
-                                fontSize: 15,
+                                fontWeight: FontWeight.bold,
                               ),
-                              maxLines: 1,
+                              maxLines: 2,
                               overflow: TextOverflow.ellipsis,
                             ),
-                            const SizedBox(width: 7),
-                            Expanded(
-                              child: Text(
-                                words[index],
-                                style: const TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                ),
-                                maxLines: 2,
-                                overflow: TextOverflow.ellipsis,
-                              ),
-                            ),
-                          ],
-                        ),
-                      );
-                    },
-                  ),
-                ),
-              ),
-              StarknetButton.text(
-                onTap: () {
-                  Clipboard.setData(ClipboardData(text: words.join(' ')))
-                      .then((_) {
-                    ScaffoldMessenger.of(context).showSnackBar(
-                      const SnackBar(
-                        content:
-                            Text("Secret recovery phrase copied to clipboard"),
+                          ),
+                        ],
                       ),
                     );
-                  });
-                },
-                icon: Icon(
-                  Icons.copy,
-                  color: Theme.of(context).primaryColor,
-                ),
-                text: 'Copy to clipboard',
-                textStyle: TextStyle(
-                  color: Theme.of(context).primaryColor,
+                  },
                 ),
               ),
-              const SizedBox(height: 8),
-              StarknetButton.plain(
-                onTap: () {
-                  Navigator.of(context)
-                      .pushNamed(ChooseNetworkScreen.routeName);
-                },
-                text: 'Continue',
+            ),
+            StarknetButton.text(
+              onTap: () {
+                Clipboard.setData(ClipboardData(text: words.join(' ')))
+                    .then((_) {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    const SnackBar(
+                      content:
+                          Text("Secret recovery phrase copied to clipboard"),
+                    ),
+                  );
+                });
+              },
+              icon: Icon(
+                Icons.copy,
+                color: Theme.of(context).primaryColor,
               ),
-            ],
-          ),
+              text: 'Copy to clipboard',
+              textStyle: TextStyle(
+                color: Theme.of(context).primaryColor,
+              ),
+            ),
+            const SizedBox(height: 8),
+            StarknetButton.plain(
+              onTap: () {
+                Navigator.of(context)
+                    .pushNamed(ChooseNetworkScreen.routeName);
+              },
+              text: 'Continue',
+            ),
+          ],
         ),
       ),
     );

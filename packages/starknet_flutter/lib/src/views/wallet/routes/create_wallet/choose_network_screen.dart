@@ -17,33 +17,30 @@ class ChooseNetworkScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: Theme.of(context).scaffoldBackgroundColor,
-      child: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              const Text("Choose your network"),
-              const SizedBox(height: 32),
-              StarknetButton.plain(
-                onTap: () {
-                  model.networkType = StarknetNetworkType.goerli;
-                  presenter.createWallet();
-                },
-                text: 'StarkNet Goerli Alpha',
-              ),
-              const SizedBox(height: 16),
-              StarknetButton.plain(
-                onTap: () {
-                  model.networkType = StarknetNetworkType.mainnet;
-                  presenter.createWallet();
-                },
-                text: 'StarkNet Mainnet Alpha',
-              ),
-            ],
-          ),
+    return Padding(
+      padding: const EdgeInsets.all(16.0),
+      child: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            const Text("Choose your network"),
+            const SizedBox(height: 32),
+            StarknetButton.plain(
+              onTap: () {
+                model.networkType = StarknetNetworkType.goerli;
+                presenter.createWallet();
+              },
+              text: 'StarkNet Goerli Alpha',
+            ),
+            const SizedBox(height: 16),
+            StarknetButton.plain(
+              onTap: () {
+                model.networkType = StarknetNetworkType.mainnet;
+                presenter.createWallet();
+              },
+              text: 'StarkNet Mainnet Alpha',
+            ),
+          ],
         ),
       ),
     );
