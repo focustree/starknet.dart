@@ -15,6 +15,7 @@ dependencies:
   expandable: ^5.0.1
   flutter_svg: ^2.0.2
   functional_listener: ^2.3.1
+  google_fonts: ^4.0.3
   hive: ^2.2.3
   hive_flutter: ^1.1.0
   http: ^0.13.5
