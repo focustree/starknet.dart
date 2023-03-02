@@ -13,9 +13,9 @@ import 'wallet_list_viewmodel.dart';
 class StarknetWalletList {
   static Future<SelectedAccount?> showInitializationModal(
     BuildContext context,
-  ) {
+  ) async {
     // TODO: send style configuration
-    return showBarModalBottomSheet<SelectedAccount?>(
+    return await showBarModalBottomSheet<Future<SelectedAccount>?>(
       context: context,
       barrierColor: Colors.black.withOpacity(0.6),
       builder: (context) {
@@ -164,7 +164,7 @@ class _WalletListPageState extends State<WalletListPage>
   }
 
   @override
-  Future openAddAnotherWalletModal() {
+  Future<SelectedAccount?> openAddAnotherWalletModal() {
     return StarknetAddAnotherWallet.showAddAnotherWalletModal(context);
   }
 }

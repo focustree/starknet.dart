@@ -3,19 +3,19 @@ import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 import 'package:starknet_flutter/src/views/wallet/routes/welcome/wallet_welcome_view.dart';
 import 'package:starknet_flutter/src/views/wallet/wallet_initialization_observer.dart';
 import 'package:starknet_flutter/src/views/wallet/wallet_initialization_router.dart';
+import 'package:starknet_flutter/src/views/wallet_list/wallet_list_viewmodel.dart';
 import 'package:starknet_flutter/src/views/widgets/bouncing_button.dart';
 
-import '../../models/wallet.dart';
 import 'wallet_initialization_presenter.dart';
 import 'wallet_initialization_viewmodel.dart';
 
 class StarknetWallet {
-  static Future<Wallet?> showInitializationModal(
+  static Future<SelectedAccount?> showInitializationModal(
     BuildContext context, {
     String? initialRoute,
   }) {
     // TODO: send configuration
-    return showBarModalBottomSheet<Wallet?>(
+    return showBarModalBottomSheet<SelectedAccount?>(
       context: context,
       builder: (context) {
         return WalletInitializationPage(
@@ -31,7 +31,7 @@ class StarknetWallet {
 abstract class WalletInitializationView {
   void refresh();
 
-  void closeModal(Wallet? wallet);
+  void closeModal(SelectedAccount? selectedAccount);
 
   void goBack();
 
@@ -141,8 +141,8 @@ class _WalletInitializationPageState extends State<WalletInitializationPage>
   void refresh() => setState(() {});
 
   @override
-  void closeModal(Wallet? wallet) {
-    Navigator.of(context).pop(wallet);
+  void closeModal(SelectedAccount? selectedAccount) {
+    Navigator.of(context).pop(selectedAccount);
   }
 
   @override

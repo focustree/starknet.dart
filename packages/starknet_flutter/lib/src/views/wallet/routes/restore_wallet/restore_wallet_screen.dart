@@ -51,11 +51,11 @@ class _RestoreWalletScreenState extends State<RestoreWalletScreen> {
               hintText: "Enter your recovery phrase",
               // labelText: "Your recovery phrase",
               border: const OutlineInputBorder(),
-                counterText: "$_nbWordsInSeedPhrase/12",
-                counterStyle: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  color: _nbWordsInSeedPhrase == 12 ? Colors.green : Colors.red,
-                ),
+              counterText: "$_nbWordsInSeedPhrase/12",
+              counterStyle: TextStyle(
+                fontWeight: FontWeight.bold,
+                color: _nbWordsInSeedPhrase == 12 ? Colors.green : Colors.red,
+              ),
             ),
             maxLines: 5,
             style: TextStyle(
@@ -123,54 +123,53 @@ class _RestoreWalletScreenState extends State<RestoreWalletScreen> {
           ),
           const SizedBox(height: 15),
           StarknetButton.plain(
-            onTap:
-                    _seedPhrase?.trim().isNotEmpty == true &&
+            onTap: _seedPhrase?.trim().isNotEmpty == true &&
                     _seedPhrase!.trim().split(" ").length == 12
-                ? () async {// Test if seedPhrase with selected accountType resolve to a smart contract address
+                ? () async {
+                    // Test if seedPhrase with selected accountType resolve to a smart contract address
                     final seedPhrase = _seedPhrase!.trim().split(" ");
 
-                      final provider =
-                          JsonRpcProvider(nodeUri: infuraGoerliTestnetUri);
-                      // Derivate the first account
-                      final account = Account.fromMnemonic(
-                        mnemonic: seedPhrase,
-                        provider: provider,
-                        // TODO chainId should be mainnet by default. Setting it to testNet should be an hidden option
-                        chainId: StarknetChainId.testNet,
-                        index: 0,
-                      );
-                      final success = await account.isValid;
-                      if (success) {
-                        widget.model.seedPhrase = seedPhrase;
-                        widget.model.accountType = _accountType;
-                        widget.model.account = account;
+                    final provider =
+                        JsonRpcProvider(nodeUri: infuraGoerliTestnetUri);
+                    // Derivate the first account
+                    final account = Account.fromMnemonic(
+                      mnemonic: seedPhrase,
+                      provider: provider,
+                      // TODO chainId should be mainnet by default. Setting it to testNet should be an hidden option
+                      chainId: StarknetChainId.testNet,
+                      index: 0,
+                    );
+                    final success = await account.isValid;
+                    if (success) {
+                      widget.model.seedPhrase = seedPhrase;
+                      widget.model.accountType = _accountType;
+                      widget.model.account = account;
 
-                        // Navigate to the protect screen
-                        if (context.mounted) {
-                          Navigator.of(context).pushReplacementNamed(
-                            ProtectWalletScreen.routeName,
-                          );
-                        }
-                      } else {
-                        if (context.mounted) {
-                          ScaffoldMessenger.of(context).showSnackBar(
-                            const SnackBar(
-                              showCloseIcon: true,
-                              closeIconColor: Colors.white,
-                              backgroundColor: Colors.red,
-                              content: Text(
-                                  "Could not find your account. Check your seed phrase."),
-                            ),
-                          );
-                        }
+                      // Navigate to the protect screen
+                      if (context.mounted) {
+                        Navigator.of(context).pushReplacementNamed(
+                          ProtectWalletScreen.routeName,
+                        );
+                      }
+                    } else {
+                      if (context.mounted) {
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          const SnackBar(
+                            showCloseIcon: true,
+                            closeIconColor: Colors.white,
+                            backgroundColor: Colors.red,
+                            content: Text(
+                                "Could not find your account. Check your seed phrase."),
+                          ),
+                        );
                       }
                     }
-                  : null,
-              text: 'Continue',
-            ),
-            const SizedBox(height: 16),
-          ],
-        ),
+                  }
+                : null,
+            text: 'Continue',
+          ),
+          const SizedBox(height: 16),
+        ],
       ),
     );
   }

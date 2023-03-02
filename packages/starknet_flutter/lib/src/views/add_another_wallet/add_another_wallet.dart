@@ -3,15 +3,16 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 import 'package:starknet_flutter/src/views/add_another_wallet/widgets/wallet_action_button.dart';
 import 'package:starknet_flutter/src/views/wallet/wallet_initialization.dart';
+import 'package:starknet_flutter/src/views/wallet_list/wallet_list_viewmodel.dart';
 
 import 'add_another_wallet_presenter.dart';
 import 'add_another_wallet_viewmodel.dart';
 
 class StarknetAddAnotherWallet {
-  static Future showAddAnotherWalletModal(
+  static Future<SelectedAccount?> showAddAnotherWalletModal(
     BuildContext context,
-  ) {
-    return showBarModalBottomSheet(
+  ) async {
+    return showBarModalBottomSheet<SelectedAccount?>(
       context: context,
       barrierColor: Colors.black.withOpacity(0.6),
       builder: (context) {
@@ -23,10 +24,12 @@ class StarknetAddAnotherWallet {
 
 abstract class AddAnotherWalletView {
   void refresh();
+
   void openWalletInitializationModal({
     String? initialRoute,
   });
-  void closeModal();
+
+  void closeModal(Future<SelectedAccount?> then);
 }
 
 class AddAnotherWalletArguments {
@@ -35,6 +38,7 @@ class AddAnotherWalletArguments {
 
 class AddAnotherWalletPage extends StatefulWidget {
   final AddAnotherWalletArguments? args;
+
   const AddAnotherWalletPage({
     Key? key,
     this.args,
@@ -115,15 +119,19 @@ class _AddAnotherWalletPageState extends State<AddAnotherWalletPage>
   void openWalletInitializationModal({
     String? initialRoute,
   }) {
-    closeModal();
-    StarknetWallet.showInitializationModal(
+    closeModal(StarknetWallet.showInitializationModal(
       context,
       initialRoute: initialRoute,
-    );
+    ));
   }
 
   @override
-  void closeModal() {
-    Navigator.of(context).pop();
+  void closeModal(Future<SelectedAccount?> then) {
+    // Navigator.of(context).pop();
+    then.then((value) {
+      if (value != null) {
+        Navigator.of(context).pop(value);
+      }
+    });
   }
 }
