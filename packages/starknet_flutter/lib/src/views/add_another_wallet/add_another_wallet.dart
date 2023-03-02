@@ -17,7 +17,7 @@ class StarknetAddAnotherWallet {
     // it.
     // The first pop() call will be resolved to close the first modal sheet
     // THEN the second modal will be shown by calling the returned function.
-    final then =
+    final selectedAccountCallback =
         await showBarModalBottomSheet<Future<SelectedAccount?> Function()>(
       context: context,
       barrierColor: Colors.black.withOpacity(0.6),
@@ -25,7 +25,7 @@ class StarknetAddAnotherWallet {
         return const AddAnotherWalletPage();
       },
     );
-    return then?.call();
+    return selectedAccountCallback?.call();
   }
 }
 
@@ -36,7 +36,7 @@ abstract class AddAnotherWalletView {
     String? initialRoute,
   });
 
-  void closeModal(Future<SelectedAccount?> Function() then);
+  void closeModal(Future<SelectedAccount?> Function() selectedAccountCallback);
 }
 
 class AddAnotherWalletArguments {
@@ -133,7 +133,7 @@ class _AddAnotherWalletPageState extends State<AddAnotherWalletPage>
   }
 
   @override
-  void closeModal(Future<SelectedAccount?> Function() then) {
-    Navigator.pop(context, then);
+  void closeModal(Future<SelectedAccount?> Function() selectedAccountCallback) {
+    Navigator.pop(context, selectedAccountCallback);
   }
 }

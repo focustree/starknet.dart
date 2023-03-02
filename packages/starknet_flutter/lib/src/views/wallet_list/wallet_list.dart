@@ -15,7 +15,7 @@ class StarknetWalletList {
     BuildContext context,
   ) async {
     // TODO: send style configuration
-    final then =
+    final selectedAccountCallback =
         await showBarModalBottomSheet<Future<SelectedAccount?> Function()>(
       context: context,
       barrierColor: Colors.black.withOpacity(0.6),
@@ -23,14 +23,14 @@ class StarknetWalletList {
         return const WalletListPage();
       },
     );
-    return then?.call();
+    return selectedAccountCallback?.call();
   }
 }
 
 abstract class WalletListView {
   void refresh();
 
-  void closeModal(Future<SelectedAccount?> Function() then);
+  void closeModal(Future<SelectedAccount?> Function() selectedAccountCallback);
 
   Future openAddAnotherWalletModal();
 }
@@ -162,8 +162,8 @@ class _WalletListPageState extends State<WalletListPage>
   void refresh() => setState(() {});
 
   @override
-  void closeModal(Future<SelectedAccount?> Function() then) {
-    Navigator.pop(context, then);
+  void closeModal(Future<SelectedAccount?> Function() selectedAccountCallback) {
+    Navigator.pop(context, selectedAccountCallback);
   }
 
   @override
