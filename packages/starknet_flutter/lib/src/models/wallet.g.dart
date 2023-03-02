@@ -22,19 +22,22 @@ class WalletAdapter extends TypeAdapter<Wallet> {
       walletId: fields[0] as String?,
       name: fields[1] as String,
       order: fields[2] as int,
+      accountType: fields[3] as StarknetAccountType,
     );
   }
 
   @override
   void write(BinaryWriter writer, Wallet obj) {
     writer
-      ..writeByte(3)
+      ..writeByte(4)
       ..writeByte(0)
       ..write(obj.walletId)
       ..writeByte(1)
       ..write(obj.name)
       ..writeByte(2)
-      ..write(obj.order);
+      ..write(obj.order)
+      ..writeByte(3)
+      ..write(obj.accountType);
   }
 
   @override

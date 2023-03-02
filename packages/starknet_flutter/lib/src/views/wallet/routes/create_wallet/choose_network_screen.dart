@@ -37,6 +37,7 @@ class ChooseNetworkScreen extends StatelessWidget {
                     Wallet(
                       name: "Wallet 1",
                       order: 0,
+                      accountType: model.accountType!,
                     ),
                   );
                 },
@@ -51,6 +52,7 @@ class ChooseNetworkScreen extends StatelessWidget {
                     Wallet(
                       name: "Wallet 1",
                       order: 0,
+                      accountType: model.accountType!,
                     ),
                   );
                 },

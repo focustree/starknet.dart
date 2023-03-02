@@ -1,17 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:starknet_flutter/src/models/models.dart';
 import 'package:starknet_flutter/src/views/widgets/bouncing_button.dart';
 
 class AccountCell extends StatelessWidget {
-  final String accountName;
-  final num accountBalance;
+  final PublicAccount account;
   final Function()? onPressed;
 
   const AccountCell({
-    Key? key,
+    super.key,
     required this.onPressed,
-    required this.accountName,
-    required this.accountBalance,
-  }) : super(key: key);
+    required this.account,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -30,19 +29,27 @@ class AccountCell extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    accountName,
+                    account.name,
                     style: const TextStyle(
                       fontSize: 13.0,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
                   const SizedBox(height: 3.0),
-                  Text(
-                    '$accountBalance ETH',
-                    style: const TextStyle(
-                      color: Colors.grey,
-                      fontSize: 12.0,
-                    ),
+                  FutureBuilder<double>(
+                    future: account.balance,
+                    builder: (context, snapshot) {
+                      if (snapshot.data == null) {
+                        return const SizedBox.shrink();
+                      }
+                      return Text(
+                        '${snapshot.requireData} ETH',
+                        style: const TextStyle(
+                          color: Colors.grey,
+                          fontSize: 12.0,
+                        ),
+                      );
+                    },
                   ),
                 ],
               ),

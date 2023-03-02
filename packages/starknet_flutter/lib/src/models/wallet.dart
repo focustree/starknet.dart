@@ -1,6 +1,7 @@
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:starknet_flutter/src/models/hive_type_adapters.dart';
 import 'package:starknet_flutter/src/stores/boxes.dart';
+import 'package:starknet_flutter/src/views/wallet/wallet_initialization_viewmodel.dart';
 import 'package:ulid/ulid.dart';
 
 import 'public_account.dart';
@@ -15,6 +16,8 @@ class Wallet extends HiveObject {
   final String name;
   @HiveField(2)
   final int order;
+  @HiveField(3)
+  final StarknetAccountType accountType;
 
   /// The list of accounts in this wallet.
   /// This is not stored in the wallet box of Hive.
@@ -26,6 +29,7 @@ class Wallet extends HiveObject {
     required this.name,
     required this.order,
     HiveList<PublicAccount>? accounts,
+    required this.accountType,
   })  : walletId = walletId ?? Ulid().toCanonical(),
         accounts =
             accounts ?? HiveList(Hive.box<PublicAccount>(kAccountBoxName));
@@ -40,6 +44,7 @@ class Wallet extends HiveObject {
       name: name ?? this.name,
       order: order ?? this.order,
       accounts: accounts ?? this.accounts,
+      accountType: accountType,
     );
   }
 }

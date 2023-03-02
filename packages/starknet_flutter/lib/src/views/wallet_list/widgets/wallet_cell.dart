@@ -2,16 +2,19 @@ import 'package:expandable/expandable.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:starknet_flutter/src/views/wallet/wallet_initialization_viewmodel.dart';
+import 'package:starknet_flutter/src/views/wallet_list/wallet_list_viewmodel.dart';
 import 'package:starknet_flutter/src/views/wallet_list/widgets/account_cell.dart';
-import 'package:starknet_flutter/src/views/wallet_types.dart';
 import 'package:starknet_flutter/src/views/widgets/starknet_button.dart';
+
+import '../../../models/wallet.dart';
 
 class WalletCell extends StatelessWidget {
   final Wallet wallet;
+
   const WalletCell({
-    Key? key,
+    super.key,
     required this.wallet,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -48,14 +51,13 @@ class WalletCell extends StatelessWidget {
                       itemBuilder: (_, index) {
                         final account = wallet.accounts[index];
                         return AccountCell(
-                          accountBalance: account.balance,
-                          accountName: account.name,
+                          account: account,
                           onPressed: () {
                             Navigator.pop(
                               context,
-                              AssociatedWallet(
-                                account: account,
+                              SelectedAccount(
                                 wallet: wallet,
+                                account: account,
                               ),
                             );
                           },

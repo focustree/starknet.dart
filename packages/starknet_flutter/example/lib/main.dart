@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:starknet_flutter/starknet_flutter.dart';
-import 'package:starknet_flutter_example/ui/screens/wallets/wallets_screen.dart';
+
+import 'ui/screens/wallet/wallet_screen.dart';
 
 Future<void> main() async {
   await StarknetFlutter.init();
@@ -22,7 +23,7 @@ class StarknetDemoApp extends StatelessWidget {
         fontFamily: GoogleFonts.inter().fontFamily,
       ),
       debugShowCheckedModeBanner: false,
-      home: WalletsScreen(),
+      home: WalletScreen(),
       // routes: {
       //   WelcomeScreen.routeName: (context) => const WelcomeScreen(),
       //   RestoreWalletScreen.routeName: (context) => const RestoreWalletScreen(),

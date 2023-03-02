@@ -47,6 +47,7 @@ class ProtectWalletScreen extends StatelessWidget {
                             final wallet = Wallet(
                               name: "Wallet 1",
                               order: 0,
+                              accountType: model.accountType!,
                             );
                             final account = PublicAccount.from(
                               account: model.account!,

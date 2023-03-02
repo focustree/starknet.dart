@@ -12,6 +12,8 @@ export 'secure/secure_store.dart';
 abstract class StarknetStore {
   static Future<void> init() async {
     await Hive.initFlutter();
+    // final file = await getApplicationDocumentsDirectory();
+    // await file.delete(recursive: true);
     // Register all Hive objects adapters
     Hive.registerAdapter(StarknetAccountTypeAdapter());
     Hive.registerAdapter(AccountSupportedTxVersionAdapter());
@@ -60,6 +62,9 @@ abstract class StarknetStore {
       }
       await password.deleteSeedPhrase(id: w.walletId);
     });
+    for (var acc in w.accounts) {
+      await acc.delete();
+    }
     await w.delete();
   }
 

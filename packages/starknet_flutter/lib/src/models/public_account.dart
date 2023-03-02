@@ -46,9 +46,8 @@ class PublicAccount extends HiveObject {
     required Account account,
     required this.walletId,
     int order = 0,
-    String name = "Account 0",
-  })  : name = "Account 0",
-        order = 0,
+    this.name = "Account 1",
+  })  : order = 0,
         nodeUri = (account.provider as JsonRpcProvider).nodeUri.toString(),
         privateKeyId = Ulid().toCanonical(),
         accountAddress = account.accountAddress.toHexString(),
@@ -78,7 +77,6 @@ class PublicAccount extends HiveObject {
       result: (result) {
         final ethBalance = Uint256.fromFeltList(result).toBigInt() /
             BigInt.from(10).pow(ethDecimals);
-        print("Eth balance: $ethBalance");
         return ethBalance;
       },
     );

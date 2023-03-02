@@ -1,5 +1,13 @@
-import 'package:starknet_flutter/src/views/wallet_types.dart';
+import 'package:starknet_flutter/src/models/models.dart';
 
-class WalletListViewModel {
-  late List<Wallet> wallets;
+class WalletListViewModel {}
+
+class SelectedAccount {
+  final Wallet wallet;
+  final PublicAccount account;
+
+  SelectedAccount({
+    required this.wallet,
+    required this.account,
+  });
 }

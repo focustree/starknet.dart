@@ -19,6 +19,7 @@ dependencies:
   hive_flutter: ^1.1.0
   http: ^0.13.5
   modal_bottom_sheet: ^3.0.0-pre
+  path_provider: ^2.0.13
   pattern_lock: ^2.0.0
   plugin_platform_interface: ^2.0.2
   pointycastle: ^3.6.2

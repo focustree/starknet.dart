@@ -4,14 +4,17 @@ import 'package:starknet_flutter_example/ui/widgets/bouncing_button.dart';
 
 class AccountIndicator extends StatelessWidget {
   final String avatarUrl;
-  final AssociatedWallet? selectedWallet;
-  final Function()? onPressed;
+  final Wallet? selectedWallet;
+  final PublicAccount? selectedAccount;
+  final VoidCallback? onPressed;
+
   const AccountIndicator({
-    Key? key,
+    super.key,
     required this.avatarUrl,
-    this.selectedWallet,
+    required this.selectedWallet,
+    required this.selectedAccount,
     this.onPressed,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -33,7 +36,7 @@ class AccountIndicator extends StatelessWidget {
                 backgroundImage: NetworkImage(avatarUrl),
               ),
               const SizedBox(width: 10),
-              selectedWallet == null
+              selectedWallet == null || selectedAccount == null
                   ? const Text(
                       'Select wallet',
                       style: TextStyle(
@@ -45,13 +48,13 @@ class AccountIndicator extends StatelessWidget {
                         Row(
                           children: [
                             Text(
-                              selectedWallet!.wallet.name,
+                              selectedWallet!.name,
                               style: const TextStyle(
                                 fontWeight: FontWeight.bold,
                               ),
                             ),
                             const Text(' | '),
-                            Text(selectedWallet!.account.name),
+                            Text(selectedAccount!.name),
                           ],
                         ),
                       ],
