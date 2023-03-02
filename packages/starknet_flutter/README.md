@@ -2,7 +2,27 @@
 
 A package to ease the use of [starknet](https://pub.dev/packages/starknet) in your Flutter app.
 
-## Setup
+## Dart setup
+
+Add the following to your `pubspec.yaml`:
+
+```yaml 
+dependencies:
+  starknet_flutter: [version]
+```
+
+Then, run `flutter pub get`.
+
+
+You need to `init()` `starknet_flutter` before using it. A good place to do this in your `main.dart`:
+```dart
+Future<void> main() async {
+  await StarknetFlutter.init();
+  runApp(const StarknetDemoApp());
+}
+```
+
+## Platform setup
 
 ### iOS && MacOS
 

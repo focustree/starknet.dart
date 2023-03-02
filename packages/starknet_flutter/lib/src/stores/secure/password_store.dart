@@ -1,17 +1,18 @@
 import 'dart:convert';
 
 import 'package:flutter/foundation.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-import 'package:starknet_flutter/src/store/exceptions/failed_to_decrypt_exception.dart';
-import 'package:starknet_flutter/src/store/secure_store.dart';
+import 'package:hive_flutter/hive_flutter.dart';
+import 'package:starknet_flutter/src/stores/secure/secure_store.dart';
 
-import '../crypto/crypto_helper.dart';
+import '../../crypto/crypto_helper.dart';
 
 /// A [SecureStore] that stores the private key encrypted with a password.
 ///
 /// The password must be entered by the user to ensure the security of the
 /// private key and must not be stored anywhere.
 class PasswordStore extends SecureStore {
+  static const _secretBoxName = "secrets";
+
   /// Stores a [secret] encrypted with [password] under [key].
   /// If [iv] is provided, it will be used as the initialization vector.
   /// Otherwise, a random one will be generated.
@@ -22,8 +23,8 @@ class PasswordStore extends SecureStore {
     Uint8List? iv,
   }) async {
     // TODO On Linux and Windows, we might store in biometric_storage (not biometric protected, but more secure than shared preferences)
-    final prefs = await SharedPreferences.getInstance();
-    await prefs.setString(
+    final box = await Hive.openBox(_secretBoxName);
+    await box.put(
       key,
       base64Encode(
         CryptoHelper().encrypt(
@@ -40,8 +41,8 @@ class PasswordStore extends SecureStore {
     required String key,
     required String password,
   }) async {
-    final prefs = await SharedPreferences.getInstance();
-    final cipherText = prefs.getString(key);
+    var box = await Hive.openBox(_secretBoxName);
+    final cipherText = box.get(key);
 
     if (cipherText == null) {
       return null;
@@ -64,8 +65,8 @@ class PasswordStore extends SecureStore {
   Future<void> deleteSecret({
     required String key,
   }) async {
-    final prefs = await SharedPreferences.getInstance();
-    await prefs.remove(key);
+    final box = await Hive.openBox(_secretBoxName);
+    await box.delete(key);
   }
 
   /// Stores the [privateKey] identified as [id] encrypted with [password].

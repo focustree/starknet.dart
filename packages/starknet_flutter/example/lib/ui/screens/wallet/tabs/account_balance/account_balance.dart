@@ -11,7 +11,8 @@ class AccountBalance extends StatefulWidget {
 }
 
 class _AccountBalanceState extends State<AccountBalance> {
-  AssociatedWallet? _selectedWallet;
+  Wallet? _selectedWallet;
+  PublicAccount? _selectedAccount;
 
   @override
   Widget build(BuildContext context) {
@@ -23,22 +24,35 @@ class _AccountBalanceState extends State<AccountBalance> {
           AccountIndicator(
             avatarUrl: 'https://i.pravatar.cc/150?img=1',
             selectedWallet: _selectedWallet,
+            selectedAccount: _selectedAccount,
             onPressed: () async {
-              final selectedWallet =
+              final selectedAccount =
                   await StarknetWalletList.showInitializationModal(context);
-              setState(() {
-                _selectedWallet = selectedWallet;
-              });
+              if (selectedAccount != null && mounted) {
+                setState(() {
+                  _selectedWallet = selectedAccount.wallet;
+                  _selectedAccount = selectedAccount.account;
+                });
+              }
             },
           ),
-          const Padding(
-            padding: EdgeInsets.only(top: 12, bottom: 20),
-            child: Text(
-              '\$43,234.23',
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: 30,
-              ),
+          Padding(
+            padding: const EdgeInsets.only(top: 12, bottom: 20),
+            child: FutureBuilder<double?>(
+              future: _selectedAccount?.balance,
+              builder: (context, snapshot) {
+                String? text;
+                if (snapshot.data != null) {
+                  text = '${snapshot.requireData} ETH';
+                }
+                return Text(
+                  text ?? "",
+                  style: const TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 30,
+                  ),
+                );
+              },
             ),
           ),
           Row(

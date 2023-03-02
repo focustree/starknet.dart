@@ -37,7 +37,7 @@ class _StoreExampleState extends State<StoreExample> {
       body: Padding(
         padding: const EdgeInsets.all(16),
         child: FutureBuilder<bool>(
-          future: SecureStore.hasBiometricStore(),
+          future: StarknetStore.hasBiometricStore(),
           builder: (builderContext, snapshot) {
             final hasBiometrics = snapshot.data ?? false;
             return SingleChildScrollView(
@@ -89,7 +89,7 @@ class _StoreExampleState extends State<StoreExample> {
                             ? null
                             : () async {
                                 try {
-                                  final store = await SecureStore.get(
+                                  final store = await StarknetStore.secure(
                                     passwordFallbackEnabled: !_biometricOnly,
                                     androidOptions:
                                         const AndroidSecureStoreOptions(
@@ -141,7 +141,7 @@ You should notify the user that they can't use this secure feature.""";
                     ),
                   ElevatedButton(
                     onPressed: () async {
-                      final store = await SecureStore.get(
+                      final store = await StarknetStore.secure(
                         passwordFallbackEnabled: !_biometricOnly,
                       );
                       try {
@@ -182,7 +182,7 @@ You should notify the user that they can't use this secure feature.""";
                   ),
                   TextButton(
                     onPressed: () async {
-                      final store = await SecureStore.get(
+                      final store = await StarknetStore.secure(
                         passwordFallbackEnabled: !_biometricOnly,
                       );
                       await store.when(
