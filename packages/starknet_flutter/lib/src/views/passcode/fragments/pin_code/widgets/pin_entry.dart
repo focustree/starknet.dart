@@ -3,11 +3,12 @@ import 'package:flutter/material.dart';
 class PinEntryWidget extends StatelessWidget {
   final List<int> pin;
   final int size;
+
   const PinEntryWidget({
-    Key? key,
+    super.key,
     required this.pin,
     required this.size,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

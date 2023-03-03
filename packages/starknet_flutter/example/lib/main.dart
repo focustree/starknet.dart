@@ -23,7 +23,19 @@ class StarknetDemoApp extends StatelessWidget {
         fontFamily: GoogleFonts.inter().fontFamily,
       ),
       debugShowCheckedModeBanner: false,
-      home: WalletScreen(),
+      home: WalletScreen(
+        // TODO These password prompts might be setup in an other place.
+        // In a real app, their configuration (title...) might change according
+        // to the screen on which they are prompted.
+        passwordPrompt: (ctx) => PasscodeInputView.showPattern(ctx),
+        createPassword: (ctx) => PasscodeInputView.showPattern(
+          ctx,
+          actionConfig: const PasscodeActionConfig.create(
+            createTitle: "Create your password",
+            confirmTitle: "Confirm",
+          ),
+        ),
+      ),
       // routes: {
       //   WelcomeScreen.routeName: (context) => const WelcomeScreen(),
       //   RestoreWalletScreen.routeName: (context) => const RestoreWalletScreen(),

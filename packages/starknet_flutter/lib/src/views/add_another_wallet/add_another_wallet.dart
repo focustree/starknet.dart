@@ -5,12 +5,14 @@ import 'package:starknet_flutter/src/views/add_another_wallet/widgets/wallet_act
 import 'package:starknet_flutter/src/views/wallet/wallet_initialization.dart';
 import 'package:starknet_flutter/src/views/wallet_list/wallet_list_viewmodel.dart';
 
+import '../passcode/passcode_input_view.dart';
 import 'add_another_wallet_presenter.dart';
 import 'add_another_wallet_viewmodel.dart';
 
 class StarknetAddAnotherWallet {
   static Future<SelectedAccount?> showAddAnotherWalletModal(
     BuildContext context,
+    PasswordPrompt passwordPrompt,
   ) async {
     // AddAnotherWalletPage might need to show an other bottom modal sheet at
     // some point. In that case, we want to close the first one before showing
@@ -22,7 +24,9 @@ class StarknetAddAnotherWallet {
       context: context,
       barrierColor: Colors.black.withOpacity(0.6),
       builder: (context) {
-        return const AddAnotherWalletPage();
+        return AddAnotherWalletPage(
+          passwordPrompt: passwordPrompt,
+        );
       },
     );
     return selectedAccountCallback?.call();
@@ -39,17 +43,13 @@ abstract class AddAnotherWalletView {
   void closeModal(Future<SelectedAccount?> Function() selectedAccountCallback);
 }
 
-class AddAnotherWalletArguments {
-  AddAnotherWalletArguments();
-}
-
 class AddAnotherWalletPage extends StatefulWidget {
-  final AddAnotherWalletArguments? args;
+  final PasswordPrompt passwordPrompt;
 
   const AddAnotherWalletPage({
-    Key? key,
-    this.args,
-  }) : super(key: key);
+    super.key,
+    required this.passwordPrompt,
+  });
 
   @override
   State<AddAnotherWalletPage> createState() => _AddAnotherWalletPageState();
@@ -128,6 +128,7 @@ class _AddAnotherWalletPageState extends State<AddAnotherWalletPage>
   }) {
     closeModal(() async => await StarknetWallet.showInitializationModal(
           context,
+          passwordPrompt: widget.passwordPrompt,
           initialRoute: initialRoute,
         ));
   }

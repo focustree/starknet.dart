@@ -9,13 +9,13 @@ class WalletActionButton extends StatelessWidget {
   final IconData icon;
   final Function()? onTap;
   const WalletActionButton({
-    Key? key,
+    super. key,
     required this.title,
     required this.subtitle,
     required this.gradient,
     required this.icon,
     this.onTap,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

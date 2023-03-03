@@ -1,17 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
+import 'package:starknet_flutter/src/views/utils/snackbar_utils.dart';
 import 'package:starknet_flutter/src/views/wallet/routes/welcome/wallet_welcome_view.dart';
 import 'package:starknet_flutter/src/views/wallet/wallet_initialization_observer.dart';
 import 'package:starknet_flutter/src/views/wallet/wallet_initialization_router.dart';
 import 'package:starknet_flutter/src/views/wallet_list/wallet_list_viewmodel.dart';
 import 'package:starknet_flutter/src/views/widgets/bouncing_button.dart';
 
+import '../passcode/passcode_input_view.dart';
 import 'wallet_initialization_presenter.dart';
 import 'wallet_initialization_viewmodel.dart';
 
 class StarknetWallet {
   static Future<SelectedAccount?> showInitializationModal(
     BuildContext context, {
+    required PasswordPrompt passwordPrompt,
     String? initialRoute,
   }) {
     // TODO: send configuration
@@ -19,9 +22,8 @@ class StarknetWallet {
       context: context,
       builder: (context) {
         return WalletInitializationPage(
-          args: WalletInitializationArguments(
-            initialRoute: initialRoute,
-          ),
+          initialRoute: initialRoute,
+          passwordPrompt: passwordPrompt,
         );
       },
     );
@@ -36,6 +38,8 @@ abstract class WalletInitializationView {
   void goBack();
 
   Future navigateToSubRoute(String routeName);
+
+  void onWrongPassword(String input);
 }
 
 class WalletInitializationArguments {
@@ -47,12 +51,14 @@ class WalletInitializationArguments {
 }
 
 class WalletInitializationPage extends StatefulWidget {
-  final WalletInitializationArguments? args;
+  final String? initialRoute;
+  final PasswordPrompt passwordPrompt;
 
   const WalletInitializationPage({
-    Key? key,
-    this.args,
-  }) : super(key: key);
+    super.key,
+    this.initialRoute,
+    required this.passwordPrompt,
+  });
 
   @override
   State<WalletInitializationPage> createState() =>
@@ -79,6 +85,7 @@ class _WalletInitializationPageState extends State<WalletInitializationPage>
     presenter = WalletInitializationPresenter(
       WalletInitializationViewModel(),
       this,
+      passwordPrompt: widget.passwordPrompt,
     ).init();
     model = presenter.viewModel;
     observer = WalletInitializationNavigatorObserver(model.didChange);
@@ -120,7 +127,7 @@ class _WalletInitializationPageState extends State<WalletInitializationPage>
       body: SafeArea(
         child: Navigator(
           key: _navigatorKey,
-          initialRoute: widget.args?.initialRoute,
+          initialRoute: widget.initialRoute,
           observers: [observer],
           onGenerateRoute: (settings) =>
               WalletInitializationRouter.onGenerateRoute(
@@ -135,7 +142,7 @@ class _WalletInitializationPageState extends State<WalletInitializationPage>
 
   bool get isRootPage =>
       model.routeName == WalletWelcomeView.routeName ||
-      model.routeName == widget.args?.initialRoute;
+      model.routeName == widget.initialRoute;
 
   @override
   void refresh() => setState(() {});
@@ -153,5 +160,13 @@ class _WalletInitializationPageState extends State<WalletInitializationPage>
   @override
   void goBack() {
     Navigator.maybePop(_navigatorKey.currentContext!);
+  }
+
+  @override
+  void onWrongPassword(String input) {
+    // TODO Make this behavior configurable (show dialog, snackbar, update UI...)
+    context.replaceSnackbar(
+      content: const Text('Wrong password'),
+    );
   }
 }

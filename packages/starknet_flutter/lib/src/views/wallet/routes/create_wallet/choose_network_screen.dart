@@ -12,10 +12,10 @@ class ChooseNetworkScreen extends StatelessWidget {
   final WalletInitializationViewModel model;
 
   const ChooseNetworkScreen({
-    Key? key,
+    super.key,
     required this.presenter,
     required this.model,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -31,24 +31,28 @@ class ChooseNetworkScreen extends StatelessWidget {
               onTap: () {
                 model.networkType = StarknetNetworkType.goerli;
                 // TODO Create a real wallet
-                  presenter.createWallet(
-                    Wallet(
-                      name: "Wallet 1",
-                      order: 0,
-                      accountType: model.accountType!,
-                    ),);
+                presenter.createWallet(
+                  Wallet(
+                    name: "Wallet 1",
+                    order: 0,
+                    accountType: model.accountType!,
+                  ),
+                );
               },
               text: 'StarkNet Goerli Alpha',
             ),
             const SizedBox(height: 16),
             StarknetButton.plain(
               onTap: () {
-                model.networkType = StarknetNetworkType.mainnet;// TODO Create a real wallet
-                presenter.createWallet(Wallet(
-                      name: "Wallet 1",
-                      order: 0,
-                      accountType: model.accountType!,
-                    ),);
+                model.networkType =
+                    StarknetNetworkType.mainnet; // TODO Create a real wallet
+                presenter.createWallet(
+                  Wallet(
+                    name: "Wallet 1",
+                    order: 0,
+                    accountType: model.accountType!,
+                  ),
+                );
               },
               text: 'StarkNet Mainnet Alpha',
             ),

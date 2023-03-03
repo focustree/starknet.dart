@@ -13,6 +13,12 @@ typedef InputPasswordBuilder = Widget Function(
   bool isConfirming,
 );
 
+/// A method that returns a password (not necessarly the good one!)
+typedef PasswordPrompt = Future<String?> Function(BuildContext context);
+
+/// Handle what to do in case the password is wrong
+typedef OnWrongPassword = Function(String input);
+
 class PasscodeInputView extends StatefulWidget {
   final VoidCallback? onWrongRepeatInput;
   final PasscodeActionConfig actionConfig;
@@ -20,19 +26,19 @@ class PasscodeInputView extends StatefulWidget {
   final PasscodeConfig? passcodeConfig;
 
   const PasscodeInputView({
-    Key? key,
+    super.key,
     this.onWrongRepeatInput,
     required this.actionConfig,
     required this.inputBuilder,
     required this.passcodeConfig,
-  }) : super(key: key);
+  });
 
   @override
   State<StatefulWidget> createState() {
     return _PasscodeInputViewState();
   }
 
-  static Future showPattern(
+  static Future<String?> showPattern(
     BuildContext parentContext, {
     VoidCallback? onWrongRepeatInput,
     PasscodeActionConfig actionConfig =
@@ -40,7 +46,7 @@ class PasscodeInputView extends StatefulWidget {
     PatternConfig patternConfig = const PatternConfig(),
     PasscodeConfig? passcodeConfig,
   }) {
-    return showModalBottomSheet(
+    return showModalBottomSheet<String>(
       isScrollControlled: true,
       context: parentContext,
       backgroundColor: passcodeConfig?.backgroundColor,
@@ -55,14 +61,14 @@ class PasscodeInputView extends StatefulWidget {
     );
   }
 
-  static Future showPinCode(
+  static Future<String?> showPinCode(
     BuildContext parentContext, {
     VoidCallback? onWrongRepeatInput,
     required PasscodeActionConfig actionConfig,
     PinCodeConfig pinCodeConfig = const PinCodeConfig(),
     PasscodeConfig? passcodeConfig,
   }) {
-    return showModalBottomSheet(
+    return showModalBottomSheet<String>(
       isScrollControlled: true,
       context: parentContext,
       backgroundColor: passcodeConfig?.backgroundColor,
@@ -77,14 +83,14 @@ class PasscodeInputView extends StatefulWidget {
     );
   }
 
-  static Future showPassword(
+  static Future<String?> showPassword(
     BuildContext parentContext, {
     VoidCallback? onWrongRepeatInput,
     required PasscodeActionConfig actionConfig,
     required PasswordConfig passwordConfig,
     PasscodeConfig? passcodeConfig,
   }) {
-    return showModalBottomSheet(
+    return showModalBottomSheet<String>(
       isScrollControlled: true,
       context: parentContext,
       backgroundColor: passcodeConfig?.backgroundColor,
@@ -99,14 +105,14 @@ class PasscodeInputView extends StatefulWidget {
     );
   }
 
-  static Future showCustom(
+  static Future<String?> showCustom(
     BuildContext parentContext, {
     Function(BuildContext)? onWrongRepeatInput,
     required PasscodeActionConfig actionConfig,
     required InputPasswordBuilder inputBuilder,
     PasscodeConfig? passcodeConfig,
   }) {
-    return showModalBottomSheet(
+    return showModalBottomSheet<String>(
       isScrollControlled: true,
       context: parentContext,
       backgroundColor: passcodeConfig?.backgroundColor,
