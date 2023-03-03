@@ -1,3 +1,4 @@
+import 'package:animations/animations.dart';
 import 'package:flutter/material.dart';
 import 'package:starknet_flutter/src/views/wallet/routes/create_wallet/choose_network_screen.dart';
 import 'package:starknet_flutter/src/views/wallet/routes/create_wallet/create_seed_screen.dart';
@@ -15,50 +16,68 @@ class WalletInitializationRouter {
   ) {
     switch (settings.name) {
       case WalletWelcomeView.routeName:
-        return MaterialPageRoute(
-          settings: settings,
-          builder: (context) => WalletWelcomeView(
+        return buildFadeTransition(
+          settings,
+          (_, __, ___) => WalletWelcomeView(
             model: model,
             presenter: presenter,
           ),
         );
       case CreateSeedScreen.routeName:
-        return MaterialPageRoute(
-          settings: settings,
-          builder: (context) => CreateSeedScreen(
+        return buildFadeTransition(
+          settings,
+          (_, __, ___) => CreateSeedScreen(
             model: model,
             presenter: presenter,
           ),
         );
       case ChooseNetworkScreen.routeName:
-        return MaterialPageRoute(
-          settings: settings,
-          builder: (context) => ChooseNetworkScreen(
+        return buildFadeTransition(
+          settings,
+          (_, __, ___) => ChooseNetworkScreen(
             model: model,
             presenter: presenter,
           ),
         );
       case ProtectWalletScreen.routeName:
-        return MaterialPageRoute(
-          settings: settings,
-          builder: (context) => ProtectWalletScreen(
+        return buildFadeTransition(
+          settings,
+          (_, __, ___) => ProtectWalletScreen(
             model: model,
             presenter: presenter,
           ),
         );
       case RestoreWalletScreen.routeName:
-        return MaterialPageRoute(
-          settings: settings,
-          builder: (context) => RestoreWalletScreen(
+        return buildFadeTransition(
+          settings,
+          (_, __, ___) => RestoreWalletScreen(
             model: model,
             presenter: presenter,
           ),
         );
       default:
-        return MaterialPageRoute(
-          settings: settings,
-          builder: (context) => const SizedBox.shrink(),
+        return buildFadeTransition(
+          settings,
+          (_, __, ___) => const SizedBox.shrink(),
         );
     }
   }
 }
+
+Route buildFadeTransition(RouteSettings settings, RoutePageBuilder builder) =>
+    PageRouteBuilder(
+      settings: settings,
+      pageBuilder: builder,
+      transitionsBuilder: (
+        _,
+        animation,
+        secondaryAnimation,
+        child,
+      ) =>
+          FadeThroughTransition(
+        fillColor: Theme.of(_).scaffoldBackgroundColor,
+        animation: animation,
+        secondaryAnimation: secondaryAnimation,
+        child: child,
+      ),
+    );

@@ -1,5 +1,7 @@
 import 'dart:async';
 
+import 'package:starknet_flutter/src/views/wallet_list/wallet_list_viewmodel.dart';
+
 import '../../models/wallet.dart';
 import 'wallet_initialization.dart';
 import 'wallet_initialization_viewmodel.dart';
@@ -34,11 +36,15 @@ class WalletInitializationPresenter {
   }
 
   void createWallet(Wallet wallet) {
-    viewInterface.closeModal(wallet);
+    viewInterface.closeModal(
+      SelectedAccount(wallet: wallet, account: wallet.accounts.first),
+    );
   }
 
-  void onWalletRestored(Wallet wallet){
+  void onWalletRestored(Wallet wallet) {
     viewModel.clearEverything();
-    viewInterface.closeModal(wallet);
+    viewInterface.closeModal(
+      SelectedAccount(wallet: wallet, account: wallet.accounts.first),
+    );
   }
 }

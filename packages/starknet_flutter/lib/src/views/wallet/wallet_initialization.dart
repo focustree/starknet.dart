@@ -3,19 +3,26 @@ import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 import 'package:starknet_flutter/src/views/wallet/routes/welcome/wallet_welcome_view.dart';
 import 'package:starknet_flutter/src/views/wallet/wallet_initialization_observer.dart';
 import 'package:starknet_flutter/src/views/wallet/wallet_initialization_router.dart';
+import 'package:starknet_flutter/src/views/wallet_list/wallet_list_viewmodel.dart';
 import 'package:starknet_flutter/src/views/widgets/bouncing_button.dart';
 
-import '../../models/wallet.dart';
 import 'wallet_initialization_presenter.dart';
 import 'wallet_initialization_viewmodel.dart';
 
 class StarknetWallet {
-  static Future<Wallet?> showInitializationModal(BuildContext context) {
+  static Future<SelectedAccount?> showInitializationModal(
+    BuildContext context, {
+    String? initialRoute,
+  }) {
     // TODO: send configuration
-    return showBarModalBottomSheet<Wallet?>(
+    return showBarModalBottomSheet<SelectedAccount?>(
       context: context,
       builder: (context) {
-        return const WalletInitializationPage();
+        return WalletInitializationPage(
+          args: WalletInitializationArguments(
+            initialRoute: initialRoute,
+          ),
+        );
       },
     );
   }
@@ -24,7 +31,7 @@ class StarknetWallet {
 abstract class WalletInitializationView {
   void refresh();
 
-  void closeModal(Wallet? wallet);
+  void closeModal(SelectedAccount? selectedAccount);
 
   void goBack();
 
@@ -32,7 +39,11 @@ abstract class WalletInitializationView {
 }
 
 class WalletInitializationArguments {
-  WalletInitializationArguments();
+  String? initialRoute;
+
+  WalletInitializationArguments({
+    this.initialRoute,
+  });
 }
 
 class WalletInitializationPage extends StatefulWidget {
@@ -90,7 +101,7 @@ class _WalletInitializationPageState extends State<WalletInitializationPage>
             : const SizedBox.shrink(),
         leading: AnimatedSwitcher(
           duration: const Duration(milliseconds: 300),
-          child: model.routeName == WalletWelcomeView.routeName
+          child: isRootPage
               ? const SizedBox.shrink()
               : BouncingWidget(
                   onTap: goBack,
@@ -109,6 +120,7 @@ class _WalletInitializationPageState extends State<WalletInitializationPage>
       body: SafeArea(
         child: Navigator(
           key: _navigatorKey,
+          initialRoute: widget.args?.initialRoute,
           observers: [observer],
           onGenerateRoute: (settings) =>
               WalletInitializationRouter.onGenerateRoute(
@@ -121,12 +133,16 @@ class _WalletInitializationPageState extends State<WalletInitializationPage>
     );
   }
 
+  bool get isRootPage =>
+      model.routeName == WalletWelcomeView.routeName ||
+      model.routeName == widget.args?.initialRoute;
+
   @override
   void refresh() => setState(() {});
 
   @override
-  void closeModal(Wallet? wallet) {
-    Navigator.of(context).pop(wallet);
+  void closeModal(SelectedAccount? selectedAccount) {
+    Navigator.of(context).pop(selectedAccount);
   }
 
   @override
@@ -136,6 +152,6 @@ class _WalletInitializationPageState extends State<WalletInitializationPage>
 
   @override
   void goBack() {
-    Navigator.of(_navigatorKey.currentContext!).pop();
+    Navigator.maybePop(_navigatorKey.currentContext!);
   }
 }

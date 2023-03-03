@@ -55,10 +55,10 @@ class WalletCell extends StatelessWidget {
                           onPressed: () {
                             Navigator.pop(
                               context,
-                              SelectedAccount(
+                              () => Future.value(SelectedAccount(
                                 wallet: wallet,
                                 account: account,
-                              ),
+                              )),
                             );
                           },
                         );
