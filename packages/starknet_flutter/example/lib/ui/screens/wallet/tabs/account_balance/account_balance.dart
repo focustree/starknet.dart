@@ -53,8 +53,7 @@ class _AccountBalanceState extends State<AccountBalance> {
               builder: (context, snapshot) {
                 String? text;
                 if (snapshot.data != null) {
-                  text =
-                      '${StarknetNumberUtils.truncateDouble(snapshot.data!, 4)} ETH';
+                  text = '${snapshot.data!.truncateBalance()} ETH';
                 }
                 return Text(
                   text ?? "",

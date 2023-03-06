@@ -31,6 +31,7 @@ class ProtectWalletScreen extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 10),
+          // TODO: remove this when biometric support 1 unlock at time
           Text(
             "Biometric will be prompted 2 times",
             style: GoogleFonts.poppins(
