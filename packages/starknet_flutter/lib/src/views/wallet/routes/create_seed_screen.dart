@@ -6,7 +6,7 @@ import 'package:starknet_flutter/src/views/wallet/wallet_initialization_presente
 import 'package:starknet_flutter/src/views/wallet/wallet_initialization_viewmodel.dart';
 import 'package:starknet_flutter/src/views/widgets/bouncing_button.dart';
 
-class CreateSeedScreen extends StatelessWidget {
+class CreateSeedScreen extends StatefulWidget {
   static const routeName = '/seed';
 
   final WalletInitializationPresenter presenter;
@@ -17,6 +17,13 @@ class CreateSeedScreen extends StatelessWidget {
     required this.presenter,
     required this.model,
   });
+
+  @override
+  State<CreateSeedScreen> createState() => _CreateSeedScreenState();
+}
+
+class _CreateSeedScreenState extends State<CreateSeedScreen> {
+  bool? _confirmCheckbox = false;
 
   @override
   Widget build(BuildContext context) {
@@ -94,6 +101,24 @@ class CreateSeedScreen extends StatelessWidget {
                 ),
               ),
             ),
+            CheckboxListTile(
+              enableFeedback: true,
+              contentPadding: const EdgeInsets.all(0),
+              title: Text(
+                'I have written down my recovery phrase',
+                style: GoogleFonts.poppins(
+                  fontSize: 13,
+                  fontWeight: FontWeight.w600,
+                ),
+              ),
+              value: _confirmCheckbox,
+              onChanged: (newValue) {
+                setState(() {
+                  _confirmCheckbox = newValue;
+                });
+              },
+              controlAffinity: ListTileControlAffinity.leading,
+            ),
             BouncingButton.text(
               onTap: () {
                 Clipboard.setData(ClipboardData(text: words.join(' ')))
@@ -120,8 +145,10 @@ class CreateSeedScreen extends StatelessWidget {
             ),
             const SizedBox(height: 8),
             BouncingButton.plain(
-              onTap: () => presenter.viewInterface
-                  .navigateToSubRoute(ProtectWalletScreen.routeName),
+              onTap: _confirmCheckbox == true
+                  ? () => widget.presenter.viewInterface
+                      .navigateToSubRoute(ProtectWalletScreen.routeName)
+                  : null,
               text: 'Continue',
             ),
           ],
