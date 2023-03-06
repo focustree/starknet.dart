@@ -3,10 +3,11 @@ import 'package:starknet_flutter/src/views/widgets/bouncing_button.dart';
 
 class WalletListAppBar extends StatelessWidget {
   final Function()? onEditPressed;
+
   const WalletListAppBar({
-    Key? key,
+    super.key,
     this.onEditPressed,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

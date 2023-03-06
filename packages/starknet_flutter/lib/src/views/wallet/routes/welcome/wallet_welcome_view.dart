@@ -14,10 +14,10 @@ class WalletWelcomeView extends StatelessWidget {
   final WalletInitializationViewModel model;
 
   const WalletWelcomeView({
-    Key? key,
+    super.key,
     required this.presenter,
     required this.model,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

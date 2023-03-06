@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 abstract class AnimationControllerState<T extends StatefulWidget>
     extends State<T> with SingleTickerProviderStateMixin {
   AnimationControllerState(this.animationDuration);
+
   final Duration animationDuration;
   late final animationController =
       AnimationController(vsync: this, duration: animationDuration);
@@ -18,12 +19,13 @@ abstract class AnimationControllerState<T extends StatefulWidget>
 
 class ShakeWidget extends StatefulWidget {
   const ShakeWidget({
-    Key? key,
+    super.key,
     required this.child,
     required this.shakeOffset,
     this.shakeCount = 3,
     this.shakeDuration = const Duration(milliseconds: 400),
-  }) : super(key: key);
+  });
+
   final Widget child;
   final double shakeOffset;
   final int shakeCount;

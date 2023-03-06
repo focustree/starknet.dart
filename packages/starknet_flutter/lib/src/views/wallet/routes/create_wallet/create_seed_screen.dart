@@ -12,10 +12,10 @@ class CreateSeedScreen extends StatelessWidget {
   final WalletInitializationViewModel model;
 
   const CreateSeedScreen({
-    Key? key,
+    super.key,
     required this.presenter,
     required this.model,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -50,8 +50,7 @@ class CreateSeedScreen extends StatelessWidget {
                 constraints: const BoxConstraints(maxWidth: 400),
                 child: GridView.builder(
                   itemCount: words.length,
-                  gridDelegate:
-                      const SliverGridDelegateWithFixedCrossAxisCount(
+                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisSpacing: 10,
                     mainAxisSpacing: 10,
                     crossAxisCount: 2,
@@ -119,8 +118,7 @@ class CreateSeedScreen extends StatelessWidget {
             const SizedBox(height: 8),
             StarknetButton.plain(
               onTap: () {
-                Navigator.of(context)
-                    .pushNamed(ChooseNetworkScreen.routeName);
+                Navigator.of(context).pushNamed(ChooseNetworkScreen.routeName);
               },
               text: 'Continue',
             ),

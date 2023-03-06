@@ -13,6 +13,12 @@ import '../../crypto/crypto_helper.dart';
 class PasswordStore extends SecureStore {
   static const _secretBoxName = "secrets";
 
+  /// A known content will be encrypted using a password set by the user instead
+  /// of storing the password directly. This way, we can keep one password for
+  /// the entire app. See [initiatePassword()], [hasPassword()] and [isGoodPassword()].
+  static const _appLevelPasswordKey = "app_level_password";
+  static const _appLevelKnownContent = "app_level_known_content";
+
   /// Stores a [secret] encrypted with [password] under [key].
   /// If [iv] is provided, it will be used as the initialization vector.
   /// Otherwise, a random one will be generated.
@@ -137,5 +143,67 @@ class PasswordStore extends SecureStore {
     required String id,
   }) {
     return deleteSecret(key: seedPhraseOf(id));
+  }
+
+  Future<void> initiatePassword(String password) async {
+    var box = await Hive.openBox(_secretBoxName);
+    final cipherText = box.get(_appLevelPasswordKey);
+    if (cipherText == null) {
+      return storeSecret(
+        key: _appLevelPasswordKey,
+        password: password,
+        secret: Uint8List.fromList(
+          utf8.encode(_appLevelKnownContent),
+        ),
+      );
+    }
+  }
+
+  /// Check wether this password is the one registered for this app
+  Future<bool> isGoodPassword(String password) async {
+    // Try to decrypt a known String encrypted with the previously registered password
+    try {
+      if (!await hasPassword()) {
+        return false;
+      }
+      final decryptedSecret = await getSecret(
+        key: _appLevelPasswordKey,
+        password: password,
+      );
+      if (decryptedSecret != null &&
+          utf8.decode(decryptedSecret) == _appLevelKnownContent) {
+        // If decrypted String is the same as the known String, then the password is correct
+        return true;
+      } else {
+        // Otherwise, the password is incorrect
+        return false;
+      }
+    } catch (e) {
+      if (kDebugMode) {
+        print(e);
+      }
+      return false;
+    }
+  }
+
+  Future<bool> hasPassword() async {
+    var box = await Hive.openBox(_secretBoxName);
+    final cipherText = box.get(_appLevelPasswordKey);
+    return cipherText != null;
+  }
+
+  Future<bool> replacePassword(
+    String previousPassword,
+    String newPassword,
+  ) async {
+    if (await hasPassword()) {
+      if (await isGoodPassword(previousPassword)) {
+        var box = await Hive.openBox(_secretBoxName);
+        await box.delete(_appLevelPasswordKey);
+        await initiatePassword(newPassword);
+        return true;
+      }
+    }
+    return false;
   }
 }

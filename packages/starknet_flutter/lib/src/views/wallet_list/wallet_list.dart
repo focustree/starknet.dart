@@ -3,6 +3,7 @@ import 'dart:core';
 import 'package:flutter/material.dart';
 import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 import 'package:starknet_flutter/src/views/add_another_wallet/add_another_wallet.dart';
+import 'package:starknet_flutter/src/views/views.dart';
 import 'package:starknet_flutter/src/views/wallet_list/widgets/appbar.dart';
 import 'package:starknet_flutter/src/views/wallet_list/widgets/wallet_cell.dart';
 import 'package:starknet_flutter/src/views/widgets/starknet_button.dart';
@@ -13,6 +14,7 @@ import 'wallet_list_viewmodel.dart';
 class StarknetWalletList {
   static Future<SelectedAccount?> showInitializationModal(
     BuildContext context,
+    PasswordPrompt passwordPrompt,
   ) async {
     // TODO: send style configuration
     final selectedAccountCallback =
@@ -20,7 +22,9 @@ class StarknetWalletList {
       context: context,
       barrierColor: Colors.black.withOpacity(0.6),
       builder: (context) {
-        return const WalletListPage();
+        return WalletListPage(
+          passwordPrompt: passwordPrompt,
+        );
       },
     );
     return selectedAccountCallback?.call();
@@ -35,17 +39,13 @@ abstract class WalletListView {
   Future openAddAnotherWalletModal();
 }
 
-class WalletListArguments {
-  WalletListArguments();
-}
-
 class WalletListPage extends StatefulWidget {
-  final WalletListArguments? args;
+  final PasswordPrompt passwordPrompt;
 
   const WalletListPage({
-    Key? key,
-    this.args,
-  }) : super(key: key);
+    super.key,
+    required this.passwordPrompt,
+  });
 
   @override
   State<WalletListPage> createState() => _WalletListPageState();
@@ -100,16 +100,6 @@ class _WalletListPageState extends State<WalletListPage>
                                 ? ListView.separated(
                                     shrinkWrap: true,
                                     itemBuilder: (context, index) {
-                                      if (index >= wallets.length) {
-                                        return TextButton.icon(
-                                          onPressed: () async {
-                                            presenter.deleteAllWallets(wallets);
-                                          },
-                                          icon:
-                                              const Icon(Icons.delete_outline),
-                                          label: const Text("Remove wallets"),
-                                        );
-                                      }
                                       final wallet = wallets[index];
                                       return WalletCell(
                                         wallet: wallet,
@@ -118,7 +108,7 @@ class _WalletListPageState extends State<WalletListPage>
                                     separatorBuilder: (context, index) {
                                       return const SizedBox(height: 10);
                                     },
-                                    itemCount: wallets.length + 1,
+                                    itemCount: wallets.length,
                                   )
                                 : const Padding(
                                     padding: EdgeInsets.symmetric(vertical: 30),
@@ -168,6 +158,7 @@ class _WalletListPageState extends State<WalletListPage>
 
   @override
   Future<SelectedAccount?> openAddAnotherWalletModal() {
-    return StarknetAddAnotherWallet.showAddAnotherWalletModal(context);
+    return StarknetAddAnotherWallet.showAddAnotherWalletModal(
+        context, widget.passwordPrompt);
   }
 }

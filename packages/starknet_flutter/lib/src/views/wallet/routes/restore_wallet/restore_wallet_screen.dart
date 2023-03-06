@@ -14,10 +14,10 @@ class RestoreWalletScreen extends StatefulWidget {
   final WalletInitializationViewModel model;
 
   const RestoreWalletScreen({
-    Key? key,
+    super.key,
     required this.presenter,
     required this.model,
-  }) : super(key: key);
+  });
 
   @override
   _RestoreWalletScreenState createState() => _RestoreWalletScreenState();

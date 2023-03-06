@@ -12,12 +12,12 @@ class PasswordInput extends StatefulWidget {
   final PasscodeConfig? passcodeConfig;
 
   const PasswordInput({
-    Key? key,
+    super.key,
     required this.actionConfig,
     this.onWrongRepeatInput,
     this.passwordConfig,
     this.passcodeConfig,
-  }) : super(key: key);
+  });
 
   @override
   State<PasswordInput> createState() => _PasswordInputState();

@@ -5,11 +5,12 @@ import 'package:starknet_flutter/src/views/widgets/bouncing_button.dart';
 class PinButton extends StatelessWidget {
   final int number;
   final Function()? onTap;
+
   const PinButton({
-    Key? key,
+    super.key,
     required this.number,
     this.onTap,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

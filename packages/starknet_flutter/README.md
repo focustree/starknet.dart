@@ -119,6 +119,86 @@ await store.when(
 );
 ```
 
+
+### Setting up your password
+
+While `BiometricStore` uses your already registered biometric authentication, `PasswordStore` requires you to provide an initial password that will be used to encrypt and decrypt your secrets.
+You can do it with the following code:
+
+```dart
+final password = await createPassword(context);
+if (password != null) {
+await PasswordStore().initiatePassword(password);
+if (mounted) Navigator.pop(context);
+}
+```
+
+`createPassword()` is a function that returns a `Future<String?>` that will be used as the password.
+In a real app, it could be a dialog that asks the user to create their password.
+
+`starknet_flutter` includes several methods to enter a password:
+- `PasscodeInputView.showPattern()` to draw a pattern
+- `PasscodeInputView.showPin()` to enter a pin
+- `PasscodeInputView.showPassword()` to type a textual password
+- `PasscodeInputView.showCustom()` to use anything you want to type your password while reusing the same logic as the other methods.
+See below examples, and find more in the example project.
+
+<details>
+<summary>Pattern input prompt example</summary>
+Draw a pattern as your password.
+
+
+```dart
+final result = await PasscodeInputView.showPattern(
+    context,
+    actionConfig: const PasscodeActionConfig.create(
+        createTitle: "Draw your pattern",
+        confirmTitle: "Confirm your pattern",
+    ),
+)
+```
+</details>
+
+<details>
+<summary>Emoji input prompt example</summary>
+Enter emoji as your password, like "👍🎨🚚👀" for instance.
+
+
+```dart
+final password = await PasscodeInputView.showCustom(
+    context,
+    actionConfig: const PasscodeActionConfig.create(
+      createTitle: "Type your emoji password",
+      confirmTitle: "Confirm your emoji password",
+    ),
+    onWrongRepeatInput: (input) {
+      showSnackBar(
+        "Wrong input: $input",
+        success: false,
+      );
+    },
+    passcodeConfig: const PasscodeConfig(
+      backgroundColor: Colors.lightBlueAccent,
+      cancelButtonConfig: PasscodeCancelButtonConfig(
+        child: Text(
+          "❌ Mission aborted",
+          style: TextStyle(color: Colors.white),
+        ),
+      ),
+    ),
+    inputBuilder: (
+      OnInputValidated onInputValidated,
+      bool isConfirming,
+    ) {
+      return EmojiInput(
+        onInputValidated: onInputValidated,
+        nextTitle: isConfirming ? "Confirm" : "Next",
+      );
+    },  
+)
+```
+</details>
+
 ### Storing the private key
 
 Use `BiomericStore.storePrivateKey` or `PasswordStore.storePrivateKey` to store the private key:

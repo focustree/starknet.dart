@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:starknet/starknet.dart';
 import 'package:starknet_flutter/src/views/wallet/wallet_initialization_presenter.dart';
 import 'package:starknet_flutter/src/views/wallet/wallet_initialization_viewmodel.dart';
 import 'package:starknet_flutter/src/views/widgets/starknet_button.dart';
@@ -12,10 +11,10 @@ class ProtectWalletScreen extends StatelessWidget {
   final WalletInitializationViewModel model;
 
   const ProtectWalletScreen({
-    Key? key,
+    super.key,
     required this.presenter,
     required this.model,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -40,40 +39,9 @@ class ProtectWalletScreen extends StatelessWidget {
                           color: Colors.white,
                         ),
                         text: 'Protect my wallet with biometric',
-                        onTap: () async {
-                          // Create wallet and account
-                            final wallet = Wallet(
-                              name: "Wallet 1",
-                              order: 0,
-                              accountType: model.accountType!,
-                            );
-                            final account = PublicAccount.from(
-                              account: model.account!,
-                              walletId: wallet.walletId,
-                            );
-
-                            final publicStore = StarknetStore.public();
-                            // First store the account in the public store
-                            await publicStore.storeAccount(account);
-                            // Now, add this account in the previously created wallet
-                            wallet.accounts.add(account);
-                            // Finally, store the wallet (which now contains the account)
-                            await publicStore.storeWallet(wallet);
-
-                            // Store seed phrase and private key securely
-                          await biometric.storeSeedPhrase(
-                            id: wallet.walletId,
-                            seedPhrase: model.seedPhrase!,
-                          );
-                          await biometric.storePrivateKey(
-                              id: account.privateKeyId,
-                              privateKey: model.account!.signer.privateKey
-                                  .toBigInt()
-                                  .toUint8List(),
-                            );
-
-                          presenter.onWalletRestored(wallet);
-                        },
+                        onTap: () => presenter.onSecureWithBiometric(
+                          biometricStore: biometric,
+                        ),
                       );
                     },
                     password: (password) {
@@ -83,20 +51,10 @@ class ProtectWalletScreen extends StatelessWidget {
                           color: Colors.white,
                         ),
                         text: 'Protect my wallet with a password',
-                        onTap: () async {
-                          // Store seed phrase and private key
-                          // TODO Prompt user for password
-                          await password.storeSeedPhrase(
-                            id: "uuid1",
-                            seedPhrase: model.seedPhrase!,
-                            password: "password",
-                          );
-                          // TODO Store private key
-
-                          // Store uuids into hive or similar
-
-                          // TODO Navigate to home screen
-                        },
+                        onTap: () => presenter.onSecureWithPassword(
+                          context,
+                          passwordStore: password,
+                        ),
                       );
                     },
                   ),

@@ -4,7 +4,14 @@ import 'package:starknet_flutter_example/ui/screens/wallet/tabs/account_balance/
 import 'package:starknet_flutter_example/ui/screens/wallet/tabs/account_balance/widgets/action_button.dart';
 
 class AccountBalance extends StatefulWidget {
-  const AccountBalance({super.key});
+  final PasswordPrompt passwordPrompt;
+  final PasswordPrompt createPassword;
+
+  const AccountBalance({
+    super.key,
+    required this.passwordPrompt,
+    required this.createPassword,
+  });
 
   @override
   State<AccountBalance> createState() => _AccountBalanceState();
@@ -27,7 +34,10 @@ class _AccountBalanceState extends State<AccountBalance> {
             selectedAccount: _selectedAccount,
             onPressed: () async {
               final selectedAccount =
-                  await StarknetWalletList.showInitializationModal(context);
+                  await StarknetWalletList.showInitializationModal(
+                context,
+                widget.passwordPrompt,
+              );
               if (selectedAccount != null && mounted) {
                 setState(() {
                   _selectedWallet = selectedAccount.wallet;
@@ -76,10 +86,53 @@ class _AccountBalanceState extends State<AccountBalance> {
               ActionButton(
                 icon: Icons.more_horiz_outlined,
                 text: 'More',
-                onPressed: () {},
+                onPressed: () {
+                  showMoreDialog(context);
+                },
               ),
             ],
           )
+        ],
+      ),
+    );
+  }
+
+  void showMoreDialog(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: const Text("Dev options"),
+        actions: [
+          TextButton.icon(
+            onPressed: () async {
+              final publicStore = StarknetStore.public();
+              final wallets = publicStore.getWallets();
+              for (var w in wallets) {
+                await StarknetStore.deleteWallet(w);
+              }
+            },
+            icon: const Icon(Icons.delete_outline),
+            label: const Text("Remove wallets"),
+          ),
+          TextButton.icon(
+            onPressed: () async {
+              // TODO We use the same passwordPrompt for unlocking and creating a password
+              // In a real app, text would be different like "Enter your previous
+              // password" and "Create a new password" for example
+              final previousPassword = await widget.passwordPrompt(context);
+              if (mounted) {
+                final newPassword = await widget.createPassword(context);
+                if (previousPassword != null && newPassword != null) {
+                  await PasswordStore().replacePassword(
+                    previousPassword,
+                    newPassword,
+                  );
+                }
+              }
+            },
+            icon: const Icon(Icons.key),
+            label: const Text("Replace password"),
+          ),
         ],
       ),
     );

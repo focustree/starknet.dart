@@ -10,18 +10,22 @@ part 'wallet.g.dart';
 
 @HiveType(typeId: kWalletTypeId)
 class Wallet extends HiveObject {
+  /// Unique identifier for this wallet that is used to retrieve the
+  /// corresponding seed phrase in a [SecureStore]
   @HiveField(0)
   final String walletId;
+
+  /// User defined name for this wallet.
   @HiveField(1)
   final String name;
   @HiveField(2)
+
+  /// Order in the list of wallets.
   final int order;
   @HiveField(3)
   final StarknetAccountType accountType;
 
   /// The list of accounts in this wallet.
-  /// This is not stored in the wallet box of Hive.
-  /// The list is
   final HiveList<PublicAccount> accounts;
 
   Wallet({

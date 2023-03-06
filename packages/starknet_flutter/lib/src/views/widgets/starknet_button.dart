@@ -8,14 +8,15 @@ class StarknetButton extends StatelessWidget {
   final Function()? onTap;
   final Color? backgroundColor;
   final TextStyle? textStyle;
+
   const StarknetButton({
-    Key? key,
+    super.key,
     required this.text,
     this.textStyle,
     this.icon,
     this.onTap,
     this.backgroundColor,
-  }) : super(key: key);
+  });
 
   factory StarknetButton.plain({
     Key? key,
