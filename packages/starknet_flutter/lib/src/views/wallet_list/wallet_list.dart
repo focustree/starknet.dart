@@ -100,6 +100,7 @@ class _WalletListPageState extends State<WalletListPage>
                             child: wallets.isNotEmpty
                                 ? ListView.separated(
                                     shrinkWrap: true,
+                                    physics: const BouncingScrollPhysics(),
                                     itemBuilder: (context, index) {
                                       final wallet = wallets[index];
                                       return WalletCell(
