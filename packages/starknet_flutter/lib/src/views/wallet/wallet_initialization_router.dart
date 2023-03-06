@@ -1,10 +1,9 @@
 import 'package:animations/animations.dart';
 import 'package:flutter/material.dart';
-import 'package:starknet_flutter/src/views/wallet/routes/create_wallet/choose_network_screen.dart';
-import 'package:starknet_flutter/src/views/wallet/routes/create_wallet/create_seed_screen.dart';
-import 'package:starknet_flutter/src/views/wallet/routes/restore_wallet/protect_wallet_screen.dart';
-import 'package:starknet_flutter/src/views/wallet/routes/restore_wallet/restore_wallet_screen.dart';
-import 'package:starknet_flutter/src/views/wallet/routes/welcome/wallet_welcome_view.dart';
+import 'package:starknet_flutter/src/views/wallet/routes/create_seed_screen.dart';
+import 'package:starknet_flutter/src/views/wallet/routes/protect_wallet_screen.dart';
+import 'package:starknet_flutter/src/views/wallet/routes/restore_wallet_screen.dart';
+import 'package:starknet_flutter/src/views/wallet/routes/wallet_welcome_screen.dart';
 import 'package:starknet_flutter/src/views/wallet/wallet_initialization_presenter.dart';
 import 'package:starknet_flutter/src/views/wallet/wallet_initialization_viewmodel.dart';
 
@@ -27,14 +26,6 @@ class WalletInitializationRouter {
         return buildFadeTransition(
           settings,
           (_, __, ___) => CreateSeedScreen(
-            model: model,
-            presenter: presenter,
-          ),
-        );
-      case ChooseNetworkScreen.routeName:
-        return buildFadeTransition(
-          settings,
-          (_, __, ___) => ChooseNetworkScreen(
             model: model,
             presenter: presenter,
           ),
