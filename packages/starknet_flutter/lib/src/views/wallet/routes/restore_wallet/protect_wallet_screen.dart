@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:starknet_flutter/src/views/wallet/wallet_initialization_presenter.dart';
 import 'package:starknet_flutter/src/views/wallet/wallet_initialization_viewmodel.dart';
-import 'package:starknet_flutter/src/views/widgets/starknet_button.dart';
+import 'package:starknet_flutter/src/views/widgets/bouncing_button.dart';
 import 'package:starknet_flutter/starknet_flutter.dart';
 
 class ProtectWalletScreen extends StatelessWidget {
@@ -19,13 +20,24 @@ class ProtectWalletScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(16.0),
+      padding: const EdgeInsets.all(20.0),
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Text(
+          Text(
             "This extra layer of security helps prevent someone with your phone from accessing your funds.",
+            style: GoogleFonts.poppins(
+              fontWeight: FontWeight.w400,
+            ),
           ),
-          const SizedBox(height: 32),
+          const SizedBox(height: 10),
+          Text(
+            "Biometric will be prompted 2 times",
+            style: GoogleFonts.poppins(
+              fontWeight: FontWeight.w400,
+            ),
+          ),
+          const SizedBox(height: 25),
           FutureBuilder(
             future: StarknetStore.secure(),
             builder: (context, snapshot) {
@@ -33,7 +45,7 @@ class ProtectWalletScreen extends StatelessWidget {
                 return FutureBuilder(
                   future: snapshot.requireData.when(
                     biometric: (biometric) {
-                      return StarknetButton.plain(
+                      return BouncingButton.plain(
                         icon: const Icon(
                           Icons.fingerprint,
                           color: Colors.white,
@@ -45,7 +57,7 @@ class ProtectWalletScreen extends StatelessWidget {
                       );
                     },
                     password: (password) {
-                      return StarknetButton.plain(
+                      return BouncingButton.plain(
                         icon: const Icon(
                           Icons.key,
                           color: Colors.white,

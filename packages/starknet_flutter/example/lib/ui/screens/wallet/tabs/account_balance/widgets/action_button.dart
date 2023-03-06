@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:starknet_flutter_example/ui/widgets/bouncing_button.dart';
 
 class ActionButton extends StatelessWidget {
@@ -36,7 +37,7 @@ class ActionButton extends StatelessWidget {
           const SizedBox(height: 7),
           Text(
             text,
-            style: TextStyle(fontSize: 12),
+            style: GoogleFonts.poppins(fontSize: 12),
           ),
         ],
       ),

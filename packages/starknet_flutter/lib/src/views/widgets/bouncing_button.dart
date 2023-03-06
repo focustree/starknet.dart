@@ -1,94 +1,98 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:starknet_flutter/src/views/widgets/bouncing_widget.dart';
 
-class BouncingWidget extends StatefulWidget {
-  const BouncingWidget({
+class BouncingButton extends StatelessWidget {
+  final String text;
+  final Icon? icon;
+  final Function()? onTap;
+  final Color? backgroundColor;
+  final TextStyle? textStyle;
+
+  const BouncingButton({
     super.key,
-    required this.child,
+    required this.text,
+    this.textStyle,
+    this.icon,
     this.onTap,
-    this.disabledOpacity,
-    this.vibrationEnabled = true,
-    this.duration = const Duration(milliseconds: 100),
+    this.backgroundColor,
   });
 
-  final Widget child;
-  final VoidCallback? onTap;
-  final double? disabledOpacity;
-  final Duration duration;
-  final bool? vibrationEnabled;
-
-  @override
-  // ignore: library_private_types_in_public_api
-  _BouncingWidgetState createState() => _BouncingWidgetState();
-}
-
-class _BouncingWidgetState extends State<BouncingWidget>
-    with SingleTickerProviderStateMixin {
-  late AnimationController? _controller;
-  late double _scale;
-
-  @override
-  void initState() {
-    _controller = AnimationController(
-      vsync: this,
-      duration: widget.duration,
-      lowerBound: 0.0,
-      upperBound: 0.1,
-    )..addListener(() {
-        setState(() {});
-      });
-    super.initState();
+  factory BouncingButton.plain({
+    Key? key,
+    required String text,
+    Icon? icon,
+    Function()? onTap,
+    TextStyle? textStyle,
+    Color? backgroundColor,
+  }) {
+    return BouncingButton(
+      key: key,
+      text: text,
+      icon: icon,
+      onTap: onTap,
+      textStyle: textStyle ??
+          GoogleFonts.poppins(
+            color: Colors.white,
+            fontWeight: FontWeight.bold,
+          ),
+      backgroundColor: backgroundColor,
+    );
   }
 
-  @override
-  void dispose() {
-    _controller!.stop();
-    _controller!.dispose();
-    _controller = null;
-    super.dispose();
+  factory BouncingButton.text({
+    Key? key,
+    required String text,
+    Icon? icon,
+    TextStyle? textStyle,
+    Function()? onTap,
+  }) {
+    return BouncingButton(
+      key: key,
+      text: text,
+      icon: icon,
+      onTap: onTap,
+      textStyle: textStyle ??
+          GoogleFonts.poppins(
+            color: Colors.black,
+            fontWeight: FontWeight.w500,
+            decoration: TextDecoration.underline,
+          ),
+      backgroundColor: Colors.transparent,
+    );
   }
 
   @override
   Widget build(BuildContext context) {
-    _scale = 1 - _controller!.value;
-
-    return IgnorePointer(
-      ignoring: widget.onTap == null,
-      child: MouseRegion(
-        cursor:
-            widget.onTap == null ? MouseCursor.defer : SystemMouseCursors.click,
-        child: AnimatedOpacity(
-          duration: const Duration(milliseconds: 200),
-          opacity: (widget.onTap != null) ? 1.0 : widget.disabledOpacity ?? 0.3,
-          child: GestureDetector(
-            onTapDown: _onTapDown,
-            onTapUp: _onTapUp,
-            onTapCancel: _onTapCancel,
-            child: Transform.scale(
-              scale: _scale,
-              child: widget.child,
-            ),
+    return BouncingWidget(
+      onTap: onTap,
+      child: Container(
+        padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 16),
+        decoration: BoxDecoration(
+          color: backgroundColor ?? Theme.of(context).primaryColor,
+          borderRadius: BorderRadius.circular(30),
+        ),
+        child: Center(
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              if (icon != null)
+                Padding(
+                  padding: const EdgeInsets.only(right: 8.0),
+                  child: icon,
+                ),
+              Flexible(
+                child: Text(
+                  text,
+                  style: textStyle,
+                  textAlign: TextAlign.center,
+                ),
+              ),
+            ],
           ),
         ),
       ),
     );
-  }
-
-  void _onTapDown(TapDownDetails details) {
-    if (widget.vibrationEnabled != null) {
-      HapticFeedback.selectionClick();
-    }
-    _controller?.forward.call();
-  }
-
-  void _onTapUp(TapUpDetails details) {
-    Future.delayed(widget.duration, () {
-      _controller?.reverse.call();
-    });
-    widget.onTap?.call();
-  }
-
-  void _onTapCancel() {
-    _controller?.reverse.call();
   }
 }

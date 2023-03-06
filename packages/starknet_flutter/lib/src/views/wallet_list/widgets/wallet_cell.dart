@@ -1,10 +1,11 @@
 import 'package:expandable/expandable.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:starknet_flutter/src/views/wallet/wallet_initialization_viewmodel.dart';
 import 'package:starknet_flutter/src/views/wallet_list/wallet_list_viewmodel.dart';
 import 'package:starknet_flutter/src/views/wallet_list/widgets/account_cell.dart';
-import 'package:starknet_flutter/src/views/widgets/starknet_button.dart';
+import 'package:starknet_flutter/src/views/widgets/bouncing_button.dart';
 
 import '../../../models/wallet.dart';
 
@@ -68,10 +69,10 @@ class WalletCell extends StatelessWidget {
                       },
                       itemCount: wallet.accounts.length,
                     ),
-                  StarknetButton.text(
+                  BouncingButton.text(
                     onTap: () {},
                     text: 'Add account',
-                    textStyle: TextStyle(
+                    textStyle: GoogleFonts.poppins(
                       color: Theme.of(context).primaryColor,
                       fontWeight: FontWeight.bold,
                     ),
@@ -125,7 +126,7 @@ class _WalletCellContent extends StatelessWidget {
                 children: [
                   Text(
                     name,
-                    style: const TextStyle(
+                    style: GoogleFonts.poppins(
                       fontWeight: FontWeight.bold,
                     ),
                   ),
@@ -133,7 +134,7 @@ class _WalletCellContent extends StatelessWidget {
                   Text(
                     accountsCount.toString() +
                         (accountsCount <= 1 ? ' account' : ' accounts'),
-                    style: const TextStyle(
+                    style: GoogleFonts.poppins(
                       color: Colors.grey,
                       fontSize: 12,
                     ),

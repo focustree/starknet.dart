@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:starknet_flutter/src/views/wallet/routes/create_wallet/choose_network_screen.dart';
 import 'package:starknet_flutter/src/views/wallet/wallet_initialization_presenter.dart';
 import 'package:starknet_flutter/src/views/wallet/wallet_initialization_viewmodel.dart';
-import 'package:starknet_flutter/src/views/widgets/starknet_button.dart';
+import 'package:starknet_flutter/src/views/widgets/bouncing_button.dart';
 
 class CreateSeedScreen extends StatelessWidget {
   static const routeName = '/seed';
@@ -38,11 +39,10 @@ class CreateSeedScreen extends StatelessWidget {
       child: Center(
         child: Column(
           children: [
-            const Text('Secret Recovery Phrase'),
-            const SizedBox(height: 16),
-            const Text(
+            Text(
               'Keep this phrase safe and secret. It can be used to recover your wallet.',
               textAlign: TextAlign.center,
+              style: GoogleFonts.poppins(),
             ),
             const SizedBox(height: 16),
             Flexible(
@@ -69,7 +69,7 @@ class CreateSeedScreen extends StatelessWidget {
                         children: [
                           Text(
                             "${index + 1}.",
-                            style: const TextStyle(
+                            style: GoogleFonts.poppins(
                               color: Colors.grey,
                               fontSize: 15,
                             ),
@@ -80,8 +80,8 @@ class CreateSeedScreen extends StatelessWidget {
                           Expanded(
                             child: Text(
                               words[index],
-                              style: const TextStyle(
-                                fontWeight: FontWeight.bold,
+                              style: GoogleFonts.poppins(
+                                fontWeight: FontWeight.w600,
                               ),
                               maxLines: 2,
                               overflow: TextOverflow.ellipsis,
@@ -94,14 +94,16 @@ class CreateSeedScreen extends StatelessWidget {
                 ),
               ),
             ),
-            StarknetButton.text(
+            BouncingButton.text(
               onTap: () {
                 Clipboard.setData(ClipboardData(text: words.join(' ')))
                     .then((_) {
                   ScaffoldMessenger.of(context).showSnackBar(
-                    const SnackBar(
-                      content:
-                          Text("Secret recovery phrase copied to clipboard"),
+                    SnackBar(
+                      content: Text(
+                        "Secret recovery phrase copied to clipboard",
+                        style: GoogleFonts.poppins(),
+                      ),
                     ),
                   );
                 });
@@ -111,12 +113,13 @@ class CreateSeedScreen extends StatelessWidget {
                 color: Theme.of(context).primaryColor,
               ),
               text: 'Copy to clipboard',
-              textStyle: TextStyle(
+              textStyle: GoogleFonts.poppins(
                 color: Theme.of(context).primaryColor,
+                fontWeight: FontWeight.bold,
               ),
             ),
             const SizedBox(height: 8),
-            StarknetButton.plain(
+            BouncingButton.plain(
               onTap: () {
                 Navigator.of(context).pushNamed(ChooseNetworkScreen.routeName);
               },

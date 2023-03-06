@@ -4,7 +4,7 @@ import 'package:starknet_flutter/src/views/wallet/routes/create_wallet/create_se
 import 'package:starknet_flutter/src/views/wallet/routes/restore_wallet/restore_wallet_screen.dart';
 import 'package:starknet_flutter/src/views/wallet/wallet_initialization_presenter.dart';
 import 'package:starknet_flutter/src/views/wallet/wallet_initialization_viewmodel.dart';
-import 'package:starknet_flutter/src/views/widgets/starknet_button.dart';
+import 'package:starknet_flutter/src/views/widgets/bouncing_button.dart';
 
 // TODO: add config to change textstyle / logo
 class WalletWelcomeView extends StatelessWidget {
@@ -37,14 +37,14 @@ class WalletWelcomeView extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 16),
-          StarknetButton.plain(
+          BouncingButton.plain(
             onTap: () {
               Navigator.of(context).pushNamed(CreateSeedScreen.routeName);
             },
             text: 'Create new wallet',
           ),
           const SizedBox(height: 8),
-          StarknetButton.text(
+          BouncingButton.text(
             onTap: () {
               Navigator.of(context).pushNamed(RestoreWalletScreen.routeName);
             },

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:pattern_lock/pattern_lock.dart';
 import 'package:starknet_flutter/src/views/passcode/fragments/pattern/pattern_config.dart';
 import 'package:starknet_flutter/src/views/utils/snackbar_utils.dart';
@@ -49,9 +50,9 @@ class PatternInput extends StatelessWidget {
                 // print("pattern is $input");
                 if (input.length <= 3) {
                   context.replaceSnackbar(
-                    content: const Text(
+                    content: Text(
                       "At least 3 points required",
-                      style: TextStyle(color: Colors.red),
+                      style: GoogleFonts.poppins(color: Colors.red),
                     ),
                   );
                 } else {

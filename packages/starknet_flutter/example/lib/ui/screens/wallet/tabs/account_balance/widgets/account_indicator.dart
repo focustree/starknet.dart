@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:starknet_flutter/starknet_flutter.dart';
 import 'package:starknet_flutter_example/ui/widgets/bouncing_button.dart';
 
@@ -37,9 +38,9 @@ class AccountIndicator extends StatelessWidget {
               ),
               const SizedBox(width: 10),
               selectedWallet == null || selectedAccount == null
-                  ? const Text(
+                  ? Text(
                       'Select wallet',
-                      style: TextStyle(
+                      style: GoogleFonts.poppins(
                         fontWeight: FontWeight.bold,
                       ),
                     )
@@ -49,7 +50,7 @@ class AccountIndicator extends StatelessWidget {
                           children: [
                             Text(
                               selectedWallet!.name,
-                              style: const TextStyle(
+                              style: GoogleFonts.poppins(
                                 fontWeight: FontWeight.bold,
                               ),
                             ),
