@@ -28,18 +28,18 @@ class _CreateSeedScreenState extends State<CreateSeedScreen> {
   @override
   Widget build(BuildContext context) {
     final words = [
-      "cat",
-      "book",
-      "weather",
-      "snow",
-      "purple",
-      "computer",
-      "phone",
-      "car",
-      "bike",
-      "plane",
-      "rocket",
-      "space",
+      "toward",
+      "antenna",
+      "indicate",
+      "reject",
+      "must",
+      "artist",
+      "expect",
+      "angry",
+      "fit",
+      "easy",
+      "cupboard",
+      "require",
     ];
     return Padding(
       padding: const EdgeInsets.all(16),
