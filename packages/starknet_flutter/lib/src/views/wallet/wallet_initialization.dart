@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 import 'package:starknet_flutter/src/views/utils/snackbar_utils.dart';
-import 'package:starknet_flutter/src/views/wallet/routes/welcome/wallet_welcome_view.dart';
+import 'package:starknet_flutter/src/views/wallet/routes/wallet_welcome_screen.dart';
 import 'package:starknet_flutter/src/views/wallet/wallet_initialization_observer.dart';
 import 'package:starknet_flutter/src/views/wallet/wallet_initialization_router.dart';
 import 'package:starknet_flutter/src/views/wallet_list/wallet_list_viewmodel.dart';

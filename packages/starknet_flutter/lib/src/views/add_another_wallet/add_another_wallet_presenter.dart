@@ -1,5 +1,5 @@
-import 'package:starknet_flutter/src/views/wallet/routes/create_wallet/create_seed_screen.dart';
-import 'package:starknet_flutter/src/views/wallet/routes/restore_wallet/restore_wallet_screen.dart';
+import 'package:starknet_flutter/src/views/wallet/routes/create_seed_screen.dart';
+import 'package:starknet_flutter/src/views/wallet/routes/restore_wallet_screen.dart';
 
 import 'add_another_wallet.dart';
 import 'add_another_wallet_viewmodel.dart';

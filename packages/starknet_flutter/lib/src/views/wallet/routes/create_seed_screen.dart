@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:starknet_flutter/src/views/wallet/routes/create_wallet/choose_network_screen.dart';
+import 'package:starknet_flutter/src/views/wallet/routes/protect_wallet_screen.dart';
 import 'package:starknet_flutter/src/views/wallet/wallet_initialization_presenter.dart';
 import 'package:starknet_flutter/src/views/wallet/wallet_initialization_viewmodel.dart';
 import 'package:starknet_flutter/src/views/widgets/bouncing_button.dart';
@@ -120,9 +120,8 @@ class CreateSeedScreen extends StatelessWidget {
             ),
             const SizedBox(height: 8),
             BouncingButton.plain(
-              onTap: () {
-                Navigator.of(context).pushNamed(ChooseNetworkScreen.routeName);
-              },
+              onTap: () => presenter.viewInterface
+                  .navigateToSubRoute(ProtectWalletScreen.routeName),
               text: 'Continue',
             ),
           ],
