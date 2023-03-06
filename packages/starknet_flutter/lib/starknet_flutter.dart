@@ -7,6 +7,7 @@ export 'src/exchange_rates/exchange_rates.dart';
 export 'src/models/models.dart';
 export 'src/stores/starknet_store.dart';
 export 'src/views/views.dart';
+export 'src/utils/number_utils.dart';
 
 class StarknetFlutter {
   static Future<void> init() async {
