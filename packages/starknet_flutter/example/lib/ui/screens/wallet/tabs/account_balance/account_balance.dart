@@ -53,7 +53,7 @@ class _AccountBalanceState extends State<AccountBalance> {
               builder: (context, snapshot) {
                 String? text;
                 if (snapshot.data != null) {
-                  text = '${snapshot.requireData} ETH';
+                  text = '${snapshot.data!.truncateBalance()} ETH';
                 }
                 return Text(
                   text ?? "",

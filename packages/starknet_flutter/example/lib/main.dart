@@ -20,7 +20,7 @@ class StarknetDemoApp extends StatelessWidget {
       theme: ThemeData(
         scaffoldBackgroundColor: Colors.white,
         primarySwatch: Colors.blue,
-        fontFamily: GoogleFonts.inter().fontFamily,
+        fontFamily: GoogleFonts.poppins().fontFamily,
       ),
       debugShowCheckedModeBanner: false,
       home: WalletScreen(

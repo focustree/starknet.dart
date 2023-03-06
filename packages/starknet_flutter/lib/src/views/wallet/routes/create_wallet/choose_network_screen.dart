@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:starknet_flutter/src/views/wallet/wallet_initialization_presenter.dart';
 import 'package:starknet_flutter/src/views/wallet/wallet_initialization_viewmodel.dart';
-import 'package:starknet_flutter/src/views/widgets/starknet_button.dart';
+import 'package:starknet_flutter/src/views/widgets/bouncing_button.dart';
 
 import '../../../../models/wallet.dart';
 
@@ -25,9 +26,12 @@ class ChooseNetworkScreen extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            const Text("Choose your network"),
+            Text(
+              "Choose your network",
+              style: GoogleFonts.poppins(),
+            ),
             const SizedBox(height: 32),
-            StarknetButton.plain(
+            BouncingButton.plain(
               onTap: () {
                 model.networkType = StarknetNetworkType.goerli;
                 // TODO Create a real wallet
@@ -42,7 +46,7 @@ class ChooseNetworkScreen extends StatelessWidget {
               text: 'StarkNet Goerli Alpha',
             ),
             const SizedBox(height: 16),
-            StarknetButton.plain(
+            BouncingButton.plain(
               onTap: () {
                 model.networkType =
                     StarknetNetworkType.mainnet; // TODO Create a real wallet

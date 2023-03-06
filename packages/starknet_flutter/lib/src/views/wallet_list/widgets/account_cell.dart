@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:starknet_flutter/src/models/models.dart';
-import 'package:starknet_flutter/src/views/widgets/bouncing_button.dart';
+import 'package:starknet_flutter/src/views/widgets/bouncing_widget.dart';
 
 class AccountCell extends StatelessWidget {
   final PublicAccount account;
@@ -30,7 +31,7 @@ class AccountCell extends StatelessWidget {
                 children: [
                   Text(
                     account.name,
-                    style: const TextStyle(
+                    style: GoogleFonts.poppins(
                       fontSize: 13.0,
                       fontWeight: FontWeight.bold,
                     ),
@@ -44,7 +45,7 @@ class AccountCell extends StatelessWidget {
                       }
                       return Text(
                         '${snapshot.requireData} ETH',
-                        style: const TextStyle(
+                        style: GoogleFonts.poppins(
                           color: Colors.grey,
                           fontSize: 12.0,
                         ),

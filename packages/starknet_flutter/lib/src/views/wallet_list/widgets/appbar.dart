@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:starknet_flutter/src/views/widgets/bouncing_button.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:starknet_flutter/src/views/widgets/bouncing_widget.dart';
 
 class WalletListAppBar extends StatelessWidget {
   final Function()? onEditPressed;
@@ -17,11 +18,11 @@ class WalletListAppBar extends StatelessWidget {
         padding: const EdgeInsets.symmetric(horizontal: 10),
         child: Stack(
           children: [
-            const Align(
+            Align(
               alignment: Alignment.center,
               child: Text(
                 'Wallets',
-                style: TextStyle(
+                style: GoogleFonts.poppins(
                   fontSize: 16,
                   fontWeight: FontWeight.bold,
                 ),
@@ -40,7 +41,7 @@ class WalletListAppBar extends StatelessWidget {
                     ),
                     child: Text(
                       'Edit',
-                      style: TextStyle(
+                      style: GoogleFonts.poppins(
                         color: Theme.of(context).primaryColor,
                         fontWeight: FontWeight.bold,
                       ),

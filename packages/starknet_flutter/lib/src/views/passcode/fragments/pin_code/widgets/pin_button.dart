@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:starknet_flutter/src/views/widgets/bouncing_button.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:starknet_flutter/src/views/widgets/bouncing_widget.dart';
 
 // TODO: add alphabet
 class PinButton extends StatelessWidget {
@@ -26,7 +27,7 @@ class PinButton extends StatelessWidget {
         child: Center(
           child: Text(
             number.toString(),
-            style: const TextStyle(
+            style: GoogleFonts.poppins(
               fontSize: 32,
               fontWeight: FontWeight.w500,
             ),

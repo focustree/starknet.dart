@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:starknet_flutter/src/views/passcode/fragments/password/password_input.dart';
 import 'package:starknet_flutter/src/views/passcode/fragments/pattern/pattern_config.dart';
 import 'package:starknet_flutter/src/views/widgets/shake.dart';
@@ -158,7 +159,7 @@ class _PasscodeInputViewState extends State<PasscodeInputView> {
           child: Text(
             widget.actionConfig.title(isConfirming: isConfirm),
             textAlign: TextAlign.center,
-            style: const TextStyle(
+            style: GoogleFonts.poppins(
               fontSize: 17,
             ),
           ),

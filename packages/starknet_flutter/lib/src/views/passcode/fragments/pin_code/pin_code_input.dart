@@ -6,7 +6,7 @@ import 'package:starknet_flutter/src/views/passcode/passcode_config.dart';
 import 'package:starknet_flutter/src/views/passcode/passcode_enums.dart';
 import 'package:starknet_flutter/src/views/passcode/passcode_input_view.dart';
 import 'package:starknet_flutter/src/views/utils/snackbar_utils.dart';
-import 'package:starknet_flutter/src/views/widgets/bouncing_button.dart';
+import 'package:starknet_flutter/src/views/widgets/bouncing_widget.dart';
 
 enum PinCodeSize { four, six }
 
