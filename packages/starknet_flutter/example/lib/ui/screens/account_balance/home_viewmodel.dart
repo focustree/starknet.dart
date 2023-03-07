@@ -6,6 +6,12 @@ class HomeViewModel {
   bool? isLoadingBalance;
 
   double? ethBalance;
+  double? ethExchangeRate;
+  double get ethDollarPrice => ethBalance != null && ethExchangeRate != null
+      ? ethBalance! * ethExchangeRate!
+      : 0;
+  
+  double get totalDollarBalance => ethDollarPrice;
 
   bool get hasSelectedAccount => selectedAccount != null;
   bool get hasSelectedWallet => selectedWallet != null;

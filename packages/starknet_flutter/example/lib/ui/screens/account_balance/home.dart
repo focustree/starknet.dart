@@ -96,22 +96,34 @@ class _HomePageState extends State<HomePage> implements HomeView {
                 ),
               Padding(
                 padding: const EdgeInsets.only(top: 12, bottom: 15),
-                child: model.ethBalance != null
-                    ? Text(
-                        '${model.ethBalance!.truncateBalance()} ETH',
-                        style: const TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 30,
+                child: AnimatedSize(
+                  duration: const Duration(milliseconds: 500),
+                  curve: Curves.fastLinearToSlowEaseIn,
+                  child: model.isLoadingBalance == false && model.hasSomeEth
+                      ? SizedBox(
+                          key: const Key('total_balance'),
+                          width: double.infinity,
+                          child: Text(
+                            '\$${model.totalDollarBalance.truncateBalance(precision: 2)}',
+                            style: const TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 30,
+                            ),
+                          ),
+                        )
+                      : const SizedBox(
+                          key: Key('total_balance_placeholder'),
+                          width: double.infinity,
                         ),
-                      )
-                    : const SizedBox.shrink(),
+                ),
               ),
               Flexible(
                 child: Padding(
                   padding: const EdgeInsets.only(bottom: 20),
                   child: AnimatedSwitcher(
-                      duration: const Duration(milliseconds: 300),
-                      child: _buildContent(),),
+                    duration: const Duration(milliseconds: 300),
+                    child: _buildContent(),
+                  ),
                 ),
               ),
               if (model.hasSelectedWallet && model.hasSelectedAccount)
@@ -149,21 +161,24 @@ class _HomePageState extends State<HomePage> implements HomeView {
     }
 
     if (model.hasSomeEth) {
-      return ListView.separated(
-        key: const Key('list'),
-        itemBuilder: (context, index) {
-          // currently only ETH is supported
-          return CryptoBalanceCellWidget(
-            name: 'Ethereum',
-            symbolAssetPath: 'assets/images/crypto/ethereum.png',
-            balance: model.ethBalance!,
-            dollarPrice: 0,
-          );
-        },
-        separatorBuilder: (context, index) {
-          return const SizedBox(height: 10);
-        },
-        itemCount: 1,
+      return RefreshIndicator(
+        onRefresh: presenter.loadEthBalance,
+        child: ListView.separated(
+          key: const Key('list'),
+          itemBuilder: (context, index) {
+            // currently only ETH is supported
+            return CryptoBalanceCellWidget(
+              name: 'Ethereum',
+              symbolAssetPath: 'assets/images/crypto/ethereum.png',
+              balance: model.ethBalance!,
+              dollarPrice: model.ethDollarPrice.truncateBalance(precision: 2),
+            );
+          },
+          separatorBuilder: (context, index) {
+            return const SizedBox(height: 10);
+          },
+          itemCount: 1,
+        ),
       );
     } else {
       return EmptyWalletWidget(

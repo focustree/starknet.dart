@@ -38,16 +38,20 @@ class CryptoBalanceCellWidget extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.end,
           children: [
             Text(
-              'US\$$dollarPrice',
+              '\$$dollarPrice',
+              maxLines: 1,
+              overflow: TextOverflow.ellipsis,
               style: GoogleFonts.poppins(
-                fontSize: 15,
+                fontSize: 16,
                 fontWeight: FontWeight.bold,
               ),
             ),
             Text(
               '${balance.truncateBalance()} ETH',
+              maxLines: 1,
+              overflow: TextOverflow.ellipsis,
               style: GoogleFonts.poppins(
-                fontSize: 13,
+                fontSize: 14,
               ),
             ),
           ],

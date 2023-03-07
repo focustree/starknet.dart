@@ -20,10 +20,11 @@ class HomePresenter {
     viewInterface.showDialogWalletMissing();
   }
 
-  Future loadBalance() async {
+  Future loadEthBalance() async {
     viewModel.isLoadingBalance = true;
     viewInterface.refresh();
 
+    viewModel.ethExchangeRate = await ExchangeRates.get(from: 'ETH', to: 'USD');
     viewModel.ethBalance = await viewModel.selectedAccount?.balance;
 
     viewModel.isLoadingBalance = false;
@@ -51,8 +52,8 @@ class HomePresenter {
       viewModel.selectedWallet = selectedAccount.wallet;
       viewModel.selectedAccount = selectedAccount.account;
       viewInterface.refresh();
-      
-      loadBalance();
+
+      loadEthBalance();
     }
   }
 }
