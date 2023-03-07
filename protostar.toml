@@ -24,3 +24,6 @@ udc = [
 oz_account = [
     "contracts/lib/cairo_contracts/src/openzeppelin/account/presets/Account.cairo"
 ]
+oz_account_upgradable = [
+    "contracts/src/AccountUpgradable.cairo"
+]
