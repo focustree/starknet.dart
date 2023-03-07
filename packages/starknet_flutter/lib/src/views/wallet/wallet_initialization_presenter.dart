@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/cupertino.dart';
 import 'package:starknet/starknet.dart';
+import 'package:starknet_flutter/pigeon.dart';
 import 'package:starknet_flutter/src/views/wallet_list/wallet_list_viewmodel.dart';
 
 import '../../models/public_account.dart';
@@ -119,14 +120,23 @@ class WalletInitializationPresenter {
       walletId: wallet.walletId,
     );
 
+    final options = BiometricOptions(
+      androidOptions: AndroidOptions(
+        enableAndroidStrongBox: false,
+        authenticationValidityDurationSeconds: 2,
+      ),
+    );
+
     // Store seed phrase and private key securely
     await biometricStore.storeSeedPhrase(
       id: wallet.walletId,
       seedPhrase: viewModel.seedPhrase!,
+      biometricOptions: options,
     );
     await biometricStore.storePrivateKey(
       id: account.privateKeyId,
       privateKey: viewModel.account!.signer.privateKey.toBigInt().toUint8List(),
+      biometricOptions: options,
     );
 
     // TODO handle case where biometric auth is not validated

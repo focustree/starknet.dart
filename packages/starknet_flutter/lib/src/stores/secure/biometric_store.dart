@@ -1,7 +1,5 @@
-import 'dart:convert';
 import 'dart:io';
 
-import 'package:biometric_storage/biometric_storage.dart';
 import 'package:flutter/foundation.dart';
 import 'package:starknet_flutter/pigeon.dart';
 import 'package:starknet_flutter/src/stores/secure/exceptions/biometric_store_not_available_exception.dart';
@@ -9,35 +7,18 @@ import 'package:starknet_flutter/src/stores/secure/secure_store.dart';
 
 /// Stores secrets encrypted with biometric authentication when available.
 class BiometricStore extends SecureStore {
-  final AndroidSecureStoreOptions androidOptions;
 
-  BiometricStore({
-    required this.androidOptions,
-  });
-
-  /// Returns a [BiometricStorageFile] for the given [key].
-  Future<BiometricStorageFile> _biometricStore(String key) {
-    return BiometricStorage().getStorage(
-      key,
-      options: StorageFileInitOptions(
-        authenticationValidityDurationSeconds:
-            androidOptions.authenticationValidityDurationSeconds,
-      ),
-    );
-  }
+  BiometricStore();
 
   /// Stores a [secret] encrypted with biometry under [key].
   Future<void> storeSecret({
     required String key,
     required Uint8List secret,
+    required BiometricOptions? biometricOptions,
   }) async {
-    if (!kIsWeb && (Platform.isIOS || Platform.isMacOS)) {
-      // Store in Secure Enclave
-      return StarknetInterface().storeSecret(key, secret);
-    } else if (!kIsWeb && !(Platform.isIOS || Platform.isMacOS)) {
-      // Store in biometric storage
-      final store = await _biometricStore(key);
-      return store.write(base64Encode(secret));
+    if (!kIsWeb && (Platform.isIOS || Platform.isMacOS || Platform.isAndroid)) {
+      // Store with biometry
+      return StarknetInterface().storeSecret(key, secret, biometricOptions);
     } else {
       throw const BiometricStoreNotAvailableException();
     }
@@ -46,17 +27,10 @@ class BiometricStore extends SecureStore {
   /// Retrieves the secret encrypted with biometric under [key].
   Future<Uint8List?> getSecret({
     required String key,
+    required BiometricOptions? biometricOptions,
   }) async {
-    if (!kIsWeb && (Platform.isIOS || Platform.isMacOS)) {
-      return StarknetInterface().getSecret(key);
-    } else if (!kIsWeb && !(Platform.isIOS || Platform.isMacOS)) {
-      // Get from biometric storage
-      final store = await _biometricStore(key);
-      final content = await store.read();
-      if (content == null) {
-        return null;
-      }
-      return base64Decode(content);
+    if (!kIsWeb && (Platform.isIOS || Platform.isMacOS || Platform.isAndroid)) {
+      return StarknetInterface().getSecret(key, biometricOptions);
     } else {
       throw const BiometricStoreNotAvailableException();
     }
@@ -66,10 +40,7 @@ class BiometricStore extends SecureStore {
   Future<void> deleteSecret({
     required String key,
   }) async {
-    if (!kIsWeb && !(Platform.isIOS || Platform.isMacOS)) {
-      final store = await _biometricStore(key);
-      await store.delete();
-    } else if (!kIsWeb && (Platform.isIOS || Platform.isMacOS)) {
+    if (!kIsWeb && (Platform.isIOS || Platform.isMacOS || Platform.isAndroid)) {
       return StarknetInterface().removeSecret(key);
     } else {
       throw const BiometricStoreNotAvailableException();
@@ -81,15 +52,24 @@ class BiometricStore extends SecureStore {
   Future<void> storePrivateKey({
     required Uint8List privateKey,
     required String id,
+    BiometricOptions? biometricOptions,
   }) {
-    return storeSecret(key: privateKeyOf(id), secret: privateKey);
+    return storeSecret(
+      key: privateKeyOf(id),
+      secret: privateKey,
+      biometricOptions: biometricOptions,
+    );
   }
 
   /// Retrieves the private key associated with [id] encrypted with biometric.
   Future<Uint8List?> getPrivateKey({
     required String id,
+    BiometricOptions? biometricOptions,
   }) {
-    return getSecret(key: privateKeyOf(id));
+    return getSecret(
+      key: privateKeyOf(id),
+      biometricOptions: biometricOptions,
+    );
   }
 
   /// Deletes the private key identified by [id].
@@ -103,19 +83,23 @@ class BiometricStore extends SecureStore {
   Future<void> storeSeedPhrase({
     required String id,
     required List<String> seedPhrase,
+    BiometricOptions? biometricOptions,
   }) {
     return storeSecret(
       key: seedPhraseOf(id),
       secret: wordsToBytes(seedPhrase),
+      biometricOptions: biometricOptions,
     );
   }
 
   /// Retrieves the seed phrase corresponding to [id] encrypted with biometric.
   Future<List<String>?> getSeedPhrase({
     required String id,
+    BiometricOptions? biometricOptions,
   }) async {
     final secret = await getSecret(
       key: seedPhraseOf(id),
+      biometricOptions: biometricOptions,
     );
     if (secret == null) {
       return null;
