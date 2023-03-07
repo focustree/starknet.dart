@@ -1,17 +1,20 @@
 import 'dart:async';
 
-import 'transaction.dart';
+import 'package:starknet_flutter/starknet_flutter.dart';
+
 import 'transaction_viewmodel.dart';
 
 class TransactionPresenter {
   final TransactionViewModel viewModel;
   final TransactionView viewInterface;
+  final TransactionArguments args;
 
   StreamSubscription<String?>? _subscription;
 
   TransactionPresenter(
     this.viewModel,
     this.viewInterface,
+    this.args,
   );
 
   TransactionPresenter init() {
@@ -19,7 +22,21 @@ class TransactionPresenter {
       viewModel.routeName = routeName;
       viewInterface.refresh();
     });
+
+    loadEthBalance();
+    
     return this;
+  }
+
+  loadEthBalance() async {
+    viewModel.isLoadingEthBalance = true;
+    viewInterface.refresh();
+
+    viewModel.ethExchangeRate = await ExchangeRates.get(from: 'ETH', to: 'USD');
+    viewModel.ethBalance = await args.selectedAccount?.balance;
+
+    viewModel.isLoadingEthBalance = false;
+    viewInterface.refresh();
   }
 
   void dispose() {

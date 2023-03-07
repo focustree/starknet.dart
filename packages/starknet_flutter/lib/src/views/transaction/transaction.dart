@@ -5,19 +5,23 @@ import 'package:starknet_flutter/src/views/transaction/routes/amount_screen/amou
 import 'package:starknet_flutter/src/views/transaction/transaction_observer.dart';
 import 'package:starknet_flutter/src/views/transaction/transaction_router.dart';
 import 'package:starknet_flutter/src/views/widgets/bouncing_widget.dart';
+import 'package:starknet_flutter/starknet_flutter.dart';
 
 import 'transaction_presenter.dart';
 import 'transaction_viewmodel.dart';
 
 class StarknetTransaction {
   static Future showModal(
-    BuildContext context,
-  ) async {
+    BuildContext context, {
+    required TransactionArguments args,
+  }) async {
     final selectedAccountCallback = await showBarModalBottomSheet(
       context: context,
       barrierColor: Colors.black.withOpacity(0.6),
       builder: (context) {
-        return const TransactionPage();
+        return TransactionPage(
+          args: args,
+        );
       },
     );
     return selectedAccountCallback?.call();
@@ -32,7 +36,10 @@ abstract class TransactionView {
 }
 
 class TransactionArguments {
-  TransactionArguments();
+  final PublicAccount? selectedAccount;
+  TransactionArguments({
+    required this.selectedAccount,
+  });
 }
 
 class TransactionPage extends StatefulWidget {
@@ -66,6 +73,7 @@ class _TransactionPageState extends State<TransactionPage>
     presenter = TransactionPresenter(
       TransactionViewModel(),
       this,
+      widget.args!,
     ).init();
     model = presenter.viewModel;
     observer = TransactionNavigatorObserver(model.didChange);

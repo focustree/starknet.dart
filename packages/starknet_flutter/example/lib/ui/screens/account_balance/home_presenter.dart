@@ -58,6 +58,10 @@ class HomePresenter {
   }
 
   onSendTap() {
-    viewInterface.showTransactionModal();
+    viewInterface.showTransactionModal(
+      TransactionArguments(
+        selectedAccount: viewModel.selectedAccount,
+      ),
+    );
   }
 }

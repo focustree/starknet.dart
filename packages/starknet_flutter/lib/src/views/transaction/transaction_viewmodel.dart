@@ -8,6 +8,12 @@ class TransactionViewModel {
   StreamController<String?> didChange = StreamController<String?>();
   String? routeName;
 
+  double? ethExchangeRate;
+  double? ethBalance;
+  
+
+  late bool isLoadingEthBalance;
+
   bool get isRootPage => routeName == AmountScreen.routeName;
 
   String? get title {

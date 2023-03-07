@@ -23,7 +23,11 @@ class AmountScreen extends StatefulWidget {
 }
 
 class _AmountScreenState extends State<AmountScreen> {
-  String _amount = '';
+  String _amountStr = '';
+  double get amount => _amountStr.isNotEmpty ? double.parse(_amountStr) : 0;
+  double get ethDollarPrice => widget.model.ethExchangeRate != null
+      ? amount * widget.model.ethExchangeRate!
+      : 0;
 
   @override
   Widget build(BuildContext context) {
@@ -43,7 +47,7 @@ class _AmountScreenState extends State<AmountScreen> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
-                      _amount.isEmpty ? '0' : _amount,
+                      _amountStr.isEmpty ? '0' : _amountStr,
                       style: GoogleFonts.fjallaOne(
                         fontSize: 55,
                         fontWeight: FontWeight.bold,
@@ -64,7 +68,7 @@ class _AmountScreenState extends State<AmountScreen> {
               const SizedBox(height: 8),
               // TODO: connect real data
               Text(
-                '\$1.54',
+                '\$$ethDollarPrice',
                 style: GoogleFonts.poppins(
                   color: Colors.grey,
                 ),
@@ -72,7 +76,7 @@ class _AmountScreenState extends State<AmountScreen> {
               const SizedBox(height: 3),
               // TODO: connect real data
               Text(
-                '0.064 ETH available',
+                '${widget.model.ethBalance ?? '--'} ETH available',
                 style: GoogleFonts.poppins(
                   color: Colors.grey,
                 ),
@@ -152,35 +156,42 @@ class _AmountScreenState extends State<AmountScreen> {
   }
 
   _onDotTap() {
-    if (_amount.contains('.')) return;
+    if (_amountStr.contains('.')) return;
 
-    if (_amount.isEmpty) {
+    if (_amountStr.isEmpty) {
       setState(() {
-        _amount = '0.';
+        _amountStr = '0.';
       });
       return;
     }
 
     setState(() {
-      _amount = '$_amount.';
+      _amountStr = '$_amountStr.';
     });
   }
 
   _onBackSpaceTap() {
-    if (_amount.isEmpty) return;
+    if (_amountStr.isEmpty) return;
     setState(() {
-      _amount = _amount.substring(0, _amount.length - 1);
+      _amountStr = _amountStr.substring(0, _amountStr.length - 1);
     });
   }
 
   _onNumberTap(int number) {
+    if (_amountStr.startsWith('0') && _amountStr.length == 1) {
+      setState(() {
+        _amountStr = number.toString();
+      });
+      return;
+    }
+
     if (number == 0 &&
-        _amount.isNotEmpty &&
-        _amount.characters.first == '0' &&
-        !_amount.contains('.')) return;
+        _amountStr.isNotEmpty &&
+        _amountStr.characters.first == '0' &&
+        !_amountStr.contains('.')) return;
 
     setState(() {
-      _amount = _amount + number.toString();
+      _amountStr = _amountStr + number.toString();
     });
   }
 }
