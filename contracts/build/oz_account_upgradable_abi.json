@@ -184,8 +184,20 @@
                 "type": "felt"
             },
             {
-                "name": "publicKey",
+                "name": "implementation_address",
                 "type": "felt"
+            },
+            {
+                "name": "initializer_selector",
+                "type": "felt"
+            },
+            {
+                "name": "calldata_len",
+                "type": "felt"
+            },
+            {
+                "name": "calldata",
+                "type": "felt*"
             }
         ],
         "name": "__validate_deploy__",

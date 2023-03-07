@@ -131,7 +131,9 @@ func __validate_deploy__{
 } (
     class_hash: felt,
     contract_address_salt: felt,
-    publicKey: felt
+    implementation_address: felt,
+    initializer_selector: felt,
+    calldata_len: felt, calldata: felt*
 ) {
     let (tx_info) = get_tx_info();
     Account.is_valid_signature(tx_info.transaction_hash, tx_info.signature_len, tx_info.signature);
