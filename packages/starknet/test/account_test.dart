@@ -1,4 +1,3 @@
-import 'package:starknet/src/crypto/derivation.dart';
 import 'package:starknet/starknet.dart';
 import 'package:test/test.dart';
 
