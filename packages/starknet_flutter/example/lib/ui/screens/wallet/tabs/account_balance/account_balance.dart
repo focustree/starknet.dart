@@ -77,7 +77,7 @@ class _AccountBalanceState extends State<AccountBalance> {
                 icon: Icons.swap_calls_rounded,
                 text: 'Deposit',
                 onPressed: () {
-                  StarknetDepositEth.showDepositEthModal(context);
+                  StarknetDeposit.showDepositModal(context);
                 },
               ),
               ActionButton(
