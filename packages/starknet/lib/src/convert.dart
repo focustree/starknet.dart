@@ -40,3 +40,7 @@ String bytesToHexString(List<int> bytes) {
 List<BigInt> toBigIntList(List<Felt> feltList) {
   return feltList.map((felt) => felt.toBigInt()).toList();
 }
+
+BigInt bytesToUnsignedInt(Uint8List bytes) {
+  return decodeBigIntWithSign(1, bytes);
+}
