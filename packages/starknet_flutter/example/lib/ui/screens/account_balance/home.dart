@@ -169,7 +169,7 @@ class _HomePageState extends State<HomePage> implements HomeView {
             // currently only ETH is supported
             return CryptoBalanceCellWidget(
               name: 'Ethereum',
-              symbolAssetPath: 'assets/images/crypto/ethereum.png',
+              symbolIconUrl: 'https://cryptoicons.org/api/color/eth/200',
               balance: model.ethBalance!,
               dollarPrice: model.ethDollarPrice.truncateBalance(precision: 2),
             );

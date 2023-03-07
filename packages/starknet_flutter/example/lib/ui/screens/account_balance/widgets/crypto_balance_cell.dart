@@ -4,13 +4,13 @@ import 'package:starknet_flutter/starknet_flutter.dart';
 
 class CryptoBalanceCellWidget extends StatelessWidget {
   final String name;
-  final String symbolAssetPath;
+  final String symbolIconUrl;
   final double balance;
   final num dollarPrice;
   const CryptoBalanceCellWidget({
     Key? key,
     required this.name,
-    required this.symbolAssetPath,
+    required this.symbolIconUrl,
     required this.balance,
     required this.dollarPrice,
   }) : super(key: key);
@@ -19,8 +19,8 @@ class CryptoBalanceCellWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        Image.asset(
-          symbolAssetPath,
+        Image.network(
+          symbolIconUrl,
           width: 35,
           height: 35,
         ),
