@@ -56,4 +56,8 @@ class HomePresenter {
       loadEthBalance();
     }
   }
+
+  onSendTap() {
+    viewInterface.showTransactionModal();
+  }
 }

@@ -20,6 +20,7 @@ abstract class HomeView {
   Future<String?> passwordPrompt();
   Future createPassword();
   Future<SelectedAccount?> showInitialisationDialog();
+  Future showTransactionModal();
 }
 
 class HomeArguments {
@@ -133,7 +134,7 @@ class _HomePageState extends State<HomePage> implements HomeView {
                     ActionButtonWidget(
                       icon: Icons.send_outlined,
                       text: 'Send',
-                      onPressed: () {},
+                      onPressed: presenter.onSendTap,
                     ),
                   ],
                 ),
@@ -325,5 +326,10 @@ class _HomePageState extends State<HomePage> implements HomeView {
       context,
       passwordPrompt,
     );
+  }
+  
+  @override
+  Future showTransactionModal() {
+    return StarknetTransaction.showModal(context);
   }
 }
