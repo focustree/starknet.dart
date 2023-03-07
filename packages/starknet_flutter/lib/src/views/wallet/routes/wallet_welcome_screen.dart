@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:starknet_flutter/src/views/wallet/routes/create_wallet/create_seed_screen.dart';
-import 'package:starknet_flutter/src/views/wallet/routes/restore_wallet/restore_wallet_screen.dart';
 import 'package:starknet_flutter/src/views/wallet/wallet_initialization_presenter.dart';
 import 'package:starknet_flutter/src/views/wallet/wallet_initialization_viewmodel.dart';
 import 'package:starknet_flutter/src/views/widgets/bouncing_button.dart';
@@ -38,16 +36,12 @@ class WalletWelcomeView extends StatelessWidget {
           ),
           const SizedBox(height: 16),
           BouncingButton.plain(
-            onTap: () {
-              Navigator.of(context).pushNamed(CreateSeedScreen.routeName);
-            },
+            onTap: presenter.onCreateNewWalletTap,
             text: 'Create new wallet',
           ),
           const SizedBox(height: 8),
           BouncingButton.text(
-            onTap: () {
-              Navigator.of(context).pushNamed(RestoreWalletScreen.routeName);
-            },
+            onTap: presenter.onRestoreWalletTap,
             text: 'I already have a wallet',
           ),
         ]),

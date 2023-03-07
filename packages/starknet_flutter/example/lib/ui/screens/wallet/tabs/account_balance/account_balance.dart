@@ -75,8 +75,10 @@ class _AccountBalanceState extends State<AccountBalance> {
               ),
               ActionButton(
                 icon: Icons.swap_calls_rounded,
-                text: 'Swap',
-                onPressed: () {},
+                text: 'Deposit',
+                onPressed: () {
+                  StarknetDeposit.showDepositModal(context);
+                },
               ),
               ActionButton(
                 icon: Icons.send_outlined,
@@ -91,7 +93,8 @@ class _AccountBalanceState extends State<AccountBalance> {
                 },
               ),
             ],
-          )
+          ),
+          
         ],
       ),
     );

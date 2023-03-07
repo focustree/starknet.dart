@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:starknet/starknet.dart';
-import 'package:starknet_flutter/src/views/wallet/routes/restore_wallet/protect_wallet_screen.dart';
+import 'package:starknet_flutter/src/views/wallet/routes/protect_wallet_screen.dart';
 import 'package:starknet_flutter/src/views/wallet/wallet_initialization_presenter.dart';
 import 'package:starknet_flutter/src/views/wallet/wallet_initialization_viewmodel.dart';
 import 'package:starknet_flutter/src/views/widgets/bouncing_widget.dart';
@@ -170,7 +170,7 @@ class _RestoreWalletScreenState extends State<RestoreWalletScreen> {
 
                         // Navigate to the protect screen
                         if (context.mounted) {
-                          Navigator.of(context).pushReplacementNamed(
+                          widget.presenter.viewInterface.navigateToSubRoute(
                             ProtectWalletScreen.routeName,
                           );
                         }
