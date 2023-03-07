@@ -1,3 +1,4 @@
+import 'package:starknet/src/crypto/derivation.dart';
 import 'package:starknet/starknet.dart';
 import 'package:test/test.dart';
 
@@ -163,6 +164,26 @@ void main() {
             signer.publicKey,
             equals(Felt.fromHexString(
                 "0x01ff0cdadb901570e76dc764dca53101b3c388203e0867243760d90494850d44")));
+      });
+
+      test('Bug #178 error while computing public key', () async {
+        final mnemonic =
+            "rotate nice pattern oven twice upper defense exile squirrel gym script sight"
+                .split(" ");
+        final Felt privateKey = derivePrivateKey(mnemonic: mnemonic);
+        expect(
+            privateKey,
+            equals(
+              Felt.fromHexString(
+                  "0xe2e4c6ab3d0942add52a707e16c844c1aa78e6c827b2e43070065a498e83bc"),
+            ));
+        final signer = Signer(privateKey: privateKey);
+        expect(
+            signer.publicKey,
+            equals(
+              Felt.fromHexString(
+                  "0x1537768ebeabb7b811c5eeb8e38d8bafc9c957051ff0f311abad2d608f29d53"),
+            ));
       });
     });
   });

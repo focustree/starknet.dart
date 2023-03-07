@@ -1,8 +1,3 @@
-import 'dart:typed_data';
-
-import 'package:bip32/bip32.dart' as bip32;
-import 'package:bip39/bip39.dart' as bip39;
-import 'package:pointycastle/digests/sha256.dart';
 import 'package:starknet/src/presets/udc.g.dart';
 import 'package:starknet/starknet.dart';
 
@@ -292,31 +287,6 @@ Felt? getDeployedContractAddress(GetTransactionReceipt txReceipt) {
 abstract class AccountDerivation {
   Signer deriveSigner({required List<String> mnemonic, int index = 0});
   Felt computeAddress({required Felt publicKey});
-
-  Uint8List grindKey(Uint8List keySeed) {
-    final BigInt keyValLimit = pedersenParams.ecOrder;
-    final BigInt sha256MaxDigest = BigInt.parse(
-      '10000000000000000000000000000000000000000000000000000000000000000',
-      radix: 16,
-    );
-
-    final maxAllowed = sha256MaxDigest - (sha256MaxDigest % keyValLimit);
-    int index = 0;
-    Uint8List key = _hashKeyWithIndex(keySeed, index);
-    index++;
-    while (bytesToBigInt(key) > maxAllowed) {
-      key = _hashKeyWithIndex(keySeed, index);
-      index++;
-    }
-    final result = bytesToBigInt(key) % keyValLimit;
-    return result.toUint8List();
-  }
-
-  Uint8List _hashKeyWithIndex(Uint8List key, int index) {
-    // Uint8List are not growable
-    final data = Uint8List.fromList(key + [index]);
-    return SHA256Digest().process(data);
-  }
 }
 
 class BraavosAccountDerivation extends AccountDerivation {
@@ -342,12 +312,7 @@ class BraavosAccountDerivation extends AccountDerivation {
 
   @override
   Signer deriveSigner({required List<String> mnemonic, int index = 0}) {
-    final seed = bip39.mnemonicToSeed(mnemonic.join(" "));
-    final nodeFromSeed = bip32.BIP32.fromSeed(seed);
-    final child = nodeFromSeed.derivePath('$pathPrefix/$index');
-    Uint8List key = child.privateKey!;
-    key = grindKey(key);
-    final privateKey = Felt(bytesToBigInt(key));
+    final privateKey = derivePrivateKey(mnemonic: mnemonic, index: index);
     return Signer(privateKey: privateKey);
   }
 

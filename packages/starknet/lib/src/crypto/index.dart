@@ -1,6 +1,7 @@
 import 'package:starknet/starknet.dart';
 
 export 'model/pedersen_params.dart';
+export 'derivation.dart';
 export 'keccak.dart';
 export 'pedersen.dart';
 export 'signature.dart';
