@@ -12,24 +12,24 @@ class StarknetApi : NSObject, StarknetInterface {
   func removeSecret(key: String, completion: @escaping (Result<Void, Error>) -> Void) {
     let secureEnclaveManager = SecureEnclaveManager()
     let keychainManager = KeychainManager()
-    
+
     do {
       // Remove key from secure enclave
       try secureEnclaveManager.delete(key: key)
-      
+
       // Remove cipher from keychain
       keychainManager.delete(key: key)
-      
+
       completion(.success(()))
     } catch let error {
       completion(.failure(error))
     }
   }
-  
-  func storeSecret(key: String, privateKey: FlutterStandardTypedData, completion: @escaping (Result<Void, Error>) -> Void) {
+
+  func storeSecret(key: String, privateKey: FlutterStandardTypedData,biometricOptions: BiometricOptions?, completion: @escaping (Result<Void, Error>) -> Void) {
     let secureEnclaveManager = SecureEnclaveManager()
     let keychainManager = KeychainManager()
-    
+
     do {
       let cipher = try secureEnclaveManager.encrypt(key: key, message: privateKey.data)
       keychainManager.save(key: key, cipher: cipher)
@@ -38,8 +38,8 @@ class StarknetApi : NSObject, StarknetInterface {
       completion(.failure(error))
     }
   }
-  
-  func getSecret(key: String, completion: @escaping (Result<FlutterStandardTypedData, Error>) -> Void) {
+
+  func getSecret(key: String, biometricOptions: BiometricOptions?,completion: @escaping (Result<FlutterStandardTypedData?, Error>) -> Void) {
     let secureEnclaveManager = SecureEnclaveManager()
     let keychainManager = KeychainManager()
     
