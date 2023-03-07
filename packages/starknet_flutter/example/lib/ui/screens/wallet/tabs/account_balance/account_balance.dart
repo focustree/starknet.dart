@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:starknet_flutter/starknet_flutter.dart';
+import 'package:starknet_flutter_example/ui/screens/wallet/tabs/account_balance/widgets/account_address.dart';
 import 'package:starknet_flutter_example/ui/screens/wallet/tabs/account_balance/widgets/account_indicator.dart';
 import 'package:starknet_flutter_example/ui/screens/wallet/tabs/account_balance/widgets/action_button.dart';
 
@@ -46,22 +47,27 @@ class _AccountBalanceState extends State<AccountBalance> {
               }
             },
           ),
+          if (_selectedAccount?.accountAddress != null)
+            Padding(
+              padding: const EdgeInsets.only(top: 10.0),
+              child: AccountAddress(
+                address: _selectedAccount!.accountAddress,
+              ),
+            ),
           Padding(
             padding: const EdgeInsets.only(top: 12, bottom: 20),
             child: FutureBuilder<double?>(
               future: _selectedAccount?.balance,
               builder: (context, snapshot) {
-                String? text;
-                if (snapshot.data != null) {
-                  text = '${snapshot.data!.truncateBalance()} ETH';
-                }
-                return Text(
-                  text ?? "",
-                  style: const TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 30,
-                  ),
-                );
+                return snapshot.data != null
+                    ? Text(
+                        '${snapshot.data!.truncateBalance()} ETH',
+                        style: const TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 30,
+                        ),
+                      )
+                    : const SizedBox.shrink();
               },
             ),
           ),
@@ -94,7 +100,6 @@ class _AccountBalanceState extends State<AccountBalance> {
               ),
             ],
           ),
-          
         ],
       ),
     );
