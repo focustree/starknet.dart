@@ -4,9 +4,9 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:starknet_flutter/starknet_flutter.dart';
 import 'package:starknet_flutter_example/ui/widgets/bouncing_button.dart';
 
-class AccountAddress extends StatelessWidget {
+class AccountAddressWidget extends StatelessWidget {
   final String address;
-  const AccountAddress({
+  const AccountAddressWidget({
     Key? key,
     required this.address,
   }) : super(key: key);

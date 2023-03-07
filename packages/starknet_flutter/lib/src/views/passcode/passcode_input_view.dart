@@ -15,7 +15,7 @@ typedef InputPasswordBuilder = Widget Function(
 );
 
 /// A method that returns a password (not necessarly the good one!)
-typedef PasswordPrompt = Future<String?> Function(BuildContext context);
+typedef PasswordPrompt = Future<String?> Function();
 
 /// Handle what to do in case the password is wrong
 typedef OnWrongPassword = Function(String input);
