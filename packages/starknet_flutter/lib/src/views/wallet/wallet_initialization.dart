@@ -86,6 +86,7 @@ class _WalletInitializationPageState extends State<WalletInitializationPage>
     presenter = WalletInitializationPresenter(
       WalletInitializationViewModel(),
       this,
+      initialRoute: widget.initialRoute,
       passwordPrompt: widget.passwordPrompt,
     ).init();
     model = presenter.viewModel;

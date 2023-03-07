@@ -20,6 +20,8 @@ class WalletInitializationPresenter {
   final WalletInitializationView viewInterface;
   final PasswordPrompt passwordPrompt;
 
+  String? initialRoute;
+
   ProtectWalletService? _protectWalletService;
 
   StreamSubscription<String?>? _subscription;
@@ -28,6 +30,7 @@ class WalletInitializationPresenter {
     this.viewModel,
     this.viewInterface, {
     required this.passwordPrompt,
+    this.initialRoute,
   });
 
   WalletInitializationPresenter init() {
@@ -35,6 +38,17 @@ class WalletInitializationPresenter {
       viewModel.routeName = routeName;
       viewInterface.refresh();
     });
+
+    switch (initialRoute) {
+      case CreateSeedScreen.routeName:
+        _protectWalletService = CreateWalletService();
+        break;
+      case RestoreWalletScreen.routeName:
+        _protectWalletService = RestoreWalletService();
+        break;
+      default:
+    }
+
     return this;
   }
 
