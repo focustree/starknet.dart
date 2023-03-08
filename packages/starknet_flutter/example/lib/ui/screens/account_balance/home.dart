@@ -105,7 +105,7 @@ class _HomePageState extends State<HomePage> implements HomeView {
                           key: const Key('total_balance'),
                           width: double.infinity,
                           child: Text(
-                            '\$${model.totalDollarBalance.truncateBalance(precision: 2)}',
+                            '\$${model.totalFiatBalance.truncateBalance(precision: 2).format()}',
                             style: const TextStyle(
                               fontWeight: FontWeight.bold,
                               fontSize: 30,
@@ -172,7 +172,7 @@ class _HomePageState extends State<HomePage> implements HomeView {
               name: 'Ethereum',
               symbolIconUrl: 'https://cryptoicons.org/api/color/eth/200',
               balance: model.ethBalance!,
-              dollarPrice: model.ethDollarPrice.truncateBalance(precision: 2),
+              fiatPrice: model.ethFiatPrice.truncateBalance(precision: 2),
             );
           },
           separatorBuilder: (context, index) {
