@@ -2,7 +2,6 @@ import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
 
-import 'package:biometric_storage/biometric_storage.dart';
 import 'package:flutter/foundation.dart';
 import 'package:starknet_flutter/pigeon.dart';
 import 'package:starknet_flutter/src/stores/starknet_store.dart';
@@ -37,14 +36,12 @@ abstract class SecureStore extends StarknetStore {
 
   /// Returns a [SecureStore] that uses biometric authentication if available.
   static Future<SecureStore> get({
-    AndroidSecureStoreOptions androidOptions =
-        const AndroidSecureStoreOptions(),
     bool passwordFallbackEnabled = true,
   }) async {
     // Check if the device has biometric capabilities
     if (await hasBiometricStore()) {
       // Only use BiometricStore on Android
-      return BiometricStore(androidOptions: androidOptions);
+      return BiometricStore();
     } else if (!passwordFallbackEnabled) {
       throw const NoBiometricAndNoFallbackException();
     } else {
@@ -69,11 +66,11 @@ abstract class SecureStore extends StarknetStore {
 
   /// Returns true if the device has biometric capabilities and has them setup.
   static Future<bool> hasBiometricStore() async {
-    if (!kIsWeb && (Platform.isIOS || Platform.isMacOS)) {
+    if (!kIsWeb && (Platform.isIOS || Platform.isMacOS || Platform.isAndroid)) {
       return StarknetInterface().biometryAvailable();
     } else {
-      final response = await BiometricStorage().canAuthenticate();
-      return response == CanAuthenticateResponse.success;
+      // Web and desktop don't have biometric capabilities enabled
+      return false;
     }
   }
 }

@@ -1,6 +1,4 @@
 PODS:
-  - biometric_storage (0.0.1):
-    - FlutterMacOS
   - emoji_picker_flutter (0.0.1):
     - FlutterMacOS
   - FlutterMacOS (1.0.0)
@@ -14,7 +12,6 @@ PODS:
     - FlutterMacOS
 
 DEPENDENCIES:
-  - biometric_storage (from `Flutter/ephemeral/.symlinks/plugins/biometric_storage/macos`)
   - emoji_picker_flutter (from `Flutter/ephemeral/.symlinks/plugins/emoji_picker_flutter/macos`)
   - FlutterMacOS (from `Flutter/ephemeral`)
   - path_provider_foundation (from `Flutter/ephemeral/.symlinks/plugins/path_provider_foundation/macos`)
@@ -22,8 +19,6 @@ DEPENDENCIES:
   - starknet_flutter (from `Flutter/ephemeral/.symlinks/plugins/starknet_flutter/macos`)
 
 EXTERNAL SOURCES:
-  biometric_storage:
-    :path: Flutter/ephemeral/.symlinks/plugins/biometric_storage/macos
   emoji_picker_flutter:
     :path: Flutter/ephemeral/.symlinks/plugins/emoji_picker_flutter/macos
   FlutterMacOS:
@@ -36,7 +31,6 @@ EXTERNAL SOURCES:
     :path: Flutter/ephemeral/.symlinks/plugins/starknet_flutter/macos
 
 SPEC CHECKSUMS:
-  biometric_storage: 43caa6e7ef00e8e19c074216e7e1786dacda9e76
   emoji_picker_flutter: 533634326b1c5de9a181ba14b9758e6dfe967a20
   FlutterMacOS: 8f6f14fa908a6fb3fba0cd85dbd81ec4b251fb24
   path_provider_foundation: c68054786f1b4f3343858c1e1d0caaded73f0be9

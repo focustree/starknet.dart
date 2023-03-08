@@ -32,7 +32,6 @@ abstract class StarknetStore {
     bool passwordFallbackEnabled = true,
   }) async {
     return await SecureStore.get(
-      androidOptions: androidOptions,
       passwordFallbackEnabled: passwordFallbackEnabled,
     );
   }

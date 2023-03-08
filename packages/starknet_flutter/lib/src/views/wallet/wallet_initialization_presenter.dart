@@ -7,6 +7,7 @@ import 'package:starknet_flutter/src/services/protect_wallet/protect_wallet_serv
 import 'package:starknet_flutter/src/services/protect_wallet/restore_wallet_service.dart';
 import 'package:starknet_flutter/src/views/wallet/routes/create_seed_screen.dart';
 import 'package:starknet_flutter/src/views/wallet/routes/restore_wallet_screen.dart';
+import 'package:starknet_flutter/pigeon.dart';
 import 'package:starknet_flutter/src/views/wallet_list/wallet_list_viewmodel.dart';
 
 import '../../models/wallet.dart';
@@ -26,12 +27,11 @@ class WalletInitializationPresenter {
 
   StreamSubscription<String?>? _subscription;
 
-  WalletInitializationPresenter(
-    this.viewModel,
-    this.viewInterface, {
-    required this.passwordPrompt,
-    this.initialRoute,
-  });
+  WalletInitializationPresenter(this.viewModel,
+      this.viewInterface, {
+        required this.passwordPrompt,
+        this.initialRoute,
+      });
 
   WalletInitializationPresenter init() {
     _subscription = viewModel.didChange.stream.listen((routeName) {
@@ -55,7 +55,7 @@ class WalletInitializationPresenter {
   Future navigateToSubRoute(String routeName) {
     return viewInterface.navigateToSubRoute(routeName).whenComplete(
           () => viewInterface.refresh(),
-        );
+    );
   }
 
   void dispose() {
@@ -72,8 +72,7 @@ class WalletInitializationPresenter {
     viewInterface.navigateToSubRoute(RestoreWalletScreen.routeName);
   }
 
-  Future<void> onSecureWithPassword(
-    BuildContext context, {
+  Future<void> onSecureWithPassword(BuildContext context, {
     required PasswordStore passwordStore,
   }) async {
     return _protectWalletService!.onSecureWithPassword(

@@ -2,6 +2,7 @@ import 'dart:typed_data';
 
 import 'package:flutter/material.dart';
 import 'package:starknet/starknet.dart';
+import 'package:starknet_flutter/pigeon.dart';
 import 'package:starknet_flutter/src/services/protect_wallet/protect_wallet_service.dart';
 import 'package:starknet_flutter/src/views/wallet/wallet_initialization_viewmodel.dart';
 import 'package:starknet_flutter/starknet_flutter.dart';
@@ -28,14 +29,23 @@ class RestoreWalletService extends ProtectWalletService {
       walletId: wallet.walletId,
     );
 
+    final options = BiometricOptions(
+      androidOptions: AndroidOptions(
+        enableStrongBox: true,
+        authenticationValidityDurationSeconds: 2,
+      ),
+    );
+
     // Store seed phrase and private key securely
     await biometricStore.storeSeedPhrase(
       id: wallet.walletId,
       seedPhrase: seedPhrase,
+      biometricOptions: options,
     );
     await biometricStore.storePrivateKey(
       id: publicAccount.privateKeyId,
       privateKey: privateKey,
+      biometricOptions: options,
     );
 
     // TODO handle case where biometric auth is not validated
