@@ -31,7 +31,7 @@ class CreateWalletService extends ProtectWalletService {
     required Uint8List privateKey,
     required Function(String input) onWrongPassword,
     required Function(Wallet wallet) onWalletProtected,
-    required Future<String?> Function(BuildContext context) passwordPrompt,
+    required Future<String?> Function() passwordPrompt,
   }) async {
     // TODO: implement onSecureWithPassword
   }

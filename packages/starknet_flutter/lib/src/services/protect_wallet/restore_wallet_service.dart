@@ -64,9 +64,9 @@ class RestoreWalletService extends ProtectWalletService {
     required Uint8List privateKey,
     required Function(String input) onWrongPassword,
     required Function(Wallet wallet) onWalletProtected,
-    required Future<String?> Function(BuildContext context) passwordPrompt,
+    required Future<String?> Function() passwordPrompt,
   }) async {
-    final passwordInput = await passwordPrompt(context);
+    final passwordInput = await passwordPrompt();
     if (passwordInput == null) {
       // Password == null means that the user cancelled the prompt
       // Don't do anything to let user try again

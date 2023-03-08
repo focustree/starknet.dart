@@ -56,6 +56,8 @@ class PublicAccount extends HiveObject {
         accountType = StarknetAccountType.braavos;
 
   Future<double> get balance async {
+    // TODO: do this in an isolate to avoid blocking the UI
+    
     final provider = JsonRpcProvider(nodeUri: Uri.parse(nodeUri));
     final ethContractAddress = Felt.fromHexString(
         '0x049d36570d4e46f48e99674bd3fcc84644ddd6b96f7c741b1562b82f9e004dc7');
