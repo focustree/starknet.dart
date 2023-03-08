@@ -80,7 +80,7 @@ class Account {
     final signature = signer.signTransactions(
       transactions: functionCalls,
       contractAddress: accountAddress,
-      version: supportedTxVersion == AccountSupportedTxVersion.v0 ? 0 : 1,
+      version: supportedTxVersion == AccountSupportedTxVersion.v1 ? 1 : 0,
       chainId: chainId,
       entryPointSelectorName: "__execute__",
       maxFee: maxFee,
@@ -88,6 +88,7 @@ class Account {
     );
 
     switch (supportedTxVersion) {
+      // ignore: deprecated_member_use_from_same_package
       case AccountSupportedTxVersion.v0:
         final calldata =
             functionCallsToCalldata(functionCalls: functionCalls) + [nonce];
