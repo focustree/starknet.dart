@@ -6,6 +6,8 @@ import 'package:starknet_flutter/src/views/transaction/routes/recipient_screen.d
 import 'package:starknet_flutter/src/views/transaction/transaction_presenter.dart';
 import 'package:starknet_flutter/src/views/transaction/transaction_viewmodel.dart';
 import 'package:starknet_flutter/src/views/widgets/bouncing_button.dart';
+import 'package:starknet_flutter/src/views/widgets/bouncing_widget.dart';
+import 'package:starknet_flutter/starknet_flutter.dart';
 
 class AmountScreen extends StatefulWidget {
   static const routeName = '/amount';
@@ -66,19 +68,24 @@ class _AmountScreenState extends State<AmountScreen> {
                 ),
               ),
               const SizedBox(height: 8),
-              // TODO: connect real data
               Text(
-                '\$$ethDollarPrice',
+                '\$${ethDollarPrice.truncateBalance(precision: 2)}',
                 style: GoogleFonts.poppins(
                   color: Colors.grey,
                 ),
               ),
               const SizedBox(height: 3),
-              // TODO: connect real data
-              Text(
-                '${widget.model.ethBalance ?? '--'} ETH available',
-                style: GoogleFonts.poppins(
-                  color: Colors.grey,
+              BouncingWidget(
+                onTap: () {
+                  setState(() {
+                    _amountStr = widget.model.ethBalance.toString();
+                  });
+                },
+                child: Text(
+                  '${widget.model.ethBalance?.truncateBalance() ?? '--'} ETH available',
+                  style: GoogleFonts.poppins(
+                    color: Colors.grey,
+                  ),
                 ),
               ),
             ],

@@ -3,6 +3,8 @@ extension StarknetNumberUtils on num {
   ///
   /// ex: 0.5456945765.truncateToDouble(4) = 0.5456
   double truncateBalance({int precision = 4}) {
+    if (this == 0) return 0.0;
+
     String numToString = toString();
     String numTruncatedString =
         numToString.substring(0, numToString.indexOf('.') + precision + 1);
