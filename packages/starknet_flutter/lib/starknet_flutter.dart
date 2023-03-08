@@ -9,6 +9,7 @@ export 'src/stores/starknet_store.dart';
 export 'src/views/views.dart';
 export 'src/utils/number_utils.dart';
 export 'src/utils/string_utils.dart';
+export 'src/services/deploy_account_service.dart';
 
 class StarknetFlutter {
   static Future<void> init() async {

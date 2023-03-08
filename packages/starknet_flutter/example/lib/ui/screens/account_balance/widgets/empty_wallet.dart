@@ -3,7 +3,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:starknet_flutter_example/ui/widgets/bouncing_button.dart';
 
 class EmptyWalletWidget extends StatelessWidget {
-  final Function()? onAddCrypto;
+  final VoidCallback? onAddCrypto;
   const EmptyWalletWidget({
     Key? key,
     this.onAddCrypto,
