@@ -4,6 +4,7 @@ import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 import 'package:starknet_flutter/src/views/transaction/routes/amount_screen/amount_screen.dart';
 import 'package:starknet_flutter/src/views/transaction/transaction_observer.dart';
 import 'package:starknet_flutter/src/views/transaction/transaction_router.dart';
+import 'package:starknet_flutter/src/views/transaction/widgets/transaction_status_dialog.dart';
 import 'package:starknet_flutter/src/views/widgets/bouncing_widget.dart';
 import 'package:starknet_flutter/starknet_flutter.dart';
 
@@ -33,6 +34,10 @@ abstract class TransactionView {
   void closeModal();
   void goBack();
   Future navigateToSubRoute(String routeName);
+  Future showTransactionStatusDialog({
+    required bool isAccepted,
+    required String message,
+  });
 }
 
 class TransactionArguments {
@@ -167,4 +172,30 @@ class _TransactionPageState extends State<TransactionPage>
 
   @override
   void refresh() => setState(() {});
+
+  @override
+  Future showTransactionStatusDialog({
+    required bool isAccepted,
+    required String message,
+  }) {
+    return showGeneralDialog(
+      context: context,
+      transitionBuilder: (ctx, a1, a2, child) {
+        return FadeTransition(
+          opacity: a1,
+          child: ScaleTransition(
+            scale: a1,
+            child: child,
+          ),
+        );
+      },
+      transitionDuration: const Duration(milliseconds: 300),
+      pageBuilder: (context, animation1, animation2) {
+        return TransactionStatusDialog(
+          isAccepted: isAccepted,
+          message: message,
+        );
+      },
+    );
+  }
 }
