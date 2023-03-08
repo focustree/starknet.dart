@@ -104,6 +104,28 @@ class _WalletListPageState extends State<WalletListPage>
                                       final wallet = wallets[index];
                                       return WalletCell(
                                         wallet: wallet,
+                                        onAddAccount: () async {
+                                          print("Add account 1");
+                                          final newAccount =
+                                              await presenter.addAccount(
+                                            wallet,
+                                            passwordPrompt:
+                                                widget.passwordPrompt,
+                                          );
+                                          print("Add account 2");
+
+                                          if (newAccount != null &&
+                                              context.mounted) {
+                                            Navigator.pop(
+                                              context,
+                                              () =>
+                                                  Future.value(SelectedAccount(
+                                                wallet: wallet,
+                                                account: newAccount,
+                                              )),
+                                            );
+                                          }
+                                        },
                                       );
                                     },
                                     separatorBuilder: (context, index) {
@@ -112,7 +134,8 @@ class _WalletListPageState extends State<WalletListPage>
                                     itemCount: wallets.length,
                                   )
                                 : Padding(
-                                    padding: const EdgeInsets.symmetric(vertical: 30),
+                                    padding: const EdgeInsets.symmetric(
+                                        vertical: 30),
                                     child: Text(
                                       'No wallets added yet',
                                       style: GoogleFonts.poppins(

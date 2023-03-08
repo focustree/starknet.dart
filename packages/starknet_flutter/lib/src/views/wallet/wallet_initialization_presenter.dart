@@ -1,13 +1,14 @@
 import 'dart:async';
 
+import 'package:bip39/bip39.dart' as bip39;
 import 'package:flutter/cupertino.dart';
 import 'package:starknet/starknet.dart';
-import 'package:starknet_flutter/src/services/protect_wallet/create_wallet_service.dart';
-import 'package:starknet_flutter/src/services/protect_wallet/protect_wallet_service.dart';
-import 'package:starknet_flutter/src/services/protect_wallet/restore_wallet_service.dart';
+import 'package:starknet_flutter/src/services/create_wallet_service.dart';
+import 'package:starknet_flutter/src/services/protect_wallet_service.dart';
+import 'package:starknet_flutter/src/services/restore_wallet_service.dart';
 import 'package:starknet_flutter/src/views/wallet/routes/create_seed_screen.dart';
+import 'package:starknet_flutter/src/views/wallet/routes/protect_wallet_screen.dart';
 import 'package:starknet_flutter/src/views/wallet/routes/restore_wallet_screen.dart';
-import 'package:starknet_flutter/pigeon.dart';
 import 'package:starknet_flutter/src/views/wallet_list/wallet_list_viewmodel.dart';
 
 import '../../models/wallet.dart';
@@ -27,11 +28,12 @@ class WalletInitializationPresenter {
 
   StreamSubscription<String?>? _subscription;
 
-  WalletInitializationPresenter(this.viewModel,
-      this.viewInterface, {
-        required this.passwordPrompt,
-        this.initialRoute,
-      });
+  WalletInitializationPresenter(
+    this.viewModel,
+    this.viewInterface, {
+    required this.passwordPrompt,
+    this.initialRoute,
+  });
 
   WalletInitializationPresenter init() {
     _subscription = viewModel.didChange.stream.listen((routeName) {
@@ -55,7 +57,7 @@ class WalletInitializationPresenter {
   Future navigateToSubRoute(String routeName) {
     return viewInterface.navigateToSubRoute(routeName).whenComplete(
           () => viewInterface.refresh(),
-    );
+        );
   }
 
   void dispose() {
@@ -72,7 +74,8 @@ class WalletInitializationPresenter {
     viewInterface.navigateToSubRoute(RestoreWalletScreen.routeName);
   }
 
-  Future<void> onSecureWithPassword(BuildContext context, {
+  Future<void> onSecureWithPassword(
+    BuildContext context, {
     required PasswordStore passwordStore,
   }) async {
     return _protectWalletService!.onSecureWithPassword(
@@ -120,5 +123,16 @@ class WalletInitializationPresenter {
 
   void _onWrongPassword(String input) {
     viewInterface.onWrongPassword(input);
+  }
+
+  void newSeedPhrase() {
+    viewModel.accountType = StarknetAccountType.openZeppelin;
+    viewModel.seedPhrase = bip39.generateMnemonic().split(" ");
+  }
+
+  void confirmSeedPhrase() {
+    viewModel.account = (_protectWalletService as CreateWalletService)
+        .createAccount(viewModel.seedPhrase!);
+    viewInterface.navigateToSubRoute(ProtectWalletScreen.routeName);
   }
 }
