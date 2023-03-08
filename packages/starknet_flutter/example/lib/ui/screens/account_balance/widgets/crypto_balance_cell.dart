@@ -47,7 +47,7 @@ class CryptoBalanceCellWidget extends StatelessWidget {
               ),
             ),
             Text(
-              '${balance.truncateBalance().format()} ETH',
+              '${balance.truncateBalance()} ETH',
               maxLines: 1,
               overflow: TextOverflow.ellipsis,
               style: GoogleFonts.poppins(

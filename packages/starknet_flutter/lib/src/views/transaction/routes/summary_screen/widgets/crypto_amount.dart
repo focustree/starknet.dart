@@ -1,16 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:starknet_flutter/src/utils/number_utils.dart';
 
 class CryptoAmountWidget extends StatelessWidget {
   final double cryptoAmount;
   final double fiatAmount;
-  final String cryptoLogoUrl;
+  final String cryptoLogoPath;
   const CryptoAmountWidget({
     Key? key,
     required this.cryptoAmount,
     required this.fiatAmount,
-    required this.cryptoLogoUrl,
+    required this.cryptoLogoPath,
   }) : super(key: key);
 
   @override
@@ -32,7 +33,7 @@ class CryptoAmountWidget extends StatelessWidget {
                 ),
               ),
               Text(
-                '${cryptoAmount.truncateBalance().format()} ETH',
+                '${cryptoAmount.truncateBalance()} ETH',
                 maxLines: 1,
                 overflow: TextOverflow.ellipsis,
                 style: GoogleFonts.poppins(
@@ -43,8 +44,8 @@ class CryptoAmountWidget extends StatelessWidget {
             ],
           ),
         ),
-        Image.network(
-          cryptoLogoUrl,
+        SvgPicture.asset(
+          cryptoLogoPath,
           width: 60,
           height: 60,
         )
