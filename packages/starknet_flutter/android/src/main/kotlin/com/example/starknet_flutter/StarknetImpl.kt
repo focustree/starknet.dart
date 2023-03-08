@@ -12,7 +12,6 @@ import androidx.biometric.BiometricManager
 import androidx.biometric.BiometricPrompt
 import androidx.fragment.app.FragmentActivity
 import com.example.starknet_flutter.biometric_storage.BiometricStorageFile
-import io.github.oshai.KotlinLogging
 
 import java.util.concurrent.ExecutorService
 import java.util.concurrent.Executors
@@ -42,7 +41,7 @@ enum class AuthenticationError(vararg val code: Int) {
     }
 }
 
-private val logger = KotlinLogging.logger {}
+private val logger = KLogger.logger {}
 
 /**
  * This class implements the StarknetInterface and provides the implementation for the methods
@@ -243,7 +242,7 @@ class StarknetImpl : StarknetInterface {
         val promptInfo = options.promptInfo ?: AndroidPromptInfos(
             title = "Authentication required", cancelLabel = "CANCEL", confirmationRequired = true
         )
-        logger.trace("authenticate()")
+        logger.verbose { "authenticate()" }
         activity.let {
             if (it == null) {
                 logger.error { "Activity is null. This must not happen." }
@@ -262,7 +261,7 @@ class StarknetImpl : StarknetInterface {
                         override fun onAuthenticationError(
                             errorCode: Int, errString: CharSequence
                         ) {
-                            logger.trace("onAuthenticationError($errorCode, $errString)")
+                            logger.verbose { "onAuthenticationError($errorCode, $errString)" }
                             onError(
                                 AuthException(
                                     "AuthError: ${AuthenticationError.forCode(errorCode).name}",
@@ -274,12 +273,12 @@ class StarknetImpl : StarknetInterface {
 
                         @WorkerThread
                         override fun onAuthenticationSucceeded(result: BiometricPrompt.AuthenticationResult) {
-                            logger.trace("onAuthenticationSucceeded($result)")
+                            logger.verbose { "onAuthenticationSucceeded($result)" }
                             worker(onError) { onSuccess(result.cryptoObject?.cipher) }
                         }
 
                         override fun onAuthenticationFailed() {
-                            logger.trace("onAuthenticationFailed()")
+                            logger.verbose { "onAuthenticationFailed()" }
                             // this just means the user was not recognised, but the O/S will handle feedback so we don't have to
                         }
                     })

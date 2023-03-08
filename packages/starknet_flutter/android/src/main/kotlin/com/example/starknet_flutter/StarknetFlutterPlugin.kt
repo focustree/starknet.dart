@@ -5,14 +5,13 @@ import androidx.fragment.app.FragmentActivity
 import io.flutter.embedding.engine.plugins.FlutterPlugin
 import io.flutter.embedding.engine.plugins.activity.ActivityAware
 import io.flutter.embedding.engine.plugins.activity.ActivityPluginBinding
-import io.github.oshai.KotlinLogging
 
 /**
  * Manage lifecycle of the Android plugin
  * */
 class StarknetFlutterPlugin : FlutterPlugin, ActivityAware {
     private val starknetImpl = StarknetImpl()
-    private val logger = KotlinLogging.logger {}
+    private val logger = KLogger.logger {}
 
     // Bind StarknetInterface to the FlutterPlugin.FlutterPluginBinding
     override fun onAttachedToEngine(binding: FlutterPlugin.FlutterPluginBinding) {

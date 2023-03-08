@@ -5,13 +5,13 @@ import android.content.pm.PackageManager
 import android.os.Build
 import android.security.keystore.KeyProperties
 import com.example.starknet_flutter.CipherMode
-import io.github.oshai.KotlinLogging
+import com.example.starknet_flutter.KLogger
 import java.io.File
 import java.io.FileNotFoundException
 import java.io.IOException
 import javax.crypto.Cipher
 
-private val logger = KotlinLogging.logger {}
+private val logger = KLogger.logger {}
 
 class BiometricStorageFile(
     context: Context,
@@ -28,7 +28,7 @@ class BiometricStorageFile(
 
     /**
      * The cryptography manager that handles the encryption and decryption of the data.
-     * It is configured with the provided [options].
+     * It is configured with [enableStrongBox] and [authenticationValidityDurationSeconds].
      */
     private val cryptographyManager = CryptographyManager {
         setUserAuthenticationRequired(true)
@@ -72,7 +72,7 @@ class BiometricStorageFile(
         }
         file = File(baseDir, "$baseName.txt")
 
-        logger.trace { "Initialized $this with StrongBox ${enableStrongBox} and validity ${authenticationValidityDurationSeconds} sec" }
+        logger.verbose { "Initialized $this with StrongBox ${enableStrongBox} and validity ${authenticationValidityDurationSeconds} sec" }
     }
 
     fun cipherFor(mode: CipherMode): Cipher = when (mode) {
