@@ -6,7 +6,7 @@ class TransactionService {
     required PublicAccount publicAccount,
     required Felt recipientAddress,
     required num amount,
-    Function()? onSendTransactionCallback,
+    Function(String)? onSendTransactionCallback,
   }) async {
     final secureStore = await StarknetStore.secure();
 
@@ -29,8 +29,6 @@ class TransactionService {
       ),
     );
 
-    onSendTransactionCallback?.call();
-
     final jsonRpcProvider = JsonRpcProvider(
       nodeUri: Uri.parse(publicAccount.nodeUri),
     );
@@ -51,6 +49,8 @@ class TransactionService {
         high: Felt.fromInt(0),
       ),
     );
+
+    onSendTransactionCallback?.call(txHash);
 
     // set signer to null to avoid storing the private key in memory
     signer = null;

@@ -44,26 +44,33 @@ class TransactionPresenter {
     viewInterface.refresh();
   }
 
+  Future showTransactionLoadingDialog(String txHash) {
+    viewModel.isTransactionLoadingShowed = true;
+    return viewInterface.showTransactionLoadingDialog(txHash);
+  }
+
   void dispose() {
     _subscription?.cancel();
   }
 
   Future sendTransaction() async {
     viewInterface.triggerHaptic();
-    
+
     try {
       final isAccepted = await _transactionService.send(
         publicAccount: args.selectedAccount!,
         recipientAddress: Felt.fromHexString(viewModel.recipientAddress!),
         amount: viewModel.amount!,
-        onSendTransactionCallback: () {
+        onSendTransactionCallback: (txHash) {
           // show the loading dialog
-          viewInterface.showTransactionLoadingDialog();
+          showTransactionLoadingDialog(txHash);
         },
       );
 
-      // close the loading dialog
-      viewInterface.closeModal();
+      if (viewModel.isTransactionLoadingShowed) {
+        // close the loading dialog
+        viewInterface.closeModal();
+      }
 
       if (isAccepted) {
         await viewInterface.showTransactionStatusDialog(
@@ -80,7 +87,9 @@ class TransactionPresenter {
         viewInterface.refresh();
       }
     } catch (e) {
-      viewInterface.closeModal();
+      if (viewModel.isTransactionLoadingShowed) {
+        viewInterface.closeModal();
+      }
 
       await viewInterface.showTransactionStatusDialog(
         message: 'An error occurred while sending your transaction',
@@ -88,5 +97,10 @@ class TransactionPresenter {
       );
       viewInterface.refresh();
     }
+  }
+
+  onTransactionLoadingDialogCloseTap() {
+    viewModel.isTransactionLoadingShowed = false;
+    viewInterface.closeModal();
   }
 }

@@ -39,7 +39,7 @@ abstract class TransactionView {
     required bool isAccepted,
     required String message,
   });
-  Future showTransactionLoadingDialog();
+  Future showTransactionLoadingDialog(String txHash);
   void triggerHaptic();
 }
 
@@ -203,7 +203,7 @@ class _TransactionPageState extends State<TransactionPage>
   }
   
   @override
-  Future showTransactionLoadingDialog() {
+  Future showTransactionLoadingDialog(String txHash) {
     return showGeneralDialog(
       context: context,
       transitionBuilder: (ctx, a1, a2, child) {
@@ -218,7 +218,10 @@ class _TransactionPageState extends State<TransactionPage>
       barrierDismissible: false,
       transitionDuration: const Duration(milliseconds: 300),
       pageBuilder: (context, animation1, animation2) {
-        return const TransactionLoadingDialog();
+        return TransactionLoadingDialog(
+          txHash: txHash,
+          onCloseTap: presenter.onTransactionLoadingDialogCloseTap,
+        );
       },
     );
   }

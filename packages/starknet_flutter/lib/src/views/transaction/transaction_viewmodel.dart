@@ -13,6 +13,8 @@ class TransactionViewModel {
   bool get isRootPage => routeName == AmountScreen.routeName;
   String? fromAddress;
 
+  bool isTransactionLoadingShowed = false;
+
   // amount screen
   double? amount;
 

@@ -1,9 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:loading_indicator/loading_indicator.dart';
+import 'package:starknet_flutter/src/views/widgets/bouncing_button.dart';
+import 'package:starknet_flutter/src/views/widgets/bouncing_widget.dart';
 
 class TransactionLoadingDialog extends StatelessWidget {
-  const TransactionLoadingDialog({super.key});
+  final String txHash;
+  final Function() onCloseTap;
+  const TransactionLoadingDialog({
+    Key? key,
+    required this.txHash,
+    required this.onCloseTap,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -35,12 +44,49 @@ class TransactionLoadingDialog extends StatelessWidget {
               Text(
                 'Transaction is being processed...',
                 style: GoogleFonts.poppins(
-                  fontSize: 15,
-                  fontWeight: FontWeight.w500,
+                  fontSize: 17,
+                  fontWeight: FontWeight.bold,
                 ),
                 textAlign: TextAlign.center,
               ),
               const SizedBox(height: 10),
+              BouncingWidget(
+                onTap: () {
+                  Clipboard.setData(ClipboardData(text: txHash));
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    const SnackBar(
+                      content: Text('Transaction hash copied to clipboard'),
+                    ),
+                  );
+                },
+                child: Column(
+                  children: [
+                    Text(
+                      'Transaction hash',
+                      style: GoogleFonts.poppins(
+                        fontSize: 12,
+                        fontWeight: FontWeight.w600,
+                        color: Colors.grey,
+                      ),
+                      textAlign: TextAlign.center,
+                    ),
+                    Text(
+                      txHash,
+                      style: GoogleFonts.poppins(
+                        fontSize: 10,
+                        fontWeight: FontWeight.w500,
+                        color: Colors.grey,
+                      ),
+                      textAlign: TextAlign.center,
+                    ),
+                  ],
+                ),
+              ),
+              const SizedBox(height: 20),
+              BouncingButton.plain(
+                text: 'Close',
+                onTap: onCloseTap,
+              ),
             ],
           ),
         ),
