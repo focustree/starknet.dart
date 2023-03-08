@@ -71,7 +71,7 @@ class TransactionPresenter {
           isAccepted: true,
         );
 
-        viewInterface.closeModal();
+        viewInterface.closeModal(isAccepted: true);
       } else {
         await viewInterface.showTransactionStatusDialog(
           message: 'Your transaction has been rejected',

@@ -57,11 +57,15 @@ class HomePresenter {
     }
   }
 
-  onSendTap() {
-    viewInterface.showTransactionModal(
+  onSendTap() async {
+    final isAccepted = await viewInterface.showTransactionModal(
       TransactionArguments(
         selectedAccount: viewModel.selectedAccount,
       ),
     );
+
+    if (isAccepted == true) {
+      loadEthBalance();
+    }
   }
 }

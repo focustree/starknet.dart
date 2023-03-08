@@ -14,11 +14,11 @@ import 'transaction_presenter.dart';
 import 'transaction_viewmodel.dart';
 
 class StarknetTransaction {
-  static Future showModal(
+  static Future<bool?> showModal(
     BuildContext context, {
     required TransactionArguments args,
   }) async {
-    final selectedAccountCallback = await showBarModalBottomSheet(
+    return showBarModalBottomSheet<bool?>(
       context: context,
       barrierColor: Colors.black.withOpacity(0.6),
       builder: (context) {
@@ -27,13 +27,12 @@ class StarknetTransaction {
         );
       },
     );
-    return selectedAccountCallback?.call();
   }
 }
 
 abstract class TransactionView {
   void refresh();
-  void closeModal();
+  void closeModal({bool? isAccepted});
   void goBack();
   Future navigateToSubRoute(String routeName);
   Future showTransactionStatusDialog({
@@ -160,8 +159,8 @@ class _TransactionPageState extends State<TransactionPage>
   }
 
   @override
-  void closeModal() {
-    Navigator.of(context).pop();
+  void closeModal({bool? isAccepted}) {
+    Navigator.of(context).pop(isAccepted);
   }
 
   @override
