@@ -325,13 +325,17 @@ abstract class AccountDerivation {
 }
 
 class OpenzeppelinAccountDerivation extends AccountDerivation {
-  final Felt proxyClassHash;
-  final Felt implementationClassHash;
+  late final Felt proxyClassHash;
+  late final Felt implementationClassHash;
 
   OpenzeppelinAccountDerivation({
-    required this.proxyClassHash,
-    required this.implementationClassHash,
-  });
+    Felt? proxyClassHash,
+    Felt? implementationClassHash,
+  }) {
+    this.proxyClassHash = proxyClassHash ?? ozProxyClassHash;
+    this.implementationClassHash =
+        implementationClassHash ?? ozAccountUpgradableClassHash;
+  }
 
   @override
   Signer deriveSigner({required List<String> mnemonic, int index = 0}) {
