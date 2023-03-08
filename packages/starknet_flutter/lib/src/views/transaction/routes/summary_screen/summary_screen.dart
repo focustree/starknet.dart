@@ -60,6 +60,11 @@ class SummaryScreen extends StatelessWidget {
           SlideAction(
             key: UniqueKey(),
             onSubmit: presenter.sendTransaction,
+            sliderButtonIcon: Icon(
+              Icons.arrow_forward_ios_rounded,
+              size: 24,
+              color: Theme.of(context).primaryColor,
+            ),
             child: Text(
               'Confirm',
               style: GoogleFonts.poppins(

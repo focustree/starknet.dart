@@ -73,6 +73,9 @@ class TransactionPresenter {
       }
 
       if (isAccepted) {
+        viewInterface.triggerHaptic();
+        
+        // TODO: trigger a notification if user is not on the transaction page
         await viewInterface.showTransactionStatusDialog(
           message: 'Your transaction has been sent to the network',
           isAccepted: true,
@@ -80,6 +83,8 @@ class TransactionPresenter {
 
         viewInterface.closeModal(isAccepted: true);
       } else {
+
+        // TODO: trigger a notification if user is not on the transaction page
         await viewInterface.showTransactionStatusDialog(
           message: 'Your transaction has been rejected',
           isAccepted: false,
@@ -91,6 +96,7 @@ class TransactionPresenter {
         viewInterface.closeModal();
       }
 
+      // TODO: trigger a notification if user is not on the transaction page
       await viewInterface.showTransactionStatusDialog(
         message: 'An error occurred while sending your transaction',
         isAccepted: false,
