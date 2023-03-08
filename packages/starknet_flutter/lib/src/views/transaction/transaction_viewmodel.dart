@@ -11,6 +11,7 @@ class TransactionViewModel {
   double? ethBalance;
   late bool isLoadingEthBalance;
   bool get isRootPage => routeName == AmountScreen.routeName;
+  String? fromAddress;
 
   // amount screen
   double? amount;

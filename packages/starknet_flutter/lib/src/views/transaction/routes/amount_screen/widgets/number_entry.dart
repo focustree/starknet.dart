@@ -32,7 +32,7 @@ class NumberEntryWidget extends StatelessWidget {
         child: Center(
           child: Text(
             entry,
-            style: GoogleFonts.fjallaOne(
+            style: GoogleFonts.poppins(
               fontSize: 27,
               fontWeight: FontWeight.w500,
             ),

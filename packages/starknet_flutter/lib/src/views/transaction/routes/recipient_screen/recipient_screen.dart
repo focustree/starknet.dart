@@ -91,7 +91,8 @@ class _RecipientScreenState extends State<RecipientScreen> {
                       contentPadding: const EdgeInsets.all(16),
                     ),
                   ),
-                  if (_clipboardData != null && kHexaRegex.hasMatch(_clipboardData!))
+                  if (_clipboardData != null &&
+                      kHexaRegex.hasMatch(_clipboardData!))
                     Padding(
                       padding: const EdgeInsets.only(top: 20.0),
                       child: ClipboardPasteWidget(

@@ -23,6 +23,8 @@ class TransactionPresenter {
       viewInterface.refresh();
     });
 
+    viewModel.fromAddress = args.selectedAccount?.accountAddress;
+
     loadEthBalance();
     
     return this;
@@ -41,5 +43,11 @@ class TransactionPresenter {
 
   void dispose() {
     _subscription?.cancel();
+  }
+
+  Future sendTransaction() async {
+    // TODO: implement logic
+    await Future.delayed(const Duration(seconds: 1));
+    viewInterface.closeModal();
   }
 }
