@@ -104,7 +104,7 @@ class _AmountScreenState extends State<AmountScreen> {
                           });
                         },
                         child: Text(
-                          '${widget.model.ethBalance?.truncateBalance().format() ?? '--'} ETH available',
+                          '${widget.model.ethBalance?.truncateBalance() ?? '--'} ETH available',
                           style: GoogleFonts.poppins(
                             color: Colors.grey,
                             decoration: TextDecoration.underline,
@@ -185,7 +185,7 @@ class _AmountScreenState extends State<AmountScreen> {
           ),
           BouncingButton.plain(
             text: 'Next',
-            onTap: amount > 0
+            onTap: amount > 0 && amount <= widget.model.ethBalance!
                 ? () {
                     widget.model.amount = amount;
                     Navigator.of(context).pushNamed(RecipientScreen.routeName);

@@ -30,10 +30,11 @@ class SummaryScreen extends StatelessWidget {
               child: Column(
                 children: [
                   CryptoAmountWidget(
-                      cryptoAmount: model.amount!,
-                      fiatAmount: model.amount! * model.ethExchangeRate!,
-                      cryptoLogoUrl:
-                          'https://cryptoicons.org/api/color/eth/200'),
+                    cryptoAmount: model.amount!,
+                    fiatAmount: model.amount! * model.ethExchangeRate!,
+                    cryptoLogoPath:
+                        'packages/starknet_flutter/assets/images/crypto/eth.svg',
+                  ),
                   const Padding(
                     padding: EdgeInsets.only(top: 10.0, bottom: 10),
                     child: Divider(),
@@ -57,6 +58,7 @@ class SummaryScreen extends StatelessWidget {
             ),
           ),
           SlideAction(
+            key: UniqueKey(),
             onSubmit: presenter.sendTransaction,
             child: Text(
               'Confirm',

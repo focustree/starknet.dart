@@ -6,6 +6,7 @@ class TransactionService {
     required PublicAccount publicAccount,
     required Felt recipientAddress,
     required num amount,
+    Function()? onSendTransactionCallback,
   }) async {
     final secureStore = await StarknetStore.secure();
 
@@ -27,6 +28,8 @@ class TransactionService {
         },
       ),
     );
+
+    onSendTransactionCallback?.call();
 
     final jsonRpcProvider = JsonRpcProvider(
       nodeUri: Uri.parse(publicAccount.nodeUri),

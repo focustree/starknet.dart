@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 import 'package:starknet_flutter/src/views/transaction/routes/amount_screen/amount_screen.dart';
 import 'package:starknet_flutter/src/views/transaction/transaction_observer.dart';
 import 'package:starknet_flutter/src/views/transaction/transaction_router.dart';
+import 'package:starknet_flutter/src/views/transaction/widgets/transaction_loading_dialog.dart';
 import 'package:starknet_flutter/src/views/transaction/widgets/transaction_status_dialog.dart';
 import 'package:starknet_flutter/src/views/widgets/bouncing_widget.dart';
 import 'package:starknet_flutter/starknet_flutter.dart';
@@ -38,6 +40,8 @@ abstract class TransactionView {
     required bool isAccepted,
     required String message,
   });
+  Future showTransactionLoadingDialog();
+  void triggerHaptic();
 }
 
 class TransactionArguments {
@@ -197,5 +201,31 @@ class _TransactionPageState extends State<TransactionPage>
         );
       },
     );
+  }
+  
+  @override
+  Future showTransactionLoadingDialog() {
+    return showGeneralDialog(
+      context: context,
+      transitionBuilder: (ctx, a1, a2, child) {
+        return FadeTransition(
+          opacity: a1,
+          child: ScaleTransition(
+            scale: a1,
+            child: child,
+          ),
+        );
+      },
+      barrierDismissible: false,
+      transitionDuration: const Duration(milliseconds: 300),
+      pageBuilder: (context, animation1, animation2) {
+        return const TransactionLoadingDialog();
+      },
+    );
+  }
+  
+  @override
+  void triggerHaptic() {
+    HapticFeedback.heavyImpact();
   }
 }

@@ -49,11 +49,22 @@ class TransactionPresenter {
   }
 
   Future sendTransaction() async {
+    viewInterface.triggerHaptic();
+    
     try {
       final isAccepted = await _transactionService.send(
-          publicAccount: args.selectedAccount!,
-          recipientAddress: Felt.fromHexString(viewModel.recipientAddress!),
-          amount: viewModel.amount!);
+        publicAccount: args.selectedAccount!,
+        recipientAddress: Felt.fromHexString(viewModel.recipientAddress!),
+        amount: viewModel.amount!,
+        onSendTransactionCallback: () {
+          // show the loading dialog
+          viewInterface.showTransactionLoadingDialog();
+        },
+      );
+
+      // close the loading dialog
+      viewInterface.closeModal();
+
       if (isAccepted) {
         await viewInterface.showTransactionStatusDialog(
           message: 'Your transaction has been sent to the network',
@@ -66,12 +77,16 @@ class TransactionPresenter {
           message: 'Your transaction has been rejected',
           isAccepted: false,
         );
+        viewInterface.refresh();
       }
     } catch (e) {
+      viewInterface.closeModal();
+
       await viewInterface.showTransactionStatusDialog(
         message: 'An error occurred while sending your transaction',
         isAccepted: false,
       );
+      viewInterface.refresh();
     }
   }
 }
