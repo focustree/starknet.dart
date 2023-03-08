@@ -6,7 +6,7 @@ import 'package:starknet_flutter/src/views/deposit/widgets/deposit_eth.dart';
 import 'deposit_presenter.dart';
 import 'deposit_viewmodel.dart';
 
-class StarknetDeposit {
+class StarknessDeposit {
   static Future showDepositModal(
     BuildContext context,
   ) async {

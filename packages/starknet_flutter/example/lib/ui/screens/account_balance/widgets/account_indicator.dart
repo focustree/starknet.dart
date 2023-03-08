@@ -3,13 +3,13 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:starknet_flutter/starknet_flutter.dart';
 import 'package:starknet_flutter_example/ui/widgets/bouncing_button.dart';
 
-class AccountIndicator extends StatelessWidget {
+class AccountIndicatorWidget extends StatelessWidget {
   final String avatarUrl;
   final Wallet? selectedWallet;
   final PublicAccount? selectedAccount;
   final VoidCallback? onPressed;
 
-  const AccountIndicator({
+  const AccountIndicatorWidget({
     super.key,
     required this.avatarUrl,
     required this.selectedWallet,

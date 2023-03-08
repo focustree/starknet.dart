@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:starknet_flutter_example/ui/widgets/bouncing_button.dart';
 
-class ActionButton extends StatelessWidget {
+class ActionButtonWidget extends StatelessWidget {
   final Function()? onPressed;
   final IconData icon;
   final String text;
-  const ActionButton({
+  const ActionButtonWidget({
     Key? key,
     this.onPressed,
     required this.text,
@@ -22,14 +22,14 @@ class ActionButton extends StatelessWidget {
           Container(
             height: 60,
             width: 60,
-            decoration: const BoxDecoration(
-              color: Color(0xFFE49D9E),
+            decoration: BoxDecoration(
+              color: Theme.of(context).primaryColor,
               shape: BoxShape.circle,
             ),
             child: Center(
               child: Icon(
                 icon,
-                color: Colors.black,
+                color: Theme.of(context).colorScheme.onPrimary,
                 size: 30,
               ),
             ),
@@ -37,7 +37,10 @@ class ActionButton extends StatelessWidget {
           const SizedBox(height: 7),
           Text(
             text,
-            style: GoogleFonts.poppins(fontSize: 12),
+            style: GoogleFonts.poppins(
+              fontSize: 12,
+              fontWeight: FontWeight.bold,
+            ),
           ),
         ],
       ),
