@@ -154,8 +154,12 @@ class _AmountScreenState extends State<AmountScreen> {
           ),
           BouncingButton.plain(
             text: 'Next',
-            onTap: () => widget.presenter.viewInterface
-                .navigateToSubRoute(RecipientScreen.routeName),
+            onTap: amount > 0
+                ? () {
+                    widget.presenter.setAmount(amount);
+                    Navigator.of(context).pushNamed(RecipientScreen.routeName);
+                  }
+                : null,
           ),
         ],
       ),

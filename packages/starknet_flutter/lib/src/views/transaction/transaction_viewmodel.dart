@@ -10,8 +10,9 @@ class TransactionViewModel {
 
   double? ethExchangeRate;
   double? ethBalance;
-  
 
+  double? amount;
+  
   late bool isLoadingEthBalance;
 
   bool get isRootPage => routeName == AmountScreen.routeName;
