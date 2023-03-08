@@ -81,66 +81,69 @@ class _TransactionPageState extends State<TransactionPage>
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      key: const ValueKey('TransactionPage'),
-      appBar: AppBar(
-        backgroundColor: Colors.transparent,
-        elevation: 0,
-        title: model.title != null
-            ? Text(
-                model.title!,
-                style: GoogleFonts.poppins(
-                  color: Theme.of(context).colorScheme.onSurface,
-                  fontSize: 16,
-                  fontWeight: FontWeight.w700,
-                ),
-              )
-            : const SizedBox.shrink(),
-        actions: [
-          if (model.isRootPage)
-            Padding(
-              padding: const EdgeInsets.only(right: 8.0),
-              child: BouncingWidget(
-                onTap: closeModal,
-                child: Container(
-                  color: Colors.transparent,
-                  width: 50,
-                  height: 50,
-                  child: Icon(
-                    Icons.close_rounded,
-                    color: Theme.of(context).primaryColor,
+    return GestureDetector(
+      onTap: () => FocusScope.of(context).unfocus(),
+      child: Scaffold(
+        key: const ValueKey('TransactionPage'),
+        appBar: AppBar(
+          backgroundColor: Colors.transparent,
+          elevation: 0,
+          title: model.title != null
+              ? Text(
+                  model.title!,
+                  style: GoogleFonts.poppins(
+                    color: Theme.of(context).colorScheme.onSurface,
+                    fontSize: 16,
+                    fontWeight: FontWeight.w700,
                   ),
-                ),
-              ),
-            ),
-        ],
-        leading: AnimatedSwitcher(
-          duration: const Duration(milliseconds: 300),
-          child: model.isRootPage
-              ? const SizedBox.shrink()
-              : BouncingWidget(
-                  onTap: goBack,
+                )
+              : const SizedBox.shrink(),
+          actions: [
+            if (model.isRootPage)
+              Padding(
+                padding: const EdgeInsets.only(right: 8.0),
+                child: BouncingWidget(
+                  onTap: closeModal,
                   child: Container(
                     color: Colors.transparent,
                     width: 50,
                     height: 50,
                     child: Icon(
-                      Icons.arrow_back_ios_new_rounded,
+                      Icons.close_rounded,
                       color: Theme.of(context).primaryColor,
                     ),
                   ),
                 ),
+              ),
+          ],
+          leading: AnimatedSwitcher(
+            duration: const Duration(milliseconds: 300),
+            child: model.isRootPage
+                ? const SizedBox.shrink()
+                : BouncingWidget(
+                    onTap: goBack,
+                    child: Container(
+                      color: Colors.transparent,
+                      width: 50,
+                      height: 50,
+                      child: Icon(
+                        Icons.arrow_back_ios_new_rounded,
+                        color: Theme.of(context).primaryColor,
+                      ),
+                    ),
+                  ),
+          ),
         ),
-      ),
-      body: SafeArea(
-        child: Navigator(
-          key: _navigatorKey,
-          initialRoute: AmountScreen.routeName,
-          observers: [observer],
-          onGenerateRoute: (settings) => TransactionRouter.onGenerateRoute(
-            settings,
-            model,
-            presenter,
+        body: SafeArea(
+          child: Navigator(
+            key: _navigatorKey,
+            initialRoute: AmountScreen.routeName,
+            observers: [observer],
+            onGenerateRoute: (settings) => TransactionRouter.onGenerateRoute(
+              settings,
+              model,
+              presenter,
+            ),
           ),
         ),
       ),

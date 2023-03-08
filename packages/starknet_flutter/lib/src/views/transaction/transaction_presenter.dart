@@ -42,8 +42,4 @@ class TransactionPresenter {
   void dispose() {
     _subscription?.cancel();
   }
-
-  void setAmount(double amount) {
-    viewModel.amount = amount;
-  }
 }

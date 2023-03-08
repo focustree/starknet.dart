@@ -1,8 +1,8 @@
 import 'package:animations/animations.dart';
 import 'package:flutter/material.dart';
 import 'package:starknet_flutter/src/views/transaction/routes/amount_screen/amount_screen.dart';
-import 'package:starknet_flutter/src/views/transaction/routes/recipient_screen.dart';
-import 'package:starknet_flutter/src/views/transaction/routes/summary_screen.dart';
+import 'package:starknet_flutter/src/views/transaction/routes/recipient_screen/recipient_screen.dart';
+import 'package:starknet_flutter/src/views/transaction/routes/summary_screen/summary_screen.dart';
 import 'package:starknet_flutter/src/views/transaction/transaction_presenter.dart';
 import 'package:starknet_flutter/src/views/transaction/transaction_viewmodel.dart';
 
