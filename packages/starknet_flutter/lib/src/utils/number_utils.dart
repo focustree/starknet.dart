@@ -1,3 +1,5 @@
+import 'package:intl/intl.dart';
+
 extension StarknetNumberUtils on num {
   /// truncate a double to a certain number of decimal places
   ///
@@ -20,6 +22,10 @@ extension StarknetNumberUtils on num {
     String numTruncatedString =
         numToString.substring(0, numToString.indexOf('.') + precision + 1);
     return double.parse(numTruncatedString);
+  }
+
+  String format() {
+    return NumberFormat('#,##0.00').format(this);
   }
 
   /// round a double to a certain number of decimal places
