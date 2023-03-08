@@ -11,10 +11,12 @@ import '../../../models/wallet.dart';
 
 class WalletCell extends StatelessWidget {
   final Wallet wallet;
+  final VoidCallback onAddAccount;
 
   const WalletCell({
     super.key,
     required this.wallet,
+    required this.onAddAccount,
   });
 
   @override
@@ -70,7 +72,7 @@ class WalletCell extends StatelessWidget {
                       itemCount: wallet.accounts.length,
                     ),
                   BouncingButton.text(
-                    onTap: () {},
+                    onTap: onAddAccount,
                     text: 'Add account',
                     textStyle: GoogleFonts.poppins(
                       color: Theme.of(context).primaryColor,
