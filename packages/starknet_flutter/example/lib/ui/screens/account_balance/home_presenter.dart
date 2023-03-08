@@ -13,21 +13,34 @@ class HomePresenter {
   );
 
   HomePresenter init() {
+    final wallets = StarknetStore.public().getWallets();
+    if (wallets.isNotEmpty) {
+      wallets.sort((a, b) => b.order.compareTo(a.order));
+      final selectedWallet = wallets.first;
+      viewModel.selectedWallet = selectedWallet;
+      if (selectedWallet.accounts.isNotEmpty) {
+        selectedWallet.accounts.sort((a, b) => b.order.compareTo(a.order));
+        viewModel.selectedAccount = selectedWallet.accounts.first;
+        refreshAccount();
+      }
+    }
     return this;
   }
 
-  void afterViewInit() {
-    viewInterface.showDialogWalletMissing();
+  Future<void> loadIsValidAccount() async {
+    viewModel.isValid = null;
+    viewInterface.refresh();
+    viewModel.isValid = await viewModel.selectedAccount?.isValid;
+    viewInterface.refresh();
   }
 
-  Future loadEthBalance() async {
-    viewModel.isLoadingBalance = true;
+  Future<void> loadEthBalance() async {
+    viewModel.ethBalance = null;
     viewInterface.refresh();
 
     viewModel.ethExchangeRate = await ExchangeRates.get(from: 'ETH', to: 'USD');
     viewModel.ethBalance = await viewModel.selectedAccount?.balance;
 
-    viewModel.isLoadingBalance = false;
     viewInterface.refresh();
   }
 
@@ -53,7 +66,29 @@ class HomePresenter {
       viewModel.selectedAccount = selectedAccount.account;
       viewInterface.refresh();
 
-      loadEthBalance();
+      refreshAccount();
     }
+  }
+
+  void refreshAccount() {
+    loadIsValidAccount();
+    loadEthBalance();
+  }
+
+  Future<void> onDeploy(PasswordPrompt passwordPrompt) async {
+    viewModel.isDeploying = true;
+    viewInterface.refresh();
+
+    final publicAccount = viewModel.selectedAccount!;
+    final account = await publicAccount.toAccount(passwordPrompt);
+    final result = account == null
+        ? null
+        : DeployAccountService().deploy(
+            wallet: viewModel.selectedWallet!,
+            account: account,
+          );
+    print("Result: $result");
+    viewModel.isDeploying = false;
+    viewInterface.refresh();
   }
 }

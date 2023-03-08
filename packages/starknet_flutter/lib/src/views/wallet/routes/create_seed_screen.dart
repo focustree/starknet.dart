@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:starknet_flutter/src/views/wallet/routes/protect_wallet_screen.dart';
 import 'package:starknet_flutter/src/views/wallet/wallet_initialization_presenter.dart';
 import 'package:starknet_flutter/src/views/wallet/wallet_initialization_viewmodel.dart';
 import 'package:starknet_flutter/src/views/widgets/bouncing_button.dart';
@@ -26,21 +25,14 @@ class _CreateSeedScreenState extends State<CreateSeedScreen> {
   bool? _confirmCheckbox = false;
 
   @override
+  void initState() {
+    widget.presenter.newSeedPhrase();
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
-    final words = [
-      "toward",
-      "antenna",
-      "indicate",
-      "reject",
-      "must",
-      "artist",
-      "expect",
-      "angry",
-      "fit",
-      "easy",
-      "cupboard",
-      "require",
-    ];
+    final words = widget.model.seedPhrase!;
     return Padding(
       padding: const EdgeInsets.all(16),
       child: Center(
@@ -146,8 +138,7 @@ class _CreateSeedScreenState extends State<CreateSeedScreen> {
             const SizedBox(height: 8),
             BouncingButton.plain(
               onTap: _confirmCheckbox == true
-                  ? () => widget.presenter.viewInterface
-                      .navigateToSubRoute(ProtectWalletScreen.routeName)
+                  ? () => widget.presenter.confirmSeedPhrase()
                   : null,
               text: 'Continue',
             ),

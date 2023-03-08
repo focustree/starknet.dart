@@ -1,5 +1,7 @@
 import 'package:hive/hive.dart';
 import 'package:starknet/starknet.dart';
+import 'package:starknet_flutter/src/stores/starknet_store.dart';
+import 'package:starknet_flutter/src/views/passcode/passcode_input_view.dart';
 import 'package:starknet_flutter/src/views/wallet/wallet_initialization_viewmodel.dart';
 import 'package:ulid/ulid.dart';
 
@@ -57,7 +59,7 @@ class PublicAccount extends HiveObject {
 
   Future<double> get balance async {
     // TODO: do this in an isolate to avoid blocking the UI
-    
+
     final provider = JsonRpcProvider(nodeUri: Uri.parse(nodeUri));
     final ethContractAddress = Felt.fromHexString(
         '0x049d36570d4e46f48e99674bd3fcc84644ddd6b96f7c741b1562b82f9e004dc7');
@@ -81,6 +83,50 @@ class PublicAccount extends HiveObject {
             BigInt.from(10).pow(ethDecimals);
         return ethBalance;
       },
+    );
+  }
+
+  /// Returns `true` if account is a valid one
+  ///
+  /// As a simple rule, we assume a contract is valid if class hash is not none
+  ///
+  /// See also [Account.isValid]
+  Future<bool> get isValid async {
+    final accountClassHash =
+        (await JsonRpcProvider(nodeUri: Uri.parse(nodeUri)).getClassHashAt(
+      contractAddress: Felt.fromHexString(accountAddress),
+      blockId: BlockId.latest,
+    ))
+            .when(
+      result: (result) => result,
+      error: ((error) => Felt.fromInt(0)),
+    );
+    print("Account is valid: ${accountClassHash != Felt.fromInt(0)}");
+    return accountClassHash != Felt.fromInt(0);
+  }
+
+  Future<Account?> toAccount(PasswordPrompt passwordPrompt) async {
+    final secureStore = await StarknetStore.secure();
+    final privateKey = await secureStore.when(biometric: (biometricStore) {
+      return biometricStore.getPrivateKey(id: privateKeyId);
+    }, password: (passwordStore) async {
+      final password = await passwordPrompt();
+      if (password == null) {
+        return null;
+      }
+      return passwordStore.getPrivateKey(
+        id: privateKeyId,
+        password: password,
+      );
+    });
+    if (privateKey == null) {
+      return null;
+    }
+    return Account(
+      provider: JsonRpcProvider(nodeUri: Uri.parse(nodeUri)),
+      signer: Signer(privateKey: Felt.fromBytes(privateKey)),
+      accountAddress: Felt.fromHexString(accountAddress),
+      chainId: Felt.fromHexString(chainId),
     );
   }
 }

@@ -6,22 +6,25 @@ import 'package:starknet_flutter_example/ui/widgets/bouncing_button.dart';
 
 class AccountAddressWidget extends StatelessWidget {
   final String address;
+
   const AccountAddressWidget({
-    Key? key,
+    super.key,
     required this.address,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
     return BouncingWidget(
       onTap: () async {
         await Clipboard.setData(ClipboardData(text: address));
-        
-        ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(
-            content: Text('Address copied to clipboard'),
-          ),
-        );
+
+        if (context.mounted) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            const SnackBar(
+              content: Text('Address copied to clipboard'),
+            ),
+          );
+        }
       },
       child: Row(
         children: [

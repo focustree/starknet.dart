@@ -1,14 +1,12 @@
 import 'dart:typed_data';
 
-import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:starknet/starknet.dart';
 import 'package:starknet_flutter/pigeon.dart';
-import 'package:starknet_flutter/src/services/protect_wallet/protect_wallet_service.dart';
 import 'package:starknet_flutter/src/views/wallet/wallet_initialization_viewmodel.dart';
 import 'package:starknet_flutter/starknet_flutter.dart';
 
-class RestoreWalletService extends ProtectWalletService {
-  @override
+abstract class ProtectWalletService {
   Future<void> onSecureWithBiometric({
     required BiometricStore biometricStore,
     required StarknetAccountType accountType,
@@ -64,7 +62,6 @@ class RestoreWalletService extends ProtectWalletService {
     onWalletProtected(wallet);
   }
 
-  @override
   Future<void> onSecureWithPassword(
     BuildContext context, {
     required PasswordStore passwordStore,
