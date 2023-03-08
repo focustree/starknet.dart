@@ -111,8 +111,10 @@ class TxnReceipt with _$TxnReceipt {
 
   // User arrow func to have freezed generator work properly
   factory TxnReceipt.fromJson(Map<String, Object?> json) =>
-      json['type'] == 'INVOKE'
-          ? InvokeTxnReceipt.fromJson(json)
+      !json.containsKey('status')
+          ? (json.containsKey('contract_address')
+              ? PendingDeployTxnReceipt.fromJson(json)
+              : PendingCommonReceiptProperties.fromJson(json))
           : json['type'] == 'DECLARE'
               ? DeclareTxnReceipt.fromJson(json)
               : json['type'] == 'DEPLOY'
@@ -121,9 +123,7 @@ class TxnReceipt with _$TxnReceipt {
                       ? DeployAccountTxnReceipt.fromJson(json)
                       : json['type'] == 'L1_HANDLER'
                           ? L1HandlerTxnReceipt.fromJson(json)
-                          : json.containsKey('contract_address')
-                              ? PendingDeployTxnReceipt.fromJson(json)
-                              : PendingCommonReceiptProperties.fromJson(json);
+                          : InvokeTxnReceipt.fromJson(json);
 }
 
 // abstract class CommonReceiptProperties {

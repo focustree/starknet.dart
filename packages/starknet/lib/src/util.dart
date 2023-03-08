@@ -11,22 +11,29 @@ prettyPrintJson(Map<String, dynamic> json) {
 }
 
 const _defaultInterval = Duration(seconds: 5);
+
+/// Number of retry to wait for transaction to be declared as NOT_RECEIVED
+const _defaultMaxRetries = 60;
 const _errorStates = ['REJECTED', 'NOT_RECEIVED'];
 
 /// Returns `true` when [transactionHash] status is in [states]
 ///
-///
 /// The [provider] will be query with a period of [interval]
+/// This function will try [maxRetries] query before setting transaction status to `NOT_RECEIVED`
+/// An optional [debugLog] function could be use to display internal debug log
 /// Return `false` in case of error
 Future<bool> waitForState({
   required String transactionHash,
   required Provider provider,
   required List<String> states,
   Duration interval = _defaultInterval,
+  int maxRetries = _defaultMaxRetries,
+  Function(dynamic message)? debugLog,
 }) async {
+  int count = 0;
   bool done = false;
   bool succeed = false;
-  String status = 'NOT_RECEIVED';
+  String status = 'UNKNOWN';
   final txHash = Felt.fromHexString(transactionHash);
   while (done != true) {
     final receipt = await provider.getTransactionReceipt(txHash);
@@ -55,10 +62,18 @@ Future<bool> waitForState({
         if (!(error.code == 25 &&
             ((provider as JsonRpcProvider).nodeUri == infuraGoerliTestnetUri ||
                 provider.nodeUri == infuraMainnetUri))) {
-          print('An error occured: $error');
+          debugLog?.call('An error occured: $error');
         }
-        done = true;
-        return false;
+        if ((error.code == 25) && (count < maxRetries)) {
+          count += 1;
+          status = 'UNKNOWN';
+          debugLog?.call(
+            "Waiting for status of $transactionHash ($count / $maxRetries)",
+          );
+        } else {
+          done = true;
+          return false;
+        }
       },
     );
     if (_errorStates.contains(status)) {
@@ -84,6 +99,8 @@ Future<bool> waitForTransaction({
   required String transactionHash,
   required JsonRpcProvider provider,
   Duration interval = _defaultInterval,
+  int maxRetries = _defaultMaxRetries,
+  Function(dynamic message)? debugLog,
 }) async {
   return waitForState(
     transactionHash: transactionHash,
@@ -93,6 +110,9 @@ Future<bool> waitForTransaction({
       'ACCEPTED_ON_L2',
       'ACCEPTED_ON_L1',
     ],
+    interval: interval,
+    maxRetries: maxRetries,
+    debugLog: debugLog,
   );
 }
 
@@ -107,6 +127,8 @@ Future<bool> waitForAcceptance({
   required String transactionHash,
   required Provider provider,
   Duration interval = _defaultInterval,
+  int maxRetries = _defaultMaxRetries,
+  Function(dynamic message)? debugLog,
 }) async {
   return waitForState(
     transactionHash: transactionHash,
@@ -115,5 +137,8 @@ Future<bool> waitForAcceptance({
       'ACCEPTED_ON_L2',
       'ACCEPTED_ON_L1',
     ],
+    interval: interval,
+    maxRetries: maxRetries,
+    debugLog: debugLog,
   );
 }
