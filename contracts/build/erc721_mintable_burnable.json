@@ -214,7 +214,7 @@
             "name": "isApprovedForAll",
             "outputs": [
                 {
-                    "name": "isApproved",
+                    "name": "approved",
                     "type": "felt"
                 }
             ],
@@ -1324,7 +1324,7 @@
             "pedersen",
             "range_check"
         ],
-        "compiler_version": "0.10.1",
+        "compiler_version": "0.10.3",
         "data": [
             "0x40780017fff7fff",
             "0x1",
@@ -4241,8 +4241,8 @@
                             "offset": 0
                         },
                         "reference_ids": {
-                            "__wrappers__.isApprovedForAll_encode_return.range_check_ptr": 1155,
-                            "__wrappers__.isApprovedForAll_encode_return.ret_value": 1154
+                            "__wrappers__.isApprovedForAll_encode_return.range_check_ptr": 1154,
+                            "__wrappers__.isApprovedForAll_encode_return.ret_value": 1153
                         }
                     }
                 }
@@ -4262,8 +4262,8 @@
                             "offset": 0
                         },
                         "reference_ids": {
-                            "__wrappers__.tokenURI_encode_return.range_check_ptr": 1186,
-                            "__wrappers__.tokenURI_encode_return.ret_value": 1185
+                            "__wrappers__.tokenURI_encode_return.range_check_ptr": 1185,
+                            "__wrappers__.tokenURI_encode_return.ret_value": 1184
                         }
                     }
                 }
@@ -4283,8 +4283,8 @@
                             "offset": 0
                         },
                         "reference_ids": {
-                            "__wrappers__.owner_encode_return.range_check_ptr": 1213,
-                            "__wrappers__.owner_encode_return.ret_value": 1212
+                            "__wrappers__.owner_encode_return.range_check_ptr": 1212,
+                            "__wrappers__.owner_encode_return.ret_value": 1211
                         }
                     }
                 }
@@ -4304,15 +4304,15 @@
                             "offset": 0
                         },
                         "reference_ids": {
-                            "__wrappers__.approve.__calldata_actual_size": 1246,
-                            "__wrappers__.approve.__calldata_arg_to": 1242,
-                            "__wrappers__.approve.__calldata_arg_tokenId": 1244,
-                            "__wrappers__.approve.__calldata_ptr": 1245,
-                            "__wrappers__.approve.__temp79": 1247,
-                            "__wrappers__.approve.pedersen_ptr": 1248,
-                            "__wrappers__.approve.range_check_ptr": 1250,
-                            "__wrappers__.approve.ret_value": 1251,
-                            "__wrappers__.approve.syscall_ptr": 1249
+                            "__wrappers__.approve.__calldata_actual_size": 1245,
+                            "__wrappers__.approve.__calldata_arg_to": 1241,
+                            "__wrappers__.approve.__calldata_arg_tokenId": 1243,
+                            "__wrappers__.approve.__calldata_ptr": 1244,
+                            "__wrappers__.approve.__temp79": 1246,
+                            "__wrappers__.approve.pedersen_ptr": 1247,
+                            "__wrappers__.approve.range_check_ptr": 1249,
+                            "__wrappers__.approve.ret_value": 1250,
+                            "__wrappers__.approve.syscall_ptr": 1248
                         }
                     }
                 }
@@ -4332,15 +4332,15 @@
                             "offset": 129
                         },
                         "reference_ids": {
-                            "__wrappers__.setApprovalForAll.__calldata_actual_size": 1270,
-                            "__wrappers__.setApprovalForAll.__calldata_arg_approved": 1268,
-                            "__wrappers__.setApprovalForAll.__calldata_arg_operator": 1266,
-                            "__wrappers__.setApprovalForAll.__calldata_ptr": 1269,
-                            "__wrappers__.setApprovalForAll.__temp80": 1271,
-                            "__wrappers__.setApprovalForAll.pedersen_ptr": 1273,
-                            "__wrappers__.setApprovalForAll.range_check_ptr": 1274,
-                            "__wrappers__.setApprovalForAll.ret_value": 1275,
-                            "__wrappers__.setApprovalForAll.syscall_ptr": 1272
+                            "__wrappers__.setApprovalForAll.__calldata_actual_size": 1269,
+                            "__wrappers__.setApprovalForAll.__calldata_arg_approved": 1267,
+                            "__wrappers__.setApprovalForAll.__calldata_arg_operator": 1265,
+                            "__wrappers__.setApprovalForAll.__calldata_ptr": 1268,
+                            "__wrappers__.setApprovalForAll.__temp80": 1270,
+                            "__wrappers__.setApprovalForAll.pedersen_ptr": 1272,
+                            "__wrappers__.setApprovalForAll.range_check_ptr": 1273,
+                            "__wrappers__.setApprovalForAll.ret_value": 1274,
+                            "__wrappers__.setApprovalForAll.syscall_ptr": 1271
                         }
                     }
                 }
@@ -4360,16 +4360,16 @@
                             "offset": 0
                         },
                         "reference_ids": {
-                            "__wrappers__.transferFrom.__calldata_actual_size": 1297,
-                            "__wrappers__.transferFrom.__calldata_arg_from_": 1291,
-                            "__wrappers__.transferFrom.__calldata_arg_to": 1293,
-                            "__wrappers__.transferFrom.__calldata_arg_tokenId": 1295,
-                            "__wrappers__.transferFrom.__calldata_ptr": 1296,
-                            "__wrappers__.transferFrom.__temp81": 1298,
-                            "__wrappers__.transferFrom.pedersen_ptr": 1299,
-                            "__wrappers__.transferFrom.range_check_ptr": 1301,
-                            "__wrappers__.transferFrom.ret_value": 1302,
-                            "__wrappers__.transferFrom.syscall_ptr": 1300
+                            "__wrappers__.transferFrom.__calldata_actual_size": 1296,
+                            "__wrappers__.transferFrom.__calldata_arg_from_": 1290,
+                            "__wrappers__.transferFrom.__calldata_arg_to": 1292,
+                            "__wrappers__.transferFrom.__calldata_arg_tokenId": 1294,
+                            "__wrappers__.transferFrom.__calldata_ptr": 1295,
+                            "__wrappers__.transferFrom.__temp81": 1297,
+                            "__wrappers__.transferFrom.pedersen_ptr": 1298,
+                            "__wrappers__.transferFrom.range_check_ptr": 1300,
+                            "__wrappers__.transferFrom.ret_value": 1301,
+                            "__wrappers__.transferFrom.syscall_ptr": 1299
                         }
                     }
                 }
@@ -4389,22 +4389,22 @@
                             "offset": 0
                         },
                         "reference_ids": {
-                            "__wrappers__.safeTransferFrom.__calldata_actual_size": 1335,
-                            "__wrappers__.safeTransferFrom.__calldata_arg_data": 1331,
-                            "__wrappers__.safeTransferFrom.__calldata_arg_data_len": 1326,
-                            "__wrappers__.safeTransferFrom.__calldata_arg_from_": 1320,
-                            "__wrappers__.safeTransferFrom.__calldata_arg_to": 1322,
-                            "__wrappers__.safeTransferFrom.__calldata_arg_tokenId": 1324,
-                            "__wrappers__.safeTransferFrom.__calldata_ptr": 1334,
-                            "__wrappers__.safeTransferFrom.__temp82": 1328,
-                            "__wrappers__.safeTransferFrom.__temp83": 1329,
-                            "__wrappers__.safeTransferFrom.__temp84": 1332,
-                            "__wrappers__.safeTransferFrom.__temp85": 1333,
-                            "__wrappers__.safeTransferFrom.__temp86": 1336,
-                            "__wrappers__.safeTransferFrom.pedersen_ptr": 1337,
-                            "__wrappers__.safeTransferFrom.range_check_ptr": 1339,
-                            "__wrappers__.safeTransferFrom.ret_value": 1340,
-                            "__wrappers__.safeTransferFrom.syscall_ptr": 1338
+                            "__wrappers__.safeTransferFrom.__calldata_actual_size": 1334,
+                            "__wrappers__.safeTransferFrom.__calldata_arg_data": 1330,
+                            "__wrappers__.safeTransferFrom.__calldata_arg_data_len": 1325,
+                            "__wrappers__.safeTransferFrom.__calldata_arg_from_": 1319,
+                            "__wrappers__.safeTransferFrom.__calldata_arg_to": 1321,
+                            "__wrappers__.safeTransferFrom.__calldata_arg_tokenId": 1323,
+                            "__wrappers__.safeTransferFrom.__calldata_ptr": 1333,
+                            "__wrappers__.safeTransferFrom.__temp82": 1327,
+                            "__wrappers__.safeTransferFrom.__temp83": 1328,
+                            "__wrappers__.safeTransferFrom.__temp84": 1331,
+                            "__wrappers__.safeTransferFrom.__temp85": 1332,
+                            "__wrappers__.safeTransferFrom.__temp86": 1335,
+                            "__wrappers__.safeTransferFrom.pedersen_ptr": 1336,
+                            "__wrappers__.safeTransferFrom.range_check_ptr": 1338,
+                            "__wrappers__.safeTransferFrom.ret_value": 1339,
+                            "__wrappers__.safeTransferFrom.syscall_ptr": 1337
                         }
                     }
                 }
@@ -4424,15 +4424,15 @@
                             "offset": 0
                         },
                         "reference_ids": {
-                            "__wrappers__.mint.__calldata_actual_size": 1362,
-                            "__wrappers__.mint.__calldata_arg_to": 1358,
-                            "__wrappers__.mint.__calldata_arg_tokenId": 1360,
-                            "__wrappers__.mint.__calldata_ptr": 1361,
-                            "__wrappers__.mint.__temp87": 1363,
-                            "__wrappers__.mint.pedersen_ptr": 1364,
-                            "__wrappers__.mint.range_check_ptr": 1366,
-                            "__wrappers__.mint.ret_value": 1367,
-                            "__wrappers__.mint.syscall_ptr": 1365
+                            "__wrappers__.mint.__calldata_actual_size": 1361,
+                            "__wrappers__.mint.__calldata_arg_to": 1357,
+                            "__wrappers__.mint.__calldata_arg_tokenId": 1359,
+                            "__wrappers__.mint.__calldata_ptr": 1360,
+                            "__wrappers__.mint.__temp87": 1362,
+                            "__wrappers__.mint.pedersen_ptr": 1363,
+                            "__wrappers__.mint.range_check_ptr": 1365,
+                            "__wrappers__.mint.ret_value": 1366,
+                            "__wrappers__.mint.syscall_ptr": 1364
                         }
                     }
                 }
@@ -4452,14 +4452,14 @@
                             "offset": 771
                         },
                         "reference_ids": {
-                            "__wrappers__.burn.__calldata_actual_size": 1386,
-                            "__wrappers__.burn.__calldata_arg_tokenId": 1384,
-                            "__wrappers__.burn.__calldata_ptr": 1385,
-                            "__wrappers__.burn.__temp88": 1387,
-                            "__wrappers__.burn.pedersen_ptr": 1388,
-                            "__wrappers__.burn.range_check_ptr": 1390,
-                            "__wrappers__.burn.ret_value": 1391,
-                            "__wrappers__.burn.syscall_ptr": 1389
+                            "__wrappers__.burn.__calldata_actual_size": 1385,
+                            "__wrappers__.burn.__calldata_arg_tokenId": 1383,
+                            "__wrappers__.burn.__calldata_ptr": 1384,
+                            "__wrappers__.burn.__temp88": 1386,
+                            "__wrappers__.burn.pedersen_ptr": 1387,
+                            "__wrappers__.burn.range_check_ptr": 1389,
+                            "__wrappers__.burn.ret_value": 1390,
+                            "__wrappers__.burn.syscall_ptr": 1388
                         }
                     }
                 }
@@ -4479,15 +4479,15 @@
                             "offset": 0
                         },
                         "reference_ids": {
-                            "__wrappers__.setTokenURI.__calldata_actual_size": 1413,
-                            "__wrappers__.setTokenURI.__calldata_arg_tokenId": 1409,
-                            "__wrappers__.setTokenURI.__calldata_arg_tokenURI": 1411,
-                            "__wrappers__.setTokenURI.__calldata_ptr": 1412,
-                            "__wrappers__.setTokenURI.__temp89": 1414,
-                            "__wrappers__.setTokenURI.pedersen_ptr": 1415,
-                            "__wrappers__.setTokenURI.range_check_ptr": 1417,
-                            "__wrappers__.setTokenURI.ret_value": 1418,
-                            "__wrappers__.setTokenURI.syscall_ptr": 1416
+                            "__wrappers__.setTokenURI.__calldata_actual_size": 1412,
+                            "__wrappers__.setTokenURI.__calldata_arg_tokenId": 1408,
+                            "__wrappers__.setTokenURI.__calldata_arg_tokenURI": 1410,
+                            "__wrappers__.setTokenURI.__calldata_ptr": 1411,
+                            "__wrappers__.setTokenURI.__temp89": 1413,
+                            "__wrappers__.setTokenURI.pedersen_ptr": 1414,
+                            "__wrappers__.setTokenURI.range_check_ptr": 1416,
+                            "__wrappers__.setTokenURI.ret_value": 1417,
+                            "__wrappers__.setTokenURI.syscall_ptr": 1415
                         }
                     }
                 }
@@ -4507,14 +4507,14 @@
                             "offset": 0
                         },
                         "reference_ids": {
-                            "__wrappers__.transferOwnership.__calldata_actual_size": 1434,
-                            "__wrappers__.transferOwnership.__calldata_arg_newOwner": 1432,
-                            "__wrappers__.transferOwnership.__calldata_ptr": 1433,
-                            "__wrappers__.transferOwnership.__temp90": 1435,
-                            "__wrappers__.transferOwnership.pedersen_ptr": 1437,
-                            "__wrappers__.transferOwnership.range_check_ptr": 1438,
-                            "__wrappers__.transferOwnership.ret_value": 1439,
-                            "__wrappers__.transferOwnership.syscall_ptr": 1436
+                            "__wrappers__.transferOwnership.__calldata_actual_size": 1433,
+                            "__wrappers__.transferOwnership.__calldata_arg_newOwner": 1431,
+                            "__wrappers__.transferOwnership.__calldata_ptr": 1432,
+                            "__wrappers__.transferOwnership.__temp90": 1434,
+                            "__wrappers__.transferOwnership.pedersen_ptr": 1436,
+                            "__wrappers__.transferOwnership.range_check_ptr": 1437,
+                            "__wrappers__.transferOwnership.ret_value": 1438,
+                            "__wrappers__.transferOwnership.syscall_ptr": 1435
                         }
                     }
                 }
@@ -4534,12 +4534,12 @@
                             "offset": 0
                         },
                         "reference_ids": {
-                            "__wrappers__.renounceOwnership.__calldata_actual_size": 1452,
-                            "__wrappers__.renounceOwnership.__calldata_ptr": 1451,
-                            "__wrappers__.renounceOwnership.pedersen_ptr": 1454,
-                            "__wrappers__.renounceOwnership.range_check_ptr": 1455,
-                            "__wrappers__.renounceOwnership.ret_value": 1456,
-                            "__wrappers__.renounceOwnership.syscall_ptr": 1453
+                            "__wrappers__.renounceOwnership.__calldata_actual_size": 1451,
+                            "__wrappers__.renounceOwnership.__calldata_ptr": 1450,
+                            "__wrappers__.renounceOwnership.pedersen_ptr": 1453,
+                            "__wrappers__.renounceOwnership.range_check_ptr": 1454,
+                            "__wrappers__.renounceOwnership.ret_value": 1455,
+                            "__wrappers__.renounceOwnership.syscall_ptr": 1452
                         }
                     }
                 }
@@ -5358,27 +5358,12 @@
                 "type": "struct"
             },
             "__main__.isApprovedForAll.Return": {
-                "cairo_type": "(isApproved: felt)",
+                "cairo_type": "(approved: felt)",
                 "type": "type_definition"
             },
             "__main__.isApprovedForAll.SIZEOF_LOCALS": {
                 "type": "const",
                 "value": 0
-            },
-            "__main__.isApprovedForAll.isApproved": {
-                "cairo_type": "felt",
-                "full_name": "__main__.isApprovedForAll.isApproved",
-                "references": [
-                    {
-                        "ap_tracking_data": {
-                            "group": 132,
-                            "offset": 75
-                        },
-                        "pc": 1909,
-                        "value": "[cast(ap + (-1), felt*)]"
-                    }
-                ],
-                "type": "reference"
             },
             "__main__.isApprovedForAll.operator": {
                 "cairo_type": "felt",
@@ -8906,7 +8891,7 @@
                 "type": "reference"
             },
             "__wrappers__.isApprovedForAll.ret_value": {
-                "cairo_type": "(isApproved: felt)",
+                "cairo_type": "(approved: felt)",
                 "full_name": "__wrappers__.isApprovedForAll.ret_value",
                 "references": [
                     {
@@ -8915,7 +8900,7 @@
                             "offset": 83
                         },
                         "pc": 1929,
-                        "value": "[cast(ap + (-1), (isApproved: felt)*)]"
+                        "value": "[cast(ap + (-1), (approved: felt)*)]"
                     }
                 ],
                 "type": "reference"
@@ -8986,7 +8971,7 @@
                         "offset": 1
                     },
                     "ret_value": {
-                        "cairo_type": "(isApproved: felt)",
+                        "cairo_type": "(approved: felt)",
                         "offset": 0
                     }
                 },
@@ -9080,7 +9065,7 @@
                 "type": "reference"
             },
             "__wrappers__.isApprovedForAll_encode_return.ret_value": {
-                "cairo_type": "(isApproved: felt)",
+                "cairo_type": "(approved: felt)",
                 "full_name": "__wrappers__.isApprovedForAll_encode_return.ret_value",
                 "references": [
                     {
@@ -9089,7 +9074,7 @@
                             "offset": 0
                         },
                         "pc": 1910,
-                        "value": "[cast(fp + (-4), (isApproved: felt)*)]"
+                        "value": "[cast(fp + (-4), (approved: felt)*)]"
                     }
                 ],
                 "type": "reference"
@@ -20183,7 +20168,7 @@
                 "type": "struct"
             },
             "openzeppelin.token.erc721.library.ERC721.is_approved_for_all.Return": {
-                "cairo_type": "(is_approved: felt)",
+                "cairo_type": "(approved: felt)",
                 "type": "type_definition"
             },
             "openzeppelin.token.erc721.library.ERC721.is_approved_for_all.SIZEOF_LOCALS": {
@@ -22938,7 +22923,7 @@
                 "type": "struct"
             },
             "openzeppelin.token.erc721.library.ERC721_operator_approvals.read.Return": {
-                "cairo_type": "(is_approved: felt)",
+                "cairo_type": "(approved: felt)",
                 "type": "type_definition"
             },
             "openzeppelin.token.erc721.library.ERC721_operator_approvals.read.SIZEOF_LOCALS": {
@@ -26028,6 +26013,18 @@
                 "type": "const",
                 "value": 2792084853
             },
+            "openzeppelin.utils.constants.library.IERC1155_ID": {
+                "type": "const",
+                "value": 3652614694
+            },
+            "openzeppelin.utils.constants.library.IERC1155_METADATA_ID": {
+                "type": "const",
+                "value": 243872796
+            },
+            "openzeppelin.utils.constants.library.IERC1155_RECEIVER_ID": {
+                "type": "const",
+                "value": 1310921440
+            },
             "openzeppelin.utils.constants.library.IERC165_ID": {
                 "type": "const",
                 "value": 33540519
@@ -26051,6 +26048,14 @@
             "openzeppelin.utils.constants.library.INVALID_ID": {
                 "type": "const",
                 "value": 4294967295
+            },
+            "openzeppelin.utils.constants.library.ON_ERC1155_BATCH_RECEIVED_SELECTOR": {
+                "type": "const",
+                "value": 3155786881
+            },
+            "openzeppelin.utils.constants.library.ON_ERC1155_RECEIVED_SELECTOR": {
+                "type": "const",
+                "value": 4063915617
             },
             "openzeppelin.utils.constants.library.TRANSACTION_VERSION": {
                 "type": "const",
@@ -39222,19 +39227,11 @@
                 },
                 {
                     "ap_tracking_data": {
-                        "group": 132,
-                        "offset": 75
-                    },
-                    "pc": 1909,
-                    "value": "[cast(ap + (-1), felt*)]"
-                },
-                {
-                    "ap_tracking_data": {
                         "group": 133,
                         "offset": 0
                     },
                     "pc": 1910,
-                    "value": "[cast(fp + (-4), (isApproved: felt)*)]"
+                    "value": "[cast(fp + (-4), (approved: felt)*)]"
                 },
                 {
                     "ap_tracking_data": {
@@ -39386,7 +39383,7 @@
                         "offset": 83
                     },
                     "pc": 1929,
-                    "value": "[cast(ap + (-1), (isApproved: felt)*)]"
+                    "value": "[cast(ap + (-1), (approved: felt)*)]"
                 },
                 {
                     "ap_tracking_data": {

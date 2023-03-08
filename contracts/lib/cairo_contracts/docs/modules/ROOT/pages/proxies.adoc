@@ -76,9 +76,9 @@ Upgradeable contracts do not, therefore, require a separate library with refacto
 OpenZeppelin's alternative Upgrades library also implements https://docs.openzeppelin.com/upgrades-plugins/1.x/proxies#unstructured-storage-proxies[unstructured storage] for its upgradeable contracts.
 The basic idea behind unstructured storage is to pseudo-randomize the storage structure of the upgradeable contract so it's based on variable names instead of declaration order, which makes the chances of storage collision during an upgrade extremely unlikely.
 
-The Starknet compiler, meanwhile, already creates pseudo-random storage addresses by hashing the storage variable names (and keys in mappings) by default.
-In other words, Starknet already uses unstructured storage and does not need a second library to modify how storage is set.
-See Starknet's https://starknet.io/documentation/contracts/#contracts_storage[Contracts Storage documentation] for more information.
+The StarkNet compiler, meanwhile, already creates pseudo-random storage addresses by hashing the storage variable names (and keys in mappings) by default.
+In other words, StarkNet already uses unstructured storage and does not need a second library to modify how storage is set.
+See StarkNet's https://starknet.io/documentation/contracts/#contracts_storage[Contracts Storage documentation] for more information.
 
 [#proxies2]
 == Proxies
@@ -95,7 +95,7 @@ This allows developers to add features, update logic, and fix bugs without touch
 
 === Proxy contract
 
-The https://github.com/OpenZeppelin/cairo-contracts/blob/release-v0.4.0b/src/openzeppelin/upgrades/presets/Proxy.cairo[Proxy contract] includes two core methods:
+The https://github.com/OpenZeppelin/cairo-contracts/blob/release-v0.6.1/src/openzeppelin/upgrades/presets/Proxy.cairo[Proxy contract] includes two core methods:
 
 . The `\\__default__` method is a fallback method that redirects a function call and associated calldata to the implementation contract.
 . The `\\__l1_default__` method is also a fallback method;
@@ -112,7 +112,7 @@ The proxy's fallback function redirects the function call to the implementation 
 === Implementation contract
 
 The implementation contract, also known as the logic contract, receives the redirected function calls from the proxy contract.
-The implementation contract should follow the xref:extensibility.adoc#the_pattern[Extensibility pattern] and import directly from the https://github.com/OpenZeppelin/cairo-contracts/blob/release-v0.4.0b/src/openzeppelin/upgrades/library.cairo[Proxy library].
+The implementation contract should follow the xref:extensibility.adoc#the_pattern[Extensibility pattern] and import directly from the https://github.com/OpenZeppelin/cairo-contracts/blob/release-v0.6.1/src/openzeppelin/upgrades/library.cairo[Proxy library].
 
 The implementation contract should:
 
@@ -312,21 +312,21 @@ await signer.send_transaction(
 
 For a full deployment and upgrade implementation, please see:
 
-* https://github.com/OpenZeppelin/cairo-contracts/blob/release-v0.4.0b/tests/mocks/UpgradesMockV1.cairo[Upgrades V1]
-* https://github.com/OpenZeppelin/cairo-contracts/blob/release-v0.4.0b/tests/mocks/UpgradesMockV2.cairo[Upgrades V2]
+* https://github.com/OpenZeppelin/cairo-contracts/blob/release-v0.6.1/tests/mocks/UpgradesMockV1.cairo[Upgrades V1]
+* https://github.com/OpenZeppelin/cairo-contracts/blob/release-v0.6.1/tests/mocks/UpgradesMockV2.cairo[Upgrades V2]
 
 === Declaring contracts
 
-Starknet contracts come in two forms: contract classes and contract instances.
+StarkNet contracts come in two forms: contract classes and contract instances.
 Contract classes represent the uninstantiated, stateless code;
 whereas, contract instances are instantiated and include the state.
 Since the Proxy contract references the implementation contract by its class hash, declaring an implementation contract proves sufficient (as opposed to a full deployment).
-For more information on declaring classes, see https://starknet.io/docs/hello_starknet/intro.html#declare-contract[Starknet's documentation].
+For more information on declaring classes, see https://starknet.io/docs/hello_starknet/intro.html#declare-contract[StarkNet's documentation].
 
 === Testing method calls
 
-As with most Starknet contracts, interacting with a proxy contract requires an xref:accounts.adoc#quickstart[account abstraction].
-Due to limitations in the Starknet testing framework, however, `@view` methods also require an account abstraction. This is only a requirement when testing.
+As with most StarkNet contracts, interacting with a proxy contract requires an xref:accounts.adoc#quickstart[account abstraction].
+Due to limitations in the StarkNet testing framework, however, `@view` methods also require an account abstraction. This is only a requirement when testing.
 The differences in getter methods written in Python, for example, are as follows:
 
 [,python]

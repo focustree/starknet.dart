@@ -1,5 +1,5 @@
 [project]
-protostar-version = "0.8.1"
+protostar-version = "0.9.1"
 lib-path = "contracts/lib"
 cairo-path = ["contracts/lib/cairo_contracts/src"]
 compiled-contracts-dir = "contracts/build"
@@ -20,4 +20,10 @@ erc721_mintable_burnable = [
 ]
 udc = [
     "contracts/lib/cairo_contracts/src/openzeppelin/utils/presets/UniversalDeployer.cairo"
+]
+oz_account = [
+    "contracts/lib/cairo_contracts/src/openzeppelin/account/presets/Account.cairo"
+]
+oz_account_upgradable = [
+    "contracts/src/AccountUpgradable.cairo"
 ]

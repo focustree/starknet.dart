@@ -10,35 +10,56 @@ void main() {
       });
     });
     group('declare', () {
-      test('succeeds to declare a contract class hash', () async {
+      test('succeeds to declare a simple contract class hash', () async {
         final balanceContract =
             await parseContract('../../contracts/build/balance.json');
         final res = await account0.declare(compiledContract: balanceContract);
-        res.when(
+        final txHash = res.when(
           result: (result) {
             expect(
               result.classHash,
-              equals(Felt.fromIntString(
-                  "2629893875186532358210942156370932694899207790379996755057537765547495171435")), // 2023-02-06: class hash with 'runtimeType' included
+              equals(
+                balanceClassHashWithRuntimeType,
+              ), // 2023-02-06: class hash with 'runtimeType' included
             );
-            return result.transactionHash;
+            expect(result.classHash, equals(Felt(balanceContract.classHash())));
+            return result.transactionHash.toHexString();
           },
           error: (error) => fail(error.message),
         );
+        final txStatus = await waitForAcceptance(
+          transactionHash: txHash,
+          provider: account0.provider,
+        );
+        expect(txStatus, equals(true));
+      });
+      test('succeeds to declare an openzeppelin contract class hash', () async {
+        final accountContract =
+            await parseContract('../../contracts/build/oz_account.json');
+        final res = await account0.declare(compiledContract: accountContract);
+        final String txHash = res.when(
+          result: (result) {
+            expect(result.classHash, equals(Felt(accountContract.classHash())));
+            return result.transactionHash.toHexString();
+          },
+          error: (error) => fail(error.message),
+        );
+        final txStatus = await waitForAcceptance(
+          transactionHash: txHash,
+          provider: account0.provider,
+        );
+        expect(txStatus, equals(true));
       });
     }, tags: ['integration-devnet-040']);
     group('deploy', () {
       test('succeeds to deploy a contract', () async {
         // Balance contract
-        final classHash = Felt.fromHexString(
-            "0x5d077995ffe1356cfd48aa5990ece8bf420dacab9b7d3e6941e0c53c208a56b"); // 2023-02-06: class hash with 'runtimeType' included
+        final classHash =
+            balanceClassHashWithRuntimeType; // 2023-02-06: class hash with 'runtimeType' included
 
         final contractAddress = await account0
             .deploy(classHash: classHash, calldata: [Felt.fromInt(42)]);
-        expect(
-            contractAddress,
-            equals(Felt.fromHexString(
-                '0x149867a6ce95f2d20ed96187abd430d7c2c48cdfb7dd541fb1337563ff8d9b9')));
+        expect(contractAddress, equals(balanceContractAddress));
       });
 
       test('succeeds to deploy an account', () async {
@@ -47,7 +68,7 @@ void main() {
             "0x47de619de131463cbf799d321b50c617566dc897d4be614fb3927eacd55d7ad");
         final accountConstructorCalldata = [accountPublicKey];
         final accountSigner = Signer(privateKey: accountPrivateKey);
-        final classHash = openZeppelinAccountClassHash;
+        final classHash = devnetOpenZeppelinAccountClassHash;
         final maxFee = defaultMaxFee;
         final provider = account0.provider;
         // we have to compute account address to send token

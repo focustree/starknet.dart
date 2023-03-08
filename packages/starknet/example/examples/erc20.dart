@@ -28,6 +28,7 @@ final accountV0Testnet = AccountSetup(
   privateKey: Felt.fromInt(1234),
   accountAddress:
       "0x32d5c7a7953996056caf92ff4dd83f01ad72a3c418c05f15eb2f472d1e9c9f2",
+  // ignore: deprecated_member_use_from_same_package
   supportedTxVersion: AccountSupportedTxVersion.v0,
 );
 

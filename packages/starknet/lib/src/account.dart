@@ -1,11 +1,17 @@
+import 'dart:typed_data';
+
+import 'package:bip32/bip32.dart' as bip32;
+import 'package:bip39/bip39.dart' as bip39;
 import 'package:starknet/src/presets/udc.g.dart';
 import 'package:starknet/starknet.dart';
 
 enum AccountSupportedTxVersion {
+  @Deprecated("Transaction version 0 will be removed with Starknet alpha v0.11")
   v0,
   v1,
 }
 
+/// Account abstraction class
 class Account {
   Provider provider;
   Signer signer;
@@ -62,6 +68,7 @@ class Account {
     ));
   }
 
+  /// Call account contract `__execute__` with given [functionCalls]
   Future<InvokeTransactionResponse> execute({
     required List<FunctionCall> functionCalls,
     Felt? maxFee,
@@ -73,7 +80,7 @@ class Account {
     final signature = signer.signTransactions(
       transactions: functionCalls,
       contractAddress: accountAddress,
-      version: supportedTxVersion == AccountSupportedTxVersion.v0 ? 0 : 1,
+      version: supportedTxVersion == AccountSupportedTxVersion.v1 ? 1 : 0,
       chainId: chainId,
       entryPointSelectorName: "__execute__",
       maxFee: maxFee,
@@ -81,6 +88,7 @@ class Account {
     );
 
     switch (supportedTxVersion) {
+      // ignore: deprecated_member_use_from_same_package
       case AccountSupportedTxVersion.v0:
         final calldata =
             functionCallsToCalldata(functionCalls: functionCalls) + [nonce];
@@ -113,6 +121,7 @@ class Account {
     }
   }
 
+  /// Declares a [compiledContract]
   Future<DeclareTransactionResponse> declare({
     required CompiledContract compiledContract,
     Felt? maxFee,
@@ -125,6 +134,8 @@ class Account {
       compiledContract: compiledContract,
       senderAddress: accountAddress,
       chainId: chainId,
+      nonce: nonce,
+      maxFee: maxFee,
     );
 
     return provider.addDeclareTransaction(
@@ -135,12 +146,15 @@ class Account {
           contractClass: compiledContract.compress(),
           senderAddress: accountAddress,
           signature: signature,
-          type: 'DECLARE',
         ),
       ),
     );
   }
 
+  /// Deploys an instance of [classHash] with given [salt], [unique] and [calldata]
+  ///
+  /// Contract is deployed with UDC: https://docs.openzeppelin.com/contracts-cairo/0.6.1/udc
+  /// Returns deployed contract address
   Future<Felt?> deploy({
     required Felt classHash,
     Felt? salt,
@@ -160,9 +174,13 @@ class Account {
     return getDeployedContractAddress(txReceipt);
   }
 
+  /// Get token balance of account
   Future<Uint256> balance() async =>
       ERC20(account: this, address: ethAddress).balanceOf(accountAddress);
 
+  /// Sends [amount] of token to [recipient]
+  ///
+  /// Returns transaction hash
   Future<String> send({
     required Felt recipient,
     required Uint256 amount,
@@ -187,6 +205,10 @@ class Account {
     return accountClassHash != Felt.fromInt(0);
   }
 
+  /// Deploy an account with given [signer], [provider] and [constructorCalldata]
+  ///
+  /// Default value for [classHash] is [devnetOpenZeppelinAccountClassHash]
+  /// Default value for [contractAddressSalt] is 42
   static Future<DeployAccountTransactionResponse> deployAccount({
     required Signer signer,
     required Provider provider,
@@ -201,7 +223,7 @@ class Account {
       error: (error) => StarknetChainId.testNet,
     );
 
-    classHash = classHash ?? openZeppelinAccountClassHash;
+    classHash = classHash ?? devnetOpenZeppelinAccountClassHash;
     maxFee = maxFee ?? defaultMaxFee;
     nonce = nonce ?? defaultNonce;
     contractAddressSalt = contractAddressSalt ?? Felt.fromInt(42);
@@ -211,6 +233,8 @@ class Account {
       classHash: classHash,
       constructorCalldata: constructorCalldata,
       chainId: chainId,
+      nonce: nonce,
+      maxFee: maxFee,
     );
 
     return provider.addDeployAccountTransaction(
@@ -227,6 +251,9 @@ class Account {
     );
   }
 
+  /// Retrieves an account from given [mnemonic], [provider] and [chainId]
+  ///
+  /// Default [accountDerivation] is [BraavosAccountDerivation]
   factory Account.fromMnemonic({
     required List<String> mnemonic,
     required Provider provider,
@@ -269,10 +296,11 @@ Account getAccount({
     provider: provider,
     signer: signer,
     accountAddress: accountAddress,
-    chainId: StarknetChainId.testNet,
+    chainId: chainId,
   );
 }
 
+/// Get deployed contract address from [txReceipt]
 Felt? getDeployedContractAddress(GetTransactionReceipt txReceipt) {
   return txReceipt.when(
     result: (r) {
@@ -284,26 +312,97 @@ Felt? getDeployedContractAddress(GetTransactionReceipt txReceipt) {
   );
 }
 
+/// Account derivation interface
 abstract class AccountDerivation {
+  /// Derive [Signer] from given [mnemonic] and [index]
   Signer deriveSigner({required List<String> mnemonic, int index = 0});
+
+  /// Returns expected constructor call data
+  List<Felt> constructorCalldata({required Felt publicKey});
+
+  /// Returns account address from given [publicKey]
   Felt computeAddress({required Felt publicKey});
 }
 
+class OpenzeppelinAccountDerivation extends AccountDerivation {
+  final Felt proxyClassHash;
+  final Felt implementationClassHash;
+
+  OpenzeppelinAccountDerivation({
+    required this.proxyClassHash,
+    required this.implementationClassHash,
+  });
+
+  @override
+  Signer deriveSigner({required List<String> mnemonic, int index = 0}) {
+    final privateKey = derivePrivateKey(mnemonic: mnemonic, index: index);
+    return Signer(privateKey: privateKey);
+  }
+
+  @override
+  Felt computeAddress({required Felt publicKey}) {
+    final calldata = constructorCalldata(publicKey: publicKey);
+    final salt = publicKey;
+    final accountAddress = Contract.computeAddress(
+      classHash: proxyClassHash,
+      calldata: calldata,
+      salt: salt,
+    );
+    return accountAddress;
+  }
+
+  @override
+  List<Felt> constructorCalldata({required Felt publicKey}) {
+    return [
+      implementationClassHash,
+      getSelectorByName("initializer"),
+      Felt.fromInt(1),
+      publicKey
+    ];
+  }
+
+  Future<Felt> deploy({required Account account}) async {
+    final tx = await Account.deployAccount(
+      signer: account.signer,
+      provider: account.provider,
+      constructorCalldata: constructorCalldata(
+        publicKey: account.signer.publicKey,
+      ),
+      classHash: proxyClassHash,
+      contractAddressSalt: account.signer.publicKey,
+    );
+    final deployTxHash = tx.when(
+      result: (result) {
+        print(
+          "Account is deployed at ${result.contractAddress.toHexString()} (tx: ${result.transactionHash.toHexString()})",
+        );
+        return result.transactionHash;
+      },
+      error: (error) {
+        throw Exception(
+          "Account deploy failed: ${error.code} ${error.message}",
+        );
+      },
+    );
+    return deployTxHash;
+  }
+}
+
+/// Account derivation used by Braavos account
 class BraavosAccountDerivation extends AccountDerivation {
   final Provider provider;
   final Felt chainId;
-  final String pathPrefix = "m/44'/9004'/0'/0";
 
   // FIXME: hardcoded value for testnet 2023-02-24
   final classHash = Felt.fromHexString(
     "0x03131fa018d520a037686ce3efddeab8f28895662f019ca3ca18a626650f7d1e",
   );
-  final implementationAddress = Felt.fromHexString(
+
+  /// FIXME: implementation class hash should be retrieved at runtime
+  final implementationClassHash = Felt.fromHexString(
     "0x5aa23d5bb71ddaa783da7ea79d405315bafa7cf0387a74f4593578c3e9e6570",
   );
-  final initializerSelector = Felt.fromHexString(
-    "0x2dd76e7ad84dbed81c314ffe5e7a7cacfb8f4836f01af4e913f275f89a3de1a",
-  );
+  final initializerSelector = getSelectorByName("initializer");
 
   BraavosAccountDerivation({
     required this.provider,
@@ -317,14 +416,68 @@ class BraavosAccountDerivation extends AccountDerivation {
   }
 
   @override
-  Felt computeAddress({required Felt publicKey}) {
-    final initializeData = [publicKey];
-    final calldata = [
-      implementationAddress,
+  List<Felt> constructorCalldata({required Felt publicKey}) {
+    return [
+      implementationClassHash,
       initializerSelector,
-      Felt.fromInt(initializeData.length),
-      ...initializeData,
+      Felt.fromInt(1),
+      publicKey
     ];
+  }
+
+  @override
+  Felt computeAddress({required Felt publicKey}) {
+    final calldata = constructorCalldata(publicKey: publicKey);
+    final salt = publicKey;
+    final accountAddress = Contract.computeAddress(
+      classHash: classHash,
+      calldata: calldata,
+      salt: salt,
+    );
+    return accountAddress;
+  }
+}
+
+class ArgentXAccountDerivation extends AccountDerivation {
+  final String masterPrefix = "m/44'/60'/0'/0/0";
+  final String pathPrefix = "m/44'/9004'/0'/0";
+
+  // FIXME: hardcoded value for testnet 2023-02-24
+  final classHash = Felt.fromHexString(
+    "0x025ec026985a3bf9d0cc1fe17326b245dfdc3ff89b8fde106542a3ea56c5a918",
+  );
+
+  /// FIXME: implementation address should be retrieved at runtime
+  final implementationAddress = Felt.fromHexString(
+    "0x33434ad846cdd5f23eb73ff09fe6fddd568284a0fb7d1be20ee482f044dabe2",
+  );
+
+  @override
+  Signer deriveSigner({required List<String> mnemonic, int index = 0}) {
+    final secret = bip39.mnemonicToSeed(mnemonic.join(" "));
+    final masterSeed = bip32.BIP32.fromSeed(secret).derivePath('$pathPrefix/0');
+    final masterNode = bip32.BIP32.fromSeed(masterSeed.privateKey!);
+    final child = masterNode.derivePath('$pathPrefix/$index');
+    Uint8List key = child.privateKey!;
+    key = grindKey(key);
+    final privateKey = Felt(bytesToUnsignedInt(key));
+    return Signer(privateKey: privateKey);
+  }
+
+  @override
+  List<Felt> constructorCalldata({required Felt publicKey}) {
+    return [
+      implementationAddress,
+      getSelectorByName("initialize"),
+      Felt.fromInt(2),
+      publicKey,
+      Felt.fromInt(0),
+    ];
+  }
+
+  @override
+  Felt computeAddress({required Felt publicKey}) {
+    final calldata = constructorCalldata(publicKey: publicKey);
     final salt = publicKey;
     final accountAddress = Contract.computeAddress(
       classHash: classHash,

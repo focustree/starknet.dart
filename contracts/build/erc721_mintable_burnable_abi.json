@@ -213,7 +213,7 @@
         "name": "isApprovedForAll",
         "outputs": [
             {
-                "name": "isApproved",
+                "name": "approved",
                 "type": "felt"
             }
         ],

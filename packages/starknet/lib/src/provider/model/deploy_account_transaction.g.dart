@@ -21,7 +21,7 @@ _$_DeployAccountTransactionV1 _$$_DeployAccountTransactionV1FromJson(
           .toList(),
       classHash: Felt.fromJson(json['class_hash'] as String),
       version: json['version'] as String? ?? '0x01',
-      type: json['type'] as String? ?? 'DEPOY_ACCOUNT',
+      type: json['type'] as String? ?? 'DEPLOY_ACCOUNT',
     );
 
 Map<String, dynamic> _$$_DeployAccountTransactionV1ToJson(
