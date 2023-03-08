@@ -29,12 +29,12 @@ class AndroidOptions {
   /// Whether to use the StrongBox hardware-backed keystore.
   /// This feature seems to cause [crashes](https://github.com/authpass/biometric_storage/issues/76),
   /// enable with caution.
-  final bool enableAndroidStrongBox;
+  final bool enableStrongBox;
 
   AndroidOptions({
     this.promptInfo = const AndroidPromptInfos(),
     this.authenticationValidityDurationSeconds = -1,
-    this.enableAndroidStrongBox = false,
+    this.enableStrongBox = false,
   });
 }
 

@@ -78,7 +78,7 @@ struct AndroidOptions {
   /// Whether to use the StrongBox hardware-backed keystore.
   /// This feature seems to cause [crashes](https://github.com/authpass/biometric_storage/issues/76),
   /// enable with caution.
-  var enableAndroidStrongBox: Bool
+  var enableStrongBox: Bool
 
   static func fromList(_ list: [Any]) -> AndroidOptions? {
     var promptInfo: AndroidPromptInfos? = nil
@@ -86,19 +86,19 @@ struct AndroidOptions {
       promptInfo = AndroidPromptInfos.fromList(promptInfoList as [Any])
     }
     let authenticationValidityDurationSeconds = list[1] as! Int32
-    let enableAndroidStrongBox = list[2] as! Bool
+    let enableStrongBox = list[2] as! Bool
 
     return AndroidOptions(
       promptInfo: promptInfo,
       authenticationValidityDurationSeconds: authenticationValidityDurationSeconds,
-      enableAndroidStrongBox: enableAndroidStrongBox
+      enableStrongBox: enableStrongBox
     )
   }
   func toList() -> [Any?] {
     return [
       promptInfo?.toList(),
       authenticationValidityDurationSeconds,
-      enableAndroidStrongBox,
+      enableStrongBox,
     ]
   }
 }

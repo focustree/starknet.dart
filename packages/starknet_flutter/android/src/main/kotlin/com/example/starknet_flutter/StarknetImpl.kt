@@ -75,7 +75,7 @@ class StarknetImpl : StarknetInterface {
     ) {
         withStorage(
             key,
-            biometricOptions?.androidOptions?.enableAndroidStrongBox == true,
+            biometricOptions?.androidOptions?.enableStrongBox == true,
             biometricOptions?.androidOptions?.authenticationValidityDurationSeconds
         ) {
             withAuth(CipherMode.Encrypt, biometricOptions, callback) {
@@ -107,7 +107,7 @@ class StarknetImpl : StarknetInterface {
     ) {
         withStorage(
             key,
-            biometricOptions?.androidOptions?.enableAndroidStrongBox == true,
+            biometricOptions?.androidOptions?.enableStrongBox == true,
             biometricOptions?.androidOptions?.authenticationValidityDurationSeconds
         ) {
             if (exists()) {
@@ -205,7 +205,7 @@ class StarknetImpl : StarknetInterface {
         authenticate(
             cipher, biometricOptions?.androidOptions ?: AndroidOptions(
                 authenticationValidityDurationSeconds = DEFAULT_AUTHENTICATION_VALIDITY_DURATION_SECONDS,
-                enableAndroidStrongBox = DEFAULT_ENABLE_STRONG_BOX
+                enableStrongBox = DEFAULT_ENABLE_STRONG_BOX
             ), {
                 job(it)
             }, errorHandler(callback)

@@ -73,7 +73,7 @@ data class AndroidOptions (
    * This feature seems to cause [crashes](https://github.com/authpass/biometric_storage/issues/76),
    * enable with caution.
    */
-  val enableAndroidStrongBox: Boolean
+  val enableStrongBox: Boolean
 
 ) {
   companion object {
@@ -83,15 +83,15 @@ data class AndroidOptions (
         AndroidPromptInfos.fromList(it)
       }
       val authenticationValidityDurationSeconds = list[1].let { if (it is Int) it.toLong() else it as Long }
-      val enableAndroidStrongBox = list[2] as Boolean
-      return AndroidOptions(promptInfo, authenticationValidityDurationSeconds, enableAndroidStrongBox)
+      val enableStrongBox = list[2] as Boolean
+      return AndroidOptions(promptInfo, authenticationValidityDurationSeconds, enableStrongBox)
     }
   }
   fun toList(): List<Any?> {
     return listOf<Any?>(
       promptInfo?.toList(),
       authenticationValidityDurationSeconds,
-      enableAndroidStrongBox,
+      enableStrongBox,
     )
   }
 }

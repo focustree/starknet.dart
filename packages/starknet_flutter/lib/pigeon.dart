@@ -54,7 +54,7 @@ class AndroidOptions {
   AndroidOptions({
     this.promptInfo,
     required this.authenticationValidityDurationSeconds,
-    required this.enableAndroidStrongBox,
+    required this.enableStrongBox,
   });
 
   /// Details of the prompt to show to the user.
@@ -68,13 +68,13 @@ class AndroidOptions {
   /// Whether to use the StrongBox hardware-backed keystore.
   /// This feature seems to cause [crashes](https://github.com/authpass/biometric_storage/issues/76),
   /// enable with caution.
-  bool enableAndroidStrongBox;
+  bool enableStrongBox;
 
   Object encode() {
     return <Object?>[
       promptInfo?.encode(),
       authenticationValidityDurationSeconds,
-      enableAndroidStrongBox,
+      enableStrongBox,
     ];
   }
 
@@ -85,7 +85,7 @@ class AndroidOptions {
           ? AndroidPromptInfos.decode(result[0]! as List<Object?>)
           : null,
       authenticationValidityDurationSeconds: result[1]! as int,
-      enableAndroidStrongBox: result[2]! as bool,
+      enableStrongBox: result[2]! as bool,
     );
   }
 }
