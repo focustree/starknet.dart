@@ -154,6 +154,7 @@ class _RestoreWalletScreenState extends State<RestoreWalletScreen> {
 
                       final provider =
                           JsonRpcProvider(nodeUri: infuraGoerliTestnetUri);
+
                       // Derivate the first account
                       final account = Account.fromMnemonic(
                         mnemonic: seedPhrase,
@@ -161,6 +162,10 @@ class _RestoreWalletScreenState extends State<RestoreWalletScreen> {
                         // TODO chainId should be mainnet by default. Setting it to testNet should be an hidden option
                         chainId: StarknetChainId.testNet,
                         index: 0,
+                        accountDerivation:
+                            _accountType == StarknetAccountType.openZeppelin
+                                ? OpenzeppelinAccountDerivation()
+                                : null,
                       );
                       final success = await account.isValid;
                       if (success) {
