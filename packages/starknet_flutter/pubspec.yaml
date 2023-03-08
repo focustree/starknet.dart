@@ -17,6 +17,7 @@ dependencies:
   intl: ^0.18.0
   functional_listener: ^2.3.1
   google_fonts: ^4.0.3
+  loading_indicator: ^3.1.0
   confetti: ^0.7.0
   hive: ^2.2.3
   flutter_animate: ^4.1.0
@@ -72,6 +73,7 @@ flutter:
     - assets/images/wallets/braavos.svg
     - assets/images/wallets/open_zeppelin.svg
     - assets/images/logo.svg
+    - assets/images/crypto/eth.svg
   #
   # For details regarding assets in packages, see
   # https://flutter.dev/assets-and-images/#from-packages
