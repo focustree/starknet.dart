@@ -458,10 +458,11 @@ class ArgentXAccountDerivation extends AccountDerivation {
 
   @override
   Signer deriveSigner({required List<String> mnemonic, int index = 0}) {
-    final secret = bip39.mnemonicToSeed(mnemonic.join(" "));
-    final masterSeed = bip32.BIP32.fromSeed(secret).derivePath('$pathPrefix/0');
-    final masterNode = bip32.BIP32.fromSeed(masterSeed.privateKey!);
-    final child = masterNode.derivePath('$pathPrefix/$index');
+    final seed = bip39.mnemonicToSeed(mnemonic.join(" "));
+    final hdNodeSingleSeed = bip32.BIP32.fromSeed(seed);
+    final hdNodeDoubleSeed = bip32.BIP32
+        .fromSeed(hdNodeSingleSeed.derivePath(masterPrefix).privateKey!);
+    final child = hdNodeDoubleSeed.derivePath('$pathPrefix/$index');
     Uint8List key = child.privateKey!;
     key = grindKey(key);
     final privateKey = Felt(bytesToUnsignedInt(key));
