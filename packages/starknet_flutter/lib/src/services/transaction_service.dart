@@ -5,7 +5,7 @@ class TransactionService {
   Future<bool> send({
     required PublicAccount publicAccount,
     required Felt recipientAddress,
-    required num amount,
+    required double amount,
     required PasswordPrompt onPasswordStoreCallback,
     Function(String)? onSendTransactionCallback,
   }) async {
