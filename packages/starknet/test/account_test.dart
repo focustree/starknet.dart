@@ -183,7 +183,28 @@ void main() {
         expect(
             signer.publicKey,
             equals(Felt.fromHexString(
-                "0x01ff0cdadb901570e76dc764dca53101b3c388203e0867243760d90494850d44")));
+              "0x01ff0cdadb901570e76dc764dca53101b3c388203e0867243760d90494850d44",
+            )));
+      });
+      test('argentX account private key', () async {
+        final signer = ArgentXAccountDerivation()
+            .deriveSigner(mnemonic: mnemonic, index: 0);
+        expect(
+            signer.privateKey,
+            equals(Felt.fromHexString(
+              "0x47614310df5bddc1124ab1e83a4974277179e2d5260ec369d5451e2c0cdd251",
+            )));
+      });
+      test('argentX account address', () async {
+        final signer = ArgentXAccountDerivation()
+            .deriveSigner(mnemonic: mnemonic, index: 0);
+        final accountAddress = ArgentXAccountDerivation()
+            .computeAddress(publicKey: signer.publicKey);
+        expect(
+            accountAddress,
+            equals(Felt.fromHexString(
+              "0x58d856fc4607e73655a7140bf073fb35b5713eeab7c174f72dfe7896bca89e1",
+            )));
       });
 
       test('Bug #178 error while computing public key', () async {
