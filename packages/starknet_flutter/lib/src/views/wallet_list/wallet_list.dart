@@ -10,7 +10,6 @@ import 'package:starknet_flutter/src/views/wallet_list/widgets/wallet_cell.dart'
 import 'package:starknet_flutter/src/views/widgets/bouncing_button.dart';
 
 import 'wallet_list_presenter.dart';
-import 'wallet_list_viewmodel.dart';
 
 class StarknetWalletList {
   static Future<SelectedAccount?> showInitializationModal(

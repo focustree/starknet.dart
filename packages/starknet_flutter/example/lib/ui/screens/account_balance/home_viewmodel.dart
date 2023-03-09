@@ -7,11 +7,11 @@ class HomeViewModel {
 
   double? ethBalance;
   double? ethExchangeRate;
-  double get ethDollarPrice => ethBalance != null && ethExchangeRate != null
+  double get ethFiatPrice => ethBalance != null && ethExchangeRate != null
       ? ethBalance! * ethExchangeRate!
       : 0;
   
-  double get totalDollarBalance => ethDollarPrice;
+  double get totalFiatBalance => ethFiatPrice;
 
   bool get hasSelectedAccount => selectedAccount != null;
   bool get hasSelectedWallet => selectedWallet != null;

@@ -6,13 +6,13 @@ class CryptoBalanceCellWidget extends StatelessWidget {
   final String name;
   final String symbolIconUrl;
   final double balance;
-  final num dollarPrice;
+  final num fiatPrice;
   const CryptoBalanceCellWidget({
     Key? key,
     required this.name,
     required this.symbolIconUrl,
     required this.balance,
-    required this.dollarPrice,
+    required this.fiatPrice,
   }) : super(key: key);
 
   @override
@@ -38,7 +38,7 @@ class CryptoBalanceCellWidget extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.end,
           children: [
             Text(
-              '\$$dollarPrice',
+              '\$${fiatPrice.truncateBalance(precision: 2).format()}',
               maxLines: 1,
               overflow: TextOverflow.ellipsis,
               style: GoogleFonts.poppins(
