@@ -91,7 +91,7 @@ class _HomePageState extends State<HomePage> implements HomeView {
               ),
               if (model.selectedAccount?.accountAddress != null)
                 Padding(
-                  padding: const EdgeInsets.only(top: 10.0),
+                  padding: const EdgeInsets.only(top: 15.0),
                   child: AccountAddressWidget(
                     address: model.selectedAccount!.accountAddress,
                   ),
