@@ -4,13 +4,17 @@ import 'package:starknet_flutter/starknet_flutter.dart';
 import 'package:starknet_flutter_example/ui/widgets/bouncing_button.dart';
 import 'package:starknet_flutter_example/ui/widgets/loading.dart';
 
+import 'crypto_balance_cell.dart';
+
 class AccountNotDeployed extends StatelessWidget {
   final VoidCallback onAddCrypto;
   final VoidCallback onRefresh;
   final VoidCallback onDeploy;
   final PublicAccount publicAccount;
   final double balance;
+  final double fiatPrice;
   final bool isDeploying;
+  final String? error;
 
   const AccountNotDeployed({
     super.key,
@@ -20,6 +24,8 @@ class AccountNotDeployed extends StatelessWidget {
     required this.balance,
     required this.onDeploy,
     required this.isDeploying,
+    required this.fiatPrice,
+    required this.error,
   });
 
   @override
@@ -143,12 +149,30 @@ class AccountNotDeployed extends StatelessWidget {
                 ),
                 const SizedBox(height: 20),
                 Text(
-                  'Your account is funded but not deployed yet',
+                  error == null
+                      ? 'Your account is funded but not deployed yet'
+                      : "Deploy failed",
                   style: GoogleFonts.poppins(
                     fontSize: 20,
                     fontWeight: FontWeight.bold,
                   ),
                   textAlign: TextAlign.center,
+                ),
+                const SizedBox(height: 8),
+                if (error != null)
+                  Text(
+                    error!,
+                    style: GoogleFonts.poppins(
+                      fontSize: 15,
+                      color: Colors.red,
+                    ),
+                  ),
+                const SizedBox(height: 20),
+                CryptoBalanceCellWidget(
+                  name: 'Ethereum',
+                  symbolIconUrl: 'https://cryptoicons.org/api/color/eth/200',
+                  balance: balance,
+                  fiatPrice: fiatPrice,
                 ),
                 const SizedBox(height: 25),
                 BouncingWidget(
@@ -163,7 +187,7 @@ class AccountNotDeployed extends StatelessWidget {
                       borderRadius: BorderRadius.circular(30),
                     ),
                     child: Text(
-                      'Deploy',
+                      error == null ? 'Deploy' : "Try again",
                       style: GoogleFonts.poppins(
                         fontSize: 16,
                         color: Colors.white,

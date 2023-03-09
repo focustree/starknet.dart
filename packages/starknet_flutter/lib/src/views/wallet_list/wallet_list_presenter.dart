@@ -61,10 +61,20 @@ class WalletListPresenter {
         index: maxOrder + 1,
       );
       await protectPrivateKey(account);
-      DeployAccountService().deploy(
-        wallet: wallet,
-        account: account,
-      );
+      try {
+        final publicAccount = DeployAccountService().deploy(
+          wallet: wallet,
+          account: account,
+        );
+
+        print("WalletListPresenter Got result $publicAccount");
+        return publicAccount;
+      } on DeployError catch (e) {
+        if (kDebugMode) {
+          print(e);
+        }
+        return null;
+      }
     }
     return null;
   }

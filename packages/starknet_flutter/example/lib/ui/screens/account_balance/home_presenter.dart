@@ -81,13 +81,20 @@ class HomePresenter {
 
     final publicAccount = viewModel.selectedAccount!;
     final account = await publicAccount.toAccount(passwordPrompt);
-    final result = account == null
-        ? null
-        : DeployAccountService().deploy(
-            wallet: viewModel.selectedWallet!,
-            account: account,
-          );
-    print("Result: $result");
+    if (account == null) {
+      viewModel.deployError = "Authentication failed. Please try again.";
+    } else {
+      try {
+        final result = await DeployAccountService().deploy(
+          wallet: viewModel.selectedWallet!,
+          account: account,
+        );
+        viewModel.selectedAccount = result;
+      } on DeployError catch (e) {
+        viewModel.deployError = e.toString();
+      }
+    }
+
     viewModel.isDeploying = false;
     viewInterface.refresh();
   }

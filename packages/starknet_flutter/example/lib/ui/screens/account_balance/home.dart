@@ -7,6 +7,7 @@ import 'package:starknet_flutter_example/ui/screens/account_balance/widgets/acti
 import 'package:starknet_flutter_example/ui/screens/account_balance/widgets/crypto_balance_cell.dart';
 import 'package:starknet_flutter_example/ui/screens/account_balance/widgets/empty_wallet.dart';
 import 'package:starknet_flutter_example/ui/screens/account_balance/widgets/no_account_selected.dart';
+import 'package:starknet_flutter_example/ui/widgets/bouncing_button.dart';
 import 'package:starknet_flutter_example/ui/widgets/loading.dart';
 
 import 'home_presenter.dart';
@@ -20,9 +21,11 @@ abstract class HomeView {
   Future showMoreDialog();
 
   Future<String?> unlockWithPassword();
+
   Future createPassword();
 
   Future<SelectedAccount?> showInitialisationDialog();
+
   Future<bool?> showTransactionModal(TransactionArguments args);
   Future showReceiveModal();
 }
@@ -83,11 +86,22 @@ class _HomePageState extends State<HomePage> implements HomeView {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              AccountIndicatorWidget(
-                avatarUrl: 'https://i.pravatar.cc/150?img=1',
-                selectedWallet: model.selectedWallet,
-                selectedAccount: model.selectedAccount,
-                onPressed: presenter.onAccountSwitchTap,
+              Row(
+                children: [
+                  AccountIndicatorWidget(
+                    avatarUrl: 'https://i.pravatar.cc/150?img=1',
+                    selectedWallet: model.selectedWallet,
+                    selectedAccount: model.selectedAccount,
+                    onPressed: presenter.onAccountSwitchTap,
+                  ),
+                  const Spacer(),
+                  BouncingWidget(
+                    child: const Icon(Icons.more_horiz),
+                    onTap: () {
+                      showMoreDialog();
+                    },
+                  ),
+                ],
               ),
               if (model.selectedAccount?.accountAddress != null)
                 Padding(
@@ -173,8 +187,10 @@ class _HomePageState extends State<HomePage> implements HomeView {
         onRefresh: presenter.refreshAccount,
         publicAccount: model.selectedAccount!,
         balance: model.ethBalance!,
-        onDeploy: () => presenter.onDeploy(passwordPrompt),
+        fiatPrice: model.ethFiatPrice.truncateBalance(precision: 2),
+        onDeploy: () => presenter.onDeploy(unlockWithPassword),
         isDeploying: model.isDeploying == true,
+        error: model.deployError,
         onAddCrypto: () {
           StarknessDeposit.showDepositModal(
             context,
