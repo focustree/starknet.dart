@@ -15,15 +15,18 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 GetBlockTxnCount _$GetBlockTxnCountFromJson(Map<String, dynamic> json) {
-  switch (json['runtimeType']) {
+  switch (json['starkNetRuntimeTypeToRemove']) {
     case 'result':
       return BlockTxnCountResult.fromJson(json);
     case 'error':
       return GetBlockTxnCountError.fromJson(json);
 
     default:
-      throw CheckedFromJsonException(json, 'runtimeType', 'GetBlockTxnCount',
-          'Invalid union type "${json['runtimeType']}"!');
+      throw CheckedFromJsonException(
+          json,
+          'starkNetRuntimeTypeToRemove',
+          'GetBlockTxnCount',
+          'Invalid union type "${json['starkNetRuntimeTypeToRemove']}"!');
   }
 }
 
@@ -131,7 +134,7 @@ class _$BlockTxnCountResult implements BlockTxnCountResult {
   @override
   final int result;
 
-  @JsonKey(name: 'runtimeType')
+  @JsonKey(name: 'starkNetRuntimeTypeToRemove')
   final String $type;
 
   @override
@@ -294,7 +297,7 @@ class _$GetBlockTxnCountError implements GetBlockTxnCountError {
   @override
   final JsonRpcApiError error;
 
-  @JsonKey(name: 'runtimeType')
+  @JsonKey(name: 'starkNetRuntimeTypeToRemove')
   final String $type;
 
   @override

@@ -17,7 +17,7 @@ _$FunctionAbiEntry _$$FunctionAbiEntryFromJson(Map<String, dynamic> json) =>
           .map((e) => TypedParameter.fromJson(e as Map<String, dynamic>))
           .toList(),
       stateMutability: json['stateMutability'] as String?,
-      $type: json['runtimeType'] as String?,
+      $type: json['starkNetRuntimeTypeToRemove'] as String?,
     );
 
 Map<String, dynamic> _$$FunctionAbiEntryToJson(_$FunctionAbiEntry instance) {
@@ -35,7 +35,7 @@ Map<String, dynamic> _$$FunctionAbiEntryToJson(_$FunctionAbiEntry instance) {
   }
 
   writeNotNull('stateMutability', instance.stateMutability);
-  val['runtimeType'] = instance.$type;
+  val['starkNetRuntimeTypeToRemove'] = instance.$type;
   return val;
 }
 
@@ -49,7 +49,7 @@ _$EventAbiEntry _$$EventAbiEntryFromJson(Map<String, dynamic> json) =>
       data: (json['data'] as List<dynamic>)
           .map((e) => TypedParameter.fromJson(e as Map<String, dynamic>))
           .toList(),
-      $type: json['runtimeType'] as String?,
+      $type: json['starkNetRuntimeTypeToRemove'] as String?,
     );
 
 Map<String, dynamic> _$$EventAbiEntryToJson(_$EventAbiEntry instance) =>
@@ -58,7 +58,7 @@ Map<String, dynamic> _$$EventAbiEntryToJson(_$EventAbiEntry instance) =>
       'name': instance.name,
       'keys': instance.keys.map((e) => e.toJson()).toList(),
       'data': instance.data.map((e) => e.toJson()).toList(),
-      'runtimeType': instance.$type,
+      'starkNetRuntimeTypeToRemove': instance.$type,
     };
 
 _$StructAbiEntry _$$StructAbiEntryFromJson(Map<String, dynamic> json) =>
@@ -69,7 +69,7 @@ _$StructAbiEntry _$$StructAbiEntryFromJson(Map<String, dynamic> json) =>
       members: (json['members'] as List<dynamic>)
           .map((e) => StructMember.fromJson(e as Map<String, dynamic>))
           .toList(),
-      $type: json['runtimeType'] as String?,
+      $type: json['starkNetRuntimeTypeToRemove'] as String?,
     );
 
 Map<String, dynamic> _$$StructAbiEntryToJson(_$StructAbiEntry instance) =>
@@ -78,7 +78,7 @@ Map<String, dynamic> _$$StructAbiEntryToJson(_$StructAbiEntry instance) =>
       'name': instance.name,
       'size': instance.size,
       'members': instance.members.map((e) => e.toJson()).toList(),
-      'runtimeType': instance.$type,
+      'starkNetRuntimeTypeToRemove': instance.$type,
     };
 
 _$ConstructorAbiEntry _$$ConstructorAbiEntryFromJson(
@@ -92,7 +92,7 @@ _$ConstructorAbiEntry _$$ConstructorAbiEntryFromJson(
       outputs: (json['outputs'] as List<dynamic>)
           .map((e) => TypedParameter.fromJson(e as Map<String, dynamic>))
           .toList(),
-      $type: json['runtimeType'] as String?,
+      $type: json['starkNetRuntimeTypeToRemove'] as String?,
     );
 
 Map<String, dynamic> _$$ConstructorAbiEntryToJson(
@@ -102,7 +102,7 @@ Map<String, dynamic> _$$ConstructorAbiEntryToJson(
       'name': instance.name,
       'inputs': instance.inputs.map((e) => e.toJson()).toList(),
       'outputs': instance.outputs.map((e) => e.toJson()).toList(),
-      'runtimeType': instance.$type,
+      'starkNetRuntimeTypeToRemove': instance.$type,
     };
 
 _$_TypedParameter _$$_TypedParameterFromJson(Map<String, dynamic> json) =>

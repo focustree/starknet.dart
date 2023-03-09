@@ -11,28 +11,28 @@ _$BlockHashAndNumberResult _$$BlockHashAndNumberResultFromJson(
     _$BlockHashAndNumberResult(
       result: BlockHashAndNumberResponseResult.fromJson(
           json['result'] as Map<String, dynamic>),
-      $type: json['runtimeType'] as String?,
+      $type: json['starkNetRuntimeTypeToRemove'] as String?,
     );
 
 Map<String, dynamic> _$$BlockHashAndNumberResultToJson(
         _$BlockHashAndNumberResult instance) =>
     <String, dynamic>{
       'result': instance.result.toJson(),
-      'runtimeType': instance.$type,
+      'starkNetRuntimeTypeToRemove': instance.$type,
     };
 
 _$BlockHashAndNumberError _$$BlockHashAndNumberErrorFromJson(
         Map<String, dynamic> json) =>
     _$BlockHashAndNumberError(
       error: JsonRpcApiError.fromJson(json['error'] as Map<String, dynamic>),
-      $type: json['runtimeType'] as String?,
+      $type: json['starkNetRuntimeTypeToRemove'] as String?,
     );
 
 Map<String, dynamic> _$$BlockHashAndNumberErrorToJson(
         _$BlockHashAndNumberError instance) =>
     <String, dynamic>{
       'error': instance.error.toJson(),
-      'runtimeType': instance.$type,
+      'starkNetRuntimeTypeToRemove': instance.$type,
     };
 
 _$_BlockHashAndNumberResponseResult

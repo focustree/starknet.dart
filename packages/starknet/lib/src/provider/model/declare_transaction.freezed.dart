@@ -470,7 +470,7 @@ abstract class _DeclareTransaction implements DeclareTransaction {
 
 DeclareTransactionResponse _$DeclareTransactionResponseFromJson(
     Map<String, dynamic> json) {
-  switch (json['runtimeType']) {
+  switch (json['starkNetRuntimeTypeToRemove']) {
     case 'result':
       return DeclareTransactionResult.fromJson(json);
     case 'error':
@@ -479,9 +479,9 @@ DeclareTransactionResponse _$DeclareTransactionResponseFromJson(
     default:
       throw CheckedFromJsonException(
           json,
-          'runtimeType',
+          'starkNetRuntimeTypeToRemove',
           'DeclareTransactionResponse',
-          'Invalid union type "${json['runtimeType']}"!');
+          'Invalid union type "${json['starkNetRuntimeTypeToRemove']}"!');
   }
 }
 
@@ -603,7 +603,7 @@ class _$DeclareTransactionResult implements DeclareTransactionResult {
   @override
   final DeclareTransactionResponseResult result;
 
-  @JsonKey(name: 'runtimeType')
+  @JsonKey(name: 'starkNetRuntimeTypeToRemove')
   final String $type;
 
   @override
@@ -769,7 +769,7 @@ class _$DeclareTransactionError implements DeclareTransactionError {
   @override
   final JsonRpcApiError error;
 
-  @JsonKey(name: 'runtimeType')
+  @JsonKey(name: 'starkNetRuntimeTypeToRemove')
   final String $type;
 
   @override

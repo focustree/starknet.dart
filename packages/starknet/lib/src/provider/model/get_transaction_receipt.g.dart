@@ -10,28 +10,28 @@ _$GetTransactionReceiptResult _$$GetTransactionReceiptResultFromJson(
         Map<String, dynamic> json) =>
     _$GetTransactionReceiptResult(
       result: TxnReceipt.fromJson(json['result'] as Map<String, dynamic>),
-      $type: json['runtimeType'] as String?,
+      $type: json['starkNetRuntimeTypeToRemove'] as String?,
     );
 
 Map<String, dynamic> _$$GetTransactionReceiptResultToJson(
         _$GetTransactionReceiptResult instance) =>
     <String, dynamic>{
       'result': instance.result.toJson(),
-      'runtimeType': instance.$type,
+      'starkNetRuntimeTypeToRemove': instance.$type,
     };
 
 _$GetTransactionReceiptError _$$GetTransactionReceiptErrorFromJson(
         Map<String, dynamic> json) =>
     _$GetTransactionReceiptError(
       error: JsonRpcApiError.fromJson(json['error'] as Map<String, dynamic>),
-      $type: json['runtimeType'] as String?,
+      $type: json['starkNetRuntimeTypeToRemove'] as String?,
     );
 
 Map<String, dynamic> _$$GetTransactionReceiptErrorToJson(
         _$GetTransactionReceiptError instance) =>
     <String, dynamic>{
       'error': instance.error.toJson(),
-      'runtimeType': instance.$type,
+      'starkNetRuntimeTypeToRemove': instance.$type,
     };
 
 _$InvokeTxnReceipt _$$InvokeTxnReceiptFromJson(Map<String, dynamic> json) =>
@@ -50,7 +50,7 @@ _$InvokeTxnReceipt _$$InvokeTxnReceiptFromJson(Map<String, dynamic> json) =>
       events: (json['events'] as List<dynamic>)
           .map((e) => Event.fromJson(e as Map<String, dynamic>))
           .toList(),
-      $type: json['runtimeType'] as String?,
+      $type: json['starkNetRuntimeTypeToRemove'] as String?,
     );
 
 Map<String, dynamic> _$$InvokeTxnReceiptToJson(_$InvokeTxnReceipt instance) =>
@@ -63,7 +63,7 @@ Map<String, dynamic> _$$InvokeTxnReceiptToJson(_$InvokeTxnReceipt instance) =>
       'type': instance.type,
       'messages_sent': instance.messagesSent.map((e) => e.toJson()).toList(),
       'events': instance.events.map((e) => e.toJson()).toList(),
-      'runtimeType': instance.$type,
+      'starkNetRuntimeTypeToRemove': instance.$type,
     };
 
 _$DeclareTxnReceipt _$$DeclareTxnReceiptFromJson(Map<String, dynamic> json) =>
@@ -82,7 +82,7 @@ _$DeclareTxnReceipt _$$DeclareTxnReceiptFromJson(Map<String, dynamic> json) =>
       events: (json['events'] as List<dynamic>)
           .map((e) => Event.fromJson(e as Map<String, dynamic>))
           .toList(),
-      $type: json['runtimeType'] as String?,
+      $type: json['starkNetRuntimeTypeToRemove'] as String?,
     );
 
 Map<String, dynamic> _$$DeclareTxnReceiptToJson(_$DeclareTxnReceipt instance) =>
@@ -95,7 +95,7 @@ Map<String, dynamic> _$$DeclareTxnReceiptToJson(_$DeclareTxnReceipt instance) =>
       'type': instance.type,
       'messages_sent': instance.messagesSent.map((e) => e.toJson()).toList(),
       'events': instance.events.map((e) => e.toJson()).toList(),
-      'runtimeType': instance.$type,
+      'starkNetRuntimeTypeToRemove': instance.$type,
     };
 
 _$L1HandlerTxnReceipt _$$L1HandlerTxnReceiptFromJson(
@@ -115,7 +115,7 @@ _$L1HandlerTxnReceipt _$$L1HandlerTxnReceiptFromJson(
       events: (json['events'] as List<dynamic>)
           .map((e) => Event.fromJson(e as Map<String, dynamic>))
           .toList(),
-      $type: json['runtimeType'] as String?,
+      $type: json['starkNetRuntimeTypeToRemove'] as String?,
     );
 
 Map<String, dynamic> _$$L1HandlerTxnReceiptToJson(
@@ -129,7 +129,7 @@ Map<String, dynamic> _$$L1HandlerTxnReceiptToJson(
       'type': instance.type,
       'messages_sent': instance.messagesSent.map((e) => e.toJson()).toList(),
       'events': instance.events.map((e) => e.toJson()).toList(),
-      'runtimeType': instance.$type,
+      'starkNetRuntimeTypeToRemove': instance.$type,
     };
 
 _$DeployTxnReceipt _$$DeployTxnReceiptFromJson(Map<String, dynamic> json) =>
@@ -149,7 +149,7 @@ _$DeployTxnReceipt _$$DeployTxnReceiptFromJson(Map<String, dynamic> json) =>
           .map((e) => Event.fromJson(e as Map<String, dynamic>))
           .toList(),
       contractAddress: Felt.fromJson(json['contract_address'] as String),
-      $type: json['runtimeType'] as String?,
+      $type: json['starkNetRuntimeTypeToRemove'] as String?,
     );
 
 Map<String, dynamic> _$$DeployTxnReceiptToJson(_$DeployTxnReceipt instance) =>
@@ -163,7 +163,7 @@ Map<String, dynamic> _$$DeployTxnReceiptToJson(_$DeployTxnReceipt instance) =>
       'messages_sent': instance.messagesSent.map((e) => e.toJson()).toList(),
       'events': instance.events.map((e) => e.toJson()).toList(),
       'contract_address': instance.contractAddress.toJson(),
-      'runtimeType': instance.$type,
+      'starkNetRuntimeTypeToRemove': instance.$type,
     };
 
 _$DeployAccountTxnReceipt _$$DeployAccountTxnReceiptFromJson(
@@ -184,7 +184,7 @@ _$DeployAccountTxnReceipt _$$DeployAccountTxnReceiptFromJson(
           .map((e) => Event.fromJson(e as Map<String, dynamic>))
           .toList(),
       contractAddress: Felt.fromJson(json['contract_address'] as String),
-      $type: json['runtimeType'] as String?,
+      $type: json['starkNetRuntimeTypeToRemove'] as String?,
     );
 
 Map<String, dynamic> _$$DeployAccountTxnReceiptToJson(
@@ -199,7 +199,7 @@ Map<String, dynamic> _$$DeployAccountTxnReceiptToJson(
       'messages_sent': instance.messagesSent.map((e) => e.toJson()).toList(),
       'events': instance.events.map((e) => e.toJson()).toList(),
       'contract_address': instance.contractAddress.toJson(),
-      'runtimeType': instance.$type,
+      'starkNetRuntimeTypeToRemove': instance.$type,
     };
 
 _$PendingDeployTxnReceipt _$$PendingDeployTxnReceiptFromJson(
@@ -215,7 +215,7 @@ _$PendingDeployTxnReceipt _$$PendingDeployTxnReceiptFromJson(
           .map((e) => Event.fromJson(e as Map<String, dynamic>))
           .toList(),
       contractAddress: Felt.fromJson(json['contract_address'] as String),
-      $type: json['runtimeType'] as String?,
+      $type: json['starkNetRuntimeTypeToRemove'] as String?,
     );
 
 Map<String, dynamic> _$$PendingDeployTxnReceiptToJson(
@@ -227,7 +227,7 @@ Map<String, dynamic> _$$PendingDeployTxnReceiptToJson(
       'messages_sent': instance.messagesSent.map((e) => e.toJson()).toList(),
       'events': instance.events.map((e) => e.toJson()).toList(),
       'contract_address': instance.contractAddress.toJson(),
-      'runtimeType': instance.$type,
+      'starkNetRuntimeTypeToRemove': instance.$type,
     };
 
 _$PendingCommonReceiptProperties _$$PendingCommonReceiptPropertiesFromJson(
@@ -242,7 +242,7 @@ _$PendingCommonReceiptProperties _$$PendingCommonReceiptPropertiesFromJson(
       events: (json['events'] as List<dynamic>)
           .map((e) => Event.fromJson(e as Map<String, dynamic>))
           .toList(),
-      $type: json['runtimeType'] as String?,
+      $type: json['starkNetRuntimeTypeToRemove'] as String?,
     );
 
 Map<String, dynamic> _$$PendingCommonReceiptPropertiesToJson(
@@ -253,5 +253,5 @@ Map<String, dynamic> _$$PendingCommonReceiptPropertiesToJson(
       'type': instance.type,
       'messages_sent': instance.messagesSent.map((e) => e.toJson()).toList(),
       'events': instance.events.map((e) => e.toJson()).toList(),
-      'runtimeType': instance.$type,
+      'starkNetRuntimeTypeToRemove': instance.$type,
     };
