@@ -112,7 +112,8 @@ class _WalletListPageState extends State<WalletListPage>
                                             passwordPrompt:
                                                 widget.passwordPrompt,
                                           );
-                                          print("Add account 2");
+                                          print(
+                                              "Add account 2, success: ${newAccount == null}");
 
                                           if (newAccount != null &&
                                               context.mounted) {
