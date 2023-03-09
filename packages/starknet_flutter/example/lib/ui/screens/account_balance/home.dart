@@ -21,6 +21,7 @@ abstract class HomeView {
   Future createPassword();
   Future<SelectedAccount?> showInitialisationDialog();
   Future<bool?> showTransactionModal(TransactionArguments args);
+  Future showReceiveModal();
 }
 
 class HomeArguments {
@@ -135,6 +136,12 @@ class _HomePageState extends State<HomePage> implements HomeView {
                       icon: Icons.send_outlined,
                       text: 'Send',
                       onPressed: presenter.onSendTap,
+                    ),
+                    const SizedBox(width: 20),
+                    ActionButtonWidget(
+                      icon: Icons.qr_code_2_rounded,
+                      text: 'Receive',
+                      onPressed: presenter.onReceiveTap,
                     ),
                   ],
                 ),
@@ -333,6 +340,14 @@ class _HomePageState extends State<HomePage> implements HomeView {
     return StarknetTransaction.showModal(
       context,
       args: args,
+    );
+  }
+  
+  @override
+  Future showReceiveModal() {
+    return StarknetReceive.showQRCodeModal(
+      context,
+      address: model.selectedAccount!.accountAddress,
     );
   }
 }
