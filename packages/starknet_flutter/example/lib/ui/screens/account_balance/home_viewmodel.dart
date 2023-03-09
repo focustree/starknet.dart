@@ -6,6 +6,8 @@ class HomeViewModel {
 
   bool? isDeploying;
 
+  String? deployError;
+
   bool get isLoadingBalance => ethBalance == null;
   bool? isValid;
 
