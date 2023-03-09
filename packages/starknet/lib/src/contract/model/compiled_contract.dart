@@ -413,6 +413,8 @@ abstract class _JsonStringifier {
       writeString("{}");
       return true;
     }
+    // FIXME: workaround for freezed `union_key` present in generated json
+    map.remove("starkNetRuntimeTypeToRemove");
     var keyValueList = List<Object?>.filled(map.length * 2, null);
     var i = 0;
     var allStringKeys = true;
