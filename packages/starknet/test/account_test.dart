@@ -19,8 +19,8 @@ void main() {
             expect(
               result.classHash,
               equals(
-                balanceClassHashWithRuntimeType,
-              ), // 2023-02-06: class hash with 'runtimeType' included
+                balanceClassHash,
+              ),
             );
             expect(result.classHash, equals(Felt(balanceContract.classHash())));
             return result.transactionHash.toHexString();
@@ -54,8 +54,7 @@ void main() {
     group('deploy', () {
       test('succeeds to deploy a contract', () async {
         // Balance contract
-        final classHash =
-            balanceClassHashWithRuntimeType; // 2023-02-06: class hash with 'runtimeType' included
+        final classHash = balanceClassHash;
 
         final contractAddress = await account0
             .deploy(classHash: classHash, calldata: [Felt.fromInt(42)]);
