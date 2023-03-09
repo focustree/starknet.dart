@@ -17,7 +17,7 @@ abstract class HomeView {
   Future createPasswordDialog(PasswordStore passwordStore);
   Future showDialogWalletMissing();
   Future showMoreDialog();
-  Future<String?> passwordPrompt();
+  Future<String?> unlockWithPassword();
   Future createPassword();
   Future<SelectedAccount?> showInitialisationDialog();
   Future<bool?> showTransactionModal(TransactionArguments args);
@@ -196,16 +196,16 @@ class _HomePageState extends State<HomePage> implements HomeView {
   void refresh() => setState(() {});
 
   @override
-  Future<String?> passwordPrompt() {
-    return PasscodeInputView.showPattern(context);
+  Future<String?> unlockWithPassword() {
+    return PasscodeInputView.showPinCode(context);
   }
 
   @override
   Future createPassword() {
-    return PasscodeInputView.showPattern(
+    return PasscodeInputView.showPinCode(
       context,
       actionConfig: const PasscodeActionConfig.create(
-        createTitle: "Create your password",
+        createTitle: "Create your pin code",
         confirmTitle: "Confirm",
       ),
     );
@@ -234,7 +234,7 @@ class _HomePageState extends State<HomePage> implements HomeView {
               // TODO We use the same passwordPrompt for unlocking and creating a password
               // In a real app, text would be different like "Enter your previous
               // password" and "Create a new password" for example
-              final previousPassword = await passwordPrompt();
+              final previousPassword = await unlockWithPassword();
               if (mounted) {
                 final newPassword = await createPassword();
                 if (previousPassword != null && newPassword != null) {
@@ -282,7 +282,7 @@ class _HomePageState extends State<HomePage> implements HomeView {
             onPressed: () {
               StarknetWallet.showInitializationModal(
                 context,
-                passwordPrompt: passwordPrompt,
+                passwordPrompt: unlockWithPassword,
               );
             },
             child: Text(
@@ -324,7 +324,7 @@ class _HomePageState extends State<HomePage> implements HomeView {
   Future<SelectedAccount?> showInitialisationDialog() {
     return StarknetWalletList.showInitializationModal(
       context,
-      passwordPrompt,
+      unlockWithPassword,
     );
   }
 

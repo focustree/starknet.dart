@@ -65,6 +65,7 @@ class TransactionPresenter {
           // show the loading dialog
           showTransactionLoadingDialog(txHash);
         },
+        onPasswordStoreCallback: viewInterface.showPasscodeScreen,
       );
 
       if (viewModel.isTransactionLoadingShowed) {
@@ -74,7 +75,7 @@ class TransactionPresenter {
 
       if (isAccepted) {
         viewInterface.triggerHaptic();
-        
+
         // TODO: trigger a notification if user is not on the transaction page
         await viewInterface.showTransactionStatusDialog(
           message: 'Your transaction has been sent to the network',
@@ -83,7 +84,6 @@ class TransactionPresenter {
 
         viewInterface.closeModal(isAccepted: true);
       } else {
-
         // TODO: trigger a notification if user is not on the transaction page
         await viewInterface.showTransactionStatusDialog(
           message: 'Your transaction has been rejected',

@@ -40,108 +40,110 @@ class _PinCodeInputState extends State<PinCodeInput> {
 
     return Scaffold(
       backgroundColor: widget.passcodeConfig?.backgroundColor,
-      body: Center(
-        child: Builder(
-          builder: (ctx) => PasscodeInputView(
-              actionConfig: widget.actionConfig,
-              onWrongRepeatInput: widget.onWrongRepeatInput ??
-                  () {
-                    ctx.replaceSnackbar(
-                      content: const Text(
-                        "Pin Code do not match",
-                      ),
-                    );
-                  },
-              passcodeConfig: widget.passcodeConfig,
-              inputBuilder: (onInputValidated, isConfirming) {
-                return Column(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    SizedBox(
-                      height: 70,
-                      child: PinEntryWidget(
-                        pin: _pinCode,
-                        size: pinSize,
-                      ),
-                    ),
-                    const SizedBox(height: 22),
-                    Flexible(
-                      child: ConstrainedBox(
-                        constraints:
-                            const BoxConstraints(maxWidth: 280, minWidth: 150),
-                        child: Column(
-                          mainAxisSize: MainAxisSize.min,
-                          children: [
-                            GridView.count(
-                              padding: EdgeInsets.zero,
-                              shrinkWrap: true,
-                              crossAxisSpacing: kHorizontalSpacing,
-                              mainAxisSpacing: kVerticalSpacing,
-                              physics: const NeverScrollableScrollPhysics(),
-                              crossAxisCount: 3,
-                              children: List.generate(9, (index) {
-                                final number = index + 1;
-                                return PinButton(
-                                  number: number,
-                                  onTap: () {
-                                    onPinTap(number);
-
-                                    if (pinFillComplete) {
-                                      onInputValidated(_pinCode.join());
-                                      setState(() {
-                                        _pinCode.clear();
-                                      });
-                                    }
-                                  },
-                                );
-                              }),
-                            ),
-                            const SizedBox(height: 20),
-                            GridView.count(
-                              padding: EdgeInsets.zero,
-                              shrinkWrap: true,
-                              crossAxisSpacing: kHorizontalSpacing,
-                              physics: const NeverScrollableScrollPhysics(),
-                              crossAxisCount: 3,
-                              children: List.generate(3, (index) {
-                                switch (index) {
-                                  case 1:
-                                    return PinButton(
-                                      number: 0,
-                                      onTap: () {
-                                        onPinTap(0);
-
-                                        if (pinFillComplete) {
-                                          onInputValidated(_pinCode.join());
-                                        }
-                                      },
-                                    );
-                                  case 2:
-                                    return BouncingWidget(
-                                      onTap: _pinCode.isNotEmpty
-                                          ? onRemoveLastPin
-                                          : null,
-                                      child: Container(
-                                        decoration: const BoxDecoration(
-                                          color: Colors.transparent,
-                                          shape: BoxShape.circle,
-                                        ),
-                                        child:
-                                            const Icon(Icons.backspace_rounded),
-                                      ),
-                                    );
-                                  default:
-                                    return const SizedBox.shrink();
-                                }
-                              }),
-                            ),
-                          ],
+      body: SafeArea(
+        child: Center(
+          child: Builder(
+            builder: (ctx) => PasscodeInputView(
+                actionConfig: widget.actionConfig,
+                onWrongRepeatInput: widget.onWrongRepeatInput ??
+                    () {
+                      ctx.replaceSnackbar(
+                        content: const Text(
+                          "Pin Code do not match",
+                        ),
+                      );
+                    },
+                passcodeConfig: widget.passcodeConfig,
+                inputBuilder: (onInputValidated, isConfirming) {
+                  return Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      SizedBox(
+                        height: 70,
+                        child: PinEntryWidget(
+                          pin: _pinCode,
+                          size: pinSize,
                         ),
                       ),
-                    ),
-                  ],
-                );
-              }),
+                      const SizedBox(height: 22),
+                      Flexible(
+                        child: ConstrainedBox(
+                          constraints:
+                              const BoxConstraints(maxWidth: 280, minWidth: 150),
+                          child: Column(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              GridView.count(
+                                padding: EdgeInsets.zero,
+                                shrinkWrap: true,
+                                crossAxisSpacing: kHorizontalSpacing,
+                                mainAxisSpacing: kVerticalSpacing,
+                                physics: const NeverScrollableScrollPhysics(),
+                                crossAxisCount: 3,
+                                children: List.generate(9, (index) {
+                                  final number = index + 1;
+                                  return PinButton(
+                                    number: number,
+                                    onTap: () {
+                                      onPinTap(number);
+      
+                                      if (pinFillComplete) {
+                                        onInputValidated(_pinCode.join());
+                                        setState(() {
+                                          _pinCode.clear();
+                                        });
+                                      }
+                                    },
+                                  );
+                                }),
+                              ),
+                              const SizedBox(height: 20),
+                              GridView.count(
+                                padding: EdgeInsets.zero,
+                                shrinkWrap: true,
+                                crossAxisSpacing: kHorizontalSpacing,
+                                physics: const NeverScrollableScrollPhysics(),
+                                crossAxisCount: 3,
+                                children: List.generate(3, (index) {
+                                  switch (index) {
+                                    case 1:
+                                      return PinButton(
+                                        number: 0,
+                                        onTap: () {
+                                          onPinTap(0);
+      
+                                          if (pinFillComplete) {
+                                            onInputValidated(_pinCode.join());
+                                          }
+                                        },
+                                      );
+                                    case 2:
+                                      return BouncingWidget(
+                                        onTap: _pinCode.isNotEmpty
+                                            ? onRemoveLastPin
+                                            : null,
+                                        child: Container(
+                                          decoration: const BoxDecoration(
+                                            color: Colors.transparent,
+                                            shape: BoxShape.circle,
+                                          ),
+                                          child:
+                                              const Icon(Icons.backspace_rounded),
+                                        ),
+                                      );
+                                    default:
+                                      return const SizedBox.shrink();
+                                  }
+                                }),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ],
+                  );
+                }),
+          ),
         ),
       ),
     );

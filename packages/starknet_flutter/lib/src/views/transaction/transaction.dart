@@ -41,6 +41,7 @@ abstract class TransactionView {
   });
   Future showTransactionLoadingDialog(String txHash);
   void triggerHaptic();
+  Future<String?> showPasscodeScreen();
 }
 
 class TransactionArguments {
@@ -201,7 +202,7 @@ class _TransactionPageState extends State<TransactionPage>
       },
     );
   }
-  
+
   @override
   Future showTransactionLoadingDialog(String txHash) {
     return showGeneralDialog(
@@ -225,9 +226,20 @@ class _TransactionPageState extends State<TransactionPage>
       },
     );
   }
-  
+
   @override
   void triggerHaptic() {
     HapticFeedback.heavyImpact();
+  }
+
+  // TODO: implement config
+  @override
+  Future<String?> showPasscodeScreen() async {
+    return PasscodeInputView.showPinCode(
+      context,
+      actionConfig: const PasscodeActionConfig.unlock(
+        unlockTitle: 'Enter your pin code',
+      ),
+    );
   }
 }

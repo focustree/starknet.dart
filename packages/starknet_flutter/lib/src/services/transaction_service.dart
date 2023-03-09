@@ -6,6 +6,7 @@ class TransactionService {
     required PublicAccount publicAccount,
     required Felt recipientAddress,
     required num amount,
+    required PasswordPrompt onPasswordStoreCallback,
     Function(String)? onSendTransactionCallback,
   }) async {
     final secureStore = await StarknetStore.secure();
@@ -18,13 +19,19 @@ class TransactionService {
               id: publicAccount.privateKeyId);
           return Felt.fromBytes(privateKey!);
         },
-        // TODO: Handle password
-        password: (passwordStore) {
-          return Felt.fromHexString('0x0000000');
-          // return passwordStore.getPrivateKey(
-          //   id: publicAccount.privateKeyId,
-          //   password: 'password',
-          // );
+        password: (passwordStore) async {
+          final password = await onPasswordStoreCallback.call();
+
+          // TODO: Handle password error
+          if (password == null) {
+            throw Error();
+          }
+          
+          final privateKey = await passwordStore.getPrivateKey(
+            id: publicAccount.privateKeyId,
+            password: password,
+          );
+          return Felt.fromBytes(privateKey!);
         },
       ),
     );

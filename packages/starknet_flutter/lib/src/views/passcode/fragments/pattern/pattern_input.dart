@@ -23,44 +23,46 @@ class PatternInput extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: passcodeConfig?.backgroundColor,
-      body: Builder(
-        builder: (ctx) => PasscodeInputView(
-          actionConfig: actionConfig,
-          onWrongRepeatInput: onWrongRepeatInput ??
-              () {
-                ctx.replaceSnackbar(
-                  content: const Text(
-                    "Patterns do not match",
-                  ),
-                );
-              },
-          passcodeConfig: passcodeConfig,
-          inputBuilder: (onInputValidated, isConfirming) {
-            return PatternLock(
-              notSelectedColor: patternConfig.notSelectedColor,
-              selectedColor: patternConfig.selectedColor,
-              pointRadius: patternConfig.pointRadius,
-              showInput: patternConfig.showInput,
-              dimension: patternConfig.dimension,
-              relativePadding: patternConfig.relativePadding,
-              selectThreshold: patternConfig.selectThreshold,
-              fillPoints: patternConfig.fillPoints,
-              // callback that called when user's input complete. Called if user selected one or more points.
-              onInputComplete: (List<int> input) {
-                // print("pattern is $input");
-                if (input.length <= 3) {
-                  context.replaceSnackbar(
-                    content: Text(
-                      "At least 3 points required",
-                      style: GoogleFonts.poppins(color: Colors.red),
+      body: SafeArea(
+        child: Builder(
+          builder: (ctx) => PasscodeInputView(
+            actionConfig: actionConfig,
+            onWrongRepeatInput: onWrongRepeatInput ??
+                () {
+                  ctx.replaceSnackbar(
+                    content: const Text(
+                      "Patterns do not match",
                     ),
                   );
-                } else {
-                  onInputValidated(input.join("|"));
-                }
-              },
-            );
-          },
+                },
+            passcodeConfig: passcodeConfig,
+            inputBuilder: (onInputValidated, isConfirming) {
+              return PatternLock(
+                notSelectedColor: patternConfig.notSelectedColor,
+                selectedColor: patternConfig.selectedColor,
+                pointRadius: patternConfig.pointRadius,
+                showInput: patternConfig.showInput,
+                dimension: patternConfig.dimension,
+                relativePadding: patternConfig.relativePadding,
+                selectThreshold: patternConfig.selectThreshold,
+                fillPoints: patternConfig.fillPoints,
+                // callback that called when user's input complete. Called if user selected one or more points.
+                onInputComplete: (List<int> input) {
+                  // print("pattern is $input");
+                  if (input.length <= 3) {
+                    context.replaceSnackbar(
+                      content: Text(
+                        "At least 3 points required",
+                        style: GoogleFonts.poppins(color: Colors.red),
+                      ),
+                    );
+                  } else {
+                    onInputValidated(input.join("|"));
+                  }
+                },
+              );
+            },
+          ),
         ),
       ),
     );

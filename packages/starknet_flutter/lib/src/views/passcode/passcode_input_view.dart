@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 import 'package:starknet_flutter/src/views/passcode/fragments/password/password_input.dart';
 import 'package:starknet_flutter/src/views/passcode/fragments/pattern/pattern_config.dart';
+import 'package:starknet_flutter/src/views/widgets/bouncing_button.dart';
 import 'package:starknet_flutter/src/views/widgets/shake.dart';
 import 'package:starknet_flutter/starknet_flutter.dart';
 
@@ -47,10 +49,10 @@ class PasscodeInputView extends StatefulWidget {
     PatternConfig patternConfig = const PatternConfig(),
     PasscodeConfig? passcodeConfig,
   }) {
-    return showModalBottomSheet<String>(
-      isScrollControlled: true,
+    return showMaterialModalBottomSheet<String>(
       context: parentContext,
       backgroundColor: passcodeConfig?.backgroundColor,
+      enableDrag: false,
       builder: (context) {
         return PatternInput(
           actionConfig: actionConfig,
@@ -65,12 +67,11 @@ class PasscodeInputView extends StatefulWidget {
   static Future<String?> showPinCode(
     BuildContext parentContext, {
     VoidCallback? onWrongRepeatInput,
-    required PasscodeActionConfig actionConfig,
+    PasscodeActionConfig actionConfig = const PasscodeActionConfig.unlock(unlockTitle: "Enter your pin code"),
     PinCodeConfig pinCodeConfig = const PinCodeConfig(),
     PasscodeConfig? passcodeConfig,
   }) {
-    return showModalBottomSheet<String>(
-      isScrollControlled: true,
+    return showMaterialModalBottomSheet<String>(
       context: parentContext,
       backgroundColor: passcodeConfig?.backgroundColor,
       builder: (context) {
@@ -91,8 +92,7 @@ class PasscodeInputView extends StatefulWidget {
     required PasswordConfig passwordConfig,
     PasscodeConfig? passcodeConfig,
   }) {
-    return showModalBottomSheet<String>(
-      isScrollControlled: true,
+    return showMaterialModalBottomSheet<String>(
       context: parentContext,
       backgroundColor: passcodeConfig?.backgroundColor,
       builder: (context) {
@@ -113,8 +113,7 @@ class PasscodeInputView extends StatefulWidget {
     required InputPasswordBuilder inputBuilder,
     PasscodeConfig? passcodeConfig,
   }) {
-    return showModalBottomSheet<String>(
-      isScrollControlled: true,
+    return showMaterialModalBottomSheet<String>(
       context: parentContext,
       backgroundColor: passcodeConfig?.backgroundColor,
       builder: (context) {
@@ -161,6 +160,7 @@ class _PasscodeInputViewState extends State<PasscodeInputView> {
             textAlign: TextAlign.center,
             style: GoogleFonts.poppins(
               fontSize: 17,
+              fontWeight: FontWeight.bold,
             ),
           ),
         ),
@@ -169,13 +169,19 @@ class _PasscodeInputViewState extends State<PasscodeInputView> {
           child: widget.inputBuilder(confirmCreation, isConfirm),
         ),
         const SizedBox(height: 10),
-        TextButton(
-          onPressed: widget.passcodeConfig?.cancelButtonConfig?.onPressed ??
+        // TODO: apply config
+        BouncingButton.text(
+          onTap: widget.passcodeConfig?.cancelButtonConfig?.onPressed ??
               () {
                 Navigator.pop(context);
               },
-          child: widget.passcodeConfig?.cancelButtonConfig?.child ??
-              const Text('Cancel'),
+          text: 'Cancel',
+          textStyle: GoogleFonts.poppins(
+            fontSize: 15,
+            color: Theme.of(context).primaryColor,
+            fontWeight: FontWeight.bold,
+            decoration: TextDecoration.underline,
+          ),
         ),
         const SizedBox(height: 32),
       ],
