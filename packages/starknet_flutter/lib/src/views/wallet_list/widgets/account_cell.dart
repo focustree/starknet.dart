@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:starknet_flutter/src/models/models.dart';
 import 'package:starknet_flutter/src/views/widgets/bouncing_widget.dart';
+import 'package:starknet_flutter/starknet_flutter.dart';
 
 class AccountCell extends StatelessWidget {
   final PublicAccount account;
@@ -44,7 +44,7 @@ class AccountCell extends StatelessWidget {
                         return const SizedBox.shrink();
                       }
                       return Text(
-                        '${snapshot.requireData} ETH',
+                        '${snapshot.requireData.truncateBalance()} ETH',
                         style: GoogleFonts.poppins(
                           color: Colors.grey,
                           fontSize: 12.0,
