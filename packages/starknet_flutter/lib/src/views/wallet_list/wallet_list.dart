@@ -12,7 +12,7 @@ import 'package:starknet_flutter/src/views/widgets/bouncing_button.dart';
 import 'wallet_list_presenter.dart';
 
 class StarknetWalletList {
-  static Future<SelectedAccount?> showInitializationModal(
+  static Future<SelectedAccount?> showModal(
     BuildContext context,
     PasswordPrompt passwordPrompt,
   ) async {

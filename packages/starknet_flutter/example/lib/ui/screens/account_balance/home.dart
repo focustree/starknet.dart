@@ -329,7 +329,7 @@ class _HomePageState extends State<HomePage> implements HomeView {
 
   @override
   Future<SelectedAccount?> showInitialisationDialog() {
-    return StarknetWalletList.showInitializationModal(
+    return StarknetWalletList.showModal(
       context,
       unlockWithPassword,
     );
