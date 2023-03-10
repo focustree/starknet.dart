@@ -15,15 +15,18 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 GetBlockWithTxs _$GetBlockWithTxsFromJson(Map<String, dynamic> json) {
-  switch (json['runtimeType']) {
+  switch (json['starkNetRuntimeTypeToRemove']) {
     case 'block':
       return GetBlockWithTxsResult.fromJson(json);
     case 'error':
       return GetBlockWithTxsError.fromJson(json);
 
     default:
-      throw CheckedFromJsonException(json, 'runtimeType', 'GetBlockWithTxs',
-          'Invalid union type "${json['runtimeType']}"!');
+      throw CheckedFromJsonException(
+          json,
+          'starkNetRuntimeTypeToRemove',
+          'GetBlockWithTxs',
+          'Invalid union type "${json['starkNetRuntimeTypeToRemove']}"!');
   }
 }
 
@@ -141,7 +144,7 @@ class _$GetBlockWithTxsResult implements GetBlockWithTxsResult {
   @override
   final BlockWithTxs result;
 
-  @JsonKey(name: 'runtimeType')
+  @JsonKey(name: 'starkNetRuntimeTypeToRemove')
   final String $type;
 
   @override
@@ -304,7 +307,7 @@ class _$GetBlockWithTxsError implements GetBlockWithTxsError {
   @override
   final JsonRpcApiError error;
 
-  @JsonKey(name: 'runtimeType')
+  @JsonKey(name: 'starkNetRuntimeTypeToRemove')
   final String $type;
 
   @override
@@ -415,15 +418,18 @@ abstract class GetBlockWithTxsError implements GetBlockWithTxs {
 }
 
 BlockWithTxs _$BlockWithTxsFromJson(Map<String, dynamic> json) {
-  switch (json['runtimeType']) {
+  switch (json['starkNetRuntimeTypeToRemove']) {
     case 'resultingBlock':
       return BlockWithTxsResponse.fromJson(json);
     case 'pendingBlock':
       return PendingBlockWithTxsResult.fromJson(json);
 
     default:
-      throw CheckedFromJsonException(json, 'runtimeType', 'BlockWithTxs',
-          'Invalid union type "${json['runtimeType']}"!');
+      throw CheckedFromJsonException(
+          json,
+          'starkNetRuntimeTypeToRemove',
+          'BlockWithTxs',
+          'Invalid union type "${json['starkNetRuntimeTypeToRemove']}"!');
   }
 }
 
@@ -687,7 +693,7 @@ class _$BlockWithTxsResponse implements BlockWithTxsResponse {
   @override
   final Felt sequencerAddress;
 
-  @JsonKey(name: 'runtimeType')
+  @JsonKey(name: 'starkNetRuntimeTypeToRemove')
   final String $type;
 
   @override
@@ -961,7 +967,7 @@ class _$PendingBlockWithTxsResult implements PendingBlockWithTxsResult {
   @override
   final Felt blockHash;
 
-  @JsonKey(name: 'runtimeType')
+  @JsonKey(name: 'starkNetRuntimeTypeToRemove')
   final String $type;
 
   @override

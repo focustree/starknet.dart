@@ -16,7 +16,7 @@ final _privateConstructorUsedError = UnsupportedError(
 
 GetTransactionReceipt _$GetTransactionReceiptFromJson(
     Map<String, dynamic> json) {
-  switch (json['runtimeType']) {
+  switch (json['starkNetRuntimeTypeToRemove']) {
     case 'result':
       return GetTransactionReceiptResult.fromJson(json);
     case 'error':
@@ -25,9 +25,9 @@ GetTransactionReceipt _$GetTransactionReceiptFromJson(
     default:
       throw CheckedFromJsonException(
           json,
-          'runtimeType',
+          'starkNetRuntimeTypeToRemove',
           'GetTransactionReceipt',
-          'Invalid union type "${json['runtimeType']}"!');
+          'Invalid union type "${json['starkNetRuntimeTypeToRemove']}"!');
   }
 }
 
@@ -150,7 +150,7 @@ class _$GetTransactionReceiptResult implements GetTransactionReceiptResult {
   @override
   final TxnReceipt result;
 
-  @JsonKey(name: 'runtimeType')
+  @JsonKey(name: 'starkNetRuntimeTypeToRemove')
   final String $type;
 
   @override
@@ -316,7 +316,7 @@ class _$GetTransactionReceiptError implements GetTransactionReceiptError {
   @override
   final JsonRpcApiError error;
 
-  @JsonKey(name: 'runtimeType')
+  @JsonKey(name: 'starkNetRuntimeTypeToRemove')
   final String $type;
 
   @override
@@ -427,7 +427,7 @@ abstract class GetTransactionReceiptError implements GetTransactionReceipt {
 }
 
 TxnReceipt _$TxnReceiptFromJson(Map<String, dynamic> json) {
-  switch (json['runtimeType']) {
+  switch (json['starkNetRuntimeTypeToRemove']) {
     case 'invokeTxnReceipt':
       return InvokeTxnReceipt.fromJson(json);
     case 'declareTxnReceipt':
@@ -444,8 +444,11 @@ TxnReceipt _$TxnReceiptFromJson(Map<String, dynamic> json) {
       return PendingCommonReceiptProperties.fromJson(json);
 
     default:
-      throw CheckedFromJsonException(json, 'runtimeType', 'TxnReceipt',
-          'Invalid union type "${json['runtimeType']}"!');
+      throw CheckedFromJsonException(
+          json,
+          'starkNetRuntimeTypeToRemove',
+          'TxnReceipt',
+          'Invalid union type "${json['starkNetRuntimeTypeToRemove']}"!');
   }
 }
 
@@ -887,7 +890,7 @@ class _$InvokeTxnReceipt implements InvokeTxnReceipt {
     return EqualUnmodifiableListView(_events);
   }
 
-  @JsonKey(name: 'runtimeType')
+  @JsonKey(name: 'starkNetRuntimeTypeToRemove')
   final String $type;
 
   @override
@@ -1368,7 +1371,7 @@ class _$DeclareTxnReceipt implements DeclareTxnReceipt {
     return EqualUnmodifiableListView(_events);
   }
 
-  @JsonKey(name: 'runtimeType')
+  @JsonKey(name: 'starkNetRuntimeTypeToRemove')
   final String $type;
 
   @override
@@ -1849,7 +1852,7 @@ class _$L1HandlerTxnReceipt implements L1HandlerTxnReceipt {
     return EqualUnmodifiableListView(_events);
   }
 
-  @JsonKey(name: 'runtimeType')
+  @JsonKey(name: 'starkNetRuntimeTypeToRemove')
   final String $type;
 
   @override
@@ -2342,7 +2345,7 @@ class _$DeployTxnReceipt implements DeployTxnReceipt {
   @override
   final Felt contractAddress;
 
-  @JsonKey(name: 'runtimeType')
+  @JsonKey(name: 'starkNetRuntimeTypeToRemove')
   final String $type;
 
   @override
@@ -2839,7 +2842,7 @@ class _$DeployAccountTxnReceipt implements DeployAccountTxnReceipt {
   @override
   final Felt contractAddress;
 
-  @JsonKey(name: 'runtimeType')
+  @JsonKey(name: 'starkNetRuntimeTypeToRemove')
   final String $type;
 
   @override
@@ -3310,7 +3313,7 @@ class _$PendingDeployTxnReceipt implements PendingDeployTxnReceipt {
   @override
   final Felt contractAddress;
 
-  @JsonKey(name: 'runtimeType')
+  @JsonKey(name: 'starkNetRuntimeTypeToRemove')
   final String $type;
 
   @override
@@ -3760,7 +3763,7 @@ class _$PendingCommonReceiptProperties
     return EqualUnmodifiableListView(_events);
   }
 
-  @JsonKey(name: 'runtimeType')
+  @JsonKey(name: 'starkNetRuntimeTypeToRemove')
   final String $type;
 
   @override

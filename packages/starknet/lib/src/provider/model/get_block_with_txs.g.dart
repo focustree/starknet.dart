@@ -10,28 +10,28 @@ _$GetBlockWithTxsResult _$$GetBlockWithTxsResultFromJson(
         Map<String, dynamic> json) =>
     _$GetBlockWithTxsResult(
       result: BlockWithTxs.fromJson(json['result'] as Map<String, dynamic>),
-      $type: json['runtimeType'] as String?,
+      $type: json['starkNetRuntimeTypeToRemove'] as String?,
     );
 
 Map<String, dynamic> _$$GetBlockWithTxsResultToJson(
         _$GetBlockWithTxsResult instance) =>
     <String, dynamic>{
       'result': instance.result.toJson(),
-      'runtimeType': instance.$type,
+      'starkNetRuntimeTypeToRemove': instance.$type,
     };
 
 _$GetBlockWithTxsError _$$GetBlockWithTxsErrorFromJson(
         Map<String, dynamic> json) =>
     _$GetBlockWithTxsError(
       error: JsonRpcApiError.fromJson(json['error'] as Map<String, dynamic>),
-      $type: json['runtimeType'] as String?,
+      $type: json['starkNetRuntimeTypeToRemove'] as String?,
     );
 
 Map<String, dynamic> _$$GetBlockWithTxsErrorToJson(
         _$GetBlockWithTxsError instance) =>
     <String, dynamic>{
       'error': instance.error.toJson(),
-      'runtimeType': instance.$type,
+      'starkNetRuntimeTypeToRemove': instance.$type,
     };
 
 _$BlockWithTxsResponse _$$BlockWithTxsResponseFromJson(
@@ -47,7 +47,7 @@ _$BlockWithTxsResponse _$$BlockWithTxsResponseFromJson(
       newRoot: Felt.fromJson(json['new_root'] as String),
       timestamp: json['timestamp'] as int,
       sequencerAddress: Felt.fromJson(json['sequencer_address'] as String),
-      $type: json['runtimeType'] as String?,
+      $type: json['starkNetRuntimeTypeToRemove'] as String?,
     );
 
 Map<String, dynamic> _$$BlockWithTxsResponseToJson(
@@ -61,7 +61,7 @@ Map<String, dynamic> _$$BlockWithTxsResponseToJson(
       'new_root': instance.newRoot.toJson(),
       'timestamp': instance.timestamp,
       'sequencer_address': instance.sequencerAddress.toJson(),
-      'runtimeType': instance.$type,
+      'starkNetRuntimeTypeToRemove': instance.$type,
     };
 
 _$PendingBlockWithTxsResult _$$PendingBlockWithTxsResultFromJson(
@@ -73,7 +73,7 @@ _$PendingBlockWithTxsResult _$$PendingBlockWithTxsResultFromJson(
       timestamp: json['timestamp'] as int,
       sequencerAddress: Felt.fromJson(json['sequencer_address'] as String),
       blockHash: Felt.fromJson(json['block_hash'] as String),
-      $type: json['runtimeType'] as String?,
+      $type: json['starkNetRuntimeTypeToRemove'] as String?,
     );
 
 Map<String, dynamic> _$$PendingBlockWithTxsResultToJson(
@@ -83,5 +83,5 @@ Map<String, dynamic> _$$PendingBlockWithTxsResultToJson(
       'timestamp': instance.timestamp,
       'sequencer_address': instance.sequencerAddress.toJson(),
       'block_hash': instance.blockHash.toJson(),
-      'runtimeType': instance.$type,
+      'starkNetRuntimeTypeToRemove': instance.$type,
     };

@@ -15,7 +15,7 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 ContractAbiEntry _$ContractAbiEntryFromJson(Map<String, dynamic> json) {
-  switch (json['runtimeType']) {
+  switch (json['starkNetRuntimeTypeToRemove']) {
     case 'function':
       return FunctionAbiEntry.fromJson(json);
     case 'event':
@@ -26,8 +26,11 @@ ContractAbiEntry _$ContractAbiEntryFromJson(Map<String, dynamic> json) {
       return ConstructorAbiEntry.fromJson(json);
 
     default:
-      throw CheckedFromJsonException(json, 'runtimeType', 'ContractAbiEntry',
-          'Invalid union type "${json['runtimeType']}"!');
+      throw CheckedFromJsonException(
+          json,
+          'starkNetRuntimeTypeToRemove',
+          'ContractAbiEntry',
+          'Invalid union type "${json['starkNetRuntimeTypeToRemove']}"!');
   }
 }
 
@@ -269,7 +272,7 @@ class _$FunctionAbiEntry implements FunctionAbiEntry {
   @JsonKey(name: 'stateMutability', includeIfNull: false)
   final String? stateMutability;
 
-  @JsonKey(name: 'runtimeType')
+  @JsonKey(name: 'starkNetRuntimeTypeToRemove')
   final String $type;
 
   @override
@@ -541,7 +544,7 @@ class _$EventAbiEntry implements EventAbiEntry {
     return EqualUnmodifiableListView(_data);
   }
 
-  @JsonKey(name: 'runtimeType')
+  @JsonKey(name: 'starkNetRuntimeTypeToRemove')
   final String $type;
 
   @override
@@ -795,7 +798,7 @@ class _$StructAbiEntry implements StructAbiEntry {
     return EqualUnmodifiableListView(_members);
   }
 
-  @JsonKey(name: 'runtimeType')
+  @JsonKey(name: 'starkNetRuntimeTypeToRemove')
   final String $type;
 
   @override
@@ -1056,7 +1059,7 @@ class _$ConstructorAbiEntry implements ConstructorAbiEntry {
     return EqualUnmodifiableListView(_outputs);
   }
 
-  @JsonKey(name: 'runtimeType')
+  @JsonKey(name: 'starkNetRuntimeTypeToRemove')
   final String $type;
 
   @override

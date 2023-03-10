@@ -10,28 +10,28 @@ _$GetTransactionResult _$$GetTransactionResultFromJson(
         Map<String, dynamic> json) =>
     _$GetTransactionResult(
       result: Txn.fromJson(json['result'] as Map<String, dynamic>),
-      $type: json['runtimeType'] as String?,
+      $type: json['starkNetRuntimeTypeToRemove'] as String?,
     );
 
 Map<String, dynamic> _$$GetTransactionResultToJson(
         _$GetTransactionResult instance) =>
     <String, dynamic>{
       'result': instance.result.toJson(),
-      'runtimeType': instance.$type,
+      'starkNetRuntimeTypeToRemove': instance.$type,
     };
 
 _$GetTransactionError _$$GetTransactionErrorFromJson(
         Map<String, dynamic> json) =>
     _$GetTransactionError(
       error: JsonRpcApiError.fromJson(json['error'] as Map<String, dynamic>),
-      $type: json['runtimeType'] as String?,
+      $type: json['starkNetRuntimeTypeToRemove'] as String?,
     );
 
 Map<String, dynamic> _$$GetTransactionErrorToJson(
         _$GetTransactionError instance) =>
     <String, dynamic>{
       'error': instance.error.toJson(),
-      'runtimeType': instance.$type,
+      'starkNetRuntimeTypeToRemove': instance.$type,
     };
 
 _$InvokeTxnV0 _$$InvokeTxnV0FromJson(Map<String, dynamic> json) =>
@@ -58,7 +58,7 @@ _$InvokeTxnV0 _$$InvokeTxnV0FromJson(Map<String, dynamic> json) =>
       calldata: (json['calldata'] as List<dynamic>?)
           ?.map((e) => Felt.fromJson(e as String))
           .toList(),
-      $type: json['runtimeType'] as String?,
+      $type: json['starkNetRuntimeTypeToRemove'] as String?,
     );
 
 Map<String, dynamic> _$$InvokeTxnV0ToJson(_$InvokeTxnV0 instance) =>
@@ -72,7 +72,7 @@ Map<String, dynamic> _$$InvokeTxnV0ToJson(_$InvokeTxnV0 instance) =>
       'contract_address': instance.contractAddress?.toJson(),
       'entry_point_selector': instance.entryPointSelector?.toJson(),
       'calldata': instance.calldata?.map((e) => e.toJson()).toList(),
-      'runtimeType': instance.$type,
+      'starkNetRuntimeTypeToRemove': instance.$type,
     };
 
 _$InvokeTxnV1 _$$InvokeTxnV1FromJson(Map<String, dynamic> json) =>
@@ -96,7 +96,7 @@ _$InvokeTxnV1 _$$InvokeTxnV1FromJson(Map<String, dynamic> json) =>
       calldata: (json['calldata'] as List<dynamic>?)
           ?.map((e) => Felt.fromJson(e as String))
           .toList(),
-      $type: json['runtimeType'] as String?,
+      $type: json['starkNetRuntimeTypeToRemove'] as String?,
     );
 
 Map<String, dynamic> _$$InvokeTxnV1ToJson(_$InvokeTxnV1 instance) =>
@@ -109,7 +109,7 @@ Map<String, dynamic> _$$InvokeTxnV1ToJson(_$InvokeTxnV1 instance) =>
       'type': instance.type,
       'sender_address': instance.sender_address?.toJson(),
       'calldata': instance.calldata?.map((e) => e.toJson()).toList(),
-      'runtimeType': instance.$type,
+      'starkNetRuntimeTypeToRemove': instance.$type,
     };
 
 _$DeclareTxn _$$DeclareTxnFromJson(Map<String, dynamic> json) => _$DeclareTxn(
@@ -132,7 +132,7 @@ _$DeclareTxn _$$DeclareTxnFromJson(Map<String, dynamic> json) => _$DeclareTxn(
       senderAddress: json['sender_address'] == null
           ? null
           : Felt.fromJson(json['sender_address'] as String),
-      $type: json['runtimeType'] as String?,
+      $type: json['starkNetRuntimeTypeToRemove'] as String?,
     );
 
 Map<String, dynamic> _$$DeclareTxnToJson(_$DeclareTxn instance) =>
@@ -145,7 +145,7 @@ Map<String, dynamic> _$$DeclareTxnToJson(_$DeclareTxn instance) =>
       'type': instance.type,
       'class_hash': instance.classHash?.toJson(),
       'sender_address': instance.senderAddress?.toJson(),
-      'runtimeType': instance.$type,
+      'starkNetRuntimeTypeToRemove': instance.$type,
     };
 
 _$DeployTxn _$$DeployTxnFromJson(Map<String, dynamic> json) => _$DeployTxn(
@@ -163,7 +163,7 @@ _$DeployTxn _$$DeployTxnFromJson(Map<String, dynamic> json) => _$DeployTxn(
       constructorCalldata: (json['constructor_calldata'] as List<dynamic>?)
           ?.map((e) => Felt.fromJson(e as String))
           .toList(),
-      $type: json['runtimeType'] as String?,
+      $type: json['starkNetRuntimeTypeToRemove'] as String?,
     );
 
 Map<String, dynamic> _$$DeployTxnToJson(_$DeployTxn instance) =>
@@ -175,7 +175,7 @@ Map<String, dynamic> _$$DeployTxnToJson(_$DeployTxn instance) =>
       'contract_address_salt': instance.contractAddressSalt?.toJson(),
       'constructor_calldata':
           instance.constructorCalldata?.map((e) => e.toJson()).toList(),
-      'runtimeType': instance.$type,
+      'starkNetRuntimeTypeToRemove': instance.$type,
     };
 
 _$DeployAccountTxn _$$DeployAccountTxnFromJson(Map<String, dynamic> json) =>
@@ -202,7 +202,7 @@ _$DeployAccountTxn _$$DeployAccountTxnFromJson(Map<String, dynamic> json) =>
       constructorCalldata: (json['constructor_calldata'] as List<dynamic>?)
           ?.map((e) => Felt.fromJson(e as String))
           .toList(),
-      $type: json['runtimeType'] as String?,
+      $type: json['starkNetRuntimeTypeToRemove'] as String?,
     );
 
 Map<String, dynamic> _$$DeployAccountTxnToJson(_$DeployAccountTxn instance) =>
@@ -217,7 +217,7 @@ Map<String, dynamic> _$$DeployAccountTxnToJson(_$DeployAccountTxn instance) =>
       'class_hash': instance.classHash?.toJson(),
       'constructor_calldata':
           instance.constructorCalldata?.map((e) => e.toJson()).toList(),
-      'runtimeType': instance.$type,
+      'starkNetRuntimeTypeToRemove': instance.$type,
     };
 
 _$L1HandlerTxn _$$L1HandlerTxnFromJson(Map<String, dynamic> json) =>
@@ -238,7 +238,7 @@ _$L1HandlerTxn _$$L1HandlerTxnFromJson(Map<String, dynamic> json) =>
       calldata: (json['calldata'] as List<dynamic>?)
           ?.map((e) => Felt.fromJson(e as String))
           .toList(),
-      $type: json['runtimeType'] as String?,
+      $type: json['starkNetRuntimeTypeToRemove'] as String?,
     );
 
 Map<String, dynamic> _$$L1HandlerTxnToJson(_$L1HandlerTxn instance) =>
@@ -250,5 +250,5 @@ Map<String, dynamic> _$$L1HandlerTxnToJson(_$L1HandlerTxn instance) =>
       'contract_address': instance.contractAddress?.toJson(),
       'entry_point_selector': instance.entryPointSelector?.toJson(),
       'calldata': instance.calldata?.map((e) => e.toJson()).toList(),
-      'runtimeType': instance.$type,
+      'starkNetRuntimeTypeToRemove': instance.$type,
     };

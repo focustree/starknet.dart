@@ -80,28 +80,28 @@ _$InvokeTransactionResult _$$InvokeTransactionResultFromJson(
     _$InvokeTransactionResult(
       result: InvokeTransactionResponseResult.fromJson(
           json['result'] as Map<String, dynamic>),
-      $type: json['runtimeType'] as String?,
+      $type: json['starkNetRuntimeTypeToRemove'] as String?,
     );
 
 Map<String, dynamic> _$$InvokeTransactionResultToJson(
         _$InvokeTransactionResult instance) =>
     <String, dynamic>{
       'result': instance.result.toJson(),
-      'runtimeType': instance.$type,
+      'starkNetRuntimeTypeToRemove': instance.$type,
     };
 
 _$InvokeTransactionError _$$InvokeTransactionErrorFromJson(
         Map<String, dynamic> json) =>
     _$InvokeTransactionError(
       error: JsonRpcApiError.fromJson(json['error'] as Map<String, dynamic>),
-      $type: json['runtimeType'] as String?,
+      $type: json['starkNetRuntimeTypeToRemove'] as String?,
     );
 
 Map<String, dynamic> _$$InvokeTransactionErrorToJson(
         _$InvokeTransactionError instance) =>
     <String, dynamic>{
       'error': instance.error.toJson(),
-      'runtimeType': instance.$type,
+      'starkNetRuntimeTypeToRemove': instance.$type,
     };
 
 _$_InvokeTransactionResponseResult _$$_InvokeTransactionResponseResultFromJson(

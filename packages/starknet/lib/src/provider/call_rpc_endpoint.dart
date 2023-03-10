@@ -1,6 +1,8 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 
+import '../contract/model/compiled_contract.dart';
+
 Future<Map<String, dynamic>> callRpcEndpoint(
     {required Uri nodeUri, required String method, Object? params}) async {
   const headers = {
@@ -14,8 +16,9 @@ Future<Map<String, dynamic>> callRpcEndpoint(
     'id': 0
   };
 
+  final filteredBody = CompiledContractJsonEncoder().convert(body);
   final response =
-      await http.post(nodeUri, headers: headers, body: json.encode(body));
+      await http.post(nodeUri, headers: headers, body: filteredBody);
 
   final jsonResponse = json.decode(response.body);
 

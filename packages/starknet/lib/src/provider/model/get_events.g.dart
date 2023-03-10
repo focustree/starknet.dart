@@ -10,25 +10,25 @@ _$GetEventsResult _$$GetEventsResultFromJson(Map<String, dynamic> json) =>
     _$GetEventsResult(
       result:
           GetEventsResponse.fromJson(json['result'] as Map<String, dynamic>),
-      $type: json['runtimeType'] as String?,
+      $type: json['starkNetRuntimeTypeToRemove'] as String?,
     );
 
 Map<String, dynamic> _$$GetEventsResultToJson(_$GetEventsResult instance) =>
     <String, dynamic>{
       'result': instance.result.toJson(),
-      'runtimeType': instance.$type,
+      'starkNetRuntimeTypeToRemove': instance.$type,
     };
 
 _$GetEventsError _$$GetEventsErrorFromJson(Map<String, dynamic> json) =>
     _$GetEventsError(
       error: JsonRpcApiError.fromJson(json['error'] as Map<String, dynamic>),
-      $type: json['runtimeType'] as String?,
+      $type: json['starkNetRuntimeTypeToRemove'] as String?,
     );
 
 Map<String, dynamic> _$$GetEventsErrorToJson(_$GetEventsError instance) =>
     <String, dynamic>{
       'error': instance.error.toJson(),
-      'runtimeType': instance.$type,
+      'starkNetRuntimeTypeToRemove': instance.$type,
     };
 
 _$_GetEventsRequest _$$_GetEventsRequestFromJson(Map<String, dynamic> json) =>

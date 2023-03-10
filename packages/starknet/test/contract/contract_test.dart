@@ -14,7 +14,7 @@ void main() {
           final classHash = compiledContract.classHash();
           expect(
             classHash,
-            equals(balanceClassHashWithRuntimeType.toBigInt()),
+            equals(balanceClassHash.toBigInt()),
           );
         });
         test('Compute class hash for contract with attributes', () async {
@@ -24,7 +24,7 @@ void main() {
           final classHash = compiledContract.classHash();
           expect(
             classHash,
-            equals(ozAccountClassHashWithRuntimeType.toBigInt()),
+            equals(ozAccountClassHash.toBigInt()),
           );
         });
       });

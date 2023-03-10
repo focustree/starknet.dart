@@ -102,24 +102,9 @@ final ozAccountUpgradableClassHash = Felt.fromHexString(
   "0x018509044a92ab8fb00cf7067c7c7578a77ec11d55b628541c1bfb38cd4d01ef",
 );
 
-// Compiled contract class hashes with 'runtimeType' (freezed)
-// needs
-final balanceClassHashWithRuntimeType = Felt.fromHexString(
-  "0x4a303eefe561262d53f3d8f75aef9579dac78098c1749f39fe375d3cab87812",
-);
 // with constructor argument: 42
 final balanceContractAddress = Felt.fromHexString(
-  "0xc50f29f9806c112bba78d12e26ff20cdb8d59e4fb50702974a20bb7d295069",
-);
-final ozAccountClassHashWithRuntimeType = Felt.fromHexString(
-  "0x200076549cbe401adaa35d5ad5fbe8c01e4ef8a6150f012e36fd6ab687498b2",
-);
-
-final ozProxyClassHashWithRuntimeType = Felt.fromHexString(
-  "0x00eafb0413e759430def79539db681f8a4eb98cf4196fe457077d694c6aeeb82",
-);
-final ozAccountUpgradableClassHashWithRuntimetype = Felt.fromHexString(
-  "0x018509044a92ab8fb00cf7067c7c7578a77ec11d55b628541c1bfb38cd4d01ef",
+  "0x44f4d0e41832e184d152be425ceb95795fa450e9b4425d5dea5188a05560117",
 );
 
 // devnet 0.4.0 value
