@@ -1,8 +1,8 @@
 import 'package:starknet/starknet.dart';
 
 final mnemonic =
-"wear speak example prevent rely turn ladder scrub pulp stuff theme blue"
-    .split(" ");
+    "wear speak example prevent rely turn ladder scrub pulp stuff theme blue"
+        .split(" ");
 
 void main() async {
   final provider = JsonRpcProvider(nodeUri: devnetUri);

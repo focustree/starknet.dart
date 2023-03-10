@@ -26,7 +26,7 @@ class TransactionService {
           if (password == null) {
             throw Error();
           }
-          
+
           final privateKey = await passwordStore.getPrivateKey(
             id: publicAccount.privateKeyId,
             password: password,
@@ -61,7 +61,7 @@ class TransactionService {
 
     // set signer to null to avoid storing the private key in memory
     signer = null;
-    
+
     return await waitForAcceptance(
       transactionHash: txHash,
       provider: provider,

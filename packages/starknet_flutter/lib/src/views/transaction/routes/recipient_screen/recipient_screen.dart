@@ -157,7 +157,7 @@ class _RecipientScreenState extends State<RecipientScreen> {
 
   void _showQRCodeScanner() {
     _hasScannedQRCode = false;
-    
+
     showGeneralDialog(
       context: context,
       transitionBuilder: (ctx, a1, a2, child) {

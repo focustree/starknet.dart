@@ -328,7 +328,7 @@ class _HomePageState extends State<HomePage> implements HomeView {
       args: args,
     );
   }
-  
+
   @override
   Future showReceiveModal() {
     return StarknetReceive.showQRCodeModal(

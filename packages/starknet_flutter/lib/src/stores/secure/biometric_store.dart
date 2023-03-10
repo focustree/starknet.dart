@@ -7,7 +7,6 @@ import 'package:starknet_flutter/src/stores/secure/secure_store.dart';
 
 /// Stores secrets encrypted with biometric authentication when available.
 class BiometricStore extends SecureStore {
-
   BiometricStore();
 
   /// Stores a [secret] encrypted with biometry under [key].

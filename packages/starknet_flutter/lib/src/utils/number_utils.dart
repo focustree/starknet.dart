@@ -13,7 +13,7 @@ extension StarknetNumberUtils on num {
     if (!numToString.contains('.')) {
       return double.parse(numToString);
     }
-    
+
     final digits = numToString.split('.')[1].length;
     if (digits <= precision) {
       return double.parse(numToString);

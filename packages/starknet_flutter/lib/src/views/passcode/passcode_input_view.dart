@@ -67,7 +67,8 @@ class PasscodeInputView extends StatefulWidget {
   static Future<String?> showPinCode(
     BuildContext parentContext, {
     VoidCallback? onWrongRepeatInput,
-    PasscodeActionConfig actionConfig = const PasscodeActionConfig.unlock(unlockTitle: "Enter your pin code"),
+    PasscodeActionConfig actionConfig =
+        const PasscodeActionConfig.unlock(unlockTitle: "Enter your pin code"),
     PinCodeConfig pinCodeConfig = const PinCodeConfig(),
     PasscodeConfig? passcodeConfig,
   }) {

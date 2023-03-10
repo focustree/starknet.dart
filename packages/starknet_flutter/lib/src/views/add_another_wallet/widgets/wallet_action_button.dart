@@ -9,7 +9,7 @@ class WalletActionButton extends StatelessWidget {
   final IconData icon;
   final Function()? onTap;
   const WalletActionButton({
-    super. key,
+    super.key,
     required this.title,
     required this.subtitle,
     required this.gradient,
@@ -23,8 +23,8 @@ class WalletActionButton extends StatelessWidget {
       onTap: onTap,
       child: ConstrainedBox(
         constraints: const BoxConstraints(
-            maxWidth: 600,
-          ),
+          maxWidth: 600,
+        ),
         child: Container(
           width: double.infinity,
           height: 150,

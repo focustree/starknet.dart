@@ -21,7 +21,6 @@ class TransactionViewModel {
   // recipient screen
   String? recipientAddress;
 
-
   String? get title {
     switch (routeName) {
       case AmountScreen.routeName:
