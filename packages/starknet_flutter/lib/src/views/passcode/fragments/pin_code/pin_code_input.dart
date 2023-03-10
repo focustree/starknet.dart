@@ -68,8 +68,8 @@ class _PinCodeInputState extends State<PinCodeInput> {
                       const SizedBox(height: 22),
                       Flexible(
                         child: ConstrainedBox(
-                          constraints:
-                              const BoxConstraints(maxWidth: 280, minWidth: 150),
+                          constraints: const BoxConstraints(
+                              maxWidth: 280, minWidth: 150),
                           child: Column(
                             mainAxisSize: MainAxisSize.min,
                             children: [
@@ -86,7 +86,7 @@ class _PinCodeInputState extends State<PinCodeInput> {
                                     number: number,
                                     onTap: () {
                                       onPinTap(number);
-      
+
                                       if (pinFillComplete) {
                                         onInputValidated(_pinCode.join());
                                         setState(() {
@@ -111,7 +111,7 @@ class _PinCodeInputState extends State<PinCodeInput> {
                                         number: 0,
                                         onTap: () {
                                           onPinTap(0);
-      
+
                                           if (pinFillComplete) {
                                             onInputValidated(_pinCode.join());
                                           }
@@ -127,8 +127,8 @@ class _PinCodeInputState extends State<PinCodeInput> {
                                             color: Colors.transparent,
                                             shape: BoxShape.circle,
                                           ),
-                                          child:
-                                              const Icon(Icons.backspace_rounded),
+                                          child: const Icon(
+                                              Icons.backspace_rounded),
                                         ),
                                       );
                                     default:

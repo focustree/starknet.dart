@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:starknet_flutter/starknet_flutter.dart';
 import 'package:starknet_flutter_example/ui/screens/account_balance/widgets/account_address.dart';
 import 'package:starknet_flutter_example/ui/screens/account_balance/widgets/account_indicator.dart';
+import 'package:starknet_flutter_example/ui/screens/account_balance/widgets/account_not_deployed.dart';
 import 'package:starknet_flutter_example/ui/screens/account_balance/widgets/action_button.dart';
 import 'package:starknet_flutter_example/ui/screens/account_balance/widgets/crypto_balance_cell.dart';
 import 'package:starknet_flutter_example/ui/screens/account_balance/widgets/empty_wallet.dart';
 import 'package:starknet_flutter_example/ui/screens/account_balance/widgets/no_account_selected.dart';
+import 'package:starknet_flutter_example/ui/widgets/bouncing_button.dart';
 import 'package:starknet_flutter_example/ui/widgets/loading.dart';
 
 import 'home_presenter.dart';
@@ -14,26 +15,25 @@ import 'home_viewmodel.dart';
 
 abstract class HomeView {
   void refresh();
+
   Future createPasswordDialog(PasswordStore passwordStore);
-  Future showDialogWalletMissing();
+
   Future showMoreDialog();
+
   Future<String?> unlockWithPassword();
+
   Future createPassword();
+
   Future<SelectedAccount?> showInitialisationDialog();
+
   Future<bool?> showTransactionModal(TransactionArguments args);
   Future showReceiveModal();
 }
 
-class HomeArguments {
-  HomeArguments();
-}
-
 class HomePage extends StatefulWidget {
-  final HomeArguments? args;
   const HomePage({
-    Key? key,
-    this.args,
-  }) : super(key: key);
+    super.key,
+  });
 
   @override
   State<HomePage> createState() => _HomePageState();
@@ -57,10 +57,6 @@ class _HomePageState extends State<HomePage> implements HomeView {
       this,
     ).init();
     model = presenter.viewModel;
-
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      presenter.afterViewInit();
-    });
   }
 
   @override
@@ -83,11 +79,22 @@ class _HomePageState extends State<HomePage> implements HomeView {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              AccountIndicatorWidget(
-                avatarUrl: 'https://i.pravatar.cc/150?img=1',
-                selectedWallet: model.selectedWallet,
-                selectedAccount: model.selectedAccount,
-                onPressed: presenter.onAccountSwitchTap,
+              Row(
+                children: [
+                  AccountIndicatorWidget(
+                    avatarUrl: 'https://i.pravatar.cc/150?img=1',
+                    selectedWallet: model.selectedWallet,
+                    selectedAccount: model.selectedAccount,
+                    onPressed: presenter.onAccountSwitchTap,
+                  ),
+                  const Spacer(),
+                  BouncingWidget(
+                    child: const Icon(Icons.more_horiz),
+                    onTap: () {
+                      showMoreDialog();
+                    },
+                  ),
+                ],
               ),
               if (model.selectedAccount?.accountAddress != null)
                 Padding(
@@ -101,7 +108,7 @@ class _HomePageState extends State<HomePage> implements HomeView {
                 child: AnimatedSize(
                   duration: const Duration(milliseconds: 500),
                   curve: Curves.fastLinearToSlowEaseIn,
-                  child: model.isLoadingBalance == false && model.hasSomeEth
+                  child: model.hasSomeEth
                       ? SizedBox(
                           key: const Key('total_balance'),
                           width: double.infinity,
@@ -161,10 +168,29 @@ class _HomePageState extends State<HomePage> implements HomeView {
       );
     }
 
-    if (model.isLoadingBalance == true) {
+    if (model.deployStatus == DeployStatus.unknown ||
+        model.isLoadingBalance == true) {
       return const Center(
         key: Key('loading'),
         child: LoadingWidget(),
+      );
+    }
+
+    if (model.deployStatus != DeployStatus.valid) {
+      return AccountNotDeployed(
+        key: const Key('account_not_deployed'),
+        onRefresh: presenter.refreshAccount,
+        publicAccount: model.selectedAccount!,
+        balance: model.ethBalance!,
+        fiatPrice: model.ethFiatPrice.truncateBalance(precision: 2),
+        onDeploy: () => presenter.onDeploy(unlockWithPassword),
+        deployStatus: model.deployStatus,
+        error: model.deployError,
+        onAddCrypto: () {
+          StarknessDeposit.showDepositModal(
+            context,
+          );
+        },
       );
     }
 
@@ -200,7 +226,9 @@ class _HomePageState extends State<HomePage> implements HomeView {
   }
 
   @override
-  void refresh() => setState(() {});
+  void refresh() {
+    if (mounted) setState(() {});
+  }
 
   @override
   Future<String?> unlockWithPassword() {
@@ -232,6 +260,9 @@ class _HomePageState extends State<HomePage> implements HomeView {
               for (var w in wallets) {
                 await StarknetStore.deleteWallet(w);
               }
+              model.selectedWallet = null;
+              model.selectedAccount = null;
+              refresh();
             },
             icon: const Icon(Icons.delete_outline),
             label: const Text("Remove wallets"),
@@ -254,51 +285,6 @@ class _HomePageState extends State<HomePage> implements HomeView {
             },
             icon: const Icon(Icons.key),
             label: const Text("Replace password"),
-          ),
-        ],
-      ),
-    );
-  }
-
-  @override
-  Future showDialogWalletMissing() {
-    return showDialog(
-      context: context,
-      builder: (context) => AlertDialog(
-        title: Text(
-          "It seems you don't have a wallet yet",
-          style: GoogleFonts.poppins(
-            fontSize: 22,
-            fontWeight: FontWeight.bold,
-          ),
-        ),
-        content: Text(
-          "Do you want to create/import one?",
-          style: GoogleFonts.poppins(
-            fontSize: 14,
-          ),
-        ),
-        actions: [
-          TextButton(
-            onPressed: () {
-              Navigator.pop(context);
-            },
-            child: const Text("Ignore"),
-          ),
-          TextButton(
-            onPressed: () {
-              StarknetWallet.showInitializationModal(
-                context,
-                passwordPrompt: unlockWithPassword,
-              );
-            },
-            child: Text(
-              "Let's go!",
-              style: GoogleFonts.poppins(
-                fontSize: 14,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
           ),
         ],
       ),
@@ -342,7 +328,7 @@ class _HomePageState extends State<HomePage> implements HomeView {
       args: args,
     );
   }
-  
+
   @override
   Future showReceiveModal() {
     return StarknetReceive.showQRCodeModal(

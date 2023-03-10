@@ -1,0 +1,21 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "example (Testnet)",
+      "request": "launch",
+      "type": "dart",
+      "program": "example/lib/main.dart"
+    },
+    {
+      "name": "example (Devnet)",
+      "request": "launch",
+      "type": "dart",
+      "program": "example/lib/main.dart",
+      "args": [
+        "--dart-define=NODE_URI=http://192.168.1.15:5050/rpc"
+      ]
+    }
+  ]
+}
+  

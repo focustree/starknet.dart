@@ -14,23 +14,24 @@ class AddAnotherWalletPresenter {
   );
 
   AddAnotherWalletPresenter init() {
-    
     return this;
   }
 
-  void dispose() { }
+  void dispose() {}
 
-  void loadData() { }
+  void loadData() {}
 
   onCreateNewWalletTap() {
     viewInterface.openWalletInitializationModal(
       initialRoute: CreateSeedScreen.routeName,
+      nextWalletIndex: viewModel.nextWalletIndex,
     );
   }
 
   onRestoreWalletTap() {
     viewInterface.openWalletInitializationModal(
       initialRoute: RestoreWalletScreen.routeName,
+      nextWalletIndex: viewModel.nextWalletIndex,
     );
   }
-}  
+}

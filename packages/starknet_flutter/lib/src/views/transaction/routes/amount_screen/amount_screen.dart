@@ -99,7 +99,7 @@ class _AmountScreenState extends State<AmountScreen> {
                                   .substring(0, kMaxLength);
                               return;
                             }
-              
+
                             _amountStr = widget.model.ethBalance.toString();
                           });
                         },
@@ -112,8 +112,8 @@ class _AmountScreenState extends State<AmountScreen> {
                         ),
                       )
                     : const SizedBox(
-                      width: double.infinity,
-                    ),
+                        width: double.infinity,
+                      ),
               ),
             ],
           ),

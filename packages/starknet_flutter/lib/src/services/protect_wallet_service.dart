@@ -1,32 +1,30 @@
-import 'dart:typed_data';
-
-import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:starknet/starknet.dart';
 import 'package:starknet_flutter/pigeon.dart';
-import 'package:starknet_flutter/src/services/protect_wallet/protect_wallet_service.dart';
 import 'package:starknet_flutter/src/views/wallet/wallet_initialization_viewmodel.dart';
 import 'package:starknet_flutter/starknet_flutter.dart';
 
-class RestoreWalletService extends ProtectWalletService {
-  @override
-  Future<void> onSecureWithBiometric({
+class WrongPasswordException implements Exception {
+  final String input;
+
+  const WrongPasswordException(this.input);
+}
+
+class PasswordCancelledException implements Exception {}
+
+abstract class ProtectWalletService {
+  Future<PublicAccount> onSecureWithBiometric({
     required BiometricStore biometricStore,
     required StarknetAccountType accountType,
     required Account account,
-    required List<String> seedPhrase,
-    required Uint8List privateKey,
-    required Function(Wallet wallet) onWalletProtected,
+    required Wallet wallet,
+    List<String>? seedPhrase,
+    int accountIndex = 0,
   }) async {
-    // Create wallet and account
-    final wallet = Wallet(
-      // TODO Set name and order according to previous wallets already saved
-      name: "Wallet 1",
-      order: 0,
-      accountType: accountType,
-    );
     final publicAccount = PublicAccount.from(
       account: account,
       walletId: wallet.walletId,
+      order: accountIndex,
     );
 
     final options = BiometricOptions(
@@ -37,14 +35,16 @@ class RestoreWalletService extends ProtectWalletService {
     );
 
     // Store seed phrase and private key securely
-    await biometricStore.storeSeedPhrase(
-      id: wallet.walletId,
-      seedPhrase: seedPhrase,
-      biometricOptions: options,
-    );
+    if (seedPhrase != null) {
+      await biometricStore.storeSeedPhrase(
+        id: wallet.walletId,
+        seedPhrase: seedPhrase,
+        biometricOptions: options,
+      );
+    }
     await biometricStore.storePrivateKey(
       id: publicAccount.privateKeyId,
-      privateKey: privateKey,
+      privateKey: account.signer.privateKey.toBigInt().toUint8List(),
       biometricOptions: options,
     );
 
@@ -60,39 +60,31 @@ class RestoreWalletService extends ProtectWalletService {
     wallet.accounts.add(publicAccount);
     // Finally, store the wallet (which now contains the account)
     await publicStore.storeWallet(wallet);
-
-    onWalletProtected(wallet);
+    return publicAccount;
   }
 
-  @override
-  Future<void> onSecureWithPassword(
+  Future<PublicAccount> onSecureWithPassword(
     BuildContext context, {
     required PasswordStore passwordStore,
     required StarknetAccountType accountType,
+    required Wallet wallet,
     required Account account,
-    required List<String> seedPhrase,
-    required Uint8List privateKey,
-    required Function(String input) onWrongPassword,
-    required Function(Wallet wallet) onWalletProtected,
+    List<String>? seedPhrase,
     required Future<String?> Function() passwordPrompt,
+    int accountIndex = 0,
   }) async {
     final passwordInput = await passwordPrompt();
     if (passwordInput == null) {
       // Password == null means that the user cancelled the prompt
-      // Don't do anything to let user try again
+      throw PasswordCancelledException();
     } else {
       if (!await passwordStore.isGoodPassword(passwordInput)) {
-        onWrongPassword(passwordInput);
+        throw WrongPasswordException(passwordInput);
       } else {
-        // Create wallet and account
-        final wallet = Wallet(
-          name: "Wallet 1",
-          order: 0,
-          accountType: accountType,
-        );
         final publicAccount = PublicAccount.from(
           account: account,
           walletId: wallet.walletId,
+          order: accountIndex,
         );
 
         final publicStore = StarknetStore.public();
@@ -104,18 +96,20 @@ class RestoreWalletService extends ProtectWalletService {
         await publicStore.storeWallet(wallet);
 
         // Store seed phrase and private key securely
-        await passwordStore.storeSeedPhrase(
-          id: wallet.walletId,
-          seedPhrase: seedPhrase,
-          password: passwordInput,
-        );
+        if (seedPhrase != null) {
+          await passwordStore.storeSeedPhrase(
+            id: wallet.walletId,
+            seedPhrase: seedPhrase,
+            password: passwordInput,
+          );
+        }
         await passwordStore.storePrivateKey(
           id: publicAccount.privateKeyId,
-          privateKey: privateKey,
+          privateKey: account.signer.privateKey.toBigInt().toUint8List(),
           password: passwordInput,
         );
 
-        onWalletProtected(wallet);
+        return publicAccount;
       }
     }
   }

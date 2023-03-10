@@ -1,9 +1,9 @@
 import 'package:flutter/foundation.dart';
-import 'package:starknet_flutter/src/stores/starknet_store.dart';
-
-import '../../models/wallet.dart';
-import 'wallet_list.dart';
-import 'wallet_list_viewmodel.dart';
+import 'package:flutter/material.dart';
+import 'package:starknet/starknet.dart';
+import 'package:starknet_flutter/src/services/restore_wallet_service.dart';
+import 'package:starknet_flutter/src/views/wallet/wallet_initialization_viewmodel.dart';
+import 'package:starknet_flutter/starknet_flutter.dart';
 
 class WalletListPresenter {
   final WalletListViewModel viewModel;
@@ -18,4 +18,96 @@ class WalletListPresenter {
       StarknetStore.public().watchWallets();
 
   void dispose() {}
+
+  /// Recover next account.
+  /// It may not be deployed and it's not the responsability of this method to
+  /// deploy it.
+  Future<PublicAccount?> addAccount(
+    BuildContext context, {
+    required Wallet wallet,
+    required PasswordPrompt passwordPrompt,
+  }) async {
+    // TODO Add ArgentX support
+    if (wallet.accountType == StarknetAccountType.openZeppelin ||
+        wallet.accountType == StarknetAccountType.braavos) {
+      // Recover the account but don't deploy it if it's not deployed
+      final maxOrder = wallet.accounts.fold(
+        0,
+        (previousValue, element) =>
+            element.order > previousValue ? element.order : previousValue,
+      );
+      final lastAccount = wallet.accounts.isEmpty
+          ? null
+          : wallet.accounts.firstWhere(
+              (element) => element.order == maxOrder,
+            );
+      final seedPhrase = await _getSeedPhrase(
+        wallet: wallet,
+        passwordPrompt: passwordPrompt,
+      );
+      if (seedPhrase == null) return null;
+
+      final index = lastAccount == null ? 0 : maxOrder + 1;
+      final account = Account.fromMnemonic(
+        mnemonic: seedPhrase,
+        provider: JsonRpcProvider(
+          nodeUri: lastAccount == null
+              ? v010PathfinderGoerliTestnetUri
+              : Uri.parse(lastAccount.nodeUri),
+        ),
+        chainId: StarknetFlutter.chainId,
+        accountDerivation:
+            wallet.accountType == StarknetAccountType.openZeppelin
+                ? OpenzeppelinAccountDerivation(
+                    proxyClassHash: ozProxyClassHash,
+                    implementationClassHash: ozAccountUpgradableClassHash,
+                  )
+                : null,
+        index: index,
+      );
+
+      final service = RestoreWalletService();
+      if (context.mounted) {
+        try {
+          return service.addAccount(
+            context,
+            wallet: wallet,
+            account: account,
+            passwordPrompt: passwordPrompt,
+            index: index,
+          );
+        } catch (e) {
+          // TODO Handle error (auth failed...)
+          return null;
+        }
+      }
+    } else {
+      if (kDebugMode) {
+        print("Add account of type ${wallet.accountType.name} not supported");
+      }
+    }
+    return null;
+  }
+
+  Future<List<String>?> _getSeedPhrase({
+    required Wallet wallet,
+    required PasswordPrompt passwordPrompt,
+  }) async {
+    return (await StarknetStore.secure()).when(
+      biometric: (biometricStore) {
+        return biometricStore.getSeedPhrase(id: wallet.walletId);
+      },
+      password: (passwordStore) async {
+        final password = await passwordPrompt();
+        if (password == null) {
+          return null;
+        } else {
+          return passwordStore.getSeedPhrase(
+            id: wallet.walletId,
+            password: password,
+          );
+        }
+      },
+    );
+  }
 }
