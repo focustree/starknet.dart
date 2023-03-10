@@ -5,3 +5,4 @@ export 'wallet_list/wallet_list.dart';
 export 'wallet_list/wallet_list_viewmodel.dart';
 export 'deposit/deposit.dart';
 export 'transaction/transaction.dart';
+export 'receive_modal/receive_modal.dart';

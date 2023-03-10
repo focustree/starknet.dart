@@ -29,6 +29,7 @@ class AccountAddressWidget extends StatelessWidget {
             address.truncateMiddle(truncateLength: 20),
             style: GoogleFonts.poppins(
               fontWeight: FontWeight.w600,
+              fontSize: 16,
             ),
           ),
           const SizedBox(width: 5),

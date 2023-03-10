@@ -32,6 +32,8 @@ dependencies:
   starknet:
     path: ../starknet
   ulid: ^2.0.0
+  mobile_scanner: ^3.0.0
+  qr_flutter: ^4.0.0
 
 dev_dependencies:
   build_runner: ^2.3.3
@@ -74,6 +76,7 @@ flutter:
     - assets/images/wallets/open_zeppelin.svg
     - assets/images/logo.svg
     - assets/images/crypto/eth.svg
+    - assets/images/qr_code_placeholder.png
   #
   # For details regarding assets in packages, see
   # https://flutter.dev/assets-and-images/#from-packages

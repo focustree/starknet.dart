@@ -68,4 +68,8 @@ class HomePresenter {
       loadEthBalance();
     }
   }
+
+  onReceiveTap() {
+    viewInterface.showReceiveModal();
+  }
 }
