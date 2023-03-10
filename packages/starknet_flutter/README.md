@@ -14,7 +14,9 @@ dependencies:
 Then, run `flutter pub get`.
 
 
-You need to `init()` `starknet_flutter` before using it. A good place to do this in your `main.dart`:
+You need to call `init()` method of the `starknet_flutter` plugin before using it.
+
+A good place to do this in your `main.dart`:
 ```dart
 Future<void> main() async {
   await StarknetFlutter.init();
@@ -24,9 +26,37 @@ Future<void> main() async {
 
 ## Platform setup
 
-### iOS && MacOS
+### iOS
 
-TBD
+You need to add some permissions in the `info.plist`
+
+- FaceID (used to store/retrieve sensitive informations like Starknet private key for.)
+
+```plist
+<key>NSFaceIDUsageDescription</key>
+<string>Use Touch ID or Face ID to process transactions.</string>
+```
+
+- Camera (used to scan account address QRCode)
+
+```plist
+<key>NSCameraUsageDescription</key>
+<string>This app needs camera access to scan QR codes</string>
+```
+
+### MacOS
+
+Like iOS, you need to add some permissions
+
+- Keychain Sharing
+
+You need to add the `Keychain Sharing` capability in the Xcode project [following this guide](https://developer.apple.com/documentation/xcode/configuring-keychain-sharing).
+
+**NOTE: you only need to add the capability, it's not needed to add any `Keychain Groups`.**
+
+- Camera
+
+You need to enable `Camera` permission into App Sandbox [following this guide](https://developer.apple.com/documentation/xcode/configuring-the-macos-app-sandbox/).
 
 ### Android
 
@@ -35,9 +65,9 @@ Edit you `android/app/build.gradle`:
 
 ```groovy
 android {
-    defaultConfig {
-        minSdkVersion 23
-    }
+  defaultConfig {
+    minSdkVersion 23
+  }
 }
 ```
 
@@ -50,8 +80,7 @@ package com.example.myapp
 
 import io.flutter.embedding.android.FlutterFragmentActivity
 
-class MainActivity : FlutterFragmentActivity() {
-}
+class MainActivity : FlutterFragmentActivity() { }
 ```
 
 The theme of the main activity must use `Theme.AppCompat` or there will be crashes on Android < 29.
@@ -68,14 +97,14 @@ Then, change the theme set in `android/app/src/main/res/values/styles.xml`:
 ```xml
 
 <style name="LaunchTheme" parent="Theme.AppCompat.NoActionBar">
-    <!-- Show a splash screen on the activity. Automatically removed when
-         Flutter draws its first frame -->
-    <item name="android:windowBackground">@drawable/launch_background</item>
+  <!-- Show a splash screen on the activity. Automatically removed when
+        Flutter draws its first frame -->
+  <item name="android:windowBackground">@drawable/launch_background</item>
 
-    <item name="android:windowNoTitle">true</item>
-    <item name="android:windowActionBar">false</item>
-    <item name="android:windowFullscreen">true</item>
-    <item name="android:windowContentOverlay">@null</item>
+  <item name="android:windowNoTitle">true</item>
+  <item name="android:windowActionBar">false</item>
+  <item name="android:windowFullscreen">true</item>
+  <item name="android:windowContentOverlay">@null</item>
 </style>
 ```
 
@@ -83,21 +112,20 @@ You might edit the night variant as well at `android/app/src/main/res/values-nig
 
 ### Windows
 
-TBD
+*TBD*
 
 ### Linux
 
-TBD
+*TBD*
 
 ### Web
 
-TBD
-
+*TBD*
 
 ## Usage
 
 Some platforms and devices might be more secure than others.
-On iOS & MacOS, this plugin uses the [Secure Enclave](https://support.apple.com/fr-ca/guide/security/sec59b0b31ff/web) to protect the private key.
+On iOS & MacOS, this plugin uses the [Secure Enclave](https://support.apple.com/fr-ca/guide/security/sec59b0b31ff/web) to protect the private key (if the device do not have a biometric component or not enabled, a password will be asked to encrypt data as a fallback method).
 On Android, the plugin [biometric_storage](https://pub.dev/packages/biometric_storage) is used. When biometric authentication is available, it is used to protect the private key.
 On other platforms and when the above is not available, the private key is encrypted using a password and stored in [shared preferences](https://pub.dev/packages/shared_preferences).
 
@@ -128,8 +156,8 @@ You can do it with the following code:
 ```dart
 final password = await createPassword(context);
 if (password != null) {
-await PasswordStore().initiatePassword(password);
-if (mounted) Navigator.pop(context);
+  await PasswordStore().initiatePassword(password);
+  if (mounted) Navigator.pop(context);
 }
 ```
 
@@ -150,11 +178,11 @@ Draw a pattern as your password.
 
 ```dart
 final result = await PasscodeInputView.showPattern(
-    context,
-    actionConfig: const PasscodeActionConfig.create(
-        createTitle: "Draw your pattern",
-        confirmTitle: "Confirm your pattern",
-    ),
+  context,
+  actionConfig: const PasscodeActionConfig.create(
+      createTitle: "Draw your pattern",
+      confirmTitle: "Confirm your pattern",
+  ),
 )
 ```
 </details>
@@ -166,35 +194,35 @@ Enter emoji as your password, like "👍🎨🚚👀" for instance.
 
 ```dart
 final password = await PasscodeInputView.showCustom(
-    context,
-    actionConfig: const PasscodeActionConfig.create(
-      createTitle: "Type your emoji password",
-      confirmTitle: "Confirm your emoji password",
-    ),
-    onWrongRepeatInput: (input) {
-      showSnackBar(
-        "Wrong input: $input",
-        success: false,
-      );
-    },
-    passcodeConfig: const PasscodeConfig(
-      backgroundColor: Colors.lightBlueAccent,
-      cancelButtonConfig: PasscodeCancelButtonConfig(
-        child: Text(
-          "❌ Mission aborted",
-          style: TextStyle(color: Colors.white),
-        ),
+  context,
+  actionConfig: const PasscodeActionConfig.create(
+    createTitle: "Type your emoji password",
+    confirmTitle: "Confirm your emoji password",
+  ),
+  onWrongRepeatInput: (input) {
+    showSnackBar(
+      "Wrong input: $input",
+      success: false,
+    );
+  },
+  passcodeConfig: const PasscodeConfig(
+    backgroundColor: Colors.lightBlueAccent,
+    cancelButtonConfig: PasscodeCancelButtonConfig(
+      child: Text(
+        "❌ Mission aborted",
+        style: TextStyle(color: Colors.white),
       ),
     ),
-    inputBuilder: (
-      OnInputValidated onInputValidated,
-      bool isConfirming,
-    ) {
-      return EmojiInput(
-        onInputValidated: onInputValidated,
-        nextTitle: isConfirming ? "Confirm" : "Next",
-      );
-    },  
+  ),
+  inputBuilder: (
+    OnInputValidated onInputValidated,
+    bool isConfirming,
+  ) {
+    return EmojiInput(
+      onInputValidated: onInputValidated,
+      nextTitle: isConfirming ? "Confirm" : "Next",
+    );
+  },  
 )
 ```
 </details>
@@ -249,3 +277,119 @@ void main() async {
   print(exchangeRates);
 }
 ```
+
+## Get ETH balance
+
+To display ETH balance of an account, you just need to call the `balance` property of a `PublicAccount` object.
+
+Example:
+
+```dart
+// [...] select a wallet using wallet list for exemple.
+final ethBalance = await selectedAccount.balance;
+print('$ethBalance ETH'); // 0.045 ETH
+```
+
+## Get fiat equivalent to ETH balance
+
+```dart
+final ethBalance = await selectedAccount.balance;
+final ethExchangeRate = await ExchangeRates.get(from: 'ETH', to: 'USD'); // Change 'USD' to fiat currency you want
+final fiatEquivalent = ethBalance * ethExchangeRate;
+print('$fiatEquivalent \$'); // 43.34 $
+```
+
+## Display formatted balance
+
+By default ETH balance was not rounded / truncated, if you want to display it properly on the UI, you can use following utils:
+
+First you need to import the plugin.
+```dart
+import 'package:starknet_flutter/starknet_flutter.dart';
+```
+
+- `truncateBalance()` this method wil truncate **without** round the value.
+
+Example:
+```dart
+final ethBalance = 0.546365463;
+String formatted = ethBalance.truncateBalance(precision: 4);
+print(formatted) // 0.5463
+```
+
+- `format()` this method will round value to 2 digits.
+
+Example:
+```dart
+final ethBalance = 0.546365463;
+String formatted = ethBalance.format();
+print(formatted) // 0.55
+```
+
+## Display minified account address
+
+An address can be very long and it's pretty ugly.
+
+You can use the following snippet to display an address & keep first & last segment visible.
+
+```dart
+final address = '0x53656356453665465364653664536426748692';
+final formatted = address.truncateMiddle(truncateLength: 20);
+print(formatted) // 0x53656356...426748692
+```
+
+## Show wallets list
+
+I you want to display the wallets list, you just have to call this code:
+
+```dart
+StarknetWalletList.showModal(
+  context,
+  PasscodeInputView.showPinCode(context),
+);
+```
+
+- `context` is used to display modal bottom sheet over your app.
+- `passwordPrompt` is a method called when a password unlock is required to unlock sensitive data (you can set the pass code method you want).
+
+## Show transaction modal
+
+You can send ETH to a specific address.
+
+```dart
+StarknetTransaction.showModal(
+  context,
+  args: transactionArguments,
+);
+```
+
+- `context` is used to display modal bottom sheet over your app.
+- `transactionArguments` handle the current selected `PublicAccount`.
+
+## Show account address QRCode
+
+You can display at anytime account QRCode address.
+
+```dart
+StarknetReceive.showQRCodeModal(
+  context,
+  address: '0x0000',
+);
+```
+
+- `context` is used to display modal bottom sheet over your app.
+- `address` the account address to receive ETH.
+
+## Show wallet create/restore modal
+
+When called, the user can choose to create or restore a wallet.
+
+```dart
+StarknetWallet.showInitializationModal(
+  context,
+  passwordPrompt: unlockWithPassword,
+);
+```
+
+- `context` is used to display modal bottom sheet over your app.
+- `passwordPrompt` is a method called when a password unlock is required to unlock sensitive data (you can set the pass code method you want).
