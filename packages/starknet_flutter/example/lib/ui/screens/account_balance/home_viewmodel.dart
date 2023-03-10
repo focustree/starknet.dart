@@ -28,8 +28,6 @@ class HomeViewModel {
 
   String? deployError;
 
-  String? deployError;
-
   bool get isLoadingBalance => ethBalance == null;
 
   double? ethBalance;
