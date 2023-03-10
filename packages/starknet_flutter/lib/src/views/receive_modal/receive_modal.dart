@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 import 'package:qr_flutter/qr_flutter.dart';
+import 'package:starknet_flutter/src/views/widgets/bouncing_button.dart';
 import 'package:starknet_flutter/src/views/widgets/bouncing_widget.dart';
 
 class StarknetReceive {
@@ -68,6 +70,21 @@ class ReceiveModal extends StatelessWidget {
                   child: QrImage(
                     data: address,
                     version: QrVersions.auto,
+                  ),
+                ),
+                const SizedBox(height: 16),
+                Center(
+                  child: BouncingButton.text(
+                    text: address,
+                    onTap: () {
+                      Clipboard.setData(ClipboardData(text: address));
+                
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        const SnackBar(
+                          content: Text('Address copied to clipboard'),
+                        ),
+                      );
+                    },
                   ),
                 ),
               ],
