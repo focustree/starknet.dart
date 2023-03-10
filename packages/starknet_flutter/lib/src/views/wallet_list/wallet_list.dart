@@ -107,15 +107,12 @@ class _WalletListPageState extends State<WalletListPage>
                                     return WalletCell(
                                       wallet: wallet,
                                       onAddAccount: () async {
-                                        print("Add account 1");
                                         final newAccount =
                                             await presenter.addAccount(
-                                          wallet,
+                                          context,
+                                          wallet: wallet,
                                           passwordPrompt: widget.passwordPrompt,
                                         );
-                                        print(
-                                            "Add account 2, success: ${newAccount == null}");
-
                                         if (newAccount != null &&
                                             context.mounted) {
                                           Navigator.pop(

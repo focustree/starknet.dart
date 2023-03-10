@@ -74,36 +74,54 @@ class WalletInitializationPresenter {
     BuildContext context, {
     required PasswordStore passwordStore,
   }) async {
-    return _protectWalletService!.onSecureWithPassword(
-      context,
-      passwordStore: passwordStore,
+    final wallet = Wallet(
+      name: "Wallet ${viewModel.nextWalletIndex + 1}",
+      order: viewModel.nextWalletIndex,
       accountType: viewModel.accountType!,
-      account: viewModel.account!,
-      nextWalletIndex: viewModel.nextWalletIndex,
-      seedPhrase: viewModel.seedPhrase!,
-      privateKey: viewModel.account!.signer.privateKey.toBigInt().toUint8List(),
-      onWrongPassword: _onWrongPassword,
-      passwordPrompt: passwordPrompt,
-      onWalletProtected: _protectWalletService is CreateWalletService
-          ? _onWalletCreated
-          : _onWalletRestored,
     );
+    try {
+      await _protectWalletService!.onSecureWithPassword(
+        context,
+        passwordStore: passwordStore,
+        accountType: viewModel.accountType!,
+        account: viewModel.account!,
+        wallet: wallet,
+        seedPhrase: viewModel.seedPhrase!,
+        passwordPrompt: passwordPrompt,
+      );
+      if (_protectWalletService is CreateWalletService) {
+        _onWalletCreated(wallet);
+      } else {
+        _onWalletRestored(wallet);
+      }
+    } on PasswordCancelledException {
+      // Do nothing, let user type password again if they want
+    } on WrongPasswordException catch (e) {
+      _onWrongPassword(e.input);
+    }
   }
 
   Future<void> onSecureWithBiometric({
     required BiometricStore biometricStore,
   }) async {
-    return _protectWalletService!.onSecureWithBiometric(
+    final wallet = Wallet(
+      name: "Wallet ${viewModel.nextWalletIndex + 1}",
+      order: viewModel.nextWalletIndex,
+      accountType: viewModel.accountType!,
+    );
+
+    await _protectWalletService!.onSecureWithBiometric(
       biometricStore: biometricStore,
       accountType: viewModel.accountType!,
       account: viewModel.account!,
-      nextWalletIndex: viewModel.nextWalletIndex,
+      wallet: wallet,
       seedPhrase: viewModel.seedPhrase!,
-      privateKey: viewModel.account!.signer.privateKey.toBigInt().toUint8List(),
-      onWalletProtected: _protectWalletService is CreateWalletService
-          ? _onWalletCreated
-          : _onWalletRestored,
     );
+    if (_protectWalletService is CreateWalletService) {
+      _onWalletCreated(wallet);
+    } else {
+      _onWalletRestored(wallet);
+    }
   }
 
   void _onWalletCreated(Wallet wallet) {

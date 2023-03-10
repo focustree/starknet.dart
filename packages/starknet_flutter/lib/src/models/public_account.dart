@@ -47,9 +47,9 @@ class PublicAccount extends HiveObject {
   PublicAccount.from({
     required Account account,
     required this.walletId,
-    int order = 0,
-    this.name = "Account 1",
-  })  : order = 0,
+    this.order = 0,
+    String? name,
+  })  : name = name ?? "Account ${order + 1}",
         nodeUri = (account.provider as JsonRpcProvider).nodeUri.toString(),
         privateKeyId = Ulid().toCanonical(),
         accountAddress = account.accountAddress.toHexString(),
@@ -101,7 +101,6 @@ class PublicAccount extends HiveObject {
       result: (result) => result,
       error: ((error) => Felt.fromInt(0)),
     );
-    print("Account is valid: ${accountClassHash != Felt.fromInt(0)}");
     return accountClassHash != Felt.fromInt(0);
   }
 

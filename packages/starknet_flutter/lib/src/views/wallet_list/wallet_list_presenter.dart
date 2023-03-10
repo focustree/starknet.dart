@@ -1,5 +1,7 @@
 import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
 import 'package:starknet/starknet.dart';
+import 'package:starknet_flutter/src/services/restore_wallet_service.dart';
 import 'package:starknet_flutter/src/views/wallet/wallet_initialization_viewmodel.dart';
 import 'package:starknet_flutter/starknet_flutter.dart';
 
@@ -17,15 +19,18 @@ class WalletListPresenter {
 
   void dispose() {}
 
+  /// Recover next account.
+  /// It may not be deployed and it's not the responsability of this method to
+  /// deploy it.
   Future<PublicAccount?> addAccount(
-    Wallet wallet, {
+    BuildContext context, {
+    required Wallet wallet,
     required PasswordPrompt passwordPrompt,
   }) async {
-    if (wallet.accountType == StarknetAccountType.openZeppelin) {
-      final accountDerivation = OpenzeppelinAccountDerivation(
-        proxyClassHash: ozProxyClassHash,
-        implementationClassHash: ozAccountUpgradableClassHash,
-      );
+    // TODO Add ArgentX support
+    if (wallet.accountType == StarknetAccountType.openZeppelin ||
+        wallet.accountType == StarknetAccountType.braavos) {
+      // Recover the account but don't deploy it if it's not deployed
       final maxOrder = wallet.accounts.fold(
         0,
         (previousValue, element) =>
@@ -42,6 +47,7 @@ class WalletListPresenter {
       );
       if (seedPhrase == null) return null;
 
+      final index = lastAccount == null ? 0 : maxOrder + 1;
       final account = Account.fromMnemonic(
         mnemonic: seedPhrase,
         provider: JsonRpcProvider(
@@ -50,30 +56,37 @@ class WalletListPresenter {
               : Uri.parse(lastAccount.nodeUri),
         ),
         chainId: StarknetFlutter.chainId,
-        accountDerivation: accountDerivation,
-        index: maxOrder + 1,
+        accountDerivation:
+            wallet.accountType == StarknetAccountType.openZeppelin
+                ? OpenzeppelinAccountDerivation(
+                    proxyClassHash: ozProxyClassHash,
+                    implementationClassHash: ozAccountUpgradableClassHash,
+                  )
+                : null,
+        index: index,
       );
-      await protectPrivateKey(account);
-      try {
-        final publicAccount = DeployAccountService().deploy(
-          wallet: wallet,
-          account: account,
-        );
 
-        print("WalletListPresenter Got result $publicAccount");
-        return publicAccount;
-      } on DeployError catch (e) {
-        if (kDebugMode) {
-          print(e);
+      final service = RestoreWalletService();
+      if (context.mounted) {
+        try {
+          return service.addAccount(
+            context,
+            wallet: wallet,
+            account: account,
+            passwordPrompt: passwordPrompt,
+            index: index,
+          );
+        } catch (e) {
+          // TODO Handle error (auth failed...)
+          return null;
         }
-        return null;
+      }
+    } else {
+      if (kDebugMode) {
+        print("Add account of type ${wallet.accountType.name} not supported");
       }
     }
     return null;
-  }
-
-  Future<void> protectPrivateKey(Account account) async {
-    // TODO Save private key in SecureStore
   }
 
   Future<List<String>?> _getSeedPhrase({

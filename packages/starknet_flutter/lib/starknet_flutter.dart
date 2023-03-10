@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:starknet/starknet.dart';
 import 'package:starknet_flutter/src/stores/starknet_store.dart';
 
@@ -24,7 +25,9 @@ class StarknetFlutter {
   }) async {
     if (nodeUri != null) {
       StarknetFlutter._nodeUri = nodeUri;
-      print("nodeUri: $nodeUri");
+      if (kDebugMode) {
+        print("nodeUri: $nodeUri");
+      }
     }
     await StarknetStore.init();
   }
