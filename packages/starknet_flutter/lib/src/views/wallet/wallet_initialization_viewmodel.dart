@@ -26,6 +26,12 @@ enum StarknetNetworkType {
 }
 
 class WalletInitializationViewModel {
+  final int nextWalletIndex;
+
+  WalletInitializationViewModel({
+    required this.nextWalletIndex,
+  });
+
   StreamController<String?> didChange = StreamController<String?>();
 
   String? routeName;

@@ -1,3 +1,4 @@
+import 'package:starknet/src/account.dart';
 import 'package:starknet_flutter/starknet_flutter.dart';
 
 import 'home.dart';
@@ -28,9 +29,14 @@ class HomePresenter {
   }
 
   Future<void> loadIsValidAccount() async {
-    viewModel.isValid = null;
+    // viewModel.deployStatus = DeployStatus.unknown;
     viewInterface.refresh();
-    viewModel.isValid = await viewModel.selectedAccount?.isValid;
+    bool isValid = await viewModel.selectedAccount?.isValid == true;
+    if (isValid == true) {
+      viewModel.deployStatus = DeployStatus.valid;
+    } else {
+      viewModel.deployStatus = DeployStatus.idle;
+    }
     viewInterface.refresh();
   }
 
@@ -71,18 +77,20 @@ class HomePresenter {
   }
 
   void refreshAccount() {
+    viewModel.deployStatus = DeployStatus.unknown;
     loadIsValidAccount();
     loadEthBalance();
   }
 
   Future<void> onDeploy(PasswordPrompt passwordPrompt) async {
-    viewModel.isDeploying = true;
+    viewModel.deployStatus = DeployStatus.deploying;
     viewInterface.refresh();
 
     final publicAccount = viewModel.selectedAccount!;
     final account = await publicAccount.toAccount(passwordPrompt);
     if (account == null) {
       viewModel.deployError = "Authentication failed. Please try again.";
+      viewModel.deployStatus = DeployStatus.failed;
     } else {
       try {
         final result = await DeployAccountService().deploy(
@@ -90,12 +98,14 @@ class HomePresenter {
           account: account,
         );
         viewModel.selectedAccount = result;
+        viewModel.deployStatus = DeployStatus.deployed;
+        _checkIsValidPeriodically(account);
       } on DeployError catch (e) {
         viewModel.deployError = e.toString();
+        viewModel.deployStatus = DeployStatus.failed;
       }
     }
 
-    viewModel.isDeploying = false;
     viewInterface.refresh();
   }
 
@@ -113,5 +123,17 @@ class HomePresenter {
 
   onReceiveTap() {
     viewInterface.showReceiveModal();
+  }
+
+  void _checkIsValidPeriodically(Account account) {
+    Future.delayed(const Duration(milliseconds: 500), () async {
+      final isValid = await account.isValid;
+      if (isValid == true) {
+        viewModel.deployStatus = DeployStatus.valid;
+        viewInterface.refresh();
+      } else {
+        _checkIsValidPeriodically(account);
+      }
+    });
   }
 }

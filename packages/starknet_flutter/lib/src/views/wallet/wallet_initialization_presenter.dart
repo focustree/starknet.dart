@@ -9,12 +9,8 @@ import 'package:starknet_flutter/src/services/restore_wallet_service.dart';
 import 'package:starknet_flutter/src/views/wallet/routes/create_seed_screen.dart';
 import 'package:starknet_flutter/src/views/wallet/routes/protect_wallet_screen.dart';
 import 'package:starknet_flutter/src/views/wallet/routes/restore_wallet_screen.dart';
-import 'package:starknet_flutter/src/views/wallet_list/wallet_list_viewmodel.dart';
+import 'package:starknet_flutter/starknet_flutter.dart';
 
-import '../../models/wallet.dart';
-import '../../stores/starknet_store.dart';
-import '../passcode/passcode_input_view.dart';
-import 'wallet_initialization.dart';
 import 'wallet_initialization_viewmodel.dart';
 
 class WalletInitializationPresenter {
@@ -83,6 +79,7 @@ class WalletInitializationPresenter {
       passwordStore: passwordStore,
       accountType: viewModel.accountType!,
       account: viewModel.account!,
+      nextWalletIndex: viewModel.nextWalletIndex,
       seedPhrase: viewModel.seedPhrase!,
       privateKey: viewModel.account!.signer.privateKey.toBigInt().toUint8List(),
       onWrongPassword: _onWrongPassword,
@@ -100,6 +97,7 @@ class WalletInitializationPresenter {
       biometricStore: biometricStore,
       accountType: viewModel.accountType!,
       account: viewModel.account!,
+      nextWalletIndex: viewModel.nextWalletIndex,
       seedPhrase: viewModel.seedPhrase!,
       privateKey: viewModel.account!.signer.privateKey.toBigInt().toUint8List(),
       onWalletProtected: _protectWalletService is CreateWalletService
@@ -134,5 +132,38 @@ class WalletInitializationPresenter {
     viewModel.account = (_protectWalletService as CreateWalletService)
         .createAccount(viewModel.seedPhrase!);
     viewInterface.navigateToSubRoute(ProtectWalletScreen.routeName);
+  }
+
+  Future<void> restoreWallet(
+      String inputSeedPhrase, StarknetAccountType accountType) async {
+    // Test if seedPhrase with selected accountType resolve to a smart contract address
+    final seedPhrase = inputSeedPhrase.trim().split(" ");
+
+    final provider = JsonRpcProvider(
+      nodeUri: StarknetFlutter.nodeUri,
+    );
+
+    // TODO Iterate over each account until account.isValid return false
+    // Add a loader in the meantime
+    final account = Account.fromMnemonic(
+      mnemonic: seedPhrase,
+      provider: provider,
+      chainId: StarknetFlutter.chainId,
+      index: 0,
+      accountDerivation: accountType == StarknetAccountType.openZeppelin
+          ? OpenzeppelinAccountDerivation()
+          : null, // null will be replaced by BraavosAccountDerivation in constructor
+    );
+    final success = await account.isValid;
+    if (success) {
+      viewModel.seedPhrase = seedPhrase;
+      viewModel.accountType = accountType;
+      viewModel.account = account;
+
+      // Navigate to the protect screen
+      viewInterface.navigateToSubRoute(ProtectWalletScreen.routeName);
+    } else {
+      viewInterface.onRestoreError();
+    }
   }
 }

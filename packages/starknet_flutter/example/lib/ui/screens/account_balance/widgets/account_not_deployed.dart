@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:starknet_flutter/starknet_flutter.dart';
+import 'package:starknet_flutter_example/ui/screens/account_balance/home_viewmodel.dart';
 import 'package:starknet_flutter_example/ui/widgets/bouncing_button.dart';
 import 'package:starknet_flutter_example/ui/widgets/loading.dart';
 
@@ -13,7 +14,7 @@ class AccountNotDeployed extends StatelessWidget {
   final PublicAccount publicAccount;
   final double balance;
   final double fiatPrice;
-  final bool isDeploying;
+  final DeployStatus deployStatus;
   final String? error;
 
   const AccountNotDeployed({
@@ -23,7 +24,7 @@ class AccountNotDeployed extends StatelessWidget {
     required this.publicAccount,
     required this.balance,
     required this.onDeploy,
-    required this.isDeploying,
+    required this.deployStatus,
     required this.fiatPrice,
     required this.error,
   });
@@ -105,7 +106,7 @@ class AccountNotDeployed extends StatelessWidget {
         ),
       );
     } else {
-      if (isDeploying) {
+      if (deployStatus == DeployStatus.deploying) {
         return Padding(
           padding: const EdgeInsets.symmetric(horizontal: 10),
           child: Center(
@@ -129,6 +130,31 @@ class AccountNotDeployed extends StatelessWidget {
                 ),
                 const SizedBox(height: 25),
                 const LoadingWidget(),
+              ],
+            ),
+          ),
+        );
+      } else if (deployStatus == DeployStatus.deployed) {
+        return Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 10),
+          child: Center(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                const Icon(
+                  Icons.wallet_rounded,
+                  size: 100,
+                ),
+                const SizedBox(height: 20),
+                Text(
+                  "Your account is deployed!",
+                  style: GoogleFonts.poppins(
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                  ),
+                  textAlign: TextAlign.center,
+                ),
               ],
             ),
           ),

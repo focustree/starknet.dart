@@ -12,8 +12,9 @@ import 'add_another_wallet_viewmodel.dart';
 class StarknetAddAnotherWallet {
   static Future<SelectedAccount?> showAddAnotherWalletModal(
     BuildContext context,
-    PasswordPrompt passwordPrompt,
-  ) async {
+    PasswordPrompt passwordPrompt, {
+    required int nextWalletIndex,
+  }) async {
     // AddAnotherWalletPage might need to show an other bottom modal sheet at
     // some point. In that case, we want to close the first one before showing
     // it.
@@ -26,6 +27,7 @@ class StarknetAddAnotherWallet {
       builder: (context) {
         return AddAnotherWalletPage(
           passwordPrompt: passwordPrompt,
+          nextWalletIndex: nextWalletIndex,
         );
       },
     );
@@ -38,6 +40,7 @@ abstract class AddAnotherWalletView {
 
   void openWalletInitializationModal({
     String? initialRoute,
+    required int nextWalletIndex,
   });
 
   void closeModal(Future<SelectedAccount?> Function() selectedAccountCallback);
@@ -45,10 +48,12 @@ abstract class AddAnotherWalletView {
 
 class AddAnotherWalletPage extends StatefulWidget {
   final PasswordPrompt passwordPrompt;
+  final int nextWalletIndex;
 
   const AddAnotherWalletPage({
     super.key,
     required this.passwordPrompt,
+    required this.nextWalletIndex,
   });
 
   @override
@@ -70,7 +75,9 @@ class _AddAnotherWalletPageState extends State<AddAnotherWalletPage>
   void initState() {
     super.initState();
     presenter = AddAnotherWalletPresenter(
-      AddAnotherWalletViewModel(),
+      AddAnotherWalletViewModel(
+        nextWalletIndex: widget.nextWalletIndex,
+      ),
       this,
     ).init();
     model = presenter.viewModel;
@@ -125,12 +132,16 @@ class _AddAnotherWalletPageState extends State<AddAnotherWalletPage>
   @override
   void openWalletInitializationModal({
     String? initialRoute,
+    required int nextWalletIndex,
   }) {
-    closeModal(() async => await StarknetWallet.showInitializationModal(
-          context,
-          passwordPrompt: widget.passwordPrompt,
-          initialRoute: initialRoute,
-        ));
+    closeModal(
+      () async => await StarknetWallet.showInitializationModal(
+        context,
+        passwordPrompt: widget.passwordPrompt,
+        initialRoute: initialRoute,
+        nextWalletIndex: nextWalletIndex,
+      ),
+    );
   }
 
   @override

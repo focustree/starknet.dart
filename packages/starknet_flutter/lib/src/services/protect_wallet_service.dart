@@ -11,6 +11,7 @@ abstract class ProtectWalletService {
     required BiometricStore biometricStore,
     required StarknetAccountType accountType,
     required Account account,
+    required int nextWalletIndex,
     required List<String> seedPhrase,
     required Uint8List privateKey,
     required Function(Wallet wallet) onWalletProtected,
@@ -18,8 +19,8 @@ abstract class ProtectWalletService {
     // Create wallet and account
     final wallet = Wallet(
       // TODO Set name and order according to previous wallets already saved
-      name: "Wallet 1",
-      order: 0,
+      name: "Wallet ${nextWalletIndex + 1}",
+      order: nextWalletIndex,
       accountType: accountType,
     );
     final publicAccount = PublicAccount.from(
@@ -66,6 +67,7 @@ abstract class ProtectWalletService {
     BuildContext context, {
     required PasswordStore passwordStore,
     required StarknetAccountType accountType,
+    required int nextWalletIndex,
     required Account account,
     required List<String> seedPhrase,
     required Uint8List privateKey,
@@ -83,8 +85,8 @@ abstract class ProtectWalletService {
       } else {
         // Create wallet and account
         final wallet = Wallet(
-          name: "Wallet 1",
-          order: 0,
+          name: "Wallet ${nextWalletIndex + 1}",
+          order: nextWalletIndex,
           accountType: accountType,
         );
         final publicAccount = PublicAccount.from(

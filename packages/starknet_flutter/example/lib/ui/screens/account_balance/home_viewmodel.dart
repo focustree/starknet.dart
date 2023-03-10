@@ -1,15 +1,34 @@
 import 'package:starknet_flutter/starknet_flutter.dart';
 
+enum DeployStatus {
+  /// Unknown status, must call isValid first
+  unknown,
+
+  /// Account not valid, no action done yet
+  idle,
+
+  /// Deploying in progress
+  deploying,
+
+  /// Deploying failed
+  failed,
+
+  /// Deploying succeeded but isValid might return false. Call isValid every X sec to check again
+  deployed,
+
+  /// Account is deployed and isValid returns true
+  valid,
+}
+
 class HomeViewModel {
   Wallet? selectedWallet;
   PublicAccount? selectedAccount;
 
-  bool? isDeploying;
+  DeployStatus deployStatus = DeployStatus.unknown;
 
   String? deployError;
 
   bool get isLoadingBalance => ethBalance == null;
-  bool? isValid;
 
   double? ethBalance;
   double? ethExchangeRate;
