@@ -29,6 +29,7 @@ class _RecipientScreenState extends State<RecipientScreen> {
   String? _clipboardData;
   final _formKey = GlobalKey<FormState>();
   bool _isFormValid = false;
+  bool _hasScannedQRCode = false;
   RegExp kHexaRegex = RegExp(r"0[xX][0-9a-fA-F]+");
 
   @override
@@ -129,6 +130,10 @@ class _RecipientScreenState extends State<RecipientScreen> {
   }
 
   void _onDetect(BuildContext dialogContext, BarcodeCapture capture) {
+    if (_hasScannedQRCode) {
+      return;
+    }
+
     final List<Barcode> barcodes = capture.barcodes;
 
     String? validAddress;
@@ -142,6 +147,7 @@ class _RecipientScreenState extends State<RecipientScreen> {
       return;
     }
 
+    _hasScannedQRCode = true;
     _recipientAddressController.text = validAddress;
     _checkIfFormValid();
     widget.presenter.viewInterface.triggerHaptic();
@@ -150,6 +156,8 @@ class _RecipientScreenState extends State<RecipientScreen> {
   }
 
   void _showQRCodeScanner() {
+    _hasScannedQRCode = false;
+    
     showGeneralDialog(
       context: context,
       transitionBuilder: (ctx, a1, a2, child) {
