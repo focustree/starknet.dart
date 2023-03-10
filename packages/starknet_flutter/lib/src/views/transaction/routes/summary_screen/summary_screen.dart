@@ -22,7 +22,12 @@ class SummaryScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 5),
+      padding: const EdgeInsets.only(
+        left: 25,
+        right: 25,
+        top: 5,
+        bottom: 15,
+      ),
       child: Column(
         children: [
           Expanded(
