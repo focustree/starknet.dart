@@ -128,16 +128,25 @@ class _RecipientScreenState extends State<RecipientScreen> {
     );
   }
 
-  void _onDetect(BuildContext context, BarcodeCapture capture) {
+  void _onDetect(BuildContext dialogContext, BarcodeCapture capture) {
     final List<Barcode> barcodes = capture.barcodes;
+
+    String? validAddress;
     for (final barcode in barcodes) {
       if (barcode.rawValue != null && kHexaRegex.hasMatch(barcode.rawValue!)) {
-        _recipientAddressController.text = barcode.rawValue!;
-        _checkIfFormValid();
-        widget.presenter.viewInterface.triggerHaptic();
-        Navigator.pop(context);
+        validAddress = barcode.rawValue;
       }
     }
+
+    if (validAddress == null) {
+      return;
+    }
+
+    _recipientAddressController.text = validAddress;
+    _checkIfFormValid();
+    widget.presenter.viewInterface.triggerHaptic();
+    Navigator.pop(dialogContext);
+    return;
   }
 
   void _showQRCodeScanner() {
