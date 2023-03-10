@@ -1,14 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:starknet/starknet.dart';
-import 'package:starknet_flutter/src/stores/starknet_store.dart';
-import 'package:starknet_flutter/src/views/passcode/passcode.dart';
 import 'package:starknet_flutter/src/views/wallet/wallet_initialization_viewmodel.dart';
-
-import '../../models/public_account.dart';
-import '../../models/wallet.dart';
-import '../../services/deploy_account_service.dart';
-import 'wallet_list.dart';
-import 'wallet_list_viewmodel.dart';
+import 'package:starknet_flutter/starknet_flutter.dart';
 
 class WalletListPresenter {
   final WalletListViewModel viewModel;
@@ -56,7 +49,7 @@ class WalletListPresenter {
               ? v010PathfinderGoerliTestnetUri
               : Uri.parse(lastAccount.nodeUri),
         ),
-        chainId: StarknetChainId.testNet,
+        chainId: StarknetFlutter.chainId,
         accountDerivation: accountDerivation,
         index: maxOrder + 1,
       );

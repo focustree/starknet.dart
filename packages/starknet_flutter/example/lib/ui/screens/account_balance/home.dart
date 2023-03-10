@@ -29,17 +29,10 @@ abstract class HomeView {
   Future<bool?> showTransactionModal(TransactionArguments args);
 }
 
-class HomeArguments {
-  HomeArguments();
-}
-
 class HomePage extends StatefulWidget {
-  final HomeArguments? args;
-
   const HomePage({
-    Key? key,
-    this.args,
-  }) : super(key: key);
+    super.key,
+  });
 
   @override
   State<HomePage> createState() => _HomePageState();
@@ -168,21 +161,23 @@ class _HomePageState extends State<HomePage> implements HomeView {
       );
     }
 
-    if (model.isValid == null || model.isLoadingBalance == true) {
+    if (model.deployStatus == DeployStatus.unknown ||
+        model.isLoadingBalance == true) {
       return const Center(
         key: Key('loading'),
         child: LoadingWidget(),
       );
     }
 
-    if (model.isValid == false) {
+    if (model.deployStatus != DeployStatus.valid) {
       return AccountNotDeployed(
+        key: const Key('account_not_deployed'),
         onRefresh: presenter.refreshAccount,
         publicAccount: model.selectedAccount!,
         balance: model.ethBalance!,
         fiatPrice: model.ethFiatPrice.truncateBalance(precision: 2),
         onDeploy: () => presenter.onDeploy(unlockWithPassword),
-        isDeploying: model.isDeploying == true,
+        deployStatus: model.deployStatus,
         error: model.deployError,
         onAddCrypto: () {
           StarknessDeposit.showDepositModal(
@@ -224,7 +219,9 @@ class _HomePageState extends State<HomePage> implements HomeView {
   }
 
   @override
-  void refresh() => setState(() {});
+  void refresh() {
+    if (mounted) setState(() {});
+  }
 
   @override
   Future<String?> unlockWithPassword() {
@@ -256,6 +253,9 @@ class _HomePageState extends State<HomePage> implements HomeView {
               for (var w in wallets) {
                 await StarknetStore.deleteWallet(w);
               }
+              model.selectedWallet = null;
+              model.selectedAccount = null;
+              refresh();
             },
             icon: const Icon(Icons.delete_outline),
             label: const Text("Remove wallets"),

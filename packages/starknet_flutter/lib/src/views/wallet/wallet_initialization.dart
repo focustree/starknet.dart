@@ -17,6 +17,7 @@ class StarknetWallet {
     BuildContext context, {
     required PasswordPrompt passwordPrompt,
     String? initialRoute,
+    required int nextWalletIndex,
   }) {
     // TODO: send configuration
     return showBarModalBottomSheet<SelectedAccount?>(
@@ -25,6 +26,7 @@ class StarknetWallet {
         return WalletInitializationPage(
           initialRoute: initialRoute,
           passwordPrompt: passwordPrompt,
+          nextWalletIndex: nextWalletIndex,
         );
       },
     );
@@ -41,24 +43,20 @@ abstract class WalletInitializationView {
   Future navigateToSubRoute(String routeName);
 
   void onWrongPassword(String input);
-}
 
-class WalletInitializationArguments {
-  String? initialRoute;
-
-  WalletInitializationArguments({
-    this.initialRoute,
-  });
+  void onRestoreError();
 }
 
 class WalletInitializationPage extends StatefulWidget {
   final String? initialRoute;
   final PasswordPrompt passwordPrompt;
+  final int nextWalletIndex;
 
   const WalletInitializationPage({
     super.key,
     this.initialRoute,
     required this.passwordPrompt,
+    required this.nextWalletIndex,
   });
 
   @override
@@ -84,7 +82,9 @@ class _WalletInitializationPageState extends State<WalletInitializationPage>
   void initState() {
     super.initState();
     presenter = WalletInitializationPresenter(
-      WalletInitializationViewModel(),
+      WalletInitializationViewModel(
+        nextWalletIndex: widget.nextWalletIndex,
+      ),
       this,
       initialRoute: widget.initialRoute,
       passwordPrompt: widget.passwordPrompt,
@@ -174,5 +174,22 @@ class _WalletInitializationPageState extends State<WalletInitializationPage>
     context.replaceSnackbar(
       content: const Text('Wrong password'),
     );
+  }
+
+  @override
+  void onRestoreError() {
+    if (context.mounted) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          showCloseIcon: true,
+          closeIconColor: Colors.white,
+          backgroundColor: Colors.red,
+          content: Text(
+            "Could not find your account. Check your seed phrase.",
+            style: GoogleFonts.poppins(color: Colors.white),
+          ),
+        ),
+      );
+    }
   }
 }

@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:starknet/starknet.dart';
 import 'package:starknet_flutter/starknet_flutter.dart';
 import 'package:starknet_flutter_example/ui/screens/account_balance/home.dart';
 
 Future<void> main() async {
-  await StarknetFlutter.init();
+  const nodeUri = String.fromEnvironment('NODE_URI');
+  await StarknetFlutter.init(
+    nodeUri: (nodeUri.isNotEmpty) ? Uri.parse(nodeUri) : infuraGoerliTestnetUri,
+  );
 
   runApp(const StarknetDemoApp());
 }

@@ -1,4 +1,5 @@
 import 'dart:core';
+import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -9,6 +10,7 @@ import 'package:starknet_flutter/src/views/wallet_list/widgets/appbar.dart';
 import 'package:starknet_flutter/src/views/wallet_list/widgets/wallet_cell.dart';
 import 'package:starknet_flutter/src/views/widgets/bouncing_button.dart';
 
+import '../../models/wallet.dart';
 import 'wallet_list_presenter.dart';
 
 class StarknetWalletList {
@@ -36,7 +38,7 @@ abstract class WalletListView {
 
   void closeModal(Future<SelectedAccount?> Function() selectedAccountCallback);
 
-  Future openAddAnotherWalletModal();
+  Future openAddAnotherWalletModal(List<Wallet> wallets);
 }
 
 class WalletListPage extends StatefulWidget {
@@ -87,84 +89,83 @@ class _WalletListPageState extends State<WalletListPage>
                 ),
             const SizedBox(height: 8),
             Flexible(
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  Flexible(
-                    child: ValueListenableBuilder(
-                        valueListenable: presenter.watchWallets,
-                        builder: (context, wallets, _) {
-                          return AnimatedSwitcher(
-                            duration: const Duration(milliseconds: 600),
-                            child: wallets.isNotEmpty
-                                ? ListView.separated(
-                                    shrinkWrap: true,
-                                    physics: const BouncingScrollPhysics(),
-                                    itemBuilder: (context, index) {
-                                      final wallet = wallets[index];
-                                      return WalletCell(
-                                        wallet: wallet,
-                                        onAddAccount: () async {
-                                          print("Add account 1");
-                                          final newAccount =
-                                              await presenter.addAccount(
-                                            wallet,
-                                            passwordPrompt:
-                                                widget.passwordPrompt,
-                                          );
-                                          print(
-                                              "Add account 2, success: ${newAccount == null}");
+              child: ValueListenableBuilder(
+                valueListenable: presenter.watchWallets,
+                builder: (context, wallets, _) {
+                  return Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Flexible(
+                        child: AnimatedSwitcher(
+                          duration: const Duration(milliseconds: 600),
+                          child: wallets.isNotEmpty
+                              ? ListView.separated(
+                                  shrinkWrap: true,
+                                  physics: const BouncingScrollPhysics(),
+                                  itemBuilder: (context, index) {
+                                    final wallet = wallets[index];
+                                    return WalletCell(
+                                      wallet: wallet,
+                                      onAddAccount: () async {
+                                        print("Add account 1");
+                                        final newAccount =
+                                            await presenter.addAccount(
+                                          wallet,
+                                          passwordPrompt: widget.passwordPrompt,
+                                        );
+                                        print(
+                                            "Add account 2, success: ${newAccount == null}");
 
-                                          if (newAccount != null &&
-                                              context.mounted) {
-                                            Navigator.pop(
-                                              context,
-                                              () =>
-                                                  Future.value(SelectedAccount(
-                                                wallet: wallet,
-                                                account: newAccount,
-                                              )),
-                                            );
-                                          }
-                                        },
-                                      );
-                                    },
-                                    separatorBuilder: (context, index) {
-                                      return const SizedBox(height: 10);
-                                    },
-                                    itemCount: wallets.length,
-                                  )
-                                : Padding(
-                                    padding: const EdgeInsets.symmetric(
-                                        vertical: 30),
-                                    child: Text(
-                                      'No wallets added yet',
-                                      style: GoogleFonts.poppins(
-                                        color: Colors.grey,
-                                        fontWeight: FontWeight.bold,
-                                      ),
+                                        if (newAccount != null &&
+                                            context.mounted) {
+                                          Navigator.pop(
+                                            context,
+                                            () => Future.value(SelectedAccount(
+                                              wallet: wallet,
+                                              account: newAccount,
+                                            )),
+                                          );
+                                        }
+                                      },
+                                    );
+                                  },
+                                  separatorBuilder: (context, index) {
+                                    return const SizedBox(height: 10);
+                                  },
+                                  itemCount: wallets.length,
+                                )
+                              : Padding(
+                                  padding:
+                                      const EdgeInsets.symmetric(vertical: 30),
+                                  child: Text(
+                                    'No wallets added yet',
+                                    style: GoogleFonts.poppins(
+                                      color: Colors.grey,
+                                      fontWeight: FontWeight.bold,
                                     ),
                                   ),
-                          );
-                        }),
-                  ),
-                  const SizedBox(height: 5),
-                  BouncingButton.text(
-                    onTap: () {
-                      closeModal(() => openAddAnotherWalletModal());
-                    },
-                    text: 'Add another wallet',
-                    textStyle: GoogleFonts.poppins(
-                      color: Theme.of(context).primaryColor,
-                      fontWeight: FontWeight.bold,
-                    ),
-                    icon: Icon(
-                      Icons.account_balance_wallet_outlined,
-                      size: 22,
-                      color: Theme.of(context).primaryColor,
-                    ),
-                  ),
-                ],
+                                ),
+                        ),
+                      ),
+                      const SizedBox(height: 5),
+                      BouncingButton.text(
+                        onTap: () {
+                          closeModal(() => openAddAnotherWalletModal(wallets));
+                        },
+                        text: 'Add another wallet',
+                        textStyle: GoogleFonts.poppins(
+                          color: Theme.of(context).primaryColor,
+                          fontWeight: FontWeight.bold,
+                        ),
+                        icon: Icon(
+                          Icons.account_balance_wallet_outlined,
+                          size: 22,
+                          color: Theme.of(context).primaryColor,
+                        ),
+                      ),
+                    ],
+                  );
+                },
               ),
             ),
           ],
@@ -182,8 +183,16 @@ class _WalletListPageState extends State<WalletListPage>
   }
 
   @override
-  Future<SelectedAccount?> openAddAnotherWalletModal() {
+  Future<SelectedAccount?> openAddAnotherWalletModal(
+    List<Wallet> wallets,
+  ) {
+    final walletIndexes = wallets.map((w) => w.order).toList();
+    final nextWalletIndex =
+        walletIndexes.isEmpty ? 0 : walletIndexes.reduce(max) + 1;
     return StarknetAddAnotherWallet.showAddAnotherWalletModal(
-        context, widget.passwordPrompt);
+      context,
+      widget.passwordPrompt,
+      nextWalletIndex: nextWalletIndex,
+    );
   }
 }

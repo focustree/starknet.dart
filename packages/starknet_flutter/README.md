@@ -249,3 +249,65 @@ void main() async {
   print(exchangeRates);
 }
 ```
+
+
+## Running on Devnet
+
+Place yourself at the root of the monorepo project.
+If you are in `starknet_flutter`, this would be `../..`.
+Call this to start the devnet:
+```
+poetry install
+poetry run devnet start
+```
+
+Declare OpenZeppelin contract
+```
+```
+
+You are ready to create OpenZeppelin contracts, however you may need extra configuration if you want to run the example app.
+
+### Run the Flutter example on the devnet
+
+You need to define a NODE_URI dart environment variable like below:
+```
+--dart-define=NODE_URI=http://YOUR_HOST_IP:5050/rpc
+```
+
+For example with 192.168.1.15 as your host IP:
+```
+flutter run --dart-define=NODE_URI=http://192.168.1.15:5050/rpc
+```
+
+On Android Studio, you can add `--dart-define=NODE_URI=http://YOUR_HOST_IP:5050/rpc` to your run configuration in the "Additional run args" field.
+On VS Code, you can also edit your `launch.json` to add `--dart-define=NODE_URI=http://YOUR_HOST_IP:5050/rpc` to your run configuration:
+```json
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Example (Testnet)",
+      "request": "launch",
+      "type": "dart",
+      "program": "example/lib/main.dart",
+    },
+    {
+      "name": "Example (Devnet)",
+      "request": "launch",
+      "type": "dart",
+      "program": "example/lib/main.dart",
+      "args": [
+        "--dart-define=NODE_URI=http://192.168.1.15:5050/rpc"
+      ]
+    }
+  ]
+}
+  
+```
+
+### Send ETH to an address
+
+If your address is `0x7e678b687c94c9de17caeb4c39b86b2a4cb84312c4f93abbf42fb169377b845` for example, call from the monorepo root:
+```
+dart run ./packages/starknet/tool/send_eth.dart 0x7e678b687c94c9de17caeb4c39b86b2a4cb84312c4f93abbf42fb169377b845
+```

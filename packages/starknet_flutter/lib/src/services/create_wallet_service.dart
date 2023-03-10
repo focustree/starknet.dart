@@ -1,5 +1,6 @@
 import 'package:starknet/starknet.dart';
 import 'package:starknet_flutter/src/services/protect_wallet_service.dart';
+import 'package:starknet_flutter/starknet_flutter.dart';
 
 class CreateWalletService extends ProtectWalletService {
   /// Creates a new account for this [seedPhrase] with given [index].
@@ -11,8 +12,10 @@ class CreateWalletService extends ProtectWalletService {
   }) {
     return Account.fromMnemonic(
       mnemonic: seedPhrase,
-      provider: JsonRpcProvider(nodeUri: infuraGoerliTestnetUri),
-      chainId: StarknetChainId.testNet,
+      provider: JsonRpcProvider(
+        nodeUri: StarknetFlutter.nodeUri,
+      ),
+      chainId: StarknetFlutter.chainId,
       accountDerivation: OpenzeppelinAccountDerivation(
         proxyClassHash: ozProxyClassHash,
         implementationClassHash: ozAccountUpgradableClassHash,
