@@ -34,6 +34,12 @@ If you want to contribute to this project or have any suggestion, please check o
 poetry install
 ```
 
+If you have an error about gmp install it like this : 
+
+```sh
+brew install gmp
+```
+
 2. Run devnet in one terminal
 
 ```sh
