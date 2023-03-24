@@ -1,5 +1,5 @@
 name: starknet_flutter
-description: A new Flutter plugin project.
+description: Zero-config wallet components for starknet
 version: 0.0.1
 homepage: https://github.com/gabsn/starknet.dart/tree/main/packages/starknet_flutter
 
@@ -30,8 +30,7 @@ dependencies:
   slide_to_act: ^2.0.1
   plugin_platform_interface: ^2.0.2
   pointycastle: ^3.6.2
-  starknet:
-    path: ../starknet
+  starknet: 0.0.3
   ulid: ^2.0.0
   mobile_scanner: ^3.0.0
   qr_flutter: ^4.0.0
