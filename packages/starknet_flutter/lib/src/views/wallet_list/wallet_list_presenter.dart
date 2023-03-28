@@ -27,9 +27,9 @@ class WalletListPresenter {
     required Wallet wallet,
     required PasswordPrompt passwordPrompt,
   }) async {
-    // TODO Add ArgentX support
     if (wallet.accountType == StarknetAccountType.openZeppelin ||
-        wallet.accountType == StarknetAccountType.braavos) {
+        wallet.accountType == StarknetAccountType.braavos ||
+        wallet.accountType == StarknetAccountType.argentX) {
       // Recover the account but don't deploy it if it's not deployed
       final maxOrder = wallet.accounts.fold(
         0,
@@ -48,6 +48,17 @@ class WalletListPresenter {
       if (seedPhrase == null) return null;
 
       final index = lastAccount == null ? 0 : maxOrder + 1;
+      AccountDerivation? accountDerivation;
+      switch (wallet.accountType) {
+        case StarknetAccountType.argentX:
+          accountDerivation = ArgentXAccountDerivation();
+          break;
+        case StarknetAccountType.openZeppelin:
+          accountDerivation = OpenzeppelinAccountDerivation();
+          break;
+        default:
+          break;
+      }
       final account = Account.fromMnemonic(
         mnemonic: seedPhrase,
         provider: JsonRpcProvider(
@@ -56,13 +67,7 @@ class WalletListPresenter {
               : Uri.parse(lastAccount.nodeUri),
         ),
         chainId: StarknetFlutter.chainId,
-        accountDerivation:
-            wallet.accountType == StarknetAccountType.openZeppelin
-                ? OpenzeppelinAccountDerivation(
-                    proxyClassHash: ozProxyClassHash,
-                    implementationClassHash: ozAccountUpgradableClassHash,
-                  )
-                : null,
+        accountDerivation: accountDerivation,
         index: index,
       );
 

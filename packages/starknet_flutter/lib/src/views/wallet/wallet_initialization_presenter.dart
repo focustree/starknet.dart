@@ -161,6 +161,19 @@ class WalletInitializationPresenter {
       nodeUri: StarknetFlutter.nodeUri,
     );
 
+    AccountDerivation? accountDerivation;
+    switch (accountType) {
+      case StarknetAccountType.argentX:
+        accountDerivation = ArgentXAccountDerivation();
+        break;
+      case StarknetAccountType.openZeppelin:
+        accountDerivation = OpenzeppelinAccountDerivation();
+        break;
+      default:
+        // null will be replaced by BraavosAccountDerivation in constructor
+        accountDerivation = null;
+        break;
+    }
     // TODO Iterate over each account until account.isValid return false
     // Add a loader in the meantime
     final account = Account.fromMnemonic(
@@ -168,9 +181,7 @@ class WalletInitializationPresenter {
       provider: provider,
       chainId: StarknetFlutter.chainId,
       index: 0,
-      accountDerivation: accountType == StarknetAccountType.openZeppelin
-          ? OpenzeppelinAccountDerivation()
-          : null, // null will be replaced by BraavosAccountDerivation in constructor
+      accountDerivation: accountDerivation,
     );
     final success = await account.isValid;
     if (success) {
