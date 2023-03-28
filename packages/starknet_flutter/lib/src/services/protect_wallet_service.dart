@@ -13,6 +13,56 @@ class WrongPasswordException implements Exception {
 class PasswordCancelledException implements Exception {}
 
 abstract class ProtectWalletService {
+  static Future<PublicAccount> protectWithBiometrics({
+    required BiometricStore biometricStore,
+    required StarknetAccountType accountType,
+    required Account account,
+    required Wallet wallet,
+    List<String>? seedPhrase,
+    int accountIndex = 0,
+  }) async {
+    final publicAccount = PublicAccount.from(
+      account: account,
+      walletId: wallet.walletId,
+      order: accountIndex,
+    );
+
+    final options = BiometricOptions(
+      androidOptions: AndroidOptions(
+        enableStrongBox: true,
+        authenticationValidityDurationSeconds: 2,
+      ),
+    );
+
+    // Store seed phrase and private key securely
+    if (seedPhrase != null) {
+      await biometricStore.storeSeedPhrase(
+        id: wallet.walletId,
+        seedPhrase: seedPhrase,
+        biometricOptions: options,
+      );
+    }
+    await biometricStore.storePrivateKey(
+      id: publicAccount.privateKeyId,
+      privateKey: account.signer.privateKey.toBigInt().toUint8List(),
+      biometricOptions: options,
+    );
+
+    // TODO handle case where biometric auth is not validated
+    // - We might want to remove from the publicStore what we have retrieved until now
+    // - Or don't save it in the public store until the biometric auth is validated
+
+    // Now that biometric auth has succeeded...
+    final publicStore = StarknetStore.public();
+    // Store account in the public store
+    await publicStore.storeAccount(publicAccount);
+    // Now, add this account in the previously created wallet
+    wallet.accounts.add(publicAccount);
+    // Finally, store the wallet (which now contains the account)
+    await publicStore.storeWallet(wallet);
+    return publicAccount;
+  }
+
   Future<PublicAccount> onSecureWithBiometric({
     required BiometricStore biometricStore,
     required StarknetAccountType accountType,
