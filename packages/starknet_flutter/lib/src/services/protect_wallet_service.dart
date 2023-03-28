@@ -165,7 +165,7 @@ abstract class ProtectWalletService {
   }
 
   static Future<PublicAccount> protectWithPassword(
-    BuildContext context, {
+    {
     required PasswordStore passwordStore,
     required StarknetAccountType accountType,
     required Wallet wallet,
