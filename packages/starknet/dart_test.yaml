@@ -2,3 +2,6 @@ tags:
   unit:
   integration-devnet-040:
   integration-testnet:
+  rpc-node-bug:
+  to-be-fixed:
+

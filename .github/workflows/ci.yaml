@@ -98,7 +98,7 @@ jobs:
         name: Install dependencies
         run: dart pub get
       - name: Run tests on testnet
-        run: dart test -t integration-testnet
+        run: dart test -t integration-testnet --exclude-tags='rpc-node-bug'
 
   test-integration-devnet:
     needs: analyze
