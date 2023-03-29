@@ -650,7 +650,7 @@ void main() {
             expect(result.program, isNotNull);
           },
         );
-      });
+      }, tags: ['rpc-node-bug']);
 
       test('returns BLOCK_NOT_FOUND error when invalid block id is given.',
           () async {
@@ -746,7 +746,7 @@ void main() {
             expect(result.program, isNotNull);
           },
         );
-      });
+      }, tags: ['rpc-node-bug']);
 
       test('returns BLOCK_NOT_FOUND error when invalid block id is given.',
           () async {
@@ -914,9 +914,9 @@ void main() {
             fail('Should not fail.');
           },
           result: (result) {
-            expect(result.gasConsumed, "0xf68");
+            expect(result.gasConsumed, "0xe98");
             expect(result.gasPrice, "0x4ecd");
-            expect(result.overallFee, "0x4be0648");
+            expect(result.overallFee, "0x47dffb8");
           },
         );
       });

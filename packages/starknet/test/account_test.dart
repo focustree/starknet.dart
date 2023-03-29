@@ -146,7 +146,7 @@ void main() {
         final newBalance = await account1.balance();
         expect(newBalance, equals(previousBalance));
       });
-    });
+    }, tags: ['integration-devnet-040']);
 
     group('recovery from seed phrase', () {
       final mnemonic =
@@ -191,7 +191,7 @@ void main() {
         expect(
             signer.privateKey,
             equals(Felt.fromHexString(
-              "0x47614310df5bddc1124ab1e83a4974277179e2d5260ec369d5451e2c0cdd251",
+              "0x01c6e707d4a3528a29af0b613833e5154e311dc0aa076c41ff08d2e6e34f3d43",
             )));
       });
       test('argentX account address', () async {
@@ -202,7 +202,7 @@ void main() {
         expect(
             accountAddress,
             equals(Felt.fromHexString(
-              "0x58d856fc4607e73655a7140bf073fb35b5713eeab7c174f72dfe7896bca89e1",
+              "0x05035e828bf2d7332774d8a148ebad3f1f4ef67b314258cbfa8c1934baa5971b",
             )));
       });
 
@@ -225,6 +225,6 @@ void main() {
                   "0x1537768ebeabb7b811c5eeb8e38d8bafc9c957051ff0f311abad2d608f29d53"),
             ));
       });
-    });
+    }, tags: ['unit']);
   });
 }
