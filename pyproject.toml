@@ -16,7 +16,7 @@ starknet-devnet = "0.4.0"
 cairo-lang = "0.10.1"
 starknet-py = "^0.10.1-alpha.0"
 autopep8 = "^2.0.0"
-cairo-nile = "^0.11.0"
+cairo-nile = "^0.14.0"
 fire = "^0.4.0"
 
 [tool.poetry.dev-dependencies]
