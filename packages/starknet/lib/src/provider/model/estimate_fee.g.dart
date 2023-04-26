@@ -53,7 +53,7 @@ Map<String, dynamic> _$$BroadcastedInvokeTxnV0ToJson(
     _$BroadcastedInvokeTxnV0 instance) {
   final val = <String, dynamic>{
     'type': instance.type,
-    'max_fee': instance.maxFee.toJson(),
+    'max_fee': maxFeeToJson(instance.maxFee),
     'version': instance.version,
     'signature': instance.signature.map((e) => e.toJson()).toList(),
   };
@@ -93,7 +93,7 @@ Map<String, dynamic> _$$BroadcastedInvokeTxnV1ToJson(
         _$BroadcastedInvokeTxnV1 instance) =>
     <String, dynamic>{
       'type': instance.type,
-      'max_fee': instance.maxFee.toJson(),
+      'max_fee': maxFeeToJson(instance.maxFee),
       'version': instance.version,
       'signature': instance.signature.map((e) => e.toJson()).toList(),
       'nonce': instance.nonce.toJson(),
@@ -122,7 +122,7 @@ Map<String, dynamic> _$$BroadcastedDeclareTxnToJson(
         _$BroadcastedDeclareTxn instance) =>
     <String, dynamic>{
       'type': instance.type,
-      'max_fee': instance.maxFee.toJson(),
+      'max_fee': maxFeeToJson(instance.maxFee),
       'version': instance.version,
       'signature': instance.signature.map((e) => e.toJson()).toList(),
       'nonce': instance.nonce.toJson(),
@@ -185,7 +185,7 @@ Map<String, dynamic> _$$BroadcastedDeployAccountTxnToJson(
       'constructor_calldata':
           instance.constructorCalldata.map((e) => e.toJson()).toList(),
       'type': instance.type,
-      'max_fee': instance.maxFee.toJson(),
+      'max_fee': maxFeeToJson(instance.maxFee),
       'version': instance.version,
       'signature': instance.signature.map((e) => e.toJson()).toList(),
       'nonce': instance.nonce.toJson(),

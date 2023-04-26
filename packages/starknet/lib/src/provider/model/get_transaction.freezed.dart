@@ -448,7 +448,7 @@ mixin _$Txn {
   TResult when<TResult extends Object?>({
     required TResult Function(
             Felt? transactionHash,
-            Felt? maxFee,
+            @JsonKey(toJson: maxFeeToJson) Felt? maxFee,
             String? version,
             List<Felt>? signature,
             Felt? nonce,
@@ -459,7 +459,7 @@ mixin _$Txn {
         invokeTxnV0,
     required TResult Function(
             Felt? transactionHash,
-            Felt? maxFee,
+            @JsonKey(toJson: maxFeeToJson) Felt? maxFee,
             String? version,
             List<Felt>? signature,
             Felt? nonce,
@@ -469,7 +469,7 @@ mixin _$Txn {
         invokeTxnV1,
     required TResult Function(
             Felt? transactionHash,
-            Felt? maxFee,
+            @JsonKey(toJson: maxFeeToJson) Felt? maxFee,
             String? version,
             List<Felt>? signature,
             Felt? nonce,
@@ -487,7 +487,7 @@ mixin _$Txn {
         deployTxn,
     required TResult Function(
             Felt? transactionHash,
-            Felt? maxFee,
+            @JsonKey(toJson: maxFeeToJson) Felt? maxFee,
             String? version,
             List<Felt>? signature,
             Felt? nonce,
@@ -511,7 +511,7 @@ mixin _$Txn {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(
             Felt? transactionHash,
-            Felt? maxFee,
+            @JsonKey(toJson: maxFeeToJson) Felt? maxFee,
             String? version,
             List<Felt>? signature,
             Felt? nonce,
@@ -522,7 +522,7 @@ mixin _$Txn {
         invokeTxnV0,
     TResult? Function(
             Felt? transactionHash,
-            Felt? maxFee,
+            @JsonKey(toJson: maxFeeToJson) Felt? maxFee,
             String? version,
             List<Felt>? signature,
             Felt? nonce,
@@ -532,7 +532,7 @@ mixin _$Txn {
         invokeTxnV1,
     TResult? Function(
             Felt? transactionHash,
-            Felt? maxFee,
+            @JsonKey(toJson: maxFeeToJson) Felt? maxFee,
             String? version,
             List<Felt>? signature,
             Felt? nonce,
@@ -550,7 +550,7 @@ mixin _$Txn {
         deployTxn,
     TResult? Function(
             Felt? transactionHash,
-            Felt? maxFee,
+            @JsonKey(toJson: maxFeeToJson) Felt? maxFee,
             String? version,
             List<Felt>? signature,
             Felt? nonce,
@@ -574,7 +574,7 @@ mixin _$Txn {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(
             Felt? transactionHash,
-            Felt? maxFee,
+            @JsonKey(toJson: maxFeeToJson) Felt? maxFee,
             String? version,
             List<Felt>? signature,
             Felt? nonce,
@@ -585,7 +585,7 @@ mixin _$Txn {
         invokeTxnV0,
     TResult Function(
             Felt? transactionHash,
-            Felt? maxFee,
+            @JsonKey(toJson: maxFeeToJson) Felt? maxFee,
             String? version,
             List<Felt>? signature,
             Felt? nonce,
@@ -595,7 +595,7 @@ mixin _$Txn {
         invokeTxnV1,
     TResult Function(
             Felt? transactionHash,
-            Felt? maxFee,
+            @JsonKey(toJson: maxFeeToJson) Felt? maxFee,
             String? version,
             List<Felt>? signature,
             Felt? nonce,
@@ -613,7 +613,7 @@ mixin _$Txn {
         deployTxn,
     TResult Function(
             Felt? transactionHash,
-            Felt? maxFee,
+            @JsonKey(toJson: maxFeeToJson) Felt? maxFee,
             String? version,
             List<Felt>? signature,
             Felt? nonce,
@@ -720,7 +720,7 @@ abstract class _$$InvokeTxnV0CopyWith<$Res> implements $TxnCopyWith<$Res> {
   @useResult
   $Res call(
       {Felt? transactionHash,
-      Felt? maxFee,
+      @JsonKey(toJson: maxFeeToJson) Felt? maxFee,
       String? version,
       List<Felt>? signature,
       Felt? nonce,
@@ -797,7 +797,7 @@ class __$$InvokeTxnV0CopyWithImpl<$Res>
 class _$InvokeTxnV0 implements InvokeTxnV0 {
   const _$InvokeTxnV0(
       {required this.transactionHash,
-      required this.maxFee,
+      @JsonKey(toJson: maxFeeToJson) required this.maxFee,
       required this.version,
       required final List<Felt>? signature,
       required this.nonce,
@@ -818,6 +818,7 @@ class _$InvokeTxnV0 implements InvokeTxnV0 {
   final Felt? transactionHash;
 // start of BROADCASTED_TXN_COMMON_PROPERTIES
   @override
+  @JsonKey(toJson: maxFeeToJson)
   final Felt? maxFee;
   @override
   final String? version;
@@ -905,7 +906,7 @@ class _$InvokeTxnV0 implements InvokeTxnV0 {
   TResult when<TResult extends Object?>({
     required TResult Function(
             Felt? transactionHash,
-            Felt? maxFee,
+            @JsonKey(toJson: maxFeeToJson) Felt? maxFee,
             String? version,
             List<Felt>? signature,
             Felt? nonce,
@@ -916,7 +917,7 @@ class _$InvokeTxnV0 implements InvokeTxnV0 {
         invokeTxnV0,
     required TResult Function(
             Felt? transactionHash,
-            Felt? maxFee,
+            @JsonKey(toJson: maxFeeToJson) Felt? maxFee,
             String? version,
             List<Felt>? signature,
             Felt? nonce,
@@ -926,7 +927,7 @@ class _$InvokeTxnV0 implements InvokeTxnV0 {
         invokeTxnV1,
     required TResult Function(
             Felt? transactionHash,
-            Felt? maxFee,
+            @JsonKey(toJson: maxFeeToJson) Felt? maxFee,
             String? version,
             List<Felt>? signature,
             Felt? nonce,
@@ -944,7 +945,7 @@ class _$InvokeTxnV0 implements InvokeTxnV0 {
         deployTxn,
     required TResult Function(
             Felt? transactionHash,
-            Felt? maxFee,
+            @JsonKey(toJson: maxFeeToJson) Felt? maxFee,
             String? version,
             List<Felt>? signature,
             Felt? nonce,
@@ -972,7 +973,7 @@ class _$InvokeTxnV0 implements InvokeTxnV0 {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(
             Felt? transactionHash,
-            Felt? maxFee,
+            @JsonKey(toJson: maxFeeToJson) Felt? maxFee,
             String? version,
             List<Felt>? signature,
             Felt? nonce,
@@ -983,7 +984,7 @@ class _$InvokeTxnV0 implements InvokeTxnV0 {
         invokeTxnV0,
     TResult? Function(
             Felt? transactionHash,
-            Felt? maxFee,
+            @JsonKey(toJson: maxFeeToJson) Felt? maxFee,
             String? version,
             List<Felt>? signature,
             Felt? nonce,
@@ -993,7 +994,7 @@ class _$InvokeTxnV0 implements InvokeTxnV0 {
         invokeTxnV1,
     TResult? Function(
             Felt? transactionHash,
-            Felt? maxFee,
+            @JsonKey(toJson: maxFeeToJson) Felt? maxFee,
             String? version,
             List<Felt>? signature,
             Felt? nonce,
@@ -1011,7 +1012,7 @@ class _$InvokeTxnV0 implements InvokeTxnV0 {
         deployTxn,
     TResult? Function(
             Felt? transactionHash,
-            Felt? maxFee,
+            @JsonKey(toJson: maxFeeToJson) Felt? maxFee,
             String? version,
             List<Felt>? signature,
             Felt? nonce,
@@ -1039,7 +1040,7 @@ class _$InvokeTxnV0 implements InvokeTxnV0 {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(
             Felt? transactionHash,
-            Felt? maxFee,
+            @JsonKey(toJson: maxFeeToJson) Felt? maxFee,
             String? version,
             List<Felt>? signature,
             Felt? nonce,
@@ -1050,7 +1051,7 @@ class _$InvokeTxnV0 implements InvokeTxnV0 {
         invokeTxnV0,
     TResult Function(
             Felt? transactionHash,
-            Felt? maxFee,
+            @JsonKey(toJson: maxFeeToJson) Felt? maxFee,
             String? version,
             List<Felt>? signature,
             Felt? nonce,
@@ -1060,7 +1061,7 @@ class _$InvokeTxnV0 implements InvokeTxnV0 {
         invokeTxnV1,
     TResult Function(
             Felt? transactionHash,
-            Felt? maxFee,
+            @JsonKey(toJson: maxFeeToJson) Felt? maxFee,
             String? version,
             List<Felt>? signature,
             Felt? nonce,
@@ -1078,7 +1079,7 @@ class _$InvokeTxnV0 implements InvokeTxnV0 {
         deployTxn,
     TResult Function(
             Felt? transactionHash,
-            Felt? maxFee,
+            @JsonKey(toJson: maxFeeToJson) Felt? maxFee,
             String? version,
             List<Felt>? signature,
             Felt? nonce,
@@ -1159,7 +1160,7 @@ class _$InvokeTxnV0 implements InvokeTxnV0 {
 abstract class InvokeTxnV0 implements Txn {
   const factory InvokeTxnV0(
       {required final Felt? transactionHash,
-      required final Felt? maxFee,
+      @JsonKey(toJson: maxFeeToJson) required final Felt? maxFee,
       required final String? version,
       required final List<Felt>? signature,
       required final Felt? nonce,
@@ -1173,6 +1174,7 @@ abstract class InvokeTxnV0 implements Txn {
 
   @override // start of COMMON_TXN_PROPERTIES
   Felt? get transactionHash; // start of BROADCASTED_TXN_COMMON_PROPERTIES
+  @JsonKey(toJson: maxFeeToJson)
   Felt? get maxFee;
   @override
   String? get version;
@@ -1200,7 +1202,7 @@ abstract class _$$InvokeTxnV1CopyWith<$Res> implements $TxnCopyWith<$Res> {
   @useResult
   $Res call(
       {Felt? transactionHash,
-      Felt? maxFee,
+      @JsonKey(toJson: maxFeeToJson) Felt? maxFee,
       String? version,
       List<Felt>? signature,
       Felt? nonce,
@@ -1271,7 +1273,7 @@ class __$$InvokeTxnV1CopyWithImpl<$Res>
 class _$InvokeTxnV1 implements InvokeTxnV1 {
   const _$InvokeTxnV1(
       {required this.transactionHash,
-      required this.maxFee,
+      @JsonKey(toJson: maxFeeToJson) required this.maxFee,
       required this.version,
       required final List<Felt>? signature,
       required this.nonce,
@@ -1291,6 +1293,7 @@ class _$InvokeTxnV1 implements InvokeTxnV1 {
   final Felt? transactionHash;
 // start of BROADCASTED_TXN_COMMON_PROPERTIES
   @override
+  @JsonKey(toJson: maxFeeToJson)
   final Felt? maxFee;
   @override
   final String? version;
@@ -1373,7 +1376,7 @@ class _$InvokeTxnV1 implements InvokeTxnV1 {
   TResult when<TResult extends Object?>({
     required TResult Function(
             Felt? transactionHash,
-            Felt? maxFee,
+            @JsonKey(toJson: maxFeeToJson) Felt? maxFee,
             String? version,
             List<Felt>? signature,
             Felt? nonce,
@@ -1384,7 +1387,7 @@ class _$InvokeTxnV1 implements InvokeTxnV1 {
         invokeTxnV0,
     required TResult Function(
             Felt? transactionHash,
-            Felt? maxFee,
+            @JsonKey(toJson: maxFeeToJson) Felt? maxFee,
             String? version,
             List<Felt>? signature,
             Felt? nonce,
@@ -1394,7 +1397,7 @@ class _$InvokeTxnV1 implements InvokeTxnV1 {
         invokeTxnV1,
     required TResult Function(
             Felt? transactionHash,
-            Felt? maxFee,
+            @JsonKey(toJson: maxFeeToJson) Felt? maxFee,
             String? version,
             List<Felt>? signature,
             Felt? nonce,
@@ -1412,7 +1415,7 @@ class _$InvokeTxnV1 implements InvokeTxnV1 {
         deployTxn,
     required TResult Function(
             Felt? transactionHash,
-            Felt? maxFee,
+            @JsonKey(toJson: maxFeeToJson) Felt? maxFee,
             String? version,
             List<Felt>? signature,
             Felt? nonce,
@@ -1440,7 +1443,7 @@ class _$InvokeTxnV1 implements InvokeTxnV1 {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(
             Felt? transactionHash,
-            Felt? maxFee,
+            @JsonKey(toJson: maxFeeToJson) Felt? maxFee,
             String? version,
             List<Felt>? signature,
             Felt? nonce,
@@ -1451,7 +1454,7 @@ class _$InvokeTxnV1 implements InvokeTxnV1 {
         invokeTxnV0,
     TResult? Function(
             Felt? transactionHash,
-            Felt? maxFee,
+            @JsonKey(toJson: maxFeeToJson) Felt? maxFee,
             String? version,
             List<Felt>? signature,
             Felt? nonce,
@@ -1461,7 +1464,7 @@ class _$InvokeTxnV1 implements InvokeTxnV1 {
         invokeTxnV1,
     TResult? Function(
             Felt? transactionHash,
-            Felt? maxFee,
+            @JsonKey(toJson: maxFeeToJson) Felt? maxFee,
             String? version,
             List<Felt>? signature,
             Felt? nonce,
@@ -1479,7 +1482,7 @@ class _$InvokeTxnV1 implements InvokeTxnV1 {
         deployTxn,
     TResult? Function(
             Felt? transactionHash,
-            Felt? maxFee,
+            @JsonKey(toJson: maxFeeToJson) Felt? maxFee,
             String? version,
             List<Felt>? signature,
             Felt? nonce,
@@ -1507,7 +1510,7 @@ class _$InvokeTxnV1 implements InvokeTxnV1 {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(
             Felt? transactionHash,
-            Felt? maxFee,
+            @JsonKey(toJson: maxFeeToJson) Felt? maxFee,
             String? version,
             List<Felt>? signature,
             Felt? nonce,
@@ -1518,7 +1521,7 @@ class _$InvokeTxnV1 implements InvokeTxnV1 {
         invokeTxnV0,
     TResult Function(
             Felt? transactionHash,
-            Felt? maxFee,
+            @JsonKey(toJson: maxFeeToJson) Felt? maxFee,
             String? version,
             List<Felt>? signature,
             Felt? nonce,
@@ -1528,7 +1531,7 @@ class _$InvokeTxnV1 implements InvokeTxnV1 {
         invokeTxnV1,
     TResult Function(
             Felt? transactionHash,
-            Felt? maxFee,
+            @JsonKey(toJson: maxFeeToJson) Felt? maxFee,
             String? version,
             List<Felt>? signature,
             Felt? nonce,
@@ -1546,7 +1549,7 @@ class _$InvokeTxnV1 implements InvokeTxnV1 {
         deployTxn,
     TResult Function(
             Felt? transactionHash,
-            Felt? maxFee,
+            @JsonKey(toJson: maxFeeToJson) Felt? maxFee,
             String? version,
             List<Felt>? signature,
             Felt? nonce,
@@ -1627,7 +1630,7 @@ class _$InvokeTxnV1 implements InvokeTxnV1 {
 abstract class InvokeTxnV1 implements Txn {
   const factory InvokeTxnV1(
       {required final Felt? transactionHash,
-      required final Felt? maxFee,
+      @JsonKey(toJson: maxFeeToJson) required final Felt? maxFee,
       required final String? version,
       required final List<Felt>? signature,
       required final Felt? nonce,
@@ -1640,6 +1643,7 @@ abstract class InvokeTxnV1 implements Txn {
 
   @override // start of COMMON_TXN_PROPERTIES
   Felt? get transactionHash; // start of BROADCASTED_TXN_COMMON_PROPERTIES
+  @JsonKey(toJson: maxFeeToJson)
   Felt? get maxFee;
   @override
   String? get version;
@@ -1666,7 +1670,7 @@ abstract class _$$DeclareTxnCopyWith<$Res> implements $TxnCopyWith<$Res> {
   @useResult
   $Res call(
       {Felt? transactionHash,
-      Felt? maxFee,
+      @JsonKey(toJson: maxFeeToJson) Felt? maxFee,
       String? version,
       List<Felt>? signature,
       Felt? nonce,
@@ -1737,7 +1741,7 @@ class __$$DeclareTxnCopyWithImpl<$Res>
 class _$DeclareTxn implements DeclareTxn {
   const _$DeclareTxn(
       {required this.transactionHash,
-      required this.maxFee,
+      @JsonKey(toJson: maxFeeToJson) required this.maxFee,
       required this.version,
       required final List<Felt>? signature,
       required this.nonce,
@@ -1756,6 +1760,7 @@ class _$DeclareTxn implements DeclareTxn {
   final Felt? transactionHash;
 // start of BROADCASTED_TXN_COMMON_PROPERTIES
   @override
+  @JsonKey(toJson: maxFeeToJson)
   final Felt? maxFee;
   @override
   final String? version;
@@ -1831,7 +1836,7 @@ class _$DeclareTxn implements DeclareTxn {
   TResult when<TResult extends Object?>({
     required TResult Function(
             Felt? transactionHash,
-            Felt? maxFee,
+            @JsonKey(toJson: maxFeeToJson) Felt? maxFee,
             String? version,
             List<Felt>? signature,
             Felt? nonce,
@@ -1842,7 +1847,7 @@ class _$DeclareTxn implements DeclareTxn {
         invokeTxnV0,
     required TResult Function(
             Felt? transactionHash,
-            Felt? maxFee,
+            @JsonKey(toJson: maxFeeToJson) Felt? maxFee,
             String? version,
             List<Felt>? signature,
             Felt? nonce,
@@ -1852,7 +1857,7 @@ class _$DeclareTxn implements DeclareTxn {
         invokeTxnV1,
     required TResult Function(
             Felt? transactionHash,
-            Felt? maxFee,
+            @JsonKey(toJson: maxFeeToJson) Felt? maxFee,
             String? version,
             List<Felt>? signature,
             Felt? nonce,
@@ -1870,7 +1875,7 @@ class _$DeclareTxn implements DeclareTxn {
         deployTxn,
     required TResult Function(
             Felt? transactionHash,
-            Felt? maxFee,
+            @JsonKey(toJson: maxFeeToJson) Felt? maxFee,
             String? version,
             List<Felt>? signature,
             Felt? nonce,
@@ -1898,7 +1903,7 @@ class _$DeclareTxn implements DeclareTxn {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(
             Felt? transactionHash,
-            Felt? maxFee,
+            @JsonKey(toJson: maxFeeToJson) Felt? maxFee,
             String? version,
             List<Felt>? signature,
             Felt? nonce,
@@ -1909,7 +1914,7 @@ class _$DeclareTxn implements DeclareTxn {
         invokeTxnV0,
     TResult? Function(
             Felt? transactionHash,
-            Felt? maxFee,
+            @JsonKey(toJson: maxFeeToJson) Felt? maxFee,
             String? version,
             List<Felt>? signature,
             Felt? nonce,
@@ -1919,7 +1924,7 @@ class _$DeclareTxn implements DeclareTxn {
         invokeTxnV1,
     TResult? Function(
             Felt? transactionHash,
-            Felt? maxFee,
+            @JsonKey(toJson: maxFeeToJson) Felt? maxFee,
             String? version,
             List<Felt>? signature,
             Felt? nonce,
@@ -1937,7 +1942,7 @@ class _$DeclareTxn implements DeclareTxn {
         deployTxn,
     TResult? Function(
             Felt? transactionHash,
-            Felt? maxFee,
+            @JsonKey(toJson: maxFeeToJson) Felt? maxFee,
             String? version,
             List<Felt>? signature,
             Felt? nonce,
@@ -1965,7 +1970,7 @@ class _$DeclareTxn implements DeclareTxn {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(
             Felt? transactionHash,
-            Felt? maxFee,
+            @JsonKey(toJson: maxFeeToJson) Felt? maxFee,
             String? version,
             List<Felt>? signature,
             Felt? nonce,
@@ -1976,7 +1981,7 @@ class _$DeclareTxn implements DeclareTxn {
         invokeTxnV0,
     TResult Function(
             Felt? transactionHash,
-            Felt? maxFee,
+            @JsonKey(toJson: maxFeeToJson) Felt? maxFee,
             String? version,
             List<Felt>? signature,
             Felt? nonce,
@@ -1986,7 +1991,7 @@ class _$DeclareTxn implements DeclareTxn {
         invokeTxnV1,
     TResult Function(
             Felt? transactionHash,
-            Felt? maxFee,
+            @JsonKey(toJson: maxFeeToJson) Felt? maxFee,
             String? version,
             List<Felt>? signature,
             Felt? nonce,
@@ -2004,7 +2009,7 @@ class _$DeclareTxn implements DeclareTxn {
         deployTxn,
     TResult Function(
             Felt? transactionHash,
-            Felt? maxFee,
+            @JsonKey(toJson: maxFeeToJson) Felt? maxFee,
             String? version,
             List<Felt>? signature,
             Felt? nonce,
@@ -2085,7 +2090,7 @@ class _$DeclareTxn implements DeclareTxn {
 abstract class DeclareTxn implements Txn {
   const factory DeclareTxn(
       {required final Felt? transactionHash,
-      required final Felt? maxFee,
+      @JsonKey(toJson: maxFeeToJson) required final Felt? maxFee,
       required final String? version,
       required final List<Felt>? signature,
       required final Felt? nonce,
@@ -2098,6 +2103,7 @@ abstract class DeclareTxn implements Txn {
 
   @override // start of COMMON_TXN_PROPERTIES
   Felt? get transactionHash; // start of BROADCASTED_TXN_COMMON_PROPERTIES
+  @JsonKey(toJson: maxFeeToJson)
   Felt? get maxFee;
   @override
   String? get version;
@@ -2263,7 +2269,7 @@ class _$DeployTxn implements DeployTxn {
   TResult when<TResult extends Object?>({
     required TResult Function(
             Felt? transactionHash,
-            Felt? maxFee,
+            @JsonKey(toJson: maxFeeToJson) Felt? maxFee,
             String? version,
             List<Felt>? signature,
             Felt? nonce,
@@ -2274,7 +2280,7 @@ class _$DeployTxn implements DeployTxn {
         invokeTxnV0,
     required TResult Function(
             Felt? transactionHash,
-            Felt? maxFee,
+            @JsonKey(toJson: maxFeeToJson) Felt? maxFee,
             String? version,
             List<Felt>? signature,
             Felt? nonce,
@@ -2284,7 +2290,7 @@ class _$DeployTxn implements DeployTxn {
         invokeTxnV1,
     required TResult Function(
             Felt? transactionHash,
-            Felt? maxFee,
+            @JsonKey(toJson: maxFeeToJson) Felt? maxFee,
             String? version,
             List<Felt>? signature,
             Felt? nonce,
@@ -2302,7 +2308,7 @@ class _$DeployTxn implements DeployTxn {
         deployTxn,
     required TResult Function(
             Felt? transactionHash,
-            Felt? maxFee,
+            @JsonKey(toJson: maxFeeToJson) Felt? maxFee,
             String? version,
             List<Felt>? signature,
             Felt? nonce,
@@ -2330,7 +2336,7 @@ class _$DeployTxn implements DeployTxn {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(
             Felt? transactionHash,
-            Felt? maxFee,
+            @JsonKey(toJson: maxFeeToJson) Felt? maxFee,
             String? version,
             List<Felt>? signature,
             Felt? nonce,
@@ -2341,7 +2347,7 @@ class _$DeployTxn implements DeployTxn {
         invokeTxnV0,
     TResult? Function(
             Felt? transactionHash,
-            Felt? maxFee,
+            @JsonKey(toJson: maxFeeToJson) Felt? maxFee,
             String? version,
             List<Felt>? signature,
             Felt? nonce,
@@ -2351,7 +2357,7 @@ class _$DeployTxn implements DeployTxn {
         invokeTxnV1,
     TResult? Function(
             Felt? transactionHash,
-            Felt? maxFee,
+            @JsonKey(toJson: maxFeeToJson) Felt? maxFee,
             String? version,
             List<Felt>? signature,
             Felt? nonce,
@@ -2369,7 +2375,7 @@ class _$DeployTxn implements DeployTxn {
         deployTxn,
     TResult? Function(
             Felt? transactionHash,
-            Felt? maxFee,
+            @JsonKey(toJson: maxFeeToJson) Felt? maxFee,
             String? version,
             List<Felt>? signature,
             Felt? nonce,
@@ -2397,7 +2403,7 @@ class _$DeployTxn implements DeployTxn {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(
             Felt? transactionHash,
-            Felt? maxFee,
+            @JsonKey(toJson: maxFeeToJson) Felt? maxFee,
             String? version,
             List<Felt>? signature,
             Felt? nonce,
@@ -2408,7 +2414,7 @@ class _$DeployTxn implements DeployTxn {
         invokeTxnV0,
     TResult Function(
             Felt? transactionHash,
-            Felt? maxFee,
+            @JsonKey(toJson: maxFeeToJson) Felt? maxFee,
             String? version,
             List<Felt>? signature,
             Felt? nonce,
@@ -2418,7 +2424,7 @@ class _$DeployTxn implements DeployTxn {
         invokeTxnV1,
     TResult Function(
             Felt? transactionHash,
-            Felt? maxFee,
+            @JsonKey(toJson: maxFeeToJson) Felt? maxFee,
             String? version,
             List<Felt>? signature,
             Felt? nonce,
@@ -2436,7 +2442,7 @@ class _$DeployTxn implements DeployTxn {
         deployTxn,
     TResult Function(
             Felt? transactionHash,
-            Felt? maxFee,
+            @JsonKey(toJson: maxFeeToJson) Felt? maxFee,
             String? version,
             List<Felt>? signature,
             Felt? nonce,
@@ -2549,7 +2555,7 @@ abstract class _$$DeployAccountTxnCopyWith<$Res> implements $TxnCopyWith<$Res> {
   @useResult
   $Res call(
       {Felt? transactionHash,
-      Felt? maxFee,
+      @JsonKey(toJson: maxFeeToJson) Felt? maxFee,
       String? version,
       List<Felt>? signature,
       Felt? nonce,
@@ -2626,7 +2632,7 @@ class __$$DeployAccountTxnCopyWithImpl<$Res>
 class _$DeployAccountTxn implements DeployAccountTxn {
   const _$DeployAccountTxn(
       {required this.transactionHash,
-      required this.maxFee,
+      @JsonKey(toJson: maxFeeToJson) required this.maxFee,
       required this.version,
       required final List<Felt>? signature,
       required this.nonce,
@@ -2647,6 +2653,7 @@ class _$DeployAccountTxn implements DeployAccountTxn {
   final Felt? transactionHash;
 // start of BROADCASTED_TXN_COMMON_PROPERTIES
   @override
+  @JsonKey(toJson: maxFeeToJson)
   final Felt? maxFee;
   @override
   final String? version;
@@ -2736,7 +2743,7 @@ class _$DeployAccountTxn implements DeployAccountTxn {
   TResult when<TResult extends Object?>({
     required TResult Function(
             Felt? transactionHash,
-            Felt? maxFee,
+            @JsonKey(toJson: maxFeeToJson) Felt? maxFee,
             String? version,
             List<Felt>? signature,
             Felt? nonce,
@@ -2747,7 +2754,7 @@ class _$DeployAccountTxn implements DeployAccountTxn {
         invokeTxnV0,
     required TResult Function(
             Felt? transactionHash,
-            Felt? maxFee,
+            @JsonKey(toJson: maxFeeToJson) Felt? maxFee,
             String? version,
             List<Felt>? signature,
             Felt? nonce,
@@ -2757,7 +2764,7 @@ class _$DeployAccountTxn implements DeployAccountTxn {
         invokeTxnV1,
     required TResult Function(
             Felt? transactionHash,
-            Felt? maxFee,
+            @JsonKey(toJson: maxFeeToJson) Felt? maxFee,
             String? version,
             List<Felt>? signature,
             Felt? nonce,
@@ -2775,7 +2782,7 @@ class _$DeployAccountTxn implements DeployAccountTxn {
         deployTxn,
     required TResult Function(
             Felt? transactionHash,
-            Felt? maxFee,
+            @JsonKey(toJson: maxFeeToJson) Felt? maxFee,
             String? version,
             List<Felt>? signature,
             Felt? nonce,
@@ -2803,7 +2810,7 @@ class _$DeployAccountTxn implements DeployAccountTxn {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(
             Felt? transactionHash,
-            Felt? maxFee,
+            @JsonKey(toJson: maxFeeToJson) Felt? maxFee,
             String? version,
             List<Felt>? signature,
             Felt? nonce,
@@ -2814,7 +2821,7 @@ class _$DeployAccountTxn implements DeployAccountTxn {
         invokeTxnV0,
     TResult? Function(
             Felt? transactionHash,
-            Felt? maxFee,
+            @JsonKey(toJson: maxFeeToJson) Felt? maxFee,
             String? version,
             List<Felt>? signature,
             Felt? nonce,
@@ -2824,7 +2831,7 @@ class _$DeployAccountTxn implements DeployAccountTxn {
         invokeTxnV1,
     TResult? Function(
             Felt? transactionHash,
-            Felt? maxFee,
+            @JsonKey(toJson: maxFeeToJson) Felt? maxFee,
             String? version,
             List<Felt>? signature,
             Felt? nonce,
@@ -2842,7 +2849,7 @@ class _$DeployAccountTxn implements DeployAccountTxn {
         deployTxn,
     TResult? Function(
             Felt? transactionHash,
-            Felt? maxFee,
+            @JsonKey(toJson: maxFeeToJson) Felt? maxFee,
             String? version,
             List<Felt>? signature,
             Felt? nonce,
@@ -2870,7 +2877,7 @@ class _$DeployAccountTxn implements DeployAccountTxn {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(
             Felt? transactionHash,
-            Felt? maxFee,
+            @JsonKey(toJson: maxFeeToJson) Felt? maxFee,
             String? version,
             List<Felt>? signature,
             Felt? nonce,
@@ -2881,7 +2888,7 @@ class _$DeployAccountTxn implements DeployAccountTxn {
         invokeTxnV0,
     TResult Function(
             Felt? transactionHash,
-            Felt? maxFee,
+            @JsonKey(toJson: maxFeeToJson) Felt? maxFee,
             String? version,
             List<Felt>? signature,
             Felt? nonce,
@@ -2891,7 +2898,7 @@ class _$DeployAccountTxn implements DeployAccountTxn {
         invokeTxnV1,
     TResult Function(
             Felt? transactionHash,
-            Felt? maxFee,
+            @JsonKey(toJson: maxFeeToJson) Felt? maxFee,
             String? version,
             List<Felt>? signature,
             Felt? nonce,
@@ -2909,7 +2916,7 @@ class _$DeployAccountTxn implements DeployAccountTxn {
         deployTxn,
     TResult Function(
             Felt? transactionHash,
-            Felt? maxFee,
+            @JsonKey(toJson: maxFeeToJson) Felt? maxFee,
             String? version,
             List<Felt>? signature,
             Felt? nonce,
@@ -2990,7 +2997,7 @@ class _$DeployAccountTxn implements DeployAccountTxn {
 abstract class DeployAccountTxn implements Txn {
   const factory DeployAccountTxn(
       {required final Felt? transactionHash,
-      required final Felt? maxFee,
+      @JsonKey(toJson: maxFeeToJson) required final Felt? maxFee,
       required final String? version,
       required final List<Felt>? signature,
       required final Felt? nonce,
@@ -3004,6 +3011,7 @@ abstract class DeployAccountTxn implements Txn {
 
   @override // start of COMMON_TXN_PROPERTIES
   Felt? get transactionHash; // start of BROADCASTED_TXN_COMMON_PROPERTIES
+  @JsonKey(toJson: maxFeeToJson)
   Felt? get maxFee;
   @override
   String? get version;
@@ -3180,7 +3188,7 @@ class _$L1HandlerTxn implements L1HandlerTxn {
   TResult when<TResult extends Object?>({
     required TResult Function(
             Felt? transactionHash,
-            Felt? maxFee,
+            @JsonKey(toJson: maxFeeToJson) Felt? maxFee,
             String? version,
             List<Felt>? signature,
             Felt? nonce,
@@ -3191,7 +3199,7 @@ class _$L1HandlerTxn implements L1HandlerTxn {
         invokeTxnV0,
     required TResult Function(
             Felt? transactionHash,
-            Felt? maxFee,
+            @JsonKey(toJson: maxFeeToJson) Felt? maxFee,
             String? version,
             List<Felt>? signature,
             Felt? nonce,
@@ -3201,7 +3209,7 @@ class _$L1HandlerTxn implements L1HandlerTxn {
         invokeTxnV1,
     required TResult Function(
             Felt? transactionHash,
-            Felt? maxFee,
+            @JsonKey(toJson: maxFeeToJson) Felt? maxFee,
             String? version,
             List<Felt>? signature,
             Felt? nonce,
@@ -3219,7 +3227,7 @@ class _$L1HandlerTxn implements L1HandlerTxn {
         deployTxn,
     required TResult Function(
             Felt? transactionHash,
-            Felt? maxFee,
+            @JsonKey(toJson: maxFeeToJson) Felt? maxFee,
             String? version,
             List<Felt>? signature,
             Felt? nonce,
@@ -3247,7 +3255,7 @@ class _$L1HandlerTxn implements L1HandlerTxn {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(
             Felt? transactionHash,
-            Felt? maxFee,
+            @JsonKey(toJson: maxFeeToJson) Felt? maxFee,
             String? version,
             List<Felt>? signature,
             Felt? nonce,
@@ -3258,7 +3266,7 @@ class _$L1HandlerTxn implements L1HandlerTxn {
         invokeTxnV0,
     TResult? Function(
             Felt? transactionHash,
-            Felt? maxFee,
+            @JsonKey(toJson: maxFeeToJson) Felt? maxFee,
             String? version,
             List<Felt>? signature,
             Felt? nonce,
@@ -3268,7 +3276,7 @@ class _$L1HandlerTxn implements L1HandlerTxn {
         invokeTxnV1,
     TResult? Function(
             Felt? transactionHash,
-            Felt? maxFee,
+            @JsonKey(toJson: maxFeeToJson) Felt? maxFee,
             String? version,
             List<Felt>? signature,
             Felt? nonce,
@@ -3286,7 +3294,7 @@ class _$L1HandlerTxn implements L1HandlerTxn {
         deployTxn,
     TResult? Function(
             Felt? transactionHash,
-            Felt? maxFee,
+            @JsonKey(toJson: maxFeeToJson) Felt? maxFee,
             String? version,
             List<Felt>? signature,
             Felt? nonce,
@@ -3314,7 +3322,7 @@ class _$L1HandlerTxn implements L1HandlerTxn {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(
             Felt? transactionHash,
-            Felt? maxFee,
+            @JsonKey(toJson: maxFeeToJson) Felt? maxFee,
             String? version,
             List<Felt>? signature,
             Felt? nonce,
@@ -3325,7 +3333,7 @@ class _$L1HandlerTxn implements L1HandlerTxn {
         invokeTxnV0,
     TResult Function(
             Felt? transactionHash,
-            Felt? maxFee,
+            @JsonKey(toJson: maxFeeToJson) Felt? maxFee,
             String? version,
             List<Felt>? signature,
             Felt? nonce,
@@ -3335,7 +3343,7 @@ class _$L1HandlerTxn implements L1HandlerTxn {
         invokeTxnV1,
     TResult Function(
             Felt? transactionHash,
-            Felt? maxFee,
+            @JsonKey(toJson: maxFeeToJson) Felt? maxFee,
             String? version,
             List<Felt>? signature,
             Felt? nonce,
@@ -3353,7 +3361,7 @@ class _$L1HandlerTxn implements L1HandlerTxn {
         deployTxn,
     TResult Function(
             Felt? transactionHash,
-            Felt? maxFee,
+            @JsonKey(toJson: maxFeeToJson) Felt? maxFee,
             String? version,
             List<Felt>? signature,
             Felt? nonce,

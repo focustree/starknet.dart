@@ -44,3 +44,9 @@ List<BigInt> toBigIntList(List<Felt> feltList) {
 BigInt bytesToUnsignedInt(Uint8List bytes) {
   return decodeBigIntWithSign(1, bytes);
 }
+
+// FIXME: 2023-03-29: RPC API mismatch in pathfinder:
+// https://github.com/eqlabs/pathfinder/issues/989
+String maxFeeToJson(Felt? maxFee) {
+  return (maxFee != null) ? maxFee.toHexString() : "";
+}

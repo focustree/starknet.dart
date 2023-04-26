@@ -22,6 +22,7 @@ DeployAccountTransactionV1 _$DeployAccountTransactionV1FromJson(
 /// @nodoc
 mixin _$DeployAccountTransactionV1 {
   List<Felt> get signature => throw _privateConstructorUsedError;
+  @JsonKey(toJson: maxFeeToJson)
   Felt get maxFee => throw _privateConstructorUsedError;
   Felt get nonce => throw _privateConstructorUsedError;
   Felt get contractAddressSalt => throw _privateConstructorUsedError;
@@ -45,7 +46,7 @@ abstract class $DeployAccountTransactionV1CopyWith<$Res> {
   @useResult
   $Res call(
       {List<Felt> signature,
-      Felt maxFee,
+      @JsonKey(toJson: maxFeeToJson) Felt maxFee,
       Felt nonce,
       Felt contractAddressSalt,
       List<Felt> constructorCalldata,
@@ -125,7 +126,7 @@ abstract class _$$_DeployAccountTransactionV1CopyWith<$Res>
   @useResult
   $Res call(
       {List<Felt> signature,
-      Felt maxFee,
+      @JsonKey(toJson: maxFeeToJson) Felt maxFee,
       Felt nonce,
       Felt contractAddressSalt,
       List<Felt> constructorCalldata,
@@ -198,7 +199,7 @@ class __$$_DeployAccountTransactionV1CopyWithImpl<$Res>
 class _$_DeployAccountTransactionV1 implements _DeployAccountTransactionV1 {
   const _$_DeployAccountTransactionV1(
       {required final List<Felt> signature,
-      required this.maxFee,
+      @JsonKey(toJson: maxFeeToJson) required this.maxFee,
       required this.nonce,
       required this.contractAddressSalt,
       required final List<Felt> constructorCalldata,
@@ -220,6 +221,7 @@ class _$_DeployAccountTransactionV1 implements _DeployAccountTransactionV1 {
   }
 
   @override
+  @JsonKey(toJson: maxFeeToJson)
   final Felt maxFee;
   @override
   final Felt nonce;
@@ -299,7 +301,7 @@ abstract class _DeployAccountTransactionV1
     implements DeployAccountTransactionV1 {
   const factory _DeployAccountTransactionV1(
       {required final List<Felt> signature,
-      required final Felt maxFee,
+      @JsonKey(toJson: maxFeeToJson) required final Felt maxFee,
       required final Felt nonce,
       required final Felt contractAddressSalt,
       required final List<Felt> constructorCalldata,
@@ -313,6 +315,7 @@ abstract class _DeployAccountTransactionV1
   @override
   List<Felt> get signature;
   @override
+  @JsonKey(toJson: maxFeeToJson)
   Felt get maxFee;
   @override
   Felt get nonce;

@@ -28,7 +28,7 @@ Map<String, dynamic> _$$_DeployAccountTransactionV1ToJson(
         _$_DeployAccountTransactionV1 instance) =>
     <String, dynamic>{
       'signature': instance.signature.map((e) => e.toJson()).toList(),
-      'max_fee': instance.maxFee.toJson(),
+      'max_fee': maxFeeToJson(instance.maxFee),
       'nonce': instance.nonce.toJson(),
       'contract_address_salt': instance.contractAddressSalt.toJson(),
       'constructor_calldata':

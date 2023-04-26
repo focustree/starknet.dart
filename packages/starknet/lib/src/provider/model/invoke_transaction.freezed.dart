@@ -165,6 +165,7 @@ InvokeTransactionV0 _$InvokeTransactionV0FromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$InvokeTransactionV0 {
   String get type => throw _privateConstructorUsedError;
+  @JsonKey(toJson: maxFeeToJson)
   Felt get maxFee => throw _privateConstructorUsedError;
   String get version => throw _privateConstructorUsedError;
   List<Felt> get signature => throw _privateConstructorUsedError;
@@ -186,7 +187,7 @@ abstract class $InvokeTransactionV0CopyWith<$Res> {
   @useResult
   $Res call(
       {String type,
-      Felt maxFee,
+      @JsonKey(toJson: maxFeeToJson) Felt maxFee,
       String version,
       List<Felt> signature,
       Felt contractAddress,
@@ -258,7 +259,7 @@ abstract class _$$_InvokeTransactionV0CopyWith<$Res>
   @useResult
   $Res call(
       {String type,
-      Felt maxFee,
+      @JsonKey(toJson: maxFeeToJson) Felt maxFee,
       String version,
       List<Felt> signature,
       Felt contractAddress,
@@ -323,7 +324,7 @@ class __$$_InvokeTransactionV0CopyWithImpl<$Res>
 class _$_InvokeTransactionV0 implements _InvokeTransactionV0 {
   const _$_InvokeTransactionV0(
       {this.type = 'INVOKE',
-      required this.maxFee,
+      @JsonKey(toJson: maxFeeToJson) required this.maxFee,
       this.version = '0x00',
       required final List<Felt> signature,
       required this.contractAddress,
@@ -339,6 +340,7 @@ class _$_InvokeTransactionV0 implements _InvokeTransactionV0 {
   @JsonKey()
   final String type;
   @override
+  @JsonKey(toJson: maxFeeToJson)
   final Felt maxFee;
   @override
   @JsonKey()
@@ -415,7 +417,7 @@ class _$_InvokeTransactionV0 implements _InvokeTransactionV0 {
 abstract class _InvokeTransactionV0 implements InvokeTransactionV0 {
   const factory _InvokeTransactionV0(
       {final String type,
-      required final Felt maxFee,
+      @JsonKey(toJson: maxFeeToJson) required final Felt maxFee,
       final String version,
       required final List<Felt> signature,
       required final Felt contractAddress,
@@ -428,6 +430,7 @@ abstract class _InvokeTransactionV0 implements InvokeTransactionV0 {
   @override
   String get type;
   @override
+  @JsonKey(toJson: maxFeeToJson)
   Felt get maxFee;
   @override
   String get version;
@@ -452,6 +455,7 @@ InvokeTransactionV1 _$InvokeTransactionV1FromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$InvokeTransactionV1 {
   List<Felt> get signature => throw _privateConstructorUsedError;
+  @JsonKey(toJson: maxFeeToJson)
   Felt get maxFee => throw _privateConstructorUsedError;
   Felt get nonce => throw _privateConstructorUsedError;
   Felt get senderAddress => throw _privateConstructorUsedError;
@@ -473,7 +477,7 @@ abstract class $InvokeTransactionV1CopyWith<$Res> {
   @useResult
   $Res call(
       {List<Felt> signature,
-      Felt maxFee,
+      @JsonKey(toJson: maxFeeToJson) Felt maxFee,
       Felt nonce,
       Felt senderAddress,
       List<Felt> calldata,
@@ -545,7 +549,7 @@ abstract class _$$_InvokeTransactionV1CopyWith<$Res>
   @useResult
   $Res call(
       {List<Felt> signature,
-      Felt maxFee,
+      @JsonKey(toJson: maxFeeToJson) Felt maxFee,
       Felt nonce,
       Felt senderAddress,
       List<Felt> calldata,
@@ -610,7 +614,7 @@ class __$$_InvokeTransactionV1CopyWithImpl<$Res>
 class _$_InvokeTransactionV1 implements _InvokeTransactionV1 {
   const _$_InvokeTransactionV1(
       {required final List<Felt> signature,
-      required this.maxFee,
+      @JsonKey(toJson: maxFeeToJson) required this.maxFee,
       required this.nonce,
       required this.senderAddress,
       required final List<Felt> calldata,
@@ -631,6 +635,7 @@ class _$_InvokeTransactionV1 implements _InvokeTransactionV1 {
   }
 
   @override
+  @JsonKey(toJson: maxFeeToJson)
   final Felt maxFee;
   @override
   final Felt nonce;
@@ -702,7 +707,7 @@ class _$_InvokeTransactionV1 implements _InvokeTransactionV1 {
 abstract class _InvokeTransactionV1 implements InvokeTransactionV1 {
   const factory _InvokeTransactionV1(
       {required final List<Felt> signature,
-      required final Felt maxFee,
+      @JsonKey(toJson: maxFeeToJson) required final Felt maxFee,
       required final Felt nonce,
       required final Felt senderAddress,
       required final List<Felt> calldata,
@@ -715,6 +720,7 @@ abstract class _InvokeTransactionV1 implements InvokeTransactionV1 {
   @override
   List<Felt> get signature;
   @override
+  @JsonKey(toJson: maxFeeToJson)
   Felt get maxFee;
   @override
   Felt get nonce;

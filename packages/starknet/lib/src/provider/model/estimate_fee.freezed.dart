@@ -446,7 +446,7 @@ mixin _$BroadcastedTxn {
   TResult when<TResult extends Object?>({
     required TResult Function(
             String type,
-            Felt maxFee,
+            @JsonKey(toJson: maxFeeToJson) Felt maxFee,
             String version,
             List<Felt> signature,
             Felt? nonce,
@@ -456,7 +456,7 @@ mixin _$BroadcastedTxn {
         broadcastedInvokeTxnV0,
     required TResult Function(
             String type,
-            Felt maxFee,
+            @JsonKey(toJson: maxFeeToJson) Felt maxFee,
             String version,
             List<Felt> signature,
             Felt nonce,
@@ -465,7 +465,7 @@ mixin _$BroadcastedTxn {
         broadcastedInvokeTxnV1,
     required TResult Function(
             String type,
-            Felt maxFee,
+            @JsonKey(toJson: maxFeeToJson) Felt maxFee,
             String version,
             List<Felt> signature,
             Felt nonce,
@@ -484,7 +484,7 @@ mixin _$BroadcastedTxn {
             Felt classHash,
             List<Felt> constructorCalldata,
             String type,
-            Felt maxFee,
+            @JsonKey(toJson: maxFeeToJson) Felt maxFee,
             String version,
             List<Felt> signature,
             Felt nonce)
@@ -495,7 +495,7 @@ mixin _$BroadcastedTxn {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(
             String type,
-            Felt maxFee,
+            @JsonKey(toJson: maxFeeToJson) Felt maxFee,
             String version,
             List<Felt> signature,
             Felt? nonce,
@@ -505,7 +505,7 @@ mixin _$BroadcastedTxn {
         broadcastedInvokeTxnV0,
     TResult? Function(
             String type,
-            Felt maxFee,
+            @JsonKey(toJson: maxFeeToJson) Felt maxFee,
             String version,
             List<Felt> signature,
             Felt nonce,
@@ -514,7 +514,7 @@ mixin _$BroadcastedTxn {
         broadcastedInvokeTxnV1,
     TResult? Function(
             String type,
-            Felt maxFee,
+            @JsonKey(toJson: maxFeeToJson) Felt maxFee,
             String version,
             List<Felt> signature,
             Felt nonce,
@@ -529,7 +529,7 @@ mixin _$BroadcastedTxn {
             Felt classHash,
             List<Felt> constructorCalldata,
             String type,
-            Felt maxFee,
+            @JsonKey(toJson: maxFeeToJson) Felt maxFee,
             String version,
             List<Felt> signature,
             Felt nonce)?
@@ -540,7 +540,7 @@ mixin _$BroadcastedTxn {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(
             String type,
-            Felt maxFee,
+            @JsonKey(toJson: maxFeeToJson) Felt maxFee,
             String version,
             List<Felt> signature,
             Felt? nonce,
@@ -550,7 +550,7 @@ mixin _$BroadcastedTxn {
         broadcastedInvokeTxnV0,
     TResult Function(
             String type,
-            Felt maxFee,
+            @JsonKey(toJson: maxFeeToJson) Felt maxFee,
             String version,
             List<Felt> signature,
             Felt nonce,
@@ -559,7 +559,7 @@ mixin _$BroadcastedTxn {
         broadcastedInvokeTxnV1,
     TResult Function(
             String type,
-            Felt maxFee,
+            @JsonKey(toJson: maxFeeToJson) Felt maxFee,
             String version,
             List<Felt> signature,
             Felt nonce,
@@ -574,7 +574,7 @@ mixin _$BroadcastedTxn {
             Felt classHash,
             List<Felt> constructorCalldata,
             String type,
-            Felt maxFee,
+            @JsonKey(toJson: maxFeeToJson) Felt maxFee,
             String version,
             List<Felt> signature,
             Felt nonce)?
@@ -670,7 +670,7 @@ abstract class _$$BroadcastedInvokeTxnV0CopyWith<$Res>
   @useResult
   $Res call(
       {String type,
-      Felt maxFee,
+      @JsonKey(toJson: maxFeeToJson) Felt maxFee,
       String version,
       List<Felt> signature,
       Felt? nonce,
@@ -742,7 +742,7 @@ class __$$BroadcastedInvokeTxnV0CopyWithImpl<$Res>
 class _$BroadcastedInvokeTxnV0 implements BroadcastedInvokeTxnV0 {
   const _$BroadcastedInvokeTxnV0(
       {required this.type,
-      required this.maxFee,
+      @JsonKey(toJson: maxFeeToJson) required this.maxFee,
       required this.version,
       required final List<Felt> signature,
       this.nonce,
@@ -761,6 +761,7 @@ class _$BroadcastedInvokeTxnV0 implements BroadcastedInvokeTxnV0 {
   @override
   final String type;
   @override
+  @JsonKey(toJson: maxFeeToJson)
   final Felt maxFee;
   @override
   final String version;
@@ -839,7 +840,7 @@ class _$BroadcastedInvokeTxnV0 implements BroadcastedInvokeTxnV0 {
   TResult when<TResult extends Object?>({
     required TResult Function(
             String type,
-            Felt maxFee,
+            @JsonKey(toJson: maxFeeToJson) Felt maxFee,
             String version,
             List<Felt> signature,
             Felt? nonce,
@@ -849,7 +850,7 @@ class _$BroadcastedInvokeTxnV0 implements BroadcastedInvokeTxnV0 {
         broadcastedInvokeTxnV0,
     required TResult Function(
             String type,
-            Felt maxFee,
+            @JsonKey(toJson: maxFeeToJson) Felt maxFee,
             String version,
             List<Felt> signature,
             Felt nonce,
@@ -858,7 +859,7 @@ class _$BroadcastedInvokeTxnV0 implements BroadcastedInvokeTxnV0 {
         broadcastedInvokeTxnV1,
     required TResult Function(
             String type,
-            Felt maxFee,
+            @JsonKey(toJson: maxFeeToJson) Felt maxFee,
             String version,
             List<Felt> signature,
             Felt nonce,
@@ -877,7 +878,7 @@ class _$BroadcastedInvokeTxnV0 implements BroadcastedInvokeTxnV0 {
             Felt classHash,
             List<Felt> constructorCalldata,
             String type,
-            Felt maxFee,
+            @JsonKey(toJson: maxFeeToJson) Felt maxFee,
             String version,
             List<Felt> signature,
             Felt nonce)
@@ -892,7 +893,7 @@ class _$BroadcastedInvokeTxnV0 implements BroadcastedInvokeTxnV0 {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(
             String type,
-            Felt maxFee,
+            @JsonKey(toJson: maxFeeToJson) Felt maxFee,
             String version,
             List<Felt> signature,
             Felt? nonce,
@@ -902,7 +903,7 @@ class _$BroadcastedInvokeTxnV0 implements BroadcastedInvokeTxnV0 {
         broadcastedInvokeTxnV0,
     TResult? Function(
             String type,
-            Felt maxFee,
+            @JsonKey(toJson: maxFeeToJson) Felt maxFee,
             String version,
             List<Felt> signature,
             Felt nonce,
@@ -911,7 +912,7 @@ class _$BroadcastedInvokeTxnV0 implements BroadcastedInvokeTxnV0 {
         broadcastedInvokeTxnV1,
     TResult? Function(
             String type,
-            Felt maxFee,
+            @JsonKey(toJson: maxFeeToJson) Felt maxFee,
             String version,
             List<Felt> signature,
             Felt nonce,
@@ -926,7 +927,7 @@ class _$BroadcastedInvokeTxnV0 implements BroadcastedInvokeTxnV0 {
             Felt classHash,
             List<Felt> constructorCalldata,
             String type,
-            Felt maxFee,
+            @JsonKey(toJson: maxFeeToJson) Felt maxFee,
             String version,
             List<Felt> signature,
             Felt nonce)?
@@ -941,7 +942,7 @@ class _$BroadcastedInvokeTxnV0 implements BroadcastedInvokeTxnV0 {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(
             String type,
-            Felt maxFee,
+            @JsonKey(toJson: maxFeeToJson) Felt maxFee,
             String version,
             List<Felt> signature,
             Felt? nonce,
@@ -951,7 +952,7 @@ class _$BroadcastedInvokeTxnV0 implements BroadcastedInvokeTxnV0 {
         broadcastedInvokeTxnV0,
     TResult Function(
             String type,
-            Felt maxFee,
+            @JsonKey(toJson: maxFeeToJson) Felt maxFee,
             String version,
             List<Felt> signature,
             Felt nonce,
@@ -960,7 +961,7 @@ class _$BroadcastedInvokeTxnV0 implements BroadcastedInvokeTxnV0 {
         broadcastedInvokeTxnV1,
     TResult Function(
             String type,
-            Felt maxFee,
+            @JsonKey(toJson: maxFeeToJson) Felt maxFee,
             String version,
             List<Felt> signature,
             Felt nonce,
@@ -975,7 +976,7 @@ class _$BroadcastedInvokeTxnV0 implements BroadcastedInvokeTxnV0 {
             Felt classHash,
             List<Felt> constructorCalldata,
             String type,
-            Felt maxFee,
+            @JsonKey(toJson: maxFeeToJson) Felt maxFee,
             String version,
             List<Felt> signature,
             Felt nonce)?
@@ -1046,7 +1047,7 @@ class _$BroadcastedInvokeTxnV0 implements BroadcastedInvokeTxnV0 {
 abstract class BroadcastedInvokeTxnV0 implements BroadcastedTxn {
   const factory BroadcastedInvokeTxnV0(
       {required final String type,
-      required final Felt maxFee,
+      @JsonKey(toJson: maxFeeToJson) required final Felt maxFee,
       required final String version,
       required final List<Felt> signature,
       final Felt? nonce,
@@ -1059,6 +1060,7 @@ abstract class BroadcastedInvokeTxnV0 implements BroadcastedTxn {
 
   @override // start of BROADCASTED_TXN_COMMON_PROPERTIES
   String get type;
+  @JsonKey(toJson: maxFeeToJson)
   Felt get maxFee;
   @override
   String get version;
@@ -1084,7 +1086,7 @@ abstract class _$$BroadcastedInvokeTxnV1CopyWith<$Res>
   @useResult
   $Res call(
       {String type,
-      Felt maxFee,
+      @JsonKey(toJson: maxFeeToJson) Felt maxFee,
       String version,
       List<Felt> signature,
       Felt nonce,
@@ -1150,7 +1152,7 @@ class __$$BroadcastedInvokeTxnV1CopyWithImpl<$Res>
 class _$BroadcastedInvokeTxnV1 implements BroadcastedInvokeTxnV1 {
   const _$BroadcastedInvokeTxnV1(
       {required this.type,
-      required this.maxFee,
+      @JsonKey(toJson: maxFeeToJson) required this.maxFee,
       required this.version,
       required final List<Felt> signature,
       required this.nonce,
@@ -1168,6 +1170,7 @@ class _$BroadcastedInvokeTxnV1 implements BroadcastedInvokeTxnV1 {
   @override
   final String type;
   @override
+  @JsonKey(toJson: maxFeeToJson)
   final Felt maxFee;
   @override
   final String version;
@@ -1241,7 +1244,7 @@ class _$BroadcastedInvokeTxnV1 implements BroadcastedInvokeTxnV1 {
   TResult when<TResult extends Object?>({
     required TResult Function(
             String type,
-            Felt maxFee,
+            @JsonKey(toJson: maxFeeToJson) Felt maxFee,
             String version,
             List<Felt> signature,
             Felt? nonce,
@@ -1251,7 +1254,7 @@ class _$BroadcastedInvokeTxnV1 implements BroadcastedInvokeTxnV1 {
         broadcastedInvokeTxnV0,
     required TResult Function(
             String type,
-            Felt maxFee,
+            @JsonKey(toJson: maxFeeToJson) Felt maxFee,
             String version,
             List<Felt> signature,
             Felt nonce,
@@ -1260,7 +1263,7 @@ class _$BroadcastedInvokeTxnV1 implements BroadcastedInvokeTxnV1 {
         broadcastedInvokeTxnV1,
     required TResult Function(
             String type,
-            Felt maxFee,
+            @JsonKey(toJson: maxFeeToJson) Felt maxFee,
             String version,
             List<Felt> signature,
             Felt nonce,
@@ -1279,7 +1282,7 @@ class _$BroadcastedInvokeTxnV1 implements BroadcastedInvokeTxnV1 {
             Felt classHash,
             List<Felt> constructorCalldata,
             String type,
-            Felt maxFee,
+            @JsonKey(toJson: maxFeeToJson) Felt maxFee,
             String version,
             List<Felt> signature,
             Felt nonce)
@@ -1294,7 +1297,7 @@ class _$BroadcastedInvokeTxnV1 implements BroadcastedInvokeTxnV1 {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(
             String type,
-            Felt maxFee,
+            @JsonKey(toJson: maxFeeToJson) Felt maxFee,
             String version,
             List<Felt> signature,
             Felt? nonce,
@@ -1304,7 +1307,7 @@ class _$BroadcastedInvokeTxnV1 implements BroadcastedInvokeTxnV1 {
         broadcastedInvokeTxnV0,
     TResult? Function(
             String type,
-            Felt maxFee,
+            @JsonKey(toJson: maxFeeToJson) Felt maxFee,
             String version,
             List<Felt> signature,
             Felt nonce,
@@ -1313,7 +1316,7 @@ class _$BroadcastedInvokeTxnV1 implements BroadcastedInvokeTxnV1 {
         broadcastedInvokeTxnV1,
     TResult? Function(
             String type,
-            Felt maxFee,
+            @JsonKey(toJson: maxFeeToJson) Felt maxFee,
             String version,
             List<Felt> signature,
             Felt nonce,
@@ -1328,7 +1331,7 @@ class _$BroadcastedInvokeTxnV1 implements BroadcastedInvokeTxnV1 {
             Felt classHash,
             List<Felt> constructorCalldata,
             String type,
-            Felt maxFee,
+            @JsonKey(toJson: maxFeeToJson) Felt maxFee,
             String version,
             List<Felt> signature,
             Felt nonce)?
@@ -1343,7 +1346,7 @@ class _$BroadcastedInvokeTxnV1 implements BroadcastedInvokeTxnV1 {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(
             String type,
-            Felt maxFee,
+            @JsonKey(toJson: maxFeeToJson) Felt maxFee,
             String version,
             List<Felt> signature,
             Felt? nonce,
@@ -1353,7 +1356,7 @@ class _$BroadcastedInvokeTxnV1 implements BroadcastedInvokeTxnV1 {
         broadcastedInvokeTxnV0,
     TResult Function(
             String type,
-            Felt maxFee,
+            @JsonKey(toJson: maxFeeToJson) Felt maxFee,
             String version,
             List<Felt> signature,
             Felt nonce,
@@ -1362,7 +1365,7 @@ class _$BroadcastedInvokeTxnV1 implements BroadcastedInvokeTxnV1 {
         broadcastedInvokeTxnV1,
     TResult Function(
             String type,
-            Felt maxFee,
+            @JsonKey(toJson: maxFeeToJson) Felt maxFee,
             String version,
             List<Felt> signature,
             Felt nonce,
@@ -1377,7 +1380,7 @@ class _$BroadcastedInvokeTxnV1 implements BroadcastedInvokeTxnV1 {
             Felt classHash,
             List<Felt> constructorCalldata,
             String type,
-            Felt maxFee,
+            @JsonKey(toJson: maxFeeToJson) Felt maxFee,
             String version,
             List<Felt> signature,
             Felt nonce)?
@@ -1448,7 +1451,7 @@ class _$BroadcastedInvokeTxnV1 implements BroadcastedInvokeTxnV1 {
 abstract class BroadcastedInvokeTxnV1 implements BroadcastedTxn {
   const factory BroadcastedInvokeTxnV1(
       {required final String type,
-      required final Felt maxFee,
+      @JsonKey(toJson: maxFeeToJson) required final Felt maxFee,
       required final String version,
       required final List<Felt> signature,
       required final Felt nonce,
@@ -1460,6 +1463,7 @@ abstract class BroadcastedInvokeTxnV1 implements BroadcastedTxn {
 
   @override // start of BROADCASTED_TXN_COMMON_PROPERTIES
   String get type;
+  @JsonKey(toJson: maxFeeToJson)
   Felt get maxFee;
   @override
   String get version;
@@ -1484,7 +1488,7 @@ abstract class _$$BroadcastedDeclareTxnCopyWith<$Res>
   @useResult
   $Res call(
       {String type,
-      Felt maxFee,
+      @JsonKey(toJson: maxFeeToJson) Felt maxFee,
       String version,
       List<Felt> signature,
       Felt nonce,
@@ -1560,7 +1564,7 @@ class __$$BroadcastedDeclareTxnCopyWithImpl<$Res>
 class _$BroadcastedDeclareTxn implements BroadcastedDeclareTxn {
   const _$BroadcastedDeclareTxn(
       {required this.type,
-      required this.maxFee,
+      @JsonKey(toJson: maxFeeToJson) required this.maxFee,
       required this.version,
       required final List<Felt> signature,
       required this.nonce,
@@ -1577,6 +1581,7 @@ class _$BroadcastedDeclareTxn implements BroadcastedDeclareTxn {
   @override
   final String type;
   @override
+  @JsonKey(toJson: maxFeeToJson)
   final Felt maxFee;
   @override
   final String version;
@@ -1645,7 +1650,7 @@ class _$BroadcastedDeclareTxn implements BroadcastedDeclareTxn {
   TResult when<TResult extends Object?>({
     required TResult Function(
             String type,
-            Felt maxFee,
+            @JsonKey(toJson: maxFeeToJson) Felt maxFee,
             String version,
             List<Felt> signature,
             Felt? nonce,
@@ -1655,7 +1660,7 @@ class _$BroadcastedDeclareTxn implements BroadcastedDeclareTxn {
         broadcastedInvokeTxnV0,
     required TResult Function(
             String type,
-            Felt maxFee,
+            @JsonKey(toJson: maxFeeToJson) Felt maxFee,
             String version,
             List<Felt> signature,
             Felt nonce,
@@ -1664,7 +1669,7 @@ class _$BroadcastedDeclareTxn implements BroadcastedDeclareTxn {
         broadcastedInvokeTxnV1,
     required TResult Function(
             String type,
-            Felt maxFee,
+            @JsonKey(toJson: maxFeeToJson) Felt maxFee,
             String version,
             List<Felt> signature,
             Felt nonce,
@@ -1683,7 +1688,7 @@ class _$BroadcastedDeclareTxn implements BroadcastedDeclareTxn {
             Felt classHash,
             List<Felt> constructorCalldata,
             String type,
-            Felt maxFee,
+            @JsonKey(toJson: maxFeeToJson) Felt maxFee,
             String version,
             List<Felt> signature,
             Felt nonce)
@@ -1698,7 +1703,7 @@ class _$BroadcastedDeclareTxn implements BroadcastedDeclareTxn {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(
             String type,
-            Felt maxFee,
+            @JsonKey(toJson: maxFeeToJson) Felt maxFee,
             String version,
             List<Felt> signature,
             Felt? nonce,
@@ -1708,7 +1713,7 @@ class _$BroadcastedDeclareTxn implements BroadcastedDeclareTxn {
         broadcastedInvokeTxnV0,
     TResult? Function(
             String type,
-            Felt maxFee,
+            @JsonKey(toJson: maxFeeToJson) Felt maxFee,
             String version,
             List<Felt> signature,
             Felt nonce,
@@ -1717,7 +1722,7 @@ class _$BroadcastedDeclareTxn implements BroadcastedDeclareTxn {
         broadcastedInvokeTxnV1,
     TResult? Function(
             String type,
-            Felt maxFee,
+            @JsonKey(toJson: maxFeeToJson) Felt maxFee,
             String version,
             List<Felt> signature,
             Felt nonce,
@@ -1732,7 +1737,7 @@ class _$BroadcastedDeclareTxn implements BroadcastedDeclareTxn {
             Felt classHash,
             List<Felt> constructorCalldata,
             String type,
-            Felt maxFee,
+            @JsonKey(toJson: maxFeeToJson) Felt maxFee,
             String version,
             List<Felt> signature,
             Felt nonce)?
@@ -1747,7 +1752,7 @@ class _$BroadcastedDeclareTxn implements BroadcastedDeclareTxn {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(
             String type,
-            Felt maxFee,
+            @JsonKey(toJson: maxFeeToJson) Felt maxFee,
             String version,
             List<Felt> signature,
             Felt? nonce,
@@ -1757,7 +1762,7 @@ class _$BroadcastedDeclareTxn implements BroadcastedDeclareTxn {
         broadcastedInvokeTxnV0,
     TResult Function(
             String type,
-            Felt maxFee,
+            @JsonKey(toJson: maxFeeToJson) Felt maxFee,
             String version,
             List<Felt> signature,
             Felt nonce,
@@ -1766,7 +1771,7 @@ class _$BroadcastedDeclareTxn implements BroadcastedDeclareTxn {
         broadcastedInvokeTxnV1,
     TResult Function(
             String type,
-            Felt maxFee,
+            @JsonKey(toJson: maxFeeToJson) Felt maxFee,
             String version,
             List<Felt> signature,
             Felt nonce,
@@ -1781,7 +1786,7 @@ class _$BroadcastedDeclareTxn implements BroadcastedDeclareTxn {
             Felt classHash,
             List<Felt> constructorCalldata,
             String type,
-            Felt maxFee,
+            @JsonKey(toJson: maxFeeToJson) Felt maxFee,
             String version,
             List<Felt> signature,
             Felt nonce)?
@@ -1852,7 +1857,7 @@ class _$BroadcastedDeclareTxn implements BroadcastedDeclareTxn {
 abstract class BroadcastedDeclareTxn implements BroadcastedTxn {
   const factory BroadcastedDeclareTxn(
       {required final String type,
-      required final Felt maxFee,
+      @JsonKey(toJson: maxFeeToJson) required final Felt maxFee,
       required final String version,
       required final List<Felt> signature,
       required final Felt nonce,
@@ -1864,6 +1869,7 @@ abstract class BroadcastedDeclareTxn implements BroadcastedTxn {
 
   @override // start of BROADCASTED_TXN_COMMON_PROPERTIES
   String get type;
+  @JsonKey(toJson: maxFeeToJson)
   Felt get maxFee;
   @override
   String get version;
@@ -2025,7 +2031,7 @@ class _$BroadcastedDeployTxn implements BroadcastedDeployTxn {
   TResult when<TResult extends Object?>({
     required TResult Function(
             String type,
-            Felt maxFee,
+            @JsonKey(toJson: maxFeeToJson) Felt maxFee,
             String version,
             List<Felt> signature,
             Felt? nonce,
@@ -2035,7 +2041,7 @@ class _$BroadcastedDeployTxn implements BroadcastedDeployTxn {
         broadcastedInvokeTxnV0,
     required TResult Function(
             String type,
-            Felt maxFee,
+            @JsonKey(toJson: maxFeeToJson) Felt maxFee,
             String version,
             List<Felt> signature,
             Felt nonce,
@@ -2044,7 +2050,7 @@ class _$BroadcastedDeployTxn implements BroadcastedDeployTxn {
         broadcastedInvokeTxnV1,
     required TResult Function(
             String type,
-            Felt maxFee,
+            @JsonKey(toJson: maxFeeToJson) Felt maxFee,
             String version,
             List<Felt> signature,
             Felt nonce,
@@ -2063,7 +2069,7 @@ class _$BroadcastedDeployTxn implements BroadcastedDeployTxn {
             Felt classHash,
             List<Felt> constructorCalldata,
             String type,
-            Felt maxFee,
+            @JsonKey(toJson: maxFeeToJson) Felt maxFee,
             String version,
             List<Felt> signature,
             Felt nonce)
@@ -2078,7 +2084,7 @@ class _$BroadcastedDeployTxn implements BroadcastedDeployTxn {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(
             String type,
-            Felt maxFee,
+            @JsonKey(toJson: maxFeeToJson) Felt maxFee,
             String version,
             List<Felt> signature,
             Felt? nonce,
@@ -2088,7 +2094,7 @@ class _$BroadcastedDeployTxn implements BroadcastedDeployTxn {
         broadcastedInvokeTxnV0,
     TResult? Function(
             String type,
-            Felt maxFee,
+            @JsonKey(toJson: maxFeeToJson) Felt maxFee,
             String version,
             List<Felt> signature,
             Felt nonce,
@@ -2097,7 +2103,7 @@ class _$BroadcastedDeployTxn implements BroadcastedDeployTxn {
         broadcastedInvokeTxnV1,
     TResult? Function(
             String type,
-            Felt maxFee,
+            @JsonKey(toJson: maxFeeToJson) Felt maxFee,
             String version,
             List<Felt> signature,
             Felt nonce,
@@ -2112,7 +2118,7 @@ class _$BroadcastedDeployTxn implements BroadcastedDeployTxn {
             Felt classHash,
             List<Felt> constructorCalldata,
             String type,
-            Felt maxFee,
+            @JsonKey(toJson: maxFeeToJson) Felt maxFee,
             String version,
             List<Felt> signature,
             Felt nonce)?
@@ -2127,7 +2133,7 @@ class _$BroadcastedDeployTxn implements BroadcastedDeployTxn {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(
             String type,
-            Felt maxFee,
+            @JsonKey(toJson: maxFeeToJson) Felt maxFee,
             String version,
             List<Felt> signature,
             Felt? nonce,
@@ -2137,7 +2143,7 @@ class _$BroadcastedDeployTxn implements BroadcastedDeployTxn {
         broadcastedInvokeTxnV0,
     TResult Function(
             String type,
-            Felt maxFee,
+            @JsonKey(toJson: maxFeeToJson) Felt maxFee,
             String version,
             List<Felt> signature,
             Felt nonce,
@@ -2146,7 +2152,7 @@ class _$BroadcastedDeployTxn implements BroadcastedDeployTxn {
         broadcastedInvokeTxnV1,
     TResult Function(
             String type,
-            Felt maxFee,
+            @JsonKey(toJson: maxFeeToJson) Felt maxFee,
             String version,
             List<Felt> signature,
             Felt nonce,
@@ -2161,7 +2167,7 @@ class _$BroadcastedDeployTxn implements BroadcastedDeployTxn {
             Felt classHash,
             List<Felt> constructorCalldata,
             String type,
-            Felt maxFee,
+            @JsonKey(toJson: maxFeeToJson) Felt maxFee,
             String version,
             List<Felt> signature,
             Felt nonce)?
@@ -2267,7 +2273,7 @@ abstract class _$$BroadcastedDeployAccountTxnCopyWith<$Res>
       Felt classHash,
       List<Felt> constructorCalldata,
       String type,
-      Felt maxFee,
+      @JsonKey(toJson: maxFeeToJson) Felt maxFee,
       String version,
       List<Felt> signature,
       Felt nonce});
@@ -2340,7 +2346,7 @@ class _$BroadcastedDeployAccountTxn implements BroadcastedDeployAccountTxn {
       required this.classHash,
       required final List<Felt> constructorCalldata,
       required this.type,
-      required this.maxFee,
+      @JsonKey(toJson: maxFeeToJson) required this.maxFee,
       required this.version,
       required final List<Felt> signature,
       required this.nonce,
@@ -2369,6 +2375,7 @@ class _$BroadcastedDeployAccountTxn implements BroadcastedDeployAccountTxn {
   @override
   final String type;
   @override
+  @JsonKey(toJson: maxFeeToJson)
   final Felt maxFee;
   @override
   final String version;
@@ -2435,7 +2442,7 @@ class _$BroadcastedDeployAccountTxn implements BroadcastedDeployAccountTxn {
   TResult when<TResult extends Object?>({
     required TResult Function(
             String type,
-            Felt maxFee,
+            @JsonKey(toJson: maxFeeToJson) Felt maxFee,
             String version,
             List<Felt> signature,
             Felt? nonce,
@@ -2445,7 +2452,7 @@ class _$BroadcastedDeployAccountTxn implements BroadcastedDeployAccountTxn {
         broadcastedInvokeTxnV0,
     required TResult Function(
             String type,
-            Felt maxFee,
+            @JsonKey(toJson: maxFeeToJson) Felt maxFee,
             String version,
             List<Felt> signature,
             Felt nonce,
@@ -2454,7 +2461,7 @@ class _$BroadcastedDeployAccountTxn implements BroadcastedDeployAccountTxn {
         broadcastedInvokeTxnV1,
     required TResult Function(
             String type,
-            Felt maxFee,
+            @JsonKey(toJson: maxFeeToJson) Felt maxFee,
             String version,
             List<Felt> signature,
             Felt nonce,
@@ -2473,7 +2480,7 @@ class _$BroadcastedDeployAccountTxn implements BroadcastedDeployAccountTxn {
             Felt classHash,
             List<Felt> constructorCalldata,
             String type,
-            Felt maxFee,
+            @JsonKey(toJson: maxFeeToJson) Felt maxFee,
             String version,
             List<Felt> signature,
             Felt nonce)
@@ -2488,7 +2495,7 @@ class _$BroadcastedDeployAccountTxn implements BroadcastedDeployAccountTxn {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(
             String type,
-            Felt maxFee,
+            @JsonKey(toJson: maxFeeToJson) Felt maxFee,
             String version,
             List<Felt> signature,
             Felt? nonce,
@@ -2498,7 +2505,7 @@ class _$BroadcastedDeployAccountTxn implements BroadcastedDeployAccountTxn {
         broadcastedInvokeTxnV0,
     TResult? Function(
             String type,
-            Felt maxFee,
+            @JsonKey(toJson: maxFeeToJson) Felt maxFee,
             String version,
             List<Felt> signature,
             Felt nonce,
@@ -2507,7 +2514,7 @@ class _$BroadcastedDeployAccountTxn implements BroadcastedDeployAccountTxn {
         broadcastedInvokeTxnV1,
     TResult? Function(
             String type,
-            Felt maxFee,
+            @JsonKey(toJson: maxFeeToJson) Felt maxFee,
             String version,
             List<Felt> signature,
             Felt nonce,
@@ -2522,7 +2529,7 @@ class _$BroadcastedDeployAccountTxn implements BroadcastedDeployAccountTxn {
             Felt classHash,
             List<Felt> constructorCalldata,
             String type,
-            Felt maxFee,
+            @JsonKey(toJson: maxFeeToJson) Felt maxFee,
             String version,
             List<Felt> signature,
             Felt nonce)?
@@ -2537,7 +2544,7 @@ class _$BroadcastedDeployAccountTxn implements BroadcastedDeployAccountTxn {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(
             String type,
-            Felt maxFee,
+            @JsonKey(toJson: maxFeeToJson) Felt maxFee,
             String version,
             List<Felt> signature,
             Felt? nonce,
@@ -2547,7 +2554,7 @@ class _$BroadcastedDeployAccountTxn implements BroadcastedDeployAccountTxn {
         broadcastedInvokeTxnV0,
     TResult Function(
             String type,
-            Felt maxFee,
+            @JsonKey(toJson: maxFeeToJson) Felt maxFee,
             String version,
             List<Felt> signature,
             Felt nonce,
@@ -2556,7 +2563,7 @@ class _$BroadcastedDeployAccountTxn implements BroadcastedDeployAccountTxn {
         broadcastedInvokeTxnV1,
     TResult Function(
             String type,
-            Felt maxFee,
+            @JsonKey(toJson: maxFeeToJson) Felt maxFee,
             String version,
             List<Felt> signature,
             Felt nonce,
@@ -2571,7 +2578,7 @@ class _$BroadcastedDeployAccountTxn implements BroadcastedDeployAccountTxn {
             Felt classHash,
             List<Felt> constructorCalldata,
             String type,
-            Felt maxFee,
+            @JsonKey(toJson: maxFeeToJson) Felt maxFee,
             String version,
             List<Felt> signature,
             Felt nonce)?
@@ -2645,7 +2652,7 @@ abstract class BroadcastedDeployAccountTxn implements BroadcastedTxn {
       required final Felt classHash,
       required final List<Felt> constructorCalldata,
       required final String type,
-      required final Felt maxFee,
+      @JsonKey(toJson: maxFeeToJson) required final Felt maxFee,
       required final String version,
       required final List<Felt> signature,
       required final Felt nonce}) = _$BroadcastedDeployAccountTxn;
@@ -2658,6 +2665,7 @@ abstract class BroadcastedDeployAccountTxn implements BroadcastedTxn {
   List<Felt> get constructorCalldata;
   @override // start of BROADCASTED_TXN_COMMON_PROPERTIES
   String get type;
+  @JsonKey(toJson: maxFeeToJson)
   Felt get maxFee;
   @override
   String get version;

@@ -39,7 +39,7 @@ Map<String, dynamic> _$$_InvokeTransactionV0ToJson(
         _$_InvokeTransactionV0 instance) =>
     <String, dynamic>{
       'type': instance.type,
-      'max_fee': instance.maxFee.toJson(),
+      'max_fee': maxFeeToJson(instance.maxFee),
       'version': instance.version,
       'signature': instance.signature.map((e) => e.toJson()).toList(),
       'contract_address': instance.contractAddress.toJson(),
@@ -67,7 +67,7 @@ Map<String, dynamic> _$$_InvokeTransactionV1ToJson(
         _$_InvokeTransactionV1 instance) =>
     <String, dynamic>{
       'signature': instance.signature.map((e) => e.toJson()).toList(),
-      'max_fee': instance.maxFee.toJson(),
+      'max_fee': maxFeeToJson(instance.maxFee),
       'nonce': instance.nonce.toJson(),
       'sender_address': instance.senderAddress.toJson(),
       'calldata': instance.calldata.map((e) => e.toJson()).toList(),
