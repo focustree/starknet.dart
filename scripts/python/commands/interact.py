@@ -3,7 +3,7 @@ import fire
 from pathlib import Path
 
 from scripts.python.config import COMPILED_CONTRACTS_PATH, MAX_FEE, get_config
-from scripts.python.client import get_account_client
+from scripts.python.client import get_account
 from starknet_py.contract import Contract
 
 
@@ -42,12 +42,13 @@ def main():
 
 def _get_balance_contract(
     env: str,
-    address="0x149867a6ce95f2d20ed96187abd430d7c2c48cdfb7dd541fb1337563ff8d9b9",
+    address="0x5b017aae9bfb8fea994d27ab1e8a75d18d2788891f808043168b3829c17a9b7",
     contract_name="balance"
 ):
     config = get_config(env)
-    account_client = get_account_client(config)
+    account = get_account(config)
     abi = json.loads(
         Path(f"{COMPILED_CONTRACTS_PATH}/{contract_name}_abi.json").read_text())
     return Contract(
-        address=address, abi=abi, client=account_client)
+        address=address, abi=abi, provider=account)
+

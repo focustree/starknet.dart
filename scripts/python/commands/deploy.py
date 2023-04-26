@@ -9,7 +9,7 @@ from starknet_py.cairo.felt import (
     encode_shortstring,
 )
 
-from scripts.python.client import get_account_client
+from scripts.python.client import get_account
 from scripts.python.commands.declare import declare
 from scripts.python.config import COMPILED_CONTRACTS_PATH, MAX_FEE, SALT, get_config
 
@@ -32,13 +32,13 @@ async def deploy_balance(env="local", max_fee=MAX_FEE, salt=SALT):
     )
     print(f"Deploying to address: {hex(address)}")
 
-    account_client = get_account_client(config)
+    account = get_account(config)
 
-    invoke_tx = await account_client.sign_invoke_transaction(calls=[deploy_call], max_fee=max_fee, version=1)
-    resp = await account_client.send_transaction(invoke_tx)
+    invoke_tx = await account.sign_invoke_transaction(calls=[deploy_call], max_fee=max_fee)
+    resp = await account.client.send_transaction(invoke_tx)
 
     print(f"Waiting for tx: {hex(resp.transaction_hash)}")
-    await account_client.wait_for_tx(resp.transaction_hash)
+    await account.client.wait_for_tx(resp.transaction_hash)
 
     print("Done.")
 
@@ -84,7 +84,7 @@ async def _deploy_upgradeable(implem_hash: str,
                               env="local"):
     config = get_config(env)
 
-    account_client = get_account_client(config)
+    account = get_account(config)
     deployer = Deployer()
 
     proxy_hash = await declare("proxy", env)
@@ -103,10 +103,10 @@ async def _deploy_upgradeable(implem_hash: str,
     )
     print(f"Deploying to address: {hex(address)}")
 
-    invoke_tx = await account_client.sign_invoke_transaction(calls=[deploy_call], max_fee=max_fee, version=1)
-    resp = await account_client.send_transaction(invoke_tx)
+    invoke_tx = await account.sign_invoke_transaction(calls=[deploy_call], max_fee=max_fee)
+    resp = await account.client.send_transaction(invoke_tx)
 
     print(f"Waiting for tx: {hex(resp.transaction_hash)}")
-    await account_client.wait_for_tx(resp.transaction_hash)
+    await account.client.wait_for_tx(resp.transaction_hash)
 
     print("Done.")

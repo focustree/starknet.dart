@@ -11,12 +11,12 @@ devnet = "scripts.python.commands.devnet:main"
 interact = "scripts.python.commands.interact:main"
 
 [tool.poetry.dependencies]
-python = ">=3.8,<3.10"
-starknet-devnet = "0.4.0"
-cairo-lang = "0.10.1"
-starknet-py = "^0.10.1-alpha.0"
+python = ">=3.9,<3.10"
+starknet-devnet = "0.5.0"
+cairo-lang = "0.11.0.2"
+starknet-py = "^0.15.2"
 autopep8 = "^2.0.0"
-cairo-nile = "^0.11.0"
+cairo-nile = "^0.14.0"
 fire = "^0.4.0"
 
 [tool.poetry.dev-dependencies]
