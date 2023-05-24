@@ -37,7 +37,7 @@ class Felt {
   }
 
   factory Felt.fromBytes(Uint8List bytes) {
-    return Felt(bytesToBigInt(bytes));
+    return Felt(bytesToUnsignedInt(bytes));
   }
 
   factory Felt.fromJson(String json) {
@@ -45,7 +45,7 @@ class Felt {
   }
 
   String toJson() {
-    return bigIntToHexString(_bigInt);
+    return '0x${_bigInt.toRadixString(16).padLeft(64, "0")}';
   }
 
   String toHexString() {

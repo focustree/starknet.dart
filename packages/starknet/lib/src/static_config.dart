@@ -26,9 +26,9 @@ final ethAddress = Felt.fromHexString(
   "0x049d36570d4e46f48e99674bd3fcc84644ddd6b96f7c741b1562b82f9e004dc7",
 );
 
-// from starknet-devnet 0.4.0
+// from starknet-devnet 0.5.1
 final devnetOpenZeppelinAccountClassHash = Felt.fromHexString(
-  "0x1fac3074c9d5282f0acc5c69a4781a1c711efea5e73c550c5d9fb253cf7fd3d",
+  "0x4D07E40E93398ED3C76981E72DD1FD22557A78CE36C0515F679E27F0BB5BC5F",
 );
 
 // Devnet

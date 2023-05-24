@@ -42,7 +42,7 @@ class BroadcastedTxn with _$BroadcastedTxn {
   const factory BroadcastedTxn.broadcastedInvokeTxnV0({
     // start of BROADCASTED_TXN_COMMON_PROPERTIES
     required String type,
-    required Felt maxFee,
+    @JsonKey(toJson: maxFeeToJson) required Felt maxFee,
     required String version,
     required List<Felt> signature,
     Felt? nonce,
@@ -59,7 +59,7 @@ class BroadcastedTxn with _$BroadcastedTxn {
   const factory BroadcastedTxn.broadcastedInvokeTxnV1({
     // start of BROADCASTED_TXN_COMMON_PROPERTIES
     required String type,
-    required Felt maxFee,
+    @JsonKey(toJson: maxFeeToJson) required Felt maxFee,
     required String version,
     required List<Felt> signature,
     required Felt nonce,
@@ -75,7 +75,7 @@ class BroadcastedTxn with _$BroadcastedTxn {
   const factory BroadcastedTxn.broadcastedDeclareTxn({
     // start of BROADCASTED_TXN_COMMON_PROPERTIES
     required String type,
-    required Felt maxFee,
+    @JsonKey(toJson: maxFeeToJson) required Felt maxFee,
     required String version,
     required List<Felt> signature,
     required Felt nonce,
@@ -104,7 +104,7 @@ class BroadcastedTxn with _$BroadcastedTxn {
 
     // start of BROADCASTED_TXN_COMMON_PROPERTIES
     required String type,
-    required Felt maxFee,
+    @JsonKey(toJson: maxFeeToJson) required Felt maxFee,
     required String version,
     required List<Felt> signature,
     required Felt nonce,

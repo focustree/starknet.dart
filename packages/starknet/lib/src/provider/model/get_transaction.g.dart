@@ -64,7 +64,7 @@ _$InvokeTxnV0 _$$InvokeTxnV0FromJson(Map<String, dynamic> json) =>
 Map<String, dynamic> _$$InvokeTxnV0ToJson(_$InvokeTxnV0 instance) =>
     <String, dynamic>{
       'transaction_hash': instance.transactionHash?.toJson(),
-      'max_fee': instance.maxFee?.toJson(),
+      'max_fee': maxFeeToJson(instance.maxFee),
       'version': instance.version,
       'signature': instance.signature?.map((e) => e.toJson()).toList(),
       'nonce': instance.nonce?.toJson(),
@@ -102,7 +102,7 @@ _$InvokeTxnV1 _$$InvokeTxnV1FromJson(Map<String, dynamic> json) =>
 Map<String, dynamic> _$$InvokeTxnV1ToJson(_$InvokeTxnV1 instance) =>
     <String, dynamic>{
       'transaction_hash': instance.transactionHash?.toJson(),
-      'max_fee': instance.maxFee?.toJson(),
+      'max_fee': maxFeeToJson(instance.maxFee),
       'version': instance.version,
       'signature': instance.signature?.map((e) => e.toJson()).toList(),
       'nonce': instance.nonce?.toJson(),
@@ -138,7 +138,7 @@ _$DeclareTxn _$$DeclareTxnFromJson(Map<String, dynamic> json) => _$DeclareTxn(
 Map<String, dynamic> _$$DeclareTxnToJson(_$DeclareTxn instance) =>
     <String, dynamic>{
       'transaction_hash': instance.transactionHash?.toJson(),
-      'max_fee': instance.maxFee?.toJson(),
+      'max_fee': maxFeeToJson(instance.maxFee),
       'version': instance.version,
       'signature': instance.signature?.map((e) => e.toJson()).toList(),
       'nonce': instance.nonce?.toJson(),
@@ -208,7 +208,7 @@ _$DeployAccountTxn _$$DeployAccountTxnFromJson(Map<String, dynamic> json) =>
 Map<String, dynamic> _$$DeployAccountTxnToJson(_$DeployAccountTxn instance) =>
     <String, dynamic>{
       'transaction_hash': instance.transactionHash?.toJson(),
-      'max_fee': instance.maxFee?.toJson(),
+      'max_fee': maxFeeToJson(instance.maxFee),
       'version': instance.version,
       'signature': instance.signature?.map((e) => e.toJson()).toList(),
       'nonce': instance.nonce?.toJson(),

@@ -19,7 +19,7 @@ class DeployAccountTransactionV1
     implements DeployAccountTransaction {
   const factory DeployAccountTransactionV1({
     required List<Felt> signature,
-    required Felt maxFee,
+    @JsonKey(toJson: maxFeeToJson) required Felt maxFee,
     required Felt nonce,
     required Felt contractAddressSalt,
     required List<Felt> constructorCalldata,

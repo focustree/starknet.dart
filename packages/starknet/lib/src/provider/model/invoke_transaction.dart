@@ -29,7 +29,7 @@ class InvokeTransactionV0
     implements InvokeTransaction {
   const factory InvokeTransactionV0({
     @Default('INVOKE') String type,
-    required Felt maxFee,
+    @JsonKey(toJson: maxFeeToJson) required Felt maxFee,
     @Default('0x00') String version,
     required List<Felt> signature,
     required Felt contractAddress,
@@ -47,7 +47,7 @@ class InvokeTransactionV1
     implements InvokeTransaction {
   const factory InvokeTransactionV1({
     required List<Felt> signature,
-    required Felt maxFee,
+    @JsonKey(toJson: maxFeeToJson) required Felt maxFee,
     required Felt nonce,
     required Felt senderAddress,
     required List<Felt> calldata,

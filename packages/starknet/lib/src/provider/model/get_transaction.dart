@@ -26,7 +26,7 @@ class Txn with _$Txn {
     required Felt? transactionHash,
 
     // start of BROADCASTED_TXN_COMMON_PROPERTIES
-    required Felt? maxFee,
+    @JsonKey(toJson: maxFeeToJson) required Felt? maxFee,
     required String? version,
     required List<Felt>? signature,
     required Felt? nonce,
@@ -45,7 +45,7 @@ class Txn with _$Txn {
     // start of COMMON_TXN_PROPERTIES
     required Felt? transactionHash,
     // start of BROADCASTED_TXN_COMMON_PROPERTIES
-    required Felt? maxFee,
+    @JsonKey(toJson: maxFeeToJson) required Felt? maxFee,
     required String? version,
     required List<Felt>? signature,
     required Felt? nonce,
@@ -63,7 +63,7 @@ class Txn with _$Txn {
     // start of COMMON_TXN_PROPERTIES
     required Felt? transactionHash,
     // start of BROADCASTED_TXN_COMMON_PROPERTIES
-    required Felt? maxFee,
+    @JsonKey(toJson: maxFeeToJson) required Felt? maxFee,
     required String? version,
     required List<Felt>? signature,
     required Felt? nonce,
@@ -91,7 +91,7 @@ class Txn with _$Txn {
     // start of COMMON_TXN_PROPERTIES
     required Felt? transactionHash,
     // start of BROADCASTED_TXN_COMMON_PROPERTIES
-    required Felt? maxFee,
+    @JsonKey(toJson: maxFeeToJson) required Felt? maxFee,
     required String? version,
     required List<Felt>? signature,
     required Felt? nonce,
