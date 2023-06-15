@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:starknet/src/account.dart';
+import 'package:starknet/starknet.dart';
 import 'package:starknet_flutter/src/models/public_account.dart';
 import 'package:starknet_flutter/src/models/wallet.dart';
 import 'package:starknet_flutter/src/services/protect_wallet_service.dart';

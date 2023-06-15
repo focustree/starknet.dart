@@ -1,4 +1,4 @@
-enum PasscodeType { pin_code, password, schema }
+enum PasscodeType { pinCode, password, schema }
 
 enum PasscodeAction { create, unlock }
 

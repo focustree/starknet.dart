@@ -163,47 +163,42 @@ class _ContractAbiGenerator {
           ..type = _convertType(e.type)),
       ));
       b
-        ..constructors.add(Constructor((c) => {
-              c
-                ..optionalParameters.addAll(custom.members.map(
-                  (e) => Parameter((p) => p
-                    ..name = e.name
-                    ..type = _convertType(e.type)
-                    ..required = true
-                    ..named = true
-                    ..toThis = true),
-                ))
-            }))
-        ..constructors.add(Constructor((c) => {
-              c
-                ..factory = true
-                ..name = FROM_CALL_DATA
-                ..requiredParameters.add(Parameter((p) => p
-                  ..name = CALL_DATA_VAR
-                  ..type = CALL_DATA_TYPE))
-                ..body = Block((b) {
-                  for (var member in custom.members) {
-                    if (member.type == "felt") {
-                      b
-                        ..addExpression(declareFinal(member.name)
-                            .assign(refer('$CALL_DATA_VAR[${member.offset}]')));
-                    } else {
-                      b
-                        ..addExpression(declareFinal(member.name).assign(
-                            refer(member.type).property(FROM_CALL_DATA).call([
-                          refer(CALL_DATA_VAR)
-                              .property('sublist')
-                              .call([literalNum(member.offset)])
-                        ])));
-                    }
-                  }
-                  b.addExpression(refer(custom.name).call(
-                      [],
-                      Map.fromIterable(custom.members,
-                          key: (e) => e.name,
-                          value: (e) => refer(e.name))).returned);
-                })
-            }))
+        ..constructors.add(Constructor((c) => c
+          ..optionalParameters.addAll(custom.members.map(
+            (e) => Parameter((p) => p
+              ..name = e.name
+              ..type = _convertType(e.type)
+              ..required = true
+              ..named = true
+              ..toThis = true),
+          ))))
+        ..constructors.add(Constructor((c) => c
+          ..factory = true
+          ..name = FROM_CALL_DATA
+          ..requiredParameters.add(Parameter((p) => p
+            ..name = CALL_DATA_VAR
+            ..type = CALL_DATA_TYPE))
+          ..body = Block((b) {
+            for (var member in custom.members) {
+              if (member.type == "felt") {
+                b
+                  ..addExpression(declareFinal(member.name)
+                      .assign(refer('$CALL_DATA_VAR[${member.offset}]')));
+              } else {
+                b
+                  ..addExpression(declareFinal(member.name)
+                      .assign(refer(member.type).property(FROM_CALL_DATA).call([
+                    refer(CALL_DATA_VAR)
+                        .property('sublist')
+                        .call([literalNum(member.offset)])
+                  ])));
+              }
+            }
+            b.addExpression(refer(custom.name).call(
+                [],
+                Map.fromIterable(custom.members,
+                    key: (e) => e.name, value: (e) => refer(e.name))).returned);
+          })))
         ..methods.add(Method((m) => m
           ..name = TO_CALL_DATA
           ..returns = CALL_DATA_TYPE
@@ -248,89 +243,82 @@ class _ContractAbiGenerator {
             ..name = e.name
             ..type = _convertType(e.type)),
         ))
-        ..constructors.add(Constructor((c) => {
-              c
-                ..optionalParameters.addAll(fun.outputsFiltered.map(
-                  (e) => Parameter((p) => p
-                    ..name = e.name
-                    ..type = _convertType(e.type)
-                    ..required = true
-                    ..named = true
-                    ..toThis = true),
-                ))
-            }))
-        ..constructors.add(Constructor((c) => {
-              c
-                ..factory = true
-                ..name = FROM_CALL_DATA
-                ..requiredParameters.add(Parameter((p) => p
-                  ..name = CALL_DATA_VAR
-                  ..type = CALL_DATA_TYPE))
-                ..body = Block((b) {
-                  String offsetVar = "offset";
-                  Reference offset = refer(offsetVar);
-                  b.addExpression(declareVar(offsetVar, type: refer('int'))
-                      .assign(literalNum(0)));
-                  String tmpSizeVar = "_tmpSize";
-                  Reference tmpSize = refer(tmpSizeVar);
+        ..constructors.add(Constructor((c) => c
+          ..optionalParameters.addAll(fun.outputsFiltered.map(
+            (e) => Parameter((p) => p
+              ..name = e.name
+              ..type = _convertType(e.type)
+              ..required = true
+              ..named = true
+              ..toThis = true),
+          ))))
+        ..constructors.add(Constructor((c) => c
+          ..factory = true
+          ..name = FROM_CALL_DATA
+          ..requiredParameters.add(Parameter((p) => p
+            ..name = CALL_DATA_VAR
+            ..type = CALL_DATA_TYPE))
+          ..body = Block((b) {
+            String offsetVar = "offset";
+            Reference offset = refer(offsetVar);
+            b.addExpression(declareVar(offsetVar, type: refer('int'))
+                .assign(literalNum(0)));
+            String tmpSizeVar = "_tmpSize";
+            Reference tmpSize = refer(tmpSizeVar);
 
-                  if (fun.outputsHas("felt*")) {
-                    b.addExpression(declareVar(tmpSizeVar, type: refer('int'))
-                        .assign(literalNum(0)));
-                  }
-                  for (var output in fun.outputsFiltered) {
-                    switch (output.type) {
-                      case "felt":
-                        b
-                          ..addExpression(declareFinal(output.name)
-                              .assign(refer(CALL_DATA_VAR).index(offset)))
-                          ..addExpression(
-                              offset.assign(offset.operatorAdd(literalNum(1))));
-                        break;
-                      case "felt*":
-                        b
-                          ..addExpression(tmpSize.assign(refer(CALL_DATA_VAR)
-                              .index(offset)
-                              .property('toInt')
-                              .call([])))
-                          ..addExpression(declareFinal(output.name).assign(
-                              refer(CALL_DATA_VAR)
-                                  .property('sublist')
-                                  .call([
-                                    offset,
-                                    offset
-                                        .operatorAdd(tmpSize)
-                                        .operatorAdd(literalNum(1))
-                                  ])
-                                  .property(FROM_CALL_DATA)
-                                  .call([])))
-                          ..addExpression(offset.assign(offset
-                              .operatorAdd(tmpSize)
-                              .operatorAdd(literalNum(1))));
+            if (fun.outputsHas("felt*")) {
+              b.addExpression(declareVar(tmpSizeVar, type: refer('int'))
+                  .assign(literalNum(0)));
+            }
+            for (var output in fun.outputsFiltered) {
+              switch (output.type) {
+                case "felt":
+                  b
+                    ..addExpression(declareFinal(output.name)
+                        .assign(refer(CALL_DATA_VAR).index(offset)))
+                    ..addExpression(
+                        offset.assign(offset.operatorAdd(literalNum(1))));
+                  break;
+                case "felt*":
+                  b
+                    ..addExpression(tmpSize.assign(refer(CALL_DATA_VAR)
+                        .index(offset)
+                        .property('toInt')
+                        .call([])))
+                    ..addExpression(declareFinal(output.name).assign(
+                        refer(CALL_DATA_VAR)
+                            .property('sublist')
+                            .call([
+                              offset,
+                              offset
+                                  .operatorAdd(tmpSize)
+                                  .operatorAdd(literalNum(1))
+                            ])
+                            .property(FROM_CALL_DATA)
+                            .call([])))
+                    ..addExpression(offset.assign(offset
+                        .operatorAdd(tmpSize)
+                        .operatorAdd(literalNum(1))));
 
-                        break;
-                      default:
-                        b
-                          ..addExpression(declareFinal(output.name).assign(
-                              _convertType(output.type)
-                                  .property(FROM_CALL_DATA)
-                                  .call([
-                            refer(CALL_DATA_VAR)
-                                .property('sublist')
-                                .call([offset])
-                          ])))
-                          ..addExpression(offset.assign(offset.operatorAdd(
-                              literalNum(structs[output.type]!.size))));
-                        break;
-                    }
-                  }
-                  b.addExpression(refer(name).call(
-                      [],
-                      Map.fromIterable(fun.outputsFiltered,
-                          key: (e) => e.name,
-                          value: (e) => refer(e.name))).returned);
-                })
-            }));
+                  break;
+                default:
+                  b
+                    ..addExpression(declareFinal(output.name).assign(
+                        _convertType(output.type)
+                            .property(FROM_CALL_DATA)
+                            .call([
+                      refer(CALL_DATA_VAR).property('sublist').call([offset])
+                    ])))
+                    ..addExpression(offset.assign(offset
+                        .operatorAdd(literalNum(structs[output.type]!.size))));
+                  break;
+              }
+            }
+            b.addExpression(refer(name).call(
+                [],
+                Map.fromIterable(fun.outputsFiltered,
+                    key: (e) => e.name, value: (e) => refer(e.name))).returned);
+          })));
 
       b.methods.add(Method((m) => m
         ..name = 'toString'

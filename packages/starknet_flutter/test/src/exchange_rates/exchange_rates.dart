@@ -454,7 +454,6 @@ main() {
         expect(result, isA<Map<String, double>>());
         expect(result.length, greaterThan(0));
         expect(result["ETH"], isA<double>());
-        print("${result.length} exchange rates found");
       });
 
       test("Get exchange rate for ETH in USD", () async {
@@ -464,7 +463,6 @@ main() {
         );
         expect(result, isA<double>());
         expect(result, greaterThan(0));
-        print("1 ETH = $result USD");
       });
     });
   }
