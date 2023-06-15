@@ -1,6 +1,6 @@
 name: starknet_builder
 description: The Dart SDK builder for contracts on starknet
-version: 0.0.1
+version: 0.0.4
 repository: https://github.com/gabsn/starknet.dart
 
 environment:
