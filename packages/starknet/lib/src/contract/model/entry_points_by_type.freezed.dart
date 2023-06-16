@@ -130,11 +130,9 @@ class __$$_EntryPointsByTypeCopyWithImpl<$Res>
 class _$_EntryPointsByType implements _EntryPointsByType {
   const _$_EntryPointsByType(
       {@JsonKey(name: 'CONSTRUCTOR')
-          required final List<EntryPoint> constructor,
-      @JsonKey(name: 'EXTERNAL')
-          required final List<EntryPoint> external,
-      @JsonKey(name: 'L1_HANDLER')
-          required final List<EntryPoint> l1Handler})
+      required final List<EntryPoint> constructor,
+      @JsonKey(name: 'EXTERNAL') required final List<EntryPoint> external,
+      @JsonKey(name: 'L1_HANDLER') required final List<EntryPoint> l1Handler})
       : _constructor = constructor,
         _external = external,
         _l1Handler = l1Handler;
@@ -212,11 +210,10 @@ class _$_EntryPointsByType implements _EntryPointsByType {
 abstract class _EntryPointsByType implements EntryPointsByType {
   const factory _EntryPointsByType(
       {@JsonKey(name: 'CONSTRUCTOR')
-          required final List<EntryPoint> constructor,
-      @JsonKey(name: 'EXTERNAL')
-          required final List<EntryPoint> external,
+      required final List<EntryPoint> constructor,
+      @JsonKey(name: 'EXTERNAL') required final List<EntryPoint> external,
       @JsonKey(name: 'L1_HANDLER')
-          required final List<EntryPoint> l1Handler}) = _$_EntryPointsByType;
+      required final List<EntryPoint> l1Handler}) = _$_EntryPointsByType;
 
   factory _EntryPointsByType.fromJson(Map<String, dynamic> json) =
       _$_EntryPointsByType.fromJson;

@@ -67,7 +67,7 @@ class ReceiveModal extends StatelessWidget {
                     maxHeight: 400,
                     maxWidth: 400,
                   ),
-                  child: QrImage(
+                  child: QrImageView(
                     data: address,
                     version: QrVersions.auto,
                   ),
@@ -78,7 +78,7 @@ class ReceiveModal extends StatelessWidget {
                     text: address,
                     onTap: () {
                       Clipboard.setData(ClipboardData(text: address));
-                
+
                       ScaffoldMessenger.of(context).showSnackBar(
                         const SnackBar(
                           content: Text('Address copied to clipboard'),

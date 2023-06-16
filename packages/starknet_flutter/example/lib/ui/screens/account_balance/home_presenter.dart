@@ -1,4 +1,4 @@
-import 'package:starknet/src/account.dart';
+import 'package:starknet/starknet.dart';
 import 'package:starknet_flutter/starknet_flutter.dart';
 
 import 'home.dart';
