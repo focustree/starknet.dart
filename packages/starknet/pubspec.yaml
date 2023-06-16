@@ -1,6 +1,6 @@
 name: starknet
 description: The Dart SDK to interact with any smart contracts on StarkNet
-version: 0.0.4
+version: 0.1.0
 repository: https://github.com/gabsn/starknet.dart
 
 environment:
