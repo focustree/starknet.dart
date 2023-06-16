@@ -89,7 +89,7 @@ class _WalletListPageState extends State<WalletListPage>
                 ),
             const SizedBox(height: 8),
             Flexible(
-              child: ValueListenableBuilder(
+              child: ValueListenableBuilder<List<Wallet>>(
                 valueListenable: presenter.watchWallets,
                 builder: (context, wallets, _) {
                   return Column(

@@ -1,5 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 import 'package:starknet/starknet.dart';
 import 'package:starknet_flutter/src/services/restore_wallet_service.dart';
 import 'package:starknet_flutter/src/views/wallet/wallet_initialization_viewmodel.dart';
@@ -31,7 +32,7 @@ class WalletListPresenter {
         wallet.accountType == StarknetAccountType.braavos ||
         wallet.accountType == StarknetAccountType.argentX) {
       // Recover the account but don't deploy it if it's not deployed
-      final maxOrder = wallet.accounts.fold(
+      final maxOrder = wallet.accounts.fold<int>(
         0,
         (previousValue, element) =>
             element.order > previousValue ? element.order : previousValue,

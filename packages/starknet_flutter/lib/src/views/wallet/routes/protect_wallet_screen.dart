@@ -39,11 +39,11 @@ class ProtectWalletScreen extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 25),
-          FutureBuilder(
+          FutureBuilder<SecureStore>(
             future: StarknetStore.secure(),
             builder: (context, snapshot) {
               if (snapshot.hasData) {
-                return FutureBuilder(
+                return FutureBuilder<BouncingButton>(
                   future: snapshot.requireData.when(
                     biometric: (biometric) {
                       return BouncingButton.plain(

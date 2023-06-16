@@ -1,6 +1,6 @@
 name: starknet_flutter
 description: Zero-config wallet components for starknet
-version: 0.1.0
+version: 0.1.1
 homepage: https://github.com/gabsn/starknet.dart/tree/main/packages/starknet_flutter
 
 environment:
