@@ -4,7 +4,7 @@ version: 0.0.1
 repository: https://github.com/gabsn/starknet.dart
 
 environment:
-  sdk: ">=2.17.3 <3.0.0"
+  sdk: ">=2.17.3 <4.0.0"
 
 dependencies:
   starknet:
