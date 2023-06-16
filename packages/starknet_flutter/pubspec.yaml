@@ -1,10 +1,10 @@
 name: starknet_flutter
 description: Zero-config wallet components for starknet
-version: 0.0.4
+version: 0.1.0
 homepage: https://github.com/gabsn/starknet.dart/tree/main/packages/starknet_flutter
 
 environment:
-  sdk: '>=2.19.2 <3.0.0'
+  sdk: ">=2.19.2 <3.0.0"
   flutter: ">=2.5.0"
 
 dependencies:
@@ -67,7 +67,6 @@ flutter:
         pluginClass: StarknetFlutterPlugin
       macos:
         pluginClass: StarknetFlutterPlugin
-
 
   # To add assets to your plugin package, add an assets section, like this:
   assets:
