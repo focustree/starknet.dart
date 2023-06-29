@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:starknet_flutter/src/views/wallet/wallet_initialization_presenter.dart';
-import 'package:starknet_flutter/src/views/wallet/wallet_initialization_viewmodel.dart';
 import 'package:starknet_flutter/src/views/widgets/bouncing_button.dart';
 import 'package:starknet_flutter/starknet_flutter.dart';
 

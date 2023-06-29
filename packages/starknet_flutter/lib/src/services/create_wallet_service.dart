@@ -1,5 +1,4 @@
 import 'package:starknet/starknet.dart';
-import 'package:starknet_flutter/src/services/protect_wallet_service.dart';
 import 'package:starknet_flutter/starknet_flutter.dart';
 
 class CreateWalletService extends ProtectWalletService {

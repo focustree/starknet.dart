@@ -4,14 +4,11 @@ import 'package:bip39/bip39.dart' as bip39;
 import 'package:flutter/cupertino.dart';
 import 'package:starknet/starknet.dart';
 import 'package:starknet_flutter/src/services/create_wallet_service.dart';
-import 'package:starknet_flutter/src/services/protect_wallet_service.dart';
 import 'package:starknet_flutter/src/services/restore_wallet_service.dart';
 import 'package:starknet_flutter/src/views/wallet/routes/create_seed_screen.dart';
 import 'package:starknet_flutter/src/views/wallet/routes/protect_wallet_screen.dart';
 import 'package:starknet_flutter/src/views/wallet/routes/restore_wallet_screen.dart';
 import 'package:starknet_flutter/starknet_flutter.dart';
-
-import 'wallet_initialization_viewmodel.dart';
 
 class WalletInitializationPresenter {
   final WalletInitializationViewModel viewModel;

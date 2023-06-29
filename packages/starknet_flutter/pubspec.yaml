@@ -1,6 +1,6 @@
 name: starknet_flutter
 description: Zero-config wallet components for starknet
-version: 0.1.1
+version: 0.1.2
 homepage: https://github.com/gabsn/starknet.dart/tree/main/packages/starknet_flutter
 
 environment:
@@ -27,7 +27,7 @@ dependencies:
   modal_bottom_sheet: ^3.0.0-pre
   path_provider: ^2.0.13
   pattern_lock: ^2.0.0
-  slide_to_act: ^2.0.1
+  slide_to_act_reborn: ^3.0.0
   plugin_platform_interface: ^2.0.2
   pointycastle: ^3.6.2
   starknet:

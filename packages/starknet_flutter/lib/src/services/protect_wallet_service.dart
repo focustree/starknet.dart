@@ -1,7 +1,6 @@
 import 'package:flutter/widgets.dart';
 import 'package:starknet/starknet.dart';
 import 'package:starknet_flutter/pigeon.dart';
-import 'package:starknet_flutter/src/views/wallet/wallet_initialization_viewmodel.dart';
 import 'package:starknet_flutter/starknet_flutter.dart';
 
 class WrongPasswordException implements Exception {
@@ -164,8 +163,7 @@ abstract class ProtectWalletService {
     }
   }
 
-  static Future<PublicAccount> protectWithPassword(
-    {
+  static Future<PublicAccount> protectWithPassword({
     required PasswordStore passwordStore,
     required StarknetAccountType accountType,
     required Wallet wallet,

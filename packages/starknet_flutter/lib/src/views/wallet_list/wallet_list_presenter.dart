@@ -1,9 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:hive_flutter/hive_flutter.dart';
 import 'package:starknet/starknet.dart';
 import 'package:starknet_flutter/src/services/restore_wallet_service.dart';
-import 'package:starknet_flutter/src/views/wallet/wallet_initialization_viewmodel.dart';
 import 'package:starknet_flutter/starknet_flutter.dart';
 
 class WalletListPresenter {

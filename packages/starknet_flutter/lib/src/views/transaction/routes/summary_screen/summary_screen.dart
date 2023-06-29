@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:slide_to_act/slide_to_act.dart';
+import 'package:slide_to_act_reborn/slide_to_act_reborn.dart';
 import 'package:starknet_flutter/src/views/transaction/routes/summary_screen/widgets/crypto_amount.dart';
 import 'package:starknet_flutter/src/views/transaction/routes/summary_screen/widgets/funds_lost_alert.dart';
 import 'package:starknet_flutter/src/views/transaction/routes/summary_screen/widgets/transfert.dart';
