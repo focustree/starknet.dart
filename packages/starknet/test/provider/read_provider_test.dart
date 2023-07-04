@@ -85,7 +85,7 @@ void main() {
         response.when(
             result: (result) => fail("Should fail"),
             error: (error) {
-              expect(error.code, -32602);
+              expect(error.code, JsonRpcApiErrorCode.INVALID_QUERY);
               expect(error.message, contains("invalid value: integer `-1`"));
             });
       }, tags: ['integration-testnet']);
@@ -139,7 +139,7 @@ void main() {
             blockId: blockIdForTheGivenContractAddress);
         response.when(
             error: (error) {
-              expect(error.code, 20);
+              expect(error.code, JsonRpcApiErrorCode.CONTRACT_NOT_FOUND);
               expect(error.message, contains("Contract not found"));
             },
             result: (result) => fail("Should fail"));
@@ -155,7 +155,7 @@ void main() {
             blockId: invalidBlockIdFromBlockHash);
         response.when(
             error: (error) {
-              expect(error.code, 24);
+              expect(error.code, JsonRpcApiErrorCode.BLOCK_NOT_FOUND);
               expect(error.message, contains('Block not found'));
             },
             result: (result) => fail("Should fail"));
@@ -172,7 +172,7 @@ void main() {
             blockId: blockIdForTheGivenContractAddress);
         response.when(
             error: (error) {
-              expect(error.code, 21);
+              expect(error.code, JsonRpcApiErrorCode.INVALID_MESSAGE_SELECTOR);
               expect(error.message, contains("Invalid message selector"));
             },
             result: (result) => fail("Should fail"));
@@ -219,7 +219,8 @@ void main() {
         );
 
         response.when(error: (error) {
-          expect(error.code, 20); // contract not found
+          expect(error.code,
+              JsonRpcApiErrorCode.CONTRACT_NOT_FOUND); // contract not found
         }, result: (result) {
           fail("Should fail");
         });
@@ -235,7 +236,7 @@ void main() {
 
         response.when(
             error: (error) {
-              expect(error.code, 24);
+              expect(error.code, JsonRpcApiErrorCode.BLOCK_NOT_FOUND);
               expect(error.message, "Block not found");
             },
             result: (_) => fail("Should fail"));
@@ -321,7 +322,8 @@ void main() {
         );
 
         response.when(
-            error: (error) => expect(error.code, 25),
+            error: (error) =>
+                expect(error.code, JsonRpcApiErrorCode.TXN_HASH_NOT_FOUND),
             result: (result) => fail('Should fail'));
       });
     });
@@ -350,7 +352,7 @@ void main() {
         response.when(
             result: (_) => fail('Should fail'),
             error: (error) {
-              expect(error.code, 27);
+              expect(error.code, JsonRpcApiErrorCode.INVALID_TXN_INDEX);
               expect(error.message, "Invalid transaction index in a block");
             });
       }, tags: ['integration-testnet']);
@@ -363,7 +365,7 @@ void main() {
         response.when(
             result: (_) => fail('Should fail'),
             error: (error) {
-              expect(error.code, 24);
+              expect(error.code, JsonRpcApiErrorCode.BLOCK_NOT_FOUND);
               expect(error.message, "Block not found");
             });
       }, tags: ['integration-testnet']);
@@ -459,7 +461,8 @@ void main() {
         );
 
         response.when(
-            error: (error) => expect(error.code, 25),
+            error: (error) =>
+                expect(error.code, JsonRpcApiErrorCode.TXN_HASH_NOT_FOUND),
             result: (result) => fail("Shouldn't fail"));
       });
     });
@@ -512,7 +515,7 @@ void main() {
 
         response.when(
             error: (error) {
-              expect(error.code, 24);
+              expect(error.code, JsonRpcApiErrorCode.BLOCK_NOT_FOUND);
               expect(error.message, "Block not found");
             },
             result: (result) => fail("Should fail"));
@@ -527,7 +530,7 @@ void main() {
 
         response.when(
             error: (error) {
-              expect(error.code, 20);
+              expect(error.code, JsonRpcApiErrorCode.CONTRACT_NOT_FOUND);
               expect(error.message, "Contract not found");
             },
             result: (result) => fail("Should fail"));
@@ -578,7 +581,7 @@ void main() {
 
         response.when(
             error: (error) {
-              expect(error.code, 24);
+              expect(error.code, JsonRpcApiErrorCode.BLOCK_NOT_FOUND);
               expect(error.message, "Block not found");
             },
             result: (result) => fail("Should fail"));
@@ -603,7 +606,8 @@ void main() {
         final GetBlockWithTxs response =
             await provider.getBlockWithTxs(invalidBlockIdFromBlockHash);
         response.when(
-          error: (error) => expect(error.code, 24),
+          error: (error) =>
+              expect(error.code, JsonRpcApiErrorCode.BLOCK_NOT_FOUND),
           block: (_) => fail('Expecting BLOCK_NOT_FOUND error'),
         );
       }, tags: ['integration-testnet']);
@@ -630,7 +634,8 @@ void main() {
             await provider.getBlockTxnCount(invalidBlockIdFromBlockHash);
 
         response.when(
-          error: (error) => expect(error.code, 24),
+          error: (error) =>
+              expect(error.code, JsonRpcApiErrorCode.BLOCK_NOT_FOUND),
           result: (result) => fail("Should fail"),
         );
       }, tags: ['integration-testnet']);
@@ -660,7 +665,8 @@ void main() {
         );
 
         response.when(
-          error: (error) => expect(error.code, 24),
+          error: (error) =>
+              expect(error.code, JsonRpcApiErrorCode.BLOCK_NOT_FOUND),
           result: (result) => fail("Should fail"),
         );
       }, tags: ['integration-testnet']);
@@ -675,7 +681,7 @@ void main() {
 
         response.when(
           error: (error) {
-            expect(error.code, 28);
+            expect(error.code, JsonRpcApiErrorCode.CLASS_HASH_NOT_FOUND);
             expect(error.message, 'Class hash not found');
           },
           result: (result) => fail("Should fail"),
@@ -708,7 +714,8 @@ void main() {
         );
 
         response.when(
-          error: (error) => expect(error.code, 24),
+          error: (error) =>
+              expect(error.code, JsonRpcApiErrorCode.BLOCK_NOT_FOUND),
           result: (result) => fail("Should fail"),
         );
       }, tags: ['integration-testnet']);
@@ -723,7 +730,7 @@ void main() {
 
         response.when(
           error: (error) {
-            expect(error.code, 20);
+            expect(error.code, JsonRpcApiErrorCode.CONTRACT_NOT_FOUND);
             expect(error.message, 'Contract not found');
           },
           result: (result) => fail("Should fail"),
@@ -756,7 +763,8 @@ void main() {
         );
 
         response.when(
-          error: (error) => expect(error.code, 24),
+          error: (error) =>
+              expect(error.code, JsonRpcApiErrorCode.BLOCK_NOT_FOUND),
           result: (result) => fail("Should fail"),
         );
       }, tags: ['integration-testnet']);
@@ -771,7 +779,7 @@ void main() {
 
         response.when(
           error: (error) {
-            expect(error.code, 20);
+            expect(error.code, JsonRpcApiErrorCode.CONTRACT_NOT_FOUND);
             expect(error.message, 'Contract not found');
           },
           result: (result) => fail("Should fail"),
@@ -820,7 +828,8 @@ void main() {
 
         response.when(
             error: (error) {
-              expect(error.code, 33);
+              expect(
+                  error.code, JsonRpcApiErrorCode.INVALID_CONTINUATION_TOKEN);
               expect(error.message,
                   "The supplied continuation token is invalid or unknown");
             },
@@ -838,7 +847,7 @@ void main() {
 
         response.when(
             error: (error) {
-              expect(error.code, 24);
+              expect(error.code, JsonRpcApiErrorCode.BLOCK_NOT_FOUND);
               expect(error.message, 'Block not found');
             },
             result: (result) => fail("Should fail"));
@@ -855,7 +864,7 @@ void main() {
 
         response.when(
             error: (error) {
-              expect(error.code, 31);
+              expect(error.code, JsonRpcApiErrorCode.PAGE_SIZE_TOO_BIG);
               expect(error.message, "Requested page size is too big");
             },
             result: (result) => fail("Should fail"));
@@ -934,7 +943,7 @@ void main() {
 
         response.when(
           error: (error) {
-            expect(error.code, 20);
+            expect(error.code, JsonRpcApiErrorCode.CONTRACT_NOT_FOUND);
             expect(error.message, 'Contract not found');
           },
           result: (result) {
@@ -954,7 +963,7 @@ void main() {
 
         response.when(
           error: (error) {
-            expect(error.code, 24);
+            expect(error.code, JsonRpcApiErrorCode.BLOCK_NOT_FOUND);
             expect(error.message, 'Block not found');
           },
           result: (result) {
