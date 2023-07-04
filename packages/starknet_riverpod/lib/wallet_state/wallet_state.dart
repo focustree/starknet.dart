@@ -1,4 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:starknet_riverpod/starknet_riverpod.dart';
 import 'package:starknet_riverpod/utils/persisted_notifier_state.dart';
 
 part 'wallet_state.freezed.dart';
@@ -8,8 +9,8 @@ part 'wallet_state.g.dart';
 abstract class WalletState with _$WalletState implements PersistableState {
   const factory WalletState({
     @Default(null) List<String>? seedPhrase,
-    @Default([]) List<WalletAccount> accounts,
-    @Default(null) WalletAccount? selectedAccount,
+    @Default([]) List<Account> accounts,
+    @Default(null) Account? selectedAccount,
   }) = _WalletState;
 
   factory WalletState.fromJson(Map<String, dynamic> json) =>
@@ -17,19 +18,36 @@ abstract class WalletState with _$WalletState implements PersistableState {
 }
 
 @freezed
-abstract class WalletAccount with _$WalletAccount implements PersistableState {
-  const factory WalletAccount({
+abstract class Account with _$Account implements PersistableState {
+  const factory Account({
     required int seedId,
     required int accountId,
-    required WalletType walletType,
-  }) = _WalletAccount;
+    required AccountType accountType,
+  }) = _Account;
 
-  factory WalletAccount.fromJson(Map<String, dynamic> json) =>
-      _$WalletAccountFromJson(json);
+  factory Account.fromJson(Map<String, dynamic> json) =>
+      _$AccountFromJson(json);
 }
 
-enum WalletType {
+enum AccountType {
   openZeppelin,
   argent,
   braavos,
+}
+
+List<({int seedId, AccountType accountType, List<Account> accounts})>
+    groupAccounts(List<Account> accounts) {
+  var groups = groupBy<Account, (int, AccountType)>(
+    accounts,
+    (a) => (a.seedId, a.accountType),
+  );
+
+  return groups.entries.map((e) {
+    final (seedId, accountType) = e.key;
+    return (
+      seedId: seedId,
+      accountType: accountType,
+      accounts: e.value,
+    );
+  }).toList();
 }

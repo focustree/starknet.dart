@@ -73,9 +73,9 @@ flutter:
 
   # To add assets to your plugin package, add an assets section, like this:
   assets:
-    - assets/images/wallets/argent_x.svg
+    - assets/images/wallets/argent.svg
     - assets/images/wallets/braavos.svg
-    - assets/images/wallets/open_zeppelin.svg
+    - assets/images/wallets/openZeppelin.svg
     - assets/images/logo.svg
     - assets/images/crypto/eth.svg
     - assets/images/qr_code_placeholder.png

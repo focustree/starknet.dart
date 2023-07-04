@@ -7,18 +7,11 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 mixin PersistedState<T extends PersistableState> on AutoDisposeNotifier<T> {
   String get boxName;
   T fromJson(Map<String, dynamic> json);
-  T get defaultState;
 
   @override
   set state(T value) {
     super.state = value;
     persistState();
-  }
-
-  @override
-  build() {
-    loadPersistedState();
-    return defaultState;
   }
 
   loadPersistedState() async {

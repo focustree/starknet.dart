@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:starknet_flutter/starknet_flutter.dart';
 import 'package:starknet_riverpod/starknet_riverpod.dart';
 
 class HomeScreen extends HookConsumerWidget {

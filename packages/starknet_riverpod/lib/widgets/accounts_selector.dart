@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:starknet_flutter/starknet_flutter.dart';
 import 'package:starknet_riverpod/starknet_riverpod.dart';
+import 'package:starknet_riverpod/widgets/accounts_list.dart';
 
 class WalletSelector extends HookConsumerWidget {
   const WalletSelector({
@@ -13,7 +13,10 @@ class WalletSelector extends HookConsumerWidget {
     final account =
         ref.watch(walletProvider.select((value) => value.selectedAccount));
     return ElevatedButton(
-      onPressed: () {},
+      onPressed: () {
+        showModalBottomSheet(
+            context: context, builder: (context) => const AccountsList());
+      },
       child: Row(
         children: [
           account == null
@@ -25,10 +28,10 @@ class WalletSelector extends HookConsumerWidget {
                     Row(
                       children: [
                         Text(
-                          "${account.seedId}",
+                          "Wallet ${account.seedId + 1}",
                         ),
                         const Text(' | '),
-                        Text("${account.accountId}"),
+                        Text("Account ${account.accountId + 1}"),
                       ],
                     ),
                   ],

@@ -1,5 +1,5 @@
 import 'package:riverpod_annotation/riverpod_annotation.dart';
-import 'package:starknet/starknet.dart';
+import 'package:starknet/starknet.dart' as s;
 import 'package:starknet_flutter/starknet_flutter.dart' as sf;
 import 'package:starknet_riverpod/utils/persisted_notifier_state.dart';
 import 'package:starknet_riverpod/wallet_state/wallet_state.dart';
@@ -16,7 +16,10 @@ class Wallet extends _$Wallet with PersistedState<WalletState> {
   WalletState fromJson(Map<String, dynamic> json) => WalletState.fromJson(json);
 
   @override
-  WalletState get defaultState => const WalletState();
+  WalletState build() {
+    loadPersistedState();
+    return const WalletState();
+  }
 
   generateSeedPhrase() {
     if (state.seedPhrase == null) {
@@ -39,15 +42,15 @@ class Wallet extends _$Wallet with PersistedState<WalletState> {
     if (seedPhrase == null) {
       throw Exception("Seed phrase is null");
     }
-    final account = Account.fromMnemonic(
+    final starknetAccount = s.Account.fromMnemonic(
       mnemonic: seedPhrase,
-      provider: JsonRpcProvider(
+      provider: s.JsonRpcProvider(
         nodeUri: sf.StarknetFlutter.nodeUri,
       ),
       chainId: sf.StarknetFlutter.chainId,
-      accountDerivation: OpenzeppelinAccountDerivation(
-        proxyClassHash: ozProxyClassHash,
-        implementationClassHash: ozAccountUpgradableClassHash,
+      accountDerivation: s.OpenzeppelinAccountDerivation(
+        proxyClassHash: s.ozProxyClassHash,
+        implementationClassHash: s.ozAccountUpgradableClassHash,
       ),
       index: index,
     );
@@ -56,7 +59,7 @@ class Wallet extends _$Wallet with PersistedState<WalletState> {
     sf.ProtectWalletService.protectWithPassword(
       accountType: accountType,
       passwordStore: passwordStore,
-      account: account,
+      account: starknetAccount,
       wallet: wallet,
       seedPhrase: seedPhrase,
       passwordPrompt: () async {
@@ -65,7 +68,16 @@ class Wallet extends _$Wallet with PersistedState<WalletState> {
     );
 
     // Remove seed phrase from memory
-    state = state.copyWith(seedPhrase: null);
+    const account = Account(
+      seedId: index,
+      accountId: 0,
+      accountType: AccountType.openZeppelin,
+    );
+    state =
+        state.copyWith(seedPhrase: null, selectedAccount: account, accounts: [
+      ...state.accounts,
+      account,
+    ]);
   }
 }
 

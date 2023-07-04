@@ -1,1 +1,1 @@
-export 'wallet_selector.dart';
+export 'accounts_selector.dart';

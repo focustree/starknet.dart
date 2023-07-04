@@ -13,13 +13,12 @@ _$_WalletState _$$_WalletStateFromJson(Map<String, dynamic> json) =>
               .toList() ??
           null,
       accounts: (json['accounts'] as List<dynamic>?)
-              ?.map((e) => WalletAccount.fromJson(e as Map<String, dynamic>))
+              ?.map((e) => Account.fromJson(e as Map<String, dynamic>))
               .toList() ??
           const [],
       selectedAccount: json['selectedAccount'] == null
           ? null
-          : WalletAccount.fromJson(
-              json['selectedAccount'] as Map<String, dynamic>),
+          : Account.fromJson(json['selectedAccount'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$$_WalletStateToJson(_$_WalletState instance) =>
@@ -29,22 +28,21 @@ Map<String, dynamic> _$$_WalletStateToJson(_$_WalletState instance) =>
       'selectedAccount': instance.selectedAccount,
     };
 
-_$_WalletAccount _$$_WalletAccountFromJson(Map<String, dynamic> json) =>
-    _$_WalletAccount(
+_$_Account _$$_AccountFromJson(Map<String, dynamic> json) => _$_Account(
       seedId: json['seedId'] as int,
       accountId: json['accountId'] as int,
-      walletType: $enumDecode(_$WalletTypeEnumMap, json['walletType']),
+      accountType: $enumDecode(_$AccountTypeEnumMap, json['accountType']),
     );
 
-Map<String, dynamic> _$$_WalletAccountToJson(_$_WalletAccount instance) =>
+Map<String, dynamic> _$$_AccountToJson(_$_Account instance) =>
     <String, dynamic>{
       'seedId': instance.seedId,
       'accountId': instance.accountId,
-      'walletType': _$WalletTypeEnumMap[instance.walletType]!,
+      'accountType': _$AccountTypeEnumMap[instance.accountType]!,
     };
 
-const _$WalletTypeEnumMap = {
-  WalletType.openZeppelin: 'openZeppelin',
-  WalletType.argent: 'argent',
-  WalletType.braavos: 'braavos',
+const _$AccountTypeEnumMap = {
+  AccountType.openZeppelin: 'openZeppelin',
+  AccountType.argent: 'argent',
+  AccountType.braavos: 'braavos',
 };
