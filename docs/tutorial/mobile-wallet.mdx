@@ -1,4 +1,4 @@
-# How to build a wallet mobile app for Starknet
+# How to build a mobile wallet for Starknet
 
 1. Create a new flutter project
 
@@ -24,3 +24,10 @@ Run it locally with `flutter run` to make sure it is properly configured.
 - `cd devnet`
 - `poetry add starknet-devnet`
 - `poetry run starknet-devnet`
+
+4. Add `deps`
+
+- `flutter pub add starknet_flutter`
+- ```
+flutter pub add hooks_riverpod dev:custom_lint dev:riverpod_lint riverpod_annotation dev:build_runner dev:riverpod_generator
+```

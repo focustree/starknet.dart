@@ -16,6 +16,9 @@ export 'src/services/protect_wallet_service.dart';
 export 'src/views/wallet/wallet_initialization_viewmodel.dart';
 export 'src/views/wallet/wallet_initialization_presenter.dart';
 
+// New exports
+export 'src/widgets/stateless/seed_phrase.dart';
+
 class StarknetFlutter {
   static Uri get nodeUri => _nodeUri;
   static Uri _nodeUri = infuraGoerliTestnetUri;
