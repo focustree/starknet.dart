@@ -28,6 +28,8 @@ class EstimateFeeRequest {
     required this.blockId,
   });
 
+  factory EstimateFeeRequest.fromJson(Map<String, dynamic> json) =>
+      _$EstimateFeeRequestFromJson(json);
   Map<String, dynamic> toJson() => _$EstimateFeeRequestToJson(this);
 }
 
