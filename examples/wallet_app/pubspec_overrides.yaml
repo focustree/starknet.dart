@@ -1,0 +1,5 @@
+dependency_overrides:
+  starknet_flutter:
+    path: ../../packages/starknet_flutter
+  starknet_riverpod:
+    path: ../../packages/starknet_riverpod

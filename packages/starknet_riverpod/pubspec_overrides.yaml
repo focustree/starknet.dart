@@ -1,0 +1,5 @@
+dependency_overrides:
+  starknet:
+    path: ../starknet
+  starknet_flutter:
+    path: ../starknet_flutter

@@ -1,3 +1,6 @@
 library starknet_riverpod;
 
-export 'package:starknet_riverpod/wallet_state/wallet_provider.dart';
+export 'wallet_state/wallet_provider.dart';
+export 'wallet_screens/index.dart';
+export 'ui/index.dart';
+export 'widgets/index.dart';
