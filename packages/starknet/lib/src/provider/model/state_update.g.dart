@@ -27,12 +27,18 @@ _$_StateDiff _$$_StateDiffFromJson(Map<String, dynamic> json) => _$_StateDiff(
           .map((e) =>
               ContractStorageDiffItem.fromJson(e as Map<String, dynamic>))
           .toList(),
-      declaredContractHashes:
-          (json['declared_contract_hashes'] as List<dynamic>)
+      deprecatedDeclaredClasses:
+          (json['deprecated_declared_classes'] as List<dynamic>)
               .map((e) => Felt.fromJson(e as String))
               .toList(),
+      declaredClasses: (json['declared_classes'] as List<dynamic>)
+          .map((e) => DeclaredClass.fromJson(e as Map<String, dynamic>))
+          .toList(),
       deployedContracts: (json['deployed_contracts'] as List<dynamic>)
           .map((e) => DeployedContractItem.fromJson(e as Map<String, dynamic>))
+          .toList(),
+      replacedClasses: (json['replaced_classes'] as List<dynamic>)
+          .map((e) => ReplacedClass.fromJson(e as Map<String, dynamic>))
           .toList(),
       nonces: (json['nonces'] as List<dynamic>)
           .map((e) =>
@@ -43,10 +49,14 @@ _$_StateDiff _$$_StateDiffFromJson(Map<String, dynamic> json) => _$_StateDiff(
 Map<String, dynamic> _$$_StateDiffToJson(_$_StateDiff instance) =>
     <String, dynamic>{
       'storage_diffs': instance.storageDiffs.map((e) => e.toJson()).toList(),
-      'declared_contract_hashes':
-          instance.declaredContractHashes.map((e) => e.toJson()).toList(),
+      'deprecated_declared_classes':
+          instance.deprecatedDeclaredClasses.map((e) => e.toJson()).toList(),
+      'declared_classes':
+          instance.declaredClasses.map((e) => e.toJson()).toList(),
       'deployed_contracts':
           instance.deployedContracts.map((e) => e.toJson()).toList(),
+      'replaced_classes':
+          instance.replacedClasses.map((e) => e.toJson()).toList(),
       'nonces': instance.nonces.map((e) => e.toJson()).toList(),
     };
 
@@ -62,4 +72,28 @@ Map<String, dynamic> _$$_NonceAndContractAddressToJson(
     <String, dynamic>{
       'nonce': instance.nonce.toJson(),
       'contract_address': instance.contractAddress.toJson(),
+    };
+
+_$_DeclaredClass _$$_DeclaredClassFromJson(Map<String, dynamic> json) =>
+    _$_DeclaredClass(
+      classHash: Felt.fromJson(json['class_hash'] as String),
+      compiledClassHash: Felt.fromJson(json['compiled_class_hash'] as String),
+    );
+
+Map<String, dynamic> _$$_DeclaredClassToJson(_$_DeclaredClass instance) =>
+    <String, dynamic>{
+      'class_hash': instance.classHash.toJson(),
+      'compiled_class_hash': instance.compiledClassHash.toJson(),
+    };
+
+_$_ReplacedClass _$$_ReplacedClassFromJson(Map<String, dynamic> json) =>
+    _$_ReplacedClass(
+      contractAddress: Felt.fromJson(json['contract_address'] as String),
+      classHash: Felt.fromJson(json['class_hash'] as String),
+    );
+
+Map<String, dynamic> _$$_ReplacedClassToJson(_$_ReplacedClass instance) =>
+    <String, dynamic>{
+      'contract_address': instance.contractAddress.toJson(),
+      'class_hash': instance.classHash.toJson(),
     };

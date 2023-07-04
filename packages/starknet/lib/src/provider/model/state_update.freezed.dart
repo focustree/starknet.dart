@@ -230,9 +230,12 @@ StateDiff _$StateDiffFromJson(Map<String, dynamic> json) {
 mixin _$StateDiff {
   List<ContractStorageDiffItem> get storageDiffs =>
       throw _privateConstructorUsedError;
-  List<Felt> get declaredContractHashes => throw _privateConstructorUsedError;
+  List<Felt> get deprecatedDeclaredClasses =>
+      throw _privateConstructorUsedError;
+  List<DeclaredClass> get declaredClasses => throw _privateConstructorUsedError;
   List<DeployedContractItem> get deployedContracts =>
       throw _privateConstructorUsedError;
+  List<ReplacedClass> get replacedClasses => throw _privateConstructorUsedError;
   List<NonceAndContractAddress> get nonces =>
       throw _privateConstructorUsedError;
 
@@ -249,8 +252,10 @@ abstract class $StateDiffCopyWith<$Res> {
   @useResult
   $Res call(
       {List<ContractStorageDiffItem> storageDiffs,
-      List<Felt> declaredContractHashes,
+      List<Felt> deprecatedDeclaredClasses,
+      List<DeclaredClass> declaredClasses,
       List<DeployedContractItem> deployedContracts,
+      List<ReplacedClass> replacedClasses,
       List<NonceAndContractAddress> nonces});
 }
 
@@ -268,8 +273,10 @@ class _$StateDiffCopyWithImpl<$Res, $Val extends StateDiff>
   @override
   $Res call({
     Object? storageDiffs = null,
-    Object? declaredContractHashes = null,
+    Object? deprecatedDeclaredClasses = null,
+    Object? declaredClasses = null,
     Object? deployedContracts = null,
+    Object? replacedClasses = null,
     Object? nonces = null,
   }) {
     return _then(_value.copyWith(
@@ -277,14 +284,22 @@ class _$StateDiffCopyWithImpl<$Res, $Val extends StateDiff>
           ? _value.storageDiffs
           : storageDiffs // ignore: cast_nullable_to_non_nullable
               as List<ContractStorageDiffItem>,
-      declaredContractHashes: null == declaredContractHashes
-          ? _value.declaredContractHashes
-          : declaredContractHashes // ignore: cast_nullable_to_non_nullable
+      deprecatedDeclaredClasses: null == deprecatedDeclaredClasses
+          ? _value.deprecatedDeclaredClasses
+          : deprecatedDeclaredClasses // ignore: cast_nullable_to_non_nullable
               as List<Felt>,
+      declaredClasses: null == declaredClasses
+          ? _value.declaredClasses
+          : declaredClasses // ignore: cast_nullable_to_non_nullable
+              as List<DeclaredClass>,
       deployedContracts: null == deployedContracts
           ? _value.deployedContracts
           : deployedContracts // ignore: cast_nullable_to_non_nullable
               as List<DeployedContractItem>,
+      replacedClasses: null == replacedClasses
+          ? _value.replacedClasses
+          : replacedClasses // ignore: cast_nullable_to_non_nullable
+              as List<ReplacedClass>,
       nonces: null == nonces
           ? _value.nonces
           : nonces // ignore: cast_nullable_to_non_nullable
@@ -302,8 +317,10 @@ abstract class _$$_StateDiffCopyWith<$Res> implements $StateDiffCopyWith<$Res> {
   @useResult
   $Res call(
       {List<ContractStorageDiffItem> storageDiffs,
-      List<Felt> declaredContractHashes,
+      List<Felt> deprecatedDeclaredClasses,
+      List<DeclaredClass> declaredClasses,
       List<DeployedContractItem> deployedContracts,
+      List<ReplacedClass> replacedClasses,
       List<NonceAndContractAddress> nonces});
 }
 
@@ -319,8 +336,10 @@ class __$$_StateDiffCopyWithImpl<$Res>
   @override
   $Res call({
     Object? storageDiffs = null,
-    Object? declaredContractHashes = null,
+    Object? deprecatedDeclaredClasses = null,
+    Object? declaredClasses = null,
     Object? deployedContracts = null,
+    Object? replacedClasses = null,
     Object? nonces = null,
   }) {
     return _then(_$_StateDiff(
@@ -328,14 +347,22 @@ class __$$_StateDiffCopyWithImpl<$Res>
           ? _value._storageDiffs
           : storageDiffs // ignore: cast_nullable_to_non_nullable
               as List<ContractStorageDiffItem>,
-      declaredContractHashes: null == declaredContractHashes
-          ? _value._declaredContractHashes
-          : declaredContractHashes // ignore: cast_nullable_to_non_nullable
+      deprecatedDeclaredClasses: null == deprecatedDeclaredClasses
+          ? _value._deprecatedDeclaredClasses
+          : deprecatedDeclaredClasses // ignore: cast_nullable_to_non_nullable
               as List<Felt>,
+      declaredClasses: null == declaredClasses
+          ? _value._declaredClasses
+          : declaredClasses // ignore: cast_nullable_to_non_nullable
+              as List<DeclaredClass>,
       deployedContracts: null == deployedContracts
           ? _value._deployedContracts
           : deployedContracts // ignore: cast_nullable_to_non_nullable
               as List<DeployedContractItem>,
+      replacedClasses: null == replacedClasses
+          ? _value._replacedClasses
+          : replacedClasses // ignore: cast_nullable_to_non_nullable
+              as List<ReplacedClass>,
       nonces: null == nonces
           ? _value._nonces
           : nonces // ignore: cast_nullable_to_non_nullable
@@ -349,12 +376,16 @@ class __$$_StateDiffCopyWithImpl<$Res>
 class _$_StateDiff implements _StateDiff {
   const _$_StateDiff(
       {required final List<ContractStorageDiffItem> storageDiffs,
-      required final List<Felt> declaredContractHashes,
+      required final List<Felt> deprecatedDeclaredClasses,
+      required final List<DeclaredClass> declaredClasses,
       required final List<DeployedContractItem> deployedContracts,
+      required final List<ReplacedClass> replacedClasses,
       required final List<NonceAndContractAddress> nonces})
       : _storageDiffs = storageDiffs,
-        _declaredContractHashes = declaredContractHashes,
+        _deprecatedDeclaredClasses = deprecatedDeclaredClasses,
+        _declaredClasses = declaredClasses,
         _deployedContracts = deployedContracts,
+        _replacedClasses = replacedClasses,
         _nonces = nonces;
 
   factory _$_StateDiff.fromJson(Map<String, dynamic> json) =>
@@ -368,13 +399,21 @@ class _$_StateDiff implements _StateDiff {
     return EqualUnmodifiableListView(_storageDiffs);
   }
 
-  final List<Felt> _declaredContractHashes;
+  final List<Felt> _deprecatedDeclaredClasses;
   @override
-  List<Felt> get declaredContractHashes {
-    if (_declaredContractHashes is EqualUnmodifiableListView)
-      return _declaredContractHashes;
+  List<Felt> get deprecatedDeclaredClasses {
+    if (_deprecatedDeclaredClasses is EqualUnmodifiableListView)
+      return _deprecatedDeclaredClasses;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_declaredContractHashes);
+    return EqualUnmodifiableListView(_deprecatedDeclaredClasses);
+  }
+
+  final List<DeclaredClass> _declaredClasses;
+  @override
+  List<DeclaredClass> get declaredClasses {
+    if (_declaredClasses is EqualUnmodifiableListView) return _declaredClasses;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_declaredClasses);
   }
 
   final List<DeployedContractItem> _deployedContracts;
@@ -384,6 +423,14 @@ class _$_StateDiff implements _StateDiff {
       return _deployedContracts;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_deployedContracts);
+  }
+
+  final List<ReplacedClass> _replacedClasses;
+  @override
+  List<ReplacedClass> get replacedClasses {
+    if (_replacedClasses is EqualUnmodifiableListView) return _replacedClasses;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_replacedClasses);
   }
 
   final List<NonceAndContractAddress> _nonces;
@@ -396,7 +443,7 @@ class _$_StateDiff implements _StateDiff {
 
   @override
   String toString() {
-    return 'StateDiff(storageDiffs: $storageDiffs, declaredContractHashes: $declaredContractHashes, deployedContracts: $deployedContracts, nonces: $nonces)';
+    return 'StateDiff(storageDiffs: $storageDiffs, deprecatedDeclaredClasses: $deprecatedDeclaredClasses, declaredClasses: $declaredClasses, deployedContracts: $deployedContracts, replacedClasses: $replacedClasses, nonces: $nonces)';
   }
 
   @override
@@ -407,9 +454,13 @@ class _$_StateDiff implements _StateDiff {
             const DeepCollectionEquality()
                 .equals(other._storageDiffs, _storageDiffs) &&
             const DeepCollectionEquality().equals(
-                other._declaredContractHashes, _declaredContractHashes) &&
+                other._deprecatedDeclaredClasses, _deprecatedDeclaredClasses) &&
+            const DeepCollectionEquality()
+                .equals(other._declaredClasses, _declaredClasses) &&
             const DeepCollectionEquality()
                 .equals(other._deployedContracts, _deployedContracts) &&
+            const DeepCollectionEquality()
+                .equals(other._replacedClasses, _replacedClasses) &&
             const DeepCollectionEquality().equals(other._nonces, _nonces));
   }
 
@@ -418,8 +469,10 @@ class _$_StateDiff implements _StateDiff {
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(_storageDiffs),
-      const DeepCollectionEquality().hash(_declaredContractHashes),
+      const DeepCollectionEquality().hash(_deprecatedDeclaredClasses),
+      const DeepCollectionEquality().hash(_declaredClasses),
       const DeepCollectionEquality().hash(_deployedContracts),
+      const DeepCollectionEquality().hash(_replacedClasses),
       const DeepCollectionEquality().hash(_nonces));
 
   @JsonKey(ignore: true)
@@ -439,8 +492,10 @@ class _$_StateDiff implements _StateDiff {
 abstract class _StateDiff implements StateDiff {
   const factory _StateDiff(
       {required final List<ContractStorageDiffItem> storageDiffs,
-      required final List<Felt> declaredContractHashes,
+      required final List<Felt> deprecatedDeclaredClasses,
+      required final List<DeclaredClass> declaredClasses,
       required final List<DeployedContractItem> deployedContracts,
+      required final List<ReplacedClass> replacedClasses,
       required final List<NonceAndContractAddress> nonces}) = _$_StateDiff;
 
   factory _StateDiff.fromJson(Map<String, dynamic> json) =
@@ -449,9 +504,13 @@ abstract class _StateDiff implements StateDiff {
   @override
   List<ContractStorageDiffItem> get storageDiffs;
   @override
-  List<Felt> get declaredContractHashes;
+  List<Felt> get deprecatedDeclaredClasses;
+  @override
+  List<DeclaredClass> get declaredClasses;
   @override
   List<DeployedContractItem> get deployedContracts;
+  @override
+  List<ReplacedClass> get replacedClasses;
   @override
   List<NonceAndContractAddress> get nonces;
   @override
@@ -619,4 +678,318 @@ abstract class _NonceAndContractAddress implements NonceAndContractAddress {
   @JsonKey(ignore: true)
   _$$_NonceAndContractAddressCopyWith<_$_NonceAndContractAddress>
       get copyWith => throw _privateConstructorUsedError;
+}
+
+DeclaredClass _$DeclaredClassFromJson(Map<String, dynamic> json) {
+  return _DeclaredClass.fromJson(json);
+}
+
+/// @nodoc
+mixin _$DeclaredClass {
+  Felt get classHash => throw _privateConstructorUsedError;
+  Felt get compiledClassHash => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $DeclaredClassCopyWith<DeclaredClass> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $DeclaredClassCopyWith<$Res> {
+  factory $DeclaredClassCopyWith(
+          DeclaredClass value, $Res Function(DeclaredClass) then) =
+      _$DeclaredClassCopyWithImpl<$Res, DeclaredClass>;
+  @useResult
+  $Res call({Felt classHash, Felt compiledClassHash});
+}
+
+/// @nodoc
+class _$DeclaredClassCopyWithImpl<$Res, $Val extends DeclaredClass>
+    implements $DeclaredClassCopyWith<$Res> {
+  _$DeclaredClassCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? classHash = null,
+    Object? compiledClassHash = null,
+  }) {
+    return _then(_value.copyWith(
+      classHash: null == classHash
+          ? _value.classHash
+          : classHash // ignore: cast_nullable_to_non_nullable
+              as Felt,
+      compiledClassHash: null == compiledClassHash
+          ? _value.compiledClassHash
+          : compiledClassHash // ignore: cast_nullable_to_non_nullable
+              as Felt,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$_DeclaredClassCopyWith<$Res>
+    implements $DeclaredClassCopyWith<$Res> {
+  factory _$$_DeclaredClassCopyWith(
+          _$_DeclaredClass value, $Res Function(_$_DeclaredClass) then) =
+      __$$_DeclaredClassCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({Felt classHash, Felt compiledClassHash});
+}
+
+/// @nodoc
+class __$$_DeclaredClassCopyWithImpl<$Res>
+    extends _$DeclaredClassCopyWithImpl<$Res, _$_DeclaredClass>
+    implements _$$_DeclaredClassCopyWith<$Res> {
+  __$$_DeclaredClassCopyWithImpl(
+      _$_DeclaredClass _value, $Res Function(_$_DeclaredClass) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? classHash = null,
+    Object? compiledClassHash = null,
+  }) {
+    return _then(_$_DeclaredClass(
+      classHash: null == classHash
+          ? _value.classHash
+          : classHash // ignore: cast_nullable_to_non_nullable
+              as Felt,
+      compiledClassHash: null == compiledClassHash
+          ? _value.compiledClassHash
+          : compiledClassHash // ignore: cast_nullable_to_non_nullable
+              as Felt,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$_DeclaredClass implements _DeclaredClass {
+  const _$_DeclaredClass(
+      {required this.classHash, required this.compiledClassHash});
+
+  factory _$_DeclaredClass.fromJson(Map<String, dynamic> json) =>
+      _$$_DeclaredClassFromJson(json);
+
+  @override
+  final Felt classHash;
+  @override
+  final Felt compiledClassHash;
+
+  @override
+  String toString() {
+    return 'DeclaredClass(classHash: $classHash, compiledClassHash: $compiledClassHash)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_DeclaredClass &&
+            (identical(other.classHash, classHash) ||
+                other.classHash == classHash) &&
+            (identical(other.compiledClassHash, compiledClassHash) ||
+                other.compiledClassHash == compiledClassHash));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(runtimeType, classHash, compiledClassHash);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_DeclaredClassCopyWith<_$_DeclaredClass> get copyWith =>
+      __$$_DeclaredClassCopyWithImpl<_$_DeclaredClass>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_DeclaredClassToJson(
+      this,
+    );
+  }
+}
+
+abstract class _DeclaredClass implements DeclaredClass {
+  const factory _DeclaredClass(
+      {required final Felt classHash,
+      required final Felt compiledClassHash}) = _$_DeclaredClass;
+
+  factory _DeclaredClass.fromJson(Map<String, dynamic> json) =
+      _$_DeclaredClass.fromJson;
+
+  @override
+  Felt get classHash;
+  @override
+  Felt get compiledClassHash;
+  @override
+  @JsonKey(ignore: true)
+  _$$_DeclaredClassCopyWith<_$_DeclaredClass> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+ReplacedClass _$ReplacedClassFromJson(Map<String, dynamic> json) {
+  return _ReplacedClass.fromJson(json);
+}
+
+/// @nodoc
+mixin _$ReplacedClass {
+  Felt get contractAddress => throw _privateConstructorUsedError;
+  Felt get classHash => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $ReplacedClassCopyWith<ReplacedClass> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $ReplacedClassCopyWith<$Res> {
+  factory $ReplacedClassCopyWith(
+          ReplacedClass value, $Res Function(ReplacedClass) then) =
+      _$ReplacedClassCopyWithImpl<$Res, ReplacedClass>;
+  @useResult
+  $Res call({Felt contractAddress, Felt classHash});
+}
+
+/// @nodoc
+class _$ReplacedClassCopyWithImpl<$Res, $Val extends ReplacedClass>
+    implements $ReplacedClassCopyWith<$Res> {
+  _$ReplacedClassCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? contractAddress = null,
+    Object? classHash = null,
+  }) {
+    return _then(_value.copyWith(
+      contractAddress: null == contractAddress
+          ? _value.contractAddress
+          : contractAddress // ignore: cast_nullable_to_non_nullable
+              as Felt,
+      classHash: null == classHash
+          ? _value.classHash
+          : classHash // ignore: cast_nullable_to_non_nullable
+              as Felt,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$_ReplacedClassCopyWith<$Res>
+    implements $ReplacedClassCopyWith<$Res> {
+  factory _$$_ReplacedClassCopyWith(
+          _$_ReplacedClass value, $Res Function(_$_ReplacedClass) then) =
+      __$$_ReplacedClassCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({Felt contractAddress, Felt classHash});
+}
+
+/// @nodoc
+class __$$_ReplacedClassCopyWithImpl<$Res>
+    extends _$ReplacedClassCopyWithImpl<$Res, _$_ReplacedClass>
+    implements _$$_ReplacedClassCopyWith<$Res> {
+  __$$_ReplacedClassCopyWithImpl(
+      _$_ReplacedClass _value, $Res Function(_$_ReplacedClass) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? contractAddress = null,
+    Object? classHash = null,
+  }) {
+    return _then(_$_ReplacedClass(
+      contractAddress: null == contractAddress
+          ? _value.contractAddress
+          : contractAddress // ignore: cast_nullable_to_non_nullable
+              as Felt,
+      classHash: null == classHash
+          ? _value.classHash
+          : classHash // ignore: cast_nullable_to_non_nullable
+              as Felt,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$_ReplacedClass implements _ReplacedClass {
+  const _$_ReplacedClass(
+      {required this.contractAddress, required this.classHash});
+
+  factory _$_ReplacedClass.fromJson(Map<String, dynamic> json) =>
+      _$$_ReplacedClassFromJson(json);
+
+  @override
+  final Felt contractAddress;
+  @override
+  final Felt classHash;
+
+  @override
+  String toString() {
+    return 'ReplacedClass(contractAddress: $contractAddress, classHash: $classHash)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_ReplacedClass &&
+            (identical(other.contractAddress, contractAddress) ||
+                other.contractAddress == contractAddress) &&
+            (identical(other.classHash, classHash) ||
+                other.classHash == classHash));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(runtimeType, contractAddress, classHash);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_ReplacedClassCopyWith<_$_ReplacedClass> get copyWith =>
+      __$$_ReplacedClassCopyWithImpl<_$_ReplacedClass>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_ReplacedClassToJson(
+      this,
+    );
+  }
+}
+
+abstract class _ReplacedClass implements ReplacedClass {
+  const factory _ReplacedClass(
+      {required final Felt contractAddress,
+      required final Felt classHash}) = _$_ReplacedClass;
+
+  factory _ReplacedClass.fromJson(Map<String, dynamic> json) =
+      _$_ReplacedClass.fromJson;
+
+  @override
+  Felt get contractAddress;
+  @override
+  Felt get classHash;
+  @override
+  @JsonKey(ignore: true)
+  _$$_ReplacedClassCopyWith<_$_ReplacedClass> get copyWith =>
+      throw _privateConstructorUsedError;
 }

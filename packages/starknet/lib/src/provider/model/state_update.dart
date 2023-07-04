@@ -21,8 +21,10 @@ class StateUpdate with _$StateUpdate {
 class StateDiff with _$StateDiff {
   const factory StateDiff({
     required List<ContractStorageDiffItem> storageDiffs,
-    required List<Felt> declaredContractHashes,
+    required List<Felt> deprecatedDeclaredClasses,
+    required List<DeclaredClass> declaredClasses,
     required List<DeployedContractItem> deployedContracts,
+    required List<ReplacedClass> replacedClasses,
     required List<NonceAndContractAddress> nonces,
   }) = _StateDiff;
 
@@ -39,4 +41,26 @@ class NonceAndContractAddress with _$NonceAndContractAddress {
 
   factory NonceAndContractAddress.fromJson(Map<String, Object?> json) =>
       _$NonceAndContractAddressFromJson(json);
+}
+
+@freezed
+class DeclaredClass with _$DeclaredClass {
+  const factory DeclaredClass({
+    required Felt classHash,
+    required Felt compiledClassHash,
+  }) = _DeclaredClass;
+
+  factory DeclaredClass.fromJson(Map<String, Object?> json) =>
+      _$DeclaredClassFromJson(json);
+}
+
+@freezed
+class ReplacedClass with _$ReplacedClass {
+  const factory ReplacedClass({
+    required Felt contractAddress,
+    required Felt classHash,
+  }) = _ReplacedClass;
+
+  factory ReplacedClass.fromJson(Map<String, Object?> json) =>
+      _$ReplacedClassFromJson(json);
 }
