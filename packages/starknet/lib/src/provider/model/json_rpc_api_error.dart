@@ -50,4 +50,6 @@ enum JsonRpcApiErrorCode {
   PROOF_LIMIT_EXCEEDED, // from pathfinder code
   @JsonValue(-32602)
   INVALID_QUERY,
+  @JsonValue(-32603)
+  INTERNAL_SEQUENCER,
 }

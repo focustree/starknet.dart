@@ -79,7 +79,7 @@ void main() {
             error: (error) => fail("Shouldn't fail"));
       }, tags: ['integration-testnet']);
 
-      test('returns block not found error when block id is invalid.', () async {
+      test('returns invalid query error when block id is invalid.', () async {
         final response =
             await provider.getBlockWithTxHashes(BlockId.blockNumber(-1));
         response.when(
@@ -792,11 +792,12 @@ void main() {
         final response = await provider.getEvents(GetEventsRequest(
           chunkSize: 2,
           fromBlock: BlockId.blockNumber(12000),
-          toBlock: BlockId.blockNumber(200000),
+          toBlock: BlockId.blockNumber(100000),
         ));
 
         response.when(
-            error: (error) => fail("Shouldn't fail"),
+            error: (error) =>
+                fail("Shouldn't fail (${error.code}) ${error.message}"),
             result: (result) {
               expect(result.events.length, 2);
             });
@@ -912,7 +913,7 @@ void main() {
       test('estimate the fee for a given V1 Invoke StarkNet transaction',
           () async {
         EstimateFeeRequest estimateFeeRequest = EstimateFeeRequest(
-          request: broadcastedInvokeTxnV1,
+          request: [broadcastedInvokeTxnV1],
           blockId: parentBlockId,
         );
 
@@ -920,12 +921,14 @@ void main() {
 
         response.when(
           error: (error) {
-            fail('Should not fail.');
+            fail('Should not fail. (${error.code}): ${error.message}');
           },
           result: (result) {
-            expect(result.gasConsumed, "0xe98");
-            expect(result.gasPrice, "0x4ecd");
-            expect(result.overallFee, "0x47dffb8");
+            expect(result.length, 1);
+            final estimate = result[0];
+            expect(estimate.gasConsumed, "0xe98");
+            expect(estimate.gasPrice, "0x4ecd");
+            expect(estimate.overallFee, "0x47dffb8");
           },
         );
       });
@@ -935,7 +938,7 @@ void main() {
             senderAddress: Felt.fromHexString(
                 '0x079D9923B256aD3E6f77bFccb6449C52bb6971F352318ab19fA8802A7b7FbdFD')); // contract address from main net.
         EstimateFeeRequest estimateFeeRequest = EstimateFeeRequest(
-          request: invalidContractTxn,
+          request: [invalidContractTxn],
           blockId: parentBlockId,
         );
 
@@ -955,7 +958,7 @@ void main() {
       test('returns BLOCK_NOT_FOUND with invalid block id', () async {
         // contract address from main net.
         EstimateFeeRequest estimateFeeRequest = EstimateFeeRequest(
-          request: broadcastedInvokeTxnV1,
+          request: [broadcastedInvokeTxnV1],
           blockId: invalidBlockIdFromBlockHash,
         );
 

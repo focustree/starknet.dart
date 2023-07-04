@@ -6,15 +6,31 @@ part of 'estimate_fee.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
+EstimateFeeRequest _$EstimateFeeRequestFromJson(Map<String, dynamic> json) =>
+    EstimateFeeRequest(
+      request: (json['request'] as List<dynamic>)
+          .map((e) => BroadcastedTxn.fromJson(e as Map<String, dynamic>))
+          .toList(),
+      blockId: BlockId.fromJson(json['block_id'] as Map<String, dynamic>),
+    );
+
+Map<String, dynamic> _$EstimateFeeRequestToJson(EstimateFeeRequest instance) =>
+    <String, dynamic>{
+      'request': instance.request.map((e) => e.toJson()).toList(),
+      'block_id': instance.blockId.toJson(),
+    };
+
 _$EstimateFeeResult _$$EstimateFeeResultFromJson(Map<String, dynamic> json) =>
     _$EstimateFeeResult(
-      result: FeeEstimate.fromJson(json['result'] as Map<String, dynamic>),
+      result: (json['result'] as List<dynamic>)
+          .map((e) => FeeEstimate.fromJson(e as Map<String, dynamic>))
+          .toList(),
       $type: json['starkNetRuntimeTypeToRemove'] as String?,
     );
 
 Map<String, dynamic> _$$EstimateFeeResultToJson(_$EstimateFeeResult instance) =>
     <String, dynamic>{
-      'result': instance.result.toJson(),
+      'result': instance.result.map((e) => e.toJson()).toList(),
       'starkNetRuntimeTypeToRemove': instance.$type,
     };
 
