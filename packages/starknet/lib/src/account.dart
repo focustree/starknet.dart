@@ -29,42 +29,30 @@ class Account {
 
   /// Get Nonce for account at given [blockId]
   Future<Felt> getNonce([BlockId blockId = BlockId.latest]) async {
-    final response = await provider.call(
-      request: FunctionCall(
-        contractAddress: accountAddress,
-        entryPointSelector: getSelectorByName("get_nonce"),
-        calldata: [],
-      ),
+    final response = await provider.getNonce(
       blockId: blockId,
+      contractAddress: accountAddress,
     );
     return (response.when(
       error: (error) async {
-        if (error.code == 21 && error.message == "Invalid message selector") {
-          // Fallback on provider getNonce
-          final nonceResp = await provider.getNonce(
-            blockId: blockId,
+        // fallback to account contract call
+        final response = await provider.call(
+          request: FunctionCall(
             contractAddress: accountAddress,
-          );
-
-          return (nonceResp.when(
-            error: (error) {
-              throw Exception(
-                "Error provider getNonce (${error.code}): ${error.message}",
-              );
-            },
-            result: ((result) {
-              return result;
-            }),
-          ));
-        } else {
-          throw Exception(
-            "Error call get_nonce (${error.code}): ${error.message}",
-          );
-        }
+            entryPointSelector: getSelectorByName("get_nonce"),
+            calldata: [],
+          ),
+          blockId: blockId,
+        );
+        return (response.when(
+          error: (error) {
+            throw Exception(
+                "Error retrieving nonce (${error.code}): ${error.message}");
+          },
+          result: (result) => result[0],
+        ));
       },
-      result: ((result) {
-        return result[0];
-      }),
+      result: (result) => result,
     ));
   }
 
