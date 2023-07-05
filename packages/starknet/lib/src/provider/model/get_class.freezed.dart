@@ -17,9 +17,9 @@ final _privateConstructorUsedError = UnsupportedError(
 GetClass _$GetClassFromJson(Map<String, dynamic> json) {
   switch (json['starkNetRuntimeTypeToRemove']) {
     case 'result':
-      return GetClassResult.fromJson(json);
+      return _GetClassResult.fromJson(json);
     case 'error':
-      return GetClassError.fromJson(json);
+      return _GetClassError.fromJson(json);
 
     default:
       throw CheckedFromJsonException(
@@ -34,39 +34,39 @@ GetClass _$GetClassFromJson(Map<String, dynamic> json) {
 mixin _$GetClass {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(DeprecatedContractClass result) result,
+    required TResult Function(IContractClass result) result,
     required TResult Function(JsonRpcApiError error) error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(DeprecatedContractClass result)? result,
+    TResult? Function(IContractClass result)? result,
     TResult? Function(JsonRpcApiError error)? error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(DeprecatedContractClass result)? result,
+    TResult Function(IContractClass result)? result,
     TResult Function(JsonRpcApiError error)? error,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(GetClassResult value) result,
-    required TResult Function(GetClassError value) error,
+    required TResult Function(_GetClassResult value) result,
+    required TResult Function(_GetClassError value) error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(GetClassResult value)? result,
-    TResult? Function(GetClassError value)? error,
+    TResult? Function(_GetClassResult value)? result,
+    TResult? Function(_GetClassError value)? error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(GetClassResult value)? result,
-    TResult Function(GetClassError value)? error,
+    TResult Function(_GetClassResult value)? result,
+    TResult Function(_GetClassError value)? error,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -91,22 +91,20 @@ class _$GetClassCopyWithImpl<$Res, $Val extends GetClass>
 }
 
 /// @nodoc
-abstract class _$$GetClassResultCopyWith<$Res> {
-  factory _$$GetClassResultCopyWith(
-          _$GetClassResult value, $Res Function(_$GetClassResult) then) =
-      __$$GetClassResultCopyWithImpl<$Res>;
+abstract class _$$_GetClassResultCopyWith<$Res> {
+  factory _$$_GetClassResultCopyWith(
+          _$_GetClassResult value, $Res Function(_$_GetClassResult) then) =
+      __$$_GetClassResultCopyWithImpl<$Res>;
   @useResult
-  $Res call({DeprecatedContractClass result});
-
-  $DeprecatedContractClassCopyWith<$Res> get result;
+  $Res call({IContractClass result});
 }
 
 /// @nodoc
-class __$$GetClassResultCopyWithImpl<$Res>
-    extends _$GetClassCopyWithImpl<$Res, _$GetClassResult>
-    implements _$$GetClassResultCopyWith<$Res> {
-  __$$GetClassResultCopyWithImpl(
-      _$GetClassResult _value, $Res Function(_$GetClassResult) _then)
+class __$$_GetClassResultCopyWithImpl<$Res>
+    extends _$GetClassCopyWithImpl<$Res, _$_GetClassResult>
+    implements _$$_GetClassResultCopyWith<$Res> {
+  __$$_GetClassResultCopyWithImpl(
+      _$_GetClassResult _value, $Res Function(_$_GetClassResult) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -114,34 +112,26 @@ class __$$GetClassResultCopyWithImpl<$Res>
   $Res call({
     Object? result = null,
   }) {
-    return _then(_$GetClassResult(
+    return _then(_$_GetClassResult(
       result: null == result
           ? _value.result
           : result // ignore: cast_nullable_to_non_nullable
-              as DeprecatedContractClass,
+              as IContractClass,
     ));
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $DeprecatedContractClassCopyWith<$Res> get result {
-    return $DeprecatedContractClassCopyWith<$Res>(_value.result, (value) {
-      return _then(_value.copyWith(result: value));
-    });
   }
 }
 
 /// @nodoc
 @JsonSerializable()
-class _$GetClassResult implements GetClassResult {
-  const _$GetClassResult({required this.result, final String? $type})
+class _$_GetClassResult implements _GetClassResult {
+  const _$_GetClassResult({required this.result, final String? $type})
       : $type = $type ?? 'result';
 
-  factory _$GetClassResult.fromJson(Map<String, dynamic> json) =>
-      _$$GetClassResultFromJson(json);
+  factory _$_GetClassResult.fromJson(Map<String, dynamic> json) =>
+      _$$_GetClassResultFromJson(json);
 
   @override
-  final DeprecatedContractClass result;
+  final IContractClass result;
 
   @JsonKey(name: 'starkNetRuntimeTypeToRemove')
   final String $type;
@@ -155,7 +145,7 @@ class _$GetClassResult implements GetClassResult {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$GetClassResult &&
+            other is _$_GetClassResult &&
             (identical(other.result, result) || other.result == result));
   }
 
@@ -166,13 +156,13 @@ class _$GetClassResult implements GetClassResult {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$GetClassResultCopyWith<_$GetClassResult> get copyWith =>
-      __$$GetClassResultCopyWithImpl<_$GetClassResult>(this, _$identity);
+  _$$_GetClassResultCopyWith<_$_GetClassResult> get copyWith =>
+      __$$_GetClassResultCopyWithImpl<_$_GetClassResult>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(DeprecatedContractClass result) result,
+    required TResult Function(IContractClass result) result,
     required TResult Function(JsonRpcApiError error) error,
   }) {
     return result(this.result);
@@ -181,7 +171,7 @@ class _$GetClassResult implements GetClassResult {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(DeprecatedContractClass result)? result,
+    TResult? Function(IContractClass result)? result,
     TResult? Function(JsonRpcApiError error)? error,
   }) {
     return result?.call(this.result);
@@ -190,7 +180,7 @@ class _$GetClassResult implements GetClassResult {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(DeprecatedContractClass result)? result,
+    TResult Function(IContractClass result)? result,
     TResult Function(JsonRpcApiError error)? error,
     required TResult orElse(),
   }) {
@@ -203,8 +193,8 @@ class _$GetClassResult implements GetClassResult {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(GetClassResult value) result,
-    required TResult Function(GetClassError value) error,
+    required TResult Function(_GetClassResult value) result,
+    required TResult Function(_GetClassError value) error,
   }) {
     return result(this);
   }
@@ -212,8 +202,8 @@ class _$GetClassResult implements GetClassResult {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(GetClassResult value)? result,
-    TResult? Function(GetClassError value)? error,
+    TResult? Function(_GetClassResult value)? result,
+    TResult? Function(_GetClassError value)? error,
   }) {
     return result?.call(this);
   }
@@ -221,8 +211,8 @@ class _$GetClassResult implements GetClassResult {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(GetClassResult value)? result,
-    TResult Function(GetClassError value)? error,
+    TResult Function(_GetClassResult value)? result,
+    TResult Function(_GetClassError value)? error,
     required TResult orElse(),
   }) {
     if (result != null) {
@@ -233,30 +223,30 @@ class _$GetClassResult implements GetClassResult {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$GetClassResultToJson(
+    return _$$_GetClassResultToJson(
       this,
     );
   }
 }
 
-abstract class GetClassResult implements GetClass {
-  const factory GetClassResult(
-      {required final DeprecatedContractClass result}) = _$GetClassResult;
+abstract class _GetClassResult implements GetClass {
+  const factory _GetClassResult({required final IContractClass result}) =
+      _$_GetClassResult;
 
-  factory GetClassResult.fromJson(Map<String, dynamic> json) =
-      _$GetClassResult.fromJson;
+  factory _GetClassResult.fromJson(Map<String, dynamic> json) =
+      _$_GetClassResult.fromJson;
 
-  DeprecatedContractClass get result;
+  IContractClass get result;
   @JsonKey(ignore: true)
-  _$$GetClassResultCopyWith<_$GetClassResult> get copyWith =>
+  _$$_GetClassResultCopyWith<_$_GetClassResult> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$GetClassErrorCopyWith<$Res> {
-  factory _$$GetClassErrorCopyWith(
-          _$GetClassError value, $Res Function(_$GetClassError) then) =
-      __$$GetClassErrorCopyWithImpl<$Res>;
+abstract class _$$_GetClassErrorCopyWith<$Res> {
+  factory _$$_GetClassErrorCopyWith(
+          _$_GetClassError value, $Res Function(_$_GetClassError) then) =
+      __$$_GetClassErrorCopyWithImpl<$Res>;
   @useResult
   $Res call({JsonRpcApiError error});
 
@@ -264,11 +254,11 @@ abstract class _$$GetClassErrorCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$GetClassErrorCopyWithImpl<$Res>
-    extends _$GetClassCopyWithImpl<$Res, _$GetClassError>
-    implements _$$GetClassErrorCopyWith<$Res> {
-  __$$GetClassErrorCopyWithImpl(
-      _$GetClassError _value, $Res Function(_$GetClassError) _then)
+class __$$_GetClassErrorCopyWithImpl<$Res>
+    extends _$GetClassCopyWithImpl<$Res, _$_GetClassError>
+    implements _$$_GetClassErrorCopyWith<$Res> {
+  __$$_GetClassErrorCopyWithImpl(
+      _$_GetClassError _value, $Res Function(_$_GetClassError) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -276,7 +266,7 @@ class __$$GetClassErrorCopyWithImpl<$Res>
   $Res call({
     Object? error = null,
   }) {
-    return _then(_$GetClassError(
+    return _then(_$_GetClassError(
       error: null == error
           ? _value.error
           : error // ignore: cast_nullable_to_non_nullable
@@ -295,12 +285,12 @@ class __$$GetClassErrorCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$GetClassError implements GetClassError {
-  const _$GetClassError({required this.error, final String? $type})
+class _$_GetClassError implements _GetClassError {
+  const _$_GetClassError({required this.error, final String? $type})
       : $type = $type ?? 'error';
 
-  factory _$GetClassError.fromJson(Map<String, dynamic> json) =>
-      _$$GetClassErrorFromJson(json);
+  factory _$_GetClassError.fromJson(Map<String, dynamic> json) =>
+      _$$_GetClassErrorFromJson(json);
 
   @override
   final JsonRpcApiError error;
@@ -317,7 +307,7 @@ class _$GetClassError implements GetClassError {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$GetClassError &&
+            other is _$_GetClassError &&
             (identical(other.error, error) || other.error == error));
   }
 
@@ -328,13 +318,13 @@ class _$GetClassError implements GetClassError {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$GetClassErrorCopyWith<_$GetClassError> get copyWith =>
-      __$$GetClassErrorCopyWithImpl<_$GetClassError>(this, _$identity);
+  _$$_GetClassErrorCopyWith<_$_GetClassError> get copyWith =>
+      __$$_GetClassErrorCopyWithImpl<_$_GetClassError>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(DeprecatedContractClass result) result,
+    required TResult Function(IContractClass result) result,
     required TResult Function(JsonRpcApiError error) error,
   }) {
     return error(this.error);
@@ -343,7 +333,7 @@ class _$GetClassError implements GetClassError {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(DeprecatedContractClass result)? result,
+    TResult? Function(IContractClass result)? result,
     TResult? Function(JsonRpcApiError error)? error,
   }) {
     return error?.call(this.error);
@@ -352,7 +342,7 @@ class _$GetClassError implements GetClassError {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(DeprecatedContractClass result)? result,
+    TResult Function(IContractClass result)? result,
     TResult Function(JsonRpcApiError error)? error,
     required TResult orElse(),
   }) {
@@ -365,8 +355,8 @@ class _$GetClassError implements GetClassError {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(GetClassResult value) result,
-    required TResult Function(GetClassError value) error,
+    required TResult Function(_GetClassResult value) result,
+    required TResult Function(_GetClassError value) error,
   }) {
     return error(this);
   }
@@ -374,8 +364,8 @@ class _$GetClassError implements GetClassError {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(GetClassResult value)? result,
-    TResult? Function(GetClassError value)? error,
+    TResult? Function(_GetClassResult value)? result,
+    TResult? Function(_GetClassError value)? error,
   }) {
     return error?.call(this);
   }
@@ -383,8 +373,8 @@ class _$GetClassError implements GetClassError {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(GetClassResult value)? result,
-    TResult Function(GetClassError value)? error,
+    TResult Function(_GetClassResult value)? result,
+    TResult Function(_GetClassError value)? error,
     required TResult orElse(),
   }) {
     if (error != null) {
@@ -395,21 +385,21 @@ class _$GetClassError implements GetClassError {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$GetClassErrorToJson(
+    return _$$_GetClassErrorToJson(
       this,
     );
   }
 }
 
-abstract class GetClassError implements GetClass {
-  const factory GetClassError({required final JsonRpcApiError error}) =
-      _$GetClassError;
+abstract class _GetClassError implements GetClass {
+  const factory _GetClassError({required final JsonRpcApiError error}) =
+      _$_GetClassError;
 
-  factory GetClassError.fromJson(Map<String, dynamic> json) =
-      _$GetClassError.fromJson;
+  factory _GetClassError.fromJson(Map<String, dynamic> json) =
+      _$_GetClassError.fromJson;
 
   JsonRpcApiError get error;
   @JsonKey(ignore: true)
-  _$$GetClassErrorCopyWith<_$GetClassError> get copyWith =>
+  _$$_GetClassErrorCopyWith<_$_GetClassError> get copyWith =>
       throw _privateConstructorUsedError;
 }
