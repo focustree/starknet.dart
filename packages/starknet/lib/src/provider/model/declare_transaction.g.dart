@@ -9,7 +9,7 @@ part of 'declare_transaction.dart';
 _$_DeclareTransactionRequest _$$_DeclareTransactionRequestFromJson(
         Map<String, dynamic> json) =>
     _$_DeclareTransactionRequest(
-      declareTransaction: DeclareTransaction.fromJson(
+      declareTransaction: DeclareTransactionV1.fromJson(
           json['declare_transaction'] as Map<String, dynamic>),
     );
 
@@ -19,9 +19,9 @@ Map<String, dynamic> _$$_DeclareTransactionRequestToJson(
       'declare_transaction': instance.declareTransaction.toJson(),
     };
 
-_$_DeclareTransaction _$$_DeclareTransactionFromJson(
+_$_DeclareTransactionV1 _$$_DeclareTransactionV1FromJson(
         Map<String, dynamic> json) =>
-    _$_DeclareTransaction(
+    _$_DeclareTransactionV1(
       type: json['type'] as String? ?? 'DECLARE',
       version: json['version'] as String? ?? '0x1',
       max_fee: Felt.fromJson(json['max_fee'] as String),
@@ -30,12 +30,12 @@ _$_DeclareTransaction _$$_DeclareTransactionFromJson(
           .map((e) => Felt.fromJson(e as String))
           .toList(),
       senderAddress: Felt.fromJson(json['sender_address'] as String),
-      contractClass: ContractClass.fromJson(
+      contractClass: DeprecatedContractClass.fromJson(
           json['contract_class'] as Map<String, dynamic>),
     );
 
-Map<String, dynamic> _$$_DeclareTransactionToJson(
-        _$_DeclareTransaction instance) =>
+Map<String, dynamic> _$$_DeclareTransactionV1ToJson(
+        _$_DeclareTransactionV1 instance) =>
     <String, dynamic>{
       'type': instance.type,
       'version': instance.version,
@@ -44,6 +44,35 @@ Map<String, dynamic> _$$_DeclareTransactionToJson(
       'signature': instance.signature.map((e) => e.toJson()).toList(),
       'sender_address': instance.senderAddress.toJson(),
       'contract_class': instance.contractClass.toJson(),
+    };
+
+_$_DeclareTransactionV2 _$$_DeclareTransactionV2FromJson(
+        Map<String, dynamic> json) =>
+    _$_DeclareTransactionV2(
+      type: json['type'] as String? ?? 'DECLARE',
+      version: json['version'] as String? ?? '0x2',
+      max_fee: Felt.fromJson(json['max_fee'] as String),
+      nonce: Felt.fromJson(json['nonce'] as String),
+      signature: (json['signature'] as List<dynamic>)
+          .map((e) => Felt.fromJson(e as String))
+          .toList(),
+      senderAddress: Felt.fromJson(json['sender_address'] as String),
+      contractClass: DeprecatedContractClass.fromJson(
+          json['contract_class'] as Map<String, dynamic>),
+      compiledClassHash: Felt.fromJson(json['compiled_class_hash'] as String),
+    );
+
+Map<String, dynamic> _$$_DeclareTransactionV2ToJson(
+        _$_DeclareTransactionV2 instance) =>
+    <String, dynamic>{
+      'type': instance.type,
+      'version': instance.version,
+      'max_fee': instance.max_fee.toJson(),
+      'nonce': instance.nonce.toJson(),
+      'signature': instance.signature.map((e) => e.toJson()).toList(),
+      'sender_address': instance.senderAddress.toJson(),
+      'contract_class': instance.contractClass.toJson(),
+      'compiled_class_hash': instance.compiledClassHash.toJson(),
     };
 
 _$DeclareTransactionResult _$$DeclareTransactionResultFromJson(

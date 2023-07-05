@@ -21,11 +21,11 @@ EntryPointsByType _$EntryPointsByTypeFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$EntryPointsByType {
   @JsonKey(name: 'CONSTRUCTOR')
-  List<EntryPoint> get constructor => throw _privateConstructorUsedError;
+  List<SierraEntryPoint> get constructor => throw _privateConstructorUsedError;
   @JsonKey(name: 'EXTERNAL')
-  List<EntryPoint> get external => throw _privateConstructorUsedError;
+  List<SierraEntryPoint> get external => throw _privateConstructorUsedError;
   @JsonKey(name: 'L1_HANDLER')
-  List<EntryPoint> get l1Handler => throw _privateConstructorUsedError;
+  List<SierraEntryPoint> get l1Handler => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -40,9 +40,9 @@ abstract class $EntryPointsByTypeCopyWith<$Res> {
       _$EntryPointsByTypeCopyWithImpl<$Res, EntryPointsByType>;
   @useResult
   $Res call(
-      {@JsonKey(name: 'CONSTRUCTOR') List<EntryPoint> constructor,
-      @JsonKey(name: 'EXTERNAL') List<EntryPoint> external,
-      @JsonKey(name: 'L1_HANDLER') List<EntryPoint> l1Handler});
+      {@JsonKey(name: 'CONSTRUCTOR') List<SierraEntryPoint> constructor,
+      @JsonKey(name: 'EXTERNAL') List<SierraEntryPoint> external,
+      @JsonKey(name: 'L1_HANDLER') List<SierraEntryPoint> l1Handler});
 }
 
 /// @nodoc
@@ -66,15 +66,15 @@ class _$EntryPointsByTypeCopyWithImpl<$Res, $Val extends EntryPointsByType>
       constructor: null == constructor
           ? _value.constructor
           : constructor // ignore: cast_nullable_to_non_nullable
-              as List<EntryPoint>,
+              as List<SierraEntryPoint>,
       external: null == external
           ? _value.external
           : external // ignore: cast_nullable_to_non_nullable
-              as List<EntryPoint>,
+              as List<SierraEntryPoint>,
       l1Handler: null == l1Handler
           ? _value.l1Handler
           : l1Handler // ignore: cast_nullable_to_non_nullable
-              as List<EntryPoint>,
+              as List<SierraEntryPoint>,
     ) as $Val);
   }
 }
@@ -88,9 +88,9 @@ abstract class _$$_EntryPointsByTypeCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {@JsonKey(name: 'CONSTRUCTOR') List<EntryPoint> constructor,
-      @JsonKey(name: 'EXTERNAL') List<EntryPoint> external,
-      @JsonKey(name: 'L1_HANDLER') List<EntryPoint> l1Handler});
+      {@JsonKey(name: 'CONSTRUCTOR') List<SierraEntryPoint> constructor,
+      @JsonKey(name: 'EXTERNAL') List<SierraEntryPoint> external,
+      @JsonKey(name: 'L1_HANDLER') List<SierraEntryPoint> l1Handler});
 }
 
 /// @nodoc
@@ -112,15 +112,15 @@ class __$$_EntryPointsByTypeCopyWithImpl<$Res>
       constructor: null == constructor
           ? _value._constructor
           : constructor // ignore: cast_nullable_to_non_nullable
-              as List<EntryPoint>,
+              as List<SierraEntryPoint>,
       external: null == external
           ? _value._external
           : external // ignore: cast_nullable_to_non_nullable
-              as List<EntryPoint>,
+              as List<SierraEntryPoint>,
       l1Handler: null == l1Handler
           ? _value._l1Handler
           : l1Handler // ignore: cast_nullable_to_non_nullable
-              as List<EntryPoint>,
+              as List<SierraEntryPoint>,
     ));
   }
 }
@@ -130,9 +130,10 @@ class __$$_EntryPointsByTypeCopyWithImpl<$Res>
 class _$_EntryPointsByType implements _EntryPointsByType {
   const _$_EntryPointsByType(
       {@JsonKey(name: 'CONSTRUCTOR')
-      required final List<EntryPoint> constructor,
-      @JsonKey(name: 'EXTERNAL') required final List<EntryPoint> external,
-      @JsonKey(name: 'L1_HANDLER') required final List<EntryPoint> l1Handler})
+      required final List<SierraEntryPoint> constructor,
+      @JsonKey(name: 'EXTERNAL') required final List<SierraEntryPoint> external,
+      @JsonKey(name: 'L1_HANDLER')
+      required final List<SierraEntryPoint> l1Handler})
       : _constructor = constructor,
         _external = external,
         _l1Handler = l1Handler;
@@ -140,28 +141,28 @@ class _$_EntryPointsByType implements _EntryPointsByType {
   factory _$_EntryPointsByType.fromJson(Map<String, dynamic> json) =>
       _$$_EntryPointsByTypeFromJson(json);
 
-  final List<EntryPoint> _constructor;
+  final List<SierraEntryPoint> _constructor;
   @override
   @JsonKey(name: 'CONSTRUCTOR')
-  List<EntryPoint> get constructor {
+  List<SierraEntryPoint> get constructor {
     if (_constructor is EqualUnmodifiableListView) return _constructor;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_constructor);
   }
 
-  final List<EntryPoint> _external;
+  final List<SierraEntryPoint> _external;
   @override
   @JsonKey(name: 'EXTERNAL')
-  List<EntryPoint> get external {
+  List<SierraEntryPoint> get external {
     if (_external is EqualUnmodifiableListView) return _external;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_external);
   }
 
-  final List<EntryPoint> _l1Handler;
+  final List<SierraEntryPoint> _l1Handler;
   @override
   @JsonKey(name: 'L1_HANDLER')
-  List<EntryPoint> get l1Handler {
+  List<SierraEntryPoint> get l1Handler {
     if (_l1Handler is EqualUnmodifiableListView) return _l1Handler;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_l1Handler);
@@ -210,57 +211,456 @@ class _$_EntryPointsByType implements _EntryPointsByType {
 abstract class _EntryPointsByType implements EntryPointsByType {
   const factory _EntryPointsByType(
       {@JsonKey(name: 'CONSTRUCTOR')
-      required final List<EntryPoint> constructor,
-      @JsonKey(name: 'EXTERNAL') required final List<EntryPoint> external,
+      required final List<SierraEntryPoint> constructor,
+      @JsonKey(name: 'EXTERNAL') required final List<SierraEntryPoint> external,
       @JsonKey(name: 'L1_HANDLER')
-      required final List<EntryPoint> l1Handler}) = _$_EntryPointsByType;
+      required final List<SierraEntryPoint> l1Handler}) = _$_EntryPointsByType;
 
   factory _EntryPointsByType.fromJson(Map<String, dynamic> json) =
       _$_EntryPointsByType.fromJson;
 
   @override
   @JsonKey(name: 'CONSTRUCTOR')
-  List<EntryPoint> get constructor;
+  List<SierraEntryPoint> get constructor;
   @override
   @JsonKey(name: 'EXTERNAL')
-  List<EntryPoint> get external;
+  List<SierraEntryPoint> get external;
   @override
   @JsonKey(name: 'L1_HANDLER')
-  List<EntryPoint> get l1Handler;
+  List<SierraEntryPoint> get l1Handler;
   @override
   @JsonKey(ignore: true)
   _$$_EntryPointsByTypeCopyWith<_$_EntryPointsByType> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
-EntryPoint _$EntryPointFromJson(Map<String, dynamic> json) {
-  return _EntryPoint.fromJson(json);
+SierraEntryPoint _$SierraEntryPointFromJson(Map<String, dynamic> json) {
+  return _SierraEntryPoint.fromJson(json);
 }
 
 /// @nodoc
-mixin _$EntryPoint {
+mixin _$SierraEntryPoint {
+  Felt get selector => throw _privateConstructorUsedError;
+  int get functionIdx => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $SierraEntryPointCopyWith<SierraEntryPoint> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $SierraEntryPointCopyWith<$Res> {
+  factory $SierraEntryPointCopyWith(
+          SierraEntryPoint value, $Res Function(SierraEntryPoint) then) =
+      _$SierraEntryPointCopyWithImpl<$Res, SierraEntryPoint>;
+  @useResult
+  $Res call({Felt selector, int functionIdx});
+}
+
+/// @nodoc
+class _$SierraEntryPointCopyWithImpl<$Res, $Val extends SierraEntryPoint>
+    implements $SierraEntryPointCopyWith<$Res> {
+  _$SierraEntryPointCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? selector = null,
+    Object? functionIdx = null,
+  }) {
+    return _then(_value.copyWith(
+      selector: null == selector
+          ? _value.selector
+          : selector // ignore: cast_nullable_to_non_nullable
+              as Felt,
+      functionIdx: null == functionIdx
+          ? _value.functionIdx
+          : functionIdx // ignore: cast_nullable_to_non_nullable
+              as int,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$_SierraEntryPointCopyWith<$Res>
+    implements $SierraEntryPointCopyWith<$Res> {
+  factory _$$_SierraEntryPointCopyWith(
+          _$_SierraEntryPoint value, $Res Function(_$_SierraEntryPoint) then) =
+      __$$_SierraEntryPointCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({Felt selector, int functionIdx});
+}
+
+/// @nodoc
+class __$$_SierraEntryPointCopyWithImpl<$Res>
+    extends _$SierraEntryPointCopyWithImpl<$Res, _$_SierraEntryPoint>
+    implements _$$_SierraEntryPointCopyWith<$Res> {
+  __$$_SierraEntryPointCopyWithImpl(
+      _$_SierraEntryPoint _value, $Res Function(_$_SierraEntryPoint) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? selector = null,
+    Object? functionIdx = null,
+  }) {
+    return _then(_$_SierraEntryPoint(
+      selector: null == selector
+          ? _value.selector
+          : selector // ignore: cast_nullable_to_non_nullable
+              as Felt,
+      functionIdx: null == functionIdx
+          ? _value.functionIdx
+          : functionIdx // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$_SierraEntryPoint implements _SierraEntryPoint {
+  const _$_SierraEntryPoint(
+      {required this.selector, required this.functionIdx});
+
+  factory _$_SierraEntryPoint.fromJson(Map<String, dynamic> json) =>
+      _$$_SierraEntryPointFromJson(json);
+
+  @override
+  final Felt selector;
+  @override
+  final int functionIdx;
+
+  @override
+  String toString() {
+    return 'SierraEntryPoint(selector: $selector, functionIdx: $functionIdx)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_SierraEntryPoint &&
+            (identical(other.selector, selector) ||
+                other.selector == selector) &&
+            (identical(other.functionIdx, functionIdx) ||
+                other.functionIdx == functionIdx));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(runtimeType, selector, functionIdx);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_SierraEntryPointCopyWith<_$_SierraEntryPoint> get copyWith =>
+      __$$_SierraEntryPointCopyWithImpl<_$_SierraEntryPoint>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_SierraEntryPointToJson(
+      this,
+    );
+  }
+}
+
+abstract class _SierraEntryPoint implements SierraEntryPoint {
+  const factory _SierraEntryPoint(
+      {required final Felt selector,
+      required final int functionIdx}) = _$_SierraEntryPoint;
+
+  factory _SierraEntryPoint.fromJson(Map<String, dynamic> json) =
+      _$_SierraEntryPoint.fromJson;
+
+  @override
+  Felt get selector;
+  @override
+  int get functionIdx;
+  @override
+  @JsonKey(ignore: true)
+  _$$_SierraEntryPointCopyWith<_$_SierraEntryPoint> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+DeprecatedCairoEntryPointsByType _$DeprecatedCairoEntryPointsByTypeFromJson(
+    Map<String, dynamic> json) {
+  return _DeprecatedCairoEntryPointsByType.fromJson(json);
+}
+
+/// @nodoc
+mixin _$DeprecatedCairoEntryPointsByType {
+  @JsonKey(name: 'CONSTRUCTOR')
+  List<DeprecatedCairoEntryPoint> get constructor =>
+      throw _privateConstructorUsedError;
+  @JsonKey(name: 'EXTERNAL')
+  List<DeprecatedCairoEntryPoint> get external =>
+      throw _privateConstructorUsedError;
+  @JsonKey(name: 'L1_HANDLER')
+  List<DeprecatedCairoEntryPoint> get l1Handler =>
+      throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $DeprecatedCairoEntryPointsByTypeCopyWith<DeprecatedCairoEntryPointsByType>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $DeprecatedCairoEntryPointsByTypeCopyWith<$Res> {
+  factory $DeprecatedCairoEntryPointsByTypeCopyWith(
+          DeprecatedCairoEntryPointsByType value,
+          $Res Function(DeprecatedCairoEntryPointsByType) then) =
+      _$DeprecatedCairoEntryPointsByTypeCopyWithImpl<$Res,
+          DeprecatedCairoEntryPointsByType>;
+  @useResult
+  $Res call(
+      {@JsonKey(name: 'CONSTRUCTOR')
+      List<DeprecatedCairoEntryPoint> constructor,
+      @JsonKey(name: 'EXTERNAL') List<DeprecatedCairoEntryPoint> external,
+      @JsonKey(name: 'L1_HANDLER') List<DeprecatedCairoEntryPoint> l1Handler});
+}
+
+/// @nodoc
+class _$DeprecatedCairoEntryPointsByTypeCopyWithImpl<$Res,
+        $Val extends DeprecatedCairoEntryPointsByType>
+    implements $DeprecatedCairoEntryPointsByTypeCopyWith<$Res> {
+  _$DeprecatedCairoEntryPointsByTypeCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? constructor = null,
+    Object? external = null,
+    Object? l1Handler = null,
+  }) {
+    return _then(_value.copyWith(
+      constructor: null == constructor
+          ? _value.constructor
+          : constructor // ignore: cast_nullable_to_non_nullable
+              as List<DeprecatedCairoEntryPoint>,
+      external: null == external
+          ? _value.external
+          : external // ignore: cast_nullable_to_non_nullable
+              as List<DeprecatedCairoEntryPoint>,
+      l1Handler: null == l1Handler
+          ? _value.l1Handler
+          : l1Handler // ignore: cast_nullable_to_non_nullable
+              as List<DeprecatedCairoEntryPoint>,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$_DeprecatedCairoEntryPointsByTypeCopyWith<$Res>
+    implements $DeprecatedCairoEntryPointsByTypeCopyWith<$Res> {
+  factory _$$_DeprecatedCairoEntryPointsByTypeCopyWith(
+          _$_DeprecatedCairoEntryPointsByType value,
+          $Res Function(_$_DeprecatedCairoEntryPointsByType) then) =
+      __$$_DeprecatedCairoEntryPointsByTypeCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call(
+      {@JsonKey(name: 'CONSTRUCTOR')
+      List<DeprecatedCairoEntryPoint> constructor,
+      @JsonKey(name: 'EXTERNAL') List<DeprecatedCairoEntryPoint> external,
+      @JsonKey(name: 'L1_HANDLER') List<DeprecatedCairoEntryPoint> l1Handler});
+}
+
+/// @nodoc
+class __$$_DeprecatedCairoEntryPointsByTypeCopyWithImpl<$Res>
+    extends _$DeprecatedCairoEntryPointsByTypeCopyWithImpl<$Res,
+        _$_DeprecatedCairoEntryPointsByType>
+    implements _$$_DeprecatedCairoEntryPointsByTypeCopyWith<$Res> {
+  __$$_DeprecatedCairoEntryPointsByTypeCopyWithImpl(
+      _$_DeprecatedCairoEntryPointsByType _value,
+      $Res Function(_$_DeprecatedCairoEntryPointsByType) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? constructor = null,
+    Object? external = null,
+    Object? l1Handler = null,
+  }) {
+    return _then(_$_DeprecatedCairoEntryPointsByType(
+      constructor: null == constructor
+          ? _value._constructor
+          : constructor // ignore: cast_nullable_to_non_nullable
+              as List<DeprecatedCairoEntryPoint>,
+      external: null == external
+          ? _value._external
+          : external // ignore: cast_nullable_to_non_nullable
+              as List<DeprecatedCairoEntryPoint>,
+      l1Handler: null == l1Handler
+          ? _value._l1Handler
+          : l1Handler // ignore: cast_nullable_to_non_nullable
+              as List<DeprecatedCairoEntryPoint>,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$_DeprecatedCairoEntryPointsByType
+    implements _DeprecatedCairoEntryPointsByType {
+  const _$_DeprecatedCairoEntryPointsByType(
+      {@JsonKey(name: 'CONSTRUCTOR')
+      required final List<DeprecatedCairoEntryPoint> constructor,
+      @JsonKey(name: 'EXTERNAL')
+      required final List<DeprecatedCairoEntryPoint> external,
+      @JsonKey(name: 'L1_HANDLER')
+      required final List<DeprecatedCairoEntryPoint> l1Handler})
+      : _constructor = constructor,
+        _external = external,
+        _l1Handler = l1Handler;
+
+  factory _$_DeprecatedCairoEntryPointsByType.fromJson(
+          Map<String, dynamic> json) =>
+      _$$_DeprecatedCairoEntryPointsByTypeFromJson(json);
+
+  final List<DeprecatedCairoEntryPoint> _constructor;
+  @override
+  @JsonKey(name: 'CONSTRUCTOR')
+  List<DeprecatedCairoEntryPoint> get constructor {
+    if (_constructor is EqualUnmodifiableListView) return _constructor;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_constructor);
+  }
+
+  final List<DeprecatedCairoEntryPoint> _external;
+  @override
+  @JsonKey(name: 'EXTERNAL')
+  List<DeprecatedCairoEntryPoint> get external {
+    if (_external is EqualUnmodifiableListView) return _external;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_external);
+  }
+
+  final List<DeprecatedCairoEntryPoint> _l1Handler;
+  @override
+  @JsonKey(name: 'L1_HANDLER')
+  List<DeprecatedCairoEntryPoint> get l1Handler {
+    if (_l1Handler is EqualUnmodifiableListView) return _l1Handler;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_l1Handler);
+  }
+
+  @override
+  String toString() {
+    return 'DeprecatedCairoEntryPointsByType(constructor: $constructor, external: $external, l1Handler: $l1Handler)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_DeprecatedCairoEntryPointsByType &&
+            const DeepCollectionEquality()
+                .equals(other._constructor, _constructor) &&
+            const DeepCollectionEquality().equals(other._external, _external) &&
+            const DeepCollectionEquality()
+                .equals(other._l1Handler, _l1Handler));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(_constructor),
+      const DeepCollectionEquality().hash(_external),
+      const DeepCollectionEquality().hash(_l1Handler));
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_DeprecatedCairoEntryPointsByTypeCopyWith<
+          _$_DeprecatedCairoEntryPointsByType>
+      get copyWith => __$$_DeprecatedCairoEntryPointsByTypeCopyWithImpl<
+          _$_DeprecatedCairoEntryPointsByType>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_DeprecatedCairoEntryPointsByTypeToJson(
+      this,
+    );
+  }
+}
+
+abstract class _DeprecatedCairoEntryPointsByType
+    implements DeprecatedCairoEntryPointsByType {
+  const factory _DeprecatedCairoEntryPointsByType(
+          {@JsonKey(name: 'CONSTRUCTOR')
+          required final List<DeprecatedCairoEntryPoint> constructor,
+          @JsonKey(name: 'EXTERNAL')
+          required final List<DeprecatedCairoEntryPoint> external,
+          @JsonKey(name: 'L1_HANDLER')
+          required final List<DeprecatedCairoEntryPoint> l1Handler}) =
+      _$_DeprecatedCairoEntryPointsByType;
+
+  factory _DeprecatedCairoEntryPointsByType.fromJson(
+      Map<String, dynamic> json) = _$_DeprecatedCairoEntryPointsByType.fromJson;
+
+  @override
+  @JsonKey(name: 'CONSTRUCTOR')
+  List<DeprecatedCairoEntryPoint> get constructor;
+  @override
+  @JsonKey(name: 'EXTERNAL')
+  List<DeprecatedCairoEntryPoint> get external;
+  @override
+  @JsonKey(name: 'L1_HANDLER')
+  List<DeprecatedCairoEntryPoint> get l1Handler;
+  @override
+  @JsonKey(ignore: true)
+  _$$_DeprecatedCairoEntryPointsByTypeCopyWith<
+          _$_DeprecatedCairoEntryPointsByType>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+DeprecatedCairoEntryPoint _$DeprecatedCairoEntryPointFromJson(
+    Map<String, dynamic> json) {
+  return _DeprecatedCairoEntryPoint.fromJson(json);
+}
+
+/// @nodoc
+mixin _$DeprecatedCairoEntryPoint {
   String get offset => throw _privateConstructorUsedError;
   Felt get selector => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $EntryPointCopyWith<EntryPoint> get copyWith =>
+  $DeprecatedCairoEntryPointCopyWith<DeprecatedCairoEntryPoint> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $EntryPointCopyWith<$Res> {
-  factory $EntryPointCopyWith(
-          EntryPoint value, $Res Function(EntryPoint) then) =
-      _$EntryPointCopyWithImpl<$Res, EntryPoint>;
+abstract class $DeprecatedCairoEntryPointCopyWith<$Res> {
+  factory $DeprecatedCairoEntryPointCopyWith(DeprecatedCairoEntryPoint value,
+          $Res Function(DeprecatedCairoEntryPoint) then) =
+      _$DeprecatedCairoEntryPointCopyWithImpl<$Res, DeprecatedCairoEntryPoint>;
   @useResult
   $Res call({String offset, Felt selector});
 }
 
 /// @nodoc
-class _$EntryPointCopyWithImpl<$Res, $Val extends EntryPoint>
-    implements $EntryPointCopyWith<$Res> {
-  _$EntryPointCopyWithImpl(this._value, this._then);
+class _$DeprecatedCairoEntryPointCopyWithImpl<$Res,
+        $Val extends DeprecatedCairoEntryPoint>
+    implements $DeprecatedCairoEntryPointCopyWith<$Res> {
+  _$DeprecatedCairoEntryPointCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -287,22 +687,25 @@ class _$EntryPointCopyWithImpl<$Res, $Val extends EntryPoint>
 }
 
 /// @nodoc
-abstract class _$$_EntryPointCopyWith<$Res>
-    implements $EntryPointCopyWith<$Res> {
-  factory _$$_EntryPointCopyWith(
-          _$_EntryPoint value, $Res Function(_$_EntryPoint) then) =
-      __$$_EntryPointCopyWithImpl<$Res>;
+abstract class _$$_DeprecatedCairoEntryPointCopyWith<$Res>
+    implements $DeprecatedCairoEntryPointCopyWith<$Res> {
+  factory _$$_DeprecatedCairoEntryPointCopyWith(
+          _$_DeprecatedCairoEntryPoint value,
+          $Res Function(_$_DeprecatedCairoEntryPoint) then) =
+      __$$_DeprecatedCairoEntryPointCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String offset, Felt selector});
 }
 
 /// @nodoc
-class __$$_EntryPointCopyWithImpl<$Res>
-    extends _$EntryPointCopyWithImpl<$Res, _$_EntryPoint>
-    implements _$$_EntryPointCopyWith<$Res> {
-  __$$_EntryPointCopyWithImpl(
-      _$_EntryPoint _value, $Res Function(_$_EntryPoint) _then)
+class __$$_DeprecatedCairoEntryPointCopyWithImpl<$Res>
+    extends _$DeprecatedCairoEntryPointCopyWithImpl<$Res,
+        _$_DeprecatedCairoEntryPoint>
+    implements _$$_DeprecatedCairoEntryPointCopyWith<$Res> {
+  __$$_DeprecatedCairoEntryPointCopyWithImpl(
+      _$_DeprecatedCairoEntryPoint _value,
+      $Res Function(_$_DeprecatedCairoEntryPoint) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -311,7 +714,7 @@ class __$$_EntryPointCopyWithImpl<$Res>
     Object? offset = null,
     Object? selector = null,
   }) {
-    return _then(_$_EntryPoint(
+    return _then(_$_DeprecatedCairoEntryPoint(
       offset: null == offset
           ? _value.offset
           : offset // ignore: cast_nullable_to_non_nullable
@@ -326,11 +729,12 @@ class __$$_EntryPointCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_EntryPoint implements _EntryPoint {
-  const _$_EntryPoint({required this.offset, required this.selector});
+class _$_DeprecatedCairoEntryPoint implements _DeprecatedCairoEntryPoint {
+  const _$_DeprecatedCairoEntryPoint(
+      {required this.offset, required this.selector});
 
-  factory _$_EntryPoint.fromJson(Map<String, dynamic> json) =>
-      _$$_EntryPointFromJson(json);
+  factory _$_DeprecatedCairoEntryPoint.fromJson(Map<String, dynamic> json) =>
+      _$$_DeprecatedCairoEntryPointFromJson(json);
 
   @override
   final String offset;
@@ -339,14 +743,14 @@ class _$_EntryPoint implements _EntryPoint {
 
   @override
   String toString() {
-    return 'EntryPoint(offset: $offset, selector: $selector)';
+    return 'DeprecatedCairoEntryPoint(offset: $offset, selector: $selector)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_EntryPoint &&
+            other is _$_DeprecatedCairoEntryPoint &&
             (identical(other.offset, offset) || other.offset == offset) &&
             (identical(other.selector, selector) ||
                 other.selector == selector));
@@ -359,24 +763,25 @@ class _$_EntryPoint implements _EntryPoint {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_EntryPointCopyWith<_$_EntryPoint> get copyWith =>
-      __$$_EntryPointCopyWithImpl<_$_EntryPoint>(this, _$identity);
+  _$$_DeprecatedCairoEntryPointCopyWith<_$_DeprecatedCairoEntryPoint>
+      get copyWith => __$$_DeprecatedCairoEntryPointCopyWithImpl<
+          _$_DeprecatedCairoEntryPoint>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_EntryPointToJson(
+    return _$$_DeprecatedCairoEntryPointToJson(
       this,
     );
   }
 }
 
-abstract class _EntryPoint implements EntryPoint {
-  const factory _EntryPoint(
+abstract class _DeprecatedCairoEntryPoint implements DeprecatedCairoEntryPoint {
+  const factory _DeprecatedCairoEntryPoint(
       {required final String offset,
-      required final Felt selector}) = _$_EntryPoint;
+      required final Felt selector}) = _$_DeprecatedCairoEntryPoint;
 
-  factory _EntryPoint.fromJson(Map<String, dynamic> json) =
-      _$_EntryPoint.fromJson;
+  factory _DeprecatedCairoEntryPoint.fromJson(Map<String, dynamic> json) =
+      _$_DeprecatedCairoEntryPoint.fromJson;
 
   @override
   String get offset;
@@ -384,6 +789,6 @@ abstract class _EntryPoint implements EntryPoint {
   Felt get selector;
   @override
   @JsonKey(ignore: true)
-  _$$_EntryPointCopyWith<_$_EntryPoint> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$_DeprecatedCairoEntryPointCopyWith<_$_DeprecatedCairoEntryPoint>
+      get copyWith => throw _privateConstructorUsedError;
 }

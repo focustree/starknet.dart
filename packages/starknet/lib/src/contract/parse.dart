@@ -3,9 +3,9 @@ import 'dart:io';
 
 import 'package:starknet/starknet.dart';
 
-Future<CompiledContract> parseContract(String contractPath) async {
+Future<DeprecatedCompiledContract> parseContract(String contractPath) async {
   final json = await readJsonFile(contractPath);
-  return CompiledContract.fromJson(json);
+  return DeprecatedCompiledContract.fromJson(json);
 }
 
 Future<dynamic> readJsonFile(String filePath) async {

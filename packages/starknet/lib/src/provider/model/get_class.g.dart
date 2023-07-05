@@ -8,7 +8,8 @@ part of 'get_class.dart';
 
 _$GetClassResult _$$GetClassResultFromJson(Map<String, dynamic> json) =>
     _$GetClassResult(
-      result: ContractClass.fromJson(json['result'] as Map<String, dynamic>),
+      result: DeprecatedContractClass.fromJson(
+          json['result'] as Map<String, dynamic>),
       $type: json['starkNetRuntimeTypeToRemove'] as String?,
     );
 

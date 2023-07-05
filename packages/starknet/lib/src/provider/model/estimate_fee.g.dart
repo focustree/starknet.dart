@@ -128,7 +128,7 @@ _$BroadcastedDeclareTxn _$$BroadcastedDeclareTxnFromJson(
           .map((e) => Felt.fromJson(e as String))
           .toList(),
       nonce: Felt.fromJson(json['nonce'] as String),
-      contractClass: ContractClass.fromJson(
+      contractClass: DeprecatedContractClass.fromJson(
           json['contract_class'] as Map<String, dynamic>),
       senderAddress: Felt.fromJson(json['sender_address'] as String),
       $type: json['starkNetRuntimeTypeToRemove'] as String?,
@@ -150,7 +150,7 @@ Map<String, dynamic> _$$BroadcastedDeclareTxnToJson(
 _$BroadcastedDeployTxn _$$BroadcastedDeployTxnFromJson(
         Map<String, dynamic> json) =>
     _$BroadcastedDeployTxn(
-      contractClass: ContractClass.fromJson(
+      contractClass: DeprecatedContractClass.fromJson(
           json['contract_class'] as Map<String, dynamic>),
       version: json['version'] as String,
       type: json['type'] as String,

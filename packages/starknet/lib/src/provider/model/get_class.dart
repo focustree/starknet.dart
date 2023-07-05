@@ -7,7 +7,7 @@ part 'get_class.g.dart';
 @freezed
 class GetClass with _$GetClass {
   const factory GetClass.result({
-    required ContractClass result,
+    required DeprecatedContractClass result,
   }) = GetClassResult;
   const factory GetClass.error({
     required JsonRpcApiError error,

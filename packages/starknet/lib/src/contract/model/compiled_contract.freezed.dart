@@ -14,40 +14,44 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
-CompiledContract _$CompiledContractFromJson(Map<String, dynamic> json) {
-  return _CompiledContract.fromJson(json);
+DeprecatedCompiledContract _$DeprecatedCompiledContractFromJson(
+    Map<String, dynamic> json) {
+  return _DeprecatedCompiledContract.fromJson(json);
 }
 
 /// @nodoc
-mixin _$CompiledContract {
+mixin _$DeprecatedCompiledContract {
   Map<String, Object?> get program => throw _privateConstructorUsedError;
-  EntryPointsByType get entryPointsByType => throw _privateConstructorUsedError;
+  DeprecatedCairoEntryPointsByType get entryPointsByType =>
+      throw _privateConstructorUsedError;
   List<ContractAbiEntry>? get abi => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $CompiledContractCopyWith<CompiledContract> get copyWith =>
-      throw _privateConstructorUsedError;
+  $DeprecatedCompiledContractCopyWith<DeprecatedCompiledContract>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $CompiledContractCopyWith<$Res> {
-  factory $CompiledContractCopyWith(
-          CompiledContract value, $Res Function(CompiledContract) then) =
-      _$CompiledContractCopyWithImpl<$Res, CompiledContract>;
+abstract class $DeprecatedCompiledContractCopyWith<$Res> {
+  factory $DeprecatedCompiledContractCopyWith(DeprecatedCompiledContract value,
+          $Res Function(DeprecatedCompiledContract) then) =
+      _$DeprecatedCompiledContractCopyWithImpl<$Res,
+          DeprecatedCompiledContract>;
   @useResult
   $Res call(
       {Map<String, Object?> program,
-      EntryPointsByType entryPointsByType,
+      DeprecatedCairoEntryPointsByType entryPointsByType,
       List<ContractAbiEntry>? abi});
 
-  $EntryPointsByTypeCopyWith<$Res> get entryPointsByType;
+  $DeprecatedCairoEntryPointsByTypeCopyWith<$Res> get entryPointsByType;
 }
 
 /// @nodoc
-class _$CompiledContractCopyWithImpl<$Res, $Val extends CompiledContract>
-    implements $CompiledContractCopyWith<$Res> {
-  _$CompiledContractCopyWithImpl(this._value, this._then);
+class _$DeprecatedCompiledContractCopyWithImpl<$Res,
+        $Val extends DeprecatedCompiledContract>
+    implements $DeprecatedCompiledContractCopyWith<$Res> {
+  _$DeprecatedCompiledContractCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -69,7 +73,7 @@ class _$CompiledContractCopyWithImpl<$Res, $Val extends CompiledContract>
       entryPointsByType: null == entryPointsByType
           ? _value.entryPointsByType
           : entryPointsByType // ignore: cast_nullable_to_non_nullable
-              as EntryPointsByType,
+              as DeprecatedCairoEntryPointsByType,
       abi: freezed == abi
           ? _value.abi
           : abi // ignore: cast_nullable_to_non_nullable
@@ -79,36 +83,40 @@ class _$CompiledContractCopyWithImpl<$Res, $Val extends CompiledContract>
 
   @override
   @pragma('vm:prefer-inline')
-  $EntryPointsByTypeCopyWith<$Res> get entryPointsByType {
-    return $EntryPointsByTypeCopyWith<$Res>(_value.entryPointsByType, (value) {
+  $DeprecatedCairoEntryPointsByTypeCopyWith<$Res> get entryPointsByType {
+    return $DeprecatedCairoEntryPointsByTypeCopyWith<$Res>(
+        _value.entryPointsByType, (value) {
       return _then(_value.copyWith(entryPointsByType: value) as $Val);
     });
   }
 }
 
 /// @nodoc
-abstract class _$$_CompiledContractCopyWith<$Res>
-    implements $CompiledContractCopyWith<$Res> {
-  factory _$$_CompiledContractCopyWith(
-          _$_CompiledContract value, $Res Function(_$_CompiledContract) then) =
-      __$$_CompiledContractCopyWithImpl<$Res>;
+abstract class _$$_DeprecatedCompiledContractCopyWith<$Res>
+    implements $DeprecatedCompiledContractCopyWith<$Res> {
+  factory _$$_DeprecatedCompiledContractCopyWith(
+          _$_DeprecatedCompiledContract value,
+          $Res Function(_$_DeprecatedCompiledContract) then) =
+      __$$_DeprecatedCompiledContractCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
       {Map<String, Object?> program,
-      EntryPointsByType entryPointsByType,
+      DeprecatedCairoEntryPointsByType entryPointsByType,
       List<ContractAbiEntry>? abi});
 
   @override
-  $EntryPointsByTypeCopyWith<$Res> get entryPointsByType;
+  $DeprecatedCairoEntryPointsByTypeCopyWith<$Res> get entryPointsByType;
 }
 
 /// @nodoc
-class __$$_CompiledContractCopyWithImpl<$Res>
-    extends _$CompiledContractCopyWithImpl<$Res, _$_CompiledContract>
-    implements _$$_CompiledContractCopyWith<$Res> {
-  __$$_CompiledContractCopyWithImpl(
-      _$_CompiledContract _value, $Res Function(_$_CompiledContract) _then)
+class __$$_DeprecatedCompiledContractCopyWithImpl<$Res>
+    extends _$DeprecatedCompiledContractCopyWithImpl<$Res,
+        _$_DeprecatedCompiledContract>
+    implements _$$_DeprecatedCompiledContractCopyWith<$Res> {
+  __$$_DeprecatedCompiledContractCopyWithImpl(
+      _$_DeprecatedCompiledContract _value,
+      $Res Function(_$_DeprecatedCompiledContract) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -118,7 +126,7 @@ class __$$_CompiledContractCopyWithImpl<$Res>
     Object? entryPointsByType = null,
     Object? abi = freezed,
   }) {
-    return _then(_$_CompiledContract(
+    return _then(_$_DeprecatedCompiledContract(
       program: null == program
           ? _value._program
           : program // ignore: cast_nullable_to_non_nullable
@@ -126,7 +134,7 @@ class __$$_CompiledContractCopyWithImpl<$Res>
       entryPointsByType: null == entryPointsByType
           ? _value.entryPointsByType
           : entryPointsByType // ignore: cast_nullable_to_non_nullable
-              as EntryPointsByType,
+              as DeprecatedCairoEntryPointsByType,
       abi: freezed == abi
           ? _value._abi
           : abi // ignore: cast_nullable_to_non_nullable
@@ -137,8 +145,8 @@ class __$$_CompiledContractCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_CompiledContract extends _CompiledContract {
-  const _$_CompiledContract(
+class _$_DeprecatedCompiledContract extends _DeprecatedCompiledContract {
+  const _$_DeprecatedCompiledContract(
       {required final Map<String, Object?> program,
       required this.entryPointsByType,
       final List<ContractAbiEntry>? abi})
@@ -146,8 +154,8 @@ class _$_CompiledContract extends _CompiledContract {
         _abi = abi,
         super._();
 
-  factory _$_CompiledContract.fromJson(Map<String, dynamic> json) =>
-      _$$_CompiledContractFromJson(json);
+  factory _$_DeprecatedCompiledContract.fromJson(Map<String, dynamic> json) =>
+      _$$_DeprecatedCompiledContractFromJson(json);
 
   final Map<String, Object?> _program;
   @override
@@ -158,7 +166,7 @@ class _$_CompiledContract extends _CompiledContract {
   }
 
   @override
-  final EntryPointsByType entryPointsByType;
+  final DeprecatedCairoEntryPointsByType entryPointsByType;
   final List<ContractAbiEntry>? _abi;
   @override
   List<ContractAbiEntry>? get abi {
@@ -171,14 +179,14 @@ class _$_CompiledContract extends _CompiledContract {
 
   @override
   String toString() {
-    return 'CompiledContract(program: $program, entryPointsByType: $entryPointsByType, abi: $abi)';
+    return 'DeprecatedCompiledContract(program: $program, entryPointsByType: $entryPointsByType, abi: $abi)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_CompiledContract &&
+            other is _$_DeprecatedCompiledContract &&
             const DeepCollectionEquality().equals(other._program, _program) &&
             (identical(other.entryPointsByType, entryPointsByType) ||
                 other.entryPointsByType == entryPointsByType) &&
@@ -196,35 +204,36 @@ class _$_CompiledContract extends _CompiledContract {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_CompiledContractCopyWith<_$_CompiledContract> get copyWith =>
-      __$$_CompiledContractCopyWithImpl<_$_CompiledContract>(this, _$identity);
+  _$$_DeprecatedCompiledContractCopyWith<_$_DeprecatedCompiledContract>
+      get copyWith => __$$_DeprecatedCompiledContractCopyWithImpl<
+          _$_DeprecatedCompiledContract>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_CompiledContractToJson(
+    return _$$_DeprecatedCompiledContractToJson(
       this,
     );
   }
 }
 
-abstract class _CompiledContract extends CompiledContract {
-  const factory _CompiledContract(
+abstract class _DeprecatedCompiledContract extends DeprecatedCompiledContract {
+  const factory _DeprecatedCompiledContract(
       {required final Map<String, Object?> program,
-      required final EntryPointsByType entryPointsByType,
-      final List<ContractAbiEntry>? abi}) = _$_CompiledContract;
-  const _CompiledContract._() : super._();
+      required final DeprecatedCairoEntryPointsByType entryPointsByType,
+      final List<ContractAbiEntry>? abi}) = _$_DeprecatedCompiledContract;
+  const _DeprecatedCompiledContract._() : super._();
 
-  factory _CompiledContract.fromJson(Map<String, dynamic> json) =
-      _$_CompiledContract.fromJson;
+  factory _DeprecatedCompiledContract.fromJson(Map<String, dynamic> json) =
+      _$_DeprecatedCompiledContract.fromJson;
 
   @override
   Map<String, Object?> get program;
   @override
-  EntryPointsByType get entryPointsByType;
+  DeprecatedCairoEntryPointsByType get entryPointsByType;
   @override
   List<ContractAbiEntry>? get abi;
   @override
   @JsonKey(ignore: true)
-  _$$_CompiledContractCopyWith<_$_CompiledContract> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$_DeprecatedCompiledContractCopyWith<_$_DeprecatedCompiledContract>
+      get copyWith => throw _privateConstructorUsedError;
 }

@@ -34,19 +34,19 @@ GetClass _$GetClassFromJson(Map<String, dynamic> json) {
 mixin _$GetClass {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(ContractClass result) result,
+    required TResult Function(DeprecatedContractClass result) result,
     required TResult Function(JsonRpcApiError error) error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(ContractClass result)? result,
+    TResult? Function(DeprecatedContractClass result)? result,
     TResult? Function(JsonRpcApiError error)? error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(ContractClass result)? result,
+    TResult Function(DeprecatedContractClass result)? result,
     TResult Function(JsonRpcApiError error)? error,
     required TResult orElse(),
   }) =>
@@ -96,9 +96,9 @@ abstract class _$$GetClassResultCopyWith<$Res> {
           _$GetClassResult value, $Res Function(_$GetClassResult) then) =
       __$$GetClassResultCopyWithImpl<$Res>;
   @useResult
-  $Res call({ContractClass result});
+  $Res call({DeprecatedContractClass result});
 
-  $ContractClassCopyWith<$Res> get result;
+  $DeprecatedContractClassCopyWith<$Res> get result;
 }
 
 /// @nodoc
@@ -118,14 +118,14 @@ class __$$GetClassResultCopyWithImpl<$Res>
       result: null == result
           ? _value.result
           : result // ignore: cast_nullable_to_non_nullable
-              as ContractClass,
+              as DeprecatedContractClass,
     ));
   }
 
   @override
   @pragma('vm:prefer-inline')
-  $ContractClassCopyWith<$Res> get result {
-    return $ContractClassCopyWith<$Res>(_value.result, (value) {
+  $DeprecatedContractClassCopyWith<$Res> get result {
+    return $DeprecatedContractClassCopyWith<$Res>(_value.result, (value) {
       return _then(_value.copyWith(result: value));
     });
   }
@@ -141,7 +141,7 @@ class _$GetClassResult implements GetClassResult {
       _$$GetClassResultFromJson(json);
 
   @override
-  final ContractClass result;
+  final DeprecatedContractClass result;
 
   @JsonKey(name: 'starkNetRuntimeTypeToRemove')
   final String $type;
@@ -172,7 +172,7 @@ class _$GetClassResult implements GetClassResult {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(ContractClass result) result,
+    required TResult Function(DeprecatedContractClass result) result,
     required TResult Function(JsonRpcApiError error) error,
   }) {
     return result(this.result);
@@ -181,7 +181,7 @@ class _$GetClassResult implements GetClassResult {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(ContractClass result)? result,
+    TResult? Function(DeprecatedContractClass result)? result,
     TResult? Function(JsonRpcApiError error)? error,
   }) {
     return result?.call(this.result);
@@ -190,7 +190,7 @@ class _$GetClassResult implements GetClassResult {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(ContractClass result)? result,
+    TResult Function(DeprecatedContractClass result)? result,
     TResult Function(JsonRpcApiError error)? error,
     required TResult orElse(),
   }) {
@@ -240,13 +240,13 @@ class _$GetClassResult implements GetClassResult {
 }
 
 abstract class GetClassResult implements GetClass {
-  const factory GetClassResult({required final ContractClass result}) =
-      _$GetClassResult;
+  const factory GetClassResult(
+      {required final DeprecatedContractClass result}) = _$GetClassResult;
 
   factory GetClassResult.fromJson(Map<String, dynamic> json) =
       _$GetClassResult.fromJson;
 
-  ContractClass get result;
+  DeprecatedContractClass get result;
   @JsonKey(ignore: true)
   _$$GetClassResultCopyWith<_$GetClassResult> get copyWith =>
       throw _privateConstructorUsedError;
@@ -334,7 +334,7 @@ class _$GetClassError implements GetClassError {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(ContractClass result) result,
+    required TResult Function(DeprecatedContractClass result) result,
     required TResult Function(JsonRpcApiError error) error,
   }) {
     return error(this.error);
@@ -343,7 +343,7 @@ class _$GetClassError implements GetClassError {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(ContractClass result)? result,
+    TResult? Function(DeprecatedContractClass result)? result,
     TResult? Function(JsonRpcApiError error)? error,
   }) {
     return error?.call(this.error);
@@ -352,7 +352,7 @@ class _$GetClassError implements GetClassError {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(ContractClass result)? result,
+    TResult Function(DeprecatedContractClass result)? result,
     TResult Function(JsonRpcApiError error)? error,
     required TResult orElse(),
   }) {

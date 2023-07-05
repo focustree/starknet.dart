@@ -78,13 +78,13 @@ class BroadcastedTxn with _$BroadcastedTxn {
     required Felt nonce,
     // end of BROADCASTED_TXN_COMMON_PROPERTIES
 
-    required ContractClass contractClass,
+    required DeprecatedContractClass contractClass,
     required Felt senderAddress,
   }) = BroadcastedDeclareTxn;
 
   @JsonSerializable(includeIfNull: false)
   const factory BroadcastedTxn.broadcastedDeployTxn({
-    required ContractClass contractClass,
+    required DeprecatedContractClass contractClass,
     // start of DEPLOY_TXN_PROPERTIES
     required String version,
     required String type,

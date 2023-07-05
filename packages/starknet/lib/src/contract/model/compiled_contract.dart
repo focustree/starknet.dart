@@ -8,22 +8,22 @@ part 'compiled_contract.freezed.dart';
 part 'compiled_contract.g.dart';
 
 @freezed
-class CompiledContract with _$CompiledContract {
-  const CompiledContract._(); // To be able to define custome compress() method
+class DeprecatedCompiledContract with _$DeprecatedCompiledContract {
+  const DeprecatedCompiledContract._(); // To be able to define custome compress() method
 
-  const factory CompiledContract({
+  const factory DeprecatedCompiledContract({
     required Map<String, Object?> program,
-    required EntryPointsByType entryPointsByType,
+    required DeprecatedCairoEntryPointsByType entryPointsByType,
     List<ContractAbiEntry>? abi,
-  }) = _CompiledContract;
+  }) = _DeprecatedCompiledContract;
 
-  factory CompiledContract.fromJson(Map<String, Object?> json) =>
-      _$CompiledContractFromJson(json);
+  factory DeprecatedCompiledContract.fromJson(Map<String, Object?> json) =>
+      _$DeprecatedCompiledContractFromJson(json);
 
-  ContractClass compress() {
+  DeprecatedContractClass compress() {
     final new_program = Map.of(program);
     final program_json = CompiledContractJsonEncoder().convert(new_program);
-    return ContractClass(
+    return DeprecatedContractClass(
       program: base64.encode(gzip.encode(utf8.encode(program_json))),
       entryPointsByType: entryPointsByType,
       abi: abi,

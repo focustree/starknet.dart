@@ -32,7 +32,7 @@ void main() {
 
     Felt classHash = Felt.fromHexString(
         '0x06234338a4c4644b88e1548b35d5f51570847f05157ca762d8d5492fd9ba702c');
-    Felt contractAddress = Felt.fromHexString(
+    Felt contractAddressV0 = Felt.fromHexString(
         '0x04e76f8708774c8162fb4da7abefb3cae94cc51cf3f9b40e0d44f24aabf8a521');
     BlockId blockIdForTheGivenContractAddress = BlockId.blockHash(
         Felt.fromHexString(
@@ -148,7 +148,7 @@ void main() {
       test('calls a read-only method with invalid block id', () async {
         final response = await provider.call(
             request: FunctionCall(
-              contractAddress: contractAddress,
+              contractAddress: contractAddressV0,
               entryPointSelector: entryPointSelector,
               calldata: [],
             ),
@@ -165,7 +165,7 @@ void main() {
           () async {
         final response = await provider.call(
             request: FunctionCall(
-              contractAddress: contractAddress,
+              contractAddress: contractAddressV0,
               entryPointSelector: invalidHexString,
               calldata: [],
             ),
@@ -198,7 +198,7 @@ void main() {
       test('returns the value of the storage at the given address and key',
           () async {
         final response = await provider.getStorageAt(
-          contractAddress: contractAddress,
+          contractAddress: contractAddressV0,
           key: Felt.fromHexString(
               '0x0206F38F7E4F15E87567361213C28F235CCCDAA1D7FD34C9DB1DFE9489C6A091'),
           blockId: BlockId.latest,
@@ -228,7 +228,7 @@ void main() {
 
       test('reading value from invalid Block Id', () async {
         final response = await provider.getStorageAt(
-          contractAddress: contractAddress,
+          contractAddress: contractAddressV0,
           key: Felt.fromHexString(
               '0x0206F38F7E4F15E87567361213C28F235CCCDAA1D7FD34C9DB1DFE9489C6A091'),
           blockId: invalidBlockIdFromBlockHash,
@@ -497,7 +497,7 @@ void main() {
     group('starknet_getNonce', () {
       test('returns latest nonce associated with the given address', () async {
         final response = await provider.getNonce(
-          contractAddress: contractAddress,
+          contractAddress: contractAddressV0,
           blockId: BlockId.latest,
         );
 
@@ -509,7 +509,7 @@ void main() {
       test('reading nonce from invalid block id returns BLOCK_NOT_FOUND error',
           () async {
         final response = await provider.getNonce(
-          contractAddress: contractAddress,
+          contractAddress: contractAddressV0,
           blockId: invalidBlockIdFromBlockHash,
         );
 
@@ -694,7 +694,7 @@ void main() {
           'returns contract class hash in the given block for the deployed contract address.',
           () async {
         final response = await provider.getClassHashAt(
-          contractAddress: contractAddress,
+          contractAddress: contractAddressV0,
           blockId: BlockId.blockTag("latest"),
         );
 
@@ -709,7 +709,7 @@ void main() {
       test('returns BLOCK_NOT_FOUND error when invalid block id is given.',
           () async {
         final response = await provider.getClassHashAt(
-          contractAddress: contractAddress,
+          contractAddress: contractAddressV0,
           blockId: BlockId.blockHash(invalidHexString),
         );
 
@@ -743,7 +743,7 @@ void main() {
           'returns contract class definition in the given block for given contract address.',
           () async {
         final response = await provider.getClassAt(
-          contractAddress: contractAddress,
+          contractAddress: contractAddressV0,
           blockId: BlockId.blockTag("latest"),
         );
 
@@ -758,7 +758,7 @@ void main() {
       test('returns BLOCK_NOT_FOUND error when invalid block id is given.',
           () async {
         final response = await provider.getClassAt(
-          contractAddress: contractAddress,
+          contractAddress: contractAddressV0,
           blockId: BlockId.blockHash(invalidHexString),
         );
 

@@ -73,12 +73,12 @@ void main() {
     test('declareTransaction', () async {
       final account = getJsonRpcProvider(network: 'integration-devnet-040');
       final request = DeclareTransactionRequest(
-        declareTransaction: DeclareTransaction(
+        declareTransaction: DeclareTransactionV1(
           max_fee: defaultMaxFee,
           nonce: defaultNonce,
           senderAddress: Felt.fromHexString("0x123"),
-          contractClass: ContractClass(
-            entryPointsByType: EntryPointsByType(
+          contractClass: DeprecatedContractClass(
+            entryPointsByType: DeprecatedCairoEntryPointsByType(
               constructor: [],
               external: [],
               l1Handler: [],

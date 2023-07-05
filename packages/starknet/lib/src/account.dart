@@ -111,7 +111,7 @@ class Account {
 
   /// Declares a [compiledContract]
   Future<DeclareTransactionResponse> declare({
-    required CompiledContract compiledContract,
+    required DeprecatedCompiledContract compiledContract,
     Felt? maxFee,
     Felt? nonce,
   }) async {
@@ -128,7 +128,7 @@ class Account {
 
     return provider.addDeclareTransaction(
       DeclareTransactionRequest(
-        declareTransaction: DeclareTransaction(
+        declareTransaction: DeclareTransactionV1(
           max_fee: maxFee,
           nonce: nonce,
           contractClass: compiledContract.compress(),

@@ -105,7 +105,7 @@ class Signer {
   }
 
   List<Felt> signDeclareTransaction({
-    required CompiledContract compiledContract,
+    required DeprecatedCompiledContract compiledContract,
     required Felt senderAddress,
     required Felt chainId,
     required Felt nonce,

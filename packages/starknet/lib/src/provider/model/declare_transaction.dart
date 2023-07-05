@@ -7,27 +7,55 @@ part 'declare_transaction.g.dart';
 @freezed
 class DeclareTransactionRequest with _$DeclareTransactionRequest {
   const factory DeclareTransactionRequest({
-    required DeclareTransaction declareTransaction,
+    required DeclareTransactionV1 declareTransaction,
   }) = _DeclareTransactionRequest;
 
   factory DeclareTransactionRequest.fromJson(Map<String, Object?> json) =>
       _$DeclareTransactionRequestFromJson(json);
 }
 
+abstract class DeclareTransaction {
+  factory DeclareTransaction.fromJson(Map<String, Object?> json) =>
+      json['version'] == '0x1'
+          ? DeclareTransactionV1.fromJson(json)
+          : DeclareTransactionV2.fromJson(json);
+}
+
 @freezed
-class DeclareTransaction with _$DeclareTransaction {
-  const factory DeclareTransaction({
+class DeclareTransactionV1
+    with _$DeclareTransactionV1
+    implements DeclareTransaction {
+  const factory DeclareTransactionV1({
     @Default('DECLARE') String type,
     @Default('0x1') String version,
     required Felt max_fee,
     required Felt nonce,
     required List<Felt> signature,
     required Felt senderAddress,
-    required ContractClass contractClass,
-  }) = _DeclareTransaction;
+    required DeprecatedContractClass contractClass,
+  }) = _DeclareTransactionV1;
 
-  factory DeclareTransaction.fromJson(Map<String, Object?> json) =>
-      _$DeclareTransactionFromJson(json);
+  factory DeclareTransactionV1.fromJson(Map<String, Object?> json) =>
+      _$DeclareTransactionV1FromJson(json);
+}
+
+@freezed
+class DeclareTransactionV2
+    with _$DeclareTransactionV2
+    implements DeclareTransaction {
+  const factory DeclareTransactionV2({
+    @Default('DECLARE') String type,
+    @Default('0x2') String version,
+    required Felt max_fee,
+    required Felt nonce,
+    required List<Felt> signature,
+    required Felt senderAddress,
+    required DeprecatedContractClass contractClass,
+    required Felt compiledClassHash,
+  }) = _DeclareTransactionV2;
+
+  factory DeclareTransactionV2.fromJson(Map<String, Object?> json) =>
+      _$DeclareTransactionV2FromJson(json);
 }
 
 @freezed
