@@ -1,17 +1,12 @@
 import 'dart:core';
-import 'dart:math';
 
 import 'package:expandable/expandable.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:flutter_hooks/flutter_hooks.dart';
 
-import 'package:starknet_flutter/src/views/add_another_wallet/add_another_wallet.dart';
-import 'package:starknet_flutter/src/views/views.dart';
-import 'package:starknet_flutter/src/views/wallet_list/widgets/appbar.dart';
-import 'package:starknet_flutter/src/views/wallet_list/widgets/wallet_cell.dart';
+import 'package:starknet_flutter/src/views/wallet_list/widgets/appbar.dart'
+    show WalletListAppBar;
 import 'package:starknet_flutter/src/views/widgets/bouncing_button.dart';
 import 'package:starknet_riverpod/starknet_riverpod.dart';
 import 'package:starknet_riverpod/wallet_state/wallet_state.dart';
@@ -23,15 +18,13 @@ class AccountsList extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final groupedAccounts = ref
-        .watch(walletProvider.select((value) => groupAccounts(value.accounts)));
+    final wallets = ref.watch(walletsProvider.select((value) => value.wallets));
     return SafeArea(
       child: Padding(
         padding: const EdgeInsets.only(top: 5.0),
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            // TODO: added in next PR
             const WalletListAppBar(),
             const SizedBox(height: 8),
             Flexible(
@@ -39,9 +32,9 @@ class AccountsList extends HookConsumerWidget {
                 shrinkWrap: true,
                 physics: const BouncingScrollPhysics(),
                 itemBuilder: (context, index) {
-                  final group = groupedAccounts[index];
+                  final wallet = wallets.values.toList()[index];
                   return WalletCell(
-                    group: group,
+                    wallet: wallet,
                     onAddAccount: () async {
                       // TODO: Adjust this part based on how you want to handle adding account
                     },
@@ -50,7 +43,7 @@ class AccountsList extends HookConsumerWidget {
                 separatorBuilder: (context, index) {
                   return const SizedBox(height: 10);
                 },
-                itemCount: groupedAccounts.length,
+                itemCount: wallets.length,
               ),
             ),
             const SizedBox(height: 5),
@@ -79,11 +72,11 @@ class AccountsList extends HookConsumerWidget {
 class WalletCell extends StatelessWidget {
   final VoidCallback onAddAccount;
 
-  final ({int seedId, AccountType accountType, List<Account> accounts}) group;
+  final Wallet wallet;
 
   const WalletCell({
     super.key,
-    required this.group,
+    required this.wallet,
     required this.onAddAccount,
   });
 
@@ -102,34 +95,34 @@ class WalletCell extends StatelessWidget {
             child: Expandable(
               theme: const ExpandableThemeData(useInkWell: false),
               collapsed: _WalletCellContent(
-                accountType: group.accountType,
-                name: group.seedId.toString(),
-                accountsCount: 5,
+                accountType: wallet.type,
+                name: wallet.name,
+                accountsCount: wallet.accounts.length,
               ),
               expanded: Column(
                 children: [
                   _WalletCellContent(
-                    accountType: group.accountType,
-                    name: group.seedId.toString(),
+                    accountType: wallet.type,
+                    name: wallet.name,
                     isExpanded: true,
-                    accountsCount: 5,
+                    accountsCount: wallet.accounts.length,
                   ),
-                  if (group.accounts.isNotEmpty)
+                  if (wallet.accounts.isNotEmpty)
                     ListView.separated(
                       shrinkWrap: true,
                       padding: const EdgeInsets.only(top: 5.0, bottom: 3.0),
                       physics: const NeverScrollableScrollPhysics(),
                       itemBuilder: (_, index) {
-                        final account = group.accounts[index];
+                        final account = wallet.accounts[index];
                         return AccountCell(
-                          accountName: account.accountId.toString(),
+                          accountName: account.name,
                           onPressed: () {},
                         );
                       },
                       separatorBuilder: (context, index) {
                         return const SizedBox(height: 5.0);
                       },
-                      itemCount: group.accounts.length,
+                      itemCount: wallet.accounts.length,
                     ),
                   BouncingButton.text(
                     onTap: onAddAccount,
@@ -151,6 +144,8 @@ class WalletCell extends StatelessWidget {
 }
 
 class _WalletCellContent extends StatelessWidget {
+  final WalletType accountType;
+
   const _WalletCellContent({
     required this.accountType,
     required this.name,
@@ -158,7 +153,6 @@ class _WalletCellContent extends StatelessWidget {
     this.isExpanded = false,
   });
 
-  final AccountType accountType;
   final String name;
   final int accountsCount;
   final bool isExpanded;

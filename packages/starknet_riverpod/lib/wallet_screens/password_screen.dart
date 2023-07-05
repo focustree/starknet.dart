@@ -56,6 +56,7 @@ class ConfirmPasswordScren extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final password = useState('');
+    final isLoading = useState(false);
     final isButtonEnabled = password.value.length >= 6;
 
     return Layout(
@@ -73,6 +74,7 @@ class ConfirmPasswordScren extends HookConsumerWidget {
         ),
         const Spacer(),
         PrimaryButton(
+          isLoading: isLoading.value,
           onPressed: isButtonEnabled
               ? () async {
                   if (password.value != initialPassword) {
@@ -83,9 +85,11 @@ class ConfirmPasswordScren extends HookConsumerWidget {
                     );
                     return;
                   }
+                  isLoading.value = true;
                   await ref
-                      .read(walletProvider.notifier)
+                      .read(walletsProvider.notifier)
                       .protectWalletWithPassword(password.value);
+                  isLoading.value = false;
                   Navigator.of(context).popUntil((route) => route.isFirst);
                 }
               : null,

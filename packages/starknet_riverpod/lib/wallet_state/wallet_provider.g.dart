@@ -6,19 +6,19 @@ part of 'wallet_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$walletHash() => r'd51129ea148f41dbb4606411f1e93aaaeea45177';
+String _$walletsHash() => r'9af6de6a82f5bdad92e7cfb494d83d178e533e5d';
 
-/// See also [Wallet].
-@ProviderFor(Wallet)
-final walletProvider =
-    AutoDisposeNotifierProvider<Wallet, WalletState>.internal(
-  Wallet.new,
-  name: r'walletProvider',
+/// See also [Wallets].
+@ProviderFor(Wallets)
+final walletsProvider =
+    AutoDisposeNotifierProvider<Wallets, WalletsState>.internal(
+  Wallets.new,
+  name: r'walletsProvider',
   debugGetCreateSourceHash:
-      const bool.fromEnvironment('dart.vm.product') ? null : _$walletHash,
+      const bool.fromEnvironment('dart.vm.product') ? null : _$walletsHash,
   dependencies: null,
   allTransitiveDependencies: null,
 );
 
-typedef _$Wallet = AutoDisposeNotifier<WalletState>;
+typedef _$Wallets = AutoDisposeNotifier<WalletsState>;
 // ignore_for_file: unnecessary_raw_strings, subtype_of_sealed_class, invalid_use_of_internal_member, do_not_use_environment, prefer_const_constructors, public_member_api_docs, avoid_private_typedef_functions

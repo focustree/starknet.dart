@@ -14,7 +14,7 @@ class MyApp extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    debugPrint("Wallet state: ${ref.watch(walletProvider)}");
+    debugPrint("Wallet state: ${ref.watch(walletsProvider)}");
     return MaterialApp(
       title: 'Starknet Wallet',
       theme: ThemeData(

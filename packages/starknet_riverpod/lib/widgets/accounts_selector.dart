@@ -11,7 +11,9 @@ class WalletSelector extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final account =
-        ref.watch(walletProvider.select((value) => value.selectedAccount));
+        ref.watch(walletsProvider.select((value) => value.selectedAccount));
+    final wallets = ref.watch(walletsProvider.select((value) => value.wallets));
+
     return ElevatedButton(
       onPressed: () {
         showModalBottomSheet(
@@ -27,11 +29,9 @@ class WalletSelector extends HookConsumerWidget {
                   children: [
                     Row(
                       children: [
-                        Text(
-                          "Wallet ${account.seedId + 1}",
-                        ),
+                        Text(wallets[account.walletId]?.name ?? "Wallet"),
                         const Text(' | '),
-                        Text("Account ${account.accountId + 1}"),
+                        Text(account.name),
                       ],
                     ),
                   ],

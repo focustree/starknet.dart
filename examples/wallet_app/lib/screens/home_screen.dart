@@ -16,7 +16,7 @@ class HomeScreen extends HookConsumerWidget {
         PrimaryButton(
             child: const Text('Create new wallet'),
             onPressed: () {
-              ref.read(walletProvider.notifier).generateSeedPhrase();
+              ref.read(walletsProvider.notifier).generateSeedPhrase();
               Navigator.push(
                 context,
                 MaterialPageRoute(

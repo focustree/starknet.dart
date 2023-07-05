@@ -14,7 +14,7 @@ class SeedPhraseScreen extends HookConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final isChecked = useState(false);
     final seedPhrase =
-        ref.watch(walletProvider.select((value) => value.seedPhrase)) ?? [];
+        ref.watch(walletsProvider.select((value) => value.seedPhrase)) ?? [];
 
     return Layout(
       appBar: AppBar(

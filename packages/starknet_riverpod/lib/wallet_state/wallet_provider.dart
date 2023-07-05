@@ -8,17 +8,18 @@ import 'package:bip39/bip39.dart' as bip39;
 part 'wallet_provider.g.dart';
 
 @riverpod
-class Wallet extends _$Wallet with PersistedState<WalletState> {
+class Wallets extends _$Wallets with PersistedState<WalletsState> {
   @override
   String get boxName => 'wallet';
 
   @override
-  WalletState fromJson(Map<String, dynamic> json) => WalletState.fromJson(json);
+  WalletsState fromJson(Map<String, dynamic> json) =>
+      WalletsState.fromJson(json);
 
   @override
-  WalletState build() {
+  WalletsState build() {
     loadPersistedState();
-    return const WalletState();
+    return const WalletsState();
   }
 
   generateSeedPhrase() {
@@ -68,20 +69,42 @@ class Wallet extends _$Wallet with PersistedState<WalletState> {
     );
 
     // Remove seed phrase from memory
-    const account = Account(
-      seedId: index,
-      accountId: 0,
-      accountType: AccountType.openZeppelin,
-    );
-    state =
-        state.copyWith(seedPhrase: null, selectedAccount: account, accounts: [
-      ...state.accounts,
-      account,
-    ]);
+    state = state
+        .addAccount(walletId: state.wallets.length)
+        .copyWith(seedPhrase: null);
   }
 }
 
 Future<void> createInitialPassword(String password) async {
   await sf.PasswordStore().deleteSecret(key: "app_level_password");
   await sf.PasswordStore().initiatePassword(password);
+}
+
+extension WalletService on WalletsState {
+  WalletsState addAccount({
+    int walletId = 0,
+    WalletType walletType = WalletType.openZeppelin,
+  }) {
+    final wallet = wallets[walletId] ??
+        Wallet(
+          id: walletId,
+          type: walletType,
+          name: 'Wallet ${walletId + 1}',
+        );
+
+    final int accountId = wallet.accounts.length;
+    final newAccount = Account(
+      derivationIndex: accountId,
+      walletId: walletId,
+      name: 'Account ${accountId + 1}',
+    );
+
+    return copyWith(
+      wallets: {
+        ...wallets,
+        walletId: wallet.copyWith(accounts: [...wallet.accounts, newAccount])
+      },
+      selectedAccount: newAccount,
+    );
+  }
 }

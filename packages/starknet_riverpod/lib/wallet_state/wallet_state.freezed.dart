@@ -14,40 +14,40 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
-WalletState _$WalletStateFromJson(Map<String, dynamic> json) {
-  return _WalletState.fromJson(json);
+WalletsState _$WalletsStateFromJson(Map<String, dynamic> json) {
+  return _WalletsState.fromJson(json);
 }
 
 /// @nodoc
-mixin _$WalletState {
+mixin _$WalletsState {
   List<String>? get seedPhrase => throw _privateConstructorUsedError;
-  List<Account> get accounts => throw _privateConstructorUsedError;
+  Map<int, Wallet> get wallets => throw _privateConstructorUsedError;
   Account? get selectedAccount => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $WalletStateCopyWith<WalletState> get copyWith =>
+  $WalletsStateCopyWith<WalletsState> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $WalletStateCopyWith<$Res> {
-  factory $WalletStateCopyWith(
-          WalletState value, $Res Function(WalletState) then) =
-      _$WalletStateCopyWithImpl<$Res, WalletState>;
+abstract class $WalletsStateCopyWith<$Res> {
+  factory $WalletsStateCopyWith(
+          WalletsState value, $Res Function(WalletsState) then) =
+      _$WalletsStateCopyWithImpl<$Res, WalletsState>;
   @useResult
   $Res call(
       {List<String>? seedPhrase,
-      List<Account> accounts,
+      Map<int, Wallet> wallets,
       Account? selectedAccount});
 
   $AccountCopyWith<$Res>? get selectedAccount;
 }
 
 /// @nodoc
-class _$WalletStateCopyWithImpl<$Res, $Val extends WalletState>
-    implements $WalletStateCopyWith<$Res> {
-  _$WalletStateCopyWithImpl(this._value, this._then);
+class _$WalletsStateCopyWithImpl<$Res, $Val extends WalletsState>
+    implements $WalletsStateCopyWith<$Res> {
+  _$WalletsStateCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -58,7 +58,7 @@ class _$WalletStateCopyWithImpl<$Res, $Val extends WalletState>
   @override
   $Res call({
     Object? seedPhrase = freezed,
-    Object? accounts = null,
+    Object? wallets = null,
     Object? selectedAccount = freezed,
   }) {
     return _then(_value.copyWith(
@@ -66,10 +66,10 @@ class _$WalletStateCopyWithImpl<$Res, $Val extends WalletState>
           ? _value.seedPhrase
           : seedPhrase // ignore: cast_nullable_to_non_nullable
               as List<String>?,
-      accounts: null == accounts
-          ? _value.accounts
-          : accounts // ignore: cast_nullable_to_non_nullable
-              as List<Account>,
+      wallets: null == wallets
+          ? _value.wallets
+          : wallets // ignore: cast_nullable_to_non_nullable
+              as Map<int, Wallet>,
       selectedAccount: freezed == selectedAccount
           ? _value.selectedAccount
           : selectedAccount // ignore: cast_nullable_to_non_nullable
@@ -91,16 +91,16 @@ class _$WalletStateCopyWithImpl<$Res, $Val extends WalletState>
 }
 
 /// @nodoc
-abstract class _$$_WalletStateCopyWith<$Res>
-    implements $WalletStateCopyWith<$Res> {
-  factory _$$_WalletStateCopyWith(
-          _$_WalletState value, $Res Function(_$_WalletState) then) =
-      __$$_WalletStateCopyWithImpl<$Res>;
+abstract class _$$_WalletsStateCopyWith<$Res>
+    implements $WalletsStateCopyWith<$Res> {
+  factory _$$_WalletsStateCopyWith(
+          _$_WalletsState value, $Res Function(_$_WalletsState) then) =
+      __$$_WalletsStateCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
       {List<String>? seedPhrase,
-      List<Account> accounts,
+      Map<int, Wallet> wallets,
       Account? selectedAccount});
 
   @override
@@ -108,29 +108,29 @@ abstract class _$$_WalletStateCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_WalletStateCopyWithImpl<$Res>
-    extends _$WalletStateCopyWithImpl<$Res, _$_WalletState>
-    implements _$$_WalletStateCopyWith<$Res> {
-  __$$_WalletStateCopyWithImpl(
-      _$_WalletState _value, $Res Function(_$_WalletState) _then)
+class __$$_WalletsStateCopyWithImpl<$Res>
+    extends _$WalletsStateCopyWithImpl<$Res, _$_WalletsState>
+    implements _$$_WalletsStateCopyWith<$Res> {
+  __$$_WalletsStateCopyWithImpl(
+      _$_WalletsState _value, $Res Function(_$_WalletsState) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? seedPhrase = freezed,
-    Object? accounts = null,
+    Object? wallets = null,
     Object? selectedAccount = freezed,
   }) {
-    return _then(_$_WalletState(
+    return _then(_$_WalletsState(
       seedPhrase: freezed == seedPhrase
           ? _value._seedPhrase
           : seedPhrase // ignore: cast_nullable_to_non_nullable
               as List<String>?,
-      accounts: null == accounts
-          ? _value._accounts
-          : accounts // ignore: cast_nullable_to_non_nullable
-              as List<Account>,
+      wallets: null == wallets
+          ? _value._wallets
+          : wallets // ignore: cast_nullable_to_non_nullable
+              as Map<int, Wallet>,
       selectedAccount: freezed == selectedAccount
           ? _value.selectedAccount
           : selectedAccount // ignore: cast_nullable_to_non_nullable
@@ -141,16 +141,16 @@ class __$$_WalletStateCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_WalletState implements _WalletState {
-  const _$_WalletState(
+class _$_WalletsState implements _WalletsState {
+  const _$_WalletsState(
       {final List<String>? seedPhrase = null,
-      final List<Account> accounts = const [],
+      final Map<int, Wallet> wallets = const {},
       this.selectedAccount = null})
       : _seedPhrase = seedPhrase,
-        _accounts = accounts;
+        _wallets = wallets;
 
-  factory _$_WalletState.fromJson(Map<String, dynamic> json) =>
-      _$$_WalletStateFromJson(json);
+  factory _$_WalletsState.fromJson(Map<String, dynamic> json) =>
+      _$$_WalletsStateFromJson(json);
 
   final List<String>? _seedPhrase;
   @override
@@ -163,6 +163,207 @@ class _$_WalletState implements _WalletState {
     return EqualUnmodifiableListView(value);
   }
 
+  final Map<int, Wallet> _wallets;
+  @override
+  @JsonKey()
+  Map<int, Wallet> get wallets {
+    if (_wallets is EqualUnmodifiableMapView) return _wallets;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableMapView(_wallets);
+  }
+
+  @override
+  @JsonKey()
+  final Account? selectedAccount;
+
+  @override
+  String toString() {
+    return 'WalletsState(seedPhrase: $seedPhrase, wallets: $wallets, selectedAccount: $selectedAccount)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_WalletsState &&
+            const DeepCollectionEquality()
+                .equals(other._seedPhrase, _seedPhrase) &&
+            const DeepCollectionEquality().equals(other._wallets, _wallets) &&
+            (identical(other.selectedAccount, selectedAccount) ||
+                other.selectedAccount == selectedAccount));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(_seedPhrase),
+      const DeepCollectionEquality().hash(_wallets),
+      selectedAccount);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_WalletsStateCopyWith<_$_WalletsState> get copyWith =>
+      __$$_WalletsStateCopyWithImpl<_$_WalletsState>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_WalletsStateToJson(
+      this,
+    );
+  }
+}
+
+abstract class _WalletsState implements WalletsState {
+  const factory _WalletsState(
+      {final List<String>? seedPhrase,
+      final Map<int, Wallet> wallets,
+      final Account? selectedAccount}) = _$_WalletsState;
+
+  factory _WalletsState.fromJson(Map<String, dynamic> json) =
+      _$_WalletsState.fromJson;
+
+  @override
+  List<String>? get seedPhrase;
+  @override
+  Map<int, Wallet> get wallets;
+  @override
+  Account? get selectedAccount;
+  @override
+  @JsonKey(ignore: true)
+  _$$_WalletsStateCopyWith<_$_WalletsState> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+Wallet _$WalletFromJson(Map<String, dynamic> json) {
+  return _Wallet.fromJson(json);
+}
+
+/// @nodoc
+mixin _$Wallet {
+  int get id => throw _privateConstructorUsedError;
+  String get name => throw _privateConstructorUsedError;
+  WalletType get type => throw _privateConstructorUsedError;
+  List<Account> get accounts => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $WalletCopyWith<Wallet> get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $WalletCopyWith<$Res> {
+  factory $WalletCopyWith(Wallet value, $Res Function(Wallet) then) =
+      _$WalletCopyWithImpl<$Res, Wallet>;
+  @useResult
+  $Res call({int id, String name, WalletType type, List<Account> accounts});
+}
+
+/// @nodoc
+class _$WalletCopyWithImpl<$Res, $Val extends Wallet>
+    implements $WalletCopyWith<$Res> {
+  _$WalletCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? id = null,
+    Object? name = null,
+    Object? type = null,
+    Object? accounts = null,
+  }) {
+    return _then(_value.copyWith(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int,
+      name: null == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
+      type: null == type
+          ? _value.type
+          : type // ignore: cast_nullable_to_non_nullable
+              as WalletType,
+      accounts: null == accounts
+          ? _value.accounts
+          : accounts // ignore: cast_nullable_to_non_nullable
+              as List<Account>,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$_WalletCopyWith<$Res> implements $WalletCopyWith<$Res> {
+  factory _$$_WalletCopyWith(_$_Wallet value, $Res Function(_$_Wallet) then) =
+      __$$_WalletCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({int id, String name, WalletType type, List<Account> accounts});
+}
+
+/// @nodoc
+class __$$_WalletCopyWithImpl<$Res>
+    extends _$WalletCopyWithImpl<$Res, _$_Wallet>
+    implements _$$_WalletCopyWith<$Res> {
+  __$$_WalletCopyWithImpl(_$_Wallet _value, $Res Function(_$_Wallet) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? id = null,
+    Object? name = null,
+    Object? type = null,
+    Object? accounts = null,
+  }) {
+    return _then(_$_Wallet(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int,
+      name: null == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
+      type: null == type
+          ? _value.type
+          : type // ignore: cast_nullable_to_non_nullable
+              as WalletType,
+      accounts: null == accounts
+          ? _value._accounts
+          : accounts // ignore: cast_nullable_to_non_nullable
+              as List<Account>,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$_Wallet implements _Wallet {
+  const _$_Wallet(
+      {required this.id,
+      required this.name,
+      this.type = WalletType.openZeppelin,
+      final List<Account> accounts = const []})
+      : _accounts = accounts;
+
+  factory _$_Wallet.fromJson(Map<String, dynamic> json) =>
+      _$$_WalletFromJson(json);
+
+  @override
+  final int id;
+  @override
+  final String name;
+  @override
+  @JsonKey()
+  final WalletType type;
   final List<Account> _accounts;
   @override
   @JsonKey()
@@ -173,66 +374,60 @@ class _$_WalletState implements _WalletState {
   }
 
   @override
-  @JsonKey()
-  final Account? selectedAccount;
-
-  @override
   String toString() {
-    return 'WalletState(seedPhrase: $seedPhrase, accounts: $accounts, selectedAccount: $selectedAccount)';
+    return 'Wallet(id: $id, name: $name, type: $type, accounts: $accounts)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_WalletState &&
-            const DeepCollectionEquality()
-                .equals(other._seedPhrase, _seedPhrase) &&
-            const DeepCollectionEquality().equals(other._accounts, _accounts) &&
-            (identical(other.selectedAccount, selectedAccount) ||
-                other.selectedAccount == selectedAccount));
+            other is _$_Wallet &&
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.name, name) || other.name == name) &&
+            (identical(other.type, type) || other.type == type) &&
+            const DeepCollectionEquality().equals(other._accounts, _accounts));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(_seedPhrase),
-      const DeepCollectionEquality().hash(_accounts),
-      selectedAccount);
+  int get hashCode => Object.hash(runtimeType, id, name, type,
+      const DeepCollectionEquality().hash(_accounts));
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_WalletStateCopyWith<_$_WalletState> get copyWith =>
-      __$$_WalletStateCopyWithImpl<_$_WalletState>(this, _$identity);
+  _$$_WalletCopyWith<_$_Wallet> get copyWith =>
+      __$$_WalletCopyWithImpl<_$_Wallet>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_WalletStateToJson(
+    return _$$_WalletToJson(
       this,
     );
   }
 }
 
-abstract class _WalletState implements WalletState {
-  const factory _WalletState(
-      {final List<String>? seedPhrase,
-      final List<Account> accounts,
-      final Account? selectedAccount}) = _$_WalletState;
+abstract class _Wallet implements Wallet {
+  const factory _Wallet(
+      {required final int id,
+      required final String name,
+      final WalletType type,
+      final List<Account> accounts}) = _$_Wallet;
 
-  factory _WalletState.fromJson(Map<String, dynamic> json) =
-      _$_WalletState.fromJson;
+  factory _Wallet.fromJson(Map<String, dynamic> json) = _$_Wallet.fromJson;
 
   @override
-  List<String>? get seedPhrase;
+  int get id;
+  @override
+  String get name;
+  @override
+  WalletType get type;
   @override
   List<Account> get accounts;
   @override
-  Account? get selectedAccount;
-  @override
   @JsonKey(ignore: true)
-  _$$_WalletStateCopyWith<_$_WalletState> get copyWith =>
+  _$$_WalletCopyWith<_$_Wallet> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -242,9 +437,9 @@ Account _$AccountFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$Account {
-  int get seedId => throw _privateConstructorUsedError;
-  int get accountId => throw _privateConstructorUsedError;
-  AccountType get accountType => throw _privateConstructorUsedError;
+  int get derivationIndex => throw _privateConstructorUsedError;
+  int get walletId => throw _privateConstructorUsedError;
+  String get name => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -256,7 +451,7 @@ abstract class $AccountCopyWith<$Res> {
   factory $AccountCopyWith(Account value, $Res Function(Account) then) =
       _$AccountCopyWithImpl<$Res, Account>;
   @useResult
-  $Res call({int seedId, int accountId, AccountType accountType});
+  $Res call({int derivationIndex, int walletId, String name});
 }
 
 /// @nodoc
@@ -272,23 +467,23 @@ class _$AccountCopyWithImpl<$Res, $Val extends Account>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? seedId = null,
-    Object? accountId = null,
-    Object? accountType = null,
+    Object? derivationIndex = null,
+    Object? walletId = null,
+    Object? name = null,
   }) {
     return _then(_value.copyWith(
-      seedId: null == seedId
-          ? _value.seedId
-          : seedId // ignore: cast_nullable_to_non_nullable
+      derivationIndex: null == derivationIndex
+          ? _value.derivationIndex
+          : derivationIndex // ignore: cast_nullable_to_non_nullable
               as int,
-      accountId: null == accountId
-          ? _value.accountId
-          : accountId // ignore: cast_nullable_to_non_nullable
+      walletId: null == walletId
+          ? _value.walletId
+          : walletId // ignore: cast_nullable_to_non_nullable
               as int,
-      accountType: null == accountType
-          ? _value.accountType
-          : accountType // ignore: cast_nullable_to_non_nullable
-              as AccountType,
+      name: null == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
     ) as $Val);
   }
 }
@@ -300,7 +495,7 @@ abstract class _$$_AccountCopyWith<$Res> implements $AccountCopyWith<$Res> {
       __$$_AccountCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({int seedId, int accountId, AccountType accountType});
+  $Res call({int derivationIndex, int walletId, String name});
 }
 
 /// @nodoc
@@ -313,23 +508,23 @@ class __$$_AccountCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? seedId = null,
-    Object? accountId = null,
-    Object? accountType = null,
+    Object? derivationIndex = null,
+    Object? walletId = null,
+    Object? name = null,
   }) {
     return _then(_$_Account(
-      seedId: null == seedId
-          ? _value.seedId
-          : seedId // ignore: cast_nullable_to_non_nullable
+      derivationIndex: null == derivationIndex
+          ? _value.derivationIndex
+          : derivationIndex // ignore: cast_nullable_to_non_nullable
               as int,
-      accountId: null == accountId
-          ? _value.accountId
-          : accountId // ignore: cast_nullable_to_non_nullable
+      walletId: null == walletId
+          ? _value.walletId
+          : walletId // ignore: cast_nullable_to_non_nullable
               as int,
-      accountType: null == accountType
-          ? _value.accountType
-          : accountType // ignore: cast_nullable_to_non_nullable
-              as AccountType,
+      name: null == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -338,23 +533,23 @@ class __$$_AccountCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_Account implements _Account {
   const _$_Account(
-      {required this.seedId,
-      required this.accountId,
-      required this.accountType});
+      {required this.derivationIndex,
+      required this.walletId,
+      required this.name});
 
   factory _$_Account.fromJson(Map<String, dynamic> json) =>
       _$$_AccountFromJson(json);
 
   @override
-  final int seedId;
+  final int derivationIndex;
   @override
-  final int accountId;
+  final int walletId;
   @override
-  final AccountType accountType;
+  final String name;
 
   @override
   String toString() {
-    return 'Account(seedId: $seedId, accountId: $accountId, accountType: $accountType)';
+    return 'Account(derivationIndex: $derivationIndex, walletId: $walletId, name: $name)';
   }
 
   @override
@@ -362,16 +557,16 @@ class _$_Account implements _Account {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_Account &&
-            (identical(other.seedId, seedId) || other.seedId == seedId) &&
-            (identical(other.accountId, accountId) ||
-                other.accountId == accountId) &&
-            (identical(other.accountType, accountType) ||
-                other.accountType == accountType));
+            (identical(other.derivationIndex, derivationIndex) ||
+                other.derivationIndex == derivationIndex) &&
+            (identical(other.walletId, walletId) ||
+                other.walletId == walletId) &&
+            (identical(other.name, name) || other.name == name));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, seedId, accountId, accountType);
+  int get hashCode => Object.hash(runtimeType, derivationIndex, walletId, name);
 
   @JsonKey(ignore: true)
   @override
@@ -389,18 +584,18 @@ class _$_Account implements _Account {
 
 abstract class _Account implements Account {
   const factory _Account(
-      {required final int seedId,
-      required final int accountId,
-      required final AccountType accountType}) = _$_Account;
+      {required final int derivationIndex,
+      required final int walletId,
+      required final String name}) = _$_Account;
 
   factory _Account.fromJson(Map<String, dynamic> json) = _$_Account.fromJson;
 
   @override
-  int get seedId;
+  int get derivationIndex;
   @override
-  int get accountId;
+  int get walletId;
   @override
-  AccountType get accountType;
+  String get name;
   @override
   @JsonKey(ignore: true)
   _$$_AccountCopyWith<_$_Account> get copyWith =>
