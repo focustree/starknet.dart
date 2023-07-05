@@ -440,6 +440,7 @@ mixin _$Account {
   int get derivationIndex => throw _privateConstructorUsedError;
   int get walletId => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
+  String get address => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -451,7 +452,7 @@ abstract class $AccountCopyWith<$Res> {
   factory $AccountCopyWith(Account value, $Res Function(Account) then) =
       _$AccountCopyWithImpl<$Res, Account>;
   @useResult
-  $Res call({int derivationIndex, int walletId, String name});
+  $Res call({int derivationIndex, int walletId, String name, String address});
 }
 
 /// @nodoc
@@ -470,6 +471,7 @@ class _$AccountCopyWithImpl<$Res, $Val extends Account>
     Object? derivationIndex = null,
     Object? walletId = null,
     Object? name = null,
+    Object? address = null,
   }) {
     return _then(_value.copyWith(
       derivationIndex: null == derivationIndex
@@ -484,6 +486,10 @@ class _$AccountCopyWithImpl<$Res, $Val extends Account>
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
+      address: null == address
+          ? _value.address
+          : address // ignore: cast_nullable_to_non_nullable
+              as String,
     ) as $Val);
   }
 }
@@ -495,7 +501,7 @@ abstract class _$$_AccountCopyWith<$Res> implements $AccountCopyWith<$Res> {
       __$$_AccountCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({int derivationIndex, int walletId, String name});
+  $Res call({int derivationIndex, int walletId, String name, String address});
 }
 
 /// @nodoc
@@ -511,6 +517,7 @@ class __$$_AccountCopyWithImpl<$Res>
     Object? derivationIndex = null,
     Object? walletId = null,
     Object? name = null,
+    Object? address = null,
   }) {
     return _then(_$_Account(
       derivationIndex: null == derivationIndex
@@ -525,6 +532,10 @@ class __$$_AccountCopyWithImpl<$Res>
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
+      address: null == address
+          ? _value.address
+          : address // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -535,7 +546,8 @@ class _$_Account implements _Account {
   const _$_Account(
       {required this.derivationIndex,
       required this.walletId,
-      required this.name});
+      required this.name,
+      required this.address});
 
   factory _$_Account.fromJson(Map<String, dynamic> json) =>
       _$$_AccountFromJson(json);
@@ -546,10 +558,12 @@ class _$_Account implements _Account {
   final int walletId;
   @override
   final String name;
+  @override
+  final String address;
 
   @override
   String toString() {
-    return 'Account(derivationIndex: $derivationIndex, walletId: $walletId, name: $name)';
+    return 'Account(derivationIndex: $derivationIndex, walletId: $walletId, name: $name, address: $address)';
   }
 
   @override
@@ -561,12 +575,14 @@ class _$_Account implements _Account {
                 other.derivationIndex == derivationIndex) &&
             (identical(other.walletId, walletId) ||
                 other.walletId == walletId) &&
-            (identical(other.name, name) || other.name == name));
+            (identical(other.name, name) || other.name == name) &&
+            (identical(other.address, address) || other.address == address));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, derivationIndex, walletId, name);
+  int get hashCode =>
+      Object.hash(runtimeType, derivationIndex, walletId, name, address);
 
   @JsonKey(ignore: true)
   @override
@@ -586,7 +602,8 @@ abstract class _Account implements Account {
   const factory _Account(
       {required final int derivationIndex,
       required final int walletId,
-      required final String name}) = _$_Account;
+      required final String name,
+      required final String address}) = _$_Account;
 
   factory _Account.fromJson(Map<String, dynamic> json) = _$_Account.fromJson;
 
@@ -596,6 +613,8 @@ abstract class _Account implements Account {
   int get walletId;
   @override
   String get name;
+  @override
+  String get address;
   @override
   @JsonKey(ignore: true)
   _$$_AccountCopyWith<_$_Account> get copyWith =>

@@ -10,6 +10,7 @@ import 'package:starknet_flutter/src/views/wallet_list/widgets/appbar.dart'
 import 'package:starknet_flutter/src/views/widgets/bouncing_button.dart';
 import 'package:starknet_riverpod/starknet_riverpod.dart';
 import 'package:starknet_riverpod/wallet_state/wallet_state.dart';
+import 'package:starknet_riverpod/widgets/wallet_type_icon.dart';
 
 class AccountsList extends HookConsumerWidget {
   const AccountsList({
@@ -166,10 +167,7 @@ class _WalletCellContent extends StatelessWidget {
         color: Colors.transparent,
         child: Row(
           children: [
-            SvgPicture.asset(
-              "packages/starknet_flutter/assets/images/wallets/${accountType.name}.svg",
-              width: 20,
-            ),
+            WalletTypeIcon(type: accountType),
             const SizedBox(width: 15),
             Expanded(
               child: Column(

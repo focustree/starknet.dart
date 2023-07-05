@@ -14,28 +14,30 @@ class WalletSelector extends HookConsumerWidget {
         ref.watch(walletsProvider.select((value) => value.selectedAccount));
     final wallets = ref.watch(walletsProvider.select((value) => value.wallets));
 
-    return ElevatedButton(
+    final label = account == null
+        ? const Text(
+            'Select wallet',
+          )
+        : Row(
+            children: [
+              Row(
+                children: [
+                  Text(wallets[account.walletId]?.name ?? "Wallet"),
+                  const Text(' | '),
+                  Text(account.name),
+                ],
+              ),
+            ],
+          );
+
+    return FilledButton.tonal(
       onPressed: () {
         showModalBottomSheet(
             context: context, builder: (context) => const AccountsList());
       },
       child: Row(
         children: [
-          account == null
-              ? const Text(
-                  'Select wallet',
-                )
-              : Row(
-                  children: [
-                    Row(
-                      children: [
-                        Text(wallets[account.walletId]?.name ?? "Wallet"),
-                        const Text(' | '),
-                        Text(account.name),
-                      ],
-                    ),
-                  ],
-                ),
+          label,
           const SizedBox(
             width: 8.0,
           ),

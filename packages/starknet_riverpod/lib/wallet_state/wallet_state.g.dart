@@ -57,6 +57,7 @@ _$_Account _$$_AccountFromJson(Map<String, dynamic> json) => _$_Account(
       derivationIndex: json['derivationIndex'] as int,
       walletId: json['walletId'] as int,
       name: json['name'] as String,
+      address: json['address'] as String,
     );
 
 Map<String, dynamic> _$$_AccountToJson(_$_Account instance) =>
@@ -64,4 +65,5 @@ Map<String, dynamic> _$$_AccountToJson(_$_Account instance) =>
       'derivationIndex': instance.derivationIndex,
       'walletId': instance.walletId,
       'name': instance.name,
+      'address': instance.address,
     };

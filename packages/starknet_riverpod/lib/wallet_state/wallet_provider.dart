@@ -68,10 +68,9 @@ class Wallets extends _$Wallets with PersistedState<WalletsState> {
       },
     );
 
-    // Remove seed phrase from memory
     state = state
-        .addAccount(walletId: state.wallets.length)
-        .copyWith(seedPhrase: null);
+        .addAccount(walletId: state.wallets.length, account: starknetAccount)
+        .copyWith(seedPhrase: null); // Remove seed phrase from memory
   }
 }
 
@@ -82,7 +81,8 @@ Future<void> createInitialPassword(String password) async {
 
 extension WalletService on WalletsState {
   WalletsState addAccount({
-    int walletId = 0,
+    required int walletId,
+    required s.Account account,
     WalletType walletType = WalletType.openZeppelin,
   }) {
     final wallet = wallets[walletId] ??
@@ -97,6 +97,7 @@ extension WalletService on WalletsState {
       derivationIndex: accountId,
       walletId: walletId,
       name: 'Account ${accountId + 1}',
+      address: account.accountAddress.toHexString(),
     );
 
     return copyWith(

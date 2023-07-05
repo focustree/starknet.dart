@@ -35,6 +35,7 @@ class Account with _$Account implements PersistableState {
     required int derivationIndex,
     required int walletId,
     required String name,
+    required String address,
   }) = _Account;
 
   factory Account.fromJson(Map<String, dynamic> json) =>
