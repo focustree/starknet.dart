@@ -78,9 +78,8 @@ class _WalletList extends StatelessWidget {
             physics: const BouncingScrollPhysics(),
             itemBuilder: (context, index) {
               final wallet = wallets[index];
-              return _WalletCell(
+              return WalletCell(
                 wallet: wallet,
-                onAddAccount: onAddAccount,
               );
             },
             separatorBuilder: (context, index) {
@@ -108,19 +107,16 @@ class _WalletList extends StatelessWidget {
   }
 }
 
-class _WalletCell extends StatelessWidget {
-  final VoidCallback onAddAccount;
-
+class WalletCell extends HookConsumerWidget {
   final Wallet wallet;
 
-  const _WalletCell({
+  const WalletCell({
     super.key,
     required this.wallet,
-    required this.onAddAccount,
   });
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return ExpandableNotifier(
       child: Container(
         decoration: BoxDecoration(
@@ -147,23 +143,35 @@ class _WalletCell extends StatelessWidget {
                   shrinkWrap: true,
                   physics: const NeverScrollableScrollPhysics(),
                   itemBuilder: (_, index) {
-                    final account = wallet.accounts[index]!;
+                    final account = wallet.accounts[index];
                     return Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 16),
                       child: AccountCell(
-                        account: account,
+                        account: account!,
                       ),
                     );
                   },
                   separatorBuilder: (context, index) {
                     return const SizedBox(height: 8.0);
                   },
-                  itemCount: wallet.accounts.length,
+                  itemCount: wallet.accounts.values.length,
                 ),
               Padding(
                 padding: const EdgeInsets.all(4.0),
                 child: TextButton.icon(
-                  onPressed: onAddAccount,
+                  onPressed: () async {
+                    WidgetsBinding.instance.addPostFrameCallback((_) async {
+                      final password = await showModalBottomSheet<String>(
+                        context: context,
+                        builder: (context) =>
+                            const ConfirmPasswordScren(initialPassword: null),
+                      );
+                      if (password == null) return;
+                      await ref.read(walletsProvider.notifier).addNewAccount(
+                          walletId: wallet.id, password: password);
+                      Navigator.of(context).pop();
+                    });
+                  },
                   label: const Text('Add account'),
                   icon: Icon(
                     Icons.add_circle_outline_rounded,
@@ -246,23 +254,25 @@ class _WalletListLayout extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-            title != null
-                ? Text(
-                    title!,
-                    style: const TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 16,
-                    ),
-                  )
-                : Container(),
-          ]),
-          const SizedBox(height: 16),
-          SingleChildScrollView(child: child),
-        ],
+      child: SingleChildScrollView(
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+              title != null
+                  ? Text(
+                      title!,
+                      style: const TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 16,
+                      ),
+                    )
+                  : Container(),
+            ]),
+            const SizedBox(height: 16),
+            SingleChildScrollView(child: child),
+          ],
+        ),
       ),
     );
   }

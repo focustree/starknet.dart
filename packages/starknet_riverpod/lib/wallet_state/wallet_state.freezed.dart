@@ -20,8 +20,8 @@ WalletsState _$WalletsStateFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$WalletsState {
-  Map<int, Wallet> get wallets => throw _privateConstructorUsedError;
-  ({int accountId, int walletId})? get selected =>
+  Map<String, Wallet> get wallets => throw _privateConstructorUsedError;
+  ({int accountId, String walletId})? get selected =>
       throw _privateConstructorUsedError;
   Wallet? get tempWallet => throw _privateConstructorUsedError;
 
@@ -38,8 +38,8 @@ abstract class $WalletsStateCopyWith<$Res> {
       _$WalletsStateCopyWithImpl<$Res, WalletsState>;
   @useResult
   $Res call(
-      {Map<int, Wallet> wallets,
-      ({int accountId, int walletId})? selected,
+      {Map<String, Wallet> wallets,
+      ({int accountId, String walletId})? selected,
       Wallet? tempWallet});
 
   $WalletCopyWith<$Res>? get tempWallet;
@@ -66,11 +66,11 @@ class _$WalletsStateCopyWithImpl<$Res, $Val extends WalletsState>
       wallets: null == wallets
           ? _value.wallets
           : wallets // ignore: cast_nullable_to_non_nullable
-              as Map<int, Wallet>,
+              as Map<String, Wallet>,
       selected: freezed == selected
           ? _value.selected
           : selected // ignore: cast_nullable_to_non_nullable
-              as ({int accountId, int walletId})?,
+              as ({int accountId, String walletId})?,
       tempWallet: freezed == tempWallet
           ? _value.tempWallet
           : tempWallet // ignore: cast_nullable_to_non_nullable
@@ -100,8 +100,8 @@ abstract class _$$_WalletsStateCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {Map<int, Wallet> wallets,
-      ({int accountId, int walletId})? selected,
+      {Map<String, Wallet> wallets,
+      ({int accountId, String walletId})? selected,
       Wallet? tempWallet});
 
   @override
@@ -127,11 +127,11 @@ class __$$_WalletsStateCopyWithImpl<$Res>
       wallets: null == wallets
           ? _value._wallets
           : wallets // ignore: cast_nullable_to_non_nullable
-              as Map<int, Wallet>,
+              as Map<String, Wallet>,
       selected: freezed == selected
           ? _value.selected
           : selected // ignore: cast_nullable_to_non_nullable
-              as ({int accountId, int walletId})?,
+              as ({int accountId, String walletId})?,
       tempWallet: freezed == tempWallet
           ? _value.tempWallet
           : tempWallet // ignore: cast_nullable_to_non_nullable
@@ -144,7 +144,7 @@ class __$$_WalletsStateCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_WalletsState implements _WalletsState {
   const _$_WalletsState(
-      {final Map<int, Wallet> wallets = const {},
+      {final Map<String, Wallet> wallets = const {},
       this.selected = null,
       this.tempWallet = null})
       : _wallets = wallets;
@@ -152,10 +152,10 @@ class _$_WalletsState implements _WalletsState {
   factory _$_WalletsState.fromJson(Map<String, dynamic> json) =>
       _$$_WalletsStateFromJson(json);
 
-  final Map<int, Wallet> _wallets;
+  final Map<String, Wallet> _wallets;
   @override
   @JsonKey()
-  Map<int, Wallet> get wallets {
+  Map<String, Wallet> get wallets {
     if (_wallets is EqualUnmodifiableMapView) return _wallets;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableMapView(_wallets);
@@ -163,7 +163,7 @@ class _$_WalletsState implements _WalletsState {
 
   @override
   @JsonKey()
-  final ({int accountId, int walletId})? selected;
+  final ({int accountId, String walletId})? selected;
   @override
   @JsonKey()
   final Wallet? tempWallet;
@@ -206,17 +206,17 @@ class _$_WalletsState implements _WalletsState {
 
 abstract class _WalletsState implements WalletsState {
   const factory _WalletsState(
-      {final Map<int, Wallet> wallets,
-      final ({int accountId, int walletId})? selected,
+      {final Map<String, Wallet> wallets,
+      final ({int accountId, String walletId})? selected,
       final Wallet? tempWallet}) = _$_WalletsState;
 
   factory _WalletsState.fromJson(Map<String, dynamic> json) =
       _$_WalletsState.fromJson;
 
   @override
-  Map<int, Wallet> get wallets;
+  Map<String, Wallet> get wallets;
   @override
-  ({int accountId, int walletId})? get selected;
+  ({int accountId, String walletId})? get selected;
   @override
   Wallet? get tempWallet;
   @override
@@ -231,7 +231,7 @@ Wallet _$WalletFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$Wallet {
-  int get id => throw _privateConstructorUsedError;
+  String get id => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
   List<String>? get seedPhrase => throw _privateConstructorUsedError;
   WalletType get type => throw _privateConstructorUsedError;
@@ -248,7 +248,7 @@ abstract class $WalletCopyWith<$Res> {
       _$WalletCopyWithImpl<$Res, Wallet>;
   @useResult
   $Res call(
-      {int id,
+      {String id,
       String name,
       List<String>? seedPhrase,
       WalletType type,
@@ -278,7 +278,7 @@ class _$WalletCopyWithImpl<$Res, $Val extends Wallet>
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as int,
+              as String,
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -306,7 +306,7 @@ abstract class _$$_WalletCopyWith<$Res> implements $WalletCopyWith<$Res> {
   @override
   @useResult
   $Res call(
-      {int id,
+      {String id,
       String name,
       List<String>? seedPhrase,
       WalletType type,
@@ -333,7 +333,7 @@ class __$$_WalletCopyWithImpl<$Res>
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as int,
+              as String,
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -370,7 +370,7 @@ class _$_Wallet implements _Wallet {
       _$$_WalletFromJson(json);
 
   @override
-  final int id;
+  final String id;
   @override
   final String name;
   final List<String>? _seedPhrase;
@@ -440,7 +440,7 @@ class _$_Wallet implements _Wallet {
 
 abstract class _Wallet implements Wallet {
   const factory _Wallet(
-      {required final int id,
+      {required final String id,
       required final String name,
       final List<String>? seedPhrase,
       final WalletType type,
@@ -449,7 +449,7 @@ abstract class _Wallet implements Wallet {
   factory _Wallet.fromJson(Map<String, dynamic> json) = _$_Wallet.fromJson;
 
   @override
-  int get id;
+  String get id;
   @override
   String get name;
   @override
@@ -471,7 +471,7 @@ Account _$AccountFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$Account {
   int get id => throw _privateConstructorUsedError;
-  int get walletId => throw _privateConstructorUsedError;
+  String get walletId => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
   String get address => throw _privateConstructorUsedError;
   Map<String, double> get balances => throw _privateConstructorUsedError;
@@ -489,7 +489,7 @@ abstract class $AccountCopyWith<$Res> {
   @useResult
   $Res call(
       {int id,
-      int walletId,
+      String walletId,
       String name,
       String address,
       Map<String, double> balances,
@@ -524,7 +524,7 @@ class _$AccountCopyWithImpl<$Res, $Val extends Account>
       walletId: null == walletId
           ? _value.walletId
           : walletId // ignore: cast_nullable_to_non_nullable
-              as int,
+              as String,
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -554,7 +554,7 @@ abstract class _$$_AccountCopyWith<$Res> implements $AccountCopyWith<$Res> {
   @useResult
   $Res call(
       {int id,
-      int walletId,
+      String walletId,
       String name,
       String address,
       Map<String, double> balances,
@@ -586,7 +586,7 @@ class __$$_AccountCopyWithImpl<$Res>
       walletId: null == walletId
           ? _value.walletId
           : walletId // ignore: cast_nullable_to_non_nullable
-              as int,
+              as String,
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -625,7 +625,7 @@ class _$_Account implements _Account {
   @override
   final int id;
   @override
-  final int walletId;
+  final String walletId;
   @override
   final String name;
   @override
@@ -685,7 +685,7 @@ class _$_Account implements _Account {
 abstract class _Account implements Account {
   const factory _Account(
       {required final int id,
-      required final int walletId,
+      required final String walletId,
       required final String name,
       required final String address,
       final Map<String, double> balances,
@@ -696,7 +696,7 @@ abstract class _Account implements Account {
   @override
   int get id;
   @override
-  int get walletId;
+  String get walletId;
   @override
   String get name;
   @override

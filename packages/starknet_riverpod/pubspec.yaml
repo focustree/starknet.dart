@@ -22,6 +22,7 @@ dependencies:
   riverpod_annotation: ^2.1.1
   starknet:
   starknet_flutter:
+  uuid: ^3.0.7
 
 dev_dependencies:
   flutter_test:

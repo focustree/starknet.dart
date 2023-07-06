@@ -49,9 +49,9 @@ class CreatePasswordScreen extends HookConsumerWidget {
 }
 
 class ConfirmPasswordScren extends HookConsumerWidget {
-  final String initialPassword;
+  final String? initialPassword;
 
-  const ConfirmPasswordScren({Key? key, required this.initialPassword})
+  const ConfirmPasswordScren({Key? key, this.initialPassword})
       : super(key: key);
 
   @override
@@ -79,6 +79,9 @@ class ConfirmPasswordScren extends HookConsumerWidget {
           isLoading: isLoading.value,
           onPressed: isButtonEnabled
               ? () async {
+                  if (initialPassword == null) {
+                    Navigator.of(context).pop(password.value);
+                  }
                   if (password.value != initialPassword) {
                     ScaffoldMessenger.of(context).showSnackBar(
                       const SnackBar(
@@ -90,7 +93,7 @@ class ConfirmPasswordScren extends HookConsumerWidget {
                   isLoading.value = true;
                   await ref
                       .read(walletsProvider.notifier)
-                      .protectWalletWithPassword(password.value);
+                      .protectWalletWithPassword(password: password.value);
                   isLoading.value = false;
                   Navigator.of(context).popUntil((route) => route.isFirst);
                 }

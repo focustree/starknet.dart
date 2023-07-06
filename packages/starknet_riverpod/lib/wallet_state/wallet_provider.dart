@@ -4,6 +4,7 @@ import 'package:starknet_flutter/starknet_flutter.dart' as sf;
 import 'package:starknet_riverpod/utils/persisted_notifier_state.dart';
 import 'package:starknet_riverpod/wallet_state/wallet_state.dart';
 import 'package:bip39/bip39.dart' as bip39;
+import 'package:uuid/uuid.dart';
 
 part 'wallet_provider.g.dart';
 
@@ -23,7 +24,7 @@ class Wallets extends _$Wallets with PersistedState<WalletsState> {
   }
 
   createTempWallet({
-    int? walletId,
+    String? walletId,
     List<String>? seedPhrase,
     WalletType walletType = WalletType.openZeppelin,
   }) {
@@ -31,11 +32,11 @@ class Wallets extends _$Wallets with PersistedState<WalletsState> {
       return; // Already created
     }
     seedPhrase = seedPhrase ?? bip39.generateMnemonic().split(' ');
-    walletId = walletId ?? state.wallets.length;
+    walletId = walletId ?? const Uuid().v4();
 
     final wallet = Wallet(
       id: walletId,
-      name: 'Wallet ${walletId + 1}',
+      name: 'Wallet ${state.wallets.length + 1}',
       seedPhrase: seedPhrase,
       type: walletType,
     );
@@ -45,7 +46,7 @@ class Wallets extends _$Wallets with PersistedState<WalletsState> {
     );
   }
 
-  refreshEthBalance(int walletId, int accountId) async {
+  refreshEthBalance(String walletId, int accountId) async {
     final ethBalance = await publicAccount(
       walletId: walletId,
       accountId: accountId,
@@ -62,6 +63,7 @@ class Wallets extends _$Wallets with PersistedState<WalletsState> {
       ...state.wallets,
       walletId: wallet.copyWith(
         accounts: {
+          ...wallet.accounts,
           accountId: account.copyWith(
             balances: {
               ...account.balances,
@@ -74,7 +76,7 @@ class Wallets extends _$Wallets with PersistedState<WalletsState> {
   }
 
   sf.PublicAccount publicAccount(
-      {required int walletId, required int accountId}) {
+      {required String walletId, required int accountId}) {
     final account = state.wallets[walletId]?.accounts[accountId];
     if (account == null) {
       throw Exception("Account not found");
@@ -94,11 +96,16 @@ class Wallets extends _$Wallets with PersistedState<WalletsState> {
     );
   }
 
-  protectWalletWithPassword(String password) async {
+  protectWalletWithPassword({
+    required String password,
+    int? derivationIndex,
+  }) async {
     final tempWallet = state.tempWallet;
     if (tempWallet == null) {
       throw Exception("Temp wallet is null");
     }
+
+    derivationIndex = derivationIndex ?? tempWallet.accounts.length;
 
     final accountType = switch (tempWallet.type) {
       WalletType.openZeppelin => sf.StarknetAccountType.openZeppelin,
@@ -119,16 +126,15 @@ class Wallets extends _$Wallets with PersistedState<WalletsState> {
       WalletType.braavos =>
         s.BraavosAccountDerivation(chainId: chainId, provider: provider),
     };
-    const index = 0;
     final seedPhrase = state.tempWallet?.seedPhrase;
     if (seedPhrase == null) {
       throw Exception("Seed phrase is null");
     }
 
     final wallet = sf.Wallet(
-      walletId: tempWallet.id.toString(),
+      walletId: tempWallet.id,
       name: tempWallet.name,
-      order: index,
+      order: derivationIndex,
       accountType: accountType,
     );
 
@@ -139,7 +145,7 @@ class Wallets extends _$Wallets with PersistedState<WalletsState> {
       ),
       chainId: chainId,
       accountDerivation: accountDerivation,
-      index: index,
+      index: derivationIndex,
     );
 
     final passwordStore = sf.PasswordStore();
@@ -159,19 +165,55 @@ class Wallets extends _$Wallets with PersistedState<WalletsState> {
         .copyWith(tempWallet: null); // Clean seed phrase
   }
 
-  selectAcount({required int walletId, required int accountId}) {
+  selectAcount({required String walletId, required int accountId}) {
     state = state.copyWith(
       selected: (
         walletId: walletId,
         accountId: accountId,
       ),
     );
+    refreshEthBalance(
+      walletId,
+      accountId,
+    );
+  }
+
+  addNewAccount({required String walletId, required String password}) async {
+    final wallet = state.wallets[walletId];
+    if (wallet == null) {
+      throw Exception("Wallet not found");
+    }
+
+    final seedPhrase =
+        await getSeedPhrase(walletId: walletId, password: password);
+    if (seedPhrase == null) {
+      throw Exception("Seed phrase is null");
+    }
+
+    state = state.copyWith(
+      tempWallet: wallet.copyWith(
+        seedPhrase: seedPhrase,
+      ),
+    );
+
+    await protectWalletWithPassword(password: password);
   }
 }
 
 Future<void> createInitialPassword(String password) async {
   await sf.PasswordStore().deleteSecret(key: "app_level_password");
   await sf.PasswordStore().initiatePassword(password);
+}
+
+Future<List<String>?> getSeedPhrase({
+  required String walletId,
+  required String password,
+}) async {
+  final store = sf.PasswordStore();
+  return store.getSeedPhrase(
+    id: walletId,
+    password: password,
+  );
 }
 
 extension WalletService on WalletsState {
@@ -207,8 +249,10 @@ extension WalletService on WalletsState {
     return copyWith(
       wallets: {
         ...wallets,
-        wallet.id: wallet
-            .copyWith(accounts: {...wallet.accounts, newAccount.id: newAccount})
+        wallet.id: wallet.copyWith(
+          accounts: {...wallet.accounts, newAccount.id: newAccount},
+          seedPhrase: null,
+        )
       },
       selected: (walletId: wallet.id, accountId: newAccount.id),
     );

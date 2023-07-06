@@ -7,8 +7,8 @@ part 'wallet_state.g.dart';
 @freezed
 class WalletsState with _$WalletsState implements PersistableState {
   const factory WalletsState({
-    @Default({}) Map<int, Wallet> wallets,
-    @Default(null) ({int walletId, int accountId})? selected,
+    @Default({}) Map<String, Wallet> wallets,
+    @Default(null) ({String walletId, int accountId})? selected,
     @Default(null) Wallet? tempWallet,
   }) = _WalletsState;
 
@@ -19,7 +19,7 @@ class WalletsState with _$WalletsState implements PersistableState {
 @freezed
 class Wallet with _$Wallet implements PersistableState {
   const factory Wallet({
-    required int id,
+    required String id,
     required String name,
     @Default(null) List<String>? seedPhrase,
     @Default(WalletType.openZeppelin) WalletType type,
@@ -33,7 +33,7 @@ class Wallet with _$Wallet implements PersistableState {
 class Account with _$Account implements PersistableState {
   const factory Account({
     required int id,
-    required int walletId,
+    required String walletId,
     required String name,
     required String address,
     @Default({}) Map<String, double> balances,

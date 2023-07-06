@@ -9,15 +9,14 @@ part of 'wallet_state.dart';
 _$_WalletsState _$$_WalletsStateFromJson(Map<String, dynamic> json) =>
     _$_WalletsState(
       wallets: (json['wallets'] as Map<String, dynamic>?)?.map(
-            (k, e) => MapEntry(
-                int.parse(k), Wallet.fromJson(e as Map<String, dynamic>)),
+            (k, e) => MapEntry(k, Wallet.fromJson(e as Map<String, dynamic>)),
           ) ??
           const {},
       selected: _$recordConvertNullable(
             json['selected'],
             ($jsonValue) => (
               accountId: $jsonValue['accountId'] as int,
-              walletId: $jsonValue['walletId'] as int,
+              walletId: $jsonValue['walletId'] as String,
             ),
           ) ??
           null,
@@ -28,7 +27,7 @@ _$_WalletsState _$$_WalletsStateFromJson(Map<String, dynamic> json) =>
 
 Map<String, dynamic> _$$_WalletsStateToJson(_$_WalletsState instance) =>
     <String, dynamic>{
-      'wallets': instance.wallets.map((k, e) => MapEntry(k.toString(), e)),
+      'wallets': instance.wallets,
       'selected': instance.selected == null
           ? null
           : {
@@ -45,7 +44,7 @@ $Rec? _$recordConvertNullable<$Rec>(
     value == null ? null : convert(value as Map<String, dynamic>);
 
 _$_Wallet _$$_WalletFromJson(Map<String, dynamic> json) => _$_Wallet(
-      id: json['id'] as int,
+      id: json['id'] as String,
       name: json['name'] as String,
       seedPhrase: (json['seedPhrase'] as List<dynamic>?)
               ?.map((e) => e as String)
@@ -76,7 +75,7 @@ const _$WalletTypeEnumMap = {
 
 _$_Account _$$_AccountFromJson(Map<String, dynamic> json) => _$_Account(
       id: json['id'] as int,
-      walletId: json['walletId'] as int,
+      walletId: json['walletId'] as String,
       name: json['name'] as String,
       address: json['address'] as String,
       balances: (json['balances'] as Map<String, dynamic>?)?.map(
