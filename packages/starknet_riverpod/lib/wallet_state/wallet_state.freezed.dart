@@ -21,7 +21,8 @@ WalletsState _$WalletsStateFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$WalletsState {
   Map<int, Wallet> get wallets => throw _privateConstructorUsedError;
-  Account? get selectedAccount => throw _privateConstructorUsedError;
+  ({int accountId, int walletId})? get selected =>
+      throw _privateConstructorUsedError;
   Wallet? get tempWallet => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -37,9 +38,10 @@ abstract class $WalletsStateCopyWith<$Res> {
       _$WalletsStateCopyWithImpl<$Res, WalletsState>;
   @useResult
   $Res call(
-      {Map<int, Wallet> wallets, Account? selectedAccount, Wallet? tempWallet});
+      {Map<int, Wallet> wallets,
+      ({int accountId, int walletId})? selected,
+      Wallet? tempWallet});
 
-  $AccountCopyWith<$Res>? get selectedAccount;
   $WalletCopyWith<$Res>? get tempWallet;
 }
 
@@ -57,7 +59,7 @@ class _$WalletsStateCopyWithImpl<$Res, $Val extends WalletsState>
   @override
   $Res call({
     Object? wallets = null,
-    Object? selectedAccount = freezed,
+    Object? selected = freezed,
     Object? tempWallet = freezed,
   }) {
     return _then(_value.copyWith(
@@ -65,27 +67,15 @@ class _$WalletsStateCopyWithImpl<$Res, $Val extends WalletsState>
           ? _value.wallets
           : wallets // ignore: cast_nullable_to_non_nullable
               as Map<int, Wallet>,
-      selectedAccount: freezed == selectedAccount
-          ? _value.selectedAccount
-          : selectedAccount // ignore: cast_nullable_to_non_nullable
-              as Account?,
+      selected: freezed == selected
+          ? _value.selected
+          : selected // ignore: cast_nullable_to_non_nullable
+              as ({int accountId, int walletId})?,
       tempWallet: freezed == tempWallet
           ? _value.tempWallet
           : tempWallet // ignore: cast_nullable_to_non_nullable
               as Wallet?,
     ) as $Val);
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $AccountCopyWith<$Res>? get selectedAccount {
-    if (_value.selectedAccount == null) {
-      return null;
-    }
-
-    return $AccountCopyWith<$Res>(_value.selectedAccount!, (value) {
-      return _then(_value.copyWith(selectedAccount: value) as $Val);
-    });
   }
 
   @override
@@ -110,10 +100,10 @@ abstract class _$$_WalletsStateCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {Map<int, Wallet> wallets, Account? selectedAccount, Wallet? tempWallet});
+      {Map<int, Wallet> wallets,
+      ({int accountId, int walletId})? selected,
+      Wallet? tempWallet});
 
-  @override
-  $AccountCopyWith<$Res>? get selectedAccount;
   @override
   $WalletCopyWith<$Res>? get tempWallet;
 }
@@ -130,7 +120,7 @@ class __$$_WalletsStateCopyWithImpl<$Res>
   @override
   $Res call({
     Object? wallets = null,
-    Object? selectedAccount = freezed,
+    Object? selected = freezed,
     Object? tempWallet = freezed,
   }) {
     return _then(_$_WalletsState(
@@ -138,10 +128,10 @@ class __$$_WalletsStateCopyWithImpl<$Res>
           ? _value._wallets
           : wallets // ignore: cast_nullable_to_non_nullable
               as Map<int, Wallet>,
-      selectedAccount: freezed == selectedAccount
-          ? _value.selectedAccount
-          : selectedAccount // ignore: cast_nullable_to_non_nullable
-              as Account?,
+      selected: freezed == selected
+          ? _value.selected
+          : selected // ignore: cast_nullable_to_non_nullable
+              as ({int accountId, int walletId})?,
       tempWallet: freezed == tempWallet
           ? _value.tempWallet
           : tempWallet // ignore: cast_nullable_to_non_nullable
@@ -155,7 +145,7 @@ class __$$_WalletsStateCopyWithImpl<$Res>
 class _$_WalletsState implements _WalletsState {
   const _$_WalletsState(
       {final Map<int, Wallet> wallets = const {},
-      this.selectedAccount = null,
+      this.selected = null,
       this.tempWallet = null})
       : _wallets = wallets;
 
@@ -173,14 +163,14 @@ class _$_WalletsState implements _WalletsState {
 
   @override
   @JsonKey()
-  final Account? selectedAccount;
+  final ({int accountId, int walletId})? selected;
   @override
   @JsonKey()
   final Wallet? tempWallet;
 
   @override
   String toString() {
-    return 'WalletsState(wallets: $wallets, selectedAccount: $selectedAccount, tempWallet: $tempWallet)';
+    return 'WalletsState(wallets: $wallets, selected: $selected, tempWallet: $tempWallet)';
   }
 
   @override
@@ -189,19 +179,16 @@ class _$_WalletsState implements _WalletsState {
         (other.runtimeType == runtimeType &&
             other is _$_WalletsState &&
             const DeepCollectionEquality().equals(other._wallets, _wallets) &&
-            (identical(other.selectedAccount, selectedAccount) ||
-                other.selectedAccount == selectedAccount) &&
+            (identical(other.selected, selected) ||
+                other.selected == selected) &&
             (identical(other.tempWallet, tempWallet) ||
                 other.tempWallet == tempWallet));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(_wallets),
-      selectedAccount,
-      tempWallet);
+  int get hashCode => Object.hash(runtimeType,
+      const DeepCollectionEquality().hash(_wallets), selected, tempWallet);
 
   @JsonKey(ignore: true)
   @override
@@ -220,7 +207,7 @@ class _$_WalletsState implements _WalletsState {
 abstract class _WalletsState implements WalletsState {
   const factory _WalletsState(
       {final Map<int, Wallet> wallets,
-      final Account? selectedAccount,
+      final ({int accountId, int walletId})? selected,
       final Wallet? tempWallet}) = _$_WalletsState;
 
   factory _WalletsState.fromJson(Map<String, dynamic> json) =
@@ -229,7 +216,7 @@ abstract class _WalletsState implements WalletsState {
   @override
   Map<int, Wallet> get wallets;
   @override
-  Account? get selectedAccount;
+  ({int accountId, int walletId})? get selected;
   @override
   Wallet? get tempWallet;
   @override
@@ -487,6 +474,7 @@ mixin _$Account {
   int get walletId => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
   String get address => throw _privateConstructorUsedError;
+  Map<String, double> get balances => throw _privateConstructorUsedError;
   bool get idDeployed => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -500,7 +488,12 @@ abstract class $AccountCopyWith<$Res> {
       _$AccountCopyWithImpl<$Res, Account>;
   @useResult
   $Res call(
-      {int id, int walletId, String name, String address, bool idDeployed});
+      {int id,
+      int walletId,
+      String name,
+      String address,
+      Map<String, double> balances,
+      bool idDeployed});
 }
 
 /// @nodoc
@@ -520,6 +513,7 @@ class _$AccountCopyWithImpl<$Res, $Val extends Account>
     Object? walletId = null,
     Object? name = null,
     Object? address = null,
+    Object? balances = null,
     Object? idDeployed = null,
   }) {
     return _then(_value.copyWith(
@@ -539,6 +533,10 @@ class _$AccountCopyWithImpl<$Res, $Val extends Account>
           ? _value.address
           : address // ignore: cast_nullable_to_non_nullable
               as String,
+      balances: null == balances
+          ? _value.balances
+          : balances // ignore: cast_nullable_to_non_nullable
+              as Map<String, double>,
       idDeployed: null == idDeployed
           ? _value.idDeployed
           : idDeployed // ignore: cast_nullable_to_non_nullable
@@ -555,7 +553,12 @@ abstract class _$$_AccountCopyWith<$Res> implements $AccountCopyWith<$Res> {
   @override
   @useResult
   $Res call(
-      {int id, int walletId, String name, String address, bool idDeployed});
+      {int id,
+      int walletId,
+      String name,
+      String address,
+      Map<String, double> balances,
+      bool idDeployed});
 }
 
 /// @nodoc
@@ -572,6 +575,7 @@ class __$$_AccountCopyWithImpl<$Res>
     Object? walletId = null,
     Object? name = null,
     Object? address = null,
+    Object? balances = null,
     Object? idDeployed = null,
   }) {
     return _then(_$_Account(
@@ -591,6 +595,10 @@ class __$$_AccountCopyWithImpl<$Res>
           ? _value.address
           : address // ignore: cast_nullable_to_non_nullable
               as String,
+      balances: null == balances
+          ? _value._balances
+          : balances // ignore: cast_nullable_to_non_nullable
+              as Map<String, double>,
       idDeployed: null == idDeployed
           ? _value.idDeployed
           : idDeployed // ignore: cast_nullable_to_non_nullable
@@ -607,7 +615,9 @@ class _$_Account implements _Account {
       required this.walletId,
       required this.name,
       required this.address,
-      this.idDeployed = false});
+      final Map<String, double> balances = const {},
+      this.idDeployed = false})
+      : _balances = balances;
 
   factory _$_Account.fromJson(Map<String, dynamic> json) =>
       _$$_AccountFromJson(json);
@@ -620,13 +630,22 @@ class _$_Account implements _Account {
   final String name;
   @override
   final String address;
+  final Map<String, double> _balances;
+  @override
+  @JsonKey()
+  Map<String, double> get balances {
+    if (_balances is EqualUnmodifiableMapView) return _balances;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableMapView(_balances);
+  }
+
   @override
   @JsonKey()
   final bool idDeployed;
 
   @override
   String toString() {
-    return 'Account(id: $id, walletId: $walletId, name: $name, address: $address, idDeployed: $idDeployed)';
+    return 'Account(id: $id, walletId: $walletId, name: $name, address: $address, balances: $balances, idDeployed: $idDeployed)';
   }
 
   @override
@@ -639,14 +658,15 @@ class _$_Account implements _Account {
                 other.walletId == walletId) &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.address, address) || other.address == address) &&
+            const DeepCollectionEquality().equals(other._balances, _balances) &&
             (identical(other.idDeployed, idDeployed) ||
                 other.idDeployed == idDeployed));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, id, walletId, name, address, idDeployed);
+  int get hashCode => Object.hash(runtimeType, id, walletId, name, address,
+      const DeepCollectionEquality().hash(_balances), idDeployed);
 
   @JsonKey(ignore: true)
   @override
@@ -668,6 +688,7 @@ abstract class _Account implements Account {
       required final int walletId,
       required final String name,
       required final String address,
+      final Map<String, double> balances,
       final bool idDeployed}) = _$_Account;
 
   factory _Account.fromJson(Map<String, dynamic> json) = _$_Account.fromJson;
@@ -680,6 +701,8 @@ abstract class _Account implements Account {
   String get name;
   @override
   String get address;
+  @override
+  Map<String, double> get balances;
   @override
   bool get idDeployed;
   @override

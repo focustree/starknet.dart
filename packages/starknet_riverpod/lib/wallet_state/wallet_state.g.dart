@@ -13,9 +13,14 @@ _$_WalletsState _$$_WalletsStateFromJson(Map<String, dynamic> json) =>
                 int.parse(k), Wallet.fromJson(e as Map<String, dynamic>)),
           ) ??
           const {},
-      selectedAccount: json['selectedAccount'] == null
-          ? null
-          : Account.fromJson(json['selectedAccount'] as Map<String, dynamic>),
+      selected: _$recordConvertNullable(
+            json['selected'],
+            ($jsonValue) => (
+              accountId: $jsonValue['accountId'] as int,
+              walletId: $jsonValue['walletId'] as int,
+            ),
+          ) ??
+          null,
       tempWallet: json['tempWallet'] == null
           ? null
           : Wallet.fromJson(json['tempWallet'] as Map<String, dynamic>),
@@ -24,9 +29,20 @@ _$_WalletsState _$$_WalletsStateFromJson(Map<String, dynamic> json) =>
 Map<String, dynamic> _$$_WalletsStateToJson(_$_WalletsState instance) =>
     <String, dynamic>{
       'wallets': instance.wallets.map((k, e) => MapEntry(k.toString(), e)),
-      'selectedAccount': instance.selectedAccount,
+      'selected': instance.selected == null
+          ? null
+          : {
+              'accountId': instance.selected!.accountId,
+              'walletId': instance.selected!.walletId,
+            },
       'tempWallet': instance.tempWallet,
     };
+
+$Rec? _$recordConvertNullable<$Rec>(
+  Object? value,
+  $Rec Function(Map) convert,
+) =>
+    value == null ? null : convert(value as Map<String, dynamic>);
 
 _$_Wallet _$$_WalletFromJson(Map<String, dynamic> json) => _$_Wallet(
       id: json['id'] as int,
@@ -63,6 +79,10 @@ _$_Account _$$_AccountFromJson(Map<String, dynamic> json) => _$_Account(
       walletId: json['walletId'] as int,
       name: json['name'] as String,
       address: json['address'] as String,
+      balances: (json['balances'] as Map<String, dynamic>?)?.map(
+            (k, e) => MapEntry(k, (e as num).toDouble()),
+          ) ??
+          const {},
       idDeployed: json['idDeployed'] as bool? ?? false,
     );
 
@@ -72,5 +92,6 @@ Map<String, dynamic> _$$_AccountToJson(_$_Account instance) =>
       'walletId': instance.walletId,
       'name': instance.name,
       'address': instance.address,
+      'balances': instance.balances,
       'idDeployed': instance.idDeployed,
     };

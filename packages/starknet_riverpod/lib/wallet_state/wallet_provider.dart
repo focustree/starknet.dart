@@ -45,6 +45,54 @@ class Wallets extends _$Wallets with PersistedState<WalletsState> {
     );
   }
 
+  refreshEthBalance(int walletId, int accountId) async {
+    final ethBalance = await publicAccount(
+      walletId: 0,
+      accountId: accountId,
+    ).balance;
+    final wallet = state.wallets[walletId];
+    if (wallet == null) {
+      throw Exception("Wallet not found");
+    }
+    final account = wallet.accounts[accountId];
+    if (account == null) {
+      throw Exception("Account not found");
+    }
+    state = state.copyWith(wallets: {
+      walletId: wallet.copyWith(
+        accounts: {
+          accountId: account.copyWith(
+            balances: {
+              ...account.balances,
+              'ETH': double.parse(ethBalance.toStringAsFixed(4)),
+            },
+          ),
+        },
+      )
+    });
+  }
+
+  sf.PublicAccount publicAccount(
+      {required int walletId, required int accountId}) {
+    final account = state.wallets[walletId]?.accounts[accountId];
+    if (account == null) {
+      throw Exception("Account not found");
+    }
+    final chainId = sf.StarknetFlutter.chainId;
+    final provider = s.JsonRpcProvider.infuraGoerliTestnet;
+    return sf.PublicAccount.from(
+      account: s.Account(
+        chainId: chainId,
+        provider: provider,
+        accountAddress: s.Felt.fromHexString(account.address),
+        signer: s.Signer(
+          privateKey: s.Felt.fromHexString('0x0'),
+        ),
+      ),
+      walletId: walletId.toString(),
+    );
+  }
+
   protectWalletWithPassword(String password) async {
     final tempWallet = state.tempWallet;
     if (tempWallet == null) {
@@ -77,7 +125,8 @@ class Wallets extends _$Wallets with PersistedState<WalletsState> {
     }
 
     final wallet = sf.Wallet(
-      name: "Wallet #$index",
+      walletId: tempWallet.id.toString(),
+      name: tempWallet.name,
       order: index,
       accountType: accountType,
     );
@@ -116,6 +165,22 @@ Future<void> createInitialPassword(String password) async {
 }
 
 extension WalletService on WalletsState {
+  Account? get selectedAccount {
+    if (selected == null) {
+      return null;
+    }
+
+    final wallet = wallets[selected?.walletId];
+    if (wallet == null) {
+      throw Exception("Wallet not found");
+    }
+    final account = wallet.accounts[selected?.accountId];
+    if (account == null) {
+      throw Exception("Account not found");
+    }
+    return account;
+  }
+
   WalletsState addAccount({
     required Wallet wallet,
     required s.Account account,
@@ -135,7 +200,7 @@ extension WalletService on WalletsState {
         wallet.id: wallet
             .copyWith(accounts: {...wallet.accounts, newAccount.id: newAccount})
       },
-      selectedAccount: newAccount,
+      selected: (walletId: wallet.id, accountId: newAccount.id),
     );
   }
 }

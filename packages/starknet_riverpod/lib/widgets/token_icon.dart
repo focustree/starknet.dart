@@ -1,5 +1,5 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:image_network/image_network.dart';
 
 class TokenIcon extends StatelessWidget {
   final String symbol;
@@ -10,13 +10,12 @@ class TokenIcon extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final url = "https://cryptoicons.org/api/color/$symbol/${3 * size}";
-    return CachedNetworkImage(
-      imageUrl: url,
+    final url =
+        "https://cryptoicons.org/api/color/${symbol.toLowerCase()}/${3 * size}";
+    return ImageNetwork(
+      image: url,
       height: size,
       width: size,
-      placeholder: (context, url) => const CircularProgressIndicator(),
-      errorWidget: (context, url, error) => const Icon(Icons.error),
     );
   }
 }

@@ -9,7 +9,6 @@ environment:
 
 dependencies:
   bip39: ^1.0.6
-  cached_network_image: ^3.2.3
   easy_debounce: ^2.0.3
   expandable: ^5.0.1
   flutter:
@@ -19,6 +18,7 @@ dependencies:
   freezed_annotation: ^2.2.0
   hive: ^2.2.3
   hooks_riverpod: ^2.3.6
+  image_network: ^2.5.4+1
   riverpod_annotation: ^2.1.1
   starknet:
   starknet_flutter:

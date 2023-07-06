@@ -8,7 +8,7 @@ part 'wallet_state.g.dart';
 class WalletsState with _$WalletsState implements PersistableState {
   const factory WalletsState({
     @Default({}) Map<int, Wallet> wallets,
-    @Default(null) Account? selectedAccount,
+    @Default(null) ({int walletId, int accountId})? selected,
     @Default(null) Wallet? tempWallet,
   }) = _WalletsState;
 
@@ -36,6 +36,7 @@ class Account with _$Account implements PersistableState {
     required int walletId,
     required String name,
     required String address,
+    @Default({}) Map<String, double> balances,
     @Default(false) bool idDeployed,
   }) = _Account;
 
