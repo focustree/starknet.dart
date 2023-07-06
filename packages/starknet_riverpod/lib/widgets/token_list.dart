@@ -11,6 +11,7 @@ class TokenList extends HookConsumerWidget {
     final tokens = ['ETH', 'BTC', 'USDC'];
     final selectedAccount =
         ref.watch(walletsProvider.select((value) => value.selectedAccount));
+    final wallets = ref.watch(walletsProvider.select((value) => value.wallets));
 
     useEffect(() {
       if (selectedAccount != null) {
@@ -45,7 +46,7 @@ class TokenListItem extends HookConsumerWidget {
     final balance = ref.watch(walletsProvider.select(
       (value) => value.selectedAccount?.balances[symbol] ?? 0.00,
     ));
-    print(ref.watch(walletsProvider).selectedAccount?.balances);
+
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 0, vertical: 16),
       child: Row(

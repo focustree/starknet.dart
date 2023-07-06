@@ -16,11 +16,6 @@ class CreateWalletScreen extends HookConsumerWidget {
             walletsProvider.select((value) => value.tempWallet?.seedPhrase)) ??
         [];
 
-    useEffect(
-      () => ref.read(walletsProvider.notifier).createTempWallet(),
-      [],
-    );
-
     return Layout(
       appBar: AppBar(
         title: const Text('Secret Recovery Phrase'),

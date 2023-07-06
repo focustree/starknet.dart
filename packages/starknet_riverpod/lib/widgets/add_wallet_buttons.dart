@@ -2,6 +2,25 @@ import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:starknet_riverpod/starknet_riverpod.dart';
 
+class AddWalletButtons extends StatelessWidget {
+  const AddWalletButtons({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return ConstrainedBox(
+      constraints: const BoxConstraints(maxWidth: 256),
+      child: const Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          CreateNewWalletButton(),
+          SizedBox(height: 8),
+          RecoverWalletButton(),
+        ],
+      ),
+    );
+  }
+}
+
 class CreateNewWalletButton extends HookConsumerWidget {
   const CreateNewWalletButton({Key? key}) : super(key: key);
 
@@ -28,7 +47,7 @@ class RecoverWalletButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextButton(
-      child: const Text('Recover wallet'),
+      child: const Text('Recover existing wallet'),
       onPressed: () {
         Navigator.push(
           context,

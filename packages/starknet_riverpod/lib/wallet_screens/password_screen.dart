@@ -21,6 +21,7 @@ class CreatePasswordScreen extends HookConsumerWidget {
         ),
         TextField(
           onChanged: (value) => password.value = value,
+          autofocus: true,
           obscureText: true,
           decoration: const InputDecoration(
             labelText: 'Enter your password',
@@ -68,6 +69,7 @@ class ConfirmPasswordScren extends HookConsumerWidget {
         TextField(
           onChanged: (value) => password.value = value,
           obscureText: true,
+          autofocus: true,
           decoration: const InputDecoration(
             labelText: 'Enter your password',
           ),

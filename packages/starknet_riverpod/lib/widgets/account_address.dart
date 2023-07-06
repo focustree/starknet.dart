@@ -12,15 +12,15 @@ class AccountAddress extends HookConsumerWidget {
     final address = ref.watch(
         walletsProvider.select((value) => value.selectedAccount?.address));
     return Container(
-      child: address != null ? AccountAddressPure(address: address) : null,
+      child: address != null ? _AccountAddressButton(address: address) : null,
     );
   }
 }
 
-class AccountAddressPure extends StatelessWidget {
+class _AccountAddressButton extends StatelessWidget {
   final String address;
 
-  const AccountAddressPure({
+  const _AccountAddressButton({
     super.key,
     required this.address,
   });

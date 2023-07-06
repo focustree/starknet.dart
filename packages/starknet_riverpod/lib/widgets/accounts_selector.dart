@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:starknet_riverpod/starknet_riverpod.dart';
-import 'package:starknet_riverpod/widgets/accounts_list.dart';
+import 'package:starknet_riverpod/widgets/wallet_list.dart';
 
 class WalletSelector extends HookConsumerWidget {
   const WalletSelector({
@@ -22,9 +22,14 @@ class WalletSelector extends HookConsumerWidget {
             children: [
               Row(
                 children: [
-                  Text(wallets[account.walletId]?.name ?? "Wallet"),
-                  const Text(' | '),
-                  Text(account.name),
+                  Text(
+                    wallets[account.walletId]?.name ?? "Wallet",
+                    style: const TextStyle(fontWeight: FontWeight.bold),
+                  ),
+                  const Text(' | ',
+                      style: const TextStyle(fontWeight: FontWeight.bold)),
+                  Text(account.name,
+                      style: const TextStyle(fontWeight: FontWeight.w500)),
                 ],
               ),
             ],

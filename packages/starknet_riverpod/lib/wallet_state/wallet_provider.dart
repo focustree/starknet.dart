@@ -47,7 +47,7 @@ class Wallets extends _$Wallets with PersistedState<WalletsState> {
 
   refreshEthBalance(int walletId, int accountId) async {
     final ethBalance = await publicAccount(
-      walletId: 0,
+      walletId: walletId,
       accountId: accountId,
     ).balance;
     final wallet = state.wallets[walletId];
@@ -59,6 +59,7 @@ class Wallets extends _$Wallets with PersistedState<WalletsState> {
       throw Exception("Account not found");
     }
     state = state.copyWith(wallets: {
+      ...state.wallets,
       walletId: wallet.copyWith(
         accounts: {
           accountId: account.copyWith(
@@ -156,6 +157,15 @@ class Wallets extends _$Wallets with PersistedState<WalletsState> {
     state = state
         .addAccount(wallet: tempWallet, account: starknetAccount)
         .copyWith(tempWallet: null); // Clean seed phrase
+  }
+
+  selectAcount({required int walletId, required int accountId}) {
+    state = state.copyWith(
+      selected: (
+        walletId: walletId,
+        accountId: accountId,
+      ),
+    );
   }
 }
 
