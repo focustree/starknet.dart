@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:starknet_riverpod/starknet_riverpod.dart';
-import 'package:starknet_riverpod/wallet_screens/protect_wallet_screen.dart';
 import 'package:starknet_riverpod/widgets/wallet_type_icon.dart';
 
 class RecoverWalletScreen extends HookConsumerWidget {
@@ -15,7 +13,7 @@ class RecoverWalletScreen extends HookConsumerWidget {
     final wordsCount =
         seedPhrase.value == '' ? 0 : seedPhrase.value.trim().split(' ').length;
     final isButtonEnabled = wordsCount == 12;
-    final accountType = useState(WalletType.openZeppelin);
+    final walletType = useState(WalletType.openZeppelin);
 
     return Layout(
       appBar: AppBar(
@@ -65,8 +63,8 @@ class RecoverWalletScreen extends HookConsumerWidget {
                         child: WalletTypeIcon(type: WalletType.braavos),
                       )),
                 ],
-                selected: {accountType.value},
-                onSelectionChanged: (value) => accountType.value = value.first,
+                selected: {walletType.value},
+                onSelectionChanged: (value) => walletType.value = value.first,
               ),
             ],
           ),
@@ -75,6 +73,10 @@ class RecoverWalletScreen extends HookConsumerWidget {
         PrimaryButton(
             onPressed: isButtonEnabled
                 ? () {
+                    ref.read(walletsProvider.notifier).createTempWallet(
+                          seedPhrase: seedPhrase.value.split(' '),
+                          walletType: walletType.value,
+                        );
                     Navigator.of(context).push(
                       MaterialPageRoute(
                         builder: (context) => const ProtectWalletScreen(),

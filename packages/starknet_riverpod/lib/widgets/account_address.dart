@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:starknet_flutter/starknet_flutter.dart';
 import 'package:starknet_riverpod/utils/format_address.dart';
 import 'package:starknet_riverpod/wallet_state/wallet_provider.dart';
 

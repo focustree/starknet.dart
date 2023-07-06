@@ -3,18 +3,23 @@ import 'package:flutter/services.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:starknet_riverpod/starknet_riverpod.dart';
-import 'package:starknet_riverpod/wallet_screens/protect_wallet_screen.dart';
 
 const space = SizedBox(height: 16);
 
-class SeedPhraseScreen extends HookConsumerWidget {
-  const SeedPhraseScreen({super.key});
+class CreateWalletScreen extends HookConsumerWidget {
+  const CreateWalletScreen({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final isChecked = useState(false);
-    final seedPhrase =
-        ref.watch(walletsProvider.select((value) => value.seedPhrase)) ?? [];
+    final seedPhrase = ref.watch(
+            walletsProvider.select((value) => value.tempWallet?.seedPhrase)) ??
+        [];
+
+    useEffect(
+      () => ref.read(walletsProvider.notifier).createTempWallet(),
+      [],
+    );
 
     return Layout(
       appBar: AppBar(

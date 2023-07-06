@@ -33,7 +33,9 @@ class WalletSelector extends HookConsumerWidget {
     return FilledButton.tonal(
       onPressed: () {
         showModalBottomSheet(
-            context: context, builder: (context) => const AccountsList());
+          context: context,
+          builder: (context) => const WalletList(),
+        );
       },
       child: Row(
         children: [

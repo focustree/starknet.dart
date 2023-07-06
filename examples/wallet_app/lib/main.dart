@@ -22,7 +22,6 @@ class MyApp extends HookConsumerWidget {
         useMaterial3: true,
       ),
       home: const HomeScreen(),
-      // home: CreatePasswordScreen(),
     );
   }
 }

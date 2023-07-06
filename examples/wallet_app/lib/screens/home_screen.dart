@@ -9,6 +9,7 @@ class HomeScreen extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return Layout(
+      spacing: 8,
       topBar: const Row(
         children: [
           Padding(
@@ -23,29 +24,9 @@ class HomeScreen extends HookConsumerWidget {
           )
         ],
       ),
-      children: [
-        PrimaryButton(
-            child: const Text('Create new wallet'),
-            onPressed: () {
-              ref.read(walletsProvider.notifier).generateSeedPhrase();
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => const SeedPhraseScreen(),
-                ),
-              );
-            }),
-        TextButton(
-          child: const Text('Recover wallet'),
-          onPressed: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) => const RecoverWalletScreen(),
-              ),
-            );
-          },
-        ),
+      children: const [
+        SizedBox(height: 64),
+        WalletBody(),
       ],
     );
   }

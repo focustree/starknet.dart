@@ -2,70 +2,103 @@ import 'dart:core';
 
 import 'package:expandable/expandable.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import 'package:starknet_flutter/src/views/wallet_list/widgets/appbar.dart'
     show WalletListAppBar;
-import 'package:starknet_flutter/src/views/widgets/bouncing_button.dart';
 import 'package:starknet_riverpod/starknet_riverpod.dart';
-import 'package:starknet_riverpod/wallet_state/wallet_state.dart';
+import 'package:starknet_riverpod/widgets/add_wallet_buttons.dart';
 import 'package:starknet_riverpod/widgets/wallet_type_icon.dart';
 
-class AccountsList extends HookConsumerWidget {
-  const AccountsList({
-    super.key,
-  });
+enum WalletListState {
+  walletList,
+  addWallet,
+}
+
+class WalletList extends HookConsumerWidget {
+  const WalletList({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final state = useState(WalletListState.walletList);
     final wallets = ref.watch(walletsProvider.select((value) => value.wallets));
-    return SafeArea(
-      child: Padding(
-        padding: const EdgeInsets.only(top: 5.0),
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            const WalletListAppBar(),
-            const SizedBox(height: 8),
-            Flexible(
-              child: ListView.separated(
-                shrinkWrap: true,
-                physics: const BouncingScrollPhysics(),
-                itemBuilder: (context, index) {
-                  final wallet = wallets.values.toList()[index];
-                  return WalletCell(
-                    wallet: wallet,
-                    onAddAccount: () async {
-                      // TODO: Adjust this part based on how you want to handle adding account
-                    },
-                  );
-                },
-                separatorBuilder: (context, index) {
-                  return const SizedBox(height: 10);
-                },
-                itemCount: wallets.length,
-              ),
-            ),
-            const SizedBox(height: 5),
-            BouncingButton.text(
-              onTap: () {
-                // TODO: Adjust this part based on how you want to handle adding wallet
-              },
-              text: 'Add another wallet',
-              textStyle: TextStyle(
+
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
+      child: switch (state.value) {
+        WalletListState.walletList => WalletListPure(
+            wallets: wallets.values.toList(),
+            onAddWallet: () {
+              state.value = WalletListState.addWallet;
+            },
+            onAddAccount: () {},
+          ),
+        WalletListState.addWallet => const Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              CreateNewWalletButton(),
+              SizedBox(height: 8),
+              RecoverWalletButton()
+            ],
+          ),
+      },
+    );
+  }
+}
+
+class WalletListPure extends StatelessWidget {
+  final List<Wallet> wallets;
+
+  final VoidCallback onAddWallet;
+  final VoidCallback onAddAccount;
+
+  const WalletListPure({
+    Key? key,
+    required this.wallets,
+    required this.onAddWallet,
+    required this.onAddAccount,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        const WalletListAppBar(),
+        const SizedBox(height: 8),
+        Flexible(
+          child: ListView.separated(
+            shrinkWrap: true,
+            physics: const BouncingScrollPhysics(),
+            itemBuilder: (context, index) {
+              final wallet = wallets[index];
+              return WalletCell(
+                wallet: wallet,
+                onAddAccount: onAddAccount,
+              );
+            },
+            separatorBuilder: (context, index) {
+              return const SizedBox(height: 10);
+            },
+            itemCount: wallets.length,
+          ),
+        ),
+        const SizedBox(height: 5),
+        TextButton.icon(
+          onPressed: onAddWallet,
+          label: Text('Add another wallet',
+              style: TextStyle(
                 color: Theme.of(context).primaryColor,
                 fontWeight: FontWeight.bold,
-              ),
-              icon: Icon(
-                Icons.account_balance_wallet_outlined,
-                size: 22,
-                color: Theme.of(context).primaryColor,
-              ),
-            ),
-          ],
+              )),
+          icon: Icon(
+            Icons.account_balance_wallet_outlined,
+            size: 22,
+            color: Theme.of(context).primaryColor,
+          ),
         ),
-      ),
+      ],
     );
   }
 }
@@ -114,7 +147,7 @@ class WalletCell extends StatelessWidget {
                       padding: const EdgeInsets.only(top: 5.0, bottom: 3.0),
                       physics: const NeverScrollableScrollPhysics(),
                       itemBuilder: (_, index) {
-                        final account = wallet.accounts[index];
+                        final account = wallet.accounts[index]!;
                         return AccountCell(
                           accountName: account.name,
                           onPressed: () {},
@@ -125,9 +158,9 @@ class WalletCell extends StatelessWidget {
                       },
                       itemCount: wallet.accounts.length,
                     ),
-                  BouncingButton.text(
-                    onTap: onAddAccount,
-                    text: 'Add account',
+                  TextButton.icon(
+                    onPressed: onAddAccount,
+                    label: const Text('Add account'),
                     icon: Icon(
                       Icons.add_circle_outline_rounded,
                       size: 22,

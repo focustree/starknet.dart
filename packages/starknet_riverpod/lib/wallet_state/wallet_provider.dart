@@ -22,17 +22,59 @@ class Wallets extends _$Wallets with PersistedState<WalletsState> {
     return const WalletsState();
   }
 
-  generateSeedPhrase() {
-    if (state.seedPhrase == null) {
-      final seedPhrase = bip39.generateMnemonic();
-      state = state.copyWith(seedPhrase: seedPhrase.split(' '));
+  createTempWallet({
+    int? walletId,
+    List<String>? seedPhrase,
+    WalletType walletType = WalletType.openZeppelin,
+  }) {
+    if (state.tempWallet != null) {
+      return; // Already created
     }
+    seedPhrase = seedPhrase ?? bip39.generateMnemonic().split(' ');
+    walletId = walletId ?? state.wallets.length;
+
+    final wallet = Wallet(
+      id: walletId,
+      name: 'Wallet ${walletId + 1}',
+      seedPhrase: seedPhrase,
+      type: walletType,
+    );
+
+    state = state.copyWith(
+      tempWallet: wallet,
+    );
   }
 
   protectWalletWithPassword(String password) async {
-    const accountType = sf.StarknetAccountType.openZeppelin;
+    final tempWallet = state.tempWallet;
+    if (tempWallet == null) {
+      throw Exception("Temp wallet is null");
+    }
+
+    final accountType = switch (tempWallet.type) {
+      WalletType.openZeppelin => sf.StarknetAccountType.openZeppelin,
+      WalletType.argent => sf.StarknetAccountType.argentX,
+      WalletType.braavos => sf.StarknetAccountType.braavos
+    };
+
+    final chainId = sf.StarknetFlutter.chainId;
+    final provider = s.JsonRpcProvider(
+      nodeUri: sf.StarknetFlutter.nodeUri,
+    );
+    final accountDerivation = switch (tempWallet.type) {
+      WalletType.openZeppelin => s.OpenzeppelinAccountDerivation(
+          proxyClassHash: s.ozProxyClassHash,
+          implementationClassHash: s.ozAccountUpgradableClassHash,
+        ),
+      WalletType.argent => s.ArgentXAccountDerivation(),
+      WalletType.braavos =>
+        s.BraavosAccountDerivation(chainId: chainId, provider: provider),
+    };
     const index = 0;
-    final seedPhrase = state.seedPhrase;
+    final seedPhrase = state.tempWallet?.seedPhrase;
+    if (seedPhrase == null) {
+      throw Exception("Seed phrase is null");
+    }
 
     final wallet = sf.Wallet(
       name: "Wallet #$index",
@@ -40,19 +82,13 @@ class Wallets extends _$Wallets with PersistedState<WalletsState> {
       accountType: accountType,
     );
 
-    if (seedPhrase == null) {
-      throw Exception("Seed phrase is null");
-    }
     final starknetAccount = s.Account.fromMnemonic(
       mnemonic: seedPhrase,
       provider: s.JsonRpcProvider(
         nodeUri: sf.StarknetFlutter.nodeUri,
       ),
-      chainId: sf.StarknetFlutter.chainId,
-      accountDerivation: s.OpenzeppelinAccountDerivation(
-        proxyClassHash: s.ozProxyClassHash,
-        implementationClassHash: s.ozAccountUpgradableClassHash,
-      ),
+      chainId: chainId,
+      accountDerivation: accountDerivation,
       index: index,
     );
 
@@ -69,8 +105,8 @@ class Wallets extends _$Wallets with PersistedState<WalletsState> {
     );
 
     state = state
-        .addAccount(walletId: state.wallets.length, account: starknetAccount)
-        .copyWith(seedPhrase: null); // Remove seed phrase from memory
+        .addAccount(wallet: tempWallet, account: starknetAccount)
+        .copyWith(tempWallet: null); // Clean seed phrase
   }
 }
 
@@ -81,21 +117,14 @@ Future<void> createInitialPassword(String password) async {
 
 extension WalletService on WalletsState {
   WalletsState addAccount({
-    required int walletId,
+    required Wallet wallet,
     required s.Account account,
     WalletType walletType = WalletType.openZeppelin,
   }) {
-    final wallet = wallets[walletId] ??
-        Wallet(
-          id: walletId,
-          type: walletType,
-          name: 'Wallet ${walletId + 1}',
-        );
-
     final int accountId = wallet.accounts.length;
     final newAccount = Account(
-      derivationIndex: accountId,
-      walletId: walletId,
+      id: accountId,
+      walletId: wallet.id,
       name: 'Account ${accountId + 1}',
       address: account.accountAddress.toHexString(),
     );
@@ -103,7 +132,8 @@ extension WalletService on WalletsState {
     return copyWith(
       wallets: {
         ...wallets,
-        walletId: wallet.copyWith(accounts: [...wallet.accounts, newAccount])
+        wallet.id: wallet
+            .copyWith(accounts: {...wallet.accounts, newAccount.id: newAccount})
       },
       selectedAccount: newAccount,
     );
