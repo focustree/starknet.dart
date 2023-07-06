@@ -8,7 +8,8 @@ void main(List<String> args) async {
   final account = account0;
   for (var arg in args) {
     final contractPath = arg;
-    final compiledContract = await parseContract(contractPath);
+    final compiledContract =
+        await DeprecatedCompiledContract.fromPath(contractPath);
     Felt classHash = Felt(compiledContract.classHash());
 
     print(

@@ -11,8 +11,8 @@ void main() {
     });
     group('declare', () {
       test('succeeds to declare a simple contract class hash', () async {
-        final balanceContract =
-            await parseContract('../../contracts/build/balance.json');
+        final balanceContract = await DeprecatedCompiledContract.fromPath(
+            '../../contracts/build/balance.json');
         final res = await account0.declare(compiledContract: balanceContract);
         final txHash = res.when(
           result: (result) {
@@ -34,8 +34,8 @@ void main() {
         expect(txStatus, equals(true));
       });
       test('succeeds to declare an openzeppelin contract class hash', () async {
-        final accountContract =
-            await parseContract('../../contracts/build/oz_account.json');
+        final accountContract = await DeprecatedCompiledContract.fromPath(
+            '../../contracts/build/oz_account.json');
         final res = await account0.declare(compiledContract: accountContract);
         final String txHash = res.when(
           result: (result) {

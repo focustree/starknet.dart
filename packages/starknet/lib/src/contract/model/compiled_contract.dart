@@ -7,6 +7,23 @@ import 'package:starknet/starknet.dart';
 part 'compiled_contract.freezed.dart';
 part 'compiled_contract.g.dart';
 
+Future<dynamic> _readJsonFile(String filePath) async {
+  final bigIntPattern = "BingInt|";
+  var input = await File(filePath).readAsString();
+  // Dart JSON decoder use double to represent number,
+  // but 64 bits is not enough for Felt
+  // so we prefix "number" by [bigIntPattern]
+  input = input.replaceAllMapped(
+      RegExp(r'^(\s*"value": )(-?[0-9]+)(\s*,?)', multiLine: true),
+      (match) => '${match[1]}"$bigIntPattern${match[2]}"${match[3]}');
+  var json = jsonDecode(input,
+      reviver: (key, value) =>
+          key == "value" && value is String && value.startsWith(bigIntPattern)
+              ? BigInt.parse(value.replaceAll(bigIntPattern, ""))
+              : value);
+  return json;
+}
+
 @freezed
 class DeprecatedCompiledContract with _$DeprecatedCompiledContract {
   const DeprecatedCompiledContract._(); // To be able to define custome compress() method
@@ -20,9 +37,16 @@ class DeprecatedCompiledContract with _$DeprecatedCompiledContract {
   factory DeprecatedCompiledContract.fromJson(Map<String, Object?> json) =>
       _$DeprecatedCompiledContractFromJson(json);
 
+  static Future<DeprecatedCompiledContract> fromPath(
+      String contractPath) async {
+    final json = await _readJsonFile(contractPath);
+    return DeprecatedCompiledContract.fromJson(json);
+  }
+
   DeprecatedContractClass compress() {
     final new_program = Map.of(program);
-    final program_json = CompiledContractJsonEncoder().convert(new_program);
+    final program_json =
+        DeprecatedCompiledContractJsonEncoder().convert(new_program);
     return DeprecatedContractClass(
       program: base64.encode(gzip.encode(utf8.encode(program_json))),
       entryPointsByType: entryPointsByType,
@@ -54,11 +78,12 @@ class DeprecatedCompiledContract with _$DeprecatedCompiledContract {
   }
 
   /// Return program filtered and encoded as Python json.dumps
-  String encode() {
+  String _encode() {
     final new_program = _filtering(program);
 
     final encoded =
-        CompiledContractJsonEncoder(filterRuntimeType: false).convert({
+        DeprecatedCompiledContractJsonEncoder(filterRuntimeType: false)
+            .convert({
       "abi": abi,
       "program": new_program,
     });
@@ -104,7 +129,7 @@ class DeprecatedCompiledContract with _$DeprecatedCompiledContract {
   /// Compute program hash
   /// https://docs.starknet.io/documentation/architecture_and_concepts/Contracts/contract-hash/
   BigInt programHash() {
-    final encoded = encode();
+    final encoded = _encode();
     return starknetKeccak(ascii.encode(encoded)).toBigInt();
   }
 
@@ -148,10 +173,10 @@ String compressProgram(Map<String, Object?> program) {
 }
 
 /// JSON encoder to mimic Python json dumps
-class CompiledContractJsonEncoder extends JsonEncoder {
+class DeprecatedCompiledContractJsonEncoder extends JsonEncoder {
   final bool filterRuntimeType;
 
-  CompiledContractJsonEncoder({this.filterRuntimeType = true});
+  DeprecatedCompiledContractJsonEncoder({this.filterRuntimeType = true});
 
   @override
   String convert(Object? object) =>

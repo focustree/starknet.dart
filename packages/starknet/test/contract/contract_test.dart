@@ -6,11 +6,12 @@ void main() {
   group(
     'Contract',
     () {
-      group('Compiled contract', () {
+      group('Compiled contract (cairo 0)', () {
         test('Compute class hash for contract without attributes', () async {
           final contractPath =
               '${Directory.current.path}/../../contracts/build/balance.json';
-          final compiledContract = await parseContract(contractPath);
+          final compiledContract =
+              await DeprecatedCompiledContract.fromPath(contractPath);
           final classHash = compiledContract.classHash();
           expect(
             classHash,
@@ -20,7 +21,8 @@ void main() {
         test('Compute class hash for contract with attributes', () async {
           final contractPath =
               '${Directory.current.path}/../../contracts/build/oz_account.json';
-          final compiledContract = await parseContract(contractPath);
+          final compiledContract =
+              await DeprecatedCompiledContract.fromPath(contractPath);
           final classHash = compiledContract.classHash();
           expect(
             classHash,

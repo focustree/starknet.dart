@@ -9,7 +9,8 @@ import 'package:starknet/starknet.dart';
 void main(List<String> args) async {
   for (var arg in args) {
     final contractPath = arg;
-    final compiledContract = await parseContract(contractPath);
+    final compiledContract =
+        await DeprecatedCompiledContract.fromPath(contractPath);
     print(
       "$contractPath : 0x${compiledContract.classHash().toRadixString(16)}",
     );
