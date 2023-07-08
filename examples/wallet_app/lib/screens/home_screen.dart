@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:starknet_riverpod/starknet_riverpod.dart';
-import 'package:starknet_riverpod/widgets/account_address.dart';
+import 'package:wallet_kit/wallet_kit.dart';
+import 'package:wallet_kit/widgets/account_address.dart';
 
 class HomeScreen extends HookConsumerWidget {
   const HomeScreen({super.key});
@@ -13,11 +13,11 @@ class HomeScreen extends HookConsumerWidget {
       topBar: const Row(
         children: [
           Padding(
-            padding: EdgeInsets.all(8.0),
+            padding: EdgeInsets.all(16.0),
             child: Column(
+              mainAxisSize: MainAxisSize.min,
               children: [
                 WalletSelector(),
-                SizedBox(height: 4),
                 AccountAddress(),
               ],
             ),
@@ -25,8 +25,9 @@ class HomeScreen extends HookConsumerWidget {
         ],
       ),
       children: const [
-        SizedBox(height: 64),
+        SizedBox(height: 96),
         WalletBody(),
+        Spacer(),
       ],
     );
   }

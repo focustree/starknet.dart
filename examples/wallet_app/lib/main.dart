@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:starknet_flutter/starknet_flutter.dart';
-import 'package:starknet_riverpod/starknet_riverpod.dart';
+import 'package:wallet_kit/wallet_kit.dart';
 import 'package:wallet_app/screens/home_screen.dart';
 
 void main() async {
@@ -17,9 +17,8 @@ class MyApp extends HookConsumerWidget {
     debugPrint("Wallet state: ${ref.watch(walletsProvider)}");
     return MaterialApp(
       title: 'Starknet Wallet',
-      theme: ThemeData(
+      theme: walletThemeData.copyWith(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
       ),
       home: const HomeScreen(),
     );
