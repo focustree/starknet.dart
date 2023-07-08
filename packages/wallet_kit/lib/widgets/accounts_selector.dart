@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:wallet_kit/wallet_kit.dart';
-import 'package:wallet_kit/widgets/wallet_list.dart';
 
 class WalletSelector extends HookConsumerWidget {
   const WalletSelector({
@@ -37,7 +36,7 @@ class WalletSelector extends HookConsumerWidget {
 
     return FilledButton.tonal(
       onPressed: () {
-        showModalBottomSheet(
+        showBottomModal(
           context: context,
           builder: (context) => const WalletList(),
         );

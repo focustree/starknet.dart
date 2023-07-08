@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:starknet_flutter/starknet_flutter.dart';
 import 'package:wallet_kit/wallet_kit.dart';
@@ -15,12 +16,15 @@ class MyApp extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     debugPrint("Wallet state: ${ref.watch(walletsProvider)}");
-    return MaterialApp(
-      title: 'Starknet Wallet',
-      theme: walletThemeData.copyWith(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+    return AnnotatedRegion<SystemUiOverlayStyle>(
+      value: const SystemUiOverlayStyle(
+          statusBarColor: Colors.transparent,
+          statusBarIconBrightness: Brightness.dark),
+      child: MaterialApp(
+        title: 'Starknet Wallet',
+        home: const HomeScreen(),
+        theme: walletThemeData,
       ),
-      home: const HomeScreen(),
     );
   }
 }

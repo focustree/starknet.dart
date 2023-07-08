@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:wallet_kit/wallet_kit.dart';
-import 'package:wallet_kit/widgets/wallet_type_icon.dart';
+import 'package:wallet_kit/widgets/icon.dart';
 
 class RecoverWalletScreen extends HookConsumerWidget {
   const RecoverWalletScreen({super.key});

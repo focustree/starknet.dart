@@ -1,18 +1,10 @@
 import 'dart:core';
-import 'dart:io';
 
 import 'package:expandable/expandable.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-import 'package:starknet_flutter/src/views/wallet_list/widgets/appbar.dart'
-    show WalletListAppBar;
 import 'package:wallet_kit/wallet_kit.dart';
-import 'package:wallet_kit/utils/format_address.dart';
-import 'package:wallet_kit/widgets/add_wallet_buttons.dart';
-import 'package:wallet_kit/widgets/wallet_type_icon.dart';
 
 import '../ui/modal.dart';
 
@@ -46,7 +38,7 @@ class WalletList extends HookConsumerWidget {
         wallets: wallets.values.toList(),
         onAddWallet: () {
           Navigator.of(context).pop();
-          showModalBottomSheet(
+          showBottomModal(
             context: context,
             builder: (context) =>
                 _WalletListLayout(title: null, child: AddWalletButtons()),
@@ -95,11 +87,9 @@ class _WalletList extends StatelessWidget {
         const SizedBox(height: 16),
         TextButton.icon(
           onPressed: onAddWallet,
-          label: Text('Add another wallet',
-              style: TextStyle(
-                color: Theme.of(context).primaryColor,
-                fontWeight: FontWeight.bold,
-              )),
+          label: const Text(
+            'Add another wallet',
+          ),
           icon: Icon(
             Icons.account_balance_wallet_outlined,
             size: 20,
@@ -164,38 +154,17 @@ class WalletCell extends HookConsumerWidget {
                 padding: const EdgeInsets.all(4.0),
                 child: TextButton.icon(
                   onPressed: () async {
-                    showModalBottomSheet(
+                    final password = await showBottomModal<String>(
+                      isScrollControlled: true,
+                      useSafeArea: true,
                       context: context,
-                      backgroundColor:
-                          Colors.transparent, // Make the background transparent
-                      builder: (context) {
-                        return CustomPaint(
-                          painter: MyCustomPainter(),
-                          child: Container(
-                            height: 200,
-                            child: Center(
-                              child: Text('Hello World!'),
-                            ),
-                          ),
-                        );
-                      },
+                      builder: (context) => const PasswordScreen(),
                     );
-                    // final password = await showModalBottomSheet<String>(
-                    //   shape: const RoundedRectangleBorder(
-                    //     borderRadius:
-                    //         BorderRadius.vertical(top: Radius.circular(48)),
-                    //   ),
-                    //   clipBehavior: Clip.antiAliasWithSaveLayer,
-                    //   isScrollControlled: true,
-                    //   useSafeArea: true,
-                    //   context: context,
-                    //   builder: (context) => const PasswordScreen(),
-                    // );
-                    // if (password == null) return;
-                    // ref
-                    //     .read(walletsProvider.notifier)
-                    //     .addNewAccount(walletId: wallet.id, password: password);
-                    // Navigator.of(context).pop();
+                    if (password == null) return;
+                    ref
+                        .read(walletsProvider.notifier)
+                        .addNewAccount(walletId: wallet.id, password: password);
+                    Navigator.of(context).pop();
                   },
                   label: const Text('Add account'),
                   icon: Icon(
@@ -279,25 +248,23 @@ class _WalletListLayout extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
-      child: SingleChildScrollView(
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-              title != null
-                  ? Text(
-                      title!,
-                      style: const TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 16,
-                      ),
-                    )
-                  : Container(),
-            ]),
-            const SizedBox(height: 16),
-            SingleChildScrollView(child: child),
-          ],
-        ),
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+            title != null
+                ? Text(
+                    title!,
+                    style: const TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 16,
+                    ),
+                  )
+                : Container(),
+          ]),
+          const SizedBox(height: 16),
+          child,
+        ],
       ),
     );
   }
