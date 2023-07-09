@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:wallet_kit/wallet_kit.dart';
 
 showBottomModal<T>({
   required BuildContext context,
-  required WidgetBuilder builder,
+  required Widget child,
   Color backgroundColor = Colors.transparent,
   double elevation = 0.0,
   ShapeBorder? shape,
@@ -21,7 +22,7 @@ showBottomModal<T>({
     context: context,
     builder: (context) {
       return CustomPaint(
-        painter: BottomModalSheetPainter(),
+        painter: ModalPainter(),
         child: Padding(
           padding: EdgeInsets.only(
             bottom: MediaQuery.of(context)
@@ -29,25 +30,7 @@ showBottomModal<T>({
                 .bottom, // Content gets pushed up by keyboard
           ),
           child: SingleChildScrollView(
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                const SizedBox(height: 8),
-                Center(
-                  child: Container(
-                    width: 40,
-                    height: 6,
-                    decoration: BoxDecoration(
-                      color: Colors.grey[200],
-                      borderRadius:
-                          const BorderRadius.all(Radius.circular(16.0)),
-                    ),
-                  ),
-                ),
-                SingleChildScrollView(child: builder(context)),
-                const SizedBox(height: 16),
-              ],
-            ),
+            child: child,
           ),
         ),
       );
@@ -67,7 +50,129 @@ showBottomModal<T>({
   );
 }
 
-class BottomModalSheetPainter extends CustomPainter {
+class ModalHeader extends StatelessWidget {
+  final String? title;
+  final Widget? rightButton;
+  final bool withBackButton;
+  final double iconSize;
+  final double fontSize;
+  final double sideMargin;
+
+  const ModalHeader({
+    super.key,
+    this.title,
+    this.withBackButton = false,
+    this.rightButton,
+    this.iconSize = 16,
+    this.fontSize = 18,
+    this.sideMargin = 24,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final double height = iconSize + 2 * sideMargin;
+    final backButton = withBackButton
+        ? Center(
+            child: CustomIconButton(
+              icon: Icons.arrow_back_rounded,
+              iconSize: iconSize,
+              touchableArea: height,
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+          )
+        : Container();
+    return Container(
+      color: Colors.transparent,
+      child: Stack(
+        children: [
+          ConstrainedBox(
+            constraints: BoxConstraints(minHeight: height),
+            child: Center(
+              child: title != null
+                  ? Text(
+                      title!,
+                      style: TextStyle(
+                        fontSize: fontSize,
+                        fontWeight: FontWeight.w700,
+                      ),
+                    )
+                  : Container(),
+            ),
+          ),
+          Positioned(
+            left: 0,
+            top: 0,
+            bottom: 0,
+            child: backButton,
+          ),
+          Positioned(
+            bottom: 0,
+            right: 0,
+            top: 0,
+            child: Center(
+              child: rightButton ?? Container(),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class ModalLayout extends StatelessWidget {
+  final Widget child;
+  final String title;
+
+  const ModalLayout({
+    Key? key,
+    required this.child,
+    this.title = 'Your Wallets',
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        ModalHeader(
+          title: title,
+          withBackButton: true,
+          rightButton: CustomIconButton(
+            icon: Icons.settings_rounded,
+            iconSize: 16,
+            touchableArea: 16 + 2 * 20,
+            scaleFactor: 1.2,
+            onPressed: () {
+              Navigator.of(context).pushNamed('/settings');
+            },
+          ),
+        ),
+        child,
+      ],
+    );
+  }
+}
+
+class ModalHandle extends StatelessWidget {
+  const ModalHandle({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: 40,
+      height: 6,
+      decoration: BoxDecoration(
+        color: Colors.grey[200],
+        borderRadius: const BorderRadius.all(Radius.circular(16.0)),
+      ),
+    );
+  }
+}
+
+class ModalPainter extends CustomPainter {
   final Color color;
   final double radius;
   final bool useCubicInterpolation;
@@ -76,9 +181,9 @@ class BottomModalSheetPainter extends CustomPainter {
   final double vRadiusRatio;
   final double hRadiusRatio;
 
-  BottomModalSheetPainter({
+  ModalPainter({
     this.color = Colors.white,
-    this.radius = 56,
+    this.radius = 40,
     this.vRadiusRatio = 0.8,
     this.hRadiusRatio = 1,
     this.vHandleRatio = 0.5,

@@ -31,21 +31,19 @@ class WalletList extends HookConsumerWidget {
       );
     }
 
-    return _WalletListLayout(
-      child: _WalletList(
-        wallets: wallets.values.toList(),
-        onAddWallet: () {
-          Navigator.of(context).pop();
-          showBottomModal(
-              context: context,
-              builder: (context) => const Center(
-                      child: Padding(
-                    padding: EdgeInsets.symmetric(vertical: 32, horizontal: 32),
-                    child: AddWalletButtons(),
-                  )));
-        },
-        onAddAccount: () {},
-      ),
+    return _WalletList(
+      wallets: wallets.values.toList(),
+      onAddWallet: () {
+        Navigator.of(context).pop();
+        showBottomModal(
+            context: context,
+            child: const Center(
+                child: Padding(
+              padding: EdgeInsets.symmetric(vertical: 32, horizontal: 32),
+              child: AddWalletButtons(),
+            )));
+      },
+      onAddAccount: () {},
     );
   }
 }
@@ -158,7 +156,7 @@ class WalletCell extends HookConsumerWidget {
                       isScrollControlled: true,
                       useSafeArea: true,
                       context: context,
-                      builder: (context) => const PasswordScreen(),
+                      child: const PasswordScreen(),
                     );
                     if (password == null) return;
                     ref
@@ -236,7 +234,7 @@ class AccountCell extends HookConsumerWidget {
 
 class _WalletListLayout extends StatelessWidget {
   final Widget child;
-  final String? title;
+  final String title;
 
   const _WalletListLayout({
     Key? key,
@@ -247,22 +245,20 @@ class _WalletListLayout extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
+      padding: const EdgeInsets.symmetric(horizontal: 16),
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-            title != null
-                ? Text(
-                    title!,
-                    style: const TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 16,
-                    ),
-                  )
-                : Container(),
-          ]),
-          const SizedBox(height: 16),
+          ModalHeader(
+            title: title,
+            rightButton: IconButton(
+              icon: const Icon(Icons.settings_rounded),
+              onPressed: () {
+                Navigator.of(context).pushNamed('/settings');
+              },
+            ),
+          ),
+          const SizedBox(height: 4),
           child,
         ],
       ),

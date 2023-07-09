@@ -46,6 +46,7 @@ final walletThemeData = ThemeData(
   bottomSheetTheme: const BottomSheetThemeData(
     backgroundColor: Colors.white,
   ),
+  iconTheme: const IconThemeData(color: dove),
 );
 
 // Colors
@@ -59,6 +60,7 @@ const backgrounColor = Colors.white;
 const sideMargin = 16.0;
 const padding = EdgeInsets.symmetric(horizontal: sideMargin);
 const primaryButtonHeight = 56.0;
+const headerHeight = 56.0;
 
 // Text
 const baseTextStyle = TextStyle(fontFamily: 'SF Pro Rounded');

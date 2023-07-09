@@ -116,3 +116,33 @@ class SecondaryButton extends HookWidget {
     );
   }
 }
+
+class CustomIconButton extends StatelessWidget {
+  final IconData icon;
+  final double iconSize;
+  final double scaleFactor;
+  final double touchableArea;
+  final VoidCallback onPressed;
+
+  CustomIconButton({
+    required this.icon,
+    required this.iconSize,
+    this.scaleFactor = 1.5,
+    this.touchableArea = 48.0,
+    required this.onPressed,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      behavior: HitTestBehavior.translucent,
+      onTap: onPressed,
+      child: Container(
+        height: touchableArea,
+        width: touchableArea,
+        alignment: Alignment.center,
+        child: CustomIcon(icon, size: iconSize, scaleFactor: scaleFactor),
+      ),
+    );
+  }
+}
