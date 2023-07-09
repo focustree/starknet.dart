@@ -24,6 +24,7 @@ class WalletBody extends HookConsumerWidget {
     }
     return Expanded(
       child: Column(
+        mainAxisSize: MainAxisSize.min,
         children: <Widget>[
           TabBar.secondary(
             controller: tabController,
@@ -38,7 +39,7 @@ class WalletBody extends HookConsumerWidget {
               children: const <Widget>[
                 TokenList(),
                 Padding(
-                    padding: EdgeInsets.symmetric(vertical: 32),
+                    padding: EdgeInsets.symmetric(vertical: 32, horizontal: 0),
                     child: Align(
                         alignment: Alignment.topCenter,
                         child: Text(

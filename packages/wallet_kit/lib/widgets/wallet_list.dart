@@ -6,8 +6,6 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import 'package:wallet_kit/wallet_kit.dart';
 
-import '../ui/modal.dart';
-
 enum WalletListState {
   walletList,
   addWallet,
@@ -39,10 +37,12 @@ class WalletList extends HookConsumerWidget {
         onAddWallet: () {
           Navigator.of(context).pop();
           showBottomModal(
-            context: context,
-            builder: (context) =>
-                _WalletListLayout(title: null, child: AddWalletButtons()),
-          );
+              context: context,
+              builder: (context) => const Center(
+                      child: Padding(
+                    padding: EdgeInsets.symmetric(vertical: 32, horizontal: 32),
+                    child: AddWalletButtons(),
+                  )));
         },
         onAddAccount: () {},
       ),

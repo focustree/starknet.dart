@@ -27,7 +27,7 @@ class ProtectWalletScreen extends HookConsumerWidget {
               ),
             );
           },
-          child: const Text("Protect wallet with password"),
+          label: "Protect wallet with password",
         ),
       ],
     );

@@ -15,77 +15,86 @@ class RecoverWalletScreen extends HookConsumerWidget {
     final isButtonEnabled = wordsCount == 12;
     final walletType = useState(WalletType.openZeppelin);
 
-    return Layout(
-      appBar: AppBar(
-        title: const Text('Recover Your Wallet'),
-      ),
-      children: [
-        TextField(
-          onChanged: (value) => seedPhrase.value = value,
-          decoration: InputDecoration(
-            labelText: 'Enter your seed phrase ($wordsCount / 12 words)',
-          ),
-        ),
-        Container(
-          width: double.infinity,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              const Text(
-                'Select your wallet type:',
-                style: TextStyle(
-                  fontSize: 16,
-                ),
+    return Material(
+      child: SafeArea(
+        child: SpacedColumn(
+          // appBar: AppBar(
+          //   title: const Text('Recover Your Wallet'),
+          // ),
+          children: [
+            TextField(
+              onChanged: (value) => seedPhrase.value = value,
+              decoration: InputDecoration(
+                labelText: 'Enter your seed phrase ($wordsCount / 12 words)',
               ),
-              const SizedBox(height: 16),
-              SegmentedButton<WalletType>(
-                showSelectedIcon: false,
-                segments: const <ButtonSegment<WalletType>>[
-                  ButtonSegment<WalletType>(
-                      value: WalletType.openZeppelin,
-                      icon: Padding(
-                        padding:
-                            EdgeInsets.symmetric(horizontal: 16.0, vertical: 8),
-                        child: WalletTypeIcon(type: WalletType.openZeppelin),
-                      )),
-                  ButtonSegment<WalletType>(
-                      value: WalletType.argent,
-                      icon: Padding(
-                        padding:
-                            EdgeInsets.symmetric(horizontal: 16.0, vertical: 8),
-                        child: WalletTypeIcon(type: WalletType.argent),
-                      )),
-                  ButtonSegment<WalletType>(
-                      value: WalletType.braavos,
-                      icon: Padding(
-                        padding:
-                            EdgeInsets.symmetric(horizontal: 16.0, vertical: 8),
-                        child: WalletTypeIcon(type: WalletType.braavos),
-                      )),
+            ),
+            Container(
+              width: double.infinity,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const Text(
+                    'Select your wallet type:',
+                    style: TextStyle(
+                      fontSize: 16,
+                    ),
+                  ),
+                  const SizedBox(height: 16),
+                  SegmentedButton<WalletType>(
+                    showSelectedIcon: false,
+                    segments: const <ButtonSegment<WalletType>>[
+                      ButtonSegment<WalletType>(
+                          value: WalletType.openZeppelin,
+                          icon: Padding(
+                            padding: EdgeInsets.symmetric(
+                                horizontal: 16.0, vertical: 8),
+                            child:
+                                WalletTypeIcon(type: WalletType.openZeppelin),
+                          )),
+                      ButtonSegment<WalletType>(
+                          value: WalletType.argent,
+                          icon: Padding(
+                            padding: EdgeInsets.symmetric(
+                                horizontal: 16.0, vertical: 8),
+                            child: WalletTypeIcon(type: WalletType.argent),
+                          )),
+                      ButtonSegment<WalletType>(
+                          value: WalletType.braavos,
+                          icon: Padding(
+                            padding: EdgeInsets.symmetric(
+                                horizontal: 16.0, vertical: 8),
+                            child: WalletTypeIcon(type: WalletType.braavos),
+                          )),
+                    ],
+                    selected: {walletType.value},
+                    onSelectionChanged: (value) =>
+                        walletType.value = value.first,
+                  ),
                 ],
-                selected: {walletType.value},
-                onSelectionChanged: (value) => walletType.value = value.first,
               ),
-            ],
-          ),
+            ),
+            const Spacer(),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 16),
+              child: SecondaryButton(
+                  onPressed: isButtonEnabled
+                      ? () {
+                          ref.read(walletsProvider.notifier).createTempWallet(
+                                seedPhrase: seedPhrase.value.split(' '),
+                                walletType: walletType.value,
+                              );
+                          Navigator.of(context).push(
+                            MaterialPageRoute(
+                              builder: (context) => const ProtectWalletScreen(),
+                            ),
+                          );
+                        }
+                      : null,
+                  label: 'Continue'),
+            ),
+          ],
         ),
-        const Spacer(),
-        PrimaryButton(
-            onPressed: isButtonEnabled
-                ? () {
-                    ref.read(walletsProvider.notifier).createTempWallet(
-                          seedPhrase: seedPhrase.value.split(' '),
-                          walletType: walletType.value,
-                        );
-                    Navigator.of(context).push(
-                      MaterialPageRoute(
-                        builder: (context) => const ProtectWalletScreen(),
-                      ),
-                    );
-                  }
-                : null,
-            child: const Text('Continue')),
-      ],
+      ),
     );
   }
 }

@@ -28,6 +28,9 @@ class _AccountAddressButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextButton(
+      style: TextButton.styleFrom(
+        padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+      ),
       onPressed: () async {
         await Clipboard.setData(ClipboardData(text: address));
 
@@ -40,6 +43,8 @@ class _AccountAddressButton extends StatelessWidget {
         }
       },
       child: Row(
+        mainAxisSize: MainAxisSize.min,
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Text(formatAddress(address)),
           const SizedBox(width: 4),

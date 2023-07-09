@@ -18,19 +18,21 @@ class WalletSelector extends HookConsumerWidget {
             'Select wallet',
           )
         : Row(
+            mainAxisSize: MainAxisSize.min,
             children: [
-              Row(
-                children: [
-                  Text(
-                    wallets[account.walletId]?.name ?? "Wallet",
-                    style: const TextStyle(fontWeight: FontWeight.bold),
-                  ),
-                  const Text(' | ',
-                      style: const TextStyle(fontWeight: FontWeight.bold)),
-                  Text(account.name,
-                      style: const TextStyle(fontWeight: FontWeight.w500)),
-                ],
+              Text(
+                wallets[account.walletId]?.name ?? "Wallet",
+                style: const TextStyle(fontWeight: FontWeight.bold),
               ),
+              Transform.translate(
+                offset: const Offset(0, -1),
+                child: const Text(' | ',
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                    )),
+              ),
+              Text(account.name,
+                  style: const TextStyle(fontWeight: FontWeight.w500)),
             ],
           );
 
@@ -42,6 +44,7 @@ class WalletSelector extends HookConsumerWidget {
         );
       },
       child: Row(
+        mainAxisSize: MainAxisSize.min,
         children: [
           label,
           const SizedBox(

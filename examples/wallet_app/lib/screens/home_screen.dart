@@ -8,27 +8,22 @@ class HomeScreen extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    return Layout(
-      spacing: 8,
-      topBar: const Row(
+    return const SafeArea(
+      child: Column(
         children: [
-          Padding(
-            padding: EdgeInsets.all(16.0),
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                WalletSelector(),
-                AccountAddress(),
-              ],
-            ),
-          )
+          SizedBox(height: 32),
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              WalletSelector(),
+              AccountAddress(),
+            ],
+          ),
+          SizedBox(height: 32),
+          WalletBody(),
         ],
       ),
-      children: const [
-        SizedBox(height: 96),
-        WalletBody(),
-        Spacer(),
-      ],
     );
   }
 }

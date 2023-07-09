@@ -4,7 +4,6 @@ import 'package:flutter/services.dart';
 final walletThemeData = ThemeData(
   useMaterial3: true,
   fontFamily: "SF Pro Rounded",
-  // textTheme: ThemeData.light().textTheme.copyWith(labelLarge: textStyle, labelMedium: textStyle, labelSmall: textStyle),
   textTheme: const TextTheme(
     displayLarge: baseTextStyle,
     displayMedium: baseTextStyle,
@@ -22,7 +21,8 @@ final walletThemeData = ThemeData(
     labelMedium: baseTextStyle,
     labelSmall: baseTextStyle,
   ),
-  colorScheme: ColorScheme.fromSeed(seedColor: Colors.lightBlue),
+  colorScheme: ColorScheme.fromSeed(seedColor: Colors.lightBlue)
+      .copyWith(background: backgrounColor),
   appBarTheme: const AppBarTheme(
     systemOverlayStyle: SystemUiOverlayStyle(
       statusBarColor: Colors.transparent,
@@ -49,10 +49,21 @@ final walletThemeData = ThemeData(
 );
 
 // Colors
-const myBlack = Color(0xFF24282E);
+const charcoal = Color(0xFF24282E);
+const graphite = Color(0xff666673);
+const dove = Color(0xff8B8C96);
+
+const backgrounColor = Colors.white;
 
 // Spacing
 const sideMargin = 16.0;
+const padding = EdgeInsets.symmetric(horizontal: sideMargin);
+const primaryButtonHeight = 56.0;
 
 // Text
 const baseTextStyle = TextStyle(fontFamily: 'SF Pro Rounded');
+const primaryButtonTextStyle = TextStyle(
+  fontSize: 17,
+  fontWeight: FontWeight.w600,
+  letterSpacing: 0.8,
+);

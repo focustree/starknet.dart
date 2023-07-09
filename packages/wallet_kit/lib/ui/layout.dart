@@ -45,7 +45,7 @@ class Layout extends StatelessWidget {
             SpacedColumn(
               top: top,
               bottom: bottom,
-              spacing: spacing,
+              verticalSpacing: spacing,
               sideMargin: sideMargin,
               maxWidth: maxWidth,
               crossAxisAlignment: crossAxisAlignment,

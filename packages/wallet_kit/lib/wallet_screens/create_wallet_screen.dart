@@ -53,7 +53,7 @@ class CreateWalletScreen extends HookConsumerWidget {
                     );
                   }
                 : null,
-            child: const Text('Continue')),
+            label: 'Continue'),
       ],
     );
   }

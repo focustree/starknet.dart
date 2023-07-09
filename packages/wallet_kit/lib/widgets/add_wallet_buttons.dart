@@ -7,16 +7,13 @@ class AddWalletButtons extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ConstrainedBox(
-      constraints: const BoxConstraints(maxWidth: 256),
-      child: const Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          CreateNewWalletButton(),
-          SizedBox(height: 8),
-          RecoverWalletButton(),
-        ],
-      ),
+    return const Column(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        CreateNewWalletButton(),
+        SizedBox(height: 16),
+        RecoverWalletButton(),
+      ],
     );
   }
 }
@@ -27,7 +24,7 @@ class CreateNewWalletButton extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return PrimaryButton(
-      child: const Text('Create new wallet'),
+      label: 'Create new wallet',
       onPressed: () {
         ref.read(walletsProvider.notifier).createTempWallet();
         Navigator.push(
@@ -46,8 +43,8 @@ class RecoverWalletButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return TextButton(
-      child: const Text('Recover existing wallet'),
+    return SecondaryButton(
+      label: 'Recover existing wallet',
       onPressed: () {
         Navigator.push(
           context,

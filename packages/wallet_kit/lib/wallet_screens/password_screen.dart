@@ -41,7 +41,7 @@ class CreatePasswordScreen extends HookConsumerWidget {
                   );
                 }
               : null,
-          child: const Text("Continue"),
+          label: "Continue",
         ),
       ],
     );
@@ -98,7 +98,7 @@ class ConfirmPasswordScren extends HookConsumerWidget {
                   Navigator.of(context).popUntil((route) => route.isFirst);
                 }
               : null,
-          child: const Text("Continue"),
+          label: "Continue",
         ),
       ],
     );
@@ -138,7 +138,7 @@ class PasswordScreen extends HookConsumerWidget {
                   );
                 }
               : null,
-          child: const Text("Continue"),
+          label: "Continue",
         ),
       ],
     );
