@@ -16,12 +16,12 @@ class SettingsScreen extends HookConsumerWidget {
         _SettingsSection(
           children: [
             _SettingsTile(
-              icon: Icons.notifications,
+              icon: Icons.notifications_rounded,
               title: "Notifications",
               onTap: () {},
             ),
             _SettingsTile(
-              icon: Icons.delete,
+              icon: Icons.delete_rounded,
               title: "Delete Wallets",
               onTap: () {},
             ),
@@ -31,7 +31,7 @@ class SettingsScreen extends HookConsumerWidget {
         _SettingsSection(
           children: [
             _SettingsTile(
-              icon: Icons.info,
+              icon: Icons.info_rounded,
               title: "About Developer",
               onTap: () {},
             ),
