@@ -9,7 +9,7 @@ class SimpleHeader extends StatelessWidget {
   const SimpleHeader({
     super.key,
     this.title,
-    this.fontSize = 22,
+    this.fontSize = 20,
     this.height = 56,
     this.right,
   });
@@ -26,7 +26,7 @@ class SimpleHeader extends StatelessWidget {
                     title!,
                     style: TextStyle(
                       fontSize: fontSize,
-                      fontWeight: FontWeight.w700,
+                      fontWeight: FontWeight.w800,
                     ),
                   )
                 : Container(),
