@@ -27,7 +27,6 @@ class CreateWalletScreen extends HookConsumerWidget {
         ),
         SeedGrid(seedPhrase: seedPhrase),
         CopyToClipboardButton(seedPhrase: seedPhrase),
-        verticalFiller,
         CheckboxListTile(
           enableFeedback: true,
           contentPadding: const EdgeInsets.all(0),

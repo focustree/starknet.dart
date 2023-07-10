@@ -58,9 +58,14 @@ const backgrounColor = Colors.white;
 
 // Spacing
 const sideMargin = 16.0;
-const padding = EdgeInsets.symmetric(horizontal: sideMargin);
+const hpad = EdgeInsets.symmetric(horizontal: sideMargin);
 const primaryButtonHeight = 56.0;
 const headerHeight = 56.0;
+
+Widget pad(Widget child, {double h = sideMargin, double v = 0}) {
+  return Padding(
+      padding: EdgeInsets.symmetric(horizontal: h, vertical: v), child: child);
+}
 
 // Text
 const baseTextStyle = TextStyle(fontFamily: 'SF Pro Rounded');

@@ -3,7 +3,7 @@ import 'package:wallet_kit/wallet_kit.dart';
 
 showBottomModal<T>({
   required BuildContext context,
-  required Widget child,
+  required WidgetBuilder builder,
   Color backgroundColor = Colors.transparent,
   double elevation = 0.0,
   ShapeBorder? shape,
@@ -20,21 +20,7 @@ showBottomModal<T>({
 }) {
   return showModalBottomSheet<T>(
     context: context,
-    builder: (context) {
-      return CustomPaint(
-        painter: ModalPainter(),
-        child: Padding(
-          padding: EdgeInsets.only(
-            bottom: MediaQuery.of(context)
-                .viewInsets
-                .bottom, // Content gets pushed up by keyboard
-          ),
-          child: SingleChildScrollView(
-            child: child,
-          ),
-        ),
-      );
-    },
+    builder: builder,
     backgroundColor: backgroundColor,
     elevation: elevation,
     shape: shape,
@@ -50,6 +36,93 @@ showBottomModal<T>({
   );
 }
 
+class ModalLayout extends StatelessWidget {
+  final Duration duration;
+  final Widget child;
+
+  ModalLayout({
+    required this.child,
+    this.duration = const Duration(milliseconds: 150),
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final keyboardHeight = MediaQuery.of(context).viewInsets.bottom;
+
+    return CustomPaint(
+      painter: ModalPainter(),
+      child: Padding(
+        padding: EdgeInsets.only(
+          bottom: keyboardHeight > 0
+              ? keyboardHeight
+              : 14, // to account for system nav bar
+        ),
+        child: AnimatedSize(
+            duration: duration,
+            child: AnimatedSwitcher(
+                duration: duration,
+                child: Stack(children: [
+                  Padding(
+                    padding: const EdgeInsets.only(top: 12),
+                    child: child,
+                  ),
+                  const Positioned(
+                    top: 6,
+                    left: 0,
+                    right: 0,
+                    child: Center(child: ModalHandle()),
+                  ),
+                ]))),
+      ),
+    );
+  }
+}
+// class ModalLayout extends StatefulWidget {
+//   final Duration duration;
+//   final Widget child;
+
+//   ModalLayout({
+//     required this.child,
+//     this.duration = const Duration(milliseconds: 1000),
+//   });
+
+//   @override
+//   _ModalLayoutState createState() => _ModalLayoutState();
+// }
+
+// class _ModalLayoutState extends State<ModalLayout>
+//     with TickerProviderStateMixin {
+//   @override
+//   Widget build(BuildContext context) {
+//     final keyboardHeight = MediaQuery.of(context).viewInsets.bottom;
+
+//     return CustomPaint(
+//       painter: ModalPainter(),
+//       child: Padding(
+//         padding: EdgeInsets.only(
+//           bottom: keyboardHeight > 0
+//               ? keyboardHeight
+//               : 14, // to account for system nav bar
+//         ),
+//         child: AnimatedSize(
+//           duration: widget.duration,
+//           child: AnimatedSwitcher(
+//             duration: widget.duration,
+//             // transitionBuilder: (Widget child, Animation<double> animation) {
+//             //   var tween = Tween<Offset>(begin: Offset(1, 0), end: Offset(0, 0));
+//             //   var anim = child.key == ValueKey(child)
+//             //       ? tween.animate(animation)
+//             //       : tween.animate(ReverseAnimation(animation));
+//             //   return SlideTransition(child: child, position: anim);
+//             // },
+//             child: widget.child,
+//           ),
+//         ),
+//       ),
+//     );
+//   }
+// }
+
 class ModalHeader extends StatelessWidget {
   final String? title;
   final Widget? rightButton;
@@ -64,7 +137,7 @@ class ModalHeader extends StatelessWidget {
     this.withBackButton = false,
     this.rightButton,
     this.iconSize = 16,
-    this.fontSize = 18,
+    this.fontSize = 22,
     this.sideMargin = 24,
   });
 
@@ -117,39 +190,6 @@ class ModalHeader extends StatelessWidget {
           ),
         ],
       ),
-    );
-  }
-}
-
-class ModalLayout extends StatelessWidget {
-  final Widget child;
-  final String title;
-
-  const ModalLayout({
-    Key? key,
-    required this.child,
-    this.title = 'Your Wallets',
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      children: [
-        ModalHeader(
-          title: title,
-          withBackButton: true,
-          rightButton: CustomIconButton(
-            icon: Icons.settings_rounded,
-            iconSize: 16,
-            touchableArea: 16 + 2 * 20,
-            scaleFactor: 1.2,
-            onPressed: () {
-              Navigator.of(context).pushNamed('/settings');
-            },
-          ),
-        ),
-        child,
-      ],
     );
   }
 }

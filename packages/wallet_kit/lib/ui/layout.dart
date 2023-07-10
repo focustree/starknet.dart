@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 
-import 'spaced_column.dart';
-
 class Layout extends StatelessWidget {
   final AppBar? appBar;
   final Widget? topBar;
@@ -53,6 +51,102 @@ class Layout extends StatelessWidget {
               children: children,
             ),
           ],
+        ),
+      ),
+    );
+  }
+}
+
+class Layout2 extends StatelessWidget {
+  final List<Widget> children;
+  final MainAxisAlignment mainAxisAlignment;
+  final MainAxisSize mainAxisSize;
+  final CrossAxisAlignment crossAxisAlignment;
+  final VerticalDirection verticalDirection;
+  final TextDirection? textDirection;
+  final TextBaseline? textBaseline;
+
+  const Layout2({
+    Key? key,
+    required this.children,
+    this.mainAxisAlignment = MainAxisAlignment.start,
+    this.mainAxisSize = MainAxisSize.max,
+    this.crossAxisAlignment = CrossAxisAlignment.center,
+    this.verticalDirection = VerticalDirection.down,
+    this.textDirection,
+    this.textBaseline,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Material(
+      child: SafeArea(
+        child: Column(
+          mainAxisAlignment: mainAxisAlignment,
+          mainAxisSize: mainAxisSize,
+          crossAxisAlignment: crossAxisAlignment,
+          verticalDirection: verticalDirection,
+          textDirection: textDirection,
+          textBaseline: textBaseline,
+          children: children,
+        ),
+      ),
+    );
+  }
+}
+
+class SpacedColumn extends StatelessWidget {
+  final double verticalSpacing;
+  final double sideMargin;
+  final double top;
+  final double bottom;
+  final double maxWidth;
+  final MainAxisAlignment mainAxisAlignment;
+  final MainAxisSize mainAxisSize;
+  final CrossAxisAlignment crossAxisAlignment;
+  final TextDirection? textDirection;
+  final VerticalDirection verticalDirection;
+  final TextBaseline? textBaseline;
+  final List<Widget> children;
+
+  const SpacedColumn({
+    Key? key,
+    this.top = 0,
+    this.bottom = 0,
+    this.verticalSpacing = 0,
+    this.sideMargin = 0,
+    this.maxWidth = double.infinity,
+    this.mainAxisAlignment = MainAxisAlignment.center,
+    this.mainAxisSize = MainAxisSize.min,
+    this.crossAxisAlignment = CrossAxisAlignment.center,
+    this.textDirection,
+    this.verticalDirection = VerticalDirection.down,
+    this.textBaseline,
+    required this.children,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: EdgeInsets.only(
+        top: top,
+        bottom: bottom,
+        left: sideMargin,
+        right: sideMargin,
+      ),
+      child: ConstrainedBox(
+        constraints: BoxConstraints(maxWidth: maxWidth),
+        child: Column(
+          mainAxisAlignment: mainAxisAlignment,
+          mainAxisSize: mainAxisSize,
+          crossAxisAlignment: crossAxisAlignment,
+          textDirection: textDirection,
+          verticalDirection: verticalDirection,
+          textBaseline: textBaseline,
+          children: children
+              .expand((widget) => [widget, SizedBox(height: verticalSpacing)])
+              .toList()
+            ..removeLast(),
         ),
       ),
     );

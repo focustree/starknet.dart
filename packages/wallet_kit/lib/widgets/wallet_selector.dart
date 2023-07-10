@@ -38,16 +38,7 @@ class WalletSelector extends HookConsumerWidget {
 
     return FilledButton.tonal(
       onPressed: () {
-        showBottomModal(
-          context: context,
-          isScrollControlled: true,
-          child: const ModalLayout(
-            child: Padding(
-              padding: EdgeInsets.symmetric(horizontal: 20),
-              child: WalletList(),
-            ),
-          ),
-        );
+        showWalletList(context);
       },
       child: Row(
         mainAxisSize: MainAxisSize.min,

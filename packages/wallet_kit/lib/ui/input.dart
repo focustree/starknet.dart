@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:wallet_kit/wallet_kit.dart';
 
 class TextInput extends StatelessWidget {
   final TextEditingController? controller;
@@ -36,23 +37,22 @@ class TextInput extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Color shadowColor = Colors.blueGrey.shade800.withAlpha(128);
-
     return Container(
       decoration: BoxDecoration(
         color: Colors.white,
+        borderRadius: BorderRadius.circular(8),
         boxShadow: [
           BoxShadow(
-            color: shadowColor,
-            offset: Offset(0, 4), // changes position of shadow
-            blurRadius: 6.0,
-          ),
+            color: charcoal.withOpacity(0.2),
+            offset: const Offset(0, 8),
+            blurRadius: 24,
+          )
         ],
       ),
       child: TextField(
         controller: controller,
         keyboardType: keyboardType,
-        style: style,
+        style: style ?? const TextStyle(height: 1),
         textAlign: textAlign,
         maxLines: maxLines,
         minLines: minLines,
@@ -63,6 +63,8 @@ class TextInput extends StatelessWidget {
         textInputAction: textInputAction,
         enabled: enabled,
         decoration: InputDecoration(
+          contentPadding:
+              const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
           hintText: hintText,
           border: InputBorder.none,
         ),

@@ -106,40 +106,45 @@ class ConfirmPasswordScren extends HookConsumerWidget {
 }
 
 class PasswordScreen extends HookConsumerWidget {
-  const PasswordScreen({Key? key}) : super(key: key);
+  final void Function(String password)? callback;
+  const PasswordScreen({Key? key, this.callback}) : super(key: key);
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final password = useState('');
     final isButtonEnabled = password.value.length >= 6;
+    final onPressed =
+        callback ?? (password) => Navigator.of(context).pop(password);
 
-    return SpacedColumn(
+    const double sidePadding = 24;
+    final keyboardIsOpen = MediaQuery.of(context).viewInsets.bottom > 0.0;
+
+    return Column(
       children: [
-        const Text('Create Password'),
-        const Text(
-          "Create a secure numeric password. Use a unique combination of digits to protect your assets.",
-        ),
-        TextInput(
-          onChanged: (value) => password.value = value,
-          autofocus: true,
-          obscureText: true,
+        const ModalHeader(title: "Enter your password"),
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: sidePadding),
+          child: TextInput(
+            hintText: 'Your password',
+            onChanged: (value) => password.value = value,
+            autofocus: true,
+            obscureText: true,
+          ),
         ),
         const Spacer(),
-        PrimaryButton(
-          onPressed: isButtonEnabled
-              ? () async {
-                  await createInitialPassword(password.value);
-                  Navigator.of(context).push(
-                    MaterialPageRoute(
-                      builder: (context) => ConfirmPasswordScren(
-                        initialPassword: password.value,
-                      ),
-                    ),
-                  );
-                }
-              : null,
-          label: "Continue",
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: sidePadding),
+          child: PrimaryButton(
+            onPressed: isButtonEnabled
+                ? () async {
+                    onPressed(password.value);
+                  }
+                : null,
+            label: "Continue",
+          ),
         ),
+        const SizedBox(height: sidePadding),
+        SizedBox(height: keyboardIsOpen ? 0 : 14),
       ],
     );
   }

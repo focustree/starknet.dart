@@ -2,89 +2,99 @@ import 'dart:core';
 
 import 'package:expandable/expandable.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import 'package:wallet_kit/wallet_kit.dart';
+import 'package:wallet_kit/wallet_screens/settings_screen.dart';
 
-enum WalletListState {
+enum WalletListRoute {
   walletList,
   addWallet,
+  settings,
 }
 
-class WalletList extends HookConsumerWidget {
-  const WalletList({Key? key}) : super(key: key);
+showWalletList(BuildContext context) {
+  showBottomModal(
+    context: context,
+    builder: (context) {
+      return const WalletListScreen();
+    },
+  );
+}
+
+class WalletListScreen extends HookConsumerWidget {
+  const WalletListScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final wallets = ref.watch(walletsProvider.select((value) => value.wallets));
+    final route = useState(WalletListRoute.walletList);
 
-    if (wallets.isEmpty) {
-      return const _WalletListLayout(
-        child: Column(
-          children: [
-            Text('You have no wallet yet',
-                style: TextStyle(fontStyle: FontStyle.italic)),
-            SizedBox(height: 24),
-            AddWalletButtons()
-          ],
-        ),
-      );
-    }
+    final child = switch (route.value) {
+      WalletListRoute.walletList => WalletList(route: route),
+      WalletListRoute.addWallet => AddWalletScreen(),
+      WalletListRoute.settings => const SettingsScreen(),
+    };
 
-    return _WalletList(
-      wallets: wallets.values.toList(),
-      onAddWallet: () {
-        Navigator.of(context).pop();
-        showBottomModal(
-            context: context,
-            child: const Center(
-                child: Padding(
-              padding: EdgeInsets.symmetric(vertical: 32, horizontal: 32),
-              child: AddWalletButtons(),
-            )));
-      },
-      onAddAccount: () {},
+    return ModalLayout(
+      child: child,
     );
   }
 }
 
-class _WalletList extends StatelessWidget {
-  final List<Wallet> wallets;
+class WalletList extends HookConsumerWidget {
+  final ValueNotifier<WalletListRoute> route;
 
-  final VoidCallback onAddWallet;
-  final VoidCallback onAddAccount;
-
-  const _WalletList({
+  const WalletList({
     Key? key,
-    required this.wallets,
-    required this.onAddWallet,
-    required this.onAddAccount,
+    required ValueNotifier<WalletListRoute> this.route,
   }) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
-    return Column(
+  Widget build(BuildContext context, WidgetRef ref) {
+    final wallets = ref.watch(
+        walletsProvider.select((value) => value.wallets.values.toList()));
+    return SpacedColumn(
+      verticalSpacing: 8,
       mainAxisSize: MainAxisSize.min,
       children: [
-        Flexible(
-          child: ListView.separated(
-            shrinkWrap: true,
-            physics: const BouncingScrollPhysics(),
-            itemBuilder: (context, index) {
-              final wallet = wallets[index];
-              return WalletCell(
-                wallet: wallet,
-              );
-            },
-            separatorBuilder: (context, index) {
-              return const SizedBox(height: 10);
-            },
-            itemCount: wallets.length,
+        SimpleHeader(
+          title: 'Select a wallet',
+          right: Positioned(
+            top: 4,
+            right: 14,
+            child: IconButton(
+              icon: Icon(Icons.settings_rounded),
+              onPressed: () {
+                route.value = WalletListRoute.settings;
+              },
+            ),
           ),
         ),
-        const SizedBox(height: 16),
+        Flexible(
+          fit: FlexFit.loose,
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16),
+            child: ListView.separated(
+              shrinkWrap: true,
+              physics: const BouncingScrollPhysics(),
+              itemBuilder: (context, index) {
+                final wallet = wallets[index];
+                return WalletCell(
+                  wallet: wallet,
+                );
+              },
+              separatorBuilder: (context, index) {
+                return const SizedBox(height: 8);
+              },
+              itemCount: wallets.length,
+            ),
+          ),
+        ),
         TextButton.icon(
-          onPressed: onAddWallet,
+          onPressed: () {
+            route.value = WalletListRoute.addWallet;
+          },
           label: const Text(
             'Add another wallet',
           ),
@@ -156,7 +166,7 @@ class WalletCell extends HookConsumerWidget {
                       isScrollControlled: true,
                       useSafeArea: true,
                       context: context,
-                      child: const PasswordScreen(),
+                      builder: (context) => const PasswordScreen(),
                     );
                     if (password == null) return;
                     ref
@@ -226,40 +236,6 @@ class AccountCell extends HookConsumerWidget {
             ],
           ),
           Text('${(account.balances['ETH'] ?? 0).toString()} ETH'),
-        ],
-      ),
-    );
-  }
-}
-
-class _WalletListLayout extends StatelessWidget {
-  final Widget child;
-  final String title;
-
-  const _WalletListLayout({
-    Key? key,
-    required this.child,
-    this.title = 'Your Wallets',
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 16),
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          ModalHeader(
-            title: title,
-            rightButton: IconButton(
-              icon: const Icon(Icons.settings_rounded),
-              onPressed: () {
-                Navigator.of(context).pushNamed('/settings');
-              },
-            ),
-          ),
-          const SizedBox(height: 4),
-          child,
         ],
       ),
     );

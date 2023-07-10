@@ -2,17 +2,20 @@ import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:wallet_kit/wallet_kit.dart';
 
-class AddWalletButtons extends StatelessWidget {
-  const AddWalletButtons({Key? key}) : super(key: key);
+class AddWalletScreen extends StatelessWidget {
+  const AddWalletScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return const Column(
-      mainAxisSize: MainAxisSize.min,
+    return SpacedColumn(
+      verticalSpacing: 16,
+      bottom: 16,
       children: [
-        CreateNewWalletButton(),
-        SizedBox(height: 16),
-        RecoverWalletButton(),
+        const SimpleHeader(
+          title: 'Add Wallet',
+        ),
+        pad(const CreateNewWalletButton()),
+        pad(const RecoverWalletButton()),
       ],
     );
   }

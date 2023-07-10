@@ -2,119 +2,38 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:wallet_kit/ui/index.dart';
 
-class PrimaryButton extends HookWidget {
-  final String label;
-  final void Function()? onPressed;
-  final ButtonStyle? style;
-  final bool isLoading;
-
-  const PrimaryButton({
+class PrimaryButton extends CustomButton {
+  PrimaryButton({
     Key? key,
-    required this.label,
-    this.onPressed,
-    this.style,
-    this.isLoading = false,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      width: double.infinity,
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(32),
-        boxShadow: [
-          BoxShadow(
-            color: charcoal.withOpacity(0.5),
-            offset: const Offset(0, 8),
-            blurRadius: 24,
-          )
-        ],
-      ),
-      child: FilledButton(
-        style: style ??
-            ButtonStyle(
-              minimumSize: MaterialStateProperty.all<Size>(
-                  const Size(0, primaryButtonHeight)),
-              backgroundColor: MaterialStateProperty.all<Color>(
-                charcoal,
-              ),
-            ),
-        onPressed: onPressed,
-        child: isLoading
-            ? const SizedBox(
-                width: 16,
-                height: 16,
-                child: CircularProgressIndicator(
-                  strokeWidth: 2,
-                  valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
-                ),
-              )
-            : Text(
-                label,
-                style: primaryButtonTextStyle,
-              ),
-      ),
-    );
-  }
+    required String label,
+    void Function()? onPressed,
+    bool isLoading = false,
+  }) : super(
+          key: key,
+          label: label,
+          backgroundColor: charcoal,
+          textColor: Colors.white,
+          onPressed: onPressed,
+          isLoading: isLoading,
+          shadowOpacity: 0.5,
+        );
 }
 
-class SecondaryButton extends HookWidget {
-  final String label;
-  final void Function()? onPressed;
-  final ButtonStyle? style;
-  final bool isLoading;
-
-  const SecondaryButton({
+class SecondaryButton extends CustomButton {
+  SecondaryButton({
     Key? key,
-    required this.label,
-    this.onPressed,
-    this.style,
-    this.isLoading = false,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      width: double.infinity,
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(32),
-        boxShadow: [
-          BoxShadow(
-            color: charcoal.withOpacity(0.2),
-            offset: const Offset(0, 8),
-            blurRadius: 24,
-          )
-        ],
-      ),
-      child: FilledButton(
-        style: style ??
-            ButtonStyle(
-              minimumSize: MaterialStateProperty.all<Size>(
-                  const Size(0, primaryButtonHeight)),
-              backgroundColor: MaterialStateProperty.all<Color>(
-                backgrounColor,
-              ),
-            ),
-        onPressed: onPressed,
-        child: isLoading
-            ? const SizedBox(
-                width: 16,
-                height: 16,
-                child: CircularProgressIndicator(
-                  strokeWidth: 2,
-                  valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
-                ),
-              )
-            : Text(
-                label,
-                style: primaryButtonTextStyle.copyWith(
-                  color: graphite,
-                  letterSpacing: 0.4,
-                ),
-              ),
-      ),
-    );
-  }
+    required String label,
+    void Function()? onPressed,
+    bool isLoading = false,
+  }) : super(
+          key: key,
+          label: label,
+          backgroundColor: Colors.white,
+          textColor: graphite,
+          onPressed: onPressed,
+          isLoading: isLoading,
+          shadowOpacity: 0.2,
+        );
 }
 
 class CustomIconButton extends StatelessWidget {
@@ -142,6 +61,84 @@ class CustomIconButton extends StatelessWidget {
         width: touchableArea,
         alignment: Alignment.center,
         child: CustomIcon(icon, size: iconSize, scaleFactor: scaleFactor),
+      ),
+    );
+  }
+}
+
+class CustomButton extends HookWidget {
+  final String label;
+  final void Function()? onPressed;
+  final ButtonStyle? style;
+  final bool isLoading;
+  final Color backgroundColor;
+  final Color textColor;
+  final double shadowOpacity;
+
+  const CustomButton({
+    Key? key,
+    required this.label,
+    required this.backgroundColor,
+    required this.textColor,
+    this.onPressed,
+    this.style,
+    this.isLoading = false,
+    this.shadowOpacity = 0.5,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: double.infinity,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(32),
+        boxShadow: onPressed != null
+            ? [
+                BoxShadow(
+                  color: charcoal.withOpacity(shadowOpacity),
+                  offset: const Offset(0, 8),
+                  blurRadius: 24,
+                )
+              ]
+            : null,
+      ),
+      child: TextButton(
+        style: style ??
+            ButtonStyle(
+              minimumSize: MaterialStateProperty.all<Size>(
+                  const Size(0, primaryButtonHeight)),
+              backgroundColor: MaterialStateProperty.resolveWith<Color>(
+                (Set<MaterialState> states) {
+                  if (states.contains(MaterialState.disabled)) {
+                    return Colors.grey[100]!;
+                  }
+                  return backgroundColor;
+                },
+              ),
+              foregroundColor:
+                  MaterialStateProperty.resolveWith<Color>((states) {
+                if (states.contains(MaterialState.disabled)) {
+                  return Colors.grey[400]!;
+                }
+                return textColor;
+              }),
+            ),
+        onPressed: onPressed,
+        child: isLoading
+            ? const SizedBox(
+                width: 16,
+                height: 16,
+                child: CircularProgressIndicator(
+                  strokeWidth: 2,
+                  valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
+                ),
+              )
+            : Text(
+                label,
+                style: primaryButtonTextStyle.copyWith(
+                  letterSpacing: 0.4,
+                ),
+              ),
       ),
     );
   }
