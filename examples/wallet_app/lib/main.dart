@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:wallet_kit/router.dart';
 import 'package:wallet_kit/wallet_kit.dart';
 import 'package:wallet_app/screens/home_screen.dart';
+import 'package:go_router/go_router.dart';
 
 void main() async {
   await WalletKit.init();
@@ -30,9 +32,17 @@ class MyApp extends HookConsumerWidget {
       systemNavigationBarDividerColor: Colors.transparent,
       systemNavigationBarIconBrightness: Brightness.dark,
     ));
-    return MaterialApp(
+    return MaterialApp.router(
+      routerConfig: GoRouter(
+        routes: [
+          GoRoute(
+            path: '/',
+            builder: (context, state) => const HomeScreen(),
+          ),
+          ...walletRoutes,
+        ],
+      ),
       title: 'Starknet Wallet',
-      home: const Material(child: HomeScreen()),
       theme: walletThemeData,
     );
   }
