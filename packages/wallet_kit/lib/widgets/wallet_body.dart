@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:wallet_kit/wallet_kit.dart';
-import 'package:wallet_kit/wallet_screens/add_wallet_screen.dart';
 
 class WalletBody extends HookConsumerWidget {
   const WalletBody({super.key});
@@ -12,11 +11,6 @@ class WalletBody extends HookConsumerWidget {
     final tabController = useTabController(initialLength: 2);
     final selectedAccount =
         ref.watch(walletsProvider.select((value) => value.selectedAccount));
-    final hasNoWallet =
-        ref.watch(walletsProvider.select((value) => value.wallets.isEmpty));
-    if (hasNoWallet) {
-      return const Center(child: AddWalletScreen());
-    }
     if (selectedAccount == null) {
       return const Center(
         child: Text('No account selected.'),

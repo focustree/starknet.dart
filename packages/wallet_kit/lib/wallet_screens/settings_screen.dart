@@ -23,7 +23,9 @@ class SettingsScreen extends HookConsumerWidget {
             _SettingsTile(
               icon: Icons.delete_rounded,
               title: "Delete Wallets",
-              onTap: () {},
+              onTap: () {
+                ref.read(walletsProvider.notifier).deleteWallets();
+              },
             ),
           ],
         ),

@@ -1,8 +1,8 @@
 import 'package:flutter/foundation.dart' as f;
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:starknet/starknet.dart' as s;
-import 'package:starknet_flutter/starknet_flutter.dart' as sf;
-import 'package:wallet_kit/utils/debug_print.dart';
+import 'package:secure_store/secure_store.dart' as sf;
+import 'package:wallet_kit/services/wallet_service.dart';
 import 'package:wallet_kit/utils/persisted_notifier_state.dart';
 import 'package:wallet_kit/wallet_state/wallet_state.dart';
 import 'package:bip39/bip39.dart' as bip39;
@@ -49,10 +49,16 @@ class Wallets extends _$Wallets with PersistedState<WalletsState> {
   }
 
   refreshEthBalance(String walletId, int accountId) async {
-    final ethBalance = await publicAccount(
-      walletId: walletId,
-      accountId: accountId,
-    ).balance;
+    final accountAddress =
+        state.wallets[walletId]?.accounts[accountId]?.address;
+    if (accountAddress == null) {
+      throw Exception('Account address is null');
+    }
+    final provider = s.JsonRpcProvider.infuraGoerliTestnet;
+    final ethBalance = await getEthBalance(
+      provider: provider,
+      accountAddress: s.Felt.fromHexString(accountAddress),
+    );
     final wallet = state.wallets[walletId];
     if (wallet == null) {
       throw Exception("Wallet not found");
@@ -77,27 +83,6 @@ class Wallets extends _$Wallets with PersistedState<WalletsState> {
     });
   }
 
-  sf.PublicAccount publicAccount(
-      {required String walletId, required int accountId}) {
-    final account = state.wallets[walletId]?.accounts[accountId];
-    if (account == null) {
-      throw Exception("Account not found");
-    }
-    final chainId = sf.StarknetFlutter.chainId;
-    final provider = s.JsonRpcProvider.infuraGoerliTestnet;
-    return sf.PublicAccount.from(
-      account: s.Account(
-        chainId: chainId,
-        provider: provider,
-        accountAddress: s.Felt.fromHexString(account.address),
-        signer: s.Signer(
-          privateKey: s.Felt.fromHexString('0x0'),
-        ),
-      ),
-      walletId: walletId.toString(),
-    );
-  }
-
   protectWalletWithPassword({
     required String password,
     int? derivationIndex,
@@ -110,16 +95,8 @@ class Wallets extends _$Wallets with PersistedState<WalletsState> {
 
     derivationIndex = derivationIndex ?? tempWallet.accounts.length;
 
-    final accountType = switch (tempWallet.type) {
-      WalletType.openZeppelin => sf.StarknetAccountType.openZeppelin,
-      WalletType.argent => sf.StarknetAccountType.argentX,
-      WalletType.braavos => sf.StarknetAccountType.braavos
-    };
-
-    final chainId = sf.StarknetFlutter.chainId;
-    final provider = s.JsonRpcProvider(
-      nodeUri: sf.StarknetFlutter.nodeUri,
-    );
+    final chainId = s.StarknetChainId.testNet;
+    final provider = s.JsonRpcProvider.infuraGoerliTestnet;
     final accountDerivation = switch (tempWallet.type) {
       WalletType.openZeppelin => s.OpenzeppelinAccountDerivation(
           proxyClassHash: s.ozProxyClassHash,
@@ -134,13 +111,6 @@ class Wallets extends _$Wallets with PersistedState<WalletsState> {
       throw Exception("Seed phrase is null");
     }
 
-    final wallet = sf.Wallet(
-      walletId: tempWallet.id,
-      name: tempWallet.name,
-      order: derivationIndex,
-      accountType: accountType,
-    );
-
     final privateKey = await derivePrivateKeyInIsolate(
         seedPhrase: seedPhrase, derivationIndex: derivationIndex);
 
@@ -149,30 +119,16 @@ class Wallets extends _$Wallets with PersistedState<WalletsState> {
     final accountAddress =
         accountDerivation.computeAddress(publicKey: signer.publicKey);
 
-    final starknetAccount = s.Account(
-        accountAddress: accountAddress,
-        chainId: chainId,
-        provider: provider,
-        signer: signer);
-    debugPrint('starknetAccount: $starknetAccount');
-
-    final passwordStore = sf.PasswordStore();
-    debugPrint('password: $password');
-
-    await sf.ProtectWalletService.protectWithPassword(
-      accountType: accountType,
-      passwordStore: passwordStore,
-      account: starknetAccount,
-      wallet: wallet,
+    await storeAccountSecrets(
+      walletId: tempWallet.id,
+      accountId: "$derivationIndex",
       seedPhrase: seedPhrase,
-      passwordPrompt: () async {
-        return password;
-      },
+      password: password,
+      privateKey: privateKey.toBigInt(),
     );
-    debugPrint('wallet protected');
 
     state = state
-        .addAccount(wallet: tempWallet, account: starknetAccount)
+        .addAccount(wallet: tempWallet, accountAddress: accountAddress)
         .copyWith(tempWallet: null); // Clean seed phrase
   }
 
@@ -211,6 +167,10 @@ class Wallets extends _$Wallets with PersistedState<WalletsState> {
       password: password,
     );
   }
+
+  deleteWallets() {
+    state = state.copyWith(wallets: {}, selected: null, tempWallet: null);
+  }
 }
 
 Future<void> createInitialPassword(String password) async {
@@ -248,7 +208,7 @@ extension WalletService on WalletsState {
 
   WalletsState addAccount({
     required Wallet wallet,
-    required s.Account account,
+    required s.Felt accountAddress,
     WalletType walletType = WalletType.openZeppelin,
   }) {
     final int accountId = wallet.accounts.length;
@@ -256,7 +216,7 @@ extension WalletService on WalletsState {
       id: accountId,
       walletId: wallet.id,
       name: 'Account ${accountId + 1}',
-      address: account.accountAddress.toHexString(),
+      address: accountAddress.toHexString(),
     );
 
     return copyWith(
@@ -297,5 +257,32 @@ s.Felt derivePrivateKeyIsolate(Map<String, dynamic> computationInput) {
   return s.derivePrivateKey(
     mnemonic: seedPhrase,
     index: derivationIndex,
+  );
+}
+
+Future<double> getEthBalance(
+    {required s.Provider provider, required s.Felt accountAddress}) async {
+  final ethContractAddress = s.Felt.fromHexString(
+      '0x049d36570d4e46f48e99674bd3fcc84644ddd6b96f7c741b1562b82f9e004dc7');
+  const ethDecimals = 18;
+
+  final response = await provider.call(
+    request: s.FunctionCall(
+      contractAddress: ethContractAddress,
+      entryPointSelector: s.getSelectorByName('balanceOf'),
+      calldata: [accountAddress],
+    ),
+    blockId: const s.BlockId.blockTag("latest"),
+  );
+
+  return response.when<double>(
+    error: (error) {
+      throw Exception(error);
+    },
+    result: (result) {
+      final ethBalance = s.Uint256.fromFeltList(result).toBigInt() /
+          BigInt.from(10).pow(ethDecimals);
+      return ethBalance;
+    },
   );
 }

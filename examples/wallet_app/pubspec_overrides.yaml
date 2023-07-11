@@ -1,5 +1,5 @@
 dependency_overrides:
-  starknet_flutter:
-    path: ../../packages/starknet_flutter
+  secure_store:
+    path: ../../packages/secure_store
   wallet_kit:
     path: ../../packages/wallet_kit

@@ -2,7 +2,7 @@ import 'dart:convert';
 import 'dart:typed_data';
 
 import 'package:flutter_test/flutter_test.dart';
-import 'package:secure_store/src/crypto/crypto_helper.dart';
+import 'package:secure_store/secure_store.dart';
 
 main() {
   final cryptoHelper = CryptoHelper();

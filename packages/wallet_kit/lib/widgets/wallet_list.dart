@@ -29,10 +29,21 @@ class WalletListScreen extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final route = useState(WalletListRoute.walletList);
+    final hasNoWallets =
+        ref.watch(walletsProvider.select((value) => value.wallets.isEmpty));
+
+    useEffect(() {
+      if (hasNoWallets) {
+        route.value = WalletListRoute.addWallet;
+      } else {
+        route.value = WalletListRoute.walletList;
+      }
+      return;
+    }, [hasNoWallets]);
 
     final child = switch (route.value) {
       WalletListRoute.walletList => WalletList(route: route),
-      WalletListRoute.addWallet => AddWalletScreen(),
+      WalletListRoute.addWallet => const AddWalletScreen(),
       WalletListRoute.settings => const SettingsScreen(),
     };
 

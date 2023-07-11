@@ -23,7 +23,7 @@ class WalletTypeIcon extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SvgPicture.asset(
-      "packages/starknet_flutter/assets/images/wallets/${type.name}.svg",
+      "packages/secure_store/assets/images/wallets/${type.name}.svg",
       width: width,
       fit: fit,
       color: color,
