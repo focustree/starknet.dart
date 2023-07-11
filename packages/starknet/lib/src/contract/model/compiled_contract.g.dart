@@ -31,6 +31,25 @@ Map<String, dynamic> _$$_SierraCompiledContractToJson(
       'abi': instance.abi.map((e) => e.toJson()).toList(),
     };
 
+_$_CASMCompiledContract _$$_CASMCompiledContractFromJson(
+        Map<String, dynamic> json) =>
+    _$_CASMCompiledContract(
+      bytecode: (json['bytecode'] as List<dynamic>)
+          .map((e) => BigInt.parse(e as String))
+          .toList(),
+      entryPointsByType: CASMEntryPointsByType.fromJson(
+          json['entry_points_by_type'] as Map<String, dynamic>),
+      compilerVersion: json['compiler_version'] as String,
+    );
+
+Map<String, dynamic> _$$_CASMCompiledContractToJson(
+        _$_CASMCompiledContract instance) =>
+    <String, dynamic>{
+      'bytecode': instance.bytecode.map((e) => e.toString()).toList(),
+      'entry_points_by_type': instance.entryPointsByType.toJson(),
+      'compiler_version': instance.compilerVersion,
+    };
+
 _$_DeprecatedCompiledContract _$$_DeprecatedCompiledContractFromJson(
         Map<String, dynamic> json) =>
     _$_DeprecatedCompiledContract(

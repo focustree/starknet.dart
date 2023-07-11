@@ -28,6 +28,30 @@ class SierraEntryPoint with _$SierraEntryPoint {
 }
 
 @freezed
+class CASMEntryPointsByType with _$CASMEntryPointsByType {
+  const factory CASMEntryPointsByType({
+    @JsonKey(name: 'CONSTRUCTOR') required List<CASMEntryPoint> constructor,
+    @JsonKey(name: 'EXTERNAL') required List<CASMEntryPoint> external,
+    @JsonKey(name: 'L1_HANDLER') required List<CASMEntryPoint> l1Handler,
+  }) = _CASMEntryPointsByType;
+
+  factory CASMEntryPointsByType.fromJson(Map<String, Object?> json) =>
+      _$CASMEntryPointsByTypeFromJson(json);
+}
+
+@freezed
+class CASMEntryPoint with _$CASMEntryPoint {
+  const factory CASMEntryPoint({
+    required Felt selector,
+    required int offset,
+    required List<String> builtins,
+  }) = _CASMEntryPoint;
+
+  factory CASMEntryPoint.fromJson(Map<String, Object?> json) =>
+      _$CASMEntryPointFromJson(json);
+}
+
+@freezed
 class DeprecatedCairoEntryPointsByType with _$DeprecatedCairoEntryPointsByType {
   const factory DeprecatedCairoEntryPointsByType({
     @JsonKey(name: 'CONSTRUCTOR')

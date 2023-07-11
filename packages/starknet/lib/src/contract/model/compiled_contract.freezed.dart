@@ -255,6 +255,218 @@ abstract class _SierraCompiledContract extends SierraCompiledContract {
       throw _privateConstructorUsedError;
 }
 
+CASMCompiledContract _$CASMCompiledContractFromJson(Map<String, dynamic> json) {
+  return _CASMCompiledContract.fromJson(json);
+}
+
+/// @nodoc
+mixin _$CASMCompiledContract {
+  List<BigInt> get bytecode => throw _privateConstructorUsedError;
+  CASMEntryPointsByType get entryPointsByType =>
+      throw _privateConstructorUsedError;
+  String get compilerVersion => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $CASMCompiledContractCopyWith<CASMCompiledContract> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $CASMCompiledContractCopyWith<$Res> {
+  factory $CASMCompiledContractCopyWith(CASMCompiledContract value,
+          $Res Function(CASMCompiledContract) then) =
+      _$CASMCompiledContractCopyWithImpl<$Res, CASMCompiledContract>;
+  @useResult
+  $Res call(
+      {List<BigInt> bytecode,
+      CASMEntryPointsByType entryPointsByType,
+      String compilerVersion});
+
+  $CASMEntryPointsByTypeCopyWith<$Res> get entryPointsByType;
+}
+
+/// @nodoc
+class _$CASMCompiledContractCopyWithImpl<$Res,
+        $Val extends CASMCompiledContract>
+    implements $CASMCompiledContractCopyWith<$Res> {
+  _$CASMCompiledContractCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? bytecode = null,
+    Object? entryPointsByType = null,
+    Object? compilerVersion = null,
+  }) {
+    return _then(_value.copyWith(
+      bytecode: null == bytecode
+          ? _value.bytecode
+          : bytecode // ignore: cast_nullable_to_non_nullable
+              as List<BigInt>,
+      entryPointsByType: null == entryPointsByType
+          ? _value.entryPointsByType
+          : entryPointsByType // ignore: cast_nullable_to_non_nullable
+              as CASMEntryPointsByType,
+      compilerVersion: null == compilerVersion
+          ? _value.compilerVersion
+          : compilerVersion // ignore: cast_nullable_to_non_nullable
+              as String,
+    ) as $Val);
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $CASMEntryPointsByTypeCopyWith<$Res> get entryPointsByType {
+    return $CASMEntryPointsByTypeCopyWith<$Res>(_value.entryPointsByType,
+        (value) {
+      return _then(_value.copyWith(entryPointsByType: value) as $Val);
+    });
+  }
+}
+
+/// @nodoc
+abstract class _$$_CASMCompiledContractCopyWith<$Res>
+    implements $CASMCompiledContractCopyWith<$Res> {
+  factory _$$_CASMCompiledContractCopyWith(_$_CASMCompiledContract value,
+          $Res Function(_$_CASMCompiledContract) then) =
+      __$$_CASMCompiledContractCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call(
+      {List<BigInt> bytecode,
+      CASMEntryPointsByType entryPointsByType,
+      String compilerVersion});
+
+  @override
+  $CASMEntryPointsByTypeCopyWith<$Res> get entryPointsByType;
+}
+
+/// @nodoc
+class __$$_CASMCompiledContractCopyWithImpl<$Res>
+    extends _$CASMCompiledContractCopyWithImpl<$Res, _$_CASMCompiledContract>
+    implements _$$_CASMCompiledContractCopyWith<$Res> {
+  __$$_CASMCompiledContractCopyWithImpl(_$_CASMCompiledContract _value,
+      $Res Function(_$_CASMCompiledContract) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? bytecode = null,
+    Object? entryPointsByType = null,
+    Object? compilerVersion = null,
+  }) {
+    return _then(_$_CASMCompiledContract(
+      bytecode: null == bytecode
+          ? _value._bytecode
+          : bytecode // ignore: cast_nullable_to_non_nullable
+              as List<BigInt>,
+      entryPointsByType: null == entryPointsByType
+          ? _value.entryPointsByType
+          : entryPointsByType // ignore: cast_nullable_to_non_nullable
+              as CASMEntryPointsByType,
+      compilerVersion: null == compilerVersion
+          ? _value.compilerVersion
+          : compilerVersion // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$_CASMCompiledContract extends _CASMCompiledContract {
+  _$_CASMCompiledContract(
+      {required final List<BigInt> bytecode,
+      required this.entryPointsByType,
+      required this.compilerVersion})
+      : _bytecode = bytecode,
+        super._();
+
+  factory _$_CASMCompiledContract.fromJson(Map<String, dynamic> json) =>
+      _$$_CASMCompiledContractFromJson(json);
+
+  final List<BigInt> _bytecode;
+  @override
+  List<BigInt> get bytecode {
+    if (_bytecode is EqualUnmodifiableListView) return _bytecode;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_bytecode);
+  }
+
+  @override
+  final CASMEntryPointsByType entryPointsByType;
+  @override
+  final String compilerVersion;
+
+  @override
+  String toString() {
+    return 'CASMCompiledContract(bytecode: $bytecode, entryPointsByType: $entryPointsByType, compilerVersion: $compilerVersion)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_CASMCompiledContract &&
+            const DeepCollectionEquality().equals(other._bytecode, _bytecode) &&
+            (identical(other.entryPointsByType, entryPointsByType) ||
+                other.entryPointsByType == entryPointsByType) &&
+            (identical(other.compilerVersion, compilerVersion) ||
+                other.compilerVersion == compilerVersion));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(_bytecode),
+      entryPointsByType,
+      compilerVersion);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_CASMCompiledContractCopyWith<_$_CASMCompiledContract> get copyWith =>
+      __$$_CASMCompiledContractCopyWithImpl<_$_CASMCompiledContract>(
+          this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_CASMCompiledContractToJson(
+      this,
+    );
+  }
+}
+
+abstract class _CASMCompiledContract extends CASMCompiledContract {
+  factory _CASMCompiledContract(
+      {required final List<BigInt> bytecode,
+      required final CASMEntryPointsByType entryPointsByType,
+      required final String compilerVersion}) = _$_CASMCompiledContract;
+  _CASMCompiledContract._() : super._();
+
+  factory _CASMCompiledContract.fromJson(Map<String, dynamic> json) =
+      _$_CASMCompiledContract.fromJson;
+
+  @override
+  List<BigInt> get bytecode;
+  @override
+  CASMEntryPointsByType get entryPointsByType;
+  @override
+  String get compilerVersion;
+  @override
+  @JsonKey(ignore: true)
+  _$$_CASMCompiledContractCopyWith<_$_CASMCompiledContract> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
 DeprecatedCompiledContract _$DeprecatedCompiledContractFromJson(
     Map<String, dynamic> json) {
   return _DeprecatedCompiledContract.fromJson(json);

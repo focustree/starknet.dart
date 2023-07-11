@@ -19,10 +19,27 @@ class SierraContractAbiEntry with _$SierraContractAbiEntry {
     required List<InputParameter> inputs,
   }) = SierraEventAbiEntry;
 
+  // enum is a reserved keyword
+  const factory SierraContractAbiEntry.enumeration({
+    required String type,
+    required String name,
+    required List<VariantParameter> variants,
+  }) = SierraEnumAbiEntry;
+
+  const factory SierraContractAbiEntry.struct({
+    required String type,
+    required String name,
+    required List<MemberParameter> members,
+  }) = SierraStructAbiEntry;
+
   factory SierraContractAbiEntry.fromJson(Map<String, Object?> json) =>
       json['type'] == 'event'
           ? SierraEventAbiEntry.fromJson(json)
-          : SierraFunctionAbiEntry.fromJson(json);
+          : json['type'] == 'struct'
+              ? SierraStructAbiEntry.fromJson(json)
+              : json['type'] == 'enum'
+                  ? SierraEnumAbiEntry.fromJson(json)
+                  : SierraFunctionAbiEntry.fromJson(json);
 }
 
 @freezed
@@ -44,6 +61,28 @@ class OutputParameter with _$OutputParameter {
 
   factory OutputParameter.fromJson(Map<String, Object?> json) =>
       _$OutputParameterFromJson(json);
+}
+
+@freezed
+class MemberParameter with _$MemberParameter {
+  const factory MemberParameter({
+    required String name,
+    required String type,
+  }) = _MemberParameter;
+
+  factory MemberParameter.fromJson(Map<String, Object?> json) =>
+      _$MemberParameterFromJson(json);
+}
+
+@freezed
+class VariantParameter with _$VariantParameter {
+  const factory VariantParameter({
+    required String name,
+    required String type,
+  }) = _VariantParameter;
+
+  factory VariantParameter.fromJson(Map<String, Object?> json) =>
+      _$VariantParameterFromJson(json);
 }
 
 @freezed

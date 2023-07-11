@@ -39,6 +39,43 @@ Map<String, dynamic> _$$_SierraEntryPointToJson(_$_SierraEntryPoint instance) =>
       'function_idx': instance.functionIdx,
     };
 
+_$_CASMEntryPointsByType _$$_CASMEntryPointsByTypeFromJson(
+        Map<String, dynamic> json) =>
+    _$_CASMEntryPointsByType(
+      constructor: (json['CONSTRUCTOR'] as List<dynamic>)
+          .map((e) => CASMEntryPoint.fromJson(e as Map<String, dynamic>))
+          .toList(),
+      external: (json['EXTERNAL'] as List<dynamic>)
+          .map((e) => CASMEntryPoint.fromJson(e as Map<String, dynamic>))
+          .toList(),
+      l1Handler: (json['L1_HANDLER'] as List<dynamic>)
+          .map((e) => CASMEntryPoint.fromJson(e as Map<String, dynamic>))
+          .toList(),
+    );
+
+Map<String, dynamic> _$$_CASMEntryPointsByTypeToJson(
+        _$_CASMEntryPointsByType instance) =>
+    <String, dynamic>{
+      'CONSTRUCTOR': instance.constructor.map((e) => e.toJson()).toList(),
+      'EXTERNAL': instance.external.map((e) => e.toJson()).toList(),
+      'L1_HANDLER': instance.l1Handler.map((e) => e.toJson()).toList(),
+    };
+
+_$_CASMEntryPoint _$$_CASMEntryPointFromJson(Map<String, dynamic> json) =>
+    _$_CASMEntryPoint(
+      selector: Felt.fromJson(json['selector'] as String),
+      offset: json['offset'] as int,
+      builtins:
+          (json['builtins'] as List<dynamic>).map((e) => e as String).toList(),
+    );
+
+Map<String, dynamic> _$$_CASMEntryPointToJson(_$_CASMEntryPoint instance) =>
+    <String, dynamic>{
+      'selector': instance.selector.toJson(),
+      'offset': instance.offset,
+      'builtins': instance.builtins,
+    };
+
 _$_DeprecatedCairoEntryPointsByType
     _$$_DeprecatedCairoEntryPointsByTypeFromJson(Map<String, dynamic> json) =>
         _$_DeprecatedCairoEntryPointsByType(

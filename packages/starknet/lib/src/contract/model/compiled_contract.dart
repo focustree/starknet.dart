@@ -9,6 +9,7 @@ part 'compiled_contract.freezed.dart';
 part 'compiled_contract.g.dart';
 
 const CONTRACT_CLASS_V0_1_0 = 'CONTRACT_CLASS_V0.1.0';
+const COMPILED_CLASS_V1 = 'COMPILED_CLASS_V1';
 
 Future<dynamic> _readJsonFile(String filePath) async {
   final bigIntPattern = "BigInt|";
@@ -115,6 +116,90 @@ class SierraCompiledContract with _$SierraCompiledContract {
   static Future<SierraCompiledContract> fromPath(String contractPath) async {
     final json = await _readJsonFile(contractPath);
     return SierraCompiledContract.fromJson(json);
+  }
+}
+
+@freezed
+class CASMCompiledContract
+    with _$CASMCompiledContract
+    implements ICompiledContract {
+  const CASMCompiledContract._();
+
+  factory CASMCompiledContract({
+    required List<BigInt> bytecode,
+    required CASMEntryPointsByType entryPointsByType,
+    required String compilerVersion,
+  }) = _CASMCompiledContract;
+
+  factory CASMCompiledContract.fromJson(Map<String, Object?> json) =>
+      _$CASMCompiledContractFromJson(json);
+
+  static Future<CASMCompiledContract> fromPath(String contractPath) async {
+    final json = await _readJsonFile(contractPath);
+    return CASMCompiledContract.fromJson(json);
+  }
+
+  /// Compute hashes for externals, l1 handlers and constructors
+  /// https://docs.starknet.io/documentation/architecture_and_concepts/Contracts/contract-hash/
+  EntryPointsHashes _entrypointsHashes() {
+    List<BigInt> buffer = [];
+    for (var entrypoint in entryPointsByType.external) {
+      buffer.add(entrypoint.selector.toBigInt());
+      buffer.add(BigInt.from(entrypoint.offset));
+
+      List<BigInt> builtins = [];
+      for (var builtin in entrypoint.builtins) {
+        builtins.add(Felt.fromString(builtin).toBigInt());
+      }
+      buffer.add(poseidonHasher.hashMany(builtins));
+    }
+    final externals = poseidonHasher.hashMany(buffer);
+
+    buffer.clear();
+    for (var entrypoint in entryPointsByType.l1Handler) {
+      buffer.add(entrypoint.selector.toBigInt());
+      buffer.add(BigInt.from(entrypoint.offset));
+
+      List<BigInt> builtins = [];
+      for (var builtin in entrypoint.builtins) {
+        builtins.add(Felt.fromString(builtin).toBigInt());
+      }
+      buffer.add(poseidonHasher.hashMany(builtins));
+    }
+    final l1handlers = poseidonHasher.hashMany(buffer);
+    buffer.clear();
+
+    for (var entrypoint in entryPointsByType.constructor) {
+      buffer.add(entrypoint.selector.toBigInt());
+      buffer.add(BigInt.from(entrypoint.offset));
+
+      List<BigInt> builtins = [];
+      for (var builtin in entrypoint.builtins) {
+        builtins.add(Felt.fromString(builtin).toBigInt());
+      }
+      buffer.add(poseidonHasher.hashMany(builtins));
+    }
+    final constructors = poseidonHasher.hashMany(buffer);
+
+    return EntryPointsHashes(externals, l1handlers, constructors);
+  }
+
+  BigInt _byteCodeHash() {
+    return poseidonHasher.hashMany(bytecode);
+  }
+
+  @override
+  BigInt classHash() {
+    List<BigInt> elements = [];
+    if (compilerVersion == "1.1.0") {
+      elements.add(Felt.fromString(COMPILED_CLASS_V1).toBigInt());
+    }
+    final hashes = _entrypointsHashes();
+    elements.add(hashes.externals);
+    elements.add(hashes.l1handlers);
+    elements.add(hashes.constructors);
+    elements.add(_byteCodeHash());
+    return poseidonHasher.hashMany(elements);
   }
 }
 

@@ -49,6 +49,22 @@ void main() {
               ));
         });
 
+        test('Compute sierra class hash for ABI types contract', () async {
+          final contractPath =
+              '${Directory.current.path}/../../contracts/cairo1/artifacts/abi_types_sierra.txt';
+          final expectedHashesPath =
+              '${Directory.current.path}/../../contracts/cairo1/artifacts/abi_types.hashes.json';
+          final content = await File(expectedHashesPath).readAsString();
+          final expectedHashes = await json.decode(content);
+          final contract = await CompiledContract.fromPath(contractPath);
+          final classHash = contract.classHash();
+          expect(
+              classHash,
+              equals(
+                BigInt.parse(expectedHashes["sierra_class_hash"]),
+              ));
+        });
+
         test('Compute compiled class hash for ERC20 contract', () async {
           final contractPath =
               '${Directory.current.path}/../../contracts/cairo1/artifacts/erc20_compiled.txt';
@@ -56,7 +72,23 @@ void main() {
               '${Directory.current.path}/../../contracts/cairo1/artifacts/erc20.hashes.json';
           final content = await File(expectedHashesPath).readAsString();
           final expectedHashes = await json.decode(content);
-          final contract = await CompiledContract.fromPath(contractPath);
+          final contract = await CASMCompiledContract.fromPath(contractPath);
+          final classHash = contract.classHash();
+          expect(
+              classHash,
+              equals(
+                BigInt.parse(expectedHashes["compiled_class_hash"]),
+              ));
+        });
+
+        test('Compute compiled class hash for ABI types contract', () async {
+          final contractPath =
+              '${Directory.current.path}/../../contracts/cairo1/artifacts/abi_types_compiled.txt';
+          final expectedHashesPath =
+              '${Directory.current.path}/../../contracts/cairo1/artifacts/abi_types.hashes.json';
+          final content = await File(expectedHashesPath).readAsString();
+          final expectedHashes = await json.decode(content);
+          final contract = await CASMCompiledContract.fromPath(contractPath);
           final classHash = contract.classHash();
           expect(
               classHash,
