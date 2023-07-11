@@ -6,6 +6,83 @@ part of 'contract_abi.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
+_$SierraFunctionAbiEntry _$$SierraFunctionAbiEntryFromJson(
+        Map<String, dynamic> json) =>
+    _$SierraFunctionAbiEntry(
+      type: json['type'] as String,
+      name: json['name'] as String,
+      inputs: (json['inputs'] as List<dynamic>)
+          .map((e) => InputParameter.fromJson(e as Map<String, dynamic>))
+          .toList(),
+      outputs: (json['outputs'] as List<dynamic>)
+          .map((e) => OutputParameter.fromJson(e as Map<String, dynamic>))
+          .toList(),
+      stateMutability: json['state_mutability'] as String?,
+      $type: json['starkNetRuntimeTypeToRemove'] as String?,
+    );
+
+Map<String, dynamic> _$$SierraFunctionAbiEntryToJson(
+    _$SierraFunctionAbiEntry instance) {
+  final val = <String, dynamic>{
+    'type': instance.type,
+    'name': instance.name,
+    'inputs': instance.inputs.map((e) => e.toJson()).toList(),
+    'outputs': instance.outputs.map((e) => e.toJson()).toList(),
+  };
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('state_mutability', instance.stateMutability);
+  val['starkNetRuntimeTypeToRemove'] = instance.$type;
+  return val;
+}
+
+_$SierraEventAbiEntry _$$SierraEventAbiEntryFromJson(
+        Map<String, dynamic> json) =>
+    _$SierraEventAbiEntry(
+      type: json['type'] as String,
+      name: json['name'] as String,
+      inputs: (json['inputs'] as List<dynamic>)
+          .map((e) => InputParameter.fromJson(e as Map<String, dynamic>))
+          .toList(),
+      $type: json['starkNetRuntimeTypeToRemove'] as String?,
+    );
+
+Map<String, dynamic> _$$SierraEventAbiEntryToJson(
+        _$SierraEventAbiEntry instance) =>
+    <String, dynamic>{
+      'type': instance.type,
+      'name': instance.name,
+      'inputs': instance.inputs.map((e) => e.toJson()).toList(),
+      'starkNetRuntimeTypeToRemove': instance.$type,
+    };
+
+_$_InputParameter _$$_InputParameterFromJson(Map<String, dynamic> json) =>
+    _$_InputParameter(
+      name: json['name'] as String,
+      type: json['type'] as String,
+    );
+
+Map<String, dynamic> _$$_InputParameterToJson(_$_InputParameter instance) =>
+    <String, dynamic>{
+      'name': instance.name,
+      'type': instance.type,
+    };
+
+_$_OutputParameter _$$_OutputParameterFromJson(Map<String, dynamic> json) =>
+    _$_OutputParameter(
+      type: json['type'] as String,
+    );
+
+Map<String, dynamic> _$$_OutputParameterToJson(_$_OutputParameter instance) =>
+    <String, dynamic>{
+      'type': instance.type,
+    };
+
 _$FunctionAbiEntry _$$FunctionAbiEntryFromJson(Map<String, dynamic> json) =>
     _$FunctionAbiEntry(
       type: json['type'] as String,

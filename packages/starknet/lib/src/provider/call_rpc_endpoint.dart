@@ -16,7 +16,7 @@ Future<Map<String, dynamic>> callRpcEndpoint(
     'id': 0
   };
 
-  final filteredBody = DeprecatedCompiledContractJsonEncoder().convert(body);
+  final filteredBody = PythonicJsonEncoder().convert(body);
   final response =
       await http.post(nodeUri, headers: headers, body: filteredBody);
 

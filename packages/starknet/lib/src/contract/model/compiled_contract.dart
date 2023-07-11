@@ -2,13 +2,16 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:starknet/src/crypto/poseidon.dart';
 import 'package:starknet/starknet.dart';
 
 part 'compiled_contract.freezed.dart';
 part 'compiled_contract.g.dart';
 
+const CONTRACT_CLASS_V0_1_0 = 'CONTRACT_CLASS_V0.1.0';
+
 Future<dynamic> _readJsonFile(String filePath) async {
-  final bigIntPattern = "BingInt|";
+  final bigIntPattern = "BigInt|";
   var input = await File(filePath).readAsString();
   // Dart JSON decoder use double to represent number,
   // but 64 bits is not enough for Felt
@@ -24,9 +27,102 @@ Future<dynamic> _readJsonFile(String filePath) async {
   return json;
 }
 
+abstract class ICompiledContract {
+  BigInt classHash();
+}
+
+class CompiledContract implements ICompiledContract {
+  final SierraCompiledContract contract;
+  final List<dynamic> abiRaw;
+  const CompiledContract._(this.contract, this.abiRaw);
+
+  factory CompiledContract.fromJson(Map<String, Object?> json) {
+    final _contract = SierraCompiledContract.fromJson(json);
+    final _abiRaw = json['abi'] as List<dynamic>;
+    return CompiledContract._(_contract, _abiRaw);
+  }
+
+  static Future<CompiledContract> fromPath(String contractPath) async {
+    final json = await _readJsonFile(contractPath);
+    return CompiledContract.fromJson(json);
+  }
+
+  /// Compute hashes for externals, l1 handlers and constructors
+  /// https://docs.starknet.io/documentation/architecture_and_concepts/Contracts/contract-hash/
+  EntryPointsHashes _entrypointsHashes() {
+    List<BigInt> buffer = [];
+    for (var entrypoint in contract.entryPointsByType.external) {
+      buffer.add(entrypoint.selector.toBigInt());
+      buffer.add(BigInt.from(entrypoint.functionIdx));
+    }
+    final externals = poseidonHasher.hashMany(buffer);
+
+    buffer.clear();
+    for (var entrypoint in contract.entryPointsByType.l1Handler) {
+      buffer.add(entrypoint.selector.toBigInt());
+      buffer.add(BigInt.from(entrypoint.functionIdx));
+    }
+    final l1handlers = poseidonHasher.hashMany(buffer);
+    buffer.clear();
+
+    for (var entrypoint in contract.entryPointsByType.constructor) {
+      buffer.add(entrypoint.selector.toBigInt());
+      buffer.add(BigInt.from(entrypoint.functionIdx));
+    }
+    final constructors = poseidonHasher.hashMany(buffer);
+    return EntryPointsHashes(externals, l1handlers, constructors);
+  }
+
+  BigInt _byteCodeHash() {
+    return poseidonHasher.hashMany(contract.sierraProgram);
+  }
+
+  BigInt _abiHash() {
+    final encoded = PythonicJsonEncoder(sortSymbol: false).convert(abiRaw);
+    return starknetKeccak(ascii.encode(encoded)).toBigInt();
+  }
+
+  @override
+  BigInt classHash() {
+    List<BigInt> elements = [];
+    if (contract.contractClassVersion == "0.1.0") {
+      elements.add(Felt.fromString(CONTRACT_CLASS_V0_1_0).toBigInt());
+    }
+    final hashes = _entrypointsHashes();
+    elements.add(hashes.externals);
+    elements.add(hashes.l1handlers);
+    elements.add(hashes.constructors);
+    elements.add(_abiHash());
+    elements.add(_byteCodeHash());
+    return poseidonHasher.hashMany(elements);
+  }
+}
+
 @freezed
-class DeprecatedCompiledContract with _$DeprecatedCompiledContract {
-  const DeprecatedCompiledContract._(); // To be able to define custome compress() method
+class SierraCompiledContract with _$SierraCompiledContract {
+  const SierraCompiledContract._();
+
+  factory SierraCompiledContract({
+    required List<BigInt> sierraProgram,
+    required EntryPointsByType entryPointsByType,
+    required String contractClassVersion,
+    required List<SierraContractAbiEntry> abi,
+  }) = _SierraCompiledContract;
+
+  factory SierraCompiledContract.fromJson(Map<String, Object?> json) =>
+      _$SierraCompiledContractFromJson(json);
+
+  static Future<SierraCompiledContract> fromPath(String contractPath) async {
+    final json = await _readJsonFile(contractPath);
+    return SierraCompiledContract.fromJson(json);
+  }
+}
+
+@freezed
+class DeprecatedCompiledContract
+    with _$DeprecatedCompiledContract
+    implements ICompiledContract {
+  const DeprecatedCompiledContract._(); // To be able to define custom compress() method
 
   const factory DeprecatedCompiledContract({
     required Map<String, Object?> program,
@@ -45,8 +141,7 @@ class DeprecatedCompiledContract with _$DeprecatedCompiledContract {
 
   DeprecatedContractClass compress() {
     final new_program = Map.of(program);
-    final program_json =
-        DeprecatedCompiledContractJsonEncoder().convert(new_program);
+    final program_json = PythonicJsonEncoder().convert(new_program);
     return DeprecatedContractClass(
       program: base64.encode(gzip.encode(utf8.encode(program_json))),
       entryPointsByType: entryPointsByType,
@@ -81,9 +176,7 @@ class DeprecatedCompiledContract with _$DeprecatedCompiledContract {
   String _encode() {
     final new_program = _filtering(program);
 
-    final encoded =
-        DeprecatedCompiledContractJsonEncoder(filterRuntimeType: false)
-            .convert({
+    final encoded = PythonicJsonEncoder(filterRuntimeType: false).convert({
       "abi": abi,
       "program": new_program,
     });
@@ -145,6 +238,7 @@ class DeprecatedCompiledContract with _$DeprecatedCompiledContract {
 
   /// Compute contract class hash
   /// https://docs.starknet.io/documentation/architecture_and_concepts/Contracts/contract-hash/
+  @override
   BigInt classHash() {
     List<BigInt> elements = [];
     elements.add(BigInt.from(0)); // FIXME: API VERSION
@@ -173,21 +267,26 @@ String compressProgram(Map<String, Object?> program) {
 }
 
 /// JSON encoder to mimic Python json dumps
-class DeprecatedCompiledContractJsonEncoder extends JsonEncoder {
+class PythonicJsonEncoder extends JsonEncoder {
   final bool filterRuntimeType;
+  final bool sortSymbol;
 
-  DeprecatedCompiledContractJsonEncoder({this.filterRuntimeType = true});
+  PythonicJsonEncoder({this.filterRuntimeType = true, this.sortSymbol = true});
 
   @override
-  String convert(Object? object) =>
-      _JsonStringStringifier.stringify(object, _contractJsonCleanup, indent);
+  String convert(Object? object) => _JsonStringStringifier.stringify(
+        object,
+        _contractJsonCleanup,
+        indent,
+        sortSymbol: sortSymbol,
+      );
 
   Object? _contractJsonCleanup(
     dynamic object,
   ) {
     // freezed/json serializable add 'runtimeType'
     if (filterRuntimeType) {
-      if (object is ContractAbiEntry) {
+      if ((object is ContractAbiEntry) || (object is SierraContractAbiEntry)) {
         var res = object.toJson();
         res.remove("runtimeType");
         return res;
@@ -234,9 +333,11 @@ abstract class _JsonStringifier {
 
   /// Function called for each un-encodable object encountered.
   final Function(dynamic) _toEncodable;
+  final bool _sortSymbol;
 
-  _JsonStringifier(dynamic toEncodable(dynamic o)?)
-      : _toEncodable = toEncodable ?? _defaultToEncodable;
+  _JsonStringifier(dynamic toEncodable(dynamic o)?, {bool? sortSymbol})
+      : _toEncodable = toEncodable ?? _defaultToEncodable,
+        _sortSymbol = sortSymbol ?? true;
 
   String? get _partialResult;
 
@@ -443,12 +544,15 @@ abstract class _JsonStringifier {
     var keyValueList = List<Object?>.filled(map.length * 2, null);
     var i = 0;
     var allStringKeys = true;
-    Map.fromEntries(
-      map.entries.toList()
-        ..sort(
-          (e1, e2) => (e1.key as String).naturalCompareTo(e2.key as String),
-        ),
-    ).forEach((key, value) {
+    if (_sortSymbol) {
+      map = Map.fromEntries(
+        map.entries.toList()
+          ..sort(
+            (e1, e2) => (e1.key as String).naturalCompareTo(e2.key as String),
+          ),
+      );
+    }
+    map.forEach((key, value) {
       if (key is! String) {
         allStringKeys = false;
       }
@@ -475,9 +579,9 @@ class _JsonStringStringifier extends _JsonStringifier {
   final StringSink _sink;
 
   _JsonStringStringifier(
-    this._sink,
-    dynamic Function(dynamic object)? _toEncodable,
-  ) : super(_toEncodable);
+      this._sink, dynamic Function(dynamic object)? _toEncodable,
+      {bool? sortSymbol})
+      : super(_toEncodable, sortSymbol: sortSymbol);
 
   /// Convert object to a string.
   ///
@@ -491,24 +595,23 @@ class _JsonStringStringifier extends _JsonStringifier {
   static String stringify(
     Object? object,
     dynamic toEncodable(dynamic object)?,
-    String? indent,
-  ) {
+    String? indent, {
+    bool? sortSymbol,
+  }) {
     var output = StringBuffer();
-    printOn(object, output, toEncodable, indent);
+    printOn(object, output, toEncodable, indent, sortSymbol: sortSymbol);
     return output.toString();
   }
 
   /// Convert object to a string, and write the result to the [output] sink.
   ///
   /// The result is written piecemally to the sink.
-  static void printOn(
-    Object? object,
-    StringSink output,
-    dynamic toEncodable(dynamic o)?,
-    String? indent,
-  ) {
+  static void printOn(Object? object, StringSink output,
+      dynamic toEncodable(dynamic o)?, String? indent,
+      {bool? sortSymbol}) {
     _JsonStringifier stringifier;
-    stringifier = _JsonStringStringifier(output, toEncodable);
+    stringifier =
+        _JsonStringStringifier(output, toEncodable, sortSymbol: sortSymbol);
     stringifier.writeObject(object);
   }
 

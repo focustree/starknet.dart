@@ -14,6 +14,247 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
+SierraCompiledContract _$SierraCompiledContractFromJson(
+    Map<String, dynamic> json) {
+  return _SierraCompiledContract.fromJson(json);
+}
+
+/// @nodoc
+mixin _$SierraCompiledContract {
+  List<BigInt> get sierraProgram => throw _privateConstructorUsedError;
+  EntryPointsByType get entryPointsByType => throw _privateConstructorUsedError;
+  String get contractClassVersion => throw _privateConstructorUsedError;
+  List<SierraContractAbiEntry> get abi => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $SierraCompiledContractCopyWith<SierraCompiledContract> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $SierraCompiledContractCopyWith<$Res> {
+  factory $SierraCompiledContractCopyWith(SierraCompiledContract value,
+          $Res Function(SierraCompiledContract) then) =
+      _$SierraCompiledContractCopyWithImpl<$Res, SierraCompiledContract>;
+  @useResult
+  $Res call(
+      {List<BigInt> sierraProgram,
+      EntryPointsByType entryPointsByType,
+      String contractClassVersion,
+      List<SierraContractAbiEntry> abi});
+
+  $EntryPointsByTypeCopyWith<$Res> get entryPointsByType;
+}
+
+/// @nodoc
+class _$SierraCompiledContractCopyWithImpl<$Res,
+        $Val extends SierraCompiledContract>
+    implements $SierraCompiledContractCopyWith<$Res> {
+  _$SierraCompiledContractCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? sierraProgram = null,
+    Object? entryPointsByType = null,
+    Object? contractClassVersion = null,
+    Object? abi = null,
+  }) {
+    return _then(_value.copyWith(
+      sierraProgram: null == sierraProgram
+          ? _value.sierraProgram
+          : sierraProgram // ignore: cast_nullable_to_non_nullable
+              as List<BigInt>,
+      entryPointsByType: null == entryPointsByType
+          ? _value.entryPointsByType
+          : entryPointsByType // ignore: cast_nullable_to_non_nullable
+              as EntryPointsByType,
+      contractClassVersion: null == contractClassVersion
+          ? _value.contractClassVersion
+          : contractClassVersion // ignore: cast_nullable_to_non_nullable
+              as String,
+      abi: null == abi
+          ? _value.abi
+          : abi // ignore: cast_nullable_to_non_nullable
+              as List<SierraContractAbiEntry>,
+    ) as $Val);
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $EntryPointsByTypeCopyWith<$Res> get entryPointsByType {
+    return $EntryPointsByTypeCopyWith<$Res>(_value.entryPointsByType, (value) {
+      return _then(_value.copyWith(entryPointsByType: value) as $Val);
+    });
+  }
+}
+
+/// @nodoc
+abstract class _$$_SierraCompiledContractCopyWith<$Res>
+    implements $SierraCompiledContractCopyWith<$Res> {
+  factory _$$_SierraCompiledContractCopyWith(_$_SierraCompiledContract value,
+          $Res Function(_$_SierraCompiledContract) then) =
+      __$$_SierraCompiledContractCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call(
+      {List<BigInt> sierraProgram,
+      EntryPointsByType entryPointsByType,
+      String contractClassVersion,
+      List<SierraContractAbiEntry> abi});
+
+  @override
+  $EntryPointsByTypeCopyWith<$Res> get entryPointsByType;
+}
+
+/// @nodoc
+class __$$_SierraCompiledContractCopyWithImpl<$Res>
+    extends _$SierraCompiledContractCopyWithImpl<$Res,
+        _$_SierraCompiledContract>
+    implements _$$_SierraCompiledContractCopyWith<$Res> {
+  __$$_SierraCompiledContractCopyWithImpl(_$_SierraCompiledContract _value,
+      $Res Function(_$_SierraCompiledContract) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? sierraProgram = null,
+    Object? entryPointsByType = null,
+    Object? contractClassVersion = null,
+    Object? abi = null,
+  }) {
+    return _then(_$_SierraCompiledContract(
+      sierraProgram: null == sierraProgram
+          ? _value._sierraProgram
+          : sierraProgram // ignore: cast_nullable_to_non_nullable
+              as List<BigInt>,
+      entryPointsByType: null == entryPointsByType
+          ? _value.entryPointsByType
+          : entryPointsByType // ignore: cast_nullable_to_non_nullable
+              as EntryPointsByType,
+      contractClassVersion: null == contractClassVersion
+          ? _value.contractClassVersion
+          : contractClassVersion // ignore: cast_nullable_to_non_nullable
+              as String,
+      abi: null == abi
+          ? _value._abi
+          : abi // ignore: cast_nullable_to_non_nullable
+              as List<SierraContractAbiEntry>,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$_SierraCompiledContract extends _SierraCompiledContract {
+  _$_SierraCompiledContract(
+      {required final List<BigInt> sierraProgram,
+      required this.entryPointsByType,
+      required this.contractClassVersion,
+      required final List<SierraContractAbiEntry> abi})
+      : _sierraProgram = sierraProgram,
+        _abi = abi,
+        super._();
+
+  factory _$_SierraCompiledContract.fromJson(Map<String, dynamic> json) =>
+      _$$_SierraCompiledContractFromJson(json);
+
+  final List<BigInt> _sierraProgram;
+  @override
+  List<BigInt> get sierraProgram {
+    if (_sierraProgram is EqualUnmodifiableListView) return _sierraProgram;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_sierraProgram);
+  }
+
+  @override
+  final EntryPointsByType entryPointsByType;
+  @override
+  final String contractClassVersion;
+  final List<SierraContractAbiEntry> _abi;
+  @override
+  List<SierraContractAbiEntry> get abi {
+    if (_abi is EqualUnmodifiableListView) return _abi;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_abi);
+  }
+
+  @override
+  String toString() {
+    return 'SierraCompiledContract(sierraProgram: $sierraProgram, entryPointsByType: $entryPointsByType, contractClassVersion: $contractClassVersion, abi: $abi)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_SierraCompiledContract &&
+            const DeepCollectionEquality()
+                .equals(other._sierraProgram, _sierraProgram) &&
+            (identical(other.entryPointsByType, entryPointsByType) ||
+                other.entryPointsByType == entryPointsByType) &&
+            (identical(other.contractClassVersion, contractClassVersion) ||
+                other.contractClassVersion == contractClassVersion) &&
+            const DeepCollectionEquality().equals(other._abi, _abi));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(_sierraProgram),
+      entryPointsByType,
+      contractClassVersion,
+      const DeepCollectionEquality().hash(_abi));
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_SierraCompiledContractCopyWith<_$_SierraCompiledContract> get copyWith =>
+      __$$_SierraCompiledContractCopyWithImpl<_$_SierraCompiledContract>(
+          this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_SierraCompiledContractToJson(
+      this,
+    );
+  }
+}
+
+abstract class _SierraCompiledContract extends SierraCompiledContract {
+  factory _SierraCompiledContract(
+          {required final List<BigInt> sierraProgram,
+          required final EntryPointsByType entryPointsByType,
+          required final String contractClassVersion,
+          required final List<SierraContractAbiEntry> abi}) =
+      _$_SierraCompiledContract;
+  _SierraCompiledContract._() : super._();
+
+  factory _SierraCompiledContract.fromJson(Map<String, dynamic> json) =
+      _$_SierraCompiledContract.fromJson;
+
+  @override
+  List<BigInt> get sierraProgram;
+  @override
+  EntryPointsByType get entryPointsByType;
+  @override
+  String get contractClassVersion;
+  @override
+  List<SierraContractAbiEntry> get abi;
+  @override
+  @JsonKey(ignore: true)
+  _$$_SierraCompiledContractCopyWith<_$_SierraCompiledContract> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
 DeprecatedCompiledContract _$DeprecatedCompiledContractFromJson(
     Map<String, dynamic> json) {
   return _DeprecatedCompiledContract.fromJson(json);

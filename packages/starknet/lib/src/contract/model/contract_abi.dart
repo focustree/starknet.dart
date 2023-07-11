@@ -4,6 +4,49 @@ part 'contract_abi.freezed.dart';
 part 'contract_abi.g.dart';
 
 @freezed
+class SierraContractAbiEntry with _$SierraContractAbiEntry {
+  const factory SierraContractAbiEntry.function({
+    required String type,
+    required String name,
+    required List<InputParameter> inputs,
+    required List<OutputParameter> outputs,
+    @JsonKey(includeIfNull: false) String? stateMutability,
+  }) = SierraFunctionAbiEntry;
+
+  const factory SierraContractAbiEntry.event({
+    required String type,
+    required String name,
+    required List<InputParameter> inputs,
+  }) = SierraEventAbiEntry;
+
+  factory SierraContractAbiEntry.fromJson(Map<String, Object?> json) =>
+      json['type'] == 'event'
+          ? SierraEventAbiEntry.fromJson(json)
+          : SierraFunctionAbiEntry.fromJson(json);
+}
+
+@freezed
+class InputParameter with _$InputParameter {
+  const factory InputParameter({
+    required String name,
+    required String type,
+  }) = _InputParameter;
+
+  factory InputParameter.fromJson(Map<String, Object?> json) =>
+      _$InputParameterFromJson(json);
+}
+
+@freezed
+class OutputParameter with _$OutputParameter {
+  const factory OutputParameter({
+    required String type,
+  }) = _OutputParameter;
+
+  factory OutputParameter.fromJson(Map<String, Object?> json) =>
+      _$OutputParameterFromJson(json);
+}
+
+@freezed
 class ContractAbiEntry with _$ContractAbiEntry {
   const factory ContractAbiEntry.function({
     required String type,
