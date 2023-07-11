@@ -12,7 +12,7 @@ interact = "scripts.python.commands.interact:main"
 
 [tool.poetry.dependencies]
 python = ">=3.9,<3.10"
-starknet-devnet = "0.5.4"
+starknet-devnet = "0.5.5"
 cairo-lang = "0.11.2"
 starknet-py = "0.16.1"
 autopep8 = "^2.0.0"
