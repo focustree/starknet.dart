@@ -10,7 +10,6 @@ dependencies:
   flutter:
     sdk: flutter
   cupertino_icons: ^1.0.2
-  starknet_flutter:
   wallet_kit:
   hooks_riverpod: ^2.3.6
   flutter_hooks: ^0.18.6

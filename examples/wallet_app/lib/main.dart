@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:starknet_flutter/starknet_flutter.dart';
 import 'package:wallet_kit/wallet_kit.dart';
 import 'package:wallet_app/screens/home_screen.dart';
 
 void main() async {
-  await StarknetFlutter.init(nodeUri: Uri.parse("https://localhost:5050"));
+  await WalletKit.init();
   runApp(const ProviderScope(child: MyApp()));
 }
 
