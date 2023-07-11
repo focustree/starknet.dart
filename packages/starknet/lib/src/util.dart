@@ -59,12 +59,13 @@ Future<bool> waitForState({
       error: (error) {
         // 2022-12-07: a REJECTED transaction is not part of the blockchain
         // so transaction hash will not be known by Infura node
-        if (!(error.code == 25 &&
+        if (!(error.code == JsonRpcApiErrorCode.TXN_HASH_NOT_FOUND &&
             ((provider as JsonRpcProvider).nodeUri == infuraGoerliTestnetUri ||
                 provider.nodeUri == infuraMainnetUri))) {
           debugLog?.call('An error occured: $error');
         }
-        if ((error.code == 25) && (count < maxRetries)) {
+        if ((error.code == JsonRpcApiErrorCode.TXN_HASH_NOT_FOUND) &&
+            (count < maxRetries)) {
           count += 1;
           status = 'UNKNOWN';
           debugLog?.call(

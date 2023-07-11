@@ -7,7 +7,7 @@ part 'estimate_fee.g.dart';
 @freezed
 class EstimateFee with _$EstimateFee {
   const factory EstimateFee.result({
-    required FeeEstimate result,
+    required List<FeeEstimate> result,
   }) = EstimateFeeResult;
   const factory EstimateFee.error({
     required JsonRpcApiError error,
@@ -19,21 +19,18 @@ class EstimateFee with _$EstimateFee {
           : EstimateFeeResult.fromJson(json);
 }
 
+@JsonSerializable()
 class EstimateFeeRequest {
-  final BroadcastedTxn request;
+  final List<BroadcastedTxn> request;
   final BlockId blockId;
   EstimateFeeRequest({
     required this.request,
     required this.blockId,
   });
 
-  Map<String, dynamic> toJson() {
-    var invokeToJson = request.toJson();
-    invokeToJson.remove('runtimeType');
-    invokeToJson.remove('transaction_hash');
-
-    return {'request': invokeToJson, 'block_id': blockId.toJson()};
-  }
+  factory EstimateFeeRequest.fromJson(Map<String, dynamic> json) =>
+      _$EstimateFeeRequestFromJson(json);
+  Map<String, dynamic> toJson() => _$EstimateFeeRequestToJson(this);
 }
 
 @freezed

@@ -25,10 +25,10 @@ void main() {
       );
       final response = await account.addInvokeTransaction(request);
       response.when(
-          error: (error) => fail("Shouldn't fail"),
-          result: (result) {
-            expect(result.transaction_hash, hasLength(greaterThan(64)));
-          });
+        error: (error) => expect(error.code, JsonRpcApiErrorCode.INVALID_QUERY),
+        result: (result) =>
+            fail("Should fail transaction V0 are no more supported"),
+      );
     }, tags: ['integration-testnet']);
     test('mintAspectNFT', () async {
       final account = getJsonRpcProvider();
@@ -65,10 +65,10 @@ void main() {
       ));
       final response = await account.addInvokeTransaction(request);
       response.when(
-          error: (error) => fail("Shouldn't fail"),
-          result: (result) {
-            expect(result.transaction_hash, hasLength(greaterThan(64)));
-          });
+          error: (error) =>
+              expect(error.code, JsonRpcApiErrorCode.INVALID_QUERY),
+          result: (result) =>
+              fail("Should fail transaction V0 are no more supported"));
     }, tags: ['integration-testnet']);
     test('declareTransaction', () async {
       final account = getJsonRpcProvider(network: 'integration-devnet-040');
@@ -92,8 +92,8 @@ void main() {
       final response = await account.addDeclareTransaction(request);
       response.when(
         error: (error) => expect(
-          error.message,
-          equals('Invalid contract class'),
+          error.code,
+          JsonRpcApiErrorCode.INVALID_CONTRACT_CLASS,
         ),
         result: (result) {
           expect(result, equals(1));

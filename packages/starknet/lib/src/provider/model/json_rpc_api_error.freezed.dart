@@ -20,7 +20,7 @@ JsonRpcApiError _$JsonRpcApiErrorFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$JsonRpcApiError {
-  int get code => throw _privateConstructorUsedError;
+  JsonRpcApiErrorCode get code => throw _privateConstructorUsedError;
   String get message => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -35,7 +35,7 @@ abstract class $JsonRpcApiErrorCopyWith<$Res> {
           JsonRpcApiError value, $Res Function(JsonRpcApiError) then) =
       _$JsonRpcApiErrorCopyWithImpl<$Res, JsonRpcApiError>;
   @useResult
-  $Res call({int code, String message});
+  $Res call({JsonRpcApiErrorCode code, String message});
 }
 
 /// @nodoc
@@ -58,7 +58,7 @@ class _$JsonRpcApiErrorCopyWithImpl<$Res, $Val extends JsonRpcApiError>
       code: null == code
           ? _value.code
           : code // ignore: cast_nullable_to_non_nullable
-              as int,
+              as JsonRpcApiErrorCode,
       message: null == message
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
@@ -75,7 +75,7 @@ abstract class _$$_JsonRpcApiErrorCopyWith<$Res>
       __$$_JsonRpcApiErrorCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({int code, String message});
+  $Res call({JsonRpcApiErrorCode code, String message});
 }
 
 /// @nodoc
@@ -96,7 +96,7 @@ class __$$_JsonRpcApiErrorCopyWithImpl<$Res>
       code: null == code
           ? _value.code
           : code // ignore: cast_nullable_to_non_nullable
-              as int,
+              as JsonRpcApiErrorCode,
       message: null == message
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
@@ -114,7 +114,7 @@ class _$_JsonRpcApiError implements _JsonRpcApiError {
       _$$_JsonRpcApiErrorFromJson(json);
 
   @override
-  final int code;
+  final JsonRpcApiErrorCode code;
   @override
   final String message;
 
@@ -152,14 +152,14 @@ class _$_JsonRpcApiError implements _JsonRpcApiError {
 
 abstract class _JsonRpcApiError implements JsonRpcApiError {
   const factory _JsonRpcApiError(
-      {required final int code,
+      {required final JsonRpcApiErrorCode code,
       required final String message}) = _$_JsonRpcApiError;
 
   factory _JsonRpcApiError.fromJson(Map<String, dynamic> json) =
       _$_JsonRpcApiError.fromJson;
 
   @override
-  int get code;
+  JsonRpcApiErrorCode get code;
   @override
   String get message;
   @override

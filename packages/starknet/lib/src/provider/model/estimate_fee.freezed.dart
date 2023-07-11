@@ -34,19 +34,19 @@ EstimateFee _$EstimateFeeFromJson(Map<String, dynamic> json) {
 mixin _$EstimateFee {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(FeeEstimate result) result,
+    required TResult Function(List<FeeEstimate> result) result,
     required TResult Function(JsonRpcApiError error) error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(FeeEstimate result)? result,
+    TResult? Function(List<FeeEstimate> result)? result,
     TResult? Function(JsonRpcApiError error)? error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(FeeEstimate result)? result,
+    TResult Function(List<FeeEstimate> result)? result,
     TResult Function(JsonRpcApiError error)? error,
     required TResult orElse(),
   }) =>
@@ -97,9 +97,7 @@ abstract class _$$EstimateFeeResultCopyWith<$Res> {
           _$EstimateFeeResult value, $Res Function(_$EstimateFeeResult) then) =
       __$$EstimateFeeResultCopyWithImpl<$Res>;
   @useResult
-  $Res call({FeeEstimate result});
-
-  $FeeEstimateCopyWith<$Res> get result;
+  $Res call({List<FeeEstimate> result});
 }
 
 /// @nodoc
@@ -117,32 +115,31 @@ class __$$EstimateFeeResultCopyWithImpl<$Res>
   }) {
     return _then(_$EstimateFeeResult(
       result: null == result
-          ? _value.result
+          ? _value._result
           : result // ignore: cast_nullable_to_non_nullable
-              as FeeEstimate,
+              as List<FeeEstimate>,
     ));
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $FeeEstimateCopyWith<$Res> get result {
-    return $FeeEstimateCopyWith<$Res>(_value.result, (value) {
-      return _then(_value.copyWith(result: value));
-    });
   }
 }
 
 /// @nodoc
 @JsonSerializable()
 class _$EstimateFeeResult implements EstimateFeeResult {
-  const _$EstimateFeeResult({required this.result, final String? $type})
-      : $type = $type ?? 'result';
+  const _$EstimateFeeResult(
+      {required final List<FeeEstimate> result, final String? $type})
+      : _result = result,
+        $type = $type ?? 'result';
 
   factory _$EstimateFeeResult.fromJson(Map<String, dynamic> json) =>
       _$$EstimateFeeResultFromJson(json);
 
+  final List<FeeEstimate> _result;
   @override
-  final FeeEstimate result;
+  List<FeeEstimate> get result {
+    if (_result is EqualUnmodifiableListView) return _result;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_result);
+  }
 
   @JsonKey(name: 'starkNetRuntimeTypeToRemove')
   final String $type;
@@ -157,12 +154,13 @@ class _$EstimateFeeResult implements EstimateFeeResult {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$EstimateFeeResult &&
-            (identical(other.result, result) || other.result == result));
+            const DeepCollectionEquality().equals(other._result, _result));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, result);
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(_result));
 
   @JsonKey(ignore: true)
   @override
@@ -173,7 +171,7 @@ class _$EstimateFeeResult implements EstimateFeeResult {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(FeeEstimate result) result,
+    required TResult Function(List<FeeEstimate> result) result,
     required TResult Function(JsonRpcApiError error) error,
   }) {
     return result(this.result);
@@ -182,7 +180,7 @@ class _$EstimateFeeResult implements EstimateFeeResult {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(FeeEstimate result)? result,
+    TResult? Function(List<FeeEstimate> result)? result,
     TResult? Function(JsonRpcApiError error)? error,
   }) {
     return result?.call(this.result);
@@ -191,7 +189,7 @@ class _$EstimateFeeResult implements EstimateFeeResult {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(FeeEstimate result)? result,
+    TResult Function(List<FeeEstimate> result)? result,
     TResult Function(JsonRpcApiError error)? error,
     required TResult orElse(),
   }) {
@@ -241,13 +239,13 @@ class _$EstimateFeeResult implements EstimateFeeResult {
 }
 
 abstract class EstimateFeeResult implements EstimateFee {
-  const factory EstimateFeeResult({required final FeeEstimate result}) =
+  const factory EstimateFeeResult({required final List<FeeEstimate> result}) =
       _$EstimateFeeResult;
 
   factory EstimateFeeResult.fromJson(Map<String, dynamic> json) =
       _$EstimateFeeResult.fromJson;
 
-  FeeEstimate get result;
+  List<FeeEstimate> get result;
   @JsonKey(ignore: true)
   _$$EstimateFeeResultCopyWith<_$EstimateFeeResult> get copyWith =>
       throw _privateConstructorUsedError;
@@ -335,7 +333,7 @@ class _$EstimateFeeError implements EstimateFeeError {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(FeeEstimate result) result,
+    required TResult Function(List<FeeEstimate> result) result,
     required TResult Function(JsonRpcApiError error) error,
   }) {
     return error(this.error);
@@ -344,7 +342,7 @@ class _$EstimateFeeError implements EstimateFeeError {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(FeeEstimate result)? result,
+    TResult? Function(List<FeeEstimate> result)? result,
     TResult? Function(JsonRpcApiError error)? error,
   }) {
     return error?.call(this.error);
@@ -353,7 +351,7 @@ class _$EstimateFeeError implements EstimateFeeError {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(FeeEstimate result)? result,
+    TResult Function(List<FeeEstimate> result)? result,
     TResult Function(JsonRpcApiError error)? error,
     required TResult orElse(),
   }) {
