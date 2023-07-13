@@ -7,22 +7,22 @@ part 'contract_class.g.dart';
 abstract class IContractClass {
   factory IContractClass.fromJson(Map<String, Object?> json) =>
       json.containsKey('sierra_program')
-          ? ContractClass.fromJson(json)
+          ? SierraContractClass.fromJson(json)
           : DeprecatedContractClass.fromJson(json);
   Map<String, Object?> toJson();
 }
 
 @freezed
-class ContractClass with _$ContractClass implements IContractClass {
-  const factory ContractClass({
+class SierraContractClass with _$SierraContractClass implements IContractClass {
+  const factory SierraContractClass({
     required List<Felt> sierraProgram,
     required String contractClassVersion,
     required EntryPointsByType entryPointsByType,
-    String? abi,
-  }) = _ContractClass;
+    List<SierraContractAbiEntry>? abi,
+  }) = _SierraContractClass;
 
-  factory ContractClass.fromJson(Map<String, Object?> json) =>
-      _$ContractClassFromJson(json);
+  factory SierraContractClass.fromJson(Map<String, Object?> json) =>
+      _$SierraContractClassFromJson(json);
 }
 
 @freezed

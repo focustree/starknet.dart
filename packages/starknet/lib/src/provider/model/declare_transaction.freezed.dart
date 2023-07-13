@@ -21,7 +21,7 @@ DeclareTransactionRequest _$DeclareTransactionRequestFromJson(
 
 /// @nodoc
 mixin _$DeclareTransactionRequest {
-  DeclareTransactionV1 get declareTransaction =>
+  DeclareTransaction get declareTransaction =>
       throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -36,9 +36,7 @@ abstract class $DeclareTransactionRequestCopyWith<$Res> {
           $Res Function(DeclareTransactionRequest) then) =
       _$DeclareTransactionRequestCopyWithImpl<$Res, DeclareTransactionRequest>;
   @useResult
-  $Res call({DeclareTransactionV1 declareTransaction});
-
-  $DeclareTransactionV1CopyWith<$Res> get declareTransaction;
+  $Res call({DeclareTransaction declareTransaction});
 }
 
 /// @nodoc
@@ -61,17 +59,8 @@ class _$DeclareTransactionRequestCopyWithImpl<$Res,
       declareTransaction: null == declareTransaction
           ? _value.declareTransaction
           : declareTransaction // ignore: cast_nullable_to_non_nullable
-              as DeclareTransactionV1,
+              as DeclareTransaction,
     ) as $Val);
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $DeclareTransactionV1CopyWith<$Res> get declareTransaction {
-    return $DeclareTransactionV1CopyWith<$Res>(_value.declareTransaction,
-        (value) {
-      return _then(_value.copyWith(declareTransaction: value) as $Val);
-    });
   }
 }
 
@@ -84,10 +73,7 @@ abstract class _$$_DeclareTransactionRequestCopyWith<$Res>
       __$$_DeclareTransactionRequestCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({DeclareTransactionV1 declareTransaction});
-
-  @override
-  $DeclareTransactionV1CopyWith<$Res> get declareTransaction;
+  $Res call({DeclareTransaction declareTransaction});
 }
 
 /// @nodoc
@@ -109,7 +95,7 @@ class __$$_DeclareTransactionRequestCopyWithImpl<$Res>
       declareTransaction: null == declareTransaction
           ? _value.declareTransaction
           : declareTransaction // ignore: cast_nullable_to_non_nullable
-              as DeclareTransactionV1,
+              as DeclareTransaction,
     ));
   }
 }
@@ -123,7 +109,7 @@ class _$_DeclareTransactionRequest implements _DeclareTransactionRequest {
       _$$_DeclareTransactionRequestFromJson(json);
 
   @override
-  final DeclareTransactionV1 declareTransaction;
+  final DeclareTransaction declareTransaction;
 
   @override
   String toString() {
@@ -160,14 +146,14 @@ class _$_DeclareTransactionRequest implements _DeclareTransactionRequest {
 
 abstract class _DeclareTransactionRequest implements DeclareTransactionRequest {
   const factory _DeclareTransactionRequest(
-          {required final DeclareTransactionV1 declareTransaction}) =
+          {required final DeclareTransaction declareTransaction}) =
       _$_DeclareTransactionRequest;
 
   factory _DeclareTransactionRequest.fromJson(Map<String, dynamic> json) =
       _$_DeclareTransactionRequest.fromJson;
 
   @override
-  DeclareTransactionV1 get declareTransaction;
+  DeclareTransaction get declareTransaction;
   @override
   @JsonKey(ignore: true)
   _$$_DeclareTransactionRequestCopyWith<_$_DeclareTransactionRequest>
@@ -484,7 +470,7 @@ mixin _$DeclareTransactionV2 {
   Felt get nonce => throw _privateConstructorUsedError;
   List<Felt> get signature => throw _privateConstructorUsedError;
   Felt get senderAddress => throw _privateConstructorUsedError;
-  DeprecatedContractClass get contractClass =>
+  FlattenSierraContractClass get contractClass =>
       throw _privateConstructorUsedError;
   Felt get compiledClassHash => throw _privateConstructorUsedError;
 
@@ -507,10 +493,10 @@ abstract class $DeclareTransactionV2CopyWith<$Res> {
       Felt nonce,
       List<Felt> signature,
       Felt senderAddress,
-      DeprecatedContractClass contractClass,
+      FlattenSierraContractClass contractClass,
       Felt compiledClassHash});
 
-  $DeprecatedContractClassCopyWith<$Res> get contractClass;
+  $FlattenSierraContractClassCopyWith<$Res> get contractClass;
 }
 
 /// @nodoc
@@ -564,7 +550,7 @@ class _$DeclareTransactionV2CopyWithImpl<$Res,
       contractClass: null == contractClass
           ? _value.contractClass
           : contractClass // ignore: cast_nullable_to_non_nullable
-              as DeprecatedContractClass,
+              as FlattenSierraContractClass,
       compiledClassHash: null == compiledClassHash
           ? _value.compiledClassHash
           : compiledClassHash // ignore: cast_nullable_to_non_nullable
@@ -574,8 +560,8 @@ class _$DeclareTransactionV2CopyWithImpl<$Res,
 
   @override
   @pragma('vm:prefer-inline')
-  $DeprecatedContractClassCopyWith<$Res> get contractClass {
-    return $DeprecatedContractClassCopyWith<$Res>(_value.contractClass,
+  $FlattenSierraContractClassCopyWith<$Res> get contractClass {
+    return $FlattenSierraContractClassCopyWith<$Res>(_value.contractClass,
         (value) {
       return _then(_value.copyWith(contractClass: value) as $Val);
     });
@@ -597,11 +583,11 @@ abstract class _$$_DeclareTransactionV2CopyWith<$Res>
       Felt nonce,
       List<Felt> signature,
       Felt senderAddress,
-      DeprecatedContractClass contractClass,
+      FlattenSierraContractClass contractClass,
       Felt compiledClassHash});
 
   @override
-  $DeprecatedContractClassCopyWith<$Res> get contractClass;
+  $FlattenSierraContractClassCopyWith<$Res> get contractClass;
 }
 
 /// @nodoc
@@ -652,7 +638,7 @@ class __$$_DeclareTransactionV2CopyWithImpl<$Res>
       contractClass: null == contractClass
           ? _value.contractClass
           : contractClass // ignore: cast_nullable_to_non_nullable
-              as DeprecatedContractClass,
+              as FlattenSierraContractClass,
       compiledClassHash: null == compiledClassHash
           ? _value.compiledClassHash
           : compiledClassHash // ignore: cast_nullable_to_non_nullable
@@ -699,7 +685,7 @@ class _$_DeclareTransactionV2 implements _DeclareTransactionV2 {
   @override
   final Felt senderAddress;
   @override
-  final DeprecatedContractClass contractClass;
+  final FlattenSierraContractClass contractClass;
   @override
   final Felt compiledClassHash;
 
@@ -763,7 +749,7 @@ abstract class _DeclareTransactionV2 implements DeclareTransactionV2 {
       required final Felt nonce,
       required final List<Felt> signature,
       required final Felt senderAddress,
-      required final DeprecatedContractClass contractClass,
+      required final FlattenSierraContractClass contractClass,
       required final Felt compiledClassHash}) = _$_DeclareTransactionV2;
 
   factory _DeclareTransactionV2.fromJson(Map<String, dynamic> json) =
@@ -782,7 +768,7 @@ abstract class _DeclareTransactionV2 implements DeclareTransactionV2 {
   @override
   Felt get senderAddress;
   @override
-  DeprecatedContractClass get contractClass;
+  FlattenSierraContractClass get contractClass;
   @override
   Felt get compiledClassHash;
   @override

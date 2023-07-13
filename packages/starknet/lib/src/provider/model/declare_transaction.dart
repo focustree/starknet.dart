@@ -7,7 +7,7 @@ part 'declare_transaction.g.dart';
 @freezed
 class DeclareTransactionRequest with _$DeclareTransactionRequest {
   const factory DeclareTransactionRequest({
-    required DeclareTransactionV1 declareTransaction,
+    required DeclareTransaction declareTransaction,
   }) = _DeclareTransactionRequest;
 
   factory DeclareTransactionRequest.fromJson(Map<String, Object?> json) =>
@@ -19,6 +19,8 @@ abstract class DeclareTransaction {
       json['version'] == '0x1'
           ? DeclareTransactionV1.fromJson(json)
           : DeclareTransactionV2.fromJson(json);
+
+  Map<String, dynamic> toJson();
 }
 
 @freezed
@@ -50,7 +52,7 @@ class DeclareTransactionV2
     required Felt nonce,
     required List<Felt> signature,
     required Felt senderAddress,
-    required DeprecatedContractClass contractClass,
+    required FlattenSierraContractClass contractClass,
     required Felt compiledClassHash,
   }) = _DeclareTransactionV2;
 

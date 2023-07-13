@@ -104,7 +104,7 @@ class Signer {
     }
   }
 
-  List<Felt> signDeclareTransaction({
+  List<Felt> signDeclareTransactionV1({
     required DeprecatedCompiledContract compiledContract,
     required Felt senderAddress,
     required Felt chainId,
@@ -114,16 +114,60 @@ class Signer {
     maxFee = maxFee ?? defaultMaxFee;
 
     final classHash = compiledContract.classHash();
-    final transactionHash = calculateTransactionHashCommon(
-      txHashPrefix: TransactionHashPrefix.declare.toBigInt(),
-      version: 1,
-      address: senderAddress.toBigInt(),
-      entryPointSelector: BigInt.from(0),
-      calldata: [classHash],
-      maxFee: maxFee.toBigInt(),
-      chainId: chainId.toBigInt(),
-      additionalData: [nonce.toBigInt()],
+    final List<BigInt> elementsToHash = [
+      TransactionHashPrefix.declare.toBigInt(),
+      BigInt.from(1),
+      senderAddress.toBigInt(),
+      BigInt.from(0),
+      computeHashOnElements([classHash]),
+      maxFee.toBigInt(),
+      chainId.toBigInt(),
+      nonce.toBigInt()
+    ];
+    final transactionHash = computeHashOnElements(elementsToHash);
+
+    final signature = starknet_sign(
+      privateKey: privateKey.toBigInt(),
+      messageHash: transactionHash,
+      seed: BigInt.from(32),
     );
+
+    return [Felt(signature.r), Felt(signature.s)];
+  }
+
+  List<Felt> signDeclareTransactionV2({
+    required CompiledContract compiledContract,
+    required Felt senderAddress,
+    required Felt chainId,
+    required Felt nonce,
+    Felt? maxFee,
+    BigInt? classHash,
+    BigInt? compiledClassHash,
+    CASMCompiledContract? casmCompiledContract,
+  }) {
+    maxFee = maxFee ?? defaultMaxFee;
+
+    classHash ??= compiledContract.classHash();
+    if ((compiledClassHash == null) && (casmCompiledContract == null)) {
+      throw Exception(
+        "compiledClassHash is null and CASM contract not provided",
+      );
+    }
+    compiledClassHash ??= casmCompiledContract!.classHash();
+
+    final List<BigInt> elementsToHash = [
+      TransactionHashPrefix.declare.toBigInt(),
+      BigInt.two,
+      senderAddress.toBigInt(),
+      BigInt.zero,
+      computeHashOnElements([classHash]),
+      maxFee.toBigInt(),
+      chainId.toBigInt(),
+      nonce.toBigInt(),
+      compiledClassHash,
+    ];
+
+    final transactionHash = computeHashOnElements(elementsToHash);
 
     final signature = starknet_sign(
       privateKey: privateKey.toBigInt(),

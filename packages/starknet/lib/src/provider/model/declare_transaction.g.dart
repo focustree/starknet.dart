@@ -9,7 +9,7 @@ part of 'declare_transaction.dart';
 _$_DeclareTransactionRequest _$$_DeclareTransactionRequestFromJson(
         Map<String, dynamic> json) =>
     _$_DeclareTransactionRequest(
-      declareTransaction: DeclareTransactionV1.fromJson(
+      declareTransaction: DeclareTransaction.fromJson(
           json['declare_transaction'] as Map<String, dynamic>),
     );
 
@@ -57,7 +57,7 @@ _$_DeclareTransactionV2 _$$_DeclareTransactionV2FromJson(
           .map((e) => Felt.fromJson(e as String))
           .toList(),
       senderAddress: Felt.fromJson(json['sender_address'] as String),
-      contractClass: DeprecatedContractClass.fromJson(
+      contractClass: FlattenSierraContractClass.fromJson(
           json['contract_class'] as Map<String, dynamic>),
       compiledClassHash: Felt.fromJson(json['compiled_class_hash'] as String),
     );

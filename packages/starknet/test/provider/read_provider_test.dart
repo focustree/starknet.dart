@@ -675,8 +675,8 @@ void main() {
         response.when(
           error: (error) => fail("Shouldn't fail"),
           result: (res) {
-            expect(res, isA<ContractClass>());
-            final result = res as ContractClass;
+            expect(res, isA<SierraContractClass>());
+            final result = res as SierraContractClass;
             expect(result.sierraProgram, isNotEmpty);
           },
         );
@@ -793,8 +793,8 @@ void main() {
         response.when(
           error: (error) => fail("Shouldn't fail"),
           result: (res) {
-            expect(res, isA<ContractClass>());
-            final result = res as ContractClass;
+            expect(res, isA<SierraContractClass>());
+            final result = res as SierraContractClass;
             expect(result.sierraProgram, isNotEmpty);
           },
         );
@@ -922,7 +922,9 @@ void main() {
         final response = await provider.pendingTransactions();
 
         response.when(
-            error: (error) => fail('Should not fail'), result: (_) {});
+          error: (error) => fail('Should not fail $error'),
+          result: (_) {},
+        );
       });
     });
 

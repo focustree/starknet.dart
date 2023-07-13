@@ -6,23 +6,28 @@ part of 'contract_class.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_ContractClass _$$_ContractClassFromJson(Map<String, dynamic> json) =>
-    _$_ContractClass(
+_$_SierraContractClass _$$_SierraContractClassFromJson(
+        Map<String, dynamic> json) =>
+    _$_SierraContractClass(
       sierraProgram: (json['sierra_program'] as List<dynamic>)
           .map((e) => Felt.fromJson(e as String))
           .toList(),
       contractClassVersion: json['contract_class_version'] as String,
       entryPointsByType: EntryPointsByType.fromJson(
           json['entry_points_by_type'] as Map<String, dynamic>),
-      abi: json['abi'] as String?,
+      abi: (json['abi'] as List<dynamic>?)
+          ?.map(
+              (e) => SierraContractAbiEntry.fromJson(e as Map<String, dynamic>))
+          .toList(),
     );
 
-Map<String, dynamic> _$$_ContractClassToJson(_$_ContractClass instance) =>
+Map<String, dynamic> _$$_SierraContractClassToJson(
+        _$_SierraContractClass instance) =>
     <String, dynamic>{
       'sierra_program': instance.sierraProgram.map((e) => e.toJson()).toList(),
       'contract_class_version': instance.contractClassVersion,
       'entry_points_by_type': instance.entryPointsByType.toJson(),
-      'abi': instance.abi,
+      'abi': instance.abi?.map((e) => e.toJson()).toList(),
     };
 
 _$_DeprecatedContractClass _$$_DeprecatedContractClassFromJson(
