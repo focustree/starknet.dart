@@ -46,6 +46,8 @@ enum JsonRpcApiErrorCode {
   CONTRACT_ERROR,
   @JsonValue(50)
   INVALID_CONTRACT_CLASS, // from pathfinder code
+  @JsonValue(51)
+  CLASS_ALREADY_DECLARED, // from pathfinder code
   @JsonValue(10000)
   PROOF_LIMIT_EXCEEDED, // from pathfinder code
   @JsonValue(-32602)

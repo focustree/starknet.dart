@@ -33,6 +33,7 @@ const _$JsonRpcApiErrorCodeEnumMap = {
   JsonRpcApiErrorCode.TOO_MANY_KEYS_IN_FILTER: 34,
   JsonRpcApiErrorCode.CONTRACT_ERROR: 40,
   JsonRpcApiErrorCode.INVALID_CONTRACT_CLASS: 50,
+  JsonRpcApiErrorCode.CLASS_ALREADY_DECLARED: 51,
   JsonRpcApiErrorCode.PROOF_LIMIT_EXCEEDED: 10000,
   JsonRpcApiErrorCode.INVALID_QUERY: -32602,
   JsonRpcApiErrorCode.INTERNAL_SEQUENCER: -32603,
