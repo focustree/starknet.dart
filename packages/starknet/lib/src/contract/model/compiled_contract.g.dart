@@ -31,6 +31,27 @@ Map<String, dynamic> _$$_SierraCompiledContractToJson(
       'abi': instance.abi.map((e) => e.toJson()).toList(),
     };
 
+_$_FlattenSierraClass _$$_FlattenSierraClassFromJson(
+        Map<String, dynamic> json) =>
+    _$_FlattenSierraClass(
+      sierraProgram: (json['sierra_program'] as List<dynamic>)
+          .map((e) => e as String)
+          .toList(),
+      entryPointsByType: EntryPointsByType.fromJson(
+          json['entry_points_by_type'] as Map<String, dynamic>),
+      contractClassVersion: json['contract_class_version'] as String,
+      abi: json['abi'] as String,
+    );
+
+Map<String, dynamic> _$$_FlattenSierraClassToJson(
+        _$_FlattenSierraClass instance) =>
+    <String, dynamic>{
+      'sierra_program': instance.sierraProgram,
+      'entry_points_by_type': instance.entryPointsByType.toJson(),
+      'contract_class_version': instance.contractClassVersion,
+      'abi': instance.abi,
+    };
+
 _$_CASMCompiledContract _$$_CASMCompiledContractFromJson(
         Map<String, dynamic> json) =>
     _$_CASMCompiledContract(

@@ -83,6 +83,17 @@ class CompiledContract implements ICompiledContract {
     return starknetKeccak(ascii.encode(encoded)).toBigInt();
   }
 
+  FlattenSierraContractClass flatten() {
+    final abi = PythonicJsonEncoder(sortSymbol: false).convert(abiRaw);
+    return FlattenSierraContractClass(
+        sierraProgram: contract.sierraProgram
+            .map((e) => '0x${e.toRadixString(16)}')
+            .toList(),
+        contractClassVersion: contract.contractClassVersion,
+        entryPointsByType: contract.entryPointsByType,
+        abi: abi);
+  }
+
   @override
   BigInt classHash() {
     List<BigInt> elements = [];
@@ -117,6 +128,19 @@ class SierraCompiledContract with _$SierraCompiledContract {
     final json = await _readJsonFile(contractPath);
     return SierraCompiledContract.fromJson(json);
   }
+}
+
+@freezed
+class FlattenSierraContractClass with _$FlattenSierraContractClass {
+  factory FlattenSierraContractClass({
+    required List<String> sierraProgram,
+    required EntryPointsByType entryPointsByType,
+    required String contractClassVersion,
+    required String abi,
+  }) = _FlattenSierraClass;
+
+  factory FlattenSierraContractClass.fromJson(Map<String, Object?> json) =>
+      _$FlattenSierraContractClassFromJson(json);
 }
 
 @freezed

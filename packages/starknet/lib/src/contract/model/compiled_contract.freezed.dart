@@ -255,6 +255,238 @@ abstract class _SierraCompiledContract extends SierraCompiledContract {
       throw _privateConstructorUsedError;
 }
 
+FlattenSierraContractClass _$FlattenSierraContractClassFromJson(
+    Map<String, dynamic> json) {
+  return _FlattenSierraClass.fromJson(json);
+}
+
+/// @nodoc
+mixin _$FlattenSierraContractClass {
+  List<String> get sierraProgram => throw _privateConstructorUsedError;
+  EntryPointsByType get entryPointsByType => throw _privateConstructorUsedError;
+  String get contractClassVersion => throw _privateConstructorUsedError;
+  String get abi => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $FlattenSierraContractClassCopyWith<FlattenSierraContractClass>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $FlattenSierraContractClassCopyWith<$Res> {
+  factory $FlattenSierraContractClassCopyWith(FlattenSierraContractClass value,
+          $Res Function(FlattenSierraContractClass) then) =
+      _$FlattenSierraContractClassCopyWithImpl<$Res,
+          FlattenSierraContractClass>;
+  @useResult
+  $Res call(
+      {List<String> sierraProgram,
+      EntryPointsByType entryPointsByType,
+      String contractClassVersion,
+      String abi});
+
+  $EntryPointsByTypeCopyWith<$Res> get entryPointsByType;
+}
+
+/// @nodoc
+class _$FlattenSierraContractClassCopyWithImpl<$Res,
+        $Val extends FlattenSierraContractClass>
+    implements $FlattenSierraContractClassCopyWith<$Res> {
+  _$FlattenSierraContractClassCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? sierraProgram = null,
+    Object? entryPointsByType = null,
+    Object? contractClassVersion = null,
+    Object? abi = null,
+  }) {
+    return _then(_value.copyWith(
+      sierraProgram: null == sierraProgram
+          ? _value.sierraProgram
+          : sierraProgram // ignore: cast_nullable_to_non_nullable
+              as List<String>,
+      entryPointsByType: null == entryPointsByType
+          ? _value.entryPointsByType
+          : entryPointsByType // ignore: cast_nullable_to_non_nullable
+              as EntryPointsByType,
+      contractClassVersion: null == contractClassVersion
+          ? _value.contractClassVersion
+          : contractClassVersion // ignore: cast_nullable_to_non_nullable
+              as String,
+      abi: null == abi
+          ? _value.abi
+          : abi // ignore: cast_nullable_to_non_nullable
+              as String,
+    ) as $Val);
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $EntryPointsByTypeCopyWith<$Res> get entryPointsByType {
+    return $EntryPointsByTypeCopyWith<$Res>(_value.entryPointsByType, (value) {
+      return _then(_value.copyWith(entryPointsByType: value) as $Val);
+    });
+  }
+}
+
+/// @nodoc
+abstract class _$$_FlattenSierraClassCopyWith<$Res>
+    implements $FlattenSierraContractClassCopyWith<$Res> {
+  factory _$$_FlattenSierraClassCopyWith(_$_FlattenSierraClass value,
+          $Res Function(_$_FlattenSierraClass) then) =
+      __$$_FlattenSierraClassCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call(
+      {List<String> sierraProgram,
+      EntryPointsByType entryPointsByType,
+      String contractClassVersion,
+      String abi});
+
+  @override
+  $EntryPointsByTypeCopyWith<$Res> get entryPointsByType;
+}
+
+/// @nodoc
+class __$$_FlattenSierraClassCopyWithImpl<$Res>
+    extends _$FlattenSierraContractClassCopyWithImpl<$Res,
+        _$_FlattenSierraClass> implements _$$_FlattenSierraClassCopyWith<$Res> {
+  __$$_FlattenSierraClassCopyWithImpl(
+      _$_FlattenSierraClass _value, $Res Function(_$_FlattenSierraClass) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? sierraProgram = null,
+    Object? entryPointsByType = null,
+    Object? contractClassVersion = null,
+    Object? abi = null,
+  }) {
+    return _then(_$_FlattenSierraClass(
+      sierraProgram: null == sierraProgram
+          ? _value._sierraProgram
+          : sierraProgram // ignore: cast_nullable_to_non_nullable
+              as List<String>,
+      entryPointsByType: null == entryPointsByType
+          ? _value.entryPointsByType
+          : entryPointsByType // ignore: cast_nullable_to_non_nullable
+              as EntryPointsByType,
+      contractClassVersion: null == contractClassVersion
+          ? _value.contractClassVersion
+          : contractClassVersion // ignore: cast_nullable_to_non_nullable
+              as String,
+      abi: null == abi
+          ? _value.abi
+          : abi // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$_FlattenSierraClass implements _FlattenSierraClass {
+  _$_FlattenSierraClass(
+      {required final List<String> sierraProgram,
+      required this.entryPointsByType,
+      required this.contractClassVersion,
+      required this.abi})
+      : _sierraProgram = sierraProgram;
+
+  factory _$_FlattenSierraClass.fromJson(Map<String, dynamic> json) =>
+      _$$_FlattenSierraClassFromJson(json);
+
+  final List<String> _sierraProgram;
+  @override
+  List<String> get sierraProgram {
+    if (_sierraProgram is EqualUnmodifiableListView) return _sierraProgram;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_sierraProgram);
+  }
+
+  @override
+  final EntryPointsByType entryPointsByType;
+  @override
+  final String contractClassVersion;
+  @override
+  final String abi;
+
+  @override
+  String toString() {
+    return 'FlattenSierraContractClass(sierraProgram: $sierraProgram, entryPointsByType: $entryPointsByType, contractClassVersion: $contractClassVersion, abi: $abi)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_FlattenSierraClass &&
+            const DeepCollectionEquality()
+                .equals(other._sierraProgram, _sierraProgram) &&
+            (identical(other.entryPointsByType, entryPointsByType) ||
+                other.entryPointsByType == entryPointsByType) &&
+            (identical(other.contractClassVersion, contractClassVersion) ||
+                other.contractClassVersion == contractClassVersion) &&
+            (identical(other.abi, abi) || other.abi == abi));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(_sierraProgram),
+      entryPointsByType,
+      contractClassVersion,
+      abi);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_FlattenSierraClassCopyWith<_$_FlattenSierraClass> get copyWith =>
+      __$$_FlattenSierraClassCopyWithImpl<_$_FlattenSierraClass>(
+          this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_FlattenSierraClassToJson(
+      this,
+    );
+  }
+}
+
+abstract class _FlattenSierraClass implements FlattenSierraContractClass {
+  factory _FlattenSierraClass(
+      {required final List<String> sierraProgram,
+      required final EntryPointsByType entryPointsByType,
+      required final String contractClassVersion,
+      required final String abi}) = _$_FlattenSierraClass;
+
+  factory _FlattenSierraClass.fromJson(Map<String, dynamic> json) =
+      _$_FlattenSierraClass.fromJson;
+
+  @override
+  List<String> get sierraProgram;
+  @override
+  EntryPointsByType get entryPointsByType;
+  @override
+  String get contractClassVersion;
+  @override
+  String get abi;
+  @override
+  @JsonKey(ignore: true)
+  _$$_FlattenSierraClassCopyWith<_$_FlattenSierraClass> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
 CASMCompiledContract _$CASMCompiledContractFromJson(Map<String, dynamic> json) {
   return _CASMCompiledContract.fromJson(json);
 }
