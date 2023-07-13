@@ -18,7 +18,7 @@ class SierraContractClass with _$SierraContractClass implements IContractClass {
     required List<Felt> sierraProgram,
     required String contractClassVersion,
     required EntryPointsByType entryPointsByType,
-    List<SierraContractAbiEntry>? abi,
+    String? abi,
   }) = _SierraContractClass;
 
   factory SierraContractClass.fromJson(Map<String, Object?> json) =>

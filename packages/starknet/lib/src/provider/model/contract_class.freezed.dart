@@ -23,7 +23,7 @@ mixin _$SierraContractClass {
   List<Felt> get sierraProgram => throw _privateConstructorUsedError;
   String get contractClassVersion => throw _privateConstructorUsedError;
   EntryPointsByType get entryPointsByType => throw _privateConstructorUsedError;
-  List<SierraContractAbiEntry>? get abi => throw _privateConstructorUsedError;
+  String? get abi => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -41,7 +41,7 @@ abstract class $SierraContractClassCopyWith<$Res> {
       {List<Felt> sierraProgram,
       String contractClassVersion,
       EntryPointsByType entryPointsByType,
-      List<SierraContractAbiEntry>? abi});
+      String? abi});
 
   $EntryPointsByTypeCopyWith<$Res> get entryPointsByType;
 }
@@ -80,7 +80,7 @@ class _$SierraContractClassCopyWithImpl<$Res, $Val extends SierraContractClass>
       abi: freezed == abi
           ? _value.abi
           : abi // ignore: cast_nullable_to_non_nullable
-              as List<SierraContractAbiEntry>?,
+              as String?,
     ) as $Val);
   }
 
@@ -105,7 +105,7 @@ abstract class _$$_SierraContractClassCopyWith<$Res>
       {List<Felt> sierraProgram,
       String contractClassVersion,
       EntryPointsByType entryPointsByType,
-      List<SierraContractAbiEntry>? abi});
+      String? abi});
 
   @override
   $EntryPointsByTypeCopyWith<$Res> get entryPointsByType;
@@ -141,9 +141,9 @@ class __$$_SierraContractClassCopyWithImpl<$Res>
           : entryPointsByType // ignore: cast_nullable_to_non_nullable
               as EntryPointsByType,
       abi: freezed == abi
-          ? _value._abi
+          ? _value.abi
           : abi // ignore: cast_nullable_to_non_nullable
-              as List<SierraContractAbiEntry>?,
+              as String?,
     ));
   }
 }
@@ -155,9 +155,8 @@ class _$_SierraContractClass implements _SierraContractClass {
       {required final List<Felt> sierraProgram,
       required this.contractClassVersion,
       required this.entryPointsByType,
-      final List<SierraContractAbiEntry>? abi})
-      : _sierraProgram = sierraProgram,
-        _abi = abi;
+      this.abi})
+      : _sierraProgram = sierraProgram;
 
   factory _$_SierraContractClass.fromJson(Map<String, dynamic> json) =>
       _$$_SierraContractClassFromJson(json);
@@ -174,15 +173,8 @@ class _$_SierraContractClass implements _SierraContractClass {
   final String contractClassVersion;
   @override
   final EntryPointsByType entryPointsByType;
-  final List<SierraContractAbiEntry>? _abi;
   @override
-  List<SierraContractAbiEntry>? get abi {
-    final value = _abi;
-    if (value == null) return null;
-    if (_abi is EqualUnmodifiableListView) return _abi;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(value);
-  }
+  final String? abi;
 
   @override
   String toString() {
@@ -200,7 +192,7 @@ class _$_SierraContractClass implements _SierraContractClass {
                 other.contractClassVersion == contractClassVersion) &&
             (identical(other.entryPointsByType, entryPointsByType) ||
                 other.entryPointsByType == entryPointsByType) &&
-            const DeepCollectionEquality().equals(other._abi, _abi));
+            (identical(other.abi, abi) || other.abi == abi));
   }
 
   @JsonKey(ignore: true)
@@ -210,7 +202,7 @@ class _$_SierraContractClass implements _SierraContractClass {
       const DeepCollectionEquality().hash(_sierraProgram),
       contractClassVersion,
       entryPointsByType,
-      const DeepCollectionEquality().hash(_abi));
+      abi);
 
   @JsonKey(ignore: true)
   @override
@@ -232,7 +224,7 @@ abstract class _SierraContractClass implements SierraContractClass {
       {required final List<Felt> sierraProgram,
       required final String contractClassVersion,
       required final EntryPointsByType entryPointsByType,
-      final List<SierraContractAbiEntry>? abi}) = _$_SierraContractClass;
+      final String? abi}) = _$_SierraContractClass;
 
   factory _SierraContractClass.fromJson(Map<String, dynamic> json) =
       _$_SierraContractClass.fromJson;
@@ -244,7 +236,7 @@ abstract class _SierraContractClass implements SierraContractClass {
   @override
   EntryPointsByType get entryPointsByType;
   @override
-  List<SierraContractAbiEntry>? get abi;
+  String? get abi;
   @override
   @JsonKey(ignore: true)
   _$$_SierraContractClassCopyWith<_$_SierraContractClass> get copyWith =>
