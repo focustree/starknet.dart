@@ -4,6 +4,8 @@ from dotenv import load_dotenv
 from starknet_py.net.models.chains import StarknetChainId
 
 COMPILED_CONTRACTS_PATH = "contracts/build"
+COMPILED_CAIRO1_CONTRACTS_PATH = "contracts/cairo1/artifacts"
+
 MAX_FEE = int(1e16)
 SALT = 1
 
