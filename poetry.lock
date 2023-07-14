@@ -2122,12 +2122,12 @@ Werkzeug = ">=2.0.3,<2.1.0"
 
 [[package]]
 name = "starknet-py"
-version = "0.16.1"
+version = "0.17.1"
 description = "A python SDK for Starknet"
 optional = false
 python-versions = ">=3.8,<3.12"
 files = [
-    {file = "starknet_py-0.16.1.tar.gz", hash = "sha256:3eb9b2f06d2f1311fff82302405de070520b1dad0b81c6db367e8aca32b1c928"},
+    {file = "starknet_py-0.17.1.tar.gz", hash = "sha256:279188516653a4eb0859dd661d65602e41eb0d0397d8a1776017abd3b4213bb5"},
 ]
 
 [package.dependencies]
@@ -2484,4 +2484,4 @@ testing = ["big-O", "flake8 (<5)", "jaraco.functools", "jaraco.itertools", "more
 [metadata]
 lock-version = "2.0"
 python-versions = ">=3.9,<3.10"
-content-hash = "24cb08563b3ae8abef1bda2fd84794df8b621b80368b0a80b92d4cbdcb0c7c58"
+content-hash = "478fe8055a2a4cdc5847a372451d9f39a2afc4a00ede023bf25c7e3443241d34"
