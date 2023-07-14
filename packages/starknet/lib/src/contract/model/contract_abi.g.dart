@@ -146,8 +146,9 @@ Map<String, dynamic> _$$_VariantParameterToJson(_$_VariantParameter instance) =>
       'type': instance.type,
     };
 
-_$FunctionAbiEntry _$$FunctionAbiEntryFromJson(Map<String, dynamic> json) =>
-    _$FunctionAbiEntry(
+_$DeprecatedFunctionAbiEntry _$$DeprecatedFunctionAbiEntryFromJson(
+        Map<String, dynamic> json) =>
+    _$DeprecatedFunctionAbiEntry(
       type: json['type'] as String,
       name: json['name'] as String,
       inputs: (json['inputs'] as List<dynamic>)
@@ -160,7 +161,8 @@ _$FunctionAbiEntry _$$FunctionAbiEntryFromJson(Map<String, dynamic> json) =>
       $type: json['starkNetRuntimeTypeToRemove'] as String?,
     );
 
-Map<String, dynamic> _$$FunctionAbiEntryToJson(_$FunctionAbiEntry instance) {
+Map<String, dynamic> _$$DeprecatedFunctionAbiEntryToJson(
+    _$DeprecatedFunctionAbiEntry instance) {
   final val = <String, dynamic>{
     'type': instance.type,
     'name': instance.name,
@@ -179,8 +181,9 @@ Map<String, dynamic> _$$FunctionAbiEntryToJson(_$FunctionAbiEntry instance) {
   return val;
 }
 
-_$EventAbiEntry _$$EventAbiEntryFromJson(Map<String, dynamic> json) =>
-    _$EventAbiEntry(
+_$DeprecatedEventAbiEntry _$$DeprecatedEventAbiEntryFromJson(
+        Map<String, dynamic> json) =>
+    _$DeprecatedEventAbiEntry(
       type: json['type'] as String,
       name: json['name'] as String,
       keys: (json['keys'] as List<dynamic>)
@@ -192,7 +195,8 @@ _$EventAbiEntry _$$EventAbiEntryFromJson(Map<String, dynamic> json) =>
       $type: json['starkNetRuntimeTypeToRemove'] as String?,
     );
 
-Map<String, dynamic> _$$EventAbiEntryToJson(_$EventAbiEntry instance) =>
+Map<String, dynamic> _$$DeprecatedEventAbiEntryToJson(
+        _$DeprecatedEventAbiEntry instance) =>
     <String, dynamic>{
       'type': instance.type,
       'name': instance.name,
@@ -201,8 +205,9 @@ Map<String, dynamic> _$$EventAbiEntryToJson(_$EventAbiEntry instance) =>
       'starkNetRuntimeTypeToRemove': instance.$type,
     };
 
-_$StructAbiEntry _$$StructAbiEntryFromJson(Map<String, dynamic> json) =>
-    _$StructAbiEntry(
+_$DeprecatedStructAbiEntry _$$DeprecatedStructAbiEntryFromJson(
+        Map<String, dynamic> json) =>
+    _$DeprecatedStructAbiEntry(
       type: json['type'] as String,
       name: json['name'] as String,
       size: json['size'] as int,
@@ -212,7 +217,8 @@ _$StructAbiEntry _$$StructAbiEntryFromJson(Map<String, dynamic> json) =>
       $type: json['starkNetRuntimeTypeToRemove'] as String?,
     );
 
-Map<String, dynamic> _$$StructAbiEntryToJson(_$StructAbiEntry instance) =>
+Map<String, dynamic> _$$DeprecatedStructAbiEntryToJson(
+        _$DeprecatedStructAbiEntry instance) =>
     <String, dynamic>{
       'type': instance.type,
       'name': instance.name,
@@ -221,9 +227,9 @@ Map<String, dynamic> _$$StructAbiEntryToJson(_$StructAbiEntry instance) =>
       'starkNetRuntimeTypeToRemove': instance.$type,
     };
 
-_$ConstructorAbiEntry _$$ConstructorAbiEntryFromJson(
+_$DeprecatedConstructorAbiEntry _$$DeprecatedConstructorAbiEntryFromJson(
         Map<String, dynamic> json) =>
-    _$ConstructorAbiEntry(
+    _$DeprecatedConstructorAbiEntry(
       type: json['type'] as String,
       name: json['name'] as String,
       inputs: (json['inputs'] as List<dynamic>)
@@ -235,8 +241,8 @@ _$ConstructorAbiEntry _$$ConstructorAbiEntryFromJson(
       $type: json['starkNetRuntimeTypeToRemove'] as String?,
     );
 
-Map<String, dynamic> _$$ConstructorAbiEntryToJson(
-        _$ConstructorAbiEntry instance) =>
+Map<String, dynamic> _$$DeprecatedConstructorAbiEntryToJson(
+        _$DeprecatedConstructorAbiEntry instance) =>
     <String, dynamic>{
       'type': instance.type,
       'name': instance.name,

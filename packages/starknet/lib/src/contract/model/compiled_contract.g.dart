@@ -78,7 +78,8 @@ _$_DeprecatedCompiledContract _$$_DeprecatedCompiledContractFromJson(
       entryPointsByType: DeprecatedCairoEntryPointsByType.fromJson(
           json['entry_points_by_type'] as Map<String, dynamic>),
       abi: (json['abi'] as List<dynamic>?)
-          ?.map((e) => ContractAbiEntry.fromJson(e as Map<String, dynamic>))
+          ?.map((e) =>
+              DeprecatedContractAbiEntry.fromJson(e as Map<String, dynamic>))
           .toList(),
     );
 

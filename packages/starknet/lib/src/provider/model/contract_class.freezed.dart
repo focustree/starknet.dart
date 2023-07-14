@@ -253,7 +253,8 @@ mixin _$DeprecatedContractClass {
   String get program => throw _privateConstructorUsedError;
   DeprecatedCairoEntryPointsByType get entryPointsByType =>
       throw _privateConstructorUsedError;
-  List<ContractAbiEntry>? get abi => throw _privateConstructorUsedError;
+  List<DeprecatedContractAbiEntry>? get abi =>
+      throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -270,7 +271,7 @@ abstract class $DeprecatedContractClassCopyWith<$Res> {
   $Res call(
       {String program,
       DeprecatedCairoEntryPointsByType entryPointsByType,
-      List<ContractAbiEntry>? abi});
+      List<DeprecatedContractAbiEntry>? abi});
 
   $DeprecatedCairoEntryPointsByTypeCopyWith<$Res> get entryPointsByType;
 }
@@ -305,7 +306,7 @@ class _$DeprecatedContractClassCopyWithImpl<$Res,
       abi: freezed == abi
           ? _value.abi
           : abi // ignore: cast_nullable_to_non_nullable
-              as List<ContractAbiEntry>?,
+              as List<DeprecatedContractAbiEntry>?,
     ) as $Val);
   }
 
@@ -330,7 +331,7 @@ abstract class _$$_DeprecatedContractClassCopyWith<$Res>
   $Res call(
       {String program,
       DeprecatedCairoEntryPointsByType entryPointsByType,
-      List<ContractAbiEntry>? abi});
+      List<DeprecatedContractAbiEntry>? abi});
 
   @override
   $DeprecatedCairoEntryPointsByTypeCopyWith<$Res> get entryPointsByType;
@@ -364,7 +365,7 @@ class __$$_DeprecatedContractClassCopyWithImpl<$Res>
       abi: freezed == abi
           ? _value._abi
           : abi // ignore: cast_nullable_to_non_nullable
-              as List<ContractAbiEntry>?,
+              as List<DeprecatedContractAbiEntry>?,
     ));
   }
 }
@@ -375,7 +376,7 @@ class _$_DeprecatedContractClass implements _DeprecatedContractClass {
   const _$_DeprecatedContractClass(
       {required this.program,
       required this.entryPointsByType,
-      final List<ContractAbiEntry>? abi})
+      final List<DeprecatedContractAbiEntry>? abi})
       : _abi = abi;
 
   factory _$_DeprecatedContractClass.fromJson(Map<String, dynamic> json) =>
@@ -385,9 +386,9 @@ class _$_DeprecatedContractClass implements _DeprecatedContractClass {
   final String program;
   @override
   final DeprecatedCairoEntryPointsByType entryPointsByType;
-  final List<ContractAbiEntry>? _abi;
+  final List<DeprecatedContractAbiEntry>? _abi;
   @override
-  List<ContractAbiEntry>? get abi {
+  List<DeprecatedContractAbiEntry>? get abi {
     final value = _abi;
     if (value == null) return null;
     if (_abi is EqualUnmodifiableListView) return _abi;
@@ -434,9 +435,10 @@ class _$_DeprecatedContractClass implements _DeprecatedContractClass {
 
 abstract class _DeprecatedContractClass implements DeprecatedContractClass {
   const factory _DeprecatedContractClass(
-      {required final String program,
-      required final DeprecatedCairoEntryPointsByType entryPointsByType,
-      final List<ContractAbiEntry>? abi}) = _$_DeprecatedContractClass;
+          {required final String program,
+          required final DeprecatedCairoEntryPointsByType entryPointsByType,
+          final List<DeprecatedContractAbiEntry>? abi}) =
+      _$_DeprecatedContractClass;
 
   factory _DeprecatedContractClass.fromJson(Map<String, dynamic> json) =
       _$_DeprecatedContractClass.fromJson;
@@ -446,7 +448,7 @@ abstract class _DeprecatedContractClass implements DeprecatedContractClass {
   @override
   DeprecatedCairoEntryPointsByType get entryPointsByType;
   @override
-  List<ContractAbiEntry>? get abi;
+  List<DeprecatedContractAbiEntry>? get abi;
   @override
   @JsonKey(ignore: true)
   _$$_DeprecatedContractClassCopyWith<_$_DeprecatedContractClass>

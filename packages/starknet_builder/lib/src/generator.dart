@@ -67,9 +67,9 @@ class _ContractAbiGenerator {
   final List abi;
   final String name;
 
-  List<FunctionAbiEntry> calls = [];
-  List<FunctionAbiEntry> executes = [];
-  Map<String, StructAbiEntry> structs = {};
+  List<DeprecatedFunctionAbiEntry> calls = [];
+  List<DeprecatedFunctionAbiEntry> executes = [];
+  Map<String, DeprecatedStructAbiEntry> structs = {};
 
   // #98: only add List<Felt> extension if needed
   // The following bool are used to check if we have a
@@ -80,10 +80,10 @@ class _ContractAbiGenerator {
 
   _ContractAbiGenerator(this.abi, this.name) {
     for (var element in abi) {
-      final entry = ContractAbiEntry.fromJson(element);
+      final entry = DeprecatedContractAbiEntry.fromJson(element);
       switch (entry.type) {
         case "function":
-          final functionAbi = entry as FunctionAbiEntry;
+          final functionAbi = entry as DeprecatedFunctionAbiEntry;
           if (functionAbi.stateMutability == null) {
             executes.add(functionAbi);
           } else {
@@ -103,7 +103,7 @@ class _ContractAbiGenerator {
           }
           break;
         case "struct":
-          structs[entry.name] = entry as StructAbiEntry;
+          structs[entry.name] = entry as DeprecatedStructAbiEntry;
           break;
       }
     }
@@ -154,7 +154,8 @@ class _ContractAbiGenerator {
     });
   }
 
-  void Function(ClassBuilder) _createCustomClass(StructAbiEntry custom) {
+  void Function(ClassBuilder) _createCustomClass(
+      DeprecatedStructAbiEntry custom) {
     void innerFunction(ClassBuilder b) {
       b.name = custom.name;
       b.fields.addAll(custom.members.map(
@@ -233,7 +234,8 @@ class _ContractAbiGenerator {
     return innerFunction;
   }
 
-  void Function(ClassBuilder) _createOutputClass(FunctionAbiEntry fun) {
+  void Function(ClassBuilder) _createOutputClass(
+      DeprecatedFunctionAbiEntry fun) {
     void innerFunction(ClassBuilder b) {
       final name = _getOutputClassName(fun);
       b
@@ -377,7 +379,7 @@ class _ContractAbiGenerator {
           .code);
   }
 
-  void _methodFor(FunctionAbiEntry fun, MethodBuilder b) {
+  void _methodFor(DeprecatedFunctionAbiEntry fun, MethodBuilder b) {
     b
       ..modifier = MethodModifier.async
       ..returns = _returnType(fun)
@@ -387,7 +389,7 @@ class _ContractAbiGenerator {
   }
 
   // An 'invoke' will alwas return transaction hash as a String
-  Reference _returnType(FunctionAbiEntry fun) {
+  Reference _returnType(DeprecatedFunctionAbiEntry fun) {
     if (fun.stateMutability == 'view') {
       return _returnTypeForCall(fun);
     } else {
@@ -395,7 +397,7 @@ class _ContractAbiGenerator {
     }
   }
 
-  List<Parameter> _parametersFor(FunctionAbiEntry fun) {
+  List<Parameter> _parametersFor(DeprecatedFunctionAbiEntry fun) {
     final parameters = <Parameter>[];
     for (final param in fun.inputsFiltered) {
       parameters.add(Parameter((b) => b
@@ -422,7 +424,7 @@ class _ContractAbiGenerator {
     }
   }
 
-  Expression _assignParams(FunctionAbiEntry fun) {
+  Expression _assignParams(DeprecatedFunctionAbiEntry fun) {
     final params = fun.inputsFiltered
         .map((e) => e.type == 'felt'
             ? refer(e.name)
@@ -433,7 +435,7 @@ class _ContractAbiGenerator {
   }
 
   // Generate method body for a 'call' method
-  Code _bodyForCall(FunctionAbiEntry fun) {
+  Code _bodyForCall(DeprecatedFunctionAbiEntry fun) {
     return Block((b) {
       b
         ..addExpression(_assignParams(fun))
@@ -445,7 +447,7 @@ class _ContractAbiGenerator {
   }
 
   // Generate method body for an 'execute' method
-  Code _bodyForExecute(FunctionAbiEntry fun) {
+  Code _bodyForExecute(DeprecatedFunctionAbiEntry fun) {
     final String trxVar = "trx";
     final String trxHashVar = "trxHash";
     final Reference trx = refer(trxVar);
@@ -478,7 +480,7 @@ class _ContractAbiGenerator {
     });
   }
 
-  Code _bodyForMethod(FunctionAbiEntry fun) {
+  Code _bodyForMethod(DeprecatedFunctionAbiEntry fun) {
     if (fun.stateMutability == 'view') {
       return _bodyForCall(fun);
     } else {
@@ -486,7 +488,7 @@ class _ContractAbiGenerator {
     }
   }
 
-  void _returnBodyForCall(FunctionAbiEntry fun, BlockBuilder b) {
+  void _returnBodyForCall(DeprecatedFunctionAbiEntry fun, BlockBuilder b) {
     if (fun.outputsFiltered.isNotEmpty) {
       if (fun.outputsFiltered.length == 1) {
         final output = fun.outputsFiltered[0];
@@ -512,7 +514,7 @@ class _ContractAbiGenerator {
     }
   }
 
-  Reference _returnTypeForCall(FunctionAbiEntry fun) {
+  Reference _returnTypeForCall(DeprecatedFunctionAbiEntry fun) {
     if (fun.outputsFiltered.isEmpty) {
       return _futurize(refer('void'));
     }
@@ -532,7 +534,7 @@ class _ContractAbiGenerator {
       ..types.add(r));
   }
 
-  String _getOutputClassName(FunctionAbiEntry fun) {
+  String _getOutputClassName(DeprecatedFunctionAbiEntry fun) {
     return '${fun.name.snakeCasetoCamelCase()}Result';
   }
 }
@@ -552,7 +554,7 @@ extension on List<TypedParameter> {
   }
 }
 
-extension on FunctionAbiEntry {
+extension on DeprecatedFunctionAbiEntry {
   List<TypedParameter> get inputsFiltered {
     return this.inputs.filterArray();
   }

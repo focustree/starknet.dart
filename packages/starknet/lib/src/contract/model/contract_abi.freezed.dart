@@ -1736,28 +1736,29 @@ abstract class _VariantParameter implements VariantParameter {
       throw _privateConstructorUsedError;
 }
 
-ContractAbiEntry _$ContractAbiEntryFromJson(Map<String, dynamic> json) {
+DeprecatedContractAbiEntry _$DeprecatedContractAbiEntryFromJson(
+    Map<String, dynamic> json) {
   switch (json['starkNetRuntimeTypeToRemove']) {
     case 'function':
-      return FunctionAbiEntry.fromJson(json);
+      return DeprecatedFunctionAbiEntry.fromJson(json);
     case 'event':
-      return EventAbiEntry.fromJson(json);
+      return DeprecatedEventAbiEntry.fromJson(json);
     case 'struct':
-      return StructAbiEntry.fromJson(json);
+      return DeprecatedStructAbiEntry.fromJson(json);
     case 'constructor':
-      return ConstructorAbiEntry.fromJson(json);
+      return DeprecatedConstructorAbiEntry.fromJson(json);
 
     default:
       throw CheckedFromJsonException(
           json,
           'starkNetRuntimeTypeToRemove',
-          'ContractAbiEntry',
+          'DeprecatedContractAbiEntry',
           'Invalid union type "${json['starkNetRuntimeTypeToRemove']}"!');
   }
 }
 
 /// @nodoc
-mixin _$ContractAbiEntry {
+mixin _$DeprecatedContractAbiEntry {
   String get type => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -1826,48 +1827,50 @@ mixin _$ContractAbiEntry {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(FunctionAbiEntry value) function,
-    required TResult Function(EventAbiEntry value) event,
-    required TResult Function(StructAbiEntry value) struct,
-    required TResult Function(ConstructorAbiEntry value) constructor,
+    required TResult Function(DeprecatedFunctionAbiEntry value) function,
+    required TResult Function(DeprecatedEventAbiEntry value) event,
+    required TResult Function(DeprecatedStructAbiEntry value) struct,
+    required TResult Function(DeprecatedConstructorAbiEntry value) constructor,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(FunctionAbiEntry value)? function,
-    TResult? Function(EventAbiEntry value)? event,
-    TResult? Function(StructAbiEntry value)? struct,
-    TResult? Function(ConstructorAbiEntry value)? constructor,
+    TResult? Function(DeprecatedFunctionAbiEntry value)? function,
+    TResult? Function(DeprecatedEventAbiEntry value)? event,
+    TResult? Function(DeprecatedStructAbiEntry value)? struct,
+    TResult? Function(DeprecatedConstructorAbiEntry value)? constructor,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(FunctionAbiEntry value)? function,
-    TResult Function(EventAbiEntry value)? event,
-    TResult Function(StructAbiEntry value)? struct,
-    TResult Function(ConstructorAbiEntry value)? constructor,
+    TResult Function(DeprecatedFunctionAbiEntry value)? function,
+    TResult Function(DeprecatedEventAbiEntry value)? event,
+    TResult Function(DeprecatedStructAbiEntry value)? struct,
+    TResult Function(DeprecatedConstructorAbiEntry value)? constructor,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $ContractAbiEntryCopyWith<ContractAbiEntry> get copyWith =>
-      throw _privateConstructorUsedError;
+  $DeprecatedContractAbiEntryCopyWith<DeprecatedContractAbiEntry>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $ContractAbiEntryCopyWith<$Res> {
-  factory $ContractAbiEntryCopyWith(
-          ContractAbiEntry value, $Res Function(ContractAbiEntry) then) =
-      _$ContractAbiEntryCopyWithImpl<$Res, ContractAbiEntry>;
+abstract class $DeprecatedContractAbiEntryCopyWith<$Res> {
+  factory $DeprecatedContractAbiEntryCopyWith(DeprecatedContractAbiEntry value,
+          $Res Function(DeprecatedContractAbiEntry) then) =
+      _$DeprecatedContractAbiEntryCopyWithImpl<$Res,
+          DeprecatedContractAbiEntry>;
   @useResult
   $Res call({String type, String name});
 }
 
 /// @nodoc
-class _$ContractAbiEntryCopyWithImpl<$Res, $Val extends ContractAbiEntry>
-    implements $ContractAbiEntryCopyWith<$Res> {
-  _$ContractAbiEntryCopyWithImpl(this._value, this._then);
+class _$DeprecatedContractAbiEntryCopyWithImpl<$Res,
+        $Val extends DeprecatedContractAbiEntry>
+    implements $DeprecatedContractAbiEntryCopyWith<$Res> {
+  _$DeprecatedContractAbiEntryCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -1894,11 +1897,12 @@ class _$ContractAbiEntryCopyWithImpl<$Res, $Val extends ContractAbiEntry>
 }
 
 /// @nodoc
-abstract class _$$FunctionAbiEntryCopyWith<$Res>
-    implements $ContractAbiEntryCopyWith<$Res> {
-  factory _$$FunctionAbiEntryCopyWith(
-          _$FunctionAbiEntry value, $Res Function(_$FunctionAbiEntry) then) =
-      __$$FunctionAbiEntryCopyWithImpl<$Res>;
+abstract class _$$DeprecatedFunctionAbiEntryCopyWith<$Res>
+    implements $DeprecatedContractAbiEntryCopyWith<$Res> {
+  factory _$$DeprecatedFunctionAbiEntryCopyWith(
+          _$DeprecatedFunctionAbiEntry value,
+          $Res Function(_$DeprecatedFunctionAbiEntry) then) =
+      __$$DeprecatedFunctionAbiEntryCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -1911,11 +1915,13 @@ abstract class _$$FunctionAbiEntryCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$FunctionAbiEntryCopyWithImpl<$Res>
-    extends _$ContractAbiEntryCopyWithImpl<$Res, _$FunctionAbiEntry>
-    implements _$$FunctionAbiEntryCopyWith<$Res> {
-  __$$FunctionAbiEntryCopyWithImpl(
-      _$FunctionAbiEntry _value, $Res Function(_$FunctionAbiEntry) _then)
+class __$$DeprecatedFunctionAbiEntryCopyWithImpl<$Res>
+    extends _$DeprecatedContractAbiEntryCopyWithImpl<$Res,
+        _$DeprecatedFunctionAbiEntry>
+    implements _$$DeprecatedFunctionAbiEntryCopyWith<$Res> {
+  __$$DeprecatedFunctionAbiEntryCopyWithImpl(
+      _$DeprecatedFunctionAbiEntry _value,
+      $Res Function(_$DeprecatedFunctionAbiEntry) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -1927,7 +1933,7 @@ class __$$FunctionAbiEntryCopyWithImpl<$Res>
     Object? outputs = null,
     Object? stateMutability = freezed,
   }) {
-    return _then(_$FunctionAbiEntry(
+    return _then(_$DeprecatedFunctionAbiEntry(
       type: null == type
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
@@ -1954,8 +1960,8 @@ class __$$FunctionAbiEntryCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$FunctionAbiEntry implements FunctionAbiEntry {
-  const _$FunctionAbiEntry(
+class _$DeprecatedFunctionAbiEntry implements DeprecatedFunctionAbiEntry {
+  const _$DeprecatedFunctionAbiEntry(
       {required this.type,
       required this.name,
       required final List<TypedParameter> inputs,
@@ -1967,8 +1973,8 @@ class _$FunctionAbiEntry implements FunctionAbiEntry {
         _outputs = outputs,
         $type = $type ?? 'function';
 
-  factory _$FunctionAbiEntry.fromJson(Map<String, dynamic> json) =>
-      _$$FunctionAbiEntryFromJson(json);
+  factory _$DeprecatedFunctionAbiEntry.fromJson(Map<String, dynamic> json) =>
+      _$$DeprecatedFunctionAbiEntryFromJson(json);
 
   @override
   final String type;
@@ -1999,14 +2005,14 @@ class _$FunctionAbiEntry implements FunctionAbiEntry {
 
   @override
   String toString() {
-    return 'ContractAbiEntry.function(type: $type, name: $name, inputs: $inputs, outputs: $outputs, stateMutability: $stateMutability)';
+    return 'DeprecatedContractAbiEntry.function(type: $type, name: $name, inputs: $inputs, outputs: $outputs, stateMutability: $stateMutability)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$FunctionAbiEntry &&
+            other is _$DeprecatedFunctionAbiEntry &&
             (identical(other.type, type) || other.type == type) &&
             (identical(other.name, name) || other.name == name) &&
             const DeepCollectionEquality().equals(other._inputs, _inputs) &&
@@ -2028,8 +2034,9 @@ class _$FunctionAbiEntry implements FunctionAbiEntry {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$FunctionAbiEntryCopyWith<_$FunctionAbiEntry> get copyWith =>
-      __$$FunctionAbiEntryCopyWithImpl<_$FunctionAbiEntry>(this, _$identity);
+  _$$DeprecatedFunctionAbiEntryCopyWith<_$DeprecatedFunctionAbiEntry>
+      get copyWith => __$$DeprecatedFunctionAbiEntryCopyWithImpl<
+          _$DeprecatedFunctionAbiEntry>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -2110,10 +2117,10 @@ class _$FunctionAbiEntry implements FunctionAbiEntry {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(FunctionAbiEntry value) function,
-    required TResult Function(EventAbiEntry value) event,
-    required TResult Function(StructAbiEntry value) struct,
-    required TResult Function(ConstructorAbiEntry value) constructor,
+    required TResult Function(DeprecatedFunctionAbiEntry value) function,
+    required TResult Function(DeprecatedEventAbiEntry value) event,
+    required TResult Function(DeprecatedStructAbiEntry value) struct,
+    required TResult Function(DeprecatedConstructorAbiEntry value) constructor,
   }) {
     return function(this);
   }
@@ -2121,10 +2128,10 @@ class _$FunctionAbiEntry implements FunctionAbiEntry {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(FunctionAbiEntry value)? function,
-    TResult? Function(EventAbiEntry value)? event,
-    TResult? Function(StructAbiEntry value)? struct,
-    TResult? Function(ConstructorAbiEntry value)? constructor,
+    TResult? Function(DeprecatedFunctionAbiEntry value)? function,
+    TResult? Function(DeprecatedEventAbiEntry value)? event,
+    TResult? Function(DeprecatedStructAbiEntry value)? struct,
+    TResult? Function(DeprecatedConstructorAbiEntry value)? constructor,
   }) {
     return function?.call(this);
   }
@@ -2132,10 +2139,10 @@ class _$FunctionAbiEntry implements FunctionAbiEntry {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(FunctionAbiEntry value)? function,
-    TResult Function(EventAbiEntry value)? event,
-    TResult Function(StructAbiEntry value)? struct,
-    TResult Function(ConstructorAbiEntry value)? constructor,
+    TResult Function(DeprecatedFunctionAbiEntry value)? function,
+    TResult Function(DeprecatedEventAbiEntry value)? event,
+    TResult Function(DeprecatedStructAbiEntry value)? struct,
+    TResult Function(DeprecatedConstructorAbiEntry value)? constructor,
     required TResult orElse(),
   }) {
     if (function != null) {
@@ -2146,23 +2153,24 @@ class _$FunctionAbiEntry implements FunctionAbiEntry {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$FunctionAbiEntryToJson(
+    return _$$DeprecatedFunctionAbiEntryToJson(
       this,
     );
   }
 }
 
-abstract class FunctionAbiEntry implements ContractAbiEntry {
-  const factory FunctionAbiEntry(
+abstract class DeprecatedFunctionAbiEntry
+    implements DeprecatedContractAbiEntry {
+  const factory DeprecatedFunctionAbiEntry(
       {required final String type,
       required final String name,
       required final List<TypedParameter> inputs,
       required final List<TypedParameter> outputs,
       @JsonKey(name: 'stateMutability', includeIfNull: false)
-      final String? stateMutability}) = _$FunctionAbiEntry;
+      final String? stateMutability}) = _$DeprecatedFunctionAbiEntry;
 
-  factory FunctionAbiEntry.fromJson(Map<String, dynamic> json) =
-      _$FunctionAbiEntry.fromJson;
+  factory DeprecatedFunctionAbiEntry.fromJson(Map<String, dynamic> json) =
+      _$DeprecatedFunctionAbiEntry.fromJson;
 
   @override
   String get type;
@@ -2174,16 +2182,16 @@ abstract class FunctionAbiEntry implements ContractAbiEntry {
   String? get stateMutability;
   @override
   @JsonKey(ignore: true)
-  _$$FunctionAbiEntryCopyWith<_$FunctionAbiEntry> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$DeprecatedFunctionAbiEntryCopyWith<_$DeprecatedFunctionAbiEntry>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$EventAbiEntryCopyWith<$Res>
-    implements $ContractAbiEntryCopyWith<$Res> {
-  factory _$$EventAbiEntryCopyWith(
-          _$EventAbiEntry value, $Res Function(_$EventAbiEntry) then) =
-      __$$EventAbiEntryCopyWithImpl<$Res>;
+abstract class _$$DeprecatedEventAbiEntryCopyWith<$Res>
+    implements $DeprecatedContractAbiEntryCopyWith<$Res> {
+  factory _$$DeprecatedEventAbiEntryCopyWith(_$DeprecatedEventAbiEntry value,
+          $Res Function(_$DeprecatedEventAbiEntry) then) =
+      __$$DeprecatedEventAbiEntryCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -2194,11 +2202,12 @@ abstract class _$$EventAbiEntryCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$EventAbiEntryCopyWithImpl<$Res>
-    extends _$ContractAbiEntryCopyWithImpl<$Res, _$EventAbiEntry>
-    implements _$$EventAbiEntryCopyWith<$Res> {
-  __$$EventAbiEntryCopyWithImpl(
-      _$EventAbiEntry _value, $Res Function(_$EventAbiEntry) _then)
+class __$$DeprecatedEventAbiEntryCopyWithImpl<$Res>
+    extends _$DeprecatedContractAbiEntryCopyWithImpl<$Res,
+        _$DeprecatedEventAbiEntry>
+    implements _$$DeprecatedEventAbiEntryCopyWith<$Res> {
+  __$$DeprecatedEventAbiEntryCopyWithImpl(_$DeprecatedEventAbiEntry _value,
+      $Res Function(_$DeprecatedEventAbiEntry) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -2209,7 +2218,7 @@ class __$$EventAbiEntryCopyWithImpl<$Res>
     Object? keys = null,
     Object? data = null,
   }) {
-    return _then(_$EventAbiEntry(
+    return _then(_$DeprecatedEventAbiEntry(
       type: null == type
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
@@ -2232,8 +2241,8 @@ class __$$EventAbiEntryCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$EventAbiEntry implements EventAbiEntry {
-  const _$EventAbiEntry(
+class _$DeprecatedEventAbiEntry implements DeprecatedEventAbiEntry {
+  const _$DeprecatedEventAbiEntry(
       {required this.type,
       required this.name,
       required final List<TypedParameter> keys,
@@ -2243,8 +2252,8 @@ class _$EventAbiEntry implements EventAbiEntry {
         _data = data,
         $type = $type ?? 'event';
 
-  factory _$EventAbiEntry.fromJson(Map<String, dynamic> json) =>
-      _$$EventAbiEntryFromJson(json);
+  factory _$DeprecatedEventAbiEntry.fromJson(Map<String, dynamic> json) =>
+      _$$DeprecatedEventAbiEntryFromJson(json);
 
   @override
   final String type;
@@ -2271,14 +2280,14 @@ class _$EventAbiEntry implements EventAbiEntry {
 
   @override
   String toString() {
-    return 'ContractAbiEntry.event(type: $type, name: $name, keys: $keys, data: $data)';
+    return 'DeprecatedContractAbiEntry.event(type: $type, name: $name, keys: $keys, data: $data)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$EventAbiEntry &&
+            other is _$DeprecatedEventAbiEntry &&
             (identical(other.type, type) || other.type == type) &&
             (identical(other.name, name) || other.name == name) &&
             const DeepCollectionEquality().equals(other._keys, _keys) &&
@@ -2297,8 +2306,9 @@ class _$EventAbiEntry implements EventAbiEntry {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$EventAbiEntryCopyWith<_$EventAbiEntry> get copyWith =>
-      __$$EventAbiEntryCopyWithImpl<_$EventAbiEntry>(this, _$identity);
+  _$$DeprecatedEventAbiEntryCopyWith<_$DeprecatedEventAbiEntry> get copyWith =>
+      __$$DeprecatedEventAbiEntryCopyWithImpl<_$DeprecatedEventAbiEntry>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -2379,10 +2389,10 @@ class _$EventAbiEntry implements EventAbiEntry {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(FunctionAbiEntry value) function,
-    required TResult Function(EventAbiEntry value) event,
-    required TResult Function(StructAbiEntry value) struct,
-    required TResult Function(ConstructorAbiEntry value) constructor,
+    required TResult Function(DeprecatedFunctionAbiEntry value) function,
+    required TResult Function(DeprecatedEventAbiEntry value) event,
+    required TResult Function(DeprecatedStructAbiEntry value) struct,
+    required TResult Function(DeprecatedConstructorAbiEntry value) constructor,
   }) {
     return event(this);
   }
@@ -2390,10 +2400,10 @@ class _$EventAbiEntry implements EventAbiEntry {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(FunctionAbiEntry value)? function,
-    TResult? Function(EventAbiEntry value)? event,
-    TResult? Function(StructAbiEntry value)? struct,
-    TResult? Function(ConstructorAbiEntry value)? constructor,
+    TResult? Function(DeprecatedFunctionAbiEntry value)? function,
+    TResult? Function(DeprecatedEventAbiEntry value)? event,
+    TResult? Function(DeprecatedStructAbiEntry value)? struct,
+    TResult? Function(DeprecatedConstructorAbiEntry value)? constructor,
   }) {
     return event?.call(this);
   }
@@ -2401,10 +2411,10 @@ class _$EventAbiEntry implements EventAbiEntry {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(FunctionAbiEntry value)? function,
-    TResult Function(EventAbiEntry value)? event,
-    TResult Function(StructAbiEntry value)? struct,
-    TResult Function(ConstructorAbiEntry value)? constructor,
+    TResult Function(DeprecatedFunctionAbiEntry value)? function,
+    TResult Function(DeprecatedEventAbiEntry value)? event,
+    TResult Function(DeprecatedStructAbiEntry value)? struct,
+    TResult Function(DeprecatedConstructorAbiEntry value)? constructor,
     required TResult orElse(),
   }) {
     if (event != null) {
@@ -2415,21 +2425,21 @@ class _$EventAbiEntry implements EventAbiEntry {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$EventAbiEntryToJson(
+    return _$$DeprecatedEventAbiEntryToJson(
       this,
     );
   }
 }
 
-abstract class EventAbiEntry implements ContractAbiEntry {
-  const factory EventAbiEntry(
+abstract class DeprecatedEventAbiEntry implements DeprecatedContractAbiEntry {
+  const factory DeprecatedEventAbiEntry(
       {required final String type,
       required final String name,
       required final List<TypedParameter> keys,
-      required final List<TypedParameter> data}) = _$EventAbiEntry;
+      required final List<TypedParameter> data}) = _$DeprecatedEventAbiEntry;
 
-  factory EventAbiEntry.fromJson(Map<String, dynamic> json) =
-      _$EventAbiEntry.fromJson;
+  factory DeprecatedEventAbiEntry.fromJson(Map<String, dynamic> json) =
+      _$DeprecatedEventAbiEntry.fromJson;
 
   @override
   String get type;
@@ -2439,27 +2449,28 @@ abstract class EventAbiEntry implements ContractAbiEntry {
   List<TypedParameter> get data;
   @override
   @JsonKey(ignore: true)
-  _$$EventAbiEntryCopyWith<_$EventAbiEntry> get copyWith =>
+  _$$DeprecatedEventAbiEntryCopyWith<_$DeprecatedEventAbiEntry> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$StructAbiEntryCopyWith<$Res>
-    implements $ContractAbiEntryCopyWith<$Res> {
-  factory _$$StructAbiEntryCopyWith(
-          _$StructAbiEntry value, $Res Function(_$StructAbiEntry) then) =
-      __$$StructAbiEntryCopyWithImpl<$Res>;
+abstract class _$$DeprecatedStructAbiEntryCopyWith<$Res>
+    implements $DeprecatedContractAbiEntryCopyWith<$Res> {
+  factory _$$DeprecatedStructAbiEntryCopyWith(_$DeprecatedStructAbiEntry value,
+          $Res Function(_$DeprecatedStructAbiEntry) then) =
+      __$$DeprecatedStructAbiEntryCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String type, String name, int size, List<StructMember> members});
 }
 
 /// @nodoc
-class __$$StructAbiEntryCopyWithImpl<$Res>
-    extends _$ContractAbiEntryCopyWithImpl<$Res, _$StructAbiEntry>
-    implements _$$StructAbiEntryCopyWith<$Res> {
-  __$$StructAbiEntryCopyWithImpl(
-      _$StructAbiEntry _value, $Res Function(_$StructAbiEntry) _then)
+class __$$DeprecatedStructAbiEntryCopyWithImpl<$Res>
+    extends _$DeprecatedContractAbiEntryCopyWithImpl<$Res,
+        _$DeprecatedStructAbiEntry>
+    implements _$$DeprecatedStructAbiEntryCopyWith<$Res> {
+  __$$DeprecatedStructAbiEntryCopyWithImpl(_$DeprecatedStructAbiEntry _value,
+      $Res Function(_$DeprecatedStructAbiEntry) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -2470,7 +2481,7 @@ class __$$StructAbiEntryCopyWithImpl<$Res>
     Object? size = null,
     Object? members = null,
   }) {
-    return _then(_$StructAbiEntry(
+    return _then(_$DeprecatedStructAbiEntry(
       type: null == type
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
@@ -2493,8 +2504,8 @@ class __$$StructAbiEntryCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$StructAbiEntry implements StructAbiEntry {
-  const _$StructAbiEntry(
+class _$DeprecatedStructAbiEntry implements DeprecatedStructAbiEntry {
+  const _$DeprecatedStructAbiEntry(
       {required this.type,
       required this.name,
       required this.size,
@@ -2503,8 +2514,8 @@ class _$StructAbiEntry implements StructAbiEntry {
       : _members = members,
         $type = $type ?? 'struct';
 
-  factory _$StructAbiEntry.fromJson(Map<String, dynamic> json) =>
-      _$$StructAbiEntryFromJson(json);
+  factory _$DeprecatedStructAbiEntry.fromJson(Map<String, dynamic> json) =>
+      _$$DeprecatedStructAbiEntryFromJson(json);
 
   @override
   final String type;
@@ -2525,14 +2536,14 @@ class _$StructAbiEntry implements StructAbiEntry {
 
   @override
   String toString() {
-    return 'ContractAbiEntry.struct(type: $type, name: $name, size: $size, members: $members)';
+    return 'DeprecatedContractAbiEntry.struct(type: $type, name: $name, size: $size, members: $members)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$StructAbiEntry &&
+            other is _$DeprecatedStructAbiEntry &&
             (identical(other.type, type) || other.type == type) &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.size, size) || other.size == size) &&
@@ -2547,8 +2558,10 @@ class _$StructAbiEntry implements StructAbiEntry {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$StructAbiEntryCopyWith<_$StructAbiEntry> get copyWith =>
-      __$$StructAbiEntryCopyWithImpl<_$StructAbiEntry>(this, _$identity);
+  _$$DeprecatedStructAbiEntryCopyWith<_$DeprecatedStructAbiEntry>
+      get copyWith =>
+          __$$DeprecatedStructAbiEntryCopyWithImpl<_$DeprecatedStructAbiEntry>(
+              this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -2629,10 +2642,10 @@ class _$StructAbiEntry implements StructAbiEntry {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(FunctionAbiEntry value) function,
-    required TResult Function(EventAbiEntry value) event,
-    required TResult Function(StructAbiEntry value) struct,
-    required TResult Function(ConstructorAbiEntry value) constructor,
+    required TResult Function(DeprecatedFunctionAbiEntry value) function,
+    required TResult Function(DeprecatedEventAbiEntry value) event,
+    required TResult Function(DeprecatedStructAbiEntry value) struct,
+    required TResult Function(DeprecatedConstructorAbiEntry value) constructor,
   }) {
     return struct(this);
   }
@@ -2640,10 +2653,10 @@ class _$StructAbiEntry implements StructAbiEntry {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(FunctionAbiEntry value)? function,
-    TResult? Function(EventAbiEntry value)? event,
-    TResult? Function(StructAbiEntry value)? struct,
-    TResult? Function(ConstructorAbiEntry value)? constructor,
+    TResult? Function(DeprecatedFunctionAbiEntry value)? function,
+    TResult? Function(DeprecatedEventAbiEntry value)? event,
+    TResult? Function(DeprecatedStructAbiEntry value)? struct,
+    TResult? Function(DeprecatedConstructorAbiEntry value)? constructor,
   }) {
     return struct?.call(this);
   }
@@ -2651,10 +2664,10 @@ class _$StructAbiEntry implements StructAbiEntry {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(FunctionAbiEntry value)? function,
-    TResult Function(EventAbiEntry value)? event,
-    TResult Function(StructAbiEntry value)? struct,
-    TResult Function(ConstructorAbiEntry value)? constructor,
+    TResult Function(DeprecatedFunctionAbiEntry value)? function,
+    TResult Function(DeprecatedEventAbiEntry value)? event,
+    TResult Function(DeprecatedStructAbiEntry value)? struct,
+    TResult Function(DeprecatedConstructorAbiEntry value)? constructor,
     required TResult orElse(),
   }) {
     if (struct != null) {
@@ -2665,21 +2678,21 @@ class _$StructAbiEntry implements StructAbiEntry {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$StructAbiEntryToJson(
+    return _$$DeprecatedStructAbiEntryToJson(
       this,
     );
   }
 }
 
-abstract class StructAbiEntry implements ContractAbiEntry {
-  const factory StructAbiEntry(
+abstract class DeprecatedStructAbiEntry implements DeprecatedContractAbiEntry {
+  const factory DeprecatedStructAbiEntry(
       {required final String type,
       required final String name,
       required final int size,
-      required final List<StructMember> members}) = _$StructAbiEntry;
+      required final List<StructMember> members}) = _$DeprecatedStructAbiEntry;
 
-  factory StructAbiEntry.fromJson(Map<String, dynamic> json) =
-      _$StructAbiEntry.fromJson;
+  factory DeprecatedStructAbiEntry.fromJson(Map<String, dynamic> json) =
+      _$DeprecatedStructAbiEntry.fromJson;
 
   @override
   String get type;
@@ -2689,16 +2702,17 @@ abstract class StructAbiEntry implements ContractAbiEntry {
   List<StructMember> get members;
   @override
   @JsonKey(ignore: true)
-  _$$StructAbiEntryCopyWith<_$StructAbiEntry> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$DeprecatedStructAbiEntryCopyWith<_$DeprecatedStructAbiEntry>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$ConstructorAbiEntryCopyWith<$Res>
-    implements $ContractAbiEntryCopyWith<$Res> {
-  factory _$$ConstructorAbiEntryCopyWith(_$ConstructorAbiEntry value,
-          $Res Function(_$ConstructorAbiEntry) then) =
-      __$$ConstructorAbiEntryCopyWithImpl<$Res>;
+abstract class _$$DeprecatedConstructorAbiEntryCopyWith<$Res>
+    implements $DeprecatedContractAbiEntryCopyWith<$Res> {
+  factory _$$DeprecatedConstructorAbiEntryCopyWith(
+          _$DeprecatedConstructorAbiEntry value,
+          $Res Function(_$DeprecatedConstructorAbiEntry) then) =
+      __$$DeprecatedConstructorAbiEntryCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -2709,11 +2723,13 @@ abstract class _$$ConstructorAbiEntryCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$ConstructorAbiEntryCopyWithImpl<$Res>
-    extends _$ContractAbiEntryCopyWithImpl<$Res, _$ConstructorAbiEntry>
-    implements _$$ConstructorAbiEntryCopyWith<$Res> {
-  __$$ConstructorAbiEntryCopyWithImpl(
-      _$ConstructorAbiEntry _value, $Res Function(_$ConstructorAbiEntry) _then)
+class __$$DeprecatedConstructorAbiEntryCopyWithImpl<$Res>
+    extends _$DeprecatedContractAbiEntryCopyWithImpl<$Res,
+        _$DeprecatedConstructorAbiEntry>
+    implements _$$DeprecatedConstructorAbiEntryCopyWith<$Res> {
+  __$$DeprecatedConstructorAbiEntryCopyWithImpl(
+      _$DeprecatedConstructorAbiEntry _value,
+      $Res Function(_$DeprecatedConstructorAbiEntry) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -2724,7 +2740,7 @@ class __$$ConstructorAbiEntryCopyWithImpl<$Res>
     Object? inputs = null,
     Object? outputs = null,
   }) {
-    return _then(_$ConstructorAbiEntry(
+    return _then(_$DeprecatedConstructorAbiEntry(
       type: null == type
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
@@ -2747,8 +2763,8 @@ class __$$ConstructorAbiEntryCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$ConstructorAbiEntry implements ConstructorAbiEntry {
-  const _$ConstructorAbiEntry(
+class _$DeprecatedConstructorAbiEntry implements DeprecatedConstructorAbiEntry {
+  const _$DeprecatedConstructorAbiEntry(
       {required this.type,
       required this.name,
       required final List<TypedParameter> inputs,
@@ -2758,8 +2774,8 @@ class _$ConstructorAbiEntry implements ConstructorAbiEntry {
         _outputs = outputs,
         $type = $type ?? 'constructor';
 
-  factory _$ConstructorAbiEntry.fromJson(Map<String, dynamic> json) =>
-      _$$ConstructorAbiEntryFromJson(json);
+  factory _$DeprecatedConstructorAbiEntry.fromJson(Map<String, dynamic> json) =>
+      _$$DeprecatedConstructorAbiEntryFromJson(json);
 
   @override
   final String type;
@@ -2786,14 +2802,14 @@ class _$ConstructorAbiEntry implements ConstructorAbiEntry {
 
   @override
   String toString() {
-    return 'ContractAbiEntry.constructor(type: $type, name: $name, inputs: $inputs, outputs: $outputs)';
+    return 'DeprecatedContractAbiEntry.constructor(type: $type, name: $name, inputs: $inputs, outputs: $outputs)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$ConstructorAbiEntry &&
+            other is _$DeprecatedConstructorAbiEntry &&
             (identical(other.type, type) || other.type == type) &&
             (identical(other.name, name) || other.name == name) &&
             const DeepCollectionEquality().equals(other._inputs, _inputs) &&
@@ -2812,9 +2828,9 @@ class _$ConstructorAbiEntry implements ConstructorAbiEntry {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$ConstructorAbiEntryCopyWith<_$ConstructorAbiEntry> get copyWith =>
-      __$$ConstructorAbiEntryCopyWithImpl<_$ConstructorAbiEntry>(
-          this, _$identity);
+  _$$DeprecatedConstructorAbiEntryCopyWith<_$DeprecatedConstructorAbiEntry>
+      get copyWith => __$$DeprecatedConstructorAbiEntryCopyWithImpl<
+          _$DeprecatedConstructorAbiEntry>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -2895,10 +2911,10 @@ class _$ConstructorAbiEntry implements ConstructorAbiEntry {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(FunctionAbiEntry value) function,
-    required TResult Function(EventAbiEntry value) event,
-    required TResult Function(StructAbiEntry value) struct,
-    required TResult Function(ConstructorAbiEntry value) constructor,
+    required TResult Function(DeprecatedFunctionAbiEntry value) function,
+    required TResult Function(DeprecatedEventAbiEntry value) event,
+    required TResult Function(DeprecatedStructAbiEntry value) struct,
+    required TResult Function(DeprecatedConstructorAbiEntry value) constructor,
   }) {
     return constructor(this);
   }
@@ -2906,10 +2922,10 @@ class _$ConstructorAbiEntry implements ConstructorAbiEntry {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(FunctionAbiEntry value)? function,
-    TResult? Function(EventAbiEntry value)? event,
-    TResult? Function(StructAbiEntry value)? struct,
-    TResult? Function(ConstructorAbiEntry value)? constructor,
+    TResult? Function(DeprecatedFunctionAbiEntry value)? function,
+    TResult? Function(DeprecatedEventAbiEntry value)? event,
+    TResult? Function(DeprecatedStructAbiEntry value)? struct,
+    TResult? Function(DeprecatedConstructorAbiEntry value)? constructor,
   }) {
     return constructor?.call(this);
   }
@@ -2917,10 +2933,10 @@ class _$ConstructorAbiEntry implements ConstructorAbiEntry {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(FunctionAbiEntry value)? function,
-    TResult Function(EventAbiEntry value)? event,
-    TResult Function(StructAbiEntry value)? struct,
-    TResult Function(ConstructorAbiEntry value)? constructor,
+    TResult Function(DeprecatedFunctionAbiEntry value)? function,
+    TResult Function(DeprecatedEventAbiEntry value)? event,
+    TResult Function(DeprecatedStructAbiEntry value)? struct,
+    TResult Function(DeprecatedConstructorAbiEntry value)? constructor,
     required TResult orElse(),
   }) {
     if (constructor != null) {
@@ -2931,21 +2947,23 @@ class _$ConstructorAbiEntry implements ConstructorAbiEntry {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$ConstructorAbiEntryToJson(
+    return _$$DeprecatedConstructorAbiEntryToJson(
       this,
     );
   }
 }
 
-abstract class ConstructorAbiEntry implements ContractAbiEntry {
-  const factory ConstructorAbiEntry(
-      {required final String type,
-      required final String name,
-      required final List<TypedParameter> inputs,
-      required final List<TypedParameter> outputs}) = _$ConstructorAbiEntry;
+abstract class DeprecatedConstructorAbiEntry
+    implements DeprecatedContractAbiEntry {
+  const factory DeprecatedConstructorAbiEntry(
+          {required final String type,
+          required final String name,
+          required final List<TypedParameter> inputs,
+          required final List<TypedParameter> outputs}) =
+      _$DeprecatedConstructorAbiEntry;
 
-  factory ConstructorAbiEntry.fromJson(Map<String, dynamic> json) =
-      _$ConstructorAbiEntry.fromJson;
+  factory DeprecatedConstructorAbiEntry.fromJson(Map<String, dynamic> json) =
+      _$DeprecatedConstructorAbiEntry.fromJson;
 
   @override
   String get type;
@@ -2955,8 +2973,8 @@ abstract class ConstructorAbiEntry implements ContractAbiEntry {
   List<TypedParameter> get outputs;
   @override
   @JsonKey(ignore: true)
-  _$$ConstructorAbiEntryCopyWith<_$ConstructorAbiEntry> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$DeprecatedConstructorAbiEntryCopyWith<_$DeprecatedConstructorAbiEntry>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 TypedParameter _$TypedParameterFromJson(Map<String, dynamic> json) {

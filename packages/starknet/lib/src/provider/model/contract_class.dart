@@ -32,7 +32,7 @@ class DeprecatedContractClass
   const factory DeprecatedContractClass({
     required String program,
     required DeprecatedCairoEntryPointsByType entryPointsByType,
-    List<ContractAbiEntry>? abi,
+    List<DeprecatedContractAbiEntry>? abi,
   }) = _DeprecatedContractClass;
 
   factory DeprecatedContractClass.fromJson(Map<String, Object?> json) =>

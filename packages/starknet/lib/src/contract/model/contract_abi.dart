@@ -86,45 +86,45 @@ class VariantParameter with _$VariantParameter {
 }
 
 @freezed
-class ContractAbiEntry with _$ContractAbiEntry {
-  const factory ContractAbiEntry.function({
+class DeprecatedContractAbiEntry with _$DeprecatedContractAbiEntry {
+  const factory DeprecatedContractAbiEntry.function({
     required String type,
     required String name,
     required List<TypedParameter> inputs,
     required List<TypedParameter> outputs,
     @JsonKey(name: 'stateMutability', includeIfNull: false)
     String? stateMutability,
-  }) = FunctionAbiEntry;
+  }) = DeprecatedFunctionAbiEntry;
 
-  const factory ContractAbiEntry.event({
+  const factory DeprecatedContractAbiEntry.event({
     required String type,
     required String name,
     required List<TypedParameter> keys,
     required List<TypedParameter> data,
-  }) = EventAbiEntry;
+  }) = DeprecatedEventAbiEntry;
 
-  const factory ContractAbiEntry.struct({
+  const factory DeprecatedContractAbiEntry.struct({
     required String type,
     required String name,
     required int size,
     required List<StructMember> members,
-  }) = StructAbiEntry;
+  }) = DeprecatedStructAbiEntry;
 
-  const factory ContractAbiEntry.constructor({
+  const factory DeprecatedContractAbiEntry.constructor({
     required String type,
     required String name,
     required List<TypedParameter> inputs,
     required List<TypedParameter> outputs,
-  }) = ConstructorAbiEntry;
+  }) = DeprecatedConstructorAbiEntry;
 
-  factory ContractAbiEntry.fromJson(Map<String, Object?> json) =>
+  factory DeprecatedContractAbiEntry.fromJson(Map<String, Object?> json) =>
       json['type'] == 'constructor'
-          ? ConstructorAbiEntry.fromJson(json)
+          ? DeprecatedConstructorAbiEntry.fromJson(json)
           : json['type'] == 'struct'
-              ? StructAbiEntry.fromJson(json)
+              ? DeprecatedStructAbiEntry.fromJson(json)
               : json['type'] == 'event'
-                  ? EventAbiEntry.fromJson(json)
-                  : FunctionAbiEntry.fromJson(json);
+                  ? DeprecatedEventAbiEntry.fromJson(json)
+                  : DeprecatedFunctionAbiEntry.fromJson(json);
 }
 
 @freezed

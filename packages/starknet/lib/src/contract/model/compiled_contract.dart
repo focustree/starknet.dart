@@ -236,7 +236,7 @@ class DeprecatedCompiledContract
   const factory DeprecatedCompiledContract({
     required Map<String, Object?> program,
     required DeprecatedCairoEntryPointsByType entryPointsByType,
-    List<ContractAbiEntry>? abi,
+    List<DeprecatedContractAbiEntry>? abi,
   }) = _DeprecatedCompiledContract;
 
   factory DeprecatedCompiledContract.fromJson(Map<String, Object?> json) =>
@@ -395,7 +395,8 @@ class PythonicJsonEncoder extends JsonEncoder {
   ) {
     // freezed/json serializable add 'runtimeType'
     if (filterRuntimeType) {
-      if ((object is ContractAbiEntry) || (object is SierraContractAbiEntry)) {
+      if ((object is DeprecatedContractAbiEntry) ||
+          (object is SierraContractAbiEntry)) {
         var res = object.toJson();
         res.remove("runtimeType");
         return res;
