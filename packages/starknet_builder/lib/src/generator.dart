@@ -26,15 +26,15 @@ class ContractGenerator implements Builder {
     // Each [buildStep] has a single input.
     final inputId = buildStep.inputId;
     final withoutExtension =
-        inputId.path.substring(0, inputId.path.length - '.abi.json'.length);
+        inputId.path.substring(0, inputId.path.length - '.sierra.json'.length);
 
     final source = await buildStep.readAsString(inputId);
 
     // ABI is provided as a JSON
     final List abi = jsonDecode(source);
 
-    final outputId = AssetId(
-        inputId.package, inputId.path.replaceFirst(".abi.json", ".g.dart"));
+    final outputId = AssetId(inputId.package,
+        inputId.path.replaceFirst(".sierra.json", ".sierra.g.dart"));
     final library =
         _ContractAbiGenerator(abi, _suggestName(withoutExtension)).generate();
     final emitter = DartEmitter(
@@ -59,7 +59,7 @@ ${library.accept(emitter)}
 
   @override
   final buildExtensions = const {
-    ".abi.json": [".g.dart"]
+    ".sierra.json": [".sierra.g.dart"]
   };
 }
 
@@ -67,43 +67,24 @@ class _ContractAbiGenerator {
   final List abi;
   final String name;
 
-  List<DeprecatedFunctionAbiEntry> calls = [];
-  List<DeprecatedFunctionAbiEntry> executes = [];
-  Map<String, DeprecatedStructAbiEntry> structs = {};
-
-  // #98: only add List<Felt> extension if needed
-  // The following bool are used to check if we have a
-  // - felt* parameter in input parameters
-  // - felt* parameter in output parameters
-  bool needListFeltToCallData = false;
-  bool needListFeltFromCallData = false;
+  List<SierraFunctionAbiEntry> calls = [];
+  List<SierraFunctionAbiEntry> executes = [];
+  Map<String, SierraStructAbiEntry> structs = {};
 
   _ContractAbiGenerator(this.abi, this.name) {
     for (var element in abi) {
-      final entry = DeprecatedContractAbiEntry.fromJson(element);
+      final entry = SierraContractAbiEntry.fromJson(element);
       switch (entry.type) {
         case "function":
-          final functionAbi = entry as DeprecatedFunctionAbiEntry;
+          final functionAbi = entry as SierraFunctionAbiEntry;
           if (functionAbi.stateMutability == null) {
             executes.add(functionAbi);
           } else {
             calls.add(functionAbi);
           }
-          if (false == needListFeltToCallData) {
-            if (functionAbi.inputsHas("felt*")) {
-              needListFeltToCallData = true;
-              break;
-            }
-          }
-          if (false == needListFeltFromCallData) {
-            if (functionAbi.outputsHas("felt*")) {
-              needListFeltFromCallData = true;
-              break;
-            }
-          }
           break;
         case "struct":
-          structs[entry.name] = entry as DeprecatedStructAbiEntry;
+          structs[entry.name] = entry as SierraStructAbiEntry;
           break;
       }
     }
@@ -117,45 +98,19 @@ class _ContractAbiGenerator {
       for (var s in structs.values) {
         b.body..add(Class(_createCustomClass(s)));
       }
+      // no multiple output in Cairo 1?
+      /*
       for (var fun in calls) {
         if (fun.outputsFiltered.length > 1) {
           b.body..add(Class(_createOutputClass(fun)));
         }
       }
+      */
       b.body..add(Class(_createContractClass));
-      if (needListFeltFromCallData || needListFeltToCallData) {
-        b.body.add(Extension((e) {
-          e.on = CALL_DATA_TYPE;
-          if (needListFeltToCallData) {
-            e.methods.add(Method((m) => m
-              ..name = TO_CALL_DATA
-              ..returns = CALL_DATA_TYPE
-              ..body = Block((b) {
-                b.addExpression(literalList([
-                  refer('Felt')
-                      .property('fromInt')
-                      .call([refer('this').property('length')]),
-                  refer('this').spread,
-                ]).returned);
-              })));
-          }
-          if (needListFeltFromCallData) {
-            e.methods.add(Method((m) => m
-              ..name = FROM_CALL_DATA
-              ..returns = CALL_DATA_TYPE
-              ..body = Block((b) {
-                b.addExpression(refer('this')
-                    .property('sublist')
-                    .call([literalNum(1)]).returned);
-              })));
-          }
-        }));
-      }
     });
   }
 
-  void Function(ClassBuilder) _createCustomClass(
-      DeprecatedStructAbiEntry custom) {
+  void Function(ClassBuilder) _createCustomClass(SierraStructAbiEntry custom) {
     void innerFunction(ClassBuilder b) {
       b.name = custom.name;
       b.fields.addAll(custom.members.map(
@@ -183,15 +138,15 @@ class _ContractAbiGenerator {
             for (var member in custom.members) {
               if (member.type == "felt") {
                 b
-                  ..addExpression(declareFinal(member.name)
-                      .assign(refer('$CALL_DATA_VAR[${member.offset}]')));
+                  ..addExpression(declareFinal(member.name).assign(
+                      refer('$CALL_DATA_VAR[${member.name}]'))); // FIXME
               } else {
                 b
                   ..addExpression(declareFinal(member.name)
                       .assign(refer(member.type).property(FROM_CALL_DATA).call([
                     refer(CALL_DATA_VAR)
                         .property('sublist')
-                        .call([literalNum(member.offset)])
+                        .call([literalNum(0)]) // FIXME
                   ])));
               }
             }
@@ -213,7 +168,7 @@ class _ContractAbiGenerator {
             for (var member in custom.members) {
               if (member.type == "felt") {
                 b.addExpression(
-                    refer('ret[${member.offset}]').assign(refer(member.name)));
+                    refer('ret[${member.name}]').assign(refer(member.name)));
               }
             }
             b.addExpression(refer('ret').returned);
@@ -229,110 +184,6 @@ class _ContractAbiGenerator {
             display += ")";
             b..addExpression(literalString(display).returned);
           })));
-    }
-
-    return innerFunction;
-  }
-
-  void Function(ClassBuilder) _createOutputClass(
-      DeprecatedFunctionAbiEntry fun) {
-    void innerFunction(ClassBuilder b) {
-      final name = _getOutputClassName(fun);
-      b
-        ..name = name
-        ..fields.addAll(fun.outputsFiltered.map(
-          (e) => Field((f) => f
-            ..name = e.name
-            ..type = _convertType(e.type)),
-        ))
-        ..constructors.add(Constructor((c) => c
-          ..optionalParameters.addAll(fun.outputsFiltered.map(
-            (e) => Parameter((p) => p
-              ..name = e.name
-              ..type = _convertType(e.type)
-              ..required = true
-              ..named = true
-              ..toThis = true),
-          ))))
-        ..constructors.add(Constructor((c) => c
-          ..factory = true
-          ..name = FROM_CALL_DATA
-          ..requiredParameters.add(Parameter((p) => p
-            ..name = CALL_DATA_VAR
-            ..type = CALL_DATA_TYPE))
-          ..body = Block((b) {
-            String offsetVar = "offset";
-            Reference offset = refer(offsetVar);
-            b.addExpression(declareVar(offsetVar, type: refer('int'))
-                .assign(literalNum(0)));
-            String tmpSizeVar = "_tmpSize";
-            Reference tmpSize = refer(tmpSizeVar);
-
-            if (fun.outputsHas("felt*")) {
-              b.addExpression(declareVar(tmpSizeVar, type: refer('int'))
-                  .assign(literalNum(0)));
-            }
-            for (var output in fun.outputsFiltered) {
-              switch (output.type) {
-                case "felt":
-                  b
-                    ..addExpression(declareFinal(output.name)
-                        .assign(refer(CALL_DATA_VAR).index(offset)))
-                    ..addExpression(
-                        offset.assign(offset.operatorAdd(literalNum(1))));
-                  break;
-                case "felt*":
-                  b
-                    ..addExpression(tmpSize.assign(refer(CALL_DATA_VAR)
-                        .index(offset)
-                        .property('toInt')
-                        .call([])))
-                    ..addExpression(declareFinal(output.name).assign(
-                        refer(CALL_DATA_VAR)
-                            .property('sublist')
-                            .call([
-                              offset,
-                              offset
-                                  .operatorAdd(tmpSize)
-                                  .operatorAdd(literalNum(1))
-                            ])
-                            .property(FROM_CALL_DATA)
-                            .call([])))
-                    ..addExpression(offset.assign(offset
-                        .operatorAdd(tmpSize)
-                        .operatorAdd(literalNum(1))));
-
-                  break;
-                default:
-                  b
-                    ..addExpression(declareFinal(output.name).assign(
-                        _convertType(output.type)
-                            .property(FROM_CALL_DATA)
-                            .call([
-                      refer(CALL_DATA_VAR).property('sublist').call([offset])
-                    ])))
-                    ..addExpression(offset.assign(offset
-                        .operatorAdd(literalNum(structs[output.type]!.size))));
-                  break;
-              }
-            }
-            b.addExpression(refer(name).call(
-                [],
-                Map.fromIterable(fun.outputsFiltered,
-                    key: (e) => e.name, value: (e) => refer(e.name))).returned);
-          })));
-
-      b.methods.add(Method((m) => m
-        ..name = 'toString'
-        ..returns = refer('String')
-        ..body = Block((b) {
-          String display = '${name}(';
-          for (var output in fun.outputsFiltered) {
-            display += '${output.name}: \$${output.name}, ';
-          }
-          display += ")";
-          b..addExpression(literalString(display).returned);
-        })));
     }
 
     return innerFunction;
@@ -379,7 +230,7 @@ class _ContractAbiGenerator {
           .code);
   }
 
-  void _methodFor(DeprecatedFunctionAbiEntry fun, MethodBuilder b) {
+  void _methodFor(SierraFunctionAbiEntry fun, MethodBuilder b) {
     b
       ..modifier = MethodModifier.async
       ..returns = _returnType(fun)
@@ -389,7 +240,7 @@ class _ContractAbiGenerator {
   }
 
   // An 'invoke' will alwas return transaction hash as a String
-  Reference _returnType(DeprecatedFunctionAbiEntry fun) {
+  Reference _returnType(SierraFunctionAbiEntry fun) {
     if (fun.stateMutability == 'view') {
       return _returnTypeForCall(fun);
     } else {
@@ -397,7 +248,7 @@ class _ContractAbiGenerator {
     }
   }
 
-  List<Parameter> _parametersFor(DeprecatedFunctionAbiEntry fun) {
+  List<Parameter> _parametersFor(SierraFunctionAbiEntry fun) {
     final parameters = <Parameter>[];
     for (final param in fun.inputsFiltered) {
       parameters.add(Parameter((b) => b
@@ -408,6 +259,19 @@ class _ContractAbiGenerator {
     return parameters;
   }
 
+  Reference _convertCoreType(String paramType) {
+    switch (paramType) {
+      case 'core::integer::u8':
+      case 'core::felt252':
+      case 'core::starknet::contract_address::ContractAddress':
+        return refer('Felt');
+      case 'core::integer::u256':
+        return refer('Uint256');
+      default:
+        throw Exception("Unsupported core type: $paramType");
+    }
+  }
+
   Reference _convertType(String paramType) {
     switch (paramType) {
       case 'Felt':
@@ -416,6 +280,9 @@ class _ContractAbiGenerator {
       case 'felt*':
         return CALL_DATA_TYPE;
       default:
+        if (paramType.startsWith("core::")) {
+          return _convertCoreType(paramType);
+        }
         if (structs.containsKey(paramType)) {
           return refer(paramType);
         } else {
@@ -424,7 +291,7 @@ class _ContractAbiGenerator {
     }
   }
 
-  Expression _assignParams(DeprecatedFunctionAbiEntry fun) {
+  Expression _assignParams(SierraFunctionAbiEntry fun) {
     final params = fun.inputsFiltered
         .map((e) => e.type == 'felt'
             ? refer(e.name)
@@ -435,7 +302,7 @@ class _ContractAbiGenerator {
   }
 
   // Generate method body for a 'call' method
-  Code _bodyForCall(DeprecatedFunctionAbiEntry fun) {
+  Code _bodyForCall(SierraFunctionAbiEntry fun) {
     return Block((b) {
       b
         ..addExpression(_assignParams(fun))
@@ -447,7 +314,7 @@ class _ContractAbiGenerator {
   }
 
   // Generate method body for an 'execute' method
-  Code _bodyForExecute(DeprecatedFunctionAbiEntry fun) {
+  Code _bodyForExecute(SierraFunctionAbiEntry fun) {
     final String trxVar = "trx";
     final String trxHashVar = "trxHash";
     final Reference trx = refer(trxVar);
@@ -480,7 +347,7 @@ class _ContractAbiGenerator {
     });
   }
 
-  Code _bodyForMethod(DeprecatedFunctionAbiEntry fun) {
+  Code _bodyForMethod(SierraFunctionAbiEntry fun) {
     if (fun.stateMutability == 'view') {
       return _bodyForCall(fun);
     } else {
@@ -488,7 +355,7 @@ class _ContractAbiGenerator {
     }
   }
 
-  void _returnBodyForCall(DeprecatedFunctionAbiEntry fun, BlockBuilder b) {
+  void _returnBodyForCall(SierraFunctionAbiEntry fun, BlockBuilder b) {
     if (fun.outputsFiltered.isNotEmpty) {
       if (fun.outputsFiltered.length == 1) {
         final output = fun.outputsFiltered[0];
@@ -514,7 +381,7 @@ class _ContractAbiGenerator {
     }
   }
 
-  Reference _returnTypeForCall(DeprecatedFunctionAbiEntry fun) {
+  Reference _returnTypeForCall(SierraFunctionAbiEntry fun) {
     if (fun.outputsFiltered.isEmpty) {
       return _futurize(refer('void'));
     }
@@ -534,7 +401,7 @@ class _ContractAbiGenerator {
       ..types.add(r));
   }
 
-  String _getOutputClassName(DeprecatedFunctionAbiEntry fun) {
+  String _getOutputClassName(SierraFunctionAbiEntry fun) {
     return '${fun.name.snakeCasetoCamelCase()}Result';
   }
 }
@@ -554,13 +421,13 @@ extension on List<TypedParameter> {
   }
 }
 
-extension on DeprecatedFunctionAbiEntry {
-  List<TypedParameter> get inputsFiltered {
-    return this.inputs.filterArray();
+extension on SierraFunctionAbiEntry {
+  List<InputParameter> get inputsFiltered {
+    return this.inputs;
   }
 
-  List<TypedParameter> get outputsFiltered {
-    return this.outputs.filterArray();
+  List<OutputParameter> get outputsFiltered {
+    return this.outputs;
   }
 
   bool inputsHas(String type_) {
