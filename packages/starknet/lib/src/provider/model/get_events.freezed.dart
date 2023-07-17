@@ -424,7 +424,7 @@ mixin _$GetEventsRequest {
   BlockId? get fromBlock => throw _privateConstructorUsedError;
   BlockId? get toBlock => throw _privateConstructorUsedError;
   Felt? get address => throw _privateConstructorUsedError;
-  List<Felt>? get keys =>
+  List<List<Felt>>? get keys =>
       throw _privateConstructorUsedError; // end of EVENT_FILTER
 // start of RESULT_PAGE_REQUEST
   int get chunkSize => throw _privateConstructorUsedError;
@@ -446,7 +446,7 @@ abstract class $GetEventsRequestCopyWith<$Res> {
       {BlockId? fromBlock,
       BlockId? toBlock,
       Felt? address,
-      List<Felt>? keys,
+      List<List<Felt>>? keys,
       int chunkSize,
       String? continuationToken});
 
@@ -490,7 +490,7 @@ class _$GetEventsRequestCopyWithImpl<$Res, $Val extends GetEventsRequest>
       keys: freezed == keys
           ? _value.keys
           : keys // ignore: cast_nullable_to_non_nullable
-              as List<Felt>?,
+              as List<List<Felt>>?,
       chunkSize: null == chunkSize
           ? _value.chunkSize
           : chunkSize // ignore: cast_nullable_to_non_nullable
@@ -539,7 +539,7 @@ abstract class _$$_GetEventsRequestCopyWith<$Res>
       {BlockId? fromBlock,
       BlockId? toBlock,
       Felt? address,
-      List<Felt>? keys,
+      List<List<Felt>>? keys,
       int chunkSize,
       String? continuationToken});
 
@@ -583,7 +583,7 @@ class __$$_GetEventsRequestCopyWithImpl<$Res>
       keys: freezed == keys
           ? _value._keys
           : keys // ignore: cast_nullable_to_non_nullable
-              as List<Felt>?,
+              as List<List<Felt>>?,
       chunkSize: null == chunkSize
           ? _value.chunkSize
           : chunkSize // ignore: cast_nullable_to_non_nullable
@@ -604,7 +604,7 @@ class _$_GetEventsRequest implements _GetEventsRequest {
       {this.fromBlock,
       this.toBlock,
       this.address,
-      final List<Felt>? keys,
+      final List<List<Felt>>? keys,
       required this.chunkSize,
       this.continuationToken})
       : _keys = keys;
@@ -619,9 +619,9 @@ class _$_GetEventsRequest implements _GetEventsRequest {
   final BlockId? toBlock;
   @override
   final Felt? address;
-  final List<Felt>? _keys;
+  final List<List<Felt>>? _keys;
   @override
-  List<Felt>? get keys {
+  List<List<Felt>>? get keys {
     final value = _keys;
     if (value == null) return null;
     if (_keys is EqualUnmodifiableListView) return _keys;
@@ -681,7 +681,7 @@ abstract class _GetEventsRequest implements GetEventsRequest {
       {final BlockId? fromBlock,
       final BlockId? toBlock,
       final Felt? address,
-      final List<Felt>? keys,
+      final List<List<Felt>>? keys,
       required final int chunkSize,
       final String? continuationToken}) = _$_GetEventsRequest;
 
@@ -695,7 +695,7 @@ abstract class _GetEventsRequest implements GetEventsRequest {
   @override
   Felt? get address;
   @override
-  List<Felt>? get keys;
+  List<List<Felt>>? get keys;
   @override // end of EVENT_FILTER
 // start of RESULT_PAGE_REQUEST
   int get chunkSize;

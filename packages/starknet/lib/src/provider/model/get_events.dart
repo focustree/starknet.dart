@@ -27,7 +27,7 @@ class GetEventsRequest with _$GetEventsRequest {
     BlockId? fromBlock,
     BlockId? toBlock,
     Felt? address,
-    List<Felt>? keys,
+    List<List<Felt>>? keys,
     // end of EVENT_FILTER
     // start of RESULT_PAGE_REQUEST
     required int chunkSize,

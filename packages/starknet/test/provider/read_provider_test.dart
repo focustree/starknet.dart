@@ -800,7 +800,6 @@ void main() {
                 fail("Shouldn't fail (${error.code}) ${error.message}"),
             result: (result) {
               expect(result.events.length, 2);
-              print(result);
             });
       }, tags: ['integration-testnet']);
 
@@ -877,14 +876,35 @@ void main() {
           chunkSize: 2,
           fromBlock: BlockId.blockNumber(12000),
           toBlock: BlockId.blockNumber(100000),
-          keys: [getSelectorByName("CurrencyWhiteListed")],
+          keys: [
+            [getSelectorByName("CurrencyWhitelisted")],
+          ],
         ));
 
         response.when(
           error: (error) =>
               fail("Shouldn't fail (${error.code}) ${error.message}"),
           result: (result) {
-            expect(result.events.length, 1);
+            expect(result.events.length, 2);
+          },
+        );
+      }, tags: ['integration-testnet']);
+
+      test('requesting the events with key filtering (no match)', () async {
+        final response = await provider.getEvents(GetEventsRequest(
+          chunkSize: 2,
+          fromBlock: BlockId.blockNumber(12000),
+          toBlock: BlockId.blockNumber(100000),
+          keys: [
+            [getSelectorByName("NO_MATCH")],
+          ],
+        ));
+
+        response.when(
+          error: (error) =>
+              fail("Shouldn't fail (${error.code}) ${error.message}"),
+          result: (result) {
+            expect(result.events.length, 0);
           },
         );
       }, tags: ['integration-testnet']);
