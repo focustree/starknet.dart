@@ -800,6 +800,7 @@ void main() {
                 fail("Shouldn't fail (${error.code}) ${error.message}"),
             result: (result) {
               expect(result.events.length, 2);
+              print(result);
             });
       }, tags: ['integration-testnet']);
 
@@ -869,6 +870,23 @@ void main() {
               expect(error.message, "Requested page size is too big");
             },
             result: (result) => fail("Should fail"));
+      }, tags: ['integration-testnet']);
+
+      test('requesting the events with key filtering', () async {
+        final response = await provider.getEvents(GetEventsRequest(
+          chunkSize: 2,
+          fromBlock: BlockId.blockNumber(12000),
+          toBlock: BlockId.blockNumber(100000),
+          keys: [getSelectorByName("CurrencyWhiteListed")],
+        ));
+
+        response.when(
+          error: (error) =>
+              fail("Shouldn't fail (${error.code}) ${error.message}"),
+          result: (result) {
+            expect(result.events.length, 1);
+          },
+        );
       }, tags: ['integration-testnet']);
     });
 
