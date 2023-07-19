@@ -43,7 +43,9 @@ _$_GetEventsRequest _$$_GetEventsRequestFromJson(Map<String, dynamic> json) =>
           ? null
           : Felt.fromJson(json['address'] as String),
       keys: (json['keys'] as List<dynamic>?)
-          ?.map((e) => Felt.fromJson(e as String))
+          ?.map((e) => (e as List<dynamic>)
+              .map((e) => Felt.fromJson(e as String))
+              .toList())
           .toList(),
       chunkSize: json['chunk_size'] as int,
       continuationToken: json['continuation_token'] as String?,
@@ -61,7 +63,8 @@ Map<String, dynamic> _$$_GetEventsRequestToJson(_$_GetEventsRequest instance) {
   writeNotNull('from_block', instance.fromBlock?.toJson());
   writeNotNull('to_block', instance.toBlock?.toJson());
   writeNotNull('address', instance.address?.toJson());
-  writeNotNull('keys', instance.keys?.map((e) => e.toJson()).toList());
+  writeNotNull('keys',
+      instance.keys?.map((e) => e.map((e) => e.toJson()).toList()).toList());
   val['chunk_size'] = instance.chunkSize;
   writeNotNull('continuation_token', instance.continuationToken);
   return val;
