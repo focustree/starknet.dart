@@ -406,21 +406,6 @@ class _ContractAbiGenerator {
   }
 }
 
-extension on List<TypedParameter> {
-  List<TypedParameter> filterArray() {
-    List<TypedParameter> ret = [];
-    for (var i = 0; i < this.length - 1; i++) {
-      if ('${this[i].name}' != '${this[i + 1].name}_len') {
-        ret.add(this[i]);
-      }
-    }
-    if (this.isNotEmpty) {
-      ret.add(this.last);
-    }
-    return ret;
-  }
-}
-
 extension on SierraFunctionAbiEntry {
   List<InputParameter> get inputsFiltered {
     return this.inputs;
@@ -428,14 +413,6 @@ extension on SierraFunctionAbiEntry {
 
   List<OutputParameter> get outputsFiltered {
     return this.outputs;
-  }
-
-  bool inputsHas(String type_) {
-    return this.inputsFiltered.where((e) => e.type == type_).isNotEmpty;
-  }
-
-  bool outputsHas(String type_) {
-    return this.outputsFiltered.where((e) => e.type == type_).isNotEmpty;
   }
 }
 
