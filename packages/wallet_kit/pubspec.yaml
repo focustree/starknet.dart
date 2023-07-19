@@ -1,0 +1,59 @@
+name: wallet_kit
+description: A new Flutter package project.
+version: 0.0.1
+homepage: "https://starknetdart.dev"
+
+environment:
+  sdk: ">=3.0.5 <4.0.0"
+  flutter: ">=1.17.0"
+
+dependencies:
+  bip39: ^1.0.6
+  easy_debounce: ^2.0.3
+  expandable: ^5.0.1
+  flutter:
+    sdk: flutter
+  flutter_hooks: ^0.18.6
+  flutter_svg: ^2.0.7
+  freezed_annotation: ^2.2.0
+  hive: ^2.2.3
+  hooks_riverpod: ^2.3.6
+  image_network: ^2.5.4+1
+  riverpod_annotation: ^2.1.1
+  starknet:
+  secure_store:
+  uuid: ^3.0.7
+  go_router: ^9.0.3
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^2.0.0
+  custom_lint: ^0.4.0
+  riverpod_lint: ^1.3.2
+  build_runner: ^2.4.6
+  riverpod_generator: ^2.2.3
+  freezed: ^2.3.5
+  json_serializable: ^6.7.1
+
+flutter:
+  fonts:
+    - family: SF Pro Rounded
+      fonts:
+        - asset: assets/fonts/SF-Pro-Rounded-Black.otf
+        - asset: assets/fonts/SF-Pro-Rounded-Heavy.otf
+          weight: 800
+        - asset: assets/fonts/SF-Pro-Rounded-Bold.otf
+          weight: 700
+        - asset: assets/fonts/SF-Pro-Rounded-Semibold.otf
+          weight: 600
+        - asset: assets/fonts/SF-Pro-Rounded-Medium.otf
+          weight: 500
+        - asset: assets/fonts/SF-Pro-Rounded-Regular.otf
+          weight: 400
+        - asset: assets/fonts/SF-Pro-Rounded-Light.otf
+          weight: 300
+        - asset: assets/fonts/SF-Pro-Rounded-Thin.otf
+          weight: 200
+        - asset: assets/fonts/SF-Pro-Rounded-Ultralight.otf
+          weight: 100

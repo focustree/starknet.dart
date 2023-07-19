@@ -18,11 +18,12 @@ dependencies:
     sdk: flutter
   cryptocoins_icons: ^0.3.0
   emoji_picker_flutter: ^1.5.2
-  google_fonts: ^4.0.3
+  google_fonts: ^5.0.0
   intl: ^0.18.0
   loading_indicator: ^3.1.0
   starknet:
   starknet_flutter:
+    path: ../../../packages/starknet_flutter
 
 dev_dependencies:
   flutter_test:

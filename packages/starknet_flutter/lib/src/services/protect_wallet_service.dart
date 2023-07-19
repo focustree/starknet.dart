@@ -177,36 +177,45 @@ abstract class ProtectWalletService {
       // Password == null means that the user cancelled the prompt
       throw PasswordCancelledException();
     } else {
-      if (!await passwordStore.isGoodPassword(passwordInput)) {
+      print('check password');
+      final isGoodPassword = await passwordStore.isGoodPassword(passwordInput);
+      if (!isGoodPassword) {
         throw WrongPasswordException(passwordInput);
       } else {
+        print('good password');
         final publicAccount = PublicAccount.from(
           account: account,
           walletId: wallet.walletId,
           order: accountIndex,
         );
 
+        print('get public store ');
         final publicStore = StarknetStore.public();
         // First store the account in the public store
+        print('store public account in public store');
         await publicStore.storeAccount(publicAccount);
         // Now, add this account in the previously created wallet
         wallet.accounts.add(publicAccount);
         // Finally, store the wallet (which now contains the account)
+        print('store wallet in public store');
         await publicStore.storeWallet(wallet);
 
         // Store seed phrase and private key securely
         if (seedPhrase != null) {
+          print('store seed phrase ');
           await passwordStore.storeSeedPhrase(
             id: wallet.walletId,
             seedPhrase: seedPhrase,
             password: passwordInput,
           );
         }
+        print('store private key ');
         await passwordStore.storePrivateKey(
           id: publicAccount.privateKeyId,
           privateKey: account.signer.privateKey.toBigInt().toUint8List(),
           password: passwordInput,
         );
+        print('done');
 
         return publicAccount;
       }

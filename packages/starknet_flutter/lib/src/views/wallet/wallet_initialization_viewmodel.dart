@@ -7,8 +7,8 @@ import 'package:starknet_flutter/src/views/wallet/routes/restore_wallet_screen.d
 
 enum StarknetAccountType {
   braavos("Braavos", 'braavos.svg'),
-  argentX("Argent X", 'argent_x.svg'),
-  openZeppelin("OpenZeppelin", 'open_zeppelin.svg');
+  argentX("Argent X", 'argent.svg'),
+  openZeppelin("OpenZeppelin", 'openZeppelin.svg');
 
   final String title;
   final String logoAssetPath;

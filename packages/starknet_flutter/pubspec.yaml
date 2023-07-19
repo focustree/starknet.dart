@@ -33,7 +33,10 @@ dependencies:
   starknet:
   ulid: ^2.0.0
   mobile_scanner: ^3.0.0
-  qr_flutter: ^4.0.0
+  qr_flutter: ^4.1.0
+  riverpod: ^2.3.6
+  freezed: ^2.3.5
+  freezed_annotation: ^2.2.0
 
 dev_dependencies:
   build_runner: ^2.3.3
@@ -70,9 +73,9 @@ flutter:
 
   # To add assets to your plugin package, add an assets section, like this:
   assets:
-    - assets/images/wallets/argent_x.svg
+    - assets/images/wallets/argent.svg
     - assets/images/wallets/braavos.svg
-    - assets/images/wallets/open_zeppelin.svg
+    - assets/images/wallets/openZeppelin.svg
     - assets/images/logo.svg
     - assets/images/crypto/eth.svg
     - assets/images/qr_code_placeholder.png

@@ -1,0 +1,5 @@
+dependency_overrides:
+  starknet:
+    path: ../starknet
+  secure_store:
+    path: ../secure_store

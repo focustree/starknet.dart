@@ -1,0 +1,33 @@
+# How to build a mobile wallet for Starknet
+
+1. Create a new flutter project
+
+```
+flutter create wallet_app
+```
+
+Run it locally with `flutter run` to make sure it is properly configured.
+
+2. Create a `contracts` folder and setup a scarb project.
+
+- Install Rust
+  ```
+  rustup override set stable && rustup update
+  ```
+- [Install scarb](https://docs.swmansion.com/scarb/docs/install) and run `scarb --version` to make sure it is working properly
+- Run `scarb new contracts` in `wallet_app/`
+- Run `scarb build` in `contracts/`
+
+3. Run starknet locally with devnet
+
+- `poetry new devnet`
+- `cd devnet`
+- `poetry add starknet-devnet`
+- `poetry run starknet-devnet`
+
+4. Add `deps`
+
+- `flutter pub add starknet_flutter`
+- ```
+flutter pub add hooks_riverpod dev:custom_lint dev:riverpod_lint riverpod_annotation dev:build_runner dev:riverpod_generator
+```
