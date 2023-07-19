@@ -9,13 +9,13 @@ part of 'entry_points_by_type.dart';
 _$_EntryPointsByType _$$_EntryPointsByTypeFromJson(Map<String, dynamic> json) =>
     _$_EntryPointsByType(
       constructor: (json['CONSTRUCTOR'] as List<dynamic>)
-          .map((e) => EntryPoint.fromJson(e as Map<String, dynamic>))
+          .map((e) => SierraEntryPoint.fromJson(e as Map<String, dynamic>))
           .toList(),
       external: (json['EXTERNAL'] as List<dynamic>)
-          .map((e) => EntryPoint.fromJson(e as Map<String, dynamic>))
+          .map((e) => SierraEntryPoint.fromJson(e as Map<String, dynamic>))
           .toList(),
       l1Handler: (json['L1_HANDLER'] as List<dynamic>)
-          .map((e) => EntryPoint.fromJson(e as Map<String, dynamic>))
+          .map((e) => SierraEntryPoint.fromJson(e as Map<String, dynamic>))
           .toList(),
     );
 
@@ -27,13 +27,89 @@ Map<String, dynamic> _$$_EntryPointsByTypeToJson(
       'L1_HANDLER': instance.l1Handler.map((e) => e.toJson()).toList(),
     };
 
-_$_EntryPoint _$$_EntryPointFromJson(Map<String, dynamic> json) =>
-    _$_EntryPoint(
+_$_SierraEntryPoint _$$_SierraEntryPointFromJson(Map<String, dynamic> json) =>
+    _$_SierraEntryPoint(
+      selector: Felt.fromJson(json['selector'] as String),
+      functionIdx: json['function_idx'] as int,
+    );
+
+Map<String, dynamic> _$$_SierraEntryPointToJson(_$_SierraEntryPoint instance) =>
+    <String, dynamic>{
+      'selector': instance.selector.toJson(),
+      'function_idx': instance.functionIdx,
+    };
+
+_$_CASMEntryPointsByType _$$_CASMEntryPointsByTypeFromJson(
+        Map<String, dynamic> json) =>
+    _$_CASMEntryPointsByType(
+      constructor: (json['CONSTRUCTOR'] as List<dynamic>)
+          .map((e) => CASMEntryPoint.fromJson(e as Map<String, dynamic>))
+          .toList(),
+      external: (json['EXTERNAL'] as List<dynamic>)
+          .map((e) => CASMEntryPoint.fromJson(e as Map<String, dynamic>))
+          .toList(),
+      l1Handler: (json['L1_HANDLER'] as List<dynamic>)
+          .map((e) => CASMEntryPoint.fromJson(e as Map<String, dynamic>))
+          .toList(),
+    );
+
+Map<String, dynamic> _$$_CASMEntryPointsByTypeToJson(
+        _$_CASMEntryPointsByType instance) =>
+    <String, dynamic>{
+      'CONSTRUCTOR': instance.constructor.map((e) => e.toJson()).toList(),
+      'EXTERNAL': instance.external.map((e) => e.toJson()).toList(),
+      'L1_HANDLER': instance.l1Handler.map((e) => e.toJson()).toList(),
+    };
+
+_$_CASMEntryPoint _$$_CASMEntryPointFromJson(Map<String, dynamic> json) =>
+    _$_CASMEntryPoint(
+      selector: Felt.fromJson(json['selector'] as String),
+      offset: json['offset'] as int,
+      builtins:
+          (json['builtins'] as List<dynamic>).map((e) => e as String).toList(),
+    );
+
+Map<String, dynamic> _$$_CASMEntryPointToJson(_$_CASMEntryPoint instance) =>
+    <String, dynamic>{
+      'selector': instance.selector.toJson(),
+      'offset': instance.offset,
+      'builtins': instance.builtins,
+    };
+
+_$_DeprecatedCairoEntryPointsByType
+    _$$_DeprecatedCairoEntryPointsByTypeFromJson(Map<String, dynamic> json) =>
+        _$_DeprecatedCairoEntryPointsByType(
+          constructor: (json['CONSTRUCTOR'] as List<dynamic>)
+              .map((e) =>
+                  DeprecatedCairoEntryPoint.fromJson(e as Map<String, dynamic>))
+              .toList(),
+          external: (json['EXTERNAL'] as List<dynamic>)
+              .map((e) =>
+                  DeprecatedCairoEntryPoint.fromJson(e as Map<String, dynamic>))
+              .toList(),
+          l1Handler: (json['L1_HANDLER'] as List<dynamic>)
+              .map((e) =>
+                  DeprecatedCairoEntryPoint.fromJson(e as Map<String, dynamic>))
+              .toList(),
+        );
+
+Map<String, dynamic> _$$_DeprecatedCairoEntryPointsByTypeToJson(
+        _$_DeprecatedCairoEntryPointsByType instance) =>
+    <String, dynamic>{
+      'CONSTRUCTOR': instance.constructor.map((e) => e.toJson()).toList(),
+      'EXTERNAL': instance.external.map((e) => e.toJson()).toList(),
+      'L1_HANDLER': instance.l1Handler.map((e) => e.toJson()).toList(),
+    };
+
+_$_DeprecatedCairoEntryPoint _$$_DeprecatedCairoEntryPointFromJson(
+        Map<String, dynamic> json) =>
+    _$_DeprecatedCairoEntryPoint(
       offset: json['offset'] as String,
       selector: Felt.fromJson(json['selector'] as String),
     );
 
-Map<String, dynamic> _$$_EntryPointToJson(_$_EntryPoint instance) =>
+Map<String, dynamic> _$$_DeprecatedCairoEntryPointToJson(
+        _$_DeprecatedCairoEntryPoint instance) =>
     <String, dynamic>{
       'offset': instance.offset,
       'selector': instance.selector.toJson(),

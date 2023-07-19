@@ -37,8 +37,6 @@ abstract class $DeclareTransactionRequestCopyWith<$Res> {
       _$DeclareTransactionRequestCopyWithImpl<$Res, DeclareTransactionRequest>;
   @useResult
   $Res call({DeclareTransaction declareTransaction});
-
-  $DeclareTransactionCopyWith<$Res> get declareTransaction;
 }
 
 /// @nodoc
@@ -64,15 +62,6 @@ class _$DeclareTransactionRequestCopyWithImpl<$Res,
               as DeclareTransaction,
     ) as $Val);
   }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $DeclareTransactionCopyWith<$Res> get declareTransaction {
-    return $DeclareTransactionCopyWith<$Res>(_value.declareTransaction,
-        (value) {
-      return _then(_value.copyWith(declareTransaction: value) as $Val);
-    });
-  }
 }
 
 /// @nodoc
@@ -85,9 +74,6 @@ abstract class _$$_DeclareTransactionRequestCopyWith<$Res>
   @override
   @useResult
   $Res call({DeclareTransaction declareTransaction});
-
-  @override
-  $DeclareTransactionCopyWith<$Res> get declareTransaction;
 }
 
 /// @nodoc
@@ -174,31 +160,32 @@ abstract class _DeclareTransactionRequest implements DeclareTransactionRequest {
       get copyWith => throw _privateConstructorUsedError;
 }
 
-DeclareTransaction _$DeclareTransactionFromJson(Map<String, dynamic> json) {
-  return _DeclareTransaction.fromJson(json);
+DeclareTransactionV1 _$DeclareTransactionV1FromJson(Map<String, dynamic> json) {
+  return _DeclareTransactionV1.fromJson(json);
 }
 
 /// @nodoc
-mixin _$DeclareTransaction {
+mixin _$DeclareTransactionV1 {
   String get type => throw _privateConstructorUsedError;
   String get version => throw _privateConstructorUsedError;
   Felt get max_fee => throw _privateConstructorUsedError;
   Felt get nonce => throw _privateConstructorUsedError;
   List<Felt> get signature => throw _privateConstructorUsedError;
   Felt get senderAddress => throw _privateConstructorUsedError;
-  ContractClass get contractClass => throw _privateConstructorUsedError;
+  DeprecatedContractClass get contractClass =>
+      throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $DeclareTransactionCopyWith<DeclareTransaction> get copyWith =>
+  $DeclareTransactionV1CopyWith<DeclareTransactionV1> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $DeclareTransactionCopyWith<$Res> {
-  factory $DeclareTransactionCopyWith(
-          DeclareTransaction value, $Res Function(DeclareTransaction) then) =
-      _$DeclareTransactionCopyWithImpl<$Res, DeclareTransaction>;
+abstract class $DeclareTransactionV1CopyWith<$Res> {
+  factory $DeclareTransactionV1CopyWith(DeclareTransactionV1 value,
+          $Res Function(DeclareTransactionV1) then) =
+      _$DeclareTransactionV1CopyWithImpl<$Res, DeclareTransactionV1>;
   @useResult
   $Res call(
       {String type,
@@ -207,15 +194,16 @@ abstract class $DeclareTransactionCopyWith<$Res> {
       Felt nonce,
       List<Felt> signature,
       Felt senderAddress,
-      ContractClass contractClass});
+      DeprecatedContractClass contractClass});
 
-  $ContractClassCopyWith<$Res> get contractClass;
+  $DeprecatedContractClassCopyWith<$Res> get contractClass;
 }
 
 /// @nodoc
-class _$DeclareTransactionCopyWithImpl<$Res, $Val extends DeclareTransaction>
-    implements $DeclareTransactionCopyWith<$Res> {
-  _$DeclareTransactionCopyWithImpl(this._value, this._then);
+class _$DeclareTransactionV1CopyWithImpl<$Res,
+        $Val extends DeclareTransactionV1>
+    implements $DeclareTransactionV1CopyWith<$Res> {
+  _$DeclareTransactionV1CopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -261,25 +249,26 @@ class _$DeclareTransactionCopyWithImpl<$Res, $Val extends DeclareTransaction>
       contractClass: null == contractClass
           ? _value.contractClass
           : contractClass // ignore: cast_nullable_to_non_nullable
-              as ContractClass,
+              as DeprecatedContractClass,
     ) as $Val);
   }
 
   @override
   @pragma('vm:prefer-inline')
-  $ContractClassCopyWith<$Res> get contractClass {
-    return $ContractClassCopyWith<$Res>(_value.contractClass, (value) {
+  $DeprecatedContractClassCopyWith<$Res> get contractClass {
+    return $DeprecatedContractClassCopyWith<$Res>(_value.contractClass,
+        (value) {
       return _then(_value.copyWith(contractClass: value) as $Val);
     });
   }
 }
 
 /// @nodoc
-abstract class _$$_DeclareTransactionCopyWith<$Res>
-    implements $DeclareTransactionCopyWith<$Res> {
-  factory _$$_DeclareTransactionCopyWith(_$_DeclareTransaction value,
-          $Res Function(_$_DeclareTransaction) then) =
-      __$$_DeclareTransactionCopyWithImpl<$Res>;
+abstract class _$$_DeclareTransactionV1CopyWith<$Res>
+    implements $DeclareTransactionV1CopyWith<$Res> {
+  factory _$$_DeclareTransactionV1CopyWith(_$_DeclareTransactionV1 value,
+          $Res Function(_$_DeclareTransactionV1) then) =
+      __$$_DeclareTransactionV1CopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -289,18 +278,18 @@ abstract class _$$_DeclareTransactionCopyWith<$Res>
       Felt nonce,
       List<Felt> signature,
       Felt senderAddress,
-      ContractClass contractClass});
+      DeprecatedContractClass contractClass});
 
   @override
-  $ContractClassCopyWith<$Res> get contractClass;
+  $DeprecatedContractClassCopyWith<$Res> get contractClass;
 }
 
 /// @nodoc
-class __$$_DeclareTransactionCopyWithImpl<$Res>
-    extends _$DeclareTransactionCopyWithImpl<$Res, _$_DeclareTransaction>
-    implements _$$_DeclareTransactionCopyWith<$Res> {
-  __$$_DeclareTransactionCopyWithImpl(
-      _$_DeclareTransaction _value, $Res Function(_$_DeclareTransaction) _then)
+class __$$_DeclareTransactionV1CopyWithImpl<$Res>
+    extends _$DeclareTransactionV1CopyWithImpl<$Res, _$_DeclareTransactionV1>
+    implements _$$_DeclareTransactionV1CopyWith<$Res> {
+  __$$_DeclareTransactionV1CopyWithImpl(_$_DeclareTransactionV1 _value,
+      $Res Function(_$_DeclareTransactionV1) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -314,7 +303,7 @@ class __$$_DeclareTransactionCopyWithImpl<$Res>
     Object? senderAddress = null,
     Object? contractClass = null,
   }) {
-    return _then(_$_DeclareTransaction(
+    return _then(_$_DeclareTransactionV1(
       type: null == type
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
@@ -342,15 +331,15 @@ class __$$_DeclareTransactionCopyWithImpl<$Res>
       contractClass: null == contractClass
           ? _value.contractClass
           : contractClass // ignore: cast_nullable_to_non_nullable
-              as ContractClass,
+              as DeprecatedContractClass,
     ));
   }
 }
 
 /// @nodoc
 @JsonSerializable()
-class _$_DeclareTransaction implements _DeclareTransaction {
-  const _$_DeclareTransaction(
+class _$_DeclareTransactionV1 implements _DeclareTransactionV1 {
+  const _$_DeclareTransactionV1(
       {this.type = 'DECLARE',
       this.version = '0x1',
       required this.max_fee,
@@ -360,8 +349,8 @@ class _$_DeclareTransaction implements _DeclareTransaction {
       required this.contractClass})
       : _signature = signature;
 
-  factory _$_DeclareTransaction.fromJson(Map<String, dynamic> json) =>
-      _$$_DeclareTransactionFromJson(json);
+  factory _$_DeclareTransactionV1.fromJson(Map<String, dynamic> json) =>
+      _$$_DeclareTransactionV1FromJson(json);
 
   @override
   @JsonKey()
@@ -384,18 +373,18 @@ class _$_DeclareTransaction implements _DeclareTransaction {
   @override
   final Felt senderAddress;
   @override
-  final ContractClass contractClass;
+  final DeprecatedContractClass contractClass;
 
   @override
   String toString() {
-    return 'DeclareTransaction(type: $type, version: $version, max_fee: $max_fee, nonce: $nonce, signature: $signature, senderAddress: $senderAddress, contractClass: $contractClass)';
+    return 'DeclareTransactionV1(type: $type, version: $version, max_fee: $max_fee, nonce: $nonce, signature: $signature, senderAddress: $senderAddress, contractClass: $contractClass)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_DeclareTransaction &&
+            other is _$_DeclareTransactionV1 &&
             (identical(other.type, type) || other.type == type) &&
             (identical(other.version, version) || other.version == version) &&
             (identical(other.max_fee, max_fee) || other.max_fee == max_fee) &&
@@ -423,30 +412,31 @@ class _$_DeclareTransaction implements _DeclareTransaction {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_DeclareTransactionCopyWith<_$_DeclareTransaction> get copyWith =>
-      __$$_DeclareTransactionCopyWithImpl<_$_DeclareTransaction>(
+  _$$_DeclareTransactionV1CopyWith<_$_DeclareTransactionV1> get copyWith =>
+      __$$_DeclareTransactionV1CopyWithImpl<_$_DeclareTransactionV1>(
           this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_DeclareTransactionToJson(
+    return _$$_DeclareTransactionV1ToJson(
       this,
     );
   }
 }
 
-abstract class _DeclareTransaction implements DeclareTransaction {
-  const factory _DeclareTransaction(
-      {final String type,
-      final String version,
-      required final Felt max_fee,
-      required final Felt nonce,
-      required final List<Felt> signature,
-      required final Felt senderAddress,
-      required final ContractClass contractClass}) = _$_DeclareTransaction;
+abstract class _DeclareTransactionV1 implements DeclareTransactionV1 {
+  const factory _DeclareTransactionV1(
+          {final String type,
+          final String version,
+          required final Felt max_fee,
+          required final Felt nonce,
+          required final List<Felt> signature,
+          required final Felt senderAddress,
+          required final DeprecatedContractClass contractClass}) =
+      _$_DeclareTransactionV1;
 
-  factory _DeclareTransaction.fromJson(Map<String, dynamic> json) =
-      _$_DeclareTransaction.fromJson;
+  factory _DeclareTransactionV1.fromJson(Map<String, dynamic> json) =
+      _$_DeclareTransactionV1.fromJson;
 
   @override
   String get type;
@@ -461,10 +451,329 @@ abstract class _DeclareTransaction implements DeclareTransaction {
   @override
   Felt get senderAddress;
   @override
-  ContractClass get contractClass;
+  DeprecatedContractClass get contractClass;
   @override
   @JsonKey(ignore: true)
-  _$$_DeclareTransactionCopyWith<_$_DeclareTransaction> get copyWith =>
+  _$$_DeclareTransactionV1CopyWith<_$_DeclareTransactionV1> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+DeclareTransactionV2 _$DeclareTransactionV2FromJson(Map<String, dynamic> json) {
+  return _DeclareTransactionV2.fromJson(json);
+}
+
+/// @nodoc
+mixin _$DeclareTransactionV2 {
+  String get type => throw _privateConstructorUsedError;
+  String get version => throw _privateConstructorUsedError;
+  Felt get max_fee => throw _privateConstructorUsedError;
+  Felt get nonce => throw _privateConstructorUsedError;
+  List<Felt> get signature => throw _privateConstructorUsedError;
+  Felt get senderAddress => throw _privateConstructorUsedError;
+  FlattenSierraContractClass get contractClass =>
+      throw _privateConstructorUsedError;
+  Felt get compiledClassHash => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $DeclareTransactionV2CopyWith<DeclareTransactionV2> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $DeclareTransactionV2CopyWith<$Res> {
+  factory $DeclareTransactionV2CopyWith(DeclareTransactionV2 value,
+          $Res Function(DeclareTransactionV2) then) =
+      _$DeclareTransactionV2CopyWithImpl<$Res, DeclareTransactionV2>;
+  @useResult
+  $Res call(
+      {String type,
+      String version,
+      Felt max_fee,
+      Felt nonce,
+      List<Felt> signature,
+      Felt senderAddress,
+      FlattenSierraContractClass contractClass,
+      Felt compiledClassHash});
+
+  $FlattenSierraContractClassCopyWith<$Res> get contractClass;
+}
+
+/// @nodoc
+class _$DeclareTransactionV2CopyWithImpl<$Res,
+        $Val extends DeclareTransactionV2>
+    implements $DeclareTransactionV2CopyWith<$Res> {
+  _$DeclareTransactionV2CopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? type = null,
+    Object? version = null,
+    Object? max_fee = null,
+    Object? nonce = null,
+    Object? signature = null,
+    Object? senderAddress = null,
+    Object? contractClass = null,
+    Object? compiledClassHash = null,
+  }) {
+    return _then(_value.copyWith(
+      type: null == type
+          ? _value.type
+          : type // ignore: cast_nullable_to_non_nullable
+              as String,
+      version: null == version
+          ? _value.version
+          : version // ignore: cast_nullable_to_non_nullable
+              as String,
+      max_fee: null == max_fee
+          ? _value.max_fee
+          : max_fee // ignore: cast_nullable_to_non_nullable
+              as Felt,
+      nonce: null == nonce
+          ? _value.nonce
+          : nonce // ignore: cast_nullable_to_non_nullable
+              as Felt,
+      signature: null == signature
+          ? _value.signature
+          : signature // ignore: cast_nullable_to_non_nullable
+              as List<Felt>,
+      senderAddress: null == senderAddress
+          ? _value.senderAddress
+          : senderAddress // ignore: cast_nullable_to_non_nullable
+              as Felt,
+      contractClass: null == contractClass
+          ? _value.contractClass
+          : contractClass // ignore: cast_nullable_to_non_nullable
+              as FlattenSierraContractClass,
+      compiledClassHash: null == compiledClassHash
+          ? _value.compiledClassHash
+          : compiledClassHash // ignore: cast_nullable_to_non_nullable
+              as Felt,
+    ) as $Val);
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $FlattenSierraContractClassCopyWith<$Res> get contractClass {
+    return $FlattenSierraContractClassCopyWith<$Res>(_value.contractClass,
+        (value) {
+      return _then(_value.copyWith(contractClass: value) as $Val);
+    });
+  }
+}
+
+/// @nodoc
+abstract class _$$_DeclareTransactionV2CopyWith<$Res>
+    implements $DeclareTransactionV2CopyWith<$Res> {
+  factory _$$_DeclareTransactionV2CopyWith(_$_DeclareTransactionV2 value,
+          $Res Function(_$_DeclareTransactionV2) then) =
+      __$$_DeclareTransactionV2CopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call(
+      {String type,
+      String version,
+      Felt max_fee,
+      Felt nonce,
+      List<Felt> signature,
+      Felt senderAddress,
+      FlattenSierraContractClass contractClass,
+      Felt compiledClassHash});
+
+  @override
+  $FlattenSierraContractClassCopyWith<$Res> get contractClass;
+}
+
+/// @nodoc
+class __$$_DeclareTransactionV2CopyWithImpl<$Res>
+    extends _$DeclareTransactionV2CopyWithImpl<$Res, _$_DeclareTransactionV2>
+    implements _$$_DeclareTransactionV2CopyWith<$Res> {
+  __$$_DeclareTransactionV2CopyWithImpl(_$_DeclareTransactionV2 _value,
+      $Res Function(_$_DeclareTransactionV2) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? type = null,
+    Object? version = null,
+    Object? max_fee = null,
+    Object? nonce = null,
+    Object? signature = null,
+    Object? senderAddress = null,
+    Object? contractClass = null,
+    Object? compiledClassHash = null,
+  }) {
+    return _then(_$_DeclareTransactionV2(
+      type: null == type
+          ? _value.type
+          : type // ignore: cast_nullable_to_non_nullable
+              as String,
+      version: null == version
+          ? _value.version
+          : version // ignore: cast_nullable_to_non_nullable
+              as String,
+      max_fee: null == max_fee
+          ? _value.max_fee
+          : max_fee // ignore: cast_nullable_to_non_nullable
+              as Felt,
+      nonce: null == nonce
+          ? _value.nonce
+          : nonce // ignore: cast_nullable_to_non_nullable
+              as Felt,
+      signature: null == signature
+          ? _value._signature
+          : signature // ignore: cast_nullable_to_non_nullable
+              as List<Felt>,
+      senderAddress: null == senderAddress
+          ? _value.senderAddress
+          : senderAddress // ignore: cast_nullable_to_non_nullable
+              as Felt,
+      contractClass: null == contractClass
+          ? _value.contractClass
+          : contractClass // ignore: cast_nullable_to_non_nullable
+              as FlattenSierraContractClass,
+      compiledClassHash: null == compiledClassHash
+          ? _value.compiledClassHash
+          : compiledClassHash // ignore: cast_nullable_to_non_nullable
+              as Felt,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$_DeclareTransactionV2 implements _DeclareTransactionV2 {
+  const _$_DeclareTransactionV2(
+      {this.type = 'DECLARE',
+      this.version = '0x2',
+      required this.max_fee,
+      required this.nonce,
+      required final List<Felt> signature,
+      required this.senderAddress,
+      required this.contractClass,
+      required this.compiledClassHash})
+      : _signature = signature;
+
+  factory _$_DeclareTransactionV2.fromJson(Map<String, dynamic> json) =>
+      _$$_DeclareTransactionV2FromJson(json);
+
+  @override
+  @JsonKey()
+  final String type;
+  @override
+  @JsonKey()
+  final String version;
+  @override
+  final Felt max_fee;
+  @override
+  final Felt nonce;
+  final List<Felt> _signature;
+  @override
+  List<Felt> get signature {
+    if (_signature is EqualUnmodifiableListView) return _signature;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_signature);
+  }
+
+  @override
+  final Felt senderAddress;
+  @override
+  final FlattenSierraContractClass contractClass;
+  @override
+  final Felt compiledClassHash;
+
+  @override
+  String toString() {
+    return 'DeclareTransactionV2(type: $type, version: $version, max_fee: $max_fee, nonce: $nonce, signature: $signature, senderAddress: $senderAddress, contractClass: $contractClass, compiledClassHash: $compiledClassHash)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_DeclareTransactionV2 &&
+            (identical(other.type, type) || other.type == type) &&
+            (identical(other.version, version) || other.version == version) &&
+            (identical(other.max_fee, max_fee) || other.max_fee == max_fee) &&
+            (identical(other.nonce, nonce) || other.nonce == nonce) &&
+            const DeepCollectionEquality()
+                .equals(other._signature, _signature) &&
+            (identical(other.senderAddress, senderAddress) ||
+                other.senderAddress == senderAddress) &&
+            (identical(other.contractClass, contractClass) ||
+                other.contractClass == contractClass) &&
+            (identical(other.compiledClassHash, compiledClassHash) ||
+                other.compiledClassHash == compiledClassHash));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(
+      runtimeType,
+      type,
+      version,
+      max_fee,
+      nonce,
+      const DeepCollectionEquality().hash(_signature),
+      senderAddress,
+      contractClass,
+      compiledClassHash);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_DeclareTransactionV2CopyWith<_$_DeclareTransactionV2> get copyWith =>
+      __$$_DeclareTransactionV2CopyWithImpl<_$_DeclareTransactionV2>(
+          this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_DeclareTransactionV2ToJson(
+      this,
+    );
+  }
+}
+
+abstract class _DeclareTransactionV2 implements DeclareTransactionV2 {
+  const factory _DeclareTransactionV2(
+      {final String type,
+      final String version,
+      required final Felt max_fee,
+      required final Felt nonce,
+      required final List<Felt> signature,
+      required final Felt senderAddress,
+      required final FlattenSierraContractClass contractClass,
+      required final Felt compiledClassHash}) = _$_DeclareTransactionV2;
+
+  factory _DeclareTransactionV2.fromJson(Map<String, dynamic> json) =
+      _$_DeclareTransactionV2.fromJson;
+
+  @override
+  String get type;
+  @override
+  String get version;
+  @override
+  Felt get max_fee;
+  @override
+  Felt get nonce;
+  @override
+  List<Felt> get signature;
+  @override
+  Felt get senderAddress;
+  @override
+  FlattenSierraContractClass get contractClass;
+  @override
+  Felt get compiledClassHash;
+  @override
+  @JsonKey(ignore: true)
+  _$$_DeclareTransactionV2CopyWith<_$_DeclareTransactionV2> get copyWith =>
       throw _privateConstructorUsedError;
 }
 

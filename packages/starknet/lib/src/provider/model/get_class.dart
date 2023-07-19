@@ -7,14 +7,14 @@ part 'get_class.g.dart';
 @freezed
 class GetClass with _$GetClass {
   const factory GetClass.result({
-    required ContractClass result,
-  }) = GetClassResult;
+    required IContractClass result,
+  }) = _GetClassResult;
   const factory GetClass.error({
     required JsonRpcApiError error,
-  }) = GetClassError;
+  }) = _GetClassError;
 
   factory GetClass.fromJson(Map<String, Object?> json) =>
       json.containsKey('error')
-          ? GetClassError.fromJson(json)
-          : GetClassResult.fromJson(json);
+          ? _GetClassError.fromJson(json)
+          : _GetClassResult.fromJson(json);
 }

@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:starknet/starknet.dart';
 import 'package:test/test.dart';
 
@@ -9,10 +11,10 @@ void main() {
         expect(nonce, equals(Felt.fromInt(0)));
       });
     });
-    group('declare', () {
+    group('declare cairo 0', () {
       test('succeeds to declare a simple contract class hash', () async {
-        final balanceContract =
-            await parseContract('../../contracts/build/balance.json');
+        final balanceContract = await DeprecatedCompiledContract.fromPath(
+            '../../contracts/build/balance.json');
         final res = await account0.declare(compiledContract: balanceContract);
         final txHash = res.when(
           result: (result) {
@@ -34,8 +36,8 @@ void main() {
         expect(txStatus, equals(true));
       });
       test('succeeds to declare an openzeppelin contract class hash', () async {
-        final accountContract =
-            await parseContract('../../contracts/build/oz_account.json');
+        final accountContract = await DeprecatedCompiledContract.fromPath(
+            '../../contracts/build/oz_account.json');
         final res = await account0.declare(compiledContract: accountContract);
         final String txHash = res.when(
           result: (result) {
@@ -51,6 +53,57 @@ void main() {
         expect(txStatus, equals(true));
       });
     }, tags: ['integration-devnet-040']);
+
+    group('declare cairo 1', () {
+      test(
+          'succeeds to declare a simple sierra contract with provided CASM file',
+          () async {
+        final sierraContract = await CompiledContract.fromPath(
+            '${Directory.current.path}/../../contracts/cairo1/artifacts/erc20_sierra.txt');
+        final compiledContract = await CASMCompiledContract.fromPath(
+            '${Directory.current.path}/../../contracts/cairo1/artifacts/erc20_compiled.txt');
+        final BigInt compiledClassHash = compiledContract.classHash();
+        Felt sierraClassHash = Felt(sierraContract.classHash());
+
+        var res = await account0.declare(
+          compiledContract: sierraContract,
+          compiledClassHash: compiledClassHash,
+        );
+        final txHash = res.when(
+          result: (result) {
+            expect(
+              result.classHash,
+              equals(
+                sierraClassHash,
+              ),
+            );
+            return result.transactionHash.toHexString();
+          },
+          error: (error) => fail(error.message),
+        );
+        final txStatus = await waitForAcceptance(
+          transactionHash: txHash,
+          provider: account0.provider,
+        );
+        expect(txStatus, equals(true));
+        // check if code is
+        (await account0.provider.getClass(
+                blockId: BlockId.blockTag('latest'),
+                classHash: sierraClassHash))
+            .when(
+                result: (res) {
+                  expect(res, isA<SierraContractClass>());
+                  final contract = res as SierraContractClass;
+                  expect(
+                    contract.sierraProgram,
+                    equals(sierraContract.contract.sierraProgram
+                        .map((e) => Felt(e))),
+                  );
+                },
+                error: (error) => fail("Shouldn't fail"));
+      });
+    }, tags: ['integration-devnet-040']);
+
     group('deploy', () {
       test('succeeds to deploy a contract', () async {
         // Balance contract

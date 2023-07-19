@@ -111,32 +111,59 @@ class Account {
 
   /// Declares a [compiledContract]
   Future<DeclareTransactionResponse> declare({
-    required CompiledContract compiledContract,
+    required ICompiledContract compiledContract,
     Felt? maxFee,
     Felt? nonce,
+    // needed for v2
+    BigInt? compiledClassHash,
+    CASMCompiledContract? casmCompiledContract,
   }) async {
     nonce = nonce ?? await getNonce();
     maxFee = maxFee ?? defaultMaxFee;
+    if (compiledContract is DeprecatedCompiledContract) {
+      final signature = signer.signDeclareTransactionV1(
+        compiledContract: compiledContract,
+        senderAddress: accountAddress,
+        chainId: chainId,
+        nonce: nonce,
+        maxFee: maxFee,
+      );
 
-    final signature = signer.signDeclareTransaction(
-      compiledContract: compiledContract,
-      senderAddress: accountAddress,
-      chainId: chainId,
-      nonce: nonce,
-      maxFee: maxFee,
-    );
-
-    return provider.addDeclareTransaction(
-      DeclareTransactionRequest(
-        declareTransaction: DeclareTransaction(
-          max_fee: maxFee,
-          nonce: nonce,
-          contractClass: compiledContract.compress(),
-          senderAddress: accountAddress,
-          signature: signature,
+      return provider.addDeclareTransaction(
+        DeclareTransactionRequest(
+          declareTransaction: DeclareTransactionV1(
+            max_fee: maxFee,
+            nonce: nonce,
+            contractClass: compiledContract.compress(),
+            senderAddress: accountAddress,
+            signature: signature,
+          ),
         ),
-      ),
-    );
+      );
+    } else {
+      final signature = signer.signDeclareTransactionV2(
+        compiledContract: compiledContract as CompiledContract,
+        senderAddress: accountAddress,
+        chainId: chainId,
+        nonce: nonce,
+        maxFee: maxFee,
+        compiledClassHash: compiledClassHash,
+        casmCompiledContract: casmCompiledContract,
+      );
+
+      return provider.addDeclareTransaction(
+        DeclareTransactionRequest(
+          declareTransaction: DeclareTransactionV2(
+            max_fee: maxFee,
+            nonce: nonce,
+            contractClass: compiledContract.flatten(),
+            compiledClassHash: Felt(compiledClassHash!),
+            senderAddress: accountAddress,
+            signature: signature,
+          ),
+        ),
+      );
+    }
   }
 
   /// Deploys an instance of [classHash] with given [salt], [unique] and [calldata]

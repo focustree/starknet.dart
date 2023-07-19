@@ -467,11 +467,11 @@ mixin _$BroadcastedTxn {
             String version,
             List<Felt> signature,
             Felt nonce,
-            ContractClass contractClass,
+            DeprecatedContractClass contractClass,
             Felt senderAddress)
         broadcastedDeclareTxn,
     required TResult Function(
-            ContractClass contractClass,
+            DeprecatedContractClass contractClass,
             String version,
             String type,
             Felt contractAddressSalt,
@@ -516,11 +516,15 @@ mixin _$BroadcastedTxn {
             String version,
             List<Felt> signature,
             Felt nonce,
-            ContractClass contractClass,
+            DeprecatedContractClass contractClass,
             Felt senderAddress)?
         broadcastedDeclareTxn,
-    TResult? Function(ContractClass contractClass, String version, String type,
-            Felt contractAddressSalt, List<Felt> constructorCalldata)?
+    TResult? Function(
+            DeprecatedContractClass contractClass,
+            String version,
+            String type,
+            Felt contractAddressSalt,
+            List<Felt> constructorCalldata)?
         broadcastedDeployTxn,
     TResult? Function(
             Felt contractAddressSalt,
@@ -561,11 +565,15 @@ mixin _$BroadcastedTxn {
             String version,
             List<Felt> signature,
             Felt nonce,
-            ContractClass contractClass,
+            DeprecatedContractClass contractClass,
             Felt senderAddress)?
         broadcastedDeclareTxn,
-    TResult Function(ContractClass contractClass, String version, String type,
-            Felt contractAddressSalt, List<Felt> constructorCalldata)?
+    TResult Function(
+            DeprecatedContractClass contractClass,
+            String version,
+            String type,
+            Felt contractAddressSalt,
+            List<Felt> constructorCalldata)?
         broadcastedDeployTxn,
     TResult Function(
             Felt contractAddressSalt,
@@ -861,11 +869,11 @@ class _$BroadcastedInvokeTxnV0 implements BroadcastedInvokeTxnV0 {
             String version,
             List<Felt> signature,
             Felt nonce,
-            ContractClass contractClass,
+            DeprecatedContractClass contractClass,
             Felt senderAddress)
         broadcastedDeclareTxn,
     required TResult Function(
-            ContractClass contractClass,
+            DeprecatedContractClass contractClass,
             String version,
             String type,
             Felt contractAddressSalt,
@@ -914,11 +922,15 @@ class _$BroadcastedInvokeTxnV0 implements BroadcastedInvokeTxnV0 {
             String version,
             List<Felt> signature,
             Felt nonce,
-            ContractClass contractClass,
+            DeprecatedContractClass contractClass,
             Felt senderAddress)?
         broadcastedDeclareTxn,
-    TResult? Function(ContractClass contractClass, String version, String type,
-            Felt contractAddressSalt, List<Felt> constructorCalldata)?
+    TResult? Function(
+            DeprecatedContractClass contractClass,
+            String version,
+            String type,
+            Felt contractAddressSalt,
+            List<Felt> constructorCalldata)?
         broadcastedDeployTxn,
     TResult? Function(
             Felt contractAddressSalt,
@@ -963,11 +975,15 @@ class _$BroadcastedInvokeTxnV0 implements BroadcastedInvokeTxnV0 {
             String version,
             List<Felt> signature,
             Felt nonce,
-            ContractClass contractClass,
+            DeprecatedContractClass contractClass,
             Felt senderAddress)?
         broadcastedDeclareTxn,
-    TResult Function(ContractClass contractClass, String version, String type,
-            Felt contractAddressSalt, List<Felt> constructorCalldata)?
+    TResult Function(
+            DeprecatedContractClass contractClass,
+            String version,
+            String type,
+            Felt contractAddressSalt,
+            List<Felt> constructorCalldata)?
         broadcastedDeployTxn,
     TResult Function(
             Felt contractAddressSalt,
@@ -1265,11 +1281,11 @@ class _$BroadcastedInvokeTxnV1 implements BroadcastedInvokeTxnV1 {
             String version,
             List<Felt> signature,
             Felt nonce,
-            ContractClass contractClass,
+            DeprecatedContractClass contractClass,
             Felt senderAddress)
         broadcastedDeclareTxn,
     required TResult Function(
-            ContractClass contractClass,
+            DeprecatedContractClass contractClass,
             String version,
             String type,
             Felt contractAddressSalt,
@@ -1318,11 +1334,15 @@ class _$BroadcastedInvokeTxnV1 implements BroadcastedInvokeTxnV1 {
             String version,
             List<Felt> signature,
             Felt nonce,
-            ContractClass contractClass,
+            DeprecatedContractClass contractClass,
             Felt senderAddress)?
         broadcastedDeclareTxn,
-    TResult? Function(ContractClass contractClass, String version, String type,
-            Felt contractAddressSalt, List<Felt> constructorCalldata)?
+    TResult? Function(
+            DeprecatedContractClass contractClass,
+            String version,
+            String type,
+            Felt contractAddressSalt,
+            List<Felt> constructorCalldata)?
         broadcastedDeployTxn,
     TResult? Function(
             Felt contractAddressSalt,
@@ -1367,11 +1387,15 @@ class _$BroadcastedInvokeTxnV1 implements BroadcastedInvokeTxnV1 {
             String version,
             List<Felt> signature,
             Felt nonce,
-            ContractClass contractClass,
+            DeprecatedContractClass contractClass,
             Felt senderAddress)?
         broadcastedDeclareTxn,
-    TResult Function(ContractClass contractClass, String version, String type,
-            Felt contractAddressSalt, List<Felt> constructorCalldata)?
+    TResult Function(
+            DeprecatedContractClass contractClass,
+            String version,
+            String type,
+            Felt contractAddressSalt,
+            List<Felt> constructorCalldata)?
         broadcastedDeployTxn,
     TResult Function(
             Felt contractAddressSalt,
@@ -1490,10 +1514,10 @@ abstract class _$$BroadcastedDeclareTxnCopyWith<$Res>
       String version,
       List<Felt> signature,
       Felt nonce,
-      ContractClass contractClass,
+      DeprecatedContractClass contractClass,
       Felt senderAddress});
 
-  $ContractClassCopyWith<$Res> get contractClass;
+  $DeprecatedContractClassCopyWith<$Res> get contractClass;
 }
 
 /// @nodoc
@@ -1539,7 +1563,7 @@ class __$$BroadcastedDeclareTxnCopyWithImpl<$Res>
       contractClass: null == contractClass
           ? _value.contractClass
           : contractClass // ignore: cast_nullable_to_non_nullable
-              as ContractClass,
+              as DeprecatedContractClass,
       senderAddress: null == senderAddress
           ? _value.senderAddress
           : senderAddress // ignore: cast_nullable_to_non_nullable
@@ -1549,8 +1573,9 @@ class __$$BroadcastedDeclareTxnCopyWithImpl<$Res>
 
   @override
   @pragma('vm:prefer-inline')
-  $ContractClassCopyWith<$Res> get contractClass {
-    return $ContractClassCopyWith<$Res>(_value.contractClass, (value) {
+  $DeprecatedContractClassCopyWith<$Res> get contractClass {
+    return $DeprecatedContractClassCopyWith<$Res>(_value.contractClass,
+        (value) {
       return _then(_value.copyWith(contractClass: value));
     });
   }
@@ -1595,7 +1620,7 @@ class _$BroadcastedDeclareTxn implements BroadcastedDeclareTxn {
   final Felt nonce;
 // end of BROADCASTED_TXN_COMMON_PROPERTIES
   @override
-  final ContractClass contractClass;
+  final DeprecatedContractClass contractClass;
   @override
   final Felt senderAddress;
 
@@ -1671,11 +1696,11 @@ class _$BroadcastedDeclareTxn implements BroadcastedDeclareTxn {
             String version,
             List<Felt> signature,
             Felt nonce,
-            ContractClass contractClass,
+            DeprecatedContractClass contractClass,
             Felt senderAddress)
         broadcastedDeclareTxn,
     required TResult Function(
-            ContractClass contractClass,
+            DeprecatedContractClass contractClass,
             String version,
             String type,
             Felt contractAddressSalt,
@@ -1724,11 +1749,15 @@ class _$BroadcastedDeclareTxn implements BroadcastedDeclareTxn {
             String version,
             List<Felt> signature,
             Felt nonce,
-            ContractClass contractClass,
+            DeprecatedContractClass contractClass,
             Felt senderAddress)?
         broadcastedDeclareTxn,
-    TResult? Function(ContractClass contractClass, String version, String type,
-            Felt contractAddressSalt, List<Felt> constructorCalldata)?
+    TResult? Function(
+            DeprecatedContractClass contractClass,
+            String version,
+            String type,
+            Felt contractAddressSalt,
+            List<Felt> constructorCalldata)?
         broadcastedDeployTxn,
     TResult? Function(
             Felt contractAddressSalt,
@@ -1773,11 +1802,15 @@ class _$BroadcastedDeclareTxn implements BroadcastedDeclareTxn {
             String version,
             List<Felt> signature,
             Felt nonce,
-            ContractClass contractClass,
+            DeprecatedContractClass contractClass,
             Felt senderAddress)?
         broadcastedDeclareTxn,
-    TResult Function(ContractClass contractClass, String version, String type,
-            Felt contractAddressSalt, List<Felt> constructorCalldata)?
+    TResult Function(
+            DeprecatedContractClass contractClass,
+            String version,
+            String type,
+            Felt contractAddressSalt,
+            List<Felt> constructorCalldata)?
         broadcastedDeployTxn,
     TResult Function(
             Felt contractAddressSalt,
@@ -1859,7 +1892,7 @@ abstract class BroadcastedDeclareTxn implements BroadcastedTxn {
       required final String version,
       required final List<Felt> signature,
       required final Felt nonce,
-      required final ContractClass contractClass,
+      required final DeprecatedContractClass contractClass,
       required final Felt senderAddress}) = _$BroadcastedDeclareTxn;
 
   factory BroadcastedDeclareTxn.fromJson(Map<String, dynamic> json) =
@@ -1873,7 +1906,7 @@ abstract class BroadcastedDeclareTxn implements BroadcastedTxn {
   String get version;
   List<Felt> get signature;
   Felt get nonce; // end of BROADCASTED_TXN_COMMON_PROPERTIES
-  ContractClass get contractClass;
+  DeprecatedContractClass get contractClass;
   Felt get senderAddress;
   @override
   @JsonKey(ignore: true)
@@ -1890,13 +1923,13 @@ abstract class _$$BroadcastedDeployTxnCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {ContractClass contractClass,
+      {DeprecatedContractClass contractClass,
       String version,
       String type,
       Felt contractAddressSalt,
       List<Felt> constructorCalldata});
 
-  $ContractClassCopyWith<$Res> get contractClass;
+  $DeprecatedContractClassCopyWith<$Res> get contractClass;
 }
 
 /// @nodoc
@@ -1920,7 +1953,7 @@ class __$$BroadcastedDeployTxnCopyWithImpl<$Res>
       contractClass: null == contractClass
           ? _value.contractClass
           : contractClass // ignore: cast_nullable_to_non_nullable
-              as ContractClass,
+              as DeprecatedContractClass,
       version: null == version
           ? _value.version
           : version // ignore: cast_nullable_to_non_nullable
@@ -1942,8 +1975,9 @@ class __$$BroadcastedDeployTxnCopyWithImpl<$Res>
 
   @override
   @pragma('vm:prefer-inline')
-  $ContractClassCopyWith<$Res> get contractClass {
-    return $ContractClassCopyWith<$Res>(_value.contractClass, (value) {
+  $DeprecatedContractClassCopyWith<$Res> get contractClass {
+    return $DeprecatedContractClassCopyWith<$Res>(_value.contractClass,
+        (value) {
       return _then(_value.copyWith(contractClass: value));
     });
   }
@@ -1967,7 +2001,7 @@ class _$BroadcastedDeployTxn implements BroadcastedDeployTxn {
       _$$BroadcastedDeployTxnFromJson(json);
 
   @override
-  final ContractClass contractClass;
+  final DeprecatedContractClass contractClass;
 // start of DEPLOY_TXN_PROPERTIES
   @override
   final String version;
@@ -2052,11 +2086,11 @@ class _$BroadcastedDeployTxn implements BroadcastedDeployTxn {
             String version,
             List<Felt> signature,
             Felt nonce,
-            ContractClass contractClass,
+            DeprecatedContractClass contractClass,
             Felt senderAddress)
         broadcastedDeclareTxn,
     required TResult Function(
-            ContractClass contractClass,
+            DeprecatedContractClass contractClass,
             String version,
             String type,
             Felt contractAddressSalt,
@@ -2105,11 +2139,15 @@ class _$BroadcastedDeployTxn implements BroadcastedDeployTxn {
             String version,
             List<Felt> signature,
             Felt nonce,
-            ContractClass contractClass,
+            DeprecatedContractClass contractClass,
             Felt senderAddress)?
         broadcastedDeclareTxn,
-    TResult? Function(ContractClass contractClass, String version, String type,
-            Felt contractAddressSalt, List<Felt> constructorCalldata)?
+    TResult? Function(
+            DeprecatedContractClass contractClass,
+            String version,
+            String type,
+            Felt contractAddressSalt,
+            List<Felt> constructorCalldata)?
         broadcastedDeployTxn,
     TResult? Function(
             Felt contractAddressSalt,
@@ -2154,11 +2192,15 @@ class _$BroadcastedDeployTxn implements BroadcastedDeployTxn {
             String version,
             List<Felt> signature,
             Felt nonce,
-            ContractClass contractClass,
+            DeprecatedContractClass contractClass,
             Felt senderAddress)?
         broadcastedDeclareTxn,
-    TResult Function(ContractClass contractClass, String version, String type,
-            Felt contractAddressSalt, List<Felt> constructorCalldata)?
+    TResult Function(
+            DeprecatedContractClass contractClass,
+            String version,
+            String type,
+            Felt contractAddressSalt,
+            List<Felt> constructorCalldata)?
         broadcastedDeployTxn,
     TResult Function(
             Felt contractAddressSalt,
@@ -2235,7 +2277,7 @@ class _$BroadcastedDeployTxn implements BroadcastedDeployTxn {
 
 abstract class BroadcastedDeployTxn implements BroadcastedTxn {
   const factory BroadcastedDeployTxn(
-      {required final ContractClass contractClass,
+      {required final DeprecatedContractClass contractClass,
       required final String version,
       required final String type,
       required final Felt contractAddressSalt,
@@ -2244,7 +2286,7 @@ abstract class BroadcastedDeployTxn implements BroadcastedTxn {
   factory BroadcastedDeployTxn.fromJson(Map<String, dynamic> json) =
       _$BroadcastedDeployTxn.fromJson;
 
-  ContractClass get contractClass;
+  DeprecatedContractClass get contractClass;
   @override // start of DEPLOY_TXN_PROPERTIES
   String get version;
   @override
@@ -2463,11 +2505,11 @@ class _$BroadcastedDeployAccountTxn implements BroadcastedDeployAccountTxn {
             String version,
             List<Felt> signature,
             Felt nonce,
-            ContractClass contractClass,
+            DeprecatedContractClass contractClass,
             Felt senderAddress)
         broadcastedDeclareTxn,
     required TResult Function(
-            ContractClass contractClass,
+            DeprecatedContractClass contractClass,
             String version,
             String type,
             Felt contractAddressSalt,
@@ -2516,11 +2558,15 @@ class _$BroadcastedDeployAccountTxn implements BroadcastedDeployAccountTxn {
             String version,
             List<Felt> signature,
             Felt nonce,
-            ContractClass contractClass,
+            DeprecatedContractClass contractClass,
             Felt senderAddress)?
         broadcastedDeclareTxn,
-    TResult? Function(ContractClass contractClass, String version, String type,
-            Felt contractAddressSalt, List<Felt> constructorCalldata)?
+    TResult? Function(
+            DeprecatedContractClass contractClass,
+            String version,
+            String type,
+            Felt contractAddressSalt,
+            List<Felt> constructorCalldata)?
         broadcastedDeployTxn,
     TResult? Function(
             Felt contractAddressSalt,
@@ -2565,11 +2611,15 @@ class _$BroadcastedDeployAccountTxn implements BroadcastedDeployAccountTxn {
             String version,
             List<Felt> signature,
             Felt nonce,
-            ContractClass contractClass,
+            DeprecatedContractClass contractClass,
             Felt senderAddress)?
         broadcastedDeclareTxn,
-    TResult Function(ContractClass contractClass, String version, String type,
-            Felt contractAddressSalt, List<Felt> constructorCalldata)?
+    TResult Function(
+            DeprecatedContractClass contractClass,
+            String version,
+            String type,
+            Felt contractAddressSalt,
+            List<Felt> constructorCalldata)?
         broadcastedDeployTxn,
     TResult Function(
             Felt contractAddressSalt,

@@ -6,10 +6,11 @@ import 'package:test/test.dart';
 void main() {
   group('Contract', () {
     group('parseContract', () {
-      test('parse abi properly', () async {
+      test('Parse abi properly (cairo 0)', () async {
         final contractPath =
             '${Directory.current.path}/../../contracts/build/balance.json';
-        final compiledContract = await parseContract(contractPath);
+        final compiledContract =
+            await DeprecatedCompiledContract.fromPath(contractPath);
         expect(compiledContract.abi?.length, equals(11));
       });
     });

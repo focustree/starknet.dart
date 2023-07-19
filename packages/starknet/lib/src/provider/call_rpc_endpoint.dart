@@ -16,7 +16,8 @@ Future<Map<String, dynamic>> callRpcEndpoint(
     'id': 0
   };
 
-  final filteredBody = CompiledContractJsonEncoder().convert(body);
+  // 2023-07-13: Disabling symbol sorting is required for Declare V2
+  final filteredBody = PythonicJsonEncoder(sortSymbol: false).convert(body);
   final response =
       await http.post(nodeUri, headers: headers, body: filteredBody);
 

@@ -7,13 +7,14 @@ authors = ["gabsn <gabin.contact@gmail.com>"]
 [tool.poetry.scripts]
 deploy = "scripts.python.commands.deploy:main"
 declare = "scripts.python.commands.declare:main"
+declarev2 = "scripts.python.commands.declarev2:main"
 devnet = "scripts.python.commands.devnet:main"
 interact = "scripts.python.commands.interact:main"
 
 [tool.poetry.dependencies]
 python = ">=3.9,<3.10"
-starknet-devnet = "0.5.4"
-cairo-lang = "0.11.2"
+starknet-devnet = "0.5.5"
+cairo-lang = "0.12.0"
 starknet-py = "0.16.1"
 autopep8 = "^2.0.0"
 cairo-nile = "^0.14.0"

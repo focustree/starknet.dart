@@ -30,15 +30,20 @@ void main() {
     BlockId blockIdFromBlockNumber = BlockId.blockNumber(blockNumber);
     BlockId invalidBlockIdFromBlockHash = BlockId.blockHash(invalidHexString);
 
-    Felt classHash = Felt.fromHexString(
+    Felt classHashV0 = Felt.fromHexString(
         '0x06234338a4c4644b88e1548b35d5f51570847f05157ca762d8d5492fd9ba702c');
-    Felt contractAddress = Felt.fromHexString(
+    Felt contractAddressV0 = Felt.fromHexString(
         '0x04e76f8708774c8162fb4da7abefb3cae94cc51cf3f9b40e0d44f24aabf8a521');
     BlockId blockIdForTheGivenContractAddress = BlockId.blockHash(
         Felt.fromHexString(
             '0x6a39eb5c273a221b99b08323bed9ec1ef1bc3d232a668c941b23cca3bf1164a'));
     Felt entryPointSelector = Felt.fromHexString(
         '0x9278fa5f64a571de10741418f1c4c0c4322aef645dd9d94a429c1f3e99a8a5');
+
+    Felt classHashV1 = Felt.fromHexString(
+        '0x005f042bb8a0dc334e82d758f9ef0583eced860306890f57e328553ed8d86c43');
+    Felt contractAddressV1 = Felt.fromHexString(
+        '0x076f65214b9fd45c9f85e6cf0f40d018a2651fe4c4062e8230175ffc7f6ee262');
 
     setupDevnet() {
       // specific setup for devnet
@@ -148,7 +153,7 @@ void main() {
       test('calls a read-only method with invalid block id', () async {
         final response = await provider.call(
             request: FunctionCall(
-              contractAddress: contractAddress,
+              contractAddress: contractAddressV0,
               entryPointSelector: entryPointSelector,
               calldata: [],
             ),
@@ -165,7 +170,7 @@ void main() {
           () async {
         final response = await provider.call(
             request: FunctionCall(
-              contractAddress: contractAddress,
+              contractAddress: contractAddressV0,
               entryPointSelector: invalidHexString,
               calldata: [],
             ),
@@ -198,7 +203,7 @@ void main() {
       test('returns the value of the storage at the given address and key',
           () async {
         final response = await provider.getStorageAt(
-          contractAddress: contractAddress,
+          contractAddress: contractAddressV0,
           key: Felt.fromHexString(
               '0x0206F38F7E4F15E87567361213C28F235CCCDAA1D7FD34C9DB1DFE9489C6A091'),
           blockId: BlockId.latest,
@@ -228,7 +233,7 @@ void main() {
 
       test('reading value from invalid Block Id', () async {
         final response = await provider.getStorageAt(
-          contractAddress: contractAddress,
+          contractAddress: contractAddressV0,
           key: Felt.fromHexString(
               '0x0206F38F7E4F15E87567361213C28F235CCCDAA1D7FD34C9DB1DFE9489C6A091'),
           blockId: invalidBlockIdFromBlockHash,
@@ -497,7 +502,7 @@ void main() {
     group('starknet_getNonce', () {
       test('returns latest nonce associated with the given address', () async {
         final response = await provider.getNonce(
-          contractAddress: contractAddress,
+          contractAddress: contractAddressV0,
           blockId: BlockId.latest,
         );
 
@@ -509,7 +514,7 @@ void main() {
       test('reading nonce from invalid block id returns BLOCK_NOT_FOUND error',
           () async {
         final response = await provider.getNonce(
-          contractAddress: contractAddress,
+          contractAddress: contractAddressV0,
           blockId: invalidBlockIdFromBlockHash,
         );
 
@@ -642,17 +647,37 @@ void main() {
     });
 
     group('starknet_getClass', () {
-      test('returns contract class definition for a known class hash',
+      test('returns contract class definition for a known class hash (cairo 0)',
           () async {
         final response = await provider.getClass(
-          classHash: classHash,
+          classHash: classHashV0,
           blockId: BlockId.blockTag("latest"),
         );
 
         response.when(
           error: (error) => fail("Shouldn't fail"),
-          result: (result) {
+          result: (res) {
+            expect(res, isA<DeprecatedContractClass>());
+            final result = res as DeprecatedContractClass;
             expect(result.program, isNotNull);
+          },
+        );
+      }, tags: ['rpc-node-bug']);
+
+      test(
+          'returns contract class definition for a known class hash (cairo 1.0)',
+          () async {
+        final response = await provider.getClass(
+          classHash: classHashV1,
+          blockId: BlockId.blockTag("latest"),
+        );
+
+        response.when(
+          error: (error) => fail("Shouldn't fail"),
+          result: (res) {
+            expect(res, isA<SierraContractClass>());
+            final result = res as SierraContractClass;
+            expect(result.sierraProgram, isNotEmpty);
           },
         );
       }, tags: ['rpc-node-bug']);
@@ -660,7 +685,7 @@ void main() {
       test('returns BLOCK_NOT_FOUND error when invalid block id is given.',
           () async {
         final response = await provider.getClass(
-          classHash: classHash,
+          classHash: classHashV0,
           blockId: BlockId.blockHash(invalidHexString),
         );
 
@@ -694,7 +719,7 @@ void main() {
           'returns contract class hash in the given block for the deployed contract address.',
           () async {
         final response = await provider.getClassHashAt(
-          contractAddress: contractAddress,
+          contractAddress: contractAddressV0,
           blockId: BlockId.blockTag("latest"),
         );
 
@@ -709,7 +734,7 @@ void main() {
       test('returns BLOCK_NOT_FOUND error when invalid block id is given.',
           () async {
         final response = await provider.getClassHashAt(
-          contractAddress: contractAddress,
+          contractAddress: contractAddressV0,
           blockId: BlockId.blockHash(invalidHexString),
         );
 
@@ -740,17 +765,37 @@ void main() {
 
     group('starknet_getClassAt', () {
       test(
-          'returns contract class definition in the given block for given contract address.',
+          'returns contract class definition in the given block for given contract address. (cairo 0)',
           () async {
         final response = await provider.getClassAt(
-          contractAddress: contractAddress,
+          contractAddress: contractAddressV0,
           blockId: BlockId.blockTag("latest"),
         );
 
         response.when(
           error: (error) => fail("Shouldn't fail"),
-          result: (result) {
+          result: (res) {
+            expect(res, isA<DeprecatedContractClass>());
+            final result = res as DeprecatedContractClass;
             expect(result.program, isNotNull);
+          },
+        );
+      }, tags: ['rpc-node-bug']);
+
+      test(
+          'returns contract class definition in the given block for given contract address. (cairo 1.0)',
+          () async {
+        final response = await provider.getClassAt(
+          contractAddress: contractAddressV1,
+          blockId: BlockId.blockTag("latest"),
+        );
+
+        response.when(
+          error: (error) => fail("Shouldn't fail"),
+          result: (res) {
+            expect(res, isA<SierraContractClass>());
+            final result = res as SierraContractClass;
+            expect(result.sierraProgram, isNotEmpty);
           },
         );
       }, tags: ['rpc-node-bug']);
@@ -758,7 +803,7 @@ void main() {
       test('returns BLOCK_NOT_FOUND error when invalid block id is given.',
           () async {
         final response = await provider.getClassAt(
-          contractAddress: contractAddress,
+          contractAddress: contractAddressV0,
           blockId: BlockId.blockHash(invalidHexString),
         );
 
@@ -877,7 +922,9 @@ void main() {
         final response = await provider.pendingTransactions();
 
         response.when(
-            error: (error) => fail('Should not fail'), result: (_) {});
+          error: (error) => fail('Should not fail $error'),
+          result: (_) {},
+        );
       });
     });
 

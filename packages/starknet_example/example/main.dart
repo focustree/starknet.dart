@@ -5,8 +5,8 @@ import '../lib/src/udc.g.dart';
 
 void main() async {
   Felt classHash = Felt.fromInt(0);
-  final compiledContract =
-      await parseContract("../../contracts/build/balance.json");
+  final compiledContract = await DeprecatedCompiledContract.fromPath(
+      "../../contracts/build/balance.json");
   print("Local class hash: ${compiledContract.classHash()}");
   final declareTx = await account0.declare(compiledContract: compiledContract);
   declareTx.when(
