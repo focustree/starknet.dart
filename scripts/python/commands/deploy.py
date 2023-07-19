@@ -132,13 +132,12 @@ async def _deploy_upgradeable(implem_hash: str,
     config = get_config(env)
 
     account = get_account(config)
-    deployer = Deployer()
 
     proxy_hash = await declare("proxy", env)
     proxy_abi = json.loads(
         Path(f"{COMPILED_CONTRACTS_PATH}/proxy_abi.json").read_text())
 
-    deploy_call, address = deployer.create_deployment_call(
+    deploy_call, address = Deployer().create_contract_deployment(
         salt=SALT,
         class_hash=proxy_hash,
         abi=proxy_abi,
