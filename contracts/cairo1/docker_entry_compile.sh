@@ -10,6 +10,8 @@ compile () {
   chown $USER_ID:$GROUP_ID "${2}_compiled.txt"
 }
 
-compile "/contracts/abi_types.cairo" "/artifacts/abi_types"
+for file in /contracts/*.cairo; do
+  filename=$(basename ${file})
+  compile "${file}" /artifacts/${filename%.cairo}
+done
 
-compile "/contracts/erc20.cairo" "/artifacts/erc20"

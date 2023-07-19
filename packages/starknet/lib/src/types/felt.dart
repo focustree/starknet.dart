@@ -77,6 +77,10 @@ class Felt {
   String toSymbol() {
     return Utf8Codec().decode(_bigInt.toUint8List());
   }
+
+  factory Felt.fromCallData(List<Felt> callData) => callData[0];
+
+  List<Felt> toCallData() => [this];
 }
 
 extension Starknet on BigInt {

@@ -319,9 +319,13 @@ Account getAccount({
 Felt? getDeployedContractAddress(GetTransactionReceipt txReceipt) {
   return txReceipt.when(
     result: (r) {
-      final contractDeployedEvent = r.events[0];
-      var contractAddress = contractDeployedEvent.data?[0];
-      return contractAddress;
+      for (var event in r.events) {
+        // contract constructor can generate some event also
+        if (event.fromAddress == udcAddress) {
+          return event.data?[0];
+        }
+      }
+      throw Exception("UDC deployer event not found");
     },
     error: (e) => throw Exception(e.message),
   );

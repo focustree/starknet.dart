@@ -20,6 +20,6 @@ def get_account(config: Config):
         key_pair=key_pair,
         chain=config.chain_id,
     )
-
+    
     return account
 

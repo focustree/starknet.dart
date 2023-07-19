@@ -105,7 +105,7 @@ void main() {
     }, tags: ['integration-devnet-040']);
 
     group('deploy', () {
-      test('succeeds to deploy a contract', () async {
+      test('succeeds to deploy a cairo 0 contract', () async {
         // Balance contract
         final classHash = balanceClassHash;
 
@@ -114,6 +114,27 @@ void main() {
         expect(contractAddress, equals(balanceContractAddress));
       });
 
+      test('succeeds to deploy a cairo 1 contract', () async {
+        final classHash = Felt.fromHexString(
+            "0x6d8ede036bb4720e6f348643221d8672bf4f0895622c32c11e57460b3b7dffc");
+        final contractAddress =
+            await account0.deploy(classHash: classHash, calldata: [
+          Felt.fromString("Starknet.dart"),
+          Felt.fromString("DART"),
+          Felt.fromInt(18),
+          Felt.fromInt(1000),
+          Felt.fromInt(0),
+          account0.accountAddress
+        ]);
+        expect(
+            contractAddress,
+            equals(
+              Felt.fromHexString(
+                "0x53813135446812b36f67e5b363813df086d88544ce17c742376082b8e997e29",
+              ),
+            ));
+        print("Address $contractAddress");
+      });
       test('succeeds to deploy an account', () async {
         final accountPrivateKey = Felt.fromHexString("0x12345678");
         final accountPublicKey = Felt.fromHexString(

@@ -30,4 +30,9 @@ class Uint256 {
 
   @override
   int get hashCode => Object.hash(low, high);
+
+  factory Uint256.fromCallData(List<Felt> callData) =>
+      Uint256(low: callData[0], high: callData[1]);
+
+  List<Felt> toCallData() => [low, high];
 }

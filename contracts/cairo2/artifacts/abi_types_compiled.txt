@@ -1103,6 +1103,146 @@
       ]
     ]
   ],
+  "pythonic_hints": [
+    [
+      0,
+      [
+        "memory[ap + 0] = 18080 <= memory[fp + -6]"
+      ]
+    ],
+    [
+      48,
+      [
+        "memory[ap + 0] = 0 <= memory[ap + -112]"
+      ]
+    ],
+    [
+      67,
+      [
+        "memory[ap + 0] = segments.add()"
+      ]
+    ],
+    [
+      86,
+      [
+        "memory[ap + 0] = segments.add()"
+      ]
+    ],
+    [
+      104,
+      [
+        "memory[ap + 0] = segments.add()"
+      ]
+    ],
+    [
+      118,
+      [
+        "memory[ap + 0] = segments.add()"
+      ]
+    ],
+    [
+      132,
+      [
+        "memory[ap + 0] = segments.add()"
+      ]
+    ],
+    [
+      146,
+      [
+        "memory[ap + 0] = segments.add()"
+      ]
+    ],
+    [
+      161,
+      [
+        "memory[ap + 0] = 0 <= memory[fp + -6]"
+      ]
+    ],
+    [
+      208,
+      [
+        "memory[ap + 0] = 0 <= memory[ap + -41]"
+      ]
+    ],
+    [
+      224,
+      [
+        "memory[ap + 0] = segments.add()"
+      ]
+    ],
+    [
+      235,
+      [
+        "memory[ap + 0] = segments.add()"
+      ]
+    ],
+    [
+      253,
+      [
+        "memory[ap + 0] = segments.add()"
+      ]
+    ],
+    [
+      267,
+      [
+        "memory[ap + 0] = segments.add()"
+      ]
+    ],
+    [
+      281,
+      [
+        "memory[ap + 0] = segments.add()"
+      ]
+    ],
+    [
+      295,
+      [
+        "memory[ap + 0] = segments.add()"
+      ]
+    ],
+    [
+      316,
+      [
+        "memory[ap + 4] = memory[ap + -1] < 3618502788666131106986593281521497120414687020801267626233049500247285301248"
+      ]
+    ],
+    [
+      320,
+      [
+        "\n(value, scalar) = (memory[ap + 3], 313594649253062377472)\nx = min(value // scalar, 340282366920938463463374607431768211455)\ny = value - x * scalar\nmemory[ap + -2] = x\nmemory[ap + -1] = y\n"
+      ]
+    ],
+    [
+      330,
+      [
+        "\n(value, scalar) = (memory[ap + -2], 10633823966279326983230456482242756608)\nx = min(value // scalar, 340282366920938463463374607431768211455)\ny = value - x * scalar\nmemory[ap + -1] = x\nmemory[ap + 0] = y\n"
+      ]
+    ],
+    [
+      541,
+      [
+        "memory[ap + 0] = memory[fp + -3] < 340282366920938463463374607431768211456"
+      ]
+    ],
+    [
+      543,
+      [
+        "(memory[ap + 3], memory[ap + 4]) = divmod(memory[fp + -3], 340282366920938463463374607431768211456)"
+      ]
+    ],
+    [
+      620,
+      [
+        "memory[ap + 0] = memory[fp + -3] < 340282366920938463463374607431768211456"
+      ]
+    ],
+    [
+      622,
+      [
+        "(memory[ap + 3], memory[ap + 4]) = divmod(memory[fp + -3], 340282366920938463463374607431768211456)"
+      ]
+    ]
+  ],
   "entry_points_by_type": {
     "EXTERNAL": [
       {

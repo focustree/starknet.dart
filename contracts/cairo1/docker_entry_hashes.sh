@@ -8,6 +8,6 @@ hash () {
   chown $USER_ID:$GROUP_ID "$1.hashes.json"
 }
 
-hash "/artifacts/abi_types"
-
-hash "/artifacts/erc20"
+for file in /artifacts/*_sierra.txt; do
+  hash "/artifacts/$(basename ${file%_sierra.txt})"
+done
