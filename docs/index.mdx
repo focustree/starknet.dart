@@ -1,5 +1,58 @@
-# Installation
+# starknet.dart
 
-```bash
-npm install myawesomelib
-```
+The goal of this SDK is to be able to interact with StarkNet smart contracts in a type-safe way.
+
+You can also call the JSON-RPC endpoint exposed by the StarkNet full nodes (see the [specs](https://github.com/starkware-libs/starknet-specs)).
+
+💬 [telegram chat](https://t.me/+CWezjfLIRYc0MDY0)
+
+## StarkNet Features Compatibility
+
+### Transaction
+
+| Feature        | State              | Version |
+| -------------- | ------------------ | ------- |
+| invoke         | :white_check_mark: | 0, 1    |
+| declare        | :white_check_mark: | 1, 2    |
+| deploy_account | :white_check_mark: | 1       |
+
+### Supported RPC methods for JSON RPC v0.3.0
+
+| Feature                                  | State              |
+| ---------------------------------------- | ------------------ |
+| **Read**                                 |
+| starknet_getBlockWithTxHashes            | :white_check_mark: |
+| starknet_getBlockWithTxs                 | :white_check_mark: |
+| starknet_getStateUpdate                  | :white_check_mark: |
+| starknet_getStorageAt                    | :white_check_mark: |
+| starknet_getTransactionByHash            | :white_check_mark: |
+| starknet_getTransactionByBlockIdAndIndex | :white_check_mark: |
+| starknet_getTransactionReceipt           | :white_check_mark: |
+| starknet_getClass                        | :white_check_mark: |
+| starknet_getClassHashAt                  | :white_check_mark: |
+| starknet_getClassAt                      | :white_check_mark: |
+| starknet_getBlockTransactionCount        | :white_check_mark: |
+| starknet_call                            | :white_check_mark: |
+| starknet_estimateFee                     | :white_check_mark: |
+| starknet_blockNumber                     | :white_check_mark: |
+| starknet_blockHashAndNumber              | :white_check_mark: |
+| starknet_chainId                         | :white_check_mark: |
+| starknet_pendingTransactions             | :white_check_mark: |
+| starknet_syncing                         | :white_check_mark: |
+| starknet_getEvents                       | :white_check_mark: |
+| starknet_getNonce                        | :white_check_mark: |
+| **Write**                                |
+| starknet_addInvokeTransaction            | :white_check_mark: |
+| starknet_addDeclareTransaction           | :white_check_mark: |
+| starknet_addDeployAccountTransaction     | :white_check_mark: |
+
+### Source code generation from contract ABI 
+
+| Feature      | Cairo 0 (legacy)   | Cairo 1            | Cairo 2            |
+|--------------|--------------------|--------------------|--------------------|
+| call         | :white_check_mark: | :white_check_mark: | :no_entry:         |
+| invoke       | :white_check_mark: | :white_check_mark: | :no_entry:         |
+| core types   | :white_check_mark: | :construction:     | :no_entry:         |
+| custom types | :white_check_mark: | :construction:     | :no_entry:         |
+| event        | :no_entry:         | :no_entry:         | :no_entry:         |
+
