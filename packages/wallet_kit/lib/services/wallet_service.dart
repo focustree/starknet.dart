@@ -1,5 +1,6 @@
 import 'package:secure_store/secure_store.dart' as ss;
-import 'package:starknet/starknet.dart';
+import 'package:starknet/starknet.dart' as s;
+import 'package:wallet_kit/wallet_state/index.dart';
 
 Future<void> storeAccountSecrets({
   required String walletId,
@@ -25,68 +26,42 @@ Future<void> storeAccountSecrets({
   );
 }
 
-// Future<bool> send({
-//   required PublicAccount publicAccount,
-//   required Felt recipientAddress,
-//   required double amount,
-//   required PasswordPrompt onPasswordStoreCallback,
-//   Function(String)? onSendTransactionCallback,
-// }) async {
-//   final secureStore = await StarknetStore.secure();
+Future<String> sendEth({
+  required Account account,
+  required String password,
+  required s.Felt recipientAddress,
+  required double amount,
+  Function(String)? onSendTransactionCallback,
+}) async {
+  final privateKey = await ss.PasswordStore()
+      .getPrivateKey(id: account.id.toString(), password: password);
+  if (privateKey == null) {
+    throw Exception("Private key is null");
+  }
 
-//   // retrieve private key using biometric or password
-//   Signer? signer = Signer(
-//     privateKey: await secureStore.when(
-//       biometric: (biometricStore) async {
-//         final privateKey =
-//             await biometricStore.getPrivateKey(id: publicAccount.privateKeyId);
-//         return Felt.fromBytes(privateKey!);
-//       },
-//       password: (passwordStore) async {
-//         final password = await onPasswordStoreCallback.call();
+  s.Signer? signer = s.Signer(privateKey: s.Felt.fromBytes(privateKey));
 
-//         // TODO: Handle password error
-//         if (password == null) {
-//           throw Error();
-//         }
+  final provider = s.JsonRpcProvider.infuraGoerliTestnet;
 
-//         final privateKey = await passwordStore.getPrivateKey(
-//           id: publicAccount.privateKeyId,
-//           password: password,
-//         );
-//         return Felt.fromBytes(privateKey!);
-//       },
-//     ),
-//   );
+  final fundingAccount = s.Account(
+    provider: provider,
+    signer: signer,
+    accountAddress: s.Felt.fromHexString(account.address),
+    chainId: s.StarknetChainId.testNet,
+  );
 
-//   final jsonRpcProvider = JsonRpcProvider(
-//     nodeUri: Uri.parse(publicAccount.nodeUri),
-//   );
-//   final fundingAccount = Account(
-//     provider: jsonRpcProvider,
-//     signer: signer,
-//     accountAddress: Felt.fromHexString(publicAccount.accountAddress),
-//     chainId: Felt.fromHexString(publicAccount.chainId),
-//   );
+  final txHash = await fundingAccount.send(
+    recipient: recipientAddress,
+    amount: s.Uint256(
+      low: s.Felt(
+        BigInt.from(amount * 1e18),
+      ),
+      high: s.Felt.fromInt(0),
+    ),
+  );
 
-//   final provider = fundingAccount.provider;
-//   final txHash = await fundingAccount.send(
-//     recipient: recipientAddress,
-//     amount: Uint256(
-//       low: Felt(
-//         BigInt.from(amount * 1e18),
-//       ),
-//       high: Felt.fromInt(0),
-//     ),
-//   );
+  // set signer to null to avoid storing the private key in memory
+  signer = null;
 
-//   onSendTransactionCallback?.call(txHash);
-
-//   // set signer to null to avoid storing the private key in memory
-//   signer = null;
-
-//   return await waitForAcceptance(
-//     transactionHash: txHash,
-//     provider: provider,
-//   );
-// }
+  return txHash;
+}

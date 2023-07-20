@@ -3,6 +3,15 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:wallet_kit/wallet_kit.dart';
 
+Future<String?> getPassword(BuildContext context) async {
+  return showBottomModal<String>(
+    isScrollControlled: true,
+    useSafeArea: true,
+    context: context,
+    builder: (context) => ModalLayout(child: const PasswordScreen()),
+  );
+}
+
 class CreatePasswordScreen extends HookConsumerWidget {
   const CreatePasswordScreen({Key? key}) : super(key: key);
 

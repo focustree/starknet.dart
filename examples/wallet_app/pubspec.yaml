@@ -19,6 +19,8 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^2.0.0
+  build_runner: ^2.4.6
+  starknet_builder:
 
 flutter:
   uses-material-design: true
