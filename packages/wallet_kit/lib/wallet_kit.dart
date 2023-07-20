@@ -7,6 +7,7 @@ export 'wallet_screens/index.dart';
 export 'ui/index.dart';
 export 'widgets/index.dart';
 export 'utils/index.dart';
+export 'services/index.dart';
 
 class WalletKit {
   static Future<void> init({
