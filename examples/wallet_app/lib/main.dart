@@ -16,11 +16,9 @@ class MyApp extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    debugPrint("Wallet state: ${ref.watch(walletsProvider)}");
     SystemChrome.setEnabledSystemUIMode(
       SystemUiMode.edgeToEdge,
     );
-
     SystemChrome.setPreferredOrientations([
       DeviceOrientation.portraitUp,
       DeviceOrientation.portraitDown,
@@ -33,6 +31,7 @@ class MyApp extends HookConsumerWidget {
       systemNavigationBarIconBrightness: Brightness.dark,
     ));
     return MaterialApp.router(
+      debugShowCheckedModeBanner: false,
       routerConfig: GoRouter(
         routes: [
           GoRoute(

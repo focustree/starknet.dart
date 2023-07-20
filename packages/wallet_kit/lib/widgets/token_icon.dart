@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:image_network/image_network.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class TokenIcon extends StatelessWidget {
   final String symbol;
@@ -10,12 +10,10 @@ class TokenIcon extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final url =
-        "https://cryptoicons.org/api/color/${symbol.toLowerCase()}/${3 * size}";
-    return ImageNetwork(
-      image: url,
-      height: size,
-      width: size,
+    return SvgPicture.asset(
+      "packages/wallet_kit/assets/images/crypto/$symbol.svg",
+      width: 24,
+      height: 24,
     );
   }
 }
