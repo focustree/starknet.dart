@@ -1,0 +1,48 @@
+[
+  {
+    "name": "constructor",
+    "type": "function",
+    "inputs": [],
+    "outputs": [],
+    "state_mutability": "external"
+  },
+  {
+    "name": "get_counter",
+    "type": "function",
+    "inputs": [],
+    "outputs": [
+      {
+        "type": "core::felt252"
+      }
+    ],
+    "state_mutability": "view"
+  },
+  {
+    "name": "tick",
+    "type": "function",
+    "inputs": [],
+    "outputs": [],
+    "state_mutability": "external"
+  },
+  {
+    "name": "reset_counter",
+    "type": "function",
+    "inputs": [],
+    "outputs": [],
+    "state_mutability": "external"
+  },
+  {
+    "name": "Tick",
+    "type": "event",
+    "inputs": [
+      {
+        "name": "ticker",
+        "type": "core::starknet::contract_address::ContractAddress"
+      },
+      {
+        "name": "value",
+        "type": "core::felt252"
+      }
+    ]
+  }
+]

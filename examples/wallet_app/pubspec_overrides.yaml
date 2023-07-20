@@ -3,3 +3,5 @@ dependency_overrides:
     path: ../../packages/secure_store
   wallet_kit:
     path: ../../packages/wallet_kit
+  starknet_builder:
+    path: ../../packages/starknet_builder

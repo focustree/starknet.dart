@@ -113,6 +113,7 @@ class Wallets extends _$Wallets with PersistedState<WalletsState> {
 
     final privateKey = await derivePrivateKeyInIsolate(
         seedPhrase: seedPhrase, derivationIndex: derivationIndex);
+    print('Private key: ${privateKey.toHexString()}');
 
     final signer = s.Signer(privateKey: privateKey);
 

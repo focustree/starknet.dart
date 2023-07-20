@@ -173,12 +173,7 @@ class WalletCell extends HookConsumerWidget {
                 padding: const EdgeInsets.all(4.0),
                 child: TextButton.icon(
                   onPressed: () async {
-                    final password = await showBottomModal<String>(
-                      isScrollControlled: true,
-                      useSafeArea: true,
-                      context: context,
-                      builder: (context) => const PasswordScreen(),
-                    );
+                    final password = await getPassword(context);
                     if (password == null) return;
                     ref
                         .read(walletsProvider.notifier)
