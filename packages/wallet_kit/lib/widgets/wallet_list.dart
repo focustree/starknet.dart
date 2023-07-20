@@ -177,7 +177,8 @@ class WalletCell extends HookConsumerWidget {
                       isScrollControlled: true,
                       useSafeArea: true,
                       context: context,
-                      builder: (context) => const PasswordScreen(),
+                      builder: (context) =>
+                          ModalLayout(child: const PasswordScreen()),
                     );
                     if (password == null) return;
                     ref

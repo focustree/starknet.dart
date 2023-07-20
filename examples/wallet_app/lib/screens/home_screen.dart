@@ -8,10 +8,10 @@ class HomeScreen extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    return Layout2(
+    return const Layout2(
       children: [
-        const SizedBox(height: 32),
-        const Column(
+        SizedBox(height: 32),
+        Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisSize: MainAxisSize.min,
           children: [
@@ -19,8 +19,8 @@ class HomeScreen extends HookConsumerWidget {
             AccountAddress(),
           ],
         ),
-        const SizedBox(height: 32),
-        const WalletBody(),
+        SizedBox(height: 32),
+        WalletBody(),
       ],
     );
   }

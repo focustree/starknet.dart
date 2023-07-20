@@ -60,7 +60,7 @@ class ConfirmPasswordScren extends HookConsumerWidget {
 
     return Layout2(
       children: [
-        SimpleHeader(
+        const SimpleHeader(
           title: 'Confirm Password',
         ),
         const Text("Confirm your password. Only you can access your funds."),
@@ -113,9 +113,9 @@ class PasswordScreen extends HookConsumerWidget {
         callback ?? (password) => Navigator.of(context).pop(password);
 
     const double sidePadding = 24;
-    final keyboardIsOpen = MediaQuery.of(context).viewInsets.bottom > 0.0;
 
-    return Column(
+    return SpacedColumn(
+      verticalSpacing: 16,
       children: [
         const ModalHeader(title: "Enter your password"),
         Padding(
@@ -129,7 +129,8 @@ class PasswordScreen extends HookConsumerWidget {
         ),
         const Spacer(),
         Padding(
-          padding: const EdgeInsets.symmetric(horizontal: sidePadding),
+          padding:
+              const EdgeInsets.symmetric(horizontal: sidePadding, vertical: 24),
           child: PrimaryButton(
             onPressed: isButtonEnabled
                 ? () async {
@@ -139,8 +140,6 @@ class PasswordScreen extends HookConsumerWidget {
             label: "Continue",
           ),
         ),
-        const SizedBox(height: sidePadding),
-        SizedBox(height: keyboardIsOpen ? 0 : 14),
       ],
     );
   }
