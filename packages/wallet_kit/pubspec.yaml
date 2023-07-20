@@ -37,6 +37,12 @@ dev_dependencies:
   json_serializable: ^6.7.1
 
 flutter:
+  assets:
+    - assets/images/
+    - assets/images/crypto/
+    - assets/images/crypto/USDC.svg
+    - assets/images/crypto/ETH.svg
+
   fonts:
     - family: SF Pro Rounded
       fonts:

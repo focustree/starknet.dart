@@ -9,11 +9,11 @@ class ProtectWalletScreen extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final isLoading = useState(false);
-    return Layout(
-      appBar: AppBar(
-        title: const Text('Protect your wallet'),
-      ),
+    return Layout2(
+      sideMargin: 32,
+      verticalSpacing: 32,
       children: [
+        const SimpleHeader(title: 'Protect your wallet'),
         const Text(
           "This extra layer of security helps prevent someone with your phone from accesing your funds.",
         ),
@@ -27,7 +27,7 @@ class ProtectWalletScreen extends HookConsumerWidget {
               ),
             );
           },
-          label: "Protect wallet with password",
+          label: "Protect with password",
         ),
       ],
     );

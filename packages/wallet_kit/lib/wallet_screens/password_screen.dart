@@ -11,21 +11,19 @@ class CreatePasswordScreen extends HookConsumerWidget {
     final password = useState('');
     final isButtonEnabled = password.value.length >= 6;
 
-    return Layout(
-      appBar: AppBar(
-        title: const Text('Create Password'),
-      ),
+    return Layout2(
       children: [
+        SimpleHeader(
+          title: 'Create Password',
+        ),
         const Text(
           "Create a secure numeric password. Use a unique combination of digits to protect your assets.",
         ),
-        TextField(
+        TextInput(
           onChanged: (value) => password.value = value,
           autofocus: true,
           obscureText: true,
-          decoration: const InputDecoration(
-            labelText: 'Enter your password',
-          ),
+          hintText: 'Enter your password',
         ),
         const Spacer(),
         PrimaryButton(
@@ -60,19 +58,17 @@ class ConfirmPasswordScren extends HookConsumerWidget {
     final isLoading = useState(false);
     final isButtonEnabled = password.value.length >= 6;
 
-    return Layout(
-      appBar: AppBar(
-        title: const Text('Confirm Password'),
-      ),
+    return Layout2(
       children: [
+        SimpleHeader(
+          title: 'Confirm Password',
+        ),
         const Text("Confirm your password. Only you can access your funds."),
-        TextField(
+        TextInput(
           onChanged: (value) => password.value = value,
           obscureText: true,
           autofocus: true,
-          decoration: const InputDecoration(
-            labelText: 'Enter your password',
-          ),
+          hintText: 'Confirm your password',
         ),
         const Spacer(),
         PrimaryButton(

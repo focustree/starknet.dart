@@ -57,44 +57,6 @@ class Layout extends StatelessWidget {
   }
 }
 
-class Layout2 extends StatelessWidget {
-  final List<Widget> children;
-  final MainAxisAlignment mainAxisAlignment;
-  final MainAxisSize mainAxisSize;
-  final CrossAxisAlignment crossAxisAlignment;
-  final VerticalDirection verticalDirection;
-  final TextDirection? textDirection;
-  final TextBaseline? textBaseline;
-
-  const Layout2({
-    Key? key,
-    required this.children,
-    this.mainAxisAlignment = MainAxisAlignment.start,
-    this.mainAxisSize = MainAxisSize.max,
-    this.crossAxisAlignment = CrossAxisAlignment.center,
-    this.verticalDirection = VerticalDirection.down,
-    this.textDirection,
-    this.textBaseline,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Material(
-      child: SafeArea(
-        child: Column(
-          mainAxisAlignment: mainAxisAlignment,
-          mainAxisSize: mainAxisSize,
-          crossAxisAlignment: crossAxisAlignment,
-          verticalDirection: verticalDirection,
-          textDirection: textDirection,
-          textBaseline: textBaseline,
-          children: children,
-        ),
-      ),
-    );
-  }
-}
-
 class SpacedColumn extends StatelessWidget {
   final double verticalSpacing;
   final double sideMargin;
@@ -147,6 +109,60 @@ class SpacedColumn extends StatelessWidget {
               .expand((widget) => [widget, SizedBox(height: verticalSpacing)])
               .toList()
             ..removeLast(),
+        ),
+      ),
+    );
+  }
+}
+
+class Layout2 extends StatelessWidget {
+  final double verticalSpacing;
+  final double sideMargin;
+  final double top;
+  final double bottom;
+  final double maxWidth;
+  final List<Widget> children;
+  final MainAxisAlignment mainAxisAlignment;
+  final MainAxisSize mainAxisSize;
+  final CrossAxisAlignment crossAxisAlignment;
+  final VerticalDirection verticalDirection;
+  final TextDirection? textDirection;
+  final TextBaseline? textBaseline;
+
+  const Layout2({
+    Key? key,
+    this.top = 0,
+    this.bottom = 0,
+    this.verticalSpacing = 32,
+    this.sideMargin = 32,
+    this.maxWidth = double.infinity,
+    required this.children,
+    this.mainAxisAlignment = MainAxisAlignment.start,
+    this.mainAxisSize = MainAxisSize.max,
+    this.crossAxisAlignment = CrossAxisAlignment.center,
+    this.verticalDirection = VerticalDirection.down,
+    this.textDirection,
+    this.textBaseline,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    final keyboardHeight = MediaQuery.of(context).viewInsets.bottom;
+    return Material(
+      child: SafeArea(
+        child: SpacedColumn(
+          mainAxisAlignment: mainAxisAlignment,
+          mainAxisSize: mainAxisSize,
+          crossAxisAlignment: crossAxisAlignment,
+          verticalDirection: verticalDirection,
+          textDirection: textDirection,
+          textBaseline: textBaseline,
+          children: children,
+          top: top,
+          bottom: keyboardHeight > 0 ? bottom + keyboardHeight + 32 : bottom,
+          verticalSpacing: verticalSpacing,
+          sideMargin: sideMargin,
+          maxWidth: maxWidth,
         ),
       ),
     );

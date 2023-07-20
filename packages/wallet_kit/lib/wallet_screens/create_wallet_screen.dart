@@ -16,11 +16,11 @@ class CreateWalletScreen extends HookConsumerWidget {
             walletsProvider.select((value) => value.tempWallet?.seedPhrase)) ??
         [];
 
-    return Layout(
-      appBar: AppBar(
-        title: const Text('Secret Recovery Phrase'),
-      ),
+    return Layout2(
       children: [
+        SimpleHeader(
+          title: 'Create wallet',
+        ),
         const Text(
           'Keep this phrase safe and secret. It can be used to recover your wallet.',
           textAlign: TextAlign.center,

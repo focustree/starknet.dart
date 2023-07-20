@@ -3,7 +3,7 @@
 # Run `pod lib lint starknet_flutter.podspec` to validate before publishing.
 #
 Pod::Spec.new do |s|
-  s.name             = 'starknet_flutter'
+  s.name             = 'secure_store'
   s.version          = '0.0.1'
   s.summary          = 'A new Flutter plugin project.'
   s.description      = <<-DESC

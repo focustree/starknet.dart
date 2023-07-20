@@ -8,7 +8,7 @@ class TokenList extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final tokens = ['ETH', 'BTC', 'USDC'];
+    final tokens = ['ETH', 'WBTC', 'USDC'];
     final selectedAccount =
         ref.watch(walletsProvider.select((value) => value.selectedAccount));
 
