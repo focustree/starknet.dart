@@ -11,13 +11,13 @@
       "name": "Example ERC20",
       "request": "launch",
       "type": "dart",
-      "program": "${workspaceFolder}/example/examples/erc20.dart",
+      "program": "${workspaceFolder}/example/examples/erc20.dart"
     },
     {
-      "name": "Flutter app example",
+      "name": "Current device (Debug Mode)",
       "request": "launch",
       "type": "dart",
-      "program": "packages/starknet_flutter/example/lib/main.dart",
+      "flutterMode": "debug"
     }
   ]
 }

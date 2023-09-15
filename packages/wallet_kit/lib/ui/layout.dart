@@ -132,8 +132,8 @@ class Layout2 extends StatelessWidget {
   const Layout2({
     Key? key,
     this.top = 0,
-    this.bottom = 0,
-    this.verticalSpacing = 24,
+    this.bottom = 24,
+    this.verticalSpacing = 16,
     this.sideMargin = 24,
     this.maxWidth = double.infinity,
     required this.children,
