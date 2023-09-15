@@ -17,15 +17,16 @@ class CreateWalletScreen extends HookConsumerWidget {
         [];
 
     return Layout2(
+      verticalSpacing: 16,
       children: [
-        SimpleHeader(
+        const SimpleHeader(
           title: 'Create wallet',
         ),
         const Text(
           'Keep this phrase safe and secret. It can be used to recover your wallet.',
           textAlign: TextAlign.center,
         ),
-        SeedGrid(seedPhrase: seedPhrase),
+        Flexible(child: SeedGrid(seedPhrase: seedPhrase)),
         CopyToClipboardButton(seedPhrase: seedPhrase),
         CheckboxListTile(
           enableFeedback: true,
@@ -65,27 +66,29 @@ class SeedGrid extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-      children: <Widget>[
-        Expanded(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: List.generate((seedPhrase.length / 2).ceil(), (index) {
-              return buildContainer(index * 2);
-            }),
+    return SingleChildScrollView(
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: <Widget>[
+          Flexible(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: List.generate((seedPhrase.length / 2).ceil(), (index) {
+                return buildContainer(index * 2);
+              }),
+            ),
           ),
-        ),
-        const SizedBox(width: 16), // Spacing between columns
-        Expanded(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: List.generate(seedPhrase.length ~/ 2, (index) {
-              return buildContainer(index * 2 + 1);
-            }),
+          const SizedBox(width: 16), // Spacing between columns
+          Flexible(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: List.generate(seedPhrase.length ~/ 2, (index) {
+                return buildContainer(index * 2 + 1);
+              }),
+            ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 
