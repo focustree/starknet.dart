@@ -43,6 +43,7 @@ android {
     defaultConfig {
         minSdkVersion 23
     }
+    namespace 'com.example.secure_store'
 }
 
 dependencies {
