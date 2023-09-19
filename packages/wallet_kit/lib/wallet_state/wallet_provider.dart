@@ -2,6 +2,7 @@ import 'package:flutter/foundation.dart' as f;
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:starknet/starknet.dart' as s;
 import 'package:secure_store/secure_store.dart' as sf;
+import 'package:starknet_provider/starknet_provider.dart' as sp;
 import 'package:wallet_kit/services/wallet_service.dart';
 import 'package:wallet_kit/utils/persisted_notifier_state.dart';
 import 'package:wallet_kit/wallet_state/wallet_state.dart';
@@ -54,7 +55,7 @@ class Wallets extends _$Wallets with PersistedState<WalletsState> {
     if (accountAddress == null) {
       throw Exception('Account address is null');
     }
-    final provider = s.JsonRpcProvider.infuraGoerliTestnet;
+    final provider = sp.JsonRpcProvider.infuraGoerliTestnet;
     final ethBalance = await getEthBalance(
       provider: provider,
       accountAddress: s.Felt.fromHexString(accountAddress),
@@ -96,7 +97,7 @@ class Wallets extends _$Wallets with PersistedState<WalletsState> {
     derivationIndex = derivationIndex ?? tempWallet.accounts.length;
 
     final chainId = s.StarknetChainId.testNet;
-    final provider = s.JsonRpcProvider.infuraGoerliTestnet;
+    final provider = sp.JsonRpcProvider.infuraGoerliTestnet;
     final accountDerivation = switch (tempWallet.type) {
       WalletType.openZeppelin => s.OpenzeppelinAccountDerivation(
           proxyClassHash: s.ozProxyClassHash,
@@ -262,18 +263,18 @@ s.Felt derivePrivateKeyIsolate(Map<String, dynamic> computationInput) {
 }
 
 Future<double> getEthBalance(
-    {required s.Provider provider, required s.Felt accountAddress}) async {
+    {required sp.Provider provider, required s.Felt accountAddress}) async {
   final ethContractAddress = s.Felt.fromHexString(
       '0x049d36570d4e46f48e99674bd3fcc84644ddd6b96f7c741b1562b82f9e004dc7');
   const ethDecimals = 18;
 
   final response = await provider.call(
-    request: s.FunctionCall(
+    request: sp.FunctionCall(
       contractAddress: ethContractAddress,
       entryPointSelector: s.getSelectorByName('balanceOf'),
       calldata: [accountAddress],
     ),
-    blockId: const s.BlockId.blockTag("latest"),
+    blockId: const sp.BlockId.blockTag("latest"),
   );
 
   return response.when<double>(

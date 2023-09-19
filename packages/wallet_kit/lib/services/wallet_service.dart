@@ -1,5 +1,6 @@
 import 'package:secure_store/secure_store.dart' as ss;
 import 'package:starknet/starknet.dart' as s;
+import 'package:starknet_provider/starknet_provider.dart';
 import 'package:wallet_kit/wallet_state/index.dart';
 
 Future<void> storeAccountSecrets({
@@ -41,7 +42,7 @@ Future<String> sendEth({
 
   s.Signer? signer = s.Signer(privateKey: s.Felt.fromBytes(privateKey));
 
-  final provider = s.JsonRpcProvider.infuraGoerliTestnet;
+  final provider = JsonRpcProvider.infuraGoerliTestnet;
 
   final fundingAccount = s.Account(
     provider: provider,

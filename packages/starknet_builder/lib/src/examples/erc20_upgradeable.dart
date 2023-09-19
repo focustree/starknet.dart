@@ -1,4 +1,5 @@
 import 'package:starknet/starknet.dart' hide Uint256, ERC20;
+import 'package:starknet_provider/starknet_provider.dart';
 import './erc20_upgradeable.g.dart';
 
 class AccountSetup {

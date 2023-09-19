@@ -4,6 +4,7 @@ import 'package:bip32/bip32.dart' as bip32;
 import 'package:bip39/bip39.dart' as bip39;
 import 'package:starknet/src/presets/udc.g.dart';
 import 'package:starknet/starknet.dart';
+import 'package:starknet_provider/starknet_provider.dart';
 
 enum AccountSupportedTxVersion {
   @Deprecated("Transaction version 0 will be removed with Starknet alpha v0.11")

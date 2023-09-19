@@ -1,4 +1,5 @@
 import 'package:starknet/starknet.dart';
+import 'package:starknet_provider/starknet_provider.dart';
 
 final ethContractAddress = Felt.fromHexString(
     '0x049d36570d4e46f48e99674bd3fcc84644ddd6b96f7c741b1562b82f9e004dc7');

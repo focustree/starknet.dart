@@ -1,10 +1,13 @@
 {
-  "cairols.useVenv": true,
-  "cairols.venvCommand": "source .venv/bin/activate",
-  "cairols.nileUseVenv": true,
-  "cairols.nileVenvCommand": "source .venv/bin/activate",
-  "cairols.highlightingCompiler": "starknet",
-  "cairols.cairoPath": [
-    "/Users/gabin/src/gabsn/starknet.dart/contracts/lib/cairo_contracts/src"
-  ]
+  "editor.formatOnSave": true,
+  "[dart]": {
+    "editor.formatOnSave": true,
+    "editor.codeActionsOnSave": {
+      "source.fixAll": true
+    }
+  },
+  "files.exclude": {
+    "**/*.freezed.dart": true,
+    "**/*.g.dart": true
+  }
 }

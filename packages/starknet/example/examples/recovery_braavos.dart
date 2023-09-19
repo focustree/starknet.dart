@@ -1,4 +1,5 @@
 import 'package:starknet/starknet.dart';
+import 'package:starknet_provider/starknet_provider.dart';
 
 final mnemonic =
     "toward antenna indicate reject must artist expect angry fit easy cupboard require"

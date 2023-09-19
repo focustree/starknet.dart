@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:starknet/starknet.dart';
 import 'package:bip39/bip39.dart' as bip39;
+import 'package:starknet_provider/starknet_provider.dart';
 
 Future<void> printAccountInfo(Account account) async {
   print("Address: ${account.accountAddress.toHexString()}");
