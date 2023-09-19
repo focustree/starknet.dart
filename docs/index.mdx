@@ -1,5 +1,57 @@
-# Installation
+# starknet.dart
 
-```bash
-npm install myawesomelib
-```
+The goal of this SDK is to be able to interact with StarkNet smart contracts in a type-safe way.
+
+
+💬 [telegram chat](https://t.me/+CWezjfLIRYc0MDY0)
+
+## StarkNet Features Compatibility
+
+### Transaction
+
+| Feature        | State              | Version |
+| -------------- | ------------------ | ------- |
+| invoke         | ✅ | 0, 1    |
+| declare        | ✅ | 1, 2    |
+| deploy_account | ✅ | 1       |
+
+### Supported RPC methods for JSON RPC v0.3.0
+
+| Feature                                  | State              |
+| ---------------------------------------- | ------------------ |
+| **Read**                                 |
+| starknet_getBlockWithTxHashes            | ✅ |
+| starknet_getBlockWithTxs                 | ✅ |
+| starknet_getStateUpdate                  | ✅ |
+| starknet_getStorageAt                    | ✅ |
+| starknet_getTransactionByHash            | ✅ |
+| starknet_getTransactionByBlockIdAndIndex | ✅ |
+| starknet_getTransactionReceipt           | ✅ |
+| starknet_getClass                        | ✅ |
+| starknet_getClassHashAt                  | ✅ |
+| starknet_getClassAt                      | ✅ |
+| starknet_getBlockTransactionCount        | ✅ |
+| starknet_call                            | ✅ |
+| starknet_estimateFee                     | ✅ |
+| starknet_blockNumber                     | ✅ |
+| starknet_blockHashAndNumber              | ✅ |
+| starknet_chainId                         | ✅ |
+| starknet_pendingTransactions             | ✅ |
+| starknet_syncing                         | ✅ |
+| starknet_getEvents                       | ✅ |
+| starknet_getNonce                        | ✅ |
+| **Write**                                |
+| starknet_addInvokeTransaction            | ✅ |
+| starknet_addDeclareTransaction           | ✅ |
+| starknet_addDeployAccountTransaction     | ✅ |
+
+### Source code generation from contract ABI 
+
+| Feature      | Cairo 0 (legacy)   | Cairo 1            | Cairo 2            |
+|--------------|--------------------|--------------------|--------------------|
+| call         |  ✅                |  ✅                | ❌                 |
+| invoke       |  ✅                |  ✅                | ❌                 |
+| core types   |  ✅                |  🚧                | ❌                 |
+| custom types |  ✅                |  🚧                | ❌                 |
+| event        |  ❌                |  ❌                | ❌                 |
+
