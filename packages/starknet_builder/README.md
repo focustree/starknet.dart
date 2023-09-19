@@ -8,9 +8,9 @@ This package provide several builders to generate Dart code from a starknet cont
 
 | Feature      | Cairo 0 (legacy)   | Cairo 1            | Cairo 2            |
 |--------------|--------------------|--------------------|--------------------|
-| call         | :white_check_mark: | :white_check_mark: | :no_entry:         |
-| invoke       | :white_check_mark: | :white_check_mark: | :no_entry:         |
-| core types   | :white_check_mark: | :construction:     | :no_entry:         |
-| custom types | :white_check_mark: | :construction:     | :no_entry:         |
-| event        | :no_entry:         | :no_entry:         | :no_entry:         |
+| call         | :white_check_mark: | :white_check_mark: | :x:         |
+| invoke       | :white_check_mark: | :white_check_mark: | :x:         |
+| core types   | :white_check_mark: | :construction:     | :x:         |
+| custom types | :white_check_mark: | :construction:     | :x:         |
+| event        | :x:         | :x:         | :x:         |
 
