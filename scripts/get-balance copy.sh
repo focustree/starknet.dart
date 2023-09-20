@@ -1,0 +1,1 @@
+starkli call $BALANCE_CONTRACT_ADDRESS get_balance 

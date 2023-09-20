@@ -10,12 +10,12 @@ _$_DeployedContractItem _$$_DeployedContractItemFromJson(
         Map<String, dynamic> json) =>
     _$_DeployedContractItem(
       address: Felt.fromJson(json['address'] as String),
-      classHash: Felt.fromJson(json['classHash'] as String),
+      classHash: Felt.fromJson(json['class_hash'] as String),
     );
 
 Map<String, dynamic> _$$_DeployedContractItemToJson(
         _$_DeployedContractItem instance) =>
     <String, dynamic>{
-      'address': instance.address,
-      'classHash': instance.classHash,
+      'address': instance.address.toJson(),
+      'class_hash': instance.classHash.toJson(),
     };

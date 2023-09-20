@@ -10,7 +10,7 @@ _$_ContractStorageDiffItem _$$_ContractStorageDiffItemFromJson(
         Map<String, dynamic> json) =>
     _$_ContractStorageDiffItem(
       address: Felt.fromJson(json['address'] as String),
-      storageEntries: (json['storageEntries'] as List<dynamic>)
+      storageEntries: (json['storage_entries'] as List<dynamic>)
           .map((e) => StorageItem.fromJson(e as Map<String, dynamic>))
           .toList(),
     );
@@ -18,8 +18,9 @@ _$_ContractStorageDiffItem _$$_ContractStorageDiffItemFromJson(
 Map<String, dynamic> _$$_ContractStorageDiffItemToJson(
         _$_ContractStorageDiffItem instance) =>
     <String, dynamic>{
-      'address': instance.address,
-      'storageEntries': instance.storageEntries,
+      'address': instance.address.toJson(),
+      'storage_entries':
+          instance.storageEntries.map((e) => e.toJson()).toList(),
     };
 
 _$_StorageItem _$$_StorageItemFromJson(Map<String, dynamic> json) =>
@@ -30,6 +31,6 @@ _$_StorageItem _$$_StorageItemFromJson(Map<String, dynamic> json) =>
 
 Map<String, dynamic> _$$_StorageItemToJson(_$_StorageItem instance) =>
     <String, dynamic>{
-      'key': instance.key,
-      'value': instance.value,
+      'key': instance.key.toJson(),
+      'value': instance.value.toJson(),
     };

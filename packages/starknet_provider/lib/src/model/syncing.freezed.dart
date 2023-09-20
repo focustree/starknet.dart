@@ -15,7 +15,7 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 Syncing _$SyncingFromJson(Map<String, dynamic> json) {
-  switch (json['runtimeType']) {
+  switch (json['starkNetRuntimeTypeToRemove']) {
     case 'synchronized':
       return Synchronized.fromJson(json);
     case 'notSynchronized':
@@ -24,8 +24,11 @@ Syncing _$SyncingFromJson(Map<String, dynamic> json) {
       return SyncingError.fromJson(json);
 
     default:
-      throw CheckedFromJsonException(json, 'runtimeType', 'Syncing',
-          'Invalid union type "${json['runtimeType']}"!');
+      throw CheckedFromJsonException(
+          json,
+          'starkNetRuntimeTypeToRemove',
+          'Syncing',
+          'Invalid union type "${json['starkNetRuntimeTypeToRemove']}"!');
   }
 }
 
@@ -148,7 +151,7 @@ class _$Synchronized implements Synchronized {
   @override
   final SyncStatus result;
 
-  @JsonKey(name: 'runtimeType')
+  @JsonKey(name: 'starkNetRuntimeTypeToRemove')
   final String $type;
 
   @override
@@ -306,7 +309,7 @@ class _$NotSynchronized implements NotSynchronized {
   @override
   final bool result;
 
-  @JsonKey(name: 'runtimeType')
+  @JsonKey(name: 'starkNetRuntimeTypeToRemove')
   final String $type;
 
   @override
@@ -474,7 +477,7 @@ class _$SyncingError implements SyncingError {
   @override
   final JsonRpcApiError error;
 
-  @JsonKey(name: 'runtimeType')
+  @JsonKey(name: 'starkNetRuntimeTypeToRemove')
   final String $type;
 
   @override

@@ -17,7 +17,7 @@ void main() {
         '0x7ed2fde2b82d70368db9ae0a53e88bd9a50e50a202f20e7ff07d0c18338d8c6');
     int blockNumber = 13334;
     Felt invokeTransactionHash = Felt.fromHexString(
-        '0x6c2d47ae348f465317528c500e91cd8845f3d8e5c9fd2fde30de9772faa40cc');
+        '0x6c2d47ae348f465317528c500e91cd8845fe5c9fd2fde30de9772faa40cc');
     Felt declareTransactionHash = Felt.fromHexString(
         '0x1363b8d4b4ef14e872e78b2fc65cc939b2a7a535b76f9146dbd6cd259119e44');
     Felt deployTransactionHash = Felt.fromHexString(

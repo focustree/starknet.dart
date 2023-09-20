@@ -7,9 +7,9 @@ part of 'event.dart';
 // **************************************************************************
 
 _$_Event _$$_EventFromJson(Map<String, dynamic> json) => _$_Event(
-      fromAddress: json['fromAddress'] == null
+      fromAddress: json['from_address'] == null
           ? null
-          : Felt.fromJson(json['fromAddress'] as String),
+          : Felt.fromJson(json['from_address'] as String),
       keys: (json['keys'] as List<dynamic>?)
           ?.map((e) => Felt.fromJson(e as String))
           .toList(),
@@ -19,7 +19,7 @@ _$_Event _$$_EventFromJson(Map<String, dynamic> json) => _$_Event(
     );
 
 Map<String, dynamic> _$$_EventToJson(_$_Event instance) => <String, dynamic>{
-      'fromAddress': instance.fromAddress,
-      'keys': instance.keys,
-      'data': instance.data,
+      'from_address': instance.fromAddress?.toJson(),
+      'keys': instance.keys?.map((e) => e.toJson()).toList(),
+      'data': instance.data?.map((e) => e.toJson()).toList(),
     };

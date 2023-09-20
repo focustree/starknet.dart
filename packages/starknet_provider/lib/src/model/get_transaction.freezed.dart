@@ -15,15 +15,18 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 GetTransaction _$GetTransactionFromJson(Map<String, dynamic> json) {
-  switch (json['runtimeType']) {
+  switch (json['starkNetRuntimeTypeToRemove']) {
     case 'result':
       return GetTransactionResult.fromJson(json);
     case 'error':
       return GetTransactionError.fromJson(json);
 
     default:
-      throw CheckedFromJsonException(json, 'runtimeType', 'GetTransaction',
-          'Invalid union type "${json['runtimeType']}"!');
+      throw CheckedFromJsonException(
+          json,
+          'starkNetRuntimeTypeToRemove',
+          'GetTransaction',
+          'Invalid union type "${json['starkNetRuntimeTypeToRemove']}"!');
   }
 }
 
@@ -141,7 +144,7 @@ class _$GetTransactionResult implements GetTransactionResult {
   @override
   final Txn result;
 
-  @JsonKey(name: 'runtimeType')
+  @JsonKey(name: 'starkNetRuntimeTypeToRemove')
   final String $type;
 
   @override
@@ -304,7 +307,7 @@ class _$GetTransactionError implements GetTransactionError {
   @override
   final JsonRpcApiError error;
 
-  @JsonKey(name: 'runtimeType')
+  @JsonKey(name: 'starkNetRuntimeTypeToRemove')
   final String $type;
 
   @override
@@ -415,7 +418,7 @@ abstract class GetTransactionError implements GetTransaction {
 }
 
 Txn _$TxnFromJson(Map<String, dynamic> json) {
-  switch (json['runtimeType']) {
+  switch (json['starkNetRuntimeTypeToRemove']) {
     case 'invokeTxnV0':
       return InvokeTxnV0.fromJson(json);
     case 'invokeTxnV1':
@@ -430,8 +433,8 @@ Txn _$TxnFromJson(Map<String, dynamic> json) {
       return L1HandlerTxn.fromJson(json);
 
     default:
-      throw CheckedFromJsonException(json, 'runtimeType', 'Txn',
-          'Invalid union type "${json['runtimeType']}"!');
+      throw CheckedFromJsonException(json, 'starkNetRuntimeTypeToRemove', 'Txn',
+          'Invalid union type "${json['starkNetRuntimeTypeToRemove']}"!');
   }
 }
 
@@ -850,7 +853,7 @@ class _$InvokeTxnV0 implements InvokeTxnV0 {
     return EqualUnmodifiableListView(value);
   }
 
-  @JsonKey(name: 'runtimeType')
+  @JsonKey(name: 'starkNetRuntimeTypeToRemove')
   final String $type;
 
   @override
@@ -1323,7 +1326,7 @@ class _$InvokeTxnV1 implements InvokeTxnV1 {
     return EqualUnmodifiableListView(value);
   }
 
-  @JsonKey(name: 'runtimeType')
+  @JsonKey(name: 'starkNetRuntimeTypeToRemove')
   final String $type;
 
   @override
@@ -1782,7 +1785,7 @@ class _$DeclareTxn implements DeclareTxn {
   @override
   final Felt? senderAddress;
 
-  @JsonKey(name: 'runtimeType')
+  @JsonKey(name: 'starkNetRuntimeTypeToRemove')
   final String $type;
 
   @override
@@ -2219,7 +2222,7 @@ class _$DeployTxn implements DeployTxn {
     return EqualUnmodifiableListView(value);
   }
 
-  @JsonKey(name: 'runtimeType')
+  @JsonKey(name: 'starkNetRuntimeTypeToRemove')
   final String $type;
 
   @override
@@ -2686,7 +2689,7 @@ class _$DeployAccountTxn implements DeployAccountTxn {
     return EqualUnmodifiableListView(value);
   }
 
-  @JsonKey(name: 'runtimeType')
+  @JsonKey(name: 'starkNetRuntimeTypeToRemove')
   final String $type;
 
   @override
@@ -3137,7 +3140,7 @@ class _$L1HandlerTxn implements L1HandlerTxn {
     return EqualUnmodifiableListView(value);
   }
 
-  @JsonKey(name: 'runtimeType')
+  @JsonKey(name: 'starkNetRuntimeTypeToRemove')
   final String $type;
 
   @override

@@ -10,13 +10,13 @@ _$_DeclareTransactionRequest _$$_DeclareTransactionRequestFromJson(
         Map<String, dynamic> json) =>
     _$_DeclareTransactionRequest(
       declareTransaction: DeclareTransaction.fromJson(
-          json['declareTransaction'] as Map<String, dynamic>),
+          json['declare_transaction'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$$_DeclareTransactionRequestToJson(
         _$_DeclareTransactionRequest instance) =>
     <String, dynamic>{
-      'declareTransaction': instance.declareTransaction,
+      'declare_transaction': instance.declareTransaction.toJson(),
     };
 
 _$_DeclareTransactionV1 _$$_DeclareTransactionV1FromJson(
@@ -29,9 +29,9 @@ _$_DeclareTransactionV1 _$$_DeclareTransactionV1FromJson(
       signature: (json['signature'] as List<dynamic>)
           .map((e) => Felt.fromJson(e as String))
           .toList(),
-      senderAddress: Felt.fromJson(json['senderAddress'] as String),
+      senderAddress: Felt.fromJson(json['sender_address'] as String),
       contractClass: DeprecatedContractClass.fromJson(
-          json['contractClass'] as Map<String, dynamic>),
+          json['contract_class'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$$_DeclareTransactionV1ToJson(
@@ -39,11 +39,11 @@ Map<String, dynamic> _$$_DeclareTransactionV1ToJson(
     <String, dynamic>{
       'type': instance.type,
       'version': instance.version,
-      'max_fee': instance.max_fee,
-      'nonce': instance.nonce,
-      'signature': instance.signature,
-      'senderAddress': instance.senderAddress,
-      'contractClass': instance.contractClass,
+      'max_fee': instance.max_fee.toJson(),
+      'nonce': instance.nonce.toJson(),
+      'signature': instance.signature.map((e) => e.toJson()).toList(),
+      'sender_address': instance.senderAddress.toJson(),
+      'contract_class': instance.contractClass.toJson(),
     };
 
 _$_DeclareTransactionV2 _$$_DeclareTransactionV2FromJson(
@@ -56,10 +56,10 @@ _$_DeclareTransactionV2 _$$_DeclareTransactionV2FromJson(
       signature: (json['signature'] as List<dynamic>)
           .map((e) => Felt.fromJson(e as String))
           .toList(),
-      senderAddress: Felt.fromJson(json['senderAddress'] as String),
+      senderAddress: Felt.fromJson(json['sender_address'] as String),
       contractClass: FlattenSierraContractClass.fromJson(
-          json['contractClass'] as Map<String, dynamic>),
-      compiledClassHash: Felt.fromJson(json['compiledClassHash'] as String),
+          json['contract_class'] as Map<String, dynamic>),
+      compiledClassHash: Felt.fromJson(json['compiled_class_hash'] as String),
     );
 
 Map<String, dynamic> _$$_DeclareTransactionV2ToJson(
@@ -67,12 +67,12 @@ Map<String, dynamic> _$$_DeclareTransactionV2ToJson(
     <String, dynamic>{
       'type': instance.type,
       'version': instance.version,
-      'max_fee': instance.max_fee,
-      'nonce': instance.nonce,
-      'signature': instance.signature,
-      'senderAddress': instance.senderAddress,
-      'contractClass': instance.contractClass,
-      'compiledClassHash': instance.compiledClassHash,
+      'max_fee': instance.max_fee.toJson(),
+      'nonce': instance.nonce.toJson(),
+      'signature': instance.signature.map((e) => e.toJson()).toList(),
+      'sender_address': instance.senderAddress.toJson(),
+      'contract_class': instance.contractClass.toJson(),
+      'compiled_class_hash': instance.compiledClassHash.toJson(),
     };
 
 _$DeclareTransactionResult _$$DeclareTransactionResultFromJson(
@@ -80,40 +80,40 @@ _$DeclareTransactionResult _$$DeclareTransactionResultFromJson(
     _$DeclareTransactionResult(
       result: DeclareTransactionResponseResult.fromJson(
           json['result'] as Map<String, dynamic>),
-      $type: json['runtimeType'] as String?,
+      $type: json['starkNetRuntimeTypeToRemove'] as String?,
     );
 
 Map<String, dynamic> _$$DeclareTransactionResultToJson(
         _$DeclareTransactionResult instance) =>
     <String, dynamic>{
-      'result': instance.result,
-      'runtimeType': instance.$type,
+      'result': instance.result.toJson(),
+      'starkNetRuntimeTypeToRemove': instance.$type,
     };
 
 _$DeclareTransactionError _$$DeclareTransactionErrorFromJson(
         Map<String, dynamic> json) =>
     _$DeclareTransactionError(
       error: JsonRpcApiError.fromJson(json['error'] as Map<String, dynamic>),
-      $type: json['runtimeType'] as String?,
+      $type: json['starkNetRuntimeTypeToRemove'] as String?,
     );
 
 Map<String, dynamic> _$$DeclareTransactionErrorToJson(
         _$DeclareTransactionError instance) =>
     <String, dynamic>{
-      'error': instance.error,
-      'runtimeType': instance.$type,
+      'error': instance.error.toJson(),
+      'starkNetRuntimeTypeToRemove': instance.$type,
     };
 
 _$_DeclareTransactionResponseResult
     _$$_DeclareTransactionResponseResultFromJson(Map<String, dynamic> json) =>
         _$_DeclareTransactionResponseResult(
-          classHash: Felt.fromJson(json['classHash'] as String),
-          transactionHash: Felt.fromJson(json['transactionHash'] as String),
+          classHash: Felt.fromJson(json['class_hash'] as String),
+          transactionHash: Felt.fromJson(json['transaction_hash'] as String),
         );
 
 Map<String, dynamic> _$$_DeclareTransactionResponseResultToJson(
         _$_DeclareTransactionResponseResult instance) =>
     <String, dynamic>{
-      'classHash': instance.classHash,
-      'transactionHash': instance.transactionHash,
+      'class_hash': instance.classHash.toJson(),
+      'transaction_hash': instance.transactionHash.toJson(),
     };

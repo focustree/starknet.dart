@@ -10,38 +10,38 @@ _$GetTransactionResult _$$GetTransactionResultFromJson(
         Map<String, dynamic> json) =>
     _$GetTransactionResult(
       result: Txn.fromJson(json['result'] as Map<String, dynamic>),
-      $type: json['runtimeType'] as String?,
+      $type: json['starkNetRuntimeTypeToRemove'] as String?,
     );
 
 Map<String, dynamic> _$$GetTransactionResultToJson(
         _$GetTransactionResult instance) =>
     <String, dynamic>{
-      'result': instance.result,
-      'runtimeType': instance.$type,
+      'result': instance.result.toJson(),
+      'starkNetRuntimeTypeToRemove': instance.$type,
     };
 
 _$GetTransactionError _$$GetTransactionErrorFromJson(
         Map<String, dynamic> json) =>
     _$GetTransactionError(
       error: JsonRpcApiError.fromJson(json['error'] as Map<String, dynamic>),
-      $type: json['runtimeType'] as String?,
+      $type: json['starkNetRuntimeTypeToRemove'] as String?,
     );
 
 Map<String, dynamic> _$$GetTransactionErrorToJson(
         _$GetTransactionError instance) =>
     <String, dynamic>{
-      'error': instance.error,
-      'runtimeType': instance.$type,
+      'error': instance.error.toJson(),
+      'starkNetRuntimeTypeToRemove': instance.$type,
     };
 
 _$InvokeTxnV0 _$$InvokeTxnV0FromJson(Map<String, dynamic> json) =>
     _$InvokeTxnV0(
-      transactionHash: json['transactionHash'] == null
+      transactionHash: json['transaction_hash'] == null
           ? null
-          : Felt.fromJson(json['transactionHash'] as String),
-      maxFee: json['maxFee'] == null
+          : Felt.fromJson(json['transaction_hash'] as String),
+      maxFee: json['max_fee'] == null
           ? null
-          : Felt.fromJson(json['maxFee'] as String),
+          : Felt.fromJson(json['max_fee'] as String),
       version: json['version'] as String?,
       signature: (json['signature'] as List<dynamic>?)
           ?.map((e) => Felt.fromJson(e as String))
@@ -49,40 +49,40 @@ _$InvokeTxnV0 _$$InvokeTxnV0FromJson(Map<String, dynamic> json) =>
       nonce:
           json['nonce'] == null ? null : Felt.fromJson(json['nonce'] as String),
       type: json['type'] as String?,
-      contractAddress: json['contractAddress'] == null
+      contractAddress: json['contract_address'] == null
           ? null
-          : Felt.fromJson(json['contractAddress'] as String),
-      entryPointSelector: json['entryPointSelector'] == null
+          : Felt.fromJson(json['contract_address'] as String),
+      entryPointSelector: json['entry_point_selector'] == null
           ? null
-          : Felt.fromJson(json['entryPointSelector'] as String),
+          : Felt.fromJson(json['entry_point_selector'] as String),
       calldata: (json['calldata'] as List<dynamic>?)
           ?.map((e) => Felt.fromJson(e as String))
           .toList(),
-      $type: json['runtimeType'] as String?,
+      $type: json['starkNetRuntimeTypeToRemove'] as String?,
     );
 
 Map<String, dynamic> _$$InvokeTxnV0ToJson(_$InvokeTxnV0 instance) =>
     <String, dynamic>{
-      'transactionHash': instance.transactionHash,
-      'maxFee': maxFeeToJson(instance.maxFee),
+      'transaction_hash': instance.transactionHash?.toJson(),
+      'max_fee': maxFeeToJson(instance.maxFee),
       'version': instance.version,
-      'signature': instance.signature,
-      'nonce': instance.nonce,
+      'signature': instance.signature?.map((e) => e.toJson()).toList(),
+      'nonce': instance.nonce?.toJson(),
       'type': instance.type,
-      'contractAddress': instance.contractAddress,
-      'entryPointSelector': instance.entryPointSelector,
-      'calldata': instance.calldata,
-      'runtimeType': instance.$type,
+      'contract_address': instance.contractAddress?.toJson(),
+      'entry_point_selector': instance.entryPointSelector?.toJson(),
+      'calldata': instance.calldata?.map((e) => e.toJson()).toList(),
+      'starkNetRuntimeTypeToRemove': instance.$type,
     };
 
 _$InvokeTxnV1 _$$InvokeTxnV1FromJson(Map<String, dynamic> json) =>
     _$InvokeTxnV1(
-      transactionHash: json['transactionHash'] == null
+      transactionHash: json['transaction_hash'] == null
           ? null
-          : Felt.fromJson(json['transactionHash'] as String),
-      maxFee: json['maxFee'] == null
+          : Felt.fromJson(json['transaction_hash'] as String),
+      maxFee: json['max_fee'] == null
           ? null
-          : Felt.fromJson(json['maxFee'] as String),
+          : Felt.fromJson(json['max_fee'] as String),
       version: json['version'] as String?,
       signature: (json['signature'] as List<dynamic>?)
           ?.map((e) => Felt.fromJson(e as String))
@@ -96,29 +96,29 @@ _$InvokeTxnV1 _$$InvokeTxnV1FromJson(Map<String, dynamic> json) =>
       calldata: (json['calldata'] as List<dynamic>?)
           ?.map((e) => Felt.fromJson(e as String))
           .toList(),
-      $type: json['runtimeType'] as String?,
+      $type: json['starkNetRuntimeTypeToRemove'] as String?,
     );
 
 Map<String, dynamic> _$$InvokeTxnV1ToJson(_$InvokeTxnV1 instance) =>
     <String, dynamic>{
-      'transactionHash': instance.transactionHash,
-      'maxFee': maxFeeToJson(instance.maxFee),
+      'transaction_hash': instance.transactionHash?.toJson(),
+      'max_fee': maxFeeToJson(instance.maxFee),
       'version': instance.version,
-      'signature': instance.signature,
-      'nonce': instance.nonce,
+      'signature': instance.signature?.map((e) => e.toJson()).toList(),
+      'nonce': instance.nonce?.toJson(),
       'type': instance.type,
-      'sender_address': instance.sender_address,
-      'calldata': instance.calldata,
-      'runtimeType': instance.$type,
+      'sender_address': instance.sender_address?.toJson(),
+      'calldata': instance.calldata?.map((e) => e.toJson()).toList(),
+      'starkNetRuntimeTypeToRemove': instance.$type,
     };
 
 _$DeclareTxn _$$DeclareTxnFromJson(Map<String, dynamic> json) => _$DeclareTxn(
-      transactionHash: json['transactionHash'] == null
+      transactionHash: json['transaction_hash'] == null
           ? null
-          : Felt.fromJson(json['transactionHash'] as String),
-      maxFee: json['maxFee'] == null
+          : Felt.fromJson(json['transaction_hash'] as String),
+      maxFee: json['max_fee'] == null
           ? null
-          : Felt.fromJson(json['maxFee'] as String),
+          : Felt.fromJson(json['max_fee'] as String),
       version: json['version'] as String?,
       signature: (json['signature'] as List<dynamic>?)
           ?.map((e) => Felt.fromJson(e as String))
@@ -126,65 +126,66 @@ _$DeclareTxn _$$DeclareTxnFromJson(Map<String, dynamic> json) => _$DeclareTxn(
       nonce:
           json['nonce'] == null ? null : Felt.fromJson(json['nonce'] as String),
       type: json['type'] as String?,
-      classHash: json['classHash'] == null
+      classHash: json['class_hash'] == null
           ? null
-          : Felt.fromJson(json['classHash'] as String),
-      senderAddress: json['senderAddress'] == null
+          : Felt.fromJson(json['class_hash'] as String),
+      senderAddress: json['sender_address'] == null
           ? null
-          : Felt.fromJson(json['senderAddress'] as String),
-      $type: json['runtimeType'] as String?,
+          : Felt.fromJson(json['sender_address'] as String),
+      $type: json['starkNetRuntimeTypeToRemove'] as String?,
     );
 
 Map<String, dynamic> _$$DeclareTxnToJson(_$DeclareTxn instance) =>
     <String, dynamic>{
-      'transactionHash': instance.transactionHash,
-      'maxFee': maxFeeToJson(instance.maxFee),
+      'transaction_hash': instance.transactionHash?.toJson(),
+      'max_fee': maxFeeToJson(instance.maxFee),
       'version': instance.version,
-      'signature': instance.signature,
-      'nonce': instance.nonce,
+      'signature': instance.signature?.map((e) => e.toJson()).toList(),
+      'nonce': instance.nonce?.toJson(),
       'type': instance.type,
-      'classHash': instance.classHash,
-      'senderAddress': instance.senderAddress,
-      'runtimeType': instance.$type,
+      'class_hash': instance.classHash?.toJson(),
+      'sender_address': instance.senderAddress?.toJson(),
+      'starkNetRuntimeTypeToRemove': instance.$type,
     };
 
 _$DeployTxn _$$DeployTxnFromJson(Map<String, dynamic> json) => _$DeployTxn(
-      transactionHash: json['transactionHash'] == null
+      transactionHash: json['transaction_hash'] == null
           ? null
-          : Felt.fromJson(json['transactionHash'] as String),
-      classHash: json['classHash'] == null
+          : Felt.fromJson(json['transaction_hash'] as String),
+      classHash: json['class_hash'] == null
           ? null
-          : Felt.fromJson(json['classHash'] as String),
+          : Felt.fromJson(json['class_hash'] as String),
       version: json['version'] as String?,
       type: json['type'] as String?,
-      contractAddressSalt: json['contractAddressSalt'] == null
+      contractAddressSalt: json['contract_address_salt'] == null
           ? null
-          : Felt.fromJson(json['contractAddressSalt'] as String),
-      constructorCalldata: (json['constructorCalldata'] as List<dynamic>?)
+          : Felt.fromJson(json['contract_address_salt'] as String),
+      constructorCalldata: (json['constructor_calldata'] as List<dynamic>?)
           ?.map((e) => Felt.fromJson(e as String))
           .toList(),
-      $type: json['runtimeType'] as String?,
+      $type: json['starkNetRuntimeTypeToRemove'] as String?,
     );
 
 Map<String, dynamic> _$$DeployTxnToJson(_$DeployTxn instance) =>
     <String, dynamic>{
-      'transactionHash': instance.transactionHash,
-      'classHash': instance.classHash,
+      'transaction_hash': instance.transactionHash?.toJson(),
+      'class_hash': instance.classHash?.toJson(),
       'version': instance.version,
       'type': instance.type,
-      'contractAddressSalt': instance.contractAddressSalt,
-      'constructorCalldata': instance.constructorCalldata,
-      'runtimeType': instance.$type,
+      'contract_address_salt': instance.contractAddressSalt?.toJson(),
+      'constructor_calldata':
+          instance.constructorCalldata?.map((e) => e.toJson()).toList(),
+      'starkNetRuntimeTypeToRemove': instance.$type,
     };
 
 _$DeployAccountTxn _$$DeployAccountTxnFromJson(Map<String, dynamic> json) =>
     _$DeployAccountTxn(
-      transactionHash: json['transactionHash'] == null
+      transactionHash: json['transaction_hash'] == null
           ? null
-          : Felt.fromJson(json['transactionHash'] as String),
-      maxFee: json['maxFee'] == null
+          : Felt.fromJson(json['transaction_hash'] as String),
+      maxFee: json['max_fee'] == null
           ? null
-          : Felt.fromJson(json['maxFee'] as String),
+          : Felt.fromJson(json['max_fee'] as String),
       version: json['version'] as String?,
       signature: (json['signature'] as List<dynamic>?)
           ?.map((e) => Felt.fromJson(e as String))
@@ -192,61 +193,62 @@ _$DeployAccountTxn _$$DeployAccountTxnFromJson(Map<String, dynamic> json) =>
       nonce:
           json['nonce'] == null ? null : Felt.fromJson(json['nonce'] as String),
       type: json['type'] as String?,
-      contractAddressSalt: json['contractAddressSalt'] == null
+      contractAddressSalt: json['contract_address_salt'] == null
           ? null
-          : Felt.fromJson(json['contractAddressSalt'] as String),
-      classHash: json['classHash'] == null
+          : Felt.fromJson(json['contract_address_salt'] as String),
+      classHash: json['class_hash'] == null
           ? null
-          : Felt.fromJson(json['classHash'] as String),
-      constructorCalldata: (json['constructorCalldata'] as List<dynamic>?)
+          : Felt.fromJson(json['class_hash'] as String),
+      constructorCalldata: (json['constructor_calldata'] as List<dynamic>?)
           ?.map((e) => Felt.fromJson(e as String))
           .toList(),
-      $type: json['runtimeType'] as String?,
+      $type: json['starkNetRuntimeTypeToRemove'] as String?,
     );
 
 Map<String, dynamic> _$$DeployAccountTxnToJson(_$DeployAccountTxn instance) =>
     <String, dynamic>{
-      'transactionHash': instance.transactionHash,
-      'maxFee': maxFeeToJson(instance.maxFee),
+      'transaction_hash': instance.transactionHash?.toJson(),
+      'max_fee': maxFeeToJson(instance.maxFee),
       'version': instance.version,
-      'signature': instance.signature,
-      'nonce': instance.nonce,
+      'signature': instance.signature?.map((e) => e.toJson()).toList(),
+      'nonce': instance.nonce?.toJson(),
       'type': instance.type,
-      'contractAddressSalt': instance.contractAddressSalt,
-      'classHash': instance.classHash,
-      'constructorCalldata': instance.constructorCalldata,
-      'runtimeType': instance.$type,
+      'contract_address_salt': instance.contractAddressSalt?.toJson(),
+      'class_hash': instance.classHash?.toJson(),
+      'constructor_calldata':
+          instance.constructorCalldata?.map((e) => e.toJson()).toList(),
+      'starkNetRuntimeTypeToRemove': instance.$type,
     };
 
 _$L1HandlerTxn _$$L1HandlerTxnFromJson(Map<String, dynamic> json) =>
     _$L1HandlerTxn(
-      transactionHash: json['transactionHash'] == null
+      transactionHash: json['transaction_hash'] == null
           ? null
-          : Felt.fromJson(json['transactionHash'] as String),
+          : Felt.fromJson(json['transaction_hash'] as String),
       version: json['version'] as String?,
       nonce:
           json['nonce'] == null ? null : Felt.fromJson(json['nonce'] as String),
       type: json['type'] as String?,
-      contractAddress: json['contractAddress'] == null
+      contractAddress: json['contract_address'] == null
           ? null
-          : Felt.fromJson(json['contractAddress'] as String),
-      entryPointSelector: json['entryPointSelector'] == null
+          : Felt.fromJson(json['contract_address'] as String),
+      entryPointSelector: json['entry_point_selector'] == null
           ? null
-          : Felt.fromJson(json['entryPointSelector'] as String),
+          : Felt.fromJson(json['entry_point_selector'] as String),
       calldata: (json['calldata'] as List<dynamic>?)
           ?.map((e) => Felt.fromJson(e as String))
           .toList(),
-      $type: json['runtimeType'] as String?,
+      $type: json['starkNetRuntimeTypeToRemove'] as String?,
     );
 
 Map<String, dynamic> _$$L1HandlerTxnToJson(_$L1HandlerTxn instance) =>
     <String, dynamic>{
-      'transactionHash': instance.transactionHash,
+      'transaction_hash': instance.transactionHash?.toJson(),
       'version': instance.version,
-      'nonce': instance.nonce,
+      'nonce': instance.nonce?.toJson(),
       'type': instance.type,
-      'contractAddress': instance.contractAddress,
-      'entryPointSelector': instance.entryPointSelector,
-      'calldata': instance.calldata,
-      'runtimeType': instance.$type,
+      'contract_address': instance.contractAddress?.toJson(),
+      'entry_point_selector': instance.entryPointSelector?.toJson(),
+      'calldata': instance.calldata?.map((e) => e.toJson()).toList(),
+      'starkNetRuntimeTypeToRemove': instance.$type,
     };

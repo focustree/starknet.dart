@@ -8,14 +8,14 @@ part of 'fee_estimate.dart';
 
 _$_FeeEstimate _$$_FeeEstimateFromJson(Map<String, dynamic> json) =>
     _$_FeeEstimate(
-      gasConsumed: json['gasConsumed'] as String,
-      gasPrice: json['gasPrice'] as String,
-      overallFee: json['overallFee'] as String,
+      gasConsumed: json['gas_consumed'] as String,
+      gasPrice: json['gas_price'] as String,
+      overallFee: json['overall_fee'] as String,
     );
 
 Map<String, dynamic> _$$_FeeEstimateToJson(_$_FeeEstimate instance) =>
     <String, dynamic>{
-      'gasConsumed': instance.gasConsumed,
-      'gasPrice': instance.gasPrice,
-      'overallFee': instance.overallFee,
+      'gas_consumed': instance.gasConsumed,
+      'gas_price': instance.gasPrice,
+      'overall_fee': instance.overallFee,
     };

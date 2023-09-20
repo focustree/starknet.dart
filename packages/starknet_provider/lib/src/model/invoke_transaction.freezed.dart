@@ -740,7 +740,7 @@ abstract class _InvokeTransactionV1 implements InvokeTransactionV1 {
 
 InvokeTransactionResponse _$InvokeTransactionResponseFromJson(
     Map<String, dynamic> json) {
-  switch (json['runtimeType']) {
+  switch (json['starkNetRuntimeTypeToRemove']) {
     case 'result':
       return InvokeTransactionResult.fromJson(json);
     case 'error':
@@ -749,9 +749,9 @@ InvokeTransactionResponse _$InvokeTransactionResponseFromJson(
     default:
       throw CheckedFromJsonException(
           json,
-          'runtimeType',
+          'starkNetRuntimeTypeToRemove',
           'InvokeTransactionResponse',
-          'Invalid union type "${json['runtimeType']}"!');
+          'Invalid union type "${json['starkNetRuntimeTypeToRemove']}"!');
   }
 }
 
@@ -872,7 +872,7 @@ class _$InvokeTransactionResult implements InvokeTransactionResult {
   @override
   final InvokeTransactionResponseResult result;
 
-  @JsonKey(name: 'runtimeType')
+  @JsonKey(name: 'starkNetRuntimeTypeToRemove')
   final String $type;
 
   @override
@@ -1037,7 +1037,7 @@ class _$InvokeTransactionError implements InvokeTransactionError {
   @override
   final JsonRpcApiError error;
 
-  @JsonKey(name: 'runtimeType')
+  @JsonKey(name: 'starkNetRuntimeTypeToRemove')
   final String $type;
 
   @override

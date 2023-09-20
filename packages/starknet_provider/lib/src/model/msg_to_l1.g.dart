@@ -7,9 +7,9 @@ part of 'msg_to_l1.dart';
 // **************************************************************************
 
 _$_MsgToL1 _$$_MsgToL1FromJson(Map<String, dynamic> json) => _$_MsgToL1(
-      toAddress: json['toAddress'] == null
+      toAddress: json['to_address'] == null
           ? null
-          : Felt.fromJson(json['toAddress'] as String),
+          : Felt.fromJson(json['to_address'] as String),
       payload: (json['payload'] as List<dynamic>?)
           ?.map((e) => Felt.fromJson(e as String))
           .toList(),
@@ -17,6 +17,6 @@ _$_MsgToL1 _$$_MsgToL1FromJson(Map<String, dynamic> json) => _$_MsgToL1(
 
 Map<String, dynamic> _$$_MsgToL1ToJson(_$_MsgToL1 instance) =>
     <String, dynamic>{
-      'toAddress': instance.toAddress,
-      'payload': instance.payload,
+      'to_address': instance.toAddress?.toJson(),
+      'payload': instance.payload?.map((e) => e.toJson()).toList(),
     };

@@ -15,15 +15,18 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 EstimateFee _$EstimateFeeFromJson(Map<String, dynamic> json) {
-  switch (json['runtimeType']) {
+  switch (json['starkNetRuntimeTypeToRemove']) {
     case 'result':
       return EstimateFeeResult.fromJson(json);
     case 'error':
       return EstimateFeeError.fromJson(json);
 
     default:
-      throw CheckedFromJsonException(json, 'runtimeType', 'EstimateFee',
-          'Invalid union type "${json['runtimeType']}"!');
+      throw CheckedFromJsonException(
+          json,
+          'starkNetRuntimeTypeToRemove',
+          'EstimateFee',
+          'Invalid union type "${json['starkNetRuntimeTypeToRemove']}"!');
   }
 }
 
@@ -138,7 +141,7 @@ class _$EstimateFeeResult implements EstimateFeeResult {
     return EqualUnmodifiableListView(_result);
   }
 
-  @JsonKey(name: 'runtimeType')
+  @JsonKey(name: 'starkNetRuntimeTypeToRemove')
   final String $type;
 
   @override
@@ -301,7 +304,7 @@ class _$EstimateFeeError implements EstimateFeeError {
   @override
   final JsonRpcApiError error;
 
-  @JsonKey(name: 'runtimeType')
+  @JsonKey(name: 'starkNetRuntimeTypeToRemove')
   final String $type;
 
   @override
@@ -411,7 +414,7 @@ abstract class EstimateFeeError implements EstimateFee {
 }
 
 BroadcastedTxn _$BroadcastedTxnFromJson(Map<String, dynamic> json) {
-  switch (json['runtimeType']) {
+  switch (json['starkNetRuntimeTypeToRemove']) {
     case 'broadcastedInvokeTxnV0':
       return BroadcastedInvokeTxnV0.fromJson(json);
     case 'broadcastedInvokeTxnV1':
@@ -424,8 +427,11 @@ BroadcastedTxn _$BroadcastedTxnFromJson(Map<String, dynamic> json) {
       return BroadcastedDeployAccountTxn.fromJson(json);
 
     default:
-      throw CheckedFromJsonException(json, 'runtimeType', 'BroadcastedTxn',
-          'Invalid union type "${json['runtimeType']}"!');
+      throw CheckedFromJsonException(
+          json,
+          'starkNetRuntimeTypeToRemove',
+          'BroadcastedTxn',
+          'Invalid union type "${json['starkNetRuntimeTypeToRemove']}"!');
   }
 }
 
@@ -789,7 +795,7 @@ class _$BroadcastedInvokeTxnV0 implements BroadcastedInvokeTxnV0 {
     return EqualUnmodifiableListView(_calldata);
   }
 
-  @JsonKey(name: 'runtimeType')
+  @JsonKey(name: 'starkNetRuntimeTypeToRemove')
   final String $type;
 
   @override
@@ -1204,7 +1210,7 @@ class _$BroadcastedInvokeTxnV1 implements BroadcastedInvokeTxnV1 {
     return EqualUnmodifiableListView(_calldata);
   }
 
-  @JsonKey(name: 'runtimeType')
+  @JsonKey(name: 'starkNetRuntimeTypeToRemove')
   final String $type;
 
   @override
@@ -1618,7 +1624,7 @@ class _$BroadcastedDeclareTxn implements BroadcastedDeclareTxn {
   @override
   final Felt senderAddress;
 
-  @JsonKey(name: 'runtimeType')
+  @JsonKey(name: 'starkNetRuntimeTypeToRemove')
   final String $type;
 
   @override
@@ -2012,7 +2018,7 @@ class _$BroadcastedDeployTxn implements BroadcastedDeployTxn {
     return EqualUnmodifiableListView(_constructorCalldata);
   }
 
-  @JsonKey(name: 'runtimeType')
+  @JsonKey(name: 'starkNetRuntimeTypeToRemove')
   final String $type;
 
   @override
@@ -2424,7 +2430,7 @@ class _$BroadcastedDeployAccountTxn implements BroadcastedDeployAccountTxn {
   @override
   final Felt nonce;
 
-  @JsonKey(name: 'runtimeType')
+  @JsonKey(name: 'starkNetRuntimeTypeToRemove')
   final String $type;
 
   @override

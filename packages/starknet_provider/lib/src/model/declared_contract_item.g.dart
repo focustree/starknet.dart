@@ -9,11 +9,11 @@ part of 'declared_contract_item.dart';
 _$_DeclaredContractItem _$$_DeclaredContractItemFromJson(
         Map<String, dynamic> json) =>
     _$_DeclaredContractItem(
-      classHash: Felt.fromJson(json['classHash'] as String),
+      classHash: Felt.fromJson(json['class_hash'] as String),
     );
 
 Map<String, dynamic> _$$_DeclaredContractItemToJson(
         _$_DeclaredContractItem instance) =>
     <String, dynamic>{
-      'classHash': instance.classHash,
+      'class_hash': instance.classHash.toJson(),
     };

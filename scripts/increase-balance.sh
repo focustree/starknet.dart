@@ -1,0 +1,1 @@
+starkli invoke $BALANCE_CONTRACT_ADDRESS increase_balance $1 --private-key $STARKNET_PRIVATE_KEY

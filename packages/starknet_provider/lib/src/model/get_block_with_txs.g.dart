@@ -10,28 +10,28 @@ _$GetBlockWithTxsResult _$$GetBlockWithTxsResultFromJson(
         Map<String, dynamic> json) =>
     _$GetBlockWithTxsResult(
       result: BlockWithTxs.fromJson(json['result'] as Map<String, dynamic>),
-      $type: json['runtimeType'] as String?,
+      $type: json['starkNetRuntimeTypeToRemove'] as String?,
     );
 
 Map<String, dynamic> _$$GetBlockWithTxsResultToJson(
         _$GetBlockWithTxsResult instance) =>
     <String, dynamic>{
-      'result': instance.result,
-      'runtimeType': instance.$type,
+      'result': instance.result.toJson(),
+      'starkNetRuntimeTypeToRemove': instance.$type,
     };
 
 _$GetBlockWithTxsError _$$GetBlockWithTxsErrorFromJson(
         Map<String, dynamic> json) =>
     _$GetBlockWithTxsError(
       error: JsonRpcApiError.fromJson(json['error'] as Map<String, dynamic>),
-      $type: json['runtimeType'] as String?,
+      $type: json['starkNetRuntimeTypeToRemove'] as String?,
     );
 
 Map<String, dynamic> _$$GetBlockWithTxsErrorToJson(
         _$GetBlockWithTxsError instance) =>
     <String, dynamic>{
-      'error': instance.error,
-      'runtimeType': instance.$type,
+      'error': instance.error.toJson(),
+      'starkNetRuntimeTypeToRemove': instance.$type,
     };
 
 _$BlockWithTxsResponse _$$BlockWithTxsResponseFromJson(
@@ -41,27 +41,27 @@ _$BlockWithTxsResponse _$$BlockWithTxsResponseFromJson(
       transactions: (json['transactions'] as List<dynamic>)
           .map((e) => Txn.fromJson(e as Map<String, dynamic>))
           .toList(),
-      blockHash: Felt.fromJson(json['blockHash'] as String),
-      parentHash: Felt.fromJson(json['parentHash'] as String),
-      blockNumber: json['blockNumber'] as int,
-      newRoot: Felt.fromJson(json['newRoot'] as String),
+      blockHash: Felt.fromJson(json['block_hash'] as String),
+      parentHash: Felt.fromJson(json['parent_hash'] as String),
+      blockNumber: json['block_number'] as int,
+      newRoot: Felt.fromJson(json['new_root'] as String),
       timestamp: json['timestamp'] as int,
-      sequencerAddress: Felt.fromJson(json['sequencerAddress'] as String),
-      $type: json['runtimeType'] as String?,
+      sequencerAddress: Felt.fromJson(json['sequencer_address'] as String),
+      $type: json['starkNetRuntimeTypeToRemove'] as String?,
     );
 
 Map<String, dynamic> _$$BlockWithTxsResponseToJson(
         _$BlockWithTxsResponse instance) =>
     <String, dynamic>{
       'status': instance.status,
-      'transactions': instance.transactions,
-      'blockHash': instance.blockHash,
-      'parentHash': instance.parentHash,
-      'blockNumber': instance.blockNumber,
-      'newRoot': instance.newRoot,
+      'transactions': instance.transactions.map((e) => e.toJson()).toList(),
+      'block_hash': instance.blockHash.toJson(),
+      'parent_hash': instance.parentHash.toJson(),
+      'block_number': instance.blockNumber,
+      'new_root': instance.newRoot.toJson(),
       'timestamp': instance.timestamp,
-      'sequencerAddress': instance.sequencerAddress,
-      'runtimeType': instance.$type,
+      'sequencer_address': instance.sequencerAddress.toJson(),
+      'starkNetRuntimeTypeToRemove': instance.$type,
     };
 
 _$PendingBlockWithTxsResult _$$PendingBlockWithTxsResultFromJson(
@@ -71,17 +71,17 @@ _$PendingBlockWithTxsResult _$$PendingBlockWithTxsResultFromJson(
           .map((e) => Txn.fromJson(e as Map<String, dynamic>))
           .toList(),
       timestamp: json['timestamp'] as int,
-      sequencerAddress: Felt.fromJson(json['sequencerAddress'] as String),
-      blockHash: Felt.fromJson(json['blockHash'] as String),
-      $type: json['runtimeType'] as String?,
+      sequencerAddress: Felt.fromJson(json['sequencer_address'] as String),
+      blockHash: Felt.fromJson(json['block_hash'] as String),
+      $type: json['starkNetRuntimeTypeToRemove'] as String?,
     );
 
 Map<String, dynamic> _$$PendingBlockWithTxsResultToJson(
         _$PendingBlockWithTxsResult instance) =>
     <String, dynamic>{
-      'transactions': instance.transactions,
+      'transactions': instance.transactions.map((e) => e.toJson()).toList(),
       'timestamp': instance.timestamp,
-      'sequencerAddress': instance.sequencerAddress,
-      'blockHash': instance.blockHash,
-      'runtimeType': instance.$type,
+      'sequencer_address': instance.sequencerAddress.toJson(),
+      'block_hash': instance.blockHash.toJson(),
+      'starkNetRuntimeTypeToRemove': instance.$type,
     };

@@ -8,20 +8,20 @@ part of 'sync_status.dart';
 
 _$_SyncStatus _$$_SyncStatusFromJson(Map<String, dynamic> json) =>
     _$_SyncStatus(
-      startingBlockHash: Felt.fromJson(json['startingBlockHash'] as String),
-      startingBlockNum: json['startingBlockNum'] as String,
-      currentBlockHash: Felt.fromJson(json['currentBlockHash'] as String),
-      currentBlockNum: json['currentBlockNum'] as String,
-      highestBlockHash: Felt.fromJson(json['highestBlockHash'] as String),
-      highestBlockNum: json['highestBlockNum'] as String,
+      startingBlockHash: Felt.fromJson(json['starting_block_hash'] as String),
+      startingBlockNum: json['starting_block_num'] as String,
+      currentBlockHash: Felt.fromJson(json['current_block_hash'] as String),
+      currentBlockNum: json['current_block_num'] as String,
+      highestBlockHash: Felt.fromJson(json['highest_block_hash'] as String),
+      highestBlockNum: json['highest_block_num'] as String,
     );
 
 Map<String, dynamic> _$$_SyncStatusToJson(_$_SyncStatus instance) =>
     <String, dynamic>{
-      'startingBlockHash': instance.startingBlockHash,
-      'startingBlockNum': instance.startingBlockNum,
-      'currentBlockHash': instance.currentBlockHash,
-      'currentBlockNum': instance.currentBlockNum,
-      'highestBlockHash': instance.highestBlockHash,
-      'highestBlockNum': instance.highestBlockNum,
+      'starting_block_hash': instance.startingBlockHash.toJson(),
+      'starting_block_num': instance.startingBlockNum,
+      'current_block_hash': instance.currentBlockHash.toJson(),
+      'current_block_num': instance.currentBlockNum,
+      'highest_block_hash': instance.highestBlockHash.toJson(),
+      'highest_block_num': instance.highestBlockNum,
     };
