@@ -18,5 +18,20 @@ void main(List<String> args) {
       defaultsTo:
           Platform.environment['STARKNET_RPC'] ?? "http://localhost:5050",
     )
+    ..argParser.addOption(
+      "chain-id",
+      help: "Starknet Chain ID",
+      defaultsTo: Platform.environment['STARKNET_CHAIN_ID'] ?? "SN_MAIN",
+    )
+    ..argParser.addOption(
+      "private-key",
+      help: "Account Private Key",
+      defaultsTo: Platform.environment['STARKNET_PRIVATE_KEY'],
+    )
+    ..argParser.addOption(
+      "account-address",
+      help: "Account Address",
+      defaultsTo: Platform.environment['STARKNET_ACCOUNT_ADDRESS'],
+    )
     ..run(args);
 }
