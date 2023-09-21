@@ -6,8 +6,10 @@ cairo-version = "2.2.0"
 [dependencies]
 starknet = ">=2.2.0"
 openzeppelin = { git = "https://github.com/OpenZeppelin/cairo-contracts.git", branch = "cairo-2" }
+focustree = { git = "https://github.com/focustree/contracts.git", branch = "master" }
 
 [lib]
 
 [[target.starknet-contract]]
 sierra = true
+caml = true

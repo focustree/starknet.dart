@@ -6,6 +6,10 @@ Provider providerFromArgs(ArgResults? globalResults) {
   return JsonRpcProvider(nodeUri: Uri.parse(globalResults?['rpc']));
 }
 
+Signer signerFromArgs(ArgResults? globalResults) {
+  return Signer(privateKey: Felt.fromHexString(globalResults?['private-key']));
+}
+
 Account accountFromArgs(ArgResults? globalResults) {
   final provider = providerFromArgs(globalResults);
   return Account(

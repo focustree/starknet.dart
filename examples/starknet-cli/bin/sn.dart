@@ -1,6 +1,8 @@
 import 'dart:io';
 
 import 'package:args/command_runner.dart';
+import 'package:starknet_cli/account.dart';
+import 'package:starknet_cli/erc20.dart';
 import 'package:starknet_cli/block_number.dart';
 import 'package:starknet_cli/call.dart';
 import 'package:starknet_cli/deploy.dart';
@@ -12,6 +14,8 @@ void main(List<String> args) {
     ..addCommand(CallCommand())
     ..addCommand(InvokeCommand())
     ..addCommand(DeployCommand())
+    ..addCommand(AccountCommand())
+    ..addCommand(ERC20Command())
     ..argParser.addOption(
       "rpc",
       help: "Starknet RPC Endpoint",
@@ -27,6 +31,11 @@ void main(List<String> args) {
       "private-key",
       help: "Account Private Key",
       defaultsTo: Platform.environment['STARKNET_PRIVATE_KEY'],
+    )
+    ..argParser.addOption(
+      "public-key",
+      help: "Account Public Key",
+      defaultsTo: Platform.environment['STARKNET_PUBLIC_KEY'],
     )
     ..argParser.addOption(
       "account-address",
