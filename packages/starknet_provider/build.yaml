@@ -1,0 +1,10 @@
+targets:
+  $default:
+    builders:
+      freezed:
+        options:
+          union_key: starkNetRuntimeTypeToRemove
+      json_serializable:
+        options:
+          explicit_to_json: true
+          field_rename: snake

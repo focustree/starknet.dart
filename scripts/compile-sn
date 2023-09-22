@@ -1,0 +1,1 @@
+dart compile exe examples/starknet-cli/bin/sn.dart -o scripts/sn

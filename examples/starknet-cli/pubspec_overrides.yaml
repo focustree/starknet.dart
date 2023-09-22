@@ -1,0 +1,5 @@
+dependency_overrides:
+  starknet:
+    path: ../../packages/starknet
+  starknet_provider:
+    path: ../../packages/starknet_provider

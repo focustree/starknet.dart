@@ -8,6 +8,9 @@ environment:
   flutter: ">=1.17.0"
 
 dependencies:
+  starknet:
+  starknet_provider:
+  secure_store:
   bip39: ^1.0.6
   easy_debounce: ^2.0.3
   expandable: ^5.0.1
@@ -20,8 +23,6 @@ dependencies:
   hooks_riverpod: ^2.3.6
   image_network: ^2.5.4+1
   riverpod_annotation: ^2.1.1
-  starknet:
-  secure_store:
   uuid: ^3.0.7
   go_router: ^9.0.3
 

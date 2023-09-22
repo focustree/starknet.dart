@@ -1,5 +1,5 @@
 name: Starknet.dart
-description: Dart SDK for Starknet ✨
+description: The Mobile SDK for Starknet ✨
 logo: "/assets/logo.webp"
 anchors:
   - title: Telegram
@@ -8,13 +8,19 @@ anchors:
 sidebar:
   - - Getting Started
     - "/"
-  - - Provider
-    - "/provider"
-  - - Tutorial
+  - - Examples
     - - - Mobile Wallet
-        - "/tutorial/mobile-wallet"
-  - - Advanced
-    - - - Reference API
-        - "/reference"
-      - - FAQs
-        - "/faqs"
+        - "/examples/mobile-wallet"
+      - - Starknet CLI
+        - "/examples/mobile-wallet"
+  - - Packages
+    - - - Starknet Provider
+        - "/packages/provider"
+      - - Starknet
+        - "/pacakages/starknet"
+      - - Starknet Builder
+        - "/pacakages/starknet-builder"
+      - - Secure Store
+        - "/pacakages/secure-store"
+      - - Wallet Kit
+        - "/pacakages/wallet-kit"

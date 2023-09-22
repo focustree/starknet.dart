@@ -4,6 +4,7 @@ import 'dart:io';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:starknet/src/crypto/poseidon.dart';
 import 'package:starknet/starknet.dart';
+import 'package:starknet_provider/starknet_provider.dart';
 
 part 'compiled_contract.freezed.dart';
 part 'compiled_contract.g.dart';

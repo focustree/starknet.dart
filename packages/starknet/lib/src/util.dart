@@ -1,8 +1,8 @@
 import 'dart:convert';
 
 import 'package:starknet/src/static_config.dart';
+import 'package:starknet_provider/starknet_provider.dart';
 
-import 'provider/index.dart';
 import 'types/index.dart';
 
 prettyPrintJson(Map<String, dynamic> json) {

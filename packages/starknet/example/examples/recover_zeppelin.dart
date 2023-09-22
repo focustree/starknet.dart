@@ -1,4 +1,5 @@
 import 'package:starknet/starknet.dart';
+import 'package:starknet_provider/starknet_provider.dart';
 
 final mnemonic =
     "wear speak example prevent rely turn ladder scrub pulp stuff theme blue"

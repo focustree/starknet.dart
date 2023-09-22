@@ -1,4 +1,5 @@
 import 'package:starknet/starknet.dart';
+import 'package:starknet_provider/starknet_provider.dart';
 
 export 'model/pedersen_params.dart';
 export 'derivation.dart';
