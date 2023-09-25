@@ -29,11 +29,13 @@ enum JsonRpcApiErrorCode {
   @JsonValue(24)
   BLOCK_NOT_FOUND,
   @JsonValue(25)
-  TXN_HASH_NOT_FOUND,
+  TXN_HASH_NOT_FOUND_PRE_0_4_0, // modified in spec 0.4.0
   @JsonValue(27)
   INVALID_TXN_INDEX,
   @JsonValue(28)
   CLASS_HASH_NOT_FOUND,
+  @JsonValue(29)
+  TXN_HASH_NOT_FOUND,
   @JsonValue(31)
   PAGE_SIZE_TOO_BIG,
   @JsonValue(32)
