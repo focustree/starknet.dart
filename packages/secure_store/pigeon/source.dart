@@ -49,7 +49,7 @@ class BiometricOptions {
 }
 
 @HostApi()
-abstract class StarknetInterface {
+abstract class BiometricsStorePlugin {
   @async
   void storeSecret(
     String key,
@@ -66,5 +66,5 @@ abstract class StarknetInterface {
     BiometricOptions? biometricOptions,
   );
 
-  bool biometryAvailable();
+  bool isBiometryAvailable();
 }

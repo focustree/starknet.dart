@@ -23,14 +23,14 @@ struct AuthenticationUtil {
     return success
   }
   
-  static func biometryAvailable() -> Bool {
+  static func isBiometryAvailable() -> Bool {
     let context = LAContext()
     var error: NSError?
-    let biometryAvailable = context.canEvaluatePolicy(
+    let isBiometryAvailable = context.canEvaluatePolicy(
       .deviceOwnerAuthenticationWithBiometrics,
       error: &error
     )
     
-    return (biometryAvailable && error == nil)
+    return (isBiometryAvailable && error == nil)
   }
 }

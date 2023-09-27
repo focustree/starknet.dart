@@ -1,2 +1,2 @@
 starkli deploy $BALANCE_CLASS_HASH --private-key $STARKNET_PRIVATE_KEY
-# dart run examples/starknet-cli/bin/sn.dart deploy --hash $BALANCE_CLASS_HASH
+# dart run examples/starknet_cli/bin/sn.dart deploy --hash $BALANCE_CLASS_HASH

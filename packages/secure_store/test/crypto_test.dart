@@ -3,10 +3,9 @@ import 'dart:typed_data';
 
 import 'package:flutter_test/flutter_test.dart';
 import 'package:secure_store/secure_store.dart';
+import 'package:secure_store/src/utils.dart';
 
 main() {
-  final cryptoHelper = CryptoHelper();
-
   group("Encode/Decode", () {
     // Generated passwords with different length (from 6 to 1024 characters)
     final passwords = [
@@ -44,17 +43,15 @@ main() {
     for (var password in passwords) {
       test("Using ${password.length} chars password: $password", () {
         const plainText = "azerty";
-        final encryptedSecret = cryptoHelper.encrypt(
-          password: password,
-          secret: Uint8List.fromList(
-            utf8.encode(plainText),
-          ),
+        final encryptedSecret = encrypt(
+          password: stringToBytes(password),
+          secret: stringToBytes(plainText),
         );
-        final decodedSecret = cryptoHelper.decrypt(
-          password: password,
+        final decodedSecret = decrypt(
+          password: stringToBytes(password),
           encryptedSecret: encryptedSecret,
         );
-        expect(utf8.decode(decodedSecret), equals(plainText));
+        expect(bytesToString(decodedSecret), equals(plainText));
       });
     }
   });
@@ -63,14 +60,11 @@ main() {
     String password = "aStringOf16Bytes";
     String plainText = "azerty";
 
-    Uint8List encryptedSecret = cryptoHelper.encrypt(
-      password: password,
+    Uint8List encryptedSecret = encrypt(
+      password: stringToBytes(password),
       // Always the same IV for testing
-      iv: Uint8List.fromList(
-          [for (int i = 0; i < CryptoHelper.ivLength; i++) i]),
-      secret: Uint8List.fromList(
-        utf8.encode(plainText),
-      ),
+      iv: Uint8List.fromList([for (int i = 0; i < ivLength; i++) i]),
+      secret: stringToBytes(plainText),
     );
     expect(
       base64Encode(encryptedSecret),
@@ -82,8 +76,8 @@ main() {
     String password = "aStringOf16Bytes";
     String encryptedSecret = "AAECAwQFBgcICQoLDA0OD7t5Gg1C4hrl8RAxdzEfIu8=";
 
-    Uint8List decryptedSecret = cryptoHelper.decrypt(
-      password: password,
+    Uint8List decryptedSecret = decrypt(
+      password: stringToBytes(password),
       encryptedSecret: base64Decode(encryptedSecret),
     );
     expect(utf8.decode(decryptedSecret), equals("azerty"));
@@ -93,8 +87,8 @@ main() {
   group("Nonce generation", () {
     for (int i = 0; i < 100; i++) {
       test("Get different nonce - iteration $i", () {
-        Uint8List nonce1 = cryptoHelper.getIV();
-        Uint8List nonce2 = cryptoHelper.getIV();
+        Uint8List nonce1 = getIV();
+        Uint8List nonce2 = getIV();
         expect(nonce1, isNot(equals(nonce2)));
       });
     }

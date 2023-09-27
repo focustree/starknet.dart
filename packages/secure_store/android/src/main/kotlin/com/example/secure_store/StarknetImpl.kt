@@ -44,10 +44,10 @@ enum class AuthenticationError(vararg val code: Int) {
 private val logger = KLogger.logger {}
 
 /**
- * This class implements the SecureStoreInterface and provides the implementation for the methods
+ * This class implements the SecureStore interface and provides the implementation for the methods
  * defined in the interface.
  */
-class SecureStoreImpl : SecureStoreInterface {
+class SecureStoreImpl : SecureStore {
     var attachedActivity: Activity? = null
     private val activity: FragmentActivity?
         get() {
@@ -129,13 +129,13 @@ class SecureStoreImpl : SecureStoreInterface {
         }
     }
 
-    override fun biometryAvailable(): Boolean {
+    override fun isBiometryAvailable(): Boolean {
         // We only want to allow biometric authentication if the device supports it.
         // Pattern, pin code or password is not allowed on the native side. These will be handled in
         // the Dart code instead.
         return activity.let {
             if (it == null) {
-                logger.error { "biometryAvailable activity is null" }
+                logger.error { "isBiometryAvailable activity is null" }
                 return false
             } else {
                 val response = BiometricManager.from(it).canAuthenticate(

@@ -130,7 +130,7 @@ struct BiometricOptions {
   }
 }
 
-private class SecureStorePluginCodecReader: FlutterStandardReader {
+private class BiometricsStorePluginCodecReader: FlutterStandardReader {
   override func readValue(ofType type: UInt8) -> Any? {
     switch type {
       case 128:
@@ -145,7 +145,7 @@ private class SecureStorePluginCodecReader: FlutterStandardReader {
   }
 }
 
-private class SecureStorePluginCodecWriter: FlutterStandardWriter {
+private class BiometricsStorePluginCodecWriter: FlutterStandardWriter {
   override func writeValue(_ value: Any) {
     if let value = value as? AndroidOptions {
       super.writeByte(128)
@@ -162,22 +162,22 @@ private class SecureStorePluginCodecWriter: FlutterStandardWriter {
   }
 }
 
-private class SecureStorePluginCodecReaderWriter: FlutterStandardReaderWriter {
+private class BiometricsStorePluginCodecReaderWriter: FlutterStandardReaderWriter {
   override func reader(with data: Data) -> FlutterStandardReader {
-    return SecureStorePluginCodecReader(data: data)
+    return BiometricsStorePluginCodecReader(data: data)
   }
 
   override func writer(with data: NSMutableData) -> FlutterStandardWriter {
-    return SecureStorePluginCodecWriter(data: data)
+    return BiometricsStorePluginCodecWriter(data: data)
   }
 }
 
-class SecureStorePluginCodec: FlutterStandardMessageCodec {
-  static let shared = SecureStorePluginCodec(readerWriter: SecureStorePluginCodecReaderWriter())
+class BiometricsStorePluginCodec: FlutterStandardMessageCodec {
+  static let shared = BiometricsStorePluginCodec(readerWriter: BiometricsStorePluginCodecReaderWriter())
 }
 
 /// Generated protocol from Pigeon that represents a handler of messages from Flutter.
-protocol SecureStorePlugin {
+protocol BiometricsStorePlugin {
   func storeSecret(key: String, privateKey: FlutterStandardTypedData, biometricOptions: BiometricOptions?, completion: @escaping (Result<Void, Error>) -> Void)
   func removeSecret(key: String, completion: @escaping (Result<Void, Error>) -> Void)
   func getSecret(key: String, biometricOptions: BiometricOptions?, completion: @escaping (Result<FlutterStandardTypedData?, Error>) -> Void)
@@ -185,12 +185,12 @@ protocol SecureStorePlugin {
 }
 
 /// Generated setup class from Pigeon to handle messages through the `binaryMessenger`.
-class SecureStorePluginSetup {
-  /// The codec used by SecureStorePlugin.
-  static var codec: FlutterStandardMessageCodec { SecureStorePluginCodec.shared }
-  /// Sets up an instance of `SecureStorePlugin` to handle messages through the `binaryMessenger`.
-  static func setUp(binaryMessenger: FlutterBinaryMessenger, api: SecureStorePlugin?) {
-    let storeSecretChannel = FlutterBasicMessageChannel(name: "dev.flutter.pigeon.SecureStorePlugin.storeSecret", binaryMessenger: binaryMessenger, codec: codec)
+class BiometricsStorePluginSetup {
+  /// The codec used by BiometricsStorePlugin.
+  static var codec: FlutterStandardMessageCodec { BiometricsStorePluginCodec.shared }
+  /// Sets up an instance of `BiometricsStorePlugin` to handle messages through the `binaryMessenger`.
+  static func setUp(binaryMessenger: FlutterBinaryMessenger, api: BiometricsStorePlugin?) {
+    let storeSecretChannel = FlutterBasicMessageChannel(name: "dev.flutter.pigeon.BiometricsStorePlugin.storeSecret", binaryMessenger: binaryMessenger, codec: codec)
     if let api = api {
       storeSecretChannel.setMessageHandler { message, reply in
         let args = message as! [Any?]
@@ -209,7 +209,7 @@ class SecureStorePluginSetup {
     } else {
       storeSecretChannel.setMessageHandler(nil)
     }
-    let removeSecretChannel = FlutterBasicMessageChannel(name: "dev.flutter.pigeon.SecureStorePlugin.removeSecret", binaryMessenger: binaryMessenger, codec: codec)
+    let removeSecretChannel = FlutterBasicMessageChannel(name: "dev.flutter.pigeon.BiometricsStorePlugin.removeSecret", binaryMessenger: binaryMessenger, codec: codec)
     if let api = api {
       removeSecretChannel.setMessageHandler { message, reply in
         let args = message as! [Any?]
@@ -226,7 +226,7 @@ class SecureStorePluginSetup {
     } else {
       removeSecretChannel.setMessageHandler(nil)
     }
-    let getSecretChannel = FlutterBasicMessageChannel(name: "dev.flutter.pigeon.SecureStorePlugin.getSecret", binaryMessenger: binaryMessenger, codec: codec)
+    let getSecretChannel = FlutterBasicMessageChannel(name: "dev.flutter.pigeon.BiometricsStorePlugin.getSecret", binaryMessenger: binaryMessenger, codec: codec)
     if let api = api {
       getSecretChannel.setMessageHandler { message, reply in
         let args = message as! [Any?]
@@ -244,7 +244,7 @@ class SecureStorePluginSetup {
     } else {
       getSecretChannel.setMessageHandler(nil)
     }
-    let isBiometryAvailableChannel = FlutterBasicMessageChannel(name: "dev.flutter.pigeon.SecureStorePlugin.isBiometryAvailable", binaryMessenger: binaryMessenger, codec: codec)
+    let isBiometryAvailableChannel = FlutterBasicMessageChannel(name: "dev.flutter.pigeon.BiometricsStorePlugin.isBiometryAvailable", binaryMessenger: binaryMessenger, codec: codec)
     if let api = api {
       isBiometryAvailableChannel.setMessageHandler { _, reply in
         do {

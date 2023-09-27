@@ -57,7 +57,7 @@ class SecureStoreApi : NSObject, SecureStoreInterface {
     }
   }
   
-  func biometryAvailable() throws -> Bool {
-    return AuthenticationUtil.biometryAvailable()
+  func isBiometryAvailable() throws -> Bool {
+    return AuthenticationUtil.isBiometryAvailable()
   }
 }
