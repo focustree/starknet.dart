@@ -1,6 +1,6 @@
 import 'package:flutter/foundation.dart';
 
-import 'src/__generated__/biometrics_store_plugin.dart';
+import 'src/__generated__/secure_store_bridge.dart';
 
 export 'src/biometrics_store.dart';
 export 'src/password_store.dart';
@@ -26,17 +26,19 @@ abstract class SecureStore {
   });
 }
 
-abstract class SecureStoreOptions {}
+abstract class SecureStoreOptions {
+  const SecureStoreOptions();
+}
 
-class BiometricOptionsAdapter extends SecureStoreOptions {
-  final BiometricOptions biometricOptions;
+class BiometricsOptions extends SecureStoreOptions {
+  final BiometricOptions? biometricOptions;
 
-  BiometricOptionsAdapter(this.biometricOptions);
+  const BiometricsOptions([this.biometricOptions]);
 }
 
 class PasswordStoreOptions extends SecureStoreOptions {
   final String password;
   final Uint8List? iv;
 
-  PasswordStoreOptions({required this.password, this.iv});
+  const PasswordStoreOptions({required this.password, this.iv});
 }

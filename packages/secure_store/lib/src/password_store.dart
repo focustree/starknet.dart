@@ -18,6 +18,10 @@ class PasswordStore implements SecureStore {
   static const appLevelPasswordKey = "app_level_password";
   static const appLevelKnownContent = "app_level_known_content";
 
+  static init() {
+    Hive.initFlutter();
+  }
+
   /// Stores a [secret] encrypted with [password] under [key].
   /// If [iv] is provided, it will be used as the initialization vector.
   /// Otherwise, a random one will be generated.
