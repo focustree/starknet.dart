@@ -17,7 +17,7 @@ dependencies:
   flutter_svg: ^2.0.2
   intl: ^0.18.0
   functional_listener: ^2.3.1
-  google_fonts: ^5.0.0
+  google_fonts: ^6.0.0
   loading_indicator: ^3.1.0
   confetti: ^0.7.0
   hive: ^2.2.3
