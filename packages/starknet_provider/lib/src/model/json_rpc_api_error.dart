@@ -50,6 +50,30 @@ enum JsonRpcApiErrorCode {
   INVALID_CONTRACT_CLASS, // from pathfinder code
   @JsonValue(51)
   CLASS_ALREADY_DECLARED, // from pathfinder code
+  @JsonValue(52)
+  INVALID_TRANSACTION_NONCE, // from pathfinder code
+  @JsonValue(53)
+  INSUFFICIENT_MAX_FEE, // from pathfinder code
+  @JsonValue(54)
+  INSUFFICIENT_ACCOUNT_BALANCE, // from pathfinder code
+  @JsonValue(55)
+  VALIDATION_FAILURE, // from pathfinder code
+  @JsonValue(56)
+  COMPILATION_FAILED, // from pathfinder code
+  @JsonValue(57)
+  CONTRACT_CLASS_SIZE_IS_TOO_LARGE, // from pathfinder code
+  @JsonValue(58)
+  NON_ACCOUNT, // from pathfinder code
+  @JsonValue(59)
+  DUPLICATE_TRANSACTION, // from pathfinder code
+  @JsonValue(60)
+  COMPILED_CLASS_HASH_MISMATCH, // from pathfinder code
+  @JsonValue(61)
+  UNSUPPORTED_TX_VERSION, // from pathfinder code
+  @JsonValue(62)
+  UNSUPPORTED_CONTRACT_CLASS_VERSION, // from pathfinder code
+  @JsonValue(63)
+  UNEXPECTED_ERROR, // from pathfinder code
   @JsonValue(10000)
   PROOF_LIMIT_EXCEEDED, // from pathfinder code
   @JsonValue(-32602)
