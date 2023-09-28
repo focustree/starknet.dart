@@ -12,10 +12,10 @@ sidebar:
     - - - Mobile Wallet
         - "/examples/mobile-wallet"
       - - Starknet CLI
-        - "/examples/mobile-wallet"
+        - "/examples/starknet-cli"
   - - Packages
     - - - Starknet Provider
-        - "/packages/provider"
+        - "/packages/starknet-provider"
       - - Starknet
         - "/packages/starknet"
       - - Starknet Builder
