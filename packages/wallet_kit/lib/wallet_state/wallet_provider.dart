@@ -153,8 +153,9 @@ class Wallets extends _$Wallets with PersistedState<WalletsState> {
       throw Exception("Wallet not found");
     }
 
-    final seedPhrase =
-        await getSeedPhrase(walletId: walletId, password: password);
+    // final seedPhrase =
+    //     await getSeedPhrase(walletId: walletId, password: password);
+    final seedPhrase = [""];
     if (seedPhrase == null) {
       throw Exception("Seed phrase is null");
     }
@@ -178,17 +179,6 @@ class Wallets extends _$Wallets with PersistedState<WalletsState> {
 Future<void> createInitialPassword(String password) async {
   await sf.PasswordStore().deleteSecret(key: "app_level_password");
   await sf.PasswordStore().initiatePassword(password);
-}
-
-Future<List<String>?> getSeedPhrase({
-  required String walletId,
-  required String password,
-}) async {
-  final store = sf.PasswordStore();
-  return store.getSeedPhrase(
-    id: walletId,
-    password: password,
-  );
 }
 
 extension WalletService on WalletsState {
