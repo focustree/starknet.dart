@@ -13,13 +13,12 @@ _$_WalletsState _$$_WalletsStateFromJson(Map<String, dynamic> json) =>
           ) ??
           const {},
       selected: _$recordConvertNullable(
-            json['selected'],
-            ($jsonValue) => (
-              accountId: $jsonValue['accountId'] as int,
-              walletId: $jsonValue['walletId'] as String,
-            ),
-          ) ??
-          null,
+        json['selected'],
+        ($jsonValue) => (
+          accountId: $jsonValue['accountId'] as int,
+          walletId: $jsonValue['walletId'] as String,
+        ),
+      ),
       tempWallet: json['tempWallet'] == null
           ? null
           : Wallet.fromJson(json['tempWallet'] as Map<String, dynamic>),
@@ -47,11 +46,13 @@ _$_Wallet _$$_WalletFromJson(Map<String, dynamic> json) => _$_Wallet(
       id: json['id'] as String,
       name: json['name'] as String,
       seedPhrase: (json['seedPhrase'] as List<dynamic>?)
-              ?.map((e) => e as String)
-              .toList() ??
-          null,
+          ?.map((e) => e as String)
+          .toList(),
       type: $enumDecodeNullable(_$WalletTypeEnumMap, json['type']) ??
           WalletType.openZeppelin,
+      secureStoreType: $enumDecodeNullable(
+              _$SecureStoreTypeEnumMap, json['secureStoreType']) ??
+          SecureStoreType.password,
       accounts: (json['accounts'] as Map<String, dynamic>?)?.map(
             (k, e) => MapEntry(
                 int.parse(k), Account.fromJson(e as Map<String, dynamic>)),
@@ -64,6 +65,7 @@ Map<String, dynamic> _$$_WalletToJson(_$_Wallet instance) => <String, dynamic>{
       'name': instance.name,
       'seedPhrase': instance.seedPhrase,
       'type': _$WalletTypeEnumMap[instance.type]!,
+      'secureStoreType': _$SecureStoreTypeEnumMap[instance.secureStoreType]!,
       'accounts': instance.accounts.map((k, e) => MapEntry(k.toString(), e)),
     };
 
@@ -71,6 +73,11 @@ const _$WalletTypeEnumMap = {
   WalletType.openZeppelin: 'openZeppelin',
   WalletType.argent: 'argent',
   WalletType.braavos: 'braavos',
+};
+
+const _$SecureStoreTypeEnumMap = {
+  SecureStoreType.biometrics: 'biometrics',
+  SecureStoreType.password: 'password',
 };
 
 _$_Account _$$_AccountFromJson(Map<String, dynamic> json) => _$_Account(

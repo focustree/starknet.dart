@@ -36,11 +36,11 @@ Uint8List _hashKeyWithIndex(Uint8List key, int index) {
 }
 
 Felt derivePrivateKey({
-  required List<String> mnemonic,
+  required String mnemonic,
   int index = 0,
   String pathPrefix = "m/44'/9004'/0'/0",
 }) {
-  final seed = bip39.mnemonicToSeed(mnemonic.join(" "));
+  final seed = bip39.mnemonicToSeed(mnemonic);
   final nodeFromSeed = bip32.BIP32.fromSeed(seed);
   final child = nodeFromSeed.derivePath('$pathPrefix/$index');
   Uint8List key = child.privateKey!;

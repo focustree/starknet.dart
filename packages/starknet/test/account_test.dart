@@ -285,7 +285,7 @@ void main() {
         final mnemonic =
             "rotate nice pattern oven twice upper defense exile squirrel gym script sight"
                 .split(" ");
-        final Felt privateKey = derivePrivateKey(mnemonic: mnemonic);
+        final Felt privateKey = derivePrivateKey(mnemonic: mnemonic.join(' '));
         expect(
             privateKey,
             equals(

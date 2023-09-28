@@ -22,7 +22,7 @@ class CreatePasswordScreen extends HookConsumerWidget {
 
     return Layout2(
       children: [
-        SimpleHeader(
+        const SimpleHeader(
           title: 'Create Password',
         ),
         const Text(
@@ -96,9 +96,9 @@ class ConfirmPasswordScren extends HookConsumerWidget {
                     return;
                   }
                   isLoading.value = true;
-                  await ref
-                      .read(walletsProvider.notifier)
-                      .protectWalletWithPassword(password: password.value);
+                  // await ref
+                  //     .read(walletsProvider.notifier)
+                  //     .protectWalletWithPassword(password: password.value);
                   isLoading.value = false;
                   Navigator.of(context).popUntil((route) => route.isFirst);
                 }

@@ -1,30 +1,68 @@
-import 'package:secure_store/secure_store.dart' as ss;
+import 'package:flutter/foundation.dart';
 import 'package:starknet/starknet.dart' as s;
 import 'package:starknet_provider/starknet_provider.dart';
-import 'package:wallet_kit/wallet_state/index.dart';
+import 'package:uuid/uuid.dart';
+import 'package:bip39/bip39.dart' as bip39;
+import 'package:wallet_kit/wallet_kit.dart';
 
-Future<void> storeAccountSecrets({
-  required String walletId,
-  required String accountId,
-  required List<String> seedPhrase,
-  required String password,
-  required BigInt privateKey,
-}) async {
-  final passwordStore = ss.PasswordStore();
-  final isGoodPassword = await passwordStore.isGoodPassword(password);
-  if (!isGoodPassword) {
-    throw Exception("Wrong password");
+class WalletService {
+  static String newSeedPhrase() {
+    return bip39.generateMnemonic();
   }
-  // await passwordStore.storeSeedPhrase(
-  //   id: walletId,
-  //   seedPhrase: seedPhrase,
-  //   password: password,
-  // );
-  // await passwordStore.storePrivateKey(
-  //   id: accountId,
-  //   privateKey: privateKey.toUint8List(),
-  //   password: password,
-  // );
+
+  static String newWalletId() {
+    return const Uuid().v4();
+  }
+
+  static Future<s.Felt> derivePrivateKey({
+    required String seedPhrase,
+    required int derivationIndex,
+  }) async {
+    // Prepare the input for the compute function
+    Map<String, dynamic> computationInput = {
+      'seedPhrase': seedPhrase,
+      'derivationIndex': derivationIndex,
+    };
+
+    // Derive the private key in an isolate to avoid blocking UI thread
+    return compute((Map<String, dynamic> input) {
+      String seedPhrase = input['seedPhrase'];
+      int derivationIndex = input['derivationIndex'];
+
+      return s.derivePrivateKey(
+        mnemonic: seedPhrase,
+        index: derivationIndex,
+      );
+    }, computationInput);
+  }
+
+  static Future<s.Felt> computeAddress({
+    required s.Felt privateKey,
+    WalletType walletType = WalletType.openZeppelin,
+  }) async {
+    final chainId = s.StarknetChainId.testNet;
+    final provider = JsonRpcProvider.infuraGoerliTestnet;
+    final accountDerivation = switch (walletType) {
+      WalletType.openZeppelin => s.OpenzeppelinAccountDerivation(
+          proxyClassHash: s.ozProxyClassHash,
+          implementationClassHash: s.ozAccountUpgradableClassHash,
+        ),
+      WalletType.argent => s.ArgentXAccountDerivation(),
+      WalletType.braavos =>
+        s.BraavosAccountDerivation(chainId: chainId, provider: provider),
+    };
+    return accountDerivation.computeAddress(
+      publicKey: s.Signer(privateKey: privateKey).publicKey,
+    );
+  }
+}
+
+seedPhraseKey(String walletId) {
+  return 'seed_phrase:$walletId';
+}
+
+privateKeyKey(int accountId) {
+  return 'private_key:$accountId';
 }
 
 Future<String> sendEth({

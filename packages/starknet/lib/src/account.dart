@@ -359,7 +359,8 @@ class OpenzeppelinAccountDerivation extends AccountDerivation {
 
   @override
   Signer deriveSigner({required List<String> mnemonic, int index = 0}) {
-    final privateKey = derivePrivateKey(mnemonic: mnemonic, index: index);
+    final privateKey =
+        derivePrivateKey(mnemonic: mnemonic.join(' '), index: index);
     return Signer(privateKey: privateKey);
   }
 
@@ -435,7 +436,8 @@ class BraavosAccountDerivation extends AccountDerivation {
 
   @override
   Signer deriveSigner({required List<String> mnemonic, int index = 0}) {
-    final privateKey = derivePrivateKey(mnemonic: mnemonic, index: index);
+    final privateKey =
+        derivePrivateKey(mnemonic: mnemonic.join(' '), index: index);
     return Signer(privateKey: privateKey);
   }
 

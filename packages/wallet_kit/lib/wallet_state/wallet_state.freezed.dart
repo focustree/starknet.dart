@@ -235,6 +235,7 @@ mixin _$Wallet {
   String get name => throw _privateConstructorUsedError;
   List<String>? get seedPhrase => throw _privateConstructorUsedError;
   WalletType get type => throw _privateConstructorUsedError;
+  SecureStoreType get secureStoreType => throw _privateConstructorUsedError;
   Map<int, Account> get accounts => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -252,6 +253,7 @@ abstract class $WalletCopyWith<$Res> {
       String name,
       List<String>? seedPhrase,
       WalletType type,
+      SecureStoreType secureStoreType,
       Map<int, Account> accounts});
 }
 
@@ -272,6 +274,7 @@ class _$WalletCopyWithImpl<$Res, $Val extends Wallet>
     Object? name = null,
     Object? seedPhrase = freezed,
     Object? type = null,
+    Object? secureStoreType = null,
     Object? accounts = null,
   }) {
     return _then(_value.copyWith(
@@ -291,6 +294,10 @@ class _$WalletCopyWithImpl<$Res, $Val extends Wallet>
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
               as WalletType,
+      secureStoreType: null == secureStoreType
+          ? _value.secureStoreType
+          : secureStoreType // ignore: cast_nullable_to_non_nullable
+              as SecureStoreType,
       accounts: null == accounts
           ? _value.accounts
           : accounts // ignore: cast_nullable_to_non_nullable
@@ -310,6 +317,7 @@ abstract class _$$_WalletCopyWith<$Res> implements $WalletCopyWith<$Res> {
       String name,
       List<String>? seedPhrase,
       WalletType type,
+      SecureStoreType secureStoreType,
       Map<int, Account> accounts});
 }
 
@@ -327,6 +335,7 @@ class __$$_WalletCopyWithImpl<$Res>
     Object? name = null,
     Object? seedPhrase = freezed,
     Object? type = null,
+    Object? secureStoreType = null,
     Object? accounts = null,
   }) {
     return _then(_$_Wallet(
@@ -346,6 +355,10 @@ class __$$_WalletCopyWithImpl<$Res>
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
               as WalletType,
+      secureStoreType: null == secureStoreType
+          ? _value.secureStoreType
+          : secureStoreType // ignore: cast_nullable_to_non_nullable
+              as SecureStoreType,
       accounts: null == accounts
           ? _value._accounts
           : accounts // ignore: cast_nullable_to_non_nullable
@@ -362,6 +375,7 @@ class _$_Wallet implements _Wallet {
       required this.name,
       final List<String>? seedPhrase = null,
       this.type = WalletType.openZeppelin,
+      this.secureStoreType = SecureStoreType.password,
       final Map<int, Account> accounts = const {}})
       : _seedPhrase = seedPhrase,
         _accounts = accounts;
@@ -387,6 +401,9 @@ class _$_Wallet implements _Wallet {
   @override
   @JsonKey()
   final WalletType type;
+  @override
+  @JsonKey()
+  final SecureStoreType secureStoreType;
   final Map<int, Account> _accounts;
   @override
   @JsonKey()
@@ -398,7 +415,7 @@ class _$_Wallet implements _Wallet {
 
   @override
   String toString() {
-    return 'Wallet(id: $id, name: $name, seedPhrase: $seedPhrase, type: $type, accounts: $accounts)';
+    return 'Wallet(id: $id, name: $name, seedPhrase: $seedPhrase, type: $type, secureStoreType: $secureStoreType, accounts: $accounts)';
   }
 
   @override
@@ -411,6 +428,8 @@ class _$_Wallet implements _Wallet {
             const DeepCollectionEquality()
                 .equals(other._seedPhrase, _seedPhrase) &&
             (identical(other.type, type) || other.type == type) &&
+            (identical(other.secureStoreType, secureStoreType) ||
+                other.secureStoreType == secureStoreType) &&
             const DeepCollectionEquality().equals(other._accounts, _accounts));
   }
 
@@ -422,6 +441,7 @@ class _$_Wallet implements _Wallet {
       name,
       const DeepCollectionEquality().hash(_seedPhrase),
       type,
+      secureStoreType,
       const DeepCollectionEquality().hash(_accounts));
 
   @JsonKey(ignore: true)
@@ -444,6 +464,7 @@ abstract class _Wallet implements Wallet {
       required final String name,
       final List<String>? seedPhrase,
       final WalletType type,
+      final SecureStoreType secureStoreType,
       final Map<int, Account> accounts}) = _$_Wallet;
 
   factory _Wallet.fromJson(Map<String, dynamic> json) = _$_Wallet.fromJson;
@@ -456,6 +477,8 @@ abstract class _Wallet implements Wallet {
   List<String>? get seedPhrase;
   @override
   WalletType get type;
+  @override
+  SecureStoreType get secureStoreType;
   @override
   Map<int, Account> get accounts;
   @override

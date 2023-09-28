@@ -16,12 +16,15 @@ class BiometricsStore implements SecureStore {
   /// Stores a [secret] encrypted with biometry under [key].
   @override
   Future<void> storeSecret({
-    required String secret,
     required String key,
-    SecureStoreOptions options = const BiometricsOptions(),
+    required String secret,
+    SecureStoreOptions? options,
   }) async {
+    if (options == null) {
+      options = const BiometricsOptions();
+    }
     if (options is! BiometricsOptions) {
-      throw Exception('Invalid secure store options');
+      throw Exception('Invalid biometrics store options');
     }
     return SecureStoreBridge()
         .storeSecret(key, stringToBytes(secret), options.biometricOptions);
@@ -31,10 +34,13 @@ class BiometricsStore implements SecureStore {
   @override
   Future<String?> getSecret({
     required String key,
-    SecureStoreOptions options = const BiometricsOptions(),
+    SecureStoreOptions? options,
   }) async {
+    if (options == null) {
+      options = const BiometricsOptions();
+    }
     if (options is! BiometricsOptions) {
-      throw Exception('Invalid secure store options');
+      throw Exception('Invalid biometrics store options');
     }
     final secret =
         await SecureStoreBridge().getSecret(key, options.biometricOptions);
@@ -48,5 +54,9 @@ class BiometricsStore implements SecureStore {
     required String key,
   }) async {
     return SecureStoreBridge().removeSecret(key);
+  }
+
+  Future<bool> isAvailable() async {
+    return SecureStoreBridge().isBiometryAvailable();
   }
 }

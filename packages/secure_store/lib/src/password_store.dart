@@ -30,9 +30,9 @@ class PasswordStore implements SecureStore {
   /// (not biometric protected, but more secure than shared preferences)
   @override
   Future<void> storeSecret({
-    required String secret,
     required String key,
-    required SecureStoreOptions options,
+    required String secret,
+    SecureStoreOptions? options,
   }) async {
     if (options is! PasswordStoreOptions) {
       throw Exception('Invalid secure store options');
@@ -54,7 +54,7 @@ class PasswordStore implements SecureStore {
   @override
   Future<String?> getSecret({
     required String key,
-    required SecureStoreOptions options,
+    SecureStoreOptions? options,
   }) async {
     if (options is! PasswordStoreOptions) {
       throw Exception('Invalid secure store options');

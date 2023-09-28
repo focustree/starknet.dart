@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:wallet_kit/utils/format_address.dart';
-import 'package:wallet_kit/wallet_state/wallet_provider.dart';
+import 'package:wallet_kit/wallet_kit.dart';
 
 class AccountAddress extends HookConsumerWidget {
   const AccountAddress({super.key});
@@ -21,7 +20,6 @@ class _AccountAddressButton extends StatelessWidget {
   final String address;
 
   const _AccountAddressButton({
-    super.key,
     required this.address,
   });
 
