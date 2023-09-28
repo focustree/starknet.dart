@@ -8,7 +8,7 @@
 import FlutterMacOS
 import Cocoa
 
-class SecureStoreApi : NSObject, SecureStoreInterface {
+class SecureStoreApi : NSObject, SecureStoreBridge {
   func removeSecret(key: String, completion: @escaping (Result<Void, Error>) -> Void) {
     let secureEnclaveManager = SecureEnclaveManager()
     let keychainManager = KeychainManager()

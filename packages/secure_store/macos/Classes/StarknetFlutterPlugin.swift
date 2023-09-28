@@ -1,9 +1,9 @@
 import Cocoa
 import FlutterMacOS
 
-public class SecurestorePlugin: NSObject, FlutterPlugin {
+public class SecureStorePlugin: NSObject, FlutterPlugin {
   public static func register(with registrar: FlutterPluginRegistrar) {
     let api = SecureStoreApi()
-    SecureStoreInterfaceSetup.setUp(binaryMessenger: registrar.messenger, api: api)
+    SecureStoreBridgeSetup.setUp(binaryMessenger: registrar.messenger, api: api)
   }
 }

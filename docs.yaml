@@ -17,10 +17,10 @@ sidebar:
     - - - Starknet Provider
         - "/packages/provider"
       - - Starknet
-        - "/pacakages/starknet"
+        - "/packages/starknet"
       - - Starknet Builder
-        - "/pacakages/starknet-builder"
+        - "/packages/starknet-builder"
       - - Secure Store
-        - "/pacakages/secure-store"
+        - "/packages/secure-store"
       - - Wallet Kit
-        - "/pacakages/wallet-kit"
+        - "/packages/wallet-kit"

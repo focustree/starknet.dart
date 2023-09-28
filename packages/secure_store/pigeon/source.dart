@@ -49,7 +49,7 @@ class BiometricOptions {
 }
 
 @HostApi()
-abstract class BiometricsStorePlugin {
+abstract class SecureStoreBridge {
   @async
   void storeSecret(
     String key,

@@ -44,10 +44,10 @@ enum class AuthenticationError(vararg val code: Int) {
 private val logger = KLogger.logger {}
 
 /**
- * This class implements the SecureStore interface and provides the implementation for the methods
+ * This class implements the SecureStoreBridge interface and provides the implementation for the methods
  * defined in the interface.
  */
-class SecureStoreImpl : SecureStore {
+class SecureStoreImpl : SecureStoreBridge {
     var attachedActivity: Activity? = null
     private val activity: FragmentActivity?
         get() {
