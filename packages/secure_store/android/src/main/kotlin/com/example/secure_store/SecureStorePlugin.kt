@@ -9,18 +9,18 @@ import io.flutter.embedding.engine.plugins.activity.ActivityPluginBinding
 /**
  * Manage lifecycle of the Android plugin
  * */
-class SecurestorePlugin : FlutterPlugin, ActivityAware {
-    private val securestoreImpl = SecureStoreImpl()
+class SecureStorePlugin : FlutterPlugin, ActivityAware {
+    private val secureStoreImpl = SecureStoreImpl()
     private val logger = KLogger.logger {}
 
-    // Bind SecureStoreInterface to the FlutterPlugin.FlutterPluginBinding
+    // Bind SecureStoreBridge to the FlutterPlugin.FlutterPluginBinding
     override fun onAttachedToEngine(binding: FlutterPlugin.FlutterPluginBinding) {
-        SecureStoreInterface.setUp(binding.binaryMessenger, securestoreImpl)
+        SecureStoreBridge.setUp(binding.binaryMessenger, secureStoreImpl)
     }
 
-    // Unbind SecureStoreInterface to the FlutterPlugin.FlutterPluginBinding
+    // Unbind SecureStoreBridge to the FlutterPlugin.FlutterPluginBinding
     override fun onDetachedFromEngine(binding: FlutterPlugin.FlutterPluginBinding) {
-        SecureStoreInterface.setUp(binding.binaryMessenger, null)
+        SecureStoreBridge.setUp(binding.binaryMessenger, null)
     }
 
     override fun onAttachedToActivity(binding: ActivityPluginBinding) {
@@ -28,7 +28,7 @@ class SecurestorePlugin : FlutterPlugin, ActivityAware {
     }
 
     override fun onDetachedFromActivityForConfigChanges() {
-        securestoreImpl.attachedActivity = null
+        secureStoreImpl.attachedActivity = null
     }
 
     override fun onReattachedToActivityForConfigChanges(binding: ActivityPluginBinding) {
@@ -36,13 +36,13 @@ class SecurestorePlugin : FlutterPlugin, ActivityAware {
     }
 
     override fun onDetachedFromActivity() {
-        securestoreImpl.attachedActivity = null
+        secureStoreImpl.attachedActivity = null
     }
 
     private fun updateAttachedActivity(activity: Activity) {
         if (activity !is FragmentActivity) {
             logger.error { "Got attached to activity which is not a FragmentActivity: $activity" }
         }
-        securestoreImpl.attachedActivity = activity
+        secureStoreImpl.attachedActivity = activity
     }
 }
