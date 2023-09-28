@@ -13,7 +13,7 @@ class TransactionHashPrefix {
   static final l1Handler = Felt.fromString('l1_handler');
 }
 
-final defaultMaxFee = Felt.fromDouble(0.1 * 1e18); // 0.1 ETH
+final defaultMaxFee = Felt.fromDouble(0.001 * 1e18); // 0.001 ETH
 final defaultNonce = Felt.fromInt(0);
 final defaultVersion = Felt.fromInt(0);
 
