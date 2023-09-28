@@ -15,16 +15,16 @@ Future<void> storeAccountSecrets({
   if (!isGoodPassword) {
     throw Exception("Wrong password");
   }
-  await passwordStore.storeSeedPhrase(
-    id: walletId,
-    seedPhrase: seedPhrase,
-    password: password,
-  );
-  await passwordStore.storePrivateKey(
-    id: accountId,
-    privateKey: privateKey.toUint8List(),
-    password: password,
-  );
+  // await passwordStore.storeSeedPhrase(
+  //   id: walletId,
+  //   seedPhrase: seedPhrase,
+  //   password: password,
+  // );
+  // await passwordStore.storePrivateKey(
+  //   id: accountId,
+  //   privateKey: privateKey.toUint8List(),
+  //   password: password,
+  // );
 }
 
 Future<String> sendEth({
@@ -34,13 +34,14 @@ Future<String> sendEth({
   required double amount,
   Function(String)? onSendTransactionCallback,
 }) async {
-  final privateKey = await ss.PasswordStore()
-      .getPrivateKey(id: account.id.toString(), password: password);
+  // final privateKey = await ss.PasswordStore()
+  //     .getPrivateKey(id: account.id.toString(), password: password);
+  final privateKey = s.Felt.fromHexString("0x1");
   if (privateKey == null) {
     throw Exception("Private key is null");
   }
 
-  s.Signer? signer = s.Signer(privateKey: s.Felt.fromBytes(privateKey));
+  s.Signer? signer = s.Signer(privateKey: privateKey);
 
   final provider = JsonRpcProvider.infuraGoerliTestnet;
 

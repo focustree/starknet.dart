@@ -1,3 +1,0 @@
-class PinCodeConfig {
-  const PinCodeConfig();
-}
