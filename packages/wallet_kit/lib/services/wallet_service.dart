@@ -1,4 +1,5 @@
 import 'package:flutter/foundation.dart';
+import 'package:secure_store/secure_store.dart';
 import 'package:starknet/starknet.dart' as s;
 import 'package:starknet_provider/starknet_provider.dart';
 import 'package:uuid/uuid.dart';
@@ -6,6 +7,59 @@ import 'package:bip39/bip39.dart' as bip39;
 import 'package:wallet_kit/wallet_kit.dart';
 
 class WalletService {
+  static Future<Wallet> addWallet({
+    required SecureStore secureStore,
+    required String seedPhrase,
+    String? walletId,
+    int accountId = 0,
+    String walletName = 'Wallet',
+    WalletType walletType = WalletType.openZeppelin,
+  }) async {
+    walletId = walletId ?? WalletService.newWalletId();
+
+    await secureStore.storeSecret(
+      key: seedPhraseKey(walletId),
+      secret: seedPhrase,
+    );
+
+    return Wallet(
+      id: walletId,
+      name: walletName,
+      type: walletType,
+      secureStoreType: secureStore.type,
+    );
+  }
+
+  static Future<(Wallet, Account)> addAccount({
+    required SecureStore secureStore,
+    required Wallet wallet,
+    required String seedPhrase,
+  }) async {
+    final secureStore = wallet.secureStoreType == SecureStoreType.biometrics
+        ? BiometricsStore()
+        : PasswordStore(password: '');
+
+    final accountId = wallet.newAccountId;
+    final privateKey = await WalletService.derivePrivateKey(
+      seedPhrase: seedPhrase,
+      derivationIndex: accountId,
+    );
+    await secureStore.storeSecret(
+      key: privateKeyKey(accountId),
+      secret: privateKey.toHexString(),
+    );
+
+    final accountAddress = await WalletService.computeAddress(
+      privateKey: privateKey,
+      walletType: wallet.type,
+    );
+
+    return wallet.addAccount(
+      accountAddress: accountAddress,
+      accountId: accountId,
+    );
+  }
+
   static String newSeedPhrase() {
     return bip39.generateMnemonic();
   }

@@ -10,6 +10,9 @@ import 'package:secure_store/src/utils.dart';
 /// The password must be entered by the user to ensure the security of the
 /// private key and must not be stored anywhere.
 class PasswordStore implements SecureStore {
+  final String password;
+  final Uint8List? iv;
+
   static const boxName = "secure_store";
 
   /// A known content will be encrypted using a password set by the user instead
@@ -17,6 +20,8 @@ class PasswordStore implements SecureStore {
   /// the entire app. See [initiatePassword()], [hasPassword()] and [isGoodPassword()].
   static const appLevelPasswordKey = "app_level_password";
   static const appLevelKnownContent = "app_level_known_content";
+
+  PasswordStore({required this.password, this.iv});
 
   static init() {
     Hive.initFlutter();
@@ -32,19 +37,15 @@ class PasswordStore implements SecureStore {
   Future<void> storeSecret({
     required String key,
     required String secret,
-    SecureStoreOptions? options,
   }) async {
-    if (options is! PasswordStoreOptions) {
-      throw Exception('Invalid secure store options');
-    }
     final box = await Hive.openBox(boxName);
     await box.put(
       key,
       base64Encode(
         encrypt(
-          password: stringToBytes(options.password),
+          password: stringToBytes(password),
           secret: stringToBytes(secret),
-          iv: options.iv,
+          iv: iv,
         ),
       ),
     );
@@ -54,12 +55,7 @@ class PasswordStore implements SecureStore {
   @override
   Future<String?> getSecret({
     required String key,
-    SecureStoreOptions? options,
   }) async {
-    if (options is! PasswordStoreOptions) {
-      throw Exception('Invalid secure store options');
-    }
-
     var box = await Hive.openBox(boxName);
     final cipherText = box.get(key);
 
@@ -68,7 +64,7 @@ class PasswordStore implements SecureStore {
     } else {
       try {
         return bytesToString(decrypt(
-          password: stringToBytes(options.password),
+          password: stringToBytes(password),
           encryptedSecret: base64Decode(cipherText),
         ));
       } catch (e) {
@@ -98,7 +94,6 @@ class PasswordStore implements SecureStore {
       }
       final decryptedSecret = await getSecret(
         key: appLevelPasswordKey,
-        options: PasswordStoreOptions(password: password),
       );
       if (decryptedSecret != null && decryptedSecret == appLevelKnownContent) {
         // If decrypted String is the same as the known String, then the password is correct
@@ -126,9 +121,8 @@ class PasswordStore implements SecureStore {
     final cipherText = box.get(appLevelPasswordKey);
     if (cipherText == null) {
       return storeSecret(
-        secret: appLevelKnownContent,
         key: appLevelPasswordKey,
-        options: PasswordStoreOptions(password: password),
+        secret: appLevelKnownContent,
       );
     }
   }

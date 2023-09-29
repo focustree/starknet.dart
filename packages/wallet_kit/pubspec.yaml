@@ -39,10 +39,8 @@ dev_dependencies:
 
 flutter:
   assets:
-    - assets/images/
     - assets/images/crypto/
-    - assets/images/crypto/USDC.svg
-    - assets/images/crypto/ETH.svg
+    - assets/images/wallets/
 
   fonts:
     - family: SF Pro Rounded

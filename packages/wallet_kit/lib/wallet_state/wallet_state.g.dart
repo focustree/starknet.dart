@@ -13,15 +13,13 @@ _$_WalletsState _$$_WalletsStateFromJson(Map<String, dynamic> json) =>
           ) ??
           const {},
       selected: _$recordConvertNullable(
-        json['selected'],
-        ($jsonValue) => (
-          accountId: $jsonValue['accountId'] as int,
-          walletId: $jsonValue['walletId'] as String,
-        ),
-      ),
-      tempWallet: json['tempWallet'] == null
-          ? null
-          : Wallet.fromJson(json['tempWallet'] as Map<String, dynamic>),
+            json['selected'],
+            ($jsonValue) => (
+              accountId: $jsonValue['accountId'] as int,
+              walletId: $jsonValue['walletId'] as String,
+            ),
+          ) ??
+          null,
     );
 
 Map<String, dynamic> _$$_WalletsStateToJson(_$_WalletsState instance) =>
@@ -33,7 +31,6 @@ Map<String, dynamic> _$$_WalletsStateToJson(_$_WalletsState instance) =>
               'accountId': instance.selected!.accountId,
               'walletId': instance.selected!.walletId,
             },
-      'tempWallet': instance.tempWallet,
     };
 
 $Rec? _$recordConvertNullable<$Rec>(
@@ -45,9 +42,6 @@ $Rec? _$recordConvertNullable<$Rec>(
 _$_Wallet _$$_WalletFromJson(Map<String, dynamic> json) => _$_Wallet(
       id: json['id'] as String,
       name: json['name'] as String,
-      seedPhrase: (json['seedPhrase'] as List<dynamic>?)
-          ?.map((e) => e as String)
-          .toList(),
       type: $enumDecodeNullable(_$WalletTypeEnumMap, json['type']) ??
           WalletType.openZeppelin,
       secureStoreType: $enumDecodeNullable(
@@ -63,7 +57,6 @@ _$_Wallet _$$_WalletFromJson(Map<String, dynamic> json) => _$_Wallet(
 Map<String, dynamic> _$$_WalletToJson(_$_Wallet instance) => <String, dynamic>{
       'id': instance.id,
       'name': instance.name,
-      'seedPhrase': instance.seedPhrase,
       'type': _$WalletTypeEnumMap[instance.type]!,
       'secureStoreType': _$SecureStoreTypeEnumMap[instance.secureStoreType]!,
       'accounts': instance.accounts.map((k, e) => MapEntry(k.toString(), e)),

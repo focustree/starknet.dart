@@ -52,43 +52,46 @@ enum WalletType {
 }
 
 extension WalletsStateExtension on WalletsState {
-  Account? get selectedAccount {
+  Wallet? get selectedWallet {
     if (selected == null) {
       return null;
     }
-
     final wallet = wallets[selected?.walletId];
     if (wallet == null) {
       throw Exception("Wallet not found");
     }
-    final account = wallet.accounts[selected?.accountId];
+    return wallet;
+  }
+
+  Account? get selectedAccount {
+    if (selected == null) {
+      return null;
+    }
+    final account = selectedWallet!.accounts[selected?.accountId];
     if (account == null) {
       throw Exception("Account not found");
     }
     return account;
   }
+}
 
-  WalletsState addAccount({
-    required Wallet wallet,
+extension WalletExtension on Wallet {
+  int get newAccountId => accounts.length;
+
+  (Wallet, Account) addAccount({
     required Felt accountAddress,
+    int? accountId,
   }) {
-    final int accountId = wallet.accounts.length;
-    final newAccount = Account(
+    accountId = accountId ?? newAccountId;
+    final account = Account(
       id: accountId,
-      walletId: wallet.id,
+      walletId: id,
       name: 'Account ${accountId + 1}',
       address: accountAddress.toHexString(),
     );
-
-    return copyWith(
-      wallets: {
-        ...wallets,
-        wallet.id: wallet.copyWith(
-          accounts: {...wallet.accounts, newAccount.id: newAccount},
-          seedPhrase: null,
-        )
-      },
-      selected: (walletId: wallet.id, accountId: newAccount.id),
+    final updatedWallet = copyWith(
+      accounts: {...accounts, account.id: account},
     );
+    return (updatedWallet, account);
   }
 }

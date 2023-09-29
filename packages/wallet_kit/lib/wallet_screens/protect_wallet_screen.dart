@@ -35,12 +35,10 @@ class ProtectWalletScreen extends HookConsumerWidget {
               await ref.read(walletsProvider.notifier).addWallet(
                     secureStore: BiometricsStore(),
                     seedPhrase: seedPhrase,
-                    walletType: walletType,
                   );
               isLoading.value = false;
-              Navigator.of(context).popUntil(
-                ModalRoute.withName('/'),
-              );
+              Navigator.of(context)
+                  .popUntil((route) => route.settings.name == "/");
             },
           ),
         SecondaryButton(

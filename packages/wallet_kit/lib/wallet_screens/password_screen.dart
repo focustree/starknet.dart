@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:secure_store/secure_store.dart';
 import 'package:wallet_kit/wallet_kit.dart';
 
-Future<String?> getPassword(BuildContext context) async {
+Future<String> getPassword(BuildContext context) async {
   return showBottomModal<String>(
     isScrollControlled: true,
     useSafeArea: true,
@@ -38,7 +39,7 @@ class CreatePasswordScreen extends HookConsumerWidget {
         PrimaryButton(
           onPressed: isButtonEnabled
               ? () async {
-                  await createInitialPassword(password.value);
+                  // await createInitialPassword(password.value);
                   Navigator.of(context).push(
                     MaterialPageRoute(
                       builder: (context) => ConfirmPasswordScren(
@@ -96,9 +97,10 @@ class ConfirmPasswordScren extends HookConsumerWidget {
                     return;
                   }
                   isLoading.value = true;
-                  // await ref
-                  //     .read(walletsProvider.notifier)
-                  //     .protectWalletWithPassword(password: password.value);
+                  await ref.read(walletsProvider.notifier).addWallet(
+                        secureStore: PasswordStore(password: password.value),
+                        seedPhrase: 'daf',
+                      );
                   isLoading.value = false;
                   Navigator.of(context).popUntil((route) => route.isFirst);
                 }
