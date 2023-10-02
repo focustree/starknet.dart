@@ -29,7 +29,12 @@ class BiometricsStore implements SecureStore {
   Future<String?> getSecret({
     required String key,
   }) async {
-    final secret = await SecureStoreBridge().getSecret(key, options);
+    final secret = await Future.any([
+      SecureStoreBridge().getSecret(key, options),
+      Future.delayed(Duration(seconds: 5),
+          () => null) // Prevents hanging when secret not found
+    ]);
+    print('toto');
     return secret == null ? null : bytesToString(secret);
   }
 

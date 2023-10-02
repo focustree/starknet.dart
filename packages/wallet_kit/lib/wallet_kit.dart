@@ -6,3 +6,4 @@ export 'ui/index.dart';
 export 'widgets/index.dart';
 export 'utils/index.dart';
 export 'services/index.dart';
+export 'secure_store.dart';

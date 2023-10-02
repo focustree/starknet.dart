@@ -3,9 +3,7 @@ import 'package:secure_store/secure_store.dart';
 import 'package:starknet/starknet.dart' as s;
 import 'package:starknet_provider/starknet_provider.dart' as sp;
 import 'package:wallet_kit/utils/persisted_notifier_state.dart';
-import 'package:wallet_kit/wallet_state/wallet_state.dart';
-
-import '../services/wallet_service.dart';
+import 'package:wallet_kit/wallet_kit.dart';
 
 part 'wallet_provider.g.dart';
 
@@ -26,11 +24,15 @@ class Wallets extends _$Wallets with PersistedState<WalletsState> {
 
   addWallet({
     required SecureStore secureStore,
-    required String seedPhrase,
+    String? seedPhrase,
+    String? walletId,
   }) async {
+    seedPhrase = seedPhrase ?? WalletService.newSeedPhrase();
     final walletWithoutAccount = await WalletService.addWallet(
       secureStore: secureStore,
       seedPhrase: seedPhrase,
+      walletId: walletId,
+      walletName: "Wallet ${state.wallets.length + 1}",
     );
     final (walletWithAccount, account) = await WalletService.addAccount(
       secureStore: secureStore,
@@ -41,13 +43,19 @@ class Wallets extends _$Wallets with PersistedState<WalletsState> {
   }
 
   addAccount({
-    required SecureStore secureStore,
     required String walletId,
+    required Future<String?> Function() getPassword,
+    SecureStore? secureStore,
   }) async {
     final wallet = state.wallets[walletId];
     if (wallet == null) {
       throw Exception("Wallet not found");
     }
+    secureStore = secureStore ??
+        await getSecureStore(
+          getPassword: getPassword,
+          type: wallet.secureStoreType,
+        );
     final seedPhrase = await secureStore.getSecret(
       key: seedPhraseKey(walletId),
     );

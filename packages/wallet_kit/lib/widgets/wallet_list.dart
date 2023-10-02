@@ -4,7 +4,6 @@ import 'package:expandable/expandable.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:secure_store/secure_store.dart';
 
 import 'package:wallet_kit/wallet_kit.dart';
 import 'package:wallet_kit/wallet_screens/settings_screen.dart';
@@ -173,18 +172,14 @@ class WalletCell extends HookConsumerWidget {
               Padding(
                 padding: const EdgeInsets.all(4.0),
                 child: TextButton.icon(
+                  label: const Text('Add account'),
                   onPressed: () async {
-                    SecureStoreOptions? options;
-                    if (wallet.secureStoreType == SecureStoreType.password) {
-                      final password = await getPassword(context);
-                      options = PasswordStoreOptions(password: password);
-                    }
-                    ref
-                        .read(walletsProvider.notifier)
-                        .addAccount(walletId: wallet.id);
+                    ref.read(walletsProvider.notifier).addAccount(
+                          walletId: wallet.id,
+                          getPassword: () => showPasswordModal(context),
+                        );
                     Navigator.of(context).pop();
                   },
-                  label: const Text('Add account'),
                   icon: Icon(
                     Icons.add_circle_outline_rounded,
                     size: 16,

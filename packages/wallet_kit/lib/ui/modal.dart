@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:wallet_kit/wallet_kit.dart';
 
-showBottomModal<T>({
+Future<T?> showBottomModal<T>({
   required BuildContext context,
   required WidgetBuilder builder,
   Color backgroundColor = Colors.transparent,
@@ -40,7 +40,8 @@ class ModalLayout extends StatelessWidget {
   final Duration duration;
   final Widget child;
 
-  ModalLayout({
+  const ModalLayout({
+    super.key,
     required this.child,
     this.duration = const Duration(milliseconds: 150),
   });

@@ -35,10 +35,6 @@ class WalletService {
     required Wallet wallet,
     required String seedPhrase,
   }) async {
-    final secureStore = wallet.secureStoreType == SecureStoreType.biometrics
-        ? BiometricsStore()
-        : PasswordStore(password: '');
-
     final accountId = wallet.newAccountId;
     final privateKey = await WalletService.derivePrivateKey(
       seedPhrase: seedPhrase,

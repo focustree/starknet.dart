@@ -22,7 +22,7 @@ class SendEthButton extends HookConsumerWidget {
         if (selectedAccount == null) {
           throw Exception('Account is required');
         }
-        final password = await getPassword(context);
+        final password = await showPasswordModal(context);
         if (password == null) {
           throw Exception('Password is required');
         }

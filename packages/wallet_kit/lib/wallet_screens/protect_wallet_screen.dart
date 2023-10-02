@@ -37,18 +37,25 @@ class ProtectWalletScreen extends HookConsumerWidget {
                     seedPhrase: seedPhrase,
                   );
               isLoading.value = false;
-              Navigator.of(context)
-                  .popUntil((route) => route.settings.name == "/");
+              Navigator.of(context).popUntil((route) => route.isFirst);
             },
           ),
         SecondaryButton(
           isLoading: isLoading.value,
           onPressed: () async {
-            Navigator.of(context).push(
-              MaterialPageRoute(
-                builder: (builder) => const CreatePasswordScreen(),
-              ),
-            );
+            isLoading.value = true;
+            await ref.read(walletsProvider.notifier).addWallet(
+                  secureStore: PasswordStore(
+                    getPassword: () async {
+                      final toto = await showPasswordModal(context);
+                      print('toto: $toto');
+                      return toto;
+                    },
+                  ),
+                  seedPhrase: seedPhrase,
+                );
+            isLoading.value = false;
+            Navigator.of(context).popUntil((route) => route.isFirst);
           },
           label: "Protect with password",
         ),
