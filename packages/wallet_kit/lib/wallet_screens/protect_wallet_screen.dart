@@ -46,11 +46,7 @@ class ProtectWalletScreen extends HookConsumerWidget {
             isLoading.value = true;
             await ref.read(walletsProvider.notifier).addWallet(
                   secureStore: PasswordStore(
-                    getPassword: () async {
-                      final toto = await showPasswordModal(context);
-                      print('toto: $toto');
-                      return toto;
-                    },
+                    getPassword: () => showPasswordModal(context),
                   ),
                   seedPhrase: seedPhrase,
                 );

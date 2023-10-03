@@ -1,7 +1,7 @@
 import 'package:secure_store/secure_store.dart';
 
 Future<SecureStore> getAvailableSecureStore({
-  required Future<String> Function() getPassword,
+  required Future<String?> Function() getPassword,
 }) async {
   final isBiometricsAvailable = await BiometricsStore().isAvailable();
   if (isBiometricsAvailable) {

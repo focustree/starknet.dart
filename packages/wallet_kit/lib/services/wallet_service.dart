@@ -40,6 +40,7 @@ class WalletService {
       seedPhrase: seedPhrase,
       derivationIndex: accountId,
     );
+
     await secureStore.storeSecret(
       key: privateKeyKey(accountId),
       secret: privateKey.toHexString(),

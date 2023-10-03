@@ -27,7 +27,9 @@ class _AccountAddressButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return TextButton(
       style: TextButton.styleFrom(
-        padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+        minimumSize: const Size(0, 0),
+        tapTargetSize: MaterialTapTargetSize.shrinkWrap,
       ),
       onPressed: () async {
         await Clipboard.setData(ClipboardData(text: address));
@@ -44,9 +46,13 @@ class _AccountAddressButton extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          Text(formatAddress(address)),
+          Text(formatAddress(address),
+              style: const TextStyle(
+                fontSize: 16,
+                color: dove,
+              )),
           const SizedBox(width: 4),
-          const Icon(Icons.copy, size: 15),
+          const Icon(Icons.copy, size: 16, color: dove),
         ],
       ),
     );

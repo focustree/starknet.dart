@@ -344,7 +344,7 @@ abstract class AccountDerivation {
   Felt computeAddress({required Felt publicKey});
 }
 
-class OpenzeppelinAccountDerivation extends AccountDerivation {
+class OpenzeppelinAccountDerivation implements AccountDerivation {
   late final Felt proxyClassHash;
   late final Felt implementationClassHash;
 
