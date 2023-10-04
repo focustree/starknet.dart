@@ -1,16 +1,16 @@
 import 'package:counter/services/counter_service.dart';
 import 'package:flutter/material.dart';
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
+class CounterPage extends StatefulWidget {
+  const CounterPage({super.key, required this.title});
 
   final String title;
 
   @override
-  State<MyHomePage> createState() => _MyHomePageState();
+  State<CounterPage> createState() => _CounterPageState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
+class _CounterPageState extends State<CounterPage> {
   int counter = 0;
   TextEditingController amount = TextEditingController();
   _increaseCount() async {
