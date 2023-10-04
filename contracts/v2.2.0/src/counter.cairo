@@ -78,3 +78,6 @@ mod tests {
         assert(counter.get_current_count() == 11, 'Count should be  11');
     }
 }
+
+//class_hash: 0x5d54ff3c67be0231b8e8ed0ce98dca2fb3fbc6529957756f2eea53ac23d202a
+// contract_address: 0x716ea2ba1dc8f1e7f9faad442a109adebe4a80a2ec0c937c7e84aca58136859

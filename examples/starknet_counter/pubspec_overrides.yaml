@@ -1,0 +1,23 @@
+dependency_overrides:
+  path: ^1.8.3
+  http: ^1.0.0
+  starknet:
+    git:
+      url: https://github.com/gabsn/starknet.dart
+      path: packages/starknet
+      ref: focustree
+  starknet_provider:
+    git:
+      url: https://github.com/gabsn/starknet.dart
+      path: packages/starknet_provider
+      ref: focustree
+  # wallet_kit:
+  #   git:
+  #     url: https://github.com/focustree/starknet.dart
+  #     path: packages/wallet_kit
+  #     ref: focustree
+  # secure_store:
+  #   git:
+  #     url: https://github.com/focustree/starknet.dart
+  #     path: packages/secure_store
+  #     ref: focustree
