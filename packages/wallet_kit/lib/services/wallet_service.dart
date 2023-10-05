@@ -65,6 +65,26 @@ class WalletService {
     return const Uuid().v4();
   }
 
+  static Future<s.Account> getStarknetAccount({
+    required SecureStore secureStore,
+    required Account account,
+  }) async {
+    final privateKey =
+        await secureStore.getSecret(key: privateKeyKey(account.id));
+    if (privateKey == null) {
+      throw Exception("Private key not found");
+    }
+    print("privateKey: $privateKey");
+    return s.Account(
+      accountAddress: s.Felt.fromHexString(account.address),
+      chainId: s.Felt.fromString('KATANA'),
+      provider: JsonRpcProvider(nodeUri: Uri.parse("http://0.0.0.0:5050/rpc")),
+      signer: s.Signer(
+        privateKey: s.Felt.fromHexString(privateKey),
+      ),
+    );
+  }
+
   static Future<s.Felt> derivePrivateKey({
     required String seedPhrase,
     required int derivationIndex,

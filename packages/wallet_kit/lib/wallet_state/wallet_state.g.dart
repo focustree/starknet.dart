@@ -82,7 +82,7 @@ _$_Account _$$_AccountFromJson(Map<String, dynamic> json) => _$_Account(
             (k, e) => MapEntry(k, (e as num).toDouble()),
           ) ??
           const {},
-      idDeployed: json['idDeployed'] as bool? ?? false,
+      isDeployed: json['isDeployed'] as bool? ?? false,
     );
 
 Map<String, dynamic> _$$_AccountToJson(_$_Account instance) =>
@@ -92,5 +92,5 @@ Map<String, dynamic> _$$_AccountToJson(_$_Account instance) =>
       'name': instance.name,
       'address': instance.address,
       'balances': instance.balances,
-      'idDeployed': instance.idDeployed,
+      'isDeployed': instance.isDeployed,
     };

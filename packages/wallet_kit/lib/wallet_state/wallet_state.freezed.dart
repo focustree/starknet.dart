@@ -421,7 +421,7 @@ mixin _$Account {
   String get name => throw _privateConstructorUsedError;
   String get address => throw _privateConstructorUsedError;
   Map<String, double> get balances => throw _privateConstructorUsedError;
-  bool get idDeployed => throw _privateConstructorUsedError;
+  bool get isDeployed => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -439,7 +439,7 @@ abstract class $AccountCopyWith<$Res> {
       String name,
       String address,
       Map<String, double> balances,
-      bool idDeployed});
+      bool isDeployed});
 }
 
 /// @nodoc
@@ -460,7 +460,7 @@ class _$AccountCopyWithImpl<$Res, $Val extends Account>
     Object? name = null,
     Object? address = null,
     Object? balances = null,
-    Object? idDeployed = null,
+    Object? isDeployed = null,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -483,9 +483,9 @@ class _$AccountCopyWithImpl<$Res, $Val extends Account>
           ? _value.balances
           : balances // ignore: cast_nullable_to_non_nullable
               as Map<String, double>,
-      idDeployed: null == idDeployed
-          ? _value.idDeployed
-          : idDeployed // ignore: cast_nullable_to_non_nullable
+      isDeployed: null == isDeployed
+          ? _value.isDeployed
+          : isDeployed // ignore: cast_nullable_to_non_nullable
               as bool,
     ) as $Val);
   }
@@ -504,7 +504,7 @@ abstract class _$$_AccountCopyWith<$Res> implements $AccountCopyWith<$Res> {
       String name,
       String address,
       Map<String, double> balances,
-      bool idDeployed});
+      bool isDeployed});
 }
 
 /// @nodoc
@@ -522,7 +522,7 @@ class __$$_AccountCopyWithImpl<$Res>
     Object? name = null,
     Object? address = null,
     Object? balances = null,
-    Object? idDeployed = null,
+    Object? isDeployed = null,
   }) {
     return _then(_$_Account(
       id: null == id
@@ -545,9 +545,9 @@ class __$$_AccountCopyWithImpl<$Res>
           ? _value._balances
           : balances // ignore: cast_nullable_to_non_nullable
               as Map<String, double>,
-      idDeployed: null == idDeployed
-          ? _value.idDeployed
-          : idDeployed // ignore: cast_nullable_to_non_nullable
+      isDeployed: null == isDeployed
+          ? _value.isDeployed
+          : isDeployed // ignore: cast_nullable_to_non_nullable
               as bool,
     ));
   }
@@ -562,7 +562,7 @@ class _$_Account implements _Account {
       required this.name,
       required this.address,
       final Map<String, double> balances = const {},
-      this.idDeployed = false})
+      this.isDeployed = false})
       : _balances = balances;
 
   factory _$_Account.fromJson(Map<String, dynamic> json) =>
@@ -587,11 +587,11 @@ class _$_Account implements _Account {
 
   @override
   @JsonKey()
-  final bool idDeployed;
+  final bool isDeployed;
 
   @override
   String toString() {
-    return 'Account(id: $id, walletId: $walletId, name: $name, address: $address, balances: $balances, idDeployed: $idDeployed)';
+    return 'Account(id: $id, walletId: $walletId, name: $name, address: $address, balances: $balances, isDeployed: $isDeployed)';
   }
 
   @override
@@ -605,14 +605,14 @@ class _$_Account implements _Account {
             (identical(other.name, name) || other.name == name) &&
             (identical(other.address, address) || other.address == address) &&
             const DeepCollectionEquality().equals(other._balances, _balances) &&
-            (identical(other.idDeployed, idDeployed) ||
-                other.idDeployed == idDeployed));
+            (identical(other.isDeployed, isDeployed) ||
+                other.isDeployed == isDeployed));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, id, walletId, name, address,
-      const DeepCollectionEquality().hash(_balances), idDeployed);
+      const DeepCollectionEquality().hash(_balances), isDeployed);
 
   @JsonKey(ignore: true)
   @override
@@ -635,7 +635,7 @@ abstract class _Account implements Account {
       required final String name,
       required final String address,
       final Map<String, double> balances,
-      final bool idDeployed}) = _$_Account;
+      final bool isDeployed}) = _$_Account;
 
   factory _Account.fromJson(Map<String, dynamic> json) = _$_Account.fromJson;
 
@@ -650,7 +650,7 @@ abstract class _Account implements Account {
   @override
   Map<String, double> get balances;
   @override
-  bool get idDeployed;
+  bool get isDeployed;
   @override
   @JsonKey(ignore: true)
   _$$_AccountCopyWith<_$_Account> get copyWith =>

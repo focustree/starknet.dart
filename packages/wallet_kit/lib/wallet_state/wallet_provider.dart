@@ -4,6 +4,7 @@ import 'package:starknet/starknet.dart' as s;
 import 'package:starknet_provider/starknet_provider.dart' as sp;
 import 'package:wallet_kit/utils/persisted_notifier_state.dart';
 import 'package:wallet_kit/wallet_kit.dart';
+import 'package:secure_store/secure_store.dart' as ss;
 
 part 'wallet_provider.g.dart';
 
@@ -68,6 +69,20 @@ class Wallets extends _$Wallets with PersistedState<WalletsState> {
       seedPhrase: seedPhrase,
     );
     updateWallet(wallet: walletWithAccount, accountId: account.id);
+  }
+
+  Future<SecureStore> getSecureStoreForWallet({
+    String? walletId,
+  }) async {
+    final wallet =
+        walletId != null ? state.wallets[walletId] : state.selectedWallet;
+    if (wallet == null) {
+      throw Exception("Wallet not found");
+    }
+    return getSecureStore(
+      getPassword: WalletKit().getPassword,
+      type: wallet.secureStoreType,
+    );
   }
 
   Future<s.Account> getStarknetAccount({

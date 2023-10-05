@@ -38,7 +38,7 @@ class Account with _$Account implements PersistableState {
     required String name,
     required String address,
     @Default({}) Map<String, double> balances,
-    @Default(false) bool idDeployed,
+    @Default(false) bool isDeployed,
   }) = _Account;
 
   factory Account.fromJson(Map<String, dynamic> json) =>
