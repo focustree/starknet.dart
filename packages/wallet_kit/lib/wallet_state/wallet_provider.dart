@@ -70,6 +70,39 @@ class Wallets extends _$Wallets with PersistedState<WalletsState> {
     updateWallet(wallet: walletWithAccount, accountId: account.id);
   }
 
+  Future<s.Account> getStarknetAccount({
+    SecureStore? secureStore,
+    required Future<String?> Function() getPassword,
+  }) async {
+    final wallet = state.selectedWallet;
+    if (wallet == null) {
+      throw Exception("Wallet not found");
+    }
+    final account = state.selectedAccount;
+    if (account == null) {
+      throw Exception("Account not found");
+    }
+    secureStore = secureStore ??
+        await getSecureStore(
+          getPassword: getPassword,
+          type: wallet.secureStoreType,
+        );
+    final privateKey =
+        await secureStore.getSecret(key: privateKeyKey(account.id));
+    if (privateKey == null) {
+      throw Exception("Private key not found");
+    }
+    print("privateKey: $privateKey");
+    return s.Account(
+      accountAddress: s.Felt.fromHexString(account.address),
+      chainId: s.Felt.fromString('KATANA'),
+      provider: sp.JsonRpcProvider.devnet,
+      signer: s.Signer(
+        privateKey: s.Felt.fromHexString(privateKey),
+      ),
+    );
+  }
+
   updateWallet({required Wallet wallet, required int accountId}) {
     state = state.copyWith(
       wallets: {
