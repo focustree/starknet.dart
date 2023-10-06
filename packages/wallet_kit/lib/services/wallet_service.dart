@@ -77,8 +77,10 @@ class WalletService {
     print("privateKey: $privateKey");
     return s.Account(
       accountAddress: s.Felt.fromHexString(account.address),
-      chainId: s.Felt.fromString('KATANA'),
-      provider: JsonRpcProvider(nodeUri: Uri.parse("http://0.0.0.0:5050/rpc")),
+      chainId: s.Felt.fromString('SN_GOERLI'),
+      provider: JsonRpcProvider(nodeUri: Uri.parse(
+  'https://starknet-goerli.infura.io/v3/f54befa531584e2d8516addbf285a560',
+) ),
       signer: s.Signer(
         privateKey: s.Felt.fromHexString(privateKey),
       ),
