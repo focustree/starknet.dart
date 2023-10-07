@@ -229,7 +229,7 @@ class Account {
     required Signer signer,
     required Provider provider,
     required List<Felt> constructorCalldata,
-    Felt? classHash,
+    required Felt classHash,
     Felt? contractAddressSalt,
     Felt? maxFee,
     Felt? nonce,
@@ -239,10 +239,9 @@ class Account {
       error: (error) => StarknetChainId.testNet,
     );
 
-    classHash = classHash ?? devnetOpenZeppelinAccountClassHash;
     maxFee = maxFee ?? defaultMaxFee;
     nonce = nonce ?? defaultNonce;
-    contractAddressSalt = contractAddressSalt ?? Felt.fromInt(42);
+    contractAddressSalt = contractAddressSalt ?? signer.publicKey;
 
     final signature = signer.signDeployAccountTransactionV1(
       contractAddressSalt: contractAddressSalt,

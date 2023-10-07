@@ -189,11 +189,16 @@ class Signer {
   }) {
     maxFee = maxFee ?? defaultMaxFee;
     nonce = nonce ?? defaultNonce;
+    print("classHash: ${classHash.toHexString()}");
+    print("calldata: ${constructorCalldata.map((e) => e.toHexString())}");
+    print("salt: ${contractAddressSalt.toHexString()}");
     final contractAddress = Contract.computeAddress(
       classHash: classHash,
       calldata: constructorCalldata,
       salt: contractAddressSalt,
     );
+    print(
+        "[signDeployAccountTransactionV1] Contract address: ${contractAddress.toHexString()}");
 
     final transactionHash = calculateTransactionHashCommon(
       txHashPrefix: TransactionHashPrefix.deployAccount.toBigInt(),
