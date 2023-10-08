@@ -48,7 +48,6 @@ class WalletService {
 
     final accountAddress = await WalletService.computeAddress(
       privateKey: privateKey,
-      walletType: wallet.type,
     );
 
     return wallet.addAccount(
@@ -109,22 +108,15 @@ class WalletService {
 
   static Future<s.Felt> computeAddress({
     required s.Felt privateKey,
-    WalletType walletType = WalletType.openZeppelin,
   }) async {
-    final chainId = s.StarknetChainId.testNet;
-    final provider = JsonRpcProvider.infuraGoerliTestnet;
-    final accountDerivation = switch (walletType) {
-      WalletType.openZeppelin => s.OpenzeppelinAccountDerivation(
-          proxyClassHash: s.ozProxyClassHash,
-          implementationClassHash: s.ozAccountUpgradableClassHash,
-        ),
-      WalletType.argent => s.ArgentXAccountDerivation(),
-      WalletType.braavos =>
-        s.BraavosAccountDerivation(chainId: chainId, provider: provider),
-    };
-    return accountDerivation.computeAddress(
-      publicKey: s.Signer(privateKey: privateKey).publicKey,
+    
+    final address = s.Contract.computeAddress(
+      classHash: s.Felt.fromHexString(
+          "0x016e51dbfd788a497bd54333d0c7c4096a1120770f9fff9a733f51a075446975"),
+      calldata: [s.Signer(privateKey: privateKey).publicKey],
+      salt: s.Signer(privateKey: privateKey).publicKey,
     );
+    return address;
   }
 }
 
