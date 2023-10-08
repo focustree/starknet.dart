@@ -128,7 +128,7 @@ class Wallets extends _$Wallets with PersistedState<WalletsState> {
     );
   }
 
-  updateAccountIsDeployed({
+  updateSelectedAccountIsDeployed({
     required String walletId,
     required int accountId,
     required bool isDeployed,
@@ -147,10 +147,13 @@ class Wallets extends _$Wallets with PersistedState<WalletsState> {
         walletId: wallet.copyWith(
           accounts: {
             ...wallet.accounts,
-            accountId: account.copyWith(isDeployed: isDeployed),
+            accountId: account.copyWith(
+              isDeployed: isDeployed,
+            ),
           },
         ),
       },
+      selected: (accountId: accountId, walletId: wallet.id),
     );
   }
 
