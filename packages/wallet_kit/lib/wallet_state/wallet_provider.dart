@@ -128,6 +128,32 @@ class Wallets extends _$Wallets with PersistedState<WalletsState> {
     );
   }
 
+  updateAccountIsDeployed({
+    required String walletId,
+    required int accountId,
+    required bool isDeployed,
+  }) {
+    final wallet = state.wallets[walletId];
+    if (wallet == null) {
+      throw Exception("Wallet not found");
+    }
+    final account = wallet.accounts[accountId];
+    if (account == null) {
+      throw Exception("Account not found");
+    }
+    state = state.copyWith(
+      wallets: {
+        ...state.wallets,
+        walletId: wallet.copyWith(
+          accounts: {
+            ...wallet.accounts,
+            accountId: account.copyWith(isDeployed: isDeployed),
+          },
+        ),
+      },
+    );
+  }
+
   selectAccount({required String walletId, required int accountId}) {
     state = state.copyWith(
       selected: (
