@@ -12,4 +12,5 @@ focustree = { git = "https://github.com/focustree/contracts.git", branch = "mast
 
 [[target.starknet-contract]]
 sierra = true
+casm = true
 caml = true
