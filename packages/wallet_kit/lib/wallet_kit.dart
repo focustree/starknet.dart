@@ -1,5 +1,8 @@
 library wallet_kit;
 
+import 'package:starknet/starknet.dart';
+import 'package:starknet_provider/starknet_provider.dart';
+
 export 'wallet_state/index.dart';
 export 'wallet_screens/index.dart';
 export 'ui/index.dart';
@@ -21,11 +24,22 @@ class WalletKit {
   }
 
   late Future<String?> Function() getPassword;
+  late JsonRpcProvider provider;
+  late Felt chainId;
+  late Felt accountClassHash;
 
   // Method to initialize or update the rpc value
   void init({
     required Future<String?> Function() getPassword,
-  }) {
+    required String rpc,
+    required String accountClassHash,
+  }) async {
     this.getPassword = getPassword;
+    provider = JsonRpcProvider(nodeUri: Uri.parse(rpc));
+    chainId = (await provider.chainId()).when(
+      result: (result) => Felt.fromHexString(result),
+      error: (error) => throw Exception(error),
+    );
+    this.accountClassHash = Felt.fromHexString(accountClassHash);
   }
 }

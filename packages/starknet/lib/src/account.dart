@@ -60,6 +60,7 @@ class Account {
   /// Call account contract `__execute__` with given [functionCalls]
   Future<InvokeTransactionResponse> execute({
     required List<FunctionCall> functionCalls,
+    bool useLegacyCalldata = false,
     Felt? maxFee,
     Felt? nonce,
   }) async {
@@ -74,13 +75,15 @@ class Account {
       entryPointSelectorName: "__execute__",
       maxFee: maxFee,
       nonce: nonce,
+      useLegacyCalldata: useLegacyCalldata,
     );
 
     switch (supportedTxVersion) {
       // ignore: deprecated_member_use_from_same_package
       case AccountSupportedTxVersion.v0:
         final calldata =
-            functionCallsToCalldata(functionCalls: functionCalls) + [nonce];
+            functionCallsToCalldataLegacy(functionCalls: functionCalls) +
+                [nonce];
 
         return provider.addInvokeTransaction(
           InvokeTransactionRequest(
@@ -94,7 +97,10 @@ class Account {
           ),
         );
       case AccountSupportedTxVersion.v1:
-        final calldata = functionCallsToCalldata(functionCalls: functionCalls);
+        final calldata = functionCallsToCalldata(
+          functionCalls: functionCalls,
+          useLegacyCalldata: useLegacyCalldata,
+        );
 
         return provider.addInvokeTransaction(
           InvokeTransactionRequest(

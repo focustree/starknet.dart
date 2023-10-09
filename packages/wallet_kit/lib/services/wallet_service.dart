@@ -73,14 +73,14 @@ class WalletService {
     if (privateKey == null) {
       throw Exception("Private key not found");
     }
-    print("privateKey: $privateKey");
     return s.Account(
       accountAddress: s.Felt.fromHexString(account.address),
-      chainId: s.StarknetChainId.testNet,
-      provider: JsonRpcProvider.infuraGoerliTestnet,
+      chainId: WalletKit().chainId,
+      provider: WalletKit().provider,
       signer: s.Signer(
         privateKey: s.Felt.fromHexString(privateKey),
       ),
+      supportedTxVersion: s.AccountSupportedTxVersion.v1,
     );
   }
 
@@ -109,10 +109,8 @@ class WalletService {
   static Future<s.Felt> computeAddress({
     required s.Felt privateKey,
   }) async {
-    
     final address = s.Contract.computeAddress(
-      classHash: s.Felt.fromHexString(
-          "0x016e51dbfd788a497bd54333d0c7c4096a1120770f9fff9a733f51a075446975"),
+      classHash: WalletKit().accountClassHash,
       calldata: [s.Signer(privateKey: privateKey).publicKey],
       salt: s.Signer(privateKey: privateKey).publicKey,
     );

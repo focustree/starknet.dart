@@ -34,7 +34,6 @@ class BiometricsStore implements SecureStore {
       Future.delayed(Duration(seconds: 5),
           () => null) // Prevents hanging when secret not found
     ]);
-    print('toto');
     return secret == null ? null : bytesToString(secret);
   }
 

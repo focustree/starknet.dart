@@ -63,7 +63,29 @@ BigInt computeHashOnElements(List<BigInt> elements) {
   );
 }
 
-List<Felt> functionCallsToCalldata(
+List<Felt> functionCallsToCalldata({
+  required List<FunctionCall> functionCalls,
+  bool useLegacyCalldata = false,
+}) {
+  if (useLegacyCalldata) {
+    return functionCallsToCalldataLegacy(functionCalls: functionCalls);
+  }
+
+  List<Felt> calldata = [Felt.fromInt(functionCalls.length)];
+  for (final call in functionCalls) {
+    calldata.addAll([
+      call.contractAddress, // to
+      call.entryPointSelector, // selector
+      Felt.fromInt(call.calldata.length), // calldata length
+      ...call.calldata,
+    ]);
+  }
+
+  return calldata;
+}
+
+// Legacy version for cairo 0
+List<Felt> functionCallsToCalldataLegacy(
     {required List<FunctionCall> functionCalls}) {
   List<Felt> calldata = [];
   List<Felt> calls = [];

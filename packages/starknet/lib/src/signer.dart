@@ -17,10 +17,14 @@ class Signer {
     required Felt chainId,
     required Felt nonce,
     Felt? maxFee,
+    bool useLegacyCalldata = false,
   }) {
     maxFee = maxFee ?? defaultMaxFee;
 
-    final calldata = functionCallsToCalldata(functionCalls: transactions);
+    final calldata = functionCallsToCalldata(
+      functionCalls: transactions,
+      useLegacyCalldata: useLegacyCalldata,
+    );
 
     final transactionHash = calculateTransactionHashCommon(
       txHashPrefix: TransactionHashPrefix.invoke.toBigInt(),
@@ -32,12 +36,15 @@ class Signer {
       chainId: chainId.toBigInt(),
       additionalData: [nonce.toBigInt()],
     );
+    print("transactionHash: ${Felt(transactionHash).toHexString()}");
 
     final signature = starknet_sign(
       privateKey: privateKey.toBigInt(),
       messageHash: transactionHash,
       seed: BigInt.from(32),
     );
+    print(
+        "signature: ${Felt(signature.r).toHexString()} ${Felt(signature.s).toHexString()}");
 
     return [Felt(signature.r), Felt(signature.s)];
   }
@@ -52,7 +59,7 @@ class Signer {
   }) {
     maxFee = maxFee ?? defaultMaxFee;
     final calldata =
-        functionCallsToCalldata(functionCalls: transactions) + [nonce];
+        functionCallsToCalldataLegacy(functionCalls: transactions) + [nonce];
 
     final transactionHash = calculateTransactionHashCommon(
       txHashPrefix: TransactionHashPrefix.invoke.toBigInt(),
@@ -81,9 +88,11 @@ class Signer {
     required Felt nonce,
     Felt? maxFee,
     String entryPointSelectorName = "__execute__",
+    bool useLegacyCalldata = false,
   }) {
     switch (version) {
       case 0:
+        print("Signing invoke transaction v0");
         return signInvokeTransactionsV0(
           transactions: transactions,
           contractAddress: contractAddress,
@@ -93,13 +102,14 @@ class Signer {
           maxFee: maxFee,
         );
       case 1:
+        print("Signing invoke transaction v1");
         return signInvokeTransactionsV1(
-          transactions: transactions,
-          senderAddress: contractAddress,
-          chainId: chainId,
-          nonce: nonce,
-          maxFee: maxFee,
-        );
+            transactions: transactions,
+            senderAddress: contractAddress,
+            chainId: chainId,
+            nonce: nonce,
+            maxFee: maxFee,
+            useLegacyCalldata: useLegacyCalldata);
       default:
         throw Exception("Unsupported invoke transaction version: $version");
     }

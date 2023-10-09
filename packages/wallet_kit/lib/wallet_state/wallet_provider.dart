@@ -4,7 +4,6 @@ import 'package:starknet/starknet.dart' as s;
 import 'package:starknet_provider/starknet_provider.dart' as sp;
 import 'package:wallet_kit/utils/persisted_notifier_state.dart';
 import 'package:wallet_kit/wallet_kit.dart';
-import 'package:secure_store/secure_store.dart' as ss;
 
 part 'wallet_provider.g.dart';
 
@@ -107,7 +106,6 @@ class Wallets extends _$Wallets with PersistedState<WalletsState> {
     if (privateKey == null) {
       throw Exception("Private key not found");
     }
-    print("privateKey: $privateKey");
     return s.Account(
       accountAddress: s.Felt.fromHexString(account.address),
       chainId: s.Felt.fromString('KATANA'),
