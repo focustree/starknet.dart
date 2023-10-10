@@ -85,7 +85,6 @@ class WalletService {
   }
 
   static Future<bool> isAccountValid({
-    required SecureStore secureStore,
     required Account account,
   }) async {
     final provider = WalletKit().provider;
