@@ -84,6 +84,22 @@ class WalletService {
     );
   }
 
+  static Future<bool> isAccountValid({
+    required SecureStore secureStore,
+    required Account account,
+  }) async {
+    final provider = WalletKit().provider;
+    final accountClassHash = (await provider.getClassHashAt(
+      contractAddress: s.Felt.fromHexString(account.address),
+      blockId: BlockId.latest,
+    ))
+        .when(
+      result: (result) => result,
+      error: ((error) => s.Felt.fromInt(0)),
+    );
+    return accountClassHash != s.Felt.fromInt(0);
+  }
+
   static Future<s.Felt> derivePrivateKey({
     required String seedPhrase,
     required int derivationIndex,
