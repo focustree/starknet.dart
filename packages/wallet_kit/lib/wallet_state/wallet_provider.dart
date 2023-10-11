@@ -175,7 +175,7 @@ class Wallets extends _$Wallets with PersistedState<WalletsState> {
     if (accountAddress == null) {
       throw Exception('Account address is null');
     }
-    final provider = sp.JsonRpcProvider.infuraGoerliTestnet;
+    final provider = WalletKit().provider;
     final ethBalance = await getEthBalance(
       provider: provider,
       accountAddress: s.Felt.fromHexString(accountAddress),

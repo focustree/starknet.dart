@@ -157,7 +157,7 @@ Future<String> sendEth({
 
   s.Signer? signer = s.Signer(privateKey: privateKey);
 
-  final provider = JsonRpcProvider.infuraGoerliTestnet;
+  final provider = WalletKit().provider;
 
   final fundingAccount = s.Account(
     provider: provider,
