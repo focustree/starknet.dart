@@ -42,7 +42,7 @@ class WalletService {
     );
 
     await secureStore.storeSecret(
-      key: privateKeyKey(accountId),
+      key: privateKeyKey(wallet.id, accountId),
       secret: privateKey.toHexString(),
     );
 
@@ -64,12 +64,25 @@ class WalletService {
     return const Uuid().v4();
   }
 
+  static storePrivateKey({
+    required SecureStore secureStore,
+    required String privateKey,
+    required String accountId,
+    required String walletId,
+  }) async {
+    await secureStore.storeSecret(
+      key: "private_key:$accountId",
+      secret: privateKey,
+    );
+  }
+
   static Future<s.Account> getStarknetAccount({
     required SecureStore secureStore,
     required Account account,
+    required String walletId,
   }) async {
     final privateKey =
-        await secureStore.getSecret(key: privateKeyKey(account.id));
+        await secureStore.getSecret(key: privateKeyKey(walletId, account.id));
     if (privateKey == null) {
       throw Exception("Private key not found");
     }
@@ -137,8 +150,8 @@ seedPhraseKey(String walletId) {
   return 'seed_phrase:$walletId';
 }
 
-privateKeyKey(int accountId) {
-  return 'private_key:$accountId';
+privateKeyKey(String walletId, int accountId) {
+  return 'private_key:$walletId-$accountId';
 }
 
 Future<String> sendEth({

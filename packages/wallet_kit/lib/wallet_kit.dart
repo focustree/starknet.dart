@@ -28,7 +28,6 @@ class WalletKit {
   late Felt chainId;
   late Felt accountClassHash;
 
-  // Method to initialize or update the rpc value
   void init({
     required Future<String?> Function() getPassword,
     required String rpc,

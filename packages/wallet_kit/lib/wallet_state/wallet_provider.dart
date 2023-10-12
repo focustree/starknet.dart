@@ -102,7 +102,7 @@ class Wallets extends _$Wallets with PersistedState<WalletsState> {
           type: wallet.secureStoreType,
         );
     final privateKey =
-        await secureStore.getSecret(key: privateKeyKey(account.id));
+        await secureStore.getSecret(key: privateKeyKey(wallet.id, account.id));
     if (privateKey == null) {
       throw Exception("Private key not found");
     }
