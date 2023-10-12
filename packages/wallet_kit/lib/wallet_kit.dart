@@ -27,11 +27,13 @@ class WalletKit {
   late JsonRpcProvider provider;
   late Felt chainId;
   late Felt accountClassHash;
+  late Felt defaultMaxFee;
 
   void init({
     required Future<String?> Function() getPassword,
     required String rpc,
     required String accountClassHash,
+    double defaultMaxFee = 0.0003,
   }) async {
     this.getPassword = getPassword;
     provider = JsonRpcProvider(nodeUri: Uri.parse(rpc));
@@ -40,5 +42,6 @@ class WalletKit {
       error: (error) => throw Exception(error),
     );
     this.accountClassHash = Felt.fromHexString(accountClassHash);
+    this.defaultMaxFee = Felt.fromDouble(defaultMaxFee * 1e18);
   }
 }
