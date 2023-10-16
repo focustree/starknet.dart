@@ -1,5 +1,6 @@
 library wallet_kit;
 
+import 'package:flutter/material.dart';
 import 'package:starknet/starknet.dart';
 import 'package:starknet_provider/starknet_provider.dart';
 
@@ -23,14 +24,14 @@ class WalletKit {
     return _singleton;
   }
 
-  late Future<String?> Function() getPassword;
+  late Future<String?> Function(BuildContext) getPassword;
   late JsonRpcProvider provider;
   late Felt chainId;
   late Felt accountClassHash;
   late Felt defaultMaxFee;
 
   void init({
-    required Future<String?> Function() getPassword,
+    required Future<String?> Function(BuildContext) getPassword,
     required String rpc,
     required String accountClassHash,
     double defaultMaxFee = 0.0003,

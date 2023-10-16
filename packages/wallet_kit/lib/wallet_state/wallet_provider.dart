@@ -1,3 +1,4 @@
+import 'package:flutter/widgets.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:secure_store/secure_store.dart';
 import 'package:starknet/starknet.dart' as s;
@@ -71,6 +72,7 @@ class Wallets extends _$Wallets with PersistedState<WalletsState> {
   }
 
   Future<SecureStore> getSecureStoreForWallet({
+    required BuildContext context,
     String? walletId,
   }) async {
     final wallet =
@@ -79,7 +81,7 @@ class Wallets extends _$Wallets with PersistedState<WalletsState> {
       throw Exception("Wallet not found");
     }
     return getSecureStore(
-      getPassword: WalletKit().getPassword,
+      getPassword: () => WalletKit().getPassword(context),
       type: wallet.secureStoreType,
     );
   }
