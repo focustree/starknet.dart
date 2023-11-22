@@ -14,7 +14,7 @@ interact = "scripts.python.commands.interact:main"
 [tool.poetry.dependencies]
 python = ">=3.9,<3.10"
 starknet-devnet = "0.6.3"
-cairo-lang = "0.12.2"
+cairo-lang = "0.12.3"
 starknet-py = "0.17.1"
 autopep8 = "^2.0.0"
 cairo-nile = "^0.14.0"
