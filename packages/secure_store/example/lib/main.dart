@@ -53,10 +53,9 @@ class _MyHomePageState extends State<MyHomePage> {
             FilledButton(
               child: const Text('Store secret'),
               onPressed: () async {
-                await PasswordStore().storeSecret(
+                await PasswordStore(password: '1234').storeSecret(
                   secret: "Simplicity is the ultimate sophistication",
                   key: "password-store:secret",
-                  options: const PasswordStoreOptions(password: "1234"),
                 );
                 show(context, 'Stored secret');
               },
@@ -64,9 +63,8 @@ class _MyHomePageState extends State<MyHomePage> {
             FilledButton(
               child: const Text('Get secret'),
               onPressed: () async {
-                final secret = await PasswordStore().getSecret(
+                final secret = await PasswordStore(password: '1234').getSecret(
                   key: "password-store:secret",
-                  options: const PasswordStoreOptions(password: "1234"),
                 );
                 show(context, 'Got secret: $secret');
               },
@@ -74,7 +72,7 @@ class _MyHomePageState extends State<MyHomePage> {
             FilledButton(
               child: const Text('Delete secret'),
               onPressed: () async {
-                await PasswordStore().deleteSecret(
+                await PasswordStore(password: '1234').deleteSecret(
                   key: "password-store:secret",
                 );
                 show(context, 'Deleted secret');

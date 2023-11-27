@@ -165,6 +165,7 @@ void main() {
             transactionHash: txSend, provider: account0.provider);
         expect(success, equals(true));
         final tx = await Account.deployAccount(
+            classHash: accountClassHash,
             signer: accountSigner,
             provider: provider,
             constructorCalldata: accountConstructorCalldata,
@@ -285,7 +286,7 @@ void main() {
         final mnemonic =
             "rotate nice pattern oven twice upper defense exile squirrel gym script sight"
                 .split(" ");
-        final Felt privateKey = derivePrivateKey(mnemonic: mnemonic);
+        final Felt privateKey = derivePrivateKey(mnemonic: mnemonic.join(' '));
         expect(
             privateKey,
             equals(

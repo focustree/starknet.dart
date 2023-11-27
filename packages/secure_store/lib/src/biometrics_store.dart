@@ -7,7 +7,9 @@ import 'package:secure_store/src/utils.dart';
 
 /// Stores secrets encrypted with biometric authentication when available.
 class BiometricsStore implements SecureStore {
-  BiometricsStore() {
+  final BiometricOptions? options;
+
+  BiometricsStore([this.options]) {
     if (kIsWeb || !(Platform.isIOS || Platform.isMacOS || Platform.isAndroid)) {
       throw Exception('Biometric store not available');
     }
@@ -16,29 +18,22 @@ class BiometricsStore implements SecureStore {
   /// Stores a [secret] encrypted with biometry under [key].
   @override
   Future<void> storeSecret({
-    required String secret,
     required String key,
-    SecureStoreOptions options = const BiometricsOptions(),
+    required String secret,
   }) async {
-    if (options is! BiometricsOptions) {
-      throw Exception('Invalid secure store options');
-    }
-    return SecureStoreBridge()
-        .storeSecret(key, stringToBytes(secret), options.biometricOptions);
+    return SecureStoreBridge().storeSecret(key, stringToBytes(secret), options);
   }
 
   /// Retrieves the secret encrypted with biometric under [key].
   @override
   Future<String?> getSecret({
     required String key,
-    SecureStoreOptions options = const BiometricsOptions(),
   }) async {
-    if (options is! BiometricsOptions) {
-      throw Exception('Invalid secure store options');
-    }
-    final secret =
-        await SecureStoreBridge().getSecret(key, options.biometricOptions);
-
+    final secret = await Future.any([
+      SecureStoreBridge().getSecret(key, options),
+      Future.delayed(Duration(seconds: 5),
+          () => null) // Prevents hanging when secret not found
+    ]);
     return secret == null ? null : bytesToString(secret);
   }
 
@@ -48,5 +43,9 @@ class BiometricsStore implements SecureStore {
     required String key,
   }) async {
     return SecureStoreBridge().removeSecret(key);
+  }
+
+  Future<bool> isAvailable() async {
+    return SecureStoreBridge().isBiometryAvailable();
   }
 }

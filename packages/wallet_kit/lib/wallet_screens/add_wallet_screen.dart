@@ -29,11 +29,12 @@ class CreateNewWalletButton extends HookConsumerWidget {
     return PrimaryButton(
       label: 'Create new wallet',
       onPressed: () {
-        ref.read(walletsProvider.notifier).createTempWallet();
         Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (context) => const CreateWalletScreen(),
+            builder: (context) => CreateWalletScreen(
+              seedPhrase: WalletService.newSeedPhrase(),
+            ),
           ),
         );
       },

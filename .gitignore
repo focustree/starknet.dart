@@ -28,3 +28,4 @@ coverage/
 # Cairo
 !contracts/build
 
+.env.testnet

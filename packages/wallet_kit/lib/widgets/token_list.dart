@@ -8,7 +8,7 @@ class TokenList extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final tokens = ['ETH', 'WBTC', 'USDC'];
+    const tokens = TokenSymbol.values;
     final selectedAccount =
         ref.watch(walletsProvider.select((value) => value.selectedAccount));
 
@@ -38,7 +38,7 @@ class TokenList extends HookConsumerWidget {
 }
 
 class TokenListItem extends HookConsumerWidget {
-  final String symbol;
+  final TokenSymbol symbol;
 
   const TokenListItem({super.key, required this.symbol});
   @override
@@ -53,7 +53,7 @@ class TokenListItem extends HookConsumerWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           TokenIcon(symbol: symbol),
-          Text('${balance.toString()} ${symbol.toUpperCase()}'),
+          Text('${balance.toString()} ${symbol.name.toUpperCase()}'),
         ],
       ),
     );

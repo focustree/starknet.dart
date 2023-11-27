@@ -60,6 +60,7 @@ class Account {
   /// Call account contract `__execute__` with given [functionCalls]
   Future<InvokeTransactionResponse> execute({
     required List<FunctionCall> functionCalls,
+    bool useLegacyCalldata = false,
     Felt? maxFee,
     Felt? nonce,
   }) async {
@@ -74,13 +75,15 @@ class Account {
       entryPointSelectorName: "__execute__",
       maxFee: maxFee,
       nonce: nonce,
+      useLegacyCalldata: useLegacyCalldata,
     );
 
     switch (supportedTxVersion) {
       // ignore: deprecated_member_use_from_same_package
       case AccountSupportedTxVersion.v0:
         final calldata =
-            functionCallsToCalldata(functionCalls: functionCalls) + [nonce];
+            functionCallsToCalldataLegacy(functionCalls: functionCalls) +
+                [nonce];
 
         return provider.addInvokeTransaction(
           InvokeTransactionRequest(
@@ -94,7 +97,10 @@ class Account {
           ),
         );
       case AccountSupportedTxVersion.v1:
-        final calldata = functionCallsToCalldata(functionCalls: functionCalls);
+        final calldata = functionCallsToCalldata(
+          functionCalls: functionCalls,
+          useLegacyCalldata: useLegacyCalldata,
+        );
 
         return provider.addInvokeTransaction(
           InvokeTransactionRequest(
@@ -229,7 +235,7 @@ class Account {
     required Signer signer,
     required Provider provider,
     required List<Felt> constructorCalldata,
-    Felt? classHash,
+    required Felt classHash,
     Felt? contractAddressSalt,
     Felt? maxFee,
     Felt? nonce,
@@ -239,10 +245,9 @@ class Account {
       error: (error) => StarknetChainId.testNet,
     );
 
-    classHash = classHash ?? devnetOpenZeppelinAccountClassHash;
     maxFee = maxFee ?? defaultMaxFee;
     nonce = nonce ?? defaultNonce;
-    contractAddressSalt = contractAddressSalt ?? Felt.fromInt(42);
+    contractAddressSalt = contractAddressSalt ?? signer.publicKey;
 
     final signature = signer.signDeployAccountTransactionV1(
       contractAddressSalt: contractAddressSalt,
@@ -344,7 +349,7 @@ abstract class AccountDerivation {
   Felt computeAddress({required Felt publicKey});
 }
 
-class OpenzeppelinAccountDerivation extends AccountDerivation {
+class OpenzeppelinAccountDerivation implements AccountDerivation {
   late final Felt proxyClassHash;
   late final Felt implementationClassHash;
 
@@ -359,7 +364,8 @@ class OpenzeppelinAccountDerivation extends AccountDerivation {
 
   @override
   Signer deriveSigner({required List<String> mnemonic, int index = 0}) {
-    final privateKey = derivePrivateKey(mnemonic: mnemonic, index: index);
+    final privateKey =
+        derivePrivateKey(mnemonic: mnemonic.join(' '), index: index);
     return Signer(privateKey: privateKey);
   }
 
@@ -435,7 +441,8 @@ class BraavosAccountDerivation extends AccountDerivation {
 
   @override
   Signer deriveSigner({required List<String> mnemonic, int index = 0}) {
-    final privateKey = derivePrivateKey(mnemonic: mnemonic, index: index);
+    final privateKey =
+        derivePrivateKey(mnemonic: mnemonic.join(' '), index: index);
     return Signer(privateKey: privateKey);
   }
 

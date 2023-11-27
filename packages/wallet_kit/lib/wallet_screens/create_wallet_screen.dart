@@ -7,14 +7,13 @@ import 'package:wallet_kit/wallet_kit.dart';
 const space = SizedBox(height: 16);
 
 class CreateWalletScreen extends HookConsumerWidget {
-  const CreateWalletScreen({super.key});
+  final String seedPhrase;
+
+  const CreateWalletScreen({super.key, required this.seedPhrase});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final isChecked = useState(false);
-    final seedPhrase = ref.watch(
-            walletsProvider.select((value) => value.tempWallet?.seedPhrase)) ??
-        [];
 
     return Layout2(
       verticalSpacing: 16,
@@ -26,7 +25,7 @@ class CreateWalletScreen extends HookConsumerWidget {
           'Keep this phrase safe and secret. It can be used to recover your wallet.',
           textAlign: TextAlign.center,
         ),
-        Flexible(child: SeedGrid(seedPhrase: seedPhrase)),
+        Flexible(child: SeedGrid(seedPhrase: seedPhrase.split(' '))),
         CopyToClipboardButton(seedPhrase: seedPhrase),
         CheckboxListTile(
           enableFeedback: true,
@@ -48,7 +47,9 @@ class CreateWalletScreen extends HookConsumerWidget {
                 ? () {
                     Navigator.of(context).push(
                       MaterialPageRoute(
-                        builder: (context) => const ProtectWalletScreen(),
+                        builder: (context) => ProtectWalletScreen(
+                          seedPhrase: seedPhrase,
+                        ),
                       ),
                     );
                   }
@@ -111,14 +112,14 @@ class SeedGrid extends StatelessWidget {
 }
 
 class CopyToClipboardButton extends StatelessWidget {
-  final List<String> seedPhrase;
+  final String seedPhrase;
   const CopyToClipboardButton({super.key, required this.seedPhrase});
 
   @override
   Widget build(BuildContext context) {
     return TextButton.icon(
       onPressed: () {
-        Clipboard.setData(ClipboardData(text: seedPhrase.join(' '))).then((_) {
+        Clipboard.setData(ClipboardData(text: seedPhrase)).then((_) {
           ScaffoldMessenger.of(context).showSnackBar(
             const SnackBar(
               content: Text("Secret recovery phrase copied to clipboard"),

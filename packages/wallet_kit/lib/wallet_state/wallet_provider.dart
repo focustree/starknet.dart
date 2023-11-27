@@ -1,13 +1,10 @@
-import 'package:flutter/foundation.dart' as f;
+import 'package:flutter/widgets.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
+import 'package:secure_store/secure_store.dart';
 import 'package:starknet/starknet.dart' as s;
-import 'package:secure_store/secure_store.dart' as sf;
 import 'package:starknet_provider/starknet_provider.dart' as sp;
-import 'package:wallet_kit/services/wallet_service.dart';
 import 'package:wallet_kit/utils/persisted_notifier_state.dart';
-import 'package:wallet_kit/wallet_state/wallet_state.dart';
-import 'package:bip39/bip39.dart' as bip39;
-import 'package:uuid/uuid.dart';
+import 'package:wallet_kit/wallet_kit.dart';
 
 part 'wallet_provider.g.dart';
 
@@ -26,27 +23,152 @@ class Wallets extends _$Wallets with PersistedState<WalletsState> {
     return const WalletsState();
   }
 
-  createTempWallet({
+  addWallet({
+    required SecureStore secureStore,
+    String? seedPhrase,
     String? walletId,
-    List<String>? seedPhrase,
-    WalletType walletType = WalletType.openZeppelin,
-  }) {
-    if (state.tempWallet != null) {
-      return; // Already created
-    }
-    seedPhrase = seedPhrase ?? bip39.generateMnemonic().split(' ');
-    walletId = walletId ?? const Uuid().v4();
-
-    final wallet = Wallet(
-      id: walletId,
-      name: 'Wallet ${state.wallets.length + 1}',
+  }) async {
+    seedPhrase = seedPhrase ?? WalletService.newSeedPhrase();
+    final walletWithoutAccount = await WalletService.addWallet(
+      secureStore: secureStore,
       seedPhrase: seedPhrase,
-      type: walletType,
+      walletId: walletId,
+      walletName: "Wallet ${state.wallets.length + 1}",
     );
+    final (walletWithAccount, account) = await WalletService.addAccount(
+      secureStore: secureStore,
+      wallet: walletWithoutAccount,
+      seedPhrase: seedPhrase,
+    );
+    updateWallet(wallet: walletWithAccount, accountId: account.id);
+  }
 
-    state = state.copyWith(
-      tempWallet: wallet,
+  addAccount({
+    required String walletId,
+    required Future<String?> Function() getPassword,
+    SecureStore? secureStore,
+  }) async {
+    final wallet = state.wallets[walletId];
+    if (wallet == null) {
+      throw Exception("Wallet not found");
+    }
+    secureStore = secureStore ??
+        await getSecureStore(
+          getPassword: getPassword,
+          type: wallet.secureStoreType,
+        );
+    final seedPhrase = await secureStore.getSecret(
+      key: seedPhraseKey(walletId),
     );
+    if (seedPhrase == null) {
+      throw Exception("Seed phrase not found");
+    }
+    final (walletWithAccount, account) = await WalletService.addAccount(
+      secureStore: secureStore,
+      wallet: wallet,
+      seedPhrase: seedPhrase,
+    );
+    updateWallet(wallet: walletWithAccount, accountId: account.id);
+  }
+
+  Future<SecureStore> getSecureStoreForWallet({
+    required BuildContext context,
+    String? walletId,
+  }) async {
+    final wallet =
+        walletId != null ? state.wallets[walletId] : state.selectedWallet;
+    if (wallet == null) {
+      throw Exception("Wallet not found");
+    }
+    return getSecureStore(
+      getPassword: () => WalletKit().getPassword(context),
+      type: wallet.secureStoreType,
+    );
+  }
+
+  Future<s.Account> getStarknetAccount({
+    SecureStore? secureStore,
+    required Future<String?> Function() getPassword,
+  }) async {
+    final wallet = state.selectedWallet;
+    if (wallet == null) {
+      throw Exception("Wallet not found");
+    }
+    final account = state.selectedAccount;
+    if (account == null) {
+      throw Exception("Account not found");
+    }
+    secureStore = secureStore ??
+        await getSecureStore(
+          getPassword: getPassword,
+          type: wallet.secureStoreType,
+        );
+    final privateKey =
+        await secureStore.getSecret(key: privateKeyKey(wallet.id, account.id));
+    if (privateKey == null) {
+      throw Exception("Private key not found");
+    }
+    return s.Account(
+      accountAddress: s.Felt.fromHexString(account.address),
+      chainId: s.Felt.fromString('KATANA'),
+      provider: sp.JsonRpcProvider.devnet,
+      signer: s.Signer(
+        privateKey: s.Felt.fromHexString(privateKey),
+      ),
+    );
+  }
+
+  updateWallet({required Wallet wallet, required int accountId}) {
+    state = state.copyWith(
+      wallets: {
+        ...state.wallets,
+        wallet.id: wallet,
+      },
+      selected: (accountId: accountId, walletId: wallet.id),
+    );
+  }
+
+  updateSelectedAccountIsDeployed({
+    required String walletId,
+    required int accountId,
+    required bool isDeployed,
+  }) {
+    final wallet = state.wallets[walletId];
+    if (wallet == null) {
+      throw Exception("Wallet not found");
+    }
+    final account = wallet.accounts[accountId];
+    if (account == null) {
+      throw Exception("Account not found");
+    }
+    state = state.copyWith(
+      wallets: {
+        ...state.wallets,
+        walletId: wallet.copyWith(
+          accounts: {
+            ...wallet.accounts,
+            accountId: account.copyWith(
+              isDeployed: isDeployed,
+            ),
+          },
+        ),
+      },
+      selected: (accountId: accountId, walletId: wallet.id),
+    );
+  }
+
+  selectAccount({required String walletId, required int accountId}) {
+    state = state.copyWith(
+      selected: (
+        walletId: walletId,
+        accountId: accountId,
+      ),
+    );
+  }
+
+  deleteWallets() {
+    // TODO: remove all private key & seed phrases from secure store
+    state = state.copyWith(wallets: {}, selected: null);
   }
 
   refreshEthBalance(String walletId, int accountId) async {
@@ -55,7 +177,7 @@ class Wallets extends _$Wallets with PersistedState<WalletsState> {
     if (accountAddress == null) {
       throw Exception('Account address is null');
     }
-    final provider = sp.JsonRpcProvider.infuraGoerliTestnet;
+    final provider = WalletKit().provider;
     final ethBalance = await getEthBalance(
       provider: provider,
       accountAddress: s.Felt.fromHexString(accountAddress),
@@ -83,173 +205,6 @@ class Wallets extends _$Wallets with PersistedState<WalletsState> {
       )
     });
   }
-
-  protectWalletWithPassword({
-    required String password,
-    int? derivationIndex,
-    s.Felt? privateKey,
-  }) async {
-    final tempWallet = state.tempWallet;
-    if (tempWallet == null) {
-      throw Exception("Temp wallet is null");
-    }
-
-    derivationIndex = derivationIndex ?? tempWallet.accounts.length;
-
-    final chainId = s.StarknetChainId.testNet;
-    final provider = sp.JsonRpcProvider.infuraGoerliTestnet;
-    final accountDerivation = switch (tempWallet.type) {
-      WalletType.openZeppelin => s.OpenzeppelinAccountDerivation(
-          proxyClassHash: s.ozProxyClassHash,
-          implementationClassHash: s.ozAccountUpgradableClassHash,
-        ),
-      WalletType.argent => s.ArgentXAccountDerivation(),
-      WalletType.braavos =>
-        s.BraavosAccountDerivation(chainId: chainId, provider: provider),
-    };
-    final seedPhrase = state.tempWallet?.seedPhrase;
-    if (seedPhrase == null) {
-      throw Exception("Seed phrase is null");
-    }
-
-    final privateKey = await derivePrivateKeyInIsolate(
-        seedPhrase: seedPhrase, derivationIndex: derivationIndex);
-    print('Private key: ${privateKey.toHexString()}');
-
-    final signer = s.Signer(privateKey: privateKey);
-
-    final accountAddress =
-        accountDerivation.computeAddress(publicKey: signer.publicKey);
-
-    await storeAccountSecrets(
-      walletId: tempWallet.id,
-      accountId: "$derivationIndex",
-      seedPhrase: seedPhrase,
-      password: password,
-      privateKey: privateKey.toBigInt(),
-    );
-
-    state = state
-        .addAccount(wallet: tempWallet, accountAddress: accountAddress)
-        .copyWith(tempWallet: null); // Clean seed phrase
-  }
-
-  selectAcount({required String walletId, required int accountId}) {
-    state = state.copyWith(
-      selected: (
-        walletId: walletId,
-        accountId: accountId,
-      ),
-    );
-    refreshEthBalance(
-      walletId,
-      accountId,
-    );
-  }
-
-  addNewAccount({required String walletId, required String password}) async {
-    final wallet = state.wallets[walletId];
-    if (wallet == null) {
-      throw Exception("Wallet not found");
-    }
-
-    // final seedPhrase =
-    //     await getSeedPhrase(walletId: walletId, password: password);
-    final seedPhrase = [""];
-    if (seedPhrase == null) {
-      throw Exception("Seed phrase is null");
-    }
-
-    state = state.copyWith(
-      tempWallet: wallet.copyWith(
-        seedPhrase: seedPhrase,
-      ),
-    );
-
-    await protectWalletWithPassword(
-      password: password,
-    );
-  }
-
-  deleteWallets() {
-    state = state.copyWith(wallets: {}, selected: null, tempWallet: null);
-  }
-}
-
-Future<void> createInitialPassword(String password) async {
-  await sf.PasswordStore().deleteSecret(key: "app_level_password");
-  await sf.PasswordStore().initiatePassword(password);
-}
-
-extension WalletService on WalletsState {
-  Account? get selectedAccount {
-    if (selected == null) {
-      return null;
-    }
-
-    final wallet = wallets[selected?.walletId];
-    if (wallet == null) {
-      throw Exception("Wallet not found");
-    }
-    final account = wallet.accounts[selected?.accountId];
-    if (account == null) {
-      throw Exception("Account not found");
-    }
-    return account;
-  }
-
-  WalletsState addAccount({
-    required Wallet wallet,
-    required s.Felt accountAddress,
-    WalletType walletType = WalletType.openZeppelin,
-  }) {
-    final int accountId = wallet.accounts.length;
-    final newAccount = Account(
-      id: accountId,
-      walletId: wallet.id,
-      name: 'Account ${accountId + 1}',
-      address: accountAddress.toHexString(),
-    );
-
-    return copyWith(
-      wallets: {
-        ...wallets,
-        wallet.id: wallet.copyWith(
-          accounts: {...wallet.accounts, newAccount.id: newAccount},
-          seedPhrase: null,
-        )
-      },
-      selected: (walletId: wallet.id, accountId: newAccount.id),
-    );
-  }
-}
-
-Future<s.Felt> derivePrivateKeyInIsolate({
-  required List<String> seedPhrase,
-  required int derivationIndex,
-}) async {
-  // Prepare the input for the compute function
-  Map<String, dynamic> computationInput = {
-    'seedPhrase': seedPhrase,
-    'derivationIndex': derivationIndex,
-  };
-
-  // Run the compute function
-  s.Felt privateKey =
-      await f.compute(derivePrivateKeyIsolate, computationInput);
-
-  return privateKey;
-}
-
-// This function will run in a separate isolate
-s.Felt derivePrivateKeyIsolate(Map<String, dynamic> computationInput) {
-  List<String> seedPhrase = computationInput['seedPhrase'];
-  int derivationIndex = computationInput['derivationIndex'];
-
-  return s.derivePrivateKey(
-    mnemonic: seedPhrase,
-    index: derivationIndex,
-  );
 }
 
 Future<double> getEthBalance(

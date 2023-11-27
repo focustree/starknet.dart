@@ -1,4 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:secure_store/secure_store.dart';
+import 'package:starknet/starknet.dart';
 import 'package:wallet_kit/utils/persisted_notifier_state.dart';
 
 part 'wallet_state.freezed.dart';
@@ -9,7 +11,6 @@ class WalletsState with _$WalletsState implements PersistableState {
   const factory WalletsState({
     @Default({}) Map<String, Wallet> wallets,
     @Default(null) ({String walletId, int accountId})? selected,
-    @Default(null) Wallet? tempWallet,
   }) = _WalletsState;
 
   factory WalletsState.fromJson(Map<String, dynamic> json) =>
@@ -21,8 +22,8 @@ class Wallet with _$Wallet implements PersistableState {
   const factory Wallet({
     required String id,
     required String name,
-    @Default(null) List<String>? seedPhrase,
     @Default(WalletType.openZeppelin) WalletType type,
+    @Default(SecureStoreType.password) SecureStoreType secureStoreType,
     @Default({}) Map<int, Account> accounts,
   }) = _Wallet;
 
@@ -37,7 +38,7 @@ class Account with _$Account implements PersistableState {
     required String name,
     required String address,
     @Default({}) Map<String, double> balances,
-    @Default(false) bool idDeployed,
+    @Default(false) bool isDeployed,
   }) = _Account;
 
   factory Account.fromJson(Map<String, dynamic> json) =>
@@ -48,4 +49,49 @@ enum WalletType {
   openZeppelin,
   argent,
   braavos,
+}
+
+extension WalletsStateExtension on WalletsState {
+  Wallet? get selectedWallet {
+    if (selected == null) {
+      return null;
+    }
+    final wallet = wallets[selected?.walletId];
+    if (wallet == null) {
+      throw Exception("Wallet not found");
+    }
+    return wallet;
+  }
+
+  Account? get selectedAccount {
+    if (selected == null) {
+      return null;
+    }
+    final account = selectedWallet!.accounts[selected?.accountId];
+    if (account == null) {
+      throw Exception("Account not found");
+    }
+    return account;
+  }
+}
+
+extension WalletExtension on Wallet {
+  int get newAccountId => accounts.length;
+
+  (Wallet, Account) addAccount({
+    required Felt accountAddress,
+    int? accountId,
+  }) {
+    accountId = accountId ?? newAccountId;
+    final account = Account(
+      id: accountId,
+      walletId: id,
+      name: 'Account ${accountId + 1}',
+      address: accountAddress.toHexString(),
+    );
+    final updatedWallet = copyWith(
+      accounts: {...accounts, account.id: account},
+    );
+    return (updatedWallet, account);
+  }
 }

@@ -58,7 +58,7 @@ class WalletList extends HookConsumerWidget {
 
   const WalletList({
     Key? key,
-    required ValueNotifier<WalletListRoute> this.route,
+    required this.route,
   }) : super(key: key);
 
   @override
@@ -75,7 +75,7 @@ class WalletList extends HookConsumerWidget {
             top: 4,
             right: 14,
             child: IconButton(
-              icon: Icon(Icons.settings_rounded),
+              icon: const Icon(Icons.settings_rounded),
               onPressed: () {
                 route.value = WalletListRoute.settings;
               },
@@ -172,15 +172,14 @@ class WalletCell extends HookConsumerWidget {
               Padding(
                 padding: const EdgeInsets.all(4.0),
                 child: TextButton.icon(
+                  label: const Text('Add account'),
                   onPressed: () async {
-                    final password = await getPassword(context);
-                    if (password == null) return;
-                    ref
-                        .read(walletsProvider.notifier)
-                        .addNewAccount(walletId: wallet.id, password: password);
+                    ref.read(walletsProvider.notifier).addAccount(
+                          walletId: wallet.id,
+                          getPassword: () => showPasswordModal(context),
+                        );
                     Navigator.of(context).pop();
                   },
-                  label: const Text('Add account'),
                   icon: Icon(
                     Icons.add_circle_outline_rounded,
                     size: 16,
@@ -224,7 +223,7 @@ class AccountCell extends HookConsumerWidget {
         Navigator.of(context).pop();
         ref
             .read(walletsProvider.notifier)
-            .selectAcount(walletId: account.walletId, accountId: account.id);
+            .selectAccount(walletId: account.walletId, accountId: account.id);
       },
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,

@@ -16,14 +16,14 @@ class RecoverWalletScreen extends HookConsumerWidget {
 
     return Layout2(
       children: [
-        SimpleHeader(
+        const SimpleHeader(
           title: 'Recover your wallet',
         ),
         TextInput(
           hintText: 'Enter your seed phrase',
           onChanged: (value) => seedPhrase.value = value,
         ),
-        Container(
+        SizedBox(
           width: double.infinity,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
@@ -71,13 +71,12 @@ class RecoverWalletScreen extends HookConsumerWidget {
         PrimaryButton(
             onPressed: isButtonEnabled
                 ? () {
-                    ref.read(walletsProvider.notifier).createTempWallet(
-                          seedPhrase: seedPhrase.value.split(' '),
-                          walletType: walletType.value,
-                        );
                     Navigator.of(context).push(
                       MaterialPageRoute(
-                        builder: (context) => const ProtectWalletScreen(),
+                        builder: (context) => ProtectWalletScreen(
+                          seedPhrase: seedPhrase.value,
+                          walletType: walletType.value,
+                        ),
                       ),
                     );
                   }

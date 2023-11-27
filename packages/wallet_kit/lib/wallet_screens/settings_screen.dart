@@ -25,6 +25,8 @@ class SettingsScreen extends HookConsumerWidget {
               title: "Delete Wallets",
               onTap: () {
                 ref.read(walletsProvider.notifier).deleteWallets();
+                Navigator.popUntil(
+                    context, (route) => route.settings.name == '/');
               },
             ),
           ],
