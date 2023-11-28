@@ -73,25 +73,9 @@ class Account {
       broadcastedTxn = BroadcastedInvokeTxnV0(type: "INVOKE", maxFee: defaultMaxFee, version: version, signature: signature, nonce: nonce, contractAddress: accountAddress, entryPointSelector: getSelectorByName('__execute__'), calldata: calldata);
     } 
 
-    EstimateFeeRequest estimateFeeRequest = EstimateFeeRequest(
-      request: [broadcastedTxn],
-      blockId: blockId,
-    );
+    final maxFee = await getMaxFeeFromBroadcastedTxn(broadcastedTxn, blockId);
 
-    final estimateFeeResponse = await provider.estimateFee(
-      estimateFeeRequest,
-    );
-
-    final fee = estimateFeeResponse.when(
-      result: (result) => result[0],
-      error: (error) => throw Exception(error.message),
-    );
-
-    final Felt overallFee = Felt.fromHexString(fee.overallFee);
-    //multiply by 2
-    final Felt newMaxFee = Felt(overallFee.toBigInt() * BigInt.from(2));
-
-    return newMaxFee;   
+    return maxFee;    
   }
 
   /// Get Estimate max fee for Declare Tx
@@ -111,25 +95,9 @@ class Account {
       return defaultMaxFee;
     }
 
-    EstimateFeeRequest estimateFeeRequest = EstimateFeeRequest(
-      request: [broadcastedTxn],
-      blockId: blockId,
-    );
+    final maxFee = await getMaxFeeFromBroadcastedTxn(broadcastedTxn, blockId);
 
-    final estimateFeeResponse = await provider.estimateFee(
-      estimateFeeRequest,
-    );
-
-    final fee = estimateFeeResponse.when(
-      result: (result) => result[0],
-      error: (error) => throw Exception(error.message),
-    );
-
-    final Felt overallFee = Felt.fromHexString(fee.overallFee);
-    //multiply by 2
-    final Felt newMaxFee = Felt(overallFee.toBigInt() * BigInt.from(2));
-
-    return newMaxFee;   
+    return maxFee;   
   }
 
   /// Get Estimate max fee for Deploy Tx
@@ -144,7 +112,13 @@ class Account {
 
     final broadcastedTxn = BroadcastedDeployAccountTxn(type: "DEPLOY", version: version, contractAddressSalt: contractAddressSalt, constructorCalldata: constructorCalldata, maxFee: defaultMaxFee, nonce: nonce, signature: signature, classHash: classHash);
 
-    EstimateFeeRequest estimateFeeRequest = EstimateFeeRequest(
+    final maxFee = await getMaxFeeFromBroadcastedTxn(broadcastedTxn, blockId);
+
+    return maxFee;   
+  }
+
+  Future<Felt> getMaxFeeFromBroadcastedTxn(BroadcastedTxn broadcastedTxn, BlockId blockId) async {
+     EstimateFeeRequest estimateFeeRequest = EstimateFeeRequest(
       request: [broadcastedTxn],
       blockId: blockId,
     );
@@ -160,9 +134,9 @@ class Account {
 
     final Felt overallFee = Felt.fromHexString(fee.overallFee);
     //multiply by 2
-    final Felt newMaxFee = Felt(overallFee.toBigInt() * BigInt.from(2));
+    final Felt maxFee = Felt(overallFee.toBigInt() * BigInt.from(2));
 
-    return newMaxFee;   
+    return maxFee;  
   }
 
   /// Call account contract `__execute__` with given [functionCalls]
