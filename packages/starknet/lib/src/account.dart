@@ -57,33 +57,92 @@ class Account {
     ));
   }
 
-  /// Get Estimate max fee
-  Future<Felt> getEstimateMaxFee({BlockId blockId = BlockId.latest,
-    required String type,
+  /// Get Estimate max fee for Invoke Tx
+  Future<Felt> getEstimateMaxFeeForInvokeTx({BlockId blockId = BlockId.latest,
     String version = "0x1",
     required List<Felt> signature,
-    List<Felt>? calldata,
+    required List<Felt> calldata,
     required Felt nonce,
-    ICompiledContract? compiledContract,
-    List<Felt>? constructorCalldata,
-    Felt? contractAddressSalt,
-    Felt? classHash,
   }) async {
 
     BroadcastedTxn broadcastedTxn;
 
-    if (type == "INVOKE" && version == "0x1") {
-      broadcastedTxn = BroadcastedInvokeTxnV1(type: type, maxFee: defaultMaxFee, version: version, signature: signature, nonce: nonce, senderAddress: accountAddress, calldata: calldata!);
-    } else if (type=="INVOKE" && version == "0x0") {
-      broadcastedTxn = BroadcastedInvokeTxnV0(type: type, maxFee: defaultMaxFee, version: version, signature: signature, nonce: nonce, contractAddress: accountAddress, entryPointSelector: getSelectorByName('__execute__'), calldata: calldata!);
-    } else if (type == "DECLARE" && compiledContract is DeprecatedCompiledContract) {
-      broadcastedTxn = BroadcastedDeclareTxn(type: type, maxFee: defaultMaxFee, version: version, signature: signature, nonce: nonce, contractClass: compiledContract.compress()  , senderAddress: accountAddress);
-    } else if (type == "DEPLOY") {
-      broadcastedTxn = BroadcastedDeployAccountTxn(type: type, version: version, contractAddressSalt: contractAddressSalt!, constructorCalldata: constructorCalldata!, maxFee: defaultMaxFee, nonce: nonce, signature: signature, classHash: classHash!);
+    if (version == "0x1") {
+      broadcastedTxn = BroadcastedInvokeTxnV1(type: "INVOKE", maxFee: defaultMaxFee, version: version, signature: signature, nonce: nonce, senderAddress: accountAddress, calldata: calldata);
+    } else {
+      broadcastedTxn = BroadcastedInvokeTxnV0(type: "INVOKE", maxFee: defaultMaxFee, version: version, signature: signature, nonce: nonce, contractAddress: accountAddress, entryPointSelector: getSelectorByName('__execute__'), calldata: calldata);
+    } 
+
+    EstimateFeeRequest estimateFeeRequest = EstimateFeeRequest(
+      request: [broadcastedTxn],
+      blockId: blockId,
+    );
+
+    final estimateFeeResponse = await provider.estimateFee(
+      estimateFeeRequest,
+    );
+
+    final fee = estimateFeeResponse.when(
+      result: (result) => result[0],
+      error: (error) => throw Exception(error.message),
+    );
+
+    final Felt overallFee = Felt.fromHexString(fee.overallFee);
+    //multiply by 2
+    final Felt newMaxFee = Felt(overallFee.toBigInt() * BigInt.from(2));
+
+    return newMaxFee;   
+  }
+
+  /// Get Estimate max fee for Declare Tx
+  Future<Felt> getEstimateMaxFeeForDeclareTx({BlockId blockId = BlockId.latest,
+    String version = "0x1",
+    required List<Felt> signature,
+    required Felt nonce,
+    required ICompiledContract compiledContract,
+  }) async {
+
+    BroadcastedTxn broadcastedTxn;
+
+    if ( compiledContract is DeprecatedCompiledContract) {
+      broadcastedTxn = BroadcastedDeclareTxn(type: "DECLARE", maxFee: defaultMaxFee, version: version, signature: signature, nonce: nonce, contractClass: compiledContract.compress()  , senderAddress: accountAddress);
     } 
     else {
       return defaultMaxFee;
     }
+
+    EstimateFeeRequest estimateFeeRequest = EstimateFeeRequest(
+      request: [broadcastedTxn],
+      blockId: blockId,
+    );
+
+    final estimateFeeResponse = await provider.estimateFee(
+      estimateFeeRequest,
+    );
+
+    final fee = estimateFeeResponse.when(
+      result: (result) => result[0],
+      error: (error) => throw Exception(error.message),
+    );
+
+    final Felt overallFee = Felt.fromHexString(fee.overallFee);
+    //multiply by 2
+    final Felt newMaxFee = Felt(overallFee.toBigInt() * BigInt.from(2));
+
+    return newMaxFee;   
+  }
+
+  /// Get Estimate max fee for Deploy Tx
+  Future<Felt> getEstimateMaxFeeForDeployTx({BlockId blockId = BlockId.latest,
+    String version = "0x1",
+    required List<Felt> signature,
+    required Felt nonce,
+    required List<Felt> constructorCalldata,
+    required Felt contractAddressSalt,
+    required Felt classHash,
+  }) async {
+
+    final broadcastedTxn = BroadcastedDeployAccountTxn(type: "DEPLOY", version: version, contractAddressSalt: contractAddressSalt, constructorCalldata: constructorCalldata, maxFee: defaultMaxFee, nonce: nonce, signature: signature, classHash: classHash);
 
     EstimateFeeRequest estimateFeeRequest = EstimateFeeRequest(
       request: [broadcastedTxn],
@@ -134,7 +193,7 @@ class Account {
             functionCallsToCalldataLegacy(functionCalls: functionCalls) +
                 [nonce];
         
-        final newMaxFee = await getEstimateMaxFee(type: "INVOKE", version: "0x0", signature: signature, calldata: calldata, nonce: nonce);
+        final newMaxFee = await getEstimateMaxFeeForInvokeTx(version: "0x0", signature: signature, calldata: calldata, nonce: nonce);
 
         return provider.addInvokeTransaction(
           InvokeTransactionRequest(
@@ -153,7 +212,7 @@ class Account {
           useLegacyCalldata: useLegacyCalldata,
         );
 
-        final newMaxFee = await getEstimateMaxFee(type: "INVOKE", signature: signature, calldata: calldata, nonce: nonce);
+        final newMaxFee = await getEstimateMaxFeeForInvokeTx(signature: signature, calldata: calldata, nonce: nonce);
 
         return provider.addInvokeTransaction(
           InvokeTransactionRequest(
@@ -189,7 +248,7 @@ class Account {
         maxFee: maxFee,
       );
 
-      final newMaxFee = await getEstimateMaxFee(type: "DECLARE", signature: signature, nonce: nonce,  compiledContract: compiledContract);
+      final newMaxFee = await getEstimateMaxFeeForDeclareTx( signature: signature, nonce: nonce,  compiledContract: compiledContract);
 
       return provider.addDeclareTransaction(
         DeclareTransactionRequest(
@@ -213,7 +272,7 @@ class Account {
         casmCompiledContract: casmCompiledContract,
       );
 
-      final newMaxFee = await getEstimateMaxFee(type: "DECLARE", signature: signature, nonce: nonce,  compiledContract: compiledContract);
+      final newMaxFee = await getEstimateMaxFeeForDeclareTx(signature: signature, nonce: nonce,  compiledContract: compiledContract);
 
       return provider.addDeclareTransaction(
         DeclareTransactionRequest(
@@ -314,8 +373,6 @@ class Account {
       nonce: nonce,
       maxFee: maxFee,
     );
-
-    //final newMaxFee = await getEstimateMaxFee(type: "DEPLOY", signature: signature, nonce: nonce,  contractAddressSalt: contractAddressSalt, classHash: classHash, constructorCalldata: constructorCalldata);
 
     return provider.addDeployAccountTransaction(
       DeployAccountTransactionRequest(
