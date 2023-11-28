@@ -288,7 +288,7 @@ class Account {
   ///
   /// Default value for [classHash] is [devnetOpenZeppelinAccountClassHash]
   /// Default value for [contractAddressSalt] is 42
-  Future<DeployAccountTransactionResponse> deployAccount({
+  static Future<DeployAccountTransactionResponse> deployAccount({
     required Signer signer,
     required Provider provider,
     required List<Felt> constructorCalldata,
@@ -315,14 +315,14 @@ class Account {
       maxFee: maxFee,
     );
 
-    final newMaxFee = await getEstimateMaxFee(type: "DEPLOY", signature: signature, nonce: nonce,  contractAddressSalt: contractAddressSalt, classHash: classHash, constructorCalldata: constructorCalldata);
+    //final newMaxFee = await getEstimateMaxFee(type: "DEPLOY", signature: signature, nonce: nonce,  contractAddressSalt: contractAddressSalt, classHash: classHash, constructorCalldata: constructorCalldata);
 
     return provider.addDeployAccountTransaction(
       DeployAccountTransactionRequest(
         deployAccountTransaction: DeployAccountTransactionV1(
           classHash: classHash,
           signature: signature,
-          maxFee: newMaxFee,
+          maxFee: maxFee,
           nonce: nonce,
           contractAddressSalt: contractAddressSalt,
           constructorCalldata: constructorCalldata,
@@ -451,7 +451,7 @@ class OpenzeppelinAccountDerivation implements AccountDerivation {
   }
 
   Future<Felt> deploy({required Account account}) async {
-    final tx = await account.deployAccount(
+    final tx = await Account.deployAccount(
       signer: account.signer,
       provider: account.provider,
       constructorCalldata: constructorCalldata(
