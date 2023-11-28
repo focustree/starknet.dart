@@ -164,7 +164,7 @@ void main() {
         bool success = await waitForAcceptance(
             transactionHash: txSend, provider: account0.provider);
         expect(success, equals(true));
-        final tx = await Account.deployAccount(
+        final tx = await account0.deployAccount(
             classHash: accountClassHash,
             signer: accountSigner,
             provider: provider,

@@ -57,6 +57,55 @@ class Account {
     ));
   }
 
+  /// Get Estimate max fee
+  Future<Felt> getEstimateMaxFee({BlockId blockId = BlockId.latest,
+    required String type,
+    String version = "0x1",
+    required List<Felt> signature,
+    List<Felt>? calldata,
+    required Felt nonce,
+    ICompiledContract? compiledContract,
+    List<Felt>? constructorCalldata,
+    Felt? contractAddressSalt,
+    Felt? classHash,
+  }) async {
+
+    BroadcastedTxn broadcastedTxn;
+
+    if (type == "INVOKE" && version == "0x1") {
+      broadcastedTxn = BroadcastedInvokeTxnV1(type: type, maxFee: defaultMaxFee, version: version, signature: signature, nonce: nonce, senderAddress: accountAddress, calldata: calldata!);
+    } else if (type=="INVOKE" && version == "0x0") {
+      broadcastedTxn = BroadcastedInvokeTxnV0(type: type, maxFee: defaultMaxFee, version: version, signature: signature, nonce: nonce, contractAddress: accountAddress, entryPointSelector: getSelectorByName('__execute__'), calldata: calldata!);
+    } else if (type == "DECLARE" && compiledContract is DeprecatedCompiledContract) {
+      broadcastedTxn = BroadcastedDeclareTxn(type: type, maxFee: defaultMaxFee, version: version, signature: signature, nonce: nonce, contractClass: compiledContract.compress()  , senderAddress: accountAddress);
+    } else if (type == "DEPLOY") {
+      broadcastedTxn = BroadcastedDeployAccountTxn(type: type, version: version, contractAddressSalt: contractAddressSalt!, constructorCalldata: constructorCalldata!, maxFee: defaultMaxFee, nonce: nonce, signature: signature, classHash: classHash!);
+    } 
+    else {
+      return defaultMaxFee;
+    }
+
+    EstimateFeeRequest estimateFeeRequest = EstimateFeeRequest(
+      request: [broadcastedTxn],
+      blockId: blockId,
+    );
+
+    final estimateFeeResponse = await provider.estimateFee(
+      estimateFeeRequest,
+    );
+
+    final fee = estimateFeeResponse.when(
+      result: (result) => result[0],
+      error: (error) => throw Exception(error.message),
+    );
+
+    final Felt overallFee = Felt.fromHexString(fee.overallFee);
+    //multiply by 2
+    final Felt newMaxFee = Felt(overallFee.toBigInt() * BigInt.from(2));
+
+    return newMaxFee;   
+  }
+
   /// Call account contract `__execute__` with given [functionCalls]
   Future<InvokeTransactionResponse> execute({
     required List<FunctionCall> functionCalls,
@@ -84,6 +133,8 @@ class Account {
         final calldata =
             functionCallsToCalldataLegacy(functionCalls: functionCalls) +
                 [nonce];
+        
+        final newMaxFee = await getEstimateMaxFee(type: "INVOKE", version: "0x0", signature: signature, calldata: calldata, nonce: nonce);
 
         return provider.addInvokeTransaction(
           InvokeTransactionRequest(
@@ -91,7 +142,7 @@ class Account {
               contractAddress: accountAddress,
               entryPointSelector: getSelectorByName('__execute__'),
               calldata: calldata,
-              maxFee: maxFee,
+              maxFee: newMaxFee,
               signature: signature,
             ),
           ),
@@ -102,13 +153,15 @@ class Account {
           useLegacyCalldata: useLegacyCalldata,
         );
 
+        final newMaxFee = await getEstimateMaxFee(type: "INVOKE", signature: signature, calldata: calldata, nonce: nonce);
+
         return provider.addInvokeTransaction(
           InvokeTransactionRequest(
             invokeTransaction: InvokeTransactionV1(
               senderAddress: accountAddress,
               calldata: calldata,
               signature: signature,
-              maxFee: maxFee,
+              maxFee: newMaxFee,
               nonce: nonce,
             ),
           ),
@@ -136,10 +189,12 @@ class Account {
         maxFee: maxFee,
       );
 
+      final newMaxFee = await getEstimateMaxFee(type: "DECLARE", signature: signature, nonce: nonce,  compiledContract: compiledContract);
+
       return provider.addDeclareTransaction(
         DeclareTransactionRequest(
           declareTransaction: DeclareTransactionV1(
-            max_fee: maxFee,
+            max_fee: newMaxFee,
             nonce: nonce,
             contractClass: compiledContract.compress(),
             senderAddress: accountAddress,
@@ -158,10 +213,12 @@ class Account {
         casmCompiledContract: casmCompiledContract,
       );
 
+      final newMaxFee = await getEstimateMaxFee(type: "DECLARE", signature: signature, nonce: nonce,  compiledContract: compiledContract);
+
       return provider.addDeclareTransaction(
         DeclareTransactionRequest(
           declareTransaction: DeclareTransactionV2(
-            max_fee: maxFee,
+            max_fee: newMaxFee,
             nonce: nonce,
             contractClass: compiledContract.flatten(),
             compiledClassHash: Felt(compiledClassHash!),
@@ -231,7 +288,7 @@ class Account {
   ///
   /// Default value for [classHash] is [devnetOpenZeppelinAccountClassHash]
   /// Default value for [contractAddressSalt] is 42
-  static Future<DeployAccountTransactionResponse> deployAccount({
+  Future<DeployAccountTransactionResponse> deployAccount({
     required Signer signer,
     required Provider provider,
     required List<Felt> constructorCalldata,
@@ -258,12 +315,14 @@ class Account {
       maxFee: maxFee,
     );
 
+    final newMaxFee = await getEstimateMaxFee(type: "DEPLOY", signature: signature, nonce: nonce,  contractAddressSalt: contractAddressSalt, classHash: classHash, constructorCalldata: constructorCalldata);
+
     return provider.addDeployAccountTransaction(
       DeployAccountTransactionRequest(
         deployAccountTransaction: DeployAccountTransactionV1(
           classHash: classHash,
           signature: signature,
-          maxFee: maxFee,
+          maxFee: newMaxFee,
           nonce: nonce,
           contractAddressSalt: contractAddressSalt,
           constructorCalldata: constructorCalldata,
@@ -392,7 +451,7 @@ class OpenzeppelinAccountDerivation implements AccountDerivation {
   }
 
   Future<Felt> deploy({required Account account}) async {
-    final tx = await Account.deployAccount(
+    final tx = await account.deployAccount(
       signer: account.signer,
       provider: account.provider,
       constructorCalldata: constructorCalldata(
