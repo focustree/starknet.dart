@@ -155,7 +155,6 @@ class Account {
       version: supportedTxVersion == AccountSupportedTxVersion.v1 ? 1 : 0,
       chainId: chainId,
       entryPointSelectorName: "__execute__",
-      maxFee: maxFee,
       nonce: nonce,
       useLegacyCalldata: useLegacyCalldata,
     );
@@ -219,7 +218,6 @@ class Account {
         senderAddress: accountAddress,
         chainId: chainId,
         nonce: nonce,
-        maxFee: maxFee,
       );
 
       final newMaxFee = await getEstimateMaxFeeForDeclareTx( signature: signature, nonce: nonce,  compiledContract: compiledContract);
@@ -241,7 +239,6 @@ class Account {
         senderAddress: accountAddress,
         chainId: chainId,
         nonce: nonce,
-        maxFee: maxFee,
         compiledClassHash: compiledClassHash,
         casmCompiledContract: casmCompiledContract,
       );
