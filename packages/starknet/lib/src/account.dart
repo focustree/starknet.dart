@@ -62,7 +62,6 @@ class Account {
     String version = "0x1",
     required List<FunctionCall> functionCalls,
     bool useLegacyCalldata = false,
-    required List<Felt> calldata,
     required Felt nonce,
   }) async {
 
@@ -79,8 +78,15 @@ class Account {
     BroadcastedTxn broadcastedTxn;
 
     if (version == "0x1") {
+      final calldata = functionCallsToCalldata(
+          functionCalls: functionCalls,
+          useLegacyCalldata: useLegacyCalldata,
+        );
       broadcastedTxn = BroadcastedInvokeTxnV1(type: "INVOKE", maxFee: defaultMaxFee, version: version, signature: signature, nonce: nonce, senderAddress: accountAddress, calldata: calldata);
     } else {
+      final calldata =
+            functionCallsToCalldataLegacy(functionCalls: functionCalls) +
+                [nonce];
       broadcastedTxn = BroadcastedInvokeTxnV0(type: "INVOKE", maxFee: defaultMaxFee, version: version, signature: signature, nonce: nonce, contractAddress: accountAddress, entryPointSelector: getSelectorByName('__execute__'), calldata: calldata);
     } 
 
