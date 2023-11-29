@@ -114,6 +114,7 @@ class Account {
       broadcastedTxn = BroadcastedDeclareTxn(type: "DECLARE", maxFee: defaultMaxFee, version: version, signature: signature, nonce: nonce, contractClass: compiledContract.compress()  , senderAddress: accountAddress);
     } 
     else {
+      // V2 of BroadcastedDeclareTxn is not supported yet
       return defaultMaxFee;
     }
 
