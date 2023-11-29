@@ -101,7 +101,7 @@ class Account {
   }
 
   /// Get Estimate max fee for Deploy Tx
-  Future<Felt> getEstimateMaxFeeForDeployTx({BlockId blockId = BlockId.latest,
+  Future<Felt> getEstimateMaxFeeForDeployAccountTx({BlockId blockId = BlockId.latest,
     String version = "0x1",
     required List<Felt> signature,
     required Felt nonce,
@@ -110,7 +110,7 @@ class Account {
     required Felt classHash,
   }) async {
 
-    final broadcastedTxn = BroadcastedDeployAccountTxn(type: "DEPLOY", version: version, contractAddressSalt: contractAddressSalt, constructorCalldata: constructorCalldata, maxFee: defaultMaxFee, nonce: nonce, signature: signature, classHash: classHash);
+    final broadcastedTxn = BroadcastedDeployAccountTxn(type: "DEPLOY_ACCOUNT", version: version, contractAddressSalt: contractAddressSalt, constructorCalldata: constructorCalldata, maxFee: defaultMaxFee, nonce: nonce, signature: signature, classHash: classHash);
 
     final maxFee = await getMaxFeeFromBroadcastedTxn(broadcastedTxn, blockId);
 
@@ -133,7 +133,7 @@ class Account {
     );
 
     final Felt overallFee = Felt.fromHexString(fee.overallFee);
-    //multiply by 2
+    //multiply by 2 for max fee
     final Felt maxFee = Felt(overallFee.toBigInt() * BigInt.from(2));
 
     return maxFee;  
