@@ -60,10 +60,21 @@ class Account {
   /// Get Estimate max fee for Invoke Tx
   Future<Felt> getEstimateMaxFeeForInvokeTx({BlockId blockId = BlockId.latest,
     String version = "0x1",
-    required List<Felt> signature,
+    required List<FunctionCall> functionCalls,
+    bool useLegacyCalldata = false,
     required List<Felt> calldata,
     required Felt nonce,
   }) async {
+
+    final signature = signer.signTransactions(
+      transactions: functionCalls,
+      contractAddress: accountAddress,
+      version: supportedTxVersion == AccountSupportedTxVersion.v1 ? 1 : 0,
+      chainId: chainId,
+      entryPointSelectorName: "__execute__",
+      nonce: nonce,
+      useLegacyCalldata: useLegacyCalldata,
+    );
 
     BroadcastedTxn broadcastedTxn;
 
@@ -81,7 +92,6 @@ class Account {
   /// Get Estimate max fee for Declare Tx
   Future<Felt> getEstimateMaxFeeForDeclareTx({BlockId blockId = BlockId.latest,
     String version = "0x1",
-    required List<Felt> signature,
     required Felt nonce,
     required ICompiledContract compiledContract,
   }) async {
@@ -89,6 +99,12 @@ class Account {
     BroadcastedTxn broadcastedTxn;
 
     if ( compiledContract is DeprecatedCompiledContract) {
+      final signature = signer.signDeclareTransactionV1(
+        compiledContract: compiledContract,
+        senderAddress: accountAddress,
+        chainId: chainId,
+        nonce: nonce,
+      );
       broadcastedTxn = BroadcastedDeclareTxn(type: "DECLARE", maxFee: defaultMaxFee, version: version, signature: signature, nonce: nonce, contractClass: compiledContract.compress()  , senderAddress: accountAddress);
     } 
     else {
@@ -103,12 +119,19 @@ class Account {
   /// Get Estimate max fee for Deploy Tx
   Future<Felt> getEstimateMaxFeeForDeployAccountTx({BlockId blockId = BlockId.latest,
     String version = "0x1",
-    required List<Felt> signature,
     required Felt nonce,
     required List<Felt> constructorCalldata,
     required Felt contractAddressSalt,
     required Felt classHash,
   }) async {
+
+    final signature = signer.signDeployAccountTransactionV1(
+      contractAddressSalt: contractAddressSalt,
+      classHash: classHash,
+      constructorCalldata: constructorCalldata,
+      chainId: chainId,
+      nonce: nonce,
+    );
 
     final broadcastedTxn = BroadcastedDeployAccountTxn(type: "DEPLOY_ACCOUNT", version: version, contractAddressSalt: contractAddressSalt, constructorCalldata: constructorCalldata, maxFee: defaultMaxFee, nonce: nonce, signature: signature, classHash: classHash);
 
@@ -157,6 +180,7 @@ class Account {
       entryPointSelectorName: "__execute__",
       nonce: nonce,
       useLegacyCalldata: useLegacyCalldata,
+      maxFee: maxFee,
     );
 
     switch (supportedTxVersion) {
@@ -165,8 +189,6 @@ class Account {
         final calldata =
             functionCallsToCalldataLegacy(functionCalls: functionCalls) +
                 [nonce];
-        
-        final newMaxFee = await getEstimateMaxFeeForInvokeTx(version: "0x0", signature: signature, calldata: calldata, nonce: nonce);
 
         return provider.addInvokeTransaction(
           InvokeTransactionRequest(
@@ -174,7 +196,7 @@ class Account {
               contractAddress: accountAddress,
               entryPointSelector: getSelectorByName('__execute__'),
               calldata: calldata,
-              maxFee: newMaxFee,
+              maxFee: maxFee,
               signature: signature,
             ),
           ),
@@ -185,15 +207,13 @@ class Account {
           useLegacyCalldata: useLegacyCalldata,
         );
 
-        final newMaxFee = await getEstimateMaxFeeForInvokeTx(signature: signature, calldata: calldata, nonce: nonce);
-
         return provider.addInvokeTransaction(
           InvokeTransactionRequest(
             invokeTransaction: InvokeTransactionV1(
               senderAddress: accountAddress,
               calldata: calldata,
               signature: signature,
-              maxFee: newMaxFee,
+              maxFee: maxFee,
               nonce: nonce,
             ),
           ),
@@ -218,14 +238,13 @@ class Account {
         senderAddress: accountAddress,
         chainId: chainId,
         nonce: nonce,
+        maxFee: maxFee,
       );
-
-      final newMaxFee = await getEstimateMaxFeeForDeclareTx( signature: signature, nonce: nonce,  compiledContract: compiledContract);
 
       return provider.addDeclareTransaction(
         DeclareTransactionRequest(
           declareTransaction: DeclareTransactionV1(
-            max_fee: newMaxFee,
+            max_fee: maxFee,
             nonce: nonce,
             contractClass: compiledContract.compress(),
             senderAddress: accountAddress,
@@ -241,14 +260,13 @@ class Account {
         nonce: nonce,
         compiledClassHash: compiledClassHash,
         casmCompiledContract: casmCompiledContract,
+        maxFee: maxFee,
       );
-
-      final newMaxFee = await getEstimateMaxFeeForDeclareTx(signature: signature, nonce: nonce,  compiledContract: compiledContract);
 
       return provider.addDeclareTransaction(
         DeclareTransactionRequest(
           declareTransaction: DeclareTransactionV2(
-            max_fee: newMaxFee,
+            max_fee: maxFee,
             nonce: nonce,
             contractClass: compiledContract.flatten(),
             compiledClassHash: Felt(compiledClassHash!),
