@@ -136,6 +136,11 @@ class PasswordScreen extends HookConsumerWidget {
             onChanged: (value) => password.value = value,
             autofocus: true,
             obscureText: true,
+            style: const TextStyle(
+              fontSize: 16,
+              fontWeight: FontWeight.w500,
+              color: Colors.black,
+            )
           ),
         ),
         const Spacer(),

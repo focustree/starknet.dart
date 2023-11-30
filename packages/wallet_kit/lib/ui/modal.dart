@@ -170,6 +170,7 @@ class ModalHeader extends StatelessWidget {
                       style: TextStyle(
                         fontSize: fontSize,
                         fontWeight: FontWeight.w700,
+                        color: Colors.black,
                       ),
                     )
                   : Container(),
