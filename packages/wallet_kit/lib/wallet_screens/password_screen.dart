@@ -4,12 +4,13 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:secure_store/secure_store.dart';
 import 'package:wallet_kit/wallet_kit.dart';
 
-Future<String?> showPasswordModal(BuildContext context) async {
+Future<String?> showPasswordModal(BuildContext context, {Color backgroundColor = Colors.transparent}) async {
   return showBottomModal<String>(
     isScrollControlled: true,
     useSafeArea: true,
     context: context,
     builder: (context) => const ModalLayout(child: PasswordScreen()),
+    backgroundColor: backgroundColor,
   );
 }
 
