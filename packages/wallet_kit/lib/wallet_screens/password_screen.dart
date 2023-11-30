@@ -4,13 +4,12 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:secure_store/secure_store.dart';
 import 'package:wallet_kit/wallet_kit.dart';
 
-Future<String?> showPasswordModal(BuildContext context, {Color backgroundColor = Colors.transparent}) async {
+Future<String?> showPasswordModal(BuildContext context) async {
   return showBottomModal<String>(
     isScrollControlled: true,
     useSafeArea: true,
     context: context,
     builder: (context) => const ModalLayout(child: PasswordScreen()),
-    backgroundColor: backgroundColor,
   );
 }
 
@@ -137,6 +136,11 @@ class PasswordScreen extends HookConsumerWidget {
             onChanged: (value) => password.value = value,
             autofocus: true,
             obscureText: true,
+            style: const TextStyle(
+              fontSize: 16,
+              fontWeight: FontWeight.w500,
+              color: Colors.black,
+            )
           ),
         ),
         const Spacer(),
