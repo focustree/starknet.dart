@@ -58,14 +58,14 @@ class Account {
   }
 
   /// Get Estimate max fee for Invoke Tx
-  Future<Felt> getEstimateMaxFeeForInvokeTx({BlockId blockId = BlockId.latest,
+  Future<Felt> getEstimateMaxFeeForInvokeTx({
+    BlockId blockId = BlockId.latest,
     String version = "0x1",
     required List<FunctionCall> functionCalls,
     bool useLegacyCalldata = false,
     required Felt nonce,
     double feeMultiplier = 1.2,
   }) async {
-
     final signature = signer.signTransactions(
       transactions: functionCalls,
       contractAddress: accountAddress,
@@ -80,53 +80,76 @@ class Account {
 
     if (version == "0x1") {
       final calldata = functionCallsToCalldata(
-          functionCalls: functionCalls,
-          useLegacyCalldata: useLegacyCalldata,
-        );
-      broadcastedTxn = BroadcastedInvokeTxnV1(type: "INVOKE", maxFee: defaultMaxFee, version: version, signature: signature, nonce: nonce, senderAddress: accountAddress, calldata: calldata);
+        functionCalls: functionCalls,
+        useLegacyCalldata: useLegacyCalldata,
+      );
+      broadcastedTxn = BroadcastedInvokeTxnV1(
+          type: "INVOKE",
+          maxFee: defaultMaxFee,
+          version: version,
+          signature: signature,
+          nonce: nonce,
+          senderAddress: accountAddress,
+          calldata: calldata);
     } else {
       final calldata =
-            functionCallsToCalldataLegacy(functionCalls: functionCalls) +
-                [nonce];
-      broadcastedTxn = BroadcastedInvokeTxnV0(type: "INVOKE", maxFee: defaultMaxFee, version: version, signature: signature, nonce: nonce, contractAddress: accountAddress, entryPointSelector: getSelectorByName('__execute__'), calldata: calldata);
-    } 
+          functionCallsToCalldataLegacy(functionCalls: functionCalls) + [nonce];
+      broadcastedTxn = BroadcastedInvokeTxnV0(
+          type: "INVOKE",
+          maxFee: defaultMaxFee,
+          version: version,
+          signature: signature,
+          nonce: nonce,
+          contractAddress: accountAddress,
+          entryPointSelector: getSelectorByName('__execute__'),
+          calldata: calldata);
+    }
 
-    final maxFee = await getMaxFeeFromBroadcastedTxn(broadcastedTxn, blockId, feeMultiplier);
+    final maxFee = await getMaxFeeFromBroadcastedTxn(
+        broadcastedTxn, blockId, feeMultiplier);
 
-    return maxFee;    
+    return maxFee;
   }
 
   /// Get Estimate max fee for Declare Tx
-  Future<Felt> getEstimateMaxFeeForDeclareTx({BlockId blockId = BlockId.latest,
+  Future<Felt> getEstimateMaxFeeForDeclareTx({
+    BlockId blockId = BlockId.latest,
     String version = "0x1",
     required Felt nonce,
     required ICompiledContract compiledContract,
     double feeMultiplier = 1.2,
   }) async {
-
     BroadcastedTxn broadcastedTxn;
 
-    if ( compiledContract is DeprecatedCompiledContract) {
+    if (compiledContract is DeprecatedCompiledContract) {
       final signature = signer.signDeclareTransactionV1(
         compiledContract: compiledContract,
         senderAddress: accountAddress,
         chainId: chainId,
         nonce: nonce,
       );
-      broadcastedTxn = BroadcastedDeclareTxn(type: "DECLARE", maxFee: defaultMaxFee, version: version, signature: signature, nonce: nonce, contractClass: compiledContract.compress()  , senderAddress: accountAddress);
-    } 
-    else {
+      broadcastedTxn = BroadcastedDeclareTxn(
+          type: "DECLARE",
+          maxFee: defaultMaxFee,
+          version: version,
+          signature: signature,
+          nonce: nonce,
+          contractClass: compiledContract.compress(),
+          senderAddress: accountAddress);
+    } else {
       // V2 of BroadcastedDeclareTxn is not supported yet
       return defaultMaxFee;
     }
 
-    final maxFee = await getMaxFeeFromBroadcastedTxn(broadcastedTxn, blockId, feeMultiplier);
+    final maxFee = await getMaxFeeFromBroadcastedTxn(
+        broadcastedTxn, blockId, feeMultiplier);
 
-    return maxFee;   
+    return maxFee;
   }
 
   /// Get Estimate max fee for Deploy Tx
-  Future<Felt> getEstimateMaxFeeForDeployAccountTx({BlockId blockId = BlockId.latest,
+  Future<Felt> getEstimateMaxFeeForDeployAccountTx({
+    BlockId blockId = BlockId.latest,
     String version = "0x1",
     required Felt nonce,
     required List<Felt> constructorCalldata,
@@ -134,7 +157,6 @@ class Account {
     required Felt classHash,
     double feeMultiplier = 1.2,
   }) async {
-
     final signature = signer.signDeployAccountTransactionV1(
       contractAddressSalt: contractAddressSalt,
       classHash: classHash,
@@ -143,15 +165,25 @@ class Account {
       nonce: nonce,
     );
 
-    final broadcastedTxn = BroadcastedDeployAccountTxn(type: "DEPLOY_ACCOUNT", version: version, contractAddressSalt: contractAddressSalt, constructorCalldata: constructorCalldata, maxFee: defaultMaxFee, nonce: nonce, signature: signature, classHash: classHash);
+    final broadcastedTxn = BroadcastedDeployAccountTxn(
+        type: "DEPLOY_ACCOUNT",
+        version: version,
+        contractAddressSalt: contractAddressSalt,
+        constructorCalldata: constructorCalldata,
+        maxFee: defaultMaxFee,
+        nonce: nonce,
+        signature: signature,
+        classHash: classHash);
 
-    final maxFee = await getMaxFeeFromBroadcastedTxn(broadcastedTxn, blockId, feeMultiplier);
+    final maxFee = await getMaxFeeFromBroadcastedTxn(
+        broadcastedTxn, blockId, feeMultiplier);
 
-    return maxFee;   
+    return maxFee;
   }
 
-  Future<Felt> getMaxFeeFromBroadcastedTxn(BroadcastedTxn broadcastedTxn, BlockId blockId, double feeMultiplier) async {
-     EstimateFeeRequest estimateFeeRequest = EstimateFeeRequest(
+  Future<Felt> getMaxFeeFromBroadcastedTxn(BroadcastedTxn broadcastedTxn,
+      BlockId blockId, double feeMultiplier) async {
+    EstimateFeeRequest estimateFeeRequest = EstimateFeeRequest(
       request: [broadcastedTxn],
       blockId: blockId,
     );
@@ -167,9 +199,10 @@ class Account {
 
     final Felt overallFee = Felt.fromHexString(fee.overallFee);
     //multiply by feeMultiplier
-    final Felt maxFee = Felt.fromDouble(overallFee.toBigInt().toDouble() * feeMultiplier);
+    final Felt maxFee =
+        Felt.fromDouble(overallFee.toBigInt().toDouble() * feeMultiplier);
 
-    return maxFee;  
+    return maxFee;
   }
 
   /// Call account contract `__execute__` with given [functionCalls]
@@ -180,7 +213,14 @@ class Account {
     Felt? nonce,
   }) async {
     nonce = nonce ?? await getNonce();
-    maxFee = maxFee ?? await getEstimateMaxFeeForInvokeTx(functionCalls: functionCalls, useLegacyCalldata: useLegacyCalldata, nonce: nonce, version: supportedTxVersion == AccountSupportedTxVersion.v1 ? "0x1" : "0x0");
+    maxFee = maxFee ??
+        await getEstimateMaxFeeForInvokeTx(
+            functionCalls: functionCalls,
+            useLegacyCalldata: useLegacyCalldata,
+            nonce: nonce,
+            version: supportedTxVersion == AccountSupportedTxVersion.v1
+                ? "0x1"
+                : "0x0");
 
     final signature = signer.signTransactions(
       transactions: functionCalls,
@@ -241,7 +281,9 @@ class Account {
     CASMCompiledContract? casmCompiledContract,
   }) async {
     nonce = nonce ?? await getNonce();
-    maxFee = maxFee ?? await getEstimateMaxFeeForDeclareTx(nonce: nonce, compiledContract: compiledContract);
+    maxFee = maxFee ??
+        await getEstimateMaxFeeForDeclareTx(
+            nonce: nonce, compiledContract: compiledContract);
     if (compiledContract is DeprecatedCompiledContract) {
       final signature = signer.signDeclareTransactionV1(
         compiledContract: compiledContract,
