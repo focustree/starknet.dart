@@ -136,11 +136,11 @@ class _SecureStoreBridgeCodec extends StandardMessageCodec {
   @override
   Object? readValueOfType(int type, ReadBuffer buffer) {
     switch (type) {
-      case 128: 
+      case 128:
         return AndroidOptions.decode(readValue(buffer)!);
-      case 129: 
+      case 129:
         return AndroidPromptInfos.decode(readValue(buffer)!);
-      case 130: 
+      case 130:
         return BiometricOptions.decode(readValue(buffer)!);
       default:
         return super.readValueOfType(type, buffer);
@@ -158,12 +158,14 @@ class SecureStoreBridge {
 
   static const MessageCodec<Object?> codec = _SecureStoreBridgeCodec();
 
-  Future<void> storeSecret(String arg_key, Uint8List arg_privateKey, BiometricOptions? arg_biometricOptions) async {
+  Future<void> storeSecret(String arg_key, Uint8List arg_privateKey,
+      BiometricOptions? arg_biometricOptions) async {
     final BasicMessageChannel<Object?> channel = BasicMessageChannel<Object?>(
         'dev.flutter.pigeon.secure_store.SecureStoreBridge.storeSecret', codec,
         binaryMessenger: _binaryMessenger);
-    final List<Object?>? replyList =
-        await channel.send(<Object?>[arg_key, arg_privateKey, arg_biometricOptions]) as List<Object?>?;
+    final List<Object?>? replyList = await channel
+            .send(<Object?>[arg_key, arg_privateKey, arg_biometricOptions])
+        as List<Object?>?;
     if (replyList == null) {
       throw PlatformException(
         code: 'channel-error',
@@ -202,12 +204,13 @@ class SecureStoreBridge {
     }
   }
 
-  Future<Uint8List?> getSecret(String arg_key, BiometricOptions? arg_biometricOptions) async {
+  Future<Uint8List?> getSecret(
+      String arg_key, BiometricOptions? arg_biometricOptions) async {
     final BasicMessageChannel<Object?> channel = BasicMessageChannel<Object?>(
         'dev.flutter.pigeon.secure_store.SecureStoreBridge.getSecret', codec,
         binaryMessenger: _binaryMessenger);
-    final List<Object?>? replyList =
-        await channel.send(<Object?>[arg_key, arg_biometricOptions]) as List<Object?>?;
+    final List<Object?>? replyList = await channel
+        .send(<Object?>[arg_key, arg_biometricOptions]) as List<Object?>?;
     if (replyList == null) {
       throw PlatformException(
         code: 'channel-error',
@@ -226,10 +229,10 @@ class SecureStoreBridge {
 
   Future<bool> isBiometryAvailable() async {
     final BasicMessageChannel<Object?> channel = BasicMessageChannel<Object?>(
-        'dev.flutter.pigeon.secure_store.SecureStoreBridge.isBiometryAvailable', codec,
+        'dev.flutter.pigeon.secure_store.SecureStoreBridge.isBiometryAvailable',
+        codec,
         binaryMessenger: _binaryMessenger);
-    final List<Object?>? replyList =
-        await channel.send(null) as List<Object?>?;
+    final List<Object?>? replyList = await channel.send(null) as List<Object?>?;
     if (replyList == null) {
       throw PlatformException(
         code: 'channel-error',

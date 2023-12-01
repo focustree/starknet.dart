@@ -19,8 +19,6 @@ coverage/
 
 .idea
 
-.env
-
 # Python
 **/__pycache__
 .venv
@@ -28,4 +26,5 @@ coverage/
 # Cairo
 !contracts/build
 
-.env.testnet
+.env.*
+!.env.katana

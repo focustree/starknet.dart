@@ -34,7 +34,7 @@ Future<int> getCurrentCount() async {
   );
 }
 
-Future<String>increaseCounter() async {
+Future<String> increaseCounter() async {
   print('print increment');
   final response = await signeraccount.execute(functionCalls: [
     FunctionCall(
