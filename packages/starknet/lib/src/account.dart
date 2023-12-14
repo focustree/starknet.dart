@@ -213,6 +213,7 @@ class Account {
     Felt? nonce,
   }) async {
     nonce = nonce ?? await getNonce();
+    print(nonce);
     maxFee = maxFee ??
         await getEstimateMaxFeeForInvokeTx(
             functionCalls: functionCalls,

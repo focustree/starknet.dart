@@ -102,7 +102,7 @@ class ERC20SendCommand extends Command {
         calldata: [
           Felt.fromHexString(argResults?['to']),
           Felt.fromIntString(argResults?['amount']),
-          Felt.fromInt(0)
+          Felt.fromInt(0) // Uint high
         ],
       )
     ]);
@@ -179,6 +179,8 @@ class ERC20MultiSendCommand extends Command {
         ],
       ));
     }
+
+    print(transfers);
 
     // Execute the multi-call transaction
     final res = await account.execute(functionCalls: transfers);

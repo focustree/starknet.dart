@@ -32,7 +32,6 @@ final devnetOpenZeppelinAccountClassHash = Felt.fromHexString(
 );
 
 // Devnet
-
 final devnetUri = Uri.parse('http://localhost:5050/rpc');
 
 final devnetAccount0Address = Felt.fromHexString(
