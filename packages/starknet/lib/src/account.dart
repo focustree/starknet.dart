@@ -35,23 +35,9 @@ class Account {
       contractAddress: accountAddress,
     );
     return (response.when(
-      error: (error) async {
-        // fallback to account contract call
-        final response = await provider.call(
-          request: FunctionCall(
-            contractAddress: accountAddress,
-            entryPointSelector: getSelectorByName("get_nonce"),
-            calldata: [],
-          ),
-          blockId: blockId,
-        );
-        return (response.when(
-          error: (error) {
-            throw Exception(
-                "Error retrieving nonce (${error.code}): ${error.message}");
-          },
-          result: (result) => result[0],
-        ));
+      error: (error) {
+        throw Exception(
+            "Error retrieving nonce (${error.code}): ${error.message}");
       },
       result: (result) => result,
     ));
