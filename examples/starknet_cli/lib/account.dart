@@ -33,27 +33,24 @@ class AccountDeployCommand extends Command {
   @override
   final description = "Deploy pre-funded account contract";
 
-  AccountDeployCommand() {
-    argParser.addOption(
-      "public-key",
-      help: "Public Key",
-      valueHelp: "0x...",
-      mandatory: true,
-    );
-  }
-
   @override
   void run() async {
-    final publicKey = Felt.fromHexString(argResults?['public-key']);
-    final accountAddress =
-        OpenzeppelinAccountDerivation().computeAddress(publicKey: publicKey);
+    final accountClassHash = Felt.fromHexString(
+      "0x0251cac7b2f45d255b83b7a06dcdef70c8a8752f00ea776517c1c2243c7a06e5",
+    ); // Focus Account
+    final publicKey = Felt.fromHexString(globalResults?['public-key']);
+    final privateKey = Felt.fromHexString(globalResults?['private-key']);
+    final accountAddress = Contract.computeAddress(
+      classHash: accountClassHash,
+      calldata: [Signer(privateKey: privateKey).publicKey],
+      salt: Signer(privateKey: privateKey).publicKey,
+    );
     print("Account address: ${accountAddress.toHexString()}");
     final res = await Account.deployAccount(
       signer: signerFromArgs(globalResults),
       provider: providerFromArgs(globalResults),
       constructorCalldata: [publicKey],
-      classHash: Felt.fromHexString(
-          "0x016e51dbfd788a497bd54333d0c7c4096a1120770f9fff9a733f51a075446975"),
+      classHash: accountClassHash,
     );
 
     print(res.when(
