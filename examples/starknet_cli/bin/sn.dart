@@ -7,6 +7,7 @@ import 'package:starknet_cli/block_number.dart';
 import 'package:starknet_cli/call.dart';
 import 'package:starknet_cli/deploy.dart';
 import 'package:starknet_cli/invoke.dart';
+import 'package:starknet_cli/signer.dart';
 
 void main(List<String> args) {
   CommandRunner("sn", "A Starknet CLI written in Dart")
@@ -16,6 +17,7 @@ void main(List<String> args) {
     ..addCommand(DeployCommand())
     ..addCommand(AccountCommand())
     ..addCommand(ERC20Command())
+    ..addCommand(SignerCommand())
     ..argParser.addOption(
       "rpc",
       help: "Starknet RPC Endpoint",
