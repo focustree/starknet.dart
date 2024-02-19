@@ -6,4 +6,5 @@ enum TokenSymbol {
   FOCUS,
   USDC,
   USDT,
+  STRK
 }
