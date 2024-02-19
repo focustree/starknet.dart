@@ -205,6 +205,41 @@ class Wallets extends _$Wallets with PersistedState<WalletsState> {
       )
     });
   }
+
+  refreshStrkBalance(String walletId, int accountId) async {
+    final accountAddress =
+        state.wallets[walletId]?.accounts[accountId]?.address;
+    if (accountAddress == null) {
+      throw Exception('Account address is null');
+    }
+    final provider = WalletKit().provider;
+    final strkBalance = await getStrkBalance(
+      provider: provider,
+      accountAddress: s.Felt.fromHexString(accountAddress),
+    );
+    final wallet = state.wallets[walletId];
+    if (wallet == null) {
+      throw Exception("Wallet not found");
+    }
+    final account = wallet.accounts[accountId];
+    if (account == null) {
+      throw Exception("Account not found");
+    }
+    state = state.copyWith(wallets: {
+      ...state.wallets,
+      walletId: wallet.copyWith(
+        accounts: {
+          ...wallet.accounts,
+          accountId: account.copyWith(
+            balances: {
+              ...account.balances,
+              'STRK': double.parse(strkBalance.toStringAsFixed(4)),
+            },
+          ),
+        },
+      )
+    });
+  }
 }
 
 Future<double> getEthBalance(
@@ -230,6 +265,31 @@ Future<double> getEthBalance(
       final ethBalance = s.Uint256.fromFeltList(result).toBigInt() /
           BigInt.from(10).pow(ethDecimals);
       return ethBalance;
+    },
+  );
+}
+
+Future<double> getStrkBalance(
+    {required sp.Provider provider, required s.Felt accountAddress}) async {
+  final strkContractAddress = s.Felt.fromHexString(
+      '0x04718f5a0fc34cc1af16a1cdee98ffb20c31f5cd61d6ab07201858f4287c938d');
+  const strkDecimals = 18;
+  final response = await provider.call(
+    request: sp.FunctionCall(
+      contractAddress: strkContractAddress,
+      entryPointSelector: s.getSelectorByName('balanceOf'),
+      calldata: [accountAddress],
+    ),
+    blockId: const sp.BlockId.blockTag("latest"),
+  );
+  return response.when<double>(
+    error: (error) {
+      throw Exception(error);
+    },
+    result: (result) {
+      final strkBalance = s.Uint256.fromFeltList(result).toBigInt() /
+          BigInt.from(10).pow(strkDecimals);
+      return strkBalance;
     },
   );
 }
