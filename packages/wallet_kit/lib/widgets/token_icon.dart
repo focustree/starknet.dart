@@ -13,8 +13,8 @@ class TokenIcon extends StatelessWidget {
   Widget build(BuildContext context) {
     return SvgPicture.asset(
       "packages/wallet_kit/assets/images/crypto/${symbol.name}.svg",
-      width: 24,
-      height: 24,
+      width: size,
+      height: size,
     );
   }
 }
