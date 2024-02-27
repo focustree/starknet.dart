@@ -61,6 +61,47 @@ class InvokeTransactionV1
 }
 
 @freezed
+class InvokeTransactionV3
+    with _$InvokeTransactionV3
+    implements InvokeTransaction {
+  const factory InvokeTransactionV3({
+    @Default([]) List<Felt> accountDeploymentData,
+    @Default([]) List<Felt> paymasterData,
+    required List<Felt> signature,
+    required Felt nonce,
+    required Felt chainId,
+    @Default('0x0') Felt feeDataAvailabilityMode,
+    @Default('0x0') Felt nonceDataAvailabilityMode,
+    @Default('0x0') Felt tip,
+    required Felt senderAddress,
+    required List<Felt> calldata,
+    @Default('0x03') String version,
+    @Default('INVOKE') String type,
+    required Map<Resource, ResourceBounds> resourceBounds,
+  }) = _InvokeTransactionV3;
+
+  factory InvokeTransactionV3.fromJson(Map<String, Object?> json) =>
+      _$InvokeTransactionV3FromJson(json);
+}
+
+class Resource {
+  static const String l1Gas = "L1_GAS";
+  static const String l2Gas = "L2_GAS";
+}
+
+@freezed
+class ResourceBounds
+    with _$ResourceBounds {
+  const factory ResourceBounds({
+    required Felt maxAmount,
+    required Felt maxPricePerUnit,
+  }) = _ResourceBounds;
+
+  factory ResourceBounds.fromJson(Map<String, Object?> json) =>
+      _$ResourceBoundsFromJson(json);
+}
+
+@freezed
 class InvokeTransactionResponse with _$InvokeTransactionResponse {
   const factory InvokeTransactionResponse.result({
     required InvokeTransactionResponseResult result,
