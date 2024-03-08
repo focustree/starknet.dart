@@ -52,7 +52,7 @@ jobs:
       matrix:
         sdk: [dev, stable, 2.17.3]
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
       - uses: dart-lang/setup-dart@v1.0
         with:
           sdk: ${{ matrix.sdk }}
@@ -84,7 +84,7 @@ jobs:
         os: [ubuntu-latest]
         sdk: [dev, stable, 2.17.3]
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
       - uses: dart-lang/setup-dart@v1.0
         with:
           sdk: ${{ matrix.sdk }}
@@ -104,7 +104,7 @@ jobs:
       run:
         working-directory: ${{ env.WORK_DIR }}
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
       - uses: axel-op/dart-package-analyzer@v3
         with:
           githubToken: ${{ secrets.GITHUB_TOKEN }}
@@ -119,7 +119,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: "Checkout"
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
       # Only publishes if package version is different from the latest published on pub.dev
       # See the docs: https://github.com/marketplace/actions/dart-and-flutter-package-publisher
       - name: "Publish package"

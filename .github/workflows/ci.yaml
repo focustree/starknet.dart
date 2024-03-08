@@ -50,7 +50,7 @@ jobs:
       - name: Print $GITHUB_CONTEXT
         shell: bash
         run: echo "$GITHUB_CONTEXT"
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
       - uses: dart-lang/setup-dart@v1.0
         with:
           sdk: stable
@@ -73,7 +73,7 @@ jobs:
         working-directory: ${{ env.WORK_DIR }}
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
       - uses: dart-lang/setup-dart@v1.0
         with:
           sdk: stable
@@ -90,7 +90,7 @@ jobs:
         working-directory: ${{ env.WORK_DIR }}
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
       - uses: dart-lang/setup-dart@v1.0
         with:
           sdk: stable
@@ -104,7 +104,7 @@ jobs:
     needs: analyze
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
       #
       # devnet setup
       #
@@ -163,7 +163,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: "Checkout"
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
       # Only publishes if package version is different from the latest published on pub.dev
       # See the docs: https://github.com/marketplace/actions/dart-and-flutter-package-publisher
       - name: "Publish package (dry run)"
