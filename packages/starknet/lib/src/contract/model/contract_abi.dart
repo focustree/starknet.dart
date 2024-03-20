@@ -16,7 +16,8 @@ class SierraContractAbiEntry with _$SierraContractAbiEntry {
   const factory SierraContractAbiEntry.event({
     required String type,
     required String name,
-    required List<InputParameter> inputs,
+    // TODO: switch to enum?
+    required String kind,
   }) = SierraEventAbiEntry;
 
   // enum is a reserved keyword
@@ -32,14 +33,41 @@ class SierraContractAbiEntry with _$SierraContractAbiEntry {
     required List<MemberParameter> members,
   }) = SierraStructAbiEntry;
 
-  factory SierraContractAbiEntry.fromJson(Map<String, Object?> json) =>
-      json['type'] == 'event'
-          ? SierraEventAbiEntry.fromJson(json)
-          : json['type'] == 'struct'
-              ? SierraStructAbiEntry.fromJson(json)
-              : json['type'] == 'enum'
-                  ? SierraEnumAbiEntry.fromJson(json)
-                  : SierraFunctionAbiEntry.fromJson(json);
+  const factory SierraContractAbiEntry.impl({
+    required String type,
+    required String name,
+    required String interfaceName,
+  }) = SierraImplAbiEntry;
+
+  const factory SierraContractAbiEntry.interface({
+    required String type,
+    required String name,
+  }) = SierraInterfaceAbiEntry;
+
+  const factory SierraContractAbiEntry.constructor({
+    required String type,
+    required String name,
+    required List<InputParameter> inputs,
+  }) = SierraConstructorAbiEntry;
+
+  factory SierraContractAbiEntry.fromJson(Map<String, Object?> json) => json[
+              'type'] ==
+          'event'
+      ? SierraEventAbiEntry.fromJson(json)
+      : json['type'] == 'struct'
+          ? SierraStructAbiEntry.fromJson(json)
+          : json['type'] == 'enum'
+              ? SierraEnumAbiEntry.fromJson(json)
+              : json['type'] == 'function'
+                  ? SierraFunctionAbiEntry.fromJson(json)
+                  : json['type'] == 'impl'
+                      ? SierraImplAbiEntry.fromJson(json)
+                      : json['type'] == 'interface'
+                          ? SierraInterfaceAbiEntry.fromJson(json)
+                          : json['type'] == 'constructor'
+                              ? SierraConstructorAbiEntry.fromJson(json)
+                              : throw Exception(
+                                  "Unsupported entry type: ${json['type']}");
 }
 
 @freezed
@@ -83,6 +111,80 @@ class VariantParameter with _$VariantParameter {
 
   factory VariantParameter.fromJson(Map<String, Object?> json) =>
       _$VariantParameterFromJson(json);
+}
+
+@freezed
+class SierraEventAbi with _$SierraEventAbi {
+  const factory SierraEventAbi({required SierraEventAbiInstance inner}) =
+      _SierraEventAbi;
+
+  factory SierraEventAbi.fromJson(Map<String, Object?> json) =>
+      _$SierraEventAbiFromJson(json);
+}
+
+abstract class SierraEventAbiInstance {
+  factory SierraEventAbiInstance.fromJson(Map<String, Object?> json) =>
+      json["kind"] == "enum"
+          ? SierraEventAbiEnum.fromJson(json)
+          : SierraEventAbiStruct.fromJson(json);
+
+  Map<String, dynamic> toJson();
+}
+
+@freezed
+class SierraEventAbiEnum
+    with _$SierraEventAbiEnum
+    implements SierraEventAbiInstance {
+  const factory SierraEventAbiEnum({
+    required String type,
+    required String name,
+    required String kind,
+    required List<SierraEventAbiEnumVariant> variants,
+  }) = _SierraEventAbiEnum;
+
+  factory SierraEventAbiEnum.fromJson(Map<String, Object?> json) =>
+      _$SierraEventAbiEnumFromJson(json);
+}
+
+@freezed
+class SierraEventAbiEnumVariant with _$SierraEventAbiEnumVariant {
+  const factory SierraEventAbiEnumVariant({
+    required String name,
+    required String type,
+    // TODO: switch to enum?
+    required String kind,
+  }) = _SierraEventAbiEnumVariant;
+
+  factory SierraEventAbiEnumVariant.fromJson(Map<String, Object?> json) =>
+      _$SierraEventAbiEnumVariantFromJson(json);
+}
+
+@freezed
+class SierraEventAbiStruct
+    with _$SierraEventAbiStruct
+    implements SierraEventAbiInstance {
+  const factory SierraEventAbiStruct({
+    required String type,
+    required String name,
+    required String kind,
+    required List<SierraEventAbiStructMember> members,
+  }) = _SierraEventAbiStruct;
+
+  factory SierraEventAbiStruct.fromJson(Map<String, Object?> json) =>
+      _$SierraEventAbiStructFromJson(json);
+}
+
+@freezed
+class SierraEventAbiStructMember with _$SierraEventAbiStructMember {
+  const factory SierraEventAbiStructMember({
+    required String name,
+    required String type,
+    // TODO: switch to enum ?
+    required String kind,
+  }) = _SierraEventAbiStructMember;
+
+  factory SierraEventAbiStructMember.fromJson(Map<String, Object?> json) =>
+      _$SierraEventAbiStructMemberFromJson(json);
 }
 
 @freezed
