@@ -1,7 +1,7 @@
 #!/bin/sh
 # This is a generated file; do not edit or check into version control.
-export "FLUTTER_ROOT=/usr/local/Caskroom/flutter/3.10.1/flutter"
-export "FLUTTER_APPLICATION_PATH=/Users/gabin/src/gabsn/starknet.dart/packages/wallet_kit"
+export "FLUTTER_ROOT=/usr/local/Caskroom/flutter/3.7.7/flutter"
+export "FLUTTER_APPLICATION_PATH=/Users/paulreboullet/Desktop/Starknet/starknet.dart/packages/wallet_kit"
 export "COCOAPODS_PARALLEL_CODE_SIGN=true"
 export "FLUTTER_BUILD_DIR=build"
 export "FLUTTER_BUILD_NAME=0.0.1"
