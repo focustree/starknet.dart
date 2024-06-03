@@ -7,3 +7,36 @@ packages:
 ignore:
   - "examples/starknet_counter"
   - "packages/wallet_kit"
+
+scripts:
+  analyze:
+    description: Analyze all packages
+    exec: dart analyze --fatal-infos
+
+  test:
+    description: Run all tests
+    run: melos exec --dir-exists="test" --fail-fast -- dart test --fail-fast
+
+  format:
+    description: Format all packages
+    exec: dart format .
+  format:check:
+    description: Format check all packages
+    exec: dart format --set-exit-if-changed .
+
+  publish:dry-run:
+    description: Publish dry-run all packages
+    exec: dart pub publish --dry-run
+    packageFilters:
+      noPrivate: true
+
+  upgrade:dart:
+    name: Upgrade Dart package deps
+    exec: dart pub upgrade
+    packageFilters:
+      flutter: false
+  upgrade:flutter:
+    name: Upgrade Flutter package deps
+    exec: flutter pub upgrade
+    packageFilters:
+      flutter: true
