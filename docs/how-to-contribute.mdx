@@ -1,0 +1,35 @@
+# How to contribute (and get paid)
+
+If you want to contribute to the project, you can follow the steps below:
+
+1. Join our [telegram group](https://t.me/+CWezjfLIRYc0MDY0) and introduce yourself.
+2. We'll let you know what are good issues to start with.
+3. Create your account on [Only Dust](https://app.onlydust.com/p/starknetdart) and receive your first payment.
+
+## How to setup your dev env
+
+1. Clone the repository:
+
+```sh
+git clone git@github.com:focustree/starknet.dart.git
+```
+
+2. [Install flutter and dart](https://docs.flutter.dev/get-started/install)
+
+3. Install [melos](https://melos.invertase.dev/~melos-latest/getting-started):
+
+```sh
+dart pub global activate melos
+```
+
+We use melos to manage our monorepo. You can:
+
+- Run `melos run test` to run tests
+- Run `melos bs` to get all packages deps
+- Run `melos publish` to publish all packages
+
+4. Fetch all dependencies:
+
+```sh
+melos bootstrap
+```

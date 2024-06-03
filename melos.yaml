@@ -1,0 +1,9 @@
+name: monorepo
+
+packages:
+  - examples/**
+  - packages/**
+
+ignore:
+  - "examples/starknet_counter"
+  - "packages/wallet_kit"
