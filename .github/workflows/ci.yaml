@@ -9,79 +9,23 @@ env:
   WORK_DIR: packages/starknet
 
 jobs:
-  dump-context:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Dump GitHub context
-        env:
-          GITHUB_CONTEXT: ${{ toJson(github) }}
-        run: echo "$GITHUB_CONTEXT"
-      - name: Dump job context
-        env:
-          JOB_CONTEXT: ${{ toJson(job) }}
-        run: echo "$JOB_CONTEXT"
-      - name: Dump steps context
-        env:
-          STEPS_CONTEXT: ${{ toJson(steps) }}
-        run: echo "$STEPS_CONTEXT"
-      - name: Dump runner context
-        env:
-          RUNNER_CONTEXT: ${{ toJson(runner) }}
-        run: echo "$RUNNER_CONTEXT"
-      - name: Dump strategy context
-        env:
-          STRATEGY_CONTEXT: ${{ toJson(strategy) }}
-        run: echo "$STRATEGY_CONTEXT"
-      - name: Dump matrix context
-        env:
-          MATRIX_CONTEXT: ${{ toJson(matrix) }}
-        run: echo "$MATRIX_CONTEXT"
-      - name: Show default environment variables
-        run: |
-          echo "The job_id is: $GITHUB_JOB"   # reference the default environment variables
-          echo "The id of this action is: $GITHUB_ACTION"   # reference the default environment variables
-          echo "The run id is: $GITHUB_RUN_ID"
-          echo "The GitHub Actor's username is: $GITHUB_ACTOR"
-          echo "GitHub SHA: $GITHUB_SHA"
-
-  analyze:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Print $GITHUB_CONTEXT
-        shell: bash
-        run: echo "$GITHUB_CONTEXT"
-      - uses: actions/checkout@v2
-      - uses: dart-lang/setup-dart@v1.0
-        with:
-          sdk: stable
-      - id: install
-        name: Install dependencies
-        run: dart pub get
-        working-directory: ${{ env.WORK_DIR }}
-      - name: Check formatting
-        run: dart format --output=none --set-exit-if-changed .
-        working-directory: ${{ env.WORK_DIR }}
-      - name: Analyze code
-        run: dart analyze --fatal-infos
-        if: always() && steps.install.outcome == 'success'
-        working-directory: ${{ env.WORK_DIR }}
-
-  test-unit:
-    needs: analyze
-    defaults:
-      run:
-        working-directory: ${{ env.WORK_DIR }}
-    runs-on: ubuntu-latest
+  lint:
     steps:
       - uses: actions/checkout@v2
       - uses: dart-lang/setup-dart@v1.0
-        with:
-          sdk: stable
-      - id: install
-        name: Install dependencies
-        run: dart pub get
-      - name: Run tests on testnet
-        run: dart test -t unit
+      - uses: bluefireteam/melos-action@v3
+      - run: melos bootstrap
+      - run: melos format:check
+      - run: melos analyze
+
+  test:unit:
+    needs: lint
+    steps:
+      - uses: actions/checkout@v2
+      - uses: dart-lang/setup-dart@v1.0
+      - uses: bluefireteam/melos-action@v3
+      - run: melos bootstrap
+      - run: melos test:dart:unit
 
   test-integration-testnet:
     needs: analyze
