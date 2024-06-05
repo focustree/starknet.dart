@@ -53,28 +53,42 @@ We use melos to manage our monorepo:
 melos bootstrap
 ```
 
+<<<<<<< HEAD
 5. Set up your starknet dev env. First [install asdf](https://asdf-vm.com/guide/getting-started.html), then run:
+||||||| parent of 3929d90 (Use starknet-devnet-rs instead of katana)
+5. Setup your starknet dev env. First [install asdf](https://asdf-vm.com/guide/getting-started.html), then run:
+=======
+5. We setup all important params via env vars (ex: `STARKNET_RPC` ). Make sure to source the env vars before running any command:
+>>>>>>> 3929d90 (Use starknet-devnet-rs instead of katana)
 
 ```sh
-melos dev:setup
+source .env.devnet
 ```
 
-Start the devnet in another terminal:
+6. Setup your starknet dev env
+
+First install [asdf](https://asdf-vm.com/guide/getting-started.html) and [cargo](https://doc.rust-lang.org/cargo/getting-started/installation.html).
 
 ```sh
-katana
+melos starknet:setup
 ```
 
-Try this command to make sure the devnet is running:
+Start the devnet in one terminal:
 
 ```sh
-starkli block-number # should return 0
+melos devnet:start
 ```
 
-We setup all important params via env vars (ex: `STARKNET_RPC` ). Make sure to source the env vars before running any command:
+And in another terminal, deploy the contracts:
 
 ```sh
-source .env.katana
+melos devnet:setup
+```
+
+7. Run the tests:
+
+```sh
+melos test
 ```
 
 ## Repo structure
@@ -94,5 +108,5 @@ Tools need to be at the right version to avoid any incompability:
 
 - [Cairo Compiler Version](https://github.com/starkware-libs/cairo/releases): `2.6.2`
 - [Scarb](https://github.com/software-mansion/scarb/releases): `2.6.2`
-- [Dojo & Katana](https://github.com/dojoengine/dojo/releases): `0.6.0`
+- [Starknet Devnet](https://github.com/0xSpaceShard/starknet-devnet-rs/releases): `0.5.0`
 - [Starkli](https://github.com/xJonathanLEI/starkli/releases): `0.2.9`

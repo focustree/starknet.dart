@@ -28,13 +28,12 @@ scripts:
     description: Format check all packages
     exec: dart format --set-exit-if-changed .
 
-  dev:setup:
-    description: Install Katana, Cairo and Starknet
+  starknet:setup:
+    description: Install starknet dev env
     run: |
-      source .env.katana
+      source .env.devnet
 
-      curl -L https://install.dojoengine.org | bash                 
-      dojoup --version v$DOJO_VERSION
+      cargo install starknet-devnet --version $STARKNET_DEVNET_VERSION
 
       curl https://get.starkli.sh | sh
       starkliup -v v$STARKLI_VERSION
@@ -50,31 +49,36 @@ scripts:
     run: |
       echo "starkli: $(starkli --version)"
       scarb --version
-      katana --version
+      starknet-devnet --version
 
-  katana:start:
-    description: Start Katana
+  devnet:start:
+    description: Start local devnet
     run: |
-      source .env.katana
-      katana
-  katana:setup:
-    description: Setup Katana
+      starknet-devnet --seed 0
+  devnet:setup:
+    description: Setup local devnet
     run: |
       melos contracts:build
+      melos contracts:declare
       melos contracts:deploy
 
   contracts:build:
     description: Build cairo contracts
     run: |
-      source .env.katana
       cd contracts/v$CAIRO_VERSION
       scarb build
+  contracts:declare:
+    description: Declare cairo contracts
+    run: |
+      starkli declare contracts/v$CAIRO_VERSION/target/dev/starknet_dart_hello.contract_class.json --compiler-version $CAIRO_VERSION
   contracts:deploy:
     description: Deploy cairo contracts
     run: |
-      source .env.katana
-      starkli declare contracts/v$CAIRO_VERSION/target/dev/starknet_dart_hello.contract_class.json --compiler-version $CAIRO_VERSION
       starkli deploy $HELLO_CLASS_HASH --salt $SALT 0x0
+  hello:get_name:
+    description: Call hello get_name
+    run: |
+      starkli call $HELLO_CONTRACT_ADDRESS get_name
 
   test:
     description: Run all tests
