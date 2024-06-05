@@ -2,11 +2,6 @@ name: CI
 
 on:
   pull_request:
-  schedule:
-    - cron: "0 0 * * 0"
-
-env:
-  WORK_DIR: packages/starknet
 
 jobs:
   lint:
