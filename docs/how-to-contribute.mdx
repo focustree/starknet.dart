@@ -79,7 +79,7 @@ And in another terminal, deploy the contracts:
 melos devnet:setup
 ```
 
-7. Run the tests:
+## How to run the tests
 
 ```sh
 melos test
@@ -95,6 +95,18 @@ melos test
   - `wallet_kit` is a higher level ui kit to manage wallets and transactions in a flutter app.
 - `/examples` contains examples of apps using the packages. They should be accompanied by a tutorial in the docs to reproduce the app from scratch.
 - `/docs` contains the documentation of the project. Docs are automatically deployed when we merge to main.
+
+### Generate freezed model classes
+
+To avoid writing too much boilerplate, we use the [freezed](https://github.com/rrousselGit/freezed) library to automatically generate serializer logic.
+
+You can run the following command to generate those classes:
+
+```
+dart run build_runner build
+```
+
+Alternatively, you can hit `Cmd + Shift + B` in vscode.
 
 ## Troubleshooting
 
