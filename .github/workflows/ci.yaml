@@ -98,9 +98,9 @@ jobs:
         name: Install dependencies
         run: dart pub get
       - name: Run tests on testnet
-        run: dart test -t integration-testnet --exclude-tags='rpc-node-bug'
+        run: dart test -t integration-testnet --exclude-tags='integration'
 
-  test-integration-devnet:
+  test-integration:
     needs: analyze
     runs-on: ubuntu-latest
     steps:
@@ -154,12 +154,12 @@ jobs:
       - name: Run tests on devnet
         env:
           NETWORK: devnet
-        run: dart test -t integration-devnet-040
+        run: dart test -t integration
         working-directory: ${{ env.WORK_DIR }}
 
   publish:
     if: github.event.pull_request.head.repo.fork == false
-    needs: test-integration-devnet
+    needs: test-integration
     runs-on: ubuntu-latest
     steps:
       - name: "Checkout"

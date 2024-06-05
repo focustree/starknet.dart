@@ -8,14 +8,84 @@ ignore:
   - "examples/starknet_counter"
   - "packages/wallet_kit"
 
+command:
+  bootstrap:
+    usePubspecOverrides: true
+
 scripts:
   analyze:
     description: Analyze all packages
     exec: dart analyze --fatal-infos
 
+  dev:setup:
+    description: Install Katana, Cairo and Starknet
+    run: |
+      source .env.katana
+
+      curl -L https://install.dojoengine.org | bash                 
+      dojoup --version v$DOJO_VERSION
+
+      curl https://get.starkli.sh | sh
+      starkliup -v v$STARKLI_VERSION
+
+      asdf plugin add scarb
+      asdf install scarb $SCARB_VERSION
+      asdf local scarb $SCARB_VERSION
+
+      melos versions
+
+  versions:
+    description: Display toolchain versions
+    run: |
+      echo "starkli: $(starkli --version)"
+      scarb --version
+      katana --version
+
+  katana:start:
+    description: Start Katana
+    run: |
+      source .env.katana
+      katana
+
+  katana:setup:
+    description: Setup Katana
+    run: |
+      melos contracts:build
+      melos contracts:deploy
+
+  contracts:build:
+    description: Build cairo contracts
+    run: |
+      source .env.katana
+      cd contracts/v$CAIRO_VERSION
+      scarb build
+
+  contracts:deploy:
+    description: Deploy cairo contracts
+    run: |
+      source .env.katana
+      starkli declare contracts/v$CAIRO_VERSION/target/dev/starknet_dart_hello.contract_class.json --compiler-version $CAIRO_VERSION
+      starkli deploy $HELLO_CLASS_HASH --salt $SALT 0x0
+
   test:
     description: Run all tests
-    run: melos exec --dir-exists="test" --fail-fast -- dart test --fail-fast
+    steps:
+      - melos test:dart:unit
+      - melos test:dart:integration
+
+  test:dart:unit:
+    description: Run all dart unit tests
+    run: melos exec --dir-exists="test" -- dart test --tags unit --fail-fast
+    packageFilters:
+      ignore: "*starknet_builder*"
+      flutter: false
+
+  test:dart:integration:
+    description: Run all dart integration tests
+    run: melos exec --dir-exists="test" -- dart test --tags integration --fail-fast
+    packageFilters:
+      ignore: "*starknet_builder*"
+      flutter: false
 
   format:
     description: Format all packages
