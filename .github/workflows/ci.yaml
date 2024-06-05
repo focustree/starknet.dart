@@ -8,7 +8,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: dart-lang/setup-dart@v1.0
+      - uses: flutter-actions/setup-flutter@v3
+        with:
+          channel: stable
+          version: 3.19.5
       - uses: bluefireteam/melos-action@v3
       - run: melos bootstrap
       - run: melos format:check
@@ -19,7 +22,10 @@ jobs:
     needs: lint
     steps:
       - uses: actions/checkout@v2
-      - uses: dart-lang/setup-dart@v1.0
+      - uses: flutter-actions/setup-flutter@v3
+        with:
+          channel: stable
+          version: 3.19.5
       - uses: bluefireteam/melos-action@v3
       - run: melos bootstrap
       - run: melos test:dart:unit
@@ -34,7 +40,10 @@ jobs:
           - 5050:5050
     steps:
       - uses: actions/checkout@v2
-      - uses: dart-lang/setup-dart@v1.0
+      - uses: flutter-actions/setup-flutter@v3
+        with:
+          channel: stable
+          version: 3.19.5
       - uses: bluefireteam/melos-action@v3
       - run: melos bootstrap
       - run: melos test:dart:integration
