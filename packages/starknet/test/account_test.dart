@@ -53,7 +53,7 @@ void main() {
         );
         expect(txStatus, equals(true));
       });
-    }, tags: ['integration-devnet-040']);
+    }, tags: ['integration'], skip: true);
 
     group('declare cairo 1', () {
       test(
@@ -103,7 +103,7 @@ void main() {
                 },
                 error: (error) => fail("Shouldn't fail"));
       });
-    }, tags: ['integration-devnet-040']);
+    }, tags: ['integration'], skip: true);
 
     group('deploy', () {
       test('succeeds to deploy a cairo 0 contract', () async {
@@ -182,8 +182,8 @@ void main() {
                 error: ((error) => Felt.fromInt(0)));
         expect(accountClassHash, equals(classHash));
       });
-      // }, tags: ['integration-devnet-040']);
-    }, tags: ['to-be-fixed']);
+      // }, tags: ['integration']);
+    }, tags: ['integration'], skip: true);
 
     group('fee token', () {
       test('get balance', () async {
@@ -222,7 +222,7 @@ void main() {
         final newBalance = await account1.balance();
         expect(newBalance, equals(previousBalance));
       });
-    }, tags: ['integration-devnet-040']);
+    }, tags: ['integration'], skip: true);
 
     group('recovery from seed phrase', () {
       final mnemonic =

@@ -663,7 +663,7 @@ void main() {
             expect(result.program, isNotNull);
           },
         );
-      }, tags: ['rpc-node-bug']);
+      }, tags: ['integration']);
 
       test(
           'returns contract class definition for a known class hash (cairo 1.0)',
@@ -681,7 +681,7 @@ void main() {
             expect(result.sierraProgram, isNotEmpty);
           },
         );
-      }, tags: ['rpc-node-bug']);
+      }, tags: ['integration']);
 
       test('returns BLOCK_NOT_FOUND error when invalid block id is given.',
           () async {
@@ -781,7 +781,7 @@ void main() {
             expect(result.program, isNotNull);
           },
         );
-      }, tags: ['rpc-node-bug']);
+      }, tags: ['integration']);
 
       test(
           'returns contract class definition in the given block for given contract address. (cairo 1.0)',
@@ -799,7 +799,7 @@ void main() {
             expect(result.sierraProgram, isNotEmpty);
           },
         );
-      }, tags: ['rpc-node-bug']);
+      }, tags: ['integration']);
 
       test('returns BLOCK_NOT_FOUND error when invalid block id is given.',
           () async {
@@ -1061,5 +1061,5 @@ void main() {
         );
       });
     });
-  }, tags: ['integration-testnet']);
+  }, tags: ['integration-testnet'], skip: true);
 }

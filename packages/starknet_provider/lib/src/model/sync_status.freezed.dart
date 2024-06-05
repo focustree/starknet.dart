@@ -12,7 +12,7 @@ part of 'sync_status.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 SyncStatus _$SyncStatusFromJson(Map<String, dynamic> json) {
   return _SyncStatus.fromJson(json);
@@ -98,11 +98,11 @@ class _$SyncStatusCopyWithImpl<$Res, $Val extends SyncStatus>
 }
 
 /// @nodoc
-abstract class _$$_SyncStatusCopyWith<$Res>
+abstract class _$$SyncStatusImplCopyWith<$Res>
     implements $SyncStatusCopyWith<$Res> {
-  factory _$$_SyncStatusCopyWith(
-          _$_SyncStatus value, $Res Function(_$_SyncStatus) then) =
-      __$$_SyncStatusCopyWithImpl<$Res>;
+  factory _$$SyncStatusImplCopyWith(
+          _$SyncStatusImpl value, $Res Function(_$SyncStatusImpl) then) =
+      __$$SyncStatusImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -115,11 +115,11 @@ abstract class _$$_SyncStatusCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_SyncStatusCopyWithImpl<$Res>
-    extends _$SyncStatusCopyWithImpl<$Res, _$_SyncStatus>
-    implements _$$_SyncStatusCopyWith<$Res> {
-  __$$_SyncStatusCopyWithImpl(
-      _$_SyncStatus _value, $Res Function(_$_SyncStatus) _then)
+class __$$SyncStatusImplCopyWithImpl<$Res>
+    extends _$SyncStatusCopyWithImpl<$Res, _$SyncStatusImpl>
+    implements _$$SyncStatusImplCopyWith<$Res> {
+  __$$SyncStatusImplCopyWithImpl(
+      _$SyncStatusImpl _value, $Res Function(_$SyncStatusImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -132,7 +132,7 @@ class __$$_SyncStatusCopyWithImpl<$Res>
     Object? highestBlockHash = null,
     Object? highestBlockNum = null,
   }) {
-    return _then(_$_SyncStatus(
+    return _then(_$SyncStatusImpl(
       startingBlockHash: null == startingBlockHash
           ? _value.startingBlockHash
           : startingBlockHash // ignore: cast_nullable_to_non_nullable
@@ -163,8 +163,8 @@ class __$$_SyncStatusCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_SyncStatus implements _SyncStatus {
-  const _$_SyncStatus(
+class _$SyncStatusImpl implements _SyncStatus {
+  const _$SyncStatusImpl(
       {required this.startingBlockHash,
       required this.startingBlockNum,
       required this.currentBlockHash,
@@ -172,8 +172,8 @@ class _$_SyncStatus implements _SyncStatus {
       required this.highestBlockHash,
       required this.highestBlockNum});
 
-  factory _$_SyncStatus.fromJson(Map<String, dynamic> json) =>
-      _$$_SyncStatusFromJson(json);
+  factory _$SyncStatusImpl.fromJson(Map<String, dynamic> json) =>
+      _$$SyncStatusImplFromJson(json);
 
   @override
   final Felt startingBlockHash;
@@ -194,10 +194,10 @@ class _$_SyncStatus implements _SyncStatus {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_SyncStatus &&
+            other is _$SyncStatusImpl &&
             (identical(other.startingBlockHash, startingBlockHash) ||
                 other.startingBlockHash == startingBlockHash) &&
             (identical(other.startingBlockNum, startingBlockNum) ||
@@ -226,12 +226,12 @@ class _$_SyncStatus implements _SyncStatus {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_SyncStatusCopyWith<_$_SyncStatus> get copyWith =>
-      __$$_SyncStatusCopyWithImpl<_$_SyncStatus>(this, _$identity);
+  _$$SyncStatusImplCopyWith<_$SyncStatusImpl> get copyWith =>
+      __$$SyncStatusImplCopyWithImpl<_$SyncStatusImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_SyncStatusToJson(
+    return _$$SyncStatusImplToJson(
       this,
     );
   }
@@ -244,10 +244,10 @@ abstract class _SyncStatus implements SyncStatus {
       required final Felt currentBlockHash,
       required final String currentBlockNum,
       required final Felt highestBlockHash,
-      required final String highestBlockNum}) = _$_SyncStatus;
+      required final String highestBlockNum}) = _$SyncStatusImpl;
 
   factory _SyncStatus.fromJson(Map<String, dynamic> json) =
-      _$_SyncStatus.fromJson;
+      _$SyncStatusImpl.fromJson;
 
   @override
   Felt get startingBlockHash;
@@ -263,6 +263,6 @@ abstract class _SyncStatus implements SyncStatus {
   String get highestBlockNum;
   @override
   @JsonKey(ignore: true)
-  _$$_SyncStatusCopyWith<_$_SyncStatus> get copyWith =>
+  _$$SyncStatusImplCopyWith<_$SyncStatusImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

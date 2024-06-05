@@ -9,168 +9,34 @@ env:
   WORK_DIR: packages/starknet
 
 jobs:
-  dump-context:
-    runs-on: ubuntu-latest
+  lint:
     steps:
-      - name: Dump GitHub context
-        env:
-          GITHUB_CONTEXT: ${{ toJson(github) }}
-        run: echo "$GITHUB_CONTEXT"
-      - name: Dump job context
-        env:
-          JOB_CONTEXT: ${{ toJson(job) }}
-        run: echo "$JOB_CONTEXT"
-      - name: Dump steps context
-        env:
-          STEPS_CONTEXT: ${{ toJson(steps) }}
-        run: echo "$STEPS_CONTEXT"
-      - name: Dump runner context
-        env:
-          RUNNER_CONTEXT: ${{ toJson(runner) }}
-        run: echo "$RUNNER_CONTEXT"
-      - name: Dump strategy context
-        env:
-          STRATEGY_CONTEXT: ${{ toJson(strategy) }}
-        run: echo "$STRATEGY_CONTEXT"
-      - name: Dump matrix context
-        env:
-          MATRIX_CONTEXT: ${{ toJson(matrix) }}
-        run: echo "$MATRIX_CONTEXT"
-      - name: Show default environment variables
-        run: |
-          echo "The job_id is: $GITHUB_JOB"   # reference the default environment variables
-          echo "The id of this action is: $GITHUB_ACTION"   # reference the default environment variables
-          echo "The run id is: $GITHUB_RUN_ID"
-          echo "The GitHub Actor's username is: $GITHUB_ACTOR"
-          echo "GitHub SHA: $GITHUB_SHA"
-
-  analyze:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Print $GITHUB_CONTEXT
-        shell: bash
-        run: echo "$GITHUB_CONTEXT"
       - uses: actions/checkout@v2
       - uses: dart-lang/setup-dart@v1.0
-        with:
-          sdk: stable
-      - id: install
-        name: Install dependencies
-        run: dart pub get
-        working-directory: ${{ env.WORK_DIR }}
-      - name: Check formatting
-        run: dart format --output=none --set-exit-if-changed .
-        working-directory: ${{ env.WORK_DIR }}
-      - name: Analyze code
-        run: dart analyze --fatal-infos
-        if: always() && steps.install.outcome == 'success'
-        working-directory: ${{ env.WORK_DIR }}
+      - uses: bluefireteam/melos-action@v3
+      - run: melos bootstrap
+      - run: melos format:check
+      - run: melos analyze
 
   test-unit:
-    needs: analyze
-    defaults:
-      run:
-        working-directory: ${{ env.WORK_DIR }}
-    runs-on: ubuntu-latest
+    needs: lint
     steps:
       - uses: actions/checkout@v2
       - uses: dart-lang/setup-dart@v1.0
-        with:
-          sdk: stable
-      - id: install
-        name: Install dependencies
-        run: dart pub get
-      - name: Run tests on testnet
-        run: dart test -t unit
+      - uses: bluefireteam/melos-action@v3
+      - run: melos bootstrap
+      - run: melos test:dart:unit
 
-  test-integration-testnet:
-    needs: analyze
-    defaults:
-      run:
-        working-directory: ${{ env.WORK_DIR }}
-    runs-on: ubuntu-latest
+  test-integration:
+    needs: lint
+    services:
+      devnet:
+        image: shardlabs/starknet-devnet-rs:0.0.5
+        ports:
+          - 5050:5050
     steps:
       - uses: actions/checkout@v2
       - uses: dart-lang/setup-dart@v1.0
-        with:
-          sdk: stable
-      - id: install
-        name: Install dependencies
-        run: dart pub get
-      - name: Run tests on testnet
-        run: dart test -t integration-testnet --exclude-tags='rpc-node-bug'
-
-  test-integration-devnet:
-    needs: analyze
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      #
-      # devnet setup
-      #
-      - name: Setup python
-        id: setup-python
-        uses: actions/setup-python@v4
-        with:
-          python-version: "3.9"
-      - name: Install Poetry
-        uses: snok/install-poetry@v1
-        with:
-          virtualenvs-create: true
-          virtualenvs-in-project: true
-      - name: Load cached env
-        id: cached-poetry-dependencies
-        uses: actions/cache@v3
-        with:
-          path: .venv
-          key: venv-${{ runner.os }}-${{ steps.setup-python.outputs.python-version }}-${{ hashFiles('**/poetry.lock') }}
-      - name: Install Poetry dependencies
-        if: steps.cached-poetry-dependencies.outputs.cache-hit != true
-        run: poetry install --no-interaction
-      - name: Start devnet
-        uses: JarvusInnovations/background-action@v1
-        id: start-devnet
-        with:
-          run: |
-            poetry run devnet start &
-          wait-on: http://localhost:5050/is_alive
-          tail: true
-          log-output-resume: stderr
-          wait-for: 1m
-          log-output: stderr,stdout
-          log-output-if: failure
-      - name: Setup devnet
-        run: poetry run devnet setup
-      #
-      # End of devnet setup
-      #
-      - uses: dart-lang/setup-dart@v1.0
-        with:
-          sdk: stable
-      - id: install
-        name: Install dependencies
-        run: dart pub get
-        working-directory: ${{ env.WORK_DIR }}
-      - name: Run tests on devnet
-        env:
-          NETWORK: devnet
-        run: dart test -t integration-devnet-040
-        working-directory: ${{ env.WORK_DIR }}
-
-  publish:
-    if: github.event.pull_request.head.repo.fork == false
-    needs: test-integration-devnet
-    runs-on: ubuntu-latest
-    steps:
-      - name: "Checkout"
-        uses: actions/checkout@v2
-      # Only publishes if package version is different from the latest published on pub.dev
-      # See the docs: https://github.com/marketplace/actions/dart-and-flutter-package-publisher
-      - name: "Publish package (dry run)"
-        uses: k-paxian/dart-package-publisher@master
-        with:
-          accessToken: ${{ secrets.OAUTH_ACCESS_TOKEN }}
-          refreshToken: ${{ secrets.OAUTH_REFRESH_TOKEN }}
-          skipTests: true # Tests have already been run before
-          dryRunOnly: true
-          relativePath: ${{ env.WORK_DIR }}
+      - uses: bluefireteam/melos-action@v3
+      - run: melos bootstrap
+      - run: melos test:dart:integration

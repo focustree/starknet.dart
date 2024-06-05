@@ -34,7 +34,7 @@ If you want to contribute to this project or have any suggestion, please check o
 poetry install
 ```
 
-If you have an error about gmp install it like this : 
+If you have an error about gmp install it like this :
 
 ```sh
 brew install gmp
@@ -76,7 +76,7 @@ dart test
 To run the tests on **devnet** use the following command:
 
 ```
-NETWORK=devnet dart test -t integration-devnet-040
+NETWORK=devnet dart test -t integration
 ```
 
 ### Release a new version to pub.dev

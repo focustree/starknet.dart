@@ -3,6 +3,7 @@
     "dart-code.dart-code",
     "gaetschwartz.build-runner",
     "blaxou.freezed",
-    "unifiedjs.vscode-mdx"
+    "unifiedjs.vscode-mdx",
+    "starkware.cairo1"
   ]
 }

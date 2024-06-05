@@ -12,7 +12,7 @@ part of 'get_storage.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 GetStorage _$GetStorageFromJson(Map<String, dynamic> json) {
   switch (json['starkNetRuntimeTypeToRemove']) {
@@ -92,20 +92,20 @@ class _$GetStorageCopyWithImpl<$Res, $Val extends GetStorage>
 }
 
 /// @nodoc
-abstract class _$$GetStorageResultCopyWith<$Res> {
-  factory _$$GetStorageResultCopyWith(
-          _$GetStorageResult value, $Res Function(_$GetStorageResult) then) =
-      __$$GetStorageResultCopyWithImpl<$Res>;
+abstract class _$$GetStorageResultImplCopyWith<$Res> {
+  factory _$$GetStorageResultImplCopyWith(_$GetStorageResultImpl value,
+          $Res Function(_$GetStorageResultImpl) then) =
+      __$$GetStorageResultImplCopyWithImpl<$Res>;
   @useResult
   $Res call({Felt result});
 }
 
 /// @nodoc
-class __$$GetStorageResultCopyWithImpl<$Res>
-    extends _$GetStorageCopyWithImpl<$Res, _$GetStorageResult>
-    implements _$$GetStorageResultCopyWith<$Res> {
-  __$$GetStorageResultCopyWithImpl(
-      _$GetStorageResult _value, $Res Function(_$GetStorageResult) _then)
+class __$$GetStorageResultImplCopyWithImpl<$Res>
+    extends _$GetStorageCopyWithImpl<$Res, _$GetStorageResultImpl>
+    implements _$$GetStorageResultImplCopyWith<$Res> {
+  __$$GetStorageResultImplCopyWithImpl(_$GetStorageResultImpl _value,
+      $Res Function(_$GetStorageResultImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -113,7 +113,7 @@ class __$$GetStorageResultCopyWithImpl<$Res>
   $Res call({
     Object? result = null,
   }) {
-    return _then(_$GetStorageResult(
+    return _then(_$GetStorageResultImpl(
       result: null == result
           ? _value.result
           : result // ignore: cast_nullable_to_non_nullable
@@ -124,12 +124,12 @@ class __$$GetStorageResultCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$GetStorageResult implements GetStorageResult {
-  const _$GetStorageResult({required this.result, final String? $type})
+class _$GetStorageResultImpl implements GetStorageResult {
+  const _$GetStorageResultImpl({required this.result, final String? $type})
       : $type = $type ?? 'result';
 
-  factory _$GetStorageResult.fromJson(Map<String, dynamic> json) =>
-      _$$GetStorageResultFromJson(json);
+  factory _$GetStorageResultImpl.fromJson(Map<String, dynamic> json) =>
+      _$$GetStorageResultImplFromJson(json);
 
   @override
   final Felt result;
@@ -143,10 +143,10 @@ class _$GetStorageResult implements GetStorageResult {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$GetStorageResult &&
+            other is _$GetStorageResultImpl &&
             (identical(other.result, result) || other.result == result));
   }
 
@@ -157,8 +157,9 @@ class _$GetStorageResult implements GetStorageResult {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$GetStorageResultCopyWith<_$GetStorageResult> get copyWith =>
-      __$$GetStorageResultCopyWithImpl<_$GetStorageResult>(this, _$identity);
+  _$$GetStorageResultImplCopyWith<_$GetStorageResultImpl> get copyWith =>
+      __$$GetStorageResultImplCopyWithImpl<_$GetStorageResultImpl>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -224,7 +225,7 @@ class _$GetStorageResult implements GetStorageResult {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$GetStorageResultToJson(
+    return _$$GetStorageResultImplToJson(
       this,
     );
   }
@@ -232,22 +233,22 @@ class _$GetStorageResult implements GetStorageResult {
 
 abstract class GetStorageResult implements GetStorage {
   const factory GetStorageResult({required final Felt result}) =
-      _$GetStorageResult;
+      _$GetStorageResultImpl;
 
   factory GetStorageResult.fromJson(Map<String, dynamic> json) =
-      _$GetStorageResult.fromJson;
+      _$GetStorageResultImpl.fromJson;
 
   Felt get result;
   @JsonKey(ignore: true)
-  _$$GetStorageResultCopyWith<_$GetStorageResult> get copyWith =>
+  _$$GetStorageResultImplCopyWith<_$GetStorageResultImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$GetStorageErrorCopyWith<$Res> {
-  factory _$$GetStorageErrorCopyWith(
-          _$GetStorageError value, $Res Function(_$GetStorageError) then) =
-      __$$GetStorageErrorCopyWithImpl<$Res>;
+abstract class _$$GetStorageErrorImplCopyWith<$Res> {
+  factory _$$GetStorageErrorImplCopyWith(_$GetStorageErrorImpl value,
+          $Res Function(_$GetStorageErrorImpl) then) =
+      __$$GetStorageErrorImplCopyWithImpl<$Res>;
   @useResult
   $Res call({JsonRpcApiError error});
 
@@ -255,11 +256,11 @@ abstract class _$$GetStorageErrorCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$GetStorageErrorCopyWithImpl<$Res>
-    extends _$GetStorageCopyWithImpl<$Res, _$GetStorageError>
-    implements _$$GetStorageErrorCopyWith<$Res> {
-  __$$GetStorageErrorCopyWithImpl(
-      _$GetStorageError _value, $Res Function(_$GetStorageError) _then)
+class __$$GetStorageErrorImplCopyWithImpl<$Res>
+    extends _$GetStorageCopyWithImpl<$Res, _$GetStorageErrorImpl>
+    implements _$$GetStorageErrorImplCopyWith<$Res> {
+  __$$GetStorageErrorImplCopyWithImpl(
+      _$GetStorageErrorImpl _value, $Res Function(_$GetStorageErrorImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -267,7 +268,7 @@ class __$$GetStorageErrorCopyWithImpl<$Res>
   $Res call({
     Object? error = null,
   }) {
-    return _then(_$GetStorageError(
+    return _then(_$GetStorageErrorImpl(
       error: null == error
           ? _value.error
           : error // ignore: cast_nullable_to_non_nullable
@@ -286,12 +287,12 @@ class __$$GetStorageErrorCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$GetStorageError implements GetStorageError {
-  const _$GetStorageError({required this.error, final String? $type})
+class _$GetStorageErrorImpl implements GetStorageError {
+  const _$GetStorageErrorImpl({required this.error, final String? $type})
       : $type = $type ?? 'error';
 
-  factory _$GetStorageError.fromJson(Map<String, dynamic> json) =>
-      _$$GetStorageErrorFromJson(json);
+  factory _$GetStorageErrorImpl.fromJson(Map<String, dynamic> json) =>
+      _$$GetStorageErrorImplFromJson(json);
 
   @override
   final JsonRpcApiError error;
@@ -305,10 +306,10 @@ class _$GetStorageError implements GetStorageError {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$GetStorageError &&
+            other is _$GetStorageErrorImpl &&
             (identical(other.error, error) || other.error == error));
   }
 
@@ -319,8 +320,9 @@ class _$GetStorageError implements GetStorageError {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$GetStorageErrorCopyWith<_$GetStorageError> get copyWith =>
-      __$$GetStorageErrorCopyWithImpl<_$GetStorageError>(this, _$identity);
+  _$$GetStorageErrorImplCopyWith<_$GetStorageErrorImpl> get copyWith =>
+      __$$GetStorageErrorImplCopyWithImpl<_$GetStorageErrorImpl>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -386,7 +388,7 @@ class _$GetStorageError implements GetStorageError {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$GetStorageErrorToJson(
+    return _$$GetStorageErrorImplToJson(
       this,
     );
   }
@@ -394,13 +396,13 @@ class _$GetStorageError implements GetStorageError {
 
 abstract class GetStorageError implements GetStorage {
   const factory GetStorageError({required final JsonRpcApiError error}) =
-      _$GetStorageError;
+      _$GetStorageErrorImpl;
 
   factory GetStorageError.fromJson(Map<String, dynamic> json) =
-      _$GetStorageError.fromJson;
+      _$GetStorageErrorImpl.fromJson;
 
   JsonRpcApiError get error;
   @JsonKey(ignore: true)
-  _$$GetStorageErrorCopyWith<_$GetStorageError> get copyWith =>
+  _$$GetStorageErrorImplCopyWith<_$GetStorageErrorImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

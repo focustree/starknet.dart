@@ -12,7 +12,7 @@ part of 'get_state_update.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 GetStateUpdate _$GetStateUpdateFromJson(Map<String, dynamic> json) {
   switch (json['starkNetRuntimeTypeToRemove']) {
@@ -92,10 +92,10 @@ class _$GetStateUpdateCopyWithImpl<$Res, $Val extends GetStateUpdate>
 }
 
 /// @nodoc
-abstract class _$$GetStateUpdateResultCopyWith<$Res> {
-  factory _$$GetStateUpdateResultCopyWith(_$GetStateUpdateResult value,
-          $Res Function(_$GetStateUpdateResult) then) =
-      __$$GetStateUpdateResultCopyWithImpl<$Res>;
+abstract class _$$GetStateUpdateResultImplCopyWith<$Res> {
+  factory _$$GetStateUpdateResultImplCopyWith(_$GetStateUpdateResultImpl value,
+          $Res Function(_$GetStateUpdateResultImpl) then) =
+      __$$GetStateUpdateResultImplCopyWithImpl<$Res>;
   @useResult
   $Res call({StateUpdate result});
 
@@ -103,11 +103,11 @@ abstract class _$$GetStateUpdateResultCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$GetStateUpdateResultCopyWithImpl<$Res>
-    extends _$GetStateUpdateCopyWithImpl<$Res, _$GetStateUpdateResult>
-    implements _$$GetStateUpdateResultCopyWith<$Res> {
-  __$$GetStateUpdateResultCopyWithImpl(_$GetStateUpdateResult _value,
-      $Res Function(_$GetStateUpdateResult) _then)
+class __$$GetStateUpdateResultImplCopyWithImpl<$Res>
+    extends _$GetStateUpdateCopyWithImpl<$Res, _$GetStateUpdateResultImpl>
+    implements _$$GetStateUpdateResultImplCopyWith<$Res> {
+  __$$GetStateUpdateResultImplCopyWithImpl(_$GetStateUpdateResultImpl _value,
+      $Res Function(_$GetStateUpdateResultImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -115,7 +115,7 @@ class __$$GetStateUpdateResultCopyWithImpl<$Res>
   $Res call({
     Object? result = null,
   }) {
-    return _then(_$GetStateUpdateResult(
+    return _then(_$GetStateUpdateResultImpl(
       result: null == result
           ? _value.result
           : result // ignore: cast_nullable_to_non_nullable
@@ -134,12 +134,12 @@ class __$$GetStateUpdateResultCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$GetStateUpdateResult implements GetStateUpdateResult {
-  const _$GetStateUpdateResult({required this.result, final String? $type})
+class _$GetStateUpdateResultImpl implements GetStateUpdateResult {
+  const _$GetStateUpdateResultImpl({required this.result, final String? $type})
       : $type = $type ?? 'result';
 
-  factory _$GetStateUpdateResult.fromJson(Map<String, dynamic> json) =>
-      _$$GetStateUpdateResultFromJson(json);
+  factory _$GetStateUpdateResultImpl.fromJson(Map<String, dynamic> json) =>
+      _$$GetStateUpdateResultImplFromJson(json);
 
   @override
   final StateUpdate result;
@@ -153,10 +153,10 @@ class _$GetStateUpdateResult implements GetStateUpdateResult {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$GetStateUpdateResult &&
+            other is _$GetStateUpdateResultImpl &&
             (identical(other.result, result) || other.result == result));
   }
 
@@ -167,9 +167,10 @@ class _$GetStateUpdateResult implements GetStateUpdateResult {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$GetStateUpdateResultCopyWith<_$GetStateUpdateResult> get copyWith =>
-      __$$GetStateUpdateResultCopyWithImpl<_$GetStateUpdateResult>(
-          this, _$identity);
+  _$$GetStateUpdateResultImplCopyWith<_$GetStateUpdateResultImpl>
+      get copyWith =>
+          __$$GetStateUpdateResultImplCopyWithImpl<_$GetStateUpdateResultImpl>(
+              this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -235,7 +236,7 @@ class _$GetStateUpdateResult implements GetStateUpdateResult {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$GetStateUpdateResultToJson(
+    return _$$GetStateUpdateResultImplToJson(
       this,
     );
   }
@@ -243,22 +244,22 @@ class _$GetStateUpdateResult implements GetStateUpdateResult {
 
 abstract class GetStateUpdateResult implements GetStateUpdate {
   const factory GetStateUpdateResult({required final StateUpdate result}) =
-      _$GetStateUpdateResult;
+      _$GetStateUpdateResultImpl;
 
   factory GetStateUpdateResult.fromJson(Map<String, dynamic> json) =
-      _$GetStateUpdateResult.fromJson;
+      _$GetStateUpdateResultImpl.fromJson;
 
   StateUpdate get result;
   @JsonKey(ignore: true)
-  _$$GetStateUpdateResultCopyWith<_$GetStateUpdateResult> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$GetStateUpdateResultImplCopyWith<_$GetStateUpdateResultImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$GetStateUpdateErrorCopyWith<$Res> {
-  factory _$$GetStateUpdateErrorCopyWith(_$GetStateUpdateError value,
-          $Res Function(_$GetStateUpdateError) then) =
-      __$$GetStateUpdateErrorCopyWithImpl<$Res>;
+abstract class _$$GetStateUpdateErrorImplCopyWith<$Res> {
+  factory _$$GetStateUpdateErrorImplCopyWith(_$GetStateUpdateErrorImpl value,
+          $Res Function(_$GetStateUpdateErrorImpl) then) =
+      __$$GetStateUpdateErrorImplCopyWithImpl<$Res>;
   @useResult
   $Res call({JsonRpcApiError error});
 
@@ -266,11 +267,11 @@ abstract class _$$GetStateUpdateErrorCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$GetStateUpdateErrorCopyWithImpl<$Res>
-    extends _$GetStateUpdateCopyWithImpl<$Res, _$GetStateUpdateError>
-    implements _$$GetStateUpdateErrorCopyWith<$Res> {
-  __$$GetStateUpdateErrorCopyWithImpl(
-      _$GetStateUpdateError _value, $Res Function(_$GetStateUpdateError) _then)
+class __$$GetStateUpdateErrorImplCopyWithImpl<$Res>
+    extends _$GetStateUpdateCopyWithImpl<$Res, _$GetStateUpdateErrorImpl>
+    implements _$$GetStateUpdateErrorImplCopyWith<$Res> {
+  __$$GetStateUpdateErrorImplCopyWithImpl(_$GetStateUpdateErrorImpl _value,
+      $Res Function(_$GetStateUpdateErrorImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -278,7 +279,7 @@ class __$$GetStateUpdateErrorCopyWithImpl<$Res>
   $Res call({
     Object? error = null,
   }) {
-    return _then(_$GetStateUpdateError(
+    return _then(_$GetStateUpdateErrorImpl(
       error: null == error
           ? _value.error
           : error // ignore: cast_nullable_to_non_nullable
@@ -297,12 +298,12 @@ class __$$GetStateUpdateErrorCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$GetStateUpdateError implements GetStateUpdateError {
-  const _$GetStateUpdateError({required this.error, final String? $type})
+class _$GetStateUpdateErrorImpl implements GetStateUpdateError {
+  const _$GetStateUpdateErrorImpl({required this.error, final String? $type})
       : $type = $type ?? 'error';
 
-  factory _$GetStateUpdateError.fromJson(Map<String, dynamic> json) =>
-      _$$GetStateUpdateErrorFromJson(json);
+  factory _$GetStateUpdateErrorImpl.fromJson(Map<String, dynamic> json) =>
+      _$$GetStateUpdateErrorImplFromJson(json);
 
   @override
   final JsonRpcApiError error;
@@ -316,10 +317,10 @@ class _$GetStateUpdateError implements GetStateUpdateError {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$GetStateUpdateError &&
+            other is _$GetStateUpdateErrorImpl &&
             (identical(other.error, error) || other.error == error));
   }
 
@@ -330,8 +331,8 @@ class _$GetStateUpdateError implements GetStateUpdateError {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$GetStateUpdateErrorCopyWith<_$GetStateUpdateError> get copyWith =>
-      __$$GetStateUpdateErrorCopyWithImpl<_$GetStateUpdateError>(
+  _$$GetStateUpdateErrorImplCopyWith<_$GetStateUpdateErrorImpl> get copyWith =>
+      __$$GetStateUpdateErrorImplCopyWithImpl<_$GetStateUpdateErrorImpl>(
           this, _$identity);
 
   @override
@@ -398,7 +399,7 @@ class _$GetStateUpdateError implements GetStateUpdateError {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$GetStateUpdateErrorToJson(
+    return _$$GetStateUpdateErrorImplToJson(
       this,
     );
   }
@@ -406,13 +407,13 @@ class _$GetStateUpdateError implements GetStateUpdateError {
 
 abstract class GetStateUpdateError implements GetStateUpdate {
   const factory GetStateUpdateError({required final JsonRpcApiError error}) =
-      _$GetStateUpdateError;
+      _$GetStateUpdateErrorImpl;
 
   factory GetStateUpdateError.fromJson(Map<String, dynamic> json) =
-      _$GetStateUpdateError.fromJson;
+      _$GetStateUpdateErrorImpl.fromJson;
 
   JsonRpcApiError get error;
   @JsonKey(ignore: true)
-  _$$GetStateUpdateErrorCopyWith<_$GetStateUpdateError> get copyWith =>
+  _$$GetStateUpdateErrorImplCopyWith<_$GetStateUpdateErrorImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

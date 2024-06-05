@@ -12,7 +12,7 @@ part of 'get_transaction_receipt.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 GetTransactionReceipt _$GetTransactionReceiptFromJson(
     Map<String, dynamic> json) {
@@ -94,11 +94,11 @@ class _$GetTransactionReceiptCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$GetTransactionReceiptResultCopyWith<$Res> {
-  factory _$$GetTransactionReceiptResultCopyWith(
-          _$GetTransactionReceiptResult value,
-          $Res Function(_$GetTransactionReceiptResult) then) =
-      __$$GetTransactionReceiptResultCopyWithImpl<$Res>;
+abstract class _$$GetTransactionReceiptResultImplCopyWith<$Res> {
+  factory _$$GetTransactionReceiptResultImplCopyWith(
+          _$GetTransactionReceiptResultImpl value,
+          $Res Function(_$GetTransactionReceiptResultImpl) then) =
+      __$$GetTransactionReceiptResultImplCopyWithImpl<$Res>;
   @useResult
   $Res call({TxnReceipt result});
 
@@ -106,13 +106,13 @@ abstract class _$$GetTransactionReceiptResultCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$GetTransactionReceiptResultCopyWithImpl<$Res>
+class __$$GetTransactionReceiptResultImplCopyWithImpl<$Res>
     extends _$GetTransactionReceiptCopyWithImpl<$Res,
-        _$GetTransactionReceiptResult>
-    implements _$$GetTransactionReceiptResultCopyWith<$Res> {
-  __$$GetTransactionReceiptResultCopyWithImpl(
-      _$GetTransactionReceiptResult _value,
-      $Res Function(_$GetTransactionReceiptResult) _then)
+        _$GetTransactionReceiptResultImpl>
+    implements _$$GetTransactionReceiptResultImplCopyWith<$Res> {
+  __$$GetTransactionReceiptResultImplCopyWithImpl(
+      _$GetTransactionReceiptResultImpl _value,
+      $Res Function(_$GetTransactionReceiptResultImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -120,7 +120,7 @@ class __$$GetTransactionReceiptResultCopyWithImpl<$Res>
   $Res call({
     Object? result = null,
   }) {
-    return _then(_$GetTransactionReceiptResult(
+    return _then(_$GetTransactionReceiptResultImpl(
       result: null == result
           ? _value.result
           : result // ignore: cast_nullable_to_non_nullable
@@ -139,13 +139,14 @@ class __$$GetTransactionReceiptResultCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$GetTransactionReceiptResult implements GetTransactionReceiptResult {
-  const _$GetTransactionReceiptResult(
+class _$GetTransactionReceiptResultImpl implements GetTransactionReceiptResult {
+  const _$GetTransactionReceiptResultImpl(
       {required this.result, final String? $type})
       : $type = $type ?? 'result';
 
-  factory _$GetTransactionReceiptResult.fromJson(Map<String, dynamic> json) =>
-      _$$GetTransactionReceiptResultFromJson(json);
+  factory _$GetTransactionReceiptResultImpl.fromJson(
+          Map<String, dynamic> json) =>
+      _$$GetTransactionReceiptResultImplFromJson(json);
 
   @override
   final TxnReceipt result;
@@ -159,10 +160,10 @@ class _$GetTransactionReceiptResult implements GetTransactionReceiptResult {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$GetTransactionReceiptResult &&
+            other is _$GetTransactionReceiptResultImpl &&
             (identical(other.result, result) || other.result == result));
   }
 
@@ -173,9 +174,9 @@ class _$GetTransactionReceiptResult implements GetTransactionReceiptResult {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$GetTransactionReceiptResultCopyWith<_$GetTransactionReceiptResult>
-      get copyWith => __$$GetTransactionReceiptResultCopyWithImpl<
-          _$GetTransactionReceiptResult>(this, _$identity);
+  _$$GetTransactionReceiptResultImplCopyWith<_$GetTransactionReceiptResultImpl>
+      get copyWith => __$$GetTransactionReceiptResultImplCopyWithImpl<
+          _$GetTransactionReceiptResultImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -241,7 +242,7 @@ class _$GetTransactionReceiptResult implements GetTransactionReceiptResult {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$GetTransactionReceiptResultToJson(
+    return _$$GetTransactionReceiptResultImplToJson(
       this,
     );
   }
@@ -249,23 +250,23 @@ class _$GetTransactionReceiptResult implements GetTransactionReceiptResult {
 
 abstract class GetTransactionReceiptResult implements GetTransactionReceipt {
   const factory GetTransactionReceiptResult(
-      {required final TxnReceipt result}) = _$GetTransactionReceiptResult;
+      {required final TxnReceipt result}) = _$GetTransactionReceiptResultImpl;
 
   factory GetTransactionReceiptResult.fromJson(Map<String, dynamic> json) =
-      _$GetTransactionReceiptResult.fromJson;
+      _$GetTransactionReceiptResultImpl.fromJson;
 
   TxnReceipt get result;
   @JsonKey(ignore: true)
-  _$$GetTransactionReceiptResultCopyWith<_$GetTransactionReceiptResult>
+  _$$GetTransactionReceiptResultImplCopyWith<_$GetTransactionReceiptResultImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$GetTransactionReceiptErrorCopyWith<$Res> {
-  factory _$$GetTransactionReceiptErrorCopyWith(
-          _$GetTransactionReceiptError value,
-          $Res Function(_$GetTransactionReceiptError) then) =
-      __$$GetTransactionReceiptErrorCopyWithImpl<$Res>;
+abstract class _$$GetTransactionReceiptErrorImplCopyWith<$Res> {
+  factory _$$GetTransactionReceiptErrorImplCopyWith(
+          _$GetTransactionReceiptErrorImpl value,
+          $Res Function(_$GetTransactionReceiptErrorImpl) then) =
+      __$$GetTransactionReceiptErrorImplCopyWithImpl<$Res>;
   @useResult
   $Res call({JsonRpcApiError error});
 
@@ -273,13 +274,13 @@ abstract class _$$GetTransactionReceiptErrorCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$GetTransactionReceiptErrorCopyWithImpl<$Res>
+class __$$GetTransactionReceiptErrorImplCopyWithImpl<$Res>
     extends _$GetTransactionReceiptCopyWithImpl<$Res,
-        _$GetTransactionReceiptError>
-    implements _$$GetTransactionReceiptErrorCopyWith<$Res> {
-  __$$GetTransactionReceiptErrorCopyWithImpl(
-      _$GetTransactionReceiptError _value,
-      $Res Function(_$GetTransactionReceiptError) _then)
+        _$GetTransactionReceiptErrorImpl>
+    implements _$$GetTransactionReceiptErrorImplCopyWith<$Res> {
+  __$$GetTransactionReceiptErrorImplCopyWithImpl(
+      _$GetTransactionReceiptErrorImpl _value,
+      $Res Function(_$GetTransactionReceiptErrorImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -287,7 +288,7 @@ class __$$GetTransactionReceiptErrorCopyWithImpl<$Res>
   $Res call({
     Object? error = null,
   }) {
-    return _then(_$GetTransactionReceiptError(
+    return _then(_$GetTransactionReceiptErrorImpl(
       error: null == error
           ? _value.error
           : error // ignore: cast_nullable_to_non_nullable
@@ -306,12 +307,14 @@ class __$$GetTransactionReceiptErrorCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$GetTransactionReceiptError implements GetTransactionReceiptError {
-  const _$GetTransactionReceiptError({required this.error, final String? $type})
+class _$GetTransactionReceiptErrorImpl implements GetTransactionReceiptError {
+  const _$GetTransactionReceiptErrorImpl(
+      {required this.error, final String? $type})
       : $type = $type ?? 'error';
 
-  factory _$GetTransactionReceiptError.fromJson(Map<String, dynamic> json) =>
-      _$$GetTransactionReceiptErrorFromJson(json);
+  factory _$GetTransactionReceiptErrorImpl.fromJson(
+          Map<String, dynamic> json) =>
+      _$$GetTransactionReceiptErrorImplFromJson(json);
 
   @override
   final JsonRpcApiError error;
@@ -325,10 +328,10 @@ class _$GetTransactionReceiptError implements GetTransactionReceiptError {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$GetTransactionReceiptError &&
+            other is _$GetTransactionReceiptErrorImpl &&
             (identical(other.error, error) || other.error == error));
   }
 
@@ -339,9 +342,9 @@ class _$GetTransactionReceiptError implements GetTransactionReceiptError {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$GetTransactionReceiptErrorCopyWith<_$GetTransactionReceiptError>
-      get copyWith => __$$GetTransactionReceiptErrorCopyWithImpl<
-          _$GetTransactionReceiptError>(this, _$identity);
+  _$$GetTransactionReceiptErrorImplCopyWith<_$GetTransactionReceiptErrorImpl>
+      get copyWith => __$$GetTransactionReceiptErrorImplCopyWithImpl<
+          _$GetTransactionReceiptErrorImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -407,7 +410,7 @@ class _$GetTransactionReceiptError implements GetTransactionReceiptError {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$GetTransactionReceiptErrorToJson(
+    return _$$GetTransactionReceiptErrorImplToJson(
       this,
     );
   }
@@ -415,14 +418,15 @@ class _$GetTransactionReceiptError implements GetTransactionReceiptError {
 
 abstract class GetTransactionReceiptError implements GetTransactionReceipt {
   const factory GetTransactionReceiptError(
-      {required final JsonRpcApiError error}) = _$GetTransactionReceiptError;
+          {required final JsonRpcApiError error}) =
+      _$GetTransactionReceiptErrorImpl;
 
   factory GetTransactionReceiptError.fromJson(Map<String, dynamic> json) =
-      _$GetTransactionReceiptError.fromJson;
+      _$GetTransactionReceiptErrorImpl.fromJson;
 
   JsonRpcApiError get error;
   @JsonKey(ignore: true)
-  _$$GetTransactionReceiptErrorCopyWith<_$GetTransactionReceiptError>
+  _$$GetTransactionReceiptErrorImplCopyWith<_$GetTransactionReceiptErrorImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
 
@@ -766,11 +770,11 @@ class _$TxnReceiptCopyWithImpl<$Res, $Val extends TxnReceipt>
 }
 
 /// @nodoc
-abstract class _$$InvokeTxnReceiptCopyWith<$Res>
+abstract class _$$InvokeTxnReceiptImplCopyWith<$Res>
     implements $TxnReceiptCopyWith<$Res> {
-  factory _$$InvokeTxnReceiptCopyWith(
-          _$InvokeTxnReceipt value, $Res Function(_$InvokeTxnReceipt) then) =
-      __$$InvokeTxnReceiptCopyWithImpl<$Res>;
+  factory _$$InvokeTxnReceiptImplCopyWith(_$InvokeTxnReceiptImpl value,
+          $Res Function(_$InvokeTxnReceiptImpl) then) =
+      __$$InvokeTxnReceiptImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -785,11 +789,11 @@ abstract class _$$InvokeTxnReceiptCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$InvokeTxnReceiptCopyWithImpl<$Res>
-    extends _$TxnReceiptCopyWithImpl<$Res, _$InvokeTxnReceipt>
-    implements _$$InvokeTxnReceiptCopyWith<$Res> {
-  __$$InvokeTxnReceiptCopyWithImpl(
-      _$InvokeTxnReceipt _value, $Res Function(_$InvokeTxnReceipt) _then)
+class __$$InvokeTxnReceiptImplCopyWithImpl<$Res>
+    extends _$TxnReceiptCopyWithImpl<$Res, _$InvokeTxnReceiptImpl>
+    implements _$$InvokeTxnReceiptImplCopyWith<$Res> {
+  __$$InvokeTxnReceiptImplCopyWithImpl(_$InvokeTxnReceiptImpl _value,
+      $Res Function(_$InvokeTxnReceiptImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -804,7 +808,7 @@ class __$$InvokeTxnReceiptCopyWithImpl<$Res>
     Object? messagesSent = null,
     Object? events = null,
   }) {
-    return _then(_$InvokeTxnReceipt(
+    return _then(_$InvokeTxnReceiptImpl(
       transactionHash: null == transactionHash
           ? _value.transactionHash
           : transactionHash // ignore: cast_nullable_to_non_nullable
@@ -843,8 +847,8 @@ class __$$InvokeTxnReceiptCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$InvokeTxnReceipt implements InvokeTxnReceipt {
-  const _$InvokeTxnReceipt(
+class _$InvokeTxnReceiptImpl implements InvokeTxnReceipt {
+  const _$InvokeTxnReceiptImpl(
       {required this.transactionHash,
       required this.actualFee,
       required this.status,
@@ -858,8 +862,8 @@ class _$InvokeTxnReceipt implements InvokeTxnReceipt {
         _events = events,
         $type = $type ?? 'invokeTxnReceipt';
 
-  factory _$InvokeTxnReceipt.fromJson(Map<String, dynamic> json) =>
-      _$$InvokeTxnReceiptFromJson(json);
+  factory _$InvokeTxnReceiptImpl.fromJson(Map<String, dynamic> json) =>
+      _$$InvokeTxnReceiptImplFromJson(json);
 
 // start of COMMON_RECEIPT_PROPERTIES
   @override
@@ -899,10 +903,10 @@ class _$InvokeTxnReceipt implements InvokeTxnReceipt {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$InvokeTxnReceipt &&
+            other is _$InvokeTxnReceiptImpl &&
             (identical(other.transactionHash, transactionHash) ||
                 other.transactionHash == transactionHash) &&
             (identical(other.actualFee, actualFee) ||
@@ -934,8 +938,9 @@ class _$InvokeTxnReceipt implements InvokeTxnReceipt {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$InvokeTxnReceiptCopyWith<_$InvokeTxnReceipt> get copyWith =>
-      __$$InvokeTxnReceiptCopyWithImpl<_$InvokeTxnReceipt>(this, _$identity);
+  _$$InvokeTxnReceiptImplCopyWith<_$InvokeTxnReceiptImpl> get copyWith =>
+      __$$InvokeTxnReceiptImplCopyWithImpl<_$InvokeTxnReceiptImpl>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1207,7 +1212,7 @@ class _$InvokeTxnReceipt implements InvokeTxnReceipt {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$InvokeTxnReceiptToJson(
+    return _$$InvokeTxnReceiptImplToJson(
       this,
     );
   }
@@ -1222,10 +1227,10 @@ abstract class InvokeTxnReceipt implements TxnReceipt {
       final int? blockNumber,
       required final String type,
       required final List<MsgToL1> messagesSent,
-      required final List<Event> events}) = _$InvokeTxnReceipt;
+      required final List<Event> events}) = _$InvokeTxnReceiptImpl;
 
   factory InvokeTxnReceipt.fromJson(Map<String, dynamic> json) =
-      _$InvokeTxnReceipt.fromJson;
+      _$InvokeTxnReceiptImpl.fromJson;
 
   @override // start of COMMON_RECEIPT_PROPERTIES
   Felt get transactionHash;
@@ -1242,16 +1247,16 @@ abstract class InvokeTxnReceipt implements TxnReceipt {
   List<Event> get events;
   @override
   @JsonKey(ignore: true)
-  _$$InvokeTxnReceiptCopyWith<_$InvokeTxnReceipt> get copyWith =>
+  _$$InvokeTxnReceiptImplCopyWith<_$InvokeTxnReceiptImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$DeclareTxnReceiptCopyWith<$Res>
+abstract class _$$DeclareTxnReceiptImplCopyWith<$Res>
     implements $TxnReceiptCopyWith<$Res> {
-  factory _$$DeclareTxnReceiptCopyWith(
-          _$DeclareTxnReceipt value, $Res Function(_$DeclareTxnReceipt) then) =
-      __$$DeclareTxnReceiptCopyWithImpl<$Res>;
+  factory _$$DeclareTxnReceiptImplCopyWith(_$DeclareTxnReceiptImpl value,
+          $Res Function(_$DeclareTxnReceiptImpl) then) =
+      __$$DeclareTxnReceiptImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -1266,11 +1271,11 @@ abstract class _$$DeclareTxnReceiptCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$DeclareTxnReceiptCopyWithImpl<$Res>
-    extends _$TxnReceiptCopyWithImpl<$Res, _$DeclareTxnReceipt>
-    implements _$$DeclareTxnReceiptCopyWith<$Res> {
-  __$$DeclareTxnReceiptCopyWithImpl(
-      _$DeclareTxnReceipt _value, $Res Function(_$DeclareTxnReceipt) _then)
+class __$$DeclareTxnReceiptImplCopyWithImpl<$Res>
+    extends _$TxnReceiptCopyWithImpl<$Res, _$DeclareTxnReceiptImpl>
+    implements _$$DeclareTxnReceiptImplCopyWith<$Res> {
+  __$$DeclareTxnReceiptImplCopyWithImpl(_$DeclareTxnReceiptImpl _value,
+      $Res Function(_$DeclareTxnReceiptImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -1285,7 +1290,7 @@ class __$$DeclareTxnReceiptCopyWithImpl<$Res>
     Object? messagesSent = null,
     Object? events = null,
   }) {
-    return _then(_$DeclareTxnReceipt(
+    return _then(_$DeclareTxnReceiptImpl(
       transactionHash: null == transactionHash
           ? _value.transactionHash
           : transactionHash // ignore: cast_nullable_to_non_nullable
@@ -1324,8 +1329,8 @@ class __$$DeclareTxnReceiptCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$DeclareTxnReceipt implements DeclareTxnReceipt {
-  const _$DeclareTxnReceipt(
+class _$DeclareTxnReceiptImpl implements DeclareTxnReceipt {
+  const _$DeclareTxnReceiptImpl(
       {required this.transactionHash,
       required this.actualFee,
       required this.status,
@@ -1339,8 +1344,8 @@ class _$DeclareTxnReceipt implements DeclareTxnReceipt {
         _events = events,
         $type = $type ?? 'declareTxnReceipt';
 
-  factory _$DeclareTxnReceipt.fromJson(Map<String, dynamic> json) =>
-      _$$DeclareTxnReceiptFromJson(json);
+  factory _$DeclareTxnReceiptImpl.fromJson(Map<String, dynamic> json) =>
+      _$$DeclareTxnReceiptImplFromJson(json);
 
 // start of COMMON_RECEIPT_PROPERTIES
   @override
@@ -1380,10 +1385,10 @@ class _$DeclareTxnReceipt implements DeclareTxnReceipt {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$DeclareTxnReceipt &&
+            other is _$DeclareTxnReceiptImpl &&
             (identical(other.transactionHash, transactionHash) ||
                 other.transactionHash == transactionHash) &&
             (identical(other.actualFee, actualFee) ||
@@ -1415,8 +1420,9 @@ class _$DeclareTxnReceipt implements DeclareTxnReceipt {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$DeclareTxnReceiptCopyWith<_$DeclareTxnReceipt> get copyWith =>
-      __$$DeclareTxnReceiptCopyWithImpl<_$DeclareTxnReceipt>(this, _$identity);
+  _$$DeclareTxnReceiptImplCopyWith<_$DeclareTxnReceiptImpl> get copyWith =>
+      __$$DeclareTxnReceiptImplCopyWithImpl<_$DeclareTxnReceiptImpl>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1688,7 +1694,7 @@ class _$DeclareTxnReceipt implements DeclareTxnReceipt {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$DeclareTxnReceiptToJson(
+    return _$$DeclareTxnReceiptImplToJson(
       this,
     );
   }
@@ -1703,10 +1709,10 @@ abstract class DeclareTxnReceipt implements TxnReceipt {
       final int? blockNumber,
       required final String type,
       required final List<MsgToL1> messagesSent,
-      required final List<Event> events}) = _$DeclareTxnReceipt;
+      required final List<Event> events}) = _$DeclareTxnReceiptImpl;
 
   factory DeclareTxnReceipt.fromJson(Map<String, dynamic> json) =
-      _$DeclareTxnReceipt.fromJson;
+      _$DeclareTxnReceiptImpl.fromJson;
 
   @override // start of COMMON_RECEIPT_PROPERTIES
   Felt get transactionHash;
@@ -1723,16 +1729,16 @@ abstract class DeclareTxnReceipt implements TxnReceipt {
   List<Event> get events;
   @override
   @JsonKey(ignore: true)
-  _$$DeclareTxnReceiptCopyWith<_$DeclareTxnReceipt> get copyWith =>
+  _$$DeclareTxnReceiptImplCopyWith<_$DeclareTxnReceiptImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$L1HandlerTxnReceiptCopyWith<$Res>
+abstract class _$$L1HandlerTxnReceiptImplCopyWith<$Res>
     implements $TxnReceiptCopyWith<$Res> {
-  factory _$$L1HandlerTxnReceiptCopyWith(_$L1HandlerTxnReceipt value,
-          $Res Function(_$L1HandlerTxnReceipt) then) =
-      __$$L1HandlerTxnReceiptCopyWithImpl<$Res>;
+  factory _$$L1HandlerTxnReceiptImplCopyWith(_$L1HandlerTxnReceiptImpl value,
+          $Res Function(_$L1HandlerTxnReceiptImpl) then) =
+      __$$L1HandlerTxnReceiptImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -1747,11 +1753,11 @@ abstract class _$$L1HandlerTxnReceiptCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$L1HandlerTxnReceiptCopyWithImpl<$Res>
-    extends _$TxnReceiptCopyWithImpl<$Res, _$L1HandlerTxnReceipt>
-    implements _$$L1HandlerTxnReceiptCopyWith<$Res> {
-  __$$L1HandlerTxnReceiptCopyWithImpl(
-      _$L1HandlerTxnReceipt _value, $Res Function(_$L1HandlerTxnReceipt) _then)
+class __$$L1HandlerTxnReceiptImplCopyWithImpl<$Res>
+    extends _$TxnReceiptCopyWithImpl<$Res, _$L1HandlerTxnReceiptImpl>
+    implements _$$L1HandlerTxnReceiptImplCopyWith<$Res> {
+  __$$L1HandlerTxnReceiptImplCopyWithImpl(_$L1HandlerTxnReceiptImpl _value,
+      $Res Function(_$L1HandlerTxnReceiptImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -1766,7 +1772,7 @@ class __$$L1HandlerTxnReceiptCopyWithImpl<$Res>
     Object? messagesSent = null,
     Object? events = null,
   }) {
-    return _then(_$L1HandlerTxnReceipt(
+    return _then(_$L1HandlerTxnReceiptImpl(
       transactionHash: null == transactionHash
           ? _value.transactionHash
           : transactionHash // ignore: cast_nullable_to_non_nullable
@@ -1805,8 +1811,8 @@ class __$$L1HandlerTxnReceiptCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$L1HandlerTxnReceipt implements L1HandlerTxnReceipt {
-  const _$L1HandlerTxnReceipt(
+class _$L1HandlerTxnReceiptImpl implements L1HandlerTxnReceipt {
+  const _$L1HandlerTxnReceiptImpl(
       {required this.transactionHash,
       required this.actualFee,
       required this.status,
@@ -1820,8 +1826,8 @@ class _$L1HandlerTxnReceipt implements L1HandlerTxnReceipt {
         _events = events,
         $type = $type ?? 'l1HandlerTxnReceipt';
 
-  factory _$L1HandlerTxnReceipt.fromJson(Map<String, dynamic> json) =>
-      _$$L1HandlerTxnReceiptFromJson(json);
+  factory _$L1HandlerTxnReceiptImpl.fromJson(Map<String, dynamic> json) =>
+      _$$L1HandlerTxnReceiptImplFromJson(json);
 
 // start of COMMON_RECEIPT_PROPERTIES
   @override
@@ -1861,10 +1867,10 @@ class _$L1HandlerTxnReceipt implements L1HandlerTxnReceipt {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$L1HandlerTxnReceipt &&
+            other is _$L1HandlerTxnReceiptImpl &&
             (identical(other.transactionHash, transactionHash) ||
                 other.transactionHash == transactionHash) &&
             (identical(other.actualFee, actualFee) ||
@@ -1896,8 +1902,8 @@ class _$L1HandlerTxnReceipt implements L1HandlerTxnReceipt {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$L1HandlerTxnReceiptCopyWith<_$L1HandlerTxnReceipt> get copyWith =>
-      __$$L1HandlerTxnReceiptCopyWithImpl<_$L1HandlerTxnReceipt>(
+  _$$L1HandlerTxnReceiptImplCopyWith<_$L1HandlerTxnReceiptImpl> get copyWith =>
+      __$$L1HandlerTxnReceiptImplCopyWithImpl<_$L1HandlerTxnReceiptImpl>(
           this, _$identity);
 
   @override
@@ -2170,7 +2176,7 @@ class _$L1HandlerTxnReceipt implements L1HandlerTxnReceipt {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$L1HandlerTxnReceiptToJson(
+    return _$$L1HandlerTxnReceiptImplToJson(
       this,
     );
   }
@@ -2185,10 +2191,10 @@ abstract class L1HandlerTxnReceipt implements TxnReceipt {
       final int? blockNumber,
       required final String type,
       required final List<MsgToL1> messagesSent,
-      required final List<Event> events}) = _$L1HandlerTxnReceipt;
+      required final List<Event> events}) = _$L1HandlerTxnReceiptImpl;
 
   factory L1HandlerTxnReceipt.fromJson(Map<String, dynamic> json) =
-      _$L1HandlerTxnReceipt.fromJson;
+      _$L1HandlerTxnReceiptImpl.fromJson;
 
   @override // start of COMMON_RECEIPT_PROPERTIES
   Felt get transactionHash;
@@ -2205,16 +2211,16 @@ abstract class L1HandlerTxnReceipt implements TxnReceipt {
   List<Event> get events;
   @override
   @JsonKey(ignore: true)
-  _$$L1HandlerTxnReceiptCopyWith<_$L1HandlerTxnReceipt> get copyWith =>
+  _$$L1HandlerTxnReceiptImplCopyWith<_$L1HandlerTxnReceiptImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$DeployTxnReceiptCopyWith<$Res>
+abstract class _$$DeployTxnReceiptImplCopyWith<$Res>
     implements $TxnReceiptCopyWith<$Res> {
-  factory _$$DeployTxnReceiptCopyWith(
-          _$DeployTxnReceipt value, $Res Function(_$DeployTxnReceipt) then) =
-      __$$DeployTxnReceiptCopyWithImpl<$Res>;
+  factory _$$DeployTxnReceiptImplCopyWith(_$DeployTxnReceiptImpl value,
+          $Res Function(_$DeployTxnReceiptImpl) then) =
+      __$$DeployTxnReceiptImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -2230,11 +2236,11 @@ abstract class _$$DeployTxnReceiptCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$DeployTxnReceiptCopyWithImpl<$Res>
-    extends _$TxnReceiptCopyWithImpl<$Res, _$DeployTxnReceipt>
-    implements _$$DeployTxnReceiptCopyWith<$Res> {
-  __$$DeployTxnReceiptCopyWithImpl(
-      _$DeployTxnReceipt _value, $Res Function(_$DeployTxnReceipt) _then)
+class __$$DeployTxnReceiptImplCopyWithImpl<$Res>
+    extends _$TxnReceiptCopyWithImpl<$Res, _$DeployTxnReceiptImpl>
+    implements _$$DeployTxnReceiptImplCopyWith<$Res> {
+  __$$DeployTxnReceiptImplCopyWithImpl(_$DeployTxnReceiptImpl _value,
+      $Res Function(_$DeployTxnReceiptImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -2250,7 +2256,7 @@ class __$$DeployTxnReceiptCopyWithImpl<$Res>
     Object? events = null,
     Object? contractAddress = null,
   }) {
-    return _then(_$DeployTxnReceipt(
+    return _then(_$DeployTxnReceiptImpl(
       transactionHash: null == transactionHash
           ? _value.transactionHash
           : transactionHash // ignore: cast_nullable_to_non_nullable
@@ -2293,8 +2299,8 @@ class __$$DeployTxnReceiptCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$DeployTxnReceipt implements DeployTxnReceipt {
-  const _$DeployTxnReceipt(
+class _$DeployTxnReceiptImpl implements DeployTxnReceipt {
+  const _$DeployTxnReceiptImpl(
       {required this.transactionHash,
       required this.actualFee,
       required this.status,
@@ -2309,8 +2315,8 @@ class _$DeployTxnReceipt implements DeployTxnReceipt {
         _events = events,
         $type = $type ?? 'deployTxnReceipt';
 
-  factory _$DeployTxnReceipt.fromJson(Map<String, dynamic> json) =>
-      _$$DeployTxnReceiptFromJson(json);
+  factory _$DeployTxnReceiptImpl.fromJson(Map<String, dynamic> json) =>
+      _$$DeployTxnReceiptImplFromJson(json);
 
 // start of COMMON_RECEIPT_PROPERTIES
   @override
@@ -2354,10 +2360,10 @@ class _$DeployTxnReceipt implements DeployTxnReceipt {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$DeployTxnReceipt &&
+            other is _$DeployTxnReceiptImpl &&
             (identical(other.transactionHash, transactionHash) ||
                 other.transactionHash == transactionHash) &&
             (identical(other.actualFee, actualFee) ||
@@ -2392,8 +2398,9 @@ class _$DeployTxnReceipt implements DeployTxnReceipt {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$DeployTxnReceiptCopyWith<_$DeployTxnReceipt> get copyWith =>
-      __$$DeployTxnReceiptCopyWithImpl<_$DeployTxnReceipt>(this, _$identity);
+  _$$DeployTxnReceiptImplCopyWith<_$DeployTxnReceiptImpl> get copyWith =>
+      __$$DeployTxnReceiptImplCopyWithImpl<_$DeployTxnReceiptImpl>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -2665,7 +2672,7 @@ class _$DeployTxnReceipt implements DeployTxnReceipt {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$DeployTxnReceiptToJson(
+    return _$$DeployTxnReceiptImplToJson(
       this,
     );
   }
@@ -2681,10 +2688,10 @@ abstract class DeployTxnReceipt implements TxnReceipt {
       required final String type,
       required final List<MsgToL1> messagesSent,
       required final List<Event> events,
-      required final Felt contractAddress}) = _$DeployTxnReceipt;
+      required final Felt contractAddress}) = _$DeployTxnReceiptImpl;
 
   factory DeployTxnReceipt.fromJson(Map<String, dynamic> json) =
-      _$DeployTxnReceipt.fromJson;
+      _$DeployTxnReceiptImpl.fromJson;
 
   @override // start of COMMON_RECEIPT_PROPERTIES
   Felt get transactionHash;
@@ -2702,16 +2709,17 @@ abstract class DeployTxnReceipt implements TxnReceipt {
   Felt get contractAddress;
   @override
   @JsonKey(ignore: true)
-  _$$DeployTxnReceiptCopyWith<_$DeployTxnReceipt> get copyWith =>
+  _$$DeployTxnReceiptImplCopyWith<_$DeployTxnReceiptImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$DeployAccountTxnReceiptCopyWith<$Res>
+abstract class _$$DeployAccountTxnReceiptImplCopyWith<$Res>
     implements $TxnReceiptCopyWith<$Res> {
-  factory _$$DeployAccountTxnReceiptCopyWith(_$DeployAccountTxnReceipt value,
-          $Res Function(_$DeployAccountTxnReceipt) then) =
-      __$$DeployAccountTxnReceiptCopyWithImpl<$Res>;
+  factory _$$DeployAccountTxnReceiptImplCopyWith(
+          _$DeployAccountTxnReceiptImpl value,
+          $Res Function(_$DeployAccountTxnReceiptImpl) then) =
+      __$$DeployAccountTxnReceiptImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -2727,11 +2735,12 @@ abstract class _$$DeployAccountTxnReceiptCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$DeployAccountTxnReceiptCopyWithImpl<$Res>
-    extends _$TxnReceiptCopyWithImpl<$Res, _$DeployAccountTxnReceipt>
-    implements _$$DeployAccountTxnReceiptCopyWith<$Res> {
-  __$$DeployAccountTxnReceiptCopyWithImpl(_$DeployAccountTxnReceipt _value,
-      $Res Function(_$DeployAccountTxnReceipt) _then)
+class __$$DeployAccountTxnReceiptImplCopyWithImpl<$Res>
+    extends _$TxnReceiptCopyWithImpl<$Res, _$DeployAccountTxnReceiptImpl>
+    implements _$$DeployAccountTxnReceiptImplCopyWith<$Res> {
+  __$$DeployAccountTxnReceiptImplCopyWithImpl(
+      _$DeployAccountTxnReceiptImpl _value,
+      $Res Function(_$DeployAccountTxnReceiptImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -2747,7 +2756,7 @@ class __$$DeployAccountTxnReceiptCopyWithImpl<$Res>
     Object? events = null,
     Object? contractAddress = null,
   }) {
-    return _then(_$DeployAccountTxnReceipt(
+    return _then(_$DeployAccountTxnReceiptImpl(
       transactionHash: null == transactionHash
           ? _value.transactionHash
           : transactionHash // ignore: cast_nullable_to_non_nullable
@@ -2790,8 +2799,8 @@ class __$$DeployAccountTxnReceiptCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$DeployAccountTxnReceipt implements DeployAccountTxnReceipt {
-  const _$DeployAccountTxnReceipt(
+class _$DeployAccountTxnReceiptImpl implements DeployAccountTxnReceipt {
+  const _$DeployAccountTxnReceiptImpl(
       {required this.transactionHash,
       required this.actualFee,
       required this.status,
@@ -2806,8 +2815,8 @@ class _$DeployAccountTxnReceipt implements DeployAccountTxnReceipt {
         _events = events,
         $type = $type ?? 'deployAccountTxnReceipt';
 
-  factory _$DeployAccountTxnReceipt.fromJson(Map<String, dynamic> json) =>
-      _$$DeployAccountTxnReceiptFromJson(json);
+  factory _$DeployAccountTxnReceiptImpl.fromJson(Map<String, dynamic> json) =>
+      _$$DeployAccountTxnReceiptImplFromJson(json);
 
 // start of COMMON_RECEIPT_PROPERTIES
   @override
@@ -2851,10 +2860,10 @@ class _$DeployAccountTxnReceipt implements DeployAccountTxnReceipt {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$DeployAccountTxnReceipt &&
+            other is _$DeployAccountTxnReceiptImpl &&
             (identical(other.transactionHash, transactionHash) ||
                 other.transactionHash == transactionHash) &&
             (identical(other.actualFee, actualFee) ||
@@ -2889,9 +2898,9 @@ class _$DeployAccountTxnReceipt implements DeployAccountTxnReceipt {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$DeployAccountTxnReceiptCopyWith<_$DeployAccountTxnReceipt> get copyWith =>
-      __$$DeployAccountTxnReceiptCopyWithImpl<_$DeployAccountTxnReceipt>(
-          this, _$identity);
+  _$$DeployAccountTxnReceiptImplCopyWith<_$DeployAccountTxnReceiptImpl>
+      get copyWith => __$$DeployAccountTxnReceiptImplCopyWithImpl<
+          _$DeployAccountTxnReceiptImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -3163,7 +3172,7 @@ class _$DeployAccountTxnReceipt implements DeployAccountTxnReceipt {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$DeployAccountTxnReceiptToJson(
+    return _$$DeployAccountTxnReceiptImplToJson(
       this,
     );
   }
@@ -3179,10 +3188,10 @@ abstract class DeployAccountTxnReceipt implements TxnReceipt {
       required final String type,
       required final List<MsgToL1> messagesSent,
       required final List<Event> events,
-      required final Felt contractAddress}) = _$DeployAccountTxnReceipt;
+      required final Felt contractAddress}) = _$DeployAccountTxnReceiptImpl;
 
   factory DeployAccountTxnReceipt.fromJson(Map<String, dynamic> json) =
-      _$DeployAccountTxnReceipt.fromJson;
+      _$DeployAccountTxnReceiptImpl.fromJson;
 
   @override // start of COMMON_RECEIPT_PROPERTIES
   Felt get transactionHash;
@@ -3200,16 +3209,17 @@ abstract class DeployAccountTxnReceipt implements TxnReceipt {
   Felt get contractAddress;
   @override
   @JsonKey(ignore: true)
-  _$$DeployAccountTxnReceiptCopyWith<_$DeployAccountTxnReceipt> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$DeployAccountTxnReceiptImplCopyWith<_$DeployAccountTxnReceiptImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$PendingDeployTxnReceiptCopyWith<$Res>
+abstract class _$$PendingDeployTxnReceiptImplCopyWith<$Res>
     implements $TxnReceiptCopyWith<$Res> {
-  factory _$$PendingDeployTxnReceiptCopyWith(_$PendingDeployTxnReceipt value,
-          $Res Function(_$PendingDeployTxnReceipt) then) =
-      __$$PendingDeployTxnReceiptCopyWithImpl<$Res>;
+  factory _$$PendingDeployTxnReceiptImplCopyWith(
+          _$PendingDeployTxnReceiptImpl value,
+          $Res Function(_$PendingDeployTxnReceiptImpl) then) =
+      __$$PendingDeployTxnReceiptImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -3222,11 +3232,12 @@ abstract class _$$PendingDeployTxnReceiptCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$PendingDeployTxnReceiptCopyWithImpl<$Res>
-    extends _$TxnReceiptCopyWithImpl<$Res, _$PendingDeployTxnReceipt>
-    implements _$$PendingDeployTxnReceiptCopyWith<$Res> {
-  __$$PendingDeployTxnReceiptCopyWithImpl(_$PendingDeployTxnReceipt _value,
-      $Res Function(_$PendingDeployTxnReceipt) _then)
+class __$$PendingDeployTxnReceiptImplCopyWithImpl<$Res>
+    extends _$TxnReceiptCopyWithImpl<$Res, _$PendingDeployTxnReceiptImpl>
+    implements _$$PendingDeployTxnReceiptImplCopyWith<$Res> {
+  __$$PendingDeployTxnReceiptImplCopyWithImpl(
+      _$PendingDeployTxnReceiptImpl _value,
+      $Res Function(_$PendingDeployTxnReceiptImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -3239,7 +3250,7 @@ class __$$PendingDeployTxnReceiptCopyWithImpl<$Res>
     Object? events = null,
     Object? contractAddress = null,
   }) {
-    return _then(_$PendingDeployTxnReceipt(
+    return _then(_$PendingDeployTxnReceiptImpl(
       transactionHash: null == transactionHash
           ? _value.transactionHash
           : transactionHash // ignore: cast_nullable_to_non_nullable
@@ -3270,8 +3281,8 @@ class __$$PendingDeployTxnReceiptCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$PendingDeployTxnReceipt implements PendingDeployTxnReceipt {
-  const _$PendingDeployTxnReceipt(
+class _$PendingDeployTxnReceiptImpl implements PendingDeployTxnReceipt {
+  const _$PendingDeployTxnReceiptImpl(
       {required this.transactionHash,
       required this.actualFee,
       required this.type,
@@ -3283,8 +3294,8 @@ class _$PendingDeployTxnReceipt implements PendingDeployTxnReceipt {
         _events = events,
         $type = $type ?? 'pendingDeployTxnReceipt';
 
-  factory _$PendingDeployTxnReceipt.fromJson(Map<String, dynamic> json) =>
-      _$$PendingDeployTxnReceiptFromJson(json);
+  factory _$PendingDeployTxnReceiptImpl.fromJson(Map<String, dynamic> json) =>
+      _$$PendingDeployTxnReceiptImplFromJson(json);
 
 // start of PENDING_COMMON_RECEIPT_PROPERTIES
   @override
@@ -3322,10 +3333,10 @@ class _$PendingDeployTxnReceipt implements PendingDeployTxnReceipt {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$PendingDeployTxnReceipt &&
+            other is _$PendingDeployTxnReceiptImpl &&
             (identical(other.transactionHash, transactionHash) ||
                 other.transactionHash == transactionHash) &&
             (identical(other.actualFee, actualFee) ||
@@ -3352,9 +3363,9 @@ class _$PendingDeployTxnReceipt implements PendingDeployTxnReceipt {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$PendingDeployTxnReceiptCopyWith<_$PendingDeployTxnReceipt> get copyWith =>
-      __$$PendingDeployTxnReceiptCopyWithImpl<_$PendingDeployTxnReceipt>(
-          this, _$identity);
+  _$$PendingDeployTxnReceiptImplCopyWith<_$PendingDeployTxnReceiptImpl>
+      get copyWith => __$$PendingDeployTxnReceiptImplCopyWithImpl<
+          _$PendingDeployTxnReceiptImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -3626,7 +3637,7 @@ class _$PendingDeployTxnReceipt implements PendingDeployTxnReceipt {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$PendingDeployTxnReceiptToJson(
+    return _$$PendingDeployTxnReceiptImplToJson(
       this,
     );
   }
@@ -3639,10 +3650,10 @@ abstract class PendingDeployTxnReceipt implements TxnReceipt {
       required final String? type,
       required final List<MsgToL1> messagesSent,
       required final List<Event> events,
-      required final Felt contractAddress}) = _$PendingDeployTxnReceipt;
+      required final Felt contractAddress}) = _$PendingDeployTxnReceiptImpl;
 
   factory PendingDeployTxnReceipt.fromJson(Map<String, dynamic> json) =
-      _$PendingDeployTxnReceipt.fromJson;
+      _$PendingDeployTxnReceiptImpl.fromJson;
 
   @override // start of PENDING_COMMON_RECEIPT_PROPERTIES
   Felt get transactionHash;
@@ -3657,17 +3668,17 @@ abstract class PendingDeployTxnReceipt implements TxnReceipt {
   Felt get contractAddress;
   @override
   @JsonKey(ignore: true)
-  _$$PendingDeployTxnReceiptCopyWith<_$PendingDeployTxnReceipt> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$PendingDeployTxnReceiptImplCopyWith<_$PendingDeployTxnReceiptImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$PendingCommonReceiptPropertiesCopyWith<$Res>
+abstract class _$$PendingCommonReceiptPropertiesImplCopyWith<$Res>
     implements $TxnReceiptCopyWith<$Res> {
-  factory _$$PendingCommonReceiptPropertiesCopyWith(
-          _$PendingCommonReceiptProperties value,
-          $Res Function(_$PendingCommonReceiptProperties) then) =
-      __$$PendingCommonReceiptPropertiesCopyWithImpl<$Res>;
+  factory _$$PendingCommonReceiptPropertiesImplCopyWith(
+          _$PendingCommonReceiptPropertiesImpl value,
+          $Res Function(_$PendingCommonReceiptPropertiesImpl) then) =
+      __$$PendingCommonReceiptPropertiesImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -3679,12 +3690,12 @@ abstract class _$$PendingCommonReceiptPropertiesCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$PendingCommonReceiptPropertiesCopyWithImpl<$Res>
-    extends _$TxnReceiptCopyWithImpl<$Res, _$PendingCommonReceiptProperties>
-    implements _$$PendingCommonReceiptPropertiesCopyWith<$Res> {
-  __$$PendingCommonReceiptPropertiesCopyWithImpl(
-      _$PendingCommonReceiptProperties _value,
-      $Res Function(_$PendingCommonReceiptProperties) _then)
+class __$$PendingCommonReceiptPropertiesImplCopyWithImpl<$Res>
+    extends _$TxnReceiptCopyWithImpl<$Res, _$PendingCommonReceiptPropertiesImpl>
+    implements _$$PendingCommonReceiptPropertiesImplCopyWith<$Res> {
+  __$$PendingCommonReceiptPropertiesImplCopyWithImpl(
+      _$PendingCommonReceiptPropertiesImpl _value,
+      $Res Function(_$PendingCommonReceiptPropertiesImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -3696,7 +3707,7 @@ class __$$PendingCommonReceiptPropertiesCopyWithImpl<$Res>
     Object? messagesSent = null,
     Object? events = null,
   }) {
-    return _then(_$PendingCommonReceiptProperties(
+    return _then(_$PendingCommonReceiptPropertiesImpl(
       transactionHash: null == transactionHash
           ? _value.transactionHash
           : transactionHash // ignore: cast_nullable_to_non_nullable
@@ -3723,9 +3734,9 @@ class __$$PendingCommonReceiptPropertiesCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$PendingCommonReceiptProperties
+class _$PendingCommonReceiptPropertiesImpl
     implements PendingCommonReceiptProperties {
-  const _$PendingCommonReceiptProperties(
+  const _$PendingCommonReceiptPropertiesImpl(
       {required this.transactionHash,
       required this.actualFee,
       required this.type,
@@ -3736,9 +3747,9 @@ class _$PendingCommonReceiptProperties
         _events = events,
         $type = $type ?? 'pendingCommonReceiptProperties';
 
-  factory _$PendingCommonReceiptProperties.fromJson(
+  factory _$PendingCommonReceiptPropertiesImpl.fromJson(
           Map<String, dynamic> json) =>
-      _$$PendingCommonReceiptPropertiesFromJson(json);
+      _$$PendingCommonReceiptPropertiesImplFromJson(json);
 
 // start of PENDING_COMMON_RECEIPT_PROPERTIES
   @override
@@ -3772,10 +3783,10 @@ class _$PendingCommonReceiptProperties
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$PendingCommonReceiptProperties &&
+            other is _$PendingCommonReceiptPropertiesImpl &&
             (identical(other.transactionHash, transactionHash) ||
                 other.transactionHash == transactionHash) &&
             (identical(other.actualFee, actualFee) ||
@@ -3799,9 +3810,10 @@ class _$PendingCommonReceiptProperties
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$PendingCommonReceiptPropertiesCopyWith<_$PendingCommonReceiptProperties>
-      get copyWith => __$$PendingCommonReceiptPropertiesCopyWithImpl<
-          _$PendingCommonReceiptProperties>(this, _$identity);
+  _$$PendingCommonReceiptPropertiesImplCopyWith<
+          _$PendingCommonReceiptPropertiesImpl>
+      get copyWith => __$$PendingCommonReceiptPropertiesImplCopyWithImpl<
+          _$PendingCommonReceiptPropertiesImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -4073,7 +4085,7 @@ class _$PendingCommonReceiptProperties
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$PendingCommonReceiptPropertiesToJson(
+    return _$$PendingCommonReceiptPropertiesImplToJson(
       this,
     );
   }
@@ -4081,14 +4093,15 @@ class _$PendingCommonReceiptProperties
 
 abstract class PendingCommonReceiptProperties implements TxnReceipt {
   const factory PendingCommonReceiptProperties(
-      {required final Felt transactionHash,
-      required final Felt actualFee,
-      required final String? type,
-      required final List<MsgToL1> messagesSent,
-      required final List<Event> events}) = _$PendingCommonReceiptProperties;
+          {required final Felt transactionHash,
+          required final Felt actualFee,
+          required final String? type,
+          required final List<MsgToL1> messagesSent,
+          required final List<Event> events}) =
+      _$PendingCommonReceiptPropertiesImpl;
 
   factory PendingCommonReceiptProperties.fromJson(Map<String, dynamic> json) =
-      _$PendingCommonReceiptProperties.fromJson;
+      _$PendingCommonReceiptPropertiesImpl.fromJson;
 
   @override // start of PENDING_COMMON_RECEIPT_PROPERTIES
   Felt get transactionHash;
@@ -4102,6 +4115,7 @@ abstract class PendingCommonReceiptProperties implements TxnReceipt {
   List<Event> get events;
   @override
   @JsonKey(ignore: true)
-  _$$PendingCommonReceiptPropertiesCopyWith<_$PendingCommonReceiptProperties>
+  _$$PendingCommonReceiptPropertiesImplCopyWith<
+          _$PendingCommonReceiptPropertiesImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

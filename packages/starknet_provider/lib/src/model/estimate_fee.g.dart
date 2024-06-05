@@ -20,35 +20,39 @@ Map<String, dynamic> _$EstimateFeeRequestToJson(EstimateFeeRequest instance) =>
       'block_id': instance.blockId.toJson(),
     };
 
-_$EstimateFeeResult _$$EstimateFeeResultFromJson(Map<String, dynamic> json) =>
-    _$EstimateFeeResult(
+_$EstimateFeeResultImpl _$$EstimateFeeResultImplFromJson(
+        Map<String, dynamic> json) =>
+    _$EstimateFeeResultImpl(
       result: (json['result'] as List<dynamic>)
           .map((e) => FeeEstimate.fromJson(e as Map<String, dynamic>))
           .toList(),
       $type: json['starkNetRuntimeTypeToRemove'] as String?,
     );
 
-Map<String, dynamic> _$$EstimateFeeResultToJson(_$EstimateFeeResult instance) =>
+Map<String, dynamic> _$$EstimateFeeResultImplToJson(
+        _$EstimateFeeResultImpl instance) =>
     <String, dynamic>{
       'result': instance.result.map((e) => e.toJson()).toList(),
       'starkNetRuntimeTypeToRemove': instance.$type,
     };
 
-_$EstimateFeeError _$$EstimateFeeErrorFromJson(Map<String, dynamic> json) =>
-    _$EstimateFeeError(
+_$EstimateFeeErrorImpl _$$EstimateFeeErrorImplFromJson(
+        Map<String, dynamic> json) =>
+    _$EstimateFeeErrorImpl(
       error: JsonRpcApiError.fromJson(json['error'] as Map<String, dynamic>),
       $type: json['starkNetRuntimeTypeToRemove'] as String?,
     );
 
-Map<String, dynamic> _$$EstimateFeeErrorToJson(_$EstimateFeeError instance) =>
+Map<String, dynamic> _$$EstimateFeeErrorImplToJson(
+        _$EstimateFeeErrorImpl instance) =>
     <String, dynamic>{
       'error': instance.error.toJson(),
       'starkNetRuntimeTypeToRemove': instance.$type,
     };
 
-_$BroadcastedInvokeTxnV0 _$$BroadcastedInvokeTxnV0FromJson(
+_$BroadcastedInvokeTxnV0Impl _$$BroadcastedInvokeTxnV0ImplFromJson(
         Map<String, dynamic> json) =>
-    _$BroadcastedInvokeTxnV0(
+    _$BroadcastedInvokeTxnV0Impl(
       type: json['type'] as String,
       maxFee: Felt.fromJson(json['max_fee'] as String),
       version: json['version'] as String,
@@ -65,8 +69,8 @@ _$BroadcastedInvokeTxnV0 _$$BroadcastedInvokeTxnV0FromJson(
       $type: json['starkNetRuntimeTypeToRemove'] as String?,
     );
 
-Map<String, dynamic> _$$BroadcastedInvokeTxnV0ToJson(
-    _$BroadcastedInvokeTxnV0 instance) {
+Map<String, dynamic> _$$BroadcastedInvokeTxnV0ImplToJson(
+    _$BroadcastedInvokeTxnV0Impl instance) {
   final val = <String, dynamic>{
     'type': instance.type,
     'max_fee': maxFeeToJson(instance.maxFee),
@@ -88,9 +92,9 @@ Map<String, dynamic> _$$BroadcastedInvokeTxnV0ToJson(
   return val;
 }
 
-_$BroadcastedInvokeTxnV1 _$$BroadcastedInvokeTxnV1FromJson(
+_$BroadcastedInvokeTxnV1Impl _$$BroadcastedInvokeTxnV1ImplFromJson(
         Map<String, dynamic> json) =>
-    _$BroadcastedInvokeTxnV1(
+    _$BroadcastedInvokeTxnV1Impl(
       type: json['type'] as String,
       maxFee: Felt.fromJson(json['max_fee'] as String),
       version: json['version'] as String,
@@ -105,8 +109,8 @@ _$BroadcastedInvokeTxnV1 _$$BroadcastedInvokeTxnV1FromJson(
       $type: json['starkNetRuntimeTypeToRemove'] as String?,
     );
 
-Map<String, dynamic> _$$BroadcastedInvokeTxnV1ToJson(
-        _$BroadcastedInvokeTxnV1 instance) =>
+Map<String, dynamic> _$$BroadcastedInvokeTxnV1ImplToJson(
+        _$BroadcastedInvokeTxnV1Impl instance) =>
     <String, dynamic>{
       'type': instance.type,
       'max_fee': maxFeeToJson(instance.maxFee),
@@ -118,9 +122,9 @@ Map<String, dynamic> _$$BroadcastedInvokeTxnV1ToJson(
       'starkNetRuntimeTypeToRemove': instance.$type,
     };
 
-_$BroadcastedDeclareTxn _$$BroadcastedDeclareTxnFromJson(
+_$BroadcastedDeclareTxnImpl _$$BroadcastedDeclareTxnImplFromJson(
         Map<String, dynamic> json) =>
-    _$BroadcastedDeclareTxn(
+    _$BroadcastedDeclareTxnImpl(
       type: json['type'] as String,
       maxFee: Felt.fromJson(json['max_fee'] as String),
       version: json['version'] as String,
@@ -134,8 +138,8 @@ _$BroadcastedDeclareTxn _$$BroadcastedDeclareTxnFromJson(
       $type: json['starkNetRuntimeTypeToRemove'] as String?,
     );
 
-Map<String, dynamic> _$$BroadcastedDeclareTxnToJson(
-        _$BroadcastedDeclareTxn instance) =>
+Map<String, dynamic> _$$BroadcastedDeclareTxnImplToJson(
+        _$BroadcastedDeclareTxnImpl instance) =>
     <String, dynamic>{
       'type': instance.type,
       'max_fee': maxFeeToJson(instance.maxFee),
@@ -147,9 +151,9 @@ Map<String, dynamic> _$$BroadcastedDeclareTxnToJson(
       'starkNetRuntimeTypeToRemove': instance.$type,
     };
 
-_$BroadcastedDeployTxn _$$BroadcastedDeployTxnFromJson(
+_$BroadcastedDeployTxnImpl _$$BroadcastedDeployTxnImplFromJson(
         Map<String, dynamic> json) =>
-    _$BroadcastedDeployTxn(
+    _$BroadcastedDeployTxnImpl(
       contractClass: DeprecatedContractClass.fromJson(
           json['contract_class'] as Map<String, dynamic>),
       version: json['version'] as String,
@@ -162,8 +166,8 @@ _$BroadcastedDeployTxn _$$BroadcastedDeployTxnFromJson(
       $type: json['starkNetRuntimeTypeToRemove'] as String?,
     );
 
-Map<String, dynamic> _$$BroadcastedDeployTxnToJson(
-        _$BroadcastedDeployTxn instance) =>
+Map<String, dynamic> _$$BroadcastedDeployTxnImplToJson(
+        _$BroadcastedDeployTxnImpl instance) =>
     <String, dynamic>{
       'contract_class': instance.contractClass.toJson(),
       'version': instance.version,
@@ -174,9 +178,9 @@ Map<String, dynamic> _$$BroadcastedDeployTxnToJson(
       'starkNetRuntimeTypeToRemove': instance.$type,
     };
 
-_$BroadcastedDeployAccountTxn _$$BroadcastedDeployAccountTxnFromJson(
+_$BroadcastedDeployAccountTxnImpl _$$BroadcastedDeployAccountTxnImplFromJson(
         Map<String, dynamic> json) =>
-    _$BroadcastedDeployAccountTxn(
+    _$BroadcastedDeployAccountTxnImpl(
       contractAddressSalt:
           Felt.fromJson(json['contract_address_salt'] as String),
       classHash: Felt.fromJson(json['class_hash'] as String),
@@ -193,8 +197,8 @@ _$BroadcastedDeployAccountTxn _$$BroadcastedDeployAccountTxnFromJson(
       $type: json['starkNetRuntimeTypeToRemove'] as String?,
     );
 
-Map<String, dynamic> _$$BroadcastedDeployAccountTxnToJson(
-        _$BroadcastedDeployAccountTxn instance) =>
+Map<String, dynamic> _$$BroadcastedDeployAccountTxnImplToJson(
+        _$BroadcastedDeployAccountTxnImpl instance) =>
     <String, dynamic>{
       'contract_address_salt': instance.contractAddressSalt.toJson(),
       'class_hash': instance.classHash.toJson(),

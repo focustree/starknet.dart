@@ -1,0 +1,112 @@
+# How to contribute (and get paid)
+
+**starknet.dart** is a dart package allowing any dart program (mainly Flutter apps) to communicate with the [Starknet](https://starknet.io/docs/) blockchain.
+
+The [Starknet nodes](https://github.com/eqlabs/pathfinder/blob/06ea631557937d4319aa539a2021e312ec757ac2/crates/pathfinder/src/rpc.rs) expose a JSON-RPC API (see the [specs](https://github.com/starkware-libs/starknet-specs)) that we can call to call Smart Contract methods or even get information on blocks and past transactions.
+
+The goal of the project is thus to build a bridge between dart applications and Starknet, while staying consistent with the common abstractions used in other blockchain SDKs (see [ethers.js](https://docs.ethers.io/v5/)).
+
+## Why contribute to starknet.dart?
+
+Starknet is a revolution in the web3 world: it allows to [scale Ethereum](https://docs.ethhub.io/ethereum-roadmap/layer-2-scaling/zk-rollups/) and offers the best UX one can dream of on a blockchain thanks to unique features like [account abstraction](https://www.argent.xyz/blog/wtf-is-account-abstraction/) or [session keys](https://github.com/dontpanicdao/starknet-burner).
+
+But web3 mainstream adoption won't happen unless decentralized applications go to mobile. That's why it's a priority to build the best possible Starknet SDK for Flutter, one of the most used cross-platform mobile frameworks.
+
+If you want to contribute to the web3 adoption and more specifically Starknet one, then you probably **can't have more impact than working on this SDK** that will be used by the majority of Flutter dApps on Starknet!
+
+### To become a core contributor
+
+After a few qualitative contributions, we'll probably offer you to join the core team to become a maintainer of the project and get paid for your work.
+
+If you want to contribute to the project, you can follow the steps below:
+
+1. Join our [telegram group](https://t.me/+CWezjfLIRYc0MDY0) and introduce yourself.
+2. We'll let you know what are good issues to start with.
+3. Create your account on [Only Dust](https://app.onlydust.com/p/starknetdart) and receive your first payment.
+
+## How to set up your dev env
+
+1. Clone the repository:
+
+```sh
+git clone git@github.com:focustree/starknet.dart.git
+```
+
+2. [Install flutter and dart](https://docs.flutter.dev/get-started/install)
+
+3. Install [melos](https://melos.invertase.dev/~melos-latest/getting-started):
+
+```sh
+dart pub global activate melos
+```
+
+We use melos to manage our monorepo:
+
+- Run `melos bs` to fetch deps
+- Run `melos format` to format all packages
+- Run `melos test` to run tests
+- Run `melos publish` to publish all packages
+
+4. Fetch all dependencies:
+
+```sh
+melos bootstrap
+```
+
+<<<<<<< HEAD
+5. Set up your starknet dev env. First [install asdf](https://asdf-vm.com/guide/getting-started.html), then run:
+||||||| parent of 3929d90 (Use starknet-devnet-rs instead of katana)
+5. Setup your starknet dev env. First [install asdf](https://asdf-vm.com/guide/getting-started.html), then run:
+=======
+5. We setup all important params via env vars (ex: `STARKNET_RPC` ). Make sure to source the env vars before running any command:
+>>>>>>> 3929d90 (Use starknet-devnet-rs instead of katana)
+
+```sh
+source .env.devnet
+```
+
+6. Setup your starknet dev env
+
+First install [asdf](https://asdf-vm.com/guide/getting-started.html) and [cargo](https://doc.rust-lang.org/cargo/getting-started/installation.html).
+
+```sh
+melos starknet:setup
+```
+
+Start the devnet in one terminal:
+
+```sh
+melos devnet:start
+```
+
+And in another terminal, deploy the contracts:
+
+```sh
+melos devnet:setup
+```
+
+7. Run the tests:
+
+```sh
+melos test
+```
+
+## Repo structure
+
+- `/contracts` contains all the contracts we use in the project. We prefix the folder by the cairo version we use.
+- `/packages` contains all the packages we use in the project.
+  - `starknet` contains the core logic with crypto hash functions and the main utility classes.
+  - `starknet_provider` contains the main package that we use to interact with the Starknet rpc nodes.
+  - `secure_store` manages the secure storage of the private key using different methods depending on the platform.
+  - `wallet_kit` is a higher level ui kit to manage wallets and transactions in a flutter app.
+- `/examples` contains examples of apps using the packages. They should be accompanied by a tutorial in the docs to reproduce the app from scratch.
+- `/docs` contains the documentation of the project. Docs are automatically deployed when we merge to main.
+
+## Troubleshooting
+
+Tools need to be at the right version to avoid any incompability:
+
+- [Cairo Compiler Version](https://github.com/starkware-libs/cairo/releases): `2.6.2`
+- [Scarb](https://github.com/software-mansion/scarb/releases): `2.6.2`
+- [Starknet Devnet](https://github.com/0xSpaceShard/starknet-devnet-rs/releases): `0.5.0`
+- [Starkli](https://github.com/xJonathanLEI/starkli/releases): `0.2.9`

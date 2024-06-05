@@ -12,7 +12,7 @@ part of 'fee_estimate.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 FeeEstimate _$FeeEstimateFromJson(Map<String, dynamic> json) {
   return _FeeEstimate.fromJson(json);
@@ -74,22 +74,22 @@ class _$FeeEstimateCopyWithImpl<$Res, $Val extends FeeEstimate>
 }
 
 /// @nodoc
-abstract class _$$_FeeEstimateCopyWith<$Res>
+abstract class _$$FeeEstimateImplCopyWith<$Res>
     implements $FeeEstimateCopyWith<$Res> {
-  factory _$$_FeeEstimateCopyWith(
-          _$_FeeEstimate value, $Res Function(_$_FeeEstimate) then) =
-      __$$_FeeEstimateCopyWithImpl<$Res>;
+  factory _$$FeeEstimateImplCopyWith(
+          _$FeeEstimateImpl value, $Res Function(_$FeeEstimateImpl) then) =
+      __$$FeeEstimateImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String gasConsumed, String gasPrice, String overallFee});
 }
 
 /// @nodoc
-class __$$_FeeEstimateCopyWithImpl<$Res>
-    extends _$FeeEstimateCopyWithImpl<$Res, _$_FeeEstimate>
-    implements _$$_FeeEstimateCopyWith<$Res> {
-  __$$_FeeEstimateCopyWithImpl(
-      _$_FeeEstimate _value, $Res Function(_$_FeeEstimate) _then)
+class __$$FeeEstimateImplCopyWithImpl<$Res>
+    extends _$FeeEstimateCopyWithImpl<$Res, _$FeeEstimateImpl>
+    implements _$$FeeEstimateImplCopyWith<$Res> {
+  __$$FeeEstimateImplCopyWithImpl(
+      _$FeeEstimateImpl _value, $Res Function(_$FeeEstimateImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -99,7 +99,7 @@ class __$$_FeeEstimateCopyWithImpl<$Res>
     Object? gasPrice = null,
     Object? overallFee = null,
   }) {
-    return _then(_$_FeeEstimate(
+    return _then(_$FeeEstimateImpl(
       gasConsumed: null == gasConsumed
           ? _value.gasConsumed
           : gasConsumed // ignore: cast_nullable_to_non_nullable
@@ -118,14 +118,14 @@ class __$$_FeeEstimateCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_FeeEstimate implements _FeeEstimate {
-  const _$_FeeEstimate(
+class _$FeeEstimateImpl implements _FeeEstimate {
+  const _$FeeEstimateImpl(
       {required this.gasConsumed,
       required this.gasPrice,
       required this.overallFee});
 
-  factory _$_FeeEstimate.fromJson(Map<String, dynamic> json) =>
-      _$$_FeeEstimateFromJson(json);
+  factory _$FeeEstimateImpl.fromJson(Map<String, dynamic> json) =>
+      _$$FeeEstimateImplFromJson(json);
 
   @override
   final String gasConsumed;
@@ -140,10 +140,10 @@ class _$_FeeEstimate implements _FeeEstimate {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_FeeEstimate &&
+            other is _$FeeEstimateImpl &&
             (identical(other.gasConsumed, gasConsumed) ||
                 other.gasConsumed == gasConsumed) &&
             (identical(other.gasPrice, gasPrice) ||
@@ -160,12 +160,12 @@ class _$_FeeEstimate implements _FeeEstimate {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_FeeEstimateCopyWith<_$_FeeEstimate> get copyWith =>
-      __$$_FeeEstimateCopyWithImpl<_$_FeeEstimate>(this, _$identity);
+  _$$FeeEstimateImplCopyWith<_$FeeEstimateImpl> get copyWith =>
+      __$$FeeEstimateImplCopyWithImpl<_$FeeEstimateImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_FeeEstimateToJson(
+    return _$$FeeEstimateImplToJson(
       this,
     );
   }
@@ -175,10 +175,10 @@ abstract class _FeeEstimate implements FeeEstimate {
   const factory _FeeEstimate(
       {required final String gasConsumed,
       required final String gasPrice,
-      required final String overallFee}) = _$_FeeEstimate;
+      required final String overallFee}) = _$FeeEstimateImpl;
 
   factory _FeeEstimate.fromJson(Map<String, dynamic> json) =
-      _$_FeeEstimate.fromJson;
+      _$FeeEstimateImpl.fromJson;
 
   @override
   String get gasConsumed;
@@ -188,6 +188,6 @@ abstract class _FeeEstimate implements FeeEstimate {
   String get overallFee;
   @override
   @JsonKey(ignore: true)
-  _$$_FeeEstimateCopyWith<_$_FeeEstimate> get copyWith =>
+  _$$FeeEstimateImplCopyWith<_$FeeEstimateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

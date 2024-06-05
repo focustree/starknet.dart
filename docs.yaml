@@ -24,3 +24,5 @@ sidebar:
         - "/packages/secure-store"
       - - Wallet Kit
         - "/packages/wallet-kit"
+  - - How to Contribute
+    - "/how-to-contribute"

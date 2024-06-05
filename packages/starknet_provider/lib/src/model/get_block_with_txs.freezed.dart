@@ -12,7 +12,7 @@ part of 'get_block_with_txs.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 GetBlockWithTxs _$GetBlockWithTxsFromJson(Map<String, dynamic> json) {
   switch (json['starkNetRuntimeTypeToRemove']) {
@@ -92,10 +92,11 @@ class _$GetBlockWithTxsCopyWithImpl<$Res, $Val extends GetBlockWithTxs>
 }
 
 /// @nodoc
-abstract class _$$GetBlockWithTxsResultCopyWith<$Res> {
-  factory _$$GetBlockWithTxsResultCopyWith(_$GetBlockWithTxsResult value,
-          $Res Function(_$GetBlockWithTxsResult) then) =
-      __$$GetBlockWithTxsResultCopyWithImpl<$Res>;
+abstract class _$$GetBlockWithTxsResultImplCopyWith<$Res> {
+  factory _$$GetBlockWithTxsResultImplCopyWith(
+          _$GetBlockWithTxsResultImpl value,
+          $Res Function(_$GetBlockWithTxsResultImpl) then) =
+      __$$GetBlockWithTxsResultImplCopyWithImpl<$Res>;
   @useResult
   $Res call({BlockWithTxs result});
 
@@ -103,11 +104,11 @@ abstract class _$$GetBlockWithTxsResultCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$GetBlockWithTxsResultCopyWithImpl<$Res>
-    extends _$GetBlockWithTxsCopyWithImpl<$Res, _$GetBlockWithTxsResult>
-    implements _$$GetBlockWithTxsResultCopyWith<$Res> {
-  __$$GetBlockWithTxsResultCopyWithImpl(_$GetBlockWithTxsResult _value,
-      $Res Function(_$GetBlockWithTxsResult) _then)
+class __$$GetBlockWithTxsResultImplCopyWithImpl<$Res>
+    extends _$GetBlockWithTxsCopyWithImpl<$Res, _$GetBlockWithTxsResultImpl>
+    implements _$$GetBlockWithTxsResultImplCopyWith<$Res> {
+  __$$GetBlockWithTxsResultImplCopyWithImpl(_$GetBlockWithTxsResultImpl _value,
+      $Res Function(_$GetBlockWithTxsResultImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -115,7 +116,7 @@ class __$$GetBlockWithTxsResultCopyWithImpl<$Res>
   $Res call({
     Object? result = null,
   }) {
-    return _then(_$GetBlockWithTxsResult(
+    return _then(_$GetBlockWithTxsResultImpl(
       result: null == result
           ? _value.result
           : result // ignore: cast_nullable_to_non_nullable
@@ -134,12 +135,12 @@ class __$$GetBlockWithTxsResultCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$GetBlockWithTxsResult implements GetBlockWithTxsResult {
-  const _$GetBlockWithTxsResult({required this.result, final String? $type})
+class _$GetBlockWithTxsResultImpl implements GetBlockWithTxsResult {
+  const _$GetBlockWithTxsResultImpl({required this.result, final String? $type})
       : $type = $type ?? 'block';
 
-  factory _$GetBlockWithTxsResult.fromJson(Map<String, dynamic> json) =>
-      _$$GetBlockWithTxsResultFromJson(json);
+  factory _$GetBlockWithTxsResultImpl.fromJson(Map<String, dynamic> json) =>
+      _$$GetBlockWithTxsResultImplFromJson(json);
 
   @override
   final BlockWithTxs result;
@@ -153,10 +154,10 @@ class _$GetBlockWithTxsResult implements GetBlockWithTxsResult {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$GetBlockWithTxsResult &&
+            other is _$GetBlockWithTxsResultImpl &&
             (identical(other.result, result) || other.result == result));
   }
 
@@ -167,9 +168,9 @@ class _$GetBlockWithTxsResult implements GetBlockWithTxsResult {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$GetBlockWithTxsResultCopyWith<_$GetBlockWithTxsResult> get copyWith =>
-      __$$GetBlockWithTxsResultCopyWithImpl<_$GetBlockWithTxsResult>(
-          this, _$identity);
+  _$$GetBlockWithTxsResultImplCopyWith<_$GetBlockWithTxsResultImpl>
+      get copyWith => __$$GetBlockWithTxsResultImplCopyWithImpl<
+          _$GetBlockWithTxsResultImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -235,7 +236,7 @@ class _$GetBlockWithTxsResult implements GetBlockWithTxsResult {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$GetBlockWithTxsResultToJson(
+    return _$$GetBlockWithTxsResultImplToJson(
       this,
     );
   }
@@ -243,22 +244,22 @@ class _$GetBlockWithTxsResult implements GetBlockWithTxsResult {
 
 abstract class GetBlockWithTxsResult implements GetBlockWithTxs {
   const factory GetBlockWithTxsResult({required final BlockWithTxs result}) =
-      _$GetBlockWithTxsResult;
+      _$GetBlockWithTxsResultImpl;
 
   factory GetBlockWithTxsResult.fromJson(Map<String, dynamic> json) =
-      _$GetBlockWithTxsResult.fromJson;
+      _$GetBlockWithTxsResultImpl.fromJson;
 
   BlockWithTxs get result;
   @JsonKey(ignore: true)
-  _$$GetBlockWithTxsResultCopyWith<_$GetBlockWithTxsResult> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$GetBlockWithTxsResultImplCopyWith<_$GetBlockWithTxsResultImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$GetBlockWithTxsErrorCopyWith<$Res> {
-  factory _$$GetBlockWithTxsErrorCopyWith(_$GetBlockWithTxsError value,
-          $Res Function(_$GetBlockWithTxsError) then) =
-      __$$GetBlockWithTxsErrorCopyWithImpl<$Res>;
+abstract class _$$GetBlockWithTxsErrorImplCopyWith<$Res> {
+  factory _$$GetBlockWithTxsErrorImplCopyWith(_$GetBlockWithTxsErrorImpl value,
+          $Res Function(_$GetBlockWithTxsErrorImpl) then) =
+      __$$GetBlockWithTxsErrorImplCopyWithImpl<$Res>;
   @useResult
   $Res call({JsonRpcApiError error});
 
@@ -266,11 +267,11 @@ abstract class _$$GetBlockWithTxsErrorCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$GetBlockWithTxsErrorCopyWithImpl<$Res>
-    extends _$GetBlockWithTxsCopyWithImpl<$Res, _$GetBlockWithTxsError>
-    implements _$$GetBlockWithTxsErrorCopyWith<$Res> {
-  __$$GetBlockWithTxsErrorCopyWithImpl(_$GetBlockWithTxsError _value,
-      $Res Function(_$GetBlockWithTxsError) _then)
+class __$$GetBlockWithTxsErrorImplCopyWithImpl<$Res>
+    extends _$GetBlockWithTxsCopyWithImpl<$Res, _$GetBlockWithTxsErrorImpl>
+    implements _$$GetBlockWithTxsErrorImplCopyWith<$Res> {
+  __$$GetBlockWithTxsErrorImplCopyWithImpl(_$GetBlockWithTxsErrorImpl _value,
+      $Res Function(_$GetBlockWithTxsErrorImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -278,7 +279,7 @@ class __$$GetBlockWithTxsErrorCopyWithImpl<$Res>
   $Res call({
     Object? error = null,
   }) {
-    return _then(_$GetBlockWithTxsError(
+    return _then(_$GetBlockWithTxsErrorImpl(
       error: null == error
           ? _value.error
           : error // ignore: cast_nullable_to_non_nullable
@@ -297,12 +298,12 @@ class __$$GetBlockWithTxsErrorCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$GetBlockWithTxsError implements GetBlockWithTxsError {
-  const _$GetBlockWithTxsError({required this.error, final String? $type})
+class _$GetBlockWithTxsErrorImpl implements GetBlockWithTxsError {
+  const _$GetBlockWithTxsErrorImpl({required this.error, final String? $type})
       : $type = $type ?? 'error';
 
-  factory _$GetBlockWithTxsError.fromJson(Map<String, dynamic> json) =>
-      _$$GetBlockWithTxsErrorFromJson(json);
+  factory _$GetBlockWithTxsErrorImpl.fromJson(Map<String, dynamic> json) =>
+      _$$GetBlockWithTxsErrorImplFromJson(json);
 
   @override
   final JsonRpcApiError error;
@@ -316,10 +317,10 @@ class _$GetBlockWithTxsError implements GetBlockWithTxsError {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$GetBlockWithTxsError &&
+            other is _$GetBlockWithTxsErrorImpl &&
             (identical(other.error, error) || other.error == error));
   }
 
@@ -330,9 +331,10 @@ class _$GetBlockWithTxsError implements GetBlockWithTxsError {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$GetBlockWithTxsErrorCopyWith<_$GetBlockWithTxsError> get copyWith =>
-      __$$GetBlockWithTxsErrorCopyWithImpl<_$GetBlockWithTxsError>(
-          this, _$identity);
+  _$$GetBlockWithTxsErrorImplCopyWith<_$GetBlockWithTxsErrorImpl>
+      get copyWith =>
+          __$$GetBlockWithTxsErrorImplCopyWithImpl<_$GetBlockWithTxsErrorImpl>(
+              this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -398,7 +400,7 @@ class _$GetBlockWithTxsError implements GetBlockWithTxsError {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$GetBlockWithTxsErrorToJson(
+    return _$$GetBlockWithTxsErrorImplToJson(
       this,
     );
   }
@@ -406,15 +408,15 @@ class _$GetBlockWithTxsError implements GetBlockWithTxsError {
 
 abstract class GetBlockWithTxsError implements GetBlockWithTxs {
   const factory GetBlockWithTxsError({required final JsonRpcApiError error}) =
-      _$GetBlockWithTxsError;
+      _$GetBlockWithTxsErrorImpl;
 
   factory GetBlockWithTxsError.fromJson(Map<String, dynamic> json) =
-      _$GetBlockWithTxsError.fromJson;
+      _$GetBlockWithTxsErrorImpl.fromJson;
 
   JsonRpcApiError get error;
   @JsonKey(ignore: true)
-  _$$GetBlockWithTxsErrorCopyWith<_$GetBlockWithTxsError> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$GetBlockWithTxsErrorImplCopyWith<_$GetBlockWithTxsErrorImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 BlockWithTxs _$BlockWithTxsFromJson(Map<String, dynamic> json) {
@@ -572,11 +574,11 @@ class _$BlockWithTxsCopyWithImpl<$Res, $Val extends BlockWithTxs>
 }
 
 /// @nodoc
-abstract class _$$BlockWithTxsResponseCopyWith<$Res>
+abstract class _$$BlockWithTxsResponseImplCopyWith<$Res>
     implements $BlockWithTxsCopyWith<$Res> {
-  factory _$$BlockWithTxsResponseCopyWith(_$BlockWithTxsResponse value,
-          $Res Function(_$BlockWithTxsResponse) then) =
-      __$$BlockWithTxsResponseCopyWithImpl<$Res>;
+  factory _$$BlockWithTxsResponseImplCopyWith(_$BlockWithTxsResponseImpl value,
+          $Res Function(_$BlockWithTxsResponseImpl) then) =
+      __$$BlockWithTxsResponseImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -591,11 +593,11 @@ abstract class _$$BlockWithTxsResponseCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$BlockWithTxsResponseCopyWithImpl<$Res>
-    extends _$BlockWithTxsCopyWithImpl<$Res, _$BlockWithTxsResponse>
-    implements _$$BlockWithTxsResponseCopyWith<$Res> {
-  __$$BlockWithTxsResponseCopyWithImpl(_$BlockWithTxsResponse _value,
-      $Res Function(_$BlockWithTxsResponse) _then)
+class __$$BlockWithTxsResponseImplCopyWithImpl<$Res>
+    extends _$BlockWithTxsCopyWithImpl<$Res, _$BlockWithTxsResponseImpl>
+    implements _$$BlockWithTxsResponseImplCopyWith<$Res> {
+  __$$BlockWithTxsResponseImplCopyWithImpl(_$BlockWithTxsResponseImpl _value,
+      $Res Function(_$BlockWithTxsResponseImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -610,7 +612,7 @@ class __$$BlockWithTxsResponseCopyWithImpl<$Res>
     Object? timestamp = null,
     Object? sequencerAddress = null,
   }) {
-    return _then(_$BlockWithTxsResponse(
+    return _then(_$BlockWithTxsResponseImpl(
       status: null == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
@@ -649,8 +651,8 @@ class __$$BlockWithTxsResponseCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$BlockWithTxsResponse implements BlockWithTxsResponse {
-  const _$BlockWithTxsResponse(
+class _$BlockWithTxsResponseImpl implements BlockWithTxsResponse {
+  const _$BlockWithTxsResponseImpl(
       {required this.status,
       required final List<Txn> transactions,
       required this.blockHash,
@@ -663,8 +665,8 @@ class _$BlockWithTxsResponse implements BlockWithTxsResponse {
       : _transactions = transactions,
         $type = $type ?? 'resultingBlock';
 
-  factory _$BlockWithTxsResponse.fromJson(Map<String, dynamic> json) =>
-      _$$BlockWithTxsResponseFromJson(json);
+  factory _$BlockWithTxsResponseImpl.fromJson(Map<String, dynamic> json) =>
+      _$$BlockWithTxsResponseImplFromJson(json);
 
   @override
   final String status;
@@ -702,10 +704,10 @@ class _$BlockWithTxsResponse implements BlockWithTxsResponse {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$BlockWithTxsResponse &&
+            other is _$BlockWithTxsResponseImpl &&
             (identical(other.status, status) || other.status == status) &&
             const DeepCollectionEquality()
                 .equals(other._transactions, _transactions) &&
@@ -738,9 +740,10 @@ class _$BlockWithTxsResponse implements BlockWithTxsResponse {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$BlockWithTxsResponseCopyWith<_$BlockWithTxsResponse> get copyWith =>
-      __$$BlockWithTxsResponseCopyWithImpl<_$BlockWithTxsResponse>(
-          this, _$identity);
+  _$$BlockWithTxsResponseImplCopyWith<_$BlockWithTxsResponseImpl>
+      get copyWith =>
+          __$$BlockWithTxsResponseImplCopyWithImpl<_$BlockWithTxsResponseImpl>(
+              this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -842,7 +845,7 @@ class _$BlockWithTxsResponse implements BlockWithTxsResponse {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$BlockWithTxsResponseToJson(
+    return _$$BlockWithTxsResponseImplToJson(
       this,
     );
   }
@@ -857,10 +860,10 @@ abstract class BlockWithTxsResponse implements BlockWithTxs {
       required final int blockNumber,
       required final Felt newRoot,
       required final int timestamp,
-      required final Felt sequencerAddress}) = _$BlockWithTxsResponse;
+      required final Felt sequencerAddress}) = _$BlockWithTxsResponseImpl;
 
   factory BlockWithTxsResponse.fromJson(Map<String, dynamic> json) =
-      _$BlockWithTxsResponse.fromJson;
+      _$BlockWithTxsResponseImpl.fromJson;
 
   String get status;
   @override //Start of BLOCK_BODY_WITH_TXS
@@ -877,17 +880,17 @@ abstract class BlockWithTxsResponse implements BlockWithTxs {
   Felt get sequencerAddress;
   @override
   @JsonKey(ignore: true)
-  _$$BlockWithTxsResponseCopyWith<_$BlockWithTxsResponse> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$BlockWithTxsResponseImplCopyWith<_$BlockWithTxsResponseImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$PendingBlockWithTxsResultCopyWith<$Res>
+abstract class _$$PendingBlockWithTxsResultImplCopyWith<$Res>
     implements $BlockWithTxsCopyWith<$Res> {
-  factory _$$PendingBlockWithTxsResultCopyWith(
-          _$PendingBlockWithTxsResult value,
-          $Res Function(_$PendingBlockWithTxsResult) then) =
-      __$$PendingBlockWithTxsResultCopyWithImpl<$Res>;
+  factory _$$PendingBlockWithTxsResultImplCopyWith(
+          _$PendingBlockWithTxsResultImpl value,
+          $Res Function(_$PendingBlockWithTxsResultImpl) then) =
+      __$$PendingBlockWithTxsResultImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -898,11 +901,12 @@ abstract class _$$PendingBlockWithTxsResultCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$PendingBlockWithTxsResultCopyWithImpl<$Res>
-    extends _$BlockWithTxsCopyWithImpl<$Res, _$PendingBlockWithTxsResult>
-    implements _$$PendingBlockWithTxsResultCopyWith<$Res> {
-  __$$PendingBlockWithTxsResultCopyWithImpl(_$PendingBlockWithTxsResult _value,
-      $Res Function(_$PendingBlockWithTxsResult) _then)
+class __$$PendingBlockWithTxsResultImplCopyWithImpl<$Res>
+    extends _$BlockWithTxsCopyWithImpl<$Res, _$PendingBlockWithTxsResultImpl>
+    implements _$$PendingBlockWithTxsResultImplCopyWith<$Res> {
+  __$$PendingBlockWithTxsResultImplCopyWithImpl(
+      _$PendingBlockWithTxsResultImpl _value,
+      $Res Function(_$PendingBlockWithTxsResultImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -913,7 +917,7 @@ class __$$PendingBlockWithTxsResultCopyWithImpl<$Res>
     Object? sequencerAddress = null,
     Object? blockHash = null,
   }) {
-    return _then(_$PendingBlockWithTxsResult(
+    return _then(_$PendingBlockWithTxsResultImpl(
       transactions: null == transactions
           ? _value._transactions
           : transactions // ignore: cast_nullable_to_non_nullable
@@ -936,8 +940,8 @@ class __$$PendingBlockWithTxsResultCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$PendingBlockWithTxsResult implements PendingBlockWithTxsResult {
-  const _$PendingBlockWithTxsResult(
+class _$PendingBlockWithTxsResultImpl implements PendingBlockWithTxsResult {
+  const _$PendingBlockWithTxsResultImpl(
       {required final List<Txn> transactions,
       required this.timestamp,
       required this.sequencerAddress,
@@ -946,8 +950,8 @@ class _$PendingBlockWithTxsResult implements PendingBlockWithTxsResult {
       : _transactions = transactions,
         $type = $type ?? 'pendingBlock';
 
-  factory _$PendingBlockWithTxsResult.fromJson(Map<String, dynamic> json) =>
-      _$$PendingBlockWithTxsResultFromJson(json);
+  factory _$PendingBlockWithTxsResultImpl.fromJson(Map<String, dynamic> json) =>
+      _$$PendingBlockWithTxsResultImplFromJson(json);
 
 // Start of BLOCK_BODY_WITH_TXS
   final List<Txn> _transactions;
@@ -976,10 +980,10 @@ class _$PendingBlockWithTxsResult implements PendingBlockWithTxsResult {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$PendingBlockWithTxsResult &&
+            other is _$PendingBlockWithTxsResultImpl &&
             const DeepCollectionEquality()
                 .equals(other._transactions, _transactions) &&
             (identical(other.timestamp, timestamp) ||
@@ -1002,9 +1006,9 @@ class _$PendingBlockWithTxsResult implements PendingBlockWithTxsResult {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$PendingBlockWithTxsResultCopyWith<_$PendingBlockWithTxsResult>
-      get copyWith => __$$PendingBlockWithTxsResultCopyWithImpl<
-          _$PendingBlockWithTxsResult>(this, _$identity);
+  _$$PendingBlockWithTxsResultImplCopyWith<_$PendingBlockWithTxsResultImpl>
+      get copyWith => __$$PendingBlockWithTxsResultImplCopyWithImpl<
+          _$PendingBlockWithTxsResultImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1104,7 +1108,7 @@ class _$PendingBlockWithTxsResult implements PendingBlockWithTxsResult {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$PendingBlockWithTxsResultToJson(
+    return _$$PendingBlockWithTxsResultImplToJson(
       this,
     );
   }
@@ -1115,10 +1119,10 @@ abstract class PendingBlockWithTxsResult implements BlockWithTxs {
       {required final List<Txn> transactions,
       required final int timestamp,
       required final Felt sequencerAddress,
-      required final Felt blockHash}) = _$PendingBlockWithTxsResult;
+      required final Felt blockHash}) = _$PendingBlockWithTxsResultImpl;
 
   factory PendingBlockWithTxsResult.fromJson(Map<String, dynamic> json) =
-      _$PendingBlockWithTxsResult.fromJson;
+      _$PendingBlockWithTxsResultImpl.fromJson;
 
   @override // Start of BLOCK_BODY_WITH_TXS
   List<Txn> get transactions;
@@ -1130,6 +1134,6 @@ abstract class PendingBlockWithTxsResult implements BlockWithTxs {
   Felt get blockHash;
   @override
   @JsonKey(ignore: true)
-  _$$PendingBlockWithTxsResultCopyWith<_$PendingBlockWithTxsResult>
+  _$$PendingBlockWithTxsResultImplCopyWith<_$PendingBlockWithTxsResultImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

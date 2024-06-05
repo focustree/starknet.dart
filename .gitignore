@@ -27,4 +27,4 @@ coverage/
 !contracts/build
 
 .env.*
-!.env.katana
+!.env.devnet

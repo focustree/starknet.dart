@@ -12,7 +12,7 @@ part of 'get_transaction.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 GetTransaction _$GetTransactionFromJson(Map<String, dynamic> json) {
   switch (json['starkNetRuntimeTypeToRemove']) {
@@ -92,10 +92,10 @@ class _$GetTransactionCopyWithImpl<$Res, $Val extends GetTransaction>
 }
 
 /// @nodoc
-abstract class _$$GetTransactionResultCopyWith<$Res> {
-  factory _$$GetTransactionResultCopyWith(_$GetTransactionResult value,
-          $Res Function(_$GetTransactionResult) then) =
-      __$$GetTransactionResultCopyWithImpl<$Res>;
+abstract class _$$GetTransactionResultImplCopyWith<$Res> {
+  factory _$$GetTransactionResultImplCopyWith(_$GetTransactionResultImpl value,
+          $Res Function(_$GetTransactionResultImpl) then) =
+      __$$GetTransactionResultImplCopyWithImpl<$Res>;
   @useResult
   $Res call({Txn result});
 
@@ -103,11 +103,11 @@ abstract class _$$GetTransactionResultCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$GetTransactionResultCopyWithImpl<$Res>
-    extends _$GetTransactionCopyWithImpl<$Res, _$GetTransactionResult>
-    implements _$$GetTransactionResultCopyWith<$Res> {
-  __$$GetTransactionResultCopyWithImpl(_$GetTransactionResult _value,
-      $Res Function(_$GetTransactionResult) _then)
+class __$$GetTransactionResultImplCopyWithImpl<$Res>
+    extends _$GetTransactionCopyWithImpl<$Res, _$GetTransactionResultImpl>
+    implements _$$GetTransactionResultImplCopyWith<$Res> {
+  __$$GetTransactionResultImplCopyWithImpl(_$GetTransactionResultImpl _value,
+      $Res Function(_$GetTransactionResultImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -115,7 +115,7 @@ class __$$GetTransactionResultCopyWithImpl<$Res>
   $Res call({
     Object? result = null,
   }) {
-    return _then(_$GetTransactionResult(
+    return _then(_$GetTransactionResultImpl(
       result: null == result
           ? _value.result
           : result // ignore: cast_nullable_to_non_nullable
@@ -134,12 +134,12 @@ class __$$GetTransactionResultCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$GetTransactionResult implements GetTransactionResult {
-  const _$GetTransactionResult({required this.result, final String? $type})
+class _$GetTransactionResultImpl implements GetTransactionResult {
+  const _$GetTransactionResultImpl({required this.result, final String? $type})
       : $type = $type ?? 'result';
 
-  factory _$GetTransactionResult.fromJson(Map<String, dynamic> json) =>
-      _$$GetTransactionResultFromJson(json);
+  factory _$GetTransactionResultImpl.fromJson(Map<String, dynamic> json) =>
+      _$$GetTransactionResultImplFromJson(json);
 
   @override
   final Txn result;
@@ -153,10 +153,10 @@ class _$GetTransactionResult implements GetTransactionResult {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$GetTransactionResult &&
+            other is _$GetTransactionResultImpl &&
             (identical(other.result, result) || other.result == result));
   }
 
@@ -167,9 +167,10 @@ class _$GetTransactionResult implements GetTransactionResult {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$GetTransactionResultCopyWith<_$GetTransactionResult> get copyWith =>
-      __$$GetTransactionResultCopyWithImpl<_$GetTransactionResult>(
-          this, _$identity);
+  _$$GetTransactionResultImplCopyWith<_$GetTransactionResultImpl>
+      get copyWith =>
+          __$$GetTransactionResultImplCopyWithImpl<_$GetTransactionResultImpl>(
+              this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -235,7 +236,7 @@ class _$GetTransactionResult implements GetTransactionResult {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$GetTransactionResultToJson(
+    return _$$GetTransactionResultImplToJson(
       this,
     );
   }
@@ -243,22 +244,22 @@ class _$GetTransactionResult implements GetTransactionResult {
 
 abstract class GetTransactionResult implements GetTransaction {
   const factory GetTransactionResult({required final Txn result}) =
-      _$GetTransactionResult;
+      _$GetTransactionResultImpl;
 
   factory GetTransactionResult.fromJson(Map<String, dynamic> json) =
-      _$GetTransactionResult.fromJson;
+      _$GetTransactionResultImpl.fromJson;
 
   Txn get result;
   @JsonKey(ignore: true)
-  _$$GetTransactionResultCopyWith<_$GetTransactionResult> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$GetTransactionResultImplCopyWith<_$GetTransactionResultImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$GetTransactionErrorCopyWith<$Res> {
-  factory _$$GetTransactionErrorCopyWith(_$GetTransactionError value,
-          $Res Function(_$GetTransactionError) then) =
-      __$$GetTransactionErrorCopyWithImpl<$Res>;
+abstract class _$$GetTransactionErrorImplCopyWith<$Res> {
+  factory _$$GetTransactionErrorImplCopyWith(_$GetTransactionErrorImpl value,
+          $Res Function(_$GetTransactionErrorImpl) then) =
+      __$$GetTransactionErrorImplCopyWithImpl<$Res>;
   @useResult
   $Res call({JsonRpcApiError error});
 
@@ -266,11 +267,11 @@ abstract class _$$GetTransactionErrorCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$GetTransactionErrorCopyWithImpl<$Res>
-    extends _$GetTransactionCopyWithImpl<$Res, _$GetTransactionError>
-    implements _$$GetTransactionErrorCopyWith<$Res> {
-  __$$GetTransactionErrorCopyWithImpl(
-      _$GetTransactionError _value, $Res Function(_$GetTransactionError) _then)
+class __$$GetTransactionErrorImplCopyWithImpl<$Res>
+    extends _$GetTransactionCopyWithImpl<$Res, _$GetTransactionErrorImpl>
+    implements _$$GetTransactionErrorImplCopyWith<$Res> {
+  __$$GetTransactionErrorImplCopyWithImpl(_$GetTransactionErrorImpl _value,
+      $Res Function(_$GetTransactionErrorImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -278,7 +279,7 @@ class __$$GetTransactionErrorCopyWithImpl<$Res>
   $Res call({
     Object? error = null,
   }) {
-    return _then(_$GetTransactionError(
+    return _then(_$GetTransactionErrorImpl(
       error: null == error
           ? _value.error
           : error // ignore: cast_nullable_to_non_nullable
@@ -297,12 +298,12 @@ class __$$GetTransactionErrorCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$GetTransactionError implements GetTransactionError {
-  const _$GetTransactionError({required this.error, final String? $type})
+class _$GetTransactionErrorImpl implements GetTransactionError {
+  const _$GetTransactionErrorImpl({required this.error, final String? $type})
       : $type = $type ?? 'error';
 
-  factory _$GetTransactionError.fromJson(Map<String, dynamic> json) =>
-      _$$GetTransactionErrorFromJson(json);
+  factory _$GetTransactionErrorImpl.fromJson(Map<String, dynamic> json) =>
+      _$$GetTransactionErrorImplFromJson(json);
 
   @override
   final JsonRpcApiError error;
@@ -316,10 +317,10 @@ class _$GetTransactionError implements GetTransactionError {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$GetTransactionError &&
+            other is _$GetTransactionErrorImpl &&
             (identical(other.error, error) || other.error == error));
   }
 
@@ -330,8 +331,8 @@ class _$GetTransactionError implements GetTransactionError {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$GetTransactionErrorCopyWith<_$GetTransactionError> get copyWith =>
-      __$$GetTransactionErrorCopyWithImpl<_$GetTransactionError>(
+  _$$GetTransactionErrorImplCopyWith<_$GetTransactionErrorImpl> get copyWith =>
+      __$$GetTransactionErrorImplCopyWithImpl<_$GetTransactionErrorImpl>(
           this, _$identity);
 
   @override
@@ -398,7 +399,7 @@ class _$GetTransactionError implements GetTransactionError {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$GetTransactionErrorToJson(
+    return _$$GetTransactionErrorImplToJson(
       this,
     );
   }
@@ -406,14 +407,14 @@ class _$GetTransactionError implements GetTransactionError {
 
 abstract class GetTransactionError implements GetTransaction {
   const factory GetTransactionError({required final JsonRpcApiError error}) =
-      _$GetTransactionError;
+      _$GetTransactionErrorImpl;
 
   factory GetTransactionError.fromJson(Map<String, dynamic> json) =
-      _$GetTransactionError.fromJson;
+      _$GetTransactionErrorImpl.fromJson;
 
   JsonRpcApiError get error;
   @JsonKey(ignore: true)
-  _$$GetTransactionErrorCopyWith<_$GetTransactionError> get copyWith =>
+  _$$GetTransactionErrorImplCopyWith<_$GetTransactionErrorImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -712,10 +713,10 @@ class _$TxnCopyWithImpl<$Res, $Val extends Txn> implements $TxnCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class _$$InvokeTxnV0CopyWith<$Res> implements $TxnCopyWith<$Res> {
-  factory _$$InvokeTxnV0CopyWith(
-          _$InvokeTxnV0 value, $Res Function(_$InvokeTxnV0) then) =
-      __$$InvokeTxnV0CopyWithImpl<$Res>;
+abstract class _$$InvokeTxnV0ImplCopyWith<$Res> implements $TxnCopyWith<$Res> {
+  factory _$$InvokeTxnV0ImplCopyWith(
+          _$InvokeTxnV0Impl value, $Res Function(_$InvokeTxnV0Impl) then) =
+      __$$InvokeTxnV0ImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -731,11 +732,11 @@ abstract class _$$InvokeTxnV0CopyWith<$Res> implements $TxnCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$InvokeTxnV0CopyWithImpl<$Res>
-    extends _$TxnCopyWithImpl<$Res, _$InvokeTxnV0>
-    implements _$$InvokeTxnV0CopyWith<$Res> {
-  __$$InvokeTxnV0CopyWithImpl(
-      _$InvokeTxnV0 _value, $Res Function(_$InvokeTxnV0) _then)
+class __$$InvokeTxnV0ImplCopyWithImpl<$Res>
+    extends _$TxnCopyWithImpl<$Res, _$InvokeTxnV0Impl>
+    implements _$$InvokeTxnV0ImplCopyWith<$Res> {
+  __$$InvokeTxnV0ImplCopyWithImpl(
+      _$InvokeTxnV0Impl _value, $Res Function(_$InvokeTxnV0Impl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -751,7 +752,7 @@ class __$$InvokeTxnV0CopyWithImpl<$Res>
     Object? entryPointSelector = freezed,
     Object? calldata = freezed,
   }) {
-    return _then(_$InvokeTxnV0(
+    return _then(_$InvokeTxnV0Impl(
       transactionHash: freezed == transactionHash
           ? _value.transactionHash
           : transactionHash // ignore: cast_nullable_to_non_nullable
@@ -794,8 +795,8 @@ class __$$InvokeTxnV0CopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$InvokeTxnV0 implements InvokeTxnV0 {
-  const _$InvokeTxnV0(
+class _$InvokeTxnV0Impl implements InvokeTxnV0 {
+  const _$InvokeTxnV0Impl(
       {required this.transactionHash,
       @JsonKey(toJson: maxFeeToJson) required this.maxFee,
       required this.version,
@@ -810,8 +811,8 @@ class _$InvokeTxnV0 implements InvokeTxnV0 {
         _calldata = calldata,
         $type = $type ?? 'invokeTxnV0';
 
-  factory _$InvokeTxnV0.fromJson(Map<String, dynamic> json) =>
-      _$$InvokeTxnV0FromJson(json);
+  factory _$InvokeTxnV0Impl.fromJson(Map<String, dynamic> json) =>
+      _$$InvokeTxnV0ImplFromJson(json);
 
 // start of COMMON_TXN_PROPERTIES
   @override
@@ -862,10 +863,10 @@ class _$InvokeTxnV0 implements InvokeTxnV0 {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$InvokeTxnV0 &&
+            other is _$InvokeTxnV0Impl &&
             (identical(other.transactionHash, transactionHash) ||
                 other.transactionHash == transactionHash) &&
             (identical(other.maxFee, maxFee) || other.maxFee == maxFee) &&
@@ -898,8 +899,8 @@ class _$InvokeTxnV0 implements InvokeTxnV0 {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$InvokeTxnV0CopyWith<_$InvokeTxnV0> get copyWith =>
-      __$$InvokeTxnV0CopyWithImpl<_$InvokeTxnV0>(this, _$identity);
+  _$$InvokeTxnV0ImplCopyWith<_$InvokeTxnV0Impl> get copyWith =>
+      __$$InvokeTxnV0ImplCopyWithImpl<_$InvokeTxnV0Impl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1151,7 +1152,7 @@ class _$InvokeTxnV0 implements InvokeTxnV0 {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$InvokeTxnV0ToJson(
+    return _$$InvokeTxnV0ImplToJson(
       this,
     );
   }
@@ -1167,10 +1168,10 @@ abstract class InvokeTxnV0 implements Txn {
       required final String? type,
       required final Felt? contractAddress,
       required final Felt? entryPointSelector,
-      required final List<Felt>? calldata}) = _$InvokeTxnV0;
+      required final List<Felt>? calldata}) = _$InvokeTxnV0Impl;
 
   factory InvokeTxnV0.fromJson(Map<String, dynamic> json) =
-      _$InvokeTxnV0.fromJson;
+      _$InvokeTxnV0Impl.fromJson;
 
   @override // start of COMMON_TXN_PROPERTIES
   Felt? get transactionHash; // start of BROADCASTED_TXN_COMMON_PROPERTIES
@@ -1189,15 +1190,15 @@ abstract class InvokeTxnV0 implements Txn {
   List<Felt>? get calldata;
   @override
   @JsonKey(ignore: true)
-  _$$InvokeTxnV0CopyWith<_$InvokeTxnV0> get copyWith =>
+  _$$InvokeTxnV0ImplCopyWith<_$InvokeTxnV0Impl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$InvokeTxnV1CopyWith<$Res> implements $TxnCopyWith<$Res> {
-  factory _$$InvokeTxnV1CopyWith(
-          _$InvokeTxnV1 value, $Res Function(_$InvokeTxnV1) then) =
-      __$$InvokeTxnV1CopyWithImpl<$Res>;
+abstract class _$$InvokeTxnV1ImplCopyWith<$Res> implements $TxnCopyWith<$Res> {
+  factory _$$InvokeTxnV1ImplCopyWith(
+          _$InvokeTxnV1Impl value, $Res Function(_$InvokeTxnV1Impl) then) =
+      __$$InvokeTxnV1ImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -1212,11 +1213,11 @@ abstract class _$$InvokeTxnV1CopyWith<$Res> implements $TxnCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$InvokeTxnV1CopyWithImpl<$Res>
-    extends _$TxnCopyWithImpl<$Res, _$InvokeTxnV1>
-    implements _$$InvokeTxnV1CopyWith<$Res> {
-  __$$InvokeTxnV1CopyWithImpl(
-      _$InvokeTxnV1 _value, $Res Function(_$InvokeTxnV1) _then)
+class __$$InvokeTxnV1ImplCopyWithImpl<$Res>
+    extends _$TxnCopyWithImpl<$Res, _$InvokeTxnV1Impl>
+    implements _$$InvokeTxnV1ImplCopyWith<$Res> {
+  __$$InvokeTxnV1ImplCopyWithImpl(
+      _$InvokeTxnV1Impl _value, $Res Function(_$InvokeTxnV1Impl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -1231,7 +1232,7 @@ class __$$InvokeTxnV1CopyWithImpl<$Res>
     Object? sender_address = freezed,
     Object? calldata = freezed,
   }) {
-    return _then(_$InvokeTxnV1(
+    return _then(_$InvokeTxnV1Impl(
       transactionHash: freezed == transactionHash
           ? _value.transactionHash
           : transactionHash // ignore: cast_nullable_to_non_nullable
@@ -1270,8 +1271,8 @@ class __$$InvokeTxnV1CopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$InvokeTxnV1 implements InvokeTxnV1 {
-  const _$InvokeTxnV1(
+class _$InvokeTxnV1Impl implements InvokeTxnV1 {
+  const _$InvokeTxnV1Impl(
       {required this.transactionHash,
       @JsonKey(toJson: maxFeeToJson) required this.maxFee,
       required this.version,
@@ -1285,8 +1286,8 @@ class _$InvokeTxnV1 implements InvokeTxnV1 {
         _calldata = calldata,
         $type = $type ?? 'invokeTxnV1';
 
-  factory _$InvokeTxnV1.fromJson(Map<String, dynamic> json) =>
-      _$$InvokeTxnV1FromJson(json);
+  factory _$InvokeTxnV1Impl.fromJson(Map<String, dynamic> json) =>
+      _$$InvokeTxnV1ImplFromJson(json);
 
 // start of COMMON_TXN_PROPERTIES
   @override
@@ -1335,10 +1336,10 @@ class _$InvokeTxnV1 implements InvokeTxnV1 {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$InvokeTxnV1 &&
+            other is _$InvokeTxnV1Impl &&
             (identical(other.transactionHash, transactionHash) ||
                 other.transactionHash == transactionHash) &&
             (identical(other.maxFee, maxFee) || other.maxFee == maxFee) &&
@@ -1368,8 +1369,8 @@ class _$InvokeTxnV1 implements InvokeTxnV1 {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$InvokeTxnV1CopyWith<_$InvokeTxnV1> get copyWith =>
-      __$$InvokeTxnV1CopyWithImpl<_$InvokeTxnV1>(this, _$identity);
+  _$$InvokeTxnV1ImplCopyWith<_$InvokeTxnV1Impl> get copyWith =>
+      __$$InvokeTxnV1ImplCopyWithImpl<_$InvokeTxnV1Impl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1621,7 +1622,7 @@ class _$InvokeTxnV1 implements InvokeTxnV1 {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$InvokeTxnV1ToJson(
+    return _$$InvokeTxnV1ImplToJson(
       this,
     );
   }
@@ -1636,10 +1637,10 @@ abstract class InvokeTxnV1 implements Txn {
       required final Felt? nonce,
       required final String? type,
       required final Felt? sender_address,
-      required final List<Felt>? calldata}) = _$InvokeTxnV1;
+      required final List<Felt>? calldata}) = _$InvokeTxnV1Impl;
 
   factory InvokeTxnV1.fromJson(Map<String, dynamic> json) =
-      _$InvokeTxnV1.fromJson;
+      _$InvokeTxnV1Impl.fromJson;
 
   @override // start of COMMON_TXN_PROPERTIES
   Felt? get transactionHash; // start of BROADCASTED_TXN_COMMON_PROPERTIES
@@ -1657,15 +1658,15 @@ abstract class InvokeTxnV1 implements Txn {
   List<Felt>? get calldata;
   @override
   @JsonKey(ignore: true)
-  _$$InvokeTxnV1CopyWith<_$InvokeTxnV1> get copyWith =>
+  _$$InvokeTxnV1ImplCopyWith<_$InvokeTxnV1Impl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$DeclareTxnCopyWith<$Res> implements $TxnCopyWith<$Res> {
-  factory _$$DeclareTxnCopyWith(
-          _$DeclareTxn value, $Res Function(_$DeclareTxn) then) =
-      __$$DeclareTxnCopyWithImpl<$Res>;
+abstract class _$$DeclareTxnImplCopyWith<$Res> implements $TxnCopyWith<$Res> {
+  factory _$$DeclareTxnImplCopyWith(
+          _$DeclareTxnImpl value, $Res Function(_$DeclareTxnImpl) then) =
+      __$$DeclareTxnImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -1680,11 +1681,11 @@ abstract class _$$DeclareTxnCopyWith<$Res> implements $TxnCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$DeclareTxnCopyWithImpl<$Res>
-    extends _$TxnCopyWithImpl<$Res, _$DeclareTxn>
-    implements _$$DeclareTxnCopyWith<$Res> {
-  __$$DeclareTxnCopyWithImpl(
-      _$DeclareTxn _value, $Res Function(_$DeclareTxn) _then)
+class __$$DeclareTxnImplCopyWithImpl<$Res>
+    extends _$TxnCopyWithImpl<$Res, _$DeclareTxnImpl>
+    implements _$$DeclareTxnImplCopyWith<$Res> {
+  __$$DeclareTxnImplCopyWithImpl(
+      _$DeclareTxnImpl _value, $Res Function(_$DeclareTxnImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -1699,7 +1700,7 @@ class __$$DeclareTxnCopyWithImpl<$Res>
     Object? classHash = freezed,
     Object? senderAddress = freezed,
   }) {
-    return _then(_$DeclareTxn(
+    return _then(_$DeclareTxnImpl(
       transactionHash: freezed == transactionHash
           ? _value.transactionHash
           : transactionHash // ignore: cast_nullable_to_non_nullable
@@ -1738,8 +1739,8 @@ class __$$DeclareTxnCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$DeclareTxn implements DeclareTxn {
-  const _$DeclareTxn(
+class _$DeclareTxnImpl implements DeclareTxn {
+  const _$DeclareTxnImpl(
       {required this.transactionHash,
       @JsonKey(toJson: maxFeeToJson) required this.maxFee,
       required this.version,
@@ -1752,8 +1753,8 @@ class _$DeclareTxn implements DeclareTxn {
       : _signature = signature,
         $type = $type ?? 'declareTxn';
 
-  factory _$DeclareTxn.fromJson(Map<String, dynamic> json) =>
-      _$$DeclareTxnFromJson(json);
+  factory _$DeclareTxnImpl.fromJson(Map<String, dynamic> json) =>
+      _$$DeclareTxnImplFromJson(json);
 
 // start of COMMON_TXN_PROPERTIES
   @override
@@ -1794,10 +1795,10 @@ class _$DeclareTxn implements DeclareTxn {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$DeclareTxn &&
+            other is _$DeclareTxnImpl &&
             (identical(other.transactionHash, transactionHash) ||
                 other.transactionHash == transactionHash) &&
             (identical(other.maxFee, maxFee) || other.maxFee == maxFee) &&
@@ -1828,8 +1829,8 @@ class _$DeclareTxn implements DeclareTxn {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$DeclareTxnCopyWith<_$DeclareTxn> get copyWith =>
-      __$$DeclareTxnCopyWithImpl<_$DeclareTxn>(this, _$identity);
+  _$$DeclareTxnImplCopyWith<_$DeclareTxnImpl> get copyWith =>
+      __$$DeclareTxnImplCopyWithImpl<_$DeclareTxnImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -2081,7 +2082,7 @@ class _$DeclareTxn implements DeclareTxn {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$DeclareTxnToJson(
+    return _$$DeclareTxnImplToJson(
       this,
     );
   }
@@ -2096,10 +2097,10 @@ abstract class DeclareTxn implements Txn {
       required final Felt? nonce,
       required final String? type,
       required final Felt? classHash,
-      required final Felt? senderAddress}) = _$DeclareTxn;
+      required final Felt? senderAddress}) = _$DeclareTxnImpl;
 
   factory DeclareTxn.fromJson(Map<String, dynamic> json) =
-      _$DeclareTxn.fromJson;
+      _$DeclareTxnImpl.fromJson;
 
   @override // start of COMMON_TXN_PROPERTIES
   Felt? get transactionHash; // start of BROADCASTED_TXN_COMMON_PROPERTIES
@@ -2116,15 +2117,15 @@ abstract class DeclareTxn implements Txn {
   Felt? get senderAddress;
   @override
   @JsonKey(ignore: true)
-  _$$DeclareTxnCopyWith<_$DeclareTxn> get copyWith =>
+  _$$DeclareTxnImplCopyWith<_$DeclareTxnImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$DeployTxnCopyWith<$Res> implements $TxnCopyWith<$Res> {
-  factory _$$DeployTxnCopyWith(
-          _$DeployTxn value, $Res Function(_$DeployTxn) then) =
-      __$$DeployTxnCopyWithImpl<$Res>;
+abstract class _$$DeployTxnImplCopyWith<$Res> implements $TxnCopyWith<$Res> {
+  factory _$$DeployTxnImplCopyWith(
+          _$DeployTxnImpl value, $Res Function(_$DeployTxnImpl) then) =
+      __$$DeployTxnImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -2137,11 +2138,11 @@ abstract class _$$DeployTxnCopyWith<$Res> implements $TxnCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$DeployTxnCopyWithImpl<$Res>
-    extends _$TxnCopyWithImpl<$Res, _$DeployTxn>
-    implements _$$DeployTxnCopyWith<$Res> {
-  __$$DeployTxnCopyWithImpl(
-      _$DeployTxn _value, $Res Function(_$DeployTxn) _then)
+class __$$DeployTxnImplCopyWithImpl<$Res>
+    extends _$TxnCopyWithImpl<$Res, _$DeployTxnImpl>
+    implements _$$DeployTxnImplCopyWith<$Res> {
+  __$$DeployTxnImplCopyWithImpl(
+      _$DeployTxnImpl _value, $Res Function(_$DeployTxnImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -2154,7 +2155,7 @@ class __$$DeployTxnCopyWithImpl<$Res>
     Object? contractAddressSalt = freezed,
     Object? constructorCalldata = freezed,
   }) {
-    return _then(_$DeployTxn(
+    return _then(_$DeployTxnImpl(
       transactionHash: freezed == transactionHash
           ? _value.transactionHash
           : transactionHash // ignore: cast_nullable_to_non_nullable
@@ -2185,8 +2186,8 @@ class __$$DeployTxnCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$DeployTxn implements DeployTxn {
-  const _$DeployTxn(
+class _$DeployTxnImpl implements DeployTxn {
+  const _$DeployTxnImpl(
       {required this.transactionHash,
       required this.classHash,
       required this.version,
@@ -2197,8 +2198,8 @@ class _$DeployTxn implements DeployTxn {
       : _constructorCalldata = constructorCalldata,
         $type = $type ?? 'deployTxn';
 
-  factory _$DeployTxn.fromJson(Map<String, dynamic> json) =>
-      _$$DeployTxnFromJson(json);
+  factory _$DeployTxnImpl.fromJson(Map<String, dynamic> json) =>
+      _$$DeployTxnImplFromJson(json);
 
   @override
   final Felt? transactionHash;
@@ -2231,10 +2232,10 @@ class _$DeployTxn implements DeployTxn {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$DeployTxn &&
+            other is _$DeployTxnImpl &&
             (identical(other.transactionHash, transactionHash) ||
                 other.transactionHash == transactionHash) &&
             (identical(other.classHash, classHash) ||
@@ -2261,8 +2262,8 @@ class _$DeployTxn implements DeployTxn {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$DeployTxnCopyWith<_$DeployTxn> get copyWith =>
-      __$$DeployTxnCopyWithImpl<_$DeployTxn>(this, _$identity);
+  _$$DeployTxnImplCopyWith<_$DeployTxnImpl> get copyWith =>
+      __$$DeployTxnImplCopyWithImpl<_$DeployTxnImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -2514,7 +2515,7 @@ class _$DeployTxn implements DeployTxn {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$DeployTxnToJson(
+    return _$$DeployTxnImplToJson(
       this,
     );
   }
@@ -2527,9 +2528,10 @@ abstract class DeployTxn implements Txn {
       required final String? version,
       required final String? type,
       required final Felt? contractAddressSalt,
-      required final List<Felt>? constructorCalldata}) = _$DeployTxn;
+      required final List<Felt>? constructorCalldata}) = _$DeployTxnImpl;
 
-  factory DeployTxn.fromJson(Map<String, dynamic> json) = _$DeployTxn.fromJson;
+  factory DeployTxn.fromJson(Map<String, dynamic> json) =
+      _$DeployTxnImpl.fromJson;
 
   @override
   Felt? get transactionHash;
@@ -2542,15 +2544,16 @@ abstract class DeployTxn implements Txn {
   List<Felt>? get constructorCalldata;
   @override
   @JsonKey(ignore: true)
-  _$$DeployTxnCopyWith<_$DeployTxn> get copyWith =>
+  _$$DeployTxnImplCopyWith<_$DeployTxnImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$DeployAccountTxnCopyWith<$Res> implements $TxnCopyWith<$Res> {
-  factory _$$DeployAccountTxnCopyWith(
-          _$DeployAccountTxn value, $Res Function(_$DeployAccountTxn) then) =
-      __$$DeployAccountTxnCopyWithImpl<$Res>;
+abstract class _$$DeployAccountTxnImplCopyWith<$Res>
+    implements $TxnCopyWith<$Res> {
+  factory _$$DeployAccountTxnImplCopyWith(_$DeployAccountTxnImpl value,
+          $Res Function(_$DeployAccountTxnImpl) then) =
+      __$$DeployAccountTxnImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -2566,11 +2569,11 @@ abstract class _$$DeployAccountTxnCopyWith<$Res> implements $TxnCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$DeployAccountTxnCopyWithImpl<$Res>
-    extends _$TxnCopyWithImpl<$Res, _$DeployAccountTxn>
-    implements _$$DeployAccountTxnCopyWith<$Res> {
-  __$$DeployAccountTxnCopyWithImpl(
-      _$DeployAccountTxn _value, $Res Function(_$DeployAccountTxn) _then)
+class __$$DeployAccountTxnImplCopyWithImpl<$Res>
+    extends _$TxnCopyWithImpl<$Res, _$DeployAccountTxnImpl>
+    implements _$$DeployAccountTxnImplCopyWith<$Res> {
+  __$$DeployAccountTxnImplCopyWithImpl(_$DeployAccountTxnImpl _value,
+      $Res Function(_$DeployAccountTxnImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -2586,7 +2589,7 @@ class __$$DeployAccountTxnCopyWithImpl<$Res>
     Object? classHash = freezed,
     Object? constructorCalldata = freezed,
   }) {
-    return _then(_$DeployAccountTxn(
+    return _then(_$DeployAccountTxnImpl(
       transactionHash: freezed == transactionHash
           ? _value.transactionHash
           : transactionHash // ignore: cast_nullable_to_non_nullable
@@ -2629,8 +2632,8 @@ class __$$DeployAccountTxnCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$DeployAccountTxn implements DeployAccountTxn {
-  const _$DeployAccountTxn(
+class _$DeployAccountTxnImpl implements DeployAccountTxn {
+  const _$DeployAccountTxnImpl(
       {required this.transactionHash,
       @JsonKey(toJson: maxFeeToJson) required this.maxFee,
       required this.version,
@@ -2645,8 +2648,8 @@ class _$DeployAccountTxn implements DeployAccountTxn {
         _constructorCalldata = constructorCalldata,
         $type = $type ?? 'deployAccountTxn';
 
-  factory _$DeployAccountTxn.fromJson(Map<String, dynamic> json) =>
-      _$$DeployAccountTxnFromJson(json);
+  factory _$DeployAccountTxnImpl.fromJson(Map<String, dynamic> json) =>
+      _$$DeployAccountTxnImplFromJson(json);
 
 // start of COMMON_TXN_PROPERTIES
   @override
@@ -2698,10 +2701,10 @@ class _$DeployAccountTxn implements DeployAccountTxn {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$DeployAccountTxn &&
+            other is _$DeployAccountTxnImpl &&
             (identical(other.transactionHash, transactionHash) ||
                 other.transactionHash == transactionHash) &&
             (identical(other.maxFee, maxFee) || other.maxFee == maxFee) &&
@@ -2735,8 +2738,9 @@ class _$DeployAccountTxn implements DeployAccountTxn {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$DeployAccountTxnCopyWith<_$DeployAccountTxn> get copyWith =>
-      __$$DeployAccountTxnCopyWithImpl<_$DeployAccountTxn>(this, _$identity);
+  _$$DeployAccountTxnImplCopyWith<_$DeployAccountTxnImpl> get copyWith =>
+      __$$DeployAccountTxnImplCopyWithImpl<_$DeployAccountTxnImpl>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -2988,7 +2992,7 @@ class _$DeployAccountTxn implements DeployAccountTxn {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$DeployAccountTxnToJson(
+    return _$$DeployAccountTxnImplToJson(
       this,
     );
   }
@@ -3004,10 +3008,10 @@ abstract class DeployAccountTxn implements Txn {
       required final String? type,
       required final Felt? contractAddressSalt,
       required final Felt? classHash,
-      required final List<Felt>? constructorCalldata}) = _$DeployAccountTxn;
+      required final List<Felt>? constructorCalldata}) = _$DeployAccountTxnImpl;
 
   factory DeployAccountTxn.fromJson(Map<String, dynamic> json) =
-      _$DeployAccountTxn.fromJson;
+      _$DeployAccountTxnImpl.fromJson;
 
   @override // start of COMMON_TXN_PROPERTIES
   Felt? get transactionHash; // start of BROADCASTED_TXN_COMMON_PROPERTIES
@@ -3026,15 +3030,15 @@ abstract class DeployAccountTxn implements Txn {
   List<Felt>? get constructorCalldata;
   @override
   @JsonKey(ignore: true)
-  _$$DeployAccountTxnCopyWith<_$DeployAccountTxn> get copyWith =>
+  _$$DeployAccountTxnImplCopyWith<_$DeployAccountTxnImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$L1HandlerTxnCopyWith<$Res> implements $TxnCopyWith<$Res> {
-  factory _$$L1HandlerTxnCopyWith(
-          _$L1HandlerTxn value, $Res Function(_$L1HandlerTxn) then) =
-      __$$L1HandlerTxnCopyWithImpl<$Res>;
+abstract class _$$L1HandlerTxnImplCopyWith<$Res> implements $TxnCopyWith<$Res> {
+  factory _$$L1HandlerTxnImplCopyWith(
+          _$L1HandlerTxnImpl value, $Res Function(_$L1HandlerTxnImpl) then) =
+      __$$L1HandlerTxnImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -3048,11 +3052,11 @@ abstract class _$$L1HandlerTxnCopyWith<$Res> implements $TxnCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$L1HandlerTxnCopyWithImpl<$Res>
-    extends _$TxnCopyWithImpl<$Res, _$L1HandlerTxn>
-    implements _$$L1HandlerTxnCopyWith<$Res> {
-  __$$L1HandlerTxnCopyWithImpl(
-      _$L1HandlerTxn _value, $Res Function(_$L1HandlerTxn) _then)
+class __$$L1HandlerTxnImplCopyWithImpl<$Res>
+    extends _$TxnCopyWithImpl<$Res, _$L1HandlerTxnImpl>
+    implements _$$L1HandlerTxnImplCopyWith<$Res> {
+  __$$L1HandlerTxnImplCopyWithImpl(
+      _$L1HandlerTxnImpl _value, $Res Function(_$L1HandlerTxnImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -3066,7 +3070,7 @@ class __$$L1HandlerTxnCopyWithImpl<$Res>
     Object? entryPointSelector = freezed,
     Object? calldata = freezed,
   }) {
-    return _then(_$L1HandlerTxn(
+    return _then(_$L1HandlerTxnImpl(
       transactionHash: freezed == transactionHash
           ? _value.transactionHash
           : transactionHash // ignore: cast_nullable_to_non_nullable
@@ -3101,8 +3105,8 @@ class __$$L1HandlerTxnCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$L1HandlerTxn implements L1HandlerTxn {
-  const _$L1HandlerTxn(
+class _$L1HandlerTxnImpl implements L1HandlerTxn {
+  const _$L1HandlerTxnImpl(
       {required this.transactionHash,
       required this.version,
       required this.nonce,
@@ -3114,8 +3118,8 @@ class _$L1HandlerTxn implements L1HandlerTxn {
       : _calldata = calldata,
         $type = $type ?? 'l1HandlerTxn';
 
-  factory _$L1HandlerTxn.fromJson(Map<String, dynamic> json) =>
-      _$$L1HandlerTxnFromJson(json);
+  factory _$L1HandlerTxnImpl.fromJson(Map<String, dynamic> json) =>
+      _$$L1HandlerTxnImplFromJson(json);
 
   @override
   final Felt? transactionHash;
@@ -3149,10 +3153,10 @@ class _$L1HandlerTxn implements L1HandlerTxn {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$L1HandlerTxn &&
+            other is _$L1HandlerTxnImpl &&
             (identical(other.transactionHash, transactionHash) ||
                 other.transactionHash == transactionHash) &&
             (identical(other.version, version) || other.version == version) &&
@@ -3180,8 +3184,8 @@ class _$L1HandlerTxn implements L1HandlerTxn {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$L1HandlerTxnCopyWith<_$L1HandlerTxn> get copyWith =>
-      __$$L1HandlerTxnCopyWithImpl<_$L1HandlerTxn>(this, _$identity);
+  _$$L1HandlerTxnImplCopyWith<_$L1HandlerTxnImpl> get copyWith =>
+      __$$L1HandlerTxnImplCopyWithImpl<_$L1HandlerTxnImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -3433,7 +3437,7 @@ class _$L1HandlerTxn implements L1HandlerTxn {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$L1HandlerTxnToJson(
+    return _$$L1HandlerTxnImplToJson(
       this,
     );
   }
@@ -3447,10 +3451,10 @@ abstract class L1HandlerTxn implements Txn {
       required final String? type,
       required final Felt? contractAddress,
       required final Felt? entryPointSelector,
-      required final List<Felt>? calldata}) = _$L1HandlerTxn;
+      required final List<Felt>? calldata}) = _$L1HandlerTxnImpl;
 
   factory L1HandlerTxn.fromJson(Map<String, dynamic> json) =
-      _$L1HandlerTxn.fromJson;
+      _$L1HandlerTxnImpl.fromJson;
 
   @override
   Felt? get transactionHash;
@@ -3464,6 +3468,6 @@ abstract class L1HandlerTxn implements Txn {
   List<Felt>? get calldata;
   @override
   @JsonKey(ignore: true)
-  _$$L1HandlerTxnCopyWith<_$L1HandlerTxn> get copyWith =>
+  _$$L1HandlerTxnImplCopyWith<_$L1HandlerTxnImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

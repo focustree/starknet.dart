@@ -12,7 +12,7 @@ part of 'block_number.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 BlockNumber _$BlockNumberFromJson(Map<String, dynamic> json) {
   switch (json['starkNetRuntimeTypeToRemove']) {
@@ -92,20 +92,20 @@ class _$BlockNumberCopyWithImpl<$Res, $Val extends BlockNumber>
 }
 
 /// @nodoc
-abstract class _$$BlockNumberResultCopyWith<$Res> {
-  factory _$$BlockNumberResultCopyWith(
-          _$BlockNumberResult value, $Res Function(_$BlockNumberResult) then) =
-      __$$BlockNumberResultCopyWithImpl<$Res>;
+abstract class _$$BlockNumberResultImplCopyWith<$Res> {
+  factory _$$BlockNumberResultImplCopyWith(_$BlockNumberResultImpl value,
+          $Res Function(_$BlockNumberResultImpl) then) =
+      __$$BlockNumberResultImplCopyWithImpl<$Res>;
   @useResult
   $Res call({int result});
 }
 
 /// @nodoc
-class __$$BlockNumberResultCopyWithImpl<$Res>
-    extends _$BlockNumberCopyWithImpl<$Res, _$BlockNumberResult>
-    implements _$$BlockNumberResultCopyWith<$Res> {
-  __$$BlockNumberResultCopyWithImpl(
-      _$BlockNumberResult _value, $Res Function(_$BlockNumberResult) _then)
+class __$$BlockNumberResultImplCopyWithImpl<$Res>
+    extends _$BlockNumberCopyWithImpl<$Res, _$BlockNumberResultImpl>
+    implements _$$BlockNumberResultImplCopyWith<$Res> {
+  __$$BlockNumberResultImplCopyWithImpl(_$BlockNumberResultImpl _value,
+      $Res Function(_$BlockNumberResultImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -113,7 +113,7 @@ class __$$BlockNumberResultCopyWithImpl<$Res>
   $Res call({
     Object? result = null,
   }) {
-    return _then(_$BlockNumberResult(
+    return _then(_$BlockNumberResultImpl(
       result: null == result
           ? _value.result
           : result // ignore: cast_nullable_to_non_nullable
@@ -124,12 +124,12 @@ class __$$BlockNumberResultCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$BlockNumberResult implements BlockNumberResult {
-  const _$BlockNumberResult({required this.result, final String? $type})
+class _$BlockNumberResultImpl implements BlockNumberResult {
+  const _$BlockNumberResultImpl({required this.result, final String? $type})
       : $type = $type ?? 'result';
 
-  factory _$BlockNumberResult.fromJson(Map<String, dynamic> json) =>
-      _$$BlockNumberResultFromJson(json);
+  factory _$BlockNumberResultImpl.fromJson(Map<String, dynamic> json) =>
+      _$$BlockNumberResultImplFromJson(json);
 
   @override
   final int result;
@@ -143,10 +143,10 @@ class _$BlockNumberResult implements BlockNumberResult {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$BlockNumberResult &&
+            other is _$BlockNumberResultImpl &&
             (identical(other.result, result) || other.result == result));
   }
 
@@ -157,8 +157,9 @@ class _$BlockNumberResult implements BlockNumberResult {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$BlockNumberResultCopyWith<_$BlockNumberResult> get copyWith =>
-      __$$BlockNumberResultCopyWithImpl<_$BlockNumberResult>(this, _$identity);
+  _$$BlockNumberResultImplCopyWith<_$BlockNumberResultImpl> get copyWith =>
+      __$$BlockNumberResultImplCopyWithImpl<_$BlockNumberResultImpl>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -224,7 +225,7 @@ class _$BlockNumberResult implements BlockNumberResult {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$BlockNumberResultToJson(
+    return _$$BlockNumberResultImplToJson(
       this,
     );
   }
@@ -232,22 +233,22 @@ class _$BlockNumberResult implements BlockNumberResult {
 
 abstract class BlockNumberResult implements BlockNumber {
   const factory BlockNumberResult({required final int result}) =
-      _$BlockNumberResult;
+      _$BlockNumberResultImpl;
 
   factory BlockNumberResult.fromJson(Map<String, dynamic> json) =
-      _$BlockNumberResult.fromJson;
+      _$BlockNumberResultImpl.fromJson;
 
   int get result;
   @JsonKey(ignore: true)
-  _$$BlockNumberResultCopyWith<_$BlockNumberResult> get copyWith =>
+  _$$BlockNumberResultImplCopyWith<_$BlockNumberResultImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$BlockNumberErrorCopyWith<$Res> {
-  factory _$$BlockNumberErrorCopyWith(
-          _$BlockNumberError value, $Res Function(_$BlockNumberError) then) =
-      __$$BlockNumberErrorCopyWithImpl<$Res>;
+abstract class _$$BlockNumberErrorImplCopyWith<$Res> {
+  factory _$$BlockNumberErrorImplCopyWith(_$BlockNumberErrorImpl value,
+          $Res Function(_$BlockNumberErrorImpl) then) =
+      __$$BlockNumberErrorImplCopyWithImpl<$Res>;
   @useResult
   $Res call({JsonRpcApiError error});
 
@@ -255,11 +256,11 @@ abstract class _$$BlockNumberErrorCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$BlockNumberErrorCopyWithImpl<$Res>
-    extends _$BlockNumberCopyWithImpl<$Res, _$BlockNumberError>
-    implements _$$BlockNumberErrorCopyWith<$Res> {
-  __$$BlockNumberErrorCopyWithImpl(
-      _$BlockNumberError _value, $Res Function(_$BlockNumberError) _then)
+class __$$BlockNumberErrorImplCopyWithImpl<$Res>
+    extends _$BlockNumberCopyWithImpl<$Res, _$BlockNumberErrorImpl>
+    implements _$$BlockNumberErrorImplCopyWith<$Res> {
+  __$$BlockNumberErrorImplCopyWithImpl(_$BlockNumberErrorImpl _value,
+      $Res Function(_$BlockNumberErrorImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -267,7 +268,7 @@ class __$$BlockNumberErrorCopyWithImpl<$Res>
   $Res call({
     Object? error = null,
   }) {
-    return _then(_$BlockNumberError(
+    return _then(_$BlockNumberErrorImpl(
       error: null == error
           ? _value.error
           : error // ignore: cast_nullable_to_non_nullable
@@ -286,12 +287,12 @@ class __$$BlockNumberErrorCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$BlockNumberError implements BlockNumberError {
-  const _$BlockNumberError({required this.error, final String? $type})
+class _$BlockNumberErrorImpl implements BlockNumberError {
+  const _$BlockNumberErrorImpl({required this.error, final String? $type})
       : $type = $type ?? 'error';
 
-  factory _$BlockNumberError.fromJson(Map<String, dynamic> json) =>
-      _$$BlockNumberErrorFromJson(json);
+  factory _$BlockNumberErrorImpl.fromJson(Map<String, dynamic> json) =>
+      _$$BlockNumberErrorImplFromJson(json);
 
   @override
   final JsonRpcApiError error;
@@ -305,10 +306,10 @@ class _$BlockNumberError implements BlockNumberError {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$BlockNumberError &&
+            other is _$BlockNumberErrorImpl &&
             (identical(other.error, error) || other.error == error));
   }
 
@@ -319,8 +320,9 @@ class _$BlockNumberError implements BlockNumberError {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$BlockNumberErrorCopyWith<_$BlockNumberError> get copyWith =>
-      __$$BlockNumberErrorCopyWithImpl<_$BlockNumberError>(this, _$identity);
+  _$$BlockNumberErrorImplCopyWith<_$BlockNumberErrorImpl> get copyWith =>
+      __$$BlockNumberErrorImplCopyWithImpl<_$BlockNumberErrorImpl>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -386,7 +388,7 @@ class _$BlockNumberError implements BlockNumberError {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$BlockNumberErrorToJson(
+    return _$$BlockNumberErrorImplToJson(
       this,
     );
   }
@@ -394,13 +396,13 @@ class _$BlockNumberError implements BlockNumberError {
 
 abstract class BlockNumberError implements BlockNumber {
   const factory BlockNumberError({required final JsonRpcApiError error}) =
-      _$BlockNumberError;
+      _$BlockNumberErrorImpl;
 
   factory BlockNumberError.fromJson(Map<String, dynamic> json) =
-      _$BlockNumberError.fromJson;
+      _$BlockNumberErrorImpl.fromJson;
 
   JsonRpcApiError get error;
   @JsonKey(ignore: true)
-  _$$BlockNumberErrorCopyWith<_$BlockNumberError> get copyWith =>
+  _$$BlockNumberErrorImplCopyWith<_$BlockNumberErrorImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

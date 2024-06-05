@@ -6,15 +6,15 @@ part of 'deployed_contract_item.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_DeployedContractItem _$$_DeployedContractItemFromJson(
+_$DeployedContractItemImpl _$$DeployedContractItemImplFromJson(
         Map<String, dynamic> json) =>
-    _$_DeployedContractItem(
+    _$DeployedContractItemImpl(
       address: Felt.fromJson(json['address'] as String),
       classHash: Felt.fromJson(json['class_hash'] as String),
     );
 
-Map<String, dynamic> _$$_DeployedContractItemToJson(
-        _$_DeployedContractItem instance) =>
+Map<String, dynamic> _$$DeployedContractItemImplToJson(
+        _$DeployedContractItemImpl instance) =>
     <String, dynamic>{
       'address': instance.address.toJson(),
       'class_hash': instance.classHash.toJson(),

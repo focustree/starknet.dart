@@ -12,7 +12,7 @@ part of 'get_class.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 GetClass _$GetClassFromJson(Map<String, dynamic> json) {
   switch (json['starkNetRuntimeTypeToRemove']) {
@@ -91,20 +91,20 @@ class _$GetClassCopyWithImpl<$Res, $Val extends GetClass>
 }
 
 /// @nodoc
-abstract class _$$_GetClassResultCopyWith<$Res> {
-  factory _$$_GetClassResultCopyWith(
-          _$_GetClassResult value, $Res Function(_$_GetClassResult) then) =
-      __$$_GetClassResultCopyWithImpl<$Res>;
+abstract class _$$GetClassResultImplCopyWith<$Res> {
+  factory _$$GetClassResultImplCopyWith(_$GetClassResultImpl value,
+          $Res Function(_$GetClassResultImpl) then) =
+      __$$GetClassResultImplCopyWithImpl<$Res>;
   @useResult
   $Res call({IContractClass result});
 }
 
 /// @nodoc
-class __$$_GetClassResultCopyWithImpl<$Res>
-    extends _$GetClassCopyWithImpl<$Res, _$_GetClassResult>
-    implements _$$_GetClassResultCopyWith<$Res> {
-  __$$_GetClassResultCopyWithImpl(
-      _$_GetClassResult _value, $Res Function(_$_GetClassResult) _then)
+class __$$GetClassResultImplCopyWithImpl<$Res>
+    extends _$GetClassCopyWithImpl<$Res, _$GetClassResultImpl>
+    implements _$$GetClassResultImplCopyWith<$Res> {
+  __$$GetClassResultImplCopyWithImpl(
+      _$GetClassResultImpl _value, $Res Function(_$GetClassResultImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -112,7 +112,7 @@ class __$$_GetClassResultCopyWithImpl<$Res>
   $Res call({
     Object? result = null,
   }) {
-    return _then(_$_GetClassResult(
+    return _then(_$GetClassResultImpl(
       result: null == result
           ? _value.result
           : result // ignore: cast_nullable_to_non_nullable
@@ -123,12 +123,12 @@ class __$$_GetClassResultCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_GetClassResult implements _GetClassResult {
-  const _$_GetClassResult({required this.result, final String? $type})
+class _$GetClassResultImpl implements _GetClassResult {
+  const _$GetClassResultImpl({required this.result, final String? $type})
       : $type = $type ?? 'result';
 
-  factory _$_GetClassResult.fromJson(Map<String, dynamic> json) =>
-      _$$_GetClassResultFromJson(json);
+  factory _$GetClassResultImpl.fromJson(Map<String, dynamic> json) =>
+      _$$GetClassResultImplFromJson(json);
 
   @override
   final IContractClass result;
@@ -142,10 +142,10 @@ class _$_GetClassResult implements _GetClassResult {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_GetClassResult &&
+            other is _$GetClassResultImpl &&
             (identical(other.result, result) || other.result == result));
   }
 
@@ -156,8 +156,9 @@ class _$_GetClassResult implements _GetClassResult {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_GetClassResultCopyWith<_$_GetClassResult> get copyWith =>
-      __$$_GetClassResultCopyWithImpl<_$_GetClassResult>(this, _$identity);
+  _$$GetClassResultImplCopyWith<_$GetClassResultImpl> get copyWith =>
+      __$$GetClassResultImplCopyWithImpl<_$GetClassResultImpl>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -223,7 +224,7 @@ class _$_GetClassResult implements _GetClassResult {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_GetClassResultToJson(
+    return _$$GetClassResultImplToJson(
       this,
     );
   }
@@ -231,22 +232,22 @@ class _$_GetClassResult implements _GetClassResult {
 
 abstract class _GetClassResult implements GetClass {
   const factory _GetClassResult({required final IContractClass result}) =
-      _$_GetClassResult;
+      _$GetClassResultImpl;
 
   factory _GetClassResult.fromJson(Map<String, dynamic> json) =
-      _$_GetClassResult.fromJson;
+      _$GetClassResultImpl.fromJson;
 
   IContractClass get result;
   @JsonKey(ignore: true)
-  _$$_GetClassResultCopyWith<_$_GetClassResult> get copyWith =>
+  _$$GetClassResultImplCopyWith<_$GetClassResultImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_GetClassErrorCopyWith<$Res> {
-  factory _$$_GetClassErrorCopyWith(
-          _$_GetClassError value, $Res Function(_$_GetClassError) then) =
-      __$$_GetClassErrorCopyWithImpl<$Res>;
+abstract class _$$GetClassErrorImplCopyWith<$Res> {
+  factory _$$GetClassErrorImplCopyWith(
+          _$GetClassErrorImpl value, $Res Function(_$GetClassErrorImpl) then) =
+      __$$GetClassErrorImplCopyWithImpl<$Res>;
   @useResult
   $Res call({JsonRpcApiError error});
 
@@ -254,11 +255,11 @@ abstract class _$$_GetClassErrorCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_GetClassErrorCopyWithImpl<$Res>
-    extends _$GetClassCopyWithImpl<$Res, _$_GetClassError>
-    implements _$$_GetClassErrorCopyWith<$Res> {
-  __$$_GetClassErrorCopyWithImpl(
-      _$_GetClassError _value, $Res Function(_$_GetClassError) _then)
+class __$$GetClassErrorImplCopyWithImpl<$Res>
+    extends _$GetClassCopyWithImpl<$Res, _$GetClassErrorImpl>
+    implements _$$GetClassErrorImplCopyWith<$Res> {
+  __$$GetClassErrorImplCopyWithImpl(
+      _$GetClassErrorImpl _value, $Res Function(_$GetClassErrorImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -266,7 +267,7 @@ class __$$_GetClassErrorCopyWithImpl<$Res>
   $Res call({
     Object? error = null,
   }) {
-    return _then(_$_GetClassError(
+    return _then(_$GetClassErrorImpl(
       error: null == error
           ? _value.error
           : error // ignore: cast_nullable_to_non_nullable
@@ -285,12 +286,12 @@ class __$$_GetClassErrorCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_GetClassError implements _GetClassError {
-  const _$_GetClassError({required this.error, final String? $type})
+class _$GetClassErrorImpl implements _GetClassError {
+  const _$GetClassErrorImpl({required this.error, final String? $type})
       : $type = $type ?? 'error';
 
-  factory _$_GetClassError.fromJson(Map<String, dynamic> json) =>
-      _$$_GetClassErrorFromJson(json);
+  factory _$GetClassErrorImpl.fromJson(Map<String, dynamic> json) =>
+      _$$GetClassErrorImplFromJson(json);
 
   @override
   final JsonRpcApiError error;
@@ -304,10 +305,10 @@ class _$_GetClassError implements _GetClassError {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_GetClassError &&
+            other is _$GetClassErrorImpl &&
             (identical(other.error, error) || other.error == error));
   }
 
@@ -318,8 +319,8 @@ class _$_GetClassError implements _GetClassError {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_GetClassErrorCopyWith<_$_GetClassError> get copyWith =>
-      __$$_GetClassErrorCopyWithImpl<_$_GetClassError>(this, _$identity);
+  _$$GetClassErrorImplCopyWith<_$GetClassErrorImpl> get copyWith =>
+      __$$GetClassErrorImplCopyWithImpl<_$GetClassErrorImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -385,7 +386,7 @@ class _$_GetClassError implements _GetClassError {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_GetClassErrorToJson(
+    return _$$GetClassErrorImplToJson(
       this,
     );
   }
@@ -393,13 +394,13 @@ class _$_GetClassError implements _GetClassError {
 
 abstract class _GetClassError implements GetClass {
   const factory _GetClassError({required final JsonRpcApiError error}) =
-      _$_GetClassError;
+      _$GetClassErrorImpl;
 
   factory _GetClassError.fromJson(Map<String, dynamic> json) =
-      _$_GetClassError.fromJson;
+      _$GetClassErrorImpl.fromJson;
 
   JsonRpcApiError get error;
   @JsonKey(ignore: true)
-  _$$_GetClassErrorCopyWith<_$_GetClassError> get copyWith =>
+  _$$GetClassErrorImplCopyWith<_$GetClassErrorImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

@@ -41,7 +41,7 @@ dart test
 To run the tests on **devnet** use the following command:
 
 ```
-NETWORK=devnet dart test -t integration-devnet-040
+NETWORK=devnet dart test -t integration
 ```
 
 ### Release a new version to pub.dev
@@ -78,6 +78,5 @@ For more advanced features, check out the [dartdoc package](https://pub.dev/pack
 ### Compile cairo contracts
 
 Refer to the [main README](../../README.md) for compiling cairo contracts.
-
 
 You can also see compiled contracts in [this folder](../../contracts/build).

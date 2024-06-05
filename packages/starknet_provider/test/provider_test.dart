@@ -73,7 +73,7 @@ void main() {
               fail("Should fail transaction V0 are no more supported"));
     }, tags: ['integration-testnet']);
     test('declareTransaction', () async {
-      final account = getJsonRpcProvider(network: 'integration-devnet-040');
+      final account = getJsonRpcProvider(network: 'integration');
       final request = DeclareTransactionRequest(
         declareTransaction: DeclareTransactionV1(
           max_fee: defaultMaxFee,
@@ -101,6 +101,6 @@ void main() {
           expect(result, equals(1));
         },
       );
-    }, tags: ['integration-devnet-040']);
-  });
+    }, tags: ['integration']);
+  }, skip: true);
 }

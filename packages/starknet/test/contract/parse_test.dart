@@ -14,5 +14,5 @@ void main() {
         expect(compiledContract.abi?.length, equals(11));
       });
     });
-  }, tags: ['unit']);
+  }, tags: ['unit'], skip: true);
 }

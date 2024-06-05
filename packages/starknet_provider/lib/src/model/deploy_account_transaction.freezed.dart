@@ -12,7 +12,7 @@ part of 'deploy_account_transaction.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 DeployAccountTransactionV1 _$DeployAccountTransactionV1FromJson(
     Map<String, dynamic> json) {
@@ -116,12 +116,12 @@ class _$DeployAccountTransactionV1CopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$_DeployAccountTransactionV1CopyWith<$Res>
+abstract class _$$DeployAccountTransactionV1ImplCopyWith<$Res>
     implements $DeployAccountTransactionV1CopyWith<$Res> {
-  factory _$$_DeployAccountTransactionV1CopyWith(
-          _$_DeployAccountTransactionV1 value,
-          $Res Function(_$_DeployAccountTransactionV1) then) =
-      __$$_DeployAccountTransactionV1CopyWithImpl<$Res>;
+  factory _$$DeployAccountTransactionV1ImplCopyWith(
+          _$DeployAccountTransactionV1Impl value,
+          $Res Function(_$DeployAccountTransactionV1Impl) then) =
+      __$$DeployAccountTransactionV1ImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -136,13 +136,13 @@ abstract class _$$_DeployAccountTransactionV1CopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_DeployAccountTransactionV1CopyWithImpl<$Res>
+class __$$DeployAccountTransactionV1ImplCopyWithImpl<$Res>
     extends _$DeployAccountTransactionV1CopyWithImpl<$Res,
-        _$_DeployAccountTransactionV1>
-    implements _$$_DeployAccountTransactionV1CopyWith<$Res> {
-  __$$_DeployAccountTransactionV1CopyWithImpl(
-      _$_DeployAccountTransactionV1 _value,
-      $Res Function(_$_DeployAccountTransactionV1) _then)
+        _$DeployAccountTransactionV1Impl>
+    implements _$$DeployAccountTransactionV1ImplCopyWith<$Res> {
+  __$$DeployAccountTransactionV1ImplCopyWithImpl(
+      _$DeployAccountTransactionV1Impl _value,
+      $Res Function(_$DeployAccountTransactionV1Impl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -157,7 +157,7 @@ class __$$_DeployAccountTransactionV1CopyWithImpl<$Res>
     Object? version = null,
     Object? type = null,
   }) {
-    return _then(_$_DeployAccountTransactionV1(
+    return _then(_$DeployAccountTransactionV1Impl(
       signature: null == signature
           ? _value._signature
           : signature // ignore: cast_nullable_to_non_nullable
@@ -196,8 +196,8 @@ class __$$_DeployAccountTransactionV1CopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_DeployAccountTransactionV1 implements _DeployAccountTransactionV1 {
-  const _$_DeployAccountTransactionV1(
+class _$DeployAccountTransactionV1Impl implements _DeployAccountTransactionV1 {
+  const _$DeployAccountTransactionV1Impl(
       {required final List<Felt> signature,
       @JsonKey(toJson: maxFeeToJson) required this.maxFee,
       required this.nonce,
@@ -209,8 +209,9 @@ class _$_DeployAccountTransactionV1 implements _DeployAccountTransactionV1 {
       : _signature = signature,
         _constructorCalldata = constructorCalldata;
 
-  factory _$_DeployAccountTransactionV1.fromJson(Map<String, dynamic> json) =>
-      _$$_DeployAccountTransactionV1FromJson(json);
+  factory _$DeployAccountTransactionV1Impl.fromJson(
+          Map<String, dynamic> json) =>
+      _$$DeployAccountTransactionV1ImplFromJson(json);
 
   final List<Felt> _signature;
   @override
@@ -251,10 +252,10 @@ class _$_DeployAccountTransactionV1 implements _DeployAccountTransactionV1 {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_DeployAccountTransactionV1 &&
+            other is _$DeployAccountTransactionV1Impl &&
             const DeepCollectionEquality()
                 .equals(other._signature, _signature) &&
             (identical(other.maxFee, maxFee) || other.maxFee == maxFee) &&
@@ -285,13 +286,13 @@ class _$_DeployAccountTransactionV1 implements _DeployAccountTransactionV1 {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_DeployAccountTransactionV1CopyWith<_$_DeployAccountTransactionV1>
-      get copyWith => __$$_DeployAccountTransactionV1CopyWithImpl<
-          _$_DeployAccountTransactionV1>(this, _$identity);
+  _$$DeployAccountTransactionV1ImplCopyWith<_$DeployAccountTransactionV1Impl>
+      get copyWith => __$$DeployAccountTransactionV1ImplCopyWithImpl<
+          _$DeployAccountTransactionV1Impl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_DeployAccountTransactionV1ToJson(
+    return _$$DeployAccountTransactionV1ImplToJson(
       this,
     );
   }
@@ -307,10 +308,10 @@ abstract class _DeployAccountTransactionV1
       required final List<Felt> constructorCalldata,
       required final Felt classHash,
       final String version,
-      final String type}) = _$_DeployAccountTransactionV1;
+      final String type}) = _$DeployAccountTransactionV1Impl;
 
   factory _DeployAccountTransactionV1.fromJson(Map<String, dynamic> json) =
-      _$_DeployAccountTransactionV1.fromJson;
+      _$DeployAccountTransactionV1Impl.fromJson;
 
   @override
   List<Felt> get signature;
@@ -331,7 +332,7 @@ abstract class _DeployAccountTransactionV1
   String get type;
   @override
   @JsonKey(ignore: true)
-  _$$_DeployAccountTransactionV1CopyWith<_$_DeployAccountTransactionV1>
+  _$$DeployAccountTransactionV1ImplCopyWith<_$DeployAccountTransactionV1Impl>
       get copyWith => throw _privateConstructorUsedError;
 }
 
@@ -388,25 +389,25 @@ class _$DeployAccountTransactionRequestCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$_DeployAccountTransactionRequestCopyWith<$Res>
+abstract class _$$DeployAccountTransactionRequestImplCopyWith<$Res>
     implements $DeployAccountTransactionRequestCopyWith<$Res> {
-  factory _$$_DeployAccountTransactionRequestCopyWith(
-          _$_DeployAccountTransactionRequest value,
-          $Res Function(_$_DeployAccountTransactionRequest) then) =
-      __$$_DeployAccountTransactionRequestCopyWithImpl<$Res>;
+  factory _$$DeployAccountTransactionRequestImplCopyWith(
+          _$DeployAccountTransactionRequestImpl value,
+          $Res Function(_$DeployAccountTransactionRequestImpl) then) =
+      __$$DeployAccountTransactionRequestImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({DeployAccountTransaction deployAccountTransaction});
 }
 
 /// @nodoc
-class __$$_DeployAccountTransactionRequestCopyWithImpl<$Res>
+class __$$DeployAccountTransactionRequestImplCopyWithImpl<$Res>
     extends _$DeployAccountTransactionRequestCopyWithImpl<$Res,
-        _$_DeployAccountTransactionRequest>
-    implements _$$_DeployAccountTransactionRequestCopyWith<$Res> {
-  __$$_DeployAccountTransactionRequestCopyWithImpl(
-      _$_DeployAccountTransactionRequest _value,
-      $Res Function(_$_DeployAccountTransactionRequest) _then)
+        _$DeployAccountTransactionRequestImpl>
+    implements _$$DeployAccountTransactionRequestImplCopyWith<$Res> {
+  __$$DeployAccountTransactionRequestImplCopyWithImpl(
+      _$DeployAccountTransactionRequestImpl _value,
+      $Res Function(_$DeployAccountTransactionRequestImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -414,7 +415,7 @@ class __$$_DeployAccountTransactionRequestCopyWithImpl<$Res>
   $Res call({
     Object? deployAccountTransaction = null,
   }) {
-    return _then(_$_DeployAccountTransactionRequest(
+    return _then(_$DeployAccountTransactionRequestImpl(
       deployAccountTransaction: null == deployAccountTransaction
           ? _value.deployAccountTransaction
           : deployAccountTransaction // ignore: cast_nullable_to_non_nullable
@@ -425,14 +426,14 @@ class __$$_DeployAccountTransactionRequestCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_DeployAccountTransactionRequest
+class _$DeployAccountTransactionRequestImpl
     implements _DeployAccountTransactionRequest {
-  const _$_DeployAccountTransactionRequest(
+  const _$DeployAccountTransactionRequestImpl(
       {required this.deployAccountTransaction});
 
-  factory _$_DeployAccountTransactionRequest.fromJson(
+  factory _$DeployAccountTransactionRequestImpl.fromJson(
           Map<String, dynamic> json) =>
-      _$$_DeployAccountTransactionRequestFromJson(json);
+      _$$DeployAccountTransactionRequestImplFromJson(json);
 
   @override
   final DeployAccountTransaction deployAccountTransaction;
@@ -443,10 +444,10 @@ class _$_DeployAccountTransactionRequest
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_DeployAccountTransactionRequest &&
+            other is _$DeployAccountTransactionRequestImpl &&
             (identical(
                     other.deployAccountTransaction, deployAccountTransaction) ||
                 other.deployAccountTransaction == deployAccountTransaction));
@@ -459,14 +460,14 @@ class _$_DeployAccountTransactionRequest
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_DeployAccountTransactionRequestCopyWith<
-          _$_DeployAccountTransactionRequest>
-      get copyWith => __$$_DeployAccountTransactionRequestCopyWithImpl<
-          _$_DeployAccountTransactionRequest>(this, _$identity);
+  _$$DeployAccountTransactionRequestImplCopyWith<
+          _$DeployAccountTransactionRequestImpl>
+      get copyWith => __$$DeployAccountTransactionRequestImplCopyWithImpl<
+          _$DeployAccountTransactionRequestImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_DeployAccountTransactionRequestToJson(
+    return _$$DeployAccountTransactionRequestImplToJson(
       this,
     );
   }
@@ -476,17 +477,17 @@ abstract class _DeployAccountTransactionRequest
     implements DeployAccountTransactionRequest {
   const factory _DeployAccountTransactionRequest(
           {required final DeployAccountTransaction deployAccountTransaction}) =
-      _$_DeployAccountTransactionRequest;
+      _$DeployAccountTransactionRequestImpl;
 
   factory _DeployAccountTransactionRequest.fromJson(Map<String, dynamic> json) =
-      _$_DeployAccountTransactionRequest.fromJson;
+      _$DeployAccountTransactionRequestImpl.fromJson;
 
   @override
   DeployAccountTransaction get deployAccountTransaction;
   @override
   @JsonKey(ignore: true)
-  _$$_DeployAccountTransactionRequestCopyWith<
-          _$_DeployAccountTransactionRequest>
+  _$$DeployAccountTransactionRequestImplCopyWith<
+          _$DeployAccountTransactionRequestImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
 
@@ -573,11 +574,11 @@ class _$DeployAccountTransactionResponseCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$DeployAccountTransactionResultCopyWith<$Res> {
-  factory _$$DeployAccountTransactionResultCopyWith(
-          _$DeployAccountTransactionResult value,
-          $Res Function(_$DeployAccountTransactionResult) then) =
-      __$$DeployAccountTransactionResultCopyWithImpl<$Res>;
+abstract class _$$DeployAccountTransactionResultImplCopyWith<$Res> {
+  factory _$$DeployAccountTransactionResultImplCopyWith(
+          _$DeployAccountTransactionResultImpl value,
+          $Res Function(_$DeployAccountTransactionResultImpl) then) =
+      __$$DeployAccountTransactionResultImplCopyWithImpl<$Res>;
   @useResult
   $Res call({DeployAccountTransactionResponseResult result});
 
@@ -585,13 +586,13 @@ abstract class _$$DeployAccountTransactionResultCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$DeployAccountTransactionResultCopyWithImpl<$Res>
+class __$$DeployAccountTransactionResultImplCopyWithImpl<$Res>
     extends _$DeployAccountTransactionResponseCopyWithImpl<$Res,
-        _$DeployAccountTransactionResult>
-    implements _$$DeployAccountTransactionResultCopyWith<$Res> {
-  __$$DeployAccountTransactionResultCopyWithImpl(
-      _$DeployAccountTransactionResult _value,
-      $Res Function(_$DeployAccountTransactionResult) _then)
+        _$DeployAccountTransactionResultImpl>
+    implements _$$DeployAccountTransactionResultImplCopyWith<$Res> {
+  __$$DeployAccountTransactionResultImplCopyWithImpl(
+      _$DeployAccountTransactionResultImpl _value,
+      $Res Function(_$DeployAccountTransactionResultImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -599,7 +600,7 @@ class __$$DeployAccountTransactionResultCopyWithImpl<$Res>
   $Res call({
     Object? result = null,
   }) {
-    return _then(_$DeployAccountTransactionResult(
+    return _then(_$DeployAccountTransactionResultImpl(
       result: null == result
           ? _value.result
           : result // ignore: cast_nullable_to_non_nullable
@@ -619,15 +620,15 @@ class __$$DeployAccountTransactionResultCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$DeployAccountTransactionResult
+class _$DeployAccountTransactionResultImpl
     implements DeployAccountTransactionResult {
-  const _$DeployAccountTransactionResult(
+  const _$DeployAccountTransactionResultImpl(
       {required this.result, final String? $type})
       : $type = $type ?? 'result';
 
-  factory _$DeployAccountTransactionResult.fromJson(
+  factory _$DeployAccountTransactionResultImpl.fromJson(
           Map<String, dynamic> json) =>
-      _$$DeployAccountTransactionResultFromJson(json);
+      _$$DeployAccountTransactionResultImplFromJson(json);
 
   @override
   final DeployAccountTransactionResponseResult result;
@@ -641,10 +642,10 @@ class _$DeployAccountTransactionResult
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$DeployAccountTransactionResult &&
+            other is _$DeployAccountTransactionResultImpl &&
             (identical(other.result, result) || other.result == result));
   }
 
@@ -655,9 +656,10 @@ class _$DeployAccountTransactionResult
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$DeployAccountTransactionResultCopyWith<_$DeployAccountTransactionResult>
-      get copyWith => __$$DeployAccountTransactionResultCopyWithImpl<
-          _$DeployAccountTransactionResult>(this, _$identity);
+  _$$DeployAccountTransactionResultImplCopyWith<
+          _$DeployAccountTransactionResultImpl>
+      get copyWith => __$$DeployAccountTransactionResultImplCopyWithImpl<
+          _$DeployAccountTransactionResultImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -724,7 +726,7 @@ class _$DeployAccountTransactionResult
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$DeployAccountTransactionResultToJson(
+    return _$$DeployAccountTransactionResultImplToJson(
       this,
     );
   }
@@ -734,23 +736,24 @@ abstract class DeployAccountTransactionResult
     implements DeployAccountTransactionResponse {
   const factory DeployAccountTransactionResult(
           {required final DeployAccountTransactionResponseResult result}) =
-      _$DeployAccountTransactionResult;
+      _$DeployAccountTransactionResultImpl;
 
   factory DeployAccountTransactionResult.fromJson(Map<String, dynamic> json) =
-      _$DeployAccountTransactionResult.fromJson;
+      _$DeployAccountTransactionResultImpl.fromJson;
 
   DeployAccountTransactionResponseResult get result;
   @JsonKey(ignore: true)
-  _$$DeployAccountTransactionResultCopyWith<_$DeployAccountTransactionResult>
+  _$$DeployAccountTransactionResultImplCopyWith<
+          _$DeployAccountTransactionResultImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$DeployAccountTransactionErrorCopyWith<$Res> {
-  factory _$$DeployAccountTransactionErrorCopyWith(
-          _$DeployAccountTransactionError value,
-          $Res Function(_$DeployAccountTransactionError) then) =
-      __$$DeployAccountTransactionErrorCopyWithImpl<$Res>;
+abstract class _$$DeployAccountTransactionErrorImplCopyWith<$Res> {
+  factory _$$DeployAccountTransactionErrorImplCopyWith(
+          _$DeployAccountTransactionErrorImpl value,
+          $Res Function(_$DeployAccountTransactionErrorImpl) then) =
+      __$$DeployAccountTransactionErrorImplCopyWithImpl<$Res>;
   @useResult
   $Res call({JsonRpcApiError error});
 
@@ -758,13 +761,13 @@ abstract class _$$DeployAccountTransactionErrorCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$DeployAccountTransactionErrorCopyWithImpl<$Res>
+class __$$DeployAccountTransactionErrorImplCopyWithImpl<$Res>
     extends _$DeployAccountTransactionResponseCopyWithImpl<$Res,
-        _$DeployAccountTransactionError>
-    implements _$$DeployAccountTransactionErrorCopyWith<$Res> {
-  __$$DeployAccountTransactionErrorCopyWithImpl(
-      _$DeployAccountTransactionError _value,
-      $Res Function(_$DeployAccountTransactionError) _then)
+        _$DeployAccountTransactionErrorImpl>
+    implements _$$DeployAccountTransactionErrorImplCopyWith<$Res> {
+  __$$DeployAccountTransactionErrorImplCopyWithImpl(
+      _$DeployAccountTransactionErrorImpl _value,
+      $Res Function(_$DeployAccountTransactionErrorImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -772,7 +775,7 @@ class __$$DeployAccountTransactionErrorCopyWithImpl<$Res>
   $Res call({
     Object? error = null,
   }) {
-    return _then(_$DeployAccountTransactionError(
+    return _then(_$DeployAccountTransactionErrorImpl(
       error: null == error
           ? _value.error
           : error // ignore: cast_nullable_to_non_nullable
@@ -791,13 +794,15 @@ class __$$DeployAccountTransactionErrorCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$DeployAccountTransactionError implements DeployAccountTransactionError {
-  const _$DeployAccountTransactionError(
+class _$DeployAccountTransactionErrorImpl
+    implements DeployAccountTransactionError {
+  const _$DeployAccountTransactionErrorImpl(
       {required this.error, final String? $type})
       : $type = $type ?? 'error';
 
-  factory _$DeployAccountTransactionError.fromJson(Map<String, dynamic> json) =>
-      _$$DeployAccountTransactionErrorFromJson(json);
+  factory _$DeployAccountTransactionErrorImpl.fromJson(
+          Map<String, dynamic> json) =>
+      _$$DeployAccountTransactionErrorImplFromJson(json);
 
   @override
   final JsonRpcApiError error;
@@ -811,10 +816,10 @@ class _$DeployAccountTransactionError implements DeployAccountTransactionError {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$DeployAccountTransactionError &&
+            other is _$DeployAccountTransactionErrorImpl &&
             (identical(other.error, error) || other.error == error));
   }
 
@@ -825,9 +830,10 @@ class _$DeployAccountTransactionError implements DeployAccountTransactionError {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$DeployAccountTransactionErrorCopyWith<_$DeployAccountTransactionError>
-      get copyWith => __$$DeployAccountTransactionErrorCopyWithImpl<
-          _$DeployAccountTransactionError>(this, _$identity);
+  _$$DeployAccountTransactionErrorImplCopyWith<
+          _$DeployAccountTransactionErrorImpl>
+      get copyWith => __$$DeployAccountTransactionErrorImplCopyWithImpl<
+          _$DeployAccountTransactionErrorImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -894,7 +900,7 @@ class _$DeployAccountTransactionError implements DeployAccountTransactionError {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$DeployAccountTransactionErrorToJson(
+    return _$$DeployAccountTransactionErrorImplToJson(
       this,
     );
   }
@@ -903,14 +909,16 @@ class _$DeployAccountTransactionError implements DeployAccountTransactionError {
 abstract class DeployAccountTransactionError
     implements DeployAccountTransactionResponse {
   const factory DeployAccountTransactionError(
-      {required final JsonRpcApiError error}) = _$DeployAccountTransactionError;
+          {required final JsonRpcApiError error}) =
+      _$DeployAccountTransactionErrorImpl;
 
   factory DeployAccountTransactionError.fromJson(Map<String, dynamic> json) =
-      _$DeployAccountTransactionError.fromJson;
+      _$DeployAccountTransactionErrorImpl.fromJson;
 
   JsonRpcApiError get error;
   @JsonKey(ignore: true)
-  _$$DeployAccountTransactionErrorCopyWith<_$DeployAccountTransactionError>
+  _$$DeployAccountTransactionErrorImplCopyWith<
+          _$DeployAccountTransactionErrorImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
 
@@ -974,25 +982,25 @@ class _$DeployAccountTransactionResponseResultCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$_DeployAccountTransactionResponseResultCopyWith<$Res>
+abstract class _$$DeployAccountTransactionResponseResultImplCopyWith<$Res>
     implements $DeployAccountTransactionResponseResultCopyWith<$Res> {
-  factory _$$_DeployAccountTransactionResponseResultCopyWith(
-          _$_DeployAccountTransactionResponseResult value,
-          $Res Function(_$_DeployAccountTransactionResponseResult) then) =
-      __$$_DeployAccountTransactionResponseResultCopyWithImpl<$Res>;
+  factory _$$DeployAccountTransactionResponseResultImplCopyWith(
+          _$DeployAccountTransactionResponseResultImpl value,
+          $Res Function(_$DeployAccountTransactionResponseResultImpl) then) =
+      __$$DeployAccountTransactionResponseResultImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({Felt transactionHash, Felt contractAddress});
 }
 
 /// @nodoc
-class __$$_DeployAccountTransactionResponseResultCopyWithImpl<$Res>
+class __$$DeployAccountTransactionResponseResultImplCopyWithImpl<$Res>
     extends _$DeployAccountTransactionResponseResultCopyWithImpl<$Res,
-        _$_DeployAccountTransactionResponseResult>
-    implements _$$_DeployAccountTransactionResponseResultCopyWith<$Res> {
-  __$$_DeployAccountTransactionResponseResultCopyWithImpl(
-      _$_DeployAccountTransactionResponseResult _value,
-      $Res Function(_$_DeployAccountTransactionResponseResult) _then)
+        _$DeployAccountTransactionResponseResultImpl>
+    implements _$$DeployAccountTransactionResponseResultImplCopyWith<$Res> {
+  __$$DeployAccountTransactionResponseResultImplCopyWithImpl(
+      _$DeployAccountTransactionResponseResultImpl _value,
+      $Res Function(_$DeployAccountTransactionResponseResultImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -1001,7 +1009,7 @@ class __$$_DeployAccountTransactionResponseResultCopyWithImpl<$Res>
     Object? transactionHash = null,
     Object? contractAddress = null,
   }) {
-    return _then(_$_DeployAccountTransactionResponseResult(
+    return _then(_$DeployAccountTransactionResponseResultImpl(
       transactionHash: null == transactionHash
           ? _value.transactionHash
           : transactionHash // ignore: cast_nullable_to_non_nullable
@@ -1016,14 +1024,14 @@ class __$$_DeployAccountTransactionResponseResultCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_DeployAccountTransactionResponseResult
+class _$DeployAccountTransactionResponseResultImpl
     implements _DeployAccountTransactionResponseResult {
-  const _$_DeployAccountTransactionResponseResult(
+  const _$DeployAccountTransactionResponseResultImpl(
       {required this.transactionHash, required this.contractAddress});
 
-  factory _$_DeployAccountTransactionResponseResult.fromJson(
+  factory _$DeployAccountTransactionResponseResultImpl.fromJson(
           Map<String, dynamic> json) =>
-      _$$_DeployAccountTransactionResponseResultFromJson(json);
+      _$$DeployAccountTransactionResponseResultImplFromJson(json);
 
   @override
   final Felt transactionHash;
@@ -1036,10 +1044,10 @@ class _$_DeployAccountTransactionResponseResult
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_DeployAccountTransactionResponseResult &&
+            other is _$DeployAccountTransactionResponseResultImpl &&
             (identical(other.transactionHash, transactionHash) ||
                 other.transactionHash == transactionHash) &&
             (identical(other.contractAddress, contractAddress) ||
@@ -1054,14 +1062,15 @@ class _$_DeployAccountTransactionResponseResult
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_DeployAccountTransactionResponseResultCopyWith<
-          _$_DeployAccountTransactionResponseResult>
-      get copyWith => __$$_DeployAccountTransactionResponseResultCopyWithImpl<
-          _$_DeployAccountTransactionResponseResult>(this, _$identity);
+  _$$DeployAccountTransactionResponseResultImplCopyWith<
+          _$DeployAccountTransactionResponseResultImpl>
+      get copyWith =>
+          __$$DeployAccountTransactionResponseResultImplCopyWithImpl<
+              _$DeployAccountTransactionResponseResultImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_DeployAccountTransactionResponseResultToJson(
+    return _$$DeployAccountTransactionResponseResultImplToJson(
       this,
     );
   }
@@ -1072,11 +1081,11 @@ abstract class _DeployAccountTransactionResponseResult
   const factory _DeployAccountTransactionResponseResult(
           {required final Felt transactionHash,
           required final Felt contractAddress}) =
-      _$_DeployAccountTransactionResponseResult;
+      _$DeployAccountTransactionResponseResultImpl;
 
   factory _DeployAccountTransactionResponseResult.fromJson(
           Map<String, dynamic> json) =
-      _$_DeployAccountTransactionResponseResult.fromJson;
+      _$DeployAccountTransactionResponseResultImpl.fromJson;
 
   @override
   Felt get transactionHash;
@@ -1084,7 +1093,7 @@ abstract class _DeployAccountTransactionResponseResult
   Felt get contractAddress;
   @override
   @JsonKey(ignore: true)
-  _$$_DeployAccountTransactionResponseResultCopyWith<
-          _$_DeployAccountTransactionResponseResult>
+  _$$DeployAccountTransactionResponseResultImplCopyWith<
+          _$DeployAccountTransactionResponseResultImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

@@ -12,7 +12,7 @@ part of 'pending_transactions.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 PendingTransactions _$PendingTransactionsFromJson(Map<String, dynamic> json) {
   switch (json['starkNetRuntimeTypeToRemove']) {
@@ -92,21 +92,23 @@ class _$PendingTransactionsCopyWithImpl<$Res, $Val extends PendingTransactions>
 }
 
 /// @nodoc
-abstract class _$$PendingTransactionsResultCopyWith<$Res> {
-  factory _$$PendingTransactionsResultCopyWith(
-          _$PendingTransactionsResult value,
-          $Res Function(_$PendingTransactionsResult) then) =
-      __$$PendingTransactionsResultCopyWithImpl<$Res>;
+abstract class _$$PendingTransactionsResultImplCopyWith<$Res> {
+  factory _$$PendingTransactionsResultImplCopyWith(
+          _$PendingTransactionsResultImpl value,
+          $Res Function(_$PendingTransactionsResultImpl) then) =
+      __$$PendingTransactionsResultImplCopyWithImpl<$Res>;
   @useResult
   $Res call({List<Txn> result});
 }
 
 /// @nodoc
-class __$$PendingTransactionsResultCopyWithImpl<$Res>
-    extends _$PendingTransactionsCopyWithImpl<$Res, _$PendingTransactionsResult>
-    implements _$$PendingTransactionsResultCopyWith<$Res> {
-  __$$PendingTransactionsResultCopyWithImpl(_$PendingTransactionsResult _value,
-      $Res Function(_$PendingTransactionsResult) _then)
+class __$$PendingTransactionsResultImplCopyWithImpl<$Res>
+    extends _$PendingTransactionsCopyWithImpl<$Res,
+        _$PendingTransactionsResultImpl>
+    implements _$$PendingTransactionsResultImplCopyWith<$Res> {
+  __$$PendingTransactionsResultImplCopyWithImpl(
+      _$PendingTransactionsResultImpl _value,
+      $Res Function(_$PendingTransactionsResultImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -114,7 +116,7 @@ class __$$PendingTransactionsResultCopyWithImpl<$Res>
   $Res call({
     Object? result = null,
   }) {
-    return _then(_$PendingTransactionsResult(
+    return _then(_$PendingTransactionsResultImpl(
       result: null == result
           ? _value._result
           : result // ignore: cast_nullable_to_non_nullable
@@ -125,14 +127,14 @@ class __$$PendingTransactionsResultCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$PendingTransactionsResult implements PendingTransactionsResult {
-  const _$PendingTransactionsResult(
+class _$PendingTransactionsResultImpl implements PendingTransactionsResult {
+  const _$PendingTransactionsResultImpl(
       {required final List<Txn> result, final String? $type})
       : _result = result,
         $type = $type ?? 'result';
 
-  factory _$PendingTransactionsResult.fromJson(Map<String, dynamic> json) =>
-      _$$PendingTransactionsResultFromJson(json);
+  factory _$PendingTransactionsResultImpl.fromJson(Map<String, dynamic> json) =>
+      _$$PendingTransactionsResultImplFromJson(json);
 
   final List<Txn> _result;
   @override
@@ -151,10 +153,10 @@ class _$PendingTransactionsResult implements PendingTransactionsResult {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$PendingTransactionsResult &&
+            other is _$PendingTransactionsResultImpl &&
             const DeepCollectionEquality().equals(other._result, _result));
   }
 
@@ -166,9 +168,9 @@ class _$PendingTransactionsResult implements PendingTransactionsResult {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$PendingTransactionsResultCopyWith<_$PendingTransactionsResult>
-      get copyWith => __$$PendingTransactionsResultCopyWithImpl<
-          _$PendingTransactionsResult>(this, _$identity);
+  _$$PendingTransactionsResultImplCopyWith<_$PendingTransactionsResultImpl>
+      get copyWith => __$$PendingTransactionsResultImplCopyWithImpl<
+          _$PendingTransactionsResultImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -234,7 +236,7 @@ class _$PendingTransactionsResult implements PendingTransactionsResult {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$PendingTransactionsResultToJson(
+    return _$$PendingTransactionsResultImplToJson(
       this,
     );
   }
@@ -242,22 +244,23 @@ class _$PendingTransactionsResult implements PendingTransactionsResult {
 
 abstract class PendingTransactionsResult implements PendingTransactions {
   const factory PendingTransactionsResult({required final List<Txn> result}) =
-      _$PendingTransactionsResult;
+      _$PendingTransactionsResultImpl;
 
   factory PendingTransactionsResult.fromJson(Map<String, dynamic> json) =
-      _$PendingTransactionsResult.fromJson;
+      _$PendingTransactionsResultImpl.fromJson;
 
   List<Txn> get result;
   @JsonKey(ignore: true)
-  _$$PendingTransactionsResultCopyWith<_$PendingTransactionsResult>
+  _$$PendingTransactionsResultImplCopyWith<_$PendingTransactionsResultImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$PendingTransactionsErrorCopyWith<$Res> {
-  factory _$$PendingTransactionsErrorCopyWith(_$PendingTransactionsError value,
-          $Res Function(_$PendingTransactionsError) then) =
-      __$$PendingTransactionsErrorCopyWithImpl<$Res>;
+abstract class _$$PendingTransactionsErrorImplCopyWith<$Res> {
+  factory _$$PendingTransactionsErrorImplCopyWith(
+          _$PendingTransactionsErrorImpl value,
+          $Res Function(_$PendingTransactionsErrorImpl) then) =
+      __$$PendingTransactionsErrorImplCopyWithImpl<$Res>;
   @useResult
   $Res call({JsonRpcApiError error});
 
@@ -265,11 +268,13 @@ abstract class _$$PendingTransactionsErrorCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$PendingTransactionsErrorCopyWithImpl<$Res>
-    extends _$PendingTransactionsCopyWithImpl<$Res, _$PendingTransactionsError>
-    implements _$$PendingTransactionsErrorCopyWith<$Res> {
-  __$$PendingTransactionsErrorCopyWithImpl(_$PendingTransactionsError _value,
-      $Res Function(_$PendingTransactionsError) _then)
+class __$$PendingTransactionsErrorImplCopyWithImpl<$Res>
+    extends _$PendingTransactionsCopyWithImpl<$Res,
+        _$PendingTransactionsErrorImpl>
+    implements _$$PendingTransactionsErrorImplCopyWith<$Res> {
+  __$$PendingTransactionsErrorImplCopyWithImpl(
+      _$PendingTransactionsErrorImpl _value,
+      $Res Function(_$PendingTransactionsErrorImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -277,7 +282,7 @@ class __$$PendingTransactionsErrorCopyWithImpl<$Res>
   $Res call({
     Object? error = null,
   }) {
-    return _then(_$PendingTransactionsError(
+    return _then(_$PendingTransactionsErrorImpl(
       error: null == error
           ? _value.error
           : error // ignore: cast_nullable_to_non_nullable
@@ -296,12 +301,13 @@ class __$$PendingTransactionsErrorCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$PendingTransactionsError implements PendingTransactionsError {
-  const _$PendingTransactionsError({required this.error, final String? $type})
+class _$PendingTransactionsErrorImpl implements PendingTransactionsError {
+  const _$PendingTransactionsErrorImpl(
+      {required this.error, final String? $type})
       : $type = $type ?? 'error';
 
-  factory _$PendingTransactionsError.fromJson(Map<String, dynamic> json) =>
-      _$$PendingTransactionsErrorFromJson(json);
+  factory _$PendingTransactionsErrorImpl.fromJson(Map<String, dynamic> json) =>
+      _$$PendingTransactionsErrorImplFromJson(json);
 
   @override
   final JsonRpcApiError error;
@@ -315,10 +321,10 @@ class _$PendingTransactionsError implements PendingTransactionsError {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$PendingTransactionsError &&
+            other is _$PendingTransactionsErrorImpl &&
             (identical(other.error, error) || other.error == error));
   }
 
@@ -329,10 +335,9 @@ class _$PendingTransactionsError implements PendingTransactionsError {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$PendingTransactionsErrorCopyWith<_$PendingTransactionsError>
-      get copyWith =>
-          __$$PendingTransactionsErrorCopyWithImpl<_$PendingTransactionsError>(
-              this, _$identity);
+  _$$PendingTransactionsErrorImplCopyWith<_$PendingTransactionsErrorImpl>
+      get copyWith => __$$PendingTransactionsErrorImplCopyWithImpl<
+          _$PendingTransactionsErrorImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -398,7 +403,7 @@ class _$PendingTransactionsError implements PendingTransactionsError {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$PendingTransactionsErrorToJson(
+    return _$$PendingTransactionsErrorImplToJson(
       this,
     );
   }
@@ -406,13 +411,13 @@ class _$PendingTransactionsError implements PendingTransactionsError {
 
 abstract class PendingTransactionsError implements PendingTransactions {
   const factory PendingTransactionsError(
-      {required final JsonRpcApiError error}) = _$PendingTransactionsError;
+      {required final JsonRpcApiError error}) = _$PendingTransactionsErrorImpl;
 
   factory PendingTransactionsError.fromJson(Map<String, dynamic> json) =
-      _$PendingTransactionsError.fromJson;
+      _$PendingTransactionsErrorImpl.fromJson;
 
   JsonRpcApiError get error;
   @JsonKey(ignore: true)
-  _$$PendingTransactionsErrorCopyWith<_$PendingTransactionsError>
+  _$$PendingTransactionsErrorImplCopyWith<_$PendingTransactionsErrorImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
