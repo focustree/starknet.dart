@@ -12,6 +12,8 @@ jobs:
         with:
           channel: stable
           version: 3.19.5
+          cache: true
+          cache-sdk: true
       - uses: bluefireteam/melos-action@v3
       - run: melos bootstrap
       - run: melos format:check
@@ -26,6 +28,8 @@ jobs:
         with:
           channel: stable
           version: 3.19.5
+          cache: true
+          cache-sdk: true
       - uses: bluefireteam/melos-action@v3
       - run: melos bootstrap
       - run: melos test:dart:unit
@@ -44,6 +48,8 @@ jobs:
         with:
           channel: stable
           version: 3.19.5
+          cache: true
+          cache-sdk: true
       - uses: bluefireteam/melos-action@v3
       - run: melos bootstrap
       - run: melos test:dart:integration
