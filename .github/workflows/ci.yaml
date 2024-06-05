@@ -31,7 +31,7 @@ jobs:
     needs: lint
     services:
       devnet:
-        image: shardlabs/starknet-devnet-rs:0.0.5
+        image: shardlabs/starknet-devnet-rs:0.0.6
         ports:
           - 5050:5050
     steps:
