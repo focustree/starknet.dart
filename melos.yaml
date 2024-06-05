@@ -13,9 +13,20 @@ command:
     usePubspecOverrides: true
 
 scripts:
+  lint:
+    description: Lint all packages
+    steps:
+      - melos format:check
+      - melos analyze
   analyze:
     description: Analyze all packages
     exec: dart analyze --fatal-infos
+  format:
+    description: Format all packages
+    exec: dart format .
+  format:check:
+    description: Format check all packages
+    exec: dart format --set-exit-if-changed .
 
   dev:setup:
     description: Install Katana, Cairo and Starknet
@@ -46,7 +57,6 @@ scripts:
     run: |
       source .env.katana
       katana
-
   katana:setup:
     description: Setup Katana
     run: |
@@ -59,7 +69,6 @@ scripts:
       source .env.katana
       cd contracts/v$CAIRO_VERSION
       scarb build
-
   contracts:deploy:
     description: Deploy cairo contracts
     run: |
@@ -72,27 +81,18 @@ scripts:
     steps:
       - melos test:dart:unit
       - melos test:dart:integration
-
   test:dart:unit:
     description: Run all dart unit tests
     run: melos exec --dir-exists="test" -- dart test --tags unit --fail-fast
     packageFilters:
       ignore: "*starknet_builder*"
       flutter: false
-
   test:dart:integration:
     description: Run all dart integration tests
     run: melos exec --dir-exists="test" -- dart test --tags integration --fail-fast
     packageFilters:
       ignore: "*starknet_builder*"
       flutter: false
-
-  format:
-    description: Format all packages
-    exec: dart format .
-  format:check:
-    description: Format check all packages
-    exec: dart format --set-exit-if-changed .
 
   publish:dry-run:
     description: Publish dry-run all packages

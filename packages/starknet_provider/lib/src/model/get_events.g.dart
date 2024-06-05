@@ -6,33 +6,37 @@ part of 'get_events.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$GetEventsResult _$$GetEventsResultFromJson(Map<String, dynamic> json) =>
-    _$GetEventsResult(
+_$GetEventsResultImpl _$$GetEventsResultImplFromJson(
+        Map<String, dynamic> json) =>
+    _$GetEventsResultImpl(
       result:
           GetEventsResponse.fromJson(json['result'] as Map<String, dynamic>),
       $type: json['starkNetRuntimeTypeToRemove'] as String?,
     );
 
-Map<String, dynamic> _$$GetEventsResultToJson(_$GetEventsResult instance) =>
+Map<String, dynamic> _$$GetEventsResultImplToJson(
+        _$GetEventsResultImpl instance) =>
     <String, dynamic>{
       'result': instance.result.toJson(),
       'starkNetRuntimeTypeToRemove': instance.$type,
     };
 
-_$GetEventsError _$$GetEventsErrorFromJson(Map<String, dynamic> json) =>
-    _$GetEventsError(
+_$GetEventsErrorImpl _$$GetEventsErrorImplFromJson(Map<String, dynamic> json) =>
+    _$GetEventsErrorImpl(
       error: JsonRpcApiError.fromJson(json['error'] as Map<String, dynamic>),
       $type: json['starkNetRuntimeTypeToRemove'] as String?,
     );
 
-Map<String, dynamic> _$$GetEventsErrorToJson(_$GetEventsError instance) =>
+Map<String, dynamic> _$$GetEventsErrorImplToJson(
+        _$GetEventsErrorImpl instance) =>
     <String, dynamic>{
       'error': instance.error.toJson(),
       'starkNetRuntimeTypeToRemove': instance.$type,
     };
 
-_$_GetEventsRequest _$$_GetEventsRequestFromJson(Map<String, dynamic> json) =>
-    _$_GetEventsRequest(
+_$GetEventsRequestImpl _$$GetEventsRequestImplFromJson(
+        Map<String, dynamic> json) =>
+    _$GetEventsRequestImpl(
       fromBlock: json['from_block'] == null
           ? null
           : BlockId.fromJson(json['from_block'] as Map<String, dynamic>),
@@ -47,11 +51,12 @@ _$_GetEventsRequest _$$_GetEventsRequestFromJson(Map<String, dynamic> json) =>
               .map((e) => Felt.fromJson(e as String))
               .toList())
           .toList(),
-      chunkSize: json['chunk_size'] as int,
+      chunkSize: (json['chunk_size'] as num).toInt(),
       continuationToken: json['continuation_token'] as String?,
     );
 
-Map<String, dynamic> _$$_GetEventsRequestToJson(_$_GetEventsRequest instance) {
+Map<String, dynamic> _$$GetEventsRequestImplToJson(
+    _$GetEventsRequestImpl instance) {
   final val = <String, dynamic>{};
 
   void writeNotNull(String key, dynamic value) {
@@ -70,16 +75,17 @@ Map<String, dynamic> _$$_GetEventsRequestToJson(_$_GetEventsRequest instance) {
   return val;
 }
 
-_$_GetEventsResponse _$$_GetEventsResponseFromJson(Map<String, dynamic> json) =>
-    _$_GetEventsResponse(
+_$GetEventsResponseImpl _$$GetEventsResponseImplFromJson(
+        Map<String, dynamic> json) =>
+    _$GetEventsResponseImpl(
       events: (json['events'] as List<dynamic>)
           .map((e) => EmittedEvent.fromJson(e as Map<String, dynamic>))
           .toList(),
       continuation_token: json['continuation_token'] as String?,
     );
 
-Map<String, dynamic> _$$_GetEventsResponseToJson(
-    _$_GetEventsResponse instance) {
+Map<String, dynamic> _$$GetEventsResponseImplToJson(
+    _$GetEventsResponseImpl instance) {
   final val = <String, dynamic>{
     'events': instance.events.map((e) => e.toJson()).toList(),
   };
@@ -94,8 +100,8 @@ Map<String, dynamic> _$$_GetEventsResponseToJson(
   return val;
 }
 
-_$_EmittedEvent _$$_EmittedEventFromJson(Map<String, dynamic> json) =>
-    _$_EmittedEvent(
+_$EmittedEventImpl _$$EmittedEventImplFromJson(Map<String, dynamic> json) =>
+    _$EmittedEventImpl(
       fromAddress: json['from_address'] == null
           ? null
           : Felt.fromJson(json['from_address'] as String),
@@ -111,10 +117,10 @@ _$_EmittedEvent _$$_EmittedEventFromJson(Map<String, dynamic> json) =>
       blockHash: json['block_hash'] == null
           ? null
           : Felt.fromJson(json['block_hash'] as String),
-      blockNumber: json['block_number'] as int?,
+      blockNumber: (json['block_number'] as num?)?.toInt(),
     );
 
-Map<String, dynamic> _$$_EmittedEventToJson(_$_EmittedEvent instance) {
+Map<String, dynamic> _$$EmittedEventImplToJson(_$EmittedEventImpl instance) {
   final val = <String, dynamic>{};
 
   void writeNotNull(String key, dynamic value) {

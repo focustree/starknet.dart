@@ -12,7 +12,7 @@ part of 'get_nonce.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 GetNonce _$GetNonceFromJson(Map<String, dynamic> json) {
   switch (json['starkNetRuntimeTypeToRemove']) {
@@ -91,20 +91,20 @@ class _$GetNonceCopyWithImpl<$Res, $Val extends GetNonce>
 }
 
 /// @nodoc
-abstract class _$$GetNonceResultCopyWith<$Res> {
-  factory _$$GetNonceResultCopyWith(
-          _$GetNonceResult value, $Res Function(_$GetNonceResult) then) =
-      __$$GetNonceResultCopyWithImpl<$Res>;
+abstract class _$$GetNonceResultImplCopyWith<$Res> {
+  factory _$$GetNonceResultImplCopyWith(_$GetNonceResultImpl value,
+          $Res Function(_$GetNonceResultImpl) then) =
+      __$$GetNonceResultImplCopyWithImpl<$Res>;
   @useResult
   $Res call({Felt result});
 }
 
 /// @nodoc
-class __$$GetNonceResultCopyWithImpl<$Res>
-    extends _$GetNonceCopyWithImpl<$Res, _$GetNonceResult>
-    implements _$$GetNonceResultCopyWith<$Res> {
-  __$$GetNonceResultCopyWithImpl(
-      _$GetNonceResult _value, $Res Function(_$GetNonceResult) _then)
+class __$$GetNonceResultImplCopyWithImpl<$Res>
+    extends _$GetNonceCopyWithImpl<$Res, _$GetNonceResultImpl>
+    implements _$$GetNonceResultImplCopyWith<$Res> {
+  __$$GetNonceResultImplCopyWithImpl(
+      _$GetNonceResultImpl _value, $Res Function(_$GetNonceResultImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -112,7 +112,7 @@ class __$$GetNonceResultCopyWithImpl<$Res>
   $Res call({
     Object? result = null,
   }) {
-    return _then(_$GetNonceResult(
+    return _then(_$GetNonceResultImpl(
       result: null == result
           ? _value.result
           : result // ignore: cast_nullable_to_non_nullable
@@ -123,12 +123,12 @@ class __$$GetNonceResultCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$GetNonceResult implements GetNonceResult {
-  const _$GetNonceResult({required this.result, final String? $type})
+class _$GetNonceResultImpl implements GetNonceResult {
+  const _$GetNonceResultImpl({required this.result, final String? $type})
       : $type = $type ?? 'result';
 
-  factory _$GetNonceResult.fromJson(Map<String, dynamic> json) =>
-      _$$GetNonceResultFromJson(json);
+  factory _$GetNonceResultImpl.fromJson(Map<String, dynamic> json) =>
+      _$$GetNonceResultImplFromJson(json);
 
   @override
   final Felt result;
@@ -142,10 +142,10 @@ class _$GetNonceResult implements GetNonceResult {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$GetNonceResult &&
+            other is _$GetNonceResultImpl &&
             (identical(other.result, result) || other.result == result));
   }
 
@@ -156,8 +156,9 @@ class _$GetNonceResult implements GetNonceResult {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$GetNonceResultCopyWith<_$GetNonceResult> get copyWith =>
-      __$$GetNonceResultCopyWithImpl<_$GetNonceResult>(this, _$identity);
+  _$$GetNonceResultImplCopyWith<_$GetNonceResultImpl> get copyWith =>
+      __$$GetNonceResultImplCopyWithImpl<_$GetNonceResultImpl>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -223,29 +224,30 @@ class _$GetNonceResult implements GetNonceResult {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$GetNonceResultToJson(
+    return _$$GetNonceResultImplToJson(
       this,
     );
   }
 }
 
 abstract class GetNonceResult implements GetNonce {
-  const factory GetNonceResult({required final Felt result}) = _$GetNonceResult;
+  const factory GetNonceResult({required final Felt result}) =
+      _$GetNonceResultImpl;
 
   factory GetNonceResult.fromJson(Map<String, dynamic> json) =
-      _$GetNonceResult.fromJson;
+      _$GetNonceResultImpl.fromJson;
 
   Felt get result;
   @JsonKey(ignore: true)
-  _$$GetNonceResultCopyWith<_$GetNonceResult> get copyWith =>
+  _$$GetNonceResultImplCopyWith<_$GetNonceResultImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$GetNonceErrorCopyWith<$Res> {
-  factory _$$GetNonceErrorCopyWith(
-          _$GetNonceError value, $Res Function(_$GetNonceError) then) =
-      __$$GetNonceErrorCopyWithImpl<$Res>;
+abstract class _$$GetNonceErrorImplCopyWith<$Res> {
+  factory _$$GetNonceErrorImplCopyWith(
+          _$GetNonceErrorImpl value, $Res Function(_$GetNonceErrorImpl) then) =
+      __$$GetNonceErrorImplCopyWithImpl<$Res>;
   @useResult
   $Res call({JsonRpcApiError error});
 
@@ -253,11 +255,11 @@ abstract class _$$GetNonceErrorCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$GetNonceErrorCopyWithImpl<$Res>
-    extends _$GetNonceCopyWithImpl<$Res, _$GetNonceError>
-    implements _$$GetNonceErrorCopyWith<$Res> {
-  __$$GetNonceErrorCopyWithImpl(
-      _$GetNonceError _value, $Res Function(_$GetNonceError) _then)
+class __$$GetNonceErrorImplCopyWithImpl<$Res>
+    extends _$GetNonceCopyWithImpl<$Res, _$GetNonceErrorImpl>
+    implements _$$GetNonceErrorImplCopyWith<$Res> {
+  __$$GetNonceErrorImplCopyWithImpl(
+      _$GetNonceErrorImpl _value, $Res Function(_$GetNonceErrorImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -265,7 +267,7 @@ class __$$GetNonceErrorCopyWithImpl<$Res>
   $Res call({
     Object? error = null,
   }) {
-    return _then(_$GetNonceError(
+    return _then(_$GetNonceErrorImpl(
       error: null == error
           ? _value.error
           : error // ignore: cast_nullable_to_non_nullable
@@ -284,12 +286,12 @@ class __$$GetNonceErrorCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$GetNonceError implements GetNonceError {
-  const _$GetNonceError({required this.error, final String? $type})
+class _$GetNonceErrorImpl implements GetNonceError {
+  const _$GetNonceErrorImpl({required this.error, final String? $type})
       : $type = $type ?? 'error';
 
-  factory _$GetNonceError.fromJson(Map<String, dynamic> json) =>
-      _$$GetNonceErrorFromJson(json);
+  factory _$GetNonceErrorImpl.fromJson(Map<String, dynamic> json) =>
+      _$$GetNonceErrorImplFromJson(json);
 
   @override
   final JsonRpcApiError error;
@@ -303,10 +305,10 @@ class _$GetNonceError implements GetNonceError {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$GetNonceError &&
+            other is _$GetNonceErrorImpl &&
             (identical(other.error, error) || other.error == error));
   }
 
@@ -317,8 +319,8 @@ class _$GetNonceError implements GetNonceError {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$GetNonceErrorCopyWith<_$GetNonceError> get copyWith =>
-      __$$GetNonceErrorCopyWithImpl<_$GetNonceError>(this, _$identity);
+  _$$GetNonceErrorImplCopyWith<_$GetNonceErrorImpl> get copyWith =>
+      __$$GetNonceErrorImplCopyWithImpl<_$GetNonceErrorImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -384,7 +386,7 @@ class _$GetNonceError implements GetNonceError {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$GetNonceErrorToJson(
+    return _$$GetNonceErrorImplToJson(
       this,
     );
   }
@@ -392,13 +394,13 @@ class _$GetNonceError implements GetNonceError {
 
 abstract class GetNonceError implements GetNonce {
   const factory GetNonceError({required final JsonRpcApiError error}) =
-      _$GetNonceError;
+      _$GetNonceErrorImpl;
 
   factory GetNonceError.fromJson(Map<String, dynamic> json) =
-      _$GetNonceError.fromJson;
+      _$GetNonceErrorImpl.fromJson;
 
   JsonRpcApiError get error;
   @JsonKey(ignore: true)
-  _$$GetNonceErrorCopyWith<_$GetNonceError> get copyWith =>
+  _$$GetNonceErrorImplCopyWith<_$GetNonceErrorImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

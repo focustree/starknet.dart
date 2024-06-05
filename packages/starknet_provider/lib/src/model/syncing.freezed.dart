@@ -12,7 +12,7 @@ part of 'syncing.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 Syncing _$SyncingFromJson(Map<String, dynamic> json) {
   switch (json['starkNetRuntimeTypeToRemove']) {
@@ -99,10 +99,10 @@ class _$SyncingCopyWithImpl<$Res, $Val extends Syncing>
 }
 
 /// @nodoc
-abstract class _$$SynchronizedCopyWith<$Res> {
-  factory _$$SynchronizedCopyWith(
-          _$Synchronized value, $Res Function(_$Synchronized) then) =
-      __$$SynchronizedCopyWithImpl<$Res>;
+abstract class _$$SynchronizedImplCopyWith<$Res> {
+  factory _$$SynchronizedImplCopyWith(
+          _$SynchronizedImpl value, $Res Function(_$SynchronizedImpl) then) =
+      __$$SynchronizedImplCopyWithImpl<$Res>;
   @useResult
   $Res call({SyncStatus result});
 
@@ -110,11 +110,11 @@ abstract class _$$SynchronizedCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$SynchronizedCopyWithImpl<$Res>
-    extends _$SyncingCopyWithImpl<$Res, _$Synchronized>
-    implements _$$SynchronizedCopyWith<$Res> {
-  __$$SynchronizedCopyWithImpl(
-      _$Synchronized _value, $Res Function(_$Synchronized) _then)
+class __$$SynchronizedImplCopyWithImpl<$Res>
+    extends _$SyncingCopyWithImpl<$Res, _$SynchronizedImpl>
+    implements _$$SynchronizedImplCopyWith<$Res> {
+  __$$SynchronizedImplCopyWithImpl(
+      _$SynchronizedImpl _value, $Res Function(_$SynchronizedImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -122,7 +122,7 @@ class __$$SynchronizedCopyWithImpl<$Res>
   $Res call({
     Object? result = null,
   }) {
-    return _then(_$Synchronized(
+    return _then(_$SynchronizedImpl(
       result: null == result
           ? _value.result
           : result // ignore: cast_nullable_to_non_nullable
@@ -141,12 +141,12 @@ class __$$SynchronizedCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$Synchronized implements Synchronized {
-  const _$Synchronized({required this.result, final String? $type})
+class _$SynchronizedImpl implements Synchronized {
+  const _$SynchronizedImpl({required this.result, final String? $type})
       : $type = $type ?? 'synchronized';
 
-  factory _$Synchronized.fromJson(Map<String, dynamic> json) =>
-      _$$SynchronizedFromJson(json);
+  factory _$SynchronizedImpl.fromJson(Map<String, dynamic> json) =>
+      _$$SynchronizedImplFromJson(json);
 
   @override
   final SyncStatus result;
@@ -160,10 +160,10 @@ class _$Synchronized implements Synchronized {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$Synchronized &&
+            other is _$SynchronizedImpl &&
             (identical(other.result, result) || other.result == result));
   }
 
@@ -174,8 +174,8 @@ class _$Synchronized implements Synchronized {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$SynchronizedCopyWith<_$Synchronized> get copyWith =>
-      __$$SynchronizedCopyWithImpl<_$Synchronized>(this, _$identity);
+  _$$SynchronizedImplCopyWith<_$SynchronizedImpl> get copyWith =>
+      __$$SynchronizedImplCopyWithImpl<_$SynchronizedImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -247,7 +247,7 @@ class _$Synchronized implements Synchronized {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$SynchronizedToJson(
+    return _$$SynchronizedImplToJson(
       this,
     );
   }
@@ -255,32 +255,32 @@ class _$Synchronized implements Synchronized {
 
 abstract class Synchronized implements Syncing {
   const factory Synchronized({required final SyncStatus result}) =
-      _$Synchronized;
+      _$SynchronizedImpl;
 
   factory Synchronized.fromJson(Map<String, dynamic> json) =
-      _$Synchronized.fromJson;
+      _$SynchronizedImpl.fromJson;
 
   SyncStatus get result;
   @JsonKey(ignore: true)
-  _$$SynchronizedCopyWith<_$Synchronized> get copyWith =>
+  _$$SynchronizedImplCopyWith<_$SynchronizedImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$NotSynchronizedCopyWith<$Res> {
-  factory _$$NotSynchronizedCopyWith(
-          _$NotSynchronized value, $Res Function(_$NotSynchronized) then) =
-      __$$NotSynchronizedCopyWithImpl<$Res>;
+abstract class _$$NotSynchronizedImplCopyWith<$Res> {
+  factory _$$NotSynchronizedImplCopyWith(_$NotSynchronizedImpl value,
+          $Res Function(_$NotSynchronizedImpl) then) =
+      __$$NotSynchronizedImplCopyWithImpl<$Res>;
   @useResult
   $Res call({bool result});
 }
 
 /// @nodoc
-class __$$NotSynchronizedCopyWithImpl<$Res>
-    extends _$SyncingCopyWithImpl<$Res, _$NotSynchronized>
-    implements _$$NotSynchronizedCopyWith<$Res> {
-  __$$NotSynchronizedCopyWithImpl(
-      _$NotSynchronized _value, $Res Function(_$NotSynchronized) _then)
+class __$$NotSynchronizedImplCopyWithImpl<$Res>
+    extends _$SyncingCopyWithImpl<$Res, _$NotSynchronizedImpl>
+    implements _$$NotSynchronizedImplCopyWith<$Res> {
+  __$$NotSynchronizedImplCopyWithImpl(
+      _$NotSynchronizedImpl _value, $Res Function(_$NotSynchronizedImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -288,7 +288,7 @@ class __$$NotSynchronizedCopyWithImpl<$Res>
   $Res call({
     Object? result = null,
   }) {
-    return _then(_$NotSynchronized(
+    return _then(_$NotSynchronizedImpl(
       result: null == result
           ? _value.result
           : result // ignore: cast_nullable_to_non_nullable
@@ -299,12 +299,12 @@ class __$$NotSynchronizedCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$NotSynchronized implements NotSynchronized {
-  const _$NotSynchronized({required this.result, final String? $type})
+class _$NotSynchronizedImpl implements NotSynchronized {
+  const _$NotSynchronizedImpl({required this.result, final String? $type})
       : $type = $type ?? 'notSynchronized';
 
-  factory _$NotSynchronized.fromJson(Map<String, dynamic> json) =>
-      _$$NotSynchronizedFromJson(json);
+  factory _$NotSynchronizedImpl.fromJson(Map<String, dynamic> json) =>
+      _$$NotSynchronizedImplFromJson(json);
 
   @override
   final bool result;
@@ -318,10 +318,10 @@ class _$NotSynchronized implements NotSynchronized {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$NotSynchronized &&
+            other is _$NotSynchronizedImpl &&
             (identical(other.result, result) || other.result == result));
   }
 
@@ -332,8 +332,9 @@ class _$NotSynchronized implements NotSynchronized {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$NotSynchronizedCopyWith<_$NotSynchronized> get copyWith =>
-      __$$NotSynchronizedCopyWithImpl<_$NotSynchronized>(this, _$identity);
+  _$$NotSynchronizedImplCopyWith<_$NotSynchronizedImpl> get copyWith =>
+      __$$NotSynchronizedImplCopyWithImpl<_$NotSynchronizedImpl>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -405,7 +406,7 @@ class _$NotSynchronized implements NotSynchronized {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$NotSynchronizedToJson(
+    return _$$NotSynchronizedImplToJson(
       this,
     );
   }
@@ -413,22 +414,22 @@ class _$NotSynchronized implements NotSynchronized {
 
 abstract class NotSynchronized implements Syncing {
   const factory NotSynchronized({required final bool result}) =
-      _$NotSynchronized;
+      _$NotSynchronizedImpl;
 
   factory NotSynchronized.fromJson(Map<String, dynamic> json) =
-      _$NotSynchronized.fromJson;
+      _$NotSynchronizedImpl.fromJson;
 
   bool get result;
   @JsonKey(ignore: true)
-  _$$NotSynchronizedCopyWith<_$NotSynchronized> get copyWith =>
+  _$$NotSynchronizedImplCopyWith<_$NotSynchronizedImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$SyncingErrorCopyWith<$Res> {
-  factory _$$SyncingErrorCopyWith(
-          _$SyncingError value, $Res Function(_$SyncingError) then) =
-      __$$SyncingErrorCopyWithImpl<$Res>;
+abstract class _$$SyncingErrorImplCopyWith<$Res> {
+  factory _$$SyncingErrorImplCopyWith(
+          _$SyncingErrorImpl value, $Res Function(_$SyncingErrorImpl) then) =
+      __$$SyncingErrorImplCopyWithImpl<$Res>;
   @useResult
   $Res call({JsonRpcApiError error});
 
@@ -436,11 +437,11 @@ abstract class _$$SyncingErrorCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$SyncingErrorCopyWithImpl<$Res>
-    extends _$SyncingCopyWithImpl<$Res, _$SyncingError>
-    implements _$$SyncingErrorCopyWith<$Res> {
-  __$$SyncingErrorCopyWithImpl(
-      _$SyncingError _value, $Res Function(_$SyncingError) _then)
+class __$$SyncingErrorImplCopyWithImpl<$Res>
+    extends _$SyncingCopyWithImpl<$Res, _$SyncingErrorImpl>
+    implements _$$SyncingErrorImplCopyWith<$Res> {
+  __$$SyncingErrorImplCopyWithImpl(
+      _$SyncingErrorImpl _value, $Res Function(_$SyncingErrorImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -448,7 +449,7 @@ class __$$SyncingErrorCopyWithImpl<$Res>
   $Res call({
     Object? error = null,
   }) {
-    return _then(_$SyncingError(
+    return _then(_$SyncingErrorImpl(
       error: null == error
           ? _value.error
           : error // ignore: cast_nullable_to_non_nullable
@@ -467,12 +468,12 @@ class __$$SyncingErrorCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$SyncingError implements SyncingError {
-  const _$SyncingError({required this.error, final String? $type})
+class _$SyncingErrorImpl implements SyncingError {
+  const _$SyncingErrorImpl({required this.error, final String? $type})
       : $type = $type ?? 'error';
 
-  factory _$SyncingError.fromJson(Map<String, dynamic> json) =>
-      _$$SyncingErrorFromJson(json);
+  factory _$SyncingErrorImpl.fromJson(Map<String, dynamic> json) =>
+      _$$SyncingErrorImplFromJson(json);
 
   @override
   final JsonRpcApiError error;
@@ -486,10 +487,10 @@ class _$SyncingError implements SyncingError {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$SyncingError &&
+            other is _$SyncingErrorImpl &&
             (identical(other.error, error) || other.error == error));
   }
 
@@ -500,8 +501,8 @@ class _$SyncingError implements SyncingError {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$SyncingErrorCopyWith<_$SyncingError> get copyWith =>
-      __$$SyncingErrorCopyWithImpl<_$SyncingError>(this, _$identity);
+  _$$SyncingErrorImplCopyWith<_$SyncingErrorImpl> get copyWith =>
+      __$$SyncingErrorImplCopyWithImpl<_$SyncingErrorImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -573,7 +574,7 @@ class _$SyncingError implements SyncingError {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$SyncingErrorToJson(
+    return _$$SyncingErrorImplToJson(
       this,
     );
   }
@@ -581,13 +582,13 @@ class _$SyncingError implements SyncingError {
 
 abstract class SyncingError implements Syncing {
   const factory SyncingError({required final JsonRpcApiError error}) =
-      _$SyncingError;
+      _$SyncingErrorImpl;
 
   factory SyncingError.fromJson(Map<String, dynamic> json) =
-      _$SyncingError.fromJson;
+      _$SyncingErrorImpl.fromJson;
 
   JsonRpcApiError get error;
   @JsonKey(ignore: true)
-  _$$SyncingErrorCopyWith<_$SyncingError> get copyWith =>
+  _$$SyncingErrorImplCopyWith<_$SyncingErrorImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

@@ -12,7 +12,7 @@ part of 'block_hash_and_number.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 BlockHashAndNumber _$BlockHashAndNumberFromJson(Map<String, dynamic> json) {
   switch (json['starkNetRuntimeTypeToRemove']) {
@@ -92,10 +92,11 @@ class _$BlockHashAndNumberCopyWithImpl<$Res, $Val extends BlockHashAndNumber>
 }
 
 /// @nodoc
-abstract class _$$BlockHashAndNumberResultCopyWith<$Res> {
-  factory _$$BlockHashAndNumberResultCopyWith(_$BlockHashAndNumberResult value,
-          $Res Function(_$BlockHashAndNumberResult) then) =
-      __$$BlockHashAndNumberResultCopyWithImpl<$Res>;
+abstract class _$$BlockHashAndNumberResultImplCopyWith<$Res> {
+  factory _$$BlockHashAndNumberResultImplCopyWith(
+          _$BlockHashAndNumberResultImpl value,
+          $Res Function(_$BlockHashAndNumberResultImpl) then) =
+      __$$BlockHashAndNumberResultImplCopyWithImpl<$Res>;
   @useResult
   $Res call({BlockHashAndNumberResponseResult result});
 
@@ -103,11 +104,13 @@ abstract class _$$BlockHashAndNumberResultCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$BlockHashAndNumberResultCopyWithImpl<$Res>
-    extends _$BlockHashAndNumberCopyWithImpl<$Res, _$BlockHashAndNumberResult>
-    implements _$$BlockHashAndNumberResultCopyWith<$Res> {
-  __$$BlockHashAndNumberResultCopyWithImpl(_$BlockHashAndNumberResult _value,
-      $Res Function(_$BlockHashAndNumberResult) _then)
+class __$$BlockHashAndNumberResultImplCopyWithImpl<$Res>
+    extends _$BlockHashAndNumberCopyWithImpl<$Res,
+        _$BlockHashAndNumberResultImpl>
+    implements _$$BlockHashAndNumberResultImplCopyWith<$Res> {
+  __$$BlockHashAndNumberResultImplCopyWithImpl(
+      _$BlockHashAndNumberResultImpl _value,
+      $Res Function(_$BlockHashAndNumberResultImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -115,7 +118,7 @@ class __$$BlockHashAndNumberResultCopyWithImpl<$Res>
   $Res call({
     Object? result = null,
   }) {
-    return _then(_$BlockHashAndNumberResult(
+    return _then(_$BlockHashAndNumberResultImpl(
       result: null == result
           ? _value.result
           : result // ignore: cast_nullable_to_non_nullable
@@ -135,12 +138,13 @@ class __$$BlockHashAndNumberResultCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$BlockHashAndNumberResult implements BlockHashAndNumberResult {
-  const _$BlockHashAndNumberResult({required this.result, final String? $type})
+class _$BlockHashAndNumberResultImpl implements BlockHashAndNumberResult {
+  const _$BlockHashAndNumberResultImpl(
+      {required this.result, final String? $type})
       : $type = $type ?? 'result';
 
-  factory _$BlockHashAndNumberResult.fromJson(Map<String, dynamic> json) =>
-      _$$BlockHashAndNumberResultFromJson(json);
+  factory _$BlockHashAndNumberResultImpl.fromJson(Map<String, dynamic> json) =>
+      _$$BlockHashAndNumberResultImplFromJson(json);
 
   @override
   final BlockHashAndNumberResponseResult result;
@@ -154,10 +158,10 @@ class _$BlockHashAndNumberResult implements BlockHashAndNumberResult {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$BlockHashAndNumberResult &&
+            other is _$BlockHashAndNumberResultImpl &&
             (identical(other.result, result) || other.result == result));
   }
 
@@ -168,10 +172,9 @@ class _$BlockHashAndNumberResult implements BlockHashAndNumberResult {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$BlockHashAndNumberResultCopyWith<_$BlockHashAndNumberResult>
-      get copyWith =>
-          __$$BlockHashAndNumberResultCopyWithImpl<_$BlockHashAndNumberResult>(
-              this, _$identity);
+  _$$BlockHashAndNumberResultImplCopyWith<_$BlockHashAndNumberResultImpl>
+      get copyWith => __$$BlockHashAndNumberResultImplCopyWithImpl<
+          _$BlockHashAndNumberResultImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -237,7 +240,7 @@ class _$BlockHashAndNumberResult implements BlockHashAndNumberResult {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$BlockHashAndNumberResultToJson(
+    return _$$BlockHashAndNumberResultImplToJson(
       this,
     );
   }
@@ -246,22 +249,23 @@ class _$BlockHashAndNumberResult implements BlockHashAndNumberResult {
 abstract class BlockHashAndNumberResult implements BlockHashAndNumber {
   const factory BlockHashAndNumberResult(
           {required final BlockHashAndNumberResponseResult result}) =
-      _$BlockHashAndNumberResult;
+      _$BlockHashAndNumberResultImpl;
 
   factory BlockHashAndNumberResult.fromJson(Map<String, dynamic> json) =
-      _$BlockHashAndNumberResult.fromJson;
+      _$BlockHashAndNumberResultImpl.fromJson;
 
   BlockHashAndNumberResponseResult get result;
   @JsonKey(ignore: true)
-  _$$BlockHashAndNumberResultCopyWith<_$BlockHashAndNumberResult>
+  _$$BlockHashAndNumberResultImplCopyWith<_$BlockHashAndNumberResultImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$BlockHashAndNumberErrorCopyWith<$Res> {
-  factory _$$BlockHashAndNumberErrorCopyWith(_$BlockHashAndNumberError value,
-          $Res Function(_$BlockHashAndNumberError) then) =
-      __$$BlockHashAndNumberErrorCopyWithImpl<$Res>;
+abstract class _$$BlockHashAndNumberErrorImplCopyWith<$Res> {
+  factory _$$BlockHashAndNumberErrorImplCopyWith(
+          _$BlockHashAndNumberErrorImpl value,
+          $Res Function(_$BlockHashAndNumberErrorImpl) then) =
+      __$$BlockHashAndNumberErrorImplCopyWithImpl<$Res>;
   @useResult
   $Res call({JsonRpcApiError error});
 
@@ -269,11 +273,13 @@ abstract class _$$BlockHashAndNumberErrorCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$BlockHashAndNumberErrorCopyWithImpl<$Res>
-    extends _$BlockHashAndNumberCopyWithImpl<$Res, _$BlockHashAndNumberError>
-    implements _$$BlockHashAndNumberErrorCopyWith<$Res> {
-  __$$BlockHashAndNumberErrorCopyWithImpl(_$BlockHashAndNumberError _value,
-      $Res Function(_$BlockHashAndNumberError) _then)
+class __$$BlockHashAndNumberErrorImplCopyWithImpl<$Res>
+    extends _$BlockHashAndNumberCopyWithImpl<$Res,
+        _$BlockHashAndNumberErrorImpl>
+    implements _$$BlockHashAndNumberErrorImplCopyWith<$Res> {
+  __$$BlockHashAndNumberErrorImplCopyWithImpl(
+      _$BlockHashAndNumberErrorImpl _value,
+      $Res Function(_$BlockHashAndNumberErrorImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -281,7 +287,7 @@ class __$$BlockHashAndNumberErrorCopyWithImpl<$Res>
   $Res call({
     Object? error = null,
   }) {
-    return _then(_$BlockHashAndNumberError(
+    return _then(_$BlockHashAndNumberErrorImpl(
       error: null == error
           ? _value.error
           : error // ignore: cast_nullable_to_non_nullable
@@ -300,12 +306,13 @@ class __$$BlockHashAndNumberErrorCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$BlockHashAndNumberError implements BlockHashAndNumberError {
-  const _$BlockHashAndNumberError({required this.error, final String? $type})
+class _$BlockHashAndNumberErrorImpl implements BlockHashAndNumberError {
+  const _$BlockHashAndNumberErrorImpl(
+      {required this.error, final String? $type})
       : $type = $type ?? 'error';
 
-  factory _$BlockHashAndNumberError.fromJson(Map<String, dynamic> json) =>
-      _$$BlockHashAndNumberErrorFromJson(json);
+  factory _$BlockHashAndNumberErrorImpl.fromJson(Map<String, dynamic> json) =>
+      _$$BlockHashAndNumberErrorImplFromJson(json);
 
   @override
   final JsonRpcApiError error;
@@ -319,10 +326,10 @@ class _$BlockHashAndNumberError implements BlockHashAndNumberError {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$BlockHashAndNumberError &&
+            other is _$BlockHashAndNumberErrorImpl &&
             (identical(other.error, error) || other.error == error));
   }
 
@@ -333,9 +340,9 @@ class _$BlockHashAndNumberError implements BlockHashAndNumberError {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$BlockHashAndNumberErrorCopyWith<_$BlockHashAndNumberError> get copyWith =>
-      __$$BlockHashAndNumberErrorCopyWithImpl<_$BlockHashAndNumberError>(
-          this, _$identity);
+  _$$BlockHashAndNumberErrorImplCopyWith<_$BlockHashAndNumberErrorImpl>
+      get copyWith => __$$BlockHashAndNumberErrorImplCopyWithImpl<
+          _$BlockHashAndNumberErrorImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -401,7 +408,7 @@ class _$BlockHashAndNumberError implements BlockHashAndNumberError {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$BlockHashAndNumberErrorToJson(
+    return _$$BlockHashAndNumberErrorImplToJson(
       this,
     );
   }
@@ -409,15 +416,15 @@ class _$BlockHashAndNumberError implements BlockHashAndNumberError {
 
 abstract class BlockHashAndNumberError implements BlockHashAndNumber {
   const factory BlockHashAndNumberError(
-      {required final JsonRpcApiError error}) = _$BlockHashAndNumberError;
+      {required final JsonRpcApiError error}) = _$BlockHashAndNumberErrorImpl;
 
   factory BlockHashAndNumberError.fromJson(Map<String, dynamic> json) =
-      _$BlockHashAndNumberError.fromJson;
+      _$BlockHashAndNumberErrorImpl.fromJson;
 
   JsonRpcApiError get error;
   @JsonKey(ignore: true)
-  _$$BlockHashAndNumberErrorCopyWith<_$BlockHashAndNumberError> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$BlockHashAndNumberErrorImplCopyWith<_$BlockHashAndNumberErrorImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 BlockHashAndNumberResponseResult _$BlockHashAndNumberResponseResultFromJson(
@@ -478,25 +485,25 @@ class _$BlockHashAndNumberResponseResultCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$_BlockHashAndNumberResponseResultCopyWith<$Res>
+abstract class _$$BlockHashAndNumberResponseResultImplCopyWith<$Res>
     implements $BlockHashAndNumberResponseResultCopyWith<$Res> {
-  factory _$$_BlockHashAndNumberResponseResultCopyWith(
-          _$_BlockHashAndNumberResponseResult value,
-          $Res Function(_$_BlockHashAndNumberResponseResult) then) =
-      __$$_BlockHashAndNumberResponseResultCopyWithImpl<$Res>;
+  factory _$$BlockHashAndNumberResponseResultImplCopyWith(
+          _$BlockHashAndNumberResponseResultImpl value,
+          $Res Function(_$BlockHashAndNumberResponseResultImpl) then) =
+      __$$BlockHashAndNumberResponseResultImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({Felt blockHash, int blockNumber});
 }
 
 /// @nodoc
-class __$$_BlockHashAndNumberResponseResultCopyWithImpl<$Res>
+class __$$BlockHashAndNumberResponseResultImplCopyWithImpl<$Res>
     extends _$BlockHashAndNumberResponseResultCopyWithImpl<$Res,
-        _$_BlockHashAndNumberResponseResult>
-    implements _$$_BlockHashAndNumberResponseResultCopyWith<$Res> {
-  __$$_BlockHashAndNumberResponseResultCopyWithImpl(
-      _$_BlockHashAndNumberResponseResult _value,
-      $Res Function(_$_BlockHashAndNumberResponseResult) _then)
+        _$BlockHashAndNumberResponseResultImpl>
+    implements _$$BlockHashAndNumberResponseResultImplCopyWith<$Res> {
+  __$$BlockHashAndNumberResponseResultImplCopyWithImpl(
+      _$BlockHashAndNumberResponseResultImpl _value,
+      $Res Function(_$BlockHashAndNumberResponseResultImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -505,7 +512,7 @@ class __$$_BlockHashAndNumberResponseResultCopyWithImpl<$Res>
     Object? blockHash = null,
     Object? blockNumber = null,
   }) {
-    return _then(_$_BlockHashAndNumberResponseResult(
+    return _then(_$BlockHashAndNumberResponseResultImpl(
       blockHash: null == blockHash
           ? _value.blockHash
           : blockHash // ignore: cast_nullable_to_non_nullable
@@ -520,14 +527,14 @@ class __$$_BlockHashAndNumberResponseResultCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_BlockHashAndNumberResponseResult
+class _$BlockHashAndNumberResponseResultImpl
     implements _BlockHashAndNumberResponseResult {
-  const _$_BlockHashAndNumberResponseResult(
+  const _$BlockHashAndNumberResponseResultImpl(
       {required this.blockHash, required this.blockNumber});
 
-  factory _$_BlockHashAndNumberResponseResult.fromJson(
+  factory _$BlockHashAndNumberResponseResultImpl.fromJson(
           Map<String, dynamic> json) =>
-      _$$_BlockHashAndNumberResponseResultFromJson(json);
+      _$$BlockHashAndNumberResponseResultImplFromJson(json);
 
   @override
   final Felt blockHash;
@@ -540,10 +547,10 @@ class _$_BlockHashAndNumberResponseResult
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_BlockHashAndNumberResponseResult &&
+            other is _$BlockHashAndNumberResponseResultImpl &&
             (identical(other.blockHash, blockHash) ||
                 other.blockHash == blockHash) &&
             (identical(other.blockNumber, blockNumber) ||
@@ -557,14 +564,14 @@ class _$_BlockHashAndNumberResponseResult
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_BlockHashAndNumberResponseResultCopyWith<
-          _$_BlockHashAndNumberResponseResult>
-      get copyWith => __$$_BlockHashAndNumberResponseResultCopyWithImpl<
-          _$_BlockHashAndNumberResponseResult>(this, _$identity);
+  _$$BlockHashAndNumberResponseResultImplCopyWith<
+          _$BlockHashAndNumberResponseResultImpl>
+      get copyWith => __$$BlockHashAndNumberResponseResultImplCopyWithImpl<
+          _$BlockHashAndNumberResponseResultImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_BlockHashAndNumberResponseResultToJson(
+    return _$$BlockHashAndNumberResponseResultImplToJson(
       this,
     );
   }
@@ -574,10 +581,11 @@ abstract class _BlockHashAndNumberResponseResult
     implements BlockHashAndNumberResponseResult {
   const factory _BlockHashAndNumberResponseResult(
       {required final Felt blockHash,
-      required final int blockNumber}) = _$_BlockHashAndNumberResponseResult;
+      required final int blockNumber}) = _$BlockHashAndNumberResponseResultImpl;
 
   factory _BlockHashAndNumberResponseResult.fromJson(
-      Map<String, dynamic> json) = _$_BlockHashAndNumberResponseResult.fromJson;
+          Map<String, dynamic> json) =
+      _$BlockHashAndNumberResponseResultImpl.fromJson;
 
   @override
   Felt get blockHash;
@@ -585,7 +593,7 @@ abstract class _BlockHashAndNumberResponseResult
   int get blockNumber;
   @override
   @JsonKey(ignore: true)
-  _$$_BlockHashAndNumberResponseResultCopyWith<
-          _$_BlockHashAndNumberResponseResult>
+  _$$BlockHashAndNumberResponseResultImplCopyWith<
+          _$BlockHashAndNumberResponseResultImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

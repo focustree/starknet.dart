@@ -6,9 +6,9 @@ part of 'contract_class.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_SierraContractClass _$$_SierraContractClassFromJson(
+_$SierraContractClassImpl _$$SierraContractClassImplFromJson(
         Map<String, dynamic> json) =>
-    _$_SierraContractClass(
+    _$SierraContractClassImpl(
       sierraProgram: (json['sierra_program'] as List<dynamic>)
           .map((e) => Felt.fromJson(e as String))
           .toList(),
@@ -18,8 +18,8 @@ _$_SierraContractClass _$$_SierraContractClassFromJson(
       abi: json['abi'] as String?,
     );
 
-Map<String, dynamic> _$$_SierraContractClassToJson(
-        _$_SierraContractClass instance) =>
+Map<String, dynamic> _$$SierraContractClassImplToJson(
+        _$SierraContractClassImpl instance) =>
     <String, dynamic>{
       'sierra_program': instance.sierraProgram.map((e) => e.toJson()).toList(),
       'contract_class_version': instance.contractClassVersion,
@@ -27,9 +27,9 @@ Map<String, dynamic> _$$_SierraContractClassToJson(
       'abi': instance.abi,
     };
 
-_$_DeprecatedContractClass _$$_DeprecatedContractClassFromJson(
+_$DeprecatedContractClassImpl _$$DeprecatedContractClassImplFromJson(
         Map<String, dynamic> json) =>
-    _$_DeprecatedContractClass(
+    _$DeprecatedContractClassImpl(
       program: json['program'] as String,
       entryPointsByType: DeprecatedCairoEntryPointsByType.fromJson(
           json['entry_points_by_type'] as Map<String, dynamic>),
@@ -39,8 +39,8 @@ _$_DeprecatedContractClass _$$_DeprecatedContractClassFromJson(
           .toList(),
     );
 
-Map<String, dynamic> _$$_DeprecatedContractClassToJson(
-        _$_DeprecatedContractClass instance) =>
+Map<String, dynamic> _$$DeprecatedContractClassImplToJson(
+        _$DeprecatedContractClassImpl instance) =>
     <String, dynamic>{
       'program': instance.program,
       'entry_points_by_type': instance.entryPointsByType.toJson(),

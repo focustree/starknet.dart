@@ -6,29 +6,29 @@ part of 'get_class_hash_at.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$GetClassHashAtResult _$$GetClassHashAtResultFromJson(
+_$GetClassHashAtResultImpl _$$GetClassHashAtResultImplFromJson(
         Map<String, dynamic> json) =>
-    _$GetClassHashAtResult(
+    _$GetClassHashAtResultImpl(
       result: Felt.fromJson(json['result'] as String),
       $type: json['starkNetRuntimeTypeToRemove'] as String?,
     );
 
-Map<String, dynamic> _$$GetClassHashAtResultToJson(
-        _$GetClassHashAtResult instance) =>
+Map<String, dynamic> _$$GetClassHashAtResultImplToJson(
+        _$GetClassHashAtResultImpl instance) =>
     <String, dynamic>{
       'result': instance.result.toJson(),
       'starkNetRuntimeTypeToRemove': instance.$type,
     };
 
-_$GetClassHashAtError _$$GetClassHashAtErrorFromJson(
+_$GetClassHashAtErrorImpl _$$GetClassHashAtErrorImplFromJson(
         Map<String, dynamic> json) =>
-    _$GetClassHashAtError(
+    _$GetClassHashAtErrorImpl(
       error: JsonRpcApiError.fromJson(json['error'] as Map<String, dynamic>),
       $type: json['starkNetRuntimeTypeToRemove'] as String?,
     );
 
-Map<String, dynamic> _$$GetClassHashAtErrorToJson(
-        _$GetClassHashAtError instance) =>
+Map<String, dynamic> _$$GetClassHashAtErrorImplToJson(
+        _$GetClassHashAtErrorImpl instance) =>
     <String, dynamic>{
       'error': instance.error.toJson(),
       'starkNetRuntimeTypeToRemove': instance.$type,

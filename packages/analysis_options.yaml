@@ -1,0 +1,3 @@
+analyzer:
+  errors:
+    non_nullable_equals_parameter: ignore

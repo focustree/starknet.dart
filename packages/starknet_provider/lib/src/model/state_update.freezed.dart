@@ -12,7 +12,7 @@ part of 'state_update.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 StateUpdate _$StateUpdateFromJson(Map<String, dynamic> json) {
   return _StateUpdate.fromJson(json);
@@ -90,11 +90,11 @@ class _$StateUpdateCopyWithImpl<$Res, $Val extends StateUpdate>
 }
 
 /// @nodoc
-abstract class _$$_StateUpdateCopyWith<$Res>
+abstract class _$$StateUpdateImplCopyWith<$Res>
     implements $StateUpdateCopyWith<$Res> {
-  factory _$$_StateUpdateCopyWith(
-          _$_StateUpdate value, $Res Function(_$_StateUpdate) then) =
-      __$$_StateUpdateCopyWithImpl<$Res>;
+  factory _$$StateUpdateImplCopyWith(
+          _$StateUpdateImpl value, $Res Function(_$StateUpdateImpl) then) =
+      __$$StateUpdateImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({Felt blockHash, Felt newRoot, Felt oldRoot, StateDiff stateDiff});
@@ -104,11 +104,11 @@ abstract class _$$_StateUpdateCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_StateUpdateCopyWithImpl<$Res>
-    extends _$StateUpdateCopyWithImpl<$Res, _$_StateUpdate>
-    implements _$$_StateUpdateCopyWith<$Res> {
-  __$$_StateUpdateCopyWithImpl(
-      _$_StateUpdate _value, $Res Function(_$_StateUpdate) _then)
+class __$$StateUpdateImplCopyWithImpl<$Res>
+    extends _$StateUpdateCopyWithImpl<$Res, _$StateUpdateImpl>
+    implements _$$StateUpdateImplCopyWith<$Res> {
+  __$$StateUpdateImplCopyWithImpl(
+      _$StateUpdateImpl _value, $Res Function(_$StateUpdateImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -119,7 +119,7 @@ class __$$_StateUpdateCopyWithImpl<$Res>
     Object? oldRoot = null,
     Object? stateDiff = null,
   }) {
-    return _then(_$_StateUpdate(
+    return _then(_$StateUpdateImpl(
       blockHash: null == blockHash
           ? _value.blockHash
           : blockHash // ignore: cast_nullable_to_non_nullable
@@ -142,15 +142,15 @@ class __$$_StateUpdateCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_StateUpdate implements _StateUpdate {
-  const _$_StateUpdate(
+class _$StateUpdateImpl implements _StateUpdate {
+  const _$StateUpdateImpl(
       {required this.blockHash,
       required this.newRoot,
       required this.oldRoot,
       required this.stateDiff});
 
-  factory _$_StateUpdate.fromJson(Map<String, dynamic> json) =>
-      _$$_StateUpdateFromJson(json);
+  factory _$StateUpdateImpl.fromJson(Map<String, dynamic> json) =>
+      _$$StateUpdateImplFromJson(json);
 
   @override
   final Felt blockHash;
@@ -167,10 +167,10 @@ class _$_StateUpdate implements _StateUpdate {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_StateUpdate &&
+            other is _$StateUpdateImpl &&
             (identical(other.blockHash, blockHash) ||
                 other.blockHash == blockHash) &&
             (identical(other.newRoot, newRoot) || other.newRoot == newRoot) &&
@@ -187,12 +187,12 @@ class _$_StateUpdate implements _StateUpdate {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_StateUpdateCopyWith<_$_StateUpdate> get copyWith =>
-      __$$_StateUpdateCopyWithImpl<_$_StateUpdate>(this, _$identity);
+  _$$StateUpdateImplCopyWith<_$StateUpdateImpl> get copyWith =>
+      __$$StateUpdateImplCopyWithImpl<_$StateUpdateImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_StateUpdateToJson(
+    return _$$StateUpdateImplToJson(
       this,
     );
   }
@@ -203,10 +203,10 @@ abstract class _StateUpdate implements StateUpdate {
       {required final Felt blockHash,
       required final Felt newRoot,
       required final Felt oldRoot,
-      required final StateDiff stateDiff}) = _$_StateUpdate;
+      required final StateDiff stateDiff}) = _$StateUpdateImpl;
 
   factory _StateUpdate.fromJson(Map<String, dynamic> json) =
-      _$_StateUpdate.fromJson;
+      _$StateUpdateImpl.fromJson;
 
   @override
   Felt get blockHash;
@@ -218,7 +218,7 @@ abstract class _StateUpdate implements StateUpdate {
   StateDiff get stateDiff;
   @override
   @JsonKey(ignore: true)
-  _$$_StateUpdateCopyWith<_$_StateUpdate> get copyWith =>
+  _$$StateUpdateImplCopyWith<_$StateUpdateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -309,10 +309,11 @@ class _$StateDiffCopyWithImpl<$Res, $Val extends StateDiff>
 }
 
 /// @nodoc
-abstract class _$$_StateDiffCopyWith<$Res> implements $StateDiffCopyWith<$Res> {
-  factory _$$_StateDiffCopyWith(
-          _$_StateDiff value, $Res Function(_$_StateDiff) then) =
-      __$$_StateDiffCopyWithImpl<$Res>;
+abstract class _$$StateDiffImplCopyWith<$Res>
+    implements $StateDiffCopyWith<$Res> {
+  factory _$$StateDiffImplCopyWith(
+          _$StateDiffImpl value, $Res Function(_$StateDiffImpl) then) =
+      __$$StateDiffImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -325,11 +326,11 @@ abstract class _$$_StateDiffCopyWith<$Res> implements $StateDiffCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_StateDiffCopyWithImpl<$Res>
-    extends _$StateDiffCopyWithImpl<$Res, _$_StateDiff>
-    implements _$$_StateDiffCopyWith<$Res> {
-  __$$_StateDiffCopyWithImpl(
-      _$_StateDiff _value, $Res Function(_$_StateDiff) _then)
+class __$$StateDiffImplCopyWithImpl<$Res>
+    extends _$StateDiffCopyWithImpl<$Res, _$StateDiffImpl>
+    implements _$$StateDiffImplCopyWith<$Res> {
+  __$$StateDiffImplCopyWithImpl(
+      _$StateDiffImpl _value, $Res Function(_$StateDiffImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -342,7 +343,7 @@ class __$$_StateDiffCopyWithImpl<$Res>
     Object? replacedClasses = null,
     Object? nonces = null,
   }) {
-    return _then(_$_StateDiff(
+    return _then(_$StateDiffImpl(
       storageDiffs: null == storageDiffs
           ? _value._storageDiffs
           : storageDiffs // ignore: cast_nullable_to_non_nullable
@@ -373,8 +374,8 @@ class __$$_StateDiffCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_StateDiff implements _StateDiff {
-  const _$_StateDiff(
+class _$StateDiffImpl implements _StateDiff {
+  const _$StateDiffImpl(
       {required final List<ContractStorageDiffItem> storageDiffs,
       required final List<Felt> deprecatedDeclaredClasses,
       required final List<DeclaredClass> declaredClasses,
@@ -388,8 +389,8 @@ class _$_StateDiff implements _StateDiff {
         _replacedClasses = replacedClasses,
         _nonces = nonces;
 
-  factory _$_StateDiff.fromJson(Map<String, dynamic> json) =>
-      _$$_StateDiffFromJson(json);
+  factory _$StateDiffImpl.fromJson(Map<String, dynamic> json) =>
+      _$$StateDiffImplFromJson(json);
 
   final List<ContractStorageDiffItem> _storageDiffs;
   @override
@@ -447,10 +448,10 @@ class _$_StateDiff implements _StateDiff {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_StateDiff &&
+            other is _$StateDiffImpl &&
             const DeepCollectionEquality()
                 .equals(other._storageDiffs, _storageDiffs) &&
             const DeepCollectionEquality().equals(
@@ -478,12 +479,12 @@ class _$_StateDiff implements _StateDiff {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_StateDiffCopyWith<_$_StateDiff> get copyWith =>
-      __$$_StateDiffCopyWithImpl<_$_StateDiff>(this, _$identity);
+  _$$StateDiffImplCopyWith<_$StateDiffImpl> get copyWith =>
+      __$$StateDiffImplCopyWithImpl<_$StateDiffImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_StateDiffToJson(
+    return _$$StateDiffImplToJson(
       this,
     );
   }
@@ -496,10 +497,10 @@ abstract class _StateDiff implements StateDiff {
       required final List<DeclaredClass> declaredClasses,
       required final List<DeployedContractItem> deployedContracts,
       required final List<ReplacedClass> replacedClasses,
-      required final List<NonceAndContractAddress> nonces}) = _$_StateDiff;
+      required final List<NonceAndContractAddress> nonces}) = _$StateDiffImpl;
 
   factory _StateDiff.fromJson(Map<String, dynamic> json) =
-      _$_StateDiff.fromJson;
+      _$StateDiffImpl.fromJson;
 
   @override
   List<ContractStorageDiffItem> get storageDiffs;
@@ -515,7 +516,7 @@ abstract class _StateDiff implements StateDiff {
   List<NonceAndContractAddress> get nonces;
   @override
   @JsonKey(ignore: true)
-  _$$_StateDiffCopyWith<_$_StateDiff> get copyWith =>
+  _$$StateDiffImplCopyWith<_$StateDiffImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -575,23 +576,25 @@ class _$NonceAndContractAddressCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$_NonceAndContractAddressCopyWith<$Res>
+abstract class _$$NonceAndContractAddressImplCopyWith<$Res>
     implements $NonceAndContractAddressCopyWith<$Res> {
-  factory _$$_NonceAndContractAddressCopyWith(_$_NonceAndContractAddress value,
-          $Res Function(_$_NonceAndContractAddress) then) =
-      __$$_NonceAndContractAddressCopyWithImpl<$Res>;
+  factory _$$NonceAndContractAddressImplCopyWith(
+          _$NonceAndContractAddressImpl value,
+          $Res Function(_$NonceAndContractAddressImpl) then) =
+      __$$NonceAndContractAddressImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({Felt nonce, Felt contractAddress});
 }
 
 /// @nodoc
-class __$$_NonceAndContractAddressCopyWithImpl<$Res>
+class __$$NonceAndContractAddressImplCopyWithImpl<$Res>
     extends _$NonceAndContractAddressCopyWithImpl<$Res,
-        _$_NonceAndContractAddress>
-    implements _$$_NonceAndContractAddressCopyWith<$Res> {
-  __$$_NonceAndContractAddressCopyWithImpl(_$_NonceAndContractAddress _value,
-      $Res Function(_$_NonceAndContractAddress) _then)
+        _$NonceAndContractAddressImpl>
+    implements _$$NonceAndContractAddressImplCopyWith<$Res> {
+  __$$NonceAndContractAddressImplCopyWithImpl(
+      _$NonceAndContractAddressImpl _value,
+      $Res Function(_$NonceAndContractAddressImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -600,7 +603,7 @@ class __$$_NonceAndContractAddressCopyWithImpl<$Res>
     Object? nonce = null,
     Object? contractAddress = null,
   }) {
-    return _then(_$_NonceAndContractAddress(
+    return _then(_$NonceAndContractAddressImpl(
       nonce: null == nonce
           ? _value.nonce
           : nonce // ignore: cast_nullable_to_non_nullable
@@ -615,12 +618,12 @@ class __$$_NonceAndContractAddressCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_NonceAndContractAddress implements _NonceAndContractAddress {
-  const _$_NonceAndContractAddress(
+class _$NonceAndContractAddressImpl implements _NonceAndContractAddress {
+  const _$NonceAndContractAddressImpl(
       {required this.nonce, required this.contractAddress});
 
-  factory _$_NonceAndContractAddress.fromJson(Map<String, dynamic> json) =>
-      _$$_NonceAndContractAddressFromJson(json);
+  factory _$NonceAndContractAddressImpl.fromJson(Map<String, dynamic> json) =>
+      _$$NonceAndContractAddressImplFromJson(json);
 
   @override
   final Felt nonce;
@@ -633,10 +636,10 @@ class _$_NonceAndContractAddress implements _NonceAndContractAddress {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_NonceAndContractAddress &&
+            other is _$NonceAndContractAddressImpl &&
             (identical(other.nonce, nonce) || other.nonce == nonce) &&
             (identical(other.contractAddress, contractAddress) ||
                 other.contractAddress == contractAddress));
@@ -649,14 +652,13 @@ class _$_NonceAndContractAddress implements _NonceAndContractAddress {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_NonceAndContractAddressCopyWith<_$_NonceAndContractAddress>
-      get copyWith =>
-          __$$_NonceAndContractAddressCopyWithImpl<_$_NonceAndContractAddress>(
-              this, _$identity);
+  _$$NonceAndContractAddressImplCopyWith<_$NonceAndContractAddressImpl>
+      get copyWith => __$$NonceAndContractAddressImplCopyWithImpl<
+          _$NonceAndContractAddressImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_NonceAndContractAddressToJson(
+    return _$$NonceAndContractAddressImplToJson(
       this,
     );
   }
@@ -665,10 +667,10 @@ class _$_NonceAndContractAddress implements _NonceAndContractAddress {
 abstract class _NonceAndContractAddress implements NonceAndContractAddress {
   const factory _NonceAndContractAddress(
       {required final Felt nonce,
-      required final Felt contractAddress}) = _$_NonceAndContractAddress;
+      required final Felt contractAddress}) = _$NonceAndContractAddressImpl;
 
   factory _NonceAndContractAddress.fromJson(Map<String, dynamic> json) =
-      _$_NonceAndContractAddress.fromJson;
+      _$NonceAndContractAddressImpl.fromJson;
 
   @override
   Felt get nonce;
@@ -676,7 +678,7 @@ abstract class _NonceAndContractAddress implements NonceAndContractAddress {
   Felt get contractAddress;
   @override
   @JsonKey(ignore: true)
-  _$$_NonceAndContractAddressCopyWith<_$_NonceAndContractAddress>
+  _$$NonceAndContractAddressImplCopyWith<_$NonceAndContractAddressImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
 
@@ -734,22 +736,22 @@ class _$DeclaredClassCopyWithImpl<$Res, $Val extends DeclaredClass>
 }
 
 /// @nodoc
-abstract class _$$_DeclaredClassCopyWith<$Res>
+abstract class _$$DeclaredClassImplCopyWith<$Res>
     implements $DeclaredClassCopyWith<$Res> {
-  factory _$$_DeclaredClassCopyWith(
-          _$_DeclaredClass value, $Res Function(_$_DeclaredClass) then) =
-      __$$_DeclaredClassCopyWithImpl<$Res>;
+  factory _$$DeclaredClassImplCopyWith(
+          _$DeclaredClassImpl value, $Res Function(_$DeclaredClassImpl) then) =
+      __$$DeclaredClassImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({Felt classHash, Felt compiledClassHash});
 }
 
 /// @nodoc
-class __$$_DeclaredClassCopyWithImpl<$Res>
-    extends _$DeclaredClassCopyWithImpl<$Res, _$_DeclaredClass>
-    implements _$$_DeclaredClassCopyWith<$Res> {
-  __$$_DeclaredClassCopyWithImpl(
-      _$_DeclaredClass _value, $Res Function(_$_DeclaredClass) _then)
+class __$$DeclaredClassImplCopyWithImpl<$Res>
+    extends _$DeclaredClassCopyWithImpl<$Res, _$DeclaredClassImpl>
+    implements _$$DeclaredClassImplCopyWith<$Res> {
+  __$$DeclaredClassImplCopyWithImpl(
+      _$DeclaredClassImpl _value, $Res Function(_$DeclaredClassImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -758,7 +760,7 @@ class __$$_DeclaredClassCopyWithImpl<$Res>
     Object? classHash = null,
     Object? compiledClassHash = null,
   }) {
-    return _then(_$_DeclaredClass(
+    return _then(_$DeclaredClassImpl(
       classHash: null == classHash
           ? _value.classHash
           : classHash // ignore: cast_nullable_to_non_nullable
@@ -773,12 +775,12 @@ class __$$_DeclaredClassCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_DeclaredClass implements _DeclaredClass {
-  const _$_DeclaredClass(
+class _$DeclaredClassImpl implements _DeclaredClass {
+  const _$DeclaredClassImpl(
       {required this.classHash, required this.compiledClassHash});
 
-  factory _$_DeclaredClass.fromJson(Map<String, dynamic> json) =>
-      _$$_DeclaredClassFromJson(json);
+  factory _$DeclaredClassImpl.fromJson(Map<String, dynamic> json) =>
+      _$$DeclaredClassImplFromJson(json);
 
   @override
   final Felt classHash;
@@ -791,10 +793,10 @@ class _$_DeclaredClass implements _DeclaredClass {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_DeclaredClass &&
+            other is _$DeclaredClassImpl &&
             (identical(other.classHash, classHash) ||
                 other.classHash == classHash) &&
             (identical(other.compiledClassHash, compiledClassHash) ||
@@ -808,12 +810,12 @@ class _$_DeclaredClass implements _DeclaredClass {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_DeclaredClassCopyWith<_$_DeclaredClass> get copyWith =>
-      __$$_DeclaredClassCopyWithImpl<_$_DeclaredClass>(this, _$identity);
+  _$$DeclaredClassImplCopyWith<_$DeclaredClassImpl> get copyWith =>
+      __$$DeclaredClassImplCopyWithImpl<_$DeclaredClassImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_DeclaredClassToJson(
+    return _$$DeclaredClassImplToJson(
       this,
     );
   }
@@ -822,10 +824,10 @@ class _$_DeclaredClass implements _DeclaredClass {
 abstract class _DeclaredClass implements DeclaredClass {
   const factory _DeclaredClass(
       {required final Felt classHash,
-      required final Felt compiledClassHash}) = _$_DeclaredClass;
+      required final Felt compiledClassHash}) = _$DeclaredClassImpl;
 
   factory _DeclaredClass.fromJson(Map<String, dynamic> json) =
-      _$_DeclaredClass.fromJson;
+      _$DeclaredClassImpl.fromJson;
 
   @override
   Felt get classHash;
@@ -833,7 +835,7 @@ abstract class _DeclaredClass implements DeclaredClass {
   Felt get compiledClassHash;
   @override
   @JsonKey(ignore: true)
-  _$$_DeclaredClassCopyWith<_$_DeclaredClass> get copyWith =>
+  _$$DeclaredClassImplCopyWith<_$DeclaredClassImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -891,22 +893,22 @@ class _$ReplacedClassCopyWithImpl<$Res, $Val extends ReplacedClass>
 }
 
 /// @nodoc
-abstract class _$$_ReplacedClassCopyWith<$Res>
+abstract class _$$ReplacedClassImplCopyWith<$Res>
     implements $ReplacedClassCopyWith<$Res> {
-  factory _$$_ReplacedClassCopyWith(
-          _$_ReplacedClass value, $Res Function(_$_ReplacedClass) then) =
-      __$$_ReplacedClassCopyWithImpl<$Res>;
+  factory _$$ReplacedClassImplCopyWith(
+          _$ReplacedClassImpl value, $Res Function(_$ReplacedClassImpl) then) =
+      __$$ReplacedClassImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({Felt contractAddress, Felt classHash});
 }
 
 /// @nodoc
-class __$$_ReplacedClassCopyWithImpl<$Res>
-    extends _$ReplacedClassCopyWithImpl<$Res, _$_ReplacedClass>
-    implements _$$_ReplacedClassCopyWith<$Res> {
-  __$$_ReplacedClassCopyWithImpl(
-      _$_ReplacedClass _value, $Res Function(_$_ReplacedClass) _then)
+class __$$ReplacedClassImplCopyWithImpl<$Res>
+    extends _$ReplacedClassCopyWithImpl<$Res, _$ReplacedClassImpl>
+    implements _$$ReplacedClassImplCopyWith<$Res> {
+  __$$ReplacedClassImplCopyWithImpl(
+      _$ReplacedClassImpl _value, $Res Function(_$ReplacedClassImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -915,7 +917,7 @@ class __$$_ReplacedClassCopyWithImpl<$Res>
     Object? contractAddress = null,
     Object? classHash = null,
   }) {
-    return _then(_$_ReplacedClass(
+    return _then(_$ReplacedClassImpl(
       contractAddress: null == contractAddress
           ? _value.contractAddress
           : contractAddress // ignore: cast_nullable_to_non_nullable
@@ -930,12 +932,12 @@ class __$$_ReplacedClassCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_ReplacedClass implements _ReplacedClass {
-  const _$_ReplacedClass(
+class _$ReplacedClassImpl implements _ReplacedClass {
+  const _$ReplacedClassImpl(
       {required this.contractAddress, required this.classHash});
 
-  factory _$_ReplacedClass.fromJson(Map<String, dynamic> json) =>
-      _$$_ReplacedClassFromJson(json);
+  factory _$ReplacedClassImpl.fromJson(Map<String, dynamic> json) =>
+      _$$ReplacedClassImplFromJson(json);
 
   @override
   final Felt contractAddress;
@@ -948,10 +950,10 @@ class _$_ReplacedClass implements _ReplacedClass {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_ReplacedClass &&
+            other is _$ReplacedClassImpl &&
             (identical(other.contractAddress, contractAddress) ||
                 other.contractAddress == contractAddress) &&
             (identical(other.classHash, classHash) ||
@@ -965,12 +967,12 @@ class _$_ReplacedClass implements _ReplacedClass {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ReplacedClassCopyWith<_$_ReplacedClass> get copyWith =>
-      __$$_ReplacedClassCopyWithImpl<_$_ReplacedClass>(this, _$identity);
+  _$$ReplacedClassImplCopyWith<_$ReplacedClassImpl> get copyWith =>
+      __$$ReplacedClassImplCopyWithImpl<_$ReplacedClassImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_ReplacedClassToJson(
+    return _$$ReplacedClassImplToJson(
       this,
     );
   }
@@ -979,10 +981,10 @@ class _$_ReplacedClass implements _ReplacedClass {
 abstract class _ReplacedClass implements ReplacedClass {
   const factory _ReplacedClass(
       {required final Felt contractAddress,
-      required final Felt classHash}) = _$_ReplacedClass;
+      required final Felt classHash}) = _$ReplacedClassImpl;
 
   factory _ReplacedClass.fromJson(Map<String, dynamic> json) =
-      _$_ReplacedClass.fromJson;
+      _$ReplacedClassImpl.fromJson;
 
   @override
   Felt get contractAddress;
@@ -990,6 +992,6 @@ abstract class _ReplacedClass implements ReplacedClass {
   Felt get classHash;
   @override
   @JsonKey(ignore: true)
-  _$$_ReplacedClassCopyWith<_$_ReplacedClass> get copyWith =>
+  _$$ReplacedClassImplCopyWith<_$ReplacedClassImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

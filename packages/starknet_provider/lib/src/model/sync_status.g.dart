@@ -6,8 +6,8 @@ part of 'sync_status.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_SyncStatus _$$_SyncStatusFromJson(Map<String, dynamic> json) =>
-    _$_SyncStatus(
+_$SyncStatusImpl _$$SyncStatusImplFromJson(Map<String, dynamic> json) =>
+    _$SyncStatusImpl(
       startingBlockHash: Felt.fromJson(json['starting_block_hash'] as String),
       startingBlockNum: json['starting_block_num'] as String,
       currentBlockHash: Felt.fromJson(json['current_block_hash'] as String),
@@ -16,7 +16,7 @@ _$_SyncStatus _$$_SyncStatusFromJson(Map<String, dynamic> json) =>
       highestBlockNum: json['highest_block_num'] as String,
     );
 
-Map<String, dynamic> _$$_SyncStatusToJson(_$_SyncStatus instance) =>
+Map<String, dynamic> _$$SyncStatusImplToJson(_$SyncStatusImpl instance) =>
     <String, dynamic>{
       'starting_block_hash': instance.startingBlockHash.toJson(),
       'starting_block_num': instance.startingBlockNum,

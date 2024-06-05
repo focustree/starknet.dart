@@ -6,13 +6,15 @@ part of 'json_rpc_api_error.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_JsonRpcApiError _$$_JsonRpcApiErrorFromJson(Map<String, dynamic> json) =>
-    _$_JsonRpcApiError(
+_$JsonRpcApiErrorImpl _$$JsonRpcApiErrorImplFromJson(
+        Map<String, dynamic> json) =>
+    _$JsonRpcApiErrorImpl(
       code: $enumDecode(_$JsonRpcApiErrorCodeEnumMap, json['code']),
       message: json['message'] as String,
     );
 
-Map<String, dynamic> _$$_JsonRpcApiErrorToJson(_$_JsonRpcApiError instance) =>
+Map<String, dynamic> _$$JsonRpcApiErrorImplToJson(
+        _$JsonRpcApiErrorImpl instance) =>
     <String, dynamic>{
       'code': _$JsonRpcApiErrorCodeEnumMap[instance.code]!,
       'message': instance.message,

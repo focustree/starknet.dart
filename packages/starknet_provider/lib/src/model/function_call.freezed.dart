@@ -12,7 +12,7 @@ part of 'function_call.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 FunctionCall _$FunctionCallFromJson(Map<String, dynamic> json) {
   return _FunctionCall.fromJson(json);
@@ -75,11 +75,11 @@ class _$FunctionCallCopyWithImpl<$Res, $Val extends FunctionCall>
 }
 
 /// @nodoc
-abstract class _$$_FunctionCallCopyWith<$Res>
+abstract class _$$FunctionCallImplCopyWith<$Res>
     implements $FunctionCallCopyWith<$Res> {
-  factory _$$_FunctionCallCopyWith(
-          _$_FunctionCall value, $Res Function(_$_FunctionCall) then) =
-      __$$_FunctionCallCopyWithImpl<$Res>;
+  factory _$$FunctionCallImplCopyWith(
+          _$FunctionCallImpl value, $Res Function(_$FunctionCallImpl) then) =
+      __$$FunctionCallImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -87,11 +87,11 @@ abstract class _$$_FunctionCallCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_FunctionCallCopyWithImpl<$Res>
-    extends _$FunctionCallCopyWithImpl<$Res, _$_FunctionCall>
-    implements _$$_FunctionCallCopyWith<$Res> {
-  __$$_FunctionCallCopyWithImpl(
-      _$_FunctionCall _value, $Res Function(_$_FunctionCall) _then)
+class __$$FunctionCallImplCopyWithImpl<$Res>
+    extends _$FunctionCallCopyWithImpl<$Res, _$FunctionCallImpl>
+    implements _$$FunctionCallImplCopyWith<$Res> {
+  __$$FunctionCallImplCopyWithImpl(
+      _$FunctionCallImpl _value, $Res Function(_$FunctionCallImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -101,7 +101,7 @@ class __$$_FunctionCallCopyWithImpl<$Res>
     Object? entryPointSelector = null,
     Object? calldata = null,
   }) {
-    return _then(_$_FunctionCall(
+    return _then(_$FunctionCallImpl(
       contractAddress: null == contractAddress
           ? _value.contractAddress
           : contractAddress // ignore: cast_nullable_to_non_nullable
@@ -120,15 +120,15 @@ class __$$_FunctionCallCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_FunctionCall implements _FunctionCall {
-  const _$_FunctionCall(
+class _$FunctionCallImpl implements _FunctionCall {
+  const _$FunctionCallImpl(
       {required this.contractAddress,
       required this.entryPointSelector,
       required final List<Felt> calldata})
       : _calldata = calldata;
 
-  factory _$_FunctionCall.fromJson(Map<String, dynamic> json) =>
-      _$$_FunctionCallFromJson(json);
+  factory _$FunctionCallImpl.fromJson(Map<String, dynamic> json) =>
+      _$$FunctionCallImplFromJson(json);
 
   @override
   final Felt contractAddress;
@@ -148,10 +148,10 @@ class _$_FunctionCall implements _FunctionCall {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_FunctionCall &&
+            other is _$FunctionCallImpl &&
             (identical(other.contractAddress, contractAddress) ||
                 other.contractAddress == contractAddress) &&
             (identical(other.entryPointSelector, entryPointSelector) ||
@@ -167,12 +167,12 @@ class _$_FunctionCall implements _FunctionCall {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_FunctionCallCopyWith<_$_FunctionCall> get copyWith =>
-      __$$_FunctionCallCopyWithImpl<_$_FunctionCall>(this, _$identity);
+  _$$FunctionCallImplCopyWith<_$FunctionCallImpl> get copyWith =>
+      __$$FunctionCallImplCopyWithImpl<_$FunctionCallImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_FunctionCallToJson(
+    return _$$FunctionCallImplToJson(
       this,
     );
   }
@@ -182,10 +182,10 @@ abstract class _FunctionCall implements FunctionCall {
   const factory _FunctionCall(
       {required final Felt contractAddress,
       required final Felt entryPointSelector,
-      required final List<Felt> calldata}) = _$_FunctionCall;
+      required final List<Felt> calldata}) = _$FunctionCallImpl;
 
   factory _FunctionCall.fromJson(Map<String, dynamic> json) =
-      _$_FunctionCall.fromJson;
+      _$FunctionCallImpl.fromJson;
 
   @override
   Felt get contractAddress;
@@ -195,6 +195,6 @@ abstract class _FunctionCall implements FunctionCall {
   List<Felt> get calldata;
   @override
   @JsonKey(ignore: true)
-  _$$_FunctionCallCopyWith<_$_FunctionCall> get copyWith =>
+  _$$FunctionCallImplCopyWith<_$FunctionCallImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

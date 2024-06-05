@@ -6,14 +6,14 @@ part of 'fee_estimate.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_FeeEstimate _$$_FeeEstimateFromJson(Map<String, dynamic> json) =>
-    _$_FeeEstimate(
+_$FeeEstimateImpl _$$FeeEstimateImplFromJson(Map<String, dynamic> json) =>
+    _$FeeEstimateImpl(
       gasConsumed: json['gas_consumed'] as String,
       gasPrice: json['gas_price'] as String,
       overallFee: json['overall_fee'] as String,
     );
 
-Map<String, dynamic> _$$_FeeEstimateToJson(_$_FeeEstimate instance) =>
+Map<String, dynamic> _$$FeeEstimateImplToJson(_$FeeEstimateImpl instance) =>
     <String, dynamic>{
       'gas_consumed': instance.gasConsumed,
       'gas_price': instance.gasPrice,

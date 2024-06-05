@@ -12,7 +12,7 @@ part of 'block_id.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 BlockId _$BlockIdFromJson(Map<String, dynamic> json) {
   switch (json['starkNetRuntimeTypeToRemove']) {
@@ -98,20 +98,20 @@ class _$BlockIdCopyWithImpl<$Res, $Val extends BlockId>
 }
 
 /// @nodoc
-abstract class _$$BlockIdHashCopyWith<$Res> {
-  factory _$$BlockIdHashCopyWith(
-          _$BlockIdHash value, $Res Function(_$BlockIdHash) then) =
-      __$$BlockIdHashCopyWithImpl<$Res>;
+abstract class _$$BlockIdHashImplCopyWith<$Res> {
+  factory _$$BlockIdHashImplCopyWith(
+          _$BlockIdHashImpl value, $Res Function(_$BlockIdHashImpl) then) =
+      __$$BlockIdHashImplCopyWithImpl<$Res>;
   @useResult
   $Res call({Felt blockHash});
 }
 
 /// @nodoc
-class __$$BlockIdHashCopyWithImpl<$Res>
-    extends _$BlockIdCopyWithImpl<$Res, _$BlockIdHash>
-    implements _$$BlockIdHashCopyWith<$Res> {
-  __$$BlockIdHashCopyWithImpl(
-      _$BlockIdHash _value, $Res Function(_$BlockIdHash) _then)
+class __$$BlockIdHashImplCopyWithImpl<$Res>
+    extends _$BlockIdCopyWithImpl<$Res, _$BlockIdHashImpl>
+    implements _$$BlockIdHashImplCopyWith<$Res> {
+  __$$BlockIdHashImplCopyWithImpl(
+      _$BlockIdHashImpl _value, $Res Function(_$BlockIdHashImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -119,7 +119,7 @@ class __$$BlockIdHashCopyWithImpl<$Res>
   $Res call({
     Object? blockHash = null,
   }) {
-    return _then(_$BlockIdHash(
+    return _then(_$BlockIdHashImpl(
       null == blockHash
           ? _value.blockHash
           : blockHash // ignore: cast_nullable_to_non_nullable
@@ -130,13 +130,13 @@ class __$$BlockIdHashCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable(createToJson: false)
-class _$BlockIdHash extends BlockIdHash {
-  const _$BlockIdHash(this.blockHash, {final String? $type})
+class _$BlockIdHashImpl extends BlockIdHash {
+  const _$BlockIdHashImpl(this.blockHash, {final String? $type})
       : $type = $type ?? 'blockHash',
         super._();
 
-  factory _$BlockIdHash.fromJson(Map<String, dynamic> json) =>
-      _$$BlockIdHashFromJson(json);
+  factory _$BlockIdHashImpl.fromJson(Map<String, dynamic> json) =>
+      _$$BlockIdHashImplFromJson(json);
 
   @override
   final Felt blockHash;
@@ -150,10 +150,10 @@ class _$BlockIdHash extends BlockIdHash {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$BlockIdHash &&
+            other is _$BlockIdHashImpl &&
             (identical(other.blockHash, blockHash) ||
                 other.blockHash == blockHash));
   }
@@ -165,8 +165,8 @@ class _$BlockIdHash extends BlockIdHash {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$BlockIdHashCopyWith<_$BlockIdHash> get copyWith =>
-      __$$BlockIdHashCopyWithImpl<_$BlockIdHash>(this, _$identity);
+  _$$BlockIdHashImplCopyWith<_$BlockIdHashImpl> get copyWith =>
+      __$$BlockIdHashImplCopyWithImpl<_$BlockIdHashImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -238,33 +238,33 @@ class _$BlockIdHash extends BlockIdHash {
 }
 
 abstract class BlockIdHash extends BlockId {
-  const factory BlockIdHash(final Felt blockHash) = _$BlockIdHash;
+  const factory BlockIdHash(final Felt blockHash) = _$BlockIdHashImpl;
   const BlockIdHash._() : super._();
 
   factory BlockIdHash.fromJson(Map<String, dynamic> json) =
-      _$BlockIdHash.fromJson;
+      _$BlockIdHashImpl.fromJson;
 
   Felt get blockHash;
   @JsonKey(ignore: true)
-  _$$BlockIdHashCopyWith<_$BlockIdHash> get copyWith =>
+  _$$BlockIdHashImplCopyWith<_$BlockIdHashImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$BlockIdNumberCopyWith<$Res> {
-  factory _$$BlockIdNumberCopyWith(
-          _$BlockIdNumber value, $Res Function(_$BlockIdNumber) then) =
-      __$$BlockIdNumberCopyWithImpl<$Res>;
+abstract class _$$BlockIdNumberImplCopyWith<$Res> {
+  factory _$$BlockIdNumberImplCopyWith(
+          _$BlockIdNumberImpl value, $Res Function(_$BlockIdNumberImpl) then) =
+      __$$BlockIdNumberImplCopyWithImpl<$Res>;
   @useResult
   $Res call({int blockNumber});
 }
 
 /// @nodoc
-class __$$BlockIdNumberCopyWithImpl<$Res>
-    extends _$BlockIdCopyWithImpl<$Res, _$BlockIdNumber>
-    implements _$$BlockIdNumberCopyWith<$Res> {
-  __$$BlockIdNumberCopyWithImpl(
-      _$BlockIdNumber _value, $Res Function(_$BlockIdNumber) _then)
+class __$$BlockIdNumberImplCopyWithImpl<$Res>
+    extends _$BlockIdCopyWithImpl<$Res, _$BlockIdNumberImpl>
+    implements _$$BlockIdNumberImplCopyWith<$Res> {
+  __$$BlockIdNumberImplCopyWithImpl(
+      _$BlockIdNumberImpl _value, $Res Function(_$BlockIdNumberImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -272,7 +272,7 @@ class __$$BlockIdNumberCopyWithImpl<$Res>
   $Res call({
     Object? blockNumber = null,
   }) {
-    return _then(_$BlockIdNumber(
+    return _then(_$BlockIdNumberImpl(
       null == blockNumber
           ? _value.blockNumber
           : blockNumber // ignore: cast_nullable_to_non_nullable
@@ -283,13 +283,13 @@ class __$$BlockIdNumberCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable(createToJson: false)
-class _$BlockIdNumber extends BlockIdNumber {
-  const _$BlockIdNumber(this.blockNumber, {final String? $type})
+class _$BlockIdNumberImpl extends BlockIdNumber {
+  const _$BlockIdNumberImpl(this.blockNumber, {final String? $type})
       : $type = $type ?? 'blockNumber',
         super._();
 
-  factory _$BlockIdNumber.fromJson(Map<String, dynamic> json) =>
-      _$$BlockIdNumberFromJson(json);
+  factory _$BlockIdNumberImpl.fromJson(Map<String, dynamic> json) =>
+      _$$BlockIdNumberImplFromJson(json);
 
   @override
   final int blockNumber;
@@ -303,10 +303,10 @@ class _$BlockIdNumber extends BlockIdNumber {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$BlockIdNumber &&
+            other is _$BlockIdNumberImpl &&
             (identical(other.blockNumber, blockNumber) ||
                 other.blockNumber == blockNumber));
   }
@@ -318,8 +318,8 @@ class _$BlockIdNumber extends BlockIdNumber {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$BlockIdNumberCopyWith<_$BlockIdNumber> get copyWith =>
-      __$$BlockIdNumberCopyWithImpl<_$BlockIdNumber>(this, _$identity);
+  _$$BlockIdNumberImplCopyWith<_$BlockIdNumberImpl> get copyWith =>
+      __$$BlockIdNumberImplCopyWithImpl<_$BlockIdNumberImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -391,33 +391,33 @@ class _$BlockIdNumber extends BlockIdNumber {
 }
 
 abstract class BlockIdNumber extends BlockId {
-  const factory BlockIdNumber(final int blockNumber) = _$BlockIdNumber;
+  const factory BlockIdNumber(final int blockNumber) = _$BlockIdNumberImpl;
   const BlockIdNumber._() : super._();
 
   factory BlockIdNumber.fromJson(Map<String, dynamic> json) =
-      _$BlockIdNumber.fromJson;
+      _$BlockIdNumberImpl.fromJson;
 
   int get blockNumber;
   @JsonKey(ignore: true)
-  _$$BlockIdNumberCopyWith<_$BlockIdNumber> get copyWith =>
+  _$$BlockIdNumberImplCopyWith<_$BlockIdNumberImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$BlockIdTagCopyWith<$Res> {
-  factory _$$BlockIdTagCopyWith(
-          _$BlockIdTag value, $Res Function(_$BlockIdTag) then) =
-      __$$BlockIdTagCopyWithImpl<$Res>;
+abstract class _$$BlockIdTagImplCopyWith<$Res> {
+  factory _$$BlockIdTagImplCopyWith(
+          _$BlockIdTagImpl value, $Res Function(_$BlockIdTagImpl) then) =
+      __$$BlockIdTagImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String blockTag});
 }
 
 /// @nodoc
-class __$$BlockIdTagCopyWithImpl<$Res>
-    extends _$BlockIdCopyWithImpl<$Res, _$BlockIdTag>
-    implements _$$BlockIdTagCopyWith<$Res> {
-  __$$BlockIdTagCopyWithImpl(
-      _$BlockIdTag _value, $Res Function(_$BlockIdTag) _then)
+class __$$BlockIdTagImplCopyWithImpl<$Res>
+    extends _$BlockIdCopyWithImpl<$Res, _$BlockIdTagImpl>
+    implements _$$BlockIdTagImplCopyWith<$Res> {
+  __$$BlockIdTagImplCopyWithImpl(
+      _$BlockIdTagImpl _value, $Res Function(_$BlockIdTagImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -425,7 +425,7 @@ class __$$BlockIdTagCopyWithImpl<$Res>
   $Res call({
     Object? blockTag = null,
   }) {
-    return _then(_$BlockIdTag(
+    return _then(_$BlockIdTagImpl(
       null == blockTag
           ? _value.blockTag
           : blockTag // ignore: cast_nullable_to_non_nullable
@@ -436,13 +436,13 @@ class __$$BlockIdTagCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable(createToJson: false)
-class _$BlockIdTag extends BlockIdTag {
-  const _$BlockIdTag(this.blockTag, {final String? $type})
+class _$BlockIdTagImpl extends BlockIdTag {
+  const _$BlockIdTagImpl(this.blockTag, {final String? $type})
       : $type = $type ?? 'blockTag',
         super._();
 
-  factory _$BlockIdTag.fromJson(Map<String, dynamic> json) =>
-      _$$BlockIdTagFromJson(json);
+  factory _$BlockIdTagImpl.fromJson(Map<String, dynamic> json) =>
+      _$$BlockIdTagImplFromJson(json);
 
   @override
   final String blockTag;
@@ -456,10 +456,10 @@ class _$BlockIdTag extends BlockIdTag {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$BlockIdTag &&
+            other is _$BlockIdTagImpl &&
             (identical(other.blockTag, blockTag) ||
                 other.blockTag == blockTag));
   }
@@ -471,8 +471,8 @@ class _$BlockIdTag extends BlockIdTag {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$BlockIdTagCopyWith<_$BlockIdTag> get copyWith =>
-      __$$BlockIdTagCopyWithImpl<_$BlockIdTag>(this, _$identity);
+  _$$BlockIdTagImplCopyWith<_$BlockIdTagImpl> get copyWith =>
+      __$$BlockIdTagImplCopyWithImpl<_$BlockIdTagImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -544,14 +544,14 @@ class _$BlockIdTag extends BlockIdTag {
 }
 
 abstract class BlockIdTag extends BlockId {
-  const factory BlockIdTag(final String blockTag) = _$BlockIdTag;
+  const factory BlockIdTag(final String blockTag) = _$BlockIdTagImpl;
   const BlockIdTag._() : super._();
 
   factory BlockIdTag.fromJson(Map<String, dynamic> json) =
-      _$BlockIdTag.fromJson;
+      _$BlockIdTagImpl.fromJson;
 
   String get blockTag;
   @JsonKey(ignore: true)
-  _$$BlockIdTagCopyWith<_$BlockIdTag> get copyWith =>
+  _$$BlockIdTagImplCopyWith<_$BlockIdTagImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

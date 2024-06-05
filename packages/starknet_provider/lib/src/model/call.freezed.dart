@@ -12,7 +12,7 @@ part of 'call.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 Call _$CallFromJson(Map<String, dynamic> json) {
   switch (json['starkNetRuntimeTypeToRemove']) {
@@ -91,20 +91,20 @@ class _$CallCopyWithImpl<$Res, $Val extends Call>
 }
 
 /// @nodoc
-abstract class _$$CallResultCopyWith<$Res> {
-  factory _$$CallResultCopyWith(
-          _$CallResult value, $Res Function(_$CallResult) then) =
-      __$$CallResultCopyWithImpl<$Res>;
+abstract class _$$CallResultImplCopyWith<$Res> {
+  factory _$$CallResultImplCopyWith(
+          _$CallResultImpl value, $Res Function(_$CallResultImpl) then) =
+      __$$CallResultImplCopyWithImpl<$Res>;
   @useResult
   $Res call({List<Felt> result});
 }
 
 /// @nodoc
-class __$$CallResultCopyWithImpl<$Res>
-    extends _$CallCopyWithImpl<$Res, _$CallResult>
-    implements _$$CallResultCopyWith<$Res> {
-  __$$CallResultCopyWithImpl(
-      _$CallResult _value, $Res Function(_$CallResult) _then)
+class __$$CallResultImplCopyWithImpl<$Res>
+    extends _$CallCopyWithImpl<$Res, _$CallResultImpl>
+    implements _$$CallResultImplCopyWith<$Res> {
+  __$$CallResultImplCopyWithImpl(
+      _$CallResultImpl _value, $Res Function(_$CallResultImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -112,7 +112,7 @@ class __$$CallResultCopyWithImpl<$Res>
   $Res call({
     Object? result = null,
   }) {
-    return _then(_$CallResult(
+    return _then(_$CallResultImpl(
       result: null == result
           ? _value._result
           : result // ignore: cast_nullable_to_non_nullable
@@ -123,13 +123,14 @@ class __$$CallResultCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$CallResult implements CallResult {
-  const _$CallResult({required final List<Felt> result, final String? $type})
+class _$CallResultImpl implements CallResult {
+  const _$CallResultImpl(
+      {required final List<Felt> result, final String? $type})
       : _result = result,
         $type = $type ?? 'result';
 
-  factory _$CallResult.fromJson(Map<String, dynamic> json) =>
-      _$$CallResultFromJson(json);
+  factory _$CallResultImpl.fromJson(Map<String, dynamic> json) =>
+      _$$CallResultImplFromJson(json);
 
   final List<Felt> _result;
   @override
@@ -148,10 +149,10 @@ class _$CallResult implements CallResult {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$CallResult &&
+            other is _$CallResultImpl &&
             const DeepCollectionEquality().equals(other._result, _result));
   }
 
@@ -163,8 +164,8 @@ class _$CallResult implements CallResult {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$CallResultCopyWith<_$CallResult> get copyWith =>
-      __$$CallResultCopyWithImpl<_$CallResult>(this, _$identity);
+  _$$CallResultImplCopyWith<_$CallResultImpl> get copyWith =>
+      __$$CallResultImplCopyWithImpl<_$CallResultImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -230,29 +231,30 @@ class _$CallResult implements CallResult {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$CallResultToJson(
+    return _$$CallResultImplToJson(
       this,
     );
   }
 }
 
 abstract class CallResult implements Call {
-  const factory CallResult({required final List<Felt> result}) = _$CallResult;
+  const factory CallResult({required final List<Felt> result}) =
+      _$CallResultImpl;
 
   factory CallResult.fromJson(Map<String, dynamic> json) =
-      _$CallResult.fromJson;
+      _$CallResultImpl.fromJson;
 
   List<Felt> get result;
   @JsonKey(ignore: true)
-  _$$CallResultCopyWith<_$CallResult> get copyWith =>
+  _$$CallResultImplCopyWith<_$CallResultImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$CallErrorCopyWith<$Res> {
-  factory _$$CallErrorCopyWith(
-          _$CallError value, $Res Function(_$CallError) then) =
-      __$$CallErrorCopyWithImpl<$Res>;
+abstract class _$$CallErrorImplCopyWith<$Res> {
+  factory _$$CallErrorImplCopyWith(
+          _$CallErrorImpl value, $Res Function(_$CallErrorImpl) then) =
+      __$$CallErrorImplCopyWithImpl<$Res>;
   @useResult
   $Res call({JsonRpcApiError error});
 
@@ -260,11 +262,11 @@ abstract class _$$CallErrorCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$CallErrorCopyWithImpl<$Res>
-    extends _$CallCopyWithImpl<$Res, _$CallError>
-    implements _$$CallErrorCopyWith<$Res> {
-  __$$CallErrorCopyWithImpl(
-      _$CallError _value, $Res Function(_$CallError) _then)
+class __$$CallErrorImplCopyWithImpl<$Res>
+    extends _$CallCopyWithImpl<$Res, _$CallErrorImpl>
+    implements _$$CallErrorImplCopyWith<$Res> {
+  __$$CallErrorImplCopyWithImpl(
+      _$CallErrorImpl _value, $Res Function(_$CallErrorImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -272,7 +274,7 @@ class __$$CallErrorCopyWithImpl<$Res>
   $Res call({
     Object? error = null,
   }) {
-    return _then(_$CallError(
+    return _then(_$CallErrorImpl(
       error: null == error
           ? _value.error
           : error // ignore: cast_nullable_to_non_nullable
@@ -291,12 +293,12 @@ class __$$CallErrorCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$CallError implements CallError {
-  const _$CallError({required this.error, final String? $type})
+class _$CallErrorImpl implements CallError {
+  const _$CallErrorImpl({required this.error, final String? $type})
       : $type = $type ?? 'error';
 
-  factory _$CallError.fromJson(Map<String, dynamic> json) =>
-      _$$CallErrorFromJson(json);
+  factory _$CallErrorImpl.fromJson(Map<String, dynamic> json) =>
+      _$$CallErrorImplFromJson(json);
 
   @override
   final JsonRpcApiError error;
@@ -310,10 +312,10 @@ class _$CallError implements CallError {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$CallError &&
+            other is _$CallErrorImpl &&
             (identical(other.error, error) || other.error == error));
   }
 
@@ -324,8 +326,8 @@ class _$CallError implements CallError {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$CallErrorCopyWith<_$CallError> get copyWith =>
-      __$$CallErrorCopyWithImpl<_$CallError>(this, _$identity);
+  _$$CallErrorImplCopyWith<_$CallErrorImpl> get copyWith =>
+      __$$CallErrorImplCopyWithImpl<_$CallErrorImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -391,19 +393,21 @@ class _$CallError implements CallError {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$CallErrorToJson(
+    return _$$CallErrorImplToJson(
       this,
     );
   }
 }
 
 abstract class CallError implements Call {
-  const factory CallError({required final JsonRpcApiError error}) = _$CallError;
+  const factory CallError({required final JsonRpcApiError error}) =
+      _$CallErrorImpl;
 
-  factory CallError.fromJson(Map<String, dynamic> json) = _$CallError.fromJson;
+  factory CallError.fromJson(Map<String, dynamic> json) =
+      _$CallErrorImpl.fromJson;
 
   JsonRpcApiError get error;
   @JsonKey(ignore: true)
-  _$$CallErrorCopyWith<_$CallError> get copyWith =>
+  _$$CallErrorImplCopyWith<_$CallErrorImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

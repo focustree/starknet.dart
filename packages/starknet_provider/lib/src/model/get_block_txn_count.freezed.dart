@@ -12,7 +12,7 @@ part of 'get_block_txn_count.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 GetBlockTxnCount _$GetBlockTxnCountFromJson(Map<String, dynamic> json) {
   switch (json['starkNetRuntimeTypeToRemove']) {
@@ -92,20 +92,20 @@ class _$GetBlockTxnCountCopyWithImpl<$Res, $Val extends GetBlockTxnCount>
 }
 
 /// @nodoc
-abstract class _$$BlockTxnCountResultCopyWith<$Res> {
-  factory _$$BlockTxnCountResultCopyWith(_$BlockTxnCountResult value,
-          $Res Function(_$BlockTxnCountResult) then) =
-      __$$BlockTxnCountResultCopyWithImpl<$Res>;
+abstract class _$$BlockTxnCountResultImplCopyWith<$Res> {
+  factory _$$BlockTxnCountResultImplCopyWith(_$BlockTxnCountResultImpl value,
+          $Res Function(_$BlockTxnCountResultImpl) then) =
+      __$$BlockTxnCountResultImplCopyWithImpl<$Res>;
   @useResult
   $Res call({int result});
 }
 
 /// @nodoc
-class __$$BlockTxnCountResultCopyWithImpl<$Res>
-    extends _$GetBlockTxnCountCopyWithImpl<$Res, _$BlockTxnCountResult>
-    implements _$$BlockTxnCountResultCopyWith<$Res> {
-  __$$BlockTxnCountResultCopyWithImpl(
-      _$BlockTxnCountResult _value, $Res Function(_$BlockTxnCountResult) _then)
+class __$$BlockTxnCountResultImplCopyWithImpl<$Res>
+    extends _$GetBlockTxnCountCopyWithImpl<$Res, _$BlockTxnCountResultImpl>
+    implements _$$BlockTxnCountResultImplCopyWith<$Res> {
+  __$$BlockTxnCountResultImplCopyWithImpl(_$BlockTxnCountResultImpl _value,
+      $Res Function(_$BlockTxnCountResultImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -113,7 +113,7 @@ class __$$BlockTxnCountResultCopyWithImpl<$Res>
   $Res call({
     Object? result = null,
   }) {
-    return _then(_$BlockTxnCountResult(
+    return _then(_$BlockTxnCountResultImpl(
       result: null == result
           ? _value.result
           : result // ignore: cast_nullable_to_non_nullable
@@ -124,12 +124,12 @@ class __$$BlockTxnCountResultCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$BlockTxnCountResult implements BlockTxnCountResult {
-  const _$BlockTxnCountResult({required this.result, final String? $type})
+class _$BlockTxnCountResultImpl implements BlockTxnCountResult {
+  const _$BlockTxnCountResultImpl({required this.result, final String? $type})
       : $type = $type ?? 'result';
 
-  factory _$BlockTxnCountResult.fromJson(Map<String, dynamic> json) =>
-      _$$BlockTxnCountResultFromJson(json);
+  factory _$BlockTxnCountResultImpl.fromJson(Map<String, dynamic> json) =>
+      _$$BlockTxnCountResultImplFromJson(json);
 
   @override
   final int result;
@@ -143,10 +143,10 @@ class _$BlockTxnCountResult implements BlockTxnCountResult {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$BlockTxnCountResult &&
+            other is _$BlockTxnCountResultImpl &&
             (identical(other.result, result) || other.result == result));
   }
 
@@ -157,8 +157,8 @@ class _$BlockTxnCountResult implements BlockTxnCountResult {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$BlockTxnCountResultCopyWith<_$BlockTxnCountResult> get copyWith =>
-      __$$BlockTxnCountResultCopyWithImpl<_$BlockTxnCountResult>(
+  _$$BlockTxnCountResultImplCopyWith<_$BlockTxnCountResultImpl> get copyWith =>
+      __$$BlockTxnCountResultImplCopyWithImpl<_$BlockTxnCountResultImpl>(
           this, _$identity);
 
   @override
@@ -225,7 +225,7 @@ class _$BlockTxnCountResult implements BlockTxnCountResult {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$BlockTxnCountResultToJson(
+    return _$$BlockTxnCountResultImplToJson(
       this,
     );
   }
@@ -233,22 +233,23 @@ class _$BlockTxnCountResult implements BlockTxnCountResult {
 
 abstract class BlockTxnCountResult implements GetBlockTxnCount {
   const factory BlockTxnCountResult({required final int result}) =
-      _$BlockTxnCountResult;
+      _$BlockTxnCountResultImpl;
 
   factory BlockTxnCountResult.fromJson(Map<String, dynamic> json) =
-      _$BlockTxnCountResult.fromJson;
+      _$BlockTxnCountResultImpl.fromJson;
 
   int get result;
   @JsonKey(ignore: true)
-  _$$BlockTxnCountResultCopyWith<_$BlockTxnCountResult> get copyWith =>
+  _$$BlockTxnCountResultImplCopyWith<_$BlockTxnCountResultImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$GetBlockTxnCountErrorCopyWith<$Res> {
-  factory _$$GetBlockTxnCountErrorCopyWith(_$GetBlockTxnCountError value,
-          $Res Function(_$GetBlockTxnCountError) then) =
-      __$$GetBlockTxnCountErrorCopyWithImpl<$Res>;
+abstract class _$$GetBlockTxnCountErrorImplCopyWith<$Res> {
+  factory _$$GetBlockTxnCountErrorImplCopyWith(
+          _$GetBlockTxnCountErrorImpl value,
+          $Res Function(_$GetBlockTxnCountErrorImpl) then) =
+      __$$GetBlockTxnCountErrorImplCopyWithImpl<$Res>;
   @useResult
   $Res call({JsonRpcApiError error});
 
@@ -256,11 +257,11 @@ abstract class _$$GetBlockTxnCountErrorCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$GetBlockTxnCountErrorCopyWithImpl<$Res>
-    extends _$GetBlockTxnCountCopyWithImpl<$Res, _$GetBlockTxnCountError>
-    implements _$$GetBlockTxnCountErrorCopyWith<$Res> {
-  __$$GetBlockTxnCountErrorCopyWithImpl(_$GetBlockTxnCountError _value,
-      $Res Function(_$GetBlockTxnCountError) _then)
+class __$$GetBlockTxnCountErrorImplCopyWithImpl<$Res>
+    extends _$GetBlockTxnCountCopyWithImpl<$Res, _$GetBlockTxnCountErrorImpl>
+    implements _$$GetBlockTxnCountErrorImplCopyWith<$Res> {
+  __$$GetBlockTxnCountErrorImplCopyWithImpl(_$GetBlockTxnCountErrorImpl _value,
+      $Res Function(_$GetBlockTxnCountErrorImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -268,7 +269,7 @@ class __$$GetBlockTxnCountErrorCopyWithImpl<$Res>
   $Res call({
     Object? error = null,
   }) {
-    return _then(_$GetBlockTxnCountError(
+    return _then(_$GetBlockTxnCountErrorImpl(
       error: null == error
           ? _value.error
           : error // ignore: cast_nullable_to_non_nullable
@@ -287,12 +288,12 @@ class __$$GetBlockTxnCountErrorCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$GetBlockTxnCountError implements GetBlockTxnCountError {
-  const _$GetBlockTxnCountError({required this.error, final String? $type})
+class _$GetBlockTxnCountErrorImpl implements GetBlockTxnCountError {
+  const _$GetBlockTxnCountErrorImpl({required this.error, final String? $type})
       : $type = $type ?? 'error';
 
-  factory _$GetBlockTxnCountError.fromJson(Map<String, dynamic> json) =>
-      _$$GetBlockTxnCountErrorFromJson(json);
+  factory _$GetBlockTxnCountErrorImpl.fromJson(Map<String, dynamic> json) =>
+      _$$GetBlockTxnCountErrorImplFromJson(json);
 
   @override
   final JsonRpcApiError error;
@@ -306,10 +307,10 @@ class _$GetBlockTxnCountError implements GetBlockTxnCountError {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$GetBlockTxnCountError &&
+            other is _$GetBlockTxnCountErrorImpl &&
             (identical(other.error, error) || other.error == error));
   }
 
@@ -320,9 +321,9 @@ class _$GetBlockTxnCountError implements GetBlockTxnCountError {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$GetBlockTxnCountErrorCopyWith<_$GetBlockTxnCountError> get copyWith =>
-      __$$GetBlockTxnCountErrorCopyWithImpl<_$GetBlockTxnCountError>(
-          this, _$identity);
+  _$$GetBlockTxnCountErrorImplCopyWith<_$GetBlockTxnCountErrorImpl>
+      get copyWith => __$$GetBlockTxnCountErrorImplCopyWithImpl<
+          _$GetBlockTxnCountErrorImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -388,7 +389,7 @@ class _$GetBlockTxnCountError implements GetBlockTxnCountError {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$GetBlockTxnCountErrorToJson(
+    return _$$GetBlockTxnCountErrorImplToJson(
       this,
     );
   }
@@ -396,13 +397,13 @@ class _$GetBlockTxnCountError implements GetBlockTxnCountError {
 
 abstract class GetBlockTxnCountError implements GetBlockTxnCount {
   const factory GetBlockTxnCountError({required final JsonRpcApiError error}) =
-      _$GetBlockTxnCountError;
+      _$GetBlockTxnCountErrorImpl;
 
   factory GetBlockTxnCountError.fromJson(Map<String, dynamic> json) =
-      _$GetBlockTxnCountError.fromJson;
+      _$GetBlockTxnCountErrorImpl.fromJson;
 
   JsonRpcApiError get error;
   @JsonKey(ignore: true)
-  _$$GetBlockTxnCountErrorCopyWith<_$GetBlockTxnCountError> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$GetBlockTxnCountErrorImplCopyWith<_$GetBlockTxnCountErrorImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }

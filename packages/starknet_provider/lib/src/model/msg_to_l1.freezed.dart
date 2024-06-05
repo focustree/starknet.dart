@@ -12,7 +12,7 @@ part of 'msg_to_l1.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 MsgToL1 _$MsgToL1FromJson(Map<String, dynamic> json) {
   return _MsgToL1.fromJson(json);
@@ -66,20 +66,21 @@ class _$MsgToL1CopyWithImpl<$Res, $Val extends MsgToL1>
 }
 
 /// @nodoc
-abstract class _$$_MsgToL1CopyWith<$Res> implements $MsgToL1CopyWith<$Res> {
-  factory _$$_MsgToL1CopyWith(
-          _$_MsgToL1 value, $Res Function(_$_MsgToL1) then) =
-      __$$_MsgToL1CopyWithImpl<$Res>;
+abstract class _$$MsgToL1ImplCopyWith<$Res> implements $MsgToL1CopyWith<$Res> {
+  factory _$$MsgToL1ImplCopyWith(
+          _$MsgToL1Impl value, $Res Function(_$MsgToL1Impl) then) =
+      __$$MsgToL1ImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({Felt? toAddress, List<Felt>? payload});
 }
 
 /// @nodoc
-class __$$_MsgToL1CopyWithImpl<$Res>
-    extends _$MsgToL1CopyWithImpl<$Res, _$_MsgToL1>
-    implements _$$_MsgToL1CopyWith<$Res> {
-  __$$_MsgToL1CopyWithImpl(_$_MsgToL1 _value, $Res Function(_$_MsgToL1) _then)
+class __$$MsgToL1ImplCopyWithImpl<$Res>
+    extends _$MsgToL1CopyWithImpl<$Res, _$MsgToL1Impl>
+    implements _$$MsgToL1ImplCopyWith<$Res> {
+  __$$MsgToL1ImplCopyWithImpl(
+      _$MsgToL1Impl _value, $Res Function(_$MsgToL1Impl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -88,7 +89,7 @@ class __$$_MsgToL1CopyWithImpl<$Res>
     Object? toAddress = freezed,
     Object? payload = freezed,
   }) {
-    return _then(_$_MsgToL1(
+    return _then(_$MsgToL1Impl(
       toAddress: freezed == toAddress
           ? _value.toAddress
           : toAddress // ignore: cast_nullable_to_non_nullable
@@ -103,13 +104,13 @@ class __$$_MsgToL1CopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_MsgToL1 implements _MsgToL1 {
-  const _$_MsgToL1(
+class _$MsgToL1Impl implements _MsgToL1 {
+  const _$MsgToL1Impl(
       {required this.toAddress, required final List<Felt>? payload})
       : _payload = payload;
 
-  factory _$_MsgToL1.fromJson(Map<String, dynamic> json) =>
-      _$$_MsgToL1FromJson(json);
+  factory _$MsgToL1Impl.fromJson(Map<String, dynamic> json) =>
+      _$$MsgToL1ImplFromJson(json);
 
   @override
   final Felt? toAddress;
@@ -129,10 +130,10 @@ class _$_MsgToL1 implements _MsgToL1 {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_MsgToL1 &&
+            other is _$MsgToL1Impl &&
             (identical(other.toAddress, toAddress) ||
                 other.toAddress == toAddress) &&
             const DeepCollectionEquality().equals(other._payload, _payload));
@@ -146,12 +147,12 @@ class _$_MsgToL1 implements _MsgToL1 {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_MsgToL1CopyWith<_$_MsgToL1> get copyWith =>
-      __$$_MsgToL1CopyWithImpl<_$_MsgToL1>(this, _$identity);
+  _$$MsgToL1ImplCopyWith<_$MsgToL1Impl> get copyWith =>
+      __$$MsgToL1ImplCopyWithImpl<_$MsgToL1Impl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_MsgToL1ToJson(
+    return _$$MsgToL1ImplToJson(
       this,
     );
   }
@@ -160,9 +161,9 @@ class _$_MsgToL1 implements _MsgToL1 {
 abstract class _MsgToL1 implements MsgToL1 {
   const factory _MsgToL1(
       {required final Felt? toAddress,
-      required final List<Felt>? payload}) = _$_MsgToL1;
+      required final List<Felt>? payload}) = _$MsgToL1Impl;
 
-  factory _MsgToL1.fromJson(Map<String, dynamic> json) = _$_MsgToL1.fromJson;
+  factory _MsgToL1.fromJson(Map<String, dynamic> json) = _$MsgToL1Impl.fromJson;
 
   @override
   Felt? get toAddress;
@@ -170,6 +171,6 @@ abstract class _MsgToL1 implements MsgToL1 {
   List<Felt>? get payload;
   @override
   @JsonKey(ignore: true)
-  _$$_MsgToL1CopyWith<_$_MsgToL1> get copyWith =>
+  _$$MsgToL1ImplCopyWith<_$MsgToL1Impl> get copyWith =>
       throw _privateConstructorUsedError;
 }

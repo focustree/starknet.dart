@@ -12,7 +12,7 @@ part of 'declare_transaction.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 DeclareTransactionRequest _$DeclareTransactionRequestFromJson(
     Map<String, dynamic> json) {
@@ -65,25 +65,25 @@ class _$DeclareTransactionRequestCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$_DeclareTransactionRequestCopyWith<$Res>
+abstract class _$$DeclareTransactionRequestImplCopyWith<$Res>
     implements $DeclareTransactionRequestCopyWith<$Res> {
-  factory _$$_DeclareTransactionRequestCopyWith(
-          _$_DeclareTransactionRequest value,
-          $Res Function(_$_DeclareTransactionRequest) then) =
-      __$$_DeclareTransactionRequestCopyWithImpl<$Res>;
+  factory _$$DeclareTransactionRequestImplCopyWith(
+          _$DeclareTransactionRequestImpl value,
+          $Res Function(_$DeclareTransactionRequestImpl) then) =
+      __$$DeclareTransactionRequestImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({DeclareTransaction declareTransaction});
 }
 
 /// @nodoc
-class __$$_DeclareTransactionRequestCopyWithImpl<$Res>
+class __$$DeclareTransactionRequestImplCopyWithImpl<$Res>
     extends _$DeclareTransactionRequestCopyWithImpl<$Res,
-        _$_DeclareTransactionRequest>
-    implements _$$_DeclareTransactionRequestCopyWith<$Res> {
-  __$$_DeclareTransactionRequestCopyWithImpl(
-      _$_DeclareTransactionRequest _value,
-      $Res Function(_$_DeclareTransactionRequest) _then)
+        _$DeclareTransactionRequestImpl>
+    implements _$$DeclareTransactionRequestImplCopyWith<$Res> {
+  __$$DeclareTransactionRequestImplCopyWithImpl(
+      _$DeclareTransactionRequestImpl _value,
+      $Res Function(_$DeclareTransactionRequestImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -91,7 +91,7 @@ class __$$_DeclareTransactionRequestCopyWithImpl<$Res>
   $Res call({
     Object? declareTransaction = null,
   }) {
-    return _then(_$_DeclareTransactionRequest(
+    return _then(_$DeclareTransactionRequestImpl(
       declareTransaction: null == declareTransaction
           ? _value.declareTransaction
           : declareTransaction // ignore: cast_nullable_to_non_nullable
@@ -102,11 +102,11 @@ class __$$_DeclareTransactionRequestCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_DeclareTransactionRequest implements _DeclareTransactionRequest {
-  const _$_DeclareTransactionRequest({required this.declareTransaction});
+class _$DeclareTransactionRequestImpl implements _DeclareTransactionRequest {
+  const _$DeclareTransactionRequestImpl({required this.declareTransaction});
 
-  factory _$_DeclareTransactionRequest.fromJson(Map<String, dynamic> json) =>
-      _$$_DeclareTransactionRequestFromJson(json);
+  factory _$DeclareTransactionRequestImpl.fromJson(Map<String, dynamic> json) =>
+      _$$DeclareTransactionRequestImplFromJson(json);
 
   @override
   final DeclareTransaction declareTransaction;
@@ -117,10 +117,10 @@ class _$_DeclareTransactionRequest implements _DeclareTransactionRequest {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_DeclareTransactionRequest &&
+            other is _$DeclareTransactionRequestImpl &&
             (identical(other.declareTransaction, declareTransaction) ||
                 other.declareTransaction == declareTransaction));
   }
@@ -132,13 +132,13 @@ class _$_DeclareTransactionRequest implements _DeclareTransactionRequest {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_DeclareTransactionRequestCopyWith<_$_DeclareTransactionRequest>
-      get copyWith => __$$_DeclareTransactionRequestCopyWithImpl<
-          _$_DeclareTransactionRequest>(this, _$identity);
+  _$$DeclareTransactionRequestImplCopyWith<_$DeclareTransactionRequestImpl>
+      get copyWith => __$$DeclareTransactionRequestImplCopyWithImpl<
+          _$DeclareTransactionRequestImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_DeclareTransactionRequestToJson(
+    return _$$DeclareTransactionRequestImplToJson(
       this,
     );
   }
@@ -147,16 +147,16 @@ class _$_DeclareTransactionRequest implements _DeclareTransactionRequest {
 abstract class _DeclareTransactionRequest implements DeclareTransactionRequest {
   const factory _DeclareTransactionRequest(
           {required final DeclareTransaction declareTransaction}) =
-      _$_DeclareTransactionRequest;
+      _$DeclareTransactionRequestImpl;
 
   factory _DeclareTransactionRequest.fromJson(Map<String, dynamic> json) =
-      _$_DeclareTransactionRequest.fromJson;
+      _$DeclareTransactionRequestImpl.fromJson;
 
   @override
   DeclareTransaction get declareTransaction;
   @override
   @JsonKey(ignore: true)
-  _$$_DeclareTransactionRequestCopyWith<_$_DeclareTransactionRequest>
+  _$$DeclareTransactionRequestImplCopyWith<_$DeclareTransactionRequestImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
 
@@ -264,11 +264,11 @@ class _$DeclareTransactionV1CopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$_DeclareTransactionV1CopyWith<$Res>
+abstract class _$$DeclareTransactionV1ImplCopyWith<$Res>
     implements $DeclareTransactionV1CopyWith<$Res> {
-  factory _$$_DeclareTransactionV1CopyWith(_$_DeclareTransactionV1 value,
-          $Res Function(_$_DeclareTransactionV1) then) =
-      __$$_DeclareTransactionV1CopyWithImpl<$Res>;
+  factory _$$DeclareTransactionV1ImplCopyWith(_$DeclareTransactionV1Impl value,
+          $Res Function(_$DeclareTransactionV1Impl) then) =
+      __$$DeclareTransactionV1ImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -285,11 +285,11 @@ abstract class _$$_DeclareTransactionV1CopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_DeclareTransactionV1CopyWithImpl<$Res>
-    extends _$DeclareTransactionV1CopyWithImpl<$Res, _$_DeclareTransactionV1>
-    implements _$$_DeclareTransactionV1CopyWith<$Res> {
-  __$$_DeclareTransactionV1CopyWithImpl(_$_DeclareTransactionV1 _value,
-      $Res Function(_$_DeclareTransactionV1) _then)
+class __$$DeclareTransactionV1ImplCopyWithImpl<$Res>
+    extends _$DeclareTransactionV1CopyWithImpl<$Res, _$DeclareTransactionV1Impl>
+    implements _$$DeclareTransactionV1ImplCopyWith<$Res> {
+  __$$DeclareTransactionV1ImplCopyWithImpl(_$DeclareTransactionV1Impl _value,
+      $Res Function(_$DeclareTransactionV1Impl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -303,7 +303,7 @@ class __$$_DeclareTransactionV1CopyWithImpl<$Res>
     Object? senderAddress = null,
     Object? contractClass = null,
   }) {
-    return _then(_$_DeclareTransactionV1(
+    return _then(_$DeclareTransactionV1Impl(
       type: null == type
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
@@ -338,8 +338,8 @@ class __$$_DeclareTransactionV1CopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_DeclareTransactionV1 implements _DeclareTransactionV1 {
-  const _$_DeclareTransactionV1(
+class _$DeclareTransactionV1Impl implements _DeclareTransactionV1 {
+  const _$DeclareTransactionV1Impl(
       {this.type = 'DECLARE',
       this.version = '0x1',
       required this.max_fee,
@@ -349,8 +349,8 @@ class _$_DeclareTransactionV1 implements _DeclareTransactionV1 {
       required this.contractClass})
       : _signature = signature;
 
-  factory _$_DeclareTransactionV1.fromJson(Map<String, dynamic> json) =>
-      _$$_DeclareTransactionV1FromJson(json);
+  factory _$DeclareTransactionV1Impl.fromJson(Map<String, dynamic> json) =>
+      _$$DeclareTransactionV1ImplFromJson(json);
 
   @override
   @JsonKey()
@@ -381,10 +381,10 @@ class _$_DeclareTransactionV1 implements _DeclareTransactionV1 {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_DeclareTransactionV1 &&
+            other is _$DeclareTransactionV1Impl &&
             (identical(other.type, type) || other.type == type) &&
             (identical(other.version, version) || other.version == version) &&
             (identical(other.max_fee, max_fee) || other.max_fee == max_fee) &&
@@ -412,13 +412,14 @@ class _$_DeclareTransactionV1 implements _DeclareTransactionV1 {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_DeclareTransactionV1CopyWith<_$_DeclareTransactionV1> get copyWith =>
-      __$$_DeclareTransactionV1CopyWithImpl<_$_DeclareTransactionV1>(
-          this, _$identity);
+  _$$DeclareTransactionV1ImplCopyWith<_$DeclareTransactionV1Impl>
+      get copyWith =>
+          __$$DeclareTransactionV1ImplCopyWithImpl<_$DeclareTransactionV1Impl>(
+              this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_DeclareTransactionV1ToJson(
+    return _$$DeclareTransactionV1ImplToJson(
       this,
     );
   }
@@ -433,10 +434,10 @@ abstract class _DeclareTransactionV1 implements DeclareTransactionV1 {
           required final List<Felt> signature,
           required final Felt senderAddress,
           required final DeprecatedContractClass contractClass}) =
-      _$_DeclareTransactionV1;
+      _$DeclareTransactionV1Impl;
 
   factory _DeclareTransactionV1.fromJson(Map<String, dynamic> json) =
-      _$_DeclareTransactionV1.fromJson;
+      _$DeclareTransactionV1Impl.fromJson;
 
   @override
   String get type;
@@ -454,8 +455,8 @@ abstract class _DeclareTransactionV1 implements DeclareTransactionV1 {
   DeprecatedContractClass get contractClass;
   @override
   @JsonKey(ignore: true)
-  _$$_DeclareTransactionV1CopyWith<_$_DeclareTransactionV1> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$DeclareTransactionV1ImplCopyWith<_$DeclareTransactionV1Impl>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 DeclareTransactionV2 _$DeclareTransactionV2FromJson(Map<String, dynamic> json) {
@@ -569,11 +570,11 @@ class _$DeclareTransactionV2CopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$_DeclareTransactionV2CopyWith<$Res>
+abstract class _$$DeclareTransactionV2ImplCopyWith<$Res>
     implements $DeclareTransactionV2CopyWith<$Res> {
-  factory _$$_DeclareTransactionV2CopyWith(_$_DeclareTransactionV2 value,
-          $Res Function(_$_DeclareTransactionV2) then) =
-      __$$_DeclareTransactionV2CopyWithImpl<$Res>;
+  factory _$$DeclareTransactionV2ImplCopyWith(_$DeclareTransactionV2Impl value,
+          $Res Function(_$DeclareTransactionV2Impl) then) =
+      __$$DeclareTransactionV2ImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -591,11 +592,11 @@ abstract class _$$_DeclareTransactionV2CopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_DeclareTransactionV2CopyWithImpl<$Res>
-    extends _$DeclareTransactionV2CopyWithImpl<$Res, _$_DeclareTransactionV2>
-    implements _$$_DeclareTransactionV2CopyWith<$Res> {
-  __$$_DeclareTransactionV2CopyWithImpl(_$_DeclareTransactionV2 _value,
-      $Res Function(_$_DeclareTransactionV2) _then)
+class __$$DeclareTransactionV2ImplCopyWithImpl<$Res>
+    extends _$DeclareTransactionV2CopyWithImpl<$Res, _$DeclareTransactionV2Impl>
+    implements _$$DeclareTransactionV2ImplCopyWith<$Res> {
+  __$$DeclareTransactionV2ImplCopyWithImpl(_$DeclareTransactionV2Impl _value,
+      $Res Function(_$DeclareTransactionV2Impl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -610,7 +611,7 @@ class __$$_DeclareTransactionV2CopyWithImpl<$Res>
     Object? contractClass = null,
     Object? compiledClassHash = null,
   }) {
-    return _then(_$_DeclareTransactionV2(
+    return _then(_$DeclareTransactionV2Impl(
       type: null == type
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
@@ -649,8 +650,8 @@ class __$$_DeclareTransactionV2CopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_DeclareTransactionV2 implements _DeclareTransactionV2 {
-  const _$_DeclareTransactionV2(
+class _$DeclareTransactionV2Impl implements _DeclareTransactionV2 {
+  const _$DeclareTransactionV2Impl(
       {this.type = 'DECLARE',
       this.version = '0x2',
       required this.max_fee,
@@ -661,8 +662,8 @@ class _$_DeclareTransactionV2 implements _DeclareTransactionV2 {
       required this.compiledClassHash})
       : _signature = signature;
 
-  factory _$_DeclareTransactionV2.fromJson(Map<String, dynamic> json) =>
-      _$$_DeclareTransactionV2FromJson(json);
+  factory _$DeclareTransactionV2Impl.fromJson(Map<String, dynamic> json) =>
+      _$$DeclareTransactionV2ImplFromJson(json);
 
   @override
   @JsonKey()
@@ -695,10 +696,10 @@ class _$_DeclareTransactionV2 implements _DeclareTransactionV2 {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_DeclareTransactionV2 &&
+            other is _$DeclareTransactionV2Impl &&
             (identical(other.type, type) || other.type == type) &&
             (identical(other.version, version) || other.version == version) &&
             (identical(other.max_fee, max_fee) || other.max_fee == max_fee) &&
@@ -729,13 +730,14 @@ class _$_DeclareTransactionV2 implements _DeclareTransactionV2 {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_DeclareTransactionV2CopyWith<_$_DeclareTransactionV2> get copyWith =>
-      __$$_DeclareTransactionV2CopyWithImpl<_$_DeclareTransactionV2>(
-          this, _$identity);
+  _$$DeclareTransactionV2ImplCopyWith<_$DeclareTransactionV2Impl>
+      get copyWith =>
+          __$$DeclareTransactionV2ImplCopyWithImpl<_$DeclareTransactionV2Impl>(
+              this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_DeclareTransactionV2ToJson(
+    return _$$DeclareTransactionV2ImplToJson(
       this,
     );
   }
@@ -750,10 +752,10 @@ abstract class _DeclareTransactionV2 implements DeclareTransactionV2 {
       required final List<Felt> signature,
       required final Felt senderAddress,
       required final FlattenSierraContractClass contractClass,
-      required final Felt compiledClassHash}) = _$_DeclareTransactionV2;
+      required final Felt compiledClassHash}) = _$DeclareTransactionV2Impl;
 
   factory _DeclareTransactionV2.fromJson(Map<String, dynamic> json) =
-      _$_DeclareTransactionV2.fromJson;
+      _$DeclareTransactionV2Impl.fromJson;
 
   @override
   String get type;
@@ -773,8 +775,8 @@ abstract class _DeclareTransactionV2 implements DeclareTransactionV2 {
   Felt get compiledClassHash;
   @override
   @JsonKey(ignore: true)
-  _$$_DeclareTransactionV2CopyWith<_$_DeclareTransactionV2> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$DeclareTransactionV2ImplCopyWith<_$DeclareTransactionV2Impl>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 DeclareTransactionResponse _$DeclareTransactionResponseFromJson(
@@ -858,10 +860,11 @@ class _$DeclareTransactionResponseCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$DeclareTransactionResultCopyWith<$Res> {
-  factory _$$DeclareTransactionResultCopyWith(_$DeclareTransactionResult value,
-          $Res Function(_$DeclareTransactionResult) then) =
-      __$$DeclareTransactionResultCopyWithImpl<$Res>;
+abstract class _$$DeclareTransactionResultImplCopyWith<$Res> {
+  factory _$$DeclareTransactionResultImplCopyWith(
+          _$DeclareTransactionResultImpl value,
+          $Res Function(_$DeclareTransactionResultImpl) then) =
+      __$$DeclareTransactionResultImplCopyWithImpl<$Res>;
   @useResult
   $Res call({DeclareTransactionResponseResult result});
 
@@ -869,12 +872,13 @@ abstract class _$$DeclareTransactionResultCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$DeclareTransactionResultCopyWithImpl<$Res>
+class __$$DeclareTransactionResultImplCopyWithImpl<$Res>
     extends _$DeclareTransactionResponseCopyWithImpl<$Res,
-        _$DeclareTransactionResult>
-    implements _$$DeclareTransactionResultCopyWith<$Res> {
-  __$$DeclareTransactionResultCopyWithImpl(_$DeclareTransactionResult _value,
-      $Res Function(_$DeclareTransactionResult) _then)
+        _$DeclareTransactionResultImpl>
+    implements _$$DeclareTransactionResultImplCopyWith<$Res> {
+  __$$DeclareTransactionResultImplCopyWithImpl(
+      _$DeclareTransactionResultImpl _value,
+      $Res Function(_$DeclareTransactionResultImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -882,7 +886,7 @@ class __$$DeclareTransactionResultCopyWithImpl<$Res>
   $Res call({
     Object? result = null,
   }) {
-    return _then(_$DeclareTransactionResult(
+    return _then(_$DeclareTransactionResultImpl(
       result: null == result
           ? _value.result
           : result // ignore: cast_nullable_to_non_nullable
@@ -902,12 +906,13 @@ class __$$DeclareTransactionResultCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$DeclareTransactionResult implements DeclareTransactionResult {
-  const _$DeclareTransactionResult({required this.result, final String? $type})
+class _$DeclareTransactionResultImpl implements DeclareTransactionResult {
+  const _$DeclareTransactionResultImpl(
+      {required this.result, final String? $type})
       : $type = $type ?? 'result';
 
-  factory _$DeclareTransactionResult.fromJson(Map<String, dynamic> json) =>
-      _$$DeclareTransactionResultFromJson(json);
+  factory _$DeclareTransactionResultImpl.fromJson(Map<String, dynamic> json) =>
+      _$$DeclareTransactionResultImplFromJson(json);
 
   @override
   final DeclareTransactionResponseResult result;
@@ -921,10 +926,10 @@ class _$DeclareTransactionResult implements DeclareTransactionResult {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$DeclareTransactionResult &&
+            other is _$DeclareTransactionResultImpl &&
             (identical(other.result, result) || other.result == result));
   }
 
@@ -935,10 +940,9 @@ class _$DeclareTransactionResult implements DeclareTransactionResult {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$DeclareTransactionResultCopyWith<_$DeclareTransactionResult>
-      get copyWith =>
-          __$$DeclareTransactionResultCopyWithImpl<_$DeclareTransactionResult>(
-              this, _$identity);
+  _$$DeclareTransactionResultImplCopyWith<_$DeclareTransactionResultImpl>
+      get copyWith => __$$DeclareTransactionResultImplCopyWithImpl<
+          _$DeclareTransactionResultImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1004,7 +1008,7 @@ class _$DeclareTransactionResult implements DeclareTransactionResult {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$DeclareTransactionResultToJson(
+    return _$$DeclareTransactionResultImplToJson(
       this,
     );
   }
@@ -1013,22 +1017,23 @@ class _$DeclareTransactionResult implements DeclareTransactionResult {
 abstract class DeclareTransactionResult implements DeclareTransactionResponse {
   const factory DeclareTransactionResult(
           {required final DeclareTransactionResponseResult result}) =
-      _$DeclareTransactionResult;
+      _$DeclareTransactionResultImpl;
 
   factory DeclareTransactionResult.fromJson(Map<String, dynamic> json) =
-      _$DeclareTransactionResult.fromJson;
+      _$DeclareTransactionResultImpl.fromJson;
 
   DeclareTransactionResponseResult get result;
   @JsonKey(ignore: true)
-  _$$DeclareTransactionResultCopyWith<_$DeclareTransactionResult>
+  _$$DeclareTransactionResultImplCopyWith<_$DeclareTransactionResultImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$DeclareTransactionErrorCopyWith<$Res> {
-  factory _$$DeclareTransactionErrorCopyWith(_$DeclareTransactionError value,
-          $Res Function(_$DeclareTransactionError) then) =
-      __$$DeclareTransactionErrorCopyWithImpl<$Res>;
+abstract class _$$DeclareTransactionErrorImplCopyWith<$Res> {
+  factory _$$DeclareTransactionErrorImplCopyWith(
+          _$DeclareTransactionErrorImpl value,
+          $Res Function(_$DeclareTransactionErrorImpl) then) =
+      __$$DeclareTransactionErrorImplCopyWithImpl<$Res>;
   @useResult
   $Res call({JsonRpcApiError error});
 
@@ -1036,12 +1041,13 @@ abstract class _$$DeclareTransactionErrorCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$DeclareTransactionErrorCopyWithImpl<$Res>
+class __$$DeclareTransactionErrorImplCopyWithImpl<$Res>
     extends _$DeclareTransactionResponseCopyWithImpl<$Res,
-        _$DeclareTransactionError>
-    implements _$$DeclareTransactionErrorCopyWith<$Res> {
-  __$$DeclareTransactionErrorCopyWithImpl(_$DeclareTransactionError _value,
-      $Res Function(_$DeclareTransactionError) _then)
+        _$DeclareTransactionErrorImpl>
+    implements _$$DeclareTransactionErrorImplCopyWith<$Res> {
+  __$$DeclareTransactionErrorImplCopyWithImpl(
+      _$DeclareTransactionErrorImpl _value,
+      $Res Function(_$DeclareTransactionErrorImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -1049,7 +1055,7 @@ class __$$DeclareTransactionErrorCopyWithImpl<$Res>
   $Res call({
     Object? error = null,
   }) {
-    return _then(_$DeclareTransactionError(
+    return _then(_$DeclareTransactionErrorImpl(
       error: null == error
           ? _value.error
           : error // ignore: cast_nullable_to_non_nullable
@@ -1068,12 +1074,13 @@ class __$$DeclareTransactionErrorCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$DeclareTransactionError implements DeclareTransactionError {
-  const _$DeclareTransactionError({required this.error, final String? $type})
+class _$DeclareTransactionErrorImpl implements DeclareTransactionError {
+  const _$DeclareTransactionErrorImpl(
+      {required this.error, final String? $type})
       : $type = $type ?? 'error';
 
-  factory _$DeclareTransactionError.fromJson(Map<String, dynamic> json) =>
-      _$$DeclareTransactionErrorFromJson(json);
+  factory _$DeclareTransactionErrorImpl.fromJson(Map<String, dynamic> json) =>
+      _$$DeclareTransactionErrorImplFromJson(json);
 
   @override
   final JsonRpcApiError error;
@@ -1087,10 +1094,10 @@ class _$DeclareTransactionError implements DeclareTransactionError {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$DeclareTransactionError &&
+            other is _$DeclareTransactionErrorImpl &&
             (identical(other.error, error) || other.error == error));
   }
 
@@ -1101,9 +1108,9 @@ class _$DeclareTransactionError implements DeclareTransactionError {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$DeclareTransactionErrorCopyWith<_$DeclareTransactionError> get copyWith =>
-      __$$DeclareTransactionErrorCopyWithImpl<_$DeclareTransactionError>(
-          this, _$identity);
+  _$$DeclareTransactionErrorImplCopyWith<_$DeclareTransactionErrorImpl>
+      get copyWith => __$$DeclareTransactionErrorImplCopyWithImpl<
+          _$DeclareTransactionErrorImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1169,7 +1176,7 @@ class _$DeclareTransactionError implements DeclareTransactionError {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$DeclareTransactionErrorToJson(
+    return _$$DeclareTransactionErrorImplToJson(
       this,
     );
   }
@@ -1177,15 +1184,15 @@ class _$DeclareTransactionError implements DeclareTransactionError {
 
 abstract class DeclareTransactionError implements DeclareTransactionResponse {
   const factory DeclareTransactionError(
-      {required final JsonRpcApiError error}) = _$DeclareTransactionError;
+      {required final JsonRpcApiError error}) = _$DeclareTransactionErrorImpl;
 
   factory DeclareTransactionError.fromJson(Map<String, dynamic> json) =
-      _$DeclareTransactionError.fromJson;
+      _$DeclareTransactionErrorImpl.fromJson;
 
   JsonRpcApiError get error;
   @JsonKey(ignore: true)
-  _$$DeclareTransactionErrorCopyWith<_$DeclareTransactionError> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$DeclareTransactionErrorImplCopyWith<_$DeclareTransactionErrorImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 DeclareTransactionResponseResult _$DeclareTransactionResponseResultFromJson(
@@ -1246,25 +1253,25 @@ class _$DeclareTransactionResponseResultCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$_DeclareTransactionResponseResultCopyWith<$Res>
+abstract class _$$DeclareTransactionResponseResultImplCopyWith<$Res>
     implements $DeclareTransactionResponseResultCopyWith<$Res> {
-  factory _$$_DeclareTransactionResponseResultCopyWith(
-          _$_DeclareTransactionResponseResult value,
-          $Res Function(_$_DeclareTransactionResponseResult) then) =
-      __$$_DeclareTransactionResponseResultCopyWithImpl<$Res>;
+  factory _$$DeclareTransactionResponseResultImplCopyWith(
+          _$DeclareTransactionResponseResultImpl value,
+          $Res Function(_$DeclareTransactionResponseResultImpl) then) =
+      __$$DeclareTransactionResponseResultImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({Felt classHash, Felt transactionHash});
 }
 
 /// @nodoc
-class __$$_DeclareTransactionResponseResultCopyWithImpl<$Res>
+class __$$DeclareTransactionResponseResultImplCopyWithImpl<$Res>
     extends _$DeclareTransactionResponseResultCopyWithImpl<$Res,
-        _$_DeclareTransactionResponseResult>
-    implements _$$_DeclareTransactionResponseResultCopyWith<$Res> {
-  __$$_DeclareTransactionResponseResultCopyWithImpl(
-      _$_DeclareTransactionResponseResult _value,
-      $Res Function(_$_DeclareTransactionResponseResult) _then)
+        _$DeclareTransactionResponseResultImpl>
+    implements _$$DeclareTransactionResponseResultImplCopyWith<$Res> {
+  __$$DeclareTransactionResponseResultImplCopyWithImpl(
+      _$DeclareTransactionResponseResultImpl _value,
+      $Res Function(_$DeclareTransactionResponseResultImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -1273,7 +1280,7 @@ class __$$_DeclareTransactionResponseResultCopyWithImpl<$Res>
     Object? classHash = null,
     Object? transactionHash = null,
   }) {
-    return _then(_$_DeclareTransactionResponseResult(
+    return _then(_$DeclareTransactionResponseResultImpl(
       classHash: null == classHash
           ? _value.classHash
           : classHash // ignore: cast_nullable_to_non_nullable
@@ -1288,14 +1295,14 @@ class __$$_DeclareTransactionResponseResultCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_DeclareTransactionResponseResult
+class _$DeclareTransactionResponseResultImpl
     implements _DeclareTransactionResponseResult {
-  const _$_DeclareTransactionResponseResult(
+  const _$DeclareTransactionResponseResultImpl(
       {required this.classHash, required this.transactionHash});
 
-  factory _$_DeclareTransactionResponseResult.fromJson(
+  factory _$DeclareTransactionResponseResultImpl.fromJson(
           Map<String, dynamic> json) =>
-      _$$_DeclareTransactionResponseResultFromJson(json);
+      _$$DeclareTransactionResponseResultImplFromJson(json);
 
   @override
   final Felt classHash;
@@ -1308,10 +1315,10 @@ class _$_DeclareTransactionResponseResult
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_DeclareTransactionResponseResult &&
+            other is _$DeclareTransactionResponseResultImpl &&
             (identical(other.classHash, classHash) ||
                 other.classHash == classHash) &&
             (identical(other.transactionHash, transactionHash) ||
@@ -1325,14 +1332,14 @@ class _$_DeclareTransactionResponseResult
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_DeclareTransactionResponseResultCopyWith<
-          _$_DeclareTransactionResponseResult>
-      get copyWith => __$$_DeclareTransactionResponseResultCopyWithImpl<
-          _$_DeclareTransactionResponseResult>(this, _$identity);
+  _$$DeclareTransactionResponseResultImplCopyWith<
+          _$DeclareTransactionResponseResultImpl>
+      get copyWith => __$$DeclareTransactionResponseResultImplCopyWithImpl<
+          _$DeclareTransactionResponseResultImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_DeclareTransactionResponseResultToJson(
+    return _$$DeclareTransactionResponseResultImplToJson(
       this,
     );
   }
@@ -1343,10 +1350,11 @@ abstract class _DeclareTransactionResponseResult
   const factory _DeclareTransactionResponseResult(
           {required final Felt classHash,
           required final Felt transactionHash}) =
-      _$_DeclareTransactionResponseResult;
+      _$DeclareTransactionResponseResultImpl;
 
   factory _DeclareTransactionResponseResult.fromJson(
-      Map<String, dynamic> json) = _$_DeclareTransactionResponseResult.fromJson;
+          Map<String, dynamic> json) =
+      _$DeclareTransactionResponseResultImpl.fromJson;
 
   @override
   Felt get classHash;
@@ -1354,7 +1362,7 @@ abstract class _DeclareTransactionResponseResult
   Felt get transactionHash;
   @override
   @JsonKey(ignore: true)
-  _$$_DeclareTransactionResponseResultCopyWith<
-          _$_DeclareTransactionResponseResult>
+  _$$DeclareTransactionResponseResultImplCopyWith<
+          _$DeclareTransactionResponseResultImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

@@ -4,3 +4,4 @@ analyzer:
   errors:
     invalid_annotation_target: ignore
     non_constant_identifier_names: ignore
+    non_nullable_equals_parameter: ignore

@@ -12,7 +12,7 @@ part of 'contract_class.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 SierraContractClass _$SierraContractClassFromJson(Map<String, dynamic> json) {
   return _SierraContractClass.fromJson(json);
@@ -94,11 +94,11 @@ class _$SierraContractClassCopyWithImpl<$Res, $Val extends SierraContractClass>
 }
 
 /// @nodoc
-abstract class _$$_SierraContractClassCopyWith<$Res>
+abstract class _$$SierraContractClassImplCopyWith<$Res>
     implements $SierraContractClassCopyWith<$Res> {
-  factory _$$_SierraContractClassCopyWith(_$_SierraContractClass value,
-          $Res Function(_$_SierraContractClass) then) =
-      __$$_SierraContractClassCopyWithImpl<$Res>;
+  factory _$$SierraContractClassImplCopyWith(_$SierraContractClassImpl value,
+          $Res Function(_$SierraContractClassImpl) then) =
+      __$$SierraContractClassImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -112,11 +112,11 @@ abstract class _$$_SierraContractClassCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_SierraContractClassCopyWithImpl<$Res>
-    extends _$SierraContractClassCopyWithImpl<$Res, _$_SierraContractClass>
-    implements _$$_SierraContractClassCopyWith<$Res> {
-  __$$_SierraContractClassCopyWithImpl(_$_SierraContractClass _value,
-      $Res Function(_$_SierraContractClass) _then)
+class __$$SierraContractClassImplCopyWithImpl<$Res>
+    extends _$SierraContractClassCopyWithImpl<$Res, _$SierraContractClassImpl>
+    implements _$$SierraContractClassImplCopyWith<$Res> {
+  __$$SierraContractClassImplCopyWithImpl(_$SierraContractClassImpl _value,
+      $Res Function(_$SierraContractClassImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -127,7 +127,7 @@ class __$$_SierraContractClassCopyWithImpl<$Res>
     Object? entryPointsByType = null,
     Object? abi = freezed,
   }) {
-    return _then(_$_SierraContractClass(
+    return _then(_$SierraContractClassImpl(
       sierraProgram: null == sierraProgram
           ? _value._sierraProgram
           : sierraProgram // ignore: cast_nullable_to_non_nullable
@@ -150,16 +150,16 @@ class __$$_SierraContractClassCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_SierraContractClass implements _SierraContractClass {
-  const _$_SierraContractClass(
+class _$SierraContractClassImpl implements _SierraContractClass {
+  const _$SierraContractClassImpl(
       {required final List<Felt> sierraProgram,
       required this.contractClassVersion,
       required this.entryPointsByType,
       this.abi})
       : _sierraProgram = sierraProgram;
 
-  factory _$_SierraContractClass.fromJson(Map<String, dynamic> json) =>
-      _$$_SierraContractClassFromJson(json);
+  factory _$SierraContractClassImpl.fromJson(Map<String, dynamic> json) =>
+      _$$SierraContractClassImplFromJson(json);
 
   final List<Felt> _sierraProgram;
   @override
@@ -182,10 +182,10 @@ class _$_SierraContractClass implements _SierraContractClass {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_SierraContractClass &&
+            other is _$SierraContractClassImpl &&
             const DeepCollectionEquality()
                 .equals(other._sierraProgram, _sierraProgram) &&
             (identical(other.contractClassVersion, contractClassVersion) ||
@@ -207,13 +207,13 @@ class _$_SierraContractClass implements _SierraContractClass {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_SierraContractClassCopyWith<_$_SierraContractClass> get copyWith =>
-      __$$_SierraContractClassCopyWithImpl<_$_SierraContractClass>(
+  _$$SierraContractClassImplCopyWith<_$SierraContractClassImpl> get copyWith =>
+      __$$SierraContractClassImplCopyWithImpl<_$SierraContractClassImpl>(
           this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_SierraContractClassToJson(
+    return _$$SierraContractClassImplToJson(
       this,
     );
   }
@@ -224,10 +224,10 @@ abstract class _SierraContractClass implements SierraContractClass {
       {required final List<Felt> sierraProgram,
       required final String contractClassVersion,
       required final EntryPointsByType entryPointsByType,
-      final String? abi}) = _$_SierraContractClass;
+      final String? abi}) = _$SierraContractClassImpl;
 
   factory _SierraContractClass.fromJson(Map<String, dynamic> json) =
-      _$_SierraContractClass.fromJson;
+      _$SierraContractClassImpl.fromJson;
 
   @override
   List<Felt> get sierraProgram;
@@ -239,7 +239,7 @@ abstract class _SierraContractClass implements SierraContractClass {
   String? get abi;
   @override
   @JsonKey(ignore: true)
-  _$$_SierraContractClassCopyWith<_$_SierraContractClass> get copyWith =>
+  _$$SierraContractClassImplCopyWith<_$SierraContractClassImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -321,11 +321,12 @@ class _$DeprecatedContractClassCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$_DeprecatedContractClassCopyWith<$Res>
+abstract class _$$DeprecatedContractClassImplCopyWith<$Res>
     implements $DeprecatedContractClassCopyWith<$Res> {
-  factory _$$_DeprecatedContractClassCopyWith(_$_DeprecatedContractClass value,
-          $Res Function(_$_DeprecatedContractClass) then) =
-      __$$_DeprecatedContractClassCopyWithImpl<$Res>;
+  factory _$$DeprecatedContractClassImplCopyWith(
+          _$DeprecatedContractClassImpl value,
+          $Res Function(_$DeprecatedContractClassImpl) then) =
+      __$$DeprecatedContractClassImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -338,12 +339,13 @@ abstract class _$$_DeprecatedContractClassCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_DeprecatedContractClassCopyWithImpl<$Res>
+class __$$DeprecatedContractClassImplCopyWithImpl<$Res>
     extends _$DeprecatedContractClassCopyWithImpl<$Res,
-        _$_DeprecatedContractClass>
-    implements _$$_DeprecatedContractClassCopyWith<$Res> {
-  __$$_DeprecatedContractClassCopyWithImpl(_$_DeprecatedContractClass _value,
-      $Res Function(_$_DeprecatedContractClass) _then)
+        _$DeprecatedContractClassImpl>
+    implements _$$DeprecatedContractClassImplCopyWith<$Res> {
+  __$$DeprecatedContractClassImplCopyWithImpl(
+      _$DeprecatedContractClassImpl _value,
+      $Res Function(_$DeprecatedContractClassImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -353,7 +355,7 @@ class __$$_DeprecatedContractClassCopyWithImpl<$Res>
     Object? entryPointsByType = null,
     Object? abi = freezed,
   }) {
-    return _then(_$_DeprecatedContractClass(
+    return _then(_$DeprecatedContractClassImpl(
       program: null == program
           ? _value.program
           : program // ignore: cast_nullable_to_non_nullable
@@ -372,15 +374,15 @@ class __$$_DeprecatedContractClassCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_DeprecatedContractClass implements _DeprecatedContractClass {
-  const _$_DeprecatedContractClass(
+class _$DeprecatedContractClassImpl implements _DeprecatedContractClass {
+  const _$DeprecatedContractClassImpl(
       {required this.program,
       required this.entryPointsByType,
       final List<DeprecatedContractAbiEntry>? abi})
       : _abi = abi;
 
-  factory _$_DeprecatedContractClass.fromJson(Map<String, dynamic> json) =>
-      _$$_DeprecatedContractClassFromJson(json);
+  factory _$DeprecatedContractClassImpl.fromJson(Map<String, dynamic> json) =>
+      _$$DeprecatedContractClassImplFromJson(json);
 
   @override
   final String program;
@@ -402,10 +404,10 @@ class _$_DeprecatedContractClass implements _DeprecatedContractClass {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_DeprecatedContractClass &&
+            other is _$DeprecatedContractClassImpl &&
             (identical(other.program, program) || other.program == program) &&
             (identical(other.entryPointsByType, entryPointsByType) ||
                 other.entryPointsByType == entryPointsByType) &&
@@ -420,14 +422,13 @@ class _$_DeprecatedContractClass implements _DeprecatedContractClass {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_DeprecatedContractClassCopyWith<_$_DeprecatedContractClass>
-      get copyWith =>
-          __$$_DeprecatedContractClassCopyWithImpl<_$_DeprecatedContractClass>(
-              this, _$identity);
+  _$$DeprecatedContractClassImplCopyWith<_$DeprecatedContractClassImpl>
+      get copyWith => __$$DeprecatedContractClassImplCopyWithImpl<
+          _$DeprecatedContractClassImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_DeprecatedContractClassToJson(
+    return _$$DeprecatedContractClassImplToJson(
       this,
     );
   }
@@ -438,10 +439,10 @@ abstract class _DeprecatedContractClass implements DeprecatedContractClass {
           {required final String program,
           required final DeprecatedCairoEntryPointsByType entryPointsByType,
           final List<DeprecatedContractAbiEntry>? abi}) =
-      _$_DeprecatedContractClass;
+      _$DeprecatedContractClassImpl;
 
   factory _DeprecatedContractClass.fromJson(Map<String, dynamic> json) =
-      _$_DeprecatedContractClass.fromJson;
+      _$DeprecatedContractClassImpl.fromJson;
 
   @override
   String get program;
@@ -451,6 +452,6 @@ abstract class _DeprecatedContractClass implements DeprecatedContractClass {
   List<DeprecatedContractAbiEntry>? get abi;
   @override
   @JsonKey(ignore: true)
-  _$$_DeprecatedContractClassCopyWith<_$_DeprecatedContractClass>
+  _$$DeprecatedContractClassImplCopyWith<_$DeprecatedContractClassImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

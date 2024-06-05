@@ -12,7 +12,7 @@ part of 'json_rpc_api_error.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 JsonRpcApiError _$JsonRpcApiErrorFromJson(Map<String, dynamic> json) {
   return _JsonRpcApiError.fromJson(json);
@@ -68,22 +68,22 @@ class _$JsonRpcApiErrorCopyWithImpl<$Res, $Val extends JsonRpcApiError>
 }
 
 /// @nodoc
-abstract class _$$_JsonRpcApiErrorCopyWith<$Res>
+abstract class _$$JsonRpcApiErrorImplCopyWith<$Res>
     implements $JsonRpcApiErrorCopyWith<$Res> {
-  factory _$$_JsonRpcApiErrorCopyWith(
-          _$_JsonRpcApiError value, $Res Function(_$_JsonRpcApiError) then) =
-      __$$_JsonRpcApiErrorCopyWithImpl<$Res>;
+  factory _$$JsonRpcApiErrorImplCopyWith(_$JsonRpcApiErrorImpl value,
+          $Res Function(_$JsonRpcApiErrorImpl) then) =
+      __$$JsonRpcApiErrorImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({JsonRpcApiErrorCode code, String message});
 }
 
 /// @nodoc
-class __$$_JsonRpcApiErrorCopyWithImpl<$Res>
-    extends _$JsonRpcApiErrorCopyWithImpl<$Res, _$_JsonRpcApiError>
-    implements _$$_JsonRpcApiErrorCopyWith<$Res> {
-  __$$_JsonRpcApiErrorCopyWithImpl(
-      _$_JsonRpcApiError _value, $Res Function(_$_JsonRpcApiError) _then)
+class __$$JsonRpcApiErrorImplCopyWithImpl<$Res>
+    extends _$JsonRpcApiErrorCopyWithImpl<$Res, _$JsonRpcApiErrorImpl>
+    implements _$$JsonRpcApiErrorImplCopyWith<$Res> {
+  __$$JsonRpcApiErrorImplCopyWithImpl(
+      _$JsonRpcApiErrorImpl _value, $Res Function(_$JsonRpcApiErrorImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -92,7 +92,7 @@ class __$$_JsonRpcApiErrorCopyWithImpl<$Res>
     Object? code = null,
     Object? message = null,
   }) {
-    return _then(_$_JsonRpcApiError(
+    return _then(_$JsonRpcApiErrorImpl(
       code: null == code
           ? _value.code
           : code // ignore: cast_nullable_to_non_nullable
@@ -107,11 +107,11 @@ class __$$_JsonRpcApiErrorCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_JsonRpcApiError implements _JsonRpcApiError {
-  const _$_JsonRpcApiError({required this.code, required this.message});
+class _$JsonRpcApiErrorImpl implements _JsonRpcApiError {
+  const _$JsonRpcApiErrorImpl({required this.code, required this.message});
 
-  factory _$_JsonRpcApiError.fromJson(Map<String, dynamic> json) =>
-      _$$_JsonRpcApiErrorFromJson(json);
+  factory _$JsonRpcApiErrorImpl.fromJson(Map<String, dynamic> json) =>
+      _$$JsonRpcApiErrorImplFromJson(json);
 
   @override
   final JsonRpcApiErrorCode code;
@@ -124,10 +124,10 @@ class _$_JsonRpcApiError implements _JsonRpcApiError {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_JsonRpcApiError &&
+            other is _$JsonRpcApiErrorImpl &&
             (identical(other.code, code) || other.code == code) &&
             (identical(other.message, message) || other.message == message));
   }
@@ -139,12 +139,13 @@ class _$_JsonRpcApiError implements _JsonRpcApiError {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_JsonRpcApiErrorCopyWith<_$_JsonRpcApiError> get copyWith =>
-      __$$_JsonRpcApiErrorCopyWithImpl<_$_JsonRpcApiError>(this, _$identity);
+  _$$JsonRpcApiErrorImplCopyWith<_$JsonRpcApiErrorImpl> get copyWith =>
+      __$$JsonRpcApiErrorImplCopyWithImpl<_$JsonRpcApiErrorImpl>(
+          this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_JsonRpcApiErrorToJson(
+    return _$$JsonRpcApiErrorImplToJson(
       this,
     );
   }
@@ -153,10 +154,10 @@ class _$_JsonRpcApiError implements _JsonRpcApiError {
 abstract class _JsonRpcApiError implements JsonRpcApiError {
   const factory _JsonRpcApiError(
       {required final JsonRpcApiErrorCode code,
-      required final String message}) = _$_JsonRpcApiError;
+      required final String message}) = _$JsonRpcApiErrorImpl;
 
   factory _JsonRpcApiError.fromJson(Map<String, dynamic> json) =
-      _$_JsonRpcApiError.fromJson;
+      _$JsonRpcApiErrorImpl.fromJson;
 
   @override
   JsonRpcApiErrorCode get code;
@@ -164,6 +165,6 @@ abstract class _JsonRpcApiError implements JsonRpcApiError {
   String get message;
   @override
   @JsonKey(ignore: true)
-  _$$_JsonRpcApiErrorCopyWith<_$_JsonRpcApiError> get copyWith =>
+  _$$JsonRpcApiErrorImplCopyWith<_$JsonRpcApiErrorImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

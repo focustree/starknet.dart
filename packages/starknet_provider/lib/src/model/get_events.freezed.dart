@@ -12,7 +12,7 @@ part of 'get_events.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 GetEvents _$GetEventsFromJson(Map<String, dynamic> json) {
   switch (json['starkNetRuntimeTypeToRemove']) {
@@ -91,10 +91,10 @@ class _$GetEventsCopyWithImpl<$Res, $Val extends GetEvents>
 }
 
 /// @nodoc
-abstract class _$$GetEventsResultCopyWith<$Res> {
-  factory _$$GetEventsResultCopyWith(
-          _$GetEventsResult value, $Res Function(_$GetEventsResult) then) =
-      __$$GetEventsResultCopyWithImpl<$Res>;
+abstract class _$$GetEventsResultImplCopyWith<$Res> {
+  factory _$$GetEventsResultImplCopyWith(_$GetEventsResultImpl value,
+          $Res Function(_$GetEventsResultImpl) then) =
+      __$$GetEventsResultImplCopyWithImpl<$Res>;
   @useResult
   $Res call({GetEventsResponse result});
 
@@ -102,11 +102,11 @@ abstract class _$$GetEventsResultCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$GetEventsResultCopyWithImpl<$Res>
-    extends _$GetEventsCopyWithImpl<$Res, _$GetEventsResult>
-    implements _$$GetEventsResultCopyWith<$Res> {
-  __$$GetEventsResultCopyWithImpl(
-      _$GetEventsResult _value, $Res Function(_$GetEventsResult) _then)
+class __$$GetEventsResultImplCopyWithImpl<$Res>
+    extends _$GetEventsCopyWithImpl<$Res, _$GetEventsResultImpl>
+    implements _$$GetEventsResultImplCopyWith<$Res> {
+  __$$GetEventsResultImplCopyWithImpl(
+      _$GetEventsResultImpl _value, $Res Function(_$GetEventsResultImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -114,7 +114,7 @@ class __$$GetEventsResultCopyWithImpl<$Res>
   $Res call({
     Object? result = null,
   }) {
-    return _then(_$GetEventsResult(
+    return _then(_$GetEventsResultImpl(
       result: null == result
           ? _value.result
           : result // ignore: cast_nullable_to_non_nullable
@@ -133,12 +133,12 @@ class __$$GetEventsResultCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$GetEventsResult implements GetEventsResult {
-  const _$GetEventsResult({required this.result, final String? $type})
+class _$GetEventsResultImpl implements GetEventsResult {
+  const _$GetEventsResultImpl({required this.result, final String? $type})
       : $type = $type ?? 'result';
 
-  factory _$GetEventsResult.fromJson(Map<String, dynamic> json) =>
-      _$$GetEventsResultFromJson(json);
+  factory _$GetEventsResultImpl.fromJson(Map<String, dynamic> json) =>
+      _$$GetEventsResultImplFromJson(json);
 
   @override
   final GetEventsResponse result;
@@ -152,10 +152,10 @@ class _$GetEventsResult implements GetEventsResult {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$GetEventsResult &&
+            other is _$GetEventsResultImpl &&
             (identical(other.result, result) || other.result == result));
   }
 
@@ -166,8 +166,9 @@ class _$GetEventsResult implements GetEventsResult {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$GetEventsResultCopyWith<_$GetEventsResult> get copyWith =>
-      __$$GetEventsResultCopyWithImpl<_$GetEventsResult>(this, _$identity);
+  _$$GetEventsResultImplCopyWith<_$GetEventsResultImpl> get copyWith =>
+      __$$GetEventsResultImplCopyWithImpl<_$GetEventsResultImpl>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -233,7 +234,7 @@ class _$GetEventsResult implements GetEventsResult {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$GetEventsResultToJson(
+    return _$$GetEventsResultImplToJson(
       this,
     );
   }
@@ -241,22 +242,22 @@ class _$GetEventsResult implements GetEventsResult {
 
 abstract class GetEventsResult implements GetEvents {
   const factory GetEventsResult({required final GetEventsResponse result}) =
-      _$GetEventsResult;
+      _$GetEventsResultImpl;
 
   factory GetEventsResult.fromJson(Map<String, dynamic> json) =
-      _$GetEventsResult.fromJson;
+      _$GetEventsResultImpl.fromJson;
 
   GetEventsResponse get result;
   @JsonKey(ignore: true)
-  _$$GetEventsResultCopyWith<_$GetEventsResult> get copyWith =>
+  _$$GetEventsResultImplCopyWith<_$GetEventsResultImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$GetEventsErrorCopyWith<$Res> {
-  factory _$$GetEventsErrorCopyWith(
-          _$GetEventsError value, $Res Function(_$GetEventsError) then) =
-      __$$GetEventsErrorCopyWithImpl<$Res>;
+abstract class _$$GetEventsErrorImplCopyWith<$Res> {
+  factory _$$GetEventsErrorImplCopyWith(_$GetEventsErrorImpl value,
+          $Res Function(_$GetEventsErrorImpl) then) =
+      __$$GetEventsErrorImplCopyWithImpl<$Res>;
   @useResult
   $Res call({JsonRpcApiError error});
 
@@ -264,11 +265,11 @@ abstract class _$$GetEventsErrorCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$GetEventsErrorCopyWithImpl<$Res>
-    extends _$GetEventsCopyWithImpl<$Res, _$GetEventsError>
-    implements _$$GetEventsErrorCopyWith<$Res> {
-  __$$GetEventsErrorCopyWithImpl(
-      _$GetEventsError _value, $Res Function(_$GetEventsError) _then)
+class __$$GetEventsErrorImplCopyWithImpl<$Res>
+    extends _$GetEventsCopyWithImpl<$Res, _$GetEventsErrorImpl>
+    implements _$$GetEventsErrorImplCopyWith<$Res> {
+  __$$GetEventsErrorImplCopyWithImpl(
+      _$GetEventsErrorImpl _value, $Res Function(_$GetEventsErrorImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -276,7 +277,7 @@ class __$$GetEventsErrorCopyWithImpl<$Res>
   $Res call({
     Object? error = null,
   }) {
-    return _then(_$GetEventsError(
+    return _then(_$GetEventsErrorImpl(
       error: null == error
           ? _value.error
           : error // ignore: cast_nullable_to_non_nullable
@@ -295,12 +296,12 @@ class __$$GetEventsErrorCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$GetEventsError implements GetEventsError {
-  const _$GetEventsError({required this.error, final String? $type})
+class _$GetEventsErrorImpl implements GetEventsError {
+  const _$GetEventsErrorImpl({required this.error, final String? $type})
       : $type = $type ?? 'error';
 
-  factory _$GetEventsError.fromJson(Map<String, dynamic> json) =>
-      _$$GetEventsErrorFromJson(json);
+  factory _$GetEventsErrorImpl.fromJson(Map<String, dynamic> json) =>
+      _$$GetEventsErrorImplFromJson(json);
 
   @override
   final JsonRpcApiError error;
@@ -314,10 +315,10 @@ class _$GetEventsError implements GetEventsError {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$GetEventsError &&
+            other is _$GetEventsErrorImpl &&
             (identical(other.error, error) || other.error == error));
   }
 
@@ -328,8 +329,9 @@ class _$GetEventsError implements GetEventsError {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$GetEventsErrorCopyWith<_$GetEventsError> get copyWith =>
-      __$$GetEventsErrorCopyWithImpl<_$GetEventsError>(this, _$identity);
+  _$$GetEventsErrorImplCopyWith<_$GetEventsErrorImpl> get copyWith =>
+      __$$GetEventsErrorImplCopyWithImpl<_$GetEventsErrorImpl>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -395,7 +397,7 @@ class _$GetEventsError implements GetEventsError {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$GetEventsErrorToJson(
+    return _$$GetEventsErrorImplToJson(
       this,
     );
   }
@@ -403,14 +405,14 @@ class _$GetEventsError implements GetEventsError {
 
 abstract class GetEventsError implements GetEvents {
   const factory GetEventsError({required final JsonRpcApiError error}) =
-      _$GetEventsError;
+      _$GetEventsErrorImpl;
 
   factory GetEventsError.fromJson(Map<String, dynamic> json) =
-      _$GetEventsError.fromJson;
+      _$GetEventsErrorImpl.fromJson;
 
   JsonRpcApiError get error;
   @JsonKey(ignore: true)
-  _$$GetEventsErrorCopyWith<_$GetEventsError> get copyWith =>
+  _$$GetEventsErrorImplCopyWith<_$GetEventsErrorImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -528,11 +530,11 @@ class _$GetEventsRequestCopyWithImpl<$Res, $Val extends GetEventsRequest>
 }
 
 /// @nodoc
-abstract class _$$_GetEventsRequestCopyWith<$Res>
+abstract class _$$GetEventsRequestImplCopyWith<$Res>
     implements $GetEventsRequestCopyWith<$Res> {
-  factory _$$_GetEventsRequestCopyWith(
-          _$_GetEventsRequest value, $Res Function(_$_GetEventsRequest) then) =
-      __$$_GetEventsRequestCopyWithImpl<$Res>;
+  factory _$$GetEventsRequestImplCopyWith(_$GetEventsRequestImpl value,
+          $Res Function(_$GetEventsRequestImpl) then) =
+      __$$GetEventsRequestImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -550,11 +552,11 @@ abstract class _$$_GetEventsRequestCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_GetEventsRequestCopyWithImpl<$Res>
-    extends _$GetEventsRequestCopyWithImpl<$Res, _$_GetEventsRequest>
-    implements _$$_GetEventsRequestCopyWith<$Res> {
-  __$$_GetEventsRequestCopyWithImpl(
-      _$_GetEventsRequest _value, $Res Function(_$_GetEventsRequest) _then)
+class __$$GetEventsRequestImplCopyWithImpl<$Res>
+    extends _$GetEventsRequestCopyWithImpl<$Res, _$GetEventsRequestImpl>
+    implements _$$GetEventsRequestImplCopyWith<$Res> {
+  __$$GetEventsRequestImplCopyWithImpl(_$GetEventsRequestImpl _value,
+      $Res Function(_$GetEventsRequestImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -567,7 +569,7 @@ class __$$_GetEventsRequestCopyWithImpl<$Res>
     Object? chunkSize = null,
     Object? continuationToken = freezed,
   }) {
-    return _then(_$_GetEventsRequest(
+    return _then(_$GetEventsRequestImpl(
       fromBlock: freezed == fromBlock
           ? _value.fromBlock
           : fromBlock // ignore: cast_nullable_to_non_nullable
@@ -599,8 +601,8 @@ class __$$_GetEventsRequestCopyWithImpl<$Res>
 /// @nodoc
 
 @JsonSerializable(includeIfNull: false)
-class _$_GetEventsRequest implements _GetEventsRequest {
-  const _$_GetEventsRequest(
+class _$GetEventsRequestImpl implements _GetEventsRequest {
+  const _$GetEventsRequestImpl(
       {this.fromBlock,
       this.toBlock,
       this.address,
@@ -609,8 +611,8 @@ class _$_GetEventsRequest implements _GetEventsRequest {
       this.continuationToken})
       : _keys = keys;
 
-  factory _$_GetEventsRequest.fromJson(Map<String, dynamic> json) =>
-      _$$_GetEventsRequestFromJson(json);
+  factory _$GetEventsRequestImpl.fromJson(Map<String, dynamic> json) =>
+      _$$GetEventsRequestImplFromJson(json);
 
 // start of EVENT_FILTER
   @override
@@ -642,10 +644,10 @@ class _$_GetEventsRequest implements _GetEventsRequest {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_GetEventsRequest &&
+            other is _$GetEventsRequestImpl &&
             (identical(other.fromBlock, fromBlock) ||
                 other.fromBlock == fromBlock) &&
             (identical(other.toBlock, toBlock) || other.toBlock == toBlock) &&
@@ -665,12 +667,13 @@ class _$_GetEventsRequest implements _GetEventsRequest {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_GetEventsRequestCopyWith<_$_GetEventsRequest> get copyWith =>
-      __$$_GetEventsRequestCopyWithImpl<_$_GetEventsRequest>(this, _$identity);
+  _$$GetEventsRequestImplCopyWith<_$GetEventsRequestImpl> get copyWith =>
+      __$$GetEventsRequestImplCopyWithImpl<_$GetEventsRequestImpl>(
+          this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_GetEventsRequestToJson(
+    return _$$GetEventsRequestImplToJson(
       this,
     );
   }
@@ -683,10 +686,10 @@ abstract class _GetEventsRequest implements GetEventsRequest {
       final Felt? address,
       final List<List<Felt>>? keys,
       required final int chunkSize,
-      final String? continuationToken}) = _$_GetEventsRequest;
+      final String? continuationToken}) = _$GetEventsRequestImpl;
 
   factory _GetEventsRequest.fromJson(Map<String, dynamic> json) =
-      _$_GetEventsRequest.fromJson;
+      _$GetEventsRequestImpl.fromJson;
 
   @override // start of EVENT_FILTER
   BlockId? get fromBlock;
@@ -703,7 +706,7 @@ abstract class _GetEventsRequest implements GetEventsRequest {
   String? get continuationToken;
   @override
   @JsonKey(ignore: true)
-  _$$_GetEventsRequestCopyWith<_$_GetEventsRequest> get copyWith =>
+  _$$GetEventsRequestImplCopyWith<_$GetEventsRequestImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -761,22 +764,22 @@ class _$GetEventsResponseCopyWithImpl<$Res, $Val extends GetEventsResponse>
 }
 
 /// @nodoc
-abstract class _$$_GetEventsResponseCopyWith<$Res>
+abstract class _$$GetEventsResponseImplCopyWith<$Res>
     implements $GetEventsResponseCopyWith<$Res> {
-  factory _$$_GetEventsResponseCopyWith(_$_GetEventsResponse value,
-          $Res Function(_$_GetEventsResponse) then) =
-      __$$_GetEventsResponseCopyWithImpl<$Res>;
+  factory _$$GetEventsResponseImplCopyWith(_$GetEventsResponseImpl value,
+          $Res Function(_$GetEventsResponseImpl) then) =
+      __$$GetEventsResponseImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({List<EmittedEvent> events, String? continuation_token});
 }
 
 /// @nodoc
-class __$$_GetEventsResponseCopyWithImpl<$Res>
-    extends _$GetEventsResponseCopyWithImpl<$Res, _$_GetEventsResponse>
-    implements _$$_GetEventsResponseCopyWith<$Res> {
-  __$$_GetEventsResponseCopyWithImpl(
-      _$_GetEventsResponse _value, $Res Function(_$_GetEventsResponse) _then)
+class __$$GetEventsResponseImplCopyWithImpl<$Res>
+    extends _$GetEventsResponseCopyWithImpl<$Res, _$GetEventsResponseImpl>
+    implements _$$GetEventsResponseImplCopyWith<$Res> {
+  __$$GetEventsResponseImplCopyWithImpl(_$GetEventsResponseImpl _value,
+      $Res Function(_$GetEventsResponseImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -785,7 +788,7 @@ class __$$_GetEventsResponseCopyWithImpl<$Res>
     Object? events = null,
     Object? continuation_token = freezed,
   }) {
-    return _then(_$_GetEventsResponse(
+    return _then(_$GetEventsResponseImpl(
       events: null == events
           ? _value._events
           : events // ignore: cast_nullable_to_non_nullable
@@ -801,13 +804,13 @@ class __$$_GetEventsResponseCopyWithImpl<$Res>
 /// @nodoc
 
 @JsonSerializable(includeIfNull: false)
-class _$_GetEventsResponse implements _GetEventsResponse {
-  const _$_GetEventsResponse(
+class _$GetEventsResponseImpl implements _GetEventsResponse {
+  const _$GetEventsResponseImpl(
       {required final List<EmittedEvent> events, this.continuation_token})
       : _events = events;
 
-  factory _$_GetEventsResponse.fromJson(Map<String, dynamic> json) =>
-      _$$_GetEventsResponseFromJson(json);
+  factory _$GetEventsResponseImpl.fromJson(Map<String, dynamic> json) =>
+      _$$GetEventsResponseImplFromJson(json);
 
   final List<EmittedEvent> _events;
   @override
@@ -826,10 +829,10 @@ class _$_GetEventsResponse implements _GetEventsResponse {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_GetEventsResponse &&
+            other is _$GetEventsResponseImpl &&
             const DeepCollectionEquality().equals(other._events, _events) &&
             (identical(other.continuation_token, continuation_token) ||
                 other.continuation_token == continuation_token));
@@ -843,13 +846,13 @@ class _$_GetEventsResponse implements _GetEventsResponse {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_GetEventsResponseCopyWith<_$_GetEventsResponse> get copyWith =>
-      __$$_GetEventsResponseCopyWithImpl<_$_GetEventsResponse>(
+  _$$GetEventsResponseImplCopyWith<_$GetEventsResponseImpl> get copyWith =>
+      __$$GetEventsResponseImplCopyWithImpl<_$GetEventsResponseImpl>(
           this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_GetEventsResponseToJson(
+    return _$$GetEventsResponseImplToJson(
       this,
     );
   }
@@ -858,10 +861,10 @@ class _$_GetEventsResponse implements _GetEventsResponse {
 abstract class _GetEventsResponse implements GetEventsResponse {
   const factory _GetEventsResponse(
       {required final List<EmittedEvent> events,
-      final String? continuation_token}) = _$_GetEventsResponse;
+      final String? continuation_token}) = _$GetEventsResponseImpl;
 
   factory _GetEventsResponse.fromJson(Map<String, dynamic> json) =
-      _$_GetEventsResponse.fromJson;
+      _$GetEventsResponseImpl.fromJson;
 
   @override
   List<EmittedEvent> get events;
@@ -869,7 +872,7 @@ abstract class _GetEventsResponse implements GetEventsResponse {
   String? get continuation_token;
   @override
   @JsonKey(ignore: true)
-  _$$_GetEventsResponseCopyWith<_$_GetEventsResponse> get copyWith =>
+  _$$GetEventsResponseImplCopyWith<_$GetEventsResponseImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -957,11 +960,11 @@ class _$EmittedEventCopyWithImpl<$Res, $Val extends EmittedEvent>
 }
 
 /// @nodoc
-abstract class _$$_EmittedEventCopyWith<$Res>
+abstract class _$$EmittedEventImplCopyWith<$Res>
     implements $EmittedEventCopyWith<$Res> {
-  factory _$$_EmittedEventCopyWith(
-          _$_EmittedEvent value, $Res Function(_$_EmittedEvent) then) =
-      __$$_EmittedEventCopyWithImpl<$Res>;
+  factory _$$EmittedEventImplCopyWith(
+          _$EmittedEventImpl value, $Res Function(_$EmittedEventImpl) then) =
+      __$$EmittedEventImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -974,11 +977,11 @@ abstract class _$$_EmittedEventCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_EmittedEventCopyWithImpl<$Res>
-    extends _$EmittedEventCopyWithImpl<$Res, _$_EmittedEvent>
-    implements _$$_EmittedEventCopyWith<$Res> {
-  __$$_EmittedEventCopyWithImpl(
-      _$_EmittedEvent _value, $Res Function(_$_EmittedEvent) _then)
+class __$$EmittedEventImplCopyWithImpl<$Res>
+    extends _$EmittedEventCopyWithImpl<$Res, _$EmittedEventImpl>
+    implements _$$EmittedEventImplCopyWith<$Res> {
+  __$$EmittedEventImplCopyWithImpl(
+      _$EmittedEventImpl _value, $Res Function(_$EmittedEventImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -991,7 +994,7 @@ class __$$_EmittedEventCopyWithImpl<$Res>
     Object? blockHash = freezed,
     Object? blockNumber = freezed,
   }) {
-    return _then(_$_EmittedEvent(
+    return _then(_$EmittedEventImpl(
       fromAddress: freezed == fromAddress
           ? _value.fromAddress
           : fromAddress // ignore: cast_nullable_to_non_nullable
@@ -1023,8 +1026,8 @@ class __$$_EmittedEventCopyWithImpl<$Res>
 /// @nodoc
 
 @JsonSerializable(includeIfNull: false)
-class _$_EmittedEvent implements _EmittedEvent {
-  const _$_EmittedEvent(
+class _$EmittedEventImpl implements _EmittedEvent {
+  const _$EmittedEventImpl(
       {required this.fromAddress,
       required final List<Felt>? keys,
       required final List<Felt>? data,
@@ -1034,8 +1037,8 @@ class _$_EmittedEvent implements _EmittedEvent {
       : _keys = keys,
         _data = data;
 
-  factory _$_EmittedEvent.fromJson(Map<String, dynamic> json) =>
-      _$$_EmittedEventFromJson(json);
+  factory _$EmittedEventImpl.fromJson(Map<String, dynamic> json) =>
+      _$$EmittedEventImplFromJson(json);
 
   @override
   final Felt? fromAddress;
@@ -1072,10 +1075,10 @@ class _$_EmittedEvent implements _EmittedEvent {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_EmittedEvent &&
+            other is _$EmittedEventImpl &&
             (identical(other.fromAddress, fromAddress) ||
                 other.fromAddress == fromAddress) &&
             const DeepCollectionEquality().equals(other._keys, _keys) &&
@@ -1102,12 +1105,12 @@ class _$_EmittedEvent implements _EmittedEvent {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_EmittedEventCopyWith<_$_EmittedEvent> get copyWith =>
-      __$$_EmittedEventCopyWithImpl<_$_EmittedEvent>(this, _$identity);
+  _$$EmittedEventImplCopyWith<_$EmittedEventImpl> get copyWith =>
+      __$$EmittedEventImplCopyWithImpl<_$EmittedEventImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_EmittedEventToJson(
+    return _$$EmittedEventImplToJson(
       this,
     );
   }
@@ -1120,10 +1123,10 @@ abstract class _EmittedEvent implements EmittedEvent {
       required final List<Felt>? data,
       required final Felt? transactionHash,
       required final Felt? blockHash,
-      required final int? blockNumber}) = _$_EmittedEvent;
+      required final int? blockNumber}) = _$EmittedEventImpl;
 
   factory _EmittedEvent.fromJson(Map<String, dynamic> json) =
-      _$_EmittedEvent.fromJson;
+      _$EmittedEventImpl.fromJson;
 
   @override
   Felt? get fromAddress;
@@ -1139,6 +1142,6 @@ abstract class _EmittedEvent implements EmittedEvent {
   int? get blockNumber;
   @override
   @JsonKey(ignore: true)
-  _$$_EmittedEventCopyWith<_$_EmittedEvent> get copyWith =>
+  _$$EmittedEventImplCopyWith<_$EmittedEventImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

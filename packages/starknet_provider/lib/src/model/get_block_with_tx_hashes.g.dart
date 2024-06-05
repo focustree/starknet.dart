@@ -6,42 +6,42 @@ part of 'get_block_with_tx_hashes.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$GetBlockWithTxHashesResult _$$GetBlockWithTxHashesResultFromJson(
+_$GetBlockWithTxHashesResultImpl _$$GetBlockWithTxHashesResultImplFromJson(
         Map<String, dynamic> json) =>
-    _$GetBlockWithTxHashesResult(
+    _$GetBlockWithTxHashesResultImpl(
       BlockWithTxnHashes.fromJson(json['result'] as Map<String, dynamic>),
       $type: json['starkNetRuntimeTypeToRemove'] as String?,
     );
 
-Map<String, dynamic> _$$GetBlockWithTxHashesResultToJson(
-        _$GetBlockWithTxHashesResult instance) =>
+Map<String, dynamic> _$$GetBlockWithTxHashesResultImplToJson(
+        _$GetBlockWithTxHashesResultImpl instance) =>
     <String, dynamic>{
       'result': instance.result.toJson(),
       'starkNetRuntimeTypeToRemove': instance.$type,
     };
 
-_$GetBlockWithTxHashesError _$$GetBlockWithTxHashesErrorFromJson(
+_$GetBlockWithTxHashesErrorImpl _$$GetBlockWithTxHashesErrorImplFromJson(
         Map<String, dynamic> json) =>
-    _$GetBlockWithTxHashesError(
+    _$GetBlockWithTxHashesErrorImpl(
       error: JsonRpcApiError.fromJson(json['error'] as Map<String, dynamic>),
       $type: json['starkNetRuntimeTypeToRemove'] as String?,
     );
 
-Map<String, dynamic> _$$GetBlockWithTxHashesErrorToJson(
-        _$GetBlockWithTxHashesError instance) =>
+Map<String, dynamic> _$$GetBlockWithTxHashesErrorImplToJson(
+        _$GetBlockWithTxHashesErrorImpl instance) =>
     <String, dynamic>{
       'error': instance.error.toJson(),
       'starkNetRuntimeTypeToRemove': instance.$type,
     };
 
-_$ResultingBlock _$$ResultingBlockFromJson(Map<String, dynamic> json) =>
-    _$ResultingBlock(
+_$ResultingBlockImpl _$$ResultingBlockImplFromJson(Map<String, dynamic> json) =>
+    _$ResultingBlockImpl(
       status: json['status'] as String,
       blockHash: Felt.fromJson(json['block_hash'] as String),
       parentHash: Felt.fromJson(json['parent_hash'] as String),
-      blockNumber: json['block_number'] as int,
+      blockNumber: (json['block_number'] as num).toInt(),
       newRoot: Felt.fromJson(json['new_root'] as String),
-      timestamp: json['timestamp'] as int,
+      timestamp: (json['timestamp'] as num).toInt(),
       sequencerAddress: Felt.fromJson(json['sequencer_address'] as String),
       transactions: (json['transactions'] as List<dynamic>)
           .map((e) => Felt.fromJson(e as String))
@@ -49,7 +49,8 @@ _$ResultingBlock _$$ResultingBlockFromJson(Map<String, dynamic> json) =>
       $type: json['starkNetRuntimeTypeToRemove'] as String?,
     );
 
-Map<String, dynamic> _$$ResultingBlockToJson(_$ResultingBlock instance) =>
+Map<String, dynamic> _$$ResultingBlockImplToJson(
+        _$ResultingBlockImpl instance) =>
     <String, dynamic>{
       'status': instance.status,
       'block_hash': instance.blockHash.toJson(),
@@ -62,18 +63,18 @@ Map<String, dynamic> _$$ResultingBlockToJson(_$ResultingBlock instance) =>
       'starkNetRuntimeTypeToRemove': instance.$type,
     };
 
-_$PendingBlock _$$PendingBlockFromJson(Map<String, dynamic> json) =>
-    _$PendingBlock(
+_$PendingBlockImpl _$$PendingBlockImplFromJson(Map<String, dynamic> json) =>
+    _$PendingBlockImpl(
       transactions: (json['transactions'] as List<dynamic>)
           .map((e) => Felt.fromJson(e as String))
           .toList(),
-      timestamp: json['timestamp'] as int,
+      timestamp: (json['timestamp'] as num).toInt(),
       sequencerAddress: Felt.fromJson(json['sequencer_address'] as String),
       parentHash: Felt.fromJson(json['parent_hash'] as String),
       $type: json['starkNetRuntimeTypeToRemove'] as String?,
     );
 
-Map<String, dynamic> _$$PendingBlockToJson(_$PendingBlock instance) =>
+Map<String, dynamic> _$$PendingBlockImplToJson(_$PendingBlockImpl instance) =>
     <String, dynamic>{
       'transactions': instance.transactions.map((e) => e.toJson()).toList(),
       'timestamp': instance.timestamp,

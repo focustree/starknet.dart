@@ -6,29 +6,29 @@ part of 'get_block_txn_count.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$BlockTxnCountResult _$$BlockTxnCountResultFromJson(
+_$BlockTxnCountResultImpl _$$BlockTxnCountResultImplFromJson(
         Map<String, dynamic> json) =>
-    _$BlockTxnCountResult(
-      result: json['result'] as int,
+    _$BlockTxnCountResultImpl(
+      result: (json['result'] as num).toInt(),
       $type: json['starkNetRuntimeTypeToRemove'] as String?,
     );
 
-Map<String, dynamic> _$$BlockTxnCountResultToJson(
-        _$BlockTxnCountResult instance) =>
+Map<String, dynamic> _$$BlockTxnCountResultImplToJson(
+        _$BlockTxnCountResultImpl instance) =>
     <String, dynamic>{
       'result': instance.result,
       'starkNetRuntimeTypeToRemove': instance.$type,
     };
 
-_$GetBlockTxnCountError _$$GetBlockTxnCountErrorFromJson(
+_$GetBlockTxnCountErrorImpl _$$GetBlockTxnCountErrorImplFromJson(
         Map<String, dynamic> json) =>
-    _$GetBlockTxnCountError(
+    _$GetBlockTxnCountErrorImpl(
       error: JsonRpcApiError.fromJson(json['error'] as Map<String, dynamic>),
       $type: json['starkNetRuntimeTypeToRemove'] as String?,
     );
 
-Map<String, dynamic> _$$GetBlockTxnCountErrorToJson(
-        _$GetBlockTxnCountError instance) =>
+Map<String, dynamic> _$$GetBlockTxnCountErrorImplToJson(
+        _$GetBlockTxnCountErrorImpl instance) =>
     <String, dynamic>{
       'error': instance.error.toJson(),
       'starkNetRuntimeTypeToRemove': instance.$type,

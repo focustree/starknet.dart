@@ -6,9 +6,9 @@ part of 'deploy_account_transaction.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_DeployAccountTransactionV1 _$$_DeployAccountTransactionV1FromJson(
+_$DeployAccountTransactionV1Impl _$$DeployAccountTransactionV1ImplFromJson(
         Map<String, dynamic> json) =>
-    _$_DeployAccountTransactionV1(
+    _$DeployAccountTransactionV1Impl(
       signature: (json['signature'] as List<dynamic>)
           .map((e) => Felt.fromJson(e as String))
           .toList(),
@@ -24,8 +24,8 @@ _$_DeployAccountTransactionV1 _$$_DeployAccountTransactionV1FromJson(
       type: json['type'] as String? ?? 'DEPLOY_ACCOUNT',
     );
 
-Map<String, dynamic> _$$_DeployAccountTransactionV1ToJson(
-        _$_DeployAccountTransactionV1 instance) =>
+Map<String, dynamic> _$$DeployAccountTransactionV1ImplToJson(
+        _$DeployAccountTransactionV1Impl instance) =>
     <String, dynamic>{
       'signature': instance.signature.map((e) => e.toJson()).toList(),
       'max_fee': maxFeeToJson(instance.maxFee),
@@ -38,58 +38,59 @@ Map<String, dynamic> _$$_DeployAccountTransactionV1ToJson(
       'type': instance.type,
     };
 
-_$_DeployAccountTransactionRequest _$$_DeployAccountTransactionRequestFromJson(
-        Map<String, dynamic> json) =>
-    _$_DeployAccountTransactionRequest(
-      deployAccountTransaction: DeployAccountTransaction.fromJson(
-          json['deploy_account_transaction'] as Map<String, dynamic>),
-    );
+_$DeployAccountTransactionRequestImpl
+    _$$DeployAccountTransactionRequestImplFromJson(Map<String, dynamic> json) =>
+        _$DeployAccountTransactionRequestImpl(
+          deployAccountTransaction: DeployAccountTransaction.fromJson(
+              json['deploy_account_transaction'] as Map<String, dynamic>),
+        );
 
-Map<String, dynamic> _$$_DeployAccountTransactionRequestToJson(
-        _$_DeployAccountTransactionRequest instance) =>
+Map<String, dynamic> _$$DeployAccountTransactionRequestImplToJson(
+        _$DeployAccountTransactionRequestImpl instance) =>
     <String, dynamic>{
       'deploy_account_transaction': instance.deployAccountTransaction.toJson(),
     };
 
-_$DeployAccountTransactionResult _$$DeployAccountTransactionResultFromJson(
-        Map<String, dynamic> json) =>
-    _$DeployAccountTransactionResult(
-      result: DeployAccountTransactionResponseResult.fromJson(
-          json['result'] as Map<String, dynamic>),
-      $type: json['starkNetRuntimeTypeToRemove'] as String?,
-    );
+_$DeployAccountTransactionResultImpl
+    _$$DeployAccountTransactionResultImplFromJson(Map<String, dynamic> json) =>
+        _$DeployAccountTransactionResultImpl(
+          result: DeployAccountTransactionResponseResult.fromJson(
+              json['result'] as Map<String, dynamic>),
+          $type: json['starkNetRuntimeTypeToRemove'] as String?,
+        );
 
-Map<String, dynamic> _$$DeployAccountTransactionResultToJson(
-        _$DeployAccountTransactionResult instance) =>
+Map<String, dynamic> _$$DeployAccountTransactionResultImplToJson(
+        _$DeployAccountTransactionResultImpl instance) =>
     <String, dynamic>{
       'result': instance.result.toJson(),
       'starkNetRuntimeTypeToRemove': instance.$type,
     };
 
-_$DeployAccountTransactionError _$$DeployAccountTransactionErrorFromJson(
-        Map<String, dynamic> json) =>
-    _$DeployAccountTransactionError(
-      error: JsonRpcApiError.fromJson(json['error'] as Map<String, dynamic>),
-      $type: json['starkNetRuntimeTypeToRemove'] as String?,
-    );
+_$DeployAccountTransactionErrorImpl
+    _$$DeployAccountTransactionErrorImplFromJson(Map<String, dynamic> json) =>
+        _$DeployAccountTransactionErrorImpl(
+          error:
+              JsonRpcApiError.fromJson(json['error'] as Map<String, dynamic>),
+          $type: json['starkNetRuntimeTypeToRemove'] as String?,
+        );
 
-Map<String, dynamic> _$$DeployAccountTransactionErrorToJson(
-        _$DeployAccountTransactionError instance) =>
+Map<String, dynamic> _$$DeployAccountTransactionErrorImplToJson(
+        _$DeployAccountTransactionErrorImpl instance) =>
     <String, dynamic>{
       'error': instance.error.toJson(),
       'starkNetRuntimeTypeToRemove': instance.$type,
     };
 
-_$_DeployAccountTransactionResponseResult
-    _$$_DeployAccountTransactionResponseResultFromJson(
+_$DeployAccountTransactionResponseResultImpl
+    _$$DeployAccountTransactionResponseResultImplFromJson(
             Map<String, dynamic> json) =>
-        _$_DeployAccountTransactionResponseResult(
+        _$DeployAccountTransactionResponseResultImpl(
           transactionHash: Felt.fromJson(json['transaction_hash'] as String),
           contractAddress: Felt.fromJson(json['contract_address'] as String),
         );
 
-Map<String, dynamic> _$$_DeployAccountTransactionResponseResultToJson(
-        _$_DeployAccountTransactionResponseResult instance) =>
+Map<String, dynamic> _$$DeployAccountTransactionResponseResultImplToJson(
+        _$DeployAccountTransactionResponseResultImpl instance) =>
     <String, dynamic>{
       'transaction_hash': instance.transactionHash.toJson(),
       'contract_address': instance.contractAddress.toJson(),

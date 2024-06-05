@@ -6,25 +6,26 @@ part of 'get_class.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_GetClassResult _$$_GetClassResultFromJson(Map<String, dynamic> json) =>
-    _$_GetClassResult(
+_$GetClassResultImpl _$$GetClassResultImplFromJson(Map<String, dynamic> json) =>
+    _$GetClassResultImpl(
       result: IContractClass.fromJson(json['result'] as Map<String, dynamic>),
       $type: json['starkNetRuntimeTypeToRemove'] as String?,
     );
 
-Map<String, dynamic> _$$_GetClassResultToJson(_$_GetClassResult instance) =>
+Map<String, dynamic> _$$GetClassResultImplToJson(
+        _$GetClassResultImpl instance) =>
     <String, dynamic>{
       'result': instance.result.toJson(),
       'starkNetRuntimeTypeToRemove': instance.$type,
     };
 
-_$_GetClassError _$$_GetClassErrorFromJson(Map<String, dynamic> json) =>
-    _$_GetClassError(
+_$GetClassErrorImpl _$$GetClassErrorImplFromJson(Map<String, dynamic> json) =>
+    _$GetClassErrorImpl(
       error: JsonRpcApiError.fromJson(json['error'] as Map<String, dynamic>),
       $type: json['starkNetRuntimeTypeToRemove'] as String?,
     );
 
-Map<String, dynamic> _$$_GetClassErrorToJson(_$_GetClassError instance) =>
+Map<String, dynamic> _$$GetClassErrorImplToJson(_$GetClassErrorImpl instance) =>
     <String, dynamic>{
       'error': instance.error.toJson(),
       'starkNetRuntimeTypeToRemove': instance.$type,

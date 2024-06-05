@@ -12,7 +12,7 @@ part of 'get_class_hash_at.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 GetClassHashAt _$GetClassHashAtFromJson(Map<String, dynamic> json) {
   switch (json['starkNetRuntimeTypeToRemove']) {
@@ -92,20 +92,20 @@ class _$GetClassHashAtCopyWithImpl<$Res, $Val extends GetClassHashAt>
 }
 
 /// @nodoc
-abstract class _$$GetClassHashAtResultCopyWith<$Res> {
-  factory _$$GetClassHashAtResultCopyWith(_$GetClassHashAtResult value,
-          $Res Function(_$GetClassHashAtResult) then) =
-      __$$GetClassHashAtResultCopyWithImpl<$Res>;
+abstract class _$$GetClassHashAtResultImplCopyWith<$Res> {
+  factory _$$GetClassHashAtResultImplCopyWith(_$GetClassHashAtResultImpl value,
+          $Res Function(_$GetClassHashAtResultImpl) then) =
+      __$$GetClassHashAtResultImplCopyWithImpl<$Res>;
   @useResult
   $Res call({Felt result});
 }
 
 /// @nodoc
-class __$$GetClassHashAtResultCopyWithImpl<$Res>
-    extends _$GetClassHashAtCopyWithImpl<$Res, _$GetClassHashAtResult>
-    implements _$$GetClassHashAtResultCopyWith<$Res> {
-  __$$GetClassHashAtResultCopyWithImpl(_$GetClassHashAtResult _value,
-      $Res Function(_$GetClassHashAtResult) _then)
+class __$$GetClassHashAtResultImplCopyWithImpl<$Res>
+    extends _$GetClassHashAtCopyWithImpl<$Res, _$GetClassHashAtResultImpl>
+    implements _$$GetClassHashAtResultImplCopyWith<$Res> {
+  __$$GetClassHashAtResultImplCopyWithImpl(_$GetClassHashAtResultImpl _value,
+      $Res Function(_$GetClassHashAtResultImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -113,7 +113,7 @@ class __$$GetClassHashAtResultCopyWithImpl<$Res>
   $Res call({
     Object? result = null,
   }) {
-    return _then(_$GetClassHashAtResult(
+    return _then(_$GetClassHashAtResultImpl(
       result: null == result
           ? _value.result
           : result // ignore: cast_nullable_to_non_nullable
@@ -124,12 +124,12 @@ class __$$GetClassHashAtResultCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$GetClassHashAtResult implements GetClassHashAtResult {
-  const _$GetClassHashAtResult({required this.result, final String? $type})
+class _$GetClassHashAtResultImpl implements GetClassHashAtResult {
+  const _$GetClassHashAtResultImpl({required this.result, final String? $type})
       : $type = $type ?? 'result';
 
-  factory _$GetClassHashAtResult.fromJson(Map<String, dynamic> json) =>
-      _$$GetClassHashAtResultFromJson(json);
+  factory _$GetClassHashAtResultImpl.fromJson(Map<String, dynamic> json) =>
+      _$$GetClassHashAtResultImplFromJson(json);
 
   @override
   final Felt result;
@@ -143,10 +143,10 @@ class _$GetClassHashAtResult implements GetClassHashAtResult {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$GetClassHashAtResult &&
+            other is _$GetClassHashAtResultImpl &&
             (identical(other.result, result) || other.result == result));
   }
 
@@ -157,9 +157,10 @@ class _$GetClassHashAtResult implements GetClassHashAtResult {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$GetClassHashAtResultCopyWith<_$GetClassHashAtResult> get copyWith =>
-      __$$GetClassHashAtResultCopyWithImpl<_$GetClassHashAtResult>(
-          this, _$identity);
+  _$$GetClassHashAtResultImplCopyWith<_$GetClassHashAtResultImpl>
+      get copyWith =>
+          __$$GetClassHashAtResultImplCopyWithImpl<_$GetClassHashAtResultImpl>(
+              this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -225,7 +226,7 @@ class _$GetClassHashAtResult implements GetClassHashAtResult {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$GetClassHashAtResultToJson(
+    return _$$GetClassHashAtResultImplToJson(
       this,
     );
   }
@@ -233,22 +234,22 @@ class _$GetClassHashAtResult implements GetClassHashAtResult {
 
 abstract class GetClassHashAtResult implements GetClassHashAt {
   const factory GetClassHashAtResult({required final Felt result}) =
-      _$GetClassHashAtResult;
+      _$GetClassHashAtResultImpl;
 
   factory GetClassHashAtResult.fromJson(Map<String, dynamic> json) =
-      _$GetClassHashAtResult.fromJson;
+      _$GetClassHashAtResultImpl.fromJson;
 
   Felt get result;
   @JsonKey(ignore: true)
-  _$$GetClassHashAtResultCopyWith<_$GetClassHashAtResult> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$GetClassHashAtResultImplCopyWith<_$GetClassHashAtResultImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$GetClassHashAtErrorCopyWith<$Res> {
-  factory _$$GetClassHashAtErrorCopyWith(_$GetClassHashAtError value,
-          $Res Function(_$GetClassHashAtError) then) =
-      __$$GetClassHashAtErrorCopyWithImpl<$Res>;
+abstract class _$$GetClassHashAtErrorImplCopyWith<$Res> {
+  factory _$$GetClassHashAtErrorImplCopyWith(_$GetClassHashAtErrorImpl value,
+          $Res Function(_$GetClassHashAtErrorImpl) then) =
+      __$$GetClassHashAtErrorImplCopyWithImpl<$Res>;
   @useResult
   $Res call({JsonRpcApiError error});
 
@@ -256,11 +257,11 @@ abstract class _$$GetClassHashAtErrorCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$GetClassHashAtErrorCopyWithImpl<$Res>
-    extends _$GetClassHashAtCopyWithImpl<$Res, _$GetClassHashAtError>
-    implements _$$GetClassHashAtErrorCopyWith<$Res> {
-  __$$GetClassHashAtErrorCopyWithImpl(
-      _$GetClassHashAtError _value, $Res Function(_$GetClassHashAtError) _then)
+class __$$GetClassHashAtErrorImplCopyWithImpl<$Res>
+    extends _$GetClassHashAtCopyWithImpl<$Res, _$GetClassHashAtErrorImpl>
+    implements _$$GetClassHashAtErrorImplCopyWith<$Res> {
+  __$$GetClassHashAtErrorImplCopyWithImpl(_$GetClassHashAtErrorImpl _value,
+      $Res Function(_$GetClassHashAtErrorImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -268,7 +269,7 @@ class __$$GetClassHashAtErrorCopyWithImpl<$Res>
   $Res call({
     Object? error = null,
   }) {
-    return _then(_$GetClassHashAtError(
+    return _then(_$GetClassHashAtErrorImpl(
       error: null == error
           ? _value.error
           : error // ignore: cast_nullable_to_non_nullable
@@ -287,12 +288,12 @@ class __$$GetClassHashAtErrorCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$GetClassHashAtError implements GetClassHashAtError {
-  const _$GetClassHashAtError({required this.error, final String? $type})
+class _$GetClassHashAtErrorImpl implements GetClassHashAtError {
+  const _$GetClassHashAtErrorImpl({required this.error, final String? $type})
       : $type = $type ?? 'error';
 
-  factory _$GetClassHashAtError.fromJson(Map<String, dynamic> json) =>
-      _$$GetClassHashAtErrorFromJson(json);
+  factory _$GetClassHashAtErrorImpl.fromJson(Map<String, dynamic> json) =>
+      _$$GetClassHashAtErrorImplFromJson(json);
 
   @override
   final JsonRpcApiError error;
@@ -306,10 +307,10 @@ class _$GetClassHashAtError implements GetClassHashAtError {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$GetClassHashAtError &&
+            other is _$GetClassHashAtErrorImpl &&
             (identical(other.error, error) || other.error == error));
   }
 
@@ -320,8 +321,8 @@ class _$GetClassHashAtError implements GetClassHashAtError {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$GetClassHashAtErrorCopyWith<_$GetClassHashAtError> get copyWith =>
-      __$$GetClassHashAtErrorCopyWithImpl<_$GetClassHashAtError>(
+  _$$GetClassHashAtErrorImplCopyWith<_$GetClassHashAtErrorImpl> get copyWith =>
+      __$$GetClassHashAtErrorImplCopyWithImpl<_$GetClassHashAtErrorImpl>(
           this, _$identity);
 
   @override
@@ -388,7 +389,7 @@ class _$GetClassHashAtError implements GetClassHashAtError {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$GetClassHashAtErrorToJson(
+    return _$$GetClassHashAtErrorImplToJson(
       this,
     );
   }
@@ -396,13 +397,13 @@ class _$GetClassHashAtError implements GetClassHashAtError {
 
 abstract class GetClassHashAtError implements GetClassHashAt {
   const factory GetClassHashAtError({required final JsonRpcApiError error}) =
-      _$GetClassHashAtError;
+      _$GetClassHashAtErrorImpl;
 
   factory GetClassHashAtError.fromJson(Map<String, dynamic> json) =
-      _$GetClassHashAtError.fromJson;
+      _$GetClassHashAtErrorImpl.fromJson;
 
   JsonRpcApiError get error;
   @JsonKey(ignore: true)
-  _$$GetClassHashAtErrorCopyWith<_$GetClassHashAtError> get copyWith =>
+  _$$GetClassHashAtErrorImplCopyWith<_$GetClassHashAtErrorImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

@@ -12,7 +12,7 @@ part of 'estimate_fee.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 EstimateFee _$EstimateFeeFromJson(Map<String, dynamic> json) {
   switch (json['starkNetRuntimeTypeToRemove']) {
@@ -92,20 +92,20 @@ class _$EstimateFeeCopyWithImpl<$Res, $Val extends EstimateFee>
 }
 
 /// @nodoc
-abstract class _$$EstimateFeeResultCopyWith<$Res> {
-  factory _$$EstimateFeeResultCopyWith(
-          _$EstimateFeeResult value, $Res Function(_$EstimateFeeResult) then) =
-      __$$EstimateFeeResultCopyWithImpl<$Res>;
+abstract class _$$EstimateFeeResultImplCopyWith<$Res> {
+  factory _$$EstimateFeeResultImplCopyWith(_$EstimateFeeResultImpl value,
+          $Res Function(_$EstimateFeeResultImpl) then) =
+      __$$EstimateFeeResultImplCopyWithImpl<$Res>;
   @useResult
   $Res call({List<FeeEstimate> result});
 }
 
 /// @nodoc
-class __$$EstimateFeeResultCopyWithImpl<$Res>
-    extends _$EstimateFeeCopyWithImpl<$Res, _$EstimateFeeResult>
-    implements _$$EstimateFeeResultCopyWith<$Res> {
-  __$$EstimateFeeResultCopyWithImpl(
-      _$EstimateFeeResult _value, $Res Function(_$EstimateFeeResult) _then)
+class __$$EstimateFeeResultImplCopyWithImpl<$Res>
+    extends _$EstimateFeeCopyWithImpl<$Res, _$EstimateFeeResultImpl>
+    implements _$$EstimateFeeResultImplCopyWith<$Res> {
+  __$$EstimateFeeResultImplCopyWithImpl(_$EstimateFeeResultImpl _value,
+      $Res Function(_$EstimateFeeResultImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -113,7 +113,7 @@ class __$$EstimateFeeResultCopyWithImpl<$Res>
   $Res call({
     Object? result = null,
   }) {
-    return _then(_$EstimateFeeResult(
+    return _then(_$EstimateFeeResultImpl(
       result: null == result
           ? _value._result
           : result // ignore: cast_nullable_to_non_nullable
@@ -124,14 +124,14 @@ class __$$EstimateFeeResultCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$EstimateFeeResult implements EstimateFeeResult {
-  const _$EstimateFeeResult(
+class _$EstimateFeeResultImpl implements EstimateFeeResult {
+  const _$EstimateFeeResultImpl(
       {required final List<FeeEstimate> result, final String? $type})
       : _result = result,
         $type = $type ?? 'result';
 
-  factory _$EstimateFeeResult.fromJson(Map<String, dynamic> json) =>
-      _$$EstimateFeeResultFromJson(json);
+  factory _$EstimateFeeResultImpl.fromJson(Map<String, dynamic> json) =>
+      _$$EstimateFeeResultImplFromJson(json);
 
   final List<FeeEstimate> _result;
   @override
@@ -150,10 +150,10 @@ class _$EstimateFeeResult implements EstimateFeeResult {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$EstimateFeeResult &&
+            other is _$EstimateFeeResultImpl &&
             const DeepCollectionEquality().equals(other._result, _result));
   }
 
@@ -165,8 +165,9 @@ class _$EstimateFeeResult implements EstimateFeeResult {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$EstimateFeeResultCopyWith<_$EstimateFeeResult> get copyWith =>
-      __$$EstimateFeeResultCopyWithImpl<_$EstimateFeeResult>(this, _$identity);
+  _$$EstimateFeeResultImplCopyWith<_$EstimateFeeResultImpl> get copyWith =>
+      __$$EstimateFeeResultImplCopyWithImpl<_$EstimateFeeResultImpl>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -232,7 +233,7 @@ class _$EstimateFeeResult implements EstimateFeeResult {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$EstimateFeeResultToJson(
+    return _$$EstimateFeeResultImplToJson(
       this,
     );
   }
@@ -240,22 +241,22 @@ class _$EstimateFeeResult implements EstimateFeeResult {
 
 abstract class EstimateFeeResult implements EstimateFee {
   const factory EstimateFeeResult({required final List<FeeEstimate> result}) =
-      _$EstimateFeeResult;
+      _$EstimateFeeResultImpl;
 
   factory EstimateFeeResult.fromJson(Map<String, dynamic> json) =
-      _$EstimateFeeResult.fromJson;
+      _$EstimateFeeResultImpl.fromJson;
 
   List<FeeEstimate> get result;
   @JsonKey(ignore: true)
-  _$$EstimateFeeResultCopyWith<_$EstimateFeeResult> get copyWith =>
+  _$$EstimateFeeResultImplCopyWith<_$EstimateFeeResultImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$EstimateFeeErrorCopyWith<$Res> {
-  factory _$$EstimateFeeErrorCopyWith(
-          _$EstimateFeeError value, $Res Function(_$EstimateFeeError) then) =
-      __$$EstimateFeeErrorCopyWithImpl<$Res>;
+abstract class _$$EstimateFeeErrorImplCopyWith<$Res> {
+  factory _$$EstimateFeeErrorImplCopyWith(_$EstimateFeeErrorImpl value,
+          $Res Function(_$EstimateFeeErrorImpl) then) =
+      __$$EstimateFeeErrorImplCopyWithImpl<$Res>;
   @useResult
   $Res call({JsonRpcApiError error});
 
@@ -263,11 +264,11 @@ abstract class _$$EstimateFeeErrorCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$EstimateFeeErrorCopyWithImpl<$Res>
-    extends _$EstimateFeeCopyWithImpl<$Res, _$EstimateFeeError>
-    implements _$$EstimateFeeErrorCopyWith<$Res> {
-  __$$EstimateFeeErrorCopyWithImpl(
-      _$EstimateFeeError _value, $Res Function(_$EstimateFeeError) _then)
+class __$$EstimateFeeErrorImplCopyWithImpl<$Res>
+    extends _$EstimateFeeCopyWithImpl<$Res, _$EstimateFeeErrorImpl>
+    implements _$$EstimateFeeErrorImplCopyWith<$Res> {
+  __$$EstimateFeeErrorImplCopyWithImpl(_$EstimateFeeErrorImpl _value,
+      $Res Function(_$EstimateFeeErrorImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -275,7 +276,7 @@ class __$$EstimateFeeErrorCopyWithImpl<$Res>
   $Res call({
     Object? error = null,
   }) {
-    return _then(_$EstimateFeeError(
+    return _then(_$EstimateFeeErrorImpl(
       error: null == error
           ? _value.error
           : error // ignore: cast_nullable_to_non_nullable
@@ -294,12 +295,12 @@ class __$$EstimateFeeErrorCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$EstimateFeeError implements EstimateFeeError {
-  const _$EstimateFeeError({required this.error, final String? $type})
+class _$EstimateFeeErrorImpl implements EstimateFeeError {
+  const _$EstimateFeeErrorImpl({required this.error, final String? $type})
       : $type = $type ?? 'error';
 
-  factory _$EstimateFeeError.fromJson(Map<String, dynamic> json) =>
-      _$$EstimateFeeErrorFromJson(json);
+  factory _$EstimateFeeErrorImpl.fromJson(Map<String, dynamic> json) =>
+      _$$EstimateFeeErrorImplFromJson(json);
 
   @override
   final JsonRpcApiError error;
@@ -313,10 +314,10 @@ class _$EstimateFeeError implements EstimateFeeError {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$EstimateFeeError &&
+            other is _$EstimateFeeErrorImpl &&
             (identical(other.error, error) || other.error == error));
   }
 
@@ -327,8 +328,9 @@ class _$EstimateFeeError implements EstimateFeeError {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$EstimateFeeErrorCopyWith<_$EstimateFeeError> get copyWith =>
-      __$$EstimateFeeErrorCopyWithImpl<_$EstimateFeeError>(this, _$identity);
+  _$$EstimateFeeErrorImplCopyWith<_$EstimateFeeErrorImpl> get copyWith =>
+      __$$EstimateFeeErrorImplCopyWithImpl<_$EstimateFeeErrorImpl>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -394,7 +396,7 @@ class _$EstimateFeeError implements EstimateFeeError {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$EstimateFeeErrorToJson(
+    return _$$EstimateFeeErrorImplToJson(
       this,
     );
   }
@@ -402,14 +404,14 @@ class _$EstimateFeeError implements EstimateFeeError {
 
 abstract class EstimateFeeError implements EstimateFee {
   const factory EstimateFeeError({required final JsonRpcApiError error}) =
-      _$EstimateFeeError;
+      _$EstimateFeeErrorImpl;
 
   factory EstimateFeeError.fromJson(Map<String, dynamic> json) =
-      _$EstimateFeeError.fromJson;
+      _$EstimateFeeErrorImpl.fromJson;
 
   JsonRpcApiError get error;
   @JsonKey(ignore: true)
-  _$$EstimateFeeErrorCopyWith<_$EstimateFeeError> get copyWith =>
+  _$$EstimateFeeErrorImplCopyWith<_$EstimateFeeErrorImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -667,11 +669,12 @@ class _$BroadcastedTxnCopyWithImpl<$Res, $Val extends BroadcastedTxn>
 }
 
 /// @nodoc
-abstract class _$$BroadcastedInvokeTxnV0CopyWith<$Res>
+abstract class _$$BroadcastedInvokeTxnV0ImplCopyWith<$Res>
     implements $BroadcastedTxnCopyWith<$Res> {
-  factory _$$BroadcastedInvokeTxnV0CopyWith(_$BroadcastedInvokeTxnV0 value,
-          $Res Function(_$BroadcastedInvokeTxnV0) then) =
-      __$$BroadcastedInvokeTxnV0CopyWithImpl<$Res>;
+  factory _$$BroadcastedInvokeTxnV0ImplCopyWith(
+          _$BroadcastedInvokeTxnV0Impl value,
+          $Res Function(_$BroadcastedInvokeTxnV0Impl) then) =
+      __$$BroadcastedInvokeTxnV0ImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -686,11 +689,12 @@ abstract class _$$BroadcastedInvokeTxnV0CopyWith<$Res>
 }
 
 /// @nodoc
-class __$$BroadcastedInvokeTxnV0CopyWithImpl<$Res>
-    extends _$BroadcastedTxnCopyWithImpl<$Res, _$BroadcastedInvokeTxnV0>
-    implements _$$BroadcastedInvokeTxnV0CopyWith<$Res> {
-  __$$BroadcastedInvokeTxnV0CopyWithImpl(_$BroadcastedInvokeTxnV0 _value,
-      $Res Function(_$BroadcastedInvokeTxnV0) _then)
+class __$$BroadcastedInvokeTxnV0ImplCopyWithImpl<$Res>
+    extends _$BroadcastedTxnCopyWithImpl<$Res, _$BroadcastedInvokeTxnV0Impl>
+    implements _$$BroadcastedInvokeTxnV0ImplCopyWith<$Res> {
+  __$$BroadcastedInvokeTxnV0ImplCopyWithImpl(
+      _$BroadcastedInvokeTxnV0Impl _value,
+      $Res Function(_$BroadcastedInvokeTxnV0Impl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -705,7 +709,7 @@ class __$$BroadcastedInvokeTxnV0CopyWithImpl<$Res>
     Object? entryPointSelector = null,
     Object? calldata = null,
   }) {
-    return _then(_$BroadcastedInvokeTxnV0(
+    return _then(_$BroadcastedInvokeTxnV0Impl(
       type: null == type
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
@@ -745,8 +749,8 @@ class __$$BroadcastedInvokeTxnV0CopyWithImpl<$Res>
 /// @nodoc
 
 @JsonSerializable(includeIfNull: false)
-class _$BroadcastedInvokeTxnV0 implements BroadcastedInvokeTxnV0 {
-  const _$BroadcastedInvokeTxnV0(
+class _$BroadcastedInvokeTxnV0Impl implements BroadcastedInvokeTxnV0 {
+  const _$BroadcastedInvokeTxnV0Impl(
       {required this.type,
       @JsonKey(toJson: maxFeeToJson) required this.maxFee,
       required this.version,
@@ -760,8 +764,8 @@ class _$BroadcastedInvokeTxnV0 implements BroadcastedInvokeTxnV0 {
         _calldata = calldata,
         $type = $type ?? 'broadcastedInvokeTxnV0';
 
-  factory _$BroadcastedInvokeTxnV0.fromJson(Map<String, dynamic> json) =>
-      _$$BroadcastedInvokeTxnV0FromJson(json);
+  factory _$BroadcastedInvokeTxnV0Impl.fromJson(Map<String, dynamic> json) =>
+      _$$BroadcastedInvokeTxnV0ImplFromJson(json);
 
 // start of BROADCASTED_TXN_COMMON_PROPERTIES
   @override
@@ -804,10 +808,10 @@ class _$BroadcastedInvokeTxnV0 implements BroadcastedInvokeTxnV0 {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$BroadcastedInvokeTxnV0 &&
+            other is _$BroadcastedInvokeTxnV0Impl &&
             (identical(other.type, type) || other.type == type) &&
             (identical(other.maxFee, maxFee) || other.maxFee == maxFee) &&
             (identical(other.version, version) || other.version == version) &&
@@ -837,9 +841,9 @@ class _$BroadcastedInvokeTxnV0 implements BroadcastedInvokeTxnV0 {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$BroadcastedInvokeTxnV0CopyWith<_$BroadcastedInvokeTxnV0> get copyWith =>
-      __$$BroadcastedInvokeTxnV0CopyWithImpl<_$BroadcastedInvokeTxnV0>(
-          this, _$identity);
+  _$$BroadcastedInvokeTxnV0ImplCopyWith<_$BroadcastedInvokeTxnV0Impl>
+      get copyWith => __$$BroadcastedInvokeTxnV0ImplCopyWithImpl<
+          _$BroadcastedInvokeTxnV0Impl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1052,7 +1056,7 @@ class _$BroadcastedInvokeTxnV0 implements BroadcastedInvokeTxnV0 {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$BroadcastedInvokeTxnV0ToJson(
+    return _$$BroadcastedInvokeTxnV0ImplToJson(
       this,
     );
   }
@@ -1067,10 +1071,10 @@ abstract class BroadcastedInvokeTxnV0 implements BroadcastedTxn {
       final Felt? nonce,
       required final Felt contractAddress,
       required final Felt entryPointSelector,
-      required final List<Felt> calldata}) = _$BroadcastedInvokeTxnV0;
+      required final List<Felt> calldata}) = _$BroadcastedInvokeTxnV0Impl;
 
   factory BroadcastedInvokeTxnV0.fromJson(Map<String, dynamic> json) =
-      _$BroadcastedInvokeTxnV0.fromJson;
+      _$BroadcastedInvokeTxnV0Impl.fromJson;
 
   @override // start of BROADCASTED_TXN_COMMON_PROPERTIES
   String get type;
@@ -1086,16 +1090,17 @@ abstract class BroadcastedInvokeTxnV0 implements BroadcastedTxn {
   List<Felt> get calldata;
   @override
   @JsonKey(ignore: true)
-  _$$BroadcastedInvokeTxnV0CopyWith<_$BroadcastedInvokeTxnV0> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$BroadcastedInvokeTxnV0ImplCopyWith<_$BroadcastedInvokeTxnV0Impl>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$BroadcastedInvokeTxnV1CopyWith<$Res>
+abstract class _$$BroadcastedInvokeTxnV1ImplCopyWith<$Res>
     implements $BroadcastedTxnCopyWith<$Res> {
-  factory _$$BroadcastedInvokeTxnV1CopyWith(_$BroadcastedInvokeTxnV1 value,
-          $Res Function(_$BroadcastedInvokeTxnV1) then) =
-      __$$BroadcastedInvokeTxnV1CopyWithImpl<$Res>;
+  factory _$$BroadcastedInvokeTxnV1ImplCopyWith(
+          _$BroadcastedInvokeTxnV1Impl value,
+          $Res Function(_$BroadcastedInvokeTxnV1Impl) then) =
+      __$$BroadcastedInvokeTxnV1ImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -1109,11 +1114,12 @@ abstract class _$$BroadcastedInvokeTxnV1CopyWith<$Res>
 }
 
 /// @nodoc
-class __$$BroadcastedInvokeTxnV1CopyWithImpl<$Res>
-    extends _$BroadcastedTxnCopyWithImpl<$Res, _$BroadcastedInvokeTxnV1>
-    implements _$$BroadcastedInvokeTxnV1CopyWith<$Res> {
-  __$$BroadcastedInvokeTxnV1CopyWithImpl(_$BroadcastedInvokeTxnV1 _value,
-      $Res Function(_$BroadcastedInvokeTxnV1) _then)
+class __$$BroadcastedInvokeTxnV1ImplCopyWithImpl<$Res>
+    extends _$BroadcastedTxnCopyWithImpl<$Res, _$BroadcastedInvokeTxnV1Impl>
+    implements _$$BroadcastedInvokeTxnV1ImplCopyWith<$Res> {
+  __$$BroadcastedInvokeTxnV1ImplCopyWithImpl(
+      _$BroadcastedInvokeTxnV1Impl _value,
+      $Res Function(_$BroadcastedInvokeTxnV1Impl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -1127,7 +1133,7 @@ class __$$BroadcastedInvokeTxnV1CopyWithImpl<$Res>
     Object? senderAddress = null,
     Object? calldata = null,
   }) {
-    return _then(_$BroadcastedInvokeTxnV1(
+    return _then(_$BroadcastedInvokeTxnV1Impl(
       type: null == type
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
@@ -1163,8 +1169,8 @@ class __$$BroadcastedInvokeTxnV1CopyWithImpl<$Res>
 /// @nodoc
 
 @JsonSerializable(includeIfNull: false)
-class _$BroadcastedInvokeTxnV1 implements BroadcastedInvokeTxnV1 {
-  const _$BroadcastedInvokeTxnV1(
+class _$BroadcastedInvokeTxnV1Impl implements BroadcastedInvokeTxnV1 {
+  const _$BroadcastedInvokeTxnV1Impl(
       {required this.type,
       @JsonKey(toJson: maxFeeToJson) required this.maxFee,
       required this.version,
@@ -1177,8 +1183,8 @@ class _$BroadcastedInvokeTxnV1 implements BroadcastedInvokeTxnV1 {
         _calldata = calldata,
         $type = $type ?? 'broadcastedInvokeTxnV1';
 
-  factory _$BroadcastedInvokeTxnV1.fromJson(Map<String, dynamic> json) =>
-      _$$BroadcastedInvokeTxnV1FromJson(json);
+  factory _$BroadcastedInvokeTxnV1Impl.fromJson(Map<String, dynamic> json) =>
+      _$$BroadcastedInvokeTxnV1ImplFromJson(json);
 
 // start of BROADCASTED_TXN_COMMON_PROPERTIES
   @override
@@ -1219,10 +1225,10 @@ class _$BroadcastedInvokeTxnV1 implements BroadcastedInvokeTxnV1 {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$BroadcastedInvokeTxnV1 &&
+            other is _$BroadcastedInvokeTxnV1Impl &&
             (identical(other.type, type) || other.type == type) &&
             (identical(other.maxFee, maxFee) || other.maxFee == maxFee) &&
             (identical(other.version, version) || other.version == version) &&
@@ -1249,9 +1255,9 @@ class _$BroadcastedInvokeTxnV1 implements BroadcastedInvokeTxnV1 {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$BroadcastedInvokeTxnV1CopyWith<_$BroadcastedInvokeTxnV1> get copyWith =>
-      __$$BroadcastedInvokeTxnV1CopyWithImpl<_$BroadcastedInvokeTxnV1>(
-          this, _$identity);
+  _$$BroadcastedInvokeTxnV1ImplCopyWith<_$BroadcastedInvokeTxnV1Impl>
+      get copyWith => __$$BroadcastedInvokeTxnV1ImplCopyWithImpl<
+          _$BroadcastedInvokeTxnV1Impl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1464,7 +1470,7 @@ class _$BroadcastedInvokeTxnV1 implements BroadcastedInvokeTxnV1 {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$BroadcastedInvokeTxnV1ToJson(
+    return _$$BroadcastedInvokeTxnV1ImplToJson(
       this,
     );
   }
@@ -1478,10 +1484,10 @@ abstract class BroadcastedInvokeTxnV1 implements BroadcastedTxn {
       required final List<Felt> signature,
       required final Felt nonce,
       required final Felt senderAddress,
-      required final List<Felt> calldata}) = _$BroadcastedInvokeTxnV1;
+      required final List<Felt> calldata}) = _$BroadcastedInvokeTxnV1Impl;
 
   factory BroadcastedInvokeTxnV1.fromJson(Map<String, dynamic> json) =
-      _$BroadcastedInvokeTxnV1.fromJson;
+      _$BroadcastedInvokeTxnV1Impl.fromJson;
 
   @override // start of BROADCASTED_TXN_COMMON_PROPERTIES
   String get type;
@@ -1496,16 +1502,17 @@ abstract class BroadcastedInvokeTxnV1 implements BroadcastedTxn {
   List<Felt> get calldata;
   @override
   @JsonKey(ignore: true)
-  _$$BroadcastedInvokeTxnV1CopyWith<_$BroadcastedInvokeTxnV1> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$BroadcastedInvokeTxnV1ImplCopyWith<_$BroadcastedInvokeTxnV1Impl>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$BroadcastedDeclareTxnCopyWith<$Res>
+abstract class _$$BroadcastedDeclareTxnImplCopyWith<$Res>
     implements $BroadcastedTxnCopyWith<$Res> {
-  factory _$$BroadcastedDeclareTxnCopyWith(_$BroadcastedDeclareTxn value,
-          $Res Function(_$BroadcastedDeclareTxn) then) =
-      __$$BroadcastedDeclareTxnCopyWithImpl<$Res>;
+  factory _$$BroadcastedDeclareTxnImplCopyWith(
+          _$BroadcastedDeclareTxnImpl value,
+          $Res Function(_$BroadcastedDeclareTxnImpl) then) =
+      __$$BroadcastedDeclareTxnImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -1521,11 +1528,11 @@ abstract class _$$BroadcastedDeclareTxnCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$BroadcastedDeclareTxnCopyWithImpl<$Res>
-    extends _$BroadcastedTxnCopyWithImpl<$Res, _$BroadcastedDeclareTxn>
-    implements _$$BroadcastedDeclareTxnCopyWith<$Res> {
-  __$$BroadcastedDeclareTxnCopyWithImpl(_$BroadcastedDeclareTxn _value,
-      $Res Function(_$BroadcastedDeclareTxn) _then)
+class __$$BroadcastedDeclareTxnImplCopyWithImpl<$Res>
+    extends _$BroadcastedTxnCopyWithImpl<$Res, _$BroadcastedDeclareTxnImpl>
+    implements _$$BroadcastedDeclareTxnImplCopyWith<$Res> {
+  __$$BroadcastedDeclareTxnImplCopyWithImpl(_$BroadcastedDeclareTxnImpl _value,
+      $Res Function(_$BroadcastedDeclareTxnImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -1539,7 +1546,7 @@ class __$$BroadcastedDeclareTxnCopyWithImpl<$Res>
     Object? contractClass = null,
     Object? senderAddress = null,
   }) {
-    return _then(_$BroadcastedDeclareTxn(
+    return _then(_$BroadcastedDeclareTxnImpl(
       type: null == type
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
@@ -1584,8 +1591,8 @@ class __$$BroadcastedDeclareTxnCopyWithImpl<$Res>
 /// @nodoc
 
 @JsonSerializable(includeIfNull: false)
-class _$BroadcastedDeclareTxn implements BroadcastedDeclareTxn {
-  const _$BroadcastedDeclareTxn(
+class _$BroadcastedDeclareTxnImpl implements BroadcastedDeclareTxn {
+  const _$BroadcastedDeclareTxnImpl(
       {required this.type,
       @JsonKey(toJson: maxFeeToJson) required this.maxFee,
       required this.version,
@@ -1597,8 +1604,8 @@ class _$BroadcastedDeclareTxn implements BroadcastedDeclareTxn {
       : _signature = signature,
         $type = $type ?? 'broadcastedDeclareTxn';
 
-  factory _$BroadcastedDeclareTxn.fromJson(Map<String, dynamic> json) =>
-      _$$BroadcastedDeclareTxnFromJson(json);
+  factory _$BroadcastedDeclareTxnImpl.fromJson(Map<String, dynamic> json) =>
+      _$$BroadcastedDeclareTxnImplFromJson(json);
 
 // start of BROADCASTED_TXN_COMMON_PROPERTIES
   @override
@@ -1633,10 +1640,10 @@ class _$BroadcastedDeclareTxn implements BroadcastedDeclareTxn {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$BroadcastedDeclareTxn &&
+            other is _$BroadcastedDeclareTxnImpl &&
             (identical(other.type, type) || other.type == type) &&
             (identical(other.maxFee, maxFee) || other.maxFee == maxFee) &&
             (identical(other.version, version) || other.version == version) &&
@@ -1664,9 +1671,9 @@ class _$BroadcastedDeclareTxn implements BroadcastedDeclareTxn {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$BroadcastedDeclareTxnCopyWith<_$BroadcastedDeclareTxn> get copyWith =>
-      __$$BroadcastedDeclareTxnCopyWithImpl<_$BroadcastedDeclareTxn>(
-          this, _$identity);
+  _$$BroadcastedDeclareTxnImplCopyWith<_$BroadcastedDeclareTxnImpl>
+      get copyWith => __$$BroadcastedDeclareTxnImplCopyWithImpl<
+          _$BroadcastedDeclareTxnImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1879,7 +1886,7 @@ class _$BroadcastedDeclareTxn implements BroadcastedDeclareTxn {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$BroadcastedDeclareTxnToJson(
+    return _$$BroadcastedDeclareTxnImplToJson(
       this,
     );
   }
@@ -1893,10 +1900,10 @@ abstract class BroadcastedDeclareTxn implements BroadcastedTxn {
       required final List<Felt> signature,
       required final Felt nonce,
       required final DeprecatedContractClass contractClass,
-      required final Felt senderAddress}) = _$BroadcastedDeclareTxn;
+      required final Felt senderAddress}) = _$BroadcastedDeclareTxnImpl;
 
   factory BroadcastedDeclareTxn.fromJson(Map<String, dynamic> json) =
-      _$BroadcastedDeclareTxn.fromJson;
+      _$BroadcastedDeclareTxnImpl.fromJson;
 
   @override // start of BROADCASTED_TXN_COMMON_PROPERTIES
   String get type;
@@ -1910,16 +1917,16 @@ abstract class BroadcastedDeclareTxn implements BroadcastedTxn {
   Felt get senderAddress;
   @override
   @JsonKey(ignore: true)
-  _$$BroadcastedDeclareTxnCopyWith<_$BroadcastedDeclareTxn> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$BroadcastedDeclareTxnImplCopyWith<_$BroadcastedDeclareTxnImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$BroadcastedDeployTxnCopyWith<$Res>
+abstract class _$$BroadcastedDeployTxnImplCopyWith<$Res>
     implements $BroadcastedTxnCopyWith<$Res> {
-  factory _$$BroadcastedDeployTxnCopyWith(_$BroadcastedDeployTxn value,
-          $Res Function(_$BroadcastedDeployTxn) then) =
-      __$$BroadcastedDeployTxnCopyWithImpl<$Res>;
+  factory _$$BroadcastedDeployTxnImplCopyWith(_$BroadcastedDeployTxnImpl value,
+          $Res Function(_$BroadcastedDeployTxnImpl) then) =
+      __$$BroadcastedDeployTxnImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -1933,11 +1940,11 @@ abstract class _$$BroadcastedDeployTxnCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$BroadcastedDeployTxnCopyWithImpl<$Res>
-    extends _$BroadcastedTxnCopyWithImpl<$Res, _$BroadcastedDeployTxn>
-    implements _$$BroadcastedDeployTxnCopyWith<$Res> {
-  __$$BroadcastedDeployTxnCopyWithImpl(_$BroadcastedDeployTxn _value,
-      $Res Function(_$BroadcastedDeployTxn) _then)
+class __$$BroadcastedDeployTxnImplCopyWithImpl<$Res>
+    extends _$BroadcastedTxnCopyWithImpl<$Res, _$BroadcastedDeployTxnImpl>
+    implements _$$BroadcastedDeployTxnImplCopyWith<$Res> {
+  __$$BroadcastedDeployTxnImplCopyWithImpl(_$BroadcastedDeployTxnImpl _value,
+      $Res Function(_$BroadcastedDeployTxnImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -1949,7 +1956,7 @@ class __$$BroadcastedDeployTxnCopyWithImpl<$Res>
     Object? contractAddressSalt = null,
     Object? constructorCalldata = null,
   }) {
-    return _then(_$BroadcastedDeployTxn(
+    return _then(_$BroadcastedDeployTxnImpl(
       contractClass: null == contractClass
           ? _value.contractClass
           : contractClass // ignore: cast_nullable_to_non_nullable
@@ -1986,8 +1993,8 @@ class __$$BroadcastedDeployTxnCopyWithImpl<$Res>
 /// @nodoc
 
 @JsonSerializable(includeIfNull: false)
-class _$BroadcastedDeployTxn implements BroadcastedDeployTxn {
-  const _$BroadcastedDeployTxn(
+class _$BroadcastedDeployTxnImpl implements BroadcastedDeployTxn {
+  const _$BroadcastedDeployTxnImpl(
       {required this.contractClass,
       required this.version,
       required this.type,
@@ -1997,8 +2004,8 @@ class _$BroadcastedDeployTxn implements BroadcastedDeployTxn {
       : _constructorCalldata = constructorCalldata,
         $type = $type ?? 'broadcastedDeployTxn';
 
-  factory _$BroadcastedDeployTxn.fromJson(Map<String, dynamic> json) =>
-      _$$BroadcastedDeployTxnFromJson(json);
+  factory _$BroadcastedDeployTxnImpl.fromJson(Map<String, dynamic> json) =>
+      _$$BroadcastedDeployTxnImplFromJson(json);
 
   @override
   final DeprecatedContractClass contractClass;
@@ -2027,10 +2034,10 @@ class _$BroadcastedDeployTxn implements BroadcastedDeployTxn {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$BroadcastedDeployTxn &&
+            other is _$BroadcastedDeployTxnImpl &&
             (identical(other.contractClass, contractClass) ||
                 other.contractClass == contractClass) &&
             (identical(other.version, version) || other.version == version) &&
@@ -2054,9 +2061,10 @@ class _$BroadcastedDeployTxn implements BroadcastedDeployTxn {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$BroadcastedDeployTxnCopyWith<_$BroadcastedDeployTxn> get copyWith =>
-      __$$BroadcastedDeployTxnCopyWithImpl<_$BroadcastedDeployTxn>(
-          this, _$identity);
+  _$$BroadcastedDeployTxnImplCopyWith<_$BroadcastedDeployTxnImpl>
+      get copyWith =>
+          __$$BroadcastedDeployTxnImplCopyWithImpl<_$BroadcastedDeployTxnImpl>(
+              this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -2269,7 +2277,7 @@ class _$BroadcastedDeployTxn implements BroadcastedDeployTxn {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$BroadcastedDeployTxnToJson(
+    return _$$BroadcastedDeployTxnImplToJson(
       this,
     );
   }
@@ -2277,14 +2285,15 @@ class _$BroadcastedDeployTxn implements BroadcastedDeployTxn {
 
 abstract class BroadcastedDeployTxn implements BroadcastedTxn {
   const factory BroadcastedDeployTxn(
-      {required final DeprecatedContractClass contractClass,
-      required final String version,
-      required final String type,
-      required final Felt contractAddressSalt,
-      required final List<Felt> constructorCalldata}) = _$BroadcastedDeployTxn;
+          {required final DeprecatedContractClass contractClass,
+          required final String version,
+          required final String type,
+          required final Felt contractAddressSalt,
+          required final List<Felt> constructorCalldata}) =
+      _$BroadcastedDeployTxnImpl;
 
   factory BroadcastedDeployTxn.fromJson(Map<String, dynamic> json) =
-      _$BroadcastedDeployTxn.fromJson;
+      _$BroadcastedDeployTxnImpl.fromJson;
 
   DeprecatedContractClass get contractClass;
   @override // start of DEPLOY_TXN_PROPERTIES
@@ -2295,17 +2304,17 @@ abstract class BroadcastedDeployTxn implements BroadcastedTxn {
   List<Felt> get constructorCalldata;
   @override
   @JsonKey(ignore: true)
-  _$$BroadcastedDeployTxnCopyWith<_$BroadcastedDeployTxn> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$BroadcastedDeployTxnImplCopyWith<_$BroadcastedDeployTxnImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$BroadcastedDeployAccountTxnCopyWith<$Res>
+abstract class _$$BroadcastedDeployAccountTxnImplCopyWith<$Res>
     implements $BroadcastedTxnCopyWith<$Res> {
-  factory _$$BroadcastedDeployAccountTxnCopyWith(
-          _$BroadcastedDeployAccountTxn value,
-          $Res Function(_$BroadcastedDeployAccountTxn) then) =
-      __$$BroadcastedDeployAccountTxnCopyWithImpl<$Res>;
+  factory _$$BroadcastedDeployAccountTxnImplCopyWith(
+          _$BroadcastedDeployAccountTxnImpl value,
+          $Res Function(_$BroadcastedDeployAccountTxnImpl) then) =
+      __$$BroadcastedDeployAccountTxnImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -2320,12 +2329,13 @@ abstract class _$$BroadcastedDeployAccountTxnCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$BroadcastedDeployAccountTxnCopyWithImpl<$Res>
-    extends _$BroadcastedTxnCopyWithImpl<$Res, _$BroadcastedDeployAccountTxn>
-    implements _$$BroadcastedDeployAccountTxnCopyWith<$Res> {
-  __$$BroadcastedDeployAccountTxnCopyWithImpl(
-      _$BroadcastedDeployAccountTxn _value,
-      $Res Function(_$BroadcastedDeployAccountTxn) _then)
+class __$$BroadcastedDeployAccountTxnImplCopyWithImpl<$Res>
+    extends _$BroadcastedTxnCopyWithImpl<$Res,
+        _$BroadcastedDeployAccountTxnImpl>
+    implements _$$BroadcastedDeployAccountTxnImplCopyWith<$Res> {
+  __$$BroadcastedDeployAccountTxnImplCopyWithImpl(
+      _$BroadcastedDeployAccountTxnImpl _value,
+      $Res Function(_$BroadcastedDeployAccountTxnImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -2340,7 +2350,7 @@ class __$$BroadcastedDeployAccountTxnCopyWithImpl<$Res>
     Object? signature = null,
     Object? nonce = null,
   }) {
-    return _then(_$BroadcastedDeployAccountTxn(
+    return _then(_$BroadcastedDeployAccountTxnImpl(
       contractAddressSalt: null == contractAddressSalt
           ? _value.contractAddressSalt
           : contractAddressSalt // ignore: cast_nullable_to_non_nullable
@@ -2380,8 +2390,8 @@ class __$$BroadcastedDeployAccountTxnCopyWithImpl<$Res>
 /// @nodoc
 
 @JsonSerializable(includeIfNull: false)
-class _$BroadcastedDeployAccountTxn implements BroadcastedDeployAccountTxn {
-  const _$BroadcastedDeployAccountTxn(
+class _$BroadcastedDeployAccountTxnImpl implements BroadcastedDeployAccountTxn {
+  const _$BroadcastedDeployAccountTxnImpl(
       {required this.contractAddressSalt,
       required this.classHash,
       required final List<Felt> constructorCalldata,
@@ -2395,8 +2405,9 @@ class _$BroadcastedDeployAccountTxn implements BroadcastedDeployAccountTxn {
         _signature = signature,
         $type = $type ?? 'broadcastedDeployAccountTxn';
 
-  factory _$BroadcastedDeployAccountTxn.fromJson(Map<String, dynamic> json) =>
-      _$$BroadcastedDeployAccountTxnFromJson(json);
+  factory _$BroadcastedDeployAccountTxnImpl.fromJson(
+          Map<String, dynamic> json) =>
+      _$$BroadcastedDeployAccountTxnImplFromJson(json);
 
   @override
   final Felt contractAddressSalt;
@@ -2439,10 +2450,10 @@ class _$BroadcastedDeployAccountTxn implements BroadcastedDeployAccountTxn {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$BroadcastedDeployAccountTxn &&
+            other is _$BroadcastedDeployAccountTxnImpl &&
             (identical(other.contractAddressSalt, contractAddressSalt) ||
                 other.contractAddressSalt == contractAddressSalt) &&
             (identical(other.classHash, classHash) ||
@@ -2473,9 +2484,9 @@ class _$BroadcastedDeployAccountTxn implements BroadcastedDeployAccountTxn {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$BroadcastedDeployAccountTxnCopyWith<_$BroadcastedDeployAccountTxn>
-      get copyWith => __$$BroadcastedDeployAccountTxnCopyWithImpl<
-          _$BroadcastedDeployAccountTxn>(this, _$identity);
+  _$$BroadcastedDeployAccountTxnImplCopyWith<_$BroadcastedDeployAccountTxnImpl>
+      get copyWith => __$$BroadcastedDeployAccountTxnImplCopyWithImpl<
+          _$BroadcastedDeployAccountTxnImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -2688,7 +2699,7 @@ class _$BroadcastedDeployAccountTxn implements BroadcastedDeployAccountTxn {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$BroadcastedDeployAccountTxnToJson(
+    return _$$BroadcastedDeployAccountTxnImplToJson(
       this,
     );
   }
@@ -2703,10 +2714,10 @@ abstract class BroadcastedDeployAccountTxn implements BroadcastedTxn {
       @JsonKey(toJson: maxFeeToJson) required final Felt maxFee,
       required final String version,
       required final List<Felt> signature,
-      required final Felt nonce}) = _$BroadcastedDeployAccountTxn;
+      required final Felt nonce}) = _$BroadcastedDeployAccountTxnImpl;
 
   factory BroadcastedDeployAccountTxn.fromJson(Map<String, dynamic> json) =
-      _$BroadcastedDeployAccountTxn.fromJson;
+      _$BroadcastedDeployAccountTxnImpl.fromJson;
 
   Felt get contractAddressSalt;
   Felt get classHash;
@@ -2721,6 +2732,6 @@ abstract class BroadcastedDeployAccountTxn implements BroadcastedTxn {
   Felt get nonce;
   @override
   @JsonKey(ignore: true)
-  _$$BroadcastedDeployAccountTxnCopyWith<_$BroadcastedDeployAccountTxn>
+  _$$BroadcastedDeployAccountTxnImplCopyWith<_$BroadcastedDeployAccountTxnImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

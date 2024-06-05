@@ -12,7 +12,7 @@ part of 'deployed_contract_item.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 DeployedContractItem _$DeployedContractItemFromJson(Map<String, dynamic> json) {
   return _DeployedContractItem.fromJson(json);
@@ -69,22 +69,22 @@ class _$DeployedContractItemCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$_DeployedContractItemCopyWith<$Res>
+abstract class _$$DeployedContractItemImplCopyWith<$Res>
     implements $DeployedContractItemCopyWith<$Res> {
-  factory _$$_DeployedContractItemCopyWith(_$_DeployedContractItem value,
-          $Res Function(_$_DeployedContractItem) then) =
-      __$$_DeployedContractItemCopyWithImpl<$Res>;
+  factory _$$DeployedContractItemImplCopyWith(_$DeployedContractItemImpl value,
+          $Res Function(_$DeployedContractItemImpl) then) =
+      __$$DeployedContractItemImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({Felt address, Felt classHash});
 }
 
 /// @nodoc
-class __$$_DeployedContractItemCopyWithImpl<$Res>
-    extends _$DeployedContractItemCopyWithImpl<$Res, _$_DeployedContractItem>
-    implements _$$_DeployedContractItemCopyWith<$Res> {
-  __$$_DeployedContractItemCopyWithImpl(_$_DeployedContractItem _value,
-      $Res Function(_$_DeployedContractItem) _then)
+class __$$DeployedContractItemImplCopyWithImpl<$Res>
+    extends _$DeployedContractItemCopyWithImpl<$Res, _$DeployedContractItemImpl>
+    implements _$$DeployedContractItemImplCopyWith<$Res> {
+  __$$DeployedContractItemImplCopyWithImpl(_$DeployedContractItemImpl _value,
+      $Res Function(_$DeployedContractItemImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -93,7 +93,7 @@ class __$$_DeployedContractItemCopyWithImpl<$Res>
     Object? address = null,
     Object? classHash = null,
   }) {
-    return _then(_$_DeployedContractItem(
+    return _then(_$DeployedContractItemImpl(
       address: null == address
           ? _value.address
           : address // ignore: cast_nullable_to_non_nullable
@@ -108,12 +108,12 @@ class __$$_DeployedContractItemCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_DeployedContractItem implements _DeployedContractItem {
-  const _$_DeployedContractItem(
+class _$DeployedContractItemImpl implements _DeployedContractItem {
+  const _$DeployedContractItemImpl(
       {required this.address, required this.classHash});
 
-  factory _$_DeployedContractItem.fromJson(Map<String, dynamic> json) =>
-      _$$_DeployedContractItemFromJson(json);
+  factory _$DeployedContractItemImpl.fromJson(Map<String, dynamic> json) =>
+      _$$DeployedContractItemImplFromJson(json);
 
   @override
   final Felt address;
@@ -126,10 +126,10 @@ class _$_DeployedContractItem implements _DeployedContractItem {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_DeployedContractItem &&
+            other is _$DeployedContractItemImpl &&
             (identical(other.address, address) || other.address == address) &&
             (identical(other.classHash, classHash) ||
                 other.classHash == classHash));
@@ -142,13 +142,14 @@ class _$_DeployedContractItem implements _DeployedContractItem {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_DeployedContractItemCopyWith<_$_DeployedContractItem> get copyWith =>
-      __$$_DeployedContractItemCopyWithImpl<_$_DeployedContractItem>(
-          this, _$identity);
+  _$$DeployedContractItemImplCopyWith<_$DeployedContractItemImpl>
+      get copyWith =>
+          __$$DeployedContractItemImplCopyWithImpl<_$DeployedContractItemImpl>(
+              this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_DeployedContractItemToJson(
+    return _$$DeployedContractItemImplToJson(
       this,
     );
   }
@@ -157,10 +158,10 @@ class _$_DeployedContractItem implements _DeployedContractItem {
 abstract class _DeployedContractItem implements DeployedContractItem {
   const factory _DeployedContractItem(
       {required final Felt address,
-      required final Felt classHash}) = _$_DeployedContractItem;
+      required final Felt classHash}) = _$DeployedContractItemImpl;
 
   factory _DeployedContractItem.fromJson(Map<String, dynamic> json) =
-      _$_DeployedContractItem.fromJson;
+      _$DeployedContractItemImpl.fromJson;
 
   @override
   Felt get address;
@@ -168,6 +169,6 @@ abstract class _DeployedContractItem implements DeployedContractItem {
   Felt get classHash;
   @override
   @JsonKey(ignore: true)
-  _$$_DeployedContractItemCopyWith<_$_DeployedContractItem> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$DeployedContractItemImplCopyWith<_$DeployedContractItemImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }

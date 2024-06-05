@@ -12,7 +12,7 @@ part of 'chain_id.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 ChainId _$ChainIdFromJson(Map<String, dynamic> json) {
   switch (json['starkNetRuntimeTypeToRemove']) {
@@ -91,20 +91,20 @@ class _$ChainIdCopyWithImpl<$Res, $Val extends ChainId>
 }
 
 /// @nodoc
-abstract class _$$ChainIdResultCopyWith<$Res> {
-  factory _$$ChainIdResultCopyWith(
-          _$ChainIdResult value, $Res Function(_$ChainIdResult) then) =
-      __$$ChainIdResultCopyWithImpl<$Res>;
+abstract class _$$ChainIdResultImplCopyWith<$Res> {
+  factory _$$ChainIdResultImplCopyWith(
+          _$ChainIdResultImpl value, $Res Function(_$ChainIdResultImpl) then) =
+      __$$ChainIdResultImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String result});
 }
 
 /// @nodoc
-class __$$ChainIdResultCopyWithImpl<$Res>
-    extends _$ChainIdCopyWithImpl<$Res, _$ChainIdResult>
-    implements _$$ChainIdResultCopyWith<$Res> {
-  __$$ChainIdResultCopyWithImpl(
-      _$ChainIdResult _value, $Res Function(_$ChainIdResult) _then)
+class __$$ChainIdResultImplCopyWithImpl<$Res>
+    extends _$ChainIdCopyWithImpl<$Res, _$ChainIdResultImpl>
+    implements _$$ChainIdResultImplCopyWith<$Res> {
+  __$$ChainIdResultImplCopyWithImpl(
+      _$ChainIdResultImpl _value, $Res Function(_$ChainIdResultImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -112,7 +112,7 @@ class __$$ChainIdResultCopyWithImpl<$Res>
   $Res call({
     Object? result = null,
   }) {
-    return _then(_$ChainIdResult(
+    return _then(_$ChainIdResultImpl(
       result: null == result
           ? _value.result
           : result // ignore: cast_nullable_to_non_nullable
@@ -123,12 +123,12 @@ class __$$ChainIdResultCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$ChainIdResult implements ChainIdResult {
-  const _$ChainIdResult({required this.result, final String? $type})
+class _$ChainIdResultImpl implements ChainIdResult {
+  const _$ChainIdResultImpl({required this.result, final String? $type})
       : $type = $type ?? 'result';
 
-  factory _$ChainIdResult.fromJson(Map<String, dynamic> json) =>
-      _$$ChainIdResultFromJson(json);
+  factory _$ChainIdResultImpl.fromJson(Map<String, dynamic> json) =>
+      _$$ChainIdResultImplFromJson(json);
 
   @override
   final String result;
@@ -142,10 +142,10 @@ class _$ChainIdResult implements ChainIdResult {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$ChainIdResult &&
+            other is _$ChainIdResultImpl &&
             (identical(other.result, result) || other.result == result));
   }
 
@@ -156,8 +156,8 @@ class _$ChainIdResult implements ChainIdResult {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$ChainIdResultCopyWith<_$ChainIdResult> get copyWith =>
-      __$$ChainIdResultCopyWithImpl<_$ChainIdResult>(this, _$identity);
+  _$$ChainIdResultImplCopyWith<_$ChainIdResultImpl> get copyWith =>
+      __$$ChainIdResultImplCopyWithImpl<_$ChainIdResultImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -223,29 +223,30 @@ class _$ChainIdResult implements ChainIdResult {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$ChainIdResultToJson(
+    return _$$ChainIdResultImplToJson(
       this,
     );
   }
 }
 
 abstract class ChainIdResult implements ChainId {
-  const factory ChainIdResult({required final String result}) = _$ChainIdResult;
+  const factory ChainIdResult({required final String result}) =
+      _$ChainIdResultImpl;
 
   factory ChainIdResult.fromJson(Map<String, dynamic> json) =
-      _$ChainIdResult.fromJson;
+      _$ChainIdResultImpl.fromJson;
 
   String get result;
   @JsonKey(ignore: true)
-  _$$ChainIdResultCopyWith<_$ChainIdResult> get copyWith =>
+  _$$ChainIdResultImplCopyWith<_$ChainIdResultImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$ChainIdErrorCopyWith<$Res> {
-  factory _$$ChainIdErrorCopyWith(
-          _$ChainIdError value, $Res Function(_$ChainIdError) then) =
-      __$$ChainIdErrorCopyWithImpl<$Res>;
+abstract class _$$ChainIdErrorImplCopyWith<$Res> {
+  factory _$$ChainIdErrorImplCopyWith(
+          _$ChainIdErrorImpl value, $Res Function(_$ChainIdErrorImpl) then) =
+      __$$ChainIdErrorImplCopyWithImpl<$Res>;
   @useResult
   $Res call({JsonRpcApiError error});
 
@@ -253,11 +254,11 @@ abstract class _$$ChainIdErrorCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$ChainIdErrorCopyWithImpl<$Res>
-    extends _$ChainIdCopyWithImpl<$Res, _$ChainIdError>
-    implements _$$ChainIdErrorCopyWith<$Res> {
-  __$$ChainIdErrorCopyWithImpl(
-      _$ChainIdError _value, $Res Function(_$ChainIdError) _then)
+class __$$ChainIdErrorImplCopyWithImpl<$Res>
+    extends _$ChainIdCopyWithImpl<$Res, _$ChainIdErrorImpl>
+    implements _$$ChainIdErrorImplCopyWith<$Res> {
+  __$$ChainIdErrorImplCopyWithImpl(
+      _$ChainIdErrorImpl _value, $Res Function(_$ChainIdErrorImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -265,7 +266,7 @@ class __$$ChainIdErrorCopyWithImpl<$Res>
   $Res call({
     Object? error = null,
   }) {
-    return _then(_$ChainIdError(
+    return _then(_$ChainIdErrorImpl(
       error: null == error
           ? _value.error
           : error // ignore: cast_nullable_to_non_nullable
@@ -284,12 +285,12 @@ class __$$ChainIdErrorCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$ChainIdError implements ChainIdError {
-  const _$ChainIdError({required this.error, final String? $type})
+class _$ChainIdErrorImpl implements ChainIdError {
+  const _$ChainIdErrorImpl({required this.error, final String? $type})
       : $type = $type ?? 'error';
 
-  factory _$ChainIdError.fromJson(Map<String, dynamic> json) =>
-      _$$ChainIdErrorFromJson(json);
+  factory _$ChainIdErrorImpl.fromJson(Map<String, dynamic> json) =>
+      _$$ChainIdErrorImplFromJson(json);
 
   @override
   final JsonRpcApiError error;
@@ -303,10 +304,10 @@ class _$ChainIdError implements ChainIdError {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$ChainIdError &&
+            other is _$ChainIdErrorImpl &&
             (identical(other.error, error) || other.error == error));
   }
 
@@ -317,8 +318,8 @@ class _$ChainIdError implements ChainIdError {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$ChainIdErrorCopyWith<_$ChainIdError> get copyWith =>
-      __$$ChainIdErrorCopyWithImpl<_$ChainIdError>(this, _$identity);
+  _$$ChainIdErrorImplCopyWith<_$ChainIdErrorImpl> get copyWith =>
+      __$$ChainIdErrorImplCopyWithImpl<_$ChainIdErrorImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -384,7 +385,7 @@ class _$ChainIdError implements ChainIdError {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$ChainIdErrorToJson(
+    return _$$ChainIdErrorImplToJson(
       this,
     );
   }
@@ -392,13 +393,13 @@ class _$ChainIdError implements ChainIdError {
 
 abstract class ChainIdError implements ChainId {
   const factory ChainIdError({required final JsonRpcApiError error}) =
-      _$ChainIdError;
+      _$ChainIdErrorImpl;
 
   factory ChainIdError.fromJson(Map<String, dynamic> json) =
-      _$ChainIdError.fromJson;
+      _$ChainIdErrorImpl.fromJson;
 
   JsonRpcApiError get error;
   @JsonKey(ignore: true)
-  _$$ChainIdErrorCopyWith<_$ChainIdError> get copyWith =>
+  _$$ChainIdErrorImplCopyWith<_$ChainIdErrorImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

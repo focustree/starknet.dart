@@ -6,15 +6,15 @@ part of 'state_update.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_StateUpdate _$$_StateUpdateFromJson(Map<String, dynamic> json) =>
-    _$_StateUpdate(
+_$StateUpdateImpl _$$StateUpdateImplFromJson(Map<String, dynamic> json) =>
+    _$StateUpdateImpl(
       blockHash: Felt.fromJson(json['block_hash'] as String),
       newRoot: Felt.fromJson(json['new_root'] as String),
       oldRoot: Felt.fromJson(json['old_root'] as String),
       stateDiff: StateDiff.fromJson(json['state_diff'] as Map<String, dynamic>),
     );
 
-Map<String, dynamic> _$$_StateUpdateToJson(_$_StateUpdate instance) =>
+Map<String, dynamic> _$$StateUpdateImplToJson(_$StateUpdateImpl instance) =>
     <String, dynamic>{
       'block_hash': instance.blockHash.toJson(),
       'new_root': instance.newRoot.toJson(),
@@ -22,7 +22,8 @@ Map<String, dynamic> _$$_StateUpdateToJson(_$_StateUpdate instance) =>
       'state_diff': instance.stateDiff.toJson(),
     };
 
-_$_StateDiff _$$_StateDiffFromJson(Map<String, dynamic> json) => _$_StateDiff(
+_$StateDiffImpl _$$StateDiffImplFromJson(Map<String, dynamic> json) =>
+    _$StateDiffImpl(
       storageDiffs: (json['storage_diffs'] as List<dynamic>)
           .map((e) =>
               ContractStorageDiffItem.fromJson(e as Map<String, dynamic>))
@@ -46,7 +47,7 @@ _$_StateDiff _$$_StateDiffFromJson(Map<String, dynamic> json) => _$_StateDiff(
           .toList(),
     );
 
-Map<String, dynamic> _$$_StateDiffToJson(_$_StateDiff instance) =>
+Map<String, dynamic> _$$StateDiffImplToJson(_$StateDiffImpl instance) =>
     <String, dynamic>{
       'storage_diffs': instance.storageDiffs.map((e) => e.toJson()).toList(),
       'deprecated_declared_classes':
@@ -60,39 +61,39 @@ Map<String, dynamic> _$$_StateDiffToJson(_$_StateDiff instance) =>
       'nonces': instance.nonces.map((e) => e.toJson()).toList(),
     };
 
-_$_NonceAndContractAddress _$$_NonceAndContractAddressFromJson(
+_$NonceAndContractAddressImpl _$$NonceAndContractAddressImplFromJson(
         Map<String, dynamic> json) =>
-    _$_NonceAndContractAddress(
+    _$NonceAndContractAddressImpl(
       nonce: Felt.fromJson(json['nonce'] as String),
       contractAddress: Felt.fromJson(json['contract_address'] as String),
     );
 
-Map<String, dynamic> _$$_NonceAndContractAddressToJson(
-        _$_NonceAndContractAddress instance) =>
+Map<String, dynamic> _$$NonceAndContractAddressImplToJson(
+        _$NonceAndContractAddressImpl instance) =>
     <String, dynamic>{
       'nonce': instance.nonce.toJson(),
       'contract_address': instance.contractAddress.toJson(),
     };
 
-_$_DeclaredClass _$$_DeclaredClassFromJson(Map<String, dynamic> json) =>
-    _$_DeclaredClass(
+_$DeclaredClassImpl _$$DeclaredClassImplFromJson(Map<String, dynamic> json) =>
+    _$DeclaredClassImpl(
       classHash: Felt.fromJson(json['class_hash'] as String),
       compiledClassHash: Felt.fromJson(json['compiled_class_hash'] as String),
     );
 
-Map<String, dynamic> _$$_DeclaredClassToJson(_$_DeclaredClass instance) =>
+Map<String, dynamic> _$$DeclaredClassImplToJson(_$DeclaredClassImpl instance) =>
     <String, dynamic>{
       'class_hash': instance.classHash.toJson(),
       'compiled_class_hash': instance.compiledClassHash.toJson(),
     };
 
-_$_ReplacedClass _$$_ReplacedClassFromJson(Map<String, dynamic> json) =>
-    _$_ReplacedClass(
+_$ReplacedClassImpl _$$ReplacedClassImplFromJson(Map<String, dynamic> json) =>
+    _$ReplacedClassImpl(
       contractAddress: Felt.fromJson(json['contract_address'] as String),
       classHash: Felt.fromJson(json['class_hash'] as String),
     );
 
-Map<String, dynamic> _$$_ReplacedClassToJson(_$_ReplacedClass instance) =>
+Map<String, dynamic> _$$ReplacedClassImplToJson(_$ReplacedClassImpl instance) =>
     <String, dynamic>{
       'contract_address': instance.contractAddress.toJson(),
       'class_hash': instance.classHash.toJson(),

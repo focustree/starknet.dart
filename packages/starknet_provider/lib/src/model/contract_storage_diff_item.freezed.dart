@@ -12,7 +12,7 @@ part of 'contract_storage_diff_item.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 ContractStorageDiffItem _$ContractStorageDiffItemFromJson(
     Map<String, dynamic> json) {
@@ -70,23 +70,25 @@ class _$ContractStorageDiffItemCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$_ContractStorageDiffItemCopyWith<$Res>
+abstract class _$$ContractStorageDiffItemImplCopyWith<$Res>
     implements $ContractStorageDiffItemCopyWith<$Res> {
-  factory _$$_ContractStorageDiffItemCopyWith(_$_ContractStorageDiffItem value,
-          $Res Function(_$_ContractStorageDiffItem) then) =
-      __$$_ContractStorageDiffItemCopyWithImpl<$Res>;
+  factory _$$ContractStorageDiffItemImplCopyWith(
+          _$ContractStorageDiffItemImpl value,
+          $Res Function(_$ContractStorageDiffItemImpl) then) =
+      __$$ContractStorageDiffItemImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({Felt address, List<StorageItem> storageEntries});
 }
 
 /// @nodoc
-class __$$_ContractStorageDiffItemCopyWithImpl<$Res>
+class __$$ContractStorageDiffItemImplCopyWithImpl<$Res>
     extends _$ContractStorageDiffItemCopyWithImpl<$Res,
-        _$_ContractStorageDiffItem>
-    implements _$$_ContractStorageDiffItemCopyWith<$Res> {
-  __$$_ContractStorageDiffItemCopyWithImpl(_$_ContractStorageDiffItem _value,
-      $Res Function(_$_ContractStorageDiffItem) _then)
+        _$ContractStorageDiffItemImpl>
+    implements _$$ContractStorageDiffItemImplCopyWith<$Res> {
+  __$$ContractStorageDiffItemImplCopyWithImpl(
+      _$ContractStorageDiffItemImpl _value,
+      $Res Function(_$ContractStorageDiffItemImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -95,7 +97,7 @@ class __$$_ContractStorageDiffItemCopyWithImpl<$Res>
     Object? address = null,
     Object? storageEntries = null,
   }) {
-    return _then(_$_ContractStorageDiffItem(
+    return _then(_$ContractStorageDiffItemImpl(
       address: null == address
           ? _value.address
           : address // ignore: cast_nullable_to_non_nullable
@@ -110,13 +112,13 @@ class __$$_ContractStorageDiffItemCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_ContractStorageDiffItem implements _ContractStorageDiffItem {
-  const _$_ContractStorageDiffItem(
+class _$ContractStorageDiffItemImpl implements _ContractStorageDiffItem {
+  const _$ContractStorageDiffItemImpl(
       {required this.address, required final List<StorageItem> storageEntries})
       : _storageEntries = storageEntries;
 
-  factory _$_ContractStorageDiffItem.fromJson(Map<String, dynamic> json) =>
-      _$$_ContractStorageDiffItemFromJson(json);
+  factory _$ContractStorageDiffItemImpl.fromJson(Map<String, dynamic> json) =>
+      _$$ContractStorageDiffItemImplFromJson(json);
 
   @override
   final Felt address;
@@ -134,10 +136,10 @@ class _$_ContractStorageDiffItem implements _ContractStorageDiffItem {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_ContractStorageDiffItem &&
+            other is _$ContractStorageDiffItemImpl &&
             (identical(other.address, address) || other.address == address) &&
             const DeepCollectionEquality()
                 .equals(other._storageEntries, _storageEntries));
@@ -151,14 +153,13 @@ class _$_ContractStorageDiffItem implements _ContractStorageDiffItem {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ContractStorageDiffItemCopyWith<_$_ContractStorageDiffItem>
-      get copyWith =>
-          __$$_ContractStorageDiffItemCopyWithImpl<_$_ContractStorageDiffItem>(
-              this, _$identity);
+  _$$ContractStorageDiffItemImplCopyWith<_$ContractStorageDiffItemImpl>
+      get copyWith => __$$ContractStorageDiffItemImplCopyWithImpl<
+          _$ContractStorageDiffItemImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_ContractStorageDiffItemToJson(
+    return _$$ContractStorageDiffItemImplToJson(
       this,
     );
   }
@@ -168,10 +169,10 @@ abstract class _ContractStorageDiffItem implements ContractStorageDiffItem {
   const factory _ContractStorageDiffItem(
           {required final Felt address,
           required final List<StorageItem> storageEntries}) =
-      _$_ContractStorageDiffItem;
+      _$ContractStorageDiffItemImpl;
 
   factory _ContractStorageDiffItem.fromJson(Map<String, dynamic> json) =
-      _$_ContractStorageDiffItem.fromJson;
+      _$ContractStorageDiffItemImpl.fromJson;
 
   @override
   Felt get address;
@@ -179,7 +180,7 @@ abstract class _ContractStorageDiffItem implements ContractStorageDiffItem {
   List<StorageItem> get storageEntries;
   @override
   @JsonKey(ignore: true)
-  _$$_ContractStorageDiffItemCopyWith<_$_ContractStorageDiffItem>
+  _$$ContractStorageDiffItemImplCopyWith<_$ContractStorageDiffItemImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
 
@@ -237,22 +238,22 @@ class _$StorageItemCopyWithImpl<$Res, $Val extends StorageItem>
 }
 
 /// @nodoc
-abstract class _$$_StorageItemCopyWith<$Res>
+abstract class _$$StorageItemImplCopyWith<$Res>
     implements $StorageItemCopyWith<$Res> {
-  factory _$$_StorageItemCopyWith(
-          _$_StorageItem value, $Res Function(_$_StorageItem) then) =
-      __$$_StorageItemCopyWithImpl<$Res>;
+  factory _$$StorageItemImplCopyWith(
+          _$StorageItemImpl value, $Res Function(_$StorageItemImpl) then) =
+      __$$StorageItemImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({Felt key, Felt value});
 }
 
 /// @nodoc
-class __$$_StorageItemCopyWithImpl<$Res>
-    extends _$StorageItemCopyWithImpl<$Res, _$_StorageItem>
-    implements _$$_StorageItemCopyWith<$Res> {
-  __$$_StorageItemCopyWithImpl(
-      _$_StorageItem _value, $Res Function(_$_StorageItem) _then)
+class __$$StorageItemImplCopyWithImpl<$Res>
+    extends _$StorageItemCopyWithImpl<$Res, _$StorageItemImpl>
+    implements _$$StorageItemImplCopyWith<$Res> {
+  __$$StorageItemImplCopyWithImpl(
+      _$StorageItemImpl _value, $Res Function(_$StorageItemImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -261,7 +262,7 @@ class __$$_StorageItemCopyWithImpl<$Res>
     Object? key = null,
     Object? value = null,
   }) {
-    return _then(_$_StorageItem(
+    return _then(_$StorageItemImpl(
       key: null == key
           ? _value.key
           : key // ignore: cast_nullable_to_non_nullable
@@ -276,11 +277,11 @@ class __$$_StorageItemCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_StorageItem implements _StorageItem {
-  const _$_StorageItem({required this.key, required this.value});
+class _$StorageItemImpl implements _StorageItem {
+  const _$StorageItemImpl({required this.key, required this.value});
 
-  factory _$_StorageItem.fromJson(Map<String, dynamic> json) =>
-      _$$_StorageItemFromJson(json);
+  factory _$StorageItemImpl.fromJson(Map<String, dynamic> json) =>
+      _$$StorageItemImplFromJson(json);
 
   @override
   final Felt key;
@@ -293,10 +294,10 @@ class _$_StorageItem implements _StorageItem {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_StorageItem &&
+            other is _$StorageItemImpl &&
             (identical(other.key, key) || other.key == key) &&
             (identical(other.value, value) || other.value == value));
   }
@@ -308,12 +309,12 @@ class _$_StorageItem implements _StorageItem {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_StorageItemCopyWith<_$_StorageItem> get copyWith =>
-      __$$_StorageItemCopyWithImpl<_$_StorageItem>(this, _$identity);
+  _$$StorageItemImplCopyWith<_$StorageItemImpl> get copyWith =>
+      __$$StorageItemImplCopyWithImpl<_$StorageItemImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_StorageItemToJson(
+    return _$$StorageItemImplToJson(
       this,
     );
   }
@@ -321,10 +322,10 @@ class _$_StorageItem implements _StorageItem {
 
 abstract class _StorageItem implements StorageItem {
   const factory _StorageItem(
-      {required final Felt key, required final Felt value}) = _$_StorageItem;
+      {required final Felt key, required final Felt value}) = _$StorageItemImpl;
 
   factory _StorageItem.fromJson(Map<String, dynamic> json) =
-      _$_StorageItem.fromJson;
+      _$StorageItemImpl.fromJson;
 
   @override
   Felt get key;
@@ -332,6 +333,6 @@ abstract class _StorageItem implements StorageItem {
   Felt get value;
   @override
   @JsonKey(ignore: true)
-  _$$_StorageItemCopyWith<_$_StorageItem> get copyWith =>
+  _$$StorageItemImplCopyWith<_$StorageItemImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

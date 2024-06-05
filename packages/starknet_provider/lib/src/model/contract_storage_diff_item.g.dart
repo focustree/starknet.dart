@@ -6,30 +6,30 @@ part of 'contract_storage_diff_item.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_ContractStorageDiffItem _$$_ContractStorageDiffItemFromJson(
+_$ContractStorageDiffItemImpl _$$ContractStorageDiffItemImplFromJson(
         Map<String, dynamic> json) =>
-    _$_ContractStorageDiffItem(
+    _$ContractStorageDiffItemImpl(
       address: Felt.fromJson(json['address'] as String),
       storageEntries: (json['storage_entries'] as List<dynamic>)
           .map((e) => StorageItem.fromJson(e as Map<String, dynamic>))
           .toList(),
     );
 
-Map<String, dynamic> _$$_ContractStorageDiffItemToJson(
-        _$_ContractStorageDiffItem instance) =>
+Map<String, dynamic> _$$ContractStorageDiffItemImplToJson(
+        _$ContractStorageDiffItemImpl instance) =>
     <String, dynamic>{
       'address': instance.address.toJson(),
       'storage_entries':
           instance.storageEntries.map((e) => e.toJson()).toList(),
     };
 
-_$_StorageItem _$$_StorageItemFromJson(Map<String, dynamic> json) =>
-    _$_StorageItem(
+_$StorageItemImpl _$$StorageItemImplFromJson(Map<String, dynamic> json) =>
+    _$StorageItemImpl(
       key: Felt.fromJson(json['key'] as String),
       value: Felt.fromJson(json['value'] as String),
     );
 
-Map<String, dynamic> _$$_StorageItemToJson(_$_StorageItem instance) =>
+Map<String, dynamic> _$$StorageItemImplToJson(_$StorageItemImpl instance) =>
     <String, dynamic>{
       'key': instance.key.toJson(),
       'value': instance.value.toJson(),
