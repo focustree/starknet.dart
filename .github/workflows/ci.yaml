@@ -36,7 +36,7 @@ jobs:
 
   test-integration:
     runs-on: ubuntu-latest
-    needs: lint
+    # needs: lint
     services:
       devnet:
         image: shardlabs/starknet-devnet-rs:0.0.5
