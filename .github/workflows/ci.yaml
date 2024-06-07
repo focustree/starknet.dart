@@ -66,6 +66,9 @@ jobs:
             starknet-devnet --host 0.0.0.0 --seed 0 --dump-path /devnet-dump.json
       - run: curl http://localhost:5050/predeployed_accounts
       - run: melos test:dart:integration
+      - name: Setup upterm session
+        if: failure()
+        uses: lhotari/action-upterm@v1
       - name: Cleanup
         if: always()
         run: docker stop starknet-devnet && docker rm starknet-devnet
