@@ -11,7 +11,9 @@ Future<void> resetDevnet() async {
 
   if (starknetRpc.contains("localhost")) {
     // Restart devnet
-    await post(Uri.parse('$starknetRpc/restart'));
+    await post(Uri.parse(
+      '$starknetRpc/restart',
+    ));
 
     // Load devnet dump file
     var loadResponse = await post(
