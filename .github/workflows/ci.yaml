@@ -64,11 +64,12 @@ jobs:
             --entrypoint tini \
             shardlabs/starknet-devnet-rs:0.0.5 -- \
             starknet-devnet --host 0.0.0.0 --seed 0 --dump-path /devnet-dump.json
+            sleep 10  # Wait for 10 seconds for the Docker container to initialize
       - run: curl http://localhost:5050/predeployed_accounts
       - run: melos test:dart:integration
-      - name: Setup upterm session
-        if: failure()
-        uses: lhotari/action-upterm@v1
       - name: Cleanup
         if: always()
         run: docker stop starknet-devnet && docker rm starknet-devnet
+      - name: Setup SSH if failure
+        if: failure()
+        uses: lhotari/action-upterm@v1
