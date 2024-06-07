@@ -13,11 +13,9 @@ command:
     usePubspecOverrides: true
 
 scripts:
-  lint:
-    description: Lint all packages
-    steps:
-      - melos format:check
-      - melos analyze
+  validate-gh-actions:
+    run: |
+      action-validator .github/workflows/ci.yaml
   analyze:
     description: Analyze all packages
     exec: dart analyze --fatal-infos
@@ -42,6 +40,9 @@ scripts:
       asdf install scarb $SCARB_VERSION
       asdf local scarb $SCARB_VERSION
 
+      asdf plugin add action-validator
+      asdf install action-validator latest
+
       melos versions
 
   versions:
@@ -54,7 +55,12 @@ scripts:
   devnet:start:
     description: Start local devnet
     run: |
-      starknet-devnet --seed 0
+      starknet-devnet --seed 0 --dump-path $DEVNET_DUMP_PATH
+  devnet:start-dump:
+    description: Start local devnet in dump mode
+    run: |
+      rm ./assets/devnet-dump.json
+      starknet-devnet --seed 0 --dump-path $DEVNET_DUMP_PATH --dump-on exit
   devnet:setup:
     description: Setup local devnet
     run: |
