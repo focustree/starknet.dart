@@ -42,6 +42,9 @@ scripts:
       asdf install scarb $SCARB_VERSION
       asdf local scarb $SCARB_VERSION
 
+      asdf plugin add action-validator
+      asdf install action-validator latest
+
       melos versions
 
   versions:

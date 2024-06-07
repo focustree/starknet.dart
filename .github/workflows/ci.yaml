@@ -16,6 +16,7 @@ jobs:
           cache-sdk: true
       - uses: bluefireteam/melos-action@v3
       - run: melos bootstrap
+      - run: action-validator .github/workflows/ci.yaml
       - run: melos format:check
       - run: melos analyze
 
@@ -59,10 +60,10 @@ jobs:
             --entrypoint tini \
             shardlabs/starknet-devnet-rs:0.0.5 -- \
             starknet-devnet --host 0.0.0.0 --seed 0 --dump-path /usr/local/bin/devnet-dump.json
-        - name: Wait for starknet-devnet to be ready
-          run: |
-            while ! nc -z localhost 5000; do   
-              echo "Waiting for starknet-devnet to start..."
-              sleep 1
-            done
+      - name: Wait for starknet-devnet to be ready
+        run: |
+          while ! nc -z localhost 5000; do   
+            echo "Waiting for starknet-devnet to start..."
+            sleep 1
+          done
       - run: melos test:dart:integration
