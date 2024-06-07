@@ -43,7 +43,6 @@ jobs:
         image: shardlabs/starknet-devnet-rs:0.0.5
         ports:
           - 5050:5050
-        entrypoint: sh -c "starknet-devnet --seed 0 --dump-path devnet-dump.json"
     steps:
       - uses: actions/checkout@v2
       - uses: flutter-actions/setup-flutter@v3
