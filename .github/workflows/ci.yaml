@@ -39,12 +39,6 @@ jobs:
 
   test-integration:
     runs-on: ubuntu-latest
-    # services:
-    #   devnet:
-    #     options: --name devnet-service
-    #     image: shardlabs/starknet-devnet-rs:0.0.5
-    #     ports:
-    #       - 5050:5050
     steps:
       - uses: actions/checkout@v2
       - uses: flutter-actions/setup-flutter@v3
@@ -55,21 +49,19 @@ jobs:
           cache-sdk: true
       - uses: bluefireteam/melos-action@v3
       - run: melos bootstrap
-      # - run: docker cp ./assets/devnet-dump.json devnet-service:devnet-dump.json
       - name: Run starknet-devnet as a background process
         run: |
           docker run -d --name starknet-devnet \
-            -v ${{ github.workspace }}/assets/devnet-dump.json:/devnet-dump.json \
+            -v ${{ github.workspace }}/assets/devnet-dump.json:$DEVNET_DUMP_PATH \
             -p 5050:5050 \
             --entrypoint tini \
             shardlabs/starknet-devnet-rs:0.0.5 -- \
-            starknet-devnet --host 0.0.0.0 --seed 0 --dump-path /devnet-dump.json
-            sleep 10  # Wait for 10 seconds for the Docker container to initialize
-      - run: curl http://localhost:5050/predeployed_accounts
+            starknet-devnet --host 0.0.0.0 --seed 0 --dump-path $DEVNET_DUMP_PATH
+            sleep 3  # Wait for 3 seconds for the Docker container to initialize
       - run: melos test:dart:integration
       - name: Cleanup
         if: always()
         run: docker stop starknet-devnet && docker rm starknet-devnet
-      - name: Setup SSH if failure
-        if: failure()
-        uses: lhotari/action-upterm@v1
+      # - name: Setup SSH if failure
+      #   if: failure()
+      #   uses: lhotari/action-upterm@v1
