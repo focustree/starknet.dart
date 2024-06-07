@@ -55,10 +55,11 @@ jobs:
       - name: Run starknet-devnet as a background process
         run: |
           docker run -d --name starknet-devnet \
-            -v ${{ github.workspace }}/assets/devnet-dump.json:/usr/local/bin/devnet-dump.json \
+            -v /Users/gabin/src/focustree/starknet.dart/assets/devnet-dump.json:/devnet-dump.json \
+            -p 5050:5050 \
             --entrypoint tini \
             shardlabs/starknet-devnet-rs:0.0.5 -- \
-            starknet-devnet --host 0.0.0.0 --seed 0 --dump-path /usr/local/bin/devnet-dump.json
+            starknet-devnet --host 0.0.0.0 --seed 0 --dump-path /devnet-dump.json
       - name: Wait for starknet-devnet to be ready
         run: |
           while ! nc -z localhost 5050; do   
@@ -66,3 +67,6 @@ jobs:
             sleep 1
           done
       - run: melos test:dart:integration
+      - name: Cleanup
+        if: always()
+        run: docker stop starknet-devnet && docker rm starknet-devnet
