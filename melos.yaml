@@ -29,8 +29,6 @@ scripts:
   starknet:setup:
     description: Install starknet dev env
     run: |
-      source .env.devnet
-
       cargo install starknet-devnet --version $STARKNET_DEVNET_VERSION
 
       curl https://get.starkli.sh | sh

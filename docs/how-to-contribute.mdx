@@ -53,19 +53,14 @@ We use melos to manage our monorepo:
 melos bootstrap
 ```
 
-5. Set up your starknet dev env. First [install asdf](https://asdf-vm.com/guide/getting-started.html), then run:
+5. Set up your starknet dev env. First install [asdf](https://asdf-vm.com/guide/getting-started.html) and [cargo](https://doc.rust-lang.org/cargo/getting-started/installation.html), then run:
 
 ```sh
-source .env.devnet
-```
-
-6. Setup your starknet dev env
-
-First install [asdf](https://asdf-vm.com/guide/getting-started.html) and [cargo](https://doc.rust-lang.org/cargo/getting-started/installation.html).
-
-```sh
+source .env.devnet # Load the env variables
 melos starknet:setup
 ```
+
+## How to run the tests
 
 Start the devnet in one terminal:
 
@@ -73,11 +68,27 @@ Start the devnet in one terminal:
 melos devnet:start
 ```
 
-## How to run the tests
+Then run the tests in another terminal:
 
 ```sh
 melos test
 ```
+
+## How to update devnet dump
+
+Start the devnet in dump mode:
+
+```sh
+melos devnet:start:dump
+```
+
+Then deploy contracts to devnet:
+
+```sh
+melos devnet:setup
+```
+
+Then kill the devnet, that's it the `assets/devnet-dump.json` has been updated!
 
 ## Repo structure
 
