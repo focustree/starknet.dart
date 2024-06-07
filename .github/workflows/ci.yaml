@@ -61,7 +61,7 @@ jobs:
             starknet-devnet --host 0.0.0.0 --seed 0 --dump-path /usr/local/bin/devnet-dump.json
       - name: Wait for starknet-devnet to be ready
         run: |
-          while ! nc -z localhost 5000; do   
+          while ! nc -z localhost 5050; do   
             echo "Waiting for starknet-devnet to start..."
             sleep 1
           done
