@@ -13,11 +13,9 @@ command:
     usePubspecOverrides: true
 
 scripts:
-  lint:
-    description: Lint all packages
-    steps:
-      - melos format:check
-      - melos analyze
+  validate-gh-actions:
+    run: |
+      action-validator .github/workflows/ci.yaml
   analyze:
     description: Analyze all packages
     exec: dart analyze --fatal-infos

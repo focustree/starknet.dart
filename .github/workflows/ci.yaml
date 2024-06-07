@@ -16,7 +16,6 @@ jobs:
           cache-sdk: true
       - uses: bluefireteam/melos-action@v3
       - run: melos bootstrap
-      - run: action-validator .github/workflows/ci.yaml
       - run: melos format:check
       - run: melos analyze
 
