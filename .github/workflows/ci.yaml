@@ -3,6 +3,10 @@ name: CI
 on:
   pull_request:
 
+env:
+  STARKNET_RPC: http://localhost:5050
+  DEVNET_DUMP_PATH: /devnet-dump.json
+
 jobs:
   lint:
     runs-on: ubuntu-latest
