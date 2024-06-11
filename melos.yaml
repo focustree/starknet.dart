@@ -31,12 +31,13 @@ scripts:
     run: |
       cargo install starknet-devnet --version $STARKNET_DEVNET_VERSION
 
-      curl https://get.starkli.sh | sh
-      starkliup -v v$STARKLI_VERSION
-
       asdf plugin add scarb
       asdf install scarb $SCARB_VERSION
       asdf local scarb $SCARB_VERSION
+
+      asdf plugin add starkli https://github.com/ptisserand/asdf-starkli.git
+      asdf install starkli $STARKLI_VERSION
+      asdf local starkli $STARKLI_VERSION
 
       asdf plugin add action-validator
       asdf install action-validator latest
