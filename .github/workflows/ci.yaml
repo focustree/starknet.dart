@@ -49,13 +49,17 @@ jobs:
           cache-sdk: true
       - uses: bluefireteam/melos-action@v3
       - run: melos bootstrap
+      - name: Retrieve starknet devnet version
+        shell: bash
+        run: |
+          grep STARKNET_DEVNET_VERSION .env.devnet | sed 's|export ||g' >> $GITHUB_ENV
       - name: Run starknet-devnet as a background process
         run: |
           docker run -d --name starknet-devnet \
             -v ${{ github.workspace }}/assets/devnet-dump.json:$DEVNET_DUMP_PATH \
             -p 5050:5050 \
             --entrypoint tini \
-            shardlabs/starknet-devnet-rs:0.0.5 -- \
+            shardlabs/starknet-devnet-rs:$STARKNET_DEVNET_VERSION -- \
             starknet-devnet --host 0.0.0.0 --seed 0 --dump-path $DEVNET_DUMP_PATH
             sleep 3  # Wait for 3 seconds for the Docker container to initialize
       - run: melos test:dart:integration
