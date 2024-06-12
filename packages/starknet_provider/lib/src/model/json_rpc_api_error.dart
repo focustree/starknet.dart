@@ -18,6 +18,8 @@ class JsonRpcApiError with _$JsonRpcApiError {
 
 // TODO: should be generated from JSON-RPC API specs
 enum JsonRpcApiErrorCode {
+  @JsonValue(-1)
+  UNKNOWN_ERROR,
   @JsonValue(1)
   FAILED_TO_RECEIVE_TXN,
   @JsonValue(20)

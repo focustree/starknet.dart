@@ -57,7 +57,7 @@ scripts:
     description: Start local devnet
     run: |
       starknet-devnet --seed 0 --dump-path $DEVNET_DUMP_PATH
-  devnet:start-dump:
+  devnet:start:dump:
     description: Start local devnet in dump mode
     run: |
       rm ./assets/devnet-dump.json

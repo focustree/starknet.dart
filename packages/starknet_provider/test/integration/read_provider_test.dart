@@ -9,7 +9,7 @@ void main() {
     late ReadProvider provider;
 
     Felt balanceContractAddress = Felt.fromHexString(
-        "0x713883739a929f57b5f4dd82cd38d25dbf76e3bdd54deb7319d339c5060a8cd");
+        "0x03cdc588f4f1bff66c8a6896e7008cc39c7804d36b16e93792625bd18bffd249");
 
     Felt invalidHexString = Felt.fromHexString(
         '0x0000000000000000000000000000000000000000000000000000000000000000');
@@ -116,7 +116,7 @@ void main() {
         final response = await provider.call(
             request: FunctionCall(
               contractAddress: balanceContractAddress,
-              entryPointSelector: getSelectorByName('get_answer'),
+              entryPointSelector: getSelectorByName('get_name'),
               calldata: [],
             ),
             blockId: BlockId.latest);
@@ -124,7 +124,7 @@ void main() {
             error: (error) => fail("Shouldn't fail"),
             result: (result) {
               expect(result, hasLength(1));
-              expect(result[0], Felt.fromInt(42));
+              expect(result[0], Felt.fromInt(0));
             });
       });
 
@@ -136,7 +136,7 @@ void main() {
               entryPointSelector: entryPointSelector,
               calldata: [Felt.fromHexString('0x5')],
             ),
-            blockId: blockIdForTheGivenContractAddress);
+            blockId: BlockId.latest);
         response.when(
             error: (error) {
               expect(error.code, JsonRpcApiErrorCode.CONTRACT_NOT_FOUND);
@@ -153,8 +153,10 @@ void main() {
               calldata: [],
             ),
             blockId: invalidBlockIdFromBlockHash);
+        print(response);
         response.when(
             error: (error) {
+              print(response);
               expect(error.code, JsonRpcApiErrorCode.BLOCK_NOT_FOUND);
               expect(error.message, contains('Block not found'));
             },
@@ -177,7 +179,7 @@ void main() {
             },
             result: (result) => fail("Should fail"));
       });
-    }, skip: true);
+    });
 
     group('getStorageAt', () {
       test('returns the ERC20_symbol value for a ERC20 contract', () async {

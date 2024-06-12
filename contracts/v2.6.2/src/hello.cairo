@@ -2,6 +2,7 @@
 trait IHello<T> {
     fn get_name(self: @T) -> felt252;
     fn set_name(ref self: T, name: felt252);
+    fn sum(ref self: T, a: felt252, b: felt252) -> felt252;
 }
 
 #[starknet::contract]
@@ -24,6 +25,10 @@ mod hello {
 
         fn set_name(ref self: ContractState, name: felt252) {
             self.name.write(name);
+        }
+
+        fn sum(ref self: ContractState, a: felt252, b: felt252) -> felt252 {
+            a + b
         }
     }
 }
