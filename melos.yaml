@@ -29,7 +29,9 @@ scripts:
   starknet:setup:
     description: Install starknet dev env
     run: |
-      cargo install starknet-devnet --version $STARKNET_DEVNET_VERSION 2> /dev/null 2>&1
+      asdf plugin add starknet-devnet https://github.com/ptisserand/asdf-starknet-devnet.git
+      asdf install starknet-devnet $STARKNET_DEVNET_VERSION
+      asdf local starknet-devnet $STARKNET_DEVNET_VERSION
 
       asdf plugin add scarb
       asdf install scarb $SCARB_VERSION
