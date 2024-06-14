@@ -3,5 +3,28 @@
   "extends": ["config:base"],
   "python": {
     "enabled": false
-  }
+  },
+  "ignorePaths": ["**/examples/**", "**/test/**", "**/docs/**"],
+  "packageRules": [
+    {
+      "paths": ["packages/secure_store"],
+      "groupName": "secure_store updates"
+    },
+    {
+      "paths": ["packages/starknet"],
+      "groupName": "starknet updates"
+    },
+    {
+      "paths": ["packages/starknet_provider"],
+      "groupName": "starknet_provider updates"
+    },
+    {
+      "paths": ["packages/starknet_builder"],
+      "groupName": "starknet_builder updates"
+    },
+    {
+      "paths": ["packages/wallet_kit"],
+      "groupName": "wallet_kit updates"
+    }
+  ]
 }
