@@ -2,6 +2,8 @@
 import 'package:starknet/starknet.dart';
 import 'package:starknet_provider/starknet_provider.dart';
 import 'package:test/test.dart';
+import 'dart:convert';
+import 'dart:io';
 
 import 'utils.dart';
 
@@ -10,7 +12,7 @@ void main() {
     test(
       'invokeTransactionV0',
       () async {
-        final account = getJsonRpcProvider();
+        final account = getJsonRpcProvider(network: 'devnet');
         final request = InvokeTransactionRequest(
           invokeTransaction: InvokeTransactionV0(
             contractAddress: Felt.fromHexString(
@@ -39,7 +41,7 @@ void main() {
     test(
       'mintAspectNFT',
       () async {
-        final account = getJsonRpcProvider();
+        final account = getJsonRpcProvider(network: 'devnet');
         final request = InvokeTransactionRequest(
             invokeTransaction: InvokeTransactionV0(
           contractAddress: Felt.fromHexString(
@@ -83,7 +85,7 @@ void main() {
     test(
       'declareTransaction',
       () async {
-        final account = getJsonRpcProvider(network: 'integration');
+        final account = getJsonRpcProvider(network: 'devnet');
         final request = DeclareTransactionRequest(
           declareTransaction: DeclareTransactionV1(
             max_fee: defaultMaxFee,
