@@ -114,6 +114,7 @@ void main() {
           },
         );
       },
+      skip: true,
     );
-  }, tags: ['integration'], skip: true);
+  }, tags: ['integration']);
 }
