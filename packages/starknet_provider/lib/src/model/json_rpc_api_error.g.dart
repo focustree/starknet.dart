@@ -21,7 +21,7 @@ Map<String, dynamic> _$$JsonRpcApiErrorImplToJson(
     };
 
 const _$JsonRpcApiErrorCodeEnumMap = {
-  JsonRpcApiErrorCode.UNKNOWN_ERROR: -1,
+  JsonRpcApiErrorCode.DEVNET_WILDCARD_ERROR: -1,
   JsonRpcApiErrorCode.FAILED_TO_RECEIVE_TXN: 1,
   JsonRpcApiErrorCode.CONTRACT_NOT_FOUND: 20,
   JsonRpcApiErrorCode.INVALID_MESSAGE_SELECTOR: 21,

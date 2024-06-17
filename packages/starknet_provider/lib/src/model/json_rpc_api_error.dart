@@ -19,7 +19,7 @@ class JsonRpcApiError with _$JsonRpcApiError {
 // TODO: should be generated from JSON-RPC API specs
 enum JsonRpcApiErrorCode {
   @JsonValue(-1)
-  UNKNOWN_ERROR,
+  DEVNET_WILDCARD_ERROR,  // not in JSON-RPC API specs
   @JsonValue(1)
   FAILED_TO_RECEIVE_TXN,
   @JsonValue(20)
