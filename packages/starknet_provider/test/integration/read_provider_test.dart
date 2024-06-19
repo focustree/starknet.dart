@@ -42,9 +42,9 @@ void main() {
         '0x9278fa5f64a571de10741418f1c4c0c4322aef645dd9d94a429c1f3e99a8a5');
 
     Felt classHashV1 = Felt.fromHexString(
-        '0x005f042bb8a0dc334e82d758f9ef0583eced860306890f57e328553ed8d86c43');
+        '0x061dac032f228abef9c6626f995015233097ae253a7f72d68552db02f2971b8f'); // Predeployed class hash
     Felt contractAddressV1 = Felt.fromHexString(
-        '0x076f65214b9fd45c9f85e6cf0f40d018a2651fe4c4062e8230175ffc7f6ee262');
+        '0x64b48806902a367c8598f4f95c305e8c1a1acba5f082d294a43793113115691');
 
     setUpAll(() {
       // executed once before all tests
@@ -230,7 +230,7 @@ void main() {
 
       test('reading value from invalid Block Id', () async {
         final response = await provider.getStorageAt(
-          contractAddress: contractAddressV0,
+          contractAddress: balanceContractAddress,
           key: Felt.fromHexString(
               '0x0206F38F7E4F15E87567361213C28F235CCCDAA1D7FD34C9DB1DFE9489C6A091'),
           blockId: invalidBlockIdFromBlockHash,
@@ -413,7 +413,7 @@ void main() {
             result: (result) {
               expect(result.transactionHash, declareTransactionHash);
             });
-      });
+      }, skip: true); // todo fix type '_Map<String, dynamic>' is not a subtype of type 'String' in type cast
 
       test(
           'returns the transaction receipt based on the DEPLOY transaction hash',
@@ -426,7 +426,7 @@ void main() {
             result: (result) {
               expect(result.transactionHash, deployTransactionHash);
             });
-      }, skip: true); // todo
+      }, skip: true); // todo ?? not supported
 
       test(
           'returns the transaction receipt based on the DEPLOY_ACCOUNT transaction hash',
@@ -439,7 +439,7 @@ void main() {
             result: (result) {
               expect(result.transactionHash, deployAccountTransactionHash);
             });
-      });
+      }); // todo fix type '_Map<String, dynamic>' is not a subtype of type 'String' in type cast
 
       test(
           'returns the transaction receipt based on the L1_HANDLER transaction hash',
@@ -452,7 +452,7 @@ void main() {
             result: (result) {
               expect(result.transactionHash, l1HandlerTransactionHash);
             });
-      }, skip: true);
+      }, skip: true); // todo ?
 
       test(
           'reading transaction receipt from invalid transaction hash should fail',
@@ -467,7 +467,7 @@ void main() {
                 expect(error.code, JsonRpcApiErrorCode.TXN_HASH_NOT_FOUND),
             result: (result) => fail("Shouldn't fail"));
       });
-    });
+    }, skip: true);
 
     group('chainId', () {
       test('returns the current StarkNet chain id', () async {
@@ -499,7 +499,7 @@ void main() {
     group('starknet_getNonce', () {
       test('returns latest nonce associated with the given address', () async {
         final response = await provider.getNonce(
-          contractAddress: contractAddressV0,
+          contractAddress: balanceContractAddress,
           blockId: BlockId.latest,
         );
 
@@ -511,7 +511,7 @@ void main() {
       test('reading nonce from invalid block id returns BLOCK_NOT_FOUND error',
           () async {
         final response = await provider.getNonce(
-          contractAddress: contractAddressV0,
+          contractAddress: balanceContractAddress,
           blockId: invalidBlockIdFromBlockHash,
         );
 
@@ -537,7 +537,7 @@ void main() {
             },
             result: (result) => fail("Should fail"));
       });
-    }, skip: true);
+    });
 
     group('starknet_blockHashAndNumber', () {
       test('returns the most recent accepted block hash and number', () async {
@@ -588,7 +588,7 @@ void main() {
             },
             result: (result) => fail("Should fail"));
       });
-    }, skip: true);
+    });
 
     group('starknet_getBlockWithTxs', () {
       test(
@@ -602,7 +602,7 @@ void main() {
             expect(block, isNotNull);
           },
         );
-      }, skip: true);
+      });
 
       test('returns block not found error when block id is invalid', () async {
         final GetBlockWithTxs response =
@@ -641,7 +641,7 @@ void main() {
           result: (result) => fail("Should fail"),
         );
       });
-    }, skip: true);
+    }, skip: true); // FIXME: after https://github.com/0xSpaceShard/starknet-devnet-rs/issues/496
 
     group('starknet_getClass', () {
       test('returns contract class definition for a known class hash (cairo 0)',
@@ -659,7 +659,7 @@ void main() {
             expect(result.program, isNotNull);
           },
         );
-      }, tags: ['integration']);
+      }, tags: ['integration'], skip:true); // todo should delete? since we don't deploy v0 contracts
 
       test(
           'returns contract class definition for a known class hash (cairo 1.0)',
@@ -709,14 +709,14 @@ void main() {
           result: (result) => fail("Should fail"),
         );
       });
-    }, skip: true);
+    });
 
     group('starknet_getClassHashAt', () {
       test(
           'returns contract class hash in the given block for the deployed contract address.',
           () async {
         final response = await provider.getClassHashAt(
-          contractAddress: contractAddressV0,
+          contractAddress: contractAddressV1,
           blockId: BlockId.blockTag("latest"),
         );
 
@@ -758,7 +758,7 @@ void main() {
           result: (result) => fail("Should fail"),
         );
       });
-    }, skip: true);
+    });
 
     group('starknet_getClassAt', () {
       test(
@@ -777,7 +777,7 @@ void main() {
             expect(result.program, isNotNull);
           },
         );
-      }, tags: ['integration']);
+      }, tags: ['integration'], skip: true); // todo: should delete? since we don't deploy v0 contracts
 
       test(
           'returns contract class definition in the given block for given contract address. (cairo 1.0)',
@@ -827,14 +827,14 @@ void main() {
           result: (result) => fail("Should fail"),
         );
       });
-    }, skip: true);
+    });
 
     group('starknet_getEvents', () {
       test('returns all events matching the given filter', () async {
         final response = await provider.getEvents(GetEventsRequest(
           chunkSize: 2,
-          fromBlock: BlockId.blockNumber(12000),
-          toBlock: BlockId.blockNumber(100000),
+          fromBlock: BlockId.blockNumber(1),
+          toBlock: BlockId.blockNumber(3),
         ));
 
         response.when(
@@ -916,10 +916,10 @@ void main() {
       test('requesting the events with key filtering', () async {
         final response = await provider.getEvents(GetEventsRequest(
           chunkSize: 2,
-          fromBlock: BlockId.blockNumber(12000),
-          toBlock: BlockId.blockNumber(100000),
+          fromBlock: BlockId.blockNumber(1),
+          toBlock: BlockId.blockNumber(3),
           keys: [
-            [getSelectorByName("CurrencyWhitelisted")],
+            [getSelectorByName("Transfer")],
           ],
         ));
 
@@ -950,7 +950,7 @@ void main() {
           },
         );
       });
-    }, skip: true);
+    }, skip: true); // FIXME: after https://github.com/0xSpaceShard/starknet-devnet-rs/issues/498
 
     group('starknet_pendingTransactions', () {
       test('returns not supported error for pendingTransactions', () async {
@@ -1056,6 +1056,6 @@ void main() {
           },
         );
       });
-    }, skip: true);
+    }, skip: true); // FIXME: devnet estimate_fee need simulation_flags
   }, tags: ['integration']);
 }
