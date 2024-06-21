@@ -78,6 +78,8 @@ enum JsonRpcApiErrorCode {
   UNEXPECTED_ERROR, // from pathfinder code
   @JsonValue(10000)
   PROOF_LIMIT_EXCEEDED, // from pathfinder code
+  @JsonValue(-32601)
+  METHOD_NOT_FOUND,
   @JsonValue(-32602)
   INVALID_QUERY,
   @JsonValue(-32603)

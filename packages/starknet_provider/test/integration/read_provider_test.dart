@@ -957,11 +957,15 @@ void main() {
         final response = await provider.pendingTransactions();
 
         response.when(
-          error: (error) => fail('Should not fail $error'),
-          result: (_) {},
+          error: (error) {
+            expect(error.code, JsonRpcApiErrorCode.METHOD_NOT_FOUND);
+            expect(error.message, "Method not found");
+          },
+
+          result: (_) => fail('Should fail'),
         );
       });
-    }, skip: true);
+    });
 
     group('estimateFee', () {
       BlockId parentBlockId = BlockId.blockHash(Felt.fromHexString(
@@ -1056,6 +1060,6 @@ void main() {
           },
         );
       });
-    }, skip: true); // FIXME: devnet estimate_fee need simulation_flags
+    }, skip: true);
   }, tags: ['integration']);
 }

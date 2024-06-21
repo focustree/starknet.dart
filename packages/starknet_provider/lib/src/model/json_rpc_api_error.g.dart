@@ -51,6 +51,7 @@ const _$JsonRpcApiErrorCodeEnumMap = {
   JsonRpcApiErrorCode.UNSUPPORTED_CONTRACT_CLASS_VERSION: 62,
   JsonRpcApiErrorCode.UNEXPECTED_ERROR: 63,
   JsonRpcApiErrorCode.PROOF_LIMIT_EXCEEDED: 10000,
+  JsonRpcApiErrorCode.METHOD_NOT_FOUND: -32601,
   JsonRpcApiErrorCode.INVALID_QUERY: -32602,
   JsonRpcApiErrorCode.INTERNAL_SEQUENCER: -32603,
 };

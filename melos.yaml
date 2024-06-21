@@ -61,7 +61,7 @@ scripts:
     description: Start local devnet in dump mode
     run: |
       rm $DEVNET_DUMP_PATH
-      starknet-devnet --seed 0 --dump-path $DEVNET_DUMP_PATH --state-archive-capacity full --dump-on exit --port 3030
+      starknet-devnet --seed 0 --dump-path $DEVNET_DUMP_PATH --state-archive-capacity full --dump-on exit
   devnet:setup:
     description: Setup local devnet
     run: |
@@ -82,7 +82,7 @@ scripts:
   contracts:deploy:
     description: Deploy cairo contracts
     run: |
-      starkli deploy $HELLO_CLASS_HASH --salt $SALT 0x0
+      starkli deploy $HELLO_CLASS_HASH --salt $SALT 0x68656c6c6f5f636f6e74726163745f6e616d65
 
   contracts:invoke:
     description: creating invoke tx for tests with hash 0x03b2911796e0024f9e23d7337997538058eca267d5ddaa582d482cbe1fb64897 and deploy_account tx with hash 0x055ba13c33a12506d2eab8dfbc618a8ce0d247c24959a64ee18fbf393c873b83
