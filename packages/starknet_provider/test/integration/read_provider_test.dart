@@ -968,31 +968,30 @@ void main() {
     });
 
     group('estimateFee', () {
-      BlockId parentBlockId = BlockId.blockHash(Felt.fromHexString(
-          '0x03e509987d3624a22929111cd407a9b60b069c82650873d3a8e688a1071d936a'));
+      BlockId parentBlockId = BlockId.blockTag('pending');
       BroadcastedInvokeTxnV1 broadcastedInvokeTxnV1 = BroadcastedInvokeTxnV1(
-        maxFee: Felt.fromHexString('0xe3a12d8'),
-        version: "0x1",
+        maxFee: Felt.fromHexString('0x0'),
+        version: "0x100000000000000000000000000000001",
         signature: [
           Felt.fromHexString(
-              '0x79e8097b96b1e41ead06b1562aa2c0c6664d118aa13d13e2421ab3fbd0d6f1e'),
+              '0x38a02f9e86b22b5ec3c23c6023b4c9f42b0424e609c1ea80e6946891a2d1b35'),
           Felt.fromHexString(
-              '0x16aca0b17bcb270bf22a42a6c39f64a51793d88e0e8892a86b338c76de12af'),
+              '0x4096526efdddb28ffe48886f0435f0609060b67178ebc168af7321e16e4c9e5'),
         ],
-        nonce: Felt.fromHexString('0xc'),
+        nonce: Felt.fromHexString('0x3'),
         type: 'INVOKE',
         senderAddress: Felt.fromHexString(
-            '0x01114f6544e4784bfab52097b129804292e32e97af051fbf9c9e399567d3d01b'),
+            '0x64b48806902a367c8598f4f95c305e8c1a1acba5f082d294a43793113115691'),
         calldata: [
           Felt.fromHexString('0x1'),
           Felt.fromHexString(
-              '0xca87395d8f4fc2a87f310410b721c4df91a21aa8aa7a46831d41049a14405f'),
+              '0x49d36570d4e46f48e99674bd3fcc84644ddd6b96f7c741b1562b82f9e004dc7'),
           Felt.fromHexString(
-              '0x362398bec32bc0ebb411203221a35a0301193a96f317ebe5e40be9f60d15320'),
-          Felt.fromHexString('0x0'),
-          Felt.fromHexString('0x1'),
-          Felt.fromHexString('0x1'),
+              '0x83afd3f4caedc6eebf44246fe54e38c95e3179a5ec9ea81740eca5b482d12e'),
           Felt.fromHexString('0x3'),
+          Felt.fromHexString('0x16a0d7df981d681537dc2ce648722ff1d1c2cbe59412b492d35bac69825f104'),
+          Felt.fromHexString('0x100000000000000000'),
+          Felt.fromHexString('0x0'),
         ],
       );
 
@@ -1001,6 +1000,7 @@ void main() {
         EstimateFeeRequest estimateFeeRequest = EstimateFeeRequest(
           request: [broadcastedInvokeTxnV1],
           blockId: parentBlockId,
+          simulation_flags: []
         );
 
         final response = await provider.estimateFee(estimateFeeRequest);
@@ -1012,9 +1012,9 @@ void main() {
           result: (result) {
             expect(result.length, 1);
             final estimate = result[0];
-            expect(estimate.gasConsumed, "0xe98");
-            expect(estimate.gasPrice, "0x4ecd");
-            expect(estimate.overallFee, "0x47dffb8");
+            expect(estimate.gasConsumed, "0x17");
+            expect(estimate.gasPrice, "0x174876e800");
+            expect(estimate.overallFee, "0x138ddbdcd800");
           },
         );
       });
@@ -1026,6 +1026,7 @@ void main() {
         EstimateFeeRequest estimateFeeRequest = EstimateFeeRequest(
           request: [invalidContractTxn],
           blockId: parentBlockId,
+          simulation_flags: [],
         );
 
         final response = await provider.estimateFee(estimateFeeRequest);
@@ -1046,6 +1047,7 @@ void main() {
         EstimateFeeRequest estimateFeeRequest = EstimateFeeRequest(
           request: [broadcastedInvokeTxnV1],
           blockId: invalidBlockIdFromBlockHash,
+          simulation_flags: [],
         );
 
         final response = await provider.estimateFee(estimateFeeRequest);
@@ -1060,6 +1062,6 @@ void main() {
           },
         );
       });
-    }, skip: true);
+    });
   }, tags: ['integration']);
 }

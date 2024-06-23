@@ -22,13 +22,38 @@ class EstimateFee with _$EstimateFee {
           : EstimateFeeResult.fromJson(json);
 }
 
+/// Flags that indicate how to simulate a given transaction.
+/// By default, the sequencer behavior is replicated locally (enough funds are expected to be in the
+/// account, and fee will be deducted from the balance before the simulation of the next
+/// transaction). To skip the fee charge, use the SKIP_FEE_CHARGE flag.
+@freezed
+class SimulationFlag with _$SimulationFlag {
+  @JsonSerializable(fieldRename: FieldRename.snake)
+  const factory SimulationFlag.skipValidate() = SkipValidate;
+
+  @JsonSerializable(fieldRename: FieldRename.snake)
+  const factory SimulationFlag.skipFeeCharge() = SkipFeeCharge;
+
+  factory SimulationFlag.fromJson(Map<String, dynamic> json) => _$SimulationFlagFromJson(json);
+
+  Map<String, dynamic> toJson() => {
+    'type': this.when(
+      skipValidate: () => "SKIP_VALIDATE",
+      skipFeeCharge: () => "SKIP_FEE_CHARGE",
+    ),
+  };
+}
+
+
 @JsonSerializable()
 class EstimateFeeRequest {
   final List<BroadcastedTxn> request;
   final BlockId blockId;
+  final List<SimulationFlag> simulation_flags;
   EstimateFeeRequest({
     required this.request,
     required this.blockId,
+    required this.simulation_flags,
   });
 
   factory EstimateFeeRequest.fromJson(Map<String, dynamic> json) =>
