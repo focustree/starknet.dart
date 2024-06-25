@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:args/command_runner.dart';
 import 'package:starknet_cli/account.dart';
+import 'package:starknet_cli/chain_id.dart';
 import 'package:starknet_cli/erc20.dart';
 import 'package:starknet_cli/block_number.dart';
 import 'package:starknet_cli/call.dart';
@@ -18,11 +19,12 @@ void main(List<String> args) {
     ..addCommand(AccountCommand())
     ..addCommand(ERC20Command())
     ..addCommand(SignerCommand())
+    ..addCommand(ChainIdCommand())
     ..argParser.addOption(
       "rpc",
       help: "Starknet RPC Endpoint",
       defaultsTo:
-          Platform.environment['STARKNET_RPC'] ?? "http://localhost:5050",
+          Platform.environment['STARKNET_RPC'] ?? "http://localhost:5050/rpc",
     )
     ..argParser.addOption(
       "chain-id",

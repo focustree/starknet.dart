@@ -9,7 +9,9 @@ sidebar:
   - - Getting Started
     - "/"
   - - Examples
-    - - - Mobile Wallet
+    - - - NFT Marketplace
+        - "/examples/nft-marketplace"
+      - - Mobile Wallet
         - "/examples/mobile-wallet"
       - - Starknet CLI
         - "/examples/starknet-cli"
