@@ -34,11 +34,23 @@ Map<String, dynamic> _$$GetTransactionReceiptErrorImplToJson(
       'starkNetRuntimeTypeToRemove': instance.$type,
     };
 
+_$ActualFeeImpl _$$ActualFeeImplFromJson(Map<String, dynamic> json) =>
+    _$ActualFeeImpl(
+      amount: Felt.fromJson(json['amount'] as String),
+      unit: json['unit'] as String,
+    );
+
+Map<String, dynamic> _$$ActualFeeImplToJson(_$ActualFeeImpl instance) =>
+    <String, dynamic>{
+      'amount': instance.amount.toJson(),
+      'unit': instance.unit,
+    };
+
 _$InvokeTxnReceiptImpl _$$InvokeTxnReceiptImplFromJson(
         Map<String, dynamic> json) =>
     _$InvokeTxnReceiptImpl(
       transactionHash: Felt.fromJson(json['transaction_hash'] as String),
-      actualFee: Felt.fromJson(json['actual_fee'] as String),
+      actualFee: ActualFee.fromJson(json['actual_fee'] as Map<String, dynamic>),
       status: json['status'] as String,
       blockHash: json['block_hash'] == null
           ? null
@@ -72,7 +84,7 @@ _$DeclareTxnReceiptImpl _$$DeclareTxnReceiptImplFromJson(
         Map<String, dynamic> json) =>
     _$DeclareTxnReceiptImpl(
       transactionHash: Felt.fromJson(json['transaction_hash'] as String),
-      actualFee: Felt.fromJson(json['actual_fee'] as String),
+      actualFee: ActualFee.fromJson(json['actual_fee'] as Map<String, dynamic>),
       status: json['status'] as String,
       blockHash: json['block_hash'] == null
           ? null
@@ -106,7 +118,7 @@ _$L1HandlerTxnReceiptImpl _$$L1HandlerTxnReceiptImplFromJson(
         Map<String, dynamic> json) =>
     _$L1HandlerTxnReceiptImpl(
       transactionHash: Felt.fromJson(json['transaction_hash'] as String),
-      actualFee: Felt.fromJson(json['actual_fee'] as String),
+      actualFee: ActualFee.fromJson(json['actual_fee'] as Map<String, dynamic>),
       status: json['status'] as String,
       blockHash: json['block_hash'] == null
           ? null
@@ -140,7 +152,7 @@ _$DeployTxnReceiptImpl _$$DeployTxnReceiptImplFromJson(
         Map<String, dynamic> json) =>
     _$DeployTxnReceiptImpl(
       transactionHash: Felt.fromJson(json['transaction_hash'] as String),
-      actualFee: Felt.fromJson(json['actual_fee'] as String),
+      actualFee: ActualFee.fromJson(json['actual_fee'] as Map<String, dynamic>),
       status: json['status'] as String,
       blockHash: json['block_hash'] == null
           ? null
@@ -176,7 +188,7 @@ _$DeployAccountTxnReceiptImpl _$$DeployAccountTxnReceiptImplFromJson(
         Map<String, dynamic> json) =>
     _$DeployAccountTxnReceiptImpl(
       transactionHash: Felt.fromJson(json['transaction_hash'] as String),
-      actualFee: Felt.fromJson(json['actual_fee'] as String),
+      actualFee: ActualFee.fromJson(json['actual_fee'] as Map<String, dynamic>),
       status: json['status'] as String,
       blockHash: json['block_hash'] == null
           ? null
@@ -212,7 +224,7 @@ _$PendingDeployTxnReceiptImpl _$$PendingDeployTxnReceiptImplFromJson(
         Map<String, dynamic> json) =>
     _$PendingDeployTxnReceiptImpl(
       transactionHash: Felt.fromJson(json['transaction_hash'] as String),
-      actualFee: Felt.fromJson(json['actual_fee'] as String),
+      actualFee: ActualFee.fromJson(json['actual_fee'] as Map<String, dynamic>),
       type: json['type'] as String?,
       messagesSent: (json['messages_sent'] as List<dynamic>)
           .map((e) => MsgToL1.fromJson(e as Map<String, dynamic>))
@@ -240,7 +252,8 @@ _$PendingCommonReceiptPropertiesImpl
     _$$PendingCommonReceiptPropertiesImplFromJson(Map<String, dynamic> json) =>
         _$PendingCommonReceiptPropertiesImpl(
           transactionHash: Felt.fromJson(json['transaction_hash'] as String),
-          actualFee: Felt.fromJson(json['actual_fee'] as String),
+          actualFee:
+              ActualFee.fromJson(json['actual_fee'] as Map<String, dynamic>),
           type: json['type'] as String?,
           messagesSent: (json['messages_sent'] as List<dynamic>)
               .map((e) => MsgToL1.fromJson(e as Map<String, dynamic>))

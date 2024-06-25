@@ -398,7 +398,7 @@ void main() {
             error: (error) => fail("Shouldn't fail"),
             result: (result) {
               expect(result.transactionHash, invokeTransactionHash);
-              expect(result.actualFee, Felt.fromHexString('0xd18c2e28000'));
+              expect(result.actualFee.amount, Felt.fromHexString('0xd18c2e28000'));
             });
       });
 
@@ -413,20 +413,7 @@ void main() {
             result: (result) {
               expect(result.transactionHash, declareTransactionHash);
             });
-      }, skip: true); // todo fix type '_Map<String, dynamic>' is not a subtype of type 'String' in type cast
-
-      test(
-          'returns the transaction receipt based on the DEPLOY transaction hash',
-          () async {
-        final response =
-            await provider.getTransactionReceipt(deployTransactionHash);
-
-        response.when(
-            error: (error) => fail("Shouldn't fail"),
-            result: (result) {
-              expect(result.transactionHash, deployTransactionHash);
-            });
-      }, skip: true); // todo ?? not supported
+      });
 
       test(
           'returns the transaction receipt based on the DEPLOY_ACCOUNT transaction hash',
@@ -439,7 +426,7 @@ void main() {
             result: (result) {
               expect(result.transactionHash, deployAccountTransactionHash);
             });
-      }); // todo fix type '_Map<String, dynamic>' is not a subtype of type 'String' in type cast
+      });
 
       test(
           'returns the transaction receipt based on the L1_HANDLER transaction hash',
@@ -467,7 +454,7 @@ void main() {
                 expect(error.code, JsonRpcApiErrorCode.TXN_HASH_NOT_FOUND),
             result: (result) => fail("Shouldn't fail"));
       });
-    }, skip: true);
+    });
 
     group('chainId', () {
       test('returns the current StarkNet chain id', () async {
