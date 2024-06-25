@@ -961,11 +961,11 @@ void main() {
         version: "0x100000000000000000000000000000001",
         signature: [
           Felt.fromHexString(
-              '0x38a02f9e86b22b5ec3c23c6023b4c9f42b0424e609c1ea80e6946891a2d1b35'),
+              '0x3633b6b91f78ddaee3546e6b63f00ff4df12ead22db934f724814659fcdb639'),
           Felt.fromHexString(
-              '0x4096526efdddb28ffe48886f0435f0609060b67178ebc168af7321e16e4c9e5'),
+              '0x5727ccd97461882f2bd107a25316d00d888f05196b9bc4d7da12378387daec8'),
         ],
-        nonce: Felt.fromHexString('0x3'),
+        nonce: Felt.fromHexString('0x4'),
         type: 'INVOKE',
         senderAddress: Felt.fromHexString(
             '0x64b48806902a367c8598f4f95c305e8c1a1acba5f082d294a43793113115691'),
