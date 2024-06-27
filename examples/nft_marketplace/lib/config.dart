@@ -23,6 +23,6 @@ class Config {
     accountClassHash = dotenv.get('ACCOUNT_CLASS_HASH');
     starknetRpc = dotenv.get('STARKNET_RPC');
     arkApiKey = dotenv.get('ARK_API_KEY');
-    nftContractAddress = dotenv.get('NFT_CONTRACT_ADDRESS');
+    nftContractAddress = dotenv.get('NFT_ADDRESS');
   }
 }

@@ -6,8 +6,8 @@ part of 'pedersen_params.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_PedersenParams _$$_PedersenParamsFromJson(Map<String, dynamic> json) =>
-    _$_PedersenParams(
+_$PedersenParamsImpl _$$PedersenParamsImplFromJson(Map<String, dynamic> json) =>
+    _$PedersenParamsImpl(
       fieldPrime: BigInt.parse(json['FIELD_PRIME'] as String),
       fieldGen: BigInt.parse(json['FIELD_GEN'] as String),
       ecOrder: BigInt.parse(json['EC_ORDER'] as String),
@@ -20,7 +20,8 @@ _$_PedersenParams _$$_PedersenParamsFromJson(Map<String, dynamic> json) =>
           .toList(),
     );
 
-Map<String, dynamic> _$$_PedersenParamsToJson(_$_PedersenParams instance) =>
+Map<String, dynamic> _$$PedersenParamsImplToJson(
+        _$PedersenParamsImpl instance) =>
     <String, dynamic>{
       'FIELD_PRIME': instance.fieldPrime.toString(),
       'FIELD_GEN': instance.fieldGen.toString(),

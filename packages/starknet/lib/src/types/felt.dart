@@ -54,7 +54,7 @@ class Felt {
 
   @override
   String toString() {
-    return "Felt(${_bigInt.toString()})";
+    return _bigInt.toString();
   }
 
   BigInt toBigInt() {

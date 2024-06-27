@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 import 'package:ark/ark.dart';
 import 'package:dotenv/dotenv.dart';
 
@@ -9,8 +7,8 @@ final apiKey = env.getOrElse(
   () => throw 'ARK_API_KEY not found in .env file',
 );
 final nftAddress = env.getOrElse(
-  'NFT_CONTRACT_ADDRESS',
-  () => throw 'NFT_CONTRACT_ADDRESS not found in .env file',
+  'NFT_ADDRESS',
+  () => throw 'NFT_ADDRESS not found in .env file',
 );
 
 void main() async {
@@ -24,6 +22,9 @@ void main() async {
   // final getNft = await Ark().nft.get(nftAddress, nfts.result.first.tokenId);
   // print(getNft);
 
-  final marketplaceNfts = await Ark().marketplace.list(nftAddress);
-  print(marketplaceNfts);
+  // final marketplaceNfts = await Ark().marketplace.list(nftAddress);
+  // print(marketplaceNfts);
+
+  final orderbookNfts = await Ark().orderbook.list(nftAddress);
+  print(orderbookNfts);
 }

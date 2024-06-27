@@ -6,6 +6,24 @@ class Uint256 {
 
   Uint256({required this.low, required this.high});
 
+  factory Uint256.fromInt(int number) =>
+      Uint256.fromBigInt(BigInt.from(number));
+
+  factory Uint256.fromIntString(String number) =>
+      Uint256.fromBigInt(BigInt.parse(number));
+
+  factory Uint256.fromBigInt(BigInt number) {
+    // Ensure the number fits within 256 bits
+    if (number.bitLength > 256) {
+      throw Exception("BigInt too large to fit in Uint256");
+    }
+    // Create a mask for 128-bit
+    BigInt mask = BigInt.parse('FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF', radix: 16);
+    Felt low = Felt(number & mask);
+    Felt high = Felt((number >> 128) & mask);
+    return Uint256(low: low, high: high);
+  }
+
   factory Uint256.fromFeltList(List<Felt> list) {
     if (list.length == 2) {
       return Uint256(low: list[0], high: list[1]);
@@ -34,5 +52,16 @@ class Uint256 {
   factory Uint256.fromCallData(List<Felt> callData) =>
       Uint256(low: callData[0], high: callData[1]);
 
-  List<Felt> toCallData() => [low, high];
+  Map<String, dynamic> toJson() {
+    return {
+      'high': high.toString(), // order matters for calldata
+      'low': low.toString(),
+    };
+  }
+
+  factory Uint256.fromJson(Map<String, dynamic> json) {
+    return Uint256(
+        low: Felt(BigInt.parse(json['low'])),
+        high: Felt(BigInt.parse(json['high'])));
+  }
 }

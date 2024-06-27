@@ -12,7 +12,7 @@ part of 'compiled_contract.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 SierraCompiledContract _$SierraCompiledContractFromJson(
     Map<String, dynamic> json) {
@@ -96,11 +96,12 @@ class _$SierraCompiledContractCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$_SierraCompiledContractCopyWith<$Res>
+abstract class _$$SierraCompiledContractImplCopyWith<$Res>
     implements $SierraCompiledContractCopyWith<$Res> {
-  factory _$$_SierraCompiledContractCopyWith(_$_SierraCompiledContract value,
-          $Res Function(_$_SierraCompiledContract) then) =
-      __$$_SierraCompiledContractCopyWithImpl<$Res>;
+  factory _$$SierraCompiledContractImplCopyWith(
+          _$SierraCompiledContractImpl value,
+          $Res Function(_$SierraCompiledContractImpl) then) =
+      __$$SierraCompiledContractImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -114,12 +115,13 @@ abstract class _$$_SierraCompiledContractCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_SierraCompiledContractCopyWithImpl<$Res>
+class __$$SierraCompiledContractImplCopyWithImpl<$Res>
     extends _$SierraCompiledContractCopyWithImpl<$Res,
-        _$_SierraCompiledContract>
-    implements _$$_SierraCompiledContractCopyWith<$Res> {
-  __$$_SierraCompiledContractCopyWithImpl(_$_SierraCompiledContract _value,
-      $Res Function(_$_SierraCompiledContract) _then)
+        _$SierraCompiledContractImpl>
+    implements _$$SierraCompiledContractImplCopyWith<$Res> {
+  __$$SierraCompiledContractImplCopyWithImpl(
+      _$SierraCompiledContractImpl _value,
+      $Res Function(_$SierraCompiledContractImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -130,7 +132,7 @@ class __$$_SierraCompiledContractCopyWithImpl<$Res>
     Object? contractClassVersion = null,
     Object? abi = null,
   }) {
-    return _then(_$_SierraCompiledContract(
+    return _then(_$SierraCompiledContractImpl(
       sierraProgram: null == sierraProgram
           ? _value._sierraProgram
           : sierraProgram // ignore: cast_nullable_to_non_nullable
@@ -153,8 +155,8 @@ class __$$_SierraCompiledContractCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_SierraCompiledContract extends _SierraCompiledContract {
-  _$_SierraCompiledContract(
+class _$SierraCompiledContractImpl extends _SierraCompiledContract {
+  _$SierraCompiledContractImpl(
       {required final List<BigInt> sierraProgram,
       required this.entryPointsByType,
       required this.contractClassVersion,
@@ -163,8 +165,8 @@ class _$_SierraCompiledContract extends _SierraCompiledContract {
         _abi = abi,
         super._();
 
-  factory _$_SierraCompiledContract.fromJson(Map<String, dynamic> json) =>
-      _$$_SierraCompiledContractFromJson(json);
+  factory _$SierraCompiledContractImpl.fromJson(Map<String, dynamic> json) =>
+      _$$SierraCompiledContractImplFromJson(json);
 
   final List<BigInt> _sierraProgram;
   @override
@@ -192,10 +194,10 @@ class _$_SierraCompiledContract extends _SierraCompiledContract {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_SierraCompiledContract &&
+            other is _$SierraCompiledContractImpl &&
             const DeepCollectionEquality()
                 .equals(other._sierraProgram, _sierraProgram) &&
             (identical(other.entryPointsByType, entryPointsByType) ||
@@ -217,13 +219,13 @@ class _$_SierraCompiledContract extends _SierraCompiledContract {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_SierraCompiledContractCopyWith<_$_SierraCompiledContract> get copyWith =>
-      __$$_SierraCompiledContractCopyWithImpl<_$_SierraCompiledContract>(
-          this, _$identity);
+  _$$SierraCompiledContractImplCopyWith<_$SierraCompiledContractImpl>
+      get copyWith => __$$SierraCompiledContractImplCopyWithImpl<
+          _$SierraCompiledContractImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_SierraCompiledContractToJson(
+    return _$$SierraCompiledContractImplToJson(
       this,
     );
   }
@@ -235,11 +237,11 @@ abstract class _SierraCompiledContract extends SierraCompiledContract {
           required final EntryPointsByType entryPointsByType,
           required final String contractClassVersion,
           required final List<SierraContractAbiEntry> abi}) =
-      _$_SierraCompiledContract;
+      _$SierraCompiledContractImpl;
   _SierraCompiledContract._() : super._();
 
   factory _SierraCompiledContract.fromJson(Map<String, dynamic> json) =
-      _$_SierraCompiledContract.fromJson;
+      _$SierraCompiledContractImpl.fromJson;
 
   @override
   List<BigInt> get sierraProgram;
@@ -251,8 +253,8 @@ abstract class _SierraCompiledContract extends SierraCompiledContract {
   List<SierraContractAbiEntry> get abi;
   @override
   @JsonKey(ignore: true)
-  _$$_SierraCompiledContractCopyWith<_$_SierraCompiledContract> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$SierraCompiledContractImplCopyWith<_$SierraCompiledContractImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 FlattenSierraContractClass _$FlattenSierraContractClassFromJson(
@@ -338,11 +340,11 @@ class _$FlattenSierraContractClassCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$_FlattenSierraClassCopyWith<$Res>
+abstract class _$$FlattenSierraClassImplCopyWith<$Res>
     implements $FlattenSierraContractClassCopyWith<$Res> {
-  factory _$$_FlattenSierraClassCopyWith(_$_FlattenSierraClass value,
-          $Res Function(_$_FlattenSierraClass) then) =
-      __$$_FlattenSierraClassCopyWithImpl<$Res>;
+  factory _$$FlattenSierraClassImplCopyWith(_$FlattenSierraClassImpl value,
+          $Res Function(_$FlattenSierraClassImpl) then) =
+      __$$FlattenSierraClassImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -356,11 +358,12 @@ abstract class _$$_FlattenSierraClassCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_FlattenSierraClassCopyWithImpl<$Res>
+class __$$FlattenSierraClassImplCopyWithImpl<$Res>
     extends _$FlattenSierraContractClassCopyWithImpl<$Res,
-        _$_FlattenSierraClass> implements _$$_FlattenSierraClassCopyWith<$Res> {
-  __$$_FlattenSierraClassCopyWithImpl(
-      _$_FlattenSierraClass _value, $Res Function(_$_FlattenSierraClass) _then)
+        _$FlattenSierraClassImpl>
+    implements _$$FlattenSierraClassImplCopyWith<$Res> {
+  __$$FlattenSierraClassImplCopyWithImpl(_$FlattenSierraClassImpl _value,
+      $Res Function(_$FlattenSierraClassImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -371,7 +374,7 @@ class __$$_FlattenSierraClassCopyWithImpl<$Res>
     Object? contractClassVersion = null,
     Object? abi = null,
   }) {
-    return _then(_$_FlattenSierraClass(
+    return _then(_$FlattenSierraClassImpl(
       sierraProgram: null == sierraProgram
           ? _value._sierraProgram
           : sierraProgram // ignore: cast_nullable_to_non_nullable
@@ -394,16 +397,16 @@ class __$$_FlattenSierraClassCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_FlattenSierraClass implements _FlattenSierraClass {
-  _$_FlattenSierraClass(
+class _$FlattenSierraClassImpl implements _FlattenSierraClass {
+  _$FlattenSierraClassImpl(
       {required final List<String> sierraProgram,
       required this.entryPointsByType,
       required this.contractClassVersion,
       required this.abi})
       : _sierraProgram = sierraProgram;
 
-  factory _$_FlattenSierraClass.fromJson(Map<String, dynamic> json) =>
-      _$$_FlattenSierraClassFromJson(json);
+  factory _$FlattenSierraClassImpl.fromJson(Map<String, dynamic> json) =>
+      _$$FlattenSierraClassImplFromJson(json);
 
   final List<String> _sierraProgram;
   @override
@@ -426,10 +429,10 @@ class _$_FlattenSierraClass implements _FlattenSierraClass {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_FlattenSierraClass &&
+            other is _$FlattenSierraClassImpl &&
             const DeepCollectionEquality()
                 .equals(other._sierraProgram, _sierraProgram) &&
             (identical(other.entryPointsByType, entryPointsByType) ||
@@ -451,13 +454,13 @@ class _$_FlattenSierraClass implements _FlattenSierraClass {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_FlattenSierraClassCopyWith<_$_FlattenSierraClass> get copyWith =>
-      __$$_FlattenSierraClassCopyWithImpl<_$_FlattenSierraClass>(
+  _$$FlattenSierraClassImplCopyWith<_$FlattenSierraClassImpl> get copyWith =>
+      __$$FlattenSierraClassImplCopyWithImpl<_$FlattenSierraClassImpl>(
           this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_FlattenSierraClassToJson(
+    return _$$FlattenSierraClassImplToJson(
       this,
     );
   }
@@ -468,10 +471,10 @@ abstract class _FlattenSierraClass implements FlattenSierraContractClass {
       {required final List<String> sierraProgram,
       required final EntryPointsByType entryPointsByType,
       required final String contractClassVersion,
-      required final String abi}) = _$_FlattenSierraClass;
+      required final String abi}) = _$FlattenSierraClassImpl;
 
   factory _FlattenSierraClass.fromJson(Map<String, dynamic> json) =
-      _$_FlattenSierraClass.fromJson;
+      _$FlattenSierraClassImpl.fromJson;
 
   @override
   List<String> get sierraProgram;
@@ -483,7 +486,7 @@ abstract class _FlattenSierraClass implements FlattenSierraContractClass {
   String get abi;
   @override
   @JsonKey(ignore: true)
-  _$$_FlattenSierraClassCopyWith<_$_FlattenSierraClass> get copyWith =>
+  _$$FlattenSierraClassImplCopyWith<_$FlattenSierraClassImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -563,11 +566,11 @@ class _$CASMCompiledContractCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$_CASMCompiledContractCopyWith<$Res>
+abstract class _$$CASMCompiledContractImplCopyWith<$Res>
     implements $CASMCompiledContractCopyWith<$Res> {
-  factory _$$_CASMCompiledContractCopyWith(_$_CASMCompiledContract value,
-          $Res Function(_$_CASMCompiledContract) then) =
-      __$$_CASMCompiledContractCopyWithImpl<$Res>;
+  factory _$$CASMCompiledContractImplCopyWith(_$CASMCompiledContractImpl value,
+          $Res Function(_$CASMCompiledContractImpl) then) =
+      __$$CASMCompiledContractImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -580,11 +583,11 @@ abstract class _$$_CASMCompiledContractCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_CASMCompiledContractCopyWithImpl<$Res>
-    extends _$CASMCompiledContractCopyWithImpl<$Res, _$_CASMCompiledContract>
-    implements _$$_CASMCompiledContractCopyWith<$Res> {
-  __$$_CASMCompiledContractCopyWithImpl(_$_CASMCompiledContract _value,
-      $Res Function(_$_CASMCompiledContract) _then)
+class __$$CASMCompiledContractImplCopyWithImpl<$Res>
+    extends _$CASMCompiledContractCopyWithImpl<$Res, _$CASMCompiledContractImpl>
+    implements _$$CASMCompiledContractImplCopyWith<$Res> {
+  __$$CASMCompiledContractImplCopyWithImpl(_$CASMCompiledContractImpl _value,
+      $Res Function(_$CASMCompiledContractImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -594,7 +597,7 @@ class __$$_CASMCompiledContractCopyWithImpl<$Res>
     Object? entryPointsByType = null,
     Object? compilerVersion = null,
   }) {
-    return _then(_$_CASMCompiledContract(
+    return _then(_$CASMCompiledContractImpl(
       bytecode: null == bytecode
           ? _value._bytecode
           : bytecode // ignore: cast_nullable_to_non_nullable
@@ -613,16 +616,16 @@ class __$$_CASMCompiledContractCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_CASMCompiledContract extends _CASMCompiledContract {
-  _$_CASMCompiledContract(
+class _$CASMCompiledContractImpl extends _CASMCompiledContract {
+  _$CASMCompiledContractImpl(
       {required final List<BigInt> bytecode,
       required this.entryPointsByType,
       required this.compilerVersion})
       : _bytecode = bytecode,
         super._();
 
-  factory _$_CASMCompiledContract.fromJson(Map<String, dynamic> json) =>
-      _$$_CASMCompiledContractFromJson(json);
+  factory _$CASMCompiledContractImpl.fromJson(Map<String, dynamic> json) =>
+      _$$CASMCompiledContractImplFromJson(json);
 
   final List<BigInt> _bytecode;
   @override
@@ -643,10 +646,10 @@ class _$_CASMCompiledContract extends _CASMCompiledContract {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_CASMCompiledContract &&
+            other is _$CASMCompiledContractImpl &&
             const DeepCollectionEquality().equals(other._bytecode, _bytecode) &&
             (identical(other.entryPointsByType, entryPointsByType) ||
                 other.entryPointsByType == entryPointsByType) &&
@@ -665,13 +668,14 @@ class _$_CASMCompiledContract extends _CASMCompiledContract {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_CASMCompiledContractCopyWith<_$_CASMCompiledContract> get copyWith =>
-      __$$_CASMCompiledContractCopyWithImpl<_$_CASMCompiledContract>(
-          this, _$identity);
+  _$$CASMCompiledContractImplCopyWith<_$CASMCompiledContractImpl>
+      get copyWith =>
+          __$$CASMCompiledContractImplCopyWithImpl<_$CASMCompiledContractImpl>(
+              this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_CASMCompiledContractToJson(
+    return _$$CASMCompiledContractImplToJson(
       this,
     );
   }
@@ -681,11 +685,11 @@ abstract class _CASMCompiledContract extends CASMCompiledContract {
   factory _CASMCompiledContract(
       {required final List<BigInt> bytecode,
       required final CASMEntryPointsByType entryPointsByType,
-      required final String compilerVersion}) = _$_CASMCompiledContract;
+      required final String compilerVersion}) = _$CASMCompiledContractImpl;
   _CASMCompiledContract._() : super._();
 
   factory _CASMCompiledContract.fromJson(Map<String, dynamic> json) =
-      _$_CASMCompiledContract.fromJson;
+      _$CASMCompiledContractImpl.fromJson;
 
   @override
   List<BigInt> get bytecode;
@@ -695,8 +699,8 @@ abstract class _CASMCompiledContract extends CASMCompiledContract {
   String get compilerVersion;
   @override
   @JsonKey(ignore: true)
-  _$$_CASMCompiledContractCopyWith<_$_CASMCompiledContract> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$CASMCompiledContractImplCopyWith<_$CASMCompiledContractImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 DeprecatedCompiledContract _$DeprecatedCompiledContractFromJson(
@@ -778,12 +782,12 @@ class _$DeprecatedCompiledContractCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$_DeprecatedCompiledContractCopyWith<$Res>
+abstract class _$$DeprecatedCompiledContractImplCopyWith<$Res>
     implements $DeprecatedCompiledContractCopyWith<$Res> {
-  factory _$$_DeprecatedCompiledContractCopyWith(
-          _$_DeprecatedCompiledContract value,
-          $Res Function(_$_DeprecatedCompiledContract) then) =
-      __$$_DeprecatedCompiledContractCopyWithImpl<$Res>;
+  factory _$$DeprecatedCompiledContractImplCopyWith(
+          _$DeprecatedCompiledContractImpl value,
+          $Res Function(_$DeprecatedCompiledContractImpl) then) =
+      __$$DeprecatedCompiledContractImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -796,13 +800,13 @@ abstract class _$$_DeprecatedCompiledContractCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_DeprecatedCompiledContractCopyWithImpl<$Res>
+class __$$DeprecatedCompiledContractImplCopyWithImpl<$Res>
     extends _$DeprecatedCompiledContractCopyWithImpl<$Res,
-        _$_DeprecatedCompiledContract>
-    implements _$$_DeprecatedCompiledContractCopyWith<$Res> {
-  __$$_DeprecatedCompiledContractCopyWithImpl(
-      _$_DeprecatedCompiledContract _value,
-      $Res Function(_$_DeprecatedCompiledContract) _then)
+        _$DeprecatedCompiledContractImpl>
+    implements _$$DeprecatedCompiledContractImplCopyWith<$Res> {
+  __$$DeprecatedCompiledContractImplCopyWithImpl(
+      _$DeprecatedCompiledContractImpl _value,
+      $Res Function(_$DeprecatedCompiledContractImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -812,7 +816,7 @@ class __$$_DeprecatedCompiledContractCopyWithImpl<$Res>
     Object? entryPointsByType = null,
     Object? abi = freezed,
   }) {
-    return _then(_$_DeprecatedCompiledContract(
+    return _then(_$DeprecatedCompiledContractImpl(
       program: null == program
           ? _value._program
           : program // ignore: cast_nullable_to_non_nullable
@@ -831,8 +835,8 @@ class __$$_DeprecatedCompiledContractCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_DeprecatedCompiledContract extends _DeprecatedCompiledContract {
-  const _$_DeprecatedCompiledContract(
+class _$DeprecatedCompiledContractImpl extends _DeprecatedCompiledContract {
+  const _$DeprecatedCompiledContractImpl(
       {required final Map<String, Object?> program,
       required this.entryPointsByType,
       final List<DeprecatedContractAbiEntry>? abi})
@@ -840,8 +844,9 @@ class _$_DeprecatedCompiledContract extends _DeprecatedCompiledContract {
         _abi = abi,
         super._();
 
-  factory _$_DeprecatedCompiledContract.fromJson(Map<String, dynamic> json) =>
-      _$$_DeprecatedCompiledContractFromJson(json);
+  factory _$DeprecatedCompiledContractImpl.fromJson(
+          Map<String, dynamic> json) =>
+      _$$DeprecatedCompiledContractImplFromJson(json);
 
   final Map<String, Object?> _program;
   @override
@@ -869,10 +874,10 @@ class _$_DeprecatedCompiledContract extends _DeprecatedCompiledContract {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_DeprecatedCompiledContract &&
+            other is _$DeprecatedCompiledContractImpl &&
             const DeepCollectionEquality().equals(other._program, _program) &&
             (identical(other.entryPointsByType, entryPointsByType) ||
                 other.entryPointsByType == entryPointsByType) &&
@@ -890,13 +895,13 @@ class _$_DeprecatedCompiledContract extends _DeprecatedCompiledContract {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_DeprecatedCompiledContractCopyWith<_$_DeprecatedCompiledContract>
-      get copyWith => __$$_DeprecatedCompiledContractCopyWithImpl<
-          _$_DeprecatedCompiledContract>(this, _$identity);
+  _$$DeprecatedCompiledContractImplCopyWith<_$DeprecatedCompiledContractImpl>
+      get copyWith => __$$DeprecatedCompiledContractImplCopyWithImpl<
+          _$DeprecatedCompiledContractImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_DeprecatedCompiledContractToJson(
+    return _$$DeprecatedCompiledContractImplToJson(
       this,
     );
   }
@@ -907,11 +912,11 @@ abstract class _DeprecatedCompiledContract extends DeprecatedCompiledContract {
           {required final Map<String, Object?> program,
           required final DeprecatedCairoEntryPointsByType entryPointsByType,
           final List<DeprecatedContractAbiEntry>? abi}) =
-      _$_DeprecatedCompiledContract;
+      _$DeprecatedCompiledContractImpl;
   const _DeprecatedCompiledContract._() : super._();
 
   factory _DeprecatedCompiledContract.fromJson(Map<String, dynamic> json) =
-      _$_DeprecatedCompiledContract.fromJson;
+      _$DeprecatedCompiledContractImpl.fromJson;
 
   @override
   Map<String, Object?> get program;
@@ -921,6 +926,6 @@ abstract class _DeprecatedCompiledContract extends DeprecatedCompiledContract {
   List<DeprecatedContractAbiEntry>? get abi;
   @override
   @JsonKey(ignore: true)
-  _$$_DeprecatedCompiledContractCopyWith<_$_DeprecatedCompiledContract>
+  _$$DeprecatedCompiledContractImplCopyWith<_$DeprecatedCompiledContractImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

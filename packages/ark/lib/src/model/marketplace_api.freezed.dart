@@ -22,8 +22,10 @@ ListMarketplaceNFTsResponse _$ListMarketplaceNFTsResponseFromJson(
 /// @nodoc
 mixin _$ListMarketplaceNFTsResponse {
   List<MarketPlaceNFT> get data => throw _privateConstructorUsedError;
-  int get token_count => throw _privateConstructorUsedError;
-  int get next_page => throw _privateConstructorUsedError;
+  @JsonKey(name: 'token_count')
+  int get tokenCount => throw _privateConstructorUsedError;
+  @JsonKey(name: 'next_page')
+  int get nextPage => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -39,7 +41,10 @@ abstract class $ListMarketplaceNFTsResponseCopyWith<$Res> {
       _$ListMarketplaceNFTsResponseCopyWithImpl<$Res,
           ListMarketplaceNFTsResponse>;
   @useResult
-  $Res call({List<MarketPlaceNFT> data, int token_count, int next_page});
+  $Res call(
+      {List<MarketPlaceNFT> data,
+      @JsonKey(name: 'token_count') int tokenCount,
+      @JsonKey(name: 'next_page') int nextPage});
 }
 
 /// @nodoc
@@ -57,21 +62,21 @@ class _$ListMarketplaceNFTsResponseCopyWithImpl<$Res,
   @override
   $Res call({
     Object? data = null,
-    Object? token_count = null,
-    Object? next_page = null,
+    Object? tokenCount = null,
+    Object? nextPage = null,
   }) {
     return _then(_value.copyWith(
       data: null == data
           ? _value.data
           : data // ignore: cast_nullable_to_non_nullable
               as List<MarketPlaceNFT>,
-      token_count: null == token_count
-          ? _value.token_count
-          : token_count // ignore: cast_nullable_to_non_nullable
+      tokenCount: null == tokenCount
+          ? _value.tokenCount
+          : tokenCount // ignore: cast_nullable_to_non_nullable
               as int,
-      next_page: null == next_page
-          ? _value.next_page
-          : next_page // ignore: cast_nullable_to_non_nullable
+      nextPage: null == nextPage
+          ? _value.nextPage
+          : nextPage // ignore: cast_nullable_to_non_nullable
               as int,
     ) as $Val);
   }
@@ -86,7 +91,10 @@ abstract class _$$ListMarketplaceNFTsResponseImplCopyWith<$Res>
       __$$ListMarketplaceNFTsResponseImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({List<MarketPlaceNFT> data, int token_count, int next_page});
+  $Res call(
+      {List<MarketPlaceNFT> data,
+      @JsonKey(name: 'token_count') int tokenCount,
+      @JsonKey(name: 'next_page') int nextPage});
 }
 
 /// @nodoc
@@ -103,21 +111,21 @@ class __$$ListMarketplaceNFTsResponseImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? data = null,
-    Object? token_count = null,
-    Object? next_page = null,
+    Object? tokenCount = null,
+    Object? nextPage = null,
   }) {
     return _then(_$ListMarketplaceNFTsResponseImpl(
       data: null == data
           ? _value._data
           : data // ignore: cast_nullable_to_non_nullable
               as List<MarketPlaceNFT>,
-      token_count: null == token_count
-          ? _value.token_count
-          : token_count // ignore: cast_nullable_to_non_nullable
+      tokenCount: null == tokenCount
+          ? _value.tokenCount
+          : tokenCount // ignore: cast_nullable_to_non_nullable
               as int,
-      next_page: null == next_page
-          ? _value.next_page
-          : next_page // ignore: cast_nullable_to_non_nullable
+      nextPage: null == nextPage
+          ? _value.nextPage
+          : nextPage // ignore: cast_nullable_to_non_nullable
               as int,
     ));
   }
@@ -129,8 +137,8 @@ class _$ListMarketplaceNFTsResponseImpl
     implements _ListMarketplaceNFTsResponse {
   const _$ListMarketplaceNFTsResponseImpl(
       {required final List<MarketPlaceNFT> data,
-      required this.token_count,
-      required this.next_page})
+      @JsonKey(name: 'token_count') required this.tokenCount,
+      @JsonKey(name: 'next_page') required this.nextPage})
       : _data = data;
 
   factory _$ListMarketplaceNFTsResponseImpl.fromJson(
@@ -146,13 +154,15 @@ class _$ListMarketplaceNFTsResponseImpl
   }
 
   @override
-  final int token_count;
+  @JsonKey(name: 'token_count')
+  final int tokenCount;
   @override
-  final int next_page;
+  @JsonKey(name: 'next_page')
+  final int nextPage;
 
   @override
   String toString() {
-    return 'ListMarketplaceNFTsResponse(data: $data, token_count: $token_count, next_page: $next_page)';
+    return 'ListMarketplaceNFTsResponse(data: $data, tokenCount: $tokenCount, nextPage: $nextPage)';
   }
 
   @override
@@ -161,16 +171,16 @@ class _$ListMarketplaceNFTsResponseImpl
         (other.runtimeType == runtimeType &&
             other is _$ListMarketplaceNFTsResponseImpl &&
             const DeepCollectionEquality().equals(other._data, _data) &&
-            (identical(other.token_count, token_count) ||
-                other.token_count == token_count) &&
-            (identical(other.next_page, next_page) ||
-                other.next_page == next_page));
+            (identical(other.tokenCount, tokenCount) ||
+                other.tokenCount == tokenCount) &&
+            (identical(other.nextPage, nextPage) ||
+                other.nextPage == nextPage));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType,
-      const DeepCollectionEquality().hash(_data), token_count, next_page);
+      const DeepCollectionEquality().hash(_data), tokenCount, nextPage);
 
   @JsonKey(ignore: true)
   @override
@@ -190,9 +200,10 @@ class _$ListMarketplaceNFTsResponseImpl
 abstract class _ListMarketplaceNFTsResponse
     implements ListMarketplaceNFTsResponse {
   const factory _ListMarketplaceNFTsResponse(
-      {required final List<MarketPlaceNFT> data,
-      required final int token_count,
-      required final int next_page}) = _$ListMarketplaceNFTsResponseImpl;
+          {required final List<MarketPlaceNFT> data,
+          @JsonKey(name: 'token_count') required final int tokenCount,
+          @JsonKey(name: 'next_page') required final int nextPage}) =
+      _$ListMarketplaceNFTsResponseImpl;
 
   factory _ListMarketplaceNFTsResponse.fromJson(Map<String, dynamic> json) =
       _$ListMarketplaceNFTsResponseImpl.fromJson;
@@ -200,9 +211,11 @@ abstract class _ListMarketplaceNFTsResponse
   @override
   List<MarketPlaceNFT> get data;
   @override
-  int get token_count;
+  @JsonKey(name: 'token_count')
+  int get tokenCount;
   @override
-  int get next_page;
+  @JsonKey(name: 'next_page')
+  int get nextPage;
   @override
   @JsonKey(ignore: true)
   _$$ListMarketplaceNFTsResponseImplCopyWith<_$ListMarketplaceNFTsResponseImpl>
@@ -215,16 +228,25 @@ MarketPlaceNFT _$MarketPlaceNFTFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$MarketPlaceNFT {
+  @JsonKey(name: 'contract')
   String get contract => throw _privateConstructorUsedError;
-  String get token_id => throw _privateConstructorUsedError;
-  String get last_price => throw _privateConstructorUsedError;
-  String get floor_difference => throw _privateConstructorUsedError;
-  int get listed_at => throw _privateConstructorUsedError;
+  @JsonKey(name: 'token_id')
+  String get tokenId => throw _privateConstructorUsedError;
+  @JsonKey(name: 'last_price')
+  String get lastPrice => throw _privateConstructorUsedError;
+  @JsonKey(name: 'floor_difference')
+  String get floorDifference => throw _privateConstructorUsedError;
+  @JsonKey(name: 'listed_at')
+  int get listedAt => throw _privateConstructorUsedError;
+  @JsonKey(name: 'owner')
   String get owner => throw _privateConstructorUsedError;
-  int get minted_at => throw _privateConstructorUsedError;
-  int get updated_at => throw _privateConstructorUsedError;
+  @JsonKey(name: 'minted_at')
+  int get mintedAt => throw _privateConstructorUsedError;
+  @JsonKey(name: 'updated_at')
+  int get updatedAt => throw _privateConstructorUsedError;
+  @JsonKey(name: 'price')
   String get price => throw _privateConstructorUsedError;
-  NFTMetadata get metadata => throw _privateConstructorUsedError;
+  MarketplaceNFTMetadata get metadata => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -239,18 +261,18 @@ abstract class $MarketPlaceNFTCopyWith<$Res> {
       _$MarketPlaceNFTCopyWithImpl<$Res, MarketPlaceNFT>;
   @useResult
   $Res call(
-      {String contract,
-      String token_id,
-      String last_price,
-      String floor_difference,
-      int listed_at,
-      String owner,
-      int minted_at,
-      int updated_at,
-      String price,
-      NFTMetadata metadata});
+      {@JsonKey(name: 'contract') String contract,
+      @JsonKey(name: 'token_id') String tokenId,
+      @JsonKey(name: 'last_price') String lastPrice,
+      @JsonKey(name: 'floor_difference') String floorDifference,
+      @JsonKey(name: 'listed_at') int listedAt,
+      @JsonKey(name: 'owner') String owner,
+      @JsonKey(name: 'minted_at') int mintedAt,
+      @JsonKey(name: 'updated_at') int updatedAt,
+      @JsonKey(name: 'price') String price,
+      MarketplaceNFTMetadata metadata});
 
-  $NFTMetadataCopyWith<$Res> get metadata;
+  $MarketplaceNFTMetadataCopyWith<$Res> get metadata;
 }
 
 /// @nodoc
@@ -267,13 +289,13 @@ class _$MarketPlaceNFTCopyWithImpl<$Res, $Val extends MarketPlaceNFT>
   @override
   $Res call({
     Object? contract = null,
-    Object? token_id = null,
-    Object? last_price = null,
-    Object? floor_difference = null,
-    Object? listed_at = null,
+    Object? tokenId = null,
+    Object? lastPrice = null,
+    Object? floorDifference = null,
+    Object? listedAt = null,
     Object? owner = null,
-    Object? minted_at = null,
-    Object? updated_at = null,
+    Object? mintedAt = null,
+    Object? updatedAt = null,
     Object? price = null,
     Object? metadata = null,
   }) {
@@ -282,33 +304,33 @@ class _$MarketPlaceNFTCopyWithImpl<$Res, $Val extends MarketPlaceNFT>
           ? _value.contract
           : contract // ignore: cast_nullable_to_non_nullable
               as String,
-      token_id: null == token_id
-          ? _value.token_id
-          : token_id // ignore: cast_nullable_to_non_nullable
+      tokenId: null == tokenId
+          ? _value.tokenId
+          : tokenId // ignore: cast_nullable_to_non_nullable
               as String,
-      last_price: null == last_price
-          ? _value.last_price
-          : last_price // ignore: cast_nullable_to_non_nullable
+      lastPrice: null == lastPrice
+          ? _value.lastPrice
+          : lastPrice // ignore: cast_nullable_to_non_nullable
               as String,
-      floor_difference: null == floor_difference
-          ? _value.floor_difference
-          : floor_difference // ignore: cast_nullable_to_non_nullable
+      floorDifference: null == floorDifference
+          ? _value.floorDifference
+          : floorDifference // ignore: cast_nullable_to_non_nullable
               as String,
-      listed_at: null == listed_at
-          ? _value.listed_at
-          : listed_at // ignore: cast_nullable_to_non_nullable
+      listedAt: null == listedAt
+          ? _value.listedAt
+          : listedAt // ignore: cast_nullable_to_non_nullable
               as int,
       owner: null == owner
           ? _value.owner
           : owner // ignore: cast_nullable_to_non_nullable
               as String,
-      minted_at: null == minted_at
-          ? _value.minted_at
-          : minted_at // ignore: cast_nullable_to_non_nullable
+      mintedAt: null == mintedAt
+          ? _value.mintedAt
+          : mintedAt // ignore: cast_nullable_to_non_nullable
               as int,
-      updated_at: null == updated_at
-          ? _value.updated_at
-          : updated_at // ignore: cast_nullable_to_non_nullable
+      updatedAt: null == updatedAt
+          ? _value.updatedAt
+          : updatedAt // ignore: cast_nullable_to_non_nullable
               as int,
       price: null == price
           ? _value.price
@@ -317,14 +339,14 @@ class _$MarketPlaceNFTCopyWithImpl<$Res, $Val extends MarketPlaceNFT>
       metadata: null == metadata
           ? _value.metadata
           : metadata // ignore: cast_nullable_to_non_nullable
-              as NFTMetadata,
+              as MarketplaceNFTMetadata,
     ) as $Val);
   }
 
   @override
   @pragma('vm:prefer-inline')
-  $NFTMetadataCopyWith<$Res> get metadata {
-    return $NFTMetadataCopyWith<$Res>(_value.metadata, (value) {
+  $MarketplaceNFTMetadataCopyWith<$Res> get metadata {
+    return $MarketplaceNFTMetadataCopyWith<$Res>(_value.metadata, (value) {
       return _then(_value.copyWith(metadata: value) as $Val);
     });
   }
@@ -339,19 +361,19 @@ abstract class _$$MarketPlaceNFTImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {String contract,
-      String token_id,
-      String last_price,
-      String floor_difference,
-      int listed_at,
-      String owner,
-      int minted_at,
-      int updated_at,
-      String price,
-      NFTMetadata metadata});
+      {@JsonKey(name: 'contract') String contract,
+      @JsonKey(name: 'token_id') String tokenId,
+      @JsonKey(name: 'last_price') String lastPrice,
+      @JsonKey(name: 'floor_difference') String floorDifference,
+      @JsonKey(name: 'listed_at') int listedAt,
+      @JsonKey(name: 'owner') String owner,
+      @JsonKey(name: 'minted_at') int mintedAt,
+      @JsonKey(name: 'updated_at') int updatedAt,
+      @JsonKey(name: 'price') String price,
+      MarketplaceNFTMetadata metadata});
 
   @override
-  $NFTMetadataCopyWith<$Res> get metadata;
+  $MarketplaceNFTMetadataCopyWith<$Res> get metadata;
 }
 
 /// @nodoc
@@ -366,13 +388,13 @@ class __$$MarketPlaceNFTImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? contract = null,
-    Object? token_id = null,
-    Object? last_price = null,
-    Object? floor_difference = null,
-    Object? listed_at = null,
+    Object? tokenId = null,
+    Object? lastPrice = null,
+    Object? floorDifference = null,
+    Object? listedAt = null,
     Object? owner = null,
-    Object? minted_at = null,
-    Object? updated_at = null,
+    Object? mintedAt = null,
+    Object? updatedAt = null,
     Object? price = null,
     Object? metadata = null,
   }) {
@@ -381,33 +403,33 @@ class __$$MarketPlaceNFTImplCopyWithImpl<$Res>
           ? _value.contract
           : contract // ignore: cast_nullable_to_non_nullable
               as String,
-      token_id: null == token_id
-          ? _value.token_id
-          : token_id // ignore: cast_nullable_to_non_nullable
+      tokenId: null == tokenId
+          ? _value.tokenId
+          : tokenId // ignore: cast_nullable_to_non_nullable
               as String,
-      last_price: null == last_price
-          ? _value.last_price
-          : last_price // ignore: cast_nullable_to_non_nullable
+      lastPrice: null == lastPrice
+          ? _value.lastPrice
+          : lastPrice // ignore: cast_nullable_to_non_nullable
               as String,
-      floor_difference: null == floor_difference
-          ? _value.floor_difference
-          : floor_difference // ignore: cast_nullable_to_non_nullable
+      floorDifference: null == floorDifference
+          ? _value.floorDifference
+          : floorDifference // ignore: cast_nullable_to_non_nullable
               as String,
-      listed_at: null == listed_at
-          ? _value.listed_at
-          : listed_at // ignore: cast_nullable_to_non_nullable
+      listedAt: null == listedAt
+          ? _value.listedAt
+          : listedAt // ignore: cast_nullable_to_non_nullable
               as int,
       owner: null == owner
           ? _value.owner
           : owner // ignore: cast_nullable_to_non_nullable
               as String,
-      minted_at: null == minted_at
-          ? _value.minted_at
-          : minted_at // ignore: cast_nullable_to_non_nullable
+      mintedAt: null == mintedAt
+          ? _value.mintedAt
+          : mintedAt // ignore: cast_nullable_to_non_nullable
               as int,
-      updated_at: null == updated_at
-          ? _value.updated_at
-          : updated_at // ignore: cast_nullable_to_non_nullable
+      updatedAt: null == updatedAt
+          ? _value.updatedAt
+          : updatedAt // ignore: cast_nullable_to_non_nullable
               as int,
       price: null == price
           ? _value.price
@@ -416,7 +438,7 @@ class __$$MarketPlaceNFTImplCopyWithImpl<$Res>
       metadata: null == metadata
           ? _value.metadata
           : metadata // ignore: cast_nullable_to_non_nullable
-              as NFTMetadata,
+              as MarketplaceNFTMetadata,
     ));
   }
 }
@@ -425,44 +447,53 @@ class __$$MarketPlaceNFTImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$MarketPlaceNFTImpl implements _MarketPlaceNFT {
   const _$MarketPlaceNFTImpl(
-      {required this.contract,
-      required this.token_id,
-      required this.last_price,
-      required this.floor_difference,
-      required this.listed_at,
-      required this.owner,
-      required this.minted_at,
-      required this.updated_at,
-      required this.price,
+      {@JsonKey(name: 'contract') required this.contract,
+      @JsonKey(name: 'token_id') required this.tokenId,
+      @JsonKey(name: 'last_price') required this.lastPrice,
+      @JsonKey(name: 'floor_difference') required this.floorDifference,
+      @JsonKey(name: 'listed_at') required this.listedAt,
+      @JsonKey(name: 'owner') required this.owner,
+      @JsonKey(name: 'minted_at') required this.mintedAt,
+      @JsonKey(name: 'updated_at') required this.updatedAt,
+      @JsonKey(name: 'price') required this.price,
       required this.metadata});
 
   factory _$MarketPlaceNFTImpl.fromJson(Map<String, dynamic> json) =>
       _$$MarketPlaceNFTImplFromJson(json);
 
   @override
+  @JsonKey(name: 'contract')
   final String contract;
   @override
-  final String token_id;
+  @JsonKey(name: 'token_id')
+  final String tokenId;
   @override
-  final String last_price;
+  @JsonKey(name: 'last_price')
+  final String lastPrice;
   @override
-  final String floor_difference;
+  @JsonKey(name: 'floor_difference')
+  final String floorDifference;
   @override
-  final int listed_at;
+  @JsonKey(name: 'listed_at')
+  final int listedAt;
   @override
+  @JsonKey(name: 'owner')
   final String owner;
   @override
-  final int minted_at;
+  @JsonKey(name: 'minted_at')
+  final int mintedAt;
   @override
-  final int updated_at;
+  @JsonKey(name: 'updated_at')
+  final int updatedAt;
   @override
+  @JsonKey(name: 'price')
   final String price;
   @override
-  final NFTMetadata metadata;
+  final MarketplaceNFTMetadata metadata;
 
   @override
   String toString() {
-    return 'MarketPlaceNFT(contract: $contract, token_id: $token_id, last_price: $last_price, floor_difference: $floor_difference, listed_at: $listed_at, owner: $owner, minted_at: $minted_at, updated_at: $updated_at, price: $price, metadata: $metadata)';
+    return 'MarketPlaceNFT(contract: $contract, tokenId: $tokenId, lastPrice: $lastPrice, floorDifference: $floorDifference, listedAt: $listedAt, owner: $owner, mintedAt: $mintedAt, updatedAt: $updatedAt, price: $price, metadata: $metadata)';
   }
 
   @override
@@ -472,19 +503,18 @@ class _$MarketPlaceNFTImpl implements _MarketPlaceNFT {
             other is _$MarketPlaceNFTImpl &&
             (identical(other.contract, contract) ||
                 other.contract == contract) &&
-            (identical(other.token_id, token_id) ||
-                other.token_id == token_id) &&
-            (identical(other.last_price, last_price) ||
-                other.last_price == last_price) &&
-            (identical(other.floor_difference, floor_difference) ||
-                other.floor_difference == floor_difference) &&
-            (identical(other.listed_at, listed_at) ||
-                other.listed_at == listed_at) &&
+            (identical(other.tokenId, tokenId) || other.tokenId == tokenId) &&
+            (identical(other.lastPrice, lastPrice) ||
+                other.lastPrice == lastPrice) &&
+            (identical(other.floorDifference, floorDifference) ||
+                other.floorDifference == floorDifference) &&
+            (identical(other.listedAt, listedAt) ||
+                other.listedAt == listedAt) &&
             (identical(other.owner, owner) || other.owner == owner) &&
-            (identical(other.minted_at, minted_at) ||
-                other.minted_at == minted_at) &&
-            (identical(other.updated_at, updated_at) ||
-                other.updated_at == updated_at) &&
+            (identical(other.mintedAt, mintedAt) ||
+                other.mintedAt == mintedAt) &&
+            (identical(other.updatedAt, updatedAt) ||
+                other.updatedAt == updatedAt) &&
             (identical(other.price, price) || other.price == price) &&
             (identical(other.metadata, metadata) ||
                 other.metadata == metadata));
@@ -492,18 +522,8 @@ class _$MarketPlaceNFTImpl implements _MarketPlaceNFT {
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      contract,
-      token_id,
-      last_price,
-      floor_difference,
-      listed_at,
-      owner,
-      minted_at,
-      updated_at,
-      price,
-      metadata);
+  int get hashCode => Object.hash(runtimeType, contract, tokenId, lastPrice,
+      floorDifference, listedAt, owner, mintedAt, updatedAt, price, metadata);
 
   @JsonKey(ignore: true)
   @override
@@ -522,75 +542,88 @@ class _$MarketPlaceNFTImpl implements _MarketPlaceNFT {
 
 abstract class _MarketPlaceNFT implements MarketPlaceNFT {
   const factory _MarketPlaceNFT(
-      {required final String contract,
-      required final String token_id,
-      required final String last_price,
-      required final String floor_difference,
-      required final int listed_at,
-      required final String owner,
-      required final int minted_at,
-      required final int updated_at,
-      required final String price,
-      required final NFTMetadata metadata}) = _$MarketPlaceNFTImpl;
+      {@JsonKey(name: 'contract') required final String contract,
+      @JsonKey(name: 'token_id') required final String tokenId,
+      @JsonKey(name: 'last_price') required final String lastPrice,
+      @JsonKey(name: 'floor_difference') required final String floorDifference,
+      @JsonKey(name: 'listed_at') required final int listedAt,
+      @JsonKey(name: 'owner') required final String owner,
+      @JsonKey(name: 'minted_at') required final int mintedAt,
+      @JsonKey(name: 'updated_at') required final int updatedAt,
+      @JsonKey(name: 'price') required final String price,
+      required final MarketplaceNFTMetadata metadata}) = _$MarketPlaceNFTImpl;
 
   factory _MarketPlaceNFT.fromJson(Map<String, dynamic> json) =
       _$MarketPlaceNFTImpl.fromJson;
 
   @override
+  @JsonKey(name: 'contract')
   String get contract;
   @override
-  String get token_id;
+  @JsonKey(name: 'token_id')
+  String get tokenId;
   @override
-  String get last_price;
+  @JsonKey(name: 'last_price')
+  String get lastPrice;
   @override
-  String get floor_difference;
+  @JsonKey(name: 'floor_difference')
+  String get floorDifference;
   @override
-  int get listed_at;
+  @JsonKey(name: 'listed_at')
+  int get listedAt;
   @override
+  @JsonKey(name: 'owner')
   String get owner;
   @override
-  int get minted_at;
+  @JsonKey(name: 'minted_at')
+  int get mintedAt;
   @override
-  int get updated_at;
+  @JsonKey(name: 'updated_at')
+  int get updatedAt;
   @override
+  @JsonKey(name: 'price')
   String get price;
   @override
-  NFTMetadata get metadata;
+  MarketplaceNFTMetadata get metadata;
   @override
   @JsonKey(ignore: true)
   _$$MarketPlaceNFTImplCopyWith<_$MarketPlaceNFTImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
-NFTMetadata _$NFTMetadataFromJson(Map<String, dynamic> json) {
-  return _NFTMetadata.fromJson(json);
+MarketplaceNFTMetadata _$MarketplaceNFTMetadataFromJson(
+    Map<String, dynamic> json) {
+  return _MarketplaceNFTMetadata.fromJson(json);
 }
 
 /// @nodoc
-mixin _$NFTMetadata {
+mixin _$MarketplaceNFTMetadata {
   String get name => throw _privateConstructorUsedError;
   String get description => throw _privateConstructorUsedError;
+  @JsonKey(name: 'image')
   String get image => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $NFTMetadataCopyWith<NFTMetadata> get copyWith =>
+  $MarketplaceNFTMetadataCopyWith<MarketplaceNFTMetadata> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $NFTMetadataCopyWith<$Res> {
-  factory $NFTMetadataCopyWith(
-          NFTMetadata value, $Res Function(NFTMetadata) then) =
-      _$NFTMetadataCopyWithImpl<$Res, NFTMetadata>;
+abstract class $MarketplaceNFTMetadataCopyWith<$Res> {
+  factory $MarketplaceNFTMetadataCopyWith(MarketplaceNFTMetadata value,
+          $Res Function(MarketplaceNFTMetadata) then) =
+      _$MarketplaceNFTMetadataCopyWithImpl<$Res, MarketplaceNFTMetadata>;
   @useResult
-  $Res call({String name, String description, String image});
+  $Res call(
+      {String name, String description, @JsonKey(name: 'image') String image});
 }
 
 /// @nodoc
-class _$NFTMetadataCopyWithImpl<$Res, $Val extends NFTMetadata>
-    implements $NFTMetadataCopyWith<$Res> {
-  _$NFTMetadataCopyWithImpl(this._value, this._then);
+class _$MarketplaceNFTMetadataCopyWithImpl<$Res,
+        $Val extends MarketplaceNFTMetadata>
+    implements $MarketplaceNFTMetadataCopyWith<$Res> {
+  _$MarketplaceNFTMetadataCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -622,22 +655,26 @@ class _$NFTMetadataCopyWithImpl<$Res, $Val extends NFTMetadata>
 }
 
 /// @nodoc
-abstract class _$$NFTMetadataImplCopyWith<$Res>
-    implements $NFTMetadataCopyWith<$Res> {
-  factory _$$NFTMetadataImplCopyWith(
-          _$NFTMetadataImpl value, $Res Function(_$NFTMetadataImpl) then) =
-      __$$NFTMetadataImplCopyWithImpl<$Res>;
+abstract class _$$MarketplaceNFTMetadataImplCopyWith<$Res>
+    implements $MarketplaceNFTMetadataCopyWith<$Res> {
+  factory _$$MarketplaceNFTMetadataImplCopyWith(
+          _$MarketplaceNFTMetadataImpl value,
+          $Res Function(_$MarketplaceNFTMetadataImpl) then) =
+      __$$MarketplaceNFTMetadataImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String name, String description, String image});
+  $Res call(
+      {String name, String description, @JsonKey(name: 'image') String image});
 }
 
 /// @nodoc
-class __$$NFTMetadataImplCopyWithImpl<$Res>
-    extends _$NFTMetadataCopyWithImpl<$Res, _$NFTMetadataImpl>
-    implements _$$NFTMetadataImplCopyWith<$Res> {
-  __$$NFTMetadataImplCopyWithImpl(
-      _$NFTMetadataImpl _value, $Res Function(_$NFTMetadataImpl) _then)
+class __$$MarketplaceNFTMetadataImplCopyWithImpl<$Res>
+    extends _$MarketplaceNFTMetadataCopyWithImpl<$Res,
+        _$MarketplaceNFTMetadataImpl>
+    implements _$$MarketplaceNFTMetadataImplCopyWith<$Res> {
+  __$$MarketplaceNFTMetadataImplCopyWithImpl(
+      _$MarketplaceNFTMetadataImpl _value,
+      $Res Function(_$MarketplaceNFTMetadataImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -647,7 +684,7 @@ class __$$NFTMetadataImplCopyWithImpl<$Res>
     Object? description = null,
     Object? image = null,
   }) {
-    return _then(_$NFTMetadataImpl(
+    return _then(_$MarketplaceNFTMetadataImpl(
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -666,30 +703,33 @@ class __$$NFTMetadataImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$NFTMetadataImpl implements _NFTMetadata {
-  const _$NFTMetadataImpl(
-      {required this.name, required this.description, required this.image});
+class _$MarketplaceNFTMetadataImpl implements _MarketplaceNFTMetadata {
+  const _$MarketplaceNFTMetadataImpl(
+      {required this.name,
+      required this.description,
+      @JsonKey(name: 'image') required this.image});
 
-  factory _$NFTMetadataImpl.fromJson(Map<String, dynamic> json) =>
-      _$$NFTMetadataImplFromJson(json);
+  factory _$MarketplaceNFTMetadataImpl.fromJson(Map<String, dynamic> json) =>
+      _$$MarketplaceNFTMetadataImplFromJson(json);
 
   @override
   final String name;
   @override
   final String description;
   @override
+  @JsonKey(name: 'image')
   final String image;
 
   @override
   String toString() {
-    return 'NFTMetadata(name: $name, description: $description, image: $image)';
+    return 'MarketplaceNFTMetadata(name: $name, description: $description, image: $image)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$NFTMetadataImpl &&
+            other is _$MarketplaceNFTMetadataImpl &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.description, description) ||
                 other.description == description) &&
@@ -703,34 +743,37 @@ class _$NFTMetadataImpl implements _NFTMetadata {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$NFTMetadataImplCopyWith<_$NFTMetadataImpl> get copyWith =>
-      __$$NFTMetadataImplCopyWithImpl<_$NFTMetadataImpl>(this, _$identity);
+  _$$MarketplaceNFTMetadataImplCopyWith<_$MarketplaceNFTMetadataImpl>
+      get copyWith => __$$MarketplaceNFTMetadataImplCopyWithImpl<
+          _$MarketplaceNFTMetadataImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$NFTMetadataImplToJson(
+    return _$$MarketplaceNFTMetadataImplToJson(
       this,
     );
   }
 }
 
-abstract class _NFTMetadata implements NFTMetadata {
-  const factory _NFTMetadata(
-      {required final String name,
-      required final String description,
-      required final String image}) = _$NFTMetadataImpl;
+abstract class _MarketplaceNFTMetadata implements MarketplaceNFTMetadata {
+  const factory _MarketplaceNFTMetadata(
+          {required final String name,
+          required final String description,
+          @JsonKey(name: 'image') required final String image}) =
+      _$MarketplaceNFTMetadataImpl;
 
-  factory _NFTMetadata.fromJson(Map<String, dynamic> json) =
-      _$NFTMetadataImpl.fromJson;
+  factory _MarketplaceNFTMetadata.fromJson(Map<String, dynamic> json) =
+      _$MarketplaceNFTMetadataImpl.fromJson;
 
   @override
   String get name;
   @override
   String get description;
   @override
+  @JsonKey(name: 'image')
   String get image;
   @override
   @JsonKey(ignore: true)
-  _$$NFTMetadataImplCopyWith<_$NFTMetadataImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$MarketplaceNFTMetadataImplCopyWith<_$MarketplaceNFTMetadataImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }

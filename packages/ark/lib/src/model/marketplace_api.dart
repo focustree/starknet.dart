@@ -7,8 +7,8 @@ part 'marketplace_api.g.dart';
 class ListMarketplaceNFTsResponse with _$ListMarketplaceNFTsResponse {
   const factory ListMarketplaceNFTsResponse({
     required List<MarketPlaceNFT> data,
-    required int token_count,
-    required int next_page,
+    @JsonKey(name: 'token_count') required int tokenCount,
+    @JsonKey(name: 'next_page') required int nextPage,
   }) = _ListMarketplaceNFTsResponse;
 
   factory ListMarketplaceNFTsResponse.fromJson(Map<String, dynamic> json) =>
@@ -18,16 +18,16 @@ class ListMarketplaceNFTsResponse with _$ListMarketplaceNFTsResponse {
 @freezed
 class MarketPlaceNFT with _$MarketPlaceNFT {
   const factory MarketPlaceNFT({
-    required String contract,
-    required String token_id,
-    required String last_price,
-    required String floor_difference,
-    required int listed_at,
-    required String owner,
-    required int minted_at,
-    required int updated_at,
-    required String price,
-    required NFTMetadata metadata,
+    @JsonKey(name: 'contract') required String contract,
+    @JsonKey(name: 'token_id') required String tokenId,
+    @JsonKey(name: 'last_price') required String lastPrice,
+    @JsonKey(name: 'floor_difference') required String floorDifference,
+    @JsonKey(name: 'listed_at') required int listedAt,
+    @JsonKey(name: 'owner') required String owner,
+    @JsonKey(name: 'minted_at') required int mintedAt,
+    @JsonKey(name: 'updated_at') required int updatedAt,
+    @JsonKey(name: 'price') required String price,
+    required MarketplaceNFTMetadata metadata,
   }) = _MarketPlaceNFT;
 
   factory MarketPlaceNFT.fromJson(Map<String, dynamic> json) =>
@@ -35,13 +35,13 @@ class MarketPlaceNFT with _$MarketPlaceNFT {
 }
 
 @freezed
-class NFTMetadata with _$NFTMetadata {
-  const factory NFTMetadata({
+class MarketplaceNFTMetadata with _$MarketplaceNFTMetadata {
+  const factory MarketplaceNFTMetadata({
     required String name,
     required String description,
-    required String image,
-  }) = _NFTMetadata;
+    @JsonKey(name: 'image') required String image,
+  }) = _MarketplaceNFTMetadata;
 
-  factory NFTMetadata.fromJson(Map<String, dynamic> json) =>
-      _$NFTMetadataFromJson(json);
+  factory MarketplaceNFTMetadata.fromJson(Map<String, dynamic> json) =>
+      _$MarketplaceNFTMetadataFromJson(json);
 }
