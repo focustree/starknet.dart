@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'model.dart';
+part of 'nft_api.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
@@ -20,6 +20,17 @@ Map<String, dynamic> _$$ListNFTsResponseImplToJson(
     <String, dynamic>{
       'result': instance.result,
       'cursor': instance.cursor,
+    };
+
+_$GetNFTResponseImpl _$$GetNFTResponseImplFromJson(Map<String, dynamic> json) =>
+    _$GetNFTResponseImpl(
+      result: NFT.fromJson(json['result'] as Map<String, dynamic>),
+    );
+
+Map<String, dynamic> _$$GetNFTResponseImplToJson(
+        _$GetNFTResponseImpl instance) =>
+    <String, dynamic>{
+      'result': instance.result,
     };
 
 _$NFTImpl _$$NFTImplFromJson(Map<String, dynamic> json) => _$NFTImpl(

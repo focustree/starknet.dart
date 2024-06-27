@@ -14,12 +14,12 @@ void main() {
       () => throw 'NFT_CONTRACT_ADDRESS not found in .env file',
     );
 
-    ArkNFTApi().init(
+    Ark().init(
       apiKey: apiKey,
     );
 
     test('Fetches NFTs correctly', () async {
-      final nfts = await ArkNFTApi().listNFTs(nftAddress, limit: 5);
+      final nfts = await Ark().listNFTs(nftAddress, limit: 5);
       expect(nfts.result.length, 5);
     });
   });

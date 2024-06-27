@@ -30,7 +30,7 @@ class WalletKit {
   late Felt accountClassHash;
   late Felt defaultMaxFee;
 
-  void init({
+  Future<void> init({
     required Future<String?> Function(BuildContext) getPassword,
     required String rpc,
     required String accountClassHash,

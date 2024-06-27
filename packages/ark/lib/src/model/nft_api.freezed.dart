@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'model.dart';
+part of 'nft_api.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -174,6 +174,156 @@ abstract class _ListNFTsResponse implements ListNFTsResponse {
   @override
   @JsonKey(ignore: true)
   _$$ListNFTsResponseImplCopyWith<_$ListNFTsResponseImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+GetNFTResponse _$GetNFTResponseFromJson(Map<String, dynamic> json) {
+  return _GetNFTResponse.fromJson(json);
+}
+
+/// @nodoc
+mixin _$GetNFTResponse {
+  NFT get result => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $GetNFTResponseCopyWith<GetNFTResponse> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $GetNFTResponseCopyWith<$Res> {
+  factory $GetNFTResponseCopyWith(
+          GetNFTResponse value, $Res Function(GetNFTResponse) then) =
+      _$GetNFTResponseCopyWithImpl<$Res, GetNFTResponse>;
+  @useResult
+  $Res call({NFT result});
+
+  $NFTCopyWith<$Res> get result;
+}
+
+/// @nodoc
+class _$GetNFTResponseCopyWithImpl<$Res, $Val extends GetNFTResponse>
+    implements $GetNFTResponseCopyWith<$Res> {
+  _$GetNFTResponseCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? result = null,
+  }) {
+    return _then(_value.copyWith(
+      result: null == result
+          ? _value.result
+          : result // ignore: cast_nullable_to_non_nullable
+              as NFT,
+    ) as $Val);
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $NFTCopyWith<$Res> get result {
+    return $NFTCopyWith<$Res>(_value.result, (value) {
+      return _then(_value.copyWith(result: value) as $Val);
+    });
+  }
+}
+
+/// @nodoc
+abstract class _$$GetNFTResponseImplCopyWith<$Res>
+    implements $GetNFTResponseCopyWith<$Res> {
+  factory _$$GetNFTResponseImplCopyWith(_$GetNFTResponseImpl value,
+          $Res Function(_$GetNFTResponseImpl) then) =
+      __$$GetNFTResponseImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({NFT result});
+
+  @override
+  $NFTCopyWith<$Res> get result;
+}
+
+/// @nodoc
+class __$$GetNFTResponseImplCopyWithImpl<$Res>
+    extends _$GetNFTResponseCopyWithImpl<$Res, _$GetNFTResponseImpl>
+    implements _$$GetNFTResponseImplCopyWith<$Res> {
+  __$$GetNFTResponseImplCopyWithImpl(
+      _$GetNFTResponseImpl _value, $Res Function(_$GetNFTResponseImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? result = null,
+  }) {
+    return _then(_$GetNFTResponseImpl(
+      result: null == result
+          ? _value.result
+          : result // ignore: cast_nullable_to_non_nullable
+              as NFT,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$GetNFTResponseImpl implements _GetNFTResponse {
+  _$GetNFTResponseImpl({required this.result});
+
+  factory _$GetNFTResponseImpl.fromJson(Map<String, dynamic> json) =>
+      _$$GetNFTResponseImplFromJson(json);
+
+  @override
+  final NFT result;
+
+  @override
+  String toString() {
+    return 'GetNFTResponse(result: $result)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$GetNFTResponseImpl &&
+            (identical(other.result, result) || other.result == result));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(runtimeType, result);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$GetNFTResponseImplCopyWith<_$GetNFTResponseImpl> get copyWith =>
+      __$$GetNFTResponseImplCopyWithImpl<_$GetNFTResponseImpl>(
+          this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$GetNFTResponseImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class _GetNFTResponse implements GetNFTResponse {
+  factory _GetNFTResponse({required final NFT result}) = _$GetNFTResponseImpl;
+
+  factory _GetNFTResponse.fromJson(Map<String, dynamic> json) =
+      _$GetNFTResponseImpl.fromJson;
+
+  @override
+  NFT get result;
+  @override
+  @JsonKey(ignore: true)
+  _$$GetNFTResponseImplCopyWith<_$GetNFTResponseImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 

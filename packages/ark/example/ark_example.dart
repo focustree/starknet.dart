@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:ark/ark.dart';
 import 'package:dotenv/dotenv.dart';
 
@@ -12,10 +14,16 @@ final nftAddress = env.getOrElse(
 );
 
 void main() async {
-  ArkNFTApi().init(apiKey: apiKey);
+  Ark().init(apiKey: apiKey);
 
-  final nfts = await ArkNFTApi().listNFTs(nftAddress, limit: 5);
-  for (final nft in nfts.result) {
-    print('${nft.metadata?.normalized.name} (${nft.tokenId})');
-  }
+  // final nfts = await Ark().nft.list(nftAddress, limit: 5);
+  // for (final nft in nfts.result) {
+  //   print('${nft.metadata?.normalized.name} (${nft.tokenId})');
+  // }
+
+  // final getNft = await Ark().nft.get(nftAddress, nfts.result.first.tokenId);
+  // print(getNft);
+
+  final marketplaceNfts = await Ark().marketplace.list(nftAddress);
+  print(marketplaceNfts);
 }

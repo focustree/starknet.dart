@@ -1,4 +1,6 @@
 dependency_overrides:
+  ark:
+    path: ../../packages/ark
   starknet:
     path: ../../packages/starknet
   starknet_provider:

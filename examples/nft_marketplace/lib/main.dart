@@ -1,19 +1,27 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 import 'package:hive_flutter/hive_flutter.dart';
-import 'package:nft_marketplace/home.dart';
+import 'package:nft_marketplace/config.dart';
+import 'package:nft_marketplace/screens/home_screen.dart';
+import 'package:nft_marketplace/screens/nft_details_screen.dart';
 import 'package:wallet_kit/wallet_kit.dart';
+import 'package:ark/ark.dart';
 
 void main() async {
-  await dotenv.load(fileName: '.env');
+  await init();
+  runApp(const ProviderScope(child: MyApp()));
+}
+
+Future<void> init() async {
   await Hive.initFlutter();
-  WalletKit().init(
-    accountClassHash: dotenv.get('ACCOUNT_CLASS_HASH'),
-    rpc: dotenv.get('STARKNET_RPC'),
+  await Config().init();
+  await WalletKit().init(
+    accountClassHash: Config().accountClassHash,
+    rpc: Config().starknetRpc,
     getPassword: (_) async => 'password',
   );
-  runApp(const ProviderScope(child: MyApp()));
+  Ark().init(apiKey: Config().arkApiKey);
 }
 
 class MyApp extends StatelessWidget {
@@ -21,14 +29,32 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return MaterialApp.router(
       title: 'NFT Marketplace Demo',
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const HomeScreen(),
       debugShowCheckedModeBanner: false,
+      routerConfig: router,
     );
   }
 }
+
+final router = GoRouter(
+  routes: <RouteBase>[
+    GoRoute(
+      path: '/',
+      builder: (BuildContext context, GoRouterState state) {
+        return const HomeScreen();
+      },
+    ),
+    GoRoute(
+      path: '/nft/:id',
+      builder: (BuildContext context, GoRouterState state) {
+        final String id = state.pathParameters['id']!;
+        return NFTDetailScreen(id: id);
+      },
+    ),
+  ],
+);

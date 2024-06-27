@@ -1,6 +1,6 @@
 import 'dart:convert';
 import 'dart:io';
-import 'package:ark/src/model.dart';
+import 'package:ark/src/model/nft_api.dart';
 import 'package:http/http.dart' as http;
 
 class ArkNFTApi {
@@ -22,7 +22,23 @@ class ArkNFTApi {
     this.baseUrl = baseUrl;
   }
 
-  Future<ListNFTsResponse> listNFTs(
+  Future<GetNFTResponse> get(String contractAddress, String tokenId) async {
+    var uri = Uri.parse('$baseUrl/tokens/$contractAddress/$tokenId');
+    var headers = {
+      'x-api-key': apiKey,
+      'Content-Type': 'application/json',
+    };
+
+    var response = await http.get(uri, headers: headers);
+    if (response.statusCode == 200) {
+      // print(JsonEncoder.withIndent('  ').convert(jsonDecode(response.body)));
+      return GetNFTResponse.fromJson(jsonDecode(response.body));
+    } else {
+      throw HttpException('Failed to fetch NFT data: ${response.statusCode}');
+    }
+  }
+
+  Future<ListNFTsResponse> list(
     String contractAddress, {
     String? cursor,
     List<String>? tokenIds,

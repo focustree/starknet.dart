@@ -1,7 +1,7 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-part 'model.freezed.dart';
-part 'model.g.dart';
+part 'nft_api.freezed.dart';
+part 'nft_api.g.dart';
 
 @freezed
 class ListNFTsResponse with _$ListNFTsResponse {
@@ -12,6 +12,16 @@ class ListNFTsResponse with _$ListNFTsResponse {
 
   factory ListNFTsResponse.fromJson(Map<String, dynamic> json) =>
       _$ListNFTsResponseFromJson(json);
+}
+
+@freezed
+class GetNFTResponse with _$GetNFTResponse {
+  factory GetNFTResponse({
+    required NFT result,
+  }) = _GetNFTResponse;
+
+  factory GetNFTResponse.fromJson(Map<String, dynamic> json) =>
+      _$GetNFTResponseFromJson(json);
 }
 
 @freezed
