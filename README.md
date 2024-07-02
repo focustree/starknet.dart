@@ -14,7 +14,7 @@ You can also call the JSON-RPC endpoint exposed by the Starknet full nodes (see 
 
 ## Motivation
 
-Starknet is a revolution in the web3 world: it allows to [scale Ethereum](https://docs.ethhub.io/ethereum-roadmap/layer-2-scaling/zk-rollups/) and offers the best possible UX thanks to unique features like [account abstraction](https://www.argent.xyz/blog/wtf-is-account-abstraction/) or [session keys](https://github.com/dontpanicdao/starknet-burner).
+Starknet is a revolution in the web3 world: it allows to [scale Ethereum](https://docs.ethhub.io/ethereum-roadmap/layer-2-scaling/zk-rollups/) and offers the best possible UX, thanks to its unique features like [account abstraction](https://www.argent.xyz/blog/wtf-is-account-abstraction/) or [session keys](https://github.com/dontpanicdao/starknet-burner).
 
 But web3 mainstream adoption won't happen unless decentralized applications go to mobile.
 
