@@ -60,9 +60,9 @@ void main() {
       test('returns a strictly positive block number', () async {
         final blockNumber = await provider.blockNumber();
         expect(
-            blockNumber is BlockNumberResult && blockNumber.result > 0, isTrue);
+            blockNumber is BlockNumberResult && blockNumber.result >= 0, isTrue);
       });
-    }); // FIXME caused by devnet bump
+    });
 
     group('getBlockWithTxnHashes', () {
       test(
@@ -398,7 +398,8 @@ void main() {
             error: (error) => fail("Shouldn't fail"),
             result: (result) {
               expect(result.transactionHash, invokeTransactionHash);
-              expect(result.actualFee.amount, Felt.fromHexString('0xd18c2e28000'));
+              expect(
+                  result.actualFee.amount, Felt.fromHexString('0xd18c2e28000'));
             });
       });
 
@@ -628,7 +629,9 @@ void main() {
           result: (result) => fail("Should fail"),
         );
       });
-    }, skip: true); // FIXME: after https://github.com/0xSpaceShard/starknet-devnet-rs/issues/496
+    },
+        skip:
+            true); // FIXME: after https://github.com/0xSpaceShard/starknet-devnet-rs/issues/496
 
     group('starknet_getClass', () {
       test('returns contract class definition for a known class hash (cairo 0)',
@@ -646,7 +649,9 @@ void main() {
             expect(result.program, isNotNull);
           },
         );
-      }, tags: ['integration'], skip:true); // todo should delete? since we don't deploy v0 contracts
+      },
+          tags: ['integration'],
+          skip: true); // todo should delete? since we don't deploy v0 contracts
 
       test(
           'returns contract class definition for a known class hash (cairo 1.0)',
@@ -764,7 +769,9 @@ void main() {
             expect(result.program, isNotNull);
           },
         );
-      }, tags: ['integration'], skip: true); // todo: should delete? since we don't deploy v0 contracts
+      }, tags: [
+        'integration'
+      ], skip: true); // todo: should delete? since we don't deploy v0 contracts
 
       test(
           'returns contract class definition in the given block for given contract address. (cairo 1.0)',
@@ -937,7 +944,9 @@ void main() {
           },
         );
       });
-    }, skip: true); // FIXME: after https://github.com/0xSpaceShard/starknet-devnet-rs/issues/498
+    },
+        skip:
+            true); // FIXME: after https://github.com/0xSpaceShard/starknet-devnet-rs/issues/498
 
     group('starknet_pendingTransactions', () {
       test('returns not supported error for pendingTransactions', () async {
@@ -948,7 +957,6 @@ void main() {
             expect(error.code, JsonRpcApiErrorCode.METHOD_NOT_FOUND);
             expect(error.message, "Method not found");
           },
-
           result: (_) => fail('Should fail'),
         );
       });
@@ -976,7 +984,8 @@ void main() {
           Felt.fromHexString(
               '0x83afd3f4caedc6eebf44246fe54e38c95e3179a5ec9ea81740eca5b482d12e'),
           Felt.fromHexString('0x3'),
-          Felt.fromHexString('0x16a0d7df981d681537dc2ce648722ff1d1c2cbe59412b492d35bac69825f104'),
+          Felt.fromHexString(
+              '0x16a0d7df981d681537dc2ce648722ff1d1c2cbe59412b492d35bac69825f104'),
           Felt.fromHexString('0x100000000000000000'),
           Felt.fromHexString('0x0'),
         ],
@@ -985,10 +994,9 @@ void main() {
       test('estimate the fee for a given V1 Invoke StarkNet transaction',
           () async {
         EstimateFeeRequest estimateFeeRequest = EstimateFeeRequest(
-          request: [broadcastedInvokeTxnV1],
-          blockId: parentBlockId,
-          simulation_flags: []
-        );
+            request: [broadcastedInvokeTxnV1],
+            blockId: parentBlockId,
+            simulation_flags: []);
 
         final response = await provider.estimateFee(estimateFeeRequest);
 

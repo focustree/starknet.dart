@@ -34,16 +34,16 @@ class SimulationFlag with _$SimulationFlag {
   @JsonSerializable(fieldRename: FieldRename.snake)
   const factory SimulationFlag.skipFeeCharge() = SkipFeeCharge;
 
-  factory SimulationFlag.fromJson(Map<String, dynamic> json) => _$SimulationFlagFromJson(json);
+  factory SimulationFlag.fromJson(Map<String, dynamic> json) =>
+      _$SimulationFlagFromJson(json);
 
   Map<String, dynamic> toJson() => {
-    'type': this.when(
-      skipValidate: () => "SKIP_VALIDATE",
-      skipFeeCharge: () => "SKIP_FEE_CHARGE",
-    ),
-  };
+        'type': this.when(
+          skipValidate: () => "SKIP_VALIDATE",
+          skipFeeCharge: () => "SKIP_FEE_CHARGE",
+        ),
+      };
 }
-
 
 @JsonSerializable()
 class EstimateFeeRequest {
