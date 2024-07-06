@@ -59,8 +59,8 @@ void main() {
     group('blockNumber', () {
       test('returns a strictly positive block number', () async {
         final blockNumber = await provider.blockNumber();
-        expect(
-            blockNumber is BlockNumberResult && blockNumber.result >= 0, isTrue);
+        expect(blockNumber is BlockNumberResult && blockNumber.result >= 0,
+            isTrue);
       });
     });
 
