@@ -194,7 +194,9 @@ void main() {
             result: (result) {
               expect(result, Felt.fromHexString("0x455448")); // ETH
             });
-      }, skip: true); // todo, prob devnet issue
+      },
+          skip:
+              true); // FIXME after: https://github.com/0xSpaceShard/starknet-devnet-rs/issues/544
 
       test('returns the value of the storage at the given address and key',
           () async {
