@@ -195,7 +195,7 @@ void main() {
             });
       },
           skip:
-              true); // FIXME after: https://github.com/0xSpaceShard/starknet-devnet-rs/issues/544
+              true); // FIXME after devnet 0.0.8 release: https://github.com/0xSpaceShard/starknet-devnet-rs/issues/544
 
       test('returns the value of the storage at the given address and key',
           () async {
@@ -632,7 +632,7 @@ void main() {
       });
     },
         skip:
-            true); // FIXME: after https://github.com/0xSpaceShard/starknet-devnet-rs/issues/496
+            true); // FIXME after devnet 0.0.8 release: https://github.com/0xSpaceShard/starknet-devnet-rs/issues/496
 
     group('starknet_getClass', () {
       test('returns contract class definition for a known class hash (cairo 0)',
@@ -947,7 +947,7 @@ void main() {
       });
     },
         skip:
-            true); // FIXME: after https://github.com/0xSpaceShard/starknet-devnet-rs/issues/498
+            true); // FIXME after devnet 0.0.8 release https://github.com/0xSpaceShard/starknet-devnet-rs/issues/498
 
     group('starknet_pendingTransactions', () {
       test('returns not supported error for pendingTransactions', () async {
@@ -1036,7 +1036,7 @@ void main() {
             fail('Should fail.');
           },
         );
-      }, skip: true); // todo FIXME devnet
+      }); // todo FIXME devnet
 
       test('returns BLOCK_NOT_FOUND with invalid block id', () async {
         // contract address from main net.
