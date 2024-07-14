@@ -155,7 +155,6 @@ void main() {
             blockId: invalidBlockIdFromBlockHash);
         response.when(
             error: (error) {
-              print(error.code);
               expect(error.code, JsonRpcApiErrorCode.BLOCK_NOT_FOUND);
               expect(error.message, contains('Block not found'));
             },
