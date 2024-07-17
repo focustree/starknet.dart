@@ -61,7 +61,6 @@ class NFTDetail extends ConsumerWidget {
                     showWalletList(context);
                     return;
                   }
-                  print('selectedAccount');
 
                   final secureStore = await ref
                       .read(walletsProvider.notifier)
@@ -78,7 +77,7 @@ class NFTDetail extends ConsumerWidget {
                       starknetAccount: starknetAccount,
                       nftAddress: nftAddress,
                       tokenId: tokenId,
-                      startAmount: 1);
+                      startAmount: 1000000000000000000);
                 },
                 child: const Text('Sell'))
           ],

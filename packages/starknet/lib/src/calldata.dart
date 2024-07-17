@@ -13,11 +13,16 @@ List<Felt> computeCalldata(dynamic data) {
     return [Felt.fromInt(data)];
   } else if (data is BigInt) {
     return [Felt(data)];
+  } else if (data is Uint256) {
+    return [data.high, data.low];
   } else if (data is bool) {
     return data ? [Felt.fromInt(1)] : [Felt.fromInt(0)];
   } else if (data is Enum) {
     return [Felt.fromInt(data.index)];
   } else if (data is List) {
+    if (data.isEmpty) {
+      return [Felt.fromInt(0)];
+    }
     return data.map(computeCalldata).expand((element) => element).toList();
   } else if (data is Set) {
     return data.map(computeCalldata).expand((element) => element).toList();
@@ -30,8 +35,12 @@ List<Felt> computeCalldata(dynamic data) {
         .toList();
   } else {
     return (data.toJson().values as Iterable<dynamic>)
-        .map(computeCalldata)
+        .map((element) {
+          final calldata = computeCalldata(element);
+          return calldata;
+        })
         .expand((element) => element)
         .toList();
+        
   }
 }

@@ -206,7 +206,8 @@ class Account {
   }
 
   /// Call account contract `__execute__` with given [functionCalls]
-  Future<InvokeTransactionResponse> execute({
+  Future<InvokeTransactionResponse> 
+  execute({
     required List<FunctionCall> functionCalls,
     bool useLegacyCalldata = false,
     Felt? maxFee,
