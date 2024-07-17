@@ -27,7 +27,7 @@ mod hello {
             self.name.write(name);
         }
 
-        fn sum(ref self: ContractState, a: felt252, b: felt252) -> felt252 {
+        fn sum(self: @ContractState, a: felt252, b: felt252) -> felt252 {
             a + b
         }
     }
