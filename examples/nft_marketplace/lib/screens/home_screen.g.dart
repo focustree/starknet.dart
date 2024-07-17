@@ -6,7 +6,7 @@ part of 'home_screen.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$listNFTsHash() => r'605db215de5a727e76ce75f4897f0dc2a6271866';
+String _$listNFTsHash() => r'83b94fed4f2ebdffb373e217da138333c7b58ee6';
 
 /// See also [listNFTs].
 @ProviderFor(listNFTs)
