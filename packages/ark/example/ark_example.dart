@@ -22,9 +22,13 @@ void main() async {
   // final getNft = await Ark().nft.get(nftAddress, nfts.result.first.tokenId);
   // print(getNft);
 
+  // final portfolio = await Ark().nft.portfolio(
+  //     '0x2d77720f06113aee9df4ad8512b37bcd43824aad3fdeae4d66b273f345f9511');
+  // print(portfolio);
+
   // final marketplaceNfts = await Ark().marketplace.list(nftAddress);
   // print(marketplaceNfts);
 
-  final orderbookNfts = await Ark().orderbook.list(nftAddress);
-  print(orderbookNfts);
+  // final orderbookNfts = await Ark().orderbook.list(nftAddress);
+  // print(orderbookNfts);
 }

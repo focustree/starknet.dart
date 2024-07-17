@@ -8,6 +8,7 @@ environment:
   flutter: ">=1.17.0"
 
 dependencies:
+  ark:
   starknet:
   starknet_provider:
   secure_store:

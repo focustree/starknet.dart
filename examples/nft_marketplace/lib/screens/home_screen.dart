@@ -95,7 +95,11 @@ class NFTList extends ConsumerWidget {
           itemCount: data.result.length,
           itemBuilder: (BuildContext context, int index) {
             final nft = data.result[index];
-            return NftCard(nft: nft);
+            return NftCard(
+                nft: nft,
+                onTap: (nft) {
+                  context.push('/nft/${nft.contractAddress}/${nft.tokenId}');
+                });
           },
           gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: 2, // Number of columns
@@ -108,62 +112,6 @@ class NFTList extends ConsumerWidget {
       },
       error: (error, stack) => Text('Error: $error'),
       loading: () => const CircularProgressIndicator(),
-    );
-  }
-}
-
-class NftCard extends StatelessWidget {
-  const NftCard({
-    super.key,
-    required this.nft,
-  });
-
-  final NFT nft;
-
-  @override
-  Widget build(BuildContext context) {
-    if (nft.metadata == null) {
-      return Container();
-    }
-    return InkWell(
-      onTap: () => GoRouter.of(context).push('/nft/${nft.tokenId}'),
-      child: Container(
-        decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.circular(16),
-          boxShadow: [
-            BoxShadow(
-              offset: const Offset(0, 4),
-              blurStyle: BlurStyle.normal,
-              blurRadius: 16,
-              color: Colors.black.withOpacity(0.10),
-            ),
-          ],
-        ),
-        child: Column(
-          children: [
-            Expanded(
-              child: AspectRatio(
-                aspectRatio: 1.0,
-                child: Image.network(nft.metadata!.normalized.image,
-                    fit: BoxFit.contain),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Text(
-                nft.metadata!.normalized.name,
-                softWrap: false,
-                style: const TextStyle(
-                  fontSize: 14,
-                  fontWeight: FontWeight.w700,
-                ),
-                overflow: TextOverflow.ellipsis,
-              ),
-            )
-          ],
-        ),
-      ),
     );
   }
 }

@@ -8,7 +8,7 @@ class WalletBody extends HookConsumerWidget {
 
   @override
   build(BuildContext context, WidgetRef ref) {
-    final tabController = useTabController(initialLength: 2);
+    final tabController = useTabController(initialLength: 3);
     final selectedAccount =
         ref.watch(walletsProvider.select((value) => value.selectedAccount));
     if (selectedAccount == null) {
@@ -24,15 +24,33 @@ class WalletBody extends HookConsumerWidget {
             controller: tabController,
             tabs: const <Widget>[
               Tab(text: 'Tokens'),
+              Tab(text: 'NFTs'),
               Tab(text: 'Activity'),
             ],
           ),
           Expanded(
             child: TabBarView(
               controller: tabController,
-              children: const <Widget>[
-                TokenList(),
-                Padding(
+              children: <Widget>[
+                const TokenList(),
+                NFTList(
+                  onTap: (nft) {
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (context) => Scaffold(
+                          appBar: AppBar(
+                            title: const Text('NFT Details'),
+                          ),
+                          body: NFTDetail(
+                            tokenId: nft.tokenId,
+                            nftAddress: nft.contractAddress,
+                          ),
+                        ),
+                      ),
+                    );
+                  },
+                ),
+                const Padding(
                     padding: EdgeInsets.symmetric(vertical: 32, horizontal: 0),
                     child: Align(
                         alignment: Alignment.topCenter,

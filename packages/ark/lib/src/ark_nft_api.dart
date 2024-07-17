@@ -23,15 +23,14 @@ class ArkNFTApi {
   }
 
   Future<GetNFTResponse> get(String contractAddress, String tokenId) async {
-    var uri = Uri.parse('$baseUrl/tokens/$contractAddress/$tokenId');
-    var headers = {
+    final uri = Uri.parse('$baseUrl/tokens/$contractAddress/$tokenId');
+    final headers = {
       'x-api-key': apiKey,
       'Content-Type': 'application/json',
     };
 
-    var response = await http.get(uri, headers: headers);
+    final response = await http.get(uri, headers: headers);
     if (response.statusCode == 200) {
-      // print(JsonEncoder.withIndent('  ').convert(jsonDecode(response.body)));
       return GetNFTResponse.fromJson(jsonDecode(response.body));
     } else {
       throw HttpException('Failed to fetch NFT data: ${response.statusCode}');
@@ -42,34 +41,48 @@ class ArkNFTApi {
     String contractAddress, {
     String? cursor,
     List<String>? tokenIds,
-    int? limit,
+    int limit = 100,
   }) async {
-    var queryParameters = <String, dynamic>{};
+    final queryParameters = {
+      'limit': limit.toString(),
+      if (cursor != null) 'cursor': cursor,
+      if (tokenIds != null && tokenIds.isNotEmpty)
+        'token_ids': tokenIds.join(','),
+    };
 
-    // Add the cursor if it's provided
-    if (cursor != null) {
-      queryParameters['cursor'] = cursor;
-    }
-
-    // Add token IDs if provided
-    if (tokenIds != null && tokenIds.isNotEmpty) {
-      queryParameters.addAll({'token_ids': tokenIds.join(',')});
-    }
-
-    // Add limit if provided
-    if (limit != null) {
-      queryParameters['limit'] = limit.toString();
-    }
-
-    // Build the URL with query parameters
-    var uri = Uri.parse('$baseUrl/tokens/$contractAddress')
+    final uri = Uri.parse('$baseUrl/tokens/$contractAddress')
         .replace(queryParameters: queryParameters);
-    var headers = {
+    final headers = {
       'x-api-key': apiKey,
       'Content-Type': 'application/json',
     };
 
-    var response = await http.get(uri, headers: headers);
+    final response = await http.get(uri, headers: headers);
+    if (response.statusCode == 200) {
+      return ListNFTsResponse.fromJson(jsonDecode(response.body));
+    } else {
+      throw HttpException('Failed to fetch data: ${response.statusCode}');
+    }
+  }
+
+  Future<ListNFTsResponse> portfolio(
+    String accountAddress, {
+    String? cursor,
+    limit = 100,
+  }) async {
+    final queryParameters = {
+      'limit': limit.toString(),
+      if (cursor != null) 'cursor': cursor,
+    };
+
+    final uri = Uri.parse('$baseUrl/owners/$accountAddress/tokens')
+        .replace(queryParameters: queryParameters);
+    final headers = {
+      'x-api-key': apiKey,
+      'Content-Type': 'application/json',
+    };
+
+    final response = await http.get(uri, headers: headers);
     if (response.statusCode == 200) {
       return ListNFTsResponse.fromJson(jsonDecode(response.body));
     } else {

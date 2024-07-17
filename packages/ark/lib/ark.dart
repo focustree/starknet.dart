@@ -7,7 +7,7 @@ export 'src/model/marketplace_api.dart';
 import 'package:ark/src/ark_marketplace_api.dart';
 import 'package:ark/src/ark_nft_api.dart';
 import 'package:ark/src/ark_orderbook_api.dart';
-import 'package:starknet/starknet.dart';
+import 'package:ark/src/ark_starknet.dart';
 
 class Ark {
   static final Ark _instance = Ark._internal();
@@ -15,6 +15,7 @@ class Ark {
   late ArkNFTApi nft;
   late ArkMarketplaceApi marketplace;
   late ArkOrderbookApi orderbook;
+  late ArkStarknet starknet;
 
   factory Ark() {
     return _instance;
@@ -28,5 +29,6 @@ class Ark {
     nft = ArkNFTApi()..init(apiKey: apiKey);
     marketplace = ArkMarketplaceApi()..init(apiKey: apiKey);
     orderbook = ArkOrderbookApi()..init(apiKey: apiKey);
+    starknet = ArkStarknet()..init();
   }
 }

@@ -4,7 +4,6 @@ import 'package:go_router/go_router.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:nft_marketplace/config.dart';
 import 'package:nft_marketplace/screens/home_screen.dart';
-import 'package:nft_marketplace/screens/nft_details_screen.dart';
 import 'package:wallet_kit/wallet_kit.dart';
 import 'package:ark/ark.dart';
 
@@ -19,7 +18,6 @@ Future<void> init() async {
   await WalletKit().init(
     accountClassHash: Config().accountClassHash,
     rpc: Config().starknetRpc,
-    getPassword: (_) async => 'password',
   );
   Ark().init(apiKey: Config().arkApiKey);
 }
@@ -50,10 +48,19 @@ final router = GoRouter(
       },
     ),
     GoRoute(
-      path: '/nft/:id',
+      path: '/nft/:contractAddress/:id',
       builder: (BuildContext context, GoRouterState state) {
         final String id = state.pathParameters['id']!;
-        return NFTDetailScreen(id: id);
+        final String contractAddress = state.pathParameters['contractAddress']!;
+        return Scaffold(
+          appBar: AppBar(
+            title: const Text('NFT Details'),
+          ),
+          body: NFTDetail(
+            tokenId: id,
+            nftAddress: contractAddress,
+          ),
+        );
       },
     ),
   ],

@@ -6,3 +6,5 @@ export 'icon.dart';
 export 'wallet_list.dart';
 export 'send_eth_button.dart';
 export 'account_address.dart';
+export 'nft_list.dart';
+export 'nft_details.dart';
