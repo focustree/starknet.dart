@@ -83,11 +83,17 @@ Future<ListNFTsResponse> listNFTs(ListNFTsRef ref) async {
   return Ark().nft.list(Config().nftContractAddress);
 }
 
+@riverpod
+Future<ListMarketplaceNFTsResponse> listBuyNowNFTs(ListBuyNowNFTsRef ref) async {
+  return Ark().marketplace.list(Config().nftContractAddress, buyNow: true);
+}
+
 class NFTList extends ConsumerWidget {
   const NFTList({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final buyNowNfts = ref.watch(listBuyNowNFTsProvider).when(data: (data) => data.data, loading: () => [], error: (error, stack) => []);
     final nfts = ref.watch(listNFTsProvider);
     return nfts.when(
       data: (data) {
@@ -95,8 +101,10 @@ class NFTList extends ConsumerWidget {
           itemCount: data.result.length,
           itemBuilder: (BuildContext context, int index) {
             final nft = data.result[index];
+            final isBuyNow = buyNowNfts.any((element) => element.tokenId == nft.tokenId);
             return NftCard(
                 nft: nft,
+                isBuyNow: isBuyNow,
                 onTap: (nft) {
                   context.push('/nft/${nft.contractAddress}/${nft.tokenId}');
                 });

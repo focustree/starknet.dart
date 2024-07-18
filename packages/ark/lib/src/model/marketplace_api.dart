@@ -18,15 +18,12 @@ class ListMarketplaceNFTsResponse with _$ListMarketplaceNFTsResponse {
 @freezed
 class MarketPlaceNFT with _$MarketPlaceNFT {
   const factory MarketPlaceNFT({
-    @JsonKey(name: 'contract') required String contract,
-    @JsonKey(name: 'token_id') required String tokenId,
-    @JsonKey(name: 'last_price') required String lastPrice,
-    @JsonKey(name: 'floor_difference') required String floorDifference,
-    @JsonKey(name: 'listed_at') required int listedAt,
+    @JsonKey(name: 'token_id') String? tokenId,
+    @JsonKey(name: 'last_price') String? lastPrice,
+    @JsonKey(name: 'floor_difference') required int floorDifference,
+    @JsonKey(name: 'listed_at') int? listedAt,
     @JsonKey(name: 'owner') required String owner,
-    @JsonKey(name: 'minted_at') required int mintedAt,
-    @JsonKey(name: 'updated_at') required int updatedAt,
-    @JsonKey(name: 'price') required String price,
+    @JsonKey(name: 'price') String? price,
     required MarketplaceNFTMetadata metadata,
   }) = _MarketPlaceNFT;
 

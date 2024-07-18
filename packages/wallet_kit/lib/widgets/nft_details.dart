@@ -25,7 +25,6 @@ class NFTDetail extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final nft = ref.watch(getNFTProvider(tokenId, nftAddress));
-    print(nft);
     final selectedAccount = ref.watch(walletsProvider.select(
       (value) => value.selectedAccount,
     ));
@@ -78,7 +77,7 @@ class NFTDetail extends ConsumerWidget {
                       starknetAccount: starknetAccount,
                       nftAddress: nftAddress,
                       tokenId: tokenId,
-                      startAmount: 10);
+                      startAmount: 0.1);
                 },
                 child: const Text('Sell')),
                 ElevatedButton(
@@ -99,16 +98,107 @@ class NFTDetail extends ConsumerWidget {
                     account: selectedAccount,
                   );
 
-                  await Ark().nft.getOrderHash(nftAddress, tokenId);
+                   final orderBook = await Ark().orderbook.getOrderbookNFT(nftAddress, tokenId);
+                  // print(orderBook);
+
+                  final test = await Ark().marketplace.list(nftAddress, buyNow: true);
+                  print(test);
+
+                  return;
 
                   await Ark().starknet.cancelOrder(
                       starknetAccount: starknetAccount,
-                      orderHash: BigInt.parse("0x1234"),
+                      orderHash: BigInt.parse(orderBook.orderHash),
                       tokenAddress: nftAddress,
                       tokenId: BigInt.parse(tokenId),
                       );
                 },
-                child: const Text('Cancel Order'))
+                child: const Text('Cancel Order')),
+                ElevatedButton(
+                onPressed: () async {
+                  if (selectedAccount == null) {
+                    showWalletList(context);
+                    return;
+                  }
+
+                  final secureStore = await ref
+                      .read(walletsProvider.notifier)
+                      .getSecureStoreForWallet(context: context);
+
+                  final starknetAccount =
+                      await WalletService.getStarknetAccount(
+                    secureStore: secureStore,
+                    walletId: selectedAccount.walletId,
+                    account: selectedAccount,
+                  );
+
+                  final orderBook = await Ark().orderbook.getOrderbookNFT(nftAddress, tokenId);
+                  print(orderBook);
+
+                  await Ark().starknet.fulfillListing(
+                      starknetAccount: starknetAccount,
+                      orderHash: BigInt.parse(orderBook.orderHash),
+                      nftAddress: nftAddress,
+                      tokenId: tokenId,
+                      startAmount: 0.0000000001
+                      );
+                },
+                child: const Text('Buy')),
+                ElevatedButton(
+                onPressed: () async {
+                  if (selectedAccount == null) {
+                    showWalletList(context);
+                    return;
+                  }
+
+                  final secureStore = await ref
+                      .read(walletsProvider.notifier)
+                      .getSecureStoreForWallet(context: context);
+
+                  final starknetAccount =
+                      await WalletService.getStarknetAccount(
+                    secureStore: secureStore,
+                    walletId: selectedAccount.walletId,
+                    account: selectedAccount,
+                  );
+
+                  await Ark().starknet.createOffer(
+                      starknetAccount: starknetAccount,
+                      nftAddress: nftAddress,
+                      tokenId: tokenId,
+                      startAmount: 0.0000000001
+                      );
+                },
+                child: const Text('Make Offer')),
+                ElevatedButton(
+                onPressed: () async {
+                  if (selectedAccount == null) {
+                    showWalletList(context);
+                    return;
+                  }
+
+                  final secureStore = await ref
+                      .read(walletsProvider.notifier)
+                      .getSecureStoreForWallet(context: context);
+
+                  final starknetAccount =
+                      await WalletService.getStarknetAccount(
+                    secureStore: secureStore,
+                    walletId: selectedAccount.walletId,
+                    account: selectedAccount,
+                  );
+
+                  final orderBook = await Ark().orderbook.getOrderbookNFT(nftAddress, tokenId);
+                  print(orderBook);
+
+                  await Ark().starknet.fulfillOffer(
+                      starknetAccount: starknetAccount,
+                      orderHash: BigInt.parse(orderBook.orderHash),
+                      nftAddress: nftAddress,
+                      tokenId: tokenId,
+                      );
+                },
+                child: const Text('Accept Offer'))
           ],
         ),
       ),

@@ -57,10 +57,12 @@ class NftCard extends StatelessWidget {
     super.key,
     required this.nft,
     required this.onTap,
+    this.isBuyNow = false,
   });
 
   final NFT nft;
   final void Function(NFT nft) onTap;
+  final bool isBuyNow;
 
   @override
   Widget build(BuildContext context) {
@@ -102,7 +104,23 @@ class NftCard extends StatelessWidget {
                 ),
                 overflow: TextOverflow.ellipsis,
               ),
-            )
+            ),
+            if (isBuyNow)
+              Container(
+                padding: const EdgeInsets.all(8),
+                decoration: BoxDecoration(
+                  color: Colors.green,
+                  borderRadius: BorderRadius.circular(16),
+                ),
+                child: const Text(
+                  'Buy Now',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 12,
+                    fontWeight: FontWeight.w700,
+                  ),
+                ),
+              ),
           ],
         ),
       ),

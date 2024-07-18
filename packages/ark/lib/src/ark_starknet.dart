@@ -31,11 +31,10 @@ class ArkStarknet {
     String currencyChainId = "SN_MAIN",
     String tokenChainId = "SN_MAIN",
   }) async {
+    DateTime now = DateTime.now();
     startDate =
-        startDate ?? (DateTime.now().millisecondsSinceEpoch ~/ 1000 + 60);
-    endDate = endDate ??
-        (DateTime.now().microsecondsSinceEpoch ~/ 1000 +
-            30 * 24 * 60 * 60); // 30 days from now
+        startDate ?? (now.millisecondsSinceEpoch ~/ 1000 + 60); // 60 seconds from now
+    endDate = endDate ?? (startDate + 30* 24 * 60 * 60); // 30 days from now
 
     final OrderV1 order = OrderV1(
       route: RouteType.erc721ToErc20,

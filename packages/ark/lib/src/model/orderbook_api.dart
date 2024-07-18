@@ -13,7 +13,7 @@ class OrderBookNFT with _$OrderBookNFT {
     @JsonKey(name: 'listed_timestamp') required int listedTimestamp,
     @JsonKey(name: 'updated_timestamp') required int updatedTimestamp,
     @JsonKey(name: 'current_owner') required String currentOwner,
-    @JsonKey(name: 'last_price') required String lastPrice,
+    @JsonKey(name: 'last_price')  String? lastPrice,
     @JsonKey(name: 'quantity') required String quantity,
     @JsonKey(name: 'start_amount') String? startAmount,
     @JsonKey(name: 'end_amount') String? endAmount,

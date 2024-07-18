@@ -15,7 +15,7 @@ _$OrderBookNFTImpl _$$OrderBookNFTImplFromJson(Map<String, dynamic> json) =>
       listedTimestamp: (json['listed_timestamp'] as num).toInt(),
       updatedTimestamp: (json['updated_timestamp'] as num).toInt(),
       currentOwner: json['current_owner'] as String,
-      lastPrice: json['last_price'] as String,
+      lastPrice: json['last_price'] as String?,
       quantity: json['quantity'] as String,
       startAmount: json['start_amount'] as String?,
       endAmount: json['end_amount'] as String?,

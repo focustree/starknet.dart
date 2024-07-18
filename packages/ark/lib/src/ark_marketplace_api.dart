@@ -44,10 +44,9 @@ class ArkMarketplaceApi {
     final uri =
         Uri.parse('$baseUrl/collections/$contractAddress/$chainId/tokens')
             .replace(queryParameters: queryParameters);
-    print(uri);
 
     final headers = {
-      // 'x-api-key': apiKey,
+      'x-api-key': apiKey,
       'Content-Type': 'application/json',
     };
 

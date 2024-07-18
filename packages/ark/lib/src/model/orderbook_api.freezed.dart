@@ -35,7 +35,7 @@ mixin _$OrderBookNFT {
   @JsonKey(name: 'current_owner')
   String get currentOwner => throw _privateConstructorUsedError;
   @JsonKey(name: 'last_price')
-  String get lastPrice => throw _privateConstructorUsedError;
+  String? get lastPrice => throw _privateConstructorUsedError;
   @JsonKey(name: 'quantity')
   String get quantity => throw _privateConstructorUsedError;
   @JsonKey(name: 'start_amount')
@@ -83,7 +83,7 @@ abstract class $OrderBookNFTCopyWith<$Res> {
       @JsonKey(name: 'listed_timestamp') int listedTimestamp,
       @JsonKey(name: 'updated_timestamp') int updatedTimestamp,
       @JsonKey(name: 'current_owner') String currentOwner,
-      @JsonKey(name: 'last_price') String lastPrice,
+      @JsonKey(name: 'last_price') String? lastPrice,
       @JsonKey(name: 'quantity') String quantity,
       @JsonKey(name: 'start_amount') String? startAmount,
       @JsonKey(name: 'end_amount') String? endAmount,
@@ -121,7 +121,7 @@ class _$OrderBookNFTCopyWithImpl<$Res, $Val extends OrderBookNFT>
     Object? listedTimestamp = null,
     Object? updatedTimestamp = null,
     Object? currentOwner = null,
-    Object? lastPrice = null,
+    Object? lastPrice = freezed,
     Object? quantity = null,
     Object? startAmount = freezed,
     Object? endAmount = freezed,
@@ -165,10 +165,10 @@ class _$OrderBookNFTCopyWithImpl<$Res, $Val extends OrderBookNFT>
           ? _value.currentOwner
           : currentOwner // ignore: cast_nullable_to_non_nullable
               as String,
-      lastPrice: null == lastPrice
+      lastPrice: freezed == lastPrice
           ? _value.lastPrice
           : lastPrice // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       quantity: null == quantity
           ? _value.quantity
           : quantity // ignore: cast_nullable_to_non_nullable
@@ -253,7 +253,7 @@ abstract class _$$OrderBookNFTImplCopyWith<$Res>
       @JsonKey(name: 'listed_timestamp') int listedTimestamp,
       @JsonKey(name: 'updated_timestamp') int updatedTimestamp,
       @JsonKey(name: 'current_owner') String currentOwner,
-      @JsonKey(name: 'last_price') String lastPrice,
+      @JsonKey(name: 'last_price') String? lastPrice,
       @JsonKey(name: 'quantity') String quantity,
       @JsonKey(name: 'start_amount') String? startAmount,
       @JsonKey(name: 'end_amount') String? endAmount,
@@ -290,7 +290,7 @@ class __$$OrderBookNFTImplCopyWithImpl<$Res>
     Object? listedTimestamp = null,
     Object? updatedTimestamp = null,
     Object? currentOwner = null,
-    Object? lastPrice = null,
+    Object? lastPrice = freezed,
     Object? quantity = null,
     Object? startAmount = freezed,
     Object? endAmount = freezed,
@@ -334,10 +334,10 @@ class __$$OrderBookNFTImplCopyWithImpl<$Res>
           ? _value.currentOwner
           : currentOwner // ignore: cast_nullable_to_non_nullable
               as String,
-      lastPrice: null == lastPrice
+      lastPrice: freezed == lastPrice
           ? _value.lastPrice
           : lastPrice // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       quantity: null == quantity
           ? _value.quantity
           : quantity // ignore: cast_nullable_to_non_nullable
@@ -405,7 +405,7 @@ class _$OrderBookNFTImpl implements _OrderBookNFT {
       @JsonKey(name: 'listed_timestamp') required this.listedTimestamp,
       @JsonKey(name: 'updated_timestamp') required this.updatedTimestamp,
       @JsonKey(name: 'current_owner') required this.currentOwner,
-      @JsonKey(name: 'last_price') required this.lastPrice,
+      @JsonKey(name: 'last_price') this.lastPrice,
       @JsonKey(name: 'quantity') required this.quantity,
       @JsonKey(name: 'start_amount') this.startAmount,
       @JsonKey(name: 'end_amount') this.endAmount,
@@ -446,7 +446,7 @@ class _$OrderBookNFTImpl implements _OrderBookNFT {
   final String currentOwner;
   @override
   @JsonKey(name: 'last_price')
-  final String lastPrice;
+  final String? lastPrice;
   @override
   @JsonKey(name: 'quantity')
   final String quantity;
@@ -587,7 +587,7 @@ abstract class _OrderBookNFT implements OrderBookNFT {
       @JsonKey(name: 'listed_timestamp') required final int listedTimestamp,
       @JsonKey(name: 'updated_timestamp') required final int updatedTimestamp,
       @JsonKey(name: 'current_owner') required final String currentOwner,
-      @JsonKey(name: 'last_price') required final String lastPrice,
+      @JsonKey(name: 'last_price') final String? lastPrice,
       @JsonKey(name: 'quantity') required final String quantity,
       @JsonKey(name: 'start_amount') final String? startAmount,
       @JsonKey(name: 'end_amount') final String? endAmount,
@@ -629,7 +629,7 @@ abstract class _OrderBookNFT implements OrderBookNFT {
   String get currentOwner;
   @override
   @JsonKey(name: 'last_price')
-  String get lastPrice;
+  String? get lastPrice;
   @override
   @JsonKey(name: 'quantity')
   String get quantity;

@@ -26,15 +26,12 @@ Map<String, dynamic> _$$ListMarketplaceNFTsResponseImplToJson(
 
 _$MarketPlaceNFTImpl _$$MarketPlaceNFTImplFromJson(Map<String, dynamic> json) =>
     _$MarketPlaceNFTImpl(
-      contract: json['contract'] as String,
-      tokenId: json['token_id'] as String,
-      lastPrice: json['last_price'] as String,
-      floorDifference: json['floor_difference'] as String,
-      listedAt: (json['listed_at'] as num).toInt(),
+      tokenId: json['token_id'] as String?,
+      lastPrice: json['last_price'] as String?,
+      floorDifference: (json['floor_difference'] as num).toInt(),
+      listedAt: (json['listed_at'] as num?)?.toInt(),
       owner: json['owner'] as String,
-      mintedAt: (json['minted_at'] as num).toInt(),
-      updatedAt: (json['updated_at'] as num).toInt(),
-      price: json['price'] as String,
+      price: json['price'] as String?,
       metadata: MarketplaceNFTMetadata.fromJson(
           json['metadata'] as Map<String, dynamic>),
     );
@@ -42,14 +39,11 @@ _$MarketPlaceNFTImpl _$$MarketPlaceNFTImplFromJson(Map<String, dynamic> json) =>
 Map<String, dynamic> _$$MarketPlaceNFTImplToJson(
         _$MarketPlaceNFTImpl instance) =>
     <String, dynamic>{
-      'contract': instance.contract,
       'token_id': instance.tokenId,
       'last_price': instance.lastPrice,
       'floor_difference': instance.floorDifference,
       'listed_at': instance.listedAt,
       'owner': instance.owner,
-      'minted_at': instance.mintedAt,
-      'updated_at': instance.updatedAt,
       'price': instance.price,
       'metadata': instance.metadata,
     };
