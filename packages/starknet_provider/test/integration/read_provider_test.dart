@@ -301,7 +301,7 @@ void main() {
               expect(result.transactionHash, deployTransactionHash);
               expect(result.type, "DEPLOY");
             });
-      }, skip: true); // todo?
+      }, skip: true); // deprecated
 
       test(
           'returns the DECLARE transaction details based on the transaction hash',
@@ -652,7 +652,7 @@ void main() {
         );
       },
           tags: ['integration'],
-          skip: true); // todo should delete? since we don't deploy v0 contracts
+          skip: true); // v0 contracts are deprecated
 
       test(
           'returns contract class definition for a known class hash (cairo 1.0)',
@@ -772,7 +772,7 @@ void main() {
         );
       }, tags: [
         'integration'
-      ], skip: true); // todo: should delete? since we don't deploy v0 contracts
+      ], skip: true); // v0 contracts are deprecated
 
       test(
           'returns contract class definition in the given block for given contract address. (cairo 1.0)',
