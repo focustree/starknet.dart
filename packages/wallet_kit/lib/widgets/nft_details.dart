@@ -99,12 +99,6 @@ class NFTDetail extends ConsumerWidget {
                   );
 
                    final orderBook = await Ark().orderbook.getOrderbookNFT(nftAddress, tokenId);
-                  // print(orderBook);
-
-                  final test = await Ark().marketplace.list(nftAddress, buyNow: true);
-                  print(test);
-
-                  return;
 
                   await Ark().starknet.cancelOrder(
                       starknetAccount: starknetAccount,

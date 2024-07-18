@@ -213,7 +213,7 @@ class ArkStarknet {
 
     final FulfillInfo fulfillInfo = FulfillInfo(
       orderHash: orderHash,
-      relatedOrderHash: null,
+      relatedOrderHash: 1,
       fulfiller: starknetAccount.accountAddress.toHexString(),
       tokenChainId: tokenChainId,
       tokenAddress: nftAddress,
