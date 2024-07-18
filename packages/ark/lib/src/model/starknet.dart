@@ -102,9 +102,9 @@ class FullCancelInfo with _$FullCancelInfo {
   const factory FullCancelInfo({
     required BigInt orderHash,
     required String canceller,
-    required int tokenChainId,
+    required String tokenChainId,
     required String tokenAddress,
-    required int tokenId, // Using int instead of CairoOption, adjust as needed
+    required Uint256 tokenId, 
   }) = _FullCancelInfo;
 
   factory FullCancelInfo.fromJson(Map<String, dynamic> json) =>
@@ -118,9 +118,9 @@ class FulfillInfo with _$FulfillInfo {
     int?
         relatedOrderHash, // Using int instead of CairoOption<BigInt>, adjust as needed
     required String fulfiller,
-    required int tokenChainId,
+    required String tokenChainId,
     required String tokenAddress,
-    required int tokenId, // Using int instead of CairoOption, adjust as needed
+    required Uint256 tokenId, 
     required String fulfillBrokerAddress,
   }) = _FulfillInfo;
 

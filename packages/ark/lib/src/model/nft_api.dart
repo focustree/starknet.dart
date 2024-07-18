@@ -98,3 +98,15 @@ class Attribute with _$Attribute {
   factory Attribute.fromJson(Map<String, dynamic> json) =>
       _$AttributeFromJson(json);
 }
+
+// @freezed
+// class GetNFTListingDetails with _$GetNFTListingDetails {
+//   factory GetNFTListingDetails({
+//     @JsonKey(name: 'buy_in_progress') required bool buyInProgress,
+//     @JsonKey(name: 'trait_type') required String traitType,
+//     required String value,
+//   }) = _GetNFTListingDetails;
+
+//   factory GetNFTListingDetails.fromJson(Map<String, dynamic> json) =>
+//       _$GetNFTListingDetailsFromJson(json);
+// }

@@ -145,9 +145,9 @@ _$FullCancelInfoImpl _$$FullCancelInfoImplFromJson(Map<String, dynamic> json) =>
     _$FullCancelInfoImpl(
       orderHash: BigInt.parse(json['orderHash'] as String),
       canceller: json['canceller'] as String,
-      tokenChainId: (json['tokenChainId'] as num).toInt(),
+      tokenChainId: json['tokenChainId'] as String,
       tokenAddress: json['tokenAddress'] as String,
-      tokenId: (json['tokenId'] as num).toInt(),
+      tokenId: Uint256.fromJson(json['tokenId'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$$FullCancelInfoImplToJson(
@@ -165,9 +165,9 @@ _$FulfillInfoImpl _$$FulfillInfoImplFromJson(Map<String, dynamic> json) =>
       orderHash: BigInt.parse(json['orderHash'] as String),
       relatedOrderHash: (json['relatedOrderHash'] as num?)?.toInt(),
       fulfiller: json['fulfiller'] as String,
-      tokenChainId: (json['tokenChainId'] as num).toInt(),
+      tokenChainId: json['tokenChainId'] as String,
       tokenAddress: json['tokenAddress'] as String,
-      tokenId: (json['tokenId'] as num).toInt(),
+      tokenId: Uint256.fromJson(json['tokenId'] as Map<String, dynamic>),
       fulfillBrokerAddress: json['fulfillBrokerAddress'] as String,
     );
 

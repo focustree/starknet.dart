@@ -1532,9 +1532,9 @@ FullCancelInfo _$FullCancelInfoFromJson(Map<String, dynamic> json) {
 mixin _$FullCancelInfo {
   BigInt get orderHash => throw _privateConstructorUsedError;
   String get canceller => throw _privateConstructorUsedError;
-  int get tokenChainId => throw _privateConstructorUsedError;
+  String get tokenChainId => throw _privateConstructorUsedError;
   String get tokenAddress => throw _privateConstructorUsedError;
-  int get tokenId => throw _privateConstructorUsedError;
+  Uint256 get tokenId => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -1551,9 +1551,9 @@ abstract class $FullCancelInfoCopyWith<$Res> {
   $Res call(
       {BigInt orderHash,
       String canceller,
-      int tokenChainId,
+      String tokenChainId,
       String tokenAddress,
-      int tokenId});
+      Uint256 tokenId});
 }
 
 /// @nodoc
@@ -1587,7 +1587,7 @@ class _$FullCancelInfoCopyWithImpl<$Res, $Val extends FullCancelInfo>
       tokenChainId: null == tokenChainId
           ? _value.tokenChainId
           : tokenChainId // ignore: cast_nullable_to_non_nullable
-              as int,
+              as String,
       tokenAddress: null == tokenAddress
           ? _value.tokenAddress
           : tokenAddress // ignore: cast_nullable_to_non_nullable
@@ -1595,7 +1595,7 @@ class _$FullCancelInfoCopyWithImpl<$Res, $Val extends FullCancelInfo>
       tokenId: null == tokenId
           ? _value.tokenId
           : tokenId // ignore: cast_nullable_to_non_nullable
-              as int,
+              as Uint256,
     ) as $Val);
   }
 }
@@ -1611,9 +1611,9 @@ abstract class _$$FullCancelInfoImplCopyWith<$Res>
   $Res call(
       {BigInt orderHash,
       String canceller,
-      int tokenChainId,
+      String tokenChainId,
       String tokenAddress,
-      int tokenId});
+      Uint256 tokenId});
 }
 
 /// @nodoc
@@ -1645,7 +1645,7 @@ class __$$FullCancelInfoImplCopyWithImpl<$Res>
       tokenChainId: null == tokenChainId
           ? _value.tokenChainId
           : tokenChainId // ignore: cast_nullable_to_non_nullable
-              as int,
+              as String,
       tokenAddress: null == tokenAddress
           ? _value.tokenAddress
           : tokenAddress // ignore: cast_nullable_to_non_nullable
@@ -1653,7 +1653,7 @@ class __$$FullCancelInfoImplCopyWithImpl<$Res>
       tokenId: null == tokenId
           ? _value.tokenId
           : tokenId // ignore: cast_nullable_to_non_nullable
-              as int,
+              as Uint256,
     ));
   }
 }
@@ -1676,11 +1676,11 @@ class _$FullCancelInfoImpl implements _FullCancelInfo {
   @override
   final String canceller;
   @override
-  final int tokenChainId;
+  final String tokenChainId;
   @override
   final String tokenAddress;
   @override
-  final int tokenId;
+  final Uint256 tokenId;
 
   @override
   String toString() {
@@ -1727,9 +1727,9 @@ abstract class _FullCancelInfo implements FullCancelInfo {
   const factory _FullCancelInfo(
       {required final BigInt orderHash,
       required final String canceller,
-      required final int tokenChainId,
+      required final String tokenChainId,
       required final String tokenAddress,
-      required final int tokenId}) = _$FullCancelInfoImpl;
+      required final Uint256 tokenId}) = _$FullCancelInfoImpl;
 
   factory _FullCancelInfo.fromJson(Map<String, dynamic> json) =
       _$FullCancelInfoImpl.fromJson;
@@ -1739,11 +1739,11 @@ abstract class _FullCancelInfo implements FullCancelInfo {
   @override
   String get canceller;
   @override
-  int get tokenChainId;
+  String get tokenChainId;
   @override
   String get tokenAddress;
   @override
-  int get tokenId;
+  Uint256 get tokenId;
   @override
   @JsonKey(ignore: true)
   _$$FullCancelInfoImplCopyWith<_$FullCancelInfoImpl> get copyWith =>
@@ -1760,10 +1760,9 @@ mixin _$FulfillInfo {
   int? get relatedOrderHash =>
       throw _privateConstructorUsedError; // Using int instead of CairoOption<BigInt>, adjust as needed
   String get fulfiller => throw _privateConstructorUsedError;
-  int get tokenChainId => throw _privateConstructorUsedError;
+  String get tokenChainId => throw _privateConstructorUsedError;
   String get tokenAddress => throw _privateConstructorUsedError;
-  int get tokenId =>
-      throw _privateConstructorUsedError; // Using int instead of CairoOption, adjust as needed
+  Uint256 get tokenId => throw _privateConstructorUsedError;
   String get fulfillBrokerAddress => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -1782,9 +1781,9 @@ abstract class $FulfillInfoCopyWith<$Res> {
       {BigInt orderHash,
       int? relatedOrderHash,
       String fulfiller,
-      int tokenChainId,
+      String tokenChainId,
       String tokenAddress,
-      int tokenId,
+      Uint256 tokenId,
       String fulfillBrokerAddress});
 }
 
@@ -1825,7 +1824,7 @@ class _$FulfillInfoCopyWithImpl<$Res, $Val extends FulfillInfo>
       tokenChainId: null == tokenChainId
           ? _value.tokenChainId
           : tokenChainId // ignore: cast_nullable_to_non_nullable
-              as int,
+              as String,
       tokenAddress: null == tokenAddress
           ? _value.tokenAddress
           : tokenAddress // ignore: cast_nullable_to_non_nullable
@@ -1833,7 +1832,7 @@ class _$FulfillInfoCopyWithImpl<$Res, $Val extends FulfillInfo>
       tokenId: null == tokenId
           ? _value.tokenId
           : tokenId // ignore: cast_nullable_to_non_nullable
-              as int,
+              as Uint256,
       fulfillBrokerAddress: null == fulfillBrokerAddress
           ? _value.fulfillBrokerAddress
           : fulfillBrokerAddress // ignore: cast_nullable_to_non_nullable
@@ -1854,9 +1853,9 @@ abstract class _$$FulfillInfoImplCopyWith<$Res>
       {BigInt orderHash,
       int? relatedOrderHash,
       String fulfiller,
-      int tokenChainId,
+      String tokenChainId,
       String tokenAddress,
-      int tokenId,
+      Uint256 tokenId,
       String fulfillBrokerAddress});
 }
 
@@ -1895,7 +1894,7 @@ class __$$FulfillInfoImplCopyWithImpl<$Res>
       tokenChainId: null == tokenChainId
           ? _value.tokenChainId
           : tokenChainId // ignore: cast_nullable_to_non_nullable
-              as int,
+              as String,
       tokenAddress: null == tokenAddress
           ? _value.tokenAddress
           : tokenAddress // ignore: cast_nullable_to_non_nullable
@@ -1903,7 +1902,7 @@ class __$$FulfillInfoImplCopyWithImpl<$Res>
       tokenId: null == tokenId
           ? _value.tokenId
           : tokenId // ignore: cast_nullable_to_non_nullable
-              as int,
+              as Uint256,
       fulfillBrokerAddress: null == fulfillBrokerAddress
           ? _value.fulfillBrokerAddress
           : fulfillBrokerAddress // ignore: cast_nullable_to_non_nullable
@@ -1935,12 +1934,11 @@ class _$FulfillInfoImpl implements _FulfillInfo {
   @override
   final String fulfiller;
   @override
-  final int tokenChainId;
+  final String tokenChainId;
   @override
   final String tokenAddress;
   @override
-  final int tokenId;
-// Using int instead of CairoOption, adjust as needed
+  final Uint256 tokenId;
   @override
   final String fulfillBrokerAddress;
 
@@ -1993,9 +1991,9 @@ abstract class _FulfillInfo implements FulfillInfo {
       {required final BigInt orderHash,
       final int? relatedOrderHash,
       required final String fulfiller,
-      required final int tokenChainId,
+      required final String tokenChainId,
       required final String tokenAddress,
-      required final int tokenId,
+      required final Uint256 tokenId,
       required final String fulfillBrokerAddress}) = _$FulfillInfoImpl;
 
   factory _FulfillInfo.fromJson(Map<String, dynamic> json) =
@@ -2008,12 +2006,12 @@ abstract class _FulfillInfo implements FulfillInfo {
   @override // Using int instead of CairoOption<BigInt>, adjust as needed
   String get fulfiller;
   @override
-  int get tokenChainId;
+  String get tokenChainId;
   @override
   String get tokenAddress;
   @override
-  int get tokenId;
-  @override // Using int instead of CairoOption, adjust as needed
+  Uint256 get tokenId;
+  @override
   String get fulfillBrokerAddress;
   @override
   @JsonKey(ignore: true)

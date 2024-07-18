@@ -37,6 +37,21 @@ class ArkNFTApi {
     }
   }
 
+  Future<void> getOrderHash(String contractAddress, String tokenId) async {
+    final uri = Uri.parse('https://api-marketplace.arkproject.dev/tokens/$contractAddress/0x534e5f4d41494e/$tokenId/marketdata');
+    final headers = {
+      'x-api-key': apiKey,
+      'Content-Type': 'application/json',
+    };
+
+    final response = await http.get(uri, headers: headers);
+    if (response.statusCode == 200) {
+      print(response.body);
+    } else {
+      throw HttpException('Failed to fetch NFT data: ${response.statusCode}');
+    }
+  }
+
   Future<ListNFTsResponse> list(
     String contractAddress, {
     String? cursor,

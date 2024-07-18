@@ -25,6 +25,7 @@ class NFTDetail extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final nft = ref.watch(getNFTProvider(tokenId, nftAddress));
+    print(nft);
     final selectedAccount = ref.watch(walletsProvider.select(
       (value) => value.selectedAccount,
     ));
@@ -77,9 +78,37 @@ class NFTDetail extends ConsumerWidget {
                       starknetAccount: starknetAccount,
                       nftAddress: nftAddress,
                       tokenId: tokenId,
-                      startAmount: 1000000000000000000);
+                      startAmount: 10);
                 },
-                child: const Text('Sell'))
+                child: const Text('Sell')),
+                ElevatedButton(
+                onPressed: () async {
+                  if (selectedAccount == null) {
+                    showWalletList(context);
+                    return;
+                  }
+
+                  final secureStore = await ref
+                      .read(walletsProvider.notifier)
+                      .getSecureStoreForWallet(context: context);
+
+                  final starknetAccount =
+                      await WalletService.getStarknetAccount(
+                    secureStore: secureStore,
+                    walletId: selectedAccount.walletId,
+                    account: selectedAccount,
+                  );
+
+                  await Ark().nft.getOrderHash(nftAddress, tokenId);
+
+                  await Ark().starknet.cancelOrder(
+                      starknetAccount: starknetAccount,
+                      orderHash: BigInt.parse("0x1234"),
+                      tokenAddress: nftAddress,
+                      tokenId: BigInt.parse(tokenId),
+                      );
+                },
+                child: const Text('Cancel Order'))
           ],
         ),
       ),
