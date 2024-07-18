@@ -650,9 +650,7 @@ void main() {
             expect(result.program, isNotNull);
           },
         );
-      },
-          tags: ['integration'],
-          skip: true); // v0 contracts are deprecated
+      }, tags: ['integration'], skip: true); // v0 contracts are deprecated
 
       test(
           'returns contract class definition for a known class hash (cairo 1.0)',
@@ -770,9 +768,7 @@ void main() {
             expect(result.program, isNotNull);
           },
         );
-      }, tags: [
-        'integration'
-      ], skip: true); // v0 contracts are deprecated
+      }, tags: ['integration'], skip: true); // v0 contracts are deprecated
 
       test(
           'returns contract class definition in the given block for given contract address. (cairo 1.0)',
