@@ -32,10 +32,8 @@ class ArkStarknet {
     String tokenChainId = "SN_MAIN",
   }) async {
     startDate =
-        startDate ?? (DateTime.now().millisecondsSinceEpoch ~/ 1000 + 60);
-    endDate = endDate ??
-        (DateTime.now().microsecondsSinceEpoch ~/ 1000 +
-            30 * 24 * 60 * 60) ~/ 1000 ;
+        startDate ?? (DateTime.now().millisecondsSinceEpoch ~/ (1000));
+    endDate = endDate ?? (startDate + 3 * 24 * 60 * 60);
 
     final OrderV1 order = OrderV1(
       route: RouteType.erc721ToErc20,
@@ -138,10 +136,8 @@ class ArkStarknet {
     String tokenChainId = "SN_MAIN",
   }) async {
     startDate =
-        startDate ?? (DateTime.now().millisecondsSinceEpoch ~/ 1000 + 60);
-    endDate = endDate ??
-        (DateTime.now().microsecondsSinceEpoch ~/ 1000 +
-            30 * 24 * 60 * 60) ~/ 1000 ; // 30 days from now
+        startDate ?? (DateTime.now().millisecondsSinceEpoch ~/ (1000));
+    endDate = endDate ?? (startDate + 3 * 24 * 60 * 60);
 
     final bigIntAmount = BigInt.from(startAmount * 1e18);
     final amount = Uint256.fromBigInt(bigIntAmount);

@@ -98,12 +98,12 @@ class NFTDetail extends ConsumerWidget {
                     account: selectedAccount,
                   );
 
-                  //  final orderBook = await Ark().orderbook.getOrderbookNFT(nftAddress, tokenId);
-                  //  print(orderBook);
+                   final orderBook = await Ark().orderbook.getOrderbookNFT(nftAddress, tokenId);
+                   print(orderBook);
 
                   await Ark().starknet.cancelOrder(
                       starknetAccount: starknetAccount,
-                      orderHash: BigInt.parse("0x0483ae8ea5e5220b52c9a3728a89c30ea32a4d227ae11f0b5c92bfe2368896d0"),
+                      orderHash: BigInt.parse(orderBook.orderHash),
                       tokenAddress: nftAddress,
                       tokenId: BigInt.parse(tokenId),
                       );
@@ -127,12 +127,12 @@ class NFTDetail extends ConsumerWidget {
                     account: selectedAccount,
                   );
 
-                  // final orderBook = await Ark().orderbook.getOrderbookNFT(nftAddress, tokenId);
-                  // print(orderBook);
+                  final orderBook = await Ark().orderbook.getOrderbookNFT(nftAddress, tokenId);
+                  print(orderBook);
 
                   await Ark().starknet.fulfillListing(
                       starknetAccount: starknetAccount,
-                      orderHash: BigInt.parse("0x07526698784d7b022516a148061774da9985f458c08f056e4397722c78994f86"),
+                      orderHash: BigInt.parse(orderBook.orderHash),
                       nftAddress: nftAddress,
                       tokenId: tokenId,
                       startAmount: 0.00000001
