@@ -135,7 +135,7 @@ class NFTDetail extends ConsumerWidget {
                       orderHash: BigInt.parse(orderBook.orderHash),
                       nftAddress: nftAddress,
                       tokenId: tokenId,
-                      startAmount: 0.00000001
+                      startAmount: 0.0000000000001
                       );
                 },
                 child: const Text('Buy')),
@@ -186,9 +186,16 @@ class NFTDetail extends ConsumerWidget {
                   final orderBook = await Ark().orderbook.getOrderbookNFT(nftAddress, tokenId);
                   print(orderBook);
 
+                  final offerOrderHash = orderBook.topBid!.orderHash;
+                  print(offerOrderHash);
+
+                  if(offerOrderHash == null) {
+                    return;
+                  }
+
                   await Ark().starknet.fulfillOffer(
                       starknetAccount: starknetAccount,
-                      orderHash: BigInt.parse(orderBook.orderHash),
+                      orderHash: BigInt.parse(offerOrderHash),
                       nftAddress: nftAddress,
                       tokenId: tokenId,
                       );
