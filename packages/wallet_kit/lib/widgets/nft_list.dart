@@ -57,12 +57,10 @@ class NftCard extends StatelessWidget {
     super.key,
     required this.nft,
     required this.onTap,
-    this.isBuyNow = false,
   });
 
   final NFT nft;
   final void Function(NFT nft) onTap;
-  final bool isBuyNow;
 
   @override
   Widget build(BuildContext context) {
@@ -105,22 +103,107 @@ class NftCard extends StatelessWidget {
                 overflow: TextOverflow.ellipsis,
               ),
             ),
-            if (isBuyNow)
-              Container(
-                padding: const EdgeInsets.all(8),
-                decoration: BoxDecoration(
-                  color: Colors.green,
-                  borderRadius: BorderRadius.circular(16),
+            
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class MarketplaceNftCard extends StatelessWidget {
+  const MarketplaceNftCard({
+    super.key,
+    required this.nft,
+    required this.onTap,
+  });
+
+  final MarketPlaceNFT nft;
+  final void Function(MarketPlaceNFT nft) onTap;
+
+  @override
+  Widget build(BuildContext context) {
+
+    final price = nft.price;
+
+    if (price == null) {
+      return Container();
+    }
+
+    final ethPrice = BigInt.parse(price).toDouble() * 1e-18;
+
+    return InkWell(
+      onTap: () => onTap(nft),
+      child: Container(
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(16),
+          boxShadow: [
+            BoxShadow(
+              offset: const Offset(0, 4),
+              blurStyle: BlurStyle.normal,
+              blurRadius: 16,
+              color: Colors.black.withOpacity(0.10),
+            ),
+          ],
+        ),
+        child: Column(
+          children: [
+            Expanded(
+              child: AspectRatio(
+                aspectRatio: 1.0,
+                child: Image.network(nft.metadata.image,
+                    fit: BoxFit.contain),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Text(
+                nft.metadata.name,
+                softWrap: false,
+                style: const TextStyle(
+                  fontSize: 14,
+                  fontWeight: FontWeight.w700,
                 ),
-                child: const Text(
-                  'Buy Now',
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 12,
-                    fontWeight: FontWeight.w700,
+                overflow: TextOverflow.ellipsis,
+              ),
+            ),
+            Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Container(
+                  padding: const EdgeInsets.all(8),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(16),
+                  ),
+                  child:  Text(
+                    'Price: ${ethPrice.toString()} ETH',
+                    style: const TextStyle(
+                      color: Colors.black,
+                      fontSize: 12,
+                      fontWeight: FontWeight.w700,
+                    ),
                   ),
                 ),
               ),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Container(
+                  padding: const EdgeInsets.all(8),
+                  decoration: BoxDecoration(
+                    color: Colors.green,
+                    borderRadius: BorderRadius.circular(16),
+                  ),
+                  child: const Text(
+                    'Buy Now',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 12,
+                      fontWeight: FontWeight.w700,
+                    ),
+                  ),
+                ),
+              ),
+
           ],
         ),
       ),

@@ -93,20 +93,17 @@ class NFTList extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final buyNowNfts = ref.watch(listBuyNowNFTsProvider).when(data: (data) => data.data, loading: () => [], error: (error, stack) => []);
-    final nfts = ref.watch(listNFTsProvider);
-    return nfts.when(
+    final buyNowNfts = ref.watch(listBuyNowNFTsProvider);
+    return buyNowNfts.when(
       data: (data) {
         return GridView.builder(
-          itemCount: data.result.length,
+          itemCount: data.data.length,
           itemBuilder: (BuildContext context, int index) {
-            final nft = data.result[index];
-            final isBuyNow = buyNowNfts.any((element) => element.tokenId == nft.tokenId);
-            return NftCard(
+            final nft = data.data[index];
+            return MarketplaceNftCard(
                 nft: nft,
-                isBuyNow: isBuyNow,
                 onTap: (nft) {
-                  context.push('/nft/${nft.contractAddress}/${nft.tokenId}');
+                  context.push('/nft/${Config().nftContractAddress}/${nft.tokenId}');
                 });
           },
           gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(

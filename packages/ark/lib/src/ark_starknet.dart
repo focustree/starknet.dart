@@ -31,10 +31,11 @@ class ArkStarknet {
     String currencyChainId = "SN_MAIN",
     String tokenChainId = "SN_MAIN",
   }) async {
-    DateTime now = DateTime.now();
     startDate =
-        startDate ?? (now.millisecondsSinceEpoch ~/ 1000 + 60); // 60 seconds from now
-    endDate = endDate ?? (startDate + 30* 24 * 60 * 60); // 30 days from now
+        startDate ?? (DateTime.now().millisecondsSinceEpoch ~/ 1000 + 60);
+    endDate = endDate ??
+        (DateTime.now().microsecondsSinceEpoch ~/ 1000 +
+            30 * 24 * 60 * 60) ~/ 1000 ;
 
     final OrderV1 order = OrderV1(
       route: RouteType.erc721ToErc20,
@@ -121,7 +122,7 @@ class ArkStarknet {
         entryPointSelector: getSelectorByName("cancel_order"),
         calldata: callData,
       ),
-    ], maxFee: Felt.fromDouble(0.00001 * 1e18));
+    ], maxFee: Felt.fromDouble(0.00001 * 1e18) );
   }
 
   createOffer({
@@ -140,9 +141,10 @@ class ArkStarknet {
         startDate ?? (DateTime.now().millisecondsSinceEpoch ~/ 1000 + 60);
     endDate = endDate ??
         (DateTime.now().microsecondsSinceEpoch ~/ 1000 +
-            30 * 24 * 60 * 60); // 30 days from now
+            30 * 24 * 60 * 60) ~/ 1000 ; // 30 days from now
 
-    final amount = Uint256.fromBigInt(BigInt.from(startAmount * 1e18));
+    final bigIntAmount = BigInt.from(startAmount * 1e18);
+    final amount = Uint256.fromBigInt(bigIntAmount);
 
     final OrderV1 order = OrderV1(
       route: RouteType.erc20ToErc721,
@@ -188,7 +190,7 @@ class ArkStarknet {
       FunctionCall(
         contractAddress: Felt.fromHexString(currencyAddress),
         entryPointSelector: getSelectorByName("approve"),
-        calldata: [arkExecutorAddress, ...computeCalldata(amount)],
+        calldata: [arkExecutorAddress, Felt(bigIntAmount), Felt.fromInt(0)],
       ),
       FunctionCall(
         contractAddress: arkExecutorAddress,
@@ -209,7 +211,7 @@ class ArkStarknet {
     String tokenChainId = "SN_MAIN",
   }) async {
 
-    final amount = Uint256.fromBigInt(BigInt.from(startAmount * 1e18));
+    final bigIntAmount = BigInt.from(startAmount * 1e18);
 
     final FulfillInfo fulfillInfo = FulfillInfo(
       orderHash: orderHash,
@@ -231,6 +233,7 @@ class ArkStarknet {
       ...computeCalldata(fulfillInfo.tokenAddress),
       Felt.fromInt(0),
       Felt(tokenIdBigInt),
+      Felt.fromInt(0),
       ...computeCalldata(fulfillInfo.fulfillBrokerAddress),
     ];
 
@@ -238,7 +241,7 @@ class ArkStarknet {
       FunctionCall(
         contractAddress: Felt.fromHexString(currencyAddress),
         entryPointSelector: getSelectorByName("approve"),
-        calldata: [arkExecutorAddress, ...computeCalldata(amount)],
+        calldata: [arkExecutorAddress, Felt(bigIntAmount), Felt.fromInt(0) ],
       ),
       FunctionCall(
         contractAddress: arkExecutorAddress,
