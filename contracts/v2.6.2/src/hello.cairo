@@ -2,7 +2,7 @@
 trait IHello<T> {
     fn get_name(self: @T) -> felt252;
     fn set_name(ref self: T, name: felt252);
-    fn sum(self: @ContractState, a: felt252, b: felt252) -> felt252;
+    fn sum(self: @T, a: felt252, b: felt252) -> felt252;
 }
 
 #[starknet::contract]
