@@ -28,9 +28,12 @@ coverage/
 
 .env
 .env.*
+<<<<<<< HEAD
 !.env.example
 !.env.mainnet.example
 !.env.devnet.example
+=======
+>>>>>>> 484f217 (`read_provider_test` migrate to devnet (#384))
 !.env.devnet
 
 # deploy for test

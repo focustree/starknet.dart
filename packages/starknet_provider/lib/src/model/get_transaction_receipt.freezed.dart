@@ -613,7 +613,11 @@ TxnReceipt _$TxnReceiptFromJson(Map<String, dynamic> json) {
 mixin _$TxnReceipt {
 // start of COMMON_RECEIPT_PROPERTIES
   Felt get transactionHash => throw _privateConstructorUsedError;
+<<<<<<< HEAD
   Object get actualFee => throw _privateConstructorUsedError;
+=======
+  ActualFee get actualFee => throw _privateConstructorUsedError;
+>>>>>>> 484f217 (`read_provider_test` migrate to devnet (#384))
   String? get type => throw _privateConstructorUsedError;
   List<MsgToL1> get messagesSent => throw _privateConstructorUsedError;
   List<Event> get events => throw _privateConstructorUsedError;
@@ -621,9 +625,14 @@ mixin _$TxnReceipt {
   TResult when<TResult extends Object?>({
     required TResult Function(
             Felt transactionHash,
+<<<<<<< HEAD
             String actualFee,
             String execution_status,
             String finality_status,
+=======
+            ActualFee actualFee,
+            String status,
+>>>>>>> 484f217 (`read_provider_test` migrate to devnet (#384))
             Felt? blockHash,
             int? blockNumber,
             String type,
@@ -633,8 +642,12 @@ mixin _$TxnReceipt {
     required TResult Function(
             Felt transactionHash,
             ActualFee actualFee,
+<<<<<<< HEAD
             String execution_status,
             String finality_status,
+=======
+            String status,
+>>>>>>> 484f217 (`read_provider_test` migrate to devnet (#384))
             Felt? blockHash,
             int? blockNumber,
             String type,
@@ -644,8 +657,12 @@ mixin _$TxnReceipt {
     required TResult Function(
             Felt transactionHash,
             ActualFee actualFee,
+<<<<<<< HEAD
             String execution_status,
             String finality_status,
+=======
+            String status,
+>>>>>>> 484f217 (`read_provider_test` migrate to devnet (#384))
             Felt? blockHash,
             int? blockNumber,
             String type,
@@ -655,8 +672,12 @@ mixin _$TxnReceipt {
     required TResult Function(
             Felt transactionHash,
             ActualFee actualFee,
+<<<<<<< HEAD
             String execution_status,
             String finality_status,
+=======
+            String status,
+>>>>>>> 484f217 (`read_provider_test` migrate to devnet (#384))
             Felt? blockHash,
             int? blockNumber,
             String type,
@@ -666,16 +687,30 @@ mixin _$TxnReceipt {
     required TResult Function(
             Felt transactionHash,
             ActualFee actualFee,
+<<<<<<< HEAD
             String execution_status,
             String finality_status,
+=======
+            String status,
+>>>>>>> 484f217 (`read_provider_test` migrate to devnet (#384))
             Felt? blockHash,
             int? blockNumber,
             String type,
             List<MsgToL1> messagesSent,
             List<Event> events)
         deployAccountTxnReceipt,
+<<<<<<< HEAD
     required TResult Function(Felt transactionHash, ActualFee actualFee,
             String? type, List<MsgToL1> messagesSent, List<Event> events)
+=======
+    required TResult Function(
+            Felt transactionHash,
+            ActualFee actualFee,
+            String? type,
+            List<MsgToL1> messagesSent,
+            List<Event> events,
+            Felt contractAddress)
+>>>>>>> 484f217 (`read_provider_test` migrate to devnet (#384))
         pendingDeployTxnReceipt,
     required TResult Function(Felt transactionHash, ActualFee actualFee,
             String? type, List<MsgToL1> messagesSent, List<Event> events)
@@ -686,9 +721,14 @@ mixin _$TxnReceipt {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(
             Felt transactionHash,
+<<<<<<< HEAD
             String actualFee,
             String execution_status,
             String finality_status,
+=======
+            ActualFee actualFee,
+            String status,
+>>>>>>> 484f217 (`read_provider_test` migrate to devnet (#384))
             Felt? blockHash,
             int? blockNumber,
             String type,
@@ -698,8 +738,12 @@ mixin _$TxnReceipt {
     TResult? Function(
             Felt transactionHash,
             ActualFee actualFee,
+<<<<<<< HEAD
             String execution_status,
             String finality_status,
+=======
+            String status,
+>>>>>>> 484f217 (`read_provider_test` migrate to devnet (#384))
             Felt? blockHash,
             int? blockNumber,
             String type,
@@ -709,8 +753,12 @@ mixin _$TxnReceipt {
     TResult? Function(
             Felt transactionHash,
             ActualFee actualFee,
+<<<<<<< HEAD
             String execution_status,
             String finality_status,
+=======
+            String status,
+>>>>>>> 484f217 (`read_provider_test` migrate to devnet (#384))
             Felt? blockHash,
             int? blockNumber,
             String type,
@@ -720,8 +768,12 @@ mixin _$TxnReceipt {
     TResult? Function(
             Felt transactionHash,
             ActualFee actualFee,
+<<<<<<< HEAD
             String execution_status,
             String finality_status,
+=======
+            String status,
+>>>>>>> 484f217 (`read_provider_test` migrate to devnet (#384))
             Felt? blockHash,
             int? blockNumber,
             String type,
@@ -731,16 +783,30 @@ mixin _$TxnReceipt {
     TResult? Function(
             Felt transactionHash,
             ActualFee actualFee,
+<<<<<<< HEAD
             String execution_status,
             String finality_status,
+=======
+            String status,
+>>>>>>> 484f217 (`read_provider_test` migrate to devnet (#384))
             Felt? blockHash,
             int? blockNumber,
             String type,
             List<MsgToL1> messagesSent,
             List<Event> events)?
         deployAccountTxnReceipt,
+<<<<<<< HEAD
     TResult? Function(Felt transactionHash, ActualFee actualFee, String? type,
             List<MsgToL1> messagesSent, List<Event> events)?
+=======
+    TResult? Function(
+            Felt transactionHash,
+            ActualFee actualFee,
+            String? type,
+            List<MsgToL1> messagesSent,
+            List<Event> events,
+            Felt contractAddress)?
+>>>>>>> 484f217 (`read_provider_test` migrate to devnet (#384))
         pendingDeployTxnReceipt,
     TResult? Function(Felt transactionHash, ActualFee actualFee, String? type,
             List<MsgToL1> messagesSent, List<Event> events)?
@@ -751,9 +817,14 @@ mixin _$TxnReceipt {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(
             Felt transactionHash,
+<<<<<<< HEAD
             String actualFee,
             String execution_status,
             String finality_status,
+=======
+            ActualFee actualFee,
+            String status,
+>>>>>>> 484f217 (`read_provider_test` migrate to devnet (#384))
             Felt? blockHash,
             int? blockNumber,
             String type,
@@ -763,8 +834,12 @@ mixin _$TxnReceipt {
     TResult Function(
             Felt transactionHash,
             ActualFee actualFee,
+<<<<<<< HEAD
             String execution_status,
             String finality_status,
+=======
+            String status,
+>>>>>>> 484f217 (`read_provider_test` migrate to devnet (#384))
             Felt? blockHash,
             int? blockNumber,
             String type,
@@ -774,8 +849,12 @@ mixin _$TxnReceipt {
     TResult Function(
             Felt transactionHash,
             ActualFee actualFee,
+<<<<<<< HEAD
             String execution_status,
             String finality_status,
+=======
+            String status,
+>>>>>>> 484f217 (`read_provider_test` migrate to devnet (#384))
             Felt? blockHash,
             int? blockNumber,
             String type,
@@ -785,8 +864,12 @@ mixin _$TxnReceipt {
     TResult Function(
             Felt transactionHash,
             ActualFee actualFee,
+<<<<<<< HEAD
             String execution_status,
             String finality_status,
+=======
+            String status,
+>>>>>>> 484f217 (`read_provider_test` migrate to devnet (#384))
             Felt? blockHash,
             int? blockNumber,
             String type,
@@ -796,16 +879,30 @@ mixin _$TxnReceipt {
     TResult Function(
             Felt transactionHash,
             ActualFee actualFee,
+<<<<<<< HEAD
             String execution_status,
             String finality_status,
+=======
+            String status,
+>>>>>>> 484f217 (`read_provider_test` migrate to devnet (#384))
             Felt? blockHash,
             int? blockNumber,
             String type,
             List<MsgToL1> messagesSent,
             List<Event> events)?
         deployAccountTxnReceipt,
+<<<<<<< HEAD
     TResult Function(Felt transactionHash, ActualFee actualFee, String? type,
             List<MsgToL1> messagesSent, List<Event> events)?
+=======
+    TResult Function(
+            Felt transactionHash,
+            ActualFee actualFee,
+            String? type,
+            List<MsgToL1> messagesSent,
+            List<Event> events,
+            Felt contractAddress)?
+>>>>>>> 484f217 (`read_provider_test` migrate to devnet (#384))
         pendingDeployTxnReceipt,
     TResult Function(Felt transactionHash, ActualFee actualFee, String? type,
             List<MsgToL1> messagesSent, List<Event> events)?
@@ -866,6 +963,10 @@ abstract class $TxnReceiptCopyWith<$Res> {
   @useResult
   $Res call(
       {Felt transactionHash,
+<<<<<<< HEAD
+=======
+      ActualFee actualFee,
+>>>>>>> 484f217 (`read_provider_test` migrate to devnet (#384))
       String type,
       List<MsgToL1> messagesSent,
       List<Event> events});
@@ -896,6 +997,13 @@ class _$TxnReceiptCopyWithImpl<$Res, $Val extends TxnReceipt>
           ? _value.transactionHash
           : transactionHash // ignore: cast_nullable_to_non_nullable
               as Felt,
+<<<<<<< HEAD
+=======
+      actualFee: null == actualFee
+          ? _value.actualFee
+          : actualFee // ignore: cast_nullable_to_non_nullable
+              as ActualFee,
+>>>>>>> 484f217 (`read_provider_test` migrate to devnet (#384))
       type: null == type
           ? _value.type!
           : type // ignore: cast_nullable_to_non_nullable
@@ -930,9 +1038,14 @@ abstract class _$$InvokeTxnReceiptImplCopyWith<$Res>
   @useResult
   $Res call(
       {Felt transactionHash,
+<<<<<<< HEAD
       String actualFee,
       String execution_status,
       String finality_status,
+=======
+      ActualFee actualFee,
+      String status,
+>>>>>>> 484f217 (`read_provider_test` migrate to devnet (#384))
       Felt? blockHash,
       int? blockNumber,
       String type,
@@ -972,6 +1085,7 @@ class __$$InvokeTxnReceiptImplCopyWithImpl<$Res>
       actualFee: null == actualFee
           ? _value.actualFee
           : actualFee // ignore: cast_nullable_to_non_nullable
+<<<<<<< HEAD
               as String,
       execution_status: null == execution_status
           ? _value.execution_status
@@ -980,6 +1094,12 @@ class __$$InvokeTxnReceiptImplCopyWithImpl<$Res>
       finality_status: null == finality_status
           ? _value.finality_status
           : finality_status // ignore: cast_nullable_to_non_nullable
+=======
+              as ActualFee,
+      status: null == status
+          ? _value.status
+          : status // ignore: cast_nullable_to_non_nullable
+>>>>>>> 484f217 (`read_provider_test` migrate to devnet (#384))
               as String,
       blockHash: freezed == blockHash
           ? _value.blockHash
@@ -1030,7 +1150,11 @@ class _$InvokeTxnReceiptImpl implements InvokeTxnReceipt {
   @override
   final Felt transactionHash;
   @override
+<<<<<<< HEAD
   final String actualFee;
+=======
+  final ActualFee actualFee;
+>>>>>>> 484f217 (`read_provider_test` migrate to devnet (#384))
   @override
   final String execution_status;
   @override
@@ -1114,9 +1238,14 @@ class _$InvokeTxnReceiptImpl implements InvokeTxnReceipt {
   TResult when<TResult extends Object?>({
     required TResult Function(
             Felt transactionHash,
+<<<<<<< HEAD
             String actualFee,
             String execution_status,
             String finality_status,
+=======
+            ActualFee actualFee,
+            String status,
+>>>>>>> 484f217 (`read_provider_test` migrate to devnet (#384))
             Felt? blockHash,
             int? blockNumber,
             String type,
@@ -1126,8 +1255,12 @@ class _$InvokeTxnReceiptImpl implements InvokeTxnReceipt {
     required TResult Function(
             Felt transactionHash,
             ActualFee actualFee,
+<<<<<<< HEAD
             String execution_status,
             String finality_status,
+=======
+            String status,
+>>>>>>> 484f217 (`read_provider_test` migrate to devnet (#384))
             Felt? blockHash,
             int? blockNumber,
             String type,
@@ -1137,8 +1270,12 @@ class _$InvokeTxnReceiptImpl implements InvokeTxnReceipt {
     required TResult Function(
             Felt transactionHash,
             ActualFee actualFee,
+<<<<<<< HEAD
             String execution_status,
             String finality_status,
+=======
+            String status,
+>>>>>>> 484f217 (`read_provider_test` migrate to devnet (#384))
             Felt? blockHash,
             int? blockNumber,
             String type,
@@ -1148,8 +1285,12 @@ class _$InvokeTxnReceiptImpl implements InvokeTxnReceipt {
     required TResult Function(
             Felt transactionHash,
             ActualFee actualFee,
+<<<<<<< HEAD
             String execution_status,
             String finality_status,
+=======
+            String status,
+>>>>>>> 484f217 (`read_provider_test` migrate to devnet (#384))
             Felt? blockHash,
             int? blockNumber,
             String type,
@@ -1159,16 +1300,30 @@ class _$InvokeTxnReceiptImpl implements InvokeTxnReceipt {
     required TResult Function(
             Felt transactionHash,
             ActualFee actualFee,
+<<<<<<< HEAD
             String execution_status,
             String finality_status,
+=======
+            String status,
+>>>>>>> 484f217 (`read_provider_test` migrate to devnet (#384))
             Felt? blockHash,
             int? blockNumber,
             String type,
             List<MsgToL1> messagesSent,
             List<Event> events)
         deployAccountTxnReceipt,
+<<<<<<< HEAD
     required TResult Function(Felt transactionHash, ActualFee actualFee,
             String? type, List<MsgToL1> messagesSent, List<Event> events)
+=======
+    required TResult Function(
+            Felt transactionHash,
+            ActualFee actualFee,
+            String? type,
+            List<MsgToL1> messagesSent,
+            List<Event> events,
+            Felt contractAddress)
+>>>>>>> 484f217 (`read_provider_test` migrate to devnet (#384))
         pendingDeployTxnReceipt,
     required TResult Function(Felt transactionHash, ActualFee actualFee,
             String? type, List<MsgToL1> messagesSent, List<Event> events)
@@ -1183,9 +1338,14 @@ class _$InvokeTxnReceiptImpl implements InvokeTxnReceipt {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(
             Felt transactionHash,
+<<<<<<< HEAD
             String actualFee,
             String execution_status,
             String finality_status,
+=======
+            ActualFee actualFee,
+            String status,
+>>>>>>> 484f217 (`read_provider_test` migrate to devnet (#384))
             Felt? blockHash,
             int? blockNumber,
             String type,
@@ -1195,8 +1355,12 @@ class _$InvokeTxnReceiptImpl implements InvokeTxnReceipt {
     TResult? Function(
             Felt transactionHash,
             ActualFee actualFee,
+<<<<<<< HEAD
             String execution_status,
             String finality_status,
+=======
+            String status,
+>>>>>>> 484f217 (`read_provider_test` migrate to devnet (#384))
             Felt? blockHash,
             int? blockNumber,
             String type,
@@ -1206,8 +1370,12 @@ class _$InvokeTxnReceiptImpl implements InvokeTxnReceipt {
     TResult? Function(
             Felt transactionHash,
             ActualFee actualFee,
+<<<<<<< HEAD
             String execution_status,
             String finality_status,
+=======
+            String status,
+>>>>>>> 484f217 (`read_provider_test` migrate to devnet (#384))
             Felt? blockHash,
             int? blockNumber,
             String type,
@@ -1217,8 +1385,12 @@ class _$InvokeTxnReceiptImpl implements InvokeTxnReceipt {
     TResult? Function(
             Felt transactionHash,
             ActualFee actualFee,
+<<<<<<< HEAD
             String execution_status,
             String finality_status,
+=======
+            String status,
+>>>>>>> 484f217 (`read_provider_test` migrate to devnet (#384))
             Felt? blockHash,
             int? blockNumber,
             String type,
@@ -1228,16 +1400,30 @@ class _$InvokeTxnReceiptImpl implements InvokeTxnReceipt {
     TResult? Function(
             Felt transactionHash,
             ActualFee actualFee,
+<<<<<<< HEAD
             String execution_status,
             String finality_status,
+=======
+            String status,
+>>>>>>> 484f217 (`read_provider_test` migrate to devnet (#384))
             Felt? blockHash,
             int? blockNumber,
             String type,
             List<MsgToL1> messagesSent,
             List<Event> events)?
         deployAccountTxnReceipt,
+<<<<<<< HEAD
     TResult? Function(Felt transactionHash, ActualFee actualFee, String? type,
             List<MsgToL1> messagesSent, List<Event> events)?
+=======
+    TResult? Function(
+            Felt transactionHash,
+            ActualFee actualFee,
+            String? type,
+            List<MsgToL1> messagesSent,
+            List<Event> events,
+            Felt contractAddress)?
+>>>>>>> 484f217 (`read_provider_test` migrate to devnet (#384))
         pendingDeployTxnReceipt,
     TResult? Function(Felt transactionHash, ActualFee actualFee, String? type,
             List<MsgToL1> messagesSent, List<Event> events)?
@@ -1252,9 +1438,14 @@ class _$InvokeTxnReceiptImpl implements InvokeTxnReceipt {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(
             Felt transactionHash,
+<<<<<<< HEAD
             String actualFee,
             String execution_status,
             String finality_status,
+=======
+            ActualFee actualFee,
+            String status,
+>>>>>>> 484f217 (`read_provider_test` migrate to devnet (#384))
             Felt? blockHash,
             int? blockNumber,
             String type,
@@ -1264,8 +1455,12 @@ class _$InvokeTxnReceiptImpl implements InvokeTxnReceipt {
     TResult Function(
             Felt transactionHash,
             ActualFee actualFee,
+<<<<<<< HEAD
             String execution_status,
             String finality_status,
+=======
+            String status,
+>>>>>>> 484f217 (`read_provider_test` migrate to devnet (#384))
             Felt? blockHash,
             int? blockNumber,
             String type,
@@ -1275,8 +1470,12 @@ class _$InvokeTxnReceiptImpl implements InvokeTxnReceipt {
     TResult Function(
             Felt transactionHash,
             ActualFee actualFee,
+<<<<<<< HEAD
             String execution_status,
             String finality_status,
+=======
+            String status,
+>>>>>>> 484f217 (`read_provider_test` migrate to devnet (#384))
             Felt? blockHash,
             int? blockNumber,
             String type,
@@ -1286,8 +1485,12 @@ class _$InvokeTxnReceiptImpl implements InvokeTxnReceipt {
     TResult Function(
             Felt transactionHash,
             ActualFee actualFee,
+<<<<<<< HEAD
             String execution_status,
             String finality_status,
+=======
+            String status,
+>>>>>>> 484f217 (`read_provider_test` migrate to devnet (#384))
             Felt? blockHash,
             int? blockNumber,
             String type,
@@ -1297,16 +1500,30 @@ class _$InvokeTxnReceiptImpl implements InvokeTxnReceipt {
     TResult Function(
             Felt transactionHash,
             ActualFee actualFee,
+<<<<<<< HEAD
             String execution_status,
             String finality_status,
+=======
+            String status,
+>>>>>>> 484f217 (`read_provider_test` migrate to devnet (#384))
             Felt? blockHash,
             int? blockNumber,
             String type,
             List<MsgToL1> messagesSent,
             List<Event> events)?
         deployAccountTxnReceipt,
+<<<<<<< HEAD
     TResult Function(Felt transactionHash, ActualFee actualFee, String? type,
             List<MsgToL1> messagesSent, List<Event> events)?
+=======
+    TResult Function(
+            Felt transactionHash,
+            ActualFee actualFee,
+            String? type,
+            List<MsgToL1> messagesSent,
+            List<Event> events,
+            Felt contractAddress)?
+>>>>>>> 484f217 (`read_provider_test` migrate to devnet (#384))
         pendingDeployTxnReceipt,
     TResult Function(Felt transactionHash, ActualFee actualFee, String? type,
             List<MsgToL1> messagesSent, List<Event> events)?
@@ -1382,9 +1599,14 @@ class _$InvokeTxnReceiptImpl implements InvokeTxnReceipt {
 abstract class InvokeTxnReceipt implements TxnReceipt {
   const factory InvokeTxnReceipt(
       {required final Felt transactionHash,
+<<<<<<< HEAD
       required final String actualFee,
       required final String execution_status,
       required final String finality_status,
+=======
+      required final ActualFee actualFee,
+      required final String status,
+>>>>>>> 484f217 (`read_provider_test` migrate to devnet (#384))
       final Felt? blockHash,
       final int? blockNumber,
       required final String type,
@@ -1397,9 +1619,14 @@ abstract class InvokeTxnReceipt implements TxnReceipt {
   @override // start of COMMON_RECEIPT_PROPERTIES
   Felt get transactionHash;
   @override
+<<<<<<< HEAD
   String get actualFee;
   String get execution_status;
   String get finality_status;
+=======
+  ActualFee get actualFee;
+  String get status;
+>>>>>>> 484f217 (`read_provider_test` migrate to devnet (#384))
   Felt? get blockHash;
   int? get blockNumber;
   @override
@@ -1425,14 +1652,22 @@ abstract class _$$DeclareTxnReceiptImplCopyWith<$Res>
   $Res call(
       {Felt transactionHash,
       ActualFee actualFee,
+<<<<<<< HEAD
       String execution_status,
       String finality_status,
+=======
+      String status,
+>>>>>>> 484f217 (`read_provider_test` migrate to devnet (#384))
       Felt? blockHash,
       int? blockNumber,
       String type,
       List<MsgToL1> messagesSent,
       List<Event> events});
 
+<<<<<<< HEAD
+=======
+  @override
+>>>>>>> 484f217 (`read_provider_test` migrate to devnet (#384))
   $ActualFeeCopyWith<$Res> get actualFee;
 }
 
@@ -1466,6 +1701,7 @@ class __$$DeclareTxnReceiptImplCopyWithImpl<$Res>
           ? _value.actualFee
           : actualFee // ignore: cast_nullable_to_non_nullable
               as ActualFee,
+<<<<<<< HEAD
       execution_status: null == execution_status
           ? _value.execution_status
           : execution_status // ignore: cast_nullable_to_non_nullable
@@ -1473,6 +1709,11 @@ class __$$DeclareTxnReceiptImplCopyWithImpl<$Res>
       finality_status: null == finality_status
           ? _value.finality_status
           : finality_status // ignore: cast_nullable_to_non_nullable
+=======
+      status: null == status
+          ? _value.status
+          : status // ignore: cast_nullable_to_non_nullable
+>>>>>>> 484f217 (`read_provider_test` migrate to devnet (#384))
               as String,
       blockHash: freezed == blockHash
           ? _value.blockHash
@@ -1615,9 +1856,14 @@ class _$DeclareTxnReceiptImpl implements DeclareTxnReceipt {
   TResult when<TResult extends Object?>({
     required TResult Function(
             Felt transactionHash,
+<<<<<<< HEAD
             String actualFee,
             String execution_status,
             String finality_status,
+=======
+            ActualFee actualFee,
+            String status,
+>>>>>>> 484f217 (`read_provider_test` migrate to devnet (#384))
             Felt? blockHash,
             int? blockNumber,
             String type,
@@ -1627,8 +1873,12 @@ class _$DeclareTxnReceiptImpl implements DeclareTxnReceipt {
     required TResult Function(
             Felt transactionHash,
             ActualFee actualFee,
+<<<<<<< HEAD
             String execution_status,
             String finality_status,
+=======
+            String status,
+>>>>>>> 484f217 (`read_provider_test` migrate to devnet (#384))
             Felt? blockHash,
             int? blockNumber,
             String type,
@@ -1638,8 +1888,12 @@ class _$DeclareTxnReceiptImpl implements DeclareTxnReceipt {
     required TResult Function(
             Felt transactionHash,
             ActualFee actualFee,
+<<<<<<< HEAD
             String execution_status,
             String finality_status,
+=======
+            String status,
+>>>>>>> 484f217 (`read_provider_test` migrate to devnet (#384))
             Felt? blockHash,
             int? blockNumber,
             String type,
@@ -1649,8 +1903,12 @@ class _$DeclareTxnReceiptImpl implements DeclareTxnReceipt {
     required TResult Function(
             Felt transactionHash,
             ActualFee actualFee,
+<<<<<<< HEAD
             String execution_status,
             String finality_status,
+=======
+            String status,
+>>>>>>> 484f217 (`read_provider_test` migrate to devnet (#384))
             Felt? blockHash,
             int? blockNumber,
             String type,
@@ -1660,16 +1918,30 @@ class _$DeclareTxnReceiptImpl implements DeclareTxnReceipt {
     required TResult Function(
             Felt transactionHash,
             ActualFee actualFee,
+<<<<<<< HEAD
             String execution_status,
             String finality_status,
+=======
+            String status,
+>>>>>>> 484f217 (`read_provider_test` migrate to devnet (#384))
             Felt? blockHash,
             int? blockNumber,
             String type,
             List<MsgToL1> messagesSent,
             List<Event> events)
         deployAccountTxnReceipt,
+<<<<<<< HEAD
     required TResult Function(Felt transactionHash, ActualFee actualFee,
             String? type, List<MsgToL1> messagesSent, List<Event> events)
+=======
+    required TResult Function(
+            Felt transactionHash,
+            ActualFee actualFee,
+            String? type,
+            List<MsgToL1> messagesSent,
+            List<Event> events,
+            Felt contractAddress)
+>>>>>>> 484f217 (`read_provider_test` migrate to devnet (#384))
         pendingDeployTxnReceipt,
     required TResult Function(Felt transactionHash, ActualFee actualFee,
             String? type, List<MsgToL1> messagesSent, List<Event> events)
@@ -1684,9 +1956,14 @@ class _$DeclareTxnReceiptImpl implements DeclareTxnReceipt {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(
             Felt transactionHash,
+<<<<<<< HEAD
             String actualFee,
             String execution_status,
             String finality_status,
+=======
+            ActualFee actualFee,
+            String status,
+>>>>>>> 484f217 (`read_provider_test` migrate to devnet (#384))
             Felt? blockHash,
             int? blockNumber,
             String type,
@@ -1696,8 +1973,12 @@ class _$DeclareTxnReceiptImpl implements DeclareTxnReceipt {
     TResult? Function(
             Felt transactionHash,
             ActualFee actualFee,
+<<<<<<< HEAD
             String execution_status,
             String finality_status,
+=======
+            String status,
+>>>>>>> 484f217 (`read_provider_test` migrate to devnet (#384))
             Felt? blockHash,
             int? blockNumber,
             String type,
@@ -1707,8 +1988,12 @@ class _$DeclareTxnReceiptImpl implements DeclareTxnReceipt {
     TResult? Function(
             Felt transactionHash,
             ActualFee actualFee,
+<<<<<<< HEAD
             String execution_status,
             String finality_status,
+=======
+            String status,
+>>>>>>> 484f217 (`read_provider_test` migrate to devnet (#384))
             Felt? blockHash,
             int? blockNumber,
             String type,
@@ -1718,8 +2003,12 @@ class _$DeclareTxnReceiptImpl implements DeclareTxnReceipt {
     TResult? Function(
             Felt transactionHash,
             ActualFee actualFee,
+<<<<<<< HEAD
             String execution_status,
             String finality_status,
+=======
+            String status,
+>>>>>>> 484f217 (`read_provider_test` migrate to devnet (#384))
             Felt? blockHash,
             int? blockNumber,
             String type,
@@ -1729,16 +2018,30 @@ class _$DeclareTxnReceiptImpl implements DeclareTxnReceipt {
     TResult? Function(
             Felt transactionHash,
             ActualFee actualFee,
+<<<<<<< HEAD
             String execution_status,
             String finality_status,
+=======
+            String status,
+>>>>>>> 484f217 (`read_provider_test` migrate to devnet (#384))
             Felt? blockHash,
             int? blockNumber,
             String type,
             List<MsgToL1> messagesSent,
             List<Event> events)?
         deployAccountTxnReceipt,
+<<<<<<< HEAD
     TResult? Function(Felt transactionHash, ActualFee actualFee, String? type,
             List<MsgToL1> messagesSent, List<Event> events)?
+=======
+    TResult? Function(
+            Felt transactionHash,
+            ActualFee actualFee,
+            String? type,
+            List<MsgToL1> messagesSent,
+            List<Event> events,
+            Felt contractAddress)?
+>>>>>>> 484f217 (`read_provider_test` migrate to devnet (#384))
         pendingDeployTxnReceipt,
     TResult? Function(Felt transactionHash, ActualFee actualFee, String? type,
             List<MsgToL1> messagesSent, List<Event> events)?
@@ -1753,9 +2056,14 @@ class _$DeclareTxnReceiptImpl implements DeclareTxnReceipt {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(
             Felt transactionHash,
+<<<<<<< HEAD
             String actualFee,
             String execution_status,
             String finality_status,
+=======
+            ActualFee actualFee,
+            String status,
+>>>>>>> 484f217 (`read_provider_test` migrate to devnet (#384))
             Felt? blockHash,
             int? blockNumber,
             String type,
@@ -1765,8 +2073,12 @@ class _$DeclareTxnReceiptImpl implements DeclareTxnReceipt {
     TResult Function(
             Felt transactionHash,
             ActualFee actualFee,
+<<<<<<< HEAD
             String execution_status,
             String finality_status,
+=======
+            String status,
+>>>>>>> 484f217 (`read_provider_test` migrate to devnet (#384))
             Felt? blockHash,
             int? blockNumber,
             String type,
@@ -1776,8 +2088,12 @@ class _$DeclareTxnReceiptImpl implements DeclareTxnReceipt {
     TResult Function(
             Felt transactionHash,
             ActualFee actualFee,
+<<<<<<< HEAD
             String execution_status,
             String finality_status,
+=======
+            String status,
+>>>>>>> 484f217 (`read_provider_test` migrate to devnet (#384))
             Felt? blockHash,
             int? blockNumber,
             String type,
@@ -1787,8 +2103,12 @@ class _$DeclareTxnReceiptImpl implements DeclareTxnReceipt {
     TResult Function(
             Felt transactionHash,
             ActualFee actualFee,
+<<<<<<< HEAD
             String execution_status,
             String finality_status,
+=======
+            String status,
+>>>>>>> 484f217 (`read_provider_test` migrate to devnet (#384))
             Felt? blockHash,
             int? blockNumber,
             String type,
@@ -1798,16 +2118,30 @@ class _$DeclareTxnReceiptImpl implements DeclareTxnReceipt {
     TResult Function(
             Felt transactionHash,
             ActualFee actualFee,
+<<<<<<< HEAD
             String execution_status,
             String finality_status,
+=======
+            String status,
+>>>>>>> 484f217 (`read_provider_test` migrate to devnet (#384))
             Felt? blockHash,
             int? blockNumber,
             String type,
             List<MsgToL1> messagesSent,
             List<Event> events)?
         deployAccountTxnReceipt,
+<<<<<<< HEAD
     TResult Function(Felt transactionHash, ActualFee actualFee, String? type,
             List<MsgToL1> messagesSent, List<Event> events)?
+=======
+    TResult Function(
+            Felt transactionHash,
+            ActualFee actualFee,
+            String? type,
+            List<MsgToL1> messagesSent,
+            List<Event> events,
+            Felt contractAddress)?
+>>>>>>> 484f217 (`read_provider_test` migrate to devnet (#384))
         pendingDeployTxnReceipt,
     TResult Function(Felt transactionHash, ActualFee actualFee, String? type,
             List<MsgToL1> messagesSent, List<Event> events)?
@@ -1884,8 +2218,12 @@ abstract class DeclareTxnReceipt implements TxnReceipt {
   const factory DeclareTxnReceipt(
       {required final Felt transactionHash,
       required final ActualFee actualFee,
+<<<<<<< HEAD
       required final String execution_status,
       required final String finality_status,
+=======
+      required final String status,
+>>>>>>> 484f217 (`read_provider_test` migrate to devnet (#384))
       final Felt? blockHash,
       final int? blockNumber,
       required final String type,
@@ -1899,8 +2237,12 @@ abstract class DeclareTxnReceipt implements TxnReceipt {
   Felt get transactionHash;
   @override
   ActualFee get actualFee;
+<<<<<<< HEAD
   String get execution_status;
   String get finality_status;
+=======
+  String get status;
+>>>>>>> 484f217 (`read_provider_test` migrate to devnet (#384))
   Felt? get blockHash;
   int? get blockNumber;
   @override
@@ -1926,14 +2268,22 @@ abstract class _$$L1HandlerTxnReceiptImplCopyWith<$Res>
   $Res call(
       {Felt transactionHash,
       ActualFee actualFee,
+<<<<<<< HEAD
       String execution_status,
       String finality_status,
+=======
+      String status,
+>>>>>>> 484f217 (`read_provider_test` migrate to devnet (#384))
       Felt? blockHash,
       int? blockNumber,
       String type,
       List<MsgToL1> messagesSent,
       List<Event> events});
 
+<<<<<<< HEAD
+=======
+  @override
+>>>>>>> 484f217 (`read_provider_test` migrate to devnet (#384))
   $ActualFeeCopyWith<$Res> get actualFee;
 }
 
@@ -1967,6 +2317,7 @@ class __$$L1HandlerTxnReceiptImplCopyWithImpl<$Res>
           ? _value.actualFee
           : actualFee // ignore: cast_nullable_to_non_nullable
               as ActualFee,
+<<<<<<< HEAD
       execution_status: null == execution_status
           ? _value.execution_status
           : execution_status // ignore: cast_nullable_to_non_nullable
@@ -1974,6 +2325,11 @@ class __$$L1HandlerTxnReceiptImplCopyWithImpl<$Res>
       finality_status: null == finality_status
           ? _value.finality_status
           : finality_status // ignore: cast_nullable_to_non_nullable
+=======
+      status: null == status
+          ? _value.status
+          : status // ignore: cast_nullable_to_non_nullable
+>>>>>>> 484f217 (`read_provider_test` migrate to devnet (#384))
               as String,
       blockHash: freezed == blockHash
           ? _value.blockHash
@@ -2116,9 +2472,14 @@ class _$L1HandlerTxnReceiptImpl implements L1HandlerTxnReceipt {
   TResult when<TResult extends Object?>({
     required TResult Function(
             Felt transactionHash,
+<<<<<<< HEAD
             String actualFee,
             String execution_status,
             String finality_status,
+=======
+            ActualFee actualFee,
+            String status,
+>>>>>>> 484f217 (`read_provider_test` migrate to devnet (#384))
             Felt? blockHash,
             int? blockNumber,
             String type,
@@ -2128,8 +2489,12 @@ class _$L1HandlerTxnReceiptImpl implements L1HandlerTxnReceipt {
     required TResult Function(
             Felt transactionHash,
             ActualFee actualFee,
+<<<<<<< HEAD
             String execution_status,
             String finality_status,
+=======
+            String status,
+>>>>>>> 484f217 (`read_provider_test` migrate to devnet (#384))
             Felt? blockHash,
             int? blockNumber,
             String type,
@@ -2139,8 +2504,12 @@ class _$L1HandlerTxnReceiptImpl implements L1HandlerTxnReceipt {
     required TResult Function(
             Felt transactionHash,
             ActualFee actualFee,
+<<<<<<< HEAD
             String execution_status,
             String finality_status,
+=======
+            String status,
+>>>>>>> 484f217 (`read_provider_test` migrate to devnet (#384))
             Felt? blockHash,
             int? blockNumber,
             String type,
@@ -2150,8 +2519,12 @@ class _$L1HandlerTxnReceiptImpl implements L1HandlerTxnReceipt {
     required TResult Function(
             Felt transactionHash,
             ActualFee actualFee,
+<<<<<<< HEAD
             String execution_status,
             String finality_status,
+=======
+            String status,
+>>>>>>> 484f217 (`read_provider_test` migrate to devnet (#384))
             Felt? blockHash,
             int? blockNumber,
             String type,
@@ -2161,16 +2534,30 @@ class _$L1HandlerTxnReceiptImpl implements L1HandlerTxnReceipt {
     required TResult Function(
             Felt transactionHash,
             ActualFee actualFee,
+<<<<<<< HEAD
             String execution_status,
             String finality_status,
+=======
+            String status,
+>>>>>>> 484f217 (`read_provider_test` migrate to devnet (#384))
             Felt? blockHash,
             int? blockNumber,
             String type,
             List<MsgToL1> messagesSent,
             List<Event> events)
         deployAccountTxnReceipt,
+<<<<<<< HEAD
     required TResult Function(Felt transactionHash, ActualFee actualFee,
             String? type, List<MsgToL1> messagesSent, List<Event> events)
+=======
+    required TResult Function(
+            Felt transactionHash,
+            ActualFee actualFee,
+            String? type,
+            List<MsgToL1> messagesSent,
+            List<Event> events,
+            Felt contractAddress)
+>>>>>>> 484f217 (`read_provider_test` migrate to devnet (#384))
         pendingDeployTxnReceipt,
     required TResult Function(Felt transactionHash, ActualFee actualFee,
             String? type, List<MsgToL1> messagesSent, List<Event> events)
@@ -2185,9 +2572,14 @@ class _$L1HandlerTxnReceiptImpl implements L1HandlerTxnReceipt {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(
             Felt transactionHash,
+<<<<<<< HEAD
             String actualFee,
             String execution_status,
             String finality_status,
+=======
+            ActualFee actualFee,
+            String status,
+>>>>>>> 484f217 (`read_provider_test` migrate to devnet (#384))
             Felt? blockHash,
             int? blockNumber,
             String type,
@@ -2197,8 +2589,12 @@ class _$L1HandlerTxnReceiptImpl implements L1HandlerTxnReceipt {
     TResult? Function(
             Felt transactionHash,
             ActualFee actualFee,
+<<<<<<< HEAD
             String execution_status,
             String finality_status,
+=======
+            String status,
+>>>>>>> 484f217 (`read_provider_test` migrate to devnet (#384))
             Felt? blockHash,
             int? blockNumber,
             String type,
@@ -2208,8 +2604,12 @@ class _$L1HandlerTxnReceiptImpl implements L1HandlerTxnReceipt {
     TResult? Function(
             Felt transactionHash,
             ActualFee actualFee,
+<<<<<<< HEAD
             String execution_status,
             String finality_status,
+=======
+            String status,
+>>>>>>> 484f217 (`read_provider_test` migrate to devnet (#384))
             Felt? blockHash,
             int? blockNumber,
             String type,
@@ -2219,8 +2619,12 @@ class _$L1HandlerTxnReceiptImpl implements L1HandlerTxnReceipt {
     TResult? Function(
             Felt transactionHash,
             ActualFee actualFee,
+<<<<<<< HEAD
             String execution_status,
             String finality_status,
+=======
+            String status,
+>>>>>>> 484f217 (`read_provider_test` migrate to devnet (#384))
             Felt? blockHash,
             int? blockNumber,
             String type,
@@ -2230,16 +2634,30 @@ class _$L1HandlerTxnReceiptImpl implements L1HandlerTxnReceipt {
     TResult? Function(
             Felt transactionHash,
             ActualFee actualFee,
+<<<<<<< HEAD
             String execution_status,
             String finality_status,
+=======
+            String status,
+>>>>>>> 484f217 (`read_provider_test` migrate to devnet (#384))
             Felt? blockHash,
             int? blockNumber,
             String type,
             List<MsgToL1> messagesSent,
             List<Event> events)?
         deployAccountTxnReceipt,
+<<<<<<< HEAD
     TResult? Function(Felt transactionHash, ActualFee actualFee, String? type,
             List<MsgToL1> messagesSent, List<Event> events)?
+=======
+    TResult? Function(
+            Felt transactionHash,
+            ActualFee actualFee,
+            String? type,
+            List<MsgToL1> messagesSent,
+            List<Event> events,
+            Felt contractAddress)?
+>>>>>>> 484f217 (`read_provider_test` migrate to devnet (#384))
         pendingDeployTxnReceipt,
     TResult? Function(Felt transactionHash, ActualFee actualFee, String? type,
             List<MsgToL1> messagesSent, List<Event> events)?
@@ -2262,9 +2680,14 @@ class _$L1HandlerTxnReceiptImpl implements L1HandlerTxnReceipt {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(
             Felt transactionHash,
+<<<<<<< HEAD
             String actualFee,
             String execution_status,
             String finality_status,
+=======
+            ActualFee actualFee,
+            String status,
+>>>>>>> 484f217 (`read_provider_test` migrate to devnet (#384))
             Felt? blockHash,
             int? blockNumber,
             String type,
@@ -2274,8 +2697,12 @@ class _$L1HandlerTxnReceiptImpl implements L1HandlerTxnReceipt {
     TResult Function(
             Felt transactionHash,
             ActualFee actualFee,
+<<<<<<< HEAD
             String execution_status,
             String finality_status,
+=======
+            String status,
+>>>>>>> 484f217 (`read_provider_test` migrate to devnet (#384))
             Felt? blockHash,
             int? blockNumber,
             String type,
@@ -2285,8 +2712,12 @@ class _$L1HandlerTxnReceiptImpl implements L1HandlerTxnReceipt {
     TResult Function(
             Felt transactionHash,
             ActualFee actualFee,
+<<<<<<< HEAD
             String execution_status,
             String finality_status,
+=======
+            String status,
+>>>>>>> 484f217 (`read_provider_test` migrate to devnet (#384))
             Felt? blockHash,
             int? blockNumber,
             String type,
@@ -2296,8 +2727,12 @@ class _$L1HandlerTxnReceiptImpl implements L1HandlerTxnReceipt {
     TResult Function(
             Felt transactionHash,
             ActualFee actualFee,
+<<<<<<< HEAD
             String execution_status,
             String finality_status,
+=======
+            String status,
+>>>>>>> 484f217 (`read_provider_test` migrate to devnet (#384))
             Felt? blockHash,
             int? blockNumber,
             String type,
@@ -2307,16 +2742,30 @@ class _$L1HandlerTxnReceiptImpl implements L1HandlerTxnReceipt {
     TResult Function(
             Felt transactionHash,
             ActualFee actualFee,
+<<<<<<< HEAD
             String execution_status,
             String finality_status,
+=======
+            String status,
+>>>>>>> 484f217 (`read_provider_test` migrate to devnet (#384))
             Felt? blockHash,
             int? blockNumber,
             String type,
             List<MsgToL1> messagesSent,
             List<Event> events)?
         deployAccountTxnReceipt,
+<<<<<<< HEAD
     TResult Function(Felt transactionHash, ActualFee actualFee, String? type,
             List<MsgToL1> messagesSent, List<Event> events)?
+=======
+    TResult Function(
+            Felt transactionHash,
+            ActualFee actualFee,
+            String? type,
+            List<MsgToL1> messagesSent,
+            List<Event> events,
+            Felt contractAddress)?
+>>>>>>> 484f217 (`read_provider_test` migrate to devnet (#384))
         pendingDeployTxnReceipt,
     TResult Function(Felt transactionHash, ActualFee actualFee, String? type,
             List<MsgToL1> messagesSent, List<Event> events)?
@@ -2393,8 +2842,12 @@ abstract class L1HandlerTxnReceipt implements TxnReceipt {
   const factory L1HandlerTxnReceipt(
       {required final Felt transactionHash,
       required final ActualFee actualFee,
+<<<<<<< HEAD
       required final String execution_status,
       required final String finality_status,
+=======
+      required final String status,
+>>>>>>> 484f217 (`read_provider_test` migrate to devnet (#384))
       final Felt? blockHash,
       final int? blockNumber,
       required final String type,
@@ -2408,8 +2861,12 @@ abstract class L1HandlerTxnReceipt implements TxnReceipt {
   Felt get transactionHash;
   @override
   ActualFee get actualFee;
+<<<<<<< HEAD
   String get execution_status;
   String get finality_status;
+=======
+  String get status;
+>>>>>>> 484f217 (`read_provider_test` migrate to devnet (#384))
   Felt? get blockHash;
   int? get blockNumber;
   @override
@@ -2435,14 +2892,25 @@ abstract class _$$DeployTxnReceiptImplCopyWith<$Res>
   $Res call(
       {Felt transactionHash,
       ActualFee actualFee,
+<<<<<<< HEAD
       String execution_status,
       String finality_status,
+=======
+      String status,
+>>>>>>> 484f217 (`read_provider_test` migrate to devnet (#384))
       Felt? blockHash,
       int? blockNumber,
       String type,
       List<MsgToL1> messagesSent,
+<<<<<<< HEAD
       List<Event> events});
 
+=======
+      List<Event> events,
+      Felt contractAddress});
+
+  @override
+>>>>>>> 484f217 (`read_provider_test` migrate to devnet (#384))
   $ActualFeeCopyWith<$Res> get actualFee;
 }
 
@@ -2476,6 +2944,7 @@ class __$$DeployTxnReceiptImplCopyWithImpl<$Res>
           ? _value.actualFee
           : actualFee // ignore: cast_nullable_to_non_nullable
               as ActualFee,
+<<<<<<< HEAD
       execution_status: null == execution_status
           ? _value.execution_status
           : execution_status // ignore: cast_nullable_to_non_nullable
@@ -2483,6 +2952,11 @@ class __$$DeployTxnReceiptImplCopyWithImpl<$Res>
       finality_status: null == finality_status
           ? _value.finality_status
           : finality_status // ignore: cast_nullable_to_non_nullable
+=======
+      status: null == status
+          ? _value.status
+          : status // ignore: cast_nullable_to_non_nullable
+>>>>>>> 484f217 (`read_provider_test` migrate to devnet (#384))
               as String,
       blockHash: freezed == blockHash
           ? _value.blockHash
@@ -2625,9 +3099,14 @@ class _$DeployTxnReceiptImpl implements DeployTxnReceipt {
   TResult when<TResult extends Object?>({
     required TResult Function(
             Felt transactionHash,
+<<<<<<< HEAD
             String actualFee,
             String execution_status,
             String finality_status,
+=======
+            ActualFee actualFee,
+            String status,
+>>>>>>> 484f217 (`read_provider_test` migrate to devnet (#384))
             Felt? blockHash,
             int? blockNumber,
             String type,
@@ -2637,8 +3116,12 @@ class _$DeployTxnReceiptImpl implements DeployTxnReceipt {
     required TResult Function(
             Felt transactionHash,
             ActualFee actualFee,
+<<<<<<< HEAD
             String execution_status,
             String finality_status,
+=======
+            String status,
+>>>>>>> 484f217 (`read_provider_test` migrate to devnet (#384))
             Felt? blockHash,
             int? blockNumber,
             String type,
@@ -2648,8 +3131,12 @@ class _$DeployTxnReceiptImpl implements DeployTxnReceipt {
     required TResult Function(
             Felt transactionHash,
             ActualFee actualFee,
+<<<<<<< HEAD
             String execution_status,
             String finality_status,
+=======
+            String status,
+>>>>>>> 484f217 (`read_provider_test` migrate to devnet (#384))
             Felt? blockHash,
             int? blockNumber,
             String type,
@@ -2659,8 +3146,12 @@ class _$DeployTxnReceiptImpl implements DeployTxnReceipt {
     required TResult Function(
             Felt transactionHash,
             ActualFee actualFee,
+<<<<<<< HEAD
             String execution_status,
             String finality_status,
+=======
+            String status,
+>>>>>>> 484f217 (`read_provider_test` migrate to devnet (#384))
             Felt? blockHash,
             int? blockNumber,
             String type,
@@ -2670,16 +3161,30 @@ class _$DeployTxnReceiptImpl implements DeployTxnReceipt {
     required TResult Function(
             Felt transactionHash,
             ActualFee actualFee,
+<<<<<<< HEAD
             String execution_status,
             String finality_status,
+=======
+            String status,
+>>>>>>> 484f217 (`read_provider_test` migrate to devnet (#384))
             Felt? blockHash,
             int? blockNumber,
             String type,
             List<MsgToL1> messagesSent,
             List<Event> events)
         deployAccountTxnReceipt,
+<<<<<<< HEAD
     required TResult Function(Felt transactionHash, ActualFee actualFee,
             String? type, List<MsgToL1> messagesSent, List<Event> events)
+=======
+    required TResult Function(
+            Felt transactionHash,
+            ActualFee actualFee,
+            String? type,
+            List<MsgToL1> messagesSent,
+            List<Event> events,
+            Felt contractAddress)
+>>>>>>> 484f217 (`read_provider_test` migrate to devnet (#384))
         pendingDeployTxnReceipt,
     required TResult Function(Felt transactionHash, ActualFee actualFee,
             String? type, List<MsgToL1> messagesSent, List<Event> events)
@@ -2694,9 +3199,14 @@ class _$DeployTxnReceiptImpl implements DeployTxnReceipt {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(
             Felt transactionHash,
+<<<<<<< HEAD
             String actualFee,
             String execution_status,
             String finality_status,
+=======
+            ActualFee actualFee,
+            String status,
+>>>>>>> 484f217 (`read_provider_test` migrate to devnet (#384))
             Felt? blockHash,
             int? blockNumber,
             String type,
@@ -2706,8 +3216,12 @@ class _$DeployTxnReceiptImpl implements DeployTxnReceipt {
     TResult? Function(
             Felt transactionHash,
             ActualFee actualFee,
+<<<<<<< HEAD
             String execution_status,
             String finality_status,
+=======
+            String status,
+>>>>>>> 484f217 (`read_provider_test` migrate to devnet (#384))
             Felt? blockHash,
             int? blockNumber,
             String type,
@@ -2717,8 +3231,12 @@ class _$DeployTxnReceiptImpl implements DeployTxnReceipt {
     TResult? Function(
             Felt transactionHash,
             ActualFee actualFee,
+<<<<<<< HEAD
             String execution_status,
             String finality_status,
+=======
+            String status,
+>>>>>>> 484f217 (`read_provider_test` migrate to devnet (#384))
             Felt? blockHash,
             int? blockNumber,
             String type,
@@ -2728,8 +3246,12 @@ class _$DeployTxnReceiptImpl implements DeployTxnReceipt {
     TResult? Function(
             Felt transactionHash,
             ActualFee actualFee,
+<<<<<<< HEAD
             String execution_status,
             String finality_status,
+=======
+            String status,
+>>>>>>> 484f217 (`read_provider_test` migrate to devnet (#384))
             Felt? blockHash,
             int? blockNumber,
             String type,
@@ -2739,16 +3261,30 @@ class _$DeployTxnReceiptImpl implements DeployTxnReceipt {
     TResult? Function(
             Felt transactionHash,
             ActualFee actualFee,
+<<<<<<< HEAD
             String execution_status,
             String finality_status,
+=======
+            String status,
+>>>>>>> 484f217 (`read_provider_test` migrate to devnet (#384))
             Felt? blockHash,
             int? blockNumber,
             String type,
             List<MsgToL1> messagesSent,
             List<Event> events)?
         deployAccountTxnReceipt,
+<<<<<<< HEAD
     TResult? Function(Felt transactionHash, ActualFee actualFee, String? type,
             List<MsgToL1> messagesSent, List<Event> events)?
+=======
+    TResult? Function(
+            Felt transactionHash,
+            ActualFee actualFee,
+            String? type,
+            List<MsgToL1> messagesSent,
+            List<Event> events,
+            Felt contractAddress)?
+>>>>>>> 484f217 (`read_provider_test` migrate to devnet (#384))
         pendingDeployTxnReceipt,
     TResult? Function(Felt transactionHash, ActualFee actualFee, String? type,
             List<MsgToL1> messagesSent, List<Event> events)?
@@ -2763,9 +3299,14 @@ class _$DeployTxnReceiptImpl implements DeployTxnReceipt {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(
             Felt transactionHash,
+<<<<<<< HEAD
             String actualFee,
             String execution_status,
             String finality_status,
+=======
+            ActualFee actualFee,
+            String status,
+>>>>>>> 484f217 (`read_provider_test` migrate to devnet (#384))
             Felt? blockHash,
             int? blockNumber,
             String type,
@@ -2775,8 +3316,12 @@ class _$DeployTxnReceiptImpl implements DeployTxnReceipt {
     TResult Function(
             Felt transactionHash,
             ActualFee actualFee,
+<<<<<<< HEAD
             String execution_status,
             String finality_status,
+=======
+            String status,
+>>>>>>> 484f217 (`read_provider_test` migrate to devnet (#384))
             Felt? blockHash,
             int? blockNumber,
             String type,
@@ -2786,8 +3331,12 @@ class _$DeployTxnReceiptImpl implements DeployTxnReceipt {
     TResult Function(
             Felt transactionHash,
             ActualFee actualFee,
+<<<<<<< HEAD
             String execution_status,
             String finality_status,
+=======
+            String status,
+>>>>>>> 484f217 (`read_provider_test` migrate to devnet (#384))
             Felt? blockHash,
             int? blockNumber,
             String type,
@@ -2797,8 +3346,12 @@ class _$DeployTxnReceiptImpl implements DeployTxnReceipt {
     TResult Function(
             Felt transactionHash,
             ActualFee actualFee,
+<<<<<<< HEAD
             String execution_status,
             String finality_status,
+=======
+            String status,
+>>>>>>> 484f217 (`read_provider_test` migrate to devnet (#384))
             Felt? blockHash,
             int? blockNumber,
             String type,
@@ -2808,16 +3361,30 @@ class _$DeployTxnReceiptImpl implements DeployTxnReceipt {
     TResult Function(
             Felt transactionHash,
             ActualFee actualFee,
+<<<<<<< HEAD
             String execution_status,
             String finality_status,
+=======
+            String status,
+>>>>>>> 484f217 (`read_provider_test` migrate to devnet (#384))
             Felt? blockHash,
             int? blockNumber,
             String type,
             List<MsgToL1> messagesSent,
             List<Event> events)?
         deployAccountTxnReceipt,
+<<<<<<< HEAD
     TResult Function(Felt transactionHash, ActualFee actualFee, String? type,
             List<MsgToL1> messagesSent, List<Event> events)?
+=======
+    TResult Function(
+            Felt transactionHash,
+            ActualFee actualFee,
+            String? type,
+            List<MsgToL1> messagesSent,
+            List<Event> events,
+            Felt contractAddress)?
+>>>>>>> 484f217 (`read_provider_test` migrate to devnet (#384))
         pendingDeployTxnReceipt,
     TResult Function(Felt transactionHash, ActualFee actualFee, String? type,
             List<MsgToL1> messagesSent, List<Event> events)?
@@ -2894,8 +3461,12 @@ abstract class DeployTxnReceipt implements TxnReceipt {
   const factory DeployTxnReceipt(
       {required final Felt transactionHash,
       required final ActualFee actualFee,
+<<<<<<< HEAD
       required final String execution_status,
       required final String finality_status,
+=======
+      required final String status,
+>>>>>>> 484f217 (`read_provider_test` migrate to devnet (#384))
       final Felt? blockHash,
       final int? blockNumber,
       required final String type,
@@ -2909,8 +3480,12 @@ abstract class DeployTxnReceipt implements TxnReceipt {
   Felt get transactionHash;
   @override
   ActualFee get actualFee;
+<<<<<<< HEAD
   String get execution_status;
   String get finality_status;
+=======
+  String get status;
+>>>>>>> 484f217 (`read_provider_test` migrate to devnet (#384))
   Felt? get blockHash;
   int? get blockNumber;
   @override
@@ -2937,14 +3512,25 @@ abstract class _$$DeployAccountTxnReceiptImplCopyWith<$Res>
   $Res call(
       {Felt transactionHash,
       ActualFee actualFee,
+<<<<<<< HEAD
       String execution_status,
       String finality_status,
+=======
+      String status,
+>>>>>>> 484f217 (`read_provider_test` migrate to devnet (#384))
       Felt? blockHash,
       int? blockNumber,
       String type,
       List<MsgToL1> messagesSent,
+<<<<<<< HEAD
       List<Event> events});
 
+=======
+      List<Event> events,
+      Felt contractAddress});
+
+  @override
+>>>>>>> 484f217 (`read_provider_test` migrate to devnet (#384))
   $ActualFeeCopyWith<$Res> get actualFee;
 }
 
@@ -2979,6 +3565,7 @@ class __$$DeployAccountTxnReceiptImplCopyWithImpl<$Res>
           ? _value.actualFee
           : actualFee // ignore: cast_nullable_to_non_nullable
               as ActualFee,
+<<<<<<< HEAD
       execution_status: null == execution_status
           ? _value.execution_status
           : execution_status // ignore: cast_nullable_to_non_nullable
@@ -2986,6 +3573,11 @@ class __$$DeployAccountTxnReceiptImplCopyWithImpl<$Res>
       finality_status: null == finality_status
           ? _value.finality_status
           : finality_status // ignore: cast_nullable_to_non_nullable
+=======
+      status: null == status
+          ? _value.status
+          : status // ignore: cast_nullable_to_non_nullable
+>>>>>>> 484f217 (`read_provider_test` migrate to devnet (#384))
               as String,
       blockHash: freezed == blockHash
           ? _value.blockHash
@@ -3128,9 +3720,14 @@ class _$DeployAccountTxnReceiptImpl implements DeployAccountTxnReceipt {
   TResult when<TResult extends Object?>({
     required TResult Function(
             Felt transactionHash,
+<<<<<<< HEAD
             String actualFee,
             String execution_status,
             String finality_status,
+=======
+            ActualFee actualFee,
+            String status,
+>>>>>>> 484f217 (`read_provider_test` migrate to devnet (#384))
             Felt? blockHash,
             int? blockNumber,
             String type,
@@ -3140,8 +3737,12 @@ class _$DeployAccountTxnReceiptImpl implements DeployAccountTxnReceipt {
     required TResult Function(
             Felt transactionHash,
             ActualFee actualFee,
+<<<<<<< HEAD
             String execution_status,
             String finality_status,
+=======
+            String status,
+>>>>>>> 484f217 (`read_provider_test` migrate to devnet (#384))
             Felt? blockHash,
             int? blockNumber,
             String type,
@@ -3151,8 +3752,12 @@ class _$DeployAccountTxnReceiptImpl implements DeployAccountTxnReceipt {
     required TResult Function(
             Felt transactionHash,
             ActualFee actualFee,
+<<<<<<< HEAD
             String execution_status,
             String finality_status,
+=======
+            String status,
+>>>>>>> 484f217 (`read_provider_test` migrate to devnet (#384))
             Felt? blockHash,
             int? blockNumber,
             String type,
@@ -3162,8 +3767,12 @@ class _$DeployAccountTxnReceiptImpl implements DeployAccountTxnReceipt {
     required TResult Function(
             Felt transactionHash,
             ActualFee actualFee,
+<<<<<<< HEAD
             String execution_status,
             String finality_status,
+=======
+            String status,
+>>>>>>> 484f217 (`read_provider_test` migrate to devnet (#384))
             Felt? blockHash,
             int? blockNumber,
             String type,
@@ -3173,16 +3782,30 @@ class _$DeployAccountTxnReceiptImpl implements DeployAccountTxnReceipt {
     required TResult Function(
             Felt transactionHash,
             ActualFee actualFee,
+<<<<<<< HEAD
             String execution_status,
             String finality_status,
+=======
+            String status,
+>>>>>>> 484f217 (`read_provider_test` migrate to devnet (#384))
             Felt? blockHash,
             int? blockNumber,
             String type,
             List<MsgToL1> messagesSent,
             List<Event> events)
         deployAccountTxnReceipt,
+<<<<<<< HEAD
     required TResult Function(Felt transactionHash, ActualFee actualFee,
             String? type, List<MsgToL1> messagesSent, List<Event> events)
+=======
+    required TResult Function(
+            Felt transactionHash,
+            ActualFee actualFee,
+            String? type,
+            List<MsgToL1> messagesSent,
+            List<Event> events,
+            Felt contractAddress)
+>>>>>>> 484f217 (`read_provider_test` migrate to devnet (#384))
         pendingDeployTxnReceipt,
     required TResult Function(Felt transactionHash, ActualFee actualFee,
             String? type, List<MsgToL1> messagesSent, List<Event> events)
@@ -3197,9 +3820,14 @@ class _$DeployAccountTxnReceiptImpl implements DeployAccountTxnReceipt {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(
             Felt transactionHash,
+<<<<<<< HEAD
             String actualFee,
             String execution_status,
             String finality_status,
+=======
+            ActualFee actualFee,
+            String status,
+>>>>>>> 484f217 (`read_provider_test` migrate to devnet (#384))
             Felt? blockHash,
             int? blockNumber,
             String type,
@@ -3209,8 +3837,12 @@ class _$DeployAccountTxnReceiptImpl implements DeployAccountTxnReceipt {
     TResult? Function(
             Felt transactionHash,
             ActualFee actualFee,
+<<<<<<< HEAD
             String execution_status,
             String finality_status,
+=======
+            String status,
+>>>>>>> 484f217 (`read_provider_test` migrate to devnet (#384))
             Felt? blockHash,
             int? blockNumber,
             String type,
@@ -3220,8 +3852,12 @@ class _$DeployAccountTxnReceiptImpl implements DeployAccountTxnReceipt {
     TResult? Function(
             Felt transactionHash,
             ActualFee actualFee,
+<<<<<<< HEAD
             String execution_status,
             String finality_status,
+=======
+            String status,
+>>>>>>> 484f217 (`read_provider_test` migrate to devnet (#384))
             Felt? blockHash,
             int? blockNumber,
             String type,
@@ -3231,8 +3867,12 @@ class _$DeployAccountTxnReceiptImpl implements DeployAccountTxnReceipt {
     TResult? Function(
             Felt transactionHash,
             ActualFee actualFee,
+<<<<<<< HEAD
             String execution_status,
             String finality_status,
+=======
+            String status,
+>>>>>>> 484f217 (`read_provider_test` migrate to devnet (#384))
             Felt? blockHash,
             int? blockNumber,
             String type,
@@ -3242,16 +3882,30 @@ class _$DeployAccountTxnReceiptImpl implements DeployAccountTxnReceipt {
     TResult? Function(
             Felt transactionHash,
             ActualFee actualFee,
+<<<<<<< HEAD
             String execution_status,
             String finality_status,
+=======
+            String status,
+>>>>>>> 484f217 (`read_provider_test` migrate to devnet (#384))
             Felt? blockHash,
             int? blockNumber,
             String type,
             List<MsgToL1> messagesSent,
             List<Event> events)?
         deployAccountTxnReceipt,
+<<<<<<< HEAD
     TResult? Function(Felt transactionHash, ActualFee actualFee, String? type,
             List<MsgToL1> messagesSent, List<Event> events)?
+=======
+    TResult? Function(
+            Felt transactionHash,
+            ActualFee actualFee,
+            String? type,
+            List<MsgToL1> messagesSent,
+            List<Event> events,
+            Felt contractAddress)?
+>>>>>>> 484f217 (`read_provider_test` migrate to devnet (#384))
         pendingDeployTxnReceipt,
     TResult? Function(Felt transactionHash, ActualFee actualFee, String? type,
             List<MsgToL1> messagesSent, List<Event> events)?
@@ -3274,9 +3928,14 @@ class _$DeployAccountTxnReceiptImpl implements DeployAccountTxnReceipt {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(
             Felt transactionHash,
+<<<<<<< HEAD
             String actualFee,
             String execution_status,
             String finality_status,
+=======
+            ActualFee actualFee,
+            String status,
+>>>>>>> 484f217 (`read_provider_test` migrate to devnet (#384))
             Felt? blockHash,
             int? blockNumber,
             String type,
@@ -3286,8 +3945,12 @@ class _$DeployAccountTxnReceiptImpl implements DeployAccountTxnReceipt {
     TResult Function(
             Felt transactionHash,
             ActualFee actualFee,
+<<<<<<< HEAD
             String execution_status,
             String finality_status,
+=======
+            String status,
+>>>>>>> 484f217 (`read_provider_test` migrate to devnet (#384))
             Felt? blockHash,
             int? blockNumber,
             String type,
@@ -3297,8 +3960,12 @@ class _$DeployAccountTxnReceiptImpl implements DeployAccountTxnReceipt {
     TResult Function(
             Felt transactionHash,
             ActualFee actualFee,
+<<<<<<< HEAD
             String execution_status,
             String finality_status,
+=======
+            String status,
+>>>>>>> 484f217 (`read_provider_test` migrate to devnet (#384))
             Felt? blockHash,
             int? blockNumber,
             String type,
@@ -3308,8 +3975,12 @@ class _$DeployAccountTxnReceiptImpl implements DeployAccountTxnReceipt {
     TResult Function(
             Felt transactionHash,
             ActualFee actualFee,
+<<<<<<< HEAD
             String execution_status,
             String finality_status,
+=======
+            String status,
+>>>>>>> 484f217 (`read_provider_test` migrate to devnet (#384))
             Felt? blockHash,
             int? blockNumber,
             String type,
@@ -3319,16 +3990,30 @@ class _$DeployAccountTxnReceiptImpl implements DeployAccountTxnReceipt {
     TResult Function(
             Felt transactionHash,
             ActualFee actualFee,
+<<<<<<< HEAD
             String execution_status,
             String finality_status,
+=======
+            String status,
+>>>>>>> 484f217 (`read_provider_test` migrate to devnet (#384))
             Felt? blockHash,
             int? blockNumber,
             String type,
             List<MsgToL1> messagesSent,
             List<Event> events)?
         deployAccountTxnReceipt,
+<<<<<<< HEAD
     TResult Function(Felt transactionHash, ActualFee actualFee, String? type,
             List<MsgToL1> messagesSent, List<Event> events)?
+=======
+    TResult Function(
+            Felt transactionHash,
+            ActualFee actualFee,
+            String? type,
+            List<MsgToL1> messagesSent,
+            List<Event> events,
+            Felt contractAddress)?
+>>>>>>> 484f217 (`read_provider_test` migrate to devnet (#384))
         pendingDeployTxnReceipt,
     TResult Function(Felt transactionHash, ActualFee actualFee, String? type,
             List<MsgToL1> messagesSent, List<Event> events)?
@@ -3413,8 +4098,12 @@ abstract class DeployAccountTxnReceipt implements TxnReceipt {
   const factory DeployAccountTxnReceipt(
       {required final Felt transactionHash,
       required final ActualFee actualFee,
+<<<<<<< HEAD
       required final String execution_status,
       required final String finality_status,
+=======
+      required final String status,
+>>>>>>> 484f217 (`read_provider_test` migrate to devnet (#384))
       final Felt? blockHash,
       final int? blockNumber,
       required final String type,
@@ -3428,8 +4117,12 @@ abstract class DeployAccountTxnReceipt implements TxnReceipt {
   Felt get transactionHash;
   @override
   ActualFee get actualFee;
+<<<<<<< HEAD
   String get execution_status;
   String get finality_status;
+=======
+  String get status;
+>>>>>>> 484f217 (`read_provider_test` migrate to devnet (#384))
   Felt? get blockHash;
   int? get blockNumber;
   @override
@@ -3458,8 +4151,15 @@ abstract class _$$PendingDeployTxnReceiptImplCopyWith<$Res>
       ActualFee actualFee,
       String? type,
       List<MsgToL1> messagesSent,
+<<<<<<< HEAD
       List<Event> events});
 
+=======
+      List<Event> events,
+      Felt contractAddress});
+
+  @override
+>>>>>>> 484f217 (`read_provider_test` migrate to devnet (#384))
   $ActualFeeCopyWith<$Res> get actualFee;
 }
 
@@ -3599,9 +4299,14 @@ class _$PendingDeployTxnReceiptImpl implements PendingDeployTxnReceipt {
   TResult when<TResult extends Object?>({
     required TResult Function(
             Felt transactionHash,
+<<<<<<< HEAD
             String actualFee,
             String execution_status,
             String finality_status,
+=======
+            ActualFee actualFee,
+            String status,
+>>>>>>> 484f217 (`read_provider_test` migrate to devnet (#384))
             Felt? blockHash,
             int? blockNumber,
             String type,
@@ -3611,8 +4316,12 @@ class _$PendingDeployTxnReceiptImpl implements PendingDeployTxnReceipt {
     required TResult Function(
             Felt transactionHash,
             ActualFee actualFee,
+<<<<<<< HEAD
             String execution_status,
             String finality_status,
+=======
+            String status,
+>>>>>>> 484f217 (`read_provider_test` migrate to devnet (#384))
             Felt? blockHash,
             int? blockNumber,
             String type,
@@ -3622,8 +4331,12 @@ class _$PendingDeployTxnReceiptImpl implements PendingDeployTxnReceipt {
     required TResult Function(
             Felt transactionHash,
             ActualFee actualFee,
+<<<<<<< HEAD
             String execution_status,
             String finality_status,
+=======
+            String status,
+>>>>>>> 484f217 (`read_provider_test` migrate to devnet (#384))
             Felt? blockHash,
             int? blockNumber,
             String type,
@@ -3633,8 +4346,12 @@ class _$PendingDeployTxnReceiptImpl implements PendingDeployTxnReceipt {
     required TResult Function(
             Felt transactionHash,
             ActualFee actualFee,
+<<<<<<< HEAD
             String execution_status,
             String finality_status,
+=======
+            String status,
+>>>>>>> 484f217 (`read_provider_test` migrate to devnet (#384))
             Felt? blockHash,
             int? blockNumber,
             String type,
@@ -3644,16 +4361,30 @@ class _$PendingDeployTxnReceiptImpl implements PendingDeployTxnReceipt {
     required TResult Function(
             Felt transactionHash,
             ActualFee actualFee,
+<<<<<<< HEAD
             String execution_status,
             String finality_status,
+=======
+            String status,
+>>>>>>> 484f217 (`read_provider_test` migrate to devnet (#384))
             Felt? blockHash,
             int? blockNumber,
             String type,
             List<MsgToL1> messagesSent,
             List<Event> events)
         deployAccountTxnReceipt,
+<<<<<<< HEAD
     required TResult Function(Felt transactionHash, ActualFee actualFee,
             String? type, List<MsgToL1> messagesSent, List<Event> events)
+=======
+    required TResult Function(
+            Felt transactionHash,
+            ActualFee actualFee,
+            String? type,
+            List<MsgToL1> messagesSent,
+            List<Event> events,
+            Felt contractAddress)
+>>>>>>> 484f217 (`read_provider_test` migrate to devnet (#384))
         pendingDeployTxnReceipt,
     required TResult Function(Felt transactionHash, ActualFee actualFee,
             String? type, List<MsgToL1> messagesSent, List<Event> events)
@@ -3668,9 +4399,14 @@ class _$PendingDeployTxnReceiptImpl implements PendingDeployTxnReceipt {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(
             Felt transactionHash,
+<<<<<<< HEAD
             String actualFee,
             String execution_status,
             String finality_status,
+=======
+            ActualFee actualFee,
+            String status,
+>>>>>>> 484f217 (`read_provider_test` migrate to devnet (#384))
             Felt? blockHash,
             int? blockNumber,
             String type,
@@ -3680,8 +4416,12 @@ class _$PendingDeployTxnReceiptImpl implements PendingDeployTxnReceipt {
     TResult? Function(
             Felt transactionHash,
             ActualFee actualFee,
+<<<<<<< HEAD
             String execution_status,
             String finality_status,
+=======
+            String status,
+>>>>>>> 484f217 (`read_provider_test` migrate to devnet (#384))
             Felt? blockHash,
             int? blockNumber,
             String type,
@@ -3691,8 +4431,12 @@ class _$PendingDeployTxnReceiptImpl implements PendingDeployTxnReceipt {
     TResult? Function(
             Felt transactionHash,
             ActualFee actualFee,
+<<<<<<< HEAD
             String execution_status,
             String finality_status,
+=======
+            String status,
+>>>>>>> 484f217 (`read_provider_test` migrate to devnet (#384))
             Felt? blockHash,
             int? blockNumber,
             String type,
@@ -3702,8 +4446,12 @@ class _$PendingDeployTxnReceiptImpl implements PendingDeployTxnReceipt {
     TResult? Function(
             Felt transactionHash,
             ActualFee actualFee,
+<<<<<<< HEAD
             String execution_status,
             String finality_status,
+=======
+            String status,
+>>>>>>> 484f217 (`read_provider_test` migrate to devnet (#384))
             Felt? blockHash,
             int? blockNumber,
             String type,
@@ -3713,16 +4461,30 @@ class _$PendingDeployTxnReceiptImpl implements PendingDeployTxnReceipt {
     TResult? Function(
             Felt transactionHash,
             ActualFee actualFee,
+<<<<<<< HEAD
             String execution_status,
             String finality_status,
+=======
+            String status,
+>>>>>>> 484f217 (`read_provider_test` migrate to devnet (#384))
             Felt? blockHash,
             int? blockNumber,
             String type,
             List<MsgToL1> messagesSent,
             List<Event> events)?
         deployAccountTxnReceipt,
+<<<<<<< HEAD
     TResult? Function(Felt transactionHash, ActualFee actualFee, String? type,
             List<MsgToL1> messagesSent, List<Event> events)?
+=======
+    TResult? Function(
+            Felt transactionHash,
+            ActualFee actualFee,
+            String? type,
+            List<MsgToL1> messagesSent,
+            List<Event> events,
+            Felt contractAddress)?
+>>>>>>> 484f217 (`read_provider_test` migrate to devnet (#384))
         pendingDeployTxnReceipt,
     TResult? Function(Felt transactionHash, ActualFee actualFee, String? type,
             List<MsgToL1> messagesSent, List<Event> events)?
@@ -3737,9 +4499,14 @@ class _$PendingDeployTxnReceiptImpl implements PendingDeployTxnReceipt {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(
             Felt transactionHash,
+<<<<<<< HEAD
             String actualFee,
             String execution_status,
             String finality_status,
+=======
+            ActualFee actualFee,
+            String status,
+>>>>>>> 484f217 (`read_provider_test` migrate to devnet (#384))
             Felt? blockHash,
             int? blockNumber,
             String type,
@@ -3749,8 +4516,12 @@ class _$PendingDeployTxnReceiptImpl implements PendingDeployTxnReceipt {
     TResult Function(
             Felt transactionHash,
             ActualFee actualFee,
+<<<<<<< HEAD
             String execution_status,
             String finality_status,
+=======
+            String status,
+>>>>>>> 484f217 (`read_provider_test` migrate to devnet (#384))
             Felt? blockHash,
             int? blockNumber,
             String type,
@@ -3760,8 +4531,12 @@ class _$PendingDeployTxnReceiptImpl implements PendingDeployTxnReceipt {
     TResult Function(
             Felt transactionHash,
             ActualFee actualFee,
+<<<<<<< HEAD
             String execution_status,
             String finality_status,
+=======
+            String status,
+>>>>>>> 484f217 (`read_provider_test` migrate to devnet (#384))
             Felt? blockHash,
             int? blockNumber,
             String type,
@@ -3771,8 +4546,12 @@ class _$PendingDeployTxnReceiptImpl implements PendingDeployTxnReceipt {
     TResult Function(
             Felt transactionHash,
             ActualFee actualFee,
+<<<<<<< HEAD
             String execution_status,
             String finality_status,
+=======
+            String status,
+>>>>>>> 484f217 (`read_provider_test` migrate to devnet (#384))
             Felt? blockHash,
             int? blockNumber,
             String type,
@@ -3782,16 +4561,30 @@ class _$PendingDeployTxnReceiptImpl implements PendingDeployTxnReceipt {
     TResult Function(
             Felt transactionHash,
             ActualFee actualFee,
+<<<<<<< HEAD
             String execution_status,
             String finality_status,
+=======
+            String status,
+>>>>>>> 484f217 (`read_provider_test` migrate to devnet (#384))
             Felt? blockHash,
             int? blockNumber,
             String type,
             List<MsgToL1> messagesSent,
             List<Event> events)?
         deployAccountTxnReceipt,
+<<<<<<< HEAD
     TResult Function(Felt transactionHash, ActualFee actualFee, String? type,
             List<MsgToL1> messagesSent, List<Event> events)?
+=======
+    TResult Function(
+            Felt transactionHash,
+            ActualFee actualFee,
+            String? type,
+            List<MsgToL1> messagesSent,
+            List<Event> events,
+            Felt contractAddress)?
+>>>>>>> 484f217 (`read_provider_test` migrate to devnet (#384))
         pendingDeployTxnReceipt,
     TResult Function(Felt transactionHash, ActualFee actualFee, String? type,
             List<MsgToL1> messagesSent, List<Event> events)?
@@ -3907,6 +4700,10 @@ abstract class _$$PendingCommonReceiptPropertiesImplCopyWith<$Res>
       List<MsgToL1> messagesSent,
       List<Event> events});
 
+<<<<<<< HEAD
+=======
+  @override
+>>>>>>> 484f217 (`read_provider_test` migrate to devnet (#384))
   $ActualFeeCopyWith<$Res> get actualFee;
 }
 
@@ -4049,9 +4846,14 @@ class _$PendingCommonReceiptPropertiesImpl
   TResult when<TResult extends Object?>({
     required TResult Function(
             Felt transactionHash,
+<<<<<<< HEAD
             String actualFee,
             String execution_status,
             String finality_status,
+=======
+            ActualFee actualFee,
+            String status,
+>>>>>>> 484f217 (`read_provider_test` migrate to devnet (#384))
             Felt? blockHash,
             int? blockNumber,
             String type,
@@ -4061,8 +4863,12 @@ class _$PendingCommonReceiptPropertiesImpl
     required TResult Function(
             Felt transactionHash,
             ActualFee actualFee,
+<<<<<<< HEAD
             String execution_status,
             String finality_status,
+=======
+            String status,
+>>>>>>> 484f217 (`read_provider_test` migrate to devnet (#384))
             Felt? blockHash,
             int? blockNumber,
             String type,
@@ -4072,8 +4878,12 @@ class _$PendingCommonReceiptPropertiesImpl
     required TResult Function(
             Felt transactionHash,
             ActualFee actualFee,
+<<<<<<< HEAD
             String execution_status,
             String finality_status,
+=======
+            String status,
+>>>>>>> 484f217 (`read_provider_test` migrate to devnet (#384))
             Felt? blockHash,
             int? blockNumber,
             String type,
@@ -4083,8 +4893,12 @@ class _$PendingCommonReceiptPropertiesImpl
     required TResult Function(
             Felt transactionHash,
             ActualFee actualFee,
+<<<<<<< HEAD
             String execution_status,
             String finality_status,
+=======
+            String status,
+>>>>>>> 484f217 (`read_provider_test` migrate to devnet (#384))
             Felt? blockHash,
             int? blockNumber,
             String type,
@@ -4094,16 +4908,30 @@ class _$PendingCommonReceiptPropertiesImpl
     required TResult Function(
             Felt transactionHash,
             ActualFee actualFee,
+<<<<<<< HEAD
             String execution_status,
             String finality_status,
+=======
+            String status,
+>>>>>>> 484f217 (`read_provider_test` migrate to devnet (#384))
             Felt? blockHash,
             int? blockNumber,
             String type,
             List<MsgToL1> messagesSent,
             List<Event> events)
         deployAccountTxnReceipt,
+<<<<<<< HEAD
     required TResult Function(Felt transactionHash, ActualFee actualFee,
             String? type, List<MsgToL1> messagesSent, List<Event> events)
+=======
+    required TResult Function(
+            Felt transactionHash,
+            ActualFee actualFee,
+            String? type,
+            List<MsgToL1> messagesSent,
+            List<Event> events,
+            Felt contractAddress)
+>>>>>>> 484f217 (`read_provider_test` migrate to devnet (#384))
         pendingDeployTxnReceipt,
     required TResult Function(Felt transactionHash, ActualFee actualFee,
             String? type, List<MsgToL1> messagesSent, List<Event> events)
@@ -4118,9 +4946,14 @@ class _$PendingCommonReceiptPropertiesImpl
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(
             Felt transactionHash,
+<<<<<<< HEAD
             String actualFee,
             String execution_status,
             String finality_status,
+=======
+            ActualFee actualFee,
+            String status,
+>>>>>>> 484f217 (`read_provider_test` migrate to devnet (#384))
             Felt? blockHash,
             int? blockNumber,
             String type,
@@ -4130,8 +4963,12 @@ class _$PendingCommonReceiptPropertiesImpl
     TResult? Function(
             Felt transactionHash,
             ActualFee actualFee,
+<<<<<<< HEAD
             String execution_status,
             String finality_status,
+=======
+            String status,
+>>>>>>> 484f217 (`read_provider_test` migrate to devnet (#384))
             Felt? blockHash,
             int? blockNumber,
             String type,
@@ -4141,8 +4978,12 @@ class _$PendingCommonReceiptPropertiesImpl
     TResult? Function(
             Felt transactionHash,
             ActualFee actualFee,
+<<<<<<< HEAD
             String execution_status,
             String finality_status,
+=======
+            String status,
+>>>>>>> 484f217 (`read_provider_test` migrate to devnet (#384))
             Felt? blockHash,
             int? blockNumber,
             String type,
@@ -4152,8 +4993,12 @@ class _$PendingCommonReceiptPropertiesImpl
     TResult? Function(
             Felt transactionHash,
             ActualFee actualFee,
+<<<<<<< HEAD
             String execution_status,
             String finality_status,
+=======
+            String status,
+>>>>>>> 484f217 (`read_provider_test` migrate to devnet (#384))
             Felt? blockHash,
             int? blockNumber,
             String type,
@@ -4163,16 +5008,30 @@ class _$PendingCommonReceiptPropertiesImpl
     TResult? Function(
             Felt transactionHash,
             ActualFee actualFee,
+<<<<<<< HEAD
             String execution_status,
             String finality_status,
+=======
+            String status,
+>>>>>>> 484f217 (`read_provider_test` migrate to devnet (#384))
             Felt? blockHash,
             int? blockNumber,
             String type,
             List<MsgToL1> messagesSent,
             List<Event> events)?
         deployAccountTxnReceipt,
+<<<<<<< HEAD
     TResult? Function(Felt transactionHash, ActualFee actualFee, String? type,
             List<MsgToL1> messagesSent, List<Event> events)?
+=======
+    TResult? Function(
+            Felt transactionHash,
+            ActualFee actualFee,
+            String? type,
+            List<MsgToL1> messagesSent,
+            List<Event> events,
+            Felt contractAddress)?
+>>>>>>> 484f217 (`read_provider_test` migrate to devnet (#384))
         pendingDeployTxnReceipt,
     TResult? Function(Felt transactionHash, ActualFee actualFee, String? type,
             List<MsgToL1> messagesSent, List<Event> events)?
@@ -4187,9 +5046,14 @@ class _$PendingCommonReceiptPropertiesImpl
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(
             Felt transactionHash,
+<<<<<<< HEAD
             String actualFee,
             String execution_status,
             String finality_status,
+=======
+            ActualFee actualFee,
+            String status,
+>>>>>>> 484f217 (`read_provider_test` migrate to devnet (#384))
             Felt? blockHash,
             int? blockNumber,
             String type,
@@ -4199,8 +5063,12 @@ class _$PendingCommonReceiptPropertiesImpl
     TResult Function(
             Felt transactionHash,
             ActualFee actualFee,
+<<<<<<< HEAD
             String execution_status,
             String finality_status,
+=======
+            String status,
+>>>>>>> 484f217 (`read_provider_test` migrate to devnet (#384))
             Felt? blockHash,
             int? blockNumber,
             String type,
@@ -4210,8 +5078,12 @@ class _$PendingCommonReceiptPropertiesImpl
     TResult Function(
             Felt transactionHash,
             ActualFee actualFee,
+<<<<<<< HEAD
             String execution_status,
             String finality_status,
+=======
+            String status,
+>>>>>>> 484f217 (`read_provider_test` migrate to devnet (#384))
             Felt? blockHash,
             int? blockNumber,
             String type,
@@ -4221,8 +5093,12 @@ class _$PendingCommonReceiptPropertiesImpl
     TResult Function(
             Felt transactionHash,
             ActualFee actualFee,
+<<<<<<< HEAD
             String execution_status,
             String finality_status,
+=======
+            String status,
+>>>>>>> 484f217 (`read_provider_test` migrate to devnet (#384))
             Felt? blockHash,
             int? blockNumber,
             String type,
@@ -4232,16 +5108,30 @@ class _$PendingCommonReceiptPropertiesImpl
     TResult Function(
             Felt transactionHash,
             ActualFee actualFee,
+<<<<<<< HEAD
             String execution_status,
             String finality_status,
+=======
+            String status,
+>>>>>>> 484f217 (`read_provider_test` migrate to devnet (#384))
             Felt? blockHash,
             int? blockNumber,
             String type,
             List<MsgToL1> messagesSent,
             List<Event> events)?
         deployAccountTxnReceipt,
+<<<<<<< HEAD
     TResult Function(Felt transactionHash, ActualFee actualFee, String? type,
             List<MsgToL1> messagesSent, List<Event> events)?
+=======
+    TResult Function(
+            Felt transactionHash,
+            ActualFee actualFee,
+            String? type,
+            List<MsgToL1> messagesSent,
+            List<Event> events,
+            Felt contractAddress)?
+>>>>>>> 484f217 (`read_provider_test` migrate to devnet (#384))
         pendingDeployTxnReceipt,
     TResult Function(Felt transactionHash, ActualFee actualFee, String? type,
             List<MsgToL1> messagesSent, List<Event> events)?

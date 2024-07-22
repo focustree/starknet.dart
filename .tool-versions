@@ -3,7 +3,11 @@ action-validator 0.6.0
 
 starkli 0.2.9
 <<<<<<< HEAD
+<<<<<<< HEAD
 starknet-devnet 0.0.7
 =======
 starknet-devnet 0.0.5
 >>>>>>> f442452 (Install starknet-devnet with asdf)
+=======
+starknet-devnet 0.0.7
+>>>>>>> 484f217 (`read_provider_test` migrate to devnet (#384))
