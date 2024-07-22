@@ -34,13 +34,29 @@ Map<String, dynamic> _$$GetTransactionReceiptErrorImplToJson(
       'starkNetRuntimeTypeToRemove': instance.$type,
     };
 
+_$ActualFeeImpl _$$ActualFeeImplFromJson(Map<String, dynamic> json) =>
+    _$ActualFeeImpl(
+      amount: Felt.fromJson(json['amount'] as String),
+      unit: json['unit'] as String,
+    );
+
+Map<String, dynamic> _$$ActualFeeImplToJson(_$ActualFeeImpl instance) =>
+    <String, dynamic>{
+      'amount': instance.amount.toJson(),
+      'unit': instance.unit,
+    };
+
 _$InvokeTxnReceiptImpl _$$InvokeTxnReceiptImplFromJson(
         Map<String, dynamic> json) =>
     _$InvokeTxnReceiptImpl(
       transactionHash: Felt.fromJson(json['transaction_hash'] as String),
       actualFee: ActualFee.fromJson(json['actual_fee'] as Map<String, dynamic>),
+<<<<<<< HEAD
       execution_status: json['execution_status'] as String,
       finality_status: json['finality_status'] as String,
+=======
+      status: json['status'] as String,
+>>>>>>> 484f217 (`read_provider_test` migrate to devnet (#384))
       blockHash: json['block_hash'] == null
           ? null
           : Felt.fromJson(json['block_hash'] as String),
@@ -75,8 +91,12 @@ _$DeclareTxnReceiptImpl _$$DeclareTxnReceiptImplFromJson(
     _$DeclareTxnReceiptImpl(
       transactionHash: Felt.fromJson(json['transaction_hash'] as String),
       actualFee: ActualFee.fromJson(json['actual_fee'] as Map<String, dynamic>),
+<<<<<<< HEAD
       execution_status: json['execution_status'] as String,
       finality_status: json['finality_status'] as String,
+=======
+      status: json['status'] as String,
+>>>>>>> 484f217 (`read_provider_test` migrate to devnet (#384))
       blockHash: json['block_hash'] == null
           ? null
           : Felt.fromJson(json['block_hash'] as String),
@@ -111,8 +131,12 @@ _$L1HandlerTxnReceiptImpl _$$L1HandlerTxnReceiptImplFromJson(
     _$L1HandlerTxnReceiptImpl(
       transactionHash: Felt.fromJson(json['transaction_hash'] as String),
       actualFee: ActualFee.fromJson(json['actual_fee'] as Map<String, dynamic>),
+<<<<<<< HEAD
       execution_status: json['execution_status'] as String,
       finality_status: json['finality_status'] as String,
+=======
+      status: json['status'] as String,
+>>>>>>> 484f217 (`read_provider_test` migrate to devnet (#384))
       blockHash: json['block_hash'] == null
           ? null
           : Felt.fromJson(json['block_hash'] as String),
@@ -147,8 +171,12 @@ _$DeployTxnReceiptImpl _$$DeployTxnReceiptImplFromJson(
     _$DeployTxnReceiptImpl(
       transactionHash: Felt.fromJson(json['transaction_hash'] as String),
       actualFee: ActualFee.fromJson(json['actual_fee'] as Map<String, dynamic>),
+<<<<<<< HEAD
       execution_status: json['execution_status'] as String,
       finality_status: json['finality_status'] as String,
+=======
+      status: json['status'] as String,
+>>>>>>> 484f217 (`read_provider_test` migrate to devnet (#384))
       blockHash: json['block_hash'] == null
           ? null
           : Felt.fromJson(json['block_hash'] as String),
@@ -183,8 +211,12 @@ _$DeployAccountTxnReceiptImpl _$$DeployAccountTxnReceiptImplFromJson(
     _$DeployAccountTxnReceiptImpl(
       transactionHash: Felt.fromJson(json['transaction_hash'] as String),
       actualFee: ActualFee.fromJson(json['actual_fee'] as Map<String, dynamic>),
+<<<<<<< HEAD
       execution_status: json['execution_status'] as String,
       finality_status: json['finality_status'] as String,
+=======
+      status: json['status'] as String,
+>>>>>>> 484f217 (`read_provider_test` migrate to devnet (#384))
       blockHash: json['block_hash'] == null
           ? null
           : Felt.fromJson(json['block_hash'] as String),

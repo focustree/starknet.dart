@@ -22,13 +22,28 @@ class GetTransactionReceipt with _$GetTransactionReceipt {
 }
 
 @freezed
+class ActualFee with _$ActualFee {
+  const factory ActualFee({
+    required Felt amount,
+    required String unit,
+  }) = _ActualFee;
+
+  factory ActualFee.fromJson(Map<String, dynamic> json) =>
+      _$ActualFeeFromJson(json);
+}
+
+@freezed
 class TxnReceipt with _$TxnReceipt {
   const factory TxnReceipt.invokeTxnReceipt({
     // start of COMMON_RECEIPT_PROPERTIES
     required Felt transactionHash,
     required ActualFee actualFee,
+<<<<<<< HEAD
     required String execution_status,
     required String finality_status,
+=======
+    required String status,
+>>>>>>> 484f217 (`read_provider_test` migrate to devnet (#384))
     Felt? blockHash,
     int? blockNumber,
     required String type,
@@ -41,8 +56,12 @@ class TxnReceipt with _$TxnReceipt {
     // start of COMMON_RECEIPT_PROPERTIES
     required Felt transactionHash,
     required ActualFee actualFee,
+<<<<<<< HEAD
     required String execution_status,
     required String finality_status,
+=======
+    required String status,
+>>>>>>> 484f217 (`read_provider_test` migrate to devnet (#384))
     Felt? blockHash,
     int? blockNumber,
     required String type,
@@ -55,8 +74,12 @@ class TxnReceipt with _$TxnReceipt {
     // start of COMMON_RECEIPT_PROPERTIES
     required Felt transactionHash,
     required ActualFee actualFee,
+<<<<<<< HEAD
     required String execution_status,
     required String finality_status,
+=======
+    required String status,
+>>>>>>> 484f217 (`read_provider_test` migrate to devnet (#384))
     Felt? blockHash,
     int? blockNumber,
     required String type,
@@ -69,8 +92,12 @@ class TxnReceipt with _$TxnReceipt {
     // start of COMMON_RECEIPT_PROPERTIES
     required Felt transactionHash,
     required ActualFee actualFee,
+<<<<<<< HEAD
     required String execution_status,
     required String finality_status,
+=======
+    required String status,
+>>>>>>> 484f217 (`read_provider_test` migrate to devnet (#384))
     Felt? blockHash,
     int? blockNumber,
     required String type,
@@ -83,8 +110,12 @@ class TxnReceipt with _$TxnReceipt {
     // start of COMMON_RECEIPT_PROPERTIES
     required Felt transactionHash,
     required ActualFee actualFee,
+<<<<<<< HEAD
     required String execution_status,
     required String finality_status,
+=======
+    required String status,
+>>>>>>> 484f217 (`read_provider_test` migrate to devnet (#384))
     Felt? blockHash,
     int? blockNumber,
     required String type,

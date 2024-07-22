@@ -186,6 +186,7 @@ class Account {
     EstimateFeeRequest estimateFeeRequest = EstimateFeeRequest(
       request: [broadcastedTxn],
       blockId: blockId,
+      simulation_flags: [],
     );
 
     final estimateFeeResponse = await provider.estimateFee(
