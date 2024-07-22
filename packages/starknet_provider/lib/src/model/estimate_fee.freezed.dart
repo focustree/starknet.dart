@@ -415,6 +415,325 @@ abstract class EstimateFeeError implements EstimateFee {
       throw _privateConstructorUsedError;
 }
 
+SimulationFlag _$SimulationFlagFromJson(Map<String, dynamic> json) {
+  switch (json['starkNetRuntimeTypeToRemove']) {
+    case 'skipValidate':
+      return SkipValidate.fromJson(json);
+    case 'skipFeeCharge':
+      return SkipFeeCharge.fromJson(json);
+
+    default:
+      throw CheckedFromJsonException(
+          json,
+          'starkNetRuntimeTypeToRemove',
+          'SimulationFlag',
+          'Invalid union type "${json['starkNetRuntimeTypeToRemove']}"!');
+  }
+}
+
+/// @nodoc
+mixin _$SimulationFlag {
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() skipValidate,
+    required TResult Function() skipFeeCharge,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? skipValidate,
+    TResult? Function()? skipFeeCharge,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? skipValidate,
+    TResult Function()? skipFeeCharge,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(SkipValidate value) skipValidate,
+    required TResult Function(SkipFeeCharge value) skipFeeCharge,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(SkipValidate value)? skipValidate,
+    TResult? Function(SkipFeeCharge value)? skipFeeCharge,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(SkipValidate value)? skipValidate,
+    TResult Function(SkipFeeCharge value)? skipFeeCharge,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $SimulationFlagCopyWith<$Res> {
+  factory $SimulationFlagCopyWith(
+          SimulationFlag value, $Res Function(SimulationFlag) then) =
+      _$SimulationFlagCopyWithImpl<$Res, SimulationFlag>;
+}
+
+/// @nodoc
+class _$SimulationFlagCopyWithImpl<$Res, $Val extends SimulationFlag>
+    implements $SimulationFlagCopyWith<$Res> {
+  _$SimulationFlagCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+}
+
+/// @nodoc
+abstract class _$$SkipValidateImplCopyWith<$Res> {
+  factory _$$SkipValidateImplCopyWith(
+          _$SkipValidateImpl value, $Res Function(_$SkipValidateImpl) then) =
+      __$$SkipValidateImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$SkipValidateImplCopyWithImpl<$Res>
+    extends _$SimulationFlagCopyWithImpl<$Res, _$SkipValidateImpl>
+    implements _$$SkipValidateImplCopyWith<$Res> {
+  __$$SkipValidateImplCopyWithImpl(
+      _$SkipValidateImpl _value, $Res Function(_$SkipValidateImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+@JsonSerializable(fieldRename: FieldRename.snake)
+class _$SkipValidateImpl implements SkipValidate {
+  const _$SkipValidateImpl({final String? $type})
+      : $type = $type ?? 'skipValidate';
+
+  factory _$SkipValidateImpl.fromJson(Map<String, dynamic> json) =>
+      _$$SkipValidateImplFromJson(json);
+
+  @JsonKey(name: 'starkNetRuntimeTypeToRemove')
+  final String $type;
+
+  @override
+  String toString() {
+    return 'SimulationFlag.skipValidate()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$SkipValidateImpl);
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() skipValidate,
+    required TResult Function() skipFeeCharge,
+  }) {
+    return skipValidate();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? skipValidate,
+    TResult? Function()? skipFeeCharge,
+  }) {
+    return skipValidate?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? skipValidate,
+    TResult Function()? skipFeeCharge,
+    required TResult orElse(),
+  }) {
+    if (skipValidate != null) {
+      return skipValidate();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(SkipValidate value) skipValidate,
+    required TResult Function(SkipFeeCharge value) skipFeeCharge,
+  }) {
+    return skipValidate(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(SkipValidate value)? skipValidate,
+    TResult? Function(SkipFeeCharge value)? skipFeeCharge,
+  }) {
+    return skipValidate?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(SkipValidate value)? skipValidate,
+    TResult Function(SkipFeeCharge value)? skipFeeCharge,
+    required TResult orElse(),
+  }) {
+    if (skipValidate != null) {
+      return skipValidate(this);
+    }
+    return orElse();
+  }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$SkipValidateImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class SkipValidate implements SimulationFlag {
+  const factory SkipValidate() = _$SkipValidateImpl;
+
+  factory SkipValidate.fromJson(Map<String, dynamic> json) =
+      _$SkipValidateImpl.fromJson;
+}
+
+/// @nodoc
+abstract class _$$SkipFeeChargeImplCopyWith<$Res> {
+  factory _$$SkipFeeChargeImplCopyWith(
+          _$SkipFeeChargeImpl value, $Res Function(_$SkipFeeChargeImpl) then) =
+      __$$SkipFeeChargeImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$SkipFeeChargeImplCopyWithImpl<$Res>
+    extends _$SimulationFlagCopyWithImpl<$Res, _$SkipFeeChargeImpl>
+    implements _$$SkipFeeChargeImplCopyWith<$Res> {
+  __$$SkipFeeChargeImplCopyWithImpl(
+      _$SkipFeeChargeImpl _value, $Res Function(_$SkipFeeChargeImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+@JsonSerializable(fieldRename: FieldRename.snake)
+class _$SkipFeeChargeImpl implements SkipFeeCharge {
+  const _$SkipFeeChargeImpl({final String? $type})
+      : $type = $type ?? 'skipFeeCharge';
+
+  factory _$SkipFeeChargeImpl.fromJson(Map<String, dynamic> json) =>
+      _$$SkipFeeChargeImplFromJson(json);
+
+  @JsonKey(name: 'starkNetRuntimeTypeToRemove')
+  final String $type;
+
+  @override
+  String toString() {
+    return 'SimulationFlag.skipFeeCharge()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$SkipFeeChargeImpl);
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() skipValidate,
+    required TResult Function() skipFeeCharge,
+  }) {
+    return skipFeeCharge();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? skipValidate,
+    TResult? Function()? skipFeeCharge,
+  }) {
+    return skipFeeCharge?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? skipValidate,
+    TResult Function()? skipFeeCharge,
+    required TResult orElse(),
+  }) {
+    if (skipFeeCharge != null) {
+      return skipFeeCharge();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(SkipValidate value) skipValidate,
+    required TResult Function(SkipFeeCharge value) skipFeeCharge,
+  }) {
+    return skipFeeCharge(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(SkipValidate value)? skipValidate,
+    TResult? Function(SkipFeeCharge value)? skipFeeCharge,
+  }) {
+    return skipFeeCharge?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(SkipValidate value)? skipValidate,
+    TResult Function(SkipFeeCharge value)? skipFeeCharge,
+    required TResult orElse(),
+  }) {
+    if (skipFeeCharge != null) {
+      return skipFeeCharge(this);
+    }
+    return orElse();
+  }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$SkipFeeChargeImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class SkipFeeCharge implements SimulationFlag {
+  const factory SkipFeeCharge() = _$SkipFeeChargeImpl;
+
+  factory SkipFeeCharge.fromJson(Map<String, dynamic> json) =
+      _$SkipFeeChargeImpl.fromJson;
+}
+
 BroadcastedTxn _$BroadcastedTxnFromJson(Map<String, dynamic> json) {
   switch (json['starkNetRuntimeTypeToRemove']) {
     case 'broadcastedInvokeTxnV0':

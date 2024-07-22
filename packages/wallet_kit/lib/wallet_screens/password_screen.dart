@@ -132,16 +132,15 @@ class PasswordScreen extends HookConsumerWidget {
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: sidePadding),
           child: TextInput(
-            hintText: 'Your password',
-            onChanged: (value) => password.value = value,
-            autofocus: true,
-            obscureText: true,
-            style: const TextStyle(
-              fontSize: 16,
-              fontWeight: FontWeight.w500,
-              color: Colors.black,
-            )
-          ),
+              hintText: 'Your password',
+              onChanged: (value) => password.value = value,
+              autofocus: true,
+              obscureText: true,
+              style: const TextStyle(
+                fontSize: 16,
+                fontWeight: FontWeight.w500,
+                color: Colors.black,
+              )),
         ),
         const Spacer(),
         Padding(

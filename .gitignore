@@ -28,3 +28,7 @@ coverage/
 
 .env.*
 !.env.devnet
+
+# deploy for test
+.starkli/account_1.json
+

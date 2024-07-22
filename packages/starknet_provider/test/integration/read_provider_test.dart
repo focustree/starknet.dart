@@ -9,21 +9,21 @@ void main() {
     late ReadProvider provider;
 
     Felt balanceContractAddress = Felt.fromHexString(
-        "0x713883739a929f57b5f4dd82cd38d25dbf76e3bdd54deb7319d339c5060a8cd");
+        "0x03cdc588f4f1bff66c8a6896e7008cc39c7804d36b16e93792625bd18bffd249");
 
     Felt invalidHexString = Felt.fromHexString(
         '0x0000000000000000000000000000000000000000000000000000000000000000');
     Felt blockHash = Felt.fromHexString(
-        '0x7ed2fde2b82d70368db9ae0a53e88bd9a50e50a202f20e7ff07d0c18338d8c6');
-    int blockNumber = 13334;
+        '0x51d7ee9fa3a6226d47860eea28dc0b38eeccd7b6fac1b9f39c64c3ac772cc02');
+    int blockNumber = 3;
     Felt invokeTransactionHash = Felt.fromHexString(
-        '0x6c2d47ae348f465317528c500e91cd8845fe5c9fd2fde30de9772faa40cc');
+        '0x029583643cd8932f1955bf28bfebf4c907b13df1e5c2d202b133cfbf783697a2');
     Felt declareTransactionHash = Felt.fromHexString(
-        '0x1363b8d4b4ef14e872e78b2fc65cc939b2a7a535b76f9146dbd6cd259119e44');
+        '0x4d7ba5427d4066c8db851e7662ecce860a94a804c6735677dfd29f1d0103fda');
     Felt deployTransactionHash = Felt.fromHexString(
         '0x5682042c671663e3b6077bb94d3ad94063b7dcc4be8866e6d78bfadd60587e9');
     Felt deployAccountTransactionHash = Felt.fromHexString(
-        '0x4ba967e16553ffc32d0120c9b30162255a5c928be5db381fe67e5e560221609');
+        '0x055ba13c33a12506d2eab8dfbc618a8ce0d247c24959a64ee18fbf393c873b83');
     Felt l1HandlerTransactionHash = Felt.fromHexString(
         '0x5ba26613f632e8bf8d3ca83202d06edf371b60dd07cfcc3f3b04dc0fff04687');
 
@@ -37,14 +37,14 @@ void main() {
         '0x04e76f8708774c8162fb4da7abefb3cae94cc51cf3f9b40e0d44f24aabf8a521');
     BlockId blockIdForTheGivenContractAddress = BlockId.blockHash(
         Felt.fromHexString(
-            '0x6a39eb5c273a221b99b08323bed9ec1ef1bc3d232a668c941b23cca3bf1164a'));
+            '0x51d7ee9fa3a6226d47860eea28dc0b38eeccd7b6fac1b9f39c64c3ac772cc02'));
     Felt entryPointSelector = Felt.fromHexString(
         '0x9278fa5f64a571de10741418f1c4c0c4322aef645dd9d94a429c1f3e99a8a5');
 
     Felt classHashV1 = Felt.fromHexString(
-        '0x005f042bb8a0dc334e82d758f9ef0583eced860306890f57e328553ed8d86c43');
+        '0x061dac032f228abef9c6626f995015233097ae253a7f72d68552db02f2971b8f'); // Predeployed class hash
     Felt contractAddressV1 = Felt.fromHexString(
-        '0x076f65214b9fd45c9f85e6cf0f40d018a2651fe4c4062e8230175ffc7f6ee262');
+        '0x64b48806902a367c8598f4f95c305e8c1a1acba5f082d294a43793113115691');
 
     setUpAll(() {
       // executed once before all tests
@@ -59,8 +59,8 @@ void main() {
     group('blockNumber', () {
       test('returns a strictly positive block number', () async {
         final blockNumber = await provider.blockNumber();
-        expect(
-            blockNumber is BlockNumberResult && blockNumber.result > 0, isTrue);
+        expect(blockNumber is BlockNumberResult && blockNumber.result >= 0,
+            isTrue);
       });
     });
 
@@ -116,7 +116,7 @@ void main() {
         final response = await provider.call(
             request: FunctionCall(
               contractAddress: balanceContractAddress,
-              entryPointSelector: getSelectorByName('get_answer'),
+              entryPointSelector: getSelectorByName('get_name'),
               calldata: [],
             ),
             blockId: BlockId.latest);
@@ -124,7 +124,7 @@ void main() {
             error: (error) => fail("Shouldn't fail"),
             result: (result) {
               expect(result, hasLength(1));
-              expect(result[0], Felt.fromInt(42));
+              expect(result[0], Felt.fromInt(0));
             });
       });
 
@@ -136,7 +136,7 @@ void main() {
               entryPointSelector: entryPointSelector,
               calldata: [Felt.fromHexString('0x5')],
             ),
-            blockId: blockIdForTheGivenContractAddress);
+            blockId: BlockId.latest);
         response.when(
             error: (error) {
               expect(error.code, JsonRpcApiErrorCode.CONTRACT_NOT_FOUND);
@@ -148,7 +148,7 @@ void main() {
       test('calls a read-only method with invalid block id', () async {
         final response = await provider.call(
             request: FunctionCall(
-              contractAddress: contractAddressV0,
+              contractAddress: balanceContractAddress,
               entryPointSelector: entryPointSelector,
               calldata: [],
             ),
@@ -165,25 +165,25 @@ void main() {
           () async {
         final response = await provider.call(
             request: FunctionCall(
-              contractAddress: contractAddressV0,
+              contractAddress: balanceContractAddress,
               entryPointSelector: invalidHexString,
               calldata: [],
             ),
             blockId: blockIdForTheGivenContractAddress);
         response.when(
             error: (error) {
-              expect(error.code, JsonRpcApiErrorCode.INVALID_MESSAGE_SELECTOR);
-              expect(error.message, contains("Invalid message selector"));
+              expect(error.code, JsonRpcApiErrorCode.CONTRACT_ERROR);
+              expect(error.message, contains("Contract error"));
             },
             result: (result) => fail("Should fail"));
       });
-    }, skip: true);
+    });
 
     group('getStorageAt', () {
       test('returns the ERC20_symbol value for a ERC20 contract', () async {
         final response = await provider.getStorageAt(
           contractAddress: Felt.fromHexString(
-              '0x0335c0d0c2b25730b7ed46e0fceed2a55d7743e300f393535c88470e5e15ae64'),
+              '0x49D36570D4E46F48E99674BD3FCC84644DDD6B96F7C741B1562B82F9E004DC7'),
           key: getSelectorByName('ERC20_symbol'),
           blockId: BlockId.blockTag("latest"),
         );
@@ -191,16 +191,19 @@ void main() {
         response.when(
             error: (error) => fail("Shouldn't fail"),
             result: (result) {
-              expect(result, Felt.fromHexString("0x5a475157"));
+              expect(result, Felt.fromHexString("0x455448")); // ETH
             });
-      });
+      },
+          skip:
+              true); // FIXME after devnet 0.0.8 release: https://github.com/0xSpaceShard/starknet-devnet-rs/issues/544
 
       test('returns the value of the storage at the given address and key',
           () async {
         final response = await provider.getStorageAt(
-          contractAddress: contractAddressV0,
-          key: Felt.fromHexString(
-              '0x0206F38F7E4F15E87567361213C28F235CCCDAA1D7FD34C9DB1DFE9489C6A091'),
+          contractAddress: balanceContractAddress,
+          key: getSelectorByName('name'),
+          // key: Felt.fromHexString(
+          //     '0x0206F38F7E4F15E87567361213C28F235CCCDAA1D7FD34C9DB1DFE9489C6A091'),
           blockId: BlockId.latest,
         );
 
@@ -228,7 +231,7 @@ void main() {
 
       test('reading value from invalid Block Id', () async {
         final response = await provider.getStorageAt(
-          contractAddress: contractAddressV0,
+          contractAddress: balanceContractAddress,
           key: Felt.fromHexString(
               '0x0206F38F7E4F15E87567361213C28F235CCCDAA1D7FD34C9DB1DFE9489C6A091'),
           blockId: invalidBlockIdFromBlockHash,
@@ -241,7 +244,7 @@ void main() {
             },
             result: (_) => fail("Should fail"));
       });
-    }, skip: true);
+    });
 
     group('getTransactionByHash', () {
       test(
@@ -284,7 +287,7 @@ void main() {
               expect(result.transactionHash, l1HandlerTransactionHash);
               expect(result.type, "L1_HANDLER");
             });
-      });
+      }, skip: true); // todo
 
       test(
           'returns the DEPLOY transaction details based on the transaction hash',
@@ -298,7 +301,7 @@ void main() {
               expect(result.transactionHash, deployTransactionHash);
               expect(result.type, "DEPLOY");
             });
-      });
+      }, skip: true); // deprecated
 
       test(
           'returns the DECLARE transaction details based on the transaction hash',
@@ -326,19 +329,19 @@ void main() {
                 expect(error.code, JsonRpcApiErrorCode.TXN_HASH_NOT_FOUND),
             result: (result) => fail('Should fail'));
       });
-    }, skip: true);
+    });
 
     group('getTransactionByBlockIdAndIndex', () {
       test('returns transaction details based on block hash and index',
           () async {
         final response = await provider.getTransactionByBlockIdAndIndex(
-            blockIdFromBlockHash, 4);
+            blockIdFromBlockHash, 0);
         response.when(
             result: (result) {
               expect(
                   result.transactionHash,
                   Felt.fromHexString(
-                      '0x793c49cba2ac05f29d726017792192a19cc40d8da8000dd7936ce03fdfdd1f5'));
+                      '0x4148280c22de185e677c2ddb7013e150ca687a5a45b9cda255d9324e6586f43'));
             },
             error: (error) => fail("Shouldn't fail"));
       });
@@ -373,17 +376,17 @@ void main() {
       test('returns transaction details based on block number and index',
           () async {
         final response = await provider.getTransactionByBlockIdAndIndex(
-            blockIdFromBlockNumber, 1);
+            blockIdFromBlockNumber, 0);
         response.when(
             result: (result) {
               expect(
                   result.transactionHash,
                   Felt.fromHexString(
-                      "0x226570876fb6bdd8257b048c0dfc02a7579ab1083c4b28b6b9a1a86aea39180"));
+                      "0x29583643cd8932f1955bf28bfebf4c907b13df1e5c2d202b133cfbf783697a2"));
             },
             error: (error) => fail("Shouldn't fail"));
       });
-    }, skip: true);
+    });
 
     group('getTransactionReceipt', () {
       test(
@@ -396,7 +399,8 @@ void main() {
             error: (error) => fail("Shouldn't fail"),
             result: (result) {
               expect(result.transactionHash, invokeTransactionHash);
-              expect(result.actualFee, Felt.fromHexString('0x827e39d0'));
+              expect(
+                  result.actualFee.amount, Felt.fromHexString('0xd18c2e28000'));
             });
       });
 
@@ -410,19 +414,6 @@ void main() {
             error: (error) => fail("Shouldn't fail"),
             result: (result) {
               expect(result.transactionHash, declareTransactionHash);
-            });
-      });
-
-      test(
-          'returns the transaction receipt based on the DEPLOY transaction hash',
-          () async {
-        final response =
-            await provider.getTransactionReceipt(deployTransactionHash);
-
-        response.when(
-            error: (error) => fail("Shouldn't fail"),
-            result: (result) {
-              expect(result.transactionHash, deployTransactionHash);
             });
       });
 
@@ -450,7 +441,7 @@ void main() {
             result: (result) {
               expect(result.transactionHash, l1HandlerTransactionHash);
             });
-      });
+      }, skip: true); // todo ?
 
       test(
           'reading transaction receipt from invalid transaction hash should fail',
@@ -465,7 +456,7 @@ void main() {
                 expect(error.code, JsonRpcApiErrorCode.TXN_HASH_NOT_FOUND),
             result: (result) => fail("Shouldn't fail"));
       });
-    }, skip: true);
+    });
 
     group('chainId', () {
       test('returns the current StarkNet chain id', () async {
@@ -497,7 +488,7 @@ void main() {
     group('starknet_getNonce', () {
       test('returns latest nonce associated with the given address', () async {
         final response = await provider.getNonce(
-          contractAddress: contractAddressV0,
+          contractAddress: balanceContractAddress,
           blockId: BlockId.latest,
         );
 
@@ -509,7 +500,7 @@ void main() {
       test('reading nonce from invalid block id returns BLOCK_NOT_FOUND error',
           () async {
         final response = await provider.getNonce(
-          contractAddress: contractAddressV0,
+          contractAddress: balanceContractAddress,
           blockId: invalidBlockIdFromBlockHash,
         );
 
@@ -535,7 +526,7 @@ void main() {
             },
             result: (result) => fail("Should fail"));
       });
-    }, skip: true);
+    });
 
     group('starknet_blockHashAndNumber', () {
       test('returns the most recent accepted block hash and number', () async {
@@ -586,7 +577,7 @@ void main() {
             },
             result: (result) => fail("Should fail"));
       });
-    }, skip: true);
+    });
 
     group('starknet_getBlockWithTxs', () {
       test(
@@ -600,7 +591,7 @@ void main() {
             expect(block, isNotNull);
           },
         );
-      }, skip: true);
+      });
 
       test('returns block not found error when block id is invalid', () async {
         final GetBlockWithTxs response =
@@ -639,7 +630,9 @@ void main() {
           result: (result) => fail("Should fail"),
         );
       });
-    }, skip: true);
+    },
+        skip:
+            true); // FIXME after devnet 0.0.8 release: https://github.com/0xSpaceShard/starknet-devnet-rs/issues/496
 
     group('starknet_getClass', () {
       test('returns contract class definition for a known class hash (cairo 0)',
@@ -657,7 +650,7 @@ void main() {
             expect(result.program, isNotNull);
           },
         );
-      }, tags: ['integration']);
+      }, tags: ['integration'], skip: true); // v0 contracts are deprecated
 
       test(
           'returns contract class definition for a known class hash (cairo 1.0)',
@@ -707,14 +700,14 @@ void main() {
           result: (result) => fail("Should fail"),
         );
       });
-    }, skip: true);
+    });
 
     group('starknet_getClassHashAt', () {
       test(
           'returns contract class hash in the given block for the deployed contract address.',
           () async {
         final response = await provider.getClassHashAt(
-          contractAddress: contractAddressV0,
+          contractAddress: contractAddressV1,
           blockId: BlockId.blockTag("latest"),
         );
 
@@ -756,7 +749,7 @@ void main() {
           result: (result) => fail("Should fail"),
         );
       });
-    }, skip: true);
+    });
 
     group('starknet_getClassAt', () {
       test(
@@ -775,7 +768,7 @@ void main() {
             expect(result.program, isNotNull);
           },
         );
-      }, tags: ['integration']);
+      }, tags: ['integration'], skip: true); // v0 contracts are deprecated
 
       test(
           'returns contract class definition in the given block for given contract address. (cairo 1.0)',
@@ -825,14 +818,14 @@ void main() {
           result: (result) => fail("Should fail"),
         );
       });
-    }, skip: true);
+    });
 
     group('starknet_getEvents', () {
       test('returns all events matching the given filter', () async {
         final response = await provider.getEvents(GetEventsRequest(
           chunkSize: 2,
-          fromBlock: BlockId.blockNumber(12000),
-          toBlock: BlockId.blockNumber(100000),
+          fromBlock: BlockId.blockNumber(1),
+          toBlock: BlockId.blockNumber(3),
         ));
 
         response.when(
@@ -914,10 +907,10 @@ void main() {
       test('requesting the events with key filtering', () async {
         final response = await provider.getEvents(GetEventsRequest(
           chunkSize: 2,
-          fromBlock: BlockId.blockNumber(12000),
-          toBlock: BlockId.blockNumber(100000),
+          fromBlock: BlockId.blockNumber(1),
+          toBlock: BlockId.blockNumber(3),
           keys: [
-            [getSelectorByName("CurrencyWhitelisted")],
+            [getSelectorByName("Transfer")],
           ],
         ));
 
@@ -948,54 +941,59 @@ void main() {
           },
         );
       });
-    }, skip: true);
+    },
+        skip:
+            true); // FIXME after devnet 0.0.8 release https://github.com/0xSpaceShard/starknet-devnet-rs/issues/498
 
     group('starknet_pendingTransactions', () {
       test('returns not supported error for pendingTransactions', () async {
         final response = await provider.pendingTransactions();
 
         response.when(
-          error: (error) => fail('Should not fail $error'),
-          result: (_) {},
+          error: (error) {
+            expect(error.code, JsonRpcApiErrorCode.METHOD_NOT_FOUND);
+            expect(error.message, "Method not found");
+          },
+          result: (_) => fail('Should fail'),
         );
       });
-    }, skip: true);
+    });
 
     group('estimateFee', () {
-      BlockId parentBlockId = BlockId.blockHash(Felt.fromHexString(
-          '0x03e509987d3624a22929111cd407a9b60b069c82650873d3a8e688a1071d936a'));
+      BlockId parentBlockId = BlockId.blockTag('pending');
       BroadcastedInvokeTxnV1 broadcastedInvokeTxnV1 = BroadcastedInvokeTxnV1(
-        maxFee: Felt.fromHexString('0xe3a12d8'),
-        version: "0x1",
+        maxFee: Felt.fromHexString('0x0'),
+        version: "0x100000000000000000000000000000001",
         signature: [
           Felt.fromHexString(
-              '0x79e8097b96b1e41ead06b1562aa2c0c6664d118aa13d13e2421ab3fbd0d6f1e'),
+              '0x3633b6b91f78ddaee3546e6b63f00ff4df12ead22db934f724814659fcdb639'),
           Felt.fromHexString(
-              '0x16aca0b17bcb270bf22a42a6c39f64a51793d88e0e8892a86b338c76de12af'),
+              '0x5727ccd97461882f2bd107a25316d00d888f05196b9bc4d7da12378387daec8'),
         ],
-        nonce: Felt.fromHexString('0xc'),
+        nonce: Felt.fromHexString('0x4'),
         type: 'INVOKE',
         senderAddress: Felt.fromHexString(
-            '0x01114f6544e4784bfab52097b129804292e32e97af051fbf9c9e399567d3d01b'),
+            '0x64b48806902a367c8598f4f95c305e8c1a1acba5f082d294a43793113115691'),
         calldata: [
           Felt.fromHexString('0x1'),
           Felt.fromHexString(
-              '0xca87395d8f4fc2a87f310410b721c4df91a21aa8aa7a46831d41049a14405f'),
+              '0x49d36570d4e46f48e99674bd3fcc84644ddd6b96f7c741b1562b82f9e004dc7'),
           Felt.fromHexString(
-              '0x362398bec32bc0ebb411203221a35a0301193a96f317ebe5e40be9f60d15320'),
-          Felt.fromHexString('0x0'),
-          Felt.fromHexString('0x1'),
-          Felt.fromHexString('0x1'),
+              '0x83afd3f4caedc6eebf44246fe54e38c95e3179a5ec9ea81740eca5b482d12e'),
           Felt.fromHexString('0x3'),
+          Felt.fromHexString(
+              '0x16a0d7df981d681537dc2ce648722ff1d1c2cbe59412b492d35bac69825f104'),
+          Felt.fromHexString('0x100000000000000000'),
+          Felt.fromHexString('0x0'),
         ],
       );
 
       test('estimate the fee for a given V1 Invoke StarkNet transaction',
           () async {
         EstimateFeeRequest estimateFeeRequest = EstimateFeeRequest(
-          request: [broadcastedInvokeTxnV1],
-          blockId: parentBlockId,
-        );
+            request: [broadcastedInvokeTxnV1],
+            blockId: parentBlockId,
+            simulation_flags: []);
 
         final response = await provider.estimateFee(estimateFeeRequest);
 
@@ -1006,9 +1004,9 @@ void main() {
           result: (result) {
             expect(result.length, 1);
             final estimate = result[0];
-            expect(estimate.gasConsumed, "0xe98");
-            expect(estimate.gasPrice, "0x4ecd");
-            expect(estimate.overallFee, "0x47dffb8");
+            expect(estimate.gasConsumed, "0x17");
+            expect(estimate.gasPrice, "0x174876e800");
+            expect(estimate.overallFee, "0x138ddbdcd800");
           },
         );
       });
@@ -1020,6 +1018,7 @@ void main() {
         EstimateFeeRequest estimateFeeRequest = EstimateFeeRequest(
           request: [invalidContractTxn],
           blockId: parentBlockId,
+          simulation_flags: [],
         );
 
         final response = await provider.estimateFee(estimateFeeRequest);
@@ -1033,13 +1032,14 @@ void main() {
             fail('Should fail.');
           },
         );
-      });
+      }, skip: true); // todo FIXME devnet
 
       test('returns BLOCK_NOT_FOUND with invalid block id', () async {
         // contract address from main net.
         EstimateFeeRequest estimateFeeRequest = EstimateFeeRequest(
           request: [broadcastedInvokeTxnV1],
           blockId: invalidBlockIdFromBlockHash,
+          simulation_flags: [],
         );
 
         final response = await provider.estimateFee(estimateFeeRequest);
@@ -1054,6 +1054,6 @@ void main() {
           },
         );
       });
-    }, skip: true);
+    });
   }, tags: ['integration']);
 }

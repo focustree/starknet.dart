@@ -21,11 +21,22 @@ class GetTransactionReceipt with _$GetTransactionReceipt {
 }
 
 @freezed
+class ActualFee with _$ActualFee {
+  const factory ActualFee({
+    required Felt amount,
+    required String unit,
+  }) = _ActualFee;
+
+  factory ActualFee.fromJson(Map<String, dynamic> json) =>
+      _$ActualFeeFromJson(json);
+}
+
+@freezed
 class TxnReceipt with _$TxnReceipt {
   const factory TxnReceipt.invokeTxnReceipt({
     // start of COMMON_RECEIPT_PROPERTIES
     required Felt transactionHash,
-    required Felt actualFee,
+    required ActualFee actualFee,
     required String status,
     Felt? blockHash,
     int? blockNumber,
@@ -38,7 +49,7 @@ class TxnReceipt with _$TxnReceipt {
   const factory TxnReceipt.declareTxnReceipt({
     // start of COMMON_RECEIPT_PROPERTIES
     required Felt transactionHash,
-    required Felt actualFee,
+    required ActualFee actualFee,
     required String status,
     Felt? blockHash,
     int? blockNumber,
@@ -51,7 +62,7 @@ class TxnReceipt with _$TxnReceipt {
   const factory TxnReceipt.l1HandlerTxnReceipt({
     // start of COMMON_RECEIPT_PROPERTIES
     required Felt transactionHash,
-    required Felt actualFee,
+    required ActualFee actualFee,
     required String status,
     Felt? blockHash,
     int? blockNumber,
@@ -64,7 +75,7 @@ class TxnReceipt with _$TxnReceipt {
   const factory TxnReceipt.deployTxnReceipt({
     // start of COMMON_RECEIPT_PROPERTIES
     required Felt transactionHash,
-    required Felt actualFee,
+    required ActualFee actualFee,
     required String status,
     Felt? blockHash,
     int? blockNumber,
@@ -78,7 +89,7 @@ class TxnReceipt with _$TxnReceipt {
   const factory TxnReceipt.deployAccountTxnReceipt({
     // start of COMMON_RECEIPT_PROPERTIES
     required Felt transactionHash,
-    required Felt actualFee,
+    required ActualFee actualFee,
     required String status,
     Felt? blockHash,
     int? blockNumber,
@@ -92,7 +103,7 @@ class TxnReceipt with _$TxnReceipt {
   const factory TxnReceipt.pendingDeployTxnReceipt({
     // start of PENDING_COMMON_RECEIPT_PROPERTIES
     required Felt transactionHash,
-    required Felt actualFee,
+    required ActualFee actualFee,
     required String? type,
     required List<MsgToL1> messagesSent,
     required List<Event> events,
@@ -103,7 +114,7 @@ class TxnReceipt with _$TxnReceipt {
   const factory TxnReceipt.pendingCommonReceiptProperties({
     // start of PENDING_COMMON_RECEIPT_PROPERTIES
     required Felt transactionHash,
-    required Felt actualFee,
+    required ActualFee actualFee,
     required String? type,
     required List<MsgToL1> messagesSent,
     required List<Event> events,
