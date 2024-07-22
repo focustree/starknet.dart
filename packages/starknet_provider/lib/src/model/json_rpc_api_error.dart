@@ -18,6 +18,8 @@ class JsonRpcApiError with _$JsonRpcApiError {
 
 // TODO: should be generated from JSON-RPC API specs
 enum JsonRpcApiErrorCode {
+  @JsonValue(-1)
+  DEVNET_WILDCARD_ERROR, // not in JSON-RPC API specs
   @JsonValue(1)
   FAILED_TO_RECEIVE_TXN,
   @JsonValue(20)
@@ -76,6 +78,8 @@ enum JsonRpcApiErrorCode {
   UNEXPECTED_ERROR, // from pathfinder code
   @JsonValue(10000)
   PROOF_LIMIT_EXCEEDED, // from pathfinder code
+  @JsonValue(-32601)
+  METHOD_NOT_FOUND,
   @JsonValue(-32602)
   INVALID_QUERY,
   @JsonValue(-32603)
