@@ -34,6 +34,18 @@ Map<String, dynamic> _$$GetTransactionReceiptErrorImplToJson(
       'starkNetRuntimeTypeToRemove': instance.$type,
     };
 
+_$ActualFeeImpl _$$ActualFeeImplFromJson(Map<String, dynamic> json) =>
+    _$ActualFeeImpl(
+      amount: Felt.fromJson(json['amount'] as String),
+      unit: json['unit'] as String,
+    );
+
+Map<String, dynamic> _$$ActualFeeImplToJson(_$ActualFeeImpl instance) =>
+    <String, dynamic>{
+      'amount': instance.amount.toJson(),
+      'unit': instance.unit,
+    };
+
 _$InvokeTxnReceiptImpl _$$InvokeTxnReceiptImplFromJson(
         Map<String, dynamic> json) =>
     _$InvokeTxnReceiptImpl(

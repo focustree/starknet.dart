@@ -527,7 +527,7 @@ class _$SkipValidateImpl implements SkipValidate {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType && other is _$SkipValidateImpl);
   }
@@ -648,7 +648,7 @@ class _$SkipFeeChargeImpl implements SkipFeeCharge {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType && other is _$SkipFeeChargeImpl);
   }

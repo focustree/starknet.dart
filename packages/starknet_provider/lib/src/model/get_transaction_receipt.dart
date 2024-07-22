@@ -1,6 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:starknet/starknet.dart';
-import 'package:starknet_provider/src/model/actual_fee.dart';
 import 'package:starknet_provider/starknet_provider.dart';
 
 part 'get_transaction_receipt.freezed.dart';
@@ -19,6 +18,17 @@ class GetTransactionReceipt with _$GetTransactionReceipt {
       json.containsKey('error')
           ? GetTransactionReceiptError.fromJson(json)
           : GetTransactionReceiptResult.fromJson(json);
+}
+
+@freezed
+class ActualFee with _$ActualFee {
+  const factory ActualFee({
+    required Felt amount,
+    required String unit,
+  }) = _ActualFee;
+
+  factory ActualFee.fromJson(Map<String, dynamic> json) =>
+      _$ActualFeeFromJson(json);
 }
 
 @freezed
