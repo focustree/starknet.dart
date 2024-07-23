@@ -74,12 +74,19 @@ class NFTDetail extends ConsumerWidget {
                     account: selectedAccount,
                   );
 
-                  await Ark().starknet.createListing(
+                  final txhash = await Ark().starknet.createListing(
                       starknetAccount: starknetAccount,
                       nftAddress: nftAddress,
                       tokenId: tokenId,
                       startAmount: 0.1,
                       maxFee: Felt.fromDouble(0.00001 * 1e18) );
+
+                  print(txhash);
+
+                  final isAccepted = await waitForAcceptance(transactionHash: txhash, provider: WalletKit().provider );
+
+                  print(isAccepted);
+
                 },
                 child: const Text('Sell')),
                 ElevatedButton(

@@ -1,5 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:starknet/starknet.dart';
+import 'package:starknet_provider/src/model/actual_fee.dart';
 import 'package:starknet_provider/starknet_provider.dart';
 
 part 'get_transaction_receipt.freezed.dart';
@@ -25,8 +26,9 @@ class TxnReceipt with _$TxnReceipt {
   const factory TxnReceipt.invokeTxnReceipt({
     // start of COMMON_RECEIPT_PROPERTIES
     required Felt transactionHash,
-    required Felt actualFee,
-    required String status,
+    required ActualFee actualFee,
+    required String execution_status,
+    required String finality_status,
     Felt? blockHash,
     int? blockNumber,
     required String type,
@@ -38,8 +40,9 @@ class TxnReceipt with _$TxnReceipt {
   const factory TxnReceipt.declareTxnReceipt({
     // start of COMMON_RECEIPT_PROPERTIES
     required Felt transactionHash,
-    required Felt actualFee,
-    required String status,
+    required ActualFee actualFee,
+    required String execution_status,
+    required String finality_status,
     Felt? blockHash,
     int? blockNumber,
     required String type,
@@ -51,8 +54,9 @@ class TxnReceipt with _$TxnReceipt {
   const factory TxnReceipt.l1HandlerTxnReceipt({
     // start of COMMON_RECEIPT_PROPERTIES
     required Felt transactionHash,
-    required Felt actualFee,
-    required String status,
+    required ActualFee actualFee,
+    required String execution_status,
+    required String finality_status,
     Felt? blockHash,
     int? blockNumber,
     required String type,
@@ -64,46 +68,45 @@ class TxnReceipt with _$TxnReceipt {
   const factory TxnReceipt.deployTxnReceipt({
     // start of COMMON_RECEIPT_PROPERTIES
     required Felt transactionHash,
-    required Felt actualFee,
-    required String status,
+    required ActualFee actualFee,
+    required String execution_status,
+    required String finality_status,
     Felt? blockHash,
     int? blockNumber,
     required String type,
     required List<MsgToL1> messagesSent,
     required List<Event> events,
     // end of COMMON_RECEIPT_PROPERTIES
-    required Felt contractAddress,
   }) = DeployTxnReceipt;
 
   const factory TxnReceipt.deployAccountTxnReceipt({
     // start of COMMON_RECEIPT_PROPERTIES
     required Felt transactionHash,
-    required Felt actualFee,
-    required String status,
+    required ActualFee actualFee,
+    required String execution_status,
+    required String finality_status,
     Felt? blockHash,
     int? blockNumber,
     required String type,
     required List<MsgToL1> messagesSent,
     required List<Event> events,
     // end of COMMON_RECEIPT_PROPERTIES
-    required Felt contractAddress,
   }) = DeployAccountTxnReceipt;
 
   const factory TxnReceipt.pendingDeployTxnReceipt({
     // start of PENDING_COMMON_RECEIPT_PROPERTIES
     required Felt transactionHash,
-    required Felt actualFee,
+    required ActualFee actualFee,
     required String? type,
     required List<MsgToL1> messagesSent,
     required List<Event> events,
     // end of PENDING_COMMON_RECEIPT_PROPERTIES
-    required Felt contractAddress,
   }) = PendingDeployTxnReceipt;
 
   const factory TxnReceipt.pendingCommonReceiptProperties({
     // start of PENDING_COMMON_RECEIPT_PROPERTIES
     required Felt transactionHash,
-    required Felt actualFee,
+    required ActualFee actualFee,
     required String? type,
     required List<MsgToL1> messagesSent,
     required List<Event> events,
@@ -112,7 +115,7 @@ class TxnReceipt with _$TxnReceipt {
 
   // User arrow func to have freezed generator work properly
   factory TxnReceipt.fromJson(Map<String, Object?> json) =>
-      !json.containsKey('status')
+      !json.containsKey('finality_status')
           ? (json.containsKey('contract_address')
               ? PendingDeployTxnReceipt.fromJson(json)
               : PendingCommonReceiptProperties.fromJson(json))

@@ -12,7 +12,7 @@ part of 'estimate_fee.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 EstimateFee _$EstimateFeeFromJson(Map<String, dynamic> json) {
   switch (json['starkNetRuntimeTypeToRemove']) {
@@ -150,7 +150,7 @@ class _$EstimateFeeResultImpl implements EstimateFeeResult {
   }
 
   @override
-  bool operator ==(Object other) {
+  bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$EstimateFeeResultImpl &&
@@ -314,7 +314,7 @@ class _$EstimateFeeErrorImpl implements EstimateFeeError {
   }
 
   @override
-  bool operator ==(Object other) {
+  bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$EstimateFeeErrorImpl &&
@@ -808,7 +808,7 @@ class _$BroadcastedInvokeTxnV0Impl implements BroadcastedInvokeTxnV0 {
   }
 
   @override
-  bool operator ==(Object other) {
+  bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$BroadcastedInvokeTxnV0Impl &&
@@ -1225,7 +1225,7 @@ class _$BroadcastedInvokeTxnV1Impl implements BroadcastedInvokeTxnV1 {
   }
 
   @override
-  bool operator ==(Object other) {
+  bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$BroadcastedInvokeTxnV1Impl &&
@@ -1640,7 +1640,7 @@ class _$BroadcastedDeclareTxnImpl implements BroadcastedDeclareTxn {
   }
 
   @override
-  bool operator ==(Object other) {
+  bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$BroadcastedDeclareTxnImpl &&
@@ -2034,7 +2034,7 @@ class _$BroadcastedDeployTxnImpl implements BroadcastedDeployTxn {
   }
 
   @override
-  bool operator ==(Object other) {
+  bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$BroadcastedDeployTxnImpl &&
@@ -2450,7 +2450,7 @@ class _$BroadcastedDeployAccountTxnImpl implements BroadcastedDeployAccountTxn {
   }
 
   @override
-  bool operator ==(Object other) {
+  bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$BroadcastedDeployAccountTxnImpl &&

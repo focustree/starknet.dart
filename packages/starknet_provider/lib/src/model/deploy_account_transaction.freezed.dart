@@ -12,7 +12,7 @@ part of 'deploy_account_transaction.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 DeployAccountTransactionV1 _$DeployAccountTransactionV1FromJson(
     Map<String, dynamic> json) {
@@ -252,7 +252,7 @@ class _$DeployAccountTransactionV1Impl implements _DeployAccountTransactionV1 {
   }
 
   @override
-  bool operator ==(Object other) {
+  bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$DeployAccountTransactionV1Impl &&
@@ -444,7 +444,7 @@ class _$DeployAccountTransactionRequestImpl
   }
 
   @override
-  bool operator ==(Object other) {
+  bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$DeployAccountTransactionRequestImpl &&
@@ -642,7 +642,7 @@ class _$DeployAccountTransactionResultImpl
   }
 
   @override
-  bool operator ==(Object other) {
+  bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$DeployAccountTransactionResultImpl &&
@@ -816,7 +816,7 @@ class _$DeployAccountTransactionErrorImpl
   }
 
   @override
-  bool operator ==(Object other) {
+  bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$DeployAccountTransactionErrorImpl &&
@@ -1044,7 +1044,7 @@ class _$DeployAccountTransactionResponseResultImpl
   }
 
   @override
-  bool operator ==(Object other) {
+  bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$DeployAccountTransactionResponseResultImpl &&

@@ -9,7 +9,7 @@ part of 'get_block_txn_count.dart';
 _$BlockTxnCountResultImpl _$$BlockTxnCountResultImplFromJson(
         Map<String, dynamic> json) =>
     _$BlockTxnCountResultImpl(
-      result: (json['result'] as num).toInt(),
+      result: json['result'] as int,
       $type: json['starkNetRuntimeTypeToRemove'] as String?,
     );
 

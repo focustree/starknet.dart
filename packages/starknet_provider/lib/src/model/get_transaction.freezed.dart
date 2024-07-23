@@ -12,7 +12,7 @@ part of 'get_transaction.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 GetTransaction _$GetTransactionFromJson(Map<String, dynamic> json) {
   switch (json['starkNetRuntimeTypeToRemove']) {
@@ -153,7 +153,7 @@ class _$GetTransactionResultImpl implements GetTransactionResult {
   }
 
   @override
-  bool operator ==(Object other) {
+  bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$GetTransactionResultImpl &&
@@ -317,7 +317,7 @@ class _$GetTransactionErrorImpl implements GetTransactionError {
   }
 
   @override
-  bool operator ==(Object other) {
+  bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$GetTransactionErrorImpl &&
@@ -863,7 +863,7 @@ class _$InvokeTxnV0Impl implements InvokeTxnV0 {
   }
 
   @override
-  bool operator ==(Object other) {
+  bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$InvokeTxnV0Impl &&
@@ -1336,7 +1336,7 @@ class _$InvokeTxnV1Impl implements InvokeTxnV1 {
   }
 
   @override
-  bool operator ==(Object other) {
+  bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$InvokeTxnV1Impl &&
@@ -1795,7 +1795,7 @@ class _$DeclareTxnImpl implements DeclareTxn {
   }
 
   @override
-  bool operator ==(Object other) {
+  bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$DeclareTxnImpl &&
@@ -2232,7 +2232,7 @@ class _$DeployTxnImpl implements DeployTxn {
   }
 
   @override
-  bool operator ==(Object other) {
+  bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$DeployTxnImpl &&
@@ -2701,7 +2701,7 @@ class _$DeployAccountTxnImpl implements DeployAccountTxn {
   }
 
   @override
-  bool operator ==(Object other) {
+  bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$DeployAccountTxnImpl &&
@@ -3153,7 +3153,7 @@ class _$L1HandlerTxnImpl implements L1HandlerTxn {
   }
 
   @override
-  bool operator ==(Object other) {
+  bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$L1HandlerTxnImpl &&

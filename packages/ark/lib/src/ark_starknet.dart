@@ -19,7 +19,7 @@ class ArkStarknet {
     this.arkExecutorAddress = Felt.fromHexString(arkExecutorAddress);
   }
 
-  createListing({
+  Future<String> createListing({
     required Account starknetAccount,
     required String nftAddress,
     required String tokenId,
@@ -89,14 +89,16 @@ class ArkStarknet {
       ),
     ], maxFee: maxFee);
 
-    response.when(result: (result) {
+    final txHash = response.when(result: (result) {
       return result.transaction_hash;
     }, error: (error) {
       throw Exception(error.message);
     });
+
+    return txHash;
   }
 
-  cancelOrder({
+  Future<String> cancelOrder({
     required Account starknetAccount,
     required BigInt orderHash,
     required String tokenAddress,
@@ -130,14 +132,16 @@ class ArkStarknet {
       ),
     ], maxFee: maxFee );
 
-    response.when(result: (result) {
+    final txHash = response.when(result: (result) {
       return result.transaction_hash;
     }, error: (error) {
       throw Exception(error.message);
     });
+
+    return txHash;
   }
 
-  createOffer({
+  Future<String> createOffer({
     required Account starknetAccount,
     required String nftAddress,
     required String tokenId,
@@ -210,14 +214,16 @@ class ArkStarknet {
       ),
     ], maxFee: maxFee);
 
-    response.when(result: (result) {
+    final txHash = response.when(result: (result) {
       return result.transaction_hash;
     }, error: (error) {
       throw Exception(error.message);
     });
+
+    return txHash;
   }
 
-  fulfillListing({
+  Future<String> fulfillListing({
     required Account starknetAccount,
     required String nftAddress,
     required String tokenId,
@@ -268,14 +274,16 @@ class ArkStarknet {
       ),
     ], maxFee: maxFee);
 
-    response.when(result: (result) {
+    final txHash = response.when(result: (result) {
       return result.transaction_hash;
     }, error: (error) {
       throw Exception(error.message);
     });
+
+    return txHash;
   }
 
-  fulfillOffer({
+  Future<String> fulfillOffer({
     required Account starknetAccount,
     required String nftAddress,
     required String tokenId,
@@ -323,10 +331,12 @@ class ArkStarknet {
       ),
     ], maxFee: maxFee);
 
-    response.when(result: (result) {
+    final txHash = response.when(result: (result) {
       return result.transaction_hash;
     }, error: (error) {
       throw Exception(error.message);
     });
+
+    return txHash;
   }
 }

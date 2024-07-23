@@ -51,7 +51,7 @@ _$GetEventsRequestImpl _$$GetEventsRequestImplFromJson(
               .map((e) => Felt.fromJson(e as String))
               .toList())
           .toList(),
-      chunkSize: (json['chunk_size'] as num).toInt(),
+      chunkSize: json['chunk_size'] as int,
       continuationToken: json['continuation_token'] as String?,
     );
 
@@ -117,7 +117,7 @@ _$EmittedEventImpl _$$EmittedEventImplFromJson(Map<String, dynamic> json) =>
       blockHash: json['block_hash'] == null
           ? null
           : Felt.fromJson(json['block_hash'] as String),
-      blockNumber: (json['block_number'] as num?)?.toInt(),
+      blockNumber: json['block_number'] as int?,
     );
 
 Map<String, dynamic> _$$EmittedEventImplToJson(_$EmittedEventImpl instance) {

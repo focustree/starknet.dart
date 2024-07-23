@@ -37,23 +37,24 @@ Future<bool> waitForState({
   final txHash = Felt.fromHexString(transactionHash);
   while (done != true) {
     final receipt = await provider.getTransactionReceipt(txHash);
+    print(receipt);
     receipt.when(
       result: (result) {
         result.map(
           declareTxnReceipt: (DeclareTxnReceipt receipt) =>
-              status = receipt.status,
+              status = receipt.finality_status,
           deployTxnReceipt: (DeployTxnReceipt receipt) =>
-              status = receipt.status,
+              status = receipt.finality_status,
           deployAccountTxnReceipt: (DeployAccountTxnReceipt receipt) =>
-              status = receipt.status,
+              status = receipt.finality_status,
           l1HandlerTxnReceipt: (L1HandlerTxnReceipt receipt) =>
-              status = receipt.status,
+              status = receipt.finality_status,
           pendingDeployTxnReceipt: (PendingDeployTxnReceipt receipt) =>
               status = 'PENDING',
           pendingCommonReceiptProperties:
               (PendingCommonReceiptProperties receipt) => status = 'PENDING',
           invokeTxnReceipt: (InvokeTxnReceipt receipt) =>
-              status = receipt.status,
+              status = receipt.finality_status,
         );
       },
       error: (error) {

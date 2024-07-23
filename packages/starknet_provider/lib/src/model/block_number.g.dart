@@ -9,7 +9,7 @@ part of 'block_number.dart';
 _$BlockNumberResultImpl _$$BlockNumberResultImplFromJson(
         Map<String, dynamic> json) =>
     _$BlockNumberResultImpl(
-      result: (json['result'] as num).toInt(),
+      result: json['result'] as int,
       $type: json['starkNetRuntimeTypeToRemove'] as String?,
     );
 
