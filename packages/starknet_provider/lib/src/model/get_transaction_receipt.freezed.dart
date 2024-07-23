@@ -430,6 +430,400 @@ abstract class GetTransactionReceiptError implements GetTransactionReceipt {
       get copyWith => throw _privateConstructorUsedError;
 }
 
+ActualFeeOrString _$ActualFeeOrStringFromJson(Map<String, dynamic> json) {
+  switch (json['starkNetRuntimeTypeToRemove']) {
+    case 'actualFee':
+      return ActualFeeVariant.fromJson(json);
+    case 'stringValue':
+      return StringVariant.fromJson(json);
+
+    default:
+      throw CheckedFromJsonException(
+          json,
+          'starkNetRuntimeTypeToRemove',
+          'ActualFeeOrString',
+          'Invalid union type "${json['starkNetRuntimeTypeToRemove']}"!');
+  }
+}
+
+/// @nodoc
+mixin _$ActualFeeOrString {
+  Object get value => throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(ActualFee value) actualFee,
+    required TResult Function(String value) stringValue,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(ActualFee value)? actualFee,
+    TResult? Function(String value)? stringValue,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(ActualFee value)? actualFee,
+    TResult Function(String value)? stringValue,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(ActualFeeVariant value) actualFee,
+    required TResult Function(StringVariant value) stringValue,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(ActualFeeVariant value)? actualFee,
+    TResult? Function(StringVariant value)? stringValue,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(ActualFeeVariant value)? actualFee,
+    TResult Function(StringVariant value)? stringValue,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $ActualFeeOrStringCopyWith<$Res> {
+  factory $ActualFeeOrStringCopyWith(
+          ActualFeeOrString value, $Res Function(ActualFeeOrString) then) =
+      _$ActualFeeOrStringCopyWithImpl<$Res, ActualFeeOrString>;
+}
+
+/// @nodoc
+class _$ActualFeeOrStringCopyWithImpl<$Res, $Val extends ActualFeeOrString>
+    implements $ActualFeeOrStringCopyWith<$Res> {
+  _$ActualFeeOrStringCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+}
+
+/// @nodoc
+abstract class _$$ActualFeeVariantImplCopyWith<$Res> {
+  factory _$$ActualFeeVariantImplCopyWith(_$ActualFeeVariantImpl value,
+          $Res Function(_$ActualFeeVariantImpl) then) =
+      __$$ActualFeeVariantImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({ActualFee value});
+
+  $ActualFeeCopyWith<$Res> get value;
+}
+
+/// @nodoc
+class __$$ActualFeeVariantImplCopyWithImpl<$Res>
+    extends _$ActualFeeOrStringCopyWithImpl<$Res, _$ActualFeeVariantImpl>
+    implements _$$ActualFeeVariantImplCopyWith<$Res> {
+  __$$ActualFeeVariantImplCopyWithImpl(_$ActualFeeVariantImpl _value,
+      $Res Function(_$ActualFeeVariantImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? value = null,
+  }) {
+    return _then(_$ActualFeeVariantImpl(
+      null == value
+          ? _value.value
+          : value // ignore: cast_nullable_to_non_nullable
+              as ActualFee,
+    ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $ActualFeeCopyWith<$Res> get value {
+    return $ActualFeeCopyWith<$Res>(_value.value, (value) {
+      return _then(_value.copyWith(value: value));
+    });
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$ActualFeeVariantImpl implements ActualFeeVariant {
+  const _$ActualFeeVariantImpl(this.value, {final String? $type})
+      : $type = $type ?? 'actualFee';
+
+  factory _$ActualFeeVariantImpl.fromJson(Map<String, dynamic> json) =>
+      _$$ActualFeeVariantImplFromJson(json);
+
+  @override
+  final ActualFee value;
+
+  @JsonKey(name: 'starkNetRuntimeTypeToRemove')
+  final String $type;
+
+  @override
+  String toString() {
+    return 'ActualFeeOrString.actualFee(value: $value)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$ActualFeeVariantImpl &&
+            (identical(other.value, value) || other.value == value));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(runtimeType, value);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$ActualFeeVariantImplCopyWith<_$ActualFeeVariantImpl> get copyWith =>
+      __$$ActualFeeVariantImplCopyWithImpl<_$ActualFeeVariantImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(ActualFee value) actualFee,
+    required TResult Function(String value) stringValue,
+  }) {
+    return actualFee(value);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(ActualFee value)? actualFee,
+    TResult? Function(String value)? stringValue,
+  }) {
+    return actualFee?.call(value);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(ActualFee value)? actualFee,
+    TResult Function(String value)? stringValue,
+    required TResult orElse(),
+  }) {
+    if (actualFee != null) {
+      return actualFee(value);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(ActualFeeVariant value) actualFee,
+    required TResult Function(StringVariant value) stringValue,
+  }) {
+    return actualFee(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(ActualFeeVariant value)? actualFee,
+    TResult? Function(StringVariant value)? stringValue,
+  }) {
+    return actualFee?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(ActualFeeVariant value)? actualFee,
+    TResult Function(StringVariant value)? stringValue,
+    required TResult orElse(),
+  }) {
+    if (actualFee != null) {
+      return actualFee(this);
+    }
+    return orElse();
+  }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$ActualFeeVariantImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class ActualFeeVariant implements ActualFeeOrString {
+  const factory ActualFeeVariant(final ActualFee value) =
+      _$ActualFeeVariantImpl;
+
+  factory ActualFeeVariant.fromJson(Map<String, dynamic> json) =
+      _$ActualFeeVariantImpl.fromJson;
+
+  @override
+  ActualFee get value;
+  @JsonKey(ignore: true)
+  _$$ActualFeeVariantImplCopyWith<_$ActualFeeVariantImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$StringVariantImplCopyWith<$Res> {
+  factory _$$StringVariantImplCopyWith(
+          _$StringVariantImpl value, $Res Function(_$StringVariantImpl) then) =
+      __$$StringVariantImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String value});
+}
+
+/// @nodoc
+class __$$StringVariantImplCopyWithImpl<$Res>
+    extends _$ActualFeeOrStringCopyWithImpl<$Res, _$StringVariantImpl>
+    implements _$$StringVariantImplCopyWith<$Res> {
+  __$$StringVariantImplCopyWithImpl(
+      _$StringVariantImpl _value, $Res Function(_$StringVariantImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? value = null,
+  }) {
+    return _then(_$StringVariantImpl(
+      null == value
+          ? _value.value
+          : value // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$StringVariantImpl implements StringVariant {
+  const _$StringVariantImpl(this.value, {final String? $type})
+      : $type = $type ?? 'stringValue';
+
+  factory _$StringVariantImpl.fromJson(Map<String, dynamic> json) =>
+      _$$StringVariantImplFromJson(json);
+
+  @override
+  final String value;
+
+  @JsonKey(name: 'starkNetRuntimeTypeToRemove')
+  final String $type;
+
+  @override
+  String toString() {
+    return 'ActualFeeOrString.stringValue(value: $value)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$StringVariantImpl &&
+            (identical(other.value, value) || other.value == value));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(runtimeType, value);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$StringVariantImplCopyWith<_$StringVariantImpl> get copyWith =>
+      __$$StringVariantImplCopyWithImpl<_$StringVariantImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(ActualFee value) actualFee,
+    required TResult Function(String value) stringValue,
+  }) {
+    return stringValue(value);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(ActualFee value)? actualFee,
+    TResult? Function(String value)? stringValue,
+  }) {
+    return stringValue?.call(value);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(ActualFee value)? actualFee,
+    TResult Function(String value)? stringValue,
+    required TResult orElse(),
+  }) {
+    if (stringValue != null) {
+      return stringValue(value);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(ActualFeeVariant value) actualFee,
+    required TResult Function(StringVariant value) stringValue,
+  }) {
+    return stringValue(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(ActualFeeVariant value)? actualFee,
+    TResult? Function(StringVariant value)? stringValue,
+  }) {
+    return stringValue?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(ActualFeeVariant value)? actualFee,
+    TResult Function(StringVariant value)? stringValue,
+    required TResult orElse(),
+  }) {
+    if (stringValue != null) {
+      return stringValue(this);
+    }
+    return orElse();
+  }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$StringVariantImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class StringVariant implements ActualFeeOrString {
+  const factory StringVariant(final String value) = _$StringVariantImpl;
+
+  factory StringVariant.fromJson(Map<String, dynamic> json) =
+      _$StringVariantImpl.fromJson;
+
+  @override
+  String get value;
+  @JsonKey(ignore: true)
+  _$$StringVariantImplCopyWith<_$StringVariantImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
 TxnReceipt _$TxnReceiptFromJson(Map<String, dynamic> json) {
   switch (json['starkNetRuntimeTypeToRemove']) {
     case 'invokeTxnReceipt':
@@ -460,7 +854,7 @@ TxnReceipt _$TxnReceiptFromJson(Map<String, dynamic> json) {
 mixin _$TxnReceipt {
 // start of COMMON_RECEIPT_PROPERTIES
   Felt get transactionHash => throw _privateConstructorUsedError;
-  ActualFee get actualFee => throw _privateConstructorUsedError;
+  ActualFeeOrString get actualFee => throw _privateConstructorUsedError;
   String? get type => throw _privateConstructorUsedError;
   List<MsgToL1> get messagesSent => throw _privateConstructorUsedError;
   List<Event> get events => throw _privateConstructorUsedError;
@@ -468,7 +862,7 @@ mixin _$TxnReceipt {
   TResult when<TResult extends Object?>({
     required TResult Function(
             Felt transactionHash,
-            ActualFee actualFee,
+            ActualFeeOrString actualFee,
             String execution_status,
             String finality_status,
             Felt? blockHash,
@@ -479,7 +873,7 @@ mixin _$TxnReceipt {
         invokeTxnReceipt,
     required TResult Function(
             Felt transactionHash,
-            ActualFee actualFee,
+            ActualFeeOrString actualFee,
             String execution_status,
             String finality_status,
             Felt? blockHash,
@@ -490,7 +884,7 @@ mixin _$TxnReceipt {
         declareTxnReceipt,
     required TResult Function(
             Felt transactionHash,
-            ActualFee actualFee,
+            ActualFeeOrString actualFee,
             String execution_status,
             String finality_status,
             Felt? blockHash,
@@ -501,7 +895,7 @@ mixin _$TxnReceipt {
         l1HandlerTxnReceipt,
     required TResult Function(
             Felt transactionHash,
-            ActualFee actualFee,
+            ActualFeeOrString actualFee,
             String execution_status,
             String finality_status,
             Felt? blockHash,
@@ -512,7 +906,7 @@ mixin _$TxnReceipt {
         deployTxnReceipt,
     required TResult Function(
             Felt transactionHash,
-            ActualFee actualFee,
+            ActualFeeOrString actualFee,
             String execution_status,
             String finality_status,
             Felt? blockHash,
@@ -521,10 +915,10 @@ mixin _$TxnReceipt {
             List<MsgToL1> messagesSent,
             List<Event> events)
         deployAccountTxnReceipt,
-    required TResult Function(Felt transactionHash, ActualFee actualFee,
+    required TResult Function(Felt transactionHash, ActualFeeOrString actualFee,
             String? type, List<MsgToL1> messagesSent, List<Event> events)
         pendingDeployTxnReceipt,
-    required TResult Function(Felt transactionHash, ActualFee actualFee,
+    required TResult Function(Felt transactionHash, ActualFeeOrString actualFee,
             String? type, List<MsgToL1> messagesSent, List<Event> events)
         pendingCommonReceiptProperties,
   }) =>
@@ -533,7 +927,7 @@ mixin _$TxnReceipt {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(
             Felt transactionHash,
-            ActualFee actualFee,
+            ActualFeeOrString actualFee,
             String execution_status,
             String finality_status,
             Felt? blockHash,
@@ -544,7 +938,7 @@ mixin _$TxnReceipt {
         invokeTxnReceipt,
     TResult? Function(
             Felt transactionHash,
-            ActualFee actualFee,
+            ActualFeeOrString actualFee,
             String execution_status,
             String finality_status,
             Felt? blockHash,
@@ -555,7 +949,7 @@ mixin _$TxnReceipt {
         declareTxnReceipt,
     TResult? Function(
             Felt transactionHash,
-            ActualFee actualFee,
+            ActualFeeOrString actualFee,
             String execution_status,
             String finality_status,
             Felt? blockHash,
@@ -566,7 +960,7 @@ mixin _$TxnReceipt {
         l1HandlerTxnReceipt,
     TResult? Function(
             Felt transactionHash,
-            ActualFee actualFee,
+            ActualFeeOrString actualFee,
             String execution_status,
             String finality_status,
             Felt? blockHash,
@@ -577,7 +971,7 @@ mixin _$TxnReceipt {
         deployTxnReceipt,
     TResult? Function(
             Felt transactionHash,
-            ActualFee actualFee,
+            ActualFeeOrString actualFee,
             String execution_status,
             String finality_status,
             Felt? blockHash,
@@ -586,11 +980,11 @@ mixin _$TxnReceipt {
             List<MsgToL1> messagesSent,
             List<Event> events)?
         deployAccountTxnReceipt,
-    TResult? Function(Felt transactionHash, ActualFee actualFee, String? type,
-            List<MsgToL1> messagesSent, List<Event> events)?
+    TResult? Function(Felt transactionHash, ActualFeeOrString actualFee,
+            String? type, List<MsgToL1> messagesSent, List<Event> events)?
         pendingDeployTxnReceipt,
-    TResult? Function(Felt transactionHash, ActualFee actualFee, String? type,
-            List<MsgToL1> messagesSent, List<Event> events)?
+    TResult? Function(Felt transactionHash, ActualFeeOrString actualFee,
+            String? type, List<MsgToL1> messagesSent, List<Event> events)?
         pendingCommonReceiptProperties,
   }) =>
       throw _privateConstructorUsedError;
@@ -598,7 +992,7 @@ mixin _$TxnReceipt {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(
             Felt transactionHash,
-            ActualFee actualFee,
+            ActualFeeOrString actualFee,
             String execution_status,
             String finality_status,
             Felt? blockHash,
@@ -609,7 +1003,7 @@ mixin _$TxnReceipt {
         invokeTxnReceipt,
     TResult Function(
             Felt transactionHash,
-            ActualFee actualFee,
+            ActualFeeOrString actualFee,
             String execution_status,
             String finality_status,
             Felt? blockHash,
@@ -620,7 +1014,7 @@ mixin _$TxnReceipt {
         declareTxnReceipt,
     TResult Function(
             Felt transactionHash,
-            ActualFee actualFee,
+            ActualFeeOrString actualFee,
             String execution_status,
             String finality_status,
             Felt? blockHash,
@@ -631,7 +1025,7 @@ mixin _$TxnReceipt {
         l1HandlerTxnReceipt,
     TResult Function(
             Felt transactionHash,
-            ActualFee actualFee,
+            ActualFeeOrString actualFee,
             String execution_status,
             String finality_status,
             Felt? blockHash,
@@ -642,7 +1036,7 @@ mixin _$TxnReceipt {
         deployTxnReceipt,
     TResult Function(
             Felt transactionHash,
-            ActualFee actualFee,
+            ActualFeeOrString actualFee,
             String execution_status,
             String finality_status,
             Felt? blockHash,
@@ -651,11 +1045,11 @@ mixin _$TxnReceipt {
             List<MsgToL1> messagesSent,
             List<Event> events)?
         deployAccountTxnReceipt,
-    TResult Function(Felt transactionHash, ActualFee actualFee, String? type,
-            List<MsgToL1> messagesSent, List<Event> events)?
+    TResult Function(Felt transactionHash, ActualFeeOrString actualFee,
+            String? type, List<MsgToL1> messagesSent, List<Event> events)?
         pendingDeployTxnReceipt,
-    TResult Function(Felt transactionHash, ActualFee actualFee, String? type,
-            List<MsgToL1> messagesSent, List<Event> events)?
+    TResult Function(Felt transactionHash, ActualFeeOrString actualFee,
+            String? type, List<MsgToL1> messagesSent, List<Event> events)?
         pendingCommonReceiptProperties,
     required TResult orElse(),
   }) =>
@@ -713,12 +1107,12 @@ abstract class $TxnReceiptCopyWith<$Res> {
   @useResult
   $Res call(
       {Felt transactionHash,
-      ActualFee actualFee,
+      ActualFeeOrString actualFee,
       String type,
       List<MsgToL1> messagesSent,
       List<Event> events});
 
-  $ActualFeeCopyWith<$Res> get actualFee;
+  $ActualFeeOrStringCopyWith<$Res> get actualFee;
 }
 
 /// @nodoc
@@ -748,7 +1142,7 @@ class _$TxnReceiptCopyWithImpl<$Res, $Val extends TxnReceipt>
       actualFee: null == actualFee
           ? _value.actualFee
           : actualFee // ignore: cast_nullable_to_non_nullable
-              as ActualFee,
+              as ActualFeeOrString,
       type: null == type
           ? _value.type!
           : type // ignore: cast_nullable_to_non_nullable
@@ -766,8 +1160,8 @@ class _$TxnReceiptCopyWithImpl<$Res, $Val extends TxnReceipt>
 
   @override
   @pragma('vm:prefer-inline')
-  $ActualFeeCopyWith<$Res> get actualFee {
-    return $ActualFeeCopyWith<$Res>(_value.actualFee, (value) {
+  $ActualFeeOrStringCopyWith<$Res> get actualFee {
+    return $ActualFeeOrStringCopyWith<$Res>(_value.actualFee, (value) {
       return _then(_value.copyWith(actualFee: value) as $Val);
     });
   }
@@ -783,7 +1177,7 @@ abstract class _$$InvokeTxnReceiptImplCopyWith<$Res>
   @useResult
   $Res call(
       {Felt transactionHash,
-      ActualFee actualFee,
+      ActualFeeOrString actualFee,
       String execution_status,
       String finality_status,
       Felt? blockHash,
@@ -793,7 +1187,7 @@ abstract class _$$InvokeTxnReceiptImplCopyWith<$Res>
       List<Event> events});
 
   @override
-  $ActualFeeCopyWith<$Res> get actualFee;
+  $ActualFeeOrStringCopyWith<$Res> get actualFee;
 }
 
 /// @nodoc
@@ -825,7 +1219,7 @@ class __$$InvokeTxnReceiptImplCopyWithImpl<$Res>
       actualFee: null == actualFee
           ? _value.actualFee
           : actualFee // ignore: cast_nullable_to_non_nullable
-              as ActualFee,
+              as ActualFeeOrString,
       execution_status: null == execution_status
           ? _value.execution_status
           : execution_status // ignore: cast_nullable_to_non_nullable
@@ -883,7 +1277,7 @@ class _$InvokeTxnReceiptImpl implements InvokeTxnReceipt {
   @override
   final Felt transactionHash;
   @override
-  final ActualFee actualFee;
+  final ActualFeeOrString actualFee;
   @override
   final String execution_status;
   @override
@@ -967,7 +1361,7 @@ class _$InvokeTxnReceiptImpl implements InvokeTxnReceipt {
   TResult when<TResult extends Object?>({
     required TResult Function(
             Felt transactionHash,
-            ActualFee actualFee,
+            ActualFeeOrString actualFee,
             String execution_status,
             String finality_status,
             Felt? blockHash,
@@ -978,7 +1372,7 @@ class _$InvokeTxnReceiptImpl implements InvokeTxnReceipt {
         invokeTxnReceipt,
     required TResult Function(
             Felt transactionHash,
-            ActualFee actualFee,
+            ActualFeeOrString actualFee,
             String execution_status,
             String finality_status,
             Felt? blockHash,
@@ -989,7 +1383,7 @@ class _$InvokeTxnReceiptImpl implements InvokeTxnReceipt {
         declareTxnReceipt,
     required TResult Function(
             Felt transactionHash,
-            ActualFee actualFee,
+            ActualFeeOrString actualFee,
             String execution_status,
             String finality_status,
             Felt? blockHash,
@@ -1000,7 +1394,7 @@ class _$InvokeTxnReceiptImpl implements InvokeTxnReceipt {
         l1HandlerTxnReceipt,
     required TResult Function(
             Felt transactionHash,
-            ActualFee actualFee,
+            ActualFeeOrString actualFee,
             String execution_status,
             String finality_status,
             Felt? blockHash,
@@ -1011,7 +1405,7 @@ class _$InvokeTxnReceiptImpl implements InvokeTxnReceipt {
         deployTxnReceipt,
     required TResult Function(
             Felt transactionHash,
-            ActualFee actualFee,
+            ActualFeeOrString actualFee,
             String execution_status,
             String finality_status,
             Felt? blockHash,
@@ -1020,10 +1414,10 @@ class _$InvokeTxnReceiptImpl implements InvokeTxnReceipt {
             List<MsgToL1> messagesSent,
             List<Event> events)
         deployAccountTxnReceipt,
-    required TResult Function(Felt transactionHash, ActualFee actualFee,
+    required TResult Function(Felt transactionHash, ActualFeeOrString actualFee,
             String? type, List<MsgToL1> messagesSent, List<Event> events)
         pendingDeployTxnReceipt,
-    required TResult Function(Felt transactionHash, ActualFee actualFee,
+    required TResult Function(Felt transactionHash, ActualFeeOrString actualFee,
             String? type, List<MsgToL1> messagesSent, List<Event> events)
         pendingCommonReceiptProperties,
   }) {
@@ -1036,7 +1430,7 @@ class _$InvokeTxnReceiptImpl implements InvokeTxnReceipt {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(
             Felt transactionHash,
-            ActualFee actualFee,
+            ActualFeeOrString actualFee,
             String execution_status,
             String finality_status,
             Felt? blockHash,
@@ -1047,7 +1441,7 @@ class _$InvokeTxnReceiptImpl implements InvokeTxnReceipt {
         invokeTxnReceipt,
     TResult? Function(
             Felt transactionHash,
-            ActualFee actualFee,
+            ActualFeeOrString actualFee,
             String execution_status,
             String finality_status,
             Felt? blockHash,
@@ -1058,7 +1452,7 @@ class _$InvokeTxnReceiptImpl implements InvokeTxnReceipt {
         declareTxnReceipt,
     TResult? Function(
             Felt transactionHash,
-            ActualFee actualFee,
+            ActualFeeOrString actualFee,
             String execution_status,
             String finality_status,
             Felt? blockHash,
@@ -1069,7 +1463,7 @@ class _$InvokeTxnReceiptImpl implements InvokeTxnReceipt {
         l1HandlerTxnReceipt,
     TResult? Function(
             Felt transactionHash,
-            ActualFee actualFee,
+            ActualFeeOrString actualFee,
             String execution_status,
             String finality_status,
             Felt? blockHash,
@@ -1080,7 +1474,7 @@ class _$InvokeTxnReceiptImpl implements InvokeTxnReceipt {
         deployTxnReceipt,
     TResult? Function(
             Felt transactionHash,
-            ActualFee actualFee,
+            ActualFeeOrString actualFee,
             String execution_status,
             String finality_status,
             Felt? blockHash,
@@ -1089,11 +1483,11 @@ class _$InvokeTxnReceiptImpl implements InvokeTxnReceipt {
             List<MsgToL1> messagesSent,
             List<Event> events)?
         deployAccountTxnReceipt,
-    TResult? Function(Felt transactionHash, ActualFee actualFee, String? type,
-            List<MsgToL1> messagesSent, List<Event> events)?
+    TResult? Function(Felt transactionHash, ActualFeeOrString actualFee,
+            String? type, List<MsgToL1> messagesSent, List<Event> events)?
         pendingDeployTxnReceipt,
-    TResult? Function(Felt transactionHash, ActualFee actualFee, String? type,
-            List<MsgToL1> messagesSent, List<Event> events)?
+    TResult? Function(Felt transactionHash, ActualFeeOrString actualFee,
+            String? type, List<MsgToL1> messagesSent, List<Event> events)?
         pendingCommonReceiptProperties,
   }) {
     return invokeTxnReceipt?.call(transactionHash, actualFee, execution_status,
@@ -1105,7 +1499,7 @@ class _$InvokeTxnReceiptImpl implements InvokeTxnReceipt {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(
             Felt transactionHash,
-            ActualFee actualFee,
+            ActualFeeOrString actualFee,
             String execution_status,
             String finality_status,
             Felt? blockHash,
@@ -1116,7 +1510,7 @@ class _$InvokeTxnReceiptImpl implements InvokeTxnReceipt {
         invokeTxnReceipt,
     TResult Function(
             Felt transactionHash,
-            ActualFee actualFee,
+            ActualFeeOrString actualFee,
             String execution_status,
             String finality_status,
             Felt? blockHash,
@@ -1127,7 +1521,7 @@ class _$InvokeTxnReceiptImpl implements InvokeTxnReceipt {
         declareTxnReceipt,
     TResult Function(
             Felt transactionHash,
-            ActualFee actualFee,
+            ActualFeeOrString actualFee,
             String execution_status,
             String finality_status,
             Felt? blockHash,
@@ -1138,7 +1532,7 @@ class _$InvokeTxnReceiptImpl implements InvokeTxnReceipt {
         l1HandlerTxnReceipt,
     TResult Function(
             Felt transactionHash,
-            ActualFee actualFee,
+            ActualFeeOrString actualFee,
             String execution_status,
             String finality_status,
             Felt? blockHash,
@@ -1149,7 +1543,7 @@ class _$InvokeTxnReceiptImpl implements InvokeTxnReceipt {
         deployTxnReceipt,
     TResult Function(
             Felt transactionHash,
-            ActualFee actualFee,
+            ActualFeeOrString actualFee,
             String execution_status,
             String finality_status,
             Felt? blockHash,
@@ -1158,11 +1552,11 @@ class _$InvokeTxnReceiptImpl implements InvokeTxnReceipt {
             List<MsgToL1> messagesSent,
             List<Event> events)?
         deployAccountTxnReceipt,
-    TResult Function(Felt transactionHash, ActualFee actualFee, String? type,
-            List<MsgToL1> messagesSent, List<Event> events)?
+    TResult Function(Felt transactionHash, ActualFeeOrString actualFee,
+            String? type, List<MsgToL1> messagesSent, List<Event> events)?
         pendingDeployTxnReceipt,
-    TResult Function(Felt transactionHash, ActualFee actualFee, String? type,
-            List<MsgToL1> messagesSent, List<Event> events)?
+    TResult Function(Felt transactionHash, ActualFeeOrString actualFee,
+            String? type, List<MsgToL1> messagesSent, List<Event> events)?
         pendingCommonReceiptProperties,
     required TResult orElse(),
   }) {
@@ -1235,7 +1629,7 @@ class _$InvokeTxnReceiptImpl implements InvokeTxnReceipt {
 abstract class InvokeTxnReceipt implements TxnReceipt {
   const factory InvokeTxnReceipt(
       {required final Felt transactionHash,
-      required final ActualFee actualFee,
+      required final ActualFeeOrString actualFee,
       required final String execution_status,
       required final String finality_status,
       final Felt? blockHash,
@@ -1250,7 +1644,7 @@ abstract class InvokeTxnReceipt implements TxnReceipt {
   @override // start of COMMON_RECEIPT_PROPERTIES
   Felt get transactionHash;
   @override
-  ActualFee get actualFee;
+  ActualFeeOrString get actualFee;
   String get execution_status;
   String get finality_status;
   Felt? get blockHash;
@@ -1277,7 +1671,7 @@ abstract class _$$DeclareTxnReceiptImplCopyWith<$Res>
   @useResult
   $Res call(
       {Felt transactionHash,
-      ActualFee actualFee,
+      ActualFeeOrString actualFee,
       String execution_status,
       String finality_status,
       Felt? blockHash,
@@ -1287,7 +1681,7 @@ abstract class _$$DeclareTxnReceiptImplCopyWith<$Res>
       List<Event> events});
 
   @override
-  $ActualFeeCopyWith<$Res> get actualFee;
+  $ActualFeeOrStringCopyWith<$Res> get actualFee;
 }
 
 /// @nodoc
@@ -1319,7 +1713,7 @@ class __$$DeclareTxnReceiptImplCopyWithImpl<$Res>
       actualFee: null == actualFee
           ? _value.actualFee
           : actualFee // ignore: cast_nullable_to_non_nullable
-              as ActualFee,
+              as ActualFeeOrString,
       execution_status: null == execution_status
           ? _value.execution_status
           : execution_status // ignore: cast_nullable_to_non_nullable
@@ -1377,7 +1771,7 @@ class _$DeclareTxnReceiptImpl implements DeclareTxnReceipt {
   @override
   final Felt transactionHash;
   @override
-  final ActualFee actualFee;
+  final ActualFeeOrString actualFee;
   @override
   final String execution_status;
   @override
@@ -1461,7 +1855,7 @@ class _$DeclareTxnReceiptImpl implements DeclareTxnReceipt {
   TResult when<TResult extends Object?>({
     required TResult Function(
             Felt transactionHash,
-            ActualFee actualFee,
+            ActualFeeOrString actualFee,
             String execution_status,
             String finality_status,
             Felt? blockHash,
@@ -1472,7 +1866,7 @@ class _$DeclareTxnReceiptImpl implements DeclareTxnReceipt {
         invokeTxnReceipt,
     required TResult Function(
             Felt transactionHash,
-            ActualFee actualFee,
+            ActualFeeOrString actualFee,
             String execution_status,
             String finality_status,
             Felt? blockHash,
@@ -1483,7 +1877,7 @@ class _$DeclareTxnReceiptImpl implements DeclareTxnReceipt {
         declareTxnReceipt,
     required TResult Function(
             Felt transactionHash,
-            ActualFee actualFee,
+            ActualFeeOrString actualFee,
             String execution_status,
             String finality_status,
             Felt? blockHash,
@@ -1494,7 +1888,7 @@ class _$DeclareTxnReceiptImpl implements DeclareTxnReceipt {
         l1HandlerTxnReceipt,
     required TResult Function(
             Felt transactionHash,
-            ActualFee actualFee,
+            ActualFeeOrString actualFee,
             String execution_status,
             String finality_status,
             Felt? blockHash,
@@ -1505,7 +1899,7 @@ class _$DeclareTxnReceiptImpl implements DeclareTxnReceipt {
         deployTxnReceipt,
     required TResult Function(
             Felt transactionHash,
-            ActualFee actualFee,
+            ActualFeeOrString actualFee,
             String execution_status,
             String finality_status,
             Felt? blockHash,
@@ -1514,10 +1908,10 @@ class _$DeclareTxnReceiptImpl implements DeclareTxnReceipt {
             List<MsgToL1> messagesSent,
             List<Event> events)
         deployAccountTxnReceipt,
-    required TResult Function(Felt transactionHash, ActualFee actualFee,
+    required TResult Function(Felt transactionHash, ActualFeeOrString actualFee,
             String? type, List<MsgToL1> messagesSent, List<Event> events)
         pendingDeployTxnReceipt,
-    required TResult Function(Felt transactionHash, ActualFee actualFee,
+    required TResult Function(Felt transactionHash, ActualFeeOrString actualFee,
             String? type, List<MsgToL1> messagesSent, List<Event> events)
         pendingCommonReceiptProperties,
   }) {
@@ -1530,7 +1924,7 @@ class _$DeclareTxnReceiptImpl implements DeclareTxnReceipt {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(
             Felt transactionHash,
-            ActualFee actualFee,
+            ActualFeeOrString actualFee,
             String execution_status,
             String finality_status,
             Felt? blockHash,
@@ -1541,7 +1935,7 @@ class _$DeclareTxnReceiptImpl implements DeclareTxnReceipt {
         invokeTxnReceipt,
     TResult? Function(
             Felt transactionHash,
-            ActualFee actualFee,
+            ActualFeeOrString actualFee,
             String execution_status,
             String finality_status,
             Felt? blockHash,
@@ -1552,7 +1946,7 @@ class _$DeclareTxnReceiptImpl implements DeclareTxnReceipt {
         declareTxnReceipt,
     TResult? Function(
             Felt transactionHash,
-            ActualFee actualFee,
+            ActualFeeOrString actualFee,
             String execution_status,
             String finality_status,
             Felt? blockHash,
@@ -1563,7 +1957,7 @@ class _$DeclareTxnReceiptImpl implements DeclareTxnReceipt {
         l1HandlerTxnReceipt,
     TResult? Function(
             Felt transactionHash,
-            ActualFee actualFee,
+            ActualFeeOrString actualFee,
             String execution_status,
             String finality_status,
             Felt? blockHash,
@@ -1574,7 +1968,7 @@ class _$DeclareTxnReceiptImpl implements DeclareTxnReceipt {
         deployTxnReceipt,
     TResult? Function(
             Felt transactionHash,
-            ActualFee actualFee,
+            ActualFeeOrString actualFee,
             String execution_status,
             String finality_status,
             Felt? blockHash,
@@ -1583,11 +1977,11 @@ class _$DeclareTxnReceiptImpl implements DeclareTxnReceipt {
             List<MsgToL1> messagesSent,
             List<Event> events)?
         deployAccountTxnReceipt,
-    TResult? Function(Felt transactionHash, ActualFee actualFee, String? type,
-            List<MsgToL1> messagesSent, List<Event> events)?
+    TResult? Function(Felt transactionHash, ActualFeeOrString actualFee,
+            String? type, List<MsgToL1> messagesSent, List<Event> events)?
         pendingDeployTxnReceipt,
-    TResult? Function(Felt transactionHash, ActualFee actualFee, String? type,
-            List<MsgToL1> messagesSent, List<Event> events)?
+    TResult? Function(Felt transactionHash, ActualFeeOrString actualFee,
+            String? type, List<MsgToL1> messagesSent, List<Event> events)?
         pendingCommonReceiptProperties,
   }) {
     return declareTxnReceipt?.call(transactionHash, actualFee, execution_status,
@@ -1599,7 +1993,7 @@ class _$DeclareTxnReceiptImpl implements DeclareTxnReceipt {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(
             Felt transactionHash,
-            ActualFee actualFee,
+            ActualFeeOrString actualFee,
             String execution_status,
             String finality_status,
             Felt? blockHash,
@@ -1610,7 +2004,7 @@ class _$DeclareTxnReceiptImpl implements DeclareTxnReceipt {
         invokeTxnReceipt,
     TResult Function(
             Felt transactionHash,
-            ActualFee actualFee,
+            ActualFeeOrString actualFee,
             String execution_status,
             String finality_status,
             Felt? blockHash,
@@ -1621,7 +2015,7 @@ class _$DeclareTxnReceiptImpl implements DeclareTxnReceipt {
         declareTxnReceipt,
     TResult Function(
             Felt transactionHash,
-            ActualFee actualFee,
+            ActualFeeOrString actualFee,
             String execution_status,
             String finality_status,
             Felt? blockHash,
@@ -1632,7 +2026,7 @@ class _$DeclareTxnReceiptImpl implements DeclareTxnReceipt {
         l1HandlerTxnReceipt,
     TResult Function(
             Felt transactionHash,
-            ActualFee actualFee,
+            ActualFeeOrString actualFee,
             String execution_status,
             String finality_status,
             Felt? blockHash,
@@ -1643,7 +2037,7 @@ class _$DeclareTxnReceiptImpl implements DeclareTxnReceipt {
         deployTxnReceipt,
     TResult Function(
             Felt transactionHash,
-            ActualFee actualFee,
+            ActualFeeOrString actualFee,
             String execution_status,
             String finality_status,
             Felt? blockHash,
@@ -1652,11 +2046,11 @@ class _$DeclareTxnReceiptImpl implements DeclareTxnReceipt {
             List<MsgToL1> messagesSent,
             List<Event> events)?
         deployAccountTxnReceipt,
-    TResult Function(Felt transactionHash, ActualFee actualFee, String? type,
-            List<MsgToL1> messagesSent, List<Event> events)?
+    TResult Function(Felt transactionHash, ActualFeeOrString actualFee,
+            String? type, List<MsgToL1> messagesSent, List<Event> events)?
         pendingDeployTxnReceipt,
-    TResult Function(Felt transactionHash, ActualFee actualFee, String? type,
-            List<MsgToL1> messagesSent, List<Event> events)?
+    TResult Function(Felt transactionHash, ActualFeeOrString actualFee,
+            String? type, List<MsgToL1> messagesSent, List<Event> events)?
         pendingCommonReceiptProperties,
     required TResult orElse(),
   }) {
@@ -1729,7 +2123,7 @@ class _$DeclareTxnReceiptImpl implements DeclareTxnReceipt {
 abstract class DeclareTxnReceipt implements TxnReceipt {
   const factory DeclareTxnReceipt(
       {required final Felt transactionHash,
-      required final ActualFee actualFee,
+      required final ActualFeeOrString actualFee,
       required final String execution_status,
       required final String finality_status,
       final Felt? blockHash,
@@ -1744,7 +2138,7 @@ abstract class DeclareTxnReceipt implements TxnReceipt {
   @override // start of COMMON_RECEIPT_PROPERTIES
   Felt get transactionHash;
   @override
-  ActualFee get actualFee;
+  ActualFeeOrString get actualFee;
   String get execution_status;
   String get finality_status;
   Felt? get blockHash;
@@ -1771,7 +2165,7 @@ abstract class _$$L1HandlerTxnReceiptImplCopyWith<$Res>
   @useResult
   $Res call(
       {Felt transactionHash,
-      ActualFee actualFee,
+      ActualFeeOrString actualFee,
       String execution_status,
       String finality_status,
       Felt? blockHash,
@@ -1781,7 +2175,7 @@ abstract class _$$L1HandlerTxnReceiptImplCopyWith<$Res>
       List<Event> events});
 
   @override
-  $ActualFeeCopyWith<$Res> get actualFee;
+  $ActualFeeOrStringCopyWith<$Res> get actualFee;
 }
 
 /// @nodoc
@@ -1813,7 +2207,7 @@ class __$$L1HandlerTxnReceiptImplCopyWithImpl<$Res>
       actualFee: null == actualFee
           ? _value.actualFee
           : actualFee // ignore: cast_nullable_to_non_nullable
-              as ActualFee,
+              as ActualFeeOrString,
       execution_status: null == execution_status
           ? _value.execution_status
           : execution_status // ignore: cast_nullable_to_non_nullable
@@ -1871,7 +2265,7 @@ class _$L1HandlerTxnReceiptImpl implements L1HandlerTxnReceipt {
   @override
   final Felt transactionHash;
   @override
-  final ActualFee actualFee;
+  final ActualFeeOrString actualFee;
   @override
   final String execution_status;
   @override
@@ -1955,7 +2349,7 @@ class _$L1HandlerTxnReceiptImpl implements L1HandlerTxnReceipt {
   TResult when<TResult extends Object?>({
     required TResult Function(
             Felt transactionHash,
-            ActualFee actualFee,
+            ActualFeeOrString actualFee,
             String execution_status,
             String finality_status,
             Felt? blockHash,
@@ -1966,7 +2360,7 @@ class _$L1HandlerTxnReceiptImpl implements L1HandlerTxnReceipt {
         invokeTxnReceipt,
     required TResult Function(
             Felt transactionHash,
-            ActualFee actualFee,
+            ActualFeeOrString actualFee,
             String execution_status,
             String finality_status,
             Felt? blockHash,
@@ -1977,7 +2371,7 @@ class _$L1HandlerTxnReceiptImpl implements L1HandlerTxnReceipt {
         declareTxnReceipt,
     required TResult Function(
             Felt transactionHash,
-            ActualFee actualFee,
+            ActualFeeOrString actualFee,
             String execution_status,
             String finality_status,
             Felt? blockHash,
@@ -1988,7 +2382,7 @@ class _$L1HandlerTxnReceiptImpl implements L1HandlerTxnReceipt {
         l1HandlerTxnReceipt,
     required TResult Function(
             Felt transactionHash,
-            ActualFee actualFee,
+            ActualFeeOrString actualFee,
             String execution_status,
             String finality_status,
             Felt? blockHash,
@@ -1999,7 +2393,7 @@ class _$L1HandlerTxnReceiptImpl implements L1HandlerTxnReceipt {
         deployTxnReceipt,
     required TResult Function(
             Felt transactionHash,
-            ActualFee actualFee,
+            ActualFeeOrString actualFee,
             String execution_status,
             String finality_status,
             Felt? blockHash,
@@ -2008,10 +2402,10 @@ class _$L1HandlerTxnReceiptImpl implements L1HandlerTxnReceipt {
             List<MsgToL1> messagesSent,
             List<Event> events)
         deployAccountTxnReceipt,
-    required TResult Function(Felt transactionHash, ActualFee actualFee,
+    required TResult Function(Felt transactionHash, ActualFeeOrString actualFee,
             String? type, List<MsgToL1> messagesSent, List<Event> events)
         pendingDeployTxnReceipt,
-    required TResult Function(Felt transactionHash, ActualFee actualFee,
+    required TResult Function(Felt transactionHash, ActualFeeOrString actualFee,
             String? type, List<MsgToL1> messagesSent, List<Event> events)
         pendingCommonReceiptProperties,
   }) {
@@ -2024,7 +2418,7 @@ class _$L1HandlerTxnReceiptImpl implements L1HandlerTxnReceipt {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(
             Felt transactionHash,
-            ActualFee actualFee,
+            ActualFeeOrString actualFee,
             String execution_status,
             String finality_status,
             Felt? blockHash,
@@ -2035,7 +2429,7 @@ class _$L1HandlerTxnReceiptImpl implements L1HandlerTxnReceipt {
         invokeTxnReceipt,
     TResult? Function(
             Felt transactionHash,
-            ActualFee actualFee,
+            ActualFeeOrString actualFee,
             String execution_status,
             String finality_status,
             Felt? blockHash,
@@ -2046,7 +2440,7 @@ class _$L1HandlerTxnReceiptImpl implements L1HandlerTxnReceipt {
         declareTxnReceipt,
     TResult? Function(
             Felt transactionHash,
-            ActualFee actualFee,
+            ActualFeeOrString actualFee,
             String execution_status,
             String finality_status,
             Felt? blockHash,
@@ -2057,7 +2451,7 @@ class _$L1HandlerTxnReceiptImpl implements L1HandlerTxnReceipt {
         l1HandlerTxnReceipt,
     TResult? Function(
             Felt transactionHash,
-            ActualFee actualFee,
+            ActualFeeOrString actualFee,
             String execution_status,
             String finality_status,
             Felt? blockHash,
@@ -2068,7 +2462,7 @@ class _$L1HandlerTxnReceiptImpl implements L1HandlerTxnReceipt {
         deployTxnReceipt,
     TResult? Function(
             Felt transactionHash,
-            ActualFee actualFee,
+            ActualFeeOrString actualFee,
             String execution_status,
             String finality_status,
             Felt? blockHash,
@@ -2077,11 +2471,11 @@ class _$L1HandlerTxnReceiptImpl implements L1HandlerTxnReceipt {
             List<MsgToL1> messagesSent,
             List<Event> events)?
         deployAccountTxnReceipt,
-    TResult? Function(Felt transactionHash, ActualFee actualFee, String? type,
-            List<MsgToL1> messagesSent, List<Event> events)?
+    TResult? Function(Felt transactionHash, ActualFeeOrString actualFee,
+            String? type, List<MsgToL1> messagesSent, List<Event> events)?
         pendingDeployTxnReceipt,
-    TResult? Function(Felt transactionHash, ActualFee actualFee, String? type,
-            List<MsgToL1> messagesSent, List<Event> events)?
+    TResult? Function(Felt transactionHash, ActualFeeOrString actualFee,
+            String? type, List<MsgToL1> messagesSent, List<Event> events)?
         pendingCommonReceiptProperties,
   }) {
     return l1HandlerTxnReceipt?.call(
@@ -2101,7 +2495,7 @@ class _$L1HandlerTxnReceiptImpl implements L1HandlerTxnReceipt {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(
             Felt transactionHash,
-            ActualFee actualFee,
+            ActualFeeOrString actualFee,
             String execution_status,
             String finality_status,
             Felt? blockHash,
@@ -2112,7 +2506,7 @@ class _$L1HandlerTxnReceiptImpl implements L1HandlerTxnReceipt {
         invokeTxnReceipt,
     TResult Function(
             Felt transactionHash,
-            ActualFee actualFee,
+            ActualFeeOrString actualFee,
             String execution_status,
             String finality_status,
             Felt? blockHash,
@@ -2123,7 +2517,7 @@ class _$L1HandlerTxnReceiptImpl implements L1HandlerTxnReceipt {
         declareTxnReceipt,
     TResult Function(
             Felt transactionHash,
-            ActualFee actualFee,
+            ActualFeeOrString actualFee,
             String execution_status,
             String finality_status,
             Felt? blockHash,
@@ -2134,7 +2528,7 @@ class _$L1HandlerTxnReceiptImpl implements L1HandlerTxnReceipt {
         l1HandlerTxnReceipt,
     TResult Function(
             Felt transactionHash,
-            ActualFee actualFee,
+            ActualFeeOrString actualFee,
             String execution_status,
             String finality_status,
             Felt? blockHash,
@@ -2145,7 +2539,7 @@ class _$L1HandlerTxnReceiptImpl implements L1HandlerTxnReceipt {
         deployTxnReceipt,
     TResult Function(
             Felt transactionHash,
-            ActualFee actualFee,
+            ActualFeeOrString actualFee,
             String execution_status,
             String finality_status,
             Felt? blockHash,
@@ -2154,11 +2548,11 @@ class _$L1HandlerTxnReceiptImpl implements L1HandlerTxnReceipt {
             List<MsgToL1> messagesSent,
             List<Event> events)?
         deployAccountTxnReceipt,
-    TResult Function(Felt transactionHash, ActualFee actualFee, String? type,
-            List<MsgToL1> messagesSent, List<Event> events)?
+    TResult Function(Felt transactionHash, ActualFeeOrString actualFee,
+            String? type, List<MsgToL1> messagesSent, List<Event> events)?
         pendingDeployTxnReceipt,
-    TResult Function(Felt transactionHash, ActualFee actualFee, String? type,
-            List<MsgToL1> messagesSent, List<Event> events)?
+    TResult Function(Felt transactionHash, ActualFeeOrString actualFee,
+            String? type, List<MsgToL1> messagesSent, List<Event> events)?
         pendingCommonReceiptProperties,
     required TResult orElse(),
   }) {
@@ -2231,7 +2625,7 @@ class _$L1HandlerTxnReceiptImpl implements L1HandlerTxnReceipt {
 abstract class L1HandlerTxnReceipt implements TxnReceipt {
   const factory L1HandlerTxnReceipt(
       {required final Felt transactionHash,
-      required final ActualFee actualFee,
+      required final ActualFeeOrString actualFee,
       required final String execution_status,
       required final String finality_status,
       final Felt? blockHash,
@@ -2246,7 +2640,7 @@ abstract class L1HandlerTxnReceipt implements TxnReceipt {
   @override // start of COMMON_RECEIPT_PROPERTIES
   Felt get transactionHash;
   @override
-  ActualFee get actualFee;
+  ActualFeeOrString get actualFee;
   String get execution_status;
   String get finality_status;
   Felt? get blockHash;
@@ -2273,7 +2667,7 @@ abstract class _$$DeployTxnReceiptImplCopyWith<$Res>
   @useResult
   $Res call(
       {Felt transactionHash,
-      ActualFee actualFee,
+      ActualFeeOrString actualFee,
       String execution_status,
       String finality_status,
       Felt? blockHash,
@@ -2283,7 +2677,7 @@ abstract class _$$DeployTxnReceiptImplCopyWith<$Res>
       List<Event> events});
 
   @override
-  $ActualFeeCopyWith<$Res> get actualFee;
+  $ActualFeeOrStringCopyWith<$Res> get actualFee;
 }
 
 /// @nodoc
@@ -2315,7 +2709,7 @@ class __$$DeployTxnReceiptImplCopyWithImpl<$Res>
       actualFee: null == actualFee
           ? _value.actualFee
           : actualFee // ignore: cast_nullable_to_non_nullable
-              as ActualFee,
+              as ActualFeeOrString,
       execution_status: null == execution_status
           ? _value.execution_status
           : execution_status // ignore: cast_nullable_to_non_nullable
@@ -2373,7 +2767,7 @@ class _$DeployTxnReceiptImpl implements DeployTxnReceipt {
   @override
   final Felt transactionHash;
   @override
-  final ActualFee actualFee;
+  final ActualFeeOrString actualFee;
   @override
   final String execution_status;
   @override
@@ -2457,7 +2851,7 @@ class _$DeployTxnReceiptImpl implements DeployTxnReceipt {
   TResult when<TResult extends Object?>({
     required TResult Function(
             Felt transactionHash,
-            ActualFee actualFee,
+            ActualFeeOrString actualFee,
             String execution_status,
             String finality_status,
             Felt? blockHash,
@@ -2468,7 +2862,7 @@ class _$DeployTxnReceiptImpl implements DeployTxnReceipt {
         invokeTxnReceipt,
     required TResult Function(
             Felt transactionHash,
-            ActualFee actualFee,
+            ActualFeeOrString actualFee,
             String execution_status,
             String finality_status,
             Felt? blockHash,
@@ -2479,7 +2873,7 @@ class _$DeployTxnReceiptImpl implements DeployTxnReceipt {
         declareTxnReceipt,
     required TResult Function(
             Felt transactionHash,
-            ActualFee actualFee,
+            ActualFeeOrString actualFee,
             String execution_status,
             String finality_status,
             Felt? blockHash,
@@ -2490,7 +2884,7 @@ class _$DeployTxnReceiptImpl implements DeployTxnReceipt {
         l1HandlerTxnReceipt,
     required TResult Function(
             Felt transactionHash,
-            ActualFee actualFee,
+            ActualFeeOrString actualFee,
             String execution_status,
             String finality_status,
             Felt? blockHash,
@@ -2501,7 +2895,7 @@ class _$DeployTxnReceiptImpl implements DeployTxnReceipt {
         deployTxnReceipt,
     required TResult Function(
             Felt transactionHash,
-            ActualFee actualFee,
+            ActualFeeOrString actualFee,
             String execution_status,
             String finality_status,
             Felt? blockHash,
@@ -2510,10 +2904,10 @@ class _$DeployTxnReceiptImpl implements DeployTxnReceipt {
             List<MsgToL1> messagesSent,
             List<Event> events)
         deployAccountTxnReceipt,
-    required TResult Function(Felt transactionHash, ActualFee actualFee,
+    required TResult Function(Felt transactionHash, ActualFeeOrString actualFee,
             String? type, List<MsgToL1> messagesSent, List<Event> events)
         pendingDeployTxnReceipt,
-    required TResult Function(Felt transactionHash, ActualFee actualFee,
+    required TResult Function(Felt transactionHash, ActualFeeOrString actualFee,
             String? type, List<MsgToL1> messagesSent, List<Event> events)
         pendingCommonReceiptProperties,
   }) {
@@ -2526,7 +2920,7 @@ class _$DeployTxnReceiptImpl implements DeployTxnReceipt {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(
             Felt transactionHash,
-            ActualFee actualFee,
+            ActualFeeOrString actualFee,
             String execution_status,
             String finality_status,
             Felt? blockHash,
@@ -2537,7 +2931,7 @@ class _$DeployTxnReceiptImpl implements DeployTxnReceipt {
         invokeTxnReceipt,
     TResult? Function(
             Felt transactionHash,
-            ActualFee actualFee,
+            ActualFeeOrString actualFee,
             String execution_status,
             String finality_status,
             Felt? blockHash,
@@ -2548,7 +2942,7 @@ class _$DeployTxnReceiptImpl implements DeployTxnReceipt {
         declareTxnReceipt,
     TResult? Function(
             Felt transactionHash,
-            ActualFee actualFee,
+            ActualFeeOrString actualFee,
             String execution_status,
             String finality_status,
             Felt? blockHash,
@@ -2559,7 +2953,7 @@ class _$DeployTxnReceiptImpl implements DeployTxnReceipt {
         l1HandlerTxnReceipt,
     TResult? Function(
             Felt transactionHash,
-            ActualFee actualFee,
+            ActualFeeOrString actualFee,
             String execution_status,
             String finality_status,
             Felt? blockHash,
@@ -2570,7 +2964,7 @@ class _$DeployTxnReceiptImpl implements DeployTxnReceipt {
         deployTxnReceipt,
     TResult? Function(
             Felt transactionHash,
-            ActualFee actualFee,
+            ActualFeeOrString actualFee,
             String execution_status,
             String finality_status,
             Felt? blockHash,
@@ -2579,11 +2973,11 @@ class _$DeployTxnReceiptImpl implements DeployTxnReceipt {
             List<MsgToL1> messagesSent,
             List<Event> events)?
         deployAccountTxnReceipt,
-    TResult? Function(Felt transactionHash, ActualFee actualFee, String? type,
-            List<MsgToL1> messagesSent, List<Event> events)?
+    TResult? Function(Felt transactionHash, ActualFeeOrString actualFee,
+            String? type, List<MsgToL1> messagesSent, List<Event> events)?
         pendingDeployTxnReceipt,
-    TResult? Function(Felt transactionHash, ActualFee actualFee, String? type,
-            List<MsgToL1> messagesSent, List<Event> events)?
+    TResult? Function(Felt transactionHash, ActualFeeOrString actualFee,
+            String? type, List<MsgToL1> messagesSent, List<Event> events)?
         pendingCommonReceiptProperties,
   }) {
     return deployTxnReceipt?.call(transactionHash, actualFee, execution_status,
@@ -2595,7 +2989,7 @@ class _$DeployTxnReceiptImpl implements DeployTxnReceipt {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(
             Felt transactionHash,
-            ActualFee actualFee,
+            ActualFeeOrString actualFee,
             String execution_status,
             String finality_status,
             Felt? blockHash,
@@ -2606,7 +3000,7 @@ class _$DeployTxnReceiptImpl implements DeployTxnReceipt {
         invokeTxnReceipt,
     TResult Function(
             Felt transactionHash,
-            ActualFee actualFee,
+            ActualFeeOrString actualFee,
             String execution_status,
             String finality_status,
             Felt? blockHash,
@@ -2617,7 +3011,7 @@ class _$DeployTxnReceiptImpl implements DeployTxnReceipt {
         declareTxnReceipt,
     TResult Function(
             Felt transactionHash,
-            ActualFee actualFee,
+            ActualFeeOrString actualFee,
             String execution_status,
             String finality_status,
             Felt? blockHash,
@@ -2628,7 +3022,7 @@ class _$DeployTxnReceiptImpl implements DeployTxnReceipt {
         l1HandlerTxnReceipt,
     TResult Function(
             Felt transactionHash,
-            ActualFee actualFee,
+            ActualFeeOrString actualFee,
             String execution_status,
             String finality_status,
             Felt? blockHash,
@@ -2639,7 +3033,7 @@ class _$DeployTxnReceiptImpl implements DeployTxnReceipt {
         deployTxnReceipt,
     TResult Function(
             Felt transactionHash,
-            ActualFee actualFee,
+            ActualFeeOrString actualFee,
             String execution_status,
             String finality_status,
             Felt? blockHash,
@@ -2648,11 +3042,11 @@ class _$DeployTxnReceiptImpl implements DeployTxnReceipt {
             List<MsgToL1> messagesSent,
             List<Event> events)?
         deployAccountTxnReceipt,
-    TResult Function(Felt transactionHash, ActualFee actualFee, String? type,
-            List<MsgToL1> messagesSent, List<Event> events)?
+    TResult Function(Felt transactionHash, ActualFeeOrString actualFee,
+            String? type, List<MsgToL1> messagesSent, List<Event> events)?
         pendingDeployTxnReceipt,
-    TResult Function(Felt transactionHash, ActualFee actualFee, String? type,
-            List<MsgToL1> messagesSent, List<Event> events)?
+    TResult Function(Felt transactionHash, ActualFeeOrString actualFee,
+            String? type, List<MsgToL1> messagesSent, List<Event> events)?
         pendingCommonReceiptProperties,
     required TResult orElse(),
   }) {
@@ -2725,7 +3119,7 @@ class _$DeployTxnReceiptImpl implements DeployTxnReceipt {
 abstract class DeployTxnReceipt implements TxnReceipt {
   const factory DeployTxnReceipt(
       {required final Felt transactionHash,
-      required final ActualFee actualFee,
+      required final ActualFeeOrString actualFee,
       required final String execution_status,
       required final String finality_status,
       final Felt? blockHash,
@@ -2740,7 +3134,7 @@ abstract class DeployTxnReceipt implements TxnReceipt {
   @override // start of COMMON_RECEIPT_PROPERTIES
   Felt get transactionHash;
   @override
-  ActualFee get actualFee;
+  ActualFeeOrString get actualFee;
   String get execution_status;
   String get finality_status;
   Felt? get blockHash;
@@ -2768,7 +3162,7 @@ abstract class _$$DeployAccountTxnReceiptImplCopyWith<$Res>
   @useResult
   $Res call(
       {Felt transactionHash,
-      ActualFee actualFee,
+      ActualFeeOrString actualFee,
       String execution_status,
       String finality_status,
       Felt? blockHash,
@@ -2778,7 +3172,7 @@ abstract class _$$DeployAccountTxnReceiptImplCopyWith<$Res>
       List<Event> events});
 
   @override
-  $ActualFeeCopyWith<$Res> get actualFee;
+  $ActualFeeOrStringCopyWith<$Res> get actualFee;
 }
 
 /// @nodoc
@@ -2811,7 +3205,7 @@ class __$$DeployAccountTxnReceiptImplCopyWithImpl<$Res>
       actualFee: null == actualFee
           ? _value.actualFee
           : actualFee // ignore: cast_nullable_to_non_nullable
-              as ActualFee,
+              as ActualFeeOrString,
       execution_status: null == execution_status
           ? _value.execution_status
           : execution_status // ignore: cast_nullable_to_non_nullable
@@ -2869,7 +3263,7 @@ class _$DeployAccountTxnReceiptImpl implements DeployAccountTxnReceipt {
   @override
   final Felt transactionHash;
   @override
-  final ActualFee actualFee;
+  final ActualFeeOrString actualFee;
   @override
   final String execution_status;
   @override
@@ -2953,7 +3347,7 @@ class _$DeployAccountTxnReceiptImpl implements DeployAccountTxnReceipt {
   TResult when<TResult extends Object?>({
     required TResult Function(
             Felt transactionHash,
-            ActualFee actualFee,
+            ActualFeeOrString actualFee,
             String execution_status,
             String finality_status,
             Felt? blockHash,
@@ -2964,7 +3358,7 @@ class _$DeployAccountTxnReceiptImpl implements DeployAccountTxnReceipt {
         invokeTxnReceipt,
     required TResult Function(
             Felt transactionHash,
-            ActualFee actualFee,
+            ActualFeeOrString actualFee,
             String execution_status,
             String finality_status,
             Felt? blockHash,
@@ -2975,7 +3369,7 @@ class _$DeployAccountTxnReceiptImpl implements DeployAccountTxnReceipt {
         declareTxnReceipt,
     required TResult Function(
             Felt transactionHash,
-            ActualFee actualFee,
+            ActualFeeOrString actualFee,
             String execution_status,
             String finality_status,
             Felt? blockHash,
@@ -2986,7 +3380,7 @@ class _$DeployAccountTxnReceiptImpl implements DeployAccountTxnReceipt {
         l1HandlerTxnReceipt,
     required TResult Function(
             Felt transactionHash,
-            ActualFee actualFee,
+            ActualFeeOrString actualFee,
             String execution_status,
             String finality_status,
             Felt? blockHash,
@@ -2997,7 +3391,7 @@ class _$DeployAccountTxnReceiptImpl implements DeployAccountTxnReceipt {
         deployTxnReceipt,
     required TResult Function(
             Felt transactionHash,
-            ActualFee actualFee,
+            ActualFeeOrString actualFee,
             String execution_status,
             String finality_status,
             Felt? blockHash,
@@ -3006,10 +3400,10 @@ class _$DeployAccountTxnReceiptImpl implements DeployAccountTxnReceipt {
             List<MsgToL1> messagesSent,
             List<Event> events)
         deployAccountTxnReceipt,
-    required TResult Function(Felt transactionHash, ActualFee actualFee,
+    required TResult Function(Felt transactionHash, ActualFeeOrString actualFee,
             String? type, List<MsgToL1> messagesSent, List<Event> events)
         pendingDeployTxnReceipt,
-    required TResult Function(Felt transactionHash, ActualFee actualFee,
+    required TResult Function(Felt transactionHash, ActualFeeOrString actualFee,
             String? type, List<MsgToL1> messagesSent, List<Event> events)
         pendingCommonReceiptProperties,
   }) {
@@ -3022,7 +3416,7 @@ class _$DeployAccountTxnReceiptImpl implements DeployAccountTxnReceipt {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(
             Felt transactionHash,
-            ActualFee actualFee,
+            ActualFeeOrString actualFee,
             String execution_status,
             String finality_status,
             Felt? blockHash,
@@ -3033,7 +3427,7 @@ class _$DeployAccountTxnReceiptImpl implements DeployAccountTxnReceipt {
         invokeTxnReceipt,
     TResult? Function(
             Felt transactionHash,
-            ActualFee actualFee,
+            ActualFeeOrString actualFee,
             String execution_status,
             String finality_status,
             Felt? blockHash,
@@ -3044,7 +3438,7 @@ class _$DeployAccountTxnReceiptImpl implements DeployAccountTxnReceipt {
         declareTxnReceipt,
     TResult? Function(
             Felt transactionHash,
-            ActualFee actualFee,
+            ActualFeeOrString actualFee,
             String execution_status,
             String finality_status,
             Felt? blockHash,
@@ -3055,7 +3449,7 @@ class _$DeployAccountTxnReceiptImpl implements DeployAccountTxnReceipt {
         l1HandlerTxnReceipt,
     TResult? Function(
             Felt transactionHash,
-            ActualFee actualFee,
+            ActualFeeOrString actualFee,
             String execution_status,
             String finality_status,
             Felt? blockHash,
@@ -3066,7 +3460,7 @@ class _$DeployAccountTxnReceiptImpl implements DeployAccountTxnReceipt {
         deployTxnReceipt,
     TResult? Function(
             Felt transactionHash,
-            ActualFee actualFee,
+            ActualFeeOrString actualFee,
             String execution_status,
             String finality_status,
             Felt? blockHash,
@@ -3075,11 +3469,11 @@ class _$DeployAccountTxnReceiptImpl implements DeployAccountTxnReceipt {
             List<MsgToL1> messagesSent,
             List<Event> events)?
         deployAccountTxnReceipt,
-    TResult? Function(Felt transactionHash, ActualFee actualFee, String? type,
-            List<MsgToL1> messagesSent, List<Event> events)?
+    TResult? Function(Felt transactionHash, ActualFeeOrString actualFee,
+            String? type, List<MsgToL1> messagesSent, List<Event> events)?
         pendingDeployTxnReceipt,
-    TResult? Function(Felt transactionHash, ActualFee actualFee, String? type,
-            List<MsgToL1> messagesSent, List<Event> events)?
+    TResult? Function(Felt transactionHash, ActualFeeOrString actualFee,
+            String? type, List<MsgToL1> messagesSent, List<Event> events)?
         pendingCommonReceiptProperties,
   }) {
     return deployAccountTxnReceipt?.call(
@@ -3099,7 +3493,7 @@ class _$DeployAccountTxnReceiptImpl implements DeployAccountTxnReceipt {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(
             Felt transactionHash,
-            ActualFee actualFee,
+            ActualFeeOrString actualFee,
             String execution_status,
             String finality_status,
             Felt? blockHash,
@@ -3110,7 +3504,7 @@ class _$DeployAccountTxnReceiptImpl implements DeployAccountTxnReceipt {
         invokeTxnReceipt,
     TResult Function(
             Felt transactionHash,
-            ActualFee actualFee,
+            ActualFeeOrString actualFee,
             String execution_status,
             String finality_status,
             Felt? blockHash,
@@ -3121,7 +3515,7 @@ class _$DeployAccountTxnReceiptImpl implements DeployAccountTxnReceipt {
         declareTxnReceipt,
     TResult Function(
             Felt transactionHash,
-            ActualFee actualFee,
+            ActualFeeOrString actualFee,
             String execution_status,
             String finality_status,
             Felt? blockHash,
@@ -3132,7 +3526,7 @@ class _$DeployAccountTxnReceiptImpl implements DeployAccountTxnReceipt {
         l1HandlerTxnReceipt,
     TResult Function(
             Felt transactionHash,
-            ActualFee actualFee,
+            ActualFeeOrString actualFee,
             String execution_status,
             String finality_status,
             Felt? blockHash,
@@ -3143,7 +3537,7 @@ class _$DeployAccountTxnReceiptImpl implements DeployAccountTxnReceipt {
         deployTxnReceipt,
     TResult Function(
             Felt transactionHash,
-            ActualFee actualFee,
+            ActualFeeOrString actualFee,
             String execution_status,
             String finality_status,
             Felt? blockHash,
@@ -3152,11 +3546,11 @@ class _$DeployAccountTxnReceiptImpl implements DeployAccountTxnReceipt {
             List<MsgToL1> messagesSent,
             List<Event> events)?
         deployAccountTxnReceipt,
-    TResult Function(Felt transactionHash, ActualFee actualFee, String? type,
-            List<MsgToL1> messagesSent, List<Event> events)?
+    TResult Function(Felt transactionHash, ActualFeeOrString actualFee,
+            String? type, List<MsgToL1> messagesSent, List<Event> events)?
         pendingDeployTxnReceipt,
-    TResult Function(Felt transactionHash, ActualFee actualFee, String? type,
-            List<MsgToL1> messagesSent, List<Event> events)?
+    TResult Function(Felt transactionHash, ActualFeeOrString actualFee,
+            String? type, List<MsgToL1> messagesSent, List<Event> events)?
         pendingCommonReceiptProperties,
     required TResult orElse(),
   }) {
@@ -3237,7 +3631,7 @@ class _$DeployAccountTxnReceiptImpl implements DeployAccountTxnReceipt {
 abstract class DeployAccountTxnReceipt implements TxnReceipt {
   const factory DeployAccountTxnReceipt(
       {required final Felt transactionHash,
-      required final ActualFee actualFee,
+      required final ActualFeeOrString actualFee,
       required final String execution_status,
       required final String finality_status,
       final Felt? blockHash,
@@ -3252,7 +3646,7 @@ abstract class DeployAccountTxnReceipt implements TxnReceipt {
   @override // start of COMMON_RECEIPT_PROPERTIES
   Felt get transactionHash;
   @override
-  ActualFee get actualFee;
+  ActualFeeOrString get actualFee;
   String get execution_status;
   String get finality_status;
   Felt? get blockHash;
@@ -3280,13 +3674,13 @@ abstract class _$$PendingDeployTxnReceiptImplCopyWith<$Res>
   @useResult
   $Res call(
       {Felt transactionHash,
-      ActualFee actualFee,
+      ActualFeeOrString actualFee,
       String? type,
       List<MsgToL1> messagesSent,
       List<Event> events});
 
   @override
-  $ActualFeeCopyWith<$Res> get actualFee;
+  $ActualFeeOrStringCopyWith<$Res> get actualFee;
 }
 
 /// @nodoc
@@ -3315,7 +3709,7 @@ class __$$PendingDeployTxnReceiptImplCopyWithImpl<$Res>
       actualFee: null == actualFee
           ? _value.actualFee
           : actualFee // ignore: cast_nullable_to_non_nullable
-              as ActualFee,
+              as ActualFeeOrString,
       type: freezed == type
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
@@ -3353,7 +3747,7 @@ class _$PendingDeployTxnReceiptImpl implements PendingDeployTxnReceipt {
   @override
   final Felt transactionHash;
   @override
-  final ActualFee actualFee;
+  final ActualFeeOrString actualFee;
   @override
   final String? type;
   final List<MsgToL1> _messagesSent;
@@ -3417,7 +3811,7 @@ class _$PendingDeployTxnReceiptImpl implements PendingDeployTxnReceipt {
   TResult when<TResult extends Object?>({
     required TResult Function(
             Felt transactionHash,
-            ActualFee actualFee,
+            ActualFeeOrString actualFee,
             String execution_status,
             String finality_status,
             Felt? blockHash,
@@ -3428,7 +3822,7 @@ class _$PendingDeployTxnReceiptImpl implements PendingDeployTxnReceipt {
         invokeTxnReceipt,
     required TResult Function(
             Felt transactionHash,
-            ActualFee actualFee,
+            ActualFeeOrString actualFee,
             String execution_status,
             String finality_status,
             Felt? blockHash,
@@ -3439,7 +3833,7 @@ class _$PendingDeployTxnReceiptImpl implements PendingDeployTxnReceipt {
         declareTxnReceipt,
     required TResult Function(
             Felt transactionHash,
-            ActualFee actualFee,
+            ActualFeeOrString actualFee,
             String execution_status,
             String finality_status,
             Felt? blockHash,
@@ -3450,7 +3844,7 @@ class _$PendingDeployTxnReceiptImpl implements PendingDeployTxnReceipt {
         l1HandlerTxnReceipt,
     required TResult Function(
             Felt transactionHash,
-            ActualFee actualFee,
+            ActualFeeOrString actualFee,
             String execution_status,
             String finality_status,
             Felt? blockHash,
@@ -3461,7 +3855,7 @@ class _$PendingDeployTxnReceiptImpl implements PendingDeployTxnReceipt {
         deployTxnReceipt,
     required TResult Function(
             Felt transactionHash,
-            ActualFee actualFee,
+            ActualFeeOrString actualFee,
             String execution_status,
             String finality_status,
             Felt? blockHash,
@@ -3470,10 +3864,10 @@ class _$PendingDeployTxnReceiptImpl implements PendingDeployTxnReceipt {
             List<MsgToL1> messagesSent,
             List<Event> events)
         deployAccountTxnReceipt,
-    required TResult Function(Felt transactionHash, ActualFee actualFee,
+    required TResult Function(Felt transactionHash, ActualFeeOrString actualFee,
             String? type, List<MsgToL1> messagesSent, List<Event> events)
         pendingDeployTxnReceipt,
-    required TResult Function(Felt transactionHash, ActualFee actualFee,
+    required TResult Function(Felt transactionHash, ActualFeeOrString actualFee,
             String? type, List<MsgToL1> messagesSent, List<Event> events)
         pendingCommonReceiptProperties,
   }) {
@@ -3486,7 +3880,7 @@ class _$PendingDeployTxnReceiptImpl implements PendingDeployTxnReceipt {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(
             Felt transactionHash,
-            ActualFee actualFee,
+            ActualFeeOrString actualFee,
             String execution_status,
             String finality_status,
             Felt? blockHash,
@@ -3497,7 +3891,7 @@ class _$PendingDeployTxnReceiptImpl implements PendingDeployTxnReceipt {
         invokeTxnReceipt,
     TResult? Function(
             Felt transactionHash,
-            ActualFee actualFee,
+            ActualFeeOrString actualFee,
             String execution_status,
             String finality_status,
             Felt? blockHash,
@@ -3508,7 +3902,7 @@ class _$PendingDeployTxnReceiptImpl implements PendingDeployTxnReceipt {
         declareTxnReceipt,
     TResult? Function(
             Felt transactionHash,
-            ActualFee actualFee,
+            ActualFeeOrString actualFee,
             String execution_status,
             String finality_status,
             Felt? blockHash,
@@ -3519,7 +3913,7 @@ class _$PendingDeployTxnReceiptImpl implements PendingDeployTxnReceipt {
         l1HandlerTxnReceipt,
     TResult? Function(
             Felt transactionHash,
-            ActualFee actualFee,
+            ActualFeeOrString actualFee,
             String execution_status,
             String finality_status,
             Felt? blockHash,
@@ -3530,7 +3924,7 @@ class _$PendingDeployTxnReceiptImpl implements PendingDeployTxnReceipt {
         deployTxnReceipt,
     TResult? Function(
             Felt transactionHash,
-            ActualFee actualFee,
+            ActualFeeOrString actualFee,
             String execution_status,
             String finality_status,
             Felt? blockHash,
@@ -3539,11 +3933,11 @@ class _$PendingDeployTxnReceiptImpl implements PendingDeployTxnReceipt {
             List<MsgToL1> messagesSent,
             List<Event> events)?
         deployAccountTxnReceipt,
-    TResult? Function(Felt transactionHash, ActualFee actualFee, String? type,
-            List<MsgToL1> messagesSent, List<Event> events)?
+    TResult? Function(Felt transactionHash, ActualFeeOrString actualFee,
+            String? type, List<MsgToL1> messagesSent, List<Event> events)?
         pendingDeployTxnReceipt,
-    TResult? Function(Felt transactionHash, ActualFee actualFee, String? type,
-            List<MsgToL1> messagesSent, List<Event> events)?
+    TResult? Function(Felt transactionHash, ActualFeeOrString actualFee,
+            String? type, List<MsgToL1> messagesSent, List<Event> events)?
         pendingCommonReceiptProperties,
   }) {
     return pendingDeployTxnReceipt?.call(
@@ -3555,7 +3949,7 @@ class _$PendingDeployTxnReceiptImpl implements PendingDeployTxnReceipt {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(
             Felt transactionHash,
-            ActualFee actualFee,
+            ActualFeeOrString actualFee,
             String execution_status,
             String finality_status,
             Felt? blockHash,
@@ -3566,7 +3960,7 @@ class _$PendingDeployTxnReceiptImpl implements PendingDeployTxnReceipt {
         invokeTxnReceipt,
     TResult Function(
             Felt transactionHash,
-            ActualFee actualFee,
+            ActualFeeOrString actualFee,
             String execution_status,
             String finality_status,
             Felt? blockHash,
@@ -3577,7 +3971,7 @@ class _$PendingDeployTxnReceiptImpl implements PendingDeployTxnReceipt {
         declareTxnReceipt,
     TResult Function(
             Felt transactionHash,
-            ActualFee actualFee,
+            ActualFeeOrString actualFee,
             String execution_status,
             String finality_status,
             Felt? blockHash,
@@ -3588,7 +3982,7 @@ class _$PendingDeployTxnReceiptImpl implements PendingDeployTxnReceipt {
         l1HandlerTxnReceipt,
     TResult Function(
             Felt transactionHash,
-            ActualFee actualFee,
+            ActualFeeOrString actualFee,
             String execution_status,
             String finality_status,
             Felt? blockHash,
@@ -3599,7 +3993,7 @@ class _$PendingDeployTxnReceiptImpl implements PendingDeployTxnReceipt {
         deployTxnReceipt,
     TResult Function(
             Felt transactionHash,
-            ActualFee actualFee,
+            ActualFeeOrString actualFee,
             String execution_status,
             String finality_status,
             Felt? blockHash,
@@ -3608,11 +4002,11 @@ class _$PendingDeployTxnReceiptImpl implements PendingDeployTxnReceipt {
             List<MsgToL1> messagesSent,
             List<Event> events)?
         deployAccountTxnReceipt,
-    TResult Function(Felt transactionHash, ActualFee actualFee, String? type,
-            List<MsgToL1> messagesSent, List<Event> events)?
+    TResult Function(Felt transactionHash, ActualFeeOrString actualFee,
+            String? type, List<MsgToL1> messagesSent, List<Event> events)?
         pendingDeployTxnReceipt,
-    TResult Function(Felt transactionHash, ActualFee actualFee, String? type,
-            List<MsgToL1> messagesSent, List<Event> events)?
+    TResult Function(Felt transactionHash, ActualFeeOrString actualFee,
+            String? type, List<MsgToL1> messagesSent, List<Event> events)?
         pendingCommonReceiptProperties,
     required TResult orElse(),
   }) {
@@ -3685,7 +4079,7 @@ class _$PendingDeployTxnReceiptImpl implements PendingDeployTxnReceipt {
 abstract class PendingDeployTxnReceipt implements TxnReceipt {
   const factory PendingDeployTxnReceipt(
       {required final Felt transactionHash,
-      required final ActualFee actualFee,
+      required final ActualFeeOrString actualFee,
       required final String? type,
       required final List<MsgToL1> messagesSent,
       required final List<Event> events}) = _$PendingDeployTxnReceiptImpl;
@@ -3696,7 +4090,7 @@ abstract class PendingDeployTxnReceipt implements TxnReceipt {
   @override // start of PENDING_COMMON_RECEIPT_PROPERTIES
   Felt get transactionHash;
   @override
-  ActualFee get actualFee;
+  ActualFeeOrString get actualFee;
   @override
   String? get type;
   @override
@@ -3720,13 +4114,13 @@ abstract class _$$PendingCommonReceiptPropertiesImplCopyWith<$Res>
   @useResult
   $Res call(
       {Felt transactionHash,
-      ActualFee actualFee,
+      ActualFeeOrString actualFee,
       String? type,
       List<MsgToL1> messagesSent,
       List<Event> events});
 
   @override
-  $ActualFeeCopyWith<$Res> get actualFee;
+  $ActualFeeOrStringCopyWith<$Res> get actualFee;
 }
 
 /// @nodoc
@@ -3755,7 +4149,7 @@ class __$$PendingCommonReceiptPropertiesImplCopyWithImpl<$Res>
       actualFee: null == actualFee
           ? _value.actualFee
           : actualFee // ignore: cast_nullable_to_non_nullable
-              as ActualFee,
+              as ActualFeeOrString,
       type: freezed == type
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
@@ -3795,7 +4189,7 @@ class _$PendingCommonReceiptPropertiesImpl
   @override
   final Felt transactionHash;
   @override
-  final ActualFee actualFee;
+  final ActualFeeOrString actualFee;
   @override
   final String? type;
   final List<MsgToL1> _messagesSent;
@@ -3860,7 +4254,7 @@ class _$PendingCommonReceiptPropertiesImpl
   TResult when<TResult extends Object?>({
     required TResult Function(
             Felt transactionHash,
-            ActualFee actualFee,
+            ActualFeeOrString actualFee,
             String execution_status,
             String finality_status,
             Felt? blockHash,
@@ -3871,7 +4265,7 @@ class _$PendingCommonReceiptPropertiesImpl
         invokeTxnReceipt,
     required TResult Function(
             Felt transactionHash,
-            ActualFee actualFee,
+            ActualFeeOrString actualFee,
             String execution_status,
             String finality_status,
             Felt? blockHash,
@@ -3882,7 +4276,7 @@ class _$PendingCommonReceiptPropertiesImpl
         declareTxnReceipt,
     required TResult Function(
             Felt transactionHash,
-            ActualFee actualFee,
+            ActualFeeOrString actualFee,
             String execution_status,
             String finality_status,
             Felt? blockHash,
@@ -3893,7 +4287,7 @@ class _$PendingCommonReceiptPropertiesImpl
         l1HandlerTxnReceipt,
     required TResult Function(
             Felt transactionHash,
-            ActualFee actualFee,
+            ActualFeeOrString actualFee,
             String execution_status,
             String finality_status,
             Felt? blockHash,
@@ -3904,7 +4298,7 @@ class _$PendingCommonReceiptPropertiesImpl
         deployTxnReceipt,
     required TResult Function(
             Felt transactionHash,
-            ActualFee actualFee,
+            ActualFeeOrString actualFee,
             String execution_status,
             String finality_status,
             Felt? blockHash,
@@ -3913,10 +4307,10 @@ class _$PendingCommonReceiptPropertiesImpl
             List<MsgToL1> messagesSent,
             List<Event> events)
         deployAccountTxnReceipt,
-    required TResult Function(Felt transactionHash, ActualFee actualFee,
+    required TResult Function(Felt transactionHash, ActualFeeOrString actualFee,
             String? type, List<MsgToL1> messagesSent, List<Event> events)
         pendingDeployTxnReceipt,
-    required TResult Function(Felt transactionHash, ActualFee actualFee,
+    required TResult Function(Felt transactionHash, ActualFeeOrString actualFee,
             String? type, List<MsgToL1> messagesSent, List<Event> events)
         pendingCommonReceiptProperties,
   }) {
@@ -3929,7 +4323,7 @@ class _$PendingCommonReceiptPropertiesImpl
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(
             Felt transactionHash,
-            ActualFee actualFee,
+            ActualFeeOrString actualFee,
             String execution_status,
             String finality_status,
             Felt? blockHash,
@@ -3940,7 +4334,7 @@ class _$PendingCommonReceiptPropertiesImpl
         invokeTxnReceipt,
     TResult? Function(
             Felt transactionHash,
-            ActualFee actualFee,
+            ActualFeeOrString actualFee,
             String execution_status,
             String finality_status,
             Felt? blockHash,
@@ -3951,7 +4345,7 @@ class _$PendingCommonReceiptPropertiesImpl
         declareTxnReceipt,
     TResult? Function(
             Felt transactionHash,
-            ActualFee actualFee,
+            ActualFeeOrString actualFee,
             String execution_status,
             String finality_status,
             Felt? blockHash,
@@ -3962,7 +4356,7 @@ class _$PendingCommonReceiptPropertiesImpl
         l1HandlerTxnReceipt,
     TResult? Function(
             Felt transactionHash,
-            ActualFee actualFee,
+            ActualFeeOrString actualFee,
             String execution_status,
             String finality_status,
             Felt? blockHash,
@@ -3973,7 +4367,7 @@ class _$PendingCommonReceiptPropertiesImpl
         deployTxnReceipt,
     TResult? Function(
             Felt transactionHash,
-            ActualFee actualFee,
+            ActualFeeOrString actualFee,
             String execution_status,
             String finality_status,
             Felt? blockHash,
@@ -3982,11 +4376,11 @@ class _$PendingCommonReceiptPropertiesImpl
             List<MsgToL1> messagesSent,
             List<Event> events)?
         deployAccountTxnReceipt,
-    TResult? Function(Felt transactionHash, ActualFee actualFee, String? type,
-            List<MsgToL1> messagesSent, List<Event> events)?
+    TResult? Function(Felt transactionHash, ActualFeeOrString actualFee,
+            String? type, List<MsgToL1> messagesSent, List<Event> events)?
         pendingDeployTxnReceipt,
-    TResult? Function(Felt transactionHash, ActualFee actualFee, String? type,
-            List<MsgToL1> messagesSent, List<Event> events)?
+    TResult? Function(Felt transactionHash, ActualFeeOrString actualFee,
+            String? type, List<MsgToL1> messagesSent, List<Event> events)?
         pendingCommonReceiptProperties,
   }) {
     return pendingCommonReceiptProperties?.call(
@@ -3998,7 +4392,7 @@ class _$PendingCommonReceiptPropertiesImpl
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(
             Felt transactionHash,
-            ActualFee actualFee,
+            ActualFeeOrString actualFee,
             String execution_status,
             String finality_status,
             Felt? blockHash,
@@ -4009,7 +4403,7 @@ class _$PendingCommonReceiptPropertiesImpl
         invokeTxnReceipt,
     TResult Function(
             Felt transactionHash,
-            ActualFee actualFee,
+            ActualFeeOrString actualFee,
             String execution_status,
             String finality_status,
             Felt? blockHash,
@@ -4020,7 +4414,7 @@ class _$PendingCommonReceiptPropertiesImpl
         declareTxnReceipt,
     TResult Function(
             Felt transactionHash,
-            ActualFee actualFee,
+            ActualFeeOrString actualFee,
             String execution_status,
             String finality_status,
             Felt? blockHash,
@@ -4031,7 +4425,7 @@ class _$PendingCommonReceiptPropertiesImpl
         l1HandlerTxnReceipt,
     TResult Function(
             Felt transactionHash,
-            ActualFee actualFee,
+            ActualFeeOrString actualFee,
             String execution_status,
             String finality_status,
             Felt? blockHash,
@@ -4042,7 +4436,7 @@ class _$PendingCommonReceiptPropertiesImpl
         deployTxnReceipt,
     TResult Function(
             Felt transactionHash,
-            ActualFee actualFee,
+            ActualFeeOrString actualFee,
             String execution_status,
             String finality_status,
             Felt? blockHash,
@@ -4051,11 +4445,11 @@ class _$PendingCommonReceiptPropertiesImpl
             List<MsgToL1> messagesSent,
             List<Event> events)?
         deployAccountTxnReceipt,
-    TResult Function(Felt transactionHash, ActualFee actualFee, String? type,
-            List<MsgToL1> messagesSent, List<Event> events)?
+    TResult Function(Felt transactionHash, ActualFeeOrString actualFee,
+            String? type, List<MsgToL1> messagesSent, List<Event> events)?
         pendingDeployTxnReceipt,
-    TResult Function(Felt transactionHash, ActualFee actualFee, String? type,
-            List<MsgToL1> messagesSent, List<Event> events)?
+    TResult Function(Felt transactionHash, ActualFeeOrString actualFee,
+            String? type, List<MsgToL1> messagesSent, List<Event> events)?
         pendingCommonReceiptProperties,
     required TResult orElse(),
   }) {
@@ -4128,7 +4522,7 @@ class _$PendingCommonReceiptPropertiesImpl
 abstract class PendingCommonReceiptProperties implements TxnReceipt {
   const factory PendingCommonReceiptProperties(
           {required final Felt transactionHash,
-          required final ActualFee actualFee,
+          required final ActualFeeOrString actualFee,
           required final String? type,
           required final List<MsgToL1> messagesSent,
           required final List<Event> events}) =
@@ -4140,7 +4534,7 @@ abstract class PendingCommonReceiptProperties implements TxnReceipt {
   @override // start of PENDING_COMMON_RECEIPT_PROPERTIES
   Felt get transactionHash;
   @override
-  ActualFee get actualFee;
+  ActualFeeOrString get actualFee;
   @override
   String? get type;
   @override
