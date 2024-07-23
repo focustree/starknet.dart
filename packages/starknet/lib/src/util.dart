@@ -14,7 +14,7 @@ const _defaultInterval = Duration(seconds: 5);
 
 /// Number of retry to wait for transaction to be declared as NOT_RECEIVED
 const _defaultMaxRetries = 60;
-const _errorStates = ['REJECTED', 'NOT_RECEIVED'];
+const _errorStates = ['REVERTED'];
 
 /// Returns `true` when [transactionHash] status is in [states]
 ///
@@ -42,19 +42,19 @@ Future<bool> waitForState({
       result: (result) {
         result.map(
           declareTxnReceipt: (DeclareTxnReceipt receipt) =>
-              status = receipt.finality_status,
+              status = receipt.execution_status,
           deployTxnReceipt: (DeployTxnReceipt receipt) =>
-              status = receipt.finality_status,
+              status = receipt.execution_status,
           deployAccountTxnReceipt: (DeployAccountTxnReceipt receipt) =>
-              status = receipt.finality_status,
+              status = receipt.execution_status,
           l1HandlerTxnReceipt: (L1HandlerTxnReceipt receipt) =>
-              status = receipt.finality_status,
+              status = receipt.execution_status,
           pendingDeployTxnReceipt: (PendingDeployTxnReceipt receipt) =>
               status = 'PENDING',
           pendingCommonReceiptProperties:
               (PendingCommonReceiptProperties receipt) => status = 'PENDING',
           invokeTxnReceipt: (InvokeTxnReceipt receipt) =>
-              status = receipt.finality_status,
+              status = receipt.execution_status,
         );
       },
       error: (error) {
@@ -114,8 +114,7 @@ Future<bool> waitForTransaction({
     provider: provider,
     states: [
       'PENDING',
-      'ACCEPTED_ON_L2',
-      'ACCEPTED_ON_L1',
+      'SUCCEEDED',
     ],
     interval: interval,
     maxRetries: maxRetries,
@@ -141,8 +140,7 @@ Future<bool> waitForAcceptance({
     transactionHash: transactionHash,
     provider: provider,
     states: [
-      'ACCEPTED_ON_L2',
-      'ACCEPTED_ON_L1',
+      'SUCCEEDED'
     ],
     interval: interval,
     maxRetries: maxRetries,
