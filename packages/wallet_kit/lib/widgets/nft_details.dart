@@ -2,6 +2,7 @@ import 'package:ark/ark.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
+import 'package:starknet/starknet.dart';
 import 'package:wallet_kit/wallet_kit.dart';
 
 part 'nft_details.g.dart';
@@ -77,7 +78,8 @@ class NFTDetail extends ConsumerWidget {
                       starknetAccount: starknetAccount,
                       nftAddress: nftAddress,
                       tokenId: tokenId,
-                      startAmount: 0.1);
+                      startAmount: 0.1,
+                      maxFee: Felt.fromDouble(0.00001 * 1e18) );
                 },
                 child: const Text('Sell')),
                 ElevatedButton(
@@ -106,6 +108,7 @@ class NFTDetail extends ConsumerWidget {
                       orderHash: BigInt.parse(orderBook.orderHash),
                       tokenAddress: nftAddress,
                       tokenId: BigInt.parse(tokenId),
+                      maxFee:Felt.fromDouble(0.00001 * 1e18)
                       );
                 },
                 child: const Text('Cancel Order')),
@@ -135,7 +138,8 @@ class NFTDetail extends ConsumerWidget {
                       orderHash: BigInt.parse(orderBook.orderHash),
                       nftAddress: nftAddress,
                       tokenId: tokenId,
-                      startAmount: 0.0000000000001
+                      startAmount: 0.0000000000001,
+                      maxFee: Felt.fromDouble(0.00001 * 1e18)
                       );
                 },
                 child: const Text('Buy')),
@@ -161,7 +165,8 @@ class NFTDetail extends ConsumerWidget {
                       starknetAccount: starknetAccount,
                       nftAddress: nftAddress,
                       tokenId: tokenId,
-                      startAmount: 0.0000000001
+                      startAmount: 0.0000000001,
+                      maxFee: Felt.fromDouble(0.00001 * 1e18)
                       );
                 },
                 child: const Text('Make Offer')),
@@ -198,6 +203,7 @@ class NFTDetail extends ConsumerWidget {
                       orderHash: BigInt.parse(offerOrderHash),
                       nftAddress: nftAddress,
                       tokenId: tokenId,
+                      maxFee: Felt.fromDouble(0.00001 * 1e18)
                       );
                 },
                 child: const Text('Accept Offer'))
