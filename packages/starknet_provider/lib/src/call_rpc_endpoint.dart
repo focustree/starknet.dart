@@ -22,5 +22,7 @@ Future<Map<String, dynamic>> callRpcEndpoint(
 
   final jsonResponse = json.decode(response.body);
 
+  print(jsonResponse);
+
   return jsonResponse;
 }
