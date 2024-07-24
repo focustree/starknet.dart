@@ -52,4 +52,19 @@ class ArkOrderbookApi {
       throw HttpException('Failed to fetch data: ${response.statusCode}');
     }
   }
+
+  Future<GetOffersForTokenResponse> getOffersForNFT(String contractAddress, String tokenId) async {
+    final uri = Uri.parse('$baseUrl/token/$contractAddress/$tokenId/offers');
+    final headers = <String, String>{
+      'x-api-key': apiKey,
+      'Content-Type': 'application/json',
+    };
+
+    final response = await http.get(uri, headers: headers);
+    if (response.statusCode == 200) {
+      return GetOffersForTokenResponse.fromJson(jsonDecode(response.body));
+    } else {
+      throw HttpException('Failed to fetch data: ${response.statusCode}');
+    }
+  }
 }

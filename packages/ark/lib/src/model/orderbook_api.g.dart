@@ -68,3 +68,52 @@ Map<String, dynamic> _$$TopBidImplToJson(_$TopBidImpl instance) =>
       'amount': instance.amount,
       'order_hash': instance.orderHash,
     };
+
+_$GetOffersForTokenResponseImpl _$$GetOffersForTokenResponseImplFromJson(
+        Map<String, dynamic> json) =>
+    _$GetOffersForTokenResponseImpl(
+      tokenAddress: json['token_address'] as String,
+      tokenId: json['token_id'] as String,
+      offers: (json['offers'] as List<dynamic>)
+          .map((e) => Offer.fromJson(e as Map<String, dynamic>))
+          .toList(),
+      currentOwner: json['current_owner'] as String,
+      lastPrice: json['last_price'] as String?,
+    );
+
+Map<String, dynamic> _$$GetOffersForTokenResponseImplToJson(
+        _$GetOffersForTokenResponseImpl instance) =>
+    <String, dynamic>{
+      'token_address': instance.tokenAddress,
+      'token_id': instance.tokenId,
+      'offers': instance.offers,
+      'current_owner': instance.currentOwner,
+      'last_price': instance.lastPrice,
+    };
+
+_$OfferImpl _$$OfferImplFromJson(Map<String, dynamic> json) => _$OfferImpl(
+      offerAmount: json['offer_amount'] as String,
+      orderHash: json['order_hash'] as String,
+      orderMaker: json['order_maker'] as String,
+      offerTimestamp: (json['offer_timestamp'] as num).toInt(),
+      offerQuantity: json['offer_quantity'] as String,
+      currencyAddress: json['currency_address'] as String,
+      currencyChainId: json['currency_chain_id'] as String,
+      startDate: (json['start_date'] as num).toInt(),
+      endDate: (json['end_date'] as num).toInt(),
+      status: json['status'] as String,
+    );
+
+Map<String, dynamic> _$$OfferImplToJson(_$OfferImpl instance) =>
+    <String, dynamic>{
+      'offer_amount': instance.offerAmount,
+      'order_hash': instance.orderHash,
+      'order_maker': instance.orderMaker,
+      'offer_timestamp': instance.offerTimestamp,
+      'offer_quantity': instance.offerQuantity,
+      'currency_address': instance.currencyAddress,
+      'currency_chain_id': instance.currencyChainId,
+      'start_date': instance.startDate,
+      'end_date': instance.endDate,
+      'status': instance.status,
+    };

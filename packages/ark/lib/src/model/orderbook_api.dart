@@ -43,6 +43,37 @@ class TopBid with _$TopBid {
   factory TopBid.fromJson(Map<String, dynamic> json) => _$TopBidFromJson(json);
 }
 
+@freezed
+class GetOffersForTokenResponse with _$GetOffersForTokenResponse {
+  const factory GetOffersForTokenResponse({
+    @JsonKey(name: 'token_address') required String tokenAddress,
+    @JsonKey(name: 'token_id') required String tokenId,
+    @JsonKey(name: 'offers') required List<Offer> offers,
+    @JsonKey(name: 'current_owner') required String currentOwner,
+    @JsonKey(name: 'last_price') String? lastPrice,
+  }) = _GetOffersForTokenResponse;
+
+  factory GetOffersForTokenResponse.fromJson(Map<String, dynamic> json) => _$GetOffersForTokenResponseFromJson(json);
+}
+
+@freezed
+class Offer with _$Offer {
+  const factory Offer({
+    @JsonKey(name: 'offer_amount') required String offerAmount,
+    @JsonKey(name: 'order_hash') required String orderHash,
+    @JsonKey(name: 'order_maker') required String orderMaker,
+    @JsonKey(name: 'offer_timestamp') required int offerTimestamp,
+    @JsonKey(name: 'offer_quantity') required String offerQuantity,
+    @JsonKey(name: 'currency_address') required String currencyAddress,
+    @JsonKey(name: 'currency_chain_id') required String  currencyChainId,
+    @JsonKey(name: 'start_date') required int startDate,
+    @JsonKey(name: 'end_date') required int endDate,
+    @JsonKey(name: 'status') required String status,
+  }) = _Offer;
+
+  factory Offer.fromJson(Map<String, dynamic> json) => _$OfferFromJson(json);
+}
+
 // @freezed
 // class OrderBookListResponse with _$OrderBookListResponse {
 //   const factory OrderBookListResponse({
