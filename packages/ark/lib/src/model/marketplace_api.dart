@@ -20,11 +20,11 @@ class MarketPlaceNFT with _$MarketPlaceNFT {
   const factory MarketPlaceNFT({
     @JsonKey(name: 'token_id') String? tokenId,
     @JsonKey(name: 'last_price') String? lastPrice,
-    @JsonKey(name: 'floor_difference') required int floorDifference,
+    @JsonKey(name: 'floor_difference') int? floorDifference,
     @JsonKey(name: 'listed_at') int? listedAt,
     @JsonKey(name: 'owner') required String owner,
     @JsonKey(name: 'price') String? price,
-    required MarketplaceNFTMetadata metadata,
+    MarketplaceNFTMetadata? metadata,
   }) = _MarketPlaceNFT;
 
   factory MarketPlaceNFT.fromJson(Map<String, dynamic> json) =>

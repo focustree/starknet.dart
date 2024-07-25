@@ -28,12 +28,14 @@ _$MarketPlaceNFTImpl _$$MarketPlaceNFTImplFromJson(Map<String, dynamic> json) =>
     _$MarketPlaceNFTImpl(
       tokenId: json['token_id'] as String?,
       lastPrice: json['last_price'] as String?,
-      floorDifference: (json['floor_difference'] as num).toInt(),
+      floorDifference: (json['floor_difference'] as num?)?.toInt(),
       listedAt: (json['listed_at'] as num?)?.toInt(),
       owner: json['owner'] as String,
       price: json['price'] as String?,
-      metadata: MarketplaceNFTMetadata.fromJson(
-          json['metadata'] as Map<String, dynamic>),
+      metadata: json['metadata'] == null
+          ? null
+          : MarketplaceNFTMetadata.fromJson(
+              json['metadata'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$$MarketPlaceNFTImplToJson(
