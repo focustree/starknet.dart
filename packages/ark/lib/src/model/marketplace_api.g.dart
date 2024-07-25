@@ -30,7 +30,7 @@ _$MarketPlaceNFTImpl _$$MarketPlaceNFTImplFromJson(Map<String, dynamic> json) =>
       lastPrice: json['last_price'] as String?,
       floorDifference: (json['floor_difference'] as num?)?.toInt(),
       listedAt: (json['listed_at'] as num?)?.toInt(),
-      owner: json['owner'] as String,
+      owner: json['owner'] as String?,
       price: json['price'] as String?,
       metadata: json['metadata'] == null
           ? null

@@ -237,7 +237,7 @@ mixin _$MarketPlaceNFT {
   @JsonKey(name: 'listed_at')
   int? get listedAt => throw _privateConstructorUsedError;
   @JsonKey(name: 'owner')
-  String get owner => throw _privateConstructorUsedError;
+  String? get owner => throw _privateConstructorUsedError;
   @JsonKey(name: 'price')
   String? get price => throw _privateConstructorUsedError;
   MarketplaceNFTMetadata? get metadata => throw _privateConstructorUsedError;
@@ -259,7 +259,7 @@ abstract class $MarketPlaceNFTCopyWith<$Res> {
       @JsonKey(name: 'last_price') String? lastPrice,
       @JsonKey(name: 'floor_difference') int? floorDifference,
       @JsonKey(name: 'listed_at') int? listedAt,
-      @JsonKey(name: 'owner') String owner,
+      @JsonKey(name: 'owner') String? owner,
       @JsonKey(name: 'price') String? price,
       MarketplaceNFTMetadata? metadata});
 
@@ -283,7 +283,7 @@ class _$MarketPlaceNFTCopyWithImpl<$Res, $Val extends MarketPlaceNFT>
     Object? lastPrice = freezed,
     Object? floorDifference = freezed,
     Object? listedAt = freezed,
-    Object? owner = null,
+    Object? owner = freezed,
     Object? price = freezed,
     Object? metadata = freezed,
   }) {
@@ -304,10 +304,10 @@ class _$MarketPlaceNFTCopyWithImpl<$Res, $Val extends MarketPlaceNFT>
           ? _value.listedAt
           : listedAt // ignore: cast_nullable_to_non_nullable
               as int?,
-      owner: null == owner
+      owner: freezed == owner
           ? _value.owner
           : owner // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       price: freezed == price
           ? _value.price
           : price // ignore: cast_nullable_to_non_nullable
@@ -345,7 +345,7 @@ abstract class _$$MarketPlaceNFTImplCopyWith<$Res>
       @JsonKey(name: 'last_price') String? lastPrice,
       @JsonKey(name: 'floor_difference') int? floorDifference,
       @JsonKey(name: 'listed_at') int? listedAt,
-      @JsonKey(name: 'owner') String owner,
+      @JsonKey(name: 'owner') String? owner,
       @JsonKey(name: 'price') String? price,
       MarketplaceNFTMetadata? metadata});
 
@@ -368,7 +368,7 @@ class __$$MarketPlaceNFTImplCopyWithImpl<$Res>
     Object? lastPrice = freezed,
     Object? floorDifference = freezed,
     Object? listedAt = freezed,
-    Object? owner = null,
+    Object? owner = freezed,
     Object? price = freezed,
     Object? metadata = freezed,
   }) {
@@ -389,10 +389,10 @@ class __$$MarketPlaceNFTImplCopyWithImpl<$Res>
           ? _value.listedAt
           : listedAt // ignore: cast_nullable_to_non_nullable
               as int?,
-      owner: null == owner
+      owner: freezed == owner
           ? _value.owner
           : owner // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       price: freezed == price
           ? _value.price
           : price // ignore: cast_nullable_to_non_nullable
@@ -413,7 +413,7 @@ class _$MarketPlaceNFTImpl implements _MarketPlaceNFT {
       @JsonKey(name: 'last_price') this.lastPrice,
       @JsonKey(name: 'floor_difference') this.floorDifference,
       @JsonKey(name: 'listed_at') this.listedAt,
-      @JsonKey(name: 'owner') required this.owner,
+      @JsonKey(name: 'owner') this.owner,
       @JsonKey(name: 'price') this.price,
       this.metadata});
 
@@ -434,7 +434,7 @@ class _$MarketPlaceNFTImpl implements _MarketPlaceNFT {
   final int? listedAt;
   @override
   @JsonKey(name: 'owner')
-  final String owner;
+  final String? owner;
   @override
   @JsonKey(name: 'price')
   final String? price;
@@ -490,7 +490,7 @@ abstract class _MarketPlaceNFT implements MarketPlaceNFT {
       @JsonKey(name: 'last_price') final String? lastPrice,
       @JsonKey(name: 'floor_difference') final int? floorDifference,
       @JsonKey(name: 'listed_at') final int? listedAt,
-      @JsonKey(name: 'owner') required final String owner,
+      @JsonKey(name: 'owner') final String? owner,
       @JsonKey(name: 'price') final String? price,
       final MarketplaceNFTMetadata? metadata}) = _$MarketPlaceNFTImpl;
 
@@ -511,7 +511,7 @@ abstract class _MarketPlaceNFT implements MarketPlaceNFT {
   int? get listedAt;
   @override
   @JsonKey(name: 'owner')
-  String get owner;
+  String? get owner;
   @override
   @JsonKey(name: 'price')
   String? get price;

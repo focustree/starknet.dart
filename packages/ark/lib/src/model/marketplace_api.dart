@@ -22,7 +22,7 @@ class MarketPlaceNFT with _$MarketPlaceNFT {
     @JsonKey(name: 'last_price') String? lastPrice,
     @JsonKey(name: 'floor_difference') int? floorDifference,
     @JsonKey(name: 'listed_at') int? listedAt,
-    @JsonKey(name: 'owner') required String owner,
+    @JsonKey(name: 'owner') String? owner,
     @JsonKey(name: 'price') String? price,
     MarketplaceNFTMetadata? metadata,
   }) = _MarketPlaceNFT;
