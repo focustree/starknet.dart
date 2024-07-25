@@ -31,6 +31,7 @@ class ArkStarknet {
     String currencyChainId = "SN_MAIN",
     String tokenChainId = "SN_MAIN",
     Felt? maxFee,
+    List<FunctionCall>? additionalFunctionCalls,
   }) async {
     startDate =
         startDate ?? (DateTime.now().millisecondsSinceEpoch ~/ (1000));
@@ -77,6 +78,7 @@ class ArkStarknet {
     ];
 
     final response = await starknetAccount.execute(functionCalls: [
+      ...additionalFunctionCalls ?? [],
       FunctionCall(
         contractAddress: Felt.fromHexString(nftAddress),
         entryPointSelector: getSelectorByName("approve"),
