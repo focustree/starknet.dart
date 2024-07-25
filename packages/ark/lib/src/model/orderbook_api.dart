@@ -61,7 +61,7 @@ class Offer with _$Offer {
   const factory Offer({
     @JsonKey(name: 'offer_amount') required String offerAmount,
     @JsonKey(name: 'order_hash') required String orderHash,
-    @JsonKey(name: 'order_maker') required String orderMaker,
+    @JsonKey(name: 'offer_maker') required String offerMaker,
     @JsonKey(name: 'offer_timestamp') required int offerTimestamp,
     @JsonKey(name: 'offer_quantity') required String offerQuantity,
     @JsonKey(name: 'currency_address') required String currencyAddress,

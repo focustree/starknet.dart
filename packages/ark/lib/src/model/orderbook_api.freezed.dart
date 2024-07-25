@@ -1101,8 +1101,8 @@ mixin _$Offer {
   String get offerAmount => throw _privateConstructorUsedError;
   @JsonKey(name: 'order_hash')
   String get orderHash => throw _privateConstructorUsedError;
-  @JsonKey(name: 'order_maker')
-  String get orderMaker => throw _privateConstructorUsedError;
+  @JsonKey(name: 'offer_maker')
+  String get offerMaker => throw _privateConstructorUsedError;
   @JsonKey(name: 'offer_timestamp')
   int get offerTimestamp => throw _privateConstructorUsedError;
   @JsonKey(name: 'offer_quantity')
@@ -1131,7 +1131,7 @@ abstract class $OfferCopyWith<$Res> {
   $Res call(
       {@JsonKey(name: 'offer_amount') String offerAmount,
       @JsonKey(name: 'order_hash') String orderHash,
-      @JsonKey(name: 'order_maker') String orderMaker,
+      @JsonKey(name: 'offer_maker') String offerMaker,
       @JsonKey(name: 'offer_timestamp') int offerTimestamp,
       @JsonKey(name: 'offer_quantity') String offerQuantity,
       @JsonKey(name: 'currency_address') String currencyAddress,
@@ -1156,7 +1156,7 @@ class _$OfferCopyWithImpl<$Res, $Val extends Offer>
   $Res call({
     Object? offerAmount = null,
     Object? orderHash = null,
-    Object? orderMaker = null,
+    Object? offerMaker = null,
     Object? offerTimestamp = null,
     Object? offerQuantity = null,
     Object? currencyAddress = null,
@@ -1174,9 +1174,9 @@ class _$OfferCopyWithImpl<$Res, $Val extends Offer>
           ? _value.orderHash
           : orderHash // ignore: cast_nullable_to_non_nullable
               as String,
-      orderMaker: null == orderMaker
-          ? _value.orderMaker
-          : orderMaker // ignore: cast_nullable_to_non_nullable
+      offerMaker: null == offerMaker
+          ? _value.offerMaker
+          : offerMaker // ignore: cast_nullable_to_non_nullable
               as String,
       offerTimestamp: null == offerTimestamp
           ? _value.offerTimestamp
@@ -1220,7 +1220,7 @@ abstract class _$$OfferImplCopyWith<$Res> implements $OfferCopyWith<$Res> {
   $Res call(
       {@JsonKey(name: 'offer_amount') String offerAmount,
       @JsonKey(name: 'order_hash') String orderHash,
-      @JsonKey(name: 'order_maker') String orderMaker,
+      @JsonKey(name: 'offer_maker') String offerMaker,
       @JsonKey(name: 'offer_timestamp') int offerTimestamp,
       @JsonKey(name: 'offer_quantity') String offerQuantity,
       @JsonKey(name: 'currency_address') String currencyAddress,
@@ -1243,7 +1243,7 @@ class __$$OfferImplCopyWithImpl<$Res>
   $Res call({
     Object? offerAmount = null,
     Object? orderHash = null,
-    Object? orderMaker = null,
+    Object? offerMaker = null,
     Object? offerTimestamp = null,
     Object? offerQuantity = null,
     Object? currencyAddress = null,
@@ -1261,9 +1261,9 @@ class __$$OfferImplCopyWithImpl<$Res>
           ? _value.orderHash
           : orderHash // ignore: cast_nullable_to_non_nullable
               as String,
-      orderMaker: null == orderMaker
-          ? _value.orderMaker
-          : orderMaker // ignore: cast_nullable_to_non_nullable
+      offerMaker: null == offerMaker
+          ? _value.offerMaker
+          : offerMaker // ignore: cast_nullable_to_non_nullable
               as String,
       offerTimestamp: null == offerTimestamp
           ? _value.offerTimestamp
@@ -1303,7 +1303,7 @@ class _$OfferImpl implements _Offer {
   const _$OfferImpl(
       {@JsonKey(name: 'offer_amount') required this.offerAmount,
       @JsonKey(name: 'order_hash') required this.orderHash,
-      @JsonKey(name: 'order_maker') required this.orderMaker,
+      @JsonKey(name: 'offer_maker') required this.offerMaker,
       @JsonKey(name: 'offer_timestamp') required this.offerTimestamp,
       @JsonKey(name: 'offer_quantity') required this.offerQuantity,
       @JsonKey(name: 'currency_address') required this.currencyAddress,
@@ -1322,8 +1322,8 @@ class _$OfferImpl implements _Offer {
   @JsonKey(name: 'order_hash')
   final String orderHash;
   @override
-  @JsonKey(name: 'order_maker')
-  final String orderMaker;
+  @JsonKey(name: 'offer_maker')
+  final String offerMaker;
   @override
   @JsonKey(name: 'offer_timestamp')
   final int offerTimestamp;
@@ -1348,7 +1348,7 @@ class _$OfferImpl implements _Offer {
 
   @override
   String toString() {
-    return 'Offer(offerAmount: $offerAmount, orderHash: $orderHash, orderMaker: $orderMaker, offerTimestamp: $offerTimestamp, offerQuantity: $offerQuantity, currencyAddress: $currencyAddress, currencyChainId: $currencyChainId, startDate: $startDate, endDate: $endDate, status: $status)';
+    return 'Offer(offerAmount: $offerAmount, orderHash: $orderHash, offerMaker: $offerMaker, offerTimestamp: $offerTimestamp, offerQuantity: $offerQuantity, currencyAddress: $currencyAddress, currencyChainId: $currencyChainId, startDate: $startDate, endDate: $endDate, status: $status)';
   }
 
   @override
@@ -1360,8 +1360,8 @@ class _$OfferImpl implements _Offer {
                 other.offerAmount == offerAmount) &&
             (identical(other.orderHash, orderHash) ||
                 other.orderHash == orderHash) &&
-            (identical(other.orderMaker, orderMaker) ||
-                other.orderMaker == orderMaker) &&
+            (identical(other.offerMaker, offerMaker) ||
+                other.offerMaker == offerMaker) &&
             (identical(other.offerTimestamp, offerTimestamp) ||
                 other.offerTimestamp == offerTimestamp) &&
             (identical(other.offerQuantity, offerQuantity) ||
@@ -1382,7 +1382,7 @@ class _$OfferImpl implements _Offer {
       runtimeType,
       offerAmount,
       orderHash,
-      orderMaker,
+      offerMaker,
       offerTimestamp,
       offerQuantity,
       currencyAddress,
@@ -1409,7 +1409,7 @@ abstract class _Offer implements Offer {
   const factory _Offer(
       {@JsonKey(name: 'offer_amount') required final String offerAmount,
       @JsonKey(name: 'order_hash') required final String orderHash,
-      @JsonKey(name: 'order_maker') required final String orderMaker,
+      @JsonKey(name: 'offer_maker') required final String offerMaker,
       @JsonKey(name: 'offer_timestamp') required final int offerTimestamp,
       @JsonKey(name: 'offer_quantity') required final String offerQuantity,
       @JsonKey(name: 'currency_address') required final String currencyAddress,
@@ -1427,8 +1427,8 @@ abstract class _Offer implements Offer {
   @JsonKey(name: 'order_hash')
   String get orderHash;
   @override
-  @JsonKey(name: 'order_maker')
-  String get orderMaker;
+  @JsonKey(name: 'offer_maker')
+  String get offerMaker;
   @override
   @JsonKey(name: 'offer_timestamp')
   int get offerTimestamp;

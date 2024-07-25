@@ -94,7 +94,7 @@ Map<String, dynamic> _$$GetOffersForTokenResponseImplToJson(
 _$OfferImpl _$$OfferImplFromJson(Map<String, dynamic> json) => _$OfferImpl(
       offerAmount: json['offer_amount'] as String,
       orderHash: json['order_hash'] as String,
-      orderMaker: json['order_maker'] as String,
+      offerMaker: json['offer_maker'] as String,
       offerTimestamp: (json['offer_timestamp'] as num).toInt(),
       offerQuantity: json['offer_quantity'] as String,
       currencyAddress: json['currency_address'] as String,
@@ -108,7 +108,7 @@ Map<String, dynamic> _$$OfferImplToJson(_$OfferImpl instance) =>
     <String, dynamic>{
       'offer_amount': instance.offerAmount,
       'order_hash': instance.orderHash,
-      'order_maker': instance.orderMaker,
+      'offer_maker': instance.offerMaker,
       'offer_timestamp': instance.offerTimestamp,
       'offer_quantity': instance.offerQuantity,
       'currency_address': instance.currencyAddress,
