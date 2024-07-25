@@ -52,6 +52,7 @@ class ArkMarketplaceApi {
 
     var response = await http.get(uri, headers: headers);
     if (response.statusCode == 200) {
+      print(response.body);
       return ListMarketplaceNFTsResponse.fromJson(jsonDecode(response.body));
     } else {
       throw HttpException('Failed to fetch data: ${response.statusCode}');
