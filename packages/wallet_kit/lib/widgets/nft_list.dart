@@ -152,14 +152,14 @@ class MarketplaceNftCard extends StatelessWidget {
             Expanded(
               child: AspectRatio(
                 aspectRatio: 1.0,
-                child: Image.network(nft.metadata.image,
+                child: Image.network(nft.metadata != null ? nft.metadata!.image : '',
                     fit: BoxFit.contain),
               ),
             ),
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: Text(
-                nft.metadata.name,
+                nft.metadata != null ? nft.metadata!.name : 'Unknown',
                 softWrap: false,
                 style: const TextStyle(
                   fontSize: 14,
