@@ -31,6 +31,7 @@ class ArkStarknet {
     String currencyChainId = "SN_MAIN",
     String tokenChainId = "SN_MAIN",
     Felt? maxFee,
+    Felt? nonce,
     List<FunctionCall>? additionalFunctionCalls,
   }) async {
     startDate =
@@ -89,7 +90,7 @@ class ArkStarknet {
         entryPointSelector: getSelectorByName("create_order"),
         calldata: callData,
       ),
-    ], maxFee: maxFee);
+    ], maxFee: maxFee, nonce: nonce);
 
     final txHash = response.when(result: (result) {
       return result.transaction_hash;
@@ -107,6 +108,7 @@ class ArkStarknet {
     required BigInt tokenId,
     String tokenChainId = "SN_MAIN",
     Felt? maxFee,
+    Felt? nonce,
   }) async {
 
     final FullCancelInfo fullCancelInfo = FullCancelInfo(
@@ -132,7 +134,7 @@ class ArkStarknet {
         entryPointSelector: getSelectorByName("cancel_order"),
         calldata: callData,
       ),
-    ], maxFee: maxFee );
+    ], maxFee: maxFee, nonce: nonce);
 
     final txHash = response.when(result: (result) {
       return result.transaction_hash;
@@ -155,6 +157,7 @@ class ArkStarknet {
     String currencyChainId = "SN_MAIN",
     String tokenChainId = "SN_MAIN",
     Felt? maxFee,
+    Felt? nonce,
   }) async {
     startDate =
         startDate ?? (DateTime.now().millisecondsSinceEpoch ~/ (1000));
@@ -214,7 +217,7 @@ class ArkStarknet {
         entryPointSelector: getSelectorByName("create_order"),
         calldata: callData,
       ),
-    ], maxFee: maxFee);
+    ], maxFee: maxFee, nonce: nonce);
 
     final txHash = response.when(result: (result) {
       return result.transaction_hash;
@@ -235,6 +238,7 @@ class ArkStarknet {
         "0x049d36570d4e46f48e99674bd3fcc84644ddd6b96f7c741b1562b82f9e004dc7",
     String tokenChainId = "SN_MAIN",
     Felt? maxFee,
+    Felt? nonce,
   }) async {
 
     final bigIntAmount = BigInt.from(startAmount * 1e18);
@@ -274,7 +278,7 @@ class ArkStarknet {
         entryPointSelector: getSelectorByName("fulfill_order"),
         calldata: callData,
       ),
-    ], maxFee: maxFee);
+    ], maxFee: maxFee, nonce: nonce);
 
     final txHash = response.when(result: (result) {
       return result.transaction_hash;
@@ -294,6 +298,7 @@ class ArkStarknet {
         "0x049d36570d4e46f48e99674bd3fcc84644ddd6b96f7c741b1562b82f9e004dc7",
     String tokenChainId = "SN_MAIN",
     Felt? maxFee,
+    Felt? nonce,
   }) async {
 
     final FulfillInfo fulfillInfo = FulfillInfo(
@@ -331,7 +336,7 @@ class ArkStarknet {
         entryPointSelector: getSelectorByName("fulfill_order"),
         calldata: callData,
       ),
-    ], maxFee: maxFee);
+    ], maxFee: maxFee, nonce: nonce);
 
     final txHash = response.when(result: (result) {
       return result.transaction_hash;
