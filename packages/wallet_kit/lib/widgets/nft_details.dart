@@ -81,11 +81,7 @@ class NFTDetail extends ConsumerWidget {
                       startAmount: 0.1,
                       maxFee: Felt.fromDouble(0.00001 * 1e18) );
 
-                  print(txhash);
-
-                  final isAccepted = await waitForAcceptance(transactionHash: txhash, provider: WalletKit().provider );
-
-                  print(isAccepted);
+                  await waitForAcceptance(transactionHash: txhash, provider: WalletKit().provider );
 
                 },
                 child: const Text('Sell')),
@@ -108,7 +104,6 @@ class NFTDetail extends ConsumerWidget {
                   );
 
                    final orderBook = await Ark().orderbook.getOrderbookNFT(nftAddress, tokenId);
-                   print(orderBook);
 
                   await Ark().starknet.cancelOrder(
                       starknetAccount: starknetAccount,
@@ -138,7 +133,6 @@ class NFTDetail extends ConsumerWidget {
                   );
 
                   final orderBook = await Ark().orderbook.getOrderbookNFT(nftAddress, tokenId);
-                  print(orderBook);
 
                   await Ark().starknet.fulfillListing(
                       starknetAccount: starknetAccount,
@@ -196,11 +190,7 @@ class NFTDetail extends ConsumerWidget {
                   );
 
                   final orderBook = await Ark().orderbook.getOrderbookNFT(nftAddress, tokenId);
-                  print(orderBook);
-
                   final offerOrderHash = orderBook.topBid!.orderHash;
-                  print(offerOrderHash);
-
                   if(offerOrderHash == null) {
                     return;
                   }
