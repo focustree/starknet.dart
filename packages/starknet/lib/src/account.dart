@@ -210,6 +210,8 @@ class Account {
   execute({
     required List<FunctionCall> functionCalls,
     bool useLegacyCalldata = false,
+    bool incrementNonceIfNonceRelatedError = true,
+    int maxAttempts = 5,
     Felt? maxFee,
     Felt? nonce,
   }) async {
@@ -225,7 +227,7 @@ class Account {
                 ? "0x1"
                 : "0x0");
 
-    for (int attempt = 0; attempt < 5; attempt++) {
+    for (int attempt = 0; attempt < maxAttempts; attempt++) {
       final signature = signer.signTransactions(
         transactions: functionCalls,
         contractAddress: accountAddress,
@@ -281,7 +283,7 @@ class Account {
         result: (result) => response,
         error: (error) {
           print('Attempt ${attempt + 1} failed: $error');
-          if (attempt < 4 && isNonceRelatedError(error)) {
+          if (attempt < maxAttempts - 1 && isNonceRelatedError(error) && incrementNonceIfNonceRelatedError) {
             nonce = incrementNonce(nonce!); // Increment nonce for next attempt
             print('Incrementing nonce to: $nonce');
             return null; // Indicate that we should retry
