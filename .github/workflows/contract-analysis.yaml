@@ -1,0 +1,23 @@
+name: Cotract-Analysis
+
+on:
+  push:
+    paths:
+    - '../../contracts/**'
+  pull_request:
+    paths: 
+    - '../../contracts/**'
+
+env:
+  STARKNET_RPC: http://localhost:5050
+  DEVNET_DUMP_PATH: /devnet-dump.json
+
+jobs:
+  check-contracts:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Install scarb
+        run: curl --proto '=https' --tlsv1.2 -sSf https://docs.swmansion.com/scarb/install.sh | sh
+      - name: Check contracts compilation
+        run: scarb check

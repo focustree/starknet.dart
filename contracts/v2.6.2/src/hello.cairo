@@ -5,6 +5,7 @@ trait IHello<T> {
     fn sum(self: @T, a: felt252, b: felt252) -> felt252;
 }
 
+
 #[starknet::contract]
 mod hello {
     #[storage]
