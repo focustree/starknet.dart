@@ -1,0 +1,19 @@
+name: check_contracts
+
+on:
+  push:
+    paths: 
+      - 'contracts/v2.6.2/**'
+
+jobs:
+  check_contracts:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+    
+      - name: Install scarb
+        run: curl --proto '=https' --tlsv1.2 -sSf https://docs.swmansion.com/scarb/install.sh | sh
+      
+      - name: Run scarb check
+        working-directory: contracts/v2.6.2
+        run: scarb check
