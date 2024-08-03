@@ -22,6 +22,6 @@ mod tests {
 
     #[test]
     fn it_works() {
-        assert(fib(16) == 987, 'it works!');
+        assert(fib(16) == 987, 'it works?');
     }
 }
