@@ -1,7 +1,7 @@
 name: CI
 
 on:
-  pull_request:
+  push:
 
 env:
   STARKNET_RPC: http://localhost:5050
@@ -69,3 +69,25 @@ jobs:
       # - name: Setup SSH if failure
       #   if: failure()
       #   uses: lhotari/action-upterm@v1
+
+  check-contracts-changes:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Check for changes
+        uses: dorny/paths-filter@v3
+        id: changes
+        with:
+          filters: |
+            contracts_dir: 
+              - 'contracts/v2.6.2/**'
+
+      - name: Install scarb
+        if: steps.changes.outputs.contracts_dir == 'true'
+        run: curl --proto '=https' --tlsv1.2 -sSf https://docs.swmansion.com/scarb/install.sh | sh
+
+      - name: Run scarb check
+        if: steps.changes.outputs.contracts_dir == 'true'
+        working-directory: contracts/v2.6.2
+        run: scarb check
