@@ -89,5 +89,4 @@ jobs:
 
       - name: Run scarb check
         if: steps.changes.outputs.contracts_dir == 'true'
-        working-directory: contracts/v2.6.2
-        run: scarb check
+        run: melos contracts:check
