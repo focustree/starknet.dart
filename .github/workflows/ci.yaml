@@ -90,5 +90,5 @@ jobs:
           cache-sdk: true
       - uses: bluefireteam/melos-action@v3
       - run: |
-          if: steps.changes.outputs.contracts_dir == 'true'
+          if steps.changes.outputs.contracts_dir == 'true'
           melos test:dart:unit
