@@ -89,6 +89,6 @@ jobs:
           cache: true
           cache-sdk: true
       - uses: bluefireteam/melos-action@v3
-      - run: |
-          if steps.changes.outputs.contracts_dir == 'true'
-          melos test:dart:unit
+      - name: Run scarb check
+        if: steps.changes.outputs.contracts_dir == 'true'
+        run: melos test:dart:unit
