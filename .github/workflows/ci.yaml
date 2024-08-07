@@ -82,6 +82,12 @@ jobs:
           filters: |
             contracts_dir: 
               - 'contracts/v2.6.2/**'
+      - uses: flutter-actions/setup-flutter@v3
+        with:
+          channel: stable
+          version: 3.19.5
+          cache: true
+          cache-sdk: true
       - uses: bluefireteam/melos-action@v3
       - run: |
           if: steps.changes.outputs.contracts_dir == 'true'
