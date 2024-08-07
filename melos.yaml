@@ -87,8 +87,8 @@ scripts:
   contracts:check:
     description: Check cairo contracts
     run: |
-      asdf install scarb $SCARB_VERSION
       cd contracts/v$CAIRO_VERSION
+      asdf install scarb $SCARB_VERSION
       scarb check
 
   contracts:invoke:
