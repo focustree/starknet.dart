@@ -1,7 +1,7 @@
 name: CI
 
 on:
-  pull_request:
+  push:
 
 env:
   STARKNET_RPC: http://localhost:5050
@@ -82,7 +82,7 @@ jobs:
           filters: |
             contracts_dir: 
               - 'contracts/v2.6.2/**'
-              
+
       - name: Run scarb check
         if: steps.changes.outputs.contracts_dir == 'true'
         run: melos contracts:check

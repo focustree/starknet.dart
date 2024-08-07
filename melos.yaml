@@ -84,7 +84,7 @@ scripts:
     description: Deploy cairo contracts
     run: |
       starkli deploy $HELLO_CLASS_HASH --salt $SALT 0x0
-  contract:check:
+  contracts:check:
     description: Check cairo contracts
     run: |
       asdf install scarb $SCARB_VERSION
