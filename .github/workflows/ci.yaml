@@ -83,6 +83,7 @@ jobs:
             contracts_dir: 
               - 'contracts/v2.6.2/**'
 
+      - uses: bluefireteam/melos-action@v3
       - name: Run scarb check
         if: steps.changes.outputs.contracts_dir == 'true'
         run: melos contracts:check
