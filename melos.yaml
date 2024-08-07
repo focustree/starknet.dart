@@ -3,6 +3,7 @@ name: monorepo
 packages:
   - examples/**
   - packages/**
+  - contracts/v$CAIRO_VERSION/**
 
 ignore:
   - "examples/starknet_counter"
@@ -83,6 +84,12 @@ scripts:
     description: Deploy cairo contracts
     run: |
       starkli deploy $HELLO_CLASS_HASH --salt $SALT 0x0
+  contracts:check:
+    description: Check cairo contracts
+    run: |
+      cd contracts/v$CAIRO_VERSION
+      asdf install scarb $SCARB_VERSION
+      scarb check
 
   contracts:invoke:
     description: creating invoke tx for tests with hash 0x03b2911796e0024f9e23d7337997538058eca267d5ddaa582d482cbe1fb64897 and deploy_account tx with hash 0x055ba13c33a12506d2eab8dfbc618a8ce0d247c24959a64ee18fbf393c873b83

@@ -69,3 +69,26 @@ jobs:
       # - name: Setup SSH if failure
       #   if: failure()
       #   uses: lhotari/action-upterm@v1
+
+  check-contracts-changes:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Check for changes
+        uses: dorny/paths-filter@v3
+        id: changes
+        with:
+          filters: |
+            contracts_dir: 
+              - 'contracts/v2.6.2/**'
+      - uses: flutter-actions/setup-flutter@v3
+        with:
+          channel: stable
+          version: 3.19.5
+          cache: true
+          cache-sdk: true
+      - uses: bluefireteam/melos-action@v3
+      - name: Run scarb check
+        if: steps.changes.outputs.contracts_dir == 'true'
+        run: melos test:dart:unit
