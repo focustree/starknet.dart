@@ -38,7 +38,7 @@ _$InvokeTxnReceiptImpl _$$InvokeTxnReceiptImplFromJson(
         Map<String, dynamic> json) =>
     _$InvokeTxnReceiptImpl(
       transactionHash: Felt.fromJson(json['transaction_hash'] as String),
-      actualFee: json['actual_fee'] as String,
+      actualFee: ActualFee.fromJson(json['actual_fee'] as Map<String, dynamic>),
       execution_status: json['execution_status'] as String,
       finality_status: json['finality_status'] as String,
       blockHash: json['block_hash'] == null
@@ -59,7 +59,7 @@ Map<String, dynamic> _$$InvokeTxnReceiptImplToJson(
         _$InvokeTxnReceiptImpl instance) =>
     <String, dynamic>{
       'transaction_hash': instance.transactionHash.toJson(),
-      'actual_fee': instance.actualFee,
+      'actual_fee': instance.actualFee.toJson(),
       'execution_status': instance.execution_status,
       'finality_status': instance.finality_status,
       'block_hash': instance.blockHash?.toJson(),

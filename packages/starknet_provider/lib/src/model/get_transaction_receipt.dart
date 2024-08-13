@@ -26,7 +26,7 @@ class TxnReceipt with _$TxnReceipt {
   const factory TxnReceipt.invokeTxnReceipt({
     // start of COMMON_RECEIPT_PROPERTIES
     required Felt transactionHash,
-    required String actualFee,
+    required ActualFee actualFee,
     required String execution_status,
     required String finality_status,
     Felt? blockHash,

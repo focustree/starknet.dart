@@ -460,7 +460,7 @@ TxnReceipt _$TxnReceiptFromJson(Map<String, dynamic> json) {
 mixin _$TxnReceipt {
 // start of COMMON_RECEIPT_PROPERTIES
   Felt get transactionHash => throw _privateConstructorUsedError;
-  Object get actualFee => throw _privateConstructorUsedError;
+  ActualFee get actualFee => throw _privateConstructorUsedError;
   String? get type => throw _privateConstructorUsedError;
   List<MsgToL1> get messagesSent => throw _privateConstructorUsedError;
   List<Event> get events => throw _privateConstructorUsedError;
@@ -468,7 +468,7 @@ mixin _$TxnReceipt {
   TResult when<TResult extends Object?>({
     required TResult Function(
             Felt transactionHash,
-            String actualFee,
+            ActualFee actualFee,
             String execution_status,
             String finality_status,
             Felt? blockHash,
@@ -533,7 +533,7 @@ mixin _$TxnReceipt {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(
             Felt transactionHash,
-            String actualFee,
+            ActualFee actualFee,
             String execution_status,
             String finality_status,
             Felt? blockHash,
@@ -598,7 +598,7 @@ mixin _$TxnReceipt {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(
             Felt transactionHash,
-            String actualFee,
+            ActualFee actualFee,
             String execution_status,
             String finality_status,
             Felt? blockHash,
@@ -713,9 +713,12 @@ abstract class $TxnReceiptCopyWith<$Res> {
   @useResult
   $Res call(
       {Felt transactionHash,
+      ActualFee actualFee,
       String type,
       List<MsgToL1> messagesSent,
       List<Event> events});
+
+  $ActualFeeCopyWith<$Res> get actualFee;
 }
 
 /// @nodoc
@@ -732,6 +735,7 @@ class _$TxnReceiptCopyWithImpl<$Res, $Val extends TxnReceipt>
   @override
   $Res call({
     Object? transactionHash = null,
+    Object? actualFee = null,
     Object? type = null,
     Object? messagesSent = null,
     Object? events = null,
@@ -741,6 +745,10 @@ class _$TxnReceiptCopyWithImpl<$Res, $Val extends TxnReceipt>
           ? _value.transactionHash
           : transactionHash // ignore: cast_nullable_to_non_nullable
               as Felt,
+      actualFee: null == actualFee
+          ? _value.actualFee
+          : actualFee // ignore: cast_nullable_to_non_nullable
+              as ActualFee,
       type: null == type
           ? _value.type!
           : type // ignore: cast_nullable_to_non_nullable
@@ -755,6 +763,14 @@ class _$TxnReceiptCopyWithImpl<$Res, $Val extends TxnReceipt>
               as List<Event>,
     ) as $Val);
   }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $ActualFeeCopyWith<$Res> get actualFee {
+    return $ActualFeeCopyWith<$Res>(_value.actualFee, (value) {
+      return _then(_value.copyWith(actualFee: value) as $Val);
+    });
+  }
 }
 
 /// @nodoc
@@ -767,7 +783,7 @@ abstract class _$$InvokeTxnReceiptImplCopyWith<$Res>
   @useResult
   $Res call(
       {Felt transactionHash,
-      String actualFee,
+      ActualFee actualFee,
       String execution_status,
       String finality_status,
       Felt? blockHash,
@@ -775,6 +791,9 @@ abstract class _$$InvokeTxnReceiptImplCopyWith<$Res>
       String type,
       List<MsgToL1> messagesSent,
       List<Event> events});
+
+  @override
+  $ActualFeeCopyWith<$Res> get actualFee;
 }
 
 /// @nodoc
@@ -806,7 +825,7 @@ class __$$InvokeTxnReceiptImplCopyWithImpl<$Res>
       actualFee: null == actualFee
           ? _value.actualFee
           : actualFee // ignore: cast_nullable_to_non_nullable
-              as String,
+              as ActualFee,
       execution_status: null == execution_status
           ? _value.execution_status
           : execution_status // ignore: cast_nullable_to_non_nullable
@@ -864,7 +883,7 @@ class _$InvokeTxnReceiptImpl implements InvokeTxnReceipt {
   @override
   final Felt transactionHash;
   @override
-  final String actualFee;
+  final ActualFee actualFee;
   @override
   final String execution_status;
   @override
@@ -948,7 +967,7 @@ class _$InvokeTxnReceiptImpl implements InvokeTxnReceipt {
   TResult when<TResult extends Object?>({
     required TResult Function(
             Felt transactionHash,
-            String actualFee,
+            ActualFee actualFee,
             String execution_status,
             String finality_status,
             Felt? blockHash,
@@ -1017,7 +1036,7 @@ class _$InvokeTxnReceiptImpl implements InvokeTxnReceipt {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(
             Felt transactionHash,
-            String actualFee,
+            ActualFee actualFee,
             String execution_status,
             String finality_status,
             Felt? blockHash,
@@ -1086,7 +1105,7 @@ class _$InvokeTxnReceiptImpl implements InvokeTxnReceipt {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(
             Felt transactionHash,
-            String actualFee,
+            ActualFee actualFee,
             String execution_status,
             String finality_status,
             Felt? blockHash,
@@ -1216,7 +1235,7 @@ class _$InvokeTxnReceiptImpl implements InvokeTxnReceipt {
 abstract class InvokeTxnReceipt implements TxnReceipt {
   const factory InvokeTxnReceipt(
       {required final Felt transactionHash,
-      required final String actualFee,
+      required final ActualFee actualFee,
       required final String execution_status,
       required final String finality_status,
       final Felt? blockHash,
@@ -1231,7 +1250,7 @@ abstract class InvokeTxnReceipt implements TxnReceipt {
   @override // start of COMMON_RECEIPT_PROPERTIES
   Felt get transactionHash;
   @override
-  String get actualFee;
+  ActualFee get actualFee;
   String get execution_status;
   String get finality_status;
   Felt? get blockHash;
@@ -1267,6 +1286,7 @@ abstract class _$$DeclareTxnReceiptImplCopyWith<$Res>
       List<MsgToL1> messagesSent,
       List<Event> events});
 
+  @override
   $ActualFeeCopyWith<$Res> get actualFee;
 }
 
@@ -1329,14 +1349,6 @@ class __$$DeclareTxnReceiptImplCopyWithImpl<$Res>
           : events // ignore: cast_nullable_to_non_nullable
               as List<Event>,
     ));
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $ActualFeeCopyWith<$Res> get actualFee {
-    return $ActualFeeCopyWith<$Res>(_value.actualFee, (value) {
-      return _then(_value.copyWith(actualFee: value));
-    });
   }
 }
 
@@ -1449,7 +1461,7 @@ class _$DeclareTxnReceiptImpl implements DeclareTxnReceipt {
   TResult when<TResult extends Object?>({
     required TResult Function(
             Felt transactionHash,
-            String actualFee,
+            ActualFee actualFee,
             String execution_status,
             String finality_status,
             Felt? blockHash,
@@ -1518,7 +1530,7 @@ class _$DeclareTxnReceiptImpl implements DeclareTxnReceipt {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(
             Felt transactionHash,
-            String actualFee,
+            ActualFee actualFee,
             String execution_status,
             String finality_status,
             Felt? blockHash,
@@ -1587,7 +1599,7 @@ class _$DeclareTxnReceiptImpl implements DeclareTxnReceipt {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(
             Felt transactionHash,
-            String actualFee,
+            ActualFee actualFee,
             String execution_status,
             String finality_status,
             Felt? blockHash,
@@ -1768,6 +1780,7 @@ abstract class _$$L1HandlerTxnReceiptImplCopyWith<$Res>
       List<MsgToL1> messagesSent,
       List<Event> events});
 
+  @override
   $ActualFeeCopyWith<$Res> get actualFee;
 }
 
@@ -1830,14 +1843,6 @@ class __$$L1HandlerTxnReceiptImplCopyWithImpl<$Res>
           : events // ignore: cast_nullable_to_non_nullable
               as List<Event>,
     ));
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $ActualFeeCopyWith<$Res> get actualFee {
-    return $ActualFeeCopyWith<$Res>(_value.actualFee, (value) {
-      return _then(_value.copyWith(actualFee: value));
-    });
   }
 }
 
@@ -1950,7 +1955,7 @@ class _$L1HandlerTxnReceiptImpl implements L1HandlerTxnReceipt {
   TResult when<TResult extends Object?>({
     required TResult Function(
             Felt transactionHash,
-            String actualFee,
+            ActualFee actualFee,
             String execution_status,
             String finality_status,
             Felt? blockHash,
@@ -2019,7 +2024,7 @@ class _$L1HandlerTxnReceiptImpl implements L1HandlerTxnReceipt {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(
             Felt transactionHash,
-            String actualFee,
+            ActualFee actualFee,
             String execution_status,
             String finality_status,
             Felt? blockHash,
@@ -2096,7 +2101,7 @@ class _$L1HandlerTxnReceiptImpl implements L1HandlerTxnReceipt {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(
             Felt transactionHash,
-            String actualFee,
+            ActualFee actualFee,
             String execution_status,
             String finality_status,
             Felt? blockHash,
@@ -2277,6 +2282,7 @@ abstract class _$$DeployTxnReceiptImplCopyWith<$Res>
       List<MsgToL1> messagesSent,
       List<Event> events});
 
+  @override
   $ActualFeeCopyWith<$Res> get actualFee;
 }
 
@@ -2339,14 +2345,6 @@ class __$$DeployTxnReceiptImplCopyWithImpl<$Res>
           : events // ignore: cast_nullable_to_non_nullable
               as List<Event>,
     ));
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $ActualFeeCopyWith<$Res> get actualFee {
-    return $ActualFeeCopyWith<$Res>(_value.actualFee, (value) {
-      return _then(_value.copyWith(actualFee: value));
-    });
   }
 }
 
@@ -2459,7 +2457,7 @@ class _$DeployTxnReceiptImpl implements DeployTxnReceipt {
   TResult when<TResult extends Object?>({
     required TResult Function(
             Felt transactionHash,
-            String actualFee,
+            ActualFee actualFee,
             String execution_status,
             String finality_status,
             Felt? blockHash,
@@ -2528,7 +2526,7 @@ class _$DeployTxnReceiptImpl implements DeployTxnReceipt {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(
             Felt transactionHash,
-            String actualFee,
+            ActualFee actualFee,
             String execution_status,
             String finality_status,
             Felt? blockHash,
@@ -2597,7 +2595,7 @@ class _$DeployTxnReceiptImpl implements DeployTxnReceipt {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(
             Felt transactionHash,
-            String actualFee,
+            ActualFee actualFee,
             String execution_status,
             String finality_status,
             Felt? blockHash,
@@ -2779,6 +2777,7 @@ abstract class _$$DeployAccountTxnReceiptImplCopyWith<$Res>
       List<MsgToL1> messagesSent,
       List<Event> events});
 
+  @override
   $ActualFeeCopyWith<$Res> get actualFee;
 }
 
@@ -2842,14 +2841,6 @@ class __$$DeployAccountTxnReceiptImplCopyWithImpl<$Res>
           : events // ignore: cast_nullable_to_non_nullable
               as List<Event>,
     ));
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $ActualFeeCopyWith<$Res> get actualFee {
-    return $ActualFeeCopyWith<$Res>(_value.actualFee, (value) {
-      return _then(_value.copyWith(actualFee: value));
-    });
   }
 }
 
@@ -2962,7 +2953,7 @@ class _$DeployAccountTxnReceiptImpl implements DeployAccountTxnReceipt {
   TResult when<TResult extends Object?>({
     required TResult Function(
             Felt transactionHash,
-            String actualFee,
+            ActualFee actualFee,
             String execution_status,
             String finality_status,
             Felt? blockHash,
@@ -3031,7 +3022,7 @@ class _$DeployAccountTxnReceiptImpl implements DeployAccountTxnReceipt {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(
             Felt transactionHash,
-            String actualFee,
+            ActualFee actualFee,
             String execution_status,
             String finality_status,
             Felt? blockHash,
@@ -3108,7 +3099,7 @@ class _$DeployAccountTxnReceiptImpl implements DeployAccountTxnReceipt {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(
             Felt transactionHash,
-            String actualFee,
+            ActualFee actualFee,
             String execution_status,
             String finality_status,
             Felt? blockHash,
@@ -3294,6 +3285,7 @@ abstract class _$$PendingDeployTxnReceiptImplCopyWith<$Res>
       List<MsgToL1> messagesSent,
       List<Event> events});
 
+  @override
   $ActualFeeCopyWith<$Res> get actualFee;
 }
 
@@ -3337,14 +3329,6 @@ class __$$PendingDeployTxnReceiptImplCopyWithImpl<$Res>
           : events // ignore: cast_nullable_to_non_nullable
               as List<Event>,
     ));
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $ActualFeeCopyWith<$Res> get actualFee {
-    return $ActualFeeCopyWith<$Res>(_value.actualFee, (value) {
-      return _then(_value.copyWith(actualFee: value));
-    });
   }
 }
 
@@ -3433,7 +3417,7 @@ class _$PendingDeployTxnReceiptImpl implements PendingDeployTxnReceipt {
   TResult when<TResult extends Object?>({
     required TResult Function(
             Felt transactionHash,
-            String actualFee,
+            ActualFee actualFee,
             String execution_status,
             String finality_status,
             Felt? blockHash,
@@ -3502,7 +3486,7 @@ class _$PendingDeployTxnReceiptImpl implements PendingDeployTxnReceipt {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(
             Felt transactionHash,
-            String actualFee,
+            ActualFee actualFee,
             String execution_status,
             String finality_status,
             Felt? blockHash,
@@ -3571,7 +3555,7 @@ class _$PendingDeployTxnReceiptImpl implements PendingDeployTxnReceipt {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(
             Felt transactionHash,
-            String actualFee,
+            ActualFee actualFee,
             String execution_status,
             String finality_status,
             Felt? blockHash,
@@ -3741,6 +3725,7 @@ abstract class _$$PendingCommonReceiptPropertiesImplCopyWith<$Res>
       List<MsgToL1> messagesSent,
       List<Event> events});
 
+  @override
   $ActualFeeCopyWith<$Res> get actualFee;
 }
 
@@ -3784,14 +3769,6 @@ class __$$PendingCommonReceiptPropertiesImplCopyWithImpl<$Res>
           : events // ignore: cast_nullable_to_non_nullable
               as List<Event>,
     ));
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $ActualFeeCopyWith<$Res> get actualFee {
-    return $ActualFeeCopyWith<$Res>(_value.actualFee, (value) {
-      return _then(_value.copyWith(actualFee: value));
-    });
   }
 }
 
@@ -3883,7 +3860,7 @@ class _$PendingCommonReceiptPropertiesImpl
   TResult when<TResult extends Object?>({
     required TResult Function(
             Felt transactionHash,
-            String actualFee,
+            ActualFee actualFee,
             String execution_status,
             String finality_status,
             Felt? blockHash,
@@ -3952,7 +3929,7 @@ class _$PendingCommonReceiptPropertiesImpl
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(
             Felt transactionHash,
-            String actualFee,
+            ActualFee actualFee,
             String execution_status,
             String finality_status,
             Felt? blockHash,
@@ -4021,7 +3998,7 @@ class _$PendingCommonReceiptPropertiesImpl
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(
             Felt transactionHash,
-            String actualFee,
+            ActualFee actualFee,
             String execution_status,
             String finality_status,
             Felt? blockHash,
