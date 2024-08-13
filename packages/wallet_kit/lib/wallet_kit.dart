@@ -36,11 +36,12 @@ class WalletKit {
     required String accountClassHash,
     Future<String?> Function(BuildContext)? getPassword,
     double defaultMaxFee = 0.0003,
+    String? chainId,
   }) async {
     this.getPassword =
         getPassword ?? (BuildContext context) => showPasswordModal(context);
     provider = JsonRpcProvider(nodeUri: Uri.parse(rpc));
-    chainId = (await provider.chainId()).when(
+    this.chainId = chainId != null ? Felt.fromHexString(chainId) :(await provider.chainId()).when(
       result: (result) => Felt.fromHexString(result),
       error: (error) => throw Exception(error),
     );
