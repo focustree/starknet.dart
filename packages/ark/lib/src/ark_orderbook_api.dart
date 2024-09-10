@@ -47,7 +47,6 @@ class ArkOrderbookApi {
 
     final response = await http.get(uri, headers: headers);
     if (response.statusCode == 200) {
-      print(response.body);
       return OrderBookNFT.fromJson(jsonDecode(response.body));
     } else {
       throw HttpException('Failed to fetch data: ${response.statusCode}');
