@@ -28,14 +28,11 @@ coverage/
 
 .env
 .env.*
-<<<<<<< HEAD
 !.env.example
 !.env.mainnet.example
 !.env.devnet.example
-=======
 !.env.devnet
 
 # deploy for test
 .starkli/account_1.json
 
->>>>>>> 484f217 (`read_provider_test` migrate to devnet (#384))
