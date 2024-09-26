@@ -619,7 +619,7 @@ class _$InvokeTransactionV1Impl implements _InvokeTransactionV1 {
       required this.nonce,
       required this.senderAddress,
       required final List<Felt> calldata,
-      this.version = '0x01',
+      this.version = '0x1',
       this.type = 'INVOKE'})
       : _signature = signature,
         _calldata = calldata;

@@ -30,8 +30,8 @@ class _CounterPageState extends State<CounterPage> {
 
   _decreaseCount() async {
     await decreaseCounter();
-    setState(() async {
-      await _getCounter();
+    setState(() {
+      _getCounter();
     });
   }
 

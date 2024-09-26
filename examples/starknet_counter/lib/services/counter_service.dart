@@ -5,19 +5,18 @@ import 'package:starknet_provider/starknet_provider.dart';
 
 final provider = JsonRpcProvider(
     nodeUri: Uri.parse(
-        'https://starknet-goerli.infura.io/v3/9fe2088d204c4289bd9ed7e457cbbd67'));
+        'http://localhost:3030'));
 final contractAddress =
-    '0x716ea2ba1dc8f1e7f9faad442a109adebe4a80a2ec0c937c7e84aca58136859';
-// final contractAddress ='0x076b4f19561a3c48f13aa3cb912ad92c0e702270466668ec9d77513ba6c5b0e2';
+    '0x0662d4b526b2a0e87a449263b131e1831aa166f2d3d97412e8dc67fb85a3de1c';
 final secretAccountAddress =
-    "0x00ce7b8175e1aed7e087f44e63051c053cda012d5f63fdd1e95e82489925ff41";
+    "0x64b48806902a367c8598f4f95c305e8c1a1acba5f082d294a43793113115691";
 final secretAccountPrivateKey =
-    "0x06a1b5d41b7e5fee4310fda61d7c1b11e039f4681424cc89e1e8bfffe1ed9926";
+    "0x71d7bb07b9a64f6f78ac4c816aff4da9";
 final signeraccount = getAccount(
   accountAddress: Felt.fromHexString(secretAccountAddress),
   privateKey: Felt.fromHexString(secretAccountPrivateKey),
   nodeUri: Uri.parse(
-      'https://starknet-goerli.infura.io/v3/9fe2088d204c4289bd9ed7e457cbbd67'),
+      'http://localhost:3030'),
 );
 
 Future<int> getCurrentCount() async {
