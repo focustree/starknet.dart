@@ -5,7 +5,7 @@ import 'package:starknet_provider/starknet_provider.dart';
 
 final provider = JsonRpcProvider(
     nodeUri: Uri.parse(
-        'http://localhost:3030'));
+        'http://localhost:5050'));
 final contractAddress =
     '0x0662d4b526b2a0e87a449263b131e1831aa166f2d3d97412e8dc67fb85a3de1c';
 final secretAccountAddress =
@@ -16,7 +16,7 @@ final signeraccount = getAccount(
   accountAddress: Felt.fromHexString(secretAccountAddress),
   privateKey: Felt.fromHexString(secretAccountPrivateKey),
   nodeUri: Uri.parse(
-      'http://localhost:3030'),
+      'http://localhost:5050'),
 );
 
 Future<int> getCurrentCount() async {

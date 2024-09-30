@@ -57,12 +57,12 @@ scripts:
   devnet:start:
     description: Start local devnet
     run: |
-      starknet-devnet --seed 0 --dump-path $DEVNET_DUMP_PATH --state-archive-capacity full --port 3030
+      starknet-devnet --seed 0 --dump-path $DEVNET_DUMP_PATH --state-archive-capacity full --port 5050
   devnet:start:dump:
     description: Start local devnet from scratch and dump on exit
     run: |
       rm $DEVNET_DUMP_PATH
-      starknet-devnet --seed 0 --dump-path $DEVNET_DUMP_PATH --state-archive-capacity full --dump-on exit --port 3030
+      starknet-devnet --seed 0 --dump-path $DEVNET_DUMP_PATH --state-archive-capacity full --dump-on exit --port 5050
   devnet:setup:
     description: Setup local devnet
     run: |
