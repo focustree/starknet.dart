@@ -15,24 +15,21 @@ class _CounterPageState extends State<CounterPage> {
   TextEditingController amount = TextEditingController();
   _increaseCount() async {
     await increaseCounter();
-    setState(() {
-      _getCounter();
-    });
+    await _getCounter();
+    setState(() {});
   }
 
   _increaseCountBy() async {
     await increaseCounterBy(amount.text.trim());
-    setState(() {
-      _getCounter();
-      amount.clear();
-    });
+    await _getCounter();
+    amount.clear();
+    setState(() {});
   }
 
   _decreaseCount() async {
     await decreaseCounter();
-    setState(() async {
-      await _getCounter();
-    });
+    await _getCounter();
+    setState(() {});
   }
 
   _getCounter() async {

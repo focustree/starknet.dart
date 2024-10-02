@@ -2,7 +2,7 @@ import 'package:starknet/starknet.dart';
 
 class StarknetChainId {
   static final mainnet = Felt.fromString('SN_MAIN');
-  static final testNet = Felt.fromString('SN_GOERLI');
+  static final testNet = Felt.fromString('SN_SEPOLIA');
 }
 
 class TransactionHashPrefix {
