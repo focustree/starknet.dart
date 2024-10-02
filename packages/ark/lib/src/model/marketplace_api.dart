@@ -50,7 +50,7 @@ class MarketplaceNFTMetadata with _$MarketplaceNFTMetadata {
 @freezed
 class MarketdataResponse with _$MarketdataResponse {
   const factory MarketdataResponse({
-    required List<Marketdata> data,
+    required Marketdata data,
   }) = _MarketdataResponse;
 
   factory MarketdataResponse.fromJson(Map<String, dynamic> json) =>

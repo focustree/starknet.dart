@@ -823,7 +823,7 @@ MarketdataResponse _$MarketdataResponseFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$MarketdataResponse {
-  List<Marketdata> get data => throw _privateConstructorUsedError;
+  Marketdata get data => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -837,7 +837,9 @@ abstract class $MarketdataResponseCopyWith<$Res> {
           MarketdataResponse value, $Res Function(MarketdataResponse) then) =
       _$MarketdataResponseCopyWithImpl<$Res, MarketdataResponse>;
   @useResult
-  $Res call({List<Marketdata> data});
+  $Res call({Marketdata data});
+
+  $MarketdataCopyWith<$Res> get data;
 }
 
 /// @nodoc
@@ -859,8 +861,16 @@ class _$MarketdataResponseCopyWithImpl<$Res, $Val extends MarketdataResponse>
       data: null == data
           ? _value.data
           : data // ignore: cast_nullable_to_non_nullable
-              as List<Marketdata>,
+              as Marketdata,
     ) as $Val);
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $MarketdataCopyWith<$Res> get data {
+    return $MarketdataCopyWith<$Res>(_value.data, (value) {
+      return _then(_value.copyWith(data: value) as $Val);
+    });
   }
 }
 
@@ -872,7 +882,10 @@ abstract class _$$MarketdataResponseImplCopyWith<$Res>
       __$$MarketdataResponseImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({List<Marketdata> data});
+  $Res call({Marketdata data});
+
+  @override
+  $MarketdataCopyWith<$Res> get data;
 }
 
 /// @nodoc
@@ -890,9 +903,9 @@ class __$$MarketdataResponseImplCopyWithImpl<$Res>
   }) {
     return _then(_$MarketdataResponseImpl(
       data: null == data
-          ? _value._data
+          ? _value.data
           : data // ignore: cast_nullable_to_non_nullable
-              as List<Marketdata>,
+              as Marketdata,
     ));
   }
 }
@@ -900,19 +913,13 @@ class __$$MarketdataResponseImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$MarketdataResponseImpl implements _MarketdataResponse {
-  const _$MarketdataResponseImpl({required final List<Marketdata> data})
-      : _data = data;
+  const _$MarketdataResponseImpl({required this.data});
 
   factory _$MarketdataResponseImpl.fromJson(Map<String, dynamic> json) =>
       _$$MarketdataResponseImplFromJson(json);
 
-  final List<Marketdata> _data;
   @override
-  List<Marketdata> get data {
-    if (_data is EqualUnmodifiableListView) return _data;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_data);
-  }
+  final Marketdata data;
 
   @override
   String toString() {
@@ -924,13 +931,12 @@ class _$MarketdataResponseImpl implements _MarketdataResponse {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$MarketdataResponseImpl &&
-            const DeepCollectionEquality().equals(other._data, _data));
+            (identical(other.data, data) || other.data == data));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(_data));
+  int get hashCode => Object.hash(runtimeType, data);
 
   @JsonKey(ignore: true)
   @override
@@ -948,14 +954,14 @@ class _$MarketdataResponseImpl implements _MarketdataResponse {
 }
 
 abstract class _MarketdataResponse implements MarketdataResponse {
-  const factory _MarketdataResponse({required final List<Marketdata> data}) =
+  const factory _MarketdataResponse({required final Marketdata data}) =
       _$MarketdataResponseImpl;
 
   factory _MarketdataResponse.fromJson(Map<String, dynamic> json) =
       _$MarketdataResponseImpl.fromJson;
 
   @override
-  List<Marketdata> get data;
+  Marketdata get data;
   @override
   @JsonKey(ignore: true)
   _$$MarketdataResponseImplCopyWith<_$MarketdataResponseImpl> get copyWith =>

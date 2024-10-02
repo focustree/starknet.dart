@@ -77,9 +77,7 @@ Map<String, dynamic> _$$MarketplaceNFTMetadataImplToJson(
 _$MarketdataResponseImpl _$$MarketdataResponseImplFromJson(
         Map<String, dynamic> json) =>
     _$MarketdataResponseImpl(
-      data: (json['data'] as List<dynamic>)
-          .map((e) => Marketdata.fromJson(e as Map<String, dynamic>))
-          .toList(),
+      data: Marketdata.fromJson(json['data'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$$MarketdataResponseImplToJson(

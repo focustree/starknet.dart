@@ -73,7 +73,7 @@ class ArkMarketplaceApi {
     print(response.body);
     if (response.statusCode == 200) {
       final marketdataResponse = MarketdataResponse.fromJson(jsonDecode(response.body));
-      return marketdataResponse.data.first;
+      return marketdataResponse.data;
     } else {
       throw HttpException('Failed to fetch data: ${response.statusCode}');
     }
@@ -90,7 +90,7 @@ class ArkMarketplaceApi {
     };
 
     final uri =
-        Uri.parse('$baseUrl/collections/$contractAddress/$chainId/tokens')
+        Uri.parse('$baseUrl/tokens/$contractAddress/$chainId/$tokenId/offers')
             .replace(queryParameters: queryParameters);
 
     final headers = {
