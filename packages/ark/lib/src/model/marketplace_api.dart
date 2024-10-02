@@ -110,7 +110,7 @@ class GetTokenOffersResponse with _$GetTokenOffersResponse {
   const factory GetTokenOffersResponse({
     required List<TokenOffer> data,
     @JsonKey(name: 'count') required int count,
-    @JsonKey(name: 'next_page') required int nextPage,
+    @JsonKey(name: 'next_page') int? nextPage,
   }) = _GetTokenOffersResponse;
 
   factory GetTokenOffersResponse.fromJson(Map<String, dynamic> json) =>

@@ -163,7 +163,7 @@ _$GetTokenOffersResponseImpl _$$GetTokenOffersResponseImplFromJson(
           .map((e) => TokenOffer.fromJson(e as Map<String, dynamic>))
           .toList(),
       count: (json['count'] as num).toInt(),
-      nextPage: (json['next_page'] as num).toInt(),
+      nextPage: (json['next_page'] as num?)?.toInt(),
     );
 
 Map<String, dynamic> _$$GetTokenOffersResponseImplToJson(

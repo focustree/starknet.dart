@@ -70,7 +70,6 @@ class ArkMarketplaceApi {
     };
 
     var response = await http.get(uri, headers: headers);
-    print(response.body);
     if (response.statusCode == 200) {
       final marketdataResponse = MarketdataResponse.fromJson(jsonDecode(response.body));
       return marketdataResponse.data;
@@ -99,7 +98,6 @@ class ArkMarketplaceApi {
     };
 
     var response = await http.get(uri, headers: headers);
-    print(response.body);
     if (response.statusCode == 200) {
       return GetTokenOffersResponse.fromJson(jsonDecode(response.body));
     } else {

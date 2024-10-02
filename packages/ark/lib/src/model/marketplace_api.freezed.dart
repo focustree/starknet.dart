@@ -1873,7 +1873,7 @@ mixin _$GetTokenOffersResponse {
   @JsonKey(name: 'count')
   int get count => throw _privateConstructorUsedError;
   @JsonKey(name: 'next_page')
-  int get nextPage => throw _privateConstructorUsedError;
+  int? get nextPage => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -1890,7 +1890,7 @@ abstract class $GetTokenOffersResponseCopyWith<$Res> {
   $Res call(
       {List<TokenOffer> data,
       @JsonKey(name: 'count') int count,
-      @JsonKey(name: 'next_page') int nextPage});
+      @JsonKey(name: 'next_page') int? nextPage});
 }
 
 /// @nodoc
@@ -1909,7 +1909,7 @@ class _$GetTokenOffersResponseCopyWithImpl<$Res,
   $Res call({
     Object? data = null,
     Object? count = null,
-    Object? nextPage = null,
+    Object? nextPage = freezed,
   }) {
     return _then(_value.copyWith(
       data: null == data
@@ -1920,10 +1920,10 @@ class _$GetTokenOffersResponseCopyWithImpl<$Res,
           ? _value.count
           : count // ignore: cast_nullable_to_non_nullable
               as int,
-      nextPage: null == nextPage
+      nextPage: freezed == nextPage
           ? _value.nextPage
           : nextPage // ignore: cast_nullable_to_non_nullable
-              as int,
+              as int?,
     ) as $Val);
   }
 }
@@ -1940,7 +1940,7 @@ abstract class _$$GetTokenOffersResponseImplCopyWith<$Res>
   $Res call(
       {List<TokenOffer> data,
       @JsonKey(name: 'count') int count,
-      @JsonKey(name: 'next_page') int nextPage});
+      @JsonKey(name: 'next_page') int? nextPage});
 }
 
 /// @nodoc
@@ -1958,7 +1958,7 @@ class __$$GetTokenOffersResponseImplCopyWithImpl<$Res>
   $Res call({
     Object? data = null,
     Object? count = null,
-    Object? nextPage = null,
+    Object? nextPage = freezed,
   }) {
     return _then(_$GetTokenOffersResponseImpl(
       data: null == data
@@ -1969,10 +1969,10 @@ class __$$GetTokenOffersResponseImplCopyWithImpl<$Res>
           ? _value.count
           : count // ignore: cast_nullable_to_non_nullable
               as int,
-      nextPage: null == nextPage
+      nextPage: freezed == nextPage
           ? _value.nextPage
           : nextPage // ignore: cast_nullable_to_non_nullable
-              as int,
+              as int?,
     ));
   }
 }
@@ -1983,7 +1983,7 @@ class _$GetTokenOffersResponseImpl implements _GetTokenOffersResponse {
   const _$GetTokenOffersResponseImpl(
       {required final List<TokenOffer> data,
       @JsonKey(name: 'count') required this.count,
-      @JsonKey(name: 'next_page') required this.nextPage})
+      @JsonKey(name: 'next_page') this.nextPage})
       : _data = data;
 
   factory _$GetTokenOffersResponseImpl.fromJson(Map<String, dynamic> json) =>
@@ -2002,7 +2002,7 @@ class _$GetTokenOffersResponseImpl implements _GetTokenOffersResponse {
   final int count;
   @override
   @JsonKey(name: 'next_page')
-  final int nextPage;
+  final int? nextPage;
 
   @override
   String toString() {
@@ -2044,7 +2044,7 @@ abstract class _GetTokenOffersResponse implements GetTokenOffersResponse {
   const factory _GetTokenOffersResponse(
           {required final List<TokenOffer> data,
           @JsonKey(name: 'count') required final int count,
-          @JsonKey(name: 'next_page') required final int nextPage}) =
+          @JsonKey(name: 'next_page') final int? nextPage}) =
       _$GetTokenOffersResponseImpl;
 
   factory _GetTokenOffersResponse.fromJson(Map<String, dynamic> json) =
@@ -2057,7 +2057,7 @@ abstract class _GetTokenOffersResponse implements GetTokenOffersResponse {
   int get count;
   @override
   @JsonKey(name: 'next_page')
-  int get nextPage;
+  int? get nextPage;
   @override
   @JsonKey(ignore: true)
   _$$GetTokenOffersResponseImplCopyWith<_$GetTokenOffersResponseImpl>
