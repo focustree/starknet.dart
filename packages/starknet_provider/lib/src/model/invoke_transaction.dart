@@ -54,7 +54,7 @@ class InvokeTransactionV1
     required Felt nonce,
     required Felt senderAddress,
     required List<Felt> calldata,
-    @Default('0x01') String version,
+    @Default('0x1') String version,
     @Default('INVOKE') String type,
   }) = _InvokeTransactionV1;
 
