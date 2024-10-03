@@ -164,9 +164,6 @@ Future<String> sendEth({
   // final privateKey = await ss.PasswordStore()
   //     .getPrivateKey(id: account.id.toString(), password: password);
   final privateKey = s.Felt.fromHexString("0x1");
-  if (privateKey == null) {
-    throw Exception("Private key is null");
-  }
 
   s.Signer? signer = s.Signer(privateKey: privateKey);
 

@@ -6,8 +6,8 @@ part of 'wallet_state.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_WalletsState _$$_WalletsStateFromJson(Map<String, dynamic> json) =>
-    _$_WalletsState(
+_$WalletsStateImpl _$$WalletsStateImplFromJson(Map<String, dynamic> json) =>
+    _$WalletsStateImpl(
       wallets: (json['wallets'] as Map<String, dynamic>?)?.map(
             (k, e) => MapEntry(k, Wallet.fromJson(e as Map<String, dynamic>)),
           ) ??
@@ -15,19 +15,19 @@ _$_WalletsState _$$_WalletsStateFromJson(Map<String, dynamic> json) =>
       selected: _$recordConvertNullable(
             json['selected'],
             ($jsonValue) => (
-              accountId: $jsonValue['accountId'] as int,
+              accountId: ($jsonValue['accountId'] as num).toInt(),
               walletId: $jsonValue['walletId'] as String,
             ),
           ) ??
           null,
     );
 
-Map<String, dynamic> _$$_WalletsStateToJson(_$_WalletsState instance) =>
+Map<String, dynamic> _$$WalletsStateImplToJson(_$WalletsStateImpl instance) =>
     <String, dynamic>{
       'wallets': instance.wallets,
       'selected': instance.selected == null
           ? null
-          : {
+          : <String, dynamic>{
               'accountId': instance.selected!.accountId,
               'walletId': instance.selected!.walletId,
             },
@@ -39,7 +39,7 @@ $Rec? _$recordConvertNullable<$Rec>(
 ) =>
     value == null ? null : convert(value as Map<String, dynamic>);
 
-_$_Wallet _$$_WalletFromJson(Map<String, dynamic> json) => _$_Wallet(
+_$WalletImpl _$$WalletImplFromJson(Map<String, dynamic> json) => _$WalletImpl(
       id: json['id'] as String,
       name: json['name'] as String,
       type: $enumDecodeNullable(_$WalletTypeEnumMap, json['type']) ??
@@ -54,7 +54,8 @@ _$_Wallet _$$_WalletFromJson(Map<String, dynamic> json) => _$_Wallet(
           const {},
     );
 
-Map<String, dynamic> _$$_WalletToJson(_$_Wallet instance) => <String, dynamic>{
+Map<String, dynamic> _$$WalletImplToJson(_$WalletImpl instance) =>
+    <String, dynamic>{
       'id': instance.id,
       'name': instance.name,
       'type': _$WalletTypeEnumMap[instance.type]!,
@@ -73,8 +74,9 @@ const _$SecureStoreTypeEnumMap = {
   SecureStoreType.password: 'password',
 };
 
-_$_Account _$$_AccountFromJson(Map<String, dynamic> json) => _$_Account(
-      id: json['id'] as int,
+_$AccountImpl _$$AccountImplFromJson(Map<String, dynamic> json) =>
+    _$AccountImpl(
+      id: (json['id'] as num).toInt(),
       walletId: json['walletId'] as String,
       name: json['name'] as String,
       address: json['address'] as String,
@@ -85,7 +87,7 @@ _$_Account _$$_AccountFromJson(Map<String, dynamic> json) => _$_Account(
       isDeployed: json['isDeployed'] as bool? ?? false,
     );
 
-Map<String, dynamic> _$$_AccountToJson(_$_Account instance) =>
+Map<String, dynamic> _$$AccountImplToJson(_$AccountImpl instance) =>
     <String, dynamic>{
       'id': instance.id,
       'walletId': instance.walletId,

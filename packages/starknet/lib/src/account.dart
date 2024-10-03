@@ -196,11 +196,14 @@ class Account {
   Future<InvokeTransactionResponse> execute({
     required List<FunctionCall> functionCalls,
     bool useLegacyCalldata = false,
+    bool incrementNonceIfNonceRelatedError = true,
+    int maxAttempts = 5,
     Felt? maxFee,
     Felt? nonce,
   }) async {
     nonce = nonce ?? await getNonce();
     print(nonce);
+
     maxFee = maxFee ??
         await getEstimateMaxFeeForInvokeTx(
             functionCalls: functionCalls,
@@ -210,53 +213,93 @@ class Account {
                 ? "0x1"
                 : "0x0");
 
-    final signature = signer.signTransactions(
-      transactions: functionCalls,
-      contractAddress: accountAddress,
-      version: supportedTxVersion == AccountSupportedTxVersion.v1 ? 1 : 0,
-      chainId: chainId,
-      entryPointSelectorName: "__execute__",
-      nonce: nonce,
-      useLegacyCalldata: useLegacyCalldata,
-      maxFee: maxFee,
-    );
+    for (int attempt = 0; attempt < maxAttempts; attempt++) {
+      final signature = signer.signTransactions(
+        transactions: functionCalls,
+        contractAddress: accountAddress,
+        version: supportedTxVersion == AccountSupportedTxVersion.v1 ? 1 : 0,
+        chainId: chainId,
+        entryPointSelectorName: "__execute__",
+        nonce: nonce!,
+        useLegacyCalldata: useLegacyCalldata,
+        maxFee: maxFee,
+      );
 
-    switch (supportedTxVersion) {
-      // ignore: deprecated_member_use_from_same_package
-      case AccountSupportedTxVersion.v0:
-        final calldata =
-            functionCallsToCalldataLegacy(functionCalls: functionCalls) +
-                [nonce];
+      InvokeTransactionResponse response;
+      switch (supportedTxVersion) {
+        // ignore: deprecated_member_use_from_same_package
+        case AccountSupportedTxVersion.v0:
+          final calldata =
+              functionCallsToCalldataLegacy(functionCalls: functionCalls) +
+                  [nonce!];
 
-        return provider.addInvokeTransaction(
-          InvokeTransactionRequest(
-            invokeTransaction: InvokeTransactionV0(
-              contractAddress: accountAddress,
-              entryPointSelector: getSelectorByName('__execute__'),
-              calldata: calldata,
-              maxFee: maxFee,
-              signature: signature,
+          response = await provider.addInvokeTransaction(
+            InvokeTransactionRequest(
+              invokeTransaction: InvokeTransactionV0(
+                contractAddress: accountAddress,
+                entryPointSelector: getSelectorByName('__execute__'),
+                calldata: calldata,
+                maxFee: maxFee,
+                signature: signature,
+              ),
             ),
-          ),
-        );
-      case AccountSupportedTxVersion.v1:
-        final calldata = functionCallsToCalldata(
-          functionCalls: functionCalls,
-          useLegacyCalldata: useLegacyCalldata,
-        );
+          );
+          break;
+        case AccountSupportedTxVersion.v1:
+          final calldata = functionCallsToCalldata(
+            functionCalls: functionCalls,
+            useLegacyCalldata: useLegacyCalldata,
+          );
 
-        return provider.addInvokeTransaction(
-          InvokeTransactionRequest(
-            invokeTransaction: InvokeTransactionV1(
-              senderAddress: accountAddress,
-              calldata: calldata,
-              signature: signature,
-              maxFee: maxFee,
-              nonce: nonce,
+          response = await provider.addInvokeTransaction(
+            InvokeTransactionRequest(
+              invokeTransaction: InvokeTransactionV1(
+                senderAddress: accountAddress,
+                calldata: calldata,
+                signature: signature,
+                maxFee: maxFee,
+                nonce: nonce!,
+              ),
             ),
-          ),
-        );
+          );
+          break;
+      }
+
+      final result = response.when(
+        result: (result) => response,
+        error: (error) {
+          print('Attempt ${attempt + 1} failed: $error');
+          if (attempt < maxAttempts - 1 &&
+              isNonceRelatedError(error) &&
+              incrementNonceIfNonceRelatedError) {
+            nonce = incrementNonce(nonce!); // Increment nonce for next attempt
+            print('Incrementing nonce to: $nonce');
+            return null; // Indicate that we should retry
+          } else {
+            return response;
+          }
+        },
+      );
+
+      // If we get a valid result, return it
+      if (result != null) {
+        return result;
+      }
     }
+
+    // This return statement will never be reached because of the throw above,
+    // but is needed for the function to have a return value in all paths.
+    throw Exception('Failed to execute transaction after 5 attempts');
+  }
+
+  bool isNonceRelatedError(JsonRpcApiError error) {
+    // Replace this with the actual condition to identify nonce-related errors.
+    return error.message.contains('Account validation failed');
+  }
+
+  incrementNonce(Felt nonce) {
+    final nonceInInt = nonce.toInt();
+    return Felt.fromInt(nonceInInt + 1);
   }
 
   /// Declares a [compiledContract]

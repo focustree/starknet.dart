@@ -3,6 +3,7 @@ library wallet_kit;
 import 'package:flutter/material.dart';
 import 'package:starknet/starknet.dart';
 import 'package:starknet_provider/starknet_provider.dart';
+import 'package:wallet_kit/wallet_kit.dart';
 
 export 'wallet_state/index.dart';
 export 'wallet_screens/index.dart';
@@ -30,15 +31,17 @@ class WalletKit {
   late Felt accountClassHash;
   late Felt defaultMaxFee;
 
-  void init({
-    required Future<String?> Function(BuildContext) getPassword,
+  Future<void> init({
     required String rpc,
     required String accountClassHash,
+    Future<String?> Function(BuildContext)? getPassword,
     double defaultMaxFee = 0.0003,
+    String? chainId,
   }) async {
-    this.getPassword = getPassword;
+    this.getPassword =
+        getPassword ?? (BuildContext context) => showPasswordModal(context);
     provider = JsonRpcProvider(nodeUri: Uri.parse(rpc));
-    chainId = (await provider.chainId()).when(
+    this.chainId = chainId != null ? Felt.fromHexString(chainId) :(await provider.chainId()).when(
       result: (result) => Felt.fromHexString(result),
       error: (error) => throw Exception(error),
     );

@@ -26,7 +26,11 @@ coverage/
 # Cairo
 !contracts/build
 
+.env
 .env.*
+!.env.example
+!.env.mainnet.example
+!.env.devnet.example
 !.env.devnet
 
 # deploy for test

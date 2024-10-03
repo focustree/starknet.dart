@@ -1,0 +1,34 @@
+# How to build a mobile NFT marketplace for Starknet
+
+In this tutorial, we will build a mobile NFT marketplace for Starknet. The marketplace will allow users to mint, buy, and sell NFTs.
+
+We will use the [Ark protocol](https://www.arkproject.dev).
+
+1. Create a new flutter project
+
+```sh
+flutter create nft_marketplace
+```
+
+Run it locally with `flutter run` to make sure it is properly configured (run on IOS or Android, web and desktop not yet supported).
+
+2. Clone the ark project and run it locally ([follow README instructions](https://github.com/ArkProjectNFTs/ark-project/blob/bcd8ce9a6a83eeeb358c102def2f924af03b09a7/README.md?plain=1#L112-L172)):
+
+```sh
+git clone git@github.com:ArkProjectNFTs/ark-project.git
+```
+
+3. Install `wallet_kit` and its dependencies:
+
+```sh
+flutter pub add flutter_riverpod hive_flutter wallet_kit
+```
+
+Modify the main entrypoint to setup hive and riverpod (required for `wallet_kit`):
+
+```dart
+void main() async {
+  await Hive.initFlutter();
+  runApp(const ProviderScope(child: MyApp()));
+}
+```
