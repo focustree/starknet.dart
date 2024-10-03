@@ -13,7 +13,7 @@ class OrderBookNFT with _$OrderBookNFT {
     @JsonKey(name: 'listed_timestamp') required int listedTimestamp,
     @JsonKey(name: 'updated_timestamp') required int updatedTimestamp,
     @JsonKey(name: 'current_owner') required String currentOwner,
-    @JsonKey(name: 'last_price')  String? lastPrice,
+    @JsonKey(name: 'last_price') String? lastPrice,
     @JsonKey(name: 'quantity') required String quantity,
     @JsonKey(name: 'start_amount') String? startAmount,
     @JsonKey(name: 'end_amount') String? endAmount,
@@ -53,7 +53,8 @@ class GetOffersForTokenResponse with _$GetOffersForTokenResponse {
     @JsonKey(name: 'last_price') String? lastPrice,
   }) = _GetOffersForTokenResponse;
 
-  factory GetOffersForTokenResponse.fromJson(Map<String, dynamic> json) => _$GetOffersForTokenResponseFromJson(json);
+  factory GetOffersForTokenResponse.fromJson(Map<String, dynamic> json) =>
+      _$GetOffersForTokenResponseFromJson(json);
 }
 
 @freezed
@@ -65,7 +66,7 @@ class Offer with _$Offer {
     @JsonKey(name: 'offer_timestamp') required int offerTimestamp,
     @JsonKey(name: 'offer_quantity') required String offerQuantity,
     @JsonKey(name: 'currency_address') required String currencyAddress,
-    @JsonKey(name: 'currency_chain_id') required String  currencyChainId,
+    @JsonKey(name: 'currency_chain_id') required String currencyChainId,
     @JsonKey(name: 'start_date') required int startDate,
     @JsonKey(name: 'end_date') required int endDate,
     @JsonKey(name: 'status') required String status,

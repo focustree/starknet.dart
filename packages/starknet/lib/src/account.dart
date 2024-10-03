@@ -193,8 +193,7 @@ class Account {
   }
 
   /// Call account contract `__execute__` with given [functionCalls]
-  Future<InvokeTransactionResponse> 
-  execute({
+  Future<InvokeTransactionResponse> execute({
     required List<FunctionCall> functionCalls,
     bool useLegacyCalldata = false,
     bool incrementNonceIfNonceRelatedError = true,
@@ -270,7 +269,9 @@ class Account {
         result: (result) => response,
         error: (error) {
           print('Attempt ${attempt + 1} failed: $error');
-          if (attempt < maxAttempts - 1 && isNonceRelatedError(error) && incrementNonceIfNonceRelatedError) {
+          if (attempt < maxAttempts - 1 &&
+              isNonceRelatedError(error) &&
+              incrementNonceIfNonceRelatedError) {
             nonce = incrementNonce(nonce!); // Increment nonce for next attempt
             print('Incrementing nonce to: $nonce');
             return null; // Indicate that we should retry

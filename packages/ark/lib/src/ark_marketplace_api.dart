@@ -59,10 +59,9 @@ class ArkMarketplaceApi {
   }
 
   Future<Marketdata> getTokenMarketdata(
-    String contractAddress, String tokenId) async {
-
-    final uri =
-        Uri.parse('$baseUrl/tokens/$contractAddress/$chainId/$tokenId/marketdata');
+      String contractAddress, String tokenId) async {
+    final uri = Uri.parse(
+        '$baseUrl/tokens/$contractAddress/$chainId/$tokenId/marketdata');
 
     final headers = {
       'x-api-key': apiKey,
@@ -71,7 +70,8 @@ class ArkMarketplaceApi {
 
     var response = await http.get(uri, headers: headers);
     if (response.statusCode == 200) {
-      final marketdataResponse = MarketdataResponse.fromJson(jsonDecode(response.body));
+      final marketdataResponse =
+          MarketdataResponse.fromJson(jsonDecode(response.body));
       return marketdataResponse.data;
     } else {
       throw HttpException('Failed to fetch data: ${response.statusCode}');
@@ -79,7 +79,8 @@ class ArkMarketplaceApi {
   }
 
   Future<GetTokenOffersResponse> getTokerOffers(
-    String contractAddress, String tokenId, {
+    String contractAddress,
+    String tokenId, {
     page = 1,
     itemsPerPage = 100,
   }) async {

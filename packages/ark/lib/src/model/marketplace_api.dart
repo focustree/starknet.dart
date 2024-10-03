@@ -118,7 +118,7 @@ class GetTokenOffersResponse with _$GetTokenOffersResponse {
 }
 
 @freezed
-class TokenOffer with _$TokenOffer{
+class TokenOffer with _$TokenOffer {
   const factory TokenOffer({
     @JsonKey(name: 'expire_at') required int expireAt,
     @JsonKey(name: 'floor_difference') required String floorDifference,
@@ -128,5 +128,6 @@ class TokenOffer with _$TokenOffer{
     @JsonKey(name: 'source') required String source,
   }) = _TokenOffer;
 
-  factory TokenOffer.fromJson(Map<String, dynamic> json) => _$TokenOfferFromJson(json);
+  factory TokenOffer.fromJson(Map<String, dynamic> json) =>
+      _$TokenOfferFromJson(json);
 }

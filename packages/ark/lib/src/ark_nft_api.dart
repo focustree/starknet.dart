@@ -38,7 +38,8 @@ class ArkNFTApi {
   }
 
   Future<void> getOrderHash(String contractAddress, String tokenId) async {
-    final uri = Uri.parse('https://api-marketplace.arkproject.dev/tokens/$contractAddress/0x534e5f4d41494e/$tokenId/marketdata');
+    final uri = Uri.parse(
+        'https://api-marketplace.arkproject.dev/tokens/$contractAddress/0x534e5f4d41494e/$tokenId/marketdata');
     final headers = {
       'x-api-key': apiKey,
       'Content-Type': 'application/json',

@@ -34,8 +34,7 @@ class ArkStarknet {
     Felt? nonce,
     List<FunctionCall>? additionalFunctionCalls,
   }) async {
-    startDate =
-        startDate ?? (DateTime.now().millisecondsSinceEpoch ~/ (1000));
+    startDate = startDate ?? (DateTime.now().millisecondsSinceEpoch ~/ (1000));
     endDate = endDate ?? (startDate + 3 * 24 * 60 * 60);
 
     final OrderV1 order = OrderV1(
@@ -52,7 +51,8 @@ class ArkStarknet {
       endAmount: Uint256.fromInt(0),
       startDate: startDate,
       endDate: endDate,
-      brokerId: "0xe4769a4d2f7f69c70951a003eba5c32707cef3cdfb6b27ca63567f51cdd078",
+      brokerId:
+          "0xe4769a4d2f7f69c70951a003eba5c32707cef3cdfb6b27ca63567f51cdd078",
       additionalData: [],
     );
 
@@ -110,7 +110,6 @@ class ArkStarknet {
     Felt? maxFee,
     Felt? nonce,
   }) async {
-
     final FullCancelInfo fullCancelInfo = FullCancelInfo(
       orderHash: orderHash,
       canceller: starknetAccount.accountAddress.toHexString(),
@@ -159,8 +158,7 @@ class ArkStarknet {
     Felt? maxFee,
     Felt? nonce,
   }) async {
-    startDate =
-        startDate ?? (DateTime.now().millisecondsSinceEpoch ~/ (1000));
+    startDate = startDate ?? (DateTime.now().millisecondsSinceEpoch ~/ (1000));
     endDate = endDate ?? (startDate + 3 * 24 * 60 * 60);
 
     final bigIntAmount = BigInt.from(startAmount * 1e18);
@@ -180,7 +178,8 @@ class ArkStarknet {
       endAmount: Uint256.fromInt(0),
       startDate: startDate,
       endDate: endDate,
-      brokerId: "0xe4769a4d2f7f69c70951a003eba5c32707cef3cdfb6b27ca63567f51cdd078",
+      brokerId:
+          "0xe4769a4d2f7f69c70951a003eba5c32707cef3cdfb6b27ca63567f51cdd078",
       additionalData: [],
     );
 
@@ -240,18 +239,17 @@ class ArkStarknet {
     Felt? maxFee,
     Felt? nonce,
   }) async {
-
     final bigIntAmount = BigInt.from(startAmount * 1e18);
 
     final FulfillInfo fulfillInfo = FulfillInfo(
-      orderHash: orderHash,
-      relatedOrderHash: 1,
-      fulfiller: starknetAccount.accountAddress.toHexString(),
-      tokenChainId: tokenChainId,
-      tokenAddress: nftAddress,
-      tokenId: Uint256.fromIntString(tokenId),
-      fulfillBrokerAddress: "0xe4769a4d2f7f69c70951a003eba5c32707cef3cdfb6b27ca63567f51cdd078"
-    );
+        orderHash: orderHash,
+        relatedOrderHash: 1,
+        fulfiller: starknetAccount.accountAddress.toHexString(),
+        tokenChainId: tokenChainId,
+        tokenAddress: nftAddress,
+        tokenId: Uint256.fromIntString(tokenId),
+        fulfillBrokerAddress:
+            "0xe4769a4d2f7f69c70951a003eba5c32707cef3cdfb6b27ca63567f51cdd078");
 
     final tokenIdBigInt = BigInt.parse(tokenId);
 
@@ -271,7 +269,7 @@ class ArkStarknet {
       FunctionCall(
         contractAddress: Felt.fromHexString(currencyAddress),
         entryPointSelector: getSelectorByName("approve"),
-        calldata: [arkExecutorAddress, Felt(bigIntAmount), Felt.fromInt(0) ],
+        calldata: [arkExecutorAddress, Felt(bigIntAmount), Felt.fromInt(0)],
       ),
       FunctionCall(
         contractAddress: arkExecutorAddress,
@@ -300,16 +298,15 @@ class ArkStarknet {
     Felt? maxFee,
     Felt? nonce,
   }) async {
-
     final FulfillInfo fulfillInfo = FulfillInfo(
-      orderHash: orderHash,
-      relatedOrderHash: 1,
-      fulfiller: starknetAccount.accountAddress.toHexString(),
-      tokenChainId: tokenChainId,
-      tokenAddress: nftAddress,
-      tokenId: Uint256.fromIntString(tokenId),
-      fulfillBrokerAddress: "0xe4769a4d2f7f69c70951a003eba5c32707cef3cdfb6b27ca63567f51cdd078"
-    );
+        orderHash: orderHash,
+        relatedOrderHash: 1,
+        fulfiller: starknetAccount.accountAddress.toHexString(),
+        tokenChainId: tokenChainId,
+        tokenAddress: nftAddress,
+        tokenId: Uint256.fromIntString(tokenId),
+        fulfillBrokerAddress:
+            "0xe4769a4d2f7f69c70951a003eba5c32707cef3cdfb6b27ca63567f51cdd078");
 
     final tokenIdBigInt = BigInt.parse(tokenId);
 

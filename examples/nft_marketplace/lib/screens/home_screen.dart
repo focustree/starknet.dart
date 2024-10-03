@@ -84,7 +84,8 @@ Future<ListNFTsResponse> listNFTs(ListNFTsRef ref) async {
 }
 
 @riverpod
-Future<ListMarketplaceNFTsResponse> listBuyNowNFTs(ListBuyNowNFTsRef ref) async {
+Future<ListMarketplaceNFTsResponse> listBuyNowNFTs(
+    ListBuyNowNFTsRef ref) async {
   return Ark().marketplace.list(Config().nftContractAddress, buyNow: true);
 }
 
@@ -103,7 +104,8 @@ class NFTList extends ConsumerWidget {
             return MarketplaceNftCard(
                 nft: nft,
                 onTap: (nft) {
-                  context.push('/nft/${Config().nftContractAddress}/${nft.tokenId}');
+                  context.push(
+                      '/nft/${Config().nftContractAddress}/${nft.tokenId}');
                 });
           },
           gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(

@@ -139,9 +139,7 @@ Future<bool> waitForAcceptance({
   return waitForState(
     transactionHash: transactionHash,
     provider: provider,
-    states: [
-      'SUCCEEDED'
-    ],
+    states: ['SUCCEEDED'],
     interval: interval,
     maxRetries: maxRetries,
     debugLog: debugLog,

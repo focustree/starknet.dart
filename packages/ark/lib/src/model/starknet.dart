@@ -104,7 +104,7 @@ class FullCancelInfo with _$FullCancelInfo {
     required String canceller,
     required String tokenChainId,
     required String tokenAddress,
-    required Uint256 tokenId, 
+    required Uint256 tokenId,
   }) = _FullCancelInfo;
 
   factory FullCancelInfo.fromJson(Map<String, dynamic> json) =>
@@ -120,7 +120,7 @@ class FulfillInfo with _$FulfillInfo {
     required String fulfiller,
     required String tokenChainId,
     required String tokenAddress,
-    required Uint256 tokenId, 
+    required Uint256 tokenId,
     required String fulfillBrokerAddress,
   }) = _FulfillInfo;
 

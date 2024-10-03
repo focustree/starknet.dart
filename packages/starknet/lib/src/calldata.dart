@@ -41,6 +41,5 @@ List<Felt> computeCalldata(dynamic data) {
         })
         .expand((element) => element)
         .toList();
-        
   }
 }

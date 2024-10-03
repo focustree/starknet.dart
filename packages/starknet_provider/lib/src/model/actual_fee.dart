@@ -11,5 +11,6 @@ class ActualFee with _$ActualFee {
     required String unit,
   }) = _ActualFee;
 
-  factory ActualFee.fromJson(Map<String, Object?> json) => _$ActualFeeFromJson(json);
+  factory ActualFee.fromJson(Map<String, Object?> json) =>
+      _$ActualFeeFromJson(json);
 }

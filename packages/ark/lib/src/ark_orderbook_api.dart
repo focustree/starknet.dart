@@ -38,7 +38,8 @@ class ArkOrderbookApi {
     }
   }
 
-  Future<OrderBookNFT> getOrderbookNFT(String contractAddress, String tokenId) async {
+  Future<OrderBookNFT> getOrderbookNFT(
+      String contractAddress, String tokenId) async {
     final uri = Uri.parse('$baseUrl/token/$contractAddress/$tokenId');
     final headers = <String, String>{
       'x-api-key': apiKey,
@@ -53,7 +54,8 @@ class ArkOrderbookApi {
     }
   }
 
-  Future<GetOffersForTokenResponse> getOffersForNFT(String contractAddress, String tokenId) async {
+  Future<GetOffersForTokenResponse> getOffersForNFT(
+      String contractAddress, String tokenId) async {
     final uri = Uri.parse('$baseUrl/token/$contractAddress/$tokenId/offers');
     final headers = <String, String>{
       'x-api-key': apiKey,
