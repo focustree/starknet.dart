@@ -39,9 +39,9 @@ _$ResultingBlockImpl _$$ResultingBlockImplFromJson(Map<String, dynamic> json) =>
       status: json['status'] as String,
       blockHash: Felt.fromJson(json['block_hash'] as String),
       parentHash: Felt.fromJson(json['parent_hash'] as String),
-      blockNumber: json['block_number'] as int,
+      blockNumber: (json['block_number'] as num).toInt(),
       newRoot: Felt.fromJson(json['new_root'] as String),
-      timestamp: json['timestamp'] as int,
+      timestamp: (json['timestamp'] as num).toInt(),
       sequencerAddress: Felt.fromJson(json['sequencer_address'] as String),
       transactions: (json['transactions'] as List<dynamic>)
           .map((e) => Felt.fromJson(e as String))
@@ -68,7 +68,7 @@ _$PendingBlockImpl _$$PendingBlockImplFromJson(Map<String, dynamic> json) =>
       transactions: (json['transactions'] as List<dynamic>)
           .map((e) => Felt.fromJson(e as String))
           .toList(),
-      timestamp: json['timestamp'] as int,
+      timestamp: (json['timestamp'] as num).toInt(),
       sequencerAddress: Felt.fromJson(json['sequencer_address'] as String),
       parentHash: Felt.fromJson(json['parent_hash'] as String),
       $type: json['starkNetRuntimeTypeToRemove'] as String?,

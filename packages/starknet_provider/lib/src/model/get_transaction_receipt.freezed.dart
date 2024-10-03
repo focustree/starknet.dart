@@ -12,7 +12,7 @@ part of 'get_transaction_receipt.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 GetTransactionReceipt _$GetTransactionReceiptFromJson(
     Map<String, dynamic> json) {
@@ -160,7 +160,7 @@ class _$GetTransactionReceiptResultImpl implements GetTransactionReceiptResult {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$GetTransactionReceiptResultImpl &&
@@ -328,7 +328,7 @@ class _$GetTransactionReceiptErrorImpl implements GetTransactionReceiptError {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$GetTransactionReceiptErrorImpl &&
@@ -893,7 +893,7 @@ class _$InvokeTxnReceiptImpl implements InvokeTxnReceipt {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$InvokeTxnReceiptImpl &&
@@ -1376,7 +1376,7 @@ class _$DeclareTxnReceiptImpl implements DeclareTxnReceipt {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$DeclareTxnReceiptImpl &&
@@ -1825,7 +1825,7 @@ class _$L1HandlerTxnReceiptImpl implements L1HandlerTxnReceipt {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$L1HandlerTxnReceiptImpl &&
@@ -2294,7 +2294,7 @@ class _$DeployTxnReceiptImpl implements DeployTxnReceipt {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$DeployTxnReceiptImpl &&
@@ -2779,7 +2779,7 @@ class _$DeployAccountTxnReceiptImpl implements DeployAccountTxnReceipt {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$DeployAccountTxnReceiptImpl &&
@@ -3244,7 +3244,7 @@ class _$PendingDeployTxnReceiptImpl implements PendingDeployTxnReceipt {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$PendingDeployTxnReceiptImpl &&
@@ -3675,7 +3675,7 @@ class _$PendingCommonReceiptPropertiesImpl
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$PendingCommonReceiptPropertiesImpl &&

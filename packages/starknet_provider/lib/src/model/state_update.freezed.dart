@@ -12,7 +12,7 @@ part of 'state_update.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 StateUpdate _$StateUpdateFromJson(Map<String, dynamic> json) {
   return _StateUpdate.fromJson(json);
@@ -167,7 +167,7 @@ class _$StateUpdateImpl implements _StateUpdate {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$StateUpdateImpl &&
@@ -448,7 +448,7 @@ class _$StateDiffImpl implements _StateDiff {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$StateDiffImpl &&
@@ -636,7 +636,7 @@ class _$NonceAndContractAddressImpl implements _NonceAndContractAddress {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$NonceAndContractAddressImpl &&
@@ -793,7 +793,7 @@ class _$DeclaredClassImpl implements _DeclaredClass {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$DeclaredClassImpl &&
@@ -950,7 +950,7 @@ class _$ReplacedClassImpl implements _ReplacedClass {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ReplacedClassImpl &&

@@ -59,7 +59,7 @@ _$InvokeTransactionV1Impl _$$InvokeTransactionV1ImplFromJson(
       calldata: (json['calldata'] as List<dynamic>)
           .map((e) => Felt.fromJson(e as String))
           .toList(),
-      version: json['version'] as String? ?? '0x01',
+      version: json['version'] as String? ?? '0x1',
       type: json['type'] as String? ?? 'INVOKE',
     );
 

@@ -12,7 +12,7 @@ part of 'get_block_txn_count.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 GetBlockTxnCount _$GetBlockTxnCountFromJson(Map<String, dynamic> json) {
   switch (json['starkNetRuntimeTypeToRemove']) {
@@ -143,7 +143,7 @@ class _$BlockTxnCountResultImpl implements BlockTxnCountResult {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$BlockTxnCountResultImpl &&
@@ -307,7 +307,7 @@ class _$GetBlockTxnCountErrorImpl implements GetBlockTxnCountError {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$GetBlockTxnCountErrorImpl &&

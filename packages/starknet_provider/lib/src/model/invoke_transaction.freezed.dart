@@ -12,7 +12,7 @@ part of 'invoke_transaction.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 InvokeTransactionRequest _$InvokeTransactionRequestFromJson(
     Map<String, dynamic> json) {
@@ -116,7 +116,7 @@ class _$InvokeTransactionRequestImpl implements _InvokeTransactionRequest {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$InvokeTransactionRequestImpl &&
@@ -372,7 +372,7 @@ class _$InvokeTransactionV0Impl implements _InvokeTransactionV0 {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$InvokeTransactionV0Impl &&
@@ -663,7 +663,7 @@ class _$InvokeTransactionV1Impl implements _InvokeTransactionV1 {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$InvokeTransactionV1Impl &&
@@ -885,7 +885,7 @@ class _$InvokeTransactionResultImpl implements InvokeTransactionResult {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$InvokeTransactionResultImpl &&
@@ -1052,7 +1052,7 @@ class _$InvokeTransactionErrorImpl implements InvokeTransactionError {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$InvokeTransactionErrorImpl &&
@@ -1259,7 +1259,7 @@ class _$InvokeTransactionResponseResultImpl
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$InvokeTransactionResponseResultImpl &&

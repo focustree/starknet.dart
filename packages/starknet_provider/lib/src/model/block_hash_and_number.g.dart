@@ -40,7 +40,7 @@ _$BlockHashAndNumberResponseResultImpl
             Map<String, dynamic> json) =>
         _$BlockHashAndNumberResponseResultImpl(
           blockHash: Felt.fromJson(json['block_hash'] as String),
-          blockNumber: json['block_number'] as int,
+          blockNumber: (json['block_number'] as num).toInt(),
         );
 
 Map<String, dynamic> _$$BlockHashAndNumberResponseResultImplToJson(

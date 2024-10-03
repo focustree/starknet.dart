@@ -44,7 +44,7 @@ _$InvokeTxnReceiptImpl _$$InvokeTxnReceiptImplFromJson(
       blockHash: json['block_hash'] == null
           ? null
           : Felt.fromJson(json['block_hash'] as String),
-      blockNumber: json['block_number'] as int?,
+      blockNumber: (json['block_number'] as num?)?.toInt(),
       type: json['type'] as String,
       messagesSent: (json['messages_sent'] as List<dynamic>)
           .map((e) => MsgToL1.fromJson(e as Map<String, dynamic>))
@@ -80,7 +80,7 @@ _$DeclareTxnReceiptImpl _$$DeclareTxnReceiptImplFromJson(
       blockHash: json['block_hash'] == null
           ? null
           : Felt.fromJson(json['block_hash'] as String),
-      blockNumber: json['block_number'] as int?,
+      blockNumber: (json['block_number'] as num?)?.toInt(),
       type: json['type'] as String,
       messagesSent: (json['messages_sent'] as List<dynamic>)
           .map((e) => MsgToL1.fromJson(e as Map<String, dynamic>))
@@ -144,7 +144,7 @@ _$DeployTxnReceiptImpl _$$DeployTxnReceiptImplFromJson(
       blockHash: json['block_hash'] == null
           ? null
           : Felt.fromJson(json['block_hash'] as String),
-      blockNumber: json['block_number'] as int?,
+      blockNumber: (json['block_number'] as num?)?.toInt(),
       type: json['type'] as String,
       messagesSent: (json['messages_sent'] as List<dynamic>)
           .map((e) => MsgToL1.fromJson(e as Map<String, dynamic>))
@@ -180,7 +180,7 @@ _$DeployAccountTxnReceiptImpl _$$DeployAccountTxnReceiptImplFromJson(
       blockHash: json['block_hash'] == null
           ? null
           : Felt.fromJson(json['block_hash'] as String),
-      blockNumber: json['block_number'] as int?,
+      blockNumber: (json['block_number'] as num?)?.toInt(),
       type: json['type'] as String,
       messagesSent: (json['messages_sent'] as List<dynamic>)
           .map((e) => MsgToL1.fromJson(e as Map<String, dynamic>))

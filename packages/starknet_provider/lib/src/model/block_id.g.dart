@@ -14,7 +14,7 @@ _$BlockIdHashImpl _$$BlockIdHashImplFromJson(Map<String, dynamic> json) =>
 
 _$BlockIdNumberImpl _$$BlockIdNumberImplFromJson(Map<String, dynamic> json) =>
     _$BlockIdNumberImpl(
-      json['block_number'] as int,
+      (json['block_number'] as num).toInt(),
       $type: json['starkNetRuntimeTypeToRemove'] as String?,
     );
 

@@ -12,7 +12,7 @@ part of 'get_events.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 GetEvents _$GetEventsFromJson(Map<String, dynamic> json) {
   switch (json['starkNetRuntimeTypeToRemove']) {
@@ -152,7 +152,7 @@ class _$GetEventsResultImpl implements GetEventsResult {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$GetEventsResultImpl &&
@@ -315,7 +315,7 @@ class _$GetEventsErrorImpl implements GetEventsError {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$GetEventsErrorImpl &&
@@ -644,7 +644,7 @@ class _$GetEventsRequestImpl implements _GetEventsRequest {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$GetEventsRequestImpl &&
@@ -829,7 +829,7 @@ class _$GetEventsResponseImpl implements _GetEventsResponse {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$GetEventsResponseImpl &&
@@ -1075,7 +1075,7 @@ class _$EmittedEventImpl implements _EmittedEvent {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$EmittedEventImpl &&

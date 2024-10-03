@@ -12,7 +12,7 @@ part of 'syncing.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 Syncing _$SyncingFromJson(Map<String, dynamic> json) {
   switch (json['starkNetRuntimeTypeToRemove']) {
@@ -160,7 +160,7 @@ class _$SynchronizedImpl implements Synchronized {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$SynchronizedImpl &&
@@ -318,7 +318,7 @@ class _$NotSynchronizedImpl implements NotSynchronized {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$NotSynchronizedImpl &&
@@ -487,7 +487,7 @@ class _$SyncingErrorImpl implements SyncingError {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$SyncingErrorImpl &&

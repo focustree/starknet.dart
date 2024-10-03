@@ -33,10 +33,8 @@ class HomeScreen extends StatelessWidget {
                     ElevatedButton(
                         onPressed: () async {
                           final chainId = await WalletKit().provider.chainId();
-                          chainId.whenOrNull(
-                            result: (result) => print('Chain ID: $result'),
-                            error: (error) => print('Error: $error'),
-                          );
+                          
+                          // ignore: use_build_context_synchronously
                           ScaffoldMessenger.of(context).showSnackBar(
                             SnackBar(content: Text('Chain ID: $chainId')),
                           );
