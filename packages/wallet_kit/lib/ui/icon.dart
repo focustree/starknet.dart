@@ -13,7 +13,7 @@ class CustomIcon extends StatelessWidget {
   final String? semanticLabel;
   final TextDirection? textDirection;
 
-  CustomIcon(
+  const CustomIcon(
     this.icon, {
     Key? key,
     this.size = 16,

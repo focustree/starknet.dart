@@ -28,7 +28,7 @@ class TopBar extends StatelessWidget {
         constraints: const BoxConstraints(minHeight: 56),
         child: Stack(
           children: [
-            Positioned(child: backButton, left: 0, top: 0),
+            Positioned(left: 0, top: 0, child: backButton),
             Container(
               color: Colors.red,
               child: Center(
@@ -44,10 +44,10 @@ class TopBar extends StatelessWidget {
               ),
             ),
             Positioned(
-                child: Container(
-                    child: rightButton ?? Container(), color: Colors.green),
                 right: 0,
-                top: 0),
+                top: 0,
+                child: Container(
+                    color: Colors.green, child: rightButton ?? Container())),
           ],
         ),
       ),

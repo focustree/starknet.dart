@@ -79,13 +79,13 @@ class NFTDetail extends ConsumerWidget {
                       nftAddress: nftAddress,
                       tokenId: tokenId,
                       startAmount: 0.1,
-                      maxFee: Felt.fromDouble(0.00001 * 1e18) );
+                      maxFee: Felt.fromDouble(0.00001 * 1e18));
 
-                  await waitForAcceptance(transactionHash: txhash, provider: WalletKit().provider );
-
+                  await waitForAcceptance(
+                      transactionHash: txhash, provider: WalletKit().provider);
                 },
                 child: const Text('Sell')),
-                ElevatedButton(
+            ElevatedButton(
                 onPressed: () async {
                   if (selectedAccount == null) {
                     showWalletList(context);
@@ -103,18 +103,19 @@ class NFTDetail extends ConsumerWidget {
                     account: selectedAccount,
                   );
 
-                   final orderBook = await Ark().orderbook.getOrderbookNFT(nftAddress, tokenId);
+                  final orderBook = await Ark()
+                      .orderbook
+                      .getOrderbookNFT(nftAddress, tokenId);
 
                   await Ark().starknet.cancelOrder(
                       starknetAccount: starknetAccount,
                       orderHash: BigInt.parse(orderBook.orderHash),
                       tokenAddress: nftAddress,
                       tokenId: BigInt.parse(tokenId),
-                      maxFee:Felt.fromDouble(0.00001 * 1e18)
-                      );
+                      maxFee: Felt.fromDouble(0.00001 * 1e18));
                 },
                 child: const Text('Cancel Order')),
-                ElevatedButton(
+            ElevatedButton(
                 onPressed: () async {
                   if (selectedAccount == null) {
                     showWalletList(context);
@@ -132,7 +133,9 @@ class NFTDetail extends ConsumerWidget {
                     account: selectedAccount,
                   );
 
-                  final orderBook = await Ark().orderbook.getOrderbookNFT(nftAddress, tokenId);
+                  final orderBook = await Ark()
+                      .orderbook
+                      .getOrderbookNFT(nftAddress, tokenId);
 
                   await Ark().starknet.fulfillListing(
                       starknetAccount: starknetAccount,
@@ -140,11 +143,10 @@ class NFTDetail extends ConsumerWidget {
                       nftAddress: nftAddress,
                       tokenId: tokenId,
                       startAmount: 0.0000000000001,
-                      maxFee: Felt.fromDouble(0.00001 * 1e18)
-                      );
+                      maxFee: Felt.fromDouble(0.00001 * 1e18));
                 },
                 child: const Text('Buy')),
-                ElevatedButton(
+            ElevatedButton(
                 onPressed: () async {
                   if (selectedAccount == null) {
                     showWalletList(context);
@@ -167,11 +169,10 @@ class NFTDetail extends ConsumerWidget {
                       nftAddress: nftAddress,
                       tokenId: tokenId,
                       startAmount: 0.0000000001,
-                      maxFee: Felt.fromDouble(0.00001 * 1e18)
-                      );
+                      maxFee: Felt.fromDouble(0.00001 * 1e18));
                 },
                 child: const Text('Make Offer')),
-                ElevatedButton(
+            ElevatedButton(
                 onPressed: () async {
                   if (selectedAccount == null) {
                     showWalletList(context);
@@ -189,9 +190,11 @@ class NFTDetail extends ConsumerWidget {
                     account: selectedAccount,
                   );
 
-                  final orderBook = await Ark().orderbook.getOrderbookNFT(nftAddress, tokenId);
+                  final orderBook = await Ark()
+                      .orderbook
+                      .getOrderbookNFT(nftAddress, tokenId);
                   final offerOrderHash = orderBook.topBid!.orderHash;
-                  if(offerOrderHash == null) {
+                  if (offerOrderHash == null) {
                     return;
                   }
 
@@ -200,8 +203,7 @@ class NFTDetail extends ConsumerWidget {
                       orderHash: BigInt.parse(offerOrderHash),
                       nftAddress: nftAddress,
                       tokenId: tokenId,
-                      maxFee: Felt.fromDouble(0.00001 * 1e18)
-                      );
+                      maxFee: Felt.fromDouble(0.00001 * 1e18));
                 },
                 child: const Text('Accept Offer'))
           ],

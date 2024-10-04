@@ -22,7 +22,7 @@ final walletThemeData = ThemeData(
     labelSmall: baseTextStyle,
   ),
   colorScheme: ColorScheme.fromSeed(seedColor: Colors.lightBlue)
-      .copyWith(background: backgrounColor),
+      .copyWith(surface: backgrounColor),
   appBarTheme: const AppBarTheme(
     systemOverlayStyle: SystemUiOverlayStyle(
       statusBarColor: Colors.transparent,

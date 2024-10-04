@@ -12,8 +12,8 @@ abstract class Provider implements ReadProvider {
 
 class JsonRpcProvider extends JsonRpcReadProvider implements Provider {
   const JsonRpcProvider({
-    required Uri nodeUri,
-  }) : super(nodeUri: nodeUri);
+    required super.nodeUri,
+  });
 
   execute(List<Call> calls) async {}
 

@@ -26,6 +26,7 @@ class WalletTypeIcon extends StatelessWidget {
       "packages/wallet_kit/assets/images/wallets/${type.name}.svg",
       width: width,
       fit: fit,
+      // ignore: deprecated_member_use
       color: color,
       alignment: alignment,
       matchTextDirection: matchTextDirection,

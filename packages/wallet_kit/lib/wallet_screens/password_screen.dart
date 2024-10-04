@@ -102,6 +102,7 @@ class ConfirmPasswordScren extends HookConsumerWidget {
                         seedPhrase: 'daf',
                       );
                   isLoading.value = false;
+                  // ignore: use_build_context_synchronously
                   Navigator.of(context).popUntil((route) => route.isFirst);
                 }
               : null,

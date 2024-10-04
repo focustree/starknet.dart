@@ -207,13 +207,13 @@ class AccountCell extends HookConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     return FilledButton.tonal(
       style: ButtonStyle(
-        padding: MaterialStateProperty.all(
+        padding: WidgetStateProperty.all(
           const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
         ),
-        backgroundColor: MaterialStateProperty.all(Colors.white),
-        side: MaterialStateProperty.all(BorderSide.none),
-        overlayColor: MaterialStateProperty.all(Colors.grey.withOpacity(0.05)),
-        shape: MaterialStateProperty.all(
+        backgroundColor: WidgetStateProperty.all(Colors.white),
+        side: WidgetStateProperty.all(BorderSide.none),
+        overlayColor: WidgetStateProperty.all(Colors.grey.withOpacity(0.05)),
+        shape: WidgetStateProperty.all(
           RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(16.0),
           ),
