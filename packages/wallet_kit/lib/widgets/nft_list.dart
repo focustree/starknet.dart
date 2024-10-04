@@ -103,7 +103,6 @@ class NftCard extends StatelessWidget {
                 overflow: TextOverflow.ellipsis,
               ),
             ),
-            
           ],
         ),
       ),
@@ -123,7 +122,6 @@ class MarketplaceNftCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     final price = nft.price;
 
     if (price == null) {
@@ -152,7 +150,8 @@ class MarketplaceNftCard extends StatelessWidget {
             Expanded(
               child: AspectRatio(
                 aspectRatio: 1.0,
-                child: Image.network(nft.metadata != null ? nft.metadata!.image : '',
+                child: Image.network(
+                    nft.metadata != null ? nft.metadata!.image : '',
                     fit: BoxFit.contain),
               ),
             ),
@@ -169,41 +168,40 @@ class MarketplaceNftCard extends StatelessWidget {
               ),
             ),
             Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Container(
-                  padding: const EdgeInsets.all(8),
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(16),
-                  ),
-                  child:  Text(
-                    'Price: ${ethPrice.toString()} ETH',
-                    style: const TextStyle(
-                      color: Colors.black,
-                      fontSize: 12,
-                      fontWeight: FontWeight.w700,
-                    ),
+              padding: const EdgeInsets.all(8.0),
+              child: Container(
+                padding: const EdgeInsets.all(8),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(16),
+                ),
+                child: Text(
+                  'Price: ${ethPrice.toString()} ETH',
+                  style: const TextStyle(
+                    color: Colors.black,
+                    fontSize: 12,
+                    fontWeight: FontWeight.w700,
                   ),
                 ),
               ),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Container(
-                  padding: const EdgeInsets.all(8),
-                  decoration: BoxDecoration(
-                    color: Colors.green,
-                    borderRadius: BorderRadius.circular(16),
-                  ),
-                  child: const Text(
-                    'Buy Now',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 12,
-                      fontWeight: FontWeight.w700,
-                    ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Container(
+                padding: const EdgeInsets.all(8),
+                decoration: BoxDecoration(
+                  color: Colors.green,
+                  borderRadius: BorderRadius.circular(16),
+                ),
+                child: const Text(
+                  'Buy Now',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 12,
+                    fontWeight: FontWeight.w700,
                   ),
                 ),
               ),
-
+            ),
           ],
         ),
       ),

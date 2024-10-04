@@ -12,7 +12,7 @@ class Layout extends StatelessWidget {
   final CrossAxisAlignment crossAxisAlignment;
   final MainAxisAlignment mainAxisAlignment;
 
-  Layout({
+  const Layout({
     Key? key,
     this.appBar,
     this.topBar,
@@ -157,12 +157,12 @@ class Layout2 extends StatelessWidget {
           verticalDirection: verticalDirection,
           textDirection: textDirection,
           textBaseline: textBaseline,
-          children: children,
           top: top,
           bottom: keyboardHeight > 0 ? bottom + keyboardHeight + 32 : bottom,
           verticalSpacing: verticalSpacing,
           sideMargin: sideMargin,
           maxWidth: maxWidth,
+          children: children,
         ),
       ),
     );

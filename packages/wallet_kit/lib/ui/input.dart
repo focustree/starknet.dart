@@ -17,7 +17,7 @@ class TextInput extends StatelessWidget {
   final bool enabled;
   final String? hintText;
 
-  TextInput({
+  const TextInput({
     Key? key,
     this.controller,
     this.validator,

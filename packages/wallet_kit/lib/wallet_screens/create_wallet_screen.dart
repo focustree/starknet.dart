@@ -120,6 +120,7 @@ class CopyToClipboardButton extends StatelessWidget {
     return TextButton.icon(
       onPressed: () {
         Clipboard.setData(ClipboardData(text: seedPhrase)).then((_) {
+          // ignore: use_build_context_synchronously
           ScaffoldMessenger.of(context).showSnackBar(
             const SnackBar(
               content: Text("Secret recovery phrase copied to clipboard"),

@@ -3,7 +3,7 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:wallet_kit/ui/index.dart';
 
 class PrimaryButton extends CustomButton {
-  PrimaryButton({
+  const PrimaryButton({
     Key? key,
     required String label,
     void Function()? onPressed,
@@ -20,7 +20,7 @@ class PrimaryButton extends CustomButton {
 }
 
 class SecondaryButton extends CustomButton {
-  SecondaryButton({
+  const SecondaryButton({
     Key? key,
     required String label,
     void Function()? onPressed,
@@ -43,7 +43,8 @@ class CustomIconButton extends StatelessWidget {
   final double touchableArea;
   final VoidCallback onPressed;
 
-  CustomIconButton({
+  const CustomIconButton({
+    super.key,
     required this.icon,
     required this.iconSize,
     this.scaleFactor = 1.5,
@@ -105,19 +106,18 @@ class CustomButton extends HookWidget {
       child: TextButton(
         style: style ??
             ButtonStyle(
-              minimumSize: MaterialStateProperty.all<Size>(
+              minimumSize: WidgetStateProperty.all<Size>(
                   const Size(0, primaryButtonHeight)),
-              backgroundColor: MaterialStateProperty.resolveWith<Color>(
-                (Set<MaterialState> states) {
-                  if (states.contains(MaterialState.disabled)) {
+              backgroundColor: WidgetStateProperty.resolveWith<Color>(
+                (Set<WidgetState> states) {
+                  if (states.contains(WidgetState.disabled)) {
                     return Colors.grey[100]!;
                   }
                   return backgroundColor;
                 },
               ),
-              foregroundColor:
-                  MaterialStateProperty.resolveWith<Color>((states) {
-                if (states.contains(MaterialState.disabled)) {
+              foregroundColor: WidgetStateProperty.resolveWith<Color>((states) {
+                if (states.contains(WidgetState.disabled)) {
                   return Colors.grey[400]!;
                 }
                 return textColor;

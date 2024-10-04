@@ -37,6 +37,7 @@ class ProtectWalletScreen extends HookConsumerWidget {
                     seedPhrase: seedPhrase,
                   );
               isLoading.value = false;
+              // ignore: use_build_context_synchronously
               Navigator.of(context).popUntil((route) => route.isFirst);
             },
           ),
@@ -51,6 +52,7 @@ class ProtectWalletScreen extends HookConsumerWidget {
                   seedPhrase: seedPhrase,
                 );
             isLoading.value = false;
+            // ignore: use_build_context_synchronously
             Navigator.of(context).popUntil((route) => route.isFirst);
           },
           label: "Protect with password",
