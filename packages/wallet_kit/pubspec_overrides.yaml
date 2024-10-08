@@ -1,9 +1,0 @@
-dependency_overrides:
-  ark:
-    path: ../ark
-  starknet:
-    path: ../starknet
-  starknet_provider:
-    path: ../starknet_provider
-  secure_store:
-    path: ../secure_store

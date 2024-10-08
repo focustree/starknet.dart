@@ -1,7 +1,8 @@
 import 'dart:convert';
 import 'dart:io';
-import 'package:ark/src/model/nft_api.dart';
 import 'package:http/http.dart' as http;
+
+import 'model/nft_api.dart';
 
 class ArkNFTApi {
   static final ArkNFTApi _instance = ArkNFTApi._internal();
@@ -30,16 +31,23 @@ class ArkNFTApi {
     };
 
     final response = await http.get(uri, headers: headers);
-    if (response.statusCode == 200) {
-      return GetNFTResponse.fromJson(jsonDecode(response.body));
-    } else {
+    if (response.statusCode != 200) {
       throw HttpException('Failed to fetch NFT data: ${response.statusCode}');
+    }
+
+    try {
+      return GetNFTResponse.fromJson(
+        jsonDecode(response.body) as Map<String, dynamic>,
+      );
+    } catch (e) {
+      throw const FormatException('Unexpected response body');
     }
   }
 
   Future<void> getOrderHash(String contractAddress, String tokenId) async {
     final uri = Uri.parse(
-        'https://api-marketplace.arkproject.dev/tokens/$contractAddress/0x534e5f4d41494e/$tokenId/marketdata');
+      'https://api-marketplace.arkproject.dev/tokens/$contractAddress/0x534e5f4d41494e/$tokenId/marketdata',
+    );
     final headers = {
       'x-api-key': apiKey,
       'Content-Type': 'application/json',
@@ -47,7 +55,7 @@ class ArkNFTApi {
 
     final response = await http.get(uri, headers: headers);
     if (response.statusCode == 200) {
-      print(response.body);
+      stdout.writeln(response.body);
     } else {
       throw HttpException('Failed to fetch NFT data: ${response.statusCode}');
     }
@@ -74,17 +82,24 @@ class ArkNFTApi {
     };
 
     final response = await http.get(uri, headers: headers);
-    if (response.statusCode == 200) {
-      return ListNFTsResponse.fromJson(jsonDecode(response.body));
-    } else {
+
+    if (response.statusCode != 200) {
       throw HttpException('Failed to fetch data: ${response.statusCode}');
+    }
+
+    try {
+      return ListNFTsResponse.fromJson(
+        jsonDecode(response.body) as Map<String, dynamic>,
+      );
+    } catch (e) {
+      throw const FormatException('Unexpected response body');
     }
   }
 
   Future<ListNFTsResponse> portfolio(
     String accountAddress, {
     String? cursor,
-    limit = 100,
+    int limit = 100,
   }) async {
     final queryParameters = {
       'limit': limit.toString(),
@@ -99,10 +114,16 @@ class ArkNFTApi {
     };
 
     final response = await http.get(uri, headers: headers);
-    if (response.statusCode == 200) {
-      return ListNFTsResponse.fromJson(jsonDecode(response.body));
-    } else {
+    if (response.statusCode != 200) {
       throw HttpException('Failed to fetch data: ${response.statusCode}');
+    }
+
+    try {
+      return ListNFTsResponse.fromJson(
+        jsonDecode(response.body) as Map<String, dynamic>,
+      );
+    } catch (e) {
+      throw const FormatException('Unexpected response body');
     }
   }
 }
