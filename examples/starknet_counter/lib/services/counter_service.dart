@@ -7,7 +7,7 @@ final provider = JsonRpcProvider(
     nodeUri: Uri.parse(
         'http://localhost:5050'));
 final contractAddress =
-    '0x0662d4b526b2a0e87a449263b131e1831aa166f2d3d97412e8dc67fb85a3de1c';
+    '0x0418a43aeeeaa19e61d9d93a3fd82ecdde87ad01608f80078486fb377542ad85';
 final secretAccountAddress =
     "0x64b48806902a367c8598f4f95c305e8c1a1acba5f082d294a43793113115691";
 final secretAccountPrivateKey =

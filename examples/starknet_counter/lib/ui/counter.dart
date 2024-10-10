@@ -1,4 +1,4 @@
-import 'package:counter/services/counter_service.dart';
+import '../services/counter_service.dart';
 import 'package:flutter/material.dart';
 
 class CounterPage extends StatefulWidget {
