@@ -30,7 +30,7 @@ scripts:
   starknet:setup:
     description: Install starknet dev env
     run: |
-      asdf plugin add starknet-devnet https://github.com/ptisserand/asdf-starknet-devnet.git
+      asdf plugin add starknet-devnet
       asdf install starknet-devnet $STARKNET_DEVNET_VERSION
       asdf local starknet-devnet $STARKNET_DEVNET_VERSION
 
@@ -38,7 +38,7 @@ scripts:
       asdf install scarb $SCARB_VERSION
       asdf local scarb $SCARB_VERSION
 
-      asdf plugin add starkli https://github.com/ptisserand/asdf-starkli.git
+      asdf plugin add starkli
       asdf install starkli $STARKLI_VERSION
       asdf local starkli $STARKLI_VERSION
 
