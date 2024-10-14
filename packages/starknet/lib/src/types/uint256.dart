@@ -1,10 +1,13 @@
-import 'package:starknet/starknet.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 
+import '../../starknet.dart';
+
+@immutable
 class Uint256 {
   final Felt low; // low 128 bits
   final Felt high; // high 128 bits
 
-  Uint256({required this.low, required this.high});
+  const Uint256({required this.low, required this.high});
 
   factory Uint256.fromInt(int number) =>
       Uint256.fromBigInt(BigInt.from(number));
@@ -15,12 +18,12 @@ class Uint256 {
   factory Uint256.fromBigInt(BigInt number) {
     // Ensure the number fits within 256 bits
     if (number.bitLength > 256) {
-      throw Exception("BigInt too large to fit in Uint256");
+      throw Exception('BigInt too large to fit in Uint256');
     }
     // Create a mask for 128-bit
-    BigInt mask = BigInt.parse('FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF', radix: 16);
-    Felt low = Felt(number & mask);
-    Felt high = Felt((number >> 128) & mask);
+    final mask = BigInt.parse('FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF', radix: 16);
+    final low = Felt(number & mask);
+    final high = Felt((number >> 128) & mask);
     return Uint256(low: low, high: high);
   }
 
@@ -29,7 +32,8 @@ class Uint256 {
       return Uint256(low: list[0], high: list[1]);
     } else {
       throw Exception(
-          "Cannot parse felt list into Uint256; wrong length: ${list.length}");
+        'Cannot parse felt list into Uint256; wrong length: ${list.length}',
+      );
     }
   }
 
@@ -61,7 +65,8 @@ class Uint256 {
 
   factory Uint256.fromJson(Map<String, dynamic> json) {
     return Uint256(
-        low: Felt(BigInt.parse(json['low'])),
-        high: Felt(BigInt.parse(json['high'])));
+      low: Felt(BigInt.parse(json['low'] as String)),
+      high: Felt(BigInt.parse(json['high'] as String)),
+    );
   }
 }

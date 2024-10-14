@@ -1,4 +1,5 @@
 name: monorepo
+repository: https://github.com/focustree/starknet.dart
 
 packages:
   - examples/**
@@ -6,12 +7,13 @@ packages:
   - contracts/v$CAIRO_VERSION/**
 
 ignore:
-  - "examples/starknet_counter"
-  - "packages/wallet_kit"
 
 command:
   bootstrap:
-    usePubspecOverrides: true
+    runPubGetInParallel: true
+  version:
+    linkToCommits: true
+    workspaceChangelog: true
 
 scripts:
   validate-gh-actions:
@@ -21,8 +23,14 @@ scripts:
     description: Analyze all packages
     exec: dart analyze --fatal-infos
   format:
-    description: Format all packages
-    exec: dart format .
+    run: |
+      dart pub global run flutter_plugin_tools format && swiftformat .
+    description: |
+      Formats the code of all packages (Java, Objective-C, and Dart).
+       - Requires `flutter_plugin_tools` (`pub global activate flutter_plugin_tools`).
+       - Requires `git`.
+       - Requires `clang-format` (can be installed via Brew on MacOS).
+       - Requires `swiftformat` (can be installed via Brew on macOS).
   format:check:
     description: Format check all packages
     exec: dart format --set-exit-if-changed .
@@ -30,7 +38,7 @@ scripts:
   starknet:setup:
     description: Install starknet dev env
     run: |
-      asdf plugin add starknet-devnet https://github.com/ptisserand/asdf-starknet-devnet.git
+      asdf plugin add starknet-devnet
       asdf install starknet-devnet $STARKNET_DEVNET_VERSION
       asdf local starknet-devnet $STARKNET_DEVNET_VERSION
 
@@ -38,7 +46,7 @@ scripts:
       asdf install scarb $SCARB_VERSION
       asdf local scarb $SCARB_VERSION
 
-      asdf plugin add starkli https://github.com/ptisserand/asdf-starkli.git
+      asdf plugin add starkli
       asdf install starkli $STARKLI_VERSION
       asdf local starkli $STARKLI_VERSION
 
@@ -96,7 +104,7 @@ scripts:
     run: |
       starkli invoke $HELLO_CONTRACT_ADDRESS set_name 0x0 
       # should create tx hash 0x029583643cd8932f1955bf28bfebf4c907b13df1e5c2d202b133cfbf783697a2
-      
+
       cp -f .starkli/account_for_devnet_setup.json .starkli/account_1.json
       starkli invoke eth transfer 0x016a0d7df981d681537dc2ce648722ff1d1c2cbe59412b492d35bac69825f104 0x100000000000000000 0x0
       echo | starkli account deploy .starkli/account_1.json

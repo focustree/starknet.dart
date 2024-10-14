@@ -27,8 +27,12 @@ mixin _$SyncStatus {
   Felt get highestBlockHash => throw _privateConstructorUsedError;
   String get highestBlockNum => throw _privateConstructorUsedError;
 
+  /// Serializes this SyncStatus to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of SyncStatus
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $SyncStatusCopyWith<SyncStatus> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -58,6 +62,8 @@ class _$SyncStatusCopyWithImpl<$Res, $Val extends SyncStatus>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of SyncStatus
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -122,6 +128,8 @@ class __$$SyncStatusImplCopyWithImpl<$Res>
       _$SyncStatusImpl _value, $Res Function(_$SyncStatusImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of SyncStatus
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -212,7 +220,7 @@ class _$SyncStatusImpl implements _SyncStatus {
                 other.highestBlockNum == highestBlockNum));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -223,7 +231,9 @@ class _$SyncStatusImpl implements _SyncStatus {
       highestBlockHash,
       highestBlockNum);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of SyncStatus
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$SyncStatusImplCopyWith<_$SyncStatusImpl> get copyWith =>
@@ -261,8 +271,11 @@ abstract class _SyncStatus implements SyncStatus {
   Felt get highestBlockHash;
   @override
   String get highestBlockNum;
+
+  /// Create a copy of SyncStatus
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$SyncStatusImplCopyWith<_$SyncStatusImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

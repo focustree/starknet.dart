@@ -2,9 +2,10 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:starknet/src/crypto/poseidon.dart';
-import 'package:starknet/starknet.dart';
 import 'package:starknet_provider/starknet_provider.dart';
+
+import '../../../starknet.dart';
+import '../../crypto/poseidon.dart';
 
 part 'compiled_contract.freezed.dart';
 part 'compiled_contract.g.dart';
@@ -13,19 +14,22 @@ const CONTRACT_CLASS_V0_1_0 = 'CONTRACT_CLASS_V0.1.0';
 const COMPILED_CLASS_V1 = 'COMPILED_CLASS_V1';
 
 Future<dynamic> _readJsonFile(String filePath) async {
-  final bigIntPattern = "BigInt|";
+  const bigIntPattern = 'BigInt|';
   var input = await File(filePath).readAsString();
   // Dart JSON decoder use double to represent number,
   // but 64 bits is not enough for Felt
   // so we prefix "number" by [bigIntPattern]
   input = input.replaceAllMapped(
-      RegExp(r'^(\s*"value": )(-?[0-9]+)(\s*,?)', multiLine: true),
-      (match) => '${match[1]}"$bigIntPattern${match[2]}"${match[3]}');
-  var json = jsonDecode(input,
-      reviver: (key, value) =>
-          key == "value" && value is String && value.startsWith(bigIntPattern)
-              ? BigInt.parse(value.replaceAll(bigIntPattern, ""))
-              : value);
+    RegExp(r'^(\s*"value": )(-?[0-9]+)(\s*,?)', multiLine: true),
+    (match) => '${match[1]}"$bigIntPattern${match[2]}"${match[3]}',
+  );
+  final json = jsonDecode(
+    input,
+    reviver: (key, value) =>
+        key == 'value' && value is String && value.startsWith(bigIntPattern)
+            ? BigInt.parse(value.replaceAll(bigIntPattern, ''))
+            : value,
+  );
   return json;
 }
 
@@ -40,34 +44,34 @@ class CompiledContract implements ICompiledContract {
 
   factory CompiledContract.fromJson(Map<String, Object?> json) {
     final _contract = SierraCompiledContract.fromJson(json);
-    final _abiRaw = json['abi'] as List<dynamic>;
+    final _abiRaw = json['abi']! as List<dynamic>;
     return CompiledContract._(_contract, _abiRaw);
   }
 
   static Future<CompiledContract> fromPath(String contractPath) async {
     final json = await _readJsonFile(contractPath);
-    return CompiledContract.fromJson(json);
+    return CompiledContract.fromJson(json as Map<String, Object?>);
   }
 
   /// Compute hashes for externals, l1 handlers and constructors
   /// https://docs.starknet.io/documentation/architecture_and_concepts/Contracts/contract-hash/
   EntryPointsHashes _entrypointsHashes() {
-    List<BigInt> buffer = [];
-    for (var entrypoint in contract.entryPointsByType.external) {
+    final buffer = <BigInt>[];
+    for (final entrypoint in contract.entryPointsByType.external) {
       buffer.add(entrypoint.selector.toBigInt());
       buffer.add(BigInt.from(entrypoint.functionIdx));
     }
     final externals = poseidonHasher.hashMany(buffer);
 
     buffer.clear();
-    for (var entrypoint in contract.entryPointsByType.l1Handler) {
+    for (final entrypoint in contract.entryPointsByType.l1Handler) {
       buffer.add(entrypoint.selector.toBigInt());
       buffer.add(BigInt.from(entrypoint.functionIdx));
     }
     final l1handlers = poseidonHasher.hashMany(buffer);
     buffer.clear();
 
-    for (var entrypoint in contract.entryPointsByType.constructor) {
+    for (final entrypoint in contract.entryPointsByType.constructor) {
       buffer.add(entrypoint.selector.toBigInt());
       buffer.add(BigInt.from(entrypoint.functionIdx));
     }
@@ -87,18 +91,19 @@ class CompiledContract implements ICompiledContract {
   FlattenSierraContractClass flatten() {
     final abi = PythonicJsonEncoder(sortSymbol: false).convert(abiRaw);
     return FlattenSierraContractClass(
-        sierraProgram: contract.sierraProgram
-            .map((e) => '0x${e.toRadixString(16)}')
-            .toList(),
-        contractClassVersion: contract.contractClassVersion,
-        entryPointsByType: contract.entryPointsByType,
-        abi: abi);
+      sierraProgram: contract.sierraProgram
+          .map((e) => '0x${e.toRadixString(16)}')
+          .toList(),
+      contractClassVersion: contract.contractClassVersion,
+      entryPointsByType: contract.entryPointsByType,
+      abi: abi,
+    );
   }
 
   @override
   BigInt classHash() {
-    List<BigInt> elements = [];
-    if (contract.contractClassVersion == "0.1.0") {
+    final elements = <BigInt>[];
+    if (contract.contractClassVersion == '0.1.0') {
       elements.add(Felt.fromString(CONTRACT_CLASS_V0_1_0).toBigInt());
     }
     final hashes = _entrypointsHashes();
@@ -127,7 +132,7 @@ class SierraCompiledContract with _$SierraCompiledContract {
 
   static Future<SierraCompiledContract> fromPath(String contractPath) async {
     final json = await _readJsonFile(contractPath);
-    return SierraCompiledContract.fromJson(json);
+    return SierraCompiledContract.fromJson(json as Map<String, Object?>);
   }
 }
 
@@ -161,19 +166,19 @@ class CASMCompiledContract
 
   static Future<CASMCompiledContract> fromPath(String contractPath) async {
     final json = await _readJsonFile(contractPath);
-    return CASMCompiledContract.fromJson(json);
+    return CASMCompiledContract.fromJson(json as Map<String, Object?>);
   }
 
   /// Compute hashes for externals, l1 handlers and constructors
   /// https://docs.starknet.io/documentation/architecture_and_concepts/Contracts/contract-hash/
   EntryPointsHashes _entrypointsHashes() {
-    List<BigInt> buffer = [];
-    for (var entrypoint in entryPointsByType.external) {
+    final buffer = <BigInt>[];
+    for (final entrypoint in entryPointsByType.external) {
       buffer.add(entrypoint.selector.toBigInt());
       buffer.add(BigInt.from(entrypoint.offset));
 
-      List<BigInt> builtins = [];
-      for (var builtin in entrypoint.builtins) {
+      final builtins = <BigInt>[];
+      for (final builtin in entrypoint.builtins) {
         builtins.add(Felt.fromString(builtin).toBigInt());
       }
       buffer.add(poseidonHasher.hashMany(builtins));
@@ -181,12 +186,12 @@ class CASMCompiledContract
     final externals = poseidonHasher.hashMany(buffer);
 
     buffer.clear();
-    for (var entrypoint in entryPointsByType.l1Handler) {
+    for (final entrypoint in entryPointsByType.l1Handler) {
       buffer.add(entrypoint.selector.toBigInt());
       buffer.add(BigInt.from(entrypoint.offset));
 
-      List<BigInt> builtins = [];
-      for (var builtin in entrypoint.builtins) {
+      final builtins = <BigInt>[];
+      for (final builtin in entrypoint.builtins) {
         builtins.add(Felt.fromString(builtin).toBigInt());
       }
       buffer.add(poseidonHasher.hashMany(builtins));
@@ -194,12 +199,12 @@ class CASMCompiledContract
     final l1handlers = poseidonHasher.hashMany(buffer);
     buffer.clear();
 
-    for (var entrypoint in entryPointsByType.constructor) {
+    for (final entrypoint in entryPointsByType.constructor) {
       buffer.add(entrypoint.selector.toBigInt());
       buffer.add(BigInt.from(entrypoint.offset));
 
-      List<BigInt> builtins = [];
-      for (var builtin in entrypoint.builtins) {
+      final builtins = <BigInt>[];
+      for (final builtin in entrypoint.builtins) {
         builtins.add(Felt.fromString(builtin).toBigInt());
       }
       buffer.add(poseidonHasher.hashMany(builtins));
@@ -215,8 +220,8 @@ class CASMCompiledContract
 
   @override
   BigInt classHash() {
-    List<BigInt> elements = [];
-    if (compilerVersion == "1.1.0") {
+    final elements = <BigInt>[];
+    if (compilerVersion == '1.1.0') {
       elements.add(Felt.fromString(COMPILED_CLASS_V1).toBigInt());
     }
     final hashes = _entrypointsHashes();
@@ -244,51 +249,53 @@ class DeprecatedCompiledContract
       _$DeprecatedCompiledContractFromJson(json);
 
   static Future<DeprecatedCompiledContract> fromPath(
-      String contractPath) async {
+    String contractPath,
+  ) async {
     final json = await _readJsonFile(contractPath);
-    return DeprecatedCompiledContract.fromJson(json);
+    return DeprecatedCompiledContract.fromJson(json as Map<String, Object?>);
   }
 
   DeprecatedContractClass compress() {
-    final new_program = Map.of(program);
-    final program_json = PythonicJsonEncoder().convert(new_program);
+    final newProgram = Map.of(program);
+    final programJson = PythonicJsonEncoder().convert(newProgram);
     return DeprecatedContractClass(
-      program: base64.encode(gzip.encode(utf8.encode(program_json))),
+      program: base64.encode(gzip.encode(utf8.encode(programJson))),
       entryPointsByType: entryPointsByType,
       abi: abi,
     );
   }
 
   Map<String, Object?> _filtering(Map<String, Object?> program) {
-    final new_program = Map.of(program);
-    if ((new_program["attributes"] as List<Object?>).isEmpty) {
+    final newProgram = Map.of(program);
+    if ((newProgram['attributes']! as List<Object?>).isEmpty) {
       // Remove attributes field from raw dictionary, for hash backward compatibility of
       // contracts deployed prior to adding this feature.
-      new_program.remove("attributes");
+      newProgram.remove('attributes');
     } else {
       // Remove accessible_scopes and flow_tracking_data fields from raw dictionary, for hash
       // backward compatibility of contracts deployed prior to adding this feature.
-      for (Map<String, Object?> attr
-          in (new_program["attributes"] as List<dynamic>)) {
-        if ((attr["accessible_scopes"] as List<Object?>).isEmpty) {
-          attr.remove("accessible_scopes");
+      final attributes =
+          (newProgram['attributes']! as List).cast<Map<String, Object?>>();
+      for (final attr in attributes) {
+        if ((attr['accessible_scopes']! as List<Object?>).isEmpty) {
+          attr.remove('accessible_scopes');
         }
-        if (attr.containsKey("flow") &&
-            ((attr["flow"] as List<Object?>).isEmpty)) {
-          attr.remove("flow");
+        if (attr.containsKey('flow') &&
+            ((attr['flow']! as List<Object?>).isEmpty)) {
+          attr.remove('flow');
         }
       }
     }
-    return new_program;
+    return newProgram;
   }
 
   /// Return program filtered and encoded as Python json.dumps
   String _encode() {
-    final new_program = _filtering(program);
+    final newProgram = _filtering(program);
 
     final encoded = PythonicJsonEncoder(filterRuntimeType: false).convert({
-      "abi": abi,
-      "program": new_program,
+      'abi': abi,
+      'program': newProgram,
     });
     return encoded;
   }
@@ -296,22 +303,22 @@ class DeprecatedCompiledContract
   /// Compute hashes for externals, l1 handlers and constructors
   /// https://docs.starknet.io/documentation/architecture_and_concepts/Contracts/contract-hash/
   EntryPointsHashes entrypointsHashes() {
-    List<BigInt> buffer = [];
-    for (var entrypoint in entryPointsByType.external) {
+    final buffer = <BigInt>[];
+    for (final entrypoint in entryPointsByType.external) {
       buffer.add(entrypoint.selector.toBigInt());
       buffer.add(BigInt.parse(entrypoint.offset));
     }
     final externals = computeHashOnElements(buffer);
 
     buffer.clear();
-    for (var entrypoint in entryPointsByType.l1Handler) {
+    for (final entrypoint in entryPointsByType.l1Handler) {
       buffer.add(entrypoint.selector.toBigInt());
       buffer.add(BigInt.parse(entrypoint.offset));
     }
     final l1handlers = computeHashOnElements(buffer);
     buffer.clear();
 
-    for (var entrypoint in entryPointsByType.constructor) {
+    for (final entrypoint in entryPointsByType.constructor) {
       buffer.add(entrypoint.selector.toBigInt());
       buffer.add(BigInt.parse(entrypoint.offset));
     }
@@ -323,8 +330,8 @@ class DeprecatedCompiledContract
   /// https://docs.starknet.io/documentation/architecture_and_concepts/Contracts/contract-hash/
   BigInt builtinsHash() {
     return computeHashOnElements(
-      (program["builtins"] as List)
-          .map((e) => Felt.fromString(e).toBigInt())
+      (program['builtins']! as List)
+          .map((e) => Felt.fromString(e as String).toBigInt())
           .toList(),
     );
   }
@@ -340,8 +347,8 @@ class DeprecatedCompiledContract
   /// https://docs.starknet.io/documentation/architecture_and_concepts/Contracts/contract-hash/
   BigInt byteCodeHash() {
     return computeHashOnElements(
-      (program["data"] as List)
-          .map((e) => Felt.fromHexString(e).toBigInt())
+      (program['data']! as List)
+          .map((e) => Felt.fromHexString(e as String).toBigInt())
           .toList(),
     );
   }
@@ -350,7 +357,7 @@ class DeprecatedCompiledContract
   /// https://docs.starknet.io/documentation/architecture_and_concepts/Contracts/contract-hash/
   @override
   BigInt classHash() {
-    List<BigInt> elements = [];
+    final elements = <BigInt>[];
     elements.add(BigInt.from(0)); // FIXME: API VERSION
     final hashes = entrypointsHashes();
     elements.add(hashes.externals);
@@ -398,8 +405,8 @@ class PythonicJsonEncoder extends JsonEncoder {
     if (filterRuntimeType) {
       if ((object is DeprecatedContractAbiEntry) ||
           (object is SierraContractAbiEntry)) {
-        var res = object.toJson();
-        res.remove("runtimeType");
+        final res = object.toJson();
+        res.remove('runtimeType');
         return res;
       }
     }
@@ -472,7 +479,7 @@ abstract class _JsonStringifier {
     var offset = 0;
     final length = s.length;
     for (var i = 0; i < length; i++) {
-      var charCode = s.codeUnitAt(i);
+      final charCode = s.codeUnitAt(i);
       if (charCode > backslash) {
         if (charCode >= surrogateMin) {
           // Possible surrogate. Check if it is unpaired.
@@ -573,7 +580,7 @@ abstract class _JsonStringifier {
     if (writeJsonValue(object)) return;
     _checkCycle(object);
     try {
-      var customJson = _toEncodable(object);
+      final customJson = _toEncodable(object);
       if (!writeJsonValue(customJson)) {
         throw JsonUnsupportedObjectError(object, partialResult: _partialResult);
       }
@@ -618,7 +625,7 @@ abstract class _JsonStringifier {
     } else if (object is Map) {
       _checkCycle(object);
       // writeMap can fail if keys are not all strings.
-      var success = writeMap(object);
+      final success = writeMap(object);
       _removeSeen(object);
       return success;
     } else if (object is BigInt) {
@@ -647,19 +654,19 @@ abstract class _JsonStringifier {
   /// Serialize a [Map].
   bool writeMap(Map<Object?, Object?> map) {
     if (map.isEmpty) {
-      writeString("{}");
+      writeString('{}');
       return true;
     }
     // FIXME: workaround for freezed `union_key` present in generated json
-    map.remove("starkNetRuntimeTypeToRemove");
-    var keyValueList = List<Object?>.filled(map.length * 2, null);
+    map.remove('starkNetRuntimeTypeToRemove');
+    final keyValueList = List<Object?>.filled(map.length * 2, null);
     var i = 0;
     var allStringKeys = true;
     if (_sortSymbol) {
       map = Map.fromEntries(
         map.entries.toList()
           ..sort(
-            (e1, e2) => (e1.key as String).naturalCompareTo(e2.key as String),
+            (e1, e2) => (e1.key! as String).naturalCompareTo(e2.key! as String),
           ),
       );
     }
@@ -676,7 +683,7 @@ abstract class _JsonStringifier {
     for (var i = 0; i < keyValueList.length; i += 2) {
       writeString(separator);
       separator = ', "'; // add a space as in python json dumps
-      writeStringContent(keyValueList[i] as String);
+      writeStringContent(keyValueList[i]! as String);
       writeString('": '); // add a space as in python json dumps
       writeObject(keyValueList[i + 1]);
     }
@@ -690,9 +697,10 @@ class _JsonStringStringifier extends _JsonStringifier {
   final StringSink _sink;
 
   _JsonStringStringifier(
-      this._sink, dynamic Function(dynamic object)? _toEncodable,
-      {bool? sortSymbol})
-      : super(_toEncodable, sortSymbol: sortSymbol);
+    this._sink,
+    dynamic Function(dynamic object)? _toEncodable, {
+    bool? sortSymbol,
+  }) : super(_toEncodable, sortSymbol: sortSymbol);
 
   /// Convert object to a string.
   ///
@@ -709,7 +717,7 @@ class _JsonStringStringifier extends _JsonStringifier {
     String? indent, {
     bool? sortSymbol,
   }) {
-    var output = StringBuffer();
+    final output = StringBuffer();
     printOn(object, output, toEncodable, indent, sortSymbol: sortSymbol);
     return output.toString();
   }
@@ -717,9 +725,13 @@ class _JsonStringStringifier extends _JsonStringifier {
   /// Convert object to a string, and write the result to the [output] sink.
   ///
   /// The result is written piecemally to the sink.
-  static void printOn(Object? object, StringSink output,
-      dynamic toEncodable(dynamic o)?, String? indent,
-      {bool? sortSymbol}) {
+  static void printOn(
+    Object? object,
+    StringSink output,
+    dynamic toEncodable(dynamic o)?,
+    String? indent, {
+    bool? sortSymbol,
+  }) {
     _JsonStringifier stringifier;
     stringifier =
         _JsonStringStringifier(output, toEncodable, sortSymbol: sortSymbol);
@@ -752,8 +764,8 @@ class _JsonStringStringifier extends _JsonStringifier {
 extension ContractCompare on String {
   int naturalCompareTo(String other) {
     // handle case where string is an integer (for hint)
-    int? me = int.tryParse(this);
-    int? you = int.tryParse(other);
+    final me = int.tryParse(this);
+    final you = int.tryParse(other);
     if (me != null && you != null) {
       if (me == you) {
         return 0;

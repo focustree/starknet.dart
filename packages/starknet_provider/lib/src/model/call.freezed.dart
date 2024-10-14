@@ -70,6 +70,8 @@ mixin _$Call {
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
+
+  /// Serializes this Call to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
 }
 
@@ -88,6 +90,9 @@ class _$CallCopyWithImpl<$Res, $Val extends Call>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of Call
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -107,6 +112,8 @@ class __$$CallResultImplCopyWithImpl<$Res>
       _$CallResultImpl _value, $Res Function(_$CallResultImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of Call
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -156,12 +163,14 @@ class _$CallResultImpl implements CallResult {
             const DeepCollectionEquality().equals(other._result, _result));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode =>
       Object.hash(runtimeType, const DeepCollectionEquality().hash(_result));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of Call
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$CallResultImplCopyWith<_$CallResultImpl> get copyWith =>
@@ -245,7 +254,10 @@ abstract class CallResult implements Call {
       _$CallResultImpl.fromJson;
 
   List<Felt> get result;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of Call
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$CallResultImplCopyWith<_$CallResultImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -269,6 +281,8 @@ class __$$CallErrorImplCopyWithImpl<$Res>
       _$CallErrorImpl _value, $Res Function(_$CallErrorImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of Call
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -282,6 +296,8 @@ class __$$CallErrorImplCopyWithImpl<$Res>
     ));
   }
 
+  /// Create a copy of Call
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $JsonRpcApiErrorCopyWith<$Res> get error {
@@ -319,11 +335,13 @@ class _$CallErrorImpl implements CallError {
             (identical(other.error, error) || other.error == error));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, error);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of Call
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$CallErrorImplCopyWith<_$CallErrorImpl> get copyWith =>
@@ -407,7 +425,10 @@ abstract class CallError implements Call {
       _$CallErrorImpl.fromJson;
 
   JsonRpcApiError get error;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of Call
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$CallErrorImplCopyWith<_$CallErrorImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

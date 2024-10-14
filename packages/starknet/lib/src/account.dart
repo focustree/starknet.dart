@@ -1,13 +1,16 @@
-import 'dart:typed_data';
+// ignore_for_file: non_constant_identifier_names
+
+import 'dart:io';
 
 import 'package:bip32/bip32.dart' as bip32;
 import 'package:bip39/bip39.dart' as bip39;
-import 'package:starknet/src/presets/udc.g.dart';
-import 'package:starknet/starknet.dart';
 import 'package:starknet_provider/starknet_provider.dart';
 
+import '../starknet.dart';
+import 'presets/udc.g.dart';
+
 enum AccountSupportedTxVersion {
-  @Deprecated("Transaction version 0 will be removed with Starknet alpha v0.11")
+  @Deprecated('Transaction version 0 will be removed with Starknet alpha v0.11')
   v0,
   v1,
 }
@@ -34,19 +37,20 @@ class Account {
       blockId: blockId,
       contractAddress: accountAddress,
     );
-    return (response.when(
+    return response.when(
       error: (error) {
         throw Exception(
-            "Error retrieving nonce (${error.code}): ${error.message}");
+          'Error retrieving nonce (${error.code}): ${error.message}',
+        );
       },
       result: (result) => result,
-    ));
+    );
   }
 
   /// Get Estimate max fee for Invoke Tx
-  Future<Felt> getEstimateMaxFeeForInvokeTx({
+  Future<Felt> getEstimatemax_feeForInvokeTx({
     BlockId blockId = BlockId.latest,
-    String version = "0x1",
+    String version = '0x1',
     required List<FunctionCall> functionCalls,
     bool useLegacyCalldata = false,
     required Felt nonce,
@@ -57,50 +61,54 @@ class Account {
       contractAddress: accountAddress,
       version: supportedTxVersion == AccountSupportedTxVersion.v1 ? 1 : 0,
       chainId: chainId,
-      entryPointSelectorName: "__execute__",
       nonce: nonce,
       useLegacyCalldata: useLegacyCalldata,
     );
 
     BroadcastedTxn broadcastedTxn;
 
-    if (version == "0x1") {
+    if (version == '0x1') {
       final calldata = functionCallsToCalldata(
         functionCalls: functionCalls,
         useLegacyCalldata: useLegacyCalldata,
       );
       broadcastedTxn = BroadcastedInvokeTxnV1(
-          type: "INVOKE",
-          maxFee: defaultMaxFee,
-          version: version,
-          signature: signature,
-          nonce: nonce,
-          senderAddress: accountAddress,
-          calldata: calldata);
+        type: 'INVOKE',
+        maxFee: defaultMaxFee,
+        version: version,
+        signature: signature,
+        nonce: nonce,
+        senderAddress: accountAddress,
+        calldata: calldata,
+      );
     } else {
       final calldata =
           functionCallsToCalldataLegacy(functionCalls: functionCalls) + [nonce];
       broadcastedTxn = BroadcastedInvokeTxnV0(
-          type: "INVOKE",
-          maxFee: defaultMaxFee,
-          version: version,
-          signature: signature,
-          nonce: nonce,
-          contractAddress: accountAddress,
-          entryPointSelector: getSelectorByName('__execute__'),
-          calldata: calldata);
+        type: 'INVOKE',
+        maxFee: defaultMaxFee,
+        version: version,
+        signature: signature,
+        nonce: nonce,
+        contractAddress: accountAddress,
+        entryPointSelector: getSelectorByName('__execute__'),
+        calldata: calldata,
+      );
     }
 
-    final maxFee = await getMaxFeeFromBroadcastedTxn(
-        broadcastedTxn, blockId, feeMultiplier);
+    final maxFee = await getmax_feeFromBroadcastedTxn(
+      broadcastedTxn,
+      blockId,
+      feeMultiplier,
+    );
 
     return maxFee;
   }
 
   /// Get Estimate max fee for Declare Tx
-  Future<Felt> getEstimateMaxFeeForDeclareTx({
+  Future<Felt> getEstimatemax_feeForDeclareTx({
     BlockId blockId = BlockId.latest,
-    String version = "0x1",
+    String version = '0x1',
     required Felt nonce,
     required ICompiledContract compiledContract,
     double feeMultiplier = 1.2,
@@ -115,28 +123,32 @@ class Account {
         nonce: nonce,
       );
       broadcastedTxn = BroadcastedDeclareTxn(
-          type: "DECLARE",
-          maxFee: defaultMaxFee,
-          version: version,
-          signature: signature,
-          nonce: nonce,
-          contractClass: compiledContract.compress(),
-          senderAddress: accountAddress);
+        type: 'DECLARE',
+        maxFee: defaultMaxFee,
+        version: version,
+        signature: signature,
+        nonce: nonce,
+        contractClass: compiledContract.compress(),
+        senderAddress: accountAddress,
+      );
     } else {
       // V2 of BroadcastedDeclareTxn is not supported yet
       return defaultMaxFee;
     }
 
-    final maxFee = await getMaxFeeFromBroadcastedTxn(
-        broadcastedTxn, blockId, feeMultiplier);
+    final maxFee = await getmax_feeFromBroadcastedTxn(
+      broadcastedTxn,
+      blockId,
+      feeMultiplier,
+    );
 
     return maxFee;
   }
 
   /// Get Estimate max fee for Deploy Tx
-  Future<Felt> getEstimateMaxFeeForDeployAccountTx({
+  Future<Felt> getEstimatemax_feeForDeployAccountTx({
     BlockId blockId = BlockId.latest,
-    String version = "0x1",
+    String version = '0x1',
     required Felt nonce,
     required List<Felt> constructorCalldata,
     required Felt contractAddressSalt,
@@ -152,24 +164,31 @@ class Account {
     );
 
     final broadcastedTxn = BroadcastedDeployAccountTxn(
-        type: "DEPLOY_ACCOUNT",
-        version: version,
-        contractAddressSalt: contractAddressSalt,
-        constructorCalldata: constructorCalldata,
-        maxFee: defaultMaxFee,
-        nonce: nonce,
-        signature: signature,
-        classHash: classHash);
+      type: 'DEPLOY_ACCOUNT',
+      version: version,
+      contractAddressSalt: contractAddressSalt,
+      constructorCalldata: constructorCalldata,
+      maxFee: defaultMaxFee,
+      nonce: nonce,
+      signature: signature,
+      classHash: classHash,
+    );
 
-    final maxFee = await getMaxFeeFromBroadcastedTxn(
-        broadcastedTxn, blockId, feeMultiplier);
+    final maxFee = await getmax_feeFromBroadcastedTxn(
+      broadcastedTxn,
+      blockId,
+      feeMultiplier,
+    );
 
     return maxFee;
   }
 
-  Future<Felt> getMaxFeeFromBroadcastedTxn(BroadcastedTxn broadcastedTxn,
-      BlockId blockId, double feeMultiplier) async {
-    EstimateFeeRequest estimateFeeRequest = EstimateFeeRequest(
+  Future<Felt> getmax_feeFromBroadcastedTxn(
+    BroadcastedTxn broadcastedTxn,
+    BlockId blockId,
+    double feeMultiplier,
+  ) async {
+    final estimateFeeRequest = EstimateFeeRequest(
       request: [broadcastedTxn],
       blockId: blockId,
       simulation_flags: [],
@@ -184,9 +203,9 @@ class Account {
       error: (error) => throw Exception(error.message),
     );
 
-    final Felt overallFee = Felt.fromHexString(fee.overallFee);
+    final overallFee = Felt.fromHexString(fee.overallFee);
     //multiply by feeMultiplier
-    final Felt maxFee =
+    final maxFee =
         Felt.fromDouble(overallFee.toBigInt().toDouble() * feeMultiplier);
 
     return maxFee;
@@ -198,31 +217,31 @@ class Account {
     bool useLegacyCalldata = false,
     bool incrementNonceIfNonceRelatedError = true,
     int maxAttempts = 5,
-    Felt? maxFee,
+    Felt? max_fee,
     Felt? nonce,
   }) async {
     nonce = nonce ?? await getNonce();
-    print(nonce);
+    stdout.writeln(nonce);
 
-    maxFee = maxFee ??
-        await getEstimateMaxFeeForInvokeTx(
-            functionCalls: functionCalls,
-            useLegacyCalldata: useLegacyCalldata,
-            nonce: nonce,
-            version: supportedTxVersion == AccountSupportedTxVersion.v1
-                ? "0x1"
-                : "0x0");
+    max_fee = max_fee ??
+        await getEstimatemax_feeForInvokeTx(
+          functionCalls: functionCalls,
+          useLegacyCalldata: useLegacyCalldata,
+          nonce: nonce,
+          version: supportedTxVersion == AccountSupportedTxVersion.v1
+              ? '0x1'
+              : '0x0',
+        );
 
-    for (int attempt = 0; attempt < maxAttempts; attempt++) {
+    for (var attempt = 0; attempt < maxAttempts; attempt++) {
       final signature = signer.signTransactions(
         transactions: functionCalls,
         contractAddress: accountAddress,
         version: supportedTxVersion == AccountSupportedTxVersion.v1 ? 1 : 0,
         chainId: chainId,
-        entryPointSelectorName: "__execute__",
         nonce: nonce!,
         useLegacyCalldata: useLegacyCalldata,
-        maxFee: maxFee,
+        maxFee: max_fee,
       );
 
       InvokeTransactionResponse response;
@@ -239,7 +258,7 @@ class Account {
                 contractAddress: accountAddress,
                 entryPointSelector: getSelectorByName('__execute__'),
                 calldata: calldata,
-                maxFee: maxFee,
+                maxFee: max_fee,
                 signature: signature,
               ),
             ),
@@ -257,7 +276,7 @@ class Account {
                 senderAddress: accountAddress,
                 calldata: calldata,
                 signature: signature,
-                maxFee: maxFee,
+                maxFee: max_fee,
                 nonce: nonce!,
               ),
             ),
@@ -268,12 +287,12 @@ class Account {
       final result = response.when(
         result: (result) => response,
         error: (error) {
-          print('Attempt ${attempt + 1} failed: $error');
+          stdout.writeln('Attempt ${attempt + 1} failed: $error');
           if (attempt < maxAttempts - 1 &&
               isNonceRelatedError(error) &&
               incrementNonceIfNonceRelatedError) {
             nonce = incrementNonce(nonce!); // Increment nonce for next attempt
-            print('Incrementing nonce to: $nonce');
+            stdout.writeln('Incrementing nonce to: $nonce');
             return null; // Indicate that we should retry
           } else {
             return response;
@@ -297,7 +316,7 @@ class Account {
     return error.message.contains('Account validation failed');
   }
 
-  incrementNonce(Felt nonce) {
+  Felt incrementNonce(Felt nonce) {
     final nonceInInt = nonce.toInt();
     return Felt.fromInt(nonceInInt + 1);
   }
@@ -305,29 +324,31 @@ class Account {
   /// Declares a [compiledContract]
   Future<DeclareTransactionResponse> declare({
     required ICompiledContract compiledContract,
-    Felt? maxFee,
+    Felt? max_fee,
     Felt? nonce,
     // needed for v2
     BigInt? compiledClassHash,
     CASMCompiledContract? casmCompiledContract,
   }) async {
     nonce = nonce ?? await getNonce();
-    maxFee = maxFee ??
-        await getEstimateMaxFeeForDeclareTx(
-            nonce: nonce, compiledContract: compiledContract);
+    max_fee = max_fee ??
+        await getEstimatemax_feeForDeclareTx(
+          nonce: nonce,
+          compiledContract: compiledContract,
+        );
     if (compiledContract is DeprecatedCompiledContract) {
       final signature = signer.signDeclareTransactionV1(
         compiledContract: compiledContract,
         senderAddress: accountAddress,
         chainId: chainId,
         nonce: nonce,
-        maxFee: maxFee,
+        maxFee: max_fee,
       );
 
       return provider.addDeclareTransaction(
         DeclareTransactionRequest(
           declareTransaction: DeclareTransactionV1(
-            max_fee: maxFee,
+            max_fee: max_fee,
             nonce: nonce,
             contractClass: compiledContract.compress(),
             senderAddress: accountAddress,
@@ -343,13 +364,13 @@ class Account {
         nonce: nonce,
         compiledClassHash: compiledClassHash,
         casmCompiledContract: casmCompiledContract,
-        maxFee: maxFee,
+        maxFee: max_fee,
       );
 
       return provider.addDeclareTransaction(
         DeclareTransactionRequest(
           declareTransaction: DeclareTransactionV2(
-            max_fee: maxFee,
+            max_fee: max_fee,
             nonce: nonce,
             contractClass: compiledContract.flatten(),
             compiledClassHash: Felt(compiledClassHash!),
@@ -410,7 +431,7 @@ class Account {
     ))
         .when(
       result: (result) => result,
-      error: ((error) => Felt.fromInt(0)),
+      error: (error) => Felt.fromInt(0),
     );
     return accountClassHash != Felt.fromInt(0);
   }
@@ -425,15 +446,15 @@ class Account {
     required List<Felt> constructorCalldata,
     required Felt classHash,
     Felt? contractAddressSalt,
-    Felt? maxFee,
+    Felt? max_fee,
     Felt? nonce,
   }) async {
     final chainId = (await provider.chainId()).when(
-      result: (result) => Felt.fromHexString(result),
+      result: Felt.fromHexString,
       error: (error) => StarknetChainId.testNet,
     );
 
-    maxFee = maxFee ?? defaultMaxFee;
+    max_fee = max_fee ?? defaultMaxFee;
     nonce = nonce ?? defaultNonce;
     contractAddressSalt = contractAddressSalt ?? signer.publicKey;
 
@@ -443,7 +464,7 @@ class Account {
       constructorCalldata: constructorCalldata,
       chainId: chainId,
       nonce: nonce,
-      maxFee: maxFee,
+      maxFee: max_fee,
     );
 
     return provider.addDeployAccountTransaction(
@@ -451,7 +472,7 @@ class Account {
         deployAccountTransaction: DeployAccountTransactionV1(
           classHash: classHash,
           signature: signature,
-          maxFee: maxFee,
+          maxFee: max_fee,
           nonce: nonce,
           contractAddressSalt: contractAddressSalt,
           constructorCalldata: constructorCalldata,
@@ -513,13 +534,13 @@ Account getAccount({
 Felt? getDeployedContractAddress(GetTransactionReceipt txReceipt) {
   return txReceipt.when(
     result: (r) {
-      for (var event in r.events) {
+      for (final event in r.events) {
         // contract constructor can generate some event also
         if (event.fromAddress == udcAddress) {
           return event.data?[0];
         }
       }
-      throw Exception("UDC deployer event not found");
+      throw Exception('UDC deployer event not found');
     },
     error: (e) => throw Exception(e.message),
   );
@@ -573,9 +594,9 @@ class OpenzeppelinAccountDerivation implements AccountDerivation {
   List<Felt> constructorCalldata({required Felt publicKey}) {
     return [
       implementationClassHash,
-      getSelectorByName("initializer"),
+      getSelectorByName('initializer'),
       Felt.fromInt(1),
-      publicKey
+      publicKey,
     ];
   }
 
@@ -591,14 +612,14 @@ class OpenzeppelinAccountDerivation implements AccountDerivation {
     );
     final deployTxHash = tx.when(
       result: (result) {
-        print(
-          "Account is deployed at ${result.contractAddress.toHexString()} (tx: ${result.transactionHash.toHexString()})",
+        stdout.writeln(
+          'Account is deployed at ${result.contractAddress.toHexString()} (tx: ${result.transactionHash.toHexString()})',
         );
         return result.transactionHash;
       },
       error: (error) {
         throw Exception(
-          "Account deploy failed: ${error.code} ${error.message}",
+          'Account deploy failed: ${error.code} ${error.message}',
         );
       },
     );
@@ -613,14 +634,14 @@ class BraavosAccountDerivation extends AccountDerivation {
 
   // FIXME: hardcoded value for testnet 2023-02-24
   final classHash = Felt.fromHexString(
-    "0x03131fa018d520a037686ce3efddeab8f28895662f019ca3ca18a626650f7d1e",
+    '0x03131fa018d520a037686ce3efddeab8f28895662f019ca3ca18a626650f7d1e',
   );
 
   /// FIXME: implementation class hash should be retrieved at runtime
   final implementationClassHash = Felt.fromHexString(
-    "0x5aa23d5bb71ddaa783da7ea79d405315bafa7cf0387a74f4593578c3e9e6570",
+    '0x5aa23d5bb71ddaa783da7ea79d405315bafa7cf0387a74f4593578c3e9e6570',
   );
-  final initializerSelector = getSelectorByName("initializer");
+  final initializerSelector = getSelectorByName('initializer');
 
   BraavosAccountDerivation({
     required this.provider,
@@ -640,7 +661,7 @@ class BraavosAccountDerivation extends AccountDerivation {
       implementationClassHash,
       initializerSelector,
       Felt.fromInt(1),
-      publicKey
+      publicKey,
     ];
   }
 
@@ -663,22 +684,22 @@ class ArgentXAccountDerivation extends AccountDerivation {
 
   // FIXME: hardcoded value for testnet 2023-02-24
   final classHash = Felt.fromHexString(
-    "0x025ec026985a3bf9d0cc1fe17326b245dfdc3ff89b8fde106542a3ea56c5a918",
+    '0x025ec026985a3bf9d0cc1fe17326b245dfdc3ff89b8fde106542a3ea56c5a918',
   );
 
   /// FIXME: implementation address should be retrieved at runtime
   final implementationAddress = Felt.fromHexString(
-    "0x33434ad846cdd5f23eb73ff09fe6fddd568284a0fb7d1be20ee482f044dabe2",
+    '0x33434ad846cdd5f23eb73ff09fe6fddd568284a0fb7d1be20ee482f044dabe2',
   );
 
   @override
   Signer deriveSigner({required List<String> mnemonic, int index = 0}) {
-    final seed = bip39.mnemonicToSeed(mnemonic.join(" "));
+    final seed = bip39.mnemonicToSeed(mnemonic.join(' '));
     final hdNodeSingleSeed = bip32.BIP32.fromSeed(seed);
     final hdNodeDoubleSeed = bip32.BIP32
         .fromSeed(hdNodeSingleSeed.derivePath(masterPrefix).privateKey!);
     final child = hdNodeDoubleSeed.derivePath('$pathPrefix/$index');
-    Uint8List key = child.privateKey!;
+    var key = child.privateKey!;
     key = grindKey(key);
     final privateKey = Felt(bytesToUnsignedInt(key));
     return Signer(privateKey: privateKey);
@@ -688,7 +709,7 @@ class ArgentXAccountDerivation extends AccountDerivation {
   List<Felt> constructorCalldata({required Felt publicKey}) {
     return [
       implementationAddress,
-      getSelectorByName("initialize"),
+      getSelectorByName('initialize'),
       Felt.fromInt(2),
       publicKey,
       Felt.fromInt(0),

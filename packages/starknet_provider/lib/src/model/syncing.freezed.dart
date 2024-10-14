@@ -78,6 +78,8 @@ mixin _$Syncing {
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
+
+  /// Serializes this Syncing to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
 }
 
@@ -96,6 +98,9 @@ class _$SyncingCopyWithImpl<$Res, $Val extends Syncing>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of Syncing
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -117,6 +122,8 @@ class __$$SynchronizedImplCopyWithImpl<$Res>
       _$SynchronizedImpl _value, $Res Function(_$SynchronizedImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of Syncing
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -130,6 +137,8 @@ class __$$SynchronizedImplCopyWithImpl<$Res>
     ));
   }
 
+  /// Create a copy of Syncing
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $SyncStatusCopyWith<$Res> get result {
@@ -167,11 +176,13 @@ class _$SynchronizedImpl implements Synchronized {
             (identical(other.result, result) || other.result == result));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, result);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of Syncing
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$SynchronizedImplCopyWith<_$SynchronizedImpl> get copyWith =>
@@ -261,7 +272,10 @@ abstract class Synchronized implements Syncing {
       _$SynchronizedImpl.fromJson;
 
   SyncStatus get result;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of Syncing
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$SynchronizedImplCopyWith<_$SynchronizedImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -283,6 +297,8 @@ class __$$NotSynchronizedImplCopyWithImpl<$Res>
       _$NotSynchronizedImpl _value, $Res Function(_$NotSynchronizedImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of Syncing
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -325,11 +341,13 @@ class _$NotSynchronizedImpl implements NotSynchronized {
             (identical(other.result, result) || other.result == result));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, result);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of Syncing
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$NotSynchronizedImplCopyWith<_$NotSynchronizedImpl> get copyWith =>
@@ -420,7 +438,10 @@ abstract class NotSynchronized implements Syncing {
       _$NotSynchronizedImpl.fromJson;
 
   bool get result;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of Syncing
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$NotSynchronizedImplCopyWith<_$NotSynchronizedImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -444,6 +465,8 @@ class __$$SyncingErrorImplCopyWithImpl<$Res>
       _$SyncingErrorImpl _value, $Res Function(_$SyncingErrorImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of Syncing
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -457,6 +480,8 @@ class __$$SyncingErrorImplCopyWithImpl<$Res>
     ));
   }
 
+  /// Create a copy of Syncing
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $JsonRpcApiErrorCopyWith<$Res> get error {
@@ -494,11 +519,13 @@ class _$SyncingErrorImpl implements SyncingError {
             (identical(other.error, error) || other.error == error));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, error);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of Syncing
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$SyncingErrorImplCopyWith<_$SyncingErrorImpl> get copyWith =>
@@ -588,7 +615,10 @@ abstract class SyncingError implements Syncing {
       _$SyncingErrorImpl.fromJson;
 
   JsonRpcApiError get error;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of Syncing
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$SyncingErrorImplCopyWith<_$SyncingErrorImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

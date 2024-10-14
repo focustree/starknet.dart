@@ -70,6 +70,8 @@ mixin _$EstimateFee {
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
+
+  /// Serializes this EstimateFee to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
 }
 
@@ -89,6 +91,9 @@ class _$EstimateFeeCopyWithImpl<$Res, $Val extends EstimateFee>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of EstimateFee
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -108,6 +113,8 @@ class __$$EstimateFeeResultImplCopyWithImpl<$Res>
       $Res Function(_$EstimateFeeResultImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of EstimateFee
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -157,12 +164,14 @@ class _$EstimateFeeResultImpl implements EstimateFeeResult {
             const DeepCollectionEquality().equals(other._result, _result));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode =>
       Object.hash(runtimeType, const DeepCollectionEquality().hash(_result));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of EstimateFee
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$EstimateFeeResultImplCopyWith<_$EstimateFeeResultImpl> get copyWith =>
@@ -247,7 +256,10 @@ abstract class EstimateFeeResult implements EstimateFee {
       _$EstimateFeeResultImpl.fromJson;
 
   List<FeeEstimate> get result;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of EstimateFee
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$EstimateFeeResultImplCopyWith<_$EstimateFeeResultImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -271,6 +283,8 @@ class __$$EstimateFeeErrorImplCopyWithImpl<$Res>
       $Res Function(_$EstimateFeeErrorImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of EstimateFee
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -284,6 +298,8 @@ class __$$EstimateFeeErrorImplCopyWithImpl<$Res>
     ));
   }
 
+  /// Create a copy of EstimateFee
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $JsonRpcApiErrorCopyWith<$Res> get error {
@@ -321,11 +337,13 @@ class _$EstimateFeeErrorImpl implements EstimateFeeError {
             (identical(other.error, error) || other.error == error));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, error);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of EstimateFee
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$EstimateFeeErrorImplCopyWith<_$EstimateFeeErrorImpl> get copyWith =>
@@ -410,7 +428,10 @@ abstract class EstimateFeeError implements EstimateFee {
       _$EstimateFeeErrorImpl.fromJson;
 
   JsonRpcApiError get error;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of EstimateFee
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$EstimateFeeErrorImplCopyWith<_$EstimateFeeErrorImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -471,6 +492,8 @@ mixin _$SimulationFlag {
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
+
+  /// Serializes this SimulationFlag to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
 }
 
@@ -490,6 +513,9 @@ class _$SimulationFlagCopyWithImpl<$Res, $Val extends SimulationFlag>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of SimulationFlag
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -506,6 +532,9 @@ class __$$SkipValidateImplCopyWithImpl<$Res>
   __$$SkipValidateImplCopyWithImpl(
       _$SkipValidateImpl _value, $Res Function(_$SkipValidateImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of SimulationFlag
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -532,7 +561,7 @@ class _$SkipValidateImpl implements SkipValidate {
         (other.runtimeType == runtimeType && other is _$SkipValidateImpl);
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => runtimeType.hashCode;
 
@@ -627,6 +656,9 @@ class __$$SkipFeeChargeImplCopyWithImpl<$Res>
   __$$SkipFeeChargeImplCopyWithImpl(
       _$SkipFeeChargeImpl _value, $Res Function(_$SkipFeeChargeImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of SimulationFlag
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -653,7 +685,7 @@ class _$SkipFeeChargeImpl implements SkipFeeCharge {
         (other.runtimeType == runtimeType && other is _$SkipFeeChargeImpl);
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => runtimeType.hashCode;
 
@@ -943,8 +975,13 @@ mixin _$BroadcastedTxn {
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
+
+  /// Serializes this BroadcastedTxn to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of BroadcastedTxn
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $BroadcastedTxnCopyWith<BroadcastedTxn> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -968,6 +1005,8 @@ class _$BroadcastedTxnCopyWithImpl<$Res, $Val extends BroadcastedTxn>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of BroadcastedTxn
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1016,6 +1055,8 @@ class __$$BroadcastedInvokeTxnV0ImplCopyWithImpl<$Res>
       $Res Function(_$BroadcastedInvokeTxnV0Impl) _then)
       : super(_value, _then);
 
+  /// Create a copy of BroadcastedTxn
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1144,7 +1185,7 @@ class _$BroadcastedInvokeTxnV0Impl implements BroadcastedInvokeTxnV0 {
             const DeepCollectionEquality().equals(other._calldata, _calldata));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -1157,7 +1198,9 @@ class _$BroadcastedInvokeTxnV0Impl implements BroadcastedInvokeTxnV0 {
       entryPointSelector,
       const DeepCollectionEquality().hash(_calldata));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of BroadcastedTxn
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$BroadcastedInvokeTxnV0ImplCopyWith<_$BroadcastedInvokeTxnV0Impl>
@@ -1395,7 +1438,8 @@ abstract class BroadcastedInvokeTxnV0 implements BroadcastedTxn {
   factory BroadcastedInvokeTxnV0.fromJson(Map<String, dynamic> json) =
       _$BroadcastedInvokeTxnV0Impl.fromJson;
 
-  @override // start of BROADCASTED_TXN_COMMON_PROPERTIES
+// start of BROADCASTED_TXN_COMMON_PROPERTIES
+  @override
   String get type;
   @JsonKey(toJson: maxFeeToJson)
   Felt get maxFee;
@@ -1407,8 +1451,11 @@ abstract class BroadcastedInvokeTxnV0 implements BroadcastedTxn {
   Felt get contractAddress;
   Felt get entryPointSelector;
   List<Felt> get calldata;
+
+  /// Create a copy of BroadcastedTxn
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$BroadcastedInvokeTxnV0ImplCopyWith<_$BroadcastedInvokeTxnV0Impl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -1441,6 +1488,8 @@ class __$$BroadcastedInvokeTxnV1ImplCopyWithImpl<$Res>
       $Res Function(_$BroadcastedInvokeTxnV1Impl) _then)
       : super(_value, _then);
 
+  /// Create a copy of BroadcastedTxn
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1559,7 +1608,7 @@ class _$BroadcastedInvokeTxnV1Impl implements BroadcastedInvokeTxnV1 {
             const DeepCollectionEquality().equals(other._calldata, _calldata));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -1571,7 +1620,9 @@ class _$BroadcastedInvokeTxnV1Impl implements BroadcastedInvokeTxnV1 {
       senderAddress,
       const DeepCollectionEquality().hash(_calldata));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of BroadcastedTxn
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$BroadcastedInvokeTxnV1ImplCopyWith<_$BroadcastedInvokeTxnV1Impl>
@@ -1808,7 +1859,8 @@ abstract class BroadcastedInvokeTxnV1 implements BroadcastedTxn {
   factory BroadcastedInvokeTxnV1.fromJson(Map<String, dynamic> json) =
       _$BroadcastedInvokeTxnV1Impl.fromJson;
 
-  @override // start of BROADCASTED_TXN_COMMON_PROPERTIES
+// start of BROADCASTED_TXN_COMMON_PROPERTIES
+  @override
   String get type;
   @JsonKey(toJson: maxFeeToJson)
   Felt get maxFee;
@@ -1819,8 +1871,11 @@ abstract class BroadcastedInvokeTxnV1 implements BroadcastedTxn {
 // start of INVOKE_TXN_V1
   Felt get senderAddress;
   List<Felt> get calldata;
+
+  /// Create a copy of BroadcastedTxn
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$BroadcastedInvokeTxnV1ImplCopyWith<_$BroadcastedInvokeTxnV1Impl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -1854,6 +1909,8 @@ class __$$BroadcastedDeclareTxnImplCopyWithImpl<$Res>
       $Res Function(_$BroadcastedDeclareTxnImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of BroadcastedTxn
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1897,6 +1954,8 @@ class __$$BroadcastedDeclareTxnImplCopyWithImpl<$Res>
     ));
   }
 
+  /// Create a copy of BroadcastedTxn
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $DeprecatedContractClassCopyWith<$Res> get contractClass {
@@ -1975,7 +2034,7 @@ class _$BroadcastedDeclareTxnImpl implements BroadcastedDeclareTxn {
                 other.senderAddress == senderAddress));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -1987,7 +2046,9 @@ class _$BroadcastedDeclareTxnImpl implements BroadcastedDeclareTxn {
       contractClass,
       senderAddress);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of BroadcastedTxn
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$BroadcastedDeclareTxnImplCopyWith<_$BroadcastedDeclareTxnImpl>
@@ -2224,7 +2285,8 @@ abstract class BroadcastedDeclareTxn implements BroadcastedTxn {
   factory BroadcastedDeclareTxn.fromJson(Map<String, dynamic> json) =
       _$BroadcastedDeclareTxnImpl.fromJson;
 
-  @override // start of BROADCASTED_TXN_COMMON_PROPERTIES
+// start of BROADCASTED_TXN_COMMON_PROPERTIES
+  @override
   String get type;
   @JsonKey(toJson: maxFeeToJson)
   Felt get maxFee;
@@ -2234,8 +2296,11 @@ abstract class BroadcastedDeclareTxn implements BroadcastedTxn {
   Felt get nonce; // end of BROADCASTED_TXN_COMMON_PROPERTIES
   DeprecatedContractClass get contractClass;
   Felt get senderAddress;
+
+  /// Create a copy of BroadcastedTxn
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$BroadcastedDeclareTxnImplCopyWith<_$BroadcastedDeclareTxnImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -2266,6 +2331,8 @@ class __$$BroadcastedDeployTxnImplCopyWithImpl<$Res>
       $Res Function(_$BroadcastedDeployTxnImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of BroadcastedTxn
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -2299,6 +2366,8 @@ class __$$BroadcastedDeployTxnImplCopyWithImpl<$Res>
     ));
   }
 
+  /// Create a copy of BroadcastedTxn
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $DeprecatedContractClassCopyWith<$Res> get contractClass {
@@ -2367,7 +2436,7 @@ class _$BroadcastedDeployTxnImpl implements BroadcastedDeployTxn {
                 .equals(other._constructorCalldata, _constructorCalldata));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -2377,7 +2446,9 @@ class _$BroadcastedDeployTxnImpl implements BroadcastedDeployTxn {
       contractAddressSalt,
       const DeepCollectionEquality().hash(_constructorCalldata));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of BroadcastedTxn
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$BroadcastedDeployTxnImplCopyWith<_$BroadcastedDeployTxnImpl>
@@ -2614,15 +2685,18 @@ abstract class BroadcastedDeployTxn implements BroadcastedTxn {
   factory BroadcastedDeployTxn.fromJson(Map<String, dynamic> json) =
       _$BroadcastedDeployTxnImpl.fromJson;
 
-  DeprecatedContractClass get contractClass;
-  @override // start of DEPLOY_TXN_PROPERTIES
+  DeprecatedContractClass get contractClass; // start of DEPLOY_TXN_PROPERTIES
+  @override
   String get version;
   @override
   String get type;
   Felt get contractAddressSalt;
   List<Felt> get constructorCalldata;
+
+  /// Create a copy of BroadcastedTxn
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$BroadcastedDeployTxnImplCopyWith<_$BroadcastedDeployTxnImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -2657,6 +2731,8 @@ class __$$BroadcastedDeployAccountTxnImplCopyWithImpl<$Res>
       $Res Function(_$BroadcastedDeployAccountTxnImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of BroadcastedTxn
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -2787,7 +2863,7 @@ class _$BroadcastedDeployAccountTxnImpl implements BroadcastedDeployAccountTxn {
             (identical(other.nonce, nonce) || other.nonce == nonce));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -2800,7 +2876,9 @@ class _$BroadcastedDeployAccountTxnImpl implements BroadcastedDeployAccountTxn {
       const DeepCollectionEquality().hash(_signature),
       nonce);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of BroadcastedTxn
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$BroadcastedDeployAccountTxnImplCopyWith<_$BroadcastedDeployAccountTxnImpl>
@@ -3040,8 +3118,9 @@ abstract class BroadcastedDeployAccountTxn implements BroadcastedTxn {
 
   Felt get contractAddressSalt;
   Felt get classHash;
-  List<Felt> get constructorCalldata;
-  @override // start of BROADCASTED_TXN_COMMON_PROPERTIES
+  List<Felt>
+      get constructorCalldata; // start of BROADCASTED_TXN_COMMON_PROPERTIES
+  @override
   String get type;
   @JsonKey(toJson: maxFeeToJson)
   Felt get maxFee;
@@ -3049,8 +3128,11 @@ abstract class BroadcastedDeployAccountTxn implements BroadcastedTxn {
   String get version;
   List<Felt> get signature;
   Felt get nonce;
+
+  /// Create a copy of BroadcastedTxn
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$BroadcastedDeployAccountTxnImplCopyWith<_$BroadcastedDeployAccountTxnImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
