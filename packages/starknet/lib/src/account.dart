@@ -631,9 +631,7 @@ class BraavosAccountDerivation extends AccountDerivation {
 
   @override
   List<Felt> constructorCalldata({required Felt publicKey}) {
-    return [
-      publicKey
-    ];
+    return [publicKey];
   }
 
   @override
