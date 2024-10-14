@@ -611,16 +611,11 @@ class BraavosAccountDerivation extends AccountDerivation {
   final Provider provider;
   final Felt chainId;
 
-  // FIXME: hardcoded value for testnet 2023-02-24
+  // FIXME: hardcoded value 2024-10-14
+  // As mentioned in Braavos repo https://github.com/myBraavos/braavos-account-cairo
   final classHash = Felt.fromHexString(
-    "0x03131fa018d520a037686ce3efddeab8f28895662f019ca3ca18a626650f7d1e",
+    "0x013bfe114fb1cf405bfc3a7f8dbe2d91db146c17521d40dcf57e16d6b59fa8e6",
   );
-
-  /// FIXME: implementation class hash should be retrieved at runtime
-  final implementationClassHash = Felt.fromHexString(
-    "0x5aa23d5bb71ddaa783da7ea79d405315bafa7cf0387a74f4593578c3e9e6570",
-  );
-  final initializerSelector = getSelectorByName("initializer");
 
   BraavosAccountDerivation({
     required this.provider,
@@ -637,9 +632,6 @@ class BraavosAccountDerivation extends AccountDerivation {
   @override
   List<Felt> constructorCalldata({required Felt publicKey}) {
     return [
-      implementationClassHash,
-      initializerSelector,
-      Felt.fromInt(1),
       publicKey
     ];
   }
