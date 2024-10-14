@@ -1,8 +1,8 @@
-import 'package:secure_store/secure_store.dart';
+import 'secure_store.dart';
 
 export 'src/biometrics_store.dart';
-export 'src/password_store.dart';
 export 'src/crypto.dart';
+export 'src/password_store.dart';
 
 enum SecureStoreType {
   biometrics,

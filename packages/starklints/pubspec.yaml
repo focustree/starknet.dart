@@ -1,0 +1,13 @@
+name: starklints
+description: Lint rules for starknet.dart family of packages
+version: 0.1.0
+repository: https://github.com/focustree/starknet.dart
+
+environment:
+  sdk: ^3.5.3
+
+dependencies:
+  lints: ^5.0.0
+
+dev_dependencies:
+  test: ^1.25.8

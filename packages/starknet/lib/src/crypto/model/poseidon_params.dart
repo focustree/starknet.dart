@@ -22,7 +22,8 @@ class PoseidonParams with _$PoseidonParams {
       _$PoseidonParamsFromJson(json);
 }
 
-const poseidon3ParamsJsonString = '''{
+const poseidon3ParamsJsonString = '''
+{
     "FIELD_PRIME": 3618502788666131213697322783095070105623107215331596699973092056135872020481,
 "RATE": 2,
 "CAPACITY": 1,
@@ -491,8 +492,12 @@ const poseidon3ParamsJsonString = '''{
 final rNumber = RegExp(r'(-?\d+)');
 PoseidonParams _loadPedersenParams() {
   final jsonWithStringifiedNumbers = poseidon3ParamsJsonString.replaceAllMapped(
-      rNumber, (match) => '"${match.group(0)}"');
-  return PoseidonParams.fromJson(json.decode(jsonWithStringifiedNumbers));
+    rNumber,
+    (match) => '"${match.group(0)}"',
+  );
+  return PoseidonParams.fromJson(
+    json.decode(jsonWithStringifiedNumbers) as Map<String, Object?>,
+  );
 }
 
 final poseidonParams = _loadPedersenParams();
