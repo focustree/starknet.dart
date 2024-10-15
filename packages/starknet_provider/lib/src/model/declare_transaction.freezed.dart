@@ -24,8 +24,12 @@ mixin _$DeclareTransactionRequest {
   DeclareTransaction get declareTransaction =>
       throw _privateConstructorUsedError;
 
+  /// Serializes this DeclareTransactionRequest to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of DeclareTransactionRequest
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $DeclareTransactionRequestCopyWith<DeclareTransactionRequest> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -50,6 +54,8 @@ class _$DeclareTransactionRequestCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of DeclareTransactionRequest
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -86,6 +92,8 @@ class __$$DeclareTransactionRequestImplCopyWithImpl<$Res>
       $Res Function(_$DeclareTransactionRequestImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of DeclareTransactionRequest
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -125,11 +133,13 @@ class _$DeclareTransactionRequestImpl implements _DeclareTransactionRequest {
                 other.declareTransaction == declareTransaction));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, declareTransaction);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of DeclareTransactionRequest
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$DeclareTransactionRequestImplCopyWith<_$DeclareTransactionRequestImpl>
@@ -154,8 +164,11 @@ abstract class _DeclareTransactionRequest implements DeclareTransactionRequest {
 
   @override
   DeclareTransaction get declareTransaction;
+
+  /// Create a copy of DeclareTransactionRequest
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$DeclareTransactionRequestImplCopyWith<_$DeclareTransactionRequestImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -175,8 +188,12 @@ mixin _$DeclareTransactionV1 {
   DeprecatedContractClass get contractClass =>
       throw _privateConstructorUsedError;
 
+  /// Serializes this DeclareTransactionV1 to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of DeclareTransactionV1
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $DeclareTransactionV1CopyWith<DeclareTransactionV1> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -210,6 +227,8 @@ class _$DeclareTransactionV1CopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of DeclareTransactionV1
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -253,6 +272,8 @@ class _$DeclareTransactionV1CopyWithImpl<$Res,
     ) as $Val);
   }
 
+  /// Create a copy of DeclareTransactionV1
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $DeprecatedContractClassCopyWith<$Res> get contractClass {
@@ -292,6 +313,8 @@ class __$$DeclareTransactionV1ImplCopyWithImpl<$Res>
       $Res Function(_$DeclareTransactionV1Impl) _then)
       : super(_value, _then);
 
+  /// Create a copy of DeclareTransactionV1
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -397,7 +420,7 @@ class _$DeclareTransactionV1Impl implements _DeclareTransactionV1 {
                 other.contractClass == contractClass));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -409,7 +432,9 @@ class _$DeclareTransactionV1Impl implements _DeclareTransactionV1 {
       senderAddress,
       contractClass);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of DeclareTransactionV1
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$DeclareTransactionV1ImplCopyWith<_$DeclareTransactionV1Impl>
@@ -453,8 +478,11 @@ abstract class _DeclareTransactionV1 implements DeclareTransactionV1 {
   Felt get senderAddress;
   @override
   DeprecatedContractClass get contractClass;
+
+  /// Create a copy of DeclareTransactionV1
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$DeclareTransactionV1ImplCopyWith<_$DeclareTransactionV1Impl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -475,8 +503,12 @@ mixin _$DeclareTransactionV2 {
       throw _privateConstructorUsedError;
   Felt get compiledClassHash => throw _privateConstructorUsedError;
 
+  /// Serializes this DeclareTransactionV2 to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of DeclareTransactionV2
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $DeclareTransactionV2CopyWith<DeclareTransactionV2> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -511,6 +543,8 @@ class _$DeclareTransactionV2CopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of DeclareTransactionV2
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -559,6 +593,8 @@ class _$DeclareTransactionV2CopyWithImpl<$Res,
     ) as $Val);
   }
 
+  /// Create a copy of DeclareTransactionV2
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $FlattenSierraContractClassCopyWith<$Res> get contractClass {
@@ -599,6 +635,8 @@ class __$$DeclareTransactionV2ImplCopyWithImpl<$Res>
       $Res Function(_$DeclareTransactionV2Impl) _then)
       : super(_value, _then);
 
+  /// Create a copy of DeclareTransactionV2
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -714,7 +752,7 @@ class _$DeclareTransactionV2Impl implements _DeclareTransactionV2 {
                 other.compiledClassHash == compiledClassHash));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -727,7 +765,9 @@ class _$DeclareTransactionV2Impl implements _DeclareTransactionV2 {
       contractClass,
       compiledClassHash);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of DeclareTransactionV2
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$DeclareTransactionV2ImplCopyWith<_$DeclareTransactionV2Impl>
@@ -773,8 +813,11 @@ abstract class _DeclareTransactionV2 implements DeclareTransactionV2 {
   FlattenSierraContractClass get contractClass;
   @override
   Felt get compiledClassHash;
+
+  /// Create a copy of DeclareTransactionV2
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$DeclareTransactionV2ImplCopyWith<_$DeclareTransactionV2Impl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -836,6 +879,8 @@ mixin _$DeclareTransactionResponse {
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
+
+  /// Serializes this DeclareTransactionResponse to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
 }
 
@@ -857,6 +902,9 @@ class _$DeclareTransactionResponseCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of DeclareTransactionResponse
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -881,6 +929,8 @@ class __$$DeclareTransactionResultImplCopyWithImpl<$Res>
       $Res Function(_$DeclareTransactionResultImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of DeclareTransactionResponse
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -894,6 +944,8 @@ class __$$DeclareTransactionResultImplCopyWithImpl<$Res>
     ));
   }
 
+  /// Create a copy of DeclareTransactionResponse
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $DeclareTransactionResponseResultCopyWith<$Res> get result {
@@ -933,11 +985,13 @@ class _$DeclareTransactionResultImpl implements DeclareTransactionResult {
             (identical(other.result, result) || other.result == result));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, result);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of DeclareTransactionResponse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$DeclareTransactionResultImplCopyWith<_$DeclareTransactionResultImpl>
@@ -1023,7 +1077,10 @@ abstract class DeclareTransactionResult implements DeclareTransactionResponse {
       _$DeclareTransactionResultImpl.fromJson;
 
   DeclareTransactionResponseResult get result;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of DeclareTransactionResponse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$DeclareTransactionResultImplCopyWith<_$DeclareTransactionResultImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -1050,6 +1107,8 @@ class __$$DeclareTransactionErrorImplCopyWithImpl<$Res>
       $Res Function(_$DeclareTransactionErrorImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of DeclareTransactionResponse
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1063,6 +1122,8 @@ class __$$DeclareTransactionErrorImplCopyWithImpl<$Res>
     ));
   }
 
+  /// Create a copy of DeclareTransactionResponse
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $JsonRpcApiErrorCopyWith<$Res> get error {
@@ -1101,11 +1162,13 @@ class _$DeclareTransactionErrorImpl implements DeclareTransactionError {
             (identical(other.error, error) || other.error == error));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, error);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of DeclareTransactionResponse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$DeclareTransactionErrorImplCopyWith<_$DeclareTransactionErrorImpl>
@@ -1190,7 +1253,10 @@ abstract class DeclareTransactionError implements DeclareTransactionResponse {
       _$DeclareTransactionErrorImpl.fromJson;
 
   JsonRpcApiError get error;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of DeclareTransactionResponse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$DeclareTransactionErrorImplCopyWith<_$DeclareTransactionErrorImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -1205,8 +1271,12 @@ mixin _$DeclareTransactionResponseResult {
   Felt get classHash => throw _privateConstructorUsedError;
   Felt get transactionHash => throw _privateConstructorUsedError;
 
+  /// Serializes this DeclareTransactionResponseResult to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of DeclareTransactionResponseResult
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $DeclareTransactionResponseResultCopyWith<DeclareTransactionResponseResult>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -1233,6 +1303,8 @@ class _$DeclareTransactionResponseResultCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of DeclareTransactionResponseResult
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1274,6 +1346,8 @@ class __$$DeclareTransactionResponseResultImplCopyWithImpl<$Res>
       $Res Function(_$DeclareTransactionResponseResultImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of DeclareTransactionResponseResult
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1325,11 +1399,13 @@ class _$DeclareTransactionResponseResultImpl
                 other.transactionHash == transactionHash));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, classHash, transactionHash);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of DeclareTransactionResponseResult
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$DeclareTransactionResponseResultImplCopyWith<
@@ -1360,8 +1436,11 @@ abstract class _DeclareTransactionResponseResult
   Felt get classHash;
   @override
   Felt get transactionHash;
+
+  /// Create a copy of DeclareTransactionResponseResult
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$DeclareTransactionResponseResultImplCopyWith<
           _$DeclareTransactionResponseResultImpl>
       get copyWith => throw _privateConstructorUsedError;

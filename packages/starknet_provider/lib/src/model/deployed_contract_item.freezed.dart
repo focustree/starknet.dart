@@ -23,8 +23,12 @@ mixin _$DeployedContractItem {
   Felt get address => throw _privateConstructorUsedError;
   Felt get classHash => throw _privateConstructorUsedError;
 
+  /// Serializes this DeployedContractItem to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of DeployedContractItem
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $DeployedContractItemCopyWith<DeployedContractItem> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -49,6 +53,8 @@ class _$DeployedContractItemCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of DeployedContractItem
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -87,6 +93,8 @@ class __$$DeployedContractItemImplCopyWithImpl<$Res>
       $Res Function(_$DeployedContractItemImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of DeployedContractItem
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -135,11 +143,13 @@ class _$DeployedContractItemImpl implements _DeployedContractItem {
                 other.classHash == classHash));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, address, classHash);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of DeployedContractItem
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$DeployedContractItemImplCopyWith<_$DeployedContractItemImpl>
@@ -167,8 +177,11 @@ abstract class _DeployedContractItem implements DeployedContractItem {
   Felt get address;
   @override
   Felt get classHash;
+
+  /// Create a copy of DeployedContractItem
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$DeployedContractItemImplCopyWith<_$DeployedContractItemImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

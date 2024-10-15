@@ -70,6 +70,8 @@ mixin _$BlockHashAndNumber {
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
+
+  /// Serializes this BlockHashAndNumber to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
 }
 
@@ -89,6 +91,9 @@ class _$BlockHashAndNumberCopyWithImpl<$Res, $Val extends BlockHashAndNumber>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of BlockHashAndNumber
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -113,6 +118,8 @@ class __$$BlockHashAndNumberResultImplCopyWithImpl<$Res>
       $Res Function(_$BlockHashAndNumberResultImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of BlockHashAndNumber
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -126,6 +133,8 @@ class __$$BlockHashAndNumberResultImplCopyWithImpl<$Res>
     ));
   }
 
+  /// Create a copy of BlockHashAndNumber
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $BlockHashAndNumberResponseResultCopyWith<$Res> get result {
@@ -165,11 +174,13 @@ class _$BlockHashAndNumberResultImpl implements BlockHashAndNumberResult {
             (identical(other.result, result) || other.result == result));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, result);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of BlockHashAndNumber
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$BlockHashAndNumberResultImplCopyWith<_$BlockHashAndNumberResultImpl>
@@ -255,7 +266,10 @@ abstract class BlockHashAndNumberResult implements BlockHashAndNumber {
       _$BlockHashAndNumberResultImpl.fromJson;
 
   BlockHashAndNumberResponseResult get result;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of BlockHashAndNumber
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$BlockHashAndNumberResultImplCopyWith<_$BlockHashAndNumberResultImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -282,6 +296,8 @@ class __$$BlockHashAndNumberErrorImplCopyWithImpl<$Res>
       $Res Function(_$BlockHashAndNumberErrorImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of BlockHashAndNumber
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -295,6 +311,8 @@ class __$$BlockHashAndNumberErrorImplCopyWithImpl<$Res>
     ));
   }
 
+  /// Create a copy of BlockHashAndNumber
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $JsonRpcApiErrorCopyWith<$Res> get error {
@@ -333,11 +351,13 @@ class _$BlockHashAndNumberErrorImpl implements BlockHashAndNumberError {
             (identical(other.error, error) || other.error == error));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, error);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of BlockHashAndNumber
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$BlockHashAndNumberErrorImplCopyWith<_$BlockHashAndNumberErrorImpl>
@@ -422,7 +442,10 @@ abstract class BlockHashAndNumberError implements BlockHashAndNumber {
       _$BlockHashAndNumberErrorImpl.fromJson;
 
   JsonRpcApiError get error;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of BlockHashAndNumber
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$BlockHashAndNumberErrorImplCopyWith<_$BlockHashAndNumberErrorImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -437,8 +460,12 @@ mixin _$BlockHashAndNumberResponseResult {
   Felt get blockHash => throw _privateConstructorUsedError;
   int get blockNumber => throw _privateConstructorUsedError;
 
+  /// Serializes this BlockHashAndNumberResponseResult to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of BlockHashAndNumberResponseResult
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $BlockHashAndNumberResponseResultCopyWith<BlockHashAndNumberResponseResult>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -465,6 +492,8 @@ class _$BlockHashAndNumberResponseResultCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of BlockHashAndNumberResponseResult
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -506,6 +535,8 @@ class __$$BlockHashAndNumberResponseResultImplCopyWithImpl<$Res>
       $Res Function(_$BlockHashAndNumberResponseResultImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of BlockHashAndNumberResponseResult
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -557,11 +588,13 @@ class _$BlockHashAndNumberResponseResultImpl
                 other.blockNumber == blockNumber));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, blockHash, blockNumber);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of BlockHashAndNumberResponseResult
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$BlockHashAndNumberResponseResultImplCopyWith<
@@ -591,8 +624,11 @@ abstract class _BlockHashAndNumberResponseResult
   Felt get blockHash;
   @override
   int get blockNumber;
+
+  /// Create a copy of BlockHashAndNumberResponseResult
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$BlockHashAndNumberResponseResultImplCopyWith<
           _$BlockHashAndNumberResponseResultImpl>
       get copyWith => throw _privateConstructorUsedError;

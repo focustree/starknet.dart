@@ -25,8 +25,12 @@ mixin _$StateUpdate {
   Felt get oldRoot => throw _privateConstructorUsedError;
   StateDiff get stateDiff => throw _privateConstructorUsedError;
 
+  /// Serializes this StateUpdate to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of StateUpdate
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $StateUpdateCopyWith<StateUpdate> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -52,6 +56,8 @@ class _$StateUpdateCopyWithImpl<$Res, $Val extends StateUpdate>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of StateUpdate
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -80,6 +86,8 @@ class _$StateUpdateCopyWithImpl<$Res, $Val extends StateUpdate>
     ) as $Val);
   }
 
+  /// Create a copy of StateUpdate
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $StateDiffCopyWith<$Res> get stateDiff {
@@ -111,6 +119,8 @@ class __$$StateUpdateImplCopyWithImpl<$Res>
       _$StateUpdateImpl _value, $Res Function(_$StateUpdateImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of StateUpdate
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -179,12 +189,14 @@ class _$StateUpdateImpl implements _StateUpdate {
                 other.stateDiff == stateDiff));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode =>
       Object.hash(runtimeType, blockHash, newRoot, oldRoot, stateDiff);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of StateUpdate
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$StateUpdateImplCopyWith<_$StateUpdateImpl> get copyWith =>
@@ -216,8 +228,11 @@ abstract class _StateUpdate implements StateUpdate {
   Felt get oldRoot;
   @override
   StateDiff get stateDiff;
+
+  /// Create a copy of StateUpdate
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$StateUpdateImplCopyWith<_$StateUpdateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -239,8 +254,12 @@ mixin _$StateDiff {
   List<NonceAndContractAddress> get nonces =>
       throw _privateConstructorUsedError;
 
+  /// Serializes this StateDiff to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of StateDiff
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $StateDiffCopyWith<StateDiff> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -269,6 +288,8 @@ class _$StateDiffCopyWithImpl<$Res, $Val extends StateDiff>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of StateDiff
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -333,6 +354,8 @@ class __$$StateDiffImplCopyWithImpl<$Res>
       _$StateDiffImpl _value, $Res Function(_$StateDiffImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of StateDiff
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -465,7 +488,7 @@ class _$StateDiffImpl implements _StateDiff {
             const DeepCollectionEquality().equals(other._nonces, _nonces));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -476,7 +499,9 @@ class _$StateDiffImpl implements _StateDiff {
       const DeepCollectionEquality().hash(_replacedClasses),
       const DeepCollectionEquality().hash(_nonces));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of StateDiff
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$StateDiffImplCopyWith<_$StateDiffImpl> get copyWith =>
@@ -514,8 +539,11 @@ abstract class _StateDiff implements StateDiff {
   List<ReplacedClass> get replacedClasses;
   @override
   List<NonceAndContractAddress> get nonces;
+
+  /// Create a copy of StateDiff
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$StateDiffImplCopyWith<_$StateDiffImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -530,8 +558,12 @@ mixin _$NonceAndContractAddress {
   Felt get nonce => throw _privateConstructorUsedError;
   Felt get contractAddress => throw _privateConstructorUsedError;
 
+  /// Serializes this NonceAndContractAddress to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of NonceAndContractAddress
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $NonceAndContractAddressCopyWith<NonceAndContractAddress> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -556,6 +588,8 @@ class _$NonceAndContractAddressCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of NonceAndContractAddress
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -597,6 +631,8 @@ class __$$NonceAndContractAddressImplCopyWithImpl<$Res>
       $Res Function(_$NonceAndContractAddressImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of NonceAndContractAddress
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -645,11 +681,13 @@ class _$NonceAndContractAddressImpl implements _NonceAndContractAddress {
                 other.contractAddress == contractAddress));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, nonce, contractAddress);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of NonceAndContractAddress
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$NonceAndContractAddressImplCopyWith<_$NonceAndContractAddressImpl>
@@ -676,8 +714,11 @@ abstract class _NonceAndContractAddress implements NonceAndContractAddress {
   Felt get nonce;
   @override
   Felt get contractAddress;
+
+  /// Create a copy of NonceAndContractAddress
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$NonceAndContractAddressImplCopyWith<_$NonceAndContractAddressImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -691,8 +732,12 @@ mixin _$DeclaredClass {
   Felt get classHash => throw _privateConstructorUsedError;
   Felt get compiledClassHash => throw _privateConstructorUsedError;
 
+  /// Serializes this DeclaredClass to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of DeclaredClass
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $DeclaredClassCopyWith<DeclaredClass> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -716,6 +761,8 @@ class _$DeclaredClassCopyWithImpl<$Res, $Val extends DeclaredClass>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of DeclaredClass
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -754,6 +801,8 @@ class __$$DeclaredClassImplCopyWithImpl<$Res>
       _$DeclaredClassImpl _value, $Res Function(_$DeclaredClassImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of DeclaredClass
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -803,11 +852,13 @@ class _$DeclaredClassImpl implements _DeclaredClass {
                 other.compiledClassHash == compiledClassHash));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, classHash, compiledClassHash);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of DeclaredClass
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$DeclaredClassImplCopyWith<_$DeclaredClassImpl> get copyWith =>
@@ -833,8 +884,11 @@ abstract class _DeclaredClass implements DeclaredClass {
   Felt get classHash;
   @override
   Felt get compiledClassHash;
+
+  /// Create a copy of DeclaredClass
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$DeclaredClassImplCopyWith<_$DeclaredClassImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -848,8 +902,12 @@ mixin _$ReplacedClass {
   Felt get contractAddress => throw _privateConstructorUsedError;
   Felt get classHash => throw _privateConstructorUsedError;
 
+  /// Serializes this ReplacedClass to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of ReplacedClass
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $ReplacedClassCopyWith<ReplacedClass> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -873,6 +931,8 @@ class _$ReplacedClassCopyWithImpl<$Res, $Val extends ReplacedClass>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of ReplacedClass
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -911,6 +971,8 @@ class __$$ReplacedClassImplCopyWithImpl<$Res>
       _$ReplacedClassImpl _value, $Res Function(_$ReplacedClassImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ReplacedClass
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -960,11 +1022,13 @@ class _$ReplacedClassImpl implements _ReplacedClass {
                 other.classHash == classHash));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, contractAddress, classHash);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ReplacedClass
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ReplacedClassImplCopyWith<_$ReplacedClassImpl> get copyWith =>
@@ -990,8 +1054,11 @@ abstract class _ReplacedClass implements ReplacedClass {
   Felt get contractAddress;
   @override
   Felt get classHash;
+
+  /// Create a copy of ReplacedClass
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ReplacedClassImplCopyWith<_$ReplacedClassImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
