@@ -27,8 +27,12 @@ mixin _$PedersenParams {
   BigInt get beta => throw _privateConstructorUsedError;
   List<List<BigInt>> get constantPoints => throw _privateConstructorUsedError;
 
+  /// Serializes this PedersenParams to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of PedersenParams
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $PedersenParamsCopyWith<PedersenParams> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -58,6 +62,8 @@ class _$PedersenParamsCopyWithImpl<$Res, $Val extends PedersenParams>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of PedersenParams
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -122,6 +128,8 @@ class __$$PedersenParamsImplCopyWithImpl<$Res>
       _$PedersenParamsImpl _value, $Res Function(_$PedersenParamsImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of PedersenParams
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -216,12 +224,14 @@ class _$PedersenParamsImpl implements _PedersenParams {
                 .equals(other._constantPoints, _constantPoints));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, fieldPrime, fieldGen, ecOrder,
       alpha, beta, const DeepCollectionEquality().hash(_constantPoints));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of PedersenParams
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$PedersenParamsImplCopyWith<_$PedersenParamsImpl> get copyWith =>
@@ -260,8 +270,11 @@ abstract class _PedersenParams implements PedersenParams {
   BigInt get beta;
   @override
   List<List<BigInt>> get constantPoints;
+
+  /// Create a copy of PedersenParams
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$PedersenParamsImplCopyWith<_$PedersenParamsImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

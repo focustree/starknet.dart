@@ -26,8 +26,12 @@ mixin _$SierraCompiledContract {
   String get contractClassVersion => throw _privateConstructorUsedError;
   List<SierraContractAbiEntry> get abi => throw _privateConstructorUsedError;
 
+  /// Serializes this SierraCompiledContract to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of SierraCompiledContract
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $SierraCompiledContractCopyWith<SierraCompiledContract> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -58,6 +62,8 @@ class _$SierraCompiledContractCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of SierraCompiledContract
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -86,6 +92,8 @@ class _$SierraCompiledContractCopyWithImpl<$Res,
     ) as $Val);
   }
 
+  /// Create a copy of SierraCompiledContract
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $EntryPointsByTypeCopyWith<$Res> get entryPointsByType {
@@ -124,6 +132,8 @@ class __$$SierraCompiledContractImplCopyWithImpl<$Res>
       $Res Function(_$SierraCompiledContractImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of SierraCompiledContract
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -207,7 +217,7 @@ class _$SierraCompiledContractImpl extends _SierraCompiledContract {
             const DeepCollectionEquality().equals(other._abi, _abi));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -216,7 +226,9 @@ class _$SierraCompiledContractImpl extends _SierraCompiledContract {
       contractClassVersion,
       const DeepCollectionEquality().hash(_abi));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of SierraCompiledContract
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$SierraCompiledContractImplCopyWith<_$SierraCompiledContractImpl>
@@ -251,8 +263,11 @@ abstract class _SierraCompiledContract extends SierraCompiledContract {
   String get contractClassVersion;
   @override
   List<SierraContractAbiEntry> get abi;
+
+  /// Create a copy of SierraCompiledContract
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$SierraCompiledContractImplCopyWith<_$SierraCompiledContractImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -269,8 +284,12 @@ mixin _$FlattenSierraContractClass {
   String get contractClassVersion => throw _privateConstructorUsedError;
   String get abi => throw _privateConstructorUsedError;
 
+  /// Serializes this FlattenSierraContractClass to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of FlattenSierraContractClass
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $FlattenSierraContractClassCopyWith<FlattenSierraContractClass>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -302,6 +321,8 @@ class _$FlattenSierraContractClassCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of FlattenSierraContractClass
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -330,6 +351,8 @@ class _$FlattenSierraContractClassCopyWithImpl<$Res,
     ) as $Val);
   }
 
+  /// Create a copy of FlattenSierraContractClass
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $EntryPointsByTypeCopyWith<$Res> get entryPointsByType {
@@ -366,6 +389,8 @@ class __$$FlattenSierraClassImplCopyWithImpl<$Res>
       $Res Function(_$FlattenSierraClassImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of FlattenSierraContractClass
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -442,7 +467,7 @@ class _$FlattenSierraClassImpl implements _FlattenSierraClass {
             (identical(other.abi, abi) || other.abi == abi));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -451,7 +476,9 @@ class _$FlattenSierraClassImpl implements _FlattenSierraClass {
       contractClassVersion,
       abi);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of FlattenSierraContractClass
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$FlattenSierraClassImplCopyWith<_$FlattenSierraClassImpl> get copyWith =>
@@ -484,8 +511,11 @@ abstract class _FlattenSierraClass implements FlattenSierraContractClass {
   String get contractClassVersion;
   @override
   String get abi;
+
+  /// Create a copy of FlattenSierraContractClass
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$FlattenSierraClassImplCopyWith<_$FlattenSierraClassImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -501,8 +531,12 @@ mixin _$CASMCompiledContract {
       throw _privateConstructorUsedError;
   String get compilerVersion => throw _privateConstructorUsedError;
 
+  /// Serializes this CASMCompiledContract to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of CASMCompiledContract
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $CASMCompiledContractCopyWith<CASMCompiledContract> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -532,6 +566,8 @@ class _$CASMCompiledContractCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of CASMCompiledContract
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -555,6 +591,8 @@ class _$CASMCompiledContractCopyWithImpl<$Res,
     ) as $Val);
   }
 
+  /// Create a copy of CASMCompiledContract
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $CASMEntryPointsByTypeCopyWith<$Res> get entryPointsByType {
@@ -590,6 +628,8 @@ class __$$CASMCompiledContractImplCopyWithImpl<$Res>
       $Res Function(_$CASMCompiledContractImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of CASMCompiledContract
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -657,7 +697,7 @@ class _$CASMCompiledContractImpl extends _CASMCompiledContract {
                 other.compilerVersion == compilerVersion));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -665,7 +705,9 @@ class _$CASMCompiledContractImpl extends _CASMCompiledContract {
       entryPointsByType,
       compilerVersion);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of CASMCompiledContract
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$CASMCompiledContractImplCopyWith<_$CASMCompiledContractImpl>
@@ -697,8 +739,11 @@ abstract class _CASMCompiledContract extends CASMCompiledContract {
   CASMEntryPointsByType get entryPointsByType;
   @override
   String get compilerVersion;
+
+  /// Create a copy of CASMCompiledContract
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$CASMCompiledContractImplCopyWith<_$CASMCompiledContractImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -716,8 +761,12 @@ mixin _$DeprecatedCompiledContract {
   List<DeprecatedContractAbiEntry>? get abi =>
       throw _privateConstructorUsedError;
 
+  /// Serializes this DeprecatedCompiledContract to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of DeprecatedCompiledContract
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $DeprecatedCompiledContractCopyWith<DeprecatedCompiledContract>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -748,6 +797,8 @@ class _$DeprecatedCompiledContractCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of DeprecatedCompiledContract
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -771,6 +822,8 @@ class _$DeprecatedCompiledContractCopyWithImpl<$Res,
     ) as $Val);
   }
 
+  /// Create a copy of DeprecatedCompiledContract
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $DeprecatedCairoEntryPointsByTypeCopyWith<$Res> get entryPointsByType {
@@ -809,6 +862,8 @@ class __$$DeprecatedCompiledContractImplCopyWithImpl<$Res>
       $Res Function(_$DeprecatedCompiledContractImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of DeprecatedCompiledContract
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -884,7 +939,7 @@ class _$DeprecatedCompiledContractImpl extends _DeprecatedCompiledContract {
             const DeepCollectionEquality().equals(other._abi, _abi));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -892,7 +947,9 @@ class _$DeprecatedCompiledContractImpl extends _DeprecatedCompiledContract {
       entryPointsByType,
       const DeepCollectionEquality().hash(_abi));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of DeprecatedCompiledContract
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$DeprecatedCompiledContractImplCopyWith<_$DeprecatedCompiledContractImpl>
@@ -924,8 +981,11 @@ abstract class _DeprecatedCompiledContract extends DeprecatedCompiledContract {
   DeprecatedCairoEntryPointsByType get entryPointsByType;
   @override
   List<DeprecatedContractAbiEntry>? get abi;
+
+  /// Create a copy of DeprecatedCompiledContract
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$DeprecatedCompiledContractImplCopyWith<_$DeprecatedCompiledContractImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
