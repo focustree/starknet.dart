@@ -70,6 +70,8 @@ mixin _$GetBlockTxnCount {
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
+
+  /// Serializes this GetBlockTxnCount to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
 }
 
@@ -89,6 +91,9 @@ class _$GetBlockTxnCountCopyWithImpl<$Res, $Val extends GetBlockTxnCount>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of GetBlockTxnCount
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -108,6 +113,8 @@ class __$$BlockTxnCountResultImplCopyWithImpl<$Res>
       $Res Function(_$BlockTxnCountResultImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of GetBlockTxnCount
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -150,11 +157,13 @@ class _$BlockTxnCountResultImpl implements BlockTxnCountResult {
             (identical(other.result, result) || other.result == result));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, result);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of GetBlockTxnCount
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$BlockTxnCountResultImplCopyWith<_$BlockTxnCountResultImpl> get copyWith =>
@@ -239,7 +248,10 @@ abstract class BlockTxnCountResult implements GetBlockTxnCount {
       _$BlockTxnCountResultImpl.fromJson;
 
   int get result;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of GetBlockTxnCount
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$BlockTxnCountResultImplCopyWith<_$BlockTxnCountResultImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -264,6 +276,8 @@ class __$$GetBlockTxnCountErrorImplCopyWithImpl<$Res>
       $Res Function(_$GetBlockTxnCountErrorImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of GetBlockTxnCount
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -277,6 +291,8 @@ class __$$GetBlockTxnCountErrorImplCopyWithImpl<$Res>
     ));
   }
 
+  /// Create a copy of GetBlockTxnCount
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $JsonRpcApiErrorCopyWith<$Res> get error {
@@ -314,11 +330,13 @@ class _$GetBlockTxnCountErrorImpl implements GetBlockTxnCountError {
             (identical(other.error, error) || other.error == error));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, error);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of GetBlockTxnCount
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GetBlockTxnCountErrorImplCopyWith<_$GetBlockTxnCountErrorImpl>
@@ -403,7 +421,10 @@ abstract class GetBlockTxnCountError implements GetBlockTxnCount {
       _$GetBlockTxnCountErrorImpl.fromJson;
 
   JsonRpcApiError get error;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of GetBlockTxnCount
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GetBlockTxnCountErrorImplCopyWith<_$GetBlockTxnCountErrorImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

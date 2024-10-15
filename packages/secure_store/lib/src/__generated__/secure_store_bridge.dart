@@ -37,7 +37,7 @@ class AndroidPromptInfos {
     ];
   }
 
-  static AndroidPromptInfos decode(Object result) {
+  factory AndroidPromptInfos.decode(Object result) {
     result as List<Object?>;
     return AndroidPromptInfos(
       title: result[0]! as String,
@@ -78,7 +78,7 @@ class AndroidOptions {
     ];
   }
 
-  static AndroidOptions decode(Object result) {
+  factory AndroidOptions.decode(Object result) {
     result as List<Object?>;
     return AndroidOptions(
       promptInfo: result[0] != null
@@ -105,7 +105,7 @@ class BiometricOptions {
     ];
   }
 
-  static BiometricOptions decode(Object result) {
+  factory BiometricOptions.decode(Object result) {
     result as List<Object?>;
     return BiometricOptions(
       androidOptions: result[0] != null
@@ -158,11 +158,16 @@ class SecureStoreBridge {
 
   static const MessageCodec<Object?> codec = _SecureStoreBridgeCodec();
 
-  Future<void> storeSecret(String arg_key, Uint8List arg_privateKey,
-      BiometricOptions? arg_biometricOptions) async {
+  Future<void> storeSecret(
+    String arg_key,
+    Uint8List arg_privateKey,
+    BiometricOptions? arg_biometricOptions,
+  ) async {
     final BasicMessageChannel<Object?> channel = BasicMessageChannel<Object?>(
-        'dev.flutter.pigeon.secure_store.SecureStoreBridge.storeSecret', codec,
-        binaryMessenger: _binaryMessenger);
+      'dev.flutter.pigeon.secure_store.SecureStoreBridge.storeSecret',
+      codec,
+      binaryMessenger: _binaryMessenger,
+    );
     final List<Object?>? replyList = await channel
             .send(<Object?>[arg_key, arg_privateKey, arg_biometricOptions])
         as List<Object?>?;
@@ -184,8 +189,10 @@ class SecureStoreBridge {
 
   Future<void> removeSecret(String arg_key) async {
     final BasicMessageChannel<Object?> channel = BasicMessageChannel<Object?>(
-        'dev.flutter.pigeon.secure_store.SecureStoreBridge.removeSecret', codec,
-        binaryMessenger: _binaryMessenger);
+      'dev.flutter.pigeon.secure_store.SecureStoreBridge.removeSecret',
+      codec,
+      binaryMessenger: _binaryMessenger,
+    );
     final List<Object?>? replyList =
         await channel.send(<Object?>[arg_key]) as List<Object?>?;
     if (replyList == null) {
@@ -205,10 +212,14 @@ class SecureStoreBridge {
   }
 
   Future<Uint8List?> getSecret(
-      String arg_key, BiometricOptions? arg_biometricOptions) async {
+    String arg_key,
+    BiometricOptions? arg_biometricOptions,
+  ) async {
     final BasicMessageChannel<Object?> channel = BasicMessageChannel<Object?>(
-        'dev.flutter.pigeon.secure_store.SecureStoreBridge.getSecret', codec,
-        binaryMessenger: _binaryMessenger);
+      'dev.flutter.pigeon.secure_store.SecureStoreBridge.getSecret',
+      codec,
+      binaryMessenger: _binaryMessenger,
+    );
     final List<Object?>? replyList = await channel
         .send(<Object?>[arg_key, arg_biometricOptions]) as List<Object?>?;
     if (replyList == null) {
@@ -229,9 +240,10 @@ class SecureStoreBridge {
 
   Future<bool> isBiometryAvailable() async {
     final BasicMessageChannel<Object?> channel = BasicMessageChannel<Object?>(
-        'dev.flutter.pigeon.secure_store.SecureStoreBridge.isBiometryAvailable',
-        codec,
-        binaryMessenger: _binaryMessenger);
+      'dev.flutter.pigeon.secure_store.SecureStoreBridge.isBiometryAvailable',
+      codec,
+      binaryMessenger: _binaryMessenger,
+    );
     final List<Object?>? replyList = await channel.send(null) as List<Object?>?;
     if (replyList == null) {
       throw PlatformException(

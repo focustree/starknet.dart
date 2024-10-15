@@ -1,9 +1,11 @@
+// ignore_for_file: inference_failure_on_function_invocation
+
 import 'dart:convert';
 
 import 'package:flutter/foundation.dart';
 import 'package:hive_flutter/hive_flutter.dart';
-import 'package:secure_store/secure_store.dart';
-import 'package:secure_store/src/utils.dart';
+import '../secure_store.dart';
+import 'utils.dart';
 
 /// A [SecureStore] that stores the private key encrypted with a password.
 ///
@@ -14,7 +16,7 @@ class PasswordStore implements SecureStore {
   final Future<String?> Function()? getPassword;
   final Uint8List? iv;
 
-  static const boxName = "secure_store";
+  static const boxName = 'secure_store';
 
   PasswordStore({this.password, this.getPassword, this.iv}) {
     if (password == null && getPassword == null) {
@@ -22,7 +24,7 @@ class PasswordStore implements SecureStore {
     }
   }
 
-  static init() {
+  static void init() {
     Hive.initFlutter();
   }
 
@@ -59,7 +61,7 @@ class PasswordStore implements SecureStore {
   Future<String?> getSecret({
     required String key,
   }) async {
-    var box = await Hive.openBox(boxName);
+    final box = await Hive.openBox(boxName);
     final cipherText = box.get(key);
 
     if (cipherText == null) {
@@ -70,10 +72,12 @@ class PasswordStore implements SecureStore {
         throw Exception('Password must be provided');
       }
       try {
-        return bytesToString(decrypt(
-          password: stringToBytes(password!),
-          encryptedSecret: base64Decode(cipherText),
-        ));
+        return bytesToString(
+          decrypt(
+            password: stringToBytes(password!),
+            encryptedSecret: base64Decode(cipherText as String),
+          ),
+        );
       } catch (e) {
         if (kDebugMode) {
           print(e);

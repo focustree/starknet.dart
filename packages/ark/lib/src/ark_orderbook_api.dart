@@ -1,7 +1,8 @@
 import 'dart:convert';
 import 'dart:io';
-import 'package:ark/src/model/orderbook_api.dart';
 import 'package:http/http.dart' as http;
+
+import 'model/orderbook_api.dart';
 
 class ArkOrderbookApi {
   static final ArkOrderbookApi _instance = ArkOrderbookApi._internal();
@@ -30,16 +31,24 @@ class ArkOrderbookApi {
     };
 
     final response = await http.get(uri, headers: headers);
-    if (response.statusCode == 200) {
-      final List<dynamic> decodedBody = jsonDecode(response.body);
-      return decodedBody.map((nft) => OrderBookNFT.fromJson(nft)).toList();
-    } else {
+    if (response.statusCode != 200) {
       throw HttpException('Failed to fetch data: ${response.statusCode}');
+    }
+
+    try {
+      final decodedBody = jsonDecode(response.body) as List;
+      return decodedBody
+          .map((nft) => OrderBookNFT.fromJson(nft as Map<String, dynamic>))
+          .toList();
+    } catch (e) {
+      throw const FormatException('Unexpected response body');
     }
   }
 
   Future<OrderBookNFT> getOrderbookNFT(
-      String contractAddress, String tokenId) async {
+    String contractAddress,
+    String tokenId,
+  ) async {
     final uri = Uri.parse('$baseUrl/token/$contractAddress/$tokenId');
     final headers = <String, String>{
       'x-api-key': apiKey,
@@ -47,15 +56,23 @@ class ArkOrderbookApi {
     };
 
     final response = await http.get(uri, headers: headers);
-    if (response.statusCode == 200) {
-      return OrderBookNFT.fromJson(jsonDecode(response.body));
-    } else {
+    if (response.statusCode != 200) {
       throw HttpException('Failed to fetch data: ${response.statusCode}');
+    }
+
+    try {
+      return OrderBookNFT.fromJson(
+        jsonDecode(response.body) as Map<String, dynamic>,
+      );
+    } catch (e) {
+      throw const FormatException('Unexpected response body');
     }
   }
 
   Future<GetOffersForTokenResponse> getOffersForNFT(
-      String contractAddress, String tokenId) async {
+    String contractAddress,
+    String tokenId,
+  ) async {
     final uri = Uri.parse('$baseUrl/token/$contractAddress/$tokenId/offers');
     final headers = <String, String>{
       'x-api-key': apiKey,
@@ -63,10 +80,16 @@ class ArkOrderbookApi {
     };
 
     final response = await http.get(uri, headers: headers);
-    if (response.statusCode == 200) {
-      return GetOffersForTokenResponse.fromJson(jsonDecode(response.body));
-    } else {
+    if (response.statusCode != 200) {
       throw HttpException('Failed to fetch data: ${response.statusCode}');
+    }
+
+    try {
+      return GetOffersForTokenResponse.fromJson(
+        jsonDecode(response.body) as Map<String, dynamic>,
+      );
+    } catch (e) {
+      throw const FormatException('Unexpected response body');
     }
   }
 }

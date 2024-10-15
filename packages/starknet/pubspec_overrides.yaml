@@ -1,3 +1,0 @@
-dependency_overrides:
-  starknet_provider:
-    path: ../starknet_provider

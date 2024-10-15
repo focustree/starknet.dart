@@ -70,6 +70,8 @@ mixin _$GetClassHashAt {
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
+
+  /// Serializes this GetClassHashAt to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
 }
 
@@ -89,6 +91,9 @@ class _$GetClassHashAtCopyWithImpl<$Res, $Val extends GetClassHashAt>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of GetClassHashAt
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -108,6 +113,8 @@ class __$$GetClassHashAtResultImplCopyWithImpl<$Res>
       $Res Function(_$GetClassHashAtResultImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of GetClassHashAt
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -150,11 +157,13 @@ class _$GetClassHashAtResultImpl implements GetClassHashAtResult {
             (identical(other.result, result) || other.result == result));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, result);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of GetClassHashAt
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GetClassHashAtResultImplCopyWith<_$GetClassHashAtResultImpl>
@@ -240,7 +249,10 @@ abstract class GetClassHashAtResult implements GetClassHashAt {
       _$GetClassHashAtResultImpl.fromJson;
 
   Felt get result;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of GetClassHashAt
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GetClassHashAtResultImplCopyWith<_$GetClassHashAtResultImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -264,6 +276,8 @@ class __$$GetClassHashAtErrorImplCopyWithImpl<$Res>
       $Res Function(_$GetClassHashAtErrorImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of GetClassHashAt
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -277,6 +291,8 @@ class __$$GetClassHashAtErrorImplCopyWithImpl<$Res>
     ));
   }
 
+  /// Create a copy of GetClassHashAt
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $JsonRpcApiErrorCopyWith<$Res> get error {
@@ -314,11 +330,13 @@ class _$GetClassHashAtErrorImpl implements GetClassHashAtError {
             (identical(other.error, error) || other.error == error));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, error);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of GetClassHashAt
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GetClassHashAtErrorImplCopyWith<_$GetClassHashAtErrorImpl> get copyWith =>
@@ -403,7 +421,10 @@ abstract class GetClassHashAtError implements GetClassHashAt {
       _$GetClassHashAtErrorImpl.fromJson;
 
   JsonRpcApiError get error;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of GetClassHashAt
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GetClassHashAtErrorImplCopyWith<_$GetClassHashAtErrorImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

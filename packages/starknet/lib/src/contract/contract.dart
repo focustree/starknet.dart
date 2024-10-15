@@ -1,5 +1,5 @@
-import 'package:starknet/starknet.dart';
 import 'package:starknet_provider/starknet_provider.dart';
+import '../../starknet.dart';
 
 class Contract {
   final Account account;
@@ -14,8 +14,8 @@ class Contract {
     required Felt salt,
   }) {
     final deployerAddress = BigInt.from(0); // always zero
-    List<BigInt> elements = [];
-    elements.add(Felt.fromString("STARKNET_CONTRACT_ADDRESS").toBigInt());
+    final elements = <BigInt>[];
+    elements.add(Felt.fromString('STARKNET_CONTRACT_ADDRESS').toBigInt());
     // caller address is always zero
     elements.add(deployerAddress);
     elements.add(salt.toBigInt());
@@ -36,16 +36,16 @@ class Contract {
         entryPointSelector: getSelectorByName(selector),
         calldata: calldata,
       ),
-      blockId: BlockId.blockTag("latest"),
+      blockId: const BlockId.blockTag('latest'),
     );
-    return (response.when(
+    return response.when(
       error: (error) {
         throw Exception(error);
       },
       result: (result) {
         return result;
       },
-    ));
+    );
   }
 
   /// Execute contract given [selector] with [calldata]
@@ -53,7 +53,7 @@ class Contract {
     String selector,
     List<Felt> calldata,
   ) async {
-    final Felt maxFee = defaultMaxFee;
+    final maxFee = defaultMaxFee;
 
     final trx = await account.execute(
       functionCalls: [
@@ -63,7 +63,7 @@ class Contract {
           calldata: calldata,
         ),
       ],
-      maxFee: maxFee,
+      max_fee: maxFee,
     );
     return trx;
   }

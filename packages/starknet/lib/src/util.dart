@@ -1,13 +1,14 @@
 import 'dart:convert';
+import 'dart:io';
 
-import 'package:starknet/src/static_config.dart';
 import 'package:starknet_provider/starknet_provider.dart';
+import 'static_config.dart';
 
 import 'types/index.dart';
 
-prettyPrintJson(Map<String, dynamic> json) {
-  var encoder = JsonEncoder.withIndent("  ");
-  print(encoder.convert(json));
+void prettyPrintJson(Map<String, dynamic> json) {
+  const encoder = JsonEncoder.withIndent('  ');
+  stdout.writeln(encoder.convert(json));
 }
 
 const _defaultInterval = Duration(seconds: 5);
@@ -28,33 +29,27 @@ Future<bool> waitForState({
   required List<String> states,
   Duration interval = _defaultInterval,
   int maxRetries = _defaultMaxRetries,
-  Function(dynamic message)? debugLog,
+  void Function(dynamic message)? debugLog,
 }) async {
-  int count = 0;
-  bool done = false;
-  bool succeed = false;
-  String status = 'UNKNOWN';
+  var count = 0;
+  var done = false;
+  var succeed = false;
+  var status = 'UNKNOWN';
   final txHash = Felt.fromHexString(transactionHash);
-  while (done != true) {
+  while (!done) {
     final receipt = await provider.getTransactionReceipt(txHash);
-    print(receipt);
+    stdout.writeln(receipt);
     receipt.when(
       result: (result) {
         result.map(
-          declareTxnReceipt: (DeclareTxnReceipt receipt) =>
+          declareTxnReceipt: (receipt) => status = receipt.execution_status,
+          deployTxnReceipt: (receipt) => status = receipt.execution_status,
+          deployAccountTxnReceipt: (receipt) =>
               status = receipt.execution_status,
-          deployTxnReceipt: (DeployTxnReceipt receipt) =>
-              status = receipt.execution_status,
-          deployAccountTxnReceipt: (DeployAccountTxnReceipt receipt) =>
-              status = receipt.execution_status,
-          l1HandlerTxnReceipt: (L1HandlerTxnReceipt receipt) =>
-              status = receipt.execution_status,
-          pendingDeployTxnReceipt: (PendingDeployTxnReceipt receipt) =>
-              status = 'PENDING',
-          pendingCommonReceiptProperties:
-              (PendingCommonReceiptProperties receipt) => status = 'PENDING',
-          invokeTxnReceipt: (InvokeTxnReceipt receipt) =>
-              status = receipt.execution_status,
+          l1HandlerTxnReceipt: (receipt) => status = receipt.execution_status,
+          pendingDeployTxnReceipt: (receipt) => status = 'PENDING',
+          pendingCommonReceiptProperties: (receipt) => status = 'PENDING',
+          invokeTxnReceipt: (receipt) => status = receipt.execution_status,
         );
       },
       error: (error) {
@@ -75,7 +70,7 @@ Future<bool> waitForState({
           count += 1;
           status = 'UNKNOWN';
           debugLog?.call(
-            "Waiting for status of $transactionHash ($count / $maxRetries)",
+            'Waiting for status of $transactionHash ($count / $maxRetries)',
           );
         } else {
           done = true;
@@ -107,7 +102,7 @@ Future<bool> waitForTransaction({
   required JsonRpcProvider provider,
   Duration interval = _defaultInterval,
   int maxRetries = _defaultMaxRetries,
-  Function(dynamic message)? debugLog,
+  void Function(dynamic message)? debugLog,
 }) async {
   return waitForState(
     transactionHash: transactionHash,
@@ -134,7 +129,7 @@ Future<bool> waitForAcceptance({
   required Provider provider,
   Duration interval = _defaultInterval,
   int maxRetries = _defaultMaxRetries,
-  Function(dynamic message)? debugLog,
+  void Function(dynamic message)? debugLog,
 }) async {
   return waitForState(
     transactionHash: transactionHash,

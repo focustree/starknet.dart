@@ -23,8 +23,12 @@ InvokeTransactionRequest _$InvokeTransactionRequestFromJson(
 mixin _$InvokeTransactionRequest {
   InvokeTransaction get invokeTransaction => throw _privateConstructorUsedError;
 
+  /// Serializes this InvokeTransactionRequest to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of InvokeTransactionRequest
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $InvokeTransactionRequestCopyWith<InvokeTransactionRequest> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -49,6 +53,8 @@ class _$InvokeTransactionRequestCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of InvokeTransactionRequest
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -85,6 +91,8 @@ class __$$InvokeTransactionRequestImplCopyWithImpl<$Res>
       $Res Function(_$InvokeTransactionRequestImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of InvokeTransactionRequest
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -124,11 +132,13 @@ class _$InvokeTransactionRequestImpl implements _InvokeTransactionRequest {
                 other.invokeTransaction == invokeTransaction));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, invokeTransaction);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of InvokeTransactionRequest
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$InvokeTransactionRequestImplCopyWith<_$InvokeTransactionRequestImpl>
@@ -153,8 +163,11 @@ abstract class _InvokeTransactionRequest implements InvokeTransactionRequest {
 
   @override
   InvokeTransaction get invokeTransaction;
+
+  /// Create a copy of InvokeTransactionRequest
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$InvokeTransactionRequestImplCopyWith<_$InvokeTransactionRequestImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -174,8 +187,12 @@ mixin _$InvokeTransactionV0 {
   Felt get entryPointSelector => throw _privateConstructorUsedError;
   List<Felt> get calldata => throw _privateConstructorUsedError;
 
+  /// Serializes this InvokeTransactionV0 to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of InvokeTransactionV0
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $InvokeTransactionV0CopyWith<InvokeTransactionV0> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -206,6 +223,8 @@ class _$InvokeTransactionV0CopyWithImpl<$Res, $Val extends InvokeTransactionV0>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of InvokeTransactionV0
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -276,6 +295,8 @@ class __$$InvokeTransactionV0ImplCopyWithImpl<$Res>
       $Res Function(_$InvokeTransactionV0Impl) _then)
       : super(_value, _then);
 
+  /// Create a copy of InvokeTransactionV0
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -388,7 +409,7 @@ class _$InvokeTransactionV0Impl implements _InvokeTransactionV0 {
             const DeepCollectionEquality().equals(other._calldata, _calldata));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -400,7 +421,9 @@ class _$InvokeTransactionV0Impl implements _InvokeTransactionV0 {
       entryPointSelector,
       const DeepCollectionEquality().hash(_calldata));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of InvokeTransactionV0
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$InvokeTransactionV0ImplCopyWith<_$InvokeTransactionV0Impl> get copyWith =>
@@ -443,8 +466,11 @@ abstract class _InvokeTransactionV0 implements InvokeTransactionV0 {
   Felt get entryPointSelector;
   @override
   List<Felt> get calldata;
+
+  /// Create a copy of InvokeTransactionV0
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$InvokeTransactionV0ImplCopyWith<_$InvokeTransactionV0Impl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -464,8 +490,12 @@ mixin _$InvokeTransactionV1 {
   String get version => throw _privateConstructorUsedError;
   String get type => throw _privateConstructorUsedError;
 
+  /// Serializes this InvokeTransactionV1 to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of InvokeTransactionV1
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $InvokeTransactionV1CopyWith<InvokeTransactionV1> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -496,6 +526,8 @@ class _$InvokeTransactionV1CopyWithImpl<$Res, $Val extends InvokeTransactionV1>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of InvokeTransactionV1
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -566,6 +598,8 @@ class __$$InvokeTransactionV1ImplCopyWithImpl<$Res>
       $Res Function(_$InvokeTransactionV1Impl) _then)
       : super(_value, _then);
 
+  /// Create a copy of InvokeTransactionV1
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -678,7 +712,7 @@ class _$InvokeTransactionV1Impl implements _InvokeTransactionV1 {
             (identical(other.type, type) || other.type == type));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -690,7 +724,9 @@ class _$InvokeTransactionV1Impl implements _InvokeTransactionV1 {
       version,
       type);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of InvokeTransactionV1
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$InvokeTransactionV1ImplCopyWith<_$InvokeTransactionV1Impl> get copyWith =>
@@ -733,8 +769,11 @@ abstract class _InvokeTransactionV1 implements InvokeTransactionV1 {
   String get version;
   @override
   String get type;
+
+  /// Create a copy of InvokeTransactionV1
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$InvokeTransactionV1ImplCopyWith<_$InvokeTransactionV1Impl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -796,6 +835,8 @@ mixin _$InvokeTransactionResponse {
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
+
+  /// Serializes this InvokeTransactionResponse to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
 }
 
@@ -816,6 +857,9 @@ class _$InvokeTransactionResponseCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of InvokeTransactionResponse
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -840,6 +884,8 @@ class __$$InvokeTransactionResultImplCopyWithImpl<$Res>
       $Res Function(_$InvokeTransactionResultImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of InvokeTransactionResponse
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -853,6 +899,8 @@ class __$$InvokeTransactionResultImplCopyWithImpl<$Res>
     ));
   }
 
+  /// Create a copy of InvokeTransactionResponse
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $InvokeTransactionResponseResultCopyWith<$Res> get result {
@@ -892,11 +940,13 @@ class _$InvokeTransactionResultImpl implements InvokeTransactionResult {
             (identical(other.result, result) || other.result == result));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, result);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of InvokeTransactionResponse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$InvokeTransactionResultImplCopyWith<_$InvokeTransactionResultImpl>
@@ -982,7 +1032,10 @@ abstract class InvokeTransactionResult implements InvokeTransactionResponse {
       _$InvokeTransactionResultImpl.fromJson;
 
   InvokeTransactionResponseResult get result;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of InvokeTransactionResponse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$InvokeTransactionResultImplCopyWith<_$InvokeTransactionResultImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -1009,6 +1062,8 @@ class __$$InvokeTransactionErrorImplCopyWithImpl<$Res>
       $Res Function(_$InvokeTransactionErrorImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of InvokeTransactionResponse
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1022,6 +1077,8 @@ class __$$InvokeTransactionErrorImplCopyWithImpl<$Res>
     ));
   }
 
+  /// Create a copy of InvokeTransactionResponse
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $JsonRpcApiErrorCopyWith<$Res> get error {
@@ -1059,11 +1116,13 @@ class _$InvokeTransactionErrorImpl implements InvokeTransactionError {
             (identical(other.error, error) || other.error == error));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, error);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of InvokeTransactionResponse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$InvokeTransactionErrorImplCopyWith<_$InvokeTransactionErrorImpl>
@@ -1148,7 +1207,10 @@ abstract class InvokeTransactionError implements InvokeTransactionResponse {
       _$InvokeTransactionErrorImpl.fromJson;
 
   JsonRpcApiError get error;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of InvokeTransactionResponse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$InvokeTransactionErrorImplCopyWith<_$InvokeTransactionErrorImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -1162,8 +1224,12 @@ InvokeTransactionResponseResult _$InvokeTransactionResponseResultFromJson(
 mixin _$InvokeTransactionResponseResult {
   String get transaction_hash => throw _privateConstructorUsedError;
 
+  /// Serializes this InvokeTransactionResponseResult to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of InvokeTransactionResponseResult
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $InvokeTransactionResponseResultCopyWith<InvokeTransactionResponseResult>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -1190,6 +1256,8 @@ class _$InvokeTransactionResponseResultCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of InvokeTransactionResponseResult
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1226,6 +1294,8 @@ class __$$InvokeTransactionResponseResultImplCopyWithImpl<$Res>
       $Res Function(_$InvokeTransactionResponseResultImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of InvokeTransactionResponseResult
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1267,11 +1337,13 @@ class _$InvokeTransactionResponseResultImpl
                 other.transaction_hash == transaction_hash));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, transaction_hash);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of InvokeTransactionResponseResult
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$InvokeTransactionResponseResultImplCopyWith<
@@ -1298,8 +1370,11 @@ abstract class _InvokeTransactionResponseResult
 
   @override
   String get transaction_hash;
+
+  /// Create a copy of InvokeTransactionResponseResult
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$InvokeTransactionResponseResultImplCopyWith<
           _$InvokeTransactionResponseResultImpl>
       get copyWith => throw _privateConstructorUsedError;

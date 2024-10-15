@@ -70,6 +70,8 @@ mixin _$GetStateUpdate {
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
+
+  /// Serializes this GetStateUpdate to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
 }
 
@@ -89,6 +91,9 @@ class _$GetStateUpdateCopyWithImpl<$Res, $Val extends GetStateUpdate>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of GetStateUpdate
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -110,6 +115,8 @@ class __$$GetStateUpdateResultImplCopyWithImpl<$Res>
       $Res Function(_$GetStateUpdateResultImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of GetStateUpdate
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -123,6 +130,8 @@ class __$$GetStateUpdateResultImplCopyWithImpl<$Res>
     ));
   }
 
+  /// Create a copy of GetStateUpdate
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $StateUpdateCopyWith<$Res> get result {
@@ -160,11 +169,13 @@ class _$GetStateUpdateResultImpl implements GetStateUpdateResult {
             (identical(other.result, result) || other.result == result));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, result);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of GetStateUpdate
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GetStateUpdateResultImplCopyWith<_$GetStateUpdateResultImpl>
@@ -250,7 +261,10 @@ abstract class GetStateUpdateResult implements GetStateUpdate {
       _$GetStateUpdateResultImpl.fromJson;
 
   StateUpdate get result;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of GetStateUpdate
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GetStateUpdateResultImplCopyWith<_$GetStateUpdateResultImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -274,6 +288,8 @@ class __$$GetStateUpdateErrorImplCopyWithImpl<$Res>
       $Res Function(_$GetStateUpdateErrorImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of GetStateUpdate
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -287,6 +303,8 @@ class __$$GetStateUpdateErrorImplCopyWithImpl<$Res>
     ));
   }
 
+  /// Create a copy of GetStateUpdate
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $JsonRpcApiErrorCopyWith<$Res> get error {
@@ -324,11 +342,13 @@ class _$GetStateUpdateErrorImpl implements GetStateUpdateError {
             (identical(other.error, error) || other.error == error));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, error);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of GetStateUpdate
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GetStateUpdateErrorImplCopyWith<_$GetStateUpdateErrorImpl> get copyWith =>
@@ -413,7 +433,10 @@ abstract class GetStateUpdateError implements GetStateUpdate {
       _$GetStateUpdateErrorImpl.fromJson;
 
   JsonRpcApiError get error;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of GetStateUpdate
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GetStateUpdateErrorImplCopyWith<_$GetStateUpdateErrorImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

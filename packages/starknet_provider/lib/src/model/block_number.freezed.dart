@@ -70,6 +70,8 @@ mixin _$BlockNumber {
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
+
+  /// Serializes this BlockNumber to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
 }
 
@@ -89,6 +91,9 @@ class _$BlockNumberCopyWithImpl<$Res, $Val extends BlockNumber>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of BlockNumber
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -108,6 +113,8 @@ class __$$BlockNumberResultImplCopyWithImpl<$Res>
       $Res Function(_$BlockNumberResultImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of BlockNumber
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -150,11 +157,13 @@ class _$BlockNumberResultImpl implements BlockNumberResult {
             (identical(other.result, result) || other.result == result));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, result);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of BlockNumber
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$BlockNumberResultImplCopyWith<_$BlockNumberResultImpl> get copyWith =>
@@ -239,7 +248,10 @@ abstract class BlockNumberResult implements BlockNumber {
       _$BlockNumberResultImpl.fromJson;
 
   int get result;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of BlockNumber
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$BlockNumberResultImplCopyWith<_$BlockNumberResultImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -263,6 +275,8 @@ class __$$BlockNumberErrorImplCopyWithImpl<$Res>
       $Res Function(_$BlockNumberErrorImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of BlockNumber
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -276,6 +290,8 @@ class __$$BlockNumberErrorImplCopyWithImpl<$Res>
     ));
   }
 
+  /// Create a copy of BlockNumber
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $JsonRpcApiErrorCopyWith<$Res> get error {
@@ -313,11 +329,13 @@ class _$BlockNumberErrorImpl implements BlockNumberError {
             (identical(other.error, error) || other.error == error));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, error);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of BlockNumber
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$BlockNumberErrorImplCopyWith<_$BlockNumberErrorImpl> get copyWith =>
@@ -402,7 +420,10 @@ abstract class BlockNumberError implements BlockNumber {
       _$BlockNumberErrorImpl.fromJson;
 
   JsonRpcApiError get error;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of BlockNumber
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$BlockNumberErrorImplCopyWith<_$BlockNumberErrorImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

@@ -1,19 +1,21 @@
 import 'dart:typed_data';
 import 'package:crypto/crypto.dart' as crypto;
-import 'package:starknet/starknet.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
+import '../../starknet.dart';
 
 const nbFieldPrimeBits = 251;
 final maxHash = BigInt.two.pow(nbFieldPrimeBits);
 
+@immutable
 class Signature {
   final BigInt r;
   final BigInt s;
 
-  Signature(this.r, this.s);
+  const Signature(this.r, this.s);
 
   @override
   String toString() {
-    return "Signature($r, $s)";
+    return 'Signature($r, $s)';
   }
 
   @override
@@ -29,24 +31,34 @@ class Signature {
 /// Signs a message hash using the given private key according to Starknet specs.
 ///
 /// Spec: https://github.com/starkware-libs/cairo-lang/blob/13cef109cd811474de114925ee61fd5ac84a25eb/src/starkware/crypto/starkware/crypto/signature/signature.py#L135-L171
-Signature starknet_sign(
-    {required BigInt privateKey, required BigInt messageHash, BigInt? seed}) {
-  assert(messageHash >= BigInt.zero && messageHash < maxHash,
-      "Message not signable.");
+Signature starknetSign({
+  required BigInt privateKey,
+  required BigInt messageHash,
+  BigInt? seed,
+}) {
+  assert(
+    messageHash >= BigInt.zero && messageHash < maxHash,
+    'Message not signable.',
+  );
+
+  var finalSeed = seed;
 
   while (true) {
-    final k = starknet_generateK(
-        privateKey: privateKey, messageHash: messageHash, seed: seed);
+    final k = starknetGenerateK(
+      privateKey: privateKey,
+      messageHash: messageHash,
+      seed: finalSeed,
+    );
 
-    if (seed == null) {
-      seed = BigInt.one;
+    if (finalSeed == null) {
+      finalSeed = BigInt.one;
     } else {
-      seed += BigInt.one;
+      finalSeed += BigInt.one;
     }
 
     final x = (generatorPoint * k)!.x;
 
-    final BigInt r = x?.toBigInteger() as BigInt;
+    final r = x!.toBigInteger()!;
     if (!(r >= BigInt.one && r < maxHash)) {
       continue;
     }
@@ -71,8 +83,11 @@ Signature starknet_sign(
 /// Generates a k value according to Starknet specs.
 ///
 /// Spec: https://github.com/starkware-libs/cairo-lang/blob/13cef109cd811474de114925ee61fd5ac84a25eb/src/starkware/crypto/starkware/crypto/signature/signature.py#L115-L132
-BigInt starknet_generateK(
-    {required BigInt privateKey, required BigInt messageHash, BigInt? seed}) {
+BigInt starknetGenerateK({
+  required BigInt privateKey,
+  required BigInt messageHash,
+  BigInt? seed,
+}) {
   // Pad the message hash, for consistency with the elliptic.js library.
   final bytesLength = messageHash.bitLength % 8;
   if (bytesLength >= 1 && bytesLength <= 4 && messageHash.bitLength >= 248) {
@@ -82,27 +97,29 @@ BigInt starknet_generateK(
   final extraEntropy = seed == null ? Uint8List(0) : bigIntToBytes(seed);
 
   return generateK(
-      order: pedersenParams.ecOrder,
-      privateKey: privateKey,
-      hashFunction: crypto.sha256,
-      data: bigIntToBytes(messageHash),
-      extraEntropy: extraEntropy);
+    order: pedersenParams.ecOrder,
+    privateKey: privateKey,
+    hashFunction: crypto.sha256,
+    data: bigIntToBytes(messageHash),
+    extraEntropy: extraEntropy,
+  );
 }
 
 /// Generates a k value, the nonce for DSA.
 ///
 /// Spec: https://tools.ietf.org/html/rfc6979#section-3.2
-BigInt generateK(
-    {required BigInt order,
-    required BigInt privateKey,
-    required crypto.Hash hashFunction,
-    required List<int> data,
-    int retryGen = 0,
-    List<int> extraEntropy = const []}) {
+BigInt generateK({
+  required BigInt order,
+  required BigInt privateKey,
+  required crypto.Hash hashFunction,
+  required List<int> data,
+  int retryGen = 0,
+  List<int> extraEntropy = const [],
+}) {
   final qlen = order.bitLength;
-  final holen = 32; // digest length is 256 bits for sha256
+  const holen = 32; // digest length is 256 bits for sha256
   final rolen = orderlen(order);
-  var bx = numberToString(privateKey, order) +
+  final bx = numberToString(privateKey, order) +
       bits2Octets(data, order) +
       extraEntropy;
 
@@ -135,12 +152,13 @@ BigInt generateK(
     }
 
     // Step H3
-    var secret = bits2Int(t, qlen);
+    final secret = bits2Int(t, qlen);
 
     if (secret >= BigInt.one && secret < order) {
       if (retryGen <= 0) {
         return secret;
       }
+      // ignore: parameter_assignments
       retryGen -= 1;
     }
 
@@ -151,7 +169,7 @@ BigInt generateK(
 
 // https://tools.ietf.org/html/rfc6979#section-2.3.4
 List<int> bits2Octets(List<int> data, BigInt order) {
-  var z1 = bits2Int(data, order.bitLength);
+  final z1 = bits2Int(data, order.bitLength);
   var z2 = z1 - order;
 
   if (z2 < BigInt.zero) {
@@ -162,8 +180,8 @@ List<int> bits2Octets(List<int> data, BigInt order) {
 }
 
 BigInt bits2Int(List<int> data, int qlen) {
-  var x = bytesToBigInt(data);
-  var l = data.length * 8;
+  final x = bytesToBigInt(data);
+  final l = data.length * 8;
 
   if (l > qlen) {
     return x >> (l - qlen);
@@ -172,15 +190,15 @@ BigInt bits2Int(List<int> data, int qlen) {
 }
 
 List<int> numberToString(BigInt v, BigInt order) {
-  var l = orderlen(order);
+  final l = orderlen(order);
 
-  var vBytes = bigIntToBytes(v);
-  vBytes =
-      Uint8List.fromList([...List.filled(l - vBytes.length, 0x00), ...vBytes]);
+  final vBytes = bigIntToBytes(v);
 
-  return vBytes;
+  return Uint8List.fromList(
+    [...List.filled(l - vBytes.length, 0x00), ...vBytes],
+  );
 }
 
-orderlen(BigInt order) {
+int orderlen(BigInt order) {
   return (order.bitLength + 7) ~/ 8;
 }

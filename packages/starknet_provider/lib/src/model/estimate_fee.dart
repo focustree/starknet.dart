@@ -1,4 +1,4 @@
-// ignore_for_file: invalid_annotation_target
+// ignore_for_file: invalid_annotation_target, non_constant_identifier_names
 
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:starknet/starknet.dart';
@@ -37,8 +37,9 @@ class SimulationFlag with _$SimulationFlag {
   factory SimulationFlag.fromJson(Map<String, dynamic> json) =>
       _$SimulationFlagFromJson(json);
 
+  @override
   Map<String, dynamic> toJson() => {
-        'type': this.when(
+        'type': when(
           skipValidate: () => "SKIP_VALIDATE",
           skipFeeCharge: () => "SKIP_FEE_CHARGE",
         ),

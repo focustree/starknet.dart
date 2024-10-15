@@ -24,8 +24,12 @@ mixin _$ContractStorageDiffItem {
   Felt get address => throw _privateConstructorUsedError;
   List<StorageItem> get storageEntries => throw _privateConstructorUsedError;
 
+  /// Serializes this ContractStorageDiffItem to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of ContractStorageDiffItem
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $ContractStorageDiffItemCopyWith<ContractStorageDiffItem> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -50,6 +54,8 @@ class _$ContractStorageDiffItemCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of ContractStorageDiffItem
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -91,6 +97,8 @@ class __$$ContractStorageDiffItemImplCopyWithImpl<$Res>
       $Res Function(_$ContractStorageDiffItemImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ContractStorageDiffItem
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -145,12 +153,14 @@ class _$ContractStorageDiffItemImpl implements _ContractStorageDiffItem {
                 .equals(other._storageEntries, _storageEntries));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, address,
       const DeepCollectionEquality().hash(_storageEntries));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ContractStorageDiffItem
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ContractStorageDiffItemImplCopyWith<_$ContractStorageDiffItemImpl>
@@ -178,8 +188,11 @@ abstract class _ContractStorageDiffItem implements ContractStorageDiffItem {
   Felt get address;
   @override
   List<StorageItem> get storageEntries;
+
+  /// Create a copy of ContractStorageDiffItem
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ContractStorageDiffItemImplCopyWith<_$ContractStorageDiffItemImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -193,8 +206,12 @@ mixin _$StorageItem {
   Felt get key => throw _privateConstructorUsedError;
   Felt get value => throw _privateConstructorUsedError;
 
+  /// Serializes this StorageItem to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of StorageItem
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $StorageItemCopyWith<StorageItem> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -218,6 +235,8 @@ class _$StorageItemCopyWithImpl<$Res, $Val extends StorageItem>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of StorageItem
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -256,6 +275,8 @@ class __$$StorageItemImplCopyWithImpl<$Res>
       _$StorageItemImpl _value, $Res Function(_$StorageItemImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of StorageItem
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -302,11 +323,13 @@ class _$StorageItemImpl implements _StorageItem {
             (identical(other.value, value) || other.value == value));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, key, value);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of StorageItem
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$StorageItemImplCopyWith<_$StorageItemImpl> get copyWith =>
@@ -331,8 +354,11 @@ abstract class _StorageItem implements StorageItem {
   Felt get key;
   @override
   Felt get value;
+
+  /// Create a copy of StorageItem
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$StorageItemImplCopyWith<_$StorageItemImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
