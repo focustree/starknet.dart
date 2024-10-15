@@ -1,6 +1,0 @@
-# melos_managed_dependency_overrides: starknet,starknet_provider
-dependency_overrides:
-  starknet:
-    path: ../starknet
-  starknet_provider:
-    path: ../starknet_provider
