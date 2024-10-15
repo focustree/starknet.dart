@@ -1,5 +1,6 @@
 import 'package:starknet/starknet.dart';
 import 'package:starknet_provider/starknet_provider.dart';
+import 'package:starknet/src/crypto/poseidon.dart';
 
 class Signer {
   Felt privateKey;
@@ -228,6 +229,69 @@ class Signer {
     final signature = starknet_sign(
       privateKey: privateKey.toBigInt(),
       messageHash: transactionHash,
+    );
+
+    return [Felt(signature.r), Felt(signature.s)];
+  }
+
+  List<Felt> signDeclareTransactionV3({
+    required CompiledContract compiledContract,
+    required Felt senderAddress,
+    required Felt chainId,
+    required Felt nonce,
+    Felt? classHash,
+    Felt? compiledClassHash,
+    CASMCompiledContract? casmCompiledContract,
+    required Map<String, ResourceBounds> resourceBounds,
+    required List<Felt> accountDeploymentData,
+    required List<Felt> paymasterData,
+    Felt? tip,
+    Felt? feeDataAvailabilityMode,
+    Felt? nonceDataAvailabilityMode,
+  }) {
+    classHash ??= Felt(compiledContract.classHash());
+    tip ??= Felt.zero;
+    feeDataAvailabilityMode ??= Felt.zero;
+    nonceDataAvailabilityMode ??= Felt.zero;
+    
+    if ((compiledClassHash == null) && (casmCompiledContract == null)) {
+      throw Exception(
+        "compiledClassHash is null and CASM contract not provided",
+      );
+    }
+    compiledClassHash ??= Felt(casmCompiledContract!.classHash());
+
+    Felt l1GasBounds = ((Felt.fromString("L1_GAS") << (128 + 64)) +
+        (resourceBounds['L1_GAS']!.maxAmount << 128) + 
+        resourceBounds['L1_GAS']!.maxPricePerUnit);
+
+    Felt l2GasBounds = ((Felt.fromString("L2_GAS") << (128 + 64)) +
+        (resourceBounds['L2_GAS']!.maxAmount << 128) +
+        resourceBounds['L2_GAS']!.maxPricePerUnit);
+
+    Felt dataAvailabilityMode = (nonceDataAvailabilityMode << 32) +
+        feeDataAvailabilityMode;
+
+    final List<BigInt> elementsToHash = [
+      TransactionHashPrefix.declare.toBigInt(),
+      BigInt.from(3), // version
+      senderAddress.toBigInt(),
+      poseidonHasher.hashMany([tip.toBigInt(), l1GasBounds.toBigInt(), l2GasBounds.toBigInt()]),
+      poseidonHasher.hashMany(paymasterData.map((e) => e.toBigInt()).toList()),
+      chainId.toBigInt(),
+      nonce.toBigInt(),
+      dataAvailabilityMode.toBigInt(),
+      poseidonHasher.hashMany(accountDeploymentData.map((e) => e.toBigInt()).toList()),
+      classHash.toBigInt(),
+      compiledClassHash.toBigInt(),
+    ];
+
+    final transactionHash = poseidonHasher.hashMany(elementsToHash);
+
+    final signature = starknet_sign(
+      privateKey: privateKey.toBigInt(),
+      messageHash: transactionHash,
+      seed: BigInt.from(32),
     );
 
     return [Felt(signature.r), Felt(signature.s)];
