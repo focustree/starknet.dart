@@ -1110,14 +1110,14 @@ class _$DeclareTransactionV3Impl implements _DeclareTransactionV3 {
       required this.chainId,
       required this.compiledClassHash,
       required this.contractClass,
-      this.feeDataAvailabilityMode = Felt.zero,
+      required this.feeDataAvailabilityMode,
       required this.nonce,
-      this.nonceDataAvailabilityMode = Felt.zero,
+      required this.nonceDataAvailabilityMode,
       required final List<Felt> paymasterData,
       required final Map<String, ResourceBounds> resourceBounds,
       required this.senderAddress,
       required final List<Felt> signature,
-      this.tip = Felt.zero})
+      required this.tip})
       : _accountDeploymentData = accountDeploymentData,
         _paymasterData = paymasterData,
         _resourceBounds = resourceBounds,
@@ -1148,12 +1148,10 @@ class _$DeclareTransactionV3Impl implements _DeclareTransactionV3 {
   @override
   final FlattenSierraContractClass contractClass;
   @override
-  @JsonKey()
   final Felt feeDataAvailabilityMode;
   @override
   final Felt nonce;
   @override
-  @JsonKey()
   final Felt nonceDataAvailabilityMode;
   final List<Felt> _paymasterData;
   @override
@@ -1182,7 +1180,6 @@ class _$DeclareTransactionV3Impl implements _DeclareTransactionV3 {
   }
 
   @override
-  @JsonKey()
   final Felt tip;
 
   @override
@@ -1267,14 +1264,14 @@ abstract class _DeclareTransactionV3 implements DeclareTransactionV3 {
       required final Felt chainId,
       required final Felt compiledClassHash,
       required final FlattenSierraContractClass contractClass,
-      final Felt feeDataAvailabilityMode,
+      required final Felt feeDataAvailabilityMode,
       required final Felt nonce,
-      final Felt nonceDataAvailabilityMode,
+      required final Felt nonceDataAvailabilityMode,
       required final List<Felt> paymasterData,
       required final Map<String, ResourceBounds> resourceBounds,
       required final Felt senderAddress,
       required final List<Felt> signature,
-      final Felt tip}) = _$DeclareTransactionV3Impl;
+      required final Felt tip}) = _$DeclareTransactionV3Impl;
 
   factory _DeclareTransactionV3.fromJson(Map<String, dynamic> json) =
       _$DeclareTransactionV3Impl.fromJson;

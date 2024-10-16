@@ -46,7 +46,7 @@ class Felt {
     }
     return result;
   }
-  
+
   Felt(this._bigInt) {
     if (_bigInt >= prime) {
       throw ArgumentError('Value must be smaller than 2^251 + 17 * 2^192 + 1');

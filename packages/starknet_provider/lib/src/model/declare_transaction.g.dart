@@ -87,13 +87,11 @@ _$DeclareTransactionV3Impl _$$DeclareTransactionV3ImplFromJson(
       compiledClassHash: Felt.fromJson(json['compiled_class_hash'] as String),
       contractClass: FlattenSierraContractClass.fromJson(
           json['contract_class'] as Map<String, dynamic>),
-      feeDataAvailabilityMode: json['fee_data_availability_mode'] == null
-          ? Felt.zero
-          : Felt.fromJson(json['fee_data_availability_mode'] as String),
+      feeDataAvailabilityMode:
+          Felt.fromJson(json['fee_data_availability_mode'] as String),
       nonce: Felt.fromJson(json['nonce'] as String),
-      nonceDataAvailabilityMode: json['nonce_data_availability_mode'] == null
-          ? Felt.zero
-          : Felt.fromJson(json['nonce_data_availability_mode'] as String),
+      nonceDataAvailabilityMode:
+          Felt.fromJson(json['nonce_data_availability_mode'] as String),
       paymasterData: (json['paymaster_data'] as List<dynamic>)
           .map((e) => Felt.fromJson(e as String))
           .toList(),
@@ -105,9 +103,7 @@ _$DeclareTransactionV3Impl _$$DeclareTransactionV3ImplFromJson(
       signature: (json['signature'] as List<dynamic>)
           .map((e) => Felt.fromJson(e as String))
           .toList(),
-      tip: json['tip'] == null
-          ? Felt.zero
-          : Felt.fromJson(json['tip'] as String),
+      tip: Felt.fromJson(json['tip'] as String),
     );
 
 Map<String, dynamic> _$$DeclareTransactionV3ImplToJson(

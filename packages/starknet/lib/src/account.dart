@@ -310,54 +310,131 @@ class Account {
     // needed for v2
     BigInt? compiledClassHash,
     CASMCompiledContract? casmCompiledContract,
+    bool? useSTRKFee = false,
+    Map<String, ResourceBounds>? resourceBounds,
   }) async {
     nonce = nonce ?? await getNonce();
     maxFee = maxFee ??
         await getEstimateMaxFeeForDeclareTx(
             nonce: nonce, compiledContract: compiledContract);
-    if (compiledContract is DeprecatedCompiledContract) {
-      final signature = signer.signDeclareTransactionV1(
-        compiledContract: compiledContract,
-        senderAddress: accountAddress,
-        chainId: chainId,
-        nonce: nonce,
-        maxFee: maxFee,
-      );
 
-      return provider.addDeclareTransaction(
-        DeclareTransactionRequest(
-          declareTransaction: DeclareTransactionV1(
-            max_fee: maxFee,
-            nonce: nonce,
-            contractClass: compiledContract.compress(),
-            senderAddress: accountAddress,
-            signature: signature,
-          ),
-        ),
-      );
-    } else {
-      final signature = signer.signDeclareTransactionV2(
+    if (useSTRKFee ?? false) {
+      //     List<Felt> signDeclareTransactionV3({
+      //   required CompiledContract compiledContract,
+      //   required Felt senderAddress,
+      //   required Felt chainId,
+      //   required Felt nonce,
+      //   Felt? classHash,
+      //   Felt? compiledClassHash,
+      //   CASMCompiledContract? casmCompiledContract,
+      //   required Map<String, ResourceBounds> resourceBounds,
+      //   required List<Felt> accountDeploymentData,
+      //   required List<Felt> paymasterData,
+      //   Felt? tip,
+      //   Felt? feeDataAvailabilityMode,
+      //   Felt? nonceDataAvailabilityMode,
+      // }) {
+      // These values are always empty or zero
+      List<Felt> accountDeploymentData = [];
+      List<Felt> paymasterData = [];
+      Felt tip = Felt.zero;
+      Felt feeDataAvailabilityMode = Felt.zero;
+      Felt nonceDataAvailabilityMode = Felt.zero;
+      resourceBounds = resourceBounds ?? {};
+
+      final signature = signer.signDeclareTransactionV3(
         compiledContract: compiledContract as CompiledContract,
         senderAddress: accountAddress,
         chainId: chainId,
         nonce: nonce,
-        compiledClassHash: compiledClassHash,
+        compiledClassHash: Felt(compiledClassHash!),
         casmCompiledContract: casmCompiledContract,
-        maxFee: maxFee,
+        resourceBounds: resourceBounds,
+        accountDeploymentData: accountDeploymentData,
+        paymasterData: paymasterData,
+        tip: tip,
+        feeDataAvailabilityMode: feeDataAvailabilityMode,
+        nonceDataAvailabilityMode: nonceDataAvailabilityMode,
       );
-
+      //     const factory DeclareTransactionV3({
+      //   @Default('DECLARE') String type,
+      //   @Default('0x3') String version,
+      //   required List<Felt> accountDeploymentData,
+      //   required Felt chainId,
+      //   required Felt compiledClassHash,
+      //   required FlattenSierraContractClass contractClass,
+      //   required Felt feeDataAvailabilityMode,
+      //   required Felt nonce,
+      //   required Felt nonceDataAvailabilityMode,
+      //   required List<Felt> paymasterData,
+      //   required Map<String, ResourceBounds> resourceBounds,
+      //   required Felt senderAddress,
+      //   required List<Felt> signature,
+      //   required Felt tip,
+      // }) = _DeclareTransactionV3;
       return provider.addDeclareTransaction(
         DeclareTransactionRequest(
-          declareTransaction: DeclareTransactionV2(
-            max_fee: maxFee,
-            nonce: nonce,
-            contractClass: compiledContract.flatten(),
+          declareTransaction: DeclareTransactionV3(
+            accountDeploymentData: accountDeploymentData,
+            chainId: chainId,
             compiledClassHash: Felt(compiledClassHash!),
+            contractClass: compiledContract.flatten(),
+            feeDataAvailabilityMode: feeDataAvailabilityMode,
+            nonce: nonce,
+            nonceDataAvailabilityMode: nonceDataAvailabilityMode,
+            paymasterData: paymasterData,
+            resourceBounds: resourceBounds,
             senderAddress: accountAddress,
             signature: signature,
+            tip: tip,
           ),
         ),
       );
+    } else {
+      if (compiledContract is DeprecatedCompiledContract) {
+        final signature = signer.signDeclareTransactionV1(
+          compiledContract: compiledContract,
+          senderAddress: accountAddress,
+          chainId: chainId,
+          nonce: nonce,
+          maxFee: maxFee,
+        );
+
+        return provider.addDeclareTransaction(
+          DeclareTransactionRequest(
+            declareTransaction: DeclareTransactionV1(
+              max_fee: maxFee,
+              nonce: nonce,
+              contractClass: compiledContract.compress(),
+              senderAddress: accountAddress,
+              signature: signature,
+            ),
+          ),
+        );
+      } else {
+        final signature = signer.signDeclareTransactionV2(
+          compiledContract: compiledContract as CompiledContract,
+          senderAddress: accountAddress,
+          chainId: chainId,
+          nonce: nonce,
+          compiledClassHash: compiledClassHash,
+          casmCompiledContract: casmCompiledContract,
+          maxFee: maxFee,
+        );
+
+        return provider.addDeclareTransaction(
+          DeclareTransactionRequest(
+            declareTransaction: DeclareTransactionV2(
+              max_fee: maxFee,
+              nonce: nonce,
+              contractClass: compiledContract.flatten(),
+              compiledClassHash: Felt(compiledClassHash!),
+              senderAddress: accountAddress,
+              signature: signature,
+            ),
+          ),
+        );
+      }
     }
   }
 

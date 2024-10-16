@@ -60,9 +60,9 @@ void main() {
           'succeeds to declare a simple sierra contract with provided CASM file',
           () async {
         final sierraContract = await CompiledContract.fromPath(
-            '${Directory.current.path}/../../contracts/cairo1/artifacts/erc20_sierra.txt');
+            '${Directory.current.path}/../../contracts/v1/artifacts/erc20_sierra.txt');
         final compiledContract = await CASMCompiledContract.fromPath(
-            '${Directory.current.path}/../../contracts/cairo1/artifacts/erc20_compiled.txt');
+            '${Directory.current.path}/../../contracts/v1/artifacts/erc20_compiled.txt');
         final BigInt compiledClassHash = compiledContract.classHash();
         Felt sierraClassHash = Felt(sierraContract.classHash());
 
@@ -103,7 +103,57 @@ void main() {
                 },
                 error: (error) => fail("Shouldn't fail"));
       });
-    }, tags: ['integration'], skip: true);
+
+      test(
+          'succeeds to declare a simple sierra contract with provided CASM file and STRK fee with resource bounds',
+          () async {
+        final sierraContract = await CompiledContract.fromPath(
+            '${Directory.current.path}/../../contracts/v1/artifacts/erc20_sierra.txt');
+        final compiledContract = await CASMCompiledContract.fromPath(
+            '${Directory.current.path}/../../contracts/v1/artifacts/erc20_compiled.txt');
+        final BigInt compiledClassHash = compiledContract.classHash();
+        Felt sierraClassHash = Felt(sierraContract.classHash());
+
+        var res = await account0.declare(
+          compiledContract: sierraContract,
+          compiledClassHash: compiledClassHash,
+          useSTRKFee: true,
+          resourceBounds: {
+            'L1_GAS': ResourceBounds(
+              maxAmount: Felt(BigInt.parse('1000000000000000000000')),
+              maxPricePerUnit: Felt(BigInt.parse('1000000000000000000000')),
+            ),
+          },
+        );
+        final txHash = res.when(
+          result: (result) {
+            expect(result.classHash, equals(sierraClassHash));
+            return result.transactionHash.toHexString();
+          },
+          error: (error) => fail(error.message),
+        );
+        final txStatus = await waitForAcceptance(
+          transactionHash: txHash,
+          provider: account0.provider,
+        );
+        expect(txStatus, equals(true));
+        // check if code is
+        (await account0.provider.getClass(
+                blockId: BlockId.blockTag('latest'),
+                classHash: sierraClassHash))
+            .when(
+                result: (res) {
+                  expect(res, isA<SierraContractClass>());
+                  final contract = res as SierraContractClass;
+                  expect(
+                    contract.sierraProgram,
+                    equals(sierraContract.contract.sierraProgram
+                        .map((e) => Felt(e))),
+                  );
+                },
+                error: (error) => fail("Shouldn't fail"));
+      });
+    }, tags: ['integration'], skip: false);
 
     group('deploy', () {
       test('succeeds to deploy a cairo 0 contract', () async {
