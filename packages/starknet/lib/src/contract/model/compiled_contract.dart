@@ -5,6 +5,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:starknet/src/crypto/poseidon.dart';
 import 'package:starknet/starknet.dart';
 import 'package:starknet_provider/starknet_provider.dart';
+import './compiled_class_hash.dart';
 
 part 'compiled_contract.freezed.dart';
 part 'compiled_contract.g.dart';
@@ -97,6 +98,7 @@ class CompiledContract implements ICompiledContract {
 
   @override
   BigInt classHash() {
+    print("class_name:001 con ABI");
     List<BigInt> elements = [];
     if (contract.contractClassVersion == "0.1.0") {
       elements.add(Felt.fromString(CONTRACT_CLASS_V0_1_0).toBigInt());
@@ -154,6 +156,7 @@ class CASMCompiledContract
     required List<BigInt> bytecode,
     required CASMEntryPointsByType entryPointsByType,
     required String compilerVersion,
+    required List<int> bytecodeSegmentLengths,
   }) = _CASMCompiledContract;
 
   factory CASMCompiledContract.fromJson(Map<String, Object?> json) =>
@@ -215,6 +218,8 @@ class CASMCompiledContract
 
   @override
   BigInt classHash() {
+    print("class_name:010");
+    print("compilerVersion $compilerVersion");
     List<BigInt> elements = [];
     if (compilerVersion == "1.1.0") {
       elements.add(Felt.fromString(COMPILED_CLASS_V1).toBigInt());
@@ -223,7 +228,14 @@ class CASMCompiledContract
     elements.add(hashes.externals);
     elements.add(hashes.l1handlers);
     elements.add(hashes.constructors);
-    elements.add(_byteCodeHash());
+    // `bytecode_segment_lengths` was added since Sierra 1.5.0 and changed hash calculation.
+    // This implementation here is basically a direct translation of the Python code from
+    // `cairo-lang` v0.13.1, starknet-py and starkli implementations.
+    if (bytecodeSegmentLengths.isEmpty) {
+      elements.add(_byteCodeHash());
+    } else {
+      elements.add(computeCompiledClassHashInner(bytecode, bytecodeSegmentLengths));
+    }
     return poseidonHasher.hashMany(elements);
   }
 }
@@ -350,6 +362,7 @@ class DeprecatedCompiledContract
   /// https://docs.starknet.io/documentation/architecture_and_concepts/Contracts/contract-hash/
   @override
   BigInt classHash() {
+    print("class_name:001 con builtin");
     List<BigInt> elements = [];
     elements.add(BigInt.from(0)); // FIXME: API VERSION
     final hashes = entrypointsHashes();

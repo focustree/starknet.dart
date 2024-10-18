@@ -495,7 +495,7 @@ DeclareTransactionV2 _$DeclareTransactionV2FromJson(Map<String, dynamic> json) {
 mixin _$DeclareTransactionV2 {
   String get type => throw _privateConstructorUsedError;
   String get version => throw _privateConstructorUsedError;
-  Felt get max_fee => throw _privateConstructorUsedError;
+  String get max_fee => throw _privateConstructorUsedError;
   Felt get nonce => throw _privateConstructorUsedError;
   List<Felt> get signature => throw _privateConstructorUsedError;
   Felt get senderAddress => throw _privateConstructorUsedError;
@@ -522,7 +522,7 @@ abstract class $DeclareTransactionV2CopyWith<$Res> {
   $Res call(
       {String type,
       String version,
-      Felt max_fee,
+      String max_fee,
       Felt nonce,
       List<Felt> signature,
       Felt senderAddress,
@@ -569,7 +569,7 @@ class _$DeclareTransactionV2CopyWithImpl<$Res,
       max_fee: null == max_fee
           ? _value.max_fee
           : max_fee // ignore: cast_nullable_to_non_nullable
-              as Felt,
+              as String,
       nonce: null == nonce
           ? _value.nonce
           : nonce // ignore: cast_nullable_to_non_nullable
@@ -616,7 +616,7 @@ abstract class _$$DeclareTransactionV2ImplCopyWith<$Res>
   $Res call(
       {String type,
       String version,
-      Felt max_fee,
+      String max_fee,
       Felt nonce,
       List<Felt> signature,
       Felt senderAddress,
@@ -661,7 +661,7 @@ class __$$DeclareTransactionV2ImplCopyWithImpl<$Res>
       max_fee: null == max_fee
           ? _value.max_fee
           : max_fee // ignore: cast_nullable_to_non_nullable
-              as Felt,
+              as String,
       nonce: null == nonce
           ? _value.nonce
           : nonce // ignore: cast_nullable_to_non_nullable
@@ -710,7 +710,7 @@ class _$DeclareTransactionV2Impl implements _DeclareTransactionV2 {
   @JsonKey()
   final String version;
   @override
-  final Felt max_fee;
+  final String max_fee;
   @override
   final Felt nonce;
   final List<Felt> _signature;
@@ -787,7 +787,7 @@ abstract class _DeclareTransactionV2 implements DeclareTransactionV2 {
   const factory _DeclareTransactionV2(
       {final String type,
       final String version,
-      required final Felt max_fee,
+      required final String max_fee,
       required final Felt nonce,
       required final List<Felt> signature,
       required final Felt senderAddress,
@@ -802,7 +802,7 @@ abstract class _DeclareTransactionV2 implements DeclareTransactionV2 {
   @override
   String get version;
   @override
-  Felt get max_fee;
+  String get max_fee;
   @override
   Felt get nonce;
   @override

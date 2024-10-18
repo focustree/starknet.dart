@@ -60,16 +60,22 @@ void main() {
           'succeeds to declare a simple sierra contract with provided CASM file',
           () async {
         final sierraContract = await CompiledContract.fromPath(
-            '${Directory.current.path}/../../contracts/v1/artifacts/erc20_sierra.txt');
+            '${Directory.current.path}/../../contracts/v2/contract_Counter.contract_class.json');
         final compiledContract = await CASMCompiledContract.fromPath(
-            '${Directory.current.path}/../../contracts/v1/artifacts/erc20_compiled.txt');
+            '${Directory.current.path}/../../contracts/v2/contract_Counter.compiled_contract_class.json');
         final BigInt compiledClassHash = compiledContract.classHash();
+        
         Felt sierraClassHash = Felt(sierraContract.classHash());
 
         var res = await account0.declare(
           compiledContract: sierraContract,
           compiledClassHash: compiledClassHash,
+          maxFee: defaultMaxFee,
         );
+        //print bigint compiledClassHash as hex string
+        String compiledClassHashHex = '0x${compiledClassHash.toRadixString(16).padLeft(64, '0')}';
+        print("compiledClassHash $compiledClassHashHex");
+        print("sierraClassHash ${sierraClassHash.toHexString()}");
         final txHash = res.when(
           result: (result) {
             expect(

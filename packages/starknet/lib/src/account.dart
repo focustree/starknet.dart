@@ -425,7 +425,7 @@ class Account {
         return provider.addDeclareTransaction(
           DeclareTransactionRequest(
             declareTransaction: DeclareTransactionV2(
-              max_fee: maxFee,
+              max_fee: maxFee.toHexString(), // As Hex String because devnet only supports 16 bytes and not a Felt
               nonce: nonce,
               contractClass: compiledContract.flatten(),
               compiledClassHash: Felt(compiledClassHash!),

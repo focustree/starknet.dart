@@ -530,6 +530,7 @@ mixin _$CASMCompiledContract {
   CASMEntryPointsByType get entryPointsByType =>
       throw _privateConstructorUsedError;
   String get compilerVersion => throw _privateConstructorUsedError;
+  List<int> get bytecodeSegmentLengths => throw _privateConstructorUsedError;
 
   /// Serializes this CASMCompiledContract to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -550,7 +551,8 @@ abstract class $CASMCompiledContractCopyWith<$Res> {
   $Res call(
       {List<BigInt> bytecode,
       CASMEntryPointsByType entryPointsByType,
-      String compilerVersion});
+      String compilerVersion,
+      List<int> bytecodeSegmentLengths});
 
   $CASMEntryPointsByTypeCopyWith<$Res> get entryPointsByType;
 }
@@ -574,6 +576,7 @@ class _$CASMCompiledContractCopyWithImpl<$Res,
     Object? bytecode = null,
     Object? entryPointsByType = null,
     Object? compilerVersion = null,
+    Object? bytecodeSegmentLengths = null,
   }) {
     return _then(_value.copyWith(
       bytecode: null == bytecode
@@ -588,6 +591,10 @@ class _$CASMCompiledContractCopyWithImpl<$Res,
           ? _value.compilerVersion
           : compilerVersion // ignore: cast_nullable_to_non_nullable
               as String,
+      bytecodeSegmentLengths: null == bytecodeSegmentLengths
+          ? _value.bytecodeSegmentLengths
+          : bytecodeSegmentLengths // ignore: cast_nullable_to_non_nullable
+              as List<int>,
     ) as $Val);
   }
 
@@ -614,7 +621,8 @@ abstract class _$$CASMCompiledContractImplCopyWith<$Res>
   $Res call(
       {List<BigInt> bytecode,
       CASMEntryPointsByType entryPointsByType,
-      String compilerVersion});
+      String compilerVersion,
+      List<int> bytecodeSegmentLengths});
 
   @override
   $CASMEntryPointsByTypeCopyWith<$Res> get entryPointsByType;
@@ -636,6 +644,7 @@ class __$$CASMCompiledContractImplCopyWithImpl<$Res>
     Object? bytecode = null,
     Object? entryPointsByType = null,
     Object? compilerVersion = null,
+    Object? bytecodeSegmentLengths = null,
   }) {
     return _then(_$CASMCompiledContractImpl(
       bytecode: null == bytecode
@@ -650,6 +659,10 @@ class __$$CASMCompiledContractImplCopyWithImpl<$Res>
           ? _value.compilerVersion
           : compilerVersion // ignore: cast_nullable_to_non_nullable
               as String,
+      bytecodeSegmentLengths: null == bytecodeSegmentLengths
+          ? _value._bytecodeSegmentLengths
+          : bytecodeSegmentLengths // ignore: cast_nullable_to_non_nullable
+              as List<int>,
     ));
   }
 }
@@ -660,8 +673,10 @@ class _$CASMCompiledContractImpl extends _CASMCompiledContract {
   _$CASMCompiledContractImpl(
       {required final List<BigInt> bytecode,
       required this.entryPointsByType,
-      required this.compilerVersion})
+      required this.compilerVersion,
+      required final List<int> bytecodeSegmentLengths})
       : _bytecode = bytecode,
+        _bytecodeSegmentLengths = bytecodeSegmentLengths,
         super._();
 
   factory _$CASMCompiledContractImpl.fromJson(Map<String, dynamic> json) =>
@@ -679,10 +694,18 @@ class _$CASMCompiledContractImpl extends _CASMCompiledContract {
   final CASMEntryPointsByType entryPointsByType;
   @override
   final String compilerVersion;
+  final List<int> _bytecodeSegmentLengths;
+  @override
+  List<int> get bytecodeSegmentLengths {
+    if (_bytecodeSegmentLengths is EqualUnmodifiableListView)
+      return _bytecodeSegmentLengths;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_bytecodeSegmentLengths);
+  }
 
   @override
   String toString() {
-    return 'CASMCompiledContract(bytecode: $bytecode, entryPointsByType: $entryPointsByType, compilerVersion: $compilerVersion)';
+    return 'CASMCompiledContract(bytecode: $bytecode, entryPointsByType: $entryPointsByType, compilerVersion: $compilerVersion, bytecodeSegmentLengths: $bytecodeSegmentLengths)';
   }
 
   @override
@@ -694,7 +717,9 @@ class _$CASMCompiledContractImpl extends _CASMCompiledContract {
             (identical(other.entryPointsByType, entryPointsByType) ||
                 other.entryPointsByType == entryPointsByType) &&
             (identical(other.compilerVersion, compilerVersion) ||
-                other.compilerVersion == compilerVersion));
+                other.compilerVersion == compilerVersion) &&
+            const DeepCollectionEquality().equals(
+                other._bytecodeSegmentLengths, _bytecodeSegmentLengths));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
@@ -703,7 +728,8 @@ class _$CASMCompiledContractImpl extends _CASMCompiledContract {
       runtimeType,
       const DeepCollectionEquality().hash(_bytecode),
       entryPointsByType,
-      compilerVersion);
+      compilerVersion,
+      const DeepCollectionEquality().hash(_bytecodeSegmentLengths));
 
   /// Create a copy of CASMCompiledContract
   /// with the given fields replaced by the non-null parameter values.
@@ -725,9 +751,11 @@ class _$CASMCompiledContractImpl extends _CASMCompiledContract {
 
 abstract class _CASMCompiledContract extends CASMCompiledContract {
   factory _CASMCompiledContract(
-      {required final List<BigInt> bytecode,
-      required final CASMEntryPointsByType entryPointsByType,
-      required final String compilerVersion}) = _$CASMCompiledContractImpl;
+          {required final List<BigInt> bytecode,
+          required final CASMEntryPointsByType entryPointsByType,
+          required final String compilerVersion,
+          required final List<int> bytecodeSegmentLengths}) =
+      _$CASMCompiledContractImpl;
   _CASMCompiledContract._() : super._();
 
   factory _CASMCompiledContract.fromJson(Map<String, dynamic> json) =
@@ -739,6 +767,8 @@ abstract class _CASMCompiledContract extends CASMCompiledContract {
   CASMEntryPointsByType get entryPointsByType;
   @override
   String get compilerVersion;
+  @override
+  List<int> get bytecodeSegmentLengths;
 
   /// Create a copy of CASMCompiledContract
   /// with the given fields replaced by the non-null parameter values.
