@@ -1,0 +1,492 @@
+# How to build a Starknet Counter example for Starknet
+
+## Index
+
+- [I. Prerequisites](#i-prerequisites)
+- [II. Run devnet local network](#ii-run-devnet-local-network)
+- [III. Deploy a Counter Contract](#iii-deploy-a-counter-contract-in-starknet)
+- [IV. Create a Starknet Counter Flutter project](#iv-create-a-starknet-counter-flutter-project)
+
+In this tutorial, we will build a Starknet Counter example to learn how to interact with Starknet Blockchain using Starknet Dart package.
+
+## I. Prerequisites.
+
+- Install scarb 2.8.4
+```sh
+asdf install scarb 2.8.4
+asdf global scarb 2.8.4
+```
+- Install starknet-devnet 0.2.0
+```sh
+asdf install starknet-devnet 0.2.0
+asdf global starknet-devnet 0.2.0
+```
+- Install starkli 0.3.5
+```sh
+asdf install starkli 0.3.5
+asdf global starkli 0.3.5
+```
+
+## II. Run devnet local network.
+1) Open a terminal and run the following command to start the local devnet.
+```sh
+$ starknet-devnet --seed 0 --port 5050
+```
+
+2) You should see the following output:
+```sh
+Predeployed FeeToken
+ETH Address: 0x49D36570D4E46F48E99674BD3FCC84644DDD6B96F7C741B1562B82F9E004DC7
+STRK Address: 0x04718f5a0fc34cc1af16a1cdee98ffb20c31f5cd61d6ab07201858f4287c938d
+Class Hash: 0x046ded64ae2dead6448e247234bab192a9c483644395b66f2155f2614e5804b0
+
+Predeployed UDC
+Address: 0x41A78E741E5AF2FEC34B695679BC6891742439F7AFB8484ECD7766661AD02BF
+Class Hash: 0x7B3E05F48F0C69E4A65CE5E076A66271A527AFF2C34CE1083EC6E1526997A69
+
+Chain ID: SN_SEPOLIA (0x534e5f5345504f4c4941)
+
+| Account address |  0x64b48806902a367c8598f4f95c305e8c1a1acba5f082d294a43793113115691
+| Private key     |  0x71d7bb07b9a64f6f78ac4c816aff4da9
+| Public key      |  0x39d9e6ce352ad4530a0ef5d5a18fd3303c3606a7fa6ac5b620020ad681cc33b
+
+| Account address |  0x78662e7352d062084b0010068b99288486c2d8b914f6e2a55ce945f8792c8b1
+| Private key     |  0xe1406455b7d66b1690803be066cbe5e
+| Public key      |  0x7a1bb2744a7dd29bffd44341dbd78008adb4bc11733601e7eddff322ada9cb
+...
+```
+
+## III. Deploy a Counter Contract in Starknet.
+
+1. Open a new terminal session and create a new starknet project.
+```sh
+mkdir contract
+cd contract
+~/contract$ scarb init
+Created package.
+```
+2. Create a new Cairo contract. Modify `src/lib.cairo` with the following content:
+```sh
+mod counter;
+```
+3. Create `src/counter.cairo` with the following content:
+```cairo
+#[starknet::interface]
+trait ICounter<TState> {
+    fn increment(ref self: TState);
+    fn decrement(ref self: TState);
+    fn increase_count_by(ref self: TState, number: u64);
+    fn get_current_count(self: @TState) -> u64;
+}
+
+#[starknet::contract]
+mod Counter {
+    #[storage]
+    struct Storage {
+        _count: u64,
+    }
+
+    #[constructor]
+    fn constructor(ref self: ContractState) { 
+        self._count.write(1);
+    }
+
+    #[abi(embed_v0)]
+    impl CounterImpl of super::ICounter<ContractState> {
+        
+        fn increment(ref self: ContractState,) {
+            let current_count = self._count.read();
+            self._count.write(current_count + 1);
+        }
+        fn decrement(ref self: ContractState,) {
+            let current_count = self._count.read();
+            self._count.write(current_count -1);
+        }
+        fn increase_count_by(ref self: ContractState, number: u64) {
+            let current_count = self._count.read();
+            self._count.write(current_count + number);
+        }
+
+        fn get_current_count(self: @ContractState) -> u64 {
+            self._count.read()
+        }
+    }
+}
+```
+4. Modify `Scarb.toml` with the following content:
+
+```toml
+[package]
+name = "contract"
+version = "0.1.0"
+
+# See more keys and their definitions at https://docs.swmansion.com/scarb/docs/reference/manifest.html
+
+[dependencies]
+starknet = ">=2.2.0"
+
+[[target.starknet-contract]]
+```
+5. Compile the Cairo contract:
+```sh
+$ scarb build
+```
+
+6. You should see the following output:
+```sh
+   Compiling contract v0.1.0 (/.../contract/Scarb.toml)
+    Finished `dev` profile target(s) in 16 seconds
+```
+
+7. Create `devnet-acct.json` with the following content:
+
+```json
+{
+  "version": 1,
+  "variant": {
+    "type": "open_zeppelin",
+    "version": 1,
+    "public_key": "0x39d9e6ce352ad4530a0ef5d5a18fd3303c3606a7fa6ac5b620020ad681c
+c33b",
+    "legacy": false
+  },
+  "deployment": {
+    "status": "deployed",
+    "class_hash": "0x61dac032f228abef9c6626f995015233097ae253a7f72d68552db02f297
+1b8f",
+    "address": "0x64b48806902a367c8598f4f95c305e8c1a1acba5f082d294a4379311311569
+1"
+  }
+}
+```
+8. Export the private key to the environment variable.
+```sh
+~/contract$ export STARKNET_PRIVATE_KEY="0x71d7bb07b9a64f6f78ac4c816aff4da9"
+```
+9. Declare the contract.
+```sh
+~/contract$ starkli declare --watch --rpc http://localhost:5050 --account devnet-acct.json  target/dev/contract_Counter.contract_class.json 
+```
+
+10. You should see the following output:
+```sh
+WARNING: using private key in plain text is highly insecure, and you should...
+...
+Transaction 0x060516c3d8c89327d5fd993e7deee37c2d0ce694111073a4f96d5c2f7d331f81 confirmed
+Class hash declared:
+0x037075473c665d582edbb379dfc87167076c6c714416190dcc3db27dc54eb84b
+```
+
+8. Deploy the contract.
+```sh
+~/contract$ starkli deploy --watch --rpc http://localhost:5050 --account devnet-acct.json 0x037075473c665d582edbb379dfc87167076c6c714416190dcc3db27dc54eb84b
+```
+
+9. You should see the following output:
+```sh
+WARNING: using private key in plain text is highly insecure, and you should...
+...
+Contract deployed:
+0x05e97cdfed436cc074def1b7f357cba6c76f61e85a3431a19cc29a3327676372
+```
+10. Remember this contract address, you will need it to interact with the contract.
+
+## IV. Create a Starknet Counter Flutter project
+
+1. Open a new terminal session and create a new flutter project.
+```sh
+$ flutter create starknet_counter
+$ cd starknet_counter
+```
+
+2. Replace `pubspec.yaml` to add starknet_dart dependency with the following content:
+```yaml
+name: starknet_counter
+description: A new Flutter project.
+# The following line prevents the package from being accidentally published to
+# pub.dev using `flutter pub publish`. This is preferred for private packages.
+publish_to: "none" # Remove this line if you wish to publish to pub.dev
+
+version: 1.0.0+1
+
+environment:
+  sdk: ">=3.0.0 <4.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  cupertino_icons: ^1.0.2
+  starknet:
+  starknet_flutter:
+  flutter_lints: ^2.0.0
+  build_runner: ^2.4.6
+  starknet_provider:
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+flutter:
+  uses-material-design: true
+```
+
+3. Create `pubspec_overrides.yaml` to add starknet_dart dependency with the following content:
+```yaml
+dependency_overrides:
+  path: ^1.8.3
+  http: ^1.0.0
+  starknet:
+    git:
+      url: https://github.com/focustree/starknet.dart
+      path: packages/starknet
+  starknet_provider:
+    git:
+      url: https://github.com/focustree/starknet.dart
+      path: packages/starknet_provider
+```
+
+4. Create `lib/main.dart` with the following content:
+```dart
+import './ui/counter.dart';
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(const MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
+  // This widget is the root of your application.
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Flutter Startnet Counter',
+      theme: ThemeData(
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        useMaterial3: true,
+      ),
+      home: const CounterPage(title: 'Flutter Starknet'),
+    );
+  }
+}
+```
+
+5. Create `lib/services/counter_service.dart` with the following content. And replace contractAddress value with the contract address obtained from the previous deploy step:
+```dart
+import 'package:starknet/starknet.dart';
+import 'package:starknet_provider/starknet_provider.dart';
+
+final provider = JsonRpcProvider(
+    nodeUri: Uri.parse(
+        'http://localhost:5050'));
+final contractAddress =
+    '0x05e97cdfed436cc074def1b7f357cba6c76f61e85a3431a19cc29a3327676372';
+final secretAccountAddress =
+    "0x64b48806902a367c8598f4f95c305e8c1a1acba5f082d294a43793113115691";
+final secretAccountPrivateKey =
+    "0x71d7bb07b9a64f6f78ac4c816aff4da9";
+final signeraccount = getAccount(
+  accountAddress: Felt.fromHexString(secretAccountAddress),
+  privateKey: Felt.fromHexString(secretAccountPrivateKey),
+  nodeUri: Uri.parse(
+      'http://localhost:5050'),
+);
+
+Future<int> getCurrentCount() async {
+  final result = await provider.call(
+    request: FunctionCall(
+        contractAddress: Felt.fromHexString(contractAddress),
+        entryPointSelector: getSelectorByName("get_current_count"),
+        calldata: []),
+    blockId: BlockId.latest,
+  );
+  return result.when(
+    result: (result) => result[0].toInt(),
+    error: (error) => throw Exception("Failed to get counter value"),
+  );
+}
+
+Future<void> increaseCounter() async {
+  print('print increment');
+  final response = await signeraccount.execute(functionCalls: [
+    FunctionCall(
+      contractAddress: Felt.fromHexString(contractAddress),
+      entryPointSelector: getSelectorByName("increment"),
+      calldata: [],
+    ),
+  ]);
+
+  final txHash = response.when(
+    result: (result) => result.transaction_hash,
+    error: (err) => throw Exception("Failed to execute"),
+  );
+
+  print('printing increment TX : $txHash');
+  await waitForAcceptance(transactionHash: txHash, provider: provider);
+}
+
+Future<void> increaseCounterBy(String number) async {
+  print('print increment by ');
+  final response = await signeraccount.execute(functionCalls: [
+    FunctionCall(
+      contractAddress: Felt.fromHexString(contractAddress),
+      entryPointSelector: getSelectorByName("increase_count_by"),
+      calldata: [Felt.fromIntString(number)],
+    ),
+  ]);
+
+  final txHash = response.when(
+    result: (result) => result.transaction_hash,
+    error: (err) => throw Exception("Failed to execute"),
+  );
+
+  print('printing incrementby amount TX : $txHash');
+  await waitForAcceptance(transactionHash: txHash, provider: provider);
+}
+
+Future<void> decreaseCounter() async {
+  print('decrementing.....');
+  final response = await signeraccount.execute(functionCalls: [
+    FunctionCall(
+      contractAddress: Felt.fromHexString(contractAddress),
+      entryPointSelector: getSelectorByName("decrement"),
+      calldata: [],
+    ),
+  ]);
+
+  final txHash = response.when(
+    result: (result) => result.transaction_hash,
+    error: (err) => throw Exception("Failed to execute"),
+  );
+  print('printing decrement TX : $txHash');
+  await waitForAcceptance(transactionHash: txHash, provider: provider);
+}
+```
+
+6. Create `lib/ui/counter.dart` with the following content:
+```dart
+import '../services/counter_service.dart';
+import 'package:flutter/material.dart';
+
+class CounterPage extends StatefulWidget {
+  const CounterPage({super.key, required this.title});
+
+  final String title;
+
+  @override
+  State<CounterPage> createState() => _CounterPageState();
+}
+
+class _CounterPageState extends State<CounterPage> {
+  int counter = 0;
+  TextEditingController amount = TextEditingController();
+  _increaseCount() async {
+    await increaseCounter();
+    await _getCounter();
+    setState(() {});
+  }
+
+  _increaseCountBy() async {
+    await increaseCounterBy(amount.text.trim());
+    await _getCounter();
+    amount.clear();
+    setState(() {});
+  }
+
+  _decreaseCount() async {
+    await decreaseCounter();
+    await _getCounter();
+    setState(() {});
+  }
+
+  _getCounter() async {
+    int balcounter = await getCurrentCount();
+    setState(() {
+      counter = balcounter;
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
+        title: Text(widget.title),
+      ),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            const SizedBox(
+              height: 20,
+            ),
+            Text("Counter is  : $counter"),
+            const SizedBox(
+              height: 20,
+            ),
+            SizedBox(
+              width: 500,
+              child: TextField(
+                controller: amount,
+                decoration: const InputDecoration(
+                  border: OutlineInputBorder(),
+                  hintText: 'Enter your Amount',
+                ),
+              ),
+            ),
+            const SizedBox(
+              height: 20,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                ElevatedButton(
+                    onPressed: _increaseCount, child: const Text('increment')),
+                const SizedBox(
+                  width: 20,
+                ),
+                ElevatedButton(
+                    onPressed: _increaseCountBy,
+                    child: const Text('incrementBy')),
+                const SizedBox(
+                  width: 20,
+                ),
+                ElevatedButton(
+                    onPressed: (() => _getCounter()),
+                    child: const Text('get count')),
+                const SizedBox(
+                  width: 20,
+                ),
+                ElevatedButton(
+                    onPressed: _decreaseCount, child: const Text('decrement')),
+              ],
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+```
+
+7. Run it locally with `flutter run` to make sure it is properly configured.
+```sh
+~/starknet_counter$ flutter run
+```
+
+8. You should see the following output. Choose `1` for Linux:
+```sh
+Connected devices:
+Linux (desktop) • linux  • linux-x64      • Ubuntu 22.04.2 LTS 5.15.0-25-generic
+Chrome (web)    • chrome • web-javascript • Google Chrome 119.0.6045.159
+[1]: Linux (linux)
+[2]: Chrome (chrome)
+Please choose one (or "q" to quit): 1
+...
+```
+9. A window should appear with the counter app where you can try calls and invoke functions to starknet.
+
+![Counter App](../assets/counter.png)
+
+10. Congratulations! You have built your first Starknet Counter App.
