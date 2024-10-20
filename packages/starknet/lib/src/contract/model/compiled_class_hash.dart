@@ -82,9 +82,7 @@ BigInt computeCompiledClassHashInner(List<BigInt> bytecode, NestedIntList byteco
     visitedPcs: null,
   )).hash();
 
-  return (poseidonHasher.hashMany([
-    bytecodeHash,
-  ]));
+  return bytecodeHash;
 }
 
 BytecodeSegmentStructure createBytecodeSegmentStructure({

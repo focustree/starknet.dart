@@ -221,7 +221,9 @@ class CASMCompiledContract
     print("class_name:010");
     print("compilerVersion $compilerVersion");
     List<BigInt> elements = [];
-    if (compilerVersion == "1.1.0") {
+    //add COMPILED_CLASS_V1 element when compilerVersion >= 1.1.0
+    final version = compilerVersion.split(".").map((e) => int.parse(e)).toList();
+    if (version[0] > 1 || (version[0] == 1 && version[1] >= 1)) {
       elements.add(Felt.fromString(COMPILED_CLASS_V1).toBigInt());
     }
     final hashes = _entrypointsHashes();
