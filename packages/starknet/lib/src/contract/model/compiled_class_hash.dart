@@ -1,6 +1,7 @@
 // `bytecode_segment_lengths` was added since Sierra 1.5.0 and changed hash calculation.
-// This implementation here is basically a direct translation of the Python code from
+// This implementation here is basically based in
 // `cairo-lang` v0.13.1, starknet-py and starkli implementations.
+// https://github.com/starkware-libs/cairo/pull/4515
 import 'package:starknet/src/crypto/poseidon.dart';
 
 typedef NestedIntList = dynamic;

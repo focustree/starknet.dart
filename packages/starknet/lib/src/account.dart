@@ -319,27 +319,12 @@ class Account {
             nonce: nonce, compiledContract: compiledContract);
 
     if (useSTRKFee ?? false) {
-      //     List<Felt> signDeclareTransactionV3({
-      //   required CompiledContract compiledContract,
-      //   required Felt senderAddress,
-      //   required Felt chainId,
-      //   required Felt nonce,
-      //   Felt? classHash,
-      //   Felt? compiledClassHash,
-      //   CASMCompiledContract? casmCompiledContract,
-      //   required Map<String, ResourceBounds> resourceBounds,
-      //   required List<Felt> accountDeploymentData,
-      //   required List<Felt> paymasterData,
-      //   Felt? tip,
-      //   Felt? feeDataAvailabilityMode,
-      //   Felt? nonceDataAvailabilityMode,
-      // }) {
-      // These values are always empty or zero
+      // These values are for future use (until then they are empty or zero)
       List<Felt> accountDeploymentData = [];
       List<Felt> paymasterData = [];
-      Felt tip = Felt.zero;
-      Felt feeDataAvailabilityMode = Felt.zero;
-      Felt nonceDataAvailabilityMode = Felt.zero;
+      BigInt tip = BigInt.from(0);
+      String feeDataAvailabilityMode = 'L1';
+      String nonceDataAvailabilityMode = 'L1';
       resourceBounds = resourceBounds ?? {};
 
       final signature = signer.signDeclareTransactionV3(
@@ -352,31 +337,14 @@ class Account {
         resourceBounds: resourceBounds,
         accountDeploymentData: accountDeploymentData,
         paymasterData: paymasterData,
-        tip: tip,
+        tip: tip.toRadixString(16),
         feeDataAvailabilityMode: feeDataAvailabilityMode,
         nonceDataAvailabilityMode: nonceDataAvailabilityMode,
       );
-      //     const factory DeclareTransactionV3({
-      //   @Default('DECLARE') String type,
-      //   @Default('0x3') String version,
-      //   required List<Felt> accountDeploymentData,
-      //   required Felt chainId,
-      //   required Felt compiledClassHash,
-      //   required FlattenSierraContractClass contractClass,
-      //   required Felt feeDataAvailabilityMode,
-      //   required Felt nonce,
-      //   required Felt nonceDataAvailabilityMode,
-      //   required List<Felt> paymasterData,
-      //   required Map<String, ResourceBounds> resourceBounds,
-      //   required Felt senderAddress,
-      //   required List<Felt> signature,
-      //   required Felt tip,
-      // }) = _DeclareTransactionV3;
       return provider.addDeclareTransaction(
         DeclareTransactionRequest(
           declareTransaction: DeclareTransactionV3(
             accountDeploymentData: accountDeploymentData,
-            chainId: chainId,
             compiledClassHash: Felt(compiledClassHash!),
             contractClass: compiledContract.flatten(),
             feeDataAvailabilityMode: feeDataAvailabilityMode,
@@ -386,7 +354,7 @@ class Account {
             resourceBounds: resourceBounds,
             senderAddress: accountAddress,
             signature: signature,
-            tip: tip,
+            tip: '0x${tip.toRadixString(16)}',
           ),
         ),
       );

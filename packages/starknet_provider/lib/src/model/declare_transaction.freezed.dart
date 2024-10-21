@@ -495,7 +495,8 @@ DeclareTransactionV2 _$DeclareTransactionV2FromJson(Map<String, dynamic> json) {
 mixin _$DeclareTransactionV2 {
   String get type => throw _privateConstructorUsedError;
   String get version => throw _privateConstructorUsedError;
-  String get max_fee => throw _privateConstructorUsedError;
+  String get max_fee =>
+      throw _privateConstructorUsedError; // As String because devnet only supports 16 bytes and not a Felt
   Felt get nonce => throw _privateConstructorUsedError;
   List<Felt> get signature => throw _privateConstructorUsedError;
   Felt get senderAddress => throw _privateConstructorUsedError;
@@ -711,6 +712,7 @@ class _$DeclareTransactionV2Impl implements _DeclareTransactionV2 {
   final String version;
   @override
   final String max_fee;
+// As String because devnet only supports 16 bytes and not a Felt
   @override
   final Felt nonce;
   final List<Felt> _signature;
@@ -802,7 +804,8 @@ abstract class _DeclareTransactionV2 implements DeclareTransactionV2 {
   @override
   String get version;
   @override
-  String get max_fee;
+  String
+      get max_fee; // As String because devnet only supports 16 bytes and not a Felt
   @override
   Felt get nonce;
   @override
@@ -831,19 +834,18 @@ mixin _$DeclareTransactionV3 {
   String get type => throw _privateConstructorUsedError;
   String get version => throw _privateConstructorUsedError;
   List<Felt> get accountDeploymentData => throw _privateConstructorUsedError;
-  Felt get chainId => throw _privateConstructorUsedError;
   Felt get compiledClassHash => throw _privateConstructorUsedError;
   FlattenSierraContractClass get contractClass =>
       throw _privateConstructorUsedError;
-  Felt get feeDataAvailabilityMode => throw _privateConstructorUsedError;
+  String get feeDataAvailabilityMode => throw _privateConstructorUsedError;
   Felt get nonce => throw _privateConstructorUsedError;
-  Felt get nonceDataAvailabilityMode => throw _privateConstructorUsedError;
+  String get nonceDataAvailabilityMode => throw _privateConstructorUsedError;
   List<Felt> get paymasterData => throw _privateConstructorUsedError;
   Map<String, ResourceBounds> get resourceBounds =>
       throw _privateConstructorUsedError;
   Felt get senderAddress => throw _privateConstructorUsedError;
   List<Felt> get signature => throw _privateConstructorUsedError;
-  Felt get tip => throw _privateConstructorUsedError;
+  String get tip => throw _privateConstructorUsedError;
 
   /// Serializes this DeclareTransactionV3 to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -865,17 +867,16 @@ abstract class $DeclareTransactionV3CopyWith<$Res> {
       {String type,
       String version,
       List<Felt> accountDeploymentData,
-      Felt chainId,
       Felt compiledClassHash,
       FlattenSierraContractClass contractClass,
-      Felt feeDataAvailabilityMode,
+      String feeDataAvailabilityMode,
       Felt nonce,
-      Felt nonceDataAvailabilityMode,
+      String nonceDataAvailabilityMode,
       List<Felt> paymasterData,
       Map<String, ResourceBounds> resourceBounds,
       Felt senderAddress,
       List<Felt> signature,
-      Felt tip});
+      String tip});
 
   $FlattenSierraContractClassCopyWith<$Res> get contractClass;
 }
@@ -899,7 +900,6 @@ class _$DeclareTransactionV3CopyWithImpl<$Res,
     Object? type = null,
     Object? version = null,
     Object? accountDeploymentData = null,
-    Object? chainId = null,
     Object? compiledClassHash = null,
     Object? contractClass = null,
     Object? feeDataAvailabilityMode = null,
@@ -924,10 +924,6 @@ class _$DeclareTransactionV3CopyWithImpl<$Res,
           ? _value.accountDeploymentData
           : accountDeploymentData // ignore: cast_nullable_to_non_nullable
               as List<Felt>,
-      chainId: null == chainId
-          ? _value.chainId
-          : chainId // ignore: cast_nullable_to_non_nullable
-              as Felt,
       compiledClassHash: null == compiledClassHash
           ? _value.compiledClassHash
           : compiledClassHash // ignore: cast_nullable_to_non_nullable
@@ -939,7 +935,7 @@ class _$DeclareTransactionV3CopyWithImpl<$Res,
       feeDataAvailabilityMode: null == feeDataAvailabilityMode
           ? _value.feeDataAvailabilityMode
           : feeDataAvailabilityMode // ignore: cast_nullable_to_non_nullable
-              as Felt,
+              as String,
       nonce: null == nonce
           ? _value.nonce
           : nonce // ignore: cast_nullable_to_non_nullable
@@ -947,7 +943,7 @@ class _$DeclareTransactionV3CopyWithImpl<$Res,
       nonceDataAvailabilityMode: null == nonceDataAvailabilityMode
           ? _value.nonceDataAvailabilityMode
           : nonceDataAvailabilityMode // ignore: cast_nullable_to_non_nullable
-              as Felt,
+              as String,
       paymasterData: null == paymasterData
           ? _value.paymasterData
           : paymasterData // ignore: cast_nullable_to_non_nullable
@@ -967,7 +963,7 @@ class _$DeclareTransactionV3CopyWithImpl<$Res,
       tip: null == tip
           ? _value.tip
           : tip // ignore: cast_nullable_to_non_nullable
-              as Felt,
+              as String,
     ) as $Val);
   }
 
@@ -995,17 +991,16 @@ abstract class _$$DeclareTransactionV3ImplCopyWith<$Res>
       {String type,
       String version,
       List<Felt> accountDeploymentData,
-      Felt chainId,
       Felt compiledClassHash,
       FlattenSierraContractClass contractClass,
-      Felt feeDataAvailabilityMode,
+      String feeDataAvailabilityMode,
       Felt nonce,
-      Felt nonceDataAvailabilityMode,
+      String nonceDataAvailabilityMode,
       List<Felt> paymasterData,
       Map<String, ResourceBounds> resourceBounds,
       Felt senderAddress,
       List<Felt> signature,
-      Felt tip});
+      String tip});
 
   @override
   $FlattenSierraContractClassCopyWith<$Res> get contractClass;
@@ -1027,7 +1022,6 @@ class __$$DeclareTransactionV3ImplCopyWithImpl<$Res>
     Object? type = null,
     Object? version = null,
     Object? accountDeploymentData = null,
-    Object? chainId = null,
     Object? compiledClassHash = null,
     Object? contractClass = null,
     Object? feeDataAvailabilityMode = null,
@@ -1052,10 +1046,6 @@ class __$$DeclareTransactionV3ImplCopyWithImpl<$Res>
           ? _value._accountDeploymentData
           : accountDeploymentData // ignore: cast_nullable_to_non_nullable
               as List<Felt>,
-      chainId: null == chainId
-          ? _value.chainId
-          : chainId // ignore: cast_nullable_to_non_nullable
-              as Felt,
       compiledClassHash: null == compiledClassHash
           ? _value.compiledClassHash
           : compiledClassHash // ignore: cast_nullable_to_non_nullable
@@ -1067,7 +1057,7 @@ class __$$DeclareTransactionV3ImplCopyWithImpl<$Res>
       feeDataAvailabilityMode: null == feeDataAvailabilityMode
           ? _value.feeDataAvailabilityMode
           : feeDataAvailabilityMode // ignore: cast_nullable_to_non_nullable
-              as Felt,
+              as String,
       nonce: null == nonce
           ? _value.nonce
           : nonce // ignore: cast_nullable_to_non_nullable
@@ -1075,7 +1065,7 @@ class __$$DeclareTransactionV3ImplCopyWithImpl<$Res>
       nonceDataAvailabilityMode: null == nonceDataAvailabilityMode
           ? _value.nonceDataAvailabilityMode
           : nonceDataAvailabilityMode // ignore: cast_nullable_to_non_nullable
-              as Felt,
+              as String,
       paymasterData: null == paymasterData
           ? _value._paymasterData
           : paymasterData // ignore: cast_nullable_to_non_nullable
@@ -1095,7 +1085,7 @@ class __$$DeclareTransactionV3ImplCopyWithImpl<$Res>
       tip: null == tip
           ? _value.tip
           : tip // ignore: cast_nullable_to_non_nullable
-              as Felt,
+              as String,
     ));
   }
 }
@@ -1107,7 +1097,6 @@ class _$DeclareTransactionV3Impl implements _DeclareTransactionV3 {
       {this.type = 'DECLARE',
       this.version = '0x3',
       required final List<Felt> accountDeploymentData,
-      required this.chainId,
       required this.compiledClassHash,
       required this.contractClass,
       required this.feeDataAvailabilityMode,
@@ -1142,17 +1131,15 @@ class _$DeclareTransactionV3Impl implements _DeclareTransactionV3 {
   }
 
   @override
-  final Felt chainId;
-  @override
   final Felt compiledClassHash;
   @override
   final FlattenSierraContractClass contractClass;
   @override
-  final Felt feeDataAvailabilityMode;
+  final String feeDataAvailabilityMode;
   @override
   final Felt nonce;
   @override
-  final Felt nonceDataAvailabilityMode;
+  final String nonceDataAvailabilityMode;
   final List<Felt> _paymasterData;
   @override
   List<Felt> get paymasterData {
@@ -1180,11 +1167,11 @@ class _$DeclareTransactionV3Impl implements _DeclareTransactionV3 {
   }
 
   @override
-  final Felt tip;
+  final String tip;
 
   @override
   String toString() {
-    return 'DeclareTransactionV3(type: $type, version: $version, accountDeploymentData: $accountDeploymentData, chainId: $chainId, compiledClassHash: $compiledClassHash, contractClass: $contractClass, feeDataAvailabilityMode: $feeDataAvailabilityMode, nonce: $nonce, nonceDataAvailabilityMode: $nonceDataAvailabilityMode, paymasterData: $paymasterData, resourceBounds: $resourceBounds, senderAddress: $senderAddress, signature: $signature, tip: $tip)';
+    return 'DeclareTransactionV3(type: $type, version: $version, accountDeploymentData: $accountDeploymentData, compiledClassHash: $compiledClassHash, contractClass: $contractClass, feeDataAvailabilityMode: $feeDataAvailabilityMode, nonce: $nonce, nonceDataAvailabilityMode: $nonceDataAvailabilityMode, paymasterData: $paymasterData, resourceBounds: $resourceBounds, senderAddress: $senderAddress, signature: $signature, tip: $tip)';
   }
 
   @override
@@ -1196,7 +1183,6 @@ class _$DeclareTransactionV3Impl implements _DeclareTransactionV3 {
             (identical(other.version, version) || other.version == version) &&
             const DeepCollectionEquality()
                 .equals(other._accountDeploymentData, _accountDeploymentData) &&
-            (identical(other.chainId, chainId) || other.chainId == chainId) &&
             (identical(other.compiledClassHash, compiledClassHash) ||
                 other.compiledClassHash == compiledClassHash) &&
             (identical(other.contractClass, contractClass) ||
@@ -1226,7 +1212,6 @@ class _$DeclareTransactionV3Impl implements _DeclareTransactionV3 {
       type,
       version,
       const DeepCollectionEquality().hash(_accountDeploymentData),
-      chainId,
       compiledClassHash,
       contractClass,
       feeDataAvailabilityMode,
@@ -1261,17 +1246,16 @@ abstract class _DeclareTransactionV3 implements DeclareTransactionV3 {
       {final String type,
       final String version,
       required final List<Felt> accountDeploymentData,
-      required final Felt chainId,
       required final Felt compiledClassHash,
       required final FlattenSierraContractClass contractClass,
-      required final Felt feeDataAvailabilityMode,
+      required final String feeDataAvailabilityMode,
       required final Felt nonce,
-      required final Felt nonceDataAvailabilityMode,
+      required final String nonceDataAvailabilityMode,
       required final List<Felt> paymasterData,
       required final Map<String, ResourceBounds> resourceBounds,
       required final Felt senderAddress,
       required final List<Felt> signature,
-      required final Felt tip}) = _$DeclareTransactionV3Impl;
+      required final String tip}) = _$DeclareTransactionV3Impl;
 
   factory _DeclareTransactionV3.fromJson(Map<String, dynamic> json) =
       _$DeclareTransactionV3Impl.fromJson;
@@ -1283,17 +1267,15 @@ abstract class _DeclareTransactionV3 implements DeclareTransactionV3 {
   @override
   List<Felt> get accountDeploymentData;
   @override
-  Felt get chainId;
-  @override
   Felt get compiledClassHash;
   @override
   FlattenSierraContractClass get contractClass;
   @override
-  Felt get feeDataAvailabilityMode;
+  String get feeDataAvailabilityMode;
   @override
   Felt get nonce;
   @override
-  Felt get nonceDataAvailabilityMode;
+  String get nonceDataAvailabilityMode;
   @override
   List<Felt> get paymasterData;
   @override
@@ -1303,7 +1285,7 @@ abstract class _DeclareTransactionV3 implements DeclareTransactionV3 {
   @override
   List<Felt> get signature;
   @override
-  Felt get tip;
+  String get tip;
 
   /// Create a copy of DeclareTransactionV3
   /// with the given fields replaced by the non-null parameter values.
@@ -1319,8 +1301,8 @@ ResourceBounds _$ResourceBoundsFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$ResourceBounds {
-  Felt get maxAmount => throw _privateConstructorUsedError;
-  Felt get maxPricePerUnit => throw _privateConstructorUsedError;
+  String get maxAmount => throw _privateConstructorUsedError;
+  String get maxPricePerUnit => throw _privateConstructorUsedError;
 
   /// Serializes this ResourceBounds to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -1338,7 +1320,7 @@ abstract class $ResourceBoundsCopyWith<$Res> {
           ResourceBounds value, $Res Function(ResourceBounds) then) =
       _$ResourceBoundsCopyWithImpl<$Res, ResourceBounds>;
   @useResult
-  $Res call({Felt maxAmount, Felt maxPricePerUnit});
+  $Res call({String maxAmount, String maxPricePerUnit});
 }
 
 /// @nodoc
@@ -1363,11 +1345,11 @@ class _$ResourceBoundsCopyWithImpl<$Res, $Val extends ResourceBounds>
       maxAmount: null == maxAmount
           ? _value.maxAmount
           : maxAmount // ignore: cast_nullable_to_non_nullable
-              as Felt,
+              as String,
       maxPricePerUnit: null == maxPricePerUnit
           ? _value.maxPricePerUnit
           : maxPricePerUnit // ignore: cast_nullable_to_non_nullable
-              as Felt,
+              as String,
     ) as $Val);
   }
 }
@@ -1380,7 +1362,7 @@ abstract class _$$ResourceBoundsImplCopyWith<$Res>
       __$$ResourceBoundsImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({Felt maxAmount, Felt maxPricePerUnit});
+  $Res call({String maxAmount, String maxPricePerUnit});
 }
 
 /// @nodoc
@@ -1403,11 +1385,11 @@ class __$$ResourceBoundsImplCopyWithImpl<$Res>
       maxAmount: null == maxAmount
           ? _value.maxAmount
           : maxAmount // ignore: cast_nullable_to_non_nullable
-              as Felt,
+              as String,
       maxPricePerUnit: null == maxPricePerUnit
           ? _value.maxPricePerUnit
           : maxPricePerUnit // ignore: cast_nullable_to_non_nullable
-              as Felt,
+              as String,
     ));
   }
 }
@@ -1422,9 +1404,9 @@ class _$ResourceBoundsImpl implements _ResourceBounds {
       _$$ResourceBoundsImplFromJson(json);
 
   @override
-  final Felt maxAmount;
+  final String maxAmount;
   @override
-  final Felt maxPricePerUnit;
+  final String maxPricePerUnit;
 
   @override
   String toString() {
@@ -1465,16 +1447,16 @@ class _$ResourceBoundsImpl implements _ResourceBounds {
 
 abstract class _ResourceBounds implements ResourceBounds {
   const factory _ResourceBounds(
-      {required final Felt maxAmount,
-      required final Felt maxPricePerUnit}) = _$ResourceBoundsImpl;
+      {required final String maxAmount,
+      required final String maxPricePerUnit}) = _$ResourceBoundsImpl;
 
   factory _ResourceBounds.fromJson(Map<String, dynamic> json) =
       _$ResourceBoundsImpl.fromJson;
 
   @override
-  Felt get maxAmount;
+  String get maxAmount;
   @override
-  Felt get maxPricePerUnit;
+  String get maxPricePerUnit;
 
   /// Create a copy of ResourceBounds
   /// with the given fields replaced by the non-null parameter values.

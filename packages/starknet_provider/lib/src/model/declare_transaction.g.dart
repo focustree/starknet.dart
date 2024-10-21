@@ -83,15 +83,12 @@ _$DeclareTransactionV3Impl _$$DeclareTransactionV3ImplFromJson(
       accountDeploymentData: (json['account_deployment_data'] as List<dynamic>)
           .map((e) => Felt.fromJson(e as String))
           .toList(),
-      chainId: Felt.fromJson(json['chain_id'] as String),
       compiledClassHash: Felt.fromJson(json['compiled_class_hash'] as String),
       contractClass: FlattenSierraContractClass.fromJson(
           json['contract_class'] as Map<String, dynamic>),
-      feeDataAvailabilityMode:
-          Felt.fromJson(json['fee_data_availability_mode'] as String),
+      feeDataAvailabilityMode: json['fee_data_availability_mode'] as String,
       nonce: Felt.fromJson(json['nonce'] as String),
-      nonceDataAvailabilityMode:
-          Felt.fromJson(json['nonce_data_availability_mode'] as String),
+      nonceDataAvailabilityMode: json['nonce_data_availability_mode'] as String,
       paymasterData: (json['paymaster_data'] as List<dynamic>)
           .map((e) => Felt.fromJson(e as String))
           .toList(),
@@ -103,7 +100,7 @@ _$DeclareTransactionV3Impl _$$DeclareTransactionV3ImplFromJson(
       signature: (json['signature'] as List<dynamic>)
           .map((e) => Felt.fromJson(e as String))
           .toList(),
-      tip: Felt.fromJson(json['tip'] as String),
+      tip: json['tip'] as String,
     );
 
 Map<String, dynamic> _$$DeclareTransactionV3ImplToJson(
@@ -113,32 +110,30 @@ Map<String, dynamic> _$$DeclareTransactionV3ImplToJson(
       'version': instance.version,
       'account_deployment_data':
           instance.accountDeploymentData.map((e) => e.toJson()).toList(),
-      'chain_id': instance.chainId.toJson(),
       'compiled_class_hash': instance.compiledClassHash.toJson(),
       'contract_class': instance.contractClass.toJson(),
-      'fee_data_availability_mode': instance.feeDataAvailabilityMode.toJson(),
+      'fee_data_availability_mode': instance.feeDataAvailabilityMode,
       'nonce': instance.nonce.toJson(),
-      'nonce_data_availability_mode':
-          instance.nonceDataAvailabilityMode.toJson(),
+      'nonce_data_availability_mode': instance.nonceDataAvailabilityMode,
       'paymaster_data': instance.paymasterData.map((e) => e.toJson()).toList(),
       'resource_bounds':
           instance.resourceBounds.map((k, e) => MapEntry(k, e.toJson())),
       'sender_address': instance.senderAddress.toJson(),
       'signature': instance.signature.map((e) => e.toJson()).toList(),
-      'tip': instance.tip.toJson(),
+      'tip': instance.tip,
     };
 
 _$ResourceBoundsImpl _$$ResourceBoundsImplFromJson(Map<String, dynamic> json) =>
     _$ResourceBoundsImpl(
-      maxAmount: Felt.fromJson(json['max_amount'] as String),
-      maxPricePerUnit: Felt.fromJson(json['max_price_per_unit'] as String),
+      maxAmount: json['max_amount'] as String,
+      maxPricePerUnit: json['max_price_per_unit'] as String,
     );
 
 Map<String, dynamic> _$$ResourceBoundsImplToJson(
         _$ResourceBoundsImpl instance) =>
     <String, dynamic>{
-      'max_amount': instance.maxAmount.toJson(),
-      'max_price_per_unit': instance.maxPricePerUnit.toJson(),
+      'max_amount': instance.maxAmount,
+      'max_price_per_unit': instance.maxPricePerUnit,
     };
 
 _$DeclareTransactionResultImpl _$$DeclareTransactionResultImplFromJson(

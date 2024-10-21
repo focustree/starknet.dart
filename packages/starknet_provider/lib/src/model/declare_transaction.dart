@@ -77,17 +77,16 @@ class DeclareTransactionV3
     @Default('DECLARE') String type,
     @Default('0x3') String version,
     required List<Felt> accountDeploymentData,
-    required Felt chainId,
     required Felt compiledClassHash,
     required FlattenSierraContractClass contractClass,
-    required Felt feeDataAvailabilityMode,
+    required String feeDataAvailabilityMode,
     required Felt nonce,
-    required Felt nonceDataAvailabilityMode,
+    required String nonceDataAvailabilityMode,
     required List<Felt> paymasterData,
     required Map<String, ResourceBounds> resourceBounds,
     required Felt senderAddress,
     required List<Felt> signature,
-    required Felt tip,
+    required String tip,
   }) = _DeclareTransactionV3;
 
   factory DeclareTransactionV3.fromJson(Map<String, Object?> json) =>
@@ -97,8 +96,8 @@ class DeclareTransactionV3
 @freezed
 class ResourceBounds with _$ResourceBounds {
   const factory ResourceBounds({
-    required Felt maxAmount,
-    required Felt maxPricePerUnit,
+    required String maxAmount,
+    required String maxPricePerUnit,
   }) = _ResourceBounds;
 
   factory ResourceBounds.fromJson(Map<String, Object?> json) =>

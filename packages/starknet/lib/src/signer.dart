@@ -201,14 +201,14 @@ class Signer {
     required Map<String, ResourceBounds> resourceBounds,
     required List<Felt> accountDeploymentData,
     required List<Felt> paymasterData,
-    Felt? tip,
-    Felt? feeDataAvailabilityMode,
-    Felt? nonceDataAvailabilityMode,
+    String? tip,
+    String? feeDataAvailabilityMode,
+    String? nonceDataAvailabilityMode,
   }) {
     classHash ??= Felt(compiledContract.classHash());
-    tip ??= Felt.zero;
-    feeDataAvailabilityMode ??= Felt.zero;
-    nonceDataAvailabilityMode ??= Felt.zero;
+    tip ??= '00';
+    feeDataAvailabilityMode ??= 'L1';
+    nonceDataAvailabilityMode ??= 'L1';
 
     if ((compiledClassHash == null) && (casmCompiledContract == null)) {
       throw Exception(
@@ -216,24 +216,33 @@ class Signer {
       );
     }
     compiledClassHash ??= Felt(casmCompiledContract!.classHash());
+    
+    Felt l1GasMaxAmount = Felt(BigInt.parse(resourceBounds['l1_gas']!.maxAmount.replaceFirst('0x', ''), radix: 16));
+    Felt l1GasMaxPricePerUnit = Felt(BigInt.parse(resourceBounds['l1_gas']!.maxPricePerUnit.replaceFirst('0x', ''), radix: 16));
+    Felt l2GasMaxAmount = Felt(BigInt.parse(resourceBounds['l2_gas']!.maxAmount.replaceFirst('0x', ''), radix: 16));
+    Felt l2GasMaxPricePerUnit = Felt(BigInt.parse(resourceBounds['l2_gas']!.maxPricePerUnit.replaceFirst('0x', ''), radix: 16));
 
-    Felt l1GasBounds = ((Felt.fromString("L1_GAS") << (128 + 64)) +
-        (resourceBounds['L1_GAS']!.maxAmount << 128) +
-        resourceBounds['L1_GAS']!.maxPricePerUnit);
+    Felt l1GasBounds = (Felt.fromString("L1_GAS") << (128 + 64)) +
+        (l1GasMaxAmount << 128) +
+        l1GasMaxPricePerUnit;
 
-    Felt l2GasBounds = ((Felt.fromString("L2_GAS") << (128 + 64)) +
-        (resourceBounds['L2_GAS']!.maxAmount << 128) +
-        resourceBounds['L2_GAS']!.maxPricePerUnit);
+    Felt l2GasBounds = (Felt.fromString("L2_GAS") << (128 + 64)) +
+        (l2GasMaxAmount << 128) +
+        l2GasMaxPricePerUnit;
 
     Felt dataAvailabilityMode =
-        (nonceDataAvailabilityMode << 32) + feeDataAvailabilityMode;
+        (Felt.fromInt(nonceDataAvailabilityMode == 'L1' ? 0 : 1) << 32) +
+            Felt.fromInt(feeDataAvailabilityMode == 'L1' ? 0 : 1);
 
     final List<BigInt> elementsToHash = [
       TransactionHashPrefix.declare.toBigInt(),
       BigInt.from(3), // version
       senderAddress.toBigInt(),
-      poseidonHasher.hashMany(
-          [tip.toBigInt(), l1GasBounds.toBigInt(), l2GasBounds.toBigInt()]),
+      poseidonHasher.hashMany([
+        BigInt.parse(tip!, radix: 16),
+        l1GasBounds.toBigInt(),
+        l2GasBounds.toBigInt()
+      ]),
       poseidonHasher.hashMany(paymasterData.map((e) => e.toBigInt()).toList()),
       chainId.toBigInt(),
       nonce.toBigInt(),
@@ -243,8 +252,22 @@ class Signer {
       classHash.toBigInt(),
       compiledClassHash.toBigInt(),
     ];
+//     declare_v3_tx_hash = h(
+//     "declare",
+//     version,
+//     sender_address,
+//     h(tip, l1_gas_bounds, l2_gas_bounds),
+//     h(paymaster_data),
+//     chain_id,
+//     nonce,
+//     data_availability_modes,
+//     h(account_deployment_data),
+//     class_hash,
+//     compiled_class_hash
+// )
 
     final transactionHash = poseidonHasher.hashMany(elementsToHash);
+    print("transactionHash: ${Felt(transactionHash).toHexString()}");
 
     final signature = starknet_sign(
       privateKey: privateKey.toBigInt(),

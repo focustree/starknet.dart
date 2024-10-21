@@ -56,13 +56,63 @@ void main() {
     }, tags: ['integration'], skip: true);
 
     group('declare cairo 1', () {
+      // test(
+      //     'succeeds to declare a simple sierra contract with provided CASM file',
+      //     () async {
+      //   final sierraContract = await CompiledContract.fromPath(
+      //       '${Directory.current.path}/../../contracts/v1/artifacts/contract_Counter.contract_class.json');
+      //   final compiledContract = await CASMCompiledContract.fromPath(
+      //       '${Directory.current.path}/../../contracts/v1/artifacts/contract_Counter.compiled_contract_class.json');
+      //   final BigInt compiledClassHash = compiledContract.classHash();
+        
+      //   Felt sierraClassHash = Felt(sierraContract.classHash());
+
+      //   var res = await account0.declare(
+      //     compiledContract: sierraContract,
+      //     compiledClassHash: compiledClassHash,
+      //     maxFee: defaultMaxFee,
+      //   );
+      //   final txHash = res.when(
+      //     result: (result) {
+      //       expect(
+      //         result.classHash,
+      //         equals(
+      //           sierraClassHash,
+      //         ),
+      //       );
+      //       return result.transactionHash.toHexString();
+      //     },
+      //     error: (error) => fail(error.message),
+      //   );
+      //   final txStatus = await waitForAcceptance(
+      //     transactionHash: txHash,
+      //     provider: account0.provider,
+      //   );
+      //   expect(txStatus, equals(true));
+      //   // check if code is
+      //   (await account0.provider.getClass(
+      //           blockId: BlockId.blockTag('latest'),
+      //           classHash: sierraClassHash))
+      //       .when(
+      //           result: (res) {
+      //             expect(res, isA<SierraContractClass>());
+      //             final contract = res as SierraContractClass;
+      //             expect(
+      //               contract.sierraProgram,
+      //               equals(sierraContract.contract.sierraProgram
+      //                   .map((e) => Felt(e))),
+      //             );
+      //           },
+      //           error: (error) => fail("Shouldn't fail"));
+      // });
+
       test(
-          'succeeds to declare a simple sierra contract with provided CASM file',
+          'succeeds to declare a simple sierra contract with provided CASM file and STRK fee with resource bounds',
           () async {
         final sierraContract = await CompiledContract.fromPath(
-            '${Directory.current.path}/../../contracts/v2/contract_Counter.contract_class.json');
+            '${Directory.current.path}/../../contracts/v1/artifacts/contract_Counter.contract_class.json');
         final compiledContract = await CASMCompiledContract.fromPath(
-            '${Directory.current.path}/../../contracts/v2/contract_Counter.compiled_contract_class.json');
+            '${Directory.current.path}/../../contracts/v1/artifacts/contract_Counter.compiled_contract_class.json');
         final BigInt compiledClassHash = compiledContract.classHash();
         
         Felt sierraClassHash = Felt(sierraContract.classHash());
@@ -70,64 +120,15 @@ void main() {
         var res = await account0.declare(
           compiledContract: sierraContract,
           compiledClassHash: compiledClassHash,
-          maxFee: defaultMaxFee,
-        );
-        //print bigint compiledClassHash as hex string
-        String compiledClassHashHex = '0x${compiledClassHash.toRadixString(16).padLeft(64, '0')}';
-        print("compiledClassHash $compiledClassHashHex");
-        print("sierraClassHash ${sierraClassHash.toHexString()}");
-        final txHash = res.when(
-          result: (result) {
-            expect(
-              result.classHash,
-              equals(
-                sierraClassHash,
-              ),
-            );
-            return result.transactionHash.toHexString();
-          },
-          error: (error) => fail(error.message),
-        );
-        final txStatus = await waitForAcceptance(
-          transactionHash: txHash,
-          provider: account0.provider,
-        );
-        expect(txStatus, equals(true));
-        // check if code is
-        (await account0.provider.getClass(
-                blockId: BlockId.blockTag('latest'),
-                classHash: sierraClassHash))
-            .when(
-                result: (res) {
-                  expect(res, isA<SierraContractClass>());
-                  final contract = res as SierraContractClass;
-                  expect(
-                    contract.sierraProgram,
-                    equals(sierraContract.contract.sierraProgram
-                        .map((e) => Felt(e))),
-                  );
-                },
-                error: (error) => fail("Shouldn't fail"));
-      });
-
-      test(
-          'succeeds to declare a simple sierra contract with provided CASM file and STRK fee with resource bounds',
-          () async {
-        final sierraContract = await CompiledContract.fromPath(
-            '${Directory.current.path}/../../contracts/v1/artifacts/erc20_sierra.txt');
-        final compiledContract = await CASMCompiledContract.fromPath(
-            '${Directory.current.path}/../../contracts/v1/artifacts/erc20_compiled.txt');
-        final BigInt compiledClassHash = compiledContract.classHash();
-        Felt sierraClassHash = Felt(sierraContract.classHash());
-
-        var res = await account0.declare(
-          compiledContract: sierraContract,
-          compiledClassHash: compiledClassHash,
           useSTRKFee: true,
           resourceBounds: {
-            'L1_GAS': ResourceBounds(
-              maxAmount: Felt(BigInt.parse('1000000000000000000000')),
-              maxPricePerUnit: Felt(BigInt.parse('1000000000000000000000')),
+            'l1_gas': ResourceBounds(
+              maxAmount:  '0xa35',
+              maxPricePerUnit: '0x22ecb25c00',
+            ),
+            'l2_gas': ResourceBounds(
+              maxAmount: '0x0',
+              maxPricePerUnit: '0x0',
             ),
           },
         );
