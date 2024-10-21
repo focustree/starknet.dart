@@ -201,12 +201,12 @@ class Signer {
     required Map<String, ResourceBounds> resourceBounds,
     required List<Felt> accountDeploymentData,
     required List<Felt> paymasterData,
-    String? tip,
+    BigInt? tip,
     String? feeDataAvailabilityMode,
     String? nonceDataAvailabilityMode,
   }) {
     classHash ??= Felt(compiledContract.classHash());
-    tip ??= '00';
+    tip ??= BigInt.from(0);
     feeDataAvailabilityMode ??= 'L1';
     nonceDataAvailabilityMode ??= 'L1';
 
@@ -239,7 +239,7 @@ class Signer {
       BigInt.from(3), // version
       senderAddress.toBigInt(),
       poseidonHasher.hashMany([
-        BigInt.parse(tip!, radix: 16),
+        tip,
         l1GasBounds.toBigInt(),
         l2GasBounds.toBigInt()
       ]),

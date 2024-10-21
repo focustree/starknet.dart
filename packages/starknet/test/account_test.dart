@@ -56,58 +56,8 @@ void main() {
     }, tags: ['integration'], skip: true);
 
     group('declare cairo 1', () {
-      // test(
-      //     'succeeds to declare a simple sierra contract with provided CASM file',
-      //     () async {
-      //   final sierraContract = await CompiledContract.fromPath(
-      //       '${Directory.current.path}/../../contracts/v1/artifacts/contract_Counter.contract_class.json');
-      //   final compiledContract = await CASMCompiledContract.fromPath(
-      //       '${Directory.current.path}/../../contracts/v1/artifacts/contract_Counter.compiled_contract_class.json');
-      //   final BigInt compiledClassHash = compiledContract.classHash();
-        
-      //   Felt sierraClassHash = Felt(sierraContract.classHash());
-
-      //   var res = await account0.declare(
-      //     compiledContract: sierraContract,
-      //     compiledClassHash: compiledClassHash,
-      //     maxFee: defaultMaxFee,
-      //   );
-      //   final txHash = res.when(
-      //     result: (result) {
-      //       expect(
-      //         result.classHash,
-      //         equals(
-      //           sierraClassHash,
-      //         ),
-      //       );
-      //       return result.transactionHash.toHexString();
-      //     },
-      //     error: (error) => fail(error.message),
-      //   );
-      //   final txStatus = await waitForAcceptance(
-      //     transactionHash: txHash,
-      //     provider: account0.provider,
-      //   );
-      //   expect(txStatus, equals(true));
-      //   // check if code is
-      //   (await account0.provider.getClass(
-      //           blockId: BlockId.blockTag('latest'),
-      //           classHash: sierraClassHash))
-      //       .when(
-      //           result: (res) {
-      //             expect(res, isA<SierraContractClass>());
-      //             final contract = res as SierraContractClass;
-      //             expect(
-      //               contract.sierraProgram,
-      //               equals(sierraContract.contract.sierraProgram
-      //                   .map((e) => Felt(e))),
-      //             );
-      //           },
-      //           error: (error) => fail("Shouldn't fail"));
-      // });
-
       test(
-          'succeeds to declare a simple sierra contract with provided CASM file and STRK fee with resource bounds',
+          'succeeds to declare a simple sierra contract with provided CASM file',
           () async {
         final sierraContract = await CompiledContract.fromPath(
             '${Directory.current.path}/../../contracts/v1/artifacts/contract_Counter.contract_class.json');
@@ -120,10 +70,60 @@ void main() {
         var res = await account0.declare(
           compiledContract: sierraContract,
           compiledClassHash: compiledClassHash,
+          maxFee: defaultMaxFee,
+        );
+        final txHash = res.when(
+          result: (result) {
+            expect(
+              result.classHash,
+              equals(
+                sierraClassHash,
+              ),
+            );
+            return result.transactionHash.toHexString();
+          },
+          error: (error) => fail(error.message),
+        );
+        final txStatus = await waitForAcceptance(
+          transactionHash: txHash,
+          provider: account0.provider,
+        );
+        expect(txStatus, equals(true));
+        // check if code is
+        (await account0.provider.getClass(
+                blockId: BlockId.blockTag('latest'),
+                classHash: sierraClassHash))
+            .when(
+                result: (res) {
+                  expect(res, isA<SierraContractClass>());
+                  final contract = res as SierraContractClass;
+                  expect(
+                    contract.sierraProgram,
+                    equals(sierraContract.contract.sierraProgram
+                        .map((e) => Felt(e))),
+                  );
+                },
+                error: (error) => fail("Shouldn't fail"));
+      });
+
+      test(
+          'succeeds to declare a simple sierra contract with provided CASM file and STRK fee with resource bounds',
+          () async {
+        final sierraContract = await CompiledContract.fromPath(
+            '${Directory.current.path}/../../contracts/v1/artifacts/contract_MyToken.contract_class.json');
+        final compiledContract = await CASMCompiledContract.fromPath(
+            '${Directory.current.path}/../../contracts/v1/artifacts/contract_MyToken.compiled_contract_class.json');
+        final BigInt compiledClassHash = compiledContract.classHash();
+        
+        Felt sierraClassHash = Felt(sierraContract.classHash());
+
+        var res = await account0.declare(
+          compiledContract: sierraContract,
+          compiledClassHash: compiledClassHash,
           useSTRKFee: true,
           resourceBounds: {
             'l1_gas': ResourceBounds(
-              maxAmount:  '0xa35',
+              maxAmount:  '0x0f4240',
               maxPricePerUnit: '0x22ecb25c00',
             ),
             'l2_gas': ResourceBounds(

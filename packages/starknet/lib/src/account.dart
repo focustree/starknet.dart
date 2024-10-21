@@ -326,7 +326,14 @@ class Account {
       String feeDataAvailabilityMode = 'L1';
       String nonceDataAvailabilityMode = 'L1';
       resourceBounds = resourceBounds ?? {};
-
+      //change resourceBounds original strings with decimal numbers to string hex numbers (for example "10" -> "0xa")
+      resourceBounds!.forEach((key, value) {
+        resourceBounds![key] = ResourceBounds(
+          maxAmount: '0x${BigInt.parse(value.maxAmount).toRadixString(16)}',
+          maxPricePerUnit: '0x${BigInt.parse(value.maxPricePerUnit).toRadixString(16)}',
+        );
+      });
+      
       final signature = signer.signDeclareTransactionV3(
         compiledContract: compiledContract as CompiledContract,
         senderAddress: accountAddress,
@@ -337,7 +344,7 @@ class Account {
         resourceBounds: resourceBounds,
         accountDeploymentData: accountDeploymentData,
         paymasterData: paymasterData,
-        tip: tip.toRadixString(16),
+        tip: tip,
         feeDataAvailabilityMode: feeDataAvailabilityMode,
         nonceDataAvailabilityMode: nonceDataAvailabilityMode,
       );
