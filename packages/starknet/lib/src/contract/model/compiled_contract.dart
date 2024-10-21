@@ -98,7 +98,6 @@ class CompiledContract implements ICompiledContract {
 
   @override
   BigInt classHash() {
-    print("class_name:001 con ABI");
     List<BigInt> elements = [];
     if (contract.contractClassVersion == "0.1.0") {
       elements.add(Felt.fromString(CONTRACT_CLASS_V0_1_0).toBigInt());
@@ -218,8 +217,6 @@ class CASMCompiledContract
 
   @override
   BigInt classHash() {
-    print("class_name:010");
-    print("compilerVersion $compilerVersion");
     List<BigInt> elements = [];
     //add COMPILED_CLASS_V1 element when compilerVersion >= 1.1.0
     final version = compilerVersion.split(".").map((e) => int.parse(e)).toList();
@@ -365,7 +362,6 @@ class DeprecatedCompiledContract
   /// https://docs.starknet.io/documentation/architecture_and_concepts/Contracts/contract-hash/
   @override
   BigInt classHash() {
-    print("class_name:001 con builtin");
     List<BigInt> elements = [];
     elements.add(BigInt.from(0)); // FIXME: API VERSION
     final hashes = entrypointsHashes();
