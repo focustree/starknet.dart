@@ -2,9 +2,13 @@ dependency_overrides:
   path: ^1.8.3
   http: ^1.0.0
   starknet:
-    path: ../../packages/starknet
+    git:
+      url: https://github.com/focustree/starknet.dart
+      path: packages/starknet
   starknet_provider:
-    path: ../../packages/starknet_provider
+    git:
+      url: https://github.com/focustree/starknet.dart
+      path: packages/starknet_provider
   # wallet_kit:
   #   git:
   #     url: https://github.com/focustree/starknet.dart
