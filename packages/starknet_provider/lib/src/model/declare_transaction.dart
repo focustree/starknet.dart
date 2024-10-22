@@ -5,6 +5,10 @@ import 'package:starknet_provider/starknet_provider.dart';
 part 'declare_transaction.freezed.dart';
 part 'declare_transaction.g.dart';
 
+const String DECLARE_TXN_V1 = '0x1';
+const String DECLARE_TXN_V2 = '0x2';
+const String DECLARE_TXN_V3 = '0x3';
+
 @freezed
 class DeclareTransactionRequest with _$DeclareTransactionRequest {
   const factory DeclareTransactionRequest({
@@ -18,11 +22,11 @@ class DeclareTransactionRequest with _$DeclareTransactionRequest {
 abstract class DeclareTransaction {
   factory DeclareTransaction.fromJson(Map<String, Object?> json) {
     switch (json['version']) {
-      case '0x1':
+      case DECLARE_TXN_V1:
         return DeclareTransactionV1.fromJson(json);
-      case '0x2':
+      case DECLARE_TXN_V2:
         return DeclareTransactionV2.fromJson(json);
-      case '0x3':
+      case DECLARE_TXN_V3:
         return DeclareTransactionV3.fromJson(json);
       default:
         throw ArgumentError('Unsupported transaction version');
