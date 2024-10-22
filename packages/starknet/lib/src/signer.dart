@@ -257,19 +257,6 @@ class Signer {
       classHash.toBigInt(),
       compiledClassHash.toBigInt(),
     ];
-//     declare_v3_tx_hash = h(
-//     "declare",
-//     version,
-//     sender_address,
-//     h(tip, l1_gas_bounds, l2_gas_bounds),
-//     h(paymaster_data),
-//     chain_id,
-//     nonce,
-//     data_availability_modes,
-//     h(account_deployment_data),
-//     class_hash,
-//     compiled_class_hash
-// )
 
     final transactionHash = poseidonHasher.hashMany(elementsToHash);
     print("transactionHash: ${Felt(transactionHash).toHexString()}");

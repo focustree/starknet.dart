@@ -27,5 +27,10 @@ void main() {
       Felt a = Felt.fromHexString("0x4");
       expect((a << 1).toHexString(), equals("0x8"));
     });
+    test('operator - throws on negative result', () {
+  Felt a = Felt.fromHexString("0x1");
+  Felt b = Felt.fromHexString("0x2");
+      expect(() => a - b, throwsA(isA<ArgumentError>()));
+    });
   });
 }
