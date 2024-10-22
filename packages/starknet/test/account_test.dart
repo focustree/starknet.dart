@@ -60,9 +60,9 @@ void main() {
           'succeeds to declare a simple sierra contract with provided CASM file',
           () async {
         final sierraContract = await CompiledContract.fromPath(
-            '${Directory.current.path}/../../contracts/v1/artifacts/contract_Counter.contract_class.json');
+            '${Directory.current.path}/../../contracts/v1/artifacts/contract2_Counter.contract_class.json');
         final compiledContract = await CASMCompiledContract.fromPath(
-            '${Directory.current.path}/../../contracts/v1/artifacts/contract_Counter.compiled_contract_class.json');
+            '${Directory.current.path}/../../contracts/v1/artifacts/contract2_Counter.compiled_contract_class.json');
         final BigInt compiledClassHash = compiledContract.classHash();
         
         Felt sierraClassHash = Felt(sierraContract.classHash());
@@ -110,9 +110,9 @@ void main() {
           'succeeds to declare a simple sierra contract with provided CASM file and STRK fee with resource bounds',
           () async {
         final sierraContract = await CompiledContract.fromPath(
-            '${Directory.current.path}/../../contracts/v1/artifacts/contract_MyToken.contract_class.json');
+            '${Directory.current.path}/../../contracts/v1/artifacts/contract2_MyToken.contract_class.json');
         final compiledContract = await CASMCompiledContract.fromPath(
-            '${Directory.current.path}/../../contracts/v1/artifacts/contract_MyToken.compiled_contract_class.json');
+            '${Directory.current.path}/../../contracts/v1/artifacts/contract2_MyToken.compiled_contract_class.json');
         final BigInt compiledClassHash = compiledContract.classHash();
         
         Felt sierraClassHash = Felt(sierraContract.classHash());

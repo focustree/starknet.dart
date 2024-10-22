@@ -35,13 +35,13 @@ final devnetOpenZeppelinAccountClassHash = Felt.fromHexString(
 final devnetUri = Uri.parse('http://localhost:5050/rpc');
 
 final devnetAccount0Address = Felt.fromHexString(
-  "0x7e00d496e324876bbc8531f2d9a82bf154d1a04a50218ee74cdd372f75a551a",
+  "0x64b48806902a367c8598f4f95c305e8c1a1acba5f082d294a43793113115691",
 );
 final devnetAccount0PublicKey = Felt.fromHexString(
-  "0x7e52885445756b313ea16849145363ccb73fb4ab0440dbac333cf9d13de82b9",
+  "0x7a1bb2744a7dd29bffd44341dbd78008adb4bc11733601e7eddff322ada9cb",
 );
 final devnetAccount0PrivateKey =
-    Felt.fromHexString("0xe3e70682c2094cac629f6fbed82c07cd");
+    Felt.fromHexString("0x71d7bb07b9a64f6f78ac4c816aff4da9");
 final account0 = getAccount(
   accountAddress: devnetAccount0Address,
   privateKey: devnetAccount0PrivateKey,
