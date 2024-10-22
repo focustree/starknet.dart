@@ -330,10 +330,11 @@ class Account {
       resourceBounds!.forEach((key, value) {
         resourceBounds![key] = ResourceBounds(
           maxAmount: '0x${BigInt.parse(value.maxAmount).toRadixString(16)}',
-          maxPricePerUnit: '0x${BigInt.parse(value.maxPricePerUnit).toRadixString(16)}',
+          maxPricePerUnit:
+              '0x${BigInt.parse(value.maxPricePerUnit).toRadixString(16)}',
         );
       });
-      
+
       final signature = signer.signDeclareTransactionV3(
         compiledContract: compiledContract as CompiledContract,
         senderAddress: accountAddress,
@@ -400,7 +401,8 @@ class Account {
         return provider.addDeclareTransaction(
           DeclareTransactionRequest(
             declareTransaction: DeclareTransactionV2(
-              max_fee: maxFee.toHexString(), // As Hex String because devnet only supports 16 bytes and not a Felt
+              max_fee: maxFee
+                  .toHexString(), // As Hex String because devnet only supports 16 bytes and not a Felt
               nonce: nonce,
               contractClass: compiledContract.flatten(),
               compiledClassHash: Felt(compiledClassHash!),

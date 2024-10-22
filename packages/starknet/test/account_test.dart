@@ -64,7 +64,7 @@ void main() {
         final compiledContract = await CASMCompiledContract.fromPath(
             '${Directory.current.path}/../../contracts/v1/artifacts/contract2_Counter.compiled_contract_class.json');
         final BigInt compiledClassHash = compiledContract.classHash();
-        
+
         Felt sierraClassHash = Felt(sierraContract.classHash());
 
         var res = await account0.declare(
@@ -114,7 +114,7 @@ void main() {
         final compiledContract = await CASMCompiledContract.fromPath(
             '${Directory.current.path}/../../contracts/v1/artifacts/contract2_MyToken.compiled_contract_class.json');
         final BigInt compiledClassHash = compiledContract.classHash();
-        
+
         Felt sierraClassHash = Felt(sierraContract.classHash());
 
         var res = await account0.declare(
@@ -123,7 +123,7 @@ void main() {
           useSTRKFee: true,
           resourceBounds: {
             'l1_gas': ResourceBounds(
-              maxAmount:  '0x0f4240',
+              maxAmount: '0x0f4240',
               maxPricePerUnit: '0x22ecb25c00',
             ),
             'l2_gas': ResourceBounds(

@@ -219,7 +219,8 @@ class CASMCompiledContract
   BigInt classHash() {
     List<BigInt> elements = [];
     //add COMPILED_CLASS_V1 element when compilerVersion >= 1.1.0
-    final version = compilerVersion.split(".").map((e) => int.parse(e)).toList();
+    final version =
+        compilerVersion.split(".").map((e) => int.parse(e)).toList();
     if (version[0] > 1 || (version[0] == 1 && version[1] >= 1)) {
       elements.add(Felt.fromString(COMPILED_CLASS_V1).toBigInt());
     }
@@ -228,13 +229,14 @@ class CASMCompiledContract
     elements.add(hashes.l1handlers);
     elements.add(hashes.constructors);
     // `bytecode_segment_lengths` was added since Sierra 1.5.0 and changed hash calculation.
-    // This implementation here is basically based in 
+    // This implementation here is basically based in
     // `cairo-lang` v0.13.1, starknet-py and starkli implementations.
     // https://github.com/starkware-libs/cairo/pull/4515
     if (bytecodeSegmentLengths.isEmpty) {
       elements.add(_byteCodeHash());
     } else {
-      elements.add(computeCompiledClassHashInner(bytecode, bytecodeSegmentLengths));
+      elements
+          .add(computeCompiledClassHashInner(bytecode, bytecodeSegmentLengths));
     }
     return poseidonHasher.hashMany(elements);
   }

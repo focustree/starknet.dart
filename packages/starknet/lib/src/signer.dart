@@ -216,11 +216,19 @@ class Signer {
       );
     }
     compiledClassHash ??= Felt(casmCompiledContract!.classHash());
-    
-    Felt l1GasMaxAmount = Felt(BigInt.parse(resourceBounds['l1_gas']!.maxAmount.replaceFirst('0x', ''), radix: 16));
-    Felt l1GasMaxPricePerUnit = Felt(BigInt.parse(resourceBounds['l1_gas']!.maxPricePerUnit.replaceFirst('0x', ''), radix: 16));
-    Felt l2GasMaxAmount = Felt(BigInt.parse(resourceBounds['l2_gas']!.maxAmount.replaceFirst('0x', ''), radix: 16));
-    Felt l2GasMaxPricePerUnit = Felt(BigInt.parse(resourceBounds['l2_gas']!.maxPricePerUnit.replaceFirst('0x', ''), radix: 16));
+
+    Felt l1GasMaxAmount = Felt(BigInt.parse(
+        resourceBounds['l1_gas']!.maxAmount.replaceFirst('0x', ''),
+        radix: 16));
+    Felt l1GasMaxPricePerUnit = Felt(BigInt.parse(
+        resourceBounds['l1_gas']!.maxPricePerUnit.replaceFirst('0x', ''),
+        radix: 16));
+    Felt l2GasMaxAmount = Felt(BigInt.parse(
+        resourceBounds['l2_gas']!.maxAmount.replaceFirst('0x', ''),
+        radix: 16));
+    Felt l2GasMaxPricePerUnit = Felt(BigInt.parse(
+        resourceBounds['l2_gas']!.maxPricePerUnit.replaceFirst('0x', ''),
+        radix: 16));
 
     Felt l1GasBounds = (Felt.fromString("L1_GAS") << (128 + 64)) +
         (l1GasMaxAmount << 128) +
@@ -238,11 +246,8 @@ class Signer {
       TransactionHashPrefix.declare.toBigInt(),
       BigInt.from(3), // version
       senderAddress.toBigInt(),
-      poseidonHasher.hashMany([
-        tip,
-        l1GasBounds.toBigInt(),
-        l2GasBounds.toBigInt()
-      ]),
+      poseidonHasher
+          .hashMany([tip, l1GasBounds.toBigInt(), l2GasBounds.toBigInt()]),
       poseidonHasher.hashMany(paymasterData.map((e) => e.toBigInt()).toList()),
       chainId.toBigInt(),
       nonce.toBigInt(),

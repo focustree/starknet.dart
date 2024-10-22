@@ -46,7 +46,8 @@ class BytecodeSegmentedNode extends BytecodeSegmentStructure {
       hashInputs.add(node.segmentLength);
       hashInputs.add(node.innerStructure.hash());
     }
-    return (poseidonHasher.hashMany(hashInputs.map((e) => e).toList())) + BigInt.from(1);
+    return (poseidonHasher.hashMany(hashInputs.map((e) => e).toList())) +
+        BigInt.from(1);
   }
 
   @override
@@ -56,7 +57,8 @@ class BytecodeSegmentedNode extends BytecodeSegmentStructure {
         segment.innerStructure._addBytecodeWithSkippedSegments(data);
       } else {
         data.add(BigInt.from(-1));
-        data.addAll(List.filled(segment.segmentLength.toInt() - 1, BigInt.from(-2)));
+        data.addAll(
+            List.filled(segment.segmentLength.toInt() - 1, BigInt.from(-2)));
       }
     }
   }
@@ -72,11 +74,13 @@ class BytecodeSegment {
     required this.isUsed,
     required this.innerStructure,
   }) {
-    assert(segmentLength > BigInt.from(0), 'Invalid segment length: $segmentLength.');
+    assert(segmentLength > BigInt.from(0),
+        'Invalid segment length: $segmentLength.');
   }
 }
 
-BigInt computeCompiledClassHashInner(List<BigInt> bytecode, NestedIntList bytecodeSegmentLengths) {
+BigInt computeCompiledClassHashInner(
+    List<BigInt> bytecode, NestedIntList bytecodeSegmentLengths) {
   BigInt bytecodeHash = (createBytecodeSegmentStructure(
     bytecode: bytecode,
     bytecodeSegmentLengths: bytecodeSegmentLengths,
@@ -91,7 +95,10 @@ BytecodeSegmentStructure createBytecodeSegmentStructure({
   required NestedIntList bytecodeSegmentLengths,
   List<BigInt>? visitedPcs,
 }) {
-  List<BigInt> revVisitedPcs = (visitedPcs ?? List<BigInt>.generate(bytecode.length, (i) => BigInt.from(i))).reversed.toList();
+  List<BigInt> revVisitedPcs = (visitedPcs ??
+          List<BigInt>.generate(bytecode.length, (i) => BigInt.from(i)))
+      .reversed
+      .toList();
 
   var result = _createBytecodeSegmentStructureInner(
     bytecode: bytecode,
@@ -123,7 +130,8 @@ _BytecodeSegmentStructureResult _createBytecodeSegmentStructureInner({
     }
 
     return _BytecodeSegmentStructureResult(
-      structure: BytecodeLeaf(bytecode.sublist(bytecodeOffset.toInt(), segmentEnd.toInt())),
+      structure: BytecodeLeaf(
+          bytecode.sublist(bytecodeOffset.toInt(), segmentEnd.toInt())),
       totalLen: BigInt.from(bytecodeSegmentLengths),
     );
   }
@@ -145,7 +153,9 @@ _BytecodeSegmentStructureResult _createBytecodeSegmentStructureInner({
       BigInt? visitedPcAfter = visitedPcs.isNotEmpty ? visitedPcs.last : null;
       bool isUsed = visitedPcAfter != visitedPcBefore;
 
-      if (isUsed && visitedPcBefore != null && visitedPcBefore != bytecodeOffset) {
+      if (isUsed &&
+          visitedPcBefore != null &&
+          visitedPcBefore != bytecodeOffset) {
         throw ArgumentError(
           'Invalid segment structure: PC $visitedPcBefore was visited, '
           'but the beginning of the segment ($bytecodeOffset) was not.',
@@ -175,5 +185,6 @@ class _BytecodeSegmentStructureResult {
   final BytecodeSegmentStructure structure;
   final BigInt totalLen;
 
-  _BytecodeSegmentStructureResult({required this.structure, required this.totalLen});
+  _BytecodeSegmentStructureResult(
+      {required this.structure, required this.totalLen});
 }

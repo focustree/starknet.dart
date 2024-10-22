@@ -57,7 +57,8 @@ class DeclareTransactionV2
   const factory DeclareTransactionV2({
     @Default('DECLARE') String type,
     @Default('0x2') String version,
-    required String max_fee, // As String because devnet only supports 16 bytes and not a Felt
+    required String
+        max_fee, // As String because devnet only supports 16 bytes and not a Felt
     required Felt nonce,
     required List<Felt> signature,
     required Felt senderAddress,
