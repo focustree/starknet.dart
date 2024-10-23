@@ -18,10 +18,18 @@ class InvokeTransactionRequest with _$InvokeTransactionRequest {
 }
 
 abstract class InvokeTransaction {
-  factory InvokeTransaction.fromJson(Map<String, Object?> json) =>
-      json['version'] == '0x01'
-          ? InvokeTransactionV1.fromJson(json)
-          : InvokeTransactionV0.fromJson(json);
+  factory InvokeTransaction.fromJson(Map<String, Object?> json) {
+    switch (json['version']) {
+      case '0x00':
+        return InvokeTransactionV0.fromJson(json);
+      case '0x01':
+        return InvokeTransactionV1.fromJson(json);
+      case '0x02':
+        return InvokeTransactionV3.fromJson(json);
+      default:
+        throw ArgumentError('Unsupported transaction version');
+    }
+  }
 
   Map<String, dynamic> toJson();
 }
@@ -61,6 +69,30 @@ class InvokeTransactionV1
   factory InvokeTransactionV1.fromJson(Map<String, Object?> json) =>
       _$InvokeTransactionV1FromJson(json);
 }
+
+@freezed
+class InvokeTransactionV3
+    with _$InvokeTransactionV3
+    implements InvokeTransaction {
+  const factory InvokeTransactionV3({
+    required List<Felt> accountDeploymentData,
+    required List<Felt> calldata,
+    required Felt chainId,
+    required String feeDataAvailabilityMode,
+    required Felt nonce,
+    required String nonceDataAvailabilityMode,
+    required List<Felt> paymasterData,
+    required Map<String, ResourceBounds> resourceBounds,
+    required Felt senderAddress,
+    required List<Felt> signature,
+    required String tip,
+    @Default('0x3') String version,
+  }) = _InvokeTransactionV3;
+
+  factory InvokeTransactionV3.fromJson(Map<String, Object?> json) =>
+      _$InvokeTransactionV3FromJson(json);
+}
+
 
 @freezed
 class InvokeTransactionResponse with _$InvokeTransactionResponse {

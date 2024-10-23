@@ -12,6 +12,85 @@ class Signer {
     return Felt(point!.x!.toBigInteger()!);
   }
 
+  List<Felt> signInvokeTransactionsV3({
+    required List<FunctionCall> transactions,
+    required Felt senderAddress,
+    required Felt chainId,
+    required Felt nonce,
+    bool useLegacyCalldata = false,
+    required Map<String, ResourceBounds> resourceBounds,
+    required List<Felt> accountDeploymentData,
+    required List<Felt> paymasterData,
+    BigInt? tip,
+    String? feeDataAvailabilityMode,
+    String? nonceDataAvailabilityMode,
+  }) {
+
+    final calldata = functionCallsToCalldata(
+      functionCalls: transactions,
+      useLegacyCalldata: useLegacyCalldata,
+    );
+
+    tip ??= BigInt.from(0);
+    feeDataAvailabilityMode ??= 'L1';
+    nonceDataAvailabilityMode ??= 'L1';
+
+    Felt l1GasMaxAmount = Felt(BigInt.parse(
+        resourceBounds['l1_gas']!.maxAmount.replaceFirst('0x', ''),
+        radix: 16));
+    Felt l1GasMaxPricePerUnit = Felt(BigInt.parse(
+        resourceBounds['l1_gas']!.maxPricePerUnit.replaceFirst('0x', ''),
+        radix: 16));
+    Felt l2GasMaxAmount = Felt(BigInt.parse(
+        resourceBounds['l2_gas']!.maxAmount.replaceFirst('0x', ''),
+        radix: 16));
+    Felt l2GasMaxPricePerUnit = Felt(BigInt.parse(
+        resourceBounds['l2_gas']!.maxPricePerUnit.replaceFirst('0x', ''),
+        radix: 16));
+
+    Felt l1GasBounds = (Felt.fromString("L1_GAS") << (128 + 64)) +
+        (l1GasMaxAmount << 128) +
+        l1GasMaxPricePerUnit;
+
+    Felt l2GasBounds = (Felt.fromString("L2_GAS") << (128 + 64)) +
+        (l2GasMaxAmount << 128) +
+        l2GasMaxPricePerUnit;
+
+    Felt dataAvailabilityMode =
+        (Felt.fromInt(nonceDataAvailabilityMode == 'L1' ? 0 : 1) << 32) +
+            Felt.fromInt(feeDataAvailabilityMode == 'L1' ? 0 : 1);
+
+    final List<BigInt> elementsToHash = [
+      TransactionHashPrefix.invoke.toBigInt(),
+      BigInt.from(3), // version
+      nonce.toBigInt(),
+      senderAddress.toBigInt(),
+      poseidonHasher
+          .hashMany([tip, l1GasBounds.toBigInt(), l2GasBounds.toBigInt()]),
+      poseidonHasher.hashMany(paymasterData.map((e) => e.toBigInt()).toList()),
+      chainId.toBigInt(),
+      nonce.toBigInt(),
+      dataAvailabilityMode.toBigInt(),
+      poseidonHasher
+          .hashMany(accountDeploymentData.map((e) => e.toBigInt()).toList()),
+      poseidonHasher
+          .hashMany(calldata.map((e) => e.toBigInt()).toList()),
+    ];
+
+    final transactionHash = poseidonHasher.hashMany(elementsToHash);
+    print("transactionHash: ${Felt(transactionHash).toHexString()}");
+
+    final signature = starknet_sign(
+      privateKey: privateKey.toBigInt(),
+      messageHash: transactionHash,
+      seed: BigInt.from(32),
+    );
+    print(
+        "signature: ${Felt(signature.r).toHexString()} ${Felt(signature.s).toHexString()}");
+
+    return [Felt(signature.r), Felt(signature.s)];
+  }
+
   List<Felt> signInvokeTransactionsV1({
     required List<FunctionCall> transactions,
     required Felt senderAddress,
@@ -90,6 +169,12 @@ class Signer {
     Felt? maxFee,
     String entryPointSelectorName = "__execute__",
     bool useLegacyCalldata = false,
+    Map<String, ResourceBounds>? resourceBounds,
+    List<Felt>? accountDeploymentData,
+    List<Felt>? paymasterData,
+    BigInt? tip,
+    String? feeDataAvailabilityMode,
+    String? nonceDataAvailabilityMode,
   }) {
     switch (version) {
       case 0:
@@ -111,6 +196,24 @@ class Signer {
             nonce: nonce,
             maxFee: maxFee,
             useLegacyCalldata: useLegacyCalldata);
+      case 3:
+        print("Signing invoke transaction v3");
+        resourceBounds ??= {};
+        accountDeploymentData ??= [];
+        paymasterData ??= [];
+        return signInvokeTransactionsV3(
+            transactions: transactions,
+            senderAddress: contractAddress,
+            chainId: chainId,
+            nonce: nonce,
+            useLegacyCalldata: useLegacyCalldata,
+            resourceBounds: resourceBounds,
+            accountDeploymentData: accountDeploymentData,
+            paymasterData: paymasterData,
+            tip: tip,
+            feeDataAvailabilityMode: feeDataAvailabilityMode,
+            nonceDataAvailabilityMode: nonceDataAvailabilityMode,
+        );
       default:
         throw Exception("Unsupported invoke transaction version: $version");
     }

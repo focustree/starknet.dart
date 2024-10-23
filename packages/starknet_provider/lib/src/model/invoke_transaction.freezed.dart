@@ -778,6 +778,440 @@ abstract class _InvokeTransactionV1 implements InvokeTransactionV1 {
       throw _privateConstructorUsedError;
 }
 
+InvokeTransactionV3 _$InvokeTransactionV3FromJson(Map<String, dynamic> json) {
+  return _InvokeTransactionV3.fromJson(json);
+}
+
+/// @nodoc
+mixin _$InvokeTransactionV3 {
+  List<Felt> get accountDeploymentData => throw _privateConstructorUsedError;
+  List<Felt> get calldata => throw _privateConstructorUsedError;
+  Felt get chainId => throw _privateConstructorUsedError;
+  String get feeDataAvailabilityMode => throw _privateConstructorUsedError;
+  Felt get nonce => throw _privateConstructorUsedError;
+  String get nonceDataAvailabilityMode => throw _privateConstructorUsedError;
+  List<Felt> get paymasterData => throw _privateConstructorUsedError;
+  Map<String, ResourceBounds> get resourceBounds =>
+      throw _privateConstructorUsedError;
+  Felt get senderAddress => throw _privateConstructorUsedError;
+  List<Felt> get signature => throw _privateConstructorUsedError;
+  String get tip => throw _privateConstructorUsedError;
+  String get version => throw _privateConstructorUsedError;
+
+  /// Serializes this InvokeTransactionV3 to a JSON map.
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+
+  /// Create a copy of InvokeTransactionV3
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  $InvokeTransactionV3CopyWith<InvokeTransactionV3> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $InvokeTransactionV3CopyWith<$Res> {
+  factory $InvokeTransactionV3CopyWith(
+          InvokeTransactionV3 value, $Res Function(InvokeTransactionV3) then) =
+      _$InvokeTransactionV3CopyWithImpl<$Res, InvokeTransactionV3>;
+  @useResult
+  $Res call(
+      {List<Felt> accountDeploymentData,
+      List<Felt> calldata,
+      Felt chainId,
+      String feeDataAvailabilityMode,
+      Felt nonce,
+      String nonceDataAvailabilityMode,
+      List<Felt> paymasterData,
+      Map<String, ResourceBounds> resourceBounds,
+      Felt senderAddress,
+      List<Felt> signature,
+      String tip,
+      String version});
+}
+
+/// @nodoc
+class _$InvokeTransactionV3CopyWithImpl<$Res, $Val extends InvokeTransactionV3>
+    implements $InvokeTransactionV3CopyWith<$Res> {
+  _$InvokeTransactionV3CopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  /// Create a copy of InvokeTransactionV3
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? accountDeploymentData = null,
+    Object? calldata = null,
+    Object? chainId = null,
+    Object? feeDataAvailabilityMode = null,
+    Object? nonce = null,
+    Object? nonceDataAvailabilityMode = null,
+    Object? paymasterData = null,
+    Object? resourceBounds = null,
+    Object? senderAddress = null,
+    Object? signature = null,
+    Object? tip = null,
+    Object? version = null,
+  }) {
+    return _then(_value.copyWith(
+      accountDeploymentData: null == accountDeploymentData
+          ? _value.accountDeploymentData
+          : accountDeploymentData // ignore: cast_nullable_to_non_nullable
+              as List<Felt>,
+      calldata: null == calldata
+          ? _value.calldata
+          : calldata // ignore: cast_nullable_to_non_nullable
+              as List<Felt>,
+      chainId: null == chainId
+          ? _value.chainId
+          : chainId // ignore: cast_nullable_to_non_nullable
+              as Felt,
+      feeDataAvailabilityMode: null == feeDataAvailabilityMode
+          ? _value.feeDataAvailabilityMode
+          : feeDataAvailabilityMode // ignore: cast_nullable_to_non_nullable
+              as String,
+      nonce: null == nonce
+          ? _value.nonce
+          : nonce // ignore: cast_nullable_to_non_nullable
+              as Felt,
+      nonceDataAvailabilityMode: null == nonceDataAvailabilityMode
+          ? _value.nonceDataAvailabilityMode
+          : nonceDataAvailabilityMode // ignore: cast_nullable_to_non_nullable
+              as String,
+      paymasterData: null == paymasterData
+          ? _value.paymasterData
+          : paymasterData // ignore: cast_nullable_to_non_nullable
+              as List<Felt>,
+      resourceBounds: null == resourceBounds
+          ? _value.resourceBounds
+          : resourceBounds // ignore: cast_nullable_to_non_nullable
+              as Map<String, ResourceBounds>,
+      senderAddress: null == senderAddress
+          ? _value.senderAddress
+          : senderAddress // ignore: cast_nullable_to_non_nullable
+              as Felt,
+      signature: null == signature
+          ? _value.signature
+          : signature // ignore: cast_nullable_to_non_nullable
+              as List<Felt>,
+      tip: null == tip
+          ? _value.tip
+          : tip // ignore: cast_nullable_to_non_nullable
+              as String,
+      version: null == version
+          ? _value.version
+          : version // ignore: cast_nullable_to_non_nullable
+              as String,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$InvokeTransactionV3ImplCopyWith<$Res>
+    implements $InvokeTransactionV3CopyWith<$Res> {
+  factory _$$InvokeTransactionV3ImplCopyWith(_$InvokeTransactionV3Impl value,
+          $Res Function(_$InvokeTransactionV3Impl) then) =
+      __$$InvokeTransactionV3ImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call(
+      {List<Felt> accountDeploymentData,
+      List<Felt> calldata,
+      Felt chainId,
+      String feeDataAvailabilityMode,
+      Felt nonce,
+      String nonceDataAvailabilityMode,
+      List<Felt> paymasterData,
+      Map<String, ResourceBounds> resourceBounds,
+      Felt senderAddress,
+      List<Felt> signature,
+      String tip,
+      String version});
+}
+
+/// @nodoc
+class __$$InvokeTransactionV3ImplCopyWithImpl<$Res>
+    extends _$InvokeTransactionV3CopyWithImpl<$Res, _$InvokeTransactionV3Impl>
+    implements _$$InvokeTransactionV3ImplCopyWith<$Res> {
+  __$$InvokeTransactionV3ImplCopyWithImpl(_$InvokeTransactionV3Impl _value,
+      $Res Function(_$InvokeTransactionV3Impl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of InvokeTransactionV3
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? accountDeploymentData = null,
+    Object? calldata = null,
+    Object? chainId = null,
+    Object? feeDataAvailabilityMode = null,
+    Object? nonce = null,
+    Object? nonceDataAvailabilityMode = null,
+    Object? paymasterData = null,
+    Object? resourceBounds = null,
+    Object? senderAddress = null,
+    Object? signature = null,
+    Object? tip = null,
+    Object? version = null,
+  }) {
+    return _then(_$InvokeTransactionV3Impl(
+      accountDeploymentData: null == accountDeploymentData
+          ? _value._accountDeploymentData
+          : accountDeploymentData // ignore: cast_nullable_to_non_nullable
+              as List<Felt>,
+      calldata: null == calldata
+          ? _value._calldata
+          : calldata // ignore: cast_nullable_to_non_nullable
+              as List<Felt>,
+      chainId: null == chainId
+          ? _value.chainId
+          : chainId // ignore: cast_nullable_to_non_nullable
+              as Felt,
+      feeDataAvailabilityMode: null == feeDataAvailabilityMode
+          ? _value.feeDataAvailabilityMode
+          : feeDataAvailabilityMode // ignore: cast_nullable_to_non_nullable
+              as String,
+      nonce: null == nonce
+          ? _value.nonce
+          : nonce // ignore: cast_nullable_to_non_nullable
+              as Felt,
+      nonceDataAvailabilityMode: null == nonceDataAvailabilityMode
+          ? _value.nonceDataAvailabilityMode
+          : nonceDataAvailabilityMode // ignore: cast_nullable_to_non_nullable
+              as String,
+      paymasterData: null == paymasterData
+          ? _value._paymasterData
+          : paymasterData // ignore: cast_nullable_to_non_nullable
+              as List<Felt>,
+      resourceBounds: null == resourceBounds
+          ? _value._resourceBounds
+          : resourceBounds // ignore: cast_nullable_to_non_nullable
+              as Map<String, ResourceBounds>,
+      senderAddress: null == senderAddress
+          ? _value.senderAddress
+          : senderAddress // ignore: cast_nullable_to_non_nullable
+              as Felt,
+      signature: null == signature
+          ? _value._signature
+          : signature // ignore: cast_nullable_to_non_nullable
+              as List<Felt>,
+      tip: null == tip
+          ? _value.tip
+          : tip // ignore: cast_nullable_to_non_nullable
+              as String,
+      version: null == version
+          ? _value.version
+          : version // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$InvokeTransactionV3Impl implements _InvokeTransactionV3 {
+  const _$InvokeTransactionV3Impl(
+      {required final List<Felt> accountDeploymentData,
+      required final List<Felt> calldata,
+      required this.chainId,
+      required this.feeDataAvailabilityMode,
+      required this.nonce,
+      required this.nonceDataAvailabilityMode,
+      required final List<Felt> paymasterData,
+      required final Map<String, ResourceBounds> resourceBounds,
+      required this.senderAddress,
+      required final List<Felt> signature,
+      required this.tip,
+      this.version = '0x2'})
+      : _accountDeploymentData = accountDeploymentData,
+        _calldata = calldata,
+        _paymasterData = paymasterData,
+        _resourceBounds = resourceBounds,
+        _signature = signature;
+
+  factory _$InvokeTransactionV3Impl.fromJson(Map<String, dynamic> json) =>
+      _$$InvokeTransactionV3ImplFromJson(json);
+
+  final List<Felt> _accountDeploymentData;
+  @override
+  List<Felt> get accountDeploymentData {
+    if (_accountDeploymentData is EqualUnmodifiableListView)
+      return _accountDeploymentData;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_accountDeploymentData);
+  }
+
+  final List<Felt> _calldata;
+  @override
+  List<Felt> get calldata {
+    if (_calldata is EqualUnmodifiableListView) return _calldata;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_calldata);
+  }
+
+  @override
+  final Felt chainId;
+  @override
+  final String feeDataAvailabilityMode;
+  @override
+  final Felt nonce;
+  @override
+  final String nonceDataAvailabilityMode;
+  final List<Felt> _paymasterData;
+  @override
+  List<Felt> get paymasterData {
+    if (_paymasterData is EqualUnmodifiableListView) return _paymasterData;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_paymasterData);
+  }
+
+  final Map<String, ResourceBounds> _resourceBounds;
+  @override
+  Map<String, ResourceBounds> get resourceBounds {
+    if (_resourceBounds is EqualUnmodifiableMapView) return _resourceBounds;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableMapView(_resourceBounds);
+  }
+
+  @override
+  final Felt senderAddress;
+  final List<Felt> _signature;
+  @override
+  List<Felt> get signature {
+    if (_signature is EqualUnmodifiableListView) return _signature;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_signature);
+  }
+
+  @override
+  final String tip;
+  @override
+  @JsonKey()
+  final String version;
+
+  @override
+  String toString() {
+    return 'InvokeTransactionV3(accountDeploymentData: $accountDeploymentData, calldata: $calldata, chainId: $chainId, feeDataAvailabilityMode: $feeDataAvailabilityMode, nonce: $nonce, nonceDataAvailabilityMode: $nonceDataAvailabilityMode, paymasterData: $paymasterData, resourceBounds: $resourceBounds, senderAddress: $senderAddress, signature: $signature, tip: $tip, version: $version)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$InvokeTransactionV3Impl &&
+            const DeepCollectionEquality()
+                .equals(other._accountDeploymentData, _accountDeploymentData) &&
+            const DeepCollectionEquality().equals(other._calldata, _calldata) &&
+            (identical(other.chainId, chainId) || other.chainId == chainId) &&
+            (identical(
+                    other.feeDataAvailabilityMode, feeDataAvailabilityMode) ||
+                other.feeDataAvailabilityMode == feeDataAvailabilityMode) &&
+            (identical(other.nonce, nonce) || other.nonce == nonce) &&
+            (identical(other.nonceDataAvailabilityMode,
+                    nonceDataAvailabilityMode) ||
+                other.nonceDataAvailabilityMode == nonceDataAvailabilityMode) &&
+            const DeepCollectionEquality()
+                .equals(other._paymasterData, _paymasterData) &&
+            const DeepCollectionEquality()
+                .equals(other._resourceBounds, _resourceBounds) &&
+            (identical(other.senderAddress, senderAddress) ||
+                other.senderAddress == senderAddress) &&
+            const DeepCollectionEquality()
+                .equals(other._signature, _signature) &&
+            (identical(other.tip, tip) || other.tip == tip) &&
+            (identical(other.version, version) || other.version == version));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(_accountDeploymentData),
+      const DeepCollectionEquality().hash(_calldata),
+      chainId,
+      feeDataAvailabilityMode,
+      nonce,
+      nonceDataAvailabilityMode,
+      const DeepCollectionEquality().hash(_paymasterData),
+      const DeepCollectionEquality().hash(_resourceBounds),
+      senderAddress,
+      const DeepCollectionEquality().hash(_signature),
+      tip,
+      version);
+
+  /// Create a copy of InvokeTransactionV3
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$InvokeTransactionV3ImplCopyWith<_$InvokeTransactionV3Impl> get copyWith =>
+      __$$InvokeTransactionV3ImplCopyWithImpl<_$InvokeTransactionV3Impl>(
+          this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$InvokeTransactionV3ImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class _InvokeTransactionV3 implements InvokeTransactionV3 {
+  const factory _InvokeTransactionV3(
+      {required final List<Felt> accountDeploymentData,
+      required final List<Felt> calldata,
+      required final Felt chainId,
+      required final String feeDataAvailabilityMode,
+      required final Felt nonce,
+      required final String nonceDataAvailabilityMode,
+      required final List<Felt> paymasterData,
+      required final Map<String, ResourceBounds> resourceBounds,
+      required final Felt senderAddress,
+      required final List<Felt> signature,
+      required final String tip,
+      final String version}) = _$InvokeTransactionV3Impl;
+
+  factory _InvokeTransactionV3.fromJson(Map<String, dynamic> json) =
+      _$InvokeTransactionV3Impl.fromJson;
+
+  @override
+  List<Felt> get accountDeploymentData;
+  @override
+  List<Felt> get calldata;
+  @override
+  Felt get chainId;
+  @override
+  String get feeDataAvailabilityMode;
+  @override
+  Felt get nonce;
+  @override
+  String get nonceDataAvailabilityMode;
+  @override
+  List<Felt> get paymasterData;
+  @override
+  Map<String, ResourceBounds> get resourceBounds;
+  @override
+  Felt get senderAddress;
+  @override
+  List<Felt> get signature;
+  @override
+  String get tip;
+  @override
+  String get version;
+
+  /// Create a copy of InvokeTransactionV3
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$InvokeTransactionV3ImplCopyWith<_$InvokeTransactionV3Impl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
 InvokeTransactionResponse _$InvokeTransactionResponseFromJson(
     Map<String, dynamic> json) {
   switch (json['starkNetRuntimeTypeToRemove']) {

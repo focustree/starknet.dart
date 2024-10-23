@@ -10,6 +10,7 @@ enum AccountSupportedTxVersion {
   @Deprecated("Transaction version 0 will be removed with Starknet alpha v0.11")
   v0,
   v1,
+  v3,
 }
 
 /// Account abstraction class
@@ -200,6 +201,9 @@ class Account {
     int maxAttempts = 5,
     Felt? maxFee,
     Felt? nonce,
+    // needed for v2
+    bool? useSTRKFee = false,
+    Map<String, ResourceBounds>? resourceBounds,
   }) async {
     nonce = nonce ?? await getNonce();
     print(nonce);
@@ -212,6 +216,26 @@ class Account {
             version: supportedTxVersion == AccountSupportedTxVersion.v1
                 ? "0x1"
                 : "0x0");
+    
+    // These values are for future use (until then they are empty or zero)
+    List<Felt> accountDeploymentData = [];
+    List<Felt> paymasterData = [];
+    BigInt tip = BigInt.from(0);
+    String feeDataAvailabilityMode = 'L1';
+    String nonceDataAvailabilityMode = 'L1';
+    resourceBounds = resourceBounds ?? {};
+
+    if (useSTRKFee ?? false) {
+      //change resourceBounds original strings with decimal numbers to string hex numbers (for example "10" -> "0xa")
+      resourceBounds!.forEach((key, value) {
+        resourceBounds![key] = ResourceBounds(
+          maxAmount: '0x${BigInt.parse(value.maxAmount).toRadixString(16)}',
+          maxPricePerUnit:
+              '0x${BigInt.parse(value.maxPricePerUnit).toRadixString(16)}',
+        );
+      });
+      supportedTxVersion = AccountSupportedTxVersion.v3;
+    }
 
     for (int attempt = 0; attempt < maxAttempts; attempt++) {
       final signature = signer.signTransactions(
@@ -223,6 +247,12 @@ class Account {
         nonce: nonce!,
         useLegacyCalldata: useLegacyCalldata,
         maxFee: maxFee,
+        resourceBounds: resourceBounds,
+        accountDeploymentData: accountDeploymentData,
+        paymasterData: paymasterData,
+        tip: tip,
+        feeDataAvailabilityMode: feeDataAvailabilityMode,
+        nonceDataAvailabilityMode: nonceDataAvailabilityMode,
       );
 
       InvokeTransactionResponse response;
@@ -263,6 +293,31 @@ class Account {
             ),
           );
           break;
+        case AccountSupportedTxVersion.v3:
+          final calldata = functionCallsToCalldata(
+            functionCalls: functionCalls,
+            useLegacyCalldata: useLegacyCalldata,
+          );
+
+          response = await provider.addInvokeTransaction(
+            InvokeTransactionRequest(
+              invokeTransaction: InvokeTransactionV3(
+                accountDeploymentData: accountDeploymentData,
+                calldata: calldata,
+                chainId: chainId,
+                feeDataAvailabilityMode: feeDataAvailabilityMode,
+                nonce: nonce!,
+                nonceDataAvailabilityMode: nonceDataAvailabilityMode,
+                paymasterData: paymasterData,
+                resourceBounds: resourceBounds,
+                senderAddress: accountAddress,
+                signature: signature,
+                tip:'0x${tip.toRadixString(16)}',
+                version: '0x3',
+              ),
+            ),
+          );
+          break;
       }
 
       final result = response.when(
@@ -284,7 +339,7 @@ class Account {
       // If we get a valid result, return it
       if (result != null) {
         return result;
-      }
+      } 
     }
 
     // This return statement will never be reached because of the throw above,
