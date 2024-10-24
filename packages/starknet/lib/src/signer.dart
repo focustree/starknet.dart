@@ -25,7 +25,6 @@ class Signer {
     String? feeDataAvailabilityMode,
     String? nonceDataAvailabilityMode,
   }) {
-
     final calldata = functionCallsToCalldata(
       functionCalls: transactions,
       useLegacyCalldata: useLegacyCalldata,
@@ -63,7 +62,6 @@ class Signer {
     final List<BigInt> elementsToHash = [
       TransactionHashPrefix.invoke.toBigInt(),
       BigInt.from(3), // version
-      nonce.toBigInt(),
       senderAddress.toBigInt(),
       poseidonHasher
           .hashMany([tip, l1GasBounds.toBigInt(), l2GasBounds.toBigInt()]),
@@ -73,8 +71,7 @@ class Signer {
       dataAvailabilityMode.toBigInt(),
       poseidonHasher
           .hashMany(accountDeploymentData.map((e) => e.toBigInt()).toList()),
-      poseidonHasher
-          .hashMany(calldata.map((e) => e.toBigInt()).toList()),
+      poseidonHasher.hashMany(toBigIntList(calldata)),
     ];
 
     final transactionHash = poseidonHasher.hashMany(elementsToHash);
@@ -202,17 +199,17 @@ class Signer {
         accountDeploymentData ??= [];
         paymasterData ??= [];
         return signInvokeTransactionsV3(
-            transactions: transactions,
-            senderAddress: contractAddress,
-            chainId: chainId,
-            nonce: nonce,
-            useLegacyCalldata: useLegacyCalldata,
-            resourceBounds: resourceBounds,
-            accountDeploymentData: accountDeploymentData,
-            paymasterData: paymasterData,
-            tip: tip,
-            feeDataAvailabilityMode: feeDataAvailabilityMode,
-            nonceDataAvailabilityMode: nonceDataAvailabilityMode,
+          transactions: transactions,
+          senderAddress: contractAddress,
+          chainId: chainId,
+          nonce: nonce,
+          useLegacyCalldata: useLegacyCalldata,
+          resourceBounds: resourceBounds,
+          accountDeploymentData: accountDeploymentData,
+          paymasterData: paymasterData,
+          tip: tip,
+          feeDataAvailabilityMode: feeDataAvailabilityMode,
+          nonceDataAvailabilityMode: nonceDataAvailabilityMode,
         );
       default:
         throw Exception("Unsupported invoke transaction version: $version");

@@ -784,9 +784,9 @@ InvokeTransactionV3 _$InvokeTransactionV3FromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$InvokeTransactionV3 {
+  String get type => throw _privateConstructorUsedError;
   List<Felt> get accountDeploymentData => throw _privateConstructorUsedError;
   List<Felt> get calldata => throw _privateConstructorUsedError;
-  Felt get chainId => throw _privateConstructorUsedError;
   String get feeDataAvailabilityMode => throw _privateConstructorUsedError;
   Felt get nonce => throw _privateConstructorUsedError;
   String get nonceDataAvailabilityMode => throw _privateConstructorUsedError;
@@ -815,9 +815,9 @@ abstract class $InvokeTransactionV3CopyWith<$Res> {
       _$InvokeTransactionV3CopyWithImpl<$Res, InvokeTransactionV3>;
   @useResult
   $Res call(
-      {List<Felt> accountDeploymentData,
+      {String type,
+      List<Felt> accountDeploymentData,
       List<Felt> calldata,
-      Felt chainId,
       String feeDataAvailabilityMode,
       Felt nonce,
       String nonceDataAvailabilityMode,
@@ -844,9 +844,9 @@ class _$InvokeTransactionV3CopyWithImpl<$Res, $Val extends InvokeTransactionV3>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? type = null,
     Object? accountDeploymentData = null,
     Object? calldata = null,
-    Object? chainId = null,
     Object? feeDataAvailabilityMode = null,
     Object? nonce = null,
     Object? nonceDataAvailabilityMode = null,
@@ -858,6 +858,10 @@ class _$InvokeTransactionV3CopyWithImpl<$Res, $Val extends InvokeTransactionV3>
     Object? version = null,
   }) {
     return _then(_value.copyWith(
+      type: null == type
+          ? _value.type
+          : type // ignore: cast_nullable_to_non_nullable
+              as String,
       accountDeploymentData: null == accountDeploymentData
           ? _value.accountDeploymentData
           : accountDeploymentData // ignore: cast_nullable_to_non_nullable
@@ -866,10 +870,6 @@ class _$InvokeTransactionV3CopyWithImpl<$Res, $Val extends InvokeTransactionV3>
           ? _value.calldata
           : calldata // ignore: cast_nullable_to_non_nullable
               as List<Felt>,
-      chainId: null == chainId
-          ? _value.chainId
-          : chainId // ignore: cast_nullable_to_non_nullable
-              as Felt,
       feeDataAvailabilityMode: null == feeDataAvailabilityMode
           ? _value.feeDataAvailabilityMode
           : feeDataAvailabilityMode // ignore: cast_nullable_to_non_nullable
@@ -919,9 +919,9 @@ abstract class _$$InvokeTransactionV3ImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {List<Felt> accountDeploymentData,
+      {String type,
+      List<Felt> accountDeploymentData,
       List<Felt> calldata,
-      Felt chainId,
       String feeDataAvailabilityMode,
       Felt nonce,
       String nonceDataAvailabilityMode,
@@ -946,9 +946,9 @@ class __$$InvokeTransactionV3ImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? type = null,
     Object? accountDeploymentData = null,
     Object? calldata = null,
-    Object? chainId = null,
     Object? feeDataAvailabilityMode = null,
     Object? nonce = null,
     Object? nonceDataAvailabilityMode = null,
@@ -960,6 +960,10 @@ class __$$InvokeTransactionV3ImplCopyWithImpl<$Res>
     Object? version = null,
   }) {
     return _then(_$InvokeTransactionV3Impl(
+      type: null == type
+          ? _value.type
+          : type // ignore: cast_nullable_to_non_nullable
+              as String,
       accountDeploymentData: null == accountDeploymentData
           ? _value._accountDeploymentData
           : accountDeploymentData // ignore: cast_nullable_to_non_nullable
@@ -968,10 +972,6 @@ class __$$InvokeTransactionV3ImplCopyWithImpl<$Res>
           ? _value._calldata
           : calldata // ignore: cast_nullable_to_non_nullable
               as List<Felt>,
-      chainId: null == chainId
-          ? _value.chainId
-          : chainId // ignore: cast_nullable_to_non_nullable
-              as Felt,
       feeDataAvailabilityMode: null == feeDataAvailabilityMode
           ? _value.feeDataAvailabilityMode
           : feeDataAvailabilityMode // ignore: cast_nullable_to_non_nullable
@@ -1016,9 +1016,9 @@ class __$$InvokeTransactionV3ImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$InvokeTransactionV3Impl implements _InvokeTransactionV3 {
   const _$InvokeTransactionV3Impl(
-      {required final List<Felt> accountDeploymentData,
+      {this.type = 'INVOKE',
+      required final List<Felt> accountDeploymentData,
       required final List<Felt> calldata,
-      required this.chainId,
       required this.feeDataAvailabilityMode,
       required this.nonce,
       required this.nonceDataAvailabilityMode,
@@ -1027,7 +1027,7 @@ class _$InvokeTransactionV3Impl implements _InvokeTransactionV3 {
       required this.senderAddress,
       required final List<Felt> signature,
       required this.tip,
-      this.version = '0x2'})
+      this.version = '0x3'})
       : _accountDeploymentData = accountDeploymentData,
         _calldata = calldata,
         _paymasterData = paymasterData,
@@ -1037,6 +1037,9 @@ class _$InvokeTransactionV3Impl implements _InvokeTransactionV3 {
   factory _$InvokeTransactionV3Impl.fromJson(Map<String, dynamic> json) =>
       _$$InvokeTransactionV3ImplFromJson(json);
 
+  @override
+  @JsonKey()
+  final String type;
   final List<Felt> _accountDeploymentData;
   @override
   List<Felt> get accountDeploymentData {
@@ -1054,8 +1057,6 @@ class _$InvokeTransactionV3Impl implements _InvokeTransactionV3 {
     return EqualUnmodifiableListView(_calldata);
   }
 
-  @override
-  final Felt chainId;
   @override
   final String feeDataAvailabilityMode;
   @override
@@ -1096,7 +1097,7 @@ class _$InvokeTransactionV3Impl implements _InvokeTransactionV3 {
 
   @override
   String toString() {
-    return 'InvokeTransactionV3(accountDeploymentData: $accountDeploymentData, calldata: $calldata, chainId: $chainId, feeDataAvailabilityMode: $feeDataAvailabilityMode, nonce: $nonce, nonceDataAvailabilityMode: $nonceDataAvailabilityMode, paymasterData: $paymasterData, resourceBounds: $resourceBounds, senderAddress: $senderAddress, signature: $signature, tip: $tip, version: $version)';
+    return 'InvokeTransactionV3(type: $type, accountDeploymentData: $accountDeploymentData, calldata: $calldata, feeDataAvailabilityMode: $feeDataAvailabilityMode, nonce: $nonce, nonceDataAvailabilityMode: $nonceDataAvailabilityMode, paymasterData: $paymasterData, resourceBounds: $resourceBounds, senderAddress: $senderAddress, signature: $signature, tip: $tip, version: $version)';
   }
 
   @override
@@ -1104,10 +1105,10 @@ class _$InvokeTransactionV3Impl implements _InvokeTransactionV3 {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$InvokeTransactionV3Impl &&
+            (identical(other.type, type) || other.type == type) &&
             const DeepCollectionEquality()
                 .equals(other._accountDeploymentData, _accountDeploymentData) &&
             const DeepCollectionEquality().equals(other._calldata, _calldata) &&
-            (identical(other.chainId, chainId) || other.chainId == chainId) &&
             (identical(
                     other.feeDataAvailabilityMode, feeDataAvailabilityMode) ||
                 other.feeDataAvailabilityMode == feeDataAvailabilityMode) &&
@@ -1131,9 +1132,9 @@ class _$InvokeTransactionV3Impl implements _InvokeTransactionV3 {
   @override
   int get hashCode => Object.hash(
       runtimeType,
+      type,
       const DeepCollectionEquality().hash(_accountDeploymentData),
       const DeepCollectionEquality().hash(_calldata),
-      chainId,
       feeDataAvailabilityMode,
       nonce,
       nonceDataAvailabilityMode,
@@ -1163,9 +1164,9 @@ class _$InvokeTransactionV3Impl implements _InvokeTransactionV3 {
 
 abstract class _InvokeTransactionV3 implements InvokeTransactionV3 {
   const factory _InvokeTransactionV3(
-      {required final List<Felt> accountDeploymentData,
+      {final String type,
+      required final List<Felt> accountDeploymentData,
       required final List<Felt> calldata,
-      required final Felt chainId,
       required final String feeDataAvailabilityMode,
       required final Felt nonce,
       required final String nonceDataAvailabilityMode,
@@ -1180,11 +1181,11 @@ abstract class _InvokeTransactionV3 implements InvokeTransactionV3 {
       _$InvokeTransactionV3Impl.fromJson;
 
   @override
+  String get type;
+  @override
   List<Felt> get accountDeploymentData;
   @override
   List<Felt> get calldata;
-  @override
-  Felt get chainId;
   @override
   String get feeDataAvailabilityMode;
   @override

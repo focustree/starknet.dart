@@ -202,21 +202,12 @@ class Account {
     Felt? maxFee,
     Felt? nonce,
     // needed for v2
-    bool? useSTRKFee = false,
+    bool? useSTRKFee,
     Map<String, ResourceBounds>? resourceBounds,
   }) async {
     nonce = nonce ?? await getNonce();
     print(nonce);
 
-    maxFee = maxFee ??
-        await getEstimateMaxFeeForInvokeTx(
-            functionCalls: functionCalls,
-            useLegacyCalldata: useLegacyCalldata,
-            nonce: nonce,
-            version: supportedTxVersion == AccountSupportedTxVersion.v1
-                ? "0x1"
-                : "0x0");
-    
     // These values are for future use (until then they are empty or zero)
     List<Felt> accountDeploymentData = [];
     List<Felt> paymasterData = [];
@@ -224,8 +215,9 @@ class Account {
     String feeDataAvailabilityMode = 'L1';
     String nonceDataAvailabilityMode = 'L1';
     resourceBounds = resourceBounds ?? {};
+    useSTRKFee = useSTRKFee ?? false;
 
-    if (useSTRKFee ?? false) {
+    if (useSTRKFee) {
       //change resourceBounds original strings with decimal numbers to string hex numbers (for example "10" -> "0xa")
       resourceBounds!.forEach((key, value) {
         resourceBounds![key] = ResourceBounds(
@@ -235,13 +227,28 @@ class Account {
         );
       });
       supportedTxVersion = AccountSupportedTxVersion.v3;
+      maxFee = Felt.zero;
+    } else {
+      //maxFee only supported in v0 and v1
+      maxFee = maxFee ??
+          await getEstimateMaxFeeForInvokeTx(
+              functionCalls: functionCalls,
+              useLegacyCalldata: useLegacyCalldata,
+              nonce: nonce,
+              version: supportedTxVersion == AccountSupportedTxVersion.v1
+                  ? "0x1"
+                  : "0x0");
     }
 
     for (int attempt = 0; attempt < maxAttempts; attempt++) {
       final signature = signer.signTransactions(
         transactions: functionCalls,
         contractAddress: accountAddress,
-        version: supportedTxVersion == AccountSupportedTxVersion.v1 ? 1 : 0,
+        version: useSTRKFee
+            ? 3
+            : supportedTxVersion == AccountSupportedTxVersion.v1
+                ? 1
+                : 0,
         chainId: chainId,
         entryPointSelectorName: "__execute__",
         nonce: nonce!,
@@ -304,7 +311,6 @@ class Account {
               invokeTransaction: InvokeTransactionV3(
                 accountDeploymentData: accountDeploymentData,
                 calldata: calldata,
-                chainId: chainId,
                 feeDataAvailabilityMode: feeDataAvailabilityMode,
                 nonce: nonce!,
                 nonceDataAvailabilityMode: nonceDataAvailabilityMode,
@@ -312,7 +318,7 @@ class Account {
                 resourceBounds: resourceBounds,
                 senderAddress: accountAddress,
                 signature: signature,
-                tip:'0x${tip.toRadixString(16)}',
+                tip: '0x${tip.toRadixString(16)}',
                 version: '0x3',
               ),
             ),
@@ -339,7 +345,7 @@ class Account {
       // If we get a valid result, return it
       if (result != null) {
         return result;
-      } 
+      }
     }
 
     // This return statement will never be reached because of the throw above,

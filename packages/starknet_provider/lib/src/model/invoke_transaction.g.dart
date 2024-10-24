@@ -78,13 +78,13 @@ Map<String, dynamic> _$$InvokeTransactionV1ImplToJson(
 _$InvokeTransactionV3Impl _$$InvokeTransactionV3ImplFromJson(
         Map<String, dynamic> json) =>
     _$InvokeTransactionV3Impl(
+      type: json['type'] as String? ?? 'INVOKE',
       accountDeploymentData: (json['account_deployment_data'] as List<dynamic>)
           .map((e) => Felt.fromJson(e as String))
           .toList(),
       calldata: (json['calldata'] as List<dynamic>)
           .map((e) => Felt.fromJson(e as String))
           .toList(),
-      chainId: Felt.fromJson(json['chain_id'] as String),
       feeDataAvailabilityMode: json['fee_data_availability_mode'] as String,
       nonce: Felt.fromJson(json['nonce'] as String),
       nonceDataAvailabilityMode: json['nonce_data_availability_mode'] as String,
@@ -100,16 +100,16 @@ _$InvokeTransactionV3Impl _$$InvokeTransactionV3ImplFromJson(
           .map((e) => Felt.fromJson(e as String))
           .toList(),
       tip: json['tip'] as String,
-      version: json['version'] as String? ?? '0x2',
+      version: json['version'] as String? ?? '0x3',
     );
 
 Map<String, dynamic> _$$InvokeTransactionV3ImplToJson(
         _$InvokeTransactionV3Impl instance) =>
     <String, dynamic>{
+      'type': instance.type,
       'account_deployment_data':
           instance.accountDeploymentData.map((e) => e.toJson()).toList(),
       'calldata': instance.calldata.map((e) => e.toJson()).toList(),
-      'chain_id': instance.chainId.toJson(),
       'fee_data_availability_mode': instance.feeDataAvailabilityMode,
       'nonce': instance.nonce.toJson(),
       'nonce_data_availability_mode': instance.nonceDataAvailabilityMode,

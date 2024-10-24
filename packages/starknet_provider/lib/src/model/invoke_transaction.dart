@@ -75,9 +75,9 @@ class InvokeTransactionV3
     with _$InvokeTransactionV3
     implements InvokeTransaction {
   const factory InvokeTransactionV3({
+    @Default('INVOKE') String type,
     required List<Felt> accountDeploymentData,
     required List<Felt> calldata,
-    required Felt chainId,
     required String feeDataAvailabilityMode,
     required Felt nonce,
     required String nonceDataAvailabilityMode,
@@ -92,7 +92,6 @@ class InvokeTransactionV3
   factory InvokeTransactionV3.fromJson(Map<String, Object?> json) =>
       _$InvokeTransactionV3FromJson(json);
 }
-
 
 @freezed
 class InvokeTransactionResponse with _$InvokeTransactionResponse {
