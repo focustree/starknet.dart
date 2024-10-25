@@ -329,6 +329,14 @@ class Account {
       resourceBounds = resourceBounds ?? {};
       //change resourceBounds original strings with decimal numbers to string hex numbers (for example "10" -> "0xa")
       resourceBounds!.forEach((key, value) {
+        // check string valuescan be converted to Felt decimal numbers before translate to hex
+        // if not then throw error with message "Resource bounds values must be valid Felt numbers
+        try {
+          Felt(BigInt.parse(value.maxAmount));
+          Felt(BigInt.parse(value.maxPricePerUnit));
+        } catch (e) {
+          throw Exception("Resource bounds values must be valid Felt numbers");
+        }
         resourceBounds![key] = ResourceBounds(
           maxAmount: '0x${BigInt.parse(value.maxAmount).toRadixString(16)}',
           maxPricePerUnit:
@@ -356,23 +364,30 @@ class Account {
         feeDataAvailabilityMode: feeDataAvailabilityMode,
         nonceDataAvailabilityMode: nonceDataAvailabilityMode,
       );
-      return provider.addDeclareTransaction(
-        DeclareTransactionRequest(
-          declareTransaction: DeclareTransactionV3(
-            accountDeploymentData: accountDeploymentData,
-            compiledClassHash: Felt(compiledClassHash!),
-            contractClass: compiledContract.flatten(),
-            feeDataAvailabilityMode: feeDataAvailabilityMode,
-            nonce: nonce,
-            nonceDataAvailabilityMode: nonceDataAvailabilityMode,
-            paymasterData: paymasterData,
-            resourceBounds: resourceBounds,
-            senderAddress: accountAddress,
-            signature: signature,
-            tip: '0x${tip.toRadixString(16)}',
-          ),
-        ),
-      );
+      return provider
+          .addDeclareTransaction(
+            DeclareTransactionRequest(
+              declareTransaction: DeclareTransactionV3(
+                accountDeploymentData: accountDeploymentData,
+                compiledClassHash: Felt(compiledClassHash!),
+                contractClass: compiledContract.flatten(),
+                feeDataAvailabilityMode: feeDataAvailabilityMode,
+                nonce: nonce,
+                nonceDataAvailabilityMode: nonceDataAvailabilityMode,
+                paymasterData: paymasterData,
+                resourceBounds: resourceBounds,
+                senderAddress: accountAddress,
+                signature: signature,
+                tip: '0x${tip.toRadixString(16)}',
+              ),
+            ),
+          )
+          .then((response) => response.when(
+                result: (result) => response,
+                error: (error) => throw Exception(
+                  'Failed to declare transaction: ${error.message}',
+                ),
+              ));
     } else {
       if (compiledContract is DeprecatedCompiledContract) {
         final signature = signer.signDeclareTransactionV1(

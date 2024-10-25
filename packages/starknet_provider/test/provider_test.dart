@@ -86,7 +86,7 @@ void main() {
         final account = getJsonRpcProvider(network: 'integration');
         final request = DeclareTransactionRequest(
           declareTransaction: DeclareTransactionV1(
-            max_fee: defaultMaxFee,
+            max_fee: defaultMaxFee.toString(),
             nonce: defaultNonce,
             senderAddress: Felt.fromHexString("0x123"),
             contractClass: DeprecatedContractClass(
