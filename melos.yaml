@@ -118,12 +118,6 @@ scripts:
     packageFilters:
       ignore: "*starknet_builder*"
       flutter: false
-  test:dart:integration:declare:
-    description: Run all dart integration declare tests
-    run: melos exec --dir-exists="test" -- dart test --tags integration --fail-fast --name declare
-    packageFilters:
-      ignore: "*starknet_builder*"
-      flutter: false
 
   publish:dry-run:
     description: Publish dry-run all packages

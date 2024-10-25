@@ -24,7 +24,7 @@ _$DeclareTransactionV1Impl _$$DeclareTransactionV1ImplFromJson(
     _$DeclareTransactionV1Impl(
       type: json['type'] as String? ?? 'DECLARE',
       version: json['version'] as String? ?? '0x1',
-      max_fee: Felt.fromJson(json['max_fee'] as String),
+      max_fee: json['max_fee'] as String,
       nonce: Felt.fromJson(json['nonce'] as String),
       signature: (json['signature'] as List<dynamic>)
           .map((e) => Felt.fromJson(e as String))
@@ -39,7 +39,7 @@ Map<String, dynamic> _$$DeclareTransactionV1ImplToJson(
     <String, dynamic>{
       'type': instance.type,
       'version': instance.version,
-      'max_fee': instance.max_fee.toJson(),
+      'max_fee': instance.max_fee,
       'nonce': instance.nonce.toJson(),
       'signature': instance.signature.map((e) => e.toJson()).toList(),
       'sender_address': instance.senderAddress.toJson(),

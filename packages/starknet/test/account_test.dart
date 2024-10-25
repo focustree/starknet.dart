@@ -123,8 +123,8 @@ void main() {
           useSTRKFee: true,
           resourceBounds: {
             'l1_gas': ResourceBounds(
-              maxAmount: '0x0f4240',
-              maxPricePerUnit: '0x22ecb25c00',
+              maxAmount: '1000000',
+              maxPricePerUnit: '150000000000',
             ),
             'l2_gas': ResourceBounds(
               maxAmount: '0x0',

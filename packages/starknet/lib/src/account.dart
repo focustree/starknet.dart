@@ -317,8 +317,9 @@ class Account {
     maxFee = maxFee ??
         await getEstimateMaxFeeForDeclareTx(
             nonce: nonce, compiledContract: compiledContract);
+    useSTRKFee = useSTRKFee ?? false;
 
-    if (useSTRKFee ?? false) {
+    if (useSTRKFee) {
       // These values are for future use (until then they are empty or zero)
       List<Felt> accountDeploymentData = [];
       List<Felt> paymasterData = [];
@@ -335,13 +336,19 @@ class Account {
         );
       });
 
+      if ((compiledClassHash == null) && (casmCompiledContract == null)) {
+        throw Exception(
+          "compiledClassHash is null and CASM contract not provided",
+        );
+      }
+      compiledClassHash ??= casmCompiledContract!.classHash();
+
       final signature = signer.signDeclareTransactionV3(
         compiledContract: compiledContract as CompiledContract,
         senderAddress: accountAddress,
         chainId: chainId,
         nonce: nonce,
-        compiledClassHash: Felt(compiledClassHash!),
-        casmCompiledContract: casmCompiledContract,
+        compiledClassHash: compiledClassHash,
         resourceBounds: resourceBounds,
         accountDeploymentData: accountDeploymentData,
         paymasterData: paymasterData,
@@ -379,7 +386,8 @@ class Account {
         return provider.addDeclareTransaction(
           DeclareTransactionRequest(
             declareTransaction: DeclareTransactionV1(
-              max_fee: maxFee,
+              max_fee: maxFee
+                  .toHexString(), // As String because devnet only supports 16 bytes and not a Felt
               nonce: nonce,
               contractClass: compiledContract.compress(),
               senderAddress: accountAddress,

@@ -196,8 +196,7 @@ class Signer {
     required Felt chainId,
     required Felt nonce,
     Felt? classHash,
-    Felt? compiledClassHash,
-    CASMCompiledContract? casmCompiledContract,
+    required BigInt compiledClassHash,
     required Map<String, ResourceBounds> resourceBounds,
     required List<Felt> accountDeploymentData,
     required List<Felt> paymasterData,
@@ -210,12 +209,11 @@ class Signer {
     feeDataAvailabilityMode ??= 'L1';
     nonceDataAvailabilityMode ??= 'L1';
 
-    if ((compiledClassHash == null) && (casmCompiledContract == null)) {
+    if (!resourceBounds.containsKey('l1_gas') ||
+        !resourceBounds.containsKey('l2_gas')) {
       throw Exception(
-        "compiledClassHash is null and CASM contract not provided",
-      );
+          "Resource bounds must include 'l1_gas' and 'l2_gas' keys.");
     }
-    compiledClassHash ??= Felt(casmCompiledContract!.classHash());
 
     Felt l1GasMaxAmount = Felt(BigInt.parse(
         resourceBounds['l1_gas']!.maxAmount.replaceFirst('0x', ''),
@@ -255,7 +253,7 @@ class Signer {
       poseidonHasher
           .hashMany(accountDeploymentData.map((e) => e.toBigInt()).toList()),
       classHash.toBigInt(),
-      compiledClassHash.toBigInt(),
+      compiledClassHash,
     ];
 
     final transactionHash = poseidonHasher.hashMany(elementsToHash);

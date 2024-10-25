@@ -181,7 +181,8 @@ DeclareTransactionV1 _$DeclareTransactionV1FromJson(Map<String, dynamic> json) {
 mixin _$DeclareTransactionV1 {
   String get type => throw _privateConstructorUsedError;
   String get version => throw _privateConstructorUsedError;
-  Felt get max_fee => throw _privateConstructorUsedError;
+  String get max_fee =>
+      throw _privateConstructorUsedError; // As String because devnet only supports 16 bytes and not a Felt
   Felt get nonce => throw _privateConstructorUsedError;
   List<Felt> get signature => throw _privateConstructorUsedError;
   Felt get senderAddress => throw _privateConstructorUsedError;
@@ -207,7 +208,7 @@ abstract class $DeclareTransactionV1CopyWith<$Res> {
   $Res call(
       {String type,
       String version,
-      Felt max_fee,
+      String max_fee,
       Felt nonce,
       List<Felt> signature,
       Felt senderAddress,
@@ -252,7 +253,7 @@ class _$DeclareTransactionV1CopyWithImpl<$Res,
       max_fee: null == max_fee
           ? _value.max_fee
           : max_fee // ignore: cast_nullable_to_non_nullable
-              as Felt,
+              as String,
       nonce: null == nonce
           ? _value.nonce
           : nonce // ignore: cast_nullable_to_non_nullable
@@ -295,7 +296,7 @@ abstract class _$$DeclareTransactionV1ImplCopyWith<$Res>
   $Res call(
       {String type,
       String version,
-      Felt max_fee,
+      String max_fee,
       Felt nonce,
       List<Felt> signature,
       Felt senderAddress,
@@ -338,7 +339,7 @@ class __$$DeclareTransactionV1ImplCopyWithImpl<$Res>
       max_fee: null == max_fee
           ? _value.max_fee
           : max_fee // ignore: cast_nullable_to_non_nullable
-              as Felt,
+              as String,
       nonce: null == nonce
           ? _value.nonce
           : nonce // ignore: cast_nullable_to_non_nullable
@@ -382,7 +383,8 @@ class _$DeclareTransactionV1Impl implements _DeclareTransactionV1 {
   @JsonKey()
   final String version;
   @override
-  final Felt max_fee;
+  final String max_fee;
+// As String because devnet only supports 16 bytes and not a Felt
   @override
   final Felt nonce;
   final List<Felt> _signature;
@@ -454,7 +456,7 @@ abstract class _DeclareTransactionV1 implements DeclareTransactionV1 {
   const factory _DeclareTransactionV1(
           {final String type,
           final String version,
-          required final Felt max_fee,
+          required final String max_fee,
           required final Felt nonce,
           required final List<Felt> signature,
           required final Felt senderAddress,
@@ -469,7 +471,8 @@ abstract class _DeclareTransactionV1 implements DeclareTransactionV1 {
   @override
   String get version;
   @override
-  Felt get max_fee;
+  String
+      get max_fee; // As String because devnet only supports 16 bytes and not a Felt
   @override
   Felt get nonce;
   @override
