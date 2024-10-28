@@ -1,0 +1,17 @@
+name: starknet_cli
+description: Starknet CLI in Dart.
+version: 0.0.1
+repository: https://github.com/focustree/starknet.dart
+
+environment:
+  sdk: ^3.0.0
+
+dependencies:
+  args: ^2.4.2
+  csv: ^5.1.1
+  starknet: ^0.1.0
+  starknet_provider: ^1.0.0
+
+dev_dependencies:
+  lints: ^2.0.0
+  test: ^1.21.0

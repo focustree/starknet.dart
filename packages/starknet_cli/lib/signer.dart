@@ -1,7 +1,9 @@
+import 'dart:io';
+
 import 'package:args/command_runner.dart';
 import 'package:starknet/starknet.dart';
 
-class SignerCommand extends Command {
+class SignerCommand extends Command<void> {
   @override
   final name = 'signer';
   @override
@@ -12,7 +14,7 @@ class SignerCommand extends Command {
   }
 }
 
-class SignerGetPublicKeyCommand extends Command {
+class SignerGetPublicKeyCommand extends Command<void> {
   @override
   final name = 'get-public-key';
   @override
@@ -21,11 +23,13 @@ class SignerGetPublicKeyCommand extends Command {
   @override
   void run() {
     try {
-      final privateKey = Felt.fromHexString(globalResults?['private-key']);
+      final privateKey = Felt.fromHexString(
+        globalResults?['private-key'] as String,
+      );
       final publicKey = Signer(privateKey: privateKey).publicKey;
-      print('Public Key: ${publicKey.toHexString()}');
+      stdout.writeln('Public Key: ${publicKey.toHexString()}');
     } catch (e) {
-      print('Error: ${e.toString()}');
+      stdout.writeln('Error: $e');
     }
   }
 }
