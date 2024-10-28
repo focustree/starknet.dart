@@ -21,7 +21,8 @@ class PedersenParams with _$PedersenParams {
       _$PedersenParamsFromJson(json);
 }
 
-const pedersenParamsJsonString = '''{
+const pedersenParamsJsonString = '''
+{
   "FIELD_PRIME": 3618502788666131213697322783095070105623107215331596699973092056135872020481,
   "FIELD_GEN": 3,
   "EC_ORDER": 3618502788666131213697322783095070105526743751716087489154079457884512865583,
@@ -2058,8 +2059,12 @@ const pedersenParamsJsonString = '''{
 final rNumber = RegExp(r'(\d+)');
 PedersenParams loadPedersenParams() {
   final jsonWithStringifiedNumbers = pedersenParamsJsonString.replaceAllMapped(
-      rNumber, (match) => '"${match.group(0)}"');
-  return PedersenParams.fromJson(json.decode(jsonWithStringifiedNumbers));
+    rNumber,
+    (match) => '"${match.group(0)}"',
+  );
+  return PedersenParams.fromJson(
+    json.decode(jsonWithStringifiedNumbers) as Map<String, Object?>,
+  );
 }
 
 final pedersenParams = loadPedersenParams();

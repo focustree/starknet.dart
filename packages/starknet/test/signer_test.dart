@@ -7,11 +7,9 @@ class TestKeyPair {
   final Felt private;
   final Felt public;
 
-  TestKeyPair(this.private, this.public);
-
   TestKeyPair.fromJson(Map<String, dynamic> json)
-      : private = Felt.fromHexString(json['private']),
-        public = Felt.fromHexString(json['public']);
+      : private = Felt.fromHexString(json['private'] as String),
+        public = Felt.fromHexString(json['public'] as String);
 }
 
 void main() {
@@ -26,14 +24,14 @@ void main() {
             transactions: [
               FunctionCall(
                 contractAddress: Felt.fromHexString(
-                  "0x033233531959c1da39c28daf337e25e2deadda80ce988290306ffabcd735ccbd",
+                  '0x033233531959c1da39c28daf337e25e2deadda80ce988290306ffabcd735ccbd',
                 ),
-                entryPointSelector: getSelectorByName("mint"),
+                entryPointSelector: getSelectorByName('mint'),
                 calldata: [],
-              )
+              ),
             ],
             contractAddress: Felt.fromIntString(
-              "219128243976675829890319084714200810078954121337483207856443222019910998953",
+              '219128243976675829890319084714200810078954121337483207856443222019910998953',
             ),
             version: 0,
             nonce: defaultNonce,
@@ -44,11 +42,11 @@ void main() {
             signature,
             equals([
               Felt.fromIntString(
-                "107701415394463892922670165541267022802175117514579709928775579816864470554",
+                '107701415394463892922670165541267022802175117514579709928775579816864470554',
               ),
               Felt.fromIntString(
-                "1904177602932261497361499193520322287574011759183225218778227195148991255212",
-              )
+                '1904177602932261497361499193520322287574011759183225218778227195148991255212',
+              ),
             ]),
           );
         });
@@ -56,7 +54,7 @@ void main() {
 
       group('Public key', () {
         test('returns the correct public key for given a private key', () {
-          final keyPairsJson = '''
+          const keyPairsJson = '''
 [
   {
     "public": "0x7e52885445756b313ea16849145363ccb73fb4ab0440dbac333cf9d13de82b9",
@@ -96,9 +94,9 @@ void main() {
 ''';
           final keyPairs = List<TestKeyPair>.from(
             (json.decode(keyPairsJson) as List)
-                .map((e) => TestKeyPair.fromJson(e)),
+                .map((e) => TestKeyPair.fromJson(e as Map<String, dynamic>)),
           );
-          for (var e in keyPairs) {
+          for (final e in keyPairs) {
             final signer = Signer(privateKey: e.private);
             expect(signer.publicKey, equals(e.public));
           }

@@ -15,7 +15,7 @@ jobs:
       - uses: flutter-actions/setup-flutter@v3
         with:
           channel: stable
-          version: 3.19.5
+          version: 3.24.3
           cache: true
           cache-sdk: true
       - uses: bluefireteam/melos-action@v3
@@ -30,7 +30,7 @@ jobs:
       - uses: flutter-actions/setup-flutter@v3
         with:
           channel: stable
-          version: 3.19.5
+          version: 3.24.3
           cache: true
           cache-sdk: true
       - uses: bluefireteam/melos-action@v3
@@ -44,7 +44,7 @@ jobs:
       - uses: flutter-actions/setup-flutter@v3
         with:
           channel: stable
-          version: 3.19.5
+          version: 3.24.3
           cache: true
           cache-sdk: true
       - uses: bluefireteam/melos-action@v3
@@ -85,7 +85,7 @@ jobs:
       - uses: flutter-actions/setup-flutter@v3
         with:
           channel: stable
-          version: 3.19.5
+          version: 3.24.3
           cache: true
           cache-sdk: true
       - uses: bluefireteam/melos-action@v3

@@ -23,8 +23,12 @@ mixin _$ActualFee {
   Felt get amount => throw _privateConstructorUsedError;
   String get unit => throw _privateConstructorUsedError;
 
+  /// Serializes this ActualFee to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of ActualFee
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $ActualFeeCopyWith<ActualFee> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -47,6 +51,8 @@ class _$ActualFeeCopyWithImpl<$Res, $Val extends ActualFee>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of ActualFee
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -85,6 +91,8 @@ class __$$ActualFeeImplCopyWithImpl<$Res>
       _$ActualFeeImpl _value, $Res Function(_$ActualFeeImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ActualFee
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -131,11 +139,13 @@ class _$ActualFeeImpl implements _ActualFee {
             (identical(other.unit, unit) || other.unit == unit));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, amount, unit);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ActualFee
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ActualFeeImplCopyWith<_$ActualFeeImpl> get copyWith =>
@@ -161,8 +171,11 @@ abstract class _ActualFee implements ActualFee {
   Felt get amount;
   @override
   String get unit;
+
+  /// Create a copy of ActualFee
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ActualFeeImplCopyWith<_$ActualFeeImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
