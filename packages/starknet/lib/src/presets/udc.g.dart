@@ -2,6 +2,7 @@
 // ignore_for_file: unused_element
 
 import 'package:starknet/starknet.dart';
+import 'package:starknet_provider/starknet_provider.dart';
 
 class Udc extends Contract {
   Udc({
@@ -14,6 +15,8 @@ class Udc extends Contract {
     Felt salt,
     Felt unique,
     List<Felt> calldata,
+    bool? useSTRKFee,
+    Map<String, ResourceBounds>? resourceBounds,
   ) async {
     final List<Felt> params = [
       classHash,
@@ -22,8 +25,10 @@ class Udc extends Contract {
       ...calldata.toCallData(),
     ];
     final trx = await execute(
-      'deployContract',
-      params,
+      selector: 'deployContract',
+      calldata: params,
+      useSTRKFee: useSTRKFee,
+      resourceBounds: resourceBounds,
     );
     final trxHash = trx.when(
       result: (result) => result.transaction_hash,

@@ -491,13 +491,15 @@ class Account {
     Felt? salt,
     Felt? unique,
     List<Felt>? calldata,
+    bool? useSTRKFee,
+    Map<String, ResourceBounds>? resourceBounds,
   }) async {
     salt ??= Felt.fromInt(0);
     unique ??= Felt.fromInt(0);
     calldata ??= [];
 
-    final txHash = await Udc(account: this, address: udcAddress)
-        .deployContract(classHash, salt, unique, calldata);
+    final txHash = await Udc(account: this, address: udcAddress).deployContract(
+        classHash, salt, unique, calldata, useSTRKFee, resourceBounds);
 
     final txReceipt = await account0.provider
         .getTransactionReceipt(Felt.fromHexString(txHash));

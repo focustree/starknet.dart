@@ -243,7 +243,8 @@ void main() {
     }, tags: ['integration'], skip: true);
 
     group('execute', () {
-      test('succeeds to invoke a function execute to a cairo 1 contract', () async {
+      test('succeeds to invoke a function execute to a cairo 1 contract',
+          () async {
         final sierraContract = await CompiledContract.fromPath(
             '${Directory.current.path}/../../contracts/v1/artifacts/contract2_Counter2.contract_class.json');
         final compiledContract = await CASMCompiledContract.fromPath(
@@ -269,7 +270,7 @@ void main() {
           },
           error: (error) {
             if (error.message.contains('is already declared')) {
-              return '0'; 
+              return '0';
             } else {
               fail(error.message);
             }
@@ -300,7 +301,8 @@ void main() {
           error: (err) => throw Exception("Failed to execute"),
         );
 
-        await waitForAcceptance(transactionHash: txHash1, provider: account0.provider);
+        await waitForAcceptance(
+            transactionHash: txHash1, provider: account0.provider);
 
         final result = await account0.provider.call(
           request: FunctionCall(
@@ -310,9 +312,9 @@ void main() {
           blockId: BlockId.latest,
         );
         int counter = result.when(
-              result: (result) => result[0].toInt(),
-              error: (error) => throw Exception("Failed to get counter value"),
-            );
+          result: (result) => result[0].toInt(),
+          error: (error) => throw Exception("Failed to get counter value"),
+        );
 
         expect(
             counter,
@@ -359,7 +361,7 @@ void main() {
           },
           error: (error) {
             if (error.message.contains('is already declared')) {
-              return '0x00'; 
+              return '0x00';
             } else {
               fail(error.message);
             }
@@ -373,8 +375,21 @@ void main() {
         }
 
         final classHash = sierraClassHash;
-        final contractAddress =
-            await account0.deploy(classHash: classHash, calldata: []);
+        final contractAddress = await account0.deploy(
+          classHash: classHash,
+          calldata: [],
+          useSTRKFee: true,
+          resourceBounds: {
+            'l1_gas': ResourceBounds(
+              maxAmount: '0x198',
+              maxPricePerUnit: '0x22ecb25c00',
+            ),
+            'l2_gas': ResourceBounds(
+              maxAmount: '0x0',
+              maxPricePerUnit: '0x0',
+            ),
+          },
+        );
 
         final response = await account0.execute(
           functionCalls: [
@@ -426,7 +441,10 @@ void main() {
               4,
             ));
       });
-    }, tags: ['integration'], skip: false, timeout: Timeout(Duration(minutes: 10)));
+    },
+        tags: ['integration'],
+        skip: false,
+        timeout: Timeout(Duration(minutes: 10)));
 
     group('fee token', () {
       test('get balance', () async {

@@ -29,7 +29,8 @@ abstract class DeclareTransaction {
       case DECLARE_TXN_V3:
         return DeclareTransactionV3.fromJson(json);
       default:
-        throw ArgumentError('Unsupported transaction version: ${json['version']}');
+        throw ArgumentError(
+            'Unsupported transaction version: ${json['version']}');
     }
   }
 
