@@ -201,12 +201,11 @@ class Account {
     int maxAttempts = 5,
     Felt? maxFee,
     Felt? nonce,
-    // needed for v2
+    // needed for v3
     bool? useSTRKFee,
     Map<String, ResourceBounds>? resourceBounds,
   }) async {
     nonce = nonce ?? await getNonce();
-    print(nonce);
 
     // These values are for future use (until then they are empty or zero)
     List<Felt> accountDeploymentData = [];
@@ -220,6 +219,14 @@ class Account {
     if (useSTRKFee) {
       //change resourceBounds original strings with decimal numbers to string hex numbers (for example "10" -> "0xa")
       resourceBounds!.forEach((key, value) {
+        // check string valuescan be converted to Felt decimal numbers before translate to hex
+        // if not then throw error with message "Resource bounds values must be valid Felt numbers
+        try {
+          Felt(BigInt.parse(value.maxAmount));
+          Felt(BigInt.parse(value.maxPricePerUnit));
+        } catch (e) {
+          throw Exception("Resource bounds values must be valid Felt numbers");
+        }
         resourceBounds![key] = ResourceBounds(
           maxAmount: '0x${BigInt.parse(value.maxAmount).toRadixString(16)}',
           maxPricePerUnit:
@@ -244,7 +251,7 @@ class Account {
       final signature = signer.signTransactions(
         transactions: functionCalls,
         contractAddress: accountAddress,
-        version: useSTRKFee
+        version: supportedTxVersion == AccountSupportedTxVersion.v3
             ? 3
             : supportedTxVersion == AccountSupportedTxVersion.v1
                 ? 1
@@ -319,7 +326,6 @@ class Account {
                 senderAddress: accountAddress,
                 signature: signature,
                 tip: '0x${tip.toRadixString(16)}',
-                version: '0x3',
               ),
             ),
           );
@@ -368,7 +374,7 @@ class Account {
     required ICompiledContract compiledContract,
     Felt? maxFee,
     Felt? nonce,
-    // needed for v2
+    // needed for v3
     BigInt? compiledClassHash,
     CASMCompiledContract? casmCompiledContract,
     bool? useSTRKFee = false,

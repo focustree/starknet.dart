@@ -27,5 +27,15 @@ void main() {
       Felt a = Felt.fromHexString("0x4");
       expect((a << 1).toHexString(), equals("0x8"));
     });
+    test('should throw ArgumentError for value equal to prime (edge case)', () {
+      expect(
+        () => Felt(Felt.prime),
+        throwsA(isA<ArgumentError>().having(
+          (e) => e.message,
+          'message',
+          'Value must be smaller than 2^251 + 17 * 2^192 + 1',
+        )),
+      );
+    });
   });
 }

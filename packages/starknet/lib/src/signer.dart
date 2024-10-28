@@ -34,6 +34,17 @@ class Signer {
     feeDataAvailabilityMode ??= 'L1';
     nonceDataAvailabilityMode ??= 'L1';
 
+    // Add validation for resourceBounds entries to prevent null exceptions
+    if (resourceBounds.isEmpty) {
+      throw Exception("Resource bounds must not be empty");
+    }
+    if (!resourceBounds.containsKey('l1_gas')) {
+      throw Exception("Resource bounds for l1_gas must not be null");
+    }
+    if (!resourceBounds.containsKey('l2_gas')) {
+      throw Exception("Resource bounds for l2_gas must not be null");
+    }
+
     Felt l1GasMaxAmount = Felt(BigInt.parse(
         resourceBounds['l1_gas']!.maxAmount.replaceFirst('0x', ''),
         radix: 16));
@@ -357,19 +368,6 @@ class Signer {
       classHash.toBigInt(),
       compiledClassHash.toBigInt(),
     ];
-//     declare_v3_tx_hash = h(
-//     "declare",
-//     version,
-//     sender_address,
-//     h(tip, l1_gas_bounds, l2_gas_bounds),
-//     h(paymaster_data),
-//     chain_id,
-//     nonce,
-//     data_availability_modes,
-//     h(account_deployment_data),
-//     class_hash,
-//     compiled_class_hash
-// )
 
     final transactionHash = poseidonHasher.hashMany(elementsToHash);
     print("transactionHash: ${Felt(transactionHash).toHexString()}");

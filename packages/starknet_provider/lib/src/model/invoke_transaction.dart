@@ -24,10 +24,10 @@ abstract class InvokeTransaction {
         return InvokeTransactionV0.fromJson(json);
       case '0x01':
         return InvokeTransactionV1.fromJson(json);
-      case '0x02':
+      case '0x03':
         return InvokeTransactionV3.fromJson(json);
       default:
-        throw ArgumentError('Unsupported transaction version');
+        throw ArgumentError('Unsupported transaction version:');
     }
   }
 

@@ -48,26 +48,26 @@ final account0 = getAccount(
 );
 
 final devnetAccount1Address = Felt.fromHexString(
-  "0x69b49c2cc8b16e80e86bfc5b0614a59aa8c9b601569c7b80dde04d3f3151b79",
+  "0x78662e7352d062084b0010068b99288486c2d8b914f6e2a55ce945f8792c8b1",
 );
 final devnetAccount1PublicKey = Felt.fromHexString(
-  "0x175666e92f540a19eb24fa299ce04c23f3b75cb2d2332e3ff2021bf6d615fa5",
+  "0x7a1bb2744a7dd29bffd44341dbd78008adb4bc11733601e7eddff322ada9cb",
 );
 final devnetAccount1PrivateKey =
-    Felt.fromHexString("0xf728b4fa42485e3a0a5d2f346baa9455");
+    Felt.fromHexString("0xe1406455b7d66b1690803be066cbe5e");
 final account1 = getAccount(
   accountAddress: devnetAccount1Address,
   privateKey: devnetAccount1PrivateKey,
 );
 
 final devnetAccount9Address = Felt.fromHexString(
-  "0x7f61fa3893ad0637b2ff76fed23ebbb91835aacd4f743c2347716f856438429",
+  "0x4b3f4ba8c00a02b66142a4b1dd41a4dfab4f92650922a3280977b0f03c75ee1",
 );
 final devnetAccount9PublicKey = Felt.fromHexString(
-  "0xc11e246b1d54515a26204d2d3c8586ea25ed9eecae00df173405974cb86dbc",
+  "0x374f7fcb50bc2d6b8b7a267f919232e3ac68354ce3eafe88d3df323fc1deb23",
 );
 final devnetAccount9PrivateKey =
-    Felt.fromHexString("0x259f4329e6f4590b9a164106cf6a659e");
+    Felt.fromHexString("0x57b2f8431c772e647712ae93cc616638");
 final account9 = getAccount(
   accountAddress: devnetAccount9Address,
   privateKey: devnetAccount9PrivateKey,
