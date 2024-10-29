@@ -103,7 +103,8 @@ void main() {
                         .map((e) => Felt(e))),
                   );
                 },
-                error: (error) => fail("Shouldn't fail"));
+                error: (error) =>
+                    fail("Shouldn't fail, error: [${error.toString()}]"));
       });
 
       test(

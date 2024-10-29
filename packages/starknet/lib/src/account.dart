@@ -328,7 +328,7 @@ class Account {
       String nonceDataAvailabilityMode = 'L1';
       resourceBounds = resourceBounds ?? {};
       //change resourceBounds original strings with decimal numbers to string hex numbers (for example "10" -> "0xa")
-      resourceBounds!.forEach((key, value) {
+      resourceBounds.forEach((key, value) {
         // check string valuescan be converted to Felt decimal numbers before translate to hex
         // if not then throw error with message "Resource bounds values must be valid Felt numbers
         try {
@@ -369,7 +369,7 @@ class Account {
             DeclareTransactionRequest(
               declareTransaction: DeclareTransactionV3(
                 accountDeploymentData: accountDeploymentData,
-                compiledClassHash: Felt(compiledClassHash!),
+                compiledClassHash: Felt(compiledClassHash),
                 contractClass: compiledContract.flatten(),
                 feeDataAvailabilityMode: feeDataAvailabilityMode,
                 nonce: nonce,
