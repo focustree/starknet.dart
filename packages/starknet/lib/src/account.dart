@@ -521,7 +521,7 @@ class Account {
   }) async {
     if (useSTRKtoken ?? false) {
       final txHash = await ERC20(account: this, address: strkAddress)
-        .transfer(recipient, amount);
+          .transfer(recipient, amount);
       return txHash;
     }
 
@@ -603,16 +603,16 @@ class Account {
       return provider.addDeployAccountTransaction(
         DeployAccountTransactionRequest(
           deployAccountTransaction: DeployAccountTransactionV3(
-          classHash: classHash,
-          constructorCalldata: constructorCalldata,
-          contractAddressSalt: contractAddressSalt,
-          feeDataAvailabilityMode: feeDataAvailabilityMode,
-          nonce: nonce,
-          nonceDataAvailabilityMode: nonceDataAvailabilityMode,
-          paymasterData: paymasterData,
-          resourceBounds: resourceBounds,
-          signature: signature,
-          tip: '0x${tip.toRadixString(16)}',
+            classHash: classHash,
+            constructorCalldata: constructorCalldata,
+            contractAddressSalt: contractAddressSalt,
+            feeDataAvailabilityMode: feeDataAvailabilityMode,
+            nonce: nonce,
+            nonceDataAvailabilityMode: nonceDataAvailabilityMode,
+            paymasterData: paymasterData,
+            resourceBounds: resourceBounds,
+            signature: signature,
+            tip: '0x${tip.toRadixString(16)}',
           ),
         ),
       );
@@ -624,17 +624,17 @@ class Account {
         chainId: chainId,
         nonce: nonce,
         maxFee: maxFee,
-        );
+      );
 
       return provider.addDeployAccountTransaction(
-      DeployAccountTransactionRequest(
-        deployAccountTransaction: DeployAccountTransactionV1(
-          classHash: classHash,
-          signature: signature,
-          maxFee: maxFee,
-          nonce: nonce,
-          contractAddressSalt: contractAddressSalt,
-          constructorCalldata: constructorCalldata,
+        DeployAccountTransactionRequest(
+          deployAccountTransaction: DeployAccountTransactionV1(
+            classHash: classHash,
+            signature: signature,
+            maxFee: maxFee,
+            nonce: nonce,
+            contractAddressSalt: contractAddressSalt,
+            constructorCalldata: constructorCalldata,
           ),
         ),
       );

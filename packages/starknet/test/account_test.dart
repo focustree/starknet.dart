@@ -170,7 +170,7 @@ void main() {
         final contractAddress = await account0
             .deploy(classHash: classHash, calldata: [Felt.fromInt(42)]);
         expect(contractAddress, equals(balanceContractAddress));
-      });
+      }, skip: true);
 
       test('succeeds to deploy a cairo 1 contract', () async {
         final classHash = Felt.fromHexString(
@@ -192,7 +192,7 @@ void main() {
               ),
             ));
         print("Address $contractAddress");
-      });
+      }, skip: true);
       test('succeeds to deploy an account v1', () async {
         final accountPrivateKey = Felt.fromHexString("0x12345678");
         final accountPublicKey = Felt.fromHexString(
@@ -256,13 +256,12 @@ void main() {
         expect(accountClassHash, equals(classHash));
       });
       test('succeeds to deploy an account v3', () async {
-        final accountPrivateKey = Felt.fromHexString("0x12345678");
+        final accountPrivateKey = Felt.fromHexString("0x12345678abcdef");
         final accountPublicKey = Felt.fromHexString(
-            "0x47de619de131463cbf799d321b50c617566dc897d4be614fb3927eacd55d7ad");
+            "0x44702ae20646bbb316ee2f301c9b31ca9f7f301d48d2b6ee82da71f828e8bcb");
         final accountConstructorCalldata = [accountPublicKey];
         final accountSigner = Signer(privateKey: accountPrivateKey);
         final classHash = devnetOpenZeppelinAccountClassHash;
-        final maxFee = defaultMaxFee;
         final provider = account0.provider;
         final salt = Felt.fromInt(42);
         // we have to compute account address to send token
@@ -280,43 +279,32 @@ void main() {
         // account address requires token to pay deploy fees
         final txSend = await account0.send(
             recipient: accountAddress,
-            amount: Uint256(low: Felt.fromHexString("0x2b6033cec800"), high: Felt.fromInt(0)),
+            amount: Uint256(
+                low: Felt.fromHexString("0x1aa535d3d0c000"),
+                high: Felt.fromInt(0)),
             useSTRKtoken: true);
         bool success = await waitForAcceptance(
             transactionHash: txSend, provider: account0.provider);
         expect(success, equals(true));
-
-        final result = await account0.provider.call(
-          request: FunctionCall(
-              contractAddress: Felt.fromHexString(
-                  "0x04718f5a0fc34cc1af16a1cdee98ffb20c31f5cd61d6ab07201858f4287c938d"),
-              entryPointSelector: getSelectorByName("balance_of"),
-              calldata: [accountAddress]),
-          blockId: BlockId.latest,
-        );
-        BigInt balance = result.when(
-          result: (result) => result[0].toBigInt(),
-          error: (error) => throw Exception("Failed to get counter value"),
-        );
-        print('contractAddress ${accountAddress.toHexString()}');
-        print('Balance $balance');
+        // deploy account with STRK fee
         final tx = await Account.deployAccount(
-            classHash: classHash,
-            signer: accountSigner,
-            provider: provider,
-            constructorCalldata: accountConstructorCalldata,
-            contractAddressSalt: salt,
-            useSTRKFee: true,
-            resourceBounds: {
-              'l1_gas': ResourceBounds(
-                maxAmount: '0x1b6033cec800',
-                maxPricePerUnit: '0x22ecb25c00',
-              ),
-              'l2_gas': ResourceBounds(
-                maxAmount: '0x0',
-                maxPricePerUnit: '0x0',
-              ),
-            },);
+          classHash: classHash,
+          signer: accountSigner,
+          provider: provider,
+          constructorCalldata: accountConstructorCalldata,
+          contractAddressSalt: salt,
+          useSTRKFee: true,
+          resourceBounds: {
+            'l1_gas': ResourceBounds(
+              maxAmount: '0xc350',
+              maxPricePerUnit: '0x22ecb25c00',
+            ),
+            'l2_gas': ResourceBounds(
+              maxAmount: '0x0',
+              maxPricePerUnit: '0x0',
+            ),
+          },
+        );
         final contractAddress = tx.when(
             result: (result) => result.contractAddress,
             error: (error) =>

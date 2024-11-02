@@ -29,7 +29,8 @@ class DeployAccountTransactionV1
     required Felt contractAddressSalt,
     required List<Felt> constructorCalldata,
     required Felt classHash,
-    @Default('0x1') String version, //Use 0x1 instead of 0x01 for devnet compatibility
+    @Default('0x1')
+    String version, //Use 0x1 instead of 0x01 for devnet compatibility
     @Default('DEPLOY_ACCOUNT') String type,
   }) = _DeployAccountTransactionV1;
 
@@ -42,7 +43,6 @@ class DeployAccountTransactionV3
     with _$DeployAccountTransactionV3
     implements DeployAccountTransaction {
   const factory DeployAccountTransactionV3({
-
     @Default('DEPLOY_ACCOUNT') String type,
     @Default('0x3') String version,
     required Felt classHash,
