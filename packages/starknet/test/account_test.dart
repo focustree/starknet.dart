@@ -193,7 +193,7 @@ void main() {
             ));
         print("Address $contractAddress");
       });
-      test('succeeds to deploy an account', () async {
+      test('succeeds to deploy an account v1', () async {
         final accountPrivateKey = Felt.fromHexString("0x12345678");
         final accountPublicKey = Felt.fromHexString(
             "0x47de619de131463cbf799d321b50c617566dc897d4be614fb3927eacd55d7ad");
@@ -202,11 +202,12 @@ void main() {
         final classHash = devnetOpenZeppelinAccountClassHash;
         final maxFee = defaultMaxFee;
         final provider = account0.provider;
+        final salt = Felt.fromInt(42);
         // we have to compute account address to send token
         final accountAddress = Contract.computeAddress(
             classHash: classHash,
             calldata: accountConstructorCalldata,
-            salt: Felt.fromInt(42));
+            salt: salt);
 
         Felt accountClassHash = (await provider.getClassHashAt(
                 contractAddress: accountAddress, blockId: BlockId.latest))
@@ -221,11 +222,26 @@ void main() {
         bool success = await waitForAcceptance(
             transactionHash: txSend, provider: account0.provider);
         expect(success, equals(true));
+
+        final result = await account0.provider.call(
+          request: FunctionCall(
+              contractAddress: Felt.fromHexString(
+                  "0x049d36570d4e46f48e99674bd3fcc84644ddd6b96f7c741b1562b82f9e004dc7"),
+              entryPointSelector: getSelectorByName("balance_of"),
+              calldata: [accountAddress]),
+          blockId: BlockId.latest,
+        );
+        int counter = result.when(
+          result: (result) => result[0].toInt(),
+          error: (error) => throw Exception("Failed to get counter value"),
+        );
+        print('Counter $counter');
         final tx = await Account.deployAccount(
-            classHash: accountClassHash,
+            classHash: classHash,
             signer: accountSigner,
             provider: provider,
             constructorCalldata: accountConstructorCalldata,
+            contractAddressSalt: salt,
             maxFee: maxFee);
         final contractAddress = tx.when(
             result: (result) => result.contractAddress,
@@ -239,8 +255,82 @@ void main() {
                 error: ((error) => Felt.fromInt(0)));
         expect(accountClassHash, equals(classHash));
       });
+      test('succeeds to deploy an account v3', () async {
+        final accountPrivateKey = Felt.fromHexString("0x12345678");
+        final accountPublicKey = Felt.fromHexString(
+            "0x47de619de131463cbf799d321b50c617566dc897d4be614fb3927eacd55d7ad");
+        final accountConstructorCalldata = [accountPublicKey];
+        final accountSigner = Signer(privateKey: accountPrivateKey);
+        final classHash = devnetOpenZeppelinAccountClassHash;
+        final maxFee = defaultMaxFee;
+        final provider = account0.provider;
+        final salt = Felt.fromInt(42);
+        // we have to compute account address to send token
+        final accountAddress = Contract.computeAddress(
+            classHash: classHash,
+            calldata: accountConstructorCalldata,
+            salt: salt);
+
+        Felt accountClassHash = (await provider.getClassHashAt(
+                contractAddress: accountAddress, blockId: BlockId.latest))
+            .when(
+                result: (result) => result,
+                error: ((error) => Felt.fromInt(0)));
+        expect(accountClassHash, equals(Felt.fromInt(0)));
+        // account address requires token to pay deploy fees
+        final txSend = await account0.send(
+            recipient: accountAddress,
+            amount: Uint256(low: Felt.fromHexString("0x2b6033cec800"), high: Felt.fromInt(0)),
+            useSTRKtoken: true);
+        bool success = await waitForAcceptance(
+            transactionHash: txSend, provider: account0.provider);
+        expect(success, equals(true));
+
+        final result = await account0.provider.call(
+          request: FunctionCall(
+              contractAddress: Felt.fromHexString(
+                  "0x04718f5a0fc34cc1af16a1cdee98ffb20c31f5cd61d6ab07201858f4287c938d"),
+              entryPointSelector: getSelectorByName("balance_of"),
+              calldata: [accountAddress]),
+          blockId: BlockId.latest,
+        );
+        BigInt balance = result.when(
+          result: (result) => result[0].toBigInt(),
+          error: (error) => throw Exception("Failed to get counter value"),
+        );
+        print('contractAddress ${accountAddress.toHexString()}');
+        print('Balance $balance');
+        final tx = await Account.deployAccount(
+            classHash: classHash,
+            signer: accountSigner,
+            provider: provider,
+            constructorCalldata: accountConstructorCalldata,
+            contractAddressSalt: salt,
+            useSTRKFee: true,
+            resourceBounds: {
+              'l1_gas': ResourceBounds(
+                maxAmount: '0x1b6033cec800',
+                maxPricePerUnit: '0x22ecb25c00',
+              ),
+              'l2_gas': ResourceBounds(
+                maxAmount: '0x0',
+                maxPricePerUnit: '0x0',
+              ),
+            },);
+        final contractAddress = tx.when(
+            result: (result) => result.contractAddress,
+            error: (error) =>
+                throw Exception("${error.code}: ${error.message}"));
+        expect(accountAddress, equals(contractAddress));
+        accountClassHash = (await provider.getClassHashAt(
+                contractAddress: accountAddress, blockId: BlockId.latest))
+            .when(
+                result: (result) => result,
+                error: ((error) => Felt.fromInt(0)));
+        expect(accountClassHash, equals(classHash));
+      });
       // }, tags: ['integration']);
-    }, tags: ['integration'], skip: true);
+    }, tags: ['integration'], skip: false);
 
     group('execute', () {
       test('succeeds to invoke a function execute to a cairo 1 contract',

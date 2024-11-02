@@ -212,7 +212,7 @@ class _$DeployAccountTransactionV1Impl implements _DeployAccountTransactionV1 {
       required this.contractAddressSalt,
       required final List<Felt> constructorCalldata,
       required this.classHash,
-      this.version = '0x01',
+      this.version = '0x1',
       this.type = 'DEPLOY_ACCOUNT'})
       : _signature = signature,
         _constructorCalldata = constructorCalldata;
@@ -346,6 +346,479 @@ abstract class _DeployAccountTransactionV1
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$DeployAccountTransactionV1ImplCopyWith<_$DeployAccountTransactionV1Impl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+DeployAccountTransactionV3 _$DeployAccountTransactionV3FromJson(
+    Map<String, dynamic> json) {
+  return _DeployAccountTransactionV3.fromJson(json);
+}
+
+/// @nodoc
+mixin _$DeployAccountTransactionV3 {
+// chain_id	FieldElement
+// class_hash	FieldElement
+// constructor_calldata	List<FieldElement>
+// contract_address_salt	FieldElement
+// fee_data_availability_mode	FieldElement
+// nonce	FieldElement
+// nonce_data_availability_mode	FieldElement
+// paymaster_data	List<FieldElement>
+// resource_bounds	Dict[Resource, ResourceBounds]
+// signature	List<`FieldElement>`
+// tip	FieldElement
+// version	FieldElement
+  String get type => throw _privateConstructorUsedError;
+  String get version => throw _privateConstructorUsedError;
+  Felt get classHash => throw _privateConstructorUsedError;
+  List<Felt> get constructorCalldata => throw _privateConstructorUsedError;
+  Felt get contractAddressSalt => throw _privateConstructorUsedError;
+  String get feeDataAvailabilityMode => throw _privateConstructorUsedError;
+  Felt get nonce => throw _privateConstructorUsedError;
+  String get nonceDataAvailabilityMode => throw _privateConstructorUsedError;
+  List<Felt> get paymasterData => throw _privateConstructorUsedError;
+  Map<String, ResourceBounds> get resourceBounds =>
+      throw _privateConstructorUsedError;
+  List<Felt> get signature => throw _privateConstructorUsedError;
+  String get tip => throw _privateConstructorUsedError;
+
+  /// Serializes this DeployAccountTransactionV3 to a JSON map.
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+
+  /// Create a copy of DeployAccountTransactionV3
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  $DeployAccountTransactionV3CopyWith<DeployAccountTransactionV3>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $DeployAccountTransactionV3CopyWith<$Res> {
+  factory $DeployAccountTransactionV3CopyWith(DeployAccountTransactionV3 value,
+          $Res Function(DeployAccountTransactionV3) then) =
+      _$DeployAccountTransactionV3CopyWithImpl<$Res,
+          DeployAccountTransactionV3>;
+  @useResult
+  $Res call(
+      {String type,
+      String version,
+      Felt classHash,
+      List<Felt> constructorCalldata,
+      Felt contractAddressSalt,
+      String feeDataAvailabilityMode,
+      Felt nonce,
+      String nonceDataAvailabilityMode,
+      List<Felt> paymasterData,
+      Map<String, ResourceBounds> resourceBounds,
+      List<Felt> signature,
+      String tip});
+}
+
+/// @nodoc
+class _$DeployAccountTransactionV3CopyWithImpl<$Res,
+        $Val extends DeployAccountTransactionV3>
+    implements $DeployAccountTransactionV3CopyWith<$Res> {
+  _$DeployAccountTransactionV3CopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  /// Create a copy of DeployAccountTransactionV3
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? type = null,
+    Object? version = null,
+    Object? classHash = null,
+    Object? constructorCalldata = null,
+    Object? contractAddressSalt = null,
+    Object? feeDataAvailabilityMode = null,
+    Object? nonce = null,
+    Object? nonceDataAvailabilityMode = null,
+    Object? paymasterData = null,
+    Object? resourceBounds = null,
+    Object? signature = null,
+    Object? tip = null,
+  }) {
+    return _then(_value.copyWith(
+      type: null == type
+          ? _value.type
+          : type // ignore: cast_nullable_to_non_nullable
+              as String,
+      version: null == version
+          ? _value.version
+          : version // ignore: cast_nullable_to_non_nullable
+              as String,
+      classHash: null == classHash
+          ? _value.classHash
+          : classHash // ignore: cast_nullable_to_non_nullable
+              as Felt,
+      constructorCalldata: null == constructorCalldata
+          ? _value.constructorCalldata
+          : constructorCalldata // ignore: cast_nullable_to_non_nullable
+              as List<Felt>,
+      contractAddressSalt: null == contractAddressSalt
+          ? _value.contractAddressSalt
+          : contractAddressSalt // ignore: cast_nullable_to_non_nullable
+              as Felt,
+      feeDataAvailabilityMode: null == feeDataAvailabilityMode
+          ? _value.feeDataAvailabilityMode
+          : feeDataAvailabilityMode // ignore: cast_nullable_to_non_nullable
+              as String,
+      nonce: null == nonce
+          ? _value.nonce
+          : nonce // ignore: cast_nullable_to_non_nullable
+              as Felt,
+      nonceDataAvailabilityMode: null == nonceDataAvailabilityMode
+          ? _value.nonceDataAvailabilityMode
+          : nonceDataAvailabilityMode // ignore: cast_nullable_to_non_nullable
+              as String,
+      paymasterData: null == paymasterData
+          ? _value.paymasterData
+          : paymasterData // ignore: cast_nullable_to_non_nullable
+              as List<Felt>,
+      resourceBounds: null == resourceBounds
+          ? _value.resourceBounds
+          : resourceBounds // ignore: cast_nullable_to_non_nullable
+              as Map<String, ResourceBounds>,
+      signature: null == signature
+          ? _value.signature
+          : signature // ignore: cast_nullable_to_non_nullable
+              as List<Felt>,
+      tip: null == tip
+          ? _value.tip
+          : tip // ignore: cast_nullable_to_non_nullable
+              as String,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$DeployAccountTransactionV3ImplCopyWith<$Res>
+    implements $DeployAccountTransactionV3CopyWith<$Res> {
+  factory _$$DeployAccountTransactionV3ImplCopyWith(
+          _$DeployAccountTransactionV3Impl value,
+          $Res Function(_$DeployAccountTransactionV3Impl) then) =
+      __$$DeployAccountTransactionV3ImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call(
+      {String type,
+      String version,
+      Felt classHash,
+      List<Felt> constructorCalldata,
+      Felt contractAddressSalt,
+      String feeDataAvailabilityMode,
+      Felt nonce,
+      String nonceDataAvailabilityMode,
+      List<Felt> paymasterData,
+      Map<String, ResourceBounds> resourceBounds,
+      List<Felt> signature,
+      String tip});
+}
+
+/// @nodoc
+class __$$DeployAccountTransactionV3ImplCopyWithImpl<$Res>
+    extends _$DeployAccountTransactionV3CopyWithImpl<$Res,
+        _$DeployAccountTransactionV3Impl>
+    implements _$$DeployAccountTransactionV3ImplCopyWith<$Res> {
+  __$$DeployAccountTransactionV3ImplCopyWithImpl(
+      _$DeployAccountTransactionV3Impl _value,
+      $Res Function(_$DeployAccountTransactionV3Impl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of DeployAccountTransactionV3
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? type = null,
+    Object? version = null,
+    Object? classHash = null,
+    Object? constructorCalldata = null,
+    Object? contractAddressSalt = null,
+    Object? feeDataAvailabilityMode = null,
+    Object? nonce = null,
+    Object? nonceDataAvailabilityMode = null,
+    Object? paymasterData = null,
+    Object? resourceBounds = null,
+    Object? signature = null,
+    Object? tip = null,
+  }) {
+    return _then(_$DeployAccountTransactionV3Impl(
+      type: null == type
+          ? _value.type
+          : type // ignore: cast_nullable_to_non_nullable
+              as String,
+      version: null == version
+          ? _value.version
+          : version // ignore: cast_nullable_to_non_nullable
+              as String,
+      classHash: null == classHash
+          ? _value.classHash
+          : classHash // ignore: cast_nullable_to_non_nullable
+              as Felt,
+      constructorCalldata: null == constructorCalldata
+          ? _value._constructorCalldata
+          : constructorCalldata // ignore: cast_nullable_to_non_nullable
+              as List<Felt>,
+      contractAddressSalt: null == contractAddressSalt
+          ? _value.contractAddressSalt
+          : contractAddressSalt // ignore: cast_nullable_to_non_nullable
+              as Felt,
+      feeDataAvailabilityMode: null == feeDataAvailabilityMode
+          ? _value.feeDataAvailabilityMode
+          : feeDataAvailabilityMode // ignore: cast_nullable_to_non_nullable
+              as String,
+      nonce: null == nonce
+          ? _value.nonce
+          : nonce // ignore: cast_nullable_to_non_nullable
+              as Felt,
+      nonceDataAvailabilityMode: null == nonceDataAvailabilityMode
+          ? _value.nonceDataAvailabilityMode
+          : nonceDataAvailabilityMode // ignore: cast_nullable_to_non_nullable
+              as String,
+      paymasterData: null == paymasterData
+          ? _value._paymasterData
+          : paymasterData // ignore: cast_nullable_to_non_nullable
+              as List<Felt>,
+      resourceBounds: null == resourceBounds
+          ? _value._resourceBounds
+          : resourceBounds // ignore: cast_nullable_to_non_nullable
+              as Map<String, ResourceBounds>,
+      signature: null == signature
+          ? _value._signature
+          : signature // ignore: cast_nullable_to_non_nullable
+              as List<Felt>,
+      tip: null == tip
+          ? _value.tip
+          : tip // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$DeployAccountTransactionV3Impl implements _DeployAccountTransactionV3 {
+  const _$DeployAccountTransactionV3Impl(
+      {this.type = 'DEPLOY_ACCOUNT',
+      this.version = '0x3',
+      required this.classHash,
+      required final List<Felt> constructorCalldata,
+      required this.contractAddressSalt,
+      required this.feeDataAvailabilityMode,
+      required this.nonce,
+      required this.nonceDataAvailabilityMode,
+      required final List<Felt> paymasterData,
+      required final Map<String, ResourceBounds> resourceBounds,
+      required final List<Felt> signature,
+      required this.tip})
+      : _constructorCalldata = constructorCalldata,
+        _paymasterData = paymasterData,
+        _resourceBounds = resourceBounds,
+        _signature = signature;
+
+  factory _$DeployAccountTransactionV3Impl.fromJson(
+          Map<String, dynamic> json) =>
+      _$$DeployAccountTransactionV3ImplFromJson(json);
+
+// chain_id	FieldElement
+// class_hash	FieldElement
+// constructor_calldata	List<FieldElement>
+// contract_address_salt	FieldElement
+// fee_data_availability_mode	FieldElement
+// nonce	FieldElement
+// nonce_data_availability_mode	FieldElement
+// paymaster_data	List<FieldElement>
+// resource_bounds	Dict[Resource, ResourceBounds]
+// signature	List<`FieldElement>`
+// tip	FieldElement
+// version	FieldElement
+  @override
+  @JsonKey()
+  final String type;
+  @override
+  @JsonKey()
+  final String version;
+  @override
+  final Felt classHash;
+  final List<Felt> _constructorCalldata;
+  @override
+  List<Felt> get constructorCalldata {
+    if (_constructorCalldata is EqualUnmodifiableListView)
+      return _constructorCalldata;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_constructorCalldata);
+  }
+
+  @override
+  final Felt contractAddressSalt;
+  @override
+  final String feeDataAvailabilityMode;
+  @override
+  final Felt nonce;
+  @override
+  final String nonceDataAvailabilityMode;
+  final List<Felt> _paymasterData;
+  @override
+  List<Felt> get paymasterData {
+    if (_paymasterData is EqualUnmodifiableListView) return _paymasterData;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_paymasterData);
+  }
+
+  final Map<String, ResourceBounds> _resourceBounds;
+  @override
+  Map<String, ResourceBounds> get resourceBounds {
+    if (_resourceBounds is EqualUnmodifiableMapView) return _resourceBounds;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableMapView(_resourceBounds);
+  }
+
+  final List<Felt> _signature;
+  @override
+  List<Felt> get signature {
+    if (_signature is EqualUnmodifiableListView) return _signature;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_signature);
+  }
+
+  @override
+  final String tip;
+
+  @override
+  String toString() {
+    return 'DeployAccountTransactionV3(type: $type, version: $version, classHash: $classHash, constructorCalldata: $constructorCalldata, contractAddressSalt: $contractAddressSalt, feeDataAvailabilityMode: $feeDataAvailabilityMode, nonce: $nonce, nonceDataAvailabilityMode: $nonceDataAvailabilityMode, paymasterData: $paymasterData, resourceBounds: $resourceBounds, signature: $signature, tip: $tip)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$DeployAccountTransactionV3Impl &&
+            (identical(other.type, type) || other.type == type) &&
+            (identical(other.version, version) || other.version == version) &&
+            (identical(other.classHash, classHash) ||
+                other.classHash == classHash) &&
+            const DeepCollectionEquality()
+                .equals(other._constructorCalldata, _constructorCalldata) &&
+            (identical(other.contractAddressSalt, contractAddressSalt) ||
+                other.contractAddressSalt == contractAddressSalt) &&
+            (identical(
+                    other.feeDataAvailabilityMode, feeDataAvailabilityMode) ||
+                other.feeDataAvailabilityMode == feeDataAvailabilityMode) &&
+            (identical(other.nonce, nonce) || other.nonce == nonce) &&
+            (identical(other.nonceDataAvailabilityMode,
+                    nonceDataAvailabilityMode) ||
+                other.nonceDataAvailabilityMode == nonceDataAvailabilityMode) &&
+            const DeepCollectionEquality()
+                .equals(other._paymasterData, _paymasterData) &&
+            const DeepCollectionEquality()
+                .equals(other._resourceBounds, _resourceBounds) &&
+            const DeepCollectionEquality()
+                .equals(other._signature, _signature) &&
+            (identical(other.tip, tip) || other.tip == tip));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(
+      runtimeType,
+      type,
+      version,
+      classHash,
+      const DeepCollectionEquality().hash(_constructorCalldata),
+      contractAddressSalt,
+      feeDataAvailabilityMode,
+      nonce,
+      nonceDataAvailabilityMode,
+      const DeepCollectionEquality().hash(_paymasterData),
+      const DeepCollectionEquality().hash(_resourceBounds),
+      const DeepCollectionEquality().hash(_signature),
+      tip);
+
+  /// Create a copy of DeployAccountTransactionV3
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$DeployAccountTransactionV3ImplCopyWith<_$DeployAccountTransactionV3Impl>
+      get copyWith => __$$DeployAccountTransactionV3ImplCopyWithImpl<
+          _$DeployAccountTransactionV3Impl>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$DeployAccountTransactionV3ImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class _DeployAccountTransactionV3
+    implements DeployAccountTransactionV3 {
+  const factory _DeployAccountTransactionV3(
+      {final String type,
+      final String version,
+      required final Felt classHash,
+      required final List<Felt> constructorCalldata,
+      required final Felt contractAddressSalt,
+      required final String feeDataAvailabilityMode,
+      required final Felt nonce,
+      required final String nonceDataAvailabilityMode,
+      required final List<Felt> paymasterData,
+      required final Map<String, ResourceBounds> resourceBounds,
+      required final List<Felt> signature,
+      required final String tip}) = _$DeployAccountTransactionV3Impl;
+
+  factory _DeployAccountTransactionV3.fromJson(Map<String, dynamic> json) =
+      _$DeployAccountTransactionV3Impl.fromJson;
+
+// chain_id	FieldElement
+// class_hash	FieldElement
+// constructor_calldata	List<FieldElement>
+// contract_address_salt	FieldElement
+// fee_data_availability_mode	FieldElement
+// nonce	FieldElement
+// nonce_data_availability_mode	FieldElement
+// paymaster_data	List<FieldElement>
+// resource_bounds	Dict[Resource, ResourceBounds]
+// signature	List<`FieldElement>`
+// tip	FieldElement
+// version	FieldElement
+  @override
+  String get type;
+  @override
+  String get version;
+  @override
+  Felt get classHash;
+  @override
+  List<Felt> get constructorCalldata;
+  @override
+  Felt get contractAddressSalt;
+  @override
+  String get feeDataAvailabilityMode;
+  @override
+  Felt get nonce;
+  @override
+  String get nonceDataAvailabilityMode;
+  @override
+  List<Felt> get paymasterData;
+  @override
+  Map<String, ResourceBounds> get resourceBounds;
+  @override
+  List<Felt> get signature;
+  @override
+  String get tip;
+
+  /// Create a copy of DeployAccountTransactionV3
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$DeployAccountTransactionV3ImplCopyWith<_$DeployAccountTransactionV3Impl>
       get copyWith => throw _privateConstructorUsedError;
 }
 

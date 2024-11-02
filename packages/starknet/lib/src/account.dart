@@ -517,7 +517,14 @@ class Account {
   Future<String> send({
     required Felt recipient,
     required Uint256 amount,
+    bool? useSTRKtoken,
   }) async {
+    if (useSTRKtoken ?? false) {
+      final txHash = await ERC20(account: this, address: strkAddress)
+        .transfer(recipient, amount);
+      return txHash;
+    }
+
     final txHash = await ERC20(account: this, address: ethAddress)
         .transfer(recipient, amount);
     return txHash;
@@ -550,6 +557,9 @@ class Account {
     Felt? contractAddressSalt,
     Felt? maxFee,
     Felt? nonce,
+    bool? useSTRKFee,
+    Map<String, ResourceBounds>? resourceBounds,
+    Felt? contractAddress,
   }) async {
     final chainId = (await provider.chainId()).when(
       result: (result) => Felt.fromHexString(result),
@@ -560,16 +570,63 @@ class Account {
     nonce = nonce ?? defaultNonce;
     contractAddressSalt = contractAddressSalt ?? signer.publicKey;
 
-    final signature = signer.signDeployAccountTransactionV1(
-      contractAddressSalt: contractAddressSalt,
-      classHash: classHash,
-      constructorCalldata: constructorCalldata,
-      chainId: chainId,
-      nonce: nonce,
-      maxFee: maxFee,
-    );
+    if (useSTRKFee ?? false) {
+      contractAddress = contractAddress ?? Felt.zero;
+      // These values are for future use (until then they are empty or zero)
+      List<Felt> paymasterData = [];
+      BigInt tip = BigInt.from(0);
+      String feeDataAvailabilityMode = 'L1';
+      String nonceDataAvailabilityMode = 'L1';
+      resourceBounds = resourceBounds ?? {};
+      //change resourceBounds original strings with decimal numbers to string hex numbers (for example "10" -> "0xa")
+      resourceBounds!.forEach((key, value) {
+        resourceBounds![key] = ResourceBounds(
+          maxAmount: '0x${BigInt.parse(value.maxAmount).toRadixString(16)}',
+          maxPricePerUnit:
+              '0x${BigInt.parse(value.maxPricePerUnit).toRadixString(16)}',
+        );
+      });
 
-    return provider.addDeployAccountTransaction(
+      final signature = signer.signDeployAccountTransactionV3(
+        contractAddress: contractAddress,
+        resourceBounds: resourceBounds,
+        tip: tip,
+        paymasterData: paymasterData,
+        chainId: chainId,
+        nonce: nonce,
+        feeDataAvailabilityMode: feeDataAvailabilityMode,
+        nonceDataAvailabilityMode: nonceDataAvailabilityMode,
+        constructorCalldata: constructorCalldata,
+        classHash: classHash,
+        contractAddressSalt: contractAddressSalt,
+      );
+      return provider.addDeployAccountTransaction(
+        DeployAccountTransactionRequest(
+          deployAccountTransaction: DeployAccountTransactionV3(
+          classHash: classHash,
+          constructorCalldata: constructorCalldata,
+          contractAddressSalt: contractAddressSalt,
+          feeDataAvailabilityMode: feeDataAvailabilityMode,
+          nonce: nonce,
+          nonceDataAvailabilityMode: nonceDataAvailabilityMode,
+          paymasterData: paymasterData,
+          resourceBounds: resourceBounds,
+          signature: signature,
+          tip: '0x${tip.toRadixString(16)}',
+          ),
+        ),
+      );
+    } else {
+      final signature = signer.signDeployAccountTransactionV1(
+        contractAddressSalt: contractAddressSalt,
+        classHash: classHash,
+        constructorCalldata: constructorCalldata,
+        chainId: chainId,
+        nonce: nonce,
+        maxFee: maxFee,
+        );
+
+      return provider.addDeployAccountTransaction(
       DeployAccountTransactionRequest(
         deployAccountTransaction: DeployAccountTransactionV1(
           classHash: classHash,
@@ -578,9 +635,10 @@ class Account {
           nonce: nonce,
           contractAddressSalt: contractAddressSalt,
           constructorCalldata: constructorCalldata,
+          ),
         ),
-      ),
-    );
+      );
+    }
   }
 
   /// Retrieves an account from given [mnemonic], [provider] and [chainId]

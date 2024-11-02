@@ -424,4 +424,81 @@ class Signer {
 
     return [Felt(signature.r), Felt(signature.s)];
   }
+
+  List<Felt> signDeployAccountTransactionV3({
+    required Felt contractAddress,
+    required Map<String, ResourceBounds> resourceBounds,
+    required BigInt tip,
+    required List<Felt> paymasterData,
+    required Felt chainId,
+    required Felt nonce,
+    required String feeDataAvailabilityMode,
+    required String nonceDataAvailabilityMode,
+    required List<Felt> constructorCalldata,
+    required Felt classHash,
+    required Felt contractAddressSalt,
+  }) {
+    print("classHash: ${classHash.toHexString()}");
+    print("calldata: ${constructorCalldata.map((e) => e.toHexString())}");
+    print("salt: ${contractAddressSalt.toHexString()}");
+    final contractAddress = Contract.computeAddress(
+      classHash: classHash,
+      calldata: constructorCalldata,
+      salt: contractAddressSalt,
+    );
+    print(
+        "[signDeployAccountTransactionV3] Contract address: ${contractAddress.toHexString()}");
+
+    Felt l1GasMaxAmount = Felt(BigInt.parse(
+        resourceBounds['l1_gas']!.maxAmount.replaceFirst('0x', ''),
+        radix: 16));
+    Felt l1GasMaxPricePerUnit = Felt(BigInt.parse(
+        resourceBounds['l1_gas']!.maxPricePerUnit.replaceFirst('0x', ''),
+        radix: 16));
+    Felt l2GasMaxAmount = Felt(BigInt.parse(
+        resourceBounds['l2_gas']!.maxAmount.replaceFirst('0x', ''),
+        radix: 16));
+    Felt l2GasMaxPricePerUnit = Felt(BigInt.parse(
+        resourceBounds['l2_gas']!.maxPricePerUnit.replaceFirst('0x', ''),
+        radix: 16));
+
+    Felt l1GasBounds = (Felt.fromString("L1_GAS") << (128 + 64)) +
+        (l1GasMaxAmount << 128) +
+        l1GasMaxPricePerUnit;
+
+    Felt l2GasBounds = (Felt.fromString("L2_GAS") << (128 + 64)) +
+        (l2GasMaxAmount << 128) +
+        l2GasMaxPricePerUnit;
+
+    Felt dataAvailabilityMode =
+        (Felt.fromInt(nonceDataAvailabilityMode == 'L1' ? 0 : 1) << 32) +
+            Felt.fromInt(feeDataAvailabilityMode == 'L1' ? 0 : 1);
+
+    final List<BigInt> elementsToHash = [
+      TransactionHashPrefix.deployAccount.toBigInt(),
+      BigInt.from(3), // version
+      contractAddress.toBigInt(),
+      poseidonHasher
+          .hashMany([tip, l1GasBounds.toBigInt(), l2GasBounds.toBigInt()]),
+      poseidonHasher.hashMany(paymasterData.map((e) => e.toBigInt()).toList()),
+      chainId.toBigInt(),
+      nonce.toBigInt(),
+      dataAvailabilityMode.toBigInt(),
+      poseidonHasher
+          .hashMany(constructorCalldata.map((e) => e.toBigInt()).toList()),
+      classHash.toBigInt(),
+      contractAddressSalt.toBigInt(),
+    ];
+
+    final transactionHash = poseidonHasher.hashMany(elementsToHash);
+    print("transactionHash: ${Felt(transactionHash).toHexString()}");
+
+    final signature = starknet_sign(
+      privateKey: privateKey.toBigInt(),
+      messageHash: transactionHash,
+      seed: BigInt.from(32),
+    );
+
+    return [Felt(signature.r), Felt(signature.s)];
+  }
 }
