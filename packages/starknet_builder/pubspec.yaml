@@ -19,5 +19,5 @@ dev_dependencies:
   args: ^2.4.2
   build_runner: ^2.1.11
   build_test: ^2.1.6
-  lints: ^2.0.0
+  lints: ^5.0.0
   test: ^1.16.0
