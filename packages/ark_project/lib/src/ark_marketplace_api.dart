@@ -1,6 +1,6 @@
 import 'dart:convert';
 import 'dart:io';
-import 'package:ark/src/model/marketplace_api.dart';
+import './src/model/marketplace_api.dart';
 import 'package:http/http.dart' as http;
 
 class ArkMarketplaceApi {
