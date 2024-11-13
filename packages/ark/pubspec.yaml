@@ -10,7 +10,7 @@ dependencies:
   http: ^1.2.2
   json_annotation: ^4.9.0
   starknet: ^0.1.0
-  starknet_provider: ^1.0.0
+  starknet_provider: ^0.1.0
 
 dev_dependencies:
   build_runner: ^2.4.13
