@@ -5,6 +5,13 @@ import 'package:starknet_provider/starknet_provider.dart';
 part 'declare_transaction.freezed.dart';
 part 'declare_transaction.g.dart';
 
+const String DECLARE_TXN_V1 = '0x1';
+const String DECLARE_TXN_V2 = '0x2';
+const String DECLARE_TXN_V3 = '0x3';
+const String DECLARE_TXN_V1_OLD_COMPAT = '0x01';
+const String DECLARE_TXN_V2_OLD_COMPAT = '0x02';
+const String DECLARE_TXN_V3_OLD_COMPAT = '0x03';
+
 @freezed
 class DeclareTransactionRequest with _$DeclareTransactionRequest {
   const factory DeclareTransactionRequest({
@@ -16,10 +23,19 @@ class DeclareTransactionRequest with _$DeclareTransactionRequest {
 }
 
 abstract class DeclareTransaction {
-  factory DeclareTransaction.fromJson(Map<String, Object?> json) =>
-      json['version'] == '0x1'
-          ? DeclareTransactionV1.fromJson(json)
-          : DeclareTransactionV2.fromJson(json);
+  factory DeclareTransaction.fromJson(Map<String, Object?> json) {
+    switch (json['version']) {
+      case DECLARE_TXN_V1 || DECLARE_TXN_V1_OLD_COMPAT:
+        return DeclareTransactionV1.fromJson(json);
+      case DECLARE_TXN_V2 || DECLARE_TXN_V2_OLD_COMPAT:
+        return DeclareTransactionV2.fromJson(json);
+      case DECLARE_TXN_V3 || DECLARE_TXN_V3_OLD_COMPAT:
+        return DeclareTransactionV3.fromJson(json);
+      default:
+        throw ArgumentError(
+            'Unsupported transaction version: ${json['version']}');
+    }
+  }
 
   Map<String, dynamic> toJson();
 }
@@ -30,7 +46,7 @@ class DeclareTransactionV1
     implements DeclareTransaction {
   const factory DeclareTransactionV1({
     @Default('DECLARE') String type,
-    @Default('0x1') String version,
+    @Default(DECLARE_TXN_V1) String version,
     required Felt max_fee,
     required Felt nonce,
     required List<Felt> signature,
@@ -48,8 +64,9 @@ class DeclareTransactionV2
     implements DeclareTransaction {
   const factory DeclareTransactionV2({
     @Default('DECLARE') String type,
-    @Default('0x2') String version,
-    required Felt max_fee,
+    @Default(DECLARE_TXN_V2) String version,
+    required String
+        max_fee, // As String because devnet only supports 16 bytes and not a Felt
     required Felt nonce,
     required List<Felt> signature,
     required Felt senderAddress,
@@ -59,6 +76,41 @@ class DeclareTransactionV2
 
   factory DeclareTransactionV2.fromJson(Map<String, Object?> json) =>
       _$DeclareTransactionV2FromJson(json);
+}
+
+@freezed
+class DeclareTransactionV3
+    with _$DeclareTransactionV3
+    implements DeclareTransaction {
+  const factory DeclareTransactionV3({
+    @Default('DECLARE') String type,
+    @Default(DECLARE_TXN_V3) String version,
+    required List<Felt> accountDeploymentData,
+    required Felt compiledClassHash,
+    required FlattenSierraContractClass contractClass,
+    required String feeDataAvailabilityMode,
+    required Felt nonce,
+    required String nonceDataAvailabilityMode,
+    required List<Felt> paymasterData,
+    required Map<String, ResourceBounds> resourceBounds,
+    required Felt senderAddress,
+    required List<Felt> signature,
+    required String tip,
+  }) = _DeclareTransactionV3;
+
+  factory DeclareTransactionV3.fromJson(Map<String, Object?> json) =>
+      _$DeclareTransactionV3FromJson(json);
+}
+
+@freezed
+class ResourceBounds with _$ResourceBounds {
+  const factory ResourceBounds({
+    required String maxAmount,
+    required String maxPricePerUnit,
+  }) = _ResourceBounds;
+
+  factory ResourceBounds.fromJson(Map<String, Object?> json) =>
+      _$ResourceBoundsFromJson(json);
 }
 
 @freezed

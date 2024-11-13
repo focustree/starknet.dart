@@ -23,8 +23,12 @@ mixin _$JsonRpcApiError {
   JsonRpcApiErrorCode get code => throw _privateConstructorUsedError;
   String get message => throw _privateConstructorUsedError;
 
+  /// Serializes this JsonRpcApiError to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of JsonRpcApiError
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $JsonRpcApiErrorCopyWith<JsonRpcApiError> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -48,6 +52,8 @@ class _$JsonRpcApiErrorCopyWithImpl<$Res, $Val extends JsonRpcApiError>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of JsonRpcApiError
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -86,6 +92,8 @@ class __$$JsonRpcApiErrorImplCopyWithImpl<$Res>
       _$JsonRpcApiErrorImpl _value, $Res Function(_$JsonRpcApiErrorImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of JsonRpcApiError
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -132,11 +140,13 @@ class _$JsonRpcApiErrorImpl implements _JsonRpcApiError {
             (identical(other.message, message) || other.message == message));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, code, message);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of JsonRpcApiError
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$JsonRpcApiErrorImplCopyWith<_$JsonRpcApiErrorImpl> get copyWith =>
@@ -163,8 +173,11 @@ abstract class _JsonRpcApiError implements JsonRpcApiError {
   JsonRpcApiErrorCode get code;
   @override
   String get message;
+
+  /// Create a copy of JsonRpcApiError
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$JsonRpcApiErrorImplCopyWith<_$JsonRpcApiErrorImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

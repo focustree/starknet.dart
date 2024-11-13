@@ -23,8 +23,12 @@ InvokeTransactionRequest _$InvokeTransactionRequestFromJson(
 mixin _$InvokeTransactionRequest {
   InvokeTransaction get invokeTransaction => throw _privateConstructorUsedError;
 
+  /// Serializes this InvokeTransactionRequest to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of InvokeTransactionRequest
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $InvokeTransactionRequestCopyWith<InvokeTransactionRequest> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -49,6 +53,8 @@ class _$InvokeTransactionRequestCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of InvokeTransactionRequest
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -85,6 +91,8 @@ class __$$InvokeTransactionRequestImplCopyWithImpl<$Res>
       $Res Function(_$InvokeTransactionRequestImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of InvokeTransactionRequest
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -124,11 +132,13 @@ class _$InvokeTransactionRequestImpl implements _InvokeTransactionRequest {
                 other.invokeTransaction == invokeTransaction));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, invokeTransaction);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of InvokeTransactionRequest
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$InvokeTransactionRequestImplCopyWith<_$InvokeTransactionRequestImpl>
@@ -153,8 +163,11 @@ abstract class _InvokeTransactionRequest implements InvokeTransactionRequest {
 
   @override
   InvokeTransaction get invokeTransaction;
+
+  /// Create a copy of InvokeTransactionRequest
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$InvokeTransactionRequestImplCopyWith<_$InvokeTransactionRequestImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -174,8 +187,12 @@ mixin _$InvokeTransactionV0 {
   Felt get entryPointSelector => throw _privateConstructorUsedError;
   List<Felt> get calldata => throw _privateConstructorUsedError;
 
+  /// Serializes this InvokeTransactionV0 to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of InvokeTransactionV0
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $InvokeTransactionV0CopyWith<InvokeTransactionV0> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -206,6 +223,8 @@ class _$InvokeTransactionV0CopyWithImpl<$Res, $Val extends InvokeTransactionV0>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of InvokeTransactionV0
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -276,6 +295,8 @@ class __$$InvokeTransactionV0ImplCopyWithImpl<$Res>
       $Res Function(_$InvokeTransactionV0Impl) _then)
       : super(_value, _then);
 
+  /// Create a copy of InvokeTransactionV0
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -326,7 +347,7 @@ class _$InvokeTransactionV0Impl implements _InvokeTransactionV0 {
   const _$InvokeTransactionV0Impl(
       {this.type = 'INVOKE',
       @JsonKey(toJson: maxFeeToJson) required this.maxFee,
-      this.version = '0x00',
+      this.version = INVOKE_TXN_V0,
       required final List<Felt> signature,
       required this.contractAddress,
       required this.entryPointSelector,
@@ -388,7 +409,7 @@ class _$InvokeTransactionV0Impl implements _InvokeTransactionV0 {
             const DeepCollectionEquality().equals(other._calldata, _calldata));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -400,7 +421,9 @@ class _$InvokeTransactionV0Impl implements _InvokeTransactionV0 {
       entryPointSelector,
       const DeepCollectionEquality().hash(_calldata));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of InvokeTransactionV0
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$InvokeTransactionV0ImplCopyWith<_$InvokeTransactionV0Impl> get copyWith =>
@@ -443,8 +466,11 @@ abstract class _InvokeTransactionV0 implements InvokeTransactionV0 {
   Felt get entryPointSelector;
   @override
   List<Felt> get calldata;
+
+  /// Create a copy of InvokeTransactionV0
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$InvokeTransactionV0ImplCopyWith<_$InvokeTransactionV0Impl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -464,8 +490,12 @@ mixin _$InvokeTransactionV1 {
   String get version => throw _privateConstructorUsedError;
   String get type => throw _privateConstructorUsedError;
 
+  /// Serializes this InvokeTransactionV1 to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of InvokeTransactionV1
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $InvokeTransactionV1CopyWith<InvokeTransactionV1> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -496,6 +526,8 @@ class _$InvokeTransactionV1CopyWithImpl<$Res, $Val extends InvokeTransactionV1>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of InvokeTransactionV1
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -566,6 +598,8 @@ class __$$InvokeTransactionV1ImplCopyWithImpl<$Res>
       $Res Function(_$InvokeTransactionV1Impl) _then)
       : super(_value, _then);
 
+  /// Create a copy of InvokeTransactionV1
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -619,7 +653,7 @@ class _$InvokeTransactionV1Impl implements _InvokeTransactionV1 {
       required this.nonce,
       required this.senderAddress,
       required final List<Felt> calldata,
-      this.version = '0x1',
+      this.version = INVOKE_TXN_V1,
       this.type = 'INVOKE'})
       : _signature = signature,
         _calldata = calldata;
@@ -678,7 +712,7 @@ class _$InvokeTransactionV1Impl implements _InvokeTransactionV1 {
             (identical(other.type, type) || other.type == type));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -690,7 +724,9 @@ class _$InvokeTransactionV1Impl implements _InvokeTransactionV1 {
       version,
       type);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of InvokeTransactionV1
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$InvokeTransactionV1ImplCopyWith<_$InvokeTransactionV1Impl> get copyWith =>
@@ -733,9 +769,447 @@ abstract class _InvokeTransactionV1 implements InvokeTransactionV1 {
   String get version;
   @override
   String get type;
+
+  /// Create a copy of InvokeTransactionV1
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$InvokeTransactionV1ImplCopyWith<_$InvokeTransactionV1Impl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+InvokeTransactionV3 _$InvokeTransactionV3FromJson(Map<String, dynamic> json) {
+  return _InvokeTransactionV3.fromJson(json);
+}
+
+/// @nodoc
+mixin _$InvokeTransactionV3 {
+  String get type => throw _privateConstructorUsedError;
+  List<Felt> get accountDeploymentData => throw _privateConstructorUsedError;
+  List<Felt> get calldata => throw _privateConstructorUsedError;
+  String get feeDataAvailabilityMode => throw _privateConstructorUsedError;
+  Felt get nonce => throw _privateConstructorUsedError;
+  String get nonceDataAvailabilityMode => throw _privateConstructorUsedError;
+  List<Felt> get paymasterData => throw _privateConstructorUsedError;
+  Map<String, ResourceBounds> get resourceBounds =>
+      throw _privateConstructorUsedError;
+  Felt get senderAddress => throw _privateConstructorUsedError;
+  List<Felt> get signature => throw _privateConstructorUsedError;
+  String get tip => throw _privateConstructorUsedError;
+  String get version => throw _privateConstructorUsedError;
+
+  /// Serializes this InvokeTransactionV3 to a JSON map.
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+
+  /// Create a copy of InvokeTransactionV3
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  $InvokeTransactionV3CopyWith<InvokeTransactionV3> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $InvokeTransactionV3CopyWith<$Res> {
+  factory $InvokeTransactionV3CopyWith(
+          InvokeTransactionV3 value, $Res Function(InvokeTransactionV3) then) =
+      _$InvokeTransactionV3CopyWithImpl<$Res, InvokeTransactionV3>;
+  @useResult
+  $Res call(
+      {String type,
+      List<Felt> accountDeploymentData,
+      List<Felt> calldata,
+      String feeDataAvailabilityMode,
+      Felt nonce,
+      String nonceDataAvailabilityMode,
+      List<Felt> paymasterData,
+      Map<String, ResourceBounds> resourceBounds,
+      Felt senderAddress,
+      List<Felt> signature,
+      String tip,
+      String version});
+}
+
+/// @nodoc
+class _$InvokeTransactionV3CopyWithImpl<$Res, $Val extends InvokeTransactionV3>
+    implements $InvokeTransactionV3CopyWith<$Res> {
+  _$InvokeTransactionV3CopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  /// Create a copy of InvokeTransactionV3
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? type = null,
+    Object? accountDeploymentData = null,
+    Object? calldata = null,
+    Object? feeDataAvailabilityMode = null,
+    Object? nonce = null,
+    Object? nonceDataAvailabilityMode = null,
+    Object? paymasterData = null,
+    Object? resourceBounds = null,
+    Object? senderAddress = null,
+    Object? signature = null,
+    Object? tip = null,
+    Object? version = null,
+  }) {
+    return _then(_value.copyWith(
+      type: null == type
+          ? _value.type
+          : type // ignore: cast_nullable_to_non_nullable
+              as String,
+      accountDeploymentData: null == accountDeploymentData
+          ? _value.accountDeploymentData
+          : accountDeploymentData // ignore: cast_nullable_to_non_nullable
+              as List<Felt>,
+      calldata: null == calldata
+          ? _value.calldata
+          : calldata // ignore: cast_nullable_to_non_nullable
+              as List<Felt>,
+      feeDataAvailabilityMode: null == feeDataAvailabilityMode
+          ? _value.feeDataAvailabilityMode
+          : feeDataAvailabilityMode // ignore: cast_nullable_to_non_nullable
+              as String,
+      nonce: null == nonce
+          ? _value.nonce
+          : nonce // ignore: cast_nullable_to_non_nullable
+              as Felt,
+      nonceDataAvailabilityMode: null == nonceDataAvailabilityMode
+          ? _value.nonceDataAvailabilityMode
+          : nonceDataAvailabilityMode // ignore: cast_nullable_to_non_nullable
+              as String,
+      paymasterData: null == paymasterData
+          ? _value.paymasterData
+          : paymasterData // ignore: cast_nullable_to_non_nullable
+              as List<Felt>,
+      resourceBounds: null == resourceBounds
+          ? _value.resourceBounds
+          : resourceBounds // ignore: cast_nullable_to_non_nullable
+              as Map<String, ResourceBounds>,
+      senderAddress: null == senderAddress
+          ? _value.senderAddress
+          : senderAddress // ignore: cast_nullable_to_non_nullable
+              as Felt,
+      signature: null == signature
+          ? _value.signature
+          : signature // ignore: cast_nullable_to_non_nullable
+              as List<Felt>,
+      tip: null == tip
+          ? _value.tip
+          : tip // ignore: cast_nullable_to_non_nullable
+              as String,
+      version: null == version
+          ? _value.version
+          : version // ignore: cast_nullable_to_non_nullable
+              as String,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$InvokeTransactionV3ImplCopyWith<$Res>
+    implements $InvokeTransactionV3CopyWith<$Res> {
+  factory _$$InvokeTransactionV3ImplCopyWith(_$InvokeTransactionV3Impl value,
+          $Res Function(_$InvokeTransactionV3Impl) then) =
+      __$$InvokeTransactionV3ImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call(
+      {String type,
+      List<Felt> accountDeploymentData,
+      List<Felt> calldata,
+      String feeDataAvailabilityMode,
+      Felt nonce,
+      String nonceDataAvailabilityMode,
+      List<Felt> paymasterData,
+      Map<String, ResourceBounds> resourceBounds,
+      Felt senderAddress,
+      List<Felt> signature,
+      String tip,
+      String version});
+}
+
+/// @nodoc
+class __$$InvokeTransactionV3ImplCopyWithImpl<$Res>
+    extends _$InvokeTransactionV3CopyWithImpl<$Res, _$InvokeTransactionV3Impl>
+    implements _$$InvokeTransactionV3ImplCopyWith<$Res> {
+  __$$InvokeTransactionV3ImplCopyWithImpl(_$InvokeTransactionV3Impl _value,
+      $Res Function(_$InvokeTransactionV3Impl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of InvokeTransactionV3
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? type = null,
+    Object? accountDeploymentData = null,
+    Object? calldata = null,
+    Object? feeDataAvailabilityMode = null,
+    Object? nonce = null,
+    Object? nonceDataAvailabilityMode = null,
+    Object? paymasterData = null,
+    Object? resourceBounds = null,
+    Object? senderAddress = null,
+    Object? signature = null,
+    Object? tip = null,
+    Object? version = null,
+  }) {
+    return _then(_$InvokeTransactionV3Impl(
+      type: null == type
+          ? _value.type
+          : type // ignore: cast_nullable_to_non_nullable
+              as String,
+      accountDeploymentData: null == accountDeploymentData
+          ? _value._accountDeploymentData
+          : accountDeploymentData // ignore: cast_nullable_to_non_nullable
+              as List<Felt>,
+      calldata: null == calldata
+          ? _value._calldata
+          : calldata // ignore: cast_nullable_to_non_nullable
+              as List<Felt>,
+      feeDataAvailabilityMode: null == feeDataAvailabilityMode
+          ? _value.feeDataAvailabilityMode
+          : feeDataAvailabilityMode // ignore: cast_nullable_to_non_nullable
+              as String,
+      nonce: null == nonce
+          ? _value.nonce
+          : nonce // ignore: cast_nullable_to_non_nullable
+              as Felt,
+      nonceDataAvailabilityMode: null == nonceDataAvailabilityMode
+          ? _value.nonceDataAvailabilityMode
+          : nonceDataAvailabilityMode // ignore: cast_nullable_to_non_nullable
+              as String,
+      paymasterData: null == paymasterData
+          ? _value._paymasterData
+          : paymasterData // ignore: cast_nullable_to_non_nullable
+              as List<Felt>,
+      resourceBounds: null == resourceBounds
+          ? _value._resourceBounds
+          : resourceBounds // ignore: cast_nullable_to_non_nullable
+              as Map<String, ResourceBounds>,
+      senderAddress: null == senderAddress
+          ? _value.senderAddress
+          : senderAddress // ignore: cast_nullable_to_non_nullable
+              as Felt,
+      signature: null == signature
+          ? _value._signature
+          : signature // ignore: cast_nullable_to_non_nullable
+              as List<Felt>,
+      tip: null == tip
+          ? _value.tip
+          : tip // ignore: cast_nullable_to_non_nullable
+              as String,
+      version: null == version
+          ? _value.version
+          : version // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$InvokeTransactionV3Impl implements _InvokeTransactionV3 {
+  const _$InvokeTransactionV3Impl(
+      {this.type = 'INVOKE',
+      required final List<Felt> accountDeploymentData,
+      required final List<Felt> calldata,
+      required this.feeDataAvailabilityMode,
+      required this.nonce,
+      required this.nonceDataAvailabilityMode,
+      required final List<Felt> paymasterData,
+      required final Map<String, ResourceBounds> resourceBounds,
+      required this.senderAddress,
+      required final List<Felt> signature,
+      required this.tip,
+      this.version = INVOKE_TXN_V3})
+      : _accountDeploymentData = accountDeploymentData,
+        _calldata = calldata,
+        _paymasterData = paymasterData,
+        _resourceBounds = resourceBounds,
+        _signature = signature;
+
+  factory _$InvokeTransactionV3Impl.fromJson(Map<String, dynamic> json) =>
+      _$$InvokeTransactionV3ImplFromJson(json);
+
+  @override
+  @JsonKey()
+  final String type;
+  final List<Felt> _accountDeploymentData;
+  @override
+  List<Felt> get accountDeploymentData {
+    if (_accountDeploymentData is EqualUnmodifiableListView)
+      return _accountDeploymentData;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_accountDeploymentData);
+  }
+
+  final List<Felt> _calldata;
+  @override
+  List<Felt> get calldata {
+    if (_calldata is EqualUnmodifiableListView) return _calldata;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_calldata);
+  }
+
+  @override
+  final String feeDataAvailabilityMode;
+  @override
+  final Felt nonce;
+  @override
+  final String nonceDataAvailabilityMode;
+  final List<Felt> _paymasterData;
+  @override
+  List<Felt> get paymasterData {
+    if (_paymasterData is EqualUnmodifiableListView) return _paymasterData;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_paymasterData);
+  }
+
+  final Map<String, ResourceBounds> _resourceBounds;
+  @override
+  Map<String, ResourceBounds> get resourceBounds {
+    if (_resourceBounds is EqualUnmodifiableMapView) return _resourceBounds;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableMapView(_resourceBounds);
+  }
+
+  @override
+  final Felt senderAddress;
+  final List<Felt> _signature;
+  @override
+  List<Felt> get signature {
+    if (_signature is EqualUnmodifiableListView) return _signature;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_signature);
+  }
+
+  @override
+  final String tip;
+  @override
+  @JsonKey()
+  final String version;
+
+  @override
+  String toString() {
+    return 'InvokeTransactionV3(type: $type, accountDeploymentData: $accountDeploymentData, calldata: $calldata, feeDataAvailabilityMode: $feeDataAvailabilityMode, nonce: $nonce, nonceDataAvailabilityMode: $nonceDataAvailabilityMode, paymasterData: $paymasterData, resourceBounds: $resourceBounds, senderAddress: $senderAddress, signature: $signature, tip: $tip, version: $version)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$InvokeTransactionV3Impl &&
+            (identical(other.type, type) || other.type == type) &&
+            const DeepCollectionEquality()
+                .equals(other._accountDeploymentData, _accountDeploymentData) &&
+            const DeepCollectionEquality().equals(other._calldata, _calldata) &&
+            (identical(
+                    other.feeDataAvailabilityMode, feeDataAvailabilityMode) ||
+                other.feeDataAvailabilityMode == feeDataAvailabilityMode) &&
+            (identical(other.nonce, nonce) || other.nonce == nonce) &&
+            (identical(other.nonceDataAvailabilityMode,
+                    nonceDataAvailabilityMode) ||
+                other.nonceDataAvailabilityMode == nonceDataAvailabilityMode) &&
+            const DeepCollectionEquality()
+                .equals(other._paymasterData, _paymasterData) &&
+            const DeepCollectionEquality()
+                .equals(other._resourceBounds, _resourceBounds) &&
+            (identical(other.senderAddress, senderAddress) ||
+                other.senderAddress == senderAddress) &&
+            const DeepCollectionEquality()
+                .equals(other._signature, _signature) &&
+            (identical(other.tip, tip) || other.tip == tip) &&
+            (identical(other.version, version) || other.version == version));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(
+      runtimeType,
+      type,
+      const DeepCollectionEquality().hash(_accountDeploymentData),
+      const DeepCollectionEquality().hash(_calldata),
+      feeDataAvailabilityMode,
+      nonce,
+      nonceDataAvailabilityMode,
+      const DeepCollectionEquality().hash(_paymasterData),
+      const DeepCollectionEquality().hash(_resourceBounds),
+      senderAddress,
+      const DeepCollectionEquality().hash(_signature),
+      tip,
+      version);
+
+  /// Create a copy of InvokeTransactionV3
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$InvokeTransactionV3ImplCopyWith<_$InvokeTransactionV3Impl> get copyWith =>
+      __$$InvokeTransactionV3ImplCopyWithImpl<_$InvokeTransactionV3Impl>(
+          this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$InvokeTransactionV3ImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class _InvokeTransactionV3 implements InvokeTransactionV3 {
+  const factory _InvokeTransactionV3(
+      {final String type,
+      required final List<Felt> accountDeploymentData,
+      required final List<Felt> calldata,
+      required final String feeDataAvailabilityMode,
+      required final Felt nonce,
+      required final String nonceDataAvailabilityMode,
+      required final List<Felt> paymasterData,
+      required final Map<String, ResourceBounds> resourceBounds,
+      required final Felt senderAddress,
+      required final List<Felt> signature,
+      required final String tip,
+      final String version}) = _$InvokeTransactionV3Impl;
+
+  factory _InvokeTransactionV3.fromJson(Map<String, dynamic> json) =
+      _$InvokeTransactionV3Impl.fromJson;
+
+  @override
+  String get type;
+  @override
+  List<Felt> get accountDeploymentData;
+  @override
+  List<Felt> get calldata;
+  @override
+  String get feeDataAvailabilityMode;
+  @override
+  Felt get nonce;
+  @override
+  String get nonceDataAvailabilityMode;
+  @override
+  List<Felt> get paymasterData;
+  @override
+  Map<String, ResourceBounds> get resourceBounds;
+  @override
+  Felt get senderAddress;
+  @override
+  List<Felt> get signature;
+  @override
+  String get tip;
+  @override
+  String get version;
+
+  /// Create a copy of InvokeTransactionV3
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$InvokeTransactionV3ImplCopyWith<_$InvokeTransactionV3Impl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -796,6 +1270,8 @@ mixin _$InvokeTransactionResponse {
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
+
+  /// Serializes this InvokeTransactionResponse to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
 }
 
@@ -816,6 +1292,9 @@ class _$InvokeTransactionResponseCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of InvokeTransactionResponse
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -840,6 +1319,8 @@ class __$$InvokeTransactionResultImplCopyWithImpl<$Res>
       $Res Function(_$InvokeTransactionResultImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of InvokeTransactionResponse
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -853,6 +1334,8 @@ class __$$InvokeTransactionResultImplCopyWithImpl<$Res>
     ));
   }
 
+  /// Create a copy of InvokeTransactionResponse
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $InvokeTransactionResponseResultCopyWith<$Res> get result {
@@ -892,11 +1375,13 @@ class _$InvokeTransactionResultImpl implements InvokeTransactionResult {
             (identical(other.result, result) || other.result == result));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, result);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of InvokeTransactionResponse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$InvokeTransactionResultImplCopyWith<_$InvokeTransactionResultImpl>
@@ -982,7 +1467,10 @@ abstract class InvokeTransactionResult implements InvokeTransactionResponse {
       _$InvokeTransactionResultImpl.fromJson;
 
   InvokeTransactionResponseResult get result;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of InvokeTransactionResponse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$InvokeTransactionResultImplCopyWith<_$InvokeTransactionResultImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -1009,6 +1497,8 @@ class __$$InvokeTransactionErrorImplCopyWithImpl<$Res>
       $Res Function(_$InvokeTransactionErrorImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of InvokeTransactionResponse
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1022,6 +1512,8 @@ class __$$InvokeTransactionErrorImplCopyWithImpl<$Res>
     ));
   }
 
+  /// Create a copy of InvokeTransactionResponse
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $JsonRpcApiErrorCopyWith<$Res> get error {
@@ -1059,11 +1551,13 @@ class _$InvokeTransactionErrorImpl implements InvokeTransactionError {
             (identical(other.error, error) || other.error == error));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, error);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of InvokeTransactionResponse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$InvokeTransactionErrorImplCopyWith<_$InvokeTransactionErrorImpl>
@@ -1148,7 +1642,10 @@ abstract class InvokeTransactionError implements InvokeTransactionResponse {
       _$InvokeTransactionErrorImpl.fromJson;
 
   JsonRpcApiError get error;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of InvokeTransactionResponse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$InvokeTransactionErrorImplCopyWith<_$InvokeTransactionErrorImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -1162,8 +1659,12 @@ InvokeTransactionResponseResult _$InvokeTransactionResponseResultFromJson(
 mixin _$InvokeTransactionResponseResult {
   String get transaction_hash => throw _privateConstructorUsedError;
 
+  /// Serializes this InvokeTransactionResponseResult to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of InvokeTransactionResponseResult
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $InvokeTransactionResponseResultCopyWith<InvokeTransactionResponseResult>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -1190,6 +1691,8 @@ class _$InvokeTransactionResponseResultCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of InvokeTransactionResponseResult
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1226,6 +1729,8 @@ class __$$InvokeTransactionResponseResultImplCopyWithImpl<$Res>
       $Res Function(_$InvokeTransactionResponseResultImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of InvokeTransactionResponseResult
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1267,11 +1772,13 @@ class _$InvokeTransactionResponseResultImpl
                 other.transaction_hash == transaction_hash));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, transaction_hash);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of InvokeTransactionResponseResult
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$InvokeTransactionResponseResultImplCopyWith<
@@ -1298,8 +1805,11 @@ abstract class _InvokeTransactionResponseResult
 
   @override
   String get transaction_hash;
+
+  /// Create a copy of InvokeTransactionResponseResult
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$InvokeTransactionResponseResultImplCopyWith<
           _$InvokeTransactionResponseResultImpl>
       get copyWith => throw _privateConstructorUsedError;

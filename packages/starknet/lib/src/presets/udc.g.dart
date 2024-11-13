@@ -14,6 +14,17 @@ class Udc extends Contract {
     Felt salt,
     Felt unique,
     List<Felt> calldata,
+    Felt? maxFee,
+    bool? useSTRKFee,
+    Felt? l1MaxAmount,
+    Felt? l1MaxPricePerUnit,
+    Felt? l2MaxAmount,
+    Felt? l2MaxPricePerUnit,
+    List<Felt>? accountDeploymentData,
+    List<Felt>? paymasterData,
+    Felt? tip,
+    String? feeDataAvailabilityMode,
+    String? nonceDataAvailabilityMode,
   ) async {
     final List<Felt> params = [
       classHash,
@@ -22,8 +33,18 @@ class Udc extends Contract {
       ...calldata.toCallData(),
     ];
     final trx = await execute(
-      'deployContract',
-      params,
+      selector: 'deployContract',
+      calldata: params,
+      useSTRKFee: useSTRKFee,
+      l1MaxAmount: l1MaxAmount,
+      l1MaxPricePerUnit: l1MaxPricePerUnit,
+      l2MaxAmount: l2MaxAmount,
+      l2MaxPricePerUnit: l2MaxPricePerUnit,
+      accountDeploymentData: accountDeploymentData,
+      paymasterData: paymasterData,
+      tip: tip,
+      feeDataAvailabilityMode: feeDataAvailabilityMode,
+      nonceDataAvailabilityMode: nonceDataAvailabilityMode,
     );
     final trxHash = trx.when(
       result: (result) => result.transaction_hash,

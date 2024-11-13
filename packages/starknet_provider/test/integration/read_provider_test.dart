@@ -988,6 +988,41 @@ void main() {
         ],
       );
 
+      BroadcastedInvokeTxnV3 broadcastedInvokeTxnV3 = BroadcastedInvokeTxnV3(
+        type: 'INVOKE',
+        calldata: [
+          Felt.fromHexString('0x1'),
+          Felt.fromHexString(
+              '0x49d36570d4e46f48e99674bd3fcc84644ddd6b96f7c741b1562b82f9e004dc7'),
+          Felt.fromHexString(
+              '0x83afd3f4caedc6eebf44246fe54e38c95e3179a5ec9ea81740eca5b482d12e'),
+          Felt.fromHexString('0x3'),
+          Felt.fromHexString(
+              '0x16a0d7df981d681537dc2ce648722ff1d1c2cbe59412b492d35bac69825f104'),
+          Felt.fromHexString('0x100000000000000000'),
+          Felt.fromHexString('0x0'),
+        ],
+        accountDeploymentData: [],
+        feeDataAvailabilityMode: 'L1',
+        nonce: Felt.fromHexString('0x4'),
+        nonceDataAvailabilityMode: 'L1',
+        paymasterData: [],
+        resourceBounds: {
+          'l1_gas': ResourceBounds(maxAmount: '0x0', maxPricePerUnit: '0x0'),
+          'l2_gas': ResourceBounds(maxAmount: '0x0', maxPricePerUnit: '0x0'),
+        },
+        senderAddress: Felt.fromHexString(
+            '0x064b48806902a367c8598f4f95c305e8c1a1acba5f082d294a43793113115691'),
+        signature: [
+          Felt.fromHexString(
+              '0x505c1a8cb4f9b3237aadf958e7990d833b89ba173284881d2c9f341be8ada8f'),
+          Felt.fromHexString(
+              '0x4bf4c7296230b6f6bbcebd43448629fff8f2eeec5e8ba6267ad9ff8180ba38c'),
+        ],
+        tip: '0x0',
+        version: '0x100000000000000000000000000000003',
+      );
+
       test('estimate the fee for a given V1 Invoke StarkNet transaction',
           () async {
         EstimateFeeRequest estimateFeeRequest = EstimateFeeRequest(
@@ -1005,8 +1040,37 @@ void main() {
             expect(result.length, 1);
             final estimate = result[0];
             expect(estimate.gasConsumed, "0x17");
+            expect(estimate.dataGasConsumed, "0xc0");
             expect(estimate.gasPrice, "0x174876e800");
+            expect(estimate.dataGasPrice, "0x174876e800");
             expect(estimate.overallFee, "0x138ddbdcd800");
+            expect(estimate.unit, "WEI");
+          },
+        );
+      });
+
+      test('estimate the fee for a given V3 Invoke StarkNet transaction',
+          () async {
+        EstimateFeeRequest estimateFeeRequest = EstimateFeeRequest(
+            request: [broadcastedInvokeTxnV3],
+            blockId: parentBlockId,
+            simulation_flags: []);
+
+        final response = await provider.estimateFee(estimateFeeRequest);
+
+        response.when(
+          error: (error) {
+            fail('Should not fail. (${error.code}): ${error.message}');
+          },
+          result: (result) {
+            expect(result.length, 1);
+            final estimate = result[0];
+            expect(estimate.gasConsumed, "0x17");
+            expect(estimate.dataGasConsumed, "0x140");
+            expect(estimate.gasPrice, "0x174876e800");
+            expect(estimate.dataGasPrice, "0x174876e800");
+            expect(estimate.overallFee, "0x1f321750d800");
+            expect(estimate.unit, "FRI");
           },
         );
       });
@@ -1023,16 +1087,24 @@ void main() {
 
         final response = await provider.estimateFee(estimateFeeRequest);
 
+        //expect one of contract_not_found or contract_error
         response.when(
           error: (error) {
-            expect(error.code, JsonRpcApiErrorCode.CONTRACT_NOT_FOUND);
-            expect(error.message, 'Contract not found');
+            expect(
+                error.code == JsonRpcApiErrorCode.CONTRACT_NOT_FOUND ||
+                    error.code ==
+                        JsonRpcApiErrorCode.CONTRACT_ERROR, //for devnet
+                true);
+            expect(
+                error.message.contains('Contract not found') ||
+                    error.message.contains('Contract error'), //for devnet
+                true);
           },
           result: (result) {
             fail('Should fail.');
           },
         );
-      }, skip: true); // todo FIXME devnet
+      }, skip: false);
 
       test('returns BLOCK_NOT_FOUND with invalid block id', () async {
         // contract address from main net.

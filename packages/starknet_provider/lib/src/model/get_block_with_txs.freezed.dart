@@ -70,6 +70,8 @@ mixin _$GetBlockWithTxs {
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
+
+  /// Serializes this GetBlockWithTxs to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
 }
 
@@ -89,6 +91,9 @@ class _$GetBlockWithTxsCopyWithImpl<$Res, $Val extends GetBlockWithTxs>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of GetBlockWithTxs
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -111,6 +116,8 @@ class __$$GetBlockWithTxsResultImplCopyWithImpl<$Res>
       $Res Function(_$GetBlockWithTxsResultImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of GetBlockWithTxs
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -124,6 +131,8 @@ class __$$GetBlockWithTxsResultImplCopyWithImpl<$Res>
     ));
   }
 
+  /// Create a copy of GetBlockWithTxs
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $BlockWithTxsCopyWith<$Res> get result {
@@ -161,11 +170,13 @@ class _$GetBlockWithTxsResultImpl implements GetBlockWithTxsResult {
             (identical(other.result, result) || other.result == result));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, result);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of GetBlockWithTxs
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GetBlockWithTxsResultImplCopyWith<_$GetBlockWithTxsResultImpl>
@@ -250,7 +261,10 @@ abstract class GetBlockWithTxsResult implements GetBlockWithTxs {
       _$GetBlockWithTxsResultImpl.fromJson;
 
   BlockWithTxs get result;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of GetBlockWithTxs
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GetBlockWithTxsResultImplCopyWith<_$GetBlockWithTxsResultImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -274,6 +288,8 @@ class __$$GetBlockWithTxsErrorImplCopyWithImpl<$Res>
       $Res Function(_$GetBlockWithTxsErrorImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of GetBlockWithTxs
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -287,6 +303,8 @@ class __$$GetBlockWithTxsErrorImplCopyWithImpl<$Res>
     ));
   }
 
+  /// Create a copy of GetBlockWithTxs
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $JsonRpcApiErrorCopyWith<$Res> get error {
@@ -324,11 +342,13 @@ class _$GetBlockWithTxsErrorImpl implements GetBlockWithTxsError {
             (identical(other.error, error) || other.error == error));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, error);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of GetBlockWithTxs
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GetBlockWithTxsErrorImplCopyWith<_$GetBlockWithTxsErrorImpl>
@@ -414,7 +434,10 @@ abstract class GetBlockWithTxsError implements GetBlockWithTxs {
       _$GetBlockWithTxsErrorImpl.fromJson;
 
   JsonRpcApiError get error;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of GetBlockWithTxs
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GetBlockWithTxsErrorImplCopyWith<_$GetBlockWithTxsErrorImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -515,8 +538,13 @@ mixin _$BlockWithTxs {
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
+
+  /// Serializes this BlockWithTxs to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of BlockWithTxs
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $BlockWithTxsCopyWith<BlockWithTxs> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -544,6 +572,8 @@ class _$BlockWithTxsCopyWithImpl<$Res, $Val extends BlockWithTxs>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of BlockWithTxs
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -600,6 +630,8 @@ class __$$BlockWithTxsResponseImplCopyWithImpl<$Res>
       $Res Function(_$BlockWithTxsResponseImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of BlockWithTxs
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -724,7 +756,7 @@ class _$BlockWithTxsResponseImpl implements BlockWithTxsResponse {
                 other.sequencerAddress == sequencerAddress));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -737,7 +769,9 @@ class _$BlockWithTxsResponseImpl implements BlockWithTxsResponse {
       timestamp,
       sequencerAddress);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of BlockWithTxs
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$BlockWithTxsResponseImplCopyWith<_$BlockWithTxsResponseImpl>
@@ -865,11 +899,11 @@ abstract class BlockWithTxsResponse implements BlockWithTxs {
   factory BlockWithTxsResponse.fromJson(Map<String, dynamic> json) =
       _$BlockWithTxsResponseImpl.fromJson;
 
-  String get status;
-  @override //Start of BLOCK_BODY_WITH_TXS
-  List<Txn> get transactions;
-  @override //End of BLOCK_BODY_WITH_TXS
+  String get status; //Start of BLOCK_BODY_WITH_TXS
+  @override
+  List<Txn> get transactions; //End of BLOCK_BODY_WITH_TXS
 //Start of BLOCK_HEADER
+  @override
   Felt get blockHash;
   Felt get parentHash;
   int get blockNumber;
@@ -878,8 +912,11 @@ abstract class BlockWithTxsResponse implements BlockWithTxs {
   int get timestamp;
   @override
   Felt get sequencerAddress;
+
+  /// Create a copy of BlockWithTxs
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$BlockWithTxsResponseImplCopyWith<_$BlockWithTxsResponseImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -909,6 +946,8 @@ class __$$PendingBlockWithTxsResultImplCopyWithImpl<$Res>
       $Res Function(_$PendingBlockWithTxsResultImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of BlockWithTxs
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -994,7 +1033,7 @@ class _$PendingBlockWithTxsResultImpl implements PendingBlockWithTxsResult {
                 other.blockHash == blockHash));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -1003,7 +1042,9 @@ class _$PendingBlockWithTxsResultImpl implements PendingBlockWithTxsResult {
       sequencerAddress,
       blockHash);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of BlockWithTxs
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$PendingBlockWithTxsResultImplCopyWith<_$PendingBlockWithTxsResultImpl>
@@ -1124,16 +1165,20 @@ abstract class PendingBlockWithTxsResult implements BlockWithTxs {
   factory PendingBlockWithTxsResult.fromJson(Map<String, dynamic> json) =
       _$PendingBlockWithTxsResultImpl.fromJson;
 
-  @override // Start of BLOCK_BODY_WITH_TXS
-  List<Txn> get transactions;
-  @override // End of BLOCK_BODY_WITH_TXS
+// Start of BLOCK_BODY_WITH_TXS
+  @override
+  List<Txn> get transactions; // End of BLOCK_BODY_WITH_TXS
+  @override
   int get timestamp;
   @override
   Felt get sequencerAddress;
   @override
   Felt get blockHash;
+
+  /// Create a copy of BlockWithTxs
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$PendingBlockWithTxsResultImplCopyWith<_$PendingBlockWithTxsResultImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

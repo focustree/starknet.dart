@@ -70,6 +70,8 @@ mixin _$ChainId {
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
+
+  /// Serializes this ChainId to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
 }
 
@@ -88,6 +90,9 @@ class _$ChainIdCopyWithImpl<$Res, $Val extends ChainId>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of ChainId
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -107,6 +112,8 @@ class __$$ChainIdResultImplCopyWithImpl<$Res>
       _$ChainIdResultImpl _value, $Res Function(_$ChainIdResultImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ChainId
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -149,11 +156,13 @@ class _$ChainIdResultImpl implements ChainIdResult {
             (identical(other.result, result) || other.result == result));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, result);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ChainId
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ChainIdResultImplCopyWith<_$ChainIdResultImpl> get copyWith =>
@@ -237,7 +246,10 @@ abstract class ChainIdResult implements ChainId {
       _$ChainIdResultImpl.fromJson;
 
   String get result;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of ChainId
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ChainIdResultImplCopyWith<_$ChainIdResultImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -261,6 +273,8 @@ class __$$ChainIdErrorImplCopyWithImpl<$Res>
       _$ChainIdErrorImpl _value, $Res Function(_$ChainIdErrorImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ChainId
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -274,6 +288,8 @@ class __$$ChainIdErrorImplCopyWithImpl<$Res>
     ));
   }
 
+  /// Create a copy of ChainId
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $JsonRpcApiErrorCopyWith<$Res> get error {
@@ -311,11 +327,13 @@ class _$ChainIdErrorImpl implements ChainIdError {
             (identical(other.error, error) || other.error == error));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, error);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ChainId
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ChainIdErrorImplCopyWith<_$ChainIdErrorImpl> get copyWith =>
@@ -399,7 +417,10 @@ abstract class ChainIdError implements ChainId {
       _$ChainIdErrorImpl.fromJson;
 
   JsonRpcApiError get error;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of ChainId
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ChainIdErrorImplCopyWith<_$ChainIdErrorImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

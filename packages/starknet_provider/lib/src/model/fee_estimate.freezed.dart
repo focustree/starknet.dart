@@ -21,11 +21,18 @@ FeeEstimate _$FeeEstimateFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$FeeEstimate {
   String get gasConsumed => throw _privateConstructorUsedError;
+  String get dataGasConsumed => throw _privateConstructorUsedError;
   String get gasPrice => throw _privateConstructorUsedError;
+  String get dataGasPrice => throw _privateConstructorUsedError;
   String get overallFee => throw _privateConstructorUsedError;
+  String get unit => throw _privateConstructorUsedError;
 
+  /// Serializes this FeeEstimate to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of FeeEstimate
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $FeeEstimateCopyWith<FeeEstimate> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -36,7 +43,13 @@ abstract class $FeeEstimateCopyWith<$Res> {
           FeeEstimate value, $Res Function(FeeEstimate) then) =
       _$FeeEstimateCopyWithImpl<$Res, FeeEstimate>;
   @useResult
-  $Res call({String gasConsumed, String gasPrice, String overallFee});
+  $Res call(
+      {String gasConsumed,
+      String dataGasConsumed,
+      String gasPrice,
+      String dataGasPrice,
+      String overallFee,
+      String unit});
 }
 
 /// @nodoc
@@ -49,25 +62,42 @@ class _$FeeEstimateCopyWithImpl<$Res, $Val extends FeeEstimate>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of FeeEstimate
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? gasConsumed = null,
+    Object? dataGasConsumed = null,
     Object? gasPrice = null,
+    Object? dataGasPrice = null,
     Object? overallFee = null,
+    Object? unit = null,
   }) {
     return _then(_value.copyWith(
       gasConsumed: null == gasConsumed
           ? _value.gasConsumed
           : gasConsumed // ignore: cast_nullable_to_non_nullable
               as String,
+      dataGasConsumed: null == dataGasConsumed
+          ? _value.dataGasConsumed
+          : dataGasConsumed // ignore: cast_nullable_to_non_nullable
+              as String,
       gasPrice: null == gasPrice
           ? _value.gasPrice
           : gasPrice // ignore: cast_nullable_to_non_nullable
               as String,
+      dataGasPrice: null == dataGasPrice
+          ? _value.dataGasPrice
+          : dataGasPrice // ignore: cast_nullable_to_non_nullable
+              as String,
       overallFee: null == overallFee
           ? _value.overallFee
           : overallFee // ignore: cast_nullable_to_non_nullable
+              as String,
+      unit: null == unit
+          ? _value.unit
+          : unit // ignore: cast_nullable_to_non_nullable
               as String,
     ) as $Val);
   }
@@ -81,7 +111,13 @@ abstract class _$$FeeEstimateImplCopyWith<$Res>
       __$$FeeEstimateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String gasConsumed, String gasPrice, String overallFee});
+  $Res call(
+      {String gasConsumed,
+      String dataGasConsumed,
+      String gasPrice,
+      String dataGasPrice,
+      String overallFee,
+      String unit});
 }
 
 /// @nodoc
@@ -92,25 +128,42 @@ class __$$FeeEstimateImplCopyWithImpl<$Res>
       _$FeeEstimateImpl _value, $Res Function(_$FeeEstimateImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of FeeEstimate
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? gasConsumed = null,
+    Object? dataGasConsumed = null,
     Object? gasPrice = null,
+    Object? dataGasPrice = null,
     Object? overallFee = null,
+    Object? unit = null,
   }) {
     return _then(_$FeeEstimateImpl(
       gasConsumed: null == gasConsumed
           ? _value.gasConsumed
           : gasConsumed // ignore: cast_nullable_to_non_nullable
               as String,
+      dataGasConsumed: null == dataGasConsumed
+          ? _value.dataGasConsumed
+          : dataGasConsumed // ignore: cast_nullable_to_non_nullable
+              as String,
       gasPrice: null == gasPrice
           ? _value.gasPrice
           : gasPrice // ignore: cast_nullable_to_non_nullable
               as String,
+      dataGasPrice: null == dataGasPrice
+          ? _value.dataGasPrice
+          : dataGasPrice // ignore: cast_nullable_to_non_nullable
+              as String,
       overallFee: null == overallFee
           ? _value.overallFee
           : overallFee // ignore: cast_nullable_to_non_nullable
+              as String,
+      unit: null == unit
+          ? _value.unit
+          : unit // ignore: cast_nullable_to_non_nullable
               as String,
     ));
   }
@@ -121,8 +174,11 @@ class __$$FeeEstimateImplCopyWithImpl<$Res>
 class _$FeeEstimateImpl implements _FeeEstimate {
   const _$FeeEstimateImpl(
       {required this.gasConsumed,
+      required this.dataGasConsumed,
       required this.gasPrice,
-      required this.overallFee});
+      required this.dataGasPrice,
+      required this.overallFee,
+      required this.unit});
 
   factory _$FeeEstimateImpl.fromJson(Map<String, dynamic> json) =>
       _$$FeeEstimateImplFromJson(json);
@@ -130,13 +186,19 @@ class _$FeeEstimateImpl implements _FeeEstimate {
   @override
   final String gasConsumed;
   @override
+  final String dataGasConsumed;
+  @override
   final String gasPrice;
   @override
+  final String dataGasPrice;
+  @override
   final String overallFee;
+  @override
+  final String unit;
 
   @override
   String toString() {
-    return 'FeeEstimate(gasConsumed: $gasConsumed, gasPrice: $gasPrice, overallFee: $overallFee)';
+    return 'FeeEstimate(gasConsumed: $gasConsumed, dataGasConsumed: $dataGasConsumed, gasPrice: $gasPrice, dataGasPrice: $dataGasPrice, overallFee: $overallFee, unit: $unit)';
   }
 
   @override
@@ -146,18 +208,25 @@ class _$FeeEstimateImpl implements _FeeEstimate {
             other is _$FeeEstimateImpl &&
             (identical(other.gasConsumed, gasConsumed) ||
                 other.gasConsumed == gasConsumed) &&
+            (identical(other.dataGasConsumed, dataGasConsumed) ||
+                other.dataGasConsumed == dataGasConsumed) &&
             (identical(other.gasPrice, gasPrice) ||
                 other.gasPrice == gasPrice) &&
+            (identical(other.dataGasPrice, dataGasPrice) ||
+                other.dataGasPrice == dataGasPrice) &&
             (identical(other.overallFee, overallFee) ||
-                other.overallFee == overallFee));
+                other.overallFee == overallFee) &&
+            (identical(other.unit, unit) || other.unit == unit));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, gasConsumed, gasPrice, overallFee);
+  int get hashCode => Object.hash(runtimeType, gasConsumed, dataGasConsumed,
+      gasPrice, dataGasPrice, overallFee, unit);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of FeeEstimate
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$FeeEstimateImplCopyWith<_$FeeEstimateImpl> get copyWith =>
@@ -174,8 +243,11 @@ class _$FeeEstimateImpl implements _FeeEstimate {
 abstract class _FeeEstimate implements FeeEstimate {
   const factory _FeeEstimate(
       {required final String gasConsumed,
+      required final String dataGasConsumed,
       required final String gasPrice,
-      required final String overallFee}) = _$FeeEstimateImpl;
+      required final String dataGasPrice,
+      required final String overallFee,
+      required final String unit}) = _$FeeEstimateImpl;
 
   factory _FeeEstimate.fromJson(Map<String, dynamic> json) =
       _$FeeEstimateImpl.fromJson;
@@ -183,11 +255,20 @@ abstract class _FeeEstimate implements FeeEstimate {
   @override
   String get gasConsumed;
   @override
+  String get dataGasConsumed;
+  @override
   String get gasPrice;
+  @override
+  String get dataGasPrice;
   @override
   String get overallFee;
   @override
-  @JsonKey(ignore: true)
+  String get unit;
+
+  /// Create a copy of FeeEstimate
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$FeeEstimateImplCopyWith<_$FeeEstimateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
