@@ -96,7 +96,7 @@ scripts:
     run: |
       starkli invoke $HELLO_CONTRACT_ADDRESS set_name 0x0 
       # should create tx hash 0x029583643cd8932f1955bf28bfebf4c907b13df1e5c2d202b133cfbf783697a2
-      
+
       cp -f .starkli/account_for_devnet_setup.json .starkli/account_1.json
       starkli invoke eth transfer 0x016a0d7df981d681537dc2ce648722ff1d1c2cbe59412b492d35bac69825f104 0x100000000000000000 0x0
       echo | starkli account deploy .starkli/account_1.json
