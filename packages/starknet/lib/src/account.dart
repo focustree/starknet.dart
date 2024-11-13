@@ -61,8 +61,8 @@ class Account {
   }
 
   /// Get Estimate max fee for Invoke Tx
-  Future<FeeEstimations> getEstimateMaxFeeForInvokeTx({
-      BlockId blockId = BlockId.latest,
+  Future<FeeEstimations> getEstimateMaxFeeForInvokeTx(
+      {BlockId blockId = BlockId.latest,
       String version = "0x1",
       required List<FunctionCall> functionCalls,
       bool useLegacyCalldata = false,
@@ -74,11 +74,10 @@ class Account {
       List<Felt>? paymasterData,
       Felt? tip,
       String? feeDataAvailabilityMode = 'L1',
-      String? nonceDataAvailabilityMode = 'L1'
-    }) async {
-
+      String? nonceDataAvailabilityMode = 'L1'}) async {
     nonce = nonce ?? await getNonce();
-    Map<String, ResourceBounds> resourceBounds = getResourceBounds(Felt.zero, Felt.zero, Felt.zero, Felt.zero);
+    Map<String, ResourceBounds> resourceBounds =
+        getResourceBounds(Felt.zero, Felt.zero, Felt.zero, Felt.zero);
 
     if (useSTRKFee!) {
       supportedTxVersion = AccountSupportedTxVersion.v3;
@@ -182,7 +181,8 @@ class Account {
     BroadcastedTxn broadcastedTxn;
 
     nonce = nonce ?? await getNonce();
-    Map<String, ResourceBounds> resourceBounds = getResourceBounds(Felt.zero, Felt.zero, Felt.zero, Felt.zero);
+    Map<String, ResourceBounds> resourceBounds =
+        getResourceBounds(Felt.zero, Felt.zero, Felt.zero, Felt.zero);
 
     if (useSTRKFee!) {
       // These values are for future use (until then they are empty or zero)
@@ -191,19 +191,18 @@ class Account {
       tip ??= Felt.zero;
 
       final signature = signer.signDeclareTransactionV3(
-        compiledContract: compiledContract as CompiledContract,
-        senderAddress: accountAddress,
-        chainId: chainId,
-        nonce: nonce,
-        compiledClassHash: Felt(compiledClassHash!),
-        casmCompiledContract: casmCompiledContract,
-        resourceBounds: resourceBounds,
-        accountDeploymentData: accountDeploymentData,
-        paymasterData: paymasterData,
-        tip: tip,
-        feeDataAvailabilityMode: feeDataAvailabilityMode!,
-        nonceDataAvailabilityMode: nonceDataAvailabilityMode!
-      );
+          compiledContract: compiledContract as CompiledContract,
+          senderAddress: accountAddress,
+          chainId: chainId,
+          nonce: nonce,
+          compiledClassHash: Felt(compiledClassHash!),
+          casmCompiledContract: casmCompiledContract,
+          resourceBounds: resourceBounds,
+          accountDeploymentData: accountDeploymentData,
+          paymasterData: paymasterData,
+          tip: tip,
+          feeDataAvailabilityMode: feeDataAvailabilityMode!,
+          nonceDataAvailabilityMode: nonceDataAvailabilityMode!);
 
       broadcastedTxn = BroadcastedDeclareTxnV3(
         type: "DECLARE",
@@ -286,7 +285,8 @@ class Account {
     BroadcastedTxn broadcastedTxn;
     nonce = nonce ?? defaultNonce;
     contractAddressSalt = contractAddressSalt ?? signer.publicKey;
-    Map<String, ResourceBounds> resourceBounds = getResourceBounds(Felt.zero, Felt.zero, Felt.zero, Felt.zero);
+    Map<String, ResourceBounds> resourceBounds =
+        getResourceBounds(Felt.zero, Felt.zero, Felt.zero, Felt.zero);
 
     if (useSTRKFee!) {
       contractAddress = contractAddress ?? Felt.zero;
@@ -372,13 +372,14 @@ class Account {
       ...calldata,
     ];
 
-    final maxFee = await account0.getEstimateMaxFeeForInvokeTx(functionCalls: [
+    final maxFee = await account0.getEstimateMaxFeeForInvokeTx(
+      functionCalls: [
         FunctionCall(
           contractAddress: udcAddress,
           entryPointSelector: getSelectorByName("deployContract"),
           calldata: params,
         )
-      ], 
+      ],
       useSTRKFee: useSTRKFee,
       paymasterData: paymasterData,
       tip: tip,
@@ -429,26 +430,25 @@ class Account {
   }
 
   /// Call account contract `__execute__` with given [functionCalls]
-  Future<InvokeTransactionResponse> execute({
-    required List<FunctionCall> functionCalls,
-    bool useLegacyCalldata = false,
-    bool incrementNonceIfNonceRelatedError = true,
-    int maxAttempts = 5,
-    Felt? maxFee,
-    Felt? nonce,
-    // needed for v3
-    bool? useSTRKFee,
-    Felt? l1MaxAmount,
-    Felt? l1MaxPricePerUnit,
-    Felt? l2MaxAmount,
-    Felt? l2MaxPricePerUnit,
-    // These values are for future use (until then they are empty or zero)
-    List<Felt>? accountDeploymentData,
-    List<Felt>? paymasterData,
-    Felt? tip,
-    String? feeDataAvailabilityMode,
-    String? nonceDataAvailabilityMode
-  }) async {
+  Future<InvokeTransactionResponse> execute(
+      {required List<FunctionCall> functionCalls,
+      bool useLegacyCalldata = false,
+      bool incrementNonceIfNonceRelatedError = true,
+      int maxAttempts = 5,
+      Felt? maxFee,
+      Felt? nonce,
+      // needed for v3
+      bool? useSTRKFee,
+      Felt? l1MaxAmount,
+      Felt? l1MaxPricePerUnit,
+      Felt? l2MaxAmount,
+      Felt? l2MaxPricePerUnit,
+      // These values are for future use (until then they are empty or zero)
+      List<Felt>? accountDeploymentData,
+      List<Felt>? paymasterData,
+      Felt? tip,
+      String? feeDataAvailabilityMode,
+      String? nonceDataAvailabilityMode}) async {
     nonce = nonce ?? await getNonce();
 
     useSTRKFee ??= false;
@@ -461,8 +461,8 @@ class Account {
     l1MaxPricePerUnit ??= Felt.zero;
     l2MaxAmount ??= Felt.zero;
     l2MaxPricePerUnit ??= Felt.zero;
-    Map<String, ResourceBounds> resourceBounds =
-        getResourceBounds(l1MaxAmount, l1MaxPricePerUnit, l2MaxAmount, l2MaxPricePerUnit);
+    Map<String, ResourceBounds> resourceBounds = getResourceBounds(
+        l1MaxAmount, l1MaxPricePerUnit, l2MaxAmount, l2MaxPricePerUnit);
 
     if (useSTRKFee!) {
       supportedTxVersion = AccountSupportedTxVersion.v3;
@@ -633,8 +633,8 @@ class Account {
       l1MaxPricePerUnit ??= Felt.zero;
       l2MaxAmount ??= Felt.zero;
       l2MaxPricePerUnit ??= Felt.zero;
-      Map<String, ResourceBounds> resourceBounds =
-          getResourceBounds(l1MaxAmount, l1MaxPricePerUnit, l2MaxAmount, l2MaxPricePerUnit);
+      Map<String, ResourceBounds> resourceBounds = getResourceBounds(
+          l1MaxAmount, l1MaxPricePerUnit, l2MaxAmount, l2MaxPricePerUnit);
 
       final signature = signer.signDeclareTransactionV3(
         compiledContract: compiledContract as CompiledContract,
@@ -787,7 +787,8 @@ class Account {
     required Uint256 amount,
     bool useSTRKtoken = false,
   }) async {
-    final txHash = await ERC20(account: this, address: useSTRKtoken ? strkAddress : ethAddress)
+    final txHash = await ERC20(
+            account: this, address: useSTRKtoken ? strkAddress : ethAddress)
         .transfer(recipient, amount);
     return txHash;
   }
@@ -850,8 +851,8 @@ class Account {
       accountDeploymentData ??= [];
       paymasterData ??= [];
       tip ??= Felt.zero;
-      Map<String, ResourceBounds> resourceBounds =
-          getResourceBounds(l1MaxAmount, l1MaxPricePerUnit, l2MaxAmount, l2MaxPricePerUnit);
+      Map<String, ResourceBounds> resourceBounds = getResourceBounds(
+          l1MaxAmount, l1MaxPricePerUnit, l2MaxAmount, l2MaxPricePerUnit);
 
       final signature = signer.signDeployAccountTransactionV3(
         contractAddress: contractAddress,
@@ -936,8 +937,8 @@ class Account {
   }
 
   // Function to generate a resourceBounds map from a maxAmount and a maxPricePerUnit
-  static Map<String, ResourceBounds> getResourceBounds(
-      Felt l1MaxAmount, Felt l1MaxPricePerUnit, Felt l2MaxAmount, Felt l2MaxPricePerUnit) {
+  static Map<String, ResourceBounds> getResourceBounds(Felt l1MaxAmount,
+      Felt l1MaxPricePerUnit, Felt l2MaxAmount, Felt l2MaxPricePerUnit) {
     return {
       'l1_gas': ResourceBounds(
           maxAmount: l1MaxAmount.toHexString(),

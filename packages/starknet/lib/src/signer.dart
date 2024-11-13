@@ -63,8 +63,8 @@ class Signer {
       TransactionHashPrefix.invoke.toBigInt(),
       BigInt.from(3), // version
       senderAddress.toBigInt(),
-      poseidonHasher
-          .hashMany([tip.toBigInt(), l1GasBounds.toBigInt(), l2GasBounds.toBigInt()]),
+      poseidonHasher.hashMany(
+          [tip.toBigInt(), l1GasBounds.toBigInt(), l2GasBounds.toBigInt()]),
       poseidonHasher.hashMany(paymasterData.map((e) => e.toBigInt()).toList()),
       chainId.toBigInt(),
       nonce.toBigInt(),
@@ -286,21 +286,20 @@ class Signer {
     return [Felt(signature.r), Felt(signature.s)];
   }
 
-  List<Felt> signDeclareTransactionV3({
-    required CompiledContract compiledContract,
-    required Felt senderAddress,
-    required Felt chainId,
-    required Felt nonce,
-    Felt? classHash,
-    Felt? compiledClassHash,
-    CASMCompiledContract? casmCompiledContract,
-    required Map<String, ResourceBounds> resourceBounds,
-    required List<Felt> accountDeploymentData,
-    required List<Felt> paymasterData,
-    required Felt tip,
-    required String feeDataAvailabilityMode,
-    required String nonceDataAvailabilityMode
-  }) {
+  List<Felt> signDeclareTransactionV3(
+      {required CompiledContract compiledContract,
+      required Felt senderAddress,
+      required Felt chainId,
+      required Felt nonce,
+      Felt? classHash,
+      Felt? compiledClassHash,
+      CASMCompiledContract? casmCompiledContract,
+      required Map<String, ResourceBounds> resourceBounds,
+      required List<Felt> accountDeploymentData,
+      required List<Felt> paymasterData,
+      required Felt tip,
+      required String feeDataAvailabilityMode,
+      required String nonceDataAvailabilityMode}) {
     classHash ??= Felt(compiledContract.classHash());
 
     if ((compiledClassHash == null) && (casmCompiledContract == null)) {
@@ -335,8 +334,8 @@ class Signer {
       TransactionHashPrefix.declare.toBigInt(),
       BigInt.from(3), // version
       senderAddress.toBigInt(),
-      poseidonHasher
-          .hashMany([tip.toBigInt(), l1GasBounds.toBigInt(), l2GasBounds.toBigInt()]),
+      poseidonHasher.hashMany(
+          [tip.toBigInt(), l1GasBounds.toBigInt(), l2GasBounds.toBigInt()]),
       poseidonHasher.hashMany(paymasterData.map((e) => e.toBigInt()).toList()),
       chainId.toBigInt(),
       nonce.toBigInt(),
@@ -451,8 +450,8 @@ class Signer {
       TransactionHashPrefix.deployAccount.toBigInt(),
       BigInt.from(3), // version
       contractAddress.toBigInt(),
-      poseidonHasher
-          .hashMany([tip.toBigInt(), l1GasBounds.toBigInt(), l2GasBounds.toBigInt()]),
+      poseidonHasher.hashMany(
+          [tip.toBigInt(), l1GasBounds.toBigInt(), l2GasBounds.toBigInt()]),
       poseidonHasher.hashMany(paymasterData.map((e) => e.toBigInt()).toList()),
       chainId.toBigInt(),
       nonce.toBigInt(),

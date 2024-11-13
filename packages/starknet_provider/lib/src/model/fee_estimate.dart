@@ -11,8 +11,7 @@ class FeeEstimate with _$FeeEstimate {
       required String gasPrice,
       required String dataGasPrice,
       required String overallFee,
-      required String unit
-      }) = _FeeEstimate;
+      required String unit}) = _FeeEstimate;
 
   factory FeeEstimate.fromJson(Map<String, Object?> json) =>
       _$FeeEstimateFromJson(json);
