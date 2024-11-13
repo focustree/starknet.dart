@@ -1,5 +1,9 @@
 # How to build a mobile wallet for Starknet
 
+In this tutorial we will build a mobile wallet app.
+
+## Pre-requisites
+
 1. Create a new flutter project
 
 ```
@@ -8,11 +12,200 @@ flutter create wallet_app
 
 Run it locally with `flutter run` to make sure it is properly configured.
 
-2. Create a `contracts` folder and setup a scarb project.
+2. Install and run [`starknet-devnet`](https://0xspaceshard.github.io/starknet-devnet-rs/docs/running/install)
 
-- Install [`asdf`](https://asdf-vm.com/guide/getting-started.html)
-- [Install scarb](https://docs.swmansion.com/scarb/) and run `scarb --version` to make sure it is working properly
-- Run `scarb new contracts` in `wallet_app/`
-- Run `scarb build` in `contracts/`
+3. Add necessary dependnecies
 
-3. Install and run [`starknet-devnet`](https://0xspaceshard.github.io/starknet-devnet-rs/docs/running/install)
+```bash
+flutter pub add wallet_kit hive_flutter hooks_riverpod flutter_dotenv
+```
+
+4. Create a `.env` file in the root of your wallet_app project
+
+```bash
+ACCOUNT_CLASS_HASH="0x05400e90f7e0ae78bd02c77cd75527280470e2fe19c54970dd79dc37a9d3645c"
+RPC="http://127.0.0.1:5050/rpc"
+```
+
+> If you are building for Android, use `RPC="http://10.0.2.2:5050/rpc"` instead.
+
+## Let's write some code
+
+Let's start with a simple `main` function in your 'main.dart' file.
+
+```dart
+import 'package:flutter/material.dart';
+
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+}
+```
+
+We will need to load our environment variables using `flutter_dotenv` package
+
+```dart
+import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
+
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  await dotenv.load();
+}
+```
+
+Now let's intialize `wallet_kit` and `hive` in our `main` function
+
+```dart
+import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:hive_flutter/hive_flutter.dart';
+import 'package:wallet_kit/wallet_kit.dart';
+
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  await dotenv.load();
+
+  await WalletKit().init(
+    accountClassHash: dotenv.env['ACCOUNT_CLASS_HASH'] as String,
+    rpc: dotenv.env['RPC'] as String,
+  );
+
+  await Hive.initFlutter();
+}
+```
+
+Let's also setup device orientation and system ui overlay
+
+```dart
+SystemChrome.setEnabledSystemUIMode(
+    SystemUiMode.edgeToEdge,
+  );
+
+  SystemChrome.setPreferredOrientations([
+    DeviceOrientation.portraitUp,
+    DeviceOrientation.portraitDown,
+  ]);
+
+  SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
+    statusBarColor: Colors.transparent,
+    statusBarIconBrightness: Brightness.dark,
+    systemNavigationBarColor: Colors.transparent,
+    systemNavigationBarDividerColor: Colors.transparent,
+    systemNavigationBarIconBrightness: Brightness.dark,
+  ));
+```
+
+Finally we can create an App widget and run our app:
+
+```dart
+import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:hive_flutter/hive_flutter.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:wallet_kit/wallet_kit.dart';
+
+import './screens/home_screen.dart';
+
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  await dotenv.load();
+
+  WalletKit().init(
+    accountClassHash: dotenv.env['ACCOUNT_CLASS_HASH'] as String,
+    rpc: dotenv.env['RPC'] as String,
+  );
+
+  await Hive.initFlutter();
+
+  SystemChrome.setEnabledSystemUIMode(
+    SystemUiMode.edgeToEdge,
+  );
+
+  SystemChrome.setPreferredOrientations([
+    DeviceOrientation.portraitUp,
+    DeviceOrientation.portraitDown,
+  ]);
+
+  SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
+    statusBarColor: Colors.transparent,
+    statusBarIconBrightness: Brightness.dark,
+    systemNavigationBarColor: Colors.transparent,
+    systemNavigationBarDividerColor: Colors.transparent,
+    systemNavigationBarIconBrightness: Brightness.dark,
+  ));
+
+  runApp(const ProviderScope(child: WalletApp()));
+}
+
+class WalletApp extends HookConsumerWidget {
+  const WalletApp({super.key});
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    return MaterialApp(
+      title: 'Starknet Wallet',
+      home: const Placeholder(),
+      theme: walletThemeData,
+      debugShowCheckedModeBanner: false,
+    );
+  }
+}
+```
+
+Create a `screens/` folder and add `home_screen.dart` file with a pre-built layout from `wallet_kit`, as well as `WalletSelector`, `AccountAddress`, `WalletBody` and `SendEthButton`:
+
+```dart
+import 'package:flutter/material.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:wallet_kit/wallet_kit.dart';
+
+class HomeScreen extends HookConsumerWidget {
+  const HomeScreen({super.key});
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    return const Layout2(
+      children: [
+        SizedBox(height: 32),
+        Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            WalletSelector(),
+            AccountAddress(),
+          ],
+        ),
+        SizedBox(height: 32),
+        WalletBody(),
+        SendEthButton(),
+      ],
+    );
+  }
+}
+```
+
+Now replace `home: const Placeholder()` with `home: const HomeScreen()` in `main.dart`. Your WalletApp should now look like this:
+
+```dart
+import './screens/home_screen.dart';
+
+class WalletApp extends HookConsumerWidget {
+  const WalletApp({super.key});
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    return MaterialApp(
+      title: 'Starknet Wallet',
+      home: const HomeScreen(),
+      theme: walletThemeData,
+      debugShowCheckedModeBanner: false,
+    );
+  }
+}
+```
+
+Now you can run your app with `flutter run` and see your wallet in action! 💸
