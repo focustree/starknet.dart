@@ -80,9 +80,9 @@ jobs:
       - name: "Dart, Java and Objective-C "
         run: |
           flutter pub global run flutter_plugin_tools format
-          ./scripts/validate-formatting.sh
+          ./.github/validate-formatting.sh
       - name: "Swift"
         if: ${{ success() || failure() }}
         run: |
           swiftformat .
-          ./scripts/validate-formatting.sh
+          ./.github/validate-formatting.sh
