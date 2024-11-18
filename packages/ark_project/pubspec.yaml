@@ -1,6 +1,7 @@
-name: ark
-description: A starting point for Dart libraries or applications.
+name: ark_project
+description: Ark SDK for Dart and Flutter apps.
 version: 0.1.0
+repository: https://github.com/focustree/starknet.dart
 
 environment:
   sdk: ">=3.0.0 <4.0.0" # Dart version constraint

@@ -1,7 +1,7 @@
 import 'package:starknet/starknet.dart';
 import 'package:starknet_provider/starknet_provider.dart';
 
-import 'model/starknet.dart';
+import './model/starknet.dart';
 
 class ArkStarknet {
   static final ArkStarknet _instance = ArkStarknet._internal();

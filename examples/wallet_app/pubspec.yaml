@@ -11,7 +11,7 @@ dependencies:
     sdk: flutter
   wallet_kit:
   starknet_provider:
-  ark: ^0.1.0
+  ark_project: ^0.1.0
   starknet: ^0.1.0
   secure_store: ^0.1.2
   cupertino_icons: ^1.0.2

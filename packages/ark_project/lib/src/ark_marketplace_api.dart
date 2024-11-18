@@ -2,7 +2,7 @@ import 'dart:convert';
 import 'dart:io';
 import 'package:http/http.dart' as http;
 
-import 'model/marketplace_api.dart';
+import './model/marketplace_api.dart';
 
 class ArkMarketplaceApi {
   static final ArkMarketplaceApi _instance = ArkMarketplaceApi._internal();
