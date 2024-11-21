@@ -1,7 +1,8 @@
 import 'dart:convert';
 import 'dart:io';
-import 'package:ark/src/model/orderbook_api.dart';
 import 'package:http/http.dart' as http;
+
+import './model/orderbook_api.dart';
 
 class ArkOrderbookApi {
   static final ArkOrderbookApi _instance = ArkOrderbookApi._internal();

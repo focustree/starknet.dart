@@ -28,7 +28,7 @@ environment:
 # the latest version available on pub.dev. To see which dependencies have newer
 # versions available, run `flutter pub outdated`.
 dependencies:
-  ark:
+  ark_project:
   starknet:
   starknet_provider:
   secure_store:
@@ -43,7 +43,7 @@ dependencies:
   flutter_dotenv: ^5.1.0
   riverpod_annotation: ^2.3.5
   riverpod: ^2.5.1
-  go_router: ^14.2.9 
+  go_router: ^14.2.9
 
 dev_dependencies:
   flutter_test:

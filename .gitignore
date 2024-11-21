@@ -35,4 +35,4 @@ coverage/
 
 # deploy for test
 .starkli/account_1.json
-
+pubspec_overrides.yaml
