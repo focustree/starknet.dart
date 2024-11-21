@@ -25,11 +25,14 @@ class DeclareTransactionRequest with _$DeclareTransactionRequest {
 abstract class DeclareTransaction {
   factory DeclareTransaction.fromJson(Map<String, Object?> json) {
     switch (json['version']) {
-      case DECLARE_TXN_V1 || DECLARE_TXN_V1_OLD_COMPAT:
+      case DECLARE_TXN_V1:
+      case DECLARE_TXN_V1_OLD_COMPAT:
         return DeclareTransactionV1.fromJson(json);
-      case DECLARE_TXN_V2 || DECLARE_TXN_V2_OLD_COMPAT:
+      case DECLARE_TXN_V2:
+      case DECLARE_TXN_V2_OLD_COMPAT:
         return DeclareTransactionV2.fromJson(json);
-      case DECLARE_TXN_V3 || DECLARE_TXN_V3_OLD_COMPAT:
+      case DECLARE_TXN_V3:
+      case DECLARE_TXN_V3_OLD_COMPAT:
         return DeclareTransactionV3.fromJson(json);
       default:
         throw ArgumentError(

@@ -27,11 +27,14 @@ class InvokeTransactionRequest with _$InvokeTransactionRequest {
 abstract class InvokeTransaction {
   factory InvokeTransaction.fromJson(Map<String, Object?> json) {
     switch (json['version']) {
-      case INVOKE_TXN_V0 || INVOKE_TXN_V0_OLD_COMPAT:
+      case INVOKE_TXN_V0:
+      case INVOKE_TXN_V0_OLD_COMPAT:
         return InvokeTransactionV0.fromJson(json);
-      case INVOKE_TXN_V1 || INVOKE_TXN_V1_OLD_COMPAT:
+      case INVOKE_TXN_V1:
+      case INVOKE_TXN_V1_OLD_COMPAT:
         return InvokeTransactionV1.fromJson(json);
-      case INVOKE_TXN_V3 || INVOKE_TXN_V3_OLD_COMPAT:
+      case INVOKE_TXN_V3:
+      case INVOKE_TXN_V3_OLD_COMPAT:
         return InvokeTransactionV3.fromJson(json);
       default:
         throw ArgumentError('Unsupported transaction version:');

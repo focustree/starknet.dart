@@ -99,7 +99,7 @@ class ERC20 extends Contract {
         return result.transaction_hash;
       },
       error: (error) {
-        throw Exception("Error transfer (${error.code}): ${error.message}");
+        throw Exception("Error approve (${error.code}): ${error.message}");
       },
     ));
   }

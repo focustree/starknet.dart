@@ -55,7 +55,12 @@ class Felt {
 
   //define / operator
   Felt operator /(Felt other) {
-    Felt result = Felt(_bigInt ~/ other._bigInt);
+    if (other._bigInt == BigInt.zero) {
+      throw ArgumentError('Cannot divide by zero');
+    }
+    // modInverse will throw if no inverse exists
+    BigInt inverse = other._bigInt.modInverse(prime);
+    Felt result = Felt((_bigInt * inverse) % prime);
     return result;
   }
 

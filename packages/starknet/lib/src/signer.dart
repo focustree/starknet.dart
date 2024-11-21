@@ -165,12 +165,12 @@ class Signer {
     String entryPointSelectorName = "__execute__",
     bool useLegacyCalldata = false,
     // needed for V3
-    List<Felt>? accountDeploymentData,
-    List<Felt>? paymasterData,
+    List<Felt>? accountDeploymentData = const [],
+    List<Felt>? paymasterData = const [],
     Felt? tip,
     String? feeDataAvailabilityMode = 'L1',
     String? nonceDataAvailabilityMode = 'L1',
-    Map<String, ResourceBounds>? resourceBounds,
+    Map<String, ResourceBounds>? resourceBounds = const {},
   }) {
     switch (version) {
       case 0:
@@ -191,18 +191,15 @@ class Signer {
             maxFee: maxFee,
             useLegacyCalldata: useLegacyCalldata);
       case 3:
-        resourceBounds ??= {};
-        accountDeploymentData ??= [];
-        paymasterData ??= [];
         tip ??= Felt.zero;
         return signInvokeTransactionsV3(
           transactions: transactions,
           senderAddress: contractAddress,
           chainId: chainId,
           nonce: nonce,
-          resourceBounds: resourceBounds,
-          accountDeploymentData: accountDeploymentData,
-          paymasterData: paymasterData,
+          resourceBounds: resourceBounds!,
+          accountDeploymentData: accountDeploymentData!,
+          paymasterData: paymasterData!,
           tip: tip,
           feeDataAvailabilityMode: feeDataAvailabilityMode!,
           nonceDataAvailabilityMode: nonceDataAvailabilityMode!,
