@@ -70,6 +70,8 @@ mixin _$GetEvents {
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
+
+  /// Serializes this GetEvents to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
 }
 
@@ -88,6 +90,9 @@ class _$GetEventsCopyWithImpl<$Res, $Val extends GetEvents>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of GetEvents
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -109,6 +114,8 @@ class __$$GetEventsResultImplCopyWithImpl<$Res>
       _$GetEventsResultImpl _value, $Res Function(_$GetEventsResultImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of GetEvents
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -122,6 +129,8 @@ class __$$GetEventsResultImplCopyWithImpl<$Res>
     ));
   }
 
+  /// Create a copy of GetEvents
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $GetEventsResponseCopyWith<$Res> get result {
@@ -159,11 +168,13 @@ class _$GetEventsResultImpl implements GetEventsResult {
             (identical(other.result, result) || other.result == result));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, result);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of GetEvents
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GetEventsResultImplCopyWith<_$GetEventsResultImpl> get copyWith =>
@@ -248,7 +259,10 @@ abstract class GetEventsResult implements GetEvents {
       _$GetEventsResultImpl.fromJson;
 
   GetEventsResponse get result;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of GetEvents
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GetEventsResultImplCopyWith<_$GetEventsResultImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -272,6 +286,8 @@ class __$$GetEventsErrorImplCopyWithImpl<$Res>
       _$GetEventsErrorImpl _value, $Res Function(_$GetEventsErrorImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of GetEvents
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -285,6 +301,8 @@ class __$$GetEventsErrorImplCopyWithImpl<$Res>
     ));
   }
 
+  /// Create a copy of GetEvents
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $JsonRpcApiErrorCopyWith<$Res> get error {
@@ -322,11 +340,13 @@ class _$GetEventsErrorImpl implements GetEventsError {
             (identical(other.error, error) || other.error == error));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, error);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of GetEvents
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GetEventsErrorImplCopyWith<_$GetEventsErrorImpl> get copyWith =>
@@ -411,7 +431,10 @@ abstract class GetEventsError implements GetEvents {
       _$GetEventsErrorImpl.fromJson;
 
   JsonRpcApiError get error;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of GetEvents
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GetEventsErrorImplCopyWith<_$GetEventsErrorImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -432,8 +455,12 @@ mixin _$GetEventsRequest {
   int get chunkSize => throw _privateConstructorUsedError;
   String? get continuationToken => throw _privateConstructorUsedError;
 
+  /// Serializes this GetEventsRequest to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of GetEventsRequest
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $GetEventsRequestCopyWith<GetEventsRequest> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -466,6 +493,8 @@ class _$GetEventsRequestCopyWithImpl<$Res, $Val extends GetEventsRequest>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of GetEventsRequest
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -504,6 +533,8 @@ class _$GetEventsRequestCopyWithImpl<$Res, $Val extends GetEventsRequest>
     ) as $Val);
   }
 
+  /// Create a copy of GetEventsRequest
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $BlockIdCopyWith<$Res>? get fromBlock {
@@ -516,6 +547,8 @@ class _$GetEventsRequestCopyWithImpl<$Res, $Val extends GetEventsRequest>
     });
   }
 
+  /// Create a copy of GetEventsRequest
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $BlockIdCopyWith<$Res>? get toBlock {
@@ -559,6 +592,8 @@ class __$$GetEventsRequestImplCopyWithImpl<$Res>
       $Res Function(_$GetEventsRequestImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of GetEventsRequest
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -659,12 +694,14 @@ class _$GetEventsRequestImpl implements _GetEventsRequest {
                 other.continuationToken == continuationToken));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, fromBlock, toBlock, address,
       const DeepCollectionEquality().hash(_keys), chunkSize, continuationToken);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of GetEventsRequest
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GetEventsRequestImplCopyWith<_$GetEventsRequestImpl> get copyWith =>
@@ -691,21 +728,25 @@ abstract class _GetEventsRequest implements GetEventsRequest {
   factory _GetEventsRequest.fromJson(Map<String, dynamic> json) =
       _$GetEventsRequestImpl.fromJson;
 
-  @override // start of EVENT_FILTER
+// start of EVENT_FILTER
+  @override
   BlockId? get fromBlock;
   @override
   BlockId? get toBlock;
   @override
   Felt? get address;
   @override
-  List<List<Felt>>? get keys;
-  @override // end of EVENT_FILTER
+  List<List<Felt>>? get keys; // end of EVENT_FILTER
 // start of RESULT_PAGE_REQUEST
+  @override
   int get chunkSize;
   @override
   String? get continuationToken;
+
+  /// Create a copy of GetEventsRequest
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GetEventsRequestImplCopyWith<_$GetEventsRequestImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -719,8 +760,12 @@ mixin _$GetEventsResponse {
   List<EmittedEvent> get events => throw _privateConstructorUsedError;
   String? get continuation_token => throw _privateConstructorUsedError;
 
+  /// Serializes this GetEventsResponse to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of GetEventsResponse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $GetEventsResponseCopyWith<GetEventsResponse> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -744,6 +789,8 @@ class _$GetEventsResponseCopyWithImpl<$Res, $Val extends GetEventsResponse>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of GetEventsResponse
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -782,6 +829,8 @@ class __$$GetEventsResponseImplCopyWithImpl<$Res>
       $Res Function(_$GetEventsResponseImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of GetEventsResponse
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -838,12 +887,14 @@ class _$GetEventsResponseImpl implements _GetEventsResponse {
                 other.continuation_token == continuation_token));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType,
       const DeepCollectionEquality().hash(_events), continuation_token);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of GetEventsResponse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GetEventsResponseImplCopyWith<_$GetEventsResponseImpl> get copyWith =>
@@ -870,8 +921,11 @@ abstract class _GetEventsResponse implements GetEventsResponse {
   List<EmittedEvent> get events;
   @override
   String? get continuation_token;
+
+  /// Create a copy of GetEventsResponse
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GetEventsResponseImplCopyWith<_$GetEventsResponseImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -889,8 +943,12 @@ mixin _$EmittedEvent {
   Felt? get blockHash => throw _privateConstructorUsedError;
   int? get blockNumber => throw _privateConstructorUsedError;
 
+  /// Serializes this EmittedEvent to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of EmittedEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $EmittedEventCopyWith<EmittedEvent> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -920,6 +978,8 @@ class _$EmittedEventCopyWithImpl<$Res, $Val extends EmittedEvent>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of EmittedEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -984,6 +1044,8 @@ class __$$EmittedEventImplCopyWithImpl<$Res>
       _$EmittedEventImpl _value, $Res Function(_$EmittedEventImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of EmittedEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1091,7 +1153,7 @@ class _$EmittedEventImpl implements _EmittedEvent {
                 other.blockNumber == blockNumber));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -1102,7 +1164,9 @@ class _$EmittedEventImpl implements _EmittedEvent {
       blockHash,
       blockNumber);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of EmittedEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$EmittedEventImplCopyWith<_$EmittedEventImpl> get copyWith =>
@@ -1140,8 +1204,11 @@ abstract class _EmittedEvent implements EmittedEvent {
   Felt? get blockHash;
   @override
   int? get blockNumber;
+
+  /// Create a copy of EmittedEvent
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$EmittedEventImplCopyWith<_$EmittedEventImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

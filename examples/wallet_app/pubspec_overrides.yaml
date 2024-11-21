@@ -10,3 +10,11 @@ dependency_overrides:
     path: ../../packages/starknet_builder
   starknet_provider:
     path: ../../packages/starknet_provider
+  starknet_builder:
+    path: ../../packages/starknet_builder
+  secure_store:
+    path: ../../packages/secure_store
+  wallet_kit:
+    path: ../../packages/wallet_kit
+  ark:
+    path: ../../packages/ark

@@ -70,6 +70,8 @@ mixin _$GetNonce {
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
+
+  /// Serializes this GetNonce to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
 }
 
@@ -88,6 +90,9 @@ class _$GetNonceCopyWithImpl<$Res, $Val extends GetNonce>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of GetNonce
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -107,6 +112,8 @@ class __$$GetNonceResultImplCopyWithImpl<$Res>
       _$GetNonceResultImpl _value, $Res Function(_$GetNonceResultImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of GetNonce
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -149,11 +156,13 @@ class _$GetNonceResultImpl implements GetNonceResult {
             (identical(other.result, result) || other.result == result));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, result);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of GetNonce
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GetNonceResultImplCopyWith<_$GetNonceResultImpl> get copyWith =>
@@ -238,7 +247,10 @@ abstract class GetNonceResult implements GetNonce {
       _$GetNonceResultImpl.fromJson;
 
   Felt get result;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of GetNonce
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GetNonceResultImplCopyWith<_$GetNonceResultImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -262,6 +274,8 @@ class __$$GetNonceErrorImplCopyWithImpl<$Res>
       _$GetNonceErrorImpl _value, $Res Function(_$GetNonceErrorImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of GetNonce
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -275,6 +289,8 @@ class __$$GetNonceErrorImplCopyWithImpl<$Res>
     ));
   }
 
+  /// Create a copy of GetNonce
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $JsonRpcApiErrorCopyWith<$Res> get error {
@@ -312,11 +328,13 @@ class _$GetNonceErrorImpl implements GetNonceError {
             (identical(other.error, error) || other.error == error));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, error);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of GetNonce
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GetNonceErrorImplCopyWith<_$GetNonceErrorImpl> get copyWith =>
@@ -400,7 +418,10 @@ abstract class GetNonceError implements GetNonce {
       _$GetNonceErrorImpl.fromJson;
 
   JsonRpcApiError get error;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of GetNonce
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GetNonceErrorImplCopyWith<_$GetNonceErrorImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

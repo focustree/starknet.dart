@@ -95,6 +95,9 @@ class _$BlockIdCopyWithImpl<$Res, $Val extends BlockId>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of BlockId
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -114,6 +117,8 @@ class __$$BlockIdHashImplCopyWithImpl<$Res>
       _$BlockIdHashImpl _value, $Res Function(_$BlockIdHashImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of BlockId
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -158,11 +163,13 @@ class _$BlockIdHashImpl extends BlockIdHash {
                 other.blockHash == blockHash));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, blockHash);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of BlockId
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$BlockIdHashImplCopyWith<_$BlockIdHashImpl> get copyWith =>
@@ -245,7 +252,10 @@ abstract class BlockIdHash extends BlockId {
       _$BlockIdHashImpl.fromJson;
 
   Felt get blockHash;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of BlockId
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$BlockIdHashImplCopyWith<_$BlockIdHashImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -267,6 +277,8 @@ class __$$BlockIdNumberImplCopyWithImpl<$Res>
       _$BlockIdNumberImpl _value, $Res Function(_$BlockIdNumberImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of BlockId
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -311,11 +323,13 @@ class _$BlockIdNumberImpl extends BlockIdNumber {
                 other.blockNumber == blockNumber));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, blockNumber);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of BlockId
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$BlockIdNumberImplCopyWith<_$BlockIdNumberImpl> get copyWith =>
@@ -398,7 +412,10 @@ abstract class BlockIdNumber extends BlockId {
       _$BlockIdNumberImpl.fromJson;
 
   int get blockNumber;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of BlockId
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$BlockIdNumberImplCopyWith<_$BlockIdNumberImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -420,6 +437,8 @@ class __$$BlockIdTagImplCopyWithImpl<$Res>
       _$BlockIdTagImpl _value, $Res Function(_$BlockIdTagImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of BlockId
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -464,11 +483,13 @@ class _$BlockIdTagImpl extends BlockIdTag {
                 other.blockTag == blockTag));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, blockTag);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of BlockId
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$BlockIdTagImplCopyWith<_$BlockIdTagImpl> get copyWith =>
@@ -551,7 +572,10 @@ abstract class BlockIdTag extends BlockId {
       _$BlockIdTagImpl.fromJson;
 
   String get blockTag;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of BlockId
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$BlockIdTagImplCopyWith<_$BlockIdTagImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
