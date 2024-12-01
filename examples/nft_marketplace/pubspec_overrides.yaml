@@ -1,4 +1,4 @@
-# melos_managed_dependency_overrides: ark_project,secure_store,starknet,starknet_provider
+# melos_managed_dependency_overrides: ark_project,secure_store,starknet,starknet_provider,wallet_kit
 dependency_overrides:
   ark_project:
     path: ../../packages/ark_project
@@ -8,3 +8,5 @@ dependency_overrides:
     path: ../../packages/starknet
   starknet_provider:
     path: ../../packages/starknet_provider
+  wallet_kit:
+    path: ../../packages/wallet_kit
