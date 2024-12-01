@@ -1,3 +1,7 @@
+## 0.1.0
+
+- Code health improvements
+
 ## 0.0.2
 
 - Add `Signer`

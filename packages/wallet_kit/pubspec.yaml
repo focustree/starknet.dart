@@ -8,10 +8,10 @@ environment:
   flutter: ">=1.17.0"
 
 dependencies:
-  ark_project:
-  starknet:
-  starknet_provider:
-  secure_store:
+  ark_project: ^0.1.0
+  starknet: ^0.1.0
+  starknet_provider: ^0.1.0
+  secure_store: ^0.1.2
   bip39: ^1.0.6
   easy_debounce: ^2.0.3
   expandable: ^5.0.1
