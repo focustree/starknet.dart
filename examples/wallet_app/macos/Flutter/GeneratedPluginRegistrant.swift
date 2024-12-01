@@ -10,7 +10,7 @@ import secure_store
 import webview_flutter_wkwebview
 
 func RegisterGeneratedPlugins(registry: FlutterPluginRegistry) {
-    PathProviderPlugin.register(with: registry.registrar(forPlugin: "PathProviderPlugin"))
-    SecureStorePlugin.register(with: registry.registrar(forPlugin: "SecureStorePlugin"))
-    FLTWebViewFlutterPlugin.register(with: registry.registrar(forPlugin: "FLTWebViewFlutterPlugin"))
+  PathProviderPlugin.register(with: registry.registrar(forPlugin: "PathProviderPlugin"))
+  SecureStorePlugin.register(with: registry.registrar(forPlugin: "SecureStorePlugin"))
+  FLTWebViewFlutterPlugin.register(with: registry.registrar(forPlugin: "FLTWebViewFlutterPlugin"))
 }
