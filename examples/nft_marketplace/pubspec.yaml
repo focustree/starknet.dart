@@ -28,7 +28,7 @@ environment:
 # the latest version available on pub.dev. To see which dependencies have newer
 # versions available, run `flutter pub outdated`.
 dependencies:
-  ark: ^0.1.0
+  ark_project: ^0.1.0
   starknet: ^0.1.0
   starknet_provider: ^0.1.0
   secure_store: ^0.1.2

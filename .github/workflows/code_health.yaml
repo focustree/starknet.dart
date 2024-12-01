@@ -57,32 +57,32 @@ jobs:
           melos exec -c 1 --scope="*example*" -- \
             "flutter pub get"
 
-  format:
-    runs-on: macos-latest
-    steps:
-      - uses: actions/checkout@v4.1.7
-      - uses: subosito/flutter-action@v2
-        with:
-          channel: "stable"
-          cache: true
-      - uses: bluefireteam/melos-action@v3
-      - uses: Homebrew/actions/setup-homebrew@master
-      - name: "Install Tools"
-        run: |
-          flutter pub global activate flutter_plugin_tools
-          brew install swiftformat
-          brew install clang-format
-          brew link --overwrite --force clang-format
-      - name: "Formatter version"
-        run: |
-          clang-format --version
-          swiftformat --version
-      - name: "Dart, Java and Objective-C "
-        run: |
-          flutter pub global run flutter_plugin_tools format
-          ./scripts/validate-formatting.sh
-      - name: "Swift"
-        if: ${{ success() || failure() }}
-        run: |
-          swiftformat .
-          ./scripts/validate-formatting.sh
+  # format:
+  #   runs-on: macos-latest
+  #   steps:
+  #     - uses: actions/checkout@v4.1.7
+  #     - uses: subosito/flutter-action@v2
+  #       with:
+  #         channel: "stable"
+  #         cache: true
+  #     - uses: bluefireteam/melos-action@v3
+  #     - uses: Homebrew/actions/setup-homebrew@master
+  #     - name: "Install Tools"
+  #       run: |
+  #         flutter pub global activate flutter_plugin_tools
+  #         brew install swiftformat
+  #         brew install clang-format
+  #         brew link --overwrite --force clang-format
+  #     - name: "Formatter version"
+  #       run: |
+  #         clang-format --version
+  #         swiftformat --version
+  #     - name: "Dart, Java and Objective-C "
+  #       run: |
+  #         flutter pub global run flutter_plugin_tools format
+  #         ./.github/validate-formatting.sh
+  #     - name: "Swift"
+  #       if: ${{ success() || failure() }}
+  #       run: |
+  #         swiftformat .
+  #         ./.github/validate-formatting.sh

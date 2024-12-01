@@ -7,10 +7,6 @@ packages:
   - contracts/v$CAIRO_VERSION/**
 
 ignore:
-  # not ready for publishing
-  - packages/wallet_kit
-  # needs new name
-  - packages/ark
 
 command:
   bootstrap:

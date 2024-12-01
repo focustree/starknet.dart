@@ -1,6 +1,6 @@
 import LocalAuthentication
 
-struct AuthenticationUtil {
+enum AuthenticationUtil {
   // Prompt for biometric authentication
   static func promptBiometric() -> Bool {
     let context = LAContext()
@@ -12,17 +12,21 @@ struct AuthenticationUtil {
     if !permissions {
       return false
     }
-    
+
     var success = false
     let sema = DispatchSemaphore(value: 0)
-    context.evaluatePolicy(.deviceOwnerAuthentication, localizedReason: "Authenticate with biometrics to store private key.", reply: { (result, error) in
-      success = result && error == nil
-      sema.signal()
-    })
+    context.evaluatePolicy(
+      .deviceOwnerAuthentication,
+      localizedReason: "Authenticate with biometrics to store private key.",
+      reply: { result, error in
+        success = result && error == nil
+        sema.signal()
+      }
+    )
     sema.wait()
     return success
   }
-  
+
   static func isBiometryAvailable() -> Bool {
     let context = LAContext()
     var error: NSError?
@@ -30,7 +34,7 @@ struct AuthenticationUtil {
       .deviceOwnerAuthenticationWithBiometrics,
       error: &error
     )
-    
-    return (isBiometryAvailable && error == nil)
+
+    return isBiometryAvailable && error == nil
   }
 }
