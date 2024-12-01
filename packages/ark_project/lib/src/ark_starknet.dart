@@ -1,11 +1,7 @@
 import 'package:starknet/starknet.dart';
 import 'package:starknet_provider/starknet_provider.dart';
 
-<<<<<<< HEAD:packages/ark/lib/src/ark_starknet.dart
-import 'model/starknet.dart';
-=======
 import './model/starknet.dart';
->>>>>>> main:packages/ark_project/lib/src/ark_starknet.dart
 
 class ArkStarknet {
   static final ArkStarknet _instance = ArkStarknet._internal();

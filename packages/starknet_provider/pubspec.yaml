@@ -1,9 +1,5 @@
 name: starknet_provider
-<<<<<<< HEAD
 description: Starknet provider for Dart and Flutter applications.
-=======
-description: A starting point for Dart libraries or applications.
->>>>>>> main
 version: 0.1.0
 repository: https://github.com/focustree/starknet.dart
 

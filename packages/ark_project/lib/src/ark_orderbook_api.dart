@@ -2,11 +2,7 @@ import 'dart:convert';
 import 'dart:io';
 import 'package:http/http.dart' as http;
 
-<<<<<<< HEAD:packages/ark/lib/src/ark_orderbook_api.dart
-import 'model/orderbook_api.dart';
-=======
 import './model/orderbook_api.dart';
->>>>>>> main:packages/ark_project/lib/src/ark_orderbook_api.dart
 
 class ArkOrderbookApi {
   static final ArkOrderbookApi _instance = ArkOrderbookApi._internal();

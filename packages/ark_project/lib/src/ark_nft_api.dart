@@ -2,11 +2,7 @@ import 'dart:convert';
 import 'dart:io';
 import 'package:http/http.dart' as http;
 
-<<<<<<< HEAD:packages/ark/lib/src/ark_nft_api.dart
-import 'model/nft_api.dart';
-=======
 import './model/nft_api.dart';
->>>>>>> main:packages/ark_project/lib/src/ark_nft_api.dart
 
 class ArkNFTApi {
   static final ArkNFTApi _instance = ArkNFTApi._internal();
