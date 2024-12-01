@@ -1,13 +1,13 @@
 name: starknet_provider
 description: Starknet provider for Dart and Flutter applications.
-version: 0.1.0
+version: 0.1.0+1
 repository: https://github.com/focustree/starknet.dart
 
 environment:
   sdk: ^3.0.5
 
 dependencies:
-  starknet: ^0.1.0
+  starknet: ^0.1.0+1
   freezed_annotation: ^2.4.4
   http: ^1.2.2
   json_annotation: ^4.9.0

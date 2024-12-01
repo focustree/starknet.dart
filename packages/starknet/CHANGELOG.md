@@ -1,3 +1,7 @@
+## 0.1.0+1
+
+ - **FIX**: analyze: NullThrownError is obsolete. ([e73c416b](https://github.com/focustree/starknet.dart/commit/e73c416b2a18a881c73e8fbb46380f47dbb9789f))
+
 ## 0.1.0
 
 - Code health improvements
