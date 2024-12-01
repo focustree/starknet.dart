@@ -23,8 +23,12 @@ mixin _$MsgToL2 {
   String? get fromAddress => throw _privateConstructorUsedError;
   List<Felt>? get payload => throw _privateConstructorUsedError;
 
+  /// Serializes this MsgToL2 to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of MsgToL2
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $MsgToL2CopyWith<MsgToL2> get copyWith => throw _privateConstructorUsedError;
 }
 
@@ -46,6 +50,8 @@ class _$MsgToL2CopyWithImpl<$Res, $Val extends MsgToL2>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of MsgToL2
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -83,6 +89,8 @@ class __$$MsgToL2ImplCopyWithImpl<$Res>
       _$MsgToL2Impl _value, $Res Function(_$MsgToL2Impl) _then)
       : super(_value, _then);
 
+  /// Create a copy of MsgToL2
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -139,12 +147,14 @@ class _$MsgToL2Impl implements _MsgToL2 {
             const DeepCollectionEquality().equals(other._payload, _payload));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType, fromAddress, const DeepCollectionEquality().hash(_payload));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of MsgToL2
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$MsgToL2ImplCopyWith<_$MsgToL2Impl> get copyWith =>
@@ -169,8 +179,11 @@ abstract class _MsgToL2 implements MsgToL2 {
   String? get fromAddress;
   @override
   List<Felt>? get payload;
+
+  /// Create a copy of MsgToL2
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$MsgToL2ImplCopyWith<_$MsgToL2Impl> get copyWith =>
       throw _privateConstructorUsedError;
 }

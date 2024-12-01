@@ -28,9 +28,9 @@ class ArkStarknet {
     int? startDate,
     int? endDate,
     String currencyAddress =
-        "0x049d36570d4e46f48e99674bd3fcc84644ddd6b96f7c741b1562b82f9e004dc7",
-    String currencyChainId = "SN_MAIN",
-    String tokenChainId = "SN_MAIN",
+        '0x049d36570d4e46f48e99674bd3fcc84644ddd6b96f7c741b1562b82f9e004dc7',
+    String currencyChainId = 'SN_MAIN',
+    String tokenChainId = 'SN_MAIN',
     Felt? maxFee,
     Felt? nonce,
     List<FunctionCall>? additionalFunctionCalls,
@@ -38,7 +38,7 @@ class ArkStarknet {
     startDate = startDate ?? (DateTime.now().millisecondsSinceEpoch ~/ (1000));
     endDate = endDate ?? (startDate + 3 * 24 * 60 * 60);
 
-    final OrderV1 order = OrderV1(
+    final order = OrderV1(
       route: RouteType.erc721ToErc20,
       currencyChainId: currencyChainId,
       currencyAddress: currencyAddress,
@@ -53,7 +53,7 @@ class ArkStarknet {
       startDate: startDate,
       endDate: endDate,
       brokerId:
-          "0xe4769a4d2f7f69c70951a003eba5c32707cef3cdfb6b27ca63567f51cdd078",
+          '0xe4769a4d2f7f69c70951a003eba5c32707cef3cdfb6b27ca63567f51cdd078',
       additionalData: [],
     );
 
@@ -79,25 +79,32 @@ class ArkStarknet {
       ...computeCalldata(order.additionalData),
     ];
 
-    final response = await starknetAccount.execute(functionCalls: [
-      ...additionalFunctionCalls ?? [],
-      FunctionCall(
-        contractAddress: Felt.fromHexString(nftAddress),
-        entryPointSelector: getSelectorByName("approve"),
-        calldata: [arkExecutorAddress, Felt(tokenIdBigInt), Felt.fromInt(0)],
-      ),
-      FunctionCall(
-        contractAddress: arkExecutorAddress,
-        entryPointSelector: getSelectorByName("create_order"),
-        calldata: callData,
-      ),
-    ], maxFee: maxFee, nonce: nonce);
+    final response = await starknetAccount.execute(
+      functionCalls: [
+        ...additionalFunctionCalls ?? [],
+        FunctionCall(
+          contractAddress: Felt.fromHexString(nftAddress),
+          entryPointSelector: getSelectorByName('approve'),
+          calldata: [arkExecutorAddress, Felt(tokenIdBigInt), Felt.fromInt(0)],
+        ),
+        FunctionCall(
+          contractAddress: arkExecutorAddress,
+          entryPointSelector: getSelectorByName('create_order'),
+          calldata: callData,
+        ),
+      ],
+      max_fee: maxFee,
+      nonce: nonce,
+    );
 
-    final txHash = response.when(result: (result) {
-      return result.transaction_hash;
-    }, error: (error) {
-      throw Exception(error.message);
-    });
+    final txHash = response.when(
+      result: (result) {
+        return result.transaction_hash;
+      },
+      error: (error) {
+        throw Exception(error.message);
+      },
+    );
 
     return txHash;
   }
@@ -107,11 +114,11 @@ class ArkStarknet {
     required BigInt orderHash,
     required String tokenAddress,
     required BigInt tokenId,
-    String tokenChainId = "SN_MAIN",
+    String tokenChainId = 'SN_MAIN',
     Felt? maxFee,
     Felt? nonce,
   }) async {
-    final FullCancelInfo fullCancelInfo = FullCancelInfo(
+    final fullCancelInfo = FullCancelInfo(
       orderHash: orderHash,
       canceller: starknetAccount.accountAddress.toHexString(),
       tokenChainId: tokenChainId,
@@ -128,19 +135,26 @@ class ArkStarknet {
       ...computeCalldata(fullCancelInfo.tokenId),
     ];
 
-    final response = await starknetAccount.execute(functionCalls: [
-      FunctionCall(
-        contractAddress: arkExecutorAddress,
-        entryPointSelector: getSelectorByName("cancel_order"),
-        calldata: callData,
-      ),
-    ], maxFee: maxFee, nonce: nonce);
+    final response = await starknetAccount.execute(
+      functionCalls: [
+        FunctionCall(
+          contractAddress: arkExecutorAddress,
+          entryPointSelector: getSelectorByName('cancel_order'),
+          calldata: callData,
+        ),
+      ],
+      max_fee: maxFee,
+      nonce: nonce,
+    );
 
-    final txHash = response.when(result: (result) {
-      return result.transaction_hash;
-    }, error: (error) {
-      throw Exception(error.message);
-    });
+    final txHash = response.when(
+      result: (result) {
+        return result.transaction_hash;
+      },
+      error: (error) {
+        throw Exception(error.message);
+      },
+    );
 
     return txHash;
   }
@@ -153,9 +167,9 @@ class ArkStarknet {
     int? startDate,
     int? endDate,
     String currencyAddress =
-        "0x049d36570d4e46f48e99674bd3fcc84644ddd6b96f7c741b1562b82f9e004dc7",
-    String currencyChainId = "SN_MAIN",
-    String tokenChainId = "SN_MAIN",
+        '0x049d36570d4e46f48e99674bd3fcc84644ddd6b96f7c741b1562b82f9e004dc7',
+    String currencyChainId = 'SN_MAIN',
+    String tokenChainId = 'SN_MAIN',
     Felt? maxFee,
     Felt? nonce,
   }) async {
@@ -165,7 +179,7 @@ class ArkStarknet {
     final bigIntAmount = BigInt.from(startAmount * 1e18);
     final amount = Uint256.fromBigInt(bigIntAmount);
 
-    final OrderV1 order = OrderV1(
+    final order = OrderV1(
       route: RouteType.erc20ToErc721,
       currencyChainId: currencyChainId,
       currencyAddress: currencyAddress,
@@ -180,7 +194,7 @@ class ArkStarknet {
       startDate: startDate,
       endDate: endDate,
       brokerId:
-          "0xe4769a4d2f7f69c70951a003eba5c32707cef3cdfb6b27ca63567f51cdd078",
+          '0xe4769a4d2f7f69c70951a003eba5c32707cef3cdfb6b27ca63567f51cdd078',
       additionalData: [],
     );
 
@@ -206,24 +220,31 @@ class ArkStarknet {
       ...computeCalldata(order.additionalData),
     ];
 
-    final response = await starknetAccount.execute(functionCalls: [
-      FunctionCall(
-        contractAddress: Felt.fromHexString(currencyAddress),
-        entryPointSelector: getSelectorByName("approve"),
-        calldata: [arkExecutorAddress, Felt(bigIntAmount), Felt.fromInt(0)],
-      ),
-      FunctionCall(
-        contractAddress: arkExecutorAddress,
-        entryPointSelector: getSelectorByName("create_order"),
-        calldata: callData,
-      ),
-    ], maxFee: maxFee, nonce: nonce);
+    final response = await starknetAccount.execute(
+      functionCalls: [
+        FunctionCall(
+          contractAddress: Felt.fromHexString(currencyAddress),
+          entryPointSelector: getSelectorByName('approve'),
+          calldata: [arkExecutorAddress, Felt(bigIntAmount), Felt.fromInt(0)],
+        ),
+        FunctionCall(
+          contractAddress: arkExecutorAddress,
+          entryPointSelector: getSelectorByName('create_order'),
+          calldata: callData,
+        ),
+      ],
+      max_fee: maxFee,
+      nonce: nonce,
+    );
 
-    final txHash = response.when(result: (result) {
-      return result.transaction_hash;
-    }, error: (error) {
-      throw Exception(error.message);
-    });
+    final txHash = response.when(
+      result: (result) {
+        return result.transaction_hash;
+      },
+      error: (error) {
+        throw Exception(error.message);
+      },
+    );
 
     return txHash;
   }
@@ -235,22 +256,23 @@ class ArkStarknet {
     required double startAmount,
     required BigInt orderHash,
     String currencyAddress =
-        "0x049d36570d4e46f48e99674bd3fcc84644ddd6b96f7c741b1562b82f9e004dc7",
-    String tokenChainId = "SN_MAIN",
+        '0x049d36570d4e46f48e99674bd3fcc84644ddd6b96f7c741b1562b82f9e004dc7',
+    String tokenChainId = 'SN_MAIN',
     Felt? maxFee,
     Felt? nonce,
   }) async {
     final bigIntAmount = BigInt.from(startAmount * 1e18);
 
-    final FulfillInfo fulfillInfo = FulfillInfo(
-        orderHash: orderHash,
-        relatedOrderHash: 1,
-        fulfiller: starknetAccount.accountAddress.toHexString(),
-        tokenChainId: tokenChainId,
-        tokenAddress: nftAddress,
-        tokenId: Uint256.fromIntString(tokenId),
-        fulfillBrokerAddress:
-            "0xe4769a4d2f7f69c70951a003eba5c32707cef3cdfb6b27ca63567f51cdd078");
+    final fulfillInfo = FulfillInfo(
+      orderHash: orderHash,
+      relatedOrderHash: 1,
+      fulfiller: starknetAccount.accountAddress.toHexString(),
+      tokenChainId: tokenChainId,
+      tokenAddress: nftAddress,
+      tokenId: Uint256.fromIntString(tokenId),
+      fulfillBrokerAddress:
+          '0xe4769a4d2f7f69c70951a003eba5c32707cef3cdfb6b27ca63567f51cdd078',
+    );
 
     final tokenIdBigInt = BigInt.parse(tokenId);
 
@@ -266,24 +288,31 @@ class ArkStarknet {
       ...computeCalldata(fulfillInfo.fulfillBrokerAddress),
     ];
 
-    final response = await starknetAccount.execute(functionCalls: [
-      FunctionCall(
-        contractAddress: Felt.fromHexString(currencyAddress),
-        entryPointSelector: getSelectorByName("approve"),
-        calldata: [arkExecutorAddress, Felt(bigIntAmount), Felt.fromInt(0)],
-      ),
-      FunctionCall(
-        contractAddress: arkExecutorAddress,
-        entryPointSelector: getSelectorByName("fulfill_order"),
-        calldata: callData,
-      ),
-    ], maxFee: maxFee, nonce: nonce);
+    final response = await starknetAccount.execute(
+      functionCalls: [
+        FunctionCall(
+          contractAddress: Felt.fromHexString(currencyAddress),
+          entryPointSelector: getSelectorByName('approve'),
+          calldata: [arkExecutorAddress, Felt(bigIntAmount), Felt.fromInt(0)],
+        ),
+        FunctionCall(
+          contractAddress: arkExecutorAddress,
+          entryPointSelector: getSelectorByName('fulfill_order'),
+          calldata: callData,
+        ),
+      ],
+      max_fee: maxFee,
+      nonce: nonce,
+    );
 
-    final txHash = response.when(result: (result) {
-      return result.transaction_hash;
-    }, error: (error) {
-      throw Exception(error.message);
-    });
+    final txHash = response.when(
+      result: (result) {
+        return result.transaction_hash;
+      },
+      error: (error) {
+        throw Exception(error.message);
+      },
+    );
 
     return txHash;
   }
@@ -294,20 +323,21 @@ class ArkStarknet {
     required String tokenId,
     required BigInt orderHash,
     String currencyAddress =
-        "0x049d36570d4e46f48e99674bd3fcc84644ddd6b96f7c741b1562b82f9e004dc7",
-    String tokenChainId = "SN_MAIN",
+        '0x049d36570d4e46f48e99674bd3fcc84644ddd6b96f7c741b1562b82f9e004dc7',
+    String tokenChainId = 'SN_MAIN',
     Felt? maxFee,
     Felt? nonce,
   }) async {
-    final FulfillInfo fulfillInfo = FulfillInfo(
-        orderHash: orderHash,
-        relatedOrderHash: 1,
-        fulfiller: starknetAccount.accountAddress.toHexString(),
-        tokenChainId: tokenChainId,
-        tokenAddress: nftAddress,
-        tokenId: Uint256.fromIntString(tokenId),
-        fulfillBrokerAddress:
-            "0xe4769a4d2f7f69c70951a003eba5c32707cef3cdfb6b27ca63567f51cdd078");
+    final fulfillInfo = FulfillInfo(
+      orderHash: orderHash,
+      relatedOrderHash: 1,
+      fulfiller: starknetAccount.accountAddress.toHexString(),
+      tokenChainId: tokenChainId,
+      tokenAddress: nftAddress,
+      tokenId: Uint256.fromIntString(tokenId),
+      fulfillBrokerAddress:
+          '0xe4769a4d2f7f69c70951a003eba5c32707cef3cdfb6b27ca63567f51cdd078',
+    );
 
     final tokenIdBigInt = BigInt.parse(tokenId);
 
@@ -323,24 +353,31 @@ class ArkStarknet {
       ...computeCalldata(fulfillInfo.fulfillBrokerAddress),
     ];
 
-    final response = await starknetAccount.execute(functionCalls: [
-      FunctionCall(
-        contractAddress: Felt.fromHexString(nftAddress),
-        entryPointSelector: getSelectorByName("approve"),
-        calldata: [arkExecutorAddress, Felt(tokenIdBigInt), Felt.fromInt(0)],
-      ),
-      FunctionCall(
-        contractAddress: arkExecutorAddress,
-        entryPointSelector: getSelectorByName("fulfill_order"),
-        calldata: callData,
-      ),
-    ], maxFee: maxFee, nonce: nonce);
+    final response = await starknetAccount.execute(
+      functionCalls: [
+        FunctionCall(
+          contractAddress: Felt.fromHexString(nftAddress),
+          entryPointSelector: getSelectorByName('approve'),
+          calldata: [arkExecutorAddress, Felt(tokenIdBigInt), Felt.fromInt(0)],
+        ),
+        FunctionCall(
+          contractAddress: arkExecutorAddress,
+          entryPointSelector: getSelectorByName('fulfill_order'),
+          calldata: callData,
+        ),
+      ],
+      max_fee: maxFee,
+      nonce: nonce,
+    );
 
-    final txHash = response.when(result: (result) {
-      return result.transaction_hash;
-    }, error: (error) {
-      throw Exception(error.message);
-    });
+    final txHash = response.when(
+      result: (result) {
+        return result.transaction_hash;
+      },
+      error: (error) {
+        throw Exception(error.message);
+      },
+    );
 
     return txHash;
   }

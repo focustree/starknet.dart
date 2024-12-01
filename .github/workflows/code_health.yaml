@@ -1,0 +1,88 @@
+name: code_health
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+on:
+  pull_request:
+    paths-ignore:
+      - "docs/**"
+      - "**.md"
+  push:
+    branches:
+      - main
+    paths-ignore:
+      - "docs/**"
+      - "**.md"
+
+jobs:
+  analyze:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4.1.7
+      - uses: subosito/flutter-action@v2
+        with:
+          channel: "stable"
+          cache: true
+      - uses: bluefireteam/melos-action@v3
+      - name: "Run Analyze"
+        run: melos run analyze
+
+  pub_dry_run:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4.1.7
+      - uses: subosito/flutter-action@v2
+        with:
+          channel: "stable"
+          cache: true
+      - uses: bluefireteam/melos-action@v3
+      - name: "Pub Check"
+        run: |
+          melos exec -c 1 --no-private --ignore="*example*" -- \
+            dart pub publish --dry-run
+
+  pub_get_check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4.1.7
+      - uses: subosito/flutter-action@v2
+        with:
+          channel: "stable"
+          cache: true
+      - uses: bluefireteam/melos-action@v3
+      - name: "flutter pub get"
+        run: |
+          melos exec -c 1 --scope="*example*" -- \
+            "flutter pub get"
+
+  # format:
+  #   runs-on: macos-latest
+  #   steps:
+  #     - uses: actions/checkout@v4.1.7
+  #     - uses: subosito/flutter-action@v2
+  #       with:
+  #         channel: "stable"
+  #         cache: true
+  #     - uses: bluefireteam/melos-action@v3
+  #     - uses: Homebrew/actions/setup-homebrew@master
+  #     - name: "Install Tools"
+  #       run: |
+  #         flutter pub global activate flutter_plugin_tools
+  #         brew install swiftformat
+  #         brew install clang-format
+  #         brew link --overwrite --force clang-format
+  #     - name: "Formatter version"
+  #       run: |
+  #         clang-format --version
+  #         swiftformat --version
+  #     - name: "Dart, Java and Objective-C "
+  #       run: |
+  #         flutter pub global run flutter_plugin_tools format
+  #         ./.github/validate-formatting.sh
+  #     - name: "Swift"
+  #       if: ${{ success() || failure() }}
+  #       run: |
+  #         swiftformat .
+  #         ./.github/validate-formatting.sh

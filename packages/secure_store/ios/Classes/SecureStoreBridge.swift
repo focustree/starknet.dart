@@ -3,15 +3,15 @@
 
 import Foundation
 #if os(iOS)
-import Flutter
+  import Flutter
 #elseif os(macOS)
-import FlutterMacOS
+  import FlutterMacOS
 #else
-#error("Unsupported platform.")
+  #error("Unsupported platform.")
 #endif
 
 private func wrapResult(_ result: Any?) -> [Any?] {
-  return [result]
+  [result]
 }
 
 private func wrapError(_ error: Any) -> [Any?] {
@@ -19,13 +19,13 @@ private func wrapError(_ error: Any) -> [Any?] {
     return [
       flutterError.code,
       flutterError.message,
-      flutterError.details
+      flutterError.details,
     ]
   }
   return [
     "\(error)",
     "\(type(of: error))",
-    "Stacktrace: \(Thread.callStackSymbols)"
+    "Stacktrace: \(Thread.callStackSymbols)",
   ]
 }
 
@@ -37,8 +37,8 @@ private func nilOrValue<T>(_ value: Any?) -> T? {
 /// Generated class from Pigeon that represents data sent in messages.
 struct AndroidPromptInfos {
   var title: String
-  var subtitle: String? = nil
-  var description: String? = nil
+  var subtitle: String?
+  var description: String?
   var cancelLabel: String
   var confirmationRequired: Bool
 
@@ -57,8 +57,9 @@ struct AndroidPromptInfos {
       confirmationRequired: confirmationRequired
     )
   }
+
   func toList() -> [Any?] {
-    return [
+    [
       title,
       subtitle,
       description,
@@ -73,22 +74,24 @@ struct AndroidPromptInfos {
 /// Generated class from Pigeon that represents data sent in messages.
 struct AndroidOptions {
   /// Details of the prompt to show to the user.
-  var promptInfo: AndroidPromptInfos? = nil
+  var promptInfo: AndroidPromptInfos?
   /// The duration in seconds for which the authentication is valid. If the
   /// user sets it to -1 (default), user must authenticate each time they want
   /// to get or set a secret.
   var authenticationValidityDurationSeconds: Int64
   /// Whether to use the StrongBox hardware-backed keystore.
-  /// This feature seems to cause [crashes](https://github.com/authpass/biometric_storage/issues/76),
+  /// This feature seems to cause
+  /// [crashes](https://github.com/authpass/biometric_storage/issues/76),
   /// enable with caution.
   var enableStrongBox: Bool
 
   static func fromList(_ list: [Any?]) -> AndroidOptions? {
-    var promptInfo: AndroidPromptInfos? = nil
+    var promptInfo: AndroidPromptInfos?
     if let promptInfoList: [Any?] = nilOrValue(list[0]) {
       promptInfo = AndroidPromptInfos.fromList(promptInfoList)
     }
-    let authenticationValidityDurationSeconds = list[1] is Int64 ? list[1] as! Int64 : Int64(list[1] as! Int32)
+    let authenticationValidityDurationSeconds = list[1] is Int64 ? list[1] as! Int64 :
+      Int64(list[1] as! Int32)
     let enableStrongBox = list[2] as! Bool
 
     return AndroidOptions(
@@ -97,8 +100,9 @@ struct AndroidOptions {
       enableStrongBox: enableStrongBox
     )
   }
+
   func toList() -> [Any?] {
-    return [
+    [
       promptInfo?.toList(),
       authenticationValidityDurationSeconds,
       enableStrongBox,
@@ -111,10 +115,10 @@ struct AndroidOptions {
 /// Generated class from Pigeon that represents data sent in messages.
 struct BiometricOptions {
   /// Android-specific options.
-  var androidOptions: AndroidOptions? = nil
+  var androidOptions: AndroidOptions?
 
   static func fromList(_ list: [Any?]) -> BiometricOptions? {
-    var androidOptions: AndroidOptions? = nil
+    var androidOptions: AndroidOptions?
     if let androidOptionsList: [Any?] = nilOrValue(list[0]) {
       androidOptions = AndroidOptions.fromList(androidOptionsList)
     }
@@ -123,8 +127,9 @@ struct BiometricOptions {
       androidOptions: androidOptions
     )
   }
+
   func toList() -> [Any?] {
-    return [
+    [
       androidOptions?.toList(),
     ]
   }
@@ -133,14 +138,14 @@ struct BiometricOptions {
 private class SecureStoreBridgeCodecReader: FlutterStandardReader {
   override func readValue(ofType type: UInt8) -> Any? {
     switch type {
-      case 128:
-        return AndroidOptions.fromList(self.readValue() as! [Any?])
-      case 129:
-        return AndroidPromptInfos.fromList(self.readValue() as! [Any?])
-      case 130:
-        return BiometricOptions.fromList(self.readValue() as! [Any?])
-      default:
-        return super.readValue(ofType: type)
+    case 128:
+      return AndroidOptions.fromList(readValue() as! [Any?])
+    case 129:
+      return AndroidPromptInfos.fromList(readValue() as! [Any?])
+    case 130:
+      return BiometricOptions.fromList(readValue() as! [Any?])
+    default:
+      return super.readValue(ofType: type)
     }
   }
 }
@@ -164,11 +169,11 @@ private class SecureStoreBridgeCodecWriter: FlutterStandardWriter {
 
 private class SecureStoreBridgeCodecReaderWriter: FlutterStandardReaderWriter {
   override func reader(with data: Data) -> FlutterStandardReader {
-    return SecureStoreBridgeCodecReader(data: data)
+    SecureStoreBridgeCodecReader(data: data)
   }
 
   override func writer(with data: NSMutableData) -> FlutterStandardWriter {
-    return SecureStoreBridgeCodecWriter(data: data)
+    SecureStoreBridgeCodecWriter(data: data)
   }
 }
 
@@ -178,9 +183,12 @@ class SecureStoreBridgeCodec: FlutterStandardMessageCodec {
 
 /// Generated protocol from Pigeon that represents a handler of messages from Flutter.
 protocol SecureStoreBridge {
-  func storeSecret(key: String, privateKey: FlutterStandardTypedData, biometricOptions: BiometricOptions?, completion: @escaping (Result<Void, Error>) -> Void)
+  func storeSecret(key: String, privateKey: FlutterStandardTypedData,
+                   biometricOptions: BiometricOptions?,
+                   completion: @escaping (Result<Void, Error>) -> Void)
   func removeSecret(key: String, completion: @escaping (Result<Void, Error>) -> Void)
-  func getSecret(key: String, biometricOptions: BiometricOptions?, completion: @escaping (Result<FlutterStandardTypedData?, Error>) -> Void)
+  func getSecret(key: String, biometricOptions: BiometricOptions?,
+                 completion: @escaping (Result<FlutterStandardTypedData?, Error>) -> Void)
   func isBiometryAvailable() throws -> Bool
 }
 
@@ -190,62 +198,82 @@ class SecureStoreBridgeSetup {
   static var codec: FlutterStandardMessageCodec { SecureStoreBridgeCodec.shared }
   /// Sets up an instance of `SecureStoreBridge` to handle messages through the `binaryMessenger`.
   static func setUp(binaryMessenger: FlutterBinaryMessenger, api: SecureStoreBridge?) {
-    let storeSecretChannel = FlutterBasicMessageChannel(name: "dev.flutter.pigeon.secure_store.SecureStoreBridge.storeSecret", binaryMessenger: binaryMessenger, codec: codec)
-    if let api = api {
+    let storeSecretChannel = FlutterBasicMessageChannel(
+      name: "dev.flutter.pigeon.secure_store.SecureStoreBridge.storeSecret",
+      binaryMessenger: binaryMessenger,
+      codec: codec
+    )
+    if let api {
       storeSecretChannel.setMessageHandler { message, reply in
         let args = message as! [Any?]
         let keyArg = args[0] as! String
         let privateKeyArg = args[1] as! FlutterStandardTypedData
         let biometricOptionsArg: BiometricOptions? = nilOrValue(args[2])
-        api.storeSecret(key: keyArg, privateKey: privateKeyArg, biometricOptions: biometricOptionsArg) { result in
+        api.storeSecret(
+          key: keyArg,
+          privateKey: privateKeyArg,
+          biometricOptions: biometricOptionsArg
+        ) { result in
           switch result {
-            case .success:
-              reply(wrapResult(nil))
-            case .failure(let error):
-              reply(wrapError(error))
+          case .success:
+            reply(wrapResult(nil))
+          case let .failure(error):
+            reply(wrapError(error))
           }
         }
       }
     } else {
       storeSecretChannel.setMessageHandler(nil)
     }
-    let removeSecretChannel = FlutterBasicMessageChannel(name: "dev.flutter.pigeon.secure_store.SecureStoreBridge.removeSecret", binaryMessenger: binaryMessenger, codec: codec)
-    if let api = api {
+    let removeSecretChannel = FlutterBasicMessageChannel(
+      name: "dev.flutter.pigeon.secure_store.SecureStoreBridge.removeSecret",
+      binaryMessenger: binaryMessenger,
+      codec: codec
+    )
+    if let api {
       removeSecretChannel.setMessageHandler { message, reply in
         let args = message as! [Any?]
         let keyArg = args[0] as! String
         api.removeSecret(key: keyArg) { result in
           switch result {
-            case .success:
-              reply(wrapResult(nil))
-            case .failure(let error):
-              reply(wrapError(error))
+          case .success:
+            reply(wrapResult(nil))
+          case let .failure(error):
+            reply(wrapError(error))
           }
         }
       }
     } else {
       removeSecretChannel.setMessageHandler(nil)
     }
-    let getSecretChannel = FlutterBasicMessageChannel(name: "dev.flutter.pigeon.secure_store.SecureStoreBridge.getSecret", binaryMessenger: binaryMessenger, codec: codec)
-    if let api = api {
+    let getSecretChannel = FlutterBasicMessageChannel(
+      name: "dev.flutter.pigeon.secure_store.SecureStoreBridge.getSecret",
+      binaryMessenger: binaryMessenger,
+      codec: codec
+    )
+    if let api {
       getSecretChannel.setMessageHandler { message, reply in
         let args = message as! [Any?]
         let keyArg = args[0] as! String
         let biometricOptionsArg: BiometricOptions? = nilOrValue(args[1])
         api.getSecret(key: keyArg, biometricOptions: biometricOptionsArg) { result in
           switch result {
-            case .success(let res):
-              reply(wrapResult(res))
-            case .failure(let error):
-              reply(wrapError(error))
+          case let .success(res):
+            reply(wrapResult(res))
+          case let .failure(error):
+            reply(wrapError(error))
           }
         }
       }
     } else {
       getSecretChannel.setMessageHandler(nil)
     }
-    let isBiometryAvailableChannel = FlutterBasicMessageChannel(name: "dev.flutter.pigeon.secure_store.SecureStoreBridge.isBiometryAvailable", binaryMessenger: binaryMessenger, codec: codec)
-    if let api = api {
+    let isBiometryAvailableChannel = FlutterBasicMessageChannel(
+      name: "dev.flutter.pigeon.secure_store.SecureStoreBridge.isBiometryAvailable",
+      binaryMessenger: binaryMessenger,
+      codec: codec
+    )
+    if let api {
       isBiometryAvailableChannel.setMessageHandler { _, reply in
         do {
           let result = try api.isBiometryAvailable()

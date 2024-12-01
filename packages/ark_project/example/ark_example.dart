@@ -4,11 +4,12 @@ import 'package:dotenv/dotenv.dart';
 final env = DotEnv(includePlatformEnvironment: true)..load();
 final apiKey = env.getOrElse(
   'ARK_API_KEY',
-  () => throw 'ARK_API_KEY not found in .env file',
+  () => throw Exception('ARK_API_KEY not found in .env file'),
 );
+
 final nftAddress = env.getOrElse(
   'NFT_ADDRESS',
-  () => throw 'NFT_ADDRESS not found in .env file',
+  () => throw Exception('NFT_ADDRESS not found in .env file'),
 );
 
 void main() async {

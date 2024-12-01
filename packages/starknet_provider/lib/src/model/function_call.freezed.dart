@@ -24,8 +24,12 @@ mixin _$FunctionCall {
   Felt get entryPointSelector => throw _privateConstructorUsedError;
   List<Felt> get calldata => throw _privateConstructorUsedError;
 
+  /// Serializes this FunctionCall to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of FunctionCall
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $FunctionCallCopyWith<FunctionCall> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -50,6 +54,8 @@ class _$FunctionCallCopyWithImpl<$Res, $Val extends FunctionCall>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of FunctionCall
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -94,6 +100,8 @@ class __$$FunctionCallImplCopyWithImpl<$Res>
       _$FunctionCallImpl _value, $Res Function(_$FunctionCallImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of FunctionCall
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -159,12 +167,14 @@ class _$FunctionCallImpl implements _FunctionCall {
             const DeepCollectionEquality().equals(other._calldata, _calldata));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, contractAddress,
       entryPointSelector, const DeepCollectionEquality().hash(_calldata));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of FunctionCall
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$FunctionCallImplCopyWith<_$FunctionCallImpl> get copyWith =>
@@ -193,8 +203,11 @@ abstract class _FunctionCall implements FunctionCall {
   Felt get entryPointSelector;
   @override
   List<Felt> get calldata;
+
+  /// Create a copy of FunctionCall
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$FunctionCallImplCopyWith<_$FunctionCallImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

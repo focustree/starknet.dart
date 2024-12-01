@@ -70,6 +70,8 @@ mixin _$GetClass {
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
+
+  /// Serializes this GetClass to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
 }
 
@@ -88,6 +90,9 @@ class _$GetClassCopyWithImpl<$Res, $Val extends GetClass>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of GetClass
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -107,6 +112,8 @@ class __$$GetClassResultImplCopyWithImpl<$Res>
       _$GetClassResultImpl _value, $Res Function(_$GetClassResultImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of GetClass
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -149,11 +156,13 @@ class _$GetClassResultImpl implements _GetClassResult {
             (identical(other.result, result) || other.result == result));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, result);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of GetClass
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GetClassResultImplCopyWith<_$GetClassResultImpl> get copyWith =>
@@ -238,7 +247,10 @@ abstract class _GetClassResult implements GetClass {
       _$GetClassResultImpl.fromJson;
 
   IContractClass get result;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of GetClass
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GetClassResultImplCopyWith<_$GetClassResultImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -262,6 +274,8 @@ class __$$GetClassErrorImplCopyWithImpl<$Res>
       _$GetClassErrorImpl _value, $Res Function(_$GetClassErrorImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of GetClass
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -275,6 +289,8 @@ class __$$GetClassErrorImplCopyWithImpl<$Res>
     ));
   }
 
+  /// Create a copy of GetClass
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $JsonRpcApiErrorCopyWith<$Res> get error {
@@ -312,11 +328,13 @@ class _$GetClassErrorImpl implements _GetClassError {
             (identical(other.error, error) || other.error == error));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, error);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of GetClass
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GetClassErrorImplCopyWith<_$GetClassErrorImpl> get copyWith =>
@@ -400,7 +418,10 @@ abstract class _GetClassError implements GetClass {
       _$GetClassErrorImpl.fromJson;
 
   JsonRpcApiError get error;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of GetClass
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GetClassErrorImplCopyWith<_$GetClassErrorImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

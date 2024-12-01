@@ -22,7 +22,7 @@ Uint8List encrypt({
 }) {
   assert(
     iv == null || iv.length == ivLength,
-    "IV must be $ivLength bytes long",
+    'IV must be $ivLength bytes long',
   );
 
   final usedIV = iv ?? getIV();
@@ -34,8 +34,8 @@ Uint8List encrypt({
   );
   return Uint8List.fromList([
     // Concatenate IV and cipher text to be able to decrypt it later
-    ...usedIV.toList(),
-    ...encryptedSecret.toList(),
+    ...usedIV,
+    ...encryptedSecret,
   ]);
 }
 
@@ -70,7 +70,7 @@ Uint8List _cipherAes({
   // AES works on blocks of bytes. The padding is used to always have the
   // same number of bytes in each block.
   // See https://www.ibm.com/docs/en/zos/2.4.0?topic=rules-pkcs-padding-method
-  PaddedBlockCipher cipher = PaddedBlockCipherImpl(
+  final PaddedBlockCipher cipher = PaddedBlockCipherImpl(
     // PKCS7Padding is the most common padding scheme.
     PKCS7Padding(),
     GCMBlockCipher(AESEngine()),
