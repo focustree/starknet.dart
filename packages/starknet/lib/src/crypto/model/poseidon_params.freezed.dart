@@ -28,8 +28,12 @@ mixin _$PoseidonParams {
   List<List<BigInt>> get mds => throw _privateConstructorUsedError;
   List<List<BigInt>> get roundKeys => throw _privateConstructorUsedError;
 
+  /// Serializes this PoseidonParams to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of PoseidonParams
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $PoseidonParamsCopyWith<PoseidonParams> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -60,6 +64,8 @@ class _$PoseidonParamsCopyWithImpl<$Res, $Val extends PoseidonParams>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of PoseidonParams
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -130,6 +136,8 @@ class __$$PoseidonParamsImplCopyWithImpl<$Res>
       _$PoseidonParamsImpl _value, $Res Function(_$PoseidonParamsImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of PoseidonParams
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -242,7 +250,7 @@ class _$PoseidonParamsImpl implements _PoseidonParams {
                 .equals(other._roundKeys, _roundKeys));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -254,7 +262,9 @@ class _$PoseidonParamsImpl implements _PoseidonParams {
       const DeepCollectionEquality().hash(_mds),
       const DeepCollectionEquality().hash(_roundKeys));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of PoseidonParams
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$PoseidonParamsImplCopyWith<_$PoseidonParamsImpl> get copyWith =>
@@ -296,8 +306,11 @@ abstract class _PoseidonParams implements PoseidonParams {
   List<List<BigInt>> get mds;
   @override
   List<List<BigInt>> get roundKeys;
+
+  /// Create a copy of PoseidonParams
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$PoseidonParamsImplCopyWith<_$PoseidonParamsImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

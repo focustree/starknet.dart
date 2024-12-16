@@ -24,7 +24,7 @@ _$InvokeTransactionV0Impl _$$InvokeTransactionV0ImplFromJson(
     _$InvokeTransactionV0Impl(
       type: json['type'] as String? ?? 'INVOKE',
       maxFee: Felt.fromJson(json['max_fee'] as String),
-      version: json['version'] as String? ?? '0x00',
+      version: json['version'] as String? ?? invokeTxnV0,
       signature: (json['signature'] as List<dynamic>)
           .map((e) => Felt.fromJson(e as String))
           .toList(),
@@ -59,7 +59,7 @@ _$InvokeTransactionV1Impl _$$InvokeTransactionV1ImplFromJson(
       calldata: (json['calldata'] as List<dynamic>)
           .map((e) => Felt.fromJson(e as String))
           .toList(),
-      version: json['version'] as String? ?? '0x1',
+      version: json['version'] as String? ?? invokeTxnV1,
       type: json['type'] as String? ?? 'INVOKE',
     );
 
@@ -73,6 +73,53 @@ Map<String, dynamic> _$$InvokeTransactionV1ImplToJson(
       'calldata': instance.calldata.map((e) => e.toJson()).toList(),
       'version': instance.version,
       'type': instance.type,
+    };
+
+_$InvokeTransactionV3Impl _$$InvokeTransactionV3ImplFromJson(
+        Map<String, dynamic> json) =>
+    _$InvokeTransactionV3Impl(
+      type: json['type'] as String? ?? 'INVOKE',
+      accountDeploymentData: (json['account_deployment_data'] as List<dynamic>)
+          .map((e) => Felt.fromJson(e as String))
+          .toList(),
+      calldata: (json['calldata'] as List<dynamic>)
+          .map((e) => Felt.fromJson(e as String))
+          .toList(),
+      feeDataAvailabilityMode: json['fee_data_availability_mode'] as String,
+      nonce: Felt.fromJson(json['nonce'] as String),
+      nonceDataAvailabilityMode: json['nonce_data_availability_mode'] as String,
+      paymasterData: (json['paymaster_data'] as List<dynamic>)
+          .map((e) => Felt.fromJson(e as String))
+          .toList(),
+      resourceBounds: (json['resource_bounds'] as Map<String, dynamic>).map(
+        (k, e) =>
+            MapEntry(k, ResourceBounds.fromJson(e as Map<String, dynamic>)),
+      ),
+      senderAddress: Felt.fromJson(json['sender_address'] as String),
+      signature: (json['signature'] as List<dynamic>)
+          .map((e) => Felt.fromJson(e as String))
+          .toList(),
+      tip: json['tip'] as String,
+      version: json['version'] as String? ?? invokeTxnV3,
+    );
+
+Map<String, dynamic> _$$InvokeTransactionV3ImplToJson(
+        _$InvokeTransactionV3Impl instance) =>
+    <String, dynamic>{
+      'type': instance.type,
+      'account_deployment_data':
+          instance.accountDeploymentData.map((e) => e.toJson()).toList(),
+      'calldata': instance.calldata.map((e) => e.toJson()).toList(),
+      'fee_data_availability_mode': instance.feeDataAvailabilityMode,
+      'nonce': instance.nonce.toJson(),
+      'nonce_data_availability_mode': instance.nonceDataAvailabilityMode,
+      'paymaster_data': instance.paymasterData.map((e) => e.toJson()).toList(),
+      'resource_bounds':
+          instance.resourceBounds.map((k, e) => MapEntry(k, e.toJson())),
+      'sender_address': instance.senderAddress.toJson(),
+      'signature': instance.signature.map((e) => e.toJson()).toList(),
+      'tip': instance.tip,
+      'version': instance.version,
     };
 
 _$InvokeTransactionResultImpl _$$InvokeTransactionResultImplFromJson(
