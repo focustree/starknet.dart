@@ -65,8 +65,8 @@ class Account {
   }
 
   /// Get Estimate max fee for Invoke Tx
-  Future<FeeEstimations> getEstimateMaxFeeForInvokeTx({
-      BlockId blockId = BlockId.latest,
+  Future<FeeEstimations> getEstimateMaxFeeForInvokeTx(
+      {BlockId blockId = BlockId.latest,
       String version = '0x1',
       required List<FunctionCall> functionCalls,
       bool useLegacyCalldata = false,
@@ -434,8 +434,8 @@ class Account {
   }
 
   /// Call account contract `__execute__` with given [functionCalls]
-  Future<InvokeTransactionResponse> execute({
-      required List<FunctionCall> functionCalls,
+  Future<InvokeTransactionResponse> execute(
+      {required List<FunctionCall> functionCalls,
       bool useLegacyCalldata = false,
       bool incrementNonceIfNonceRelatedError = true,
       int maxAttempts = 5,
