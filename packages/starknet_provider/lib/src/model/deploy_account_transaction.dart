@@ -15,10 +15,12 @@ const String deployAccountTxnV3OldCompat = '0x03';
 abstract class DeployAccountTransaction {
   factory DeployAccountTransaction.fromJson(Map<String, Object?> json) =>
       switch (json['version']) {
-        deployAccountTxnV1 ||
+        deployAccountTxnV1 =>
+          DeployAccountTransactionV1.fromJson(json),
         deployAccountTxnV1OldCompat =>
           DeployAccountTransactionV1.fromJson(json),
-        deployAccountTxnV3 ||
+        deployAccountTxnV3 =>
+          DeployAccountTransactionV3.fromJson(json),
         deployAccountTxnV3OldCompat =>
           DeployAccountTransactionV3.fromJson(json),
         _ => throw Exception("Unsupported version ${json['version']}"),

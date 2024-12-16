@@ -74,9 +74,9 @@ void main() {
           'succeeds to declare a simple sierra contract with provided CASM file',
           () async {
         final sierraContract = await CompiledContract.fromPath(
-            '${Directory.current.path}/../../contracts/v1/artifacts/contract2_Counter.contract_class.json');
+            '${Directory.current.path}/../../contracts/v1/artifacts/contract2_Counter2.contract_class.json');
         final compiledContract = await CASMCompiledContract.fromPath(
-            '${Directory.current.path}/../../contracts/v1/artifacts/contract2_Counter.compiled_contract_class.json');
+            '${Directory.current.path}/../../contracts/v1/artifacts/contract2_Counter2.compiled_contract_class.json');
         final compiledClassHash = compiledContract.classHash();
         final sierraClassHash = Felt(sierraContract.classHash());
 
