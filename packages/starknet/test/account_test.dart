@@ -108,7 +108,7 @@ void main() {
         );
         expect(txStatus, equals(true));
         // check if code is
-        (await account2.provider.getClass(
+        (await c.provider.getClass(
           blockId: BlockId.latest,
           classHash: sierraClassHash,
         ))
@@ -136,13 +136,13 @@ void main() {
 
         Felt sierraClassHash = Felt(sierraContract.classHash());
 
-        var maxFee = await account0.getEstimateMaxFeeForDeclareTx(
+        var maxFee = await account2.getEstimateMaxFeeForDeclareTx(
           compiledContract: sierraContract,
           compiledClassHash: compiledClassHash,
           useSTRKFee: true,
         );
 
-        var res = await account0.declare(
+        var res = await account2.declare(
           compiledContract: sierraContract,
           compiledClassHash: compiledClassHash,
           useSTRKFee: true,
@@ -158,11 +158,11 @@ void main() {
         );
         final txStatus = await waitForAcceptance(
           transactionHash: txHash,
-          provider: account0.provider,
+          provider: account2.provider,
         );
         expect(txStatus, equals(true));
         // check if code is
-        (await account0.provider.getClass(
+        (await account2.provider.getClass(
                 blockId: BlockId.blockTag('latest'),
                 classHash: sierraClassHash))
             .when(
@@ -180,7 +180,7 @@ void main() {
     },
         tags: ['integration'],
         skip: false,
-        timeout: Timeout(Duration(minutes: 10)));
+        timeout: Timeout(Duration(minutes: 2)));
 
     group('deploy', () {
       test('succeeds to deploy a cairo 0 contract', () async {
@@ -619,7 +619,7 @@ void main() {
     },
         tags: ['integration'],
         skip: false,
-        timeout: Timeout(Duration(minutes: 10)));
+        timeout: Timeout(Duration(minutes: 2)));
 
     group(
       'fee token',
