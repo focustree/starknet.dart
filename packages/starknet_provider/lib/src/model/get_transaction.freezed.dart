@@ -871,7 +871,7 @@ class _$InvokeTxnV0Impl implements InvokeTxnV0 {
   final String? type;
 // end of BROADCASTED_TXN_COMMON_PROPERTIES
 // end of COMMON_TXN_PROPERTIES
-// start of INVOKE_TXN_V0
+// start of invokeTxnV0
   @override
   final Felt? contractAddress;
   @override
@@ -1219,7 +1219,7 @@ abstract class InvokeTxnV0 implements Txn {
   @override
   String? get type; // end of BROADCASTED_TXN_COMMON_PROPERTIES
 // end of COMMON_TXN_PROPERTIES
-// start of INVOKE_TXN_V0
+// start of invokeTxnV0
   Felt? get contractAddress;
   Felt? get entryPointSelector;
   List<Felt>? get calldata;
@@ -1354,7 +1354,7 @@ class _$InvokeTxnV1Impl implements InvokeTxnV1 {
   final String? type;
 // end of BROADCASTED_TXN_COMMON_PROPERTIES
 // end of COMMON_TXN_PROPERTIES
-// start of INVOKE_TXN_V1
+// start of invokeTxnV1
   @override
   final Felt? sender_address;
   final List<Felt>? _calldata;
@@ -1696,7 +1696,7 @@ abstract class InvokeTxnV1 implements Txn {
   @override
   String? get type; // end of BROADCASTED_TXN_COMMON_PROPERTIES
 // end of COMMON_TXN_PROPERTIES
-// start of INVOKE_TXN_V1
+// start of invokeTxnV1
   Felt? get sender_address;
   List<Felt>? get calldata;
 

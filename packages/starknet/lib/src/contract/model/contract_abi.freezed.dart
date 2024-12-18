@@ -145,8 +145,13 @@ mixin _$SierraContractAbiEntry {
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
+
+  /// Serializes this SierraContractAbiEntry to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of SierraContractAbiEntry
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $SierraContractAbiEntryCopyWith<SierraContractAbiEntry> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -171,6 +176,8 @@ class _$SierraContractAbiEntryCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of SierraContractAbiEntry
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -217,6 +224,8 @@ class __$$SierraFunctionAbiEntryImplCopyWithImpl<$Res>
       $Res Function(_$SierraFunctionAbiEntryImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of SierraContractAbiEntry
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -313,7 +322,7 @@ class _$SierraFunctionAbiEntryImpl implements SierraFunctionAbiEntry {
                 other.stateMutability == stateMutability));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -323,7 +332,9 @@ class _$SierraFunctionAbiEntryImpl implements SierraFunctionAbiEntry {
       const DeepCollectionEquality().hash(_outputs),
       stateMutability);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of SierraContractAbiEntry
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$SierraFunctionAbiEntryImplCopyWith<_$SierraFunctionAbiEntryImpl>
@@ -482,8 +493,11 @@ abstract class SierraFunctionAbiEntry implements SierraContractAbiEntry {
   List<OutputParameter> get outputs;
   @JsonKey(includeIfNull: false)
   String? get stateMutability;
+
+  /// Create a copy of SierraContractAbiEntry
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$SierraFunctionAbiEntryImplCopyWith<_$SierraFunctionAbiEntryImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -508,6 +522,8 @@ class __$$SierraEventAbiEntryImplCopyWithImpl<$Res>
       $Res Function(_$SierraEventAbiEntryImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of SierraContractAbiEntry
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -571,11 +587,13 @@ class _$SierraEventAbiEntryImpl implements SierraEventAbiEntry {
             (identical(other.kind, kind) || other.kind == kind));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, type, name, kind);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of SierraContractAbiEntry
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$SierraEventAbiEntryImplCopyWith<_$SierraEventAbiEntryImpl> get copyWith =>
@@ -728,8 +746,11 @@ abstract class SierraEventAbiEntry implements SierraContractAbiEntry {
   @override
   String get name; // TODO: switch to enum?
   String get kind;
+
+  /// Create a copy of SierraContractAbiEntry
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$SierraEventAbiEntryImplCopyWith<_$SierraEventAbiEntryImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -753,6 +774,8 @@ class __$$SierraEnumAbiEntryImplCopyWithImpl<$Res>
       $Res Function(_$SierraEnumAbiEntryImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of SierraContractAbiEntry
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -821,12 +844,14 @@ class _$SierraEnumAbiEntryImpl implements SierraEnumAbiEntry {
             const DeepCollectionEquality().equals(other._variants, _variants));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType, type, name, const DeepCollectionEquality().hash(_variants));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of SierraContractAbiEntry
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$SierraEnumAbiEntryImplCopyWith<_$SierraEnumAbiEntryImpl> get copyWith =>
@@ -980,8 +1005,11 @@ abstract class SierraEnumAbiEntry implements SierraContractAbiEntry {
   @override
   String get name;
   List<VariantParameter> get variants;
+
+  /// Create a copy of SierraContractAbiEntry
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$SierraEnumAbiEntryImplCopyWith<_$SierraEnumAbiEntryImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -1006,6 +1034,8 @@ class __$$SierraStructAbiEntryImplCopyWithImpl<$Res>
       $Res Function(_$SierraStructAbiEntryImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of SierraContractAbiEntry
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1074,12 +1104,14 @@ class _$SierraStructAbiEntryImpl implements SierraStructAbiEntry {
             const DeepCollectionEquality().equals(other._members, _members));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType, type, name, const DeepCollectionEquality().hash(_members));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of SierraContractAbiEntry
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$SierraStructAbiEntryImplCopyWith<_$SierraStructAbiEntryImpl>
@@ -1234,8 +1266,11 @@ abstract class SierraStructAbiEntry implements SierraContractAbiEntry {
   @override
   String get name;
   List<MemberParameter> get members;
+
+  /// Create a copy of SierraContractAbiEntry
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$SierraStructAbiEntryImplCopyWith<_$SierraStructAbiEntryImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -1259,6 +1294,8 @@ class __$$SierraImplAbiEntryImplCopyWithImpl<$Res>
       $Res Function(_$SierraImplAbiEntryImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of SierraContractAbiEntry
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1322,11 +1359,13 @@ class _$SierraImplAbiEntryImpl implements SierraImplAbiEntry {
                 other.interfaceName == interfaceName));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, type, name, interfaceName);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of SierraContractAbiEntry
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$SierraImplAbiEntryImplCopyWith<_$SierraImplAbiEntryImpl> get copyWith =>
@@ -1479,8 +1518,11 @@ abstract class SierraImplAbiEntry implements SierraContractAbiEntry {
   @override
   String get name;
   String get interfaceName;
+
+  /// Create a copy of SierraContractAbiEntry
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$SierraImplAbiEntryImplCopyWith<_$SierraImplAbiEntryImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -1507,6 +1549,8 @@ class __$$SierraInterfaceAbiEntryImplCopyWithImpl<$Res>
       $Res Function(_$SierraInterfaceAbiEntryImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of SierraContractAbiEntry
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1558,11 +1602,13 @@ class _$SierraInterfaceAbiEntryImpl implements SierraInterfaceAbiEntry {
             (identical(other.name, name) || other.name == name));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, type, name);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of SierraContractAbiEntry
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$SierraInterfaceAbiEntryImplCopyWith<_$SierraInterfaceAbiEntryImpl>
@@ -1713,8 +1759,11 @@ abstract class SierraInterfaceAbiEntry implements SierraContractAbiEntry {
   String get type;
   @override
   String get name;
+
+  /// Create a copy of SierraContractAbiEntry
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$SierraInterfaceAbiEntryImplCopyWith<_$SierraInterfaceAbiEntryImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -1741,6 +1790,8 @@ class __$$SierraConstructorAbiEntryImplCopyWithImpl<$Res>
       $Res Function(_$SierraConstructorAbiEntryImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of SierraContractAbiEntry
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1809,12 +1860,14 @@ class _$SierraConstructorAbiEntryImpl implements SierraConstructorAbiEntry {
             const DeepCollectionEquality().equals(other._inputs, _inputs));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType, type, name, const DeepCollectionEquality().hash(_inputs));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of SierraContractAbiEntry
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$SierraConstructorAbiEntryImplCopyWith<_$SierraConstructorAbiEntryImpl>
@@ -1968,8 +2021,11 @@ abstract class SierraConstructorAbiEntry implements SierraContractAbiEntry {
   @override
   String get name;
   List<InputParameter> get inputs;
+
+  /// Create a copy of SierraContractAbiEntry
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$SierraConstructorAbiEntryImplCopyWith<_$SierraConstructorAbiEntryImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -1983,8 +2039,12 @@ mixin _$InputParameter {
   String get name => throw _privateConstructorUsedError;
   String get type => throw _privateConstructorUsedError;
 
+  /// Serializes this InputParameter to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of InputParameter
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $InputParameterCopyWith<InputParameter> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -2008,6 +2068,8 @@ class _$InputParameterCopyWithImpl<$Res, $Val extends InputParameter>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of InputParameter
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -2046,6 +2108,8 @@ class __$$InputParameterImplCopyWithImpl<$Res>
       _$InputParameterImpl _value, $Res Function(_$InputParameterImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of InputParameter
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -2092,11 +2156,13 @@ class _$InputParameterImpl implements _InputParameter {
             (identical(other.type, type) || other.type == type));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, name, type);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of InputParameter
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$InputParameterImplCopyWith<_$InputParameterImpl> get copyWith =>
@@ -2123,8 +2189,11 @@ abstract class _InputParameter implements InputParameter {
   String get name;
   @override
   String get type;
+
+  /// Create a copy of InputParameter
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$InputParameterImplCopyWith<_$InputParameterImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -2137,8 +2206,12 @@ OutputParameter _$OutputParameterFromJson(Map<String, dynamic> json) {
 mixin _$OutputParameter {
   String get type => throw _privateConstructorUsedError;
 
+  /// Serializes this OutputParameter to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of OutputParameter
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $OutputParameterCopyWith<OutputParameter> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -2162,6 +2235,8 @@ class _$OutputParameterCopyWithImpl<$Res, $Val extends OutputParameter>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of OutputParameter
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -2195,6 +2270,8 @@ class __$$OutputParameterImplCopyWithImpl<$Res>
       _$OutputParameterImpl _value, $Res Function(_$OutputParameterImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of OutputParameter
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -2233,11 +2310,13 @@ class _$OutputParameterImpl implements _OutputParameter {
             (identical(other.type, type) || other.type == type));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, type);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of OutputParameter
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$OutputParameterImplCopyWith<_$OutputParameterImpl> get copyWith =>
@@ -2261,8 +2340,11 @@ abstract class _OutputParameter implements OutputParameter {
 
   @override
   String get type;
+
+  /// Create a copy of OutputParameter
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$OutputParameterImplCopyWith<_$OutputParameterImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -2276,8 +2358,12 @@ mixin _$MemberParameter {
   String get name => throw _privateConstructorUsedError;
   String get type => throw _privateConstructorUsedError;
 
+  /// Serializes this MemberParameter to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of MemberParameter
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $MemberParameterCopyWith<MemberParameter> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -2301,6 +2387,8 @@ class _$MemberParameterCopyWithImpl<$Res, $Val extends MemberParameter>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of MemberParameter
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -2339,6 +2427,8 @@ class __$$MemberParameterImplCopyWithImpl<$Res>
       _$MemberParameterImpl _value, $Res Function(_$MemberParameterImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of MemberParameter
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -2385,11 +2475,13 @@ class _$MemberParameterImpl implements _MemberParameter {
             (identical(other.type, type) || other.type == type));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, name, type);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of MemberParameter
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$MemberParameterImplCopyWith<_$MemberParameterImpl> get copyWith =>
@@ -2416,8 +2508,11 @@ abstract class _MemberParameter implements MemberParameter {
   String get name;
   @override
   String get type;
+
+  /// Create a copy of MemberParameter
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$MemberParameterImplCopyWith<_$MemberParameterImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -2431,8 +2526,12 @@ mixin _$VariantParameter {
   String get name => throw _privateConstructorUsedError;
   String get type => throw _privateConstructorUsedError;
 
+  /// Serializes this VariantParameter to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of VariantParameter
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $VariantParameterCopyWith<VariantParameter> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -2456,6 +2555,8 @@ class _$VariantParameterCopyWithImpl<$Res, $Val extends VariantParameter>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of VariantParameter
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -2494,6 +2595,8 @@ class __$$VariantParameterImplCopyWithImpl<$Res>
       $Res Function(_$VariantParameterImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of VariantParameter
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -2540,11 +2643,13 @@ class _$VariantParameterImpl implements _VariantParameter {
             (identical(other.type, type) || other.type == type));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, name, type);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of VariantParameter
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$VariantParameterImplCopyWith<_$VariantParameterImpl> get copyWith =>
@@ -2571,8 +2676,11 @@ abstract class _VariantParameter implements VariantParameter {
   String get name;
   @override
   String get type;
+
+  /// Create a copy of VariantParameter
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$VariantParameterImplCopyWith<_$VariantParameterImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -2585,8 +2693,12 @@ SierraEventAbi _$SierraEventAbiFromJson(Map<String, dynamic> json) {
 mixin _$SierraEventAbi {
   SierraEventAbiInstance get inner => throw _privateConstructorUsedError;
 
+  /// Serializes this SierraEventAbi to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of SierraEventAbi
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $SierraEventAbiCopyWith<SierraEventAbi> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -2610,6 +2722,8 @@ class _$SierraEventAbiCopyWithImpl<$Res, $Val extends SierraEventAbi>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of SierraEventAbi
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -2643,6 +2757,8 @@ class __$$SierraEventAbiImplCopyWithImpl<$Res>
       _$SierraEventAbiImpl _value, $Res Function(_$SierraEventAbiImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of SierraEventAbi
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -2681,11 +2797,13 @@ class _$SierraEventAbiImpl implements _SierraEventAbi {
             (identical(other.inner, inner) || other.inner == inner));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, inner);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of SierraEventAbi
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$SierraEventAbiImplCopyWith<_$SierraEventAbiImpl> get copyWith =>
@@ -2709,8 +2827,11 @@ abstract class _SierraEventAbi implements SierraEventAbi {
 
   @override
   SierraEventAbiInstance get inner;
+
+  /// Create a copy of SierraEventAbi
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$SierraEventAbiImplCopyWith<_$SierraEventAbiImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -2727,8 +2848,12 @@ mixin _$SierraEventAbiEnum {
   List<SierraEventAbiEnumVariant> get variants =>
       throw _privateConstructorUsedError;
 
+  /// Serializes this SierraEventAbiEnum to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of SierraEventAbiEnum
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $SierraEventAbiEnumCopyWith<SierraEventAbiEnum> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -2756,6 +2881,8 @@ class _$SierraEventAbiEnumCopyWithImpl<$Res, $Val extends SierraEventAbiEnum>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of SierraEventAbiEnum
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -2808,6 +2935,8 @@ class __$$SierraEventAbiEnumImplCopyWithImpl<$Res>
       $Res Function(_$SierraEventAbiEnumImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of SierraEventAbiEnum
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -2880,12 +3009,14 @@ class _$SierraEventAbiEnumImpl implements _SierraEventAbiEnum {
             const DeepCollectionEquality().equals(other._variants, _variants));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, type, name, kind,
       const DeepCollectionEquality().hash(_variants));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of SierraEventAbiEnum
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$SierraEventAbiEnumImplCopyWith<_$SierraEventAbiEnumImpl> get copyWith =>
@@ -2919,8 +3050,11 @@ abstract class _SierraEventAbiEnum implements SierraEventAbiEnum {
   String get kind;
   @override
   List<SierraEventAbiEnumVariant> get variants;
+
+  /// Create a copy of SierraEventAbiEnum
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$SierraEventAbiEnumImplCopyWith<_$SierraEventAbiEnumImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -2937,8 +3071,12 @@ mixin _$SierraEventAbiEnumVariant {
       throw _privateConstructorUsedError; // TODO: switch to enum?
   String get kind => throw _privateConstructorUsedError;
 
+  /// Serializes this SierraEventAbiEnumVariant to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of SierraEventAbiEnumVariant
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $SierraEventAbiEnumVariantCopyWith<SierraEventAbiEnumVariant> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -2963,6 +3101,8 @@ class _$SierraEventAbiEnumVariantCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of SierraEventAbiEnumVariant
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -3009,6 +3149,8 @@ class __$$SierraEventAbiEnumVariantImplCopyWithImpl<$Res>
       $Res Function(_$SierraEventAbiEnumVariantImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of SierraEventAbiEnumVariant
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -3065,11 +3207,13 @@ class _$SierraEventAbiEnumVariantImpl implements _SierraEventAbiEnumVariant {
             (identical(other.kind, kind) || other.kind == kind));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, name, type, kind);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of SierraEventAbiEnumVariant
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$SierraEventAbiEnumVariantImplCopyWith<_$SierraEventAbiEnumVariantImpl>
@@ -3096,11 +3240,14 @@ abstract class _SierraEventAbiEnumVariant implements SierraEventAbiEnumVariant {
   @override
   String get name;
   @override
-  String get type;
-  @override // TODO: switch to enum?
-  String get kind;
+  String get type; // TODO: switch to enum?
   @override
-  @JsonKey(ignore: true)
+  String get kind;
+
+  /// Create a copy of SierraEventAbiEnumVariant
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$SierraEventAbiEnumVariantImplCopyWith<_$SierraEventAbiEnumVariantImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -3117,8 +3264,12 @@ mixin _$SierraEventAbiStruct {
   List<SierraEventAbiStructMember> get members =>
       throw _privateConstructorUsedError;
 
+  /// Serializes this SierraEventAbiStruct to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of SierraEventAbiStruct
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $SierraEventAbiStructCopyWith<SierraEventAbiStruct> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -3147,6 +3298,8 @@ class _$SierraEventAbiStructCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of SierraEventAbiStruct
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -3199,6 +3352,8 @@ class __$$SierraEventAbiStructImplCopyWithImpl<$Res>
       $Res Function(_$SierraEventAbiStructImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of SierraEventAbiStruct
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -3271,12 +3426,14 @@ class _$SierraEventAbiStructImpl implements _SierraEventAbiStruct {
             const DeepCollectionEquality().equals(other._members, _members));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, type, name, kind,
       const DeepCollectionEquality().hash(_members));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of SierraEventAbiStruct
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$SierraEventAbiStructImplCopyWith<_$SierraEventAbiStructImpl>
@@ -3311,8 +3468,11 @@ abstract class _SierraEventAbiStruct implements SierraEventAbiStruct {
   String get kind;
   @override
   List<SierraEventAbiStructMember> get members;
+
+  /// Create a copy of SierraEventAbiStruct
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$SierraEventAbiStructImplCopyWith<_$SierraEventAbiStructImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -3329,8 +3489,12 @@ mixin _$SierraEventAbiStructMember {
       throw _privateConstructorUsedError; // TODO: switch to enum ?
   String get kind => throw _privateConstructorUsedError;
 
+  /// Serializes this SierraEventAbiStructMember to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of SierraEventAbiStructMember
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $SierraEventAbiStructMemberCopyWith<SierraEventAbiStructMember>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -3356,6 +3520,8 @@ class _$SierraEventAbiStructMemberCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of SierraEventAbiStructMember
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -3402,6 +3568,8 @@ class __$$SierraEventAbiStructMemberImplCopyWithImpl<$Res>
       $Res Function(_$SierraEventAbiStructMemberImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of SierraEventAbiStructMember
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -3459,11 +3627,13 @@ class _$SierraEventAbiStructMemberImpl implements _SierraEventAbiStructMember {
             (identical(other.kind, kind) || other.kind == kind));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, name, type, kind);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of SierraEventAbiStructMember
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$SierraEventAbiStructMemberImplCopyWith<_$SierraEventAbiStructMemberImpl>
@@ -3491,11 +3661,14 @@ abstract class _SierraEventAbiStructMember
   @override
   String get name;
   @override
-  String get type;
-  @override // TODO: switch to enum ?
-  String get kind;
+  String get type; // TODO: switch to enum ?
   @override
-  @JsonKey(ignore: true)
+  String get kind;
+
+  /// Create a copy of SierraEventAbiStructMember
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$SierraEventAbiStructMemberImplCopyWith<_$SierraEventAbiStructMemberImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -3614,8 +3787,13 @@ mixin _$DeprecatedContractAbiEntry {
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
+
+  /// Serializes this DeprecatedContractAbiEntry to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of DeprecatedContractAbiEntry
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $DeprecatedContractAbiEntryCopyWith<DeprecatedContractAbiEntry>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -3641,6 +3819,8 @@ class _$DeprecatedContractAbiEntryCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of DeprecatedContractAbiEntry
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -3688,6 +3868,8 @@ class __$$DeprecatedFunctionAbiEntryImplCopyWithImpl<$Res>
       $Res Function(_$DeprecatedFunctionAbiEntryImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of DeprecatedContractAbiEntry
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -3786,7 +3968,7 @@ class _$DeprecatedFunctionAbiEntryImpl implements DeprecatedFunctionAbiEntry {
                 other.stateMutability == stateMutability));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -3796,7 +3978,9 @@ class _$DeprecatedFunctionAbiEntryImpl implements DeprecatedFunctionAbiEntry {
       const DeepCollectionEquality().hash(_outputs),
       stateMutability);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of DeprecatedContractAbiEntry
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$DeprecatedFunctionAbiEntryImplCopyWith<_$DeprecatedFunctionAbiEntryImpl>
@@ -3945,8 +4129,11 @@ abstract class DeprecatedFunctionAbiEntry
   List<TypedParameter> get outputs;
   @JsonKey(name: 'stateMutability', includeIfNull: false)
   String? get stateMutability;
+
+  /// Create a copy of DeprecatedContractAbiEntry
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$DeprecatedFunctionAbiEntryImplCopyWith<_$DeprecatedFunctionAbiEntryImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -3977,6 +4164,8 @@ class __$$DeprecatedEventAbiEntryImplCopyWithImpl<$Res>
       $Res Function(_$DeprecatedEventAbiEntryImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of DeprecatedContractAbiEntry
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -4061,7 +4250,7 @@ class _$DeprecatedEventAbiEntryImpl implements DeprecatedEventAbiEntry {
             const DeepCollectionEquality().equals(other._data, _data));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -4070,7 +4259,9 @@ class _$DeprecatedEventAbiEntryImpl implements DeprecatedEventAbiEntry {
       const DeepCollectionEquality().hash(_keys),
       const DeepCollectionEquality().hash(_data));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of DeprecatedContractAbiEntry
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$DeprecatedEventAbiEntryImplCopyWith<_$DeprecatedEventAbiEntryImpl>
@@ -4215,8 +4406,11 @@ abstract class DeprecatedEventAbiEntry implements DeprecatedContractAbiEntry {
   String get name;
   List<TypedParameter> get keys;
   List<TypedParameter> get data;
+
+  /// Create a copy of DeprecatedContractAbiEntry
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$DeprecatedEventAbiEntryImplCopyWith<_$DeprecatedEventAbiEntryImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -4243,6 +4437,8 @@ class __$$DeprecatedStructAbiEntryImplCopyWithImpl<$Res>
       $Res Function(_$DeprecatedStructAbiEntryImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of DeprecatedContractAbiEntry
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -4320,12 +4516,14 @@ class _$DeprecatedStructAbiEntryImpl implements DeprecatedStructAbiEntry {
             const DeepCollectionEquality().equals(other._members, _members));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, type, name, size,
       const DeepCollectionEquality().hash(_members));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of DeprecatedContractAbiEntry
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$DeprecatedStructAbiEntryImplCopyWith<_$DeprecatedStructAbiEntryImpl>
@@ -4470,8 +4668,11 @@ abstract class DeprecatedStructAbiEntry implements DeprecatedContractAbiEntry {
   String get name;
   int get size;
   List<StructMember> get members;
+
+  /// Create a copy of DeprecatedContractAbiEntry
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$DeprecatedStructAbiEntryImplCopyWith<_$DeprecatedStructAbiEntryImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -4502,6 +4703,8 @@ class __$$DeprecatedConstructorAbiEntryImplCopyWithImpl<$Res>
       $Res Function(_$DeprecatedConstructorAbiEntryImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of DeprecatedContractAbiEntry
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -4588,7 +4791,7 @@ class _$DeprecatedConstructorAbiEntryImpl
             const DeepCollectionEquality().equals(other._outputs, _outputs));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -4597,7 +4800,9 @@ class _$DeprecatedConstructorAbiEntryImpl
       const DeepCollectionEquality().hash(_inputs),
       const DeepCollectionEquality().hash(_outputs));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of DeprecatedContractAbiEntry
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$DeprecatedConstructorAbiEntryImplCopyWith<
@@ -4744,8 +4949,11 @@ abstract class DeprecatedConstructorAbiEntry
   String get name;
   List<TypedParameter> get inputs;
   List<TypedParameter> get outputs;
+
+  /// Create a copy of DeprecatedContractAbiEntry
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$DeprecatedConstructorAbiEntryImplCopyWith<
           _$DeprecatedConstructorAbiEntryImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -4760,8 +4968,12 @@ mixin _$TypedParameter {
   String get name => throw _privateConstructorUsedError;
   String get type => throw _privateConstructorUsedError;
 
+  /// Serializes this TypedParameter to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of TypedParameter
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $TypedParameterCopyWith<TypedParameter> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -4785,6 +4997,8 @@ class _$TypedParameterCopyWithImpl<$Res, $Val extends TypedParameter>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of TypedParameter
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -4823,6 +5037,8 @@ class __$$TypedParameterImplCopyWithImpl<$Res>
       _$TypedParameterImpl _value, $Res Function(_$TypedParameterImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of TypedParameter
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -4869,11 +5085,13 @@ class _$TypedParameterImpl implements _TypedParameter {
             (identical(other.type, type) || other.type == type));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, name, type);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of TypedParameter
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$TypedParameterImplCopyWith<_$TypedParameterImpl> get copyWith =>
@@ -4900,8 +5118,11 @@ abstract class _TypedParameter implements TypedParameter {
   String get name;
   @override
   String get type;
+
+  /// Create a copy of TypedParameter
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$TypedParameterImplCopyWith<_$TypedParameterImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -4916,8 +5137,12 @@ mixin _$StructMember {
   String get type => throw _privateConstructorUsedError;
   int get offset => throw _privateConstructorUsedError;
 
+  /// Serializes this StructMember to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of StructMember
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $StructMemberCopyWith<StructMember> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -4941,6 +5166,8 @@ class _$StructMemberCopyWithImpl<$Res, $Val extends StructMember>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of StructMember
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -4984,6 +5211,8 @@ class __$$StructMemberImplCopyWithImpl<$Res>
       _$StructMemberImpl _value, $Res Function(_$StructMemberImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of StructMember
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -5039,11 +5268,13 @@ class _$StructMemberImpl implements _StructMember {
             (identical(other.offset, offset) || other.offset == offset));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, name, type, offset);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of StructMember
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$StructMemberImplCopyWith<_$StructMemberImpl> get copyWith =>
@@ -5072,8 +5303,11 @@ abstract class _StructMember implements StructMember {
   String get type;
   @override
   int get offset;
+
+  /// Create a copy of StructMember
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$StructMemberImplCopyWith<_$StructMemberImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
