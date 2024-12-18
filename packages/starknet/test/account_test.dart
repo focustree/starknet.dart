@@ -69,118 +69,123 @@ void main() {
       skip: true,
     );
 
-    group('declare cairo 1', () {
-      test(
-          'succeeds to declare a simple sierra contract with provided CASM file',
-          () async {
-        final sierraContract = await CompiledContract.fromPath(
-            '${Directory.current.path}/../../contracts/v1/artifacts/contract2_Counter2.contract_class.json');
-        final compiledContract = await CASMCompiledContract.fromPath(
-            '${Directory.current.path}/../../contracts/v1/artifacts/contract2_Counter2.compiled_contract_class.json');
-        final compiledClassHash = compiledContract.classHash();
-        final sierraClassHash = Felt(sierraContract.classHash());
+    group(
+      'declare cairo 1',
+      () {
+        test(
+            'succeeds to declare a simple sierra contract with provided CASM file',
+            () async {
+          final sierraContract = await CompiledContract.fromPath(
+              '${Directory.current.path}/../../contracts/v1/artifacts/contract2_Counter2.contract_class.json');
+          final compiledContract = await CASMCompiledContract.fromPath(
+              '${Directory.current.path}/../../contracts/v1/artifacts/contract2_Counter2.compiled_contract_class.json');
+          final compiledClassHash = compiledContract.classHash();
+          final sierraClassHash = Felt(sierraContract.classHash());
 
-        var maxFee = await account2.getEstimateMaxFeeForDeclareTx(
-          compiledContract: sierraContract,
-          compiledClassHash: compiledClassHash,
-        );
+          var maxFee = await account2.getEstimateMaxFeeForDeclareTx(
+            compiledContract: sierraContract,
+            compiledClassHash: compiledClassHash,
+          );
 
-        final res = await account2.declare(
-          compiledContract: sierraContract,
-          compiledClassHash: compiledClassHash,
-          max_fee: maxFee.maxFee,
-        );
-        final txHash = res.when(
-          result: (result) {
-            expect(
-              result.classHash,
-              equals(
-                sierraClassHash,
-              ),
-            );
-            return result.transactionHash.toHexString();
-          },
-          error: (error) => fail(error.message),
-        );
-        final txStatus = await waitForAcceptance(
-          transactionHash: txHash,
-          provider: account2.provider,
-        );
-        expect(txStatus, equals(true));
-        // check if code is
-        (await account2.provider.getClass(
-          blockId: BlockId.latest,
-          classHash: sierraClassHash,
-        ))
-            .when(
-                result: (res) {
-                  expect(res, isA<SierraContractClass>());
-                  final contract = res as SierraContractClass;
-                  expect(
-                    contract.sierraProgram,
-                    equals(sierraContract.contract.sierraProgram
-                        .map((e) => Felt(e))),
-                  );
-                },
-                error: (error) => fail("Shouldn't fail"));
-      });
+          final res = await account2.declare(
+            compiledContract: sierraContract,
+            compiledClassHash: compiledClassHash,
+            max_fee: maxFee.maxFee,
+          );
+          final txHash = res.when(
+            result: (result) {
+              expect(
+                result.classHash,
+                equals(
+                  sierraClassHash,
+                ),
+              );
+              return result.transactionHash.toHexString();
+            },
+            error: (error) => fail(error.message),
+          );
+          final txStatus = await waitForAcceptance(
+            transactionHash: txHash,
+            provider: account2.provider,
+          );
+          expect(txStatus, equals(true));
+          // check if code is
+          final res2 = await account2.provider.getClass(
+            blockId: BlockId.latest,
+            classHash: sierraClassHash,
+          );
+          res2.when(
+            result: (res) {
+              expect(res, isA<SierraContractClass>());
+              final contract = res as SierraContractClass;
+              expect(
+                contract.sierraProgram,
+                equals(
+                    sierraContract.contract.sierraProgram.map((e) => Felt(e))),
+              );
+            },
+            error: (error) => fail("Shouldn't fail"),
+          );
+        });
 
-      test(
-          'succeeds to declare a simple sierra contract with provided CASM file and STRK fee with resource bounds',
-          () async {
-        final sierraContract = await CompiledContract.fromPath(
-            '${Directory.current.path}/../../contracts/v1/artifacts/contract2_MyToken.contract_class.json');
-        final compiledContract = await CASMCompiledContract.fromPath(
-            '${Directory.current.path}/../../contracts/v1/artifacts/contract2_MyToken.compiled_contract_class.json');
-        final BigInt compiledClassHash = compiledContract.classHash();
+        test(
+            'succeeds to declare a simple sierra contract with provided CASM file and STRK fee with resource bounds',
+            () async {
+          final sierraContract = await CompiledContract.fromPath(
+              '${Directory.current.path}/../../contracts/v1/artifacts/contract2_MyToken.contract_class.json');
+          final compiledContract = await CASMCompiledContract.fromPath(
+              '${Directory.current.path}/../../contracts/v1/artifacts/contract2_MyToken.compiled_contract_class.json');
+          final BigInt compiledClassHash = compiledContract.classHash();
 
-        Felt sierraClassHash = Felt(sierraContract.classHash());
+          Felt sierraClassHash = Felt(sierraContract.classHash());
 
-        var maxFee = await account2.getEstimateMaxFeeForDeclareTx(
-          compiledContract: sierraContract,
-          compiledClassHash: compiledClassHash,
-          useSTRKFee: true,
-        );
+          var maxFee = await account2.getEstimateMaxFeeForDeclareTx(
+            compiledContract: sierraContract,
+            compiledClassHash: compiledClassHash,
+            useSTRKFee: true,
+          );
 
-        var res = await account2.declare(
-          compiledContract: sierraContract,
-          compiledClassHash: compiledClassHash,
-          useSTRKFee: true,
-          l1MaxAmount: maxFee.maxAmount,
-          l1MaxPricePerUnit: maxFee.maxPricePerUnit,
-        );
-        final txHash = res.when(
-          result: (result) {
-            expect(result.classHash, equals(sierraClassHash));
-            return result.transactionHash.toHexString();
-          },
-          error: (error) => fail(error.message),
-        );
-        final txStatus = await waitForAcceptance(
-          transactionHash: txHash,
-          provider: account2.provider,
-        );
-        expect(txStatus, equals(true));
-        // check if code is
-        (await account2.provider.getClass(
-                blockId: BlockId.blockTag('latest'),
-                classHash: sierraClassHash))
-            .when(
-                result: (res) {
-                  expect(res, isA<SierraContractClass>());
-                  final contract = res as SierraContractClass;
-                  expect(
-                    contract.sierraProgram,
-                    equals(sierraContract.contract.sierraProgram
-                        .map((e) => Felt(e))),
-                  );
-                },
-                error: (error) => fail("Shouldn't fail"));
-      });
-    },
-        tags: ['integration'],
-        skip: false,
-        timeout: Timeout(Duration(minutes: 2)));
+          var res = await account2.declare(
+            compiledContract: sierraContract,
+            compiledClassHash: compiledClassHash,
+            useSTRKFee: true,
+            l1MaxAmount: maxFee.maxAmount,
+            l1MaxPricePerUnit: maxFee.maxPricePerUnit,
+          );
+          final txHash = res.when(
+            result: (result) {
+              expect(result.classHash, equals(sierraClassHash));
+              return result.transactionHash.toHexString();
+            },
+            error: (error) => fail(error.message),
+          );
+          final txStatus = await waitForAcceptance(
+            transactionHash: txHash,
+            provider: account2.provider,
+          );
+          expect(txStatus, equals(true));
+          // check if code is
+          final res2 = await account2.provider.getClass(
+            blockId: BlockId.blockTag('latest'),
+            classHash: sierraClassHash,
+          );
+          res2.when(
+            result: (res) {
+              expect(res, isA<SierraContractClass>());
+              final contract = res as SierraContractClass;
+              expect(
+                contract.sierraProgram,
+                equals(
+                    sierraContract.contract.sierraProgram.map((e) => Felt(e))),
+              );
+            },
+            error: (error) => fail("Shouldn't fail"),
+          );
+        });
+      },
+      tags: ['integration'],
+      skip: false,
+    );
 
     group('deploy', () {
       test('succeeds to deploy a cairo 0 contract', () async {
@@ -362,89 +367,78 @@ void main() {
       // }, tags: ['integration']);
     }, tags: ['integration'], skip: false);
 
-    group('execute', () {
-      test('succeeds to invoke a function execute to a cairo 1 contract',
-          () async {
-        final sierraContract = await CompiledContract.fromPath(
-            '${Directory.current.path}/../../contracts/v1/artifacts/contract2_MyToken.contract_class.json');
-        final compiledContract = await CASMCompiledContract.fromPath(
-            '${Directory.current.path}/../../contracts/v1/artifacts/contract2_MyToken.compiled_contract_class.json');
-        final BigInt compiledClassHash = compiledContract.classHash();
+    group(
+      'execute',
+      () {
+        test('succeeds to invoke a function execute to a cairo 1 contract',
+            () async {
+          final sierraContract = await CompiledContract.fromPath(
+              '${Directory.current.path}/../../contracts/v1/artifacts/contract2_MyToken.contract_class.json');
+          final compiledContract = await CASMCompiledContract.fromPath(
+              '${Directory.current.path}/../../contracts/v1/artifacts/contract2_MyToken.compiled_contract_class.json');
+          final BigInt compiledClassHash = compiledContract.classHash();
 
-        Felt sierraClassHash = Felt(sierraContract.classHash());
+          Felt sierraClassHash = Felt(sierraContract.classHash());
 
-        FeeEstimations maxFee;
-        String? txHash;
+          FeeEstimations maxFee;
+          String? txHash;
 
-        try {
-          maxFee = await account3.getEstimateMaxFeeForDeclareTx(
+          try {
+            maxFee = await account3.getEstimateMaxFeeForDeclareTx(
+                compiledContract: sierraContract,
+                compiledClassHash: compiledClassHash);
+
+            var res = await account3.declare(
               compiledContract: sierraContract,
-              compiledClassHash: compiledClassHash);
+              compiledClassHash: compiledClassHash,
+              max_fee: maxFee.maxFee,
+            );
+            txHash = res.when(
+              result: (result) {
+                expect(
+                  result.classHash,
+                  equals(
+                    sierraClassHash,
+                  ),
+                );
+                return result.transactionHash.toHexString();
+              },
+              error: (error) {
+                throw error;
+              },
+            );
 
-          var res = await account3.declare(
-            compiledContract: sierraContract,
-            compiledClassHash: compiledClassHash,
-            max_fee: maxFee.maxFee,
-          );
-          txHash = res.when(
-            result: (result) {
-              expect(
-                result.classHash,
-                equals(
-                  sierraClassHash,
-                ),
-              );
-              return result.transactionHash.toHexString();
-            },
-            error: (error) {
-              throw error;
-            },
-          );
-
-          await waitForAcceptance(
-            transactionHash: txHash!,
-            provider: account3.provider,
-          );
-        } catch (e) {
-          print(e.toString());
-          if (!e.toString().contains('Contract error')) {
-            // If already declared just continue
-            rethrow;
+            await waitForAcceptance(
+              transactionHash: txHash!,
+              provider: account3.provider,
+            );
+          } catch (e) {
+            print(e.toString());
+            if (!e.toString().contains('Contract error')) {
+              // If already declared just continue
+              rethrow;
+            }
           }
-        }
 
-        maxFee = await account3.getEstimateMaxFeeForDeployTx(
-            classHash: sierraClassHash,
-            calldata: [
-              Felt.fromInt(100),
-              Felt.fromInt(0),
-              account3.accountAddress
-            ]);
-        final contractAddress = await account3.deploy(
-            classHash: sierraClassHash,
-            calldata: [
-              Felt.fromInt(100),
-              Felt.fromInt(0),
-              account3.accountAddress
-            ],
-            max_fee: maxFee.maxFee);
+          maxFee = await account3.getEstimateMaxFeeForDeployTx(
+              classHash: sierraClassHash,
+              calldata: [
+                Felt.fromInt(100),
+                Felt.fromInt(0),
+                account3.accountAddress
+              ]);
+          final contractAddress = await account3.deploy(
+              classHash: sierraClassHash,
+              calldata: [
+                Felt.fromInt(100),
+                Felt.fromInt(0),
+                account3.accountAddress
+              ],
+              max_fee: maxFee.maxFee);
 
-        maxFee = await account3.getEstimateMaxFeeForInvokeTx(functionCalls: [
-          FunctionCall(
-            contractAddress: contractAddress!,
-            entryPointSelector: getSelectorByName("transfer"),
-            calldata: [
-              account1.accountAddress,
-              Felt.fromInt(100),
-              Felt.fromInt(0),
-            ],
-          ),
-        ]);
-
-        final response = await account3.execute(
-          functionCalls: [
+          maxFee = await account3.getEstimateMaxFeeForInvokeTx(functionCalls: [
             FunctionCall(
-              contractAddress: contractAddress,
+              contractAddress: contractAddress!,
               entryPointSelector: getSelectorByName("transfer"),
               calldata: [
                 account1.accountAddress,
@@ -452,174 +446,187 @@ void main() {
                 Felt.fromInt(0),
               ],
             ),
-          ],
-          max_fee: maxFee.maxFee,
-        );
+          ]);
 
-        final txHash1 = response.when(
-          result: (result) => result.transaction_hash,
-          error: (err) => throw Exception("Failed to execute"),
-        );
+          final response = await account3.execute(
+            functionCalls: [
+              FunctionCall(
+                contractAddress: contractAddress,
+                entryPointSelector: getSelectorByName("transfer"),
+                calldata: [
+                  account1.accountAddress,
+                  Felt.fromInt(100),
+                  Felt.fromInt(0),
+                ],
+              ),
+            ],
+            max_fee: maxFee.maxFee,
+          );
 
-        await waitForAcceptance(
-            transactionHash: txHash1, provider: account3.provider);
+          final txHash1 = response.when(
+            result: (result) => result.transaction_hash,
+            error: (err) => throw Exception("Failed to execute"),
+          );
 
-        final result = await account3.provider.call(
-          request: FunctionCall(
-              contractAddress: contractAddress,
-              entryPointSelector: getSelectorByName("balance_of"),
-              calldata: [account1.accountAddress]),
-          blockId: BlockId.latest,
-        );
-        int counter = result.when(
-          result: (result) => result[0].toInt(),
-          error: (error) => throw Exception("Failed to get balance"),
-        );
+          await waitForAcceptance(
+              transactionHash: txHash1, provider: account3.provider);
 
-        expect(
-            counter,
-            equals(
-              100,
-            ));
-      });
+          final result = await account3.provider.call(
+            request: FunctionCall(
+                contractAddress: contractAddress,
+                entryPointSelector: getSelectorByName("balance_of"),
+                calldata: [account1.accountAddress]),
+            blockId: BlockId.latest,
+          );
+          int counter = result.when(
+            result: (result) => result[0].toInt(),
+            error: (error) => throw Exception("Failed to get balance"),
+          );
 
-      test(
-          'succeeds to invoke a function execute to a cairo 1 contract with invoke v3 (paying gas with STRK)',
-          () async {
-        final sierraContract = await CompiledContract.fromPath(
-            '${Directory.current.path}/../../contracts/v1/artifacts/contract2_MyToken.contract_class.json');
-        final compiledContract = await CASMCompiledContract.fromPath(
-            '${Directory.current.path}/../../contracts/v1/artifacts/contract2_MyToken.compiled_contract_class.json');
-        final BigInt compiledClassHash = compiledContract.classHash();
+          expect(
+              counter,
+              equals(
+                100,
+              ));
+        });
 
-        Felt sierraClassHash = Felt(sierraContract.classHash());
+        test(
+            'succeeds to invoke a function execute to a cairo 1 contract with invoke v3 (paying gas with STRK)',
+            () async {
+          final sierraContract = await CompiledContract.fromPath(
+              '${Directory.current.path}/../../contracts/v1/artifacts/contract2_MyToken.contract_class.json');
+          final compiledContract = await CASMCompiledContract.fromPath(
+              '${Directory.current.path}/../../contracts/v1/artifacts/contract2_MyToken.compiled_contract_class.json');
+          final BigInt compiledClassHash = compiledContract.classHash();
 
-        FeeEstimations maxFee;
-        String? txHash;
-        try {
-          maxFee = await account3.getEstimateMaxFeeForDeclareTx(
+          Felt sierraClassHash = Felt(sierraContract.classHash());
+
+          FeeEstimations maxFee;
+          String? txHash;
+          try {
+            maxFee = await account3.getEstimateMaxFeeForDeclareTx(
+                compiledContract: sierraContract,
+                compiledClassHash: compiledClassHash,
+                useSTRKFee: true);
+
+            var res = await account3.declare(
               compiledContract: sierraContract,
               compiledClassHash: compiledClassHash,
-              useSTRKFee: true);
+              useSTRKFee: true,
+              l1MaxAmount: maxFee.maxAmount,
+              l1MaxPricePerUnit: maxFee.maxPricePerUnit,
+            );
+            txHash = res.when(
+              result: (result) {
+                expect(
+                  result.classHash,
+                  equals(
+                    sierraClassHash,
+                  ),
+                );
+                return result.transactionHash.toHexString();
+              },
+              error: (error) {
+                throw error;
+              },
+            );
 
-          var res = await account3.declare(
-            compiledContract: sierraContract,
-            compiledClassHash: compiledClassHash,
+            await waitForAcceptance(
+              transactionHash: txHash!,
+              provider: account3.provider,
+            );
+          } catch (e) {
+            print(e.toString());
+            if (!e.toString().contains('Contract error')) {
+              // If already declared just continue
+              rethrow;
+            }
+          }
+
+          maxFee = await account3.getEstimateMaxFeeForDeployTx(
+            classHash: sierraClassHash,
+            calldata: [
+              Felt.fromInt(100),
+              Felt.fromInt(0),
+              account3.accountAddress
+            ],
+            useSTRKFee: true,
+          );
+
+          final contractAddress = await account3.deploy(
+            classHash: sierraClassHash,
+            calldata: [
+              Felt.fromInt(100),
+              Felt.fromInt(0),
+              account3.accountAddress
+            ],
             useSTRKFee: true,
             l1MaxAmount: maxFee.maxAmount,
             l1MaxPricePerUnit: maxFee.maxPricePerUnit,
           );
-          txHash = res.when(
-            result: (result) {
-              expect(
-                result.classHash,
-                equals(
-                  sierraClassHash,
-                ),
-              );
-              return result.transactionHash.toHexString();
-            },
-            error: (error) {
-              throw error;
-            },
-          );
 
-          await waitForAcceptance(
-            transactionHash: txHash!,
-            provider: account3.provider,
-          );
-        } catch (e) {
-          print(e.toString());
-          if (!e.toString().contains('Contract error')) {
-            // If already declared just continue
-            rethrow;
-          }
-        }
-
-        maxFee = await account3.getEstimateMaxFeeForDeployTx(
-          classHash: sierraClassHash,
-          calldata: [
-            Felt.fromInt(100),
-            Felt.fromInt(0),
-            account3.accountAddress
-          ],
-          useSTRKFee: true,
-        );
-
-        final contractAddress = await account3.deploy(
-          classHash: sierraClassHash,
-          calldata: [
-            Felt.fromInt(100),
-            Felt.fromInt(0),
-            account3.accountAddress
-          ],
-          useSTRKFee: true,
-          l1MaxAmount: maxFee.maxAmount,
-          l1MaxPricePerUnit: maxFee.maxPricePerUnit,
-        );
-
-        maxFee = await account3.getEstimateMaxFeeForInvokeTx(functionCalls: [
-          FunctionCall(
-            contractAddress: contractAddress!,
-            entryPointSelector: getSelectorByName("transfer"),
-            calldata: [
-              account1.accountAddress,
-              Felt.fromInt(100),
-              Felt.fromInt(0),
-            ],
-          )
-        ], useSTRKFee: true);
-
-        final response = await account3.execute(
-          functionCalls: [
+          maxFee = await account3.getEstimateMaxFeeForInvokeTx(functionCalls: [
             FunctionCall(
-              contractAddress: contractAddress,
+              contractAddress: contractAddress!,
               entryPointSelector: getSelectorByName("transfer"),
               calldata: [
                 account1.accountAddress,
                 Felt.fromInt(100),
                 Felt.fromInt(0),
               ],
-            ),
-          ],
-          useLegacyCalldata: false,
-          incrementNonceIfNonceRelatedError: true,
-          maxAttempts: 5,
-          useSTRKFee: true,
-          l1MaxAmount: maxFee.maxAmount,
-          l1MaxPricePerUnit: maxFee.maxPricePerUnit,
-        );
+            )
+          ], useSTRKFee: true);
 
-        final txHash1 = response.when(
-          result: (result) => result.transaction_hash,
-          error: (err) => throw Exception("Failed to execute"),
-        );
+          final response = await account3.execute(
+            functionCalls: [
+              FunctionCall(
+                contractAddress: contractAddress,
+                entryPointSelector: getSelectorByName("transfer"),
+                calldata: [
+                  account1.accountAddress,
+                  Felt.fromInt(100),
+                  Felt.fromInt(0),
+                ],
+              ),
+            ],
+            useLegacyCalldata: false,
+            incrementNonceIfNonceRelatedError: true,
+            maxAttempts: 5,
+            useSTRKFee: true,
+            l1MaxAmount: maxFee.maxAmount,
+            l1MaxPricePerUnit: maxFee.maxPricePerUnit,
+          );
 
-        await waitForAcceptance(
-            transactionHash: txHash1, provider: account3.provider);
+          final txHash1 = response.when(
+            result: (result) => result.transaction_hash,
+            error: (err) => throw Exception("Failed to execute"),
+          );
 
-        final result = await account3.provider.call(
-          request: FunctionCall(
-              contractAddress: contractAddress,
-              entryPointSelector: getSelectorByName("balance_of"),
-              calldata: [account1.accountAddress]),
-          blockId: BlockId.latest,
-        );
-        int counter = result.when(
-          result: (result) => result[0].toInt(),
-          error: (error) => throw Exception("Failed to get balance"),
-        );
+          await waitForAcceptance(
+              transactionHash: txHash1, provider: account3.provider);
 
-        expect(
-            counter,
-            equals(
-              100,
-            ));
-      });
-    },
-        tags: ['integration'],
-        skip: false,
-        timeout: Timeout(Duration(minutes: 2)));
+          final result = await account3.provider.call(
+            request: FunctionCall(
+                contractAddress: contractAddress,
+                entryPointSelector: getSelectorByName("balance_of"),
+                calldata: [account1.accountAddress]),
+            blockId: BlockId.latest,
+          );
+          int counter = result.when(
+            result: (result) => result[0].toInt(),
+            error: (error) => throw Exception("Failed to get balance"),
+          );
+
+          expect(
+              counter,
+              equals(
+                100,
+              ));
+        });
+      },
+      tags: ['integration'],
+      skip: false,
+    );
 
     group(
       'fee token',
