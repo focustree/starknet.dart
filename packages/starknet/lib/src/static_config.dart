@@ -65,6 +65,19 @@ final account1 = getAccount(
   privateKey: devnetAccount1PrivateKey,
 );
 
+final devnetAccount2Address = Felt.fromHexString(
+  "0x49dfb8ce986e21d354ac93ea65e6a11f639c1934ea253e5ff14ca62eca0f38e",
+);
+final devnetAccount2PublicKey = Felt.fromHexString(
+  "0xb8fd4ddd415902d96f61b7ad201022d495997c2dff8eb9e0eb86253e30fabc",
+);
+final devnetAccount2PrivateKey =
+    Felt.fromHexString("0xa20a02f0ac53692d144b20cb371a60d7");
+final account2 = getAccount(
+  accountAddress: devnetAccount2Address,
+  privateKey: devnetAccount2PrivateKey,
+);
+
 final devnetAccount9Address = Felt.fromHexString(
   "0x4b3f4ba8c00a02b66142a4b1dd41a4dfab4f92650922a3280977b0f03c75ee1",
 );

@@ -80,12 +80,12 @@ void main() {
         final compiledClassHash = compiledContract.classHash();
         final sierraClassHash = Felt(sierraContract.classHash());
 
-        var maxFee = await account0.getEstimateMaxFeeForDeclareTx(
+        var maxFee = await account2.getEstimateMaxFeeForDeclareTx(
           compiledContract: sierraContract,
           compiledClassHash: compiledClassHash,
         );
 
-        final res = await account0.declare(
+        final res = await account2.declare(
           compiledContract: sierraContract,
           compiledClassHash: compiledClassHash,
           max_fee: maxFee.maxFee,
@@ -104,11 +104,11 @@ void main() {
         );
         final txStatus = await waitForAcceptance(
           transactionHash: txHash,
-          provider: account0.provider,
+          provider: account2.provider,
         );
         expect(txStatus, equals(true));
         // check if code is
-        (await account0.provider.getClass(
+        (await account2.provider.getClass(
           blockId: BlockId.latest,
           classHash: sierraClassHash,
         ))
