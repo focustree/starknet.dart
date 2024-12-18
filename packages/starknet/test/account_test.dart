@@ -108,7 +108,7 @@ void main() {
         );
         expect(txStatus, equals(true));
         // check if code is
-        (await c.provider.getClass(
+        (await account2.provider.getClass(
           blockId: BlockId.latest,
           classHash: sierraClassHash,
         ))
