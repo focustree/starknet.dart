@@ -65,6 +65,9 @@ final account1 = getAccount(
   privateKey: devnetAccount1PrivateKey,
 );
 
+// We need to add more accounts for each test group
+// and avoid race condition on the account nonce
+// when test inside groups run in parallel.
 final devnetAccount2Address = Felt.fromHexString(
   "0x49dfb8ce986e21d354ac93ea65e6a11f639c1934ea253e5ff14ca62eca0f38e",
 );
@@ -76,6 +79,19 @@ final devnetAccount2PrivateKey =
 final account2 = getAccount(
   accountAddress: devnetAccount2Address,
   privateKey: devnetAccount2PrivateKey,
+);
+
+final devnetAccount3Address = Felt.fromHexString(
+  "0x4f348398f859a55a0c80b1446c5fdc37edb3a8478a32f10764659fc241027d3",
+);
+final devnetAccount3PublicKey = Felt.fromHexString(
+  "0x5e05d2510c6110bde03df9c1c126a1f592207d78cd9e481ac98540d5336d23c",
+);
+final devnetAccount3PrivateKey =
+    Felt.fromHexString("0xa641611c17d4d92bd0790074e34beeb7");
+final account3 = getAccount(
+  accountAddress: devnetAccount3Address,
+  privateKey: devnetAccount3PrivateKey,
 );
 
 final devnetAccount9Address = Felt.fromHexString(

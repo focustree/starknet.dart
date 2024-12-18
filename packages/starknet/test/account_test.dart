@@ -377,11 +377,11 @@ void main() {
         String? txHash;
 
         try {
-          maxFee = await account0.getEstimateMaxFeeForDeclareTx(
+          maxFee = await account3.getEstimateMaxFeeForDeclareTx(
               compiledContract: sierraContract,
               compiledClassHash: compiledClassHash);
 
-          var res = await account0.declare(
+          var res = await account3.declare(
             compiledContract: sierraContract,
             compiledClassHash: compiledClassHash,
             max_fee: maxFee.maxFee,
@@ -403,7 +403,7 @@ void main() {
 
           await waitForAcceptance(
             transactionHash: txHash!,
-            provider: account0.provider,
+            provider: account3.provider,
           );
         } catch (e) {
           print(e.toString());
@@ -413,23 +413,23 @@ void main() {
           }
         }
 
-        maxFee = await account0.getEstimateMaxFeeForDeployTx(
+        maxFee = await account3.getEstimateMaxFeeForDeployTx(
             classHash: sierraClassHash,
             calldata: [
               Felt.fromInt(100),
               Felt.fromInt(0),
-              account0.accountAddress
+              account3.accountAddress
             ]);
-        final contractAddress = await account0.deploy(
+        final contractAddress = await account3.deploy(
             classHash: sierraClassHash,
             calldata: [
               Felt.fromInt(100),
               Felt.fromInt(0),
-              account0.accountAddress
+              account3.accountAddress
             ],
             max_fee: maxFee.maxFee);
 
-        maxFee = await account0.getEstimateMaxFeeForInvokeTx(functionCalls: [
+        maxFee = await account3.getEstimateMaxFeeForInvokeTx(functionCalls: [
           FunctionCall(
             contractAddress: contractAddress!,
             entryPointSelector: getSelectorByName("transfer"),
@@ -441,7 +441,7 @@ void main() {
           ),
         ]);
 
-        final response = await account0.execute(
+        final response = await account3.execute(
           functionCalls: [
             FunctionCall(
               contractAddress: contractAddress,
@@ -462,9 +462,9 @@ void main() {
         );
 
         await waitForAcceptance(
-            transactionHash: txHash1, provider: account0.provider);
+            transactionHash: txHash1, provider: account3.provider);
 
-        final result = await account0.provider.call(
+        final result = await account3.provider.call(
           request: FunctionCall(
               contractAddress: contractAddress,
               entryPointSelector: getSelectorByName("balance_of"),
@@ -497,12 +497,12 @@ void main() {
         FeeEstimations maxFee;
         String? txHash;
         try {
-          maxFee = await account0.getEstimateMaxFeeForDeclareTx(
+          maxFee = await account3.getEstimateMaxFeeForDeclareTx(
               compiledContract: sierraContract,
               compiledClassHash: compiledClassHash,
               useSTRKFee: true);
 
-          var res = await account0.declare(
+          var res = await account3.declare(
             compiledContract: sierraContract,
             compiledClassHash: compiledClassHash,
             useSTRKFee: true,
@@ -526,7 +526,7 @@ void main() {
 
           await waitForAcceptance(
             transactionHash: txHash!,
-            provider: account0.provider,
+            provider: account3.provider,
           );
         } catch (e) {
           print(e.toString());
@@ -536,29 +536,29 @@ void main() {
           }
         }
 
-        maxFee = await account0.getEstimateMaxFeeForDeployTx(
+        maxFee = await account3.getEstimateMaxFeeForDeployTx(
           classHash: sierraClassHash,
           calldata: [
             Felt.fromInt(100),
             Felt.fromInt(0),
-            account0.accountAddress
+            account3.accountAddress
           ],
           useSTRKFee: true,
         );
 
-        final contractAddress = await account0.deploy(
+        final contractAddress = await account3.deploy(
           classHash: sierraClassHash,
           calldata: [
             Felt.fromInt(100),
             Felt.fromInt(0),
-            account0.accountAddress
+            account3.accountAddress
           ],
           useSTRKFee: true,
           l1MaxAmount: maxFee.maxAmount,
           l1MaxPricePerUnit: maxFee.maxPricePerUnit,
         );
 
-        maxFee = await account0.getEstimateMaxFeeForInvokeTx(functionCalls: [
+        maxFee = await account3.getEstimateMaxFeeForInvokeTx(functionCalls: [
           FunctionCall(
             contractAddress: contractAddress!,
             entryPointSelector: getSelectorByName("transfer"),
@@ -570,7 +570,7 @@ void main() {
           )
         ], useSTRKFee: true);
 
-        final response = await account0.execute(
+        final response = await account3.execute(
           functionCalls: [
             FunctionCall(
               contractAddress: contractAddress,
@@ -596,9 +596,9 @@ void main() {
         );
 
         await waitForAcceptance(
-            transactionHash: txHash1, provider: account0.provider);
+            transactionHash: txHash1, provider: account3.provider);
 
-        final result = await account0.provider.call(
+        final result = await account3.provider.call(
           request: FunctionCall(
               contractAddress: contractAddress,
               entryPointSelector: getSelectorByName("balance_of"),
