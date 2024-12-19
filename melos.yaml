@@ -122,7 +122,7 @@ scripts:
       flutter: false
   test:dart:integration:
     description: Run all dart integration tests
-    run: melos exec --dir-exists="test" -- dart test --tags integration --fail-fast
+    run: melos exec -c 1 --dir-exists="test" -- dart test --tags integration --fail-fast
     packageFilters:
       ignore: "*starknet_builder*"
       flutter: false
