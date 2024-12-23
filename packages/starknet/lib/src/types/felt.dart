@@ -8,7 +8,61 @@ class Felt {
   static final prime =
       BigInt.two.pow(251) + BigInt.from(17) * BigInt.two.pow(192) + BigInt.one;
 
+  static final Felt zero = Felt(BigInt.zero);
+
   late BigInt _bigInt;
+
+  //define << and >> . Check result not greater or equel to prime
+  Felt operator <<(int shift) {
+    Felt result = Felt(_bigInt << shift);
+    if (result._bigInt >= prime) {
+      throw ArgumentError('Value must be smaller than 2^251 + 17 * 2^192 + 1');
+    }
+    return result;
+  }
+
+  Felt operator >>(int shift) {
+    Felt result = Felt(_bigInt >> shift);
+    if (result._bigInt >= prime) {
+      throw ArgumentError('Value must be smaller than 2^251 + 17 * 2^192 + 1');
+    }
+    return result;
+  }
+
+  //define + operator
+  Felt operator +(Felt other) {
+    Felt result = Felt(_bigInt + other._bigInt);
+    if (result._bigInt >= prime) {
+      throw ArgumentError('Value must be smaller than 2^251 + 17 * 2^192 + 1');
+    }
+    return result;
+  }
+
+  //define - operator. Check no negative
+  Felt operator -(Felt other) {
+    Felt result = Felt(_bigInt - other._bigInt);
+    if (result._bigInt < BigInt.zero) {
+      throw ArgumentError('Value must be greater than 0');
+    }
+    return result;
+  }
+
+  //define * operator
+  Felt operator *(Felt other) {
+    Felt result = Felt(_bigInt * other._bigInt);
+    return result;
+  }
+
+  //define / operator
+  Felt operator /(Felt other) {
+    if (other._bigInt == BigInt.zero) {
+      throw ArgumentError('Cannot divide by zero');
+    }
+    // modInverse will throw if no inverse exists
+    BigInt inverse = other._bigInt.modInverse(prime);
+    Felt result = Felt((_bigInt * inverse) % prime);
+    return result;
+  }
 
   Felt(this._bigInt) {
     if (_bigInt >= prime) {

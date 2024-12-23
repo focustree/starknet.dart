@@ -61,6 +61,10 @@ _$CASMCompiledContractImpl _$$CASMCompiledContractImplFromJson(
       entryPointsByType: CASMEntryPointsByType.fromJson(
           json['entry_points_by_type'] as Map<String, dynamic>),
       compilerVersion: json['compiler_version'] as String,
+      bytecodeSegmentLengths:
+          (json['bytecode_segment_lengths'] as List<dynamic>)
+              .map((e) => (e as num).toInt())
+              .toList(),
     );
 
 Map<String, dynamic> _$$CASMCompiledContractImplToJson(
@@ -69,6 +73,7 @@ Map<String, dynamic> _$$CASMCompiledContractImplToJson(
       'bytecode': instance.bytecode.map((e) => e.toString()).toList(),
       'entry_points_by_type': instance.entryPointsByType.toJson(),
       'compiler_version': instance.compilerVersion,
+      'bytecode_segment_lengths': instance.bytecodeSegmentLengths,
     };
 
 _$DeprecatedCompiledContractImpl _$$DeprecatedCompiledContractImplFromJson(

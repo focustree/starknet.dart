@@ -54,8 +54,8 @@ class ERC20 extends Contract {
   /// Returns transaction hash.
   Future<String> transfer(Felt recipient, Uint256 value) async {
     final InvokeTransactionResponse trx = await execute(
-      "transfer",
-      [recipient, value.low, value.high],
+      selector: "transfer",
+      calldata: [recipient, value.low, value.high],
     );
     return (trx.when(
       result: (result) {
@@ -73,8 +73,8 @@ class ERC20 extends Contract {
   /// Returns transaction hash.
   Future<String> transferFrom(Felt from, Felt to, Uint256 value) async {
     final InvokeTransactionResponse trx = await execute(
-      "transferFrom",
-      [from, to, value.low, value.high],
+      selector: "transferFrom",
+      calldata: [from, to, value.low, value.high],
     );
     return (trx.when(
       result: (result) {
@@ -91,15 +91,15 @@ class ERC20 extends Contract {
   /// Returns transaction hash.
   Future<String> approve(Felt spender, Uint256 amount) async {
     final InvokeTransactionResponse trx = await execute(
-      "approve",
-      [spender, amount.low, amount.high],
+      selector: "approve",
+      calldata: [spender, amount.low, amount.high],
     );
     return (trx.when(
       result: (result) {
         return result.transaction_hash;
       },
       error: (error) {
-        throw Exception("Error transfer (${error.code}): ${error.message}");
+        throw Exception("Error approve (${error.code}): ${error.message}");
       },
     ));
   }

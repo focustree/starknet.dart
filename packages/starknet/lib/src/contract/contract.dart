@@ -1,5 +1,5 @@
+import 'package:starknet/starknet.dart';
 import 'package:starknet_provider/starknet_provider.dart';
-import '../../starknet.dart';
 
 class Contract {
   final Account account;
@@ -49,12 +49,21 @@ class Contract {
   }
 
   /// Execute contract given [selector] with [calldata]
-  Future<InvokeTransactionResponse> execute(
-    String selector,
-    List<Felt> calldata,
-  ) async {
-    final maxFee = defaultMaxFee;
-
+  Future<InvokeTransactionResponse> execute({
+    required String selector,
+    required List<Felt> calldata,
+    Felt? maxFee,
+    bool? useSTRKFee,
+    Felt? l1MaxAmount,
+    Felt? l1MaxPricePerUnit,
+    Felt? l2MaxAmount,
+    Felt? l2MaxPricePerUnit,
+    List<Felt>? accountDeploymentData,
+    List<Felt>? paymasterData,
+    Felt? tip,
+    String? feeDataAvailabilityMode,
+    String? nonceDataAvailabilityMode,
+  }) async {
     final trx = await account.execute(
       functionCalls: [
         FunctionCall(
@@ -64,6 +73,16 @@ class Contract {
         ),
       ],
       max_fee: maxFee,
+      useSTRKFee: useSTRKFee,
+      l1MaxAmount: l1MaxAmount,
+      l1MaxPricePerUnit: l1MaxPricePerUnit,
+      l2MaxAmount: l2MaxAmount,
+      l2MaxPricePerUnit: l2MaxPricePerUnit,
+      accountDeploymentData: accountDeploymentData,
+      paymasterData: paymasterData,
+      tip: tip,
+      feeDataAvailabilityMode: feeDataAvailabilityMode,
+      nonceDataAvailabilityMode: nonceDataAvailabilityMode,
     );
     return trx;
   }

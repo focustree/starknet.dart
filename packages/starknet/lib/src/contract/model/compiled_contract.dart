@@ -6,6 +6,7 @@ import 'package:starknet_provider/starknet_provider.dart';
 
 import '../../../starknet.dart';
 import '../../crypto/poseidon.dart';
+import './compiled_class_hash.dart';
 
 part 'compiled_contract.freezed.dart';
 part 'compiled_contract.g.dart';
@@ -159,6 +160,7 @@ class CASMCompiledContract
     required List<BigInt> bytecode,
     required CASMEntryPointsByType entryPointsByType,
     required String compilerVersion,
+    required List<int> bytecodeSegmentLengths,
   }) = _CASMCompiledContract;
 
   factory CASMCompiledContract.fromJson(Map<String, Object?> json) =>
@@ -221,14 +223,26 @@ class CASMCompiledContract
   @override
   BigInt classHash() {
     final elements = <BigInt>[];
-    if (compilerVersion == '1.1.0') {
+    //add COMPILED_CLASS_V1 element when compilerVersion >= 1.1.0
+    final version =
+        compilerVersion.split('.').map((e) => int.parse(e)).toList();
+    if (version[0] > 1 || (version[0] == 1 && version[1] >= 1)) {
       elements.add(Felt.fromString(COMPILED_CLASS_V1).toBigInt());
     }
     final hashes = _entrypointsHashes();
     elements.add(hashes.externals);
     elements.add(hashes.l1handlers);
     elements.add(hashes.constructors);
-    elements.add(_byteCodeHash());
+    // `bytecode_segment_lengths` was added since Sierra 1.5.0 and changed hash calculation.
+    // This implementation here is basically based in
+    // `cairo-lang` v0.13.1, starknet-py and starkli implementations.
+    // https://github.com/starkware-libs/cairo/pull/4515
+    if (bytecodeSegmentLengths.isEmpty) {
+      elements.add(_byteCodeHash());
+    } else {
+      elements
+          .add(computeCompiledClassHashInner(bytecode, bytecodeSegmentLengths));
+    }
     return poseidonHasher.hashMany(elements);
   }
 }

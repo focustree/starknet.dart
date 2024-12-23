@@ -37,11 +37,11 @@ class Txn with _$Txn {
     // end of BROADCASTED_TXN_COMMON_PROPERTIES
     // end of COMMON_TXN_PROPERTIES
 
-    // start of INVOKE_TXN_V0
+    // start of invokeTxnV0
     required Felt? contractAddress,
     required Felt? entryPointSelector,
     required List<Felt>? calldata,
-    // end of INVOKE_TXN_V0
+    // end of invokeTxnV0
   }) = InvokeTxnV0;
 
   const factory Txn.invokeTxnV1({
@@ -56,10 +56,10 @@ class Txn with _$Txn {
     // end of BROADCASTED_TXN_COMMON_PROPERTIES
     // end of COMMON_TXN_PROPERTIES
 
-    // start of INVOKE_TXN_V1
+    // start of invokeTxnV1
     required Felt? sender_address,
     required List<Felt>? calldata,
-    // end of INVOKE_TXN_V1
+    // end of invokeTxnV1
   }) = InvokeTxnV1;
 
   const factory Txn.declareTxn({

@@ -7,6 +7,13 @@ import 'package:starknet_provider/starknet_provider.dart';
 part 'invoke_transaction.freezed.dart';
 part 'invoke_transaction.g.dart';
 
+const String invokeTxnV0 = '0x0';
+const String invokeTxnV1 = '0x1';
+const String invokeTxnV3 = '0x3';
+const String invokeTxnV0OldCompat = '0x00';
+const String invokeTxnV1OldCompat = '0x01';
+const String invokeTxnV3OldCompat = '0x03';
+
 @freezed
 class InvokeTransactionRequest with _$InvokeTransactionRequest {
   const factory InvokeTransactionRequest({
@@ -18,10 +25,21 @@ class InvokeTransactionRequest with _$InvokeTransactionRequest {
 }
 
 abstract class InvokeTransaction {
-  factory InvokeTransaction.fromJson(Map<String, Object?> json) =>
-      json['version'] == '0x01'
-          ? InvokeTransactionV1.fromJson(json)
-          : InvokeTransactionV0.fromJson(json);
+  factory InvokeTransaction.fromJson(Map<String, Object?> json) {
+    switch (json['version']) {
+      case invokeTxnV0:
+      case invokeTxnV0OldCompat:
+        return InvokeTransactionV0.fromJson(json);
+      case invokeTxnV1:
+      case invokeTxnV1OldCompat:
+        return InvokeTransactionV1.fromJson(json);
+      case invokeTxnV3:
+      case invokeTxnV3OldCompat:
+        return InvokeTransactionV3.fromJson(json);
+      default:
+        throw ArgumentError('Unsupported transaction version:');
+    }
+  }
 
   Map<String, dynamic> toJson();
 }
@@ -33,7 +51,7 @@ class InvokeTransactionV0
   const factory InvokeTransactionV0({
     @Default('INVOKE') String type,
     @JsonKey(toJson: maxFeeToJson) required Felt maxFee,
-    @Default('0x00') String version,
+    @Default(invokeTxnV0) String version,
     required List<Felt> signature,
     required Felt contractAddress,
     required Felt entryPointSelector,
@@ -54,12 +72,35 @@ class InvokeTransactionV1
     required Felt nonce,
     required Felt senderAddress,
     required List<Felt> calldata,
-    @Default('0x1') String version,
+    @Default(invokeTxnV1) String version,
     @Default('INVOKE') String type,
   }) = _InvokeTransactionV1;
 
   factory InvokeTransactionV1.fromJson(Map<String, Object?> json) =>
       _$InvokeTransactionV1FromJson(json);
+}
+
+@freezed
+class InvokeTransactionV3
+    with _$InvokeTransactionV3
+    implements InvokeTransaction {
+  const factory InvokeTransactionV3({
+    @Default('INVOKE') String type,
+    required List<Felt> accountDeploymentData,
+    required List<Felt> calldata,
+    required String feeDataAvailabilityMode,
+    required Felt nonce,
+    required String nonceDataAvailabilityMode,
+    required List<Felt> paymasterData,
+    required Map<String, ResourceBounds> resourceBounds,
+    required Felt senderAddress,
+    required List<Felt> signature,
+    required String tip,
+    @Default(invokeTxnV3) String version,
+  }) = _InvokeTransactionV3;
+
+  factory InvokeTransactionV3.fromJson(Map<String, Object?> json) =>
+      _$InvokeTransactionV3FromJson(json);
 }
 
 @freezed
