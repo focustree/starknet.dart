@@ -44,15 +44,6 @@ To run the tests on **devnet** use the following command:
 NETWORK=devnet dart test -t integration
 ```
 
-### Release a new version to pub.dev
-
-You simply need to create a PR where you:
-
-1. Bump the package version
-2. Add an entry to the `CHANGELOG`
-
-Make sure it passes all the CI tests, then merge it to release a new version of the package.
-
 ### Generate freezed model classes
 
 To avoid writing too much boilerplate, we use the [freezed](https://github.com/rrousselGit/freezed) library to automatically generate serializer logic.
