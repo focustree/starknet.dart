@@ -17,7 +17,9 @@ class ProtectWalletScreen extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final isLoading = useState(false);
-    final isBiometryAvailable = useFuture(BiometricsStore().isAvailable()).data;
+    final isBiometryAvailable = BiometricsStore.isSupportedPlatform()
+        ? useFuture(BiometricsStore().isAvailable()).data
+        : false;
     return Layout2(
       sideMargin: 32,
       children: [
