@@ -9,8 +9,13 @@ import 'package:secure_store/src/utils.dart';
 class BiometricsStore implements SecureStore {
   final BiometricOptions? options;
 
+  static bool isSupportedPlatform() {
+    return !kIsWeb &&
+        (Platform.isIOS || Platform.isMacOS || Platform.isAndroid);
+  }
+
   BiometricsStore([this.options]) {
-    if (kIsWeb || !(Platform.isIOS || Platform.isMacOS || Platform.isAndroid)) {
+    if (!isSupportedPlatform()) {
       throw Exception('Biometric store not available');
     }
   }
