@@ -6,7 +6,7 @@ In this tutorial we will build a mobile wallet app.
 
 1. Create a new flutter project
 
-```
+```bash
 flutter create wallet_app
 ```
 
@@ -14,7 +14,7 @@ Run it locally with `flutter run` to make sure it is properly configured.
 
 2. Install and run [`starknet-devnet`](https://0xspaceshard.github.io/starknet-devnet-rs/docs/running/install)
 
-3. Add necessary dependnecies
+3. Add necessary dependencies
 
 ```bash
 flutter pub add wallet_kit hive_flutter hooks_riverpod flutter_dotenv
@@ -28,6 +28,12 @@ RPC="http://127.0.0.1:5050/rpc"
 ```
 
 > If you are building for Android, use `RPC="http://10.0.2.2:5050/rpc"` instead.
+
+5. Add `.env` file in your `pubspec.yaml`
+```yaml
+  assets:
+    - .env
+```
 
 ## Let's write some code
 
