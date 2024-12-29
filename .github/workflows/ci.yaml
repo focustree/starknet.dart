@@ -11,7 +11,7 @@ jobs:
   lint:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - name: Dotenv Action
         id: load-env
         uses: falti/dotenv-action@v1.1.4
@@ -30,7 +30,7 @@ jobs:
   test-unit:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - name: Dotenv Action
         id: load-env
         uses: falti/dotenv-action@v1.1.4
@@ -48,7 +48,7 @@ jobs:
   test-integration:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - name: Dotenv Action
         id: load-env
         uses: falti/dotenv-action@v1.1.4
@@ -85,7 +85,7 @@ jobs:
   check-contracts-changes:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - name: Dotenv Action
         id: load-env
         uses: falti/dotenv-action@v1.1.4
