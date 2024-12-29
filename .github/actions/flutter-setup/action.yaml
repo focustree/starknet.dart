@@ -1,0 +1,19 @@
+name: 'Setup Flutter Environment from environment'
+outputs:
+  flutter-version:
+    description: "Flutter version from env"
+    value: ${{ steps.load-env.outputs.flutter-version }}
+
+runs:
+  using: "composite"
+  steps:
+    - name: Dotenv Action
+      id: load-env
+      uses: falti/dotenv-action@v1.1.4
+      with:
+        path: .env.ci
+    - uses: subosito/flutter-action@v2
+      with:
+        flutter-version: ${{ steps.load-env.outputs.flutter_version }}
+        cache: true
+
