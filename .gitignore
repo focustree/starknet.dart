@@ -28,6 +28,7 @@ coverage/
 
 .env
 .env.*
+!.env.ci
 !.env.example
 !.env.mainnet.example
 !.env.devnet.example
