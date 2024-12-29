@@ -96,7 +96,7 @@ class CustomButton extends HookWidget {
         boxShadow: onPressed != null
             ? [
                 BoxShadow(
-                  color: charcoal.withOpacity(shadowOpacity),
+                  color: charcoal.withValues(alpha: shadowOpacity),
                   offset: const Offset(0, 8),
                   blurRadius: 24,
                 )
