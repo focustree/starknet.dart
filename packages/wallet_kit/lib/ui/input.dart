@@ -43,7 +43,7 @@ class TextInput extends StatelessWidget {
         borderRadius: BorderRadius.circular(8),
         boxShadow: [
           BoxShadow(
-            color: charcoal.withOpacity(0.2),
+            color: charcoal.withValues(alpha: 0.2),
             offset: const Offset(0, 8),
             blurRadius: 24,
           )

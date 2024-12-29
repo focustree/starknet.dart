@@ -11,11 +11,15 @@ jobs:
   lint:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
+      - name: Dotenv Action
+        id: load-env
+        uses: falti/dotenv-action@v1.1.4
+        with:
+          path: .env.ci
       - uses: flutter-actions/setup-flutter@v3
         with:
-          channel: stable
-          version: 3.24.3
+          version: ${{ steps.load-env.outputs.flutter_version }}
           cache: true
           cache-sdk: true
       - uses: bluefireteam/melos-action@v3
@@ -26,11 +30,15 @@ jobs:
   test-unit:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
+      - name: Dotenv Action
+        id: load-env
+        uses: falti/dotenv-action@v1.1.4
+        with:
+          path: .env.ci
       - uses: flutter-actions/setup-flutter@v3
         with:
-          channel: stable
-          version: 3.24.3
+          version: ${{ steps.load-env.outputs.flutter_version }}
           cache: true
           cache-sdk: true
       - uses: bluefireteam/melos-action@v3
@@ -40,11 +48,15 @@ jobs:
   test-integration:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
+      - name: Dotenv Action
+        id: load-env
+        uses: falti/dotenv-action@v1.1.4
+        with:
+          path: .env.ci
       - uses: flutter-actions/setup-flutter@v3
         with:
-          channel: stable
-          version: 3.24.3
+          version: ${{ steps.load-env.outputs.flutter_version }}
           cache: true
           cache-sdk: true
       - uses: bluefireteam/melos-action@v3
@@ -73,8 +85,12 @@ jobs:
   check-contracts-changes:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-
+      - uses: actions/checkout@v4
+      - name: Dotenv Action
+        id: load-env
+        uses: falti/dotenv-action@v1.1.4
+        with:
+          path: .env.ci
       - name: Check for changes
         uses: dorny/paths-filter@v3
         id: changes
@@ -84,8 +100,7 @@ jobs:
               - 'contracts/v2.6.2/**'
       - uses: flutter-actions/setup-flutter@v3
         with:
-          channel: stable
-          version: 3.24.3
+          version: ${{ steps.load-env.outputs.flutter_version }}
           cache: true
           cache-sdk: true
       - uses: bluefireteam/melos-action@v3

@@ -59,7 +59,7 @@ class _SettingsSection extends StatelessWidget {
       decoration: BoxDecoration(
         boxShadow: [
           BoxShadow(
-            color: charcoal.withOpacity(0.1),
+            color: charcoal.withValues(alpha: 0.1),
             offset: const Offset(0, 8),
             blurRadius: 24,
           ),

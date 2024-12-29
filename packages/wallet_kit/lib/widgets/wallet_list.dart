@@ -133,7 +133,7 @@ class WalletCell extends HookConsumerWidget {
     return ExpandableNotifier(
       child: Container(
         decoration: BoxDecoration(
-          color: Colors.grey.withOpacity(0.1),
+          color: Colors.grey.withValues(alpha: 0.1),
           borderRadius: BorderRadius.circular(16.0),
         ),
         child: Expandable(
@@ -212,7 +212,8 @@ class AccountCell extends HookConsumerWidget {
         ),
         backgroundColor: WidgetStateProperty.all(Colors.white),
         side: WidgetStateProperty.all(BorderSide.none),
-        overlayColor: WidgetStateProperty.all(Colors.grey.withOpacity(0.05)),
+        overlayColor:
+            WidgetStateProperty.all(Colors.grey.withValues(alpha: 0.05)),
         shape: WidgetStateProperty.all(
           RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(16.0),
