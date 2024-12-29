@@ -13,14 +13,8 @@ jobs:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
-      - name: Dotenv Action
-        id: load-env
-        uses: falti/dotenv-action@v1.1.4
-        with:
-          path: .env.ci
-      - uses: subosito/flutter-action@v2
-        with:
-          flutter-version: ${{ steps.load-env.outputs.flutter_version }}
+      - name: Flutter setup
+        uses: ./.github/actions/flutter-setup
       - uses: bluefireteam/melos-action@v3
         with:
           publish: true
