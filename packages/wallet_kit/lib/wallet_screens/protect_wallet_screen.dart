@@ -17,9 +17,8 @@ class ProtectWalletScreen extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final isLoading = useState(false);
-    final isBiometryAvailable = BiometricsStore.isSupportedPlatform()
-        ? useFuture(BiometricsStore().isAvailable()).data
-        : false;
+    final isBiometricSupported =
+        useMemoized(() => BiometricsStore.isSupportedPlatform(), []);
     return Layout2(
       sideMargin: 32,
       children: [
@@ -28,21 +27,29 @@ class ProtectWalletScreen extends HookConsumerWidget {
           "This extra layer of security helps prevent someone with your phone from accesing your funds.",
         ),
         const Spacer(),
-        if (isBiometryAvailable == true)
-          PrimaryButton(
-            label: "Protect with biometrics",
-            isLoading: isLoading.value,
-            onPressed: () async {
-              isLoading.value = true;
-              await ref.read(walletsProvider.notifier).addWallet(
-                    secureStore: BiometricsStore(),
-                    seedPhrase: seedPhrase,
+        if (isBiometricSupported)
+          FutureBuilder(
+              future: BiometricsStore().isAvailable(),
+              builder: (context, snapshot) {
+                if (snapshot.hasData) {
+                  return PrimaryButton(
+                    label: "Protect with biometrics",
+                    isLoading: isLoading.value,
+                    onPressed: () async {
+                      isLoading.value = true;
+                      await ref.read(walletsProvider.notifier).addWallet(
+                            secureStore: BiometricsStore(),
+                            seedPhrase: seedPhrase,
+                          );
+                      isLoading.value = false;
+                      // ignore: use_build_context_synchronously
+                      Navigator.of(context).popUntil((route) => route.isFirst);
+                    },
                   );
-              isLoading.value = false;
-              // ignore: use_build_context_synchronously
-              Navigator.of(context).popUntil((route) => route.isFirst);
-            },
-          ),
+                } else {
+                  return const SizedBox.shrink();
+                }
+              }),
         SecondaryButton(
           isLoading: isLoading.value,
           onPressed: () async {
