@@ -35,6 +35,22 @@ RPC="http://127.0.0.1:5050/rpc"
     - .env
 ```
 
+6. Update Android minimun SDK version
+`secure_store` package used by `wallet_kit` require Android minimum SDK version set to at least 23, you need to modify `android/app/build.gradle`:
+```
+    defaultConfig {
+        // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
+        applicationId = "com.example.wallet_app"
+        // You can update the following values to match your application needs.
+        // For more information, see: https://flutter.dev/to/review-gradle-config.
+        minSdk = 23
+        targetSdk = flutter.targetSdkVersion
+        versionCode = flutter.versionCode
+        versionName = flutter.versionName
+    }
+```
+
+
 ## Let's write some code
 
 Let's start with a simple `main` function in your 'main.dart' file.
