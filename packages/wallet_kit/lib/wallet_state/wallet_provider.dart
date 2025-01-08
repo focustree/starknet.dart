@@ -211,7 +211,7 @@ class Wallets extends _$Wallets with PersistedState<WalletsState> {
           accountId: account.copyWith(
             balances: {
               ...account.balances,
-              'ETH': double.parse(ethBalance.toStringAsFixed(4)),
+              TokenSymbol.ETH.name: double.parse(ethBalance.toStringAsFixed(4)),
             },
           ),
         },
@@ -246,7 +246,8 @@ class Wallets extends _$Wallets with PersistedState<WalletsState> {
           accountId: account.copyWith(
             balances: {
               ...account.balances,
-              'STRK': double.parse(strkBalance.toStringAsFixed(4)),
+              TokenSymbol.STRK.name:
+                  double.parse(strkBalance.toStringAsFixed(4)),
             },
           ),
         },

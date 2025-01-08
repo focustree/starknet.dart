@@ -268,7 +268,8 @@ class AccountCell extends HookConsumerWidget {
               Text(formatAddress(account.address)),
             ],
           ),
-          Text('${(account.balances['ETH'] ?? 0).toString()} ETH'),
+          Text(
+              '${(account.balances[TokenSymbol.ETH.name] ?? 0).toString()} ETH'),
         ],
       ),
     );
