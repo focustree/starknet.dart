@@ -140,11 +140,11 @@ class WalletCell extends HookConsumerWidget {
       if (controller.value != null) {
         void onExpanded() {
           if (controller.value!.expanded) {
-            wallet.accounts.forEach((key, value) {
-              ref.read(walletsProvider.notifier)
-                ..refreshEthBalance(value.walletId, value.id)
-                ..refreshStrkBalance(value.walletId, value.id);
-            });
+            wallet.accounts.forEach(
+              (key, value) => ref
+                  .read(walletsProvider.notifier)
+                  .refreshAccount(value.walletId, value.id),
+            );
           }
         }
 

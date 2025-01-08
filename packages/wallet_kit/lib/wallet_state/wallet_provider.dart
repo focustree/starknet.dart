@@ -184,6 +184,19 @@ class Wallets extends _$Wallets with PersistedState<WalletsState> {
     state = state.copyWith(wallets: {}, selected: null);
   }
 
+  refreshAccount(String walletId, int accountId) async {
+    await refreshEthBalance(walletId, accountId);
+    await refreshStrkBalance(walletId, accountId);
+    final isDeployed = await WalletService.isAccountValid(
+      account: state.wallets[walletId]!.accounts[accountId]!,
+    );
+    updateSelectedAccountIsDeployed(
+      walletId: walletId,
+      accountId: accountId,
+      isDeployed: isDeployed,
+    );
+  }
+
   refreshEthBalance(String walletId, int accountId) async {
     final accountAddress =
         state.wallets[walletId]?.accounts[accountId]?.address;
