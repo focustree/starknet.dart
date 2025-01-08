@@ -7,6 +7,9 @@ class DeployAccountButton extends HookConsumerWidget {
     super.key,
   });
 
+  // ignore: constant_identifier_names
+  static const double MINIMUN_ETH_BALANCE = 0.00001;
+
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final selectedAccount = ref.watch(
@@ -15,9 +18,9 @@ class DeployAccountButton extends HookConsumerWidget {
     if (selectedAccount?.isDeployed == false) {
       final ethBalance =
           selectedAccount!.balances[TokenSymbol.ETH.name] ?? 0.00;
-      final enoughBalance = ethBalance >= 0.00001;
+      final enoughBalance = ethBalance >= MINIMUN_ETH_BALANCE;
       return PrimaryButton(
-          label: enoughBalance ? 'Deploy account' : 'Not enougth ETH',
+          label: enoughBalance ? 'Deploy account' : 'Not enough ETH',
           onPressed: enoughBalance
               ? () async {
                   final secureStore = await ref

@@ -13,6 +13,8 @@ class Wallets extends _$Wallets with PersistedState<WalletsState> {
   @override
   String get boxName => 'wallet';
 
+  bool _isRefreshing = false;
+
   @override
   WalletsState fromJson(Map<String, dynamic> json) =>
       WalletsState.fromJson(json);
@@ -184,17 +186,23 @@ class Wallets extends _$Wallets with PersistedState<WalletsState> {
     state = state.copyWith(wallets: {}, selected: null);
   }
 
-  refreshAccount(String walletId, int accountId) async {
-    await refreshEthBalance(walletId, accountId);
-    await refreshStrkBalance(walletId, accountId);
-    final isDeployed = await WalletService.isAccountValid(
-      account: state.wallets[walletId]!.accounts[accountId]!,
-    );
-    updateSelectedAccountIsDeployed(
-      walletId: walletId,
-      accountId: accountId,
-      isDeployed: isDeployed,
-    );
+  Future<void> refreshAccount(String walletId, int accountId) async {
+    if (_isRefreshing) return;
+    _isRefreshing = true;
+    try {
+      await refreshEthBalance(walletId, accountId);
+      await refreshStrkBalance(walletId, accountId);
+      final isDeployed = await WalletService.isAccountValid(
+        account: state.wallets[walletId]!.accounts[accountId]!,
+      );
+      updateSelectedAccountIsDeployed(
+        walletId: walletId,
+        accountId: accountId,
+        isDeployed: isDeployed,
+      );
+    } finally {
+      _isRefreshing = false;
+    }
   }
 
   refreshEthBalance(String walletId, int accountId) async {
