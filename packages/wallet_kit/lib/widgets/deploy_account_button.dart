@@ -25,7 +25,7 @@ class DeployAccountButton extends HookConsumerWidget {
                       .getSecureStoreForWallet(context: context);
                   await ref.read(walletsProvider.notifier).deployAccount(
                         secureStore: secureStore,
-                        account: selectedAccount!,
+                        account: selectedAccount,
                       );
                 }
               : null);

@@ -14,10 +14,15 @@ class TokenList extends HookConsumerWidget {
 
     useEffect(() {
       if (selectedAccount != null) {
-        ref.read(walletsProvider.notifier).refreshEthBalance(
-              selectedAccount.walletId,
-              selectedAccount.id,
-            );
+        ref.read(walletsProvider.notifier)
+          ..refreshEthBalance(
+            selectedAccount.walletId,
+            selectedAccount.id,
+          )
+          ..refreshStrkBalance(
+            selectedAccount.walletId,
+            selectedAccount.id,
+          );
       }
       return;
     }, [selectedAccount?.id]);
