@@ -23,11 +23,17 @@ flutter pub add wallet_kit hive_flutter hooks_riverpod flutter_dotenv
 4. Create a `.env` file in the root of your wallet_app project
 
 ```bash
-ACCOUNT_CLASS_HASH="0x05400e90f7e0ae78bd02c77cd75527280470e2fe19c54970dd79dc37a9d3645c"
+ACCOUNT_CLASS_HASH="0x061dac032f228abef9c6626f995015233097ae253a7f72d68552db02f2971b8f"
 RPC="http://127.0.0.1:5050/rpc"
 ```
 
-> If you are building for Android, use `RPC="http://10.0.2.2:5050/rpc"` instead.
+> Please note that `ACCOUNT_CLASS_HASH` must match the one used by your version of `starknet-devnet`, it's displayed at startup:
+> ```
+> Predeployed accounts using class with hash: 0x061dac032f228abef9c6626f995015233097ae253a7f72d68552db02f2971b8f
+> ```
+
+> If you are running on another device that the host running `starknet-devnet`, you should use the external IP of your host running and start `starknet-devnet` with `--host 0.0.0.0` argument
+
 
 5. Add `.env` file in your `pubspec.yaml`
 ```yaml
@@ -36,6 +42,7 @@ RPC="http://127.0.0.1:5050/rpc"
 ```
 
 6. Update Android minimun SDK version
+
 `secure_store` package used by `wallet_kit` require Android minimum SDK version set to at least 23, you need to modify `android/app/build.gradle`:
 ```
     defaultConfig {
@@ -50,6 +57,15 @@ RPC="http://127.0.0.1:5050/rpc"
     }
 ```
 
+7. Biometric support (optional)
+
+In order to use `Biometric` on Android, your `MainActivity` must inherit from `FlutterFragmentActivity` instead of `FlutterActity`.
+You need to modify your `MainActivity.tk` with:
+```kotlin
+import io.flutter.embedding.android.FlutterFragmentActivity
+
+class MainActivity: FlutterFragmentActivity()
+```
 
 ## Let's write some code
 
@@ -234,3 +250,16 @@ class WalletApp extends HookConsumerWidget {
 ```
 
 Now you can run your app with `flutter run` and see your wallet in action! 💸
+
+---
+
+Deploying an account require some ETH to pay transaction fees.
+With `starknet-devnet`, you can mint some ETH to your account address with the following command:
+```shell
+curl --silent -H 'Content-type: application/json' \
+  -X POST http://localhost:5050/mint \
+  -d '{"address": "0x5461cf5be91b3f21304ad81a3d0efeb5fe95f9655d7353ab0fc822e78b10837", "amount": 20000000000000000000, "unit": "WEI"}'
+```
+```console
+{"new_balance":"20000000000000000000","unit":"WEI","tx_hash":"0x9d2d26cef777c50b64475592e0df6e6c6012014e660f97bb37aaf5138aff54"}
+```
