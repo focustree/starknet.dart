@@ -151,7 +151,11 @@ class WalletService {
   }) async {
     final privateKey = await secureStore.getSecret(
         key: privateKeyKey(account.walletId, account.id));
-    s.Signer? signer = s.Signer(privateKey: s.Felt.fromHexString(privateKey!));
+    if (privateKey == null) {
+      throw Exception("Private key not found");
+    }
+
+    s.Signer? signer = s.Signer(privateKey: s.Felt.fromHexString(privateKey));
 
     final provider = WalletKit().provider;
 
