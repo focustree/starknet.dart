@@ -3,6 +3,27 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 2025-01-08
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`wallet_kit` - `v0.0.3`](#wallet_kit---v003)
+
+---
+
+#### `wallet_kit` - `v0.0.3`
+
+ - **FIX**: update wallet_app tutorial ([#431](https://github.com/focustree/starknet.dart/issues/431)). ([ad394cb6](https://github.com/focustree/starknet.dart/commit/ad394cb6c41106f7e02e7f3f372330b0fd899391))
+
+
 ## 2025-01-03
 
 ### Changes

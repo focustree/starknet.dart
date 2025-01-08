@@ -32,7 +32,7 @@ dependencies:
   starknet: ^0.1.1
   starknet_provider: ^0.1.1
   secure_store: ^0.1.2+1
-  wallet_kit: ^0.0.2+2
+  wallet_kit: ^0.0.3
 
   flutter:
     sdk: flutter

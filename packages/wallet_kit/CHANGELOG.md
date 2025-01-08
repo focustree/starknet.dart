@@ -1,3 +1,7 @@
+## 0.0.3
+
+ - **FIX**: update wallet_app tutorial ([#431](https://github.com/focustree/starknet.dart/issues/431)). ([ad394cb6](https://github.com/focustree/starknet.dart/commit/ad394cb6c41106f7e02e7f3f372330b0fd899391))
+
 ## 0.0.2+2
 
  - **FIX**: secure_store compatible with flutter 3.27.1 ([#429](https://github.com/focustree/starknet.dart/issues/429)). ([15cb814f](https://github.com/focustree/starknet.dart/commit/15cb814f0252717b05ccbe99342622a066aafbc8))
