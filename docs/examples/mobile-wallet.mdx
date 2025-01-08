@@ -190,21 +190,24 @@ class HomeScreen extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    return const Layout2(
-      children: [
-        SizedBox(height: 32),
-        Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            WalletSelector(),
-            AccountAddress(),
-          ],
-        ),
-        SizedBox(height: 32),
-        WalletBody(),
-        SendEthButton(),
-      ],
+    return const Scaffold(
+      body: Layout2(
+        children: [
+          SizedBox(height: 32),
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              WalletSelector(),
+              AccountAddress(),
+              DeployAccountButton(),
+            ],
+          ),
+          SizedBox(height: 32),
+          WalletBody(),
+          SendEthButton(),
+        ],
+      ),
     );
   }
 }
