@@ -16,22 +16,25 @@ class SendEthButton extends HookConsumerWidget {
     final selectedAccount = ref.watch(walletsProvider.select(
       (value) => value.selectedAccount,
     ));
+    if (selectedAccount == null) {
+      return const SizedBox.shrink();
+    }
+
     return PrimaryButton(
       label: 'Send',
-      onPressed: () async {
-        if (selectedAccount == null) {
-          throw Exception('Account is required');
-        }
-        final password = await showPasswordModal(context);
-        if (password == null) {
-          throw Exception('Password is required');
-        }
-        await sendEth(
-            account: selectedAccount,
-            password: password,
-            recipientAddress: recipientAddress,
-            amount: 0.001);
-      },
+      onPressed: selectedAccount.isDeployed
+          ? () async {
+              final password = await showPasswordModal(context);
+              if (password == null) {
+                throw Exception('Password is required');
+              }
+              await sendEth(
+                  account: selectedAccount,
+                  password: password,
+                  recipientAddress: recipientAddress,
+                  amount: 0.001);
+            }
+          : null,
     );
   }
 }
