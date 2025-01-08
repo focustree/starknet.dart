@@ -27,7 +27,8 @@ ACCOUNT_CLASS_HASH="0x061dac032f228abef9c6626f995015233097ae253a7f72d68552db02f2
 RPC="http://127.0.0.1:5050/rpc"
 ```
 
-> Please note that `ACCOUNT_CLASS_HASH` must match the one used by your version of `starknet-devnet`, it's displayed at startup:
+> Please note that `ACCOUNT_CLASS_HASH` must match the one used by your version of `starknet-devnet`, it's displayed at startup.
+Here is the value for `starknet-devnet 0.2.0`
 > ```
 > Predeployed accounts using class with hash: 0x061dac032f228abef9c6626f995015233097ae253a7f72d68552db02f2971b8f
 > ```
@@ -60,7 +61,7 @@ RPC="http://127.0.0.1:5050/rpc"
 7. Biometric support (optional)
 
 In order to use `Biometric` on Android, your `MainActivity` must inherit from `FlutterFragmentActivity` instead of `FlutterActity`.
-You need to modify your `MainActivity.tk` with:
+You need to modify your `MainActivity.kt` with:
 ```kotlin
 import io.flutter.embedding.android.FlutterFragmentActivity
 
@@ -258,7 +259,7 @@ With `starknet-devnet`, you can mint some ETH to your account address with the f
 ```shell
 curl --silent -H 'Content-type: application/json' \
   -X POST http://localhost:5050/mint \
-  -d '{"address": "0x5461cf5be91b3f21304ad81a3d0efeb5fe95f9655d7353ab0fc822e78b10837", "amount": 20000000000000000000, "unit": "WEI"}'
+  -d '{"address": ""<YOUR_ACCOUNT_ADDRESS>"", "amount": 20000000000000000000, "unit": "WEI"}'
 ```
 ```console
 {"new_balance":"20000000000000000000","unit":"WEI","tx_hash":"0x9d2d26cef777c50b64475592e0df6e6c6012014e660f97bb37aaf5138aff54"}
