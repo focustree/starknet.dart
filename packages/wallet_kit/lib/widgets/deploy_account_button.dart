@@ -13,17 +13,22 @@ class DeployAccountButton extends HookConsumerWidget {
       walletsProvider.select((value) => value.selectedAccount),
     );
     if (selectedAccount?.isDeployed == false) {
+      final ethBalance =
+          selectedAccount!.balances[TokenSymbol.ETH.name] ?? 0.00;
+      final enoughBalance = ethBalance >= 0.00001;
       return PrimaryButton(
-          label: 'Deploy account',
-          onPressed: () async {
-            final secureStore = await ref
-                .read(walletsProvider.notifier)
-                .getSecureStoreForWallet(context: context);
-            await ref.read(walletsProvider.notifier).deployAccount(
-                  secureStore: secureStore,
-                  account: selectedAccount!,
-                );
-          });
+          label: enoughBalance ? 'Deploy account' : 'Not enougth ETH',
+          onPressed: enoughBalance
+              ? () async {
+                  final secureStore = await ref
+                      .read(walletsProvider.notifier)
+                      .getSecureStoreForWallet(context: context);
+                  await ref.read(walletsProvider.notifier).deployAccount(
+                        secureStore: secureStore,
+                        account: selectedAccount!,
+                      );
+                }
+              : null);
     } else {
       return const SizedBox.shrink();
     }
