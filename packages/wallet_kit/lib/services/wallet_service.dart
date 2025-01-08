@@ -144,6 +144,42 @@ class WalletService {
     );
     return address;
   }
+
+  static Future<bool> deployAccount({
+    required SecureStore secureStore,
+    required Account account,
+  }) async {
+    final privateKey = await secureStore.getSecret(
+        key: privateKeyKey(account.walletId, account.id));
+    if (privateKey == null) {
+      throw Exception("Private key not found");
+    }
+
+    s.Signer? signer = s.Signer(privateKey: s.Felt.fromHexString(privateKey));
+
+    final provider = WalletKit().provider;
+
+    // call data depends on class hash...
+    final constructorCalldata = [signer.publicKey];
+    final tx = await s.Account.deployAccount(
+      signer: signer,
+      provider: provider,
+      constructorCalldata: constructorCalldata,
+      classHash: WalletKit().accountClassHash,
+    );
+    signer = null;
+    final (contractAddress, txHash) = tx.when(
+      result: (result) =>
+          (result.contractAddress, result.transactionHash.toHexString()),
+      error: (error) => throw Exception('${error.code}: ${error.message}'),
+    );
+    bool success = await s.waitForAcceptance(
+      transactionHash: txHash,
+      provider: provider,
+    );
+
+    return success;
+  }
 }
 
 seedPhraseKey(String walletId) {
@@ -168,12 +204,13 @@ Future<String> sendEth({
   s.Signer? signer = s.Signer(privateKey: privateKey);
 
   final provider = WalletKit().provider;
+  final chainId = WalletKit().chainId;
 
   final fundingAccount = s.Account(
     provider: provider,
     signer: signer,
     accountAddress: s.Felt.fromHexString(account.address),
-    chainId: s.StarknetChainId.testNet,
+    chainId: chainId,
   );
 
   final txHash = await fundingAccount.send(

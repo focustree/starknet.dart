@@ -14,10 +14,15 @@ class TokenList extends HookConsumerWidget {
 
     useEffect(() {
       if (selectedAccount != null) {
-        ref.read(walletsProvider.notifier).refreshEthBalance(
-              selectedAccount.walletId,
-              selectedAccount.id,
-            );
+        ref.read(walletsProvider.notifier)
+          ..refreshEthBalance(
+            selectedAccount.walletId,
+            selectedAccount.id,
+          )
+          ..refreshStrkBalance(
+            selectedAccount.walletId,
+            selectedAccount.id,
+          );
       }
       return;
     }, [selectedAccount?.id]);
@@ -44,7 +49,7 @@ class TokenListItem extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final balance = ref.watch(walletsProvider.select(
-      (value) => value.selectedAccount?.balances[symbol] ?? 0.00,
+      (value) => value.selectedAccount?.balances[symbol.name] ?? 0.00,
     ));
 
     return Padding(

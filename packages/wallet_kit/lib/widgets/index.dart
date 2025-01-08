@@ -8,3 +8,4 @@ export 'send_eth_button.dart';
 export 'account_address.dart';
 export 'nft_list.dart';
 export 'nft_details.dart';
+export 'deploy_account_button.dart';

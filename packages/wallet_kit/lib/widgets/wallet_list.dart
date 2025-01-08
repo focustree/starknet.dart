@@ -130,7 +130,33 @@ class WalletCell extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final controller = useState<ExpandableController?>(null);
+    useEffect(() {
+      controller.value = ExpandableController();
+      return () => controller.value?.dispose();
+    }, []);
+
+    useEffect(() {
+      if (controller.value != null) {
+        void onExpanded() {
+          if (controller.value!.expanded) {
+            wallet.accounts.forEach(
+              (key, value) => ref
+                  .read(walletsProvider.notifier)
+                  .refreshAccount(value.walletId, value.id),
+            );
+          }
+        }
+
+        controller.value!.addListener(onExpanded);
+        return () => controller.value?.removeListener(onExpanded);
+      } else {
+        return null;
+      }
+    }, [controller.value]);
+
     return ExpandableNotifier(
+      controller: controller.value,
       child: Container(
         decoration: BoxDecoration(
           color: Colors.grey.withValues(alpha: 0.1),
@@ -205,12 +231,15 @@ class AccountCell extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final isDeployed = account.isDeployed;
     return FilledButton.tonal(
       style: ButtonStyle(
         padding: WidgetStateProperty.all(
           const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
         ),
-        backgroundColor: WidgetStateProperty.all(Colors.white),
+        backgroundColor: WidgetStateProperty.all(isDeployed
+            ? Colors.white
+            : Colors.grey.shade400.withValues(alpha: 0.5)),
         side: WidgetStateProperty.all(BorderSide.none),
         overlayColor:
             WidgetStateProperty.all(Colors.grey.withValues(alpha: 0.05)),
@@ -241,7 +270,8 @@ class AccountCell extends HookConsumerWidget {
               Text(formatAddress(account.address)),
             ],
           ),
-          Text('${(account.balances['ETH'] ?? 0).toString()} ETH'),
+          Text(
+              '${(account.balances[TokenSymbol.ETH.name] ?? 0).toString()} ETH'),
         ],
       ),
     );

@@ -13,6 +13,8 @@ class Wallets extends _$Wallets with PersistedState<WalletsState> {
   @override
   String get boxName => 'wallet';
 
+  bool _isRefreshing = false;
+
   @override
   WalletsState fromJson(Map<String, dynamic> json) =>
       WalletsState.fromJson(json);
@@ -128,6 +130,19 @@ class Wallets extends _$Wallets with PersistedState<WalletsState> {
     );
   }
 
+  deployAccount({
+    required SecureStore secureStore,
+    required Account account,
+  }) async {
+    final success = await WalletService.deployAccount(
+        secureStore: secureStore, account: account);
+    updateSelectedAccountIsDeployed(
+      walletId: account.walletId,
+      accountId: account.id,
+      isDeployed: success,
+    );
+  }
+
   updateSelectedAccountIsDeployed({
     required String walletId,
     required int accountId,
@@ -171,6 +186,25 @@ class Wallets extends _$Wallets with PersistedState<WalletsState> {
     state = state.copyWith(wallets: {}, selected: null);
   }
 
+  Future<void> refreshAccount(String walletId, int accountId) async {
+    if (_isRefreshing) return;
+    _isRefreshing = true;
+    try {
+      await refreshEthBalance(walletId, accountId);
+      await refreshStrkBalance(walletId, accountId);
+      final isDeployed = await WalletService.isAccountValid(
+        account: state.wallets[walletId]!.accounts[accountId]!,
+      );
+      updateSelectedAccountIsDeployed(
+        walletId: walletId,
+        accountId: accountId,
+        isDeployed: isDeployed,
+      );
+    } finally {
+      _isRefreshing = false;
+    }
+  }
+
   refreshEthBalance(String walletId, int accountId) async {
     final accountAddress =
         state.wallets[walletId]?.accounts[accountId]?.address;
@@ -198,7 +232,7 @@ class Wallets extends _$Wallets with PersistedState<WalletsState> {
           accountId: account.copyWith(
             balances: {
               ...account.balances,
-              'ETH': double.parse(ethBalance.toStringAsFixed(4)),
+              TokenSymbol.ETH.name: double.parse(ethBalance.toStringAsFixed(4)),
             },
           ),
         },
@@ -233,7 +267,8 @@ class Wallets extends _$Wallets with PersistedState<WalletsState> {
           accountId: account.copyWith(
             balances: {
               ...account.balances,
-              'STRK': double.parse(strkBalance.toStringAsFixed(4)),
+              TokenSymbol.STRK.name:
+                  double.parse(strkBalance.toStringAsFixed(4)),
             },
           ),
         },
