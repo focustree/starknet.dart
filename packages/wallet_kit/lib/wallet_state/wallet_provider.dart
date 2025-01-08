@@ -128,6 +128,19 @@ class Wallets extends _$Wallets with PersistedState<WalletsState> {
     );
   }
 
+  deployAccount({
+    required SecureStore secureStore,
+    required Account account,
+  }) async {
+    final success = await WalletService.deployAccount(
+        secureStore: secureStore, account: account);
+    updateSelectedAccountIsDeployed(
+      walletId: account.walletId,
+      accountId: account.id,
+      isDeployed: success,
+    );
+  }
+
   updateSelectedAccountIsDeployed({
     required String walletId,
     required int accountId,

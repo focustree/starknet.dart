@@ -205,12 +205,15 @@ class AccountCell extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final isDeployed = account.isDeployed;
     return FilledButton.tonal(
       style: ButtonStyle(
         padding: WidgetStateProperty.all(
           const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
         ),
-        backgroundColor: WidgetStateProperty.all(Colors.white),
+        backgroundColor: WidgetStateProperty.all(isDeployed
+            ? Colors.white
+            : Colors.grey.shade400.withValues(alpha: 0.5)),
         side: WidgetStateProperty.all(BorderSide.none),
         overlayColor:
             WidgetStateProperty.all(Colors.grey.withValues(alpha: 0.05)),
