@@ -148,6 +148,8 @@ class WalletCell extends HookConsumerWidget {
 
         controller.value!.addListener(onExpanded);
         return () => controller.value?.removeListener(onExpanded);
+      } else {
+        return null;
       }
     }, [controller.value]);
 
