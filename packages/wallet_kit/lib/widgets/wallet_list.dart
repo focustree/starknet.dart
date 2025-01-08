@@ -130,7 +130,29 @@ class WalletCell extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final controller = useState<ExpandableController?>(null);
+    useEffect(() {
+      controller.value = ExpandableController();
+      return () => controller.value?.dispose();
+    }, []);
+
+    useEffect(() {
+      if (controller.value != null) {
+        void onExpanded() {
+          if (controller.value!.expanded) {
+            wallet.accounts.forEach((key, value) => ref
+                .read(walletsProvider.notifier)
+                .refreshEthBalance(value.walletId, value.id));
+          }
+        }
+
+        controller.value!.addListener(onExpanded);
+        return () => controller.value?.removeListener(onExpanded);
+      }
+    }, [controller.value]);
+
     return ExpandableNotifier(
+      controller: controller.value,
       child: Container(
         decoration: BoxDecoration(
           color: Colors.grey.withValues(alpha: 0.1),
