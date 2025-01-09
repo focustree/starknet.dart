@@ -5,6 +5,7 @@ import 'package:starknet_provider/starknet_provider.dart';
 import 'package:uuid/uuid.dart';
 import 'package:bip39/bip39.dart' as bip39;
 import 'package:wallet_kit/wallet_kit.dart';
+import '../errors/starknet_error.dart';
 
 class WalletService {
   static Future<Wallet> addWallet({
@@ -34,11 +35,13 @@ class WalletService {
     required SecureStore secureStore,
     required Wallet wallet,
     required String seedPhrase,
+    Function(StarknetError)? onError,
   }) async {
     final accountId = wallet.newAccountId;
     final privateKey = await WalletService.derivePrivateKey(
       seedPhrase: seedPhrase,
       derivationIndex: accountId,
+      onError: onError,
     );
 
     await secureStore.storeSecret(
@@ -48,6 +51,7 @@ class WalletService {
 
     final accountAddress = await WalletService.computeAddress(
       privateKey: privateKey,
+      onError: onError,
     );
 
     return wallet.addAccount(
@@ -115,6 +119,7 @@ class WalletService {
   static Future<s.Felt> derivePrivateKey({
     required String seedPhrase,
     required int derivationIndex,
+    Function(StarknetError)? onError,
   }) async {
     // Prepare the input for the compute function
     Map<String, dynamic> computationInput = {
@@ -136,6 +141,7 @@ class WalletService {
 
   static Future<s.Felt> computeAddress({
     required s.Felt privateKey,
+    Function(StarknetError)? onError,
   }) async {
     final address = s.Contract.computeAddress(
       classHash: WalletKit().accountClassHash,
