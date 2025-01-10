@@ -1,4 +1,4 @@
-name: Build androind examples
+name: Build android examples
 
 on:
   workflow_dispatch:
@@ -14,5 +14,5 @@ jobs:
         uses: ./.github/actions/android-setup
       - uses: bluefireteam/melos-action@v3
       - name: Build wallet_app example
-        run : flutter build appbundle
+        run: flutter build appbundle
         working-directory: ./examples/wallet_app

@@ -1,4 +1,5 @@
 name: 'Setup environment to build Android application'
+description: 'Configures Java and Android SDK for building Android applications'
 
 runs:
   using: "composite"
