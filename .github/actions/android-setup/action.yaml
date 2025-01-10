@@ -1,0 +1,18 @@
+name: 'Setup environment to build Android application'
+description: 'Configures Java and Android SDK for building Android applications'
+
+runs:
+  using: "composite"
+  steps:
+    - name: Dotenv Action
+      id: load-env
+      uses: falti/dotenv-action@v1.1.4
+      with:
+        path: .env.ci
+    - name: Java setup
+      uses: actions/setup-java@v4
+      with:
+        distribution: 'zulu'
+        java-version: ${{ steps.load-env.outputs.java_version }}
+    - name: Setup Android SDK
+      uses: android-actions/setup-android@v3
