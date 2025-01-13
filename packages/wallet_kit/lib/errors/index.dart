@@ -1,1 +1,1 @@
-export 'starknet_error.dart';
+export 'wallet_kit_error.dart';

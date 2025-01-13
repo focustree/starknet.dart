@@ -71,19 +71,14 @@ class PasswordStore implements SecureStore {
       if (password == null) {
         throw Exception('Password must be provided');
       }
-      try {
-        return bytesToString(
-          decrypt(
-            password: stringToBytes(password!),
-            encryptedSecret: base64Decode(cipherText as String),
-          ),
-        );
-      } catch (e) {
-        if (kDebugMode) {
-          print(e);
-        }
-        throw Exception('Wrong password');
-      }
+
+      return bytesToString(
+        decrypt(
+          password: stringToBytes(password!),
+          encryptedSecret: base64Decode(cipherText as String),
+        ),
+      );
+
     }
   }
 

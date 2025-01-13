@@ -7,7 +7,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import 'package:wallet_kit/wallet_kit.dart';
 import 'package:wallet_kit/wallet_screens/settings_screen.dart';
-import '../errors/starknet_error.dart';
+import '../errors/wallet_kit_error.dart';
 
 enum WalletListRoute {
   walletList,
@@ -201,21 +201,20 @@ class WalletCell extends HookConsumerWidget {
                 child: TextButton.icon(
                   label: const Text('Add account'),
                   onPressed: () async {
-                    try {
                       ref.read(walletsProvider.notifier).addAccount(
                         walletId: wallet.id,
                         getPassword: () => showPasswordModal(context),
-                      );
-                      Navigator.of(context).pop();
-                    } on StarknetError catch (e) {
-                      ScaffoldMessenger.of(context).showSnackBar(
-                          SnackBar(content: Text(e.message)));
-                    } catch (e) {
+                      ).catchError((e){
+                         /*
+                         we can add this to the documentation for users to
+                        see how they can also catch error
+                        */
                         ScaffoldMessenger.of(context).showSnackBar(
-                          SnackBar(content: Text('An unexpected error occurred: $e')),
-                        );
-                      }
-
+                            SnackBar(
+                              behavior: SnackBarBehavior.floating,
+                                content: Text(e.toString())));
+                        Navigator.of(context).pop();
+                      });
                   },
                   icon: Icon(
                     Icons.add_circle_outline_rounded,
