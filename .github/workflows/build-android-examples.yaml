@@ -16,3 +16,6 @@ jobs:
       - name: Build wallet_app example
         run: flutter build appbundle
         working-directory: ./examples/wallet_app
+      - name: Build starknet_counter example
+        run: flutter build appbundle
+        working-directory: ./examples/starknet_counter
