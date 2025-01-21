@@ -8,3 +8,6 @@ dev_dependencies:
   melos: ^6.2.0
   starklints:
     path: packages/starklints
+
+dependencies:
+  starknet_provider: ^0.1.0
