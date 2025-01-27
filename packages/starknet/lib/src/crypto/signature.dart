@@ -251,7 +251,6 @@ bool _starknetVerify({
     messageHash >= BigInt.zero && messageHash < maxHash,
     'Invalid message hash value',
   );
-  // FIXME: verify if the public key is on the curve
   try {
     var zG = _mimicECMultAIR(messageHash, generatorPoint, minusShiftPoint);
     var rQ = _mimicECMultAIR(r, publicKey, shiftPoint);
