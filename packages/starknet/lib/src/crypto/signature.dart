@@ -289,7 +289,21 @@ BigInt _getYCoordinate(BigInt x) {
   return negY < y ? negY : y;
 }
 
-// Tonelli-Shanks algorithm to find the square root of a modulo p
+/// Power modulo function using BigInt
+///
+/// We are using a custom implentation because with BigInt.modPow,
+/// the Tonelli-Shanks algorithm enters an inifinite loop.
+BigInt _modPow(BigInt x, BigInt n, BigInt p) {
+  if (n == BigInt.zero) return BigInt.one;
+  if (n.isOdd) {
+    return (_modPow(x, n - BigInt.one, p) * x) % p;
+  }
+  final temp = _modPow(x, n ~/ BigInt.two, p);
+  return (temp * temp) % p;
+}
+
+/// Tonelli-Shanks algorithm to find the square root of a modulo p
+///
 /// Takes as input an odd prime p and n < p and returns r
 /// such that r * r = n [mod p].
 /// https://en.wikipedia.org/wiki/Tonelli%E2%80%93Shanks_algorithm
@@ -306,7 +320,7 @@ BigInt _tonelliShanks(BigInt n, BigInt p) {
 
   // Special case for s = 1
   if (s == BigInt.one) {
-    var r = _powMod(n, (p + BigInt.one) ~/ BigInt.from(4), p);
+    var r = _modPow(n, (p + BigInt.one) ~/ BigInt.from(4), p);
     if ((r * r) % p == n) return r;
     return BigInt.zero;
   }
@@ -315,12 +329,12 @@ BigInt _tonelliShanks(BigInt n, BigInt p) {
   var z = BigInt.one;
   while (true) {
     z += BigInt.one;
-    if (_powMod(z, (p - BigInt.one) ~/ BigInt.two, p) == p - BigInt.one) break;
+    if (_modPow(z, (p - BigInt.one) ~/ BigInt.two, p) == p - BigInt.one) break;
   }
 
-  var c = _powMod(z, q, p);
-  var r = _powMod(n, (q + BigInt.one) ~/ BigInt.two, p);
-  var t = _powMod(n, q, p);
+  var c = _modPow(z, q, p);
+  var r = _modPow(n, (q + BigInt.one) ~/ BigInt.two, p);
+  var t = _modPow(n, q, p);
   var m = s;
 
   while (t != BigInt.one) {
@@ -334,7 +348,7 @@ BigInt _tonelliShanks(BigInt n, BigInt p) {
     }
 
     final b =
-        _powMod(c, _powMod(BigInt.two, m - i - BigInt.one, p - BigInt.one), p);
+        _modPow(c, _modPow(BigInt.two, m - i - BigInt.one, p - BigInt.one), p);
     final b2 = (b * b) % p;
     r = (r * b) % p;
     t = (t * b2) % p;
@@ -343,15 +357,5 @@ BigInt _tonelliShanks(BigInt n, BigInt p) {
   }
 
   if ((r * r) % p == n) return r;
-  return BigInt.zero;
-}
-
-// Power modulo function using BigInt
-BigInt _powMod(BigInt x, BigInt n, BigInt p) {
-  if (n == BigInt.zero) return BigInt.one;
-  if (n.isOdd) {
-    return (_powMod(x, n - BigInt.one, p) * x) % p;
-  }
-  final temp = _powMod(x, n ~/ BigInt.two, p);
-  return (temp * temp) % p;
+  throw Exception('No square root found');
 }
