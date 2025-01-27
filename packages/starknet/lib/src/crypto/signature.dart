@@ -1,7 +1,11 @@
 import 'dart:typed_data';
 import 'package:crypto/crypto.dart' as crypto;
 import 'package:freezed_annotation/freezed_annotation.dart';
-import '../../starknet.dart';
+import 'package:pointycastle/ecc/api.dart';
+
+import '../convert.dart';
+import 'model/pedersen_params.dart';
+import 'pedersen.dart';
 
 const nbFieldPrimeBits = 251;
 final maxHash = BigInt.two.pow(nbFieldPrimeBits);
@@ -201,4 +205,153 @@ List<int> numberToString(BigInt v, BigInt order) {
 
 int orderlen(BigInt order) {
   return (order.bitLength + 7) ~/ 8;
+}
+
+/// Verifies a message hash signature with the given public key according to Starknet specs.
+///
+/// Spec: https://github.com/starkware-libs/cairo-lang/blob/13cef109cd811474de114925ee61fd5ac84a25eb/src/starkware/crypto/starkware/crypto/signature/signature.py#L191
+bool starknetVerify({
+  required BigInt messageHash,
+  required Signature signature,
+  required BigInt publicKey,
+}) {
+  try {
+    // convert public key to ECPoint
+    final y = _getYCoordinate(publicKey);
+    final pub1 = starknetCurve.createPoint(publicKey, y);
+    final pub2 = starknetCurve.createPoint(publicKey, -y);
+    return _starknetVerify(
+          messageHash: messageHash,
+          signature: signature,
+          publicKey: pub1,
+        ) ||
+        _starknetVerify(
+          messageHash: messageHash,
+          signature: signature,
+          publicKey: pub2,
+        );
+  } catch (e) {
+    return false;
+  }
+}
+
+bool _starknetVerify({
+  required BigInt messageHash,
+  required Signature signature,
+  required ECPoint publicKey,
+}) {
+  final r = signature.r;
+  final s = signature.s;
+  assert(s >= BigInt.one && s < pedersenParams.ecOrder, 'Invalid s value');
+  final w = s.modInverse(pedersenParams.ecOrder);
+
+  assert(r >= BigInt.one && r < maxHash, 'Invalid r value');
+  assert(w >= BigInt.one && w < maxHash, 'Invalid w value');
+  assert(
+    messageHash >= BigInt.zero && messageHash < maxHash,
+    'Invalid message hash value',
+  );
+  // FIXME: verify if the public key is on the curve
+  try {
+    var zG = _mimicECMultAIR(messageHash, generatorPoint, minusShiftPoint);
+    var rQ = _mimicECMultAIR(r, publicKey, shiftPoint);
+    var wB = _mimicECMultAIR(w, (zG + rQ)!, shiftPoint);
+    var x = (wB + minusShiftPoint)!.x;
+    return r == x!.toBigInteger();
+  } catch (e) {
+    return false;
+  }
+}
+
+ECPoint _mimicECMultAIR(BigInt m, ECPoint point, ECPoint shift) {
+  assert(m > BigInt.zero && m < maxHash, 'Invalid value for m');
+  var partialSum = shift;
+  var _point = point;
+  var _m = m;
+  for (int _ = 0; _ < nbFieldPrimeBits; _++) {
+    assert(partialSum.x != _point.x, 'Invalid point');
+    if (_m & BigInt.one != BigInt.zero) {
+      partialSum = (partialSum + _point)!;
+    }
+    _point = _point.twice()!;
+    _m >>= 1;
+  }
+  assert(_m == BigInt.zero, 'm should be zero at the end');
+  return partialSum;
+}
+
+BigInt _getYCoordinate(BigInt x) {
+  final ySquared =
+      (x * x * x + pedersenParams.alpha * x + pedersenParams.beta) %
+          pedersenParams.fieldPrime;
+  final y = _tonelliShanks(ySquared, pedersenParams.fieldPrime);
+  final negY = -y % pedersenParams.fieldPrime;
+  return negY < y ? negY : y;
+}
+
+// Tonelli-Shanks algorithm to find the square root of a modulo p
+/// Takes as input an odd prime p and n < p and returns r
+/// such that r * r = n [mod p].
+/// https://en.wikipedia.org/wiki/Tonelli%E2%80%93Shanks_algorithm
+BigInt _tonelliShanks(BigInt n, BigInt p) {
+  // Initialize variables as BigInt
+  var s = BigInt.zero;
+  var q = p - BigInt.one;
+
+  // Calculate s and q
+  while (q.isEven) {
+    q = q ~/ BigInt.two;
+    s += BigInt.one;
+  }
+
+  // Special case for s = 1
+  if (s == BigInt.one) {
+    var r = _powMod(n, (p + BigInt.one) ~/ BigInt.from(4), p);
+    if ((r * r) % p == n) return r;
+    return BigInt.zero;
+  }
+
+  // Find the first quadratic non-residue z
+  var z = BigInt.one;
+  while (true) {
+    z += BigInt.one;
+    if (_powMod(z, (p - BigInt.one) ~/ BigInt.two, p) == p - BigInt.one) break;
+  }
+
+  var c = _powMod(z, q, p);
+  var r = _powMod(n, (q + BigInt.one) ~/ BigInt.two, p);
+  var t = _powMod(n, q, p);
+  var m = s;
+
+  while (t != BigInt.one) {
+    var tt = t;
+    var i = BigInt.zero;
+
+    while (tt != BigInt.one) {
+      tt = (tt * tt) % p;
+      i += BigInt.one;
+      if (i == m) return BigInt.zero;
+    }
+
+    final b =
+        _powMod(c, _powMod(BigInt.two, m - i - BigInt.one, p - BigInt.one), p);
+    final b2 = (b * b) % p;
+    r = (r * b) % p;
+    t = (t * b2) % p;
+    c = b2;
+    m = i;
+  }
+
+  if ((r * r) % p == n) return r;
+  return BigInt.zero;
+}
+
+// Power modulo function using BigInt
+BigInt _powMod(BigInt x, BigInt n, BigInt p) {
+  if (n == BigInt.zero) return BigInt.one;
+  if (n.isOdd) {
+    return (_powMod(x, n - BigInt.one, p) * x) % p;
+  }
+  final temp = _powMod(x, n ~/ BigInt.two, p);
+  return (temp * temp) % p;
 }
