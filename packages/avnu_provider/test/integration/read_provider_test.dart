@@ -153,7 +153,7 @@ void main() {
               '0x1'
             ]
           }
-        ];
+        ]; 
         final gasTokenAddress = '0x049d36570d4e46f48e99674bd3fcc84644ddd6b96f7c741b1562b82f9e004dc7';
         final maxGasTokenAmount = '0xffffff';
         //final accountClassHash = '0x01a736d6ed154502257f02b1ccdf4d9d1089f80811cd6acad48e6b6a9d1f2003';
@@ -169,19 +169,10 @@ void main() {
         expect(avnuBuildTypedData, isA<AvnuBuildTypedData>());
         
         final String typedData = jsonEncode(avnuBuildTypedData.toJson());
+        final typedDataObject = TypedData.fromJson(jsonDecode(typedData));
 
-        final element1 = Felt.fromString("StarkNet Message").toBigInt();
-        final element2 = getStarkNetStructHash(typedData, "StarkNetDomain");
-        final element3 = sepoliaAccount0.accountAddress.toBigInt();
-        //final element3 = BigInt.parse('CD2a3d9F938E13CD947Ec05AbC7FE734Df8DD826', radix: 16); //3171883747885632751299160743381848751952361820886938749002426117425487177469
-        final element4 = getStarkNetStructHash(typedData, "OutsideExecution");
-        final elementsToHash = <BigInt>[
-          element1,
-          element2,
-          element3,
-          element4
-        ];
-        final messageHash = computeHashOnElements(elementsToHash);
+        
+        final messageHash = getMessageHash(typedDataObject, sepoliaAccount0.accountAddress.toBigInt());
         final signature = starknetSign(
           privateKey: sepoliaAccount0.signer.privateKey.toBigInt(),
           messageHash: messageHash,

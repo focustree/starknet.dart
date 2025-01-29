@@ -35,6 +35,7 @@ class Domain with _$Domain {
     required String name,
     required String version,
     required String chainId,
+    @JsonKey(name: 'revision') String? revision,
   }) = _Domain;
 
   factory Domain.fromJson(Map<String, dynamic> json) =>
@@ -53,7 +54,9 @@ class Message with _$Message {
     @JsonKey(name: 'execute_before') String? executeBeforev1,
     @JsonKey(name: 'Execute Before') String? executeBeforev2,
     @JsonKey(name: 'calls_len') int? callsLen,
-    List<Call>? calls,
+    // process calls or Calls in json response
+    @JsonKey(name: 'calls') List<Call>? calls,
+    @JsonKey(name: 'Calls') List<Call>? callsv2,
   }) = _Message;
 
   factory Message.fromJson(Map<String, dynamic> json) =>
@@ -64,10 +67,13 @@ class Message with _$Message {
 @freezed
 class Call with _$Call {
   const factory Call({
-    required String to,
-    required String selector,
-    @JsonKey(name: 'calldata_len') required int calldataLen,
-    required List<String> calldata,
+    @JsonKey(name: 'to') String? tov1,
+    @JsonKey(name: 'To') String? tov2,
+    @JsonKey(name: 'selector') String? selectorv1,
+    @JsonKey(name: 'Selector') String? selectorv2,
+    @JsonKey(name: 'calldata_len') int? calldataLen,
+    @JsonKey(name: 'calldata') List<String>? calldatav1,
+    @JsonKey(name: 'Calldata') List<String>? calldatav2,
   }) = _Call;
 
   factory Call.fromJson(Map<String, dynamic> json) =>

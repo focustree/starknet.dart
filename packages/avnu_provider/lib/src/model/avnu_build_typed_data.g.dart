@@ -47,6 +47,7 @@ _$DomainImpl _$$DomainImplFromJson(Map<String, dynamic> json) => _$DomainImpl(
       name: json['name'] as String,
       version: json['version'] as String,
       chainId: json['chainId'] as String,
+      revision: json['revision'] as String?,
     );
 
 Map<String, dynamic> _$$DomainImplToJson(_$DomainImpl instance) =>
@@ -54,6 +55,7 @@ Map<String, dynamic> _$$DomainImplToJson(_$DomainImpl instance) =>
       'name': instance.name,
       'version': instance.version,
       'chainId': instance.chainId,
+      'revision': instance.revision,
     };
 
 _$MessageImpl _$$MessageImplFromJson(Map<String, dynamic> json) =>
@@ -70,6 +72,9 @@ _$MessageImpl _$$MessageImplFromJson(Map<String, dynamic> json) =>
       calls: (json['calls'] as List<dynamic>?)
           ?.map((e) => Call.fromJson(e as Map<String, dynamic>))
           .toList(),
+      callsv2: (json['Calls'] as List<dynamic>?)
+          ?.map((e) => Call.fromJson(e as Map<String, dynamic>))
+          .toList(),
     );
 
 Map<String, dynamic> _$$MessageImplToJson(_$MessageImpl instance) =>
@@ -84,20 +89,30 @@ Map<String, dynamic> _$$MessageImplToJson(_$MessageImpl instance) =>
       'Execute Before': instance.executeBeforev2,
       'calls_len': instance.callsLen,
       'calls': instance.calls,
+      'Calls': instance.callsv2,
     };
 
 _$CallImpl _$$CallImplFromJson(Map<String, dynamic> json) => _$CallImpl(
-      to: json['to'] as String,
-      selector: json['selector'] as String,
-      calldataLen: (json['calldata_len'] as num).toInt(),
-      calldata:
-          (json['calldata'] as List<dynamic>).map((e) => e as String).toList(),
+      tov1: json['to'] as String?,
+      tov2: json['To'] as String?,
+      selectorv1: json['selector'] as String?,
+      selectorv2: json['Selector'] as String?,
+      calldataLen: (json['calldata_len'] as num?)?.toInt(),
+      calldatav1: (json['calldata'] as List<dynamic>?)
+          ?.map((e) => e as String)
+          .toList(),
+      calldatav2: (json['Calldata'] as List<dynamic>?)
+          ?.map((e) => e as String)
+          .toList(),
     );
 
 Map<String, dynamic> _$$CallImplToJson(_$CallImpl instance) =>
     <String, dynamic>{
-      'to': instance.to,
-      'selector': instance.selector,
+      'to': instance.tov1,
+      'To': instance.tov2,
+      'selector': instance.selectorv1,
+      'Selector': instance.selectorv2,
       'calldata_len': instance.calldataLen,
-      'calldata': instance.calldata,
+      'calldata': instance.calldatav1,
+      'Calldata': instance.calldatav2,
     };

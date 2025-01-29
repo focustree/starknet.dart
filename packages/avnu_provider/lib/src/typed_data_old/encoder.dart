@@ -15,7 +15,9 @@ List<Felt> encodeData({
   if (type.endsWith('*')) {
     final baseType = type.substring(0, type.length - 1);
     // Check if data is a Map with a 'value' key containing the array
-    final array = data is Map ? (data['value'] as List<dynamic>) : (data as List<dynamic>);
+    // recursive call to encodeData for nested arrays
+    //final array = data is Map ? (data['value'] as List<dynamic>) : (data as List<dynamic>);
+    final array = data is Map ? encodeData(types: types, type: baseType, data: data, revision: revision) : (data as List<dynamic>);
     
     for (final element in array) {
       final encodedElement = encodeData(

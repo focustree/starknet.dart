@@ -447,6 +447,8 @@ mixin _$Domain {
   String get name => throw _privateConstructorUsedError;
   String get version => throw _privateConstructorUsedError;
   String get chainId => throw _privateConstructorUsedError;
+  @JsonKey(name: 'revision')
+  String? get revision => throw _privateConstructorUsedError;
 
   /// Serializes this Domain to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -462,7 +464,11 @@ abstract class $DomainCopyWith<$Res> {
   factory $DomainCopyWith(Domain value, $Res Function(Domain) then) =
       _$DomainCopyWithImpl<$Res, Domain>;
   @useResult
-  $Res call({String name, String version, String chainId});
+  $Res call(
+      {String name,
+      String version,
+      String chainId,
+      @JsonKey(name: 'revision') String? revision});
 }
 
 /// @nodoc
@@ -483,6 +489,7 @@ class _$DomainCopyWithImpl<$Res, $Val extends Domain>
     Object? name = null,
     Object? version = null,
     Object? chainId = null,
+    Object? revision = freezed,
   }) {
     return _then(_value.copyWith(
       name: null == name
@@ -497,6 +504,10 @@ class _$DomainCopyWithImpl<$Res, $Val extends Domain>
           ? _value.chainId
           : chainId // ignore: cast_nullable_to_non_nullable
               as String,
+      revision: freezed == revision
+          ? _value.revision
+          : revision // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 }
@@ -508,7 +519,11 @@ abstract class _$$DomainImplCopyWith<$Res> implements $DomainCopyWith<$Res> {
       __$$DomainImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String name, String version, String chainId});
+  $Res call(
+      {String name,
+      String version,
+      String chainId,
+      @JsonKey(name: 'revision') String? revision});
 }
 
 /// @nodoc
@@ -527,6 +542,7 @@ class __$$DomainImplCopyWithImpl<$Res>
     Object? name = null,
     Object? version = null,
     Object? chainId = null,
+    Object? revision = freezed,
   }) {
     return _then(_$DomainImpl(
       name: null == name
@@ -541,6 +557,10 @@ class __$$DomainImplCopyWithImpl<$Res>
           ? _value.chainId
           : chainId // ignore: cast_nullable_to_non_nullable
               as String,
+      revision: freezed == revision
+          ? _value.revision
+          : revision // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -549,7 +569,10 @@ class __$$DomainImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$DomainImpl implements _Domain {
   const _$DomainImpl(
-      {required this.name, required this.version, required this.chainId});
+      {required this.name,
+      required this.version,
+      required this.chainId,
+      @JsonKey(name: 'revision') this.revision});
 
   factory _$DomainImpl.fromJson(Map<String, dynamic> json) =>
       _$$DomainImplFromJson(json);
@@ -560,10 +583,13 @@ class _$DomainImpl implements _Domain {
   final String version;
   @override
   final String chainId;
+  @override
+  @JsonKey(name: 'revision')
+  final String? revision;
 
   @override
   String toString() {
-    return 'Domain(name: $name, version: $version, chainId: $chainId)';
+    return 'Domain(name: $name, version: $version, chainId: $chainId, revision: $revision)';
   }
 
   @override
@@ -573,12 +599,15 @@ class _$DomainImpl implements _Domain {
             other is _$DomainImpl &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.version, version) || other.version == version) &&
-            (identical(other.chainId, chainId) || other.chainId == chainId));
+            (identical(other.chainId, chainId) || other.chainId == chainId) &&
+            (identical(other.revision, revision) ||
+                other.revision == revision));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, name, version, chainId);
+  int get hashCode =>
+      Object.hash(runtimeType, name, version, chainId, revision);
 
   /// Create a copy of Domain
   /// with the given fields replaced by the non-null parameter values.
@@ -600,7 +629,8 @@ abstract class _Domain implements Domain {
   const factory _Domain(
       {required final String name,
       required final String version,
-      required final String chainId}) = _$DomainImpl;
+      required final String chainId,
+      @JsonKey(name: 'revision') final String? revision}) = _$DomainImpl;
 
   factory _Domain.fromJson(Map<String, dynamic> json) = _$DomainImpl.fromJson;
 
@@ -610,6 +640,9 @@ abstract class _Domain implements Domain {
   String get version;
   @override
   String get chainId;
+  @override
+  @JsonKey(name: 'revision')
+  String? get revision;
 
   /// Create a copy of Domain
   /// with the given fields replaced by the non-null parameter values.
@@ -642,8 +675,12 @@ mixin _$Message {
   @JsonKey(name: 'Execute Before')
   String? get executeBeforev2 => throw _privateConstructorUsedError;
   @JsonKey(name: 'calls_len')
-  int? get callsLen => throw _privateConstructorUsedError;
+  int? get callsLen =>
+      throw _privateConstructorUsedError; // process calls or Calls in json response
+  @JsonKey(name: 'calls')
   List<Call>? get calls => throw _privateConstructorUsedError;
+  @JsonKey(name: 'Calls')
+  List<Call>? get callsv2 => throw _privateConstructorUsedError;
 
   /// Serializes this Message to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -669,7 +706,8 @@ abstract class $MessageCopyWith<$Res> {
       @JsonKey(name: 'execute_before') String? executeBeforev1,
       @JsonKey(name: 'Execute Before') String? executeBeforev2,
       @JsonKey(name: 'calls_len') int? callsLen,
-      List<Call>? calls});
+      @JsonKey(name: 'calls') List<Call>? calls,
+      @JsonKey(name: 'Calls') List<Call>? callsv2});
 }
 
 /// @nodoc
@@ -697,6 +735,7 @@ class _$MessageCopyWithImpl<$Res, $Val extends Message>
     Object? executeBeforev2 = freezed,
     Object? callsLen = freezed,
     Object? calls = freezed,
+    Object? callsv2 = freezed,
   }) {
     return _then(_value.copyWith(
       callerv1: freezed == callerv1
@@ -739,6 +778,10 @@ class _$MessageCopyWithImpl<$Res, $Val extends Message>
           ? _value.calls
           : calls // ignore: cast_nullable_to_non_nullable
               as List<Call>?,
+      callsv2: freezed == callsv2
+          ? _value.callsv2
+          : callsv2 // ignore: cast_nullable_to_non_nullable
+              as List<Call>?,
     ) as $Val);
   }
 }
@@ -760,7 +803,8 @@ abstract class _$$MessageImplCopyWith<$Res> implements $MessageCopyWith<$Res> {
       @JsonKey(name: 'execute_before') String? executeBeforev1,
       @JsonKey(name: 'Execute Before') String? executeBeforev2,
       @JsonKey(name: 'calls_len') int? callsLen,
-      List<Call>? calls});
+      @JsonKey(name: 'calls') List<Call>? calls,
+      @JsonKey(name: 'Calls') List<Call>? callsv2});
 }
 
 /// @nodoc
@@ -786,6 +830,7 @@ class __$$MessageImplCopyWithImpl<$Res>
     Object? executeBeforev2 = freezed,
     Object? callsLen = freezed,
     Object? calls = freezed,
+    Object? callsv2 = freezed,
   }) {
     return _then(_$MessageImpl(
       callerv1: freezed == callerv1
@@ -828,6 +873,10 @@ class __$$MessageImplCopyWithImpl<$Res>
           ? _value._calls
           : calls // ignore: cast_nullable_to_non_nullable
               as List<Call>?,
+      callsv2: freezed == callsv2
+          ? _value._callsv2
+          : callsv2 // ignore: cast_nullable_to_non_nullable
+              as List<Call>?,
     ));
   }
 }
@@ -845,8 +894,10 @@ class _$MessageImpl implements _Message {
       @JsonKey(name: 'execute_before') this.executeBeforev1,
       @JsonKey(name: 'Execute Before') this.executeBeforev2,
       @JsonKey(name: 'calls_len') this.callsLen,
-      final List<Call>? calls})
-      : _calls = calls;
+      @JsonKey(name: 'calls') final List<Call>? calls,
+      @JsonKey(name: 'Calls') final List<Call>? callsv2})
+      : _calls = calls,
+        _callsv2 = callsv2;
 
   factory _$MessageImpl.fromJson(Map<String, dynamic> json) =>
       _$$MessageImplFromJson(json);
@@ -878,8 +929,11 @@ class _$MessageImpl implements _Message {
   @override
   @JsonKey(name: 'calls_len')
   final int? callsLen;
+// process calls or Calls in json response
   final List<Call>? _calls;
+// process calls or Calls in json response
   @override
+  @JsonKey(name: 'calls')
   List<Call>? get calls {
     final value = _calls;
     if (value == null) return null;
@@ -888,9 +942,20 @@ class _$MessageImpl implements _Message {
     return EqualUnmodifiableListView(value);
   }
 
+  final List<Call>? _callsv2;
+  @override
+  @JsonKey(name: 'Calls')
+  List<Call>? get callsv2 {
+    final value = _callsv2;
+    if (value == null) return null;
+    if (_callsv2 is EqualUnmodifiableListView) return _callsv2;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
+
   @override
   String toString() {
-    return 'Message(callerv1: $callerv1, callerv2: $callerv2, noncev1: $noncev1, noncev2: $noncev2, executeAfterv1: $executeAfterv1, executeAfterv2: $executeAfterv2, executeBeforev1: $executeBeforev1, executeBeforev2: $executeBeforev2, callsLen: $callsLen, calls: $calls)';
+    return 'Message(callerv1: $callerv1, callerv2: $callerv2, noncev1: $noncev1, noncev2: $noncev2, executeAfterv1: $executeAfterv1, executeAfterv2: $executeAfterv2, executeBeforev1: $executeBeforev1, executeBeforev2: $executeBeforev2, callsLen: $callsLen, calls: $calls, callsv2: $callsv2)';
   }
 
   @override
@@ -914,7 +979,8 @@ class _$MessageImpl implements _Message {
                 other.executeBeforev2 == executeBeforev2) &&
             (identical(other.callsLen, callsLen) ||
                 other.callsLen == callsLen) &&
-            const DeepCollectionEquality().equals(other._calls, _calls));
+            const DeepCollectionEquality().equals(other._calls, _calls) &&
+            const DeepCollectionEquality().equals(other._callsv2, _callsv2));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
@@ -930,7 +996,8 @@ class _$MessageImpl implements _Message {
       executeBeforev1,
       executeBeforev2,
       callsLen,
-      const DeepCollectionEquality().hash(_calls));
+      const DeepCollectionEquality().hash(_calls),
+      const DeepCollectionEquality().hash(_callsv2));
 
   /// Create a copy of Message
   /// with the given fields replaced by the non-null parameter values.
@@ -959,7 +1026,8 @@ abstract class _Message implements Message {
       @JsonKey(name: 'execute_before') final String? executeBeforev1,
       @JsonKey(name: 'Execute Before') final String? executeBeforev2,
       @JsonKey(name: 'calls_len') final int? callsLen,
-      final List<Call>? calls}) = _$MessageImpl;
+      @JsonKey(name: 'calls') final List<Call>? calls,
+      @JsonKey(name: 'Calls') final List<Call>? callsv2}) = _$MessageImpl;
 
   factory _Message.fromJson(Map<String, dynamic> json) = _$MessageImpl.fromJson;
 
@@ -989,9 +1057,13 @@ abstract class _Message implements Message {
   String? get executeBeforev2;
   @override
   @JsonKey(name: 'calls_len')
-  int? get callsLen;
+  int? get callsLen; // process calls or Calls in json response
   @override
+  @JsonKey(name: 'calls')
   List<Call>? get calls;
+  @override
+  @JsonKey(name: 'Calls')
+  List<Call>? get callsv2;
 
   /// Create a copy of Message
   /// with the given fields replaced by the non-null parameter values.
@@ -1007,11 +1079,20 @@ Call _$CallFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$Call {
-  String get to => throw _privateConstructorUsedError;
-  String get selector => throw _privateConstructorUsedError;
+  @JsonKey(name: 'to')
+  String? get tov1 => throw _privateConstructorUsedError;
+  @JsonKey(name: 'To')
+  String? get tov2 => throw _privateConstructorUsedError;
+  @JsonKey(name: 'selector')
+  String? get selectorv1 => throw _privateConstructorUsedError;
+  @JsonKey(name: 'Selector')
+  String? get selectorv2 => throw _privateConstructorUsedError;
   @JsonKey(name: 'calldata_len')
-  int get calldataLen => throw _privateConstructorUsedError;
-  List<String> get calldata => throw _privateConstructorUsedError;
+  int? get calldataLen => throw _privateConstructorUsedError;
+  @JsonKey(name: 'calldata')
+  List<String>? get calldatav1 => throw _privateConstructorUsedError;
+  @JsonKey(name: 'Calldata')
+  List<String>? get calldatav2 => throw _privateConstructorUsedError;
 
   /// Serializes this Call to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -1028,10 +1109,13 @@ abstract class $CallCopyWith<$Res> {
       _$CallCopyWithImpl<$Res, Call>;
   @useResult
   $Res call(
-      {String to,
-      String selector,
-      @JsonKey(name: 'calldata_len') int calldataLen,
-      List<String> calldata});
+      {@JsonKey(name: 'to') String? tov1,
+      @JsonKey(name: 'To') String? tov2,
+      @JsonKey(name: 'selector') String? selectorv1,
+      @JsonKey(name: 'Selector') String? selectorv2,
+      @JsonKey(name: 'calldata_len') int? calldataLen,
+      @JsonKey(name: 'calldata') List<String>? calldatav1,
+      @JsonKey(name: 'Calldata') List<String>? calldatav2});
 }
 
 /// @nodoc
@@ -1049,28 +1133,43 @@ class _$CallCopyWithImpl<$Res, $Val extends Call>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? to = null,
-    Object? selector = null,
-    Object? calldataLen = null,
-    Object? calldata = null,
+    Object? tov1 = freezed,
+    Object? tov2 = freezed,
+    Object? selectorv1 = freezed,
+    Object? selectorv2 = freezed,
+    Object? calldataLen = freezed,
+    Object? calldatav1 = freezed,
+    Object? calldatav2 = freezed,
   }) {
     return _then(_value.copyWith(
-      to: null == to
-          ? _value.to
-          : to // ignore: cast_nullable_to_non_nullable
-              as String,
-      selector: null == selector
-          ? _value.selector
-          : selector // ignore: cast_nullable_to_non_nullable
-              as String,
-      calldataLen: null == calldataLen
+      tov1: freezed == tov1
+          ? _value.tov1
+          : tov1 // ignore: cast_nullable_to_non_nullable
+              as String?,
+      tov2: freezed == tov2
+          ? _value.tov2
+          : tov2 // ignore: cast_nullable_to_non_nullable
+              as String?,
+      selectorv1: freezed == selectorv1
+          ? _value.selectorv1
+          : selectorv1 // ignore: cast_nullable_to_non_nullable
+              as String?,
+      selectorv2: freezed == selectorv2
+          ? _value.selectorv2
+          : selectorv2 // ignore: cast_nullable_to_non_nullable
+              as String?,
+      calldataLen: freezed == calldataLen
           ? _value.calldataLen
           : calldataLen // ignore: cast_nullable_to_non_nullable
-              as int,
-      calldata: null == calldata
-          ? _value.calldata
-          : calldata // ignore: cast_nullable_to_non_nullable
-              as List<String>,
+              as int?,
+      calldatav1: freezed == calldatav1
+          ? _value.calldatav1
+          : calldatav1 // ignore: cast_nullable_to_non_nullable
+              as List<String>?,
+      calldatav2: freezed == calldatav2
+          ? _value.calldatav2
+          : calldatav2 // ignore: cast_nullable_to_non_nullable
+              as List<String>?,
     ) as $Val);
   }
 }
@@ -1083,10 +1182,13 @@ abstract class _$$CallImplCopyWith<$Res> implements $CallCopyWith<$Res> {
   @override
   @useResult
   $Res call(
-      {String to,
-      String selector,
-      @JsonKey(name: 'calldata_len') int calldataLen,
-      List<String> calldata});
+      {@JsonKey(name: 'to') String? tov1,
+      @JsonKey(name: 'To') String? tov2,
+      @JsonKey(name: 'selector') String? selectorv1,
+      @JsonKey(name: 'Selector') String? selectorv2,
+      @JsonKey(name: 'calldata_len') int? calldataLen,
+      @JsonKey(name: 'calldata') List<String>? calldatav1,
+      @JsonKey(name: 'Calldata') List<String>? calldatav2});
 }
 
 /// @nodoc
@@ -1101,28 +1203,43 @@ class __$$CallImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? to = null,
-    Object? selector = null,
-    Object? calldataLen = null,
-    Object? calldata = null,
+    Object? tov1 = freezed,
+    Object? tov2 = freezed,
+    Object? selectorv1 = freezed,
+    Object? selectorv2 = freezed,
+    Object? calldataLen = freezed,
+    Object? calldatav1 = freezed,
+    Object? calldatav2 = freezed,
   }) {
     return _then(_$CallImpl(
-      to: null == to
-          ? _value.to
-          : to // ignore: cast_nullable_to_non_nullable
-              as String,
-      selector: null == selector
-          ? _value.selector
-          : selector // ignore: cast_nullable_to_non_nullable
-              as String,
-      calldataLen: null == calldataLen
+      tov1: freezed == tov1
+          ? _value.tov1
+          : tov1 // ignore: cast_nullable_to_non_nullable
+              as String?,
+      tov2: freezed == tov2
+          ? _value.tov2
+          : tov2 // ignore: cast_nullable_to_non_nullable
+              as String?,
+      selectorv1: freezed == selectorv1
+          ? _value.selectorv1
+          : selectorv1 // ignore: cast_nullable_to_non_nullable
+              as String?,
+      selectorv2: freezed == selectorv2
+          ? _value.selectorv2
+          : selectorv2 // ignore: cast_nullable_to_non_nullable
+              as String?,
+      calldataLen: freezed == calldataLen
           ? _value.calldataLen
           : calldataLen // ignore: cast_nullable_to_non_nullable
-              as int,
-      calldata: null == calldata
-          ? _value._calldata
-          : calldata // ignore: cast_nullable_to_non_nullable
-              as List<String>,
+              as int?,
+      calldatav1: freezed == calldatav1
+          ? _value._calldatav1
+          : calldatav1 // ignore: cast_nullable_to_non_nullable
+              as List<String>?,
+      calldatav2: freezed == calldatav2
+          ? _value._calldatav2
+          : calldatav2 // ignore: cast_nullable_to_non_nullable
+              as List<String>?,
     ));
   }
 }
@@ -1131,33 +1248,59 @@ class __$$CallImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$CallImpl implements _Call {
   const _$CallImpl(
-      {required this.to,
-      required this.selector,
-      @JsonKey(name: 'calldata_len') required this.calldataLen,
-      required final List<String> calldata})
-      : _calldata = calldata;
+      {@JsonKey(name: 'to') this.tov1,
+      @JsonKey(name: 'To') this.tov2,
+      @JsonKey(name: 'selector') this.selectorv1,
+      @JsonKey(name: 'Selector') this.selectorv2,
+      @JsonKey(name: 'calldata_len') this.calldataLen,
+      @JsonKey(name: 'calldata') final List<String>? calldatav1,
+      @JsonKey(name: 'Calldata') final List<String>? calldatav2})
+      : _calldatav1 = calldatav1,
+        _calldatav2 = calldatav2;
 
   factory _$CallImpl.fromJson(Map<String, dynamic> json) =>
       _$$CallImplFromJson(json);
 
   @override
-  final String to;
+  @JsonKey(name: 'to')
+  final String? tov1;
   @override
-  final String selector;
+  @JsonKey(name: 'To')
+  final String? tov2;
+  @override
+  @JsonKey(name: 'selector')
+  final String? selectorv1;
+  @override
+  @JsonKey(name: 'Selector')
+  final String? selectorv2;
   @override
   @JsonKey(name: 'calldata_len')
-  final int calldataLen;
-  final List<String> _calldata;
+  final int? calldataLen;
+  final List<String>? _calldatav1;
   @override
-  List<String> get calldata {
-    if (_calldata is EqualUnmodifiableListView) return _calldata;
+  @JsonKey(name: 'calldata')
+  List<String>? get calldatav1 {
+    final value = _calldatav1;
+    if (value == null) return null;
+    if (_calldatav1 is EqualUnmodifiableListView) return _calldatav1;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_calldata);
+    return EqualUnmodifiableListView(value);
+  }
+
+  final List<String>? _calldatav2;
+  @override
+  @JsonKey(name: 'Calldata')
+  List<String>? get calldatav2 {
+    final value = _calldatav2;
+    if (value == null) return null;
+    if (_calldatav2 is EqualUnmodifiableListView) return _calldatav2;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
   }
 
   @override
   String toString() {
-    return 'Call(to: $to, selector: $selector, calldataLen: $calldataLen, calldata: $calldata)';
+    return 'Call(tov1: $tov1, tov2: $tov2, selectorv1: $selectorv1, selectorv2: $selectorv2, calldataLen: $calldataLen, calldatav1: $calldatav1, calldatav2: $calldatav2)';
   }
 
   @override
@@ -1165,18 +1308,31 @@ class _$CallImpl implements _Call {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$CallImpl &&
-            (identical(other.to, to) || other.to == to) &&
-            (identical(other.selector, selector) ||
-                other.selector == selector) &&
+            (identical(other.tov1, tov1) || other.tov1 == tov1) &&
+            (identical(other.tov2, tov2) || other.tov2 == tov2) &&
+            (identical(other.selectorv1, selectorv1) ||
+                other.selectorv1 == selectorv1) &&
+            (identical(other.selectorv2, selectorv2) ||
+                other.selectorv2 == selectorv2) &&
             (identical(other.calldataLen, calldataLen) ||
                 other.calldataLen == calldataLen) &&
-            const DeepCollectionEquality().equals(other._calldata, _calldata));
+            const DeepCollectionEquality()
+                .equals(other._calldatav1, _calldatav1) &&
+            const DeepCollectionEquality()
+                .equals(other._calldatav2, _calldatav2));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, to, selector, calldataLen,
-      const DeepCollectionEquality().hash(_calldata));
+  int get hashCode => Object.hash(
+      runtimeType,
+      tov1,
+      tov2,
+      selectorv1,
+      selectorv2,
+      calldataLen,
+      const DeepCollectionEquality().hash(_calldatav1),
+      const DeepCollectionEquality().hash(_calldatav2));
 
   /// Create a copy of Call
   /// with the given fields replaced by the non-null parameter values.
@@ -1196,22 +1352,37 @@ class _$CallImpl implements _Call {
 
 abstract class _Call implements Call {
   const factory _Call(
-      {required final String to,
-      required final String selector,
-      @JsonKey(name: 'calldata_len') required final int calldataLen,
-      required final List<String> calldata}) = _$CallImpl;
+      {@JsonKey(name: 'to') final String? tov1,
+      @JsonKey(name: 'To') final String? tov2,
+      @JsonKey(name: 'selector') final String? selectorv1,
+      @JsonKey(name: 'Selector') final String? selectorv2,
+      @JsonKey(name: 'calldata_len') final int? calldataLen,
+      @JsonKey(name: 'calldata') final List<String>? calldatav1,
+      @JsonKey(name: 'Calldata') final List<String>? calldatav2}) = _$CallImpl;
 
   factory _Call.fromJson(Map<String, dynamic> json) = _$CallImpl.fromJson;
 
   @override
-  String get to;
+  @JsonKey(name: 'to')
+  String? get tov1;
   @override
-  String get selector;
+  @JsonKey(name: 'To')
+  String? get tov2;
+  @override
+  @JsonKey(name: 'selector')
+  String? get selectorv1;
+  @override
+  @JsonKey(name: 'Selector')
+  String? get selectorv2;
   @override
   @JsonKey(name: 'calldata_len')
-  int get calldataLen;
+  int? get calldataLen;
   @override
-  List<String> get calldata;
+  @JsonKey(name: 'calldata')
+  List<String>? get calldatav1;
+  @override
+  @JsonKey(name: 'Calldata')
+  List<String>? get calldatav2;
 
   /// Create a copy of Call
   /// with the given fields replaced by the non-null parameter values.
