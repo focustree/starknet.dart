@@ -6,6 +6,21 @@ import 'dart:convert';
 
 import '../utils.dart';
 
+void removeNullFields(Map<String, dynamic> json) {
+  json.removeWhere((key, value) => value == null);
+  json.forEach((key, value) {
+    if (value is Map<String, dynamic>) {
+      removeNullFields(value);
+    } else if (value is List) {
+      for (var item in value) {
+        if (item is Map<String, dynamic>) {
+          removeNullFields(item);
+        }
+      }
+    }
+  });
+}
+
 void main() {
   group('AvnuReadProvider', () {
     late ReadProvider provider;
@@ -149,13 +164,14 @@ void main() {
             'contractAddress': '0x049d36570d4e46f48e99674bd3fcc84644ddd6b96f7c741b1562b82f9e004dc7',
             'entrypoint': 'approve',
             'calldata': [
-              '0x01a736d6ed154502257f02b1ccdf4d9d1089f80811cd6acad48e6b6a9d1f2003',
-              '0x1'
+              '0x498e484da80a8895c77dcad5362ae483758050f22a92af29a385459b0365bfe',
+              '0xf',
+              '0x0'
             ]
           }
         ]; 
-        final gasTokenAddress = '0x049d36570d4e46f48e99674bd3fcc84644ddd6b96f7c741b1562b82f9e004dc7';
-        final maxGasTokenAmount = '0xffffff';
+        final gasTokenAddress = '0x4718f5a0fc34cc1af16a1cdee98ffb20c31f5cd61d6ab07201858f4287c938d';
+        final maxGasTokenAmount = '0xC3F02C221B000';
         //final accountClassHash = '0x01a736d6ed154502257f02b1ccdf4d9d1089f80811cd6acad48e6b6a9d1f2003';
         final accountClassHash = (await provider.getClassHashAt(
           contractAddress: sepoliaAccount0.accountAddress,
@@ -171,6 +187,10 @@ void main() {
         final String typedData = jsonEncode(avnuBuildTypedData.toJson());
         final typedDataObject = TypedData.fromJson(jsonDecode(typedData));
 
+        // Remove null fields from typedData
+        final Map<String, dynamic> typedDataMap = jsonDecode(typedData);
+        removeNullFields(typedDataMap);
+        final String cleanTypedData = jsonEncode(typedDataMap);
         
         final messageHash = getMessageHash(typedDataObject, sepoliaAccount0.accountAddress.toBigInt());
         final signature = starknetSign(
@@ -178,15 +198,21 @@ void main() {
           messageHash: messageHash,
           seed: BigInt.from(32),
         );  
-        final signatureList = [signature.r.toString(), signature.s.toString()];
-        final deploymentData = {
-          // 'class_hash': '0x01a736d6ed154502257f02b1ccdf4d9d1089f80811cd6acad48e6b6a9d1f2003',
+        final signCount = "0x1";
+        final starknetSignatureId = "0x0"; 
+        final publicKey = sepoliaAccount0.signer.publicKey.toHexString();
+        final signatureR = Felt(signature.r).toHexString();
+        final signatureS = Felt(signature.s).toHexString();
+        final signatureList = [signCount, starknetSignatureId, publicKey, signatureR, signatureS];
+        final deploymentData = null;
+        // {
+        //   // 'class_hash': '0x01a736d6ed154502257f02b1ccdf4d9d1089f80811cd6acad48e6b6a9d1f2003',
           // 'salt': '0x01a736d6ed154502257f02b1ccdf4d9d1089f80811cd6acad48e6b6a9d1f2003',
           // 'unique': '0x01a736d6ed154502257f02b1ccdf4d9d1089f80811cd6acad48e6b6a9d1f2003',
           // 'calldata': ['0x01a736d6ed154502257f02b1ccdf4d9d1089f80811cd6acad48e6b6a9d1f2003'],
-          // 'sigdata': ['0x01a736d6ed154502257f02b1ccdf4d9d1089f80811cd6acad48e6b6a9d1f2003']
-        };
-        final avnuExecute = await avnuProvider.execute(apiKey, userAddress, typedData, signatureList, deploymentData);
+        //   // 'sigdata': ['0x01a736d6ed154502257f02b1ccdf4d9d1089f80811cd6acad48e6b6a9d1f2003']
+        // };
+        final avnuExecute = await avnuProvider.execute(apiKey, userAddress, cleanTypedData, signatureList, deploymentData);
         expect(avnuExecute, isA<AvnuExecute>());
         print(avnuExecute.toJson());
       });

@@ -30,7 +30,7 @@ abstract class AvnuReadProvider {
   /// Execute the typed data
   ///
   /// [Spec](https://doc.avnu.fi/avnu-paymaster/integration/api-references)
-  Future<AvnuExecute> execute(String apiKey, String userAddress, String typedData, List<String> signature, Map<dynamic, dynamic> deploymentData);
+  Future<AvnuExecute> execute(String apiKey, String userAddress, String typedData, List<String> signature, Map<dynamic, dynamic>? deploymentData);
 
 }
 
@@ -72,7 +72,7 @@ class AvnuJsonRpcReadProvider implements AvnuReadProvider {
   }
 
   @override
-  Future<AvnuExecute> execute(String apiKey, String userAddress, String typedData, List<String> signature, Map<dynamic, dynamic> deploymentData) async {
+  Future<AvnuExecute> execute(String apiKey, String userAddress, String typedData, List<String> signature, Map<dynamic, dynamic>? deploymentData) async {
     return callRpcEndpoint(nodeUri: nodeUri, method: 'paymaster_execute', params: [apiKey, userAddress, typedData, signature, deploymentData])
         .then((dynamic json) => AvnuExecute.fromJson(json));
   }

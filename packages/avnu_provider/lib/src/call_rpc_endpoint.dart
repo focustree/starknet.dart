@@ -59,14 +59,14 @@ Future<dynamic> callRpcEndpoint(
       headers['content-type'] = 'application/json';
       final userAddress = paramsList[1].toString();
       final typedData = paramsList[2].toString();
-      final signature = paramsList[3].toString();
+      final signature = (paramsList[3] as List);
       final deploymentData = paramsList[4];
       nodeUri = nodeUri.replace(path: '/paymaster/v1/execute');
       body = {
         'userAddress': userAddress,
         'typedData': typedData,
         'signature': signature,
-        'deploymentData': deploymentData
+        if (deploymentData != null) 'deploymentData': deploymentData,
       };
       break;
     default:

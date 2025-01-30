@@ -1,6 +1,7 @@
 import 'hash.dart';
 import 'shortstring.dart';
 import 'num.dart';
+import 'encode.dart';
 import 'package:starknet/starknet.dart';
 /// Represents the revision of the TypedData implementation
 enum TypedDataRevision {
@@ -168,14 +169,14 @@ BigInt getMessageHash(TypedData typedData, BigInt account) {
   final revision = identifyRevision(typedData)!;
   final config = revisionConfiguration[revision]!;
 
-  final message = [
-    encodeShortString('StarkNet Message'),
-    getStructHash(typedData.types, config.domain, typedData.domain, revision),
+  final message = <BigInt>[
+    BigInt.parse(encodeShortString('StarkNet Message')),
+    BigInt.parse(addHexPrefix(getStructHash(typedData.types, config.domain, typedData.domain, revision))),
     account,
-    getStructHash(typedData.types, typedData.primaryType, typedData.message, revision),
+    BigInt.parse(addHexPrefix(getStructHash(typedData.types, typedData.primaryType, typedData.message, revision))),
   ];
 
-  return config.hashMethod(message.map((e) => BigInt.parse(e.toString())).toList());
+  return BigInt.parse(config.hashMethod(message).toString(),radix: 16);
 }
 
 /// Gets the hash of a struct
@@ -186,7 +187,14 @@ String getStructHash(
   TypedDataRevision revision,
 ) {
   final config = revisionConfiguration[revision]!;
-  return config.hashMethod(encodeData(types, type, data, revision)[1].map((e) => BigInt.parse(e.toString())).toList());
+  final encodedValues = encodeData(types, type, data, revision)[1];
+  final bigIntValues = encodedValues.map((e) {
+    final str = e.toString();
+    // Add '0x' prefix if not present for hex strings
+    final hexStr = str.startsWith('0x') ? str : '0x$str';
+    return BigInt.parse(hexStr);
+  }).toList();
+  return config.hashMethod(bigIntValues).toString();
 }
 
 /// Encodes data for signing
@@ -263,7 +271,12 @@ List<String> encodeValue(
     final hashes = (data as List).map((entry) {
       return encodeValue(types, baseType, entry, Context(), revision)[1];
     }).toList();
-    return [type, revisionConfiguration[revision]!.hashMethod(hashes.map((e) => BigInt.parse(e.toString())).toList())];
+    return [type, revisionConfiguration[revision]!.hashMethod(hashes.map((e) {
+      final str = e.toString();
+      // Add '0x' prefix if not present for hex strings
+      final hexStr = str.startsWith('0x') ? str : '0x$str';
+      return BigInt.parse(hexStr);
+    }).toList())];
   }
 
   // Handle specific types
