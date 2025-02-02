@@ -1,3 +1,4 @@
+// TODO: Implement merkle tree construction, but not needed for AVNU paymaster support
 class MerkleTree {
   final String root;
   

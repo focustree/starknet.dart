@@ -1,3 +1,6 @@
+// encode implementation based in the starknet-js implementation
+// https://github.com/starknet-io/starknet.js/blob/8fb2193462b5bb743f551cdec631d5923f09e657/src/utils/encode.ts
+
 import 'dart:convert';
 import 'dart:typed_data';
 

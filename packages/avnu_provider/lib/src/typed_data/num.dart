@@ -1,3 +1,6 @@
+// num implementation based in the starknet-js implementation
+// https://github.com/starknet-io/starknet.js/blob/8fb2193462b5bb743f551cdec631d5923f09e657/src/utils/num.ts
+
 import 'dart:typed_data';
 import 'encode.dart';
 import 'shortstring.dart';

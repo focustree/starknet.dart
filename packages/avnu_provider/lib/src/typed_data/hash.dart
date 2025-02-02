@@ -1,3 +1,6 @@
+// hash implementation based in the starknet-js implementation
+// https://github.com/starknet-io/starknet.js/blob/8fb2193462b5bb743f551cdec631d5923f09e657/src/utils/hash.ts
+
 import 'package:starknet/starknet.dart';
 import 'package:starknet/src/crypto/poseidon.dart';
 import 'dart:convert';

@@ -36,7 +36,7 @@ ReadProvider getProvider() {
   return JsonRpcReadProvider(nodeUri: Uri.parse(env['STARKNET_RPC']!));
 }
 
-AvnuReadProvider getAvnuProvider() {
+AvnuReadProvider getAvnuReadProvider() {
   final env = Platform.environment;
   if (env['AVNU_RPC'] == null) {
     throw Exception('AVNU_RPC environment variable is not set');
@@ -45,28 +45,11 @@ AvnuReadProvider getAvnuProvider() {
   return AvnuJsonRpcReadProvider(nodeUri: Uri.parse(env['AVNU_RPC']!));
 }
 
-AvnuReadProvider getJsonRpcReadProvider() {
-  final network = Platform.environment['NETWORK'] ?? 'infuraGoerliTestnet';
-
-  if (network == 'infuraGoerliTestnet') {
-    return AvnuJsonRpcReadProvider.infuraGoerliTestnet;
-  } else if (network == 'v010PathfinderGoerliTestnet') {
-    return AvnuJsonRpcReadProvider.v010PathfinderGoerliTestnet;
-  } else if (network == 'infuraMainnet') {
-    return AvnuJsonRpcReadProvider.infuraMainnet;
-  } else {
-    return AvnuJsonRpcReadProvider.devnet;
+AvnuProvider getAvnuProvider() {
+  final env = Platform.environment;
+  if (env['AVNU_RPC'] == null) {
+    throw Exception('AVNU_RPC environment variable is not set');
   }
-}
 
-AvnuProvider getJsonRpcProvider({network = 'infuraGoerliTestnet'}) {
-  if (network == 'infuraGoerliTestnet') {
-    return AvnuJsonRpcProvider.infuraGoerliTestnet;
-  } else if (network == 'v010PathfinderGoerliTestnet') {
-    return AvnuJsonRpcProvider.v010PathfinderGoerliTestnet;
-  } else if (network == 'infuraMainnet') {
-    return AvnuJsonRpcProvider.infuraMainnet;
-  } else {
-    return AvnuJsonRpcProvider.devnet;
-  }
+  return AvnuJsonRpcProvider(nodeUri: Uri.parse(env['AVNU_RPC']!));
 }

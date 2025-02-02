@@ -1,3 +1,6 @@
+// shortstring implementation based in the starknet-js implementation
+// https://github.com/starknet-io/starknet.js/blob/8fb2193462b5bb743f551cdec631d5923f09e657/src/utils/shortString.ts
+
 import 'encode.dart';
 import 'num.dart';
 

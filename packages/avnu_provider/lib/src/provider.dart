@@ -1,59 +1,36 @@
-import 'package:starknet/starknet.dart';
+
 import 'package:avnu_provider/avnu_provider.dart';
 
-abstract class AvnuProvider implements AvnuReadProvider {
-  // Future<InvokeTransactionResponse> addInvokeTransaction(
-  //      InvokeTransactionRequest request);
-  // // Future<DeclareTransactionResponse> addDeclareTransaction(
-  // //     DeclareTransactionRequest request);
-  // // Future<DeployAccountTransactionResponse> addDeployAccountTransaction(
-  // //     DeployAccountTransactionRequest request);
+abstract class AvnuProvider {
+  /// Build the data type for the account
+  ///
+  /// [Spec](https://doc.avnu.fi/avnu-paymaster/integration/api-references)
+  Future<AvnuBuildTypedData> buildTypedData(String apiKey, String userAddress, List<Map<String, dynamic>> calls, String gasTokenAddress, String maxGasTokenAmount, String accountClassHash);
+
+  /// Execute the typed data
+  ///
+  /// [Spec](https://doc.avnu.fi/avnu-paymaster/integration/api-references)
+  Future<AvnuExecute> execute(String apiKey, String userAddress, String typedData, List<String> signature, Map<dynamic, dynamic>? deploymentData);
+
 }
 
-class AvnuJsonRpcProvider extends AvnuJsonRpcReadProvider implements AvnuProvider {
-  const AvnuJsonRpcProvider({
-    required super.nodeUri,
+class AvnuJsonRpcProvider implements AvnuProvider {
+  final Uri nodeUri;
+
+  AvnuJsonRpcProvider({
+    required this.nodeUri,
   });
 
-  // execute(List<Call> calls) async {}
+  @override
+  Future<AvnuBuildTypedData> buildTypedData(String apiKey, String userAddress, List<Map<String, dynamic>> calls, String gasTokenAddress, String maxGasTokenAmount, String accountClassHash) async {
+    return callRpcEndpoint(nodeUri: nodeUri, method: 'paymaster_build_typed_data', params: [apiKey, userAddress, calls, gasTokenAddress, maxGasTokenAmount, accountClassHash])
+        .then((dynamic json) => AvnuBuildTypedData.fromJson(json));
+  }
 
-  // @override
-  // Future<InvokeTransactionResponse> addInvokeTransaction(
-  //     InvokeTransactionRequest request) async {
-  //   return callRpcEndpoint(
-  //           nodeUri: nodeUri,
-  //           method: 'starknet_addInvokeTransaction',
-  //           params: request)
-  //       .then(InvokeTransactionResponse.fromJson);
-  // }
+  @override
+  Future<AvnuExecute> execute(String apiKey, String userAddress, String typedData, List<String> signature, Map<dynamic, dynamic>? deploymentData) async {
+    return callRpcEndpoint(nodeUri: nodeUri, method: 'paymaster_execute', params: [apiKey, userAddress, typedData, signature, deploymentData])
+        .then((dynamic json) => AvnuExecute.fromJson(json));
+  }
 
-  // @override
-  // Future<DeclareTransactionResponse> addDeclareTransaction(
-  //     DeclareTransactionRequest request) async {
-  //   return callRpcEndpoint(
-  //           nodeUri: nodeUri,
-  //           method: 'starknet_addDeclareTransaction',
-  //           params: request)
-  //       .then(DeclareTransactionResponse.fromJson);
-  // }
-
-  // @override
-  // Future<DeployAccountTransactionResponse> addDeployAccountTransaction(
-  //     DeployAccountTransactionRequest request) async {
-  //   return callRpcEndpoint(
-  //           nodeUri: nodeUri,
-  //           method: 'starknet_addDeployAccountTransaction',
-  //           params: request)
-  //       .then(DeployAccountTransactionResponse.fromJson);
-  // }
-
-  static final devnet = AvnuJsonRpcProvider(nodeUri: devnetUri);
-
-  static final v010PathfinderGoerliTestnet =
-      AvnuJsonRpcProvider(nodeUri: v010PathfinderGoerliTestnetUri);
-
-  static final infuraGoerliTestnet =
-      AvnuJsonRpcProvider(nodeUri: infuraGoerliTestnetUri);
-
-  static final infuraMainnet = AvnuJsonRpcProvider(nodeUri: infuraMainnetUri);
 }

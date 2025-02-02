@@ -1,3 +1,8 @@
+// SNIP-12 type data implementation based in the starknet-js implementation
+// https://github.com/starknet-io/starknet.js/blob/8fb2193462b5bb743f551cdec631d5923f09e657/src/utils/typedData.ts
+// and SNIP-12 specification
+// https://github.com/starknet-io/SNIPs/blob/main/SNIPS/snip-12.md
+
 import 'hash.dart';
 import 'shortstring.dart';
 import 'num.dart';
