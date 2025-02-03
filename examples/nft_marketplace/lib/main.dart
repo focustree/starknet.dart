@@ -5,7 +5,7 @@ import 'package:hive_flutter/hive_flutter.dart';
 import 'package:nft_marketplace/config.dart';
 import 'package:nft_marketplace/screens/home_screen.dart';
 import 'package:walletkit/wallet_kit.dart';
-import 'package:arkproject/ark_project.dart';
+import 'package:arkproject/arkproject.dart';
 
 void main() async {
   await init();

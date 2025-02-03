@@ -1,4 +1,4 @@
-import 'package:arkproject/ark_project.dart';
+import 'package:arkproject/arkproject.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
