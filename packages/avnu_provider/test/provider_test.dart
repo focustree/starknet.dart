@@ -42,17 +42,18 @@ void main() {
 
     setUpAll(() {
       // executed once before all tests
+      final apiKey = '3fe427af-1c19-4126-8570-4e3adba3a043';
+      final publicKey = BigInt.parse("0429c489be63b21c399353e03a9659cfc1650b24bae1e9ebdde0aef2b38deb44",radix: 16);
       provider = getProvider();
-      avnuProvider = getAvnuProvider();
+      avnuProvider = getAvnuProvider(publicKey: publicKey, apiKey: apiKey);
     });
 
     setUp(() async {
       // setUp is exectued before each test
       //await resetDevnet();
     });
-    group('buildTypedData', () {
-      test('returns avnu build typed data', () async {
-        final apiKey = '3fe427af-1c19-4126-8570-4e3adba3a043';
+    group('execute', () {
+      test('returns avnu build typed data and execute transaction', () async {
         final userAddress = sepoliaAccount0.accountAddress.toHexString();
         final calls = [
           {
@@ -76,7 +77,7 @@ void main() {
           result: (result) => result.toHexString(),
           error: (error) => Felt.fromInt(0).toHexString(),
         );
-        final avnuBuildTypedData = await avnuProvider.buildTypedData(apiKey, userAddress, calls, gasTokenAddress, maxGasTokenAmount, accountClassHash);
+        final avnuBuildTypedData = await avnuProvider.buildTypedData(userAddress, calls, gasTokenAddress, maxGasTokenAmount, accountClassHash);
         expect(avnuBuildTypedData, isA<AvnuBuildTypedData>());
         
         final String typedData = jsonEncode(avnuBuildTypedData.toJson());
@@ -107,13 +108,156 @@ void main() {
           // 'calldata': ['0x01a736d6ed154502257f02b1ccdf4d9d1089f80811cd6acad48e6b6a9d1f2003'],
         //   // 'sigdata': ['0x01a736d6ed154502257f02b1ccdf4d9d1089f80811cd6acad48e6b6a9d1f2003']
         // };
-        final avnuExecute = await avnuProvider.execute(apiKey, userAddress, cleanTypedData, signatureList, deploymentData);
+        final avnuExecute = await avnuProvider.execute(userAddress, cleanTypedData, signatureList, deploymentData);
+        expect(avnuExecute, isA<AvnuExecute>());
+        print(avnuExecute.toJson());
+      });
+
+      test('returns sponsored transaction with sponsor api key', () async {
+        final userAddress = sepoliaAccount0.accountAddress.toHexString();
+        final calls = [
+          {
+            'contractAddress': '0x049d36570d4e46f48e99674bd3fcc84644ddd6b96f7c741b1562b82f9e004dc7',
+            'entrypoint': 'approve',
+            'calldata': [
+              '0x498e484da80a8895c77dcad5362ae483758050f22a92af29a385459b0365bfe',
+              '0xf',
+              '0x0'
+            ]
+          }
+        ]; 
+        // If we want that our transaction be sponsored, don't have to set the gasTokenAddress and maxGasTokenAmount fields
+        // as mentioned in https://doc.avnu.fi/avnu-paymaster/cover-your-users-gas-fees  
+        final gasTokenAddress = '';
+        final maxGasTokenAmount = '';
+        //final accountClassHash = '0x01a736d6ed154502257f02b1ccdf4d9d1089f80811cd6acad48e6b6a9d1f2003';
+        final accountClassHash = (await provider.getClassHashAt(
+          contractAddress: sepoliaAccount0.accountAddress,
+          blockId: BlockId.latest,
+        ))
+            .when(
+          result: (result) => result.toHexString(),
+          error: (error) => Felt.fromInt(0).toHexString(),
+        );
+        final avnuBuildTypedData = await avnuProvider.buildTypedData(userAddress, calls, gasTokenAddress, maxGasTokenAmount, accountClassHash);
+        expect(avnuBuildTypedData, isA<AvnuBuildTypedData>());
+        
+        final String typedData = jsonEncode(avnuBuildTypedData.toJson());
+        final typedDataObject = TypedData.fromJson(jsonDecode(typedData));
+
+        // Remove null fields from typedData
+        final Map<String, dynamic> typedDataMap = jsonDecode(typedData);
+        removeNullFields(typedDataMap);
+        final String cleanTypedData = jsonEncode(typedDataMap);
+        
+        final messageHash = getMessageHash(typedDataObject, sepoliaAccount0.accountAddress.toBigInt());
+        final signature = starknetSign(
+          privateKey: sepoliaAccount0.signer.privateKey.toBigInt(),
+          messageHash: messageHash,
+          seed: BigInt.from(32),
+        );  
+        final signCount = "0x1";
+        final starknetSignatureId = "0x0"; 
+        final publicKey = sepoliaAccount0.signer.publicKey.toHexString();
+        final signatureR = Felt(signature.r).toHexString();
+        final signatureS = Felt(signature.s).toHexString();
+        final signatureList = [signCount, starknetSignatureId, publicKey, signatureR, signatureS];
+        final deploymentData = null;
+        // {
+        //   // 'class_hash': '0x01a736d6ed154502257f02b1ccdf4d9d1089f80811cd6acad48e6b6a9d1f2003',
+          // 'salt': '0x01a736d6ed154502257f02b1ccdf4d9d1089f80811cd6acad48e6b6a9d1f2003',
+          // 'unique': '0x01a736d6ed154502257f02b1ccdf4d9d1089f80811cd6acad48e6b6a9d1f2003',
+          // 'calldata': ['0x01a736d6ed154502257f02b1ccdf4d9d1089f80811cd6acad48e6b6a9d1f2003'],
+        //   // 'sigdata': ['0x01a736d6ed154502257f02b1ccdf4d9d1089f80811cd6acad48e6b6a9d1f2003']
+        // };
+        final avnuExecute = await avnuProvider.execute(userAddress, cleanTypedData, signatureList, deploymentData);
+        expect(avnuExecute, isA<AvnuExecute>());
+        print(avnuExecute.toJson());
+      });
+
+      test('returns sponsored transaction with rewards without sponsor api key', () async {
+        // set null apikey
+        avnuProvider.setApiKey('');
+        final userAddress = sepoliaAccount0.accountAddress.toHexString();
+        final calls = [
+          {
+            'contractAddress': '0x049d36570d4e46f48e99674bd3fcc84644ddd6b96f7c741b1562b82f9e004dc7',
+            'entrypoint': 'approve',
+            'calldata': [
+              '0x498e484da80a8895c77dcad5362ae483758050f22a92af29a385459b0365bfe',
+              '0xf',
+              '0x0'
+            ]
+          }
+        ]; 
+        // If we want that our transaction be sponsored, don't have to set the gasTokenAddress and maxGasTokenAmount fields
+        // as mentioned in https://doc.avnu.fi/avnu-paymaster/cover-your-users-gas-fees  
+        final gasTokenAddress = '';
+        final maxGasTokenAmount = '';
+        //final accountClassHash = '0x01a736d6ed154502257f02b1ccdf4d9d1089f80811cd6acad48e6b6a9d1f2003';
+        final accountClassHash = (await provider.getClassHashAt(
+          contractAddress: sepoliaAccount0.accountAddress,
+          blockId: BlockId.latest,
+        ))
+            .when(
+          result: (result) => result.toHexString(),
+          error: (error) => Felt.fromInt(0).toHexString(),
+        );
+        final avnuBuildTypedData = await avnuProvider.buildTypedData(userAddress, calls, gasTokenAddress, maxGasTokenAmount, accountClassHash);
+        expect(avnuBuildTypedData, isA<AvnuBuildTypedData>());
+        
+        final String typedData = jsonEncode(avnuBuildTypedData.toJson());
+        final typedDataObject = TypedData.fromJson(jsonDecode(typedData));
+
+        // Remove null fields from typedData
+        final Map<String, dynamic> typedDataMap = jsonDecode(typedData);
+        removeNullFields(typedDataMap);
+        final String cleanTypedData = jsonEncode(typedDataMap);
+        
+        final messageHash = getMessageHash(typedDataObject, sepoliaAccount0.accountAddress.toBigInt());
+        final signature = starknetSign(
+          privateKey: sepoliaAccount0.signer.privateKey.toBigInt(),
+          messageHash: messageHash,
+          seed: BigInt.from(32),
+        );  
+        final signCount = "0x1";
+        final starknetSignatureId = "0x0"; 
+        final publicKey = sepoliaAccount0.signer.publicKey.toHexString();
+        final signatureR = Felt(signature.r).toHexString();
+        final signatureS = Felt(signature.s).toHexString();
+        final signatureList = [signCount, starknetSignatureId, publicKey, signatureR, signatureS];
+        final deploymentData = null;
+        // {
+        //   // 'class_hash': '0x01a736d6ed154502257f02b1ccdf4d9d1089f80811cd6acad48e6b6a9d1f2003',
+          // 'salt': '0x01a736d6ed154502257f02b1ccdf4d9d1089f80811cd6acad48e6b6a9d1f2003',
+          // 'unique': '0x01a736d6ed154502257f02b1ccdf4d9d1089f80811cd6acad48e6b6a9d1f2003',
+          // 'calldata': ['0x01a736d6ed154502257f02b1ccdf4d9d1089f80811cd6acad48e6b6a9d1f2003'],
+        //   // 'sigdata': ['0x01a736d6ed154502257f02b1ccdf4d9d1089f80811cd6acad48e6b6a9d1f2003']
+        // };
+        final avnuExecute = await avnuProvider.execute(userAddress, cleanTypedData, signatureList, deploymentData);
         expect(avnuExecute, isA<AvnuExecute>());
         print(avnuExecute.toJson());
       });
     });
+    
+    group('setAccountRewards', () {
+      test('returns avnu set account rewards', () async {
+        final address = sepoliaAccount0.accountAddress.toHexString();
+        final campaign = 'Onboarding';
+        final protocol = 'AVNU';
+        final freeTx = 10;
+        final expirationDate = '2025-02-03T14:22:27.284Z';
+        final whitelistedCalls = [
+          {
+            'contractAddress': '*',
+            'entrypoint': '*'
+          }
+        ];
+        final avnuSetAccountRewards = await avnuProvider.setAccountRewards(address, campaign, protocol, freeTx, expirationDate, whitelistedCalls);
+        expect(avnuSetAccountRewards, isA<AvnuAccountRewards>());
+        print(avnuSetAccountRewards.toJson());
+      });
+    });
   }, tags: ['integration'], timeout: Timeout(Duration(minutes: 1)));
 }
-
-
 

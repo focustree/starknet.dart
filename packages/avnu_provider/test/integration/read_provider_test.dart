@@ -39,7 +39,9 @@ void main() {
 
     setUpAll(() {
       // executed once before all tests
-      avnuReadProvider = getAvnuReadProvider();
+      final apiKey = '3fe427af-1c19-4126-8570-4e3adba3a043';
+      final publicKey = BigInt.parse("0429c489be63b21c399353e03a9659cfc1650b24bae1e9ebdde0aef2b38deb44",radix: 16);
+      avnuReadProvider = getAvnuReadProvider(publicKey: publicKey, apiKey: apiKey);
     });
 
     setUp(() async {
@@ -105,16 +107,27 @@ void main() {
     });
     group('getSponsorActivity', () {
       test('returns avnu sponsor activity', () async {
-        final apiKey = '3fe427af-1c19-4126-8570-4e3adba3a043';
         final startDate = '2024-02-04T14:08:38.511Z';
         final endDate = '2024-02-04T15:08:38.511Z';
-        final avnuSponsorActivity = await avnuReadProvider.getSponsorActivity(apiKey, startDate, endDate);
+        final avnuSponsorActivity = await avnuReadProvider.getSponsorActivity(startDate, endDate);
         expect(avnuSponsorActivity, isA<AvnuSponsorActivity>());
         print(avnuSponsorActivity.toJson());
       });
     });
+    group('getAccountRewards', () {
+      test('returns avnu account rewards', () async {
+        // we will use the account 0x039321741034d079C573bAd24dB5F012ed9614554301a2B08bDcb34E01d9C1BF
+        // as in https://sepolia.api.avnu.fi/webjars/swagger-ui/index.html#/ test cases
+        final avnuAccountRewards = await avnuReadProvider.getAccountRewards('0x039321741034d079C573bAd24dB5F012ed9614554301a2B08bDcb34E01d9C1BF', 'Starknet Foundation', 'Onboarding', 'AVNU');
+        expect(avnuAccountRewards, isA<AvnuAccountRewards>());
+        print(avnuAccountRewards.toJson());
+      });
+      test('returns avnu account rewards with empty response', () async {
+        final avnuAccountRewards = await avnuReadProvider.getAccountRewards('0x0123456789abcdef', 'Starknet Foundation', 'Onboarding', 'AVNU');
+        expect(avnuAccountRewards, isA<AvnuAccountRewards>());
+        print(avnuAccountRewards.toJson());
+      });
+    });
   }, tags: ['integration'], timeout: Timeout(Duration(minutes: 1)));
 }
-
-
 

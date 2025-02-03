@@ -1,4 +1,3 @@
-
 import 'package:avnu_provider/avnu_provider.dart';
 
 abstract class AvnuReadProvider {
@@ -20,16 +19,34 @@ abstract class AvnuReadProvider {
   /// Get the sponsor activity of the account
   ///
   /// [Spec](https://doc.avnu.fi/avnu-paymaster/integration/api-references)
-  Future<AvnuSponsorActivity> getSponsorActivity(String apiKey, String startDate, String endDate);
+  Future<AvnuSponsorActivity> getSponsorActivity(String startDate, String endDate);
+
+  /// Get the account rewards
+  ///
+  /// [Spec](https://doc.avnu.fi/avnu-paymaster/integration/api-references)
+  Future<AvnuAccountRewards> getAccountRewards(String address, String? sponsor, String? campaign, String? protocol);
 
 }
 
 class AvnuJsonRpcReadProvider implements AvnuReadProvider {
   final Uri nodeUri;
 
-  const AvnuJsonRpcReadProvider({
+  AvnuJsonRpcReadProvider({
     required this.nodeUri,
-  });
+    BigInt? publicKey,
+    String? apiKey,
+  }) {
+    if (publicKey != null) {
+      AvnuConfig.setPublicKey(publicKey);
+    }
+    if (apiKey != null) {
+      AvnuConfig.setApiKey(apiKey);
+    }
+  }
+
+  void setApiKey(String apiKey) {
+    AvnuConfig.setApiKey(apiKey);
+  }
 
   @override
   Future<AvnuStatus> avnuStatus() async {
@@ -50,9 +67,30 @@ class AvnuJsonRpcReadProvider implements AvnuReadProvider {
   }
 
   @override
-  Future<AvnuSponsorActivity> getSponsorActivity(String apiKey, String startDate, String endDate) async {
-    return callRpcEndpoint(nodeUri: nodeUri, method: 'paymaster_sponsor_activity', params: [apiKey, startDate, endDate])
-        .then((dynamic json) => AvnuSponsorActivity.fromJson(json));
+  Future<AvnuSponsorActivity> getSponsorActivity(String startDate, String endDate) async {
+    final effectiveApiKey = AvnuConfig.apiKey ?? '';
+    return callRpcEndpoint(
+      nodeUri: nodeUri, 
+      method: 'paymaster_sponsor_activity', 
+      params: [effectiveApiKey, startDate, endDate]
+    ).then((dynamic json) => AvnuSponsorActivity.fromJson(json));
+  }
+
+  @override
+  Future<AvnuAccountRewards> getAccountRewards(String address, String? sponsor, String? campaign, String? protocol) async {
+    try {
+      final dynamic json = await callRpcEndpoint(
+        nodeUri: nodeUri, 
+        method: 'paymaster_get_account_rewards', 
+        params: [address, sponsor, campaign, protocol]
+      );
+      if (json is List) {
+        return AvnuAccountRewards.fromJson({'rewards': json});
+      }
+      throw FormatException('Invalid response format: expected JSON array');
+    } on FormatException catch (e) {
+      throw FormatException('Failed to parse account rewards response: ${e.message}');
+    }
   }
 
 }

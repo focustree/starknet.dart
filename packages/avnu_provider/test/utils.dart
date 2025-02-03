@@ -36,20 +36,20 @@ ReadProvider getProvider() {
   return JsonRpcReadProvider(nodeUri: Uri.parse(env['STARKNET_RPC']!));
 }
 
-AvnuReadProvider getAvnuReadProvider() {
+AvnuReadProvider getAvnuReadProvider({BigInt? publicKey, String? apiKey}) {
   final env = Platform.environment;
   if (env['AVNU_RPC'] == null) {
     throw Exception('AVNU_RPC environment variable is not set');
   }
 
-  return AvnuJsonRpcReadProvider(nodeUri: Uri.parse(env['AVNU_RPC']!));
+  return AvnuJsonRpcReadProvider(nodeUri: Uri.parse(env['AVNU_RPC']!), publicKey: publicKey, apiKey: apiKey);
 }
 
-AvnuProvider getAvnuProvider() {
+AvnuProvider getAvnuProvider({BigInt? publicKey, String? apiKey}) {
   final env = Platform.environment;
   if (env['AVNU_RPC'] == null) {
     throw Exception('AVNU_RPC environment variable is not set');
   }
 
-  return AvnuJsonRpcProvider(nodeUri: Uri.parse(env['AVNU_RPC']!));
+  return AvnuJsonRpcProvider(nodeUri: Uri.parse(env['AVNU_RPC']!), publicKey: publicKey, apiKey: apiKey);
 }

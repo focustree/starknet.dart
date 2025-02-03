@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:starknet/starknet.dart';
+import 'package:avnu_provider/src/avnu_config.dart';
 
 Future<dynamic> callRpcEndpoint(
     {required Uri nodeUri, required String method, Object? params}) async {
@@ -46,8 +47,8 @@ Future<dynamic> callRpcEndpoint(
       body = {
         'userAddress': userAddress,
         'calls': calls,
-        'gasTokenAddress': gasTokenAddress,
-        'maxGasTokenAmount': maxGasTokenAmount,
+        if (gasTokenAddress != '') 'gasTokenAddress': gasTokenAddress,
+        if (maxGasTokenAmount != '') 'maxGasTokenAmount': maxGasTokenAmount,
         'accountClassHash': accountClassHash
       };
       break;
@@ -69,13 +70,53 @@ Future<dynamic> callRpcEndpoint(
         if (deploymentData != null) 'deploymentData': deploymentData,
       };
       break;
+    case 'paymaster_get_account_rewards':
+      httpMethod = 'get';
+      final paramsList = params as List<String?>;
+      final address = paramsList[0];
+      // Build query parameters map
+      final queryParams = <String, String>{};
+      final sponsor = paramsList[1];
+      final campaign = paramsList[2];
+      final protocol = paramsList[3];
+      
+      nodeUri = nodeUri.replace(path: '/paymaster/v1/accounts/$address/rewards');
+      if (sponsor != null) queryParams['sponsor'] = sponsor;
+      if (campaign != null) queryParams['campaign'] = campaign;
+      if (protocol != null) queryParams['protocol'] = protocol;
+      
+      if (queryParams.isNotEmpty) {
+        nodeUri = nodeUri.replace(queryParameters: queryParams);
+      }
+      // remove ask-signature from headers until API bug is fixed
+      headers.remove('ask-signature');
+      break;
+    case 'paymaster_set_account_rewards':
+      httpMethod = 'post';
+      final paramsList = params as List<Object?>;
+      headers['accept'] = 'application/json';
+      headers['api-key'] = paramsList[0].toString();
+      headers['content-type'] = 'application/json';
+      final address = paramsList[1];
+      final campaign = paramsList[2];
+      final protocol = paramsList[3];
+      final freeTx = paramsList[4];
+      final expirationDate = paramsList[5];
+      final whitelistedCalls = paramsList[6];
+      nodeUri = nodeUri.replace(path: '/paymaster/v1/accounts/$address/rewards');
+      body = {
+        'address': address,
+        'campaign': campaign,
+        'protocol': protocol,
+        'freeTx': freeTx,
+        'expirationDate': expirationDate,
+        'whitelistedCalls': whitelistedCalls
+      };
+      break;
     default:
       throw Exception('Method not supported');
   };
 
- 
-
-  // 2023-07-13: Disabling symbol sorting is required for Declare V2
   final filteredBody = PythonicJsonEncoder(sortSymbol: false).convert(body);
   //print(filteredBody);
   print("***********************************************");
@@ -85,15 +126,41 @@ Future<dynamic> callRpcEndpoint(
   print(filteredBody);
   final response = httpMethod == 'get' ? await http.get(nodeUri, headers: headers) : await http.post(nodeUri, headers: headers, body: filteredBody);
 
-  final jsonResponse = json.decode(response.body);
-  print("***********************************************");
-  print(jsonResponse); 
+  try {
+    final jsonResponse = json.decode(response.body);
+    print("***********************************************");
+    print(response.headers);
+    print(jsonResponse);
 
-  // // calculate sha256 hash from response.body
-  // final responseHash = sha256.convert(utf8.encode(response.body)).toString();
-  // jsonResponse['response_hash'] = responseHash;
-  // // add signature to the jsonResponse
-  // jsonResponse['signature'] = response.headers['signature'];
+    // Check if response is empty or malformed
+    if (jsonResponse == null) {
+      throw FormatException('Empty response received from server');
+    }
 
-  return jsonResponse;
+    // Only verify signature if public key is configured and ask-signature is true
+    if (AvnuConfig.publicKey != null && response.headers['ask-signature'] == 'true') {
+      // We always check for valid signature in the header
+      final signatureParts = response.headers['signature']!.split(',');
+      final signature = Signature(
+        BigInt.parse(signatureParts[0].substring(2), radix: 16), 
+        BigInt.parse(signatureParts[1].substring(2), radix: 16));
+      // Get pedersen hash from the message body using computeHashOnElements 
+      final messageHash = computeHashOnElements([starknetKeccak(utf8.encode(response.body)).toBigInt()]);
+
+      // Use the configured public key
+      final publicKey = AvnuConfig.publicKey!;
+      // Verify the signature
+      final isValid = starknetVerify(messageHash: messageHash, 
+        signature: signature, 
+        publicKey: publicKey);  
+
+      print("isValid: $isValid");
+      if (!isValid) {
+        throw Exception('Invalid signature');
+      }
+    }
+    return jsonResponse;
+  } on FormatException catch (e) {
+    throw FormatException('Failed to parse server response: ${e.message}. Response body: ${response.body}');
+  }
 }
