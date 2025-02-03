@@ -2,7 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:secure_store/secure_store.dart';
-import 'package:wallet_kit/wallet_kit.dart';
+
+import '../ui/index.dart';
+import '../wallet_state/index.dart';
+import 'password_screen.dart';
 
 class ProtectWalletScreen extends HookConsumerWidget {
   final String seedPhrase;

@@ -1,7 +1,8 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:secure_store/secure_store.dart';
 import 'package:starknet/starknet.dart';
-import 'package:wallet_kit/utils/persisted_notifier_state.dart';
+
+import '../utils/persisted_notifier_state.dart';
 
 part 'wallet_state.freezed.dart';
 part 'wallet_state.g.dart';

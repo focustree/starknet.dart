@@ -17,7 +17,7 @@ Run it locally with `flutter run` to make sure it is properly configured.
 3. Add necessary dependencies
 
 ```bash
-flutter pub add wallet_kit hive_flutter hooks_riverpod flutter_dotenv
+flutter pub add walletkit hive_flutter hooks_riverpod flutter_dotenv
 ```
 
 4. Create a `.env` file in the root of your wallet_app project
@@ -44,7 +44,7 @@ Here is the value for `starknet-devnet 0.2.0`
 
 6. Update Android minimun SDK version
 
-`secure_store` package used by `wallet_kit` require Android minimum SDK version set to at least 23, you need to modify `android/app/build.gradle`:
+`secure_store` package used by `walletkit` require Android minimum SDK version set to at least 23, you need to modify `android/app/build.gradle`:
 ```
     defaultConfig {
         // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
@@ -93,13 +93,13 @@ Future<void> main() async {
 }
 ```
 
-Now let's intialize `wallet_kit` and `hive` in our `main` function
+Now let's intialize `walletkit` and `hive` in our `main` function
 
 ```dart
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:hive_flutter/hive_flutter.dart';
-import 'package:wallet_kit/wallet_kit.dart';
+import 'package:walletkit/wallet_kit.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -144,7 +144,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:wallet_kit/wallet_kit.dart';
+import 'package:walletkit/wallet_kit.dart';
 
 import './screens/home_screen.dart';
 
@@ -195,12 +195,12 @@ class WalletApp extends HookConsumerWidget {
 }
 ```
 
-Create a `screens/` folder and add `home_screen.dart` file with a pre-built layout from `wallet_kit`, as well as `WalletSelector`, `AccountAddress`, `WalletBody` and `SendEthButton`:
+Create a `screens/` folder and add `home_screen.dart` file with a pre-built layout from `walletkit`, as well as `WalletSelector`, `AccountAddress`, `WalletBody` and `SendEthButton`:
 
 ```dart
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:wallet_kit/wallet_kit.dart';
+import 'package:walletkit/wallet_kit.dart';
 
 class HomeScreen extends HookConsumerWidget {
   const HomeScreen({super.key});

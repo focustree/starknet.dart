@@ -1,4 +1,4 @@
-name: wallet_kit
+name: walletkit
 description: A new Flutter package project.
 version: 0.0.3
 homepage: "https://starknetdart.dev"
@@ -8,7 +8,7 @@ environment:
   flutter: ">=1.17.0"
 
 dependencies:
-  ark_project: ^0.1.0+2
+  arkproject: ^0.1.0+2
   starknet: ^0.1.1
   starknet_provider: ^0.1.1
   secure_store: ^0.1.2+1
