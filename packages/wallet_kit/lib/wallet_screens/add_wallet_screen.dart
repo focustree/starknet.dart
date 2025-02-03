@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:wallet_kit/wallet_kit.dart';
+
+import '../services/wallet_service.dart';
+import '../ui/index.dart';
+import 'create_wallet_screen.dart';
+import 'recover_wallet_screen.dart';
 
 class AddWalletScreen extends StatelessWidget {
   const AddWalletScreen({Key? key}) : super(key: key);

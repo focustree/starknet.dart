@@ -1,6 +1,7 @@
 import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:wallet_kit/wallet_kit.dart';
+
+import '../wallet_state/wallet_state.dart';
 
 class WalletTypeIcon extends StatelessWidget {
   final WalletType type;

@@ -1,8 +1,9 @@
-import 'package:ark_project/ark_project.dart';
+import 'package:arkproject/ark_project.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
-import 'package:wallet_kit/wallet_kit.dart';
+
+import '../wallet_state/index.dart';
 
 part 'nft_list.g.dart';
 

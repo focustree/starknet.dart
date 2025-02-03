@@ -3,7 +3,8 @@ library wallet_kit;
 import 'package:flutter/material.dart';
 import 'package:starknet/starknet.dart';
 import 'package:starknet_provider/starknet_provider.dart';
-import 'package:wallet_kit/wallet_kit.dart';
+
+import 'wallet_screens/password_screen.dart';
 
 export 'wallet_state/index.dart';
 export 'wallet_screens/index.dart';

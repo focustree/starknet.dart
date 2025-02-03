@@ -1,10 +1,10 @@
-import 'package:ark_project/ark_project.dart';
+import 'package:arkproject/ark_project.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:nft_marketplace/config.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
-import 'package:wallet_kit/wallet_kit.dart';
+import 'package:walletkit/wallet_kit.dart';
 
 part 'home_screen.g.dart';
 

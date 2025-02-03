@@ -5,8 +5,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-import 'package:wallet_kit/wallet_kit.dart';
-import 'package:wallet_kit/wallet_screens/settings_screen.dart';
+import '../services/index.dart';
+import '../ui/index.dart';
+import '../utils/index.dart';
+import '../wallet_screens/index.dart';
+import '../wallet_screens/settings_screen.dart';
+import '../wallet_state/index.dart';
+import 'icon.dart';
 
 enum WalletListRoute {
   walletList,

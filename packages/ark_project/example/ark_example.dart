@@ -1,4 +1,4 @@
-import 'package:ark_project/ark_project.dart';
+import 'package:arkproject/ark_project.dart';
 import 'package:dotenv/dotenv.dart';
 
 final env = DotEnv(includePlatformEnvironment: true)..load();

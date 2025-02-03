@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:wallet_kit/wallet_kit.dart';
+
+import '../services/index.dart';
 
 class TokenIcon extends StatelessWidget {
   final TokenSymbol symbol;
