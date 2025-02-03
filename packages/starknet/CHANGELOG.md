@@ -1,3 +1,7 @@
+## 0.1.2
+
+ - **FEAT**: add starknet signature verification ([#442](https://github.com/focustree/starknet.dart/issues/442)). ([8a9b0069](https://github.com/focustree/starknet.dart/commit/8a9b00698a647a11d3039d0f2c41e8b539f57dd8))
+
 ## 0.1.1
 
  - **FIX**: trigger new packages release to fix broken dependencies ([#424](https://github.com/focustree/starknet.dart/issues/424)). ([ec3773ea](https://github.com/focustree/starknet.dart/commit/ec3773ea7a2725f4c30b641e86699bcec0eba2c0))

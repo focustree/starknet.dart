@@ -1,6 +1,6 @@
 name: starknet
 description: The Dart SDK to interact with any smart contracts on StarkNet
-version: 0.1.1
+version: 0.1.2
 repository: https://github.com/focustree/starknet.dart
 
 environment:
@@ -14,7 +14,7 @@ dependencies:
   http: ^1.2.2
   json_annotation: ^4.9.0
   pointycastle: ^3.9.1
-  starknet_provider: ^0.1.1
+  starknet_provider: ^0.1.1+1
 
 dev_dependencies:
   build_runner: ^2.4.13
