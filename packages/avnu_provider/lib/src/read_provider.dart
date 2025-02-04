@@ -1,29 +1,29 @@
 import 'package:avnu_provider/avnu_provider.dart';
 
 abstract class AvnuReadProvider {
-  /// Gets the AVNU service status
-  ///
-  /// [Spec](https://doc.avnu.fi/avnu-paymaster/integration/api-references)
+  // Gets the AVNU service status
+  //
+  // [Spec](https://doc.avnu.fi/avnu-paymaster/integration/api-references)
   Future<AvnuStatus> avnuStatus();
 
-  /// Get the AVNU gas token prices
-  ///
-  /// [Spec](https://doc.avnu.fi/avnu-paymaster/integration/api-references)
+  // Get the AVNU gas token prices
+  //
+  // [Spec](https://doc.avnu.fi/avnu-paymaster/integration/api-references)
   Future<AvnuGasTokenPrices> getGasTokenPrices();
 
-  /// Check if the account is compatible with the gasless service
-  ///
-  /// [Spec](https://doc.avnu.fi/avnu-paymaster/integration/api-references)
+  // Check if the account is compatible with the gasless service
+  //
+  // [Spec](https://doc.avnu.fi/avnu-paymaster/integration/api-references)
   Future<AvnuAccountCompatible> checkAccountCompatible(String address);
 
-  /// Get the sponsor activity of the account
-  ///
-  /// [Spec](https://doc.avnu.fi/avnu-paymaster/integration/api-references)
+  // Get the sponsor activity of the account
+  //
+  // [Spec](https://doc.avnu.fi/avnu-paymaster/integration/api-references)
   Future<AvnuSponsorActivity> getSponsorActivity(String startDate, String endDate);
 
-  /// Get the account rewards
-  ///
-  /// [Spec](https://doc.avnu.fi/avnu-paymaster/integration/api-references)
+  // Get the account rewards
+  //
+  // [Spec](https://doc.avnu.fi/avnu-paymaster/integration/api-references)
   Future<AvnuAccountRewards> getAccountRewards(String address, String? sponsor, String? campaign, String? protocol);
 
 }

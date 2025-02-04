@@ -110,7 +110,6 @@ void main() {
         // };
         final avnuExecute = await avnuProvider.execute(userAddress, cleanTypedData, signatureList, deploymentData);
         expect(avnuExecute, isA<AvnuExecute>());
-        print(avnuExecute.toJson());
       });
 
       test('execute sponsored transaction with sponsor api key', () async {
@@ -172,7 +171,6 @@ void main() {
         // };
         final avnuExecute = await avnuProvider.execute(userAddress, cleanTypedData, signatureList, deploymentData);
         expect(avnuExecute, isA<AvnuExecute>());
-        print(avnuExecute.toJson());
       });
 
       test('execute rewards sponsored transaction without sponsor api key', () async {
@@ -254,7 +252,6 @@ void main() {
         // };
         final avnuExecute = await avnuProvider.execute(userAddress, cleanTypedData, signatureList, deploymentData);
         expect(avnuExecute, isA<AvnuExecute>());
-        print(avnuExecute.toJson());
       });
 
       // TODO: test execution with deploymentData for account deploy.
@@ -376,7 +373,6 @@ void main() {
         ];
         final avnuSetAccountRewards = await avnuProvider.setAccountRewards(address, campaign, protocol, freeTx, expirationDate, whitelistedCalls);
         expect(avnuSetAccountRewards, isA<AvnuAccountRewards>());
-        print(avnuSetAccountRewards.toJson());
       });
     });
   }, tags: ['integration'], timeout: Timeout(Duration(minutes: 1)));

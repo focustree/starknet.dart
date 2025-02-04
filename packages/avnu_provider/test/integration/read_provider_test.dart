@@ -65,7 +65,6 @@ void main() {
         avnuGasTokenPrices.when(
           prices: (prices) {
             expect(prices, isNotEmpty);
-            print(prices.map((price) => [price.tokenAddress, price.priceInETH, price.priceInUSD, price.decimals]).join('\n'));
           },
           error: (error) => fail('Should not return an error'),
         );
@@ -83,9 +82,6 @@ void main() {
         avnuAccountCompatible.when(
           isCompatible: (isCompatible, gasConsumedOverhead, dataGasConsumedOverhead) {
             expect(isCompatible, isFalse);
-            print('isCompatible: $isCompatible');
-            print('gasConsumedOverhead: $gasConsumedOverhead');
-            print('dataGasConsumedOverhead: $dataGasConsumedOverhead');
           },
           error: (error) => fail('Should not return an error message: ${error.join(', ')}'),
         );
@@ -97,9 +93,6 @@ void main() {
         avnuAccountCompatible.when(
           isCompatible: (isCompatible, gasConsumedOverhead, dataGasConsumedOverhead) {
             expect(isCompatible, isTrue);
-            print('isCompatible: $isCompatible');
-            print('gasConsumedOverhead: $gasConsumedOverhead');
-            print('dataGasConsumedOverhead: $dataGasConsumedOverhead');
           },
           error: (error) => fail('Should not return an error message: ${error.join(', ')}'),
         );
@@ -111,7 +104,6 @@ void main() {
         final endDate = '2024-02-04T15:08:38.511Z';
         final avnuSponsorActivity = await avnuReadProvider.getSponsorActivity(startDate, endDate);
         expect(avnuSponsorActivity, isA<AvnuSponsorActivity>());
-        print(avnuSponsorActivity.toJson());
       });
     });
     group('getAccountRewards', () {
@@ -120,12 +112,10 @@ void main() {
         // as in https://sepolia.api.avnu.fi/webjars/swagger-ui/index.html#/ test cases
         final avnuAccountRewards = await avnuReadProvider.getAccountRewards('0x039321741034d079C573bAd24dB5F012ed9614554301a2B08bDcb34E01d9C1BF', 'Starknet Foundation', 'Onboarding', 'AVNU');
         expect(avnuAccountRewards, isA<AvnuAccountRewards>());
-        print(avnuAccountRewards.toJson());
       });
       test('returns avnu account rewards with empty response', () async {
         final avnuAccountRewards = await avnuReadProvider.getAccountRewards('0x0123456789abcdef', 'Starknet Foundation', 'Onboarding', 'AVNU');
         expect(avnuAccountRewards, isA<AvnuAccountRewards>());
-        print(avnuAccountRewards.toJson());
       });
     });
   }, tags: ['integration'], timeout: Timeout(Duration(minutes: 1)));

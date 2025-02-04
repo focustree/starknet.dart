@@ -5,7 +5,7 @@ import 'dart:typed_data';
 import 'encode.dart';
 import 'shortstring.dart';
 
-/// Mask for 31 bits
+// Mask for 31 bits
 final mask31 = BigInt.from(0x7FFFFFFF);
 
 String getHex(dynamic value) {
@@ -19,31 +19,25 @@ String getHex(dynamic value) {
   }
 }
 
-/// Test if string is hex-string
+// Test if string is hex-string
 bool isHex(String hex) {
   return RegExp(r'^0x[0-9a-f]*$', caseSensitive: false).hasMatch(hex);
 }
 
-/// Convert to BigInt
+// Convert to BigInt
 BigInt toBigInt(dynamic value) {
   return BigInt.parse(value.toString());
 }
 
-/// Convert to hex-string
+// Convert to hex-string
 String toHex(dynamic value) {
   return addHexPrefix(toBigInt(value).toRadixString(16));
 }
 
-/// Alias of toHex
+// Alias of toHex
 String toHexString(dynamic value) => toHex(value);
 
-/// Convert to storage-key-string
-String toStorageKey(dynamic number) {
-  // TODO: This is not completely correct as it will not enforce first 0 and second [0-7]
-  return addHexPrefix(toBigInt(number).toRadixString(16).padLeft(64, '0'));
-}
-
-/// Convert to hex format 0x + 64 hex chars
+// Convert to hex format 0x + 64 hex chars
 String toHex64(dynamic number) {
   final res = addHexPrefix(toBigInt(number).toRadixString(16).padLeft(64, '0'));
   if (res.length != 66) {
@@ -52,18 +46,18 @@ String toHex64(dynamic number) {
   return res;
 }
 
-/// Convert hexadecimal string to decimal string
+// Convert hexadecimal string to decimal string
 String hexToDecimalString(String hex) {
   return BigInt.parse(addHexPrefix(hex)).toString();
 }
 
-/// Remove hex-string leading zeroes and lowercase it
+// Remove hex-string leading zeroes and lowercase it
 String cleanHex(String hex) {
   final cleaned = hex.toLowerCase();
   return cleaned.replaceFirst(RegExp(r'^(0x)0+'), r'$1');
 }
 
-/// Assert input is in range
+// Assert input is in range
 void assertInRange(
   dynamic input,
   dynamic lowerBound,
@@ -80,22 +74,22 @@ void assertInRange(
   }
 }
 
-/// Convert array to decimal string array
+// Convert array to decimal string array
 List<String> bigNumberishArrayToDecimalStringArray(List<dynamic> data) {
   return data.map((x) => toBigInt(x).toString()).toList();
 }
 
-/// Convert array to hexadecimal string array
+// Convert array to hexadecimal string array
 List<String> bigNumberishArrayToHexadecimalStringArray(List<dynamic> data) {
   return data.map((x) => toHex(x)).toList();
 }
 
-/// Test if string is a whole number
+// Test if string is a whole number
 bool isStringWholeNumber(String str) {
   return RegExp(r'^\d+$').hasMatch(str);
 }
 
-/// Convert string to decimal string
+// Convert string to decimal string
 String getDecimalString(String str) {
   if (isHex(str)) {
     return hexToDecimalString(str);
@@ -106,7 +100,7 @@ String getDecimalString(String str) {
   throw Exception('$str needs to be a hex-string or whole-number-string');
 }
 
-/// Convert string to hexadecimal string
+// Convert string to hexadecimal string
 String getHexString(String str) {
   if (isHex(str)) {
     return str;
@@ -117,17 +111,17 @@ String getHexString(String str) {
   throw Exception('$str needs to be a hex-string or whole-number-string');
 }
 
-/// Convert string array to hex-string array
+// Convert string array to hex-string array
 List<String> getHexStringArray(List<String> array) {
   return array.map(getHexString).toList();
 }
 
-/// Convert boolean to "0" or "1"
+// Convert boolean to "0" or "1"
 String toCairoBool(bool value) {
   return value ? '1' : '0';
 }
 
-/// Convert hex-string to bytes
+// Convert hex-string to bytes
 Uint8List hexToBytes(String str) {
   if (!isHex(str)) {
     throw Exception('$str needs to be a hex-string');
@@ -145,13 +139,13 @@ Uint8List hexToBytes(String str) {
   return Uint8List.fromList(bytes);
 }
 
-/// Add percentage to value
+// Add percentage to value
 BigInt addPercent(dynamic number, int percent) {
   final bigIntNum = toBigInt(number);
   return bigIntNum + (bigIntNum * BigInt.from(percent)) ~/ BigInt.from(100);
 }
 
-/// Check if value is BigNumberish
+// Check if value is BigNumberish
 bool isBigNumberish(dynamic input) {
   return input is num ||
       input is BigInt ||

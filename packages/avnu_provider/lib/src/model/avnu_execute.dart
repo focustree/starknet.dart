@@ -1,7 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-import 'json_rpc_api_error.dart';
-
 part 'avnu_execute.freezed.dart';
 part 'avnu_execute.g.dart';
 

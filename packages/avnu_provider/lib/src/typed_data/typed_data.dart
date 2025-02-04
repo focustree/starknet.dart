@@ -8,7 +8,7 @@ import 'shortstring.dart';
 import 'num.dart';
 import 'encode.dart';
 import 'package:starknet/starknet.dart';
-/// Represents the revision of the TypedData implementation
+// Represents the revision of the TypedData implementation
 enum TypedDataRevision {
   legacy(0),
   active(1);
@@ -17,7 +17,7 @@ enum TypedDataRevision {
   const TypedDataRevision(this.value);
 }
 
-/// Context for encoding process
+// Context for encoding process
 class Context {
   final String? parent;
   final String? key;
@@ -25,7 +25,7 @@ class Context {
   const Context({this.parent, this.key});
 }
 
-/// Configuration for TypedData processing
+// Configuration for TypedData processing
 class Configuration {
   final String domain;
   final Function(List<BigInt>) hashMethod;
@@ -42,7 +42,7 @@ class Configuration {
   });
 }
 
-/// Parameter definition for TypedData
+// Parameter definition for TypedData
 class TypedParameter {
   final String name;
   final String type;
@@ -55,7 +55,7 @@ class TypedParameter {
   });
 }
 
-/// Represents a TypedData message
+// Represents a TypedData message
 class TypedData {
   final Map<String, List<TypedParameter>> types;
   final String primaryType;
@@ -94,7 +94,7 @@ class TypedData {
   }
 }
 
-/// Preset types for TypedData
+// Preset types for TypedData
 final presetTypes = {
   'u256': [
     TypedParameter(name: 'low', type: 'u128'),
@@ -110,7 +110,7 @@ final presetTypes = {
   ],
 };
 
-/// Configuration for different TypedData revisions
+// Configuration for different TypedData revisions
 final revisionConfiguration = {
   TypedDataRevision.legacy: Configuration(
     domain: 'StarkNetDomain',
@@ -128,7 +128,7 @@ final revisionConfiguration = {
   ),
 };
 
-/// Validates that a value is within the specified range
+// Validates that a value is within the specified range
 void assertRange(dynamic data, String type, {required BigInt min, required BigInt max}) {
   final value = BigInt.parse(data.toString());
   if (value < min || value > max) {
@@ -136,7 +136,7 @@ void assertRange(dynamic data, String type, {required BigInt min, required BigIn
   }
 }
 
-/// Identifies the revision of TypedData
+// Identifies the revision of TypedData
 TypedDataRevision identifyRevision(TypedData data) {
   final int revision = data.domain['revision'] is String ? 
           int.tryParse(data.domain['revision']) ?? 0 
@@ -155,7 +155,7 @@ TypedDataRevision identifyRevision(TypedData data) {
   return TypedDataRevision.legacy;
 }
 
-/// Validates that data matches the SNIP-12 JSON schema
+// Validates that data matches the SNIP-12 JSON schema
 bool validateTypedData(dynamic data) {
   if (data is! TypedData) return false;
   
@@ -165,7 +165,7 @@ bool validateTypedData(dynamic data) {
       identifyRevision(data) != null;
 }
 
-/// Gets the message hash for signing
+// Gets the message hash for signing
 BigInt getMessageHash(TypedData typedData, BigInt account) {
   if (!validateTypedData(typedData)) {
     throw Exception('Typed data does not match JSON schema');
@@ -184,7 +184,7 @@ BigInt getMessageHash(TypedData typedData, BigInt account) {
   return BigInt.parse(config.hashMethod(message).toString(),radix: 16);
 }
 
-/// Gets the hash of a struct
+// Gets the hash of a struct
 String getStructHash(
   Map<String, List<TypedParameter>> types,
   String type,
@@ -202,7 +202,7 @@ String getStructHash(
   return config.hashMethod(bigIntValues).toString();
 }
 
-/// Encodes data for signing
+// Encodes data for signing
 List<List<dynamic>> encodeData<T extends TypedData>(
   Map<String, List<TypedParameter>> types,
   String type,
@@ -241,7 +241,7 @@ List<List<dynamic>> encodeData<T extends TypedData>(
   return [returnTypes, values];
 }
 
-/// Encodes a single value to an ABI serializable format
+// Encodes a single value to an ABI serializable format
 List<String> encodeValue(
   Map<String, List<TypedParameter>> types,
   String type,
@@ -316,7 +316,7 @@ List<String> encodeValue(
       }
       return [type, getHex(data)];
 
-    // TODO: Implement merkletree
+    // TODO: Implement merkletree (not required for avnu paymaster)
     // case 'merkletree':
     //   final merkleTreeType = getMerkleTreeType(types, ctx);
     //   final structHashes = (data as List).map((struct) {
@@ -394,7 +394,7 @@ List<String> encodeValue(
   }
 }
 
-/// Helper function to get merkle tree type
+// Helper function to get merkle tree type
 String getMerkleTreeType(Map<String, List<TypedParameter>> types, Context ctx) {
   if (ctx.parent != null && ctx.key != null) {
     final parentType = types[ctx.parent!]!;
@@ -415,18 +415,18 @@ String getMerkleTreeType(Map<String, List<TypedParameter>> types, Context ctx) {
   return 'raw';
 }
 
-/// Prepare selector
+// Prepare selector
 String prepareSelector(String selector) {
   return isHex(selector) ? selector : getSelectorFromName(selector);
 }
 
-/// Get a type string as hash.
-/// 
-/// @param types The types object containing all defined types.
-/// @param type The name of the type to hash.
-/// @param revision The revision of the TypedData.
-/// 
-/// @returns The hash.
+// Get a type string as hash.
+// 
+// @param types The types object containing all defined types.
+// @param type The name of the type to hash.
+// @param revision The revision of the TypedData.
+// 
+// @returns The hash.
 String getTypeHash(
   Map<String, List<TypedParameter>> types,
   String type,
@@ -435,13 +435,13 @@ String getTypeHash(
   return getSelectorFromName(encodeType(types, type, revision));
 }
 
-/// Encode a type to a string. All dependent types are alphabetically sorted.
-/// 
-/// @param types The types object containing all defined types.
-/// @param type The name of the type to encode.
-/// @param revision The revision of the TypedData.
-/// 
-/// @returns The encoded string.
+// Encode a type to a string. All dependent types are alphabetically sorted.
+// 
+// @param types The types object containing all defined types.
+// @param type The name of the type to encode.
+// @param revision The revision of the TypedData.
+// 
+// @returns The encoded string.
 String encodeType(
   Map<String, List<TypedParameter>> types,
   String type,
@@ -475,17 +475,17 @@ String encodeType(
   }).join('');
 }
 
-/// Get the dependencies of a struct type.
-/// If a struct has the same dependency multiple times, it's only included once
-/// in the resulting array.
-/// 
-/// @param types The types object containing all defined types.
-/// @param type The name of the type to get dependencies for.
-/// @param dependencies The array to store dependencies.
-/// @param contains The type contained within the struct.
-/// @param revision The revision of the TypedData.
-/// 
-/// @returns The array of dependencies.
+// Get the dependencies of a struct type.
+// If a struct has the same dependency multiple times, it's only included once
+// in the resulting array.
+// 
+// @param types The types object containing all defined types.
+// @param type The name of the type to get dependencies for.
+// @param dependencies The array to store dependencies.
+// @param contains The type contained within the struct.
+// @param revision The revision of the TypedData.
+// 
+// @returns The array of dependencies.
 List<String> getDependencies(
   Map<String, List<TypedParameter>> types,
   String type, {

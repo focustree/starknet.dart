@@ -1,21 +1,21 @@
 import 'package:avnu_provider/avnu_provider.dart';
 abstract class AvnuProvider {
-  /// Build the data type for the account
-  ///
-  /// [Spec](https://doc.avnu.fi/avnu-paymaster/integration/api-references)
+  // Build the data type for the account
+  //
+  // [Spec](https://doc.avnu.fi/avnu-paymaster/integration/api-references)
   Future<AvnuBuildTypedData> buildTypedData(String userAddress, List<Map<String, dynamic>> calls, String gasTokenAddress, String maxGasTokenAmount, String accountClassHash);
 
-  /// Execute the typed data
-  ///
-  /// [Spec](https://doc.avnu.fi/avnu-paymaster/integration/api-references)
+  // Execute the typed data
+  //
+  // [Spec](https://doc.avnu.fi/avnu-paymaster/integration/api-references)
   Future<AvnuExecute> execute(String userAddress, String typedData, List<String> signature, Map<dynamic, dynamic>? deploymentData);
 
-  /// Set account rewards
-  ///
-  /// [Spec](https://doc.avnu.fi/avnu-paymaster/integration/api-references)
+  // Set account rewards
+  //
+  // [Spec](https://doc.avnu.fi/avnu-paymaster/integration/api-references)
   Future<AvnuAccountRewards> setAccountRewards(String address, String campaign, String protocol, int freeTx, String expirationDate, List<Map<String, String>> whitelistedCalls);
 
-  /// Sets the API key for AVNU service
+  // Sets the API key for AVNU service
   void setApiKey(String apiKey);
 }
 
@@ -35,6 +35,7 @@ class AvnuJsonRpcProvider implements AvnuProvider {
     }
   }
 
+  @override
   void setApiKey(String apiKey) {
     AvnuConfig.setApiKey(apiKey);
   }

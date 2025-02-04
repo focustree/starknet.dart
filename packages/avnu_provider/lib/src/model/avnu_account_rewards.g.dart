@@ -6,20 +6,23 @@ part of 'avnu_account_rewards.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-WhitelistedCall _$WhitelistedCallFromJson(Map<String, dynamic> json) =>
-    WhitelistedCall(
+_$WhitelistedCallImpl _$$WhitelistedCallImplFromJson(
+        Map<String, dynamic> json) =>
+    _$WhitelistedCallImpl(
       contractAddress: json['contractAddress'] as String,
       entrypoint: json['entrypoint'] as String,
     );
 
-Map<String, dynamic> _$WhitelistedCallToJson(WhitelistedCall instance) =>
+Map<String, dynamic> _$$WhitelistedCallImplToJson(
+        _$WhitelistedCallImpl instance) =>
     <String, dynamic>{
       'contractAddress': instance.contractAddress,
       'entrypoint': instance.entrypoint,
     };
 
-AvnuAccountRewards _$AvnuAccountRewardsFromJson(Map<String, dynamic> json) =>
-    AvnuAccountRewards(
+_$AvnuAccountRewardsImpl _$$AvnuAccountRewardsImplFromJson(
+        Map<String, dynamic> json) =>
+    _$AvnuAccountRewardsImpl(
       date:
           json['date'] == null ? null : DateTime.parse(json['date'] as String),
       address: json['address'] as String?,
@@ -36,7 +39,8 @@ AvnuAccountRewards _$AvnuAccountRewardsFromJson(Map<String, dynamic> json) =>
           .toList(),
     );
 
-Map<String, dynamic> _$AvnuAccountRewardsToJson(AvnuAccountRewards instance) =>
+Map<String, dynamic> _$$AvnuAccountRewardsImplToJson(
+        _$AvnuAccountRewardsImpl instance) =>
     <String, dynamic>{
       'date': instance.date?.toIso8601String(),
       'address': instance.address,

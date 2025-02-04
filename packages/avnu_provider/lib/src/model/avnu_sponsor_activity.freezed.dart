@@ -222,16 +222,6 @@ class _$AvnuSponsorActivityGetSponsorActivityImpl
           Map<String, dynamic> json) =>
       _$$AvnuSponsorActivityGetSponsorActivityImplFromJson(json);
 
-//     {
-//   "name": "Starknet.dart",
-//   "succeededTxCount": 0,
-//   "revertedTxCount": 0,
-//   "txCount": 0,
-//   "succeededGasFees": "0x0",
-//   "revertedGasFees": "0x0",
-//   "gasFees": "0x0",
-//   "remainingCredits": "0x0"
-// }
   @override
   final String name;
   @override
@@ -427,16 +417,6 @@ abstract class AvnuSponsorActivityGetSponsorActivity
           Map<String, dynamic> json) =
       _$AvnuSponsorActivityGetSponsorActivityImpl.fromJson;
 
-//     {
-//   "name": "Starknet.dart",
-//   "succeededTxCount": 0,
-//   "revertedTxCount": 0,
-//   "txCount": 0,
-//   "succeededGasFees": "0x0",
-//   "revertedGasFees": "0x0",
-//   "gasFees": "0x0",
-//   "remainingCredits": "0x0"
-// }
   String get name;
   int get succeededTxCount;
   int get revertedTxCount;

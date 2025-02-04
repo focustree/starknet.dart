@@ -118,19 +118,10 @@ Future<dynamic> callRpcEndpoint(
   };
 
   final filteredBody = PythonicJsonEncoder(sortSymbol: false).convert(body);
-  //print(filteredBody);
-  print("***********************************************");
-  print(nodeUri);
-  print(headers);
-  //print(body);
-  print(filteredBody);
   final response = httpMethod == 'get' ? await http.get(nodeUri, headers: headers) : await http.post(nodeUri, headers: headers, body: filteredBody);
 
   try {
     final jsonResponse = json.decode(response.body);
-    print("***********************************************");
-    print(response.headers);
-    print(jsonResponse);
 
     // Check if response is empty or malformed
     if (jsonResponse == null) {
@@ -154,7 +145,6 @@ Future<dynamic> callRpcEndpoint(
         signature: signature, 
         publicKey: publicKey);  
 
-      print("isValid: $isValid");
       if (!isValid) {
         throw Exception('Invalid signature');
       }
