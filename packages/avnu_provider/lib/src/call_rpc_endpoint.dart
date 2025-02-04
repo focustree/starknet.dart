@@ -27,7 +27,7 @@ Future<dynamic> callRpcEndpoint(
       break;
     case 'paymaster_sponsor_activity':
       httpMethod = 'get';
-      headers['api-key'] = (params as List<String>)[0];
+      if ((params as List<String>)[0] != '') headers['api-key'] = (params as List<String>)[0];
       final startDate = params[1];
       final endDate = params[2];
       nodeUri = Uri.parse('${nodeUri.toString()}/paymaster/v1/sponsor-activity?startDate=$startDate&endDate=$endDate');
@@ -36,7 +36,7 @@ Future<dynamic> callRpcEndpoint(
       httpMethod = 'post';
       final paramsList = params as List<dynamic>;
       headers['accept'] = 'application/json';
-      headers['api-key'] = paramsList[0].toString();
+      if (paramsList[0] != '') headers['api-key'] = paramsList[0].toString();
       headers['content-type'] = 'application/json';
       final userAddress = paramsList[1].toString();
       final calls = paramsList[2];
@@ -56,7 +56,7 @@ Future<dynamic> callRpcEndpoint(
       httpMethod = 'post';
       final paramsList = params as List<dynamic>;
       headers['accept'] = 'application/json';
-      headers['api-key'] = paramsList[0].toString();
+      if (paramsList[0] != '') headers['api-key'] = paramsList[0].toString();
       headers['content-type'] = 'application/json';
       final userAddress = paramsList[1].toString();
       final typedData = paramsList[2].toString();
@@ -95,7 +95,7 @@ Future<dynamic> callRpcEndpoint(
       httpMethod = 'post';
       final paramsList = params as List<Object?>;
       headers['accept'] = 'application/json';
-      headers['api-key'] = paramsList[0].toString();
+      if (paramsList[0] != '') headers['api-key'] = paramsList[0].toString();
       headers['content-type'] = 'application/json';
       final address = paramsList[1];
       final campaign = paramsList[2];
