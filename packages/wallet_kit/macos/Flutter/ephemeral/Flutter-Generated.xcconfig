@@ -1,10 +1,10 @@
 // This is a generated file; do not edit or check into version control.
-FLUTTER_ROOT=/Users/lesnitsky/flutter-sdk
-FLUTTER_APPLICATION_PATH=/Users/lesnitsky/w/focustree/starknet.dart/packages/wallet_kit
+FLUTTER_ROOT=/Users/hoossayn/flutter
+FLUTTER_APPLICATION_PATH=/Users/hoossayn/AndroidStudioProjects/starknet.dart/packages/wallet_kit
 COCOAPODS_PARALLEL_CODE_SIGN=true
 FLUTTER_BUILD_DIR=build
-FLUTTER_BUILD_NAME=0.0.1
-FLUTTER_BUILD_NUMBER=0.0.1
+FLUTTER_BUILD_NAME=0.0.3
+FLUTTER_BUILD_NUMBER=0.0.3
 DART_OBFUSCATION=false
 TRACK_WIDGET_CREATION=true
 TREE_SHAKE_ICONS=false

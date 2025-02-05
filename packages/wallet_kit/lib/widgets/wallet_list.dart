@@ -7,7 +7,6 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import 'package:wallet_kit/wallet_kit.dart';
 import 'package:wallet_kit/wallet_screens/settings_screen.dart';
-import '../errors/wallet_kit_error.dart';
 
 enum WalletListRoute {
   walletList,
@@ -204,17 +203,7 @@ class WalletCell extends HookConsumerWidget {
                       ref.read(walletsProvider.notifier).addAccount(
                         walletId: wallet.id,
                         getPassword: () => showPasswordModal(context),
-                      ).catchError((e){
-                         /*
-                         we can add this to the documentation for users to
-                        see how they can also catch error
-                        */
-                        ScaffoldMessenger.of(context).showSnackBar(
-                            SnackBar(
-                              behavior: SnackBarBehavior.floating,
-                                content: Text(e.toString())));
-                        Navigator.of(context).pop();
-                      });
+                      );
                   },
                   icon: Icon(
                     Icons.add_circle_outline_rounded,
