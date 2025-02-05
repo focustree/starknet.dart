@@ -1,4 +1,4 @@
-import 'package:starknet/starknet.dart';
+import 'types/index.dart';
 
 List<Felt> computeCalldata(dynamic data) {
   if (data is String) {
