@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:wallet_kit/wallet_kit.dart';
+
+import '../ui/index.dart';
+import 'protect_wallet_screen.dart';
 
 const space = SizedBox(height: 16);
 

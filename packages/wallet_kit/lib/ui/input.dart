@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:wallet_kit/wallet_kit.dart';
+
+import 'theme.dart';
 
 class TextInput extends StatelessWidget {
   final TextEditingController? controller;

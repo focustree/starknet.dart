@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:wallet_kit/wallet_kit.dart';
 import 'package:starknet/starknet.dart' as s;
+
+import '../services/index.dart';
+import '../ui/index.dart';
+import '../wallet_screens/index.dart';
+import '../wallet_state/index.dart';
 
 final recipientAddress = s.Felt.fromHexString(
     '0x0367c0c4603A29Bc5aCa8E07C6a2776d7c0D325945aBB4F772F448b345Ca4cF7');

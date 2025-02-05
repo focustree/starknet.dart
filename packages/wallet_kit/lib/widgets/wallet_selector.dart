@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:wallet_kit/wallet_kit.dart';
+
+import '../wallet_state/index.dart';
+import 'wallet_list.dart';
 
 class WalletSelector extends HookConsumerWidget {
   const WalletSelector({
