@@ -253,7 +253,7 @@ void main() {
         // Simulate deploy account to get fees
         var maxFee = await account0.getEstimateMaxFeeForDeployAccountTx(
             classHash: classHash,
-            signer: accountSigner,
+            accountSigner: accountSigner,
             provider: provider,
             constructorCalldata: accountConstructorCalldata,
             contractAddressSalt: salt);
@@ -280,7 +280,7 @@ void main() {
         // deploy the account
         final tx = await Account.deployAccount(
             classHash: classHash,
-            signer: accountSigner,
+            accountSigner: accountSigner,
             provider: provider,
             constructorCalldata: accountConstructorCalldata,
             contractAddressSalt: salt,
@@ -322,7 +322,7 @@ void main() {
         // Simulate deploy account to get fees
         var maxFee = await account0.getEstimateMaxFeeForDeployAccountTx(
           classHash: classHash,
-          signer: accountSigner,
+          accountSigner: accountSigner,
           provider: provider,
           constructorCalldata: accountConstructorCalldata,
           contractAddressSalt: salt,
@@ -341,7 +341,7 @@ void main() {
         // deploy account with STRK fee
         final tx = await Account.deployAccount(
           classHash: classHash,
-          signer: accountSigner,
+          accountSigner: accountSigner,
           provider: provider,
           constructorCalldata: accountConstructorCalldata,
           contractAddressSalt: salt,

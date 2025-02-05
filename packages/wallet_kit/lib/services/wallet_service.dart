@@ -163,7 +163,7 @@ class WalletService {
     // call data depends on class hash...
     final constructorCalldata = [signer.publicKey];
     final tx = await s.Account.deployAccount(
-      signer: signer,
+      accountSigner: signer,
       provider: provider,
       constructorCalldata: constructorCalldata,
       classHash: WalletKit().accountClassHash,

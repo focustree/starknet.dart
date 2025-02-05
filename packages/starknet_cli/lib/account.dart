@@ -58,7 +58,7 @@ class AccountDeployCommand extends Command<void> {
     stdout.writeln('Account address: ${accountAddress.toHexString()}');
 
     final res = await Account.deployAccount(
-      signer: signerFromArgs(globalResults),
+      accountSigner: signerFromArgs(globalResults),
       provider: providerFromArgs(globalResults),
       constructorCalldata: [publicKey],
       classHash: accountClassHash,

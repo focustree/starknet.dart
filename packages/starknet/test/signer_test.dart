@@ -18,9 +18,9 @@ void main() {
     () {
       group('signTransactions', () {
         test('returns the right signature for invoke transaction version 0',
-            () {
+            () async {
           final signature =
-              Signer(privateKey: Felt.fromInt(1234)).signTransactions(
+              await Signer(privateKey: Felt.fromInt(1234)).signTransactions(
             transactions: [
               FunctionCall(
                 contractAddress: Felt.fromHexString(

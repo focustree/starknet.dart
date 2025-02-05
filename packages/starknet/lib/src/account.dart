@@ -7,8 +7,16 @@ import 'package:bip32/bip32.dart' as bip32;
 import 'package:bip39/bip39.dart' as bip39;
 import 'package:starknet_provider/starknet_provider.dart';
 
-import '../starknet.dart';
+import 'account/signer/base_account_signer.dart';
+import 'account/signer/stark_account_signer.dart';
+import 'contract/index.dart';
+import 'convert.dart';
+import 'crypto/index.dart';
 import 'presets/udc.g.dart';
+import 'signer.dart';
+import 'signer/stark_signer.dart';
+import 'static_config.dart';
+import 'types/index.dart';
 
 enum AccountSupportedTxVersion {
   @Deprecated('Transaction version 0 will be removed with Starknet alpha v0.11')
@@ -35,7 +43,7 @@ class FeeEstimations {
 /// Account abstraction class
 class Account {
   Provider provider;
-  Signer signer;
+  BaseAccountSigner signer;
   Felt accountAddress;
   Felt chainId;
   AccountSupportedTxVersion supportedTxVersion;
@@ -90,7 +98,7 @@ class Account {
       tip = tip ?? Felt.zero;
     }
 
-    final signature = signer.signTransactions(
+    final signature = await signer.signTransactions(
       transactions: functionCalls,
       contractAddress: accountAddress,
       version: supportedTxVersion == AccountSupportedTxVersion.v3
@@ -194,19 +202,20 @@ class Account {
       paymasterData ??= [];
       tip ??= Felt.zero;
 
-      final signature = signer.signDeclareTransactionV3(
-          compiledContract: compiledContract as CompiledContract,
-          senderAddress: accountAddress,
-          chainId: chainId,
-          nonce: nonce,
-          compiledClassHash: Felt(compiledClassHash!),
-          casmCompiledContract: casmCompiledContract,
-          resourceBounds: resourceBounds,
-          accountDeploymentData: accountDeploymentData,
-          paymasterData: paymasterData,
-          tip: tip,
-          feeDataAvailabilityMode: feeDataAvailabilityMode!,
-          nonceDataAvailabilityMode: nonceDataAvailabilityMode!);
+      final signature = await signer.signDeclareTransactionV3(
+        compiledContract: compiledContract as CompiledContract,
+        senderAddress: accountAddress,
+        chainId: chainId,
+        nonce: nonce,
+        compiledClassHash: Felt(compiledClassHash!),
+        casmCompiledContract: casmCompiledContract,
+        resourceBounds: resourceBounds,
+        accountDeploymentData: accountDeploymentData,
+        paymasterData: paymasterData,
+        tip: tip,
+        feeDataAvailabilityMode: feeDataAvailabilityMode!,
+        nonceDataAvailabilityMode: nonceDataAvailabilityMode!,
+      );
 
       broadcastedTxn = BroadcastedDeclareTxnV3(
         type: 'DECLARE',
@@ -224,7 +233,7 @@ class Account {
         tip: tip.toHexString(),
       );
     } else if (compiledContract is DeprecatedCompiledContract) {
-      final signature = signer.signDeclareTransactionV1(
+      final signature = await signer.signDeclareTransactionV1(
         compiledContract: compiledContract,
         senderAddress: accountAddress,
         chainId: chainId,
@@ -239,7 +248,7 @@ class Account {
           contractClass: compiledContract.compress(),
           senderAddress: accountAddress);
     } else {
-      final signature = signer.signDeclareTransactionV2(
+      final signature = await signer.signDeclareTransactionV2(
         compiledContract: compiledContract as CompiledContract,
         senderAddress: accountAddress,
         chainId: chainId,
@@ -276,7 +285,7 @@ class Account {
     Felt? contractAddressSalt,
     required Felt classHash,
     double feeMultiplier = 1.2,
-    required Signer signer,
+    required BaseAccountSigner accountSigner,
     required Provider provider,
     bool? useSTRKFee = false,
     Felt? contractAddress,
@@ -288,7 +297,7 @@ class Account {
   }) async {
     BroadcastedTxn broadcastedTxn;
     nonce = nonce ?? defaultNonce;
-    contractAddressSalt = contractAddressSalt ?? signer.publicKey;
+    contractAddressSalt = contractAddressSalt ?? accountSigner.publicKey;
     Map<String, ResourceBounds> resourceBounds =
         getResourceBounds(Felt.zero, Felt.zero, Felt.zero, Felt.zero);
 
@@ -298,7 +307,7 @@ class Account {
       paymasterData ??= [];
       tip ??= Felt.zero;
 
-      final signature = signer.signDeployAccountTransactionV3(
+      final signature = await accountSigner.signDeployAccountTransactionV3(
         contractAddress: contractAddress,
         resourceBounds: resourceBounds,
         tip: tip,
@@ -327,7 +336,7 @@ class Account {
         tip: tip.toHexString(),
       );
     } else {
-      final signature = signer.signDeployAccountTransactionV1(
+      final signature = await accountSigner.signDeployAccountTransactionV1(
         contractAddressSalt: contractAddressSalt,
         classHash: classHash,
         constructorCalldata: constructorCalldata,
@@ -484,7 +493,7 @@ class Account {
     }
 
     for (int attempt = 0; attempt < maxAttempts; attempt++) {
-      final signature = signer.signTransactions(
+      final signature = await signer.signTransactions(
         transactions: functionCalls,
         contractAddress: accountAddress,
         version: supportedTxVersion == AccountSupportedTxVersion.v3
@@ -640,7 +649,7 @@ class Account {
       Map<String, ResourceBounds> resourceBounds = getResourceBounds(
           l1MaxAmount, l1MaxPricePerUnit, l2MaxAmount, l2MaxPricePerUnit);
 
-      final signature = signer.signDeclareTransactionV3(
+      final signature = await signer.signDeclareTransactionV3(
         compiledContract: compiledContract as CompiledContract,
         senderAddress: accountAddress,
         chainId: chainId,
@@ -675,7 +684,7 @@ class Account {
     } else {
       if (compiledContract is DeprecatedCompiledContract) {
         max_fee = max_fee ?? defaultMaxFee;
-        final signature = signer.signDeclareTransactionV1(
+        final signature = await signer.signDeclareTransactionV1(
           compiledContract: compiledContract,
           senderAddress: accountAddress,
           chainId: chainId,
@@ -702,7 +711,7 @@ class Account {
                     compiledClassHash: compiledClassHash,
                     casmCompiledContract: casmCompiledContract))
                 .maxFee;
-        final signature = signer.signDeclareTransactionV2(
+        final signature = await signer.signDeclareTransactionV2(
           compiledContract: compiledContract as CompiledContract,
           senderAddress: accountAddress,
           chainId: chainId,
@@ -812,12 +821,12 @@ class Account {
     return accountClassHash != Felt.fromInt(0);
   }
 
-  /// Deploy an account with given [signer], [provider] and [constructorCalldata]
+  /// Deploy an account with given [accountSigner], [provider] and [constructorCalldata]
   ///
   /// Default value for [classHash] is [devnetOpenZeppelinAccountClassHash]
   /// Default value for [contractAddressSalt] is 42
   static Future<DeployAccountTransactionResponse> deployAccount({
-    required Signer signer,
+    required BaseAccountSigner accountSigner,
     required Provider provider,
     required List<Felt> constructorCalldata,
     required Felt classHash,
@@ -844,7 +853,7 @@ class Account {
 
     max_fee = max_fee ?? defaultMaxFee;
     nonce = nonce ?? defaultNonce;
-    contractAddressSalt = contractAddressSalt ?? signer.publicKey;
+    contractAddressSalt = contractAddressSalt ?? accountSigner.publicKey;
 
     if (useSTRKFee!) {
       contractAddress = contractAddress ?? Felt.zero;
@@ -858,7 +867,7 @@ class Account {
       Map<String, ResourceBounds> resourceBounds = getResourceBounds(
           l1MaxAmount, l1MaxPricePerUnit, l2MaxAmount, l2MaxPricePerUnit);
 
-      final signature = signer.signDeployAccountTransactionV3(
+      final signature = await accountSigner.signDeployAccountTransactionV3(
         contractAddress: contractAddress,
         resourceBounds: resourceBounds,
         tip: tip,
@@ -888,7 +897,7 @@ class Account {
         ),
       );
     } else {
-      final signature = signer.signDeployAccountTransactionV1(
+      final signature = await accountSigner.signDeployAccountTransactionV1(
         contractAddressSalt: contractAddressSalt,
         classHash: classHash,
         constructorCalldata: constructorCalldata,
@@ -896,7 +905,6 @@ class Account {
         nonce: nonce,
         maxFee: max_fee,
       );
-
       return provider.addDeployAccountTransaction(
         DeployAccountTransactionRequest(
           deployAccountTransaction: DeployAccountTransactionV1(
@@ -915,6 +923,7 @@ class Account {
   /// Retrieves an account from given [mnemonic], [provider] and [chainId]
   ///
   /// Default [accountDerivation] is [BraavosAccountDerivation]
+  /// FIXME: how to define AccountSigner here ?
   factory Account.fromMnemonic({
     required List<String> mnemonic,
     required Provider provider,
@@ -927,15 +936,15 @@ class Account {
           provider: provider,
           chainId: chainId,
         );
-    final signer =
+    final accountSigner =
         accountDerivation.deriveSigner(mnemonic: mnemonic, index: index);
 
     final accountAddress =
-        accountDerivation.computeAddress(publicKey: signer.publicKey);
+        accountDerivation.computeAddress(publicKey: accountSigner.publicKey);
     return Account(
       accountAddress: accountAddress,
       provider: provider,
-      signer: signer,
+      signer: accountSigner,
       chainId: chainId,
     );
   }
@@ -983,11 +992,12 @@ Account getAccount({
   chainId ??= StarknetChainId.testNet;
 
   final provider = JsonRpcProvider(nodeUri: nodeUri);
-  final signer = Signer(privateKey: privateKey);
+  final accountSigner =
+      StarkAccountSigner(signer: StarkSigner(privateKey: privateKey));
 
   return Account(
     provider: provider,
-    signer: signer,
+    signer: accountSigner,
     accountAddress: accountAddress,
     chainId: chainId,
   );
@@ -1065,7 +1075,7 @@ class OpenzeppelinAccountDerivation implements AccountDerivation {
 
   Future<Felt> deploy({required Account account}) async {
     final tx = await Account.deployAccount(
-      signer: account.signer,
+      accountSigner: account.signer,
       provider: account.provider,
       constructorCalldata: constructorCalldata(
         publicKey: account.signer.publicKey,
