@@ -5,12 +5,11 @@ import 'package:avnu_provider/src/avnu_config.dart';
 
 Future<dynamic> callRpcEndpoint(
     {required Uri nodeUri, required String method, Object? params}) async {
-
   Map<String, String> headers = {};
   headers['accept'] = '*/*';
   headers['ask-signature'] = 'true';
   var httpMethod = '';
-  var body = { };
+  var body = {};
   switch (method) {
     case 'paymaster_status':
       httpMethod = 'get';
@@ -23,14 +22,18 @@ Future<dynamic> callRpcEndpoint(
     case 'paymaster_account_compatible':
       httpMethod = 'get';
       final address = (params as List<String>)[0];
-      nodeUri = nodeUri.replace(path: '/paymaster/v1/accounts/$address/compatible');
+      nodeUri =
+          nodeUri.replace(path: '/paymaster/v1/accounts/$address/compatible');
       break;
     case 'paymaster_sponsor_activity':
       httpMethod = 'get';
-      if ((params as List<String>)[0] != '') headers['api-key'] = (params as List<String>)[0];
+      if ((params as List<String>)[0] != '')
+        headers['api-key'] = (params as List<String>)[0];
       final startDate = params[1];
       final endDate = params[2];
-      nodeUri = Uri.parse('${nodeUri.toString()}/paymaster/v1/sponsor-activity?startDate=$startDate&endDate=$endDate');
+      nodeUri = nodeUri.replace(
+          path: '/paymaster/v1/sponsor-activity',
+          queryParameters: {'startDate': startDate, 'endDate': endDate});
       break;
     case 'paymaster_build_typed_data':
       httpMethod = 'post';
@@ -79,12 +82,13 @@ Future<dynamic> callRpcEndpoint(
       final sponsor = paramsList[1];
       final campaign = paramsList[2];
       final protocol = paramsList[3];
-      
-      nodeUri = nodeUri.replace(path: '/paymaster/v1/accounts/$address/rewards');
+
+      nodeUri =
+          nodeUri.replace(path: '/paymaster/v1/accounts/$address/rewards');
       if (sponsor != null) queryParams['sponsor'] = sponsor;
       if (campaign != null) queryParams['campaign'] = campaign;
       if (protocol != null) queryParams['protocol'] = protocol;
-      
+
       if (queryParams.isNotEmpty) {
         nodeUri = nodeUri.replace(queryParameters: queryParams);
       }
@@ -103,7 +107,8 @@ Future<dynamic> callRpcEndpoint(
       final freeTx = paramsList[4];
       final expirationDate = paramsList[5];
       final whitelistedCalls = paramsList[6];
-      nodeUri = nodeUri.replace(path: '/paymaster/v1/accounts/$address/rewards');
+      nodeUri =
+          nodeUri.replace(path: '/paymaster/v1/accounts/$address/rewards');
       body = {
         'address': address,
         'campaign': campaign,
@@ -115,10 +120,13 @@ Future<dynamic> callRpcEndpoint(
       break;
     default:
       throw Exception('Method not supported');
-  };
+  }
+  ;
 
   final filteredBody = PythonicJsonEncoder(sortSymbol: false).convert(body);
-  final response = httpMethod == 'get' ? await http.get(nodeUri, headers: headers) : await http.post(nodeUri, headers: headers, body: filteredBody);
+  final response = httpMethod == 'get'
+      ? await http.get(nodeUri, headers: headers)
+      : await http.post(nodeUri, headers: headers, body: filteredBody);
 
   try {
     final jsonResponse = json.decode(response.body);
@@ -129,21 +137,22 @@ Future<dynamic> callRpcEndpoint(
     }
 
     // Only verify signature if public key is configured and ask-signature is true
-    if (AvnuConfig.publicKey != null && response.headers['ask-signature'] == 'true') {
+    if (AvnuConfig.instance.publicKey != null &&
+        response.headers['ask-signature'] == 'true') {
       // We always check for valid signature in the header
       final signatureParts = response.headers['signature']!.split(',');
       final signature = Signature(
-        BigInt.parse(signatureParts[0].substring(2), radix: 16), 
-        BigInt.parse(signatureParts[1].substring(2), radix: 16));
-      // Get pedersen hash from the message body using computeHashOnElements 
-      final messageHash = computeHashOnElements([starknetKeccak(utf8.encode(response.body)).toBigInt()]);
+          BigInt.parse(signatureParts[0].substring(2), radix: 16),
+          BigInt.parse(signatureParts[1].substring(2), radix: 16));
+      // Get pedersen hash from the message body using computeHashOnElements
+      final messageHash = computeHashOnElements(
+          [starknetKeccak(utf8.encode(response.body)).toBigInt()]);
 
       // Use the configured public key
-      final publicKey = AvnuConfig.publicKey!;
+      final publicKey = AvnuConfig.instance.publicKey!;
       // Verify the signature
-      final isValid = starknetVerify(messageHash: messageHash, 
-        signature: signature, 
-        publicKey: publicKey);  
+      final isValid = starknetVerify(
+          messageHash: messageHash, signature: signature, publicKey: publicKey);
 
       if (!isValid) {
         throw Exception('Invalid signature');
@@ -151,6 +160,7 @@ Future<dynamic> callRpcEndpoint(
     }
     return jsonResponse;
   } on FormatException catch (e) {
-    throw FormatException('Failed to parse server response: ${e.message}. Response body: ${response.body}');
+    throw FormatException(
+        'Failed to parse server response: ${e.message}. Response body: ${response.body}');
   }
 }

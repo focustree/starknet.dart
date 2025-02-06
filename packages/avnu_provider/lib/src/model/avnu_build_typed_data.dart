@@ -36,8 +36,7 @@ class Domain with _$Domain {
     @JsonKey(name: 'revision') String? revision,
   }) = _Domain;
 
-  factory Domain.fromJson(Map<String, dynamic> json) =>
-      _$DomainFromJson(json);
+  factory Domain.fromJson(Map<String, dynamic> json) => _$DomainFromJson(json);
 }
 
 @freezed
@@ -45,7 +44,7 @@ class Message with _$Message {
   const factory Message({
     @JsonKey(name: 'caller') String? callerv1,
     @JsonKey(name: 'Caller') String? callerv2,
-    @JsonKey(name: 'nonce')  String? noncev1,
+    @JsonKey(name: 'nonce') String? noncev1,
     @JsonKey(name: 'Nonce') String? noncev2,
     @JsonKey(name: 'execute_after') String? executeAfterv1,
     @JsonKey(name: 'Execute After') String? executeAfterv2,
@@ -59,7 +58,6 @@ class Message with _$Message {
 
   factory Message.fromJson(Map<String, dynamic> json) =>
       _$MessageFromJson(json);
-
 }
 
 @freezed
@@ -74,6 +72,5 @@ class Call with _$Call {
     @JsonKey(name: 'Calldata') List<String>? calldatav2,
   }) = _Call;
 
-  factory Call.fromJson(Map<String, dynamic> json) =>
-      _$CallFromJson(json);
+  factory Call.fromJson(Map<String, dynamic> json) => _$CallFromJson(json);
 }

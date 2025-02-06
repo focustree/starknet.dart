@@ -8,6 +8,7 @@ import 'shortstring.dart';
 import 'num.dart';
 import 'encode.dart';
 import 'package:starknet/starknet.dart';
+
 // Represents the revision of the TypedData implementation
 enum TypedDataRevision {
   legacy(0),
@@ -69,7 +70,6 @@ class TypedData {
     required this.message,
   });
 
-
   factory TypedData.fromJson(Map<String, dynamic> json) {
     // Convert the types map to the correct format
     final typesMap = (json['types'] as Map<String, dynamic>).map(
@@ -129,7 +129,8 @@ final revisionConfiguration = {
 };
 
 // Validates that a value is within the specified range
-void assertRange(dynamic data, String type, {required BigInt min, required BigInt max}) {
+void assertRange(dynamic data, String type,
+    {required BigInt min, required BigInt max}) {
   final value = BigInt.parse(data.toString());
   if (value < min || value > max) {
     throw Exception('$value ($type) is out of bounds [$min, $max]');
@@ -138,16 +139,18 @@ void assertRange(dynamic data, String type, {required BigInt min, required BigIn
 
 // Identifies the revision of TypedData
 TypedDataRevision identifyRevision(TypedData data) {
-  final int revision = data.domain['revision'] is String ? 
-          int.tryParse(data.domain['revision']) ?? 0 
-          : 0;
+  final int revision = data.domain['revision'] is String
+      ? int.tryParse(data.domain['revision']) ?? 0
+      : 0;
 
-  if (data.types.containsKey(revisionConfiguration[TypedDataRevision.active]!.domain) &&
+  if (data.types.containsKey(
+          revisionConfiguration[TypedDataRevision.active]!.domain) &&
       revision == TypedDataRevision.active.value) {
     return TypedDataRevision.active;
   }
 
-  if (data.types.containsKey(revisionConfiguration[TypedDataRevision.legacy]!.domain) &&
+  if (data.types.containsKey(
+          revisionConfiguration[TypedDataRevision.legacy]!.domain) &&
       revision == TypedDataRevision.legacy.value) {
     return TypedDataRevision.legacy;
   }
@@ -158,7 +161,7 @@ TypedDataRevision identifyRevision(TypedData data) {
 // Validates that data matches the SNIP-12 JSON schema
 bool validateTypedData(dynamic data) {
   if (data is! TypedData) return false;
-  
+
   return data.message != null &&
       data.primaryType != null &&
       data.types != null &&
@@ -176,12 +179,14 @@ BigInt getMessageHash(TypedData typedData, BigInt account) {
 
   final message = <BigInt>[
     BigInt.parse(encodeShortString('StarkNet Message')),
-    BigInt.parse(addHexPrefix(getStructHash(typedData.types, config.domain, typedData.domain, revision))),
+    BigInt.parse(addHexPrefix(getStructHash(
+        typedData.types, config.domain, typedData.domain, revision))),
     account,
-    BigInt.parse(addHexPrefix(getStructHash(typedData.types, typedData.primaryType, typedData.message, revision))),
+    BigInt.parse(addHexPrefix(getStructHash(
+        typedData.types, typedData.primaryType, typedData.message, revision))),
   ];
 
-  return BigInt.parse(config.hashMethod(message).toString(),radix: 16);
+  return BigInt.parse(config.hashMethod(message).toString(), radix: 16);
 }
 
 // Gets the hash of a struct
@@ -209,7 +214,8 @@ List<List<dynamic>> encodeData<T extends TypedData>(
   Map<String, dynamic> data,
   TypedDataRevision revision,
 ) {
-  final targetType = types[type] ?? revisionConfiguration[revision]!.presetTypes[type];
+  final targetType =
+      types[type] ?? revisionConfiguration[revision]!.presetTypes[type];
   if (targetType == null) {
     throw Exception('Type $type not found in types definition');
   }
@@ -276,12 +282,15 @@ List<String> encodeValue(
     final hashes = (data as List).map((entry) {
       return encodeValue(types, baseType, entry, Context(), revision)[1];
     }).toList();
-    return [type, revisionConfiguration[revision]!.hashMethod(hashes.map((e) {
-      final str = e.toString();
-      // Add '0x' prefix if not present for hex strings
-      final hexStr = str.startsWith('0x') ? str : '0x$str';
-      return BigInt.parse(hexStr);
-    }).toList())];
+    return [
+      type,
+      revisionConfiguration[revision]!.hashMethod(hashes.map((e) {
+        final str = e.toString();
+        // Add '0x' prefix if not present for hex strings
+        final hexStr = str.startsWith('0x') ? str : '0x$str';
+        return BigInt.parse(hexStr);
+      }).toList())
+    ];
   }
 
   // Handle specific types
@@ -292,8 +301,8 @@ List<String> encodeValue(
         final variantKey = entry.key;
         final variantData = entry.value;
 
-        final parentType = types[ctx.parent!]!
-            .firstWhere((t) => t.name == ctx.key);
+        final parentType =
+            types[ctx.parent!]!.firstWhere((t) => t.name == ctx.key);
         final enumType = types[parentType.contains!]!;
         final variantType = enumType.firstWhere((t) => t.name == variantKey);
         final variantIndex = enumType.indexOf(variantType);
@@ -301,17 +310,26 @@ List<String> encodeValue(
         final subtypes = variantType.type
             .substring(1, variantType.type.length - 1)
             .split(',');
-        
-        final encodedSubtypes = subtypes.asMap().entries.map((entry) {
-          final subtype = entry.value;
-          if (subtype.isEmpty) return null;
-          final subtypeData = (variantData as List)[entry.key];
-          return encodeValue(types, subtype, subtypeData, Context(), revision)[1];
-        }).whereType<String>().toList();
+
+        final encodedSubtypes = subtypes
+            .asMap()
+            .entries
+            .map((entry) {
+              final subtype = entry.value;
+              if (subtype.isEmpty) return null;
+              final subtypeData = (variantData as List)[entry.key];
+              return encodeValue(
+                  types, subtype, subtypeData, Context(), revision)[1];
+            })
+            .whereType<String>()
+            .toList();
 
         return [
           type,
-          revisionConfiguration[revision]!.hashMethod([BigInt.from(variantIndex), ...encodedSubtypes.map((e) => BigInt.parse(e)).toList()]),
+          revisionConfiguration[revision]!.hashMethod([
+            BigInt.from(variantIndex),
+            ...encodedSubtypes.map((e) => BigInt.parse(e))
+          ]),
         ];
       }
       return [type, getHex(data)];
@@ -347,7 +365,11 @@ List<String> encodeValue(
           byteArray.pendingWord,
           byteArray.pendingWordLen,
         ];
-        return [type, revisionConfiguration[revision]!.hashMethod(elements.map((e) => BigInt.parse(e.toString())).toList())];
+        return [
+          type,
+          revisionConfiguration[revision]!.hashMethod(
+              elements.map((e) => BigInt.parse(e.toString())).toList())
+        ];
       }
       return [type, getHex(data)];
 
@@ -355,12 +377,9 @@ List<String> encodeValue(
     case 'u128':
     case 'timestamp':
       if (revision == TypedDataRevision.active) {
-        assertRange(
-          data, 
-          type, 
-          min: BigInt.zero,
-          max: BigInt.parse('340282366920938463463374607431768211455')
-        );
+        assertRange(data, type,
+            min: BigInt.zero,
+            max: BigInt.parse('340282366920938463463374607431768211455'));
       }
       return [type, getHex(data)];
     case 'felt':
@@ -378,7 +397,8 @@ List<String> encodeValue(
     case 'ClassHash':
     case 'ContractAddress':
       if (revision == TypedDataRevision.active) {
-        assertRange(data, type, min: BigInt.from(0), max: BigInt.from(2).pow(251));
+        assertRange(data, type,
+            min: BigInt.from(0), max: BigInt.from(2).pow(251));
       }
       return [type, getHex(data)];
     case 'bool':
@@ -399,17 +419,17 @@ String getMerkleTreeType(Map<String, List<TypedParameter>> types, Context ctx) {
   if (ctx.parent != null && ctx.key != null) {
     final parentType = types[ctx.parent!]!;
     final merkleType = parentType.firstWhere((t) => t.name == ctx.key);
-    
+
     if (merkleType.type != 'merkletree') {
       throw Exception('${ctx.key} is not a merkle tree');
     }
-    
+
     if (merkleType.contains!.endsWith('*')) {
       throw Exception(
         'Merkle tree contain property must not be an array but was given ${ctx.key}',
       );
     }
-    
+
     return merkleType.contains!;
   }
   return 'raw';
@@ -421,11 +441,11 @@ String prepareSelector(String selector) {
 }
 
 // Get a type string as hash.
-// 
+//
 // @param types The types object containing all defined types.
 // @param type The name of the type to hash.
 // @param revision The revision of the TypedData.
-// 
+//
 // @returns The hash.
 String getTypeHash(
   Map<String, List<TypedParameter>> types,
@@ -436,11 +456,11 @@ String getTypeHash(
 }
 
 // Encode a type to a string. All dependent types are alphabetically sorted.
-// 
+//
 // @param types The types object containing all defined types.
 // @param type The name of the type to encode.
 // @param revision The revision of the TypedData.
-// 
+//
 // @returns The encoded string.
 String encodeType(
   Map<String, List<TypedParameter>> types,
@@ -459,9 +479,10 @@ String encodeType(
 
   return newTypes.map((dependency) {
     final dependencyElements = allTypes[dependency]!.map((t) {
-      final targetType = t.type == 'enum' && revision == TypedDataRevision.active
-          ? t.contains!
-          : t.type;
+      final targetType =
+          t.type == 'enum' && revision == TypedDataRevision.active
+              ? t.contains!
+              : t.type;
 
       // Handle parentheses for enum variant types
       final typeString = targetType.startsWith('(') && targetType.endsWith(')')
@@ -478,13 +499,13 @@ String encodeType(
 // Get the dependencies of a struct type.
 // If a struct has the same dependency multiple times, it's only included once
 // in the resulting array.
-// 
+//
 // @param types The types object containing all defined types.
 // @param type The name of the type to get dependencies for.
 // @param dependencies The array to store dependencies.
 // @param contains The type contained within the struct.
 // @param revision The revision of the TypedData.
-// 
+//
 // @returns The array of dependencies.
 List<String> getDependencies(
   Map<String, List<TypedParameter>> types,
@@ -510,7 +531,8 @@ List<String> getDependencies(
     }
   }
 
-  if (dependencies.contains(processedType) || !types.containsKey(processedType)) {
+  if (dependencies.contains(processedType) ||
+      !types.containsKey(processedType)) {
     return dependencies;
   }
 
@@ -528,4 +550,4 @@ List<String> getDependencies(
   }
 
   return dependencies;
-} 
+}

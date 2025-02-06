@@ -64,7 +64,8 @@ void assertInRange(
   dynamic upperBound, [
   String inputName = '',
 ]) {
-  final messageSuffix = inputName.isEmpty ? 'invalid length' : 'invalid $inputName length';
+  final messageSuffix =
+      inputName.isEmpty ? 'invalid length' : 'invalid $inputName length';
   final inputBigInt = toBigInt(input);
   final lowerBoundBigInt = toBigInt(lowerBound);
   final upperBoundBigInt = toBigInt(upperBound);
@@ -150,4 +151,4 @@ bool isBigNumberish(dynamic input) {
   return input is num ||
       input is BigInt ||
       (input is String && (isHex(input) || isStringWholeNumber(input)));
-} 
+}

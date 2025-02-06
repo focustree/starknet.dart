@@ -48,7 +48,7 @@ String encodeShortString(String str) {
   if (!isShortString(str)) {
     throw Exception('$str is too long');
   }
-  
+
   final hexChars = str.codeUnits.map((unit) => unit.toRadixString(16)).join();
   return addHexPrefix(hexChars);
 }
@@ -62,12 +62,12 @@ String decodeShortString(String str) {
   if (isHex(str)) {
     final hexStr = removeHexPrefix(str);
     final buffer = <int>[];
-    
+
     for (var i = 0; i < hexStr.length; i += 2) {
       final hexPair = hexStr.substring(i, i + 2);
       buffer.add(int.parse(hexPair, radix: 16));
     }
-    
+
     return String.fromCharCodes(buffer);
   }
 
@@ -113,4 +113,4 @@ ByteArray byteArrayFromString(String str) {
     pendingWord: pendingWord,
     pendingWordLen: pendingWordLen,
   );
-} 
+}

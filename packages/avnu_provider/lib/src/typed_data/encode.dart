@@ -76,7 +76,9 @@ String padLeft(
 int calcByteLength(String str, [int byteSize = 8]) {
   final length = str.length;
   final remainder = length % byteSize;
-  return remainder > 0 ? ((length - remainder) ~/ byteSize) * byteSize + byteSize : length;
+  return remainder > 0
+      ? ((length - remainder) ~/ byteSize) * byteSize + byteSize
+      : length;
 }
 
 // Prepend '0' to string bytes
@@ -98,23 +100,21 @@ String sanitizeHex(String hex) {
 // Convert PascalCase to SCREAMING_SNAKE_CASE
 String pascalToSnake(String text) {
   if (!RegExp(r'[a-z]').hasMatch(text)) return text;
-  
-  return text
-      .split(RegExp(r'(?=[A-Z])'))
-      .join('_')
-      .toUpperCase();
+
+  return text.split(RegExp(r'(?=[A-Z])')).join('_').toUpperCase();
 }
 
 // Combine multiple Uint8Arrays into one
 Uint8List concatenateArrayBuffer(List<Uint8List> uint8arrays) {
-  final totalLength = uint8arrays.fold<int>(0, (total, array) => total + array.length);
+  final totalLength =
+      uint8arrays.fold<int>(0, (total, array) => total + array.length);
   final result = Uint8List(totalLength);
   var offset = 0;
-  
+
   for (final array in uint8arrays) {
     result.setRange(offset, offset + array.length, array);
     offset += array.length;
   }
-  
+
   return result;
-} 
+}

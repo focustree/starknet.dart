@@ -17,7 +17,10 @@ AvnuReadProvider getAvnuReadProvider({BigInt? publicKey, String? apiKey}) {
     throw Exception('AVNU_RPC environment variable is not set');
   }
 
-  return AvnuJsonRpcReadProvider(nodeUri: Uri.parse(env['AVNU_RPC']!), publicKey: publicKey, apiKey: apiKey);
+  return AvnuJsonRpcReadProvider(
+      nodeUri: Uri.parse(env['AVNU_RPC']!),
+      publicKey: publicKey,
+      apiKey: apiKey);
 }
 
 AvnuProvider getAvnuProvider({BigInt? publicKey, String? apiKey}) {
@@ -26,5 +29,8 @@ AvnuProvider getAvnuProvider({BigInt? publicKey, String? apiKey}) {
     throw Exception('AVNU_RPC environment variable is not set');
   }
 
-  return AvnuJsonRpcProvider(nodeUri: Uri.parse(env['AVNU_RPC']!), publicKey: publicKey, apiKey: apiKey);
+  return AvnuJsonRpcProvider(
+      nodeUri: Uri.parse(env['AVNU_RPC']!),
+      publicKey: publicKey,
+      apiKey: apiKey);
 }
