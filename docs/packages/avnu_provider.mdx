@@ -1,0 +1,255 @@
+# AVNU Paymaster Provider
+
+## Index
+
+- [I. Introduction](#i-introduction)
+- [II. Functions](#ii-functions)
+- [III. Example](#iii-example)
+
+AVNU Paymaster Provider is a Dart package that provides a way to interact with the AVNU paymaster service.
+
+## I. Introduction
+
+With these provider you (as sponsor) will be able to pay your users' gas fees and you (as a user) will be able to execute gasless transactions sponsored by the sponsor. So, the user will simply sign a typed data containing the calls he wants to execute. The gas fees in ETH, will be 
+paid by Avnu relayers to execute the transaction. The process is as follows:
+
+1.  As Sponsor, take contact with Avnu admins to get an API key and add credits to your account to be able to pay for the gas fees of your users. As mentioned in [Avnu docs](https://doc.avnu.fi/avnu-paymaster/cover-your-users-gas-fees)
+2.  Then, add rewards to an account address (using `setAccountRewards` function) setting how many transactions you want to cover for that user, which contracts and functions he will be able to execute and expiration date of the rewards.
+3.  Notify your users you have added rewards to their account.
+4.  (Optional) User could check at any time how many transactions are left for his account (using `getAccountRewards` function).
+5.  User prepare their transaction (using `buildTypedData` function).
+6.  And finally, sign it (using `execute` function) and send it to the Avnu relayer.
+7.  The relayer will execute the transaction, pay the gas fees and the sponsor will be charged for the gas fees.
+8.  (Optional) The sponsor could check their rewards status (using `getSponsorActivity` function) and monitor the rewards usage.
+
+## II. Functions.
+
+As a Sponsor, you will be able to use the following functions:
+
+### 1) `checkAccountCompatible(String address);`
+Check if the account address is compatible with the AVNU gasless service. Currently, the following class hashes are supported ( for an updated list, check the [API reference](https://doc.avnu.fi/avnu-paymaster/integration/guides-and-examples)):
+
+- 0x01a736d6ed154502257f02b1ccdf4d9d1089f80811cd6acad48e6b6a9d1f2003 (ArgentX)
+- 0x029927c8af6bccf3f6fda035981e765a7bdbf18a2dc0d630494f8758aa908e2b (ArgentX)
+- 0x36078334509b514626504edc9fb252328d1a240e4e948bef8d0c08dff45927f (ArgentX)
+- 0x03d16c7a9a60b0593bd202f660a28c5d76e0403601d9ccc7e4fa253b6a70c201 (Braavos)
+
+Arguments:
+- `address`: The account address to check.
+
+### 2) `setAccountRewards(String address, String campaign, String protocol, int freeTx, String expirationDate, List<Map<String, String>> whitelistedCalls)`
+Set rewards to an account address.
+
+Arguments:
+- `address`: The account address to check.
+- `campaign`: The campaign name.
+- `protocol`: The protocol name.
+- `freeTx`: The number of free transactions.
+- `expirationDate`: The expiration date of the rewards.
+- `whitelistedCalls`: The list of whitelisted contracts adresses and/or functions (* as wildcard).
+
+### 3) `getSponsorActivity(String startDate, String endDate);`
+Get the sponsor activity of the account.
+
+Arguments:
+- `startDate`: The start date of the activity.
+- `endDate`: The end date of the activity (max diff between startDate and endDate is 7 days).
+
+### 4) `setApiKey(String apiKey);`
+Sets the API key for AVNU service.
+
+Arguments:
+- `apiKey`: The API key established with Avnu admins.    
+
+As a user (without API key), you will be able to use the following functions:
+
+### 1) `buildTypedData(String userAddress, List<Map<String, dynamic>> calls, String gasTokenAddress, String maxGasTokenAmount, String accountClassHash)`
+Prepare and build a typed data to execute a transaction (mandatory step previous to execute a transaction).
+
+Arguments:
+- `userAddress`: Your user account address.
+- `calls`: The list of calls to execute.
+- `gasTokenAddress`: The gas token address. (Optional, this must be excluded if you want to use your rewards)
+- `maxGasTokenAmount`: The max gas token amount. (Optional, this must be excluded if you want to use your rewards)
+- `accountClassHash`: The account class hash.
+
+### 2) `execute(String userAddress, String typedData, List<String> signature, Map<dynamic, dynamic>? deploymentData);`
+Execute transactions.
+
+Arguments:
+- `userAddress`: Your user account address.
+- `typedData`: The typed data.
+- `signature`: The type data signature (as indicated in SNIP-12).
+- `deploymentData`: The deployment data. At this moment, this field is not used and is only provided for future compatibility with gasless account deployment.
+
+Common functions:
+
+### 1) `avnuStatus();`
+Get the AVNU service status.
+
+Arguments:
+- `None`.
+
+### 2) `getGasTokenPrices();`
+Get the AVNU gas token prices.
+
+Arguments:
+- `None`.
+
+## III. Examples
+
+You could check more examples in the packages [test](https://github.com/focustree/starknet.dart/packages/avnu_provider/test) folder.
+
+### As a Sponsor
+As a sponsor, we may allocate rewards to users, enabling them to execute gasless transactions. In the following example, 
+we allocate 1 free transaction in our `Onboarding` campaign to the user. He, may use this transaction in any contract and function.
+
+```dart
+import 'package:avnu_provider/avnu_provider.dart';
+// Initate avnu provider with a public key only in case you want to check for API signature (recommended).
+// Remember that if you have a compressed public key with the x coordinate like for example 0x030429c489.... , 
+// then you must remove the 03 prefix and use the x coordinate only: 0x0429c489.....
+
+final apiKey = 'your_api_key';
+final publicKey = BigInt.parse("0429c489be63b21c399353e03a9659cfc1650b24bae1e9ebdde0aef2b38deb44",radix: 16);
+final AvnuProvider avnuProvider = getAvnuProvider(publicKey: publicKey, apiKey: apiKey);
+...
+...
+final address = sepoliaAccount0.accountAddress.toHexString();
+final campaign = 'Onboarding';
+final protocol = 'AVNU';
+final freeTx = 1;
+// set expiration date as utc + one hour in the future
+final expirationDate = DateTime.now().add(Duration(hours: 1)).toUtc().toIso8601String();
+final whitelistedCalls = [
+    {
+    'contractAddress': '*',
+    'entrypoint': '*'
+    }
+];
+final avnuSetAccountRewards = await avnuProvider.setAccountRewards(address, campaign, protocol, freeTx, expirationDate, whitelistedCalls);
+``` 
+
+### As a User
+As a user, we set our transaction that we want to be sponsored. In the following example, we set an approve transaction to the ERC20 contract.
+
+```dart
+import 'package:avnu_provider/avnu_provider.dart';
+
+// Initate avnu provider with a public key only in case you want to check for API signature (recommended).
+// Remember that if you have a compressed public key with the x coordinate like for example 0x030429c489.... , 
+// then you must remove the 03 prefix and use the x coordinate only: 0x0429c489.....
+final publicKey = BigInt.parse("0429c489be63b21c399353e03a9659cfc1650b24bae1e9ebdde0aef2b38deb44",radix: 16);
+final AvnuProvider avnuProvider = getAvnuProvider(publicKey: publicKey);
+...
+...
+// Set the transaction that we want to be sponsored
+// In this case we will set an approve transaction to the ERC20 contract.
+final userAddress = sepoliaAccount0.accountAddress.toHexString();
+final calls = [
+    {
+    'contractAddress': '0x049d36570d4e46f48e99674bd3fcc84644ddd6b96f7c741b1562b82f9e004dc7',
+    'entrypoint': 'approve',
+    'calldata': [
+        '0x498e484da80a8895c77dcad5362ae483758050f22a92af29a385459b0365bfe',
+        '0xf',
+        '0x0'
+    ]
+    }
+];
+``` 
+
+Now, we set other parameters to get our builded typed data from Avnu API. If we want that our transaction be sponsored, don't set the gasTokenAddress and maxGasTokenAmount fields
+ as indicated in [Avnu docs](https://doc.avnu.fi/avnu-paymaster/cover-your-users-gas-fees).
+
+```dart
+final gasTokenAddress = '';
+final maxGasTokenAmount = '';
+
+final accountClassHash = (await provider.getClassHashAt(
+    contractAddress: sepoliaAccount0.accountAddress,
+    blockId: BlockId.latest,
+))
+    .when(
+    result: (result) => result.toHexString(),
+    error: (error) => Felt.fromInt(0).toHexString(),
+);
+
+// Build the typed data
+final avnuBuildTypedData = await avnuProvider.buildTypedData(userAddress, calls, gasTokenAddress, maxGasTokenAmount, accountClassHash);
+``` 
+In the background, this is an example of asuccesful API response:
+
+```dart
+{types: 
+    {StarknetDomain: [
+        {name: name, type: shortstring}, 
+        {name: version, type: shortstring}, 
+        {name: chainId, type: shortstring}, 
+        {name: revision, type: shortstring}], 
+        OutsideExecution: [
+            {name: Caller, type: ContractAddress}, 
+            {name: Nonce, type: felt}, 
+            {name: Execute After, type: u128}, 
+            {name: Execute Before, type: u128}, 
+            {name: Calls, type: Call*}], 
+            Call: 
+                {name: To, type: ContractAddress}, 
+                {name: Selector, type: selector}, 
+                {name: Calldata, type: felt*}]}, 
+                primaryType: OutsideExecution, 
+                domain: {name: Account.execute_from_outside, version: 2, chainId: 0x534e5f5345504f4c4941, revision: 1},
+                message: {
+                    Caller: 0x75a180e18e56da1b1cae181c92a288f586f5fe22c18df21cf97886f1e4b316c, 
+                    Nonce: 0x264286408869284018bf8a96ba21459e1230e19226bcb1a70332700f0503cb3, 
+                    Execute After: 0x1, 
+                    Execute Before: 0x194d200bc56, 
+                    Calls: [{
+                        To: 0x49d36570d4e46f48e99674bd3fcc84644ddd6b96f7c741b1562b82f9e004dc7, 
+                        Selector: 0x219209e083275171774dab1df80982e9df2096516f06319c5c6d71ae0a8480c, 
+                        Calldata: [0x498e484da80a8895c77dcad5362ae483758050f22a92af29a385459b0365bfe, 0xf, 0x0]
+                        }]
+                }
+}
+```
+
+Once received the typed data, we need to remove null fields and generate the signature.
+
+```dart
+final String typedData = jsonEncode(avnuBuildTypedData.toJson());
+final typedDataObject = TypedData.fromJson(jsonDecode(typedData));
+
+// Remove null fields from typedData
+final Map<String, dynamic> typedDataMap = jsonDecode(typedData);
+removeNullFields(typedDataMap);
+final String cleanTypedData = jsonEncode(typedDataMap);
+
+// Generate signature for the typed data
+final messageHash = getMessageHash(typedDataObject, sepoliaAccount0.accountAddress.toBigInt());
+final signature = starknetSign(
+    privateKey: sepoliaAccount0.signer.privateKey.toBigInt(),
+    messageHash: messageHash,
+    seed: BigInt.from(32),
+);  
+final signCount = "0x1";
+final starknetSignatureId = "0x0"; 
+final publicKey = sepoliaAccount0.signer.publicKey.toHexString();
+final signatureR = Felt(signature.r).toHexString();
+final signatureS = Felt(signature.s).toHexString();
+final signatureList = [signCount, starknetSignatureId, publicKey, signatureR, signatureS];
+final deploymentData = null;
+``` 
+
+Finally, we execute the transaction and receive the transaction hash.
+
+```dart
+// Execute the transaction
+final avnuExecute = await avnuProvider.execute(userAddress, cleanTypedData, signatureList, deploymentData);
+print(avnuExecute.toJson());
+```
+
+This is an example of succesful API response:
+
+```dart
+{transactionHash: 0x6495e536ba89f20f738037539f12964e28166746b106bd7585f05327d0e4aaa}
+```
