@@ -27,8 +27,9 @@ Future<dynamic> callRpcEndpoint(
       break;
     case 'paymaster_sponsor_activity':
       httpMethod = 'get';
-      if ((params as List<String>)[0] != '')
-        headers['api-key'] = (params as List<String>)[0];
+      if ((params as List<String>)[0] != '') {
+        headers['api-key'] = params[0];
+      }
       final startDate = params[1];
       final endDate = params[2];
       nodeUri = nodeUri.replace(
@@ -121,7 +122,6 @@ Future<dynamic> callRpcEndpoint(
     default:
       throw Exception('Method not supported');
   }
-  ;
 
   final filteredBody = PythonicJsonEncoder(sortSymbol: false).convert(body);
   final response = httpMethod == 'get'

@@ -447,7 +447,6 @@ mixin _$Domain {
   String get name => throw _privateConstructorUsedError;
   String get version => throw _privateConstructorUsedError;
   String get chainId => throw _privateConstructorUsedError;
-  @JsonKey(name: 'revision')
   String? get revision => throw _privateConstructorUsedError;
 
   /// Serializes this Domain to a JSON map.
@@ -464,11 +463,7 @@ abstract class $DomainCopyWith<$Res> {
   factory $DomainCopyWith(Domain value, $Res Function(Domain) then) =
       _$DomainCopyWithImpl<$Res, Domain>;
   @useResult
-  $Res call(
-      {String name,
-      String version,
-      String chainId,
-      @JsonKey(name: 'revision') String? revision});
+  $Res call({String name, String version, String chainId, String? revision});
 }
 
 /// @nodoc
@@ -519,11 +514,7 @@ abstract class _$$DomainImplCopyWith<$Res> implements $DomainCopyWith<$Res> {
       __$$DomainImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {String name,
-      String version,
-      String chainId,
-      @JsonKey(name: 'revision') String? revision});
+  $Res call({String name, String version, String chainId, String? revision});
 }
 
 /// @nodoc
@@ -572,7 +563,7 @@ class _$DomainImpl implements _Domain {
       {required this.name,
       required this.version,
       required this.chainId,
-      @JsonKey(name: 'revision') this.revision});
+      this.revision});
 
   factory _$DomainImpl.fromJson(Map<String, dynamic> json) =>
       _$$DomainImplFromJson(json);
@@ -584,7 +575,6 @@ class _$DomainImpl implements _Domain {
   @override
   final String chainId;
   @override
-  @JsonKey(name: 'revision')
   final String? revision;
 
   @override
@@ -630,7 +620,7 @@ abstract class _Domain implements Domain {
       {required final String name,
       required final String version,
       required final String chainId,
-      @JsonKey(name: 'revision') final String? revision}) = _$DomainImpl;
+      final String? revision}) = _$DomainImpl;
 
   factory _Domain.fromJson(Map<String, dynamic> json) = _$DomainImpl.fromJson;
 
@@ -641,7 +631,6 @@ abstract class _Domain implements Domain {
   @override
   String get chainId;
   @override
-  @JsonKey(name: 'revision')
   String? get revision;
 
   /// Create a copy of Domain
@@ -882,6 +871,7 @@ class __$$MessageImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 @JsonSerializable()
 class _$MessageImpl implements _Message {
   const _$MessageImpl(
@@ -1245,6 +1235,7 @@ class __$$CallImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 @JsonSerializable()
 class _$CallImpl implements _Call {
   const _$CallImpl(

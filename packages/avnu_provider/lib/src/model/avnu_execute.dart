@@ -6,7 +6,7 @@ part 'avnu_execute.g.dart';
 @freezed
 class AvnuExecute with _$AvnuExecute {
   const factory AvnuExecute({
-    @JsonKey(name: 'transactionHash') required String transactionHash,
+    required String transactionHash,
   }) = _AvnuExecute;
 
   factory AvnuExecute.fromJson(Map<String, dynamic> json) =>

@@ -162,10 +162,7 @@ TypedDataRevision identifyRevision(TypedData data) {
 bool validateTypedData(dynamic data) {
   if (data is! TypedData) return false;
 
-  return data.message != null &&
-      data.primaryType != null &&
-      data.types != null &&
-      identifyRevision(data) != null;
+  return true;
 }
 
 // Gets the message hash for signing
@@ -174,7 +171,7 @@ BigInt getMessageHash(TypedData typedData, BigInt account) {
     throw Exception('Typed data does not match JSON schema');
   }
 
-  final revision = identifyRevision(typedData)!;
+  final revision = identifyRevision(typedData);
   final config = revisionConfiguration[revision]!;
 
   final message = <BigInt>[

@@ -20,7 +20,6 @@ AvnuExecute _$AvnuExecuteFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$AvnuExecute {
-  @JsonKey(name: 'transactionHash')
   String get transactionHash => throw _privateConstructorUsedError;
 
   /// Serializes this AvnuExecute to a JSON map.
@@ -39,7 +38,7 @@ abstract class $AvnuExecuteCopyWith<$Res> {
           AvnuExecute value, $Res Function(AvnuExecute) then) =
       _$AvnuExecuteCopyWithImpl<$Res, AvnuExecute>;
   @useResult
-  $Res call({@JsonKey(name: 'transactionHash') String transactionHash});
+  $Res call({String transactionHash});
 }
 
 /// @nodoc
@@ -76,7 +75,7 @@ abstract class _$$AvnuExecuteImplCopyWith<$Res>
       __$$AvnuExecuteImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({@JsonKey(name: 'transactionHash') String transactionHash});
+  $Res call({String transactionHash});
 }
 
 /// @nodoc
@@ -106,14 +105,12 @@ class __$$AvnuExecuteImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$AvnuExecuteImpl implements _AvnuExecute {
-  const _$AvnuExecuteImpl(
-      {@JsonKey(name: 'transactionHash') required this.transactionHash});
+  const _$AvnuExecuteImpl({required this.transactionHash});
 
   factory _$AvnuExecuteImpl.fromJson(Map<String, dynamic> json) =>
       _$$AvnuExecuteImplFromJson(json);
 
   @override
-  @JsonKey(name: 'transactionHash')
   final String transactionHash;
 
   @override
@@ -151,15 +148,13 @@ class _$AvnuExecuteImpl implements _AvnuExecute {
 }
 
 abstract class _AvnuExecute implements AvnuExecute {
-  const factory _AvnuExecute(
-      {@JsonKey(name: 'transactionHash')
-      required final String transactionHash}) = _$AvnuExecuteImpl;
+  const factory _AvnuExecute({required final String transactionHash}) =
+      _$AvnuExecuteImpl;
 
   factory _AvnuExecute.fromJson(Map<String, dynamic> json) =
       _$AvnuExecuteImpl.fromJson;
 
   @override
-  @JsonKey(name: 'transactionHash')
   String get transactionHash;
 
   /// Create a copy of AvnuExecute
