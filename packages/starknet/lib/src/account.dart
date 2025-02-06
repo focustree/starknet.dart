@@ -13,7 +13,6 @@ import 'contract/index.dart';
 import 'convert.dart';
 import 'crypto/index.dart';
 import 'presets/udc.g.dart';
-import 'signer.dart';
 import 'signer/stark_signer.dart';
 import 'static_config.dart';
 import 'types/index.dart';
@@ -1021,8 +1020,9 @@ Felt? getDeployedContractAddress(GetTransactionReceipt txReceipt) {
 
 /// Account derivation interface
 abstract class AccountDerivation {
-  /// Derive [Signer] from given [mnemonic] and [index]
-  Signer deriveSigner({required List<String> mnemonic, int index = 0});
+  /// Derive [BaseAccountSigner] from given [mnemonic] and [index]
+  BaseAccountSigner deriveSigner(
+      {required List<String> mnemonic, int index = 0});
 
   /// Returns expected constructor call data
   List<Felt> constructorCalldata({required Felt publicKey});
@@ -1045,10 +1045,11 @@ class OpenzeppelinAccountDerivation implements AccountDerivation {
   }
 
   @override
-  Signer deriveSigner({required List<String> mnemonic, int index = 0}) {
+  BaseAccountSigner deriveSigner(
+      {required List<String> mnemonic, int index = 0}) {
     final privateKey =
         derivePrivateKey(mnemonic: mnemonic.join(' '), index: index);
-    return Signer(privateKey: privateKey);
+    return StarkAccountSigner(signer: StarkSigner(privateKey: privateKey));
   }
 
   @override
@@ -1122,10 +1123,11 @@ class BraavosAccountDerivation extends AccountDerivation {
   });
 
   @override
-  Signer deriveSigner({required List<String> mnemonic, int index = 0}) {
+  BaseAccountSigner deriveSigner(
+      {required List<String> mnemonic, int index = 0}) {
     final privateKey =
         derivePrivateKey(mnemonic: mnemonic.join(' '), index: index);
-    return Signer(privateKey: privateKey);
+    return StarkAccountSigner(signer: StarkSigner(privateKey: privateKey));
   }
 
   @override
@@ -1166,7 +1168,8 @@ class ArgentXAccountDerivation extends AccountDerivation {
   );
 
   @override
-  Signer deriveSigner({required List<String> mnemonic, int index = 0}) {
+  StarkAccountSigner deriveSigner(
+      {required List<String> mnemonic, int index = 0}) {
     final seed = bip39.mnemonicToSeed(mnemonic.join(' '));
     final hdNodeSingleSeed = bip32.BIP32.fromSeed(seed);
     final hdNodeDoubleSeed = bip32.BIP32
@@ -1175,7 +1178,7 @@ class ArgentXAccountDerivation extends AccountDerivation {
     var key = child.privateKey!;
     key = grindKey(key);
     final privateKey = Felt(bytesToUnsignedInt(key));
-    return Signer(privateKey: privateKey);
+    return StarkAccountSigner(signer: StarkSigner(privateKey: privateKey));
   }
 
   @override

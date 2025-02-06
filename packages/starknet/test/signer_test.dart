@@ -19,8 +19,9 @@ void main() {
       group('signTransactions', () {
         test('returns the right signature for invoke transaction version 0',
             () async {
-          final signature =
-              await Signer(privateKey: Felt.fromInt(1234)).signTransactions(
+          final signature = await StarkAccountSigner(
+            signer: StarkSigner(privateKey: Felt.fromInt(1234)),
+          ).signTransactions(
             transactions: [
               FunctionCall(
                 contractAddress: Felt.fromHexString(
@@ -97,7 +98,7 @@ void main() {
                 .map((e) => TestKeyPair.fromJson(e as Map<String, dynamic>)),
           );
           for (final e in keyPairs) {
-            final signer = Signer(privateKey: e.private);
+            final signer = StarkSigner(privateKey: e.private);
             expect(signer.publicKey, equals(e.public));
           }
         });
