@@ -91,8 +91,10 @@ class WalletService {
       accountAddress: s.Felt.fromHexString(account.address),
       chainId: WalletKit().chainId,
       provider: WalletKit().provider,
-      signer: s.Signer(
-        privateKey: s.Felt.fromHexString(privateKey),
+      signer: s.StarkAccountSigner(
+        signer: s.StarkSigner(
+          privateKey: s.Felt.fromHexString(privateKey),
+        ),
       ),
       supportedTxVersion: s.AccountSupportedTxVersion.v1,
     );
@@ -140,8 +142,8 @@ class WalletService {
   }) async {
     final address = s.Contract.computeAddress(
       classHash: WalletKit().accountClassHash,
-      calldata: [s.Signer(privateKey: privateKey).publicKey],
-      salt: s.Signer(privateKey: privateKey).publicKey,
+      calldata: [s.StarkSigner(privateKey: privateKey).publicKey],
+      salt: s.StarkSigner(privateKey: privateKey).publicKey,
     );
     return address;
   }
@@ -156,7 +158,8 @@ class WalletService {
       throw Exception("Private key not found");
     }
 
-    s.Signer? signer = s.Signer(privateKey: s.Felt.fromHexString(privateKey));
+    s.StarkAccountSigner? signer = s.StarkAccountSigner(
+        signer: s.StarkSigner(privateKey: s.Felt.fromHexString(privateKey)));
 
     final provider = WalletKit().provider;
 
@@ -202,7 +205,8 @@ Future<String> sendEth({
   //     .getPrivateKey(id: account.id.toString(), password: password);
   final privateKey = s.Felt.fromHexString("0x1");
 
-  s.Signer? signer = s.Signer(privateKey: privateKey);
+  s.StarkAccountSigner? signer =
+      s.StarkAccountSigner(signer: s.StarkSigner(privateKey: privateKey));
 
   final provider = WalletKit().provider;
   final chainId = WalletKit().chainId;
