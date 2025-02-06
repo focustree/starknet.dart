@@ -26,7 +26,7 @@ class SignerGetPublicKeyCommand extends Command<void> {
       final privateKey = Felt.fromHexString(
         globalResults?['private-key'] as String,
       );
-      final publicKey = Signer(privateKey: privateKey).publicKey;
+      final publicKey = StarkSigner(privateKey: privateKey).publicKey;
       stdout.writeln('Public Key: ${publicKey.toHexString()}');
     } catch (e) {
       stdout.writeln('Error: $e');

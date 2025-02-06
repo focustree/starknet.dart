@@ -52,8 +52,8 @@ class AccountDeployCommand extends Command<void> {
     );
     final accountAddress = Contract.computeAddress(
       classHash: accountClassHash,
-      calldata: [Signer(privateKey: privateKey).publicKey],
-      salt: Signer(privateKey: privateKey).publicKey,
+      calldata: [StarkSigner(privateKey: privateKey).publicKey],
+      salt: StarkSigner(privateKey: privateKey).publicKey,
     );
     stdout.writeln('Account address: ${accountAddress.toHexString()}');
 
