@@ -1,3 +1,15 @@
+// example of ERC20 interaction
+//
+// In repository top directoryn run the following:
+// source .env.devnet
+// melos starknet:setup
+// melos devnet:start
+//
+// In another terminal
+// source .env.devnet
+// melos contracts:build
+// melos contracts:token:declare
+// melos contracts:token:deploy
 import 'package:starknet/starknet.dart';
 import 'package:starknet_provider/starknet_provider.dart';
 
@@ -25,39 +37,23 @@ class TestSetup {
   });
 }
 
-final accountV0Testnet = AccountSetup(
-  privateKey: Felt.fromInt(1234),
+final accountDevnet = AccountSetup(
+  privateKey: Felt.fromHexString('0x71d7bb07b9a64f6f78ac4c816aff4da9'),
   accountAddress:
-      "0x32d5c7a7953996056caf92ff4dd83f01ad72a3c418c05f15eb2f472d1e9c9f2",
-  // ignore: deprecated_member_use_from_same_package
-  supportedTxVersion: AccountSupportedTxVersion.v0,
-);
-
-final accountV1Testnet = AccountSetup(
-  privateKey: Felt(BigInt.parse(
-      "888585928659514599423272828715188693704171690573707019357972128231005959671")),
-  accountAddress:
-      "0x04FF446995457B7Cd0E0A54De94426E27CB253F556fE3a2025304Ba4FD5D60D0",
+      '0x64b48806902a367c8598f4f95c305e8c1a1acba5f082d294a43793113115691',
   supportedTxVersion: AccountSupportedTxVersion.v1,
-);
-
-final testnetSetup = TestSetup(
-  erc20Address:
-      "0x4e76f8708774c8162fb4da7abefb3cae94cc51cf3f9b40e0d44f24aabf8a521",
-  walletAddress:
-      "0x04FF446995457B7Cd0E0A54De94426E27CB253F556fE3a2025304Ba4FD5D60D0",
-  nodeUri: infuraGoerliTestnetUri,
 );
 
 final devnetSetup = TestSetup(
   erc20Address:
-      "0x4e76f8708774c8162fb4da7abefb3cae94cc51cf3f9b40e0d44f24aabf8a521",
+      '0x0459e98338624655a2d70a6027ad2ecdced346b221feaf97066139f2100294ee',
   walletAddress:
-      "0x7e00d496e324876bbc8531f2d9a82bf154d1a04a50218ee74cdd372f75a551a",
+      '0x78662e7352d062084b0010068b99288486c2d8b914f6e2a55ce945f8792c8b1',
   nodeUri: devnetUri,
 );
+
 void main() async {
-  final accountSetup = accountV1Testnet;
+  final accountSetup = accountDevnet;
   final networkSetup = devnetSetup;
   final privateKey = accountSetup.privateKey;
   final accountAddress = Felt.fromHexString(accountSetup.accountAddress);
@@ -67,7 +63,8 @@ void main() async {
 
   final provider = JsonRpcProvider(nodeUri: nodeUri);
 
-  final signer = Signer(privateKey: privateKey);
+  final signer =
+      StarkAccountSigner(signer: StarkSigner(privateKey: privateKey));
 
   final account = Account(
     provider: provider,
