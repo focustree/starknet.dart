@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:wallet_kit/wallet_kit.dart';
+
+import '../wallet_state/index.dart';
+import 'nft_details.dart';
+import 'nft_list.dart';
+import 'token_list.dart';
 
 class WalletBody extends HookConsumerWidget {
   const WalletBody({super.key});

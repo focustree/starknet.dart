@@ -1,6 +1,7 @@
 import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:wallet_kit/wallet_kit.dart';
+
+import '../wallet_state/wallet_state.dart';
 
 class WalletTypeIcon extends StatelessWidget {
   final WalletType type;
@@ -23,7 +24,7 @@ class WalletTypeIcon extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SvgPicture.asset(
-      "packages/wallet_kit/assets/images/wallets/${type.name}.svg",
+      "packages/walletkit/assets/images/wallets/${type.name}.svg",
       width: width,
       fit: fit,
       // ignore: deprecated_member_use

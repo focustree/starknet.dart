@@ -38,22 +38,35 @@ scripts:
   starknet:setup:
     description: Install starknet dev env
     run: |
-      asdf plugin add starknet-devnet
-      asdf install starknet-devnet $STARKNET_DEVNET_VERSION
-      asdf local starknet-devnet $STARKNET_DEVNET_VERSION
-
-      asdf plugin add scarb
-      asdf install scarb $SCARB_VERSION
-      asdf local scarb $SCARB_VERSION
-
-      asdf plugin add starkli
-      asdf install starkli $STARKLI_VERSION
-      asdf local starkli $STARKLI_VERSION
+      melos asdf:devnet
+      melos asdf:scarb
+      melos asdf:starkli
 
       asdf plugin add action-validator
       asdf install action-validator latest
 
       melos versions
+
+  asdf:devnet:
+    description: Install starknet devnet
+    run: |
+      (asdf plugin list | grep -q starknet-devnet) || asdf plugin add starknet-devnet
+      (asdf list starknet-devnet | grep -q $STARKNET_DEVNET_VERSION) || asdf install starknet-devnet $STARKNET_DEVNET_VERSION
+      (asdf set starknet-devnet $STARKNET_DEVNET_VERSION) || asdf local starknet-devnet $STARKNET_DEVNET_VERSION
+
+  asdf:scarb:
+    description: Install scarb
+    run: |
+      (asdf plugin list | grep -q scarb) || asdf plugin add scarb
+      (asdf list scarb | grep -q $SCARB_VERSION) || asdf install scarb $SCARB_VERSION
+      (asdf set scarb $SCARB_VERSION) || asdf local scarb $SCARB_VERSION
+
+  asdf:starkli:
+    description: Install starkli
+    run: |
+      (asdf plugin list | grep -q starkli) || asdf plugin add starkli
+      (asdf list starkli | grep -q $STARKLI_VERSION) || asdf install starkli $STARKLI_VERSION
+      (asdf set starkli $STARKLI_VERSION) || asdf local starkli $STARKLI_VERSION
 
   versions:
     description: Display toolchain versions

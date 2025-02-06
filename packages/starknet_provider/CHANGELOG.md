@@ -1,3 +1,7 @@
+## 0.1.1+1
+
+ - Update a dependency to the latest release.
+
 ## 0.1.1
 
  - **FIX**: trigger new packages release to fix broken dependencies ([#424](https://github.com/focustree/starknet.dart/issues/424)). ([ec3773ea](https://github.com/focustree/starknet.dart/commit/ec3773ea7a2725f4c30b641e86699bcec0eba2c0))

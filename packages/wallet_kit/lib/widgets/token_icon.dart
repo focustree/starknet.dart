@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:wallet_kit/wallet_kit.dart';
+
+import '../services/index.dart';
 
 class TokenIcon extends StatelessWidget {
   final TokenSymbol symbol;
@@ -12,7 +13,7 @@ class TokenIcon extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SvgPicture.asset(
-      "packages/wallet_kit/assets/images/crypto/${symbol.name}.svg",
+      "packages/walletkit/assets/images/crypto/${symbol.name}.svg",
       width: size,
       height: size,
     );
