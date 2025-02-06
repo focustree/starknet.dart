@@ -871,7 +871,6 @@ class __$$MessageImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-
 @JsonSerializable()
 class _$MessageImpl implements _Message {
   const _$MessageImpl(
@@ -1235,7 +1234,6 @@ class __$$CallImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-
 @JsonSerializable()
 class _$CallImpl implements _Call {
   const _$CallImpl(

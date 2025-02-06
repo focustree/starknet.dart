@@ -41,7 +41,6 @@ class Domain with _$Domain {
 
 @freezed
 class Message with _$Message {
-  @JsonSerializable()
   const factory Message({
     @JsonKey(name: 'caller') String? callerv1,
     @JsonKey(name: 'Caller') String? callerv2,
@@ -63,7 +62,6 @@ class Message with _$Message {
 
 @freezed
 class Call with _$Call {
-  @JsonSerializable()
   const factory Call({
     @JsonKey(name: 'to') String? tov1,
     @JsonKey(name: 'To') String? tov2,
