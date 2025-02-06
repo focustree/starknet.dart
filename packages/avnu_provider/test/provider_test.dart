@@ -81,6 +81,7 @@ void main() {
           result: (result) => result.toHexString(),
           error: (error) => Felt.fromInt(0).toHexString(),
         );
+        print('accountClassHash: $accountClassHash');
         final avnuBuildTypedData = await avnuProvider.buildTypedData(
             userAddress,
             calls,
