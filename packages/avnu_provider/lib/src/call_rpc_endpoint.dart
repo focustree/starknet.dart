@@ -124,15 +124,10 @@ Future<dynamic> callRpcEndpoint(
   }
 
   final filteredBody = PythonicJsonEncoder(sortSymbol: false).convert(body);
-  print('****************************************************');
-  print('filteredBody: $filteredBody');
-  print('****************************************************');
   final response = httpMethod == 'get'
       ? await http.get(nodeUri, headers: headers)
       : await http.post(nodeUri, headers: headers, body: filteredBody);
-  print('****************************************************');
-  print('response.body: ${response.body}');
-  print('****************************************************');
+
   try {
     final jsonResponse = json.decode(response.body);
 
