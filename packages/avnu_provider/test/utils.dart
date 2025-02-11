@@ -36,15 +36,15 @@ AvnuProvider getAvnuProvider({BigInt? publicKey, String? apiKey}) {
       apiKey: apiKey);
 }
 
-  // Function to generate a resourceBounds map from a maxAmount and a maxPricePerUnit
-  Map<String, ResourceBounds> getResourceBounds(Felt l1MaxAmount,
-      Felt l1MaxPricePerUnit, Felt l2MaxAmount, Felt l2MaxPricePerUnit) {
-    return {
-      'l1_gas': ResourceBounds(
-          maxAmount: l1MaxAmount.toHexString(),
-          maxPricePerUnit: l1MaxPricePerUnit.toHexString()),
-      'l2_gas': ResourceBounds(
-          maxAmount: l2MaxAmount.toHexString(),
-          maxPricePerUnit: l2MaxPricePerUnit.toHexString()),
-    };
-  }
+// Function to generate a resourceBounds map from a maxAmount and a maxPricePerUnit
+Map<String, ResourceBounds> getResourceBounds(Felt l1MaxAmount,
+    Felt l1MaxPricePerUnit, Felt l2MaxAmount, Felt l2MaxPricePerUnit) {
+  return {
+    'l1_gas': ResourceBounds(
+        maxAmount: l1MaxAmount.toHexString(),
+        maxPricePerUnit: l1MaxPricePerUnit.toHexString()),
+    'l2_gas': ResourceBounds(
+        maxAmount: l2MaxAmount.toHexString(),
+        maxPricePerUnit: l2MaxPricePerUnit.toHexString()),
+  };
+}

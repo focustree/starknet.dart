@@ -73,7 +73,8 @@ void main() {
         final maxGasTokenAmount = '0xFC3F02C221B000';
         //just for testing, we hardcode the account class hash to the ArgentX account class hash
         //in a real scenario, we would get the account class hash from the Starknetprovider
-        final accountClassHash = '0x36078334509b514626504edc9fb252328d1a240e4e948bef8d0c08dff45927f';
+        final accountClassHash =
+            '0x36078334509b514626504edc9fb252328d1a240e4e948bef8d0c08dff45927f';
         final avnuBuildTypedData = await avnuProvider.buildTypedData(
             userAddress,
             calls,
@@ -140,10 +141,11 @@ void main() {
         // as mentioned in https://doc.avnu.fi/avnu-paymaster/cover-your-users-gas-fees
         final gasTokenAddress = '';
         final maxGasTokenAmount = '';
-        
+
         //just for testing, we hardcode the account class hash to the ArgentX account class hash
         //in a real scenario, we would get the account class hash from the Starknet provider
-        final accountClassHash = '0x36078334509b514626504edc9fb252328d1a240e4e948bef8d0c08dff45927f';
+        final accountClassHash =
+            '0x36078334509b514626504edc9fb252328d1a240e4e948bef8d0c08dff45927f';
         final avnuBuildTypedData = await avnuProvider.buildTypedData(
             userAddress,
             calls,
@@ -239,7 +241,8 @@ void main() {
 
         //just for testing, we hardcode the account class hash to the ArgentX account class hash
         //in a real scenario, we would get the account class hash from the Starknet provider
-        final accountClassHash = '0x36078334509b514626504edc9fb252328d1a240e4e948bef8d0c08dff45927f';
+        final accountClassHash =
+            '0x36078334509b514626504edc9fb252328d1a240e4e948bef8d0c08dff45927f';
 
         // Build the typed data
         final avnuBuildTypedData = await avnuProvider.buildTypedData(
