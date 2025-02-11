@@ -11,7 +11,7 @@ import 'account/signer/base_account_signer.dart';
 import 'account/signer/stark_account_signer.dart';
 import 'contract/index.dart';
 import 'convert.dart';
-import 'crypto/index.dart';
+import 'crypto/index.dart' as c;
 import 'presets/udc.g.dart';
 import 'signer/stark_signer.dart';
 import 'static_config.dart';
@@ -119,7 +119,7 @@ class Account {
 
     BroadcastedTxn broadcastedTxn;
 
-    final calldata = functionCallsToCalldata(
+    final calldata = c.functionCallsToCalldata(
       functionCalls: functionCalls,
       useLegacyCalldata: useLegacyCalldata,
     );
@@ -153,7 +153,7 @@ class Account {
         break;
       default:
         final calldata =
-            functionCallsToCalldataLegacy(functionCalls: functionCalls) +
+            c.functionCallsToCalldataLegacy(functionCalls: functionCalls) +
                 [nonce];
         broadcastedTxn = BroadcastedInvokeTxnV0(
             type: 'INVOKE',
@@ -162,7 +162,7 @@ class Account {
             signature: signature,
             nonce: nonce,
             contractAddress: accountAddress,
-            entryPointSelector: getSelectorByName('__execute__'),
+            entryPointSelector: c.getSelectorByName('__execute__'),
             calldata: calldata);
     }
 
@@ -388,7 +388,7 @@ class Account {
       functionCalls: [
         FunctionCall(
           contractAddress: udcAddress,
-          entryPointSelector: getSelectorByName('deployContract'),
+          entryPointSelector: c.getSelectorByName('deployContract'),
           calldata: params,
         )
       ],
@@ -518,14 +518,14 @@ class Account {
         // ignore: deprecated_member_use_from_same_package
         case AccountSupportedTxVersion.v0:
           final calldata =
-              functionCallsToCalldataLegacy(functionCalls: functionCalls) +
+              c.functionCallsToCalldataLegacy(functionCalls: functionCalls) +
                   [nonce!];
 
           response = await provider.addInvokeTransaction(
             InvokeTransactionRequest(
               invokeTransaction: InvokeTransactionV0(
                 contractAddress: accountAddress,
-                entryPointSelector: getSelectorByName('__execute__'),
+                entryPointSelector: c.getSelectorByName('__execute__'),
                 calldata: calldata,
                 maxFee: max_fee!,
                 signature: signature,
@@ -534,7 +534,7 @@ class Account {
           );
           break;
         case AccountSupportedTxVersion.v1:
-          final calldata = functionCallsToCalldata(
+          final calldata = c.functionCallsToCalldata(
             functionCalls: functionCalls,
             useLegacyCalldata: useLegacyCalldata,
           );
@@ -552,7 +552,7 @@ class Account {
           );
           break;
         case AccountSupportedTxVersion.v3:
-          final calldata = functionCallsToCalldata(
+          final calldata = c.functionCallsToCalldata(
             functionCalls: functionCalls,
             useLegacyCalldata: useLegacyCalldata,
           );
@@ -1021,8 +1021,15 @@ Felt? getDeployedContractAddress(GetTransactionReceipt txReceipt) {
 /// Account derivation interface
 abstract class AccountDerivation {
   /// Derive [BaseAccountSigner] from given [mnemonic] and [index]
-  BaseAccountSigner deriveSigner(
-      {required List<String> mnemonic, int index = 0});
+  BaseAccountSigner deriveSigner({
+    required List<String> mnemonic,
+    int index = 0,
+  });
+
+  Felt derivePrivateKey({
+    required List<String> mnemonic,
+    int index = 0,
+  });
 
   /// Returns expected constructor call data
   List<Felt> constructorCalldata({required Felt publicKey});
@@ -1047,9 +1054,16 @@ class OpenzeppelinAccountDerivation implements AccountDerivation {
   @override
   BaseAccountSigner deriveSigner(
       {required List<String> mnemonic, int index = 0}) {
-    final privateKey =
-        derivePrivateKey(mnemonic: mnemonic.join(' '), index: index);
+    final privateKey = derivePrivateKey(mnemonic: mnemonic, index: index);
     return StarkAccountSigner(signer: StarkSigner(privateKey: privateKey));
+  }
+
+  @override
+  Felt derivePrivateKey({
+    required List<String> mnemonic,
+    int index = 0,
+  }) {
+    return c.derivePrivateKey(mnemonic: mnemonic.join(' '), index: index);
   }
 
   @override
@@ -1068,7 +1082,7 @@ class OpenzeppelinAccountDerivation implements AccountDerivation {
   List<Felt> constructorCalldata({required Felt publicKey}) {
     return [
       implementationClassHash,
-      getSelectorByName('initializer'),
+      c.getSelectorByName('initializer'),
       Felt.fromInt(1),
       publicKey,
     ];
@@ -1115,7 +1129,7 @@ class BraavosAccountDerivation extends AccountDerivation {
   final implementationClassHash = Felt.fromHexString(
     '0x5aa23d5bb71ddaa783da7ea79d405315bafa7cf0387a74f4593578c3e9e6570',
   );
-  final initializerSelector = getSelectorByName('initializer');
+  final initializerSelector = c.getSelectorByName('initializer');
 
   BraavosAccountDerivation({
     required this.provider,
@@ -1125,9 +1139,13 @@ class BraavosAccountDerivation extends AccountDerivation {
   @override
   BaseAccountSigner deriveSigner(
       {required List<String> mnemonic, int index = 0}) {
-    final privateKey =
-        derivePrivateKey(mnemonic: mnemonic.join(' '), index: index);
+    final privateKey = derivePrivateKey(mnemonic: mnemonic, index: index);
     return StarkAccountSigner(signer: StarkSigner(privateKey: privateKey));
+  }
+
+  @override
+  Felt derivePrivateKey({required List<String> mnemonic, int index = 0}) {
+    return c.derivePrivateKey(mnemonic: mnemonic.join(' '), index: index);
   }
 
   @override
@@ -1170,22 +1188,28 @@ class ArgentXAccountDerivation extends AccountDerivation {
   @override
   StarkAccountSigner deriveSigner(
       {required List<String> mnemonic, int index = 0}) {
+    final privateKey = derivePrivateKey(mnemonic: mnemonic, index: index);
+    return StarkAccountSigner(signer: StarkSigner(privateKey: privateKey));
+  }
+
+  @override
+  Felt derivePrivateKey({required List<String> mnemonic, int index = 0}) {
     final seed = bip39.mnemonicToSeed(mnemonic.join(' '));
     final hdNodeSingleSeed = bip32.BIP32.fromSeed(seed);
     final hdNodeDoubleSeed = bip32.BIP32
         .fromSeed(hdNodeSingleSeed.derivePath(masterPrefix).privateKey!);
     final child = hdNodeDoubleSeed.derivePath('$pathPrefix/$index');
     var key = child.privateKey!;
-    key = grindKey(key);
+    key = c.grindKey(key);
     final privateKey = Felt(bytesToUnsignedInt(key));
-    return StarkAccountSigner(signer: StarkSigner(privateKey: privateKey));
+    return privateKey;
   }
 
   @override
   List<Felt> constructorCalldata({required Felt publicKey}) {
     return [
       implementationAddress,
-      getSelectorByName('initialize'),
+      c.getSelectorByName('initialize'),
       Felt.fromInt(2),
       publicKey,
       Felt.fromInt(0),

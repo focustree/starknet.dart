@@ -756,23 +756,22 @@ void main() {
         final provider = JsonRpcProvider(nodeUri: devnetUri);
         final chainId = StarknetChainId.testNet;
         test('braavos account private key', () async {
-          var signer =
+          var privateKey =
               BraavosAccountDerivation(provider: provider, chainId: chainId)
-                  .deriveSigner(mnemonic: mnemonic) as StarkAccountSigner;
+                  .derivePrivateKey(mnemonic: mnemonic);
           expect(
-            signer.privateKey,
+            privateKey,
             equals(
               Felt.fromHexString(
                 '0x079474858947854da7c14f19cb5d2edb39414d358a7da68b9436caff9dfb04a6',
               ),
             ),
           );
-          signer =
+          privateKey =
               BraavosAccountDerivation(provider: provider, chainId: chainId)
-                      .deriveSigner(mnemonic: mnemonic, index: 1)
-                  as StarkAccountSigner;
+                  .derivePrivateKey(mnemonic: mnemonic, index: 1);
           expect(
-            signer.privateKey,
+            privateKey,
             equals(
               Felt.fromHexString(
                 '0x06b79a30ac27b1b29a559e84cfe538ea2a35e5460d58558d3d1cd8487a363633',
@@ -805,10 +804,10 @@ void main() {
           );
         });
         test('argentX account private key', () async {
-          final signer =
-              ArgentXAccountDerivation().deriveSigner(mnemonic: mnemonic);
+          final privateKey =
+              ArgentXAccountDerivation().derivePrivateKey(mnemonic: mnemonic);
           expect(
-            signer.privateKey,
+            privateKey,
             equals(
               Felt.fromHexString(
                 '0x01c6e707d4a3528a29af0b613833e5154e311dc0aa076c41ff08d2e6e34f3d43',

@@ -10,8 +10,6 @@ class StarkAccountSigner extends BaseAccountSigner {
   @override
   Felt get publicKey => _signer.publicKey;
 
-  Felt get privateKey => _signer.privateKey;
-
   @override
   Future<List<Felt>> sign(BigInt messageHash, BigInt? seed) {
     return _signer.sign(messageHash, seed);
