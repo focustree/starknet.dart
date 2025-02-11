@@ -2,7 +2,7 @@ import 'package:starknet/starknet.dart';
 import 'package:avnu_provider/avnu_provider.dart';
 import 'package:test/test.dart';
 
-import '../utils.dart';
+import 'utils.dart';
 
 void removeNullFields(Map<String, dynamic> json) {
   json.removeWhere((key, value) => value == null);
@@ -135,5 +135,5 @@ void main() {
         expect(avnuAccountRewards, isA<AvnuAccountRewards>());
       });
     });
-  }, tags: ['integration'], timeout: Timeout(Duration(minutes: 1)));
+  }, tags: ['unit'], timeout: Timeout(Duration(minutes: 1)));
 }

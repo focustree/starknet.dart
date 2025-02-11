@@ -1,10 +1,11 @@
 import 'package:starknet/starknet.dart';
-import 'package:starknet_provider/starknet_provider.dart';
+//import 'package:starknet/src/signer.dart';
+//import 'package:starknet_provider/starknet_provider.dart';
 import 'package:avnu_provider/avnu_provider.dart';
 import 'package:test/test.dart';
 import 'dart:convert';
 
-import './utils.dart';
+import '../utils.dart';
 
 void removeNullFields(Map<String, dynamic> json) {
   json.removeWhere((key, value) => value == null);
@@ -23,7 +24,6 @@ void removeNullFields(Map<String, dynamic> json) {
 
 void main() {
   group('AvnuProvider', () {
-    late ReadProvider provider;
     late AvnuProvider avnuProvider;
 
     final sepoliaAccount0Address = Felt.fromHexString(
@@ -46,7 +46,6 @@ void main() {
       final publicKey = BigInt.parse(
           "0429c489be63b21c399353e03a9659cfc1650b24bae1e9ebdde0aef2b38deb44",
           radix: 16);
-      provider = getProvider();
       avnuProvider = getAvnuProvider(publicKey: publicKey, apiKey: apiKey);
     });
 
@@ -72,16 +71,9 @@ void main() {
         final gasTokenAddress =
             '0x4718f5a0fc34cc1af16a1cdee98ffb20c31f5cd61d6ab07201858f4287c938d';
         final maxGasTokenAmount = '0xFC3F02C221B000';
-        //final accountClassHash = '0x01a736d6ed154502257f02b1ccdf4d9d1089f80811cd6acad48e6b6a9d1f2003';
-        final accountClassHash = (await provider.getClassHashAt(
-          contractAddress: sepoliaAccount0.accountAddress,
-          blockId: BlockId.latest,
-        ))
-            .when(
-          result: (result) => result.toHexString(),
-          error: (error) => Felt.fromInt(0).toHexString(),
-        );
-        print('accountClassHash: $accountClassHash');
+        //just for testing, we hardcode the account class hash to the ArgentX account class hash
+        //in a real scenario, we would get the account class hash from the Starknetprovider
+        final accountClassHash = '0x36078334509b514626504edc9fb252328d1a240e4e948bef8d0c08dff45927f';
         final avnuBuildTypedData = await avnuProvider.buildTypedData(
             userAddress,
             calls,
@@ -148,15 +140,10 @@ void main() {
         // as mentioned in https://doc.avnu.fi/avnu-paymaster/cover-your-users-gas-fees
         final gasTokenAddress = '';
         final maxGasTokenAmount = '';
-        //final accountClassHash = '0x01a736d6ed154502257f02b1ccdf4d9d1089f80811cd6acad48e6b6a9d1f2003';
-        final accountClassHash = (await provider.getClassHashAt(
-          contractAddress: sepoliaAccount0.accountAddress,
-          blockId: BlockId.latest,
-        ))
-            .when(
-          result: (result) => result.toHexString(),
-          error: (error) => Felt.fromInt(0).toHexString(),
-        );
+        
+        //just for testing, we hardcode the account class hash to the ArgentX account class hash
+        //in a real scenario, we would get the account class hash from the Starknet provider
+        final accountClassHash = '0x36078334509b514626504edc9fb252328d1a240e4e948bef8d0c08dff45927f';
         final avnuBuildTypedData = await avnuProvider.buildTypedData(
             userAddress,
             calls,
@@ -250,14 +237,9 @@ void main() {
         final gasTokenAddress = '';
         final maxGasTokenAmount = '';
 
-        final accountClassHash = (await provider.getClassHashAt(
-          contractAddress: sepoliaAccount0.accountAddress,
-          blockId: BlockId.latest,
-        ))
-            .when(
-          result: (result) => result.toHexString(),
-          error: (error) => Felt.fromInt(0).toHexString(),
-        );
+        //just for testing, we hardcode the account class hash to the ArgentX account class hash
+        //in a real scenario, we would get the account class hash from the Starknet provider
+        final accountClassHash = '0x36078334509b514626504edc9fb252328d1a240e4e948bef8d0c08dff45927f';
 
         // Build the typed data
         final avnuBuildTypedData = await avnuProvider.buildTypedData(
@@ -304,7 +286,7 @@ void main() {
         expect(avnuExecute, isA<AvnuExecute>());
       });
 
-      // TODO: test execution with deploymentData for account deploy.
+      // // TODO: test execution with deploymentData for account deploy.
       // test('execute rewards sponsored transaction without sponsor api key and deploy new account', () async {
       //   final userAddress = sepoliaAccount0.accountAddress.toHexString();
       //   final calls = [
@@ -393,11 +375,50 @@ void main() {
       //     Felt.fromInt(0), // guardian
       //   ];
 
+      //   final contractAddress = Felt.zero;
+      //   final l1MaxAmount = Felt.zero;
+      //   final l1MaxPricePerUnit = Felt.zero;
+      //   final l2MaxAmount = Felt.zero;
+      //   final l2MaxPricePerUnit = Felt.zero;
+      //   final paymasterData = [];
+      //   final tip = Felt.zero;
+      //   final chainId = StarknetChainId.testNet;
+      //   final nonce = Felt.zero;
+      //   final feeDataAvailabilityMode = 'L1';
+      //   final nonceDataAvailabilityMode = 'L1';
+      //   final classHash = argentXAccountClassHash;
+      //   final contractAddressSalt = argentXAccount.signer.publicKey.toHexString();
+      //   Map<String, ResourceBounds> resourceBounds = getResourceBounds(
+      //       l1MaxAmount, l1MaxPricePerUnit, l2MaxAmount, l2MaxPricePerUnit);
+
+      //   final Signer signer = sepoliaAccount0.signer;
+      //   // final signature1 = signer.signDeployAccountTransactionV3(
+      //   //     contractAddress: contractAddress,
+      //   //     resourceBounds: resourceBounds,
+      //   //     tip: tip,
+      //   //     paymasterData: paymasterData.map((e) => Felt.fromHexString(e.toString())).toList(),
+      //   //     chainId: chainId,
+      //   //     nonce: nonce,
+      //   //     feeDataAvailabilityMode: feeDataAvailabilityMode!,
+      //   //     nonceDataAvailabilityMode: nonceDataAvailabilityMode!,
+      //   //     constructorCalldata: constructorCalldata,
+      //   //     classHash: Felt.fromHexString(classHash),
+      //   //     contractAddressSalt: Felt.fromHexString(contractAddressSalt),
+      //   // );
+      //   final signature1 = signer.signDeployAccountTransactionV1(
+      //   contractAddressSalt: Felt.fromHexString(contractAddressSalt),
+      //   classHash: Felt.fromHexString(classHash),
+      //   constructorCalldata: constructorCalldata,
+      //   chainId: chainId,
+      //   nonce: nonce,
+      // );
+
       //   final deploymentData = {
       //     'class_hash': argentXAccountClassHash,
       //     'salt': argentXAccount.signer.publicKey.toHexString(),
       //     'unique': argentXAccount.accountAddress.toHexString(),
-      //     'constructor_calldata': constructorCalldata.map((e) => e.toHexString()).toList(),
+      //     'calldata': constructorCalldata.map((e) => e.toHexString()).toList(),
+      //     'sigdata': signature1
       //   };
 
       //   final avnuExecute = await avnuProvider.execute(userAddress, cleanTypedData, signatureList, deploymentData);

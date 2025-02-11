@@ -1,6 +1,7 @@
 import 'dart:io';
 import 'package:avnu_provider/avnu_provider.dart';
 import 'package:starknet_provider/starknet_provider.dart';
+import 'package:starknet/starknet.dart';
 
 ReadProvider getProvider() {
   final env = Platform.environment;
@@ -34,3 +35,16 @@ AvnuProvider getAvnuProvider({BigInt? publicKey, String? apiKey}) {
       publicKey: publicKey,
       apiKey: apiKey);
 }
+
+  // Function to generate a resourceBounds map from a maxAmount and a maxPricePerUnit
+  Map<String, ResourceBounds> getResourceBounds(Felt l1MaxAmount,
+      Felt l1MaxPricePerUnit, Felt l2MaxAmount, Felt l2MaxPricePerUnit) {
+    return {
+      'l1_gas': ResourceBounds(
+          maxAmount: l1MaxAmount.toHexString(),
+          maxPricePerUnit: l1MaxPricePerUnit.toHexString()),
+      'l2_gas': ResourceBounds(
+          maxAmount: l2MaxAmount.toHexString(),
+          maxPricePerUnit: l2MaxPricePerUnit.toHexString()),
+    };
+  }
