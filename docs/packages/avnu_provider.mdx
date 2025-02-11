@@ -11,19 +11,18 @@ AVNU Paymaster Provider is a Dart package that provides a way to interact with t
 
 ## I. Introduction
 
-With these provider you (as sponsor) will be able to pay your users' gas fees and you (as a user) will be able to execute gasless transactions sponsored by the sponsor. So, the user will simply sign a typed data containing the calls he wants to execute. The gas fees in ETH, will be 
-paid by Avnu relayers to execute the transaction. The process is as follows:
+With this provider you (as sponsor) will be able to pay your users' gas fees and you (as a user) will be able to execute gasless transactions sponsored by the sponsor. The user simply signs typed data containing the calls they want to execute. The gas fees in ETH will be paid by Avnu relayers to execute the transaction. The process is as follows:
 
-1.  As Sponsor, take contact with Avnu admins to get an API key and add credits to your account to be able to pay for the gas fees of your users. As mentioned in [Avnu docs](https://doc.avnu.fi/avnu-paymaster/cover-your-users-gas-fees)
-2.  Then, add rewards to an account address (using `setAccountRewards` function) setting how many transactions you want to cover for that user, which contracts and functions he will be able to execute and expiration date of the rewards.
-3.  Notify your users you have added rewards to their account.
-4.  (Optional) User could check at any time how many transactions are left for his account (using `getAccountRewards` function).
-5.  User prepare their transaction (using `buildTypedData` function).
-6.  And finally, sign it (using `execute` function) and send it to the Avnu relayer.
-7.  The relayer will execute the transaction, pay the gas fees and the sponsor will be charged for the gas fees.
-8.  (Optional) The sponsor could check their rewards status (using `getSponsorActivity` function) and monitor the rewards usage.
+1. As a Sponsor, contact Avnu admins to get an API key and add credits to your account to be able to pay for your users' gas fees, as mentioned in [Avnu docs](https://doc.avnu.fi/avnu-paymaster/cover-your-users-gas-fees)
+2. Add rewards to an account address (using `setAccountRewards` function) by setting how many transactions you want to cover for that user, which contracts and functions they will be able to execute, and the expiration date of the rewards
+3. Notify your users that you have added rewards to their account
+4. (Optional) Users can check at any time how many transactions are left for their account (using `getAccountRewards` function)
+5. User prepares their transaction (using `buildTypedData` function)
+6. Finally, user signs it (using `execute` function) and sends it to the Avnu relayer
+7. The relayer executes the transaction, pays the gas fees, and the sponsor is charged for the gas fees
+8. (Optional) The sponsor can check their rewards status (using `getSponsorActivity` function) and monitor the rewards usage
 
-Another use case is, for example, to use the AVNU Paymaster to receive signed transactions from your users and gas in any token to execute them and pay the corresponding gas in STRK or ETH to the sequencer.
+Another use case is to use the AVNU Paymaster to receive signed transactions from your users and gas in any token to execute them and pay the corresponding gas in STRK or ETH to the sequencer.
 
 Of course, this framework is just the beginning - we encourage developers to leverage these components for their own specialized implementations and innovative solutions.
 
@@ -85,7 +84,7 @@ Arguments:
 - `userAddress`: Your user account address.
 - `typedData`: The typed data.
 - `signature`: The type data signature (as indicated in SNIP-12).
-- `deploymentData`: The deployment data. At this moment, this field is not used and is only provided for future compatibility with gasless account deployment.
+- `deploymentData`: The deployment data. Currently unused, reserved for future gasless account deployment compatibility.
 
 Common functions:
 
@@ -136,7 +135,7 @@ final avnuSetAccountRewards = await avnuProvider.setAccountRewards(address, camp
 ``` 
 
 ### As a User
-As a user, we set our transaction that we want to be sponsored. In the following example, we set an approve transaction to the ERC20 contract.
+As a user, we set our transaction that we want to be sponsored. In the following example, we set an `approve` transaction for the ERC20 contract.
 
 ```dart
 import 'package:avnu_provider/avnu_provider.dart';
@@ -164,7 +163,7 @@ final calls = [
 ];
 ``` 
 
-Now, we set other parameters to get our builded typed data from Avnu API. If we want that our transaction be sponsored, don't set the gasTokenAddress and maxGasTokenAmount fields
+Now, we set other parameters to get our built typed data from Avnu API. If we want that our transaction be sponsored, don't set the gasTokenAddress and maxGasTokenAmount fields
  as indicated in [Avnu docs](https://doc.avnu.fi/avnu-paymaster/cover-your-users-gas-fees).
 
 ```dart
@@ -183,7 +182,7 @@ final accountClassHash = (await provider.getClassHashAt(
 // Build the typed data
 final avnuBuildTypedData = await avnuProvider.buildTypedData(userAddress, calls, gasTokenAddress, maxGasTokenAmount, accountClassHash);
 ``` 
-In the background, this is an example of asuccesful API response:
+In the background, this is an example of a successful API response:
 
 ```dart
 {types: 
@@ -218,7 +217,7 @@ In the background, this is an example of asuccesful API response:
 }
 ```
 
-Once received the typed data, we need to remove null fields and generate the signature.
+Once the typed data is received, we need to remove null fields and generate the signature.
 
 ```dart
 final String typedData = jsonEncode(avnuBuildTypedData.toJson());
@@ -253,7 +252,7 @@ final avnuExecute = await avnuProvider.execute(userAddress, cleanTypedData, sign
 print(avnuExecute.toJson());
 ```
 
-This is an example of succesful API response:
+This is an example of a successful API response:
 
 ```dart
 {transactionHash: 0x6495e536ba89f20f738037539f12964e28166746b106bd7585f05327d0e4aaa}
