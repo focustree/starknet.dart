@@ -5,4 +5,3 @@ export 'avnu_sponsor_activity.dart';
 export 'avnu_build_typed_data.dart';
 export 'avnu_execute.dart';
 export 'avnu_account_rewards.dart';
-export 'json_rpc_api_error.dart';

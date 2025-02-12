@@ -1,7 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-import 'json_rpc_api_error.dart';
-
 part 'avnu_gas_token_prices.freezed.dart';
 part 'avnu_gas_token_prices.g.dart';
 
@@ -20,15 +18,10 @@ class AvnuGasTokenPrice with _$AvnuGasTokenPrice {
 
 @freezed
 class AvnuGasTokenPrices with _$AvnuGasTokenPrices {
-  const factory AvnuGasTokenPrices.prices({
+  const factory AvnuGasTokenPrices({
     required List<AvnuGasTokenPrice> prices,
-  }) = AvnuGasTokenPricesPrices;
-  const factory AvnuGasTokenPrices.error({
-    required JsonRpcApiError error,
-  }) = AvnuGasTokenPricesError;
+  }) = _AvnuGasTokenPrices;
 
   factory AvnuGasTokenPrices.fromJson(Map<String, Object?> json) =>
-      json.containsKey('error')
-          ? AvnuGasTokenPricesError.fromJson(json)
-          : AvnuGasTokenPricesPrices.fromJson(json);
+      _$AvnuGasTokenPricesFromJson(json);
 }

@@ -26,9 +26,7 @@ void main() {
     final sepoliaAccount0Address = Felt.fromHexString(
       "0x00f1ac9E93A5da15FdeFD80F6224877Fb9977Fa09C5DFccb0024A6654C111224",
     );
-    // final sepoliaAccount0PublicKey = Felt.fromHexString(
-    //   "0x472759de4033921b9fc58ed766d546e9fafa287ddc2f9b418365738d37cba288",
-    // );
+    
     final sepoliaAccount0PrivateKey = Felt.fromHexString(
         "0x0468af3624b056706186434f56f3218c6363be6defd72338abd8a0989031cc32");
 
@@ -47,30 +45,17 @@ void main() {
           getAvnuReadProvider(publicKey: publicKey, apiKey: apiKey);
     });
 
-    setUp(() async {
-      // setUp is exectued before each test
-      //await resetDevnet();
-    });
-
     group('serviceStatus', () {
       test('returns avnu service status', () async {
         final avnuStatus = await avnuReadProvider.avnuStatus();
-        avnuStatus.when(
-          status: (status) => expect(status, isTrue),
-          error: (error) => fail('Should not return an error'),
-        );
+        expect(avnuStatus.status, isTrue);
       });
     });
 
     group('getGasTokenPrices', () {
       test('returns avnu gas token prices', () async {
         final avnuGasTokenPrices = await avnuReadProvider.getGasTokenPrices();
-        avnuGasTokenPrices.when(
-          prices: (prices) {
-            expect(prices, isNotEmpty);
-          },
-          error: (error) => fail('Should not return an error'),
-        );
+        expect(avnuGasTokenPrices.prices, isNotEmpty);
       });
     });
     group('checkAccountCompatible', () {

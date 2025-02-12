@@ -234,61 +234,21 @@ abstract class _AvnuGasTokenPrice implements AvnuGasTokenPrice {
 }
 
 AvnuGasTokenPrices _$AvnuGasTokenPricesFromJson(Map<String, dynamic> json) {
-  switch (json['runtimeType']) {
-    case 'prices':
-      return AvnuGasTokenPricesPrices.fromJson(json);
-    case 'error':
-      return AvnuGasTokenPricesError.fromJson(json);
-
-    default:
-      throw CheckedFromJsonException(json, 'runtimeType', 'AvnuGasTokenPrices',
-          'Invalid union type "${json['runtimeType']}"!');
-  }
+  return _AvnuGasTokenPrices.fromJson(json);
 }
 
 /// @nodoc
 mixin _$AvnuGasTokenPrices {
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(List<AvnuGasTokenPrice> prices) prices,
-    required TResult Function(JsonRpcApiError error) error,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(List<AvnuGasTokenPrice> prices)? prices,
-    TResult? Function(JsonRpcApiError error)? error,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(List<AvnuGasTokenPrice> prices)? prices,
-    TResult Function(JsonRpcApiError error)? error,
-    required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(AvnuGasTokenPricesPrices value) prices,
-    required TResult Function(AvnuGasTokenPricesError value) error,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(AvnuGasTokenPricesPrices value)? prices,
-    TResult? Function(AvnuGasTokenPricesError value)? error,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(AvnuGasTokenPricesPrices value)? prices,
-    TResult Function(AvnuGasTokenPricesError value)? error,
-    required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
+  List<AvnuGasTokenPrice> get prices => throw _privateConstructorUsedError;
 
   /// Serializes this AvnuGasTokenPrices to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+
+  /// Create a copy of AvnuGasTokenPrices
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  $AvnuGasTokenPricesCopyWith<AvnuGasTokenPrices> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -296,6 +256,8 @@ abstract class $AvnuGasTokenPricesCopyWith<$Res> {
   factory $AvnuGasTokenPricesCopyWith(
           AvnuGasTokenPrices value, $Res Function(AvnuGasTokenPrices) then) =
       _$AvnuGasTokenPricesCopyWithImpl<$Res, AvnuGasTokenPrices>;
+  @useResult
+  $Res call({List<AvnuGasTokenPrice> prices});
 }
 
 /// @nodoc
@@ -310,26 +272,37 @@ class _$AvnuGasTokenPricesCopyWithImpl<$Res, $Val extends AvnuGasTokenPrices>
 
   /// Create a copy of AvnuGasTokenPrices
   /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? prices = null,
+  }) {
+    return _then(_value.copyWith(
+      prices: null == prices
+          ? _value.prices
+          : prices // ignore: cast_nullable_to_non_nullable
+              as List<AvnuGasTokenPrice>,
+    ) as $Val);
+  }
 }
 
 /// @nodoc
-abstract class _$$AvnuGasTokenPricesPricesImplCopyWith<$Res> {
-  factory _$$AvnuGasTokenPricesPricesImplCopyWith(
-          _$AvnuGasTokenPricesPricesImpl value,
-          $Res Function(_$AvnuGasTokenPricesPricesImpl) then) =
-      __$$AvnuGasTokenPricesPricesImplCopyWithImpl<$Res>;
+abstract class _$$AvnuGasTokenPricesImplCopyWith<$Res>
+    implements $AvnuGasTokenPricesCopyWith<$Res> {
+  factory _$$AvnuGasTokenPricesImplCopyWith(_$AvnuGasTokenPricesImpl value,
+          $Res Function(_$AvnuGasTokenPricesImpl) then) =
+      __$$AvnuGasTokenPricesImplCopyWithImpl<$Res>;
+  @override
   @useResult
   $Res call({List<AvnuGasTokenPrice> prices});
 }
 
 /// @nodoc
-class __$$AvnuGasTokenPricesPricesImplCopyWithImpl<$Res>
-    extends _$AvnuGasTokenPricesCopyWithImpl<$Res,
-        _$AvnuGasTokenPricesPricesImpl>
-    implements _$$AvnuGasTokenPricesPricesImplCopyWith<$Res> {
-  __$$AvnuGasTokenPricesPricesImplCopyWithImpl(
-      _$AvnuGasTokenPricesPricesImpl _value,
-      $Res Function(_$AvnuGasTokenPricesPricesImpl) _then)
+class __$$AvnuGasTokenPricesImplCopyWithImpl<$Res>
+    extends _$AvnuGasTokenPricesCopyWithImpl<$Res, _$AvnuGasTokenPricesImpl>
+    implements _$$AvnuGasTokenPricesImplCopyWith<$Res> {
+  __$$AvnuGasTokenPricesImplCopyWithImpl(_$AvnuGasTokenPricesImpl _value,
+      $Res Function(_$AvnuGasTokenPricesImpl) _then)
       : super(_value, _then);
 
   /// Create a copy of AvnuGasTokenPrices
@@ -339,7 +312,7 @@ class __$$AvnuGasTokenPricesPricesImplCopyWithImpl<$Res>
   $Res call({
     Object? prices = null,
   }) {
-    return _then(_$AvnuGasTokenPricesPricesImpl(
+    return _then(_$AvnuGasTokenPricesImpl(
       prices: null == prices
           ? _value._prices
           : prices // ignore: cast_nullable_to_non_nullable
@@ -350,14 +323,13 @@ class __$$AvnuGasTokenPricesPricesImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$AvnuGasTokenPricesPricesImpl implements AvnuGasTokenPricesPrices {
-  const _$AvnuGasTokenPricesPricesImpl(
-      {required final List<AvnuGasTokenPrice> prices, final String? $type})
-      : _prices = prices,
-        $type = $type ?? 'prices';
+class _$AvnuGasTokenPricesImpl implements _AvnuGasTokenPrices {
+  const _$AvnuGasTokenPricesImpl(
+      {required final List<AvnuGasTokenPrice> prices})
+      : _prices = prices;
 
-  factory _$AvnuGasTokenPricesPricesImpl.fromJson(Map<String, dynamic> json) =>
-      _$$AvnuGasTokenPricesPricesImplFromJson(json);
+  factory _$AvnuGasTokenPricesImpl.fromJson(Map<String, dynamic> json) =>
+      _$$AvnuGasTokenPricesImplFromJson(json);
 
   final List<AvnuGasTokenPrice> _prices;
   @override
@@ -367,19 +339,16 @@ class _$AvnuGasTokenPricesPricesImpl implements AvnuGasTokenPricesPrices {
     return EqualUnmodifiableListView(_prices);
   }
 
-  @JsonKey(name: 'runtimeType')
-  final String $type;
-
   @override
   String toString() {
-    return 'AvnuGasTokenPrices.prices(prices: $prices)';
+    return 'AvnuGasTokenPrices(prices: $prices)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$AvnuGasTokenPricesPricesImpl &&
+            other is _$AvnuGasTokenPricesImpl &&
             const DeepCollectionEquality().equals(other._prices, _prices));
   }
 
@@ -393,269 +362,33 @@ class _$AvnuGasTokenPricesPricesImpl implements AvnuGasTokenPricesPrices {
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$AvnuGasTokenPricesPricesImplCopyWith<_$AvnuGasTokenPricesPricesImpl>
-      get copyWith => __$$AvnuGasTokenPricesPricesImplCopyWithImpl<
-          _$AvnuGasTokenPricesPricesImpl>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(List<AvnuGasTokenPrice> prices) prices,
-    required TResult Function(JsonRpcApiError error) error,
-  }) {
-    return prices(this.prices);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(List<AvnuGasTokenPrice> prices)? prices,
-    TResult? Function(JsonRpcApiError error)? error,
-  }) {
-    return prices?.call(this.prices);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(List<AvnuGasTokenPrice> prices)? prices,
-    TResult Function(JsonRpcApiError error)? error,
-    required TResult orElse(),
-  }) {
-    if (prices != null) {
-      return prices(this.prices);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(AvnuGasTokenPricesPrices value) prices,
-    required TResult Function(AvnuGasTokenPricesError value) error,
-  }) {
-    return prices(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(AvnuGasTokenPricesPrices value)? prices,
-    TResult? Function(AvnuGasTokenPricesError value)? error,
-  }) {
-    return prices?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(AvnuGasTokenPricesPrices value)? prices,
-    TResult Function(AvnuGasTokenPricesError value)? error,
-    required TResult orElse(),
-  }) {
-    if (prices != null) {
-      return prices(this);
-    }
-    return orElse();
-  }
+  _$$AvnuGasTokenPricesImplCopyWith<_$AvnuGasTokenPricesImpl> get copyWith =>
+      __$$AvnuGasTokenPricesImplCopyWithImpl<_$AvnuGasTokenPricesImpl>(
+          this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$AvnuGasTokenPricesPricesImplToJson(
+    return _$$AvnuGasTokenPricesImplToJson(
       this,
     );
   }
 }
 
-abstract class AvnuGasTokenPricesPrices implements AvnuGasTokenPrices {
-  const factory AvnuGasTokenPricesPrices(
+abstract class _AvnuGasTokenPrices implements AvnuGasTokenPrices {
+  const factory _AvnuGasTokenPrices(
           {required final List<AvnuGasTokenPrice> prices}) =
-      _$AvnuGasTokenPricesPricesImpl;
+      _$AvnuGasTokenPricesImpl;
 
-  factory AvnuGasTokenPricesPrices.fromJson(Map<String, dynamic> json) =
-      _$AvnuGasTokenPricesPricesImpl.fromJson;
+  factory _AvnuGasTokenPrices.fromJson(Map<String, dynamic> json) =
+      _$AvnuGasTokenPricesImpl.fromJson;
 
+  @override
   List<AvnuGasTokenPrice> get prices;
 
   /// Create a copy of AvnuGasTokenPrices
   /// with the given fields replaced by the non-null parameter values.
+  @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$AvnuGasTokenPricesPricesImplCopyWith<_$AvnuGasTokenPricesPricesImpl>
-      get copyWith => throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class _$$AvnuGasTokenPricesErrorImplCopyWith<$Res> {
-  factory _$$AvnuGasTokenPricesErrorImplCopyWith(
-          _$AvnuGasTokenPricesErrorImpl value,
-          $Res Function(_$AvnuGasTokenPricesErrorImpl) then) =
-      __$$AvnuGasTokenPricesErrorImplCopyWithImpl<$Res>;
-  @useResult
-  $Res call({JsonRpcApiError error});
-
-  $JsonRpcApiErrorCopyWith<$Res> get error;
-}
-
-/// @nodoc
-class __$$AvnuGasTokenPricesErrorImplCopyWithImpl<$Res>
-    extends _$AvnuGasTokenPricesCopyWithImpl<$Res,
-        _$AvnuGasTokenPricesErrorImpl>
-    implements _$$AvnuGasTokenPricesErrorImplCopyWith<$Res> {
-  __$$AvnuGasTokenPricesErrorImplCopyWithImpl(
-      _$AvnuGasTokenPricesErrorImpl _value,
-      $Res Function(_$AvnuGasTokenPricesErrorImpl) _then)
-      : super(_value, _then);
-
-  /// Create a copy of AvnuGasTokenPrices
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? error = null,
-  }) {
-    return _then(_$AvnuGasTokenPricesErrorImpl(
-      error: null == error
-          ? _value.error
-          : error // ignore: cast_nullable_to_non_nullable
-              as JsonRpcApiError,
-    ));
-  }
-
-  /// Create a copy of AvnuGasTokenPrices
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $JsonRpcApiErrorCopyWith<$Res> get error {
-    return $JsonRpcApiErrorCopyWith<$Res>(_value.error, (value) {
-      return _then(_value.copyWith(error: value));
-    });
-  }
-}
-
-/// @nodoc
-@JsonSerializable()
-class _$AvnuGasTokenPricesErrorImpl implements AvnuGasTokenPricesError {
-  const _$AvnuGasTokenPricesErrorImpl(
-      {required this.error, final String? $type})
-      : $type = $type ?? 'error';
-
-  factory _$AvnuGasTokenPricesErrorImpl.fromJson(Map<String, dynamic> json) =>
-      _$$AvnuGasTokenPricesErrorImplFromJson(json);
-
-  @override
-  final JsonRpcApiError error;
-
-  @JsonKey(name: 'runtimeType')
-  final String $type;
-
-  @override
-  String toString() {
-    return 'AvnuGasTokenPrices.error(error: $error)';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$AvnuGasTokenPricesErrorImpl &&
-            (identical(other.error, error) || other.error == error));
-  }
-
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  int get hashCode => Object.hash(runtimeType, error);
-
-  /// Create a copy of AvnuGasTokenPrices
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$AvnuGasTokenPricesErrorImplCopyWith<_$AvnuGasTokenPricesErrorImpl>
-      get copyWith => __$$AvnuGasTokenPricesErrorImplCopyWithImpl<
-          _$AvnuGasTokenPricesErrorImpl>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(List<AvnuGasTokenPrice> prices) prices,
-    required TResult Function(JsonRpcApiError error) error,
-  }) {
-    return error(this.error);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(List<AvnuGasTokenPrice> prices)? prices,
-    TResult? Function(JsonRpcApiError error)? error,
-  }) {
-    return error?.call(this.error);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(List<AvnuGasTokenPrice> prices)? prices,
-    TResult Function(JsonRpcApiError error)? error,
-    required TResult orElse(),
-  }) {
-    if (error != null) {
-      return error(this.error);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(AvnuGasTokenPricesPrices value) prices,
-    required TResult Function(AvnuGasTokenPricesError value) error,
-  }) {
-    return error(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(AvnuGasTokenPricesPrices value)? prices,
-    TResult? Function(AvnuGasTokenPricesError value)? error,
-  }) {
-    return error?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(AvnuGasTokenPricesPrices value)? prices,
-    TResult Function(AvnuGasTokenPricesError value)? error,
-    required TResult orElse(),
-  }) {
-    if (error != null) {
-      return error(this);
-    }
-    return orElse();
-  }
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$AvnuGasTokenPricesErrorImplToJson(
-      this,
-    );
-  }
-}
-
-abstract class AvnuGasTokenPricesError implements AvnuGasTokenPrices {
-  const factory AvnuGasTokenPricesError(
-      {required final JsonRpcApiError error}) = _$AvnuGasTokenPricesErrorImpl;
-
-  factory AvnuGasTokenPricesError.fromJson(Map<String, dynamic> json) =
-      _$AvnuGasTokenPricesErrorImpl.fromJson;
-
-  JsonRpcApiError get error;
-
-  /// Create a copy of AvnuGasTokenPrices
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$AvnuGasTokenPricesErrorImplCopyWith<_$AvnuGasTokenPricesErrorImpl>
-      get copyWith => throw _privateConstructorUsedError;
+  _$$AvnuGasTokenPricesImplCopyWith<_$AvnuGasTokenPricesImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }

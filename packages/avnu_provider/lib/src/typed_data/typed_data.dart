@@ -3,11 +3,11 @@
 // and SNIP-12 specification
 // https://github.com/starknet-io/SNIPs/blob/main/SNIPS/snip-12.md
 
-import 'hash.dart';
 import 'shortstring.dart';
 import 'num.dart';
 import 'encode.dart';
 import 'package:starknet/starknet.dart';
+import 'package:starknet/src/crypto/poseidon.dart';
 
 // Represents the revision of the TypedData implementation
 enum TypedDataRevision {
@@ -30,14 +30,12 @@ class Context {
 class Configuration {
   final String domain;
   final Function(List<BigInt>) hashMethod;
-  final Function(BigInt, BigInt) hashMerkleMethod;
   final String Function(String) escapeTypeString;
   final Map<String, List<TypedParameter>> presetTypes;
 
   const Configuration({
     required this.domain,
     required this.hashMethod,
-    required this.hashMerkleMethod,
     required this.escapeTypeString,
     required this.presetTypes,
   });
@@ -114,15 +112,13 @@ final presetTypes = {
 final revisionConfiguration = {
   TypedDataRevision.legacy: Configuration(
     domain: 'StarkNetDomain',
-    hashMethod: computePedersenHashOnElements,
-    hashMerkleMethod: computePedersenHash,
+    hashMethod: computeHashOnElements,
     escapeTypeString: (s) => s,
     presetTypes: {},
   ),
   TypedDataRevision.active: Configuration(
     domain: 'StarknetDomain',
-    hashMethod: computePoseidonHashOnElements,
-    hashMerkleMethod: computePoseidonHash,
+    hashMethod:  poseidonHasher.hashMany,
     escapeTypeString: (s) => '"$s"',
     presetTypes: presetTypes,
   ),
@@ -183,7 +179,7 @@ BigInt getMessageHash(TypedData typedData, BigInt account) {
         typedData.types, typedData.primaryType, typedData.message, revision))),
   ];
 
-  return BigInt.parse(config.hashMethod(message).toString(), radix: 16);
+  return config.hashMethod(message);
 }
 
 // Gets the hash of a struct
@@ -201,7 +197,7 @@ String getStructHash(
     final hexStr = str.startsWith('0x') ? str : '0x$str';
     return BigInt.parse(hexStr);
   }).toList();
-  return config.hashMethod(bigIntValues).toString();
+  return config.hashMethod(bigIntValues).toRadixString(16);
 }
 
 // Encodes data for signing
@@ -286,7 +282,7 @@ List<String> encodeValue(
         // Add '0x' prefix if not present for hex strings
         final hexStr = str.startsWith('0x') ? str : '0x$str';
         return BigInt.parse(hexStr);
-      }).toList())
+      }).toList()).toRadixString(16)
     ];
   }
 
@@ -326,29 +322,10 @@ List<String> encodeValue(
           revisionConfiguration[revision]!.hashMethod([
             BigInt.from(variantIndex),
             ...encodedSubtypes.map((e) => BigInt.parse(e))
-          ]),
+          ]).toRadixString(16),
         ];
       }
       return [type, getHex(data)];
-
-    // TODO: Implement merkletree (not required for avnu paymaster)
-    // case 'merkletree':
-    //   final merkleTreeType = getMerkleTreeType(types, ctx);
-    //   final structHashes = (data as List).map((struct) {
-    //     return encodeValue(
-    //       types,
-    //       merkleTreeType,
-    //       struct,
-    //       Context(),
-    //       revision,
-    //     )[1];
-    //   }).toList();
-
-    //   final merkleTree = MerkleTree(
-    //     structHashes,
-    //     revisionConfiguration[revision]!.hashMerkleMethod,
-    //   );
-    //   return ['felt', merkleTree.root];
 
     case 'selector':
       return ['felt', prepareSelector(data as String)];
@@ -365,7 +342,7 @@ List<String> encodeValue(
         return [
           type,
           revisionConfiguration[revision]!.hashMethod(
-              elements.map((e) => BigInt.parse(e.toString())).toList())
+              elements.map((e) => BigInt.parse(e.toString())).toList()).toRadixString(16)
         ];
       }
       return [type, getHex(data)];
@@ -411,30 +388,9 @@ List<String> encodeValue(
   }
 }
 
-// Helper function to get merkle tree type
-String getMerkleTreeType(Map<String, List<TypedParameter>> types, Context ctx) {
-  if (ctx.parent != null && ctx.key != null) {
-    final parentType = types[ctx.parent!]!;
-    final merkleType = parentType.firstWhere((t) => t.name == ctx.key);
-
-    if (merkleType.type != 'merkletree') {
-      throw Exception('${ctx.key} is not a merkle tree');
-    }
-
-    if (merkleType.contains!.endsWith('*')) {
-      throw Exception(
-        'Merkle tree contain property must not be an array but was given ${ctx.key}',
-      );
-    }
-
-    return merkleType.contains!;
-  }
-  return 'raw';
-}
-
 // Prepare selector
 String prepareSelector(String selector) {
-  return isHex(selector) ? selector : getSelectorFromName(selector);
+  return isHex(selector) ? selector : getSelectorByName(selector).toHexString();
 }
 
 // Get a type string as hash.
@@ -449,7 +405,7 @@ String getTypeHash(
   String type,
   TypedDataRevision revision,
 ) {
-  return getSelectorFromName(encodeType(types, type, revision));
+  return getSelectorByName(encodeType(types, type, revision)).toHexString();
 }
 
 // Encode a type to a string. All dependent types are alphabetically sorted.

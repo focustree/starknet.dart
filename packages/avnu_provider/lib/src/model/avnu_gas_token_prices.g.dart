@@ -24,32 +24,16 @@ Map<String, dynamic> _$$AvnuGasTokenPriceImplToJson(
       'decimals': instance.decimals,
     };
 
-_$AvnuGasTokenPricesPricesImpl _$$AvnuGasTokenPricesPricesImplFromJson(
+_$AvnuGasTokenPricesImpl _$$AvnuGasTokenPricesImplFromJson(
         Map<String, dynamic> json) =>
-    _$AvnuGasTokenPricesPricesImpl(
+    _$AvnuGasTokenPricesImpl(
       prices: (json['prices'] as List<dynamic>)
           .map((e) => AvnuGasTokenPrice.fromJson(e as Map<String, dynamic>))
           .toList(),
-      $type: json['runtimeType'] as String?,
     );
 
-Map<String, dynamic> _$$AvnuGasTokenPricesPricesImplToJson(
-        _$AvnuGasTokenPricesPricesImpl instance) =>
+Map<String, dynamic> _$$AvnuGasTokenPricesImplToJson(
+        _$AvnuGasTokenPricesImpl instance) =>
     <String, dynamic>{
       'prices': instance.prices,
-      'runtimeType': instance.$type,
-    };
-
-_$AvnuGasTokenPricesErrorImpl _$$AvnuGasTokenPricesErrorImplFromJson(
-        Map<String, dynamic> json) =>
-    _$AvnuGasTokenPricesErrorImpl(
-      error: JsonRpcApiError.fromJson(json['error'] as Map<String, dynamic>),
-      $type: json['runtimeType'] as String?,
-    );
-
-Map<String, dynamic> _$$AvnuGasTokenPricesErrorImplToJson(
-        _$AvnuGasTokenPricesErrorImpl instance) =>
-    <String, dynamic>{
-      'error': instance.error,
-      'runtimeType': instance.$type,
     };
