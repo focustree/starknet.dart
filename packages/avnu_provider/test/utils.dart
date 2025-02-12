@@ -24,4 +24,3 @@ AvnuProvider getAvnuProvider({BigInt? publicKey, String? apiKey}) {
       publicKey: publicKey,
       apiKey: apiKey);
 }
-

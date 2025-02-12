@@ -118,7 +118,7 @@ final revisionConfiguration = {
   ),
   TypedDataRevision.active: Configuration(
     domain: 'StarknetDomain',
-    hashMethod:  poseidonHasher.hashMany,
+    hashMethod: poseidonHasher.hashMany,
     escapeTypeString: (s) => '"$s"',
     presetTypes: presetTypes,
   ),
@@ -277,12 +277,14 @@ List<String> encodeValue(
     }).toList();
     return [
       type,
-      revisionConfiguration[revision]!.hashMethod(hashes.map((e) {
-        final str = e.toString();
-        // Add '0x' prefix if not present for hex strings
-        final hexStr = str.startsWith('0x') ? str : '0x$str';
-        return BigInt.parse(hexStr);
-      }).toList()).toRadixString(16)
+      revisionConfiguration[revision]!
+          .hashMethod(hashes.map((e) {
+            final str = e.toString();
+            // Add '0x' prefix if not present for hex strings
+            final hexStr = str.startsWith('0x') ? str : '0x$str';
+            return BigInt.parse(hexStr);
+          }).toList())
+          .toRadixString(16)
     ];
   }
 
@@ -341,8 +343,10 @@ List<String> encodeValue(
         ];
         return [
           type,
-          revisionConfiguration[revision]!.hashMethod(
-              elements.map((e) => BigInt.parse(e.toString())).toList()).toRadixString(16)
+          revisionConfiguration[revision]!
+              .hashMethod(
+                  elements.map((e) => BigInt.parse(e.toString())).toList())
+              .toRadixString(16)
         ];
       }
       return [type, getHex(data)];

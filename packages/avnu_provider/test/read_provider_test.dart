@@ -26,7 +26,7 @@ void main() {
     final sepoliaAccount0Address = Felt.fromHexString(
       "0x00f1ac9E93A5da15FdeFD80F6224877Fb9977Fa09C5DFccb0024A6654C111224",
     );
-    
+
     final sepoliaAccount0PrivateKey = Felt.fromHexString(
         "0x0468af3624b056706186434f56f3218c6363be6defd72338abd8a0989031cc32");
 
