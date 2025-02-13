@@ -1,6 +1,5 @@
 import '../starknet.dart';
 import 'package:starknet_provider/starknet_provider.dart';
-import 'package:starknet/src/crypto/poseidon.dart';
 
 class Signer {
   Felt privateKey;
