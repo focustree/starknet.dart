@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
+
+import 'package:ark_project/ark_project.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:nft_marketplace/config.dart';
 import 'package:nft_marketplace/screens/home_screen.dart';
-import 'package:walletkit/wallet_kit.dart';
-import 'package:arkproject/arkproject.dart';
+import 'package:wallet_kit/wallet_kit.dart';
 
 void main() async {
   await init();

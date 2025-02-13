@@ -9,7 +9,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  walletkit: ^0.1.0
+  wallet_kit: ^0.1.0
   cupertino_icons: ^1.0.2
   hive_flutter: ^1.1.0
   hooks_riverpod: ^2.6.1

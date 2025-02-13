@@ -1,5 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:walletkit/utils/index.dart';
+import 'package:wallet_kit/utils/index.dart';
 
 void main() {
   test('formatAddress should format long addresses starting with "0x"', () {

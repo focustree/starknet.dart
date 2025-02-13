@@ -3,7 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:walletkit/wallet_kit.dart';
+import 'package:wallet_kit/wallet_kit.dart';
 
 import './screens/home_screen.dart';
 
