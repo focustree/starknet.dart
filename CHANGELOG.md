@@ -3,6 +3,51 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 2025-02-13
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - [`ark_project` - `v0.3.0`](#ark_project---v030)
+ - [`wallet_kit` - `v0.2.0`](#wallet_kit---v020)
+
+Packages with other changes:
+
+ - [`avnu_provider` - `v0.0.2`](#avnu_provider---v002)
+ - [`starknet` - `v0.1.2+1`](#starknet---v0121)
+ - [`starknet_provider` - `v0.1.1+2`](#starknet_provider---v0112)
+ - [`starknet_cli` - `v0.0.1+4`](#starknet_cli---v0014)
+
+Packages with dependency updates only:
+
+> Packages listed below depend on other packages in this workspace that have had changes. Their versions have been incremented to bump the minimum dependency versions of the packages they depend upon in this project.
+
+ - `starknet_provider` - `v0.1.1+2`
+ - `starknet_cli` - `v0.0.1+4`
+
+---
+
+#### `ark_project` - `v0.3.0`
+
+ - **BREAKING** **FIX**: rename ark_project into arkproject and wallet_kit into walletkit ([#443](https://github.com/focustree/starknet.dart/issues/443)). ([894e2c4b](https://github.com/focustree/starknet.dart/commit/894e2c4bb63ca63841e8e9ba3a6a294f8bc14410))
+
+#### `wallet_kit` - `v0.2.0`
+
+ - **BREAKING** **FIX**: rename ark_project into arkproject and wallet_kit into walletkit ([#443](https://github.com/focustree/starknet.dart/issues/443)). ([894e2c4b](https://github.com/focustree/starknet.dart/commit/894e2c4bb63ca63841e8e9ba3a6a294f8bc14410))
+
+#### `avnu_provider` - `v0.0.2`
+
+ - **FIX**: avnu_provider linter issue ([#452](https://github.com/focustree/starknet.dart/issues/452)). ([9a95c2d7](https://github.com/focustree/starknet.dart/commit/9a95c2d7a4e4cc492bbdcdfc2017377ef0d54a9a))
+ - **FEAT**: Add support for AVNU paymaster ([#451](https://github.com/focustree/starknet.dart/issues/451)). ([124efc74](https://github.com/focustree/starknet.dart/commit/124efc74c6ea5347b36a803eed7f077a8fe16540))
+
+#### `starknet` - `v0.1.2+1`
+
+ - **FIX**: avnu_provider linter issue ([#452](https://github.com/focustree/starknet.dart/issues/452)). ([9a95c2d7](https://github.com/focustree/starknet.dart/commit/9a95c2d7a4e4cc492bbdcdfc2017377ef0d54a9a))
+
+
 ## 2025-02-03
 
 ### Changes
