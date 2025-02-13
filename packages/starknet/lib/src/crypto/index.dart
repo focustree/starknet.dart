@@ -5,6 +5,7 @@ export 'model/pedersen_params.dart';
 export 'derivation.dart';
 export 'keccak.dart';
 export 'pedersen.dart';
+export 'poseidon.dart';
 export 'signature.dart';
 
 /// Calculates the transaction hash in the StarkNet network - a unique
