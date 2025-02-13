@@ -7,8 +7,8 @@ part 'mint_transaction.g.dart';
 @freezed
 class MintRequest with _$MintRequest {
   const factory MintRequest({
-    required String address,    // "0x6e3205f..."
-    required int amount,        // 500000
+    required String address, // "0x6e3205f..."
+    required int amount, // 500000
     /// Can be either "WEI" or "FRI"
     required String unit, // "WEI" | "FRI"
   }) = _MintRequest;
@@ -24,7 +24,7 @@ class MintResponse with _$MintResponse {
     required MintResult result,
   }) = _MintResponse;
 
-  factory MintResponse.fromJson(Map<String, dynamic> json) => 
+  factory MintResponse.fromJson(Map<String, dynamic> json) =>
       _$MintResponseFromJson(json);
 }
 
@@ -37,6 +37,6 @@ class MintResult with _$MintResult {
     @JsonKey(name: 'tx_hash') required String txHash,
   }) = _MintResult;
 
-  factory MintResult.fromJson(Map<String, dynamic> json) => 
+  factory MintResult.fromJson(Map<String, dynamic> json) =>
       _$MintResultFromJson(json);
 }

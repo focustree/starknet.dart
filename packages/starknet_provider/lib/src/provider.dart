@@ -51,9 +51,7 @@ class JsonRpcProvider extends JsonRpcReadProvider implements Provider {
   @override
   Future<MintResponse> mintTransaction(MintRequest request) async {
     return callRpcEndpoint(
-            nodeUri: nodeUri,
-            method: 'devnet_mint',
-            params: request)
+            nodeUri: nodeUri, method: 'devnet_mint', params: request)
         .then(MintResponse.fromJson);
   }
 
