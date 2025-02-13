@@ -1,5 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:walletkit/utils/group_by.dart';
+import 'package:wallet_kit/utils/group_by.dart';
 
 void main() {
   test('groupBy should group values by the given key', () {

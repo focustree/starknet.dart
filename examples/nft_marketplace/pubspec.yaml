@@ -1,5 +1,5 @@
 name: nft_marketplace
-description: "A new Flutter project."
+description: "Starknet NFT marketplace example"
 # The following line prevents the package from being accidentally published to
 # pub.dev using `flutter pub publish`. This is preferred for private packages.
 publish_to: "none" # Remove this line if you wish to publish to pub.dev
@@ -28,11 +28,11 @@ environment:
 # the latest version available on pub.dev. To see which dependencies have newer
 # versions available, run `flutter pub outdated`.
 dependencies:
-  arkproject: ^0.2.0
+  ark_project: ^0.2.0
   starknet: ^0.1.2
   starknet_provider: ^0.1.1+1
   secure_store: ^0.1.2+1
-  walletkit: ^0.1.0
+  wallet_kit: ^0.1.0
 
   flutter:
     sdk: flutter

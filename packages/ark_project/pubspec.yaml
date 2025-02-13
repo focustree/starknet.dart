@@ -1,4 +1,4 @@
-name: arkproject
+name: ark_project
 description: Ark SDK for Dart and Flutter apps.
 version: 0.2.0
 repository: https://github.com/focustree/starknet.dart
