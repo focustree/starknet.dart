@@ -1,6 +1,6 @@
 name: avnu_provider
 description: Avnu provider for Dart and Flutter applications.
-version: 0.0.1
+version: 0.0.2
 repository: https://github.com/focustree/starknet.dart
 
 environment:
@@ -8,7 +8,7 @@ environment:
 
 # Add regular dependencies here.
 dependencies:
-  starknet: ^0.1.2
+  starknet: ^0.1.2+1
   freezed_annotation: ^2.4.4
   http: ^1.3.0
   json_annotation: ^4.9.0
