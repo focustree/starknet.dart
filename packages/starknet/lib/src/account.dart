@@ -374,7 +374,7 @@ class Account {
     String? nonceDataAvailabilityMode = 'L1',
   }) async {
     salt ??= getSalt();
-    unique ??= Felt.fromInt(0);
+    unique ??= Felt.zero;
     calldata ??= [];
     final List<Felt> params = [
       classHash,
@@ -761,7 +761,7 @@ class Account {
     String? nonceDataAvailabilityMode,
   }) async {
     salt ??= getSalt();
-    unique ??= Felt.fromInt(0);
+    unique ??= Felt.zero;
     calldata ??= [];
 
     final txHash = await Udc(account: this, address: udcAddress).deployContract(
@@ -815,9 +815,9 @@ class Account {
     ))
         .when(
       result: (result) => result,
-      error: (error) => Felt.fromInt(0),
+      error: (error) => Felt.zero,
     );
-    return accountClassHash != Felt.fromInt(0);
+    return accountClassHash != Felt.zero;
   }
 
   /// Deploy an account with given [accountSigner], [provider] and [constructorCalldata]
@@ -1083,7 +1083,7 @@ class OpenzeppelinAccountDerivation implements AccountDerivation {
     return [
       implementationClassHash,
       c.getSelectorByName('initializer'),
-      Felt.fromInt(1),
+      Felt.one,
       publicKey,
     ];
   }
@@ -1153,7 +1153,7 @@ class BraavosAccountDerivation extends AccountDerivation {
     return [
       implementationClassHash,
       initializerSelector,
-      Felt.fromInt(1),
+      Felt.one,
       publicKey,
     ];
   }
@@ -1210,9 +1210,9 @@ class ArgentXAccountDerivation extends AccountDerivation {
     return [
       implementationAddress,
       c.getSelectorByName('initialize'),
-      Felt.fromInt(2),
+      Felt.two,
       publicKey,
-      Felt.fromInt(0),
+      Felt.zero,
     ];
   }
 

@@ -110,9 +110,9 @@ class WalletService {
     ))
         .when(
       result: (result) => result,
-      error: ((error) => s.Felt.fromInt(0)),
+      error: ((error) => s.Felt.zero),
     );
-    return accountClassHash != s.Felt.fromInt(0);
+    return accountClassHash != s.Felt.zero;
   }
 
   static Future<s.Felt> derivePrivateKey({
@@ -224,7 +224,7 @@ Future<String> sendEth({
       low: s.Felt(
         BigInt.from(amount * 1e18),
       ),
-      high: s.Felt.fromInt(0),
+      high: s.Felt.zero,
     ),
   );
 

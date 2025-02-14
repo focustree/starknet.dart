@@ -98,7 +98,7 @@ void main() {
             contractAddress: balanceContractAddress,
             entryPointSelector: getSelectorByName('sum'),
             calldata: [
-              Felt.fromInt(2),
+              Felt.two,
               Felt.fromInt(3),
             ],
           ),
@@ -124,7 +124,7 @@ void main() {
             error: (error) => fail("Shouldn't fail"),
             result: (result) {
               expect(result, hasLength(1));
-              expect(result[0], Felt.fromInt(0));
+              expect(result[0], Felt.zero);
             });
       });
 

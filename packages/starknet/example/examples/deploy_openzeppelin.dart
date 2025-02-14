@@ -54,8 +54,7 @@ void main() async {
 
   final txHash = await fundingAccount.send(
     recipient: account.accountAddress,
-    amount:
-        Uint256(low: Felt(BigInt.from(0.005 * 1e18)), high: Felt.fromInt(0)),
+    amount: Uint256(low: Felt(BigInt.from(0.005 * 1e18)), high: Felt.zero),
   );
   bool isAccepted =
       await waitForAcceptance(transactionHash: txHash, provider: provider);

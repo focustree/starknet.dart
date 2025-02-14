@@ -67,12 +67,12 @@ class ArkStarknet {
       ...computeCalldata(order.offerer),
       ...computeCalldata(order.tokenChainId),
       ...computeCalldata(order.tokenAddress),
-      Felt.fromInt(0),
+      Felt.zero,
       Felt(tokenIdBigInt),
       ...computeCalldata(order.quantity),
       ...computeCalldata(order.startAmount),
       ...computeCalldata(order.endAmount),
-      Felt.fromInt(0),
+      Felt.zero,
       ...computeCalldata(order.startDate),
       ...computeCalldata(order.endDate),
       ...computeCalldata(order.brokerId),
@@ -85,7 +85,7 @@ class ArkStarknet {
         FunctionCall(
           contractAddress: Felt.fromHexString(nftAddress),
           entryPointSelector: getSelectorByName('approve'),
-          calldata: [arkExecutorAddress, Felt(tokenIdBigInt), Felt.fromInt(0)],
+          calldata: [arkExecutorAddress, Felt(tokenIdBigInt), Felt.zero],
         ),
         FunctionCall(
           contractAddress: arkExecutorAddress,
@@ -131,7 +131,7 @@ class ArkStarknet {
       ...computeCalldata(fullCancelInfo.canceller),
       ...computeCalldata(fullCancelInfo.tokenChainId),
       ...computeCalldata(fullCancelInfo.tokenAddress),
-      Felt.fromInt(0),
+      Felt.zero,
       ...computeCalldata(fullCancelInfo.tokenId),
     ];
 
@@ -208,12 +208,12 @@ class ArkStarknet {
       ...computeCalldata(order.offerer),
       ...computeCalldata(order.tokenChainId),
       ...computeCalldata(order.tokenAddress),
-      Felt.fromInt(0),
+      Felt.zero,
       Felt(tokenIdBigInt),
       ...computeCalldata(order.quantity),
       ...computeCalldata(order.startAmount),
       ...computeCalldata(order.endAmount),
-      Felt.fromInt(0),
+      Felt.zero,
       ...computeCalldata(order.startDate),
       ...computeCalldata(order.endDate),
       ...computeCalldata(order.brokerId),
@@ -225,7 +225,7 @@ class ArkStarknet {
         FunctionCall(
           contractAddress: Felt.fromHexString(currencyAddress),
           entryPointSelector: getSelectorByName('approve'),
-          calldata: [arkExecutorAddress, Felt(bigIntAmount), Felt.fromInt(0)],
+          calldata: [arkExecutorAddress, Felt(bigIntAmount), Felt.zero],
         ),
         FunctionCall(
           contractAddress: arkExecutorAddress,
@@ -282,9 +282,9 @@ class ArkStarknet {
       ...computeCalldata(fulfillInfo.fulfiller),
       ...computeCalldata(fulfillInfo.tokenChainId),
       ...computeCalldata(fulfillInfo.tokenAddress),
-      Felt.fromInt(0),
+      Felt.zero,
       Felt(tokenIdBigInt),
-      Felt.fromInt(0),
+      Felt.zero,
       ...computeCalldata(fulfillInfo.fulfillBrokerAddress),
     ];
 
@@ -293,7 +293,7 @@ class ArkStarknet {
         FunctionCall(
           contractAddress: Felt.fromHexString(currencyAddress),
           entryPointSelector: getSelectorByName('approve'),
-          calldata: [arkExecutorAddress, Felt(bigIntAmount), Felt.fromInt(0)],
+          calldata: [arkExecutorAddress, Felt(bigIntAmount), Felt.zero],
         ),
         FunctionCall(
           contractAddress: arkExecutorAddress,
@@ -347,9 +347,9 @@ class ArkStarknet {
       ...computeCalldata(fulfillInfo.fulfiller),
       ...computeCalldata(fulfillInfo.tokenChainId),
       ...computeCalldata(fulfillInfo.tokenAddress),
-      Felt.fromInt(0),
+      Felt.zero,
       Felt(tokenIdBigInt),
-      Felt.fromInt(0),
+      Felt.zero,
       ...computeCalldata(fulfillInfo.fulfillBrokerAddress),
     ];
 
@@ -358,7 +358,7 @@ class ArkStarknet {
         FunctionCall(
           contractAddress: Felt.fromHexString(nftAddress),
           entryPointSelector: getSelectorByName('approve'),
-          calldata: [arkExecutorAddress, Felt(tokenIdBigInt), Felt.fromInt(0)],
+          calldata: [arkExecutorAddress, Felt(tokenIdBigInt), Felt.zero],
         ),
         FunctionCall(
           contractAddress: arkExecutorAddress,

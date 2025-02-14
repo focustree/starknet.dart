@@ -9,7 +9,7 @@ void main() {
     group('nonce', () {
       test('get nonce', () async {
         final nonce = await account9.getNonce();
-        expect(nonce, equals(Felt.fromInt(0)));
+        expect(nonce, equals(Felt.zero));
       });
     });
     group(
@@ -222,7 +222,7 @@ void main() {
                 Felt.fromString('DART'),
                 Felt.fromInt(18),
                 Felt.fromInt(1000),
-                Felt.fromInt(0),
+                Felt.zero,
                 account0.accountAddress,
               ],
             );
@@ -265,9 +265,9 @@ void main() {
           ))
               .when(
             result: (result) => result,
-            error: ((error) => Felt.fromInt(0)),
+            error: (error) => Felt.zero,
           );
-          expect(accountClassHash, equals(Felt.fromInt(0)));
+          expect(accountClassHash, equals(Felt.zero));
           // Simulate deploy account to get fees
           var maxFee = await account0.getEstimateMaxFeeForDeployAccountTx(
             classHash: classHash,
@@ -279,7 +279,7 @@ void main() {
           // account address requires token to pay deploy fees
           final txSend = await account0.send(
             recipient: accountAddress,
-            amount: Uint256(low: maxFee.maxFee, high: Felt.fromInt(0)),
+            amount: Uint256(low: maxFee.maxFee, high: Felt.zero),
           );
           bool success = await waitForAcceptance(
             transactionHash: txSend,
@@ -323,7 +323,7 @@ void main() {
           ))
               .when(
             result: (result) => result,
-            error: ((error) => Felt.fromInt(0)),
+            error: (error) => Felt.zero,
           );
           expect(accountClassHash, equals(classHash));
         });
@@ -352,9 +352,9 @@ void main() {
           ))
               .when(
             result: (result) => result,
-            error: ((error) => Felt.fromInt(0)),
+            error: (error) => Felt.zero,
           );
-          expect(accountClassHash, equals(Felt.fromInt(0)));
+          expect(accountClassHash, equals(Felt.zero));
           // Simulate deploy account to get fees
           var maxFee = await account0.getEstimateMaxFeeForDeployAccountTx(
             classHash: classHash,
@@ -369,7 +369,7 @@ void main() {
             recipient: accountAddress,
             amount: Uint256(
               low: maxFee.maxAmount * maxFee.maxPricePerUnit,
-              high: Felt.fromInt(0),
+              high: Felt.zero,
             ),
             useSTRKtoken: true,
           );
@@ -401,7 +401,7 @@ void main() {
           ))
               .when(
             result: (result) => result,
-            error: (error) => Felt.fromInt(0),
+            error: (error) => Felt.zero,
           );
           expect(accountClassHash, equals(classHash));
         });
@@ -471,7 +471,7 @@ void main() {
             classHash: sierraClassHash,
             calldata: [
               Felt.fromInt(100),
-              Felt.fromInt(0),
+              Felt.zero,
               account3.accountAddress,
             ],
           );
@@ -479,7 +479,7 @@ void main() {
             classHash: sierraClassHash,
             calldata: [
               Felt.fromInt(100),
-              Felt.fromInt(0),
+              Felt.zero,
               account3.accountAddress,
             ],
             max_fee: maxFee.maxFee,
@@ -493,7 +493,7 @@ void main() {
                 calldata: [
                   account1.accountAddress,
                   Felt.fromInt(100),
-                  Felt.fromInt(0),
+                  Felt.zero,
                 ],
               ),
             ],
@@ -507,7 +507,7 @@ void main() {
                 calldata: [
                   account1.accountAddress,
                   Felt.fromInt(100),
-                  Felt.fromInt(0),
+                  Felt.zero,
                 ],
               ),
             ],
@@ -605,7 +605,7 @@ void main() {
             classHash: sierraClassHash,
             calldata: [
               Felt.fromInt(100),
-              Felt.fromInt(0),
+              Felt.zero,
               account3.accountAddress,
             ],
             useSTRKFee: true,
@@ -615,7 +615,7 @@ void main() {
             classHash: sierraClassHash,
             calldata: [
               Felt.fromInt(100),
-              Felt.fromInt(0),
+              Felt.zero,
               account3.accountAddress,
             ],
             useSTRKFee: true,
@@ -631,7 +631,7 @@ void main() {
                 calldata: [
                   account1.accountAddress,
                   Felt.fromInt(100),
-                  Felt.fromInt(0),
+                  Felt.zero,
                 ],
               ),
             ],
@@ -646,7 +646,7 @@ void main() {
                 calldata: [
                   account1.accountAddress,
                   Felt.fromInt(100),
-                  Felt.fromInt(0),
+                  Felt.zero,
                 ],
               ),
             ],
@@ -703,7 +703,7 @@ void main() {
             equals(
               Uint256(
                 low: Felt(BigInt.parse('1000000000000000000000')),
-                high: Felt.fromInt(0),
+                high: Felt.zero,
               ),
             ),
           );
@@ -712,7 +712,7 @@ void main() {
           final previousBalance = await account1.balance();
           final txHash = await account0.send(
             recipient: account1.accountAddress,
-            amount: Uint256(low: Felt.fromInt(100), high: Felt.fromInt(0)),
+            amount: Uint256(low: Felt.fromInt(100), high: Felt.zero),
           );
           final success = await waitForAcceptance(
             transactionHash: txHash,
@@ -732,7 +732,7 @@ void main() {
           final previousBalance = await account1.balance();
           final txHash = await account0.send(
             recipient: account1.accountAddress,
-            amount: Uint256(low: Felt.fromInt(0), high: Felt.fromInt(100)),
+            amount: Uint256(low: Felt.zero, high: Felt.fromInt(100)),
           );
           final success = await waitForAcceptance(
             transactionHash: txHash,
