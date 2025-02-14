@@ -3,6 +3,13 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 part 'mint_transaction.freezed.dart';
 part 'mint_transaction.g.dart';
 
+String _validateUnit(String unit) {
+  if (unit != 'WEI' && unit != 'FRI') {
+    throw ArgumentError('Invalid unit: $unit');
+  }
+  return unit;
+}
+
 /// Parameters for minting tokens
 @freezed
 class MintRequest with _$MintRequest {
@@ -10,7 +17,7 @@ class MintRequest with _$MintRequest {
     required String address, // "0x6e3205f..."
     required int amount, // 500000
     /// Can be either "WEI" or "FRI"
-    required String unit, // "WEI" | "FRI"
+    @JsonKey(fromJson: _validateUnit) required String unit, // "WEI" | "FRI"
   }) = _MintRequest;
 
   factory MintRequest.fromJson(Map<String, dynamic> json) =>

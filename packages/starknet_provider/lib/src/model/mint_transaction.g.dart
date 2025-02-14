@@ -10,7 +10,7 @@ _$MintRequestImpl _$$MintRequestImplFromJson(Map<String, dynamic> json) =>
     _$MintRequestImpl(
       address: json['address'] as String,
       amount: (json['amount'] as num).toInt(),
-      unit: json['unit'] as String,
+      unit: _validateUnit(json['unit'] as String),
     );
 
 Map<String, dynamic> _$$MintRequestImplToJson(_$MintRequestImpl instance) =>

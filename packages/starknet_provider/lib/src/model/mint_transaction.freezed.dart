@@ -23,6 +23,7 @@ mixin _$MintRequest {
   String get address => throw _privateConstructorUsedError; // "0x6e3205f..."
   int get amount => throw _privateConstructorUsedError; // 500000
   /// Can be either "WEI" or "FRI"
+  @JsonKey(fromJson: _validateUnit)
   String get unit => throw _privateConstructorUsedError;
 
   /// Serializes this MintRequest to a JSON map.
@@ -41,7 +42,10 @@ abstract class $MintRequestCopyWith<$Res> {
           MintRequest value, $Res Function(MintRequest) then) =
       _$MintRequestCopyWithImpl<$Res, MintRequest>;
   @useResult
-  $Res call({String address, int amount, String unit});
+  $Res call(
+      {String address,
+      int amount,
+      @JsonKey(fromJson: _validateUnit) String unit});
 }
 
 /// @nodoc
@@ -88,7 +92,10 @@ abstract class _$$MintRequestImplCopyWith<$Res>
       __$$MintRequestImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String address, int amount, String unit});
+  $Res call(
+      {String address,
+      int amount,
+      @JsonKey(fromJson: _validateUnit) String unit});
 }
 
 /// @nodoc
@@ -129,7 +136,9 @@ class __$$MintRequestImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$MintRequestImpl implements _MintRequest {
   const _$MintRequestImpl(
-      {required this.address, required this.amount, required this.unit});
+      {required this.address,
+      required this.amount,
+      @JsonKey(fromJson: _validateUnit) required this.unit});
 
   factory _$MintRequestImpl.fromJson(Map<String, dynamic> json) =>
       _$$MintRequestImplFromJson(json);
@@ -142,6 +151,7 @@ class _$MintRequestImpl implements _MintRequest {
 // 500000
   /// Can be either "WEI" or "FRI"
   @override
+  @JsonKey(fromJson: _validateUnit)
   final String unit;
 
   @override
@@ -181,9 +191,10 @@ class _$MintRequestImpl implements _MintRequest {
 
 abstract class _MintRequest implements MintRequest {
   const factory _MintRequest(
-      {required final String address,
-      required final int amount,
-      required final String unit}) = _$MintRequestImpl;
+          {required final String address,
+          required final int amount,
+          @JsonKey(fromJson: _validateUnit) required final String unit}) =
+      _$MintRequestImpl;
 
   factory _MintRequest.fromJson(Map<String, dynamic> json) =
       _$MintRequestImpl.fromJson;
@@ -194,6 +205,7 @@ abstract class _MintRequest implements MintRequest {
   int get amount; // 500000
   /// Can be either "WEI" or "FRI"
   @override
+  @JsonKey(fromJson: _validateUnit)
   String get unit;
 
   /// Create a copy of MintRequest
