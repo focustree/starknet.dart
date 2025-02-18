@@ -12,7 +12,7 @@ void main() {
       );
       expect(
         computeCalldata(1),
-        equals([Felt.fromInt(1)]),
+        equals([Felt.one]),
       );
       expect(
         computeCalldata([
@@ -22,11 +22,11 @@ void main() {
           [false, 2]
         ]),
         equals([
-          Felt.fromInt(1),
+          Felt.one,
           Felt.fromHexString('0x123'),
-          Felt.fromInt(1),
-          Felt.fromInt(0),
-          Felt.fromInt(2)
+          Felt.one,
+          Felt.zero,
+          Felt.two,
         ]),
       );
     });
@@ -35,7 +35,7 @@ void main() {
       expect(
         computeCalldata(data),
         equals(
-          [Felt.fromString('test'), Felt.fromInt(0), Felt.fromInt(42)],
+          [Felt.fromString('test'), Felt.zero, Felt.fromInt(42)],
         ),
       );
     });

@@ -120,7 +120,7 @@ void main() {
         final classHash = Felt.fromHexString(
           '0x0750cd490a7cd1572411169eaa8be292325990d33c5d4733655fe6b926985062',
         );
-        final calldata = [Felt.fromInt(1)];
+        final calldata = [Felt.one];
         final contractAddress = Contract.computeAddress(
           classHash: classHash,
           calldata: calldata,

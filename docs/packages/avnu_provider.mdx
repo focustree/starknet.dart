@@ -176,7 +176,7 @@ final accountClassHash = (await provider.getClassHashAt(
 ))
     .when(
     result: (result) => result.toHexString(),
-    error: (error) => Felt.fromInt(0).toHexString(),
+    error: (error) => Felt.zero.toHexString(),
 );
 
 // Build the typed data

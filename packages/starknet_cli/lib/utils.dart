@@ -6,9 +6,11 @@ Provider providerFromArgs(ArgResults? globalResults) {
   return JsonRpcProvider(nodeUri: Uri.parse(globalResults?['rpc'] as String));
 }
 
-Signer signerFromArgs(ArgResults? globalResults) {
-  return Signer(
-    privateKey: Felt.fromHexString(globalResults?['private-key'] as String),
+StarkAccountSigner signerFromArgs(ArgResults? globalResults) {
+  return StarkAccountSigner(
+    signer: StarkSigner(
+      privateKey: Felt.fromHexString(globalResults?['private-key'] as String),
+    ),
   );
 }
 
@@ -22,11 +24,7 @@ Account accountFromArgs(ArgResults? globalResults) {
       globalResults?['chain-id'] as String,
     ),
     provider: provider,
-    signer: Signer(
-      privateKey: Felt.fromHexString(
-        globalResults?['private-key'] as String,
-      ),
-    ),
+    signer: signerFromArgs(globalResults),
   );
 }
 

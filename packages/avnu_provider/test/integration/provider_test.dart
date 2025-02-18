@@ -85,16 +85,13 @@ void main() {
 
         final messageHash = getMessageHash(
             typedDataObject, sepoliaAccount0.accountAddress.toBigInt());
-        final signature = starknetSign(
-          privateKey: sepoliaAccount0.signer.privateKey.toBigInt(),
-          messageHash: messageHash,
-          seed: BigInt.from(32),
-        );
+        final signature =
+            await sepoliaAccount0.signer.sign(messageHash, BigInt.from(32));
         final signCount = "0x1";
         final starknetSignatureId = "0x0";
         final publicKey = sepoliaAccount0.signer.publicKey.toHexString();
-        final signatureR = Felt(signature.r).toHexString();
-        final signatureS = Felt(signature.s).toHexString();
+        final signatureR = signature[0].toHexString();
+        final signatureS = signature[1].toHexString();
         final signatureList = [
           signCount,
           starknetSignatureId,
@@ -149,16 +146,13 @@ void main() {
 
         final messageHash = getMessageHash(
             typedDataObject, sepoliaAccount0.accountAddress.toBigInt());
-        final signature = starknetSign(
-          privateKey: sepoliaAccount0.signer.privateKey.toBigInt(),
-          messageHash: messageHash,
-          seed: BigInt.from(32),
-        );
+        final signature =
+            await sepoliaAccount0.signer.sign(messageHash, BigInt.from(32));
         final signCount = "0x1";
         final starknetSignatureId = "0x0";
         final publicKey = sepoliaAccount0.signer.publicKey.toHexString();
-        final signatureR = Felt(signature.r).toHexString();
-        final signatureS = Felt(signature.s).toHexString();
+        final signatureR = signature[0].toHexString();
+        final signatureS = signature[1].toHexString();
         final signatureList = [
           signCount,
           starknetSignatureId,
@@ -243,16 +237,13 @@ void main() {
         // Generate signature for the typed data
         final messageHash = getMessageHash(
             typedDataObject, sepoliaAccount0.accountAddress.toBigInt());
-        final signature = starknetSign(
-          privateKey: sepoliaAccount0.signer.privateKey.toBigInt(),
-          messageHash: messageHash,
-          seed: BigInt.from(32),
-        );
+        final signature =
+            await sepoliaAccount0.signer.sign(messageHash, BigInt.from(32));
         final signCount = "0x1";
         final starknetSignatureId = "0x0";
         final publicKey = sepoliaAccount0.signer.publicKey.toHexString();
-        final signatureR = Felt(signature.r).toHexString();
-        final signatureS = Felt(signature.s).toHexString();
+        final signatureR = signature[0].toHexString();
+        final signatureS = signature[1].toHexString();
         final signatureList = [
           signCount,
           starknetSignatureId,
