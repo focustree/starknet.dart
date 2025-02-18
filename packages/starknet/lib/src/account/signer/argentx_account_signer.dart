@@ -35,7 +35,31 @@ extension on StarkSigner {
   _ArgentAccountSignerType get signerType => _ArgentAccountSignerType.starknet;
 }
 
-/// An account signer for ArgentX account with a stark guardian
+extension ArgentXGuardianAccountCalldata on ArgentXGuardianAccountSigner {
+  List<Felt> get constructorCalldata {
+    final ownerPart = [
+      _ownerSigner.signerType.toFelt(),
+      _ownerSigner.publicKey,
+    ];
+    final guardianPart = _guardianSigner?.let(
+          (guardian) => [
+            Felt.zero, // Some
+            guardian.signerType.toFelt(),
+            guardian.publicKey,
+          ],
+        ) ??
+        [Felt.one];
+    return [
+      ...ownerPart,
+      ...guardianPart,
+    ];
+  }
+}
+
+/// Implementation of [BaseAccountSigner] for ArgentX account version 0.4.0
+///
+/// Support optional guardian signature.
+/// classhash: 0x036078334509b514626504edc9fb252328d1a240e4e948bef8d0c08dff45927f
 class ArgentXGuardianAccountSigner extends BaseAccountSigner {
   final StarkSigner _ownerSigner;
   final StarkSigner? _guardianSigner;
@@ -49,7 +73,6 @@ class ArgentXGuardianAccountSigner extends BaseAccountSigner {
   @override
   Felt get publicKey => _ownerSigner.publicKey;
 
-  // ArgentX account 0.4.0 with guardian
   @override
   Future<List<Felt>> sign(BigInt messageHash, BigInt? seed) async {
     final signatures = await Future.wait([

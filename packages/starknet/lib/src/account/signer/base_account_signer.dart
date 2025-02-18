@@ -1,15 +1,20 @@
+// starknet_provider is required for FunctionCall and ResourceBounds
 import 'package:starknet_provider/starknet_provider.dart';
 
-// import '../../starknet.dart';
 import '../../contract/index.dart';
 import '../../convert.dart';
 import '../../crypto/index.dart';
 import '../../static_config.dart';
 import '../../types/felt.dart';
 
+/// Abstract class representing an account signer.
+///
+/// This class defines the interface for signing message hashes
+/// using a specific signature scheme suitable for an account contract.
 abstract class BaseAccountSigner {
   Felt get publicKey;
 
+  /// Signs the given [messageHash] using an optional [seed] and returns the signature.
   Future<List<Felt>> sign(BigInt messageHash, BigInt? seed);
 
   Future<List<Felt>> signInvokeTransactionsV3({

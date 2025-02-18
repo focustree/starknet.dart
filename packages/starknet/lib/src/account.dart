@@ -41,9 +41,15 @@ class FeeEstimations {
 
 /// Account abstraction class
 class Account {
+  /// Provider use by this account
   Provider provider;
+
+  /// Signer use by this account
   BaseAccountSigner signer;
+
+  /// Address of this account
   Felt accountAddress;
+
   Felt chainId;
   AccountSupportedTxVersion supportedTxVersion;
 
