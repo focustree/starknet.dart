@@ -1,5 +1,7 @@
 # Starknet provider
 
+📚 [API Documentation](https://pub.dev/documentation/starknet_provider/latest/)
+
 Starknet provider for Dart and Flutter applications
 
 ### Transaction support

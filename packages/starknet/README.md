@@ -2,6 +2,8 @@
 
 The goal of this SDK is to be able to interact with StarkNet smart contracts in a type-safe way.
 
+📚 [API Documentation](https://pub.dev/documentation/starknet/latest/)
+
 You can also call the JSON-RPC endpoint exposed by the StarkNet full nodes (see the [specs](https://github.com/starkware-libs/starknet-specs)).
 
 📚 [docs](https://pub.dev/packages/starknet)
