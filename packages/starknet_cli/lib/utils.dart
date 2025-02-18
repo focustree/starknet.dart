@@ -24,11 +24,7 @@ Account accountFromArgs(ArgResults? globalResults) {
       globalResults?['chain-id'] as String,
     ),
     provider: provider,
-    signer: StarkAccountSigner(
-      signer: StarkSigner(
-        privateKey: Felt.fromHexString(globalResults?['private-key'] as String),
-      ),
-    ),
+    signer: signerFromArgs(globalResults),
   );
 }
 

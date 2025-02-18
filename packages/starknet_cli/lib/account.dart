@@ -50,10 +50,11 @@ class AccountDeployCommand extends Command<void> {
     final privateKey = Felt.fromHexString(
       globalResults?['private-key'] as String,
     );
+    final signer = StarkSigner(privateKey: privateKey);
     final accountAddress = Contract.computeAddress(
       classHash: accountClassHash,
-      calldata: [StarkSigner(privateKey: privateKey).publicKey],
-      salt: StarkSigner(privateKey: privateKey).publicKey,
+      calldata: [signer.publicKey],
+      salt: signer.publicKey,
     );
     stdout.writeln('Account address: ${accountAddress.toHexString()}');
 
