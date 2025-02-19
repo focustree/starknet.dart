@@ -1,7 +1,4 @@
 # secure_store
-
-📚 [API Documentation](https://pub.dev/documentation/wallet_kit/latest/)
-
 A package to ease the use of [starknet](https://pub.dev/packages/starknet) in your Flutter app.
 
 ## Dart setup
