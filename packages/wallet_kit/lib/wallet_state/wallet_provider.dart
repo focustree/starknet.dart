@@ -3,6 +3,7 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:secure_store/secure_store.dart';
 import 'package:starknet/starknet.dart' as s;
 import 'package:starknet_provider/starknet_provider.dart' as sp;
+import '../errors/wallet_kit_error.dart';
 import '../utils/persisted_notifier_state.dart';
 import '../wallet_kit.dart';
 
@@ -49,6 +50,7 @@ class Wallets extends _$Wallets with PersistedState<WalletsState> {
     required String walletId,
     required Future<String?> Function() getPassword,
     SecureStore? secureStore,
+    required BuildContext context,
   }) async {
     final wallet = state.wallets[walletId];
     if (wallet == null) {
@@ -74,7 +76,7 @@ class Wallets extends _$Wallets with PersistedState<WalletsState> {
       updateWallet(wallet: walletWithAccount, accountId: account.id);
     } catch(e){
       final error = WalletKitError("Wrong password");
-      WalletKitErrorHandler().handleError(error,);
+      WalletKitErrorHandler().handleError(error, context);
     }
   }
 

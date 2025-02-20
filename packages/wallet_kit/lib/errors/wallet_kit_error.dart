@@ -2,20 +2,16 @@ import 'package:flutter/material.dart';
 
 class WalletKitErrorHandler {
   static final WalletKitErrorHandler _instance = WalletKitErrorHandler._internal();
-  late BuildContext _context;
-  final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
 
   WalletKitErrorHandler._internal();
 
   factory WalletKitErrorHandler() => _instance;
 
-  void initialize(BuildContext context) {
-    _context = context;
-  }
-
-  void handleError(WalletKitError error) {
-    print("WalletKit Error: $error");
-    //Navigator.of(_context).pop();
+  void handleError(WalletKitError error, BuildContext context) {
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(content: Text('Failed to add account: $error')),
+    );
+    Navigator.of(context).pop();
   }
 }
 

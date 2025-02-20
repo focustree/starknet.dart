@@ -207,7 +207,7 @@ class WalletCell extends HookConsumerWidget {
                   onPressed: () async {
                       ref.read(walletsProvider.notifier).addAccount(
                         walletId: wallet.id,
-                        getPassword: () => showPasswordModal(context),
+                        getPassword: () => showPasswordModal(context), context: context
                       );
                   },
                   icon: Icon(
