@@ -1,5 +1,5 @@
 name: wallet_kit
-description: Wallet Kit.
+description: A UI toolkit that simplifies blockchain wallet integration in Flutter apps.
 version: 0.2.0
 homepage: "https://starknetdart.dev"
 

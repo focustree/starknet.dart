@@ -11,7 +11,7 @@ void main(List<String> args) async {
   final txHash = await account.send(
     recipient: recipient,
     amount: Uint256(
-      high: Felt.fromInt(0),
+      high: Felt.zero,
       low: Felt(BigInt.from(amount * 1e18)),
     ),
   );

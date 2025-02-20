@@ -14,8 +14,8 @@ class TransactionHashPrefix {
 }
 
 final defaultMaxFee = Felt.fromDouble(0.001 * 1e18); // 0.001 ETH
-final defaultNonce = Felt.fromInt(0);
-final defaultVersion = Felt.fromInt(0);
+final defaultNonce = Felt.zero;
+final defaultVersion = Felt.zero;
 
 final udcAddress = Felt.fromHexString(
   '0x041a78e741e5af2fec34b695679bc6891742439f7afb8484ecd7766661ad02bf',

@@ -15,7 +15,7 @@ void main() {
       expect((a + b).toHexString(), equals("0x3"));
       // Test overflow
       Felt max = Felt(Felt.prime - BigInt.from(1));
-      expect(() => max + Felt.fromInt(1), throwsA(isA<ArgumentError>()));
+      expect(() => max + Felt.one, throwsA(isA<ArgumentError>()));
     });
     test('operator -', () {
       Felt a = Felt.fromHexString("0x3");

@@ -1,4 +1,4 @@
-import 'package:starknet/starknet.dart';
+import 'types/index.dart';
 
 List<Felt> computeCalldata(dynamic data) {
   if (data is String) {
@@ -16,12 +16,12 @@ List<Felt> computeCalldata(dynamic data) {
   } else if (data is Uint256) {
     return [data.high, data.low];
   } else if (data is bool) {
-    return data ? [Felt.fromInt(1)] : [Felt.fromInt(0)];
+    return data ? [Felt.one] : [Felt.zero];
   } else if (data is Enum) {
     return [Felt.fromInt(data.index)];
   } else if (data is List) {
     if (data.isEmpty) {
-      return [Felt.fromInt(0)];
+      return [Felt.zero];
     }
     return data.map(computeCalldata).expand((element) => element).toList();
   } else if (data is Set) {

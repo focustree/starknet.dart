@@ -23,8 +23,8 @@ void main() {
   }, tags: ['unit']);
   group('getSelectorByName', () {
     test('returns 0 for default entrypoint selectors', () {
-      expect(getSelectorByName('__default__'), equals(Felt.fromInt(0)));
-      expect(getSelectorByName('__l1_default__'), equals(Felt.fromInt(0)));
+      expect(getSelectorByName('__default__'), equals(Felt.zero));
+      expect(getSelectorByName('__l1_default__'), equals(Felt.zero));
     });
     test('computes the right selector hash', () {
       expect(
