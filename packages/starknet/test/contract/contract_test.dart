@@ -12,7 +12,7 @@ void main() {
         () {
           test('Compute class hash for contract without attributes', () async {
             final contractPath =
-                '${Directory.current.path}/../../contracts/build/balance.json';
+                '${Directory.current.path}/../../contracts/v0/artifacts/balance.json';
             final compiledContract =
                 await DeprecatedCompiledContract.fromPath(contractPath);
             final classHash = compiledContract.classHash();
@@ -23,7 +23,7 @@ void main() {
           });
           test('Compute class hash for contract with attributes', () async {
             final contractPath =
-                '${Directory.current.path}/../../contracts/build/oz_account.json';
+                '${Directory.current.path}/../../contracts/v0/artifacts/oz_account.json';
             final compiledContract =
                 await DeprecatedCompiledContract.fromPath(contractPath);
             final classHash = compiledContract.classHash();
@@ -33,15 +33,14 @@ void main() {
             );
           });
         },
-        skip: true,
       );
 
       group('Compiled contract (cairo 1)', () {
         test('Compute sierra class hash for ERC20 contract', () async {
           final contractPath =
-              '${Directory.current.path}/../../contracts/cairo1/artifacts/erc20_sierra.txt';
+              '${Directory.current.path}/../../contracts/v1/artifacts/erc20_sierra.txt';
           final expectedHashesPath =
-              '${Directory.current.path}/../../contracts/cairo1/artifacts/erc20.hashes.json';
+              '${Directory.current.path}/../../contracts/v1/artifacts/erc20.hashes.json';
           final content = await File(expectedHashesPath).readAsString();
           final expectedHashes = await json.decode(content) as Map;
           final contract = await CompiledContract.fromPath(contractPath);
@@ -56,9 +55,9 @@ void main() {
 
         test('Compute sierra class hash for ABI types contract', () async {
           final contractPath =
-              '${Directory.current.path}/../../contracts/cairo1/artifacts/abi_types_sierra.txt';
+              '${Directory.current.path}/../../contracts/v1/artifacts/abi_types_sierra.txt';
           final expectedHashesPath =
-              '${Directory.current.path}/../../contracts/cairo1/artifacts/abi_types.hashes.json';
+              '${Directory.current.path}/../../contracts/v1/artifacts/abi_types.hashes.json';
           final content = await File(expectedHashesPath).readAsString();
           final expectedHashes = await json.decode(content) as Map;
           final contract = await CompiledContract.fromPath(contractPath);
@@ -73,9 +72,9 @@ void main() {
 
         test('Compute compiled class hash for ERC20 contract', () async {
           final contractPath =
-              '${Directory.current.path}/../../contracts/cairo1/artifacts/erc20_compiled.txt';
+              '${Directory.current.path}/../../contracts/v1/artifacts/erc20_compiled.txt';
           final expectedHashesPath =
-              '${Directory.current.path}/../../contracts/cairo1/artifacts/erc20.hashes.json';
+              '${Directory.current.path}/../../contracts/v1/artifacts/erc20.hashes.json';
           final content = await File(expectedHashesPath).readAsString();
           final expectedHashes = await json.decode(content) as Map;
           final contract = await CASMCompiledContract.fromPath(contractPath);
@@ -90,9 +89,9 @@ void main() {
 
         test('Compute compiled class hash for ABI types contract', () async {
           final contractPath =
-              '${Directory.current.path}/../../contracts/cairo1/artifacts/abi_types_compiled.txt';
+              '${Directory.current.path}/../../contracts/v1/artifacts/abi_types_compiled.txt';
           final expectedHashesPath =
-              '${Directory.current.path}/../../contracts/cairo1/artifacts/abi_types.hashes.json';
+              '${Directory.current.path}/../../contracts/v1/artifacts/abi_types.hashes.json';
           final content = await File(expectedHashesPath).readAsString();
           final expectedHashes = await json.decode(content) as Map;
           final contract = await CASMCompiledContract.fromPath(contractPath);
@@ -106,7 +105,6 @@ void main() {
         });
       });
     },
-    skip: true,
   );
 
   group(
@@ -154,6 +152,5 @@ void main() {
       });
     },
     tags: ['unit'],
-    skip: true,
   );
 }
