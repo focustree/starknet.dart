@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 
 class WalletKitErrorHandler {
-  static final WalletKitErrorHandler _instance = WalletKitErrorHandler._internal();
+  static final WalletKitErrorHandler _instance =
+      WalletKitErrorHandler._internal();
 
   WalletKitErrorHandler._internal();
 
@@ -22,5 +23,6 @@ class WalletKitError implements Exception {
   WalletKitError(this.message, {this.code});
 
   @override
-  String toString() => 'WalletKitError: $message${code != null ? ' (Code: $code)' : ''}';
+  String toString() =>
+      'WalletKitError: $message${code != null ? ' (Code: $code)' : ''}';
 }

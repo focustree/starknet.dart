@@ -74,9 +74,11 @@ class Wallets extends _$Wallets with PersistedState<WalletsState> {
         seedPhrase: seedPhrase,
       );
       updateWallet(wallet: walletWithAccount, accountId: account.id);
-    } catch(e){
+    } catch (e) {
       final error = WalletKitError("Wrong password");
-      WalletKitErrorHandler().handleError(error, context);
+      if (context.mounted) {
+        WalletKitErrorHandler().handleError(error, context);
+      }
     }
   }
 

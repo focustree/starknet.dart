@@ -205,10 +205,10 @@ class WalletCell extends HookConsumerWidget {
                 child: TextButton.icon(
                   label: const Text('Add account'),
                   onPressed: () async {
-                      ref.read(walletsProvider.notifier).addAccount(
+                    ref.read(walletsProvider.notifier).addAccount(
                         walletId: wallet.id,
-                        getPassword: () => showPasswordModal(context), context: context
-                      );
+                        getPassword: () => showPasswordModal(context),
+                        context: context);
                   },
                   icon: Icon(
                     Icons.add_circle_outline_rounded,

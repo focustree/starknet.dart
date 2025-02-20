@@ -78,7 +78,6 @@ class PasswordStore implements SecureStore {
           encryptedSecret: base64Decode(cipherText as String),
         ),
       );
-
     }
   }
 
