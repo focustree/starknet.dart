@@ -14,7 +14,7 @@ class WalletKitErrorHandler {
   }
 
   void handleError(WalletKitError error) {
-    print("WalleeeeetKit Error: $error");
+    print("WalletKit Error: $error");
     //Navigator.of(_context).pop();
   }
 }
