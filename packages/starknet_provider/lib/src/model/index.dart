@@ -32,4 +32,3 @@ export 'state_update.dart';
 export 'syncing.dart';
 export 'declare_transaction.dart';
 export 'contract_class.dart';
-export 'mint_transaction.dart';

@@ -12,3 +12,4 @@ export 'src/convert.dart';
 export 'src/util.dart';
 export 'src/contract/index.dart';
 export 'src/calldata.dart';
+export 'src/devnet/index.dart';

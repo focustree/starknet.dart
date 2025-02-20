@@ -8,7 +8,6 @@ abstract class Provider implements ReadProvider {
       DeclareTransactionRequest request);
   Future<DeployAccountTransactionResponse> addDeployAccountTransaction(
       DeployAccountTransactionRequest request);
-  Future<MintResponse> mintTransaction(MintRequest request);
 }
 
 class JsonRpcProvider extends JsonRpcReadProvider implements Provider {
@@ -46,13 +45,6 @@ class JsonRpcProvider extends JsonRpcReadProvider implements Provider {
             method: 'starknet_addDeployAccountTransaction',
             params: request)
         .then(DeployAccountTransactionResponse.fromJson);
-  }
-
-  @override
-  Future<MintResponse> mintTransaction(MintRequest request) async {
-    return callRpcEndpoint(
-            nodeUri: nodeUri, method: 'devnet_mint', params: request)
-        .then(MintResponse.fromJson);
   }
 
   static final devnet = JsonRpcProvider(nodeUri: devnetUri);
