@@ -1,4 +1,3 @@
-import 'dart:convert';
 import 'dart:io';
 import 'package:starknet/starknet.dart';
 import 'package:test/test.dart';
