@@ -1,3 +1,4 @@
+// TODO: should be moved to "core" package
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:starknet/starknet.dart';
 

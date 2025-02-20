@@ -1,10 +1,14 @@
-import 'package:starknet/starknet.dart';
+// FIXME: imported for FunctionCall
 import 'package:starknet_provider/starknet_provider.dart';
 
-export 'model/pedersen_params.dart';
+import '../types/index.dart';
+import 'pedersen.dart';
+
 export 'derivation.dart';
 export 'keccak.dart';
+export 'model/pedersen_params.dart';
 export 'pedersen.dart';
+export 'poseidon.dart';
 export 'signature.dart';
 
 /// Calculates the transaction hash in the StarkNet network - a unique

@@ -1,0 +1,5 @@
+tags:
+  integration:
+    timeout: 1m
+  unit:
+    timeout: 1m

@@ -21,7 +21,7 @@ void main(List<String> args) async {
     "$compiledPath: ${Felt(compiledClassHash).toHexString()}",
   );
 
-  Felt txHash = Felt.fromInt(0);
+  Felt txHash = Felt.zero;
   final declareTx = await account.declare(
     compiledContract: sierraContract,
     compiledClassHash: compiledClassHash,

@@ -28,5 +28,8 @@ sidebar:
         - "/packages/secure-store"
       - - Wallet Kit
         - "/packages/wallet-kit"
+      - - Avnu Paymaster Provider
+        - "/packages/avnu_provider"
   - - How to Contribute
     - "/how-to-contribute"
+

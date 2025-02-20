@@ -38,3 +38,5 @@ coverage/
 .starkli/account_1.json
 pubspec_overrides.yaml
 *.iml
+
+.fvm

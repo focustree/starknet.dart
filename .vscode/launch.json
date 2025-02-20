@@ -6,8 +6,9 @@
       "request": "launch",
       "type": "dart",
       "env": {
-        "STARKNET_RPC": "http://localhost:5050",
-        "DEVNET_DUMP_PATH": "./assets/devnet-dump.json"
+        "STARKNET_RPC": "https://starknet-sepolia.public.blastapi.io/rpc/v0_7",
+        "DEVNET_DUMP_PATH": "./assets/devnet-dump.json",
+        "AVNU_RPC": "https://sepolia.api.avnu.fi"
       },
       "templateFor": ""
     }

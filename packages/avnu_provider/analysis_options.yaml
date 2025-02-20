@@ -1,0 +1,6 @@
+include: package:lints/recommended.yaml
+
+analyzer:
+  errors:
+    # https://github.com/rrousselGit/freezed/tree/freezed-v2.5.8?tab=readme-ov-file#disabling-invalid_annotation_target-warning-and-warning-in-generates-files
+    invalid_annotation_target: ignore

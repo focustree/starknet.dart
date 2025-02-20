@@ -5,7 +5,6 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:starknet_provider/starknet_provider.dart';
 
 import '../../../starknet.dart';
-import '../../crypto/poseidon.dart';
 import './compiled_class_hash.dart';
 
 part 'compiled_contract.freezed.dart';

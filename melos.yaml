@@ -38,22 +38,35 @@ scripts:
   starknet:setup:
     description: Install starknet dev env
     run: |
-      asdf plugin add starknet-devnet
-      asdf install starknet-devnet $STARKNET_DEVNET_VERSION
-      asdf local starknet-devnet $STARKNET_DEVNET_VERSION
-
-      asdf plugin add scarb
-      asdf install scarb $SCARB_VERSION
-      asdf local scarb $SCARB_VERSION
-
-      asdf plugin add starkli
-      asdf install starkli $STARKLI_VERSION
-      asdf local starkli $STARKLI_VERSION
+      melos asdf:devnet
+      melos asdf:scarb
+      melos asdf:starkli
 
       asdf plugin add action-validator
       asdf install action-validator latest
 
       melos versions
+
+  asdf:devnet:
+    description: Install starknet devnet
+    run: |
+      (asdf plugin list | grep -q starknet-devnet) || asdf plugin add starknet-devnet
+      (asdf list starknet-devnet | grep -q $STARKNET_DEVNET_VERSION) || asdf install starknet-devnet $STARKNET_DEVNET_VERSION
+      (asdf set starknet-devnet $STARKNET_DEVNET_VERSION) || asdf local starknet-devnet $STARKNET_DEVNET_VERSION
+
+  asdf:scarb:
+    description: Install scarb
+    run: |
+      (asdf plugin list | grep -q scarb) || asdf plugin add scarb
+      (asdf list scarb | grep -q $SCARB_VERSION) || asdf install scarb $SCARB_VERSION
+      (asdf set scarb $SCARB_VERSION) || asdf local scarb $SCARB_VERSION
+
+  asdf:starkli:
+    description: Install starkli
+    run: |
+      (asdf plugin list | grep -q starkli) || asdf plugin add starkli
+      (asdf list starkli | grep -q $STARKLI_VERSION) || asdf install starkli $STARKLI_VERSION
+      (asdf set starkli $STARKLI_VERSION) || asdf local starkli $STARKLI_VERSION
 
   versions:
     description: Display toolchain versions
@@ -108,6 +121,15 @@ scripts:
       cp -f .starkli/account_for_devnet_setup.json .starkli/account_1.json
       starkli invoke eth transfer 0x016a0d7df981d681537dc2ce648722ff1d1c2cbe59412b492d35bac69825f104 0x100000000000000000 0x0
       echo | starkli account deploy .starkli/account_1.json
+
+  contracts:token:declare:
+    description: declare the ERC20 contract
+    run: |
+      starkli declare contracts/v$CAIRO_VERSION/target/dev/contract2_MyToken.contract_class.json --compiler-version $CAIRO_VERSION 2>&1
+  contracts:token:deploy:
+    description: deploy the ERC20 contract
+    run: |
+      starkli deploy --salt 0x12345678 0x07d4ee0e4494fe12b26da8e7d2cb114185f768f2bce3e7b1b356cecc9596474b u256:1000000000000000000000000000 0x64b48806902a367c8598f4f95c305e8c1a1acba5f082d294a43793113115691 2>&1
 
   test:
     description: Run all tests

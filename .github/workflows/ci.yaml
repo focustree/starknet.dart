@@ -6,6 +6,7 @@ on:
 env:
   STARKNET_RPC: http://localhost:5050
   DEVNET_DUMP_PATH: /devnet-dump.json
+  AVNU_RPC: https://sepolia.api.avnu.fi
 
 jobs:
   lint:
