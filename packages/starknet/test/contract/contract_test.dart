@@ -33,6 +33,7 @@ void main() {
             );
           });
         },
+        tags: ['unit'],
       );
 
       group('Compiled contract (cairo 1)', () {
@@ -105,6 +106,7 @@ void main() {
         });
       });
     },
+    tags: ['unit'],
   );
 
   group(
