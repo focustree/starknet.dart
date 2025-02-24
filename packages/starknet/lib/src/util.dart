@@ -38,7 +38,6 @@ Future<bool> waitForState({
   final txHash = Felt.fromHexString(transactionHash);
   while (!done) {
     final receipt = await provider.getTransactionReceipt(txHash);
-    stdout.writeln(receipt);
     receipt.when(
       result: (result) {
         result.map(
