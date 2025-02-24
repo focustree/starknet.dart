@@ -14,3 +14,4 @@ export 'src/signer/index.dart';
 export 'src/static_config.dart';
 export 'src/types/index.dart';
 export 'src/util.dart';
+export 'src/devnet/index.dart';
