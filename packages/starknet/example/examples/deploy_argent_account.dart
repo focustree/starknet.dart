@@ -34,7 +34,7 @@ void main() async {
 
   print('ACCOUNT WILL BE DEPLOYED AT ADDRESS: ${accountAddress.toHexString()}');
   await Devnet.mintTransaction(
-    Uri.parse('http://localhost:5050'),
+    devnetUri,
     MintRequest(
       address: accountAddress.toHexString(),
       amount: pow(10, 18) as int,
