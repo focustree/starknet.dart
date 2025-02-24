@@ -9,7 +9,8 @@ class Felt {
       BigInt.two.pow(251) + BigInt.from(17) * BigInt.two.pow(192) + BigInt.one;
 
   static final Felt zero = Felt(BigInt.zero);
-
+  static final Felt one = Felt(BigInt.one);
+  static final Felt two = Felt(BigInt.two);
   late BigInt _bigInt;
 
   //define << and >> . Check result not greater or equel to prime

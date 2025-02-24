@@ -23,7 +23,7 @@ const defaultL1EntrypointName = "__l1_default__";
 /// See: https://github.com/starkware-libs/cairo-lang/blob/167b28bcd940fd25ea3816204fa882a0b0a49603/src/starkware/starknet/public/abi.py#L35-L39
 Felt getSelectorByName(String name) {
   if (name == defaultEntrypointName || name == defaultL1EntrypointName) {
-    return Felt.fromInt(0);
+    return Felt.zero;
   }
   return starknetKeccak(ascii.encode(name));
 }

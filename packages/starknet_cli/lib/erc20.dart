@@ -115,7 +115,7 @@ class ERC20SendCommand extends Command<void> {
           calldata: [
             Felt.fromHexString(argResults?['to'] as String),
             Felt.fromIntString(argResults?['amount'] as String),
-            Felt.fromInt(0), // Uint high
+            Felt.zero, // Uint high
           ],
         ),
       ],
@@ -196,7 +196,7 @@ class ERC20MultiSendCommand extends Command<void> {
           calldata: [
             Felt.fromHexString(address),
             Felt(amountInWei),
-            Felt.fromInt(0),
+            Felt.zero,
           ],
         ),
       );

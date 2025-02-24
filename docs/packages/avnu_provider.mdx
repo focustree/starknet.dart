@@ -2,10 +2,10 @@
 
 ## Index
 
-- [I. Introduction](#i-introduction)
-- [II. Functions](#ii-functions)
-- [III. Example](#iii-example)
-- [IV. How to run tests](#iv-how-to-run-tests)
+- [I. Introduction](packages/avnu_provider#i-introduction)
+- [II. Functions](packages/avnu_provider#ii-functions)
+- [III. Example](packages/avnu_provider#iii-example)
+- [IV. How to run tests](packages/avnu_provider#iv-how-to-run-tests)
 
 AVNU Paymaster Provider is a Dart package that provides a way to interact with the AVNU paymaster service.
 
@@ -177,7 +177,7 @@ final accountClassHash = (await provider.getClassHashAt(
 ))
     .when(
     result: (result) => result.toHexString(),
-    error: (error) => Felt.fromInt(0).toHexString(),
+    error: (error) => Felt.zero.toHexString(),
 );
 
 // Build the typed data
@@ -261,11 +261,10 @@ This is an example of a successful API response:
 
 ## IV. How to run tests
 
-To run the tests, you need to set the environment variables `AVNU_RPC` and `STARKNET_RPC` with the corresponding values.
+To run the tests, you need to set the environment variable for `AVNU_RPC` with the corresponding values.
 
 ```bash
 export AVNU_RPC=https://sepolia.api.avnu.fi
-export STARKNET_RPC=https://starknet-sepolia.public.blastapi.io/rpc/v0_7
 ```
 
 Then, run the tests with the following command:

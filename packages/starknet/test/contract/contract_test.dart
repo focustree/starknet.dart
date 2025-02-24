@@ -1,4 +1,3 @@
-import 'dart:convert';
 import 'dart:io';
 import 'package:starknet/starknet.dart';
 import 'package:test/test.dart';
@@ -12,7 +11,7 @@ void main() {
         () {
           test('Compute class hash for contract without attributes', () async {
             final contractPath =
-                '${Directory.current.path}/../../contracts/build/balance.json';
+                '${Directory.current.path}/../../contracts/v0/artifacts/balance.json';
             final compiledContract =
                 await DeprecatedCompiledContract.fromPath(contractPath);
             final classHash = compiledContract.classHash();
@@ -23,7 +22,7 @@ void main() {
           });
           test('Compute class hash for contract with attributes', () async {
             final contractPath =
-                '${Directory.current.path}/../../contracts/build/oz_account.json';
+                '${Directory.current.path}/../../contracts/v0/artifacts/oz_account.json';
             final compiledContract =
                 await DeprecatedCompiledContract.fromPath(contractPath);
             final classHash = compiledContract.classHash();
@@ -33,80 +32,60 @@ void main() {
             );
           });
         },
-        skip: true,
+        tags: ['unit'],
       );
 
-      group('Compiled contract (cairo 1)', () {
-        test('Compute sierra class hash for ERC20 contract', () async {
-          final contractPath =
-              '${Directory.current.path}/../../contracts/cairo1/artifacts/erc20_sierra.txt';
-          final expectedHashesPath =
-              '${Directory.current.path}/../../contracts/cairo1/artifacts/erc20.hashes.json';
-          final content = await File(expectedHashesPath).readAsString();
-          final expectedHashes = await json.decode(content) as Map;
-          final contract = await CompiledContract.fromPath(contractPath);
-          final classHash = contract.classHash();
-          expect(
-            classHash,
-            equals(
-              BigInt.parse(expectedHashes['sierra_class_hash'] as String),
-            ),
-          );
+      group('Compiled contract (cairo 2.6.2)', () {
+        test('Compute class hash for contracts', () async {
+          // classhashes have been computed with starkli 0.2.9
+          // starkli class-hash $name.contract_class.json
+          final contractClassHashes = {
+            'Counter':
+                '0x0514055409b5c091598fc9059534aca4ff9a8f74b7a684cff6a88058b3cda4fe',
+            'hello':
+                '0x07eb1bdfe98f2e4dd4ac338661c7dbd181645aff8f849fabe6e38c4f202b8840',
+            'MyToken':
+                '0x07d4ee0e4494fe12b26da8e7d2cb114185f768f2bce3e7b1b356cecc9596474b',
+          };
+          for (final entry in contractClassHashes.entries) {
+            final contractPath =
+                '${Directory.current.path}/../../contracts/v2.6.2/target/dev/contract2_${entry.key}.contract_class.json';
+            final contract = await CompiledContract.fromPath(contractPath);
+            final classHash = contract.classHash();
+            expect(
+              classHash,
+              equals(BigInt.parse(entry.value)),
+              reason: 'Classhash error for ${entry.key}',
+            );
+          }
         });
 
-        test('Compute sierra class hash for ABI types contract', () async {
-          final contractPath =
-              '${Directory.current.path}/../../contracts/cairo1/artifacts/abi_types_sierra.txt';
-          final expectedHashesPath =
-              '${Directory.current.path}/../../contracts/cairo1/artifacts/abi_types.hashes.json';
-          final content = await File(expectedHashesPath).readAsString();
-          final expectedHashes = await json.decode(content) as Map;
-          final contract = await CompiledContract.fromPath(contractPath);
-          final classHash = contract.classHash();
-          expect(
-            classHash,
-            equals(
-              BigInt.parse(expectedHashes['sierra_class_hash'] as String),
-            ),
-          );
-        });
-
-        test('Compute compiled class hash for ERC20 contract', () async {
-          final contractPath =
-              '${Directory.current.path}/../../contracts/cairo1/artifacts/erc20_compiled.txt';
-          final expectedHashesPath =
-              '${Directory.current.path}/../../contracts/cairo1/artifacts/erc20.hashes.json';
-          final content = await File(expectedHashesPath).readAsString();
-          final expectedHashes = await json.decode(content) as Map;
-          final contract = await CASMCompiledContract.fromPath(contractPath);
-          final classHash = contract.classHash();
-          expect(
-            classHash,
-            equals(
-              BigInt.parse(expectedHashes['compiled_class_hash'] as String),
-            ),
-          );
-        });
-
-        test('Compute compiled class hash for ABI types contract', () async {
-          final contractPath =
-              '${Directory.current.path}/../../contracts/cairo1/artifacts/abi_types_compiled.txt';
-          final expectedHashesPath =
-              '${Directory.current.path}/../../contracts/cairo1/artifacts/abi_types.hashes.json';
-          final content = await File(expectedHashesPath).readAsString();
-          final expectedHashes = await json.decode(content) as Map;
-          final contract = await CASMCompiledContract.fromPath(contractPath);
-          final classHash = contract.classHash();
-          expect(
-            classHash,
-            equals(
-              BigInt.parse(expectedHashes['compiled_class_hash'] as String),
-            ),
-          );
+        test('Compute class hash for compiled contract', () async {
+          // classhashes have been computed with starkli 0.2.9
+          // starkli class-hash $name.compiled_contract_class.json
+          final contractClassHashes = {
+            'Counter':
+                '0x0394a77f159deb82c21b00a4ad136fd526187a1c82331d59339503306b41ecf8',
+            'hello':
+                '0x00675d18a52f0b87f5d60fd082d2334c5bdeeae911227dbb4fe7b89eec286f99',
+            'MyToken':
+                '0x0496ed5a699ccff05eade1dad0ec41edf1af0adda9aa9f915fdc3f3ae143508a',
+          };
+          for (final entry in contractClassHashes.entries) {
+            final contractPath =
+                '${Directory.current.path}/../../contracts/v2.6.2/target/dev/contract2_${entry.key}.compiled_contract_class.json';
+            final contract = await CASMCompiledContract.fromPath(contractPath);
+            final classHash = contract.classHash();
+            expect(
+              classHash,
+              equals(BigInt.parse(entry.value)),
+              reason: 'Classhash error for ${entry.key}',
+            );
+          }
         });
       });
     },
-    skip: true,
+    tags: ['unit'],
   );
 
   group(
@@ -120,7 +99,7 @@ void main() {
         final classHash = Felt.fromHexString(
           '0x0750cd490a7cd1572411169eaa8be292325990d33c5d4733655fe6b926985062',
         );
-        final calldata = [Felt.fromInt(1)];
+        final calldata = [Felt.one];
         final contractAddress = Contract.computeAddress(
           classHash: classHash,
           calldata: calldata,
@@ -154,6 +133,5 @@ void main() {
       });
     },
     tags: ['unit'],
-    skip: true,
   );
 }
