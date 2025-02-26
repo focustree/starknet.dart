@@ -50,36 +50,33 @@ class Wallets extends _$Wallets with PersistedState<WalletsState> {
     required String walletId,
     required Future<String?> Function() getPassword,
     SecureStore? secureStore,
-    required BuildContext context,
   }) async {
     final wallet = state.wallets[walletId];
     if (wallet == null) {
-      throw Exception("Wallet not found");
+      throw WalletKitError("Wallet not found");
     }
     secureStore = secureStore ??
         await getSecureStore(
           getPassword: getPassword,
           type: wallet.secureStoreType,
         );
+    late final String? seedPhrase;
     try {
-      final seedPhrase = await secureStore.getSecret(
+      seedPhrase = await secureStore.getSecret(
         key: seedPhraseKey(walletId),
       );
-      if (seedPhrase == null) {
-        throw Exception("Seed phrase not found");
-      }
-      final (walletWithAccount, account) = await WalletService.addAccount(
-        secureStore: secureStore,
-        wallet: wallet,
-        seedPhrase: seedPhrase,
-      );
-      updateWallet(wallet: walletWithAccount, accountId: account.id);
     } catch (e) {
-      final error = WalletKitError("Wrong password");
-      if (context.mounted) {
-        WalletKitErrorHandler().handleError(error, context);
-      }
+      throw WalletKitError("Wrong password");
     }
+    if (seedPhrase == null) {
+      throw WalletKitError("Secret not found");
+    }
+    final (walletWithAccount, account) = await WalletService.addAccount(
+      secureStore: secureStore,
+      wallet: wallet,
+      seedPhrase: seedPhrase,
+    );
+    updateWallet(wallet: walletWithAccount, accountId: account.id);
   }
 
   Future<SecureStore> getSecureStoreForWallet({

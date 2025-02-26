@@ -8,9 +8,13 @@ class WalletKitErrorHandler {
 
   factory WalletKitErrorHandler() => _instance;
 
-  void handleError(WalletKitError error, BuildContext context) {
+  void handleError(
+    BuildContext context,
+    WalletKitError error,
+    String? message,
+  ) {
     ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(content: Text('Failed to add account: $error')),
+      SnackBar(content: Text('${message ?? "error"}: $error')),
     );
     Navigator.of(context).pop();
   }
