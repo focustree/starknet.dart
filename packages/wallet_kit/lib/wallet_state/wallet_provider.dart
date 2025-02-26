@@ -3,7 +3,7 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:secure_store/secure_store.dart';
 import 'package:starknet/starknet.dart' as s;
 import 'package:starknet_provider/starknet_provider.dart' as sp;
-
+import '../errors/wallet_kit_error.dart';
 import '../utils/persisted_notifier_state.dart';
 import '../wallet_kit.dart';
 
@@ -46,25 +46,30 @@ class Wallets extends _$Wallets with PersistedState<WalletsState> {
     updateWallet(wallet: walletWithAccount, accountId: account.id);
   }
 
-  addAccount({
+  Future<void> addAccount({
     required String walletId,
     required Future<String?> Function() getPassword,
     SecureStore? secureStore,
   }) async {
     final wallet = state.wallets[walletId];
     if (wallet == null) {
-      throw Exception("Wallet not found");
+      throw WalletKitError("Wallet not found");
     }
     secureStore = secureStore ??
         await getSecureStore(
           getPassword: getPassword,
           type: wallet.secureStoreType,
         );
-    final seedPhrase = await secureStore.getSecret(
-      key: seedPhraseKey(walletId),
-    );
+    late final String? seedPhrase;
+    try {
+      seedPhrase = await secureStore.getSecret(
+        key: seedPhraseKey(walletId),
+      );
+    } catch (e) {
+      throw WalletKitError("Wrong password");
+    }
     if (seedPhrase == null) {
-      throw Exception("Seed phrase not found");
+      throw WalletKitError("Secret not found");
     }
     final (walletWithAccount, account) = await WalletService.addAccount(
       secureStore: secureStore,
