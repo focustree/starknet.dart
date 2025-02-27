@@ -24,8 +24,12 @@ mixin _$WalletsState {
   ({int accountId, String walletId})? get selected =>
       throw _privateConstructorUsedError;
 
+  /// Serializes this WalletsState to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of WalletsState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $WalletsStateCopyWith<WalletsState> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -51,6 +55,8 @@ class _$WalletsStateCopyWithImpl<$Res, $Val extends WalletsState>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of WalletsState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -91,6 +97,8 @@ class __$$WalletsStateImplCopyWithImpl<$Res>
       _$WalletsStateImpl _value, $Res Function(_$WalletsStateImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of WalletsState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -148,12 +156,14 @@ class _$WalletsStateImpl implements _WalletsState {
                 other.selected == selected));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType, const DeepCollectionEquality().hash(_wallets), selected);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of WalletsState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$WalletsStateImplCopyWith<_$WalletsStateImpl> get copyWith =>
@@ -179,8 +189,11 @@ abstract class _WalletsState implements WalletsState {
   Map<String, Wallet> get wallets;
   @override
   ({int accountId, String walletId})? get selected;
+
+  /// Create a copy of WalletsState
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$WalletsStateImplCopyWith<_$WalletsStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -197,8 +210,12 @@ mixin _$Wallet {
   SecureStoreType get secureStoreType => throw _privateConstructorUsedError;
   Map<int, Account> get accounts => throw _privateConstructorUsedError;
 
+  /// Serializes this Wallet to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of Wallet
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $WalletCopyWith<Wallet> get copyWith => throw _privateConstructorUsedError;
 }
 
@@ -225,6 +242,8 @@ class _$WalletCopyWithImpl<$Res, $Val extends Wallet>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of Wallet
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -282,6 +301,8 @@ class __$$WalletImplCopyWithImpl<$Res>
       _$WalletImpl _value, $Res Function(_$WalletImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of Wallet
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -367,12 +388,14 @@ class _$WalletImpl implements _Wallet {
             const DeepCollectionEquality().equals(other._accounts, _accounts));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, id, name, type, secureStoreType,
       const DeepCollectionEquality().hash(_accounts));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of Wallet
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$WalletImplCopyWith<_$WalletImpl> get copyWith =>
@@ -406,8 +429,11 @@ abstract class _Wallet implements Wallet {
   SecureStoreType get secureStoreType;
   @override
   Map<int, Account> get accounts;
+
+  /// Create a copy of Wallet
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$WalletImplCopyWith<_$WalletImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -425,8 +451,12 @@ mixin _$Account {
   Map<String, double> get balances => throw _privateConstructorUsedError;
   bool get isDeployed => throw _privateConstructorUsedError;
 
+  /// Serializes this Account to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of Account
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $AccountCopyWith<Account> get copyWith => throw _privateConstructorUsedError;
 }
 
@@ -454,6 +484,8 @@ class _$AccountCopyWithImpl<$Res, $Val extends Account>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of Account
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -517,6 +549,8 @@ class __$$AccountImplCopyWithImpl<$Res>
       _$AccountImpl _value, $Res Function(_$AccountImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of Account
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -612,12 +646,14 @@ class _$AccountImpl implements _Account {
                 other.isDeployed == isDeployed));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, id, walletId, name, address,
       const DeepCollectionEquality().hash(_balances), isDeployed);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of Account
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$AccountImplCopyWith<_$AccountImpl> get copyWith =>
@@ -654,8 +690,11 @@ abstract class _Account implements Account {
   Map<String, double> get balances;
   @override
   bool get isDeployed;
+
+  /// Create a copy of Account
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$AccountImplCopyWith<_$AccountImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

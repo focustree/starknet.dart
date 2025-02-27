@@ -3,7 +3,7 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:secure_store/secure_store.dart';
 import 'package:starknet/starknet.dart' as s;
 import 'package:starknet_provider/starknet_provider.dart' as sp;
-import '../errors/wallet_kit_error.dart';
+
 import '../utils/persisted_notifier_state.dart';
 import '../wallet_kit.dart';
 
@@ -53,7 +53,9 @@ class Wallets extends _$Wallets with PersistedState<WalletsState> {
   }) async {
     final wallet = state.wallets[walletId];
     if (wallet == null) {
-      throw WalletKitError("Wallet not found");
+      ref.read(walletErrorNotifierProvider.notifier).reportError(
+          const WalletError.accountError(message: 'Wallet not found'));
+      return;
     }
     secureStore = secureStore ??
         await getSecureStore(
@@ -66,10 +68,14 @@ class Wallets extends _$Wallets with PersistedState<WalletsState> {
         key: seedPhraseKey(walletId),
       );
     } catch (e) {
-      throw WalletKitError("Wrong password");
+      ref.read(walletErrorNotifierProvider.notifier).reportError(
+          WalletError.accountError(message: 'Wrong password', exception: e));
+      return;
     }
     if (seedPhrase == null) {
-      throw WalletKitError("Secret not found");
+      ref.read(walletErrorNotifierProvider.notifier).reportError(
+          const WalletError.accountError(message: 'Secret not found'));
+      return;
     }
     final (walletWithAccount, account) = await WalletService.addAccount(
       secureStore: secureStore,

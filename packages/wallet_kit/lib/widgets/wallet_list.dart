@@ -5,7 +5,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-import '../errors/wallet_kit_error.dart';
 import '../services/index.dart';
 import '../ui/index.dart';
 import '../utils/index.dart';
@@ -206,20 +205,11 @@ class WalletCell extends HookConsumerWidget {
                 child: TextButton.icon(
                   label: const Text('Add account'),
                   onPressed: () async {
-                    try {
-                      await ref.read(walletsProvider.notifier).addAccount(
-                            walletId: wallet.id,
-                            getPassword: () => showPasswordModal(context),
-                          );
-                      if (context.mounted) {
-                        Navigator.of(context).pop();
-                      }
-                    } on WalletKitError catch (error) {
-                      if (context.mounted) {
-                        WalletKitErrorHandler().handleError(
-                            context, error, "Failed to add account");
-                      }
-                    }
+                    ref.read(walletsProvider.notifier).addAccount(
+                          walletId: wallet.id,
+                          getPassword: () => showPasswordModal(context),
+                        );
+                    Navigator.of(context).pop();
                   },
                   icon: Icon(
                     Icons.add_circle_outline_rounded,

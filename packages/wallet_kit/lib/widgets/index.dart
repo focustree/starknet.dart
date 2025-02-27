@@ -9,3 +9,4 @@ export 'account_address.dart';
 export 'nft_list.dart';
 export 'nft_details.dart';
 export 'deploy_account_button.dart';
+export 'wallet_error.dart';
