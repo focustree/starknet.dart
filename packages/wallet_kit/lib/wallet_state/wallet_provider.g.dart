@@ -6,7 +6,7 @@ part of 'wallet_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$walletsHash() => r'156bd9dbdf1117d0704452b21fab941d8d42dbeb';
+String _$walletsHash() => r'f07c78a5cc4df8081453948c02eb2ef183a20607';
 
 /// See also [Wallets].
 @ProviderFor(Wallets)
@@ -22,4 +22,4 @@ final walletsProvider =
 
 typedef _$Wallets = AutoDisposeNotifier<WalletsState>;
 // ignore_for_file: type=lint
-// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member
+// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package
