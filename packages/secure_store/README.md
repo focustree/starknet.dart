@@ -1,4 +1,5 @@
 # secure_store
+
 The secure store is a Flutter allowing to securely store secret on a device, either using a password, or using biometrics.
 
 |         | PasswordStore | BiometricsStore |
