@@ -1,5 +1,7 @@
-import 'package:starknet/starknet.dart';
 import 'package:starknet_provider/starknet_provider.dart';
+
+import '../types/index.dart';
+import 'contract.dart';
 
 class ERC20 extends Contract {
   ERC20({required super.account, required super.address});
@@ -57,14 +59,12 @@ class ERC20 extends Contract {
       selector: "transfer",
       calldata: [recipient, value.low, value.high],
     );
-    return (trx.when(
-      result: (result) {
-        return result.transaction_hash;
-      },
+    return trx.when(
+      result: (result) => result.transaction_hash,
       error: (error) {
         throw Exception("Error transfer (${error.code}): ${error.message}");
       },
-    ));
+    );
   }
 
   /// Moves `amount` tokens from `sender` to `recipient` using the allowance mechanism.
