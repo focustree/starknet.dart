@@ -15,12 +15,49 @@ const _defaultInterval = Duration(seconds: 5);
 
 /// Number of retry to wait for transaction to be declared as NOT_RECEIVED
 const _defaultMaxRetries = 60;
-const _errorStates = ['REVERTED'];
 
 class _Status {
-  final String execution;
-  final String finality;
+  final _ExecutionStatus execution;
+  final _FinalityStatus finality;
   _Status(this.execution, this.finality);
+}
+
+enum _ExecutionStatus {
+  pending('PENDING'),
+  succeeded('SUCCEEDED'),
+  reverted('REVERTED'),
+  unknown('UNKNOWN');
+
+  final String value;
+  const _ExecutionStatus(this.value);
+
+  // Convert a string to the enum value
+  static _ExecutionStatus fromString(String value) {
+    return _ExecutionStatus.values.firstWhere(
+      (status) => status.value == value,
+      orElse: () => throw ArgumentError('Invalid status: $value'),
+    );
+  }
+}
+
+enum _FinalityStatus {
+  acceptedOnL1('ACCEPTED_ON_L1'),
+  acceptedOnL2('ACCEPTED_ON_L2'),
+  received('RECEIVED'),
+  rejected('REJECTED'),
+  pending('PENDING'),
+  unknown('UNKNOWN');
+
+  final String value;
+  const _FinalityStatus(this.value);
+
+  // Convert a string to the enum value
+  static _FinalityStatus fromString(String value) {
+    return _FinalityStatus.values.firstWhere(
+      (status) => status.value == value,
+      orElse: () => throw ArgumentError('Invalid status: $value'),
+    );
+  }
 }
 
 Future<bool> _waitForTransactionStatus({
@@ -34,7 +71,7 @@ Future<bool> _waitForTransactionStatus({
   var count = 0;
   var done = false;
   var succeed = false;
-  var _status = _Status('UNKNOWN', 'UNKNOWN');
+  var _status = _Status(_ExecutionStatus.unknown, _FinalityStatus.unknown);
 
   final txHash = Felt.fromHexString(transactionHash);
   while (!done) {
@@ -42,20 +79,30 @@ Future<bool> _waitForTransactionStatus({
     receipt.when(
       result: (result) {
         result.map(
-          invokeTxnReceipt: (receipt) => _status =
-              _Status(receipt.execution_status, receipt.finality_status),
-          declareTxnReceipt: (receipt) => _status =
-              _Status(receipt.execution_status, receipt.finality_status),
-          deployTxnReceipt: (receipt) => _status =
-              _Status(receipt.execution_status, receipt.finality_status),
-          deployAccountTxnReceipt: (receipt) => _status =
-              _Status(receipt.execution_status, receipt.finality_status),
-          l1HandlerTxnReceipt: (receipt) => _status =
-              _Status(receipt.execution_status, receipt.finality_status),
-          pendingDeployTxnReceipt: (receipt) =>
-              _status = _Status('PENDING', 'PENDING'),
-          pendingCommonReceiptProperties: (receipt) =>
-              _status = _Status('PENDING', 'PENDING'),
+          invokeTxnReceipt: (receipt) => _status = _Status(
+            _ExecutionStatus.fromString(receipt.execution_status),
+            _FinalityStatus.fromString(receipt.finality_status),
+          ),
+          declareTxnReceipt: (receipt) => _status = _Status(
+            _ExecutionStatus.fromString(receipt.execution_status),
+            _FinalityStatus.fromString(receipt.finality_status),
+          ),
+          deployTxnReceipt: (receipt) => _status = _Status(
+            _ExecutionStatus.fromString(receipt.execution_status),
+            _FinalityStatus.fromString(receipt.finality_status),
+          ),
+          deployAccountTxnReceipt: (receipt) => _status = _Status(
+            _ExecutionStatus.fromString(receipt.execution_status),
+            _FinalityStatus.fromString(receipt.finality_status),
+          ),
+          l1HandlerTxnReceipt: (receipt) => _status = _Status(
+            _ExecutionStatus.fromString(receipt.execution_status),
+            _FinalityStatus.fromString(receipt.finality_status),
+          ),
+          pendingDeployTxnReceipt: (receipt) => _status =
+              _Status(_ExecutionStatus.pending, _FinalityStatus.pending),
+          pendingCommonReceiptProperties: (receipt) => _status =
+              _Status(_ExecutionStatus.pending, _FinalityStatus.pending),
         );
       },
       error: (error) {
@@ -74,7 +121,7 @@ Future<bool> _waitForTransactionStatus({
                     JsonRpcApiErrorCode.TXN_HASH_NOT_FOUND_PRE_0_4_0) &&
             (count < maxRetries)) {
           count += 1;
-          _status = _Status('UNKNOWN', 'UNKNOWN');
+          _status = _Status(_ExecutionStatus.unknown, _FinalityStatus.unknown);
           debugLog?.call(
             'Waiting for status of $transactionHash ($count / $maxRetries)',
           );
@@ -84,8 +131,8 @@ Future<bool> _waitForTransactionStatus({
         }
       },
     );
-    if (_errorStates.contains(_status.execution) ||
-        _errorStates.contains(_status.finality)) {
+    if ((_ExecutionStatus.reverted == _status.execution) ||
+        (_FinalityStatus.rejected == _status.finality)) {
       succeed = false;
       break;
     }
@@ -101,7 +148,7 @@ Future<bool> _waitForTransactionStatus({
 Future<bool> _waitForExecutionStatus({
   required String transactionHash,
   required Provider provider,
-  required List<String> statuses,
+  required List<_ExecutionStatus> statuses,
   required Duration interval,
   required int maxRetries,
   void Function(dynamic message)? debugLog,
@@ -119,7 +166,7 @@ Future<bool> _waitForExecutionStatus({
 Future<bool> _waitForFinalityStatus({
   required String transactionHash,
   required Provider provider,
-  required List<String> statuses,
+  required List<_FinalityStatus> statuses,
   required Duration interval,
   required int maxRetries,
   void Function(dynamic message)? debugLog,
@@ -151,14 +198,14 @@ Future<bool> waitForState({
   return _waitForExecutionStatus(
     transactionHash: transactionHash,
     provider: provider,
-    statuses: states,
+    statuses: states.map(_ExecutionStatus.fromString).toList(),
     interval: interval,
     maxRetries: maxRetries,
     debugLog: debugLog,
   );
 }
 
-/// Returns `true` when [transactionHash] execution status is in `{PENDING, SUCEEDED}`
+/// Returns `true` when [transactionHash] execution status is in `{PENDING, SUCCEEDED}`
 ///
 ///
 /// The [provider] will be query with a period of [interval]
@@ -175,7 +222,7 @@ Future<bool> waitForTransaction({
   return _waitForExecutionStatus(
     transactionHash: transactionHash,
     provider: provider,
-    statuses: ['PENDING', 'SUCCEEDED'],
+    statuses: [_ExecutionStatus.pending, _ExecutionStatus.succeeded],
     interval: interval,
     maxRetries: maxRetries,
     debugLog: debugLog,
@@ -201,7 +248,7 @@ Future<bool> waitForAcceptance({
   return _waitForFinalityStatus(
     transactionHash: transactionHash,
     provider: provider,
-    statuses: ['ACCEPTED_ON_L1', 'ACCEPTED_ON_L2'],
+    statuses: [_FinalityStatus.acceptedOnL1, _FinalityStatus.acceptedOnL2],
     interval: interval,
     maxRetries: maxRetries,
     debugLog: debugLog,
