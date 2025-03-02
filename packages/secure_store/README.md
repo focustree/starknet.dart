@@ -80,16 +80,10 @@ android {
 }
 ```
 
-Change your `MainActivity` to extend `FlutterFragmentActivity` instead of `FlutterActivity`:
+import io.flutter.embedding.android.FlutterFragmentActivity
 
-```kt
-package com.example.example
-
-import io.flutter.embedding.android.FlutterActivity
-
-class MainActivity: FlutterFragmentActivity() {
+class MainActivity: FlutterFragmentActivity() {  
 }
-```
 
 ### Mac
 
