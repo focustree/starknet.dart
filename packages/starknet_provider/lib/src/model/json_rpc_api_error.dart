@@ -48,6 +48,8 @@ enum JsonRpcApiErrorCode {
   TOO_MANY_KEYS_IN_FILTER, // new in spec 0.3.0
   @JsonValue(40)
   CONTRACT_ERROR,
+  @JsonValue(41)
+  TRANSACTION_EXECUTION_ERROR,
   @JsonValue(50)
   INVALID_CONTRACT_CLASS, // from pathfinder code
   @JsonValue(51)
