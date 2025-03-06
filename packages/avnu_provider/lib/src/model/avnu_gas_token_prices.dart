@@ -5,22 +5,32 @@ part 'avnu_gas_token_prices.g.dart';
 
 @freezed
 class AvnuGasTokenPrice with _$AvnuGasTokenPrice {
-  const factory AvnuGasTokenPrice({
+  const factory AvnuGasTokenPrice.result({
     required String tokenAddress,
     required String priceInETH,
     required double priceInUSD,
     required int decimals,
-  }) = _AvnuGasTokenPrice;
+  }) = AvnuGasTokenPriceResult;
+  const factory AvnuGasTokenPrice.error(
+    List<String> messages,
+    String? revertError,
+  ) = AvnuGasTokenPriceError;
 
-  factory AvnuGasTokenPrice.fromJson(Map<String, dynamic> json) =>
-      _$AvnuGasTokenPriceFromJson(json);
+  factory AvnuGasTokenPrice.fromJson(Map<String, Object?> json) =>
+      json.containsKey('error') || json.containsKey('messages')
+          ? AvnuGasTokenPriceError.fromJson(json)
+          : AvnuGasTokenPriceResult.fromJson(json);
 }
 
 @freezed
 class AvnuGasTokenPrices with _$AvnuGasTokenPrices {
-  const factory AvnuGasTokenPrices({
+  const factory AvnuGasTokenPrices.result({
     required List<AvnuGasTokenPrice> prices,
-  }) = _AvnuGasTokenPrices;
+  }) = AvnuGasTokenPricesResult;
+  const factory AvnuGasTokenPrices.error(
+    List<String> messages,
+    String? revertError,
+  ) = AvnuGasTokenPricesError;
 
   factory AvnuGasTokenPrices.fromJson(Map<String, Object?> json) =>
       _$AvnuGasTokenPricesFromJson(json);

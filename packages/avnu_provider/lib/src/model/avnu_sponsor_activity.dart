@@ -5,7 +5,7 @@ part 'avnu_sponsor_activity.g.dart';
 
 @freezed
 class AvnuSponsorActivity with _$AvnuSponsorActivity {
-  const factory AvnuSponsorActivity.getSponsorActivity(
+  const factory AvnuSponsorActivity.result(
     String name,
     int succeededTxCount,
     int revertedTxCount,
@@ -14,13 +14,14 @@ class AvnuSponsorActivity with _$AvnuSponsorActivity {
     String revertedGasFees,
     String gasFees,
     String remainingCredits,
-  ) = AvnuSponsorActivityGetSponsorActivity;
+  ) = AvnuSponsorActivityResult;
   const factory AvnuSponsorActivity.error(
     List<String> messages,
+    String? revertError,
   ) = AvnuSponsorActivityError;
 
   factory AvnuSponsorActivity.fromJson(Map<String, Object?> json) =>
       json.containsKey('error') || json.containsKey('messages')
           ? AvnuSponsorActivityError.fromJson(json)
-          : AvnuSponsorActivityGetSponsorActivity.fromJson(json);
+          : AvnuSponsorActivityResult.fromJson(json);
 }

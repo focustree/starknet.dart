@@ -25,7 +25,7 @@ abstract class AvnuReadProvider {
   // Get the account rewards
   //
   // [Spec](https://doc.avnu.fi/avnu-paymaster/integration/api-references)
-  Future<AvnuAccountRewards> getAccountRewards(
+  Future<List<AvnuAccountRewards>> getAccountRewards(
       String address, String? sponsor, String? campaign, String? protocol);
 
   // Sets the API key for AVNU service
@@ -87,7 +87,7 @@ class AvnuJsonRpcReadProvider implements AvnuReadProvider {
   }
 
   @override
-  Future<AvnuAccountRewards> getAccountRewards(String address, String? sponsor,
+  Future<List<AvnuAccountRewards>> getAccountRewards(String address, String? sponsor,
       String? campaign, String? protocol) async {
     try {
       final dynamic json = await callRpcEndpoint(
@@ -95,9 +95,10 @@ class AvnuJsonRpcReadProvider implements AvnuReadProvider {
           method: 'paymaster_get_account_rewards',
           params: [address, sponsor, campaign, protocol]);
       if (json is List) {
-        return AvnuAccountRewards.fromJson({'rewards': json});
+        return AvnuAccountRewards.fromJsonList(json);
+      } else {
+        throw FormatException('Invalid response format: expected JSON array');
       }
-      throw FormatException('Invalid response format: expected JSON array');
     } on FormatException catch (e) {
       throw FormatException(
           'Failed to parse account rewards response: ${e.message}');
