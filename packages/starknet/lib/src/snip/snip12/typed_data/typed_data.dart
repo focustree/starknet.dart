@@ -2,11 +2,17 @@
 // https://github.com/starknet-io/starknet.js/blob/8fb2193462b5bb743f551cdec631d5923f09e657/src/utils/typedData.ts
 // and SNIP-12 specification
 // https://github.com/starknet-io/SNIPs/blob/main/SNIPS/snip-12.md
-import 'package:starknet/starknet.dart';
 
-import 'shortstring.dart';
-import 'num.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
+
+import '../../../crypto/index.dart';
+import '../../../types/index.dart';
 import 'encode.dart';
+import 'num.dart';
+import 'shortstring.dart';
+
+part 'typed_data.freezed.dart';
+part 'typed_data.g.dart';
 
 // Represents the revision of the TypedData implementation
 enum TypedDataRevision {
@@ -40,59 +46,48 @@ class Configuration {
   });
 }
 
-// Parameter definition for TypedData
-class TypedParameter {
-  final String name;
-  final String type;
-  final String? contains; // For enum types
+/// Parameter definition for TypedData
+@freezed
+class TypedParameter with _$TypedParameter {
+  const factory TypedParameter({
+    required String name,
+    required String type,
+    String? contains,
+  }) = _TypedParameter;
 
-  const TypedParameter({
-    required this.name,
-    required this.type,
-    this.contains,
-  });
+  factory TypedParameter.fromJson(Map<String, dynamic> json) =>
+      _$TypedParameterFromJson(json);
 }
 
-// Represents a TypedData message
-class TypedData {
-  final Map<String, List<TypedParameter>> types;
-  final String primaryType;
-  final Map<String, dynamic> domain;
-  final Map<String, dynamic> message;
+@freezed
+class TypedDataDomain with _$TypedDataDomain {
+  const factory TypedDataDomain({
+    required String name,
+    required String version,
+    @JsonKey(name: 'chainId') required String chainId,
+    @Default('0') String revision,
+  }) = _TypedDataDomain;
 
-  const TypedData({
-    required this.types,
-    required this.primaryType,
-    required this.domain,
-    required this.message,
-  });
+  factory TypedDataDomain.fromJson(Map<String, dynamic> json) =>
+      _$TypedDataDomainFromJson(json);
+}
 
-  factory TypedData.fromJson(Map<String, dynamic> json) {
-    // Convert the types map to the correct format
-    final typesMap = (json['types'] as Map<String, dynamic>).map(
-      (key, value) => MapEntry(
-        key,
-        (value as List)
-            .map((param) => TypedParameter(
-                  name: param['name'] as String,
-                  type: param['type'] as String,
-                  contains: param['contains'] as String?,
-                ))
-            .toList(),
-      ),
-    );
+/// Represents a TypedData message
+@freezed
+class TypedData with _$TypedData {
+  const factory TypedData({
+    required Map<String, List<TypedParameter>> types,
+    required TypedDataDomain domain,
+    @JsonKey(name: 'primaryType') required String primaryType,
+    required Map<String, Object?> message,
+  }) = _TypedData;
 
-    return TypedData(
-      types: typesMap,
-      primaryType: json['primaryType'] as String,
-      domain: json['domain'] as Map<String, dynamic>,
-      message: json['message'] as Map<String, dynamic>,
-    );
-  }
+  factory TypedData.fromJson(Map<String, dynamic> json) =>
+      _$TypedDataFromJson(json);
 }
 
 // Preset types for TypedData
-final presetTypes = {
+const presetTypes = {
   'u256': [
     TypedParameter(name: 'low', type: 'u128'),
     TypedParameter(name: 'high', type: 'u128'),
@@ -134,9 +129,7 @@ void assertRange(dynamic data, String type,
 
 // Identifies the revision of TypedData
 TypedDataRevision identifyRevision(TypedData data) {
-  final int revision = data.domain['revision'] is String
-      ? int.tryParse(data.domain['revision']) ?? 0
-      : 0;
+  final revision = int.tryParse(data.domain.revision) ?? 0;
 
   if (data.types.containsKey(
           revisionConfiguration[TypedDataRevision.active]!.domain) &&
@@ -172,7 +165,7 @@ BigInt getMessageHash(TypedData typedData, BigInt account) {
   final message = <BigInt>[
     BigInt.parse(encodeShortString('StarkNet Message')),
     BigInt.parse(addHexPrefix(getStructHash(
-        typedData.types, config.domain, typedData.domain, revision))),
+        typedData.types, config.domain, typedData.domain.toJson(), revision))),
     account,
     BigInt.parse(addHexPrefix(getStructHash(
         typedData.types, typedData.primaryType, typedData.message, revision))),
