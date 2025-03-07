@@ -34,7 +34,7 @@ class Context {
 // Configuration for TypedData processing
 class Configuration {
   final String domain;
-  final Function(List<BigInt>) hashMethod;
+  final BigInt Function(List<BigInt>) hashMethod;
   final String Function(String) escapeTypeString;
   final Map<String, List<TypedParameter>> presetTypes;
 
@@ -49,6 +49,7 @@ class Configuration {
 /// Parameter definition for TypedData
 @freezed
 class TypedParameter with _$TypedParameter {
+  @JsonSerializable(includeIfNull: false)
   const factory TypedParameter({
     required String name,
     required String type,
@@ -73,17 +74,54 @@ class TypedDataDomain with _$TypedDataDomain {
 }
 
 /// Represents a TypedData message
-@freezed
-class TypedData with _$TypedData {
-  const factory TypedData({
-    required Map<String, List<TypedParameter>> types,
-    required TypedDataDomain domain,
-    @JsonKey(name: 'primaryType') required String primaryType,
-    required Map<String, Object?> message,
-  }) = _TypedData;
+// class TypedData<M> {
+// FIXME: use generic
+class TypedData {
+  final Map<String, List<TypedParameter>> types;
+  final TypedDataDomain domain;
+  final String primaryType;
+  // final M message;
+  final Map<String, Object?> message;
 
-  factory TypedData.fromJson(Map<String, dynamic> json) =>
-      _$TypedDataFromJson(json);
+  TypedData({
+    required this.types,
+    required this.domain,
+    required this.primaryType,
+    required this.message,
+  });
+
+  TypedDataRevision get revision {
+    final revision = int.tryParse(domain.revision) ?? 0;
+
+    if (types.containsKey(
+          revisionConfiguration[TypedDataRevision.active]!.domain,
+        ) &&
+        revision == TypedDataRevision.active.value) {
+      return TypedDataRevision.active;
+    }
+
+    if (types.containsKey(
+          revisionConfiguration[TypedDataRevision.legacy]!.domain,
+        ) &&
+        revision == TypedDataRevision.legacy.value) {
+      return TypedDataRevision.legacy;
+    }
+
+    return TypedDataRevision.legacy;
+  }
+
+  Map<String, dynamic> toJson() {
+    return {
+      'types': types,
+      'domain': domain.toJson(),
+      'primaryType': primaryType,
+      'message': message,
+    };
+  }
+
+  BigInt hash(Felt accountAddress) {
+    return getMessageHash(this, accountAddress.toBigInt());
+  }
 }
 
 // Preset types for TypedData
@@ -119,45 +157,45 @@ final revisionConfiguration = {
 };
 
 // Validates that a value is within the specified range
-void assertRange(dynamic data, String type,
-    {required BigInt min, required BigInt max}) {
+void assertRange(
+  dynamic data,
+  String type, {
+  required BigInt min,
+  required BigInt max,
+}) {
   final value = BigInt.parse(data.toString());
   if (value < min || value > max) {
     throw Exception('$value ($type) is out of bounds [$min, $max]');
   }
 }
 
-// Identifies the revision of TypedData
-TypedDataRevision identifyRevision(TypedData data) {
-  final revision = int.tryParse(data.domain.revision) ?? 0;
-
-  if (data.types.containsKey(
-          revisionConfiguration[TypedDataRevision.active]!.domain) &&
-      revision == TypedDataRevision.active.value) {
-    return TypedDataRevision.active;
-  }
-
-  if (data.types.containsKey(
-          revisionConfiguration[TypedDataRevision.legacy]!.domain) &&
-      revision == TypedDataRevision.legacy.value) {
-    return TypedDataRevision.legacy;
-  }
-
-  return TypedDataRevision.legacy;
-}
-
 // Gets the message hash for signing
 BigInt getMessageHash(TypedData typedData, BigInt account) {
-  final revision = identifyRevision(typedData);
-  final config = revisionConfiguration[revision]!;
+  final config = revisionConfiguration[typedData.revision]!;
 
   final message = <BigInt>[
     BigInt.parse(encodeShortString('StarkNet Message')),
-    BigInt.parse(addHexPrefix(getStructHash(
-        typedData.types, config.domain, typedData.domain.toJson(), revision))),
+    BigInt.parse(
+      addHexPrefix(
+        getStructHash(
+          typedData.types,
+          config.domain,
+          typedData.domain.toJson(),
+          typedData.revision,
+        ),
+      ),
+    ),
     account,
-    BigInt.parse(addHexPrefix(getStructHash(
-        typedData.types, typedData.primaryType, typedData.message, revision))),
+    BigInt.parse(
+      addHexPrefix(
+        getStructHash(
+          typedData.types,
+          typedData.primaryType,
+          typedData.message,
+          typedData.revision,
+        ),
+      ),
+    ),
   ];
 
   return config.hashMethod(message);

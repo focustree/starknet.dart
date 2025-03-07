@@ -18,7 +18,7 @@ Map<String, dynamic> _$$TypedParameterImplToJson(
     <String, dynamic>{
       'name': instance.name,
       'type': instance.type,
-      'contains': instance.contains,
+      if (instance.contains case final value?) 'contains': value,
     };
 
 _$TypedDataDomainImpl _$$TypedDataDomainImplFromJson(
@@ -37,27 +37,4 @@ Map<String, dynamic> _$$TypedDataDomainImplToJson(
       'version': instance.version,
       'chainId': instance.chainId,
       'revision': instance.revision,
-    };
-
-_$TypedDataImpl _$$TypedDataImplFromJson(Map<String, dynamic> json) =>
-    _$TypedDataImpl(
-      types: (json['types'] as Map<String, dynamic>).map(
-        (k, e) => MapEntry(
-            k,
-            (e as List<dynamic>)
-                .map((e) => TypedParameter.fromJson(e as Map<String, dynamic>))
-                .toList()),
-      ),
-      domain: TypedDataDomain.fromJson(json['domain'] as Map<String, dynamic>),
-      primaryType: json['primaryType'] as String,
-      message: json['message'] as Map<String, dynamic>,
-    );
-
-Map<String, dynamic> _$$TypedDataImplToJson(_$TypedDataImpl instance) =>
-    <String, dynamic>{
-      'types': instance.types
-          .map((k, e) => MapEntry(k, e.map((e) => e.toJson()).toList())),
-      'domain': instance.domain.toJson(),
-      'primaryType': instance.primaryType,
-      'message': instance.message,
     };
