@@ -13,12 +13,13 @@ _$AvnuBuildTypedDataImpl _$$AvnuBuildTypedDataImplFromJson(
         (k, e) => MapEntry(
             k,
             (e as List<dynamic>)
-                .map((e) => TypeDefinition.fromJson(e as Map<String, dynamic>))
+                .map((e) =>
+                    AvnuTypeDefinition.fromJson(e as Map<String, dynamic>))
                 .toList()),
       ),
       primaryType: json['primaryType'] as String,
-      domain: Domain.fromJson(json['domain'] as Map<String, dynamic>),
-      message: Message.fromJson(json['message'] as Map<String, dynamic>),
+      domain: AvnuDomain.fromJson(json['domain'] as Map<String, dynamic>),
+      message: AvnuMessage.fromJson(json['message'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$$AvnuBuildTypedDataImplToJson(
@@ -30,27 +31,29 @@ Map<String, dynamic> _$$AvnuBuildTypedDataImplToJson(
       'message': instance.message,
     };
 
-_$TypeDefinitionImpl _$$TypeDefinitionImplFromJson(Map<String, dynamic> json) =>
-    _$TypeDefinitionImpl(
+_$AvnuTypeDefinitionImpl _$$AvnuTypeDefinitionImplFromJson(
+        Map<String, dynamic> json) =>
+    _$AvnuTypeDefinitionImpl(
       name: json['name'] as String,
       type: json['type'] as String,
     );
 
-Map<String, dynamic> _$$TypeDefinitionImplToJson(
-        _$TypeDefinitionImpl instance) =>
+Map<String, dynamic> _$$AvnuTypeDefinitionImplToJson(
+        _$AvnuTypeDefinitionImpl instance) =>
     <String, dynamic>{
       'name': instance.name,
       'type': instance.type,
     };
 
-_$DomainImpl _$$DomainImplFromJson(Map<String, dynamic> json) => _$DomainImpl(
+_$AvnuDomainImpl _$$AvnuDomainImplFromJson(Map<String, dynamic> json) =>
+    _$AvnuDomainImpl(
       name: json['name'] as String,
       version: json['version'] as String,
       chainId: json['chainId'] as String,
       revision: json['revision'] as String?,
     );
 
-Map<String, dynamic> _$$DomainImplToJson(_$DomainImpl instance) =>
+Map<String, dynamic> _$$AvnuDomainImplToJson(_$AvnuDomainImpl instance) =>
     <String, dynamic>{
       'name': instance.name,
       'version': instance.version,
@@ -58,8 +61,8 @@ Map<String, dynamic> _$$DomainImplToJson(_$DomainImpl instance) =>
       'revision': instance.revision,
     };
 
-_$MessageImpl _$$MessageImplFromJson(Map<String, dynamic> json) =>
-    _$MessageImpl(
+_$AvnuMessageImpl _$$AvnuMessageImplFromJson(Map<String, dynamic> json) =>
+    _$AvnuMessageImpl(
       callerv1: json['caller'] as String?,
       callerv2: json['Caller'] as String?,
       noncev1: json['nonce'] as String?,
@@ -70,14 +73,14 @@ _$MessageImpl _$$MessageImplFromJson(Map<String, dynamic> json) =>
       executeBeforev2: json['Execute Before'] as String?,
       callsLen: (json['calls_len'] as num?)?.toInt(),
       calls: (json['calls'] as List<dynamic>?)
-          ?.map((e) => Call.fromJson(e as Map<String, dynamic>))
+          ?.map((e) => AvnuCall.fromJson(e as Map<String, dynamic>))
           .toList(),
       callsv2: (json['Calls'] as List<dynamic>?)
-          ?.map((e) => Call.fromJson(e as Map<String, dynamic>))
+          ?.map((e) => AvnuCall.fromJson(e as Map<String, dynamic>))
           .toList(),
     );
 
-Map<String, dynamic> _$$MessageImplToJson(_$MessageImpl instance) =>
+Map<String, dynamic> _$$AvnuMessageImplToJson(_$AvnuMessageImpl instance) =>
     <String, dynamic>{
       'caller': instance.callerv1,
       'Caller': instance.callerv2,
@@ -92,7 +95,8 @@ Map<String, dynamic> _$$MessageImplToJson(_$MessageImpl instance) =>
       'Calls': instance.callsv2,
     };
 
-_$CallImpl _$$CallImplFromJson(Map<String, dynamic> json) => _$CallImpl(
+_$AvnuCallImpl _$$AvnuCallImplFromJson(Map<String, dynamic> json) =>
+    _$AvnuCallImpl(
       tov1: json['to'] as String?,
       tov2: json['To'] as String?,
       selectorv1: json['selector'] as String?,
@@ -106,7 +110,7 @@ _$CallImpl _$$CallImplFromJson(Map<String, dynamic> json) => _$CallImpl(
           .toList(),
     );
 
-Map<String, dynamic> _$$CallImplToJson(_$CallImpl instance) =>
+Map<String, dynamic> _$$AvnuCallImplToJson(_$AvnuCallImpl instance) =>
     <String, dynamic>{
       'to': instance.tov1,
       'To': instance.tov2,

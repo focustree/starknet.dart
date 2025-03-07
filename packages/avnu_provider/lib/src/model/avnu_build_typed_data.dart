@@ -1,4 +1,9 @@
+import 'dart:convert';
+
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:starknet/src/snip/snip12/typed_data/typed_data.dart';
+import 'package:starknet/src/snip/snip9/outside_execution.dart';
+import 'package:starknet/src/types/index.dart';
 
 part 'avnu_build_typed_data.freezed.dart';
 part 'avnu_build_typed_data.g.dart';
@@ -6,42 +11,83 @@ part 'avnu_build_typed_data.g.dart';
 @freezed
 class AvnuBuildTypedData with _$AvnuBuildTypedData {
   const factory AvnuBuildTypedData({
-    required Map<String, List<TypeDefinition>> types,
+    required Map<String, List<AvnuTypeDefinition>> types,
     required String primaryType,
-    required Domain domain,
-    required Message message,
+    required AvnuDomain domain,
+    required AvnuMessage message,
   }) = _AvnuBuildTypedData;
+
+  const AvnuBuildTypedData._();
 
   factory AvnuBuildTypedData.fromJson(Map<String, dynamic> json) =>
       _$AvnuBuildTypedDataFromJson(json);
+
+  TypedData toTypedData() {
+    final executionMessage = switch (domain.version) {
+      '1' =>
+        OutsideExecutionMessageV1.fromJson(jsonDecode(jsonEncode(message))),
+      '2' =>
+        OutsideExecutionMessageV2.fromJson(jsonDecode(jsonEncode(message))),
+      _ => throw ArgumentError(
+          'Unsupported execution message version',
+        ),
+    };
+    return TypedData(
+      types: types.map(
+        (key, value) => MapEntry(
+          key,
+          value
+              .map(
+                (e) => e.toTypedParameter(),
+              )
+              .toList(),
+        ),
+      ),
+      primaryType: primaryType,
+      domain: TypedDataDomain(
+        name: domain.name,
+        version: domain.version,
+        chainId: domain.chainId,
+        revision: domain.revision ?? '0',
+      ),
+      message: executionMessage.toJson(),
+    );
+  }
+
+  BigInt hash(Felt accountAddress) => toTypedData().hash(accountAddress);
 }
 
 @freezed
-class TypeDefinition with _$TypeDefinition {
-  const factory TypeDefinition({
+class AvnuTypeDefinition with _$AvnuTypeDefinition {
+  const factory AvnuTypeDefinition({
     required String name,
     required String type,
-  }) = _TypeDefinition;
+  }) = _AvnuTypeDefinition;
 
-  factory TypeDefinition.fromJson(Map<String, dynamic> json) =>
-      _$TypeDefinitionFromJson(json);
+  const AvnuTypeDefinition._();
+
+  factory AvnuTypeDefinition.fromJson(Map<String, dynamic> json) =>
+      _$AvnuTypeDefinitionFromJson(json);
+
+  TypedParameter toTypedParameter() => TypedParameter(name: name, type: type);
 }
 
 @freezed
-class Domain with _$Domain {
-  const factory Domain({
+class AvnuDomain with _$AvnuDomain {
+  const factory AvnuDomain({
     required String name,
     required String version,
     required String chainId,
     String? revision,
-  }) = _Domain;
+  }) = _AvnuDomain;
 
-  factory Domain.fromJson(Map<String, dynamic> json) => _$DomainFromJson(json);
+  factory AvnuDomain.fromJson(Map<String, dynamic> json) =>
+      _$AvnuDomainFromJson(json);
 }
 
 @freezed
-class Message with _$Message {
-  const factory Message({
+class AvnuMessage with _$AvnuMessage {
+  const factory AvnuMessage({
     @JsonKey(name: 'caller') String? callerv1,
     @JsonKey(name: 'Caller') String? callerv2,
     @JsonKey(name: 'nonce') String? noncev1,
@@ -52,17 +98,17 @@ class Message with _$Message {
     @JsonKey(name: 'Execute Before') String? executeBeforev2,
     @JsonKey(name: 'calls_len') int? callsLen,
     // process calls or Calls in json response
-    @JsonKey(name: 'calls') List<Call>? calls,
-    @JsonKey(name: 'Calls') List<Call>? callsv2,
-  }) = _Message;
+    @JsonKey(name: 'calls') List<AvnuCall>? calls,
+    @JsonKey(name: 'Calls') List<AvnuCall>? callsv2,
+  }) = _AvnuMessage;
 
-  factory Message.fromJson(Map<String, dynamic> json) =>
-      _$MessageFromJson(json);
+  factory AvnuMessage.fromJson(Map<String, dynamic> json) =>
+      _$AvnuMessageFromJson(json);
 }
 
 @freezed
-class Call with _$Call {
-  const factory Call({
+class AvnuCall with _$AvnuCall {
+  const factory AvnuCall({
     @JsonKey(name: 'to') String? tov1,
     @JsonKey(name: 'To') String? tov2,
     @JsonKey(name: 'selector') String? selectorv1,
@@ -70,7 +116,8 @@ class Call with _$Call {
     @JsonKey(name: 'calldata_len') int? calldataLen,
     @JsonKey(name: 'calldata') List<String>? calldatav1,
     @JsonKey(name: 'Calldata') List<String>? calldatav2,
-  }) = _Call;
+  }) = _AvnuCall;
 
-  factory Call.fromJson(Map<String, dynamic> json) => _$CallFromJson(json);
+  factory AvnuCall.fromJson(Map<String, dynamic> json) =>
+      _$AvnuCallFromJson(json);
 }
