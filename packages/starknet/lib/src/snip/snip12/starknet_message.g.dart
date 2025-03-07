@@ -29,7 +29,7 @@ _$StarknetDomainImpl _$$StarknetDomainImplFromJson(Map<String, dynamic> json) =>
       name: json['name'] as String,
       version: json['version'] as String,
       chainId: json['chainId'] as String,
-      revision: json['revision'] as String? ?? 0,
+      revision: json['revision'] as String? ?? '0',
     );
 
 Map<String, dynamic> _$$StarknetDomainImplToJson(

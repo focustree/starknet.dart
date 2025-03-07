@@ -404,7 +404,7 @@ class _$StarknetDomainImpl implements _StarknetDomain {
       {required this.name,
       required this.version,
       @JsonKey(name: 'chainId') required this.chainId,
-      this.revision = 0});
+      this.revision = '0'});
 
   factory _$StarknetDomainImpl.fromJson(Map<String, dynamic> json) =>
       _$$StarknetDomainImplFromJson(json);

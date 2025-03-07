@@ -24,7 +24,7 @@ class StarknetDomain with _$StarknetDomain {
     required String name,
     required String version,
     @JsonKey(name: 'chainId') required String chainId,
-    @Default(0) String revision,
+    @Default('0') String revision,
   }) = _StarknetDomain;
 
   factory StarknetDomain.fromJson(Map<String, dynamic> json) =>
