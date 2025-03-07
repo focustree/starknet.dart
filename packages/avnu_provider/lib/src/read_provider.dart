@@ -94,11 +94,7 @@ class AvnuJsonRpcReadProvider implements AvnuReadProvider {
           nodeUri: nodeUri,
           method: 'paymaster_get_account_rewards',
           params: [address, sponsor, campaign, protocol]);
-      if (json is List) {
-        return AvnuAccountRewards.fromJsonList(json);
-      } else {
-        throw FormatException('Invalid response format: expected JSON array');
-      }
+      return AvnuAccountRewards.fromJsonList(json);
     } on FormatException catch (e) {
       throw FormatException(
           'Failed to parse account rewards response: ${e.message}');

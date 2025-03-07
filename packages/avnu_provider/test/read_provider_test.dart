@@ -164,13 +164,21 @@ void main() {
             'Starknet Foundation',
             'Onboarding',
             'AVNU');
-        // expect(avnuAccountRewards, isA<List<AvnuAccountRewards>>());
-        // avnuAccountRewards.when(
-        //   result: (date, address, sponsor, campaign, protocol, freeTx, remainingTx, expirationDate, whitelistedCalls) =>
-        //       expect(date, isNotEmpty),
-        //   error: (error, revertError) =>
-        //       fail('Should not return an error message: ${error.join(', ')}'),
-        // );
+        expect(avnuAccountRewards, isA<List<AvnuAccountRewards>>());
+        
+        // Verify the list is not empty
+        expect(avnuAccountRewards, isNotEmpty);
+
+        for (var reward in avnuAccountRewards) {
+          reward.when(
+            result: (date, address, sponsor, campaign, protocol, freeTx, remainingTx, expirationDate, whitelistedCalls) {
+              expect(date, isNotNull, reason: 'Date should not be null');
+            },
+            error: (messages, revertError) {
+              fail('Should not get error response');
+            },
+          );
+        }
       });
       test('returns avnu account rewards error', () async {
         final avnuAccountRewards = await avnuReadProvider.getAccountRewards(
@@ -178,15 +186,23 @@ void main() {
             '',
             '',
             '');
-        //check for error message "Felt is empty";
-        expect(avnuAccountRewards, isA<AvnuAccountRewardError>());
-        //print the error message
-        print(avnuAccountRewards.toString());
+        //if avnuAccountRewards response is like this: [AvnuAccountRewards.error(messages: [Felt is empty], revertError: null)]
+        //then check if contains error field
+        expect(avnuAccountRewards.first, isA<AvnuAccountRewardError>());
+        //print the error message inside first record
+        avnuAccountRewards.first.when(
+          result: (date, address, sponsor, campaign, protocol, freeTx, remainingTx, expirationDate, whitelistedCalls) {
+            fail('Should not get result');
+          },
+          error: (messages, revertError) {
+            expect(messages.join(', '), 'Felt is empty');
+          },
+        );
       });
       test('returns avnu account rewards with empty response', () async {
         final avnuAccountRewards = await avnuReadProvider.getAccountRewards(
             '0x0123456789abcdef', 'Starknet Foundation', 'Onboarding', 'AVNU');
-        expect(avnuAccountRewards, isA<AvnuAccountRewards>());
+        expect(avnuAccountRewards.isEmpty, isTrue);
       });
     });
   }, tags: ['unit'], timeout: Timeout(Duration(minutes: 1)));

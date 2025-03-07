@@ -39,8 +39,19 @@ class AvnuAccountRewards with _$AvnuAccountRewards {
           : AvnuAccountRewardResult.fromJson(json);
           
   /// Parse from a JSON array response
-  static List<AvnuAccountRewards> fromJsonList(List<dynamic> jsonList) {
-    return jsonList.map((json) => AvnuAccountRewards.fromJson(json)).toList();
+  static List<AvnuAccountRewards> fromJsonList(dynamic json) {
+    // Handle error response case
+    if (json is Map<String, dynamic>) {
+      return fromErrorJson(json);
+    }
+
+    // Handle normal list response
+    if (json is List) {
+      return json.map((e) => AvnuAccountRewards.fromJson(e)).toList();
+    }
+
+    // Return empty list for any other unexpected format
+    return [];
   }
   
   /// Parse the first item from a JSON array response

@@ -5,15 +5,21 @@ part 'avnu_build_typed_data.g.dart';
 
 @freezed
 class AvnuBuildTypedData with _$AvnuBuildTypedData {
-  const factory AvnuBuildTypedData({
+  const factory AvnuBuildTypedData.result({
     required Map<String, List<TypeDefinition>> types,
     required String primaryType,
     required Domain domain,
     required Message message,
-  }) = _AvnuBuildTypedData;
+  }) = AvnuBuildTypedDataResult;
+  const factory AvnuBuildTypedData.error(
+    List<String> messages,
+    String? revertError,
+  ) = AvnuBuildTypedDataError;
 
-  factory AvnuBuildTypedData.fromJson(Map<String, dynamic> json) =>
-      _$AvnuBuildTypedDataFromJson(json);
+  factory AvnuBuildTypedData.fromJson(Map<String, Object?> json) =>
+      json.containsKey('error') || json.containsKey('messages')
+          ? AvnuBuildTypedDataError.fromJson(json)
+          : AvnuBuildTypedDataResult.fromJson(json);
 }
 
 @freezed

@@ -15,25 +15,67 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 AvnuBuildTypedData _$AvnuBuildTypedDataFromJson(Map<String, dynamic> json) {
-  return _AvnuBuildTypedData.fromJson(json);
+  switch (json['runtimeType']) {
+    case 'result':
+      return AvnuBuildTypedDataResult.fromJson(json);
+    case 'error':
+      return AvnuBuildTypedDataError.fromJson(json);
+
+    default:
+      throw CheckedFromJsonException(json, 'runtimeType', 'AvnuBuildTypedData',
+          'Invalid union type "${json['runtimeType']}"!');
+  }
 }
 
 /// @nodoc
 mixin _$AvnuBuildTypedData {
-  Map<String, List<TypeDefinition>> get types =>
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(Map<String, List<TypeDefinition>> types,
+            String primaryType, Domain domain, Message message)
+        result,
+    required TResult Function(List<String> messages, String? revertError) error,
+  }) =>
       throw _privateConstructorUsedError;
-  String get primaryType => throw _privateConstructorUsedError;
-  Domain get domain => throw _privateConstructorUsedError;
-  Message get message => throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(Map<String, List<TypeDefinition>> types,
+            String primaryType, Domain domain, Message message)?
+        result,
+    TResult? Function(List<String> messages, String? revertError)? error,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(Map<String, List<TypeDefinition>> types,
+            String primaryType, Domain domain, Message message)?
+        result,
+    TResult Function(List<String> messages, String? revertError)? error,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(AvnuBuildTypedDataResult value) result,
+    required TResult Function(AvnuBuildTypedDataError value) error,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(AvnuBuildTypedDataResult value)? result,
+    TResult? Function(AvnuBuildTypedDataError value)? error,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(AvnuBuildTypedDataResult value)? result,
+    TResult Function(AvnuBuildTypedDataError value)? error,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
 
   /// Serializes this AvnuBuildTypedData to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-
-  /// Create a copy of AvnuBuildTypedData
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  $AvnuBuildTypedDataCopyWith<AvnuBuildTypedData> get copyWith =>
-      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -41,15 +83,6 @@ abstract class $AvnuBuildTypedDataCopyWith<$Res> {
   factory $AvnuBuildTypedDataCopyWith(
           AvnuBuildTypedData value, $Res Function(AvnuBuildTypedData) then) =
       _$AvnuBuildTypedDataCopyWithImpl<$Res, AvnuBuildTypedData>;
-  @useResult
-  $Res call(
-      {Map<String, List<TypeDefinition>> types,
-      String primaryType,
-      Domain domain,
-      Message message});
-
-  $DomainCopyWith<$Res> get domain;
-  $MessageCopyWith<$Res> get message;
 }
 
 /// @nodoc
@@ -64,62 +97,14 @@ class _$AvnuBuildTypedDataCopyWithImpl<$Res, $Val extends AvnuBuildTypedData>
 
   /// Create a copy of AvnuBuildTypedData
   /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? types = null,
-    Object? primaryType = null,
-    Object? domain = null,
-    Object? message = null,
-  }) {
-    return _then(_value.copyWith(
-      types: null == types
-          ? _value.types
-          : types // ignore: cast_nullable_to_non_nullable
-              as Map<String, List<TypeDefinition>>,
-      primaryType: null == primaryType
-          ? _value.primaryType
-          : primaryType // ignore: cast_nullable_to_non_nullable
-              as String,
-      domain: null == domain
-          ? _value.domain
-          : domain // ignore: cast_nullable_to_non_nullable
-              as Domain,
-      message: null == message
-          ? _value.message
-          : message // ignore: cast_nullable_to_non_nullable
-              as Message,
-    ) as $Val);
-  }
-
-  /// Create a copy of AvnuBuildTypedData
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $DomainCopyWith<$Res> get domain {
-    return $DomainCopyWith<$Res>(_value.domain, (value) {
-      return _then(_value.copyWith(domain: value) as $Val);
-    });
-  }
-
-  /// Create a copy of AvnuBuildTypedData
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $MessageCopyWith<$Res> get message {
-    return $MessageCopyWith<$Res>(_value.message, (value) {
-      return _then(_value.copyWith(message: value) as $Val);
-    });
-  }
 }
 
 /// @nodoc
-abstract class _$$AvnuBuildTypedDataImplCopyWith<$Res>
-    implements $AvnuBuildTypedDataCopyWith<$Res> {
-  factory _$$AvnuBuildTypedDataImplCopyWith(_$AvnuBuildTypedDataImpl value,
-          $Res Function(_$AvnuBuildTypedDataImpl) then) =
-      __$$AvnuBuildTypedDataImplCopyWithImpl<$Res>;
-  @override
+abstract class _$$AvnuBuildTypedDataResultImplCopyWith<$Res> {
+  factory _$$AvnuBuildTypedDataResultImplCopyWith(
+          _$AvnuBuildTypedDataResultImpl value,
+          $Res Function(_$AvnuBuildTypedDataResultImpl) then) =
+      __$$AvnuBuildTypedDataResultImplCopyWithImpl<$Res>;
   @useResult
   $Res call(
       {Map<String, List<TypeDefinition>> types,
@@ -127,18 +112,18 @@ abstract class _$$AvnuBuildTypedDataImplCopyWith<$Res>
       Domain domain,
       Message message});
 
-  @override
   $DomainCopyWith<$Res> get domain;
-  @override
   $MessageCopyWith<$Res> get message;
 }
 
 /// @nodoc
-class __$$AvnuBuildTypedDataImplCopyWithImpl<$Res>
-    extends _$AvnuBuildTypedDataCopyWithImpl<$Res, _$AvnuBuildTypedDataImpl>
-    implements _$$AvnuBuildTypedDataImplCopyWith<$Res> {
-  __$$AvnuBuildTypedDataImplCopyWithImpl(_$AvnuBuildTypedDataImpl _value,
-      $Res Function(_$AvnuBuildTypedDataImpl) _then)
+class __$$AvnuBuildTypedDataResultImplCopyWithImpl<$Res>
+    extends _$AvnuBuildTypedDataCopyWithImpl<$Res,
+        _$AvnuBuildTypedDataResultImpl>
+    implements _$$AvnuBuildTypedDataResultImplCopyWith<$Res> {
+  __$$AvnuBuildTypedDataResultImplCopyWithImpl(
+      _$AvnuBuildTypedDataResultImpl _value,
+      $Res Function(_$AvnuBuildTypedDataResultImpl) _then)
       : super(_value, _then);
 
   /// Create a copy of AvnuBuildTypedData
@@ -151,7 +136,7 @@ class __$$AvnuBuildTypedDataImplCopyWithImpl<$Res>
     Object? domain = null,
     Object? message = null,
   }) {
-    return _then(_$AvnuBuildTypedDataImpl(
+    return _then(_$AvnuBuildTypedDataResultImpl(
       types: null == types
           ? _value._types
           : types // ignore: cast_nullable_to_non_nullable
@@ -170,20 +155,42 @@ class __$$AvnuBuildTypedDataImplCopyWithImpl<$Res>
               as Message,
     ));
   }
+
+  /// Create a copy of AvnuBuildTypedData
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $DomainCopyWith<$Res> get domain {
+    return $DomainCopyWith<$Res>(_value.domain, (value) {
+      return _then(_value.copyWith(domain: value));
+    });
+  }
+
+  /// Create a copy of AvnuBuildTypedData
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $MessageCopyWith<$Res> get message {
+    return $MessageCopyWith<$Res>(_value.message, (value) {
+      return _then(_value.copyWith(message: value));
+    });
+  }
 }
 
 /// @nodoc
 @JsonSerializable()
-class _$AvnuBuildTypedDataImpl implements _AvnuBuildTypedData {
-  const _$AvnuBuildTypedDataImpl(
+class _$AvnuBuildTypedDataResultImpl implements AvnuBuildTypedDataResult {
+  const _$AvnuBuildTypedDataResultImpl(
       {required final Map<String, List<TypeDefinition>> types,
       required this.primaryType,
       required this.domain,
-      required this.message})
-      : _types = types;
+      required this.message,
+      final String? $type})
+      : _types = types,
+        $type = $type ?? 'result';
 
-  factory _$AvnuBuildTypedDataImpl.fromJson(Map<String, dynamic> json) =>
-      _$$AvnuBuildTypedDataImplFromJson(json);
+  factory _$AvnuBuildTypedDataResultImpl.fromJson(Map<String, dynamic> json) =>
+      _$$AvnuBuildTypedDataResultImplFromJson(json);
 
   final Map<String, List<TypeDefinition>> _types;
   @override
@@ -200,16 +207,19 @@ class _$AvnuBuildTypedDataImpl implements _AvnuBuildTypedData {
   @override
   final Message message;
 
+  @JsonKey(name: 'runtimeType')
+  final String $type;
+
   @override
   String toString() {
-    return 'AvnuBuildTypedData(types: $types, primaryType: $primaryType, domain: $domain, message: $message)';
+    return 'AvnuBuildTypedData.result(types: $types, primaryType: $primaryType, domain: $domain, message: $message)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$AvnuBuildTypedDataImpl &&
+            other is _$AvnuBuildTypedDataResultImpl &&
             const DeepCollectionEquality().equals(other._types, _types) &&
             (identical(other.primaryType, primaryType) ||
                 other.primaryType == primaryType) &&
@@ -231,43 +241,296 @@ class _$AvnuBuildTypedDataImpl implements _AvnuBuildTypedData {
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$AvnuBuildTypedDataImplCopyWith<_$AvnuBuildTypedDataImpl> get copyWith =>
-      __$$AvnuBuildTypedDataImplCopyWithImpl<_$AvnuBuildTypedDataImpl>(
-          this, _$identity);
+  _$$AvnuBuildTypedDataResultImplCopyWith<_$AvnuBuildTypedDataResultImpl>
+      get copyWith => __$$AvnuBuildTypedDataResultImplCopyWithImpl<
+          _$AvnuBuildTypedDataResultImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(Map<String, List<TypeDefinition>> types,
+            String primaryType, Domain domain, Message message)
+        result,
+    required TResult Function(List<String> messages, String? revertError) error,
+  }) {
+    return result(types, primaryType, domain, message);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(Map<String, List<TypeDefinition>> types,
+            String primaryType, Domain domain, Message message)?
+        result,
+    TResult? Function(List<String> messages, String? revertError)? error,
+  }) {
+    return result?.call(types, primaryType, domain, message);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(Map<String, List<TypeDefinition>> types,
+            String primaryType, Domain domain, Message message)?
+        result,
+    TResult Function(List<String> messages, String? revertError)? error,
+    required TResult orElse(),
+  }) {
+    if (result != null) {
+      return result(types, primaryType, domain, message);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(AvnuBuildTypedDataResult value) result,
+    required TResult Function(AvnuBuildTypedDataError value) error,
+  }) {
+    return result(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(AvnuBuildTypedDataResult value)? result,
+    TResult? Function(AvnuBuildTypedDataError value)? error,
+  }) {
+    return result?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(AvnuBuildTypedDataResult value)? result,
+    TResult Function(AvnuBuildTypedDataError value)? error,
+    required TResult orElse(),
+  }) {
+    if (result != null) {
+      return result(this);
+    }
+    return orElse();
+  }
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$AvnuBuildTypedDataImplToJson(
+    return _$$AvnuBuildTypedDataResultImplToJson(
       this,
     );
   }
 }
 
-abstract class _AvnuBuildTypedData implements AvnuBuildTypedData {
-  const factory _AvnuBuildTypedData(
+abstract class AvnuBuildTypedDataResult implements AvnuBuildTypedData {
+  const factory AvnuBuildTypedDataResult(
       {required final Map<String, List<TypeDefinition>> types,
       required final String primaryType,
       required final Domain domain,
-      required final Message message}) = _$AvnuBuildTypedDataImpl;
+      required final Message message}) = _$AvnuBuildTypedDataResultImpl;
 
-  factory _AvnuBuildTypedData.fromJson(Map<String, dynamic> json) =
-      _$AvnuBuildTypedDataImpl.fromJson;
+  factory AvnuBuildTypedDataResult.fromJson(Map<String, dynamic> json) =
+      _$AvnuBuildTypedDataResultImpl.fromJson;
 
-  @override
   Map<String, List<TypeDefinition>> get types;
-  @override
   String get primaryType;
-  @override
   Domain get domain;
-  @override
   Message get message;
 
   /// Create a copy of AvnuBuildTypedData
   /// with the given fields replaced by the non-null parameter values.
-  @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$AvnuBuildTypedDataImplCopyWith<_$AvnuBuildTypedDataImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$AvnuBuildTypedDataResultImplCopyWith<_$AvnuBuildTypedDataResultImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$AvnuBuildTypedDataErrorImplCopyWith<$Res> {
+  factory _$$AvnuBuildTypedDataErrorImplCopyWith(
+          _$AvnuBuildTypedDataErrorImpl value,
+          $Res Function(_$AvnuBuildTypedDataErrorImpl) then) =
+      __$$AvnuBuildTypedDataErrorImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({List<String> messages, String? revertError});
+}
+
+/// @nodoc
+class __$$AvnuBuildTypedDataErrorImplCopyWithImpl<$Res>
+    extends _$AvnuBuildTypedDataCopyWithImpl<$Res,
+        _$AvnuBuildTypedDataErrorImpl>
+    implements _$$AvnuBuildTypedDataErrorImplCopyWith<$Res> {
+  __$$AvnuBuildTypedDataErrorImplCopyWithImpl(
+      _$AvnuBuildTypedDataErrorImpl _value,
+      $Res Function(_$AvnuBuildTypedDataErrorImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of AvnuBuildTypedData
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? messages = null,
+    Object? revertError = freezed,
+  }) {
+    return _then(_$AvnuBuildTypedDataErrorImpl(
+      null == messages
+          ? _value._messages
+          : messages // ignore: cast_nullable_to_non_nullable
+              as List<String>,
+      freezed == revertError
+          ? _value.revertError
+          : revertError // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$AvnuBuildTypedDataErrorImpl implements AvnuBuildTypedDataError {
+  const _$AvnuBuildTypedDataErrorImpl(
+      final List<String> messages, this.revertError,
+      {final String? $type})
+      : _messages = messages,
+        $type = $type ?? 'error';
+
+  factory _$AvnuBuildTypedDataErrorImpl.fromJson(Map<String, dynamic> json) =>
+      _$$AvnuBuildTypedDataErrorImplFromJson(json);
+
+  final List<String> _messages;
+  @override
+  List<String> get messages {
+    if (_messages is EqualUnmodifiableListView) return _messages;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_messages);
+  }
+
+  @override
+  final String? revertError;
+
+  @JsonKey(name: 'runtimeType')
+  final String $type;
+
+  @override
+  String toString() {
+    return 'AvnuBuildTypedData.error(messages: $messages, revertError: $revertError)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$AvnuBuildTypedDataErrorImpl &&
+            const DeepCollectionEquality().equals(other._messages, _messages) &&
+            (identical(other.revertError, revertError) ||
+                other.revertError == revertError));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(_messages), revertError);
+
+  /// Create a copy of AvnuBuildTypedData
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$AvnuBuildTypedDataErrorImplCopyWith<_$AvnuBuildTypedDataErrorImpl>
+      get copyWith => __$$AvnuBuildTypedDataErrorImplCopyWithImpl<
+          _$AvnuBuildTypedDataErrorImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(Map<String, List<TypeDefinition>> types,
+            String primaryType, Domain domain, Message message)
+        result,
+    required TResult Function(List<String> messages, String? revertError) error,
+  }) {
+    return error(messages, revertError);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(Map<String, List<TypeDefinition>> types,
+            String primaryType, Domain domain, Message message)?
+        result,
+    TResult? Function(List<String> messages, String? revertError)? error,
+  }) {
+    return error?.call(messages, revertError);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(Map<String, List<TypeDefinition>> types,
+            String primaryType, Domain domain, Message message)?
+        result,
+    TResult Function(List<String> messages, String? revertError)? error,
+    required TResult orElse(),
+  }) {
+    if (error != null) {
+      return error(messages, revertError);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(AvnuBuildTypedDataResult value) result,
+    required TResult Function(AvnuBuildTypedDataError value) error,
+  }) {
+    return error(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(AvnuBuildTypedDataResult value)? result,
+    TResult? Function(AvnuBuildTypedDataError value)? error,
+  }) {
+    return error?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(AvnuBuildTypedDataResult value)? result,
+    TResult Function(AvnuBuildTypedDataError value)? error,
+    required TResult orElse(),
+  }) {
+    if (error != null) {
+      return error(this);
+    }
+    return orElse();
+  }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$AvnuBuildTypedDataErrorImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class AvnuBuildTypedDataError implements AvnuBuildTypedData {
+  const factory AvnuBuildTypedDataError(
+          final List<String> messages, final String? revertError) =
+      _$AvnuBuildTypedDataErrorImpl;
+
+  factory AvnuBuildTypedDataError.fromJson(Map<String, dynamic> json) =
+      _$AvnuBuildTypedDataErrorImpl.fromJson;
+
+  List<String> get messages;
+  String? get revertError;
+
+  /// Create a copy of AvnuBuildTypedData
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$AvnuBuildTypedDataErrorImplCopyWith<_$AvnuBuildTypedDataErrorImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 TypeDefinition _$TypeDefinitionFromJson(Map<String, dynamic> json) {

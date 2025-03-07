@@ -6,9 +6,9 @@ part of 'avnu_build_typed_data.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$AvnuBuildTypedDataImpl _$$AvnuBuildTypedDataImplFromJson(
+_$AvnuBuildTypedDataResultImpl _$$AvnuBuildTypedDataResultImplFromJson(
         Map<String, dynamic> json) =>
-    _$AvnuBuildTypedDataImpl(
+    _$AvnuBuildTypedDataResultImpl(
       types: (json['types'] as Map<String, dynamic>).map(
         (k, e) => MapEntry(
             k,
@@ -19,15 +19,33 @@ _$AvnuBuildTypedDataImpl _$$AvnuBuildTypedDataImplFromJson(
       primaryType: json['primaryType'] as String,
       domain: Domain.fromJson(json['domain'] as Map<String, dynamic>),
       message: Message.fromJson(json['message'] as Map<String, dynamic>),
+      $type: json['runtimeType'] as String?,
     );
 
-Map<String, dynamic> _$$AvnuBuildTypedDataImplToJson(
-        _$AvnuBuildTypedDataImpl instance) =>
+Map<String, dynamic> _$$AvnuBuildTypedDataResultImplToJson(
+        _$AvnuBuildTypedDataResultImpl instance) =>
     <String, dynamic>{
       'types': instance.types,
       'primaryType': instance.primaryType,
       'domain': instance.domain,
       'message': instance.message,
+      'runtimeType': instance.$type,
+    };
+
+_$AvnuBuildTypedDataErrorImpl _$$AvnuBuildTypedDataErrorImplFromJson(
+        Map<String, dynamic> json) =>
+    _$AvnuBuildTypedDataErrorImpl(
+      (json['messages'] as List<dynamic>).map((e) => e as String).toList(),
+      json['revertError'] as String?,
+      $type: json['runtimeType'] as String?,
+    );
+
+Map<String, dynamic> _$$AvnuBuildTypedDataErrorImplToJson(
+        _$AvnuBuildTypedDataErrorImpl instance) =>
+    <String, dynamic>{
+      'messages': instance.messages,
+      'revertError': instance.revertError,
+      'runtimeType': instance.$type,
     };
 
 _$TypeDefinitionImpl _$$TypeDefinitionImplFromJson(Map<String, dynamic> json) =>
