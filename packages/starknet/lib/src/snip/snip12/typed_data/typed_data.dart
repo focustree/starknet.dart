@@ -146,19 +146,8 @@ TypedDataRevision identifyRevision(TypedData data) {
   return TypedDataRevision.legacy;
 }
 
-// Validates that data matches the SNIP-12 JSON schema
-bool validateTypedData(dynamic data) {
-  if (data is! TypedData) return false;
-
-  return true;
-}
-
 // Gets the message hash for signing
 BigInt getMessageHash(TypedData typedData, BigInt account) {
-  if (!validateTypedData(typedData)) {
-    throw Exception('Typed data does not match JSON schema');
-  }
-
   final revision = identifyRevision(typedData);
   final config = revisionConfiguration[revision]!;
 
