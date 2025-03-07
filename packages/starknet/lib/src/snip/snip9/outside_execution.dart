@@ -28,11 +28,6 @@ abstract class OutsideExecutionMessage {
     }
   }
 
-  factory OutsideExecutionMessage.fromJson(Map<String, Object?> json) {
-    final starknetMessage = StarknetMessage.fromJson(json);
-    return OutsideExecutionMessage.fromStarknetMessage(starknetMessage);
-  }
-
   Map<String, dynamic> toJson();
 }
 
