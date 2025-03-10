@@ -24,7 +24,7 @@ jq .methods[].name ../starknet-specs/api/starknet_api_openrpc.json
 | starknet_specVersion                       | ❌           |
 | starknet_getBlockWithTxHashes              | ✅           |
 | starknet_getBlockWithTxs                   | ✅           |
-| starknet_getBlockWithReceipts              | ❌           |
+| starknet_getBlockWithReceipts              | ✅           |
 | starknet_getStateUpdate                    | ✅           |
 | starknet_getStorageAt                      | ✅           |
 | starknet_getTransactionStatus              | ❌           |

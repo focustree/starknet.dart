@@ -95,27 +95,18 @@ _$BroadcastedInvokeTxnV0Impl _$$BroadcastedInvokeTxnV0ImplFromJson(
     );
 
 Map<String, dynamic> _$$BroadcastedInvokeTxnV0ImplToJson(
-    _$BroadcastedInvokeTxnV0Impl instance) {
-  final val = <String, dynamic>{
-    'type': instance.type,
-    'max_fee': maxFeeToJson(instance.maxFee),
-    'version': instance.version,
-    'signature': instance.signature.map((e) => e.toJson()).toList(),
-  };
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('nonce', instance.nonce?.toJson());
-  val['contract_address'] = instance.contractAddress.toJson();
-  val['entry_point_selector'] = instance.entryPointSelector.toJson();
-  val['calldata'] = instance.calldata.map((e) => e.toJson()).toList();
-  val['starkNetRuntimeTypeToRemove'] = instance.$type;
-  return val;
-}
+        _$BroadcastedInvokeTxnV0Impl instance) =>
+    <String, dynamic>{
+      'type': instance.type,
+      'max_fee': maxFeeToJson(instance.maxFee),
+      'version': instance.version,
+      'signature': instance.signature.map((e) => e.toJson()).toList(),
+      if (instance.nonce?.toJson() case final value?) 'nonce': value,
+      'contract_address': instance.contractAddress.toJson(),
+      'entry_point_selector': instance.entryPointSelector.toJson(),
+      'calldata': instance.calldata.map((e) => e.toJson()).toList(),
+      'starkNetRuntimeTypeToRemove': instance.$type,
+    };
 
 _$BroadcastedInvokeTxnV1Impl _$$BroadcastedInvokeTxnV1ImplFromJson(
         Map<String, dynamic> json) =>
