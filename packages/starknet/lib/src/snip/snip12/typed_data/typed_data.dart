@@ -62,6 +62,10 @@ class SNIP12TypedParameter with _$SNIP12TypedParameter {
 }
 
 // ignore: non_constant_identifier_names
+final MESSAGE_PREFIX_VALUE =
+    BigInt.parse(encodeShortString('StarkNet Message'));
+
+// ignore: non_constant_identifier_names
 final DOMAIN_TYPE_HASH_V0 = starknetKeccak(
   utf8.encode('StarkNetDomain(name:felt,version:felt,chainId:felt)'),
 );
@@ -236,7 +240,7 @@ BigInt getMessageHash(TypedData typedData, BigInt account) {
   final config = revisionConfiguration[typedData.revision]!;
 
   final message = <BigInt>[
-    BigInt.parse(encodeShortString('StarkNet Message')),
+    MESSAGE_PREFIX_VALUE,
     typedData.domain.encodedHash(),
     account,
     BigInt.parse(
@@ -344,19 +348,19 @@ List<String> _encodeValue(
   // Handle array types (ending with *)
   if (type.endsWith('*')) {
     final baseType = type.substring(0, type.length - 1);
-    final hashes = (data as List).map((entry) {
-      return _encodeValue(types, baseType, entry, _Context(), revision)[1];
-    }).toList();
+    final hashes = (data as List)
+        .map((entry) {
+          return _encodeValue(types, baseType, entry, _Context(), revision)[1];
+        })
+        .map((e) => e.startsWith('0x') ? BigInt.parse(e) : BigInt.parse('0x$e'))
+        .toList();
     return [
       type,
       revisionConfiguration[revision]!
-          .hashMethod(hashes.map((e) {
-            final str = e.toString();
-            // Add '0x' prefix if not present for hex strings
-            final hexStr = str.startsWith('0x') ? str : '0x$str';
-            return BigInt.parse(hexStr);
-          }).toList())
-          .toRadixString(16)
+          .hashMethod(
+            hashes,
+          )
+          .toRadixString(16),
     ];
   }
 
@@ -377,7 +381,6 @@ List<String> _encodeValue(
         final subtypes = variantType.type
             .substring(1, variantType.type.length - 1)
             .split(',');
-
         final encodedSubtypes = subtypes
             .asMap()
             .entries
@@ -389,8 +392,10 @@ List<String> _encodeValue(
                   types, subtype, subtypeData, _Context(), revision)[1];
             })
             .whereType<String>()
+            .map(
+              (e) => e.startsWith('0x') ? e : '0x$e',
+            )
             .toList();
-
         return [
           type,
           revisionConfiguration[revision]!.hashMethod([

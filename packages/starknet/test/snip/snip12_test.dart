@@ -280,6 +280,60 @@ void main() {
       );
     });
 
+    test('Compute message hash v1 with enum type from starknet.js', () {
+      const payload = '''
+{
+  "types": {
+    "StarknetDomain": [
+      { "name": "name", "type": "shortstring" },
+      { "name": "version", "type": "shortstring" },
+      { "name": "chainId", "type": "shortstring" },
+      { "name": "revision", "type": "shortstring" }
+    ],
+    "Example": [
+      { "name": "someEnum1", "type": "enum", "contains": "EnumA" },
+      { "name": "someEnum2", "type": "enum", "contains": "EnumB" }
+    ],
+    "EnumA": [
+      { "name": "Variant 1", "type": "()" },
+      { "name": "Variant 2", "type": "(u128,u128*)" },
+      { "name": "Variant 3", "type": "(u128)" }
+    ],
+    "EnumB": [
+      { "name": "Variant 1", "type": "()" },
+      { "name": "Variant 2", "type": "(u128)" }
+    ]
+  },
+  "primaryType": "Example",
+  "domain": {
+    "name": "StarkNet Mail",
+    "version": "1",
+    "chainId": "1",
+    "revision": "1"
+  },
+  "message": {
+    "someEnum1": {
+      "Variant 2": [2, [0, 1]]
+    },
+    "someEnum2": {
+      "Variant 1": []
+    }
+  }
+}
+''';
+      final message =
+          TypedData.fromJson(jsonDecode(payload) as Map<String, dynamic>);
+      expect(
+        message.hash(
+          Felt.fromHexString('0xCD2a3d9F938E13CD947Ec05AbC7FE734Df8DD826'),
+        ),
+        equals(
+          hexStringToBigInt(
+            '0x6e61abaf480b1370bbf231f54e298c5f4872f40a6d2dd409ff30accee5bbd1e',
+          ),
+        ),
+      );
+    });
     test('Compute message hash v1 with merkle tree', () {
       // data from starknet-rs
       // https://github.com/xJonathanLEI/starknet-rs/blob/4a2eacc2f8139d9a8138e549c85df1a8b546098a/starknet-core/src/types/typed_data/mod.rs#L942
