@@ -54,12 +54,6 @@ class AvnuAccountRewards with _$AvnuAccountRewards {
     return [];
   }
 
-  /// Parse the first item from a JSON array response
-  static AvnuAccountRewards? fromJsonArray(List<dynamic> jsonArray) {
-    if (jsonArray.isEmpty) return null;
-    return AvnuAccountRewards.fromJson(jsonArray.first);
-  }
-
   /// Parse error response, ensuring it returns as a list even if JSON isn't in list format
   static List<AvnuAccountRewards> fromErrorJson(Map<String, dynamic> json) {
     return [AvnuAccountRewardError.fromJson(json)];
