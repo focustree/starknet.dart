@@ -13,7 +13,7 @@ Future<dynamic> callRpcEndpoint(
   switch (method) {
     case 'paymaster_status':
       httpMethod = 'get';
-      nodeUri = nodeUri.replace(path: '/paymaster/v1/statusa');
+      nodeUri = nodeUri.replace(path: '/paymaster/v1/status');
       break;
     case 'paymaster_gas_token_prices':
       httpMethod = 'get';
@@ -134,8 +134,6 @@ Future<dynamic> callRpcEndpoint(
       throw Exception('Too many requests');
     }
     final jsonResponse = json.decode(response.body);
-    print('*****************');
-    print(jsonResponse);
     // Check if response is empty or malformed
     if (jsonResponse == null) {
       throw FormatException('Empty response received from server');

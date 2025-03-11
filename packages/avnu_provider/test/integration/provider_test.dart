@@ -370,12 +370,8 @@ void main() {
       //in a real scenario, we would get the account class hash from the Starknetprovider
       final accountClassHash =
           '0x36078334509b514626504edc9fb252328d1a240e4e948bef8d0c08dff45927f';
-      final avnuBuildTypedData = await avnuProvider.buildTypedData(
-          userAddress,
-          calls,
-          gasTokenAddress,
-          maxGasTokenAmount,
-          accountClassHash);
+      final avnuBuildTypedData = await avnuProvider.buildTypedData(userAddress,
+          calls, gasTokenAddress, maxGasTokenAmount, accountClassHash);
       expect(avnuBuildTypedData, isA<AvnuBuildTypedData>());
       avnuBuildTypedData.when(
         result: (types, primaryType, domain, message) {
@@ -408,12 +404,8 @@ void main() {
       //in a real scenario, we would get the account class hash from the Starknetprovider
       final accountClassHash =
           '0x36078334509b514626504edc9fb252328d1a240e4e948bef8d0c08dff45927f';
-      final avnuBuildTypedData = await avnuProvider.buildTypedData(
-          userAddress,
-          calls,
-          gasTokenAddress,
-          maxGasTokenAmount,
-          accountClassHash);
+      final avnuBuildTypedData = await avnuProvider.buildTypedData(userAddress,
+          calls, gasTokenAddress, maxGasTokenAmount, accountClassHash);
       expect(avnuBuildTypedData, isA<AvnuBuildTypedData>());
       avnuBuildTypedData.when(
         result: (types, primaryType, domain, message) {
@@ -485,5 +477,5 @@ void main() {
         },
       );
     });
-  },tags: ['unit']);
+  }, tags: ['unit']);
 }
