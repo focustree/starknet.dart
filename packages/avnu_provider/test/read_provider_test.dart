@@ -1,5 +1,3 @@
-import 'dart:isolate';
-
 import 'package:starknet/starknet.dart';
 import 'package:avnu_provider/avnu_provider.dart';
 import 'package:test/test.dart';
