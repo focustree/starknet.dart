@@ -1,10 +1,7 @@
 import 'dart:convert';
 
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:starknet/src/snip/snip12/typed_data/typed_data.dart';
-import 'package:starknet/src/snip/snip9/outside_execution.dart';
-import 'package:starknet/src/types/index.dart';
-
+import 'package:starknet/starknet.dart';
 part 'avnu_build_typed_data.freezed.dart';
 part 'avnu_build_typed_data.g.dart';
 
@@ -69,7 +66,8 @@ class AvnuTypeDefinition with _$AvnuTypeDefinition {
   factory AvnuTypeDefinition.fromJson(Map<String, dynamic> json) =>
       _$AvnuTypeDefinitionFromJson(json);
 
-  TypedParameter toTypedParameter() => TypedParameter(name: name, type: type);
+  SNIP12TypedParameter toTypedParameter() =>
+      SNIP12TypedParameter(name: name, type: type);
 }
 
 @freezed
