@@ -6,6 +6,7 @@ import 'pedersen.dart';
 
 export 'derivation.dart';
 export 'keccak.dart';
+export 'merkle_tree.dart';
 export 'model/pedersen_params.dart';
 export 'pedersen.dart';
 export 'poseidon.dart';
@@ -65,39 +66,6 @@ BigInt computeHashOnElements(List<BigInt> elements) {
   return [BigInt.zero, ...elements, BigInt.from(elements.length)].reduce(
     (previousValue, currentValue) => pedersenHash(previousValue, currentValue),
   );
-}
-
-BigInt computeMerkleTreeRoot(
-  List<BigInt> layer,
-  BigInt Function(BigInt, BigInt) hashFunction,
-) {
-  List<BigInt> newLayer = [];
-
-  // Process the layer in chunks of 2
-  for (var i = 0; i < layer.length; i += 2) {
-    if (i + 1 < layer.length) {
-      // If we have two elements
-      final first = layer[i];
-      final second = layer[i + 1];
-
-      if (first <= second) {
-        newLayer.add(hashFunction(first, second));
-      } else {
-        newLayer.add(hashFunction(second, first));
-      }
-    } else {
-      // If we have a single element (odd number of elements)
-      newLayer.add(hashFunction(BigInt.zero, layer[i]));
-    }
-  }
-
-  // Base case: if we have only one element left, it's the root
-  if (newLayer.length == 1) {
-    return newLayer[0];
-  } else {
-    // Recursive case: compute the merkle root of the new layer
-    return computeMerkleTreeRoot(newLayer, hashFunction);
-  }
 }
 
 List<Felt> functionCallsToCalldata({
