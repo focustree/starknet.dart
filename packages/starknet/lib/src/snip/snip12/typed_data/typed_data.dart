@@ -454,6 +454,14 @@ List<String> _encodeValue(
       return [type, getHex(data)];
 
     // ... Add other type cases following the same pattern as in the JS code ...
+    case 'i128':
+      if (revision == _TypedDataRevision.active) {
+        // _assertRange(data, type,  RANGE_I128[1]);
+        final value =
+            data is String ? BigInt.parse(data) : BigInt.from(data as int);
+        return [type, getHex(value < BigInt.zero ? Felt.prime + value : value)];
+      }
+      return [type, getHex(data)];
     case 'u128':
     case 'timestamp':
       if (revision == _TypedDataRevision.active) {
@@ -474,7 +482,13 @@ List<String> _encodeValue(
     case 'shortstring':
       if (revision == _TypedDataRevision.active) {
         // Implicitly checks if the string is in range
-        Felt.fromString(data as String);
+        if (data is String) {
+          Felt.fromString(data);
+        } else {
+          if (BigInt.from(data as int) > Felt.prime) {
+            throw Exception('Value out of bounds for $type');
+          }
+        }
       }
       return [type, getHex(data)];
     case 'ClassHash':
@@ -488,7 +502,7 @@ List<String> _encodeValue(
       if (revision == _TypedDataRevision.active) {
         assert(data is bool, 'Type mismatch for $type $data');
       }
-      return [type, getHex(data)];
+      return [type, if (data as bool) '0x01' else '0x00'];
     default:
       if (revision == _TypedDataRevision.active) {
         throw Exception('Unsupported type: $type');
