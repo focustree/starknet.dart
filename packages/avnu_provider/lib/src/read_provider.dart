@@ -87,8 +87,8 @@ class AvnuJsonRpcReadProvider implements AvnuReadProvider {
   }
 
   @override
-  Future<List<AvnuAccountRewards>> getAccountRewards(String address, String? sponsor,
-      String? campaign, String? protocol) async {
+  Future<List<AvnuAccountRewards>> getAccountRewards(String address,
+      String? sponsor, String? campaign, String? protocol) async {
     try {
       final dynamic json = await callRpcEndpoint(
           nodeUri: nodeUri,

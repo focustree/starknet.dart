@@ -45,7 +45,7 @@ Map<String, dynamic> _$$AvnuGasTokenPriceErrorImplToJson(
 _$AvnuGasTokenPricesResultImpl _$$AvnuGasTokenPricesResultImplFromJson(
         Map<String, dynamic> json) =>
     _$AvnuGasTokenPricesResultImpl(
-      prices: (json['prices'] as List<dynamic>)
+      (json['prices'] as List<dynamic>)
           .map((e) => AvnuGasTokenPrice.fromJson(e as Map<String, dynamic>))
           .toList(),
       $type: json['runtimeType'] as String?,

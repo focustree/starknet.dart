@@ -132,8 +132,15 @@ final whitelistedCalls = [
     }
 ];
 final avnuSetAccountRewards = await avnuProvider.setAccountRewards(address, campaign, protocol, freeTx, expirationDate, whitelistedCalls);
+avnuSetAccountRewards.when(
+    result: (date, address, sponsor, campaign, protocol, freeTx, remainingTx, expirationDate, whitelistedCalls) {
+        print('Account rewards set successfully');
+    },
+    error: (error, revertError) {
+        print('Error setting account rewards: $error');
+    },
+);
 ``` 
-
 ### As a User
 As a user, we set our transaction that we want to be sponsored. In the following example, we set an `approve` transaction for the ERC20 contract.
 
@@ -181,9 +188,16 @@ final accountClassHash = (await provider.getClassHashAt(
 
 // Build the typed data
 final avnuBuildTypedData = await avnuProvider.buildTypedData(userAddress, calls, gasTokenAddress, maxGasTokenAmount, accountClassHash);
+avnuBuildTypedData.when(
+    result: (typedData) {
+        print('Typed data built successfully');
+    },
+    error: (error) {
+        print('Error building typed data: $error');
+    },
+);
 ``` 
 In the background, this is an example of a successful API response:
-
 ```dart
 {types: 
     {StarknetDomain: [
@@ -223,9 +237,10 @@ Once the typed data is received, we need to remove null fields and generate the 
 final String typedData = jsonEncode(avnuBuildTypedData.toJson());
 final typedDataObject = TypedData.fromJson(jsonDecode(typedData));
 
-// Remove null fields from typedData
+// Remove null fields from typedData and remove runtimeType field
 final Map<String, dynamic> typedDataMap = jsonDecode(typedData);
 removeNullFields(typedDataMap);
+typedDataMap.remove('runtimeType');
 final String cleanTypedData = jsonEncode(typedDataMap);
 
 // Generate signature for the typed data
@@ -249,13 +264,20 @@ Finally, we execute the transaction and receive the transaction hash.
 ```dart
 // Execute the transaction
 final avnuExecute = await avnuProvider.execute(userAddress, cleanTypedData, signatureList, deploymentData);
-print(avnuExecute.toJson());
+avnuExecute.when(
+    result: (transactionHash) {
+        print('Transaction executed successfully with hash: $transactionHash');
+    },
+    error: (error, revertError) {
+        print('Error executing transaction: $error');
+    },
+);
 ```
 
 This is an example of a successful API response:
 
 ```dart
-{transactionHash: 0x6495e536ba89f20f738037539f12964e28166746b106bd7585f05327d0e4aaa}
+Transaction executed successfully with hash: 0x6495e536ba89f20f738037539f12964e28166746b106bd7585f05327d0e4aaa
 ```
 
 ## IV. How to run tests

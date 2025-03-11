@@ -24,14 +24,16 @@ class AvnuGasTokenPrice with _$AvnuGasTokenPrice {
 
 @freezed
 class AvnuGasTokenPrices with _$AvnuGasTokenPrices {
-  const factory AvnuGasTokenPrices.result({
-    required List<AvnuGasTokenPrice> prices,
-  }) = AvnuGasTokenPricesResult;
+  const factory AvnuGasTokenPrices.result(
+    List<AvnuGasTokenPrice> prices,
+  ) = AvnuGasTokenPricesResult;
   const factory AvnuGasTokenPrices.error(
     List<String> messages,
     String? revertError,
   ) = AvnuGasTokenPricesError;
 
   factory AvnuGasTokenPrices.fromJson(Map<String, Object?> json) =>
-      _$AvnuGasTokenPricesFromJson(json);
+      json.containsKey('error') || json.containsKey('messages')
+          ? AvnuGasTokenPricesError.fromJson(json)
+          : AvnuGasTokenPricesResult.fromJson(json);
 }

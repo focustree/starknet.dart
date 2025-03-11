@@ -5,10 +5,17 @@ part 'avnu_execute.g.dart';
 
 @freezed
 class AvnuExecute with _$AvnuExecute {
-  const factory AvnuExecute({
-    required String transactionHash,
-  }) = _AvnuExecute;
+  const factory AvnuExecute.result(
+    String transactionHash,
+  ) = AvnuExecuteResult;
+
+  const factory AvnuExecute.error(
+    List<String> messages,
+    String? revertError,
+  ) = AvnuExecuteError;
 
   factory AvnuExecute.fromJson(Map<String, dynamic> json) =>
-      _$AvnuExecuteFromJson(json);
+      json.containsKey('error')
+          ? AvnuExecuteError.fromJson(json)
+          : AvnuExecuteResult.fromJson(json);
 }

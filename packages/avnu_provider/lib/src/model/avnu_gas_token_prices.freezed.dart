@@ -607,7 +607,7 @@ class __$$AvnuGasTokenPricesResultImplCopyWithImpl<$Res>
     Object? prices = null,
   }) {
     return _then(_$AvnuGasTokenPricesResultImpl(
-      prices: null == prices
+      null == prices
           ? _value._prices
           : prices // ignore: cast_nullable_to_non_nullable
               as List<AvnuGasTokenPrice>,
@@ -618,8 +618,8 @@ class __$$AvnuGasTokenPricesResultImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$AvnuGasTokenPricesResultImpl implements AvnuGasTokenPricesResult {
-  const _$AvnuGasTokenPricesResultImpl(
-      {required final List<AvnuGasTokenPrice> prices, final String? $type})
+  const _$AvnuGasTokenPricesResultImpl(final List<AvnuGasTokenPrice> prices,
+      {final String? $type})
       : _prices = prices,
         $type = $type ?? 'result';
 
@@ -735,8 +735,7 @@ class _$AvnuGasTokenPricesResultImpl implements AvnuGasTokenPricesResult {
 }
 
 abstract class AvnuGasTokenPricesResult implements AvnuGasTokenPrices {
-  const factory AvnuGasTokenPricesResult(
-          {required final List<AvnuGasTokenPrice> prices}) =
+  const factory AvnuGasTokenPricesResult(final List<AvnuGasTokenPrice> prices) =
       _$AvnuGasTokenPricesResultImpl;
 
   factory AvnuGasTokenPricesResult.fromJson(Map<String, dynamic> json) =

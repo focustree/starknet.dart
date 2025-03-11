@@ -76,8 +76,7 @@ void main() {
         final avnuAccountCompatible = await avnuReadProvider.checkAccountCompatible(
             '0x49d36570d4e46f48e99674bd3fcc84644ddd6b96f7c741b1562b82f9e004dc7');
         avnuAccountCompatible.when(
-          result:
-              (isCompatible, gasConsumedOverhead, dataGasConsumedOverhead) {
+          result: (isCompatible, gasConsumedOverhead, dataGasConsumedOverhead) {
             expect(isCompatible, isFalse);
           },
           error: (error, revertError) =>
@@ -91,8 +90,7 @@ void main() {
             await avnuReadProvider.checkAccountCompatible(
                 sepoliaAccount0.accountAddress.toHexString());
         avnuAccountCompatible.when(
-          result:
-              (isCompatible, gasConsumedOverhead, dataGasConsumedOverhead) {
+          result: (isCompatible, gasConsumedOverhead, dataGasConsumedOverhead) {
             expect(isCompatible, isTrue);
           },
           error: (error, revertError) =>
@@ -100,11 +98,10 @@ void main() {
         );
       });
       test('returns avnu account error', () async {
-        final avnuAccountCompatible = await avnuReadProvider.checkAccountCompatible(
-            '0x0');
+        final avnuAccountCompatible =
+            await avnuReadProvider.checkAccountCompatible('0x0');
         avnuAccountCompatible.when(
-          result:
-              (isCompatible, gasConsumedOverhead, dataGasConsumedOverhead) {
+          result: (isCompatible, gasConsumedOverhead, dataGasConsumedOverhead) {
             fail('Should not return a result');
           },
           error: (error, revertError) =>
@@ -165,13 +162,14 @@ void main() {
             'Onboarding',
             'AVNU');
         expect(avnuAccountRewards, isA<List<AvnuAccountRewards>>());
-        
+
         // Verify the list is not empty
         expect(avnuAccountRewards, isNotEmpty);
 
         for (var reward in avnuAccountRewards) {
           reward.when(
-            result: (date, address, sponsor, campaign, protocol, freeTx, remainingTx, expirationDate, whitelistedCalls) {
+            result: (date, address, sponsor, campaign, protocol, freeTx,
+                remainingTx, expirationDate, whitelistedCalls) {
               expect(date, isNotNull, reason: 'Date should not be null');
             },
             error: (messages, revertError) {
@@ -181,17 +179,15 @@ void main() {
         }
       });
       test('returns avnu account rewards error', () async {
-        final avnuAccountRewards = await avnuReadProvider.getAccountRewards(
-            '0x0',
-            '',
-            '',
-            '');
+        final avnuAccountRewards =
+            await avnuReadProvider.getAccountRewards('0x0', '', '', '');
         //if avnuAccountRewards response is like this: [AvnuAccountRewards.error(messages: [Felt is empty], revertError: null)]
         //then check if contains error field
         expect(avnuAccountRewards.first, isA<AvnuAccountRewardError>());
         //print the error message inside first record
         avnuAccountRewards.first.when(
-          result: (date, address, sponsor, campaign, protocol, freeTx, remainingTx, expirationDate, whitelistedCalls) {
+          result: (date, address, sponsor, campaign, protocol, freeTx,
+              remainingTx, expirationDate, whitelistedCalls) {
             fail('Should not get result');
           },
           error: (messages, revertError) {
