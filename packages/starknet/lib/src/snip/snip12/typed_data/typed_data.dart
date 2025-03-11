@@ -3,6 +3,7 @@
 // and SNIP-12 specification
 // https://github.com/starknet-io/SNIPs/blob/main/SNIPS/snip-12.md
 
+import 'dart:convert';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 import '../../../crypto/index.dart';
@@ -15,30 +16,30 @@ part 'typed_data.freezed.dart';
 part 'typed_data.g.dart';
 
 // Represents the revision of the TypedData implementation
-enum TypedDataRevision {
+enum _TypedDataRevision {
   legacy(0),
   active(1);
 
   final int value;
-  const TypedDataRevision(this.value);
+  const _TypedDataRevision(this.value);
 }
 
 // Context for encoding process
-class Context {
+class _Context {
   final String? parent;
   final String? key;
 
-  const Context({this.parent, this.key});
+  const _Context({this.parent, this.key});
 }
 
 // Configuration for TypedData processing
-class Configuration {
+class _Configuration {
   final String domain;
   final BigInt Function(List<BigInt>) hashMethod;
   final String Function(String) escapeTypeString;
-  final Map<String, List<TypedParameter>> presetTypes;
+  final Map<String, List<SNIP12TypedParameter>> presetTypes;
 
-  const Configuration({
+  const _Configuration({
     required this.domain,
     required this.hashMethod,
     required this.escapeTypeString,
@@ -48,17 +49,28 @@ class Configuration {
 
 /// Parameter definition for TypedData
 @freezed
-class TypedParameter with _$TypedParameter {
+class SNIP12TypedParameter with _$SNIP12TypedParameter {
   @JsonSerializable(includeIfNull: false)
-  const factory TypedParameter({
+  const factory SNIP12TypedParameter({
     required String name,
     required String type,
     String? contains,
-  }) = _TypedParameter;
+  }) = _SNIP12TypedParameter;
 
-  factory TypedParameter.fromJson(Map<String, dynamic> json) =>
-      _$TypedParameterFromJson(json);
+  factory SNIP12TypedParameter.fromJson(Map<String, dynamic> json) =>
+      _$SNIP12TypedParameterFromJson(json);
 }
+
+// ignore: non_constant_identifier_names
+final DOMAIN_TYPE_HASH_V0 = starknetKeccak(
+  utf8.encode('StarkNetDomain(name:felt,version:felt,chainId:felt)'),
+);
+// ignore: non_constant_identifier_names
+final DOMAIN_TYPE_HASH_V1 = starknetKeccak(
+  utf8.encode(
+    '"StarknetDomain"("name":"shortstring","version":"shortstring","chainId":"shortstring","revision":"shortstring")',
+  ),
+);
 
 @freezed
 class TypedDataDomain with _$TypedDataDomain {
@@ -71,13 +83,44 @@ class TypedDataDomain with _$TypedDataDomain {
 
   factory TypedDataDomain.fromJson(Map<String, dynamic> json) =>
       _$TypedDataDomainFromJson(json);
+
+  const TypedDataDomain._();
+
+  BigInt encodedHash() {
+    switch (revision) {
+      case '0':
+        final elems = [
+          DOMAIN_TYPE_HASH_V0.toBigInt(),
+          BigInt.parse(encodeShortString(name)),
+          BigInt.parse(version),
+          if (chainId.startsWith('0x'))
+            Felt.fromHexString(chainId).toBigInt()
+          else
+            BigInt.parse(encodeShortString(chainId)),
+        ];
+        return computeHashOnElements(elems);
+      case '1':
+      default:
+        final elems = [
+          DOMAIN_TYPE_HASH_V1.toBigInt(),
+          BigInt.parse(encodeShortString(name)),
+          BigInt.parse(version),
+          if (chainId.startsWith('0x'))
+            Felt.fromHexString(chainId).toBigInt()
+          else
+            BigInt.parse(encodeShortString(chainId)),
+          BigInt.from(1),
+        ];
+        return poseidonHasher.hashMany(elems);
+    }
+  }
 }
 
 /// Represents a TypedData message
 // class TypedData<M> {
 // FIXME: use generic
 class TypedData {
-  final Map<String, List<TypedParameter>> types;
+  final Map<String, List<SNIP12TypedParameter>> types;
   final TypedDataDomain domain;
   final String primaryType;
   // final M message;
@@ -90,24 +133,24 @@ class TypedData {
     required this.message,
   });
 
-  TypedDataRevision get revision {
+  _TypedDataRevision get revision {
     final revision = int.tryParse(domain.revision) ?? 0;
 
     if (types.containsKey(
-          revisionConfiguration[TypedDataRevision.active]!.domain,
+          revisionConfiguration[_TypedDataRevision.active]!.domain,
         ) &&
-        revision == TypedDataRevision.active.value) {
-      return TypedDataRevision.active;
+        revision == _TypedDataRevision.active.value) {
+      return _TypedDataRevision.active;
     }
 
     if (types.containsKey(
-          revisionConfiguration[TypedDataRevision.legacy]!.domain,
+          revisionConfiguration[_TypedDataRevision.legacy]!.domain,
         ) &&
-        revision == TypedDataRevision.legacy.value) {
-      return TypedDataRevision.legacy;
+        revision == _TypedDataRevision.legacy.value) {
+      return _TypedDataRevision.legacy;
     }
 
-    return TypedDataRevision.legacy;
+    return _TypedDataRevision.legacy;
   }
 
   Map<String, dynamic> toJson() {
@@ -119,6 +162,25 @@ class TypedData {
     };
   }
 
+  factory TypedData.fromJson(Map<String, dynamic> json) {
+    return TypedData(
+      types: (json['types'] as Map<String, dynamic>).map(
+        (key, value) {
+          return MapEntry(
+            key,
+            (value as List<dynamic>)
+                .map((e) =>
+                    SNIP12TypedParameter.fromJson(e as Map<String, dynamic>))
+                .toList(),
+          );
+        },
+      ),
+      domain: TypedDataDomain.fromJson(json['domain'] as Map<String, dynamic>),
+      primaryType: json['primaryType'] as String,
+      message: json['message'] as Map<String, Object?>,
+    );
+  }
+
   BigInt hash(Felt accountAddress) {
     return getMessageHash(this, accountAddress.toBigInt());
   }
@@ -127,28 +189,28 @@ class TypedData {
 // Preset types for TypedData
 const presetTypes = {
   'u256': [
-    TypedParameter(name: 'low', type: 'u128'),
-    TypedParameter(name: 'high', type: 'u128'),
+    SNIP12TypedParameter(name: 'low', type: 'u128'),
+    SNIP12TypedParameter(name: 'high', type: 'u128'),
   ],
   'TokenAmount': [
-    TypedParameter(name: 'token_address', type: 'ContractAddress'),
-    TypedParameter(name: 'amount', type: 'u256'),
+    SNIP12TypedParameter(name: 'token_address', type: 'ContractAddress'),
+    SNIP12TypedParameter(name: 'amount', type: 'u256'),
   ],
   'NftId': [
-    TypedParameter(name: 'collection_address', type: 'ContractAddress'),
-    TypedParameter(name: 'token_id', type: 'u256'),
+    SNIP12TypedParameter(name: 'collection_address', type: 'ContractAddress'),
+    SNIP12TypedParameter(name: 'token_id', type: 'u256'),
   ],
 };
 
 // Configuration for different TypedData revisions
 final revisionConfiguration = {
-  TypedDataRevision.legacy: Configuration(
+  _TypedDataRevision.legacy: _Configuration(
     domain: 'StarkNetDomain',
     hashMethod: computeHashOnElements,
     escapeTypeString: (s) => s,
     presetTypes: {},
   ),
-  TypedDataRevision.active: Configuration(
+  _TypedDataRevision.active: _Configuration(
     domain: 'StarknetDomain',
     hashMethod: poseidonHasher.hashMany,
     escapeTypeString: (s) => '"$s"',
@@ -157,7 +219,7 @@ final revisionConfiguration = {
 };
 
 // Validates that a value is within the specified range
-void assertRange(
+void _assertRange(
   dynamic data,
   String type, {
   required BigInt min,
@@ -175,20 +237,11 @@ BigInt getMessageHash(TypedData typedData, BigInt account) {
 
   final message = <BigInt>[
     BigInt.parse(encodeShortString('StarkNet Message')),
-    BigInt.parse(
-      addHexPrefix(
-        getStructHash(
-          typedData.types,
-          config.domain,
-          typedData.domain.toJson(),
-          typedData.revision,
-        ),
-      ),
-    ),
+    typedData.domain.encodedHash(),
     account,
     BigInt.parse(
       addHexPrefix(
-        getStructHash(
+        _getStructHash(
           typedData.types,
           typedData.primaryType,
           typedData.message,
@@ -202,14 +255,14 @@ BigInt getMessageHash(TypedData typedData, BigInt account) {
 }
 
 // Gets the hash of a struct
-String getStructHash(
-  Map<String, List<TypedParameter>> types,
+String _getStructHash(
+  Map<String, List<SNIP12TypedParameter>> types,
   String type,
   Map<String, dynamic> data,
-  TypedDataRevision revision,
+  _TypedDataRevision revision,
 ) {
   final config = revisionConfiguration[revision]!;
-  final encodedValues = encodeData(types, type, data, revision)[1];
+  final encodedValues = _encodeData(types, type, data, revision)[1];
   final bigIntValues = encodedValues.map((e) {
     final str = e.toString();
     // Add '0x' prefix if not present for hex strings
@@ -220,11 +273,11 @@ String getStructHash(
 }
 
 // Encodes data for signing
-List<List<dynamic>> encodeData<T extends TypedData>(
-  Map<String, List<TypedParameter>> types,
+List<List<dynamic>> _encodeData<T extends TypedData>(
+  Map<String, List<SNIP12TypedParameter>> types,
   String type,
   Map<String, dynamic> data,
-  TypedDataRevision revision,
+  _TypedDataRevision revision,
 ) {
   final targetType =
       types[type] ?? revisionConfiguration[revision]!.presetTypes[type];
@@ -234,7 +287,7 @@ List<List<dynamic>> encodeData<T extends TypedData>(
 
   // Initialize with type hash
   final returnTypes = ['felt'];
-  final values = [getTypeHash(types, type, revision)];
+  final values = [_getTypeHash(types, type, revision)];
 
   // Process each field in the type
   for (final field in targetType) {
@@ -243,8 +296,8 @@ List<List<dynamic>> encodeData<T extends TypedData>(
       throw Exception("Cannot encode data: missing data for '${field.name}'");
     }
 
-    final ctx = Context(parent: type, key: field.name);
-    final [fieldType, encodedValue] = encodeValue(
+    final ctx = _Context(parent: type, key: field.name);
+    final [fieldType, encodedValue] = _encodeValue(
       types,
       field.type,
       value,
@@ -260,18 +313,18 @@ List<List<dynamic>> encodeData<T extends TypedData>(
 }
 
 // Encodes a single value to an ABI serializable format
-List<String> encodeValue(
-  Map<String, List<TypedParameter>> types,
+List<String> _encodeValue(
+  Map<String, List<SNIP12TypedParameter>> types,
   String type,
   dynamic data,
-  Context ctx,
-  TypedDataRevision revision,
+  _Context ctx,
+  _TypedDataRevision revision,
 ) {
   // Handle struct types defined in types
   if (types.containsKey(type)) {
     return [
       type,
-      getStructHash(types, type, data as Map<String, dynamic>, revision),
+      _getStructHash(types, type, data as Map<String, dynamic>, revision),
     ];
   }
 
@@ -279,7 +332,7 @@ List<String> encodeValue(
   if (revisionConfiguration[revision]!.presetTypes.containsKey(type)) {
     return [
       type,
-      getStructHash(
+      _getStructHash(
         revisionConfiguration[revision]!.presetTypes,
         type,
         data as Map<String, dynamic>,
@@ -292,7 +345,7 @@ List<String> encodeValue(
   if (type.endsWith('*')) {
     final baseType = type.substring(0, type.length - 1);
     final hashes = (data as List).map((entry) {
-      return encodeValue(types, baseType, entry, Context(), revision)[1];
+      return _encodeValue(types, baseType, entry, _Context(), revision)[1];
     }).toList();
     return [
       type,
@@ -310,7 +363,7 @@ List<String> encodeValue(
   // Handle specific types
   switch (type) {
     case 'enum':
-      if (revision == TypedDataRevision.active) {
+      if (revision == _TypedDataRevision.active) {
         final entry = (data as Map<String, dynamic>).entries.first;
         final variantKey = entry.key;
         final variantData = entry.value;
@@ -332,8 +385,8 @@ List<String> encodeValue(
               final subtype = entry.value;
               if (subtype.isEmpty) return null;
               final subtypeData = (variantData as List)[entry.key];
-              return encodeValue(
-                  types, subtype, subtypeData, Context(), revision)[1];
+              return _encodeValue(
+                  types, subtype, subtypeData, _Context(), revision)[1];
             })
             .whereType<String>()
             .toList();
@@ -342,17 +395,46 @@ List<String> encodeValue(
           type,
           revisionConfiguration[revision]!.hashMethod([
             BigInt.from(variantIndex),
-            ...encodedSubtypes.map((e) => BigInt.parse(e))
+            ...encodedSubtypes.map(BigInt.parse),
           ]).toRadixString(16),
         ];
       }
       return [type, getHex(data)];
+    case 'merkletree':
+      final merkleType =
+          types[ctx.parent!]!.firstWhere((t) => t.name == ctx.key);
+      // ensure is merklet type
+      //
+
+      // final merkleTreeType = types[merkleType.contains!]!;
+      final layer = (data as List)
+          .map((entry) {
+            return _encodeValue(
+                types, merkleType.contains!, entry, _Context(), revision)[1];
+          })
+          .map(
+            (e) => e.startsWith('0x') ? BigInt.parse(e) : BigInt.parse('0x$e'),
+          )
+          .toList();
+      // compute merkle tree root
+      switch (revision) {
+        case _TypedDataRevision.active:
+          return [
+            'felt',
+            computeMerkleTreeRoot(layer, poseidonHasher.hash).toRadixString(16),
+          ];
+        case _TypedDataRevision.legacy:
+          return [
+            'felt',
+            computeMerkleTreeRoot(layer, pedersenHash).toRadixString(16),
+          ];
+      }
 
     case 'selector':
       return ['felt', prepareSelector(data as String)];
 
     case 'string':
-      if (revision == TypedDataRevision.active) {
+      if (revision == _TypedDataRevision.active) {
         final byteArray = byteArrayFromString(data as String);
         final elements = [
           byteArray.data.length,
@@ -364,8 +446,9 @@ List<String> encodeValue(
           type,
           revisionConfiguration[revision]!
               .hashMethod(
-                  elements.map((e) => BigInt.parse(e.toString())).toList())
-              .toRadixString(16)
+                elements.map((e) => BigInt.parse(e.toString())).toList(),
+              )
+              .toRadixString(16),
         ];
       }
       return [type, getHex(data)];
@@ -373,38 +456,41 @@ List<String> encodeValue(
     // ... Add other type cases following the same pattern as in the JS code ...
     case 'u128':
     case 'timestamp':
-      if (revision == TypedDataRevision.active) {
-        assertRange(data, type,
-            min: BigInt.zero,
-            max: BigInt.parse('340282366920938463463374607431768211455'));
+      if (revision == _TypedDataRevision.active) {
+        _assertRange(
+          data,
+          type,
+          min: BigInt.zero,
+          max: BigInt.parse('340282366920938463463374607431768211455'),
+        );
       }
       return [type, getHex(data)];
     case 'felt':
-      if (revision == TypedDataRevision.active) {
+      if (revision == _TypedDataRevision.active) {
         // Implicitly checks if the string is in range
-        Felt.fromHexString(data);
+        Felt.fromHexString(data as String);
       }
       return [type, getHex(data)];
     case 'shortstring':
-      if (revision == TypedDataRevision.active) {
+      if (revision == _TypedDataRevision.active) {
         // Implicitly checks if the string is in range
-        Felt.fromString(data);
+        Felt.fromString(data as String);
       }
       return [type, getHex(data)];
     case 'ClassHash':
     case 'ContractAddress':
-      if (revision == TypedDataRevision.active) {
-        assertRange(data, type,
+      if (revision == _TypedDataRevision.active) {
+        _assertRange(data, type,
             min: BigInt.from(0), max: BigInt.from(2).pow(251));
       }
       return [type, getHex(data)];
     case 'bool':
-      if (revision == TypedDataRevision.active) {
+      if (revision == _TypedDataRevision.active) {
         assert(data is bool, 'Type mismatch for $type $data');
       }
       return [type, getHex(data)];
     default:
-      if (revision == TypedDataRevision.active) {
+      if (revision == _TypedDataRevision.active) {
         throw Exception('Unsupported type: $type');
       }
       return [type, getHex(data)];
@@ -423,12 +509,12 @@ String prepareSelector(String selector) {
 // @param revision The revision of the TypedData.
 //
 // @returns The hash.
-String getTypeHash(
-  Map<String, List<TypedParameter>> types,
+String _getTypeHash(
+  Map<String, List<SNIP12TypedParameter>> types,
   String type,
-  TypedDataRevision revision,
+  _TypedDataRevision revision,
 ) {
-  return getSelectorByName(encodeType(types, type, revision)).toHexString();
+  return getSelectorByName(_encodeType(types, type, revision)).toHexString();
 }
 
 // Encode a type to a string. All dependent types are alphabetically sorted.
@@ -438,16 +524,16 @@ String getTypeHash(
 // @param revision The revision of the TypedData.
 //
 // @returns The encoded string.
-String encodeType(
-  Map<String, List<TypedParameter>> types,
+String _encodeType(
+  Map<String, List<SNIP12TypedParameter>> types,
   String type,
-  TypedDataRevision revision,
+  _TypedDataRevision revision,
 ) {
-  final allTypes = revision == TypedDataRevision.active
+  final allTypes = revision == _TypedDataRevision.active
       ? {...types, ...revisionConfiguration[revision]!.presetTypes}
       : types;
 
-  final dependencies = getDependencies(allTypes, type, revision: revision);
+  final dependencies = _getDependencies(allTypes, type, revision: revision);
   final primary = dependencies.isEmpty ? null : dependencies.removeAt(0);
   final newTypes = primary == null ? [] : [primary, ...dependencies..sort()];
 
@@ -456,7 +542,7 @@ String encodeType(
   return newTypes.map((dependency) {
     final dependencyElements = allTypes[dependency]!.map((t) {
       final targetType =
-          t.type == 'enum' && revision == TypedDataRevision.active
+          t.type == 'enum' && revision == _TypedDataRevision.active
               ? t.contains!
               : t.type;
 
@@ -468,7 +554,7 @@ String encodeType(
       return '${esc(t.name)}:$typeString';
     }).join(',');
 
-    return '${esc(dependency)}($dependencyElements)';
+    return '${esc(dependency as String)}($dependencyElements)';
   }).join('');
 }
 
@@ -483,12 +569,12 @@ String encodeType(
 // @param revision The revision of the TypedData.
 //
 // @returns The array of dependencies.
-List<String> getDependencies(
-  Map<String, List<TypedParameter>> types,
+List<String> _getDependencies(
+  Map<String, List<SNIP12TypedParameter>> types,
   String type, {
   List<String>? dependencies,
   String contains = '',
-  TypedDataRevision revision = TypedDataRevision.legacy,
+  _TypedDataRevision revision = _TypedDataRevision.legacy,
 }) {
   dependencies ??= [];
   var processedType = type;
@@ -496,7 +582,7 @@ List<String> getDependencies(
   // Include pointers (struct arrays)
   if (processedType.endsWith('*')) {
     processedType = processedType.substring(0, processedType.length - 1);
-  } else if (revision == TypedDataRevision.active) {
+  } else if (revision == _TypedDataRevision.active) {
     // enum base
     if (processedType == 'enum') {
       processedType = contains;
@@ -516,7 +602,7 @@ List<String> getDependencies(
 
   // Process nested dependencies
   for (final t in types[processedType]!) {
-    getDependencies(
+    _getDependencies(
       types,
       t.type,
       dependencies: dependencies,

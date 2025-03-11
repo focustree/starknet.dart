@@ -14,46 +14,47 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
-TypedParameter _$TypedParameterFromJson(Map<String, dynamic> json) {
-  return _TypedParameter.fromJson(json);
+SNIP12TypedParameter _$SNIP12TypedParameterFromJson(Map<String, dynamic> json) {
+  return _SNIP12TypedParameter.fromJson(json);
 }
 
 /// @nodoc
-mixin _$TypedParameter {
+mixin _$SNIP12TypedParameter {
   String get name => throw _privateConstructorUsedError;
   String get type => throw _privateConstructorUsedError;
   String? get contains => throw _privateConstructorUsedError;
 
-  /// Serializes this TypedParameter to a JSON map.
+  /// Serializes this SNIP12TypedParameter to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
 
-  /// Create a copy of TypedParameter
+  /// Create a copy of SNIP12TypedParameter
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $TypedParameterCopyWith<TypedParameter> get copyWith =>
+  $SNIP12TypedParameterCopyWith<SNIP12TypedParameter> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $TypedParameterCopyWith<$Res> {
-  factory $TypedParameterCopyWith(
-          TypedParameter value, $Res Function(TypedParameter) then) =
-      _$TypedParameterCopyWithImpl<$Res, TypedParameter>;
+abstract class $SNIP12TypedParameterCopyWith<$Res> {
+  factory $SNIP12TypedParameterCopyWith(SNIP12TypedParameter value,
+          $Res Function(SNIP12TypedParameter) then) =
+      _$SNIP12TypedParameterCopyWithImpl<$Res, SNIP12TypedParameter>;
   @useResult
   $Res call({String name, String type, String? contains});
 }
 
 /// @nodoc
-class _$TypedParameterCopyWithImpl<$Res, $Val extends TypedParameter>
-    implements $TypedParameterCopyWith<$Res> {
-  _$TypedParameterCopyWithImpl(this._value, this._then);
+class _$SNIP12TypedParameterCopyWithImpl<$Res,
+        $Val extends SNIP12TypedParameter>
+    implements $SNIP12TypedParameterCopyWith<$Res> {
+  _$SNIP12TypedParameterCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of TypedParameter
+  /// Create a copy of SNIP12TypedParameter
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -80,25 +81,25 @@ class _$TypedParameterCopyWithImpl<$Res, $Val extends TypedParameter>
 }
 
 /// @nodoc
-abstract class _$$TypedParameterImplCopyWith<$Res>
-    implements $TypedParameterCopyWith<$Res> {
-  factory _$$TypedParameterImplCopyWith(_$TypedParameterImpl value,
-          $Res Function(_$TypedParameterImpl) then) =
-      __$$TypedParameterImplCopyWithImpl<$Res>;
+abstract class _$$SNIP12TypedParameterImplCopyWith<$Res>
+    implements $SNIP12TypedParameterCopyWith<$Res> {
+  factory _$$SNIP12TypedParameterImplCopyWith(_$SNIP12TypedParameterImpl value,
+          $Res Function(_$SNIP12TypedParameterImpl) then) =
+      __$$SNIP12TypedParameterImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String name, String type, String? contains});
 }
 
 /// @nodoc
-class __$$TypedParameterImplCopyWithImpl<$Res>
-    extends _$TypedParameterCopyWithImpl<$Res, _$TypedParameterImpl>
-    implements _$$TypedParameterImplCopyWith<$Res> {
-  __$$TypedParameterImplCopyWithImpl(
-      _$TypedParameterImpl _value, $Res Function(_$TypedParameterImpl) _then)
+class __$$SNIP12TypedParameterImplCopyWithImpl<$Res>
+    extends _$SNIP12TypedParameterCopyWithImpl<$Res, _$SNIP12TypedParameterImpl>
+    implements _$$SNIP12TypedParameterImplCopyWith<$Res> {
+  __$$SNIP12TypedParameterImplCopyWithImpl(_$SNIP12TypedParameterImpl _value,
+      $Res Function(_$SNIP12TypedParameterImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of TypedParameter
+  /// Create a copy of SNIP12TypedParameter
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -107,7 +108,7 @@ class __$$TypedParameterImplCopyWithImpl<$Res>
     Object? type = null,
     Object? contains = freezed,
   }) {
-    return _then(_$TypedParameterImpl(
+    return _then(_$SNIP12TypedParameterImpl(
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -127,12 +128,12 @@ class __$$TypedParameterImplCopyWithImpl<$Res>
 /// @nodoc
 
 @JsonSerializable(includeIfNull: false)
-class _$TypedParameterImpl implements _TypedParameter {
-  const _$TypedParameterImpl(
+class _$SNIP12TypedParameterImpl implements _SNIP12TypedParameter {
+  const _$SNIP12TypedParameterImpl(
       {required this.name, required this.type, this.contains});
 
-  factory _$TypedParameterImpl.fromJson(Map<String, dynamic> json) =>
-      _$$TypedParameterImplFromJson(json);
+  factory _$SNIP12TypedParameterImpl.fromJson(Map<String, dynamic> json) =>
+      _$$SNIP12TypedParameterImplFromJson(json);
 
   @override
   final String name;
@@ -143,14 +144,14 @@ class _$TypedParameterImpl implements _TypedParameter {
 
   @override
   String toString() {
-    return 'TypedParameter(name: $name, type: $type, contains: $contains)';
+    return 'SNIP12TypedParameter(name: $name, type: $type, contains: $contains)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$TypedParameterImpl &&
+            other is _$SNIP12TypedParameterImpl &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.type, type) || other.type == type) &&
             (identical(other.contains, contains) ||
@@ -161,31 +162,32 @@ class _$TypedParameterImpl implements _TypedParameter {
   @override
   int get hashCode => Object.hash(runtimeType, name, type, contains);
 
-  /// Create a copy of TypedParameter
+  /// Create a copy of SNIP12TypedParameter
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$TypedParameterImplCopyWith<_$TypedParameterImpl> get copyWith =>
-      __$$TypedParameterImplCopyWithImpl<_$TypedParameterImpl>(
-          this, _$identity);
+  _$$SNIP12TypedParameterImplCopyWith<_$SNIP12TypedParameterImpl>
+      get copyWith =>
+          __$$SNIP12TypedParameterImplCopyWithImpl<_$SNIP12TypedParameterImpl>(
+              this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$TypedParameterImplToJson(
+    return _$$SNIP12TypedParameterImplToJson(
       this,
     );
   }
 }
 
-abstract class _TypedParameter implements TypedParameter {
-  const factory _TypedParameter(
+abstract class _SNIP12TypedParameter implements SNIP12TypedParameter {
+  const factory _SNIP12TypedParameter(
       {required final String name,
       required final String type,
-      final String? contains}) = _$TypedParameterImpl;
+      final String? contains}) = _$SNIP12TypedParameterImpl;
 
-  factory _TypedParameter.fromJson(Map<String, dynamic> json) =
-      _$TypedParameterImpl.fromJson;
+  factory _SNIP12TypedParameter.fromJson(Map<String, dynamic> json) =
+      _$SNIP12TypedParameterImpl.fromJson;
 
   @override
   String get name;
@@ -194,12 +196,12 @@ abstract class _TypedParameter implements TypedParameter {
   @override
   String? get contains;
 
-  /// Create a copy of TypedParameter
+  /// Create a copy of SNIP12TypedParameter
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$TypedParameterImplCopyWith<_$TypedParameterImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$SNIP12TypedParameterImplCopyWith<_$SNIP12TypedParameterImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 TypedDataDomain _$TypedDataDomainFromJson(Map<String, dynamic> json) {
@@ -334,12 +336,13 @@ class __$$TypedDataDomainImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$TypedDataDomainImpl implements _TypedDataDomain {
+class _$TypedDataDomainImpl extends _TypedDataDomain {
   const _$TypedDataDomainImpl(
       {required this.name,
       required this.version,
       @JsonKey(name: 'chainId') required this.chainId,
-      this.revision = '0'});
+      this.revision = '0'})
+      : super._();
 
   factory _$TypedDataDomainImpl.fromJson(Map<String, dynamic> json) =>
       _$$TypedDataDomainImplFromJson(json);
@@ -394,12 +397,13 @@ class _$TypedDataDomainImpl implements _TypedDataDomain {
   }
 }
 
-abstract class _TypedDataDomain implements TypedDataDomain {
+abstract class _TypedDataDomain extends TypedDataDomain {
   const factory _TypedDataDomain(
       {required final String name,
       required final String version,
       @JsonKey(name: 'chainId') required final String chainId,
       final String revision}) = _$TypedDataDomainImpl;
+  const _TypedDataDomain._() : super._();
 
   factory _TypedDataDomain.fromJson(Map<String, dynamic> json) =
       _$TypedDataDomainImpl.fromJson;

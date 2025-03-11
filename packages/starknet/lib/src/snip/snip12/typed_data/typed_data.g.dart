@@ -6,15 +6,16 @@ part of 'typed_data.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$TypedParameterImpl _$$TypedParameterImplFromJson(Map<String, dynamic> json) =>
-    _$TypedParameterImpl(
+_$SNIP12TypedParameterImpl _$$SNIP12TypedParameterImplFromJson(
+        Map<String, dynamic> json) =>
+    _$SNIP12TypedParameterImpl(
       name: json['name'] as String,
       type: json['type'] as String,
       contains: json['contains'] as String?,
     );
 
-Map<String, dynamic> _$$TypedParameterImplToJson(
-        _$TypedParameterImpl instance) =>
+Map<String, dynamic> _$$SNIP12TypedParameterImplToJson(
+        _$SNIP12TypedParameterImpl instance) =>
     <String, dynamic>{
       'name': instance.name,
       'type': instance.type,
