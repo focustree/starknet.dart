@@ -176,7 +176,7 @@ class __$$OutsideExecutionMessageV1ImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$OutsideExecutionMessageV1Impl implements _OutsideExecutionMessageV1 {
+class _$OutsideExecutionMessageV1Impl extends _OutsideExecutionMessageV1 {
   const _$OutsideExecutionMessageV1Impl(
       {required this.caller,
       required this.nonce,
@@ -184,7 +184,8 @@ class _$OutsideExecutionMessageV1Impl implements _OutsideExecutionMessageV1 {
       required this.executeBefore,
       required this.callsLen,
       required final List<OutsideExecutionCallV1> calls})
-      : _calls = calls;
+      : _calls = calls,
+        super._();
 
   factory _$OutsideExecutionMessageV1Impl.fromJson(Map<String, dynamic> json) =>
       _$$OutsideExecutionMessageV1ImplFromJson(json);
@@ -250,7 +251,7 @@ class _$OutsideExecutionMessageV1Impl implements _OutsideExecutionMessageV1 {
   }
 }
 
-abstract class _OutsideExecutionMessageV1 implements OutsideExecutionMessageV1 {
+abstract class _OutsideExecutionMessageV1 extends OutsideExecutionMessageV1 {
   const factory _OutsideExecutionMessageV1(
           {required final String caller,
           required final String nonce,
@@ -259,6 +260,7 @@ abstract class _OutsideExecutionMessageV1 implements OutsideExecutionMessageV1 {
           required final String callsLen,
           required final List<OutsideExecutionCallV1> calls}) =
       _$OutsideExecutionMessageV1Impl;
+  const _OutsideExecutionMessageV1._() : super._();
 
   factory _OutsideExecutionMessageV1.fromJson(Map<String, dynamic> json) =
       _$OutsideExecutionMessageV1Impl.fromJson;
@@ -438,7 +440,7 @@ class __$$OutsideExecutionMessageV2ImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$OutsideExecutionMessageV2Impl implements _OutsideExecutionMessageV2 {
+class _$OutsideExecutionMessageV2Impl extends _OutsideExecutionMessageV2 {
   const _$OutsideExecutionMessageV2Impl(
       {@JsonKey(name: 'Caller') required this.caller,
       @JsonKey(name: 'Nonce') required this.nonce,
@@ -446,7 +448,8 @@ class _$OutsideExecutionMessageV2Impl implements _OutsideExecutionMessageV2 {
       @JsonKey(name: 'Execute Before') required this.executeBefore,
       @JsonKey(name: 'Calls')
       required final List<OutsideExecutionCallV2> calls})
-      : _calls = calls;
+      : _calls = calls,
+        super._();
 
   factory _$OutsideExecutionMessageV2Impl.fromJson(Map<String, dynamic> json) =>
       _$$OutsideExecutionMessageV2ImplFromJson(json);
@@ -513,7 +516,7 @@ class _$OutsideExecutionMessageV2Impl implements _OutsideExecutionMessageV2 {
   }
 }
 
-abstract class _OutsideExecutionMessageV2 implements OutsideExecutionMessageV2 {
+abstract class _OutsideExecutionMessageV2 extends OutsideExecutionMessageV2 {
   const factory _OutsideExecutionMessageV2(
           {@JsonKey(name: 'Caller') required final String caller,
           @JsonKey(name: 'Nonce') required final String nonce,
@@ -522,6 +525,7 @@ abstract class _OutsideExecutionMessageV2 implements OutsideExecutionMessageV2 {
           @JsonKey(name: 'Calls')
           required final List<OutsideExecutionCallV2> calls}) =
       _$OutsideExecutionMessageV2Impl;
+  const _OutsideExecutionMessageV2._() : super._();
 
   factory _OutsideExecutionMessageV2.fromJson(Map<String, dynamic> json) =
       _$OutsideExecutionMessageV2Impl.fromJson;
@@ -687,13 +691,14 @@ class __$$OutsideExecutionCallV1ImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$OutsideExecutionCallV1Impl implements _OutsideExecutionCallV1 {
+class _$OutsideExecutionCallV1Impl extends _OutsideExecutionCallV1 {
   const _$OutsideExecutionCallV1Impl(
       {required this.to,
       required this.selector,
       @JsonKey(name: 'calldata_len') required this.calldataLen,
       required final List<String> calldata})
-      : _calldata = calldata;
+      : _calldata = calldata,
+        super._();
 
   factory _$OutsideExecutionCallV1Impl.fromJson(Map<String, dynamic> json) =>
       _$$OutsideExecutionCallV1ImplFromJson(json);
@@ -753,12 +758,13 @@ class _$OutsideExecutionCallV1Impl implements _OutsideExecutionCallV1 {
   }
 }
 
-abstract class _OutsideExecutionCallV1 implements OutsideExecutionCallV1 {
+abstract class _OutsideExecutionCallV1 extends OutsideExecutionCallV1 {
   const factory _OutsideExecutionCallV1(
       {required final String to,
       required final String selector,
       @JsonKey(name: 'calldata_len') required final int calldataLen,
       required final List<String> calldata}) = _$OutsideExecutionCallV1Impl;
+  const _OutsideExecutionCallV1._() : super._();
 
   factory _OutsideExecutionCallV1.fromJson(Map<String, dynamic> json) =
       _$OutsideExecutionCallV1Impl.fromJson;
@@ -907,12 +913,13 @@ class __$$OutsideExecutionCallV2ImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$OutsideExecutionCallV2Impl implements _OutsideExecutionCallV2 {
+class _$OutsideExecutionCallV2Impl extends _OutsideExecutionCallV2 {
   const _$OutsideExecutionCallV2Impl(
       {@JsonKey(name: 'To') required this.to,
       @JsonKey(name: 'Selector') required this.selector,
       @JsonKey(name: 'Calldata') required final List<String> calldata})
-      : _calldata = calldata;
+      : _calldata = calldata,
+        super._();
 
   factory _$OutsideExecutionCallV2Impl.fromJson(Map<String, dynamic> json) =>
       _$$OutsideExecutionCallV2ImplFromJson(json);
@@ -970,12 +977,13 @@ class _$OutsideExecutionCallV2Impl implements _OutsideExecutionCallV2 {
   }
 }
 
-abstract class _OutsideExecutionCallV2 implements OutsideExecutionCallV2 {
+abstract class _OutsideExecutionCallV2 extends OutsideExecutionCallV2 {
   const factory _OutsideExecutionCallV2(
           {@JsonKey(name: 'To') required final String to,
           @JsonKey(name: 'Selector') required final String selector,
           @JsonKey(name: 'Calldata') required final List<String> calldata}) =
       _$OutsideExecutionCallV2Impl;
+  const _OutsideExecutionCallV2._() : super._();
 
   factory _OutsideExecutionCallV2.fromJson(Map<String, dynamic> json) =
       _$OutsideExecutionCallV2Impl.fromJson;
