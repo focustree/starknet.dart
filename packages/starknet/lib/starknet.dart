@@ -5,6 +5,7 @@ library starknet;
 
 export 'src/account.dart';
 export 'src/account/index.dart';
+export 'src/argent/sessions.dart';
 export 'src/calldata.dart';
 export 'src/contract/index.dart';
 export 'src/convert.dart';
