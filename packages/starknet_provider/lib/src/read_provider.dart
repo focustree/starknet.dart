@@ -125,9 +125,9 @@ abstract class ReadProvider {
   /// [Spec](https://github.com/starkware-libs/starknet-specs/blob/v0.2.1/api/starknet_api_openrpc.json#L432-L477)
   Future<EstimateFee> estimateFee(EstimateFeeRequest request);
 
-   /// Fetches a block along with its transaction receipts.
-   /// 
-   /// [Spec](https://github.com/starkware-libs/starknet-specs/blob/v0.7.0-rc0/api/starknet_api_openrpc.json#L107-L143)
+  /// Fetches a block along with its transaction receipts.
+  ///
+  /// [Spec](https://github.com/starkware-libs/starknet-specs/blob/v0.7.0-rc0/api/starknet_api_openrpc.json#L107-L143)
   Future<BlockWithReceipts> getBlockWithReceipts(BlockId blockId);
 }
 

@@ -1,7 +1,6 @@
 import 'package:test/test.dart';
 import 'package:starknet/starknet.dart';
 import 'package:starknet_provider/starknet_provider.dart';
-import 'package:starknet_provider/src/model/block_id.dart';
 import 'package:starknet_provider/src/model/block_with_receipts.dart';
 
 void main() {
@@ -17,18 +16,21 @@ void main() {
       final result = await provider.getBlockWithReceipts(blockId);
       expect(result, isA<BlockWithReceipts>());
       expect(result.blockHash, anyOf(isNull, isA<String>()));
-      expect(result.transactions, anyOf(isNull, isA<List<TransactionWithReceipt>>()));
+      expect(result.transactions,
+          anyOf(isNull, isA<List<TransactionWithReceipt>>()));
       if (result.transactions != null) {
         expect(result.transactions!.length, greaterThanOrEqualTo(0));
       }
       expect(result.status, anyOf(isNull, equals('ACCEPTED_ON_L2')));
     }, tags: ['integration']);
 
-    test('should return null fields for invalid block id (devnet behavior)', () async {
+    test('should return null fields for invalid block id (devnet behavior)',
+        () async {
       final invalidBlockId = BlockId.blockNumber(-1);
       final result = await provider.getBlockWithReceipts(invalidBlockId);
       expect(result, isA<BlockWithReceipts>());
-      expect(result.blockHash, isNull, reason: 'Devnet returns null instead of BLOCK_NOT_FOUND');
+      expect(result.blockHash, isNull,
+          reason: 'Devnet returns null instead of BLOCK_NOT_FOUND');
       expect(result.transactions, isNull);
     }, tags: ['integration']);
   });
