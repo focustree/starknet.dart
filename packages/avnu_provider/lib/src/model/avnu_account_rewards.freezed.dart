@@ -203,15 +203,14 @@ mixin _$AvnuAccountRewards {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(
-            @JsonKey(name: 'date') DateTime? date,
-            @JsonKey(name: 'address') String? address,
-            @JsonKey(name: 'sponsor') String? sponsor,
-            @JsonKey(name: 'campaign') String? campaign,
-            @JsonKey(name: 'protocol') String? protocol,
-            @JsonKey(name: 'freeTx') int? freeTx,
-            @JsonKey(name: 'remainingTx') int? remainingTx,
-            @JsonKey(name: 'expirationDate') DateTime? expirationDate,
-            @JsonKey(name: 'whitelistedCalls')
+            DateTime? date,
+            String? address,
+            String? sponsor,
+            String? campaign,
+            String? protocol,
+            int? freeTx,
+            int? remainingTx,
+            DateTime? expirationDate,
             List<WhitelistedCall>? whitelistedCalls)
         result,
     required TResult Function(List<String> messages, String? revertError) error,
@@ -220,15 +219,14 @@ mixin _$AvnuAccountRewards {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(
-            @JsonKey(name: 'date') DateTime? date,
-            @JsonKey(name: 'address') String? address,
-            @JsonKey(name: 'sponsor') String? sponsor,
-            @JsonKey(name: 'campaign') String? campaign,
-            @JsonKey(name: 'protocol') String? protocol,
-            @JsonKey(name: 'freeTx') int? freeTx,
-            @JsonKey(name: 'remainingTx') int? remainingTx,
-            @JsonKey(name: 'expirationDate') DateTime? expirationDate,
-            @JsonKey(name: 'whitelistedCalls')
+            DateTime? date,
+            String? address,
+            String? sponsor,
+            String? campaign,
+            String? protocol,
+            int? freeTx,
+            int? remainingTx,
+            DateTime? expirationDate,
             List<WhitelistedCall>? whitelistedCalls)?
         result,
     TResult? Function(List<String> messages, String? revertError)? error,
@@ -237,15 +235,14 @@ mixin _$AvnuAccountRewards {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(
-            @JsonKey(name: 'date') DateTime? date,
-            @JsonKey(name: 'address') String? address,
-            @JsonKey(name: 'sponsor') String? sponsor,
-            @JsonKey(name: 'campaign') String? campaign,
-            @JsonKey(name: 'protocol') String? protocol,
-            @JsonKey(name: 'freeTx') int? freeTx,
-            @JsonKey(name: 'remainingTx') int? remainingTx,
-            @JsonKey(name: 'expirationDate') DateTime? expirationDate,
-            @JsonKey(name: 'whitelistedCalls')
+            DateTime? date,
+            String? address,
+            String? sponsor,
+            String? campaign,
+            String? protocol,
+            int? freeTx,
+            int? remainingTx,
+            DateTime? expirationDate,
             List<WhitelistedCall>? whitelistedCalls)?
         result,
     TResult Function(List<String> messages, String? revertError)? error,
@@ -305,15 +302,14 @@ abstract class _$$AvnuAccountRewardResultImplCopyWith<$Res> {
       __$$AvnuAccountRewardResultImplCopyWithImpl<$Res>;
   @useResult
   $Res call(
-      {@JsonKey(name: 'date') DateTime? date,
-      @JsonKey(name: 'address') String? address,
-      @JsonKey(name: 'sponsor') String? sponsor,
-      @JsonKey(name: 'campaign') String? campaign,
-      @JsonKey(name: 'protocol') String? protocol,
-      @JsonKey(name: 'freeTx') int? freeTx,
-      @JsonKey(name: 'remainingTx') int? remainingTx,
-      @JsonKey(name: 'expirationDate') DateTime? expirationDate,
-      @JsonKey(name: 'whitelistedCalls')
+      {DateTime? date,
+      String? address,
+      String? sponsor,
+      String? campaign,
+      String? protocol,
+      int? freeTx,
+      int? remainingTx,
+      DateTime? expirationDate,
       List<WhitelistedCall>? whitelistedCalls});
 }
 
@@ -387,15 +383,14 @@ class __$$AvnuAccountRewardResultImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$AvnuAccountRewardResultImpl implements AvnuAccountRewardResult {
   const _$AvnuAccountRewardResultImpl(
-      {@JsonKey(name: 'date') this.date,
-      @JsonKey(name: 'address') this.address,
-      @JsonKey(name: 'sponsor') this.sponsor,
-      @JsonKey(name: 'campaign') this.campaign,
-      @JsonKey(name: 'protocol') this.protocol,
-      @JsonKey(name: 'freeTx') this.freeTx,
-      @JsonKey(name: 'remainingTx') this.remainingTx,
-      @JsonKey(name: 'expirationDate') this.expirationDate,
-      @JsonKey(name: 'whitelistedCalls')
+      {this.date,
+      this.address,
+      this.sponsor,
+      this.campaign,
+      this.protocol,
+      this.freeTx,
+      this.remainingTx,
+      this.expirationDate,
       final List<WhitelistedCall>? whitelistedCalls,
       final String? $type})
       : _whitelistedCalls = whitelistedCalls,
@@ -405,32 +400,23 @@ class _$AvnuAccountRewardResultImpl implements AvnuAccountRewardResult {
       _$$AvnuAccountRewardResultImplFromJson(json);
 
   @override
-  @JsonKey(name: 'date')
   final DateTime? date;
   @override
-  @JsonKey(name: 'address')
   final String? address;
   @override
-  @JsonKey(name: 'sponsor')
   final String? sponsor;
   @override
-  @JsonKey(name: 'campaign')
   final String? campaign;
   @override
-  @JsonKey(name: 'protocol')
   final String? protocol;
   @override
-  @JsonKey(name: 'freeTx')
   final int? freeTx;
   @override
-  @JsonKey(name: 'remainingTx')
   final int? remainingTx;
   @override
-  @JsonKey(name: 'expirationDate')
   final DateTime? expirationDate;
   final List<WhitelistedCall>? _whitelistedCalls;
   @override
-  @JsonKey(name: 'whitelistedCalls')
   List<WhitelistedCall>? get whitelistedCalls {
     final value = _whitelistedCalls;
     if (value == null) return null;
@@ -496,15 +482,14 @@ class _$AvnuAccountRewardResultImpl implements AvnuAccountRewardResult {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(
-            @JsonKey(name: 'date') DateTime? date,
-            @JsonKey(name: 'address') String? address,
-            @JsonKey(name: 'sponsor') String? sponsor,
-            @JsonKey(name: 'campaign') String? campaign,
-            @JsonKey(name: 'protocol') String? protocol,
-            @JsonKey(name: 'freeTx') int? freeTx,
-            @JsonKey(name: 'remainingTx') int? remainingTx,
-            @JsonKey(name: 'expirationDate') DateTime? expirationDate,
-            @JsonKey(name: 'whitelistedCalls')
+            DateTime? date,
+            String? address,
+            String? sponsor,
+            String? campaign,
+            String? protocol,
+            int? freeTx,
+            int? remainingTx,
+            DateTime? expirationDate,
             List<WhitelistedCall>? whitelistedCalls)
         result,
     required TResult Function(List<String> messages, String? revertError) error,
@@ -517,15 +502,14 @@ class _$AvnuAccountRewardResultImpl implements AvnuAccountRewardResult {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(
-            @JsonKey(name: 'date') DateTime? date,
-            @JsonKey(name: 'address') String? address,
-            @JsonKey(name: 'sponsor') String? sponsor,
-            @JsonKey(name: 'campaign') String? campaign,
-            @JsonKey(name: 'protocol') String? protocol,
-            @JsonKey(name: 'freeTx') int? freeTx,
-            @JsonKey(name: 'remainingTx') int? remainingTx,
-            @JsonKey(name: 'expirationDate') DateTime? expirationDate,
-            @JsonKey(name: 'whitelistedCalls')
+            DateTime? date,
+            String? address,
+            String? sponsor,
+            String? campaign,
+            String? protocol,
+            int? freeTx,
+            int? remainingTx,
+            DateTime? expirationDate,
             List<WhitelistedCall>? whitelistedCalls)?
         result,
     TResult? Function(List<String> messages, String? revertError)? error,
@@ -538,15 +522,14 @@ class _$AvnuAccountRewardResultImpl implements AvnuAccountRewardResult {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(
-            @JsonKey(name: 'date') DateTime? date,
-            @JsonKey(name: 'address') String? address,
-            @JsonKey(name: 'sponsor') String? sponsor,
-            @JsonKey(name: 'campaign') String? campaign,
-            @JsonKey(name: 'protocol') String? protocol,
-            @JsonKey(name: 'freeTx') int? freeTx,
-            @JsonKey(name: 'remainingTx') int? remainingTx,
-            @JsonKey(name: 'expirationDate') DateTime? expirationDate,
-            @JsonKey(name: 'whitelistedCalls')
+            DateTime? date,
+            String? address,
+            String? sponsor,
+            String? campaign,
+            String? protocol,
+            int? freeTx,
+            int? remainingTx,
+            DateTime? expirationDate,
             List<WhitelistedCall>? whitelistedCalls)?
         result,
     TResult Function(List<String> messages, String? revertError)? error,
@@ -600,38 +583,28 @@ class _$AvnuAccountRewardResultImpl implements AvnuAccountRewardResult {
 
 abstract class AvnuAccountRewardResult implements AvnuAccountRewards {
   const factory AvnuAccountRewardResult(
-          {@JsonKey(name: 'date') final DateTime? date,
-          @JsonKey(name: 'address') final String? address,
-          @JsonKey(name: 'sponsor') final String? sponsor,
-          @JsonKey(name: 'campaign') final String? campaign,
-          @JsonKey(name: 'protocol') final String? protocol,
-          @JsonKey(name: 'freeTx') final int? freeTx,
-          @JsonKey(name: 'remainingTx') final int? remainingTx,
-          @JsonKey(name: 'expirationDate') final DateTime? expirationDate,
-          @JsonKey(name: 'whitelistedCalls')
+          {final DateTime? date,
+          final String? address,
+          final String? sponsor,
+          final String? campaign,
+          final String? protocol,
+          final int? freeTx,
+          final int? remainingTx,
+          final DateTime? expirationDate,
           final List<WhitelistedCall>? whitelistedCalls}) =
       _$AvnuAccountRewardResultImpl;
 
   factory AvnuAccountRewardResult.fromJson(Map<String, dynamic> json) =
       _$AvnuAccountRewardResultImpl.fromJson;
 
-  @JsonKey(name: 'date')
   DateTime? get date;
-  @JsonKey(name: 'address')
   String? get address;
-  @JsonKey(name: 'sponsor')
   String? get sponsor;
-  @JsonKey(name: 'campaign')
   String? get campaign;
-  @JsonKey(name: 'protocol')
   String? get protocol;
-  @JsonKey(name: 'freeTx')
   int? get freeTx;
-  @JsonKey(name: 'remainingTx')
   int? get remainingTx;
-  @JsonKey(name: 'expirationDate')
   DateTime? get expirationDate;
-  @JsonKey(name: 'whitelistedCalls')
   List<WhitelistedCall>? get whitelistedCalls;
 
   /// Create a copy of AvnuAccountRewards
@@ -740,15 +713,14 @@ class _$AvnuAccountRewardErrorImpl implements AvnuAccountRewardError {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(
-            @JsonKey(name: 'date') DateTime? date,
-            @JsonKey(name: 'address') String? address,
-            @JsonKey(name: 'sponsor') String? sponsor,
-            @JsonKey(name: 'campaign') String? campaign,
-            @JsonKey(name: 'protocol') String? protocol,
-            @JsonKey(name: 'freeTx') int? freeTx,
-            @JsonKey(name: 'remainingTx') int? remainingTx,
-            @JsonKey(name: 'expirationDate') DateTime? expirationDate,
-            @JsonKey(name: 'whitelistedCalls')
+            DateTime? date,
+            String? address,
+            String? sponsor,
+            String? campaign,
+            String? protocol,
+            int? freeTx,
+            int? remainingTx,
+            DateTime? expirationDate,
             List<WhitelistedCall>? whitelistedCalls)
         result,
     required TResult Function(List<String> messages, String? revertError) error,
@@ -760,15 +732,14 @@ class _$AvnuAccountRewardErrorImpl implements AvnuAccountRewardError {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(
-            @JsonKey(name: 'date') DateTime? date,
-            @JsonKey(name: 'address') String? address,
-            @JsonKey(name: 'sponsor') String? sponsor,
-            @JsonKey(name: 'campaign') String? campaign,
-            @JsonKey(name: 'protocol') String? protocol,
-            @JsonKey(name: 'freeTx') int? freeTx,
-            @JsonKey(name: 'remainingTx') int? remainingTx,
-            @JsonKey(name: 'expirationDate') DateTime? expirationDate,
-            @JsonKey(name: 'whitelistedCalls')
+            DateTime? date,
+            String? address,
+            String? sponsor,
+            String? campaign,
+            String? protocol,
+            int? freeTx,
+            int? remainingTx,
+            DateTime? expirationDate,
             List<WhitelistedCall>? whitelistedCalls)?
         result,
     TResult? Function(List<String> messages, String? revertError)? error,
@@ -780,15 +751,14 @@ class _$AvnuAccountRewardErrorImpl implements AvnuAccountRewardError {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(
-            @JsonKey(name: 'date') DateTime? date,
-            @JsonKey(name: 'address') String? address,
-            @JsonKey(name: 'sponsor') String? sponsor,
-            @JsonKey(name: 'campaign') String? campaign,
-            @JsonKey(name: 'protocol') String? protocol,
-            @JsonKey(name: 'freeTx') int? freeTx,
-            @JsonKey(name: 'remainingTx') int? remainingTx,
-            @JsonKey(name: 'expirationDate') DateTime? expirationDate,
-            @JsonKey(name: 'whitelistedCalls')
+            DateTime? date,
+            String? address,
+            String? sponsor,
+            String? campaign,
+            String? protocol,
+            int? freeTx,
+            int? remainingTx,
+            DateTime? expirationDate,
             List<WhitelistedCall>? whitelistedCalls)?
         result,
     TResult Function(List<String> messages, String? revertError)? error,

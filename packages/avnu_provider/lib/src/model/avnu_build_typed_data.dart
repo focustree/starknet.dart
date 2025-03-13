@@ -17,7 +17,7 @@ class AvnuBuildTypedData with _$AvnuBuildTypedData {
   ) = AvnuBuildTypedDataError;
 
   factory AvnuBuildTypedData.fromJson(Map<String, Object?> json) =>
-      json.containsKey('error') || json.containsKey('messages')
+      json.containsKey('messages')
           ? AvnuBuildTypedDataError.fromJson(json)
           : AvnuBuildTypedDataResult.fromJson(json);
 }

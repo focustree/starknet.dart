@@ -16,7 +16,7 @@ class AvnuAccountCompatible with _$AvnuAccountCompatible {
   ) = AvnuAccountCompatibleError;
 
   factory AvnuAccountCompatible.fromJson(Map<String, Object?> json) =>
-      json.containsKey('error') || json.containsKey('messages')
+      json.containsKey('messages')
           ? AvnuAccountCompatibleError.fromJson(json)
           : AvnuAccountCompatibleResult.fromJson(json);
 }

@@ -15,7 +15,7 @@ class AvnuExecute with _$AvnuExecute {
   ) = AvnuExecuteError;
 
   factory AvnuExecute.fromJson(Map<String, dynamic> json) =>
-      json.containsKey('error')
+      json.containsKey('messages')
           ? AvnuExecuteError.fromJson(json)
           : AvnuExecuteResult.fromJson(json);
 }

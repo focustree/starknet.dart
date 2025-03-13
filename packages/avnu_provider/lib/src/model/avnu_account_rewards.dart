@@ -17,15 +17,15 @@ class WhitelistedCall with _$WhitelistedCall {
 @freezed
 class AvnuAccountRewards with _$AvnuAccountRewards {
   const factory AvnuAccountRewards.result({
-    @JsonKey(name: 'date') DateTime? date,
-    @JsonKey(name: 'address') String? address,
-    @JsonKey(name: 'sponsor') String? sponsor,
-    @JsonKey(name: 'campaign') String? campaign,
-    @JsonKey(name: 'protocol') String? protocol,
-    @JsonKey(name: 'freeTx') int? freeTx,
-    @JsonKey(name: 'remainingTx') int? remainingTx,
-    @JsonKey(name: 'expirationDate') DateTime? expirationDate,
-    @JsonKey(name: 'whitelistedCalls') List<WhitelistedCall>? whitelistedCalls,
+    DateTime? date,
+    String? address,
+    String? sponsor,
+    String? campaign,
+    String? protocol,
+    int? freeTx,
+    int? remainingTx,
+    DateTime? expirationDate,
+    List<WhitelistedCall>? whitelistedCalls,
   }) = AvnuAccountRewardResult;
 
   const factory AvnuAccountRewards.error(
@@ -34,7 +34,7 @@ class AvnuAccountRewards with _$AvnuAccountRewards {
   ) = AvnuAccountRewardError;
 
   factory AvnuAccountRewards.fromJson(Map<String, dynamic> json) =>
-      json.containsKey('error') || json.containsKey('messages')
+      json.containsKey('messages')
           ? AvnuAccountRewardError.fromJson(json)
           : AvnuAccountRewardResult.fromJson(json);
 

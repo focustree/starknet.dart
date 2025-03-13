@@ -21,7 +21,7 @@ class AvnuSponsorActivity with _$AvnuSponsorActivity {
   ) = AvnuSponsorActivityError;
 
   factory AvnuSponsorActivity.fromJson(Map<String, Object?> json) =>
-      json.containsKey('error') || json.containsKey('messages')
+      json.containsKey('messages')
           ? AvnuSponsorActivityError.fromJson(json)
           : AvnuSponsorActivityResult.fromJson(json);
 }

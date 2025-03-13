@@ -17,7 +17,7 @@ class AvnuGasTokenPrice with _$AvnuGasTokenPrice {
   ) = AvnuGasTokenPriceError;
 
   factory AvnuGasTokenPrice.fromJson(Map<String, Object?> json) =>
-      json.containsKey('error') || json.containsKey('messages')
+      json.containsKey('messages')
           ? AvnuGasTokenPriceError.fromJson(json)
           : AvnuGasTokenPriceResult.fromJson(json);
 }
@@ -33,7 +33,7 @@ class AvnuGasTokenPrices with _$AvnuGasTokenPrices {
   ) = AvnuGasTokenPricesError;
 
   factory AvnuGasTokenPrices.fromJson(Map<String, Object?> json) =>
-      json.containsKey('error') || json.containsKey('messages')
+      json.containsKey('messages')
           ? AvnuGasTokenPricesError.fromJson(json)
           : AvnuGasTokenPricesResult.fromJson(json);
 }

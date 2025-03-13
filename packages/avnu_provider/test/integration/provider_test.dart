@@ -420,6 +420,25 @@ void main() {
         },
       );
     });
+
+    test('execute transaction error handling', () async {
+      final userAddress = sepoliaAccount0.accountAddress.toHexString();
+      final cleanTypedData = '';
+      final signatureList = ['', '', '', '', ''];
+      final deploymentData = null;
+      final avnuExecute = await avnuProvider.execute(
+          userAddress, cleanTypedData, signatureList, deploymentData);
+      expect(avnuExecute, isA<AvnuExecute>());
+      avnuExecute.when(
+        result: (transactionHash) {
+          fail('Should not get result');
+        },
+        error: (error, revertError) {
+          expect(error.join(', '), 'Invalid signature (hex format)');
+        },
+      );
+    });
+
     test('set rewards for a user account', () async {
       final address = sepoliaAccount0.accountAddress.toHexString();
       final campaign = 'Onboarding1';

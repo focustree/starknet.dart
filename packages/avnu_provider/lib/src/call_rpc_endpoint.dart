@@ -130,6 +130,9 @@ Future<dynamic> callRpcEndpoint(
 
   try {
     // Check for Too many requests
+    // As indicated in https://starknet.api.avnu.fi/webjars/swagger-ui/index.html
+    // 429 too many requests error is the only error without a body so
+    // we catch it here and throw an exception
     if (response.statusCode == 429) {
       throw Exception('Too many requests');
     }
