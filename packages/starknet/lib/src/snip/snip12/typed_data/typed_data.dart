@@ -554,7 +554,8 @@ String _encodeType(
 
   final dependencies = _getDependencies(allTypes, type, revision: revision);
   final primary = dependencies.isEmpty ? null : dependencies.removeAt(0);
-  final newTypes = primary == null ? [] : [primary, ...dependencies..sort()];
+  final newTypes =
+      primary == null ? <String>[] : [primary, ...dependencies..sort()];
 
   final esc = revisionConfiguration[revision]!.escapeTypeString;
 

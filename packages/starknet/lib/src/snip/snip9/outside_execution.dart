@@ -65,8 +65,15 @@ class OutsideExecutionTypedDataV2 {
   BigInt hash(Felt accountAddress) => typedData.hash(accountAddress);
 }
 
+abstract class OutsideExecutionMessage {
+  Map<String, Object?> toJson();
+  List<Felt> toCalldata();
+}
+
 @freezed
-class OutsideExecutionMessageV1 with _$OutsideExecutionMessageV1 {
+class OutsideExecutionMessageV1
+    with _$OutsideExecutionMessageV1
+    implements OutsideExecutionMessage {
   const factory OutsideExecutionMessageV1({
     required String caller,
     required String nonce,
@@ -81,6 +88,7 @@ class OutsideExecutionMessageV1 with _$OutsideExecutionMessageV1 {
 
   const OutsideExecutionMessageV1._();
 
+  @override
   List<Felt> toCalldata() {
     return [
       Felt.fromHexString(caller),
@@ -94,7 +102,9 @@ class OutsideExecutionMessageV1 with _$OutsideExecutionMessageV1 {
 }
 
 @freezed
-class OutsideExecutionMessageV2 with _$OutsideExecutionMessageV2 {
+class OutsideExecutionMessageV2
+    with _$OutsideExecutionMessageV2
+    implements OutsideExecutionMessage {
   const factory OutsideExecutionMessageV2({
     @JsonKey(name: 'Caller') required String caller,
     @JsonKey(name: 'Nonce') required String nonce,
@@ -108,6 +118,7 @@ class OutsideExecutionMessageV2 with _$OutsideExecutionMessageV2 {
 
   const OutsideExecutionMessageV2._();
 
+  @override
   List<Felt> toCalldata() {
     return [
       Felt.fromHexString(caller),
