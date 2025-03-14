@@ -217,8 +217,8 @@ mixin _$BlockWithReceipts {
   Felt? get newRoot => throw _privateConstructorUsedError;
   int? get timestamp => throw _privateConstructorUsedError;
   String? get starknetVersion => throw _privateConstructorUsedError;
-  GasPrice? get l1GasPrice => throw _privateConstructorUsedError;
-  GasPrice? get l1DataGasPrice => throw _privateConstructorUsedError;
+  ResourcePrice? get l1GasPrice => throw _privateConstructorUsedError;
+  ResourcePrice? get l1DataGasPrice => throw _privateConstructorUsedError;
   String? get l1DaMode => throw _privateConstructorUsedError;
   List<TransactionWithReceipt>? get transactions =>
       throw _privateConstructorUsedError;
@@ -248,14 +248,14 @@ abstract class $BlockWithReceiptsCopyWith<$Res> {
       Felt? newRoot,
       int? timestamp,
       String? starknetVersion,
-      GasPrice? l1GasPrice,
-      GasPrice? l1DataGasPrice,
+      ResourcePrice? l1GasPrice,
+      ResourcePrice? l1DataGasPrice,
       String? l1DaMode,
       List<TransactionWithReceipt>? transactions,
       String? status});
 
-  $GasPriceCopyWith<$Res>? get l1GasPrice;
-  $GasPriceCopyWith<$Res>? get l1DataGasPrice;
+  $ResourcePriceCopyWith<$Res>? get l1GasPrice;
+  $ResourcePriceCopyWith<$Res>? get l1DataGasPrice;
 }
 
 /// @nodoc
@@ -318,11 +318,11 @@ class _$BlockWithReceiptsCopyWithImpl<$Res, $Val extends BlockWithReceipts>
       l1GasPrice: freezed == l1GasPrice
           ? _value.l1GasPrice
           : l1GasPrice // ignore: cast_nullable_to_non_nullable
-              as GasPrice?,
+              as ResourcePrice?,
       l1DataGasPrice: freezed == l1DataGasPrice
           ? _value.l1DataGasPrice
           : l1DataGasPrice // ignore: cast_nullable_to_non_nullable
-              as GasPrice?,
+              as ResourcePrice?,
       l1DaMode: freezed == l1DaMode
           ? _value.l1DaMode
           : l1DaMode // ignore: cast_nullable_to_non_nullable
@@ -342,12 +342,12 @@ class _$BlockWithReceiptsCopyWithImpl<$Res, $Val extends BlockWithReceipts>
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
-  $GasPriceCopyWith<$Res>? get l1GasPrice {
+  $ResourcePriceCopyWith<$Res>? get l1GasPrice {
     if (_value.l1GasPrice == null) {
       return null;
     }
 
-    return $GasPriceCopyWith<$Res>(_value.l1GasPrice!, (value) {
+    return $ResourcePriceCopyWith<$Res>(_value.l1GasPrice!, (value) {
       return _then(_value.copyWith(l1GasPrice: value) as $Val);
     });
   }
@@ -356,12 +356,12 @@ class _$BlockWithReceiptsCopyWithImpl<$Res, $Val extends BlockWithReceipts>
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
-  $GasPriceCopyWith<$Res>? get l1DataGasPrice {
+  $ResourcePriceCopyWith<$Res>? get l1DataGasPrice {
     if (_value.l1DataGasPrice == null) {
       return null;
     }
 
-    return $GasPriceCopyWith<$Res>(_value.l1DataGasPrice!, (value) {
+    return $ResourcePriceCopyWith<$Res>(_value.l1DataGasPrice!, (value) {
       return _then(_value.copyWith(l1DataGasPrice: value) as $Val);
     });
   }
@@ -383,16 +383,16 @@ abstract class _$$BlockWithReceiptsImplCopyWith<$Res>
       Felt? newRoot,
       int? timestamp,
       String? starknetVersion,
-      GasPrice? l1GasPrice,
-      GasPrice? l1DataGasPrice,
+      ResourcePrice? l1GasPrice,
+      ResourcePrice? l1DataGasPrice,
       String? l1DaMode,
       List<TransactionWithReceipt>? transactions,
       String? status});
 
   @override
-  $GasPriceCopyWith<$Res>? get l1GasPrice;
+  $ResourcePriceCopyWith<$Res>? get l1GasPrice;
   @override
-  $GasPriceCopyWith<$Res>? get l1DataGasPrice;
+  $ResourcePriceCopyWith<$Res>? get l1DataGasPrice;
 }
 
 /// @nodoc
@@ -453,11 +453,11 @@ class __$$BlockWithReceiptsImplCopyWithImpl<$Res>
       l1GasPrice: freezed == l1GasPrice
           ? _value.l1GasPrice
           : l1GasPrice // ignore: cast_nullable_to_non_nullable
-              as GasPrice?,
+              as ResourcePrice?,
       l1DataGasPrice: freezed == l1DataGasPrice
           ? _value.l1DataGasPrice
           : l1DataGasPrice // ignore: cast_nullable_to_non_nullable
-              as GasPrice?,
+              as ResourcePrice?,
       l1DaMode: freezed == l1DaMode
           ? _value.l1DaMode
           : l1DaMode // ignore: cast_nullable_to_non_nullable
@@ -510,9 +510,9 @@ class _$BlockWithReceiptsImpl implements _BlockWithReceipts {
   @override
   final String? starknetVersion;
   @override
-  final GasPrice? l1GasPrice;
+  final ResourcePrice? l1GasPrice;
   @override
-  final GasPrice? l1DataGasPrice;
+  final ResourcePrice? l1DataGasPrice;
   @override
   final String? l1DaMode;
   final List<TransactionWithReceipt>? _transactions;
@@ -605,8 +605,8 @@ abstract class _BlockWithReceipts implements BlockWithReceipts {
       final Felt? newRoot,
       final int? timestamp,
       final String? starknetVersion,
-      final GasPrice? l1GasPrice,
-      final GasPrice? l1DataGasPrice,
+      final ResourcePrice? l1GasPrice,
+      final ResourcePrice? l1DataGasPrice,
       final String? l1DaMode,
       final List<TransactionWithReceipt>? transactions,
       final String? status}) = _$BlockWithReceiptsImpl;
@@ -629,9 +629,9 @@ abstract class _BlockWithReceipts implements BlockWithReceipts {
   @override
   String? get starknetVersion;
   @override
-  GasPrice? get l1GasPrice;
+  ResourcePrice? get l1GasPrice;
   @override
-  GasPrice? get l1DataGasPrice;
+  ResourcePrice? get l1DataGasPrice;
   @override
   String? get l1DaMode;
   @override
@@ -647,44 +647,45 @@ abstract class _BlockWithReceipts implements BlockWithReceipts {
       throw _privateConstructorUsedError;
 }
 
-GasPrice _$GasPriceFromJson(Map<String, dynamic> json) {
-  return _GasPrice.fromJson(json);
+ResourcePrice _$ResourcePriceFromJson(Map<String, dynamic> json) {
+  return _ResourcePrice.fromJson(json);
 }
 
 /// @nodoc
-mixin _$GasPrice {
-  String? get priceInFri => throw _privateConstructorUsedError;
-  String? get priceInWei => throw _privateConstructorUsedError;
+mixin _$ResourcePrice {
+  Felt? get priceInFri => throw _privateConstructorUsedError;
+  Felt? get priceInWei => throw _privateConstructorUsedError;
 
-  /// Serializes this GasPrice to a JSON map.
+  /// Serializes this ResourcePrice to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
 
-  /// Create a copy of GasPrice
+  /// Create a copy of ResourcePrice
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $GasPriceCopyWith<GasPrice> get copyWith =>
+  $ResourcePriceCopyWith<ResourcePrice> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $GasPriceCopyWith<$Res> {
-  factory $GasPriceCopyWith(GasPrice value, $Res Function(GasPrice) then) =
-      _$GasPriceCopyWithImpl<$Res, GasPrice>;
+abstract class $ResourcePriceCopyWith<$Res> {
+  factory $ResourcePriceCopyWith(
+          ResourcePrice value, $Res Function(ResourcePrice) then) =
+      _$ResourcePriceCopyWithImpl<$Res, ResourcePrice>;
   @useResult
-  $Res call({String? priceInFri, String? priceInWei});
+  $Res call({Felt? priceInFri, Felt? priceInWei});
 }
 
 /// @nodoc
-class _$GasPriceCopyWithImpl<$Res, $Val extends GasPrice>
-    implements $GasPriceCopyWith<$Res> {
-  _$GasPriceCopyWithImpl(this._value, this._then);
+class _$ResourcePriceCopyWithImpl<$Res, $Val extends ResourcePrice>
+    implements $ResourcePriceCopyWith<$Res> {
+  _$ResourcePriceCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of GasPrice
+  /// Create a copy of ResourcePrice
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -696,35 +697,35 @@ class _$GasPriceCopyWithImpl<$Res, $Val extends GasPrice>
       priceInFri: freezed == priceInFri
           ? _value.priceInFri
           : priceInFri // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as Felt?,
       priceInWei: freezed == priceInWei
           ? _value.priceInWei
           : priceInWei // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as Felt?,
     ) as $Val);
   }
 }
 
 /// @nodoc
-abstract class _$$GasPriceImplCopyWith<$Res>
-    implements $GasPriceCopyWith<$Res> {
-  factory _$$GasPriceImplCopyWith(
-          _$GasPriceImpl value, $Res Function(_$GasPriceImpl) then) =
-      __$$GasPriceImplCopyWithImpl<$Res>;
+abstract class _$$ResourcePriceImplCopyWith<$Res>
+    implements $ResourcePriceCopyWith<$Res> {
+  factory _$$ResourcePriceImplCopyWith(
+          _$ResourcePriceImpl value, $Res Function(_$ResourcePriceImpl) then) =
+      __$$ResourcePriceImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String? priceInFri, String? priceInWei});
+  $Res call({Felt? priceInFri, Felt? priceInWei});
 }
 
 /// @nodoc
-class __$$GasPriceImplCopyWithImpl<$Res>
-    extends _$GasPriceCopyWithImpl<$Res, _$GasPriceImpl>
-    implements _$$GasPriceImplCopyWith<$Res> {
-  __$$GasPriceImplCopyWithImpl(
-      _$GasPriceImpl _value, $Res Function(_$GasPriceImpl) _then)
+class __$$ResourcePriceImplCopyWithImpl<$Res>
+    extends _$ResourcePriceCopyWithImpl<$Res, _$ResourcePriceImpl>
+    implements _$$ResourcePriceImplCopyWith<$Res> {
+  __$$ResourcePriceImplCopyWithImpl(
+      _$ResourcePriceImpl _value, $Res Function(_$ResourcePriceImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of GasPrice
+  /// Create a copy of ResourcePrice
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -732,42 +733,42 @@ class __$$GasPriceImplCopyWithImpl<$Res>
     Object? priceInFri = freezed,
     Object? priceInWei = freezed,
   }) {
-    return _then(_$GasPriceImpl(
+    return _then(_$ResourcePriceImpl(
       priceInFri: freezed == priceInFri
           ? _value.priceInFri
           : priceInFri // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as Felt?,
       priceInWei: freezed == priceInWei
           ? _value.priceInWei
           : priceInWei // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as Felt?,
     ));
   }
 }
 
 /// @nodoc
 @JsonSerializable()
-class _$GasPriceImpl implements _GasPrice {
-  const _$GasPriceImpl({this.priceInFri, this.priceInWei});
+class _$ResourcePriceImpl implements _ResourcePrice {
+  const _$ResourcePriceImpl({this.priceInFri, this.priceInWei});
 
-  factory _$GasPriceImpl.fromJson(Map<String, dynamic> json) =>
-      _$$GasPriceImplFromJson(json);
+  factory _$ResourcePriceImpl.fromJson(Map<String, dynamic> json) =>
+      _$$ResourcePriceImplFromJson(json);
 
   @override
-  final String? priceInFri;
+  final Felt? priceInFri;
   @override
-  final String? priceInWei;
+  final Felt? priceInWei;
 
   @override
   String toString() {
-    return 'GasPrice(priceInFri: $priceInFri, priceInWei: $priceInWei)';
+    return 'ResourcePrice(priceInFri: $priceInFri, priceInWei: $priceInWei)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$GasPriceImpl &&
+            other is _$ResourcePriceImpl &&
             (identical(other.priceInFri, priceInFri) ||
                 other.priceInFri == priceInFri) &&
             (identical(other.priceInWei, priceInWei) ||
@@ -778,38 +779,38 @@ class _$GasPriceImpl implements _GasPrice {
   @override
   int get hashCode => Object.hash(runtimeType, priceInFri, priceInWei);
 
-  /// Create a copy of GasPrice
+  /// Create a copy of ResourcePrice
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$GasPriceImplCopyWith<_$GasPriceImpl> get copyWith =>
-      __$$GasPriceImplCopyWithImpl<_$GasPriceImpl>(this, _$identity);
+  _$$ResourcePriceImplCopyWith<_$ResourcePriceImpl> get copyWith =>
+      __$$ResourcePriceImplCopyWithImpl<_$ResourcePriceImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$GasPriceImplToJson(
+    return _$$ResourcePriceImplToJson(
       this,
     );
   }
 }
 
-abstract class _GasPrice implements GasPrice {
-  const factory _GasPrice(
-      {final String? priceInFri, final String? priceInWei}) = _$GasPriceImpl;
+abstract class _ResourcePrice implements ResourcePrice {
+  const factory _ResourcePrice(
+      {final Felt? priceInFri, final Felt? priceInWei}) = _$ResourcePriceImpl;
 
-  factory _GasPrice.fromJson(Map<String, dynamic> json) =
-      _$GasPriceImpl.fromJson;
+  factory _ResourcePrice.fromJson(Map<String, dynamic> json) =
+      _$ResourcePriceImpl.fromJson;
 
   @override
-  String? get priceInFri;
+  Felt? get priceInFri;
   @override
-  String? get priceInWei;
+  Felt? get priceInWei;
 
-  /// Create a copy of GasPrice
+  /// Create a copy of ResourcePrice
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$GasPriceImplCopyWith<_$GasPriceImpl> get copyWith =>
+  _$$ResourcePriceImplCopyWith<_$ResourcePriceImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

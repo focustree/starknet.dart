@@ -25,8 +25,8 @@ class BlockWithReceipts with _$BlockWithReceipts {
     Felt? newRoot,
     int? timestamp,
     String? starknetVersion,
-    GasPrice? l1GasPrice,
-    GasPrice? l1DataGasPrice,
+    ResourcePrice? l1GasPrice,
+    ResourcePrice? l1DataGasPrice,
     String? l1DaMode,
     List<TransactionWithReceipt>? transactions,
     String? status,
@@ -37,12 +37,12 @@ class BlockWithReceipts with _$BlockWithReceipts {
 }
 
 @freezed
-class GasPrice with _$GasPrice {
-  const factory GasPrice({
-    String? priceInFri,
-    String? priceInWei,
-  }) = _GasPrice;
+class ResourcePrice with _$ResourcePrice {  
+  const factory ResourcePrice({
+    Felt? priceInFri,               
+    Felt? priceInWei,               
+  }) = _ResourcePrice;
 
-  factory GasPrice.fromJson(Map<String, dynamic> json) =>
-      _$GasPriceFromJson(json);
+  factory ResourcePrice.fromJson(Map<String, dynamic> json) =>
+      _$ResourcePriceFromJson(json);
 }

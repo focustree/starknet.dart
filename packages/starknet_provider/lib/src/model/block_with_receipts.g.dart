@@ -40,10 +40,11 @@ _$BlockWithReceiptsImpl _$$BlockWithReceiptsImplFromJson(
       starknetVersion: json['starknet_version'] as String?,
       l1GasPrice: json['l1_gas_price'] == null
           ? null
-          : GasPrice.fromJson(json['l1_gas_price'] as Map<String, dynamic>),
+          : ResourcePrice.fromJson(
+              json['l1_gas_price'] as Map<String, dynamic>),
       l1DataGasPrice: json['l1_data_gas_price'] == null
           ? null
-          : GasPrice.fromJson(
+          : ResourcePrice.fromJson(
               json['l1_data_gas_price'] as Map<String, dynamic>),
       l1DaMode: json['l1_da_mode'] as String?,
       transactions: (json['transactions'] as List<dynamic>?)
@@ -70,14 +71,18 @@ Map<String, dynamic> _$$BlockWithReceiptsImplToJson(
       'status': instance.status,
     };
 
-_$GasPriceImpl _$$GasPriceImplFromJson(Map<String, dynamic> json) =>
-    _$GasPriceImpl(
-      priceInFri: json['price_in_fri'] as String?,
-      priceInWei: json['price_in_wei'] as String?,
+_$ResourcePriceImpl _$$ResourcePriceImplFromJson(Map<String, dynamic> json) =>
+    _$ResourcePriceImpl(
+      priceInFri: json['price_in_fri'] == null
+          ? null
+          : Felt.fromJson(json['price_in_fri'] as String),
+      priceInWei: json['price_in_wei'] == null
+          ? null
+          : Felt.fromJson(json['price_in_wei'] as String),
     );
 
-Map<String, dynamic> _$$GasPriceImplToJson(_$GasPriceImpl instance) =>
+Map<String, dynamic> _$$ResourcePriceImplToJson(_$ResourcePriceImpl instance) =>
     <String, dynamic>{
-      'price_in_fri': instance.priceInFri,
-      'price_in_wei': instance.priceInWei,
+      'price_in_fri': instance.priceInFri?.toJson(),
+      'price_in_wei': instance.priceInWei?.toJson(),
     };
