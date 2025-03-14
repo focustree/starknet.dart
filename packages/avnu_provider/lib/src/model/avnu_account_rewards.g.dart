@@ -20,9 +20,9 @@ Map<String, dynamic> _$$WhitelistedCallImplToJson(
       'entrypoint': instance.entrypoint,
     };
 
-_$AvnuAccountRewardsImpl _$$AvnuAccountRewardsImplFromJson(
+_$AvnuAccountRewardResultImpl _$$AvnuAccountRewardResultImplFromJson(
         Map<String, dynamic> json) =>
-    _$AvnuAccountRewardsImpl(
+    _$AvnuAccountRewardResultImpl(
       date:
           json['date'] == null ? null : DateTime.parse(json['date'] as String),
       address: json['address'] as String?,
@@ -37,10 +37,11 @@ _$AvnuAccountRewardsImpl _$$AvnuAccountRewardsImplFromJson(
       whitelistedCalls: (json['whitelistedCalls'] as List<dynamic>?)
           ?.map((e) => WhitelistedCall.fromJson(e as Map<String, dynamic>))
           .toList(),
+      $type: json['runtimeType'] as String?,
     );
 
-Map<String, dynamic> _$$AvnuAccountRewardsImplToJson(
-        _$AvnuAccountRewardsImpl instance) =>
+Map<String, dynamic> _$$AvnuAccountRewardResultImplToJson(
+        _$AvnuAccountRewardResultImpl instance) =>
     <String, dynamic>{
       'date': instance.date?.toIso8601String(),
       'address': instance.address,
@@ -51,4 +52,21 @@ Map<String, dynamic> _$$AvnuAccountRewardsImplToJson(
       'remainingTx': instance.remainingTx,
       'expirationDate': instance.expirationDate?.toIso8601String(),
       'whitelistedCalls': instance.whitelistedCalls,
+      'runtimeType': instance.$type,
+    };
+
+_$AvnuAccountRewardErrorImpl _$$AvnuAccountRewardErrorImplFromJson(
+        Map<String, dynamic> json) =>
+    _$AvnuAccountRewardErrorImpl(
+      (json['messages'] as List<dynamic>).map((e) => e as String).toList(),
+      json['revertError'] as String?,
+      $type: json['runtimeType'] as String?,
+    );
+
+Map<String, dynamic> _$$AvnuAccountRewardErrorImplToJson(
+        _$AvnuAccountRewardErrorImpl instance) =>
+    <String, dynamic>{
+      'messages': instance.messages,
+      'revertError': instance.revertError,
+      'runtimeType': instance.$type,
     };

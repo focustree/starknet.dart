@@ -5,17 +5,18 @@ part 'avnu_account_compatible.g.dart';
 
 @freezed
 class AvnuAccountCompatible with _$AvnuAccountCompatible {
-  const factory AvnuAccountCompatible.isCompatible(
+  const factory AvnuAccountCompatible.result(
     bool isCompatible,
     String gasConsumedOverhead,
     String dataGasConsumedOverhead,
-  ) = AvnuAccountCompatibleIsCompatible;
+  ) = AvnuAccountCompatibleResult;
   const factory AvnuAccountCompatible.error(
     List<String> messages,
+    String? revertError,
   ) = AvnuAccountCompatibleError;
 
   factory AvnuAccountCompatible.fromJson(Map<String, Object?> json) =>
-      json.containsKey('error') || json.containsKey('messages')
+      json.containsKey('messages')
           ? AvnuAccountCompatibleError.fromJson(json)
-          : AvnuAccountCompatibleIsCompatible.fromJson(json);
+          : AvnuAccountCompatibleResult.fromJson(json);
 }

@@ -186,30 +186,91 @@ abstract class _WhitelistedCall implements WhitelistedCall {
 }
 
 AvnuAccountRewards _$AvnuAccountRewardsFromJson(Map<String, dynamic> json) {
-  return _AvnuAccountRewards.fromJson(json);
+  switch (json['runtimeType']) {
+    case 'result':
+      return AvnuAccountRewardResult.fromJson(json);
+    case 'error':
+      return AvnuAccountRewardError.fromJson(json);
+
+    default:
+      throw CheckedFromJsonException(json, 'runtimeType', 'AvnuAccountRewards',
+          'Invalid union type "${json['runtimeType']}"!');
+  }
 }
 
 /// @nodoc
 mixin _$AvnuAccountRewards {
-  DateTime? get date => throw _privateConstructorUsedError;
-  String? get address => throw _privateConstructorUsedError;
-  String? get sponsor => throw _privateConstructorUsedError;
-  String? get campaign => throw _privateConstructorUsedError;
-  String? get protocol => throw _privateConstructorUsedError;
-  int? get freeTx => throw _privateConstructorUsedError;
-  int? get remainingTx => throw _privateConstructorUsedError;
-  DateTime? get expirationDate => throw _privateConstructorUsedError;
-  List<WhitelistedCall>? get whitelistedCalls =>
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(
+            DateTime? date,
+            String? address,
+            String? sponsor,
+            String? campaign,
+            String? protocol,
+            int? freeTx,
+            int? remainingTx,
+            DateTime? expirationDate,
+            List<WhitelistedCall>? whitelistedCalls)
+        result,
+    required TResult Function(List<String> messages, String? revertError) error,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(
+            DateTime? date,
+            String? address,
+            String? sponsor,
+            String? campaign,
+            String? protocol,
+            int? freeTx,
+            int? remainingTx,
+            DateTime? expirationDate,
+            List<WhitelistedCall>? whitelistedCalls)?
+        result,
+    TResult? Function(List<String> messages, String? revertError)? error,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(
+            DateTime? date,
+            String? address,
+            String? sponsor,
+            String? campaign,
+            String? protocol,
+            int? freeTx,
+            int? remainingTx,
+            DateTime? expirationDate,
+            List<WhitelistedCall>? whitelistedCalls)?
+        result,
+    TResult Function(List<String> messages, String? revertError)? error,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(AvnuAccountRewardResult value) result,
+    required TResult Function(AvnuAccountRewardError value) error,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(AvnuAccountRewardResult value)? result,
+    TResult? Function(AvnuAccountRewardError value)? error,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(AvnuAccountRewardResult value)? result,
+    TResult Function(AvnuAccountRewardError value)? error,
+    required TResult orElse(),
+  }) =>
       throw _privateConstructorUsedError;
 
   /// Serializes this AvnuAccountRewards to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-
-  /// Create a copy of AvnuAccountRewards
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  $AvnuAccountRewardsCopyWith<AvnuAccountRewards> get copyWith =>
-      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -217,17 +278,6 @@ abstract class $AvnuAccountRewardsCopyWith<$Res> {
   factory $AvnuAccountRewardsCopyWith(
           AvnuAccountRewards value, $Res Function(AvnuAccountRewards) then) =
       _$AvnuAccountRewardsCopyWithImpl<$Res, AvnuAccountRewards>;
-  @useResult
-  $Res call(
-      {DateTime? date,
-      String? address,
-      String? sponsor,
-      String? campaign,
-      String? protocol,
-      int? freeTx,
-      int? remainingTx,
-      DateTime? expirationDate,
-      List<WhitelistedCall>? whitelistedCalls});
 }
 
 /// @nodoc
@@ -242,67 +292,14 @@ class _$AvnuAccountRewardsCopyWithImpl<$Res, $Val extends AvnuAccountRewards>
 
   /// Create a copy of AvnuAccountRewards
   /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? date = freezed,
-    Object? address = freezed,
-    Object? sponsor = freezed,
-    Object? campaign = freezed,
-    Object? protocol = freezed,
-    Object? freeTx = freezed,
-    Object? remainingTx = freezed,
-    Object? expirationDate = freezed,
-    Object? whitelistedCalls = freezed,
-  }) {
-    return _then(_value.copyWith(
-      date: freezed == date
-          ? _value.date
-          : date // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-      address: freezed == address
-          ? _value.address
-          : address // ignore: cast_nullable_to_non_nullable
-              as String?,
-      sponsor: freezed == sponsor
-          ? _value.sponsor
-          : sponsor // ignore: cast_nullable_to_non_nullable
-              as String?,
-      campaign: freezed == campaign
-          ? _value.campaign
-          : campaign // ignore: cast_nullable_to_non_nullable
-              as String?,
-      protocol: freezed == protocol
-          ? _value.protocol
-          : protocol // ignore: cast_nullable_to_non_nullable
-              as String?,
-      freeTx: freezed == freeTx
-          ? _value.freeTx
-          : freeTx // ignore: cast_nullable_to_non_nullable
-              as int?,
-      remainingTx: freezed == remainingTx
-          ? _value.remainingTx
-          : remainingTx // ignore: cast_nullable_to_non_nullable
-              as int?,
-      expirationDate: freezed == expirationDate
-          ? _value.expirationDate
-          : expirationDate // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-      whitelistedCalls: freezed == whitelistedCalls
-          ? _value.whitelistedCalls
-          : whitelistedCalls // ignore: cast_nullable_to_non_nullable
-              as List<WhitelistedCall>?,
-    ) as $Val);
-  }
 }
 
 /// @nodoc
-abstract class _$$AvnuAccountRewardsImplCopyWith<$Res>
-    implements $AvnuAccountRewardsCopyWith<$Res> {
-  factory _$$AvnuAccountRewardsImplCopyWith(_$AvnuAccountRewardsImpl value,
-          $Res Function(_$AvnuAccountRewardsImpl) then) =
-      __$$AvnuAccountRewardsImplCopyWithImpl<$Res>;
-  @override
+abstract class _$$AvnuAccountRewardResultImplCopyWith<$Res> {
+  factory _$$AvnuAccountRewardResultImplCopyWith(
+          _$AvnuAccountRewardResultImpl value,
+          $Res Function(_$AvnuAccountRewardResultImpl) then) =
+      __$$AvnuAccountRewardResultImplCopyWithImpl<$Res>;
   @useResult
   $Res call(
       {DateTime? date,
@@ -317,11 +314,13 @@ abstract class _$$AvnuAccountRewardsImplCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$AvnuAccountRewardsImplCopyWithImpl<$Res>
-    extends _$AvnuAccountRewardsCopyWithImpl<$Res, _$AvnuAccountRewardsImpl>
-    implements _$$AvnuAccountRewardsImplCopyWith<$Res> {
-  __$$AvnuAccountRewardsImplCopyWithImpl(_$AvnuAccountRewardsImpl _value,
-      $Res Function(_$AvnuAccountRewardsImpl) _then)
+class __$$AvnuAccountRewardResultImplCopyWithImpl<$Res>
+    extends _$AvnuAccountRewardsCopyWithImpl<$Res,
+        _$AvnuAccountRewardResultImpl>
+    implements _$$AvnuAccountRewardResultImplCopyWith<$Res> {
+  __$$AvnuAccountRewardResultImplCopyWithImpl(
+      _$AvnuAccountRewardResultImpl _value,
+      $Res Function(_$AvnuAccountRewardResultImpl) _then)
       : super(_value, _then);
 
   /// Create a copy of AvnuAccountRewards
@@ -339,7 +338,7 @@ class __$$AvnuAccountRewardsImplCopyWithImpl<$Res>
     Object? expirationDate = freezed,
     Object? whitelistedCalls = freezed,
   }) {
-    return _then(_$AvnuAccountRewardsImpl(
+    return _then(_$AvnuAccountRewardResultImpl(
       date: freezed == date
           ? _value.date
           : date // ignore: cast_nullable_to_non_nullable
@@ -382,8 +381,8 @@ class __$$AvnuAccountRewardsImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$AvnuAccountRewardsImpl implements _AvnuAccountRewards {
-  const _$AvnuAccountRewardsImpl(
+class _$AvnuAccountRewardResultImpl implements AvnuAccountRewardResult {
+  const _$AvnuAccountRewardResultImpl(
       {this.date,
       this.address,
       this.sponsor,
@@ -392,11 +391,13 @@ class _$AvnuAccountRewardsImpl implements _AvnuAccountRewards {
       this.freeTx,
       this.remainingTx,
       this.expirationDate,
-      final List<WhitelistedCall>? whitelistedCalls})
-      : _whitelistedCalls = whitelistedCalls;
+      final List<WhitelistedCall>? whitelistedCalls,
+      final String? $type})
+      : _whitelistedCalls = whitelistedCalls,
+        $type = $type ?? 'result';
 
-  factory _$AvnuAccountRewardsImpl.fromJson(Map<String, dynamic> json) =>
-      _$$AvnuAccountRewardsImplFromJson(json);
+  factory _$AvnuAccountRewardResultImpl.fromJson(Map<String, dynamic> json) =>
+      _$$AvnuAccountRewardResultImplFromJson(json);
 
   @override
   final DateTime? date;
@@ -425,16 +426,19 @@ class _$AvnuAccountRewardsImpl implements _AvnuAccountRewards {
     return EqualUnmodifiableListView(value);
   }
 
+  @JsonKey(name: 'runtimeType')
+  final String $type;
+
   @override
   String toString() {
-    return 'AvnuAccountRewards(date: $date, address: $address, sponsor: $sponsor, campaign: $campaign, protocol: $protocol, freeTx: $freeTx, remainingTx: $remainingTx, expirationDate: $expirationDate, whitelistedCalls: $whitelistedCalls)';
+    return 'AvnuAccountRewards.result(date: $date, address: $address, sponsor: $sponsor, campaign: $campaign, protocol: $protocol, freeTx: $freeTx, remainingTx: $remainingTx, expirationDate: $expirationDate, whitelistedCalls: $whitelistedCalls)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$AvnuAccountRewardsImpl &&
+            other is _$AvnuAccountRewardResultImpl &&
             (identical(other.date, date) || other.date == date) &&
             (identical(other.address, address) || other.address == address) &&
             (identical(other.sponsor, sponsor) || other.sponsor == sponsor) &&
@@ -470,20 +474,115 @@ class _$AvnuAccountRewardsImpl implements _AvnuAccountRewards {
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$AvnuAccountRewardsImplCopyWith<_$AvnuAccountRewardsImpl> get copyWith =>
-      __$$AvnuAccountRewardsImplCopyWithImpl<_$AvnuAccountRewardsImpl>(
-          this, _$identity);
+  _$$AvnuAccountRewardResultImplCopyWith<_$AvnuAccountRewardResultImpl>
+      get copyWith => __$$AvnuAccountRewardResultImplCopyWithImpl<
+          _$AvnuAccountRewardResultImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(
+            DateTime? date,
+            String? address,
+            String? sponsor,
+            String? campaign,
+            String? protocol,
+            int? freeTx,
+            int? remainingTx,
+            DateTime? expirationDate,
+            List<WhitelistedCall>? whitelistedCalls)
+        result,
+    required TResult Function(List<String> messages, String? revertError) error,
+  }) {
+    return result(date, address, sponsor, campaign, protocol, freeTx,
+        remainingTx, expirationDate, whitelistedCalls);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(
+            DateTime? date,
+            String? address,
+            String? sponsor,
+            String? campaign,
+            String? protocol,
+            int? freeTx,
+            int? remainingTx,
+            DateTime? expirationDate,
+            List<WhitelistedCall>? whitelistedCalls)?
+        result,
+    TResult? Function(List<String> messages, String? revertError)? error,
+  }) {
+    return result?.call(date, address, sponsor, campaign, protocol, freeTx,
+        remainingTx, expirationDate, whitelistedCalls);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(
+            DateTime? date,
+            String? address,
+            String? sponsor,
+            String? campaign,
+            String? protocol,
+            int? freeTx,
+            int? remainingTx,
+            DateTime? expirationDate,
+            List<WhitelistedCall>? whitelistedCalls)?
+        result,
+    TResult Function(List<String> messages, String? revertError)? error,
+    required TResult orElse(),
+  }) {
+    if (result != null) {
+      return result(date, address, sponsor, campaign, protocol, freeTx,
+          remainingTx, expirationDate, whitelistedCalls);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(AvnuAccountRewardResult value) result,
+    required TResult Function(AvnuAccountRewardError value) error,
+  }) {
+    return result(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(AvnuAccountRewardResult value)? result,
+    TResult? Function(AvnuAccountRewardError value)? error,
+  }) {
+    return result?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(AvnuAccountRewardResult value)? result,
+    TResult Function(AvnuAccountRewardError value)? error,
+    required TResult orElse(),
+  }) {
+    if (result != null) {
+      return result(this);
+    }
+    return orElse();
+  }
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$AvnuAccountRewardsImplToJson(
+    return _$$AvnuAccountRewardResultImplToJson(
       this,
     );
   }
 }
 
-abstract class _AvnuAccountRewards implements AvnuAccountRewards {
-  const factory _AvnuAccountRewards(
+abstract class AvnuAccountRewardResult implements AvnuAccountRewards {
+  const factory AvnuAccountRewardResult(
           {final DateTime? date,
           final String? address,
           final String? sponsor,
@@ -493,34 +592,237 @@ abstract class _AvnuAccountRewards implements AvnuAccountRewards {
           final int? remainingTx,
           final DateTime? expirationDate,
           final List<WhitelistedCall>? whitelistedCalls}) =
-      _$AvnuAccountRewardsImpl;
+      _$AvnuAccountRewardResultImpl;
 
-  factory _AvnuAccountRewards.fromJson(Map<String, dynamic> json) =
-      _$AvnuAccountRewardsImpl.fromJson;
+  factory AvnuAccountRewardResult.fromJson(Map<String, dynamic> json) =
+      _$AvnuAccountRewardResultImpl.fromJson;
 
-  @override
   DateTime? get date;
-  @override
   String? get address;
-  @override
   String? get sponsor;
-  @override
   String? get campaign;
-  @override
   String? get protocol;
-  @override
   int? get freeTx;
-  @override
   int? get remainingTx;
-  @override
   DateTime? get expirationDate;
-  @override
   List<WhitelistedCall>? get whitelistedCalls;
 
   /// Create a copy of AvnuAccountRewards
   /// with the given fields replaced by the non-null parameter values.
-  @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$AvnuAccountRewardsImplCopyWith<_$AvnuAccountRewardsImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$AvnuAccountRewardResultImplCopyWith<_$AvnuAccountRewardResultImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$AvnuAccountRewardErrorImplCopyWith<$Res> {
+  factory _$$AvnuAccountRewardErrorImplCopyWith(
+          _$AvnuAccountRewardErrorImpl value,
+          $Res Function(_$AvnuAccountRewardErrorImpl) then) =
+      __$$AvnuAccountRewardErrorImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({List<String> messages, String? revertError});
+}
+
+/// @nodoc
+class __$$AvnuAccountRewardErrorImplCopyWithImpl<$Res>
+    extends _$AvnuAccountRewardsCopyWithImpl<$Res, _$AvnuAccountRewardErrorImpl>
+    implements _$$AvnuAccountRewardErrorImplCopyWith<$Res> {
+  __$$AvnuAccountRewardErrorImplCopyWithImpl(
+      _$AvnuAccountRewardErrorImpl _value,
+      $Res Function(_$AvnuAccountRewardErrorImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of AvnuAccountRewards
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? messages = null,
+    Object? revertError = freezed,
+  }) {
+    return _then(_$AvnuAccountRewardErrorImpl(
+      null == messages
+          ? _value._messages
+          : messages // ignore: cast_nullable_to_non_nullable
+              as List<String>,
+      freezed == revertError
+          ? _value.revertError
+          : revertError // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$AvnuAccountRewardErrorImpl implements AvnuAccountRewardError {
+  const _$AvnuAccountRewardErrorImpl(
+      final List<String> messages, this.revertError,
+      {final String? $type})
+      : _messages = messages,
+        $type = $type ?? 'error';
+
+  factory _$AvnuAccountRewardErrorImpl.fromJson(Map<String, dynamic> json) =>
+      _$$AvnuAccountRewardErrorImplFromJson(json);
+
+  final List<String> _messages;
+  @override
+  List<String> get messages {
+    if (_messages is EqualUnmodifiableListView) return _messages;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_messages);
+  }
+
+  @override
+  final String? revertError;
+
+  @JsonKey(name: 'runtimeType')
+  final String $type;
+
+  @override
+  String toString() {
+    return 'AvnuAccountRewards.error(messages: $messages, revertError: $revertError)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$AvnuAccountRewardErrorImpl &&
+            const DeepCollectionEquality().equals(other._messages, _messages) &&
+            (identical(other.revertError, revertError) ||
+                other.revertError == revertError));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(_messages), revertError);
+
+  /// Create a copy of AvnuAccountRewards
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$AvnuAccountRewardErrorImplCopyWith<_$AvnuAccountRewardErrorImpl>
+      get copyWith => __$$AvnuAccountRewardErrorImplCopyWithImpl<
+          _$AvnuAccountRewardErrorImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(
+            DateTime? date,
+            String? address,
+            String? sponsor,
+            String? campaign,
+            String? protocol,
+            int? freeTx,
+            int? remainingTx,
+            DateTime? expirationDate,
+            List<WhitelistedCall>? whitelistedCalls)
+        result,
+    required TResult Function(List<String> messages, String? revertError) error,
+  }) {
+    return error(messages, revertError);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(
+            DateTime? date,
+            String? address,
+            String? sponsor,
+            String? campaign,
+            String? protocol,
+            int? freeTx,
+            int? remainingTx,
+            DateTime? expirationDate,
+            List<WhitelistedCall>? whitelistedCalls)?
+        result,
+    TResult? Function(List<String> messages, String? revertError)? error,
+  }) {
+    return error?.call(messages, revertError);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(
+            DateTime? date,
+            String? address,
+            String? sponsor,
+            String? campaign,
+            String? protocol,
+            int? freeTx,
+            int? remainingTx,
+            DateTime? expirationDate,
+            List<WhitelistedCall>? whitelistedCalls)?
+        result,
+    TResult Function(List<String> messages, String? revertError)? error,
+    required TResult orElse(),
+  }) {
+    if (error != null) {
+      return error(messages, revertError);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(AvnuAccountRewardResult value) result,
+    required TResult Function(AvnuAccountRewardError value) error,
+  }) {
+    return error(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(AvnuAccountRewardResult value)? result,
+    TResult? Function(AvnuAccountRewardError value)? error,
+  }) {
+    return error?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(AvnuAccountRewardResult value)? result,
+    TResult Function(AvnuAccountRewardError value)? error,
+    required TResult orElse(),
+  }) {
+    if (error != null) {
+      return error(this);
+    }
+    return orElse();
+  }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$AvnuAccountRewardErrorImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class AvnuAccountRewardError implements AvnuAccountRewards {
+  const factory AvnuAccountRewardError(
+          final List<String> messages, final String? revertError) =
+      _$AvnuAccountRewardErrorImpl;
+
+  factory AvnuAccountRewardError.fromJson(Map<String, dynamic> json) =
+      _$AvnuAccountRewardErrorImpl.fromJson;
+
+  List<String> get messages;
+  String? get revertError;
+
+  /// Create a copy of AvnuAccountRewards
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$AvnuAccountRewardErrorImplCopyWith<_$AvnuAccountRewardErrorImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }
