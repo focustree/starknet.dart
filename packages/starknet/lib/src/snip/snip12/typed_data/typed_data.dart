@@ -574,7 +574,7 @@ String _encodeType(
       return '${esc(t.name)}:$typeString';
     }).join(',');
 
-    return '${esc(dependency as String)}($dependencyElements)';
+    return '${esc(dependency)}($dependencyElements)';
   }).join('');
 }
 
