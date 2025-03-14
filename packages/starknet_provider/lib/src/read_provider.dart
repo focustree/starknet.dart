@@ -123,6 +123,11 @@ abstract class ReadProvider {
   ///
   /// [Spec](https://github.com/starkware-libs/starknet-specs/blob/v0.2.1/api/starknet_api_openrpc.json#L432-L477)
   Future<EstimateFee> estimateFee(EstimateFeeRequest request);
+
+  /// Fetches a block along with its transaction receipts.
+  ///
+  /// [Spec](https://github.com/starkware-libs/starknet-specs/blob/v0.7.0-rc0/api/starknet_api_openrpc.json#L107-L143)
+  Future<BlockWithReceipts> getBlockWithReceipts(BlockId blockId);
 }
 
 class JsonRpcReadProvider implements ReadProvider {
@@ -324,6 +329,15 @@ class JsonRpcReadProvider implements ReadProvider {
       method: 'starknet_estimateFee',
       params: request,
     ).then(EstimateFee.fromJson);
+  }
+
+  @override
+  Future<BlockWithReceipts> getBlockWithReceipts(BlockId blockId) async {
+    return callRpcEndpoint(
+      nodeUri: nodeUri,
+      method: 'starknet_getBlockWithReceipts',
+      params: [blockId],
+    ).then(BlockWithReceipts.fromJson);
   }
 
   static final devnet = JsonRpcReadProvider(nodeUri: devnetUri);

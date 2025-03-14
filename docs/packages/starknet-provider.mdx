@@ -28,7 +28,7 @@ jq .methods[].name ../starknet-specs/api/starknet_api_openrpc.json
 | starknet_specVersion                     | ❌          |
 | starknet_getBlockWithTxHashes            | ✅          |
 | starknet_getBlockWithTxs                 | ✅          |
-| starknet_getBlockWithReceipts            | ❌          |
+| starknet_getBlockWithReceipts            | ✅          |
 | starknet_getStateUpdate                  | ✅          |
 | starknet_getStorageAt                    | ✅          |
 | starknet_getTransactionStatus            | ❌          |
@@ -64,3 +64,5 @@ jq .methods[].name ../starknet-specs/api/starknet_write_api.json
 | starknet_addDeployAccountTransaction | ✅          |
 
 ### Call read-only method
+
+- `starknet_getBlockWithReceipts`: Retrieves block information with transaction receipts. Returns `BlockWithReceipts` with optional fields. Note: Devnet may return null fields for invalid block IDs instead of throwing `BLOCK_NOT_FOUND`.
