@@ -2,7 +2,6 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 
 import '../../crypto/keccak.dart';
 import '../../types/index.dart';
-import '../snip12/starknet_message.dart';
 import '../snip12/typed_data/typed_data.dart';
 
 part 'outside_execution.freezed.dart';
@@ -66,33 +65,8 @@ class OutsideExecutionTypedDataV2 {
   BigInt hash(Felt accountAddress) => typedData.hash(accountAddress);
 }
 
-abstract class OutsideExecutionMessage {
-  // we assume json is a full snip12 message
-  factory OutsideExecutionMessage.fromStarknetMessage(StarknetMessage msg) {
-    if (msg.domain.name != OUTSIDE_EXECUTION_DOMAIN_NAME) {
-      throw ArgumentError(
-        'Unsupported outside execution domain name: ${msg.domain.name}',
-      );
-    }
-    switch (msg.domain.version) {
-      case '1':
-        return OutsideExecutionMessageV1.fromJson(msg.message);
-      case '2':
-        return OutsideExecutionMessageV2.fromJson(msg.message);
-      default:
-        throw ArgumentError(
-          'Unsupported outside execution message version: ${msg.domain.version}',
-        );
-    }
-  }
-
-  Map<String, dynamic> toJson();
-}
-
 @freezed
-class OutsideExecutionMessageV1
-    with _$OutsideExecutionMessageV1
-    implements OutsideExecutionMessage {
+class OutsideExecutionMessageV1 with _$OutsideExecutionMessageV1 {
   const factory OutsideExecutionMessageV1({
     required String caller,
     required String nonce,
@@ -120,9 +94,7 @@ class OutsideExecutionMessageV1
 }
 
 @freezed
-class OutsideExecutionMessageV2
-    with _$OutsideExecutionMessageV2
-    implements OutsideExecutionMessage {
+class OutsideExecutionMessageV2 with _$OutsideExecutionMessageV2 {
   const factory OutsideExecutionMessageV2({
     @JsonKey(name: 'Caller') required String caller,
     @JsonKey(name: 'Nonce') required String nonce,
