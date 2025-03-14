@@ -653,8 +653,8 @@ ResourcePrice _$ResourcePriceFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$ResourcePrice {
-  Felt? get priceInFri => throw _privateConstructorUsedError;
-  Felt? get priceInWei => throw _privateConstructorUsedError;
+  Felt get priceInFri => throw _privateConstructorUsedError;
+  Felt get priceInWei => throw _privateConstructorUsedError;
 
   /// Serializes this ResourcePrice to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -672,7 +672,7 @@ abstract class $ResourcePriceCopyWith<$Res> {
           ResourcePrice value, $Res Function(ResourcePrice) then) =
       _$ResourcePriceCopyWithImpl<$Res, ResourcePrice>;
   @useResult
-  $Res call({Felt? priceInFri, Felt? priceInWei});
+  $Res call({Felt priceInFri, Felt priceInWei});
 }
 
 /// @nodoc
@@ -690,18 +690,18 @@ class _$ResourcePriceCopyWithImpl<$Res, $Val extends ResourcePrice>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? priceInFri = freezed,
-    Object? priceInWei = freezed,
+    Object? priceInFri = null,
+    Object? priceInWei = null,
   }) {
     return _then(_value.copyWith(
-      priceInFri: freezed == priceInFri
+      priceInFri: null == priceInFri
           ? _value.priceInFri
           : priceInFri // ignore: cast_nullable_to_non_nullable
-              as Felt?,
-      priceInWei: freezed == priceInWei
+              as Felt,
+      priceInWei: null == priceInWei
           ? _value.priceInWei
           : priceInWei // ignore: cast_nullable_to_non_nullable
-              as Felt?,
+              as Felt,
     ) as $Val);
   }
 }
@@ -714,7 +714,7 @@ abstract class _$$ResourcePriceImplCopyWith<$Res>
       __$$ResourcePriceImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({Felt? priceInFri, Felt? priceInWei});
+  $Res call({Felt priceInFri, Felt priceInWei});
 }
 
 /// @nodoc
@@ -730,18 +730,18 @@ class __$$ResourcePriceImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? priceInFri = freezed,
-    Object? priceInWei = freezed,
+    Object? priceInFri = null,
+    Object? priceInWei = null,
   }) {
     return _then(_$ResourcePriceImpl(
-      priceInFri: freezed == priceInFri
+      priceInFri: null == priceInFri
           ? _value.priceInFri
           : priceInFri // ignore: cast_nullable_to_non_nullable
-              as Felt?,
-      priceInWei: freezed == priceInWei
+              as Felt,
+      priceInWei: null == priceInWei
           ? _value.priceInWei
           : priceInWei // ignore: cast_nullable_to_non_nullable
-              as Felt?,
+              as Felt,
     ));
   }
 }
@@ -749,15 +749,16 @@ class __$$ResourcePriceImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$ResourcePriceImpl implements _ResourcePrice {
-  const _$ResourcePriceImpl({this.priceInFri, this.priceInWei});
+  const _$ResourcePriceImpl(
+      {required this.priceInFri, required this.priceInWei});
 
   factory _$ResourcePriceImpl.fromJson(Map<String, dynamic> json) =>
       _$$ResourcePriceImplFromJson(json);
 
   @override
-  final Felt? priceInFri;
+  final Felt priceInFri;
   @override
-  final Felt? priceInWei;
+  final Felt priceInWei;
 
   @override
   String toString() {
@@ -797,15 +798,16 @@ class _$ResourcePriceImpl implements _ResourcePrice {
 
 abstract class _ResourcePrice implements ResourcePrice {
   const factory _ResourcePrice(
-      {final Felt? priceInFri, final Felt? priceInWei}) = _$ResourcePriceImpl;
+      {required final Felt priceInFri,
+      required final Felt priceInWei}) = _$ResourcePriceImpl;
 
   factory _ResourcePrice.fromJson(Map<String, dynamic> json) =
       _$ResourcePriceImpl.fromJson;
 
   @override
-  Felt? get priceInFri;
+  Felt get priceInFri;
   @override
-  Felt? get priceInWei;
+  Felt get priceInWei;
 
   /// Create a copy of ResourcePrice
   /// with the given fields replaced by the non-null parameter values.

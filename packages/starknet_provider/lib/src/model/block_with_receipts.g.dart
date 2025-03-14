@@ -73,16 +73,12 @@ Map<String, dynamic> _$$BlockWithReceiptsImplToJson(
 
 _$ResourcePriceImpl _$$ResourcePriceImplFromJson(Map<String, dynamic> json) =>
     _$ResourcePriceImpl(
-      priceInFri: json['price_in_fri'] == null
-          ? null
-          : Felt.fromJson(json['price_in_fri'] as String),
-      priceInWei: json['price_in_wei'] == null
-          ? null
-          : Felt.fromJson(json['price_in_wei'] as String),
+      priceInFri: Felt.fromJson(json['price_in_fri'] as String),
+      priceInWei: Felt.fromJson(json['price_in_wei'] as String),
     );
 
 Map<String, dynamic> _$$ResourcePriceImplToJson(_$ResourcePriceImpl instance) =>
     <String, dynamic>{
-      'price_in_fri': instance.priceInFri?.toJson(),
-      'price_in_wei': instance.priceInWei?.toJson(),
+      'price_in_fri': instance.priceInFri.toJson(),
+      'price_in_wei': instance.priceInWei.toJson(),
     };

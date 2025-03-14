@@ -1,6 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:starknet/starknet.dart';
-import 'get_transaction_receipt.dart'; 
+import 'get_transaction_receipt.dart';
 part 'block_with_receipts.freezed.dart';
 part 'block_with_receipts.g.dart';
 
@@ -8,7 +8,7 @@ part 'block_with_receipts.g.dart';
 class TransactionWithReceipt with _$TransactionWithReceipt {
   const factory TransactionWithReceipt({
     required Felt transactionHash,
-    required TxnReceipt receipt, 
+    required TxnReceipt receipt,
   }) = _TransactionWithReceipt;
 
   factory TransactionWithReceipt.fromJson(Map<String, dynamic> json) =>
@@ -37,10 +37,10 @@ class BlockWithReceipts with _$BlockWithReceipts {
 }
 
 @freezed
-class ResourcePrice with _$ResourcePrice {  
+class ResourcePrice with _$ResourcePrice {
   const factory ResourcePrice({
-    Felt? priceInFri,               
-    Felt? priceInWei,               
+    required Felt priceInFri,
+    required Felt priceInWei,
   }) = _ResourcePrice;
 
   factory ResourcePrice.fromJson(Map<String, dynamic> json) =>
