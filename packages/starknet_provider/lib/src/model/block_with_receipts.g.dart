@@ -10,7 +10,6 @@ _$TransactionWithReceiptImpl _$$TransactionWithReceiptImplFromJson(
         Map<String, dynamic> json) =>
     _$TransactionWithReceiptImpl(
       transactionHash: Felt.fromJson(json['transaction_hash'] as String),
-      type: json['type'] as String,
       receipt: TxnReceipt.fromJson(json['receipt'] as Map<String, dynamic>),
     );
 
@@ -18,18 +17,25 @@ Map<String, dynamic> _$$TransactionWithReceiptImplToJson(
         _$TransactionWithReceiptImpl instance) =>
     <String, dynamic>{
       'transaction_hash': instance.transactionHash.toJson(),
-      'type': instance.type,
       'receipt': instance.receipt.toJson(),
     };
 
 _$BlockWithReceiptsImpl _$$BlockWithReceiptsImplFromJson(
         Map<String, dynamic> json) =>
     _$BlockWithReceiptsImpl(
-      blockHash: json['block_hash'] as String?,
-      parentHash: json['parent_hash'] as String?,
+      blockHash: json['block_hash'] == null
+          ? null
+          : Felt.fromJson(json['block_hash'] as String),
+      parentHash: json['parent_hash'] == null
+          ? null
+          : Felt.fromJson(json['parent_hash'] as String),
       blockNumber: (json['block_number'] as num?)?.toInt(),
-      sequencerAddress: json['sequencer_address'] as String?,
-      newRoot: json['new_root'] as String?,
+      sequencerAddress: json['sequencer_address'] == null
+          ? null
+          : Felt.fromJson(json['sequencer_address'] as String),
+      newRoot: json['new_root'] == null
+          ? null
+          : Felt.fromJson(json['new_root'] as String),
       timestamp: (json['timestamp'] as num?)?.toInt(),
       starknetVersion: json['starknet_version'] as String?,
       l1GasPrice: json['l1_gas_price'] == null
@@ -50,11 +56,11 @@ _$BlockWithReceiptsImpl _$$BlockWithReceiptsImplFromJson(
 Map<String, dynamic> _$$BlockWithReceiptsImplToJson(
         _$BlockWithReceiptsImpl instance) =>
     <String, dynamic>{
-      'block_hash': instance.blockHash,
-      'parent_hash': instance.parentHash,
+      'block_hash': instance.blockHash?.toJson(),
+      'parent_hash': instance.parentHash?.toJson(),
       'block_number': instance.blockNumber,
-      'sequencer_address': instance.sequencerAddress,
-      'new_root': instance.newRoot,
+      'sequencer_address': instance.sequencerAddress?.toJson(),
+      'new_root': instance.newRoot?.toJson(),
       'timestamp': instance.timestamp,
       'starknet_version': instance.starknetVersion,
       'l1_gas_price': instance.l1GasPrice?.toJson(),

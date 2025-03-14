@@ -1,6 +1,5 @@
 import 'package:starknet/starknet.dart';
 import 'package:starknet_provider/starknet_provider.dart';
-import 'package:starknet_provider/src/model/block_with_receipts.dart';
 
 abstract class ReadProvider {
   /// Gets the most recent accepted block number

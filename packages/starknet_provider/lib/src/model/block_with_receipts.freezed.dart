@@ -21,9 +21,7 @@ TransactionWithReceipt _$TransactionWithReceiptFromJson(
 
 /// @nodoc
 mixin _$TransactionWithReceipt {
-  @JsonKey(name: 'transaction_hash')
   Felt get transactionHash => throw _privateConstructorUsedError;
-  String get type => throw _privateConstructorUsedError;
   TxnReceipt get receipt => throw _privateConstructorUsedError;
 
   /// Serializes this TransactionWithReceipt to a JSON map.
@@ -42,10 +40,7 @@ abstract class $TransactionWithReceiptCopyWith<$Res> {
           $Res Function(TransactionWithReceipt) then) =
       _$TransactionWithReceiptCopyWithImpl<$Res, TransactionWithReceipt>;
   @useResult
-  $Res call(
-      {@JsonKey(name: 'transaction_hash') Felt transactionHash,
-      String type,
-      TxnReceipt receipt});
+  $Res call({Felt transactionHash, TxnReceipt receipt});
 
   $TxnReceiptCopyWith<$Res> get receipt;
 }
@@ -67,7 +62,6 @@ class _$TransactionWithReceiptCopyWithImpl<$Res,
   @override
   $Res call({
     Object? transactionHash = null,
-    Object? type = null,
     Object? receipt = null,
   }) {
     return _then(_value.copyWith(
@@ -75,10 +69,6 @@ class _$TransactionWithReceiptCopyWithImpl<$Res,
           ? _value.transactionHash
           : transactionHash // ignore: cast_nullable_to_non_nullable
               as Felt,
-      type: null == type
-          ? _value.type
-          : type // ignore: cast_nullable_to_non_nullable
-              as String,
       receipt: null == receipt
           ? _value.receipt
           : receipt // ignore: cast_nullable_to_non_nullable
@@ -106,10 +96,7 @@ abstract class _$$TransactionWithReceiptImplCopyWith<$Res>
       __$$TransactionWithReceiptImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {@JsonKey(name: 'transaction_hash') Felt transactionHash,
-      String type,
-      TxnReceipt receipt});
+  $Res call({Felt transactionHash, TxnReceipt receipt});
 
   @override
   $TxnReceiptCopyWith<$Res> get receipt;
@@ -131,7 +118,6 @@ class __$$TransactionWithReceiptImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? transactionHash = null,
-    Object? type = null,
     Object? receipt = null,
   }) {
     return _then(_$TransactionWithReceiptImpl(
@@ -139,10 +125,6 @@ class __$$TransactionWithReceiptImplCopyWithImpl<$Res>
           ? _value.transactionHash
           : transactionHash // ignore: cast_nullable_to_non_nullable
               as Felt,
-      type: null == type
-          ? _value.type
-          : type // ignore: cast_nullable_to_non_nullable
-              as String,
       receipt: null == receipt
           ? _value.receipt
           : receipt // ignore: cast_nullable_to_non_nullable
@@ -155,24 +137,19 @@ class __$$TransactionWithReceiptImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$TransactionWithReceiptImpl implements _TransactionWithReceipt {
   const _$TransactionWithReceiptImpl(
-      {@JsonKey(name: 'transaction_hash') required this.transactionHash,
-      required this.type,
-      required this.receipt});
+      {required this.transactionHash, required this.receipt});
 
   factory _$TransactionWithReceiptImpl.fromJson(Map<String, dynamic> json) =>
       _$$TransactionWithReceiptImplFromJson(json);
 
   @override
-  @JsonKey(name: 'transaction_hash')
   final Felt transactionHash;
-  @override
-  final String type;
   @override
   final TxnReceipt receipt;
 
   @override
   String toString() {
-    return 'TransactionWithReceipt(transactionHash: $transactionHash, type: $type, receipt: $receipt)';
+    return 'TransactionWithReceipt(transactionHash: $transactionHash, receipt: $receipt)';
   }
 
   @override
@@ -182,13 +159,12 @@ class _$TransactionWithReceiptImpl implements _TransactionWithReceipt {
             other is _$TransactionWithReceiptImpl &&
             (identical(other.transactionHash, transactionHash) ||
                 other.transactionHash == transactionHash) &&
-            (identical(other.type, type) || other.type == type) &&
             (identical(other.receipt, receipt) || other.receipt == receipt));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, transactionHash, type, receipt);
+  int get hashCode => Object.hash(runtimeType, transactionHash, receipt);
 
   /// Create a copy of TransactionWithReceipt
   /// with the given fields replaced by the non-null parameter values.
@@ -209,18 +185,14 @@ class _$TransactionWithReceiptImpl implements _TransactionWithReceipt {
 
 abstract class _TransactionWithReceipt implements TransactionWithReceipt {
   const factory _TransactionWithReceipt(
-      {@JsonKey(name: 'transaction_hash') required final Felt transactionHash,
-      required final String type,
+      {required final Felt transactionHash,
       required final TxnReceipt receipt}) = _$TransactionWithReceiptImpl;
 
   factory _TransactionWithReceipt.fromJson(Map<String, dynamic> json) =
       _$TransactionWithReceiptImpl.fromJson;
 
   @override
-  @JsonKey(name: 'transaction_hash')
   Felt get transactionHash;
-  @override
-  String get type;
   @override
   TxnReceipt get receipt;
 
@@ -238,24 +210,15 @@ BlockWithReceipts _$BlockWithReceiptsFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$BlockWithReceipts {
-  @JsonKey(name: 'block_hash')
-  String? get blockHash => throw _privateConstructorUsedError;
-  @JsonKey(name: 'parent_hash')
-  String? get parentHash => throw _privateConstructorUsedError;
-  @JsonKey(name: 'block_number')
+  Felt? get blockHash => throw _privateConstructorUsedError;
+  Felt? get parentHash => throw _privateConstructorUsedError;
   int? get blockNumber => throw _privateConstructorUsedError;
-  @JsonKey(name: 'sequencer_address')
-  String? get sequencerAddress => throw _privateConstructorUsedError;
-  @JsonKey(name: 'new_root')
-  String? get newRoot => throw _privateConstructorUsedError;
+  Felt? get sequencerAddress => throw _privateConstructorUsedError;
+  Felt? get newRoot => throw _privateConstructorUsedError;
   int? get timestamp => throw _privateConstructorUsedError;
-  @JsonKey(name: 'starknet_version')
   String? get starknetVersion => throw _privateConstructorUsedError;
-  @JsonKey(name: 'l1_gas_price')
   GasPrice? get l1GasPrice => throw _privateConstructorUsedError;
-  @JsonKey(name: 'l1_data_gas_price')
   GasPrice? get l1DataGasPrice => throw _privateConstructorUsedError;
-  @JsonKey(name: 'l1_da_mode')
   String? get l1DaMode => throw _privateConstructorUsedError;
   List<TransactionWithReceipt>? get transactions =>
       throw _privateConstructorUsedError;
@@ -278,16 +241,16 @@ abstract class $BlockWithReceiptsCopyWith<$Res> {
       _$BlockWithReceiptsCopyWithImpl<$Res, BlockWithReceipts>;
   @useResult
   $Res call(
-      {@JsonKey(name: 'block_hash') String? blockHash,
-      @JsonKey(name: 'parent_hash') String? parentHash,
-      @JsonKey(name: 'block_number') int? blockNumber,
-      @JsonKey(name: 'sequencer_address') String? sequencerAddress,
-      @JsonKey(name: 'new_root') String? newRoot,
+      {Felt? blockHash,
+      Felt? parentHash,
+      int? blockNumber,
+      Felt? sequencerAddress,
+      Felt? newRoot,
       int? timestamp,
-      @JsonKey(name: 'starknet_version') String? starknetVersion,
-      @JsonKey(name: 'l1_gas_price') GasPrice? l1GasPrice,
-      @JsonKey(name: 'l1_data_gas_price') GasPrice? l1DataGasPrice,
-      @JsonKey(name: 'l1_da_mode') String? l1DaMode,
+      String? starknetVersion,
+      GasPrice? l1GasPrice,
+      GasPrice? l1DataGasPrice,
+      String? l1DaMode,
       List<TransactionWithReceipt>? transactions,
       String? status});
 
@@ -327,11 +290,11 @@ class _$BlockWithReceiptsCopyWithImpl<$Res, $Val extends BlockWithReceipts>
       blockHash: freezed == blockHash
           ? _value.blockHash
           : blockHash // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as Felt?,
       parentHash: freezed == parentHash
           ? _value.parentHash
           : parentHash // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as Felt?,
       blockNumber: freezed == blockNumber
           ? _value.blockNumber
           : blockNumber // ignore: cast_nullable_to_non_nullable
@@ -339,11 +302,11 @@ class _$BlockWithReceiptsCopyWithImpl<$Res, $Val extends BlockWithReceipts>
       sequencerAddress: freezed == sequencerAddress
           ? _value.sequencerAddress
           : sequencerAddress // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as Felt?,
       newRoot: freezed == newRoot
           ? _value.newRoot
           : newRoot // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as Felt?,
       timestamp: freezed == timestamp
           ? _value.timestamp
           : timestamp // ignore: cast_nullable_to_non_nullable
@@ -413,16 +376,16 @@ abstract class _$$BlockWithReceiptsImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {@JsonKey(name: 'block_hash') String? blockHash,
-      @JsonKey(name: 'parent_hash') String? parentHash,
-      @JsonKey(name: 'block_number') int? blockNumber,
-      @JsonKey(name: 'sequencer_address') String? sequencerAddress,
-      @JsonKey(name: 'new_root') String? newRoot,
+      {Felt? blockHash,
+      Felt? parentHash,
+      int? blockNumber,
+      Felt? sequencerAddress,
+      Felt? newRoot,
       int? timestamp,
-      @JsonKey(name: 'starknet_version') String? starknetVersion,
-      @JsonKey(name: 'l1_gas_price') GasPrice? l1GasPrice,
-      @JsonKey(name: 'l1_data_gas_price') GasPrice? l1DataGasPrice,
-      @JsonKey(name: 'l1_da_mode') String? l1DaMode,
+      String? starknetVersion,
+      GasPrice? l1GasPrice,
+      GasPrice? l1DataGasPrice,
+      String? l1DaMode,
       List<TransactionWithReceipt>? transactions,
       String? status});
 
@@ -462,11 +425,11 @@ class __$$BlockWithReceiptsImplCopyWithImpl<$Res>
       blockHash: freezed == blockHash
           ? _value.blockHash
           : blockHash // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as Felt?,
       parentHash: freezed == parentHash
           ? _value.parentHash
           : parentHash // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as Felt?,
       blockNumber: freezed == blockNumber
           ? _value.blockNumber
           : blockNumber // ignore: cast_nullable_to_non_nullable
@@ -474,11 +437,11 @@ class __$$BlockWithReceiptsImplCopyWithImpl<$Res>
       sequencerAddress: freezed == sequencerAddress
           ? _value.sequencerAddress
           : sequencerAddress // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as Felt?,
       newRoot: freezed == newRoot
           ? _value.newRoot
           : newRoot // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as Felt?,
       timestamp: freezed == timestamp
           ? _value.timestamp
           : timestamp // ignore: cast_nullable_to_non_nullable
@@ -515,16 +478,16 @@ class __$$BlockWithReceiptsImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$BlockWithReceiptsImpl implements _BlockWithReceipts {
   const _$BlockWithReceiptsImpl(
-      {@JsonKey(name: 'block_hash') this.blockHash,
-      @JsonKey(name: 'parent_hash') this.parentHash,
-      @JsonKey(name: 'block_number') this.blockNumber,
-      @JsonKey(name: 'sequencer_address') this.sequencerAddress,
-      @JsonKey(name: 'new_root') this.newRoot,
+      {this.blockHash,
+      this.parentHash,
+      this.blockNumber,
+      this.sequencerAddress,
+      this.newRoot,
       this.timestamp,
-      @JsonKey(name: 'starknet_version') this.starknetVersion,
-      @JsonKey(name: 'l1_gas_price') this.l1GasPrice,
-      @JsonKey(name: 'l1_data_gas_price') this.l1DataGasPrice,
-      @JsonKey(name: 'l1_da_mode') this.l1DaMode,
+      this.starknetVersion,
+      this.l1GasPrice,
+      this.l1DataGasPrice,
+      this.l1DaMode,
       final List<TransactionWithReceipt>? transactions,
       this.status})
       : _transactions = transactions;
@@ -533,33 +496,24 @@ class _$BlockWithReceiptsImpl implements _BlockWithReceipts {
       _$$BlockWithReceiptsImplFromJson(json);
 
   @override
-  @JsonKey(name: 'block_hash')
-  final String? blockHash;
+  final Felt? blockHash;
   @override
-  @JsonKey(name: 'parent_hash')
-  final String? parentHash;
+  final Felt? parentHash;
   @override
-  @JsonKey(name: 'block_number')
   final int? blockNumber;
   @override
-  @JsonKey(name: 'sequencer_address')
-  final String? sequencerAddress;
+  final Felt? sequencerAddress;
   @override
-  @JsonKey(name: 'new_root')
-  final String? newRoot;
+  final Felt? newRoot;
   @override
   final int? timestamp;
   @override
-  @JsonKey(name: 'starknet_version')
   final String? starknetVersion;
   @override
-  @JsonKey(name: 'l1_gas_price')
   final GasPrice? l1GasPrice;
   @override
-  @JsonKey(name: 'l1_data_gas_price')
   final GasPrice? l1DataGasPrice;
   @override
-  @JsonKey(name: 'l1_da_mode')
   final String? l1DaMode;
   final List<TransactionWithReceipt>? _transactions;
   @override
@@ -644,16 +598,16 @@ class _$BlockWithReceiptsImpl implements _BlockWithReceipts {
 
 abstract class _BlockWithReceipts implements BlockWithReceipts {
   const factory _BlockWithReceipts(
-      {@JsonKey(name: 'block_hash') final String? blockHash,
-      @JsonKey(name: 'parent_hash') final String? parentHash,
-      @JsonKey(name: 'block_number') final int? blockNumber,
-      @JsonKey(name: 'sequencer_address') final String? sequencerAddress,
-      @JsonKey(name: 'new_root') final String? newRoot,
+      {final Felt? blockHash,
+      final Felt? parentHash,
+      final int? blockNumber,
+      final Felt? sequencerAddress,
+      final Felt? newRoot,
       final int? timestamp,
-      @JsonKey(name: 'starknet_version') final String? starknetVersion,
-      @JsonKey(name: 'l1_gas_price') final GasPrice? l1GasPrice,
-      @JsonKey(name: 'l1_data_gas_price') final GasPrice? l1DataGasPrice,
-      @JsonKey(name: 'l1_da_mode') final String? l1DaMode,
+      final String? starknetVersion,
+      final GasPrice? l1GasPrice,
+      final GasPrice? l1DataGasPrice,
+      final String? l1DaMode,
       final List<TransactionWithReceipt>? transactions,
       final String? status}) = _$BlockWithReceiptsImpl;
 
@@ -661,33 +615,24 @@ abstract class _BlockWithReceipts implements BlockWithReceipts {
       _$BlockWithReceiptsImpl.fromJson;
 
   @override
-  @JsonKey(name: 'block_hash')
-  String? get blockHash;
+  Felt? get blockHash;
   @override
-  @JsonKey(name: 'parent_hash')
-  String? get parentHash;
+  Felt? get parentHash;
   @override
-  @JsonKey(name: 'block_number')
   int? get blockNumber;
   @override
-  @JsonKey(name: 'sequencer_address')
-  String? get sequencerAddress;
+  Felt? get sequencerAddress;
   @override
-  @JsonKey(name: 'new_root')
-  String? get newRoot;
+  Felt? get newRoot;
   @override
   int? get timestamp;
   @override
-  @JsonKey(name: 'starknet_version')
   String? get starknetVersion;
   @override
-  @JsonKey(name: 'l1_gas_price')
   GasPrice? get l1GasPrice;
   @override
-  @JsonKey(name: 'l1_data_gas_price')
   GasPrice? get l1DataGasPrice;
   @override
-  @JsonKey(name: 'l1_da_mode')
   String? get l1DaMode;
   @override
   List<TransactionWithReceipt>? get transactions;
@@ -708,9 +653,7 @@ GasPrice _$GasPriceFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$GasPrice {
-  @JsonKey(name: 'price_in_fri')
   String? get priceInFri => throw _privateConstructorUsedError;
-  @JsonKey(name: 'price_in_wei')
   String? get priceInWei => throw _privateConstructorUsedError;
 
   /// Serializes this GasPrice to a JSON map.
@@ -728,9 +671,7 @@ abstract class $GasPriceCopyWith<$Res> {
   factory $GasPriceCopyWith(GasPrice value, $Res Function(GasPrice) then) =
       _$GasPriceCopyWithImpl<$Res, GasPrice>;
   @useResult
-  $Res call(
-      {@JsonKey(name: 'price_in_fri') String? priceInFri,
-      @JsonKey(name: 'price_in_wei') String? priceInWei});
+  $Res call({String? priceInFri, String? priceInWei});
 }
 
 /// @nodoc
@@ -772,9 +713,7 @@ abstract class _$$GasPriceImplCopyWith<$Res>
       __$$GasPriceImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {@JsonKey(name: 'price_in_fri') String? priceInFri,
-      @JsonKey(name: 'price_in_wei') String? priceInWei});
+  $Res call({String? priceInFri, String? priceInWei});
 }
 
 /// @nodoc
@@ -809,18 +748,14 @@ class __$$GasPriceImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$GasPriceImpl implements _GasPrice {
-  const _$GasPriceImpl(
-      {@JsonKey(name: 'price_in_fri') this.priceInFri,
-      @JsonKey(name: 'price_in_wei') this.priceInWei});
+  const _$GasPriceImpl({this.priceInFri, this.priceInWei});
 
   factory _$GasPriceImpl.fromJson(Map<String, dynamic> json) =>
       _$$GasPriceImplFromJson(json);
 
   @override
-  @JsonKey(name: 'price_in_fri')
   final String? priceInFri;
   @override
-  @JsonKey(name: 'price_in_wei')
   final String? priceInWei;
 
   @override
@@ -861,18 +796,14 @@ class _$GasPriceImpl implements _GasPrice {
 
 abstract class _GasPrice implements GasPrice {
   const factory _GasPrice(
-          {@JsonKey(name: 'price_in_fri') final String? priceInFri,
-          @JsonKey(name: 'price_in_wei') final String? priceInWei}) =
-      _$GasPriceImpl;
+      {final String? priceInFri, final String? priceInWei}) = _$GasPriceImpl;
 
   factory _GasPrice.fromJson(Map<String, dynamic> json) =
       _$GasPriceImpl.fromJson;
 
   @override
-  @JsonKey(name: 'price_in_fri')
   String? get priceInFri;
   @override
-  @JsonKey(name: 'price_in_wei')
   String? get priceInWei;
 
   /// Create a copy of GasPrice
