@@ -397,9 +397,10 @@ String compressProgram(Map<String, Object?> program) {
 }
 
 /// JSON encoder to mimic Python json dumps
-class PythonicJsonEncoder extends JsonEncoder {
+class PythonicJsonEncoder extends Converter<Object?, String> {
   final bool filterRuntimeType;
   final bool sortSymbol;
+  final JsonEncoder _encoder = JsonEncoder();
 
   PythonicJsonEncoder({this.filterRuntimeType = true, this.sortSymbol = true});
 
@@ -407,9 +408,13 @@ class PythonicJsonEncoder extends JsonEncoder {
   String convert(Object? object) => _JsonStringStringifier.stringify(
         object,
         _contractJsonCleanup,
-        indent,
+        _encoder.indent,
         sortSymbol: sortSymbol,
       );
+
+  @override
+  ChunkedConversionSink<Object?> startChunkedConversion(Sink<String> sink) =>
+      _encoder.startChunkedConversion(sink);
 
   Object? _contractJsonCleanup(
     dynamic object,

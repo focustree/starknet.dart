@@ -1,4 +1,4 @@
-import 'package:starknet/src/crypto/model/poseidon_params.dart';
+import 'model/poseidon_params.dart';
 
 List<BigInt> _hadesRound({
   required List<BigInt> values,

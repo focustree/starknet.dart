@@ -1,7 +1,8 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
+
 import 'package:starknet/starknet.dart';
-import 'package:avnu_provider/src/avnu_config.dart';
+import './avnu_config.dart';
 
 Future<dynamic> callRpcEndpoint(
     {required Uri nodeUri, required String method, Object? params}) async {
