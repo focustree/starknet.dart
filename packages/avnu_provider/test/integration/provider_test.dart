@@ -36,8 +36,7 @@ void main() {
       privateKey: sepoliaAccount0PrivateKey,
     );
 
-    setUpAll(() {
-      // executed once before all tests
+    setUp(() {
       final apiKey = '3fe427af-1c19-4126-8570-4e3adba3a043';
       final publicKey = BigInt.parse(
           "0429c489be63b21c399353e03a9659cfc1650b24bae1e9ebdde0aef2b38deb44",
@@ -73,7 +72,6 @@ void main() {
             gasTokenAddress,
             maxGasTokenAmount,
             accountClassHash);
-        expect(avnuBuildTypedData, isA<AvnuBuildTypedData>());
         avnuBuildTypedData.when(
           result: (types, primaryType, domain, message) {
             expect(types, isNotNull, reason: 'Types should not be null');
@@ -115,7 +113,6 @@ void main() {
         final deploymentData = null;
         final avnuExecute = await avnuProvider.execute(
             userAddress, cleanTypedData, signatureList, deploymentData);
-        expect(avnuExecute, isA<AvnuExecute>());
         avnuExecute.when(
           result: (transactionHash) {
             expect(transactionHash, isNotNull,
@@ -156,7 +153,6 @@ void main() {
             gasTokenAddress,
             maxGasTokenAmount,
             accountClassHash);
-        expect(avnuBuildTypedData, isA<AvnuBuildTypedData>());
         avnuBuildTypedData.when(
           result: (types, primaryType, domain, message) {
             expect(types, isNotNull, reason: 'Types should not be null');
@@ -199,7 +195,6 @@ void main() {
 
         final avnuExecute = await avnuProvider.execute(
             userAddress, cleanTypedData, signatureList, deploymentData);
-        expect(avnuExecute, isA<AvnuExecute>());
         avnuExecute.when(
           result: (transactionHash) {
             expect(transactionHash, isNotNull,
@@ -240,14 +235,8 @@ void main() {
         final whitelistedCalls = [
           {'contractAddress': '*', 'entrypoint': '*'}
         ];
-        final avnuSetAccountRewards = await avnuProvider.setAccountRewards(
-            address,
-            campaign,
-            protocol,
-            freeTx,
-            expirationDate,
-            whitelistedCalls);
-        expect(avnuSetAccountRewards, isA<AvnuAccountRewards>());
+        await avnuProvider.setAccountRewards(address, campaign, protocol,
+            freeTx, expirationDate, whitelistedCalls);
         // set null apikey to ensure we won't be using sponsored apikey transaction
         avnuProvider.setApiKey('');
 
@@ -268,7 +257,6 @@ void main() {
             gasTokenAddress,
             maxGasTokenAmount,
             accountClassHash);
-        expect(avnuBuildTypedData, isA<AvnuBuildTypedData>());
         avnuBuildTypedData.when(
           result: (types, primaryType, domain, message) {
             expect(types, isNotNull, reason: 'Types should not be null');
@@ -313,7 +301,6 @@ void main() {
         // Execute the transaction
         final avnuExecute = await avnuProvider.execute(
             userAddress, cleanTypedData, signatureList, deploymentData);
-        expect(avnuExecute, isA<AvnuExecute>());
         avnuExecute.when(
           result: (transactionHash) {
             expect(transactionHash, isNotNull,
@@ -372,7 +359,6 @@ void main() {
           '0x36078334509b514626504edc9fb252328d1a240e4e948bef8d0c08dff45927f';
       final avnuBuildTypedData = await avnuProvider.buildTypedData(userAddress,
           calls, gasTokenAddress, maxGasTokenAmount, accountClassHash);
-      expect(avnuBuildTypedData, isA<AvnuBuildTypedData>());
       avnuBuildTypedData.when(
         result: (types, primaryType, domain, message) {
           fail('Should not get result');
@@ -406,7 +392,6 @@ void main() {
           '0x36078334509b514626504edc9fb252328d1a240e4e948bef8d0c08dff45927f';
       final avnuBuildTypedData = await avnuProvider.buildTypedData(userAddress,
           calls, gasTokenAddress, maxGasTokenAmount, accountClassHash);
-      expect(avnuBuildTypedData, isA<AvnuBuildTypedData>());
       avnuBuildTypedData.when(
         result: (types, primaryType, domain, message) {
           expect(types, isNotNull, reason: 'Types should not be null');
@@ -428,7 +413,6 @@ void main() {
       final deploymentData = null;
       final avnuExecute = await avnuProvider.execute(
           userAddress, cleanTypedData, signatureList, deploymentData);
-      expect(avnuExecute, isA<AvnuExecute>());
       avnuExecute.when(
         result: (transactionHash) {
           fail('Should not get result');
@@ -458,7 +442,6 @@ void main() {
           freeTx,
           expirationDate,
           whitelistedCalls);
-      expect(avnuSetAccountRewards, isA<AvnuAccountRewards>());
       avnuSetAccountRewards.when(
         result: (date, address, sponsor, campaign, protocol, freeTx,
             remainingTx, expirationDate, whitelistedCalls) {
@@ -485,7 +468,6 @@ void main() {
           freeTx,
           expirationDate,
           whitelistedCalls);
-      expect(avnuSetAccountRewards, isA<AvnuAccountRewards>());
       avnuSetAccountRewards.when(
         result: (date, address, sponsor, campaign, protocol, freeTx,
             remainingTx, expirationDate, whitelistedCalls) {

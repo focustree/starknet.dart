@@ -63,7 +63,14 @@ class AvnuJsonRpcReadProvider implements AvnuReadProvider {
   Future<AvnuGasTokenPrices> getGasTokenPrices() async {
     return callRpcEndpoint(
             nodeUri: nodeUri, method: 'paymaster_gas_token_prices')
-        .then((dynamic json) => AvnuGasTokenPrices.fromJson({'prices': json}));
+        .then((dynamic json) {
+      // Check if response contains an error
+      if (json is Map<String, dynamic> && json.containsKey('error')) {
+        return AvnuGasTokenPrices.fromJson(json);
+      }
+      // Otherwise, wrap prices in the expected format
+      return AvnuGasTokenPrices.fromJson({'prices': json});
+    });
   }
 
   @override

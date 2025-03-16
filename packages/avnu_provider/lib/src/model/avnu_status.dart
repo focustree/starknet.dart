@@ -5,10 +5,16 @@ part 'avnu_status.g.dart';
 
 @freezed
 class AvnuStatus with _$AvnuStatus {
-  const factory AvnuStatus({
-    required bool status,
-  }) = _AvnuStatus;
+  const factory AvnuStatus.result(
+    bool status,
+  ) = AvnuStatusResult;
+
+  const factory AvnuStatus.error(
+    List<String> messages,
+  ) = AvnuStatusError;
 
   factory AvnuStatus.fromJson(Map<String, Object?> json) =>
-      _$AvnuStatusFromJson(json);
+      json.containsKey('messages')
+          ? AvnuStatusError.fromJson(json)
+          : AvnuStatusResult.fromJson(json);
 }
