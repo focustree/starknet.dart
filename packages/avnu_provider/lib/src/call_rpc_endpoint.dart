@@ -129,7 +129,7 @@ Future<dynamic> callRpcEndpoint(
       ? await http.get(nodeUri, headers: headers)
       : await http.post(nodeUri, headers: headers, body: filteredBody);
 
-  var jsonResponse; // Changed from Map to dynamic type
+  dynamic jsonResponse; // Changed from var to explicit dynamic type
   try {
     // Check for Too many requests
     // As indicated in https://starknet.api.avnu.fi/webjars/swagger-ui/index.html
