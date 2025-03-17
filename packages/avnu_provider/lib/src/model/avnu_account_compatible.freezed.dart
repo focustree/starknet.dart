@@ -17,8 +17,8 @@ final _privateConstructorUsedError = UnsupportedError(
 AvnuAccountCompatible _$AvnuAccountCompatibleFromJson(
     Map<String, dynamic> json) {
   switch (json['runtimeType']) {
-    case 'isCompatible':
-      return AvnuAccountCompatibleIsCompatible.fromJson(json);
+    case 'result':
+      return AvnuAccountCompatibleResult.fromJson(json);
     case 'error':
       return AvnuAccountCompatibleError.fromJson(json);
 
@@ -37,43 +37,42 @@ mixin _$AvnuAccountCompatible {
   TResult when<TResult extends Object?>({
     required TResult Function(bool isCompatible, String gasConsumedOverhead,
             String dataGasConsumedOverhead)
-        isCompatible,
-    required TResult Function(List<String> messages) error,
+        result,
+    required TResult Function(List<String> messages, String? revertError) error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(bool isCompatible, String gasConsumedOverhead,
             String dataGasConsumedOverhead)?
-        isCompatible,
-    TResult? Function(List<String> messages)? error,
+        result,
+    TResult? Function(List<String> messages, String? revertError)? error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(bool isCompatible, String gasConsumedOverhead,
             String dataGasConsumedOverhead)?
-        isCompatible,
-    TResult Function(List<String> messages)? error,
+        result,
+    TResult Function(List<String> messages, String? revertError)? error,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(AvnuAccountCompatibleIsCompatible value)
-        isCompatible,
+    required TResult Function(AvnuAccountCompatibleResult value) result,
     required TResult Function(AvnuAccountCompatibleError value) error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(AvnuAccountCompatibleIsCompatible value)? isCompatible,
+    TResult? Function(AvnuAccountCompatibleResult value)? result,
     TResult? Function(AvnuAccountCompatibleError value)? error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(AvnuAccountCompatibleIsCompatible value)? isCompatible,
+    TResult Function(AvnuAccountCompatibleResult value)? result,
     TResult Function(AvnuAccountCompatibleError value)? error,
     required TResult orElse(),
   }) =>
@@ -106,11 +105,11 @@ class _$AvnuAccountCompatibleCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$AvnuAccountCompatibleIsCompatibleImplCopyWith<$Res> {
-  factory _$$AvnuAccountCompatibleIsCompatibleImplCopyWith(
-          _$AvnuAccountCompatibleIsCompatibleImpl value,
-          $Res Function(_$AvnuAccountCompatibleIsCompatibleImpl) then) =
-      __$$AvnuAccountCompatibleIsCompatibleImplCopyWithImpl<$Res>;
+abstract class _$$AvnuAccountCompatibleResultImplCopyWith<$Res> {
+  factory _$$AvnuAccountCompatibleResultImplCopyWith(
+          _$AvnuAccountCompatibleResultImpl value,
+          $Res Function(_$AvnuAccountCompatibleResultImpl) then) =
+      __$$AvnuAccountCompatibleResultImplCopyWithImpl<$Res>;
   @useResult
   $Res call(
       {bool isCompatible,
@@ -119,13 +118,13 @@ abstract class _$$AvnuAccountCompatibleIsCompatibleImplCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$AvnuAccountCompatibleIsCompatibleImplCopyWithImpl<$Res>
+class __$$AvnuAccountCompatibleResultImplCopyWithImpl<$Res>
     extends _$AvnuAccountCompatibleCopyWithImpl<$Res,
-        _$AvnuAccountCompatibleIsCompatibleImpl>
-    implements _$$AvnuAccountCompatibleIsCompatibleImplCopyWith<$Res> {
-  __$$AvnuAccountCompatibleIsCompatibleImplCopyWithImpl(
-      _$AvnuAccountCompatibleIsCompatibleImpl _value,
-      $Res Function(_$AvnuAccountCompatibleIsCompatibleImpl) _then)
+        _$AvnuAccountCompatibleResultImpl>
+    implements _$$AvnuAccountCompatibleResultImplCopyWith<$Res> {
+  __$$AvnuAccountCompatibleResultImplCopyWithImpl(
+      _$AvnuAccountCompatibleResultImpl _value,
+      $Res Function(_$AvnuAccountCompatibleResultImpl) _then)
       : super(_value, _then);
 
   /// Create a copy of AvnuAccountCompatible
@@ -137,7 +136,7 @@ class __$$AvnuAccountCompatibleIsCompatibleImplCopyWithImpl<$Res>
     Object? gasConsumedOverhead = null,
     Object? dataGasConsumedOverhead = null,
   }) {
-    return _then(_$AvnuAccountCompatibleIsCompatibleImpl(
+    return _then(_$AvnuAccountCompatibleResultImpl(
       null == isCompatible
           ? _value.isCompatible
           : isCompatible // ignore: cast_nullable_to_non_nullable
@@ -156,16 +155,15 @@ class __$$AvnuAccountCompatibleIsCompatibleImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$AvnuAccountCompatibleIsCompatibleImpl
-    implements AvnuAccountCompatibleIsCompatible {
-  const _$AvnuAccountCompatibleIsCompatibleImpl(
+class _$AvnuAccountCompatibleResultImpl implements AvnuAccountCompatibleResult {
+  const _$AvnuAccountCompatibleResultImpl(
       this.isCompatible, this.gasConsumedOverhead, this.dataGasConsumedOverhead,
       {final String? $type})
-      : $type = $type ?? 'isCompatible';
+      : $type = $type ?? 'result';
 
-  factory _$AvnuAccountCompatibleIsCompatibleImpl.fromJson(
+  factory _$AvnuAccountCompatibleResultImpl.fromJson(
           Map<String, dynamic> json) =>
-      _$$AvnuAccountCompatibleIsCompatibleImplFromJson(json);
+      _$$AvnuAccountCompatibleResultImplFromJson(json);
 
   @override
   final bool isCompatible;
@@ -179,14 +177,14 @@ class _$AvnuAccountCompatibleIsCompatibleImpl
 
   @override
   String toString() {
-    return 'AvnuAccountCompatible.isCompatible(isCompatible: $isCompatible, gasConsumedOverhead: $gasConsumedOverhead, dataGasConsumedOverhead: $dataGasConsumedOverhead)';
+    return 'AvnuAccountCompatible.result(isCompatible: $isCompatible, gasConsumedOverhead: $gasConsumedOverhead, dataGasConsumedOverhead: $dataGasConsumedOverhead)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$AvnuAccountCompatibleIsCompatibleImpl &&
+            other is _$AvnuAccountCompatibleResultImpl &&
             (identical(other.isCompatible, isCompatible) ||
                 other.isCompatible == isCompatible) &&
             (identical(other.gasConsumedOverhead, gasConsumedOverhead) ||
@@ -206,21 +204,19 @@ class _$AvnuAccountCompatibleIsCompatibleImpl
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$AvnuAccountCompatibleIsCompatibleImplCopyWith<
-          _$AvnuAccountCompatibleIsCompatibleImpl>
-      get copyWith => __$$AvnuAccountCompatibleIsCompatibleImplCopyWithImpl<
-          _$AvnuAccountCompatibleIsCompatibleImpl>(this, _$identity);
+  _$$AvnuAccountCompatibleResultImplCopyWith<_$AvnuAccountCompatibleResultImpl>
+      get copyWith => __$$AvnuAccountCompatibleResultImplCopyWithImpl<
+          _$AvnuAccountCompatibleResultImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(bool isCompatible, String gasConsumedOverhead,
             String dataGasConsumedOverhead)
-        isCompatible,
-    required TResult Function(List<String> messages) error,
+        result,
+    required TResult Function(List<String> messages, String? revertError) error,
   }) {
-    return isCompatible(
-        this.isCompatible, gasConsumedOverhead, dataGasConsumedOverhead);
+    return result(isCompatible, gasConsumedOverhead, dataGasConsumedOverhead);
   }
 
   @override
@@ -228,11 +224,11 @@ class _$AvnuAccountCompatibleIsCompatibleImpl
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(bool isCompatible, String gasConsumedOverhead,
             String dataGasConsumedOverhead)?
-        isCompatible,
-    TResult? Function(List<String> messages)? error,
+        result,
+    TResult? Function(List<String> messages, String? revertError)? error,
   }) {
-    return isCompatible?.call(
-        this.isCompatible, gasConsumedOverhead, dataGasConsumedOverhead);
+    return result?.call(
+        isCompatible, gasConsumedOverhead, dataGasConsumedOverhead);
   }
 
   @override
@@ -240,13 +236,12 @@ class _$AvnuAccountCompatibleIsCompatibleImpl
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(bool isCompatible, String gasConsumedOverhead,
             String dataGasConsumedOverhead)?
-        isCompatible,
-    TResult Function(List<String> messages)? error,
+        result,
+    TResult Function(List<String> messages, String? revertError)? error,
     required TResult orElse(),
   }) {
-    if (isCompatible != null) {
-      return isCompatible(
-          this.isCompatible, gasConsumedOverhead, dataGasConsumedOverhead);
+    if (result != null) {
+      return result(isCompatible, gasConsumedOverhead, dataGasConsumedOverhead);
     }
     return orElse();
   }
@@ -254,54 +249,50 @@ class _$AvnuAccountCompatibleIsCompatibleImpl
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(AvnuAccountCompatibleIsCompatible value)
-        isCompatible,
+    required TResult Function(AvnuAccountCompatibleResult value) result,
     required TResult Function(AvnuAccountCompatibleError value) error,
   }) {
-    return isCompatible(this);
+    return result(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(AvnuAccountCompatibleIsCompatible value)? isCompatible,
+    TResult? Function(AvnuAccountCompatibleResult value)? result,
     TResult? Function(AvnuAccountCompatibleError value)? error,
   }) {
-    return isCompatible?.call(this);
+    return result?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(AvnuAccountCompatibleIsCompatible value)? isCompatible,
+    TResult Function(AvnuAccountCompatibleResult value)? result,
     TResult Function(AvnuAccountCompatibleError value)? error,
     required TResult orElse(),
   }) {
-    if (isCompatible != null) {
-      return isCompatible(this);
+    if (result != null) {
+      return result(this);
     }
     return orElse();
   }
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$AvnuAccountCompatibleIsCompatibleImplToJson(
+    return _$$AvnuAccountCompatibleResultImplToJson(
       this,
     );
   }
 }
 
-abstract class AvnuAccountCompatibleIsCompatible
-    implements AvnuAccountCompatible {
-  const factory AvnuAccountCompatibleIsCompatible(
-          final bool isCompatible,
-          final String gasConsumedOverhead,
-          final String dataGasConsumedOverhead) =
-      _$AvnuAccountCompatibleIsCompatibleImpl;
+abstract class AvnuAccountCompatibleResult implements AvnuAccountCompatible {
+  const factory AvnuAccountCompatibleResult(
+      final bool isCompatible,
+      final String gasConsumedOverhead,
+      final String dataGasConsumedOverhead) = _$AvnuAccountCompatibleResultImpl;
 
-  factory AvnuAccountCompatibleIsCompatible.fromJson(
-          Map<String, dynamic> json) =
-      _$AvnuAccountCompatibleIsCompatibleImpl.fromJson;
+  factory AvnuAccountCompatibleResult.fromJson(Map<String, dynamic> json) =
+      _$AvnuAccountCompatibleResultImpl.fromJson;
 
   bool get isCompatible;
   String get gasConsumedOverhead;
@@ -310,8 +301,7 @@ abstract class AvnuAccountCompatibleIsCompatible
   /// Create a copy of AvnuAccountCompatible
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$AvnuAccountCompatibleIsCompatibleImplCopyWith<
-          _$AvnuAccountCompatibleIsCompatibleImpl>
+  _$$AvnuAccountCompatibleResultImplCopyWith<_$AvnuAccountCompatibleResultImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
 
@@ -322,7 +312,7 @@ abstract class _$$AvnuAccountCompatibleErrorImplCopyWith<$Res> {
           $Res Function(_$AvnuAccountCompatibleErrorImpl) then) =
       __$$AvnuAccountCompatibleErrorImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({List<String> messages});
+  $Res call({List<String> messages, String? revertError});
 }
 
 /// @nodoc
@@ -341,12 +331,17 @@ class __$$AvnuAccountCompatibleErrorImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? messages = null,
+    Object? revertError = freezed,
   }) {
     return _then(_$AvnuAccountCompatibleErrorImpl(
       null == messages
           ? _value._messages
           : messages // ignore: cast_nullable_to_non_nullable
               as List<String>,
+      freezed == revertError
+          ? _value.revertError
+          : revertError // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -354,7 +349,8 @@ class __$$AvnuAccountCompatibleErrorImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$AvnuAccountCompatibleErrorImpl implements AvnuAccountCompatibleError {
-  const _$AvnuAccountCompatibleErrorImpl(final List<String> messages,
+  const _$AvnuAccountCompatibleErrorImpl(
+      final List<String> messages, this.revertError,
       {final String? $type})
       : _messages = messages,
         $type = $type ?? 'error';
@@ -371,12 +367,15 @@ class _$AvnuAccountCompatibleErrorImpl implements AvnuAccountCompatibleError {
     return EqualUnmodifiableListView(_messages);
   }
 
+  @override
+  final String? revertError;
+
   @JsonKey(name: 'runtimeType')
   final String $type;
 
   @override
   String toString() {
-    return 'AvnuAccountCompatible.error(messages: $messages)';
+    return 'AvnuAccountCompatible.error(messages: $messages, revertError: $revertError)';
   }
 
   @override
@@ -384,13 +383,15 @@ class _$AvnuAccountCompatibleErrorImpl implements AvnuAccountCompatibleError {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$AvnuAccountCompatibleErrorImpl &&
-            const DeepCollectionEquality().equals(other._messages, _messages));
+            const DeepCollectionEquality().equals(other._messages, _messages) &&
+            (identical(other.revertError, revertError) ||
+                other.revertError == revertError));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(_messages));
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(_messages), revertError);
 
   /// Create a copy of AvnuAccountCompatible
   /// with the given fields replaced by the non-null parameter values.
@@ -406,10 +407,10 @@ class _$AvnuAccountCompatibleErrorImpl implements AvnuAccountCompatibleError {
   TResult when<TResult extends Object?>({
     required TResult Function(bool isCompatible, String gasConsumedOverhead,
             String dataGasConsumedOverhead)
-        isCompatible,
-    required TResult Function(List<String> messages) error,
+        result,
+    required TResult Function(List<String> messages, String? revertError) error,
   }) {
-    return error(messages);
+    return error(messages, revertError);
   }
 
   @override
@@ -417,10 +418,10 @@ class _$AvnuAccountCompatibleErrorImpl implements AvnuAccountCompatibleError {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(bool isCompatible, String gasConsumedOverhead,
             String dataGasConsumedOverhead)?
-        isCompatible,
-    TResult? Function(List<String> messages)? error,
+        result,
+    TResult? Function(List<String> messages, String? revertError)? error,
   }) {
-    return error?.call(messages);
+    return error?.call(messages, revertError);
   }
 
   @override
@@ -428,12 +429,12 @@ class _$AvnuAccountCompatibleErrorImpl implements AvnuAccountCompatibleError {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(bool isCompatible, String gasConsumedOverhead,
             String dataGasConsumedOverhead)?
-        isCompatible,
-    TResult Function(List<String> messages)? error,
+        result,
+    TResult Function(List<String> messages, String? revertError)? error,
     required TResult orElse(),
   }) {
     if (error != null) {
-      return error(messages);
+      return error(messages, revertError);
     }
     return orElse();
   }
@@ -441,8 +442,7 @@ class _$AvnuAccountCompatibleErrorImpl implements AvnuAccountCompatibleError {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(AvnuAccountCompatibleIsCompatible value)
-        isCompatible,
+    required TResult Function(AvnuAccountCompatibleResult value) result,
     required TResult Function(AvnuAccountCompatibleError value) error,
   }) {
     return error(this);
@@ -451,7 +451,7 @@ class _$AvnuAccountCompatibleErrorImpl implements AvnuAccountCompatibleError {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(AvnuAccountCompatibleIsCompatible value)? isCompatible,
+    TResult? Function(AvnuAccountCompatibleResult value)? result,
     TResult? Function(AvnuAccountCompatibleError value)? error,
   }) {
     return error?.call(this);
@@ -460,7 +460,7 @@ class _$AvnuAccountCompatibleErrorImpl implements AvnuAccountCompatibleError {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(AvnuAccountCompatibleIsCompatible value)? isCompatible,
+    TResult Function(AvnuAccountCompatibleResult value)? result,
     TResult Function(AvnuAccountCompatibleError value)? error,
     required TResult orElse(),
   }) {
@@ -479,13 +479,15 @@ class _$AvnuAccountCompatibleErrorImpl implements AvnuAccountCompatibleError {
 }
 
 abstract class AvnuAccountCompatibleError implements AvnuAccountCompatible {
-  const factory AvnuAccountCompatibleError(final List<String> messages) =
+  const factory AvnuAccountCompatibleError(
+          final List<String> messages, final String? revertError) =
       _$AvnuAccountCompatibleErrorImpl;
 
   factory AvnuAccountCompatibleError.fromJson(Map<String, dynamic> json) =
       _$AvnuAccountCompatibleErrorImpl.fromJson;
 
   List<String> get messages;
+  String? get revertError;
 
   /// Create a copy of AvnuAccountCompatible
   /// with the given fields replaced by the non-null parameter values.

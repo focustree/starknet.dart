@@ -36,8 +36,7 @@ void main() {
       privateKey: sepoliaAccount0PrivateKey,
     );
 
-    setUpAll(() {
-      // executed once before all tests
+    setUp(() {
       final apiKey = '3fe427af-1c19-4126-8570-4e3adba3a043';
       final publicKey = BigInt.parse(
           "0429c489be63b21c399353e03a9659cfc1650b24bae1e9ebdde0aef2b38deb44",
@@ -46,7 +45,7 @@ void main() {
     });
 
     group('execute', () {
-      test('send avnu build typed data and execute transaction', () async {
+      test('avnu execute transaction', () async {
         final userAddress = sepoliaAccount0.accountAddress.toHexString();
         final calls = [
           {
@@ -73,7 +72,18 @@ void main() {
             gasTokenAddress,
             maxGasTokenAmount,
             accountClassHash);
-        expect(avnuBuildTypedData, isA<AvnuBuildTypedData>());
+        avnuBuildTypedData.when(
+          result: (types, primaryType, domain, message) {
+            expect(types, isNotNull, reason: 'Types should not be null');
+            expect(primaryType, isNotNull,
+                reason: 'Primary type should not be null');
+            expect(domain, isNotNull, reason: 'Domain should not be null');
+            expect(message, isNotNull, reason: 'Message should not be null');
+          },
+          error: (error, revertError) {
+            fail('Should not get error response');
+          },
+        );
 
         final String typedData = jsonEncode(avnuBuildTypedData.toJson());
         final typedDataObject = TypedData.fromJson(jsonDecode(typedData));
@@ -81,6 +91,7 @@ void main() {
         // Remove null fields from typedData
         final Map<String, dynamic> typedDataMap = jsonDecode(typedData);
         removeNullFields(typedDataMap);
+        typedDataMap.remove('runtimeType');
         final String cleanTypedData = jsonEncode(typedDataMap);
 
         final messageHash = getMessageHash(
@@ -102,7 +113,15 @@ void main() {
         final deploymentData = null;
         final avnuExecute = await avnuProvider.execute(
             userAddress, cleanTypedData, signatureList, deploymentData);
-        expect(avnuExecute, isA<AvnuExecute>());
+        avnuExecute.when(
+          result: (transactionHash) {
+            expect(transactionHash, isNotNull,
+                reason: 'Transaction hash should not be null');
+          },
+          error: (error, revertError) {
+            fail('Should not get error response');
+          },
+        );
       });
 
       test('execute sponsored transaction with sponsor api key', () async {
@@ -134,7 +153,18 @@ void main() {
             gasTokenAddress,
             maxGasTokenAmount,
             accountClassHash);
-        expect(avnuBuildTypedData, isA<AvnuBuildTypedData>());
+        avnuBuildTypedData.when(
+          result: (types, primaryType, domain, message) {
+            expect(types, isNotNull, reason: 'Types should not be null');
+            expect(primaryType, isNotNull,
+                reason: 'Primary type should not be null');
+            expect(domain, isNotNull, reason: 'Domain should not be null');
+            expect(message, isNotNull, reason: 'Message should not be null');
+          },
+          error: (error, revertError) {
+            fail('Should not get error response');
+          },
+        );
 
         final String typedData = jsonEncode(avnuBuildTypedData.toJson());
         final typedDataObject = TypedData.fromJson(jsonDecode(typedData));
@@ -142,6 +172,7 @@ void main() {
         // Remove null fields from typedData
         final Map<String, dynamic> typedDataMap = jsonDecode(typedData);
         removeNullFields(typedDataMap);
+        typedDataMap.remove('runtimeType');
         final String cleanTypedData = jsonEncode(typedDataMap);
 
         final messageHash = getMessageHash(
@@ -164,7 +195,15 @@ void main() {
 
         final avnuExecute = await avnuProvider.execute(
             userAddress, cleanTypedData, signatureList, deploymentData);
-        expect(avnuExecute, isA<AvnuExecute>());
+        avnuExecute.when(
+          result: (transactionHash) {
+            expect(transactionHash, isNotNull,
+                reason: 'Transaction hash should not be null');
+          },
+          error: (error, revertError) {
+            fail('Should not get error response');
+          },
+        );
       });
 
       test('execute rewards sponsored transaction without sponsor api key',
@@ -196,14 +235,8 @@ void main() {
         final whitelistedCalls = [
           {'contractAddress': '*', 'entrypoint': '*'}
         ];
-        final avnuSetAccountRewards = await avnuProvider.setAccountRewards(
-            address,
-            campaign,
-            protocol,
-            freeTx,
-            expirationDate,
-            whitelistedCalls);
-        expect(avnuSetAccountRewards, isA<AvnuAccountRewards>());
+        await avnuProvider.setAccountRewards(address, campaign, protocol,
+            freeTx, expirationDate, whitelistedCalls);
         // set null apikey to ensure we won't be using sponsored apikey transaction
         avnuProvider.setApiKey('');
 
@@ -224,7 +257,18 @@ void main() {
             gasTokenAddress,
             maxGasTokenAmount,
             accountClassHash);
-        expect(avnuBuildTypedData, isA<AvnuBuildTypedData>());
+        avnuBuildTypedData.when(
+          result: (types, primaryType, domain, message) {
+            expect(types, isNotNull, reason: 'Types should not be null');
+            expect(primaryType, isNotNull,
+                reason: 'Primary type should not be null');
+            expect(domain, isNotNull, reason: 'Domain should not be null');
+            expect(message, isNotNull, reason: 'Message should not be null');
+          },
+          error: (error, revertError) {
+            fail('Should not get error response');
+          },
+        );
 
         final String typedData = jsonEncode(avnuBuildTypedData.toJson());
         final typedDataObject = TypedData.fromJson(jsonDecode(typedData));
@@ -232,6 +276,7 @@ void main() {
         // Remove null fields from typedData
         final Map<String, dynamic> typedDataMap = jsonDecode(typedData);
         removeNullFields(typedDataMap);
+        typedDataMap.remove('runtimeType');
         final String cleanTypedData = jsonEncode(typedDataMap);
 
         // Generate signature for the typed data
@@ -256,32 +301,182 @@ void main() {
         // Execute the transaction
         final avnuExecute = await avnuProvider.execute(
             userAddress, cleanTypedData, signatureList, deploymentData);
-        expect(avnuExecute, isA<AvnuExecute>());
-      });
-    });
-
-    group('setAccountRewards', () {
-      test('set rewards for a user account', () async {
-        final address = sepoliaAccount0.accountAddress.toHexString();
-        final campaign = 'Onboarding';
-        final protocol = 'AVNU';
-        // set 2 gasless transactions for the user
-        final freeTx = 2;
-        // set expiration dat with current utc data in gmt TZ plus 1 hour
-        final expirationDate =
-            DateTime.now().add(Duration(hours: 1)).toUtc().toIso8601String();
-        final whitelistedCalls = [
-          {'contractAddress': '*', 'entrypoint': '*'}
-        ];
-        final avnuSetAccountRewards = await avnuProvider.setAccountRewards(
-            address,
-            campaign,
-            protocol,
-            freeTx,
-            expirationDate,
-            whitelistedCalls);
-        expect(avnuSetAccountRewards, isA<AvnuAccountRewards>());
+        avnuExecute.when(
+          result: (transactionHash) {
+            expect(transactionHash, isNotNull,
+                reason: 'Transaction hash should not be null');
+          },
+          error: (error, revertError) {
+            fail('Should not get error response');
+          },
+        );
       });
     });
   }, tags: ['integration'], timeout: Timeout(Duration(minutes: 1)));
+  group('AvnuProviderUnitTests', () {
+    late AvnuProvider avnuProvider;
+
+    final sepoliaAccount0Address = Felt.fromHexString(
+      "0x00f1ac9E93A5da15FdeFD80F6224877Fb9977Fa09C5DFccb0024A6654C111224",
+    );
+
+    final sepoliaAccount0PrivateKey = Felt.fromHexString(
+        "0x0468af3624b056706186434f56f3218c6363be6defd72338abd8a0989031cc32");
+
+    final sepoliaAccount0 = getAccount(
+      accountAddress: sepoliaAccount0Address,
+      privateKey: sepoliaAccount0PrivateKey,
+    );
+
+    setUpAll(() {
+      // executed once before all tests
+      final apiKey = '3fe427af-1c19-4126-8570-4e3adba3a043';
+      final publicKey = BigInt.parse(
+          "0429c489be63b21c399353e03a9659cfc1650b24bae1e9ebdde0aef2b38deb44",
+          radix: 16);
+      avnuProvider = getAvnuProvider(publicKey: publicKey, apiKey: apiKey);
+    });
+
+    test('avnu build typed data error', () async {
+      final userAddress = sepoliaAccount0.accountAddress.toHexString();
+      final calls = [
+        {
+          'contractAddress': '0x0',
+          'entrypoint': 'approve',
+          'calldata': [
+            '0x498e484da80a8895c77dcad5362ae483758050f22a92af29a385459b0365bfe',
+            '0xf',
+            '0x0'
+          ]
+        }
+      ];
+      final gasTokenAddress =
+          '0x4718f5a0fc34cc1af16a1cdee98ffb20c31f5cd61d6ab07201858f4287c938d';
+      final maxGasTokenAmount = '0xFC3F02C221B000';
+      //just for testing, we hardcode the account class hash to the ArgentX account class hash
+      //in a real scenario, we would get the account class hash from the Starknetprovider
+      final accountClassHash =
+          '0x36078334509b514626504edc9fb252328d1a240e4e948bef8d0c08dff45927f';
+      final avnuBuildTypedData = await avnuProvider.buildTypedData(userAddress,
+          calls, gasTokenAddress, maxGasTokenAmount, accountClassHash);
+      avnuBuildTypedData.when(
+        result: (types, primaryType, domain, message) {
+          fail('Should not get result');
+        },
+        error: (error, revertError) {
+          expect(error.join(', '), 'Invalid contractAddress (hex format)');
+        },
+      );
+    });
+
+    test('avnu build typed data', () async {
+      final userAddress = sepoliaAccount0.accountAddress.toHexString();
+      final calls = [
+        {
+          'contractAddress':
+              '0x049d36570d4e46f48e99674bd3fcc84644ddd6b96f7c741b1562b82f9e004dc7',
+          'entrypoint': 'approve',
+          'calldata': [
+            '0x498e484da80a8895c77dcad5362ae483758050f22a92af29a385459b0365bfe',
+            '0xf',
+            '0x0'
+          ]
+        }
+      ];
+      final gasTokenAddress =
+          '0x4718f5a0fc34cc1af16a1cdee98ffb20c31f5cd61d6ab07201858f4287c938d';
+      final maxGasTokenAmount = '0xFC3F02C221B000';
+      //just for testing, we hardcode the account class hash to the ArgentX account class hash
+      //in a real scenario, we would get the account class hash from the Starknetprovider
+      final accountClassHash =
+          '0x36078334509b514626504edc9fb252328d1a240e4e948bef8d0c08dff45927f';
+      final avnuBuildTypedData = await avnuProvider.buildTypedData(userAddress,
+          calls, gasTokenAddress, maxGasTokenAmount, accountClassHash);
+      avnuBuildTypedData.when(
+        result: (types, primaryType, domain, message) {
+          expect(types, isNotNull, reason: 'Types should not be null');
+          expect(primaryType, isNotNull,
+              reason: 'Primary type should not be null');
+          expect(domain, isNotNull, reason: 'Domain should not be null');
+          expect(message, isNotNull, reason: 'Message should not be null');
+        },
+        error: (error, revertError) {
+          fail('Should not get error response');
+        },
+      );
+    });
+
+    test('execute transaction error handling', () async {
+      final userAddress = sepoliaAccount0.accountAddress.toHexString();
+      final cleanTypedData = '';
+      final signatureList = ['', '', '', '', ''];
+      final deploymentData = null;
+      final avnuExecute = await avnuProvider.execute(
+          userAddress, cleanTypedData, signatureList, deploymentData);
+      avnuExecute.when(
+        result: (transactionHash) {
+          fail('Should not get result');
+        },
+        error: (error, revertError) {
+          expect(error.join(', '), 'Invalid signature (hex format)');
+        },
+      );
+    });
+
+    test('set rewards for a user account', () async {
+      final address = sepoliaAccount0.accountAddress.toHexString();
+      final campaign = 'Onboarding1';
+      final protocol = 'AVNU1';
+      // set 2 gasless transactions for the user
+      final freeTx = 2;
+      // set expiration dat with current utc data in gmt TZ plus 1 hour
+      final expirationDate =
+          DateTime.now().add(Duration(hours: 1)).toUtc().toIso8601String();
+      final whitelistedCalls = [
+        {'contractAddress': '*', 'entrypoint': '*'}
+      ];
+      final avnuSetAccountRewards = await avnuProvider.setAccountRewards(
+          address,
+          campaign,
+          protocol,
+          freeTx,
+          expirationDate,
+          whitelistedCalls);
+      avnuSetAccountRewards.when(
+        result: (date, address, sponsor, campaign, protocol, freeTx,
+            remainingTx, expirationDate, whitelistedCalls) {
+          expect(date, isNotNull, reason: 'Date should not be null');
+        },
+        error: (error, revertError) {
+          fail('Should not get error response');
+        },
+      );
+    });
+    test('set rewards for a user account error', () async {
+      final address = '0x0';
+      final campaign = 'Onboarding2';
+      final protocol = 'AVNU2';
+      final freeTx = 2;
+      final expirationDate = DateTime.now().toUtc().toIso8601String();
+      final whitelistedCalls = [
+        {'contractAddress': '*', 'entrypoint': '*'}
+      ];
+      final avnuSetAccountRewards = await avnuProvider.setAccountRewards(
+          address,
+          campaign,
+          protocol,
+          freeTx,
+          expirationDate,
+          whitelistedCalls);
+      avnuSetAccountRewards.when(
+        result: (date, address, sponsor, campaign, protocol, freeTx,
+            remainingTx, expirationDate, whitelistedCalls) {
+          fail('Should not get result');
+        },
+        error: (error, revertError) {
+          expect(error.join(', '), 'Felt is empty');
+        },
+      );
+    });
+  }, tags: ['unit']);
 }
