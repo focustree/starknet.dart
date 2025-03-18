@@ -16,8 +16,8 @@ final _privateConstructorUsedError = UnsupportedError(
 
 AvnuSponsorActivity _$AvnuSponsorActivityFromJson(Map<String, dynamic> json) {
   switch (json['runtimeType']) {
-    case 'getSponsorActivity':
-      return AvnuSponsorActivityGetSponsorActivity.fromJson(json);
+    case 'result':
+      return AvnuSponsorActivityResult.fromJson(json);
     case 'error':
       return AvnuSponsorActivityError.fromJson(json);
 
@@ -40,8 +40,8 @@ mixin _$AvnuSponsorActivity {
             String revertedGasFees,
             String gasFees,
             String remainingCredits)
-        getSponsorActivity,
-    required TResult Function(List<String> messages) error,
+        result,
+    required TResult Function(List<String> messages, String? revertError) error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -55,8 +55,8 @@ mixin _$AvnuSponsorActivity {
             String revertedGasFees,
             String gasFees,
             String remainingCredits)?
-        getSponsorActivity,
-    TResult? Function(List<String> messages)? error,
+        result,
+    TResult? Function(List<String> messages, String? revertError)? error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -70,29 +70,26 @@ mixin _$AvnuSponsorActivity {
             String revertedGasFees,
             String gasFees,
             String remainingCredits)?
-        getSponsorActivity,
-    TResult Function(List<String> messages)? error,
+        result,
+    TResult Function(List<String> messages, String? revertError)? error,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(AvnuSponsorActivityGetSponsorActivity value)
-        getSponsorActivity,
+    required TResult Function(AvnuSponsorActivityResult value) result,
     required TResult Function(AvnuSponsorActivityError value) error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(AvnuSponsorActivityGetSponsorActivity value)?
-        getSponsorActivity,
+    TResult? Function(AvnuSponsorActivityResult value)? result,
     TResult? Function(AvnuSponsorActivityError value)? error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(AvnuSponsorActivityGetSponsorActivity value)?
-        getSponsorActivity,
+    TResult Function(AvnuSponsorActivityResult value)? result,
     TResult Function(AvnuSponsorActivityError value)? error,
     required TResult orElse(),
   }) =>
@@ -124,11 +121,11 @@ class _$AvnuSponsorActivityCopyWithImpl<$Res, $Val extends AvnuSponsorActivity>
 }
 
 /// @nodoc
-abstract class _$$AvnuSponsorActivityGetSponsorActivityImplCopyWith<$Res> {
-  factory _$$AvnuSponsorActivityGetSponsorActivityImplCopyWith(
-          _$AvnuSponsorActivityGetSponsorActivityImpl value,
-          $Res Function(_$AvnuSponsorActivityGetSponsorActivityImpl) then) =
-      __$$AvnuSponsorActivityGetSponsorActivityImplCopyWithImpl<$Res>;
+abstract class _$$AvnuSponsorActivityResultImplCopyWith<$Res> {
+  factory _$$AvnuSponsorActivityResultImplCopyWith(
+          _$AvnuSponsorActivityResultImpl value,
+          $Res Function(_$AvnuSponsorActivityResultImpl) then) =
+      __$$AvnuSponsorActivityResultImplCopyWithImpl<$Res>;
   @useResult
   $Res call(
       {String name,
@@ -142,13 +139,13 @@ abstract class _$$AvnuSponsorActivityGetSponsorActivityImplCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$AvnuSponsorActivityGetSponsorActivityImplCopyWithImpl<$Res>
+class __$$AvnuSponsorActivityResultImplCopyWithImpl<$Res>
     extends _$AvnuSponsorActivityCopyWithImpl<$Res,
-        _$AvnuSponsorActivityGetSponsorActivityImpl>
-    implements _$$AvnuSponsorActivityGetSponsorActivityImplCopyWith<$Res> {
-  __$$AvnuSponsorActivityGetSponsorActivityImplCopyWithImpl(
-      _$AvnuSponsorActivityGetSponsorActivityImpl _value,
-      $Res Function(_$AvnuSponsorActivityGetSponsorActivityImpl) _then)
+        _$AvnuSponsorActivityResultImpl>
+    implements _$$AvnuSponsorActivityResultImplCopyWith<$Res> {
+  __$$AvnuSponsorActivityResultImplCopyWithImpl(
+      _$AvnuSponsorActivityResultImpl _value,
+      $Res Function(_$AvnuSponsorActivityResultImpl) _then)
       : super(_value, _then);
 
   /// Create a copy of AvnuSponsorActivity
@@ -165,7 +162,7 @@ class __$$AvnuSponsorActivityGetSponsorActivityImplCopyWithImpl<$Res>
     Object? gasFees = null,
     Object? remainingCredits = null,
   }) {
-    return _then(_$AvnuSponsorActivityGetSponsorActivityImpl(
+    return _then(_$AvnuSponsorActivityResultImpl(
       null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -204,9 +201,8 @@ class __$$AvnuSponsorActivityGetSponsorActivityImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$AvnuSponsorActivityGetSponsorActivityImpl
-    implements AvnuSponsorActivityGetSponsorActivity {
-  const _$AvnuSponsorActivityGetSponsorActivityImpl(
+class _$AvnuSponsorActivityResultImpl implements AvnuSponsorActivityResult {
+  const _$AvnuSponsorActivityResultImpl(
       this.name,
       this.succeededTxCount,
       this.revertedTxCount,
@@ -216,11 +212,10 @@ class _$AvnuSponsorActivityGetSponsorActivityImpl
       this.gasFees,
       this.remainingCredits,
       {final String? $type})
-      : $type = $type ?? 'getSponsorActivity';
+      : $type = $type ?? 'result';
 
-  factory _$AvnuSponsorActivityGetSponsorActivityImpl.fromJson(
-          Map<String, dynamic> json) =>
-      _$$AvnuSponsorActivityGetSponsorActivityImplFromJson(json);
+  factory _$AvnuSponsorActivityResultImpl.fromJson(Map<String, dynamic> json) =>
+      _$$AvnuSponsorActivityResultImplFromJson(json);
 
   @override
   final String name;
@@ -244,14 +239,14 @@ class _$AvnuSponsorActivityGetSponsorActivityImpl
 
   @override
   String toString() {
-    return 'AvnuSponsorActivity.getSponsorActivity(name: $name, succeededTxCount: $succeededTxCount, revertedTxCount: $revertedTxCount, txCount: $txCount, succeededGasFees: $succeededGasFees, revertedGasFees: $revertedGasFees, gasFees: $gasFees, remainingCredits: $remainingCredits)';
+    return 'AvnuSponsorActivity.result(name: $name, succeededTxCount: $succeededTxCount, revertedTxCount: $revertedTxCount, txCount: $txCount, succeededGasFees: $succeededGasFees, revertedGasFees: $revertedGasFees, gasFees: $gasFees, remainingCredits: $remainingCredits)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$AvnuSponsorActivityGetSponsorActivityImpl &&
+            other is _$AvnuSponsorActivityResultImpl &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.succeededTxCount, succeededTxCount) ||
                 other.succeededTxCount == succeededTxCount) &&
@@ -285,10 +280,9 @@ class _$AvnuSponsorActivityGetSponsorActivityImpl
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$AvnuSponsorActivityGetSponsorActivityImplCopyWith<
-          _$AvnuSponsorActivityGetSponsorActivityImpl>
-      get copyWith => __$$AvnuSponsorActivityGetSponsorActivityImplCopyWithImpl<
-          _$AvnuSponsorActivityGetSponsorActivityImpl>(this, _$identity);
+  _$$AvnuSponsorActivityResultImplCopyWith<_$AvnuSponsorActivityResultImpl>
+      get copyWith => __$$AvnuSponsorActivityResultImplCopyWithImpl<
+          _$AvnuSponsorActivityResultImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -302,10 +296,10 @@ class _$AvnuSponsorActivityGetSponsorActivityImpl
             String revertedGasFees,
             String gasFees,
             String remainingCredits)
-        getSponsorActivity,
-    required TResult Function(List<String> messages) error,
+        result,
+    required TResult Function(List<String> messages, String? revertError) error,
   }) {
-    return getSponsorActivity(name, succeededTxCount, revertedTxCount, txCount,
+    return result(name, succeededTxCount, revertedTxCount, txCount,
         succeededGasFees, revertedGasFees, gasFees, remainingCredits);
   }
 
@@ -321,11 +315,11 @@ class _$AvnuSponsorActivityGetSponsorActivityImpl
             String revertedGasFees,
             String gasFees,
             String remainingCredits)?
-        getSponsorActivity,
-    TResult? Function(List<String> messages)? error,
+        result,
+    TResult? Function(List<String> messages, String? revertError)? error,
   }) {
-    return getSponsorActivity?.call(name, succeededTxCount, revertedTxCount,
-        txCount, succeededGasFees, revertedGasFees, gasFees, remainingCredits);
+    return result?.call(name, succeededTxCount, revertedTxCount, txCount,
+        succeededGasFees, revertedGasFees, gasFees, remainingCredits);
   }
 
   @override
@@ -340,20 +334,13 @@ class _$AvnuSponsorActivityGetSponsorActivityImpl
             String revertedGasFees,
             String gasFees,
             String remainingCredits)?
-        getSponsorActivity,
-    TResult Function(List<String> messages)? error,
+        result,
+    TResult Function(List<String> messages, String? revertError)? error,
     required TResult orElse(),
   }) {
-    if (getSponsorActivity != null) {
-      return getSponsorActivity(
-          name,
-          succeededTxCount,
-          revertedTxCount,
-          txCount,
-          succeededGasFees,
-          revertedGasFees,
-          gasFees,
-          remainingCredits);
+    if (result != null) {
+      return result(name, succeededTxCount, revertedTxCount, txCount,
+          succeededGasFees, revertedGasFees, gasFees, remainingCredits);
     }
     return orElse();
   }
@@ -361,61 +348,55 @@ class _$AvnuSponsorActivityGetSponsorActivityImpl
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(AvnuSponsorActivityGetSponsorActivity value)
-        getSponsorActivity,
+    required TResult Function(AvnuSponsorActivityResult value) result,
     required TResult Function(AvnuSponsorActivityError value) error,
   }) {
-    return getSponsorActivity(this);
+    return result(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(AvnuSponsorActivityGetSponsorActivity value)?
-        getSponsorActivity,
+    TResult? Function(AvnuSponsorActivityResult value)? result,
     TResult? Function(AvnuSponsorActivityError value)? error,
   }) {
-    return getSponsorActivity?.call(this);
+    return result?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(AvnuSponsorActivityGetSponsorActivity value)?
-        getSponsorActivity,
+    TResult Function(AvnuSponsorActivityResult value)? result,
     TResult Function(AvnuSponsorActivityError value)? error,
     required TResult orElse(),
   }) {
-    if (getSponsorActivity != null) {
-      return getSponsorActivity(this);
+    if (result != null) {
+      return result(this);
     }
     return orElse();
   }
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$AvnuSponsorActivityGetSponsorActivityImplToJson(
+    return _$$AvnuSponsorActivityResultImplToJson(
       this,
     );
   }
 }
 
-abstract class AvnuSponsorActivityGetSponsorActivity
-    implements AvnuSponsorActivity {
-  const factory AvnuSponsorActivityGetSponsorActivity(
-          final String name,
-          final int succeededTxCount,
-          final int revertedTxCount,
-          final int txCount,
-          final String succeededGasFees,
-          final String revertedGasFees,
-          final String gasFees,
-          final String remainingCredits) =
-      _$AvnuSponsorActivityGetSponsorActivityImpl;
+abstract class AvnuSponsorActivityResult implements AvnuSponsorActivity {
+  const factory AvnuSponsorActivityResult(
+      final String name,
+      final int succeededTxCount,
+      final int revertedTxCount,
+      final int txCount,
+      final String succeededGasFees,
+      final String revertedGasFees,
+      final String gasFees,
+      final String remainingCredits) = _$AvnuSponsorActivityResultImpl;
 
-  factory AvnuSponsorActivityGetSponsorActivity.fromJson(
-          Map<String, dynamic> json) =
-      _$AvnuSponsorActivityGetSponsorActivityImpl.fromJson;
+  factory AvnuSponsorActivityResult.fromJson(Map<String, dynamic> json) =
+      _$AvnuSponsorActivityResultImpl.fromJson;
 
   String get name;
   int get succeededTxCount;
@@ -429,8 +410,7 @@ abstract class AvnuSponsorActivityGetSponsorActivity
   /// Create a copy of AvnuSponsorActivity
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$AvnuSponsorActivityGetSponsorActivityImplCopyWith<
-          _$AvnuSponsorActivityGetSponsorActivityImpl>
+  _$$AvnuSponsorActivityResultImplCopyWith<_$AvnuSponsorActivityResultImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
 
@@ -441,7 +421,7 @@ abstract class _$$AvnuSponsorActivityErrorImplCopyWith<$Res> {
           $Res Function(_$AvnuSponsorActivityErrorImpl) then) =
       __$$AvnuSponsorActivityErrorImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({List<String> messages});
+  $Res call({List<String> messages, String? revertError});
 }
 
 /// @nodoc
@@ -460,12 +440,17 @@ class __$$AvnuSponsorActivityErrorImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? messages = null,
+    Object? revertError = freezed,
   }) {
     return _then(_$AvnuSponsorActivityErrorImpl(
       null == messages
           ? _value._messages
           : messages // ignore: cast_nullable_to_non_nullable
               as List<String>,
+      freezed == revertError
+          ? _value.revertError
+          : revertError // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -473,7 +458,8 @@ class __$$AvnuSponsorActivityErrorImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$AvnuSponsorActivityErrorImpl implements AvnuSponsorActivityError {
-  const _$AvnuSponsorActivityErrorImpl(final List<String> messages,
+  const _$AvnuSponsorActivityErrorImpl(
+      final List<String> messages, this.revertError,
       {final String? $type})
       : _messages = messages,
         $type = $type ?? 'error';
@@ -489,12 +475,15 @@ class _$AvnuSponsorActivityErrorImpl implements AvnuSponsorActivityError {
     return EqualUnmodifiableListView(_messages);
   }
 
+  @override
+  final String? revertError;
+
   @JsonKey(name: 'runtimeType')
   final String $type;
 
   @override
   String toString() {
-    return 'AvnuSponsorActivity.error(messages: $messages)';
+    return 'AvnuSponsorActivity.error(messages: $messages, revertError: $revertError)';
   }
 
   @override
@@ -502,13 +491,15 @@ class _$AvnuSponsorActivityErrorImpl implements AvnuSponsorActivityError {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$AvnuSponsorActivityErrorImpl &&
-            const DeepCollectionEquality().equals(other._messages, _messages));
+            const DeepCollectionEquality().equals(other._messages, _messages) &&
+            (identical(other.revertError, revertError) ||
+                other.revertError == revertError));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(_messages));
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(_messages), revertError);
 
   /// Create a copy of AvnuSponsorActivity
   /// with the given fields replaced by the non-null parameter values.
@@ -531,10 +522,10 @@ class _$AvnuSponsorActivityErrorImpl implements AvnuSponsorActivityError {
             String revertedGasFees,
             String gasFees,
             String remainingCredits)
-        getSponsorActivity,
-    required TResult Function(List<String> messages) error,
+        result,
+    required TResult Function(List<String> messages, String? revertError) error,
   }) {
-    return error(messages);
+    return error(messages, revertError);
   }
 
   @override
@@ -549,10 +540,10 @@ class _$AvnuSponsorActivityErrorImpl implements AvnuSponsorActivityError {
             String revertedGasFees,
             String gasFees,
             String remainingCredits)?
-        getSponsorActivity,
-    TResult? Function(List<String> messages)? error,
+        result,
+    TResult? Function(List<String> messages, String? revertError)? error,
   }) {
-    return error?.call(messages);
+    return error?.call(messages, revertError);
   }
 
   @override
@@ -567,12 +558,12 @@ class _$AvnuSponsorActivityErrorImpl implements AvnuSponsorActivityError {
             String revertedGasFees,
             String gasFees,
             String remainingCredits)?
-        getSponsorActivity,
-    TResult Function(List<String> messages)? error,
+        result,
+    TResult Function(List<String> messages, String? revertError)? error,
     required TResult orElse(),
   }) {
     if (error != null) {
-      return error(messages);
+      return error(messages, revertError);
     }
     return orElse();
   }
@@ -580,8 +571,7 @@ class _$AvnuSponsorActivityErrorImpl implements AvnuSponsorActivityError {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(AvnuSponsorActivityGetSponsorActivity value)
-        getSponsorActivity,
+    required TResult Function(AvnuSponsorActivityResult value) result,
     required TResult Function(AvnuSponsorActivityError value) error,
   }) {
     return error(this);
@@ -590,8 +580,7 @@ class _$AvnuSponsorActivityErrorImpl implements AvnuSponsorActivityError {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(AvnuSponsorActivityGetSponsorActivity value)?
-        getSponsorActivity,
+    TResult? Function(AvnuSponsorActivityResult value)? result,
     TResult? Function(AvnuSponsorActivityError value)? error,
   }) {
     return error?.call(this);
@@ -600,8 +589,7 @@ class _$AvnuSponsorActivityErrorImpl implements AvnuSponsorActivityError {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(AvnuSponsorActivityGetSponsorActivity value)?
-        getSponsorActivity,
+    TResult Function(AvnuSponsorActivityResult value)? result,
     TResult Function(AvnuSponsorActivityError value)? error,
     required TResult orElse(),
   }) {
@@ -620,13 +608,15 @@ class _$AvnuSponsorActivityErrorImpl implements AvnuSponsorActivityError {
 }
 
 abstract class AvnuSponsorActivityError implements AvnuSponsorActivity {
-  const factory AvnuSponsorActivityError(final List<String> messages) =
+  const factory AvnuSponsorActivityError(
+          final List<String> messages, final String? revertError) =
       _$AvnuSponsorActivityErrorImpl;
 
   factory AvnuSponsorActivityError.fromJson(Map<String, dynamic> json) =
       _$AvnuSponsorActivityErrorImpl.fromJson;
 
   List<String> get messages;
+  String? get revertError;
 
   /// Create a copy of AvnuSponsorActivity
   /// with the given fields replaced by the non-null parameter values.

@@ -27,7 +27,7 @@ abstract class AvnuReadProvider {
   // Get the account rewards
   //
   // [Spec](https://doc.avnu.fi/avnu-paymaster/integration/api-references)
-  Future<AvnuAccountRewards> getAccountRewards(
+  Future<List<AvnuAccountRewards>> getAccountRewards(
       String address, String? sponsor, String? campaign, String? protocol);
 
   // Sets the API key for AVNU service
@@ -65,7 +65,14 @@ class AvnuJsonRpcReadProvider implements AvnuReadProvider {
   Future<AvnuGasTokenPrices> getGasTokenPrices() async {
     return callRpcEndpoint(
             nodeUri: nodeUri, method: 'paymaster_gas_token_prices')
-        .then((dynamic json) => AvnuGasTokenPrices.fromJson({'prices': json}));
+        .then((dynamic json) {
+      // Check if response contains an error
+      if (json is Map<String, dynamic> && json.containsKey('error')) {
+        return AvnuGasTokenPrices.fromJson(json);
+      }
+      // Otherwise, wrap prices in the expected format
+      return AvnuGasTokenPrices.fromJson({'prices': json});
+    });
   }
 
   @override
@@ -89,17 +96,14 @@ class AvnuJsonRpcReadProvider implements AvnuReadProvider {
   }
 
   @override
-  Future<AvnuAccountRewards> getAccountRewards(String address, String? sponsor,
-      String? campaign, String? protocol) async {
+  Future<List<AvnuAccountRewards>> getAccountRewards(String address,
+      String? sponsor, String? campaign, String? protocol) async {
     try {
       final dynamic json = await callRpcEndpoint(
           nodeUri: nodeUri,
           method: 'paymaster_get_account_rewards',
           params: [address, sponsor, campaign, protocol]);
-      if (json is List) {
-        return AvnuAccountRewards.fromJson({'rewards': json});
-      }
-      throw FormatException('Invalid response format: expected JSON array');
+      return AvnuAccountRewards.fromJsonList(json);
     } on FormatException catch (e) {
       throw FormatException(
           'Failed to parse account rewards response: ${e.message}');

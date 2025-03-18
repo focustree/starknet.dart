@@ -125,21 +125,29 @@ Future<dynamic> callRpcEndpoint(
   }
 
   final filteredBody = PythonicJsonEncoder(sortSymbol: false).convert(body);
+
   final response = httpMethod == 'get'
       ? await http.get(nodeUri, headers: headers)
       : await http.post(nodeUri, headers: headers, body: filteredBody);
 
+  dynamic jsonResponse; // Changed from var to explicit dynamic type
   try {
-    final jsonResponse = json.decode(response.body);
-
-    // Check if response is empty or malformed
-    if (jsonResponse == null) {
-      throw FormatException('Empty response received from server');
+    // Check for Too many requests
+    // As indicated in https://starknet.api.avnu.fi/webjars/swagger-ui/index.html
+    // 429 too many requests error is the only error without a body so
+    // we catch it here and return a json response with message field
+    if (response.statusCode == 429) {
+      // create a json response with message field
+      jsonResponse = {
+        'messages': ['Too many requests']
+      };
+    } else {
+      jsonResponse = json.decode(response.body);
     }
 
     // Only verify signature if public key is configured and ask-signature is true
     if (AvnuConfig.instance.publicKey != null &&
-        response.headers['ask-signature'] == 'true') {
+        headers['ask-signature'] == 'true') {
       // We always check for valid signature in the header
       final signatureParts = response.headers['signature']!.split(',');
       final signature = Signature(
@@ -156,12 +164,15 @@ Future<dynamic> callRpcEndpoint(
           messageHash: messageHash, signature: signature, publicKey: publicKey);
 
       if (!isValid) {
-        throw Exception('Invalid signature');
+        jsonResponse = {
+          'messages': ['Invalid signature']
+        };
       }
     }
-    return jsonResponse;
   } on FormatException catch (e) {
-    throw FormatException(
-        'Failed to parse server response: ${e.message}. Response body: ${response.body}');
+    jsonResponse = {
+      'messages': ['Failed to parse server response: ${e.message}']
+    };
   }
+  return jsonResponse;
 }

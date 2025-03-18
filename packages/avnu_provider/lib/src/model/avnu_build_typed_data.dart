@@ -7,51 +7,21 @@ part 'avnu_build_typed_data.g.dart';
 
 @freezed
 class AvnuBuildTypedData with _$AvnuBuildTypedData {
-  const factory AvnuBuildTypedData({
+  const factory AvnuBuildTypedData.result({
     required Map<String, List<AvnuTypeDefinition>> types,
     required String primaryType,
     required AvnuDomain domain,
     required AvnuMessage message,
-  }) = _AvnuBuildTypedData;
+  }) = AvnuBuildTypedDataResult;
+  const factory AvnuBuildTypedData.error(
+    List<String> messages,
+    String? revertError,
+  ) = AvnuBuildTypedDataError;
 
-  const AvnuBuildTypedData._();
-
-  factory AvnuBuildTypedData.fromJson(Map<String, dynamic> json) =>
-      _$AvnuBuildTypedDataFromJson(json);
-
-  TypedData toTypedData() {
-    final executionMessage = switch (domain.version) {
-      '1' =>
-        OutsideExecutionMessageV1.fromJson(jsonDecode(jsonEncode(message))),
-      '2' =>
-        OutsideExecutionMessageV2.fromJson(jsonDecode(jsonEncode(message))),
-      _ => throw ArgumentError(
-          'Unsupported execution message version',
-        ),
-    };
-    return TypedData(
-      types: types.map(
-        (key, value) => MapEntry(
-          key,
-          value
-              .map(
-                (e) => e.toTypedParameter(),
-              )
-              .toList(),
-        ),
-      ),
-      primaryType: primaryType,
-      domain: TypedDataDomain(
-        name: domain.name,
-        version: domain.version,
-        chainId: domain.chainId,
-        revision: domain.revision ?? '0',
-      ),
-      message: executionMessage.toJson(),
-    );
-  }
-
-  BigInt hash(Felt accountAddress) => toTypedData().hash(accountAddress);
+  factory AvnuBuildTypedData.fromJson(Map<String, Object?> json) =>
+      json.containsKey('messages')
+          ? AvnuBuildTypedDataError.fromJson(json)
+          : AvnuBuildTypedDataResult.fromJson(json);
 }
 
 @freezed
@@ -118,4 +88,40 @@ class AvnuCall with _$AvnuCall {
 
   factory AvnuCall.fromJson(Map<String, dynamic> json) =>
       _$AvnuCallFromJson(json);
+}
+
+extension AvnuBuildTypedDataExtension on AvnuBuildTypedDataResult {
+  TypedData toTypedData() {
+    final executionMessage = switch (domain.version) {
+      '1' =>
+        OutsideExecutionMessageV1.fromJson(jsonDecode(jsonEncode(message))),
+      '2' =>
+        OutsideExecutionMessageV2.fromJson(jsonDecode(jsonEncode(message))),
+      _ => throw ArgumentError(
+          'Unsupported execution message version',
+        ),
+    };
+    return TypedData(
+      types: types.map(
+        (key, value) => MapEntry(
+          key,
+          value
+              .map(
+                (e) => e?.toTypedParameter(),
+              )
+              .toList(),
+        ),
+      ),
+      primaryType: primaryType,
+      domain: TypedDataDomain(
+        name: domain.name,
+        version: domain.version,
+        chainId: domain.chainId,
+        revision: domain.revision ?? '0',
+      ),
+      message: executionMessage.toJson(),
+    );
+  }
+
+  BigInt hash(Felt accountAddress) => toTypedData().hash(accountAddress);
 }
