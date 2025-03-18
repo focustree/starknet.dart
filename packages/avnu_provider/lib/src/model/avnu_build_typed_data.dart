@@ -107,7 +107,7 @@ extension AvnuBuildTypedDataExtension on AvnuBuildTypedDataResult {
           key,
           value
               .map(
-                (e) => e?.toTypedParameter(),
+                (e) => e.toTypedParameter(),
               )
               .toList(),
         ),
