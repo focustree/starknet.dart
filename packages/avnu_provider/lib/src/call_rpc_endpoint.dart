@@ -146,7 +146,8 @@ Future<dynamic> callRpcEndpoint(
     }
 
     // Only verify signature if public key is configured and ask-signature is true
-    if (AvnuConfig.instance.publicKey != null &&
+    if (response.statusCode == 200 &&
+        AvnuConfig.instance.publicKey != null &&
         headers['ask-signature'] == 'true') {
       // We always check for valid signature in the header
       final signatureParts = response.headers['signature']!.split(',');
