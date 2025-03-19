@@ -1,16 +1,15 @@
 # Starknet Provider
 
 A Dart package for interacting with Starknet node using JSON-RPC, following the [Starknet JSON-RPC specification](https://github.com/starkware-libs/starknet-specs.git).
-
 [Package documentation](https://pub.dev/documentation/starknet_provider/latest/)
 
 ## Transaction support
 
-| Feature        | State              | Version |
-| -------------- | ------------------ | ------- |
-| invoke         | ✅                 | 0, 1, 3    |
-| declare        | ✅                 | 1, 2, 3    |
-| deploy_account | ✅                 | 1, 3       |
+| Feature        | State | Version |
+| -------------- | ----- | ------- |
+| invoke         | ✅    | 0, 1, 3 |
+| declare        | ✅    | 1, 2, 3 |
+| deploy_account | ✅    | 1, 3    |
 
 ## Supported JSON RPC methods
 
@@ -19,81 +18,51 @@ A Dart package for interacting with Starknet node using JSON-RPC, following the 
 ### Read methods
 
 Name of methods have been extracted from [starknet-specs](https://github.com/starkware-libs/starknet-specs.git) with the following command:
+
 ```bash
 jq .methods[].name ../starknet-specs/api/starknet_api_openrpc.json
 ```
-| Name                                       | Implemented  |              
-| ------------------------------------------ | ------------ |
-| starknet_specVersion                       | ❌           |
-| starknet_getBlockWithTxHashes              | ✅           |
-| starknet_getBlockWithTxs                   | ✅           |
-| starknet_getBlockWithReceipts              | ❌           |
-| starknet_getStateUpdate                    | ✅           |
-| starknet_getStorageAt                      | ✅           |
-| starknet_getTransactionStatus              | ❌           |
-| starknet_getTransactionByHash              | ✅           |
-| starknet_getTransactionByBlockIdAndIndex   | ✅           |
-| starknet_getTransactionReceipt             | ✅           |
-| starknet_getClass                          | ✅           |
-| starknet_getClassHashAt                    | ✅           |
-| starknet_getClassAt                        | ✅           |
-| starknet_getBlockTransactionCount          | ✅           |
-| starknet_call                              | ✅           |
-| starknet_estimateFee                       | ✅           |
-| starknet_estimateMessageFee                | ❌           |
-| starknet_blockNumber                       | ✅           |
-| starknet_blockHashAndNumber                | ✅           |
-| starknet_chainId                           | ✅           |
-| starknet_syncing                           | ✅           |
-| starknet_getEvents                         | ✅           |
-| starknet_getNonce                          | ✅           |
+
+| Name                                     | Implemented |
+| ---------------------------------------- | ----------- |
+| starknet_specVersion                     | ❌          |
+| starknet_getBlockWithTxHashes            | ✅          |
+| starknet_getBlockWithTxs                 | ✅          |
+| starknet_getBlockWithReceipts            | ✅          |
+| starknet_getStateUpdate                  | ✅          |
+| starknet_getStorageAt                    | ✅          |
+| starknet_getTransactionStatus            | ❌          |
+| starknet_getTransactionByHash            | ✅          |
+| starknet_getTransactionByBlockIdAndIndex | ✅          |
+| starknet_getTransactionReceipt           | ✅          |
+| starknet_getClass                        | ✅          |
+| starknet_getClassHashAt                  | ✅          |
+| starknet_getClassAt                      | ✅          |
+| starknet_getBlockTransactionCount        | ✅          |
+| starknet_call                            | ✅          |
+| starknet_estimateFee                     | ✅          |
+| starknet_estimateMessageFee              | ❌          |
+| starknet_blockNumber                     | ✅          |
+| starknet_blockHashAndNumber              | ✅          |
+| starknet_chainId                         | ✅          |
+| starknet_syncing                         | ✅          |
+| starknet_getEvents                       | ✅          |
+| starknet_getNonce                        | ✅          |
 
 ### Write methods
 
 Name of methods have been extracted from [starknet-specs](https://github.com/starkware-libs/starknet-specs.git) with the following command:
+
 ```bash
 jq .methods[].name ../starknet-specs/api/starknet_write_api.json
 ```
 
-| Name                                       | Implemented  |              
-|--------------------------------------------|--------------|
-| starknet_addInvokeTransaction              | ✅           |
-| starknet_addDeclareTransaction             | ✅           |
-| starknet_addDeployAccountTransaction       | ✅           |
+| Name                                 | Implemented |
+| ------------------------------------ | ----------- |
+| starknet_addInvokeTransaction        | ✅          |
+| starknet_addDeclareTransaction       | ✅          |
+| starknet_addDeployAccountTransaction | ✅          |
 
-
-## Usage
 ### Call read-only method
 
-```dart
-import 'package:starknet/starknet.dart';
-
-void main() async {
-  final provider = JsonRpcProvider.infuraGoerliTestnet;
-  final accountAddress = Felt.fromHexString(
-      '0x046a1aa85bb0e68cd29fadbc81791208ddebee17886f075935e5b72f4aa898aa');
-  final ethContractAddress = Felt.fromHexString(
-      '0x049d36570d4e46f48e99674bd3fcc84644ddd6b96f7c741b1562b82f9e004dc7');
-  final ethDecimals = 18;
-
-  final response = await provider.call(
-    request: FunctionCall(
-      contractAddress: ethContractAddress,
-      entryPointSelector: getSelectorByName('balanceOf'),
-      calldata: [accountAddress],
-    ),
-    blockId: BlockId.blockTag("latest"),
-  );
-
-  response.when(
-    error: (error) {
-      throw Exception(error);
-    },
-    result: (result) {
-      final ethBalance = Uint256.fromFeltList(result).toBigInt() /
-          BigInt.from(10).pow(ethDecimals);
-      print("ETH balance: ${ethBalance}"); // ETH balance: 8.142616847371661
-    },
-  );
-}
-```
+- `starknet_getBlockWithReceipts`: Retrieves block information with transaction receipts. Returns `BlockWithReceipts` with optional fields. Note: Devnet may return null fields for invalid block IDs instead of throwing `BLOCK_NOT_FOUND`.
