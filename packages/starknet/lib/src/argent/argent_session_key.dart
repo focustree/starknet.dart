@@ -1,3 +1,5 @@
+import 'package:bip39/bip39.dart' as bip39;
+
 import '../crypto/index.dart';
 import '../signer/index.dart';
 import '../snip/snip9/outside_execution.dart';
@@ -26,8 +28,8 @@ class ArgentSessionKey {
     required this.expiresAt,
     required this.chainId,
   }) {
-    // FIXME: generate a random private key
-    appSigner = StarkSigner(privateKey: Felt.fromHexString('0x415051'));
+    final mnemonic = bip39.generateMnemonic();
+    appSigner = StarkSigner(privateKey: derivePrivateKey(mnemonic: mnemonic));
     _offChainSession = OffChainSession(
       expiresAt: expiresAt,
       allowedMethods: allowedMethods
