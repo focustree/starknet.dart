@@ -77,7 +77,7 @@ class ArgentXGuardianAccountSigner extends BaseAccountSigner {
   Future<List<Felt>> sign(BigInt messageHash, BigInt? seed) async {
     final signatures = await Future.wait([
       _ownerSigner.sign(messageHash, seed),
-      if (_guardianSigner != null) _guardianSigner!.sign(messageHash, seed),
+      if (_guardianSigner != null) _guardianSigner.sign(messageHash, seed),
     ]);
     final ownerPart = [
       _ownerSigner.signerType.toFelt(),

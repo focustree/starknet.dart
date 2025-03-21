@@ -1,4 +1,6 @@
-import 'package:avnu_provider/avnu_provider.dart';
+import 'avnu_config.dart';
+import 'call_rpc_endpoint.dart';
+import 'model/index.dart';
 
 abstract class AvnuProvider {
   // Build the data type for the account
