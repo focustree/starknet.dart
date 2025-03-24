@@ -2,6 +2,7 @@ import 'package:starknet/starknet.dart';
 import 'package:avnu_provider/avnu_provider.dart';
 import 'package:test/test.dart';
 import 'dart:convert';
+import 'package:starknet_provider/starknet_provider.dart';
 
 import '../utils.dart';
 
@@ -34,6 +35,9 @@ void main() {
     final sepoliaAccount0 = getAccount(
       accountAddress: sepoliaAccount0Address,
       privateKey: sepoliaAccount0PrivateKey,
+      nodeUri:
+          Uri.parse('https://starknet-sepolia.public.blastapi.io/rpc/v0_7'),
+      chainId: Felt.fromString('SN_SEPOLIA'),
     );
 
     setUp(() {
@@ -59,9 +63,30 @@ void main() {
             ]
           }
         ];
+
+        final functionCalls = calls
+            .map((call) => FunctionCall(
+                  contractAddress:
+                      Felt.fromHexString(call['contractAddress'] as String),
+                  entryPointSelector:
+                      getSelectorByName(call['entrypoint'] as String),
+                  calldata: (call['calldata'] as List<String>)
+                      .map((data) => Felt.fromHexString(data))
+                      .toList(),
+                ))
+            .toList();
+
         final gasTokenAddress =
             '0x4718f5a0fc34cc1af16a1cdee98ffb20c31f5cd61d6ab07201858f4287c938d';
-        final maxGasTokenAmount = '0xFC3F02C221B000';
+        // Get maxFee as hex string
+        final maxGasTokenAmount =
+            (await sepoliaAccount0.getEstimateMaxFeeForInvokeTx(
+          functionCalls: functionCalls,
+          useSTRKFee: true,
+        ))
+                .maxFee
+                .toHexString();
+
         //just for testing, we hardcode the account class hash to the ArgentX account class hash
         //in a real scenario, we would get the account class hash from the Starknetprovider
         final accountClassHash =
@@ -326,6 +351,9 @@ void main() {
     final sepoliaAccount0 = getAccount(
       accountAddress: sepoliaAccount0Address,
       privateKey: sepoliaAccount0PrivateKey,
+      nodeUri:
+          Uri.parse('https://starknet-sepolia.public.blastapi.io/rpc/v0_7'),
+      chainId: Felt.fromString('SN_SEPOLIA'),
     );
 
     setUpAll(() {
@@ -352,6 +380,8 @@ void main() {
       ];
       final gasTokenAddress =
           '0x4718f5a0fc34cc1af16a1cdee98ffb20c31f5cd61d6ab07201858f4287c938d';
+      // we set a fix amount of gas to be paid for the transaction just for testing
+      // invalid contractAddress error.
       final maxGasTokenAmount = '0xFC3F02C221B000';
       //just for testing, we hardcode the account class hash to the ArgentX account class hash
       //in a real scenario, we would get the account class hash from the Starknetprovider
@@ -383,9 +413,27 @@ void main() {
           ]
         }
       ];
+      final functionCalls = calls
+          .map((call) => FunctionCall(
+                contractAddress:
+                    Felt.fromHexString(call['contractAddress'] as String),
+                entryPointSelector:
+                    getSelectorByName(call['entrypoint'] as String),
+                calldata: (call['calldata'] as List<String>)
+                    .map((data) => Felt.fromHexString(data))
+                    .toList(),
+              ))
+          .toList();
       final gasTokenAddress =
           '0x4718f5a0fc34cc1af16a1cdee98ffb20c31f5cd61d6ab07201858f4287c938d';
-      final maxGasTokenAmount = '0xFC3F02C221B000';
+      // Get maxFee as hex string
+      final maxGasTokenAmount =
+          (await sepoliaAccount0.getEstimateMaxFeeForInvokeTx(
+        functionCalls: functionCalls,
+        useSTRKFee: true,
+      ))
+              .maxFee
+              .toHexString();
       //just for testing, we hardcode the account class hash to the ArgentX account class hash
       //in a real scenario, we would get the account class hash from the Starknetprovider
       final accountClassHash =
