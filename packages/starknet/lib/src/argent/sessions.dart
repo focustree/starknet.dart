@@ -254,7 +254,6 @@ extension on List<Felt> {
 extension on List<List<Felt>> {
   List<Felt> toCalldata() {
     final a = map((e) => e.toCalldata()).toList();
-    // print(a);
     return [
       Felt.fromInt(length),
       ...a.expand((list) => list),

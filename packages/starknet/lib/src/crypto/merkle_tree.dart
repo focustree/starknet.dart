@@ -39,7 +39,8 @@ BigInt computeMerkleTreeRoot(
 /// Merkle tree implementation
 /// https://en.wikipedia.org/wiki/Merkle_tree
 ///
-///
+/// This class implements a Merkle tree data structure for cryptographic verification.
+/// It supports building a tree, generating proofs, and verifying proofs.
 class MerkleTree {
   final List<BigInt> _leaves;
   final BigInt Function(BigInt, BigInt) _hashFunction;
@@ -66,8 +67,13 @@ class MerkleTree {
       for (var i = 0; i < currentLayer.length; i += 2) {
         if (i + 1 < currentLayer.length) {
           // Sort the pair to ensure consistent hashing
-          final pair = [currentLayer[i], currentLayer[i + 1]]..sort();
-          nextLayer.add(_hashFunction(pair[0], pair[1]));
+          final first = currentLayer[i];
+          final second = currentLayer[i + 1];
+          if (first <= second) {
+            nextLayer.add(_hashFunction(first, second));
+          } else {
+            nextLayer.add(_hashFunction(second, first));
+          }
         } else {
           // Handle odd number of elements
           nextLayer.add(_hashFunction(BigInt.zero, currentLayer[i]));
