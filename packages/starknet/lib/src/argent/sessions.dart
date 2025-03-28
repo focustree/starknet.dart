@@ -230,10 +230,14 @@ class SessionToken with _$SessionToken {
   }
 }
 
+// ignore: constant_identifier_names
+const STARKNET_SIGNER_HEX =
+    '0x537461726b6e6574205369676e6572'; // 'Starknet Signer'
+
 extension StarkSignerGUID on StarkSigner {
   BigInt keyGuid() {
     return poseidonHasher.hash(
-      BigInt.parse('0x537461726b6e6574205369676e6572'), // 'Starknet Signer'
+      BigInt.parse(STARKNET_SIGNER_HEX), // 'Starknet Signer'
       publicKey.toBigInt(),
     );
   }
