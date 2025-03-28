@@ -69,7 +69,7 @@ class AllowedMethod with _$AllowedMethod {
   }
 }
 
-BigInt methodMerkleLeaft(Felt contractAddress, Felt selector) {
+BigInt methodMerkleLeaf(Felt contractAddress, Felt selector) {
   return poseidonHasher.hashMany([
     ALLOWED_METHOD_HASH_REV_1.toBigInt(),
     contractAddress.toBigInt(),

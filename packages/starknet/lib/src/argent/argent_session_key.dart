@@ -86,7 +86,7 @@ class ArgentSessionKey {
     final proofs = message.calls.map((call) {
       return _merkleTree
           .getProof(
-            methodMerkleLeaft(
+            methodMerkleLeaf(
               Felt.fromHexString(call.to),
               call.selector.startsWith('0x')
                   ? Felt.fromHexString(call.selector)
