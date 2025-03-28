@@ -250,6 +250,10 @@ extension on List<Felt> {
 
 extension on List<List<Felt>> {
   List<Felt> toCalldata() {
+    if (isEmpty) {
+      return [Felt.zero];
+    }
+
     final a = map((e) => e.toCalldata()).toList();
     return [
       Felt.fromInt(length),
