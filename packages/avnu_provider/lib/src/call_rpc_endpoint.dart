@@ -1,7 +1,8 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
+
 import 'package:starknet/starknet.dart';
-import 'package:avnu_provider/src/avnu_config.dart';
+import './avnu_config.dart';
 
 Future<dynamic> callRpcEndpoint(
     {required Uri nodeUri, required String method, Object? params}) async {
@@ -145,7 +146,8 @@ Future<dynamic> callRpcEndpoint(
     }
 
     // Only verify signature if public key is configured and ask-signature is true
-    if (AvnuConfig.instance.publicKey != null &&
+    if (response.statusCode == 200 &&
+        AvnuConfig.instance.publicKey != null &&
         headers['ask-signature'] == 'true') {
       // We always check for valid signature in the header
       final signatureParts = response.headers['signature']!.split(',');

@@ -41,6 +41,14 @@ void main() async {
       unit: 'WEI',
     ),
   );
+  await Devnet.mintTransaction(
+    devnetUri,
+    MintRequest(
+      address: accountAddress.toHexString(),
+      amount: pow(10, 18) as int,
+      unit: 'FRI',
+    ),
+  );
   final balance = (await provider.call(
     request: FunctionCall(
       contractAddress: ethAddress,
