@@ -70,11 +70,10 @@ class AllowedMethod with _$AllowedMethod {
 }
 
 BigInt methodMerkleLeaf(Felt contractAddress, Felt selector) {
-  return poseidonHasher.hashMany([
-    ALLOWED_METHOD_HASH_REV_1.toBigInt(),
-    contractAddress.toBigInt(),
-    selector.toBigInt(),
-  ]);
+  return AllowedMethod(
+    contractAddress: contractAddress,
+    selector: selector,
+  ).getMerkleLeaf();
 }
 
 @freezed
@@ -150,7 +149,7 @@ class OffChainSession with _$OffChainSession {
       BigInt.from(expiresAt),
       merkleTree().root,
       _metadataHash(),
-      BigInt.parse(sessionKeyGuid),
+      Felt.fromHexString(sessionKeyGuid).toBigInt(),
     ]);
   }
 }
@@ -227,8 +226,6 @@ class SessionToken with _$SessionToken {
       ...sessionSignature,
       ...guardianSignature,
       ...proofs.toCalldata(),
-      // Felt.fromInt(proofs.length),
-      //...proofs.map((p) => []),
     ];
   }
 }

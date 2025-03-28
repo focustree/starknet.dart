@@ -2,38 +2,8 @@ BigInt computeMerkleTreeRoot(
   List<BigInt> leaves,
   BigInt Function(BigInt, BigInt) hashFunction,
 ) {
-  List<BigInt> newLeaves = [];
-
-  // No element, so we return 0
-  if (leaves.isEmpty) {
-    return BigInt.zero;
-  }
-
-  // Process the leaves in chunks of 2
-  for (var i = 0; i < leaves.length; i += 2) {
-    if (i + 1 < leaves.length) {
-      // If we have two elements
-      final first = leaves[i];
-      final second = leaves[i + 1];
-
-      if (first <= second) {
-        newLeaves.add(hashFunction(first, second));
-      } else {
-        newLeaves.add(hashFunction(second, first));
-      }
-    } else {
-      // If we have a single element (odd number of elements)
-      newLeaves.add(hashFunction(BigInt.zero, leaves[i]));
-    }
-  }
-
-  // Base case: if we have only one element left, it's the root
-  if (newLeaves.length == 1) {
-    return newLeaves[0];
-  } else {
-    // Recursive case: compute the merkle root of the new leaves
-    return computeMerkleTreeRoot(newLeaves, hashFunction);
-  }
+  final tree = MerkleTree(leaves: leaves, hashFunction: hashFunction);
+  return tree.root;
 }
 
 /// Merkle tree implementation
@@ -52,6 +22,11 @@ class MerkleTree {
     required BigInt Function(BigInt, BigInt) hashFunction,
   })  : _leaves = leaves,
         _hashFunction = hashFunction {
+    if (_leaves.isEmpty) {
+      _layers = [[]];
+      _root = BigInt.zero;
+      return;
+    }
     _layers = [List.from(_leaves)]; // Start with the leaves
     _buildTree();
   }
@@ -89,6 +64,11 @@ class MerkleTree {
   }
 
   List<BigInt> getProof(BigInt leaf) {
+    // Handle empty tree case
+    if (_layers.isEmpty || _layers[0].isEmpty) {
+      throw ArgumentError('Cannot generate proof: tree is empty');
+    }
+
     // Find the leaf in the bottom layer
     var index = _layers[0].indexOf(leaf);
     if (index == -1) {
@@ -120,6 +100,10 @@ class MerkleTree {
 
   // Helper method to verify a proof
   bool verifyProof(BigInt leaf, List<BigInt> proof) {
+    if (_layers.length > 1 && proof.isEmpty) {
+      return false; // For a non-trivial tree, proof shouldn't be empty
+    }
+
     var currentHash = leaf;
 
     for (final sibling in proof) {
