@@ -27,9 +27,15 @@ class ArgentSessionKey {
     required this.metadata,
     required this.expiresAt,
     required this.chainId,
+    StarkSigner? appSigner,
   }) {
-    final mnemonic = bip39.generateMnemonic();
-    appSigner = StarkSigner(privateKey: derivePrivateKey(mnemonic: mnemonic));
+    if (appSigner != null) {
+      this.appSigner = appSigner;
+    } else {
+      final mnemonic = bip39.generateMnemonic();
+      this.appSigner =
+          StarkSigner(privateKey: derivePrivateKey(mnemonic: mnemonic));
+    }
     _offChainSession = OffChainSession(
       expiresAt: expiresAt,
       allowedMethods: allowedMethods
@@ -41,7 +47,7 @@ class ArgentSessionKey {
           )
           .toList(),
       metadata: metadata,
-      sessionKeyGuid: Felt(appSigner.keyGuid()).toHexString(),
+      sessionKeyGuid: Felt(this.appSigner.keyGuid()).toHexString(),
     );
     _onChainSession = _offChainSession.toOnChainSession();
     _merkleTree = _offChainSession.merkleTree();
