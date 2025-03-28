@@ -79,7 +79,7 @@ class OutsideExecutionMessageV1
     required String nonce,
     required String executeAfter,
     required String executeBefore,
-    required String callsLen,
+    required String callsLen, // required by SNIP-9
     required List<OutsideExecutionCallV1> calls,
   }) = _OutsideExecutionMessageV1;
 
