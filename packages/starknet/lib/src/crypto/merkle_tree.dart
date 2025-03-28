@@ -4,6 +4,11 @@ BigInt computeMerkleTreeRoot(
 ) {
   List<BigInt> newLeaves = [];
 
+  // No element, so we return 0
+  if (leaves.isEmpty) {
+    return BigInt.zero;
+  }
+
   // Process the leaves in chunks of 2
   for (var i = 0; i < leaves.length; i += 2) {
     if (i + 1 < leaves.length) {
