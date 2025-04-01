@@ -30,6 +30,12 @@ abstract class AvnuProvider {
       String expirationDate,
       List<Map<String, String>> whitelistedCalls);
 
+  /// Deploy an account
+  ///
+  /// [Spec](https://starknet.api.avnu.fi/webjars/swagger-ui/index.html#/Paymaster/deployAccount_1)
+  Future<AvnuDeployAccountResponse> deployAccount(
+      AvnuDeployAccountRequest request);
+
   // Sets the API key for AVNU service
   void setApiKey(String apiKey);
 }
@@ -114,5 +120,20 @@ class AvnuJsonRpcProvider implements AvnuProvider {
         whitelistedCalls
       ],
     ).then((dynamic json) => AvnuAccountRewards.fromJson(json));
+  }
+
+  @override
+  Future<AvnuDeployAccountResponse> deployAccount(
+      AvnuDeployAccountRequest request) async {
+    final apiKey = AvnuConfig.instance.apiKey ?? '';
+    final payload = await callRpcEndpoint(
+      nodeUri: nodeUri,
+      method: 'paymaster_deploy_account',
+      params: {
+        'apiKey': apiKey,
+        'request': request,
+      },
+    );
+    return AvnuDeployAccountResponse.fromJson(payload);
   }
 }

@@ -337,6 +337,45 @@ void main() {
         );
       });
     });
+
+    group('deploy account', () {
+      test('Try to deploy an already deploy account', () async {
+        final accountAddress =
+            '0x4fb89a10f6b0ecd2a5786e8b70ec76d23fda9777c1da5d66651f8a2630d22dc';
+        final publicKey =
+            '0x7284c7aeca26e64f1736875edbfc427d553d66f1342fd0392fa0831f07b4054';
+        final deploymentData = AvnuDeploymentData(
+          classHash:
+              '0x36078334509b514626504edc9fb252328d1a240e4e948bef8d0c08dff45927f',
+          salt: publicKey,
+          unique: '0x0',
+          calldata: [
+            '0x0',
+            publicKey,
+            '0x0',
+            '0x0',
+            '0xab081a04aa836aff73963003892e6403a3a1f229b68bc5cc9739b918910871'
+          ],
+          sigdata: [],
+        );
+        final avnuDeploy =
+            await avnuProvider.deployAccount(AvnuDeployAccountRequest(
+          userAddress: accountAddress,
+          deploymentData: deploymentData,
+        ));
+        expect(
+          avnuDeploy,
+          isA<AvnuDeployAccountError>(),
+          reason: 'Should fail: account is already deployed',
+        );
+        final error = avnuDeploy as AvnuDeployAccountError;
+        expect(
+          error.revertError,
+          contains('contract already deployed at address'),
+          reason: 'Revert error should contained: contract already deployed',
+        );
+      });
+    });
   }, tags: ['integration'], timeout: Timeout(Duration(minutes: 1)));
   group('AvnuProviderUnitTests', () {
     late AvnuProvider avnuProvider;

@@ -3,6 +3,7 @@ import 'package:http/http.dart' as http;
 
 import 'package:starknet/starknet.dart';
 import './avnu_config.dart';
+import 'model/index.dart';
 
 Future<dynamic> callRpcEndpoint(
     {required Uri nodeUri, required String method, Object? params}) async {
@@ -120,6 +121,23 @@ Future<dynamic> callRpcEndpoint(
         'whitelistedCalls': whitelistedCalls
       };
       break;
+    case 'paymaster_deploy_account':
+      httpMethod = 'post';
+      headers['accept'] = 'application/json';
+      headers['content-type'] = 'application/json';
+
+      final paramsData = params as Map<String, dynamic>;
+      if (paramsData['apiKey'] != '') {
+        headers['api-key'] = paramsData['apiKey'].toString();
+      }
+      nodeUri = nodeUri.replace(path: '/paymaster/v1/deploy-account');
+      final request = paramsData['request'] as AvnuDeployAccountRequest;
+      body = {
+        'userAddress': request.userAddress,
+        'deploymentData': request.deploymentData.toJson(),
+      };
+      break;
+
     default:
       throw Exception('Method not supported');
   }
