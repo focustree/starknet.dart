@@ -391,21 +391,37 @@ void main() {
           transactionHash: result.transactionHash,
           provider: provider,
         );
+
         // to ensure public node is updated
-        await Future<void>.delayed(Duration(seconds: 30));
-        final classHashAt = await provider.getClassHashAt(
-          contractAddress: accountAddress,
-          blockId: BlockId.latest,
-        );
-        classHashAt.when(result: (result) {
-          expect(
-            result,
-            equals(classHash),
-            reason: 'Class hash should be the same',
-          );
-        }, error: (error) {
-          fail('Contract should be deployed: $error');
-        });
+        final maxRetries = 10;
+        var retries = 0;
+        bool classHashVerified = false;
+
+        while (retries < maxRetries && !classHashVerified) {
+          try {
+            final classHashResult = await provider.getClassHashAt(
+              contractAddress: accountAddress,
+              blockId: BlockId.latest,
+            );
+
+            classHashResult.when(
+              result: (result) {
+                if (result == classHash) {
+                  classHashVerified = true;
+                }
+              },
+              error: (_) {},
+            );
+          } catch (_) {}
+
+          if (!classHashVerified) {
+            retries++;
+            await Future<void>.delayed(Duration(seconds: 5));
+          }
+        }
+
+        expect(classHashVerified, isTrue,
+            reason: 'Class hash verification timed out');
       });
       test('Try to deploy an already deploy account', () async {
         final accountAddress =
