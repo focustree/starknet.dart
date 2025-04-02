@@ -29,9 +29,10 @@ Of course, this framework is just the beginning - we encourage developers to lev
 
 ## II. Functions.
 
+### Sponsor functions
 As a Sponsor, you will be able to use the following functions:
 
-### 1) `checkAccountCompatible(String address);`
+#### 1) `checkAccountCompatible(String address);`
 Check if the account address is compatible with the AVNU gasless service. Currently, the following class hashes are supported ( for an updated list, check the [API reference](https://doc.avnu.fi/avnu-paymaster/integration/guides-and-examples)):
 
 - 0x01a736d6ed154502257f02b1ccdf4d9d1089f80811cd6acad48e6b6a9d1f2003 (ArgentX)
@@ -42,7 +43,7 @@ Check if the account address is compatible with the AVNU gasless service. Curren
 Arguments:
 - `address`: The account address to check.
 
-### 2) `setAccountRewards(String address, String campaign, String protocol, int freeTx, String expirationDate, List<Map<String, String>> whitelistedCalls)`
+#### 2) `setAccountRewards(String address, String campaign, String protocol, int freeTx, String expirationDate, List<Map<String, String>> whitelistedCalls)`
 Set rewards to an account address.
 
 Arguments:
@@ -53,22 +54,48 @@ Arguments:
 - `expirationDate`: The expiration date of the rewards.
 - `whitelistedCalls`: The list of whitelisted contracts adresses and/or functions (* as wildcard).
 
-### 3) `getSponsorActivity(String startDate, String endDate);`
+#### 3) `getSponsorActivity(String startDate, String endDate);`
 Get the sponsor activity of the account.
 
 Arguments:
 - `startDate`: The start date of the activity.
 - `endDate`: The end date of the activity (max diff between startDate and endDate is 7 days).
 
-### 4) `setApiKey(String apiKey);`
+#### 4) `setApiKey(String apiKey);`
 Sets the API key for AVNU service.
 
 Arguments:
 - `apiKey`: The API key established with Avnu admins.    
 
+#### 5) `deployAccount(AvnuDeployAccountRequest request);`
+
+Deploy an account using the given request.
+
+##### AvnuDeployAccountRequest
+Represents the request payload for the account deployment API endpoint.
+
+| Property         | Type                 | Description                                |
+|------------------|----------------------|--------------------------------------------|
+| `userAddress`    | `String`            | The address of the user requesting deployment |
+| `deploymentData` | `AvnuDeploymentData` | The deployment parameters                  |
+
+##### AvnuDeploymentData
+Stores the necessary parameters for deploying a StarkNet account.
+
+| Property     | Type           | Description                                          |
+|--------------|----------------|------------------------------------------------------|
+| `classHash`  | `String`       | The class hash of the account contract               |
+| `salt`       | `String`       | Random value used to derive the account address      |
+| `unique`     | `String`       | Field used to ensure uniqueness for the deployment   |
+| `calldata`   | `List<String>` | Constructor arguments for the account contract       |
+| `sigdata`    | `List<String>` | Signature data for the deployment transaction        |
+
+
+
+### User functions
 As a user (without API key), you will be able to use the following functions:
 
-### 1) `buildTypedData(String userAddress, List<Map<String, dynamic>> calls, String gasTokenAddress, String maxGasTokenAmount, String accountClassHash)`
+#### 1) `buildTypedData(String userAddress, List<Map<String, dynamic>> calls, String gasTokenAddress, String maxGasTokenAmount, String accountClassHash)`
 Prepare and build a typed data to execute a transaction (mandatory step previous to execute a transaction).
 
 Arguments:
@@ -78,7 +105,7 @@ Arguments:
 - `maxGasTokenAmount`: The max gas token amount. (Optional, this must be excluded if you want to use your rewards)
 - `accountClassHash`: The account class hash.
 
-### 2) `execute(String userAddress, String typedData, List<String> signature, Map<dynamic, dynamic>? deploymentData);`
+#### 2) `execute(String userAddress, String typedData, List<String> signature, Map<dynamic, dynamic>? deploymentData);`
 Execute transactions.
 
 Arguments:
@@ -87,15 +114,15 @@ Arguments:
 - `signature`: The type data signature (as indicated in SNIP-12).
 - `deploymentData`: The deployment data. Currently unused, reserved for future gasless account deployment compatibility.
 
-Common functions:
+### Common functions
 
-### 1) `avnuStatus();`
+#### 1) `avnuStatus();`
 Get the AVNU service status.
 
 Arguments:
 - `None`.
 
-### 2) `getGasTokenPrices();`
+#### 2) `getGasTokenPrices();`
 Get the AVNU gas token prices.
 
 Arguments:
