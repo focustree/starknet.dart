@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:starknet/starknet.dart';
 import 'package:avnu_provider/avnu_provider.dart';
 import 'package:test/test.dart';
@@ -339,6 +341,68 @@ void main() {
     });
 
     group('deploy account', () {
+      test('Deploy an account', () async {
+        final guardianPublicKey = Felt.fromHexString(
+          '0xab081a04aa836aff73963003892e6403a3a1f229b68bc5cc9739b918910871',
+        );
+        // generate a new private key (not cryptographically secure)
+        // only for testing purpose
+        final randomValue = Random().nextInt(1 << 32);
+        final ownerSigner = StarkSigner(privateKey: Felt.fromInt(randomValue));
+        final classHash = Felt.fromHexString(
+            '0x36078334509b514626504edc9fb252328d1a240e4e948bef8d0c08dff45927f');
+        final calldata = [
+          Felt.zero,
+          ownerSigner.publicKey,
+          Felt.zero,
+          Felt.zero,
+          guardianPublicKey,
+        ];
+        final salt = ownerSigner.publicKey;
+        final accountAddress = Contract.computeAddress(
+          classHash: classHash,
+          calldata: calldata,
+          salt: salt,
+        );
+        final deploymentData = AvnuDeploymentData(
+          classHash: classHash.toHexString(),
+          salt: ownerSigner.publicKey.toHexString(),
+          unique: Felt.zero.toHexString(),
+          calldata: calldata.map((e) => e.toHexString()).toList(),
+          sigdata: [],
+        );
+        final avnuDeploy =
+            await avnuProvider.deployAccount(AvnuDeployAccountRequest(
+          userAddress: accountAddress.toHexString(),
+          deploymentData: deploymentData,
+        ));
+        expect(avnuDeploy, isA<AvnuDeployAccountResult>(),
+            reason: 'Should be a successful deployment');
+        final result = avnuDeploy as AvnuDeployAccountResult;
+        expect(
+          result.transactionHash,
+          isNotNull,
+          reason: 'Transaction hash should not be null',
+        );
+        print('AVNU Transaction hash: ${result.transactionHash}');
+        print('Account address: ${accountAddress.toHexString()}');
+        final provider = sepoliaAccount0.provider;
+        await waitForAcceptance(
+          transactionHash: result.transactionHash,
+          provider: provider,
+        );
+        // to ensure public node is updated
+        await Future<void>.delayed(Duration(seconds: 20));
+        final classAt = await provider.getClassAt(
+          contractAddress: accountAddress,
+          blockId: BlockId.latest,
+        );
+        classAt.when(
+            result: (result) {},
+            error: (error) {
+              fail('Contract should be deployed: $error');
+            });
+      });
       test('Try to deploy an already deploy account', () async {
         final accountAddress =
             '0x4fb89a10f6b0ecd2a5786e8b70ec76d23fda9777c1da5d66651f8a2630d22dc';
