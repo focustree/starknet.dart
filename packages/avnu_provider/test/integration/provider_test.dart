@@ -392,16 +392,20 @@ void main() {
           provider: provider,
         );
         // to ensure public node is updated
-        await Future<void>.delayed(Duration(seconds: 20));
-        final classAt = await provider.getClassAt(
+        await Future<void>.delayed(Duration(seconds: 30));
+        final classHashAt = await provider.getClassHashAt(
           contractAddress: accountAddress,
           blockId: BlockId.latest,
         );
-        classAt.when(
-            result: (result) {},
-            error: (error) {
-              fail('Contract should be deployed: $error');
-            });
+        classHashAt.when(result: (result) {
+          expect(
+            result,
+            equals(classHash),
+            reason: 'Class hash should be the same',
+          );
+        }, error: (error) {
+          fail('Contract should be deployed: $error');
+        });
       });
       test('Try to deploy an already deploy account', () async {
         final accountAddress =
