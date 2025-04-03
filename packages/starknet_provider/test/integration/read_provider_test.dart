@@ -1127,5 +1127,34 @@ void main() {
         );
       });
     });
-  }, tags: ['integration']);
+
+    group('starknet_specVersion', () {
+      test('check spec version from Blast public server', () async {
+        final blastUri = {
+          '0.6': 'https://starknet-sepolia.public.blastapi.io/rpc/v0_6',
+          '0.7': 'https://starknet-sepolia.public.blastapi.io/rpc/v0_7',
+          '0.8': 'https://starknet-sepolia.public.blastapi.io/rpc/v0_8',
+        };
+        for (final entry in blastUri.entries) {
+          final version = entry.key;
+          final uri = entry.value;
+          final provider = JsonRpcReadProvider(nodeUri: Uri.parse(uri));
+          final specVersion = await provider.specVersion();
+          specVersion.when(
+              error: (error) => fail("Shouldn't fail $error"),
+              result: (result) {
+                expect(result, startsWith(version));
+              });
+        }
+      });
+      test('check spec version from CI provider', () async {
+        final specVersion = await provider.specVersion();
+        specVersion.when(
+            error: (error) => fail("Shouldn't fail $error"),
+            result: (result) {
+              expect(result, startsWith('0.7'));
+            });
+      });
+    }, tags: ['integration']);
+  });
 }
