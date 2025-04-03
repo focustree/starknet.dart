@@ -33,3 +33,4 @@ export 'syncing.dart';
 export 'declare_transaction.dart';
 export 'contract_class.dart';
 export 'block_with_receipts.dart';
+export 'spec_version.dart';

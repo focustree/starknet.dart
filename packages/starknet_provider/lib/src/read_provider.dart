@@ -1,5 +1,7 @@
 import 'package:starknet/starknet.dart';
-import 'package:starknet_provider/starknet_provider.dart';
+
+import 'call_rpc_endpoint.dart';
+import 'model/index.dart';
 
 abstract class ReadProvider {
   /// Gets the most recent accepted block number
@@ -128,6 +130,11 @@ abstract class ReadProvider {
   ///
   /// [Spec](https://github.com/starkware-libs/starknet-specs/blob/v0.7.0-rc0/api/starknet_api_openrpc.json#L107-L143)
   Future<BlockWithReceipts> getBlockWithReceipts(BlockId blockId);
+
+  /// Returns the version of the Starknet JSON-RPC specification being used
+  ///
+  /// [Spec](https://github.com/starkware-libs/starknet-specs/blob/76bdde23c7dae370a3340e40f7ca2ef2520e75b9/api/starknet_api_openrpc.json#L11)
+  Future<SpecVersion> specVersion();
 }
 
 class JsonRpcReadProvider implements ReadProvider {
@@ -338,6 +345,16 @@ class JsonRpcReadProvider implements ReadProvider {
       method: 'starknet_getBlockWithReceipts',
       params: [blockId],
     ).then(BlockWithReceipts.fromJson);
+  }
+
+  @override
+  Future<SpecVersion> specVersion() async {
+    final response = await callRpcEndpoint(
+      nodeUri: nodeUri,
+      method: 'starknet_specVersion',
+      params: [],
+    );
+    return SpecVersion.fromJson(response);
   }
 
   static final devnet = JsonRpcReadProvider(nodeUri: devnetUri);

@@ -21,7 +21,7 @@ jq .methods[].name ../starknet-specs/api/starknet_api_openrpc.json
 ```
 | Name                                       | Implemented  |              
 | ------------------------------------------ | ------------ |
-| starknet_specVersion                       | ❌           |
+| starknet_specVersion                       | ✅           |
 | starknet_getBlockWithTxHashes              | ✅           |
 | starknet_getBlockWithTxs                   | ✅           |
 | starknet_getBlockWithReceipts              | ✅           |

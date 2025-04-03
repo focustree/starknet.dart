@@ -1,5 +1,8 @@
 import 'package:starknet/starknet.dart';
-import 'package:starknet_provider/starknet_provider.dart';
+
+import 'call_rpc_endpoint.dart';
+import 'model/index.dart';
+import 'read_provider.dart';
 
 abstract class Provider implements ReadProvider {
   Future<InvokeTransactionResponse> addInvokeTransaction(
