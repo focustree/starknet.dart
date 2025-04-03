@@ -3,7 +3,9 @@
 import 'dart:convert';
 import 'dart:typed_data';
 import 'package:pointycastle/digests/keccak.dart';
-import 'package:starknet/starknet.dart';
+
+import '../convert.dart';
+import '../types/index.dart';
 
 /// [mask250] is used to make sure a big int has less than 250 digits.
 final mask250 = BigInt.two.pow(250) - BigInt.one;
@@ -15,8 +17,8 @@ Felt starknetKeccak(Uint8List bytes) {
   return Felt(bytesToBigInt(_keccak256(bytes)) & mask250);
 }
 
-const defaultEntrypointName = "__default__";
-const defaultL1EntrypointName = "__l1_default__";
+const defaultEntrypointName = '__default__';
+const defaultL1EntrypointName = '__l1_default__';
 
 /// [getSelectorByName] computes the selector hash for a given selector name.
 ///

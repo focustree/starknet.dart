@@ -1,6 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-import '../../starknet.dart';
+import 'felt.dart';
 
 @immutable
 class Uint256 {
