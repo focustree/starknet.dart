@@ -4,8 +4,11 @@ import 'dart:io';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:starknet_provider/starknet_provider.dart';
 
-import '../../../starknet.dart';
+import '../../crypto/index.dart';
+import '../../types/index.dart';
 import './compiled_class_hash.dart';
+import 'contract_abi.dart';
+import 'entry_points_by_type.dart';
 
 part 'compiled_contract.freezed.dart';
 part 'compiled_contract.g.dart';

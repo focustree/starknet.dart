@@ -1,7 +1,7 @@
 import 'dart:convert';
 import 'dart:typed_data';
 
-import 'package:starknet/starknet.dart';
+import '../convert.dart';
 
 class Felt {
   /// Spec: https://docs.starknet.io/docs/Hashing/hash-functions/#domain-and-range

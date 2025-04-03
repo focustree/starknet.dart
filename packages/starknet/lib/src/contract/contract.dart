@@ -1,11 +1,14 @@
-import 'package:starknet/starknet.dart';
 import 'package:starknet_provider/starknet_provider.dart';
+
+import '../account.dart';
+import '../crypto/index.dart';
+import '../types/index.dart';
 
 class Contract {
   final Account account;
   final Felt address;
 
-  /// Compute contract address for given [classHash], [callData], [salt]
+  /// Compute contract address for given [classHash], [calldata], [salt]
   ///
   /// https://docs.starknet.io/documentation/architecture_and_concepts/Contracts/contract-address/
   static Felt computeAddress({
@@ -36,7 +39,7 @@ class Contract {
         entryPointSelector: getSelectorByName(selector),
         calldata: calldata,
       ),
-      blockId: const BlockId.blockTag('latest'),
+      blockId: BlockId.latest,
     );
     return response.when(
       error: (error) {

@@ -1,5 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:starknet/starknet.dart';
+
+import '../../types/index.dart';
 
 part 'entry_points_by_type.freezed.dart';
 part 'entry_points_by_type.g.dart';
