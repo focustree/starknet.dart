@@ -21,10 +21,10 @@ PredeployedAccount _$PredeployedAccountFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$PredeployedAccount {
   BigInt get initialBalance => throw _privateConstructorUsedError;
-  String get address => throw _privateConstructorUsedError;
-  String get publicKey => throw _privateConstructorUsedError;
-  String get privateKey => throw _privateConstructorUsedError;
-  Balance? get balance => throw _privateConstructorUsedError;
+  Felt get address => throw _privateConstructorUsedError;
+  Felt get publicKey => throw _privateConstructorUsedError;
+  Felt get privateKey => throw _privateConstructorUsedError;
+  AccountBalances? get balance => throw _privateConstructorUsedError;
 
   /// Serializes this PredeployedAccount to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -44,12 +44,12 @@ abstract class $PredeployedAccountCopyWith<$Res> {
   @useResult
   $Res call(
       {BigInt initialBalance,
-      String address,
-      String publicKey,
-      String privateKey,
-      Balance? balance});
+      Felt address,
+      Felt publicKey,
+      Felt privateKey,
+      AccountBalances? balance});
 
-  $BalanceCopyWith<$Res>? get balance;
+  $AccountBalancesCopyWith<$Res>? get balance;
 }
 
 /// @nodoc
@@ -81,19 +81,19 @@ class _$PredeployedAccountCopyWithImpl<$Res, $Val extends PredeployedAccount>
       address: null == address
           ? _value.address
           : address // ignore: cast_nullable_to_non_nullable
-              as String,
+              as Felt,
       publicKey: null == publicKey
           ? _value.publicKey
           : publicKey // ignore: cast_nullable_to_non_nullable
-              as String,
+              as Felt,
       privateKey: null == privateKey
           ? _value.privateKey
           : privateKey // ignore: cast_nullable_to_non_nullable
-              as String,
+              as Felt,
       balance: freezed == balance
           ? _value.balance
           : balance // ignore: cast_nullable_to_non_nullable
-              as Balance?,
+              as AccountBalances?,
     ) as $Val);
   }
 
@@ -101,12 +101,12 @@ class _$PredeployedAccountCopyWithImpl<$Res, $Val extends PredeployedAccount>
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
-  $BalanceCopyWith<$Res>? get balance {
+  $AccountBalancesCopyWith<$Res>? get balance {
     if (_value.balance == null) {
       return null;
     }
 
-    return $BalanceCopyWith<$Res>(_value.balance!, (value) {
+    return $AccountBalancesCopyWith<$Res>(_value.balance!, (value) {
       return _then(_value.copyWith(balance: value) as $Val);
     });
   }
@@ -122,13 +122,13 @@ abstract class _$$PredeployedAccountImplCopyWith<$Res>
   @useResult
   $Res call(
       {BigInt initialBalance,
-      String address,
-      String publicKey,
-      String privateKey,
-      Balance? balance});
+      Felt address,
+      Felt publicKey,
+      Felt privateKey,
+      AccountBalances? balance});
 
   @override
-  $BalanceCopyWith<$Res>? get balance;
+  $AccountBalancesCopyWith<$Res>? get balance;
 }
 
 /// @nodoc
@@ -158,19 +158,19 @@ class __$$PredeployedAccountImplCopyWithImpl<$Res>
       address: null == address
           ? _value.address
           : address // ignore: cast_nullable_to_non_nullable
-              as String,
+              as Felt,
       publicKey: null == publicKey
           ? _value.publicKey
           : publicKey // ignore: cast_nullable_to_non_nullable
-              as String,
+              as Felt,
       privateKey: null == privateKey
           ? _value.privateKey
           : privateKey // ignore: cast_nullable_to_non_nullable
-              as String,
+              as Felt,
       balance: freezed == balance
           ? _value.balance
           : balance // ignore: cast_nullable_to_non_nullable
-              as Balance?,
+              as AccountBalances?,
     ));
   }
 }
@@ -191,13 +191,13 @@ class _$PredeployedAccountImpl implements _PredeployedAccount {
   @override
   final BigInt initialBalance;
   @override
-  final String address;
+  final Felt address;
   @override
-  final String publicKey;
+  final Felt publicKey;
   @override
-  final String privateKey;
+  final Felt privateKey;
   @override
-  final Balance? balance;
+  final AccountBalances? balance;
 
   @override
   String toString() {
@@ -244,10 +244,10 @@ class _$PredeployedAccountImpl implements _PredeployedAccount {
 abstract class _PredeployedAccount implements PredeployedAccount {
   const factory _PredeployedAccount(
       {required final BigInt initialBalance,
-      required final String address,
-      required final String publicKey,
-      required final String privateKey,
-      final Balance? balance}) = _$PredeployedAccountImpl;
+      required final Felt address,
+      required final Felt publicKey,
+      required final Felt privateKey,
+      final AccountBalances? balance}) = _$PredeployedAccountImpl;
 
   factory _PredeployedAccount.fromJson(Map<String, dynamic> json) =
       _$PredeployedAccountImpl.fromJson;
@@ -255,13 +255,13 @@ abstract class _PredeployedAccount implements PredeployedAccount {
   @override
   BigInt get initialBalance;
   @override
-  String get address;
+  Felt get address;
   @override
-  String get publicKey;
+  Felt get publicKey;
   @override
-  String get privateKey;
+  Felt get privateKey;
   @override
-  Balance? get balance;
+  AccountBalances? get balance;
 
   /// Create a copy of PredeployedAccount
   /// with the given fields replaced by the non-null parameter values.
@@ -271,46 +271,48 @@ abstract class _PredeployedAccount implements PredeployedAccount {
       throw _privateConstructorUsedError;
 }
 
-Balance _$BalanceFromJson(Map<String, dynamic> json) {
-  return _Balance.fromJson(json);
+AccountBalances _$AccountBalancesFromJson(Map<String, dynamic> json) {
+  return _AccountBalances.fromJson(json);
 }
 
 /// @nodoc
-mixin _$Balance {
-  TokenBalance get eth => throw _privateConstructorUsedError;
-  TokenBalance get strk => throw _privateConstructorUsedError;
+mixin _$AccountBalances {
+  AccountBalance get eth => throw _privateConstructorUsedError;
+  AccountBalance get strk => throw _privateConstructorUsedError;
 
-  /// Serializes this Balance to a JSON map.
+  /// Serializes this AccountBalances to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
 
-  /// Create a copy of Balance
+  /// Create a copy of AccountBalances
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $BalanceCopyWith<Balance> get copyWith => throw _privateConstructorUsedError;
+  $AccountBalancesCopyWith<AccountBalances> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $BalanceCopyWith<$Res> {
-  factory $BalanceCopyWith(Balance value, $Res Function(Balance) then) =
-      _$BalanceCopyWithImpl<$Res, Balance>;
+abstract class $AccountBalancesCopyWith<$Res> {
+  factory $AccountBalancesCopyWith(
+          AccountBalances value, $Res Function(AccountBalances) then) =
+      _$AccountBalancesCopyWithImpl<$Res, AccountBalances>;
   @useResult
-  $Res call({TokenBalance eth, TokenBalance strk});
+  $Res call({AccountBalance eth, AccountBalance strk});
 
-  $TokenBalanceCopyWith<$Res> get eth;
-  $TokenBalanceCopyWith<$Res> get strk;
+  $AccountBalanceCopyWith<$Res> get eth;
+  $AccountBalanceCopyWith<$Res> get strk;
 }
 
 /// @nodoc
-class _$BalanceCopyWithImpl<$Res, $Val extends Balance>
-    implements $BalanceCopyWith<$Res> {
-  _$BalanceCopyWithImpl(this._value, this._then);
+class _$AccountBalancesCopyWithImpl<$Res, $Val extends AccountBalances>
+    implements $AccountBalancesCopyWith<$Res> {
+  _$AccountBalancesCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of Balance
+  /// Create a copy of AccountBalances
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -322,59 +324,60 @@ class _$BalanceCopyWithImpl<$Res, $Val extends Balance>
       eth: null == eth
           ? _value.eth
           : eth // ignore: cast_nullable_to_non_nullable
-              as TokenBalance,
+              as AccountBalance,
       strk: null == strk
           ? _value.strk
           : strk // ignore: cast_nullable_to_non_nullable
-              as TokenBalance,
+              as AccountBalance,
     ) as $Val);
   }
 
-  /// Create a copy of Balance
+  /// Create a copy of AccountBalances
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
-  $TokenBalanceCopyWith<$Res> get eth {
-    return $TokenBalanceCopyWith<$Res>(_value.eth, (value) {
+  $AccountBalanceCopyWith<$Res> get eth {
+    return $AccountBalanceCopyWith<$Res>(_value.eth, (value) {
       return _then(_value.copyWith(eth: value) as $Val);
     });
   }
 
-  /// Create a copy of Balance
+  /// Create a copy of AccountBalances
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
-  $TokenBalanceCopyWith<$Res> get strk {
-    return $TokenBalanceCopyWith<$Res>(_value.strk, (value) {
+  $AccountBalanceCopyWith<$Res> get strk {
+    return $AccountBalanceCopyWith<$Res>(_value.strk, (value) {
       return _then(_value.copyWith(strk: value) as $Val);
     });
   }
 }
 
 /// @nodoc
-abstract class _$$BalanceImplCopyWith<$Res> implements $BalanceCopyWith<$Res> {
-  factory _$$BalanceImplCopyWith(
-          _$BalanceImpl value, $Res Function(_$BalanceImpl) then) =
-      __$$BalanceImplCopyWithImpl<$Res>;
+abstract class _$$AccountBalancesImplCopyWith<$Res>
+    implements $AccountBalancesCopyWith<$Res> {
+  factory _$$AccountBalancesImplCopyWith(_$AccountBalancesImpl value,
+          $Res Function(_$AccountBalancesImpl) then) =
+      __$$AccountBalancesImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({TokenBalance eth, TokenBalance strk});
+  $Res call({AccountBalance eth, AccountBalance strk});
 
   @override
-  $TokenBalanceCopyWith<$Res> get eth;
+  $AccountBalanceCopyWith<$Res> get eth;
   @override
-  $TokenBalanceCopyWith<$Res> get strk;
+  $AccountBalanceCopyWith<$Res> get strk;
 }
 
 /// @nodoc
-class __$$BalanceImplCopyWithImpl<$Res>
-    extends _$BalanceCopyWithImpl<$Res, _$BalanceImpl>
-    implements _$$BalanceImplCopyWith<$Res> {
-  __$$BalanceImplCopyWithImpl(
-      _$BalanceImpl _value, $Res Function(_$BalanceImpl) _then)
+class __$$AccountBalancesImplCopyWithImpl<$Res>
+    extends _$AccountBalancesCopyWithImpl<$Res, _$AccountBalancesImpl>
+    implements _$$AccountBalancesImplCopyWith<$Res> {
+  __$$AccountBalancesImplCopyWithImpl(
+      _$AccountBalancesImpl _value, $Res Function(_$AccountBalancesImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of Balance
+  /// Create a copy of AccountBalances
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -382,42 +385,42 @@ class __$$BalanceImplCopyWithImpl<$Res>
     Object? eth = null,
     Object? strk = null,
   }) {
-    return _then(_$BalanceImpl(
+    return _then(_$AccountBalancesImpl(
       eth: null == eth
           ? _value.eth
           : eth // ignore: cast_nullable_to_non_nullable
-              as TokenBalance,
+              as AccountBalance,
       strk: null == strk
           ? _value.strk
           : strk // ignore: cast_nullable_to_non_nullable
-              as TokenBalance,
+              as AccountBalance,
     ));
   }
 }
 
 /// @nodoc
 @JsonSerializable()
-class _$BalanceImpl implements _Balance {
-  const _$BalanceImpl({required this.eth, required this.strk});
+class _$AccountBalancesImpl implements _AccountBalances {
+  const _$AccountBalancesImpl({required this.eth, required this.strk});
 
-  factory _$BalanceImpl.fromJson(Map<String, dynamic> json) =>
-      _$$BalanceImplFromJson(json);
+  factory _$AccountBalancesImpl.fromJson(Map<String, dynamic> json) =>
+      _$$AccountBalancesImplFromJson(json);
 
   @override
-  final TokenBalance eth;
+  final AccountBalance eth;
   @override
-  final TokenBalance strk;
+  final AccountBalance strk;
 
   @override
   String toString() {
-    return 'Balance(eth: $eth, strk: $strk)';
+    return 'AccountBalances(eth: $eth, strk: $strk)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$BalanceImpl &&
+            other is _$AccountBalancesImpl &&
             (identical(other.eth, eth) || other.eth == eth) &&
             (identical(other.strk, strk) || other.strk == strk));
   }
@@ -426,81 +429,83 @@ class _$BalanceImpl implements _Balance {
   @override
   int get hashCode => Object.hash(runtimeType, eth, strk);
 
-  /// Create a copy of Balance
+  /// Create a copy of AccountBalances
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$BalanceImplCopyWith<_$BalanceImpl> get copyWith =>
-      __$$BalanceImplCopyWithImpl<_$BalanceImpl>(this, _$identity);
+  _$$AccountBalancesImplCopyWith<_$AccountBalancesImpl> get copyWith =>
+      __$$AccountBalancesImplCopyWithImpl<_$AccountBalancesImpl>(
+          this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$BalanceImplToJson(
+    return _$$AccountBalancesImplToJson(
       this,
     );
   }
 }
 
-abstract class _Balance implements Balance {
-  const factory _Balance(
-      {required final TokenBalance eth,
-      required final TokenBalance strk}) = _$BalanceImpl;
+abstract class _AccountBalances implements AccountBalances {
+  const factory _AccountBalances(
+      {required final AccountBalance eth,
+      required final AccountBalance strk}) = _$AccountBalancesImpl;
 
-  factory _Balance.fromJson(Map<String, dynamic> json) = _$BalanceImpl.fromJson;
+  factory _AccountBalances.fromJson(Map<String, dynamic> json) =
+      _$AccountBalancesImpl.fromJson;
 
   @override
-  TokenBalance get eth;
+  AccountBalance get eth;
   @override
-  TokenBalance get strk;
+  AccountBalance get strk;
 
-  /// Create a copy of Balance
+  /// Create a copy of AccountBalances
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$BalanceImplCopyWith<_$BalanceImpl> get copyWith =>
+  _$$AccountBalancesImplCopyWith<_$AccountBalancesImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
-TokenBalance _$TokenBalanceFromJson(Map<String, dynamic> json) {
-  return _TokenBalance.fromJson(json);
+AccountBalance _$AccountBalanceFromJson(Map<String, dynamic> json) {
+  return _AccountBalance.fromJson(json);
 }
 
 /// @nodoc
-mixin _$TokenBalance {
+mixin _$AccountBalance {
   BigInt get amount => throw _privateConstructorUsedError;
-  String get unit => throw _privateConstructorUsedError;
+  PriceUnit get unit => throw _privateConstructorUsedError;
 
-  /// Serializes this TokenBalance to a JSON map.
+  /// Serializes this AccountBalance to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
 
-  /// Create a copy of TokenBalance
+  /// Create a copy of AccountBalance
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $TokenBalanceCopyWith<TokenBalance> get copyWith =>
+  $AccountBalanceCopyWith<AccountBalance> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $TokenBalanceCopyWith<$Res> {
-  factory $TokenBalanceCopyWith(
-          TokenBalance value, $Res Function(TokenBalance) then) =
-      _$TokenBalanceCopyWithImpl<$Res, TokenBalance>;
+abstract class $AccountBalanceCopyWith<$Res> {
+  factory $AccountBalanceCopyWith(
+          AccountBalance value, $Res Function(AccountBalance) then) =
+      _$AccountBalanceCopyWithImpl<$Res, AccountBalance>;
   @useResult
-  $Res call({BigInt amount, String unit});
+  $Res call({BigInt amount, PriceUnit unit});
 }
 
 /// @nodoc
-class _$TokenBalanceCopyWithImpl<$Res, $Val extends TokenBalance>
-    implements $TokenBalanceCopyWith<$Res> {
-  _$TokenBalanceCopyWithImpl(this._value, this._then);
+class _$AccountBalanceCopyWithImpl<$Res, $Val extends AccountBalance>
+    implements $AccountBalanceCopyWith<$Res> {
+  _$AccountBalanceCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of TokenBalance
+  /// Create a copy of AccountBalance
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -516,31 +521,31 @@ class _$TokenBalanceCopyWithImpl<$Res, $Val extends TokenBalance>
       unit: null == unit
           ? _value.unit
           : unit // ignore: cast_nullable_to_non_nullable
-              as String,
+              as PriceUnit,
     ) as $Val);
   }
 }
 
 /// @nodoc
-abstract class _$$TokenBalanceImplCopyWith<$Res>
-    implements $TokenBalanceCopyWith<$Res> {
-  factory _$$TokenBalanceImplCopyWith(
-          _$TokenBalanceImpl value, $Res Function(_$TokenBalanceImpl) then) =
-      __$$TokenBalanceImplCopyWithImpl<$Res>;
+abstract class _$$AccountBalanceImplCopyWith<$Res>
+    implements $AccountBalanceCopyWith<$Res> {
+  factory _$$AccountBalanceImplCopyWith(_$AccountBalanceImpl value,
+          $Res Function(_$AccountBalanceImpl) then) =
+      __$$AccountBalanceImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({BigInt amount, String unit});
+  $Res call({BigInt amount, PriceUnit unit});
 }
 
 /// @nodoc
-class __$$TokenBalanceImplCopyWithImpl<$Res>
-    extends _$TokenBalanceCopyWithImpl<$Res, _$TokenBalanceImpl>
-    implements _$$TokenBalanceImplCopyWith<$Res> {
-  __$$TokenBalanceImplCopyWithImpl(
-      _$TokenBalanceImpl _value, $Res Function(_$TokenBalanceImpl) _then)
+class __$$AccountBalanceImplCopyWithImpl<$Res>
+    extends _$AccountBalanceCopyWithImpl<$Res, _$AccountBalanceImpl>
+    implements _$$AccountBalanceImplCopyWith<$Res> {
+  __$$AccountBalanceImplCopyWithImpl(
+      _$AccountBalanceImpl _value, $Res Function(_$AccountBalanceImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of TokenBalance
+  /// Create a copy of AccountBalance
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -548,7 +553,7 @@ class __$$TokenBalanceImplCopyWithImpl<$Res>
     Object? amount = null,
     Object? unit = null,
   }) {
-    return _then(_$TokenBalanceImpl(
+    return _then(_$AccountBalanceImpl(
       amount: null == amount
           ? _value.amount
           : amount // ignore: cast_nullable_to_non_nullable
@@ -556,34 +561,34 @@ class __$$TokenBalanceImplCopyWithImpl<$Res>
       unit: null == unit
           ? _value.unit
           : unit // ignore: cast_nullable_to_non_nullable
-              as String,
+              as PriceUnit,
     ));
   }
 }
 
 /// @nodoc
 @JsonSerializable()
-class _$TokenBalanceImpl implements _TokenBalance {
-  const _$TokenBalanceImpl({required this.amount, required this.unit});
+class _$AccountBalanceImpl implements _AccountBalance {
+  const _$AccountBalanceImpl({required this.amount, required this.unit});
 
-  factory _$TokenBalanceImpl.fromJson(Map<String, dynamic> json) =>
-      _$$TokenBalanceImplFromJson(json);
+  factory _$AccountBalanceImpl.fromJson(Map<String, dynamic> json) =>
+      _$$AccountBalanceImplFromJson(json);
 
   @override
   final BigInt amount;
   @override
-  final String unit;
+  final PriceUnit unit;
 
   @override
   String toString() {
-    return 'TokenBalance(amount: $amount, unit: $unit)';
+    return 'AccountBalance(amount: $amount, unit: $unit)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$TokenBalanceImpl &&
+            other is _$AccountBalanceImpl &&
             (identical(other.amount, amount) || other.amount == amount) &&
             (identical(other.unit, unit) || other.unit == unit));
   }
@@ -592,39 +597,40 @@ class _$TokenBalanceImpl implements _TokenBalance {
   @override
   int get hashCode => Object.hash(runtimeType, amount, unit);
 
-  /// Create a copy of TokenBalance
+  /// Create a copy of AccountBalance
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$TokenBalanceImplCopyWith<_$TokenBalanceImpl> get copyWith =>
-      __$$TokenBalanceImplCopyWithImpl<_$TokenBalanceImpl>(this, _$identity);
+  _$$AccountBalanceImplCopyWith<_$AccountBalanceImpl> get copyWith =>
+      __$$AccountBalanceImplCopyWithImpl<_$AccountBalanceImpl>(
+          this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$TokenBalanceImplToJson(
+    return _$$AccountBalanceImplToJson(
       this,
     );
   }
 }
 
-abstract class _TokenBalance implements TokenBalance {
-  const factory _TokenBalance(
+abstract class _AccountBalance implements AccountBalance {
+  const factory _AccountBalance(
       {required final BigInt amount,
-      required final String unit}) = _$TokenBalanceImpl;
+      required final PriceUnit unit}) = _$AccountBalanceImpl;
 
-  factory _TokenBalance.fromJson(Map<String, dynamic> json) =
-      _$TokenBalanceImpl.fromJson;
+  factory _AccountBalance.fromJson(Map<String, dynamic> json) =
+      _$AccountBalanceImpl.fromJson;
 
   @override
   BigInt get amount;
   @override
-  String get unit;
+  PriceUnit get unit;
 
-  /// Create a copy of TokenBalance
+  /// Create a copy of AccountBalance
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$TokenBalanceImplCopyWith<_$TokenBalanceImpl> get copyWith =>
+  _$$AccountBalanceImplCopyWith<_$AccountBalanceImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
