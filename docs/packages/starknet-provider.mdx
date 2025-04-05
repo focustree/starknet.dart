@@ -68,3 +68,23 @@ jq .methods[].name ../starknet-specs/api/starknet_write_api.json
 ### Call read-only method
 
 - `starknet_getBlockWithReceipts`: Retrieves block information with transaction receipts. Returns `BlockWithReceipts` with optional fields. Note: Devnet may return null fields for invalid block IDs instead of throwing `BLOCK_NOT_FOUND`.
+
+### starknet_getTransactionStatus
+
+Get the transaction status (whether it was received, rejected, accepted on L2, or accepted on L1).
+
+```dart
+Future<TransactionStatus> getTransactionStatus(Felt transactionHash);
+```
+
+Example:
+
+```dart
+final status = await provider.getTransactionStatus(transactionHash);
+print('Transaction status: ${status.finalityStatus}');
+print('Execution status: ${status.executionStatus}');
+```
+
+The `TransactionStatus` model includes:
+- `finalityStatus`: The finality status of the transaction (RECEIVED, REJECTED, ACCEPTED_ON_L2, ACCEPTED_ON_L1)
+- `executionStatus`: The execution status of the transaction (SUCCEEDED, REVERTED)
