@@ -29,6 +29,7 @@ export 'syncing.dart';
 export 'declare_transaction.dart';
 export 'contract_class.dart';
 export 'spec_version.dart';
+export 'get_transaction_status.dart';
 export 'wss_subscribe_events.dart';
 export 'wss_subscribe_transaction_status.dart';
 export 'wss_subscribe_pending_transactions.dart';
