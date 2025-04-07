@@ -94,8 +94,8 @@ void main() async {
   final avnuBuildTypeDataResponse = await avnuProvider.buildTypedData(
     accountAddress.toHexString(),
     calls,
-    '',
-    '',
+    '', // use sponsor gas token
+    '', // use sponsor gas limit
     accountClassHash.toHexString(),
   );
   if (avnuBuildTypeDataResponse is AvnuBuildTypedDataError) {
@@ -113,7 +113,7 @@ void main() async {
     accountAddress.toHexString(),
     jsonEncode(avnuBuildTypeDataResponse.toTypedData()),
     signature.map((e) => e.toHexString()).toList(),
-    null,
+    null, // account is already deployed
   );
   if (avnuExecute is AvnuExecuteError) {
     print('Failed to execute transaction: $avnuExecute');
