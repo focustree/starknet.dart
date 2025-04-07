@@ -17,27 +17,57 @@ import 'package:starknet_provider/starknet_provider.dart';
 /// - ACCOUNT_ADDRESS: The ArgentX account address
 /// - RECEIVER_ADDRESS: The recipient's address for token transfer
 void main() async {
-  final apiKey = Platform.environment['AVNU_API_KEY']!;
-  final provider = JsonRpcProvider(
-      nodeUri: Uri.parse(Platform.environment['STARKNET_RPC']!));
+  final apiKey = Platform.environment['AVNU_API_KEY'];
+  if (apiKey == null) {
+    print('AVNU_API_KEY environment variable is required');
+    return;
+  }
+  final avnuRpc = Platform.environment['AVNU_RPC'];
+  if (avnuRpc == null) {
+    print('AVNU_RPC environment variable is required');
+    return;
+  }
+  final starknetRpc = Platform.environment['STARKNET_RPC'];
+  if (starknetRpc == null) {
+    print('STARKNET_RPC environment variable is required');
+    return;
+  }
+  final guardianPrivateKey = Platform.environment['GUARDIAN_PRIVATE_KEY'];
+  if (guardianPrivateKey == null) {
+    print('GUARDIAN_PRIVATE_KEY environment variable is required');
+    return;
+  }
+  final ownerPrivateKey = Platform.environment['OWNER_PRIVATE_KEY'];
+  if (ownerPrivateKey == null) {
+    print('OWNER_PRIVATE_KEY environment variable is required');
+    return;
+  }
+  final accountAddressHex = Platform.environment['ACCOUNT_ADDRESS'];
+  if (accountAddressHex == null) {
+    print('ACCOUNT_ADDRESS environment variable is required');
+    return;
+  }
+  final receiverAddress = Platform.environment['RECEIVER_ADDRESS'];
+  if (receiverAddress == null) {
+    print('RECEIVER_ADDRESS environment variable is required');
+    return;
+  }
+  final avnuProvider =
+      AvnuJsonRpcProvider(nodeUri: Uri.parse(avnuRpc), apiKey: apiKey);
 
-  final avnuProvider = AvnuJsonRpcProvider(
-      nodeUri: Uri.parse(Platform.environment['AVNU_RPC']!), apiKey: apiKey);
+  final provider = JsonRpcProvider(nodeUri: Uri.parse(starknetRpc));
 
   /// Prepare signers
-  final guardianSigner = StarkSigner(
-      privateKey:
-          Felt.fromHexString(Platform.environment['GUARDIAN_PRIVATE_KEY']!));
-  final ownerSigner = StarkSigner(
-      privateKey:
-          Felt.fromHexString(Platform.environment['OWNER_PRIVATE_KEY']!));
+  final guardianSigner =
+      StarkSigner(privateKey: Felt.fromHexString(guardianPrivateKey));
+  final ownerSigner =
+      StarkSigner(privateKey: Felt.fromHexString(ownerPrivateKey));
   final ownerAccountSigner = ArgentXGuardianAccountSigner(
     ownerSigner: ownerSigner,
     guardianSigner: guardianSigner,
   );
 
-  final accountAddress =
-      Felt.fromHexString(Platform.environment['ACCOUNT_ADDRESS']!);
+  final accountAddress = Felt.fromHexString(accountAddressHex);
   final response = await provider.getClassHashAt(
       contractAddress: accountAddress, blockId: BlockId.latest);
   if (response is GetClassHashAtError) {
@@ -54,7 +84,7 @@ void main() async {
           '0x049d36570d4e46f48e99674bd3fcc84644ddd6b96f7c741b1562b82f9e004dc7',
       'entrypoint': 'transfer',
       'calldata': [
-        Platform.environment['RECEIVER_ADDRESS']!,
+        receiverAddress,
         '0xf',
         '0x0',
       ],
