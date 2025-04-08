@@ -18,18 +18,18 @@ sidebar:
       - - Starknet Counter
         - "/examples/starknet-counter"
   - - Packages
-    - - - Starknet Provider
-        - "/packages/starknet-provider"
-      - - Starknet
+    - - - Starknet
         - "/packages/starknet"
-      - - Starknet Builder
-        - "/packages/starknet-builder"
-      - - Secure Store
-        - "/packages/secure-store"
+      - - Starknet Provider
+        - "/packages/starknet-provider"
       - - Wallet Kit
         - "/packages/wallet-kit"
+      - - Secure Store
+        - "/packages/secure-store"
       - - Avnu Paymaster Provider
         - "/packages/avnu_provider"
+      - - Starknet Builder
+        - "/packages/starknet-builder"
   - - How to Contribute
     - "/how-to-contribute"
 
