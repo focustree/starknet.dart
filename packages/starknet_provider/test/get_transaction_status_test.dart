@@ -149,10 +149,17 @@ void main() {
             }),
           );
 
+          print('Status response: ${statusResponse.body}');
           final statusResult = jsonDecode(statusResponse.body);
-          if (statusResult['error'] == null) {
+          
+          if (!statusResult.containsKey('error')) {
             status = TransactionStatus.fromJson(statusResult['result']);
-            break;
+            if (status.finalityStatus.isNotEmpty) {
+              // If we have a finality status, we can proceed
+              break;
+            }
+          } else {
+            print('Error getting status: ${statusResult['error']}');
           }
         } catch (e) {
           print('Error polling for transaction status: $e');
@@ -162,9 +169,10 @@ void main() {
 
       expect(status, isNotNull,
           reason: 'Transaction status should be available within timeout');
-      expect(status!.finalityStatus, isNotNull,
+      final nonNullStatus = status!;
+      expect(nonNullStatus.finalityStatus, isNotNull,
           reason: 'Transaction should have a finality status');
-      expect(status!.executionStatus, isNotNull,
+      expect(nonNullStatus.executionStatus, isNotNull,
           reason: 'Transaction should have an execution status');
     }, tags: ['integration']);
 
@@ -216,6 +224,7 @@ void main() {
       final status = TransactionStatus.fromJson(result['result']);
       expect(status.finalityStatus, isNotNull,
           reason: 'Transaction status should have a finality status');
+      expect(status.finalityStatus, isA<String>());
     }, tags: ['integration']);
   });
 }
