@@ -1,2 +1,5 @@
 tags:
+  integration:
+    timeout: 5x
   unit:
+    timeout: 1x
