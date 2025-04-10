@@ -25,7 +25,8 @@ mixin _$OutsideExecutionMessageV1 {
   String get nonce => throw _privateConstructorUsedError;
   String get executeAfter => throw _privateConstructorUsedError;
   String get executeBefore => throw _privateConstructorUsedError;
-  String get callsLen => throw _privateConstructorUsedError;
+  String get callsLen =>
+      throw _privateConstructorUsedError; // required by SNIP-9
   List<OutsideExecutionCallV1> get calls => throw _privateConstructorUsedError;
 
   /// Serializes this OutsideExecutionMessageV1 to a JSON map.
@@ -200,7 +201,9 @@ class _$OutsideExecutionMessageV1Impl extends _OutsideExecutionMessageV1 {
   final String executeBefore;
   @override
   final String callsLen;
+// required by SNIP-9
   final List<OutsideExecutionCallV1> _calls;
+// required by SNIP-9
   @override
   List<OutsideExecutionCallV1> get calls {
     if (_calls is EqualUnmodifiableListView) return _calls;
@@ -274,7 +277,7 @@ abstract class _OutsideExecutionMessageV1 extends OutsideExecutionMessageV1 {
   @override
   String get executeBefore;
   @override
-  String get callsLen;
+  String get callsLen; // required by SNIP-9
   @override
   List<OutsideExecutionCallV1> get calls;
 

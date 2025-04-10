@@ -1,4 +1,4 @@
-import '../../signer/stark_signer.dart';
+import '../../core/signer/stark_signer.dart';
 import '../../core/types/index.dart';
 import 'base_account_signer.dart';
 
