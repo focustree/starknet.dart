@@ -108,7 +108,7 @@ void main() {
             expect(message, isNotNull, reason: 'Message should not be null');
           },
           error: (error, revertError) {
-            fail('Should not get error response');
+            fail('Should not get error response: $error - $revertError');
           },
         );
 
