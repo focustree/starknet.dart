@@ -10,7 +10,7 @@ import 'package:starknet_provider/starknet_provider.dart';
 import 'account/signer/base_account_signer.dart';
 import 'account/signer/stark_account_signer.dart';
 import 'contract/index.dart';
-import 'convert.dart';
+import 'core/convert.dart';
 import 'core/signer/stark_signer.dart';
 import 'core/types/index.dart';
 import 'crypto/index.dart' as c;

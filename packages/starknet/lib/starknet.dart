@@ -8,7 +8,6 @@ export 'src/account/index.dart';
 export 'src/argent/index.dart';
 export 'src/calldata.dart';
 export 'src/contract/index.dart';
-export 'src/convert.dart';
 export 'src/core/index.dart';
 export 'src/crypto/index.dart';
 export 'src/devnet/index.dart';
