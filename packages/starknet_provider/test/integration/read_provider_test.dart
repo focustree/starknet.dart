@@ -174,6 +174,10 @@ void main() {
             error: (error) {
               expect(error.code, JsonRpcApiErrorCode.CONTRACT_ERROR);
               expect(error.message, contains("Contract error"));
+              expect(
+                  error.errorData?.revertError,
+                  contains(
+                      "Entry point EntryPointSelector(StarkFelt(\"0x0000000000000000000000000000000000000000000000000000000000000000\")) not found in contract."));
             },
             result: (result) => fail("Should fail"));
       });

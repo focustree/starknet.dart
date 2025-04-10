@@ -10,10 +10,21 @@ class JsonRpcApiError with _$JsonRpcApiError {
   const factory JsonRpcApiError({
     required JsonRpcApiErrorCode code,
     required String message,
+    @JsonKey(name: 'data') JsonRpcApiErrorData? errorData,
   }) = _JsonRpcApiError;
 
   factory JsonRpcApiError.fromJson(Map<String, Object?> json) =>
       _$JsonRpcApiErrorFromJson(json);
+}
+
+@freezed
+class JsonRpcApiErrorData with _$JsonRpcApiErrorData {
+  const factory JsonRpcApiErrorData({
+    @JsonKey(name: 'revert_error') String? revertError,
+  }) = _JsonRpcApiErrorData;
+
+  factory JsonRpcApiErrorData.fromJson(Map<String, Object?> json) =>
+      _$JsonRpcApiErrorDataFromJson(json);
 }
 
 // TODO: should be generated from JSON-RPC API specs
