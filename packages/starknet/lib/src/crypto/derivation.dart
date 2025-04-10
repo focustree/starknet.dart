@@ -5,7 +5,7 @@ import 'package:bip39/bip39.dart' as bip39;
 import 'package:pointycastle/digests/sha256.dart';
 
 import '../convert.dart';
-import '../types/felt.dart';
+import '../core/types/felt.dart';
 import 'model/pedersen_params.dart';
 
 /// To ensure that private key is less that [pedersenParams.ecOrder]

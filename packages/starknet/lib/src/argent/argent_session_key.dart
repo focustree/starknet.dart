@@ -3,7 +3,7 @@ import 'package:bip39/bip39.dart' as bip39;
 import '../crypto/index.dart';
 import '../signer/index.dart';
 import '../snip/snip9/outside_execution.dart';
-import '../types/index.dart';
+import '../core/types/index.dart';
 import 'sessions.dart';
 
 class ArgentSessionKey {

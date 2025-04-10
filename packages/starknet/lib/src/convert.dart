@@ -5,7 +5,7 @@ import 'dart:typed_data';
 
 import 'package:pointycastle/src/utils.dart';
 
-import 'types/index.dart';
+import 'core/types/index.dart';
 
 String bigIntToHexString(BigInt bigInt) {
   return '0x${bigInt.toRadixString(16)}';

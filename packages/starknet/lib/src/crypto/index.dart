@@ -1,7 +1,7 @@
 // FIXME: imported for FunctionCall
 import 'package:starknet_provider/starknet_provider.dart';
 
-import '../types/index.dart';
+import '../core/types/index.dart';
 import 'pedersen.dart';
 
 export 'derivation.dart';

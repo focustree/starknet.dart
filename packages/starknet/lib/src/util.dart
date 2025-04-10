@@ -4,7 +4,7 @@ import 'dart:io';
 import 'package:starknet_provider/starknet_provider.dart';
 import 'static_config.dart';
 
-import 'types/index.dart';
+import 'core/types/index.dart';
 
 void prettyPrintJson(Map<String, dynamic> json) {
   const encoder = JsonEncoder.withIndent('  ');

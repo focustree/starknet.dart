@@ -1,5 +1,5 @@
 import '../../signer/stark_signer.dart';
-import '../../types/index.dart';
+import '../../core/types/index.dart';
 import 'base_account_signer.dart';
 
 /// Implementation of [BaseAccountSigner] for StarkNet accounts using the standard Starknet signature.

@@ -5,7 +5,7 @@ import '../../contract/index.dart';
 import '../../convert.dart';
 import '../../crypto/index.dart';
 import '../../static_config.dart';
-import '../../types/felt.dart';
+import '../../core/types/felt.dart';
 
 /// Abstract class representing an account signer.
 ///

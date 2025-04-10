@@ -1,6 +1,6 @@
 // TODO: should be moved to "core" package
 import '../crypto/index.dart';
-import '../types/felt.dart';
+import '../core/types/felt.dart';
 import 'base_signer.dart';
 
 class StarkSigner implements BaseSigner {

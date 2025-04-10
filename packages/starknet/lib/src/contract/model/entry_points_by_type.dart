@@ -1,6 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-import '../../types/index.dart';
+import '../../core/types/index.dart';
 
 part 'entry_points_by_type.freezed.dart';
 part 'entry_points_by_type.g.dart';

@@ -1,7 +1,7 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 import '../../crypto/keccak.dart';
-import '../../types/index.dart';
+import '../../core/types/index.dart';
 import '../snip12/typed_data/typed_data.dart';
 
 part 'outside_execution.freezed.dart';

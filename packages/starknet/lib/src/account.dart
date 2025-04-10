@@ -15,7 +15,7 @@ import 'crypto/index.dart' as c;
 import 'presets/udc.g.dart';
 import 'signer/stark_signer.dart';
 import 'static_config.dart';
-import 'types/index.dart';
+import 'core/types/index.dart';
 
 enum AccountSupportedTxVersion {
   @Deprecated('Transaction version 0 will be removed with Starknet alpha v0.11')

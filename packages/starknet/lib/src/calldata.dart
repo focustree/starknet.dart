@@ -1,4 +1,4 @@
-import 'types/index.dart';
+import 'core/types/index.dart';
 
 List<Felt> computeCalldata(dynamic data) {
   if (data is String) {

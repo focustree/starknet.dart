@@ -4,7 +4,7 @@ import '../crypto/index.dart';
 import '../signer/stark_signer.dart';
 import '../snip/snip12/typed_data/shortstring.dart';
 import '../snip/snip12/typed_data/typed_data.dart';
-import '../types/index.dart';
+import '../core/types/index.dart';
 
 part 'sessions.freezed.dart';
 part 'sessions.g.dart';
