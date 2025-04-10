@@ -338,7 +338,7 @@ void main() {
           },
         );
       });
-    });
+    }, timeout: Timeout(Duration(minutes: 2)));
 
     group('deploy account', () {
       test('Deploy an account', () async {
