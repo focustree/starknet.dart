@@ -13,6 +13,5 @@ export 'src/core/index.dart';
 export 'src/crypto/index.dart';
 export 'src/devnet/index.dart';
 export 'src/signer.dart';
-export 'src/snip/index.dart';
 export 'src/static_config.dart';
 export 'src/util.dart';
