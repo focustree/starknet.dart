@@ -1,8 +1,8 @@
 import 'package:starknet_provider/starknet_provider.dart';
 
 import '../account.dart';
-import '../crypto/index.dart';
 import '../core/types/index.dart';
+import '../crypto/index.dart';
 
 class Contract {
   final Account account;
