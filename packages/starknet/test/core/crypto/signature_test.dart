@@ -1,6 +1,6 @@
+import 'package:crypto/crypto.dart' as crypto;
 import 'package:starknet/starknet.dart';
 import 'package:test/test.dart';
-import 'package:crypto/crypto.dart' as crypto;
 
 void main() {
   group(

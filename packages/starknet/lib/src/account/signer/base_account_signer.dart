@@ -2,10 +2,9 @@
 import 'package:starknet_provider/starknet_provider.dart';
 
 import '../../contract/index.dart';
-import '../../convert.dart';
+import '../../core/index.dart';
 import '../../crypto/index.dart';
 import '../../static_config.dart';
-import '../../types/felt.dart';
 
 /// Abstract class representing an account signer.
 ///

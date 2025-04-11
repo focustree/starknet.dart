@@ -1,10 +1,7 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-import '../crypto/index.dart';
-import '../signer/stark_signer.dart';
-import '../snip/snip12/typed_data/shortstring.dart';
-import '../snip/snip12/typed_data/typed_data.dart';
-import '../types/index.dart';
+import '../core/index.dart';
+import '../core/snip/snip12/typed_data/shortstring.dart';
 
 part 'sessions.freezed.dart';
 part 'sessions.g.dart';

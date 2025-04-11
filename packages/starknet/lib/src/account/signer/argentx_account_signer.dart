@@ -1,5 +1,5 @@
-import '../../signer/stark_signer.dart';
-import '../../types/felt.dart';
+import '../../core/signer/stark_signer.dart';
+import '../../core/types/felt.dart';
 import 'base_account_signer.dart';
 
 extension<T> on T {
