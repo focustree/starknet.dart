@@ -1,4 +1,4 @@
-import '../../crypto/index.dart';
+import '../crypto/index.dart';
 import '../types/felt.dart';
 import 'base_signer.dart';
 

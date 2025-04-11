@@ -6,7 +6,7 @@
 import 'dart:convert';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-import '../../../../crypto/index.dart';
+import '../../../crypto/index.dart';
 import '../../../types/index.dart';
 import 'encode.dart';
 import 'num.dart';

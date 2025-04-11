@@ -3,7 +3,7 @@ import 'package:crypto/crypto.dart' as crypto;
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:pointycastle/ecc/api.dart';
 
-import '../core/convert.dart';
+import '../convert.dart';
 import 'model/pedersen_params.dart';
 import 'pedersen.dart';
 

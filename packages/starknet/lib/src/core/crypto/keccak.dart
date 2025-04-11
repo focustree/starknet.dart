@@ -4,8 +4,8 @@ import 'dart:convert';
 import 'dart:typed_data';
 import 'package:pointycastle/digests/keccak.dart';
 
-import '../core/convert.dart';
-import '../core/types/index.dart';
+import '../convert.dart';
+import '../types/index.dart';
 
 /// [mask250] is used to make sure a big int has less than 250 digits.
 final mask250 = BigInt.two.pow(250) - BigInt.one;

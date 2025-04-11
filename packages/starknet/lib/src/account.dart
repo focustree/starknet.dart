@@ -11,6 +11,7 @@ import 'account/signer/base_account_signer.dart';
 import 'account/signer/stark_account_signer.dart';
 import 'contract/index.dart';
 import 'core/convert.dart';
+import 'core/crypto/index.dart' as core;
 import 'core/signer/stark_signer.dart';
 import 'core/types/index.dart';
 import 'crypto/index.dart' as c;
@@ -78,22 +79,23 @@ class Account {
   }
 
   /// Get Estimate max fee for Invoke Tx
-  Future<FeeEstimations> getEstimateMaxFeeForInvokeTx(
-      {BlockId blockId = BlockId.latest,
-      String version = '0x1',
-      required List<FunctionCall> functionCalls,
-      bool useLegacyCalldata = false,
-      Felt? nonce,
-      double feeMultiplier = 1.2,
-      bool? useSTRKFee = false,
-      // These values are for future use (until then they are empty or zero)
-      List<Felt>? accountDeploymentData,
-      List<Felt>? paymasterData,
-      Felt? tip,
-      String? feeDataAvailabilityMode = 'L1',
-      String? nonceDataAvailabilityMode = 'L1'}) async {
+  Future<FeeEstimations> getEstimateMaxFeeForInvokeTx({
+    BlockId blockId = BlockId.latest,
+    String version = '0x1',
+    required List<FunctionCall> functionCalls,
+    bool useLegacyCalldata = false,
+    Felt? nonce,
+    double feeMultiplier = 1.2,
+    bool? useSTRKFee = false,
+    // These values are for future use (until then they are empty or zero)
+    List<Felt>? accountDeploymentData,
+    List<Felt>? paymasterData,
+    Felt? tip,
+    String? feeDataAvailabilityMode = 'L1',
+    String? nonceDataAvailabilityMode = 'L1',
+  }) async {
     nonce = nonce ?? await getNonce();
-    Map<String, ResourceBounds> resourceBounds =
+    final resourceBounds =
         getResourceBounds(Felt.zero, Felt.zero, Felt.zero, Felt.zero);
 
     if (useSTRKFee!) {
@@ -146,34 +148,37 @@ class Account {
           senderAddress: accountAddress,
           tip: tip!.toHexString(),
         );
-        break;
       case AccountSupportedTxVersion.v1:
         broadcastedTxn = BroadcastedInvokeTxnV1(
-            type: 'INVOKE',
-            maxFee: defaultMaxFee,
-            version: version,
-            signature: signature,
-            nonce: nonce,
-            senderAddress: accountAddress,
-            calldata: calldata);
-        break;
+          type: 'INVOKE',
+          maxFee: defaultMaxFee,
+          version: version,
+          signature: signature,
+          nonce: nonce,
+          senderAddress: accountAddress,
+          calldata: calldata,
+        );
       default:
         final calldata =
             c.functionCallsToCalldataLegacy(functionCalls: functionCalls) +
                 [nonce];
         broadcastedTxn = BroadcastedInvokeTxnV0(
-            type: 'INVOKE',
-            maxFee: defaultMaxFee,
-            version: version,
-            signature: signature,
-            nonce: nonce,
-            contractAddress: accountAddress,
-            entryPointSelector: c.getSelectorByName('__execute__'),
-            calldata: calldata);
+          type: 'INVOKE',
+          maxFee: defaultMaxFee,
+          version: version,
+          signature: signature,
+          nonce: nonce,
+          contractAddress: accountAddress,
+          entryPointSelector: core.getSelectorByName('__execute__'),
+          calldata: calldata,
+        );
     }
 
     final estimatedMaxFees = await getMaxFeeFromBroadcastedTxn(
-        broadcastedTxn, blockId, feeMultiplier);
+      broadcastedTxn,
+      blockId,
+      feeMultiplier,
+    );
 
     return estimatedMaxFees;
   }
@@ -198,7 +203,7 @@ class Account {
     BroadcastedTxn broadcastedTxn;
 
     nonce = nonce ?? await getNonce();
-    Map<String, ResourceBounds> resourceBounds =
+    final resourceBounds =
         getResourceBounds(Felt.zero, Felt.zero, Felt.zero, Felt.zero);
 
     if (useSTRKFee!) {
@@ -245,13 +250,14 @@ class Account {
         nonce: nonce,
       );
       broadcastedTxn = BroadcastedDeclareTxn(
-          type: 'DECLARE',
-          maxFee: defaultMaxFee,
-          version: '0x1',
-          signature: signature,
-          nonce: nonce,
-          contractClass: compiledContract.compress(),
-          senderAddress: accountAddress);
+        type: 'DECLARE',
+        maxFee: defaultMaxFee,
+        version: '0x1',
+        signature: signature,
+        nonce: nonce,
+        contractClass: compiledContract.compress(),
+        senderAddress: accountAddress,
+      );
     } else {
       final signature = await signer.signDeclareTransactionV2(
         compiledContract: compiledContract as CompiledContract,
@@ -276,7 +282,10 @@ class Account {
     }
 
     final estimatedMaxFees = await getMaxFeeFromBroadcastedTxn(
-        broadcastedTxn, blockId, feeMultiplier);
+      broadcastedTxn,
+      blockId,
+      feeMultiplier,
+    );
 
     return estimatedMaxFees;
   }
@@ -303,7 +312,7 @@ class Account {
     BroadcastedTxn broadcastedTxn;
     nonce = nonce ?? defaultNonce;
     contractAddressSalt = contractAddressSalt ?? accountSigner.publicKey;
-    Map<String, ResourceBounds> resourceBounds =
+    final resourceBounds =
         getResourceBounds(Felt.zero, Felt.zero, Felt.zero, Felt.zero);
 
     if (useSTRKFee!) {
@@ -350,18 +359,22 @@ class Account {
       );
 
       broadcastedTxn = BroadcastedDeployAccountTxn(
-          type: 'DEPLOY_ACCOUNT',
-          version: version,
-          contractAddressSalt: contractAddressSalt,
-          constructorCalldata: constructorCalldata,
-          maxFee: defaultMaxFee,
-          nonce: nonce,
-          signature: signature,
-          classHash: classHash);
+        type: 'DEPLOY_ACCOUNT',
+        version: version,
+        contractAddressSalt: contractAddressSalt,
+        constructorCalldata: constructorCalldata,
+        maxFee: defaultMaxFee,
+        nonce: nonce,
+        signature: signature,
+        classHash: classHash,
+      );
     }
 
     final estimatedMaxFees = await getMaxFeeFromBroadcastedTxn(
-        broadcastedTxn, blockId, feeMultiplier);
+      broadcastedTxn,
+      blockId,
+      feeMultiplier,
+    );
 
     return estimatedMaxFees;
   }
@@ -382,7 +395,7 @@ class Account {
     salt ??= getSalt();
     unique ??= Felt.zero;
     calldata ??= [];
-    final List<Felt> params = [
+    final params = [
       classHash,
       salt,
       unique,
@@ -394,25 +407,26 @@ class Account {
       functionCalls: [
         FunctionCall(
           contractAddress: udcAddress,
-          entryPointSelector: c.getSelectorByName('deployContract'),
+          entryPointSelector: core.getSelectorByName('deployContract'),
           calldata: params,
-        )
+        ),
       ],
       useSTRKFee: useSTRKFee,
       paymasterData: paymasterData,
       tip: tip,
-      feeDataAvailabilityMode: feeDataAvailabilityMode!,
-      nonceDataAvailabilityMode: nonceDataAvailabilityMode!,
+      feeDataAvailabilityMode: feeDataAvailabilityMode,
+      nonceDataAvailabilityMode: nonceDataAvailabilityMode,
     );
 
     return maxFee;
   }
 
   Future<FeeEstimations> getMaxFeeFromBroadcastedTxn(
-      BroadcastedTxn broadcastedTxn,
-      BlockId blockId,
-      double feeMultiplier) async {
-    EstimateFeeRequest estimateFeeRequest = EstimateFeeRequest(
+    BroadcastedTxn broadcastedTxn,
+    BlockId blockId,
+    double feeMultiplier,
+  ) async {
+    final estimateFeeRequest = EstimateFeeRequest(
       request: [broadcastedTxn],
       blockId: blockId,
       simulation_flags: [],
@@ -434,10 +448,9 @@ class Account {
             .toDouble();
     final gasPrice =
         BigInt.parse(fee.gasPrice.replaceFirst('0x', ''), radix: 16).toDouble();
-    final Felt maxAmountFee =
-        Felt.fromDouble(feeMultiplier * overallFee / gasPrice);
-    final Felt maxPricePerUnit = Felt.fromDouble(feeMultiplier * gasPrice);
-    final Felt maxFee = Felt.fromDouble(feeMultiplier * overallFee);
+    final maxAmountFee = Felt.fromDouble(feeMultiplier * overallFee / gasPrice);
+    final maxPricePerUnit = Felt.fromDouble(feeMultiplier * gasPrice);
+    final maxFee = Felt.fromDouble(feeMultiplier * overallFee);
 
     return FeeEstimations(
       maxAmount: maxAmountFee,
@@ -448,25 +461,26 @@ class Account {
   }
 
   /// Call account contract `__execute__` with given [functionCalls]
-  Future<InvokeTransactionResponse> execute(
-      {required List<FunctionCall> functionCalls,
-      bool useLegacyCalldata = false,
-      bool incrementNonceIfNonceRelatedError = true,
-      int maxAttempts = 5,
-      Felt? max_fee,
-      Felt? nonce,
-      // needed for v3
-      bool? useSTRKFee,
-      Felt? l1MaxAmount,
-      Felt? l1MaxPricePerUnit,
-      Felt? l2MaxAmount,
-      Felt? l2MaxPricePerUnit,
-      // These values are for future use (until then they are empty or zero)
-      List<Felt>? accountDeploymentData,
-      List<Felt>? paymasterData,
-      Felt? tip,
-      String? feeDataAvailabilityMode,
-      String? nonceDataAvailabilityMode}) async {
+  Future<InvokeTransactionResponse> execute({
+    required List<FunctionCall> functionCalls,
+    bool useLegacyCalldata = false,
+    bool incrementNonceIfNonceRelatedError = true,
+    int maxAttempts = 5,
+    Felt? max_fee,
+    Felt? nonce,
+    // needed for v3
+    bool? useSTRKFee,
+    Felt? l1MaxAmount,
+    Felt? l1MaxPricePerUnit,
+    Felt? l2MaxAmount,
+    Felt? l2MaxPricePerUnit,
+    // These values are for future use (until then they are empty or zero)
+    List<Felt>? accountDeploymentData,
+    List<Felt>? paymasterData,
+    Felt? tip,
+    String? feeDataAvailabilityMode,
+    String? nonceDataAvailabilityMode,
+  }) async {
     nonce = nonce ?? await getNonce();
 
     useSTRKFee ??= false;
@@ -479,8 +493,12 @@ class Account {
     l1MaxPricePerUnit ??= Felt.zero;
     l2MaxAmount ??= Felt.zero;
     l2MaxPricePerUnit ??= Felt.zero;
-    Map<String, ResourceBounds> resourceBounds = getResourceBounds(
-        l1MaxAmount, l1MaxPricePerUnit, l2MaxAmount, l2MaxPricePerUnit);
+    final resourceBounds = getResourceBounds(
+      l1MaxAmount,
+      l1MaxPricePerUnit,
+      l2MaxAmount,
+      l2MaxPricePerUnit,
+    );
 
     if (useSTRKFee) {
       supportedTxVersion = AccountSupportedTxVersion.v3;
@@ -488,12 +506,13 @@ class Account {
       //maxFee only supported in v0 and v1
       max_fee = max_fee ??
           (await getEstimateMaxFeeForInvokeTx(
-                  functionCalls: functionCalls,
-                  useLegacyCalldata: useLegacyCalldata,
-                  nonce: nonce,
-                  version: supportedTxVersion == AccountSupportedTxVersion.v1
-                      ? '0x1'
-                      : '0x0'))
+            functionCalls: functionCalls,
+            useLegacyCalldata: useLegacyCalldata,
+            nonce: nonce,
+            version: supportedTxVersion == AccountSupportedTxVersion.v1
+                ? '0x1'
+                : '0x0',
+          ))
               .maxFee;
     }
 
@@ -531,14 +550,13 @@ class Account {
             InvokeTransactionRequest(
               invokeTransaction: InvokeTransactionV0(
                 contractAddress: accountAddress,
-                entryPointSelector: c.getSelectorByName('__execute__'),
+                entryPointSelector: core.getSelectorByName('__execute__'),
                 calldata: calldata,
                 maxFee: max_fee!,
                 signature: signature,
               ),
             ),
           );
-          break;
         case AccountSupportedTxVersion.v1:
           final calldata = c.functionCallsToCalldata(
             functionCalls: functionCalls,
@@ -556,7 +574,6 @@ class Account {
               ),
             ),
           );
-          break;
         case AccountSupportedTxVersion.v3:
           final calldata = c.functionCallsToCalldata(
             functionCalls: functionCalls,
@@ -579,7 +596,6 @@ class Account {
               ),
             ),
           );
-          break;
       }
 
       final result = response.when(
@@ -651,8 +667,12 @@ class Account {
       l1MaxPricePerUnit ??= Felt.zero;
       l2MaxAmount ??= Felt.zero;
       l2MaxPricePerUnit ??= Felt.zero;
-      Map<String, ResourceBounds> resourceBounds = getResourceBounds(
-          l1MaxAmount, l1MaxPricePerUnit, l2MaxAmount, l2MaxPricePerUnit);
+      final resourceBounds = getResourceBounds(
+        l1MaxAmount,
+        l1MaxPricePerUnit,
+        l2MaxAmount,
+        l2MaxPricePerUnit,
+      );
 
       final signature = await signer.signDeclareTransactionV3(
         compiledContract: compiledContract as CompiledContract,
@@ -711,10 +731,11 @@ class Account {
       } else {
         max_fee = max_fee ??
             (await getEstimateMaxFeeForDeclareTx(
-                    nonce: nonce,
-                    compiledContract: compiledContract,
-                    compiledClassHash: compiledClassHash,
-                    casmCompiledContract: casmCompiledContract))
+              nonce: nonce,
+              compiledContract: compiledContract,
+              compiledClassHash: compiledClassHash,
+              casmCompiledContract: casmCompiledContract,
+            ))
                 .maxFee;
         final signature = await signer.signDeclareTransactionV2(
           compiledContract: compiledContract as CompiledContract,
@@ -771,21 +792,22 @@ class Account {
     calldata ??= [];
 
     final txHash = await Udc(account: this, address: udcAddress).deployContract(
-        classHash,
-        salt,
-        unique,
-        calldata,
-        max_fee,
-        useSTRKFee,
-        l1MaxAmount,
-        l1MaxPricePerUnit,
-        l2MaxAmount,
-        l2MaxPricePerUnit,
-        accountDeploymentData,
-        paymasterData,
-        tip,
-        feeDataAvailabilityMode,
-        nonceDataAvailabilityMode);
+      classHash,
+      salt,
+      unique,
+      calldata,
+      max_fee,
+      useSTRKFee,
+      l1MaxAmount,
+      l1MaxPricePerUnit,
+      l2MaxAmount,
+      l2MaxPricePerUnit,
+      accountDeploymentData,
+      paymasterData,
+      tip,
+      feeDataAvailabilityMode,
+      nonceDataAvailabilityMode,
+    );
 
     final txReceipt = await account0.provider
         .getTransactionReceipt(Felt.fromHexString(txHash));
@@ -806,8 +828,9 @@ class Account {
     bool useSTRKtoken = false,
   }) async {
     final txHash = await ERC20(
-            account: this, address: useSTRKtoken ? strkAddress : ethAddress)
-        .transfer(recipient, amount);
+      account: this,
+      address: useSTRKtoken ? strkAddress : ethAddress,
+    ).transfer(recipient, amount);
     return txHash;
   }
 
@@ -869,8 +892,12 @@ class Account {
       accountDeploymentData ??= [];
       paymasterData ??= [];
       tip ??= Felt.zero;
-      Map<String, ResourceBounds> resourceBounds = getResourceBounds(
-          l1MaxAmount, l1MaxPricePerUnit, l2MaxAmount, l2MaxPricePerUnit);
+      final resourceBounds = getResourceBounds(
+        l1MaxAmount,
+        l1MaxPricePerUnit,
+        l2MaxAmount,
+        l2MaxPricePerUnit,
+      );
 
       final signature = await accountSigner.signDeployAccountTransactionV3(
         contractAddress: contractAddress,
@@ -955,15 +982,21 @@ class Account {
   }
 
   // Function to generate a resourceBounds map from a maxAmount and a maxPricePerUnit
-  static Map<String, ResourceBounds> getResourceBounds(Felt l1MaxAmount,
-      Felt l1MaxPricePerUnit, Felt l2MaxAmount, Felt l2MaxPricePerUnit) {
+  static Map<String, ResourceBounds> getResourceBounds(
+    Felt l1MaxAmount,
+    Felt l1MaxPricePerUnit,
+    Felt l2MaxAmount,
+    Felt l2MaxPricePerUnit,
+  ) {
     return {
       'l1_gas': ResourceBounds(
-          maxAmount: l1MaxAmount.toHexString(),
-          maxPricePerUnit: l1MaxPricePerUnit.toHexString()),
+        maxAmount: l1MaxAmount.toHexString(),
+        maxPricePerUnit: l1MaxPricePerUnit.toHexString(),
+      ),
       'l2_gas': ResourceBounds(
-          maxAmount: l2MaxAmount.toHexString(),
-          maxPricePerUnit: l2MaxPricePerUnit.toHexString()),
+        maxAmount: l2MaxAmount.toHexString(),
+        maxPricePerUnit: l2MaxPricePerUnit.toHexString(),
+      ),
     };
   }
 
@@ -1058,8 +1091,10 @@ class OpenzeppelinAccountDerivation implements AccountDerivation {
   }
 
   @override
-  BaseAccountSigner deriveSigner(
-      {required List<String> mnemonic, int index = 0}) {
+  BaseAccountSigner deriveSigner({
+    required List<String> mnemonic,
+    int index = 0,
+  }) {
     final privateKey = derivePrivateKey(mnemonic: mnemonic, index: index);
     return StarkAccountSigner(signer: StarkSigner(privateKey: privateKey));
   }
@@ -1069,7 +1104,7 @@ class OpenzeppelinAccountDerivation implements AccountDerivation {
     required List<String> mnemonic,
     int index = 0,
   }) {
-    return c.derivePrivateKey(mnemonic: mnemonic.join(' '), index: index);
+    return core.derivePrivateKey(mnemonic: mnemonic.join(' '), index: index);
   }
 
   @override
@@ -1088,7 +1123,7 @@ class OpenzeppelinAccountDerivation implements AccountDerivation {
   List<Felt> constructorCalldata({required Felt publicKey}) {
     return [
       implementationClassHash,
-      c.getSelectorByName('initializer'),
+      core.getSelectorByName('initializer'),
       Felt.one,
       publicKey,
     ];
@@ -1135,7 +1170,7 @@ class BraavosAccountDerivation extends AccountDerivation {
   final implementationClassHash = Felt.fromHexString(
     '0x5aa23d5bb71ddaa783da7ea79d405315bafa7cf0387a74f4593578c3e9e6570',
   );
-  final initializerSelector = c.getSelectorByName('initializer');
+  final initializerSelector = core.getSelectorByName('initializer');
 
   BraavosAccountDerivation({
     required this.provider,
@@ -1143,15 +1178,17 @@ class BraavosAccountDerivation extends AccountDerivation {
   });
 
   @override
-  BaseAccountSigner deriveSigner(
-      {required List<String> mnemonic, int index = 0}) {
+  BaseAccountSigner deriveSigner({
+    required List<String> mnemonic,
+    int index = 0,
+  }) {
     final privateKey = derivePrivateKey(mnemonic: mnemonic, index: index);
     return StarkAccountSigner(signer: StarkSigner(privateKey: privateKey));
   }
 
   @override
   Felt derivePrivateKey({required List<String> mnemonic, int index = 0}) {
-    return c.derivePrivateKey(mnemonic: mnemonic.join(' '), index: index);
+    return core.derivePrivateKey(mnemonic: mnemonic.join(' '), index: index);
   }
 
   @override
@@ -1192,8 +1229,10 @@ class ArgentXAccountDerivation extends AccountDerivation {
   );
 
   @override
-  StarkAccountSigner deriveSigner(
-      {required List<String> mnemonic, int index = 0}) {
+  StarkAccountSigner deriveSigner({
+    required List<String> mnemonic,
+    int index = 0,
+  }) {
     final privateKey = derivePrivateKey(mnemonic: mnemonic, index: index);
     return StarkAccountSigner(signer: StarkSigner(privateKey: privateKey));
   }
@@ -1206,7 +1245,7 @@ class ArgentXAccountDerivation extends AccountDerivation {
         .fromSeed(hdNodeSingleSeed.derivePath(masterPrefix).privateKey!);
     final child = hdNodeDoubleSeed.derivePath('$pathPrefix/$index');
     var key = child.privateKey!;
-    key = c.grindKey(key);
+    key = core.grindKey(key);
     final privateKey = Felt(bytesToUnsignedInt(key));
     return privateKey;
   }
@@ -1215,7 +1254,7 @@ class ArgentXAccountDerivation extends AccountDerivation {
   List<Felt> constructorCalldata({required Felt publicKey}) {
     return [
       implementationAddress,
-      c.getSelectorByName('initialize'),
+      core.getSelectorByName('initialize'),
       Felt.two,
       publicKey,
       Felt.zero,

@@ -2,8 +2,7 @@
 import 'package:starknet_provider/starknet_provider.dart';
 
 import '../../contract/index.dart';
-import '../../core/convert.dart';
-import '../../core/types/felt.dart';
+import '../../core/index.dart';
 import '../../crypto/index.dart';
 import '../../static_config.dart';
 
