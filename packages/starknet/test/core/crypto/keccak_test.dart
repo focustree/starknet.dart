@@ -51,17 +51,6 @@ void main() {
             ),
           ),
         );
-      });
-      test('throws on non-ascii selector names', () {
-        expect(() => getSelectorByName('✨'), throwsArgumentError);
-      });
-    },
-    tags: ['unit'],
-  );
-  group(
-    'getStringSelectorByName',
-    () {
-      test('returns the right string', () {
         expect(
           getSelectorByName('balanceOf'),
           equals(
@@ -70,6 +59,9 @@ void main() {
             ),
           ),
         );
+      });
+      test('throws on non-ascii selector names', () {
+        expect(() => getSelectorByName('✨'), throwsArgumentError);
       });
     },
     tags: ['unit'],
