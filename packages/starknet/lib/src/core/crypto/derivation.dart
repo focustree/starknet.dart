@@ -67,6 +67,9 @@ Felt derivePrivateKey({
   int index = 0,
   String pathPrefix = "m/44'/9004'/0'/0",
 }) {
+  if (!bip39.validateMnemonic(mnemonic)) {
+    throw ArgumentError('Invalid mnemonic phrase');
+  }
   final seed = bip39.mnemonicToSeed(mnemonic);
   final nodeFromSeed = bip32.BIP32.fromSeed(seed);
   final child = nodeFromSeed.derivePath('$pathPrefix/$index');
