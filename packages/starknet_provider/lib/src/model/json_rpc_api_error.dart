@@ -5,12 +5,34 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 part 'json_rpc_api_error.freezed.dart';
 part 'json_rpc_api_error.g.dart';
 
+// Add this JsonConverter to handle JsonRpcApiErrorData serialization
+class JsonRpcApiErrorDataConverter implements JsonConverter<JsonRpcApiErrorData?, Map<String, dynamic>?> {
+  const JsonRpcApiErrorDataConverter();
+
+  @override
+  JsonRpcApiErrorData? fromJson(Map<String, dynamic>? json) {
+    if (json == null) return null;
+    return JsonRpcApiErrorData.fromJson(json);
+  }
+
+  @override
+  Map<String, dynamic>? toJson(JsonRpcApiErrorData? data) {
+    if (data == null) return null;
+    return data.when(
+      contractError: (contractData) => contractData.toJson(),
+      transactionExecutionError: (txExecData) => txExecData.toJson(),
+    );
+  }
+}
+
 @freezed
 class JsonRpcApiError with _$JsonRpcApiError {
   const factory JsonRpcApiError({
     required JsonRpcApiErrorCode code,
     required String message,
-    @JsonKey(name: 'data') JsonRpcApiErrorData? errorData,
+    @JsonKey(name: 'data') 
+    @JsonRpcApiErrorDataConverter()  // Apply the converter here
+    JsonRpcApiErrorData? errorData,
   }) = _JsonRpcApiError;
 
   factory JsonRpcApiError.fromJson(Map<String, Object?> json) =>
@@ -18,13 +40,45 @@ class JsonRpcApiError with _$JsonRpcApiError {
 }
 
 @freezed
-class JsonRpcApiErrorData with _$JsonRpcApiErrorData {
-  const factory JsonRpcApiErrorData({
-    @JsonKey(name: 'revert_error') String? revertError,
-  }) = _JsonRpcApiErrorData;
+// Define the specific data structure for CONTRACT_ERROR
+class ContractErrorData with _$ContractErrorData {
+  const factory ContractErrorData({
+    @JsonKey(name: 'revert_error') required String revertError,
+  }) = _ContractErrorData;
 
-  factory JsonRpcApiErrorData.fromJson(Map<String, Object?> json) =>
-      _$JsonRpcApiErrorDataFromJson(json);
+  factory ContractErrorData.fromJson(Map<String, Object?> json) =>
+      _$ContractErrorDataFromJson(json);
+}
+
+// Define the specific data structure for TRANSACTION_EXECUTION_ERROR
+@freezed
+class TransactionExecutionErrorData with _$TransactionExecutionErrorData {
+  const factory TransactionExecutionErrorData({
+    @JsonKey(name: 'transaction_index') required int transactionIndex,
+    @JsonKey(name: 'execution_error') required String executionError,
+  }) = _TransactionExecutionErrorData;
+
+  factory TransactionExecutionErrorData.fromJson(Map<String, Object?> json) =>
+      _$TransactionExecutionErrorDataFromJson(json);
+}
+
+@freezed
+class JsonRpcApiErrorData with _$JsonRpcApiErrorData {
+  const factory JsonRpcApiErrorData.contractError({
+    required ContractErrorData data,
+  }) = ContractError;
+
+  const factory JsonRpcApiErrorData.transactionExecutionError({
+    required TransactionExecutionErrorData data,
+  }) = TransactionExecutionError;
+
+  factory JsonRpcApiErrorData.fromJson(Map<String, Object?> json) {
+    if (json.containsKey('revert_error')) {
+      return JsonRpcApiErrorData.contractError(data: ContractErrorData.fromJson(json));
+    } else {
+      return JsonRpcApiErrorData.transactionExecutionError(data: TransactionExecutionErrorData.fromJson(json));
+    }
+  }
 }
 
 // TODO: should be generated from JSON-RPC API specs

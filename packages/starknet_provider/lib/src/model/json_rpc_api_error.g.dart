@@ -11,9 +11,8 @@ _$JsonRpcApiErrorImpl _$$JsonRpcApiErrorImplFromJson(
     _$JsonRpcApiErrorImpl(
       code: $enumDecode(_$JsonRpcApiErrorCodeEnumMap, json['code']),
       message: json['message'] as String,
-      errorData: json['data'] == null
-          ? null
-          : JsonRpcApiErrorData.fromJson(json['data'] as Map<String, dynamic>),
+      errorData: const JsonRpcApiErrorDataConverter()
+          .fromJson(json['data'] as Map<String, dynamic>?),
     );
 
 Map<String, dynamic> _$$JsonRpcApiErrorImplToJson(
@@ -21,7 +20,7 @@ Map<String, dynamic> _$$JsonRpcApiErrorImplToJson(
     <String, dynamic>{
       'code': _$JsonRpcApiErrorCodeEnumMap[instance.code]!,
       'message': instance.message,
-      'data': instance.errorData?.toJson(),
+      'data': const JsonRpcApiErrorDataConverter().toJson(instance.errorData),
     };
 
 const _$JsonRpcApiErrorCodeEnumMap = {
@@ -61,14 +60,28 @@ const _$JsonRpcApiErrorCodeEnumMap = {
   JsonRpcApiErrorCode.INTERNAL_SEQUENCER: -32603,
 };
 
-_$JsonRpcApiErrorDataImpl _$$JsonRpcApiErrorDataImplFromJson(
+_$ContractErrorDataImpl _$$ContractErrorDataImplFromJson(
         Map<String, dynamic> json) =>
-    _$JsonRpcApiErrorDataImpl(
-      revertError: json['revert_error'] as String?,
+    _$ContractErrorDataImpl(
+      revertError: json['revert_error'] as String,
     );
 
-Map<String, dynamic> _$$JsonRpcApiErrorDataImplToJson(
-        _$JsonRpcApiErrorDataImpl instance) =>
+Map<String, dynamic> _$$ContractErrorDataImplToJson(
+        _$ContractErrorDataImpl instance) =>
     <String, dynamic>{
       'revert_error': instance.revertError,
+    };
+
+_$TransactionExecutionErrorDataImpl
+    _$$TransactionExecutionErrorDataImplFromJson(Map<String, dynamic> json) =>
+        _$TransactionExecutionErrorDataImpl(
+          transactionIndex: (json['transaction_index'] as num).toInt(),
+          executionError: json['execution_error'] as String,
+        );
+
+Map<String, dynamic> _$$TransactionExecutionErrorDataImplToJson(
+        _$TransactionExecutionErrorDataImpl instance) =>
+    <String, dynamic>{
+      'transaction_index': instance.transactionIndex,
+      'execution_error': instance.executionError,
     };
