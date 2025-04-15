@@ -74,6 +74,10 @@ class JsonRpcApiErrorData with _$JsonRpcApiErrorData {
   }) = TransactionExecutionError;
 
   factory JsonRpcApiErrorData.fromJson(Map<String, Object?> json) {
+    // When the JSON contains a "revert_error" key, we assume the error is a contract error.
+    // This includes CONTRACT_NOT_FOUND errors (error code 20), for which the revert error
+    // message (e.g., "Contract not found") is parsed into a ContractErrorData.
+    // Otherwise, the error is treated as a transaction execution error.
     if (json.containsKey('revert_error')) {
       return JsonRpcApiErrorData.contractError(
           data: ContractErrorData.fromJson(json));
