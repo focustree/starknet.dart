@@ -176,9 +176,10 @@ void main() {
               expect(error.message, contains("Contract error"));
               expect(
                   error.errorData?.mapOrNull(
-                      contractError: (contractData) => contractData.data.revertError,
-                      // In case you need to handle a transaction execution error:
-                      //transactionExecutionError: (txExecData) => txExecData.data.transactionIndex.toString() + txExecData.data.executionError,
+                    contractError: (contractData) =>
+                        contractData.data.revertError,
+                    // In case you need to handle a transaction execution error:
+                    //transactionExecutionError: (txExecData) => txExecData.data.transactionIndex.toString() + txExecData.data.executionError,
                   ),
                   contains(
                       "Entry point EntryPointSelector(StarkFelt(\"0x0000000000000000000000000000000000000000000000000000000000000000\")) not found in contract."));

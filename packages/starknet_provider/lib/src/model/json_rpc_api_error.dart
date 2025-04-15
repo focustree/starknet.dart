@@ -6,7 +6,8 @@ part 'json_rpc_api_error.freezed.dart';
 part 'json_rpc_api_error.g.dart';
 
 // Add this JsonConverter to handle JsonRpcApiErrorData serialization
-class JsonRpcApiErrorDataConverter implements JsonConverter<JsonRpcApiErrorData?, Map<String, dynamic>?> {
+class JsonRpcApiErrorDataConverter
+    implements JsonConverter<JsonRpcApiErrorData?, Map<String, dynamic>?> {
   const JsonRpcApiErrorDataConverter();
 
   @override
@@ -30,8 +31,8 @@ class JsonRpcApiError with _$JsonRpcApiError {
   const factory JsonRpcApiError({
     required JsonRpcApiErrorCode code,
     required String message,
-    @JsonKey(name: 'data') 
-    @JsonRpcApiErrorDataConverter()  // Apply the converter here
+    @JsonKey(name: 'data')
+    @JsonRpcApiErrorDataConverter() // Apply the converter here
     JsonRpcApiErrorData? errorData,
   }) = _JsonRpcApiError;
 
@@ -74,9 +75,11 @@ class JsonRpcApiErrorData with _$JsonRpcApiErrorData {
 
   factory JsonRpcApiErrorData.fromJson(Map<String, Object?> json) {
     if (json.containsKey('revert_error')) {
-      return JsonRpcApiErrorData.contractError(data: ContractErrorData.fromJson(json));
+      return JsonRpcApiErrorData.contractError(
+          data: ContractErrorData.fromJson(json));
     } else {
-      return JsonRpcApiErrorData.transactionExecutionError(data: TransactionExecutionErrorData.fromJson(json));
+      return JsonRpcApiErrorData.transactionExecutionError(
+          data: TransactionExecutionErrorData.fromJson(json));
     }
   }
 }
