@@ -143,11 +143,11 @@ Future<dynamic> callRpcEndpoint(
   }
 
   final filteredBody = PythonicJsonEncoder(sortSymbol: false).convert(body);
-
+  print('filteredBody: $filteredBody');
   final response = httpMethod == 'get'
       ? await http.get(nodeUri, headers: headers)
       : await http.post(nodeUri, headers: headers, body: filteredBody);
-
+  print('response: ${response.body}');
   dynamic jsonResponse; // Changed from var to explicit dynamic type
   try {
     // Check for Too many requests
