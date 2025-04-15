@@ -178,7 +178,8 @@ void main() {
                   error.errorData?.mapOrNull(
                     contractError: (contractData) =>
                         contractData.data.revertError,
-                    // In case you need to handle a transaction execution error:
+                    // In case we need to handle a transaction execution error,
+                    // we can get the transaction index and the execution error:
                     //transactionExecutionError: (txExecData) => txExecData.data.transactionIndex.toString() + txExecData.data.executionError,
                   ),
                   contains(
