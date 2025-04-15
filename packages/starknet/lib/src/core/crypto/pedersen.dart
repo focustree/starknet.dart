@@ -5,13 +5,24 @@ import 'package:pointycastle/ecc/ecc_fp.dart' as fp;
 import 'model/pedersen_params.dart';
 
 final starknetCurve = fp.ECCurve(
-    pedersenParams.fieldPrime, pedersenParams.alpha, pedersenParams.beta);
+  pedersenParams.fieldPrime,
+  pedersenParams.alpha,
+  pedersenParams.beta,
+);
 
 final starknetECDomainParams = ECDomainParametersImpl(
-    'starknet', starknetCurve, shiftPoint, pedersenParams.ecOrder);
+  'starknet',
+  starknetCurve,
+  shiftPoint,
+  pedersenParams.ecOrder,
+);
 
 final starknetSignatureECDomainParams = ECDomainParametersImpl(
-    'starknetSignature', starknetCurve, generatorPoint, pedersenParams.ecOrder);
+  'starknetSignature',
+  starknetCurve,
+  generatorPoint,
+  pedersenParams.ecOrder,
+);
 
 ECPoint getPoint(List<BigInt> constantPoint) => fp.ECPoint(
       starknetCurve,
@@ -62,4 +73,18 @@ BigInt pedersenHash(BigInt x, BigInt y) {
     throw TypeError();
   }
   return pedersenHash;
+}
+
+/// Computes a hash chain over the data, in the following order:
+/// h(h(h(h(0, data[0]), data[1]), ...), data[n-1]), n)
+///
+/// The hash is initialized with 0 and ends with the data length appended.
+/// The length is appended in order to avoid collisions of the following kind:
+/// H([x,y,z]) = h(h(x,y),z) = H([w, z]) where w = h(x,y).
+///
+/// Spec: https://docs.starknet.io/docs/Hashing/hash-functions/#array-hashing
+BigInt computeHashOnElements(List<BigInt> elements) {
+  return [BigInt.zero, ...elements, BigInt.from(elements.length)].reduce(
+    pedersenHash,
+  );
 }

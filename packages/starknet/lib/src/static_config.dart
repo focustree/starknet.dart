@@ -1,5 +1,5 @@
 import 'account.dart';
-import 'types/index.dart';
+import 'core/types/index.dart';
 
 class StarknetChainId {
   static final mainnet = Felt.fromString('SN_MAIN');

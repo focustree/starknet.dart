@@ -108,7 +108,7 @@ void main() {
             expect(message, isNotNull, reason: 'Message should not be null');
           },
           error: (error, revertError) {
-            fail('Should not get error response');
+            fail('Should not get error response: $error - $revertError');
           },
         );
 
@@ -146,7 +146,7 @@ void main() {
                 reason: 'Transaction hash should not be null');
           },
           error: (error, revertError) {
-            fail('Should not get error response');
+            fail('Should not get error response: $error - $revertError');
           },
         );
       });
@@ -338,7 +338,7 @@ void main() {
           },
         );
       });
-    });
+    }, timeout: Timeout(Duration(minutes: 2)));
 
     group('deploy account', () {
       test('Deploy an account', () async {

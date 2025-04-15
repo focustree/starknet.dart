@@ -1,7 +1,7 @@
 import 'account/signer/base_account_signer.dart';
 import 'account/signer/stark_account_signer.dart';
-import 'signer/stark_signer.dart';
-import 'types/index.dart';
+import 'core/signer/stark_signer.dart';
+import 'core/types/index.dart';
 
 @Deprecated('Use a StarkAccountSigner instead')
 class Signer extends BaseAccountSigner {

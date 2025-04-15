@@ -1,6 +1,6 @@
 import 'package:starknet_provider/starknet_provider.dart';
 
-import '../types/index.dart';
+import '../core/types/index.dart';
 import 'contract.dart';
 
 class ERC20 extends Contract {

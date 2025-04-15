@@ -252,10 +252,10 @@ bool _starknetVerify({
     'Invalid message hash value',
   );
   try {
-    var zG = _mimicECMultAIR(messageHash, generatorPoint, minusShiftPoint);
-    var rQ = _mimicECMultAIR(r, publicKey, shiftPoint);
-    var wB = _mimicECMultAIR(w, (zG + rQ)!, shiftPoint);
-    var x = (wB + minusShiftPoint)!.x;
+    final zG = _mimicECMultAIR(messageHash, generatorPoint, minusShiftPoint);
+    final rQ = _mimicECMultAIR(r, publicKey, shiftPoint);
+    final wB = _mimicECMultAIR(w, (zG + rQ)!, shiftPoint);
+    final x = (wB + minusShiftPoint)!.x;
     return r == x!.toBigInteger();
   } catch (e) {
     return false;
@@ -267,7 +267,7 @@ ECPoint _mimicECMultAIR(BigInt m, ECPoint point, ECPoint shift) {
   var partialSum = shift;
   var _point = point;
   var _m = m;
-  for (int _ = 0; _ < nbFieldPrimeBits; _++) {
+  for (var _ = 0; _ < nbFieldPrimeBits; _++) {
     assert(partialSum.x != _point.x, 'Invalid point');
     if (_m & BigInt.one != BigInt.zero) {
       partialSum = (partialSum + _point)!;
@@ -279,6 +279,8 @@ ECPoint _mimicECMultAIR(BigInt m, ECPoint point, ECPoint shift) {
   return partialSum;
 }
 
+/// Computes the y coordinate of a point on the elliptic curve
+/// given its x coordinate.
 BigInt _getYCoordinate(BigInt x) {
   final ySquared =
       (x * x * x + pedersenParams.alpha * x + pedersenParams.beta) %
@@ -319,7 +321,7 @@ BigInt _tonelliShanks(BigInt n, BigInt p) {
 
   // Special case for s = 1
   if (s == BigInt.one) {
-    var r = _modPow(n, (p + BigInt.one) ~/ BigInt.from(4), p);
+    final r = _modPow(n, (p + BigInt.one) ~/ BigInt.from(4), p);
     if ((r * r) % p == n) return r;
     return BigInt.zero;
   }

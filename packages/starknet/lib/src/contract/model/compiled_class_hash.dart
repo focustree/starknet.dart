@@ -2,7 +2,7 @@
 // This implementation here is basically based in
 // `cairo-lang` v0.13.1, starknet-py and starkli implementations.
 // https://github.com/starkware-libs/cairo/pull/4515
-import 'package:starknet/src/crypto/poseidon.dart';
+import '../../core/crypto/poseidon.dart';
 
 typedef NestedIntList = dynamic;
 

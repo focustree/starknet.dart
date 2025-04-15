@@ -203,9 +203,7 @@ void main() {
             result: (result) {
               expect(result, Felt.fromHexString("0x455448")); // ETH
             });
-      },
-          skip:
-              true); // FIXME after devnet 0.0.8 release: https://github.com/0xSpaceShard/starknet-devnet-rs/issues/544
+      }, skip: false);
 
       test('returns the value of the storage at the given address and key',
           () async {
@@ -640,9 +638,7 @@ void main() {
           result: (result) => fail("Should fail"),
         );
       });
-    },
-        skip:
-            true); // FIXME after devnet 0.0.8 release: https://github.com/0xSpaceShard/starknet-devnet-rs/issues/496
+    }, skip: false);
 
     group('starknet_getClass', () {
       test('returns contract class definition for a known class hash (cairo 0)',
@@ -951,9 +947,7 @@ void main() {
           },
         );
       });
-    },
-        skip:
-            true); // FIXME after devnet 0.0.8 release https://github.com/0xSpaceShard/starknet-devnet-rs/issues/498
+    }, skip: false);
 
     group('starknet_pendingTransactions', () {
       test('returns not supported error for pendingTransactions', () async {
