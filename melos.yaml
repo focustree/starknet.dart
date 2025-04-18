@@ -129,7 +129,11 @@ scripts:
   contracts:token:deploy:
     description: deploy the ERC20 contract
     run: |
-      starkli deploy --salt 0x12345678 0x07d4ee0e4494fe12b26da8e7d2cb114185f768f2bce3e7b1b356cecc9596474b u256:1000000000000000000000000000 0x64b48806902a367c8598f4f95c305e8c1a1acba5f082d294a43793113115691 2>&1
+
+  contracts:argent:declare:
+    description: declare the Argent contract
+    run: |
+      starkli declare --watch contracts/argent/v0.4.0/argent_ArgentAccount.contract_class.json 2>&1
 
   test:
     description: Run all tests
