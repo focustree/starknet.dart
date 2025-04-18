@@ -57,7 +57,7 @@ jobs:
             starknet-devnet --host 0.0.0.0 --seed 0 --dump-path $DEVNET_DUMP_PATH --state-archive-capacity full
             sleep 3  # Wait for 3 seconds for the Docker container to initialize
       - name: Declare Argent contract
-        run: melos contracts:declare
+        run: melos contracts:argent:declare
       - run: melos test:dart:integration
       - name: Cleanup
         if: always()
