@@ -87,17 +87,65 @@ Future<void> main() async {
   );
 
   group(
-    'Argent contract',
+    'Argent Deploy',
     () {
-      group('Deploy', () {
-        test('Deploy Argent account with guardian', () async {
+      test('Deploy Argent account with guardian', () async {
+        final ownerSigner = StarkSigner(
+          privateKey: Felt.fromHexString(
+            '0x53555045525f5345435245545f544553545f31',
+          ), // SUPER_SECRET_TEST_1
+        );
+        final (accountAddress, signer) =
+            await deployArgentAccount(ownerSigner, null);
+
+        (await provider.getClassHashAt(
+          contractAddress: accountAddress,
+          blockId: BlockId.latest,
+        ))
+            .when(
+          result: (result) {
+            expect(result, argentClassHash);
+          },
+          error: (error) {
+            throw Exception('Failed to retrieve class hash $error');
+          },
+        );
+        final account = Account(
+          accountAddress: accountAddress,
+          signer: signer,
+          provider: provider,
+          chainId: chainId,
+        );
+
+        final sendTxHash = await account.send(
+          recipient: Felt.one,
+          amount: Uint256(low: Felt.fromInt(10), high: Felt.zero),
+        );
+        final isAccepted = await waitForAcceptance(
+          transactionHash: sendTxHash,
+          provider: provider,
+        );
+        expect(
+          isAccepted,
+          isTrue,
+          reason: 'Transaction not accepted: $sendTxHash',
+        );
+      });
+      test(
+        'Deploy Argent account without guardian',
+        () async {
           final ownerSigner = StarkSigner(
             privateKey: Felt.fromHexString(
-              '0x53555045525f5345435245545f544553545f31',
-            ), // SUPER_SECRET_TEST_1
+              '0x53555045525f5345435245545f544553545f32',
+            ), // SUPER_SECRET_TEST_2
+          );
+          final guardianSigner = StarkSigner(
+            privateKey: Felt.fromHexString(
+              '0x475541524449414e',
+            ), // GUARDIAN
           );
           final (accountAddress, signer) =
-              await deployArgentAccount(ownerSigner, null);
+              await deployArgentAccount(ownerSigner, guardianSigner);
 
           (await provider.getClassHashAt(
             contractAddress: accountAddress,
@@ -131,281 +179,233 @@ Future<void> main() async {
             isTrue,
             reason: 'Transaction not accepted: $sendTxHash',
           );
-        });
-        test(
-          'Deploy Argent account without guardian',
-          () async {
-            final ownerSigner = StarkSigner(
-              privateKey: Felt.fromHexString(
-                '0x53555045525f5345435245545f544553545f32',
-              ), // SUPER_SECRET_TEST_2
-            );
-            final guardianSigner = StarkSigner(
-              privateKey: Felt.fromHexString(
-                '0x475541524449414e',
-              ), // GUARDIAN
-            );
-            final (accountAddress, signer) =
-                await deployArgentAccount(ownerSigner, guardianSigner);
+        },
+      );
+    },
+    tags: ['integration'],
+  );
+  group(
+    'Argent Session keys',
+    () {
+      late StarkSigner ownerSigner;
+      late StarkSigner guardianSigner;
+      late Felt accountAddress;
+      late ArgentXGuardianAccountSigner accountSigner;
 
-            (await provider.getClassHashAt(
+      setUpAll(() async {
+        ownerSigner = StarkSigner(
+          privateKey: Felt.fromHexString(
+            '0x53555045525f5345435245545f31',
+          ), // SUPER_SECRET_1
+        );
+        guardianSigner = StarkSigner(
+          privateKey: Felt.fromHexString(
+            '0x475541524449414e',
+          ), // GUARDIAN
+        );
+        (accountAddress, accountSigner as ArgentXGuardianAccountSigner) =
+            await deployArgentAccount(ownerSigner, guardianSigner);
+      });
+
+      test('Ensure a session key allow to approve ETH', () async {
+        final spender = Felt.fromHexString('0x5350454e4445525f31');
+        final expectedAllowance =
+            Uint256(high: Felt.zero, low: Felt.fromInt(34));
+
+        final timestamp =
+            (DateTime.now().millisecondsSinceEpoch / 1000).floor();
+        final allowedMethods = [
+          AllowedMethod(
+            contractAddress: Felt.fromHexString(ethContractAddress),
+            selector: getSelectorByName(approve),
+          ),
+        ];
+
+        final argentSessionKey = ArgentSessionKey(
+          accountAddress: accountAddress,
+          guardianSigner: guardianSigner,
+          allowedMethods: allowedMethods
+              .map(
+                (e) => (
+                  contractAddress: e.contractAddress.toHexString(),
+                  selector: e.selector.toHexString(),
+                ),
+              )
+              .toList(),
+          metadata: 'dummy',
+          chainId: chainId,
+          expiresAt: timestamp + 60,
+        );
+        final authorizationSignature = await accountSigner.sign(
+          argentSessionKey.hash,
+          null,
+        );
+        argentSessionKey.authorizationSignature = authorizationSignature;
+
+        // prepare the message for outside execution
+        final message = OutsideExecutionMessageV2(
+          caller: account0.accountAddress.toHexString(),
+          nonce: Felt.fromInt(timestamp).toHexString(),
+          executeAfter: '0x1',
+          executeBefore: '0x195882b23b3',
+          calls: [
+            OutsideExecutionCallV2(
+              to: ethContractAddress,
+              selector: 'approve',
+              calldata: [
+                spender.toHexString(),
+                expectedAllowance.low.toHexString(),
+                expectedAllowance.high.toHexString(),
+              ],
+            ),
+          ],
+        );
+        final sessionTokenSignature =
+            await argentSessionKey.outsideExecutionMessageToken(message);
+        final outsideTxHash = (await account0.execute(
+          functionCalls: [
+            FunctionCall(
               contractAddress: accountAddress,
-              blockId: BlockId.latest,
-            ))
-                .when(
-              result: (result) {
-                expect(result, argentClassHash);
-              },
-              error: (error) {
-                throw Exception('Failed to retrieve class hash $error');
-              },
-            );
-            final account = Account(
-              accountAddress: accountAddress,
-              signer: signer,
-              provider: provider,
-              chainId: chainId,
-            );
-
-            final sendTxHash = await account.send(
-              recipient: Felt.one,
-              amount: Uint256(low: Felt.fromInt(10), high: Felt.zero),
-            );
-            final isAccepted = await waitForAcceptance(
-              transactionHash: sendTxHash,
-              provider: provider,
-            );
-            expect(
-              isAccepted,
-              isTrue,
-              reason: 'Transaction not accepted: $sendTxHash',
+              entryPointSelector: getSelectorByName('execute_from_outside_v2'),
+              calldata: [
+                // OutsideExecution
+                ...message.toCalldata(),
+                // Signature
+                Felt.fromInt(sessionTokenSignature.length),
+                ...sessionTokenSignature,
+              ],
+            ),
+          ],
+        ))
+            .when(
+          result: (result) => result.transaction_hash,
+          error: (error) {
+            throw Exception(
+              'Failed to execute outside transaction: ${error.code}: ${error.message}',
             );
           },
         );
+        final isAccepted = await waitForAcceptance(
+          transactionHash: outsideTxHash,
+          provider: provider,
+        );
+        expect(
+          isAccepted,
+          isTrue,
+          reason: 'Transaction not accepted: $outsideTxHash',
+        );
+
+        final allowance = await erc20Allowance(
+          Felt.fromHexString(ethContractAddress),
+          accountAddress,
+          spender,
+        );
+        expect(
+          allowance,
+          expectedAllowance,
+          reason: 'Allowance not set correctly: $allowance',
+        );
       });
-      group('Session keys', () {
-        late StarkSigner ownerSigner;
-        late StarkSigner guardianSigner;
-        late Felt accountAddress;
-        late ArgentXGuardianAccountSigner accountSigner;
+      test('Ensure an expired session key does not allow to approve ETH',
+          () async {
+        final spender = Felt.fromHexString('0x5350454e4445525f32');
+        final expectedAllowance =
+            Uint256(high: Felt.zero, low: Felt.fromInt(34));
 
-        setUpAll(() async {
-          ownerSigner = StarkSigner(
-            privateKey: Felt.fromHexString(
-              '0x53555045525f5345435245545f31',
-            ), // SUPER_SECRET_1
-          );
-          guardianSigner = StarkSigner(
-            privateKey: Felt.fromHexString(
-              '0x475541524449414e',
-            ), // GUARDIAN
-          );
-          (accountAddress, accountSigner as ArgentXGuardianAccountSigner) =
-              await deployArgentAccount(ownerSigner, guardianSigner);
-        });
+        final timestamp =
+            (DateTime.now().millisecondsSinceEpoch / 1000).floor();
+        final allowedMethods = [
+          AllowedMethod(
+            contractAddress: Felt.fromHexString(ethContractAddress),
+            selector: getSelectorByName(approve),
+          ),
+        ];
 
-        test('Ensure a session key allow to approve ETH', () async {
-          final spender = Felt.fromHexString('0x5350454e4445525f31');
-          final expectedAllowance =
-              Uint256(high: Felt.zero, low: Felt.fromInt(34));
+        final argentSessionKey = ArgentSessionKey(
+          accountAddress: accountAddress,
+          guardianSigner: guardianSigner,
+          allowedMethods: allowedMethods
+              .map(
+                (e) => (
+                  contractAddress: e.contractAddress.toHexString(),
+                  selector: e.selector.toHexString(),
+                ),
+              )
+              .toList(),
+          metadata: 'dummy',
+          chainId: chainId,
+          expiresAt: 4269,
+        );
+        final authorizationSignature = await accountSigner.sign(
+          argentSessionKey.hash,
+          null,
+        );
+        argentSessionKey.authorizationSignature = authorizationSignature;
 
-          final timestamp =
-              (DateTime.now().millisecondsSinceEpoch / 1000).floor();
-          final allowedMethods = [
-            AllowedMethod(
-              contractAddress: Felt.fromHexString(ethContractAddress),
-              selector: getSelectorByName(approve),
+        // prepare the message for outside execution
+        final message = OutsideExecutionMessageV2(
+          caller: account0.accountAddress.toHexString(),
+          nonce: Felt.fromInt(timestamp).toHexString(),
+          executeAfter: '0x1',
+          executeBefore: '0x195882b23b3',
+          calls: [
+            OutsideExecutionCallV2(
+              to: ethContractAddress,
+              selector: 'approve',
+              calldata: [
+                spender.toHexString(),
+                expectedAllowance.low.toHexString(),
+                expectedAllowance.high.toHexString(),
+              ],
             ),
-          ];
-
-          final argentSessionKey = ArgentSessionKey(
-            accountAddress: accountAddress,
-            guardianSigner: guardianSigner,
-            allowedMethods: allowedMethods
-                .map(
-                  (e) => (
-                    contractAddress: e.contractAddress.toHexString(),
-                    selector: e.selector.toHexString(),
-                  ),
-                )
-                .toList(),
-            metadata: 'dummy',
-            chainId: chainId,
-            expiresAt: timestamp + 60,
-          );
-          final authorizationSignature = await accountSigner.sign(
-            argentSessionKey.hash,
-            null,
-          );
-          argentSessionKey.authorizationSignature = authorizationSignature;
-
-          // prepare the message for outside execution
-          final message = OutsideExecutionMessageV2(
-            caller: account0.accountAddress.toHexString(),
-            nonce: Felt.fromInt(timestamp).toHexString(),
-            executeAfter: '0x1',
-            executeBefore: '0x195882b23b3',
-            calls: [
-              OutsideExecutionCallV2(
-                to: ethContractAddress,
-                selector: 'approve',
-                calldata: [
-                  spender.toHexString(),
-                  expectedAllowance.low.toHexString(),
-                  expectedAllowance.high.toHexString(),
-                ],
-              ),
-            ],
-          );
-          final sessionTokenSignature =
-              await argentSessionKey.outsideExecutionMessageToken(message);
-          final outsideTxHash = (await account0.execute(
-            functionCalls: [
-              FunctionCall(
-                contractAddress: accountAddress,
-                entryPointSelector:
-                    getSelectorByName('execute_from_outside_v2'),
-                calldata: [
-                  // OutsideExecution
-                  ...message.toCalldata(),
-                  // Signature
-                  Felt.fromInt(sessionTokenSignature.length),
-                  ...sessionTokenSignature,
-                ],
-              ),
-            ],
-          ))
-              .when(
-            result: (result) => result.transaction_hash,
-            error: (error) {
-              throw Exception(
-                'Failed to execute outside transaction: ${error.code}: ${error.message}',
-              );
-            },
-          );
-          final isAccepted = await waitForAcceptance(
-            transactionHash: outsideTxHash,
-            provider: provider,
-          );
-          expect(
-            isAccepted,
-            isTrue,
-            reason: 'Transaction not accepted: $outsideTxHash',
-          );
-
-          final allowance = await erc20Allowance(
-            Felt.fromHexString(ethContractAddress),
-            accountAddress,
-            spender,
-          );
-          expect(
-            allowance,
-            expectedAllowance,
-            reason: 'Allowance not set correctly: $allowance',
-          );
-        });
-        test('Ensure an expired session key does not allow to approve ETH',
-            () async {
-          final spender = Felt.fromHexString('0x5350454e4445525f32');
-          final expectedAllowance =
-              Uint256(high: Felt.zero, low: Felt.fromInt(34));
-
-          final timestamp =
-              (DateTime.now().millisecondsSinceEpoch / 1000).floor();
-          final allowedMethods = [
-            AllowedMethod(
-              contractAddress: Felt.fromHexString(ethContractAddress),
-              selector: getSelectorByName(approve),
+          ],
+        );
+        final sessionTokenSignature =
+            await argentSessionKey.outsideExecutionMessageToken(message);
+        final outsideTxHash = (await account0.execute(
+          functionCalls: [
+            FunctionCall(
+              contractAddress: accountAddress,
+              entryPointSelector: getSelectorByName('execute_from_outside_v2'),
+              calldata: [
+                // OutsideExecution
+                ...message.toCalldata(),
+                // Signature
+                Felt.fromInt(sessionTokenSignature.length),
+                ...sessionTokenSignature,
+              ],
             ),
-          ];
-
-          final argentSessionKey = ArgentSessionKey(
-            accountAddress: accountAddress,
-            guardianSigner: guardianSigner,
-            allowedMethods: allowedMethods
-                .map(
-                  (e) => (
-                    contractAddress: e.contractAddress.toHexString(),
-                    selector: e.selector.toHexString(),
-                  ),
-                )
-                .toList(),
-            metadata: 'dummy',
-            chainId: chainId,
-            expiresAt: 4269,
-          );
-          final authorizationSignature = await accountSigner.sign(
-            argentSessionKey.hash,
-            null,
-          );
-          argentSessionKey.authorizationSignature = authorizationSignature;
-
-          // prepare the message for outside execution
-          final message = OutsideExecutionMessageV2(
-            caller: account0.accountAddress.toHexString(),
-            nonce: Felt.fromInt(timestamp).toHexString(),
-            executeAfter: '0x1',
-            executeBefore: '0x195882b23b3',
-            calls: [
-              OutsideExecutionCallV2(
-                to: ethContractAddress,
-                selector: 'approve',
-                calldata: [
-                  spender.toHexString(),
-                  expectedAllowance.low.toHexString(),
-                  expectedAllowance.high.toHexString(),
-                ],
-              ),
-            ],
-          );
-          final sessionTokenSignature =
-              await argentSessionKey.outsideExecutionMessageToken(message);
-          final outsideTxHash = (await account0.execute(
-            functionCalls: [
-              FunctionCall(
-                contractAddress: accountAddress,
-                entryPointSelector:
-                    getSelectorByName('execute_from_outside_v2'),
-                calldata: [
-                  // OutsideExecution
-                  ...message.toCalldata(),
-                  // Signature
-                  Felt.fromInt(sessionTokenSignature.length),
-                  ...sessionTokenSignature,
-                ],
-              ),
-            ],
-            max_fee:
-                defaultMaxFee, // we set a max fee to avoid raising an exception during fee estimation
-          ))
-              .when(
-            result: (result) => result.transaction_hash,
-            error: (error) {
-              throw Exception(
-                'Failed to execute outside transaction: ${error.code}: ${error.message}',
-              );
-            },
-          );
-          final isAccepted = await waitForAcceptance(
-            transactionHash: outsideTxHash,
-            provider: provider,
-          );
-          expect(
-            isAccepted,
-            isFalse,
-            reason: 'Transaction is accepted: $outsideTxHash',
-          );
-          final allowance = await erc20Allowance(
-            Felt.fromHexString(ethContractAddress),
-            accountAddress,
-            spender,
-          );
-          expect(
-            allowance,
-            Uint256(high: Felt.zero, low: Felt.zero),
-            reason: 'Allowance not set correctly: $allowance',
-          );
-        });
+          ],
+          max_fee:
+              defaultMaxFee, // we set a max fee to avoid raising an exception during fee estimation
+        ))
+            .when(
+          result: (result) => result.transaction_hash,
+          error: (error) {
+            throw Exception(
+              'Failed to execute outside transaction: ${error.code}: ${error.message}',
+            );
+          },
+        );
+        final isAccepted = await waitForAcceptance(
+          transactionHash: outsideTxHash,
+          provider: provider,
+        );
+        expect(
+          isAccepted,
+          isFalse,
+          reason: 'Transaction is accepted: $outsideTxHash',
+        );
+        final allowance = await erc20Allowance(
+          Felt.fromHexString(ethContractAddress),
+          accountAddress,
+          spender,
+        );
+        expect(
+          allowance,
+          Uint256(high: Felt.zero, low: Felt.zero),
+          reason: 'Allowance not set correctly: $allowance',
+        );
       });
     },
     tags: ['integration'],
