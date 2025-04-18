@@ -81,14 +81,17 @@ Future<Uint256> erc20Allowance(
 }
 
 Future<void> main() async {
-  final chainId = (await provider.chainId()).when(
-    result: Felt.fromHexString,
-    error: (error) => throw Exception('Failed to retrieve chain id'),
-  );
-
   group(
     'Argent Deploy',
     () {
+      late Felt chainId;
+      setUpAll(() async {
+        chainId = (await provider.chainId()).when(
+          result: Felt.fromHexString,
+          error: (error) => throw Exception('Failed to retrieve chain id'),
+        );
+      });
+
       test('Deploy Argent account with guardian', () async {
         final ownerSigner = StarkSigner(
           privateKey: Felt.fromHexString(
@@ -187,12 +190,18 @@ Future<void> main() async {
   group(
     'Argent Session keys',
     () {
+      late Felt chainId;
       late StarkSigner ownerSigner;
       late StarkSigner guardianSigner;
       late Felt accountAddress;
       late ArgentXGuardianAccountSigner accountSigner;
 
       setUpAll(() async {
+        chainId = (await provider.chainId()).when(
+          result: Felt.fromHexString,
+          error: (error) => throw Exception('Failed to retrieve chain id'),
+        );
+
         ownerSigner = StarkSigner(
           privateKey: Felt.fromHexString(
             '0x53555045525f5345435245545f31',
