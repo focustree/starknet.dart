@@ -133,7 +133,7 @@ scripts:
   contracts:argent:declare:
     description: declare the Argent contract
     run: |
-      starkli declare --watch contracts/argent/v0.4.0/argent_ArgentAccount.contract_class.json 2>&1
+      starkli declare --watch contracts/argent/v0.4.0/argent_ArgentAccount.contract_class.json --compiler-version 2.6.2 2>&1
 
   test:
     description: Run all tests
