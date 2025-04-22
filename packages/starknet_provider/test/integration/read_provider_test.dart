@@ -174,6 +174,16 @@ void main() {
             error: (error) {
               expect(error.code, JsonRpcApiErrorCode.CONTRACT_ERROR);
               expect(error.message, contains("Contract error"));
+              expect(
+                  error.errorData?.mapOrNull(
+                    contractError: (contractData) =>
+                        contractData.data.revertError,
+                    // In case we need to handle a transaction execution error,
+                    // we can get the transaction index and the execution error:
+                    //transactionExecutionError: (txExecData) => txExecData.data.transactionIndex.toString() + txExecData.data.executionError,
+                  ),
+                  contains(
+                      "Entry point EntryPointSelector(StarkFelt(\"0x0000000000000000000000000000000000000000000000000000000000000000\")) not found in contract."));
             },
             result: (result) => fail("Should fail"));
       });

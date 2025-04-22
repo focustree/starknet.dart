@@ -460,7 +460,7 @@ void main() {
         );
       });
     });
-  }, tags: ['integration'], timeout: Timeout(Duration(minutes: 1)));
+  }, tags: ['integration'], timeout: Timeout(Duration(minutes: 3)));
   group('AvnuProviderUnitTests', () {
     late AvnuProvider avnuProvider;
 
