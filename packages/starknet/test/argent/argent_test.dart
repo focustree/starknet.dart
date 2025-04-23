@@ -216,7 +216,7 @@ Future<void> main() async {
             await deployArgentAccount(ownerSigner, guardianSigner);
       });
 
-      test('Ensure a session key allow to approve ETH', () async {
+      test('Ensure a session key allows to approve ETH', () async {
         final spender = Felt.fromHexString('0x5350454e4445525f31');
         final expectedAllowance =
             Uint256(high: Felt.zero, low: Felt.fromInt(34));
@@ -253,7 +253,7 @@ Future<void> main() async {
 
         // prepare the message for outside execution
         final message = OutsideExecutionMessageV2(
-          caller: account0.accountAddress.toHexString(),
+          caller: account9.accountAddress.toHexString(),
           nonce: Felt.fromInt(timestamp).toHexString(),
           executeAfter: '0x1',
           executeBefore: '0x195882b23b3',
@@ -271,7 +271,7 @@ Future<void> main() async {
         );
         final sessionTokenSignature =
             await argentSessionKey.outsideExecutionMessageToken(message);
-        final outsideTxHash = (await account0.execute(
+        final outsideTxHash = (await account9.execute(
           functionCalls: [
             FunctionCall(
               contractAddress: accountAddress,
@@ -343,7 +343,7 @@ Future<void> main() async {
               .toList(),
           metadata: 'dummy',
           chainId: chainId,
-          expiresAt: 4269,
+          expiresAt: timestamp - 36000, // 10 hours in past
         );
         final authorizationSignature = await accountSigner.sign(
           argentSessionKey.hash,
@@ -353,7 +353,7 @@ Future<void> main() async {
 
         // prepare the message for outside execution
         final message = OutsideExecutionMessageV2(
-          caller: account0.accountAddress.toHexString(),
+          caller: account9.accountAddress.toHexString(),
           nonce: Felt.fromInt(timestamp).toHexString(),
           executeAfter: '0x1',
           executeBefore: '0x195882b23b3',
@@ -371,7 +371,7 @@ Future<void> main() async {
         );
         final sessionTokenSignature =
             await argentSessionKey.outsideExecutionMessageToken(message);
-        final outsideTxHash = (await account0.execute(
+        final outsideTxHash = (await account9.execute(
           functionCalls: [
             FunctionCall(
               contractAddress: accountAddress,
