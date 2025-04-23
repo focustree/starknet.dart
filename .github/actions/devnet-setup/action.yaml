@@ -1,0 +1,19 @@
+name: 'Setup devnet environment'
+description: 'Setup devnet environment for CI'
+
+runs:
+  using: "composite"
+  steps:
+    - name: Dotenv Action
+      id: load-env
+      uses: falti/dotenv-action@v1.1.4
+      with:
+        path: .env.ci
+    - name: Deploy argent contract
+      shell: bash
+      env:
+        STARKNET_ACCOUNT: ${{ steps.load-env.outputs.starknet_account }}
+        STARKNET_PRIVATE_KEY: ${{ steps.load-env.outputs.starknet_private_key }}
+        STARKNET_RPC: ${{ steps.load-env.outputs.starknet_rpc }}
+      run: |
+        melos contracts:argent:declare

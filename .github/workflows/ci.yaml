@@ -7,6 +7,7 @@ env:
   STARKNET_RPC: http://localhost:5050
   DEVNET_DUMP_PATH: /devnet-dump.json
   AVNU_RPC: https://sepolia.api.avnu.fi
+  STARKLI_VERSION: 0.2.9
 
 jobs:
   lint:
@@ -38,6 +39,10 @@ jobs:
         uses: ./.github/actions/flutter-setup
       - uses: bluefireteam/melos-action@v3
       - run: melos bootstrap
+      - name: Install asdf
+        uses: asdf-vm/actions/setup@v3
+      - name: Install starkli
+        run: melos asdf:starkli
       - name: Retrieve starknet devnet version
         shell: bash
         run: |
@@ -51,6 +56,8 @@ jobs:
             shardlabs/starknet-devnet-rs:$STARKNET_DEVNET_VERSION -- \
             starknet-devnet --host 0.0.0.0 --seed 0 --dump-path $DEVNET_DUMP_PATH --state-archive-capacity full
             sleep 3  # Wait for 3 seconds for the Docker container to initialize
+      - name: Devnet setup
+        uses: ./.github/actions/devnet-setup
       - run: melos test:dart:integration
       - name: Cleanup
         if: always()
