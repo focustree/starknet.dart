@@ -91,6 +91,7 @@ scripts:
       melos contracts:declare
       melos contracts:deploy
       melos contracts:invoke
+      melos contracts:argent:declare
 
   contracts:build:
     description: Build cairo contracts
@@ -100,11 +101,11 @@ scripts:
   contracts:declare:
     description: Declare cairo contracts
     run: |
-      starkli declare contracts/v$CAIRO_VERSION/target/dev/starknet_dart_hello.contract_class.json --compiler-version $CAIRO_VERSION
+      starkli declare --watch contracts/v$CAIRO_VERSION/target/dev/contract2_hello.contract_class.json --compiler-version $CAIRO_VERSION 2>&1
   contracts:deploy:
     description: Deploy cairo contracts
     run: |
-      starkli deploy $HELLO_CLASS_HASH --salt $SALT 0x0
+      starkli deploy --watch $HELLO_CLASS_HASH --salt $SALT 0x0 2>&1
   contracts:check:
     description: Check cairo contracts
     run: |
@@ -113,27 +114,23 @@ scripts:
       scarb check
 
   contracts:invoke:
-    description: creating invoke tx for tests with hash 0x03b2911796e0024f9e23d7337997538058eca267d5ddaa582d482cbe1fb64897 and deploy_account tx with hash 0x055ba13c33a12506d2eab8dfbc618a8ce0d247c24959a64ee18fbf393c873b83
+    description: Invoke hello contract set_name
     run: |
-      starkli invoke $HELLO_CONTRACT_ADDRESS set_name 0x0 
-      # should create tx hash 0x029583643cd8932f1955bf28bfebf4c907b13df1e5c2d202b133cfbf783697a2
-
-      cp -f .starkli/account_for_devnet_setup.json .starkli/account_1.json
-      starkli invoke eth transfer 0x016a0d7df981d681537dc2ce648722ff1d1c2cbe59412b492d35bac69825f104 0x100000000000000000 0x0
-      echo | starkli account deploy .starkli/account_1.json
+      starkli invoke --watch $HELLO_CONTRACT_ADDRESS set_name 0x49276d2068657265 2>&1
 
   contracts:token:declare:
     description: declare the ERC20 contract
     run: |
-      starkli declare contracts/v$CAIRO_VERSION/target/dev/contract2_MyToken.contract_class.json --compiler-version $CAIRO_VERSION 2>&1
+      starkli declare --watch contracts/v$CAIRO_VERSION/target/dev/contract2_MyToken.contract_class.json --compiler-version $CAIRO_VERSION 2>&1
   contracts:token:deploy:
     description: deploy the ERC20 contract
     run: |
+      starkli deploy --watch --salt 0x12345678 0x07d4ee0e4494fe12b26da8e7d2cb114185f768f2bce3e7b1b356cecc9596474b u256:1000000000000000000000000000 0x64b48806902a367c8598f4f95c305e8c1a1acba5f082d294a43793113115691 2>&1
 
   contracts:argent:declare:
     description: declare the Argent contract
     run: |
-      starkli declare --watch contracts/argent/v0.4.0/argent_ArgentAccount.contract_class.json --compiler-version 2.6.2 2>&1
+      starkli declare --watch contracts/argent/v0.4.0/argent_ArgentAccount.contract_class.json 2>&1
 
   test:
     description: Run all tests
