@@ -177,9 +177,11 @@ Class hash declared:
 0x037075473c665d582edbb379dfc87167076c6c714416190dcc3db27dc54eb84b
 ```
 
+**Contract class hash is `0x037075473c665d582edbb379dfc87167076c6c714416190dcc3db27dc54eb84b`.**
+
 8. Deploy the contract.
 ```sh
-~/contract$ starkli deploy --watch --rpc http://localhost:5050 --account devnet-acct.json 0x037075473c665d582edbb379dfc87167076c6c714416190dcc3db27dc54eb84b
+~/contract$ starkli deploy --salt 0x42 --watch --rpc http://localhost:5050 --account devnet-acct.json 0x037075473c665d582edbb379dfc87167076c6c714416190dcc3db27dc54eb84b
 ```
 
 9. You should see the following output:
@@ -187,7 +189,7 @@ Class hash declared:
 WARNING: using private key in plain text is highly insecure, and you should...
 ...
 Contract deployed:
-0x05e97cdfed436cc074def1b7f357cba6c76f61e85a3431a19cc29a3327676372
+0x02b955c900b35047f94200a336ee815587dbe228371f8b3194b7c6eb2b70a056
 ```
 10. Remember this contract address, you will need it to interact with the contract.
 
@@ -280,7 +282,7 @@ final provider = JsonRpcProvider(
     nodeUri: Uri.parse(
         'http://localhost:5050'));
 final contractAddress =
-    '0x05e97cdfed436cc074def1b7f357cba6c76f61e85a3431a19cc29a3327676372';
+    '0x02b955c900b35047f94200a336ee815587dbe228371f8b3194b7c6eb2b70a056';
 final secretAccountAddress =
     "0x64b48806902a367c8598f4f95c305e8c1a1acba5f082d294a43793113115691";
 final secretAccountPrivateKey =
@@ -437,26 +439,19 @@ class _CounterPageState extends State<CounterPage> {
             const SizedBox(
               height: 20,
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
+            Wrap(
+              alignment: WrapAlignment.center,
+              spacing: 20,
+              runSpacing: 10,
               children: [
                 ElevatedButton(
                     onPressed: _increaseCount, child: const Text('increment')),
-                const SizedBox(
-                  width: 20,
-                ),
                 ElevatedButton(
                     onPressed: _increaseCountBy,
                     child: const Text('incrementBy')),
-                const SizedBox(
-                  width: 20,
-                ),
                 ElevatedButton(
                     onPressed: (() => _getCounter()),
                     child: const Text('get count')),
-                const SizedBox(
-                  width: 20,
-                ),
                 ElevatedButton(
                     onPressed: _decreaseCount, child: const Text('decrement')),
               ],
