@@ -70,26 +70,19 @@ class _CounterPageState extends State<CounterPage> {
             const SizedBox(
               height: 20,
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
+            Wrap(
+              alignment: WrapAlignment.center,
+              spacing: 20,
+              runSpacing: 10,
               children: [
                 ElevatedButton(
                     onPressed: _increaseCount, child: const Text('increment')),
-                const SizedBox(
-                  width: 20,
-                ),
                 ElevatedButton(
                     onPressed: _increaseCountBy,
                     child: const Text('incrementBy')),
-                const SizedBox(
-                  width: 20,
-                ),
                 ElevatedButton(
                     onPressed: (() => _getCounter()),
                     child: const Text('get count')),
-                const SizedBox(
-                  width: 20,
-                ),
                 ElevatedButton(
                     onPressed: _decreaseCount, child: const Text('decrement')),
               ],

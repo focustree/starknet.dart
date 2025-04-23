@@ -3,7 +3,7 @@ import 'package:starknet_provider/starknet_provider.dart';
 
 final provider = JsonRpcProvider(nodeUri: Uri.parse('http://localhost:5050'));
 const contractAddress =
-    '0x05e97cdfed436cc074def1b7f357cba6c76f61e85a3431a19cc29a3327676372';
+    '0x02b955c900b35047f94200a336ee815587dbe228371f8b3194b7c6eb2b70a056';
 const secretAccountAddress =
     "0x64b48806902a367c8598f4f95c305e8c1a1acba5f082d294a43793113115691";
 const secretAccountPrivateKey = "0x71d7bb07b9a64f6f78ac4c816aff4da9";
