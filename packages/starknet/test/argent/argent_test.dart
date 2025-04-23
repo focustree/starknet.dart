@@ -92,7 +92,7 @@ Future<void> main() async {
         );
       });
 
-      test('Deploy Argent account with guardian', () async {
+      test('Deploy Argent account without guardian', () async {
         final ownerSigner = StarkSigner(
           privateKey: Felt.fromHexString(
             '0x53555045525f5345435245545f544553545f31',
@@ -135,7 +135,7 @@ Future<void> main() async {
         );
       });
       test(
-        'Deploy Argent account without guardian',
+        'Deploy Argent account with guardian',
         () async {
           final ownerSigner = StarkSigner(
             privateKey: Felt.fromHexString(

@@ -17,6 +17,3 @@ runs:
         STARKNET_RPC: ${{ steps.load-env.outputs.starknet_rpc }}
       run: |
         melos contracts:argent:declare
-
-
-  
