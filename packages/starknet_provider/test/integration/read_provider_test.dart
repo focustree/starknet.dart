@@ -1130,6 +1130,32 @@ void main() {
           },
         );
       });
+
+      test('returns TRANSACTION_EXECUTION_ERROR with invalid nonce', () async {
+        final invalidBroadcastedInvokeTxnV3 =
+            broadcastedInvokeTxnV3.copyWith(nonce: Felt.fromHexString('0x0'));
+        EstimateFeeRequest estimateFeeRequest = EstimateFeeRequest(
+            request: [invalidBroadcastedInvokeTxnV3],
+            blockId: parentBlockId,
+            simulation_flags: []);
+
+        final response = await provider.estimateFee(estimateFeeRequest);
+
+        response.when(
+          error: (error) {
+            expect(error.code, JsonRpcApiErrorCode.TRANSACTION_EXECUTION_ERROR);
+            expect(error.message, 'Transaction execution error');
+            expect(error.errorData, isA<TransactionExecutionError>());
+            final errorData = error.errorData as TransactionExecutionError;
+            expect(errorData.data.transactionIndex, 0);
+            expect(errorData.data.executionError,
+                contains('Transaction validation has failed'));
+          },
+          result: (result) {
+            fail('Should fail.');
+          },
+        );
+      }, tags: ['integration']);
     });
 
     group('starknet_specVersion', () {
