@@ -2,8 +2,6 @@
 
 This package is based on the official JSON-RPC specification available at: https://github.com/starkware-libs/starknet-specs/tree/master/wallet-api
 
-A Dart package for interacting with Starknet wallets, implementing the [Starknet Wallet API specification](https://github.com/starkware-libs/starknet-specs/tree/master/wallet-api).
-
 This package allows Dart applications (including Flutter) to request actions from a Starknet wallet installed by the user, such as requesting accounts, signing transactions, switching networks, etc.
 
 ## Features
