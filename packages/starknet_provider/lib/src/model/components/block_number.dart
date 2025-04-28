@@ -1,6 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-import 'json_rpc_api_error.dart';
+import '../json_rpc_api_error.dart';
 
 part 'block_number.freezed.dart';
 part 'block_number.g.dart';
