@@ -26,6 +26,63 @@ class Wallets extends _$Wallets with PersistedState<WalletsState> {
     return const WalletsState();
   }
 
+  @override
+  Future<WalletsState?> onStateLoaded(WalletsState loadedState) async {
+    final validWallets = <String, Wallet>{};
+
+    for (final walletEntry in loadedState.wallets.entries) {
+      final walletId = walletEntry.key;
+      final wallet = walletEntry.value;
+      final validAccounts = <int, Account>{};
+
+      for (final accountEntry in wallet.accounts.entries) {
+        final accountId = accountEntry.key;
+        final account = accountEntry.value;
+
+        try {
+          final isValid = await WalletService.isAccountValid(account: account);
+          if (isValid) {
+            validAccounts[accountId] = account;
+          } else {
+            debugPrint(
+                "Account $accountId for wallet $walletId is invalid on-chain.");
+          }
+        } catch (e) {
+          debugPrint(
+              "Error validating account $accountId for wallet $walletId: $e");
+        }
+      }
+
+      if (validAccounts.isNotEmpty) {
+        validWallets[walletId] = wallet.copyWith(accounts: validAccounts);
+      } else {
+        debugPrint(
+            "Wallet $walletId removed after validation as it has no valid accounts.");
+      }
+    }
+
+    if (validWallets.isEmpty && loadedState.wallets.isNotEmpty) {
+      debugPrint(
+          "No valid wallets found after on-chain validation. Discarding loaded state.");
+      return null;
+    }
+
+    final previousSelection = loadedState.selected;
+    bool selectionIsValid = false;
+    if (previousSelection != null) {
+      final selectedWallet = validWallets[previousSelection.walletId];
+      if (selectedWallet != null) {
+        selectionIsValid =
+            selectedWallet.accounts.containsKey(previousSelection.accountId);
+      }
+    }
+
+    return loadedState.copyWith(
+      wallets: validWallets,
+      selected: selectionIsValid ? previousSelection : null,
+    );
+  }
+
   addWallet({
     required SecureStore secureStore,
     String? seedPhrase,
