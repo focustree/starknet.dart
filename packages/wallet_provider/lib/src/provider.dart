@@ -8,50 +8,67 @@ import 'model/index.dart';
 class JsonRpcClient {
   final Uri url;
   final http.Client _httpClient;
+  static int _nextId = 1; // simple in-memory counter
 
   JsonRpcClient(this.url, {http.Client? httpClient})
       : _httpClient = httpClient ?? http.Client();
 
   Future<dynamic> call(String method,
-      [List<dynamic>? params, int id = 1]) async {
+      [List<dynamic>? params, int? id]) async {
     final request = {
       'jsonrpc': '2.0',
       'method': method,
       'params': params ?? [],
-      'id': id,
+      'id': id ?? _nextId++,
     };
 
     final response = await _httpClient.post(
       url,
-      headers: {'Content-Type': 'application/json'},
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+      },
       body: jsonEncode(request),
     );
 
-    if (response.statusCode == 200) {
-      final decoded = jsonDecode(response.body);
-      if (decoded is Map<String, dynamic>) {
-        if (decoded.containsKey('result')) {
-          return decoded['result']; // Return the actual result directly
-        } else if (decoded.containsKey('error')) {
-          // Handle JSON-RPC error structure
-          final errorData = decoded['error'] as Map<String, dynamic>;
-          // Check if code and message are present before creating WalletError
-          if (errorData.containsKey('code') &&
-              errorData.containsKey('message')) {
-            throw WalletError.fromJson(errorData);
-          } else {
-            throw Exception(
-                'Invalid JSON-RPC error format: ${jsonEncode(errorData)}');
-          }
-        } else {
-          throw Exception(
-              'Invalid JSON-RPC response format: ${jsonEncode(decoded)}');
-        }
+    // Try to decode regardless of status code to extract JSON-RPC error
+    dynamic decoded;
+    try {
+      decoded = jsonDecode(response.body);
+    } on FormatException catch (_) {
+      // If decoding fails, we can't extract a specific JSON-RPC error,
+      // so throw a generic HTTP error including the status code.
+      throw Exception(
+          'HTTP Error ${response.statusCode}: Invalid JSON received: ${response.body}');
+    }
+
+    // Check for JSON-RPC error structure first, regardless of HTTP status
+    if (decoded is Map<String, dynamic> && decoded.containsKey('error')) {
+      final errorData = decoded['error'];
+      // Ensure errorData is a map and contains required fields
+      if (errorData is Map<String, dynamic> &&
+          errorData.containsKey('code') &&
+          errorData.containsKey('message')) {
+        throw WalletError.fromJson(errorData);
       } else {
+        // JSON-RPC error structure detected but malformed
         throw Exception(
-            'Invalid JSON-RPC response format: Expected a Map but got ${decoded.runtimeType}');
+            'HTTP Error ${response.statusCode}: Malformed JSON-RPC error: ${jsonEncode(errorData)}');
+      }
+    }
+
+    // If it wasn't a JSON-RPC error, check the status code
+    if (response.statusCode == 200) {
+      // Check for result if status is OK and no error was found
+      if (decoded is Map<String, dynamic> && decoded.containsKey('result')) {
+        return decoded['result']; // Return the actual result directly
+      } else {
+        // Status 200, but no 'result' or 'error' field in a map response
+        throw Exception(
+            'Invalid JSON-RPC response format (status 200 but no result/error): ${jsonEncode(decoded)}');
       }
     } else {
+      // Status code is not 200, and the body did not contain a valid JSON-RPC error.
       throw Exception('HTTP Error ${response.statusCode}: ${response.body}');
     }
   }

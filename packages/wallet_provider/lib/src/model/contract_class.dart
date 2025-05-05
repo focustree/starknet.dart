@@ -7,7 +7,7 @@ part 'contract_class.g.dart';
 abstract class IContractClass {
   factory IContractClass.fromJson(Map<String, Object?> json) =>
       json.containsKey('sierra_program')
-          ? SierraContractClass.fromJson(json)
+          ? ContractClass.fromJson(json)
           : DeprecatedContractClass.fromJson(json);
   Map<String, Object?> toJson();
 }

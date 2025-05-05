@@ -21,7 +21,7 @@ class AssetOptions with _$AssetOptions {
   const factory AssetOptions({
     required Felt address,
     String?
-        symbol, // TOKEN_SYMBOL constraints (pattern/length) not enforced by type system
+        symbol,
     num? decimals,
     String? image, // TODO: Should be Uri?
     String? name,
@@ -29,4 +29,28 @@ class AssetOptions with _$AssetOptions {
 
   factory AssetOptions.fromJson(Map<String, Object?> json) =>
       _$AssetOptionsFromJson(json);
+
+  /// Factory constructor with validation for the symbol
+  factory AssetOptions.validated({
+    required Felt address,
+    String? symbol,
+    num? decimals,
+    String? image,
+    String? name,
+  }) {
+    if (symbol != null) {
+      final pattern = r'^[A-Za-z0-9]{1,6}$' ;
+      if (!RegExp(pattern).hasMatch(symbol)) {
+        throw ArgumentError(
+            'Symbol must be 1-6 alphanumeric characters (A-Z, a-z, 0-9). Received: "$symbol"');
+      }
+    }
+    return AssetOptions(
+      address: address,
+      symbol: symbol,
+      decimals: decimals,
+      image: image,
+      name: name,
+    );
+  }
 }
