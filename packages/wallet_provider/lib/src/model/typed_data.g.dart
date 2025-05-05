@@ -6,13 +6,28 @@ part of 'typed_data.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
+_$StarknetTypeDescriptorImpl _$$StarknetTypeDescriptorImplFromJson(
+        Map<String, dynamic> json) =>
+    _$StarknetTypeDescriptorImpl(
+      name: json['name'] as String,
+      type: json['type'] as String,
+    );
+
+Map<String, dynamic> _$$StarknetTypeDescriptorImplToJson(
+        _$StarknetTypeDescriptorImpl instance) =>
+    <String, dynamic>{
+      'name': instance.name,
+      'type': instance.type,
+    };
+
 _$TypedDataImpl _$$TypedDataImplFromJson(Map<String, dynamic> json) =>
     _$TypedDataImpl(
       types: (json['types'] as Map<String, dynamic>).map(
         (k, e) => MapEntry(
             k,
             (e as List<dynamic>)
-                .map((e) => e as Map<String, dynamic>)
+                .map((e) =>
+                    StarknetTypeDescriptor.fromJson(e as Map<String, dynamic>))
                 .toList()),
       ),
       primaryType: json['primary_type'] as String,
@@ -22,7 +37,8 @@ _$TypedDataImpl _$$TypedDataImplFromJson(Map<String, dynamic> json) =>
 
 Map<String, dynamic> _$$TypedDataImplToJson(_$TypedDataImpl instance) =>
     <String, dynamic>{
-      'types': instance.types,
+      'types': instance.types
+          .map((k, e) => MapEntry(k, e.map((e) => e.toJson()).toList())),
       'primary_type': instance.primaryType,
       'domain': instance.domain.toJson(),
       'message': instance.message,

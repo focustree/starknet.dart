@@ -289,8 +289,7 @@ AssetOptions _$AssetOptionsFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$AssetOptions {
   Felt get address => throw _privateConstructorUsedError;
-  String? get symbol =>
-      throw _privateConstructorUsedError; // TOKEN_SYMBOL constraints (pattern/length) not enforced by type system
+  String? get symbol => throw _privateConstructorUsedError;
   num? get decimals => throw _privateConstructorUsedError;
   String? get image =>
       throw _privateConstructorUsedError; // TODO: Should be Uri?
@@ -443,7 +442,6 @@ class _$AssetOptionsImpl implements _AssetOptions {
   final Felt address;
   @override
   final String? symbol;
-// TOKEN_SYMBOL constraints (pattern/length) not enforced by type system
   @override
   final num? decimals;
   @override
@@ -505,8 +503,7 @@ abstract class _AssetOptions implements AssetOptions {
   @override
   Felt get address;
   @override
-  String?
-      get symbol; // TOKEN_SYMBOL constraints (pattern/length) not enforced by type system
+  String? get symbol;
   @override
   num? get decimals;
   @override
