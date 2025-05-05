@@ -3,7 +3,7 @@ import 'dart:convert';
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:hive/hive.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:wallet_kit/utils/debug_print.dart';
+import 'debug_print.dart';
 
 mixin PersistedState<T extends PersistableState> on AutoDisposeNotifier<T> {
   String get boxName;
