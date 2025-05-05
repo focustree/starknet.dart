@@ -20,8 +20,7 @@ sealed class Asset with _$Asset {
 class AssetOptions with _$AssetOptions {
   const factory AssetOptions({
     required Felt address,
-    String?
-        symbol,
+    String? symbol,
     num? decimals,
     String? image, // TODO: Should be Uri?
     String? name,
@@ -39,7 +38,7 @@ class AssetOptions with _$AssetOptions {
     String? name,
   }) {
     if (symbol != null) {
-      final pattern = r'^[A-Za-z0-9]{1,6}$' ;
+      final pattern = r'^[A-Za-z0-9]{1,6}$';
       if (!RegExp(pattern).hasMatch(symbol)) {
         throw ArgumentError(
             'Symbol must be 1-6 alphanumeric characters (A-Z, a-z, 0-9). Received: "$symbol"');

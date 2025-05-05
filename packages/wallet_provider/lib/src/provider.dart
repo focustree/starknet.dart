@@ -13,8 +13,7 @@ class JsonRpcClient {
   JsonRpcClient(this.url, {http.Client? httpClient})
       : _httpClient = httpClient ?? http.Client();
 
-  Future<dynamic> call(String method,
-      [List<dynamic>? params, int? id]) async {
+  Future<dynamic> call(String method, [List<dynamic>? params, int? id]) async {
     final request = {
       'jsonrpc': '2.0',
       'method': method,

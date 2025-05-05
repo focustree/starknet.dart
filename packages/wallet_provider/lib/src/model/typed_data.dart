@@ -10,7 +10,8 @@ part 'typed_data.g.dart';
 class StarknetTypeDescriptor with _$StarknetTypeDescriptor {
   const factory StarknetTypeDescriptor({
     required String name,
-    required String type, // e.g., "felt", "string", "MyStruct", "MyStruct*", "felt[]"
+    required String
+        type, // e.g., "felt", "string", "MyStruct", "MyStruct*", "felt[]"
   }) = _StarknetTypeDescriptor;
 
   factory StarknetTypeDescriptor.fromJson(Map<String, Object?> json) =>
@@ -26,10 +27,13 @@ class TypedData with _$TypedData {
     /// Defines the custom types used in the message. Maps struct names to their field descriptors.
     /// Example: { "Mail": [ { "name": "from", "type": "felt" }, ... ], "Person": [...] }
     required Map<String, List<StarknetTypeDescriptor>> types,
+
     /// The primary struct type to hash and sign (e.g., "Mail"). Must exist as a key in `types`.
     required String primaryType,
+
     /// Domain separator parameters to ensure signature uniqueness across different applications/chains.
     required StarknetDomain domain,
+
     /// The actual message object matching the structure of `primaryType`.
     /// Values should correspond to the types defined in `types`.
     required Map<String, dynamic> message,
@@ -50,10 +54,13 @@ class StarknetDomain with _$StarknetDomain {
   const factory StarknetDomain({
     /// User-readable name of the signing domain (e.g., DApp name).
     Felt? name,
+
     /// Version of the signing domain.
     Felt? version,
+
     /// Chain ID (e.g., "SN_MAIN", "SN_GOERLI"). Use Felt for Starknet representation.
     Felt? chainId,
+
     /// Revision of the SNIP-12 standard being used (e.g., 1).
     Felt? revision, // SNIP-12 specific field
   }) = _StarknetDomain;
