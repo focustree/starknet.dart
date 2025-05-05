@@ -114,18 +114,18 @@ void main() async {
         final typedData = TypedData(
             types: {
               "StarknetDomain": [
-                {"name": "name", "type": "shortstring"},
-                {"name": "version", "type": "felt"},
-                {"name": "chainId", "type": "felt"},
+                StarknetTypeDescriptor(name: "name", type: "shortstring"),
+                StarknetTypeDescriptor(name: "version", type: "felt"),
+                StarknetTypeDescriptor(name: "chainId", type: "felt"),
               ],
               "Person": [
-                {"name": "name", "type": "shortstring"},
-                {"name": "wallet", "type": "felt"}
+                StarknetTypeDescriptor(name: "name", type: "shortstring"),
+                StarknetTypeDescriptor(name: "wallet", type: "felt")
               ],
               "Mail": [
-                {"name": "from", "type": "Person"},
-                {"name": "to", "type": "Person"},
-                {"name": "contents", "type": "shortstring"}
+                StarknetTypeDescriptor(name: "from", type: "Person"),
+                StarknetTypeDescriptor(name: "to", type: "Person"),
+                StarknetTypeDescriptor(name: "contents", type: "shortstring")
               ]
             },
             primaryType: "Mail",

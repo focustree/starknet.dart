@@ -1,5 +1,5 @@
 /// A Dart package for interacting with Starknet Wallet API.
-library wallet_provider;
+library;
 
 // Export the provider implementation
 export 'src/provider.dart';
