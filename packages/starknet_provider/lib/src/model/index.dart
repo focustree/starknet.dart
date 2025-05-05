@@ -1,4 +1,4 @@
-export 'components/block_hash_and_number.dart';
+export 'block_hash_and_number.dart';
 export 'components/block_id.dart';
 export 'components/block_number.dart';
 export 'call.dart';
@@ -11,9 +11,9 @@ export 'estimate_fee.dart';
 export 'event.dart';
 export 'fee_estimate.dart';
 export 'function_call.dart';
-export 'components/get_block_txn_count.dart';
-export 'components/get_block_with_tx_hashes.dart';
-export 'components/get_block_with_txs.dart';
+export 'get_block_txn_count.dart';
+export 'get_block_with_tx_hashes.dart';
+export 'get_block_with_txs.dart';
 export 'get_class.dart';
 export 'get_class_hash_at.dart';
 export 'get_events.dart';

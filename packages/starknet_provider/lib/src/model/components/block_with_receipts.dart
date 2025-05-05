@@ -1,6 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:starknet/starknet.dart';
-import '../get_transaction_receipt.dart';
 part 'block_with_receipts.freezed.dart';
 part 'block_with_receipts.g.dart';
 
