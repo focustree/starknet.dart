@@ -1131,14 +1131,20 @@ void main() {
         );
       });
 
-      test('returns TRANSACTION_EXECUTION_ERROR with invalid nonce', () async {
+      test(
+          'returns TRANSACTION_EXECUTION_ERROR with invalid contract on sepolia',
+          () async {
         final invalidBroadcastedInvokeTxnV3 =
             broadcastedInvokeTxnV3.copyWith(nonce: Felt.fromHexString('0x0'));
         EstimateFeeRequest estimateFeeRequest = EstimateFeeRequest(
             request: [invalidBroadcastedInvokeTxnV3],
             blockId: parentBlockId,
             simulation_flags: []);
-
+        final providerHost = (provider as JsonRpcReadProvider).nodeUri.host;
+        if (['0.0.0.0', 'localhost', '127.0.0.1'].contains(providerHost)) {
+          print('This test is not available on localhost');
+          return true;
+        }
         final response = await provider.estimateFee(estimateFeeRequest);
 
         response.when(
