@@ -3,7 +3,6 @@ import 'package:starknet/starknet.dart';
 import 'call_rpc_endpoint.dart';
 import 'model/index.dart';
 
-
 abstract class ReadProvider {
   /// Gets the most recent accepted block number
   ///
