@@ -2,14 +2,17 @@ import 'package:test/test.dart';
 import 'package:starknet_provider/src/index.dart';
 import 'package:starknet/starknet.dart';
 import 'dart:async';
-
-const nodeUrl = 'wss://sepolia-pathfinder-rpc.spaceshard.io/rpc/v0_8';
+import 'dart:io';
 
 void main() {
   group('websocket specific endpoints - pathfinder test', () {
     late StarknetWebSocketChannel webSocketChannel;
 
     setUp(() async {
+      final nodeUrl = Platform.environment['STARKNET_WSS'];
+      if (nodeUrl == null) {
+        throw Exception('STARKNET_WSS environment variable is not set');
+      }
       webSocketChannel = StarknetWebSocketChannel(nodeUrl: nodeUrl);
       await webSocketChannel.waitForConnection();
       expect(webSocketChannel.isConnected(), true);
@@ -113,8 +116,12 @@ void main() {
       );
 
       // Wait for the subscription events or timeout
-      await eventCompleter.future.timeout(Duration(minutes: 2),
-          onTimeout: () => print('Test timed out waiting for blocks'));
+      await eventCompleter.future.timeout(
+        Duration(minutes: 2),
+        onTimeout: () {
+          fail('Test timed out waiting for blocks');
+        },
+      );
 
       // Finalize subscription
       final status = await webSocketChannel.unsubscribeNewHeads();
@@ -163,8 +170,12 @@ void main() {
       );
 
       // Wait for the subscription events or timeout
-      await completer.future.timeout(Duration(minutes: 2),
-          onTimeout: () => print('Test timed out waiting for events'));
+      await completer.future.timeout(
+        Duration(minutes: 2),
+        onTimeout: () {
+          fail('Test timed out waiting for events');
+        },
+      );
 
       // Finalize subscription
       final status = await webSocketChannel.unsubscribeEvents();
@@ -211,9 +222,12 @@ void main() {
       );
 
       // Wait for the pending transaction events or timeout
-      await completer.future.timeout(Duration(minutes: 2),
-          onTimeout: () =>
-              print('Test timed out waiting for pending transactions events'));
+      await completer.future.timeout(
+        Duration(minutes: 2),
+        onTimeout: () {
+          fail('Test timed out waiting for pending transactions events');
+        },
+      );
 
       //Finalize
       final status = await webSocketChannel.unsubscribePendingTransaction();
@@ -249,9 +263,12 @@ void main() {
       );
 
       // Wait for the subscription events or timeout
-      await completer.future.timeout(Duration(minutes: 2),
-          onTimeout: () =>
-              print('Test timed out waiting for transaction status events'));
+      await completer.future.timeout(
+        Duration(minutes: 2),
+        onTimeout: () {
+          fail('Test timed out waiting for transaction status events');
+        },
+      );
 
       // Finalize
       final status = await webSocketChannel.unsubscribeTransactionStatus();
@@ -272,7 +289,12 @@ void main() {
     late StarknetWebSocketChannel webSocketChannel;
 
     setUp(() async {
+      final nodeUrl = Platform.environment['STARKNET_WSS'];
+      if (nodeUrl == null) {
+        throw Exception('STARKNET_WSS environment variable is not set');
+      }
       webSocketChannel = StarknetWebSocketChannel(nodeUrl: nodeUrl);
+      await webSocketChannel.waitForConnection();
       expect(webSocketChannel.isConnected(), true);
     });
 

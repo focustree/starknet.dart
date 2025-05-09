@@ -110,6 +110,9 @@ class StarknetWebSocketChannel {
     _isConnected = true;
     if (!_connectionCompleter.isCompleted) {
       print('WebSocket connection established');
+      if (onOpen != null) {
+        onOpen!(this, null);
+      }
       _connectionCompleter.complete();
     }
   }
@@ -140,13 +143,12 @@ class StarknetWebSocketChannel {
     try {
       // Wait for connection to be established
       await waitForConnection();
+      final completer = Completer<dynamic>();
 
       if (!isConnected()) {
         throw Exception(
             'WebSocketChannel.send() fail due to socket disconnected');
       }
-
-      final completer = Completer<dynamic>();
       final sendId = callWssEndpoint(sink, method, _sendId++, params);
 
       late StreamSubscription subscription;
@@ -194,7 +196,14 @@ class StarknetWebSocketChannel {
   /// Unsubscribe from subscription
   Future<WssUnsubscribeResponse> unsubscribe(String subscriptionId,
       [String? ref]) async {
-    final subId = int.parse(subscriptionId);
+    int subId;
+    try {
+      subId = int.parse(subscriptionId);
+    } catch (e) {
+      print('Error unsubscribing from subscription: $e');
+      return WssUnsubscribeResponse.error(
+          error: JsonWssApiError.invalidSubscriptionId());
+    }
     final response = await sendReceive('starknet_unsubscribe', {
       'subscription_id': subId,
     });
