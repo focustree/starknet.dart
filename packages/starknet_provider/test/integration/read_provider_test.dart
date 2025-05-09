@@ -1130,6 +1130,38 @@ void main() {
           },
         );
       });
+
+      test(
+          'returns TRANSACTION_EXECUTION_ERROR with invalid contract on sepolia',
+          () async {
+        final invalidBroadcastedInvokeTxnV3 =
+            broadcastedInvokeTxnV3.copyWith(nonce: Felt.fromHexString('0x0'));
+        EstimateFeeRequest estimateFeeRequest = EstimateFeeRequest(
+            request: [invalidBroadcastedInvokeTxnV3],
+            blockId: parentBlockId,
+            simulation_flags: []);
+        final providerHost = (provider as JsonRpcReadProvider).nodeUri.host;
+        if (['0.0.0.0', 'localhost', '127.0.0.1'].contains(providerHost)) {
+          print('This test is not available on localhost');
+          return true;
+        }
+        final response = await provider.estimateFee(estimateFeeRequest);
+
+        response.when(
+          error: (error) {
+            expect(error.code, JsonRpcApiErrorCode.TRANSACTION_EXECUTION_ERROR);
+            expect(error.message, 'Transaction execution error');
+            expect(error.errorData, isA<TransactionExecutionError>());
+            final errorData = error.errorData as TransactionExecutionError;
+            expect(errorData.data.transactionIndex, 0);
+            expect(errorData.data.executionError,
+                contains('Transaction validation has failed'));
+          },
+          result: (result) {
+            fail('Should fail.');
+          },
+        );
+      }, tags: ['integration']);
     });
 
     group('starknet_specVersion', () {
