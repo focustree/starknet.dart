@@ -11,7 +11,7 @@ class WssUnsubscribeResponse with _$WssUnsubscribeResponse {
   const factory WssUnsubscribeResponse.result({
     required bool result,
   }) = WssUnsubscribeResult;
-  
+
   const factory WssUnsubscribeResponse.error({
     required JsonWssApiError error,
   }) = WssUnsubscribeError;

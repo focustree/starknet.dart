@@ -18,6 +18,8 @@ enum JsonWssApiErrorCode {
   alreadySubscribed,
   @JsonValue(-2)
   notSubscribed,
+  @JsonValue(-3)
+  disconnected,
 }
 
 @freezed
@@ -31,27 +33,26 @@ class JsonWssApiError with _$JsonWssApiError {
       _$JsonWssApiErrorFromJson(json);
 
   factory JsonWssApiError.invalidSubscriptionId() => const JsonWssApiError(
-    code: JsonWssApiErrorCode.invalidSubscriptionId,
-    message: 'Invalid subscription id'
-  );
+      code: JsonWssApiErrorCode.invalidSubscriptionId,
+      message: 'Invalid subscription id');
 
   factory JsonWssApiError.tooManyAddressesInFilter() => const JsonWssApiError(
-    code: JsonWssApiErrorCode.tooManyAddressesInFilter,
-    message: 'Too many addresses in filter sender_address filter'
-  );
+      code: JsonWssApiErrorCode.tooManyAddressesInFilter,
+      message: 'Too many addresses in filter sender_address filter');
 
   factory JsonWssApiError.tooManyBlocksBack() => const JsonWssApiError(
-    code: JsonWssApiErrorCode.tooManyBlocksBack,
-    message: 'Cannot go back more than 1024 blocks'
-  );
+      code: JsonWssApiErrorCode.tooManyBlocksBack,
+      message: 'Cannot go back more than 1024 blocks');
 
   factory JsonWssApiError.alreadySubscribed() => const JsonWssApiError(
-    code: JsonWssApiErrorCode.alreadySubscribed,
-    message: 'Already subscribed, use unmanaged to handle multiple subscriptions'
-  );
+      code: JsonWssApiErrorCode.alreadySubscribed,
+      message:
+          'Already subscribed, use unmanaged to handle multiple subscriptions');
 
   factory JsonWssApiError.notSubscribed() => const JsonWssApiError(
-    code: JsonWssApiErrorCode.notSubscribed,
-    message: 'Not subscribed'
-  );
-} 
+      code: JsonWssApiErrorCode.notSubscribed, message: 'Not subscribed');
+
+  factory JsonWssApiError.disconnected() => const JsonWssApiError(
+      code: JsonWssApiErrorCode.disconnected,
+      message: 'WebSocket disconnected');
+}

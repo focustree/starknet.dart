@@ -28,4 +28,4 @@ class WssSubscriptionReorgResult with _$WssSubscriptionReorgResult {
 
   factory WssSubscriptionReorgResult.fromJson(Map<String, Object?> json) =>
       _$WssSubscriptionReorgResultFromJson(json);
-} 
+}

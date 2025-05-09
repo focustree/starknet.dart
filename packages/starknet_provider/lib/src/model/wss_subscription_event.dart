@@ -30,4 +30,4 @@ class WssSubscriptionEventResult with _$WssSubscriptionEventResult {
 
   factory WssSubscriptionEventResult.fromJson(Map<String, Object?> json) =>
       _$WssSubscriptionEventResultFromJson(json);
-} 
+}

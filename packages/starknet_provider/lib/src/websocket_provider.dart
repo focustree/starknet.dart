@@ -2,8 +2,8 @@ import 'dart:async';
 import 'dart:convert';
 import 'package:web_socket_channel/web_socket_channel.dart';
 import 'package:web_socket_channel/io.dart';
-//import 'package:starknet_provider/src/types_api.dart';
 import 'package:starknet_provider/src/index.dart';
+import 'call_wss_endpoint.dart';
 import 'package:starknet/starknet.dart';
 
 /// WebSocket subscription types
@@ -18,27 +18,6 @@ enum WSSubscriptions {
 
   @override
   String toString() => value;
-} 
-
-class RequestBody {
-  final dynamic id;
-  final String jsonrpc;
-  final String method;
-  final Map<String, dynamic>? params;
-
-  RequestBody({
-    required this.id,
-    required this.jsonrpc,
-    required this.method,
-    this.params,
-  });
-
-  Map<String, dynamic> toJson() => {
-    'id': id,
-    'jsonrpc': jsonrpc,
-    'method': method,
-    if (params != null) 'params': params,
-  };
 }
 
 /// WebSocket channel provides communication with Starknet node over long-lived socket connection
@@ -49,7 +28,7 @@ class StarknetWebSocketChannel {
 
   /// WebSocket instance
   late WebSocketChannel _channel;
-  
+
   // Remove the old websocket property and add a sink getter
   WebSocketSink get sink => _channel.sink;
 
@@ -61,11 +40,18 @@ class StarknetWebSocketChannel {
   final Map<String, String> subscriptions = {};
 
   /// Event handlers
-  void Function(StarknetWebSocketChannel, WssSubscriptionReorgResponse)? onReorg;
-  void Function(StarknetWebSocketChannel, WssSubscriptionNewHeadResponse)? onNewHeads;
-  void Function(StarknetWebSocketChannel, WssSubscriptionEventResponse)? onEvents;
-  void Function(StarknetWebSocketChannel, WssSubscriptionTransactionsStatusResponse)? onTransactionStatus;
-  void Function(StarknetWebSocketChannel, WssSubscriptionPendingTransactionsResponse)? onPendingTransaction;
+  void Function(StarknetWebSocketChannel, WssSubscriptionReorgResponse)?
+      onReorg;
+  void Function(StarknetWebSocketChannel, WssSubscriptionNewHeadResponse)?
+      onNewHeads;
+  void Function(StarknetWebSocketChannel, WssSubscriptionEventResponse)?
+      onEvents;
+  void Function(
+          StarknetWebSocketChannel, WssSubscriptionTransactionsStatusResponse)?
+      onTransactionStatus;
+  void Function(
+          StarknetWebSocketChannel, WssSubscriptionPendingTransactionsResponse)?
+      onPendingTransaction;
   void Function(StarknetWebSocketChannel, dynamic)? onOpen;
   void Function(StarknetWebSocketChannel, dynamic)? onClose;
   void Function(StarknetWebSocketChannel, dynamic)? onMessage;
@@ -112,13 +98,14 @@ class StarknetWebSocketChannel {
         _isConnected = false;
         _streamController.close();
         if (!_connectionCompleter.isCompleted) {
-          _connectionCompleter.completeError(Exception('Connection closed before established'));
+          _connectionCompleter
+              .completeError(Exception('Connection closed before established'));
         }
         if (onClose != null) onClose!(this, null);
         _subscription = null;
       },
     );
-    
+
     // Mark as connected immediately after setting up listeners
     _isConnected = true;
     if (!_connectionCompleter.isCompleted) {
@@ -133,7 +120,11 @@ class StarknetWebSocketChannel {
   /// Wait for websocket connection
   Future<void> waitForConnection() {
     print('Waiting for WebSocket connection...');
-    return _connectionCompleter.future;
+    if (!_connectionCompleter.isCompleted) {
+      return _connectionCompleter.future;
+    } else {
+      return Future.value();
+    }
   }
 
   /// Check if connection is open
@@ -143,37 +134,20 @@ class StarknetWebSocketChannel {
     return status;
   }
 
-  /// Send data over open ws connection
-  /// Returns the message ID
-  int send(String method, [Map<String, dynamic>? params, int? id]) {
+  /// Send data over open ws connection and receive response
+  Future<Map<String, dynamic>> sendReceive(String method,
+      [Map<String, dynamic>? params]) async {
     try {
+      // Wait for connection to be established
+      await waitForConnection();
+
       if (!isConnected()) {
-        throw Exception('WebSocketChannel.send() fail due to socket disconnected');
+        throw Exception(
+            'WebSocketChannel.send() fail due to socket disconnected');
       }
 
-      final usedId = id ?? _sendId++;
-      final request = RequestBody(
-        id: usedId,
-        jsonrpc: '2.0',
-        method: method,
-        params: params,
-      );
-
-      sink.add(jsonEncode(request));
-      print('********************************************');
-      print('Sent message: ${jsonEncode(request)}');
-      return usedId;
-    } catch (e) {
-      print('Error sending WebSocket message: $e');
-      rethrow;
-    }
-  }
-
-  /// Send data over open ws connection and receive response
-  Future<Map<String, dynamic>> sendReceive(String method, [Map<String, dynamic>? params]) async {
-    try {
       final completer = Completer<dynamic>();
-      final sendId = send(method, params);
+      final sendId = callWssEndpoint(sink, method, _sendId++, params);
 
       late StreamSubscription subscription;
       subscription = stream.listen(
@@ -199,9 +173,12 @@ class StarknetWebSocketChannel {
     }
   }
 
-  /// Disconnect websocket
+  /// Disconnect websocket and wait for completion
   Future<void> disconnect([int? code, String? reason]) async {
     print('Disconnecting WebSocket');
+    // Get the done future before closing anything
+    final doneFuture = _channel.sink.done;
+
     if (_subscription != null) {
       _subscription!.cancel();
       _subscription = null;
@@ -209,16 +186,19 @@ class StarknetWebSocketChannel {
     _streamController.close();
     sink.close(code);
     _isConnected = false;
-    return _channel.sink.done;
+
+    // Wait for the connection to fully close
+    await doneFuture;
   }
 
   /// Unsubscribe from subscription
-  Future<WssUnsubscribeResponse> unsubscribe(String subscriptionId, [String? ref]) async {
+  Future<WssUnsubscribeResponse> unsubscribe(String subscriptionId,
+      [String? ref]) async {
     final subId = int.parse(subscriptionId);
     final response = await sendReceive('starknet_unsubscribe', {
       'subscription_id': subId,
     });
-    
+
     if (ref != null) {
       subscriptions.remove(ref);
     }
@@ -232,25 +212,30 @@ class StarknetWebSocketChannel {
   Future<WssSubscribeNewHeadResponse> subscribeNewHeads() async {
     if (subscriptions.containsKey(WSSubscriptions.newHeads.value)) {
       return WssSubscribeNewHeadResponse.error(
-        error: JsonWssApiError.alreadySubscribed()
-      );
+          error: JsonWssApiError.alreadySubscribed());
     }
     final result = await subscribeNewHeadsUnmanaged();
     result.when(
-      result: (subscription_id) {
-        subscriptions[WSSubscriptions.newHeads.value] = subscription_id;
-      },
-      error: (_) {}
-    );
+        result: (subscription_id) {
+          subscriptions[WSSubscriptions.newHeads.value] = subscription_id;
+        },
+        error: (_) {});
     return result;
   }
 
   /// Subscribe to new block heads (unmanaged)
-  Future<WssSubscribeNewHeadResponse> subscribeNewHeadsUnmanaged([dynamic blockIdentifier]) async {
-    final result = await sendReceive('starknet_subscribeNewHeads', {
-      'block_id': getBlockId(blockIdentifier),
-    });
-    return WssSubscribeNewHeadResponse.fromJson(result);
+  Future<WssSubscribeNewHeadResponse> subscribeNewHeadsUnmanaged(
+      [dynamic blockIdentifier]) async {
+    try {
+      final result = await sendReceive('starknet_subscribeNewHeads', {
+        'block_id': getBlockId(blockIdentifier),
+      });
+      return WssSubscribeNewHeadResponse.fromJson(result);
+    } catch (e) {
+      print('Error subscribing to new heads: $e');
+      return WssSubscribeNewHeadResponse.error(
+          error: JsonWssApiError.disconnected());
+    }
   }
 
   /// Unsubscribe from new heads
@@ -259,8 +244,7 @@ class StarknetWebSocketChannel {
       final subId = subscriptions[WSSubscriptions.newHeads.value];
       if (subId == null) {
         return WssUnsubscribeResponse.error(
-          error: JsonWssApiError.notSubscribed()
-        );
+            error: JsonWssApiError.notSubscribed());
       }
       return await unsubscribe(subId, WSSubscriptions.newHeads.value);
     } catch (e) {
@@ -275,17 +259,19 @@ class StarknetWebSocketChannel {
     List<List<String>>? keys,
     dynamic blockIdentifier,
   ]) async {
-    if (subscriptions.containsKey(WSSubscriptions.events.value)) return WssSubscribeEventsResponse.error(error: JsonWssApiError.alreadySubscribed());
-    final result = await subscribeEventsUnmanaged(fromAddress, keys, blockIdentifier);
+    if (subscriptions.containsKey(WSSubscriptions.events.value))
+      return WssSubscribeEventsResponse.error(
+          error: JsonWssApiError.alreadySubscribed());
+    final result =
+        await subscribeEventsUnmanaged(fromAddress, keys, blockIdentifier);
     result.when(
-      result: (subscription_id) {
-        subscriptions[WSSubscriptions.events.value] = subscription_id;
-      },
-      error: (_) {}
-    );
+        result: (subscription_id) {
+          subscriptions[WSSubscriptions.events.value] = subscription_id;
+        },
+        error: (_) {});
     return result;
   }
-  
+
   /// Subscribe to events (unmanaged)
   Future<WssSubscribeEventsResponse> subscribeEventsUnmanaged([
     Felt? fromAddress,
@@ -305,28 +291,30 @@ class StarknetWebSocketChannel {
     final subId = subscriptions[WSSubscriptions.events.value];
     if (subId == null) {
       return WssUnsubscribeResponse.error(
-        error: JsonWssApiError.notSubscribed()
-      );
+          error: JsonWssApiError.notSubscribed());
     }
     return await unsubscribe(subId, WSSubscriptions.events.value);
   }
 
   /// Subscribe to transaction status
-  Future<WssSubscribeTransactionStatusResponse> subscribeTransactionStatus(Felt transactionHash) async {
-    if (subscriptions.containsKey(WSSubscriptions.transactionStatus.value)) return WssSubscribeTransactionStatusResponse.error(error: JsonWssApiError.alreadySubscribed());
+  Future<WssSubscribeTransactionStatusResponse> subscribeTransactionStatus(
+      Felt transactionHash) async {
+    if (subscriptions.containsKey(WSSubscriptions.transactionStatus.value))
+      return WssSubscribeTransactionStatusResponse.error(
+          error: JsonWssApiError.alreadySubscribed());
     final result = await subscribeTransactionStatusUnmanaged(transactionHash);
     result.when(
-      result: (subscription_id) {
-        subscriptions[WSSubscriptions.transactionStatus.value] = subscription_id;
-      },
-      error: (_) {}
-    );
+        result: (subscription_id) {
+          subscriptions[WSSubscriptions.transactionStatus.value] =
+              subscription_id;
+        },
+        error: (_) {});
     return result;
   }
 
   /// Subscribe to transaction status (unmanaged)
-  Future<WssSubscribeTransactionStatusResponse> subscribeTransactionStatusUnmanaged(
-    Felt transactionHash) async {
+  Future<WssSubscribeTransactionStatusResponse>
+      subscribeTransactionStatusUnmanaged(Felt transactionHash) async {
     final result = await sendReceive('starknet_subscribeTransactionStatus', {
       'transaction_hash': transactionHash.toHexString(),
     });
@@ -338,8 +326,7 @@ class StarknetWebSocketChannel {
     final subId = subscriptions[WSSubscriptions.transactionStatus.value];
     if (subId == null) {
       return WssUnsubscribeResponse.error(
-        error: JsonWssApiError.notSubscribed()
-      );
+          error: JsonWssApiError.notSubscribed());
     }
     return await unsubscribe(subId, WSSubscriptions.transactionStatus.value);
   }
@@ -349,29 +336,33 @@ class StarknetWebSocketChannel {
     bool? transactionDetails,
     List<Felt>? senderAddress,
   ]) async {
-    if (subscriptions.containsKey(WSSubscriptions.pendingTransaction.value)) return WssSubscribePendingTransactionsResponse.error(error: JsonWssApiError.alreadySubscribed());
+    if (subscriptions.containsKey(WSSubscriptions.pendingTransaction.value))
+      return WssSubscribePendingTransactionsResponse.error(
+          error: JsonWssApiError.alreadySubscribed());
     final result = await subscribePendingTransactionUnmanaged(
       transactionDetails,
       senderAddress,
     );
     result.when(
-      result: (subscription_id) {
-        subscriptions[WSSubscriptions.pendingTransaction.value] = subscription_id;
-      },
-      error: (_) {}
-    );
+        result: (subscription_id) {
+          subscriptions[WSSubscriptions.pendingTransaction.value] =
+              subscription_id;
+        },
+        error: (_) {});
     return result;
   }
 
   /// Subscribe to pending transactions (unmanaged)
-  Future<WssSubscribePendingTransactionsResponse> subscribePendingTransactionUnmanaged([
+  Future<WssSubscribePendingTransactionsResponse>
+      subscribePendingTransactionUnmanaged([
     bool? transactionDetails,
     List<Felt>? senderAddress,
   ]) async {
     final result = await sendReceive('starknet_subscribePendingTransactions', {
       if (transactionDetails != null) 'transaction_details': transactionDetails,
       if (senderAddress != null)
-        'sender_address': senderAddress.map((address) => address.toHexString()).toList(),
+        'sender_address':
+            senderAddress.map((address) => address.toHexString()).toList(),
     });
     return WssSubscribePendingTransactionsResponse.fromJson(result);
   }
@@ -381,12 +372,12 @@ class StarknetWebSocketChannel {
     final subId = subscriptions[WSSubscriptions.pendingTransaction.value];
     if (subId == null) {
       return WssUnsubscribeResponse.error(
-        error: JsonWssApiError.notSubscribed()
-      );
+          error: JsonWssApiError.notSubscribed());
     }
     return unsubscribe(subId, WSSubscriptions.pendingTransaction.value);
   }
-  /// Reconnect websocket
+
+  /// Reconnect websocket and wait for connection to be established
   Future<void> reconnect() async {
     print('Reconnecting WebSocket');
     if (_subscription != null) {
@@ -398,6 +389,9 @@ class StarknetWebSocketChannel {
     _connectionCompleter = Completer<void>();
     _channel = IOWebSocketChannel.connect(nodeUrl);
     _setupEventListeners();
+
+    // Wait for the new connection to be established
+    await waitForConnection();
   }
 
   void _handleMessage(dynamic event) {
@@ -414,13 +408,15 @@ class StarknetWebSocketChannel {
         switch (eventName) {
           case 'starknet_subscriptionReorg':
             if (onReorg != null) {
-              onReorg!(this, WssSubscriptionReorgResponse.fromJson(message['params']));
+              onReorg!(this,
+                  WssSubscriptionReorgResponse.fromJson(message['params']));
             }
             break;
           case 'starknet_subscriptionNewHeads':
             if (onNewHeads != null) {
               final messageParams = message['params'];
-              final response = WssSubscriptionNewHeadResponse.fromJson(messageParams);
+              final response =
+                  WssSubscriptionNewHeadResponse.fromJson(messageParams);
               print("////////received response: $response");
               onNewHeads!(this, response);
             }
@@ -428,7 +424,8 @@ class StarknetWebSocketChannel {
           case 'starknet_subscriptionEvents':
             if (onEvents != null) {
               final messageParams = message['params'];
-              final response = WssSubscriptionEventResponse.fromJson(messageParams);
+              final response =
+                  WssSubscriptionEventResponse.fromJson(messageParams);
               print("////////received response: $response");
               onEvents!(this, response);
             }
@@ -436,7 +433,9 @@ class StarknetWebSocketChannel {
           case 'starknet_subscriptionTransactionStatus':
             if (onTransactionStatus != null) {
               final messageParams = message['params'];
-              final response = WssSubscriptionTransactionsStatusResponse.fromJson(messageParams);
+              final response =
+                  WssSubscriptionTransactionsStatusResponse.fromJson(
+                      messageParams);
               print("////////received response: $response");
               onTransactionStatus!(this, response);
             }
@@ -445,7 +444,8 @@ class StarknetWebSocketChannel {
             if (onPendingTransaction != null) {
               onPendingTransaction!(
                 this,
-                WssSubscriptionPendingTransactionsResponse.fromJson(message['params']),
+                WssSubscriptionPendingTransactionsResponse.fromJson(
+                    message['params']),
               );
             }
             break;
@@ -467,7 +467,7 @@ class StarknetWebSocketChannel {
       return 'latest';
     } else if (blockIdentifier is int) {
       return {'block_number': blockIdentifier};
-    } else if (blockIdentifier is String) { 
+    } else if (blockIdentifier is String) {
       if (blockIdentifier.startsWith('0x')) {
         return {'block_hash': blockIdentifier};
       } else {

@@ -11,7 +11,7 @@ class WssSubscribeNewHeadResponse with _$WssSubscribeNewHeadResponse {
   const factory WssSubscribeNewHeadResponse.result({
     @JsonKey(name: 'result') required String subscription_id,
   }) = WssSubscribeNewHeadResult;
-  
+
   const factory WssSubscribeNewHeadResponse.error({
     required JsonWssApiError error,
   }) = WssSubscribeNewHeadError;
@@ -20,4 +20,4 @@ class WssSubscribeNewHeadResponse with _$WssSubscribeNewHeadResponse {
       json.containsKey('error')
           ? WssSubscribeNewHeadError.fromJson(json)
           : WssSubscribeNewHeadResult.fromJson(json);
-} 
+}

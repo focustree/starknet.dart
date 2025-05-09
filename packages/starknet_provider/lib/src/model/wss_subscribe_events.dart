@@ -11,7 +11,7 @@ class WssSubscribeEventsResponse with _$WssSubscribeEventsResponse {
   const factory WssSubscribeEventsResponse.result({
     @JsonKey(name: 'result') required String subscription_id,
   }) = WssSubscribeEventsResult;
-  
+
   const factory WssSubscribeEventsResponse.error({
     required JsonWssApiError error,
   }) = WssSubscribeEventsError;
@@ -20,4 +20,4 @@ class WssSubscribeEventsResponse with _$WssSubscribeEventsResponse {
       json.containsKey('error')
           ? WssSubscribeEventsError.fromJson(json)
           : WssSubscribeEventsResult.fromJson(json);
-} 
+}

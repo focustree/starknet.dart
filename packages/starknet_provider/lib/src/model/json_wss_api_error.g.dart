@@ -27,4 +27,5 @@ const _$JsonWssApiErrorCodeEnumMap = {
   JsonWssApiErrorCode.blockNotFound: 24,
   JsonWssApiErrorCode.alreadySubscribed: -1,
   JsonWssApiErrorCode.notSubscribed: -2,
+  JsonWssApiErrorCode.disconnected: -3,
 };
