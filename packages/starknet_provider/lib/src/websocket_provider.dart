@@ -2,12 +2,9 @@ import 'dart:async';
 import 'dart:convert';
 import 'package:web_socket_channel/web_socket_channel.dart';
 import 'package:web_socket_channel/io.dart';
-
-import 'package:starknet_provider/src/types_api.dart';
-import 'package:starknet_provider/src/block.dart';
-import 'package:starknet_provider/src/util.dart';
-import 'package:starknet_provider/src/starknet_types_08.dart';
-import 'exceptions.dart';
+//import 'package:starknet_provider/src/types_api.dart';
+import 'package:starknet_provider/src/index.dart';
+import 'package:starknet/starknet.dart';
 
 /// WebSocket subscription types
 enum WSSubscriptions {
@@ -22,6 +19,27 @@ enum WSSubscriptions {
   @override
   String toString() => value;
 } 
+
+class RequestBody {
+  final dynamic id;
+  final String jsonrpc;
+  final String method;
+  final Map<String, dynamic>? params;
+
+  RequestBody({
+    required this.id,
+    required this.jsonrpc,
+    required this.method,
+    this.params,
+  });
+
+  Map<String, dynamic> toJson() => {
+    'id': id,
+    'jsonrpc': jsonrpc,
+    'method': method,
+    if (params != null) 'params': params,
+  };
+}
 
 /// WebSocket channel provides communication with Starknet node over long-lived socket connection
 class StarknetWebSocketChannel {
@@ -43,11 +61,11 @@ class StarknetWebSocketChannel {
   final Map<String, String> subscriptions = {};
 
   /// Event handlers
-  void Function(StarknetWebSocketChannel, SubscriptionReorgResponse)? onReorg;
-  void Function(StarknetWebSocketChannel, SubscriptionNewHeadsResponse)? onNewHeads;
-  void Function(StarknetWebSocketChannel, SubscriptionEventsResponse)? onEvents;
-  void Function(StarknetWebSocketChannel, SubscriptionTransactionsStatusResponse)? onTransactionStatus;
-  void Function(StarknetWebSocketChannel, SubscriptionPendingTransactionsResponse)? onPendingTransaction;
+  void Function(StarknetWebSocketChannel, WssSubscriptionReorgResponse)? onReorg;
+  void Function(StarknetWebSocketChannel, WssSubscriptionNewHeadResponse)? onNewHeads;
+  void Function(StarknetWebSocketChannel, WssSubscriptionEventResponse)? onEvents;
+  void Function(StarknetWebSocketChannel, WssSubscriptionTransactionsStatusResponse)? onTransactionStatus;
+  void Function(StarknetWebSocketChannel, WssSubscriptionPendingTransactionsResponse)? onPendingTransaction;
   void Function(StarknetWebSocketChannel, dynamic)? onOpen;
   void Function(StarknetWebSocketChannel, dynamic)? onClose;
   void Function(StarknetWebSocketChannel, dynamic)? onMessage;
@@ -87,7 +105,7 @@ class StarknetWebSocketChannel {
         if (!_connectionCompleter.isCompleted) {
           _connectionCompleter.completeError(error);
         }
-        _handleError(error);
+        if (onError != null) onError!(this, error);
       },
       onDone: () {
         print('WebSocket connection closed');
@@ -96,7 +114,7 @@ class StarknetWebSocketChannel {
         if (!_connectionCompleter.isCompleted) {
           _connectionCompleter.completeError(Exception('Connection closed before established'));
         }
-        _handleClose(null);
+        if (onClose != null) onClose!(this, null);
         _subscription = null;
       },
     );
@@ -130,7 +148,7 @@ class StarknetWebSocketChannel {
   int send(String method, [Map<String, dynamic>? params, int? id]) {
     try {
       if (!isConnected()) {
-        throw WebSocketConnectionException('WebSocketChannel.send() fail due to socket disconnected');
+        throw Exception('WebSocketChannel.send() fail due to socket disconnected');
       }
 
       final usedId = id ?? _sendId++;
@@ -152,7 +170,7 @@ class StarknetWebSocketChannel {
   }
 
   /// Send data over open ws connection and receive response
-  Future<dynamic> sendReceive(String method, [Map<String, dynamic>? params]) async {
+  Future<Map<String, dynamic>> sendReceive(String method, [Map<String, dynamic>? params]) async {
     try {
       final completer = Completer<dynamic>();
       final sendId = send(method, params);
@@ -164,13 +182,7 @@ class StarknetWebSocketChannel {
           print('********************************************');
           print('Received message: $message');
           if (message['id'] == sendId) {
-            if (message.containsKey('result')) {
-              completer.complete(message['result']);
-            } else {
-              completer.completeError(
-                Exception('error on $method, ${message['error']}'),
-              );
-            }
+            completer.complete(message);
             subscription.cancel();
           }
         },
@@ -180,7 +192,7 @@ class StarknetWebSocketChannel {
         },
       );
 
-      return completer.future;
+      return completer.future.then((result) => result as Map<String, dynamic>);
     } catch (e) {
       print('Error in sendReceive: $e');
       rethrow;
@@ -188,7 +200,7 @@ class StarknetWebSocketChannel {
   }
 
   /// Disconnect websocket
-  void disconnect([int? code, String? reason]) {
+  Future<void> disconnect([int? code, String? reason]) async {
     print('Disconnecting WebSocket');
     if (_subscription != null) {
       _subscription!.cancel();
@@ -197,60 +209,58 @@ class StarknetWebSocketChannel {
     _streamController.close();
     sink.close(code);
     _isConnected = false;
-  }
-
-  /// Wait for websocket disconnection
-  Future<void> waitForDisconnection() {
     return _channel.sink.done;
   }
 
   /// Unsubscribe from subscription
-  Future<bool> unsubscribe(String subscriptionId, [String? ref]) async {
-    // Convert subscriptionId to integer if it's a string
-    final int subId;
-    try {
-      subId = int.parse(subscriptionId);
-    } catch (e) {
-      throw Exception('Invalid subscription ID format: $subscriptionId');
+  Future<WssUnsubscribeResponse> unsubscribe(String subscriptionId, [String? ref]) async {
+    final subId = int.parse(subscriptionId);
+    final response = await sendReceive('starknet_unsubscribe', {
+      'subscription_id': subId,
+    });
+    
+    if (ref != null) {
+      subscriptions.remove(ref);
     }
-
-    final status = await sendReceive('starknet_unsubscribe', {
-      'subscription_id': subId,  // Send as integer instead of string
-    }) as bool;
-
-    if (status) {
-      if (ref != null) {
-        subscriptions.remove(ref);
-      }
-      if (onUnsubscribe != null) {
-        onUnsubscribe!(this, subscriptionId);
-      }
+    if (onUnsubscribe != null) {
+      onUnsubscribe!(this, subscriptionId);
     }
-    return status;
+    return WssUnsubscribeResponse.fromJson(response);
   }
 
   /// Subscribe to new block heads
-  Future<String?> subscribeNewHeads([dynamic blockIdentifier]) async {
-    if (subscriptions.containsKey(WSSubscriptions.newHeads.value)) return null;
-    final subId = await subscribeNewHeadsUnmanaged(blockIdentifier);
-    subscriptions[WSSubscriptions.newHeads.value] = subId;
-    return subId;
+  Future<WssSubscribeNewHeadResponse> subscribeNewHeads() async {
+    if (subscriptions.containsKey(WSSubscriptions.newHeads.value)) {
+      return WssSubscribeNewHeadResponse.error(
+        error: JsonWssApiError.alreadySubscribed()
+      );
+    }
+    final result = await subscribeNewHeadsUnmanaged();
+    result.when(
+      result: (subscription_id) {
+        subscriptions[WSSubscriptions.newHeads.value] = subscription_id;
+      },
+      error: (_) {}
+    );
+    return result;
   }
 
   /// Subscribe to new block heads (unmanaged)
-  Future<String> subscribeNewHeadsUnmanaged([dynamic blockIdentifier]) async {
-    final blockId = blockIdentifier != null ? Block(blockIdentifier).identifier : null;
-    return await sendReceive('starknet_subscribeNewHeads', {
-      if (blockId != null) 'block_id': blockId,
-    }).then((result) => result as String);
+  Future<WssSubscribeNewHeadResponse> subscribeNewHeadsUnmanaged([dynamic blockIdentifier]) async {
+    final result = await sendReceive('starknet_subscribeNewHeads', {
+      'block_id': getBlockId(blockIdentifier),
+    });
+    return WssSubscribeNewHeadResponse.fromJson(result);
   }
 
   /// Unsubscribe from new heads
-  Future<bool> unsubscribeNewHeads() async {
+  Future<WssUnsubscribeResponse> unsubscribeNewHeads() async {
     try {
       final subId = subscriptions[WSSubscriptions.newHeads.value];
       if (subId == null) {
-        throw Exception('There is no subscription on this event');
+        return WssUnsubscribeResponse.error(
+          error: JsonWssApiError.notSubscribed()
+        );
       }
       return await unsubscribe(subId, WSSubscriptions.newHeads.value);
     } catch (e) {
@@ -260,100 +270,124 @@ class StarknetWebSocketChannel {
   }
 
   /// Subscribe to events
-  Future<String?> subscribeEvents([
-    BigNumberish? fromAddress,
+  Future<WssSubscribeEventsResponse> subscribeEvents([
+    Felt? fromAddress,
     List<List<String>>? keys,
     dynamic blockIdentifier,
   ]) async {
-    if (subscriptions.containsKey(WSSubscriptions.events.value)) return null;
-    final subId = await subscribeEventsUnmanaged(fromAddress, keys, blockIdentifier);
-    subscriptions[WSSubscriptions.events.value] = subId;
-    return subId;
+    if (subscriptions.containsKey(WSSubscriptions.events.value)) return WssSubscribeEventsResponse.error(error: JsonWssApiError.alreadySubscribed());
+    final result = await subscribeEventsUnmanaged(fromAddress, keys, blockIdentifier);
+    result.when(
+      result: (subscription_id) {
+        subscriptions[WSSubscriptions.events.value] = subscription_id;
+      },
+      error: (_) {}
+    );
+    return result;
   }
-
+  
   /// Subscribe to events (unmanaged)
-  Future<String> subscribeEventsUnmanaged([
-    BigNumberish? fromAddress,
+  Future<WssSubscribeEventsResponse> subscribeEventsUnmanaged([
+    Felt? fromAddress,
     List<List<String>>? keys,
     dynamic blockIdentifier,
-  ]) {
-    final blockId = blockIdentifier != null ? Block(blockIdentifier).identifier : null;
-    return sendReceive('starknet_subscribeEvents', {
-      if (fromAddress != null) 'from_address': toHex(fromAddress),
+  ]) async {
+    final result = await sendReceive('starknet_subscribeEvents', {
+      if (fromAddress != null) 'from_address': fromAddress.toHexString(),
       if (keys != null) 'keys': keys,
-      if (blockId != null) 'block_id': blockId,
-    }).then((result) => result as String);
+      'block_id': getBlockId(blockIdentifier),
+    });
+    return WssSubscribeEventsResponse.fromJson(result);
   }
 
   /// Unsubscribe from events
-  Future<bool> unsubscribeEvents() async {
+  Future<WssUnsubscribeResponse> unsubscribeEvents() async {
     final subId = subscriptions[WSSubscriptions.events.value];
-    if (subId == null) throw Exception('There is no subscription ID for this event');
+    if (subId == null) {
+      return WssUnsubscribeResponse.error(
+        error: JsonWssApiError.notSubscribed()
+      );
+    }
     return await unsubscribe(subId, WSSubscriptions.events.value);
   }
 
   /// Subscribe to transaction status
-  Future<String?> subscribeTransactionStatus(BigNumberish transactionHash) async {
-    if (subscriptions.containsKey(WSSubscriptions.transactionStatus.value)) return null;
-    final subId = await subscribeTransactionStatusUnmanaged(transactionHash);
-    subscriptions[WSSubscriptions.transactionStatus.value] = subId;
-    return subId;
+  Future<WssSubscribeTransactionStatusResponse> subscribeTransactionStatus(Felt transactionHash) async {
+    if (subscriptions.containsKey(WSSubscriptions.transactionStatus.value)) return WssSubscribeTransactionStatusResponse.error(error: JsonWssApiError.alreadySubscribed());
+    final result = await subscribeTransactionStatusUnmanaged(transactionHash);
+    result.when(
+      result: (subscription_id) {
+        subscriptions[WSSubscriptions.transactionStatus.value] = subscription_id;
+      },
+      error: (_) {}
+    );
+    return result;
   }
 
   /// Subscribe to transaction status (unmanaged)
-  Future<String> subscribeTransactionStatusUnmanaged(
-    BigNumberish transactionHash, [
-    dynamic blockIdentifier,
-  ]) {
-    final blockId = blockIdentifier != null ? Block(blockIdentifier).identifier : null;
-    return sendReceive('starknet_subscribeTransactionStatus', {
-      'transaction_hash': toHex(transactionHash),
-      if (blockId != null) 'block_id': blockId,
-    }).then((result) => result as String);
+  Future<WssSubscribeTransactionStatusResponse> subscribeTransactionStatusUnmanaged(
+    Felt transactionHash) async {
+    final result = await sendReceive('starknet_subscribeTransactionStatus', {
+      'transaction_hash': transactionHash.toHexString(),
+    });
+    return WssSubscribeTransactionStatusResponse.fromJson(result);
   }
 
   /// Unsubscribe from transaction status
-  Future<bool> unsubscribeTransactionStatus() {
+  Future<WssUnsubscribeResponse> unsubscribeTransactionStatus() async {
     final subId = subscriptions[WSSubscriptions.transactionStatus.value];
-    if (subId == null) throw Exception('There is no subscription ID for this event');
-    return unsubscribe(subId, WSSubscriptions.transactionStatus.value);
+    if (subId == null) {
+      return WssUnsubscribeResponse.error(
+        error: JsonWssApiError.notSubscribed()
+      );
+    }
+    return await unsubscribe(subId, WSSubscriptions.transactionStatus.value);
   }
 
   /// Subscribe to pending transactions
-  Future<String?> subscribePendingTransaction([
+  Future<WssSubscribePendingTransactionsResponse> subscribePendingTransaction([
     bool? transactionDetails,
-    List<BigNumberish>? senderAddress,
+    List<Felt>? senderAddress,
   ]) async {
-    if (subscriptions.containsKey(WSSubscriptions.pendingTransaction.value)) return null;
-    final subId = await subscribePendingTransactionUnmanaged(
+    if (subscriptions.containsKey(WSSubscriptions.pendingTransaction.value)) return WssSubscribePendingTransactionsResponse.error(error: JsonWssApiError.alreadySubscribed());
+    final result = await subscribePendingTransactionUnmanaged(
       transactionDetails,
       senderAddress,
     );
-    subscriptions[WSSubscriptions.pendingTransaction.value] = subId;
-    return subId;
+    result.when(
+      result: (subscription_id) {
+        subscriptions[WSSubscriptions.pendingTransaction.value] = subscription_id;
+      },
+      error: (_) {}
+    );
+    return result;
   }
 
   /// Subscribe to pending transactions (unmanaged)
-  Future<String> subscribePendingTransactionUnmanaged([
+  Future<WssSubscribePendingTransactionsResponse> subscribePendingTransactionUnmanaged([
     bool? transactionDetails,
-    List<BigNumberish>? senderAddress,
-  ]) {
-    return sendReceive('starknet_subscribePendingTransactions', {
+    List<Felt>? senderAddress,
+  ]) async {
+    final result = await sendReceive('starknet_subscribePendingTransactions', {
       if (transactionDetails != null) 'transaction_details': transactionDetails,
       if (senderAddress != null)
-        'sender_address': bigNumberishArrayToHexadecimalStringArray(senderAddress),
-    }).then((result) => result as String);
+        'sender_address': senderAddress.map((address) => address.toHexString()).toList(),
+    });
+    return WssSubscribePendingTransactionsResponse.fromJson(result);
   }
 
   /// Unsubscribe from pending transactions
-  Future<bool> unsubscribePendingTransaction() {
+  Future<WssUnsubscribeResponse> unsubscribePendingTransaction() async {
     final subId = subscriptions[WSSubscriptions.pendingTransaction.value];
-    if (subId == null) throw Exception('There is no subscription ID for this event');
+    if (subId == null) {
+      return WssUnsubscribeResponse.error(
+        error: JsonWssApiError.notSubscribed()
+      );
+    }
     return unsubscribe(subId, WSSubscriptions.pendingTransaction.value);
   }
-
   /// Reconnect websocket
-  void reconnect() {
+  Future<void> reconnect() async {
     print('Reconnecting WebSocket');
     if (_subscription != null) {
       _subscription!.cancel();
@@ -366,94 +400,52 @@ class StarknetWebSocketChannel {
     _setupEventListeners();
   }
 
-  // Add method for tests
-  Future<dynamic> sendReceiveAny(String method) async {
-    return sendReceive(method);
-  }
-
-  // Update waitForUnsubscription method
-  Future<String> waitForUnsubscription(String? expectedId) async {
-    final completer = Completer<String>();
-    
-    // Set up the unsubscribe handler
-    void Function(StarknetWebSocketChannel, String)? originalOnUnsubscribe;
-    originalOnUnsubscribe = onUnsubscribe;
-    
-    onUnsubscribe = (channel, subscriptionId) {
-      // Restore the original handler
-      onUnsubscribe = originalOnUnsubscribe;
-      
-      // Check if this is the subscription we're waiting for
-      if (expectedId == null || subscriptionId == expectedId) {
-        completer.complete(subscriptionId);
-      }
-    };
-
-    // Set up error handler
-    void Function(StarknetWebSocketChannel, dynamic)? originalOnError;
-    originalOnError = onError;
-    
-    onError = (channel, error) {
-      // Restore the original handler
-      onError = originalOnError;
-      completer.completeError(error);
-    };
-
-    return completer.future;
-  }
-
-  // void _handleOpen(dynamic event) {
-  //   if (onOpen != null) onOpen!(this, event);
-  // }
-
-  void _handleClose(dynamic event) {
-    if (onClose != null) onClose!(this, event);
-  }
-
-  void _handleError(dynamic event) {
-    if (onError != null) onError!(this, event);
-  }
-
   void _handleMessage(dynamic event) {
     try {
       // The event is already a String, no need to access .data
       final message = jsonDecode(event);
-      
       // Handle both subscription events and regular RPC responses
       if (message.containsKey('method')) {
         // This is a subscription event
+        //print('message: $message');
         final eventName = message['method'] as String?;
         if (eventName == null) return;
 
         switch (eventName) {
           case 'starknet_subscriptionReorg':
             if (onReorg != null) {
-              onReorg!(this, SubscriptionReorgResponse.fromJson(message['params']));
+              onReorg!(this, WssSubscriptionReorgResponse.fromJson(message['params']));
             }
             break;
           case 'starknet_subscriptionNewHeads':
             if (onNewHeads != null) {
-              onNewHeads!(this, SubscriptionNewHeadsResponse.fromJson(message['params']));
+              final messageParams = message['params'];
+              final response = WssSubscriptionNewHeadResponse.fromJson(messageParams);
+              print("////////received response: $response");
+              onNewHeads!(this, response);
             }
             break;
           case 'starknet_subscriptionEvents':
             if (onEvents != null) {
-              onEvents!(this, SubscriptionEventsResponse.fromJson(message['params']));
+              final messageParams = message['params'];
+              final response = WssSubscriptionEventResponse.fromJson(messageParams);
+              print("////////received response: $response");
+              onEvents!(this, response);
             }
             break;
           case 'starknet_subscriptionTransactionStatus':
             if (onTransactionStatus != null) {
-              onTransactionStatus!(
-                this,
-                SubscriptionTransactionsStatusResponse.fromJson(message['params']),
-              );
+              final messageParams = message['params'];
+              final response = WssSubscriptionTransactionsStatusResponse.fromJson(messageParams);
+              print("////////received response: $response");
+              onTransactionStatus!(this, response);
             }
             break;
           case 'starknet_subscriptionPendingTransactions':
             if (onPendingTransaction != null) {
               onPendingTransaction!(
                 this,
-                SubscriptionPendingTransactionsResponse.fromJson(message['params']),
+                WssSubscriptionPendingTransactionsResponse.fromJson(message['params']),
               );
             }
             break;
@@ -464,8 +456,24 @@ class StarknetWebSocketChannel {
 
       if (onMessage != null) onMessage!(this, event);
     } catch (e) {
-      print('Error handling message: $e');
+      //print('Error1 handling message: $e');
       if (onError != null) onError!(this, e);
     }
+  }
+
+  /// Convert block identifier to the proper format
+  dynamic getBlockId(dynamic blockIdentifier) {
+    if (blockIdentifier == null) {
+      return 'latest';
+    } else if (blockIdentifier is int) {
+      return {'block_number': blockIdentifier};
+    } else if (blockIdentifier is String) { 
+      if (blockIdentifier.startsWith('0x')) {
+        return {'block_hash': blockIdentifier};
+      } else {
+        return {'block_hash': '0x$blockIdentifier'};
+      }
+    }
+    return 'latest';
   }
 }

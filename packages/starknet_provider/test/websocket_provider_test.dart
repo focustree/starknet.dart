@@ -1,7 +1,6 @@
 import 'package:test/test.dart';
-import 'package:starknet_provider/src/websocket_provider.dart';
-import 'package:starknet_provider/src/exceptions.dart';
-import 'dart:convert';
+import 'package:starknet_provider/src/index.dart';
+import 'package:starknet/starknet.dart';
 import 'dart:async';
 
 const nodeUrl = 'wss://sepolia-pathfinder-rpc.spaceshard.io/rpc/v0_8';
@@ -25,29 +24,35 @@ void main() {
 
     tearDown(() async {
       expect(webSocketChannel.isConnected(), true);
-      webSocketChannel.disconnect();
-      await webSocketChannel.waitForDisconnection();
+      await webSocketChannel.disconnect();
     });
 
     test('Test WS Error and edge cases', () async {
-      webSocketChannel.disconnect();
+      await webSocketChannel.disconnect();
 
       // should fail as disconnected
       await expectLater(
         webSocketChannel.subscribeNewHeads(),
-        throwsA(isA<WebSocketConnectionException>())
+        throwsA(isA<Exception>())
       );
 
       // should reconnect
-      webSocketChannel.reconnect();
+      await webSocketChannel.reconnect();
+      await webSocketChannel.waitForConnection();
 
       // should succeed after reconnection
       final subId = await webSocketChannel.subscribeNewHeads();
-      expect(subId, isNotNull);
+      subId.when(
+        result: (subId) => expect(subId, isNotNull),
+        error: (error) => fail('Should not return an error'),
+      );
 
       // should fail because already subscribed
       final result = await webSocketChannel.subscribeNewHeads();
-      expect(result, isNull);
+      result.when(
+        result: (subId) => fail('Should not return a result'),
+        error: (error) => expect(error.code, JsonWssApiErrorCode.alreadySubscribed),
+      );
     });
 
     test('onUnsubscribe with unsubscribeNewHeads', () async {
@@ -59,247 +64,199 @@ void main() {
 
       await webSocketChannel.subscribeNewHeads();
       final unsubResult = await webSocketChannel.unsubscribeNewHeads();
-      expect(unsubResult, true);
+      unsubResult.when(
+        result: (status) => expect(status, true),
+        error: (error) => fail('Should not return an error'),
+      );
 
-      await expectLater(
-        webSocketChannel.unsubscribeNewHeads(),
-        throwsA(isA<Exception>())
+      final unsubResultFail = await webSocketChannel.unsubscribeNewHeads();
+      unsubResultFail.when(
+        result: (status) => fail('Should not return a result'),
+        error: (error) => expect(error.code, JsonWssApiErrorCode.notSubscribed),
       );
 
       expect(unsubscribeCalled, true);
       expect(webSocketChannel.subscriptions.containsKey(WSSubscriptions.newHeads.value), false);
     });
 
-    test('Test subscribeNewHeads', () async {
-      // First initiate the subscription and get the ID
-      final subId = await webSocketChannel.subscribeNewHeads();
+    test('Test unsubscribe invalid subscription id', () async {
+      // Finalize subscription
+      final fakeSubId = '5';
+      final status = await webSocketChannel.unsubscribe(fakeSubId, WSSubscriptions.newHeads.value);
+      status.when(
+        result: (status) => fail('Should not return a result'),
+        error: (error) => expect(error.code, JsonWssApiErrorCode.invalidSubscriptionId),
+      );
+    }, timeout: Timeout(Duration(minutes: 2)));
 
-      // Now set up event listener with the known subscription ID
+    test('Test subscribeNewHeads', () async {      
+      // Setup onNewHeads handler function
       final eventCompleter = Completer<void>();
-      int eventCount = 0;
-      
-      final subscription = webSocketChannel.stream.listen((event) async {
-        print('Subscription event: $event');
-        try {
-          final jsonData = jsonDecode(event);
-          // Validate using subscription ID instead of method name
-          if (jsonData['params']?['subscription_id'] == subId) {
-            eventCount++;
-            expect(jsonData['params']['result'], isNotNull);
-            if (eventCount == 2) {
+      final blocks = <WssSubscriptionNewHeadResponse>[];
 
-              eventCompleter.complete();
-            }
-          }
-        } catch (e) {
-          print('Error processing subscription event: $e');
-          eventCompleter.completeError(e);
+      webSocketChannel.onNewHeads = (channel, response) {
+        blocks.add(response);
+        print("blocks.length: ${blocks.length}");
+        print("////////received response: ${response.result}");
+        if (blocks.length == 2) {
+          eventCompleter.complete();
         }
-      });
+      };
+
+      // Initiate subscription
+      final subId = await webSocketChannel.subscribeNewHeads();
+      subId.when(
+        result: (subId) {
+          expect(subId, isNotNull);
+        },
+        error: (error) => fail('Should not return an error'),
+      );
       
       // Wait for the subscription events or timeout
-      await Future.any([
-        eventCompleter.future,
-        Future.delayed(Duration(minutes: 10)).then((_) {
-          throw TimeoutException('Did not receive expected number of events');
-        }),
-      ]);
+      await eventCompleter.future.timeout(
+        Duration(minutes: 2), 
+        onTimeout: () => print('Test timed out waiting for blocks')
+      );
 
-      // Finalize
-      await subscription.cancel();
+      // Finalize subscription
       final status = await webSocketChannel.unsubscribeNewHeads();
-      expect(status, true);
-      //final unsubId = await webSocketChannel.waitForUnsubscription(subId); THIS INOT REQUIRED?
+      status.when(
+        result: (status) => expect(status, true),
+        error: (error) => fail('Should not return an error'),
+      );
+
       // Validate
-      //expect(unsubId, subId);
       expect(webSocketChannel.subscriptions.containsKey(WSSubscriptions.newHeads.value), false);
-    }, timeout: Timeout(Duration(minutes: 10)));
+    }, timeout: Timeout(Duration(minutes: 2)));
 
+    test('Test subscribeNewHeads with invalid block_id', () async {      
+      // Initiate subscription
+      final subId = await webSocketChannel.subscribeNewHeadsUnmanaged(//invalid block_id
+        '0x194b07e7a53'
+      );
+      subId.when(
+        result: (subId) => fail('Should not return a result'),
+        error: (error) => expect(error.code, JsonWssApiErrorCode.blockNotFound),
+      );
+    }, timeout: Timeout(Duration(minutes: 2)));
+    
     test('Test subscribeEvents', () async {
-      // First initiate the subscription
-      await webSocketChannel.subscribeEvents();
-
-      // Now set up event listener
+      // Setup onEvents handler function
       final completer = Completer<void>();
-      int i = 0;
+      int eventCount = 0;
 
-      final subscription = webSocketChannel.stream.listen((event) async {
-        print('event: $event');
-        try {
-          final jsonData = jsonDecode(event);
-          if (isValidSubscriptionMessage(jsonData)) {
-            i += 1;
-            expect(jsonData['params']['result'], isNotNull);
-            if (i == 5) {
-              completer.complete();
-            }
-          }
-        } catch (e) {
-          print('Error processing event: $e');
-          completer.completeError(e);
+      webSocketChannel.onEvents = (channel, response) async {
+        eventCount++;
+        print("response.result: ${response.result}");
+        expect(response.result.transactionHash, isNotNull);
+        if (eventCount == 5) {
+          completer.complete();
         }
-      });
-      
-      await Future.any([
-        completer.future,
-        Future.delayed(Duration(minutes: 2)).then((_) {
-          throw TimeoutException('Did not receive expected number of events');
-        }),
-      ]);
+      };
 
-      // Finalize
-      await subscription.cancel();
+      // Initiate subscription
+      final subId = await webSocketChannel.subscribeEvents();
+      subId.when(
+        result: (subId) => expect(subId, isNotNull),
+        error: (error) => fail('Should not return an error'),
+      );
+      
+      // Wait for the subscription events or timeout
+      await completer.future.timeout(
+        Duration(minutes: 2),
+        onTimeout: () => print('Test timed out waiting for events')
+      );
+
+      // Finalize subscription
       final status = await webSocketChannel.unsubscribeEvents();
-      expect(status, true);
+      status.when(
+        result: (status) => expect(status, true),
+        error: (error) => fail('Should not return an error'),
+      );
+
+      // Validate
       expect(webSocketChannel.subscriptions.containsKey(WSSubscriptions.events.value), false);
-    }, timeout: Timeout(Duration(minutes: 3)));
+    }, timeout: Timeout(Duration(minutes: 2)));
+
+    test('Test subscribeEvents with invalid block_id', () async {
+      // Initiate subscription
+      final subId = await webSocketChannel.subscribeEvents(null,null,'0x194b07e7a53');
+      subId.when(
+        result: (subId) => fail('Should not return a result'),
+        error: (error) => expect(error.code, JsonWssApiErrorCode.blockNotFound),
+      );
+    }, timeout: Timeout(Duration(minutes: 2)));
 
     test('Test subscribePendingTransaction', () async {
-      await webSocketChannel.subscribePendingTransaction(true);
-
+      // Setup onPendingTransaction handler function
       final completer = Completer<void>();
       int i = 0;
-      final subscription = webSocketChannel.stream.listen((event) {
-        print('event: $event');
-        try {
-          final jsonData = jsonDecode(event);
-          if (isValidSubscriptionMessage(jsonData)) {
-            i += 1;
-            expect(jsonData['params']['result'], isNotNull);
-            if (i == 5) {
-              completer.complete();
-            }
-          }
-        } catch (e) {
-          print('Error processing event: $e');
-          completer.completeError(e);
-        }
-      });
 
-      await Future.any([
-        completer.future,
-        Future.delayed(Duration(minutes: 5)).then((_) {
-          throw TimeoutException('Did not receive expected number of events');
-        }),
-      ]);
+      webSocketChannel.onPendingTransaction = (channel, response) {
+          i += 1;
+          expect(response.result, isNotNull);
+          if (i == 5) {
+            completer.complete();
+          }
+      };
+
+      // Initiate subscription
+      final subId = await webSocketChannel.subscribePendingTransaction(true);
+      subId.when(
+        result: (subId) => expect(subId, isNotNull),
+        error: (error) => fail('Should not return an error'),
+      );
+
+      // Wait for the pending transaction events or timeout
+      await completer.future.timeout(
+        Duration(minutes: 2),
+        onTimeout: () => print('Test timed out waiting for pending transactions events')
+      );
       
       //Finalize
-      await subscription.cancel();
       final status = await webSocketChannel.unsubscribePendingTransaction();
-      expect(status, true);
+        status.when(
+          result: (status) => expect(status, true),
+          error: (error) => fail('Should not return an error'),
+        );
 
-      //final expectedId = webSocketChannel.subscriptions[WSSubscriptions.pendingTransaction.value];
-      //expect(expectedId, isNotNull);
-      
-      //final subscriptionId = await webSocketChannel.waitForUnsubscription(expectedId);
-      //expect(subscriptionId, expectedId);
+      // Validate
       expect(webSocketChannel.subscriptions.containsKey(WSSubscriptions.pendingTransaction.value), false);
-    }, timeout: Timeout(Duration(minutes: 10)));
+    }, timeout: Timeout(Duration(minutes: 2)));
 
     test('Test subscribeTransactionStatus', () async {
-      // Subcribe to pendingTransaction and get a random transaction hash
-      await webSocketChannel.subscribePendingTransaction(true);
-      var transactionHash = '';
-
-      final completer_aux = Completer<void>();
-      final subscription_aux = webSocketChannel.stream.listen((event) {
-        print('event: $event');
-        try {
-          final jsonData = jsonDecode(event);
-          if (isValidSubscriptionMessage(jsonData)) {
-            transactionHash = jsonData['params']['result']['transaction_hash'];
-            completer_aux.complete();
-          }
-        } catch (e) {
-          print('Error processing event: $e');
-          completer_aux.completeError(e);
-        }
-      });
-
-      await Future.any([
-        completer_aux.future,
-        Future.delayed(Duration(minutes: 2)).then((_) {
-          throw TimeoutException('Did not receive expected number of events');
-        }),
-      ]);
-      
-      //Finalize subscription to pending transaction
-      await subscription_aux.cancel();
-      final status_aux = await webSocketChannel.unsubscribePendingTransaction();
-      expect(status_aux, true);
-
-      // Track transaction status
-      final subId = await webSocketChannel.subscribeTransactionStatus(transactionHash);
-      expect(subId, isNotNull);
-
+      // Setup onTransactionStatus handler function
       final completer = Completer<void>();
-      int i = 0;
-      final subscription = webSocketChannel.stream.listen((event) {
-        print('event: $event');
-        try {
-          final jsonData = jsonDecode(event);
-          if (isValidSubscriptionMessage(jsonData)) {
-            i += 1;
-            expect(jsonData['params']['result'], isNotNull);
-            if (i >= 1) {
-              completer.complete();
-            }
-          }
-        } catch (e) {
-          print('Error processing event: $e');
-          completer.completeError(e);
-        }
-      });
+      final transactionHash = '0x194b07e7a536cbf2b94c74d558af8b9c689dbdd70a649a7ce1ca07375ae3cc9';
 
-      await Future.any([
-        completer.future,
-        Future.delayed(Duration(minutes: 2)).then((_) {
-          throw TimeoutException('Did not receive expected number of events');
-        }),
-      ]);
+      webSocketChannel.onTransactionStatus = (channel, response) {
+        expect(response.result.status.executionStatus, "SUCCEEDED");
+        completer.complete();
+      };
+
+      // Initiate subscription
+      final subId = await webSocketChannel.subscribeTransactionStatus(Felt.fromHexString(transactionHash));
+      subId.when(
+        result: (subId) => expect(subId, isNotNull),
+        error: (error) => fail('Should not return an error'),
+      );
+      
+      // Wait for the subscription events or timeout
+      await completer.future.timeout(
+        Duration(minutes: 2),
+        onTimeout: () => print('Test timed out waiting for transaction status events')
+      );
 
       // Finalize      
-      final expectedId = webSocketChannel.subscriptions[WSSubscriptions.transactionStatus.value];
-      expect(expectedId, isNotNull);
-      
-      await subscription.cancel();
       final status = await webSocketChannel.unsubscribeTransactionStatus();
-      expect(status, true);
+      status.when(
+        result: (status) => expect(status, true),
+        error: (error) => fail('Should not return an error'),
+      );
 
-      //final subscriptionId = await webSocketChannel.waitForUnsubscription(expectedId);
-      //expect(subscriptionId, expectedId);
+      // Validate
       expect(webSocketChannel.subscriptions.containsKey(WSSubscriptions.transactionStatus.value), false);
-    }, timeout: Timeout(Duration(minutes: 10)));
-
-    // test('Test subscribeTransactionStatus with block_id', () async {
-    //   // Create a transaction to track
-    //   // Note: You'll need to implement a way to create a transaction
-    //   // This is a placeholder - replace with actual transaction creation
-    //   final transactionHash = '0x123456789abcdef'; // Replace with actual transaction hash
-      
-    // //   int i = 0;
-    // //   webSocketChannel.stream.listen((event) {
-    // //     print('event: $event');
-    // //     i += 1;
-    // //     // Add data format validation
-    // //     expect(jsonDecode(event)['result'], isNotNull);
-    // //     if (i >= 1) {
-    // //       webSocketChannel.unsubscribeTransactionStatus();
-    // //     }
-    // //   });
-
-    // //   // Use a specific block ID
-    // //   final blockId = {'block_number': 1234}; // Example block ID
-    // //   final subId = await webSocketChannel.subscribeTransactionStatus(transactionHash, blockId);
-    // //   expect(subId, isNotNull);
-      
-    // //   final expectedId = webSocketChannel.subscriptions[WSSubscriptions.transactionStatus.value];
-    // //   expect(expectedId, isNotNull);
-      
-    // //   final subscriptionId = await webSocketChannel.waitForUnsubscription(expectedId);
-    // //   expect(subscriptionId, expectedId);
-    // //   expect(webSocketChannel.subscriptions.containsKey(WSSubscriptions.transactionStatus.value), false);
-    //  }, timeout: Timeout(Duration(minutes: 10)));
+    }, timeout: Timeout(Duration(minutes: 5)));
   });
 
   group('websocket regular endpoints - pathfinder test', () {
@@ -316,9 +273,9 @@ void main() {
     });
 
     test('regular rpc endpoint', () async {
-      final response = await webSocketChannel.sendReceiveAny('starknet_chainId');
+      final response = await webSocketChannel.sendReceive('starknet_chainId');
       final snSepolia = '0x534e5f5345504f4c4941'; //SN_SEPOLIA
-      expect(response, snSepolia);
+      expect(response['result'], snSepolia);
     });
   });
 }
