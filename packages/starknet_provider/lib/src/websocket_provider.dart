@@ -259,9 +259,10 @@ class StarknetWebSocketChannel {
     List<List<String>>? keys,
     dynamic blockIdentifier,
   ]) async {
-    if (subscriptions.containsKey(WSSubscriptions.events.value))
+    if (subscriptions.containsKey(WSSubscriptions.events.value)) {
       return WssSubscribeEventsResponse.error(
           error: JsonWssApiError.alreadySubscribed());
+    }
     final result =
         await subscribeEventsUnmanaged(fromAddress, keys, blockIdentifier);
     result.when(
@@ -299,9 +300,10 @@ class StarknetWebSocketChannel {
   /// Subscribe to transaction status
   Future<WssSubscribeTransactionStatusResponse> subscribeTransactionStatus(
       Felt transactionHash) async {
-    if (subscriptions.containsKey(WSSubscriptions.transactionStatus.value))
+    if (subscriptions.containsKey(WSSubscriptions.transactionStatus.value)) {
       return WssSubscribeTransactionStatusResponse.error(
           error: JsonWssApiError.alreadySubscribed());
+    }
     final result = await subscribeTransactionStatusUnmanaged(transactionHash);
     result.when(
         result: (subscription_id) {
@@ -336,9 +338,10 @@ class StarknetWebSocketChannel {
     bool? transactionDetails,
     List<Felt>? senderAddress,
   ]) async {
-    if (subscriptions.containsKey(WSSubscriptions.pendingTransaction.value))
+    if (subscriptions.containsKey(WSSubscriptions.pendingTransaction.value)) {
       return WssSubscribePendingTransactionsResponse.error(
           error: JsonWssApiError.alreadySubscribed());
+    }
     final result = await subscribePendingTransactionUnmanaged(
       transactionDetails,
       senderAddress,

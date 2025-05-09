@@ -5,14 +5,6 @@ import 'dart:async';
 
 const nodeUrl = 'wss://sepolia-pathfinder-rpc.spaceshard.io/rpc/v0_8';
 
-bool isValidSubscriptionMessage(Map<String, dynamic> jsonData) {
-  return jsonData != null &&
-      jsonData['method'] != null &&
-      jsonData['method'].toString().startsWith('starknet_subscription') &&
-      jsonData['params'] != null &&
-      jsonData['params']['result'] != null;
-}
-
 void main() {
   group('websocket specific endpoints - pathfinder test', () {
     late StarknetWebSocketChannel webSocketChannel;
@@ -274,7 +266,7 @@ void main() {
               .containsKey(WSSubscriptions.transactionStatus.value),
           false);
     }, timeout: Timeout(Duration(minutes: 5)));
-  });
+  }, tags: ['integration']);
 
   group('websocket regular endpoints - pathfinder test', () {
     late StarknetWebSocketChannel webSocketChannel;
@@ -294,5 +286,5 @@ void main() {
       final snSepolia = '0x534e5f5345504f4c4941'; //SN_SEPOLIA
       expect(response['result'], snSepolia);
     });
-  });
+  }, tags: ['integration']);
 }
