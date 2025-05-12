@@ -66,35 +66,33 @@ class StarknetWebSocketChannel {
   StarknetWebSocketChannel({required this.nodeUrl}) {
     _connectionCompleter = Completer<void>();
     _streamController = StreamController<dynamic>.broadcast();
-    print('Creating WebSocket connection to: $nodeUrl');
     try {
       _channel = IOWebSocketChannel.connect(nodeUrl);
-      print('WebSocket channel created successfully');
       _setupEventListeners();
     } catch (e) {
-      print('Error creating WebSocket channel: $e');
       _connectionCompleter.completeError(e);
       rethrow;
     }
   }
 
   void _setupEventListeners() {
-    print('Setting up WebSocket event listeners');
     _subscription = _channel.stream.listen(
       (event) {
-        _streamController.add(event);
-        _handleMessage(event);
+        if (_isConnected) {
+          _streamController.add(event);
+          _handleMessage(event);
+        }
       },
       onError: (error) {
-        print('WebSocket error: $error');
-        _streamController.addError(error);
-        if (!_connectionCompleter.isCompleted) {
-          _connectionCompleter.completeError(error);
+        if (_isConnected) {
+          _streamController.addError(error);
+          if (!_connectionCompleter.isCompleted) {
+            _connectionCompleter.completeError(error);
+          }
+          if (onError != null) onError!(this, error);
         }
-        if (onError != null) onError!(this, error);
       },
       onDone: () {
-        print('WebSocket connection closed');
         _isConnected = false;
         _streamController.close();
         if (!_connectionCompleter.isCompleted) {
@@ -109,7 +107,6 @@ class StarknetWebSocketChannel {
     // Mark as connected immediately after setting up listeners
     _isConnected = true;
     if (!_connectionCompleter.isCompleted) {
-      print('WebSocket connection established');
       if (onOpen != null) {
         onOpen!(this, null);
       }
@@ -122,7 +119,6 @@ class StarknetWebSocketChannel {
 
   /// Wait for websocket connection
   Future<void> waitForConnection() {
-    print('Waiting for WebSocket connection...');
     if (!_connectionCompleter.isCompleted) {
       return _connectionCompleter.future;
     } else {
@@ -133,7 +129,6 @@ class StarknetWebSocketChannel {
   /// Check if connection is open
   bool isConnected() {
     final status = _isConnected && _channel.closeCode == null;
-    print('Connection status: $status');
     return status;
   }
 
@@ -155,8 +150,6 @@ class StarknetWebSocketChannel {
       subscription = stream.listen(
         (data) {
           final message = jsonDecode(data);
-          print('********************************************');
-          print('Received message: $message');
           if (message['id'] == sendId) {
             completer.complete(message);
             subscription.cancel();
@@ -170,27 +163,89 @@ class StarknetWebSocketChannel {
 
       return completer.future.then((result) => result as Map<String, dynamic>);
     } catch (e) {
-      print('Error in sendReceive: $e');
       rethrow;
     }
   }
 
-  /// Disconnect websocket and wait for completion
-  Future<void> disconnect([int? code, String? reason]) async {
-    print('Disconnecting WebSocket');
-    // Get the done future before closing anything
-    final doneFuture = _channel.sink.done;
-
-    if (_subscription != null) {
-      _subscription!.cancel();
-      _subscription = null;
-    }
-    _streamController.close();
-    sink.close(code);
+  /// Disconnect websocket
+  Future<void> disconnect([int? code = 1000, String? reason]) async {
+    // Set disconnected state first to prevent new operations
     _isConnected = false;
 
-    // Wait for the connection to fully close
-    await doneFuture;
+    // Now cancel subscription
+    if (_subscription != null) {
+      await _subscription!.cancel();
+      _subscription = null;
+    }
+
+    // Close the stream controller
+    _streamController.close();
+
+    // Close the sink
+    _channel.sink.close(code);
+  }
+
+  /// Wait for disconnection completion
+  Future<void> waitForDisconnect() async {
+    try {
+      await _channel.sink.done;
+    } catch (e) {
+      // Ignore errors during disconnect
+    }
+  }
+
+  /// Reconnect websocket and wait for connection to be established
+  Future<void> reconnect() async {
+    try {
+      // Completely clean up existing connection
+      if (isConnected()) {
+        // Properly disconnect first
+        disconnect(1000, "Reconnecting");
+      }
+      await waitForDisconnect();
+
+      // Cancel any existing subscription
+      if (_subscription != null) {
+        _subscription!.cancel();
+        _subscription = null;
+      }
+
+      // Close the stream controller
+      _streamController.close();
+
+      // Create fresh resources
+      _streamController = StreamController<dynamic>.broadcast();
+      _connectionCompleter = Completer<void>();
+      _isConnected = false;
+
+      // Use try/catch for the new connection itself
+      //try 3 times and wait 500ms between each try
+      for (int i = 0; i < 3; i++) {
+        try {
+          final delay = Duration(milliseconds: 1000 * (1 << i)); // 1s, 2s, 4s
+          //print("Waiting ${delay.inMilliseconds}ms before retry ${i+1}...");
+          await Future.delayed(delay);
+          _channel = IOWebSocketChannel.connect(nodeUrl);
+          _setupEventListeners();
+          break;
+        } catch (e) {
+          if (i == 2) {
+            rethrow;
+          }
+        }
+      }
+
+      if (!_connectionCompleter.isCompleted) {
+        _connectionCompleter.completeError(Exception('Connection failed'));
+      }
+
+      // Wait for the new connection to be established
+      await waitForConnection();
+      _isConnected = true;
+    } catch (e) {
+      print('Error during reconnect: $e');
+      rethrow;
+    }
   }
 
   /// Unsubscribe from subscription
@@ -200,7 +255,6 @@ class StarknetWebSocketChannel {
     try {
       subId = int.parse(subscriptionId);
     } catch (e) {
-      print('Error unsubscribing from subscription: $e');
       return WssUnsubscribeResponse.error(
           error: JsonWssApiError.invalidSubscriptionId());
     }
@@ -241,7 +295,6 @@ class StarknetWebSocketChannel {
       });
       return WssSubscribeNewHeadResponse.fromJson(result);
     } catch (e) {
-      print('Error subscribing to new heads: $e');
       return WssSubscribeNewHeadResponse.error(
           error: JsonWssApiError.disconnected());
     }
@@ -257,7 +310,6 @@ class StarknetWebSocketChannel {
       }
       return await unsubscribe(subId, WSSubscriptions.newHeads.value);
     } catch (e) {
-      print('Error unsubscribing from new heads: $e');
       rethrow;
     }
   }
@@ -389,23 +441,6 @@ class StarknetWebSocketChannel {
     return unsubscribe(subId, WSSubscriptions.pendingTransaction.value);
   }
 
-  /// Reconnect websocket and wait for connection to be established
-  Future<void> reconnect() async {
-    print('Reconnecting WebSocket');
-    if (_subscription != null) {
-      _subscription!.cancel();
-      _subscription = null;
-    }
-    _streamController.close();
-    _streamController = StreamController<dynamic>.broadcast();
-    _connectionCompleter = Completer<void>();
-    _channel = IOWebSocketChannel.connect(nodeUrl);
-    _setupEventListeners();
-
-    // Wait for the new connection to be established
-    await waitForConnection();
-  }
-
   void _handleMessage(dynamic event) {
     try {
       // The event is already a String, no need to access .data
@@ -413,7 +448,6 @@ class StarknetWebSocketChannel {
       // Handle both subscription events and regular RPC responses
       if (message.containsKey('method')) {
         // This is a subscription event
-        //print('message: $message');
         final eventName = message['method'] as String?;
         if (eventName == null) return;
 
@@ -429,7 +463,6 @@ class StarknetWebSocketChannel {
               final messageParams = message['params'];
               final response =
                   WssSubscriptionNewHeadResponse.fromJson(messageParams);
-              print("////////received response: $response");
               onNewHeads!(this, response);
             }
             break;
@@ -438,7 +471,6 @@ class StarknetWebSocketChannel {
               final messageParams = message['params'];
               final response =
                   WssSubscriptionEventResponse.fromJson(messageParams);
-              print("////////received response: $response");
               onEvents!(this, response);
             }
             break;
@@ -448,7 +480,6 @@ class StarknetWebSocketChannel {
               final response =
                   WssSubscriptionTransactionsStatusResponse.fromJson(
                       messageParams);
-              print("////////received response: $response");
               onTransactionStatus!(this, response);
             }
             break;
@@ -468,7 +499,6 @@ class StarknetWebSocketChannel {
 
       if (onMessage != null) onMessage!(this, event);
     } catch (e) {
-      //print('Error1 handling message: $e');
       if (onError != null) onError!(this, e);
     }
   }

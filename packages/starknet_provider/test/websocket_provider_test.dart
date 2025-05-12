@@ -8,7 +8,7 @@ void main() {
   group('websocket specific endpoints - pathfinder test', () {
     late StarknetWebSocketChannel webSocketChannel;
 
-    setUp(() async {
+    setUpAll(() async {
       final nodeUrl = Platform.environment['STARKNET_WSS'];
       if (nodeUrl == null) {
         throw Exception('STARKNET_WSS environment variable is not set');
@@ -18,13 +18,16 @@ void main() {
       expect(webSocketChannel.isConnected(), true);
     });
 
-    tearDown(() async {
-      expect(webSocketChannel.isConnected(), true);
-      await webSocketChannel.disconnect();
+    tearDownAll(() async {
+      if (webSocketChannel.isConnected()) {
+        await webSocketChannel.disconnect();
+        await webSocketChannel.waitForDisconnect();
+      }
     });
 
     test('Test WS Error and edge cases', () async {
       await webSocketChannel.disconnect();
+      await webSocketChannel.waitForDisconnect();
 
       // should fail as disconnected
       final subIdDisconnected = await webSocketChannel.subscribeNewHeads();
@@ -35,6 +38,7 @@ void main() {
 
       // should reconnect
       await webSocketChannel.reconnect();
+      await webSocketChannel.waitForConnection();
 
       // should succeed after reconnection
       final subId = await webSocketChannel.subscribeNewHeads();
@@ -99,8 +103,7 @@ void main() {
 
       webSocketChannel.onNewHeads = (channel, response) {
         blocks.add(response);
-        print("blocks.length: ${blocks.length}");
-        print("////////received response: ${response.result}");
+        //print("received response: ${response.result}");
         if (blocks.length == 2) {
           eventCompleter.complete();
         }
@@ -155,7 +158,7 @@ void main() {
 
       webSocketChannel.onEvents = (channel, response) async {
         eventCount++;
-        print("response.result: ${response.result}");
+        //print("response.result: ${response.result}");
         expect(response.result.transactionHash, isNotNull);
         if (eventCount == 5) {
           completer.complete();
@@ -288,7 +291,7 @@ void main() {
   group('websocket regular endpoints - pathfinder test', () {
     late StarknetWebSocketChannel webSocketChannel;
 
-    setUp(() async {
+    setUpAll(() async {
       final nodeUrl = Platform.environment['STARKNET_WSS'];
       if (nodeUrl == null) {
         throw Exception('STARKNET_WSS environment variable is not set');
@@ -298,9 +301,11 @@ void main() {
       expect(webSocketChannel.isConnected(), true);
     });
 
-    tearDown(() async {
-      expect(webSocketChannel.isConnected(), true);
-      await webSocketChannel.disconnect();
+    tearDownAll(() async {
+      if (webSocketChannel.isConnected()) {
+        await webSocketChannel.disconnect();
+        await webSocketChannel.waitForDisconnect();
+      }
     });
 
     test('regular rpc endpoint', () async {

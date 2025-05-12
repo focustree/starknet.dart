@@ -35,7 +35,5 @@ int callWssEndpoint(WebSocketSink sink, String method, int sendId,
   );
 
   sink.add(jsonEncode(request));
-  print('********************************************');
-  print('Sent message: ${jsonEncode(request)}');
   return usedId;
 }
