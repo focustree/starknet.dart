@@ -163,7 +163,7 @@ enum JsonRpcApiErrorCode {
   INVALID_QUERY,
   @JsonValue(-32603)
   INTERNAL_SEQUENCER,
-  @JsonValue(-32604)
+  @JsonValue(-32604) // Last known error value - 1 for unknown error
   UNKNOWN,
 }
 
