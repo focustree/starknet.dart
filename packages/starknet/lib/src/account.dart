@@ -1147,9 +1147,8 @@ class OpenzeppelinAccountDerivation implements AccountDerivation {
         return result.transactionHash;
       },
       error: (error) {
-        throw Exception(
-          'Account deploy failed: ${error.code} ${error.message}',
-        );
+        throw Exception('Account deploy failed: ${error.code} ${error.message}'
+            '${error.errorData != null ? ' ${error.errorData}' : ''}');
       },
     );
     return deployTxHash;

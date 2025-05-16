@@ -7,37 +7,49 @@ part 'json_rpc_api_error.g.dart';
 
 // Add this JsonConverter to handle JsonRpcApiErrorData serialization
 class JsonRpcApiErrorDataConverter
-    implements JsonConverter<JsonRpcApiErrorData?, Map<String, dynamic>?> {
+    implements JsonConverter<JsonRpcApiErrorData?, dynamic> {
   const JsonRpcApiErrorDataConverter();
 
   @override
-  JsonRpcApiErrorData? fromJson(Map<String, dynamic>? json) {
+  JsonRpcApiErrorData? fromJson(dynamic json) {
+    // This method will be called by the standard freezed deserializer
+    // But we can't use it effectively without the error code context
+    // The actual conversion happens in fromJsonWithCode below
+    return null;
+  }
+
+  JsonRpcApiErrorData? fromJsonWithCode(
+      dynamic json, JsonRpcApiErrorCode errorCode) {
     if (json == null) return null;
-    return JsonRpcApiErrorData.fromJson(json);
+
+    switch (errorCode) {
+      // from api_openrpc
+      case JsonRpcApiErrorCode.CONTRACT_ERROR:
+        return JsonRpcApiErrorData.contractError(
+          data: ContractErrorData.fromJson(json),
+        );
+      case JsonRpcApiErrorCode.TRANSACTION_EXECUTION_ERROR:
+        return JsonRpcApiErrorData.transactionExecutionError(
+          data: TransactionExecutionErrorData.fromJson(json),
+        );
+      // from write_api
+      case JsonRpcApiErrorCode.VALIDATION_FAILURE:
+      case JsonRpcApiErrorCode.UNEXPECTED_ERROR:
+      default:
+        return JsonRpcApiErrorData.stringData(
+            json is String ? json : json.toString());
+    }
   }
 
   @override
-  Map<String, dynamic>? toJson(JsonRpcApiErrorData? data) {
+  dynamic toJson(JsonRpcApiErrorData? data) {
     if (data == null) return null;
     return data.when(
       contractError: (contractData) => contractData.toJson(),
       transactionExecutionError: (txExecData) => txExecData.toJson(),
+      stringData: (data) => data,
     );
   }
-}
-
-@freezed
-class JsonRpcApiError with _$JsonRpcApiError {
-  const factory JsonRpcApiError({
-    required JsonRpcApiErrorCode code,
-    required String message,
-    @JsonKey(name: 'data')
-    @JsonRpcApiErrorDataConverter() // Apply the converter here
-    JsonRpcApiErrorData? errorData,
-  }) = _JsonRpcApiError;
-
-  factory JsonRpcApiError.fromJson(Map<String, Object?> json) =>
-      _$JsonRpcApiErrorFromJson(json);
 }
 
 @freezed
@@ -73,19 +85,10 @@ class JsonRpcApiErrorData with _$JsonRpcApiErrorData {
     required TransactionExecutionErrorData data,
   }) = TransactionExecutionError;
 
-  factory JsonRpcApiErrorData.fromJson(Map<String, Object?> json) {
-    // When the JSON contains a "revert_error" key, we assume the error is a contract error.
-    // This includes CONTRACT_NOT_FOUND errors (error code 20), for which the revert error
-    // message (e.g., "Contract not found") is parsed into a ContractErrorData.
-    // Otherwise, the error is treated as a transaction execution error.
-    if (json.containsKey('revert_error')) {
-      return JsonRpcApiErrorData.contractError(
-          data: ContractErrorData.fromJson(json));
-    } else {
-      return JsonRpcApiErrorData.transactionExecutionError(
-          data: TransactionExecutionErrorData.fromJson(json));
-    }
-  }
+  const factory JsonRpcApiErrorData.stringData(String message) = StringError;
+
+  factory JsonRpcApiErrorData.fromJson(Map<String, Object?> json) =>
+      _$JsonRpcApiErrorDataFromJson(json);
 }
 
 // TODO: should be generated from JSON-RPC API specs
@@ -158,4 +161,54 @@ enum JsonRpcApiErrorCode {
   INVALID_QUERY,
   @JsonValue(-32603)
   INTERNAL_SEQUENCER,
+  @JsonValue(-32604) // Last known error value - 1 for unknown error
+  UNKNOWN,
+}
+
+@freezed
+class JsonRpcApiError with _$JsonRpcApiError {
+  const factory JsonRpcApiError({
+    required JsonRpcApiErrorCode code,
+    required String message,
+    @JsonKey(name: 'data')
+    @JsonRpcApiErrorDataConverter() // Apply the converter here
+    JsonRpcApiErrorData? errorData,
+  }) = _JsonRpcApiError;
+
+  factory JsonRpcApiError.fromJson(Map<String, Object?> json) =>
+      JsonRpcApiError.fromJsonInternal(json);
+
+  factory JsonRpcApiError.fromJsonInternal(Map<String, Object?> json) {
+    // Parse error code first
+    final codeValue = json['code'];
+    final errorCode = (codeValue is int)
+        ? _$JsonRpcApiErrorCodeEnumMap.keys.firstWhere(
+            (k) => _$JsonRpcApiErrorCodeEnumMap[k] == codeValue,
+            orElse: () => JsonRpcApiErrorCode.UNKNOWN)
+        : JsonRpcApiErrorCode.UNKNOWN;
+
+    try {
+      // Create a base error object with standard freezed deserialization
+      final baseError =
+          _$JsonRpcApiErrorFromJson(json).copyWith(code: errorCode);
+
+      // Get the data field (could be any type)
+      final data = json['data'];
+      if (data != null) {
+        final converter = const JsonRpcApiErrorDataConverter();
+        final errorData = converter.fromJsonWithCode(data, errorCode);
+        return baseError.copyWith(errorData: errorData);
+      }
+      return baseError;
+    } catch (e) {
+      // Fallback to a basic error if deserialization fails
+      return JsonRpcApiError(
+        code: errorCode,
+        message: json['message'] as String? ?? 'Unknown error',
+        errorData: json['data'] != null
+            ? JsonRpcApiErrorData.stringData(json['data'].toString())
+            : null,
+      );
+    }
+  }
 }
