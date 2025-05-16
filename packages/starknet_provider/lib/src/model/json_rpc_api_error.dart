@@ -35,8 +35,6 @@ class JsonRpcApiErrorDataConverter
       // from write_api
       case JsonRpcApiErrorCode.VALIDATION_FAILURE:
       case JsonRpcApiErrorCode.UNEXPECTED_ERROR:
-        return JsonRpcApiErrorData.stringData(
-            json is String ? json : json.toString());
       default:
         return JsonRpcApiErrorData.stringData(
             json is String ? json : json.toString());
@@ -189,16 +187,28 @@ class JsonRpcApiError with _$JsonRpcApiError {
             orElse: () => JsonRpcApiErrorCode.UNKNOWN)
         : JsonRpcApiErrorCode.UNKNOWN;
 
-    // Create a base error object with standard freezed deserialization
-    final baseError = _$JsonRpcApiErrorFromJson(json).copyWith(code: errorCode);
+    try {
+      // Create a base error object with standard freezed deserialization
+      final baseError =
+          _$JsonRpcApiErrorFromJson(json).copyWith(code: errorCode);
 
-    // Get the data field (could be any type)
-    final data = json['data'];
-    if (data != null) {
-      final converter = const JsonRpcApiErrorDataConverter();
-      final errorData = converter.fromJsonWithCode(data, errorCode);
-      return baseError.copyWith(errorData: errorData);
+      // Get the data field (could be any type)
+      final data = json['data'];
+      if (data != null) {
+        final converter = const JsonRpcApiErrorDataConverter();
+        final errorData = converter.fromJsonWithCode(data, errorCode);
+        return baseError.copyWith(errorData: errorData);
+      }
+      return baseError;
+    } catch (e) {
+      // Fallback to a basic error if deserialization fails
+      return JsonRpcApiError(
+        code: errorCode,
+        message: json['message'] as String? ?? 'Unknown error',
+        errorData: json['data'] != null
+            ? JsonRpcApiErrorData.stringData(json['data'].toString())
+            : null,
+      );
     }
-    return baseError;
   }
 }
