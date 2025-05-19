@@ -135,7 +135,9 @@ class Felt {
 
   factory Felt.fromCallData(List<Felt> callData) => callData[0];
 
+  // old naming
   List<Felt> toCallData() => [this];
+  List<Felt> toCalldata() => [this];
 }
 
 extension Starknet on BigInt {
@@ -151,5 +153,28 @@ extension Starknet on BigInt {
     }
 
     return data;
+  }
+}
+
+extension ListToCalldata on List<Felt> {
+  List<Felt> toCalldata() {
+    return [
+      Felt.fromInt(length),
+      ...this,
+    ];
+  }
+}
+
+extension ListListToCalldata on List<List<Felt>> {
+  List<Felt> toCalldata() {
+    if (isEmpty) {
+      return [Felt.zero];
+    }
+
+    final convertedList = map((e) => e.toCalldata()).toList();
+    return [
+      Felt.fromInt(length),
+      ...convertedList.expand((list) => list),
+    ];
   }
 }
