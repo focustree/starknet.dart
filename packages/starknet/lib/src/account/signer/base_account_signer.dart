@@ -51,7 +51,7 @@ abstract class BaseAccountSigner {
           l1DataGasMaxPricePerUnit;
       elementsToHash.add(l1DataGasBounds.toBigInt());
     }
-
+    print('ELEMENTS TO HASH: $elementsToHash');
     return poseidonHasher.hashMany(elementsToHash);
   }
 
