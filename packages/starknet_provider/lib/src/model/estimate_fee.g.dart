@@ -13,7 +13,7 @@ EstimateFeeRequest _$EstimateFeeRequestFromJson(Map<String, dynamic> json) =>
           .toList(),
       blockId: BlockId.fromJson(json['block_id'] as Map<String, dynamic>),
       simulation_flags: (json['simulation_flags'] as List<dynamic>)
-          .map((e) => SimulationFlag.fromJson(e as Map<String, dynamic>))
+          .map((e) => $enumDecode(_$SimulationFlagEnumMap, e))
           .toList(),
     );
 
@@ -21,9 +21,15 @@ Map<String, dynamic> _$EstimateFeeRequestToJson(EstimateFeeRequest instance) =>
     <String, dynamic>{
       'request': instance.request.map((e) => e.toJson()).toList(),
       'block_id': instance.blockId.toJson(),
-      'simulation_flags':
-          instance.simulation_flags.map((e) => e.toJson()).toList(),
+      'simulation_flags': instance.simulation_flags
+          .map((e) => _$SimulationFlagEnumMap[e]!)
+          .toList(),
     };
+
+const _$SimulationFlagEnumMap = {
+  SimulationFlag.skipValidate: 'SKIP_VALIDATE',
+  SimulationFlag.skipFeeCharge: 'SKIP_FEE_CHARGE',
+};
 
 _$EstimateFeeResultImpl _$$EstimateFeeResultImplFromJson(
         Map<String, dynamic> json) =>
@@ -52,26 +58,6 @@ Map<String, dynamic> _$$EstimateFeeErrorImplToJson(
         _$EstimateFeeErrorImpl instance) =>
     <String, dynamic>{
       'error': instance.error.toJson(),
-      'starkNetRuntimeTypeToRemove': instance.$type,
-    };
-
-_$SkipValidateImpl _$$SkipValidateImplFromJson(Map<String, dynamic> json) =>
-    _$SkipValidateImpl(
-      $type: json['starkNetRuntimeTypeToRemove'] as String?,
-    );
-
-Map<String, dynamic> _$$SkipValidateImplToJson(_$SkipValidateImpl instance) =>
-    <String, dynamic>{
-      'starkNetRuntimeTypeToRemove': instance.$type,
-    };
-
-_$SkipFeeChargeImpl _$$SkipFeeChargeImplFromJson(Map<String, dynamic> json) =>
-    _$SkipFeeChargeImpl(
-      $type: json['starkNetRuntimeTypeToRemove'] as String?,
-    );
-
-Map<String, dynamic> _$$SkipFeeChargeImplToJson(_$SkipFeeChargeImpl instance) =>
-    <String, dynamic>{
       'starkNetRuntimeTypeToRemove': instance.$type,
     };
 
