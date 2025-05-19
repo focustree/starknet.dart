@@ -153,3 +153,26 @@ extension Starknet on BigInt {
     return data;
   }
 }
+
+extension ListToCalldata on List<Felt> {
+  List<Felt> toCalldata() {
+    return [
+      Felt.fromInt(length),
+      ...this,
+    ];
+  }
+}
+
+extension ListListToCalldata on List<List<Felt>> {
+  List<Felt> toCalldata() {
+    if (isEmpty) {
+      return [Felt.zero];
+    }
+
+    final a = map((e) => e.toCalldata()).toList();
+    return [
+      Felt.fromInt(length),
+      ...a.expand((list) => list),
+    ];
+  }
+}
