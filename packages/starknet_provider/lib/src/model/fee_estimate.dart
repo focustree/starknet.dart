@@ -1,7 +1,8 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:starknet/starknet.dart'; // for Felt
 
 import '../provider.dart';
-import 'index.dart'; // FIXME: for ResourceBounds
+import 'resource_bounds.dart';
 
 part 'fee_estimate.freezed.dart';
 part 'fee_estimate.g.dart';
@@ -19,23 +20,23 @@ sealed class FeeEstimate with _$FeeEstimate {
 
   @With<FeeEstimateMethods_v0_7>()
   const factory FeeEstimate.v0_7({
-    required String gasConsumed,
-    required String dataGasConsumed,
-    required String gasPrice,
-    required String dataGasPrice,
-    required String overallFee,
+    required Felt gasConsumed,
+    required Felt dataGasConsumed,
+    required Felt gasPrice,
+    required Felt dataGasPrice,
+    required Felt overallFee,
     required String unit,
   }) = FeeEstimatev0_7;
 
   @With<FeeEstimateMethods_v0_8>()
   const factory FeeEstimate.v0_8({
-    required String l1GasConsumed,
-    required String l1GasPrice,
-    required String l2GasConsumed,
-    required String l2GasPrice,
-    required String l1DataGasConsumed,
-    required String l1DataGasPrice,
-    required String overallFee,
+    required Felt l1GasConsumed,
+    required Felt l1GasPrice,
+    required Felt l2GasConsumed,
+    required Felt l2GasPrice,
+    required Felt l1DataGasConsumed,
+    required Felt l1DataGasPrice,
+    required Felt overallFee,
     required String unit,
   }) = FeeEstimatev0_8;
 
@@ -52,10 +53,10 @@ mixin FeeEstimateMethods {
 // Implementation for the v0_7 version
 // ignore: camel_case_types
 mixin FeeEstimateMethods_v0_7 implements FeeEstimateMethods {
-  String get gasConsumed;
-  String get gasPrice;
-  String get dataGasConsumed;
-  String get dataGasPrice;
+  Felt get gasConsumed;
+  Felt get gasPrice;
+  Felt get dataGasConsumed;
+  Felt get dataGasPrice;
 
   @override
   Map<String, ResourceBounds> toResourceBounds() => {
@@ -73,12 +74,12 @@ mixin FeeEstimateMethods_v0_7 implements FeeEstimateMethods {
 // Implementation for the v0_8 version
 // ignore: camel_case_types
 mixin FeeEstimateMethods_v0_8 implements FeeEstimateMethods {
-  String get l1GasConsumed;
-  String get l1GasPrice;
-  String get l2GasConsumed;
-  String get l2GasPrice;
-  String get l1DataGasConsumed;
-  String get l1DataGasPrice;
+  Felt get l1GasConsumed;
+  Felt get l1GasPrice;
+  Felt get l2GasConsumed;
+  Felt get l2GasPrice;
+  Felt get l1DataGasConsumed;
+  Felt get l1DataGasPrice;
 
   @override
   Map<String, ResourceBounds> toResourceBounds() => {
@@ -107,28 +108,28 @@ extension DefaultResourceBoundsMapping on Provider {
       case final v when v.startsWith('0.7'):
         return {
           _L1_GAS: ResourceBounds(
-            maxAmount: '0x0',
-            maxPricePerUnit: '0x0',
+            maxAmount: Felt.zero,
+            maxPricePerUnit: Felt.zero,
           ),
           _L2_GAS: ResourceBounds(
-            maxAmount: '0x0',
-            maxPricePerUnit: '0x0',
+            maxAmount: Felt.zero,
+            maxPricePerUnit: Felt.zero,
           ),
         };
       case final v when v.startsWith('0.8'):
       default:
         return {
           _L1_GAS: ResourceBounds(
-            maxAmount: '0x0',
-            maxPricePerUnit: '0x0',
+            maxAmount: Felt.zero,
+            maxPricePerUnit: Felt.zero,
           ),
           _L2_GAS: ResourceBounds(
-            maxAmount: '0x0',
-            maxPricePerUnit: '0x0',
+            maxAmount: Felt.zero,
+            maxPricePerUnit: Felt.zero,
           ),
           _L1_DATA_GAS: ResourceBounds(
-            maxAmount: '0x0',
-            maxPricePerUnit: '0x0',
+            maxAmount: Felt.zero,
+            maxPricePerUnit: Felt.zero,
           ),
         };
     }

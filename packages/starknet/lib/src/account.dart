@@ -443,7 +443,7 @@ class Account {
 
     //calculated as described in https://community.starknet.io/t/starknet-v0-13-1-pre-release-notes/113664
     //and multiplied by feeMultiplier
-    final overallFee = BigInt.parse(fee.overallFee, radix: 16).toDouble();
+    final overallFee = fee.overallFee.toBigInt().toDouble();
     ;
     final gasPrice = switch (fee) {
       FeeEstimatev0_7(
@@ -454,7 +454,7 @@ class Account {
         overallFee: _,
         unit: _
       ) =>
-        BigInt.parse(gasPrice, radix: 16).toDouble(),
+        gasPrice.toBigInt().toDouble(),
 
       // TODO: Handle this case.
       FeeEstimatev0_8() => throw UnimplementedError(),
@@ -936,13 +936,12 @@ class Account {
           );
         },
       );
-      print('EstimateFeeResult: $feeResult');
       final resourceBounds = feeResult.toResourceBounds();
       // remove l2 gas information for v0.7 RPC
       if (!resourceBounds.containsKey('l1_data_gas')) {
         resourceBounds['l2_gas'] = ResourceBounds(
-          maxAmount: '0x0',
-          maxPricePerUnit: '0x0',
+          maxAmount: Felt.zero,
+          maxPricePerUnit: Felt.zero,
         );
       }
       final signature = await accountSigner.signDeployAccountTransactionV3(
@@ -1036,16 +1035,16 @@ class Account {
   ) {
     return {
       'l1_gas': ResourceBounds(
-        maxAmount: l1MaxAmount.toHexString(),
-        maxPricePerUnit: l1MaxPricePerUnit.toHexString(),
+        maxAmount: l1MaxAmount,
+        maxPricePerUnit: l1MaxPricePerUnit,
       ),
       // 'l1_data_gas': ResourceBounds(
       //   maxAmount: l1MaxAmount.toHexString(),
       //   maxPricePerUnit: l1MaxPricePerUnit.toHexString(),
       // ),
       'l2_gas': ResourceBounds(
-        maxAmount: l2MaxAmount.toHexString(),
-        maxPricePerUnit: l2MaxPricePerUnit.toHexString(),
+        maxAmount: l2MaxAmount,
+        maxPricePerUnit: l2MaxPricePerUnit,
       ),
     };
   }

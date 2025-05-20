@@ -19,20 +19,16 @@ abstract class BaseAccountSigner {
   }) {
     final elementsToHash = <BigInt>[tip.toBigInt()];
 
-    final l1GasMaxAmount =
-        Felt.fromHexString(resourceBounds['l1_gas']!.maxAmount);
-    final l1GasMaxPricePerUnit =
-        Felt.fromHexString(resourceBounds['l1_gas']!.maxPricePerUnit);
+    final l1GasMaxAmount = resourceBounds['l1_gas']!.maxAmount;
+    final l1GasMaxPricePerUnit = resourceBounds['l1_gas']!.maxPricePerUnit;
 
     final l1GasBounds = (Felt.fromString('L1_GAS') << (128 + 64)) +
         (l1GasMaxAmount << 128) +
         l1GasMaxPricePerUnit;
     elementsToHash.add(l1GasBounds.toBigInt());
 
-    final l2GasMaxAmount =
-        Felt.fromHexString(resourceBounds['l2_gas']!.maxAmount);
-    final l2GasMaxPricePerUnit =
-        Felt.fromHexString(resourceBounds['l2_gas']!.maxPricePerUnit);
+    final l2GasMaxAmount = resourceBounds['l2_gas']!.maxAmount;
+    final l2GasMaxPricePerUnit = resourceBounds['l2_gas']!.maxPricePerUnit;
 
     final l2GasBounds = (Felt.fromString('L2_GAS') << (128 + 64)) +
         (l2GasMaxAmount << 128) +
@@ -41,17 +37,15 @@ abstract class BaseAccountSigner {
 
     // added in v0.8 JSON RPC SPECS
     if (resourceBounds.containsKey('l1_data_gas')) {
-      final l1DataGasMaxAmount =
-          Felt.fromHexString(resourceBounds['l1_data_gas']!.maxAmount);
+      final l1DataGasMaxAmount = resourceBounds['l1_data_gas']!.maxAmount;
       final l1DataGasMaxPricePerUnit =
-          Felt.fromHexString(resourceBounds['l1_data_gas']!.maxPricePerUnit);
+          resourceBounds['l1_data_gas']!.maxPricePerUnit;
 
       final l1DataGasBounds = (Felt.fromString('L1_DATA') << (128 + 64)) +
           (l1DataGasMaxAmount << 128) +
           l1DataGasMaxPricePerUnit;
       elementsToHash.add(l1DataGasBounds.toBigInt());
     }
-    print('ELEMENTS TO HASH: $elementsToHash');
     return poseidonHasher.hashMany(elementsToHash);
   }
 
