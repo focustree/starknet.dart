@@ -1,10 +1,11 @@
 // ignore_for_file: non_constant_identifier_names
 
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:starknet/starknet.dart';
+import 'package:starknet/starknet.dart'; // for Felt
 
 import 'contract_class.dart';
 import 'json_rpc_api_error.dart';
+import 'resource_bounds.dart';
 
 part 'declare_transaction.freezed.dart';
 part 'declare_transaction.g.dart';
@@ -107,17 +108,6 @@ class DeclareTransactionV3
 
   factory DeclareTransactionV3.fromJson(Map<String, Object?> json) =>
       _$DeclareTransactionV3FromJson(json);
-}
-
-@freezed
-class ResourceBounds with _$ResourceBounds {
-  const factory ResourceBounds({
-    required String maxAmount,
-    required String maxPricePerUnit,
-  }) = _ResourceBounds;
-
-  factory ResourceBounds.fromJson(Map<String, Object?> json) =>
-      _$ResourceBoundsFromJson(json);
 }
 
 @freezed
