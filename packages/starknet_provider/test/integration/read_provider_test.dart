@@ -1012,8 +1012,10 @@ void main() {
         nonceDataAvailabilityMode: 'L1',
         paymasterData: [],
         resourceBounds: {
-          'l1_gas': ResourceBounds(maxAmount: '0x0', maxPricePerUnit: '0x0'),
-          'l2_gas': ResourceBounds(maxAmount: '0x0', maxPricePerUnit: '0x0'),
+          'l1_gas':
+              ResourceBounds(maxAmount: Felt.zero, maxPricePerUnit: Felt.zero),
+          'l2_gas':
+              ResourceBounds(maxAmount: Felt.zero, maxPricePerUnit: Felt.zero),
         },
         senderAddress: Felt.fromHexString(
             '0x064b48806902a367c8598f4f95c305e8c1a1acba5f082d294a43793113115691'),
@@ -1042,12 +1044,12 @@ void main() {
           },
           result: (result) {
             expect(result.length, 1);
-            final estimate = result[0];
-            expect(estimate.gasConsumed, "0x17");
-            expect(estimate.dataGasConsumed, "0xc0");
-            expect(estimate.gasPrice, "0x174876e800");
-            expect(estimate.dataGasPrice, "0x174876e800");
-            expect(estimate.overallFee, "0x138ddbdcd800");
+            final estimate = result[0] as FeeEstimatev0_7;
+            expect(estimate.gasConsumed, Felt.fromHexString("0x17"));
+            expect(estimate.dataGasConsumed, Felt.fromHexString("0xc0"));
+            expect(estimate.gasPrice, Felt.fromHexString("0x174876e800"));
+            expect(estimate.dataGasPrice, Felt.fromHexString("0x174876e800"));
+            expect(estimate.overallFee, Felt.fromHexString("0x138ddbdcd800"));
             expect(estimate.unit, "WEI");
           },
         );
@@ -1068,12 +1070,12 @@ void main() {
           },
           result: (result) {
             expect(result.length, 1);
-            final estimate = result[0];
-            expect(estimate.gasConsumed, "0x17");
-            expect(estimate.dataGasConsumed, "0x140");
-            expect(estimate.gasPrice, "0x174876e800");
-            expect(estimate.dataGasPrice, "0x174876e800");
-            expect(estimate.overallFee, "0x1f321750d800");
+            final estimate = result[0] as FeeEstimatev0_7;
+            expect(estimate.gasConsumed, Felt.fromHexString("0x17"));
+            expect(estimate.dataGasConsumed, Felt.fromHexString("0x140"));
+            expect(estimate.gasPrice, Felt.fromHexString("0x174876e800"));
+            expect(estimate.dataGasPrice, Felt.fromHexString("0x174876e800"));
+            expect(estimate.overallFee, Felt.fromHexString("0x1f321750d800"));
             expect(estimate.unit, "FRI");
           },
         );
