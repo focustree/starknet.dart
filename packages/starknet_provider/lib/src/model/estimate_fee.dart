@@ -5,8 +5,8 @@ import 'package:starknet/starknet.dart';
 
 import '../utils.dart';
 import 'components/block_id.dart';
+import 'components/resource_bounds.dart';
 import 'contract_class.dart';
-import 'declare_transaction.dart';
 import 'fee_estimate.dart';
 import 'json_rpc_api_error.dart';
 

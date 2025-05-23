@@ -2,7 +2,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:starknet/starknet.dart'; // for Felt
 
 import '../provider.dart';
-import 'resource_bounds.dart';
+import 'components/resource_bounds.dart';
 
 part 'fee_estimate.freezed.dart';
 part 'fee_estimate.g.dart';
