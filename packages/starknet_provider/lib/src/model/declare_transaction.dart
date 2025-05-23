@@ -3,9 +3,9 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:starknet/starknet.dart'; // for Felt
 
+import 'components/resource_bounds.dart';
 import 'contract_class.dart';
 import 'json_rpc_api_error.dart';
-import 'resource_bounds.dart';
 
 part 'declare_transaction.freezed.dart';
 part 'declare_transaction.g.dart';
