@@ -1,13 +1,14 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
+import '../interfaces/starknet_serializable.dart';
 import 'felt.dart';
 
 @immutable
-class Uint256 {
+class Uint256 extends StarknetSerializable {
   final Felt low; // low 128 bits
   final Felt high; // high 128 bits
 
-  const Uint256({required this.low, required this.high});
+  Uint256({required this.low, required this.high});
 
   factory Uint256.fromInt(int number) =>
       Uint256.fromBigInt(BigInt.from(number));
@@ -69,4 +70,10 @@ class Uint256 {
       high: Felt(BigInt.parse(json['high'] as String)),
     );
   }
+
+  // old naming
+  List<Felt> toCallData() => [low, high];
+
+  @override
+  List<Felt> toCalldata() => [low, high];
 }

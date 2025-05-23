@@ -2,8 +2,9 @@ import 'dart:convert';
 import 'dart:typed_data';
 
 import '../convert.dart';
+import '../interfaces/starknet_serializable.dart';
 
-class Felt {
+class Felt extends StarknetSerializable {
   /// Spec: https://docs.starknet.io/docs/Hashing/hash-functions/#domain-and-range
   static final prime =
       BigInt.two.pow(251) + BigInt.from(17) * BigInt.two.pow(192) + BigInt.one;
@@ -137,6 +138,7 @@ class Felt {
 
   // old naming
   List<Felt> toCallData() => [this];
+  @override
   List<Felt> toCalldata() => [this];
 }
 
@@ -153,28 +155,5 @@ extension Starknet on BigInt {
     }
 
     return data;
-  }
-}
-
-extension ListToCalldata on List<Felt> {
-  List<Felt> toCalldata() {
-    return [
-      Felt.fromInt(length),
-      ...this,
-    ];
-  }
-}
-
-extension ListListToCalldata on List<List<Felt>> {
-  List<Felt> toCalldata() {
-    if (isEmpty) {
-      return [Felt.zero];
-    }
-
-    final convertedList = map((e) => e.toCalldata()).toList();
-    return [
-      Felt.fromInt(length),
-      ...convertedList.expand((list) => list),
-    ];
   }
 }
