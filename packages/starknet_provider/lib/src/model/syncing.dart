@@ -1,5 +1,7 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:starknet_provider/starknet_provider.dart';
+
+import 'json_rpc_api_error.dart';
+import 'sync_status.dart';
 
 part 'syncing.freezed.dart';
 part 'syncing.g.dart';

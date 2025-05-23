@@ -1,18 +1,18 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'actual_fee.dart';
+part of 'fee_payment.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$ActualFeeImpl _$$ActualFeeImplFromJson(Map<String, dynamic> json) =>
-    _$ActualFeeImpl(
+_$FeePaymentImpl _$$FeePaymentImplFromJson(Map<String, dynamic> json) =>
+    _$FeePaymentImpl(
       amount: Felt.fromJson(json['amount'] as String),
       unit: json['unit'] as String,
     );
 
-Map<String, dynamic> _$$ActualFeeImplToJson(_$ActualFeeImpl instance) =>
+Map<String, dynamic> _$$FeePaymentImplToJson(_$FeePaymentImpl instance) =>
     <String, dynamic>{
       'amount': instance.amount.toJson(),
       'unit': instance.unit,

@@ -1,8 +1,7 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:starknet/starknet.dart';
-import 'package:starknet_provider/starknet_provider.dart';
 
-import '../index.dart';
+import 'json_rpc_api_error.dart';
 
 part 'block_hash_and_number.freezed.dart';
 part 'block_hash_and_number.g.dart';

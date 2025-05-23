@@ -1,6 +1,8 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:starknet/starknet.dart';
-import 'package:starknet_provider/starknet_provider.dart';
+
+import 'contract_storage_diff_item.dart';
+import 'deployed_contract_item.dart';
 
 part 'state_update.freezed.dart';
 part 'state_update.g.dart';
