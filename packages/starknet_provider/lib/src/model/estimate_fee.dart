@@ -3,6 +3,7 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:starknet/starknet.dart';
 
+import '../utils.dart';
 import 'components/block_id.dart';
 import 'contract_class.dart';
 import 'declare_transaction.dart';

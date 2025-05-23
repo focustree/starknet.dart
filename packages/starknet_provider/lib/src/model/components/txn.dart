@@ -1,6 +1,8 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:starknet/starknet.dart';
 
+import '../../utils.dart';
+
 part 'txn.freezed.dart';
 part 'txn.g.dart';
 
