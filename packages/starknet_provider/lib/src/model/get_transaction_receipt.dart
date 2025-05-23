@@ -2,8 +2,11 @@
 
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:starknet/starknet.dart';
-import 'package:starknet_provider/src/model/actual_fee.dart';
-import 'package:starknet_provider/starknet_provider.dart';
+
+import 'actual_fee.dart';
+import 'event.dart';
+import 'json_rpc_api_error.dart';
+import 'msg_to_l1.dart';
 
 part 'get_transaction_receipt.freezed.dart';
 part 'get_transaction_receipt.g.dart';
@@ -128,74 +131,3 @@ class TxnReceipt with _$TxnReceipt {
                           ? L1HandlerTxnReceipt.fromJson(json)
                           : InvokeTxnReceipt.fromJson(json);
 }
-
-// abstract class CommonReceiptProperties {
-//   final StarknetFieldElement txnHash;
-//   final StarknetFieldElement actualFee;
-//   final String status;
-//   final String? statusData;
-//   final StarknetFieldElement blockHash;
-//   final int blockNumber;
-//
-//   CommonReceiptProperties({
-//     required this.txnHash,
-//     required this.actualFee,
-//     required this.status,
-//     this.statusData,
-//     required this.blockHash,
-//     required this.blockNumber,
-//   });
-// }
-//
-// abstract class InvokeTxnReceiptProperties {
-//   final List<MsgToL1> messagesSent;
-//   final MsgToL2? l1OriginMessage;
-//   final List<Event> events;
-//   final int blockNumber;
-//
-//   InvokeTxnReceiptProperties({
-//     required this.messagesSent,
-//     this.l1OriginMessage,
-//     required this.events,
-//     required this.blockNumber,
-//   });
-// }
-//
-// class InvokeTxnReceipt
-//     implements CommonReceiptProperties, InvokeTxnReceiptProperties {
-//   @override
-//   // TODO: implement actualFee
-//   StarknetFieldElement get actualFee => throw UnimplementedError();
-//
-//   @override
-//   // TODO: implement blockHash
-//   StarknetFieldElement get blockHash => throw UnimplementedError();
-//
-//   @override
-//   // TODO: implement blockNumber
-//   int get blockNumber => throw UnimplementedError();
-//
-//   @override
-//   // TODO: implement events
-//   List<Event> get events => throw UnimplementedError();
-//
-//   @override
-//   // TODO: implement l1OriginMessage
-//   MsgToL2? get l1OriginMessage => throw UnimplementedError();
-//
-//   @override
-//   // TODO: implement messagesSent
-//   List<MsgToL1> get messagesSent => throw UnimplementedError();
-//
-//   @override
-//   // TODO: implement status
-//   String get status => throw UnimplementedError();
-//
-//   @override
-//   // TODO: implement statusData
-//   String? get statusData => throw UnimplementedError();
-//
-//   @override
-//   // TODO: implement txnHash
-//   StarknetFieldElement get txnHash => throw UnimplementedError();
-// }
