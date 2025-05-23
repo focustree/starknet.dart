@@ -2,7 +2,12 @@
 
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:starknet/starknet.dart';
-import 'package:starknet_provider/starknet_provider.dart';
+
+import 'components/block_id.dart';
+import 'contract_class.dart';
+import 'declare_transaction.dart';
+import 'fee_estimate.dart';
+import 'json_rpc_api_error.dart';
 
 part 'estimate_fee.freezed.dart';
 part 'estimate_fee.g.dart';

@@ -1,5 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:starknet_provider/starknet_provider.dart';
+
+import 'json_rpc_api_error.dart';
 
 part 'get_block_txn_count.freezed.dart';
 part 'get_block_txn_count.g.dart';

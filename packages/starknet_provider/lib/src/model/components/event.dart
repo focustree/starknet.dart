@@ -1,5 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:starknet/starknet.dart';
+import 'package:starknet/starknet.dart'; // for Felt
 
 part 'event.freezed.dart';
 part 'event.g.dart';

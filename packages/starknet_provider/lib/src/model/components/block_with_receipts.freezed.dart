@@ -210,6 +210,7 @@ BlockWithReceipts _$BlockWithReceiptsFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$BlockWithReceipts {
+// start of BLOCK_HEADER
   Felt? get blockHash => throw _privateConstructorUsedError;
   Felt? get parentHash => throw _privateConstructorUsedError;
   int? get blockNumber => throw _privateConstructorUsedError;
@@ -219,7 +220,8 @@ mixin _$BlockWithReceipts {
   String? get starknetVersion => throw _privateConstructorUsedError;
   ResourcePrice? get l1GasPrice => throw _privateConstructorUsedError;
   ResourcePrice? get l1DataGasPrice => throw _privateConstructorUsedError;
-  String? get l1DaMode => throw _privateConstructorUsedError;
+  String? get l1DaMode =>
+      throw _privateConstructorUsedError; // end of BLOCK_HEADER
   List<TransactionWithReceipt>? get transactions =>
       throw _privateConstructorUsedError;
   String? get status => throw _privateConstructorUsedError;
@@ -495,6 +497,7 @@ class _$BlockWithReceiptsImpl implements _BlockWithReceipts {
   factory _$BlockWithReceiptsImpl.fromJson(Map<String, dynamic> json) =>
       _$$BlockWithReceiptsImplFromJson(json);
 
+// start of BLOCK_HEADER
   @override
   final Felt? blockHash;
   @override
@@ -515,7 +518,9 @@ class _$BlockWithReceiptsImpl implements _BlockWithReceipts {
   final ResourcePrice? l1DataGasPrice;
   @override
   final String? l1DaMode;
+// end of BLOCK_HEADER
   final List<TransactionWithReceipt>? _transactions;
+// end of BLOCK_HEADER
   @override
   List<TransactionWithReceipt>? get transactions {
     final value = _transactions;
@@ -614,6 +619,7 @@ abstract class _BlockWithReceipts implements BlockWithReceipts {
   factory _BlockWithReceipts.fromJson(Map<String, dynamic> json) =
       _$BlockWithReceiptsImpl.fromJson;
 
+// start of BLOCK_HEADER
   @override
   Felt? get blockHash;
   @override
@@ -633,7 +639,7 @@ abstract class _BlockWithReceipts implements BlockWithReceipts {
   @override
   ResourcePrice? get l1DataGasPrice;
   @override
-  String? get l1DaMode;
+  String? get l1DaMode; // end of BLOCK_HEADER
   @override
   List<TransactionWithReceipt>? get transactions;
   @override

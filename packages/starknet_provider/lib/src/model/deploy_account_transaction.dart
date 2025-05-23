@@ -2,7 +2,9 @@
 
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:starknet/starknet.dart';
-import 'package:starknet_provider/starknet_provider.dart';
+
+import 'declare_transaction.dart';
+import 'json_rpc_api_error.dart';
 
 part 'deploy_account_transaction.freezed.dart';
 part 'deploy_account_transaction.g.dart';
