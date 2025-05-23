@@ -25,7 +25,6 @@ export 'get_transaction_status.dart';
 export 'invoke_transaction.dart';
 export 'json_rpc_api_error.dart';
 export 'msg_to_l2.dart';
-export 'resource_bounds.dart';
 export 'sync_status.dart';
 export 'state_update.dart';
 export 'syncing.dart';

@@ -5,6 +5,7 @@ export 'event.dart';
 export 'msg_from_l1.dart';
 export 'msg_to_l1.dart';
 export 'pending_transactions.dart';
+export 'resource_bounds.dart';
 export 'txn.dart';
 export 'txn_receipt.dart';
 export 'txn_status.dart';
