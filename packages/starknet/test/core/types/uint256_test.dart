@@ -1,4 +1,3 @@
-import 'package:starknet/src/core/interfaces/starknet_serializable.dart';
 import 'package:starknet/starknet.dart';
 import 'package:test/test.dart';
 
