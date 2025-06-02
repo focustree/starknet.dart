@@ -29,3 +29,4 @@ export 'syncing.dart';
 export 'declare_transaction.dart';
 export 'contract_class.dart';
 export 'spec_version.dart';
+export 'get_transaction_status.dart';
