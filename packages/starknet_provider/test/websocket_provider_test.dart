@@ -174,7 +174,7 @@ void main() {
 
       // Wait for the subscription events or timeout
       await completer.future.timeout(
-        Duration(minutes: 2),
+        Duration(minutes: 3),
         onTimeout: () {
           fail('Test timed out waiting for events');
         },
@@ -192,7 +192,7 @@ void main() {
           webSocketChannel.subscriptions
               .containsKey(WSSubscriptions.events.value),
           false);
-    }, timeout: Timeout(Duration(minutes: 2)));
+    }, timeout: Timeout(Duration(minutes: 3)));
 
     test('Test subscribeEvents with invalid block_id', () async {
       // Initiate subscription
