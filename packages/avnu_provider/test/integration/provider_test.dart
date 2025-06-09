@@ -85,6 +85,7 @@ void main() {
             (await sepoliaAccount0.getEstimateMaxFeeForInvokeTx(
           functionCalls: functionCalls,
           useSTRKFee: true,
+          feeMultiplier: 5.0,
         ))
                 .maxFee
                 .toHexString();
@@ -554,6 +555,7 @@ void main() {
           (await sepoliaAccount0.getEstimateMaxFeeForInvokeTx(
         functionCalls: functionCalls,
         useSTRKFee: true,
+        feeMultiplier: 5.0,
       ))
               .maxFee
               .toHexString();
