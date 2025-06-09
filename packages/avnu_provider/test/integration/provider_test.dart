@@ -455,7 +455,7 @@ void main() {
         );
         final error = avnuDeploy as AvnuDeployAccountError;
         expect(
-          error.revertError,
+          error.messages.join(', '),
           contains('contract already deployed at address'),
           reason: 'Revert error should contained: contract already deployed',
         );
