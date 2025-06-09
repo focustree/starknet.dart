@@ -1,9 +1,8 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-
 import 'felt.dart';
 
 @immutable
-class Uint256 {
+class Uint256 implements IToCalldata {
   final Felt low; // low 128 bits
   final Felt high; // high 128 bits
 
@@ -69,4 +68,10 @@ class Uint256 {
       high: Felt(BigInt.parse(json['high'] as String)),
     );
   }
+
+  // old naming
+  List<Felt> toCallData() => [low, high];
+
+  @override
+  List<Felt> toCalldata() => [low, high];
 }

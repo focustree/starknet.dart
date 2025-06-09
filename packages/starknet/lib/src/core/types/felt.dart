@@ -3,7 +3,7 @@ import 'dart:typed_data';
 
 import '../convert.dart';
 
-class Felt {
+class Felt implements IToCalldata {
   /// Spec: https://docs.starknet.io/docs/Hashing/hash-functions/#domain-and-range
   static final prime =
       BigInt.two.pow(251) + BigInt.from(17) * BigInt.two.pow(192) + BigInt.one;
@@ -135,7 +135,10 @@ class Felt {
 
   factory Felt.fromCallData(List<Felt> callData) => callData[0];
 
+  // old naming
   List<Felt> toCallData() => [this];
+  @override
+  List<Felt> toCalldata() => [this];
 }
 
 extension Starknet on BigInt {
@@ -151,5 +154,35 @@ extension Starknet on BigInt {
     }
 
     return data;
+  }
+}
+
+/// Converts an object to a list of `Felt`s suitable for Starknet calldata.
+///
+/// Implement this interface to allow your object to be converted to calldata.
+abstract interface class IToCalldata {
+  List<Felt> toCalldata();
+}
+
+extension SerializableListToCalldata<T extends IToCalldata> on List<T> {
+  List<Felt> toCalldata() {
+    if (isEmpty) return [Felt.zero];
+
+    return [
+      Felt.fromInt(length),
+      ...expand((item) => item.toCalldata()),
+    ];
+  }
+}
+
+extension NestedSerializableListToCalldata<T extends IToCalldata>
+    on List<List<T>> {
+  List<Felt> toCalldata() {
+    if (isEmpty) return [Felt.zero];
+
+    return [
+      Felt.fromInt(length),
+      ...expand((innerList) => innerList.toCalldata()),
+    ];
   }
 }

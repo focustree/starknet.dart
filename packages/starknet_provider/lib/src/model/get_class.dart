@@ -1,5 +1,7 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:starknet_provider/starknet_provider.dart';
+
+import 'contract_class.dart';
+import 'json_rpc_api_error.dart';
 
 part 'get_class.freezed.dart';
 part 'get_class.g.dart';

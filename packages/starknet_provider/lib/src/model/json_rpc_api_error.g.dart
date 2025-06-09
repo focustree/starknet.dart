@@ -6,13 +6,77 @@ part of 'json_rpc_api_error.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
+_$ContractErrorDataImpl _$$ContractErrorDataImplFromJson(
+        Map<String, dynamic> json) =>
+    _$ContractErrorDataImpl(
+      revertError: json['revert_error'] as String,
+    );
+
+Map<String, dynamic> _$$ContractErrorDataImplToJson(
+        _$ContractErrorDataImpl instance) =>
+    <String, dynamic>{
+      'revert_error': instance.revertError,
+    };
+
+_$TransactionExecutionErrorDataImpl
+    _$$TransactionExecutionErrorDataImplFromJson(Map<String, dynamic> json) =>
+        _$TransactionExecutionErrorDataImpl(
+          transactionIndex: (json['transaction_index'] as num).toInt(),
+          executionError: json['execution_error'] as String,
+        );
+
+Map<String, dynamic> _$$TransactionExecutionErrorDataImplToJson(
+        _$TransactionExecutionErrorDataImpl instance) =>
+    <String, dynamic>{
+      'transaction_index': instance.transactionIndex,
+      'execution_error': instance.executionError,
+    };
+
+_$ContractErrorImpl _$$ContractErrorImplFromJson(Map<String, dynamic> json) =>
+    _$ContractErrorImpl(
+      data: ContractErrorData.fromJson(json['data'] as Map<String, dynamic>),
+      $type: json['starkNetRuntimeTypeToRemove'] as String?,
+    );
+
+Map<String, dynamic> _$$ContractErrorImplToJson(_$ContractErrorImpl instance) =>
+    <String, dynamic>{
+      'data': instance.data.toJson(),
+      'starkNetRuntimeTypeToRemove': instance.$type,
+    };
+
+_$TransactionExecutionErrorImpl _$$TransactionExecutionErrorImplFromJson(
+        Map<String, dynamic> json) =>
+    _$TransactionExecutionErrorImpl(
+      data: TransactionExecutionErrorData.fromJson(
+          json['data'] as Map<String, dynamic>),
+      $type: json['starkNetRuntimeTypeToRemove'] as String?,
+    );
+
+Map<String, dynamic> _$$TransactionExecutionErrorImplToJson(
+        _$TransactionExecutionErrorImpl instance) =>
+    <String, dynamic>{
+      'data': instance.data.toJson(),
+      'starkNetRuntimeTypeToRemove': instance.$type,
+    };
+
+_$StringErrorImpl _$$StringErrorImplFromJson(Map<String, dynamic> json) =>
+    _$StringErrorImpl(
+      json['message'] as String,
+      $type: json['starkNetRuntimeTypeToRemove'] as String?,
+    );
+
+Map<String, dynamic> _$$StringErrorImplToJson(_$StringErrorImpl instance) =>
+    <String, dynamic>{
+      'message': instance.message,
+      'starkNetRuntimeTypeToRemove': instance.$type,
+    };
+
 _$JsonRpcApiErrorImpl _$$JsonRpcApiErrorImplFromJson(
         Map<String, dynamic> json) =>
     _$JsonRpcApiErrorImpl(
       code: $enumDecode(_$JsonRpcApiErrorCodeEnumMap, json['code']),
       message: json['message'] as String,
-      errorData: const JsonRpcApiErrorDataConverter()
-          .fromJson(json['data'] as Map<String, dynamic>?),
+      errorData: const JsonRpcApiErrorDataConverter().fromJson(json['data']),
     );
 
 Map<String, dynamic> _$$JsonRpcApiErrorImplToJson(
@@ -58,30 +122,5 @@ const _$JsonRpcApiErrorCodeEnumMap = {
   JsonRpcApiErrorCode.METHOD_NOT_FOUND: -32601,
   JsonRpcApiErrorCode.INVALID_QUERY: -32602,
   JsonRpcApiErrorCode.INTERNAL_SEQUENCER: -32603,
+  JsonRpcApiErrorCode.UNKNOWN: -32604,
 };
-
-_$ContractErrorDataImpl _$$ContractErrorDataImplFromJson(
-        Map<String, dynamic> json) =>
-    _$ContractErrorDataImpl(
-      revertError: json['revert_error'] as String,
-    );
-
-Map<String, dynamic> _$$ContractErrorDataImplToJson(
-        _$ContractErrorDataImpl instance) =>
-    <String, dynamic>{
-      'revert_error': instance.revertError,
-    };
-
-_$TransactionExecutionErrorDataImpl
-    _$$TransactionExecutionErrorDataImplFromJson(Map<String, dynamic> json) =>
-        _$TransactionExecutionErrorDataImpl(
-          transactionIndex: (json['transaction_index'] as num).toInt(),
-          executionError: json['execution_error'] as String,
-        );
-
-Map<String, dynamic> _$$TransactionExecutionErrorDataImplToJson(
-        _$TransactionExecutionErrorDataImpl instance) =>
-    <String, dynamic>{
-      'transaction_index': instance.transactionIndex,
-      'execution_error': instance.executionError,
-    };
