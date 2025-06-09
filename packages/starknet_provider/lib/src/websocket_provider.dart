@@ -2,9 +2,9 @@ import 'dart:async';
 import 'dart:convert';
 import 'package:web_socket_channel/web_socket_channel.dart';
 import 'package:web_socket_channel/io.dart';
-import 'package:starknet_provider/src/index.dart';
-import 'call_wss_endpoint.dart';
 import 'package:starknet/starknet.dart';
+import 'call_wss_endpoint.dart';
+import 'model/index.dart';
 
 /// WebSocket subscription types
 enum WSSubscriptions {
@@ -251,15 +251,8 @@ class StarknetWebSocketChannel {
   /// Unsubscribe from subscription
   Future<WssUnsubscribeResponse> unsubscribe(String subscriptionId,
       [String? ref]) async {
-    int subId;
-    try {
-      subId = int.parse(subscriptionId);
-    } catch (e) {
-      return WssUnsubscribeResponse.error(
-          error: JsonWssApiError.invalidSubscriptionId());
-    }
     final response = await sendReceive('starknet_unsubscribe', {
-      'subscription_id': subId,
+      'subscription_id': subscriptionId,
     });
 
     if (ref != null) {
@@ -317,7 +310,7 @@ class StarknetWebSocketChannel {
   /// Subscribe to events
   Future<WssSubscribeEventsResponse> subscribeEvents([
     Felt? fromAddress,
-    List<List<String>>? keys,
+    List<List<Felt>>? keys,
     dynamic blockIdentifier,
   ]) async {
     if (subscriptions.containsKey(WSSubscriptions.events.value)) {
@@ -337,7 +330,7 @@ class StarknetWebSocketChannel {
   /// Subscribe to events (unmanaged)
   Future<WssSubscribeEventsResponse> subscribeEventsUnmanaged([
     Felt? fromAddress,
-    List<List<String>>? keys,
+    List<List<Felt>>? keys,
     dynamic blockIdentifier,
   ]) async {
     final result = await sendReceive('starknet_subscribeEvents', {
