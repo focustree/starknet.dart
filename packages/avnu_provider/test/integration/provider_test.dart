@@ -85,6 +85,7 @@ void main() {
             (await sepoliaAccount0.getEstimateMaxFeeForInvokeTx(
           functionCalls: functionCalls,
           useSTRKFee: true,
+          feeMultiplier: 5.0,
         ))
                 .maxFee
                 .toHexString();
@@ -454,7 +455,7 @@ void main() {
         );
         final error = avnuDeploy as AvnuDeployAccountError;
         expect(
-          error.revertError,
+          error.messages.join(', '),
           contains('contract already deployed at address'),
           reason: 'Revert error should contained: contract already deployed',
         );
@@ -554,6 +555,7 @@ void main() {
           (await sepoliaAccount0.getEstimateMaxFeeForInvokeTx(
         functionCalls: functionCalls,
         useSTRKFee: true,
+        feeMultiplier: 5.0,
       ))
               .maxFee
               .toHexString();

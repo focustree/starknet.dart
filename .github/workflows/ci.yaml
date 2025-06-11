@@ -5,6 +5,7 @@ on:
 
 env:
   STARKNET_RPC: http://localhost:5050
+  STARKNET_WSS: wss://sepolia-pathfinder-rpc.spaceshard.io/rpc/v0_8
   DEVNET_DUMP_PATH: /devnet-dump.json
   AVNU_RPC: https://sepolia.api.avnu.fi
   STARKLI_VERSION: 0.2.9

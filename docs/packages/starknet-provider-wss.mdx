@@ -1,0 +1,593 @@
+# Starknet Provider WSS
+
+## Index
+
+- [I. Introduction](packages/starknet_provider_wss#i-introduction)
+- [II. Functions](packages/starknet_provider_wss#ii-functions)
+- [III. Examples](packages/starknet_provider_wss#iii-examples)
+- [IV. How to run tests](packages/starknet_provider_wss#iv-how-to-run-tests)
+
+Supports for the Starknet JSON RPC spec v0.8.0 Web Socket API in the starknet_provider package. 
+
+📚 [API Documentation](https://github.com/starkware-libs/starknet-specs/blob/v0.8.0/api/starknet_ws_api.json)
+## I. Introduction
+
+With this methods you will be able to communicate with web socket nodes interacting with Starknet in a more reactive way establishing full duplex
+connections and listen for blockchain events.
+
+## II. Methods.
+
+### Connection handlers
+
+#### 1) `Contructor: StarknetWebSocketChannel(String nodeUrl);`
+
+Create a new web socket channel to communicate with a Starknet node.
+
+Arguments:
+- `nodeUrl`: The web socket node url.
+
+#### 2) `waitForConnection()`
+Wait for the web socket node to connect.
+
+Arguments:
+- `None`.
+
+#### 2) `disconnect()`
+Disconnect from the web socket node.
+
+Arguments:
+- `None`.
+
+#### 3) `waitForDisconnect()`
+Wait for the web socket node to disconnect.
+
+Arguments:
+- `None`.
+
+#### 4) `isConnected()`
+Check if the web socket node is connected.
+
+Arguments:
+- `None`.
+
+#### 5) `reconnect()`
+Reconnect to the web socket node.
+
+Arguments:
+- `None`.
+
+#### 6) `sendReceive(String method, [Map<String, dynamic>? params])`
+Send a request to the web socket node and receive the response.
+
+Arguments:
+- `method`: The method to call.
+- `params`: The parameters to send to the method.
+
+### Subscription handlers
+
+
+#### 1) `subscribeNewHeads()`
+Subscribe to new block heads.
+
+Arguments:
+- `None`.
+
+#### 2) `subscribeEvents([Felt? fromAddress, List<List<String>>? keys, dynamic blockIdentifier])`
+
+Subscribe to events.
+
+Arguments:
+- `fromAddress`: The address to start the subscription from.
+- `keys`: The keys to subscribe to.
+- `blockIdentifier`: The block identifier to subscribe to.
+
+#### 3) `subscribeTransactionStatus(Felt transactionHash)`
+Subscribe to transaction status.
+
+Arguments:
+- `transactionHash`: The transaction hash to subscribe to.
+
+#### 4) `subscribePendingTransactions([bool? transactionDetails, List<Felt>? senderAddress])`
+Subscribe to pending transactions.
+
+Arguments:
+- `transactionDetails`: The transaction details to subscribe to.
+- `senderAddress`: The sender address to subscribe to.
+
+### Unsubscription handlers
+
+#### 1) `unsubscribeNewHeads()`
+Unsubscribe from new block heads.
+
+Arguments:
+- `None`.
+
+#### 2) `unsubscribeEvents()`
+Unsubscribe from events.
+
+Arguments:
+- `None`.
+
+#### 3) `unsubscribeTransactionStatus()`
+Unsubscribe from transaction status.
+
+Arguments:
+- `None`.
+
+#### 4) `unsubscribePendingTransactions()`
+Unsubscribe from pending transactions.
+
+Arguments:
+- `None`.
+
+#### 5) `unsubscribe(String subscriptionId, [String? ref])`
+Unsubscribe from a subscription.
+
+Arguments:
+- `subscriptionId`: The subscription id to unsubscribe from.
+- `ref`: The reference to unsubscribe from.
+
+### Event handlers
+
+#### 1) `onNewHeads(StarknetWebSocketChannel, WssSubscriptionNewHeadResponse)`
+Handle new block heads.
+
+Arguments:
+- `channel`: The channel to handle.
+- `response`: The response to handle.
+
+Here is an example of a `WssSubscriptionNewHeadResponse`:
+
+```json
+{
+  "subscription_id": "0x1",
+  "result": {
+    "blockHash": "0x12345...",
+    "parentHash": "0xabcde...",
+    "blockNumber": 123456,
+    "newRoot": "0x67890...",
+    "timestamp": 1678901234,
+    "sequencerAddress": "0xfedcb...",
+    "l1GasPrice": {
+      "priceInFri": "0x123",
+      "priceInWei": "0x456"
+    },
+    "l2GasPrice": {
+      "priceInFri": "0x789",
+      "priceInWei": "0xabc"
+    },
+    "l1DataGasPrice": {
+      "priceInFri": "0xdef",
+      "priceInWei": "0x123"
+    },
+    "l1DaMode": "CALLDATA",
+    "starknetVersion": "0.12.1"
+  }
+}
+```
+
+#### 2) `onEvents(StarknetWebSocketChannel, WssSubscriptionEventResponse)`
+Handle received events.
+
+Arguments:
+- `channel`: The channel to handle.
+- `response`: The response to handle.
+
+Here is an example of a `WssSubscriptionEventResponse`:
+
+```json
+{
+  "subscription_id": "0x2",
+  "result": {
+    "events": [
+      {
+        "from_address": "0x049d36570d4e46f48e99674bd3fcc84644ddd6b96f7c741b1562b82f9e004dc7",
+        "keys": [
+          "0x99cd8bde557814842a3121e8ddfd433a539b8c9f14bf31ebf108d12e6196e9"
+        ],
+        "data": [
+          "0x0000000000000000000000000000000000000000000000000000000000000001",
+          "0x0000000000000000000000000000000000000000000000000000000000000002",
+          "0x0000000000000000000000000000000000000000000000000000000000000003"
+        ],
+        "block_hash": "0x0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef",
+        "block_number": 123456,
+        "transaction_hash": "0xabcdef0123456789abcdef0123456789abcdef0123456789abcdef0123456789"
+      },
+      {
+        "from_address": "0x049d36570d4e46f48e99674bd3fcc84644ddd6b96f7c741b1562b82f9e004dc7",
+        "keys": [
+          "0x99cd8bde557814842a3121e8ddfd433a539b8c9f14bf31ebf108d12e6196e9"
+        ],
+        "data": [
+          "0x0000000000000000000000000000000000000000000000000000000000000004",
+          "0x0000000000000000000000000000000000000000000000000000000000000005",
+          "0x0000000000000000000000000000000000000000000000000000000000000006"
+        ],
+        "block_hash": "0x0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef",
+        "block_number": 123456,
+        "transaction_hash": "0xfedcba9876543210fedcba9876543210fedcba9876543210fedcba9876543210"
+      }
+    ]
+  }
+}
+```
+
+#### 3) `onTransactionStatus(StarknetWebSocketChannel, WssSubscriptionTransactionsStatusResponse)`
+Handle received transaction status.
+
+Arguments:
+- `channel`: The channel to handle.
+- `response`: The response to handle.
+
+Here is an example of a `WssSubscriptionTransactionsStatusResponse`:
+
+```json
+{
+  "subscription_id": "0x3",
+  "result": {
+    "transaction_hash": "0x0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef",
+    "status": "ACCEPTED_ON_L2",
+    "block_hash": "0xfedcba9876543210fedcba9876543210fedcba9876543210fedcba9876543210",
+    "block_number": 123456,
+    "transaction_index": 42,
+    "execution_status": "SUCCEEDED",
+    "finality_status": "ACCEPTED_ON_L2",
+    "execution_resources": {
+      "steps": 1000,
+      "memory_holes": 50,
+      "range_check_builtin_applications": 10,
+      "pedersen_builtin_applications": 5,
+      "poseidon_builtin_applications": 3,
+      "ec_op_builtin_applications": 2,
+      "ecdsa_builtin_applications": 1,
+      "bitwise_builtin_applications": 4,
+      "keccak_builtin_applications": 2
+    },
+    "revert_reason": null
+  }
+}
+```
+
+#### 4) `onPendingTransactions(StarknetWebSocketChannel, WssSubscriptionPendingTransactionsResponse)`
+Handle received pending transactions.
+
+Arguments:
+- `channel`: The channel to handle.
+- `response`: The response to handle.
+
+Here is an example of a `WssSubscriptionPendingTransactionsResponse`:
+
+```json
+{
+  "subscription_id": "0x4",
+  "result": {
+    "transactions": [
+      {
+        "transaction_hash": "0x0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef",
+        "max_fee": "0x1234567890",
+        "version": "0x1",
+        "signature": [
+          "0x1234567890abcdef1234567890abcdef1234567890abcdef1234567890abcdef",
+          "0xabcdef1234567890abcdef1234567890abcdef1234567890abcdef1234567890"
+        ],
+        "nonce": "0x42",
+        "type": "INVOKE",
+        "sender_address": "0x0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef",
+        "calldata": [
+          "0x1",
+          "0x2",
+          "0x3"
+        ]
+      },
+      {
+        "transaction_hash": "0xfedcba9876543210fedcba9876543210fedcba9876543210fedcba9876543210",
+        "max_fee": "0x9876543210",
+        "version": "0x1",
+        "signature": [
+          "0x9876543210fedcba9876543210fedcba9876543210fedcba9876543210fedcba",
+          "0xfedcba9876543210fedcba9876543210fedcba9876543210fedcba9876543210"
+        ],
+        "nonce": "0x43",
+        "type": "INVOKE",
+        "sender_address": "0xfedcba9876543210fedcba9876543210fedcba9876543210fedcba9876543210",
+        "calldata": [
+          "0x4",
+          "0x5",
+          "0x6"
+        ]
+      }
+    ]
+  }
+}
+```
+
+#### 5) `onReorg(StarknetWebSocketChannel, WssSubscriptionReorgResponse)`
+Handle received reorg. This message could be received from subscribing to newHeads, Events or TransactionStatus.
+
+Arguments:
+- `channel`: The channel to handle.
+- `response`: The response to handle.
+
+Here is an example of a `WssSubscriptionReorgResponse`:
+
+```json
+{
+  "subscription_id": "0x5",
+  "result": {
+    "old_head": {
+      "blockHash": "0x0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef",
+      "parentHash": "0xfedcba9876543210fedcba9876543210fedcba9876543210fedcba9876543210",
+      "blockNumber": 123456
+    },
+    "new_head": {
+      "blockHash": "0xaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "parentHash": "0xbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+      "blockNumber": 123456
+    }
+  }
+}
+```
+
+## III. Examples
+
+### Subscribe and listen for new block heads
+
+In the following example, we will subscribe to new block heads and keep listening for 5 new block heads.
+
+```dart
+import 'package:starknet/starknet.dart';
+
+final nodeUrl = 'wss://sepolia-pathfinder-rpc.spaceshard.io/rpc/v0_8';
+final webSocketChannel = StarknetWebSocketChannel(nodeUrl: nodeUrl);
+await webSocketChannel.waitForConnection();
+
+// Setup onNewHeads handler function. In this example, we will 
+// process every new block head and store it in a list.
+final eventCompleter = Completer<void>();
+final blocks = <WssSubscriptionNewHeadResponse>[];
+
+webSocketChannel.onNewHeads = (channel, response) {
+    blocks.add(response);
+    print("blocks.length: ${blocks.length}");
+    print("received block: ${response.result}");
+    if (blocks.length == 5) {
+        eventCompleter.complete();
+    }
+};
+
+// Then we initiate the subscription sending the new block heads 
+// subscription message to the wss endpoint.
+final subId = await webSocketChannel.subscribeNewHeads();
+subId.when(
+    result: (subId) {
+        // we can check if the subscription was successful
+        expect(subId, isNotNull);
+    },
+    error: (error) => fail('Should not return an error'),
+);
+// At this point, we will start to receive and process all the new block heads.
+
+// Wait for the subscription events completion
+// This is wait for eventCompleter.complete() to be called.
+await eventCompleter.future;
+
+// At this point, in the background we are still receiving and processing the new block heads.
+
+// So, let's unsubscribe to stop receiving and processing the new block heads.
+final status = await webSocketChannel.unsubscribeNewHeads();
+status.when(
+    // we can check if the unsubscription was successful
+    result: (status) => expect(status, true),
+    error: (error) => fail('Should not return an error'),
+);
+
+// Disconnect from the web socket node
+await webSocketChannel.disconnect();
+await webSocketChannel.waitForDisconnect();
+``` 
+
+### Subscribe and listen for new events
+
+In the following example, we will subscribe to new events and keep listening for 5 events.
+
+```dart
+import 'package:starknet/starknet.dart';
+
+final nodeUrl = 'wss://sepolia-pathfinder-rpc.spaceshard.io/rpc/v0_8';
+final webSocketChannel = StarknetWebSocketChannel(nodeUrl: nodeUrl);
+await webSocketChannel.waitForConnection();
+
+// Setup onEvents handler function. In this example, we will 
+// process 5 events and print their transaction_hash.
+final eventCompleter = Completer<void>();
+int eventCount = 0;
+
+webSocketChannel.onEvents = (channel, response) {
+    print("received event transaction_hash: ${response.result.transactionHash}");
+    eventCount++;
+    if (eventCount == 5) {
+        eventCompleter.complete();
+    }
+};
+
+// Then we initiate the subscription sending the events 
+// subscription message to the wss endpoint.
+final subId = await webSocketChannel.subscribeEvents();
+subId.when(
+    result: (subId) {
+        // we can check if the subscription was successful
+        expect(subId, isNotNull);
+    },
+    error: (error) => fail('Should not return an error'),
+);
+// At this point, we will start to receive and process all the events.
+
+// Wait for the subscription events completion
+// This is wait for eventCompleter.complete() to be called.
+await eventCompleter.future;
+
+// At this point, in the background we are still receiving and processing the events.
+
+// So, let's unsubscribe to stop receiving and processing the events.
+final status = await webSocketChannel.unsubscribeEvents();
+status.when(
+    // we can check if the unsubscription was successful
+    result: (status) => expect(status, true),
+    error: (error) => fail('Should not return an error'),
+);
+
+// Disconnect from the web socket node
+await webSocketChannel.disconnect();
+await webSocketChannel.waitForDisconnect();
+``` 
+
+### Subscribe and listen for pending transactions
+
+In the following example, we will subscribe to pending transactions and keep listening for 5 pending transactions.
+
+```dart
+import 'package:starknet/starknet.dart';
+
+final nodeUrl = 'wss://sepolia-pathfinder-rpc.spaceshard.io/rpc/v0_8';
+final webSocketChannel = StarknetWebSocketChannel(nodeUrl: nodeUrl);
+await webSocketChannel.waitForConnection();
+
+// Setup onPendingTransactions handler function. In this example, we will 
+// process 5 pending transactions and print their transaction_hash.
+final eventCompleter = Completer<void>();
+int eventCount = 0;
+
+webSocketChannel.onPendingTransactions = (channel, response) {
+    print("received pending transaction transaction_hash: ${response.result.transactionHash}");
+    eventCount++;
+    if (eventCount == 5) {
+        eventCompleter.complete();
+    }
+};
+
+// Then we initiate the subscription sending the pending transactions 
+// subscription message to the wss endpoint.
+final subId = await webSocketChannel.subscribePendingTransactions();
+subId.when(
+    result: (subId) {
+        // we can check if the subscription was successful
+        expect(subId, isNotNull);
+    },
+    error: (error) => fail('Should not return an error'),
+);
+// At this point, we will start to receive and process all the pending transactions.
+
+// Wait for the subscription pending transactions completion
+// This is wait for eventCompleter.complete() to be called.
+await eventCompleter.future;
+
+// At this point, in the background we are still receiving and processing the pending transactions.
+
+// So, let's unsubscribe to stop receiving and processing the pending transactions.
+final status = await webSocketChannel.unsubscribePendingTransactions();
+status.when(
+    // we can check if the unsubscription was successful
+    result: (status) => expect(status, true),
+    error: (error) => fail('Should not return an error'),
+);
+
+// Disconnect from the web socket node
+await webSocketChannel.disconnect();
+await webSocketChannel.waitForDisconnect();
+``` 
+
+### Subscribe and listen for transaction status
+
+In the following example, we will subscribe to transaction status to keep listening 
+for transaction status until it is accepted on L2.
+
+```dart
+import 'package:starknet/starknet.dart';
+
+final nodeUrl = 'wss://sepolia-pathfinder-rpc.spaceshard.io/rpc/v0_8';
+final webSocketChannel = StarknetWebSocketChannel(nodeUrl: nodeUrl);
+await webSocketChannel.waitForConnection();
+
+// Setup onTransactionStatus handler function. In this example, we will 
+// process the transaction status until it is accepted on L2.
+final eventCompleter = Completer<void>();
+
+webSocketChannel.onTransactionStatus = (channel, response) {
+    print("received transaction status: ${response.result.finalityStatus}");
+    if (response.result.finalityStatus == "ACCEPTED_ON_L2") {
+        eventCompleter.complete();
+    }
+};
+
+// Then we initiate the subscription sending the transaction status 
+// subscription message to the wss endpoint.
+final transactionHash = Felt.fromHexString("0x194b07e7a536cbf2b94c74d558af8b9c689dbdd70a649a7ce1ca07375ae3cc9");
+final subId = await webSocketChannel.subscribeTransactionStatus(transactionHash);
+subId.when(
+    result: (subId) {
+        // we can check if the subscription was successful
+        expect(subId, isNotNull);
+    },
+    error: (error) => fail('Should not return an error'),
+);
+// At this point, we will start to receive and process all the transaction status events.
+
+// Wait for the subscription transaction status completion
+// This is wait for eventCompleter.complete() to be called.
+await eventCompleter.future;
+
+// At this point, in the background we are still receiving and processing the transaction status.
+
+// So, let's unsubscribe to stop receiving and processing the transaction status.
+final status = await webSocketChannel.unsubscribeTransactionStatus();
+status.when(
+    // we can check if the unsubscription was successful
+    result: (status) => expect(status, true),
+    error: (error) => fail('Should not return an error'),
+);
+
+// Disconnect from the web socket node
+await webSocketChannel.disconnect();
+await webSocketChannel.waitForDisconnect();
+``` 
+
+### Send and receive a regular rpc message
+
+In the following example, we will query the chainId of the Starknet sepolia network.
+
+```dart
+import 'package:starknet/starknet.dart';
+
+final nodeUrl = 'wss://sepolia-pathfinder-rpc.spaceshard.io/rpc/v0_8';
+final webSocketChannel = StarknetWebSocketChannel(nodeUrl: nodeUrl);
+await webSocketChannel.waitForConnection();
+
+// Send a regular rpc message to the web socket node
+final response = await webSocketChannel.sendReceive('starknet_chainId');
+
+// Check if the response is the expected chainId
+final snSepolia = '0x534e5f5345504f4c4941'; //SN_SEPOLIA
+expect(response['result'], snSepolia);
+
+// Disconnect from the web socket node
+await webSocketChannel.disconnect();
+await webSocketChannel.waitForDisconnect();
+``` 
+
+## IV. How to run package tests
+
+To run the tests, you need to set the environment variable for `STARKNET_WSS` with the 
+corresponding values.
+
+```bash
+export STARKNET_WSS=wss://sepolia-pathfinder-rpc.spaceshard.io/rpc/v0_8
+```
+
+Then, run the tests with the following command:
+
+```bash
+cd packages/starknet_provider
+dart test --fail-fast --name 'websocket specific endpoints - pathfinder test' --chain-stack-traces
+dart test --fail-fast --name 'websocket regular endpoints - pathfinder test' --chain-stack-traces
+```

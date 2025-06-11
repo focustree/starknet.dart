@@ -15,5 +15,6 @@ runs:
         STARKNET_ACCOUNT: ${{ steps.load-env.outputs.starknet_account }}
         STARKNET_PRIVATE_KEY: ${{ steps.load-env.outputs.starknet_private_key }}
         STARKNET_RPC: ${{ steps.load-env.outputs.starknet_rpc }}
+        STARKNET_WSS: ${{ steps.load-env.outputs.starknet_wss }}
       run: |
         melos contracts:argent:declare
