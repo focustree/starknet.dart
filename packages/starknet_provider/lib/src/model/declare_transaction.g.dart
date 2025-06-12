@@ -123,19 +123,6 @@ Map<String, dynamic> _$$DeclareTransactionV3ImplToJson(
       'tip': instance.tip,
     };
 
-_$ResourceBoundsImpl _$$ResourceBoundsImplFromJson(Map<String, dynamic> json) =>
-    _$ResourceBoundsImpl(
-      maxAmount: json['max_amount'] as String,
-      maxPricePerUnit: json['max_price_per_unit'] as String,
-    );
-
-Map<String, dynamic> _$$ResourceBoundsImplToJson(
-        _$ResourceBoundsImpl instance) =>
-    <String, dynamic>{
-      'max_amount': instance.maxAmount,
-      'max_price_per_unit': instance.maxPricePerUnit,
-    };
-
 _$DeclareTransactionResultImpl _$$DeclareTransactionResultImplFromJson(
         Map<String, dynamic> json) =>
     _$DeclareTransactionResultImpl(
