@@ -22,24 +22,15 @@ _$SierraFunctionAbiEntryImpl _$$SierraFunctionAbiEntryImplFromJson(
     );
 
 Map<String, dynamic> _$$SierraFunctionAbiEntryImplToJson(
-    _$SierraFunctionAbiEntryImpl instance) {
-  final val = <String, dynamic>{
-    'type': instance.type,
-    'name': instance.name,
-    'inputs': instance.inputs.map((e) => e.toJson()).toList(),
-    'outputs': instance.outputs.map((e) => e.toJson()).toList(),
-  };
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('state_mutability', instance.stateMutability);
-  val['starkNetRuntimeTypeToRemove'] = instance.$type;
-  return val;
-}
+        _$SierraFunctionAbiEntryImpl instance) =>
+    <String, dynamic>{
+      'type': instance.type,
+      'name': instance.name,
+      'inputs': instance.inputs.map((e) => e.toJson()).toList(),
+      'outputs': instance.outputs.map((e) => e.toJson()).toList(),
+      if (instance.stateMutability case final value?) 'state_mutability': value,
+      'starkNetRuntimeTypeToRemove': instance.$type,
+    };
 
 _$SierraEventAbiEntryImpl _$$SierraEventAbiEntryImplFromJson(
         Map<String, dynamic> json) =>
@@ -308,24 +299,15 @@ _$DeprecatedFunctionAbiEntryImpl _$$DeprecatedFunctionAbiEntryImplFromJson(
     );
 
 Map<String, dynamic> _$$DeprecatedFunctionAbiEntryImplToJson(
-    _$DeprecatedFunctionAbiEntryImpl instance) {
-  final val = <String, dynamic>{
-    'type': instance.type,
-    'name': instance.name,
-    'inputs': instance.inputs.map((e) => e.toJson()).toList(),
-    'outputs': instance.outputs.map((e) => e.toJson()).toList(),
-  };
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('stateMutability', instance.stateMutability);
-  val['starkNetRuntimeTypeToRemove'] = instance.$type;
-  return val;
-}
+        _$DeprecatedFunctionAbiEntryImpl instance) =>
+    <String, dynamic>{
+      'type': instance.type,
+      'name': instance.name,
+      'inputs': instance.inputs.map((e) => e.toJson()).toList(),
+      'outputs': instance.outputs.map((e) => e.toJson()).toList(),
+      if (instance.stateMutability case final value?) 'stateMutability': value,
+      'starkNetRuntimeTypeToRemove': instance.$type,
+    };
 
 _$DeprecatedEventAbiEntryImpl _$$DeprecatedEventAbiEntryImplFromJson(
         Map<String, dynamic> json) =>
