@@ -6,11 +6,15 @@
 
     <!-- Camera permission for QR code scanning (optional) -->
     <uses-permission android:name="android.permission.CAMERA" />
+    
+    <!-- Declare camera feature as optional to avoid Play Store rejection -->
+    <uses-feature android:name="android.hardware.camera" android:required="false" />
 
     <application
         android:label="Starknet Mobile Wallet"
         android:name="${applicationName}"
-        android:icon="@mipmap/ic_launcher">
+        android:icon="@mipmap/ic_launcher"
+        android:usesCleartextTraffic="true">
 
         <activity
             android:name=".MainActivity"
@@ -49,11 +53,8 @@
             android:name="flutterEmbedding"
             android:value="2" />
 
-    </application>
-
-    <!-- Network security config for HTTP traffic (development only) -->
-    <application android:usesCleartextTraffic="true">
         <!-- Your application components -->
+
     </application>
 
 </manifest>
