@@ -6,3 +6,4 @@ export 'msg_to_l1.dart';
 export 'pending_transactions.dart';
 export 'txn.dart';
 export 'txn_receipt.dart';
+export 'txn_status.dart';

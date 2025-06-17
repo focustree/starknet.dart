@@ -1192,5 +1192,28 @@ void main() {
             });
       });
     }, tags: ['integration']);
+
+    group('starknet_getTransactionStatus', () {
+      test('should handle non-existent transaction hash', () async {
+        final response =
+            await provider.getTransactionStatus(Felt.fromHexString('0x1234'));
+        response.when(
+            error: (error) {
+              expect(error.code, JsonRpcApiErrorCode.TXN_HASH_NOT_FOUND);
+            },
+            result: (result) =>
+                fail("Should fail with non-existent transaction hash"));
+      });
+
+      test('should handle real transaction status', () async {
+        final response =
+            await provider.getTransactionStatus(invokeTransactionHash);
+        response.when(
+            error: (error) => fail("Shouldn't fail: $error"),
+            result: (result) {
+              expect(result.finalityStatus, TxnFinalityStatus.ACCEPTED_ON_L2);
+            });
+      });
+    }, tags: ['integration']);
   });
 }
