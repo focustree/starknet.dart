@@ -138,8 +138,8 @@ abstract class ReadProvider {
 
   /// Gets the status of a transaction by its hash
   ///
-  /// [Spec](https://github.com/starkware-libs/starknet-specs/blob/v0.7.0-rc0/api/starknet_api_openrpc.json#L144-L169)
-  Future<TransactionStatus> getTransactionStatus(Felt transactionHash);
+  /// [Spec](https://github.com/starkware-libs/starknet-specs/blob/a2d10fc6cbaddbe2d3cf6ace5174dd0a306f4885/api/starknet_api_openrpc.json#L225)
+  Future<GetTransactionStatus> getTransactionStatus(Felt transactionHash);
 }
 
 class JsonRpcReadProvider implements ReadProvider {
@@ -363,12 +363,14 @@ class JsonRpcReadProvider implements ReadProvider {
   }
 
   @override
-  Future<TransactionStatus> getTransactionStatus(Felt transactionHash) {
-    return callRpcEndpoint(
+  Future<GetTransactionStatus> getTransactionStatus(
+      Felt transactionHash) async {
+    final response = await callRpcEndpoint(
       nodeUri: nodeUri,
       method: 'starknet_getTransactionStatus',
       params: [transactionHash],
-    ).then(TransactionStatus.fromJson);
+    );
+    return GetTransactionStatus.fromJson(response);
   }
 
   static final devnet = JsonRpcReadProvider(nodeUri: devnetUri);
