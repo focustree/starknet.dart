@@ -1195,8 +1195,10 @@ void main() {
 
     group('starknet_getTransactionStatus', () {
       test('should handle non-existent transaction hash', () async {
-        final response =
-            await provider.getTransactionStatus(Felt.fromHexString('0x1234'));
+        final response = await provider.getTransactionStatus(
+          Felt.fromHexString(
+              '0x0100000000000000000000000000000000000000000000000000000000000000'),
+        );
         response.when(
             error: (error) {
               expect(error.code, JsonRpcApiErrorCode.TXN_HASH_NOT_FOUND);

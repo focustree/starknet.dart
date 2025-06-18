@@ -457,13 +457,13 @@ void main() {
 
         const expectedMessage = 'contract already deployed at address';
         final foundInMessages =
-            error.messages.join(', ').contains(expectedMessage);
+            error.messages.join(', ').toLowerCase().contains(expectedMessage);
         final foundInRevertError =
-            error.revertError?.contains(expectedMessage) ?? false;
+            (error.revertError ?? '').toLowerCase().contains(expectedMessage);
         expect(
           foundInMessages || foundInRevertError,
           isTrue,
-          reason: 'Error message should contained: $expectedMessage',
+          reason: 'Error message should contain: $expectedMessage',
         );
       });
     });

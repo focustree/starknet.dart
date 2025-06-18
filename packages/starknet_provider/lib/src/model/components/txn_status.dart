@@ -28,20 +28,27 @@ class TxnExecutionStatusValues {
 enum TxnStatus {
   @JsonValue(TxnStatusValues.received)
   RECEIVED,
-  @JsonValue(TxnStatusValues.rejected) // v0.8
+
+  /// RPC v0.8
+  @JsonValue(TxnStatusValues.rejected)
   REJECTED,
   @JsonValue(TxnStatusValues.acceptedOnL2)
   ACCEPTED_ON_L2,
   @JsonValue(TxnStatusValues.acceptedOnL1)
   ACCEPTED_ON_L1,
-  @JsonValue(TxnStatusValues.candidate) // v0.9
+
+  /// Added in RPC v0.9
+  @JsonValue(TxnStatusValues.candidate)
   CANDIDATE,
-  @JsonValue(TxnStatusValues.preConfirmed) // v0.9
+
+  /// Added in RPC v0.9
+  @JsonValue(TxnStatusValues.preConfirmed)
   PRE_CONFIRMED,
 }
 
 enum TxnFinalityStatus {
-  @JsonValue(TxnFinalityStatusValues.preConfirmed) // v0.9
+  /// Added in RPC v0.9
+  @JsonValue(TxnFinalityStatusValues.preConfirmed)
   PRE_CONFIRMED,
   @JsonValue(TxnFinalityStatusValues.acceptedOnL2)
   ACCEPTED_ON_L2,
@@ -52,7 +59,9 @@ enum TxnFinalityStatus {
 enum TxnExecutionStatus {
   @JsonValue(TxnExecutionStatusValues.succeeded)
   SUCCEEDED,
-  @JsonValue(TxnExecutionStatusValues.reverted) // v0.8
+
+  /// RPC v0.8
+  @JsonValue(TxnExecutionStatusValues.reverted)
   REVERTED,
 }
 
