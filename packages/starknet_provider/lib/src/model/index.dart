@@ -20,6 +20,7 @@ export 'get_state_update.dart';
 export 'get_storage.dart';
 export 'get_transaction.dart';
 export 'get_transaction_receipt.dart';
+export 'get_transaction_status.dart';
 export 'invoke_transaction.dart';
 export 'json_rpc_api_error.dart';
 export 'msg_to_l2.dart';

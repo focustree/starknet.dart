@@ -454,10 +454,16 @@ void main() {
           reason: 'Should fail: account is already deployed',
         );
         final error = avnuDeploy as AvnuDeployAccountError;
+
+        const expectedMessage = 'contract already deployed at address';
+        final foundInMessages =
+            error.messages.join(', ').toLowerCase().contains(expectedMessage);
+        final foundInRevertError =
+            (error.revertError ?? '').toLowerCase().contains(expectedMessage);
         expect(
-          error.messages.join(', '),
-          contains('contract already deployed at address'),
-          reason: 'Revert error should contained: contract already deployed',
+          foundInMessages || foundInRevertError,
+          isTrue,
+          reason: 'Error message should contain: $expectedMessage',
         );
       });
     });
