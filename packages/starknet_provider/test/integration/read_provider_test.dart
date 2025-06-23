@@ -1164,6 +1164,118 @@ void main() {
       }, tags: ['integration']);
     });
 
+    group('estimateMessageFee', () {
+      test('estimate message fee for L1 to L2 message', () async {
+        // L1 address (not coded in 20 bytes)
+        const String l1Address = '0x8359E4B0152ed5A731162D3c7B0D8D56edB165';
+        
+        // Example L2 contract address (this would be the deployed contract address in a real scenario)
+        final Felt l2ContractAddress = contractAddressV1;
+        
+        // Entry point selector for the L1 handler
+      final Felt entryPointSelector = getSelectorByName('increment'); AQUI VOY VER QUE ESTE DEPLOYADO STARKNET COUNTER!!!
+        
+        // Message payload
+        final List<Felt> payload = [Felt.fromInt(100)];
+        
+        final MsgFromL1 message = MsgFromL1(
+          fromAddress: l1Address,
+          toAddress: l2ContractAddress,
+          entryPointSelector: entryPointSelector,
+          payload: payload,
+        );
+        
+        final EstimateMessageFeeRequest request = EstimateMessageFeeRequest(
+          message: message,
+          blockId: BlockId.latest,
+        );
+        
+        final response = await provider.estimateMessageFee(request);
+        
+        response.when(
+          error: (error) {
+            fail('Should not fail. (${error.code}): ${error.message}');
+          },
+          result: (result) {
+            // If successful, verify the fee estimate structure
+            expect(result.gasConsumed, isNotEmpty);
+            expect(result.dataGasConsumed, isNotEmpty);
+            expect(result.gasPrice, isNotEmpty);
+            expect(result.dataGasPrice, isNotEmpty);
+            expect(result.overallFee, isNotEmpty);
+            expect(result.unit, isNotEmpty);
+          },
+        );
+      }, tags: ['integration'], skip: true); // Skip by default as it requires specific contract setup
+      
+      test('estimate message fee with invalid contract address', () async {
+        const String l1Address = '0x8359E4B0152ed5A731162D3c7B0D8D56edB165';
+        final Felt invalidContractAddress = Felt.fromHexString(
+            '0x0000000000000000000000000000000000000000000000000000000000000000');
+        final Felt entryPointSelector = getSelectorByName('increase_bal');
+        final List<Felt> payload = [Felt.fromInt(100)];
+        
+        final MsgFromL1 message = MsgFromL1(
+          fromAddress: l1Address,
+          toAddress: invalidContractAddress,
+          entryPointSelector: entryPointSelector,
+          payload: payload,
+        );
+        
+        final EstimateMessageFeeRequest request = EstimateMessageFeeRequest(
+          message: message,
+          blockId: BlockId.latest,
+        );
+        
+        final response = await provider.estimateMessageFee(request);
+        
+        response.when(
+          error: (error) {
+            expect(
+              error.code == JsonRpcApiErrorCode.CONTRACT_NOT_FOUND ||
+              error.code == JsonRpcApiErrorCode.CONTRACT_ERROR,
+              isTrue,
+            );
+          },
+          result: (result) {
+            fail('Should fail with invalid contract address');
+          },
+        );
+      });
+      
+      test('estimate message fee with invalid block id', () async {
+        const String l1Address = '0x8359E4B0152ed5A731162D3c7B0D8D56edB165';
+        final Felt l2ContractAddress = Felt.fromHexString(
+            '0x04e76f8708774c8162fb4da7abefb3cae94cc51cf3f9b40e0d44f24aabf8a521');
+        final Felt entryPointSelector = getSelectorByName('increase_bal');
+        final List<Felt> payload = [Felt.fromInt(100)];
+        
+        final MsgFromL1 message = MsgFromL1(
+          fromAddress: l1Address,
+          toAddress: l2ContractAddress,
+          entryPointSelector: entryPointSelector,
+          payload: payload,
+        );
+        
+        final EstimateMessageFeeRequest request = EstimateMessageFeeRequest(
+          message: message,
+          blockId: invalidBlockIdFromBlockHash,
+        );
+        
+        final response = await provider.estimateMessageFee(request);
+        
+        response.when(
+          error: (error) {
+            expect(error.code, JsonRpcApiErrorCode.BLOCK_NOT_FOUND);
+            expect(error.message, 'Block not found');
+          },
+          result: (result) {
+            fail('Should fail with invalid block id');
+          },
+        );
+      });
+    });
+
     group('starknet_specVersion', () {
       test('check spec version from Blast public server', () async {
         final blastUri = {
