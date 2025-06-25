@@ -1,3 +1,5 @@
+// ignore_for_file: constant_identifier_names
+
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'wallet_error.freezed.dart';
@@ -30,44 +32,44 @@ class WalletError with _$WalletError {
 
 /// Enum for known wallet error codes based on Wallet API Spec.
 enum WalletErrorCode {
-  /// An error occurred (NOT_ERC20)
+  /// An error occurred
   @JsonValue(111)
-  notERC20,
+  NOT_ERC20,
 
-  /// An error occurred (UNLISTED_NETWORK)
+  /// An error occurred
   @JsonValue(112)
-  unlistedNetwork,
+  UNLISTED_NETWORK,
 
-  /// An error occurred (USER_REFUSED_OP)
+  /// An error occurred
   /// Description: The user refused the operation in the wallet
   @JsonValue(113)
-  userRefusedOp,
+  USER_REFUSED_OP,
 
-  /// An error occurred (INVALID_REQUEST_PAYLOAD)
+  /// An error occurred
   @JsonValue(114)
-  invalidRequestPayload,
+  INVALID_REQUEST_PAYLOAD,
 
-  /// An error occurred (ACCOUNT_ALREADY_DEPLOYED)
+  /// An error occurred
   @JsonValue(115)
-  accountAlreadyDeployed,
+  ACCOUNT_ALREADY_DEPLOYED,
 
-  /// An error occurred (DEPLOYMENT_DATA_NOT_AVAILABLE)
+  /// An error occurred
   /// Description: The deployment data is not available or no supported
   @JsonValue(116)
-  deploymentDataNotAvailable,
+  DEPLOYMENT_DATA_NOT_AVAILABLE,
 
-  /// An error occurred (CHAIN_ID_NOT_SUPPORTED)
+  /// An error occurred
   /// Description: The requested chain ID is not supported by the wallet
   @JsonValue(117)
-  chainIdNotSupported,
+  CHAIN_ID_NOT_SUPPORTED,
 
-  /// An error occurred (API_VERSION_NOT_SUPPORTED)
+  /// An error occurred
   @JsonValue(162)
-  apiVersionNotSupported,
+  API_VERSION_NOT_SUPPORTED,
 
-  /// An error occurred (UNKNOWN_ERROR)
+  /// An error occurred
   @JsonValue(163)
-  unknownError;
+  UNKNOWN_ERROR;
 
   /// Gets the integer code associated with the error enum value.
   int get code {
@@ -77,23 +79,23 @@ enum WalletErrorCode {
     // via the generated toJson() or manual mapping.
     // Let's implement explicitly for clarity:
     switch (this) {
-      case WalletErrorCode.notERC20:
+      case WalletErrorCode.NOT_ERC20:
         return 111;
-      case WalletErrorCode.unlistedNetwork:
+      case WalletErrorCode.UNLISTED_NETWORK:
         return 112;
-      case WalletErrorCode.userRefusedOp:
+      case WalletErrorCode.USER_REFUSED_OP:
         return 113;
-      case WalletErrorCode.invalidRequestPayload:
+      case WalletErrorCode.INVALID_REQUEST_PAYLOAD:
         return 114;
-      case WalletErrorCode.accountAlreadyDeployed:
+      case WalletErrorCode.ACCOUNT_ALREADY_DEPLOYED:
         return 115;
-      case WalletErrorCode.deploymentDataNotAvailable:
+      case WalletErrorCode.DEPLOYMENT_DATA_NOT_AVAILABLE:
         return 116;
-      case WalletErrorCode.chainIdNotSupported:
+      case WalletErrorCode.CHAIN_ID_NOT_SUPPORTED:
         return 117;
-      case WalletErrorCode.apiVersionNotSupported:
+      case WalletErrorCode.API_VERSION_NOT_SUPPORTED:
         return 162;
-      case WalletErrorCode.unknownError:
+      case WalletErrorCode.UNKNOWN_ERROR:
         return 163;
     }
   }
@@ -104,23 +106,23 @@ extension WalletErrorCodeExtension on WalletErrorCode {
   /// Gets the standard message associated with this error code from the spec.
   String get standardMessage {
     switch (this) {
-      case WalletErrorCode.notERC20:
+      case WalletErrorCode.NOT_ERC20:
         return "An error occurred (NOT_ERC20)";
-      case WalletErrorCode.unlistedNetwork:
+      case WalletErrorCode.UNLISTED_NETWORK:
         return "An error occurred (UNLISTED_NETWORK)";
-      case WalletErrorCode.userRefusedOp:
+      case WalletErrorCode.USER_REFUSED_OP:
         return "An error occurred (USER_REFUSED_OP)";
-      case WalletErrorCode.invalidRequestPayload:
+      case WalletErrorCode.INVALID_REQUEST_PAYLOAD:
         return "An error occurred (INVALID_REQUEST_PAYLOAD)";
-      case WalletErrorCode.accountAlreadyDeployed:
+      case WalletErrorCode.ACCOUNT_ALREADY_DEPLOYED:
         return "An error occurred (ACCOUNT_ALREADY_DEPLOYED)";
-      case WalletErrorCode.deploymentDataNotAvailable:
+      case WalletErrorCode.DEPLOYMENT_DATA_NOT_AVAILABLE:
         return "An error occurred (DEPLOYMENT_DATA_NOT_AVAILABLE)";
-      case WalletErrorCode.chainIdNotSupported:
+      case WalletErrorCode.CHAIN_ID_NOT_SUPPORTED:
         return "An error occurred (CHAIN_ID_NOT_SUPPORTED)";
-      case WalletErrorCode.apiVersionNotSupported:
+      case WalletErrorCode.API_VERSION_NOT_SUPPORTED:
         return "An error occurred (API_VERSION_NOT_SUPPORTED)";
-      case WalletErrorCode.unknownError:
+      case WalletErrorCode.UNKNOWN_ERROR:
         return "An error occurred (UNKNOWN_ERROR)";
     }
   }
@@ -128,19 +130,19 @@ extension WalletErrorCodeExtension on WalletErrorCode {
   /// Gets the standard description associated with this error code from the spec, if available.
   String? get standardDescription {
     switch (this) {
-      case WalletErrorCode.userRefusedOp:
+      case WalletErrorCode.USER_REFUSED_OP:
         return "The user refused the operation in the wallet";
-      case WalletErrorCode.deploymentDataNotAvailable:
+      case WalletErrorCode.DEPLOYMENT_DATA_NOT_AVAILABLE:
         return "The deployment data is not available or no supported";
-      case WalletErrorCode.chainIdNotSupported:
+      case WalletErrorCode.CHAIN_ID_NOT_SUPPORTED:
         return "The requested chain ID is not supported by the wallet";
       // Other codes don't have a description in the provided JSON snippet
-      case WalletErrorCode.notERC20:
-      case WalletErrorCode.unlistedNetwork:
-      case WalletErrorCode.invalidRequestPayload:
-      case WalletErrorCode.accountAlreadyDeployed:
-      case WalletErrorCode.apiVersionNotSupported:
-      case WalletErrorCode.unknownError:
+      case WalletErrorCode.NOT_ERC20:
+      case WalletErrorCode.UNLISTED_NETWORK:
+      case WalletErrorCode.INVALID_REQUEST_PAYLOAD:
+      case WalletErrorCode.ACCOUNT_ALREADY_DEPLOYED:
+      case WalletErrorCode.API_VERSION_NOT_SUPPORTED:
+      case WalletErrorCode.UNKNOWN_ERROR:
         return null;
     }
   }
