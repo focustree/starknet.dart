@@ -1,15 +1,13 @@
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 
 class SimpleHeader extends StatelessWidget {
   final String? title;
-  final double fontSize;
   final double height;
   final Positioned? right;
 
   const SimpleHeader({
     super.key,
     this.title,
-    this.fontSize = 20,
     this.height = 56,
     this.right,
   });
@@ -24,10 +22,7 @@ class SimpleHeader extends StatelessWidget {
             child: title != null
                 ? Text(
                     title!,
-                    style: TextStyle(
-                      fontSize: fontSize,
-                      fontWeight: FontWeight.w800,
-                    ),
+                    style: Theme.of(context).textTheme.headlineSmall,
                   )
                 : Container(),
           ),

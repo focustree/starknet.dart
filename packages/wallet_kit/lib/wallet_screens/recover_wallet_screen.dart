@@ -7,6 +7,8 @@ import '../wallet_state/index.dart';
 import '../widgets/icon.dart';
 import 'protect_wallet_screen.dart';
 
+const seedPhraseWordsCount = 12;
+
 class RecoverWalletScreen extends HookConsumerWidget {
   const RecoverWalletScreen({super.key});
 
@@ -15,10 +17,11 @@ class RecoverWalletScreen extends HookConsumerWidget {
     final seedPhrase = useState('');
     final wordsCount =
         seedPhrase.value == '' ? 0 : seedPhrase.value.trim().split(' ').length;
-    final isButtonEnabled = wordsCount == 12;
+    final isButtonEnabled = wordsCount == seedPhraseWordsCount;
     final walletType = useState(WalletType.openZeppelin);
 
     return Layout2(
+      sideMargin: sideMargin,
       children: [
         const SimpleHeader(
           title: 'Recover your wallet',
@@ -32,36 +35,33 @@ class RecoverWalletScreen extends HookConsumerWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              const Text(
+              Text(
                 'Select your wallet type:',
-                style: TextStyle(
-                  fontSize: 14,
-                  fontWeight: FontWeight.w600,
-                ),
+                style: Theme.of(context).textTheme.titleMedium,
               ),
-              const SizedBox(height: 16),
+              const SizedBox(height: sideMargin),
               SegmentedButton<WalletType>(
                 showSelectedIcon: false,
                 segments: const <ButtonSegment<WalletType>>[
                   ButtonSegment<WalletType>(
                       value: WalletType.openZeppelin,
                       icon: Padding(
-                        padding:
-                            EdgeInsets.symmetric(horizontal: 16.0, vertical: 8),
+                        padding: EdgeInsets.symmetric(
+                            horizontal: sideMargin, vertical: sideMargin / 2),
                         child: WalletTypeIcon(type: WalletType.openZeppelin),
                       )),
                   ButtonSegment<WalletType>(
                       value: WalletType.argent,
                       icon: Padding(
-                        padding:
-                            EdgeInsets.symmetric(horizontal: 16.0, vertical: 8),
+                        padding: EdgeInsets.symmetric(
+                            horizontal: sideMargin, vertical: sideMargin / 2),
                         child: WalletTypeIcon(type: WalletType.argent),
                       )),
                   ButtonSegment<WalletType>(
                       value: WalletType.braavos,
                       icon: Padding(
-                        padding:
-                            EdgeInsets.symmetric(horizontal: 16.0, vertical: 8),
+                        padding: EdgeInsets.symmetric(
+                            horizontal: sideMargin, vertical: sideMargin / 2),
                         child: WalletTypeIcon(type: WalletType.braavos),
                       )),
                 ],

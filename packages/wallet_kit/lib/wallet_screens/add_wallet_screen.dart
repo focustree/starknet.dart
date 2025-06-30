@@ -11,16 +11,25 @@ class AddWalletScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SpacedColumn(
-      verticalSpacing: 16,
-      bottom: 16,
-      children: [
-        const SimpleHeader(
-          title: 'Add Wallet',
-        ),
-        pad(const CreateNewWalletButton()),
-        pad(const RecoverWalletButton()),
-      ],
+    return const Padding(
+      padding: EdgeInsets.only(bottom: 16),
+      child: Column(
+        children: [
+          SimpleHeader(
+            title: 'Add Wallet',
+          ),
+          SizedBox(height: 16),
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: sideMargin),
+            child: CreateNewWalletButton(),
+          ),
+          SizedBox(height: 16),
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: sideMargin),
+            child: RecoverWalletButton(),
+          ),
+        ],
+      ),
     );
   }
 }
