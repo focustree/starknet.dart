@@ -55,7 +55,7 @@ Future<dynamic> callRpcEndpoint(
         'calls': calls,
         if (gasTokenAddress != '') 'gasTokenAddress': gasTokenAddress,
         if (maxGasTokenAmount != '') 'maxGasTokenAmount': maxGasTokenAmount,
-        'accountClassHash': accountClassHash
+        if (accountClassHash != '') 'accountClassHash': accountClassHash,
       };
       break;
     case 'paymaster_execute':
