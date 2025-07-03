@@ -3,6 +3,7 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../services/index.dart';
+import '../ui/theme.dart';
 import '../wallet_state/index.dart';
 import 'token_icon.dart';
 
@@ -31,14 +32,14 @@ class TokenList extends HookConsumerWidget {
     }, [selectedAccount?.id]);
 
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 0),
+      padding: const EdgeInsets.symmetric(horizontal: sideMargin),
       child: ListView.separated(
         itemCount: tokens.length,
         itemBuilder: (context, index) {
           return TokenListItem(symbol: tokens[index]);
         },
         separatorBuilder: (context, index) {
-          return Divider(color: Colors.grey[200], height: 0);
+          return Divider(color: Theme.of(context).dividerColor, height: 1);
         },
       ),
     );
@@ -56,12 +57,15 @@ class TokenListItem extends HookConsumerWidget {
     ));
 
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 0, vertical: 16),
+      padding: const EdgeInsets.symmetric(vertical: sideMargin),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           TokenIcon(symbol: symbol),
-          Text('${balance.toString()} ${symbol.name.toUpperCase()}'),
+          Text(
+            '${balance.toString()} ${symbol.name.toUpperCase()}',
+            style: Theme.of(context).textTheme.bodyLarge,
+          ),
         ],
       ),
     );

@@ -70,8 +70,7 @@ class WalletList extends HookConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final wallets = ref.watch(
         walletsProvider.select((value) => value.wallets.values.toList()));
-    return SpacedColumn(
-      verticalSpacing: 8,
+    return Column(
       mainAxisSize: MainAxisSize.min,
       children: [
         SimpleHeader(
@@ -87,6 +86,7 @@ class WalletList extends HookConsumerWidget {
             ),
           ),
         ),
+        const SizedBox(height: 8),
         Flexible(
           fit: FlexFit.loose,
           child: Padding(
@@ -107,6 +107,7 @@ class WalletList extends HookConsumerWidget {
             ),
           ),
         ),
+        const SizedBox(height: 8),
         TextButton.icon(
           onPressed: () {
             route.value = WalletListRoute.addWallet;
@@ -114,10 +115,9 @@ class WalletList extends HookConsumerWidget {
           label: const Text(
             'Add another wallet',
           ),
-          icon: Icon(
+          icon: const Icon(
             Icons.account_balance_wallet_outlined,
             size: 20,
-            color: Theme.of(context).primaryColor,
           ),
         ),
       ],
@@ -164,7 +164,7 @@ class WalletCell extends HookConsumerWidget {
       controller: controller.value,
       child: Container(
         decoration: BoxDecoration(
-          color: Colors.grey.withValues(alpha: 0.1),
+          color: Theme.of(context).colorScheme.surfaceContainerHighest,
           borderRadius: BorderRadius.circular(16.0),
         ),
         child: Expandable(
@@ -211,10 +211,9 @@ class WalletCell extends HookConsumerWidget {
                         );
                     Navigator.of(context).pop();
                   },
-                  icon: Icon(
+                  icon: const Icon(
                     Icons.add_circle_outline_rounded,
                     size: 16,
-                    color: Theme.of(context).primaryColor,
                   ),
                 ),
               ),
@@ -242,12 +241,15 @@ class AccountCell extends HookConsumerWidget {
         padding: WidgetStateProperty.all(
           const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
         ),
-        backgroundColor: WidgetStateProperty.all(isDeployed
-            ? Colors.white
-            : Colors.grey.shade400.withValues(alpha: 0.5)),
-        side: WidgetStateProperty.all(BorderSide.none),
-        overlayColor:
-            WidgetStateProperty.all(Colors.grey.withValues(alpha: 0.05)),
+        backgroundColor: WidgetStateProperty.resolveWith((states) {
+          if (isDeployed) {
+            return Theme.of(context).colorScheme.surface;
+          }
+          return Theme.of(context).colorScheme.surfaceContainerHighest;
+        }),
+        overlayColor: WidgetStateProperty.all(
+          Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.12),
+        ),
         shape: WidgetStateProperty.all(
           RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(16.0),
@@ -268,15 +270,20 @@ class AccountCell extends HookConsumerWidget {
             children: [
               Text(
                 account.name,
-                style: const TextStyle(
-                  fontWeight: FontWeight.bold,
-                ),
+                style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                      fontWeight: FontWeight.bold,
+                    ),
               ),
-              Text(formatAddress(account.address)),
+              Text(
+                formatAddress(account.address),
+                style: Theme.of(context).textTheme.bodyMedium,
+              ),
             ],
           ),
           Text(
-              '${(account.balances[TokenSymbol.ETH.name] ?? 0).toString()} ETH'),
+            '${(account.balances[TokenSymbol.ETH.name] ?? 0).toString()} ETH',
+            style: Theme.of(context).textTheme.bodyMedium,
+          ),
         ],
       ),
     );
@@ -299,37 +306,20 @@ class _WalletCellHeader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ExpandableButton(
-      theme: const ExpandableThemeData(useInkWell: false),
-      child: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
-        child: Container(
-          color: Colors.transparent,
-          child: Row(
-            children: [
-              WalletTypeIcon(type: accountType),
-              const SizedBox(width: 16),
-              Expanded(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(name,
-                        style: const TextStyle(
-                          fontWeight: FontWeight.bold,
-                        )),
-                    Text(
-                      accountsCount.toString() +
-                          (accountsCount <= 1 ? ' account' : ' accounts'),
-                    ),
-                  ],
-                ),
-              ),
-              Icon(isExpanded
-                  ? Icons.keyboard_arrow_up
-                  : Icons.keyboard_arrow_down)
-            ],
-          ),
+    return ListTile(
+      leading: WalletTypeIcon(type: accountType),
+      title: Text(name, style: Theme.of(context).textTheme.titleMedium),
+      subtitle: Text(
+        '$accountsCount account${accountsCount > 1 ? 's' : ''}',
+        style: Theme.of(context).textTheme.bodyMedium,
+      ),
+      trailing: ExpandableIcon(
+        theme: ExpandableThemeData(
+          expandIcon: Icons.keyboard_arrow_down_rounded,
+          collapseIcon: Icons.keyboard_arrow_up_rounded,
+          iconSize: Theme.of(context).iconTheme.size,
+          iconColor: Theme.of(context).iconTheme.color,
+          useInkWell: false,
         ),
       ),
     );
