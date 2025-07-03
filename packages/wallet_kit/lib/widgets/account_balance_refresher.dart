@@ -8,7 +8,8 @@ class AccountBalanceRefresher extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final selectedAccount = ref.watch(walletsProvider.select((value) => value.selectedAccount));
+    final selectedAccount =
+        ref.watch(walletsProvider.select((value) => value.selectedAccount));
     useEffect(() {
       if (selectedAccount != null) {
         ref.read(walletsProvider.notifier)
@@ -19,4 +20,4 @@ class AccountBalanceRefresher extends HookConsumerWidget {
     }, [selectedAccount?.id]);
     return const SizedBox.shrink();
   }
-} 
+}

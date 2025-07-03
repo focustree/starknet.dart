@@ -21,7 +21,7 @@ class WalletBody extends HookConsumerWidget {
         child: Text('No account selected.'),
       );
     }
-    final refresher = const AccountBalanceRefresher();
+    const refresher = const AccountBalanceRefresher();
     return Expanded(
       child: Column(
         mainAxisSize: MainAxisSize.min,
