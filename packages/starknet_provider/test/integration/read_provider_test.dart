@@ -1,4 +1,3 @@
-import 'dart:io';
 import 'package:starknet/starknet.dart';
 import 'package:starknet_provider/starknet_provider.dart';
 import 'package:test/test.dart';
@@ -1259,7 +1258,7 @@ void main() {
 
         final MsgFromL1 message = MsgFromL1(
           fromAddress: l1Address,
-          toAddress: l2ContractAddress!,
+          toAddress: l2ContractAddress,
           entryPointSelector: entryPointSelector,
           payload: payload,
         );
