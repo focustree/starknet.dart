@@ -1209,9 +1209,7 @@ void main() {
             expect(result.unit, isNotEmpty);
           },
         );
-      }, tags: [
-        'integration'
-      ], skip: false);
+      }, tags: ['integration'], skip: false);
 
       test('estimate message fee with invalid contract address', () async {
         const String l1Address = '0x8359E4B0152ed5A731162D3c7B0D8D56edB165a0';
