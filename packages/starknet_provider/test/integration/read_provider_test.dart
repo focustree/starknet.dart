@@ -1167,69 +1167,9 @@ void main() {
 
     group('estimateMessageFee', () {
       test('estimate message fee for L1 to L2 message', () async {
-        // Deploy the L2 receiver message contract before the test
-        final sierraContract = await CompiledContract.fromPath(
-          '${Directory.current.path}/../../contracts/v2.6.2/target/dev/l1_l2_receiver.contract_class.json',
-        );
-        final compiledContract = await CASMCompiledContract.fromPath(
-          '${Directory.current.path}/../../contracts/v2.6.2/target/dev/l1_l2_receiver.compiled_contract_class.json',
-        );
-        final BigInt compiledClassHash = compiledContract.classHash();
-
-        Felt sierraClassHash = Felt(sierraContract.classHash());
-
-        FeeEstimations maxFee;
-        String? txHash;
-
-        try {
-          maxFee = await account3.getEstimateMaxFeeForDeclareTx(
-            compiledContract: sierraContract,
-            compiledClassHash: compiledClassHash,
-          );
-
-          var res = await account3.declare(
-            compiledContract: sierraContract,
-            compiledClassHash: compiledClassHash,
-            max_fee: maxFee.maxFee,
-          );
-          txHash = res.when(
-            result: (result) {
-              expect(
-                result.classHash,
-                equals(
-                  sierraClassHash,
-                ),
-              );
-              return result.transactionHash.toHexString();
-            },
-            error: (error) {
-              throw error;
-            },
-          );
-
-          await waitForAcceptance(
-            transactionHash: txHash!,
-            provider: account3.provider,
-          );
-        } catch (e) {
-          print(e.toString());
-          if (!e.toString().contains('Contract error')) {
-            // If already declared just continue
-            rethrow;
-          }
-        }
-
-        maxFee = await account3.getEstimateMaxFeeForDeployTx(
-          classHash: sierraClassHash,
-          calldata: [],
-        );
-
-        final Felt? l2ContractAddress = await account3.deploy(
-          classHash: sierraClassHash,
-          calldata: [],
-          max_fee: maxFee.maxFee,
-        );
-
+        // Contract declared and deployed in devnet dump (source: /contracts/v2.6.2/src/l2_receiver.cairo)
+        final Felt l2ContractAddress = Felt.fromHexString('0x0536e1d1cd6cd7d295ccbd8c7dc817839f8ff4c615a28fdc192a0aafe2327e5f');
+        
         // This must be the l1 sender address
         const String l1Address = '0x8359E4B0152ed5A731162D3c7B0D8D56edB165a0';
 
@@ -1242,7 +1182,7 @@ void main() {
 
         final MsgFromL1 message = MsgFromL1(
           fromAddress: l1Address,
-          toAddress: l2ContractAddress!,
+          toAddress: l2ContractAddress,
           entryPointSelector: entryPointSelector,
           payload: payload,
         );
@@ -1309,68 +1249,8 @@ void main() {
       });
 
       test('estimate message fee with invalid block id', () async {
-        // Deploy the L2 receiver message contract before the test
-        final sierraContract = await CompiledContract.fromPath(
-          '${Directory.current.path}/../../contracts/v2.6.2/target/dev/l1_l2_receiver.contract_class.json',
-        );
-        final compiledContract = await CASMCompiledContract.fromPath(
-          '${Directory.current.path}/../../contracts/v2.6.2/target/dev/l1_l2_receiver.compiled_contract_class.json',
-        );
-        final BigInt compiledClassHash = compiledContract.classHash();
-
-        Felt sierraClassHash = Felt(sierraContract.classHash());
-
-        FeeEstimations maxFee;
-        String? txHash;
-
-        try {
-          maxFee = await account3.getEstimateMaxFeeForDeclareTx(
-            compiledContract: sierraContract,
-            compiledClassHash: compiledClassHash,
-          );
-
-          var res = await account3.declare(
-            compiledContract: sierraContract,
-            compiledClassHash: compiledClassHash,
-            max_fee: maxFee.maxFee,
-          );
-          txHash = res.when(
-            result: (result) {
-              expect(
-                result.classHash,
-                equals(
-                  sierraClassHash,
-                ),
-              );
-              return result.transactionHash.toHexString();
-            },
-            error: (error) {
-              throw error;
-            },
-          );
-
-          await waitForAcceptance(
-            transactionHash: txHash!,
-            provider: account3.provider,
-          );
-        } catch (e) {
-          print(e.toString());
-          if (!e.toString().contains('Contract error')) {
-            // If already declared just continue
-            rethrow;
-          }
-        }
-
-        maxFee = await account3.getEstimateMaxFeeForDeployTx(
-          classHash: sierraClassHash,
-          calldata: [],
-        );
-
-        final Felt? l2ContractAddress = await account3.deploy(
-          classHash: sierraClassHash,
-          calldata: [],
-          max_fee: maxFee.maxFee,
-        );
+        // Contract declared and deployed in devnet dump (source: /contracts/v2.6.2/src/l2_receiver.cairo)
+        final Felt l2ContractAddress = Felt.fromHexString('0x0536e1d1cd6cd7d295ccbd8c7dc817839f8ff4c615a28fdc192a0aafe2327e5f');
 
         const String l1Address = '0x8359E4B0152ed5A731162D3c7B0D8D56edB165a0';
         final Felt entryPointSelector =
