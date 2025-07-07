@@ -1,3 +1,4 @@
+import 'dart:io';
 import 'package:starknet/starknet.dart';
 import 'package:starknet_provider/starknet_provider.dart';
 import 'package:test/test.dart';
@@ -1165,22 +1166,86 @@ void main() {
     });
 
     group('estimateMessageFee', () {
+      late final Felt? l2ContractAddress;
+
+      // Deploy the L2 receiver message contract only once for all tests in this group
+      setUpAll(() async {
+        final sierraContract = await CompiledContract.fromPath(
+          '${Directory.current.path}/../../contracts/v2.6.2/target/dev/l1_l2_receiver.contract_class.json',
+        );
+        final compiledContract = await CASMCompiledContract.fromPath(
+          '${Directory.current.path}/../../contracts/v2.6.2/target/dev/l1_l2_receiver.compiled_contract_class.json',
+        );
+        final BigInt compiledClassHash = compiledContract.classHash();
+
+        Felt sierraClassHash = Felt(sierraContract.classHash());
+
+        FeeEstimations maxFee;
+        String? txHash;
+
+        try {
+          maxFee = await account3.getEstimateMaxFeeForDeclareTx(
+            compiledContract: sierraContract,
+            compiledClassHash: compiledClassHash,
+          );
+
+          var res = await account3.declare(
+            compiledContract: sierraContract,
+            compiledClassHash: compiledClassHash,
+            max_fee: maxFee.maxFee,
+          );
+          txHash = res.when(
+            result: (result) {
+              expect(
+                result.classHash,
+                equals(
+                  sierraClassHash,
+                ),
+              );
+              return result.transactionHash.toHexString();
+            },
+            error: (error) {
+              throw error;
+            },
+          );
+
+          await waitForAcceptance(
+            transactionHash: txHash!,
+            provider: account3.provider,
+          );
+        } catch (e) {
+          print(e.toString());
+          if (!e.toString().contains('Contract error')) {
+            // If already declared just continue
+            rethrow;
+          }
+        }
+
+        maxFee = await account3.getEstimateMaxFeeForDeployTx(
+          classHash: sierraClassHash,
+          calldata: [],
+        );
+        l2ContractAddress = await account3.deploy(
+          classHash: sierraClassHash,
+          calldata: [],
+          max_fee: maxFee.maxFee,
+        );
+      });
+
       test('estimate message fee for L1 to L2 message', () async {
-        // L1 address (not coded in 20 bytes)
-        const String l1Address = '0x8359E4B0152ed5A731162D3c7B0D8D56edB165';
-        
-        // Example L2 contract address (this would be the deployed contract address in a real scenario)
-        final Felt l2ContractAddress = contractAddressV1;
+
+        // This must be the l1 sender address
+        const String l1Address = '0x8359E4B0152ed5A731162D3c7B0D8D56edB165a0';
         
         // Entry point selector for the L1 handler
-      final Felt entryPointSelector = getSelectorByName('increment'); AQUI VOY VER QUE ESTE DEPLOYADO STARKNET COUNTER!!!
+        final Felt entryPointSelector = getSelectorByName('handle_message_from_l1');
         
-        // Message payload
+        // Message payload (in our example, we just need a felt252 value)
         final List<Felt> payload = [Felt.fromInt(100)];
         
         final MsgFromL1 message = MsgFromL1(
           fromAddress: l1Address,
-          toAddress: l2ContractAddress,
+          toAddress: l2ContractAddress!,
           entryPointSelector: entryPointSelector,
           payload: payload,
         );
@@ -1206,13 +1271,13 @@ void main() {
             expect(result.unit, isNotEmpty);
           },
         );
-      }, tags: ['integration'], skip: true); // Skip by default as it requires specific contract setup
+      }, tags: ['integration'], skip: false); // Skip by default as it requires specific contract setup
       
       test('estimate message fee with invalid contract address', () async {
-        const String l1Address = '0x8359E4B0152ed5A731162D3c7B0D8D56edB165';
+        const String l1Address = '0x8359E4B0152ed5A731162D3c7B0D8D56edB165a0';
         final Felt invalidContractAddress = Felt.fromHexString(
             '0x0000000000000000000000000000000000000000000000000000000000000000');
-        final Felt entryPointSelector = getSelectorByName('increase_bal');
+        final Felt entryPointSelector = getSelectorByName('handle_message_from_l1');
         final List<Felt> payload = [Felt.fromInt(100)];
         
         final MsgFromL1 message = MsgFromL1(
@@ -1244,22 +1309,20 @@ void main() {
       });
       
       test('estimate message fee with invalid block id', () async {
-        const String l1Address = '0x8359E4B0152ed5A731162D3c7B0D8D56edB165';
-        final Felt l2ContractAddress = Felt.fromHexString(
-            '0x04e76f8708774c8162fb4da7abefb3cae94cc51cf3f9b40e0d44f24aabf8a521');
-        final Felt entryPointSelector = getSelectorByName('increase_bal');
+        const String l1Address = '0x8359E4B0152ed5A731162D3c7B0D8D56edB165a0';
+        final Felt entryPointSelector = getSelectorByName('handle_message_from_l1');
         final List<Felt> payload = [Felt.fromInt(100)];
         
-        final MsgFromL1 message = MsgFromL1(
+       final MsgFromL1 message = MsgFromL1(
           fromAddress: l1Address,
-          toAddress: l2ContractAddress,
+          toAddress: l2ContractAddress!,
           entryPointSelector: entryPointSelector,
           payload: payload,
         );
         
         final EstimateMessageFeeRequest request = EstimateMessageFeeRequest(
           message: message,
-          blockId: invalidBlockIdFromBlockHash,
+          blockId: BlockId.blockNumber(99999999),
         );
         
         final response = await provider.estimateMessageFee(request);

@@ -50,6 +50,14 @@ class SierraContractAbiEntry with _$SierraContractAbiEntry {
     required List<InputParameter> inputs,
   }) = SierraConstructorAbiEntry;
 
+  const factory SierraContractAbiEntry.l1Handler({
+    required String type,
+    required String name,
+    required List<InputParameter> inputs,
+    required List<OutputParameter> outputs,
+    @JsonKey(includeIfNull: false) String? stateMutability,
+  }) = SierraL1HandlerAbiEntry;
+
   factory SierraContractAbiEntry.fromJson(Map<String, Object?> json) => json[
               'type'] ==
           'event'
@@ -66,7 +74,9 @@ class SierraContractAbiEntry with _$SierraContractAbiEntry {
                           ? SierraInterfaceAbiEntry.fromJson(json)
                           : json['type'] == 'constructor'
                               ? SierraConstructorAbiEntry.fromJson(json)
-                              : throw Exception(
+                              : json['type'] == 'l1_handler'
+                                  ? SierraL1HandlerAbiEntry.fromJson(json)
+                                  : throw Exception(
                                   "Unsupported entry type: ${json['type']}");
 }
 
