@@ -1168,8 +1168,9 @@ void main() {
     group('estimateMessageFee', () {
       test('estimate message fee for L1 to L2 message', () async {
         // Contract declared and deployed in devnet dump (source: /contracts/v2.6.2/src/l2_receiver.cairo)
-        final Felt l2ContractAddress = Felt.fromHexString('0x0536e1d1cd6cd7d295ccbd8c7dc817839f8ff4c615a28fdc192a0aafe2327e5f');
-        
+        final Felt l2ContractAddress = Felt.fromHexString(
+            '0x0536e1d1cd6cd7d295ccbd8c7dc817839f8ff4c615a28fdc192a0aafe2327e5f');
+
         // This must be the l1 sender address
         const String l1Address = '0x8359E4B0152ed5A731162D3c7B0D8D56edB165a0';
 
@@ -1210,7 +1211,7 @@ void main() {
         );
       }, tags: [
         'integration'
-      ], skip: false); // Skip by default as it requires specific contract setup
+      ], skip: false);
 
       test('estimate message fee with invalid contract address', () async {
         const String l1Address = '0x8359E4B0152ed5A731162D3c7B0D8D56edB165a0';
@@ -1250,7 +1251,8 @@ void main() {
 
       test('estimate message fee with invalid block id', () async {
         // Contract declared and deployed in devnet dump (source: /contracts/v2.6.2/src/l2_receiver.cairo)
-        final Felt l2ContractAddress = Felt.fromHexString('0x0536e1d1cd6cd7d295ccbd8c7dc817839f8ff4c615a28fdc192a0aafe2327e5f');
+        final Felt l2ContractAddress = Felt.fromHexString(
+            '0x0536e1d1cd6cd7d295ccbd8c7dc817839f8ff4c615a28fdc192a0aafe2327e5f');
 
         const String l1Address = '0x8359E4B0152ed5A731162D3c7B0D8D56edB165a0';
         final Felt entryPointSelector =
