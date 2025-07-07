@@ -1,7 +1,6 @@
 // ignore_for_file: invalid_annotation_target, non_constant_identifier_names
 
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:starknet/starknet.dart';
 
 import 'components/block_id.dart';
 import 'components/msg_from_l1.dart';
