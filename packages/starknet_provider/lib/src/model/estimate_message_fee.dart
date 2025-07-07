@@ -30,7 +30,7 @@ class EstimateMessageFee with _$EstimateMessageFee {
 class EstimateMessageFeeRequest {
   final MsgFromL1 message;
   final BlockId blockId;
-  
+
   EstimateMessageFeeRequest({
     required this.message,
     @JsonKey(name: 'block_id') required this.blockId,
@@ -39,4 +39,4 @@ class EstimateMessageFeeRequest {
   factory EstimateMessageFeeRequest.fromJson(Map<String, dynamic> json) =>
       _$EstimateMessageFeeRequestFromJson(json);
   Map<String, dynamic> toJson() => _$EstimateMessageFeeRequestToJson(this);
-} 
+}

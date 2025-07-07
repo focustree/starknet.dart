@@ -15,4 +15,4 @@ class MsgFromL1 with _$MsgFromL1 {
 
   factory MsgFromL1.fromJson(Map<String, Object?> json) =>
       _$MsgFromL1FromJson(json);
-} 
+}

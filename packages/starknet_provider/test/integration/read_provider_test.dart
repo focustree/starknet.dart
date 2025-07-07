@@ -1233,30 +1233,30 @@ void main() {
       });
 
       test('estimate message fee for L1 to L2 message', () async {
-
         // This must be the l1 sender address
         const String l1Address = '0x8359E4B0152ed5A731162D3c7B0D8D56edB165a0';
-        
+
         // Entry point selector for the L1 handler
-        final Felt entryPointSelector = getSelectorByName('handle_message_from_l1');
-        
+        final Felt entryPointSelector =
+            getSelectorByName('handle_message_from_l1');
+
         // Message payload (in our example, we just need a felt252 value)
         final List<Felt> payload = [Felt.fromInt(100)];
-        
+
         final MsgFromL1 message = MsgFromL1(
           fromAddress: l1Address,
           toAddress: l2ContractAddress!,
           entryPointSelector: entryPointSelector,
           payload: payload,
         );
-        
+
         final EstimateMessageFeeRequest request = EstimateMessageFeeRequest(
           message: message,
           blockId: BlockId.latest,
         );
-        
+
         final response = await provider.estimateMessageFee(request);
-        
+
         response.when(
           error: (error) {
             fail('Should not fail. (${error.code}): ${error.message}');
@@ -1271,34 +1271,37 @@ void main() {
             expect(result.unit, isNotEmpty);
           },
         );
-      }, tags: ['integration'], skip: false); // Skip by default as it requires specific contract setup
-      
+      }, tags: [
+        'integration'
+      ], skip: false); // Skip by default as it requires specific contract setup
+
       test('estimate message fee with invalid contract address', () async {
         const String l1Address = '0x8359E4B0152ed5A731162D3c7B0D8D56edB165a0';
         final Felt invalidContractAddress = Felt.fromHexString(
             '0x0000000000000000000000000000000000000000000000000000000000000000');
-        final Felt entryPointSelector = getSelectorByName('handle_message_from_l1');
+        final Felt entryPointSelector =
+            getSelectorByName('handle_message_from_l1');
         final List<Felt> payload = [Felt.fromInt(100)];
-        
+
         final MsgFromL1 message = MsgFromL1(
           fromAddress: l1Address,
           toAddress: invalidContractAddress,
           entryPointSelector: entryPointSelector,
           payload: payload,
         );
-        
+
         final EstimateMessageFeeRequest request = EstimateMessageFeeRequest(
           message: message,
           blockId: BlockId.latest,
         );
-        
+
         final response = await provider.estimateMessageFee(request);
-        
+
         response.when(
           error: (error) {
             expect(
               error.code == JsonRpcApiErrorCode.CONTRACT_NOT_FOUND ||
-              error.code == JsonRpcApiErrorCode.CONTRACT_ERROR,
+                  error.code == JsonRpcApiErrorCode.CONTRACT_ERROR,
               isTrue,
             );
           },
@@ -1307,26 +1310,27 @@ void main() {
           },
         );
       });
-      
+
       test('estimate message fee with invalid block id', () async {
         const String l1Address = '0x8359E4B0152ed5A731162D3c7B0D8D56edB165a0';
-        final Felt entryPointSelector = getSelectorByName('handle_message_from_l1');
+        final Felt entryPointSelector =
+            getSelectorByName('handle_message_from_l1');
         final List<Felt> payload = [Felt.fromInt(100)];
-        
-       final MsgFromL1 message = MsgFromL1(
+
+        final MsgFromL1 message = MsgFromL1(
           fromAddress: l1Address,
           toAddress: l2ContractAddress!,
           entryPointSelector: entryPointSelector,
           payload: payload,
         );
-        
+
         final EstimateMessageFeeRequest request = EstimateMessageFeeRequest(
           message: message,
           blockId: BlockId.blockNumber(99999999),
         );
-        
+
         final response = await provider.estimateMessageFee(request);
-        
+
         response.when(
           error: (error) {
             expect(error.code, JsonRpcApiErrorCode.BLOCK_NOT_FOUND);

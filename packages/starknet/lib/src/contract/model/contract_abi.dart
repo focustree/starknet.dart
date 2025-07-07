@@ -77,7 +77,7 @@ class SierraContractAbiEntry with _$SierraContractAbiEntry {
                               : json['type'] == 'l1_handler'
                                   ? SierraL1HandlerAbiEntry.fromJson(json)
                                   : throw Exception(
-                                  "Unsupported entry type: ${json['type']}");
+                                      "Unsupported entry type: ${json['type']}");
 }
 
 @freezed
