@@ -7,6 +7,7 @@ import '../wallet_state/index.dart';
 import 'nft_details.dart';
 import 'nft_list.dart';
 import 'token_list.dart';
+import 'account_balance_refresher.dart';
 
 class WalletBody extends HookConsumerWidget {
   const WalletBody({super.key});
@@ -21,10 +22,12 @@ class WalletBody extends HookConsumerWidget {
         child: Text('No account selected.'),
       );
     }
+    const refresher = AccountBalanceRefresher();
     return Expanded(
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: <Widget>[
+          refresher,
           TabBar.secondary(
             controller: tabController,
             tabs: const <Widget>[
