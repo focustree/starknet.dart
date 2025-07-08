@@ -7,11 +7,13 @@ class PrimaryButton extends StatelessWidget {
     required this.label,
     this.onPressed,
     this.isLoading = false,
+    this.labelStyle,
   }) : super(key: key);
 
   final String label;
   final VoidCallback? onPressed;
   final bool isLoading;
+  final TextStyle? labelStyle;
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +29,10 @@ class PrimaryButton extends StatelessWidget {
                   strokeWidth: 2,
                 ),
               )
-            : Text(label),
+            : Text(
+                label,
+                style: labelStyle,
+              ),
       ),
     );
   }

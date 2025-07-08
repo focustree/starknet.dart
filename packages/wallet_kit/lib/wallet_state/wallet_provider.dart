@@ -103,6 +103,12 @@ class Wallets extends _$Wallets with PersistedState<WalletsState> {
     updateWallet(wallet: walletWithAccount, accountId: account.id);
   }
 
+  bool validateSeedPhrase({
+    required String seedPhrase,
+  }) {
+    return WalletService.validateSeedPhrase(seedPhrase: seedPhrase);
+  }
+
   Future<void> addAccount({
     required String walletId,
     required Future<String?> Function() getPassword,
@@ -183,8 +189,10 @@ class Wallets extends _$Wallets with PersistedState<WalletsState> {
       accountAddress: s.Felt.fromHexString(account.address),
       chainId: s.Felt.fromString('KATANA'),
       provider: sp.JsonRpcProvider.devnet,
-      signer: s.Signer(
-        privateKey: s.Felt.fromHexString(privateKey),
+      signer: s.StarkAccountSigner(
+        signer: s.StarkSigner(
+          privateKey: s.Felt.fromHexString(privateKey),
+        ),
       ),
     );
   }
