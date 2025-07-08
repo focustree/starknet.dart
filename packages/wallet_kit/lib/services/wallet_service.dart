@@ -61,6 +61,10 @@ class WalletService {
     return bip39.generateMnemonic();
   }
 
+  static bool validateSeedPhrase({required String seedPhrase}) {
+    return bip39.validateMnemonic(seedPhrase);
+  }
+
   static String newWalletId() {
     return const Uuid().v4();
   }
@@ -82,8 +86,9 @@ class WalletService {
     required Account account,
     required String walletId,
   }) async {
-    final privateKey =
-        await secureStore.getSecret(key: privateKeyKey(walletId, account.id));
+    final privateKey = await secureStore.getSecret(
+      key: privateKeyKey(walletId, account.id),
+    );
     if (privateKey == null) {
       throw Exception("Private key not found");
     }
@@ -92,26 +97,18 @@ class WalletService {
       chainId: WalletKit().chainId,
       provider: WalletKit().provider,
       signer: s.StarkAccountSigner(
-        signer: s.StarkSigner(
-          privateKey: s.Felt.fromHexString(privateKey),
-        ),
+        signer: s.StarkSigner(privateKey: s.Felt.fromHexString(privateKey)),
       ),
       supportedTxVersion: s.AccountSupportedTxVersion.v1,
     );
   }
 
-  static Future<bool> isAccountValid({
-    required Account account,
-  }) async {
+  static Future<bool> isAccountValid({required Account account}) async {
     final provider = WalletKit().provider;
     final accountClassHash = (await provider.getClassHashAt(
       contractAddress: s.Felt.fromHexString(account.address),
       blockId: BlockId.latest,
-    ))
-        .when(
-      result: (result) => result,
-      error: ((error) => s.Felt.zero),
-    );
+    )).when(result: (result) => result, error: ((error) => s.Felt.zero));
     return accountClassHash != s.Felt.zero;
   }
 
@@ -130,16 +127,11 @@ class WalletService {
       String seedPhrase = input['seedPhrase'];
       int derivationIndex = input['derivationIndex'];
 
-      return s.derivePrivateKey(
-        mnemonic: seedPhrase,
-        index: derivationIndex,
-      );
+      return s.derivePrivateKey(mnemonic: seedPhrase, index: derivationIndex);
     }, computationInput);
   }
 
-  static Future<s.Felt> computeAddress({
-    required s.Felt privateKey,
-  }) async {
+  static Future<s.Felt> computeAddress({required s.Felt privateKey}) async {
     final address = s.Contract.computeAddress(
       classHash: WalletKit().accountClassHash,
       calldata: [s.StarkSigner(privateKey: privateKey).publicKey],
@@ -153,13 +145,15 @@ class WalletService {
     required Account account,
   }) async {
     final privateKey = await secureStore.getSecret(
-        key: privateKeyKey(account.walletId, account.id));
+      key: privateKeyKey(account.walletId, account.id),
+    );
     if (privateKey == null) {
       throw Exception("Private key not found");
     }
 
     s.StarkAccountSigner? signer = s.StarkAccountSigner(
-        signer: s.StarkSigner(privateKey: s.Felt.fromHexString(privateKey)));
+      signer: s.StarkSigner(privateKey: s.Felt.fromHexString(privateKey)),
+    );
 
     final provider = WalletKit().provider;
 
@@ -205,8 +199,9 @@ Future<String> sendEth({
   //     .getPrivateKey(id: account.id.toString(), password: password);
   final privateKey = s.Felt.fromHexString("0x1");
 
-  s.StarkAccountSigner? signer =
-      s.StarkAccountSigner(signer: s.StarkSigner(privateKey: privateKey));
+  s.StarkAccountSigner? signer = s.StarkAccountSigner(
+    signer: s.StarkSigner(privateKey: privateKey),
+  );
 
   final provider = WalletKit().provider;
   final chainId = WalletKit().chainId;
@@ -221,9 +216,7 @@ Future<String> sendEth({
   final txHash = await fundingAccount.send(
     recipient: recipientAddress,
     amount: s.Uint256(
-      low: s.Felt(
-        BigInt.from(amount * 1e18),
-      ),
+      low: s.Felt(BigInt.from(amount * 1e18)),
       high: s.Felt.zero,
     ),
   );

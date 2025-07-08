@@ -6,12 +6,14 @@ class PrimaryButton extends StatelessWidget {
     Key? key,
     required this.label,
     this.onPressed,
+    this.labelStyle,
     this.isLoading = false,
   }) : super(key: key);
 
   final String label;
   final VoidCallback? onPressed;
   final bool isLoading;
+  final TextStyle? labelStyle;
 
   @override
   Widget build(BuildContext context) {
@@ -23,11 +25,9 @@ class PrimaryButton extends StatelessWidget {
             ? const SizedBox(
                 width: 16,
                 height: 16,
-                child: CircularProgressIndicator(
-                  strokeWidth: 2,
-                ),
+                child: CircularProgressIndicator(strokeWidth: 2),
               )
-            : Text(label),
+            : Text(label, style: labelStyle),
       ),
     );
   }
@@ -55,9 +55,7 @@ class SecondaryButton extends StatelessWidget {
             ? const SizedBox(
                 width: 16,
                 height: 16,
-                child: CircularProgressIndicator(
-                  strokeWidth: 2,
-                ),
+                child: CircularProgressIndicator(strokeWidth: 2),
               )
             : Text(label),
       ),
