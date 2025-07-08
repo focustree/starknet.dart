@@ -9,7 +9,8 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  wallet_kit: ^0.2.0
+  wallet_kit:
+    path: "../../packages/wallet_kit"
   cupertino_icons: ^1.0.2
   hive_flutter: ^1.1.0
   hooks_riverpod: ^2.6.1
