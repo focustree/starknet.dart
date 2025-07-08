@@ -108,7 +108,8 @@ class WalletService {
     final accountClassHash = (await provider.getClassHashAt(
       contractAddress: s.Felt.fromHexString(account.address),
       blockId: BlockId.latest,
-    )).when(result: (result) => result, error: ((error) => s.Felt.zero));
+    ))
+        .when(result: (result) => result, error: ((error) => s.Felt.zero));
     return accountClassHash != s.Felt.zero;
   }
 
