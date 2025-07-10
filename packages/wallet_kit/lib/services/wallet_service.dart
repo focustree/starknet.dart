@@ -151,6 +151,7 @@ class WalletService {
     );
     return address;
   }
+  
   static Future<bool> deployAccount({
     required SecureStore secureStore,
     required Account account,

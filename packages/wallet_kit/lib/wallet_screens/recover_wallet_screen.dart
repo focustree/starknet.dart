@@ -18,33 +18,11 @@ class RecoverWalletScreen extends HookConsumerWidget {
     final wordsCount =
         seedPhrase.value == '' ? 0 : seedPhrase.value.trim().split(' ').length;
     final isButtonEnabled = wordsCount == seedPhraseWordsCount;
-    final walletType = useState(WalletType.openZeppelin);
-    final seedValid = useState(true);
-
-    void handleSeedPhraseChanged(String value) {
-      seedPhrase.value = value;
-      if (!seedValid.value) {
-        seedValid.value = true;
-      }
-    }
-
-    void handleContinuePressed() {
-      final isValid = ref
+    final isSeedPhraseValid = ref
           .read(walletsProvider.notifier)
           .validateSeedPhrase(seedPhrase: seedPhrase.value);
-      if (isValid) {
-        Navigator.of(context).push(
-          MaterialPageRoute(
-            builder: (context) => ProtectWalletScreen(
-              seedPhrase: seedPhrase.value,
-              walletType: walletType.value,
-            ),
-          ),
-        );
-      } else {
-        seedValid.value = false;
-      }
-    }
+
+    final walletType = useState(WalletType.openZeppelin);
 
     return Layout2(
       sideMargin: sideMargin,
@@ -54,7 +32,7 @@ class RecoverWalletScreen extends HookConsumerWidget {
         ),
         TextInput(
           hintText: 'Enter your seed phrase',
-          onChanged: handleSeedPhraseChanged,
+          onChanged: (value) => seedPhrase.value = value,
         ),
         SizedBox(
           width: double.infinity,
@@ -99,11 +77,19 @@ class RecoverWalletScreen extends HookConsumerWidget {
         ),
         const Spacer(),
         PrimaryButton(
-          onPressed: isButtonEnabled ? handleContinuePressed : null,
-          label: seedValid.value ? 'Continue' : 'Invalid Seed Phrase',
-          labelStyle: TextStyle(
-              color: seedValid.value ? Colors.blueAccent : Colors.red),
-        ),
+            onPressed: isButtonEnabled && isSeedPhraseValid
+                ? () {
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (context) => ProtectWalletScreen(
+                          seedPhrase: seedPhrase.value,
+                          walletType: walletType.value,
+                        ),
+                      ),
+                    );
+                  }
+                : null,
+            label: 'Continue'),
       ],
     );
   }
