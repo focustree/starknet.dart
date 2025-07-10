@@ -18,6 +18,10 @@ class RecoverWalletScreen extends HookConsumerWidget {
     final wordsCount =
         seedPhrase.value == '' ? 0 : seedPhrase.value.trim().split(' ').length;
     final isButtonEnabled = wordsCount == seedPhraseWordsCount;
+    final isSeedPhraseValid = ref
+        .read(walletsProvider.notifier)
+        .validateSeedPhrase(seedPhrase: seedPhrase.value);
+
     final walletType = useState(WalletType.openZeppelin);
 
     return Layout2(
@@ -73,7 +77,7 @@ class RecoverWalletScreen extends HookConsumerWidget {
         ),
         const Spacer(),
         PrimaryButton(
-            onPressed: isButtonEnabled
+            onPressed: isButtonEnabled && isSeedPhraseValid
                 ? () {
                     Navigator.of(context).push(
                       MaterialPageRoute(

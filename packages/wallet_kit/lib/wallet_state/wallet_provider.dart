@@ -83,6 +83,12 @@ class Wallets extends _$Wallets with PersistedState<WalletsState> {
     );
   }
 
+  bool validateSeedPhrase({
+    required String seedPhrase,
+  }) {
+    return WalletService.validateSeedPhrase(seedPhrase: seedPhrase);
+  }
+
   addWallet({
     required SecureStore secureStore,
     String? seedPhrase,
