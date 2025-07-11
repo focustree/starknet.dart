@@ -187,8 +187,8 @@ class Wallets extends _$Wallets with PersistedState<WalletsState> {
     }
     return s.Account(
       accountAddress: s.Felt.fromHexString(account.address),
-      chainId: s.Felt.fromString('KATANA'),
-      provider: sp.JsonRpcProvider.devnet,
+      chainId: WalletKit().chainId,
+      provider: WalletKit().provider,
       signer: s.StarkAccountSigner(
         signer: s.StarkSigner(
           privateKey: s.Felt.fromHexString(privateKey),
