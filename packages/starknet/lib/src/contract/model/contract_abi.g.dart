@@ -144,6 +144,32 @@ Map<String, dynamic> _$$SierraConstructorAbiEntryImplToJson(
       'starkNetRuntimeTypeToRemove': instance.$type,
     };
 
+_$SierraL1HandlerAbiEntryImpl _$$SierraL1HandlerAbiEntryImplFromJson(
+        Map<String, dynamic> json) =>
+    _$SierraL1HandlerAbiEntryImpl(
+      type: json['type'] as String,
+      name: json['name'] as String,
+      inputs: (json['inputs'] as List<dynamic>)
+          .map((e) => InputParameter.fromJson(e as Map<String, dynamic>))
+          .toList(),
+      outputs: (json['outputs'] as List<dynamic>)
+          .map((e) => OutputParameter.fromJson(e as Map<String, dynamic>))
+          .toList(),
+      stateMutability: json['state_mutability'] as String?,
+      $type: json['starkNetRuntimeTypeToRemove'] as String?,
+    );
+
+Map<String, dynamic> _$$SierraL1HandlerAbiEntryImplToJson(
+        _$SierraL1HandlerAbiEntryImpl instance) =>
+    <String, dynamic>{
+      'type': instance.type,
+      'name': instance.name,
+      'inputs': instance.inputs.map((e) => e.toJson()).toList(),
+      'outputs': instance.outputs.map((e) => e.toJson()).toList(),
+      if (instance.stateMutability case final value?) 'state_mutability': value,
+      'starkNetRuntimeTypeToRemove': instance.$type,
+    };
+
 _$InputParameterImpl _$$InputParameterImplFromJson(Map<String, dynamic> json) =>
     _$InputParameterImpl(
       name: json['name'] as String,
@@ -305,8 +331,7 @@ Map<String, dynamic> _$$DeprecatedFunctionAbiEntryImplToJson(
       'name': instance.name,
       'inputs': instance.inputs.map((e) => e.toJson()).toList(),
       'outputs': instance.outputs.map((e) => e.toJson()).toList(),
-      if (instance.stateMutability != null)
-        'state_mutability': instance.stateMutability,
+
       'starkNetRuntimeTypeToRemove': instance.$type,
     };
 

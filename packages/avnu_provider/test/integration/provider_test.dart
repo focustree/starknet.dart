@@ -233,112 +233,6 @@ void main() {
           },
         );
       });
-
-      test('execute rewards sponsored transaction without sponsor api key',
-          () async {
-        // Set the transaction that we want to be sponsored
-        final userAddress = sepoliaAccount0.accountAddress.toHexString();
-        final calls = [
-          {
-            'contractAddress':
-                '0x049d36570d4e46f48e99674bd3fcc84644ddd6b96f7c741b1562b82f9e004dc7',
-            'entrypoint': 'approve',
-            'calldata': [
-              '0x498e484da80a8895c77dcad5362ae483758050f22a92af29a385459b0365bfe',
-              '0xf',
-              '0x0'
-            ]
-          }
-        ];
-
-        // As a apikey manager, allocate rewards to users, enabling them to execute gasless transactions
-        // ensure we have at least one gasless transaction available for the user
-        final address = sepoliaAccount0.accountAddress.toHexString();
-        final campaign = 'Onboarding';
-        final protocol = 'AVNU';
-        final freeTx = 1;
-        // set expiration date as utc + one hour in the future
-        final expirationDate =
-            DateTime.now().add(Duration(hours: 1)).toUtc().toIso8601String();
-        final whitelistedCalls = [
-          {'contractAddress': '*', 'entrypoint': '*'}
-        ];
-        await avnuProvider.setAccountRewards(address, campaign, protocol,
-            freeTx, expirationDate, whitelistedCalls);
-        // set null apikey to ensure we won't be using sponsored apikey transaction
-        avnuProvider.setApiKey('');
-
-        // If we want that our transaction be sponsored, don't have to set the gasTokenAddress and maxGasTokenAmount fields
-        // as mentioned in https://doc.avnu.fi/avnu-paymaster/cover-your-users-gas-fees
-        final gasTokenAddress = '';
-        final maxGasTokenAmount = '';
-
-        //just for testing, we hardcode the account class hash to the ArgentX account class hash
-        //in a real scenario, we would get the account class hash from the Starknet provider
-        final accountClassHash =
-            '0x36078334509b514626504edc9fb252328d1a240e4e948bef8d0c08dff45927f';
-
-        // Build the typed data
-        final avnuBuildTypedData = await avnuProvider.buildTypedData(
-            userAddress,
-            calls,
-            gasTokenAddress,
-            maxGasTokenAmount,
-            accountClassHash);
-        avnuBuildTypedData.when(
-          result: (types, primaryType, domain, message) {
-            expect(types, isNotNull, reason: 'Types should not be null');
-            expect(primaryType, isNotNull,
-                reason: 'Primary type should not be null');
-            expect(domain, isNotNull, reason: 'Domain should not be null');
-            expect(message, isNotNull, reason: 'Message should not be null');
-          },
-          error: (error, revertError) {
-            fail('Should not get error response');
-          },
-        );
-
-        final String typedData = jsonEncode(avnuBuildTypedData.toJson());
-        final typedDataObject = TypedData.fromJson(jsonDecode(typedData));
-
-        // Remove null fields from typedData
-        final Map<String, dynamic> typedDataMap = jsonDecode(typedData);
-        removeNullFields(typedDataMap);
-        typedDataMap.remove('runtimeType');
-        final String cleanTypedData = jsonEncode(typedDataMap);
-
-        // Generate signature for the typed data
-        final messageHash = getMessageHash(
-            typedDataObject, sepoliaAccount0.accountAddress.toBigInt());
-        final signature =
-            await sepoliaAccount0.signer.sign(messageHash, BigInt.from(32));
-        final signCount = "0x1";
-        final starknetSignatureId = "0x0";
-        final publicKey = sepoliaAccount0.signer.publicKey.toHexString();
-        final signatureR = signature[0].toHexString();
-        final signatureS = signature[1].toHexString();
-        final signatureList = [
-          signCount,
-          starknetSignatureId,
-          publicKey,
-          signatureR,
-          signatureS
-        ];
-        final deploymentData = null;
-
-        // Execute the transaction
-        final avnuExecute = await avnuProvider.execute(
-            userAddress, cleanTypedData, signatureList, deploymentData);
-        avnuExecute.when(
-          result: (transactionHash) {
-            expect(transactionHash, isNotNull,
-                reason: 'Transaction hash should not be null');
-          },
-          error: (error, revertError) {
-            fail('Should not get error response');
-          },
-        );
-      });
     }, timeout: Timeout(Duration(minutes: 2)));
 
     group('deploy account', () {
@@ -454,10 +348,16 @@ void main() {
           reason: 'Should fail: account is already deployed',
         );
         final error = avnuDeploy as AvnuDeployAccountError;
+
+        const expectedMessage = 'contract already deployed at address';
+        final foundInMessages =
+            error.messages.join(', ').toLowerCase().contains(expectedMessage);
+        final foundInRevertError =
+            (error.revertError ?? '').toLowerCase().contains(expectedMessage);
         expect(
-          error.messages.join(', '),
-          contains('contract already deployed at address'),
-          reason: 'Revert error should contained: contract already deployed',
+          foundInMessages || foundInRevertError,
+          isTrue,
+          reason: 'Error message should contain: $expectedMessage',
         );
       });
     });

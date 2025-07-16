@@ -4,6 +4,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import '../wallet_state/index.dart';
+import '../ui/theme.dart';
 
 part 'nft_list.g.dart';
 
@@ -39,10 +40,10 @@ class NFTList extends HookConsumerWidget {
             );
           },
           gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 2, // Number of columns
-            crossAxisSpacing: 16, // Horizontal space between items
-            mainAxisSpacing: 16, // Vertical space between items
-            childAspectRatio: 2 / 3, // Aspect ratio of each item
+            crossAxisCount: 2,
+            crossAxisSpacing: sideMargin / 2,
+            mainAxisSpacing: sideMargin / 2,
+            childAspectRatio: 2 / 3,
           ),
           clipBehavior: Clip.none,
         );
@@ -72,14 +73,15 @@ class NftCard extends StatelessWidget {
       onTap: () => onTap(nft),
       child: Container(
         decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.circular(16),
+          color: Theme.of(context).colorScheme.surface,
+          borderRadius: BorderRadius.circular(sideMargin),
           boxShadow: [
             BoxShadow(
-              offset: const Offset(0, 4),
+              offset: const Offset(0, sideMargin / 4),
               blurStyle: BlurStyle.normal,
-              blurRadius: 16,
-              color: Colors.black.withValues(alpha: 0.10),
+              blurRadius: sideMargin,
+              color:
+                  Theme.of(context).colorScheme.shadow.withValues(alpha: 0.1),
             ),
           ],
         ),
@@ -93,14 +95,11 @@ class NftCard extends StatelessWidget {
               ),
             ),
             Padding(
-              padding: const EdgeInsets.all(8.0),
+              padding: const EdgeInsets.all(sideMargin / 2),
               child: Text(
                 nft.metadata!.normalized.name,
                 softWrap: false,
-                style: const TextStyle(
-                  fontSize: 14,
-                  fontWeight: FontWeight.w700,
-                ),
+                style: Theme.of(context).textTheme.titleSmall,
                 overflow: TextOverflow.ellipsis,
               ),
             ),
@@ -135,14 +134,15 @@ class MarketplaceNftCard extends StatelessWidget {
       onTap: () => onTap(nft),
       child: Container(
         decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.circular(16),
+          color: Theme.of(context).colorScheme.surface,
+          borderRadius: BorderRadius.circular(sideMargin),
           boxShadow: [
             BoxShadow(
-              offset: const Offset(0, 4),
+              offset: const Offset(0, sideMargin / 4),
               blurStyle: BlurStyle.normal,
-              blurRadius: 16,
-              color: Colors.black.withValues(alpha: 0.10),
+              blurRadius: sideMargin,
+              color:
+                  Theme.of(context).colorScheme.shadow.withValues(alpha: 0.1),
             ),
           ],
         ),
@@ -157,50 +157,30 @@ class MarketplaceNftCard extends StatelessWidget {
               ),
             ),
             Padding(
-              padding: const EdgeInsets.all(8.0),
+              padding: const EdgeInsets.all(sideMargin / 2),
               child: Text(
                 nft.metadata != null ? nft.metadata!.name : 'Unknown',
                 softWrap: false,
-                style: const TextStyle(
-                  fontSize: 14,
-                  fontWeight: FontWeight.w700,
-                ),
+                style: Theme.of(context).textTheme.titleSmall,
                 overflow: TextOverflow.ellipsis,
               ),
             ),
             Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Container(
-                padding: const EdgeInsets.all(8),
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(16),
-                ),
-                child: Text(
-                  'Price: ${ethPrice.toString()} ETH',
-                  style: const TextStyle(
-                    color: Colors.black,
-                    fontSize: 12,
-                    fontWeight: FontWeight.w700,
-                  ),
-                ),
+              padding: const EdgeInsets.symmetric(horizontal: sideMargin / 2),
+              child: Text(
+                'Price: ${ethPrice.toStringAsFixed(4)} ETH',
+                style: Theme.of(context).textTheme.bodySmall,
               ),
             ),
+            const Spacer(),
             Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Container(
-                padding: const EdgeInsets.all(8),
-                decoration: BoxDecoration(
-                  color: Colors.green,
-                  borderRadius: BorderRadius.circular(16),
+              padding: const EdgeInsets.all(sideMargin / 2),
+              child: FilledButton(
+                style: FilledButton.styleFrom(
+                  tapTargetSize: MaterialTapTargetSize.shrinkWrap,
                 ),
-                child: const Text(
-                  'Buy Now',
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 12,
-                    fontWeight: FontWeight.w700,
-                  ),
-                ),
+                onPressed: () => onTap(nft),
+                child: const Text('Buy Now'),
               ),
             ),
           ],

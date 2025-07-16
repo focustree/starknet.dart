@@ -9,7 +9,7 @@ class SettingsScreen extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    return SpacedColumn(
+    return Column(
       children: [
         const SimpleHeader(
           title: 'Settings',
@@ -61,12 +61,12 @@ class _SettingsSection extends StatelessWidget {
       decoration: BoxDecoration(
         boxShadow: [
           BoxShadow(
-            color: charcoal.withValues(alpha: 0.1),
             offset: const Offset(0, 8),
             blurRadius: 24,
+            color: Theme.of(context).colorScheme.shadow.withValues(alpha: 0.1),
           ),
         ],
-        color: Colors.white,
+        color: Theme.of(context).colorScheme.surface,
         borderRadius: BorderRadius.circular(16),
       ),
       child: Column(
@@ -76,7 +76,7 @@ class _SettingsSection extends StatelessWidget {
             children: [
               entry.value, // the _SettingsTile
               if (entry.key != children.length - 1) // if not the last item
-                Divider(color: Colors.grey[200], height: 0),
+                Divider(color: Theme.of(context).dividerColor, height: 0),
             ],
           );
         }).toList(),
@@ -99,12 +99,13 @@ class _SettingsTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListTile(
-      leading: Icon(icon, color: Colors.grey[600]),
+      leading: Icon(icon, color: Theme.of(context).iconTheme.color),
       title: Text(
         title,
-        style: TextStyle(fontWeight: FontWeight.w400, color: Colors.grey[700]),
+        style: Theme.of(context).textTheme.bodyLarge,
       ),
-      trailing: Icon(Icons.chevron_right, color: Colors.grey[400]),
+      trailing:
+          Icon(Icons.chevron_right, color: Theme.of(context).iconTheme.color),
       onTap: onTap,
     );
   }

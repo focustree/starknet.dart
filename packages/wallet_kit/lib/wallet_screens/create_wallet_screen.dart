@@ -6,8 +6,6 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import '../ui/index.dart';
 import 'protect_wallet_screen.dart';
 
-const space = SizedBox(height: 16);
-
 class CreateWalletScreen extends HookConsumerWidget {
   final String seedPhrase;
 
@@ -19,24 +17,22 @@ class CreateWalletScreen extends HookConsumerWidget {
 
     return Layout2(
       verticalSpacing: 16,
+      sideMargin: sideMargin,
       children: [
         const SimpleHeader(
           title: 'Create wallet',
         ),
-        const Text(
+        Text(
           'Keep this phrase safe and secret. It can be used to recover your wallet.',
           textAlign: TextAlign.center,
+          style: Theme.of(context).textTheme.bodyLarge,
         ),
         Flexible(child: SeedGrid(seedPhrase: seedPhrase.split(' '))),
         CopyToClipboardButton(seedPhrase: seedPhrase),
         CheckboxListTile(
           enableFeedback: true,
-          contentPadding: const EdgeInsets.all(0),
           title: const Text(
             'I have written down my recovery phrase',
-            style: TextStyle(
-              fontSize: 14,
-            ),
           ),
           value: isChecked.value,
           onChanged: (newValue) {
@@ -77,16 +73,16 @@ class SeedGrid extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: List.generate((seedPhrase.length / 2).ceil(), (index) {
-                return buildContainer(index * 2);
+                return buildContainer(context, index * 2);
               }),
             ),
           ),
-          const SizedBox(width: 16), // Spacing between columns
+          const SizedBox(width: sideMargin), // Spacing between columns
           Flexible(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: List.generate(seedPhrase.length ~/ 2, (index) {
-                return buildContainer(index * 2 + 1);
+                return buildContainer(context, index * 2 + 1);
               }),
             ),
           ),
@@ -95,18 +91,18 @@ class SeedGrid extends StatelessWidget {
     );
   }
 
-  Widget buildContainer(int index) {
+  Widget buildContainer(BuildContext context, int index) {
     return Container(
       margin: const EdgeInsets.all(4.0),
       padding: const EdgeInsets.all(10.0),
       decoration: BoxDecoration(
-        border: Border.all(color: Colors.grey),
+        border: Border.all(color: Theme.of(context).colorScheme.outline),
         borderRadius: BorderRadius.circular(12.0),
       ),
       child: Center(
         child: Text(
           '${index + 1}. ${seedPhrase[index]}',
-          style: const TextStyle(fontSize: 16),
+          style: Theme.of(context).textTheme.bodyMedium,
         ),
       ),
     );
@@ -130,10 +126,7 @@ class CopyToClipboardButton extends StatelessWidget {
           );
         });
       },
-      icon: Icon(
-        Icons.copy,
-        color: Theme.of(context).primaryColor,
-      ),
+      icon: const Icon(Icons.copy),
       label: const Text('Copy to clipboard'),
     );
   }

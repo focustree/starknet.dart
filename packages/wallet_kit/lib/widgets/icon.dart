@@ -1,34 +1,38 @@
-import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutter/material.dart';
 
 import '../wallet_state/wallet_state.dart';
 
 class WalletTypeIcon extends StatelessWidget {
   final WalletType type;
-  final double width;
+  final double? width;
   final BoxFit fit;
-  final Color? color;
   final AlignmentGeometry alignment;
   final bool matchTextDirection;
 
   const WalletTypeIcon({
     Key? key,
     required this.type,
-    this.width = 20,
+    this.width,
     this.fit = BoxFit.contain,
-    this.color,
     this.alignment = Alignment.center,
     this.matchTextDirection = false,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    final iconTheme = Theme.of(context).iconTheme;
+    final color = iconTheme.color;
     return SvgPicture.asset(
       "packages/wallet_kit/assets/images/wallets/${type.name}.svg",
-      width: width,
+      width: width ?? iconTheme.size,
       fit: fit,
-      // ignore: deprecated_member_use
-      color: color,
+      colorFilter: color != null
+          ? ColorFilter.mode(
+              color,
+              BlendMode.srcIn,
+            )
+          : null,
       alignment: alignment,
       matchTextDirection: matchTextDirection,
     );

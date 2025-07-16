@@ -126,6 +126,12 @@ abstract class ReadProvider {
   /// [Spec](https://github.com/starkware-libs/starknet-specs/blob/v0.2.1/api/starknet_api_openrpc.json#L432-L477)
   Future<EstimateFee> estimateFee(EstimateFeeRequest request);
 
+  /// Estimate the fee for a given message from L1 to L2.
+  ///
+  /// [Spec](https://github.com/starkware-libs/starknet-specs/blob/v0.7.1/api/starknet_api_openrpc.json#L672)
+  Future<EstimateMessageFee> estimateMessageFee(
+      EstimateMessageFeeRequest request);
+
   /// Fetches a block along with its transaction receipts.
   ///
   /// [Spec](https://github.com/starkware-libs/starknet-specs/blob/v0.7.0-rc0/api/starknet_api_openrpc.json#L107-L143)
@@ -135,6 +141,11 @@ abstract class ReadProvider {
   ///
   /// [Spec](https://github.com/starkware-libs/starknet-specs/blob/76bdde23c7dae370a3340e40f7ca2ef2520e75b9/api/starknet_api_openrpc.json#L11)
   Future<SpecVersion> specVersion();
+
+  /// Gets the status of a transaction by its hash
+  ///
+  /// [Spec](https://github.com/starkware-libs/starknet-specs/blob/a2d10fc6cbaddbe2d3cf6ace5174dd0a306f4885/api/starknet_api_openrpc.json#L225)
+  Future<GetTransactionStatus> getTransactionStatus(Felt transactionHash);
 }
 
 class JsonRpcReadProvider implements ReadProvider {
@@ -339,6 +350,16 @@ class JsonRpcReadProvider implements ReadProvider {
   }
 
   @override
+  Future<EstimateMessageFee> estimateMessageFee(
+      EstimateMessageFeeRequest request) {
+    return callRpcEndpoint(
+      nodeUri: nodeUri,
+      method: 'starknet_estimateMessageFee',
+      params: request,
+    ).then(EstimateMessageFee.fromJson);
+  }
+
+  @override
   Future<BlockWithReceipts> getBlockWithReceipts(BlockId blockId) async {
     return callRpcEndpoint(
       nodeUri: nodeUri,
@@ -355,6 +376,17 @@ class JsonRpcReadProvider implements ReadProvider {
       params: [],
     );
     return SpecVersion.fromJson(response);
+  }
+
+  @override
+  Future<GetTransactionStatus> getTransactionStatus(
+      Felt transactionHash) async {
+    final response = await callRpcEndpoint(
+      nodeUri: nodeUri,
+      method: 'starknet_getTransactionStatus',
+      params: [transactionHash],
+    );
+    return GetTransactionStatus.fromJson(response);
   }
 
   static final devnet = JsonRpcReadProvider(nodeUri: devnetUri);

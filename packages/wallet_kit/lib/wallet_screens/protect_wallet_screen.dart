@@ -23,11 +23,12 @@ class ProtectWalletScreen extends HookConsumerWidget {
     final isBiometricSupported =
         useMemoized(() => BiometricsStore.isSupportedPlatform(), []);
     return Layout2(
-      sideMargin: 32,
+      sideMargin: sideMargin * 2,
       children: [
         const SimpleHeader(title: 'Protect your wallet'),
-        const Text(
+        Text(
           "This extra layer of security helps prevent someone with your phone from accesing your funds.",
+          style: Theme.of(context).textTheme.bodyLarge,
         ),
         const Spacer(),
         if (isBiometricSupported)

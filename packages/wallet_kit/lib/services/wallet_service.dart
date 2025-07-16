@@ -61,6 +61,10 @@ class WalletService {
     return bip39.generateMnemonic();
   }
 
+  static bool validateSeedPhrase({required String seedPhrase}) {
+    return bip39.validateMnemonic(seedPhrase);
+  }
+
   static String newWalletId() {
     return const Uuid().v4();
   }

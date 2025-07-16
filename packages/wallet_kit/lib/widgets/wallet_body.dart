@@ -2,10 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
+import '../ui/theme.dart';
 import '../wallet_state/index.dart';
 import 'nft_details.dart';
 import 'nft_list.dart';
 import 'token_list.dart';
+import 'account_balance_refresher.dart';
 
 class WalletBody extends HookConsumerWidget {
   const WalletBody({super.key});
@@ -20,10 +22,12 @@ class WalletBody extends HookConsumerWidget {
         child: Text('No account selected.'),
       );
     }
+    const refresher = AccountBalanceRefresher();
     return Expanded(
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: <Widget>[
+          refresher,
           TabBar.secondary(
             controller: tabController,
             tabs: const <Widget>[
@@ -54,12 +58,14 @@ class WalletBody extends HookConsumerWidget {
                     );
                   },
                 ),
-                const Padding(
-                    padding: EdgeInsets.symmetric(vertical: 32, horizontal: 0),
+                Padding(
+                    padding:
+                        const EdgeInsets.symmetric(vertical: sideMargin * 2),
                     child: Align(
                         alignment: Alignment.topCenter,
                         child: Text(
                           'No past transactions.',
+                          style: Theme.of(context).textTheme.bodyLarge,
                         ))),
               ],
             ),

@@ -31,6 +31,8 @@ SierraContractAbiEntry _$SierraContractAbiEntryFromJson(
       return SierraInterfaceAbiEntry.fromJson(json);
     case 'constructor':
       return SierraConstructorAbiEntry.fromJson(json);
+    case 'l1Handler':
+      return SierraL1HandlerAbiEntry.fromJson(json);
 
     default:
       throw CheckedFromJsonException(
@@ -67,6 +69,13 @@ mixin _$SierraContractAbiEntry {
     required TResult Function(
             String type, String name, List<InputParameter> inputs)
         constructor,
+    required TResult Function(
+            String type,
+            String name,
+            List<InputParameter> inputs,
+            List<OutputParameter> outputs,
+            @JsonKey(includeIfNull: false) String? stateMutability)
+        l1Handler,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -88,6 +97,13 @@ mixin _$SierraContractAbiEntry {
     TResult? Function(String type, String name)? interface,
     TResult? Function(String type, String name, List<InputParameter> inputs)?
         constructor,
+    TResult? Function(
+            String type,
+            String name,
+            List<InputParameter> inputs,
+            List<OutputParameter> outputs,
+            @JsonKey(includeIfNull: false) String? stateMutability)?
+        l1Handler,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -108,6 +124,13 @@ mixin _$SierraContractAbiEntry {
     TResult Function(String type, String name)? interface,
     TResult Function(String type, String name, List<InputParameter> inputs)?
         constructor,
+    TResult Function(
+            String type,
+            String name,
+            List<InputParameter> inputs,
+            List<OutputParameter> outputs,
+            @JsonKey(includeIfNull: false) String? stateMutability)?
+        l1Handler,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -120,6 +143,7 @@ mixin _$SierraContractAbiEntry {
     required TResult Function(SierraImplAbiEntry value) impl,
     required TResult Function(SierraInterfaceAbiEntry value) interface,
     required TResult Function(SierraConstructorAbiEntry value) constructor,
+    required TResult Function(SierraL1HandlerAbiEntry value) l1Handler,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -131,6 +155,7 @@ mixin _$SierraContractAbiEntry {
     TResult? Function(SierraImplAbiEntry value)? impl,
     TResult? Function(SierraInterfaceAbiEntry value)? interface,
     TResult? Function(SierraConstructorAbiEntry value)? constructor,
+    TResult? Function(SierraL1HandlerAbiEntry value)? l1Handler,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -142,6 +167,7 @@ mixin _$SierraContractAbiEntry {
     TResult Function(SierraImplAbiEntry value)? impl,
     TResult Function(SierraInterfaceAbiEntry value)? interface,
     TResult Function(SierraConstructorAbiEntry value)? constructor,
+    TResult Function(SierraL1HandlerAbiEntry value)? l1Handler,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -364,6 +390,13 @@ class _$SierraFunctionAbiEntryImpl implements SierraFunctionAbiEntry {
     required TResult Function(
             String type, String name, List<InputParameter> inputs)
         constructor,
+    required TResult Function(
+            String type,
+            String name,
+            List<InputParameter> inputs,
+            List<OutputParameter> outputs,
+            @JsonKey(includeIfNull: false) String? stateMutability)
+        l1Handler,
   }) {
     return function(type, name, inputs, outputs, stateMutability);
   }
@@ -388,6 +421,13 @@ class _$SierraFunctionAbiEntryImpl implements SierraFunctionAbiEntry {
     TResult? Function(String type, String name)? interface,
     TResult? Function(String type, String name, List<InputParameter> inputs)?
         constructor,
+    TResult? Function(
+            String type,
+            String name,
+            List<InputParameter> inputs,
+            List<OutputParameter> outputs,
+            @JsonKey(includeIfNull: false) String? stateMutability)?
+        l1Handler,
   }) {
     return function?.call(type, name, inputs, outputs, stateMutability);
   }
@@ -411,6 +451,13 @@ class _$SierraFunctionAbiEntryImpl implements SierraFunctionAbiEntry {
     TResult Function(String type, String name)? interface,
     TResult Function(String type, String name, List<InputParameter> inputs)?
         constructor,
+    TResult Function(
+            String type,
+            String name,
+            List<InputParameter> inputs,
+            List<OutputParameter> outputs,
+            @JsonKey(includeIfNull: false) String? stateMutability)?
+        l1Handler,
     required TResult orElse(),
   }) {
     if (function != null) {
@@ -429,6 +476,7 @@ class _$SierraFunctionAbiEntryImpl implements SierraFunctionAbiEntry {
     required TResult Function(SierraImplAbiEntry value) impl,
     required TResult Function(SierraInterfaceAbiEntry value) interface,
     required TResult Function(SierraConstructorAbiEntry value) constructor,
+    required TResult Function(SierraL1HandlerAbiEntry value) l1Handler,
   }) {
     return function(this);
   }
@@ -443,6 +491,7 @@ class _$SierraFunctionAbiEntryImpl implements SierraFunctionAbiEntry {
     TResult? Function(SierraImplAbiEntry value)? impl,
     TResult? Function(SierraInterfaceAbiEntry value)? interface,
     TResult? Function(SierraConstructorAbiEntry value)? constructor,
+    TResult? Function(SierraL1HandlerAbiEntry value)? l1Handler,
   }) {
     return function?.call(this);
   }
@@ -457,6 +506,7 @@ class _$SierraFunctionAbiEntryImpl implements SierraFunctionAbiEntry {
     TResult Function(SierraImplAbiEntry value)? impl,
     TResult Function(SierraInterfaceAbiEntry value)? interface,
     TResult Function(SierraConstructorAbiEntry value)? constructor,
+    TResult Function(SierraL1HandlerAbiEntry value)? l1Handler,
     required TResult orElse(),
   }) {
     if (function != null) {
@@ -623,6 +673,13 @@ class _$SierraEventAbiEntryImpl implements SierraEventAbiEntry {
     required TResult Function(
             String type, String name, List<InputParameter> inputs)
         constructor,
+    required TResult Function(
+            String type,
+            String name,
+            List<InputParameter> inputs,
+            List<OutputParameter> outputs,
+            @JsonKey(includeIfNull: false) String? stateMutability)
+        l1Handler,
   }) {
     return event(type, name, kind);
   }
@@ -647,6 +704,13 @@ class _$SierraEventAbiEntryImpl implements SierraEventAbiEntry {
     TResult? Function(String type, String name)? interface,
     TResult? Function(String type, String name, List<InputParameter> inputs)?
         constructor,
+    TResult? Function(
+            String type,
+            String name,
+            List<InputParameter> inputs,
+            List<OutputParameter> outputs,
+            @JsonKey(includeIfNull: false) String? stateMutability)?
+        l1Handler,
   }) {
     return event?.call(type, name, kind);
   }
@@ -670,6 +734,13 @@ class _$SierraEventAbiEntryImpl implements SierraEventAbiEntry {
     TResult Function(String type, String name)? interface,
     TResult Function(String type, String name, List<InputParameter> inputs)?
         constructor,
+    TResult Function(
+            String type,
+            String name,
+            List<InputParameter> inputs,
+            List<OutputParameter> outputs,
+            @JsonKey(includeIfNull: false) String? stateMutability)?
+        l1Handler,
     required TResult orElse(),
   }) {
     if (event != null) {
@@ -688,6 +759,7 @@ class _$SierraEventAbiEntryImpl implements SierraEventAbiEntry {
     required TResult Function(SierraImplAbiEntry value) impl,
     required TResult Function(SierraInterfaceAbiEntry value) interface,
     required TResult Function(SierraConstructorAbiEntry value) constructor,
+    required TResult Function(SierraL1HandlerAbiEntry value) l1Handler,
   }) {
     return event(this);
   }
@@ -702,6 +774,7 @@ class _$SierraEventAbiEntryImpl implements SierraEventAbiEntry {
     TResult? Function(SierraImplAbiEntry value)? impl,
     TResult? Function(SierraInterfaceAbiEntry value)? interface,
     TResult? Function(SierraConstructorAbiEntry value)? constructor,
+    TResult? Function(SierraL1HandlerAbiEntry value)? l1Handler,
   }) {
     return event?.call(this);
   }
@@ -716,6 +789,7 @@ class _$SierraEventAbiEntryImpl implements SierraEventAbiEntry {
     TResult Function(SierraImplAbiEntry value)? impl,
     TResult Function(SierraInterfaceAbiEntry value)? interface,
     TResult Function(SierraConstructorAbiEntry value)? constructor,
+    TResult Function(SierraL1HandlerAbiEntry value)? l1Handler,
     required TResult orElse(),
   }) {
     if (event != null) {
@@ -881,6 +955,13 @@ class _$SierraEnumAbiEntryImpl implements SierraEnumAbiEntry {
     required TResult Function(
             String type, String name, List<InputParameter> inputs)
         constructor,
+    required TResult Function(
+            String type,
+            String name,
+            List<InputParameter> inputs,
+            List<OutputParameter> outputs,
+            @JsonKey(includeIfNull: false) String? stateMutability)
+        l1Handler,
   }) {
     return enumeration(type, name, variants);
   }
@@ -905,6 +986,13 @@ class _$SierraEnumAbiEntryImpl implements SierraEnumAbiEntry {
     TResult? Function(String type, String name)? interface,
     TResult? Function(String type, String name, List<InputParameter> inputs)?
         constructor,
+    TResult? Function(
+            String type,
+            String name,
+            List<InputParameter> inputs,
+            List<OutputParameter> outputs,
+            @JsonKey(includeIfNull: false) String? stateMutability)?
+        l1Handler,
   }) {
     return enumeration?.call(type, name, variants);
   }
@@ -928,6 +1016,13 @@ class _$SierraEnumAbiEntryImpl implements SierraEnumAbiEntry {
     TResult Function(String type, String name)? interface,
     TResult Function(String type, String name, List<InputParameter> inputs)?
         constructor,
+    TResult Function(
+            String type,
+            String name,
+            List<InputParameter> inputs,
+            List<OutputParameter> outputs,
+            @JsonKey(includeIfNull: false) String? stateMutability)?
+        l1Handler,
     required TResult orElse(),
   }) {
     if (enumeration != null) {
@@ -946,6 +1041,7 @@ class _$SierraEnumAbiEntryImpl implements SierraEnumAbiEntry {
     required TResult Function(SierraImplAbiEntry value) impl,
     required TResult Function(SierraInterfaceAbiEntry value) interface,
     required TResult Function(SierraConstructorAbiEntry value) constructor,
+    required TResult Function(SierraL1HandlerAbiEntry value) l1Handler,
   }) {
     return enumeration(this);
   }
@@ -960,6 +1056,7 @@ class _$SierraEnumAbiEntryImpl implements SierraEnumAbiEntry {
     TResult? Function(SierraImplAbiEntry value)? impl,
     TResult? Function(SierraInterfaceAbiEntry value)? interface,
     TResult? Function(SierraConstructorAbiEntry value)? constructor,
+    TResult? Function(SierraL1HandlerAbiEntry value)? l1Handler,
   }) {
     return enumeration?.call(this);
   }
@@ -974,6 +1071,7 @@ class _$SierraEnumAbiEntryImpl implements SierraEnumAbiEntry {
     TResult Function(SierraImplAbiEntry value)? impl,
     TResult Function(SierraInterfaceAbiEntry value)? interface,
     TResult Function(SierraConstructorAbiEntry value)? constructor,
+    TResult Function(SierraL1HandlerAbiEntry value)? l1Handler,
     required TResult orElse(),
   }) {
     if (enumeration != null) {
@@ -1142,6 +1240,13 @@ class _$SierraStructAbiEntryImpl implements SierraStructAbiEntry {
     required TResult Function(
             String type, String name, List<InputParameter> inputs)
         constructor,
+    required TResult Function(
+            String type,
+            String name,
+            List<InputParameter> inputs,
+            List<OutputParameter> outputs,
+            @JsonKey(includeIfNull: false) String? stateMutability)
+        l1Handler,
   }) {
     return struct(type, name, members);
   }
@@ -1166,6 +1271,13 @@ class _$SierraStructAbiEntryImpl implements SierraStructAbiEntry {
     TResult? Function(String type, String name)? interface,
     TResult? Function(String type, String name, List<InputParameter> inputs)?
         constructor,
+    TResult? Function(
+            String type,
+            String name,
+            List<InputParameter> inputs,
+            List<OutputParameter> outputs,
+            @JsonKey(includeIfNull: false) String? stateMutability)?
+        l1Handler,
   }) {
     return struct?.call(type, name, members);
   }
@@ -1189,6 +1301,13 @@ class _$SierraStructAbiEntryImpl implements SierraStructAbiEntry {
     TResult Function(String type, String name)? interface,
     TResult Function(String type, String name, List<InputParameter> inputs)?
         constructor,
+    TResult Function(
+            String type,
+            String name,
+            List<InputParameter> inputs,
+            List<OutputParameter> outputs,
+            @JsonKey(includeIfNull: false) String? stateMutability)?
+        l1Handler,
     required TResult orElse(),
   }) {
     if (struct != null) {
@@ -1207,6 +1326,7 @@ class _$SierraStructAbiEntryImpl implements SierraStructAbiEntry {
     required TResult Function(SierraImplAbiEntry value) impl,
     required TResult Function(SierraInterfaceAbiEntry value) interface,
     required TResult Function(SierraConstructorAbiEntry value) constructor,
+    required TResult Function(SierraL1HandlerAbiEntry value) l1Handler,
   }) {
     return struct(this);
   }
@@ -1221,6 +1341,7 @@ class _$SierraStructAbiEntryImpl implements SierraStructAbiEntry {
     TResult? Function(SierraImplAbiEntry value)? impl,
     TResult? Function(SierraInterfaceAbiEntry value)? interface,
     TResult? Function(SierraConstructorAbiEntry value)? constructor,
+    TResult? Function(SierraL1HandlerAbiEntry value)? l1Handler,
   }) {
     return struct?.call(this);
   }
@@ -1235,6 +1356,7 @@ class _$SierraStructAbiEntryImpl implements SierraStructAbiEntry {
     TResult Function(SierraImplAbiEntry value)? impl,
     TResult Function(SierraInterfaceAbiEntry value)? interface,
     TResult Function(SierraConstructorAbiEntry value)? constructor,
+    TResult Function(SierraL1HandlerAbiEntry value)? l1Handler,
     required TResult orElse(),
   }) {
     if (struct != null) {
@@ -1395,6 +1517,13 @@ class _$SierraImplAbiEntryImpl implements SierraImplAbiEntry {
     required TResult Function(
             String type, String name, List<InputParameter> inputs)
         constructor,
+    required TResult Function(
+            String type,
+            String name,
+            List<InputParameter> inputs,
+            List<OutputParameter> outputs,
+            @JsonKey(includeIfNull: false) String? stateMutability)
+        l1Handler,
   }) {
     return impl(type, name, interfaceName);
   }
@@ -1419,6 +1548,13 @@ class _$SierraImplAbiEntryImpl implements SierraImplAbiEntry {
     TResult? Function(String type, String name)? interface,
     TResult? Function(String type, String name, List<InputParameter> inputs)?
         constructor,
+    TResult? Function(
+            String type,
+            String name,
+            List<InputParameter> inputs,
+            List<OutputParameter> outputs,
+            @JsonKey(includeIfNull: false) String? stateMutability)?
+        l1Handler,
   }) {
     return impl?.call(type, name, interfaceName);
   }
@@ -1442,6 +1578,13 @@ class _$SierraImplAbiEntryImpl implements SierraImplAbiEntry {
     TResult Function(String type, String name)? interface,
     TResult Function(String type, String name, List<InputParameter> inputs)?
         constructor,
+    TResult Function(
+            String type,
+            String name,
+            List<InputParameter> inputs,
+            List<OutputParameter> outputs,
+            @JsonKey(includeIfNull: false) String? stateMutability)?
+        l1Handler,
     required TResult orElse(),
   }) {
     if (impl != null) {
@@ -1460,6 +1603,7 @@ class _$SierraImplAbiEntryImpl implements SierraImplAbiEntry {
     required TResult Function(SierraImplAbiEntry value) impl,
     required TResult Function(SierraInterfaceAbiEntry value) interface,
     required TResult Function(SierraConstructorAbiEntry value) constructor,
+    required TResult Function(SierraL1HandlerAbiEntry value) l1Handler,
   }) {
     return impl(this);
   }
@@ -1474,6 +1618,7 @@ class _$SierraImplAbiEntryImpl implements SierraImplAbiEntry {
     TResult? Function(SierraImplAbiEntry value)? impl,
     TResult? Function(SierraInterfaceAbiEntry value)? interface,
     TResult? Function(SierraConstructorAbiEntry value)? constructor,
+    TResult? Function(SierraL1HandlerAbiEntry value)? l1Handler,
   }) {
     return impl?.call(this);
   }
@@ -1488,6 +1633,7 @@ class _$SierraImplAbiEntryImpl implements SierraImplAbiEntry {
     TResult Function(SierraImplAbiEntry value)? impl,
     TResult Function(SierraInterfaceAbiEntry value)? interface,
     TResult Function(SierraConstructorAbiEntry value)? constructor,
+    TResult Function(SierraL1HandlerAbiEntry value)? l1Handler,
     required TResult orElse(),
   }) {
     if (impl != null) {
@@ -1638,6 +1784,13 @@ class _$SierraInterfaceAbiEntryImpl implements SierraInterfaceAbiEntry {
     required TResult Function(
             String type, String name, List<InputParameter> inputs)
         constructor,
+    required TResult Function(
+            String type,
+            String name,
+            List<InputParameter> inputs,
+            List<OutputParameter> outputs,
+            @JsonKey(includeIfNull: false) String? stateMutability)
+        l1Handler,
   }) {
     return interface(type, name);
   }
@@ -1662,6 +1815,13 @@ class _$SierraInterfaceAbiEntryImpl implements SierraInterfaceAbiEntry {
     TResult? Function(String type, String name)? interface,
     TResult? Function(String type, String name, List<InputParameter> inputs)?
         constructor,
+    TResult? Function(
+            String type,
+            String name,
+            List<InputParameter> inputs,
+            List<OutputParameter> outputs,
+            @JsonKey(includeIfNull: false) String? stateMutability)?
+        l1Handler,
   }) {
     return interface?.call(type, name);
   }
@@ -1685,6 +1845,13 @@ class _$SierraInterfaceAbiEntryImpl implements SierraInterfaceAbiEntry {
     TResult Function(String type, String name)? interface,
     TResult Function(String type, String name, List<InputParameter> inputs)?
         constructor,
+    TResult Function(
+            String type,
+            String name,
+            List<InputParameter> inputs,
+            List<OutputParameter> outputs,
+            @JsonKey(includeIfNull: false) String? stateMutability)?
+        l1Handler,
     required TResult orElse(),
   }) {
     if (interface != null) {
@@ -1703,6 +1870,7 @@ class _$SierraInterfaceAbiEntryImpl implements SierraInterfaceAbiEntry {
     required TResult Function(SierraImplAbiEntry value) impl,
     required TResult Function(SierraInterfaceAbiEntry value) interface,
     required TResult Function(SierraConstructorAbiEntry value) constructor,
+    required TResult Function(SierraL1HandlerAbiEntry value) l1Handler,
   }) {
     return interface(this);
   }
@@ -1717,6 +1885,7 @@ class _$SierraInterfaceAbiEntryImpl implements SierraInterfaceAbiEntry {
     TResult? Function(SierraImplAbiEntry value)? impl,
     TResult? Function(SierraInterfaceAbiEntry value)? interface,
     TResult? Function(SierraConstructorAbiEntry value)? constructor,
+    TResult? Function(SierraL1HandlerAbiEntry value)? l1Handler,
   }) {
     return interface?.call(this);
   }
@@ -1731,6 +1900,7 @@ class _$SierraInterfaceAbiEntryImpl implements SierraInterfaceAbiEntry {
     TResult Function(SierraImplAbiEntry value)? impl,
     TResult Function(SierraInterfaceAbiEntry value)? interface,
     TResult Function(SierraConstructorAbiEntry value)? constructor,
+    TResult Function(SierraL1HandlerAbiEntry value)? l1Handler,
     required TResult orElse(),
   }) {
     if (interface != null) {
@@ -1897,6 +2067,13 @@ class _$SierraConstructorAbiEntryImpl implements SierraConstructorAbiEntry {
     required TResult Function(
             String type, String name, List<InputParameter> inputs)
         constructor,
+    required TResult Function(
+            String type,
+            String name,
+            List<InputParameter> inputs,
+            List<OutputParameter> outputs,
+            @JsonKey(includeIfNull: false) String? stateMutability)
+        l1Handler,
   }) {
     return constructor(type, name, inputs);
   }
@@ -1921,6 +2098,13 @@ class _$SierraConstructorAbiEntryImpl implements SierraConstructorAbiEntry {
     TResult? Function(String type, String name)? interface,
     TResult? Function(String type, String name, List<InputParameter> inputs)?
         constructor,
+    TResult? Function(
+            String type,
+            String name,
+            List<InputParameter> inputs,
+            List<OutputParameter> outputs,
+            @JsonKey(includeIfNull: false) String? stateMutability)?
+        l1Handler,
   }) {
     return constructor?.call(type, name, inputs);
   }
@@ -1944,6 +2128,13 @@ class _$SierraConstructorAbiEntryImpl implements SierraConstructorAbiEntry {
     TResult Function(String type, String name)? interface,
     TResult Function(String type, String name, List<InputParameter> inputs)?
         constructor,
+    TResult Function(
+            String type,
+            String name,
+            List<InputParameter> inputs,
+            List<OutputParameter> outputs,
+            @JsonKey(includeIfNull: false) String? stateMutability)?
+        l1Handler,
     required TResult orElse(),
   }) {
     if (constructor != null) {
@@ -1962,6 +2153,7 @@ class _$SierraConstructorAbiEntryImpl implements SierraConstructorAbiEntry {
     required TResult Function(SierraImplAbiEntry value) impl,
     required TResult Function(SierraInterfaceAbiEntry value) interface,
     required TResult Function(SierraConstructorAbiEntry value) constructor,
+    required TResult Function(SierraL1HandlerAbiEntry value) l1Handler,
   }) {
     return constructor(this);
   }
@@ -1976,6 +2168,7 @@ class _$SierraConstructorAbiEntryImpl implements SierraConstructorAbiEntry {
     TResult? Function(SierraImplAbiEntry value)? impl,
     TResult? Function(SierraInterfaceAbiEntry value)? interface,
     TResult? Function(SierraConstructorAbiEntry value)? constructor,
+    TResult? Function(SierraL1HandlerAbiEntry value)? l1Handler,
   }) {
     return constructor?.call(this);
   }
@@ -1990,6 +2183,7 @@ class _$SierraConstructorAbiEntryImpl implements SierraConstructorAbiEntry {
     TResult Function(SierraImplAbiEntry value)? impl,
     TResult Function(SierraInterfaceAbiEntry value)? interface,
     TResult Function(SierraConstructorAbiEntry value)? constructor,
+    TResult Function(SierraL1HandlerAbiEntry value)? l1Handler,
     required TResult orElse(),
   }) {
     if (constructor != null) {
@@ -2027,6 +2221,335 @@ abstract class SierraConstructorAbiEntry implements SierraContractAbiEntry {
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$SierraConstructorAbiEntryImplCopyWith<_$SierraConstructorAbiEntryImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$SierraL1HandlerAbiEntryImplCopyWith<$Res>
+    implements $SierraContractAbiEntryCopyWith<$Res> {
+  factory _$$SierraL1HandlerAbiEntryImplCopyWith(
+          _$SierraL1HandlerAbiEntryImpl value,
+          $Res Function(_$SierraL1HandlerAbiEntryImpl) then) =
+      __$$SierraL1HandlerAbiEntryImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call(
+      {String type,
+      String name,
+      List<InputParameter> inputs,
+      List<OutputParameter> outputs,
+      @JsonKey(includeIfNull: false) String? stateMutability});
+}
+
+/// @nodoc
+class __$$SierraL1HandlerAbiEntryImplCopyWithImpl<$Res>
+    extends _$SierraContractAbiEntryCopyWithImpl<$Res,
+        _$SierraL1HandlerAbiEntryImpl>
+    implements _$$SierraL1HandlerAbiEntryImplCopyWith<$Res> {
+  __$$SierraL1HandlerAbiEntryImplCopyWithImpl(
+      _$SierraL1HandlerAbiEntryImpl _value,
+      $Res Function(_$SierraL1HandlerAbiEntryImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of SierraContractAbiEntry
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? type = null,
+    Object? name = null,
+    Object? inputs = null,
+    Object? outputs = null,
+    Object? stateMutability = freezed,
+  }) {
+    return _then(_$SierraL1HandlerAbiEntryImpl(
+      type: null == type
+          ? _value.type
+          : type // ignore: cast_nullable_to_non_nullable
+              as String,
+      name: null == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
+      inputs: null == inputs
+          ? _value._inputs
+          : inputs // ignore: cast_nullable_to_non_nullable
+              as List<InputParameter>,
+      outputs: null == outputs
+          ? _value._outputs
+          : outputs // ignore: cast_nullable_to_non_nullable
+              as List<OutputParameter>,
+      stateMutability: freezed == stateMutability
+          ? _value.stateMutability
+          : stateMutability // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$SierraL1HandlerAbiEntryImpl implements SierraL1HandlerAbiEntry {
+  const _$SierraL1HandlerAbiEntryImpl(
+      {required this.type,
+      required this.name,
+      required final List<InputParameter> inputs,
+      required final List<OutputParameter> outputs,
+      @JsonKey(includeIfNull: false) this.stateMutability,
+      final String? $type})
+      : _inputs = inputs,
+        _outputs = outputs,
+        $type = $type ?? 'l1Handler';
+
+  factory _$SierraL1HandlerAbiEntryImpl.fromJson(Map<String, dynamic> json) =>
+      _$$SierraL1HandlerAbiEntryImplFromJson(json);
+
+  @override
+  final String type;
+  @override
+  final String name;
+  final List<InputParameter> _inputs;
+  @override
+  List<InputParameter> get inputs {
+    if (_inputs is EqualUnmodifiableListView) return _inputs;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_inputs);
+  }
+
+  final List<OutputParameter> _outputs;
+  @override
+  List<OutputParameter> get outputs {
+    if (_outputs is EqualUnmodifiableListView) return _outputs;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_outputs);
+  }
+
+  @override
+  @JsonKey(includeIfNull: false)
+  final String? stateMutability;
+
+  @JsonKey(name: 'starkNetRuntimeTypeToRemove')
+  final String $type;
+
+  @override
+  String toString() {
+    return 'SierraContractAbiEntry.l1Handler(type: $type, name: $name, inputs: $inputs, outputs: $outputs, stateMutability: $stateMutability)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$SierraL1HandlerAbiEntryImpl &&
+            (identical(other.type, type) || other.type == type) &&
+            (identical(other.name, name) || other.name == name) &&
+            const DeepCollectionEquality().equals(other._inputs, _inputs) &&
+            const DeepCollectionEquality().equals(other._outputs, _outputs) &&
+            (identical(other.stateMutability, stateMutability) ||
+                other.stateMutability == stateMutability));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(
+      runtimeType,
+      type,
+      name,
+      const DeepCollectionEquality().hash(_inputs),
+      const DeepCollectionEquality().hash(_outputs),
+      stateMutability);
+
+  /// Create a copy of SierraContractAbiEntry
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$SierraL1HandlerAbiEntryImplCopyWith<_$SierraL1HandlerAbiEntryImpl>
+      get copyWith => __$$SierraL1HandlerAbiEntryImplCopyWithImpl<
+          _$SierraL1HandlerAbiEntryImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(
+            String type,
+            String name,
+            List<InputParameter> inputs,
+            List<OutputParameter> outputs,
+            @JsonKey(includeIfNull: false) String? stateMutability)
+        function,
+    required TResult Function(String type, String name, String kind) event,
+    required TResult Function(
+            String type, String name, List<VariantParameter> variants)
+        enumeration,
+    required TResult Function(
+            String type, String name, List<MemberParameter> members)
+        struct,
+    required TResult Function(String type, String name, String interfaceName)
+        impl,
+    required TResult Function(String type, String name) interface,
+    required TResult Function(
+            String type, String name, List<InputParameter> inputs)
+        constructor,
+    required TResult Function(
+            String type,
+            String name,
+            List<InputParameter> inputs,
+            List<OutputParameter> outputs,
+            @JsonKey(includeIfNull: false) String? stateMutability)
+        l1Handler,
+  }) {
+    return l1Handler(type, name, inputs, outputs, stateMutability);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(
+            String type,
+            String name,
+            List<InputParameter> inputs,
+            List<OutputParameter> outputs,
+            @JsonKey(includeIfNull: false) String? stateMutability)?
+        function,
+    TResult? Function(String type, String name, String kind)? event,
+    TResult? Function(
+            String type, String name, List<VariantParameter> variants)?
+        enumeration,
+    TResult? Function(String type, String name, List<MemberParameter> members)?
+        struct,
+    TResult? Function(String type, String name, String interfaceName)? impl,
+    TResult? Function(String type, String name)? interface,
+    TResult? Function(String type, String name, List<InputParameter> inputs)?
+        constructor,
+    TResult? Function(
+            String type,
+            String name,
+            List<InputParameter> inputs,
+            List<OutputParameter> outputs,
+            @JsonKey(includeIfNull: false) String? stateMutability)?
+        l1Handler,
+  }) {
+    return l1Handler?.call(type, name, inputs, outputs, stateMutability);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(
+            String type,
+            String name,
+            List<InputParameter> inputs,
+            List<OutputParameter> outputs,
+            @JsonKey(includeIfNull: false) String? stateMutability)?
+        function,
+    TResult Function(String type, String name, String kind)? event,
+    TResult Function(String type, String name, List<VariantParameter> variants)?
+        enumeration,
+    TResult Function(String type, String name, List<MemberParameter> members)?
+        struct,
+    TResult Function(String type, String name, String interfaceName)? impl,
+    TResult Function(String type, String name)? interface,
+    TResult Function(String type, String name, List<InputParameter> inputs)?
+        constructor,
+    TResult Function(
+            String type,
+            String name,
+            List<InputParameter> inputs,
+            List<OutputParameter> outputs,
+            @JsonKey(includeIfNull: false) String? stateMutability)?
+        l1Handler,
+    required TResult orElse(),
+  }) {
+    if (l1Handler != null) {
+      return l1Handler(type, name, inputs, outputs, stateMutability);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(SierraFunctionAbiEntry value) function,
+    required TResult Function(SierraEventAbiEntry value) event,
+    required TResult Function(SierraEnumAbiEntry value) enumeration,
+    required TResult Function(SierraStructAbiEntry value) struct,
+    required TResult Function(SierraImplAbiEntry value) impl,
+    required TResult Function(SierraInterfaceAbiEntry value) interface,
+    required TResult Function(SierraConstructorAbiEntry value) constructor,
+    required TResult Function(SierraL1HandlerAbiEntry value) l1Handler,
+  }) {
+    return l1Handler(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(SierraFunctionAbiEntry value)? function,
+    TResult? Function(SierraEventAbiEntry value)? event,
+    TResult? Function(SierraEnumAbiEntry value)? enumeration,
+    TResult? Function(SierraStructAbiEntry value)? struct,
+    TResult? Function(SierraImplAbiEntry value)? impl,
+    TResult? Function(SierraInterfaceAbiEntry value)? interface,
+    TResult? Function(SierraConstructorAbiEntry value)? constructor,
+    TResult? Function(SierraL1HandlerAbiEntry value)? l1Handler,
+  }) {
+    return l1Handler?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(SierraFunctionAbiEntry value)? function,
+    TResult Function(SierraEventAbiEntry value)? event,
+    TResult Function(SierraEnumAbiEntry value)? enumeration,
+    TResult Function(SierraStructAbiEntry value)? struct,
+    TResult Function(SierraImplAbiEntry value)? impl,
+    TResult Function(SierraInterfaceAbiEntry value)? interface,
+    TResult Function(SierraConstructorAbiEntry value)? constructor,
+    TResult Function(SierraL1HandlerAbiEntry value)? l1Handler,
+    required TResult orElse(),
+  }) {
+    if (l1Handler != null) {
+      return l1Handler(this);
+    }
+    return orElse();
+  }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$SierraL1HandlerAbiEntryImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class SierraL1HandlerAbiEntry implements SierraContractAbiEntry {
+  const factory SierraL1HandlerAbiEntry(
+          {required final String type,
+          required final String name,
+          required final List<InputParameter> inputs,
+          required final List<OutputParameter> outputs,
+          @JsonKey(includeIfNull: false) final String? stateMutability}) =
+      _$SierraL1HandlerAbiEntryImpl;
+
+  factory SierraL1HandlerAbiEntry.fromJson(Map<String, dynamic> json) =
+      _$SierraL1HandlerAbiEntryImpl.fromJson;
+
+  @override
+  String get type;
+  @override
+  String get name;
+  List<InputParameter> get inputs;
+  List<OutputParameter> get outputs;
+  @JsonKey(includeIfNull: false)
+  String? get stateMutability;
+
+  /// Create a copy of SierraContractAbiEntry
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$SierraL1HandlerAbiEntryImplCopyWith<_$SierraL1HandlerAbiEntryImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
 

@@ -1164,6 +1164,124 @@ void main() {
       }, tags: ['integration']);
     });
 
+    group('estimateMessageFee', () {
+      test('estimate message fee for L1 to L2 message', () async {
+        // Contract declared and deployed in devnet dump (source: /contracts/v2.6.2/src/l2_receiver.cairo)
+        final Felt l2ContractAddress = Felt.fromHexString(
+            '0x0536e1d1cd6cd7d295ccbd8c7dc817839f8ff4c615a28fdc192a0aafe2327e5f');
+
+        // This must be the l1 sender address
+        const String l1Address = '0x8359E4B0152ed5A731162D3c7B0D8D56edB165a0';
+
+        // Entry point selector for the L1 handler
+        final Felt entryPointSelector =
+            getSelectorByName('handle_message_from_l1');
+
+        // Message payload (in our example, we just need a felt252 value)
+        final List<Felt> payload = [Felt.fromInt(100)];
+
+        final MsgFromL1 message = MsgFromL1(
+          fromAddress: l1Address,
+          toAddress: l2ContractAddress,
+          entryPointSelector: entryPointSelector,
+          payload: payload,
+        );
+
+        final EstimateMessageFeeRequest request = EstimateMessageFeeRequest(
+          message: message,
+          blockId: BlockId.latest,
+        );
+
+        final response = await provider.estimateMessageFee(request);
+
+        response.when(
+          error: (error) {
+            fail('Should not fail. (${error.code}): ${error.message}');
+          },
+          result: (result) {
+            // If successful, verify the fee estimate structure
+            expect(result.gasConsumed, isNotEmpty);
+            expect(result.dataGasConsumed, isNotEmpty);
+            expect(result.gasPrice, isNotEmpty);
+            expect(result.dataGasPrice, isNotEmpty);
+            expect(result.overallFee, isNotEmpty);
+            expect(result.unit, isNotEmpty);
+          },
+        );
+      }, tags: ['integration'], skip: false);
+
+      test('estimate message fee with invalid contract address', () async {
+        const String l1Address = '0x8359E4B0152ed5A731162D3c7B0D8D56edB165a0';
+        final Felt invalidContractAddress = Felt.fromHexString(
+            '0x0000000000000000000000000000000000000000000000000000000000000000');
+        final Felt entryPointSelector =
+            getSelectorByName('handle_message_from_l1');
+        final List<Felt> payload = [Felt.fromInt(100)];
+
+        final MsgFromL1 message = MsgFromL1(
+          fromAddress: l1Address,
+          toAddress: invalidContractAddress,
+          entryPointSelector: entryPointSelector,
+          payload: payload,
+        );
+
+        final EstimateMessageFeeRequest request = EstimateMessageFeeRequest(
+          message: message,
+          blockId: BlockId.latest,
+        );
+
+        final response = await provider.estimateMessageFee(request);
+
+        response.when(
+          error: (error) {
+            expect(
+              error.code == JsonRpcApiErrorCode.CONTRACT_NOT_FOUND ||
+                  error.code == JsonRpcApiErrorCode.CONTRACT_ERROR,
+              isTrue,
+            );
+          },
+          result: (result) {
+            fail('Should fail with invalid contract address');
+          },
+        );
+      });
+
+      test('estimate message fee with invalid block id', () async {
+        // Contract declared and deployed in devnet dump (source: /contracts/v2.6.2/src/l2_receiver.cairo)
+        final Felt l2ContractAddress = Felt.fromHexString(
+            '0x0536e1d1cd6cd7d295ccbd8c7dc817839f8ff4c615a28fdc192a0aafe2327e5f');
+
+        const String l1Address = '0x8359E4B0152ed5A731162D3c7B0D8D56edB165a0';
+        final Felt entryPointSelector =
+            getSelectorByName('handle_message_from_l1');
+        final List<Felt> payload = [Felt.fromInt(100)];
+
+        final MsgFromL1 message = MsgFromL1(
+          fromAddress: l1Address,
+          toAddress: l2ContractAddress,
+          entryPointSelector: entryPointSelector,
+          payload: payload,
+        );
+
+        final EstimateMessageFeeRequest request = EstimateMessageFeeRequest(
+          message: message,
+          blockId: BlockId.blockNumber(99999999),
+        );
+
+        final response = await provider.estimateMessageFee(request);
+
+        response.when(
+          error: (error) {
+            expect(error.code, JsonRpcApiErrorCode.BLOCK_NOT_FOUND);
+            expect(error.message, 'Block not found');
+          },
+          result: (result) {
+            fail('Should fail with invalid block id');
+          },
+        );
+      });
+    });
+
     group('starknet_specVersion', () {
       test('check spec version from Blast public server', () async {
         final blastUri = {
@@ -1189,6 +1307,31 @@ void main() {
             error: (error) => fail("Shouldn't fail $error"),
             result: (result) {
               expect(result, startsWith('0.7'));
+            });
+      });
+    }, tags: ['integration']);
+
+    group('starknet_getTransactionStatus', () {
+      test('should handle non-existent transaction hash', () async {
+        final response = await provider.getTransactionStatus(
+          Felt.fromHexString(
+              '0x0100000000000000000000000000000000000000000000000000000000000000'),
+        );
+        response.when(
+            error: (error) {
+              expect(error.code, JsonRpcApiErrorCode.TXN_HASH_NOT_FOUND);
+            },
+            result: (result) =>
+                fail("Should fail with non-existent transaction hash"));
+      });
+
+      test('should handle real transaction status', () async {
+        final response =
+            await provider.getTransactionStatus(invokeTransactionHash);
+        response.when(
+            error: (error) => fail("Shouldn't fail: $error"),
+            result: (result) {
+              expect(result.finalityStatus, TxnFinalityStatus.ACCEPTED_ON_L2);
             });
       });
     }, tags: ['integration']);

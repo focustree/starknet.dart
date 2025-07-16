@@ -22,6 +22,7 @@ class HomeScreen extends HookConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
       body: Layout2(
+        sideMargin: sideMargin,
         children: [
           const SizedBox(height: 32),
 

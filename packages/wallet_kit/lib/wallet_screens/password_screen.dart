@@ -6,6 +6,8 @@ import 'package:secure_store/secure_store.dart';
 import '../ui/index.dart';
 import '../wallet_state/wallet_provider.dart';
 
+const minPasswordLength = 6;
+
 Future<String?> showPasswordModal(BuildContext context) async {
   return showBottomModal<String>(
     isScrollControlled: true,
@@ -21,15 +23,17 @@ class CreatePasswordScreen extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final password = useState('');
-    final isButtonEnabled = password.value.length >= 6;
+    final isButtonEnabled = password.value.length >= minPasswordLength;
 
     return Layout2(
+      sideMargin: sideMargin,
       children: [
         const SimpleHeader(
           title: 'Create Password',
         ),
-        const Text(
+        Text(
           "Create a secure numeric password. Use a unique combination of digits to protect your assets.",
+          style: Theme.of(context).textTheme.bodyLarge,
         ),
         TextInput(
           onChanged: (value) => password.value = value,
@@ -68,14 +72,18 @@ class ConfirmPasswordScren extends HookConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final password = useState('');
     final isLoading = useState(false);
-    final isButtonEnabled = password.value.length >= 6;
+    final isButtonEnabled = password.value.length >= minPasswordLength;
 
     return Layout2(
+      sideMargin: sideMargin,
       children: [
         const SimpleHeader(
           title: 'Confirm Password',
         ),
-        const Text("Confirm your password. Only you can access your funds."),
+        Text(
+          "Confirm your password. Only you can access your funds.",
+          style: Theme.of(context).textTheme.bodyLarge,
+        ),
         TextInput(
           onChanged: (value) => password.value = value,
           obscureText: true,
@@ -122,33 +130,30 @@ class PasswordScreen extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final password = useState('');
-    final isButtonEnabled = password.value.length >= 6;
+    final isButtonEnabled = password.value.length >= minPasswordLength;
     final onPressed =
         callback ?? (password) => Navigator.of(context).pop(password);
 
-    const double sidePadding = 24;
-
-    return SpacedColumn(
-      verticalSpacing: 16,
+    return Column(
       children: [
         const ModalHeader(title: "Enter your password"),
+        const SizedBox(height: sideMargin),
         Padding(
-          padding: const EdgeInsets.symmetric(horizontal: sidePadding),
+          padding: const EdgeInsets.symmetric(horizontal: sideMargin),
           child: TextInput(
-              hintText: 'Your password',
-              onChanged: (value) => password.value = value,
-              autofocus: true,
-              obscureText: true,
-              style: const TextStyle(
-                fontSize: 16,
-                fontWeight: FontWeight.w500,
-                color: Colors.black,
-              )),
+            hintText: 'Your password',
+            onChanged: (value) => password.value = value,
+            autofocus: true,
+            obscureText: true,
+            style: Theme.of(context).textTheme.bodyLarge,
+          ),
         ),
+        const SizedBox(height: sideMargin),
         const Spacer(),
+        const SizedBox(height: sideMargin),
         Padding(
-          padding:
-              const EdgeInsets.symmetric(horizontal: sidePadding, vertical: 24),
+          padding: const EdgeInsets.symmetric(
+              horizontal: sideMargin, vertical: sideMargin * 1.5),
           child: PrimaryButton(
             onPressed: isButtonEnabled
                 ? () async {
