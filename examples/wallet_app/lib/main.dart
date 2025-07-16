@@ -7,7 +7,7 @@ import 'package:wallet_kit/wallet_kit.dart';
 
 import './screens/home_screen.dart';
 import './screens/mobile_wallet_screen.dart'; // New screen
-
+import './screens/settings_screen.dart';
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
@@ -26,7 +26,9 @@ Future<void> main() async {
       'name': 'Starknet Wallet App',
       'description': 'Complete Starknet wallet with mobile support',
       'url': 'https://starknet.dart.dev',
-      'icons': 'https://starknet.dart.dev/icon.png',
+      // The 'icons' field should be a List<String>, not a single string.
+      // This prevents runtime errors with WalletConnect clients.
+      'icons': ['https://starknet.dart.dev/icon.png'],
     },
   );
 

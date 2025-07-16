@@ -2,6 +2,19 @@ import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:wallet_kit/wallet_kit.dart';
 
+/// Enum for wallet app tabs.
+enum WalletTab {
+  mainWallet,
+  mobileWallet,
+  // Add more tabs here as needed
+}
+
+/// Tab indices for navigation, kept in sync with TabBar order.
+const Map<WalletTab, int> walletTabIndices = {
+  WalletTab.mainWallet: 0,
+  WalletTab.mobileWallet: 1,
+};
+
 class HomeScreen extends HookConsumerWidget {
   const HomeScreen({super.key});
 
@@ -11,7 +24,7 @@ class HomeScreen extends HookConsumerWidget {
       body: Layout2(
         children: [
           const SizedBox(height: 32),
-          
+
           // Main wallet section
           const Column(
             crossAxisAlignment: CrossAxisAlignment.center,
@@ -22,14 +35,14 @@ class HomeScreen extends HookConsumerWidget {
               DeployAccountButton(),
             ],
           ),
-          
+
           const SizedBox(height: 24),
-          
+
           // Mobile wallet quick access card
           _buildMobileWalletCard(context),
-          
+
           const SizedBox(height: 24),
-          
+
           // Wallet body and actions
           const WalletBody(),
           const SendEthButton(),
@@ -95,15 +108,16 @@ class HomeScreen extends HookConsumerWidget {
   void _handleMobileWalletConnect(BuildContext context) {
     // Check if TabController is available
     final tabController = DefaultTabController.of(context);
-    
+
     if (tabController != null) {
-      // Navigate to mobile wallet tab (assuming it's at index 1)
-      tabController.animateTo(1);
+      // Use enum-based tab index for navigation
+      final mobileWalletTabIndex = walletTabIndices[WalletTab.mobileWallet]!;
+      tabController.animateTo(mobileWalletTabIndex);
     } else {
       // Alternative navigation if not using TabController
       // You can navigate to a specific mobile wallet screen
       // Navigator.of(context).pushNamed('/mobile-wallet');
-      
+
       // Or show a dialog/snackbar for now
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(
@@ -111,6 +125,3 @@ class HomeScreen extends HookConsumerWidget {
           duration: Duration(seconds: 2),
         ),
       );
-    }
-  }
-}

@@ -305,7 +305,8 @@ Map<String, dynamic> _$$DeprecatedFunctionAbiEntryImplToJson(
       'name': instance.name,
       'inputs': instance.inputs.map((e) => e.toJson()).toList(),
       'outputs': instance.outputs.map((e) => e.toJson()).toList(),
-      if (instance.stateMutability case final value?) 'stateMutability': value,
+      if (instance.stateMutability != null)
+        'state_mutability': instance.stateMutability,
       'starkNetRuntimeTypeToRemove': instance.$type,
     };
 

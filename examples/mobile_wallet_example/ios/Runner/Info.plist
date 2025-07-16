@@ -66,12 +66,24 @@
 	<!-- Camera permission for QR code scanning -->
 	<key>NSCameraUsageDescription</key>
 	<string>This app needs camera access to scan QR codes for wallet connection.</string>
-	
+
 	<!-- Network usage description -->
 	<key>NSAppTransportSecurity</key>
 	<dict>
+		<!-- Disable global arbitrary loads -->
 		<key>NSAllowsArbitraryLoads</key>
-		<true/>
+		<false/>
+		<!-- Allow only specific domains -->
+		<key>NSExceptionDomains</key>
+		<dict>
+			<key>your-development-domain.com</key>
+			<dict>
+				<key>NSIncludesSubdomains</key>
+				<true/>
+				<key>NSExceptionAllowsInsecureHTTPLoads</key>
+				<true/>
+			</dict>
+		</dict>
 	</dict>
 	
 	<key>UIViewControllerBasedStatusBarAppearance</key>
