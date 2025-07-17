@@ -306,20 +306,22 @@ class _WalletCellHeader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListTile(
-      leading: WalletTypeIcon(type: accountType),
-      title: Text(name, style: Theme.of(context).textTheme.titleMedium),
-      subtitle: Text(
-        '$accountsCount account${accountsCount > 1 ? 's' : ''}',
-        style: Theme.of(context).textTheme.bodyMedium,
-      ),
-      trailing: ExpandableIcon(
-        theme: ExpandableThemeData(
-          expandIcon: Icons.keyboard_arrow_down_rounded,
-          collapseIcon: Icons.keyboard_arrow_up_rounded,
-          iconSize: Theme.of(context).iconTheme.size,
-          iconColor: Theme.of(context).iconTheme.color,
-          useInkWell: false,
+    return ExpandableButton(
+      child: ListTile(
+        leading: WalletTypeIcon(type: accountType),
+        title: Text(name, style: Theme.of(context).textTheme.titleMedium),
+        subtitle: Text(
+          '$accountsCount account${accountsCount > 1 ? 's' : ''}',
+          style: Theme.of(context).textTheme.bodyMedium,
+        ),
+        trailing: ExpandableIcon(
+          theme: ExpandableThemeData(
+            expandIcon: Icons.keyboard_arrow_down_rounded,
+            collapseIcon: Icons.keyboard_arrow_up_rounded,
+            iconSize: Theme.of(context).iconTheme.size,
+            iconColor: Theme.of(context).iconTheme.color,
+            useInkWell: false,
+          ),
         ),
       ),
     );
