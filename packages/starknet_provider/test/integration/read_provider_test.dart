@@ -1201,13 +1201,26 @@ void main() {
             fail('Should not fail. (${error.code}): ${error.message}');
           },
           result: (result) {
-            // If successful, verify the fee estimate structure
-            expect(result.gasConsumed, isNotEmpty);
-            expect(result.dataGasConsumed, isNotEmpty);
-            expect(result.gasPrice, isNotEmpty);
-            expect(result.dataGasPrice, isNotEmpty);
-            expect(result.overallFee, isNotEmpty);
-            expect(result.unit, isNotEmpty);
+            switch (result) {
+              case FeeEstimatev0_7 feeEstimate:
+                expect(feeEstimate.gasConsumed, isNot(equals(Felt.zero)));
+                expect(feeEstimate.dataGasConsumed, isNot(equals(Felt.zero)));
+                expect(feeEstimate.gasPrice, isNot(equals(Felt.zero)));
+                expect(feeEstimate.dataGasPrice, isNot(equals(Felt.zero)));
+                expect(feeEstimate.overallFee, isNot(equals(Felt.zero)));
+                expect(feeEstimate.unit, isNotEmpty);
+                break;
+              case FeeEstimatev0_8 feeEstimate:
+                expect(feeEstimate.l1GasConsumed, isNot(equals(Felt.zero)));
+                expect(feeEstimate.l1GasPrice, isNot(equals(Felt.zero)));
+                expect(feeEstimate.l1DataGasConsumed, isNot(equals(Felt.zero)));
+                expect(feeEstimate.l1DataGasPrice, isNot(equals(Felt.zero)));
+                expect(feeEstimate.l2GasConsumed, isNot(equals(Felt.zero)));
+                expect(feeEstimate.l2GasPrice, isNot(equals(Felt.zero)));
+                expect(feeEstimate.overallFee, isNot(equals(Felt.zero)));
+                expect(feeEstimate.unit, isNotEmpty);
+                break;
+            }
           },
         );
       }, tags: ['integration'], skip: false);
