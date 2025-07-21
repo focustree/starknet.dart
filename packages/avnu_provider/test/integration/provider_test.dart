@@ -89,7 +89,7 @@ void main() {
         ))
                 .maxFee
                 .toHexString();
-
+        print('maxGasTokenAmount: $maxGasTokenAmount');
         //just for testing, we hardcode the account class hash to the ArgentX account class hash
         //in a real scenario, we would get the account class hash from the Starknetprovider
         final accountClassHash =
@@ -139,6 +139,7 @@ void main() {
           signatureS
         ];
         final deploymentData = null;
+        print(cleanTypedData);
         final avnuExecute = await avnuProvider.execute(
             userAddress, cleanTypedData, signatureList, deploymentData);
         avnuExecute.when(
