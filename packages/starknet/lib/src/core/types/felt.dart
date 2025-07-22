@@ -72,11 +72,18 @@ class Felt implements IToCalldata {
   }
 
   Felt multiplyByDouble(double multiplier) {
-    final result = Felt.fromDouble(_bigInt.toDouble() * multiplier);
-    if (result._bigInt >= prime) {
-      throw ArgumentError('Value must be smaller than 2^251 + 17 * 2^192 + 1');
+    // Use BigInt arithmetic to preserve precision
+    const precision = 1000000; // 6 decimal places
+    final multiplierBigInt = BigInt.from(multiplier);
+    final fractionalPart = multiplier - multiplier.truncate();
+
+    var result = _bigInt * multiplierBigInt;
+    if (fractionalPart != 0) {
+      result += (_bigInt * BigInt.from((fractionalPart * precision).round())) ~/
+          BigInt.from(precision);
     }
-    return result;
+
+    return Felt(result); // Constructor handles validation
   }
 
   factory Felt.fromInt(int int) {

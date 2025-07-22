@@ -455,8 +455,16 @@ class Account {
       ) =>
         gasPrice.toBigInt().toDouble(),
 
-      // TODO: Handle this case.
-      FeeEstimatev0_8() => throw UnimplementedError(),
+      // 2025-à7-22: We assume l2GasPrice is the expected
+      FeeEstimatev0_8(
+        l1GasConsumed: _,
+        l1GasPrice: _,
+        l1DataGasConsumed: _,
+        l1DataGasPrice: _,
+        l2GasConsumed: _,
+        l2GasPrice: final gasPrice,
+      ) =>
+        gasPrice.toBigInt().toDouble(),
     };
     final maxAmountFee = Felt.fromDouble(feeMultiplier * overallFee / gasPrice);
     final maxPricePerUnit = Felt.fromDouble(feeMultiplier * gasPrice);
