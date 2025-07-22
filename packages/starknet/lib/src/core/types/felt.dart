@@ -71,6 +71,14 @@ class Felt implements IToCalldata {
     }
   }
 
+  Felt multiplyByDouble(double multiplier) {
+    final result = Felt.fromDouble(_bigInt.toDouble() * multiplier);
+    if (result._bigInt >= prime) {
+      throw ArgumentError('Value must be smaller than 2^251 + 17 * 2^192 + 1');
+    }
+    return result;
+  }
+
   factory Felt.fromInt(int int) {
     return Felt(BigInt.from(int));
   }
@@ -118,6 +126,10 @@ class Felt implements IToCalldata {
 
   int toInt() {
     return _bigInt.toInt();
+  }
+
+  double toDouble() {
+    return _bigInt.toDouble();
   }
 
   @override
