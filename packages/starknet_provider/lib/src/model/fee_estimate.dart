@@ -16,7 +16,7 @@ const _L2_GAS = 'l2_gas';
 
 @freezed
 sealed class FeeEstimate with _$FeeEstimate {
-  Map<String, ResourceBounds> toResourceBounds();
+  Map<String, ResourceBounds> toResourceBounds({double multiplier = 1.0});
 
   @With<FeeEstimateMethods_v0_7>()
   const factory FeeEstimate.v0_7({
@@ -47,7 +47,7 @@ sealed class FeeEstimate with _$FeeEstimate {
 }
 
 mixin FeeEstimateMethods {
-  Map<String, ResourceBounds> toResourceBounds();
+  Map<String, ResourceBounds> toResourceBounds({double multiplier = 1.0});
 }
 
 // Implementation for the v0_7 version
@@ -59,14 +59,14 @@ mixin FeeEstimateMethods_v0_7 implements FeeEstimateMethods {
   Felt get dataGasPrice;
 
   @override
-  Map<String, ResourceBounds> toResourceBounds() => {
+  Map<String, ResourceBounds> toResourceBounds({double multiplier = 1.0}) => {
         _L1_GAS: ResourceBounds(
-          maxAmount: gasConsumed,
-          maxPricePerUnit: gasPrice,
+          maxAmount: gasConsumed.multiplyByDouble(multiplier),
+          maxPricePerUnit: gasPrice.multiplyByDouble(multiplier),
         ),
         _L2_GAS: ResourceBounds(
-          maxAmount: dataGasConsumed,
-          maxPricePerUnit: dataGasPrice,
+          maxAmount: dataGasConsumed.multiplyByDouble(multiplier),
+          maxPricePerUnit: dataGasPrice.multiplyByDouble(multiplier),
         ),
       };
 }
@@ -82,18 +82,18 @@ mixin FeeEstimateMethods_v0_8 implements FeeEstimateMethods {
   Felt get l1DataGasPrice;
 
   @override
-  Map<String, ResourceBounds> toResourceBounds() => {
+  Map<String, ResourceBounds> toResourceBounds({double multiplier = 1.0}) => {
         _L1_GAS: ResourceBounds(
-          maxAmount: l1GasConsumed,
-          maxPricePerUnit: l1GasPrice,
+          maxAmount: l1GasConsumed.multiplyByDouble(multiplier),
+          maxPricePerUnit: l1GasPrice.multiplyByDouble(multiplier),
         ),
         _L2_GAS: ResourceBounds(
-          maxAmount: l2GasConsumed,
-          maxPricePerUnit: l2GasPrice,
+          maxAmount: l2GasConsumed.multiplyByDouble(multiplier),
+          maxPricePerUnit: l2GasPrice.multiplyByDouble(multiplier),
         ),
         _L1_DATA_GAS: ResourceBounds(
-          maxAmount: l1DataGasConsumed,
-          maxPricePerUnit: l1DataGasPrice,
+          maxAmount: l1DataGasConsumed.multiplyByDouble(multiplier),
+          maxPricePerUnit: l1DataGasPrice.multiplyByDouble(multiplier),
         ),
       };
 }

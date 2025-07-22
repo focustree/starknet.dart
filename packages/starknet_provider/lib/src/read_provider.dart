@@ -347,7 +347,6 @@ class JsonRpcReadProvider implements ReadProvider {
       method: 'starknet_estimateFee',
       params: request,
     );
-    print('Estimate Fee: $payload');
     return EstimateFee.fromJson(payload);
   }
 

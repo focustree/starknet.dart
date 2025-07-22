@@ -444,7 +444,6 @@ class Account {
     //calculated as described in https://community.starknet.io/t/starknet-v0-13-1-pre-release-notes/113664
     //and multiplied by feeMultiplier
     final overallFee = fee.overallFee.toBigInt().toDouble();
-    ;
     final gasPrice = switch (fee) {
       FeeEstimatev0_7(
         gasConsumed: _,
@@ -936,12 +935,14 @@ class Account {
           );
         },
       );
-      final resourceBounds = feeResult.toResourceBounds();
-      // remove l2 gas information for v0.7 RPC
-      if (!resourceBounds.containsKey('l1_data_gas')) {
-        resourceBounds['l2_gas'] = ResourceBounds(
-          maxAmount: Felt.zero,
-          maxPricePerUnit: Felt.zero,
+
+      final resourceBounds = feeResult.toResourceBounds(multiplier: 1.2);
+      if (feeResult is FeeEstimatev0_7) {
+        // workaround for starknet-devnet 0.1.2
+        resourceBounds['l1_gas'] = ResourceBounds(
+          maxAmount: resourceBounds['l1_gas']!.maxAmount +
+              resourceBounds['l2_gas']!.maxAmount,
+          maxPricePerUnit: l1MaxPricePerUnit,
         );
       }
       final signature = await accountSigner.signDeployAccountTransactionV3(
