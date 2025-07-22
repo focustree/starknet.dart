@@ -89,7 +89,6 @@ void main() {
         ))
                 .maxFee
                 .toHexString();
-
         //just for testing, we hardcode the account class hash to the ArgentX account class hash
         //in a real scenario, we would get the account class hash from the Starknetprovider
         final accountClassHash =

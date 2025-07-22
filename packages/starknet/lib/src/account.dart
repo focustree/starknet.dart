@@ -96,7 +96,7 @@ class Account {
   }) async {
     nonce = nonce ?? await getNonce();
     final resourceBounds =
-        getResourceBounds(Felt.zero, Felt.zero, Felt.zero, Felt.zero);
+        _getResourceBounds(Felt.zero, Felt.zero, Felt.zero, Felt.zero);
 
     if (useSTRKFee!) {
       supportedTxVersion = AccountSupportedTxVersion.v3;
@@ -204,7 +204,7 @@ class Account {
 
     nonce = nonce ?? await getNonce();
     final resourceBounds =
-        getResourceBounds(Felt.zero, Felt.zero, Felt.zero, Felt.zero);
+        _getResourceBounds(Felt.zero, Felt.zero, Felt.zero, Felt.zero);
 
     if (useSTRKFee!) {
       // These values are for future use (until then they are empty or zero)
@@ -313,7 +313,7 @@ class Account {
     nonce = nonce ?? defaultNonce;
     contractAddressSalt = contractAddressSalt ?? accountSigner.publicKey;
     final resourceBounds =
-        getResourceBounds(Felt.zero, Felt.zero, Felt.zero, Felt.zero);
+        _getResourceBounds(Felt.zero, Felt.zero, Felt.zero, Felt.zero);
 
     if (useSTRKFee!) {
       contractAddress = contractAddress ?? Felt.zero;
@@ -443,11 +443,29 @@ class Account {
 
     //calculated as described in https://community.starknet.io/t/starknet-v0-13-1-pre-release-notes/113664
     //and multiplied by feeMultiplier
-    final overallFee =
-        BigInt.parse(fee.overallFee.replaceFirst('0x', ''), radix: 16)
-            .toDouble();
-    final gasPrice =
-        BigInt.parse(fee.gasPrice.replaceFirst('0x', ''), radix: 16).toDouble();
+    final overallFee = fee.overallFee.toBigInt().toDouble();
+    final gasPrice = switch (fee) {
+      FeeEstimatev0_7(
+        gasConsumed: _,
+        dataGasConsumed: _,
+        gasPrice: final gasPrice,
+        dataGasPrice: _,
+        overallFee: _,
+        unit: _
+      ) =>
+        gasPrice.toBigInt().toDouble(),
+
+      // 2025-à7-22: We assume l2GasPrice is the expected
+      FeeEstimatev0_8(
+        l1GasConsumed: _,
+        l1GasPrice: _,
+        l1DataGasConsumed: _,
+        l1DataGasPrice: _,
+        l2GasConsumed: _,
+        l2GasPrice: final gasPrice,
+      ) =>
+        gasPrice.toBigInt().toDouble(),
+    };
     final maxAmountFee = Felt.fromDouble(feeMultiplier * overallFee / gasPrice);
     final maxPricePerUnit = Felt.fromDouble(feeMultiplier * gasPrice);
     final maxFee = Felt.fromDouble(feeMultiplier * overallFee);
@@ -493,7 +511,7 @@ class Account {
     l1MaxPricePerUnit ??= Felt.zero;
     l2MaxAmount ??= Felt.zero;
     l2MaxPricePerUnit ??= Felt.zero;
-    final resourceBounds = getResourceBounds(
+    final resourceBounds = _getResourceBounds(
       l1MaxAmount,
       l1MaxPricePerUnit,
       l2MaxAmount,
@@ -667,7 +685,7 @@ class Account {
       l1MaxPricePerUnit ??= Felt.zero;
       l2MaxAmount ??= Felt.zero;
       l2MaxPricePerUnit ??= Felt.zero;
-      final resourceBounds = getResourceBounds(
+      final resourceBounds = _getResourceBounds(
         l1MaxAmount,
         l1MaxPricePerUnit,
         l2MaxAmount,
@@ -892,13 +910,49 @@ class Account {
       accountDeploymentData ??= [];
       paymasterData ??= [];
       tip ??= Felt.zero;
-      final resourceBounds = getResourceBounds(
-        l1MaxAmount,
-        l1MaxPricePerUnit,
-        l2MaxAmount,
-        l2MaxPricePerUnit,
+      final estimateFeeResult = await provider.estimateFee(
+        EstimateFeeRequest(
+          request: [
+            BroadcastedDeployAccountTxnV3(
+              type: 'DEPLOY_ACCOUNT',
+              version: '0x3',
+              signature: [],
+              nonce: Felt.zero,
+              classHash: classHash,
+              constructorCalldata: constructorCalldata,
+              contractAddressSalt: contractAddressSalt,
+              feeDataAvailabilityMode: feeDataAvailabilityMode!,
+              nonceDataAvailabilityMode: nonceDataAvailabilityMode!,
+              paymasterData: paymasterData,
+              resourceBounds: await provider.defaultResourceBoundsMapping(),
+              tip: tip.toHexString(),
+            ),
+          ],
+          blockId: BlockId.latest,
+          simulation_flags: [
+            SimulationFlag.skipValidate,
+            // const SimulationFlag.skipFeeCharge(),
+          ],
+        ),
+      );
+      final feeResult = estimateFeeResult.when(
+        result: (result) => result.first,
+        error: (error) {
+          throw Exception(
+            'Error estimating fee (${error.code}): ${error.message} ${error.errorData}',
+          );
+        },
       );
 
+      final resourceBounds = feeResult.toResourceBounds(multiplier: 1.2);
+      if (feeResult is FeeEstimatev0_7) {
+        // workaround for starknet-devnet 0.1.2
+        resourceBounds['l1_gas'] = ResourceBounds(
+          maxAmount: resourceBounds['l1_gas']!.maxAmount +
+              resourceBounds['l2_gas']!.maxAmount,
+          maxPricePerUnit: l1MaxPricePerUnit,
+        );
+      }
       final signature = await accountSigner.signDeployAccountTransactionV3(
         contractAddress: contractAddress,
         resourceBounds: resourceBounds,
@@ -906,8 +960,8 @@ class Account {
         paymasterData: paymasterData,
         chainId: chainId,
         nonce: nonce,
-        feeDataAvailabilityMode: feeDataAvailabilityMode!,
-        nonceDataAvailabilityMode: nonceDataAvailabilityMode!,
+        feeDataAvailabilityMode: feeDataAvailabilityMode,
+        nonceDataAvailabilityMode: nonceDataAvailabilityMode,
         constructorCalldata: constructorCalldata,
         classHash: classHash,
         contractAddressSalt: contractAddressSalt,
@@ -982,7 +1036,7 @@ class Account {
   }
 
   // Function to generate a resourceBounds map from a maxAmount and a maxPricePerUnit
-  static Map<String, ResourceBounds> getResourceBounds(
+  static Map<String, ResourceBounds> _getResourceBounds(
     Felt l1MaxAmount,
     Felt l1MaxPricePerUnit,
     Felt l2MaxAmount,
@@ -990,12 +1044,16 @@ class Account {
   ) {
     return {
       'l1_gas': ResourceBounds(
-        maxAmount: l1MaxAmount.toHexString(),
-        maxPricePerUnit: l1MaxPricePerUnit.toHexString(),
+        maxAmount: l1MaxAmount,
+        maxPricePerUnit: l1MaxPricePerUnit,
       ),
+      // 'l1_data_gas': ResourceBounds(
+      //   maxAmount: l1MaxAmount.toHexString(),
+      //   maxPricePerUnit: l1MaxPricePerUnit.toHexString(),
+      // ),
       'l2_gas': ResourceBounds(
-        maxAmount: l2MaxAmount.toHexString(),
-        maxPricePerUnit: l2MaxPricePerUnit.toHexString(),
+        maxAmount: l2MaxAmount,
+        maxPricePerUnit: l2MaxPricePerUnit,
       ),
     };
   }

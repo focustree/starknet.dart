@@ -5,8 +5,8 @@ import 'package:starknet/starknet.dart';
 
 import '../utils.dart';
 import 'components/block_id.dart';
+import 'components/resource_bounds.dart';
 import 'contract_class.dart';
-import 'declare_transaction.dart';
 import 'fee_estimate.dart';
 import 'json_rpc_api_error.dart';
 
@@ -36,24 +36,14 @@ class EstimateFee with _$EstimateFee {
 /// By default, the sequencer behavior is replicated locally (enough funds are expected to be in the
 /// account, and fee will be deducted from the balance before the simulation of the next
 /// transaction). To skip the fee charge, use the SKIP_FEE_CHARGE flag.
-@freezed
-class SimulationFlag with _$SimulationFlag {
-  @JsonSerializable(fieldRename: FieldRename.snake)
-  const factory SimulationFlag.skipValidate() = SkipValidate;
+enum SimulationFlag {
+  /// Skip the validation of the transaction. This is useful for testing purposes.
+  @JsonValue('SKIP_VALIDATE')
+  skipValidate,
 
-  @JsonSerializable(fieldRename: FieldRename.snake)
-  const factory SimulationFlag.skipFeeCharge() = SkipFeeCharge;
-
-  factory SimulationFlag.fromJson(Map<String, dynamic> json) =>
-      _$SimulationFlagFromJson(json);
-
-  @override
-  Map<String, dynamic> toJson() => {
-        'type': when(
-          skipValidate: () => "SKIP_VALIDATE",
-          skipFeeCharge: () => "SKIP_FEE_CHARGE",
-        ),
-      };
+  /// Skip the fee charge. This is useful for testing purposes.
+  @JsonValue('SKIP_FEE_CHARGE')
+  skipFeeCharge,
 }
 
 @JsonSerializable()

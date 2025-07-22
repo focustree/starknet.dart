@@ -341,12 +341,13 @@ class JsonRpcReadProvider implements ReadProvider {
   }
 
   @override
-  Future<EstimateFee> estimateFee(EstimateFeeRequest request) {
-    return callRpcEndpoint(
+  Future<EstimateFee> estimateFee(EstimateFeeRequest request) async {
+    final payload = await callRpcEndpoint(
       nodeUri: nodeUri,
       method: 'starknet_estimateFee',
       params: request,
-    ).then(EstimateFee.fromJson);
+    );
+    return EstimateFee.fromJson(payload);
   }
 
   @override
