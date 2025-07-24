@@ -11,7 +11,7 @@ A Dart package for interacting with Starknet node using JSON-RPC, following the 
 | declare        | ✅                 | 1, 2, 3    |
 | deploy_account | ✅                 | 1, 3       |
 
-## Supported JSON RPC version: 0.7.1
+## Supported JSON RPC version: 0.8+
 
 ### Read methods
 
