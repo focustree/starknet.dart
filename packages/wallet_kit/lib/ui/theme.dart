@@ -1,28 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
+final colorScheme = ColorScheme.fromSeed(seedColor: Colors.lightBlue);
+
 final walletThemeData = ThemeData(
   useMaterial3: true,
   fontFamily: "SF Pro Rounded",
-  textTheme: const TextTheme(
-    displayLarge: baseTextStyle,
-    displayMedium: baseTextStyle,
-    displaySmall: baseTextStyle,
-    headlineLarge: baseTextStyle,
-    headlineMedium: baseTextStyle,
-    headlineSmall: baseTextStyle,
-    titleLarge: baseTextStyle,
-    titleMedium: baseTextStyle,
-    titleSmall: baseTextStyle,
-    bodyLarge: baseTextStyle,
-    bodyMedium: baseTextStyle,
-    bodySmall: baseTextStyle,
-    labelLarge: baseTextStyle,
-    labelMedium: baseTextStyle,
-    labelSmall: baseTextStyle,
-  ),
-  colorScheme: ColorScheme.fromSeed(seedColor: Colors.lightBlue)
-      .copyWith(surface: backgrounColor),
+  colorScheme: colorScheme,
   appBarTheme: const AppBarTheme(
     systemOverlayStyle: SystemUiOverlayStyle(
       statusBarColor: Colors.transparent,
@@ -43,32 +27,27 @@ final walletThemeData = ThemeData(
       tapTargetSize: MaterialTapTargetSize.shrinkWrap,
     ),
   ),
-  bottomSheetTheme: const BottomSheetThemeData(
-    backgroundColor: Colors.white,
+  inputDecorationTheme: InputDecorationTheme(
+    filled: true,
+    fillColor: colorScheme.surface,
+    contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
+    border: OutlineInputBorder(
+      borderRadius: BorderRadius.circular(8.0),
+      borderSide: BorderSide.none,
+    ),
   ),
-  iconTheme: const IconThemeData(color: dove),
+  bottomSheetTheme: BottomSheetThemeData(
+    backgroundColor: colorScheme.surface,
+  ),
+  iconTheme: IconThemeData(color: colorScheme.onSurfaceVariant),
 );
-
-// Colors
-const charcoal = Color(0xFF24282E);
-const graphite = Color(0xff666673);
-const dove = Color(0xff8B8C96);
-
-const backgrounColor = Colors.white;
 
 // Spacing
 const sideMargin = 16.0;
-const hpad = EdgeInsets.symmetric(horizontal: sideMargin);
 const primaryButtonHeight = 56.0;
 const headerHeight = 56.0;
 
-Widget pad(Widget child, {double h = sideMargin, double v = 0}) {
-  return Padding(
-      padding: EdgeInsets.symmetric(horizontal: h, vertical: v), child: child);
-}
-
 // Text
-const baseTextStyle = TextStyle(fontFamily: 'SF Pro Rounded');
 const primaryButtonTextStyle = TextStyle(
   fontSize: 17,
   fontWeight: FontWeight.w600,

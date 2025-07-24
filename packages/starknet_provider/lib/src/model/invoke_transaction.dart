@@ -4,7 +4,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:starknet/starknet.dart';
 
 import '../utils.dart';
-import 'declare_transaction.dart';
+import 'components/resource_bounds.dart';
 import 'json_rpc_api_error.dart';
 
 part 'invoke_transaction.freezed.dart';

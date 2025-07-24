@@ -1,3 +1,9 @@
+## 0.4.0
+
+> Note: This release has breaking changes.
+
+ - **BREAKING** **FEAT**: introduce account signer ([#445](https://github.com/focustree/starknet.dart/issues/445)). ([61b21920](https://github.com/focustree/starknet.dart/commit/61b219202b4730269465da4078806bcbb732dd44))
+
 ## 0.3.0
 
 > Note: This release has breaking changes.

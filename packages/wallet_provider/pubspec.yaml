@@ -1,13 +1,13 @@
 name: wallet_provider
 description: A Dart package for interacting with Starknet wallets using the Starknet Wallet API specification.
-version: 0.0.1+1
+version: 0.0.2
 repository: https://github.com/focustree/starknet.dart
 
 environment:
   sdk: ^3.0.5
 
 dependencies:
-  starknet: ^0.1.2+1
+  starknet: ^0.2.0
   freezed_annotation: ^2.4.4
   http: ^1.2.2
   json_annotation: ^4.9.0

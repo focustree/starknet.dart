@@ -71,6 +71,21 @@ class Felt implements IToCalldata {
     }
   }
 
+  Felt multiplyByDouble(double multiplier) {
+    // Use BigInt arithmetic to preserve precision
+    const precision = 1000000; // 6 decimal places
+    final multiplierBigInt = BigInt.from(multiplier);
+    final fractionalPart = multiplier - multiplier.truncate();
+
+    var result = _bigInt * multiplierBigInt;
+    if (fractionalPart != 0) {
+      result += (_bigInt * BigInt.from((fractionalPart * precision).round())) ~/
+          BigInt.from(precision);
+    }
+
+    return Felt(result); // Constructor handles validation
+  }
+
   factory Felt.fromInt(int int) {
     return Felt(BigInt.from(int));
   }
@@ -118,6 +133,10 @@ class Felt implements IToCalldata {
 
   int toInt() {
     return _bigInt.toInt();
+  }
+
+  double toDouble() {
+    return _bigInt.toDouble();
   }
 
   @override

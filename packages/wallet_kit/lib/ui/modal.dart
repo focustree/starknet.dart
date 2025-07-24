@@ -5,7 +5,7 @@ import 'button.dart';
 Future<T?> showBottomModal<T>({
   required BuildContext context,
   required WidgetBuilder builder,
-  Color backgroundColor = Colors.transparent,
+  Color? backgroundColor,
   double elevation = 0.0,
   ShapeBorder? shape,
   Clip clipBehavior = Clip.none,
@@ -52,7 +52,10 @@ class ModalLayout extends StatelessWidget {
     final keyboardHeight = MediaQuery.of(context).viewInsets.bottom;
 
     return CustomPaint(
-      painter: ModalPainter(),
+      painter: ModalPainter(
+        color: Theme.of(context).bottomSheetTheme.backgroundColor ??
+            Theme.of(context).colorScheme.surface,
+      ),
       child: Padding(
         padding: EdgeInsets.only(
           bottom: keyboardHeight > 0
@@ -130,7 +133,6 @@ class ModalHeader extends StatelessWidget {
   final Widget? rightButton;
   final bool withBackButton;
   final double iconSize;
-  final double fontSize;
   final double sideMargin;
 
   const ModalHeader({
@@ -139,7 +141,6 @@ class ModalHeader extends StatelessWidget {
     this.withBackButton = false,
     this.rightButton,
     this.iconSize = 16,
-    this.fontSize = 22,
     this.sideMargin = 24,
   });
 
@@ -168,11 +169,10 @@ class ModalHeader extends StatelessWidget {
               child: title != null
                   ? Text(
                       title!,
-                      style: TextStyle(
-                        fontSize: fontSize,
-                        fontWeight: FontWeight.w700,
-                        color: Colors.black,
-                      ),
+                      style:
+                          Theme.of(context).textTheme.headlineSmall?.copyWith(
+                                color: Theme.of(context).colorScheme.onSurface,
+                              ),
                     )
                   : Container(),
             ),
@@ -208,7 +208,7 @@ class ModalHandle extends StatelessWidget {
       width: 40,
       height: 6,
       decoration: BoxDecoration(
-        color: Colors.grey[200],
+        color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.4),
         borderRadius: const BorderRadius.all(Radius.circular(16.0)),
       ),
     );
@@ -225,7 +225,7 @@ class ModalPainter extends CustomPainter {
   final double hRadiusRatio;
 
   ModalPainter({
-    this.color = Colors.white,
+    required this.color,
     this.radius = 40,
     this.vRadiusRatio = 0.8,
     this.hRadiusRatio = 1,

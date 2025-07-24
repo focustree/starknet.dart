@@ -46,14 +46,11 @@ class NFTDetail extends ConsumerWidget {
                   fit: BoxFit.contain),
             ),
             Padding(
-              padding: const EdgeInsets.all(8.0),
+              padding: const EdgeInsets.all(sideMargin / 2),
               child: Text(
                 data.result.metadata!.normalized.name,
                 softWrap: false,
-                style: const TextStyle(
-                  fontSize: 14,
-                  fontWeight: FontWeight.w700,
-                ),
+                style: Theme.of(context).textTheme.titleMedium,
                 overflow: TextOverflow.ellipsis,
               ),
             ),

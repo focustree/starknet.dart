@@ -1012,8 +1012,10 @@ void main() {
         nonceDataAvailabilityMode: 'L1',
         paymasterData: [],
         resourceBounds: {
-          'l1_gas': ResourceBounds(maxAmount: '0x0', maxPricePerUnit: '0x0'),
-          'l2_gas': ResourceBounds(maxAmount: '0x0', maxPricePerUnit: '0x0'),
+          'l1_gas':
+              ResourceBounds(maxAmount: Felt.zero, maxPricePerUnit: Felt.zero),
+          'l2_gas':
+              ResourceBounds(maxAmount: Felt.zero, maxPricePerUnit: Felt.zero),
         },
         senderAddress: Felt.fromHexString(
             '0x064b48806902a367c8598f4f95c305e8c1a1acba5f082d294a43793113115691'),
@@ -1042,12 +1044,12 @@ void main() {
           },
           result: (result) {
             expect(result.length, 1);
-            final estimate = result[0];
-            expect(estimate.gasConsumed, "0x17");
-            expect(estimate.dataGasConsumed, "0xc0");
-            expect(estimate.gasPrice, "0x174876e800");
-            expect(estimate.dataGasPrice, "0x174876e800");
-            expect(estimate.overallFee, "0x138ddbdcd800");
+            final estimate = result[0] as FeeEstimatev0_7;
+            expect(estimate.gasConsumed, Felt.fromHexString("0x17"));
+            expect(estimate.dataGasConsumed, Felt.fromHexString("0xc0"));
+            expect(estimate.gasPrice, Felt.fromHexString("0x174876e800"));
+            expect(estimate.dataGasPrice, Felt.fromHexString("0x174876e800"));
+            expect(estimate.overallFee, Felt.fromHexString("0x138ddbdcd800"));
             expect(estimate.unit, "WEI");
           },
         );
@@ -1068,12 +1070,12 @@ void main() {
           },
           result: (result) {
             expect(result.length, 1);
-            final estimate = result[0];
-            expect(estimate.gasConsumed, "0x17");
-            expect(estimate.dataGasConsumed, "0x140");
-            expect(estimate.gasPrice, "0x174876e800");
-            expect(estimate.dataGasPrice, "0x174876e800");
-            expect(estimate.overallFee, "0x1f321750d800");
+            final estimate = result[0] as FeeEstimatev0_7;
+            expect(estimate.gasConsumed, Felt.fromHexString("0x17"));
+            expect(estimate.dataGasConsumed, Felt.fromHexString("0x140"));
+            expect(estimate.gasPrice, Felt.fromHexString("0x174876e800"));
+            expect(estimate.dataGasPrice, Felt.fromHexString("0x174876e800"));
+            expect(estimate.overallFee, Felt.fromHexString("0x1f321750d800"));
             expect(estimate.unit, "FRI");
           },
         );
@@ -1162,6 +1164,137 @@ void main() {
           },
         );
       }, tags: ['integration']);
+    });
+
+    group('estimateMessageFee', () {
+      test('estimate message fee for L1 to L2 message', () async {
+        // Contract declared and deployed in devnet dump (source: /contracts/v2.6.2/src/l2_receiver.cairo)
+        final Felt l2ContractAddress = Felt.fromHexString(
+            '0x0536e1d1cd6cd7d295ccbd8c7dc817839f8ff4c615a28fdc192a0aafe2327e5f');
+
+        // This must be the l1 sender address
+        const String l1Address = '0x8359E4B0152ed5A731162D3c7B0D8D56edB165a0';
+
+        // Entry point selector for the L1 handler
+        final Felt entryPointSelector =
+            getSelectorByName('handle_message_from_l1');
+
+        // Message payload (in our example, we just need a felt252 value)
+        final List<Felt> payload = [Felt.fromInt(100)];
+
+        final MsgFromL1 message = MsgFromL1(
+          fromAddress: l1Address,
+          toAddress: l2ContractAddress,
+          entryPointSelector: entryPointSelector,
+          payload: payload,
+        );
+
+        final EstimateMessageFeeRequest request = EstimateMessageFeeRequest(
+          message: message,
+          blockId: BlockId.latest,
+        );
+
+        final response = await provider.estimateMessageFee(request);
+
+        response.when(
+          error: (error) {
+            fail('Should not fail. (${error.code}): ${error.message}');
+          },
+          result: (result) {
+            switch (result) {
+              case FeeEstimatev0_7 feeEstimate:
+                expect(feeEstimate.gasConsumed, isNot(equals(Felt.zero)));
+                expect(feeEstimate.dataGasConsumed, isNot(equals(Felt.zero)));
+                expect(feeEstimate.gasPrice, isNot(equals(Felt.zero)));
+                expect(feeEstimate.dataGasPrice, isNot(equals(Felt.zero)));
+                expect(feeEstimate.overallFee, isNot(equals(Felt.zero)));
+                expect(feeEstimate.unit, isNotEmpty);
+                break;
+              case FeeEstimatev0_8 feeEstimate:
+                expect(feeEstimate.l1GasConsumed, isNot(equals(Felt.zero)));
+                expect(feeEstimate.l1GasPrice, isNot(equals(Felt.zero)));
+                expect(feeEstimate.l1DataGasConsumed, isNot(equals(Felt.zero)));
+                expect(feeEstimate.l1DataGasPrice, isNot(equals(Felt.zero)));
+                expect(feeEstimate.l2GasConsumed, isNot(equals(Felt.zero)));
+                expect(feeEstimate.l2GasPrice, isNot(equals(Felt.zero)));
+                expect(feeEstimate.overallFee, isNot(equals(Felt.zero)));
+                expect(feeEstimate.unit, isNotEmpty);
+                break;
+            }
+          },
+        );
+      }, tags: ['integration'], skip: false);
+
+      test('estimate message fee with invalid contract address', () async {
+        const String l1Address = '0x8359E4B0152ed5A731162D3c7B0D8D56edB165a0';
+        final Felt invalidContractAddress = Felt.fromHexString(
+            '0x0000000000000000000000000000000000000000000000000000000000000000');
+        final Felt entryPointSelector =
+            getSelectorByName('handle_message_from_l1');
+        final List<Felt> payload = [Felt.fromInt(100)];
+
+        final MsgFromL1 message = MsgFromL1(
+          fromAddress: l1Address,
+          toAddress: invalidContractAddress,
+          entryPointSelector: entryPointSelector,
+          payload: payload,
+        );
+
+        final EstimateMessageFeeRequest request = EstimateMessageFeeRequest(
+          message: message,
+          blockId: BlockId.latest,
+        );
+
+        final response = await provider.estimateMessageFee(request);
+
+        response.when(
+          error: (error) {
+            expect(
+              error.code == JsonRpcApiErrorCode.CONTRACT_NOT_FOUND ||
+                  error.code == JsonRpcApiErrorCode.CONTRACT_ERROR,
+              isTrue,
+            );
+          },
+          result: (result) {
+            fail('Should fail with invalid contract address');
+          },
+        );
+      });
+
+      test('estimate message fee with invalid block id', () async {
+        // Contract declared and deployed in devnet dump (source: /contracts/v2.6.2/src/l2_receiver.cairo)
+        final Felt l2ContractAddress = Felt.fromHexString(
+            '0x0536e1d1cd6cd7d295ccbd8c7dc817839f8ff4c615a28fdc192a0aafe2327e5f');
+
+        const String l1Address = '0x8359E4B0152ed5A731162D3c7B0D8D56edB165a0';
+        final Felt entryPointSelector =
+            getSelectorByName('handle_message_from_l1');
+        final List<Felt> payload = [Felt.fromInt(100)];
+
+        final MsgFromL1 message = MsgFromL1(
+          fromAddress: l1Address,
+          toAddress: l2ContractAddress,
+          entryPointSelector: entryPointSelector,
+          payload: payload,
+        );
+
+        final EstimateMessageFeeRequest request = EstimateMessageFeeRequest(
+          message: message,
+          blockId: BlockId.blockNumber(99999999),
+        );
+
+        final response = await provider.estimateMessageFee(request);
+
+        response.when(
+          error: (error) {
+            expect(error.code, JsonRpcApiErrorCode.BLOCK_NOT_FOUND);
+            expect(error.message, 'Block not found');
+          },
+          result: (result) {
+            fail('Should fail with invalid block id');
+          },
+        );
+      });
     });
 
     group('starknet_specVersion', () {

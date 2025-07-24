@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
+import '../ui/theme.dart';
 import '../wallet_state/wallet_error.dart';
 
 class WalletErrorHandler extends HookConsumerWidget {
@@ -24,11 +25,23 @@ class WalletErrorHandler extends HookConsumerWidget {
         current.error.when(
           accountError: (message, exception, stackTrace) {
             _showSnackBar(
-                context, message, Colors.red, Icons.error_outline, ref);
+              context,
+              message,
+              Theme.of(context).colorScheme.error,
+              Theme.of(context).colorScheme.onError,
+              Icons.error_outline,
+              ref,
+            );
           },
           unknownError: (message, exception, stackTrace) {
             _showSnackBar(
-                context, message, Colors.grey, Icons.error_outline, ref);
+              context,
+              message,
+              Theme.of(context).colorScheme.secondaryContainer,
+              Theme.of(context).colorScheme.onSecondaryContainer,
+              Icons.error_outline,
+              ref,
+            );
           },
         );
       }
@@ -42,6 +55,7 @@ class WalletErrorHandler extends HookConsumerWidget {
     BuildContext context,
     String message,
     Color backgroundColor,
+    Color foregroundColor,
     IconData icon,
     WidgetRef ref,
   ) {
@@ -49,8 +63,8 @@ class WalletErrorHandler extends HookConsumerWidget {
       SnackBar(
         content: Row(
           children: [
-            Icon(icon, color: Colors.white),
-            const SizedBox(width: 12),
+            Icon(icon, color: foregroundColor),
+            const SizedBox(width: sideMargin * 0.75),
             Expanded(child: Text(message)),
           ],
         ),
@@ -58,7 +72,7 @@ class WalletErrorHandler extends HookConsumerWidget {
         duration: const Duration(seconds: 5),
         action: SnackBarAction(
           label: 'Dismiss',
-          textColor: Colors.white,
+          textColor: foregroundColor,
           onPressed: () {
             ScaffoldMessenger.of(context).hideCurrentSnackBar();
             ref.read(walletErrorNotifierProvider.notifier).clearError();
