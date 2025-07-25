@@ -1,6 +1,8 @@
 /// SNIP-29 compliant Paymaster client for Starknet Dart applications
+/// Leverages existing SNIP-9 (Outside Execution) and SNIP-12 (Off-chain Message Signing) implementations
 import 'dart:async';
 import 'package:http/http.dart' as http;
+import 'package:starknet/starknet.dart'; // Import SNIP-9 and SNIP-12 implementations
 import 'types/types.dart';
 import 'models/models.dart';
 import 'exceptions/exceptions.dart';
@@ -220,6 +222,32 @@ class PaymasterClient {
       execution: execution,
     );
     return response.feeEstimate;
+  }
+
+  /// Create OutsideExecutionCall from paymaster transaction calls
+  /// 
+  /// Helper method that leverages SNIP-9 OutsideExecutionCall instead of custom Call type.
+  /// This ensures compatibility with existing SNIP-9 implementations.
+  static List<OutsideExecutionCallV2> createOutsideExecutionCalls(List<Call> calls) {
+    return calls.map((call) => call).toList(); // Call is already typedef'd to OutsideExecutionCallV2
+  }
+
+  /// Create TypedData domain for paymaster operations
+  /// 
+  /// Helper method that leverages SNIP-12 TypedDataDomain for consistent domain handling.
+  /// This ensures compatibility with existing SNIP-12 implementations.
+  static TypedDataDomain createPaymasterDomain({
+    required String chainId,
+    String name = 'Paymaster',
+    String version = '1',
+    String revision = '1',
+  }) {
+    return TypedDataDomain(
+      name: name,
+      version: version,
+      chainId: chainId,
+      revision: revision,
+    );
   }
 
   /// Dispose the client and clean up resources

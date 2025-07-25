@@ -1,38 +1,19 @@
-/// Typed data models for SNIP-29 API
+/// Typed data models for SNIP-29 API - leveraging existing SNIP-12 implementation
 import 'package:json_annotation/json_annotation.dart';
+import 'package:starknet/starknet.dart'; // Import existing SNIP-12 TypedData
 import '../types/types.dart';
 
 part 'typed_data.g.dart';
 
-/// Typed data structure for signing
-@JsonSerializable()
-class TypedData {
-  final Map<String, dynamic> types;
-  
-  @JsonKey(name: 'primary_type')
-  final String primaryType;
-  
-  final Map<String, dynamic> domain;
-  final Map<String, dynamic> message;
-
-  const TypedData({
-    required this.types,
-    required this.primaryType,
-    required this.domain,
-    required this.message,
-  });
-
-  factory TypedData.fromJson(Map<String, dynamic> json) =>
-      _$TypedDataFromJson(json);
-
-  Map<String, dynamic> toJson() => _$TypedDataToJson(this);
-}
+// Note: Using existing SNIP-12 TypedData implementation from starknet package
+// instead of duplicating functionality
 
 /// Executable transaction with typed data and signature
+/// Uses existing SNIP-12 TypedData implementation from starknet package
 @JsonSerializable()
 class PaymasterExecutableTransaction {
   @JsonKey(name: 'typed_data')
-  final TypedData typedData;
+  final TypedData typedData; // Using SNIP-12 TypedData from starknet package
   
   final List<Felt> signature;
 
