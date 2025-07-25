@@ -68,7 +68,14 @@ Start the devnet in one terminal:
 melos devnet:start
 ```
 
-Then run the tests in another terminal:
+In another terminal, run the following command to declare and deploy some contracts to the devnet:
+
+```sh
+source .env.devnet # Load the env variables
+melos devnet:setup
+```
+
+Then run the tests:
 
 ```sh
 melos test
