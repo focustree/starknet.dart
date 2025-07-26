@@ -1,9 +1,14 @@
 /// Integration tests for SNIP-29 Paymaster SDK
+@TestOn('vm')
+@Tags(['integration'])
 import 'package:test/test.dart';
 import 'package:mockito/mockito.dart';
 import 'package:mockito/annotations.dart';
 import 'package:http/http.dart' as http;
-import 'package:starknet_paymaster/starknet_paymaster.dart';
+import '../../lib/src/paymaster_client.dart';
+import '../../lib/src/models/models.dart';
+import '../../lib/src/types/types.dart';
+import '../../lib/src/exceptions/exceptions.dart';
 import 'dart:convert';
 
 import '../paymaster_client_test.mocks.dart';
@@ -92,13 +97,15 @@ void main() {
           any,
           headers: anyNamed('headers'),
           body: argThat(contains('paymaster_buildTypedData'), named: 'body'),
-        )).thenAnswer((_) async => http.Response(jsonEncode(buildTypedDataResponse), 200));
+        )).thenAnswer((_) async =>
+            http.Response(jsonEncode(buildTypedDataResponse), 200));
 
         when(mockHttpClient.post(
           any,
           headers: anyNamed('headers'),
           body: argThat(contains('paymaster_execute'), named: 'body'),
-        )).thenAnswer((_) async => http.Response(jsonEncode(executeResponse), 200));
+        )).thenAnswer(
+            (_) async => http.Response(jsonEncode(executeResponse), 200));
 
         // Create test transaction
         final transaction = PaymasterInvokeTransaction(
@@ -180,13 +187,15 @@ void main() {
           any,
           headers: anyNamed('headers'),
           body: argThat(contains('paymaster_buildTypedData'), named: 'body'),
-        )).thenAnswer((_) async => http.Response(jsonEncode(buildTypedDataResponse), 200));
+        )).thenAnswer((_) async =>
+            http.Response(jsonEncode(buildTypedDataResponse), 200));
 
         when(mockHttpClient.post(
           any,
           headers: anyNamed('headers'),
           body: argThat(contains('paymaster_execute'), named: 'body'),
-        )).thenAnswer((_) async => http.Response(jsonEncode(executeResponse), 200));
+        )).thenAnswer(
+            (_) async => http.Response(jsonEncode(executeResponse), 200));
 
         // Create test transaction
         final transaction = PaymasterInvokeTransaction(
@@ -205,7 +214,8 @@ void main() {
         // Execute ERC-20 transaction
         final result = await client.executeErc20Transaction(
           transaction: transaction,
-          gasTokenAddress: Address.fromHex('0x049d36570d4e46f48e99674bd3fcc84644ddd6b96f7c741b1562b82f9e004dc7'),
+          gasTokenAddress: Address.fromHex(
+              '0x049d36570d4e46f48e99674bd3fcc84644ddd6b96f7c741b1562b82f9e004dc7'),
           maxGasTokenAmount: '3000000000000000000',
           signTypedData: (typedData) async {
             return [
@@ -246,8 +256,15 @@ void main() {
           any,
           headers: anyNamed('headers'),
           body: anyNamed('body'),
-        )).thenAnswer((_) async => http.Response(jsonEncode(activeResponse), 200))
-            .thenAnswer((_) async => http.Response(jsonEncode(acceptedResponse), 200));
+        )).thenAnswer(
+            (_) async => http.Response(jsonEncode(activeResponse), 200));
+
+        when(mockHttpClient.post(
+          any,
+          headers: anyNamed('headers'),
+          body: anyNamed('body'),
+        )).thenAnswer(
+            (_) async => http.Response(jsonEncode(acceptedResponse), 200));
 
         final trackingId = TrackingId('track-123');
 
@@ -276,7 +293,8 @@ void main() {
           any,
           headers: anyNamed('headers'),
           body: anyNamed('body'),
-        )).thenAnswer((_) async => http.Response(jsonEncode(droppedResponse), 200));
+        )).thenAnswer(
+            (_) async => http.Response(jsonEncode(droppedResponse), 200));
 
         final trackingId = TrackingId('track-456');
 
@@ -301,7 +319,8 @@ void main() {
           any,
           headers: anyNamed('headers'),
           body: anyNamed('body'),
-        )).thenAnswer((_) async => http.Response(jsonEncode(errorResponse), 200));
+        )).thenAnswer(
+            (_) async => http.Response(jsonEncode(errorResponse), 200));
 
         final transaction = PaymasterInvokeTransaction(
           invoke: PaymasterInvoke(
@@ -333,7 +352,8 @@ void main() {
           any,
           headers: anyNamed('headers'),
           body: anyNamed('body'),
-        )).thenAnswer((_) async => http.Response(jsonEncode(errorResponse), 200));
+        )).thenAnswer(
+            (_) async => http.Response(jsonEncode(errorResponse), 200));
 
         expect(
           () => client.getSupportedTokensAndPrices(),

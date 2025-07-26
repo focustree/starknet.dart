@@ -252,7 +252,8 @@ class MockClient extends _i1.Mock implements _i3.Client {
           #send,
           [request],
         ),
-        returnValue: _i4.Future<_i3.StreamedResponse>.value(_FakeStreamedResponse_1(
+        returnValue:
+            _i4.Future<_i3.StreamedResponse>.value(_FakeStreamedResponse_1(
           this,
           Invocation.method(
             #send,

@@ -1,5 +1,5 @@
 /// End-to-end tests for SNIP-29 Paymaster SDK
-/// 
+///
 /// These tests run against actual paymaster services and require network access.
 /// They are disabled by default and should be run manually with proper configuration.
 @TestOn('vm')
@@ -17,7 +17,7 @@ void main() {
       // 2. Valid API keys
       // 3. Test accounts with proper setup
       return;
-      
+
       final config = PaymasterConfig.avnu(
         network: 'sepolia',
         // Add your API key here for testing
@@ -32,14 +32,15 @@ void main() {
 
     test('service availability check', () async {
       final isAvailable = await client.isAvailable();
-      expect(isAvailable, isTrue, reason: 'Paymaster service should be available');
+      expect(isAvailable, isTrue,
+          reason: 'Paymaster service should be available');
     }, skip: 'E2E test - enable manually');
 
     test('get supported tokens', () async {
       final tokens = await client.getSupportedTokensAndPrices();
-      
+
       expect(tokens, isNotEmpty, reason: 'Should have supported tokens');
-      
+
       // Verify token data structure
       for (final token in tokens) {
         expect(token.address.value.value, startsWith('0x'));
@@ -48,7 +49,7 @@ void main() {
         expect(token.decimals, greaterThan(0));
         expect(token.priceInStrk, isNotEmpty);
       }
-      
+
       // Should have common tokens
       final symbols = tokens.map((t) => t.symbol.toUpperCase()).toList();
       expect(symbols, contains('ETH'));
@@ -163,13 +164,18 @@ void main() {
 PaymasterInvokeTransaction _createTestTransaction() {
   return PaymasterInvokeTransaction(
     invoke: PaymasterInvoke(
-      senderAddress: Address.fromHex('0x01cf4d57ba01109f018dec3ea079a38fc08b789e03de4df937ddb9e8a0ff853a'),
+      senderAddress: Address.fromHex(
+          '0x01cf4d57ba01109f018dec3ea079a38fc08b789e03de4df937ddb9e8a0ff853a'),
       calls: [
         Call(
-          contractAddress: Address.fromHex('0x049d36570d4e46f48e99674bd3fcc84644ddd6b96f7c741b1562b82f9e004dc7'),
-          entryPointSelector: Felt.fromHex('0x83afd3f4caedc6eebf44246fe54e38c95e3179a5ec9ea81740eca5b482d12e'),
+          contractAddress: Address.fromHex(
+              '0x049d36570d4e46f48e99674bd3fcc84644ddd6b96f7c741b1562b82f9e004dc7'),
+          entryPointSelector: Felt.fromHex(
+              '0x83afd3f4caedc6eebf44246fe54e38c95e3179a5ec9ea81740eca5b482d12e'),
           calldata: [
-            Address.fromHex('0x01cf4d57ba01109f018dec3ea079a38fc08b789e03de4df937ddb9e8a0ff853a').value,
+            Address.fromHex(
+                    '0x01cf4d57ba01109f018dec3ea079a38fc08b789e03de4df937ddb9e8a0ff853a')
+                .value,
             Felt.fromInt(1000000000000000), // 0.001 ETH
             Felt.fromInt(0),
           ],

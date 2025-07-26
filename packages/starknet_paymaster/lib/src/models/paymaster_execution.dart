@@ -9,13 +9,13 @@ part 'paymaster_execution.g.dart';
 class PaymasterExecution {
   @JsonKey(name: 'fee_mode')
   final PaymasterFeeMode feeMode;
-  
+
   @JsonKey(name: 'gas_token_address')
   final Address? gasTokenAddress;
-  
+
   @JsonKey(name: 'max_gas_token_amount')
   final String? maxGasTokenAmount;
-  
+
   @JsonKey(name: 'time_bounds')
   final TimeBounds? timeBounds;
 

@@ -46,7 +46,9 @@ class ClassHashNotSupportedException extends PaymasterException {
 /// Exception for transaction execution errors
 class TransactionExecutionException extends PaymasterException {
   const TransactionExecutionException(String message, {dynamic data})
-      : super(message, errorCode: PaymasterErrorCode.transactionExecutionError, data: data);
+      : super(message,
+            errorCode: PaymasterErrorCode.transactionExecutionError,
+            data: data);
 }
 
 /// Exception for invalid time bounds
@@ -87,5 +89,6 @@ class PaymasterNetworkException extends PaymasterException {
       : super(message);
 
   @override
-  String toString() => 'PaymasterNetworkException: $message${statusCode != null ? ' (HTTP $statusCode)' : ''}';
+  String toString() =>
+      'PaymasterNetworkException: $message${statusCode != null ? ' (HTTP $statusCode)' : ''}';
 }

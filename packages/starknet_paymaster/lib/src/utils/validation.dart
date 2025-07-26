@@ -10,7 +10,7 @@ class PaymasterValidation {
     if (!value.startsWith('0x')) return false;
     final hex = value.substring(2);
     if (hex.isEmpty) return false;
-    
+
     // Check if it's valid hexadecimal
     try {
       BigInt.parse(hex, radix: 16);
@@ -23,7 +23,7 @@ class PaymasterValidation {
   /// Validate an address
   static bool isValidAddress(String address) {
     if (!isValidFelt(address)) return false;
-    
+
     // Starknet addresses should be valid field elements
     // Additional validation could be added here
     return true;
@@ -52,11 +52,13 @@ class PaymasterValidation {
   }
 
   /// Validate invoke transaction
-  static void _validateInvokeTransaction(PaymasterInvokeTransaction transaction) {
+  static void _validateInvokeTransaction(
+      PaymasterInvokeTransaction transaction) {
     final invoke = transaction.invoke;
-    
+
     if (!isValidAddress(invoke.senderAddress.value.value)) {
-      throw InvalidAddressException('Invalid sender address: ${invoke.senderAddress}');
+      throw InvalidAddressException(
+          'Invalid sender address: ${invoke.senderAddress}');
     }
 
     if (invoke.calls.isEmpty) {
@@ -69,15 +71,18 @@ class PaymasterValidation {
   }
 
   /// Validate deploy transaction
-  static void _validateDeployTransaction(PaymasterDeployTransaction transaction) {
+  static void _validateDeployTransaction(
+      PaymasterDeployTransaction transaction) {
     final deployment = transaction.deployment;
-    
+
     if (!isValidAddress(deployment.address.value.value)) {
-      throw InvalidAddressException('Invalid deployment address: ${deployment.address}');
+      throw InvalidAddressException(
+          'Invalid deployment address: ${deployment.address}');
     }
 
     if (!isValidFelt(deployment.classHash.value)) {
-      throw InvalidClassHashException('Invalid class hash: ${deployment.classHash}');
+      throw InvalidClassHashException(
+          'Invalid class hash: ${deployment.classHash}');
     }
 
     if (!isValidFelt(deployment.salt.value)) {
@@ -90,19 +95,24 @@ class PaymasterValidation {
   }
 
   /// Validate deploy and invoke transaction
-  static void _validateDeployAndInvokeTransaction(PaymasterDeployAndInvokeTransaction transaction) {
-    _validateDeployTransaction(PaymasterDeployTransaction(deployment: transaction.deployment));
-    _validateInvokeTransaction(PaymasterInvokeTransaction(invoke: transaction.invoke));
+  static void _validateDeployAndInvokeTransaction(
+      PaymasterDeployAndInvokeTransaction transaction) {
+    _validateDeployTransaction(
+        PaymasterDeployTransaction(deployment: transaction.deployment));
+    _validateInvokeTransaction(
+        PaymasterInvokeTransaction(invoke: transaction.invoke));
   }
 
   /// Validate a call
   static void _validateCall(Call call) {
     if (!isValidAddress(call.contractAddress.value.value)) {
-      throw InvalidAddressException('Invalid contract address: ${call.contractAddress}');
+      throw InvalidAddressException(
+          'Invalid contract address: ${call.contractAddress}');
     }
 
     if (!isValidFelt(call.entryPointSelector.value)) {
-      throw ArgumentError('Invalid entry point selector: ${call.entryPointSelector}');
+      throw ArgumentError(
+          'Invalid entry point selector: ${call.entryPointSelector}');
     }
 
     for (final data in call.calldata) {
@@ -120,19 +130,24 @@ class PaymasterValidation {
         break;
       case PaymasterFeeMode.erc20:
         if (execution.gasTokenAddress == null) {
-          throw ArgumentError('Gas token address is required for ERC-20 fee mode');
+          throw ArgumentError(
+              'Gas token address is required for ERC-20 fee mode');
         }
-        if (execution.maxGasTokenAmount == null || execution.maxGasTokenAmount!.isEmpty) {
-          throw ArgumentError('Max gas token amount is required for ERC-20 fee mode');
+        if (execution.maxGasTokenAmount == null ||
+            execution.maxGasTokenAmount!.isEmpty) {
+          throw ArgumentError(
+              'Max gas token amount is required for ERC-20 fee mode');
         }
         if (!isValidAddress(execution.gasTokenAddress!.value.value)) {
-          throw InvalidAddressException('Invalid gas token address: ${execution.gasTokenAddress}');
+          throw InvalidAddressException(
+              'Invalid gas token address: ${execution.gasTokenAddress}');
         }
         // Validate amount is a valid number
         try {
           BigInt.parse(execution.maxGasTokenAmount!);
         } catch (e) {
-          throw ArgumentError('Invalid max gas token amount: ${execution.maxGasTokenAmount}');
+          throw ArgumentError(
+              'Invalid max gas token amount: ${execution.maxGasTokenAmount}');
         }
         break;
     }
@@ -146,17 +161,18 @@ class PaymasterValidation {
   /// Validate time bounds
   static void _validateTimeBounds(TimeBounds timeBounds) {
     final now = DateTime.now().millisecondsSinceEpoch ~/ 1000;
-    
+
     if (timeBounds.validFrom != null && timeBounds.validFrom! > now + 3600) {
-      throw InvalidTimeBoundsException('Valid from time is too far in the future');
+      throw InvalidTimeBoundsException(
+          'Valid from time is too far in the future');
     }
 
     if (timeBounds.validUntil != null && timeBounds.validUntil! <= now) {
       throw InvalidTimeBoundsException('Valid until time is in the past');
     }
 
-    if (timeBounds.validFrom != null && 
-        timeBounds.validUntil != null && 
+    if (timeBounds.validFrom != null &&
+        timeBounds.validUntil != null &&
         timeBounds.validFrom! >= timeBounds.validUntil!) {
       throw InvalidTimeBoundsException('Valid from must be before valid until');
     }
@@ -169,12 +185,14 @@ class PaymasterValidation {
     }
 
     if (signature.length < 2) {
-      throw InvalidSignatureException('Signature must have at least r and s components');
+      throw InvalidSignatureException(
+          'Signature must have at least r and s components');
     }
 
     for (final component in signature) {
       if (!isValidFelt(component.value)) {
-        throw InvalidSignatureException('Invalid signature component: ${component.value}');
+        throw InvalidSignatureException(
+            'Invalid signature component: ${component.value}');
       }
     }
   }
@@ -199,7 +217,8 @@ class PaymasterValidation {
 
     // Validate that primary type exists in types
     if (!typedData.types.containsKey(typedData.primaryType)) {
-      throw ArgumentError('Primary type "${typedData.primaryType}" not found in types');
+      throw ArgumentError(
+          'Primary type "${typedData.primaryType}" not found in types');
     }
   }
 }

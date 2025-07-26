@@ -11,7 +11,7 @@ part 'paymaster_response.g.dart';
 class PaymasterBuildTypedDataResponse {
   @JsonKey(name: 'typed_data')
   final TypedData typedData;
-  
+
   @JsonKey(name: 'fee_estimate')
   final PaymasterFeeEstimate feeEstimate;
 
@@ -23,7 +23,8 @@ class PaymasterBuildTypedDataResponse {
   factory PaymasterBuildTypedDataResponse.fromJson(Map<String, dynamic> json) =>
       _$PaymasterBuildTypedDataResponseFromJson(json);
 
-  Map<String, dynamic> toJson() => _$PaymasterBuildTypedDataResponseToJson(this);
+  Map<String, dynamic> toJson() =>
+      _$PaymasterBuildTypedDataResponseToJson(this);
 }
 
 /// Response from paymaster_execute
@@ -31,7 +32,7 @@ class PaymasterBuildTypedDataResponse {
 class PaymasterExecuteResponse {
   @JsonKey(name: 'tracking_id')
   final TrackingId trackingId;
-  
+
   @JsonKey(name: 'transaction_hash')
   final TransactionHash transactionHash;
 
@@ -51,7 +52,7 @@ class PaymasterExecuteResponse {
 class PaymasterTrackingResponse {
   @JsonKey(name: 'transaction_hash')
   final TransactionHash transactionHash;
-  
+
   final PaymasterExecutionStatus status;
 
   const PaymasterTrackingResponse({

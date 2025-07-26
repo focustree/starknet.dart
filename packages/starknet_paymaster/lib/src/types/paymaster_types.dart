@@ -1,6 +1,6 @@
 /// Core paymaster types for SNIP-29 API
 import 'package:json_annotation/json_annotation.dart';
-import 'package:starknet/starknet.dart'; // Import SNIP-9 OutsideExecutionCall
+import 'package:starknet_provider/starknet_provider.dart'; // Import core types
 import 'felt.dart';
 import 'address.dart';
 import 'transaction_hash.dart';
@@ -36,9 +36,26 @@ enum PaymasterTransactionType {
   deployAndInvoke,
 }
 
-// Note: Using SNIP-9's OutsideExecutionCallV2 instead of custom Call implementation
-// This leverages existing SNIP-9 functionality rather than duplicating it
-typedef Call = OutsideExecutionCallV2;
+/// Call data for contract invocation
+@JsonSerializable()
+class Call {
+  @JsonKey(name: 'contract_address')
+  final Address contractAddress;
+
+  @JsonKey(name: 'entry_point_selector')
+  final Felt entryPointSelector;
+
+  final List<Felt> calldata;
+
+  const Call({
+    required this.contractAddress,
+    required this.entryPointSelector,
+    required this.calldata,
+  });
+
+  factory Call.fromJson(Map<String, dynamic> json) => _$CallFromJson(json);
+  Map<String, dynamic> toJson() => _$CallToJson(this);
+}
 
 /// Token data with pricing information
 @JsonSerializable()
@@ -47,7 +64,7 @@ class TokenData {
   final String symbol;
   final String name;
   final int decimals;
-  
+
   @JsonKey(name: 'price_in_strk')
   final String priceInStrk;
 
@@ -59,7 +76,8 @@ class TokenData {
     required this.priceInStrk,
   });
 
-  factory TokenData.fromJson(Map<String, dynamic> json) => _$TokenDataFromJson(json);
+  factory TokenData.fromJson(Map<String, dynamic> json) =>
+      _$TokenDataFromJson(json);
   Map<String, dynamic> toJson() => _$TokenDataToJson(this);
 }
 
@@ -68,7 +86,7 @@ class TokenData {
 class TimeBounds {
   @JsonKey(name: 'valid_from')
   final int? validFrom;
-  
+
   @JsonKey(name: 'valid_until')
   final int? validUntil;
 
@@ -77,8 +95,7 @@ class TimeBounds {
     this.validUntil,
   });
 
-  factory TimeBounds.fromJson(Map<String, dynamic> json) => _$TimeBoundsFromJson(json);
+  factory TimeBounds.fromJson(Map<String, dynamic> json) =>
+      _$TimeBoundsFromJson(json);
   Map<String, dynamic> toJson() => _$TimeBoundsToJson(this);
 }
-
-

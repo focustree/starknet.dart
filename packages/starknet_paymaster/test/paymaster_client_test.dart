@@ -1,9 +1,14 @@
 /// Unit tests for PaymasterClient
+@TestOn('vm')
+@Tags(['unit'])
 import 'package:test/test.dart';
 import 'package:mockito/mockito.dart';
 import 'package:mockito/annotations.dart';
 import 'package:http/http.dart' as http;
-import 'package:starknet_paymaster/starknet_paymaster.dart';
+import '../lib/src/paymaster_client.dart';
+import '../lib/src/models/models.dart';
+import '../lib/src/types/types.dart';
+import '../lib/src/exceptions/exceptions.dart';
 import 'dart:convert';
 
 import 'paymaster_client_test.mocks.dart';
@@ -35,7 +40,7 @@ void main() {
           'id': '1',
           'result': true,
         });
-        
+
         when(mockHttpClient.post(
           any,
           headers: anyNamed('headers'),
@@ -56,7 +61,7 @@ void main() {
           'id': '1',
           'result': false,
         });
-        
+
         when(mockHttpClient.post(
           any,
           headers: anyNamed('headers'),
@@ -94,14 +99,16 @@ void main() {
           'id': '1',
           'result': [
             {
-              'address': '0x049d36570d4e46f48e99674bd3fcc84644ddd6b96f7c741b1562b82f9e004dc7',
+              'address':
+                  '0x049d36570d4e46f48e99674bd3fcc84644ddd6b96f7c741b1562b82f9e004dc7',
               'symbol': 'ETH',
               'name': 'Ethereum',
               'decimals': 18,
               'price_in_strk': '1000000000000000000',
             },
             {
-              'address': '0x04718f5a0fc34cc1af16a1cdee98ffb20c31f5cd61d6ab07201858f4287c938d',
+              'address':
+                  '0x04718f5a0fc34cc1af16a1cdee98ffb20c31f5cd61d6ab07201858f4287c938d',
               'symbol': 'STRK',
               'name': 'Starknet Token',
               'decimals': 18,
@@ -109,7 +116,7 @@ void main() {
             },
           ],
         });
-        
+
         when(mockHttpClient.post(
           any,
           headers: anyNamed('headers'),
@@ -196,7 +203,7 @@ void main() {
             },
           },
         });
-        
+
         when(mockHttpClient.post(
           any,
           headers: anyNamed('headers'),
@@ -216,7 +223,8 @@ void main() {
     });
 
     group('error handling', () {
-      test('throws InvalidAddressException for invalid address error', () async {
+      test('throws InvalidAddressException for invalid address error',
+          () async {
         // Arrange
         final responseBody = jsonEncode({
           'jsonrpc': '2.0',
@@ -226,7 +234,7 @@ void main() {
             'message': 'An error occurred (INVALID_ADDRESS)',
           },
         });
-        
+
         when(mockHttpClient.post(
           any,
           headers: anyNamed('headers'),

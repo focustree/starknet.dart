@@ -41,7 +41,8 @@ TimeBounds _$TimeBoundsFromJson(Map<String, dynamic> json) => TimeBounds(
       validUntil: json['valid_until'] as int?,
     );
 
-Map<String, dynamic> _$TimeBoundsToJson(TimeBounds instance) => <String, dynamic>{
+Map<String, dynamic> _$TimeBoundsToJson(TimeBounds instance) =>
+    <String, dynamic>{
       'valid_from': instance.validFrom,
       'valid_until': instance.validUntil,
     };

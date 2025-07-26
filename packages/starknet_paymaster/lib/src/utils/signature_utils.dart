@@ -36,8 +36,8 @@ class SignatureUtils {
   /// Verify typed data structure
   static bool isValidTypedData(TypedData typedData) {
     return typedData.types.isNotEmpty &&
-           typedData.primaryType.isNotEmpty &&
-           typedData.domain.isNotEmpty &&
-           typedData.message.isNotEmpty;
+        typedData.primaryType.isNotEmpty &&
+        typedData.domain.isNotEmpty &&
+        typedData.message.isNotEmpty;
   }
 }

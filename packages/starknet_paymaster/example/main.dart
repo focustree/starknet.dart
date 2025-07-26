@@ -1,5 +1,5 @@
 /// Example usage of the Starknet Paymaster SDK
-/// 
+///
 /// This example demonstrates how to use the SNIP-29 compliant paymaster SDK
 /// to execute gasless transactions and transactions with ERC-20 fee payments.
 import 'package:starknet_paymaster/starknet_paymaster.dart';
@@ -16,7 +16,7 @@ Future<void> runPaymasterExample() async {
     network: 'sepolia',
     apiKey: 'your-api-key-here', // Optional, get from AVNU
   );
-  
+
   final paymaster = PaymasterClient(config);
 
   try {
@@ -41,7 +41,8 @@ Future<void> runPaymasterExample() async {
 
     // 3. Create a sample transaction
     final transaction = createSampleTransaction();
-    print('📝 Created sample transaction with ${transaction.invoke.calls.length} calls\n');
+    print(
+        '📝 Created sample transaction with ${transaction.invoke.calls.length} calls\n');
 
     // 4. Get fee estimate for sponsored transaction
     print('💸 Getting fee estimate for sponsored transaction...');
@@ -62,10 +63,9 @@ Future<void> runPaymasterExample() async {
       (token) => token.symbol.toUpperCase() == 'ETH',
       orElse: () => tokens.first,
     );
-    
+
     print('💳 Executing ERC-20 transaction with ${ethToken.symbol}...');
     await executeErc20Transaction(paymaster, transaction, ethToken);
-
   } catch (e) {
     print('❌ Error: $e');
   } finally {
@@ -79,13 +79,18 @@ Future<void> runPaymasterExample() async {
 PaymasterInvokeTransaction createSampleTransaction() {
   return PaymasterInvokeTransaction(
     invoke: PaymasterInvoke(
-      senderAddress: Address.fromHex('0x01cf4d57ba01109f018dec3ea079a38fc08b789e03de4df937ddb9e8a0ff853a'),
+      senderAddress: Address.fromHex(
+          '0x01cf4d57ba01109f018dec3ea079a38fc08b789e03de4df937ddb9e8a0ff853a'),
       calls: [
         Call(
-          contractAddress: Address.fromHex('0x049d36570d4e46f48e99674bd3fcc84644ddd6b96f7c741b1562b82f9e004dc7'),
-          entryPointSelector: Felt.fromHex('0x83afd3f4caedc6eebf44246fe54e38c95e3179a5ec9ea81740eca5b482d12e'),
+          contractAddress: Address.fromHex(
+              '0x049d36570d4e46f48e99674bd3fcc84644ddd6b96f7c741b1562b82f9e004dc7'),
+          entryPointSelector: Felt.fromHex(
+              '0x83afd3f4caedc6eebf44246fe54e38c95e3179a5ec9ea81740eca5b482d12e'),
           calldata: [
-            Address.fromHex('0x01cf4d57ba01109f018dec3ea079a38fc08b789e03de4df937ddb9e8a0ff853a').value,
+            Address.fromHex(
+                    '0x01cf4d57ba01109f018dec3ea079a38fc08b789e03de4df937ddb9e8a0ff853a')
+                .value,
             Felt.fromInt(1000000000000000), // 0.001 ETH
             Felt.fromInt(0),
           ],
@@ -106,7 +111,9 @@ Future<void> executeSponsoredTransaction(
       signTypedData: mockSignTypedData,
       timeBounds: TimeBounds(
         validFrom: DateTime.now().millisecondsSinceEpoch ~/ 1000,
-        validUntil: DateTime.now().add(Duration(hours: 1)).millisecondsSinceEpoch ~/ 1000,
+        validUntil:
+            DateTime.now().add(Duration(hours: 1)).millisecondsSinceEpoch ~/
+                1000,
       ),
     );
 
@@ -116,7 +123,6 @@ Future<void> executeSponsoredTransaction(
 
     // Track the transaction
     await trackTransaction(paymaster, result.trackingId);
-
   } on PaymasterException catch (e) {
     print('❌ Paymaster error: ${e.message}');
     if (e.errorCode != null) {
@@ -133,8 +139,9 @@ Future<void> executeErc20Transaction(
 ) async {
   try {
     // Calculate max gas token amount (with some buffer)
-    final maxAmount = BigInt.parse(gasToken.priceInStrk) * BigInt.from(2); // 2x buffer
-    
+    final maxAmount =
+        BigInt.parse(gasToken.priceInStrk) * BigInt.from(2); // 2x buffer
+
     final result = await paymaster.executeErc20Transaction(
       transaction: transaction,
       gasTokenAddress: gasToken.address,
@@ -149,16 +156,16 @@ Future<void> executeErc20Transaction(
 
     // Track the transaction
     await trackTransaction(paymaster, result.trackingId);
-
   } on PaymasterException catch (e) {
     print('❌ Paymaster error: ${e.message}');
   }
 }
 
 /// Track a transaction until completion
-Future<void> trackTransaction(PaymasterClient paymaster, TrackingId trackingId) async {
+Future<void> trackTransaction(
+    PaymasterClient paymaster, TrackingId trackingId) async {
   print('🔍 Tracking transaction...');
-  
+
   try {
     final result = await paymaster.waitForTransaction(
       trackingId,
@@ -180,7 +187,7 @@ Future<void> trackTransaction(PaymasterClient paymaster, TrackingId trackingId) 
     }
   } catch (e) {
     print('⚠️  Tracking timeout or error: $e');
-    
+
     // Get current status
     try {
       final status = await paymaster.trackingIdToLatestHash(trackingId);
@@ -190,7 +197,7 @@ Future<void> trackTransaction(PaymasterClient paymaster, TrackingId trackingId) 
       print('   Could not get current status: $e');
     }
   }
-  
+
   print('');
 }
 
@@ -199,11 +206,13 @@ Future<void> trackTransaction(PaymasterClient paymaster, TrackingId trackingId) 
 Future<List<Felt>> mockSignTypedData(TypedData typedData) async {
   print('📝 Signing typed data (mock implementation)');
   print('   Primary type: ${typedData.primaryType}');
-  
+
   // Return mock signature (r, s components)
   // In real usage, you would sign the typed data hash with your private key
   return [
-    Felt.fromHex('0x1234567890abcdef1234567890abcdef1234567890abcdef1234567890abcdef'),
-    Felt.fromHex('0xfedcba0987654321fedcba0987654321fedcba0987654321fedcba0987654321'),
+    Felt.fromHex(
+        '0x1234567890abcdef1234567890abcdef1234567890abcdef1234567890abcdef'),
+    Felt.fromHex(
+        '0xfedcba0987654321fedcba0987654321fedcba0987654321fedcba0987654321'),
   ];
 }

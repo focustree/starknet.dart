@@ -1,6 +1,10 @@
 /// Unit tests for SNIP-29 Paymaster SDK
+@TestOn('vm')
+@Tags(['unit'])
 import 'package:test/test.dart';
-import 'package:starknet_paymaster/starknet_paymaster.dart';
+import '../lib/src/paymaster_client.dart';
+import '../lib/src/models/models.dart';
+import '../lib/src/types/types.dart';
 
 void main() {
   group('Starknet Paymaster SDK', () {

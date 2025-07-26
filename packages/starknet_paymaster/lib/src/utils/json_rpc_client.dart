@@ -43,7 +43,8 @@ class JsonRpcResponse {
       jsonrpc: json['jsonrpc'],
       id: json['id'],
       result: json['result'],
-      error: json['error'] != null ? JsonRpcError.fromJson(json['error']) : null,
+      error:
+          json['error'] != null ? JsonRpcError.fromJson(json['error']) : null,
     );
   }
 
@@ -129,7 +130,7 @@ class JsonRpcClient {
   /// Convert JSON-RPC error to appropriate PaymasterException
   void _throwPaymasterException(JsonRpcError error) {
     final errorCode = PaymasterErrorCode.fromCode(error.code);
-    
+
     switch (errorCode) {
       case PaymasterErrorCode.invalidAddress:
         throw InvalidAddressException(error.message);

@@ -8,25 +8,25 @@ part 'paymaster_fee_estimate.g.dart';
 class PaymasterFeeEstimate {
   @JsonKey(name: 'overall_fee')
   final String overallFee;
-  
+
   @JsonKey(name: 'gas_consumed')
   final String gasConsumed;
-  
+
   @JsonKey(name: 'gas_price')
   final String gasPrice;
-  
+
   @JsonKey(name: 'data_gas_consumed')
   final String? dataGasConsumed;
-  
+
   @JsonKey(name: 'data_gas_price')
   final String? dataGasPrice;
-  
+
   @JsonKey(name: 'unit')
   final String unit;
-  
+
   @JsonKey(name: 'max_token_amount_estimate')
   final String? maxTokenAmountEstimate;
-  
+
   @JsonKey(name: 'max_token_amount_suggested')
   final String? maxTokenAmountSuggested;
 

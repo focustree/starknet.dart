@@ -1,6 +1,8 @@
 /// Unit tests for core types
+@TestOn('vm')
+@Tags(['unit'])
 import 'package:test/test.dart';
-import 'package:starknet_paymaster/starknet_paymaster.dart';
+import '../lib/src/types/types.dart';
 
 void main() {
   group('Felt', () {
@@ -41,8 +43,12 @@ void main() {
 
   group('Address', () {
     test('creates from hex string', () {
-      final address = Address.fromHex('0x049d36570d4e46f48e99674bd3fcc84644ddd6b96f7c741b1562b82f9e004dc7');
-      expect(address.value.value, equals('0x049d36570d4e46f48e99674bd3fcc84644ddd6b96f7c741b1562b82f9e004dc7'));
+      final address = Address.fromHex(
+          '0x049d36570d4e46f48e99674bd3fcc84644ddd6b96f7c741b1562b82f9e004dc7');
+      expect(
+          address.value.value,
+          equals(
+              '0x049d36570d4e46f48e99674bd3fcc84644ddd6b96f7c741b1562b82f9e004dc7'));
     });
 
     test('serializes to JSON', () {
@@ -95,7 +101,7 @@ void main() {
         gasTokenAddress: tokenAddress,
         maxGasTokenAmount: '1000000000000000000',
       );
-      
+
       expect(execution.feeMode, equals(PaymasterFeeMode.erc20));
       expect(execution.gasTokenAddress, equals(tokenAddress));
       expect(execution.maxGasTokenAmount, equals('1000000000000000000'));
@@ -107,7 +113,7 @@ void main() {
         validUntil: 2000,
       );
       final execution = PaymasterExecution.sponsored(timeBounds: timeBounds);
-      
+
       expect(execution.timeBounds, equals(timeBounds));
     });
   });

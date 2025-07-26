@@ -72,11 +72,13 @@ class PaymasterDeployAndInvokeTransaction extends PaymasterTransaction {
     required this.invoke,
   });
 
-  factory PaymasterDeployAndInvokeTransaction.fromJson(Map<String, dynamic> json) =>
+  factory PaymasterDeployAndInvokeTransaction.fromJson(
+          Map<String, dynamic> json) =>
       _$PaymasterDeployAndInvokeTransactionFromJson(json);
 
   @override
-  Map<String, dynamic> toJson() => _$PaymasterDeployAndInvokeTransactionToJson(this);
+  Map<String, dynamic> toJson() =>
+      _$PaymasterDeployAndInvokeTransactionToJson(this);
 }
 
 /// Invoke data for paymaster transactions
@@ -84,7 +86,7 @@ class PaymasterDeployAndInvokeTransaction extends PaymasterTransaction {
 class PaymasterInvoke {
   @JsonKey(name: 'sender_address')
   final Address senderAddress;
-  
+
   final List<Call> calls;
 
   const PaymasterInvoke({
@@ -102,14 +104,14 @@ class PaymasterInvoke {
 @JsonSerializable()
 class PaymasterDeployment {
   final Address address;
-  
+
   @JsonKey(name: 'class_hash')
   final Felt classHash;
-  
+
   final Felt salt;
   final List<Felt> calldata;
   final int version;
-  
+
   @JsonKey(name: 'sigdata')
   final List<Felt>? sigData;
 

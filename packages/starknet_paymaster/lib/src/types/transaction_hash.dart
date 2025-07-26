@@ -16,7 +16,8 @@ class TransactionHash {
   }
 
   /// Creates a TransactionHash from JSON
-  factory TransactionHash.fromJson(String json) => TransactionHash(Felt.fromJson(json));
+  factory TransactionHash.fromJson(String json) =>
+      TransactionHash(Felt.fromJson(json));
 
   /// Converts to JSON
   String toJson() => value.toJson();
@@ -26,7 +27,8 @@ class TransactionHash {
 
   @override
   bool operator ==(Object other) =>
-      identical(this, other) || other is TransactionHash && value == other.value;
+      identical(this, other) ||
+      other is TransactionHash && value == other.value;
 
   @override
   int get hashCode => value.hashCode;
