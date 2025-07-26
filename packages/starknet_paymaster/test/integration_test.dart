@@ -9,12 +9,16 @@ void main() {
       // Test that Call type works with our current implementation
       final call = Call(
         contractAddress: Address.fromHex('0x1234567890abcdef'),
-        entryPointSelector: Felt.fromHex('0x83afd3f4caedc6eebf44246fe54e38c95e3179a5ec9ea81740eca5b482d12e'),
+        entryPointSelector: Felt.fromHex(
+            '0x83afd3f4caedc6eebf44246fe54e38c95e3179a5ec9ea81740eca5b482d12e'),
         calldata: [Felt.fromInt(1), Felt.fromInt(2)],
       );
-      
+
       expect(call.contractAddress.value.value, equals('0x1234567890abcdef'));
-      expect(call.entryPointSelector.value, equals('0x83afd3f4caedc6eebf44246fe54e38c95e3179a5ec9ea81740eca5b482d12e'));
+      expect(
+          call.entryPointSelector.value,
+          equals(
+              '0x83afd3f4caedc6eebf44246fe54e38c95e3179a5ec9ea81740eca5b482d12e'));
       expect(call.calldata.length, equals(2));
       expect(call.calldata[0].value, equals('0x1'));
       expect(call.calldata[1].value, equals('0x2'));
@@ -43,7 +47,7 @@ void main() {
 
       expect(typedData.primaryType, equals('TestType'));
       expect(typedData.message['value'], equals('0x123'));
-      
+
       print('✅ TypedData works correctly');
     });
 

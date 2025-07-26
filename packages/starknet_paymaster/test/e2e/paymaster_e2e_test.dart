@@ -139,28 +139,3 @@ void main() {
     });
   });
 }
-
-/// Create a test transaction for E2E testing
-PaymasterInvokeTransaction _createTestTransaction() {
-  return PaymasterInvokeTransaction(
-    invoke: PaymasterInvoke(
-      senderAddress: Address.fromHex(
-          '0x01cf4d57ba01109f018dec3ea079a38fc08b789e03de4df937ddb9e8a0ff853a'),
-      calls: [
-        Call(
-          contractAddress: Address.fromHex(
-              '0x049d36570d4e46f48e99674bd3fcc84644ddd6b96f7c741b1562b82f9e004dc7'),
-          entryPointSelector: Felt.fromHex(
-              '0x83afd3f4caedc6eebf44246fe54e38c95e3179a5ec9ea81740eca5b482d12e'),
-          calldata: [
-            Address.fromHex(
-                    '0x01cf4d57ba01109f018dec3ea079a38fc08b789e03de4df937ddb9e8a0ff853a')
-                .value,
-            Felt.fromInt(1000000000000000), // 0.001 ETH
-            Felt.fromInt(0),
-          ],
-        ),
-      ],
-    ),
-  );
-}
