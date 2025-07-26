@@ -284,7 +284,7 @@ void main() {
 
       // Assert
       expect(config.nodeUrl, equals('https://sepolia.paymaster.avnu.fi'));
-      expect(config.headers?.containsKey('x-paymaster-api-key'), isFalse);
+      expect(config.headers?.containsKey('api-key'), isFalse);
     });
   });
 }
