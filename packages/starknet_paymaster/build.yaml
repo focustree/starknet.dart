@@ -1,0 +1,13 @@
+targets:
+  $default:
+    builders:
+      json_serializable:
+        options:
+          # Creates `toJson()` and `fromJson()` methods
+          explicit_to_json: true
+          # Creates nullable-aware code
+          nullable: true
+          # Generates checked methods for better error messages
+          checked: true
+          # Creates constructor with named parameters
+          constructor_name: ""
