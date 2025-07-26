@@ -27,7 +27,7 @@ class PaymasterConfig {
   }) {
     final headers = <String, String>{};
     if (apiKey != null) {
-      headers['x-paymaster-api-key'] = apiKey;
+      headers['api-key'] = apiKey;
     }
 
     return PaymasterConfig(
@@ -56,7 +56,7 @@ class PaymasterClient {
   Future<bool> isAvailable() async {
     try {
       final result = await _rpcClient.call('paymaster_isAvailable', []);
-      return result as bool;
+      return result is bool ? result : false;
     } catch (e) {
       return false;
     }
@@ -69,8 +69,12 @@ class PaymasterClient {
   Future<List<TokenData>> getSupportedTokensAndPrices() async {
     final result =
         await _rpcClient.call('paymaster_getSupportedTokensAndPrices', []);
-    final tokenList = result as List<dynamic>;
-    return tokenList.map((token) => TokenData.fromJson(token)).toList();
+    try {
+      if (result is List) {
+        return result.map((token) => TokenData.fromJson(token)).toList();
+      }
+    } catch (_) {}
+    return <TokenData>[];
   }
 
   /// Track execution request by tracking ID

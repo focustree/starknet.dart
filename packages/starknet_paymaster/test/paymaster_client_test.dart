@@ -275,7 +275,7 @@ void main() {
 
       // Assert
       expect(config.nodeUrl, equals('https://mainnet.paymaster.avnu.fi'));
-      expect(config.headers?['x-paymaster-api-key'], equals('test-key'));
+      expect(config.headers!['api-key'], equals('test-key'));
     });
 
     test('creates AVNU config without API key', () {

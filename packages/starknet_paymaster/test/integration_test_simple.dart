@@ -1,7 +1,6 @@
 /// Simple integration test to verify SNIP-29 Paymaster SDK functionality
 import 'package:test/test.dart';
-import '../lib/src/types/types.dart';
-import '../lib/src/models/models.dart';
+import 'package:starknet_paymaster/starknet_paymaster.dart';
 
 void main() {
   group('SNIP-29 Paymaster SDK Integration Tests', () {
@@ -13,7 +12,7 @@ void main() {
         calldata: [Felt.fromInt(1), Felt.fromInt(2)],
       );
       
-      expect(call.contractAddress.value, equals('0x1234567890abcdef'));
+      expect(call.contractAddress.value.value, equals('0x1234567890abcdef'));
       expect(call.entryPointSelector.value, equals('0x83afd3f4caedc6eebf44246fe54e38c95e3179a5ec9ea81740eca5b482d12e'));
       expect(call.calldata.length, equals(2));
       
