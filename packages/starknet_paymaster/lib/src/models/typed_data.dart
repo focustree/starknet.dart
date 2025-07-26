@@ -1,6 +1,5 @@
 /// Typed data models for SNIP-29 API - leveraging existing SNIP-12 implementation
 import 'package:json_annotation/json_annotation.dart';
-import 'package:starknet_provider/starknet_provider.dart'; // Import Felt and other core types
 import '../types/types.dart';
 
 part 'typed_data.g.dart';

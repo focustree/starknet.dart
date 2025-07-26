@@ -4,7 +4,6 @@
 /// This script performs static analysis and validation without requiring compilation
 
 import 'dart:io';
-import 'dart:convert';
 
 void main() async {
   print('🧪 SNIP-29 Paymaster SDK - Comprehensive Test Validation');

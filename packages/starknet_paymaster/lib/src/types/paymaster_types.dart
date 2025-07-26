@@ -1,10 +1,7 @@
 /// Core paymaster types for SNIP-29 API
 import 'package:json_annotation/json_annotation.dart';
-import 'package:starknet_provider/starknet_provider.dart'; // Import core types
 import 'felt.dart';
 import 'address.dart';
-import 'transaction_hash.dart';
-import 'tracking_id.dart';
 
 part 'paymaster_types.g.dart';
 

@@ -1,10 +1,8 @@
 /// SNIP-29 compliant Paymaster client for Starknet Dart applications
 import 'dart:async';
 import 'package:http/http.dart' as http;
-import 'package:starknet_provider/starknet_provider.dart'; // Import core types
 import 'types/types.dart';
 import 'models/models.dart';
-import 'exceptions/exceptions.dart';
 import 'utils/utils.dart';
 
 /// Configuration for PaymasterClient
@@ -42,14 +40,13 @@ class PaymasterConfig {
 
 /// SNIP-29 compliant Paymaster client
 class PaymasterClient {
-  final PaymasterConfig _config;
   final JsonRpcClient _rpcClient;
 
-  PaymasterClient(this._config)
+  PaymasterClient(PaymasterConfig config)
       : _rpcClient = JsonRpcClient(
-          baseUrl: _config.nodeUrl,
-          headers: _config.headers,
-          httpClient: _config.httpClient,
+          baseUrl: config.nodeUrl,
+          headers: config.headers,
+          httpClient: config.httpClient,
         );
 
   /// Check if the paymaster service is available

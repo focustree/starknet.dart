@@ -3,6 +3,7 @@
 @Tags(['unit'])
 import 'package:test/test.dart';
 import '../lib/src/types/types.dart';
+import '../lib/src/models/models.dart';
 
 void main() {
   group('Felt', () {

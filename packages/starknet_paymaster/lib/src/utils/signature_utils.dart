@@ -1,6 +1,5 @@
-/// Signature utilities for SNIP-29 Paymaster API
+/// Signature utilities for SNIP-29 Paymaster SDK
 import 'dart:convert';
-import 'dart:typed_data';
 import 'package:crypto/crypto.dart';
 import '../types/types.dart';
 import '../models/models.dart';

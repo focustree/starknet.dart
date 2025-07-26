@@ -58,7 +58,7 @@ const _$PaymasterExecutionStatusEnumMap = {
 };
 
 T $enumDecode<T>(
-  Map<T, Object> enumValues,
+  Map<T, String> enumValues,
   Object? source, {
   T? unknownValue,
 }) {
@@ -78,7 +78,7 @@ T $enumDecode<T>(
           '${enumValues.values.join(', ')}',
         );
       }
-      return MapEntry(unknownValue, source!);
+      return MapEntry(unknownValue, source!.toString());
     },
   ).key;
 }
