@@ -1,7 +1,7 @@
 /// Core paymaster types for SNIP-29 API
+import 'package:starknet/starknet.dart';
 import 'package:json_annotation/json_annotation.dart';
-import 'felt.dart';
-import 'address.dart';
+import '../utils/converters.dart';
 
 part 'paymaster_types.g.dart';
 
@@ -37,7 +37,7 @@ enum PaymasterTransactionType {
 @JsonSerializable()
 class Call {
   @JsonKey(name: 'contract_address')
-  final Address contractAddress;
+  final Felt contractAddress;
 
   @JsonKey(name: 'entry_point_selector')
   final Felt entryPointSelector;
@@ -57,7 +57,7 @@ class Call {
 /// Token data with pricing information
 @JsonSerializable()
 class TokenData {
-  final Address address;
+  final Felt address;
   final String symbol;
   final String name;
   final int decimals;

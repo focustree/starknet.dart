@@ -8,10 +8,22 @@ part of 'paymaster_response.dart';
 
 PaymasterBuildTypedDataResponse _$PaymasterBuildTypedDataResponseFromJson(
         Map<String, dynamic> json) =>
-    PaymasterBuildTypedDataResponse(
-      typedData: TypedData.fromJson(json['typed_data'] as Map<String, dynamic>),
-      feeEstimate: PaymasterFeeEstimate.fromJson(
-          json['fee_estimate'] as Map<String, dynamic>),
+    $checkedCreate(
+      'PaymasterBuildTypedDataResponse',
+      json,
+      ($checkedConvert) {
+        final val = PaymasterBuildTypedDataResponse(
+          typedData: $checkedConvert('typed_data',
+              (v) => TypedData.fromJson(v as Map<String, dynamic>)),
+          feeEstimate: $checkedConvert('fee_estimate',
+              (v) => PaymasterFeeEstimate.fromJson(v as Map<String, dynamic>)),
+        );
+        return val;
+      },
+      fieldKeyMap: const {
+        'typedData': 'typed_data',
+        'feeEstimate': 'fee_estimate'
+      },
     );
 
 Map<String, dynamic> _$PaymasterBuildTypedDataResponseToJson(
@@ -23,10 +35,22 @@ Map<String, dynamic> _$PaymasterBuildTypedDataResponseToJson(
 
 PaymasterExecuteResponse _$PaymasterExecuteResponseFromJson(
         Map<String, dynamic> json) =>
-    PaymasterExecuteResponse(
-      trackingId: TrackingId.fromJson(json['tracking_id'] as String),
-      transactionHash:
-          TransactionHash.fromJson(json['transaction_hash'] as String),
+    $checkedCreate(
+      'PaymasterExecuteResponse',
+      json,
+      ($checkedConvert) {
+        final val = PaymasterExecuteResponse(
+          trackingId: $checkedConvert(
+              'tracking_id', (v) => TrackingId.fromJson(v as String)),
+          transactionHash: $checkedConvert(
+              'transaction_hash', (v) => Felt.fromJson(v as String)),
+        );
+        return val;
+      },
+      fieldKeyMap: const {
+        'trackingId': 'tracking_id',
+        'transactionHash': 'transaction_hash'
+      },
     );
 
 Map<String, dynamic> _$PaymasterExecuteResponseToJson(
@@ -38,10 +62,19 @@ Map<String, dynamic> _$PaymasterExecuteResponseToJson(
 
 PaymasterTrackingResponse _$PaymasterTrackingResponseFromJson(
         Map<String, dynamic> json) =>
-    PaymasterTrackingResponse(
-      transactionHash:
-          TransactionHash.fromJson(json['transaction_hash'] as String),
-      status: $enumDecode(_$PaymasterExecutionStatusEnumMap, json['status']),
+    $checkedCreate(
+      'PaymasterTrackingResponse',
+      json,
+      ($checkedConvert) {
+        final val = PaymasterTrackingResponse(
+          transactionHash: $checkedConvert(
+              'transaction_hash', (v) => Felt.fromJson(v as String)),
+          status: $checkedConvert('status',
+              (v) => $enumDecode(_$PaymasterExecutionStatusEnumMap, v)),
+        );
+        return val;
+      },
+      fieldKeyMap: const {'transactionHash': 'transaction_hash'},
     );
 
 Map<String, dynamic> _$PaymasterTrackingResponseToJson(
@@ -56,29 +89,3 @@ const _$PaymasterExecutionStatusEnumMap = {
   PaymasterExecutionStatus.accepted: 'accepted',
   PaymasterExecutionStatus.dropped: 'dropped',
 };
-
-T $enumDecode<T>(
-  Map<T, String> enumValues,
-  Object? source, {
-  T? unknownValue,
-}) {
-  if (source == null) {
-    throw ArgumentError(
-      'A value must be provided. Supported values: '
-      '${enumValues.values.join(', ')}',
-    );
-  }
-
-  return enumValues.entries.singleWhere(
-    (e) => e.value == source,
-    orElse: () {
-      if (unknownValue == null) {
-        throw ArgumentError(
-          '`$source` is not one of the supported values: '
-          '${enumValues.values.join(', ')}',
-        );
-      }
-      return MapEntry(unknownValue, source!.toString());
-    },
-  ).key;
-}

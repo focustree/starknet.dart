@@ -8,8 +8,17 @@ part of 'paymaster_transaction.dart';
 
 PaymasterInvokeTransaction _$PaymasterInvokeTransactionFromJson(
         Map<String, dynamic> json) =>
-    PaymasterInvokeTransaction(
-      invoke: PaymasterInvoke.fromJson(json['invoke'] as Map<String, dynamic>),
+    $checkedCreate(
+      'PaymasterInvokeTransaction',
+      json,
+      ($checkedConvert) {
+        final val = PaymasterInvokeTransaction(
+          type: $checkedConvert('type', (v) => v as String? ?? 'invoke'),
+          invoke: $checkedConvert('invoke',
+              (v) => PaymasterInvoke.fromJson(v as Map<String, dynamic>)),
+        );
+        return val;
+      },
     );
 
 Map<String, dynamic> _$PaymasterInvokeTransactionToJson(
@@ -21,41 +30,66 @@ Map<String, dynamic> _$PaymasterInvokeTransactionToJson(
 
 PaymasterDeployTransaction _$PaymasterDeployTransactionFromJson(
         Map<String, dynamic> json) =>
-    PaymasterDeployTransaction(
-      deployment: PaymasterDeployment.fromJson(
-          json['deployment'] as Map<String, dynamic>),
+    $checkedCreate(
+      'PaymasterDeployTransaction',
+      json,
+      ($checkedConvert) {
+        final val = PaymasterDeployTransaction(
+          deployment: $checkedConvert('deployment',
+              (v) => PaymasterDeployment.fromJson(v as Map<String, dynamic>)),
+        );
+        return val;
+      },
     );
 
 Map<String, dynamic> _$PaymasterDeployTransactionToJson(
         PaymasterDeployTransaction instance) =>
     <String, dynamic>{
-      'type': instance.type,
       'deployment': instance.deployment.toJson(),
     };
 
 PaymasterDeployAndInvokeTransaction
     _$PaymasterDeployAndInvokeTransactionFromJson(Map<String, dynamic> json) =>
-        PaymasterDeployAndInvokeTransaction(
-          deployment: PaymasterDeployment.fromJson(
-              json['deployment'] as Map<String, dynamic>),
-          invoke:
-              PaymasterInvoke.fromJson(json['invoke'] as Map<String, dynamic>),
+        $checkedCreate(
+          'PaymasterDeployAndInvokeTransaction',
+          json,
+          ($checkedConvert) {
+            final val = PaymasterDeployAndInvokeTransaction(
+              deployment: $checkedConvert(
+                  'deployment',
+                  (v) =>
+                      PaymasterDeployment.fromJson(v as Map<String, dynamic>)),
+              invoke: $checkedConvert('invoke',
+                  (v) => PaymasterInvoke.fromJson(v as Map<String, dynamic>)),
+            );
+            return val;
+          },
         );
 
 Map<String, dynamic> _$PaymasterDeployAndInvokeTransactionToJson(
         PaymasterDeployAndInvokeTransaction instance) =>
     <String, dynamic>{
-      'type': instance.type,
       'deployment': instance.deployment.toJson(),
       'invoke': instance.invoke.toJson(),
     };
 
 PaymasterInvoke _$PaymasterInvokeFromJson(Map<String, dynamic> json) =>
-    PaymasterInvoke(
-      senderAddress: Address.fromJson(json['sender_address'] as String),
-      calls: (json['calls'] as List<dynamic>)
-          .map((e) => Call.fromJson(e as Map<String, dynamic>))
-          .toList(),
+    $checkedCreate(
+      'PaymasterInvoke',
+      json,
+      ($checkedConvert) {
+        final val = PaymasterInvoke(
+          senderAddress: $checkedConvert(
+              'sender_address', (v) => Felt.fromJson(v as String)),
+          calls: $checkedConvert(
+              'calls',
+              (v) => (v as List<dynamic>)
+                  .map((e) => Call.fromJson(e as Map<String, dynamic>))
+                  .toList()),
+        );
+        return val;
+      },
+      fieldKeyMap: const {'senderAddress': 'sender_address'},
     );
 
 Map<String, dynamic> _$PaymasterInvokeToJson(PaymasterInvoke instance) =>
@@ -65,17 +99,31 @@ Map<String, dynamic> _$PaymasterInvokeToJson(PaymasterInvoke instance) =>
     };
 
 PaymasterDeployment _$PaymasterDeploymentFromJson(Map<String, dynamic> json) =>
-    PaymasterDeployment(
-      address: Address.fromJson(json['address'] as String),
-      classHash: Felt.fromJson(json['class_hash'] as String),
-      salt: Felt.fromJson(json['salt'] as String),
-      calldata: (json['calldata'] as List<dynamic>)
-          .map((e) => Felt.fromJson(e as String))
-          .toList(),
-      version: json['version'] as int,
-      sigData: (json['sigdata'] as List<dynamic>?)
-          ?.map((e) => Felt.fromJson(e as String))
-          .toList(),
+    $checkedCreate(
+      'PaymasterDeployment',
+      json,
+      ($checkedConvert) {
+        final val = PaymasterDeployment(
+          address:
+              $checkedConvert('address', (v) => Felt.fromJson(v as String)),
+          classHash:
+              $checkedConvert('class_hash', (v) => Felt.fromJson(v as String)),
+          salt: $checkedConvert('salt', (v) => Felt.fromJson(v as String)),
+          calldata: $checkedConvert(
+              'calldata',
+              (v) => (v as List<dynamic>)
+                  .map((e) => Felt.fromJson(e as String))
+                  .toList()),
+          version: $checkedConvert('version', (v) => (v as num).toInt()),
+          sigData: $checkedConvert(
+              'sigdata',
+              (v) => (v as List<dynamic>?)
+                  ?.map((e) => Felt.fromJson(e as String))
+                  .toList()),
+        );
+        return val;
+      },
+      fieldKeyMap: const {'classHash': 'class_hash', 'sigData': 'sigdata'},
     );
 
 Map<String, dynamic> _$PaymasterDeploymentToJson(

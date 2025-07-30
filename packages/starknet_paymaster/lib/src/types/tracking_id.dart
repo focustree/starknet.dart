@@ -1,6 +1,8 @@
 /// Tracking ID type for paymaster execution requests
 import 'package:json_annotation/json_annotation.dart';
 
+part 'tracking_id.g.dart';
+
 /// A unique identifier used to track an execution request of a user.
 /// This identifier is returned by the paymaster after a successful call to `execute`.
 /// Its purpose is to track the possibly different transaction hashes in the mempool

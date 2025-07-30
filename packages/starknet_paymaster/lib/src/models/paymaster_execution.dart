@@ -1,6 +1,14 @@
 /// Paymaster execution parameters for SNIP-29 API
+/// 
+/// Based on SNIP-29 Paymaster API specification:
+/// https://github.com/starknet-io/SNIPs/blob/main/SNIPS/snip-29.md
+/// 
+/// AVNU-specific implementation reference:
+/// https://doc.avnu.fi/avnu-paymaster/integration/guides-and-examples
+import 'package:starknet/starknet.dart';
 import 'package:json_annotation/json_annotation.dart';
 import '../types/types.dart';
+import '../utils/converters.dart';
 
 part 'paymaster_execution.g.dart';
 
@@ -10,13 +18,13 @@ class PaymasterExecution {
   @JsonKey(name: 'fee_mode')
   final PaymasterFeeMode feeMode;
 
-  @JsonKey(name: 'gas_token_address')
-  final Address? gasTokenAddress;
+  @JsonKey(name: 'gas_token_address', includeIfNull: false)
+  final Felt? gasTokenAddress;
 
-  @JsonKey(name: 'max_gas_token_amount')
+  @JsonKey(name: 'max_gas_token_amount', includeIfNull: false)
   final String? maxGasTokenAmount;
 
-  @JsonKey(name: 'time_bounds')
+  @JsonKey(name: 'time_bounds', includeIfNull: false)
   final TimeBounds? timeBounds;
 
   const PaymasterExecution({
@@ -43,7 +51,7 @@ class PaymasterExecution {
 
   /// Create an ERC-20 token execution
   factory PaymasterExecution.erc20({
-    required Address gasTokenAddress,
+    required Felt gasTokenAddress,
     required String maxGasTokenAmount,
     TimeBounds? timeBounds,
   }) {

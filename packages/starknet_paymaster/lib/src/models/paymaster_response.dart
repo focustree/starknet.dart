@@ -1,8 +1,15 @@
-/// Response models for SNIP-29 API
+/// Response models for SNIP-29 Paymaster API
+/// 
+/// Based on SNIP-29 Paymaster API specification:
+/// https://github.com/starknet-io/SNIPs/blob/main/SNIPS/snip-29.md
+/// 
+/// AVNU-specific implementation reference:
+/// https://doc.avnu.fi/avnu-paymaster/integration/guides-and-examples
+import 'package:starknet/starknet.dart';
 import 'package:json_annotation/json_annotation.dart';
 import '../types/types.dart';
+import '../utils/converters.dart';
 import 'paymaster_fee_estimate.dart';
-import 'typed_data.dart';
 
 part 'paymaster_response.g.dart';
 
@@ -34,7 +41,7 @@ class PaymasterExecuteResponse {
   final TrackingId trackingId;
 
   @JsonKey(name: 'transaction_hash')
-  final TransactionHash transactionHash;
+  final Felt transactionHash;
 
   const PaymasterExecuteResponse({
     required this.trackingId,
@@ -51,7 +58,7 @@ class PaymasterExecuteResponse {
 @JsonSerializable()
 class PaymasterTrackingResponse {
   @JsonKey(name: 'transaction_hash')
-  final TransactionHash transactionHash;
+  final Felt transactionHash;
 
   final PaymasterExecutionStatus status;
 

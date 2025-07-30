@@ -7,52 +7,44 @@ part of 'paymaster_execution.dart';
 // **************************************************************************
 
 PaymasterExecution _$PaymasterExecutionFromJson(Map<String, dynamic> json) =>
-    PaymasterExecution(
-      feeMode: $enumDecode(_$PaymasterFeeModeEnumMap, json['fee_mode']),
-      gasTokenAddress: json['gas_token_address'] == null
-          ? null
-          : Address.fromJson(json['gas_token_address'] as String),
-      maxGasTokenAmount: json['max_gas_token_amount'] as String?,
-      timeBounds: json['time_bounds'] == null
-          ? null
-          : TimeBounds.fromJson(json['time_bounds'] as Map<String, dynamic>),
+    $checkedCreate(
+      'PaymasterExecution',
+      json,
+      ($checkedConvert) {
+        final val = PaymasterExecution(
+          feeMode: $checkedConvert(
+              'fee_mode', (v) => $enumDecode(_$PaymasterFeeModeEnumMap, v)),
+          gasTokenAddress: $checkedConvert('gas_token_address',
+              (v) => v == null ? null : Felt.fromJson(v as String)),
+          maxGasTokenAmount:
+              $checkedConvert('max_gas_token_amount', (v) => v as String?),
+          timeBounds: $checkedConvert(
+              'time_bounds',
+              (v) => v == null
+                  ? null
+                  : TimeBounds.fromJson(v as Map<String, dynamic>)),
+        );
+        return val;
+      },
+      fieldKeyMap: const {
+        'feeMode': 'fee_mode',
+        'gasTokenAddress': 'gas_token_address',
+        'maxGasTokenAmount': 'max_gas_token_amount',
+        'timeBounds': 'time_bounds'
+      },
     );
 
 Map<String, dynamic> _$PaymasterExecutionToJson(PaymasterExecution instance) =>
     <String, dynamic>{
       'fee_mode': _$PaymasterFeeModeEnumMap[instance.feeMode]!,
-      'gas_token_address': instance.gasTokenAddress?.toJson(),
-      'max_gas_token_amount': instance.maxGasTokenAmount,
-      'time_bounds': instance.timeBounds?.toJson(),
+      if (instance.gasTokenAddress?.toJson() case final value?)
+        'gas_token_address': value,
+      if (instance.maxGasTokenAmount case final value?)
+        'max_gas_token_amount': value,
+      if (instance.timeBounds?.toJson() case final value?) 'time_bounds': value,
     };
 
 const _$PaymasterFeeModeEnumMap = {
   PaymasterFeeMode.sponsored: 'sponsored',
   PaymasterFeeMode.erc20: 'erc20',
 };
-
-T $enumDecode<T>(
-  Map<T, Object> enumValues,
-  Object? source, {
-  T? unknownValue,
-}) {
-  if (source == null) {
-    throw ArgumentError(
-      'A value must be provided. Supported values: '
-      '${enumValues.values.join(', ')}',
-    );
-  }
-
-  return enumValues.entries.singleWhere(
-    (e) => e.value == source,
-    orElse: () {
-      if (unknownValue == null) {
-        throw ArgumentError(
-          '`$source` is not one of the supported values: '
-          '${enumValues.values.join(', ')}',
-        );
-      }
-      return MapEntry(unknownValue, source!);
-    },
-  ).key;
-}

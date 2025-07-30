@@ -1,11 +1,12 @@
 /// Paymaster transaction models for SNIP-29 API
+import 'package:starknet/starknet.dart';
 import 'package:json_annotation/json_annotation.dart';
 import '../types/types.dart';
+import '../utils/converters.dart';
 
 part 'paymaster_transaction.g.dart';
 
 /// Base class for paymaster transactions
-@JsonSerializable()
 abstract class PaymasterTransaction {
   const PaymasterTransaction();
 
@@ -29,10 +30,12 @@ abstract class PaymasterTransaction {
 /// Invoke transaction for paymaster
 @JsonSerializable()
 class PaymasterInvokeTransaction extends PaymasterTransaction {
-  final String type = 'invoke';
+  @JsonKey()
+  final String type;
   final PaymasterInvoke invoke;
 
   const PaymasterInvokeTransaction({
+    this.type = 'invoke',
     required this.invoke,
   });
 
@@ -85,7 +88,7 @@ class PaymasterDeployAndInvokeTransaction extends PaymasterTransaction {
 @JsonSerializable()
 class PaymasterInvoke {
   @JsonKey(name: 'sender_address')
-  final Address senderAddress;
+  final Felt senderAddress;
 
   final List<Call> calls;
 
@@ -103,7 +106,7 @@ class PaymasterInvoke {
 /// Deployment data for paymaster transactions
 @JsonSerializable()
 class PaymasterDeployment {
-  final Address address;
+  final Felt address;
 
   @JsonKey(name: 'class_hash')
   final Felt classHash;

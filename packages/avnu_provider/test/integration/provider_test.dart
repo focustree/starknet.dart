@@ -25,10 +25,6 @@ void removeNullFields(Map<String, dynamic> json) {
 }
 
 void main() {
-  // Check if AVNU_RPC environment variable is set
-  final env = Platform.environment;
-  final hasAvnuRpc = env['AVNU_RPC'] != null;
-  
   group('AvnuProvider', () {
     late AvnuProvider avnuProvider;
 
@@ -48,9 +44,6 @@ void main() {
     );
 
     setUp(() {
-      if (!hasAvnuRpc) {
-        return; // Skip provider setup when AVNU_RPC not set
-      }
       final apiKey = '3fe427af-1c19-4126-8570-4e3adba3a043';
       final publicKey = BigInt.parse(
           "0429c489be63b21c399353e03a9659cfc1650b24bae1e9ebdde0aef2b38deb44",
@@ -60,10 +53,6 @@ void main() {
 
     group('execute', () {
       test('avnu execute transaction', () async {
-        if (!hasAvnuRpc) {
-          markTestSkipped('AVNU_RPC environment variable not set');
-          return;
-        }
         final userAddress = sepoliaAccount0.accountAddress.toHexString();
         final calls = [
           {

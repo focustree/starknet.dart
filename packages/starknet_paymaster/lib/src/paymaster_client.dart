@@ -1,6 +1,9 @@
 /// SNIP-29 compliant Paymaster client for Starknet Dart applications
 import 'dart:async';
+import 'dart:convert';
 import 'package:http/http.dart' as http;
+import 'package:starknet/starknet.dart';
+import 'package:starknet_paymaster/src/models/paymaster_request.dart';
 import 'types/types.dart';
 import 'models/models.dart';
 import 'utils/utils.dart';
@@ -95,10 +98,9 @@ class PaymasterClient {
     required PaymasterTransaction transaction,
     required PaymasterExecution execution,
   }) async {
-    final result = await _rpcClient.call('paymaster_buildTypedData', [
-      transaction.toJson(),
-      execution.toJson(),
-    ]);
+    final params = [transaction.toJson(), execution.toJson()];
+    print('[Paymaster SDK DEBUG] buildTypedData params: ' + params.toString());
+    final result = await _rpcClient.call('paymaster_buildTypedData', params);
     return PaymasterBuildTypedDataResponse.fromJson(result);
   }
 
@@ -165,7 +167,7 @@ class PaymasterClient {
   /// an ERC-20 token instead of ETH/STRK.
   Future<PaymasterExecuteResponse> executeErc20Transaction({
     required PaymasterTransaction transaction,
-    required Address gasTokenAddress,
+    required Felt gasTokenAddress,
     required String maxGasTokenAmount,
     required Future<List<Felt>> Function(TypedData typedData) signTypedData,
     TimeBounds? timeBounds,

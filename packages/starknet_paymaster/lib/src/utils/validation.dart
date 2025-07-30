@@ -1,4 +1,5 @@
 /// Validation utilities for SNIP-29 Paymaster API
+import 'package:starknet/starknet.dart';
 import '../types/types.dart';
 import '../models/models.dart';
 import '../exceptions/exceptions.dart';
@@ -56,7 +57,7 @@ class PaymasterValidation {
       PaymasterInvokeTransaction transaction) {
     final invoke = transaction.invoke;
 
-    if (!isValidAddress(invoke.senderAddress.value.value)) {
+    if (!isValidAddress(invoke.senderAddress.toHexString())) {
       throw InvalidAddressException(
           'Invalid sender address: ${invoke.senderAddress}');
     }
@@ -75,17 +76,17 @@ class PaymasterValidation {
       PaymasterDeployTransaction transaction) {
     final deployment = transaction.deployment;
 
-    if (!isValidAddress(deployment.address.value.value)) {
+    if (!isValidAddress(deployment.address.toHexString())) {
       throw InvalidAddressException(
           'Invalid deployment address: ${deployment.address}');
     }
 
-    if (!isValidFelt(deployment.classHash.value)) {
+    if (!isValidFelt(deployment.classHash.toHexString())) {
       throw InvalidClassHashException(
           'Invalid class hash: ${deployment.classHash}');
     }
 
-    if (!isValidFelt(deployment.salt.value)) {
+    if (!isValidFelt(deployment.salt.toHexString())) {
       throw ArgumentError('Invalid salt: ${deployment.salt}');
     }
 
@@ -105,18 +106,18 @@ class PaymasterValidation {
 
   /// Validate a call
   static void _validateCall(Call call) {
-    if (!isValidAddress(call.contractAddress.value.value)) {
+    if (!isValidAddress(call.contractAddress.toHexString())) {
       throw InvalidAddressException(
           'Invalid contract address: ${call.contractAddress}');
     }
 
-    if (!isValidFelt(call.entryPointSelector.value)) {
+    if (!isValidFelt(call.entryPointSelector.toHexString())) {
       throw ArgumentError(
           'Invalid entry point selector: ${call.entryPointSelector}');
     }
 
     for (final data in call.calldata) {
-      if (!isValidFelt(data.value)) {
+      if (!isValidFelt(data.toHexString())) {
         throw ArgumentError('Invalid calldata element: $data');
       }
     }
@@ -138,7 +139,7 @@ class PaymasterValidation {
           throw ArgumentError(
               'Max gas token amount is required for ERC-20 fee mode');
         }
-        if (!isValidAddress(execution.gasTokenAddress!.value.value)) {
+        if (!isValidAddress(execution.gasTokenAddress!.toHexString())) {
           throw InvalidAddressException(
               'Invalid gas token address: ${execution.gasTokenAddress}');
         }
@@ -190,9 +191,9 @@ class PaymasterValidation {
     }
 
     for (final component in signature) {
-      if (!isValidFelt(component.value)) {
+      if (!isValidFelt(component.toHexString())) {
         throw InvalidSignatureException(
-            'Invalid signature component: ${component.value}');
+            'Invalid signature component: ${component.toHexString()}');
       }
     }
   }
@@ -207,7 +208,7 @@ class PaymasterValidation {
       throw ArgumentError('Types cannot be empty');
     }
 
-    if (typedData.domain.isEmpty) {
+    if (typedData.domain.name.isEmpty) {
       throw ArgumentError('Domain cannot be empty');
     }
 

@@ -8,15 +8,34 @@ part of 'paymaster_fee_estimate.dart';
 
 PaymasterFeeEstimate _$PaymasterFeeEstimateFromJson(
         Map<String, dynamic> json) =>
-    PaymasterFeeEstimate(
-      overallFee: json['overall_fee'] as String,
-      gasConsumed: json['gas_consumed'] as String,
-      gasPrice: json['gas_price'] as String,
-      dataGasConsumed: json['data_gas_consumed'] as String?,
-      dataGasPrice: json['data_gas_price'] as String?,
-      unit: json['unit'] as String,
-      maxTokenAmountEstimate: json['max_token_amount_estimate'] as String?,
-      maxTokenAmountSuggested: json['max_token_amount_suggested'] as String?,
+    $checkedCreate(
+      'PaymasterFeeEstimate',
+      json,
+      ($checkedConvert) {
+        final val = PaymasterFeeEstimate(
+          overallFee: $checkedConvert('overall_fee', (v) => v as String),
+          gasConsumed: $checkedConvert('gas_consumed', (v) => v as String),
+          gasPrice: $checkedConvert('gas_price', (v) => v as String),
+          dataGasConsumed:
+              $checkedConvert('data_gas_consumed', (v) => v as String?),
+          dataGasPrice: $checkedConvert('data_gas_price', (v) => v as String?),
+          unit: $checkedConvert('unit', (v) => v as String),
+          maxTokenAmountEstimate:
+              $checkedConvert('max_token_amount_estimate', (v) => v as String?),
+          maxTokenAmountSuggested: $checkedConvert(
+              'max_token_amount_suggested', (v) => v as String?),
+        );
+        return val;
+      },
+      fieldKeyMap: const {
+        'overallFee': 'overall_fee',
+        'gasConsumed': 'gas_consumed',
+        'gasPrice': 'gas_price',
+        'dataGasConsumed': 'data_gas_consumed',
+        'dataGasPrice': 'data_gas_price',
+        'maxTokenAmountEstimate': 'max_token_amount_estimate',
+        'maxTokenAmountSuggested': 'max_token_amount_suggested'
+      },
     );
 
 Map<String, dynamic> _$PaymasterFeeEstimateToJson(

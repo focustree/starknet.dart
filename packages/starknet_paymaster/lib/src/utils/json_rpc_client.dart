@@ -98,13 +98,16 @@ class JsonRpcClient {
     );
 
     try {
+      final requestBody = jsonEncode(request.toJson());
+      print('[Paymaster SDK DEBUG] HTTP request body: ' + requestBody);
       final response = await _httpClient.post(
         Uri.parse(baseUrl),
         headers: headers,
-        body: jsonEncode(request.toJson()),
+        body: requestBody,
       );
 
       if (response.statusCode != 200) {
+        print('[Paymaster SDK DEBUG] HTTP ${response.statusCode} response body: ${response.body}');
         throw PaymasterNetworkException(
           'HTTP ${response.statusCode}: ${response.reasonPhrase}',
           statusCode: response.statusCode,
