@@ -1,8 +1,8 @@
 /// Paymaster execution parameters for SNIP-29 API
-/// 
+///
 /// Based on SNIP-29 Paymaster API specification:
 /// https://github.com/starknet-io/SNIPs/blob/main/SNIPS/snip-29.md
-/// 
+///
 /// AVNU-specific implementation reference:
 /// https://doc.avnu.fi/avnu-paymaster/integration/guides-and-examples
 import 'package:starknet/starknet.dart';

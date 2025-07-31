@@ -44,15 +44,21 @@ void main() {
     );
 
     setUp(() {
-      final apiKey = '3fe427af-1c19-4126-8570-4e3adba3a043';
-      final publicKey = BigInt.parse(
-          "0429c489be63b21c399353e03a9659cfc1650b24bae1e9ebdde0aef2b38deb44",
-          radix: 16);
-      avnuProvider = getAvnuProvider(publicKey: publicKey, apiKey: apiKey);
+      if (hasAvnuRpc) {
+        final apiKey = '3fe427af-1c19-4126-8570-4e3adba3a043';
+        final publicKey = BigInt.parse(
+            "0429c489be63b21c399353e03a9659cfc1650b24bae1e9ebdde0aef2b38deb44",
+            radix: 16);
+        avnuProvider = getAvnuProvider(publicKey: publicKey, apiKey: apiKey);
+      }
     });
 
     group('execute', () {
       test('avnu execute transaction', () async {
+        if (!hasAvnuRpc) {
+          markTestSkipped('AVNU_RPC environment variable not set');
+          return;
+        }
         final userAddress = sepoliaAccount0.accountAddress.toHexString();
         final calls = [
           {

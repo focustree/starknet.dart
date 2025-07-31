@@ -35,7 +35,8 @@ void main() {
         ),
       );
       final provider = JsonRpcProvider(
-        nodeUri: Uri.parse('https://starknet-sepolia.public.blastapi.io/rpc/v0_7'),
+        nodeUri:
+            Uri.parse('https://starknet-sepolia.public.blastapi.io/rpc/v0_7'),
       );
       account = Account(
         provider: provider,
@@ -49,7 +50,8 @@ void main() {
       paymasterClient.dispose();
     });
 
-    test('buildTypedData returns a valid typed data and can be executed', () async {
+    test('buildTypedData returns a valid typed data and can be executed',
+        () async {
       final tx = PaymasterInvoke(
         senderAddress: account.accountAddress,
         calls: [
@@ -58,7 +60,8 @@ void main() {
             entryPointSelector: starknetKeccak(ascii.encode('approve')),
             calldata: [
               avnuSepoliaContractAddress,
-              ...Uint256(low: Felt.fromInt(10000), high: Felt.fromInt(0)).toCalldata(),
+              ...Uint256(low: Felt.fromInt(10000), high: Felt.fromInt(0))
+                  .toCalldata(),
             ],
           ),
         ],
@@ -67,12 +70,15 @@ void main() {
       final execution = PaymasterExecution.sponsored();
 
       // Use AVNU-specific buildTypedData API
-      final avnuCalls = tx.calls.map((call) => {
-        'contract_address': call.contractAddress.toHexString(),
-        'entry_point_selector': call.entryPointSelector.toHexString(),
-        'calldata': call.calldata.map((felt) => felt.toHexString()).toList(),
-      }).toList();
-      
+      final avnuCalls = tx.calls
+          .map((call) => {
+                'contract_address': call.contractAddress.toHexString(),
+                'entry_point_selector': call.entryPointSelector.toHexString(),
+                'calldata':
+                    call.calldata.map((felt) => felt.toHexString()).toList(),
+              })
+          .toList();
+
       // Use the existing paymaster client but call AVNU's buildTypedData method directly
       // This should work if the PaymasterClient is configured for AVNU
       try {
@@ -80,18 +86,20 @@ void main() {
           transaction: PaymasterInvokeTransaction(invoke: tx),
           execution: execution,
         );
-        
+
         // If we get here, the original method works
         expect(rawResult.typedData, isA<TypedData>());
         expect(rawResult.feeEstimate, isA<PaymasterFeeEstimate>());
-        print('Integration test passed: PaymasterClient.buildTypedData works correctly');
+        print(
+            'Integration test passed: PaymasterClient.buildTypedData works correctly');
       } catch (e) {
         // If the original method fails, it means we need a different approach
         print('Original buildTypedData failed: $e');
         print('This confirms that AVNU uses a different API structure');
-        
+
         // For now, mark the test as successful since we've confirmed the API incompatibility
-        print('Integration test passed: Confirmed AVNU API structure differences');
+        print(
+            'Integration test passed: Confirmed AVNU API structure differences');
       }
     }, timeout: Timeout(Duration(minutes: 2)));
   });

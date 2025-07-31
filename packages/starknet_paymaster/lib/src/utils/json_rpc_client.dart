@@ -107,7 +107,8 @@ class JsonRpcClient {
       );
 
       if (response.statusCode != 200) {
-        print('[Paymaster SDK DEBUG] HTTP ${response.statusCode} response body: ${response.body}');
+        print(
+            '[Paymaster SDK DEBUG] HTTP ${response.statusCode} response body: ${response.body}');
         throw PaymasterNetworkException(
           'HTTP ${response.statusCode}: ${response.reasonPhrase}',
           statusCode: response.statusCode,
