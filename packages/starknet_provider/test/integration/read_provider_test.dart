@@ -4,6 +4,7 @@ import 'package:test/test.dart';
 
 import '../utils.dart';
 
+@Tags(['integration'])
 void main() {
   group('ReadProvider', () {
     late ReadProvider provider;
