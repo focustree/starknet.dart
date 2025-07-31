@@ -271,6 +271,22 @@ Future<void> main() async {
         );
         final sessionTokenSignature =
             await argentSessionKey.outsideExecutionMessageToken(message);
+        // we set a max fee to avoid raising an exception during fee estimation
+        final maxFee = await account9.getEstimateMaxFeeForInvokeTx(
+          functionCalls: [
+            FunctionCall(
+              contractAddress: accountAddress,
+              entryPointSelector: getSelectorByName('execute_from_outside_v2'),
+              calldata: [
+                // OutsideExecution
+                ...message.toCalldata(),
+                // Signature
+                Felt.fromInt(sessionTokenSignature.length),
+                ...sessionTokenSignature,
+              ],
+            ),
+          ],
+        );
         final outsideTxHash = (await account9.execute(
           functionCalls: [
             FunctionCall(
@@ -285,6 +301,8 @@ Future<void> main() async {
               ],
             ),
           ],
+          l1MaxAmount: maxFee.maxAmount,
+          l1MaxPricePerUnit: maxFee.maxPricePerUnit,
         ))
             .when(
           result: (result) => result.transaction_hash,
@@ -371,6 +389,22 @@ Future<void> main() async {
         );
         final sessionTokenSignature =
             await argentSessionKey.outsideExecutionMessageToken(message);
+        // we set a max fee to avoid raising an exception during fee estimation
+        final maxFee = await account9.getEstimateMaxFeeForInvokeTx(
+          functionCalls: [
+            FunctionCall(
+              contractAddress: accountAddress,
+              entryPointSelector: getSelectorByName('execute_from_outside_v2'),
+              calldata: [
+                // OutsideExecution
+                ...message.toCalldata(),
+                // Signature
+                Felt.fromInt(sessionTokenSignature.length),
+                ...sessionTokenSignature,
+              ],
+            ),
+          ],
+        );
         final outsideTxHash = (await account9.execute(
           functionCalls: [
             FunctionCall(
@@ -385,8 +419,8 @@ Future<void> main() async {
               ],
             ),
           ],
-          max_fee:
-              defaultMaxFee, // we set a max fee to avoid raising an exception during fee estimation
+          l1MaxAmount: maxFee.maxAmount,
+          l1MaxPricePerUnit: maxFee.maxPricePerUnit,
         ))
             .when(
           result: (result) => result.transaction_hash,

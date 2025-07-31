@@ -1,6 +1,7 @@
 import 'package:starknet_provider/starknet_provider.dart';
 
 import '../core/types/index.dart';
+import '../core/crypto/keccak.dart';
 import 'contract.dart';
 
 class ERC20 extends Contract {
@@ -55,9 +56,20 @@ class ERC20 extends Contract {
   ///
   /// Returns transaction hash.
   Future<String> transfer(Felt recipient, Uint256 value) async {
+    final maxFee = await account.getEstimateMaxFeeForInvokeTx(
+      functionCalls: [
+        FunctionCall(
+          contractAddress: address,
+          entryPointSelector: getSelectorByName("transfer"),
+          calldata: [recipient, value.low, value.high],
+        ),
+      ],
+    );
     final InvokeTransactionResponse trx = await execute(
       selector: "transfer",
       calldata: [recipient, value.low, value.high],
+      l1MaxAmount: maxFee.maxAmount,
+      l1MaxPricePerUnit: maxFee.maxPricePerUnit,
     );
     return trx.when(
       result: (result) => result.transaction_hash,

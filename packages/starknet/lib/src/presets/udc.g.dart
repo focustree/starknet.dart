@@ -14,8 +14,6 @@ class Udc extends Contract {
     Felt salt,
     Felt unique,
     List<Felt> calldata,
-    Felt? maxFee,
-    bool? useSTRKFee,
     Felt? l1MaxAmount,
     Felt? l1MaxPricePerUnit,
     Felt? l2MaxAmount,
@@ -35,7 +33,6 @@ class Udc extends Contract {
     final trx = await execute(
       selector: 'deployContract',
       calldata: params,
-      useSTRKFee: useSTRKFee,
       l1MaxAmount: l1MaxAmount,
       l1MaxPricePerUnit: l1MaxPricePerUnit,
       l2MaxAmount: l2MaxAmount,
