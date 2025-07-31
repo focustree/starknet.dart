@@ -1,3 +1,4 @@
+import 'dart:io';
 import 'dart:math';
 
 import 'package:starknet/starknet.dart';
@@ -43,15 +44,21 @@ void main() {
     );
 
     setUp(() {
-      final apiKey = '3fe427af-1c19-4126-8570-4e3adba3a043';
-      final publicKey = BigInt.parse(
-          "0429c489be63b21c399353e03a9659cfc1650b24bae1e9ebdde0aef2b38deb44",
-          radix: 16);
-      avnuProvider = getAvnuProvider(publicKey: publicKey, apiKey: apiKey);
+      if (hasAvnuRpc) {
+        final apiKey = '3fe427af-1c19-4126-8570-4e3adba3a043';
+        final publicKey = BigInt.parse(
+            "0429c489be63b21c399353e03a9659cfc1650b24bae1e9ebdde0aef2b38deb44",
+            radix: 16);
+        avnuProvider = getAvnuProvider(publicKey: publicKey, apiKey: apiKey);
+      }
     });
 
     group('execute', () {
       test('avnu execute transaction', () async {
+        if (!hasAvnuRpc) {
+          markTestSkipped('AVNU_RPC environment variable not set');
+          return;
+        }
         final userAddress = sepoliaAccount0.accountAddress.toHexString();
         final calls = [
           {
@@ -135,6 +142,10 @@ void main() {
       });
 
       test('execute sponsored transaction with sponsor api key', () async {
+        if (!hasAvnuRpc) {
+          markTestSkipped('AVNU_RPC environment variable not set');
+          return;
+        }
         final userAddress = sepoliaAccount0.accountAddress.toHexString();
         final calls = [
           {
@@ -219,6 +230,10 @@ void main() {
 
     group('deploy account', () {
       test('Deploy an account', () async {
+        if (!hasAvnuRpc) {
+          markTestSkipped('AVNU_RPC environment variable not set');
+          return;
+        }
         final guardianPublicKey = Felt.fromHexString(
           '0xab081a04aa836aff73963003892e6403a3a1f229b68bc5cc9739b918910871',
         );
@@ -301,6 +316,10 @@ void main() {
             reason: 'Class hash verification timed out');
       });
       test('Try to deploy an already deploy account', () async {
+        if (!hasAvnuRpc) {
+          markTestSkipped('AVNU_RPC environment variable not set');
+          return;
+        }
         final accountAddress =
             '0x4fb89a10f6b0ecd2a5786e8b70ec76d23fda9777c1da5d66651f8a2630d22dc';
         final publicKey =
@@ -363,6 +382,9 @@ void main() {
     );
 
     setUpAll(() {
+      if (!hasAvnuRpc) {
+        return; // Skip provider setup when AVNU_RPC not set
+      }
       // executed once before all tests
       final apiKey = '3fe427af-1c19-4126-8570-4e3adba3a043';
       final publicKey = BigInt.parse(
@@ -372,6 +394,10 @@ void main() {
     });
 
     test('avnu build typed data error', () async {
+      if (!hasAvnuRpc) {
+        markTestSkipped('AVNU_RPC environment variable not set');
+        return;
+      }
       final userAddress = sepoliaAccount0.accountAddress.toHexString();
       final calls = [
         {

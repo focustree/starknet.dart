@@ -1,0 +1,9 @@
+targets:
+  $default:
+    builders:
+      json_serializable:
+        options:
+          # Creates `toJson()` and `fromJson()` methods
+          explicit_to_json: true
+          # Generates checked methods for better error messages
+          checked: true
