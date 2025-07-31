@@ -1,5 +1,4 @@
 import 'dart:io';
-import 'dart:math';
 
 import 'package:starknet/starknet.dart';
 import 'package:starknet_provider/starknet_provider.dart';
@@ -36,9 +35,7 @@ void main() {
       );
     });
 
-    test(
-        'declare cairo 1 succeeds to declare a simple sierra contract with provided CASM file',
-        () async {
+    test('account setup initializes correctly', () async {
       // Verify account setup
       expect(account.accountAddress, isNotNull);
       expect(account.signer, isNotNull);

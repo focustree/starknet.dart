@@ -12,6 +12,7 @@ void main() {
     late JsonRpcProvider provider;
     late Account account;
     late Felt accountAddress;
+    late Felt salt;
 
     setUpAll(() {
       if (!hasDevnetRpc) {
@@ -27,7 +28,7 @@ void main() {
       provider = JsonRpcProvider(nodeUri: Uri.parse(devnetRpcUrl));
 
       final privateKey = Felt.fromInt(12345);
-      final salt = Felt.fromInt(Random().nextInt(100000));
+      salt = Felt.fromInt(Random().nextInt(100000));
       final classHash = Felt.fromHexString(
           '0x025ec026985a3bf9d0cc1fe17326b245dfdc3ff89b8fde106242a3ea56c5a918');
 
@@ -48,7 +49,7 @@ void main() {
       final tx = await account.deploy(
         classHash: Felt.fromHexString(
             '0x025ec026985a3bf9d0cc1fe17326b245dfdc3ff89b8fde106242a3ea56c5a918'),
-        salt: Felt.fromInt(Random().nextInt(100000)),
+        salt: salt,
         unique: false,
         calldata: [account.signer.publicKey, Felt.zero],
       );
