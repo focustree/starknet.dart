@@ -25,10 +25,11 @@ class GetMessagesStatus with _$GetMessagesStatus {
 
 @JsonSerializable()
 class GetMessagesStatusRequest {
-  final List<Felt> messageHashes;
+  @JsonKey(name: 'transaction_hashes')
+  final List<Felt> transactionHashes;
 
   GetMessagesStatusRequest({
-    required this.messageHashes,
+    required this.transactionHashes,
   });
 
   factory GetMessagesStatusRequest.fromJson(Map<String, dynamic> json) =>
@@ -38,8 +39,11 @@ class GetMessagesStatusRequest {
 
 @JsonSerializable()
 class MessageStatus {
+  @JsonKey(name: 'transaction_hash')
   final Felt transactionHash;
+  @JsonKey(name: 'finality_status')
   final String finalityStatus;
+  @JsonKey(name: 'failure_reason')
   final String? failureReason;
 
   MessageStatus({

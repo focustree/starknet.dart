@@ -9,6 +9,7 @@ export 'deployed_contract_item.dart';
 export 'estimate_fee.dart';
 export 'estimate_message_fee.dart';
 export 'get_messages_status.dart';
+export 'get_storage_proof.dart';
 export 'fee_estimate.dart';
 export 'function_call.dart';
 export 'get_block_txn_count.dart';

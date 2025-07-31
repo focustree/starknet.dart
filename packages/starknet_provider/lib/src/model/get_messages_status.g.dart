@@ -9,7 +9,7 @@ part of 'get_messages_status.dart';
 GetMessagesStatusRequest _$GetMessagesStatusRequestFromJson(
         Map<String, dynamic> json) =>
     GetMessagesStatusRequest(
-      messageHashes: (json['message_hashes'] as List<dynamic>)
+      transactionHashes: (json['transaction_hashes'] as List<dynamic>)
           .map((e) => Felt.fromJson(e as String))
           .toList(),
     );
@@ -17,7 +17,8 @@ GetMessagesStatusRequest _$GetMessagesStatusRequestFromJson(
 Map<String, dynamic> _$GetMessagesStatusRequestToJson(
         GetMessagesStatusRequest instance) =>
     <String, dynamic>{
-      'message_hashes': instance.messageHashes.map((e) => e.toJson()).toList(),
+      'transaction_hashes':
+          instance.transactionHashes.map((e) => e.toJson()).toList(),
     };
 
 MessageStatus _$MessageStatusFromJson(Map<String, dynamic> json) =>

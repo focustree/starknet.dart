@@ -137,6 +137,11 @@ abstract class ReadProvider {
   /// [Spec](https://github.com/starkware-libs/starknet-specs/blob/v0.8.1/api/starknet_api_openrpc.json#L252-L296)
   Future<GetMessagesStatus> getMessagesStatus(GetMessagesStatusRequest request);
 
+  /// Gets storage proof for the given contract address and keys.
+  ///
+  /// [Spec](https://github.com/starkware-libs/starknet-specs/blob/v0.8.1/api/starknet_api_openrpc.json#L883-L1034)
+  Future<GetStorageProof> getStorageProof(GetStorageProofRequest request);
+
   /// Fetches a block along with its transaction receipts.
   ///
   /// [Spec](https://github.com/starkware-libs/starknet-specs/blob/v0.7.0-rc0/api/starknet_api_openrpc.json#L107-L143)
@@ -373,6 +378,15 @@ class JsonRpcReadProvider implements ReadProvider {
       method: 'starknet_getMessagesStatus',
       params: request,
     ).then(GetMessagesStatus.fromJson);
+  }
+
+  @override
+  Future<GetStorageProof> getStorageProof(GetStorageProofRequest request) {
+    return callRpcEndpoint(
+      nodeUri: nodeUri,
+      method: 'starknet_getStorageProof',
+      params: request,
+    ).then(GetStorageProof.fromJson);
   }
 
   @override

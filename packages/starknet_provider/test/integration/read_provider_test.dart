@@ -965,13 +965,13 @@ void main() {
 
     group('getMessagesStatus', () {
       test('returns message status for valid message hashes', () async {
-        final messageHashes = [
+        final transactionHashes = [
           Felt.fromHexString('0x1234567890123456789012345678901234567890'),
           Felt.fromHexString('0x0987654321098765432109876543210987654321'),
         ];
 
         final request = GetMessagesStatusRequest(
-          messageHashes: messageHashes,
+          transactionHashes: transactionHashes,
         );
 
         final response = await provider.getMessagesStatus(request);
@@ -980,8 +980,8 @@ void main() {
           error: (error) => fail('Should not fail: ${error.message}'),
           result: (result) {
             expect(result, hasLength(2));
-            expect(result[0].transactionHash, messageHashes[0]);
-            expect(result[1].transactionHash, messageHashes[1]);
+            expect(result[0].transactionHash, transactionHashes[0]);
+            expect(result[1].transactionHash, transactionHashes[1]);
             expect(result[0].finalityStatus, isNotEmpty);
             expect(result[1].finalityStatus, isNotEmpty);
           },
@@ -990,7 +990,7 @@ void main() {
 
       test('returns error with empty message hashes list', () async {
         final request = GetMessagesStatusRequest(
-          messageHashes: [],
+          transactionHashes: [],
         );
 
         final response = await provider.getMessagesStatus(request);
@@ -1004,13 +1004,13 @@ void main() {
       });
 
       test('returns error with invalid message hash format', () async {
-        final messageHashes = [
+        final transactionHashes = [
           Felt.fromHexString(
               '0x0000000000000000000000000000000000000000000000000000000000000000'),
         ];
 
         final request = GetMessagesStatusRequest(
-          messageHashes: messageHashes,
+          transactionHashes: transactionHashes,
         );
 
         final response = await provider.getMessagesStatus(request);
@@ -1018,6 +1018,83 @@ void main() {
         response.when(
           error: (error) {
             expect(error.code, JsonRpcApiErrorCode.INVALID_QUERY);
+          },
+          result: (result) => fail('Should fail'),
+        );
+      });
+    });
+
+    group('getStorageProof', () {
+      test(
+          'returns storage proof for valid contract addresses and storage keys',
+          () async {
+        final contractAddresses = [
+          Felt.fromHexString('0x1234567890123456789012345678901234567890'),
+        ];
+        final contractsStorageKeys = [
+          ContractStorageKeys(
+            contractAddress: Felt.fromHexString(
+                '0x1234567890123456789012345678901234567890'),
+            storageKeys: [
+              Felt.fromHexString('0x0987654321098765432109876543210987654321'),
+            ],
+          ),
+        ];
+
+        final request = GetStorageProofRequest(
+          blockId: BlockId.latest,
+          contractAddresses: contractAddresses,
+          contractsStorageKeys: contractsStorageKeys,
+        );
+
+        final response = await provider.getStorageProof(request);
+
+        response.when(
+          error: (error) => fail('Should not fail: ${error.message}'),
+          result: (result) {
+            expect(result.classesProof, isA<Map<String, dynamic>>());
+            expect(result.contractsProof, isA<ContractsProof>());
+            expect(result.contractsStorageProofs,
+                isA<List<Map<String, dynamic>>>());
+            expect(result.globalRoots, isA<GlobalRoots>());
+            expect(result.globalRoots.contractsTreeRoot, isNotNull);
+            expect(result.globalRoots.classesTreeRoot, isNotNull);
+            expect(result.globalRoots.blockHash, isNotNull);
+          },
+        );
+      });
+
+      test('returns error with empty request', () async {
+        final request = GetStorageProofRequest(
+          blockId: BlockId.latest,
+        );
+
+        final response = await provider.getStorageProof(request);
+
+        response.when(
+          error: (error) {
+            expect(error.code, JsonRpcApiErrorCode.INVALID_QUERY);
+          },
+          result: (result) => fail('Should fail'),
+        );
+      });
+
+      test('returns error with invalid block id', () async {
+        final contractAddresses = [
+          Felt.fromHexString('0x1234567890123456789012345678901234567890'),
+        ];
+
+        final request = GetStorageProofRequest(
+          blockId: invalidBlockIdFromBlockHash,
+          contractAddresses: contractAddresses,
+        );
+
+        final response = await provider.getStorageProof(request);
+
+        response.when(
+          error: (error) {
+            expect(error.code, JsonRpcApiErrorCode.BLOCK_NOT_FOUND);
+            expect(error.message, 'Block not found');
           },
           result: (result) => fail('Should fail'),
         );
