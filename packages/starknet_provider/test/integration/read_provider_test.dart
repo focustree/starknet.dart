@@ -1050,6 +1050,67 @@ void main() {
       });
     });
 
+    group('getMessagesStatus', () {
+      test('returns message status for valid message hashes', () async {
+        final messageHashes = [
+          Felt.fromHexString('0x1234567890123456789012345678901234567890'),
+          Felt.fromHexString('0x0987654321098765432109876543210987654321'),
+        ];
+
+        final request = GetMessagesStatusRequest(
+          messageHashes: messageHashes,
+        );
+
+        final response = await provider.getMessagesStatus(request);
+
+        response.when(
+          error: (error) => fail('Should not fail: ${error.message}'),
+          result: (result) {
+            expect(result, hasLength(2));
+            expect(result[0].transactionHash, messageHashes[0]);
+            expect(result[1].transactionHash, messageHashes[1]);
+            expect(result[0].finalityStatus, isNotEmpty);
+            expect(result[1].finalityStatus, isNotEmpty);
+          },
+        );
+      });
+
+      test('returns error with empty message hashes list', () async {
+        final request = GetMessagesStatusRequest(
+          messageHashes: [],
+        );
+
+        final response = await provider.getMessagesStatus(request);
+
+        response.when(
+          error: (error) {
+            expect(error.code, JsonRpcApiErrorCode.INVALID_QUERY);
+          },
+          result: (result) => fail('Should fail'),
+        );
+      });
+
+      test('returns error with invalid message hash format', () async {
+        final messageHashes = [
+          Felt.fromHexString(
+              '0x0000000000000000000000000000000000000000000000000000000000000000'),
+        ];
+
+        final request = GetMessagesStatusRequest(
+          messageHashes: messageHashes,
+        );
+
+        final response = await provider.getMessagesStatus(request);
+
+        response.when(
+          error: (error) {
+            expect(error.code, JsonRpcApiErrorCode.INVALID_QUERY);
+          },
+          result: (result) => fail('Should fail'),
+        );
+      });
+    });
+
     group('estimateFee', () {
       BlockId parentBlockId = BlockId.blockTag('pending');
       BroadcastedInvokeTxnV1 broadcastedInvokeTxnV1 = BroadcastedInvokeTxnV1(

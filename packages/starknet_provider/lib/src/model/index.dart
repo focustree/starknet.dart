@@ -8,6 +8,7 @@ export 'deploy_account_transaction.dart';
 export 'deployed_contract_item.dart';
 export 'estimate_fee.dart';
 export 'estimate_message_fee.dart';
+export 'get_messages_status.dart';
 export 'fee_estimate.dart';
 export 'function_call.dart';
 export 'get_block_txn_count.dart';

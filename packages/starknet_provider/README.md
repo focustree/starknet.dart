@@ -38,6 +38,7 @@ jq .methods[].name ../starknet-specs/api/starknet_api_openrpc.json
 | starknet_call                              | ✅           |
 | starknet_estimateFee                       | ✅           |
 | starknet_estimateMessageFee                | ✅           |
+| starknet_getMessagesStatus                 | ✅           |
 | starknet_blockNumber                       | ✅           |
 | starknet_blockHashAndNumber                | ✅           |
 | starknet_chainId                           | ✅           |
