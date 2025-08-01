@@ -2,7 +2,7 @@
 
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'estimate_fee.dart';
-import 'trace_transaction_trace.dart';
+import 'components/transaction_trace.dart';
 
 import 'components/block_id.dart';
 import 'fee_estimate.dart';

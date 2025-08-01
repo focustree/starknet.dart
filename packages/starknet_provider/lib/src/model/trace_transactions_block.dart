@@ -2,9 +2,9 @@
 
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:starknet/starknet.dart';
+import 'components/transaction_trace.dart';
 
 import 'json_rpc_api_error.dart';
-import 'trace_transaction_trace.dart';
 
 part 'trace_transactions_block.freezed.dart';
 part 'trace_transactions_block.g.dart';
