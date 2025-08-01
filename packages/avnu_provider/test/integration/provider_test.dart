@@ -80,12 +80,14 @@ void main() {
 
         final gasTokenAddress =
             '0x4718f5a0fc34cc1af16a1cdee98ffb20c31f5cd61d6ab07201858f4287c938d';
-        
+
         final maxGasTokenAmount =
             (await sepoliaAccount0.getEstimateMaxFeeForInvokeTx(
           functionCalls: functionCalls,
           feeMultiplier: 50.0,
-        )).maxFee.toHexString();
+        ))
+                .maxFee
+                .toHexString();
 
         //just for testing, we hardcode the account class hash to the ArgentX account class hash
         //in a real scenario, we would get the account class hash from the Starknetprovider

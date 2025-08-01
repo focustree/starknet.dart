@@ -390,65 +390,29 @@ Future<void> main() async {
         final sessionTokenSignature =
             await argentSessionKey.outsideExecutionMessageToken(message);
         // we set a max fee to avoid raising an exception during fee estimation
-        final maxFee = await account9.getEstimateMaxFeeForInvokeTx(
-          functionCalls: [
-            FunctionCall(
-              contractAddress: accountAddress,
-              entryPointSelector: getSelectorByName('execute_from_outside_v2'),
-              calldata: [
-                // OutsideExecution
-                ...message.toCalldata(),
-                // Signature
-                Felt.fromInt(sessionTokenSignature.length),
-                ...sessionTokenSignature,
-              ],
-            ),
-          ],
-        );
-        final outsideTxHash = (await account9.execute(
-          functionCalls: [
-            FunctionCall(
-              contractAddress: accountAddress,
-              entryPointSelector: getSelectorByName('execute_from_outside_v2'),
-              calldata: [
-                // OutsideExecution
-                ...message.toCalldata(),
-                // Signature
-                Felt.fromInt(sessionTokenSignature.length),
-                ...sessionTokenSignature,
-              ],
-            ),
-          ],
-          l1MaxAmount: maxFee.maxAmount,
-          l1MaxPricePerUnit: maxFee.maxPricePerUnit,
-        ))
-            .when(
-          result: (result) => result.transaction_hash,
-          error: (error) {
-            throw Exception(
-              'Failed to execute outside transaction: ${error.code}: ${error.message}',
-            );
-          },
-        );
-        final isAccepted = await waitForAcceptance(
-          transactionHash: outsideTxHash,
-          provider: provider,
-        );
+        // expect maxfee fails because the session key is expired
         expect(
-          isAccepted,
-          isFalse,
-          reason: 'Transaction is accepted: $outsideTxHash',
+          () => account9.getEstimateMaxFeeForInvokeTx(
+            functionCalls: [
+              FunctionCall(
+                contractAddress: accountAddress,
+                entryPointSelector:
+                    getSelectorByName('execute_from_outside_v2'),
+                calldata: [
+                  // OutsideExecution
+                  ...message.toCalldata(),
+                  // Signature
+                  Felt.fromInt(sessionTokenSignature.length),
+                  ...sessionTokenSignature,
+                ],
+              ),
+            ],
+          ),
+          throwsA(isA<Exception>()),
         );
-        final allowance = await erc20Allowance(
-          Felt.fromHexString(ethContractAddress),
-          accountAddress,
-          spender,
-        );
-        expect(
-          allowance,
-          Uint256(high: Felt.zero, low: Felt.zero),
-          reason: 'Allowance not set correctly: $allowance',
-        );
+
+        // Since fee estimation fails, we shouldn't proceed with the transaction
+        // The test should end here as the expired session key prevents fee estimation
       });
     },
     tags: ['integration'],

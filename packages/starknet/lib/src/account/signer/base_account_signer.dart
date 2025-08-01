@@ -115,18 +115,18 @@ abstract class BaseAccountSigner {
     required String nonceDataAvailabilityMode,
     Map<String, ResourceBounds>? resourceBounds = const {},
   }) async {
-      return signInvokeTransactionsV3(
-        transactions: transactions,
-        senderAddress: contractAddress,
-        chainId: chainId,
-        nonce: nonce,
-        resourceBounds: resourceBounds!,
-        accountDeploymentData: accountDeploymentData,
-        paymasterData: paymasterData!,
-        tip: tip,
-        feeDataAvailabilityMode: feeDataAvailabilityMode,
-        nonceDataAvailabilityMode: nonceDataAvailabilityMode,
-      );
+    return signInvokeTransactionsV3(
+      transactions: transactions,
+      senderAddress: contractAddress,
+      chainId: chainId,
+      nonce: nonce,
+      resourceBounds: resourceBounds!,
+      accountDeploymentData: accountDeploymentData,
+      paymasterData: paymasterData!,
+      tip: tip,
+      feeDataAvailabilityMode: feeDataAvailabilityMode,
+      nonceDataAvailabilityMode: nonceDataAvailabilityMode,
+    );
   }
 
   Future<List<Felt>> signDeclareTransactionV3({
