@@ -49,12 +49,14 @@ class GetStorageProofRequest {
 
 @JsonSerializable()
 class ContractStorageKeys {
+  @JsonKey(name: 'contract_address')
   final Felt contractAddress;
+  @JsonKey(name: 'storage_keys')
   final List<Felt> storageKeys;
 
   ContractStorageKeys({
-    @JsonKey(name: 'contract_address') required this.contractAddress,
-    @JsonKey(name: 'storage_keys') required this.storageKeys,
+    required this.contractAddress,
+    required this.storageKeys,
   });
 
   factory ContractStorageKeys.fromJson(Map<String, dynamic> json) =>

@@ -89,11 +89,7 @@ sealed class ExecuteInvocation with _$ExecuteInvocation {
       RevertedInvocation;
 
   factory ExecuteInvocation.fromJson(Map<String, dynamic> json) {
-    if (json.containsKey('revert_reason')) {
-      return ExecuteInvocation.reverted(
-          revertReason: json['revert_reason'] as String);
-    }
-    return ExecuteInvocation.success(FunctionInvocation.fromJson(json));
+    return const ExecuteInvocationConverter().fromJson(json);
   }
 }
 
@@ -212,6 +208,9 @@ int _l1GasFromJson(dynamic value) {
 
 int _l2GasFromJson(dynamic value) {
   if (value is int) return value;
+  if (value is Map<String, dynamic> && value.containsKey('l2_gas')) {
+    return value['l2_gas'] as int? ?? 0;
+  }
   return 0;
 }
 
