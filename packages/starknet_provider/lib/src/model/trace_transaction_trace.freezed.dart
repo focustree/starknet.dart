@@ -16,13 +16,13 @@ final _privateConstructorUsedError = UnsupportedError(
 
 TransactionTrace _$TransactionTraceFromJson(Map<String, dynamic> json) {
   switch (json['type']) {
-    case 'invoke':
+    case 'INVOKE':
       return InvokeTransactionTrace.fromJson(json);
-    case 'declare':
+    case 'DECLARE':
       return DeclareTransactionTrace.fromJson(json);
-    case 'deploy_account':
+    case 'DEPLOY_ACCOUNT':
       return DeployAccountTransactionTrace.fromJson(json);
-    case 'l1_handler':
+    case 'L1_HANDLER':
       return L1HandlerTransactionTrace.fromJson(json);
 
     default:
@@ -51,7 +51,7 @@ mixin _$TransactionTrace {
             @JsonKey(name: 'state_diff') TraceStateDiff? stateDiff,
             @JsonKey(name: 'execution_resources')
             InnerCallExecutionResources executionResources)
-        invoke,
+        INVOKE,
     required TResult Function(
             @JsonKey(name: 'validate_invocation')
             FunctionInvocation? validateInvocation,
@@ -60,7 +60,7 @@ mixin _$TransactionTrace {
             @JsonKey(name: 'state_diff') TraceStateDiff? stateDiff,
             @JsonKey(name: 'execution_resources')
             InnerCallExecutionResources executionResources)
-        declare,
+        DECLARE,
     required TResult Function(
             @JsonKey(name: 'validate_invocation')
             FunctionInvocation? validateInvocation,
@@ -71,14 +71,14 @@ mixin _$TransactionTrace {
             @JsonKey(name: 'state_diff') TraceStateDiff? stateDiff,
             @JsonKey(name: 'execution_resources')
             InnerCallExecutionResources executionResources)
-        deploy_account,
+        DEPLOY_ACCOUNT,
     required TResult Function(
             @JsonKey(name: 'function_invocation')
             FunctionInvocation functionInvocation,
             @JsonKey(name: 'state_diff') TraceStateDiff? stateDiff,
             @JsonKey(name: 'execution_resources')
             InnerCallExecutionResources executionResources)
-        l1_handler,
+        L1_HANDLER,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -94,7 +94,7 @@ mixin _$TransactionTrace {
             @JsonKey(name: 'state_diff') TraceStateDiff? stateDiff,
             @JsonKey(name: 'execution_resources')
             InnerCallExecutionResources executionResources)?
-        invoke,
+        INVOKE,
     TResult? Function(
             @JsonKey(name: 'validate_invocation')
             FunctionInvocation? validateInvocation,
@@ -103,7 +103,7 @@ mixin _$TransactionTrace {
             @JsonKey(name: 'state_diff') TraceStateDiff? stateDiff,
             @JsonKey(name: 'execution_resources')
             InnerCallExecutionResources executionResources)?
-        declare,
+        DECLARE,
     TResult? Function(
             @JsonKey(name: 'validate_invocation')
             FunctionInvocation? validateInvocation,
@@ -114,14 +114,14 @@ mixin _$TransactionTrace {
             @JsonKey(name: 'state_diff') TraceStateDiff? stateDiff,
             @JsonKey(name: 'execution_resources')
             InnerCallExecutionResources executionResources)?
-        deploy_account,
+        DEPLOY_ACCOUNT,
     TResult? Function(
             @JsonKey(name: 'function_invocation')
             FunctionInvocation functionInvocation,
             @JsonKey(name: 'state_diff') TraceStateDiff? stateDiff,
             @JsonKey(name: 'execution_resources')
             InnerCallExecutionResources executionResources)?
-        l1_handler,
+        L1_HANDLER,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -137,7 +137,7 @@ mixin _$TransactionTrace {
             @JsonKey(name: 'state_diff') TraceStateDiff? stateDiff,
             @JsonKey(name: 'execution_resources')
             InnerCallExecutionResources executionResources)?
-        invoke,
+        INVOKE,
     TResult Function(
             @JsonKey(name: 'validate_invocation')
             FunctionInvocation? validateInvocation,
@@ -146,7 +146,7 @@ mixin _$TransactionTrace {
             @JsonKey(name: 'state_diff') TraceStateDiff? stateDiff,
             @JsonKey(name: 'execution_resources')
             InnerCallExecutionResources executionResources)?
-        declare,
+        DECLARE,
     TResult Function(
             @JsonKey(name: 'validate_invocation')
             FunctionInvocation? validateInvocation,
@@ -157,40 +157,40 @@ mixin _$TransactionTrace {
             @JsonKey(name: 'state_diff') TraceStateDiff? stateDiff,
             @JsonKey(name: 'execution_resources')
             InnerCallExecutionResources executionResources)?
-        deploy_account,
+        DEPLOY_ACCOUNT,
     TResult Function(
             @JsonKey(name: 'function_invocation')
             FunctionInvocation functionInvocation,
             @JsonKey(name: 'state_diff') TraceStateDiff? stateDiff,
             @JsonKey(name: 'execution_resources')
             InnerCallExecutionResources executionResources)?
-        l1_handler,
+        L1_HANDLER,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(InvokeTransactionTrace value) invoke,
-    required TResult Function(DeclareTransactionTrace value) declare,
+    required TResult Function(InvokeTransactionTrace value) INVOKE,
+    required TResult Function(DeclareTransactionTrace value) DECLARE,
     required TResult Function(DeployAccountTransactionTrace value)
-        deploy_account,
-    required TResult Function(L1HandlerTransactionTrace value) l1_handler,
+        DEPLOY_ACCOUNT,
+    required TResult Function(L1HandlerTransactionTrace value) L1_HANDLER,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(InvokeTransactionTrace value)? invoke,
-    TResult? Function(DeclareTransactionTrace value)? declare,
-    TResult? Function(DeployAccountTransactionTrace value)? deploy_account,
-    TResult? Function(L1HandlerTransactionTrace value)? l1_handler,
+    TResult? Function(InvokeTransactionTrace value)? INVOKE,
+    TResult? Function(DeclareTransactionTrace value)? DECLARE,
+    TResult? Function(DeployAccountTransactionTrace value)? DEPLOY_ACCOUNT,
+    TResult? Function(L1HandlerTransactionTrace value)? L1_HANDLER,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(InvokeTransactionTrace value)? invoke,
-    TResult Function(DeclareTransactionTrace value)? declare,
-    TResult Function(DeployAccountTransactionTrace value)? deploy_account,
-    TResult Function(L1HandlerTransactionTrace value)? l1_handler,
+    TResult Function(InvokeTransactionTrace value)? INVOKE,
+    TResult Function(DeclareTransactionTrace value)? DECLARE,
+    TResult Function(DeployAccountTransactionTrace value)? DEPLOY_ACCOUNT,
+    TResult Function(L1HandlerTransactionTrace value)? L1_HANDLER,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -339,7 +339,7 @@ class _$InvokeTransactionTraceImpl implements InvokeTransactionTrace {
       @JsonKey(name: 'state_diff') this.stateDiff,
       @JsonKey(name: 'execution_resources') required this.executionResources,
       final String? $type})
-      : $type = $type ?? 'invoke';
+      : $type = $type ?? 'INVOKE';
 
   factory _$InvokeTransactionTraceImpl.fromJson(Map<String, dynamic> json) =>
       _$$InvokeTransactionTraceImplFromJson(json);
@@ -366,7 +366,7 @@ class _$InvokeTransactionTraceImpl implements InvokeTransactionTrace {
 
   @override
   String toString() {
-    return 'TransactionTrace.invoke(validateInvocation: $validateInvocation, executeInvocation: $executeInvocation, feeTransferInvocation: $feeTransferInvocation, stateDiff: $stateDiff, executionResources: $executionResources)';
+    return 'TransactionTrace.INVOKE(validateInvocation: $validateInvocation, executeInvocation: $executeInvocation, feeTransferInvocation: $feeTransferInvocation, stateDiff: $stateDiff, executionResources: $executionResources)';
   }
 
   @override
@@ -414,7 +414,7 @@ class _$InvokeTransactionTraceImpl implements InvokeTransactionTrace {
             @JsonKey(name: 'state_diff') TraceStateDiff? stateDiff,
             @JsonKey(name: 'execution_resources')
             InnerCallExecutionResources executionResources)
-        invoke,
+        INVOKE,
     required TResult Function(
             @JsonKey(name: 'validate_invocation')
             FunctionInvocation? validateInvocation,
@@ -423,7 +423,7 @@ class _$InvokeTransactionTraceImpl implements InvokeTransactionTrace {
             @JsonKey(name: 'state_diff') TraceStateDiff? stateDiff,
             @JsonKey(name: 'execution_resources')
             InnerCallExecutionResources executionResources)
-        declare,
+        DECLARE,
     required TResult Function(
             @JsonKey(name: 'validate_invocation')
             FunctionInvocation? validateInvocation,
@@ -434,16 +434,16 @@ class _$InvokeTransactionTraceImpl implements InvokeTransactionTrace {
             @JsonKey(name: 'state_diff') TraceStateDiff? stateDiff,
             @JsonKey(name: 'execution_resources')
             InnerCallExecutionResources executionResources)
-        deploy_account,
+        DEPLOY_ACCOUNT,
     required TResult Function(
             @JsonKey(name: 'function_invocation')
             FunctionInvocation functionInvocation,
             @JsonKey(name: 'state_diff') TraceStateDiff? stateDiff,
             @JsonKey(name: 'execution_resources')
             InnerCallExecutionResources executionResources)
-        l1_handler,
+        L1_HANDLER,
   }) {
-    return invoke(validateInvocation, executeInvocation, feeTransferInvocation,
+    return INVOKE(validateInvocation, executeInvocation, feeTransferInvocation,
         stateDiff, executionResources);
   }
 
@@ -461,7 +461,7 @@ class _$InvokeTransactionTraceImpl implements InvokeTransactionTrace {
             @JsonKey(name: 'state_diff') TraceStateDiff? stateDiff,
             @JsonKey(name: 'execution_resources')
             InnerCallExecutionResources executionResources)?
-        invoke,
+        INVOKE,
     TResult? Function(
             @JsonKey(name: 'validate_invocation')
             FunctionInvocation? validateInvocation,
@@ -470,7 +470,7 @@ class _$InvokeTransactionTraceImpl implements InvokeTransactionTrace {
             @JsonKey(name: 'state_diff') TraceStateDiff? stateDiff,
             @JsonKey(name: 'execution_resources')
             InnerCallExecutionResources executionResources)?
-        declare,
+        DECLARE,
     TResult? Function(
             @JsonKey(name: 'validate_invocation')
             FunctionInvocation? validateInvocation,
@@ -481,16 +481,16 @@ class _$InvokeTransactionTraceImpl implements InvokeTransactionTrace {
             @JsonKey(name: 'state_diff') TraceStateDiff? stateDiff,
             @JsonKey(name: 'execution_resources')
             InnerCallExecutionResources executionResources)?
-        deploy_account,
+        DEPLOY_ACCOUNT,
     TResult? Function(
             @JsonKey(name: 'function_invocation')
             FunctionInvocation functionInvocation,
             @JsonKey(name: 'state_diff') TraceStateDiff? stateDiff,
             @JsonKey(name: 'execution_resources')
             InnerCallExecutionResources executionResources)?
-        l1_handler,
+        L1_HANDLER,
   }) {
-    return invoke?.call(validateInvocation, executeInvocation,
+    return INVOKE?.call(validateInvocation, executeInvocation,
         feeTransferInvocation, stateDiff, executionResources);
   }
 
@@ -508,7 +508,7 @@ class _$InvokeTransactionTraceImpl implements InvokeTransactionTrace {
             @JsonKey(name: 'state_diff') TraceStateDiff? stateDiff,
             @JsonKey(name: 'execution_resources')
             InnerCallExecutionResources executionResources)?
-        invoke,
+        INVOKE,
     TResult Function(
             @JsonKey(name: 'validate_invocation')
             FunctionInvocation? validateInvocation,
@@ -517,7 +517,7 @@ class _$InvokeTransactionTraceImpl implements InvokeTransactionTrace {
             @JsonKey(name: 'state_diff') TraceStateDiff? stateDiff,
             @JsonKey(name: 'execution_resources')
             InnerCallExecutionResources executionResources)?
-        declare,
+        DECLARE,
     TResult Function(
             @JsonKey(name: 'validate_invocation')
             FunctionInvocation? validateInvocation,
@@ -528,18 +528,18 @@ class _$InvokeTransactionTraceImpl implements InvokeTransactionTrace {
             @JsonKey(name: 'state_diff') TraceStateDiff? stateDiff,
             @JsonKey(name: 'execution_resources')
             InnerCallExecutionResources executionResources)?
-        deploy_account,
+        DEPLOY_ACCOUNT,
     TResult Function(
             @JsonKey(name: 'function_invocation')
             FunctionInvocation functionInvocation,
             @JsonKey(name: 'state_diff') TraceStateDiff? stateDiff,
             @JsonKey(name: 'execution_resources')
             InnerCallExecutionResources executionResources)?
-        l1_handler,
+        L1_HANDLER,
     required TResult orElse(),
   }) {
-    if (invoke != null) {
-      return invoke(validateInvocation, executeInvocation,
+    if (INVOKE != null) {
+      return INVOKE(validateInvocation, executeInvocation,
           feeTransferInvocation, stateDiff, executionResources);
     }
     return orElse();
@@ -548,37 +548,37 @@ class _$InvokeTransactionTraceImpl implements InvokeTransactionTrace {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(InvokeTransactionTrace value) invoke,
-    required TResult Function(DeclareTransactionTrace value) declare,
+    required TResult Function(InvokeTransactionTrace value) INVOKE,
+    required TResult Function(DeclareTransactionTrace value) DECLARE,
     required TResult Function(DeployAccountTransactionTrace value)
-        deploy_account,
-    required TResult Function(L1HandlerTransactionTrace value) l1_handler,
+        DEPLOY_ACCOUNT,
+    required TResult Function(L1HandlerTransactionTrace value) L1_HANDLER,
   }) {
-    return invoke(this);
+    return INVOKE(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(InvokeTransactionTrace value)? invoke,
-    TResult? Function(DeclareTransactionTrace value)? declare,
-    TResult? Function(DeployAccountTransactionTrace value)? deploy_account,
-    TResult? Function(L1HandlerTransactionTrace value)? l1_handler,
+    TResult? Function(InvokeTransactionTrace value)? INVOKE,
+    TResult? Function(DeclareTransactionTrace value)? DECLARE,
+    TResult? Function(DeployAccountTransactionTrace value)? DEPLOY_ACCOUNT,
+    TResult? Function(L1HandlerTransactionTrace value)? L1_HANDLER,
   }) {
-    return invoke?.call(this);
+    return INVOKE?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(InvokeTransactionTrace value)? invoke,
-    TResult Function(DeclareTransactionTrace value)? declare,
-    TResult Function(DeployAccountTransactionTrace value)? deploy_account,
-    TResult Function(L1HandlerTransactionTrace value)? l1_handler,
+    TResult Function(InvokeTransactionTrace value)? INVOKE,
+    TResult Function(DeclareTransactionTrace value)? DECLARE,
+    TResult Function(DeployAccountTransactionTrace value)? DEPLOY_ACCOUNT,
+    TResult Function(L1HandlerTransactionTrace value)? L1_HANDLER,
     required TResult orElse(),
   }) {
-    if (invoke != null) {
-      return invoke(this);
+    if (INVOKE != null) {
+      return INVOKE(this);
     }
     return orElse();
   }
@@ -698,7 +698,7 @@ class _$DeclareTransactionTraceImpl implements DeclareTransactionTrace {
       @JsonKey(name: 'state_diff') this.stateDiff,
       @JsonKey(name: 'execution_resources') required this.executionResources,
       final String? $type})
-      : $type = $type ?? 'declare';
+      : $type = $type ?? 'DECLARE';
 
   factory _$DeclareTransactionTraceImpl.fromJson(Map<String, dynamic> json) =>
       _$$DeclareTransactionTraceImplFromJson(json);
@@ -721,7 +721,7 @@ class _$DeclareTransactionTraceImpl implements DeclareTransactionTrace {
 
   @override
   String toString() {
-    return 'TransactionTrace.declare(validateInvocation: $validateInvocation, feeTransferInvocation: $feeTransferInvocation, stateDiff: $stateDiff, executionResources: $executionResources)';
+    return 'TransactionTrace.DECLARE(validateInvocation: $validateInvocation, feeTransferInvocation: $feeTransferInvocation, stateDiff: $stateDiff, executionResources: $executionResources)';
   }
 
   @override
@@ -767,7 +767,7 @@ class _$DeclareTransactionTraceImpl implements DeclareTransactionTrace {
             @JsonKey(name: 'state_diff') TraceStateDiff? stateDiff,
             @JsonKey(name: 'execution_resources')
             InnerCallExecutionResources executionResources)
-        invoke,
+        INVOKE,
     required TResult Function(
             @JsonKey(name: 'validate_invocation')
             FunctionInvocation? validateInvocation,
@@ -776,7 +776,7 @@ class _$DeclareTransactionTraceImpl implements DeclareTransactionTrace {
             @JsonKey(name: 'state_diff') TraceStateDiff? stateDiff,
             @JsonKey(name: 'execution_resources')
             InnerCallExecutionResources executionResources)
-        declare,
+        DECLARE,
     required TResult Function(
             @JsonKey(name: 'validate_invocation')
             FunctionInvocation? validateInvocation,
@@ -787,16 +787,16 @@ class _$DeclareTransactionTraceImpl implements DeclareTransactionTrace {
             @JsonKey(name: 'state_diff') TraceStateDiff? stateDiff,
             @JsonKey(name: 'execution_resources')
             InnerCallExecutionResources executionResources)
-        deploy_account,
+        DEPLOY_ACCOUNT,
     required TResult Function(
             @JsonKey(name: 'function_invocation')
             FunctionInvocation functionInvocation,
             @JsonKey(name: 'state_diff') TraceStateDiff? stateDiff,
             @JsonKey(name: 'execution_resources')
             InnerCallExecutionResources executionResources)
-        l1_handler,
+        L1_HANDLER,
   }) {
-    return declare(validateInvocation, feeTransferInvocation, stateDiff,
+    return DECLARE(validateInvocation, feeTransferInvocation, stateDiff,
         executionResources);
   }
 
@@ -814,7 +814,7 @@ class _$DeclareTransactionTraceImpl implements DeclareTransactionTrace {
             @JsonKey(name: 'state_diff') TraceStateDiff? stateDiff,
             @JsonKey(name: 'execution_resources')
             InnerCallExecutionResources executionResources)?
-        invoke,
+        INVOKE,
     TResult? Function(
             @JsonKey(name: 'validate_invocation')
             FunctionInvocation? validateInvocation,
@@ -823,7 +823,7 @@ class _$DeclareTransactionTraceImpl implements DeclareTransactionTrace {
             @JsonKey(name: 'state_diff') TraceStateDiff? stateDiff,
             @JsonKey(name: 'execution_resources')
             InnerCallExecutionResources executionResources)?
-        declare,
+        DECLARE,
     TResult? Function(
             @JsonKey(name: 'validate_invocation')
             FunctionInvocation? validateInvocation,
@@ -834,16 +834,16 @@ class _$DeclareTransactionTraceImpl implements DeclareTransactionTrace {
             @JsonKey(name: 'state_diff') TraceStateDiff? stateDiff,
             @JsonKey(name: 'execution_resources')
             InnerCallExecutionResources executionResources)?
-        deploy_account,
+        DEPLOY_ACCOUNT,
     TResult? Function(
             @JsonKey(name: 'function_invocation')
             FunctionInvocation functionInvocation,
             @JsonKey(name: 'state_diff') TraceStateDiff? stateDiff,
             @JsonKey(name: 'execution_resources')
             InnerCallExecutionResources executionResources)?
-        l1_handler,
+        L1_HANDLER,
   }) {
-    return declare?.call(validateInvocation, feeTransferInvocation, stateDiff,
+    return DECLARE?.call(validateInvocation, feeTransferInvocation, stateDiff,
         executionResources);
   }
 
@@ -861,7 +861,7 @@ class _$DeclareTransactionTraceImpl implements DeclareTransactionTrace {
             @JsonKey(name: 'state_diff') TraceStateDiff? stateDiff,
             @JsonKey(name: 'execution_resources')
             InnerCallExecutionResources executionResources)?
-        invoke,
+        INVOKE,
     TResult Function(
             @JsonKey(name: 'validate_invocation')
             FunctionInvocation? validateInvocation,
@@ -870,7 +870,7 @@ class _$DeclareTransactionTraceImpl implements DeclareTransactionTrace {
             @JsonKey(name: 'state_diff') TraceStateDiff? stateDiff,
             @JsonKey(name: 'execution_resources')
             InnerCallExecutionResources executionResources)?
-        declare,
+        DECLARE,
     TResult Function(
             @JsonKey(name: 'validate_invocation')
             FunctionInvocation? validateInvocation,
@@ -881,18 +881,18 @@ class _$DeclareTransactionTraceImpl implements DeclareTransactionTrace {
             @JsonKey(name: 'state_diff') TraceStateDiff? stateDiff,
             @JsonKey(name: 'execution_resources')
             InnerCallExecutionResources executionResources)?
-        deploy_account,
+        DEPLOY_ACCOUNT,
     TResult Function(
             @JsonKey(name: 'function_invocation')
             FunctionInvocation functionInvocation,
             @JsonKey(name: 'state_diff') TraceStateDiff? stateDiff,
             @JsonKey(name: 'execution_resources')
             InnerCallExecutionResources executionResources)?
-        l1_handler,
+        L1_HANDLER,
     required TResult orElse(),
   }) {
-    if (declare != null) {
-      return declare(validateInvocation, feeTransferInvocation, stateDiff,
+    if (DECLARE != null) {
+      return DECLARE(validateInvocation, feeTransferInvocation, stateDiff,
           executionResources);
     }
     return orElse();
@@ -901,37 +901,37 @@ class _$DeclareTransactionTraceImpl implements DeclareTransactionTrace {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(InvokeTransactionTrace value) invoke,
-    required TResult Function(DeclareTransactionTrace value) declare,
+    required TResult Function(InvokeTransactionTrace value) INVOKE,
+    required TResult Function(DeclareTransactionTrace value) DECLARE,
     required TResult Function(DeployAccountTransactionTrace value)
-        deploy_account,
-    required TResult Function(L1HandlerTransactionTrace value) l1_handler,
+        DEPLOY_ACCOUNT,
+    required TResult Function(L1HandlerTransactionTrace value) L1_HANDLER,
   }) {
-    return declare(this);
+    return DECLARE(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(InvokeTransactionTrace value)? invoke,
-    TResult? Function(DeclareTransactionTrace value)? declare,
-    TResult? Function(DeployAccountTransactionTrace value)? deploy_account,
-    TResult? Function(L1HandlerTransactionTrace value)? l1_handler,
+    TResult? Function(InvokeTransactionTrace value)? INVOKE,
+    TResult? Function(DeclareTransactionTrace value)? DECLARE,
+    TResult? Function(DeployAccountTransactionTrace value)? DEPLOY_ACCOUNT,
+    TResult? Function(L1HandlerTransactionTrace value)? L1_HANDLER,
   }) {
-    return declare?.call(this);
+    return DECLARE?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(InvokeTransactionTrace value)? invoke,
-    TResult Function(DeclareTransactionTrace value)? declare,
-    TResult Function(DeployAccountTransactionTrace value)? deploy_account,
-    TResult Function(L1HandlerTransactionTrace value)? l1_handler,
+    TResult Function(InvokeTransactionTrace value)? INVOKE,
+    TResult Function(DeclareTransactionTrace value)? DECLARE,
+    TResult Function(DeployAccountTransactionTrace value)? DEPLOY_ACCOUNT,
+    TResult Function(L1HandlerTransactionTrace value)? L1_HANDLER,
     required TResult orElse(),
   }) {
-    if (declare != null) {
-      return declare(this);
+    if (DECLARE != null) {
+      return DECLARE(this);
     }
     return orElse();
   }
@@ -1056,7 +1056,7 @@ class _$DeployAccountTransactionTraceImpl
       @JsonKey(name: 'state_diff') this.stateDiff,
       @JsonKey(name: 'execution_resources') required this.executionResources,
       final String? $type})
-      : $type = $type ?? 'deploy_account';
+      : $type = $type ?? 'DEPLOY_ACCOUNT';
 
   factory _$DeployAccountTransactionTraceImpl.fromJson(
           Map<String, dynamic> json) =>
@@ -1083,7 +1083,7 @@ class _$DeployAccountTransactionTraceImpl
 
   @override
   String toString() {
-    return 'TransactionTrace.deploy_account(validateInvocation: $validateInvocation, constructorInvocation: $constructorInvocation, feeTransferInvocation: $feeTransferInvocation, stateDiff: $stateDiff, executionResources: $executionResources)';
+    return 'TransactionTrace.DEPLOY_ACCOUNT(validateInvocation: $validateInvocation, constructorInvocation: $constructorInvocation, feeTransferInvocation: $feeTransferInvocation, stateDiff: $stateDiff, executionResources: $executionResources)';
   }
 
   @override
@@ -1137,7 +1137,7 @@ class _$DeployAccountTransactionTraceImpl
             @JsonKey(name: 'state_diff') TraceStateDiff? stateDiff,
             @JsonKey(name: 'execution_resources')
             InnerCallExecutionResources executionResources)
-        invoke,
+        INVOKE,
     required TResult Function(
             @JsonKey(name: 'validate_invocation')
             FunctionInvocation? validateInvocation,
@@ -1146,7 +1146,7 @@ class _$DeployAccountTransactionTraceImpl
             @JsonKey(name: 'state_diff') TraceStateDiff? stateDiff,
             @JsonKey(name: 'execution_resources')
             InnerCallExecutionResources executionResources)
-        declare,
+        DECLARE,
     required TResult Function(
             @JsonKey(name: 'validate_invocation')
             FunctionInvocation? validateInvocation,
@@ -1157,16 +1157,16 @@ class _$DeployAccountTransactionTraceImpl
             @JsonKey(name: 'state_diff') TraceStateDiff? stateDiff,
             @JsonKey(name: 'execution_resources')
             InnerCallExecutionResources executionResources)
-        deploy_account,
+        DEPLOY_ACCOUNT,
     required TResult Function(
             @JsonKey(name: 'function_invocation')
             FunctionInvocation functionInvocation,
             @JsonKey(name: 'state_diff') TraceStateDiff? stateDiff,
             @JsonKey(name: 'execution_resources')
             InnerCallExecutionResources executionResources)
-        l1_handler,
+        L1_HANDLER,
   }) {
-    return deploy_account(validateInvocation, constructorInvocation,
+    return DEPLOY_ACCOUNT(validateInvocation, constructorInvocation,
         feeTransferInvocation, stateDiff, executionResources);
   }
 
@@ -1184,7 +1184,7 @@ class _$DeployAccountTransactionTraceImpl
             @JsonKey(name: 'state_diff') TraceStateDiff? stateDiff,
             @JsonKey(name: 'execution_resources')
             InnerCallExecutionResources executionResources)?
-        invoke,
+        INVOKE,
     TResult? Function(
             @JsonKey(name: 'validate_invocation')
             FunctionInvocation? validateInvocation,
@@ -1193,7 +1193,7 @@ class _$DeployAccountTransactionTraceImpl
             @JsonKey(name: 'state_diff') TraceStateDiff? stateDiff,
             @JsonKey(name: 'execution_resources')
             InnerCallExecutionResources executionResources)?
-        declare,
+        DECLARE,
     TResult? Function(
             @JsonKey(name: 'validate_invocation')
             FunctionInvocation? validateInvocation,
@@ -1204,16 +1204,16 @@ class _$DeployAccountTransactionTraceImpl
             @JsonKey(name: 'state_diff') TraceStateDiff? stateDiff,
             @JsonKey(name: 'execution_resources')
             InnerCallExecutionResources executionResources)?
-        deploy_account,
+        DEPLOY_ACCOUNT,
     TResult? Function(
             @JsonKey(name: 'function_invocation')
             FunctionInvocation functionInvocation,
             @JsonKey(name: 'state_diff') TraceStateDiff? stateDiff,
             @JsonKey(name: 'execution_resources')
             InnerCallExecutionResources executionResources)?
-        l1_handler,
+        L1_HANDLER,
   }) {
-    return deploy_account?.call(validateInvocation, constructorInvocation,
+    return DEPLOY_ACCOUNT?.call(validateInvocation, constructorInvocation,
         feeTransferInvocation, stateDiff, executionResources);
   }
 
@@ -1231,7 +1231,7 @@ class _$DeployAccountTransactionTraceImpl
             @JsonKey(name: 'state_diff') TraceStateDiff? stateDiff,
             @JsonKey(name: 'execution_resources')
             InnerCallExecutionResources executionResources)?
-        invoke,
+        INVOKE,
     TResult Function(
             @JsonKey(name: 'validate_invocation')
             FunctionInvocation? validateInvocation,
@@ -1240,7 +1240,7 @@ class _$DeployAccountTransactionTraceImpl
             @JsonKey(name: 'state_diff') TraceStateDiff? stateDiff,
             @JsonKey(name: 'execution_resources')
             InnerCallExecutionResources executionResources)?
-        declare,
+        DECLARE,
     TResult Function(
             @JsonKey(name: 'validate_invocation')
             FunctionInvocation? validateInvocation,
@@ -1251,18 +1251,18 @@ class _$DeployAccountTransactionTraceImpl
             @JsonKey(name: 'state_diff') TraceStateDiff? stateDiff,
             @JsonKey(name: 'execution_resources')
             InnerCallExecutionResources executionResources)?
-        deploy_account,
+        DEPLOY_ACCOUNT,
     TResult Function(
             @JsonKey(name: 'function_invocation')
             FunctionInvocation functionInvocation,
             @JsonKey(name: 'state_diff') TraceStateDiff? stateDiff,
             @JsonKey(name: 'execution_resources')
             InnerCallExecutionResources executionResources)?
-        l1_handler,
+        L1_HANDLER,
     required TResult orElse(),
   }) {
-    if (deploy_account != null) {
-      return deploy_account(validateInvocation, constructorInvocation,
+    if (DEPLOY_ACCOUNT != null) {
+      return DEPLOY_ACCOUNT(validateInvocation, constructorInvocation,
           feeTransferInvocation, stateDiff, executionResources);
     }
     return orElse();
@@ -1271,37 +1271,37 @@ class _$DeployAccountTransactionTraceImpl
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(InvokeTransactionTrace value) invoke,
-    required TResult Function(DeclareTransactionTrace value) declare,
+    required TResult Function(InvokeTransactionTrace value) INVOKE,
+    required TResult Function(DeclareTransactionTrace value) DECLARE,
     required TResult Function(DeployAccountTransactionTrace value)
-        deploy_account,
-    required TResult Function(L1HandlerTransactionTrace value) l1_handler,
+        DEPLOY_ACCOUNT,
+    required TResult Function(L1HandlerTransactionTrace value) L1_HANDLER,
   }) {
-    return deploy_account(this);
+    return DEPLOY_ACCOUNT(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(InvokeTransactionTrace value)? invoke,
-    TResult? Function(DeclareTransactionTrace value)? declare,
-    TResult? Function(DeployAccountTransactionTrace value)? deploy_account,
-    TResult? Function(L1HandlerTransactionTrace value)? l1_handler,
+    TResult? Function(InvokeTransactionTrace value)? INVOKE,
+    TResult? Function(DeclareTransactionTrace value)? DECLARE,
+    TResult? Function(DeployAccountTransactionTrace value)? DEPLOY_ACCOUNT,
+    TResult? Function(L1HandlerTransactionTrace value)? L1_HANDLER,
   }) {
-    return deploy_account?.call(this);
+    return DEPLOY_ACCOUNT?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(InvokeTransactionTrace value)? invoke,
-    TResult Function(DeclareTransactionTrace value)? declare,
-    TResult Function(DeployAccountTransactionTrace value)? deploy_account,
-    TResult Function(L1HandlerTransactionTrace value)? l1_handler,
+    TResult Function(InvokeTransactionTrace value)? INVOKE,
+    TResult Function(DeclareTransactionTrace value)? DECLARE,
+    TResult Function(DeployAccountTransactionTrace value)? DEPLOY_ACCOUNT,
+    TResult Function(L1HandlerTransactionTrace value)? L1_HANDLER,
     required TResult orElse(),
   }) {
-    if (deploy_account != null) {
-      return deploy_account(this);
+    if (DEPLOY_ACCOUNT != null) {
+      return DEPLOY_ACCOUNT(this);
     }
     return orElse();
   }
@@ -1413,7 +1413,7 @@ class _$L1HandlerTransactionTraceImpl implements L1HandlerTransactionTrace {
       @JsonKey(name: 'state_diff') this.stateDiff,
       @JsonKey(name: 'execution_resources') required this.executionResources,
       final String? $type})
-      : $type = $type ?? 'l1_handler';
+      : $type = $type ?? 'L1_HANDLER';
 
   factory _$L1HandlerTransactionTraceImpl.fromJson(Map<String, dynamic> json) =>
       _$$L1HandlerTransactionTraceImplFromJson(json);
@@ -1433,7 +1433,7 @@ class _$L1HandlerTransactionTraceImpl implements L1HandlerTransactionTrace {
 
   @override
   String toString() {
-    return 'TransactionTrace.l1_handler(functionInvocation: $functionInvocation, stateDiff: $stateDiff, executionResources: $executionResources)';
+    return 'TransactionTrace.L1_HANDLER(functionInvocation: $functionInvocation, stateDiff: $stateDiff, executionResources: $executionResources)';
   }
 
   @override
@@ -1477,7 +1477,7 @@ class _$L1HandlerTransactionTraceImpl implements L1HandlerTransactionTrace {
             @JsonKey(name: 'state_diff') TraceStateDiff? stateDiff,
             @JsonKey(name: 'execution_resources')
             InnerCallExecutionResources executionResources)
-        invoke,
+        INVOKE,
     required TResult Function(
             @JsonKey(name: 'validate_invocation')
             FunctionInvocation? validateInvocation,
@@ -1486,7 +1486,7 @@ class _$L1HandlerTransactionTraceImpl implements L1HandlerTransactionTrace {
             @JsonKey(name: 'state_diff') TraceStateDiff? stateDiff,
             @JsonKey(name: 'execution_resources')
             InnerCallExecutionResources executionResources)
-        declare,
+        DECLARE,
     required TResult Function(
             @JsonKey(name: 'validate_invocation')
             FunctionInvocation? validateInvocation,
@@ -1497,16 +1497,16 @@ class _$L1HandlerTransactionTraceImpl implements L1HandlerTransactionTrace {
             @JsonKey(name: 'state_diff') TraceStateDiff? stateDiff,
             @JsonKey(name: 'execution_resources')
             InnerCallExecutionResources executionResources)
-        deploy_account,
+        DEPLOY_ACCOUNT,
     required TResult Function(
             @JsonKey(name: 'function_invocation')
             FunctionInvocation functionInvocation,
             @JsonKey(name: 'state_diff') TraceStateDiff? stateDiff,
             @JsonKey(name: 'execution_resources')
             InnerCallExecutionResources executionResources)
-        l1_handler,
+        L1_HANDLER,
   }) {
-    return l1_handler(functionInvocation, stateDiff, executionResources);
+    return L1_HANDLER(functionInvocation, stateDiff, executionResources);
   }
 
   @override
@@ -1523,7 +1523,7 @@ class _$L1HandlerTransactionTraceImpl implements L1HandlerTransactionTrace {
             @JsonKey(name: 'state_diff') TraceStateDiff? stateDiff,
             @JsonKey(name: 'execution_resources')
             InnerCallExecutionResources executionResources)?
-        invoke,
+        INVOKE,
     TResult? Function(
             @JsonKey(name: 'validate_invocation')
             FunctionInvocation? validateInvocation,
@@ -1532,7 +1532,7 @@ class _$L1HandlerTransactionTraceImpl implements L1HandlerTransactionTrace {
             @JsonKey(name: 'state_diff') TraceStateDiff? stateDiff,
             @JsonKey(name: 'execution_resources')
             InnerCallExecutionResources executionResources)?
-        declare,
+        DECLARE,
     TResult? Function(
             @JsonKey(name: 'validate_invocation')
             FunctionInvocation? validateInvocation,
@@ -1543,16 +1543,16 @@ class _$L1HandlerTransactionTraceImpl implements L1HandlerTransactionTrace {
             @JsonKey(name: 'state_diff') TraceStateDiff? stateDiff,
             @JsonKey(name: 'execution_resources')
             InnerCallExecutionResources executionResources)?
-        deploy_account,
+        DEPLOY_ACCOUNT,
     TResult? Function(
             @JsonKey(name: 'function_invocation')
             FunctionInvocation functionInvocation,
             @JsonKey(name: 'state_diff') TraceStateDiff? stateDiff,
             @JsonKey(name: 'execution_resources')
             InnerCallExecutionResources executionResources)?
-        l1_handler,
+        L1_HANDLER,
   }) {
-    return l1_handler?.call(functionInvocation, stateDiff, executionResources);
+    return L1_HANDLER?.call(functionInvocation, stateDiff, executionResources);
   }
 
   @override
@@ -1569,7 +1569,7 @@ class _$L1HandlerTransactionTraceImpl implements L1HandlerTransactionTrace {
             @JsonKey(name: 'state_diff') TraceStateDiff? stateDiff,
             @JsonKey(name: 'execution_resources')
             InnerCallExecutionResources executionResources)?
-        invoke,
+        INVOKE,
     TResult Function(
             @JsonKey(name: 'validate_invocation')
             FunctionInvocation? validateInvocation,
@@ -1578,7 +1578,7 @@ class _$L1HandlerTransactionTraceImpl implements L1HandlerTransactionTrace {
             @JsonKey(name: 'state_diff') TraceStateDiff? stateDiff,
             @JsonKey(name: 'execution_resources')
             InnerCallExecutionResources executionResources)?
-        declare,
+        DECLARE,
     TResult Function(
             @JsonKey(name: 'validate_invocation')
             FunctionInvocation? validateInvocation,
@@ -1589,18 +1589,18 @@ class _$L1HandlerTransactionTraceImpl implements L1HandlerTransactionTrace {
             @JsonKey(name: 'state_diff') TraceStateDiff? stateDiff,
             @JsonKey(name: 'execution_resources')
             InnerCallExecutionResources executionResources)?
-        deploy_account,
+        DEPLOY_ACCOUNT,
     TResult Function(
             @JsonKey(name: 'function_invocation')
             FunctionInvocation functionInvocation,
             @JsonKey(name: 'state_diff') TraceStateDiff? stateDiff,
             @JsonKey(name: 'execution_resources')
             InnerCallExecutionResources executionResources)?
-        l1_handler,
+        L1_HANDLER,
     required TResult orElse(),
   }) {
-    if (l1_handler != null) {
-      return l1_handler(functionInvocation, stateDiff, executionResources);
+    if (L1_HANDLER != null) {
+      return L1_HANDLER(functionInvocation, stateDiff, executionResources);
     }
     return orElse();
   }
@@ -1608,37 +1608,37 @@ class _$L1HandlerTransactionTraceImpl implements L1HandlerTransactionTrace {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(InvokeTransactionTrace value) invoke,
-    required TResult Function(DeclareTransactionTrace value) declare,
+    required TResult Function(InvokeTransactionTrace value) INVOKE,
+    required TResult Function(DeclareTransactionTrace value) DECLARE,
     required TResult Function(DeployAccountTransactionTrace value)
-        deploy_account,
-    required TResult Function(L1HandlerTransactionTrace value) l1_handler,
+        DEPLOY_ACCOUNT,
+    required TResult Function(L1HandlerTransactionTrace value) L1_HANDLER,
   }) {
-    return l1_handler(this);
+    return L1_HANDLER(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(InvokeTransactionTrace value)? invoke,
-    TResult? Function(DeclareTransactionTrace value)? declare,
-    TResult? Function(DeployAccountTransactionTrace value)? deploy_account,
-    TResult? Function(L1HandlerTransactionTrace value)? l1_handler,
+    TResult? Function(InvokeTransactionTrace value)? INVOKE,
+    TResult? Function(DeclareTransactionTrace value)? DECLARE,
+    TResult? Function(DeployAccountTransactionTrace value)? DEPLOY_ACCOUNT,
+    TResult? Function(L1HandlerTransactionTrace value)? L1_HANDLER,
   }) {
-    return l1_handler?.call(this);
+    return L1_HANDLER?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(InvokeTransactionTrace value)? invoke,
-    TResult Function(DeclareTransactionTrace value)? declare,
-    TResult Function(DeployAccountTransactionTrace value)? deploy_account,
-    TResult Function(L1HandlerTransactionTrace value)? l1_handler,
+    TResult Function(InvokeTransactionTrace value)? INVOKE,
+    TResult Function(DeclareTransactionTrace value)? DECLARE,
+    TResult Function(DeployAccountTransactionTrace value)? DEPLOY_ACCOUNT,
+    TResult Function(L1HandlerTransactionTrace value)? L1_HANDLER,
     required TResult orElse(),
   }) {
-    if (l1_handler != null) {
-      return l1_handler(this);
+    if (L1_HANDLER != null) {
+      return L1_HANDLER(this);
     }
     return orElse();
   }

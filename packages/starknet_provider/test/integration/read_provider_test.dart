@@ -966,6 +966,9 @@ void main() {
 
     group('getMessagesStatus', () {
       test('returns message status for valid message hashes', () async {
+        if (!await isRpcVersionSufficient(provider, '0.8')) {
+          return;
+        }
         final transactionHashes = [
           Felt.fromHexString('0x1234567890123456789012345678901234567890'),
           Felt.fromHexString('0x0987654321098765432109876543210987654321'),
@@ -990,6 +993,9 @@ void main() {
       });
 
       test('returns error with empty message hashes list', () async {
+        if (!await isRpcVersionSufficient(provider, '0.8')) {
+          return;
+        }
         final request = GetMessagesStatusRequest(
           transactionHashes: [],
         );
@@ -1005,6 +1011,9 @@ void main() {
       });
 
       test('returns error with invalid message hash format', () async {
+        if (!await isRpcVersionSufficient(provider, '0.8')) {
+          return;
+        }
         final transactionHashes = [
           Felt.fromHexString(
               '0x0000000000000000000000000000000000000000000000000000000000000000'),
@@ -1029,6 +1038,9 @@ void main() {
       test(
           'returns storage proof for valid contract addresses and storage keys',
           () async {
+        if (!await isRpcVersionSufficient(provider, '0.8')) {
+          return;
+        }
         final contractAddresses = [
           Felt.fromHexString('0x1234567890123456789012345678901234567890'),
         ];
@@ -1066,6 +1078,9 @@ void main() {
       });
 
       test('returns error with empty request', () async {
+        if (!await isRpcVersionSufficient(provider, '0.8')) {
+          return;
+        }
         final request = GetStorageProofRequest(
           blockId: BlockId.latest,
         );
@@ -1081,6 +1096,9 @@ void main() {
       });
 
       test('returns error with invalid block id', () async {
+        if (!await isRpcVersionSufficient(provider, '0.8')) {
+          return;
+        }
         final contractAddresses = [
           Felt.fromHexString('0x1234567890123456789012345678901234567890'),
         ];
@@ -1467,6 +1485,9 @@ void main() {
 
     group('starknet_getTransactionStatus', () {
       test('should handle non-existent transaction hash', () async {
+        if (!await isRpcVersionSufficient(provider, '0.8')) {
+          return;
+        }
         final response = await provider.getTransactionStatus(
           Felt.fromHexString(
               '0x0100000000000000000000000000000000000000000000000000000000000000'),
@@ -1480,6 +1501,9 @@ void main() {
       });
 
       test('should handle real transaction status', () async {
+        if (!await isRpcVersionSufficient(provider, '0.8')) {
+          return;
+        }
         final response =
             await provider.getTransactionStatus(invokeTransactionHash);
         response.when(

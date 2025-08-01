@@ -34,7 +34,7 @@ class ExecuteInvocationConverter
 
 @Freezed(unionKey: 'type')
 sealed class TransactionTrace with _$TransactionTrace {
-  const factory TransactionTrace.invoke({
+  const factory TransactionTrace.INVOKE({
     @JsonKey(name: 'validate_invocation')
     FunctionInvocation? validateInvocation,
     @JsonKey(name: 'execute_invocation')
@@ -47,7 +47,7 @@ sealed class TransactionTrace with _$TransactionTrace {
     required InnerCallExecutionResources executionResources,
   }) = InvokeTransactionTrace;
 
-  const factory TransactionTrace.declare({
+  const factory TransactionTrace.DECLARE({
     @JsonKey(name: 'validate_invocation')
     FunctionInvocation? validateInvocation,
     @JsonKey(name: 'fee_transfer_invocation')
@@ -57,7 +57,7 @@ sealed class TransactionTrace with _$TransactionTrace {
     required InnerCallExecutionResources executionResources,
   }) = DeclareTransactionTrace;
 
-  const factory TransactionTrace.deploy_account({
+  const factory TransactionTrace.DEPLOY_ACCOUNT({
     @JsonKey(name: 'validate_invocation')
     FunctionInvocation? validateInvocation,
     @JsonKey(name: 'constructor_invocation')
@@ -69,7 +69,7 @@ sealed class TransactionTrace with _$TransactionTrace {
     required InnerCallExecutionResources executionResources,
   }) = DeployAccountTransactionTrace;
 
-  const factory TransactionTrace.l1_handler({
+  const factory TransactionTrace.L1_HANDLER({
     @JsonKey(name: 'function_invocation')
     required FunctionInvocation functionInvocation,
     @JsonKey(name: 'state_diff') TraceStateDiff? stateDiff,
@@ -109,11 +109,13 @@ class FunctionInvocation {
   final String callType;
   final List<Felt> result;
   final List<FunctionInvocation> calls;
+  @JsonKey(defaultValue: [])
   final List<OrderedEvent> events;
+  @JsonKey(defaultValue: [])
   final List<OrderedMessage> messages;
   @JsonKey(name: 'execution_resources')
   final InnerCallExecutionResources executionResources;
-  @JsonKey(name: 'is_reverted')
+  @JsonKey(name: 'is_reverted', defaultValue: false)
   final bool isReverted;
 
   FunctionInvocation({
@@ -185,9 +187,9 @@ class TraceStateDiff {
 
 @JsonSerializable()
 class InnerCallExecutionResources {
-  @JsonKey(name: 'l1_gas')
+  @JsonKey(name: 'l1_gas', fromJson: _l1GasFromJson)
   final int l1Gas;
-  @JsonKey(name: 'l2_gas')
+  @JsonKey(name: 'l2_gas', fromJson: _l2GasFromJson)
   final int l2Gas;
 
   InnerCallExecutionResources({
@@ -198,6 +200,19 @@ class InnerCallExecutionResources {
   factory InnerCallExecutionResources.fromJson(Map<String, dynamic> json) =>
       _$InnerCallExecutionResourcesFromJson(json);
   Map<String, dynamic> toJson() => _$InnerCallExecutionResourcesToJson(this);
+}
+
+int _l1GasFromJson(dynamic value) {
+  if (value is int) return value;
+  if (value is Map<String, dynamic> && value.containsKey('l1_gas')) {
+    return value['l1_gas'] as int? ?? 0;
+  }
+  return 0;
+}
+
+int _l2GasFromJson(dynamic value) {
+  if (value is int) return value;
+  return 0;
 }
 
 @freezed

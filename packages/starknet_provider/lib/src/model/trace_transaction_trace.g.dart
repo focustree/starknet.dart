@@ -18,15 +18,17 @@ FunctionInvocation _$FunctionInvocationFromJson(Map<String, dynamic> json) =>
       calls: (json['calls'] as List<dynamic>)
           .map((e) => FunctionInvocation.fromJson(e as Map<String, dynamic>))
           .toList(),
-      events: (json['events'] as List<dynamic>)
-          .map((e) => OrderedEvent.fromJson(e as Map<String, dynamic>))
-          .toList(),
-      messages: (json['messages'] as List<dynamic>)
-          .map((e) => OrderedMessage.fromJson(e as Map<String, dynamic>))
-          .toList(),
+      events: (json['events'] as List<dynamic>?)
+              ?.map((e) => OrderedEvent.fromJson(e as Map<String, dynamic>))
+              .toList() ??
+          [],
+      messages: (json['messages'] as List<dynamic>?)
+              ?.map((e) => OrderedMessage.fromJson(e as Map<String, dynamic>))
+              .toList() ??
+          [],
       executionResources: InnerCallExecutionResources.fromJson(
           json['execution_resources'] as Map<String, dynamic>),
-      isReverted: json['is_reverted'] as bool,
+      isReverted: json['is_reverted'] as bool? ?? false,
     );
 
 Map<String, dynamic> _$FunctionInvocationToJson(FunctionInvocation instance) =>
@@ -87,8 +89,8 @@ Map<String, dynamic> _$TraceStateDiffToJson(TraceStateDiff instance) =>
 InnerCallExecutionResources _$InnerCallExecutionResourcesFromJson(
         Map<String, dynamic> json) =>
     InnerCallExecutionResources(
-      l1Gas: (json['l1_gas'] as num).toInt(),
-      l2Gas: (json['l2_gas'] as num).toInt(),
+      l1Gas: _l1GasFromJson(json['l1_gas']),
+      l2Gas: _l2GasFromJson(json['l2_gas']),
     );
 
 Map<String, dynamic> _$InnerCallExecutionResourcesToJson(

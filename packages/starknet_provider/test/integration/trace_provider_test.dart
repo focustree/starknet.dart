@@ -8,6 +8,7 @@ import '../utils.dart';
 void main() {
   group('TraceProvider', () {
     late TraceProvider provider;
+    late ReadProvider readProvider;
 
     Felt invokeTransactionHash = Felt.fromHexString(
         '0x029583643cd8932f1955bf28bfebf4c907b13df1e5c2d202b133cfbf783697a2');
@@ -18,6 +19,7 @@ void main() {
 
     setUpAll(() {
       provider = JsonRpcTraceProvider(nodeUri: devnetUri);
+      readProvider = JsonRpcReadProvider(nodeUri: devnetUri);
     });
 
     setUp(() async {
@@ -26,6 +28,9 @@ void main() {
 
     group('traceTransaction', () {
       test('returns transaction trace for valid transaction hash', () async {
+        if (!await isRpcVersionSufficient(readProvider, '0.8')) {
+          return;
+        }
         final response = await provider.traceTransaction(invokeTransactionHash);
 
         response.when(
@@ -45,6 +50,9 @@ void main() {
       });
 
       test('returns error with invalid transaction hash', () async {
+        if (!await isRpcVersionSufficient(readProvider, '0.8')) {
+          return;
+        }
         final invalidHash = Felt.fromHexString(
             '0x0000000000000000000000000000000000000000000000000000000000000000');
 
@@ -69,6 +77,9 @@ void main() {
 
     group('traceBlockTransactions', () {
       test('returns block transaction traces for valid block id', () async {
+        if (!await isRpcVersionSufficient(readProvider, '0.8')) {
+          return;
+        }
         final response =
             await provider.traceBlockTransactions(blockIdFromBlockNumber);
 
@@ -115,6 +126,9 @@ void main() {
       });
 
       test('returns error with invalid block id', () async {
+        if (!await isRpcVersionSufficient(readProvider, '0.8')) {
+          return;
+        }
         final response =
             await provider.traceBlockTransactions(invalidBlockIdFromBlockHash);
 
