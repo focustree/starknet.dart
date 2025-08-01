@@ -189,8 +189,8 @@ class Account {
       accountDeploymentData: accountDeploymentData,
       paymasterData: paymasterData,
       tip: tip,
-      feeDataAvailabilityMode: feeDataAvailabilityMode!,
-      nonceDataAvailabilityMode: nonceDataAvailabilityMode!,
+      feeDataAvailabilityMode: feeDataAvailabilityMode,
+      nonceDataAvailabilityMode: nonceDataAvailabilityMode,
     );
 
     broadcastedTxn = BroadcastedDeclareTxnV3(
@@ -545,8 +545,8 @@ class Account {
       accountDeploymentData: accountDeploymentData,
       paymasterData: paymasterData,
       tip: tip,
-      feeDataAvailabilityMode: feeDataAvailabilityMode!,
-      nonceDataAvailabilityMode: nonceDataAvailabilityMode!,
+      feeDataAvailabilityMode: feeDataAvailabilityMode,
+      nonceDataAvailabilityMode: nonceDataAvailabilityMode,
     );
 
     return provider.addDeclareTransaction(

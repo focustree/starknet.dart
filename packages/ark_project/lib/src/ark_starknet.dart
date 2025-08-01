@@ -79,6 +79,21 @@ class ArkStarknet {
       ...computeCalldata(order.additionalData),
     ];
 
+    final maxFee = await starknetAccount.getEstimateMaxFeeForInvokeTx(
+      functionCalls: [
+        FunctionCall(
+          contractAddress: Felt.fromHexString(nftAddress),
+          entryPointSelector: getSelectorByName('approve'),
+          calldata: [arkExecutorAddress, Felt(tokenIdBigInt), Felt.zero],
+        ),
+        FunctionCall(
+          contractAddress: arkExecutorAddress,
+          entryPointSelector: getSelectorByName('create_order'),
+          calldata: callData,
+        ),
+      ],
+    );
+
     final response = await starknetAccount.execute(
       functionCalls: [
         ...additionalFunctionCalls ?? [],
@@ -93,7 +108,8 @@ class ArkStarknet {
           calldata: callData,
         ),
       ],
-      max_fee: maxFee,
+      l1MaxAmount: maxFee.maxAmount,
+      l1MaxPricePerUnit: maxFee.maxPricePerUnit,
       nonce: nonce,
     );
 
@@ -135,6 +151,16 @@ class ArkStarknet {
       ...computeCalldata(fullCancelInfo.tokenId),
     ];
 
+    final maxFee = await starknetAccount.getEstimateMaxFeeForInvokeTx(
+      functionCalls: [
+        FunctionCall(
+          contractAddress: arkExecutorAddress,
+          entryPointSelector: getSelectorByName('cancel_order'),
+          calldata: callData,
+        ),
+      ],
+    );
+
     final response = await starknetAccount.execute(
       functionCalls: [
         FunctionCall(
@@ -143,7 +169,8 @@ class ArkStarknet {
           calldata: callData,
         ),
       ],
-      max_fee: maxFee,
+      l1MaxAmount: maxFee.maxAmount,
+      l1MaxPricePerUnit: maxFee.maxPricePerUnit,
       nonce: nonce,
     );
 
@@ -220,6 +247,21 @@ class ArkStarknet {
       ...computeCalldata(order.additionalData),
     ];
 
+    final maxFee = await starknetAccount.getEstimateMaxFeeForInvokeTx(
+      functionCalls: [
+        FunctionCall(
+          contractAddress: Felt.fromHexString(currencyAddress),
+          entryPointSelector: getSelectorByName('approve'),
+          calldata: [arkExecutorAddress, Felt(bigIntAmount), Felt.zero],
+        ),
+        FunctionCall(
+          contractAddress: arkExecutorAddress,
+          entryPointSelector: getSelectorByName('create_order'),
+          calldata: callData,
+        ),
+      ],
+    );
+
     final response = await starknetAccount.execute(
       functionCalls: [
         FunctionCall(
@@ -233,7 +275,8 @@ class ArkStarknet {
           calldata: callData,
         ),
       ],
-      max_fee: maxFee,
+      l1MaxAmount: maxFee.maxAmount,
+      l1MaxPricePerUnit: maxFee.maxPricePerUnit,
       nonce: nonce,
     );
 
@@ -288,6 +331,21 @@ class ArkStarknet {
       ...computeCalldata(fulfillInfo.fulfillBrokerAddress),
     ];
 
+    final maxFee = await starknetAccount.getEstimateMaxFeeForInvokeTx(
+      functionCalls: [
+        FunctionCall(
+          contractAddress: Felt.fromHexString(currencyAddress),
+          entryPointSelector: getSelectorByName('approve'),
+          calldata: [arkExecutorAddress, Felt(bigIntAmount), Felt.zero],
+        ),
+        FunctionCall(
+          contractAddress: arkExecutorAddress,
+          entryPointSelector: getSelectorByName('fulfill_order'),
+          calldata: callData,
+        ),
+      ],
+    );
+
     final response = await starknetAccount.execute(
       functionCalls: [
         FunctionCall(
@@ -301,7 +359,8 @@ class ArkStarknet {
           calldata: callData,
         ),
       ],
-      max_fee: maxFee,
+      l1MaxAmount: maxFee.maxAmount,
+      l1MaxPricePerUnit: maxFee.maxPricePerUnit,
       nonce: nonce,
     );
 
@@ -353,6 +412,21 @@ class ArkStarknet {
       ...computeCalldata(fulfillInfo.fulfillBrokerAddress),
     ];
 
+    final maxFee = await starknetAccount.getEstimateMaxFeeForInvokeTx(
+      functionCalls: [
+        FunctionCall(
+          contractAddress: Felt.fromHexString(nftAddress),
+          entryPointSelector: getSelectorByName('approve'),
+          calldata: [arkExecutorAddress, Felt(tokenIdBigInt), Felt.zero],
+        ),
+        FunctionCall(
+          contractAddress: arkExecutorAddress,
+          entryPointSelector: getSelectorByName('fulfill_order'),
+          calldata: callData,
+        ),
+      ],
+    );
+
     final response = await starknetAccount.execute(
       functionCalls: [
         FunctionCall(
@@ -366,7 +440,8 @@ class ArkStarknet {
           calldata: callData,
         ),
       ],
-      max_fee: maxFee,
+      l1MaxAmount: maxFee.maxAmount,
+      l1MaxPricePerUnit: maxFee.maxPricePerUnit,
       nonce: nonce,
     );
 

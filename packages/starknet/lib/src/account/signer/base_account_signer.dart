@@ -122,7 +122,7 @@ abstract class BaseAccountSigner {
       nonce: nonce,
       resourceBounds: resourceBounds!,
       accountDeploymentData: accountDeploymentData,
-      paymasterData: paymasterData!,
+      paymasterData: paymasterData,
       tip: tip,
       feeDataAvailabilityMode: feeDataAvailabilityMode,
       nonceDataAvailabilityMode: nonceDataAvailabilityMode,
