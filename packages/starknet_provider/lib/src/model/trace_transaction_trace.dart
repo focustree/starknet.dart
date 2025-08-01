@@ -2,8 +2,12 @@
 
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:starknet/starknet.dart';
-import 'package:starknet_provider/src/model/components/event.dart';
-import 'package:starknet_provider/src/model/components/msg_to_l1.dart';
+import 'package:starknet_provider/src/model/index.dart';
+import 'package:starknet_provider/src/model/state_update.dart';
+import 'components/call_type.dart';
+import 'components/entry_point_type.dart';
+import 'components/event.dart';
+import 'components/msg_to_l1.dart';
 
 import 'json_rpc_api_error.dart';
 
@@ -44,7 +48,7 @@ sealed class TransactionTrace with _$TransactionTrace {
     FunctionInvocation? feeTransferInvocation,
     @JsonKey(name: 'state_diff') TraceStateDiff? stateDiff,
     @JsonKey(name: 'execution_resources')
-    required InnerCallExecutionResources executionResources,
+    required ExecutionResources executionResources,
   }) = InvokeTransactionTrace;
 
   const factory TransactionTrace.DECLARE({
@@ -54,7 +58,7 @@ sealed class TransactionTrace with _$TransactionTrace {
     FunctionInvocation? feeTransferInvocation,
     @JsonKey(name: 'state_diff') TraceStateDiff? stateDiff,
     @JsonKey(name: 'execution_resources')
-    required InnerCallExecutionResources executionResources,
+    required ExecutionResources executionResources,
   }) = DeclareTransactionTrace;
 
   const factory TransactionTrace.DEPLOY_ACCOUNT({
@@ -66,7 +70,7 @@ sealed class TransactionTrace with _$TransactionTrace {
     FunctionInvocation? feeTransferInvocation,
     @JsonKey(name: 'state_diff') TraceStateDiff? stateDiff,
     @JsonKey(name: 'execution_resources')
-    required InnerCallExecutionResources executionResources,
+    required ExecutionResources executionResources,
   }) = DeployAccountTransactionTrace;
 
   const factory TransactionTrace.L1_HANDLER({
@@ -74,7 +78,7 @@ sealed class TransactionTrace with _$TransactionTrace {
     required FunctionInvocation functionInvocation,
     @JsonKey(name: 'state_diff') TraceStateDiff? stateDiff,
     @JsonKey(name: 'execution_resources')
-    required InnerCallExecutionResources executionResources,
+    required ExecutionResources executionResources,
   }) = L1HandlerTransactionTrace;
 
   factory TransactionTrace.fromJson(Map<String, dynamic> json) =>
@@ -96,13 +100,13 @@ sealed class ExecuteInvocation with _$ExecuteInvocation {
 @JsonSerializable()
 class FunctionInvocation {
   @JsonKey(name: 'caller_address')
-  final String callerAddress;
+  final Felt callerAddress;
   @JsonKey(name: 'class_hash')
-  final String classHash;
+  final Felt classHash;
   @JsonKey(name: 'entry_point_type')
-  final String entryPointType;
+  final EntryPointType entryPointType;
   @JsonKey(name: 'call_type')
-  final String callType;
+  final CallType callType;
   final List<Felt> result;
   final List<FunctionInvocation> calls;
   @JsonKey(defaultValue: [])
@@ -164,16 +168,25 @@ class OrderedMessage {
 
 @JsonSerializable()
 class TraceStateDiff {
-  final Map<String, String> deployedContracts;
-  final Map<String, String> declaredClasses;
-  final Map<String, String> nonces;
-  final Map<String, String> storageDiffs;
+  @JsonKey(name: 'storage_diffs')
+  final List<ContractStorageDiffItem> storageDiffs;
+  @JsonKey(name: 'deprecated_declared_classes')
+  final List<Felt> deprecatedDeclaredClasses;
+  @JsonKey(name: 'declared_classes')
+  final List<DeclaredClass> declaredClasses;
+  @JsonKey(name: 'deployed_contracts')
+  final List<DeployedContractItem> deployedContracts;
+  @JsonKey(name: 'replaced_classes')
+  final List<ReplacedClass> replacedClasses;
+  final List<NonceAndContractAddress> nonces;
 
   TraceStateDiff({
-    required this.deployedContracts,
-    required this.declaredClasses,
-    required this.nonces,
     required this.storageDiffs,
+    required this.deprecatedDeclaredClasses,
+    required this.declaredClasses,
+    required this.deployedContracts,
+    required this.replacedClasses,
+    required this.nonces,
   });
 
   factory TraceStateDiff.fromJson(Map<String, dynamic> json) =>
@@ -210,6 +223,34 @@ int _l2GasFromJson(dynamic value) {
   if (value is int) return value;
   if (value is Map<String, dynamic> && value.containsKey('l2_gas')) {
     return value['l2_gas'] as int? ?? 0;
+  }
+  return 0;
+}
+
+@JsonSerializable()
+class ExecutionResources {
+  @JsonKey(name: 'l1_gas', fromJson: _l1GasFromJson)
+  final int l1Gas;
+  @JsonKey(name: 'l1_data_gas', fromJson: _l1DataGasFromJson)
+  final int l1DataGas;
+  @JsonKey(name: 'l2_gas', fromJson: _l2GasFromJson)
+  final int l2Gas;
+
+  ExecutionResources({
+    required this.l1Gas,
+    required this.l1DataGas,
+    required this.l2Gas,
+  });
+
+  factory ExecutionResources.fromJson(Map<String, dynamic> json) =>
+      _$ExecutionResourcesFromJson(json);
+  Map<String, dynamic> toJson() => _$ExecutionResourcesToJson(this);
+}
+
+int _l1DataGasFromJson(dynamic value) {
+  if (value is int) return value;
+  if (value is Map<String, dynamic> && value.containsKey('l1_data_gas')) {
+    return value['l1_data_gas'] as int? ?? 0;
   }
   return 0;
 }

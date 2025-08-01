@@ -8,10 +8,11 @@ part of 'trace_transaction_trace.dart';
 
 FunctionInvocation _$FunctionInvocationFromJson(Map<String, dynamic> json) =>
     FunctionInvocation(
-      callerAddress: json['caller_address'] as String,
-      classHash: json['class_hash'] as String,
-      entryPointType: json['entry_point_type'] as String,
-      callType: json['call_type'] as String,
+      callerAddress: Felt.fromJson(json['caller_address'] as String),
+      classHash: Felt.fromJson(json['class_hash'] as String),
+      entryPointType:
+          $enumDecode(_$EntryPointTypeEnumMap, json['entry_point_type']),
+      callType: $enumDecode(_$CallTypeEnumMap, json['call_type']),
       result: (json['result'] as List<dynamic>)
           .map((e) => Felt.fromJson(e as String))
           .toList(),
@@ -33,10 +34,10 @@ FunctionInvocation _$FunctionInvocationFromJson(Map<String, dynamic> json) =>
 
 Map<String, dynamic> _$FunctionInvocationToJson(FunctionInvocation instance) =>
     <String, dynamic>{
-      'caller_address': instance.callerAddress,
-      'class_hash': instance.classHash,
-      'entry_point_type': instance.entryPointType,
-      'call_type': instance.callType,
+      'caller_address': instance.callerAddress.toJson(),
+      'class_hash': instance.classHash.toJson(),
+      'entry_point_type': _$EntryPointTypeEnumMap[instance.entryPointType]!,
+      'call_type': _$CallTypeEnumMap[instance.callType]!,
       'result': instance.result.map((e) => e.toJson()).toList(),
       'calls': instance.calls.map((e) => e.toJson()).toList(),
       'events': instance.events.map((e) => e.toJson()).toList(),
@@ -44,6 +45,18 @@ Map<String, dynamic> _$FunctionInvocationToJson(FunctionInvocation instance) =>
       'execution_resources': instance.executionResources.toJson(),
       'is_reverted': instance.isReverted,
     };
+
+const _$EntryPointTypeEnumMap = {
+  EntryPointType.EXTERNAL: 'EXTERNAL',
+  EntryPointType.L1_HANDLER: 'L1_HANDLER',
+  EntryPointType.CONSTRUCTOR: 'CONSTRUCTOR',
+};
+
+const _$CallTypeEnumMap = {
+  CallType.LIBRARY_CALL: 'LIBRARY_CALL',
+  CallType.CALL: 'CALL',
+  CallType.DELEGATE: 'DELEGATE',
+};
 
 OrderedEvent _$OrderedEventFromJson(Map<String, dynamic> json) => OrderedEvent(
       order: (json['order'] as num).toInt(),
@@ -70,20 +83,41 @@ Map<String, dynamic> _$OrderedMessageToJson(OrderedMessage instance) =>
 
 TraceStateDiff _$TraceStateDiffFromJson(Map<String, dynamic> json) =>
     TraceStateDiff(
-      deployedContracts:
-          Map<String, String>.from(json['deployed_contracts'] as Map),
-      declaredClasses:
-          Map<String, String>.from(json['declared_classes'] as Map),
-      nonces: Map<String, String>.from(json['nonces'] as Map),
-      storageDiffs: Map<String, String>.from(json['storage_diffs'] as Map),
+      storageDiffs: (json['storage_diffs'] as List<dynamic>)
+          .map((e) =>
+              ContractStorageDiffItem.fromJson(e as Map<String, dynamic>))
+          .toList(),
+      deprecatedDeclaredClasses:
+          (json['deprecated_declared_classes'] as List<dynamic>)
+              .map((e) => Felt.fromJson(e as String))
+              .toList(),
+      declaredClasses: (json['declared_classes'] as List<dynamic>)
+          .map((e) => DeclaredClass.fromJson(e as Map<String, dynamic>))
+          .toList(),
+      deployedContracts: (json['deployed_contracts'] as List<dynamic>)
+          .map((e) => DeployedContractItem.fromJson(e as Map<String, dynamic>))
+          .toList(),
+      replacedClasses: (json['replaced_classes'] as List<dynamic>)
+          .map((e) => ReplacedClass.fromJson(e as Map<String, dynamic>))
+          .toList(),
+      nonces: (json['nonces'] as List<dynamic>)
+          .map((e) =>
+              NonceAndContractAddress.fromJson(e as Map<String, dynamic>))
+          .toList(),
     );
 
 Map<String, dynamic> _$TraceStateDiffToJson(TraceStateDiff instance) =>
     <String, dynamic>{
-      'deployed_contracts': instance.deployedContracts,
-      'declared_classes': instance.declaredClasses,
-      'nonces': instance.nonces,
-      'storage_diffs': instance.storageDiffs,
+      'storage_diffs': instance.storageDiffs.map((e) => e.toJson()).toList(),
+      'deprecated_declared_classes':
+          instance.deprecatedDeclaredClasses.map((e) => e.toJson()).toList(),
+      'declared_classes':
+          instance.declaredClasses.map((e) => e.toJson()).toList(),
+      'deployed_contracts':
+          instance.deployedContracts.map((e) => e.toJson()).toList(),
+      'replaced_classes':
+          instance.replacedClasses.map((e) => e.toJson()).toList(),
+      'nonces': instance.nonces.map((e) => e.toJson()).toList(),
     };
 
 InnerCallExecutionResources _$InnerCallExecutionResourcesFromJson(
@@ -97,6 +131,20 @@ Map<String, dynamic> _$InnerCallExecutionResourcesToJson(
         InnerCallExecutionResources instance) =>
     <String, dynamic>{
       'l1_gas': instance.l1Gas,
+      'l2_gas': instance.l2Gas,
+    };
+
+ExecutionResources _$ExecutionResourcesFromJson(Map<String, dynamic> json) =>
+    ExecutionResources(
+      l1Gas: _l1GasFromJson(json['l1_gas']),
+      l1DataGas: _l1DataGasFromJson(json['l1_data_gas']),
+      l2Gas: _l2GasFromJson(json['l2_gas']),
+    );
+
+Map<String, dynamic> _$ExecutionResourcesToJson(ExecutionResources instance) =>
+    <String, dynamic>{
+      'l1_gas': instance.l1Gas,
+      'l1_data_gas': instance.l1DataGas,
       'l2_gas': instance.l2Gas,
     };
 
@@ -116,7 +164,7 @@ _$InvokeTransactionTraceImpl _$$InvokeTransactionTraceImplFromJson(
       stateDiff: json['state_diff'] == null
           ? null
           : TraceStateDiff.fromJson(json['state_diff'] as Map<String, dynamic>),
-      executionResources: InnerCallExecutionResources.fromJson(
+      executionResources: ExecutionResources.fromJson(
           json['execution_resources'] as Map<String, dynamic>),
       $type: json['type'] as String?,
     );
@@ -147,7 +195,7 @@ _$DeclareTransactionTraceImpl _$$DeclareTransactionTraceImplFromJson(
       stateDiff: json['state_diff'] == null
           ? null
           : TraceStateDiff.fromJson(json['state_diff'] as Map<String, dynamic>),
-      executionResources: InnerCallExecutionResources.fromJson(
+      executionResources: ExecutionResources.fromJson(
           json['execution_resources'] as Map<String, dynamic>),
       $type: json['type'] as String?,
     );
@@ -179,7 +227,7 @@ _$DeployAccountTransactionTraceImpl
               ? null
               : TraceStateDiff.fromJson(
                   json['state_diff'] as Map<String, dynamic>),
-          executionResources: InnerCallExecutionResources.fromJson(
+          executionResources: ExecutionResources.fromJson(
               json['execution_resources'] as Map<String, dynamic>),
           $type: json['type'] as String?,
         );
@@ -203,7 +251,7 @@ _$L1HandlerTransactionTraceImpl _$$L1HandlerTransactionTraceImplFromJson(
       stateDiff: json['state_diff'] == null
           ? null
           : TraceStateDiff.fromJson(json['state_diff'] as Map<String, dynamic>),
-      executionResources: InnerCallExecutionResources.fromJson(
+      executionResources: ExecutionResources.fromJson(
           json['execution_resources'] as Map<String, dynamic>),
       $type: json['type'] as String?,
     );

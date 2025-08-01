@@ -71,7 +71,7 @@ class StorageProofResult {
   @JsonKey(name: 'contracts_proof')
   final ContractsProof contractsProof;
   @JsonKey(name: 'contracts_storage_proofs')
-  final List<Map<String, dynamic>> contractsStorageProofs;
+  final List<NodeHashToNodeMapping> contractsStorageProofs;
   @JsonKey(name: 'global_roots')
   final GlobalRoots globalRoots;
 
@@ -140,4 +140,39 @@ class GlobalRoots {
   factory GlobalRoots.fromJson(Map<String, dynamic> json) =>
       _$GlobalRootsFromJson(json);
   Map<String, dynamic> toJson() => _$GlobalRootsToJson(this);
+}
+
+@JsonSerializable()
+class NodeHashToNodeMapping {
+  @JsonKey(name: 'node_hash')
+  final Felt nodeHash;
+  final MerkleNode node;
+
+  NodeHashToNodeMapping({
+    required this.nodeHash,
+    required this.node,
+  });
+
+  factory NodeHashToNodeMapping.fromJson(Map<String, dynamic> json) =>
+      _$NodeHashToNodeMappingFromJson(json);
+  Map<String, dynamic> toJson() => _$NodeHashToNodeMappingToJson(this);
+}
+
+@freezed
+class MerkleNode with _$MerkleNode {
+  @JsonSerializable()
+  const factory MerkleNode.binary({
+    required Felt left,
+    required Felt right,
+  }) = BinaryNode;
+
+  @JsonSerializable()
+  const factory MerkleNode.edge({
+    required Felt path,
+    required int length,
+    required Felt child,
+  }) = EdgeNode;
+
+  factory MerkleNode.fromJson(Map<String, dynamic> json) =>
+      _$MerkleNodeFromJson(json);
 }

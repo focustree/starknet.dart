@@ -1,8 +1,8 @@
 // ignore_for_file: invalid_annotation_target, non_constant_identifier_names
 
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:starknet_provider/src/model/estimate_fee.dart';
-import 'package:starknet_provider/src/model/trace_transaction_trace.dart';
+import 'estimate_fee.dart';
+import 'trace_transaction_trace.dart';
 
 import 'components/block_id.dart';
 import 'fee_estimate.dart';
@@ -32,7 +32,7 @@ class SimulateTransactionsRequest {
   final BlockId blockId;
   final List<BroadcastedTxn> transactions;
   @JsonKey(name: 'simulation_flags')
-  final List<String> simulationFlags;
+  final List<SimulationFlag> simulationFlags;
 
   SimulateTransactionsRequest({
     required this.transactions,

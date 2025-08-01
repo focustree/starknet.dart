@@ -5,11 +5,6 @@ A Dart package for interacting with Starknet node using JSON-RPC, following the 
 
 ## Transaction support
 
-| Feature        | State | Version |
-| -------------- | ----- | ------- |
-| invoke         | ✅     | 0, 1, 3 |
-| declare        | ✅     | 1, 2, 3 |
-| deploy_account | ✅     | 1, 3    |
 
 ## Supported JSON RPC version: 0.8.1
 
@@ -42,9 +37,6 @@ jq .methods[].name ../starknet-specs/api/starknet_api_openrpc.json
 | starknet_getStorageProof                 | ✅           |
 | starknet_blockNumber                     | ✅           |
 | starknet_blockHashAndNumber              | ✅           |
-| starknet_traceTransaction                | ✅           |
-| starknet_simulateTransactions            | ✅           |
-| starknet_traceBlockTransactions          | ✅           |
 | starknet_chainId                         | ✅           |
 | starknet_syncing                         | ✅           |
 | starknet_getEvents                       | ✅           |
@@ -63,3 +55,16 @@ jq .methods[].name ../starknet-specs/api/starknet_write_api.json
 | starknet_addDeclareTransaction       | ✅           |
 | starknet_addDeployAccountTransaction | ✅           |
 
+### Trace API Methods
+
+Name of methods have been extracted from [starknet-specs](https://github.com/starkware-libs/starknet-specs.git) with the following command:
+
+```bash
+jq .methods[].name ../starknet-specs/api/starknet_trace_api_openrpc.json
+```
+
+| Name                            | Implemented |
+| ------------------------------- | ----------- |
+| starknet_traceTransaction       | ✅           |
+| starknet_simulateTransactions   | ✅           |
+| starknet_traceBlockTransactions | ✅           |

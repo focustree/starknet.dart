@@ -965,17 +965,14 @@ void main() {
     });
 
     group('getMessagesStatus', () {
-      test('returns message status for valid message hashes', () async {
+      test('returns message status for valid message hash', () async {
         if (!await isRpcVersionSufficient(provider, '0.8')) {
           return;
         }
-        final transactionHashes = [
-          Felt.fromHexString('0x1234567890123456789012345678901234567890'),
-          Felt.fromHexString('0x0987654321098765432109876543210987654321'),
-        ];
 
         final request = GetMessagesStatusRequest(
-          transactionHashes: transactionHashes,
+          transactionHash:
+              Felt.fromHexString('0x1234567890123456789012345678901234567890'),
         );
 
         final response = await provider.getMessagesStatus(request);
@@ -983,11 +980,12 @@ void main() {
         response.when(
           error: (error) => fail('Should not fail: ${error.message}'),
           result: (result) {
-            expect(result, hasLength(2));
-            expect(result[0].transactionHash, transactionHashes[0]);
-            expect(result[1].transactionHash, transactionHashes[1]);
+            expect(result, hasLength(1));
+            expect(
+                result[0].transactionHash,
+                Felt.fromHexString(
+                    '0x1234567890123456789012345678901234567890'));
             expect(result[0].finalityStatus, isNotEmpty);
-            expect(result[1].finalityStatus, isNotEmpty);
           },
         );
       });
@@ -997,7 +995,8 @@ void main() {
           return;
         }
         final request = GetMessagesStatusRequest(
-          transactionHashes: [],
+          transactionHash: Felt.fromHexString(
+              '0x0000000000000000000000000000000000000000000000000000000000000000'),
         );
 
         final response = await provider.getMessagesStatus(request);
@@ -1014,13 +1013,10 @@ void main() {
         if (!await isRpcVersionSufficient(provider, '0.8')) {
           return;
         }
-        final transactionHashes = [
-          Felt.fromHexString(
-              '0x0000000000000000000000000000000000000000000000000000000000000000'),
-        ];
 
         final request = GetMessagesStatusRequest(
-          transactionHashes: transactionHashes,
+          transactionHash: Felt.fromHexString(
+              '0x0000000000000000000000000000000000000000000000000000000000000000'),
         );
 
         final response = await provider.getMessagesStatus(request);

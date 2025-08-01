@@ -14,7 +14,7 @@ SimulateTransactionsRequest _$SimulateTransactionsRequestFromJson(
           .toList(),
       blockId: BlockId.fromJson(json['block_id'] as Map<String, dynamic>),
       simulationFlags: (json['simulation_flags'] as List<dynamic>)
-          .map((e) => e as String)
+          .map((e) => $enumDecode(_$SimulationFlagEnumMap, e))
           .toList(),
     );
 
@@ -23,8 +23,15 @@ Map<String, dynamic> _$SimulateTransactionsRequestToJson(
     <String, dynamic>{
       'block_id': instance.blockId.toJson(),
       'transactions': instance.transactions.map((e) => e.toJson()).toList(),
-      'simulation_flags': instance.simulationFlags,
+      'simulation_flags': instance.simulationFlags
+          .map((e) => _$SimulationFlagEnumMap[e]!)
+          .toList(),
     };
+
+const _$SimulationFlagEnumMap = {
+  SimulationFlag.skipValidate: 'SKIP_VALIDATE',
+  SimulationFlag.skipFeeCharge: 'SKIP_FEE_CHARGE',
+};
 
 SimulateTransactionResult _$SimulateTransactionResultFromJson(
         Map<String, dynamic> json) =>

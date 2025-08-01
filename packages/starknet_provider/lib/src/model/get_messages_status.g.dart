@@ -9,31 +9,37 @@ part of 'get_messages_status.dart';
 GetMessagesStatusRequest _$GetMessagesStatusRequestFromJson(
         Map<String, dynamic> json) =>
     GetMessagesStatusRequest(
-      transactionHashes: (json['transaction_hashes'] as List<dynamic>)
-          .map((e) => Felt.fromJson(e as String))
-          .toList(),
+      transactionHash: Felt.fromJson(json['transaction_hash'] as String),
     );
 
 Map<String, dynamic> _$GetMessagesStatusRequestToJson(
         GetMessagesStatusRequest instance) =>
     <String, dynamic>{
-      'transaction_hashes':
-          instance.transactionHashes.map((e) => e.toJson()).toList(),
+      'transaction_hash': instance.transactionHash.toJson(),
     };
 
 MessageStatus _$MessageStatusFromJson(Map<String, dynamic> json) =>
     MessageStatus(
       transactionHash: Felt.fromJson(json['transaction_hash'] as String),
-      finalityStatus: json['finality_status'] as String,
+      finalityStatus: $enumDecode(_$TxnStatusEnumMap, json['finality_status']),
       failureReason: json['failure_reason'] as String?,
     );
 
 Map<String, dynamic> _$MessageStatusToJson(MessageStatus instance) =>
     <String, dynamic>{
       'transaction_hash': instance.transactionHash.toJson(),
-      'finality_status': instance.finalityStatus,
+      'finality_status': _$TxnStatusEnumMap[instance.finalityStatus]!,
       'failure_reason': instance.failureReason,
     };
+
+const _$TxnStatusEnumMap = {
+  TxnStatus.RECEIVED: 'RECEIVED',
+  TxnStatus.REJECTED: 'REJECTED',
+  TxnStatus.ACCEPTED_ON_L2: 'ACCEPTED_ON_L2',
+  TxnStatus.ACCEPTED_ON_L1: 'ACCEPTED_ON_L1',
+  TxnStatus.CANDIDATE: 'CANDIDATE',
+  TxnStatus.PRE_CONFIRMED: 'PRE_CONFIRMED',
+};
 
 _$GetMessagesStatusResultImpl _$$GetMessagesStatusResultImplFromJson(
         Map<String, dynamic> json) =>

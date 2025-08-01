@@ -36,7 +36,7 @@ mixin _$TransactionTrace {
   @JsonKey(name: 'state_diff')
   TraceStateDiff? get stateDiff => throw _privateConstructorUsedError;
   @JsonKey(name: 'execution_resources')
-  InnerCallExecutionResources get executionResources =>
+  ExecutionResources get executionResources =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
@@ -50,7 +50,7 @@ mixin _$TransactionTrace {
             FunctionInvocation? feeTransferInvocation,
             @JsonKey(name: 'state_diff') TraceStateDiff? stateDiff,
             @JsonKey(name: 'execution_resources')
-            InnerCallExecutionResources executionResources)
+            ExecutionResources executionResources)
         INVOKE,
     required TResult Function(
             @JsonKey(name: 'validate_invocation')
@@ -59,7 +59,7 @@ mixin _$TransactionTrace {
             FunctionInvocation? feeTransferInvocation,
             @JsonKey(name: 'state_diff') TraceStateDiff? stateDiff,
             @JsonKey(name: 'execution_resources')
-            InnerCallExecutionResources executionResources)
+            ExecutionResources executionResources)
         DECLARE,
     required TResult Function(
             @JsonKey(name: 'validate_invocation')
@@ -70,14 +70,14 @@ mixin _$TransactionTrace {
             FunctionInvocation? feeTransferInvocation,
             @JsonKey(name: 'state_diff') TraceStateDiff? stateDiff,
             @JsonKey(name: 'execution_resources')
-            InnerCallExecutionResources executionResources)
+            ExecutionResources executionResources)
         DEPLOY_ACCOUNT,
     required TResult Function(
             @JsonKey(name: 'function_invocation')
             FunctionInvocation functionInvocation,
             @JsonKey(name: 'state_diff') TraceStateDiff? stateDiff,
             @JsonKey(name: 'execution_resources')
-            InnerCallExecutionResources executionResources)
+            ExecutionResources executionResources)
         L1_HANDLER,
   }) =>
       throw _privateConstructorUsedError;
@@ -93,7 +93,7 @@ mixin _$TransactionTrace {
             FunctionInvocation? feeTransferInvocation,
             @JsonKey(name: 'state_diff') TraceStateDiff? stateDiff,
             @JsonKey(name: 'execution_resources')
-            InnerCallExecutionResources executionResources)?
+            ExecutionResources executionResources)?
         INVOKE,
     TResult? Function(
             @JsonKey(name: 'validate_invocation')
@@ -102,7 +102,7 @@ mixin _$TransactionTrace {
             FunctionInvocation? feeTransferInvocation,
             @JsonKey(name: 'state_diff') TraceStateDiff? stateDiff,
             @JsonKey(name: 'execution_resources')
-            InnerCallExecutionResources executionResources)?
+            ExecutionResources executionResources)?
         DECLARE,
     TResult? Function(
             @JsonKey(name: 'validate_invocation')
@@ -113,14 +113,14 @@ mixin _$TransactionTrace {
             FunctionInvocation? feeTransferInvocation,
             @JsonKey(name: 'state_diff') TraceStateDiff? stateDiff,
             @JsonKey(name: 'execution_resources')
-            InnerCallExecutionResources executionResources)?
+            ExecutionResources executionResources)?
         DEPLOY_ACCOUNT,
     TResult? Function(
             @JsonKey(name: 'function_invocation')
             FunctionInvocation functionInvocation,
             @JsonKey(name: 'state_diff') TraceStateDiff? stateDiff,
             @JsonKey(name: 'execution_resources')
-            InnerCallExecutionResources executionResources)?
+            ExecutionResources executionResources)?
         L1_HANDLER,
   }) =>
       throw _privateConstructorUsedError;
@@ -136,7 +136,7 @@ mixin _$TransactionTrace {
             FunctionInvocation? feeTransferInvocation,
             @JsonKey(name: 'state_diff') TraceStateDiff? stateDiff,
             @JsonKey(name: 'execution_resources')
-            InnerCallExecutionResources executionResources)?
+            ExecutionResources executionResources)?
         INVOKE,
     TResult Function(
             @JsonKey(name: 'validate_invocation')
@@ -145,7 +145,7 @@ mixin _$TransactionTrace {
             FunctionInvocation? feeTransferInvocation,
             @JsonKey(name: 'state_diff') TraceStateDiff? stateDiff,
             @JsonKey(name: 'execution_resources')
-            InnerCallExecutionResources executionResources)?
+            ExecutionResources executionResources)?
         DECLARE,
     TResult Function(
             @JsonKey(name: 'validate_invocation')
@@ -156,14 +156,14 @@ mixin _$TransactionTrace {
             FunctionInvocation? feeTransferInvocation,
             @JsonKey(name: 'state_diff') TraceStateDiff? stateDiff,
             @JsonKey(name: 'execution_resources')
-            InnerCallExecutionResources executionResources)?
+            ExecutionResources executionResources)?
         DEPLOY_ACCOUNT,
     TResult Function(
             @JsonKey(name: 'function_invocation')
             FunctionInvocation functionInvocation,
             @JsonKey(name: 'state_diff') TraceStateDiff? stateDiff,
             @JsonKey(name: 'execution_resources')
-            InnerCallExecutionResources executionResources)?
+            ExecutionResources executionResources)?
         L1_HANDLER,
     required TResult orElse(),
   }) =>
@@ -214,7 +214,7 @@ abstract class $TransactionTraceCopyWith<$Res> {
   $Res call(
       {@JsonKey(name: 'state_diff') TraceStateDiff? stateDiff,
       @JsonKey(name: 'execution_resources')
-      InnerCallExecutionResources executionResources});
+      ExecutionResources executionResources});
 }
 
 /// @nodoc
@@ -243,7 +243,7 @@ class _$TransactionTraceCopyWithImpl<$Res, $Val extends TransactionTrace>
       executionResources: null == executionResources
           ? _value.executionResources
           : executionResources // ignore: cast_nullable_to_non_nullable
-              as InnerCallExecutionResources,
+              as ExecutionResources,
     ) as $Val);
   }
 }
@@ -267,7 +267,7 @@ abstract class _$$InvokeTransactionTraceImplCopyWith<$Res>
       FunctionInvocation? feeTransferInvocation,
       @JsonKey(name: 'state_diff') TraceStateDiff? stateDiff,
       @JsonKey(name: 'execution_resources')
-      InnerCallExecutionResources executionResources});
+      ExecutionResources executionResources});
 
   $ExecuteInvocationCopyWith<$Res> get executeInvocation;
 }
@@ -312,7 +312,7 @@ class __$$InvokeTransactionTraceImplCopyWithImpl<$Res>
       executionResources: null == executionResources
           ? _value.executionResources
           : executionResources // ignore: cast_nullable_to_non_nullable
-              as InnerCallExecutionResources,
+              as ExecutionResources,
     ));
   }
 
@@ -359,7 +359,7 @@ class _$InvokeTransactionTraceImpl implements InvokeTransactionTrace {
   final TraceStateDiff? stateDiff;
   @override
   @JsonKey(name: 'execution_resources')
-  final InnerCallExecutionResources executionResources;
+  final ExecutionResources executionResources;
 
   @JsonKey(name: 'type')
   final String $type;
@@ -413,7 +413,7 @@ class _$InvokeTransactionTraceImpl implements InvokeTransactionTrace {
             FunctionInvocation? feeTransferInvocation,
             @JsonKey(name: 'state_diff') TraceStateDiff? stateDiff,
             @JsonKey(name: 'execution_resources')
-            InnerCallExecutionResources executionResources)
+            ExecutionResources executionResources)
         INVOKE,
     required TResult Function(
             @JsonKey(name: 'validate_invocation')
@@ -422,7 +422,7 @@ class _$InvokeTransactionTraceImpl implements InvokeTransactionTrace {
             FunctionInvocation? feeTransferInvocation,
             @JsonKey(name: 'state_diff') TraceStateDiff? stateDiff,
             @JsonKey(name: 'execution_resources')
-            InnerCallExecutionResources executionResources)
+            ExecutionResources executionResources)
         DECLARE,
     required TResult Function(
             @JsonKey(name: 'validate_invocation')
@@ -433,14 +433,14 @@ class _$InvokeTransactionTraceImpl implements InvokeTransactionTrace {
             FunctionInvocation? feeTransferInvocation,
             @JsonKey(name: 'state_diff') TraceStateDiff? stateDiff,
             @JsonKey(name: 'execution_resources')
-            InnerCallExecutionResources executionResources)
+            ExecutionResources executionResources)
         DEPLOY_ACCOUNT,
     required TResult Function(
             @JsonKey(name: 'function_invocation')
             FunctionInvocation functionInvocation,
             @JsonKey(name: 'state_diff') TraceStateDiff? stateDiff,
             @JsonKey(name: 'execution_resources')
-            InnerCallExecutionResources executionResources)
+            ExecutionResources executionResources)
         L1_HANDLER,
   }) {
     return INVOKE(validateInvocation, executeInvocation, feeTransferInvocation,
@@ -460,7 +460,7 @@ class _$InvokeTransactionTraceImpl implements InvokeTransactionTrace {
             FunctionInvocation? feeTransferInvocation,
             @JsonKey(name: 'state_diff') TraceStateDiff? stateDiff,
             @JsonKey(name: 'execution_resources')
-            InnerCallExecutionResources executionResources)?
+            ExecutionResources executionResources)?
         INVOKE,
     TResult? Function(
             @JsonKey(name: 'validate_invocation')
@@ -469,7 +469,7 @@ class _$InvokeTransactionTraceImpl implements InvokeTransactionTrace {
             FunctionInvocation? feeTransferInvocation,
             @JsonKey(name: 'state_diff') TraceStateDiff? stateDiff,
             @JsonKey(name: 'execution_resources')
-            InnerCallExecutionResources executionResources)?
+            ExecutionResources executionResources)?
         DECLARE,
     TResult? Function(
             @JsonKey(name: 'validate_invocation')
@@ -480,14 +480,14 @@ class _$InvokeTransactionTraceImpl implements InvokeTransactionTrace {
             FunctionInvocation? feeTransferInvocation,
             @JsonKey(name: 'state_diff') TraceStateDiff? stateDiff,
             @JsonKey(name: 'execution_resources')
-            InnerCallExecutionResources executionResources)?
+            ExecutionResources executionResources)?
         DEPLOY_ACCOUNT,
     TResult? Function(
             @JsonKey(name: 'function_invocation')
             FunctionInvocation functionInvocation,
             @JsonKey(name: 'state_diff') TraceStateDiff? stateDiff,
             @JsonKey(name: 'execution_resources')
-            InnerCallExecutionResources executionResources)?
+            ExecutionResources executionResources)?
         L1_HANDLER,
   }) {
     return INVOKE?.call(validateInvocation, executeInvocation,
@@ -507,7 +507,7 @@ class _$InvokeTransactionTraceImpl implements InvokeTransactionTrace {
             FunctionInvocation? feeTransferInvocation,
             @JsonKey(name: 'state_diff') TraceStateDiff? stateDiff,
             @JsonKey(name: 'execution_resources')
-            InnerCallExecutionResources executionResources)?
+            ExecutionResources executionResources)?
         INVOKE,
     TResult Function(
             @JsonKey(name: 'validate_invocation')
@@ -516,7 +516,7 @@ class _$InvokeTransactionTraceImpl implements InvokeTransactionTrace {
             FunctionInvocation? feeTransferInvocation,
             @JsonKey(name: 'state_diff') TraceStateDiff? stateDiff,
             @JsonKey(name: 'execution_resources')
-            InnerCallExecutionResources executionResources)?
+            ExecutionResources executionResources)?
         DECLARE,
     TResult Function(
             @JsonKey(name: 'validate_invocation')
@@ -527,14 +527,14 @@ class _$InvokeTransactionTraceImpl implements InvokeTransactionTrace {
             FunctionInvocation? feeTransferInvocation,
             @JsonKey(name: 'state_diff') TraceStateDiff? stateDiff,
             @JsonKey(name: 'execution_resources')
-            InnerCallExecutionResources executionResources)?
+            ExecutionResources executionResources)?
         DEPLOY_ACCOUNT,
     TResult Function(
             @JsonKey(name: 'function_invocation')
             FunctionInvocation functionInvocation,
             @JsonKey(name: 'state_diff') TraceStateDiff? stateDiff,
             @JsonKey(name: 'execution_resources')
-            InnerCallExecutionResources executionResources)?
+            ExecutionResources executionResources)?
         L1_HANDLER,
     required TResult orElse(),
   }) {
@@ -602,7 +602,7 @@ abstract class InvokeTransactionTrace implements TransactionTrace {
           final FunctionInvocation? feeTransferInvocation,
           @JsonKey(name: 'state_diff') final TraceStateDiff? stateDiff,
           @JsonKey(name: 'execution_resources')
-          required final InnerCallExecutionResources executionResources}) =
+          required final ExecutionResources executionResources}) =
       _$InvokeTransactionTraceImpl;
 
   factory InvokeTransactionTrace.fromJson(Map<String, dynamic> json) =
@@ -620,7 +620,7 @@ abstract class InvokeTransactionTrace implements TransactionTrace {
   TraceStateDiff? get stateDiff;
   @override
   @JsonKey(name: 'execution_resources')
-  InnerCallExecutionResources get executionResources;
+  ExecutionResources get executionResources;
 
   /// Create a copy of TransactionTrace
   /// with the given fields replaced by the non-null parameter values.
@@ -646,7 +646,7 @@ abstract class _$$DeclareTransactionTraceImplCopyWith<$Res>
       FunctionInvocation? feeTransferInvocation,
       @JsonKey(name: 'state_diff') TraceStateDiff? stateDiff,
       @JsonKey(name: 'execution_resources')
-      InnerCallExecutionResources executionResources});
+      ExecutionResources executionResources});
 }
 
 /// @nodoc
@@ -684,7 +684,7 @@ class __$$DeclareTransactionTraceImplCopyWithImpl<$Res>
       executionResources: null == executionResources
           ? _value.executionResources
           : executionResources // ignore: cast_nullable_to_non_nullable
-              as InnerCallExecutionResources,
+              as ExecutionResources,
     ));
   }
 }
@@ -714,7 +714,7 @@ class _$DeclareTransactionTraceImpl implements DeclareTransactionTrace {
   final TraceStateDiff? stateDiff;
   @override
   @JsonKey(name: 'execution_resources')
-  final InnerCallExecutionResources executionResources;
+  final ExecutionResources executionResources;
 
   @JsonKey(name: 'type')
   final String $type;
@@ -766,7 +766,7 @@ class _$DeclareTransactionTraceImpl implements DeclareTransactionTrace {
             FunctionInvocation? feeTransferInvocation,
             @JsonKey(name: 'state_diff') TraceStateDiff? stateDiff,
             @JsonKey(name: 'execution_resources')
-            InnerCallExecutionResources executionResources)
+            ExecutionResources executionResources)
         INVOKE,
     required TResult Function(
             @JsonKey(name: 'validate_invocation')
@@ -775,7 +775,7 @@ class _$DeclareTransactionTraceImpl implements DeclareTransactionTrace {
             FunctionInvocation? feeTransferInvocation,
             @JsonKey(name: 'state_diff') TraceStateDiff? stateDiff,
             @JsonKey(name: 'execution_resources')
-            InnerCallExecutionResources executionResources)
+            ExecutionResources executionResources)
         DECLARE,
     required TResult Function(
             @JsonKey(name: 'validate_invocation')
@@ -786,14 +786,14 @@ class _$DeclareTransactionTraceImpl implements DeclareTransactionTrace {
             FunctionInvocation? feeTransferInvocation,
             @JsonKey(name: 'state_diff') TraceStateDiff? stateDiff,
             @JsonKey(name: 'execution_resources')
-            InnerCallExecutionResources executionResources)
+            ExecutionResources executionResources)
         DEPLOY_ACCOUNT,
     required TResult Function(
             @JsonKey(name: 'function_invocation')
             FunctionInvocation functionInvocation,
             @JsonKey(name: 'state_diff') TraceStateDiff? stateDiff,
             @JsonKey(name: 'execution_resources')
-            InnerCallExecutionResources executionResources)
+            ExecutionResources executionResources)
         L1_HANDLER,
   }) {
     return DECLARE(validateInvocation, feeTransferInvocation, stateDiff,
@@ -813,7 +813,7 @@ class _$DeclareTransactionTraceImpl implements DeclareTransactionTrace {
             FunctionInvocation? feeTransferInvocation,
             @JsonKey(name: 'state_diff') TraceStateDiff? stateDiff,
             @JsonKey(name: 'execution_resources')
-            InnerCallExecutionResources executionResources)?
+            ExecutionResources executionResources)?
         INVOKE,
     TResult? Function(
             @JsonKey(name: 'validate_invocation')
@@ -822,7 +822,7 @@ class _$DeclareTransactionTraceImpl implements DeclareTransactionTrace {
             FunctionInvocation? feeTransferInvocation,
             @JsonKey(name: 'state_diff') TraceStateDiff? stateDiff,
             @JsonKey(name: 'execution_resources')
-            InnerCallExecutionResources executionResources)?
+            ExecutionResources executionResources)?
         DECLARE,
     TResult? Function(
             @JsonKey(name: 'validate_invocation')
@@ -833,14 +833,14 @@ class _$DeclareTransactionTraceImpl implements DeclareTransactionTrace {
             FunctionInvocation? feeTransferInvocation,
             @JsonKey(name: 'state_diff') TraceStateDiff? stateDiff,
             @JsonKey(name: 'execution_resources')
-            InnerCallExecutionResources executionResources)?
+            ExecutionResources executionResources)?
         DEPLOY_ACCOUNT,
     TResult? Function(
             @JsonKey(name: 'function_invocation')
             FunctionInvocation functionInvocation,
             @JsonKey(name: 'state_diff') TraceStateDiff? stateDiff,
             @JsonKey(name: 'execution_resources')
-            InnerCallExecutionResources executionResources)?
+            ExecutionResources executionResources)?
         L1_HANDLER,
   }) {
     return DECLARE?.call(validateInvocation, feeTransferInvocation, stateDiff,
@@ -860,7 +860,7 @@ class _$DeclareTransactionTraceImpl implements DeclareTransactionTrace {
             FunctionInvocation? feeTransferInvocation,
             @JsonKey(name: 'state_diff') TraceStateDiff? stateDiff,
             @JsonKey(name: 'execution_resources')
-            InnerCallExecutionResources executionResources)?
+            ExecutionResources executionResources)?
         INVOKE,
     TResult Function(
             @JsonKey(name: 'validate_invocation')
@@ -869,7 +869,7 @@ class _$DeclareTransactionTraceImpl implements DeclareTransactionTrace {
             FunctionInvocation? feeTransferInvocation,
             @JsonKey(name: 'state_diff') TraceStateDiff? stateDiff,
             @JsonKey(name: 'execution_resources')
-            InnerCallExecutionResources executionResources)?
+            ExecutionResources executionResources)?
         DECLARE,
     TResult Function(
             @JsonKey(name: 'validate_invocation')
@@ -880,14 +880,14 @@ class _$DeclareTransactionTraceImpl implements DeclareTransactionTrace {
             FunctionInvocation? feeTransferInvocation,
             @JsonKey(name: 'state_diff') TraceStateDiff? stateDiff,
             @JsonKey(name: 'execution_resources')
-            InnerCallExecutionResources executionResources)?
+            ExecutionResources executionResources)?
         DEPLOY_ACCOUNT,
     TResult Function(
             @JsonKey(name: 'function_invocation')
             FunctionInvocation functionInvocation,
             @JsonKey(name: 'state_diff') TraceStateDiff? stateDiff,
             @JsonKey(name: 'execution_resources')
-            InnerCallExecutionResources executionResources)?
+            ExecutionResources executionResources)?
         L1_HANDLER,
     required TResult orElse(),
   }) {
@@ -952,7 +952,7 @@ abstract class DeclareTransactionTrace implements TransactionTrace {
           final FunctionInvocation? feeTransferInvocation,
           @JsonKey(name: 'state_diff') final TraceStateDiff? stateDiff,
           @JsonKey(name: 'execution_resources')
-          required final InnerCallExecutionResources executionResources}) =
+          required final ExecutionResources executionResources}) =
       _$DeclareTransactionTraceImpl;
 
   factory DeclareTransactionTrace.fromJson(Map<String, dynamic> json) =
@@ -967,7 +967,7 @@ abstract class DeclareTransactionTrace implements TransactionTrace {
   TraceStateDiff? get stateDiff;
   @override
   @JsonKey(name: 'execution_resources')
-  InnerCallExecutionResources get executionResources;
+  ExecutionResources get executionResources;
 
   /// Create a copy of TransactionTrace
   /// with the given fields replaced by the non-null parameter values.
@@ -995,7 +995,7 @@ abstract class _$$DeployAccountTransactionTraceImplCopyWith<$Res>
       FunctionInvocation? feeTransferInvocation,
       @JsonKey(name: 'state_diff') TraceStateDiff? stateDiff,
       @JsonKey(name: 'execution_resources')
-      InnerCallExecutionResources executionResources});
+      ExecutionResources executionResources});
 }
 
 /// @nodoc
@@ -1039,7 +1039,7 @@ class __$$DeployAccountTransactionTraceImplCopyWithImpl<$Res>
       executionResources: null == executionResources
           ? _value.executionResources
           : executionResources // ignore: cast_nullable_to_non_nullable
-              as InnerCallExecutionResources,
+              as ExecutionResources,
     ));
   }
 }
@@ -1076,7 +1076,7 @@ class _$DeployAccountTransactionTraceImpl
   final TraceStateDiff? stateDiff;
   @override
   @JsonKey(name: 'execution_resources')
-  final InnerCallExecutionResources executionResources;
+  final ExecutionResources executionResources;
 
   @JsonKey(name: 'type')
   final String $type;
@@ -1136,7 +1136,7 @@ class _$DeployAccountTransactionTraceImpl
             FunctionInvocation? feeTransferInvocation,
             @JsonKey(name: 'state_diff') TraceStateDiff? stateDiff,
             @JsonKey(name: 'execution_resources')
-            InnerCallExecutionResources executionResources)
+            ExecutionResources executionResources)
         INVOKE,
     required TResult Function(
             @JsonKey(name: 'validate_invocation')
@@ -1145,7 +1145,7 @@ class _$DeployAccountTransactionTraceImpl
             FunctionInvocation? feeTransferInvocation,
             @JsonKey(name: 'state_diff') TraceStateDiff? stateDiff,
             @JsonKey(name: 'execution_resources')
-            InnerCallExecutionResources executionResources)
+            ExecutionResources executionResources)
         DECLARE,
     required TResult Function(
             @JsonKey(name: 'validate_invocation')
@@ -1156,14 +1156,14 @@ class _$DeployAccountTransactionTraceImpl
             FunctionInvocation? feeTransferInvocation,
             @JsonKey(name: 'state_diff') TraceStateDiff? stateDiff,
             @JsonKey(name: 'execution_resources')
-            InnerCallExecutionResources executionResources)
+            ExecutionResources executionResources)
         DEPLOY_ACCOUNT,
     required TResult Function(
             @JsonKey(name: 'function_invocation')
             FunctionInvocation functionInvocation,
             @JsonKey(name: 'state_diff') TraceStateDiff? stateDiff,
             @JsonKey(name: 'execution_resources')
-            InnerCallExecutionResources executionResources)
+            ExecutionResources executionResources)
         L1_HANDLER,
   }) {
     return DEPLOY_ACCOUNT(validateInvocation, constructorInvocation,
@@ -1183,7 +1183,7 @@ class _$DeployAccountTransactionTraceImpl
             FunctionInvocation? feeTransferInvocation,
             @JsonKey(name: 'state_diff') TraceStateDiff? stateDiff,
             @JsonKey(name: 'execution_resources')
-            InnerCallExecutionResources executionResources)?
+            ExecutionResources executionResources)?
         INVOKE,
     TResult? Function(
             @JsonKey(name: 'validate_invocation')
@@ -1192,7 +1192,7 @@ class _$DeployAccountTransactionTraceImpl
             FunctionInvocation? feeTransferInvocation,
             @JsonKey(name: 'state_diff') TraceStateDiff? stateDiff,
             @JsonKey(name: 'execution_resources')
-            InnerCallExecutionResources executionResources)?
+            ExecutionResources executionResources)?
         DECLARE,
     TResult? Function(
             @JsonKey(name: 'validate_invocation')
@@ -1203,14 +1203,14 @@ class _$DeployAccountTransactionTraceImpl
             FunctionInvocation? feeTransferInvocation,
             @JsonKey(name: 'state_diff') TraceStateDiff? stateDiff,
             @JsonKey(name: 'execution_resources')
-            InnerCallExecutionResources executionResources)?
+            ExecutionResources executionResources)?
         DEPLOY_ACCOUNT,
     TResult? Function(
             @JsonKey(name: 'function_invocation')
             FunctionInvocation functionInvocation,
             @JsonKey(name: 'state_diff') TraceStateDiff? stateDiff,
             @JsonKey(name: 'execution_resources')
-            InnerCallExecutionResources executionResources)?
+            ExecutionResources executionResources)?
         L1_HANDLER,
   }) {
     return DEPLOY_ACCOUNT?.call(validateInvocation, constructorInvocation,
@@ -1230,7 +1230,7 @@ class _$DeployAccountTransactionTraceImpl
             FunctionInvocation? feeTransferInvocation,
             @JsonKey(name: 'state_diff') TraceStateDiff? stateDiff,
             @JsonKey(name: 'execution_resources')
-            InnerCallExecutionResources executionResources)?
+            ExecutionResources executionResources)?
         INVOKE,
     TResult Function(
             @JsonKey(name: 'validate_invocation')
@@ -1239,7 +1239,7 @@ class _$DeployAccountTransactionTraceImpl
             FunctionInvocation? feeTransferInvocation,
             @JsonKey(name: 'state_diff') TraceStateDiff? stateDiff,
             @JsonKey(name: 'execution_resources')
-            InnerCallExecutionResources executionResources)?
+            ExecutionResources executionResources)?
         DECLARE,
     TResult Function(
             @JsonKey(name: 'validate_invocation')
@@ -1250,14 +1250,14 @@ class _$DeployAccountTransactionTraceImpl
             FunctionInvocation? feeTransferInvocation,
             @JsonKey(name: 'state_diff') TraceStateDiff? stateDiff,
             @JsonKey(name: 'execution_resources')
-            InnerCallExecutionResources executionResources)?
+            ExecutionResources executionResources)?
         DEPLOY_ACCOUNT,
     TResult Function(
             @JsonKey(name: 'function_invocation')
             FunctionInvocation functionInvocation,
             @JsonKey(name: 'state_diff') TraceStateDiff? stateDiff,
             @JsonKey(name: 'execution_resources')
-            InnerCallExecutionResources executionResources)?
+            ExecutionResources executionResources)?
         L1_HANDLER,
     required TResult orElse(),
   }) {
@@ -1324,7 +1324,7 @@ abstract class DeployAccountTransactionTrace implements TransactionTrace {
           final FunctionInvocation? feeTransferInvocation,
           @JsonKey(name: 'state_diff') final TraceStateDiff? stateDiff,
           @JsonKey(name: 'execution_resources')
-          required final InnerCallExecutionResources executionResources}) =
+          required final ExecutionResources executionResources}) =
       _$DeployAccountTransactionTraceImpl;
 
   factory DeployAccountTransactionTrace.fromJson(Map<String, dynamic> json) =
@@ -1341,7 +1341,7 @@ abstract class DeployAccountTransactionTrace implements TransactionTrace {
   TraceStateDiff? get stateDiff;
   @override
   @JsonKey(name: 'execution_resources')
-  InnerCallExecutionResources get executionResources;
+  ExecutionResources get executionResources;
 
   /// Create a copy of TransactionTrace
   /// with the given fields replaced by the non-null parameter values.
@@ -1366,7 +1366,7 @@ abstract class _$$L1HandlerTransactionTraceImplCopyWith<$Res>
       FunctionInvocation functionInvocation,
       @JsonKey(name: 'state_diff') TraceStateDiff? stateDiff,
       @JsonKey(name: 'execution_resources')
-      InnerCallExecutionResources executionResources});
+      ExecutionResources executionResources});
 }
 
 /// @nodoc
@@ -1400,7 +1400,7 @@ class __$$L1HandlerTransactionTraceImplCopyWithImpl<$Res>
       executionResources: null == executionResources
           ? _value.executionResources
           : executionResources // ignore: cast_nullable_to_non_nullable
-              as InnerCallExecutionResources,
+              as ExecutionResources,
     ));
   }
 }
@@ -1426,7 +1426,7 @@ class _$L1HandlerTransactionTraceImpl implements L1HandlerTransactionTrace {
   final TraceStateDiff? stateDiff;
   @override
   @JsonKey(name: 'execution_resources')
-  final InnerCallExecutionResources executionResources;
+  final ExecutionResources executionResources;
 
   @JsonKey(name: 'type')
   final String $type;
@@ -1476,7 +1476,7 @@ class _$L1HandlerTransactionTraceImpl implements L1HandlerTransactionTrace {
             FunctionInvocation? feeTransferInvocation,
             @JsonKey(name: 'state_diff') TraceStateDiff? stateDiff,
             @JsonKey(name: 'execution_resources')
-            InnerCallExecutionResources executionResources)
+            ExecutionResources executionResources)
         INVOKE,
     required TResult Function(
             @JsonKey(name: 'validate_invocation')
@@ -1485,7 +1485,7 @@ class _$L1HandlerTransactionTraceImpl implements L1HandlerTransactionTrace {
             FunctionInvocation? feeTransferInvocation,
             @JsonKey(name: 'state_diff') TraceStateDiff? stateDiff,
             @JsonKey(name: 'execution_resources')
-            InnerCallExecutionResources executionResources)
+            ExecutionResources executionResources)
         DECLARE,
     required TResult Function(
             @JsonKey(name: 'validate_invocation')
@@ -1496,14 +1496,14 @@ class _$L1HandlerTransactionTraceImpl implements L1HandlerTransactionTrace {
             FunctionInvocation? feeTransferInvocation,
             @JsonKey(name: 'state_diff') TraceStateDiff? stateDiff,
             @JsonKey(name: 'execution_resources')
-            InnerCallExecutionResources executionResources)
+            ExecutionResources executionResources)
         DEPLOY_ACCOUNT,
     required TResult Function(
             @JsonKey(name: 'function_invocation')
             FunctionInvocation functionInvocation,
             @JsonKey(name: 'state_diff') TraceStateDiff? stateDiff,
             @JsonKey(name: 'execution_resources')
-            InnerCallExecutionResources executionResources)
+            ExecutionResources executionResources)
         L1_HANDLER,
   }) {
     return L1_HANDLER(functionInvocation, stateDiff, executionResources);
@@ -1522,7 +1522,7 @@ class _$L1HandlerTransactionTraceImpl implements L1HandlerTransactionTrace {
             FunctionInvocation? feeTransferInvocation,
             @JsonKey(name: 'state_diff') TraceStateDiff? stateDiff,
             @JsonKey(name: 'execution_resources')
-            InnerCallExecutionResources executionResources)?
+            ExecutionResources executionResources)?
         INVOKE,
     TResult? Function(
             @JsonKey(name: 'validate_invocation')
@@ -1531,7 +1531,7 @@ class _$L1HandlerTransactionTraceImpl implements L1HandlerTransactionTrace {
             FunctionInvocation? feeTransferInvocation,
             @JsonKey(name: 'state_diff') TraceStateDiff? stateDiff,
             @JsonKey(name: 'execution_resources')
-            InnerCallExecutionResources executionResources)?
+            ExecutionResources executionResources)?
         DECLARE,
     TResult? Function(
             @JsonKey(name: 'validate_invocation')
@@ -1542,14 +1542,14 @@ class _$L1HandlerTransactionTraceImpl implements L1HandlerTransactionTrace {
             FunctionInvocation? feeTransferInvocation,
             @JsonKey(name: 'state_diff') TraceStateDiff? stateDiff,
             @JsonKey(name: 'execution_resources')
-            InnerCallExecutionResources executionResources)?
+            ExecutionResources executionResources)?
         DEPLOY_ACCOUNT,
     TResult? Function(
             @JsonKey(name: 'function_invocation')
             FunctionInvocation functionInvocation,
             @JsonKey(name: 'state_diff') TraceStateDiff? stateDiff,
             @JsonKey(name: 'execution_resources')
-            InnerCallExecutionResources executionResources)?
+            ExecutionResources executionResources)?
         L1_HANDLER,
   }) {
     return L1_HANDLER?.call(functionInvocation, stateDiff, executionResources);
@@ -1568,7 +1568,7 @@ class _$L1HandlerTransactionTraceImpl implements L1HandlerTransactionTrace {
             FunctionInvocation? feeTransferInvocation,
             @JsonKey(name: 'state_diff') TraceStateDiff? stateDiff,
             @JsonKey(name: 'execution_resources')
-            InnerCallExecutionResources executionResources)?
+            ExecutionResources executionResources)?
         INVOKE,
     TResult Function(
             @JsonKey(name: 'validate_invocation')
@@ -1577,7 +1577,7 @@ class _$L1HandlerTransactionTraceImpl implements L1HandlerTransactionTrace {
             FunctionInvocation? feeTransferInvocation,
             @JsonKey(name: 'state_diff') TraceStateDiff? stateDiff,
             @JsonKey(name: 'execution_resources')
-            InnerCallExecutionResources executionResources)?
+            ExecutionResources executionResources)?
         DECLARE,
     TResult Function(
             @JsonKey(name: 'validate_invocation')
@@ -1588,14 +1588,14 @@ class _$L1HandlerTransactionTraceImpl implements L1HandlerTransactionTrace {
             FunctionInvocation? feeTransferInvocation,
             @JsonKey(name: 'state_diff') TraceStateDiff? stateDiff,
             @JsonKey(name: 'execution_resources')
-            InnerCallExecutionResources executionResources)?
+            ExecutionResources executionResources)?
         DEPLOY_ACCOUNT,
     TResult Function(
             @JsonKey(name: 'function_invocation')
             FunctionInvocation functionInvocation,
             @JsonKey(name: 'state_diff') TraceStateDiff? stateDiff,
             @JsonKey(name: 'execution_resources')
-            InnerCallExecutionResources executionResources)?
+            ExecutionResources executionResources)?
         L1_HANDLER,
     required TResult orElse(),
   }) {
@@ -1657,7 +1657,7 @@ abstract class L1HandlerTransactionTrace implements TransactionTrace {
           required final FunctionInvocation functionInvocation,
           @JsonKey(name: 'state_diff') final TraceStateDiff? stateDiff,
           @JsonKey(name: 'execution_resources')
-          required final InnerCallExecutionResources executionResources}) =
+          required final ExecutionResources executionResources}) =
       _$L1HandlerTransactionTraceImpl;
 
   factory L1HandlerTransactionTrace.fromJson(Map<String, dynamic> json) =
@@ -1670,7 +1670,7 @@ abstract class L1HandlerTransactionTrace implements TransactionTrace {
   TraceStateDiff? get stateDiff;
   @override
   @JsonKey(name: 'execution_resources')
-  InnerCallExecutionResources get executionResources;
+  ExecutionResources get executionResources;
 
   /// Create a copy of TransactionTrace
   /// with the given fields replaced by the non-null parameter values.
