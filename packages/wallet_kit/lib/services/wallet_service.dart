@@ -100,7 +100,7 @@ class WalletService {
           privateKey: s.Felt.fromHexString(privateKey),
         ),
       ),
-      supportedTxVersion: s.AccountSupportedTxVersion.v1,
+      supportedTxVersion: s.AccountSupportedTxVersion.v3,
     );
   }
 
