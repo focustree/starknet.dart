@@ -84,9 +84,20 @@ class ERC20 extends Contract {
   ///
   /// Returns transaction hash.
   Future<String> transferFrom(Felt from, Felt to, Uint256 value) async {
+    final maxFee = await account.getEstimateMaxFeeForInvokeTx(
+      functionCalls: [
+        FunctionCall(
+          contractAddress: address,
+          entryPointSelector: getSelectorByName("transferFrom"),
+          calldata: [from, to, value.low, value.high],
+        ),
+      ],
+    );
     final InvokeTransactionResponse trx = await execute(
       selector: "transferFrom",
       calldata: [from, to, value.low, value.high],
+      l1MaxAmount: maxFee.maxAmount,
+      l1MaxPricePerUnit: maxFee.maxPricePerUnit,
     );
     return (trx.when(
       result: (result) {
@@ -102,9 +113,20 @@ class ERC20 extends Contract {
   ///
   /// Returns transaction hash.
   Future<String> approve(Felt spender, Uint256 amount) async {
+    final maxFee = await account.getEstimateMaxFeeForInvokeTx(
+      functionCalls: [
+        FunctionCall(
+          contractAddress: address,
+          entryPointSelector: getSelectorByName("approve"),
+          calldata: [spender, amount.low, amount.high],
+        ),
+      ],
+    );
     final InvokeTransactionResponse trx = await execute(
       selector: "approve",
       calldata: [spender, amount.low, amount.high],
+      l1MaxAmount: maxFee.maxAmount,
+      l1MaxPricePerUnit: maxFee.maxPricePerUnit,
     );
     return (trx.when(
       result: (result) {
