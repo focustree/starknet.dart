@@ -23,10 +23,15 @@ class StateUpdate with _$StateUpdate {
 @freezed
 class StateDiff with _$StateDiff {
   const factory StateDiff({
+    @JsonKey(name: 'storage_diffs')
     required List<ContractStorageDiffItem> storageDiffs,
+    @JsonKey(name: 'deprecated_declared_classes')
     required List<Felt> deprecatedDeclaredClasses,
+    @JsonKey(name: 'declared_classes')
     required List<DeclaredClass> declaredClasses,
+    @JsonKey(name: 'deployed_contracts')
     required List<DeployedContractItem> deployedContracts,
+    @JsonKey(name: 'replaced_classes')
     required List<ReplacedClass> replacedClasses,
     required List<NonceAndContractAddress> nonces,
   }) = _StateDiff;
