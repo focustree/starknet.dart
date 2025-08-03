@@ -57,9 +57,4 @@ class JsonRpcTraceProvider implements TraceProvider {
   }
 
   static final devnet = JsonRpcTraceProvider(nodeUri: devnetUri);
-  static final v010PathfinderGoerliTestnet =
-      JsonRpcTraceProvider(nodeUri: v010PathfinderGoerliTestnetUri);
-  static final infuraGoerliTestnet =
-      JsonRpcTraceProvider(nodeUri: infuraGoerliTestnetUri);
-  static final infuraMainnet = JsonRpcTraceProvider(nodeUri: infuraMainnetUri);
 }
