@@ -5,6 +5,11 @@ A Dart package for interacting with Starknet node using JSON-RPC, following the 
 
 ## Transaction support
 
+| Feature        | State              | Version |
+| -------------- | ------------------ | ------- |
+| invoke         | ✅                 | 0, 1, 3    |
+| declare        | ✅                 | 1, 2, 3    |
+| deploy_account | ✅                 | 1, 3       |
 
 ## Supported JSON RPC version: 0.8.1
 
