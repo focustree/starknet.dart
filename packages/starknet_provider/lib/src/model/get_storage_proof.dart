@@ -2,6 +2,7 @@
 
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:starknet/starknet.dart';
+import 'package:starknet_provider/src/model/components/node_hash_to_node_mapping.dart';
 
 import 'components/block_id.dart';
 import 'json_rpc_api_error.dart';
@@ -67,7 +68,7 @@ class ContractStorageKeys {
 @JsonSerializable()
 class StorageProofResult {
   @JsonKey(name: 'classes_proof')
-  final Map<String, dynamic> classesProof;
+  final NodeHashToNodeMapping classesProof;
   @JsonKey(name: 'contracts_proof')
   final ContractsProof contractsProof;
   @JsonKey(name: 'contracts_storage_proofs')
@@ -89,7 +90,7 @@ class StorageProofResult {
 
 @JsonSerializable()
 class ContractsProof {
-  final Map<String, dynamic> nodes;
+  final NodeHashToNodeMapping nodes;
   @JsonKey(name: 'contract_leaves_data')
   final List<ContractLeavesData> contractLeavesData;
 
@@ -140,39 +141,4 @@ class GlobalRoots {
   factory GlobalRoots.fromJson(Map<String, dynamic> json) =>
       _$GlobalRootsFromJson(json);
   Map<String, dynamic> toJson() => _$GlobalRootsToJson(this);
-}
-
-@JsonSerializable()
-class NodeHashToNodeMapping {
-  @JsonKey(name: 'node_hash')
-  final Felt nodeHash;
-  final MerkleNode node;
-
-  NodeHashToNodeMapping({
-    required this.nodeHash,
-    required this.node,
-  });
-
-  factory NodeHashToNodeMapping.fromJson(Map<String, dynamic> json) =>
-      _$NodeHashToNodeMappingFromJson(json);
-  Map<String, dynamic> toJson() => _$NodeHashToNodeMappingToJson(this);
-}
-
-@freezed
-class MerkleNode with _$MerkleNode {
-  @JsonSerializable()
-  const factory MerkleNode.binary({
-    required Felt left,
-    required Felt right,
-  }) = BinaryNode;
-
-  @JsonSerializable()
-  const factory MerkleNode.edge({
-    required Felt path,
-    required int length,
-    required Felt child,
-  }) = EdgeNode;
-
-  factory MerkleNode.fromJson(Map<String, dynamic> json) =>
-      _$MerkleNodeFromJson(json);
 }
