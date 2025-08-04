@@ -243,13 +243,18 @@ StateDiff _$StateDiffFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$StateDiff {
+  @JsonKey(name: 'storage_diffs')
   List<ContractStorageDiffItem> get storageDiffs =>
       throw _privateConstructorUsedError;
+  @JsonKey(name: 'deprecated_declared_classes')
   List<Felt> get deprecatedDeclaredClasses =>
       throw _privateConstructorUsedError;
+  @JsonKey(name: 'declared_classes')
   List<DeclaredClass> get declaredClasses => throw _privateConstructorUsedError;
+  @JsonKey(name: 'deployed_contracts')
   List<DeployedContractItem> get deployedContracts =>
       throw _privateConstructorUsedError;
+  @JsonKey(name: 'replaced_classes')
   List<ReplacedClass> get replacedClasses => throw _privateConstructorUsedError;
   List<NonceAndContractAddress> get nonces =>
       throw _privateConstructorUsedError;
@@ -270,11 +275,14 @@ abstract class $StateDiffCopyWith<$Res> {
       _$StateDiffCopyWithImpl<$Res, StateDiff>;
   @useResult
   $Res call(
-      {List<ContractStorageDiffItem> storageDiffs,
+      {@JsonKey(name: 'storage_diffs')
+      List<ContractStorageDiffItem> storageDiffs,
+      @JsonKey(name: 'deprecated_declared_classes')
       List<Felt> deprecatedDeclaredClasses,
-      List<DeclaredClass> declaredClasses,
+      @JsonKey(name: 'declared_classes') List<DeclaredClass> declaredClasses,
+      @JsonKey(name: 'deployed_contracts')
       List<DeployedContractItem> deployedContracts,
-      List<ReplacedClass> replacedClasses,
+      @JsonKey(name: 'replaced_classes') List<ReplacedClass> replacedClasses,
       List<NonceAndContractAddress> nonces});
 }
 
@@ -338,11 +346,14 @@ abstract class _$$StateDiffImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {List<ContractStorageDiffItem> storageDiffs,
+      {@JsonKey(name: 'storage_diffs')
+      List<ContractStorageDiffItem> storageDiffs,
+      @JsonKey(name: 'deprecated_declared_classes')
       List<Felt> deprecatedDeclaredClasses,
-      List<DeclaredClass> declaredClasses,
+      @JsonKey(name: 'declared_classes') List<DeclaredClass> declaredClasses,
+      @JsonKey(name: 'deployed_contracts')
       List<DeployedContractItem> deployedContracts,
-      List<ReplacedClass> replacedClasses,
+      @JsonKey(name: 'replaced_classes') List<ReplacedClass> replacedClasses,
       List<NonceAndContractAddress> nonces});
 }
 
@@ -399,10 +410,15 @@ class __$$StateDiffImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$StateDiffImpl implements _StateDiff {
   const _$StateDiffImpl(
-      {required final List<ContractStorageDiffItem> storageDiffs,
+      {@JsonKey(name: 'storage_diffs')
+      required final List<ContractStorageDiffItem> storageDiffs,
+      @JsonKey(name: 'deprecated_declared_classes')
       required final List<Felt> deprecatedDeclaredClasses,
+      @JsonKey(name: 'declared_classes')
       required final List<DeclaredClass> declaredClasses,
+      @JsonKey(name: 'deployed_contracts')
       required final List<DeployedContractItem> deployedContracts,
+      @JsonKey(name: 'replaced_classes')
       required final List<ReplacedClass> replacedClasses,
       required final List<NonceAndContractAddress> nonces})
       : _storageDiffs = storageDiffs,
@@ -417,6 +433,7 @@ class _$StateDiffImpl implements _StateDiff {
 
   final List<ContractStorageDiffItem> _storageDiffs;
   @override
+  @JsonKey(name: 'storage_diffs')
   List<ContractStorageDiffItem> get storageDiffs {
     if (_storageDiffs is EqualUnmodifiableListView) return _storageDiffs;
     // ignore: implicit_dynamic_type
@@ -425,6 +442,7 @@ class _$StateDiffImpl implements _StateDiff {
 
   final List<Felt> _deprecatedDeclaredClasses;
   @override
+  @JsonKey(name: 'deprecated_declared_classes')
   List<Felt> get deprecatedDeclaredClasses {
     if (_deprecatedDeclaredClasses is EqualUnmodifiableListView)
       return _deprecatedDeclaredClasses;
@@ -434,6 +452,7 @@ class _$StateDiffImpl implements _StateDiff {
 
   final List<DeclaredClass> _declaredClasses;
   @override
+  @JsonKey(name: 'declared_classes')
   List<DeclaredClass> get declaredClasses {
     if (_declaredClasses is EqualUnmodifiableListView) return _declaredClasses;
     // ignore: implicit_dynamic_type
@@ -442,6 +461,7 @@ class _$StateDiffImpl implements _StateDiff {
 
   final List<DeployedContractItem> _deployedContracts;
   @override
+  @JsonKey(name: 'deployed_contracts')
   List<DeployedContractItem> get deployedContracts {
     if (_deployedContracts is EqualUnmodifiableListView)
       return _deployedContracts;
@@ -451,6 +471,7 @@ class _$StateDiffImpl implements _StateDiff {
 
   final List<ReplacedClass> _replacedClasses;
   @override
+  @JsonKey(name: 'replaced_classes')
   List<ReplacedClass> get replacedClasses {
     if (_replacedClasses is EqualUnmodifiableListView) return _replacedClasses;
     // ignore: implicit_dynamic_type
@@ -517,10 +538,15 @@ class _$StateDiffImpl implements _StateDiff {
 
 abstract class _StateDiff implements StateDiff {
   const factory _StateDiff(
-      {required final List<ContractStorageDiffItem> storageDiffs,
+      {@JsonKey(name: 'storage_diffs')
+      required final List<ContractStorageDiffItem> storageDiffs,
+      @JsonKey(name: 'deprecated_declared_classes')
       required final List<Felt> deprecatedDeclaredClasses,
+      @JsonKey(name: 'declared_classes')
       required final List<DeclaredClass> declaredClasses,
+      @JsonKey(name: 'deployed_contracts')
       required final List<DeployedContractItem> deployedContracts,
+      @JsonKey(name: 'replaced_classes')
       required final List<ReplacedClass> replacedClasses,
       required final List<NonceAndContractAddress> nonces}) = _$StateDiffImpl;
 
@@ -528,14 +554,19 @@ abstract class _StateDiff implements StateDiff {
       _$StateDiffImpl.fromJson;
 
   @override
+  @JsonKey(name: 'storage_diffs')
   List<ContractStorageDiffItem> get storageDiffs;
   @override
+  @JsonKey(name: 'deprecated_declared_classes')
   List<Felt> get deprecatedDeclaredClasses;
   @override
+  @JsonKey(name: 'declared_classes')
   List<DeclaredClass> get declaredClasses;
   @override
+  @JsonKey(name: 'deployed_contracts')
   List<DeployedContractItem> get deployedContracts;
   @override
+  @JsonKey(name: 'replaced_classes')
   List<ReplacedClass> get replacedClasses;
   @override
   List<NonceAndContractAddress> get nonces;
