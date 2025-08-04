@@ -6,30 +6,6 @@ part of 'fee_estimate.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$FeeEstimatev0_7Impl _$$FeeEstimatev0_7ImplFromJson(
-        Map<String, dynamic> json) =>
-    _$FeeEstimatev0_7Impl(
-      gasConsumed: Felt.fromJson(json['gas_consumed'] as String),
-      dataGasConsumed: Felt.fromJson(json['data_gas_consumed'] as String),
-      gasPrice: Felt.fromJson(json['gas_price'] as String),
-      dataGasPrice: Felt.fromJson(json['data_gas_price'] as String),
-      overallFee: Felt.fromJson(json['overall_fee'] as String),
-      unit: json['unit'] as String,
-      $type: json['starkNetRuntimeTypeToRemove'] as String?,
-    );
-
-Map<String, dynamic> _$$FeeEstimatev0_7ImplToJson(
-        _$FeeEstimatev0_7Impl instance) =>
-    <String, dynamic>{
-      'gas_consumed': instance.gasConsumed.toJson(),
-      'data_gas_consumed': instance.dataGasConsumed.toJson(),
-      'gas_price': instance.gasPrice.toJson(),
-      'data_gas_price': instance.dataGasPrice.toJson(),
-      'overall_fee': instance.overallFee.toJson(),
-      'unit': instance.unit,
-      'starkNetRuntimeTypeToRemove': instance.$type,
-    };
-
 _$FeeEstimatev0_8Impl _$$FeeEstimatev0_8ImplFromJson(
         Map<String, dynamic> json) =>
     _$FeeEstimatev0_8Impl(
@@ -41,7 +17,6 @@ _$FeeEstimatev0_8Impl _$$FeeEstimatev0_8ImplFromJson(
       l1DataGasPrice: Felt.fromJson(json['l1_data_gas_price'] as String),
       overallFee: Felt.fromJson(json['overall_fee'] as String),
       unit: json['unit'] as String,
-      $type: json['starkNetRuntimeTypeToRemove'] as String?,
     );
 
 Map<String, dynamic> _$$FeeEstimatev0_8ImplToJson(
@@ -55,5 +30,4 @@ Map<String, dynamic> _$$FeeEstimatev0_8ImplToJson(
       'l1_data_gas_price': instance.l1DataGasPrice.toJson(),
       'overall_fee': instance.overallFee.toJson(),
       'unit': instance.unit,
-      'starkNetRuntimeTypeToRemove': instance.$type,
     };

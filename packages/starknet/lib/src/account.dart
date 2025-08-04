@@ -445,17 +445,7 @@ class Account {
     //and multiplied by feeMultiplier
     final overallFee = fee.overallFee.toBigInt().toDouble();
     final gasPrice = switch (fee) {
-      FeeEstimatev0_7(
-        gasConsumed: _,
-        dataGasConsumed: _,
-        gasPrice: final gasPrice,
-        dataGasPrice: _,
-        overallFee: _,
-        unit: _
-      ) =>
-        gasPrice.toBigInt().toDouble(),
-
-      // 2025-à7-22: We assume l2GasPrice is the expected
+      // Use l2GasPrice as the expected gas price for v0_8
       FeeEstimatev0_8(
         l1GasConsumed: _,
         l1GasPrice: _,
@@ -945,14 +935,7 @@ class Account {
       );
 
       final resourceBounds = feeResult.toResourceBounds(multiplier: 1.2);
-      if (feeResult is FeeEstimatev0_7) {
-        // workaround for starknet-devnet 0.1.2
-        resourceBounds['l1_gas'] = ResourceBounds(
-          maxAmount: resourceBounds['l1_gas']!.maxAmount +
-              resourceBounds['l2_gas']!.maxAmount,
-          maxPricePerUnit: l1MaxPricePerUnit,
-        );
-      }
+      // Note: Removed v0_7 workaround as it's no longer needed with v0_8 fee estimates
       final signature = await accountSigner.signDeployAccountTransactionV3(
         contractAddress: contractAddress,
         resourceBounds: resourceBounds,

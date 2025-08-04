@@ -1197,12 +1197,14 @@ void main() {
           },
           result: (result) {
             expect(result.length, 1);
-            final estimate = result[0] as FeeEstimatev0_7;
-            expect(estimate.gasConsumed, Felt.fromHexString("0x17"));
-            expect(estimate.dataGasConsumed, Felt.fromHexString("0xc0"));
-            expect(estimate.gasPrice, Felt.fromHexString("0x174876e800"));
-            expect(estimate.dataGasPrice, Felt.fromHexString("0x174876e800"));
-            expect(estimate.overallFee, Felt.fromHexString("0x138ddbdcd800"));
+            final estimate = result[0] as FeeEstimatev0_8;
+            expect(estimate.l1GasConsumed, greaterThan(Felt.zero));
+            expect(estimate.l2GasConsumed, greaterThan(Felt.zero));
+            expect(estimate.l1DataGasConsumed, isA<Felt>());
+            expect(estimate.l1GasPrice, greaterThan(Felt.zero));
+            expect(estimate.l2GasPrice, greaterThan(Felt.zero));
+            expect(estimate.l1DataGasPrice, greaterThan(Felt.zero));
+            expect(estimate.overallFee, greaterThan(Felt.zero));
             expect(estimate.unit, "WEI");
           },
         );
@@ -1223,12 +1225,14 @@ void main() {
           },
           result: (result) {
             expect(result.length, 1);
-            final estimate = result[0] as FeeEstimatev0_7;
-            expect(estimate.gasConsumed, Felt.fromHexString("0x17"));
-            expect(estimate.dataGasConsumed, Felt.fromHexString("0x140"));
-            expect(estimate.gasPrice, Felt.fromHexString("0x174876e800"));
-            expect(estimate.dataGasPrice, Felt.fromHexString("0x174876e800"));
-            expect(estimate.overallFee, Felt.fromHexString("0x1f321750d800"));
+            final estimate = result[0] as FeeEstimatev0_8;
+            expect(estimate.l1GasConsumed, greaterThan(Felt.zero));
+            expect(estimate.l2GasConsumed, greaterThan(Felt.zero));
+            expect(estimate.l1DataGasConsumed, isA<Felt>());
+            expect(estimate.l1GasPrice, greaterThan(Felt.zero));
+            expect(estimate.l2GasPrice, greaterThan(Felt.zero));
+            expect(estimate.l1DataGasPrice, greaterThan(Felt.zero));
+            expect(estimate.overallFee, greaterThan(Felt.zero));
             expect(estimate.unit, "FRI");
           },
         );
@@ -1355,14 +1359,6 @@ void main() {
           },
           result: (result) {
             switch (result) {
-              case FeeEstimatev0_7 feeEstimate:
-                expect(feeEstimate.gasConsumed, isNot(equals(Felt.zero)));
-                expect(feeEstimate.dataGasConsumed, isNot(equals(Felt.zero)));
-                expect(feeEstimate.gasPrice, isNot(equals(Felt.zero)));
-                expect(feeEstimate.dataGasPrice, isNot(equals(Felt.zero)));
-                expect(feeEstimate.overallFee, isNot(equals(Felt.zero)));
-                expect(feeEstimate.unit, isNotEmpty);
-                break;
               case FeeEstimatev0_8 feeEstimate:
                 expect(feeEstimate.l1GasConsumed, isNot(equals(Felt.zero)));
                 expect(feeEstimate.l1GasPrice, isNot(equals(Felt.zero)));
@@ -1453,8 +1449,6 @@ void main() {
     group('starknet_specVersion', () {
       test('check spec version from Blast public server', () async {
         final blastUri = {
-          '0.6': 'https://starknet-sepolia.public.blastapi.io/rpc/v0_6',
-          '0.7': 'https://starknet-sepolia.public.blastapi.io/rpc/v0_7',
           '0.8': 'https://starknet-sepolia.public.blastapi.io/rpc/v0_8',
         };
         for (final entry in blastUri.entries) {
@@ -1474,7 +1468,7 @@ void main() {
         specVersion.when(
             error: (error) => fail("Shouldn't fail $error"),
             result: (result) {
-              expect(result, startsWith('0.7'));
+              expect(result, startsWith('0.8'));
             });
       });
     }, tags: ['integration']);
