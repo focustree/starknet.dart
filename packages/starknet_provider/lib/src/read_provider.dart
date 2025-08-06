@@ -128,13 +128,23 @@ abstract class ReadProvider {
 
   /// Estimate the fee for a given message from L1 to L2.
   ///
-  /// [Spec](https://github.com/starkware-libs/starknet-specs/blob/v0.7.1/api/starknet_api_openrpc.json#L672)
+  /// [Spec](https://github.com/starkware-libs/starknet-specs/blob/v0.8.1/api/starknet_api_openrpc.json#L673)
   Future<EstimateMessageFee> estimateMessageFee(
       EstimateMessageFeeRequest request);
 
+  /// Gets the status of L1 to L2 messages.
+  ///
+  /// [Spec](https://github.com/starkware-libs/starknet-specs/blob/v0.8.1/api/starknet_api_openrpc.json#L252-L296)
+  Future<GetMessagesStatus> getMessagesStatus(GetMessagesStatusRequest request);
+
+  /// Gets storage proof for the given contract address and keys.
+  ///
+  /// [Spec](https://github.com/starkware-libs/starknet-specs/blob/v0.8.1/api/starknet_api_openrpc.json#L883-L1034)
+  Future<GetStorageProof> getStorageProof(GetStorageProofRequest request);
+
   /// Fetches a block along with its transaction receipts.
   ///
-  /// [Spec](https://github.com/starkware-libs/starknet-specs/blob/v0.7.0-rc0/api/starknet_api_openrpc.json#L107-L143)
+  /// [Spec](https://github.com/starkware-libs/starknet-specs/blob/v0.8.1/api/starknet_api_openrpc.json#L99)
   Future<BlockWithReceipts> getBlockWithReceipts(BlockId blockId);
 
   /// Returns the version of the Starknet JSON-RPC specification being used
@@ -358,6 +368,25 @@ class JsonRpcReadProvider implements ReadProvider {
       method: 'starknet_estimateMessageFee',
       params: request,
     ).then(EstimateMessageFee.fromJson);
+  }
+
+  @override
+  Future<GetMessagesStatus> getMessagesStatus(
+      GetMessagesStatusRequest request) {
+    return callRpcEndpoint(
+      nodeUri: nodeUri,
+      method: 'starknet_getMessagesStatus',
+      params: request,
+    ).then(GetMessagesStatus.fromJson);
+  }
+
+  @override
+  Future<GetStorageProof> getStorageProof(GetStorageProofRequest request) {
+    return callRpcEndpoint(
+      nodeUri: nodeUri,
+      method: 'starknet_getStorageProof',
+      params: request,
+    ).then(GetStorageProof.fromJson);
   }
 
   @override
