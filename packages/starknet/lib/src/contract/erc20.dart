@@ -68,8 +68,12 @@ class ERC20 extends Contract {
     final InvokeTransactionResponse trx = await execute(
       selector: "transfer",
       calldata: [recipient, value.low, value.high],
-      l1MaxAmount: maxFee.maxAmount,
-      l1MaxPricePerUnit: maxFee.maxPricePerUnit,
+      l1GasConsumed: maxFee.l1GasConsumed,
+      l1GasPrice: maxFee.l1GasPrice,
+      l2GasConsumed: maxFee.l2GasConsumed,
+      l2GasPrice: maxFee.l2GasPrice,
+      l1DataGasConsumed: maxFee.l1DataGasConsumed,
+      l1DataGasPrice: maxFee.l1DataGasPrice,
     );
     return trx.when(
       result: (result) => result.transaction_hash,
@@ -96,8 +100,12 @@ class ERC20 extends Contract {
     final InvokeTransactionResponse trx = await execute(
       selector: "transferFrom",
       calldata: [from, to, value.low, value.high],
-      l1MaxAmount: maxFee.maxAmount,
-      l1MaxPricePerUnit: maxFee.maxPricePerUnit,
+      l1GasConsumed: maxFee.l1GasConsumed,
+      l1GasPrice: maxFee.l1GasPrice,
+      l2GasConsumed: maxFee.l2GasConsumed,
+      l2GasPrice: maxFee.l2GasPrice,
+      l1DataGasConsumed: maxFee.l1DataGasConsumed,
+      l1DataGasPrice: maxFee.l1DataGasPrice,
     );
     return (trx.when(
       result: (result) {
@@ -125,8 +133,12 @@ class ERC20 extends Contract {
     final InvokeTransactionResponse trx = await execute(
       selector: "approve",
       calldata: [spender, amount.low, amount.high],
-      l1MaxAmount: maxFee.maxAmount,
-      l1MaxPricePerUnit: maxFee.maxPricePerUnit,
+      l1GasConsumed: maxFee.l1GasConsumed,
+      l1GasPrice: maxFee.l1GasPrice,
+      l2GasConsumed: maxFee.l2GasConsumed,
+      l2GasPrice: maxFee.l2GasPrice,
+      l1DataGasConsumed: maxFee.l1DataGasConsumed,
+      l1DataGasPrice: maxFee.l1DataGasPrice,
     );
     return (trx.when(
       result: (result) {

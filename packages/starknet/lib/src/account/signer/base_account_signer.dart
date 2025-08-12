@@ -36,16 +36,14 @@ abstract class BaseAccountSigner {
     elementsToHash.add(l2GasBounds.toBigInt());
 
     // added in v0.8 JSON RPC SPECS
-    if (resourceBounds.containsKey('l1_data_gas')) {
-      final l1DataGasMaxAmount = resourceBounds['l1_data_gas']!.maxAmount;
-      final l1DataGasMaxPricePerUnit =
-          resourceBounds['l1_data_gas']!.maxPricePerUnit;
+    final l1DataGasMaxAmount = resourceBounds['l1_data_gas']!.maxAmount;
+    final l1DataGasMaxPricePerUnit =
+        resourceBounds['l1_data_gas']!.maxPricePerUnit;
 
-      final l1DataGasBounds = (Felt.fromString('L1_DATA') << (128 + 64)) +
-          (l1DataGasMaxAmount << 128) +
-          l1DataGasMaxPricePerUnit;
-      elementsToHash.add(l1DataGasBounds.toBigInt());
-    }
+    final l1DataGasBounds = (Felt.fromString('L1_DATA') << (128 + 64)) +
+        (l1DataGasMaxAmount << 128) +
+        l1DataGasMaxPricePerUnit;
+    elementsToHash.add(l1DataGasBounds.toBigInt());
     return poseidonHasher.hashMany(elementsToHash);
   }
 
@@ -73,6 +71,9 @@ abstract class BaseAccountSigner {
     }
     if (!resourceBounds.containsKey('l1_gas')) {
       throw Exception('Resource bounds for l1_gas must not be null');
+    }
+    if (!resourceBounds.containsKey('l1_data_gas')) {
+      throw Exception('Resource bounds for l1_data_gas must not be null');
     }
     if (!resourceBounds.containsKey('l2_gas')) {
       throw Exception('Resource bounds for l2_gas must not be null');

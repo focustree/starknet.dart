@@ -34,7 +34,7 @@ final strkAddress = Felt.fromHexString(
 
 // from starknet-devnet 0.1.2
 final devnetOpenZeppelinAccountClassHash = Felt.fromHexString(
-  '0x61dac032f228abef9c6626f995015233097ae253a7f72d68552db02f2971b8f',
+  '0x05b4b537eaa2399e3aa99c4e2e0208ebd6c71bc1467938cd52c798c601e43564',
 );
 
 // Devnet
@@ -70,7 +70,7 @@ final account1 = getAccount(
 // and avoid race condition on the account nonce
 // when test inside groups run in parallel.
 final devnetAccount2Address = Felt.fromHexString(
-  '0x49dfb8ce986e21d354ac93ea65e6a11f639c1934ea253e5ff14ca62eca0f38e',
+  '0x049dfb8ce986e21d354ac93ea65e6a11f639c1934ea253e5ff14ca62eca0f38e',
 );
 final devnetAccount2PublicKey = Felt.fromHexString(
   '0xb8fd4ddd415902d96f61b7ad201022d495997c2dff8eb9e0eb86253e30fabc',

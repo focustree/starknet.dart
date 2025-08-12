@@ -301,8 +301,12 @@ Future<void> main() async {
               ],
             ),
           ],
-          l1MaxAmount: maxFee.maxAmount,
-          l1MaxPricePerUnit: maxFee.maxPricePerUnit,
+          l1GasConsumed: maxFee.l1GasConsumed,
+          l1GasPrice: maxFee.l1GasPrice,
+          l1DataGasConsumed: maxFee.l1DataGasConsumed,
+          l1DataGasPrice: maxFee.l1DataGasPrice,
+          l2GasConsumed: maxFee.l2GasConsumed,
+          l2GasPrice: maxFee.l2GasPrice,
         ))
             .when(
           result: (result) => result.transaction_hash,

@@ -23,14 +23,14 @@ flutter pub add wallet_kit hive_flutter hooks_riverpod flutter_dotenv
 4. Create a `.env` file in the root of your wallet_app project
 
 ```bash
-ACCOUNT_CLASS_HASH="0x061dac032f228abef9c6626f995015233097ae253a7f72d68552db02f2971b8f"
+ACCOUNT_CLASS_HASH="0x05b4b537eaa2399e3aa99c4e2e0208ebd6c71bc1467938cd52c798c601e43564"
 RPC="http://127.0.0.1:5050/rpc"
 ```
 
 > Please note that `ACCOUNT_CLASS_HASH` must match the one used by your version of `starknet-devnet`, it's displayed at startup.
-Here is the value for `starknet-devnet 0.2.0`
+Here is the value for `starknet-devnet 0.4.2`
 > ```
-> Predeployed accounts using class with hash: 0x061dac032f228abef9c6626f995015233097ae253a7f72d68552db02f2971b8f
+> Predeployed accounts using class with hash: 0x05b4b537eaa2399e3aa99c4e2e0208ebd6c71bc1467938cd52c798c601e43564
 > ```
 
 > If you are running on another device than the host running `starknet-devnet`, you should use the external IP of your host running and start `starknet-devnet` with `--host 0.0.0.0` argument

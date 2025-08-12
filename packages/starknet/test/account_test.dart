@@ -19,10 +19,10 @@ void main() {
             'succeeds to declare a simple sierra contract with provided CASM file and STRK fee with resource bounds',
             () async {
           final sierraContract = await CompiledContract.fromPath(
-            '${Directory.current.path}/../../contracts/v1/artifacts/contract2_MyToken.contract_class.json',
+            '${Directory.current.path}/../../contracts/v1/artifacts/contract2_Counter2.contract_class.json',
           );
           final compiledContract = await CASMCompiledContract.fromPath(
-            '${Directory.current.path}/../../contracts/v1/artifacts/contract2_MyToken.compiled_contract_class.json',
+            '${Directory.current.path}/../../contracts/v1/artifacts/contract2_Counter2.compiled_contract_class.json',
           );
           final BigInt compiledClassHash = compiledContract.classHash();
 
@@ -36,8 +36,12 @@ void main() {
           var res = await account2.declare(
             compiledContract: sierraContract,
             compiledClassHash: compiledClassHash,
-            l1MaxAmount: maxFee.maxAmount,
-            l1MaxPricePerUnit: maxFee.maxPricePerUnit,
+            l1GasConsumed: maxFee.l1GasConsumed,
+            l1GasPrice: maxFee.l1GasPrice,
+            l2GasConsumed: maxFee.l2GasConsumed,
+            l2GasPrice: maxFee.l2GasPrice,
+            l1DataGasConsumed: maxFee.l1DataGasConsumed,
+            l1DataGasPrice: maxFee.l1DataGasPrice,
           );
           final txHash = res.when(
             result: (result) {
@@ -149,7 +153,7 @@ void main() {
           final txSend = await account0.send(
             recipient: accountAddress,
             amount: Uint256(
-              low: maxFee.maxAmount * maxFee.maxPricePerUnit,
+              low: maxFee.overallFee,
               high: Felt.zero,
             ),
             useSTRKtoken: true,
@@ -166,8 +170,12 @@ void main() {
             provider: provider,
             constructorCalldata: accountConstructorCalldata,
             contractAddressSalt: salt,
-            l1MaxAmount: maxFee.maxAmount,
-            l1MaxPricePerUnit: maxFee.maxPricePerUnit,
+            l1GasConsumed: maxFee.l1GasConsumed,
+            l1GasPrice: maxFee.l1GasPrice,
+            l2GasConsumed: maxFee.l2GasConsumed,
+            l2GasPrice: maxFee.l2GasPrice,
+            l1DataGasConsumed: maxFee.l1DataGasConsumed,
+            l1DataGasPrice: maxFee.l1DataGasPrice,
           );
           final contractAddress = tx.when(
             result: (result) => result.contractAddress,
@@ -218,8 +226,12 @@ void main() {
             var res = await account3.declare(
               compiledContract: sierraContract,
               compiledClassHash: compiledClassHash,
-              l1MaxAmount: maxFee.maxAmount,
-              l1MaxPricePerUnit: maxFee.maxPricePerUnit,
+              l1GasConsumed: maxFee.l1GasConsumed,
+              l1GasPrice: maxFee.l1GasPrice,
+              l2GasConsumed: maxFee.l2GasConsumed,
+              l2GasPrice: maxFee.l2GasPrice,
+              l1DataGasConsumed: maxFee.l1DataGasConsumed,
+              l1DataGasPrice: maxFee.l1DataGasPrice,
             );
             txHash = res.when(
               result: (result) {
@@ -264,8 +276,12 @@ void main() {
               Felt.zero,
               account3.accountAddress,
             ],
-            l1MaxAmount: maxFee.maxAmount,
-            l1MaxPricePerUnit: maxFee.maxPricePerUnit,
+            l1GasConsumed: maxFee.l1GasConsumed,
+            l1GasPrice: maxFee.l1GasPrice,
+            l1DataGasConsumed: maxFee.l1DataGasConsumed,
+            l1DataGasPrice: maxFee.l1DataGasPrice,
+            l2GasConsumed: maxFee.l2GasConsumed,
+            l2GasPrice: maxFee.l2GasPrice,
           );
 
           maxFee = await account3.getEstimateMaxFeeForInvokeTx(
@@ -296,8 +312,12 @@ void main() {
             ],
             incrementNonceIfNonceRelatedError: true,
             maxAttempts: 5,
-            l1MaxAmount: maxFee.maxAmount,
-            l1MaxPricePerUnit: maxFee.maxPricePerUnit,
+            l1GasConsumed: maxFee.l1GasConsumed,
+            l1GasPrice: maxFee.l1GasPrice,
+            l1DataGasConsumed: maxFee.l1DataGasConsumed,
+            l1DataGasPrice: maxFee.l1DataGasPrice,
+            l2GasConsumed: maxFee.l2GasConsumed,
+            l2GasPrice: maxFee.l2GasPrice,
           );
 
           final txHash1 = response.when(

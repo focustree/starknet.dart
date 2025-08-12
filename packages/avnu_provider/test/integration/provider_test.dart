@@ -38,7 +38,7 @@ void main() {
       accountAddress: sepoliaAccount0Address,
       privateKey: sepoliaAccount0PrivateKey,
       nodeUri:
-          Uri.parse('https://starknet-sepolia.public.blastapi.io/rpc/v0_7'),
+          Uri.parse('https://starknet-sepolia.public.blastapi.io/rpc/v0_8'),
       chainId: Felt.fromString('SN_SEPOLIA'),
     );
 
@@ -70,7 +70,7 @@ void main() {
             '0x4718f5a0fc34cc1af16a1cdee98ffb20c31f5cd61d6ab07201858f4287c938d';
         // Get maxFee as hex string
 
-        final maxGasTokenAmount = "0x23910f84272b14";
+        final maxGasTokenAmount = "0xFC3F02C221B000";
 
         //just for testing, we hardcode the account class hash to the ArgentX account class hash
         //in a real scenario, we would get the account class hash from the Starknetprovider
@@ -358,7 +358,7 @@ void main() {
       accountAddress: sepoliaAccount0Address,
       privateKey: sepoliaAccount0PrivateKey,
       nodeUri:
-          Uri.parse('https://starknet-sepolia.public.blastapi.io/rpc/v0_7'),
+          Uri.parse('https://starknet-sepolia.public.blastapi.io/rpc/v0_8'),
       chainId: Felt.fromString('SN_SEPOLIA'),
     );
 
@@ -433,13 +433,7 @@ void main() {
       final gasTokenAddress =
           '0x4718f5a0fc34cc1af16a1cdee98ffb20c31f5cd61d6ab07201858f4287c938d';
       // Get maxFee as hex string
-      final maxGasTokenAmount =
-          (await sepoliaAccount0.getEstimateMaxFeeForInvokeTx(
-        functionCalls: functionCalls,
-        feeMultiplier: 5.0,
-      ))
-              .maxFee
-              .toHexString();
+      final maxGasTokenAmount = '0xFC3F02C221B000';
       //just for testing, we hardcode the account class hash to the ArgentX account class hash
       //in a real scenario, we would get the account class hash from the Starknetprovider
       final accountClassHash =

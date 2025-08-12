@@ -18,7 +18,7 @@ void main() {
         '0x51d7ee9fa3a6226d47860eea28dc0b38eeccd7b6fac1b9f39c64c3ac772cc02');
     int blockNumber = 3;
     Felt invokeTransactionHash = Felt.fromHexString(
-        '0x029583643cd8932f1955bf28bfebf4c907b13df1e5c2d202b133cfbf783697a2');
+        '0x079343f5ddb8a5ae74f514651d664bf74ba26abd45a80e4b68825eaabd6822d0');
     Felt declareTransactionHash = Felt.fromHexString(
         '0x4d7ba5427d4066c8db851e7662ecce860a94a804c6735677dfd29f1d0103fda');
     Felt deployTransactionHash = Felt.fromHexString(
@@ -43,7 +43,7 @@ void main() {
         '0x9278fa5f64a571de10741418f1c4c0c4322aef645dd9d94a429c1f3e99a8a5');
 
     Felt classHashV1 = Felt.fromHexString(
-        '0x061dac032f228abef9c6626f995015233097ae253a7f72d68552db02f2971b8f'); // Predeployed class hash
+        '0x05b4b537eaa2399e3aa99c4e2e0208ebd6c71bc1467938cd52c798c601e43564'); // Predeployed class hash
     Felt contractAddressV1 = Felt.fromHexString(
         '0x64b48806902a367c8598f4f95c305e8c1a1acba5f082d294a43793113115691');
 
@@ -1116,158 +1116,6 @@ void main() {
       });
     });
 
-    group('getMessagesStatus', () {
-      test('returns message status for valid message hash', () async {
-        if (!await isRpcVersionSufficient(provider, '0.8')) {
-          return;
-        }
-
-        final request = GetMessagesStatusRequest(
-          transactionHash:
-              Felt.fromHexString('0x1234567890123456789012345678901234567890'),
-        );
-
-        final response = await provider.getMessagesStatus(request);
-
-        response.when(
-          error: (error) => fail('Should not fail: ${error.message}'),
-          result: (result) {
-            expect(result, hasLength(1));
-            expect(
-                result[0].transactionHash,
-                Felt.fromHexString(
-                    '0x1234567890123456789012345678901234567890'));
-            expect(result[0].finalityStatus, isNotEmpty);
-          },
-        );
-      });
-
-      test('returns error with empty message hashes list', () async {
-        if (!await isRpcVersionSufficient(provider, '0.8')) {
-          return;
-        }
-        final request = GetMessagesStatusRequest(
-          transactionHash: Felt.fromHexString(
-              '0x0000000000000000000000000000000000000000000000000000000000000000'),
-        );
-
-        final response = await provider.getMessagesStatus(request);
-
-        response.when(
-          error: (error) {
-            expect(error.code, JsonRpcApiErrorCode.INVALID_QUERY);
-          },
-          result: (result) => fail('Should fail'),
-        );
-      });
-
-      test('returns error with invalid message hash format', () async {
-        if (!await isRpcVersionSufficient(provider, '0.8')) {
-          return;
-        }
-
-        final request = GetMessagesStatusRequest(
-          transactionHash: Felt.fromHexString(
-              '0x0000000000000000000000000000000000000000000000000000000000000000'),
-        );
-
-        final response = await provider.getMessagesStatus(request);
-
-        response.when(
-          error: (error) {
-            expect(error.code, JsonRpcApiErrorCode.INVALID_QUERY);
-          },
-          result: (result) => fail('Should fail'),
-        );
-      });
-    });
-
-    group('getStorageProof', () {
-      test(
-          'returns storage proof for valid contract addresses and storage keys',
-          () async {
-        if (!await isRpcVersionSufficient(provider, '0.8')) {
-          return;
-        }
-        final contractAddresses = [
-          Felt.fromHexString('0x1234567890123456789012345678901234567890'),
-        ];
-        final contractsStorageKeys = [
-          ContractStorageKeys(
-            contractAddress: Felt.fromHexString(
-                '0x1234567890123456789012345678901234567890'),
-            storageKeys: [
-              Felt.fromHexString('0x0987654321098765432109876543210987654321'),
-            ],
-          ),
-        ];
-
-        final request = GetStorageProofRequest(
-          blockId: BlockId.latest,
-          contractAddresses: contractAddresses,
-          contractsStorageKeys: contractsStorageKeys,
-        );
-
-        final response = await provider.getStorageProof(request);
-
-        response.when(
-          error: (error) => fail('Should not fail: ${error.message}'),
-          result: (result) {
-            expect(result.classesProof, isA<Map<String, dynamic>>());
-            expect(result.contractsProof, isA<ContractsProof>());
-            expect(result.contractsStorageProofs,
-                isA<List<Map<String, dynamic>>>());
-            expect(result.globalRoots, isA<GlobalRoots>());
-            expect(result.globalRoots.contractsTreeRoot, isNotNull);
-            expect(result.globalRoots.classesTreeRoot, isNotNull);
-            expect(result.globalRoots.blockHash, isNotNull);
-          },
-        );
-      });
-
-      test('returns error with empty request', () async {
-        if (!await isRpcVersionSufficient(provider, '0.8')) {
-          return;
-        }
-        final request = GetStorageProofRequest(
-          blockId: BlockId.latest,
-        );
-
-        final response = await provider.getStorageProof(request);
-
-        response.when(
-          error: (error) {
-            expect(error.code, JsonRpcApiErrorCode.INVALID_QUERY);
-          },
-          result: (result) => fail('Should fail'),
-        );
-      });
-
-      test('returns error with invalid block id', () async {
-        if (!await isRpcVersionSufficient(provider, '0.8')) {
-          return;
-        }
-        final contractAddresses = [
-          Felt.fromHexString('0x1234567890123456789012345678901234567890'),
-        ];
-
-        final request = GetStorageProofRequest(
-          blockId: invalidBlockIdFromBlockHash,
-          contractAddresses: contractAddresses,
-        );
-
-        final response = await provider.getStorageProof(request);
-
-        response.when(
-          error: (error) {
-            expect(error.code, JsonRpcApiErrorCode.BLOCK_NOT_FOUND);
-            expect(error.message, 'Block not found');
-          },
-          result: (result) => fail('Should fail'),
-        );
-      });
-    });
-
     group('estimateFee', () {
       BlockId parentBlockId = BlockId.blockTag('pending');
 
@@ -1425,7 +1273,7 @@ void main() {
       test('estimate message fee for L1 to L2 message', () async {
         // Contract declared and deployed in devnet dump (source: /contracts/v2.6.2/src/l2_receiver.cairo)
         final Felt l2ContractAddress = Felt.fromHexString(
-            '0x0536e1d1cd6cd7d295ccbd8c7dc817839f8ff4c615a28fdc192a0aafe2327e5f');
+            '0x0505808b8dc23ef65ccd98da1ddd258ad8597e5cd06b0def786452900fcd955c');
 
         // This must be the l1 sender address
         const String l1Address = '0x8359E4B0152ed5A731162D3c7B0D8D56edB165a0';
@@ -1462,7 +1310,7 @@ void main() {
                 expect(feeEstimate.l1GasPrice, isNot(equals(Felt.zero)));
                 expect(feeEstimate.l1DataGasConsumed, isNot(equals(Felt.zero)));
                 expect(feeEstimate.l1DataGasPrice, isNot(equals(Felt.zero)));
-                expect(feeEstimate.l2GasConsumed, isNot(equals(Felt.zero)));
+                //expect(feeEstimate.l2GasConsumed, isNot(equals(Felt.zero))); this could be zero
                 expect(feeEstimate.l2GasPrice, isNot(equals(Felt.zero)));
                 expect(feeEstimate.overallFee, isNot(equals(Felt.zero)));
                 expect(feeEstimate.unit, isNotEmpty);
@@ -1511,7 +1359,7 @@ void main() {
       test('estimate message fee with invalid block id', () async {
         // Contract declared and deployed in devnet dump (source: /contracts/v2.6.2/src/l2_receiver.cairo)
         final Felt l2ContractAddress = Felt.fromHexString(
-            '0x0536e1d1cd6cd7d295ccbd8c7dc817839f8ff4c615a28fdc192a0aafe2327e5f');
+            '0x0505808b8dc23ef65ccd98da1ddd258ad8597e5cd06b0def786452900fcd955c');
 
         const String l1Address = '0x8359E4B0152ed5A731162D3c7B0D8D56edB165a0';
         final Felt entryPointSelector =

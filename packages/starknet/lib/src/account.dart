@@ -28,16 +28,24 @@ enum AccountSupportedTxVersion {
 
 /// Represents fee estimation results
 class FeeEstimations {
-  final Felt maxAmount;
-  final Felt maxPricePerUnit;
+  final Felt l1GasConsumed;
+  final Felt l1GasPrice;
+  final Felt l1DataGasConsumed;
+  final Felt l1DataGasPrice;
+  final Felt l2GasConsumed;
+  final Felt l2GasPrice;
+  final Felt overallFee;
   final String unit;
-  final Felt maxFee; // for v2 and legacy transaction versions
 
   const FeeEstimations({
-    required this.maxAmount,
-    required this.maxPricePerUnit,
+    required this.l1GasConsumed,
+    required this.l1GasPrice,
+    required this.l1DataGasConsumed,
+    required this.l1DataGasPrice,
+    required this.l2GasConsumed,
+    required this.l2GasPrice,
+    required this.overallFee,
     required this.unit,
-    required this.maxFee,
   });
 }
 
@@ -94,8 +102,7 @@ class Account {
     String? nonceDataAvailabilityMode,
   }) async {
     nonce = nonce ?? await getNonce();
-    final resourceBounds =
-        _getResourceBounds(Felt.zero, Felt.zero, Felt.zero, Felt.zero);
+    final resourceBounds = await provider.defaultResourceBoundsMapping();
 
     supportedTxVersion = AccountSupportedTxVersion.v3;
     accountDeploymentData ??= [];
@@ -168,8 +175,8 @@ class Account {
     BroadcastedTxn broadcastedTxn;
 
     nonce = nonce ?? await getNonce();
-    final resourceBounds =
-        _getResourceBounds(Felt.zero, Felt.zero, Felt.zero, Felt.zero);
+    final resourceBounds = _getResourceBounds(
+        Felt.zero, Felt.zero, Felt.zero, Felt.zero, Felt.zero, Felt.zero);
 
     // These values are for future use (until then they are empty or zero)
     accountDeploymentData ??= [];
@@ -239,8 +246,8 @@ class Account {
     BroadcastedTxn broadcastedTxn;
     nonce = nonce ?? defaultNonce;
     contractAddressSalt = contractAddressSalt ?? accountSigner.publicKey;
-    final resourceBounds =
-        _getResourceBounds(Felt.zero, Felt.zero, Felt.zero, Felt.zero);
+    final resourceBounds = _getResourceBounds(
+        Felt.zero, Felt.zero, Felt.zero, Felt.zero, Felt.zero, Felt.zero);
 
     contractAddress = contractAddress ?? Felt.zero;
     // These values are for future use (until then they are empty or zero)
@@ -347,30 +354,15 @@ class Account {
       error: (error) => throw Exception(error.message),
     );
 
-    //calculated as described in https://community.starknet.io/t/starknet-v0-13-1-pre-release-notes/113664
-    //and multiplied by feeMultiplier
-    final overallFee = fee.overallFee.toBigInt().toDouble();
-    final gasPrice = switch (fee) {
-      // Use l2GasPrice as the expected gas price for v0_8
-      FeeEstimatev0_8(
-        l1GasConsumed: _,
-        l1GasPrice: _,
-        l1DataGasConsumed: _,
-        l1DataGasPrice: _,
-        l2GasConsumed: _,
-        l2GasPrice: final gasPrice,
-      ) =>
-        gasPrice.toBigInt().toDouble(),
-    };
-    final maxAmountFee = Felt.fromDouble(feeMultiplier * overallFee / gasPrice);
-    final maxPricePerUnit = Felt.fromDouble(feeMultiplier * gasPrice);
-    final maxFee = Felt.fromDouble(feeMultiplier * overallFee);
-
     return FeeEstimations(
-      maxAmount: maxAmountFee,
-      maxPricePerUnit: maxPricePerUnit,
+      l1GasConsumed: fee.l1GasConsumed * Felt.fromDouble(feeMultiplier),
+      l1GasPrice: fee.l1GasPrice * Felt.fromDouble(feeMultiplier),
+      l1DataGasConsumed: fee.l1DataGasConsumed * Felt.fromDouble(feeMultiplier),
+      l1DataGasPrice: fee.l1DataGasPrice * Felt.fromDouble(feeMultiplier),
+      l2GasConsumed: fee.l2GasConsumed * Felt.fromDouble(feeMultiplier),
+      l2GasPrice: fee.l2GasPrice * Felt.fromDouble(feeMultiplier),
+      overallFee: fee.overallFee * Felt.fromDouble(feeMultiplier),
       unit: fee.unit,
-      maxFee: maxFee,
     );
   }
 
@@ -381,10 +373,12 @@ class Account {
     int maxAttempts = 5,
     Felt? nonce,
     // needed for v3
-    Felt? l1MaxAmount,
-    Felt? l1MaxPricePerUnit,
-    Felt? l2MaxAmount,
-    Felt? l2MaxPricePerUnit,
+    Felt? l1GasConsumed,
+    Felt? l1GasPrice,
+    Felt? l1DataGasConsumed,
+    Felt? l1DataGasPrice,
+    Felt? l2GasConsumed,
+    Felt? l2GasPrice,
     // These values are for future use (until then they are empty or zero)
     List<Felt>? accountDeploymentData,
     List<Felt>? paymasterData,
@@ -399,15 +393,19 @@ class Account {
     tip ??= Felt.zero;
     feeDataAvailabilityMode ??= 'L1';
     nonceDataAvailabilityMode ??= 'L1';
-    l1MaxAmount ??= Felt.zero;
-    l1MaxPricePerUnit ??= Felt.zero;
-    l2MaxAmount ??= Felt.zero;
-    l2MaxPricePerUnit ??= Felt.zero;
+    l1GasConsumed ??= Felt.zero;
+    l1GasPrice ??= Felt.zero;
+    l1DataGasConsumed ??= Felt.zero;
+    l1DataGasPrice ??= Felt.zero;
+    l2GasConsumed ??= Felt.zero;
+    l2GasPrice ??= Felt.zero;
     final resourceBounds = _getResourceBounds(
-      l1MaxAmount,
-      l1MaxPricePerUnit,
-      l2MaxAmount,
-      l2MaxPricePerUnit,
+      l1GasConsumed,
+      l1GasPrice,
+      l1DataGasConsumed,
+      l1DataGasPrice,
+      l2GasConsumed,
+      l2GasPrice,
     );
 
     for (int attempt = 0; attempt < maxAttempts; attempt++) {
@@ -494,10 +492,12 @@ class Account {
     BigInt? compiledClassHash,
     CASMCompiledContract? casmCompiledContract,
     // needed for v3
-    Felt? l1MaxAmount,
-    Felt? l1MaxPricePerUnit,
-    Felt? l2MaxAmount,
-    Felt? l2MaxPricePerUnit,
+    Felt? l1GasConsumed,
+    Felt? l1GasPrice,
+    Felt? l1DataGasConsumed,
+    Felt? l1DataGasPrice,
+    Felt? l2GasConsumed,
+    Felt? l2GasPrice,
     // These values are for future use (until then they are empty or zero)
     List<Felt>? accountDeploymentData,
     List<Felt>? paymasterData,
@@ -513,15 +513,19 @@ class Account {
     tip ??= Felt.zero;
     feeDataAvailabilityMode ??= 'L1';
     nonceDataAvailabilityMode ??= 'L1';
-    l1MaxAmount ??= Felt.zero;
-    l1MaxPricePerUnit ??= Felt.zero;
-    l2MaxAmount ??= Felt.zero;
-    l2MaxPricePerUnit ??= Felt.zero;
+    l1GasConsumed ??= Felt.zero;
+    l1GasPrice ??= Felt.zero;
+    l1DataGasConsumed ??= Felt.zero;
+    l1DataGasPrice ??= Felt.zero;
+    l2GasConsumed ??= Felt.zero;
+    l2GasPrice ??= Felt.zero;
     final resourceBounds = _getResourceBounds(
-      l1MaxAmount,
-      l1MaxPricePerUnit,
-      l2MaxAmount,
-      l2MaxPricePerUnit,
+      l1GasConsumed,
+      l1GasPrice,
+      l1DataGasConsumed,
+      l1DataGasPrice,
+      l2GasConsumed,
+      l2GasPrice,
     );
 
     final signature = await signer.signDeclareTransactionV3(
@@ -568,10 +572,12 @@ class Account {
     Felt? unique,
     List<Felt>? calldata,
     // needed for v3
-    Felt? l1MaxAmount,
-    Felt? l1MaxPricePerUnit,
-    Felt? l2MaxAmount,
-    Felt? l2MaxPricePerUnit,
+    Felt? l1GasConsumed,
+    Felt? l1GasPrice,
+    Felt? l1DataGasConsumed,
+    Felt? l1DataGasPrice,
+    Felt? l2GasConsumed,
+    Felt? l2GasPrice,
     // These values are for future use (until then they are empty or zero)
     List<Felt>? accountDeploymentData,
     List<Felt>? paymasterData,
@@ -588,10 +594,12 @@ class Account {
       salt,
       unique,
       calldata,
-      l1MaxAmount,
-      l1MaxPricePerUnit,
-      l2MaxAmount,
-      l2MaxPricePerUnit,
+      l1GasConsumed,
+      l1GasPrice,
+      l1DataGasConsumed,
+      l1DataGasPrice,
+      l2GasConsumed,
+      l2GasPrice,
       accountDeploymentData,
       paymasterData,
       tip,
@@ -650,10 +658,12 @@ class Account {
     required Felt classHash,
     Felt? contractAddressSalt,
     Felt? nonce,
-    Felt? l1MaxAmount,
-    Felt? l1MaxPricePerUnit,
-    Felt? l2MaxAmount,
-    Felt? l2MaxPricePerUnit,
+    Felt? l1GasConsumed,
+    Felt? l1GasPrice,
+    Felt? l1DataGasConsumed,
+    Felt? l1DataGasPrice,
+    Felt? l2GasConsumed,
+    Felt? l2GasPrice,
     Felt? contractAddress,
     // These values are for future use (until then they are empty or zero)
     List<Felt>? accountDeploymentData,
@@ -671,50 +681,55 @@ class Account {
     contractAddressSalt = contractAddressSalt ?? accountSigner.publicKey;
 
     contractAddress = contractAddress ?? Felt.zero;
-    l1MaxAmount ??= Felt.zero;
-    l1MaxPricePerUnit ??= Felt.zero;
-    l2MaxAmount ??= Felt.zero;
-    l2MaxPricePerUnit ??= Felt.zero;
+    l1GasConsumed ??= Felt.zero;
+    l1GasPrice ??= Felt.zero;
+    l1DataGasConsumed ??= Felt.zero;
+    l1DataGasPrice ??= Felt.zero;
+    l2GasConsumed ??= Felt.zero;
+    l2GasPrice ??= Felt.zero;
     accountDeploymentData ??= [];
     paymasterData ??= [];
     tip ??= Felt.zero;
     feeDataAvailabilityMode ??= 'L1';
     nonceDataAvailabilityMode ??= 'L1';
-    final estimateFeeResult = await provider.estimateFee(
-      EstimateFeeRequest(
-        request: [
-          BroadcastedDeployAccountTxnV3(
-            type: 'DEPLOY_ACCOUNT',
-            version: '0x3',
-            signature: [],
-            nonce: Felt.zero,
-            classHash: classHash,
-            constructorCalldata: constructorCalldata,
-            contractAddressSalt: contractAddressSalt,
-            feeDataAvailabilityMode: feeDataAvailabilityMode,
-            nonceDataAvailabilityMode: nonceDataAvailabilityMode,
-            paymasterData: paymasterData,
-            resourceBounds: await provider.defaultResourceBoundsMapping(),
-            tip: tip.toHexString(),
-          ),
-        ],
-        blockId: BlockId.latest,
-        simulation_flags: [
-          SimulationFlag.skipValidate,
-          // const SimulationFlag.skipFeeCharge(),
-        ],
-      ),
-    );
-    final feeResult = estimateFeeResult.when(
-      result: (result) => result.first,
-      error: (error) {
-        throw Exception(
-          'Error estimating fee (${error.code}): ${error.message} ${error.errorData}',
-        );
-      },
+    var resourceBounds = _getResourceBounds(
+      l1GasConsumed,
+      l1GasPrice,
+      l1DataGasConsumed,
+      l1DataGasPrice,
+      l2GasConsumed,
+      l2GasPrice,
     );
 
-    final resourceBounds = feeResult.toResourceBounds(multiplier: 1.2);
+    // If all the resource bounds are zero, we need to estimate the fee
+    if (l1GasConsumed == Felt.zero &&
+        l1GasPrice == Felt.zero &&
+        l1DataGasConsumed == Felt.zero &&
+        l1DataGasPrice == Felt.zero &&
+        l2GasConsumed == Felt.zero &&
+        l2GasPrice == Felt.zero) {
+      final account = Account(
+        accountAddress: contractAddress,
+        signer: accountSigner,
+        provider: provider,
+        chainId: chainId,
+      );
+      final maxFee = await account.getEstimateMaxFeeForDeployAccountTx(
+        constructorCalldata: constructorCalldata,
+        classHash: classHash,
+        accountSigner: accountSigner,
+        provider: provider,
+      );
+      resourceBounds = _getResourceBounds(
+        maxFee.l1GasConsumed,
+        maxFee.l1GasPrice,
+        maxFee.l1DataGasConsumed,
+        maxFee.l1DataGasPrice,
+        maxFee.l2GasConsumed,
+        maxFee.l2GasPrice,
+      );
+    }
+
     final signature = await accountSigner.signDeployAccountTransactionV3(
       contractAddress: contractAddress,
       resourceBounds: resourceBounds,
@@ -777,23 +792,25 @@ class Account {
 
   // Function to generate a resourceBounds map from a maxAmount and a maxPricePerUnit
   static Map<String, ResourceBounds> _getResourceBounds(
-    Felt l1MaxAmount,
-    Felt l1MaxPricePerUnit,
-    Felt l2MaxAmount,
-    Felt l2MaxPricePerUnit,
+    Felt l1GasConsumed,
+    Felt l1GasPrice,
+    Felt l1DataGasConsumed,
+    Felt l1DataGasPrice,
+    Felt l2GasConsumed,
+    Felt l2GasPrice,
   ) {
     return {
       'l1_gas': ResourceBounds(
-        maxAmount: l1MaxAmount,
-        maxPricePerUnit: l1MaxPricePerUnit,
+        maxAmount: l1GasConsumed,
+        maxPricePerUnit: l1GasPrice,
       ),
-      // 'l1_data_gas': ResourceBounds(
-      //   maxAmount: l1MaxAmount.toHexString(),
-      //   maxPricePerUnit: l1MaxPricePerUnit.toHexString(),
-      // ),
+      'l1_data_gas': ResourceBounds(
+        maxAmount: l1DataGasConsumed,
+        maxPricePerUnit: l1DataGasPrice,
+      ),
       'l2_gas': ResourceBounds(
-        maxAmount: l2MaxAmount,
-        maxPricePerUnit: l2MaxPricePerUnit,
+        maxAmount: l2GasConsumed,
+        maxPricePerUnit: l2GasPrice,
       ),
     };
   }
