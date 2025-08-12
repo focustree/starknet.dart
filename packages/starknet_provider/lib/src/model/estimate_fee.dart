@@ -122,12 +122,12 @@ class BroadcastedTxn with _$BroadcastedTxn {
     // end of deployAccountTxnV3
   }) = BroadcastedDeployAccountTxnV3;
 
-  factory BroadcastedTxn.fromJson(Map<String, Object?> json) =>
-      json['type'] == 'DECLARE'
-          ? BroadcastedDeclareTxnV3.fromJson(json)
-          : json['type'] == 'DEPLOY'
-              ? BroadcastedDeployAccountTxnV3.fromJson(json)
-              : json['type'] == 'INVOKE'
-                  ? BroadcastedInvokeTxnV3.fromJson(json)
-                  : BroadcastedDeployAccountTxnV3.fromJson(json);
+  factory BroadcastedTxn.fromJson(Map<String, Object?> json) => json['type'] ==
+          'DECLARE'
+      ? BroadcastedDeclareTxnV3.fromJson(json)
+      : json['type'] == 'DEPLOY_ACCOUNT'
+          ? BroadcastedDeployAccountTxnV3.fromJson(json)
+          : json['type'] == 'INVOKE'
+              ? BroadcastedInvokeTxnV3.fromJson(json)
+              : throw Exception('Invalid transaction type: ${json['type']}');
 }

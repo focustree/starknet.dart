@@ -175,8 +175,7 @@ class Account {
     BroadcastedTxn broadcastedTxn;
 
     nonce = nonce ?? await getNonce();
-    final resourceBounds = _getResourceBounds(
-        Felt.zero, Felt.zero, Felt.zero, Felt.zero, Felt.zero, Felt.zero);
+    final resourceBounds = await provider.defaultResourceBoundsMapping();
 
     // These values are for future use (until then they are empty or zero)
     accountDeploymentData ??= [];

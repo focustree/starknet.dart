@@ -31,7 +31,12 @@ class ArkStarknet {
         '0x049d36570d4e46f48e99674bd3fcc84644ddd6b96f7c741b1562b82f9e004dc7',
     String currencyChainId = 'SN_MAIN',
     String tokenChainId = 'SN_MAIN',
-    Felt? maxFee,
+    Felt? l1GasConsumed,
+    Felt? l1GasPrice,
+    Felt? l1DataGasConsumed,
+    Felt? l1DataGasPrice,
+    Felt? l2GasConsumed,
+    Felt? l2GasPrice,
     Felt? nonce,
     List<FunctionCall>? additionalFunctionCalls,
   }) async {
@@ -79,20 +84,38 @@ class ArkStarknet {
       ...computeCalldata(order.additionalData),
     ];
 
-    final maxFee = await starknetAccount.getEstimateMaxFeeForInvokeTx(
-      functionCalls: [
-        FunctionCall(
-          contractAddress: Felt.fromHexString(nftAddress),
-          entryPointSelector: getSelectorByName('approve'),
-          calldata: [arkExecutorAddress, Felt(tokenIdBigInt), Felt.zero],
-        ),
-        FunctionCall(
-          contractAddress: arkExecutorAddress,
-          entryPointSelector: getSelectorByName('create_order'),
-          calldata: callData,
-        ),
-      ],
+    var maxFee = FeeEstimations(
+      overallFee: Felt.zero,
+      unit: 'WEI',
+      l1GasConsumed: l1GasConsumed ?? Felt.zero,
+      l1GasPrice: l1GasPrice ?? Felt.zero,
+      l1DataGasConsumed: l1DataGasConsumed ?? Felt.zero,
+      l1DataGasPrice: l1DataGasPrice ?? Felt.zero,
+      l2GasConsumed: l2GasConsumed ?? Felt.zero,
+      l2GasPrice: l2GasPrice ?? Felt.zero,
     );
+
+    if (l1GasConsumed == Felt.zero &&
+        l1GasPrice == Felt.zero &&
+        l1DataGasConsumed == Felt.zero &&
+        l1DataGasPrice == Felt.zero &&
+        l2GasConsumed == Felt.zero &&
+        l2GasPrice == Felt.zero) {
+      maxFee = await starknetAccount.getEstimateMaxFeeForInvokeTx(
+        functionCalls: [
+          FunctionCall(
+            contractAddress: Felt.fromHexString(nftAddress),
+            entryPointSelector: getSelectorByName('approve'),
+            calldata: [arkExecutorAddress, Felt(tokenIdBigInt), Felt.zero],
+          ),
+          FunctionCall(
+            contractAddress: arkExecutorAddress,
+            entryPointSelector: getSelectorByName('create_order'),
+            calldata: callData,
+          ),
+        ],
+      );
+    }
 
     final response = await starknetAccount.execute(
       functionCalls: [
@@ -135,7 +158,12 @@ class ArkStarknet {
     required String tokenAddress,
     required BigInt tokenId,
     String tokenChainId = 'SN_MAIN',
-    Felt? maxFee,
+    Felt? l1GasConsumed,
+    Felt? l1GasPrice,
+    Felt? l1DataGasConsumed,
+    Felt? l1DataGasPrice,
+    Felt? l2GasConsumed,
+    Felt? l2GasPrice,
     Felt? nonce,
   }) async {
     final fullCancelInfo = FullCancelInfo(
@@ -155,15 +183,33 @@ class ArkStarknet {
       ...computeCalldata(fullCancelInfo.tokenId),
     ];
 
-    final maxFee = await starknetAccount.getEstimateMaxFeeForInvokeTx(
-      functionCalls: [
-        FunctionCall(
-          contractAddress: arkExecutorAddress,
-          entryPointSelector: getSelectorByName('cancel_order'),
-          calldata: callData,
-        ),
-      ],
+    var maxFee = FeeEstimations(
+      overallFee: Felt.zero,
+      unit: 'WEI',
+      l1GasConsumed: l1GasConsumed ?? Felt.zero,
+      l1GasPrice: l1GasPrice ?? Felt.zero,
+      l1DataGasConsumed: l1DataGasConsumed ?? Felt.zero,
+      l1DataGasPrice: l1DataGasPrice ?? Felt.zero,
+      l2GasConsumed: l2GasConsumed ?? Felt.zero,
+      l2GasPrice: l2GasPrice ?? Felt.zero,
     );
+
+    if (l1GasConsumed == Felt.zero &&
+        l1GasPrice == Felt.zero &&
+        l1DataGasConsumed == Felt.zero &&
+        l1DataGasPrice == Felt.zero &&
+        l2GasConsumed == Felt.zero &&
+        l2GasPrice == Felt.zero) {
+      maxFee = await starknetAccount.getEstimateMaxFeeForInvokeTx(
+        functionCalls: [
+          FunctionCall(
+            contractAddress: arkExecutorAddress,
+            entryPointSelector: getSelectorByName('cancel_order'),
+            calldata: callData,
+          ),
+        ],
+      );
+    }
 
     final response = await starknetAccount.execute(
       functionCalls: [
@@ -205,7 +251,12 @@ class ArkStarknet {
         '0x049d36570d4e46f48e99674bd3fcc84644ddd6b96f7c741b1562b82f9e004dc7',
     String currencyChainId = 'SN_MAIN',
     String tokenChainId = 'SN_MAIN',
-    Felt? maxFee,
+    Felt? l1GasConsumed,
+    Felt? l1GasPrice,
+    Felt? l1DataGasConsumed,
+    Felt? l1DataGasPrice,
+    Felt? l2GasConsumed,
+    Felt? l2GasPrice,
     Felt? nonce,
   }) async {
     startDate = startDate ?? (DateTime.now().millisecondsSinceEpoch ~/ (1000));
@@ -255,20 +306,38 @@ class ArkStarknet {
       ...computeCalldata(order.additionalData),
     ];
 
-    final maxFee = await starknetAccount.getEstimateMaxFeeForInvokeTx(
-      functionCalls: [
-        FunctionCall(
-          contractAddress: Felt.fromHexString(currencyAddress),
-          entryPointSelector: getSelectorByName('approve'),
-          calldata: [arkExecutorAddress, Felt(bigIntAmount), Felt.zero],
-        ),
-        FunctionCall(
-          contractAddress: arkExecutorAddress,
-          entryPointSelector: getSelectorByName('create_order'),
-          calldata: callData,
-        ),
-      ],
+    var maxFee = FeeEstimations(
+      overallFee: Felt.zero,
+      unit: 'WEI',
+      l1GasConsumed: l1GasConsumed ?? Felt.zero,
+      l1GasPrice: l1GasPrice ?? Felt.zero,
+      l1DataGasConsumed: l1DataGasConsumed ?? Felt.zero,
+      l1DataGasPrice: l1DataGasPrice ?? Felt.zero,
+      l2GasConsumed: l2GasConsumed ?? Felt.zero,
+      l2GasPrice: l2GasPrice ?? Felt.zero,
     );
+
+    if (l1GasConsumed == Felt.zero &&
+        l1GasPrice == Felt.zero &&
+        l1DataGasConsumed == Felt.zero &&
+        l1DataGasPrice == Felt.zero &&
+        l2GasConsumed == Felt.zero &&
+        l2GasPrice == Felt.zero) {
+      maxFee = await starknetAccount.getEstimateMaxFeeForInvokeTx(
+        functionCalls: [
+          FunctionCall(
+            contractAddress: Felt.fromHexString(currencyAddress),
+            entryPointSelector: getSelectorByName('approve'),
+            calldata: [arkExecutorAddress, Felt(bigIntAmount), Felt.zero],
+          ),
+          FunctionCall(
+            contractAddress: arkExecutorAddress,
+            entryPointSelector: getSelectorByName('create_order'),
+            calldata: callData,
+          ),
+        ],
+      );
+    }
 
     final response = await starknetAccount.execute(
       functionCalls: [
@@ -313,7 +382,12 @@ class ArkStarknet {
     String currencyAddress =
         '0x049d36570d4e46f48e99674bd3fcc84644ddd6b96f7c741b1562b82f9e004dc7',
     String tokenChainId = 'SN_MAIN',
-    Felt? maxFee,
+    Felt? l1GasConsumed,
+    Felt? l1GasPrice,
+    Felt? l1DataGasConsumed,
+    Felt? l1DataGasPrice,
+    Felt? l2GasConsumed,
+    Felt? l2GasPrice,
     Felt? nonce,
   }) async {
     final bigIntAmount = BigInt.from(startAmount * 1e18);
@@ -343,20 +417,38 @@ class ArkStarknet {
       ...computeCalldata(fulfillInfo.fulfillBrokerAddress),
     ];
 
-    final maxFee = await starknetAccount.getEstimateMaxFeeForInvokeTx(
-      functionCalls: [
-        FunctionCall(
-          contractAddress: Felt.fromHexString(currencyAddress),
-          entryPointSelector: getSelectorByName('approve'),
-          calldata: [arkExecutorAddress, Felt(bigIntAmount), Felt.zero],
-        ),
-        FunctionCall(
-          contractAddress: arkExecutorAddress,
-          entryPointSelector: getSelectorByName('fulfill_order'),
-          calldata: callData,
-        ),
-      ],
+    var maxFee = FeeEstimations(
+      overallFee: Felt.zero,
+      unit: 'WEI',
+      l1GasConsumed: l1GasConsumed ?? Felt.zero,
+      l1GasPrice: l1GasPrice ?? Felt.zero,
+      l1DataGasConsumed: l1DataGasConsumed ?? Felt.zero,
+      l1DataGasPrice: l1DataGasPrice ?? Felt.zero,
+      l2GasConsumed: l2GasConsumed ?? Felt.zero,
+      l2GasPrice: l2GasPrice ?? Felt.zero,
     );
+
+    if (l1GasConsumed == Felt.zero &&
+        l1GasPrice == Felt.zero &&
+        l1DataGasConsumed == Felt.zero &&
+        l1DataGasPrice == Felt.zero &&
+        l2GasConsumed == Felt.zero &&
+        l2GasPrice == Felt.zero) {
+      maxFee = await starknetAccount.getEstimateMaxFeeForInvokeTx(
+        functionCalls: [
+          FunctionCall(
+            contractAddress: Felt.fromHexString(currencyAddress),
+            entryPointSelector: getSelectorByName('approve'),
+            calldata: [arkExecutorAddress, Felt(bigIntAmount), Felt.zero],
+          ),
+          FunctionCall(
+            contractAddress: arkExecutorAddress,
+            entryPointSelector: getSelectorByName('fulfill_order'),
+            calldata: callData,
+          ),
+        ],
+      );
+    }
 
     final response = await starknetAccount.execute(
       functionCalls: [
@@ -400,7 +492,12 @@ class ArkStarknet {
     String currencyAddress =
         '0x049d36570d4e46f48e99674bd3fcc84644ddd6b96f7c741b1562b82f9e004dc7',
     String tokenChainId = 'SN_MAIN',
-    Felt? maxFee,
+    Felt? l1GasConsumed,
+    Felt? l1GasPrice,
+    Felt? l1DataGasConsumed,
+    Felt? l1DataGasPrice,
+    Felt? l2GasConsumed,
+    Felt? l2GasPrice,
     Felt? nonce,
   }) async {
     final fulfillInfo = FulfillInfo(
@@ -428,20 +525,37 @@ class ArkStarknet {
       ...computeCalldata(fulfillInfo.fulfillBrokerAddress),
     ];
 
-    final maxFee = await starknetAccount.getEstimateMaxFeeForInvokeTx(
-      functionCalls: [
-        FunctionCall(
-          contractAddress: Felt.fromHexString(nftAddress),
-          entryPointSelector: getSelectorByName('approve'),
-          calldata: [arkExecutorAddress, Felt(tokenIdBigInt), Felt.zero],
-        ),
-        FunctionCall(
-          contractAddress: arkExecutorAddress,
-          entryPointSelector: getSelectorByName('fulfill_order'),
-          calldata: callData,
-        ),
-      ],
+    var maxFee = FeeEstimations(
+      overallFee: Felt.zero,
+      unit: 'WEI',
+      l1GasConsumed: l1GasConsumed ?? Felt.zero,
+      l1GasPrice: l1GasPrice ?? Felt.zero,
+      l1DataGasConsumed: l1DataGasConsumed ?? Felt.zero,
+      l1DataGasPrice: l1DataGasPrice ?? Felt.zero,
+      l2GasConsumed: l2GasConsumed ?? Felt.zero,
+      l2GasPrice: l2GasPrice ?? Felt.zero,
     );
+    if (l1GasConsumed == Felt.zero &&
+        l1GasPrice == Felt.zero &&
+        l1DataGasConsumed == Felt.zero &&
+        l1DataGasPrice == Felt.zero &&
+        l2GasConsumed == Felt.zero &&
+        l2GasPrice == Felt.zero) {
+      maxFee = await starknetAccount.getEstimateMaxFeeForInvokeTx(
+        functionCalls: [
+          FunctionCall(
+            contractAddress: Felt.fromHexString(nftAddress),
+            entryPointSelector: getSelectorByName('approve'),
+            calldata: [arkExecutorAddress, Felt(tokenIdBigInt), Felt.zero],
+          ),
+          FunctionCall(
+            contractAddress: arkExecutorAddress,
+            entryPointSelector: getSelectorByName('fulfill_order'),
+            calldata: callData,
+          ),
+        ],
+      );
+    }
 
     final response = await starknetAccount.execute(
       functionCalls: [
