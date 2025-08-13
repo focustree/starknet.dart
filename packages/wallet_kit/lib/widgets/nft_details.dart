@@ -77,7 +77,9 @@ class NFTDetail extends ConsumerWidget {
                       nftAddress: nftAddress,
                       tokenId: tokenId,
                       startAmount: 0.1,
-                      maxFee: Felt.fromDouble(0.00001 * 1e18));
+                      l1GasPrice: Felt.fromDouble(0.00001 * 1e18),
+                      l1DataGasPrice: Felt.fromDouble(0.00001 * 1e18),
+                      l2GasPrice: Felt.fromDouble(0.00001 * 1e18));
 
                   await waitForAcceptance(
                       transactionHash: txhash, provider: WalletKit().provider);
@@ -110,7 +112,9 @@ class NFTDetail extends ConsumerWidget {
                       orderHash: BigInt.parse(orderBook.orderHash),
                       tokenAddress: nftAddress,
                       tokenId: BigInt.parse(tokenId),
-                      maxFee: Felt.fromDouble(0.00001 * 1e18));
+                      l1GasPrice: Felt.fromDouble(0.00001 * 1e18),
+                      l1DataGasPrice: Felt.fromDouble(0.00001 * 1e18),
+                      l2GasPrice: Felt.fromDouble(0.00001 * 1e18));
                 },
                 child: const Text('Cancel Order')),
             ElevatedButton(
@@ -141,7 +145,9 @@ class NFTDetail extends ConsumerWidget {
                       nftAddress: nftAddress,
                       tokenId: tokenId,
                       startAmount: 0.0000000000001,
-                      maxFee: Felt.fromDouble(0.00001 * 1e18));
+                      l1GasPrice: Felt.fromDouble(0.00001 * 1e18),
+                      l1DataGasPrice: Felt.fromDouble(0.00001 * 1e18),
+                      l2GasPrice: Felt.fromDouble(0.00001 * 1e18));
                 },
                 child: const Text('Buy')),
             ElevatedButton(
@@ -167,7 +173,9 @@ class NFTDetail extends ConsumerWidget {
                       nftAddress: nftAddress,
                       tokenId: tokenId,
                       startAmount: 0.0000000001,
-                      maxFee: Felt.fromDouble(0.00001 * 1e18));
+                      l1GasPrice: Felt.fromDouble(0.00001 * 1e18),
+                      l1DataGasPrice: Felt.fromDouble(0.00001 * 1e18),
+                      l2GasPrice: Felt.fromDouble(0.00001 * 1e18));
                 },
                 child: const Text('Make Offer')),
             ElevatedButton(
@@ -201,7 +209,9 @@ class NFTDetail extends ConsumerWidget {
                       orderHash: BigInt.parse(offerOrderHash),
                       nftAddress: nftAddress,
                       tokenId: tokenId,
-                      maxFee: Felt.fromDouble(0.00001 * 1e18));
+                      l1GasPrice: Felt.fromDouble(0.00001 * 1e18),
+                      l1DataGasPrice: Felt.fromDouble(0.00001 * 1e18),
+                      l2GasPrice: Felt.fromDouble(0.00001 * 1e18));
                 },
                 child: const Text('Accept Offer'))
           ],

@@ -163,7 +163,7 @@ class Account {
     required ICompiledContract compiledContract,
     double feeMultiplier = 1.2,
     // needed for v3
-    BigInt? compiledClassHash,
+    required BigInt compiledClassHash,
     CASMCompiledContract? casmCompiledContract,
     // These values are for future use (until then they are empty or zero)
     List<Felt>? accountDeploymentData,
@@ -189,7 +189,7 @@ class Account {
       senderAddress: accountAddress,
       chainId: chainId,
       nonce: nonce,
-      compiledClassHash: Felt(compiledClassHash!),
+      compiledClassHash: Felt(compiledClassHash),
       casmCompiledContract: casmCompiledContract,
       resourceBounds: resourceBounds,
       accountDeploymentData: accountDeploymentData,
@@ -488,7 +488,7 @@ class Account {
     required ICompiledContract compiledContract,
     Felt? nonce,
     // needed for v2
-    BigInt? compiledClassHash,
+    required BigInt compiledClassHash,
     CASMCompiledContract? casmCompiledContract,
     // needed for v3
     Felt? l1GasConsumed,
@@ -532,7 +532,7 @@ class Account {
       senderAddress: accountAddress,
       chainId: chainId,
       nonce: nonce,
-      compiledClassHash: Felt(compiledClassHash!),
+      compiledClassHash: Felt(compiledClassHash),
       casmCompiledContract: casmCompiledContract,
       resourceBounds: resourceBounds,
       accountDeploymentData: accountDeploymentData,

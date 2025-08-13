@@ -84,15 +84,22 @@ class ArkStarknet {
       ...computeCalldata(order.additionalData),
     ];
 
+    l1GasConsumed ??= Felt.zero;
+    l1GasPrice ??= Felt.zero;
+    l1DataGasConsumed ??= Felt.zero;
+    l1DataGasPrice ??= Felt.zero;
+    l2GasConsumed ??= Felt.zero;
+    l2GasPrice ??= Felt.zero;
+
     var maxFee = FeeEstimations(
       overallFee: Felt.zero,
       unit: 'WEI',
-      l1GasConsumed: l1GasConsumed ?? Felt.zero,
-      l1GasPrice: l1GasPrice ?? Felt.zero,
-      l1DataGasConsumed: l1DataGasConsumed ?? Felt.zero,
-      l1DataGasPrice: l1DataGasPrice ?? Felt.zero,
-      l2GasConsumed: l2GasConsumed ?? Felt.zero,
-      l2GasPrice: l2GasPrice ?? Felt.zero,
+      l1GasConsumed: l1GasConsumed,
+      l1GasPrice: l1GasPrice,
+      l1DataGasConsumed: l1DataGasConsumed,
+      l1DataGasPrice: l1DataGasPrice,
+      l2GasConsumed: l2GasConsumed,
+      l2GasPrice: l2GasPrice,
     );
 
     if (l1GasConsumed == Felt.zero &&
@@ -183,15 +190,22 @@ class ArkStarknet {
       ...computeCalldata(fullCancelInfo.tokenId),
     ];
 
+    l1GasConsumed ??= Felt.zero;
+    l1GasPrice ??= Felt.zero;
+    l1DataGasConsumed ??= Felt.zero;
+    l1DataGasPrice ??= Felt.zero;
+    l2GasConsumed ??= Felt.zero;
+    l2GasPrice ??= Felt.zero;
+
     var maxFee = FeeEstimations(
       overallFee: Felt.zero,
       unit: 'WEI',
-      l1GasConsumed: l1GasConsumed ?? Felt.zero,
-      l1GasPrice: l1GasPrice ?? Felt.zero,
-      l1DataGasConsumed: l1DataGasConsumed ?? Felt.zero,
-      l1DataGasPrice: l1DataGasPrice ?? Felt.zero,
-      l2GasConsumed: l2GasConsumed ?? Felt.zero,
-      l2GasPrice: l2GasPrice ?? Felt.zero,
+      l1GasConsumed: l1GasConsumed,
+      l1GasPrice: l1GasPrice,
+      l1DataGasConsumed: l1DataGasConsumed,
+      l1DataGasPrice: l1DataGasPrice,
+      l2GasConsumed: l2GasConsumed,
+      l2GasPrice: l2GasPrice,
     );
 
     if (l1GasConsumed == Felt.zero &&
@@ -306,15 +320,22 @@ class ArkStarknet {
       ...computeCalldata(order.additionalData),
     ];
 
+    l1GasConsumed ??= Felt.zero;
+    l1GasPrice ??= Felt.zero;
+    l1DataGasConsumed ??= Felt.zero;
+    l1DataGasPrice ??= Felt.zero;
+    l2GasConsumed ??= Felt.zero;
+    l2GasPrice ??= Felt.zero;
+
     var maxFee = FeeEstimations(
       overallFee: Felt.zero,
       unit: 'WEI',
-      l1GasConsumed: l1GasConsumed ?? Felt.zero,
-      l1GasPrice: l1GasPrice ?? Felt.zero,
-      l1DataGasConsumed: l1DataGasConsumed ?? Felt.zero,
-      l1DataGasPrice: l1DataGasPrice ?? Felt.zero,
-      l2GasConsumed: l2GasConsumed ?? Felt.zero,
-      l2GasPrice: l2GasPrice ?? Felt.zero,
+      l1GasConsumed: l1GasConsumed,
+      l1GasPrice: l1GasPrice,
+      l1DataGasConsumed: l1DataGasConsumed,
+      l1DataGasPrice: l1DataGasPrice,
+      l2GasConsumed: l2GasConsumed,
+      l2GasPrice: l2GasPrice,
     );
 
     if (l1GasConsumed == Felt.zero &&
@@ -417,15 +438,22 @@ class ArkStarknet {
       ...computeCalldata(fulfillInfo.fulfillBrokerAddress),
     ];
 
+    l1GasConsumed ??= Felt.zero;
+    l1GasPrice ??= Felt.zero;
+    l1DataGasConsumed ??= Felt.zero;
+    l1DataGasPrice ??= Felt.zero;
+    l2GasConsumed ??= Felt.zero;
+    l2GasPrice ??= Felt.zero;
+
     var maxFee = FeeEstimations(
       overallFee: Felt.zero,
       unit: 'WEI',
-      l1GasConsumed: l1GasConsumed ?? Felt.zero,
-      l1GasPrice: l1GasPrice ?? Felt.zero,
-      l1DataGasConsumed: l1DataGasConsumed ?? Felt.zero,
-      l1DataGasPrice: l1DataGasPrice ?? Felt.zero,
-      l2GasConsumed: l2GasConsumed ?? Felt.zero,
-      l2GasPrice: l2GasPrice ?? Felt.zero,
+      l1GasConsumed: l1GasConsumed,
+      l1GasPrice: l1GasPrice,
+      l1DataGasConsumed: l1DataGasConsumed,
+      l1DataGasPrice: l1DataGasPrice,
+      l2GasConsumed: l2GasConsumed,
+      l2GasPrice: l2GasPrice,
     );
 
     if (l1GasConsumed == Felt.zero &&
@@ -525,15 +553,22 @@ class ArkStarknet {
       ...computeCalldata(fulfillInfo.fulfillBrokerAddress),
     ];
 
+    l1GasConsumed ??= Felt.zero;
+    l1GasPrice ??= Felt.zero;
+    l1DataGasConsumed ??= Felt.zero;
+    l1DataGasPrice ??= Felt.zero;
+    l2GasConsumed ??= Felt.zero;
+    l2GasPrice ??= Felt.zero;
+
     var maxFee = FeeEstimations(
       overallFee: Felt.zero,
       unit: 'WEI',
-      l1GasConsumed: l1GasConsumed ?? Felt.zero,
-      l1GasPrice: l1GasPrice ?? Felt.zero,
-      l1DataGasConsumed: l1DataGasConsumed ?? Felt.zero,
-      l1DataGasPrice: l1DataGasPrice ?? Felt.zero,
-      l2GasConsumed: l2GasConsumed ?? Felt.zero,
-      l2GasPrice: l2GasPrice ?? Felt.zero,
+      l1GasConsumed: l1GasConsumed,
+      l1GasPrice: l1GasPrice,
+      l1DataGasConsumed: l1DataGasConsumed,
+      l1DataGasPrice: l1DataGasPrice,
+      l2GasConsumed: l2GasConsumed,
+      l2GasPrice: l2GasPrice,
     );
     if (l1GasConsumed == Felt.zero &&
         l1GasPrice == Felt.zero &&
