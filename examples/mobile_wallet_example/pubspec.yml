@@ -1,0 +1,46 @@
+name: mobile_wallet_example
+description: Complete example Flutter app demonstrating Starknet mobile wallet integration
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.0.0 <4.0.0'
+  flutter: ">=3.10.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  cupertino_icons: ^1.0.2
+  
+  # Local Starknet packages
+  starknet:
+    path: ../../packages/starknet
+  starknet_provider:
+    path: ../../packages/starknet_provider
+  wallet_kit:
+    path: ../../packages/wallet_kit
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^2.0.0
+  integration_test:
+    sdk: flutter
+
+flutter:
+  uses-material-design: true
+  
+  # App assets
+  assets:
+    - assets/icons/
+    - assets/images/
+    - assets/logo/
+  
+  # Custom fonts (optional)
+  fonts:
+    - family: Roboto
+      fonts:
+        - asset: fonts/Roboto-Regular.ttf
+        - asset: fonts/Roboto-Bold.ttf
+          weight: 700
+        - asset: fonts/Roboto-Light.ttf
+          weight: 300
