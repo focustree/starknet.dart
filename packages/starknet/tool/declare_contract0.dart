@@ -16,7 +16,10 @@ void main(List<String> args) async {
       "$contractPath : ${classHash.toHexString()}",
     );
     Felt txHash = Felt.zero;
-    final declareTx = await account.declare(compiledContract: compiledContract);
+    final declareTx = await account.declare(
+      compiledContract: compiledContract,
+      compiledClassHash: compiledContract.classHash(),
+    );
     declareTx.when(
       result: (result) {
         classHash = result.classHash;

@@ -13,132 +13,16 @@ void main() {
       });
     });
     group(
-      'declare cairo 0',
-      () {
-        test('succeeds to declare a simple contract class hash', () async {
-          final balanceContract = await DeprecatedCompiledContract.fromPath(
-            '../../contracts/build/balance.json',
-          );
-          final res = await account0.declare(compiledContract: balanceContract);
-          final txHash = res.when(
-            result: (result) {
-              expect(
-                result.classHash,
-                equals(
-                  balanceClassHash,
-                ),
-              );
-              expect(
-                result.classHash,
-                equals(Felt(balanceContract.classHash())),
-              );
-              return result.transactionHash.toHexString();
-            },
-            error: (error) => fail(error.message),
-          );
-          final txStatus = await waitForAcceptance(
-            transactionHash: txHash,
-            provider: account0.provider,
-          );
-          expect(txStatus, equals(true));
-        });
-        test('succeeds to declare an openzeppelin contract class hash',
-            () async {
-          final accountContract = await DeprecatedCompiledContract.fromPath(
-            '../../contracts/build/oz_account.json',
-          );
-          final res = await account0.declare(compiledContract: accountContract);
-          final txHash = res.when(
-            result: (result) {
-              expect(
-                result.classHash,
-                equals(Felt(accountContract.classHash())),
-              );
-              return result.transactionHash.toHexString();
-            },
-            error: (error) => fail(error.message),
-          );
-          final txStatus = await waitForAcceptance(
-            transactionHash: txHash,
-            provider: account0.provider,
-          );
-          expect(txStatus, equals(true));
-        });
-      },
-      tags: ['integration'],
-      skip: true,
-    );
-
-    group(
       'declare cairo 1',
       () {
         test(
-            'succeeds to declare a simple sierra contract with provided CASM file',
+            'succeeds to declare a simple sierra contract with provided CASM file and STRK fee with resource bounds',
             () async {
           final sierraContract = await CompiledContract.fromPath(
             '${Directory.current.path}/../../contracts/v1/artifacts/contract2_Counter2.contract_class.json',
           );
           final compiledContract = await CASMCompiledContract.fromPath(
             '${Directory.current.path}/../../contracts/v1/artifacts/contract2_Counter2.compiled_contract_class.json',
-          );
-          final compiledClassHash = compiledContract.classHash();
-          final sierraClassHash = Felt(sierraContract.classHash());
-
-          var maxFee = await account2.getEstimateMaxFeeForDeclareTx(
-            compiledContract: sierraContract,
-            compiledClassHash: compiledClassHash,
-          );
-
-          final res = await account2.declare(
-            compiledContract: sierraContract,
-            compiledClassHash: compiledClassHash,
-            max_fee: maxFee.maxFee,
-          );
-          final txHash = res.when(
-            result: (result) {
-              expect(
-                result.classHash,
-                equals(
-                  sierraClassHash,
-                ),
-              );
-              return result.transactionHash.toHexString();
-            },
-            error: (error) => fail(error.message),
-          );
-          final txStatus = await waitForAcceptance(
-            transactionHash: txHash,
-            provider: account2.provider,
-          );
-          expect(txStatus, equals(true));
-          // check if code is
-          final res2 = await account2.provider.getClass(
-            blockId: BlockId.latest,
-            classHash: sierraClassHash,
-          );
-          res2.when(
-            result: (res) {
-              expect(res, isA<SierraContractClass>());
-              final contract = res as SierraContractClass;
-              expect(
-                contract.sierraProgram,
-                equals(
-                  sierraContract.contract.sierraProgram.map(Felt.new),
-                ),
-              );
-            },
-            error: (error) => fail("Shouldn't fail"),
-          );
-        });
-
-        test(
-            'succeeds to declare a simple sierra contract with provided CASM file and STRK fee with resource bounds',
-            () async {
-          final sierraContract = await CompiledContract.fromPath(
-            '${Directory.current.path}/../../contracts/v1/artifacts/contract2_MyToken.contract_class.json',
-          );
-          final compiledContract = await CASMCompiledContract.fromPath(
-            '${Directory.current.path}/../../contracts/v1/artifacts/contract2_MyToken.compiled_contract_class.json',
           );
           final BigInt compiledClassHash = compiledContract.classHash();
 
@@ -147,15 +31,17 @@ void main() {
           var maxFee = await account2.getEstimateMaxFeeForDeclareTx(
             compiledContract: sierraContract,
             compiledClassHash: compiledClassHash,
-            useSTRKFee: true,
           );
 
           var res = await account2.declare(
             compiledContract: sierraContract,
             compiledClassHash: compiledClassHash,
-            useSTRKFee: true,
-            l1MaxAmount: maxFee.maxAmount,
-            l1MaxPricePerUnit: maxFee.maxPricePerUnit,
+            l1GasConsumed: maxFee.l1GasConsumed,
+            l1GasPrice: maxFee.l1GasPrice,
+            l2GasConsumed: maxFee.l2GasConsumed,
+            l2GasPrice: maxFee.l2GasPrice,
+            l1DataGasConsumed: maxFee.l1DataGasConsumed,
+            l1DataGasPrice: maxFee.l1DataGasPrice,
           );
           final txHash = res.when(
             result: (result) {
@@ -197,19 +83,6 @@ void main() {
       'deploy',
       () {
         test(
-          'succeeds to deploy a cairo 0 contract',
-          () async {
-            // Balance contract
-            final classHash = balanceClassHash;
-
-            final contractAddress = await account0
-                .deploy(classHash: classHash, calldata: [Felt.fromInt(42)]);
-            expect(contractAddress, equals(balanceContractAddress));
-          },
-          skip: true,
-        ); // Currently starknet doesn't support deploy cairo 0 contract
-
-        test(
           'succeeds to deploy a cairo 1 contract',
           () async {
             final classHash = Felt.fromHexString(
@@ -240,93 +113,6 @@ void main() {
         ); // We don't have this class hash in starknet. But deploy cairo 1 contract is supported
         // is being tested below in: test('succeeds to invoke a function execute to a cairo 1 contract',
 
-        test('succeeds to deploy an account v1', () async {
-          final accountPrivateKey = Felt.fromHexString('0x12345678');
-          final accountPublicKey = Felt.fromHexString(
-            '0x47de619de131463cbf799d321b50c617566dc897d4be614fb3927eacd55d7ad',
-          );
-          final accountConstructorCalldata = [accountPublicKey];
-          final accountSigner = StarkAccountSigner(
-            signer: StarkSigner(privateKey: accountPrivateKey),
-          );
-          final classHash = devnetOpenZeppelinAccountClassHash;
-          final provider = account0.provider;
-          final salt = Felt.fromInt(42);
-          // we have to compute account address to send token
-          final accountAddress = Contract.computeAddress(
-            classHash: classHash,
-            calldata: accountConstructorCalldata,
-            salt: salt,
-          );
-
-          Felt accountClassHash = (await provider.getClassHashAt(
-            contractAddress: accountAddress,
-            blockId: BlockId.latest,
-          ))
-              .when(
-            result: (result) => result,
-            error: (error) => Felt.zero,
-          );
-          expect(accountClassHash, equals(Felt.zero));
-          // Simulate deploy account to get fees
-          var maxFee = await account0.getEstimateMaxFeeForDeployAccountTx(
-            classHash: classHash,
-            accountSigner: accountSigner,
-            provider: provider,
-            constructorCalldata: accountConstructorCalldata,
-            contractAddressSalt: salt,
-          );
-          // account address requires token to pay deploy fees
-          final txSend = await account0.send(
-            recipient: accountAddress,
-            amount: Uint256(low: maxFee.maxFee, high: Felt.zero),
-          );
-          bool success = await waitForAcceptance(
-            transactionHash: txSend,
-            provider: account0.provider,
-          );
-          expect(success, equals(true));
-
-          final result = await account0.provider.call(
-            request: FunctionCall(
-              contractAddress: Felt.fromHexString(
-                "0x049d36570d4e46f48e99674bd3fcc84644ddd6b96f7c741b1562b82f9e004dc7",
-              ),
-              entryPointSelector: getSelectorByName("balance_of"),
-              calldata: [accountAddress],
-            ),
-            blockId: BlockId.latest,
-          );
-          result.when(
-            result: (result) => result[0].toInt(),
-            error: (error) => throw Exception("Failed to get balance"),
-          );
-          // deploy the account
-          final tx = await Account.deployAccount(
-            classHash: classHash,
-            accountSigner: accountSigner,
-            provider: provider,
-            constructorCalldata: accountConstructorCalldata,
-            contractAddressSalt: salt,
-            max_fee: maxFee.maxFee,
-          );
-          final contractAddress = tx.when(
-            result: (result) => result.contractAddress,
-            error: (error) =>
-                throw Exception("${error.code}: ${error.message}"),
-          );
-
-          expect(accountAddress, equals(contractAddress));
-          accountClassHash = (await provider.getClassHashAt(
-            contractAddress: accountAddress,
-            blockId: BlockId.latest,
-          ))
-              .when(
-            result: (result) => result,
-            error: (error) => Felt.zero,
-          );
-          expect(accountClassHash, equals(classHash));
-        });
         test('succeeds to deploy an account v3', () async {
           final accountPrivateKey = Felt.fromHexString("0x12345678abcdef");
           final accountPublicKey = Felt.fromHexString(
@@ -362,13 +148,12 @@ void main() {
             provider: provider,
             constructorCalldata: accountConstructorCalldata,
             contractAddressSalt: salt,
-            useSTRKFee: true,
           );
           // account address requires token to pay deploy fees
           final txSend = await account0.send(
             recipient: accountAddress,
             amount: Uint256(
-              low: maxFee.maxAmount * maxFee.maxPricePerUnit,
+              low: maxFee.overallFee,
               high: Felt.zero,
             ),
             useSTRKtoken: true,
@@ -385,9 +170,12 @@ void main() {
             provider: provider,
             constructorCalldata: accountConstructorCalldata,
             contractAddressSalt: salt,
-            useSTRKFee: true,
-            l1MaxAmount: maxFee.maxAmount,
-            l1MaxPricePerUnit: maxFee.maxPricePerUnit,
+            l1GasConsumed: maxFee.l1GasConsumed,
+            l1GasPrice: maxFee.l1GasPrice,
+            l2GasConsumed: maxFee.l2GasConsumed,
+            l2GasPrice: maxFee.l2GasPrice,
+            l1DataGasConsumed: maxFee.l1DataGasConsumed,
+            l1DataGasPrice: maxFee.l1DataGasPrice,
           );
           final contractAddress = tx.when(
             result: (result) => result.contractAddress,
@@ -414,137 +202,6 @@ void main() {
     group(
       'execute',
       () {
-        test('succeeds to invoke a function execute to a cairo 1 contract',
-            () async {
-          final sierraContract = await CompiledContract.fromPath(
-            '${Directory.current.path}/../../contracts/v1/artifacts/contract2_MyToken.contract_class.json',
-          );
-          final compiledContract = await CASMCompiledContract.fromPath(
-            '${Directory.current.path}/../../contracts/v1/artifacts/contract2_MyToken.compiled_contract_class.json',
-          );
-          final BigInt compiledClassHash = compiledContract.classHash();
-
-          Felt sierraClassHash = Felt(sierraContract.classHash());
-
-          FeeEstimations maxFee;
-          String? txHash;
-
-          try {
-            maxFee = await account3.getEstimateMaxFeeForDeclareTx(
-              compiledContract: sierraContract,
-              compiledClassHash: compiledClassHash,
-            );
-
-            var res = await account3.declare(
-              compiledContract: sierraContract,
-              compiledClassHash: compiledClassHash,
-              max_fee: maxFee.maxFee,
-            );
-            txHash = res.when(
-              result: (result) {
-                expect(
-                  result.classHash,
-                  equals(
-                    sierraClassHash,
-                  ),
-                );
-                return result.transactionHash.toHexString();
-              },
-              error: (error) {
-                throw error;
-              },
-            );
-
-            await waitForAcceptance(
-              transactionHash: txHash!,
-              provider: account3.provider,
-            );
-          } catch (e) {
-            print(e.toString());
-            if (!e.toString().contains('Contract error')) {
-              // If already declared just continue
-              rethrow;
-            }
-          }
-
-          maxFee = await account3.getEstimateMaxFeeForDeployTx(
-            classHash: sierraClassHash,
-            calldata: [
-              Felt.fromInt(100),
-              Felt.zero,
-              account3.accountAddress,
-            ],
-          );
-          final contractAddress = await account3.deploy(
-            classHash: sierraClassHash,
-            calldata: [
-              Felt.fromInt(100),
-              Felt.zero,
-              account3.accountAddress,
-            ],
-            max_fee: maxFee.maxFee,
-          );
-
-          maxFee = await account3.getEstimateMaxFeeForInvokeTx(
-            functionCalls: [
-              FunctionCall(
-                contractAddress: contractAddress!,
-                entryPointSelector: getSelectorByName("transfer"),
-                calldata: [
-                  account1.accountAddress,
-                  Felt.fromInt(100),
-                  Felt.zero,
-                ],
-              ),
-            ],
-          );
-
-          final response = await account3.execute(
-            functionCalls: [
-              FunctionCall(
-                contractAddress: contractAddress,
-                entryPointSelector: getSelectorByName("transfer"),
-                calldata: [
-                  account1.accountAddress,
-                  Felt.fromInt(100),
-                  Felt.zero,
-                ],
-              ),
-            ],
-            max_fee: maxFee.maxFee,
-          );
-
-          final txHash1 = response.when(
-            result: (result) => result.transaction_hash,
-            error: (err) => throw Exception("Failed to execute"),
-          );
-
-          await waitForAcceptance(
-            transactionHash: txHash1,
-            provider: account3.provider,
-          );
-
-          final result = await account3.provider.call(
-            request: FunctionCall(
-              contractAddress: contractAddress,
-              entryPointSelector: getSelectorByName("balance_of"),
-              calldata: [account1.accountAddress],
-            ),
-            blockId: BlockId.latest,
-          );
-          int counter = result.when(
-            result: (result) => result[0].toInt(),
-            error: (error) => throw Exception("Failed to get balance"),
-          );
-
-          expect(
-            counter,
-            equals(
-              100,
-            ),
-          );
-        });
-
         test(
             'succeeds to invoke a function execute to a cairo 1 contract with invoke v3 (paying gas with STRK)',
             () async {
@@ -564,15 +221,17 @@ void main() {
             maxFee = await account3.getEstimateMaxFeeForDeclareTx(
               compiledContract: sierraContract,
               compiledClassHash: compiledClassHash,
-              useSTRKFee: true,
             );
 
             var res = await account3.declare(
               compiledContract: sierraContract,
               compiledClassHash: compiledClassHash,
-              useSTRKFee: true,
-              l1MaxAmount: maxFee.maxAmount,
-              l1MaxPricePerUnit: maxFee.maxPricePerUnit,
+              l1GasConsumed: maxFee.l1GasConsumed,
+              l1GasPrice: maxFee.l1GasPrice,
+              l2GasConsumed: maxFee.l2GasConsumed,
+              l2GasPrice: maxFee.l2GasPrice,
+              l1DataGasConsumed: maxFee.l1DataGasConsumed,
+              l1DataGasPrice: maxFee.l1DataGasPrice,
             );
             txHash = res.when(
               result: (result) {
@@ -608,7 +267,6 @@ void main() {
               Felt.zero,
               account3.accountAddress,
             ],
-            useSTRKFee: true,
           );
 
           final contractAddress = await account3.deploy(
@@ -618,9 +276,12 @@ void main() {
               Felt.zero,
               account3.accountAddress,
             ],
-            useSTRKFee: true,
-            l1MaxAmount: maxFee.maxAmount,
-            l1MaxPricePerUnit: maxFee.maxPricePerUnit,
+            l1GasConsumed: maxFee.l1GasConsumed,
+            l1GasPrice: maxFee.l1GasPrice,
+            l1DataGasConsumed: maxFee.l1DataGasConsumed,
+            l1DataGasPrice: maxFee.l1DataGasPrice,
+            l2GasConsumed: maxFee.l2GasConsumed,
+            l2GasPrice: maxFee.l2GasPrice,
           );
 
           maxFee = await account3.getEstimateMaxFeeForInvokeTx(
@@ -635,7 +296,6 @@ void main() {
                 ],
               ),
             ],
-            useSTRKFee: true,
           );
 
           final response = await account3.execute(
@@ -650,12 +310,14 @@ void main() {
                 ],
               ),
             ],
-            useLegacyCalldata: false,
             incrementNonceIfNonceRelatedError: true,
             maxAttempts: 5,
-            useSTRKFee: true,
-            l1MaxAmount: maxFee.maxAmount,
-            l1MaxPricePerUnit: maxFee.maxPricePerUnit,
+            l1GasConsumed: maxFee.l1GasConsumed,
+            l1GasPrice: maxFee.l1GasPrice,
+            l1DataGasConsumed: maxFee.l1DataGasConsumed,
+            l1DataGasPrice: maxFee.l1DataGasPrice,
+            l2GasConsumed: maxFee.l2GasConsumed,
+            l2GasPrice: maxFee.l2GasPrice,
           );
 
           final txHash1 = response.when(

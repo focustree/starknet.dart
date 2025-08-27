@@ -1,6 +1,7 @@
 import 'package:starknet_provider/starknet_provider.dart';
 
 import '../core/types/index.dart';
+import '../core/crypto/keccak.dart';
 import 'contract.dart';
 
 class ERC20 extends Contract {
@@ -55,9 +56,24 @@ class ERC20 extends Contract {
   ///
   /// Returns transaction hash.
   Future<String> transfer(Felt recipient, Uint256 value) async {
+    final maxFee = await account.getEstimateMaxFeeForInvokeTx(
+      functionCalls: [
+        FunctionCall(
+          contractAddress: address,
+          entryPointSelector: getSelectorByName("transfer"),
+          calldata: [recipient, value.low, value.high],
+        ),
+      ],
+    );
     final InvokeTransactionResponse trx = await execute(
       selector: "transfer",
       calldata: [recipient, value.low, value.high],
+      l1GasConsumed: maxFee.l1GasConsumed,
+      l1GasPrice: maxFee.l1GasPrice,
+      l2GasConsumed: maxFee.l2GasConsumed,
+      l2GasPrice: maxFee.l2GasPrice,
+      l1DataGasConsumed: maxFee.l1DataGasConsumed,
+      l1DataGasPrice: maxFee.l1DataGasPrice,
     );
     return trx.when(
       result: (result) => result.transaction_hash,
@@ -72,9 +88,24 @@ class ERC20 extends Contract {
   ///
   /// Returns transaction hash.
   Future<String> transferFrom(Felt from, Felt to, Uint256 value) async {
+    final maxFee = await account.getEstimateMaxFeeForInvokeTx(
+      functionCalls: [
+        FunctionCall(
+          contractAddress: address,
+          entryPointSelector: getSelectorByName("transferFrom"),
+          calldata: [from, to, value.low, value.high],
+        ),
+      ],
+    );
     final InvokeTransactionResponse trx = await execute(
       selector: "transferFrom",
       calldata: [from, to, value.low, value.high],
+      l1GasConsumed: maxFee.l1GasConsumed,
+      l1GasPrice: maxFee.l1GasPrice,
+      l2GasConsumed: maxFee.l2GasConsumed,
+      l2GasPrice: maxFee.l2GasPrice,
+      l1DataGasConsumed: maxFee.l1DataGasConsumed,
+      l1DataGasPrice: maxFee.l1DataGasPrice,
     );
     return (trx.when(
       result: (result) {
@@ -90,9 +121,24 @@ class ERC20 extends Contract {
   ///
   /// Returns transaction hash.
   Future<String> approve(Felt spender, Uint256 amount) async {
+    final maxFee = await account.getEstimateMaxFeeForInvokeTx(
+      functionCalls: [
+        FunctionCall(
+          contractAddress: address,
+          entryPointSelector: getSelectorByName("approve"),
+          calldata: [spender, amount.low, amount.high],
+        ),
+      ],
+    );
     final InvokeTransactionResponse trx = await execute(
       selector: "approve",
       calldata: [spender, amount.low, amount.high],
+      l1GasConsumed: maxFee.l1GasConsumed,
+      l1GasPrice: maxFee.l1GasPrice,
+      l2GasConsumed: maxFee.l2GasConsumed,
+      l2GasPrice: maxFee.l2GasPrice,
+      l1DataGasConsumed: maxFee.l1DataGasConsumed,
+      l1DataGasPrice: maxFee.l1DataGasPrice,
     );
     return (trx.when(
       result: (result) {

@@ -21,22 +21,31 @@ import 'static_config.dart';
 enum AccountSupportedTxVersion {
   @Deprecated('Transaction version 0 will be removed with Starknet alpha v0.11')
   v0,
+  @Deprecated('Transaction version 1 will be removed with Starknet v0.14.0')
   v1,
   v3,
 }
 
 /// Represents fee estimation results
 class FeeEstimations {
-  final Felt maxAmount;
-  final Felt maxPricePerUnit;
+  final Felt l1GasConsumed;
+  final Felt l1GasPrice;
+  final Felt l1DataGasConsumed;
+  final Felt l1DataGasPrice;
+  final Felt l2GasConsumed;
+  final Felt l2GasPrice;
+  final Felt overallFee;
   final String unit;
-  final Felt maxFee; // for v2 and legacy transaction versions
 
   const FeeEstimations({
-    required this.maxAmount,
-    required this.maxPricePerUnit,
+    required this.l1GasConsumed,
+    required this.l1GasPrice,
+    required this.l1DataGasConsumed,
+    required this.l1DataGasPrice,
+    required this.l2GasConsumed,
+    required this.l2GasPrice,
+    required this.overallFee,
     required this.unit,
-    required this.maxFee,
   });
 }
 
@@ -59,7 +68,7 @@ class Account {
     required this.signer,
     required this.accountAddress,
     required this.chainId,
-    this.supportedTxVersion = AccountSupportedTxVersion.v1,
+    this.supportedTxVersion = AccountSupportedTxVersion.v3,
   });
 
   /// Get Nonce for account at given [blockId]
@@ -83,40 +92,31 @@ class Account {
     BlockId blockId = BlockId.latest,
     String version = '0x1',
     required List<FunctionCall> functionCalls,
-    bool useLegacyCalldata = false,
     Felt? nonce,
     double feeMultiplier = 1.2,
-    bool? useSTRKFee = false,
     // These values are for future use (until then they are empty or zero)
     List<Felt>? accountDeploymentData,
     List<Felt>? paymasterData,
     Felt? tip,
-    String? feeDataAvailabilityMode = 'L1',
-    String? nonceDataAvailabilityMode = 'L1',
+    String? feeDataAvailabilityMode,
+    String? nonceDataAvailabilityMode,
   }) async {
     nonce = nonce ?? await getNonce();
-    final resourceBounds =
-        _getResourceBounds(Felt.zero, Felt.zero, Felt.zero, Felt.zero);
+    final resourceBounds = await provider.defaultResourceBoundsMapping();
 
-    if (useSTRKFee!) {
-      supportedTxVersion = AccountSupportedTxVersion.v3;
-      accountDeploymentData ??= [];
-      paymasterData ??= [];
-      tip = tip ?? Felt.zero;
-    }
+    supportedTxVersion = AccountSupportedTxVersion.v3;
+    accountDeploymentData ??= [];
+    paymasterData ??= [];
+    tip = tip ?? Felt.zero;
+    feeDataAvailabilityMode = feeDataAvailabilityMode ?? 'L1';
+    nonceDataAvailabilityMode = nonceDataAvailabilityMode ?? 'L1';
 
     final signature = await signer.signTransactions(
       transactions: functionCalls,
       contractAddress: accountAddress,
-      version: supportedTxVersion == AccountSupportedTxVersion.v3
-          ? 3
-          : supportedTxVersion == AccountSupportedTxVersion.v1
-              ? 1
-              : 0,
       chainId: chainId,
       entryPointSelectorName: '__execute__',
       nonce: nonce,
-      useLegacyCalldata: useLegacyCalldata,
       resourceBounds: resourceBounds,
       accountDeploymentData: accountDeploymentData,
       paymasterData: paymasterData,
@@ -129,50 +129,23 @@ class Account {
 
     final calldata = c.functionCallsToCalldata(
       functionCalls: functionCalls,
-      useLegacyCalldata: useLegacyCalldata,
+      useLegacyCalldata: false,
     );
 
-    switch (supportedTxVersion) {
-      case AccountSupportedTxVersion.v3:
-        broadcastedTxn = BroadcastedInvokeTxnV3(
-          type: 'INVOKE',
-          version: '0x3',
-          signature: signature,
-          nonce: nonce,
-          accountDeploymentData: accountDeploymentData!,
-          calldata: calldata,
-          feeDataAvailabilityMode: feeDataAvailabilityMode!,
-          nonceDataAvailabilityMode: nonceDataAvailabilityMode!,
-          paymasterData: paymasterData!,
-          resourceBounds: resourceBounds,
-          senderAddress: accountAddress,
-          tip: tip!.toHexString(),
-        );
-      case AccountSupportedTxVersion.v1:
-        broadcastedTxn = BroadcastedInvokeTxnV1(
-          type: 'INVOKE',
-          maxFee: defaultMaxFee,
-          version: version,
-          signature: signature,
-          nonce: nonce,
-          senderAddress: accountAddress,
-          calldata: calldata,
-        );
-      default:
-        final calldata =
-            c.functionCallsToCalldataLegacy(functionCalls: functionCalls) +
-                [nonce];
-        broadcastedTxn = BroadcastedInvokeTxnV0(
-          type: 'INVOKE',
-          maxFee: defaultMaxFee,
-          version: version,
-          signature: signature,
-          nonce: nonce,
-          contractAddress: accountAddress,
-          entryPointSelector: core.getSelectorByName('__execute__'),
-          calldata: calldata,
-        );
-    }
+    broadcastedTxn = BroadcastedInvokeTxnV3(
+      type: 'INVOKE',
+      version: '0x3',
+      signature: signature,
+      nonce: nonce,
+      accountDeploymentData: accountDeploymentData,
+      calldata: calldata,
+      feeDataAvailabilityMode: feeDataAvailabilityMode,
+      nonceDataAvailabilityMode: nonceDataAvailabilityMode,
+      paymasterData: paymasterData,
+      resourceBounds: resourceBounds,
+      senderAddress: accountAddress,
+      tip: tip.toHexString(),
+    );
 
     final estimatedMaxFees = await getMaxFeeFromBroadcastedTxn(
       broadcastedTxn,
@@ -190,96 +163,57 @@ class Account {
     required ICompiledContract compiledContract,
     double feeMultiplier = 1.2,
     // needed for v3
-    BigInt? compiledClassHash,
+    required BigInt compiledClassHash,
     CASMCompiledContract? casmCompiledContract,
-    bool? useSTRKFee = false,
     // These values are for future use (until then they are empty or zero)
     List<Felt>? accountDeploymentData,
     List<Felt>? paymasterData,
     Felt? tip,
-    String? feeDataAvailabilityMode = 'L1',
-    String? nonceDataAvailabilityMode = 'L1',
+    String? feeDataAvailabilityMode,
+    String? nonceDataAvailabilityMode,
   }) async {
     BroadcastedTxn broadcastedTxn;
 
     nonce = nonce ?? await getNonce();
-    final resourceBounds =
-        _getResourceBounds(Felt.zero, Felt.zero, Felt.zero, Felt.zero);
+    final resourceBounds = await provider.defaultResourceBoundsMapping();
 
-    if (useSTRKFee!) {
-      // These values are for future use (until then they are empty or zero)
-      accountDeploymentData ??= [];
-      paymasterData ??= [];
-      tip ??= Felt.zero;
+    // These values are for future use (until then they are empty or zero)
+    accountDeploymentData ??= [];
+    paymasterData ??= [];
+    tip ??= Felt.zero;
+    feeDataAvailabilityMode ??= 'L1';
+    nonceDataAvailabilityMode ??= 'L1';
 
-      final signature = await signer.signDeclareTransactionV3(
-        compiledContract: compiledContract as CompiledContract,
-        senderAddress: accountAddress,
-        chainId: chainId,
-        nonce: nonce,
-        compiledClassHash: Felt(compiledClassHash!),
-        casmCompiledContract: casmCompiledContract,
-        resourceBounds: resourceBounds,
-        accountDeploymentData: accountDeploymentData,
-        paymasterData: paymasterData,
-        tip: tip,
-        feeDataAvailabilityMode: feeDataAvailabilityMode!,
-        nonceDataAvailabilityMode: nonceDataAvailabilityMode!,
-      );
+    final signature = await signer.signDeclareTransactionV3(
+      compiledContract: compiledContract as CompiledContract,
+      senderAddress: accountAddress,
+      chainId: chainId,
+      nonce: nonce,
+      compiledClassHash: Felt(compiledClassHash),
+      casmCompiledContract: casmCompiledContract,
+      resourceBounds: resourceBounds,
+      accountDeploymentData: accountDeploymentData,
+      paymasterData: paymasterData,
+      tip: tip,
+      feeDataAvailabilityMode: feeDataAvailabilityMode,
+      nonceDataAvailabilityMode: nonceDataAvailabilityMode,
+    );
 
-      broadcastedTxn = BroadcastedDeclareTxnV3(
-        type: 'DECLARE',
-        version: '0x3',
-        signature: signature,
-        nonce: nonce,
-        accountDeploymentData: accountDeploymentData,
-        compiledClassHash: Felt(compiledClassHash),
-        contractClass: compiledContract.flatten(),
-        feeDataAvailabilityMode: feeDataAvailabilityMode,
-        nonceDataAvailabilityMode: nonceDataAvailabilityMode,
-        paymasterData: paymasterData,
-        resourceBounds: resourceBounds,
-        senderAddress: accountAddress,
-        tip: tip.toHexString(),
-      );
-    } else if (compiledContract is DeprecatedCompiledContract) {
-      final signature = await signer.signDeclareTransactionV1(
-        compiledContract: compiledContract,
-        senderAddress: accountAddress,
-        chainId: chainId,
-        nonce: nonce,
-      );
-      broadcastedTxn = BroadcastedDeclareTxn(
-        type: 'DECLARE',
-        maxFee: defaultMaxFee,
-        version: '0x1',
-        signature: signature,
-        nonce: nonce,
-        contractClass: compiledContract.compress(),
-        senderAddress: accountAddress,
-      );
-    } else {
-      final signature = await signer.signDeclareTransactionV2(
-        compiledContract: compiledContract as CompiledContract,
-        senderAddress: accountAddress,
-        chainId: chainId,
-        nonce: nonce,
-        compiledClassHash: compiledClassHash,
-        casmCompiledContract: casmCompiledContract,
-        maxFee: Felt.zero,
-      );
-      broadcastedTxn = BroadcastedDeclareTxnV2(
-        type: 'DECLARE',
-        max_fee: Felt.zero
-            .toHexString(), // As String because devnet only supports 16 bytes and not a Felt for maxfee in declare tx
-        version: '0x2',
-        signature: signature,
-        nonce: nonce,
-        compiledClassHash: Felt(compiledClassHash!),
-        contractClass: compiledContract.flatten(),
-        senderAddress: accountAddress,
-      );
-    }
+    broadcastedTxn = BroadcastedDeclareTxnV3(
+      type: 'DECLARE',
+      version: '0x3',
+      signature: signature,
+      nonce: nonce,
+      accountDeploymentData: accountDeploymentData,
+      compiledClassHash: Felt(compiledClassHash),
+      contractClass: compiledContract.flatten(),
+      feeDataAvailabilityMode: feeDataAvailabilityMode,
+      nonceDataAvailabilityMode: nonceDataAvailabilityMode,
+      paymasterData: paymasterData,
+      resourceBounds: resourceBounds,
+      senderAddress: accountAddress,
+      tip: tip.toHexString(),
+    );
 
     final estimatedMaxFees = await getMaxFeeFromBroadcastedTxn(
       broadcastedTxn,
@@ -301,74 +235,54 @@ class Account {
     double feeMultiplier = 1.2,
     required BaseAccountSigner accountSigner,
     required Provider provider,
-    bool? useSTRKFee = false,
     Felt? contractAddress,
     // These values are for future use (until then they are empty or zero)
     List<Felt>? paymasterData,
     Felt? tip,
-    String? feeDataAvailabilityMode = 'L1',
-    String? nonceDataAvailabilityMode = 'L1',
+    String? feeDataAvailabilityMode,
+    String? nonceDataAvailabilityMode,
   }) async {
     BroadcastedTxn broadcastedTxn;
     nonce = nonce ?? defaultNonce;
     contractAddressSalt = contractAddressSalt ?? accountSigner.publicKey;
-    final resourceBounds =
-        _getResourceBounds(Felt.zero, Felt.zero, Felt.zero, Felt.zero);
+    final resourceBounds = _getResourceBounds(
+        Felt.zero, Felt.zero, Felt.zero, Felt.zero, Felt.zero, Felt.zero);
 
-    if (useSTRKFee!) {
-      contractAddress = contractAddress ?? Felt.zero;
-      // These values are for future use (until then they are empty or zero)
-      paymasterData ??= [];
-      tip ??= Felt.zero;
+    contractAddress = contractAddress ?? Felt.zero;
+    // These values are for future use (until then they are empty or zero)
+    paymasterData ??= [];
+    tip ??= Felt.zero;
+    feeDataAvailabilityMode ??= 'L1';
+    nonceDataAvailabilityMode ??= 'L1';
 
-      final signature = await accountSigner.signDeployAccountTransactionV3(
-        contractAddress: contractAddress,
-        resourceBounds: resourceBounds,
-        tip: tip,
-        paymasterData: paymasterData,
-        chainId: chainId,
-        nonce: nonce,
-        feeDataAvailabilityMode: feeDataAvailabilityMode!,
-        nonceDataAvailabilityMode: nonceDataAvailabilityMode!,
-        constructorCalldata: constructorCalldata,
-        classHash: classHash,
-        contractAddressSalt: contractAddressSalt,
-      );
+    final signature = await accountSigner.signDeployAccountTransactionV3(
+      contractAddress: contractAddress,
+      resourceBounds: resourceBounds,
+      tip: tip,
+      paymasterData: paymasterData,
+      chainId: chainId,
+      nonce: nonce,
+      feeDataAvailabilityMode: feeDataAvailabilityMode,
+      nonceDataAvailabilityMode: nonceDataAvailabilityMode,
+      constructorCalldata: constructorCalldata,
+      classHash: classHash,
+      contractAddressSalt: contractAddressSalt,
+    );
 
-      broadcastedTxn = BroadcastedDeployAccountTxnV3(
-        type: 'DEPLOY_ACCOUNT',
-        version: '0x3',
-        signature: signature,
-        nonce: nonce,
-        classHash: classHash,
-        constructorCalldata: constructorCalldata,
-        contractAddressSalt: contractAddressSalt,
-        feeDataAvailabilityMode: feeDataAvailabilityMode,
-        nonceDataAvailabilityMode: nonceDataAvailabilityMode,
-        paymasterData: paymasterData,
-        resourceBounds: resourceBounds,
-        tip: tip.toHexString(),
-      );
-    } else {
-      final signature = await accountSigner.signDeployAccountTransactionV1(
-        contractAddressSalt: contractAddressSalt,
-        classHash: classHash,
-        constructorCalldata: constructorCalldata,
-        chainId: chainId,
-        nonce: nonce,
-      );
-
-      broadcastedTxn = BroadcastedDeployAccountTxn(
-        type: 'DEPLOY_ACCOUNT',
-        version: version,
-        contractAddressSalt: contractAddressSalt,
-        constructorCalldata: constructorCalldata,
-        maxFee: defaultMaxFee,
-        nonce: nonce,
-        signature: signature,
-        classHash: classHash,
-      );
-    }
+    broadcastedTxn = BroadcastedDeployAccountTxnV3(
+      type: 'DEPLOY_ACCOUNT',
+      version: '0x3',
+      signature: signature,
+      nonce: nonce,
+      classHash: classHash,
+      constructorCalldata: constructorCalldata,
+      contractAddressSalt: contractAddressSalt,
+      feeDataAvailabilityMode: feeDataAvailabilityMode,
+      nonceDataAvailabilityMode: nonceDataAvailabilityMode,
+      paymasterData: paymasterData,
+      resourceBounds: resourceBounds,
+      tip: tip.toHexString(),
+    );
 
     final estimatedMaxFees = await getMaxFeeFromBroadcastedTxn(
       broadcastedTxn,
@@ -385,12 +299,11 @@ class Account {
     Felt? salt,
     Felt? unique,
     List<Felt>? calldata,
-    bool? useSTRKFee = false,
     // These values are for future use (until then they are empty or zero)
     List<Felt>? paymasterData,
     Felt? tip,
-    String? feeDataAvailabilityMode = 'L1',
-    String? nonceDataAvailabilityMode = 'L1',
+    String? feeDataAvailabilityMode,
+    String? nonceDataAvailabilityMode,
   }) async {
     salt ??= getSalt();
     unique ??= Felt.zero;
@@ -411,7 +324,6 @@ class Account {
           calldata: params,
         ),
       ],
-      useSTRKFee: useSTRKFee,
       paymasterData: paymasterData,
       tip: tip,
       feeDataAvailabilityMode: feeDataAvailabilityMode,
@@ -441,47 +353,31 @@ class Account {
       error: (error) => throw Exception(error.message),
     );
 
-    //calculated as described in https://community.starknet.io/t/starknet-v0-13-1-pre-release-notes/113664
-    //and multiplied by feeMultiplier
-    final overallFee = fee.overallFee.toBigInt().toDouble();
-    final gasPrice = switch (fee) {
-      // Use l2GasPrice as the expected gas price for v0_8
-      FeeEstimatev0_8(
-        l1GasConsumed: _,
-        l1GasPrice: _,
-        l1DataGasConsumed: _,
-        l1DataGasPrice: _,
-        l2GasConsumed: _,
-        l2GasPrice: final gasPrice,
-      ) =>
-        gasPrice.toBigInt().toDouble(),
-    };
-    final maxAmountFee = Felt.fromDouble(feeMultiplier * overallFee / gasPrice);
-    final maxPricePerUnit = Felt.fromDouble(feeMultiplier * gasPrice);
-    final maxFee = Felt.fromDouble(feeMultiplier * overallFee);
-
     return FeeEstimations(
-      maxAmount: maxAmountFee,
-      maxPricePerUnit: maxPricePerUnit,
+      l1GasConsumed: fee.l1GasConsumed * Felt.fromDouble(feeMultiplier),
+      l1GasPrice: fee.l1GasPrice * Felt.fromDouble(feeMultiplier),
+      l1DataGasConsumed: fee.l1DataGasConsumed * Felt.fromDouble(feeMultiplier),
+      l1DataGasPrice: fee.l1DataGasPrice * Felt.fromDouble(feeMultiplier),
+      l2GasConsumed: fee.l2GasConsumed * Felt.fromDouble(feeMultiplier),
+      l2GasPrice: fee.l2GasPrice * Felt.fromDouble(feeMultiplier),
+      overallFee: fee.overallFee * Felt.fromDouble(feeMultiplier),
       unit: fee.unit,
-      maxFee: maxFee,
     );
   }
 
   /// Call account contract `__execute__` with given [functionCalls]
   Future<InvokeTransactionResponse> execute({
     required List<FunctionCall> functionCalls,
-    bool useLegacyCalldata = false,
     bool incrementNonceIfNonceRelatedError = true,
     int maxAttempts = 5,
-    Felt? max_fee,
     Felt? nonce,
     // needed for v3
-    bool? useSTRKFee,
-    Felt? l1MaxAmount,
-    Felt? l1MaxPricePerUnit,
-    Felt? l2MaxAmount,
-    Felt? l2MaxPricePerUnit,
+    Felt? l1GasConsumed,
+    Felt? l1GasPrice,
+    Felt? l1DataGasConsumed,
+    Felt? l1DataGasPrice,
+    Felt? l2GasConsumed,
+    Felt? l2GasPrice,
     // These values are for future use (until then they are empty or zero)
     List<Felt>? accountDeploymentData,
     List<Felt>? paymasterData,
@@ -491,53 +387,33 @@ class Account {
   }) async {
     nonce = nonce ?? await getNonce();
 
-    useSTRKFee ??= false;
     accountDeploymentData ??= [];
     paymasterData ??= [];
     tip ??= Felt.zero;
     feeDataAvailabilityMode ??= 'L1';
     nonceDataAvailabilityMode ??= 'L1';
-    l1MaxAmount ??= Felt.zero;
-    l1MaxPricePerUnit ??= Felt.zero;
-    l2MaxAmount ??= Felt.zero;
-    l2MaxPricePerUnit ??= Felt.zero;
+    l1GasConsumed ??= Felt.zero;
+    l1GasPrice ??= Felt.zero;
+    l1DataGasConsumed ??= Felt.zero;
+    l1DataGasPrice ??= Felt.zero;
+    l2GasConsumed ??= Felt.zero;
+    l2GasPrice ??= Felt.zero;
     final resourceBounds = _getResourceBounds(
-      l1MaxAmount,
-      l1MaxPricePerUnit,
-      l2MaxAmount,
-      l2MaxPricePerUnit,
+      l1GasConsumed,
+      l1GasPrice,
+      l1DataGasConsumed,
+      l1DataGasPrice,
+      l2GasConsumed,
+      l2GasPrice,
     );
-
-    if (useSTRKFee) {
-      supportedTxVersion = AccountSupportedTxVersion.v3;
-    } else {
-      //maxFee only supported in v0 and v1
-      max_fee = max_fee ??
-          (await getEstimateMaxFeeForInvokeTx(
-            functionCalls: functionCalls,
-            useLegacyCalldata: useLegacyCalldata,
-            nonce: nonce,
-            version: supportedTxVersion == AccountSupportedTxVersion.v1
-                ? '0x1'
-                : '0x0',
-          ))
-              .maxFee;
-    }
 
     for (int attempt = 0; attempt < maxAttempts; attempt++) {
       final signature = await signer.signTransactions(
         transactions: functionCalls,
         contractAddress: accountAddress,
-        version: supportedTxVersion == AccountSupportedTxVersion.v3
-            ? 3
-            : supportedTxVersion == AccountSupportedTxVersion.v1
-                ? 1
-                : 0,
         chainId: chainId,
         entryPointSelectorName: '__execute__',
         nonce: nonce!,
-        useLegacyCalldata: useLegacyCalldata,
-        maxFee: max_fee,
         resourceBounds: resourceBounds,
         accountDeploymentData: accountDeploymentData,
         paymasterData: paymasterData,
@@ -547,64 +423,28 @@ class Account {
       );
 
       InvokeTransactionResponse response;
-      switch (supportedTxVersion) {
-        // ignore: deprecated_member_use_from_same_package
-        case AccountSupportedTxVersion.v0:
-          final calldata =
-              c.functionCallsToCalldataLegacy(functionCalls: functionCalls) +
-                  [nonce!];
 
-          response = await provider.addInvokeTransaction(
-            InvokeTransactionRequest(
-              invokeTransaction: InvokeTransactionV0(
-                contractAddress: accountAddress,
-                entryPointSelector: core.getSelectorByName('__execute__'),
-                calldata: calldata,
-                maxFee: max_fee!,
-                signature: signature,
-              ),
-            ),
-          );
-        case AccountSupportedTxVersion.v1:
-          final calldata = c.functionCallsToCalldata(
-            functionCalls: functionCalls,
-            useLegacyCalldata: useLegacyCalldata,
-          );
+      final calldata = c.functionCallsToCalldata(
+        functionCalls: functionCalls,
+        useLegacyCalldata: false,
+      );
 
-          response = await provider.addInvokeTransaction(
-            InvokeTransactionRequest(
-              invokeTransaction: InvokeTransactionV1(
-                senderAddress: accountAddress,
-                calldata: calldata,
-                signature: signature,
-                maxFee: max_fee!,
-                nonce: nonce!,
-              ),
-            ),
-          );
-        case AccountSupportedTxVersion.v3:
-          final calldata = c.functionCallsToCalldata(
-            functionCalls: functionCalls,
-            useLegacyCalldata: useLegacyCalldata,
-          );
-
-          response = await provider.addInvokeTransaction(
-            InvokeTransactionRequest(
-              invokeTransaction: InvokeTransactionV3(
-                accountDeploymentData: accountDeploymentData,
-                calldata: calldata,
-                feeDataAvailabilityMode: feeDataAvailabilityMode,
-                nonce: nonce!,
-                nonceDataAvailabilityMode: nonceDataAvailabilityMode,
-                paymasterData: paymasterData,
-                resourceBounds: resourceBounds,
-                senderAddress: accountAddress,
-                signature: signature,
-                tip: tip.toHexString(),
-              ),
-            ),
-          );
-      }
+      response = await provider.addInvokeTransaction(
+        InvokeTransactionRequest(
+          invokeTransaction: InvokeTransactionV3(
+            accountDeploymentData: accountDeploymentData,
+            calldata: calldata,
+            feeDataAvailabilityMode: feeDataAvailabilityMode,
+            nonce: nonce!,
+            nonceDataAvailabilityMode: nonceDataAvailabilityMode,
+            paymasterData: paymasterData,
+            resourceBounds: resourceBounds,
+            senderAddress: accountAddress,
+            signature: signature,
+            tip: tip.toHexString(),
+          ),
+        ),
+      );
 
       final result = response.when(
         result: (result) => response,
@@ -646,130 +486,79 @@ class Account {
   /// Declares a [compiledContract]
   Future<DeclareTransactionResponse> declare({
     required ICompiledContract compiledContract,
-    Felt? max_fee,
     Felt? nonce,
     // needed for v2
-    BigInt? compiledClassHash,
+    required BigInt compiledClassHash,
     CASMCompiledContract? casmCompiledContract,
     // needed for v3
-    bool? useSTRKFee = false,
-    Felt? l1MaxAmount,
-    Felt? l1MaxPricePerUnit,
-    Felt? l2MaxAmount,
-    Felt? l2MaxPricePerUnit,
+    Felt? l1GasConsumed,
+    Felt? l1GasPrice,
+    Felt? l1DataGasConsumed,
+    Felt? l1DataGasPrice,
+    Felt? l2GasConsumed,
+    Felt? l2GasPrice,
     // These values are for future use (until then they are empty or zero)
     List<Felt>? accountDeploymentData,
     List<Felt>? paymasterData,
     Felt? tip,
-    String? feeDataAvailabilityMode = 'L1',
-    String? nonceDataAvailabilityMode = 'L1',
+    String? feeDataAvailabilityMode,
+    String? nonceDataAvailabilityMode,
   }) async {
     nonce = nonce ?? await getNonce();
 
-    if (useSTRKFee!) {
-      // These values are for future use (until then they are empty or zero)
-      accountDeploymentData ??= [];
-      paymasterData ??= [];
-      tip ??= Felt.zero;
-      l1MaxAmount ??= Felt.zero;
-      l1MaxPricePerUnit ??= Felt.zero;
-      l2MaxAmount ??= Felt.zero;
-      l2MaxPricePerUnit ??= Felt.zero;
-      final resourceBounds = _getResourceBounds(
-        l1MaxAmount,
-        l1MaxPricePerUnit,
-        l2MaxAmount,
-        l2MaxPricePerUnit,
-      );
+    // These values are for future use (until then they are empty or zero)
+    accountDeploymentData ??= [];
+    paymasterData ??= [];
+    tip ??= Felt.zero;
+    feeDataAvailabilityMode ??= 'L1';
+    nonceDataAvailabilityMode ??= 'L1';
+    l1GasConsumed ??= Felt.zero;
+    l1GasPrice ??= Felt.zero;
+    l1DataGasConsumed ??= Felt.zero;
+    l1DataGasPrice ??= Felt.zero;
+    l2GasConsumed ??= Felt.zero;
+    l2GasPrice ??= Felt.zero;
+    final resourceBounds = _getResourceBounds(
+      l1GasConsumed,
+      l1GasPrice,
+      l1DataGasConsumed,
+      l1DataGasPrice,
+      l2GasConsumed,
+      l2GasPrice,
+    );
 
-      final signature = await signer.signDeclareTransactionV3(
-        compiledContract: compiledContract as CompiledContract,
-        senderAddress: accountAddress,
-        chainId: chainId,
-        nonce: nonce,
-        compiledClassHash: Felt(compiledClassHash!),
-        casmCompiledContract: casmCompiledContract,
-        resourceBounds: resourceBounds,
-        accountDeploymentData: accountDeploymentData,
-        paymasterData: paymasterData,
-        tip: tip,
-        feeDataAvailabilityMode: feeDataAvailabilityMode!,
-        nonceDataAvailabilityMode: nonceDataAvailabilityMode!,
-      );
+    final signature = await signer.signDeclareTransactionV3(
+      compiledContract: compiledContract as CompiledContract,
+      senderAddress: accountAddress,
+      chainId: chainId,
+      nonce: nonce,
+      compiledClassHash: Felt(compiledClassHash),
+      casmCompiledContract: casmCompiledContract,
+      resourceBounds: resourceBounds,
+      accountDeploymentData: accountDeploymentData,
+      paymasterData: paymasterData,
+      tip: tip,
+      feeDataAvailabilityMode: feeDataAvailabilityMode,
+      nonceDataAvailabilityMode: nonceDataAvailabilityMode,
+    );
 
-      return provider.addDeclareTransaction(
-        DeclareTransactionRequest(
-          declareTransaction: DeclareTransactionV3(
-            accountDeploymentData: accountDeploymentData,
-            compiledClassHash: Felt(compiledClassHash),
-            contractClass: compiledContract.flatten(),
-            feeDataAvailabilityMode: feeDataAvailabilityMode,
-            nonce: nonce,
-            nonceDataAvailabilityMode: nonceDataAvailabilityMode,
-            paymasterData: paymasterData,
-            resourceBounds: resourceBounds,
-            senderAddress: accountAddress,
-            signature: signature,
-            tip: tip.toHexString(),
-          ),
+    return provider.addDeclareTransaction(
+      DeclareTransactionRequest(
+        declareTransaction: DeclareTransactionV3(
+          accountDeploymentData: accountDeploymentData,
+          compiledClassHash: Felt(compiledClassHash),
+          contractClass: compiledContract.flatten(),
+          feeDataAvailabilityMode: feeDataAvailabilityMode,
+          nonce: nonce,
+          nonceDataAvailabilityMode: nonceDataAvailabilityMode,
+          paymasterData: paymasterData,
+          resourceBounds: resourceBounds,
+          senderAddress: accountAddress,
+          signature: signature,
+          tip: tip.toHexString(),
         ),
-      );
-    } else {
-      if (compiledContract is DeprecatedCompiledContract) {
-        max_fee = max_fee ?? defaultMaxFee;
-        final signature = await signer.signDeclareTransactionV1(
-          compiledContract: compiledContract,
-          senderAddress: accountAddress,
-          chainId: chainId,
-          nonce: nonce,
-          maxFee: max_fee,
-        );
-
-        return provider.addDeclareTransaction(
-          DeclareTransactionRequest(
-            declareTransaction: DeclareTransactionV1(
-              max_fee: max_fee,
-              nonce: nonce,
-              contractClass: compiledContract.compress(),
-              senderAddress: accountAddress,
-              signature: signature,
-            ),
-          ),
-        );
-      } else {
-        max_fee = max_fee ??
-            (await getEstimateMaxFeeForDeclareTx(
-              nonce: nonce,
-              compiledContract: compiledContract,
-              compiledClassHash: compiledClassHash,
-              casmCompiledContract: casmCompiledContract,
-            ))
-                .maxFee;
-        final signature = await signer.signDeclareTransactionV2(
-          compiledContract: compiledContract as CompiledContract,
-          senderAddress: accountAddress,
-          chainId: chainId,
-          nonce: nonce,
-          compiledClassHash: compiledClassHash,
-          casmCompiledContract: casmCompiledContract,
-          maxFee: max_fee,
-        );
-
-        return provider.addDeclareTransaction(
-          DeclareTransactionRequest(
-            declareTransaction: DeclareTransactionV2(
-              max_fee: max_fee
-                  .toHexString(), // As Hex String because devnet only supports 16 bytes and not a Felt for maxfee in declare tx
-              nonce: nonce,
-              contractClass: compiledContract.flatten(),
-              compiledClassHash: Felt(compiledClassHash!),
-              senderAddress: accountAddress,
-              signature: signature,
-            ),
-          ),
-        );
-      }
-    }
+      ),
+    );
   }
 
   /// Deploys an instance of [classHash] with given [salt], [unique] and [calldata]
@@ -781,13 +570,13 @@ class Account {
     Felt? salt,
     Felt? unique,
     List<Felt>? calldata,
-    Felt? max_fee,
     // needed for v3
-    bool? useSTRKFee = false,
-    Felt? l1MaxAmount,
-    Felt? l1MaxPricePerUnit,
-    Felt? l2MaxAmount,
-    Felt? l2MaxPricePerUnit,
+    Felt? l1GasConsumed,
+    Felt? l1GasPrice,
+    Felt? l1DataGasConsumed,
+    Felt? l1DataGasPrice,
+    Felt? l2GasConsumed,
+    Felt? l2GasPrice,
     // These values are for future use (until then they are empty or zero)
     List<Felt>? accountDeploymentData,
     List<Felt>? paymasterData,
@@ -804,12 +593,12 @@ class Account {
       salt,
       unique,
       calldata,
-      max_fee,
-      useSTRKFee,
-      l1MaxAmount,
-      l1MaxPricePerUnit,
-      l2MaxAmount,
-      l2MaxPricePerUnit,
+      l1GasConsumed,
+      l1GasPrice,
+      l1DataGasConsumed,
+      l1DataGasPrice,
+      l2GasConsumed,
+      l2GasPrice,
       accountDeploymentData,
       paymasterData,
       tip,
@@ -867,126 +656,108 @@ class Account {
     required List<Felt> constructorCalldata,
     required Felt classHash,
     Felt? contractAddressSalt,
-    Felt? max_fee,
     Felt? nonce,
-    bool? useSTRKFee = false,
-    Felt? l1MaxAmount,
-    Felt? l1MaxPricePerUnit,
-    Felt? l2MaxAmount,
-    Felt? l2MaxPricePerUnit,
+    Felt? l1GasConsumed,
+    Felt? l1GasPrice,
+    Felt? l1DataGasConsumed,
+    Felt? l1DataGasPrice,
+    Felt? l2GasConsumed,
+    Felt? l2GasPrice,
     Felt? contractAddress,
     // These values are for future use (until then they are empty or zero)
     List<Felt>? accountDeploymentData,
     List<Felt>? paymasterData,
     Felt? tip,
-    String? feeDataAvailabilityMode = 'L1',
-    String? nonceDataAvailabilityMode = 'L1',
+    String? feeDataAvailabilityMode,
+    String? nonceDataAvailabilityMode,
   }) async {
     final chainId = (await provider.chainId()).when(
       result: Felt.fromHexString,
       error: (error) => StarknetChainId.testNet,
     );
 
-    max_fee = max_fee ?? defaultMaxFee;
     nonce = nonce ?? defaultNonce;
     contractAddressSalt = contractAddressSalt ?? accountSigner.publicKey;
 
-    if (useSTRKFee!) {
-      contractAddress = contractAddress ?? Felt.zero;
-      l1MaxAmount ??= Felt.zero;
-      l1MaxPricePerUnit ??= Felt.zero;
-      l2MaxAmount ??= Felt.zero;
-      l2MaxPricePerUnit ??= Felt.zero;
-      accountDeploymentData ??= [];
-      paymasterData ??= [];
-      tip ??= Felt.zero;
-      final estimateFeeResult = await provider.estimateFee(
-        EstimateFeeRequest(
-          request: [
-            BroadcastedDeployAccountTxnV3(
-              type: 'DEPLOY_ACCOUNT',
-              version: '0x3',
-              signature: [],
-              nonce: Felt.zero,
-              classHash: classHash,
-              constructorCalldata: constructorCalldata,
-              contractAddressSalt: contractAddressSalt,
-              feeDataAvailabilityMode: feeDataAvailabilityMode!,
-              nonceDataAvailabilityMode: nonceDataAvailabilityMode!,
-              paymasterData: paymasterData,
-              resourceBounds: await provider.defaultResourceBoundsMapping(),
-              tip: tip.toHexString(),
-            ),
-          ],
-          blockId: BlockId.latest,
-          simulation_flags: [
-            SimulationFlag.skipValidate,
-            // const SimulationFlag.skipFeeCharge(),
-          ],
-        ),
-      );
-      final feeResult = estimateFeeResult.when(
-        result: (result) => result.first,
-        error: (error) {
-          throw Exception(
-            'Error estimating fee (${error.code}): ${error.message} ${error.errorData}',
-          );
-        },
-      );
+    contractAddress = contractAddress ?? Felt.zero;
+    l1GasConsumed ??= Felt.zero;
+    l1GasPrice ??= Felt.zero;
+    l1DataGasConsumed ??= Felt.zero;
+    l1DataGasPrice ??= Felt.zero;
+    l2GasConsumed ??= Felt.zero;
+    l2GasPrice ??= Felt.zero;
+    accountDeploymentData ??= [];
+    paymasterData ??= [];
+    tip ??= Felt.zero;
+    feeDataAvailabilityMode ??= 'L1';
+    nonceDataAvailabilityMode ??= 'L1';
+    var resourceBounds = _getResourceBounds(
+      l1GasConsumed,
+      l1GasPrice,
+      l1DataGasConsumed,
+      l1DataGasPrice,
+      l2GasConsumed,
+      l2GasPrice,
+    );
 
-      final resourceBounds = feeResult.toResourceBounds(multiplier: 1.2);
-      // Note: Removed v0_7 workaround as it's no longer needed with v0_8 fee estimates
-      final signature = await accountSigner.signDeployAccountTransactionV3(
-        contractAddress: contractAddress,
-        resourceBounds: resourceBounds,
-        tip: tip,
-        paymasterData: paymasterData,
+    // If all the resource bounds are zero, we need to estimate the fee
+    if (l1GasConsumed == Felt.zero &&
+        l1GasPrice == Felt.zero &&
+        l1DataGasConsumed == Felt.zero &&
+        l1DataGasPrice == Felt.zero &&
+        l2GasConsumed == Felt.zero &&
+        l2GasPrice == Felt.zero) {
+      final account = Account(
+        accountAddress: contractAddress,
+        signer: accountSigner,
+        provider: provider,
         chainId: chainId,
-        nonce: nonce,
-        feeDataAvailabilityMode: feeDataAvailabilityMode,
-        nonceDataAvailabilityMode: nonceDataAvailabilityMode,
+      );
+      final maxFee = await account.getEstimateMaxFeeForDeployAccountTx(
         constructorCalldata: constructorCalldata,
         classHash: classHash,
-        contractAddressSalt: contractAddressSalt,
+        accountSigner: accountSigner,
+        provider: provider,
       );
-      return provider.addDeployAccountTransaction(
-        DeployAccountTransactionRequest(
-          deployAccountTransaction: DeployAccountTransactionV3(
-            classHash: classHash,
-            constructorCalldata: constructorCalldata,
-            contractAddressSalt: contractAddressSalt,
-            feeDataAvailabilityMode: feeDataAvailabilityMode,
-            nonce: nonce,
-            nonceDataAvailabilityMode: nonceDataAvailabilityMode,
-            paymasterData: paymasterData,
-            resourceBounds: resourceBounds,
-            signature: signature,
-            tip: tip.toHexString(),
-          ),
-        ),
-      );
-    } else {
-      final signature = await accountSigner.signDeployAccountTransactionV1(
-        contractAddressSalt: contractAddressSalt,
-        classHash: classHash,
-        constructorCalldata: constructorCalldata,
-        chainId: chainId,
-        nonce: nonce,
-        maxFee: max_fee,
-      );
-      return provider.addDeployAccountTransaction(
-        DeployAccountTransactionRequest(
-          deployAccountTransaction: DeployAccountTransactionV1(
-            classHash: classHash,
-            signature: signature,
-            maxFee: max_fee,
-            nonce: nonce,
-            contractAddressSalt: contractAddressSalt,
-            constructorCalldata: constructorCalldata,
-          ),
-        ),
+      resourceBounds = _getResourceBounds(
+        maxFee.l1GasConsumed,
+        maxFee.l1GasPrice,
+        maxFee.l1DataGasConsumed,
+        maxFee.l1DataGasPrice,
+        maxFee.l2GasConsumed,
+        maxFee.l2GasPrice,
       );
     }
+
+    final signature = await accountSigner.signDeployAccountTransactionV3(
+      contractAddress: contractAddress,
+      resourceBounds: resourceBounds,
+      tip: tip,
+      paymasterData: paymasterData,
+      chainId: chainId,
+      nonce: nonce,
+      feeDataAvailabilityMode: feeDataAvailabilityMode,
+      nonceDataAvailabilityMode: nonceDataAvailabilityMode,
+      constructorCalldata: constructorCalldata,
+      classHash: classHash,
+      contractAddressSalt: contractAddressSalt,
+    );
+    return provider.addDeployAccountTransaction(
+      DeployAccountTransactionRequest(
+        deployAccountTransaction: DeployAccountTransactionV3(
+          classHash: classHash,
+          constructorCalldata: constructorCalldata,
+          contractAddressSalt: contractAddressSalt,
+          feeDataAvailabilityMode: feeDataAvailabilityMode,
+          nonce: nonce,
+          nonceDataAvailabilityMode: nonceDataAvailabilityMode,
+          paymasterData: paymasterData,
+          resourceBounds: resourceBounds,
+          signature: signature,
+          tip: tip.toHexString(),
+        ),
+      ),
+    );
   }
 
   /// Retrieves an account from given [mnemonic], [provider] and [chainId]
@@ -1020,23 +791,25 @@ class Account {
 
   // Function to generate a resourceBounds map from a maxAmount and a maxPricePerUnit
   static Map<String, ResourceBounds> _getResourceBounds(
-    Felt l1MaxAmount,
-    Felt l1MaxPricePerUnit,
-    Felt l2MaxAmount,
-    Felt l2MaxPricePerUnit,
+    Felt l1GasConsumed,
+    Felt l1GasPrice,
+    Felt l1DataGasConsumed,
+    Felt l1DataGasPrice,
+    Felt l2GasConsumed,
+    Felt l2GasPrice,
   ) {
     return {
       'l1_gas': ResourceBounds(
-        maxAmount: l1MaxAmount,
-        maxPricePerUnit: l1MaxPricePerUnit,
+        maxAmount: l1GasConsumed,
+        maxPricePerUnit: l1GasPrice,
       ),
-      // 'l1_data_gas': ResourceBounds(
-      //   maxAmount: l1MaxAmount.toHexString(),
-      //   maxPricePerUnit: l1MaxPricePerUnit.toHexString(),
-      // ),
+      'l1_data_gas': ResourceBounds(
+        maxAmount: l1DataGasConsumed,
+        maxPricePerUnit: l1DataGasPrice,
+      ),
       'l2_gas': ResourceBounds(
-        maxAmount: l2MaxAmount,
-        maxPricePerUnit: l2MaxPricePerUnit,
+        maxAmount: l2GasConsumed,
+        maxPricePerUnit: l2GasPrice,
       ),
     };
   }

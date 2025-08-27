@@ -74,7 +74,6 @@ void main() async {
       provider: provider,
       classHash: argentClassHash,
       constructorCalldata: constructorCalldata,
-      // useSTRKFee: true,
       // max_fee: Felt.fromInt(20000000000000),
     );
     final txHash = tx.when(

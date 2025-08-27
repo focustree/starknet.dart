@@ -8,7 +8,7 @@
   },
   "deployment": {
     "status": "undeployed",
-    "class_hash": "0x61dac032f228abef9c6626f995015233097ae253a7f72d68552db02f2971b8f",
+    "class_hash": "0x05b4b537eaa2399e3aa99c4e2e0208ebd6c71bc1467938cd52c798c601e43564",
     "salt": "0x38fd00cc183cb6326ff3ae90148331bd76a070ee489608fc832f2cf2c0d5aef"
   }
 }

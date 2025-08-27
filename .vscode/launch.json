@@ -6,7 +6,7 @@
       "request": "launch",
       "type": "dart",
       "env": {
-        "STARKNET_RPC": "https://starknet-sepolia.public.blastapi.io/rpc/v0_7",
+        "STARKNET_RPC": "https://starknet-sepolia.public.blastapi.io/rpc/v0_8",
         "STARKNET_WSS": "wss://sepolia-pathfinder-rpc.spaceshard.io/rpc/v0_8",
         "DEVNET_DUMP_PATH": "./assets/devnet-dump.json",
         "AVNU_RPC": "https://sepolia.api.avnu.fi"

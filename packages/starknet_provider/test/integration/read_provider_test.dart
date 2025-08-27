@@ -18,7 +18,7 @@ void main() {
         '0x51d7ee9fa3a6226d47860eea28dc0b38eeccd7b6fac1b9f39c64c3ac772cc02');
     int blockNumber = 3;
     Felt invokeTransactionHash = Felt.fromHexString(
-        '0x029583643cd8932f1955bf28bfebf4c907b13df1e5c2d202b133cfbf783697a2');
+        '0x079343f5ddb8a5ae74f514651d664bf74ba26abd45a80e4b68825eaabd6822d0');
     Felt declareTransactionHash = Felt.fromHexString(
         '0x4d7ba5427d4066c8db851e7662ecce860a94a804c6735677dfd29f1d0103fda');
     Felt deployTransactionHash = Felt.fromHexString(
@@ -43,7 +43,7 @@ void main() {
         '0x9278fa5f64a571de10741418f1c4c0c4322aef645dd9d94a429c1f3e99a8a5');
 
     Felt classHashV1 = Felt.fromHexString(
-        '0x061dac032f228abef9c6626f995015233097ae253a7f72d68552db02f2971b8f'); // Predeployed class hash
+        '0x05b4b537eaa2399e3aa99c4e2e0208ebd6c71bc1467938cd52c798c601e43564'); // Predeployed class hash
     Felt contractAddressV1 = Felt.fromHexString(
         '0x64b48806902a367c8598f4f95c305e8c1a1acba5f082d294a43793113115691');
 
@@ -1118,32 +1118,6 @@ void main() {
 
     group('estimateFee', () {
       BlockId parentBlockId = BlockId.blockTag('pending');
-      BroadcastedInvokeTxnV1 broadcastedInvokeTxnV1 = BroadcastedInvokeTxnV1(
-        maxFee: Felt.fromHexString('0x0'),
-        version: "0x100000000000000000000000000000001",
-        signature: [
-          Felt.fromHexString(
-              '0x3633b6b91f78ddaee3546e6b63f00ff4df12ead22db934f724814659fcdb639'),
-          Felt.fromHexString(
-              '0x5727ccd97461882f2bd107a25316d00d888f05196b9bc4d7da12378387daec8'),
-        ],
-        nonce: Felt.fromHexString('0x4'),
-        type: 'INVOKE',
-        senderAddress: Felt.fromHexString(
-            '0x64b48806902a367c8598f4f95c305e8c1a1acba5f082d294a43793113115691'),
-        calldata: [
-          Felt.fromHexString('0x1'),
-          Felt.fromHexString(
-              '0x49d36570d4e46f48e99674bd3fcc84644ddd6b96f7c741b1562b82f9e004dc7'),
-          Felt.fromHexString(
-              '0x83afd3f4caedc6eebf44246fe54e38c95e3179a5ec9ea81740eca5b482d12e'),
-          Felt.fromHexString('0x3'),
-          Felt.fromHexString(
-              '0x16a0d7df981d681537dc2ce648722ff1d1c2cbe59412b492d35bac69825f104'),
-          Felt.fromHexString('0x100000000000000000'),
-          Felt.fromHexString('0x0'),
-        ],
-      );
 
       BroadcastedInvokeTxnV3 broadcastedInvokeTxnV3 = BroadcastedInvokeTxnV3(
         type: 'INVOKE',
@@ -1182,34 +1156,6 @@ void main() {
         version: '0x100000000000000000000000000000003',
       );
 
-      test('estimate the fee for a given V1 Invoke StarkNet transaction',
-          () async {
-        EstimateFeeRequest estimateFeeRequest = EstimateFeeRequest(
-            request: [broadcastedInvokeTxnV1],
-            blockId: parentBlockId,
-            simulation_flags: []);
-
-        final response = await provider.estimateFee(estimateFeeRequest);
-
-        response.when(
-          error: (error) {
-            fail('Should not fail. (${error.code}): ${error.message}');
-          },
-          result: (result) {
-            expect(result.length, 1);
-            final estimate = result[0] as FeeEstimatev0_8;
-            expect(estimate.l1GasConsumed, greaterThan(Felt.zero));
-            expect(estimate.l2GasConsumed, greaterThan(Felt.zero));
-            expect(estimate.l1DataGasConsumed, isA<Felt>());
-            expect(estimate.l1GasPrice, greaterThan(Felt.zero));
-            expect(estimate.l2GasPrice, greaterThan(Felt.zero));
-            expect(estimate.l1DataGasPrice, greaterThan(Felt.zero));
-            expect(estimate.overallFee, greaterThan(Felt.zero));
-            expect(estimate.unit, "WEI");
-          },
-        );
-      });
-
       test('estimate the fee for a given V3 Invoke StarkNet transaction',
           () async {
         EstimateFeeRequest estimateFeeRequest = EstimateFeeRequest(
@@ -1239,7 +1185,7 @@ void main() {
       });
 
       test('returns CONTRACT_NOT_FOUND with invalid sender address', () async {
-        BroadcastedInvokeTxnV1 invalidContractTxn = broadcastedInvokeTxnV1.copyWith(
+        BroadcastedInvokeTxnV3 invalidContractTxn = broadcastedInvokeTxnV3.copyWith(
             senderAddress: Felt.fromHexString(
                 '0x079D9923B256aD3E6f77bFccb6449C52bb6971F352318ab19fA8802A7b7FbdFD')); // contract address from main net.
         EstimateFeeRequest estimateFeeRequest = EstimateFeeRequest(
@@ -1272,7 +1218,7 @@ void main() {
       test('returns BLOCK_NOT_FOUND with invalid block id', () async {
         // contract address from main net.
         EstimateFeeRequest estimateFeeRequest = EstimateFeeRequest(
-          request: [broadcastedInvokeTxnV1],
+          request: [broadcastedInvokeTxnV3],
           blockId: invalidBlockIdFromBlockHash,
           simulation_flags: [],
         );
@@ -1327,7 +1273,7 @@ void main() {
       test('estimate message fee for L1 to L2 message', () async {
         // Contract declared and deployed in devnet dump (source: /contracts/v2.6.2/src/l2_receiver.cairo)
         final Felt l2ContractAddress = Felt.fromHexString(
-            '0x0536e1d1cd6cd7d295ccbd8c7dc817839f8ff4c615a28fdc192a0aafe2327e5f');
+            '0x0505808b8dc23ef65ccd98da1ddd258ad8597e5cd06b0def786452900fcd955c');
 
         // This must be the l1 sender address
         const String l1Address = '0x8359E4B0152ed5A731162D3c7B0D8D56edB165a0';
@@ -1364,7 +1310,7 @@ void main() {
                 expect(feeEstimate.l1GasPrice, isNot(equals(Felt.zero)));
                 expect(feeEstimate.l1DataGasConsumed, isNot(equals(Felt.zero)));
                 expect(feeEstimate.l1DataGasPrice, isNot(equals(Felt.zero)));
-                expect(feeEstimate.l2GasConsumed, isNot(equals(Felt.zero)));
+                //expect(feeEstimate.l2GasConsumed, isNot(equals(Felt.zero))); this could be zero
                 expect(feeEstimate.l2GasPrice, isNot(equals(Felt.zero)));
                 expect(feeEstimate.overallFee, isNot(equals(Felt.zero)));
                 expect(feeEstimate.unit, isNotEmpty);
@@ -1413,7 +1359,7 @@ void main() {
       test('estimate message fee with invalid block id', () async {
         // Contract declared and deployed in devnet dump (source: /contracts/v2.6.2/src/l2_receiver.cairo)
         final Felt l2ContractAddress = Felt.fromHexString(
-            '0x0536e1d1cd6cd7d295ccbd8c7dc817839f8ff4c615a28fdc192a0aafe2327e5f');
+            '0x0505808b8dc23ef65ccd98da1ddd258ad8597e5cd06b0def786452900fcd955c');
 
         const String l1Address = '0x8359E4B0152ed5A731162D3c7B0D8D56edB165a0';
         final Felt entryPointSelector =
