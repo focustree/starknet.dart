@@ -271,13 +271,18 @@ class Wallets extends _$Wallets with PersistedState<WalletsState> {
     bool strk = false,
   }) async {
     try {
-      await WalletService.send(
+      final success = await WalletService.send(
         secureStore: secureStore,
         account: account,
         recipientAddress: recipientAddress,
         amount: amount,
         strk: strk,
       );
+      if (success) {
+        await (strk
+            ? refreshStrkBalance(account.walletId, account.id)
+            : refreshEthBalance(account.walletId, account.id));
+      }
     } catch (e) {
       ref.read(walletErrorNotifierProvider.notifier).reportError(
             WalletError.accountError(

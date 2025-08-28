@@ -6,7 +6,7 @@ part of 'wallet_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$walletsHash() => r'47db6e9cbe8905bf1705aa1a2dfc85278e5f977f';
+String _$walletsHash() => r'6adf4a4bdedd7d4e9fb36439204905052e23815d';
 
 /// See also [Wallets].
 @ProviderFor(Wallets)
