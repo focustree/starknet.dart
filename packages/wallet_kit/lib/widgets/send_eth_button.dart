@@ -2,9 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:starknet/starknet.dart' as s;
 
-import '../services/index.dart';
 import '../ui/index.dart';
-import '../wallet_screens/index.dart';
 import '../wallet_state/index.dart';
 
 final recipientAddress = s.Felt.fromHexString(
@@ -28,15 +26,15 @@ class SendEthButton extends HookConsumerWidget {
       label: 'Send',
       onPressed: selectedAccount.isDeployed
           ? () async {
-              final password = await showPasswordModal(context);
-              if (password == null) {
-                throw Exception('Password is required');
-              }
-              await sendEth(
-                  account: selectedAccount,
-                  password: password,
-                  recipientAddress: recipientAddress,
-                  amount: 0.001);
+              final secureStore = await ref
+                  .read(walletsProvider.notifier)
+                  .getSecureStoreForWallet(context: context);
+              await ref.read(walletsProvider.notifier).sendEth(
+                    secureStore: secureStore,
+                    account: selectedAccount,
+                    recipientAddress: recipientAddress,
+                    amount: 0.001,
+                  );
             }
           : null,
     );

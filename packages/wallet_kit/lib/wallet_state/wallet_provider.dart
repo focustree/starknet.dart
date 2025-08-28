@@ -263,6 +263,82 @@ class Wallets extends _$Wallets with PersistedState<WalletsState> {
     state = state.copyWith(wallets: {}, selected: null);
   }
 
+  _send({
+    required SecureStore secureStore,
+    required Account account,
+    required s.Felt recipientAddress,
+    required double amount,
+    bool strk = false,
+  }) async {
+    try {
+      await WalletService.send(
+        secureStore: secureStore,
+        account: account,
+        recipientAddress: recipientAddress,
+        amount: amount,
+        strk: strk,
+      );
+    } catch (e) {
+      ref.read(walletErrorNotifierProvider.notifier).reportError(
+            WalletError.accountError(
+              message: 'Failed to send ERC20',
+              exception: e,
+            ),
+          );
+    }
+  }
+
+  sendEth({
+    required SecureStore secureStore,
+    required Account account,
+    required s.Felt recipientAddress,
+    required double amount,
+  }) async {
+    await _send(
+      secureStore: secureStore,
+      account: account,
+      recipientAddress: recipientAddress,
+      amount: amount,
+      strk: false,
+    );
+  }
+
+  sendStrk({
+    required SecureStore secureStore,
+    required Account account,
+    required s.Felt recipientAddress,
+    required double amount,
+  }) async {
+    await _send(
+      secureStore: secureStore,
+      account: account,
+      recipientAddress: recipientAddress,
+      amount: amount,
+      strk: true,
+    );
+  }
+
+  execute({
+    required SecureStore secureStore,
+    required Account account,
+    required List<sp.FunctionCall> calls,
+  }) async {
+    try {
+      await WalletService.execute(
+        secureStore: secureStore,
+        account: account,
+        calls: calls,
+      );
+    } catch (e) {
+      ref.read(walletErrorNotifierProvider.notifier).reportError(
+            WalletError.accountError(
+              message: 'Failed to execute calls',
+              exception: e,
+            ),
+          );
+    }
+  }
+
   Future<void> refreshAccount(String walletId, int accountId) async {
     if (_isRefreshing) return;
     _isRefreshing = true;
