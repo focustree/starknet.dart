@@ -39,7 +39,7 @@ final walletThemeData = ThemeData(
   bottomSheetTheme: BottomSheetThemeData(
     backgroundColor: colorScheme.surface,
   ),
-  iconTheme: IconThemeData(color: colorScheme.onSurfaceVariant),
+  iconTheme: IconThemeData(color: colorScheme.onSurfaceVariant, size: 24),
 );
 
 // Spacing
