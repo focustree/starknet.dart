@@ -188,6 +188,104 @@ class WalletService {
 
     return success;
   }
+
+  static Future<bool> send({
+    required SecureStore secureStore,
+    required Account account,
+    required s.Felt recipientAddress,
+    required double amount,
+    bool strk = false,
+  }) async {
+    final privateKey = await secureStore.getSecret(
+        key: privateKeyKey(account.walletId, account.id));
+    if (privateKey == null) {
+      throw Exception("Private key not found");
+    }
+
+    s.StarkAccountSigner? signer = s.StarkAccountSigner(
+        signer: s.StarkSigner(privateKey: s.Felt.fromHexString(privateKey)));
+
+    final provider = WalletKit().provider;
+    final chainId = WalletKit().chainId;
+
+    final fundingAccount = s.Account(
+      provider: provider,
+      signer: signer,
+      accountAddress: s.Felt.fromHexString(account.address),
+      chainId: chainId,
+    );
+
+    final txHash = await fundingAccount.send(
+      recipient: recipientAddress,
+      amount: s.Uint256(
+        low: s.Felt(
+          BigInt.from(amount * 1e18),
+        ),
+        high: s.Felt.zero,
+      ),
+      useSTRKtoken: strk,
+    );
+
+    // set signer to null to avoid storing the private key in memory
+    signer = null;
+    bool success = await s.waitForAcceptance(
+      transactionHash: txHash,
+      provider: provider,
+    );
+
+    return success;
+  }
+
+  static Future<bool> execute({
+    required SecureStore secureStore,
+    required Account account,
+    required List<FunctionCall> calls,
+  }) async {
+    final privateKey = await secureStore.getSecret(
+        key: privateKeyKey(account.walletId, account.id));
+    if (privateKey == null) {
+      throw Exception("Private key not found");
+    }
+
+    s.StarkAccountSigner? signer = s.StarkAccountSigner(
+        signer: s.StarkSigner(privateKey: s.Felt.fromHexString(privateKey)));
+
+    final provider = WalletKit().provider;
+    final chainId = WalletKit().chainId;
+
+    final starkAccount = s.Account(
+      provider: provider,
+      signer: signer,
+      accountAddress: s.Felt.fromHexString(account.address),
+      chainId: chainId,
+    );
+
+    final maxFee =
+        await starkAccount.getEstimateMaxFeeForInvokeTx(functionCalls: calls);
+
+    final tx = await starkAccount.execute(
+      functionCalls: calls,
+      l1GasConsumed: maxFee.l1GasConsumed,
+      l1GasPrice: maxFee.l1GasPrice,
+      l2GasConsumed: maxFee.l2GasConsumed,
+      l2GasPrice: maxFee.l2GasPrice,
+      l1DataGasConsumed: maxFee.l1DataGasConsumed,
+      l1DataGasPrice: maxFee.l1DataGasPrice,
+    );
+
+    // set signer to null to avoid storing the private key in memory
+    signer = null;
+    final txHash = tx.when(
+      result: (result) => result.transaction_hash,
+      error: (error) => throw Exception('${error.code}: ${error.message}'),
+    );
+    bool success = await s.waitForAcceptance(
+      transactionHash: txHash,
+      provider: provider,
+    );
+
+    return success;
+  }
 }
 
 seedPhraseKey(String walletId) {
