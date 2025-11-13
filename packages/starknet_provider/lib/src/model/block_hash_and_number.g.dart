@@ -6,45 +6,44 @@ part of 'block_hash_and_number.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$BlockHashAndNumberResultImpl _$$BlockHashAndNumberResultImplFromJson(
+BlockHashAndNumberResult _$BlockHashAndNumberResultFromJson(
         Map<String, dynamic> json) =>
-    _$BlockHashAndNumberResultImpl(
+    BlockHashAndNumberResult(
       result: BlockHashAndNumberResponseResult.fromJson(
           json['result'] as Map<String, dynamic>),
       $type: json['starkNetRuntimeTypeToRemove'] as String?,
     );
 
-Map<String, dynamic> _$$BlockHashAndNumberResultImplToJson(
-        _$BlockHashAndNumberResultImpl instance) =>
+Map<String, dynamic> _$BlockHashAndNumberResultToJson(
+        BlockHashAndNumberResult instance) =>
     <String, dynamic>{
       'result': instance.result.toJson(),
       'starkNetRuntimeTypeToRemove': instance.$type,
     };
 
-_$BlockHashAndNumberErrorImpl _$$BlockHashAndNumberErrorImplFromJson(
+BlockHashAndNumberError _$BlockHashAndNumberErrorFromJson(
         Map<String, dynamic> json) =>
-    _$BlockHashAndNumberErrorImpl(
+    BlockHashAndNumberError(
       error: JsonRpcApiError.fromJson(json['error'] as Map<String, dynamic>),
       $type: json['starkNetRuntimeTypeToRemove'] as String?,
     );
 
-Map<String, dynamic> _$$BlockHashAndNumberErrorImplToJson(
-        _$BlockHashAndNumberErrorImpl instance) =>
+Map<String, dynamic> _$BlockHashAndNumberErrorToJson(
+        BlockHashAndNumberError instance) =>
     <String, dynamic>{
       'error': instance.error.toJson(),
       'starkNetRuntimeTypeToRemove': instance.$type,
     };
 
-_$BlockHashAndNumberResponseResultImpl
-    _$$BlockHashAndNumberResponseResultImplFromJson(
-            Map<String, dynamic> json) =>
-        _$BlockHashAndNumberResponseResultImpl(
-          blockHash: Felt.fromJson(json['block_hash'] as String),
-          blockNumber: (json['block_number'] as num).toInt(),
-        );
+_BlockHashAndNumberResponseResult _$BlockHashAndNumberResponseResultFromJson(
+        Map<String, dynamic> json) =>
+    _BlockHashAndNumberResponseResult(
+      blockHash: Felt.fromJson(json['block_hash'] as String),
+      blockNumber: (json['block_number'] as num).toInt(),
+    );
 
-Map<String, dynamic> _$$BlockHashAndNumberResponseResultImplToJson(
-        _$BlockHashAndNumberResponseResultImpl instance) =>
+Map<String, dynamic> _$BlockHashAndNumberResponseResultToJson(
+        _BlockHashAndNumberResponseResult instance) =>
     <String, dynamic>{
       'block_hash': instance.blockHash.toJson(),
       'block_number': instance.blockNumber,

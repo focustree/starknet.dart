@@ -6,14 +6,13 @@ part of 'wallet_error.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$WalletErrorImpl _$$WalletErrorImplFromJson(Map<String, dynamic> json) =>
-    _$WalletErrorImpl(
+_WalletError _$WalletErrorFromJson(Map<String, dynamic> json) => _WalletError(
       code: (json['code'] as num).toInt(),
       message: json['message'] as String,
       data: json['data'],
     );
 
-Map<String, dynamic> _$$WalletErrorImplToJson(_$WalletErrorImpl instance) =>
+Map<String, dynamic> _$WalletErrorToJson(_WalletError instance) =>
     <String, dynamic>{
       'code': instance.code,
       'message': instance.message,

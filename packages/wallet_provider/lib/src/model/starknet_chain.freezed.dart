@@ -1,5 +1,5 @@
-// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// coverage:ignore-file
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
@@ -9,49 +9,76 @@ part of 'starknet_chain.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// dart format off
 T _$identity<T>(T value) => value;
-
-final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
-
-StarknetChain _$StarknetChainFromJson(Map<String, dynamic> json) {
-  return _StarknetChain.fromJson(json);
-}
 
 /// @nodoc
 mixin _$StarknetChain {
-  String get id => throw _privateConstructorUsedError;
+  String get id;
   @JsonKey(name: 'chain_id')
-  Felt get chainId =>
-      throw _privateConstructorUsedError; // Assuming Felt for CHAIN_ID
+  Felt get chainId; // Assuming Felt for CHAIN_ID
   @JsonKey(name: 'chain_name')
-  String get chainName => throw _privateConstructorUsedError;
+  String get chainName;
   @JsonKey(name: 'rpc_urls')
-  List<String>? get rpcUrls =>
-      throw _privateConstructorUsedError; // TODO: Should be List<Uri>?
+  List<String>? get rpcUrls; // TODO: Should be List<Uri>?
   @JsonKey(name: 'block_explorer_url')
-  List<String>? get blockExplorerUrl =>
-      throw _privateConstructorUsedError; // TODO: Should be List<Uri>?
+  List<String>? get blockExplorerUrl; // TODO: Should be List<Uri>?
   @JsonKey(name: 'native_currency')
-  Asset? get nativeCurrency => throw _privateConstructorUsedError;
+  Asset? get nativeCurrency;
   @JsonKey(name: 'icon_urls')
-  List<String>? get iconUrls => throw _privateConstructorUsedError;
-
-  /// Serializes this StarknetChain to a JSON map.
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  List<String>? get iconUrls;
 
   /// Create a copy of StarknetChain
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
   $StarknetChainCopyWith<StarknetChain> get copyWith =>
-      throw _privateConstructorUsedError;
+      _$StarknetChainCopyWithImpl<StarknetChain>(
+          this as StarknetChain, _$identity);
+
+  /// Serializes this StarknetChain to a JSON map.
+  Map<String, dynamic> toJson();
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is StarknetChain &&
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.chainId, chainId) || other.chainId == chainId) &&
+            (identical(other.chainName, chainName) ||
+                other.chainName == chainName) &&
+            const DeepCollectionEquality().equals(other.rpcUrls, rpcUrls) &&
+            const DeepCollectionEquality()
+                .equals(other.blockExplorerUrl, blockExplorerUrl) &&
+            (identical(other.nativeCurrency, nativeCurrency) ||
+                other.nativeCurrency == nativeCurrency) &&
+            const DeepCollectionEquality().equals(other.iconUrls, iconUrls));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(
+      runtimeType,
+      id,
+      chainId,
+      chainName,
+      const DeepCollectionEquality().hash(rpcUrls),
+      const DeepCollectionEquality().hash(blockExplorerUrl),
+      nativeCurrency,
+      const DeepCollectionEquality().hash(iconUrls));
+
+  @override
+  String toString() {
+    return 'StarknetChain(id: $id, chainId: $chainId, chainName: $chainName, rpcUrls: $rpcUrls, blockExplorerUrl: $blockExplorerUrl, nativeCurrency: $nativeCurrency, iconUrls: $iconUrls)';
+  }
 }
 
 /// @nodoc
-abstract class $StarknetChainCopyWith<$Res> {
+abstract mixin class $StarknetChainCopyWith<$Res> {
   factory $StarknetChainCopyWith(
-          StarknetChain value, $Res Function(StarknetChain) then) =
-      _$StarknetChainCopyWithImpl<$Res, StarknetChain>;
+          StarknetChain value, $Res Function(StarknetChain) _then) =
+      _$StarknetChainCopyWithImpl;
   @useResult
   $Res call(
       {String id,
@@ -66,14 +93,12 @@ abstract class $StarknetChainCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$StarknetChainCopyWithImpl<$Res, $Val extends StarknetChain>
+class _$StarknetChainCopyWithImpl<$Res>
     implements $StarknetChainCopyWith<$Res> {
-  _$StarknetChainCopyWithImpl(this._value, this._then);
+  _$StarknetChainCopyWithImpl(this._self, this._then);
 
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final StarknetChain _self;
+  final $Res Function(StarknetChain) _then;
 
   /// Create a copy of StarknetChain
   /// with the given fields replaced by the non-null parameter values.
@@ -88,36 +113,36 @@ class _$StarknetChainCopyWithImpl<$Res, $Val extends StarknetChain>
     Object? nativeCurrency = freezed,
     Object? iconUrls = freezed,
   }) {
-    return _then(_value.copyWith(
+    return _then(_self.copyWith(
       id: null == id
-          ? _value.id
+          ? _self.id
           : id // ignore: cast_nullable_to_non_nullable
               as String,
       chainId: null == chainId
-          ? _value.chainId
+          ? _self.chainId
           : chainId // ignore: cast_nullable_to_non_nullable
               as Felt,
       chainName: null == chainName
-          ? _value.chainName
+          ? _self.chainName
           : chainName // ignore: cast_nullable_to_non_nullable
               as String,
       rpcUrls: freezed == rpcUrls
-          ? _value.rpcUrls
+          ? _self.rpcUrls
           : rpcUrls // ignore: cast_nullable_to_non_nullable
               as List<String>?,
       blockExplorerUrl: freezed == blockExplorerUrl
-          ? _value.blockExplorerUrl
+          ? _self.blockExplorerUrl
           : blockExplorerUrl // ignore: cast_nullable_to_non_nullable
               as List<String>?,
       nativeCurrency: freezed == nativeCurrency
-          ? _value.nativeCurrency
+          ? _self.nativeCurrency
           : nativeCurrency // ignore: cast_nullable_to_non_nullable
               as Asset?,
       iconUrls: freezed == iconUrls
-          ? _value.iconUrls
+          ? _self.iconUrls
           : iconUrls // ignore: cast_nullable_to_non_nullable
               as List<String>?,
-    ) as $Val);
+    ));
   }
 
   /// Create a copy of StarknetChain
@@ -125,95 +150,204 @@ class _$StarknetChainCopyWithImpl<$Res, $Val extends StarknetChain>
   @override
   @pragma('vm:prefer-inline')
   $AssetCopyWith<$Res>? get nativeCurrency {
-    if (_value.nativeCurrency == null) {
+    if (_self.nativeCurrency == null) {
       return null;
     }
 
-    return $AssetCopyWith<$Res>(_value.nativeCurrency!, (value) {
-      return _then(_value.copyWith(nativeCurrency: value) as $Val);
+    return $AssetCopyWith<$Res>(_self.nativeCurrency!, (value) {
+      return _then(_self.copyWith(nativeCurrency: value));
     });
   }
 }
 
-/// @nodoc
-abstract class _$$StarknetChainImplCopyWith<$Res>
-    implements $StarknetChainCopyWith<$Res> {
-  factory _$$StarknetChainImplCopyWith(
-          _$StarknetChainImpl value, $Res Function(_$StarknetChainImpl) then) =
-      __$$StarknetChainImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call(
-      {String id,
-      @JsonKey(name: 'chain_id') Felt chainId,
-      @JsonKey(name: 'chain_name') String chainName,
-      @JsonKey(name: 'rpc_urls') List<String>? rpcUrls,
-      @JsonKey(name: 'block_explorer_url') List<String>? blockExplorerUrl,
-      @JsonKey(name: 'native_currency') Asset? nativeCurrency,
-      @JsonKey(name: 'icon_urls') List<String>? iconUrls});
+/// Adds pattern-matching-related methods to [StarknetChain].
+extension StarknetChainPatterns on StarknetChain {
+  /// A variant of `map` that fallback to returning `orElse`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
 
-  @override
-  $AssetCopyWith<$Res>? get nativeCurrency;
-}
-
-/// @nodoc
-class __$$StarknetChainImplCopyWithImpl<$Res>
-    extends _$StarknetChainCopyWithImpl<$Res, _$StarknetChainImpl>
-    implements _$$StarknetChainImplCopyWith<$Res> {
-  __$$StarknetChainImplCopyWithImpl(
-      _$StarknetChainImpl _value, $Res Function(_$StarknetChainImpl) _then)
-      : super(_value, _then);
-
-  /// Create a copy of StarknetChain
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? id = null,
-    Object? chainId = null,
-    Object? chainName = null,
-    Object? rpcUrls = freezed,
-    Object? blockExplorerUrl = freezed,
-    Object? nativeCurrency = freezed,
-    Object? iconUrls = freezed,
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(_StarknetChain value)? $default, {
+    required TResult orElse(),
   }) {
-    return _then(_$StarknetChainImpl(
-      id: null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as String,
-      chainId: null == chainId
-          ? _value.chainId
-          : chainId // ignore: cast_nullable_to_non_nullable
-              as Felt,
-      chainName: null == chainName
-          ? _value.chainName
-          : chainName // ignore: cast_nullable_to_non_nullable
-              as String,
-      rpcUrls: freezed == rpcUrls
-          ? _value._rpcUrls
-          : rpcUrls // ignore: cast_nullable_to_non_nullable
-              as List<String>?,
-      blockExplorerUrl: freezed == blockExplorerUrl
-          ? _value._blockExplorerUrl
-          : blockExplorerUrl // ignore: cast_nullable_to_non_nullable
-              as List<String>?,
-      nativeCurrency: freezed == nativeCurrency
-          ? _value.nativeCurrency
-          : nativeCurrency // ignore: cast_nullable_to_non_nullable
-              as Asset?,
-      iconUrls: freezed == iconUrls
-          ? _value._iconUrls
-          : iconUrls // ignore: cast_nullable_to_non_nullable
-              as List<String>?,
-    ));
+    final _that = this;
+    switch (_that) {
+      case _StarknetChain() when $default != null:
+        return $default(_that);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// Callbacks receives the raw object, upcasted.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case final Subclass2 value:
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(_StarknetChain value) $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _StarknetChain():
+        return $default(_that);
+      case _:
+        throw StateError('Unexpected subclass');
+    }
+  }
+
+  /// A variant of `map` that fallback to returning `null`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>(
+    TResult? Function(_StarknetChain value)? $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _StarknetChain() when $default != null:
+        return $default(_that);
+      case _:
+        return null;
+    }
+  }
+
+  /// A variant of `when` that fallback to an `orElse` callback.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(
+            String id,
+            @JsonKey(name: 'chain_id') Felt chainId,
+            @JsonKey(name: 'chain_name') String chainName,
+            @JsonKey(name: 'rpc_urls') List<String>? rpcUrls,
+            @JsonKey(name: 'block_explorer_url') List<String>? blockExplorerUrl,
+            @JsonKey(name: 'native_currency') Asset? nativeCurrency,
+            @JsonKey(name: 'icon_urls') List<String>? iconUrls)?
+        $default, {
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _StarknetChain() when $default != null:
+        return $default(_that.id, _that.chainId, _that.chainName, _that.rpcUrls,
+            _that.blockExplorerUrl, _that.nativeCurrency, _that.iconUrls);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// As opposed to `map`, this offers destructuring.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case Subclass2(:final field2):
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>(
+    TResult Function(
+            String id,
+            @JsonKey(name: 'chain_id') Felt chainId,
+            @JsonKey(name: 'chain_name') String chainName,
+            @JsonKey(name: 'rpc_urls') List<String>? rpcUrls,
+            @JsonKey(name: 'block_explorer_url') List<String>? blockExplorerUrl,
+            @JsonKey(name: 'native_currency') Asset? nativeCurrency,
+            @JsonKey(name: 'icon_urls') List<String>? iconUrls)
+        $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _StarknetChain():
+        return $default(_that.id, _that.chainId, _that.chainName, _that.rpcUrls,
+            _that.blockExplorerUrl, _that.nativeCurrency, _that.iconUrls);
+      case _:
+        throw StateError('Unexpected subclass');
+    }
+  }
+
+  /// A variant of `when` that fallback to returning `null`
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>(
+    TResult? Function(
+            String id,
+            @JsonKey(name: 'chain_id') Felt chainId,
+            @JsonKey(name: 'chain_name') String chainName,
+            @JsonKey(name: 'rpc_urls') List<String>? rpcUrls,
+            @JsonKey(name: 'block_explorer_url') List<String>? blockExplorerUrl,
+            @JsonKey(name: 'native_currency') Asset? nativeCurrency,
+            @JsonKey(name: 'icon_urls') List<String>? iconUrls)?
+        $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _StarknetChain() when $default != null:
+        return $default(_that.id, _that.chainId, _that.chainName, _that.rpcUrls,
+            _that.blockExplorerUrl, _that.nativeCurrency, _that.iconUrls);
+      case _:
+        return null;
+    }
   }
 }
 
 /// @nodoc
 @JsonSerializable()
-class _$StarknetChainImpl implements _StarknetChain {
-  const _$StarknetChainImpl(
+class _StarknetChain implements StarknetChain {
+  const _StarknetChain(
       {required this.id,
       @JsonKey(name: 'chain_id') required this.chainId,
       @JsonKey(name: 'chain_name') required this.chainName,
@@ -224,9 +358,8 @@ class _$StarknetChainImpl implements _StarknetChain {
       : _rpcUrls = rpcUrls,
         _blockExplorerUrl = blockExplorerUrl,
         _iconUrls = iconUrls;
-
-  factory _$StarknetChainImpl.fromJson(Map<String, dynamic> json) =>
-      _$$StarknetChainImplFromJson(json);
+  factory _StarknetChain.fromJson(Map<String, dynamic> json) =>
+      _$StarknetChainFromJson(json);
 
   @override
   final String id;
@@ -277,16 +410,26 @@ class _$StarknetChainImpl implements _StarknetChain {
     return EqualUnmodifiableListView(value);
   }
 
+  /// Create a copy of StarknetChain
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  String toString() {
-    return 'StarknetChain(id: $id, chainId: $chainId, chainName: $chainName, rpcUrls: $rpcUrls, blockExplorerUrl: $blockExplorerUrl, nativeCurrency: $nativeCurrency, iconUrls: $iconUrls)';
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  _$StarknetChainCopyWith<_StarknetChain> get copyWith =>
+      __$StarknetChainCopyWithImpl<_StarknetChain>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$StarknetChainToJson(
+      this,
+    );
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$StarknetChainImpl &&
+            other is _StarknetChain &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.chainId, chainId) || other.chainId == chainId) &&
             (identical(other.chainName, chainName) ||
@@ -311,61 +454,99 @@ class _$StarknetChainImpl implements _StarknetChain {
       nativeCurrency,
       const DeepCollectionEquality().hash(_iconUrls));
 
-  /// Create a copy of StarknetChain
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  @pragma('vm:prefer-inline')
-  _$$StarknetChainImplCopyWith<_$StarknetChainImpl> get copyWith =>
-      __$$StarknetChainImplCopyWithImpl<_$StarknetChainImpl>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$StarknetChainImplToJson(
-      this,
-    );
+  String toString() {
+    return 'StarknetChain(id: $id, chainId: $chainId, chainName: $chainName, rpcUrls: $rpcUrls, blockExplorerUrl: $blockExplorerUrl, nativeCurrency: $nativeCurrency, iconUrls: $iconUrls)';
   }
 }
 
-abstract class _StarknetChain implements StarknetChain {
-  const factory _StarknetChain(
-      {required final String id,
-      @JsonKey(name: 'chain_id') required final Felt chainId,
-      @JsonKey(name: 'chain_name') required final String chainName,
-      @JsonKey(name: 'rpc_urls') final List<String>? rpcUrls,
-      @JsonKey(name: 'block_explorer_url') final List<String>? blockExplorerUrl,
-      @JsonKey(name: 'native_currency') final Asset? nativeCurrency,
-      @JsonKey(name: 'icon_urls')
-      final List<String>? iconUrls}) = _$StarknetChainImpl;
+/// @nodoc
+abstract mixin class _$StarknetChainCopyWith<$Res>
+    implements $StarknetChainCopyWith<$Res> {
+  factory _$StarknetChainCopyWith(
+          _StarknetChain value, $Res Function(_StarknetChain) _then) =
+      __$StarknetChainCopyWithImpl;
+  @override
+  @useResult
+  $Res call(
+      {String id,
+      @JsonKey(name: 'chain_id') Felt chainId,
+      @JsonKey(name: 'chain_name') String chainName,
+      @JsonKey(name: 'rpc_urls') List<String>? rpcUrls,
+      @JsonKey(name: 'block_explorer_url') List<String>? blockExplorerUrl,
+      @JsonKey(name: 'native_currency') Asset? nativeCurrency,
+      @JsonKey(name: 'icon_urls') List<String>? iconUrls});
 
-  factory _StarknetChain.fromJson(Map<String, dynamic> json) =
-      _$StarknetChainImpl.fromJson;
+  @override
+  $AssetCopyWith<$Res>? get nativeCurrency;
+}
 
-  @override
-  String get id;
-  @override
-  @JsonKey(name: 'chain_id')
-  Felt get chainId; // Assuming Felt for CHAIN_ID
-  @override
-  @JsonKey(name: 'chain_name')
-  String get chainName;
-  @override
-  @JsonKey(name: 'rpc_urls')
-  List<String>? get rpcUrls; // TODO: Should be List<Uri>?
-  @override
-  @JsonKey(name: 'block_explorer_url')
-  List<String>? get blockExplorerUrl; // TODO: Should be List<Uri>?
-  @override
-  @JsonKey(name: 'native_currency')
-  Asset? get nativeCurrency;
-  @override
-  @JsonKey(name: 'icon_urls')
-  List<String>? get iconUrls;
+/// @nodoc
+class __$StarknetChainCopyWithImpl<$Res>
+    implements _$StarknetChainCopyWith<$Res> {
+  __$StarknetChainCopyWithImpl(this._self, this._then);
+
+  final _StarknetChain _self;
+  final $Res Function(_StarknetChain) _then;
 
   /// Create a copy of StarknetChain
   /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$StarknetChainImplCopyWith<_$StarknetChainImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  @pragma('vm:prefer-inline')
+  $Res call({
+    Object? id = null,
+    Object? chainId = null,
+    Object? chainName = null,
+    Object? rpcUrls = freezed,
+    Object? blockExplorerUrl = freezed,
+    Object? nativeCurrency = freezed,
+    Object? iconUrls = freezed,
+  }) {
+    return _then(_StarknetChain(
+      id: null == id
+          ? _self.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
+      chainId: null == chainId
+          ? _self.chainId
+          : chainId // ignore: cast_nullable_to_non_nullable
+              as Felt,
+      chainName: null == chainName
+          ? _self.chainName
+          : chainName // ignore: cast_nullable_to_non_nullable
+              as String,
+      rpcUrls: freezed == rpcUrls
+          ? _self._rpcUrls
+          : rpcUrls // ignore: cast_nullable_to_non_nullable
+              as List<String>?,
+      blockExplorerUrl: freezed == blockExplorerUrl
+          ? _self._blockExplorerUrl
+          : blockExplorerUrl // ignore: cast_nullable_to_non_nullable
+              as List<String>?,
+      nativeCurrency: freezed == nativeCurrency
+          ? _self.nativeCurrency
+          : nativeCurrency // ignore: cast_nullable_to_non_nullable
+              as Asset?,
+      iconUrls: freezed == iconUrls
+          ? _self._iconUrls
+          : iconUrls // ignore: cast_nullable_to_non_nullable
+              as List<String>?,
+    ));
+  }
+
+  /// Create a copy of StarknetChain
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $AssetCopyWith<$Res>? get nativeCurrency {
+    if (_self.nativeCurrency == null) {
+      return null;
+    }
+
+    return $AssetCopyWith<$Res>(_self.nativeCurrency!, (value) {
+      return _then(_self.copyWith(nativeCurrency: value));
+    });
+  }
 }
+
+// dart format on

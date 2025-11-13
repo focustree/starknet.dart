@@ -1,5 +1,5 @@
-// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// coverage:ignore-file
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
@@ -9,114 +9,71 @@ part of 'poseidon_params.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// dart format off
 T _$identity<T>(T value) => value;
-
-final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
-
-PoseidonParams _$PoseidonParamsFromJson(Map<String, dynamic> json) {
-  return _PoseidonParams.fromJson(json);
-}
 
 /// @nodoc
 mixin _$PoseidonParams {
-  BigInt get fieldPrime => throw _privateConstructorUsedError;
-  BigInt get rate => throw _privateConstructorUsedError;
-  BigInt get capacity => throw _privateConstructorUsedError;
-  BigInt get fullRounds => throw _privateConstructorUsedError;
-  BigInt get partialRounds => throw _privateConstructorUsedError;
-  List<List<BigInt>> get mds => throw _privateConstructorUsedError;
-  List<List<BigInt>> get roundKeys => throw _privateConstructorUsedError;
-
-  /// Serializes this PoseidonParams to a JSON map.
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  BigInt get fieldPrime;
+  BigInt get rate;
+  BigInt get capacity;
+  BigInt get fullRounds;
+  BigInt get partialRounds;
+  List<List<BigInt>> get mds;
+  List<List<BigInt>> get roundKeys;
 
   /// Create a copy of PoseidonParams
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $PoseidonParamsCopyWith<PoseidonParams> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $PoseidonParamsCopyWith<$Res> {
-  factory $PoseidonParamsCopyWith(
-          PoseidonParams value, $Res Function(PoseidonParams) then) =
-      _$PoseidonParamsCopyWithImpl<$Res, PoseidonParams>;
-  @useResult
-  $Res call(
-      {BigInt fieldPrime,
-      BigInt rate,
-      BigInt capacity,
-      BigInt fullRounds,
-      BigInt partialRounds,
-      List<List<BigInt>> mds,
-      List<List<BigInt>> roundKeys});
-}
-
-/// @nodoc
-class _$PoseidonParamsCopyWithImpl<$Res, $Val extends PoseidonParams>
-    implements $PoseidonParamsCopyWith<$Res> {
-  _$PoseidonParamsCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-
-  /// Create a copy of PoseidonParams
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
+  $PoseidonParamsCopyWith<PoseidonParams> get copyWith =>
+      _$PoseidonParamsCopyWithImpl<PoseidonParams>(
+          this as PoseidonParams, _$identity);
+
+  /// Serializes this PoseidonParams to a JSON map.
+  Map<String, dynamic> toJson();
+
   @override
-  $Res call({
-    Object? fieldPrime = null,
-    Object? rate = null,
-    Object? capacity = null,
-    Object? fullRounds = null,
-    Object? partialRounds = null,
-    Object? mds = null,
-    Object? roundKeys = null,
-  }) {
-    return _then(_value.copyWith(
-      fieldPrime: null == fieldPrime
-          ? _value.fieldPrime
-          : fieldPrime // ignore: cast_nullable_to_non_nullable
-              as BigInt,
-      rate: null == rate
-          ? _value.rate
-          : rate // ignore: cast_nullable_to_non_nullable
-              as BigInt,
-      capacity: null == capacity
-          ? _value.capacity
-          : capacity // ignore: cast_nullable_to_non_nullable
-              as BigInt,
-      fullRounds: null == fullRounds
-          ? _value.fullRounds
-          : fullRounds // ignore: cast_nullable_to_non_nullable
-              as BigInt,
-      partialRounds: null == partialRounds
-          ? _value.partialRounds
-          : partialRounds // ignore: cast_nullable_to_non_nullable
-              as BigInt,
-      mds: null == mds
-          ? _value.mds
-          : mds // ignore: cast_nullable_to_non_nullable
-              as List<List<BigInt>>,
-      roundKeys: null == roundKeys
-          ? _value.roundKeys
-          : roundKeys // ignore: cast_nullable_to_non_nullable
-              as List<List<BigInt>>,
-    ) as $Val);
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is PoseidonParams &&
+            (identical(other.fieldPrime, fieldPrime) ||
+                other.fieldPrime == fieldPrime) &&
+            (identical(other.rate, rate) || other.rate == rate) &&
+            (identical(other.capacity, capacity) ||
+                other.capacity == capacity) &&
+            (identical(other.fullRounds, fullRounds) ||
+                other.fullRounds == fullRounds) &&
+            (identical(other.partialRounds, partialRounds) ||
+                other.partialRounds == partialRounds) &&
+            const DeepCollectionEquality().equals(other.mds, mds) &&
+            const DeepCollectionEquality().equals(other.roundKeys, roundKeys));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(
+      runtimeType,
+      fieldPrime,
+      rate,
+      capacity,
+      fullRounds,
+      partialRounds,
+      const DeepCollectionEquality().hash(mds),
+      const DeepCollectionEquality().hash(roundKeys));
+
+  @override
+  String toString() {
+    return 'PoseidonParams(fieldPrime: $fieldPrime, rate: $rate, capacity: $capacity, fullRounds: $fullRounds, partialRounds: $partialRounds, mds: $mds, roundKeys: $roundKeys)';
   }
 }
 
 /// @nodoc
-abstract class _$$PoseidonParamsImplCopyWith<$Res>
-    implements $PoseidonParamsCopyWith<$Res> {
-  factory _$$PoseidonParamsImplCopyWith(_$PoseidonParamsImpl value,
-          $Res Function(_$PoseidonParamsImpl) then) =
-      __$$PoseidonParamsImplCopyWithImpl<$Res>;
-  @override
+abstract mixin class $PoseidonParamsCopyWith<$Res> {
+  factory $PoseidonParamsCopyWith(
+          PoseidonParams value, $Res Function(PoseidonParams) _then) =
+      _$PoseidonParamsCopyWithImpl;
   @useResult
   $Res call(
       {BigInt fieldPrime,
@@ -129,12 +86,12 @@ abstract class _$$PoseidonParamsImplCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$PoseidonParamsImplCopyWithImpl<$Res>
-    extends _$PoseidonParamsCopyWithImpl<$Res, _$PoseidonParamsImpl>
-    implements _$$PoseidonParamsImplCopyWith<$Res> {
-  __$$PoseidonParamsImplCopyWithImpl(
-      _$PoseidonParamsImpl _value, $Res Function(_$PoseidonParamsImpl) _then)
-      : super(_value, _then);
+class _$PoseidonParamsCopyWithImpl<$Res>
+    implements $PoseidonParamsCopyWith<$Res> {
+  _$PoseidonParamsCopyWithImpl(this._self, this._then);
+
+  final PoseidonParams _self;
+  final $Res Function(PoseidonParams) _then;
 
   /// Create a copy of PoseidonParams
   /// with the given fields replaced by the non-null parameter values.
@@ -149,44 +106,228 @@ class __$$PoseidonParamsImplCopyWithImpl<$Res>
     Object? mds = null,
     Object? roundKeys = null,
   }) {
-    return _then(_$PoseidonParamsImpl(
+    return _then(_self.copyWith(
       fieldPrime: null == fieldPrime
-          ? _value.fieldPrime
+          ? _self.fieldPrime
           : fieldPrime // ignore: cast_nullable_to_non_nullable
               as BigInt,
       rate: null == rate
-          ? _value.rate
+          ? _self.rate
           : rate // ignore: cast_nullable_to_non_nullable
               as BigInt,
       capacity: null == capacity
-          ? _value.capacity
+          ? _self.capacity
           : capacity // ignore: cast_nullable_to_non_nullable
               as BigInt,
       fullRounds: null == fullRounds
-          ? _value.fullRounds
+          ? _self.fullRounds
           : fullRounds // ignore: cast_nullable_to_non_nullable
               as BigInt,
       partialRounds: null == partialRounds
-          ? _value.partialRounds
+          ? _self.partialRounds
           : partialRounds // ignore: cast_nullable_to_non_nullable
               as BigInt,
       mds: null == mds
-          ? _value._mds
+          ? _self.mds
           : mds // ignore: cast_nullable_to_non_nullable
               as List<List<BigInt>>,
       roundKeys: null == roundKeys
-          ? _value._roundKeys
+          ? _self.roundKeys
           : roundKeys // ignore: cast_nullable_to_non_nullable
               as List<List<BigInt>>,
     ));
   }
 }
 
+/// Adds pattern-matching-related methods to [PoseidonParams].
+extension PoseidonParamsPatterns on PoseidonParams {
+  /// A variant of `map` that fallback to returning `orElse`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(_PoseidonParams value)? $default, {
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _PoseidonParams() when $default != null:
+        return $default(_that);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// Callbacks receives the raw object, upcasted.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case final Subclass2 value:
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(_PoseidonParams value) $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _PoseidonParams():
+        return $default(_that);
+      case _:
+        throw StateError('Unexpected subclass');
+    }
+  }
+
+  /// A variant of `map` that fallback to returning `null`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>(
+    TResult? Function(_PoseidonParams value)? $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _PoseidonParams() when $default != null:
+        return $default(_that);
+      case _:
+        return null;
+    }
+  }
+
+  /// A variant of `when` that fallback to an `orElse` callback.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(
+            BigInt fieldPrime,
+            BigInt rate,
+            BigInt capacity,
+            BigInt fullRounds,
+            BigInt partialRounds,
+            List<List<BigInt>> mds,
+            List<List<BigInt>> roundKeys)?
+        $default, {
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _PoseidonParams() when $default != null:
+        return $default(_that.fieldPrime, _that.rate, _that.capacity,
+            _that.fullRounds, _that.partialRounds, _that.mds, _that.roundKeys);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// As opposed to `map`, this offers destructuring.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case Subclass2(:final field2):
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>(
+    TResult Function(
+            BigInt fieldPrime,
+            BigInt rate,
+            BigInt capacity,
+            BigInt fullRounds,
+            BigInt partialRounds,
+            List<List<BigInt>> mds,
+            List<List<BigInt>> roundKeys)
+        $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _PoseidonParams():
+        return $default(_that.fieldPrime, _that.rate, _that.capacity,
+            _that.fullRounds, _that.partialRounds, _that.mds, _that.roundKeys);
+      case _:
+        throw StateError('Unexpected subclass');
+    }
+  }
+
+  /// A variant of `when` that fallback to returning `null`
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>(
+    TResult? Function(
+            BigInt fieldPrime,
+            BigInt rate,
+            BigInt capacity,
+            BigInt fullRounds,
+            BigInt partialRounds,
+            List<List<BigInt>> mds,
+            List<List<BigInt>> roundKeys)?
+        $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _PoseidonParams() when $default != null:
+        return $default(_that.fieldPrime, _that.rate, _that.capacity,
+            _that.fullRounds, _that.partialRounds, _that.mds, _that.roundKeys);
+      case _:
+        return null;
+    }
+  }
+}
+
 /// @nodoc
 
 @JsonSerializable(fieldRename: FieldRename.screamingSnake)
-class _$PoseidonParamsImpl implements _PoseidonParams {
-  const _$PoseidonParamsImpl(
+class _PoseidonParams implements PoseidonParams {
+  const _PoseidonParams(
       {required this.fieldPrime,
       required this.rate,
       required this.capacity,
@@ -196,9 +337,8 @@ class _$PoseidonParamsImpl implements _PoseidonParams {
       required final List<List<BigInt>> roundKeys})
       : _mds = mds,
         _roundKeys = roundKeys;
-
-  factory _$PoseidonParamsImpl.fromJson(Map<String, dynamic> json) =>
-      _$$PoseidonParamsImplFromJson(json);
+  factory _PoseidonParams.fromJson(Map<String, dynamic> json) =>
+      _$PoseidonParamsFromJson(json);
 
   @override
   final BigInt fieldPrime;
@@ -226,16 +366,26 @@ class _$PoseidonParamsImpl implements _PoseidonParams {
     return EqualUnmodifiableListView(_roundKeys);
   }
 
+  /// Create a copy of PoseidonParams
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  String toString() {
-    return 'PoseidonParams(fieldPrime: $fieldPrime, rate: $rate, capacity: $capacity, fullRounds: $fullRounds, partialRounds: $partialRounds, mds: $mds, roundKeys: $roundKeys)';
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  _$PoseidonParamsCopyWith<_PoseidonParams> get copyWith =>
+      __$PoseidonParamsCopyWithImpl<_PoseidonParams>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$PoseidonParamsToJson(
+      this,
+    );
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$PoseidonParamsImpl &&
+            other is _PoseidonParams &&
             (identical(other.fieldPrime, fieldPrime) ||
                 other.fieldPrime == fieldPrime) &&
             (identical(other.rate, rate) || other.rate == rate) &&
@@ -262,55 +412,82 @@ class _$PoseidonParamsImpl implements _PoseidonParams {
       const DeepCollectionEquality().hash(_mds),
       const DeepCollectionEquality().hash(_roundKeys));
 
-  /// Create a copy of PoseidonParams
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  @pragma('vm:prefer-inline')
-  _$$PoseidonParamsImplCopyWith<_$PoseidonParamsImpl> get copyWith =>
-      __$$PoseidonParamsImplCopyWithImpl<_$PoseidonParamsImpl>(
-          this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$PoseidonParamsImplToJson(
-      this,
-    );
+  String toString() {
+    return 'PoseidonParams(fieldPrime: $fieldPrime, rate: $rate, capacity: $capacity, fullRounds: $fullRounds, partialRounds: $partialRounds, mds: $mds, roundKeys: $roundKeys)';
   }
 }
 
-abstract class _PoseidonParams implements PoseidonParams {
-  const factory _PoseidonParams(
-      {required final BigInt fieldPrime,
-      required final BigInt rate,
-      required final BigInt capacity,
-      required final BigInt fullRounds,
-      required final BigInt partialRounds,
-      required final List<List<BigInt>> mds,
-      required final List<List<BigInt>> roundKeys}) = _$PoseidonParamsImpl;
+/// @nodoc
+abstract mixin class _$PoseidonParamsCopyWith<$Res>
+    implements $PoseidonParamsCopyWith<$Res> {
+  factory _$PoseidonParamsCopyWith(
+          _PoseidonParams value, $Res Function(_PoseidonParams) _then) =
+      __$PoseidonParamsCopyWithImpl;
+  @override
+  @useResult
+  $Res call(
+      {BigInt fieldPrime,
+      BigInt rate,
+      BigInt capacity,
+      BigInt fullRounds,
+      BigInt partialRounds,
+      List<List<BigInt>> mds,
+      List<List<BigInt>> roundKeys});
+}
 
-  factory _PoseidonParams.fromJson(Map<String, dynamic> json) =
-      _$PoseidonParamsImpl.fromJson;
+/// @nodoc
+class __$PoseidonParamsCopyWithImpl<$Res>
+    implements _$PoseidonParamsCopyWith<$Res> {
+  __$PoseidonParamsCopyWithImpl(this._self, this._then);
 
-  @override
-  BigInt get fieldPrime;
-  @override
-  BigInt get rate;
-  @override
-  BigInt get capacity;
-  @override
-  BigInt get fullRounds;
-  @override
-  BigInt get partialRounds;
-  @override
-  List<List<BigInt>> get mds;
-  @override
-  List<List<BigInt>> get roundKeys;
+  final _PoseidonParams _self;
+  final $Res Function(_PoseidonParams) _then;
 
   /// Create a copy of PoseidonParams
   /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$PoseidonParamsImplCopyWith<_$PoseidonParamsImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  @pragma('vm:prefer-inline')
+  $Res call({
+    Object? fieldPrime = null,
+    Object? rate = null,
+    Object? capacity = null,
+    Object? fullRounds = null,
+    Object? partialRounds = null,
+    Object? mds = null,
+    Object? roundKeys = null,
+  }) {
+    return _then(_PoseidonParams(
+      fieldPrime: null == fieldPrime
+          ? _self.fieldPrime
+          : fieldPrime // ignore: cast_nullable_to_non_nullable
+              as BigInt,
+      rate: null == rate
+          ? _self.rate
+          : rate // ignore: cast_nullable_to_non_nullable
+              as BigInt,
+      capacity: null == capacity
+          ? _self.capacity
+          : capacity // ignore: cast_nullable_to_non_nullable
+              as BigInt,
+      fullRounds: null == fullRounds
+          ? _self.fullRounds
+          : fullRounds // ignore: cast_nullable_to_non_nullable
+              as BigInt,
+      partialRounds: null == partialRounds
+          ? _self.partialRounds
+          : partialRounds // ignore: cast_nullable_to_non_nullable
+              as BigInt,
+      mds: null == mds
+          ? _self._mds
+          : mds // ignore: cast_nullable_to_non_nullable
+              as List<List<BigInt>>,
+      roundKeys: null == roundKeys
+          ? _self._roundKeys
+          : roundKeys // ignore: cast_nullable_to_non_nullable
+              as List<List<BigInt>>,
+    ));
+  }
 }
+
+// dart format on

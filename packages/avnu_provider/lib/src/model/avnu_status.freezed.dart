@@ -1,5 +1,5 @@
-// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// coverage:ignore-file
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
@@ -9,11 +9,8 @@ part of 'avnu_status.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// dart format off
 T _$identity<T>(T value) => value;
-
-final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
-
 AvnuStatus _$AvnuStatusFromJson(Map<String, dynamic> json) {
   switch (json['runtimeType']) {
     case 'result':
@@ -29,97 +26,277 @@ AvnuStatus _$AvnuStatusFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$AvnuStatus {
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(bool status) result,
-    required TResult Function(List<String> messages) error,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(bool status)? result,
-    TResult? Function(List<String> messages)? error,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(bool status)? result,
-    TResult Function(List<String> messages)? error,
-    required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(AvnuStatusResult value) result,
-    required TResult Function(AvnuStatusError value) error,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(AvnuStatusResult value)? result,
-    TResult? Function(AvnuStatusError value)? error,
-  }) =>
-      throw _privateConstructorUsedError;
+  /// Serializes this AvnuStatus to a JSON map.
+  Map<String, dynamic> toJson();
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is AvnuStatus);
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  String toString() {
+    return 'AvnuStatus()';
+  }
+}
+
+/// @nodoc
+class $AvnuStatusCopyWith<$Res> {
+  $AvnuStatusCopyWith(AvnuStatus _, $Res Function(AvnuStatus) __);
+}
+
+/// Adds pattern-matching-related methods to [AvnuStatus].
+extension AvnuStatusPatterns on AvnuStatus {
+  /// A variant of `map` that fallback to returning `orElse`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(AvnuStatusResult value)? result,
     TResult Function(AvnuStatusError value)? error,
     required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
+  }) {
+    final _that = this;
+    switch (_that) {
+      case AvnuStatusResult() when result != null:
+        return result(_that);
+      case AvnuStatusError() when error != null:
+        return error(_that);
+      case _:
+        return orElse();
+    }
+  }
 
-  /// Serializes this AvnuStatus to a JSON map.
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// Callbacks receives the raw object, upcasted.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case final Subclass2 value:
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(AvnuStatusResult value) result,
+    required TResult Function(AvnuStatusError value) error,
+  }) {
+    final _that = this;
+    switch (_that) {
+      case AvnuStatusResult():
+        return result(_that);
+      case AvnuStatusError():
+        return error(_that);
+      case _:
+        throw StateError('Unexpected subclass');
+    }
+  }
+
+  /// A variant of `map` that fallback to returning `null`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(AvnuStatusResult value)? result,
+    TResult? Function(AvnuStatusError value)? error,
+  }) {
+    final _that = this;
+    switch (_that) {
+      case AvnuStatusResult() when result != null:
+        return result(_that);
+      case AvnuStatusError() when error != null:
+        return error(_that);
+      case _:
+        return null;
+    }
+  }
+
+  /// A variant of `when` that fallback to an `orElse` callback.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(bool status)? result,
+    TResult Function(List<String> messages)? error,
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case AvnuStatusResult() when result != null:
+        return result(_that.status);
+      case AvnuStatusError() when error != null:
+        return error(_that.messages);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// As opposed to `map`, this offers destructuring.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case Subclass2(:final field2):
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(bool status) result,
+    required TResult Function(List<String> messages) error,
+  }) {
+    final _that = this;
+    switch (_that) {
+      case AvnuStatusResult():
+        return result(_that.status);
+      case AvnuStatusError():
+        return error(_that.messages);
+      case _:
+        throw StateError('Unexpected subclass');
+    }
+  }
+
+  /// A variant of `when` that fallback to returning `null`
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(bool status)? result,
+    TResult? Function(List<String> messages)? error,
+  }) {
+    final _that = this;
+    switch (_that) {
+      case AvnuStatusResult() when result != null:
+        return result(_that.status);
+      case AvnuStatusError() when error != null:
+        return error(_that.messages);
+      case _:
+        return null;
+    }
+  }
 }
 
 /// @nodoc
-abstract class $AvnuStatusCopyWith<$Res> {
-  factory $AvnuStatusCopyWith(
-          AvnuStatus value, $Res Function(AvnuStatus) then) =
-      _$AvnuStatusCopyWithImpl<$Res, AvnuStatus>;
-}
+@JsonSerializable()
+class AvnuStatusResult implements AvnuStatus {
+  const AvnuStatusResult(this.status, {final String? $type})
+      : $type = $type ?? 'result';
+  factory AvnuStatusResult.fromJson(Map<String, dynamic> json) =>
+      _$AvnuStatusResultFromJson(json);
 
-/// @nodoc
-class _$AvnuStatusCopyWithImpl<$Res, $Val extends AvnuStatus>
-    implements $AvnuStatusCopyWith<$Res> {
-  _$AvnuStatusCopyWithImpl(this._value, this._then);
+  final bool status;
 
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  @JsonKey(name: 'runtimeType')
+  final String $type;
 
   /// Create a copy of AvnuStatus
   /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  $AvnuStatusResultCopyWith<AvnuStatusResult> get copyWith =>
+      _$AvnuStatusResultCopyWithImpl<AvnuStatusResult>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$AvnuStatusResultToJson(
+      this,
+    );
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is AvnuStatusResult &&
+            (identical(other.status, status) || other.status == status));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(runtimeType, status);
+
+  @override
+  String toString() {
+    return 'AvnuStatus.result(status: $status)';
+  }
 }
 
 /// @nodoc
-abstract class _$$AvnuStatusResultImplCopyWith<$Res> {
-  factory _$$AvnuStatusResultImplCopyWith(_$AvnuStatusResultImpl value,
-          $Res Function(_$AvnuStatusResultImpl) then) =
-      __$$AvnuStatusResultImplCopyWithImpl<$Res>;
+abstract mixin class $AvnuStatusResultCopyWith<$Res>
+    implements $AvnuStatusCopyWith<$Res> {
+  factory $AvnuStatusResultCopyWith(
+          AvnuStatusResult value, $Res Function(AvnuStatusResult) _then) =
+      _$AvnuStatusResultCopyWithImpl;
   @useResult
   $Res call({bool status});
 }
 
 /// @nodoc
-class __$$AvnuStatusResultImplCopyWithImpl<$Res>
-    extends _$AvnuStatusCopyWithImpl<$Res, _$AvnuStatusResultImpl>
-    implements _$$AvnuStatusResultImplCopyWith<$Res> {
-  __$$AvnuStatusResultImplCopyWithImpl(_$AvnuStatusResultImpl _value,
-      $Res Function(_$AvnuStatusResultImpl) _then)
-      : super(_value, _then);
+class _$AvnuStatusResultCopyWithImpl<$Res>
+    implements $AvnuStatusResultCopyWith<$Res> {
+  _$AvnuStatusResultCopyWithImpl(this._self, this._then);
+
+  final AvnuStatusResult _self;
+  final $Res Function(AvnuStatusResult) _then;
 
   /// Create a copy of AvnuStatus
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
-  @override
   $Res call({
     Object? status = null,
   }) {
-    return _then(_$AvnuStatusResultImpl(
+    return _then(AvnuStatusResult(
       null == status
-          ? _value.status
+          ? _self.status
           : status // ignore: cast_nullable_to_non_nullable
               as bool,
     ));
@@ -128,176 +305,14 @@ class __$$AvnuStatusResultImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$AvnuStatusResultImpl implements AvnuStatusResult {
-  const _$AvnuStatusResultImpl(this.status, {final String? $type})
-      : $type = $type ?? 'result';
-
-  factory _$AvnuStatusResultImpl.fromJson(Map<String, dynamic> json) =>
-      _$$AvnuStatusResultImplFromJson(json);
-
-  @override
-  final bool status;
-
-  @JsonKey(name: 'runtimeType')
-  final String $type;
-
-  @override
-  String toString() {
-    return 'AvnuStatus.result(status: $status)';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$AvnuStatusResultImpl &&
-            (identical(other.status, status) || other.status == status));
-  }
-
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  int get hashCode => Object.hash(runtimeType, status);
-
-  /// Create a copy of AvnuStatus
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$AvnuStatusResultImplCopyWith<_$AvnuStatusResultImpl> get copyWith =>
-      __$$AvnuStatusResultImplCopyWithImpl<_$AvnuStatusResultImpl>(
-          this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(bool status) result,
-    required TResult Function(List<String> messages) error,
-  }) {
-    return result(status);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(bool status)? result,
-    TResult? Function(List<String> messages)? error,
-  }) {
-    return result?.call(status);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(bool status)? result,
-    TResult Function(List<String> messages)? error,
-    required TResult orElse(),
-  }) {
-    if (result != null) {
-      return result(status);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(AvnuStatusResult value) result,
-    required TResult Function(AvnuStatusError value) error,
-  }) {
-    return result(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(AvnuStatusResult value)? result,
-    TResult? Function(AvnuStatusError value)? error,
-  }) {
-    return result?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(AvnuStatusResult value)? result,
-    TResult Function(AvnuStatusError value)? error,
-    required TResult orElse(),
-  }) {
-    if (result != null) {
-      return result(this);
-    }
-    return orElse();
-  }
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$AvnuStatusResultImplToJson(
-      this,
-    );
-  }
-}
-
-abstract class AvnuStatusResult implements AvnuStatus {
-  const factory AvnuStatusResult(final bool status) = _$AvnuStatusResultImpl;
-
-  factory AvnuStatusResult.fromJson(Map<String, dynamic> json) =
-      _$AvnuStatusResultImpl.fromJson;
-
-  bool get status;
-
-  /// Create a copy of AvnuStatus
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$AvnuStatusResultImplCopyWith<_$AvnuStatusResultImpl> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class _$$AvnuStatusErrorImplCopyWith<$Res> {
-  factory _$$AvnuStatusErrorImplCopyWith(_$AvnuStatusErrorImpl value,
-          $Res Function(_$AvnuStatusErrorImpl) then) =
-      __$$AvnuStatusErrorImplCopyWithImpl<$Res>;
-  @useResult
-  $Res call({List<String> messages});
-}
-
-/// @nodoc
-class __$$AvnuStatusErrorImplCopyWithImpl<$Res>
-    extends _$AvnuStatusCopyWithImpl<$Res, _$AvnuStatusErrorImpl>
-    implements _$$AvnuStatusErrorImplCopyWith<$Res> {
-  __$$AvnuStatusErrorImplCopyWithImpl(
-      _$AvnuStatusErrorImpl _value, $Res Function(_$AvnuStatusErrorImpl) _then)
-      : super(_value, _then);
-
-  /// Create a copy of AvnuStatus
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? messages = null,
-  }) {
-    return _then(_$AvnuStatusErrorImpl(
-      null == messages
-          ? _value._messages
-          : messages // ignore: cast_nullable_to_non_nullable
-              as List<String>,
-    ));
-  }
-}
-
-/// @nodoc
-@JsonSerializable()
-class _$AvnuStatusErrorImpl implements AvnuStatusError {
-  const _$AvnuStatusErrorImpl(final List<String> messages,
-      {final String? $type})
+class AvnuStatusError implements AvnuStatus {
+  const AvnuStatusError(final List<String> messages, {final String? $type})
       : _messages = messages,
         $type = $type ?? 'error';
-
-  factory _$AvnuStatusErrorImpl.fromJson(Map<String, dynamic> json) =>
-      _$$AvnuStatusErrorImplFromJson(json);
+  factory AvnuStatusError.fromJson(Map<String, dynamic> json) =>
+      _$AvnuStatusErrorFromJson(json);
 
   final List<String> _messages;
-  @override
   List<String> get messages {
     if (_messages is EqualUnmodifiableListView) return _messages;
     // ignore: implicit_dynamic_type
@@ -307,16 +322,25 @@ class _$AvnuStatusErrorImpl implements AvnuStatusError {
   @JsonKey(name: 'runtimeType')
   final String $type;
 
+  /// Create a copy of AvnuStatus
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  $AvnuStatusErrorCopyWith<AvnuStatusError> get copyWith =>
+      _$AvnuStatusErrorCopyWithImpl<AvnuStatusError>(this, _$identity);
+
   @override
-  String toString() {
-    return 'AvnuStatus.error(messages: $messages)';
+  Map<String, dynamic> toJson() {
+    return _$AvnuStatusErrorToJson(
+      this,
+    );
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$AvnuStatusErrorImpl &&
+            other is AvnuStatusError &&
             const DeepCollectionEquality().equals(other._messages, _messages));
   }
 
@@ -325,97 +349,43 @@ class _$AvnuStatusErrorImpl implements AvnuStatusError {
   int get hashCode =>
       Object.hash(runtimeType, const DeepCollectionEquality().hash(_messages));
 
+  @override
+  String toString() {
+    return 'AvnuStatus.error(messages: $messages)';
+  }
+}
+
+/// @nodoc
+abstract mixin class $AvnuStatusErrorCopyWith<$Res>
+    implements $AvnuStatusCopyWith<$Res> {
+  factory $AvnuStatusErrorCopyWith(
+          AvnuStatusError value, $Res Function(AvnuStatusError) _then) =
+      _$AvnuStatusErrorCopyWithImpl;
+  @useResult
+  $Res call({List<String> messages});
+}
+
+/// @nodoc
+class _$AvnuStatusErrorCopyWithImpl<$Res>
+    implements $AvnuStatusErrorCopyWith<$Res> {
+  _$AvnuStatusErrorCopyWithImpl(this._self, this._then);
+
+  final AvnuStatusError _self;
+  final $Res Function(AvnuStatusError) _then;
+
   /// Create a copy of AvnuStatus
   /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
   @pragma('vm:prefer-inline')
-  _$$AvnuStatusErrorImplCopyWith<_$AvnuStatusErrorImpl> get copyWith =>
-      __$$AvnuStatusErrorImplCopyWithImpl<_$AvnuStatusErrorImpl>(
-          this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(bool status) result,
-    required TResult Function(List<String> messages) error,
+  $Res call({
+    Object? messages = null,
   }) {
-    return error(messages);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(bool status)? result,
-    TResult? Function(List<String> messages)? error,
-  }) {
-    return error?.call(messages);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(bool status)? result,
-    TResult Function(List<String> messages)? error,
-    required TResult orElse(),
-  }) {
-    if (error != null) {
-      return error(messages);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(AvnuStatusResult value) result,
-    required TResult Function(AvnuStatusError value) error,
-  }) {
-    return error(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(AvnuStatusResult value)? result,
-    TResult? Function(AvnuStatusError value)? error,
-  }) {
-    return error?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(AvnuStatusResult value)? result,
-    TResult Function(AvnuStatusError value)? error,
-    required TResult orElse(),
-  }) {
-    if (error != null) {
-      return error(this);
-    }
-    return orElse();
-  }
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$AvnuStatusErrorImplToJson(
-      this,
-    );
+    return _then(AvnuStatusError(
+      null == messages
+          ? _self._messages
+          : messages // ignore: cast_nullable_to_non_nullable
+              as List<String>,
+    ));
   }
 }
 
-abstract class AvnuStatusError implements AvnuStatus {
-  const factory AvnuStatusError(final List<String> messages) =
-      _$AvnuStatusErrorImpl;
-
-  factory AvnuStatusError.fromJson(Map<String, dynamic> json) =
-      _$AvnuStatusErrorImpl.fromJson;
-
-  List<String> get messages;
-
-  /// Create a copy of AvnuStatus
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$AvnuStatusErrorImplCopyWith<_$AvnuStatusErrorImpl> get copyWith =>
-      throw _privateConstructorUsedError;
-}
+// dart format on

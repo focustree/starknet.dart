@@ -6,24 +6,24 @@ part of 'wss_subscription_newhead.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$WssSubscriptionNewHeadResponseImpl
-    _$$WssSubscriptionNewHeadResponseImplFromJson(Map<String, dynamic> json) =>
-        _$WssSubscriptionNewHeadResponseImpl(
-          subscription_id: json['subscription_id'] as String,
-          result: WssSubscriptionNewHeadResult.fromJson(
-              json['result'] as Map<String, dynamic>),
-        );
+_WssSubscriptionNewHeadResponse _$WssSubscriptionNewHeadResponseFromJson(
+        Map<String, dynamic> json) =>
+    _WssSubscriptionNewHeadResponse(
+      subscription_id: json['subscription_id'] as String,
+      result: WssSubscriptionNewHeadResult.fromJson(
+          json['result'] as Map<String, dynamic>),
+    );
 
-Map<String, dynamic> _$$WssSubscriptionNewHeadResponseImplToJson(
-        _$WssSubscriptionNewHeadResponseImpl instance) =>
+Map<String, dynamic> _$WssSubscriptionNewHeadResponseToJson(
+        _WssSubscriptionNewHeadResponse instance) =>
     <String, dynamic>{
       'subscription_id': instance.subscription_id,
       'result': instance.result.toJson(),
     };
 
-_$WssSubscriptionNewHeadResultImpl _$$WssSubscriptionNewHeadResultImplFromJson(
+_WssSubscriptionNewHeadResult _$WssSubscriptionNewHeadResultFromJson(
         Map<String, dynamic> json) =>
-    _$WssSubscriptionNewHeadResultImpl(
+    _WssSubscriptionNewHeadResult(
       blockHash: Felt.fromJson(json['block_hash'] as String),
       parentHash: Felt.fromJson(json['parent_hash'] as String),
       blockNumber: (json['block_number'] as num).toInt(),
@@ -40,8 +40,8 @@ _$WssSubscriptionNewHeadResultImpl _$$WssSubscriptionNewHeadResultImplFromJson(
       starknetVersion: json['starknet_version'] as String,
     );
 
-Map<String, dynamic> _$$WssSubscriptionNewHeadResultImplToJson(
-        _$WssSubscriptionNewHeadResultImpl instance) =>
+Map<String, dynamic> _$WssSubscriptionNewHeadResultToJson(
+        _WssSubscriptionNewHeadResult instance) =>
     <String, dynamic>{
       'block_hash': instance.blockHash.toJson(),
       'parent_hash': instance.parentHash.toJson(),
@@ -56,15 +56,13 @@ Map<String, dynamic> _$$WssSubscriptionNewHeadResultImplToJson(
       'starknet_version': instance.starknetVersion,
     };
 
-_$ResourcePriceWssImpl _$$ResourcePriceWssImplFromJson(
-        Map<String, dynamic> json) =>
-    _$ResourcePriceWssImpl(
+_ResourcePriceWss _$ResourcePriceWssFromJson(Map<String, dynamic> json) =>
+    _ResourcePriceWss(
       priceInFri: Felt.fromJson(json['price_in_fri'] as String),
       priceInWei: Felt.fromJson(json['price_in_wei'] as String),
     );
 
-Map<String, dynamic> _$$ResourcePriceWssImplToJson(
-        _$ResourcePriceWssImpl instance) =>
+Map<String, dynamic> _$ResourcePriceWssToJson(_ResourcePriceWss instance) =>
     <String, dynamic>{
       'price_in_fri': instance.priceInFri.toJson(),
       'price_in_wei': instance.priceInWei.toJson(),

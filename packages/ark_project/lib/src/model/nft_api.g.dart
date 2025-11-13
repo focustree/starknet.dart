@@ -6,34 +6,31 @@ part of 'nft_api.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$ListNFTsResponseImpl _$$ListNFTsResponseImplFromJson(
-        Map<String, dynamic> json) =>
-    _$ListNFTsResponseImpl(
+_ListNFTsResponse _$ListNFTsResponseFromJson(Map<String, dynamic> json) =>
+    _ListNFTsResponse(
       result: (json['result'] as List<dynamic>)
           .map((e) => NFT.fromJson(e as Map<String, dynamic>))
           .toList(),
       cursor: json['cursor'] as String?,
     );
 
-Map<String, dynamic> _$$ListNFTsResponseImplToJson(
-        _$ListNFTsResponseImpl instance) =>
+Map<String, dynamic> _$ListNFTsResponseToJson(_ListNFTsResponse instance) =>
     <String, dynamic>{
       'result': instance.result,
       'cursor': instance.cursor,
     };
 
-_$GetNFTResponseImpl _$$GetNFTResponseImplFromJson(Map<String, dynamic> json) =>
-    _$GetNFTResponseImpl(
+_GetNFTResponse _$GetNFTResponseFromJson(Map<String, dynamic> json) =>
+    _GetNFTResponse(
       result: NFT.fromJson(json['result'] as Map<String, dynamic>),
     );
 
-Map<String, dynamic> _$$GetNFTResponseImplToJson(
-        _$GetNFTResponseImpl instance) =>
+Map<String, dynamic> _$GetNFTResponseToJson(_GetNFTResponse instance) =>
     <String, dynamic>{
       'result': instance.result,
     };
 
-_$NFTImpl _$$NFTImplFromJson(Map<String, dynamic> json) => _$NFTImpl(
+_NFT _$NFTFromJson(Map<String, dynamic> json) => _NFT(
       contractAddress: json['contract_address'] as String,
       tokenId: json['token_id'] as String,
       tokenIdHex: json['token_id_hex'] as String,
@@ -47,7 +44,7 @@ _$NFTImpl _$$NFTImplFromJson(Map<String, dynamic> json) => _$NFTImpl(
       awaitingMetadataUpdate: json['awaiting_metadata_update'] as bool,
     );
 
-Map<String, dynamic> _$$NFTImplToJson(_$NFTImpl instance) => <String, dynamic>{
+Map<String, dynamic> _$NFTToJson(_NFT instance) => <String, dynamic>{
       'contract_address': instance.contractAddress,
       'token_id': instance.tokenId,
       'token_id_hex': instance.tokenIdHex,
@@ -57,40 +54,37 @@ Map<String, dynamic> _$$NFTImplToJson(_$NFTImpl instance) => <String, dynamic>{
       'awaiting_metadata_update': instance.awaitingMetadataUpdate,
     };
 
-_$MintInfoImpl _$$MintInfoImplFromJson(Map<String, dynamic> json) =>
-    _$MintInfoImpl(
+_MintInfo _$MintInfoFromJson(Map<String, dynamic> json) => _MintInfo(
       address: json['address'] as String,
       timestamp: (json['timestamp'] as num).toInt(),
       transactionHash: json['transaction_hash'] as String,
       blockNumber: (json['block_number'] as num?)?.toInt(),
     );
 
-Map<String, dynamic> _$$MintInfoImplToJson(_$MintInfoImpl instance) =>
-    <String, dynamic>{
+Map<String, dynamic> _$MintInfoToJson(_MintInfo instance) => <String, dynamic>{
       'address': instance.address,
       'timestamp': instance.timestamp,
       'transaction_hash': instance.transactionHash,
       'block_number': instance.blockNumber,
     };
 
-_$TokenMetadataImpl _$$TokenMetadataImplFromJson(Map<String, dynamic> json) =>
-    _$TokenMetadataImpl(
+_TokenMetadata _$TokenMetadataFromJson(Map<String, dynamic> json) =>
+    _TokenMetadata(
       normalized: NormalizedMetadata.fromJson(
           json['normalized'] as Map<String, dynamic>),
       raw: json['raw'] as String,
       metadataUpdatedAt: (json['metadata_updated_at'] as num).toInt(),
     );
 
-Map<String, dynamic> _$$TokenMetadataImplToJson(_$TokenMetadataImpl instance) =>
+Map<String, dynamic> _$TokenMetadataToJson(_TokenMetadata instance) =>
     <String, dynamic>{
       'normalized': instance.normalized,
       'raw': instance.raw,
       'metadata_updated_at': instance.metadataUpdatedAt,
     };
 
-_$NormalizedMetadataImpl _$$NormalizedMetadataImplFromJson(
-        Map<String, dynamic> json) =>
-    _$NormalizedMetadataImpl(
+_NormalizedMetadata _$NormalizedMetadataFromJson(Map<String, dynamic> json) =>
+    _NormalizedMetadata(
       imageMimeType: json['image_mime_type'] as String,
       imageKey: json['image_key'] as String,
       image: json['image'] as String,
@@ -108,8 +102,7 @@ _$NormalizedMetadataImpl _$$NormalizedMetadataImplFromJson(
       youtubeUrl: json['youtube_url'] as String,
     );
 
-Map<String, dynamic> _$$NormalizedMetadataImplToJson(
-        _$NormalizedMetadataImpl instance) =>
+Map<String, dynamic> _$NormalizedMetadataToJson(_NormalizedMetadata instance) =>
     <String, dynamic>{
       'image_mime_type': instance.imageMimeType,
       'image_key': instance.imageKey,
@@ -126,14 +119,13 @@ Map<String, dynamic> _$$NormalizedMetadataImplToJson(
       'youtube_url': instance.youtubeUrl,
     };
 
-_$AttributeImpl _$$AttributeImplFromJson(Map<String, dynamic> json) =>
-    _$AttributeImpl(
+_Attribute _$AttributeFromJson(Map<String, dynamic> json) => _Attribute(
       displayType: json['display_type'] as String?,
       traitType: json['trait_type'] as String,
       value: json['value'] as String,
     );
 
-Map<String, dynamic> _$$AttributeImplToJson(_$AttributeImpl instance) =>
+Map<String, dynamic> _$AttributeToJson(_Attribute instance) =>
     <String, dynamic>{
       'display_type': instance.displayType,
       'trait_type': instance.traitType,

@@ -6,17 +6,17 @@ part of 'avnu_account_compatible.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$AvnuAccountCompatibleResultImpl _$$AvnuAccountCompatibleResultImplFromJson(
+AvnuAccountCompatibleResult _$AvnuAccountCompatibleResultFromJson(
         Map<String, dynamic> json) =>
-    _$AvnuAccountCompatibleResultImpl(
+    AvnuAccountCompatibleResult(
       json['isCompatible'] as bool,
       json['gasConsumedOverhead'] as String,
       json['dataGasConsumedOverhead'] as String,
       $type: json['runtimeType'] as String?,
     );
 
-Map<String, dynamic> _$$AvnuAccountCompatibleResultImplToJson(
-        _$AvnuAccountCompatibleResultImpl instance) =>
+Map<String, dynamic> _$AvnuAccountCompatibleResultToJson(
+        AvnuAccountCompatibleResult instance) =>
     <String, dynamic>{
       'isCompatible': instance.isCompatible,
       'gasConsumedOverhead': instance.gasConsumedOverhead,
@@ -24,16 +24,16 @@ Map<String, dynamic> _$$AvnuAccountCompatibleResultImplToJson(
       'runtimeType': instance.$type,
     };
 
-_$AvnuAccountCompatibleErrorImpl _$$AvnuAccountCompatibleErrorImplFromJson(
+AvnuAccountCompatibleError _$AvnuAccountCompatibleErrorFromJson(
         Map<String, dynamic> json) =>
-    _$AvnuAccountCompatibleErrorImpl(
+    AvnuAccountCompatibleError(
       (json['messages'] as List<dynamic>).map((e) => e as String).toList(),
       json['revertError'] as String?,
       $type: json['runtimeType'] as String?,
     );
 
-Map<String, dynamic> _$$AvnuAccountCompatibleErrorImplToJson(
-        _$AvnuAccountCompatibleErrorImpl instance) =>
+Map<String, dynamic> _$AvnuAccountCompatibleErrorToJson(
+        AvnuAccountCompatibleError instance) =>
     <String, dynamic>{
       'messages': instance.messages,
       'revertError': instance.revertError,

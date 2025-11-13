@@ -1,5 +1,5 @@
-// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// coverage:ignore-file
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
@@ -9,123 +9,30 @@ part of 'json_rpc_api_error.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// dart format off
 T _$identity<T>(T value) => value;
-
-final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
-
-ContractErrorData _$ContractErrorDataFromJson(Map<String, dynamic> json) {
-  return _ContractErrorData.fromJson(json);
-}
 
 /// @nodoc
 mixin _$ContractErrorData {
   @JsonKey(name: 'revert_error')
-  String get revertError => throw _privateConstructorUsedError;
-
-  /// Serializes this ContractErrorData to a JSON map.
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  String get revertError;
 
   /// Create a copy of ContractErrorData
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
   $ContractErrorDataCopyWith<ContractErrorData> get copyWith =>
-      throw _privateConstructorUsedError;
-}
+      _$ContractErrorDataCopyWithImpl<ContractErrorData>(
+          this as ContractErrorData, _$identity);
 
-/// @nodoc
-abstract class $ContractErrorDataCopyWith<$Res> {
-  factory $ContractErrorDataCopyWith(
-          ContractErrorData value, $Res Function(ContractErrorData) then) =
-      _$ContractErrorDataCopyWithImpl<$Res, ContractErrorData>;
-  @useResult
-  $Res call({@JsonKey(name: 'revert_error') String revertError});
-}
-
-/// @nodoc
-class _$ContractErrorDataCopyWithImpl<$Res, $Val extends ContractErrorData>
-    implements $ContractErrorDataCopyWith<$Res> {
-  _$ContractErrorDataCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-
-  /// Create a copy of ContractErrorData
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? revertError = null,
-  }) {
-    return _then(_value.copyWith(
-      revertError: null == revertError
-          ? _value.revertError
-          : revertError // ignore: cast_nullable_to_non_nullable
-              as String,
-    ) as $Val);
-  }
-}
-
-/// @nodoc
-abstract class _$$ContractErrorDataImplCopyWith<$Res>
-    implements $ContractErrorDataCopyWith<$Res> {
-  factory _$$ContractErrorDataImplCopyWith(_$ContractErrorDataImpl value,
-          $Res Function(_$ContractErrorDataImpl) then) =
-      __$$ContractErrorDataImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call({@JsonKey(name: 'revert_error') String revertError});
-}
-
-/// @nodoc
-class __$$ContractErrorDataImplCopyWithImpl<$Res>
-    extends _$ContractErrorDataCopyWithImpl<$Res, _$ContractErrorDataImpl>
-    implements _$$ContractErrorDataImplCopyWith<$Res> {
-  __$$ContractErrorDataImplCopyWithImpl(_$ContractErrorDataImpl _value,
-      $Res Function(_$ContractErrorDataImpl) _then)
-      : super(_value, _then);
-
-  /// Create a copy of ContractErrorData
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? revertError = null,
-  }) {
-    return _then(_$ContractErrorDataImpl(
-      revertError: null == revertError
-          ? _value.revertError
-          : revertError // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
-  }
-}
-
-/// @nodoc
-@JsonSerializable()
-class _$ContractErrorDataImpl implements _ContractErrorData {
-  const _$ContractErrorDataImpl(
-      {@JsonKey(name: 'revert_error') required this.revertError});
-
-  factory _$ContractErrorDataImpl.fromJson(Map<String, dynamic> json) =>
-      _$$ContractErrorDataImplFromJson(json);
-
-  @override
-  @JsonKey(name: 'revert_error')
-  final String revertError;
-
-  @override
-  String toString() {
-    return 'ContractErrorData(revertError: $revertError)';
-  }
+  /// Serializes this ContractErrorData to a JSON map.
+  Map<String, dynamic> toJson();
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$ContractErrorDataImpl &&
+            other is ContractErrorData &&
             (identical(other.revertError, revertError) ||
                 other.revertError == revertError));
   }
@@ -134,184 +41,310 @@ class _$ContractErrorDataImpl implements _ContractErrorData {
   @override
   int get hashCode => Object.hash(runtimeType, revertError);
 
-  /// Create a copy of ContractErrorData
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  @pragma('vm:prefer-inline')
-  _$$ContractErrorDataImplCopyWith<_$ContractErrorDataImpl> get copyWith =>
-      __$$ContractErrorDataImplCopyWithImpl<_$ContractErrorDataImpl>(
-          this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$ContractErrorDataImplToJson(
-      this,
-    );
-  }
-}
-
-abstract class _ContractErrorData implements ContractErrorData {
-  const factory _ContractErrorData(
-          {@JsonKey(name: 'revert_error') required final String revertError}) =
-      _$ContractErrorDataImpl;
-
-  factory _ContractErrorData.fromJson(Map<String, dynamic> json) =
-      _$ContractErrorDataImpl.fromJson;
-
-  @override
-  @JsonKey(name: 'revert_error')
-  String get revertError;
-
-  /// Create a copy of ContractErrorData
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$ContractErrorDataImplCopyWith<_$ContractErrorDataImpl> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-TransactionExecutionErrorData _$TransactionExecutionErrorDataFromJson(
-    Map<String, dynamic> json) {
-  return _TransactionExecutionErrorData.fromJson(json);
-}
-
-/// @nodoc
-mixin _$TransactionExecutionErrorData {
-  @JsonKey(name: 'transaction_index')
-  int get transactionIndex => throw _privateConstructorUsedError;
-  @JsonKey(name: 'execution_error')
-  String get executionError => throw _privateConstructorUsedError;
-
-  /// Serializes this TransactionExecutionErrorData to a JSON map.
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-
-  /// Create a copy of TransactionExecutionErrorData
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  $TransactionExecutionErrorDataCopyWith<TransactionExecutionErrorData>
-      get copyWith => throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $TransactionExecutionErrorDataCopyWith<$Res> {
-  factory $TransactionExecutionErrorDataCopyWith(
-          TransactionExecutionErrorData value,
-          $Res Function(TransactionExecutionErrorData) then) =
-      _$TransactionExecutionErrorDataCopyWithImpl<$Res,
-          TransactionExecutionErrorData>;
-  @useResult
-  $Res call(
-      {@JsonKey(name: 'transaction_index') int transactionIndex,
-      @JsonKey(name: 'execution_error') String executionError});
-}
-
-/// @nodoc
-class _$TransactionExecutionErrorDataCopyWithImpl<$Res,
-        $Val extends TransactionExecutionErrorData>
-    implements $TransactionExecutionErrorDataCopyWith<$Res> {
-  _$TransactionExecutionErrorDataCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-
-  /// Create a copy of TransactionExecutionErrorData
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? transactionIndex = null,
-    Object? executionError = null,
-  }) {
-    return _then(_value.copyWith(
-      transactionIndex: null == transactionIndex
-          ? _value.transactionIndex
-          : transactionIndex // ignore: cast_nullable_to_non_nullable
-              as int,
-      executionError: null == executionError
-          ? _value.executionError
-          : executionError // ignore: cast_nullable_to_non_nullable
-              as String,
-    ) as $Val);
+  String toString() {
+    return 'ContractErrorData(revertError: $revertError)';
   }
 }
 
 /// @nodoc
-abstract class _$$TransactionExecutionErrorDataImplCopyWith<$Res>
-    implements $TransactionExecutionErrorDataCopyWith<$Res> {
-  factory _$$TransactionExecutionErrorDataImplCopyWith(
-          _$TransactionExecutionErrorDataImpl value,
-          $Res Function(_$TransactionExecutionErrorDataImpl) then) =
-      __$$TransactionExecutionErrorDataImplCopyWithImpl<$Res>;
-  @override
+abstract mixin class $ContractErrorDataCopyWith<$Res> {
+  factory $ContractErrorDataCopyWith(
+          ContractErrorData value, $Res Function(ContractErrorData) _then) =
+      _$ContractErrorDataCopyWithImpl;
   @useResult
-  $Res call(
-      {@JsonKey(name: 'transaction_index') int transactionIndex,
-      @JsonKey(name: 'execution_error') String executionError});
+  $Res call({@JsonKey(name: 'revert_error') String revertError});
 }
 
 /// @nodoc
-class __$$TransactionExecutionErrorDataImplCopyWithImpl<$Res>
-    extends _$TransactionExecutionErrorDataCopyWithImpl<$Res,
-        _$TransactionExecutionErrorDataImpl>
-    implements _$$TransactionExecutionErrorDataImplCopyWith<$Res> {
-  __$$TransactionExecutionErrorDataImplCopyWithImpl(
-      _$TransactionExecutionErrorDataImpl _value,
-      $Res Function(_$TransactionExecutionErrorDataImpl) _then)
-      : super(_value, _then);
+class _$ContractErrorDataCopyWithImpl<$Res>
+    implements $ContractErrorDataCopyWith<$Res> {
+  _$ContractErrorDataCopyWithImpl(this._self, this._then);
 
-  /// Create a copy of TransactionExecutionErrorData
+  final ContractErrorData _self;
+  final $Res Function(ContractErrorData) _then;
+
+  /// Create a copy of ContractErrorData
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? transactionIndex = null,
-    Object? executionError = null,
+    Object? revertError = null,
   }) {
-    return _then(_$TransactionExecutionErrorDataImpl(
-      transactionIndex: null == transactionIndex
-          ? _value.transactionIndex
-          : transactionIndex // ignore: cast_nullable_to_non_nullable
-              as int,
-      executionError: null == executionError
-          ? _value.executionError
-          : executionError // ignore: cast_nullable_to_non_nullable
+    return _then(_self.copyWith(
+      revertError: null == revertError
+          ? _self.revertError
+          : revertError // ignore: cast_nullable_to_non_nullable
               as String,
     ));
   }
 }
 
+/// Adds pattern-matching-related methods to [ContractErrorData].
+extension ContractErrorDataPatterns on ContractErrorData {
+  /// A variant of `map` that fallback to returning `orElse`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(_ContractErrorData value)? $default, {
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _ContractErrorData() when $default != null:
+        return $default(_that);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// Callbacks receives the raw object, upcasted.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case final Subclass2 value:
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(_ContractErrorData value) $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _ContractErrorData():
+        return $default(_that);
+      case _:
+        throw StateError('Unexpected subclass');
+    }
+  }
+
+  /// A variant of `map` that fallback to returning `null`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>(
+    TResult? Function(_ContractErrorData value)? $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _ContractErrorData() when $default != null:
+        return $default(_that);
+      case _:
+        return null;
+    }
+  }
+
+  /// A variant of `when` that fallback to an `orElse` callback.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(@JsonKey(name: 'revert_error') String revertError)?
+        $default, {
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _ContractErrorData() when $default != null:
+        return $default(_that.revertError);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// As opposed to `map`, this offers destructuring.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case Subclass2(:final field2):
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>(
+    TResult Function(@JsonKey(name: 'revert_error') String revertError)
+        $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _ContractErrorData():
+        return $default(_that.revertError);
+      case _:
+        throw StateError('Unexpected subclass');
+    }
+  }
+
+  /// A variant of `when` that fallback to returning `null`
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>(
+    TResult? Function(@JsonKey(name: 'revert_error') String revertError)?
+        $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _ContractErrorData() when $default != null:
+        return $default(_that.revertError);
+      case _:
+        return null;
+    }
+  }
+}
+
 /// @nodoc
 @JsonSerializable()
-class _$TransactionExecutionErrorDataImpl
-    implements _TransactionExecutionErrorData {
-  const _$TransactionExecutionErrorDataImpl(
-      {@JsonKey(name: 'transaction_index') required this.transactionIndex,
-      @JsonKey(name: 'execution_error') required this.executionError});
-
-  factory _$TransactionExecutionErrorDataImpl.fromJson(
-          Map<String, dynamic> json) =>
-      _$$TransactionExecutionErrorDataImplFromJson(json);
+class _ContractErrorData implements ContractErrorData {
+  const _ContractErrorData(
+      {@JsonKey(name: 'revert_error') required this.revertError});
+  factory _ContractErrorData.fromJson(Map<String, dynamic> json) =>
+      _$ContractErrorDataFromJson(json);
 
   @override
-  @JsonKey(name: 'transaction_index')
-  final int transactionIndex;
+  @JsonKey(name: 'revert_error')
+  final String revertError;
+
+  /// Create a copy of ContractErrorData
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(name: 'execution_error')
-  final String executionError;
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  _$ContractErrorDataCopyWith<_ContractErrorData> get copyWith =>
+      __$ContractErrorDataCopyWithImpl<_ContractErrorData>(this, _$identity);
 
   @override
-  String toString() {
-    return 'TransactionExecutionErrorData(transactionIndex: $transactionIndex, executionError: $executionError)';
+  Map<String, dynamic> toJson() {
+    return _$ContractErrorDataToJson(
+      this,
+    );
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$TransactionExecutionErrorDataImpl &&
+            other is _ContractErrorData &&
+            (identical(other.revertError, revertError) ||
+                other.revertError == revertError));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(runtimeType, revertError);
+
+  @override
+  String toString() {
+    return 'ContractErrorData(revertError: $revertError)';
+  }
+}
+
+/// @nodoc
+abstract mixin class _$ContractErrorDataCopyWith<$Res>
+    implements $ContractErrorDataCopyWith<$Res> {
+  factory _$ContractErrorDataCopyWith(
+          _ContractErrorData value, $Res Function(_ContractErrorData) _then) =
+      __$ContractErrorDataCopyWithImpl;
+  @override
+  @useResult
+  $Res call({@JsonKey(name: 'revert_error') String revertError});
+}
+
+/// @nodoc
+class __$ContractErrorDataCopyWithImpl<$Res>
+    implements _$ContractErrorDataCopyWith<$Res> {
+  __$ContractErrorDataCopyWithImpl(this._self, this._then);
+
+  final _ContractErrorData _self;
+  final $Res Function(_ContractErrorData) _then;
+
+  /// Create a copy of ContractErrorData
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $Res call({
+    Object? revertError = null,
+  }) {
+    return _then(_ContractErrorData(
+      revertError: null == revertError
+          ? _self.revertError
+          : revertError // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+mixin _$TransactionExecutionErrorData {
+  @JsonKey(name: 'transaction_index')
+  int get transactionIndex;
+  @JsonKey(name: 'execution_error')
+  String get executionError;
+
+  /// Create a copy of TransactionExecutionErrorData
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  $TransactionExecutionErrorDataCopyWith<TransactionExecutionErrorData>
+      get copyWith => _$TransactionExecutionErrorDataCopyWithImpl<
+              TransactionExecutionErrorData>(
+          this as TransactionExecutionErrorData, _$identity);
+
+  /// Serializes this TransactionExecutionErrorData to a JSON map.
+  Map<String, dynamic> toJson();
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is TransactionExecutionErrorData &&
             (identical(other.transactionIndex, transactionIndex) ||
                 other.transactionIndex == transactionIndex) &&
             (identical(other.executionError, executionError) ||
@@ -323,49 +356,312 @@ class _$TransactionExecutionErrorDataImpl
   int get hashCode =>
       Object.hash(runtimeType, transactionIndex, executionError);
 
-  /// Create a copy of TransactionExecutionErrorData
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  @pragma('vm:prefer-inline')
-  _$$TransactionExecutionErrorDataImplCopyWith<
-          _$TransactionExecutionErrorDataImpl>
-      get copyWith => __$$TransactionExecutionErrorDataImplCopyWithImpl<
-          _$TransactionExecutionErrorDataImpl>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$TransactionExecutionErrorDataImplToJson(
-      this,
-    );
+  String toString() {
+    return 'TransactionExecutionErrorData(transactionIndex: $transactionIndex, executionError: $executionError)';
   }
 }
 
-abstract class _TransactionExecutionErrorData
-    implements TransactionExecutionErrorData {
-  const factory _TransactionExecutionErrorData(
-      {@JsonKey(name: 'transaction_index') required final int transactionIndex,
-      @JsonKey(name: 'execution_error')
-      required final String
-          executionError}) = _$TransactionExecutionErrorDataImpl;
+/// @nodoc
+abstract mixin class $TransactionExecutionErrorDataCopyWith<$Res> {
+  factory $TransactionExecutionErrorDataCopyWith(
+          TransactionExecutionErrorData value,
+          $Res Function(TransactionExecutionErrorData) _then) =
+      _$TransactionExecutionErrorDataCopyWithImpl;
+  @useResult
+  $Res call(
+      {@JsonKey(name: 'transaction_index') int transactionIndex,
+      @JsonKey(name: 'execution_error') String executionError});
+}
 
-  factory _TransactionExecutionErrorData.fromJson(Map<String, dynamic> json) =
-      _$TransactionExecutionErrorDataImpl.fromJson;
+/// @nodoc
+class _$TransactionExecutionErrorDataCopyWithImpl<$Res>
+    implements $TransactionExecutionErrorDataCopyWith<$Res> {
+  _$TransactionExecutionErrorDataCopyWithImpl(this._self, this._then);
+
+  final TransactionExecutionErrorData _self;
+  final $Res Function(TransactionExecutionErrorData) _then;
+
+  /// Create a copy of TransactionExecutionErrorData
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? transactionIndex = null,
+    Object? executionError = null,
+  }) {
+    return _then(_self.copyWith(
+      transactionIndex: null == transactionIndex
+          ? _self.transactionIndex
+          : transactionIndex // ignore: cast_nullable_to_non_nullable
+              as int,
+      executionError: null == executionError
+          ? _self.executionError
+          : executionError // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// Adds pattern-matching-related methods to [TransactionExecutionErrorData].
+extension TransactionExecutionErrorDataPatterns
+    on TransactionExecutionErrorData {
+  /// A variant of `map` that fallback to returning `orElse`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(_TransactionExecutionErrorData value)? $default, {
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _TransactionExecutionErrorData() when $default != null:
+        return $default(_that);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// Callbacks receives the raw object, upcasted.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case final Subclass2 value:
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(_TransactionExecutionErrorData value) $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _TransactionExecutionErrorData():
+        return $default(_that);
+      case _:
+        throw StateError('Unexpected subclass');
+    }
+  }
+
+  /// A variant of `map` that fallback to returning `null`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>(
+    TResult? Function(_TransactionExecutionErrorData value)? $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _TransactionExecutionErrorData() when $default != null:
+        return $default(_that);
+      case _:
+        return null;
+    }
+  }
+
+  /// A variant of `when` that fallback to an `orElse` callback.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(@JsonKey(name: 'transaction_index') int transactionIndex,
+            @JsonKey(name: 'execution_error') String executionError)?
+        $default, {
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _TransactionExecutionErrorData() when $default != null:
+        return $default(_that.transactionIndex, _that.executionError);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// As opposed to `map`, this offers destructuring.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case Subclass2(:final field2):
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>(
+    TResult Function(@JsonKey(name: 'transaction_index') int transactionIndex,
+            @JsonKey(name: 'execution_error') String executionError)
+        $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _TransactionExecutionErrorData():
+        return $default(_that.transactionIndex, _that.executionError);
+      case _:
+        throw StateError('Unexpected subclass');
+    }
+  }
+
+  /// A variant of `when` that fallback to returning `null`
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>(
+    TResult? Function(@JsonKey(name: 'transaction_index') int transactionIndex,
+            @JsonKey(name: 'execution_error') String executionError)?
+        $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _TransactionExecutionErrorData() when $default != null:
+        return $default(_that.transactionIndex, _that.executionError);
+      case _:
+        return null;
+    }
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _TransactionExecutionErrorData implements TransactionExecutionErrorData {
+  const _TransactionExecutionErrorData(
+      {@JsonKey(name: 'transaction_index') required this.transactionIndex,
+      @JsonKey(name: 'execution_error') required this.executionError});
+  factory _TransactionExecutionErrorData.fromJson(Map<String, dynamic> json) =>
+      _$TransactionExecutionErrorDataFromJson(json);
 
   @override
   @JsonKey(name: 'transaction_index')
-  int get transactionIndex;
+  final int transactionIndex;
   @override
   @JsonKey(name: 'execution_error')
-  String get executionError;
+  final String executionError;
 
   /// Create a copy of TransactionExecutionErrorData
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$TransactionExecutionErrorDataImplCopyWith<
-          _$TransactionExecutionErrorDataImpl>
-      get copyWith => throw _privateConstructorUsedError;
+  @pragma('vm:prefer-inline')
+  _$TransactionExecutionErrorDataCopyWith<_TransactionExecutionErrorData>
+      get copyWith => __$TransactionExecutionErrorDataCopyWithImpl<
+          _TransactionExecutionErrorData>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$TransactionExecutionErrorDataToJson(
+      this,
+    );
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _TransactionExecutionErrorData &&
+            (identical(other.transactionIndex, transactionIndex) ||
+                other.transactionIndex == transactionIndex) &&
+            (identical(other.executionError, executionError) ||
+                other.executionError == executionError));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, transactionIndex, executionError);
+
+  @override
+  String toString() {
+    return 'TransactionExecutionErrorData(transactionIndex: $transactionIndex, executionError: $executionError)';
+  }
+}
+
+/// @nodoc
+abstract mixin class _$TransactionExecutionErrorDataCopyWith<$Res>
+    implements $TransactionExecutionErrorDataCopyWith<$Res> {
+  factory _$TransactionExecutionErrorDataCopyWith(
+          _TransactionExecutionErrorData value,
+          $Res Function(_TransactionExecutionErrorData) _then) =
+      __$TransactionExecutionErrorDataCopyWithImpl;
+  @override
+  @useResult
+  $Res call(
+      {@JsonKey(name: 'transaction_index') int transactionIndex,
+      @JsonKey(name: 'execution_error') String executionError});
+}
+
+/// @nodoc
+class __$TransactionExecutionErrorDataCopyWithImpl<$Res>
+    implements _$TransactionExecutionErrorDataCopyWith<$Res> {
+  __$TransactionExecutionErrorDataCopyWithImpl(this._self, this._then);
+
+  final _TransactionExecutionErrorData _self;
+  final $Res Function(_TransactionExecutionErrorData) _then;
+
+  /// Create a copy of TransactionExecutionErrorData
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $Res call({
+    Object? transactionIndex = null,
+    Object? executionError = null,
+  }) {
+    return _then(_TransactionExecutionErrorData(
+      transactionIndex: null == transactionIndex
+          ? _self.transactionIndex
+          : transactionIndex // ignore: cast_nullable_to_non_nullable
+              as int,
+      executionError: null == executionError
+          ? _self.executionError
+          : executionError // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
 }
 
 JsonRpcApiErrorData _$JsonRpcApiErrorDataFromJson(Map<String, dynamic> json) {
@@ -388,47 +684,45 @@ JsonRpcApiErrorData _$JsonRpcApiErrorDataFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$JsonRpcApiErrorData {
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(ContractErrorData data) contractError,
-    required TResult Function(TransactionExecutionErrorData data)
-        transactionExecutionError,
-    required TResult Function(String message) stringData,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(ContractErrorData data)? contractError,
-    TResult? Function(TransactionExecutionErrorData data)?
-        transactionExecutionError,
-    TResult? Function(String message)? stringData,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(ContractErrorData data)? contractError,
-    TResult Function(TransactionExecutionErrorData data)?
-        transactionExecutionError,
-    TResult Function(String message)? stringData,
-    required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(ContractError value) contractError,
-    required TResult Function(TransactionExecutionError value)
-        transactionExecutionError,
-    required TResult Function(StringError value) stringData,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(ContractError value)? contractError,
-    TResult? Function(TransactionExecutionError value)?
-        transactionExecutionError,
-    TResult? Function(StringError value)? stringData,
-  }) =>
-      throw _privateConstructorUsedError;
+  /// Serializes this JsonRpcApiErrorData to a JSON map.
+  Map<String, dynamic> toJson();
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is JsonRpcApiErrorData);
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  String toString() {
+    return 'JsonRpcApiErrorData()';
+  }
+}
+
+/// @nodoc
+class $JsonRpcApiErrorDataCopyWith<$Res> {
+  $JsonRpcApiErrorDataCopyWith(
+      JsonRpcApiErrorData _, $Res Function(JsonRpcApiErrorData) __);
+}
+
+/// Adds pattern-matching-related methods to [JsonRpcApiErrorData].
+extension JsonRpcApiErrorDataPatterns on JsonRpcApiErrorData {
+  /// A variant of `map` that fallback to returning `orElse`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(ContractError value)? contractError,
@@ -436,39 +730,235 @@ mixin _$JsonRpcApiErrorData {
         transactionExecutionError,
     TResult Function(StringError value)? stringData,
     required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
+  }) {
+    final _that = this;
+    switch (_that) {
+      case ContractError() when contractError != null:
+        return contractError(_that);
+      case TransactionExecutionError() when transactionExecutionError != null:
+        return transactionExecutionError(_that);
+      case StringError() when stringData != null:
+        return stringData(_that);
+      case _:
+        return orElse();
+    }
+  }
 
-  /// Serializes this JsonRpcApiErrorData to a JSON map.
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// Callbacks receives the raw object, upcasted.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case final Subclass2 value:
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(ContractError value) contractError,
+    required TResult Function(TransactionExecutionError value)
+        transactionExecutionError,
+    required TResult Function(StringError value) stringData,
+  }) {
+    final _that = this;
+    switch (_that) {
+      case ContractError():
+        return contractError(_that);
+      case TransactionExecutionError():
+        return transactionExecutionError(_that);
+      case StringError():
+        return stringData(_that);
+      case _:
+        throw StateError('Unexpected subclass');
+    }
+  }
+
+  /// A variant of `map` that fallback to returning `null`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(ContractError value)? contractError,
+    TResult? Function(TransactionExecutionError value)?
+        transactionExecutionError,
+    TResult? Function(StringError value)? stringData,
+  }) {
+    final _that = this;
+    switch (_that) {
+      case ContractError() when contractError != null:
+        return contractError(_that);
+      case TransactionExecutionError() when transactionExecutionError != null:
+        return transactionExecutionError(_that);
+      case StringError() when stringData != null:
+        return stringData(_that);
+      case _:
+        return null;
+    }
+  }
+
+  /// A variant of `when` that fallback to an `orElse` callback.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(ContractErrorData data)? contractError,
+    TResult Function(TransactionExecutionErrorData data)?
+        transactionExecutionError,
+    TResult Function(String message)? stringData,
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case ContractError() when contractError != null:
+        return contractError(_that.data);
+      case TransactionExecutionError() when transactionExecutionError != null:
+        return transactionExecutionError(_that.data);
+      case StringError() when stringData != null:
+        return stringData(_that.message);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// As opposed to `map`, this offers destructuring.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case Subclass2(:final field2):
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(ContractErrorData data) contractError,
+    required TResult Function(TransactionExecutionErrorData data)
+        transactionExecutionError,
+    required TResult Function(String message) stringData,
+  }) {
+    final _that = this;
+    switch (_that) {
+      case ContractError():
+        return contractError(_that.data);
+      case TransactionExecutionError():
+        return transactionExecutionError(_that.data);
+      case StringError():
+        return stringData(_that.message);
+      case _:
+        throw StateError('Unexpected subclass');
+    }
+  }
+
+  /// A variant of `when` that fallback to returning `null`
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(ContractErrorData data)? contractError,
+    TResult? Function(TransactionExecutionErrorData data)?
+        transactionExecutionError,
+    TResult? Function(String message)? stringData,
+  }) {
+    final _that = this;
+    switch (_that) {
+      case ContractError() when contractError != null:
+        return contractError(_that.data);
+      case TransactionExecutionError() when transactionExecutionError != null:
+        return transactionExecutionError(_that.data);
+      case StringError() when stringData != null:
+        return stringData(_that.message);
+      case _:
+        return null;
+    }
+  }
 }
 
 /// @nodoc
-abstract class $JsonRpcApiErrorDataCopyWith<$Res> {
-  factory $JsonRpcApiErrorDataCopyWith(
-          JsonRpcApiErrorData value, $Res Function(JsonRpcApiErrorData) then) =
-      _$JsonRpcApiErrorDataCopyWithImpl<$Res, JsonRpcApiErrorData>;
-}
+@JsonSerializable()
+class ContractError implements JsonRpcApiErrorData {
+  const ContractError({required this.data, final String? $type})
+      : $type = $type ?? 'contractError';
+  factory ContractError.fromJson(Map<String, dynamic> json) =>
+      _$ContractErrorFromJson(json);
 
-/// @nodoc
-class _$JsonRpcApiErrorDataCopyWithImpl<$Res, $Val extends JsonRpcApiErrorData>
-    implements $JsonRpcApiErrorDataCopyWith<$Res> {
-  _$JsonRpcApiErrorDataCopyWithImpl(this._value, this._then);
+  final ContractErrorData data;
 
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  @JsonKey(name: 'starkNetRuntimeTypeToRemove')
+  final String $type;
 
   /// Create a copy of JsonRpcApiErrorData
   /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  $ContractErrorCopyWith<ContractError> get copyWith =>
+      _$ContractErrorCopyWithImpl<ContractError>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$ContractErrorToJson(
+      this,
+    );
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is ContractError &&
+            (identical(other.data, data) || other.data == data));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(runtimeType, data);
+
+  @override
+  String toString() {
+    return 'JsonRpcApiErrorData.contractError(data: $data)';
+  }
 }
 
 /// @nodoc
-abstract class _$$ContractErrorImplCopyWith<$Res> {
-  factory _$$ContractErrorImplCopyWith(
-          _$ContractErrorImpl value, $Res Function(_$ContractErrorImpl) then) =
-      __$$ContractErrorImplCopyWithImpl<$Res>;
+abstract mixin class $ContractErrorCopyWith<$Res>
+    implements $JsonRpcApiErrorDataCopyWith<$Res> {
+  factory $ContractErrorCopyWith(
+          ContractError value, $Res Function(ContractError) _then) =
+      _$ContractErrorCopyWithImpl;
   @useResult
   $Res call({ContractErrorData data});
 
@@ -476,23 +966,22 @@ abstract class _$$ContractErrorImplCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$ContractErrorImplCopyWithImpl<$Res>
-    extends _$JsonRpcApiErrorDataCopyWithImpl<$Res, _$ContractErrorImpl>
-    implements _$$ContractErrorImplCopyWith<$Res> {
-  __$$ContractErrorImplCopyWithImpl(
-      _$ContractErrorImpl _value, $Res Function(_$ContractErrorImpl) _then)
-      : super(_value, _then);
+class _$ContractErrorCopyWithImpl<$Res>
+    implements $ContractErrorCopyWith<$Res> {
+  _$ContractErrorCopyWithImpl(this._self, this._then);
+
+  final ContractError _self;
+  final $Res Function(ContractError) _then;
 
   /// Create a copy of JsonRpcApiErrorData
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
-  @override
   $Res call({
     Object? data = null,
   }) {
-    return _then(_$ContractErrorImpl(
+    return _then(ContractError(
       data: null == data
-          ? _value.data
+          ? _self.data
           : data // ignore: cast_nullable_to_non_nullable
               as ContractErrorData,
     ));
@@ -503,37 +992,45 @@ class __$$ContractErrorImplCopyWithImpl<$Res>
   @override
   @pragma('vm:prefer-inline')
   $ContractErrorDataCopyWith<$Res> get data {
-    return $ContractErrorDataCopyWith<$Res>(_value.data, (value) {
-      return _then(_value.copyWith(data: value));
+    return $ContractErrorDataCopyWith<$Res>(_self.data, (value) {
+      return _then(_self.copyWith(data: value));
     });
   }
 }
 
 /// @nodoc
 @JsonSerializable()
-class _$ContractErrorImpl implements ContractError {
-  const _$ContractErrorImpl({required this.data, final String? $type})
-      : $type = $type ?? 'contractError';
+class TransactionExecutionError implements JsonRpcApiErrorData {
+  const TransactionExecutionError({required this.data, final String? $type})
+      : $type = $type ?? 'transactionExecutionError';
+  factory TransactionExecutionError.fromJson(Map<String, dynamic> json) =>
+      _$TransactionExecutionErrorFromJson(json);
 
-  factory _$ContractErrorImpl.fromJson(Map<String, dynamic> json) =>
-      _$$ContractErrorImplFromJson(json);
-
-  @override
-  final ContractErrorData data;
+  final TransactionExecutionErrorData data;
 
   @JsonKey(name: 'starkNetRuntimeTypeToRemove')
   final String $type;
 
+  /// Create a copy of JsonRpcApiErrorData
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  $TransactionExecutionErrorCopyWith<TransactionExecutionError> get copyWith =>
+      _$TransactionExecutionErrorCopyWithImpl<TransactionExecutionError>(
+          this, _$identity);
+
   @override
-  String toString() {
-    return 'JsonRpcApiErrorData.contractError(data: $data)';
+  Map<String, dynamic> toJson() {
+    return _$TransactionExecutionErrorToJson(
+      this,
+    );
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$ContractErrorImpl &&
+            other is TransactionExecutionError &&
             (identical(other.data, data) || other.data == data));
   }
 
@@ -541,118 +1038,18 @@ class _$ContractErrorImpl implements ContractError {
   @override
   int get hashCode => Object.hash(runtimeType, data);
 
-  /// Create a copy of JsonRpcApiErrorData
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  @pragma('vm:prefer-inline')
-  _$$ContractErrorImplCopyWith<_$ContractErrorImpl> get copyWith =>
-      __$$ContractErrorImplCopyWithImpl<_$ContractErrorImpl>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(ContractErrorData data) contractError,
-    required TResult Function(TransactionExecutionErrorData data)
-        transactionExecutionError,
-    required TResult Function(String message) stringData,
-  }) {
-    return contractError(data);
+  String toString() {
+    return 'JsonRpcApiErrorData.transactionExecutionError(data: $data)';
   }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(ContractErrorData data)? contractError,
-    TResult? Function(TransactionExecutionErrorData data)?
-        transactionExecutionError,
-    TResult? Function(String message)? stringData,
-  }) {
-    return contractError?.call(data);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(ContractErrorData data)? contractError,
-    TResult Function(TransactionExecutionErrorData data)?
-        transactionExecutionError,
-    TResult Function(String message)? stringData,
-    required TResult orElse(),
-  }) {
-    if (contractError != null) {
-      return contractError(data);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(ContractError value) contractError,
-    required TResult Function(TransactionExecutionError value)
-        transactionExecutionError,
-    required TResult Function(StringError value) stringData,
-  }) {
-    return contractError(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(ContractError value)? contractError,
-    TResult? Function(TransactionExecutionError value)?
-        transactionExecutionError,
-    TResult? Function(StringError value)? stringData,
-  }) {
-    return contractError?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(ContractError value)? contractError,
-    TResult Function(TransactionExecutionError value)?
-        transactionExecutionError,
-    TResult Function(StringError value)? stringData,
-    required TResult orElse(),
-  }) {
-    if (contractError != null) {
-      return contractError(this);
-    }
-    return orElse();
-  }
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$ContractErrorImplToJson(
-      this,
-    );
-  }
-}
-
-abstract class ContractError implements JsonRpcApiErrorData {
-  const factory ContractError({required final ContractErrorData data}) =
-      _$ContractErrorImpl;
-
-  factory ContractError.fromJson(Map<String, dynamic> json) =
-      _$ContractErrorImpl.fromJson;
-
-  ContractErrorData get data;
-
-  /// Create a copy of JsonRpcApiErrorData
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$ContractErrorImplCopyWith<_$ContractErrorImpl> get copyWith =>
-      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$TransactionExecutionErrorImplCopyWith<$Res> {
-  factory _$$TransactionExecutionErrorImplCopyWith(
-          _$TransactionExecutionErrorImpl value,
-          $Res Function(_$TransactionExecutionErrorImpl) then) =
-      __$$TransactionExecutionErrorImplCopyWithImpl<$Res>;
+abstract mixin class $TransactionExecutionErrorCopyWith<$Res>
+    implements $JsonRpcApiErrorDataCopyWith<$Res> {
+  factory $TransactionExecutionErrorCopyWith(TransactionExecutionError value,
+          $Res Function(TransactionExecutionError) _then) =
+      _$TransactionExecutionErrorCopyWithImpl;
   @useResult
   $Res call({TransactionExecutionErrorData data});
 
@@ -660,25 +1057,22 @@ abstract class _$$TransactionExecutionErrorImplCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$TransactionExecutionErrorImplCopyWithImpl<$Res>
-    extends _$JsonRpcApiErrorDataCopyWithImpl<$Res,
-        _$TransactionExecutionErrorImpl>
-    implements _$$TransactionExecutionErrorImplCopyWith<$Res> {
-  __$$TransactionExecutionErrorImplCopyWithImpl(
-      _$TransactionExecutionErrorImpl _value,
-      $Res Function(_$TransactionExecutionErrorImpl) _then)
-      : super(_value, _then);
+class _$TransactionExecutionErrorCopyWithImpl<$Res>
+    implements $TransactionExecutionErrorCopyWith<$Res> {
+  _$TransactionExecutionErrorCopyWithImpl(this._self, this._then);
+
+  final TransactionExecutionError _self;
+  final $Res Function(TransactionExecutionError) _then;
 
   /// Create a copy of JsonRpcApiErrorData
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
-  @override
   $Res call({
     Object? data = null,
   }) {
-    return _then(_$TransactionExecutionErrorImpl(
+    return _then(TransactionExecutionError(
       data: null == data
-          ? _value.data
+          ? _self.data
           : data // ignore: cast_nullable_to_non_nullable
               as TransactionExecutionErrorData,
     ));
@@ -689,211 +1083,44 @@ class __$$TransactionExecutionErrorImplCopyWithImpl<$Res>
   @override
   @pragma('vm:prefer-inline')
   $TransactionExecutionErrorDataCopyWith<$Res> get data {
-    return $TransactionExecutionErrorDataCopyWith<$Res>(_value.data, (value) {
-      return _then(_value.copyWith(data: value));
+    return $TransactionExecutionErrorDataCopyWith<$Res>(_self.data, (value) {
+      return _then(_self.copyWith(data: value));
     });
   }
 }
 
 /// @nodoc
 @JsonSerializable()
-class _$TransactionExecutionErrorImpl implements TransactionExecutionError {
-  const _$TransactionExecutionErrorImpl(
-      {required this.data, final String? $type})
-      : $type = $type ?? 'transactionExecutionError';
-
-  factory _$TransactionExecutionErrorImpl.fromJson(Map<String, dynamic> json) =>
-      _$$TransactionExecutionErrorImplFromJson(json);
-
-  @override
-  final TransactionExecutionErrorData data;
-
-  @JsonKey(name: 'starkNetRuntimeTypeToRemove')
-  final String $type;
-
-  @override
-  String toString() {
-    return 'JsonRpcApiErrorData.transactionExecutionError(data: $data)';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$TransactionExecutionErrorImpl &&
-            (identical(other.data, data) || other.data == data));
-  }
-
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  int get hashCode => Object.hash(runtimeType, data);
-
-  /// Create a copy of JsonRpcApiErrorData
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$TransactionExecutionErrorImplCopyWith<_$TransactionExecutionErrorImpl>
-      get copyWith => __$$TransactionExecutionErrorImplCopyWithImpl<
-          _$TransactionExecutionErrorImpl>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(ContractErrorData data) contractError,
-    required TResult Function(TransactionExecutionErrorData data)
-        transactionExecutionError,
-    required TResult Function(String message) stringData,
-  }) {
-    return transactionExecutionError(data);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(ContractErrorData data)? contractError,
-    TResult? Function(TransactionExecutionErrorData data)?
-        transactionExecutionError,
-    TResult? Function(String message)? stringData,
-  }) {
-    return transactionExecutionError?.call(data);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(ContractErrorData data)? contractError,
-    TResult Function(TransactionExecutionErrorData data)?
-        transactionExecutionError,
-    TResult Function(String message)? stringData,
-    required TResult orElse(),
-  }) {
-    if (transactionExecutionError != null) {
-      return transactionExecutionError(data);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(ContractError value) contractError,
-    required TResult Function(TransactionExecutionError value)
-        transactionExecutionError,
-    required TResult Function(StringError value) stringData,
-  }) {
-    return transactionExecutionError(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(ContractError value)? contractError,
-    TResult? Function(TransactionExecutionError value)?
-        transactionExecutionError,
-    TResult? Function(StringError value)? stringData,
-  }) {
-    return transactionExecutionError?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(ContractError value)? contractError,
-    TResult Function(TransactionExecutionError value)?
-        transactionExecutionError,
-    TResult Function(StringError value)? stringData,
-    required TResult orElse(),
-  }) {
-    if (transactionExecutionError != null) {
-      return transactionExecutionError(this);
-    }
-    return orElse();
-  }
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$TransactionExecutionErrorImplToJson(
-      this,
-    );
-  }
-}
-
-abstract class TransactionExecutionError implements JsonRpcApiErrorData {
-  const factory TransactionExecutionError(
-          {required final TransactionExecutionErrorData data}) =
-      _$TransactionExecutionErrorImpl;
-
-  factory TransactionExecutionError.fromJson(Map<String, dynamic> json) =
-      _$TransactionExecutionErrorImpl.fromJson;
-
-  TransactionExecutionErrorData get data;
-
-  /// Create a copy of JsonRpcApiErrorData
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$TransactionExecutionErrorImplCopyWith<_$TransactionExecutionErrorImpl>
-      get copyWith => throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class _$$StringErrorImplCopyWith<$Res> {
-  factory _$$StringErrorImplCopyWith(
-          _$StringErrorImpl value, $Res Function(_$StringErrorImpl) then) =
-      __$$StringErrorImplCopyWithImpl<$Res>;
-  @useResult
-  $Res call({String message});
-}
-
-/// @nodoc
-class __$$StringErrorImplCopyWithImpl<$Res>
-    extends _$JsonRpcApiErrorDataCopyWithImpl<$Res, _$StringErrorImpl>
-    implements _$$StringErrorImplCopyWith<$Res> {
-  __$$StringErrorImplCopyWithImpl(
-      _$StringErrorImpl _value, $Res Function(_$StringErrorImpl) _then)
-      : super(_value, _then);
-
-  /// Create a copy of JsonRpcApiErrorData
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? message = null,
-  }) {
-    return _then(_$StringErrorImpl(
-      null == message
-          ? _value.message
-          : message // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
-  }
-}
-
-/// @nodoc
-@JsonSerializable()
-class _$StringErrorImpl implements StringError {
-  const _$StringErrorImpl(this.message, {final String? $type})
+class StringError implements JsonRpcApiErrorData {
+  const StringError(this.message, {final String? $type})
       : $type = $type ?? 'stringData';
+  factory StringError.fromJson(Map<String, dynamic> json) =>
+      _$StringErrorFromJson(json);
 
-  factory _$StringErrorImpl.fromJson(Map<String, dynamic> json) =>
-      _$$StringErrorImplFromJson(json);
-
-  @override
   final String message;
 
   @JsonKey(name: 'starkNetRuntimeTypeToRemove')
   final String $type;
 
+  /// Create a copy of JsonRpcApiErrorData
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  $StringErrorCopyWith<StringError> get copyWith =>
+      _$StringErrorCopyWithImpl<StringError>(this, _$identity);
+
   @override
-  String toString() {
-    return 'JsonRpcApiErrorData.stringData(message: $message)';
+  Map<String, dynamic> toJson() {
+    return _$StringErrorToJson(
+      this,
+    );
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$StringErrorImpl &&
+            other is StringError &&
             (identical(other.message, message) || other.message == message));
   }
 
@@ -901,282 +1128,68 @@ class _$StringErrorImpl implements StringError {
   @override
   int get hashCode => Object.hash(runtimeType, message);
 
-  /// Create a copy of JsonRpcApiErrorData
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  @pragma('vm:prefer-inline')
-  _$$StringErrorImplCopyWith<_$StringErrorImpl> get copyWith =>
-      __$$StringErrorImplCopyWithImpl<_$StringErrorImpl>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(ContractErrorData data) contractError,
-    required TResult Function(TransactionExecutionErrorData data)
-        transactionExecutionError,
-    required TResult Function(String message) stringData,
-  }) {
-    return stringData(message);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(ContractErrorData data)? contractError,
-    TResult? Function(TransactionExecutionErrorData data)?
-        transactionExecutionError,
-    TResult? Function(String message)? stringData,
-  }) {
-    return stringData?.call(message);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(ContractErrorData data)? contractError,
-    TResult Function(TransactionExecutionErrorData data)?
-        transactionExecutionError,
-    TResult Function(String message)? stringData,
-    required TResult orElse(),
-  }) {
-    if (stringData != null) {
-      return stringData(message);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(ContractError value) contractError,
-    required TResult Function(TransactionExecutionError value)
-        transactionExecutionError,
-    required TResult Function(StringError value) stringData,
-  }) {
-    return stringData(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(ContractError value)? contractError,
-    TResult? Function(TransactionExecutionError value)?
-        transactionExecutionError,
-    TResult? Function(StringError value)? stringData,
-  }) {
-    return stringData?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(ContractError value)? contractError,
-    TResult Function(TransactionExecutionError value)?
-        transactionExecutionError,
-    TResult Function(StringError value)? stringData,
-    required TResult orElse(),
-  }) {
-    if (stringData != null) {
-      return stringData(this);
-    }
-    return orElse();
-  }
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$StringErrorImplToJson(
-      this,
-    );
+  String toString() {
+    return 'JsonRpcApiErrorData.stringData(message: $message)';
   }
 }
 
-abstract class StringError implements JsonRpcApiErrorData {
-  const factory StringError(final String message) = _$StringErrorImpl;
+/// @nodoc
+abstract mixin class $StringErrorCopyWith<$Res>
+    implements $JsonRpcApiErrorDataCopyWith<$Res> {
+  factory $StringErrorCopyWith(
+          StringError value, $Res Function(StringError) _then) =
+      _$StringErrorCopyWithImpl;
+  @useResult
+  $Res call({String message});
+}
 
-  factory StringError.fromJson(Map<String, dynamic> json) =
-      _$StringErrorImpl.fromJson;
+/// @nodoc
+class _$StringErrorCopyWithImpl<$Res> implements $StringErrorCopyWith<$Res> {
+  _$StringErrorCopyWithImpl(this._self, this._then);
 
-  String get message;
+  final StringError _self;
+  final $Res Function(StringError) _then;
 
   /// Create a copy of JsonRpcApiErrorData
   /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$StringErrorImplCopyWith<_$StringErrorImpl> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-JsonRpcApiError _$JsonRpcApiErrorFromJson(Map<String, dynamic> json) {
-  return _JsonRpcApiError.fromJson(json);
-}
-
-/// @nodoc
-mixin _$JsonRpcApiError {
-  JsonRpcApiErrorCode get code => throw _privateConstructorUsedError;
-  String get message => throw _privateConstructorUsedError;
-  @JsonKey(name: 'data')
-  @JsonRpcApiErrorDataConverter()
-  JsonRpcApiErrorData? get errorData => throw _privateConstructorUsedError;
-
-  /// Serializes this JsonRpcApiError to a JSON map.
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-
-  /// Create a copy of JsonRpcApiError
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  $JsonRpcApiErrorCopyWith<JsonRpcApiError> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $JsonRpcApiErrorCopyWith<$Res> {
-  factory $JsonRpcApiErrorCopyWith(
-          JsonRpcApiError value, $Res Function(JsonRpcApiError) then) =
-      _$JsonRpcApiErrorCopyWithImpl<$Res, JsonRpcApiError>;
-  @useResult
-  $Res call(
-      {JsonRpcApiErrorCode code,
-      String message,
-      @JsonKey(name: 'data')
-      @JsonRpcApiErrorDataConverter()
-      JsonRpcApiErrorData? errorData});
-
-  $JsonRpcApiErrorDataCopyWith<$Res>? get errorData;
-}
-
-/// @nodoc
-class _$JsonRpcApiErrorCopyWithImpl<$Res, $Val extends JsonRpcApiError>
-    implements $JsonRpcApiErrorCopyWith<$Res> {
-  _$JsonRpcApiErrorCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-
-  /// Create a copy of JsonRpcApiError
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
-  @override
   $Res call({
-    Object? code = null,
     Object? message = null,
-    Object? errorData = freezed,
   }) {
-    return _then(_value.copyWith(
-      code: null == code
-          ? _value.code
-          : code // ignore: cast_nullable_to_non_nullable
-              as JsonRpcApiErrorCode,
-      message: null == message
-          ? _value.message
+    return _then(StringError(
+      null == message
+          ? _self.message
           : message // ignore: cast_nullable_to_non_nullable
               as String,
-      errorData: freezed == errorData
-          ? _value.errorData
-          : errorData // ignore: cast_nullable_to_non_nullable
-              as JsonRpcApiErrorData?,
-    ) as $Val);
-  }
-
-  /// Create a copy of JsonRpcApiError
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $JsonRpcApiErrorDataCopyWith<$Res>? get errorData {
-    if (_value.errorData == null) {
-      return null;
-    }
-
-    return $JsonRpcApiErrorDataCopyWith<$Res>(_value.errorData!, (value) {
-      return _then(_value.copyWith(errorData: value) as $Val);
-    });
-  }
-}
-
-/// @nodoc
-abstract class _$$JsonRpcApiErrorImplCopyWith<$Res>
-    implements $JsonRpcApiErrorCopyWith<$Res> {
-  factory _$$JsonRpcApiErrorImplCopyWith(_$JsonRpcApiErrorImpl value,
-          $Res Function(_$JsonRpcApiErrorImpl) then) =
-      __$$JsonRpcApiErrorImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call(
-      {JsonRpcApiErrorCode code,
-      String message,
-      @JsonKey(name: 'data')
-      @JsonRpcApiErrorDataConverter()
-      JsonRpcApiErrorData? errorData});
-
-  @override
-  $JsonRpcApiErrorDataCopyWith<$Res>? get errorData;
-}
-
-/// @nodoc
-class __$$JsonRpcApiErrorImplCopyWithImpl<$Res>
-    extends _$JsonRpcApiErrorCopyWithImpl<$Res, _$JsonRpcApiErrorImpl>
-    implements _$$JsonRpcApiErrorImplCopyWith<$Res> {
-  __$$JsonRpcApiErrorImplCopyWithImpl(
-      _$JsonRpcApiErrorImpl _value, $Res Function(_$JsonRpcApiErrorImpl) _then)
-      : super(_value, _then);
-
-  /// Create a copy of JsonRpcApiError
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? code = null,
-    Object? message = null,
-    Object? errorData = freezed,
-  }) {
-    return _then(_$JsonRpcApiErrorImpl(
-      code: null == code
-          ? _value.code
-          : code // ignore: cast_nullable_to_non_nullable
-              as JsonRpcApiErrorCode,
-      message: null == message
-          ? _value.message
-          : message // ignore: cast_nullable_to_non_nullable
-              as String,
-      errorData: freezed == errorData
-          ? _value.errorData
-          : errorData // ignore: cast_nullable_to_non_nullable
-              as JsonRpcApiErrorData?,
     ));
   }
 }
 
 /// @nodoc
-@JsonSerializable()
-class _$JsonRpcApiErrorImpl implements _JsonRpcApiError {
-  const _$JsonRpcApiErrorImpl(
-      {required this.code,
-      required this.message,
-      @JsonKey(name: 'data') @JsonRpcApiErrorDataConverter() this.errorData});
-
-  factory _$JsonRpcApiErrorImpl.fromJson(Map<String, dynamic> json) =>
-      _$$JsonRpcApiErrorImplFromJson(json);
-
-  @override
-  final JsonRpcApiErrorCode code;
-  @override
-  final String message;
-  @override
+mixin _$JsonRpcApiError {
+  JsonRpcApiErrorCode get code;
+  String get message;
   @JsonKey(name: 'data')
   @JsonRpcApiErrorDataConverter()
-  final JsonRpcApiErrorData? errorData;
+  JsonRpcApiErrorData? get errorData;
 
-  @override
-  String toString() {
-    return 'JsonRpcApiError(code: $code, message: $message, errorData: $errorData)';
-  }
+  /// Create a copy of JsonRpcApiError
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  $JsonRpcApiErrorCopyWith<JsonRpcApiError> get copyWith =>
+      _$JsonRpcApiErrorCopyWithImpl<JsonRpcApiError>(
+          this as JsonRpcApiError, _$identity);
+
+  /// Serializes this JsonRpcApiError to a JSON map.
+  Map<String, dynamic> toJson();
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$JsonRpcApiErrorImpl &&
+            other is JsonRpcApiError &&
             (identical(other.code, code) || other.code == code) &&
             (identical(other.message, message) || other.message == message) &&
             (identical(other.errorData, errorData) ||
@@ -1187,47 +1200,371 @@ class _$JsonRpcApiErrorImpl implements _JsonRpcApiError {
   @override
   int get hashCode => Object.hash(runtimeType, code, message, errorData);
 
-  /// Create a copy of JsonRpcApiError
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  @pragma('vm:prefer-inline')
-  _$$JsonRpcApiErrorImplCopyWith<_$JsonRpcApiErrorImpl> get copyWith =>
-      __$$JsonRpcApiErrorImplCopyWithImpl<_$JsonRpcApiErrorImpl>(
-          this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$JsonRpcApiErrorImplToJson(
-      this,
-    );
+  String toString() {
+    return 'JsonRpcApiError(code: $code, message: $message, errorData: $errorData)';
   }
 }
 
-abstract class _JsonRpcApiError implements JsonRpcApiError {
-  const factory _JsonRpcApiError(
-      {required final JsonRpcApiErrorCode code,
-      required final String message,
+/// @nodoc
+abstract mixin class $JsonRpcApiErrorCopyWith<$Res> {
+  factory $JsonRpcApiErrorCopyWith(
+          JsonRpcApiError value, $Res Function(JsonRpcApiError) _then) =
+      _$JsonRpcApiErrorCopyWithImpl;
+  @useResult
+  $Res call(
+      {JsonRpcApiErrorCode code,
+      String message,
       @JsonKey(name: 'data')
       @JsonRpcApiErrorDataConverter()
-      final JsonRpcApiErrorData? errorData}) = _$JsonRpcApiErrorImpl;
+      JsonRpcApiErrorData? errorData});
 
-  factory _JsonRpcApiError.fromJson(Map<String, dynamic> json) =
-      _$JsonRpcApiErrorImpl.fromJson;
+  $JsonRpcApiErrorDataCopyWith<$Res>? get errorData;
+}
+
+/// @nodoc
+class _$JsonRpcApiErrorCopyWithImpl<$Res>
+    implements $JsonRpcApiErrorCopyWith<$Res> {
+  _$JsonRpcApiErrorCopyWithImpl(this._self, this._then);
+
+  final JsonRpcApiError _self;
+  final $Res Function(JsonRpcApiError) _then;
+
+  /// Create a copy of JsonRpcApiError
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? code = null,
+    Object? message = null,
+    Object? errorData = freezed,
+  }) {
+    return _then(_self.copyWith(
+      code: null == code
+          ? _self.code
+          : code // ignore: cast_nullable_to_non_nullable
+              as JsonRpcApiErrorCode,
+      message: null == message
+          ? _self.message
+          : message // ignore: cast_nullable_to_non_nullable
+              as String,
+      errorData: freezed == errorData
+          ? _self.errorData
+          : errorData // ignore: cast_nullable_to_non_nullable
+              as JsonRpcApiErrorData?,
+    ));
+  }
+
+  /// Create a copy of JsonRpcApiError
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $JsonRpcApiErrorDataCopyWith<$Res>? get errorData {
+    if (_self.errorData == null) {
+      return null;
+    }
+
+    return $JsonRpcApiErrorDataCopyWith<$Res>(_self.errorData!, (value) {
+      return _then(_self.copyWith(errorData: value));
+    });
+  }
+}
+
+/// Adds pattern-matching-related methods to [JsonRpcApiError].
+extension JsonRpcApiErrorPatterns on JsonRpcApiError {
+  /// A variant of `map` that fallback to returning `orElse`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(_JsonRpcApiError value)? $default, {
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _JsonRpcApiError() when $default != null:
+        return $default(_that);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// Callbacks receives the raw object, upcasted.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case final Subclass2 value:
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(_JsonRpcApiError value) $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _JsonRpcApiError():
+        return $default(_that);
+      case _:
+        throw StateError('Unexpected subclass');
+    }
+  }
+
+  /// A variant of `map` that fallback to returning `null`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>(
+    TResult? Function(_JsonRpcApiError value)? $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _JsonRpcApiError() when $default != null:
+        return $default(_that);
+      case _:
+        return null;
+    }
+  }
+
+  /// A variant of `when` that fallback to an `orElse` callback.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(
+            JsonRpcApiErrorCode code,
+            String message,
+            @JsonKey(name: 'data')
+            @JsonRpcApiErrorDataConverter()
+            JsonRpcApiErrorData? errorData)?
+        $default, {
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _JsonRpcApiError() when $default != null:
+        return $default(_that.code, _that.message, _that.errorData);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// As opposed to `map`, this offers destructuring.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case Subclass2(:final field2):
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>(
+    TResult Function(
+            JsonRpcApiErrorCode code,
+            String message,
+            @JsonKey(name: 'data')
+            @JsonRpcApiErrorDataConverter()
+            JsonRpcApiErrorData? errorData)
+        $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _JsonRpcApiError():
+        return $default(_that.code, _that.message, _that.errorData);
+      case _:
+        throw StateError('Unexpected subclass');
+    }
+  }
+
+  /// A variant of `when` that fallback to returning `null`
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>(
+    TResult? Function(
+            JsonRpcApiErrorCode code,
+            String message,
+            @JsonKey(name: 'data')
+            @JsonRpcApiErrorDataConverter()
+            JsonRpcApiErrorData? errorData)?
+        $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _JsonRpcApiError() when $default != null:
+        return $default(_that.code, _that.message, _that.errorData);
+      case _:
+        return null;
+    }
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _JsonRpcApiError implements JsonRpcApiError {
+  const _JsonRpcApiError(
+      {required this.code,
+      required this.message,
+      @JsonKey(name: 'data') @JsonRpcApiErrorDataConverter() this.errorData});
+  factory _JsonRpcApiError.fromJson(Map<String, dynamic> json) =>
+      _$JsonRpcApiErrorFromJson(json);
 
   @override
-  JsonRpcApiErrorCode get code;
+  final JsonRpcApiErrorCode code;
   @override
-  String get message;
+  final String message;
   @override
   @JsonKey(name: 'data')
   @JsonRpcApiErrorDataConverter()
-  JsonRpcApiErrorData? get errorData;
+  final JsonRpcApiErrorData? errorData;
 
   /// Create a copy of JsonRpcApiError
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$JsonRpcApiErrorImplCopyWith<_$JsonRpcApiErrorImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  @pragma('vm:prefer-inline')
+  _$JsonRpcApiErrorCopyWith<_JsonRpcApiError> get copyWith =>
+      __$JsonRpcApiErrorCopyWithImpl<_JsonRpcApiError>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$JsonRpcApiErrorToJson(
+      this,
+    );
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _JsonRpcApiError &&
+            (identical(other.code, code) || other.code == code) &&
+            (identical(other.message, message) || other.message == message) &&
+            (identical(other.errorData, errorData) ||
+                other.errorData == errorData));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(runtimeType, code, message, errorData);
+
+  @override
+  String toString() {
+    return 'JsonRpcApiError(code: $code, message: $message, errorData: $errorData)';
+  }
 }
+
+/// @nodoc
+abstract mixin class _$JsonRpcApiErrorCopyWith<$Res>
+    implements $JsonRpcApiErrorCopyWith<$Res> {
+  factory _$JsonRpcApiErrorCopyWith(
+          _JsonRpcApiError value, $Res Function(_JsonRpcApiError) _then) =
+      __$JsonRpcApiErrorCopyWithImpl;
+  @override
+  @useResult
+  $Res call(
+      {JsonRpcApiErrorCode code,
+      String message,
+      @JsonKey(name: 'data')
+      @JsonRpcApiErrorDataConverter()
+      JsonRpcApiErrorData? errorData});
+
+  @override
+  $JsonRpcApiErrorDataCopyWith<$Res>? get errorData;
+}
+
+/// @nodoc
+class __$JsonRpcApiErrorCopyWithImpl<$Res>
+    implements _$JsonRpcApiErrorCopyWith<$Res> {
+  __$JsonRpcApiErrorCopyWithImpl(this._self, this._then);
+
+  final _JsonRpcApiError _self;
+  final $Res Function(_JsonRpcApiError) _then;
+
+  /// Create a copy of JsonRpcApiError
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $Res call({
+    Object? code = null,
+    Object? message = null,
+    Object? errorData = freezed,
+  }) {
+    return _then(_JsonRpcApiError(
+      code: null == code
+          ? _self.code
+          : code // ignore: cast_nullable_to_non_nullable
+              as JsonRpcApiErrorCode,
+      message: null == message
+          ? _self.message
+          : message // ignore: cast_nullable_to_non_nullable
+              as String,
+      errorData: freezed == errorData
+          ? _self.errorData
+          : errorData // ignore: cast_nullable_to_non_nullable
+              as JsonRpcApiErrorData?,
+    ));
+  }
+
+  /// Create a copy of JsonRpcApiError
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $JsonRpcApiErrorDataCopyWith<$Res>? get errorData {
+    if (_self.errorData == null) {
+      return null;
+    }
+
+    return $JsonRpcApiErrorDataCopyWith<$Res>(_self.errorData!, (value) {
+      return _then(_self.copyWith(errorData: value));
+    });
+  }
+}
+
+// dart format on

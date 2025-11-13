@@ -1,5 +1,5 @@
-// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// coverage:ignore-file
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
@@ -9,11 +9,8 @@ part of 'get_nonce.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// dart format off
 T _$identity<T>(T value) => value;
-
-final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
-
 GetNonce _$GetNonceFromJson(Map<String, dynamic> json) {
   switch (json['starkNetRuntimeTypeToRemove']) {
     case 'result':
@@ -32,96 +29,277 @@ GetNonce _$GetNonceFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$GetNonce {
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(Felt result) result,
-    required TResult Function(JsonRpcApiError error) error,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(Felt result)? result,
-    TResult? Function(JsonRpcApiError error)? error,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(Felt result)? result,
-    TResult Function(JsonRpcApiError error)? error,
-    required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(GetNonceResult value) result,
-    required TResult Function(GetNonceError value) error,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(GetNonceResult value)? result,
-    TResult? Function(GetNonceError value)? error,
-  }) =>
-      throw _privateConstructorUsedError;
+  /// Serializes this GetNonce to a JSON map.
+  Map<String, dynamic> toJson();
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is GetNonce);
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  String toString() {
+    return 'GetNonce()';
+  }
+}
+
+/// @nodoc
+class $GetNonceCopyWith<$Res> {
+  $GetNonceCopyWith(GetNonce _, $Res Function(GetNonce) __);
+}
+
+/// Adds pattern-matching-related methods to [GetNonce].
+extension GetNoncePatterns on GetNonce {
+  /// A variant of `map` that fallback to returning `orElse`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(GetNonceResult value)? result,
     TResult Function(GetNonceError value)? error,
     required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
+  }) {
+    final _that = this;
+    switch (_that) {
+      case GetNonceResult() when result != null:
+        return result(_that);
+      case GetNonceError() when error != null:
+        return error(_that);
+      case _:
+        return orElse();
+    }
+  }
 
-  /// Serializes this GetNonce to a JSON map.
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// Callbacks receives the raw object, upcasted.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case final Subclass2 value:
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(GetNonceResult value) result,
+    required TResult Function(GetNonceError value) error,
+  }) {
+    final _that = this;
+    switch (_that) {
+      case GetNonceResult():
+        return result(_that);
+      case GetNonceError():
+        return error(_that);
+      case _:
+        throw StateError('Unexpected subclass');
+    }
+  }
+
+  /// A variant of `map` that fallback to returning `null`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(GetNonceResult value)? result,
+    TResult? Function(GetNonceError value)? error,
+  }) {
+    final _that = this;
+    switch (_that) {
+      case GetNonceResult() when result != null:
+        return result(_that);
+      case GetNonceError() when error != null:
+        return error(_that);
+      case _:
+        return null;
+    }
+  }
+
+  /// A variant of `when` that fallback to an `orElse` callback.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(Felt result)? result,
+    TResult Function(JsonRpcApiError error)? error,
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case GetNonceResult() when result != null:
+        return result(_that.result);
+      case GetNonceError() when error != null:
+        return error(_that.error);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// As opposed to `map`, this offers destructuring.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case Subclass2(:final field2):
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(Felt result) result,
+    required TResult Function(JsonRpcApiError error) error,
+  }) {
+    final _that = this;
+    switch (_that) {
+      case GetNonceResult():
+        return result(_that.result);
+      case GetNonceError():
+        return error(_that.error);
+      case _:
+        throw StateError('Unexpected subclass');
+    }
+  }
+
+  /// A variant of `when` that fallback to returning `null`
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(Felt result)? result,
+    TResult? Function(JsonRpcApiError error)? error,
+  }) {
+    final _that = this;
+    switch (_that) {
+      case GetNonceResult() when result != null:
+        return result(_that.result);
+      case GetNonceError() when error != null:
+        return error(_that.error);
+      case _:
+        return null;
+    }
+  }
 }
 
 /// @nodoc
-abstract class $GetNonceCopyWith<$Res> {
-  factory $GetNonceCopyWith(GetNonce value, $Res Function(GetNonce) then) =
-      _$GetNonceCopyWithImpl<$Res, GetNonce>;
-}
+@JsonSerializable()
+class GetNonceResult implements GetNonce {
+  const GetNonceResult({required this.result, final String? $type})
+      : $type = $type ?? 'result';
+  factory GetNonceResult.fromJson(Map<String, dynamic> json) =>
+      _$GetNonceResultFromJson(json);
 
-/// @nodoc
-class _$GetNonceCopyWithImpl<$Res, $Val extends GetNonce>
-    implements $GetNonceCopyWith<$Res> {
-  _$GetNonceCopyWithImpl(this._value, this._then);
+  final Felt result;
 
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  @JsonKey(name: 'starkNetRuntimeTypeToRemove')
+  final String $type;
 
   /// Create a copy of GetNonce
   /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  $GetNonceResultCopyWith<GetNonceResult> get copyWith =>
+      _$GetNonceResultCopyWithImpl<GetNonceResult>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$GetNonceResultToJson(
+      this,
+    );
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is GetNonceResult &&
+            (identical(other.result, result) || other.result == result));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(runtimeType, result);
+
+  @override
+  String toString() {
+    return 'GetNonce.result(result: $result)';
+  }
 }
 
 /// @nodoc
-abstract class _$$GetNonceResultImplCopyWith<$Res> {
-  factory _$$GetNonceResultImplCopyWith(_$GetNonceResultImpl value,
-          $Res Function(_$GetNonceResultImpl) then) =
-      __$$GetNonceResultImplCopyWithImpl<$Res>;
+abstract mixin class $GetNonceResultCopyWith<$Res>
+    implements $GetNonceCopyWith<$Res> {
+  factory $GetNonceResultCopyWith(
+          GetNonceResult value, $Res Function(GetNonceResult) _then) =
+      _$GetNonceResultCopyWithImpl;
   @useResult
   $Res call({Felt result});
 }
 
 /// @nodoc
-class __$$GetNonceResultImplCopyWithImpl<$Res>
-    extends _$GetNonceCopyWithImpl<$Res, _$GetNonceResultImpl>
-    implements _$$GetNonceResultImplCopyWith<$Res> {
-  __$$GetNonceResultImplCopyWithImpl(
-      _$GetNonceResultImpl _value, $Res Function(_$GetNonceResultImpl) _then)
-      : super(_value, _then);
+class _$GetNonceResultCopyWithImpl<$Res>
+    implements $GetNonceResultCopyWith<$Res> {
+  _$GetNonceResultCopyWithImpl(this._self, this._then);
+
+  final GetNonceResult _self;
+  final $Res Function(GetNonceResult) _then;
 
   /// Create a copy of GetNonce
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
-  @override
   $Res call({
     Object? result = null,
   }) {
-    return _then(_$GetNonceResultImpl(
+    return _then(GetNonceResult(
       result: null == result
-          ? _value.result
+          ? _self.result
           : result // ignore: cast_nullable_to_non_nullable
               as Felt,
     ));
@@ -130,136 +308,55 @@ class __$$GetNonceResultImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$GetNonceResultImpl implements GetNonceResult {
-  const _$GetNonceResultImpl({required this.result, final String? $type})
-      : $type = $type ?? 'result';
+class GetNonceError implements GetNonce {
+  const GetNonceError({required this.error, final String? $type})
+      : $type = $type ?? 'error';
+  factory GetNonceError.fromJson(Map<String, dynamic> json) =>
+      _$GetNonceErrorFromJson(json);
 
-  factory _$GetNonceResultImpl.fromJson(Map<String, dynamic> json) =>
-      _$$GetNonceResultImplFromJson(json);
-
-  @override
-  final Felt result;
+  final JsonRpcApiError error;
 
   @JsonKey(name: 'starkNetRuntimeTypeToRemove')
   final String $type;
 
+  /// Create a copy of GetNonce
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  $GetNonceErrorCopyWith<GetNonceError> get copyWith =>
+      _$GetNonceErrorCopyWithImpl<GetNonceError>(this, _$identity);
+
   @override
-  String toString() {
-    return 'GetNonce.result(result: $result)';
+  Map<String, dynamic> toJson() {
+    return _$GetNonceErrorToJson(
+      this,
+    );
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$GetNonceResultImpl &&
-            (identical(other.result, result) || other.result == result));
+            other is GetNonceError &&
+            (identical(other.error, error) || other.error == error));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, result);
-
-  /// Create a copy of GetNonce
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$GetNonceResultImplCopyWith<_$GetNonceResultImpl> get copyWith =>
-      __$$GetNonceResultImplCopyWithImpl<_$GetNonceResultImpl>(
-          this, _$identity);
+  int get hashCode => Object.hash(runtimeType, error);
 
   @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(Felt result) result,
-    required TResult Function(JsonRpcApiError error) error,
-  }) {
-    return result(this.result);
+  String toString() {
+    return 'GetNonce.error(error: $error)';
   }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(Felt result)? result,
-    TResult? Function(JsonRpcApiError error)? error,
-  }) {
-    return result?.call(this.result);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(Felt result)? result,
-    TResult Function(JsonRpcApiError error)? error,
-    required TResult orElse(),
-  }) {
-    if (result != null) {
-      return result(this.result);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(GetNonceResult value) result,
-    required TResult Function(GetNonceError value) error,
-  }) {
-    return result(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(GetNonceResult value)? result,
-    TResult? Function(GetNonceError value)? error,
-  }) {
-    return result?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(GetNonceResult value)? result,
-    TResult Function(GetNonceError value)? error,
-    required TResult orElse(),
-  }) {
-    if (result != null) {
-      return result(this);
-    }
-    return orElse();
-  }
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$GetNonceResultImplToJson(
-      this,
-    );
-  }
-}
-
-abstract class GetNonceResult implements GetNonce {
-  const factory GetNonceResult({required final Felt result}) =
-      _$GetNonceResultImpl;
-
-  factory GetNonceResult.fromJson(Map<String, dynamic> json) =
-      _$GetNonceResultImpl.fromJson;
-
-  Felt get result;
-
-  /// Create a copy of GetNonce
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$GetNonceResultImplCopyWith<_$GetNonceResultImpl> get copyWith =>
-      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$GetNonceErrorImplCopyWith<$Res> {
-  factory _$$GetNonceErrorImplCopyWith(
-          _$GetNonceErrorImpl value, $Res Function(_$GetNonceErrorImpl) then) =
-      __$$GetNonceErrorImplCopyWithImpl<$Res>;
+abstract mixin class $GetNonceErrorCopyWith<$Res>
+    implements $GetNonceCopyWith<$Res> {
+  factory $GetNonceErrorCopyWith(
+          GetNonceError value, $Res Function(GetNonceError) _then) =
+      _$GetNonceErrorCopyWithImpl;
   @useResult
   $Res call({JsonRpcApiError error});
 
@@ -267,23 +364,22 @@ abstract class _$$GetNonceErrorImplCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$GetNonceErrorImplCopyWithImpl<$Res>
-    extends _$GetNonceCopyWithImpl<$Res, _$GetNonceErrorImpl>
-    implements _$$GetNonceErrorImplCopyWith<$Res> {
-  __$$GetNonceErrorImplCopyWithImpl(
-      _$GetNonceErrorImpl _value, $Res Function(_$GetNonceErrorImpl) _then)
-      : super(_value, _then);
+class _$GetNonceErrorCopyWithImpl<$Res>
+    implements $GetNonceErrorCopyWith<$Res> {
+  _$GetNonceErrorCopyWithImpl(this._self, this._then);
+
+  final GetNonceError _self;
+  final $Res Function(GetNonceError) _then;
 
   /// Create a copy of GetNonce
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
-  @override
   $Res call({
     Object? error = null,
   }) {
-    return _then(_$GetNonceErrorImpl(
+    return _then(GetNonceError(
       error: null == error
-          ? _value.error
+          ? _self.error
           : error // ignore: cast_nullable_to_non_nullable
               as JsonRpcApiError,
     ));
@@ -294,134 +390,10 @@ class __$$GetNonceErrorImplCopyWithImpl<$Res>
   @override
   @pragma('vm:prefer-inline')
   $JsonRpcApiErrorCopyWith<$Res> get error {
-    return $JsonRpcApiErrorCopyWith<$Res>(_value.error, (value) {
-      return _then(_value.copyWith(error: value));
+    return $JsonRpcApiErrorCopyWith<$Res>(_self.error, (value) {
+      return _then(_self.copyWith(error: value));
     });
   }
 }
 
-/// @nodoc
-@JsonSerializable()
-class _$GetNonceErrorImpl implements GetNonceError {
-  const _$GetNonceErrorImpl({required this.error, final String? $type})
-      : $type = $type ?? 'error';
-
-  factory _$GetNonceErrorImpl.fromJson(Map<String, dynamic> json) =>
-      _$$GetNonceErrorImplFromJson(json);
-
-  @override
-  final JsonRpcApiError error;
-
-  @JsonKey(name: 'starkNetRuntimeTypeToRemove')
-  final String $type;
-
-  @override
-  String toString() {
-    return 'GetNonce.error(error: $error)';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$GetNonceErrorImpl &&
-            (identical(other.error, error) || other.error == error));
-  }
-
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  int get hashCode => Object.hash(runtimeType, error);
-
-  /// Create a copy of GetNonce
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$GetNonceErrorImplCopyWith<_$GetNonceErrorImpl> get copyWith =>
-      __$$GetNonceErrorImplCopyWithImpl<_$GetNonceErrorImpl>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(Felt result) result,
-    required TResult Function(JsonRpcApiError error) error,
-  }) {
-    return error(this.error);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(Felt result)? result,
-    TResult? Function(JsonRpcApiError error)? error,
-  }) {
-    return error?.call(this.error);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(Felt result)? result,
-    TResult Function(JsonRpcApiError error)? error,
-    required TResult orElse(),
-  }) {
-    if (error != null) {
-      return error(this.error);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(GetNonceResult value) result,
-    required TResult Function(GetNonceError value) error,
-  }) {
-    return error(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(GetNonceResult value)? result,
-    TResult? Function(GetNonceError value)? error,
-  }) {
-    return error?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(GetNonceResult value)? result,
-    TResult Function(GetNonceError value)? error,
-    required TResult orElse(),
-  }) {
-    if (error != null) {
-      return error(this);
-    }
-    return orElse();
-  }
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$GetNonceErrorImplToJson(
-      this,
-    );
-  }
-}
-
-abstract class GetNonceError implements GetNonce {
-  const factory GetNonceError({required final JsonRpcApiError error}) =
-      _$GetNonceErrorImpl;
-
-  factory GetNonceError.fromJson(Map<String, dynamic> json) =
-      _$GetNonceErrorImpl.fromJson;
-
-  JsonRpcApiError get error;
-
-  /// Create a copy of GetNonce
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$GetNonceErrorImplCopyWith<_$GetNonceErrorImpl> get copyWith =>
-      throw _privateConstructorUsedError;
-}
+// dart format on

@@ -6,9 +6,8 @@ part of 'avnu_deploy_account.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$AvnuDeploymentDataImpl _$$AvnuDeploymentDataImplFromJson(
-        Map<String, dynamic> json) =>
-    _$AvnuDeploymentDataImpl(
+_AvnuDeploymentData _$AvnuDeploymentDataFromJson(Map<String, dynamic> json) =>
+    _AvnuDeploymentData(
       classHash: json['class_hash'] as String,
       salt: json['salt'] as String,
       unique: json['unique'] as String,
@@ -18,8 +17,7 @@ _$AvnuDeploymentDataImpl _$$AvnuDeploymentDataImplFromJson(
           (json['sigdata'] as List<dynamic>).map((e) => e as String).toList(),
     );
 
-Map<String, dynamic> _$$AvnuDeploymentDataImplToJson(
-        _$AvnuDeploymentDataImpl instance) =>
+Map<String, dynamic> _$AvnuDeploymentDataToJson(_AvnuDeploymentData instance) =>
     <String, dynamic>{
       'class_hash': instance.classHash,
       'salt': instance.salt,
@@ -28,45 +26,45 @@ Map<String, dynamic> _$$AvnuDeploymentDataImplToJson(
       'sigdata': instance.sigdata,
     };
 
-_$AvnuDeployAccountRequestImpl _$$AvnuDeployAccountRequestImplFromJson(
+_AvnuDeployAccountRequest _$AvnuDeployAccountRequestFromJson(
         Map<String, dynamic> json) =>
-    _$AvnuDeployAccountRequestImpl(
+    _AvnuDeployAccountRequest(
       userAddress: json['userAddress'] as String,
       deploymentData: AvnuDeploymentData.fromJson(
           json['deploymentData'] as Map<String, dynamic>),
     );
 
-Map<String, dynamic> _$$AvnuDeployAccountRequestImplToJson(
-        _$AvnuDeployAccountRequestImpl instance) =>
+Map<String, dynamic> _$AvnuDeployAccountRequestToJson(
+        _AvnuDeployAccountRequest instance) =>
     <String, dynamic>{
       'userAddress': instance.userAddress,
       'deploymentData': instance.deploymentData,
     };
 
-_$AvnuDeployAccountResultImpl _$$AvnuDeployAccountResultImplFromJson(
+AvnuDeployAccountResult _$AvnuDeployAccountResultFromJson(
         Map<String, dynamic> json) =>
-    _$AvnuDeployAccountResultImpl(
+    AvnuDeployAccountResult(
       json['transactionHash'] as String,
       $type: json['runtimeType'] as String?,
     );
 
-Map<String, dynamic> _$$AvnuDeployAccountResultImplToJson(
-        _$AvnuDeployAccountResultImpl instance) =>
+Map<String, dynamic> _$AvnuDeployAccountResultToJson(
+        AvnuDeployAccountResult instance) =>
     <String, dynamic>{
       'transactionHash': instance.transactionHash,
       'runtimeType': instance.$type,
     };
 
-_$AvnuDeployAccountErrorImpl _$$AvnuDeployAccountErrorImplFromJson(
+AvnuDeployAccountError _$AvnuDeployAccountErrorFromJson(
         Map<String, dynamic> json) =>
-    _$AvnuDeployAccountErrorImpl(
+    AvnuDeployAccountError(
       (json['messages'] as List<dynamic>).map((e) => e as String).toList(),
       json['revertError'] as String?,
       $type: json['runtimeType'] as String?,
     );
 
-Map<String, dynamic> _$$AvnuDeployAccountErrorImplToJson(
-        _$AvnuDeployAccountErrorImpl instance) =>
+Map<String, dynamic> _$AvnuDeployAccountErrorToJson(
+        AvnuDeployAccountError instance) =>
     <String, dynamic>{
       'messages': instance.messages,
       'revertError': instance.revertError,

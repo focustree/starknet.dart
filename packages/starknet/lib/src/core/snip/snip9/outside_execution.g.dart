@@ -6,9 +6,9 @@ part of 'outside_execution.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$OutsideExecutionMessageV1Impl _$$OutsideExecutionMessageV1ImplFromJson(
+_OutsideExecutionMessageV1 _$OutsideExecutionMessageV1FromJson(
         Map<String, dynamic> json) =>
-    _$OutsideExecutionMessageV1Impl(
+    _OutsideExecutionMessageV1(
       caller: json['caller'] as String,
       nonce: json['nonce'] as String,
       executeAfter: json['execute_after'] as String,
@@ -20,8 +20,8 @@ _$OutsideExecutionMessageV1Impl _$$OutsideExecutionMessageV1ImplFromJson(
           .toList(),
     );
 
-Map<String, dynamic> _$$OutsideExecutionMessageV1ImplToJson(
-        _$OutsideExecutionMessageV1Impl instance) =>
+Map<String, dynamic> _$OutsideExecutionMessageV1ToJson(
+        _OutsideExecutionMessageV1 instance) =>
     <String, dynamic>{
       'caller': instance.caller,
       'nonce': instance.nonce,
@@ -31,9 +31,9 @@ Map<String, dynamic> _$$OutsideExecutionMessageV1ImplToJson(
       'calls': instance.calls.map((e) => e.toJson()).toList(),
     };
 
-_$OutsideExecutionMessageV2Impl _$$OutsideExecutionMessageV2ImplFromJson(
+_OutsideExecutionMessageV2 _$OutsideExecutionMessageV2FromJson(
         Map<String, dynamic> json) =>
-    _$OutsideExecutionMessageV2Impl(
+    _OutsideExecutionMessageV2(
       caller: json['Caller'] as String,
       nonce: json['Nonce'] as String,
       executeAfter: json['Execute After'] as String,
@@ -44,8 +44,8 @@ _$OutsideExecutionMessageV2Impl _$$OutsideExecutionMessageV2ImplFromJson(
           .toList(),
     );
 
-Map<String, dynamic> _$$OutsideExecutionMessageV2ImplToJson(
-        _$OutsideExecutionMessageV2Impl instance) =>
+Map<String, dynamic> _$OutsideExecutionMessageV2ToJson(
+        _OutsideExecutionMessageV2 instance) =>
     <String, dynamic>{
       'Caller': instance.caller,
       'Nonce': instance.nonce,
@@ -54,9 +54,9 @@ Map<String, dynamic> _$$OutsideExecutionMessageV2ImplToJson(
       'Calls': instance.calls.map((e) => e.toJson()).toList(),
     };
 
-_$OutsideExecutionCallV1Impl _$$OutsideExecutionCallV1ImplFromJson(
+_OutsideExecutionCallV1 _$OutsideExecutionCallV1FromJson(
         Map<String, dynamic> json) =>
-    _$OutsideExecutionCallV1Impl(
+    _OutsideExecutionCallV1(
       to: json['to'] as String,
       selector: json['selector'] as String,
       calldataLen: (json['calldata_len'] as num).toInt(),
@@ -64,8 +64,8 @@ _$OutsideExecutionCallV1Impl _$$OutsideExecutionCallV1ImplFromJson(
           (json['calldata'] as List<dynamic>).map((e) => e as String).toList(),
     );
 
-Map<String, dynamic> _$$OutsideExecutionCallV1ImplToJson(
-        _$OutsideExecutionCallV1Impl instance) =>
+Map<String, dynamic> _$OutsideExecutionCallV1ToJson(
+        _OutsideExecutionCallV1 instance) =>
     <String, dynamic>{
       'to': instance.to,
       'selector': instance.selector,
@@ -73,17 +73,17 @@ Map<String, dynamic> _$$OutsideExecutionCallV1ImplToJson(
       'calldata': instance.calldata,
     };
 
-_$OutsideExecutionCallV2Impl _$$OutsideExecutionCallV2ImplFromJson(
+_OutsideExecutionCallV2 _$OutsideExecutionCallV2FromJson(
         Map<String, dynamic> json) =>
-    _$OutsideExecutionCallV2Impl(
+    _OutsideExecutionCallV2(
       to: json['To'] as String,
       selector: json['Selector'] as String,
       calldata:
           (json['Calldata'] as List<dynamic>).map((e) => e as String).toList(),
     );
 
-Map<String, dynamic> _$$OutsideExecutionCallV2ImplToJson(
-        _$OutsideExecutionCallV2Impl instance) =>
+Map<String, dynamic> _$OutsideExecutionCallV2ToJson(
+        _OutsideExecutionCallV2 instance) =>
     <String, dynamic>{
       'To': instance.to,
       'Selector': instance.selector,

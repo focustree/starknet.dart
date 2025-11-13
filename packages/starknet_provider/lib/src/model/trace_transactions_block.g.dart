@@ -21,33 +21,31 @@ Map<String, dynamic> _$BlockTransactionTraceToJson(
       'trace_root': instance.traceRoot.toJson(),
     };
 
-_$GetBlockTransactionTracesResultImpl
-    _$$GetBlockTransactionTracesResultImplFromJson(Map<String, dynamic> json) =>
-        _$GetBlockTransactionTracesResultImpl(
-          result: (json['result'] as List<dynamic>)
-              .map((e) =>
-                  BlockTransactionTrace.fromJson(e as Map<String, dynamic>))
-              .toList(),
-          $type: json['starkNetRuntimeTypeToRemove'] as String?,
-        );
+GetBlockTransactionTracesResult _$GetBlockTransactionTracesResultFromJson(
+        Map<String, dynamic> json) =>
+    GetBlockTransactionTracesResult(
+      result: (json['result'] as List<dynamic>)
+          .map((e) => BlockTransactionTrace.fromJson(e as Map<String, dynamic>))
+          .toList(),
+      $type: json['starkNetRuntimeTypeToRemove'] as String?,
+    );
 
-Map<String, dynamic> _$$GetBlockTransactionTracesResultImplToJson(
-        _$GetBlockTransactionTracesResultImpl instance) =>
+Map<String, dynamic> _$GetBlockTransactionTracesResultToJson(
+        GetBlockTransactionTracesResult instance) =>
     <String, dynamic>{
       'result': instance.result.map((e) => e.toJson()).toList(),
       'starkNetRuntimeTypeToRemove': instance.$type,
     };
 
-_$GetBlockTransactionTracesErrorImpl
-    _$$GetBlockTransactionTracesErrorImplFromJson(Map<String, dynamic> json) =>
-        _$GetBlockTransactionTracesErrorImpl(
-          error:
-              JsonRpcApiError.fromJson(json['error'] as Map<String, dynamic>),
-          $type: json['starkNetRuntimeTypeToRemove'] as String?,
-        );
+GetBlockTransactionTracesError _$GetBlockTransactionTracesErrorFromJson(
+        Map<String, dynamic> json) =>
+    GetBlockTransactionTracesError(
+      error: JsonRpcApiError.fromJson(json['error'] as Map<String, dynamic>),
+      $type: json['starkNetRuntimeTypeToRemove'] as String?,
+    );
 
-Map<String, dynamic> _$$GetBlockTransactionTracesErrorImplToJson(
-        _$GetBlockTransactionTracesErrorImpl instance) =>
+Map<String, dynamic> _$GetBlockTransactionTracesErrorToJson(
+        GetBlockTransactionTracesError instance) =>
     <String, dynamic>{
       'error': instance.error.toJson(),
       'starkNetRuntimeTypeToRemove': instance.$type,

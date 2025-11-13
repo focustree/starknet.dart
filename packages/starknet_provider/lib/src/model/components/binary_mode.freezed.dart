@@ -1,5 +1,5 @@
-// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// coverage:ignore-file
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
@@ -9,133 +9,29 @@ part of 'binary_mode.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// dart format off
 T _$identity<T>(T value) => value;
-
-final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
-
-BinaryNode _$BinaryNodeFromJson(Map<String, dynamic> json) {
-  return _BinaryNode.fromJson(json);
-}
 
 /// @nodoc
 mixin _$BinaryNode {
-  Felt get left => throw _privateConstructorUsedError;
-  Felt get right => throw _privateConstructorUsedError;
-
-  /// Serializes this BinaryNode to a JSON map.
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  Felt get left;
+  Felt get right;
 
   /// Create a copy of BinaryNode
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
   $BinaryNodeCopyWith<BinaryNode> get copyWith =>
-      throw _privateConstructorUsedError;
-}
+      _$BinaryNodeCopyWithImpl<BinaryNode>(this as BinaryNode, _$identity);
 
-/// @nodoc
-abstract class $BinaryNodeCopyWith<$Res> {
-  factory $BinaryNodeCopyWith(
-          BinaryNode value, $Res Function(BinaryNode) then) =
-      _$BinaryNodeCopyWithImpl<$Res, BinaryNode>;
-  @useResult
-  $Res call({Felt left, Felt right});
-}
-
-/// @nodoc
-class _$BinaryNodeCopyWithImpl<$Res, $Val extends BinaryNode>
-    implements $BinaryNodeCopyWith<$Res> {
-  _$BinaryNodeCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-
-  /// Create a copy of BinaryNode
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? left = null,
-    Object? right = null,
-  }) {
-    return _then(_value.copyWith(
-      left: null == left
-          ? _value.left
-          : left // ignore: cast_nullable_to_non_nullable
-              as Felt,
-      right: null == right
-          ? _value.right
-          : right // ignore: cast_nullable_to_non_nullable
-              as Felt,
-    ) as $Val);
-  }
-}
-
-/// @nodoc
-abstract class _$$BinaryNodeImplCopyWith<$Res>
-    implements $BinaryNodeCopyWith<$Res> {
-  factory _$$BinaryNodeImplCopyWith(
-          _$BinaryNodeImpl value, $Res Function(_$BinaryNodeImpl) then) =
-      __$$BinaryNodeImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call({Felt left, Felt right});
-}
-
-/// @nodoc
-class __$$BinaryNodeImplCopyWithImpl<$Res>
-    extends _$BinaryNodeCopyWithImpl<$Res, _$BinaryNodeImpl>
-    implements _$$BinaryNodeImplCopyWith<$Res> {
-  __$$BinaryNodeImplCopyWithImpl(
-      _$BinaryNodeImpl _value, $Res Function(_$BinaryNodeImpl) _then)
-      : super(_value, _then);
-
-  /// Create a copy of BinaryNode
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? left = null,
-    Object? right = null,
-  }) {
-    return _then(_$BinaryNodeImpl(
-      left: null == left
-          ? _value.left
-          : left // ignore: cast_nullable_to_non_nullable
-              as Felt,
-      right: null == right
-          ? _value.right
-          : right // ignore: cast_nullable_to_non_nullable
-              as Felt,
-    ));
-  }
-}
-
-/// @nodoc
-@JsonSerializable()
-class _$BinaryNodeImpl implements _BinaryNode {
-  const _$BinaryNodeImpl({required this.left, required this.right});
-
-  factory _$BinaryNodeImpl.fromJson(Map<String, dynamic> json) =>
-      _$$BinaryNodeImplFromJson(json);
-
-  @override
-  final Felt left;
-  @override
-  final Felt right;
-
-  @override
-  String toString() {
-    return 'BinaryNode(left: $left, right: $right)';
-  }
+  /// Serializes this BinaryNode to a JSON map.
+  Map<String, dynamic> toJson();
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$BinaryNodeImpl &&
+            other is BinaryNode &&
             (identical(other.left, left) || other.left == left) &&
             (identical(other.right, right) || other.right == right));
   }
@@ -144,38 +40,289 @@ class _$BinaryNodeImpl implements _BinaryNode {
   @override
   int get hashCode => Object.hash(runtimeType, left, right);
 
-  /// Create a copy of BinaryNode
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  @pragma('vm:prefer-inline')
-  _$$BinaryNodeImplCopyWith<_$BinaryNodeImpl> get copyWith =>
-      __$$BinaryNodeImplCopyWithImpl<_$BinaryNodeImpl>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$BinaryNodeImplToJson(
-      this,
-    );
+  String toString() {
+    return 'BinaryNode(left: $left, right: $right)';
   }
 }
 
-abstract class _BinaryNode implements BinaryNode {
-  const factory _BinaryNode(
-      {required final Felt left, required final Felt right}) = _$BinaryNodeImpl;
+/// @nodoc
+abstract mixin class $BinaryNodeCopyWith<$Res> {
+  factory $BinaryNodeCopyWith(
+          BinaryNode value, $Res Function(BinaryNode) _then) =
+      _$BinaryNodeCopyWithImpl;
+  @useResult
+  $Res call({Felt left, Felt right});
+}
 
-  factory _BinaryNode.fromJson(Map<String, dynamic> json) =
-      _$BinaryNodeImpl.fromJson;
+/// @nodoc
+class _$BinaryNodeCopyWithImpl<$Res> implements $BinaryNodeCopyWith<$Res> {
+  _$BinaryNodeCopyWithImpl(this._self, this._then);
+
+  final BinaryNode _self;
+  final $Res Function(BinaryNode) _then;
+
+  /// Create a copy of BinaryNode
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? left = null,
+    Object? right = null,
+  }) {
+    return _then(_self.copyWith(
+      left: null == left
+          ? _self.left
+          : left // ignore: cast_nullable_to_non_nullable
+              as Felt,
+      right: null == right
+          ? _self.right
+          : right // ignore: cast_nullable_to_non_nullable
+              as Felt,
+    ));
+  }
+}
+
+/// Adds pattern-matching-related methods to [BinaryNode].
+extension BinaryNodePatterns on BinaryNode {
+  /// A variant of `map` that fallback to returning `orElse`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(_BinaryNode value)? $default, {
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _BinaryNode() when $default != null:
+        return $default(_that);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// Callbacks receives the raw object, upcasted.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case final Subclass2 value:
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(_BinaryNode value) $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _BinaryNode():
+        return $default(_that);
+      case _:
+        throw StateError('Unexpected subclass');
+    }
+  }
+
+  /// A variant of `map` that fallback to returning `null`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>(
+    TResult? Function(_BinaryNode value)? $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _BinaryNode() when $default != null:
+        return $default(_that);
+      case _:
+        return null;
+    }
+  }
+
+  /// A variant of `when` that fallback to an `orElse` callback.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(Felt left, Felt right)? $default, {
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _BinaryNode() when $default != null:
+        return $default(_that.left, _that.right);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// As opposed to `map`, this offers destructuring.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case Subclass2(:final field2):
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>(
+    TResult Function(Felt left, Felt right) $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _BinaryNode():
+        return $default(_that.left, _that.right);
+      case _:
+        throw StateError('Unexpected subclass');
+    }
+  }
+
+  /// A variant of `when` that fallback to returning `null`
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>(
+    TResult? Function(Felt left, Felt right)? $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _BinaryNode() when $default != null:
+        return $default(_that.left, _that.right);
+      case _:
+        return null;
+    }
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _BinaryNode implements BinaryNode {
+  const _BinaryNode({required this.left, required this.right});
+  factory _BinaryNode.fromJson(Map<String, dynamic> json) =>
+      _$BinaryNodeFromJson(json);
 
   @override
-  Felt get left;
+  final Felt left;
   @override
-  Felt get right;
+  final Felt right;
 
   /// Create a copy of BinaryNode
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$BinaryNodeImplCopyWith<_$BinaryNodeImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  @pragma('vm:prefer-inline')
+  _$BinaryNodeCopyWith<_BinaryNode> get copyWith =>
+      __$BinaryNodeCopyWithImpl<_BinaryNode>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$BinaryNodeToJson(
+      this,
+    );
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _BinaryNode &&
+            (identical(other.left, left) || other.left == left) &&
+            (identical(other.right, right) || other.right == right));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(runtimeType, left, right);
+
+  @override
+  String toString() {
+    return 'BinaryNode(left: $left, right: $right)';
+  }
 }
+
+/// @nodoc
+abstract mixin class _$BinaryNodeCopyWith<$Res>
+    implements $BinaryNodeCopyWith<$Res> {
+  factory _$BinaryNodeCopyWith(
+          _BinaryNode value, $Res Function(_BinaryNode) _then) =
+      __$BinaryNodeCopyWithImpl;
+  @override
+  @useResult
+  $Res call({Felt left, Felt right});
+}
+
+/// @nodoc
+class __$BinaryNodeCopyWithImpl<$Res> implements _$BinaryNodeCopyWith<$Res> {
+  __$BinaryNodeCopyWithImpl(this._self, this._then);
+
+  final _BinaryNode _self;
+  final $Res Function(_BinaryNode) _then;
+
+  /// Create a copy of BinaryNode
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $Res call({
+    Object? left = null,
+    Object? right = null,
+  }) {
+    return _then(_BinaryNode(
+      left: null == left
+          ? _self.left
+          : left // ignore: cast_nullable_to_non_nullable
+              as Felt,
+      right: null == right
+          ? _self.right
+          : right // ignore: cast_nullable_to_non_nullable
+              as Felt,
+    ));
+  }
+}
+
+// dart format on

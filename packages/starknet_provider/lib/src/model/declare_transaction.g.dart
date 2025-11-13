@@ -6,22 +6,22 @@ part of 'declare_transaction.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$DeclareTransactionRequestImpl _$$DeclareTransactionRequestImplFromJson(
+_DeclareTransactionRequest _$DeclareTransactionRequestFromJson(
         Map<String, dynamic> json) =>
-    _$DeclareTransactionRequestImpl(
+    _DeclareTransactionRequest(
       declareTransaction: DeclareTransaction.fromJson(
           json['declare_transaction'] as Map<String, dynamic>),
     );
 
-Map<String, dynamic> _$$DeclareTransactionRequestImplToJson(
-        _$DeclareTransactionRequestImpl instance) =>
+Map<String, dynamic> _$DeclareTransactionRequestToJson(
+        _DeclareTransactionRequest instance) =>
     <String, dynamic>{
       'declare_transaction': instance.declareTransaction.toJson(),
     };
 
-_$DeclareTransactionV1Impl _$$DeclareTransactionV1ImplFromJson(
+_DeclareTransactionV1 _$DeclareTransactionV1FromJson(
         Map<String, dynamic> json) =>
-    _$DeclareTransactionV1Impl(
+    _DeclareTransactionV1(
       type: json['type'] as String? ?? 'DECLARE',
       version: json['version'] as String? ?? declareTxnV1,
       max_fee: Felt.fromJson(json['max_fee'] as String),
@@ -34,8 +34,8 @@ _$DeclareTransactionV1Impl _$$DeclareTransactionV1ImplFromJson(
           json['contract_class'] as Map<String, dynamic>),
     );
 
-Map<String, dynamic> _$$DeclareTransactionV1ImplToJson(
-        _$DeclareTransactionV1Impl instance) =>
+Map<String, dynamic> _$DeclareTransactionV1ToJson(
+        _DeclareTransactionV1 instance) =>
     <String, dynamic>{
       'type': instance.type,
       'version': instance.version,
@@ -46,9 +46,9 @@ Map<String, dynamic> _$$DeclareTransactionV1ImplToJson(
       'contract_class': instance.contractClass.toJson(),
     };
 
-_$DeclareTransactionV2Impl _$$DeclareTransactionV2ImplFromJson(
+_DeclareTransactionV2 _$DeclareTransactionV2FromJson(
         Map<String, dynamic> json) =>
-    _$DeclareTransactionV2Impl(
+    _DeclareTransactionV2(
       type: json['type'] as String? ?? 'DECLARE',
       version: json['version'] as String? ?? declareTxnV2,
       max_fee: json['max_fee'] as String,
@@ -62,8 +62,8 @@ _$DeclareTransactionV2Impl _$$DeclareTransactionV2ImplFromJson(
       compiledClassHash: Felt.fromJson(json['compiled_class_hash'] as String),
     );
 
-Map<String, dynamic> _$$DeclareTransactionV2ImplToJson(
-        _$DeclareTransactionV2Impl instance) =>
+Map<String, dynamic> _$DeclareTransactionV2ToJson(
+        _DeclareTransactionV2 instance) =>
     <String, dynamic>{
       'type': instance.type,
       'version': instance.version,
@@ -75,9 +75,9 @@ Map<String, dynamic> _$$DeclareTransactionV2ImplToJson(
       'compiled_class_hash': instance.compiledClassHash.toJson(),
     };
 
-_$DeclareTransactionV3Impl _$$DeclareTransactionV3ImplFromJson(
+_DeclareTransactionV3 _$DeclareTransactionV3FromJson(
         Map<String, dynamic> json) =>
-    _$DeclareTransactionV3Impl(
+    _DeclareTransactionV3(
       type: json['type'] as String? ?? 'DECLARE',
       version: json['version'] as String? ?? declareTxnV3,
       accountDeploymentData: (json['account_deployment_data'] as List<dynamic>)
@@ -103,8 +103,8 @@ _$DeclareTransactionV3Impl _$$DeclareTransactionV3ImplFromJson(
       tip: json['tip'] as String,
     );
 
-Map<String, dynamic> _$$DeclareTransactionV3ImplToJson(
-        _$DeclareTransactionV3Impl instance) =>
+Map<String, dynamic> _$DeclareTransactionV3ToJson(
+        _DeclareTransactionV3 instance) =>
     <String, dynamic>{
       'type': instance.type,
       'version': instance.version,
@@ -123,45 +123,44 @@ Map<String, dynamic> _$$DeclareTransactionV3ImplToJson(
       'tip': instance.tip,
     };
 
-_$DeclareTransactionResultImpl _$$DeclareTransactionResultImplFromJson(
+DeclareTransactionResult _$DeclareTransactionResultFromJson(
         Map<String, dynamic> json) =>
-    _$DeclareTransactionResultImpl(
+    DeclareTransactionResult(
       result: DeclareTransactionResponseResult.fromJson(
           json['result'] as Map<String, dynamic>),
       $type: json['starkNetRuntimeTypeToRemove'] as String?,
     );
 
-Map<String, dynamic> _$$DeclareTransactionResultImplToJson(
-        _$DeclareTransactionResultImpl instance) =>
+Map<String, dynamic> _$DeclareTransactionResultToJson(
+        DeclareTransactionResult instance) =>
     <String, dynamic>{
       'result': instance.result.toJson(),
       'starkNetRuntimeTypeToRemove': instance.$type,
     };
 
-_$DeclareTransactionErrorImpl _$$DeclareTransactionErrorImplFromJson(
+DeclareTransactionError _$DeclareTransactionErrorFromJson(
         Map<String, dynamic> json) =>
-    _$DeclareTransactionErrorImpl(
+    DeclareTransactionError(
       error: JsonRpcApiError.fromJson(json['error'] as Map<String, dynamic>),
       $type: json['starkNetRuntimeTypeToRemove'] as String?,
     );
 
-Map<String, dynamic> _$$DeclareTransactionErrorImplToJson(
-        _$DeclareTransactionErrorImpl instance) =>
+Map<String, dynamic> _$DeclareTransactionErrorToJson(
+        DeclareTransactionError instance) =>
     <String, dynamic>{
       'error': instance.error.toJson(),
       'starkNetRuntimeTypeToRemove': instance.$type,
     };
 
-_$DeclareTransactionResponseResultImpl
-    _$$DeclareTransactionResponseResultImplFromJson(
-            Map<String, dynamic> json) =>
-        _$DeclareTransactionResponseResultImpl(
-          classHash: Felt.fromJson(json['class_hash'] as String),
-          transactionHash: Felt.fromJson(json['transaction_hash'] as String),
-        );
+_DeclareTransactionResponseResult _$DeclareTransactionResponseResultFromJson(
+        Map<String, dynamic> json) =>
+    _DeclareTransactionResponseResult(
+      classHash: Felt.fromJson(json['class_hash'] as String),
+      transactionHash: Felt.fromJson(json['transaction_hash'] as String),
+    );
 
-Map<String, dynamic> _$$DeclareTransactionResponseResultImplToJson(
-        _$DeclareTransactionResponseResultImpl instance) =>
+Map<String, dynamic> _$DeclareTransactionResponseResultToJson(
+        _DeclareTransactionResponseResult instance) =>
     <String, dynamic>{
       'class_hash': instance.classHash.toJson(),
       'transaction_hash': instance.transactionHash.toJson(),

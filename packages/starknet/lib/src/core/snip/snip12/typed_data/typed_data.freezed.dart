@@ -1,5 +1,5 @@
-// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// coverage:ignore-file
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
@@ -9,149 +9,31 @@ part of 'typed_data.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// dart format off
 T _$identity<T>(T value) => value;
-
-final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
-
-SNIP12TypedParameter _$SNIP12TypedParameterFromJson(Map<String, dynamic> json) {
-  return _SNIP12TypedParameter.fromJson(json);
-}
 
 /// @nodoc
 mixin _$SNIP12TypedParameter {
-  String get name => throw _privateConstructorUsedError;
-  String get type => throw _privateConstructorUsedError;
-  String? get contains => throw _privateConstructorUsedError;
-
-  /// Serializes this SNIP12TypedParameter to a JSON map.
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  String get name;
+  String get type;
+  String? get contains;
 
   /// Create a copy of SNIP12TypedParameter
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
   $SNIP12TypedParameterCopyWith<SNIP12TypedParameter> get copyWith =>
-      throw _privateConstructorUsedError;
-}
+      _$SNIP12TypedParameterCopyWithImpl<SNIP12TypedParameter>(
+          this as SNIP12TypedParameter, _$identity);
 
-/// @nodoc
-abstract class $SNIP12TypedParameterCopyWith<$Res> {
-  factory $SNIP12TypedParameterCopyWith(SNIP12TypedParameter value,
-          $Res Function(SNIP12TypedParameter) then) =
-      _$SNIP12TypedParameterCopyWithImpl<$Res, SNIP12TypedParameter>;
-  @useResult
-  $Res call({String name, String type, String? contains});
-}
-
-/// @nodoc
-class _$SNIP12TypedParameterCopyWithImpl<$Res,
-        $Val extends SNIP12TypedParameter>
-    implements $SNIP12TypedParameterCopyWith<$Res> {
-  _$SNIP12TypedParameterCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-
-  /// Create a copy of SNIP12TypedParameter
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? name = null,
-    Object? type = null,
-    Object? contains = freezed,
-  }) {
-    return _then(_value.copyWith(
-      name: null == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
-              as String,
-      type: null == type
-          ? _value.type
-          : type // ignore: cast_nullable_to_non_nullable
-              as String,
-      contains: freezed == contains
-          ? _value.contains
-          : contains // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ) as $Val);
-  }
-}
-
-/// @nodoc
-abstract class _$$SNIP12TypedParameterImplCopyWith<$Res>
-    implements $SNIP12TypedParameterCopyWith<$Res> {
-  factory _$$SNIP12TypedParameterImplCopyWith(_$SNIP12TypedParameterImpl value,
-          $Res Function(_$SNIP12TypedParameterImpl) then) =
-      __$$SNIP12TypedParameterImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call({String name, String type, String? contains});
-}
-
-/// @nodoc
-class __$$SNIP12TypedParameterImplCopyWithImpl<$Res>
-    extends _$SNIP12TypedParameterCopyWithImpl<$Res, _$SNIP12TypedParameterImpl>
-    implements _$$SNIP12TypedParameterImplCopyWith<$Res> {
-  __$$SNIP12TypedParameterImplCopyWithImpl(_$SNIP12TypedParameterImpl _value,
-      $Res Function(_$SNIP12TypedParameterImpl) _then)
-      : super(_value, _then);
-
-  /// Create a copy of SNIP12TypedParameter
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? name = null,
-    Object? type = null,
-    Object? contains = freezed,
-  }) {
-    return _then(_$SNIP12TypedParameterImpl(
-      name: null == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
-              as String,
-      type: null == type
-          ? _value.type
-          : type // ignore: cast_nullable_to_non_nullable
-              as String,
-      contains: freezed == contains
-          ? _value.contains
-          : contains // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ));
-  }
-}
-
-/// @nodoc
-
-@JsonSerializable(includeIfNull: false)
-class _$SNIP12TypedParameterImpl implements _SNIP12TypedParameter {
-  const _$SNIP12TypedParameterImpl(
-      {required this.name, required this.type, this.contains});
-
-  factory _$SNIP12TypedParameterImpl.fromJson(Map<String, dynamic> json) =>
-      _$$SNIP12TypedParameterImplFromJson(json);
-
-  @override
-  final String name;
-  @override
-  final String type;
-  @override
-  final String? contains;
-
-  @override
-  String toString() {
-    return 'SNIP12TypedParameter(name: $name, type: $type, contains: $contains)';
-  }
+  /// Serializes this SNIP12TypedParameter to a JSON map.
+  Map<String, dynamic> toJson();
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$SNIP12TypedParameterImpl &&
+            other is SNIP12TypedParameter &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.type, type) || other.type == type) &&
             (identical(other.contains, contains) ||
@@ -162,212 +44,334 @@ class _$SNIP12TypedParameterImpl implements _SNIP12TypedParameter {
   @override
   int get hashCode => Object.hash(runtimeType, name, type, contains);
 
-  /// Create a copy of SNIP12TypedParameter
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  @pragma('vm:prefer-inline')
-  _$$SNIP12TypedParameterImplCopyWith<_$SNIP12TypedParameterImpl>
-      get copyWith =>
-          __$$SNIP12TypedParameterImplCopyWithImpl<_$SNIP12TypedParameterImpl>(
-              this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$SNIP12TypedParameterImplToJson(
-      this,
-    );
+  String toString() {
+    return 'SNIP12TypedParameter(name: $name, type: $type, contains: $contains)';
   }
 }
 
-abstract class _SNIP12TypedParameter implements SNIP12TypedParameter {
-  const factory _SNIP12TypedParameter(
-      {required final String name,
-      required final String type,
-      final String? contains}) = _$SNIP12TypedParameterImpl;
+/// @nodoc
+abstract mixin class $SNIP12TypedParameterCopyWith<$Res> {
+  factory $SNIP12TypedParameterCopyWith(SNIP12TypedParameter value,
+          $Res Function(SNIP12TypedParameter) _then) =
+      _$SNIP12TypedParameterCopyWithImpl;
+  @useResult
+  $Res call({String name, String type, String? contains});
+}
 
-  factory _SNIP12TypedParameter.fromJson(Map<String, dynamic> json) =
-      _$SNIP12TypedParameterImpl.fromJson;
+/// @nodoc
+class _$SNIP12TypedParameterCopyWithImpl<$Res>
+    implements $SNIP12TypedParameterCopyWith<$Res> {
+  _$SNIP12TypedParameterCopyWithImpl(this._self, this._then);
 
-  @override
-  String get name;
-  @override
-  String get type;
-  @override
-  String? get contains;
+  final SNIP12TypedParameter _self;
+  final $Res Function(SNIP12TypedParameter) _then;
 
   /// Create a copy of SNIP12TypedParameter
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$SNIP12TypedParameterImplCopyWith<_$SNIP12TypedParameterImpl>
-      get copyWith => throw _privateConstructorUsedError;
-}
-
-TypedDataDomain _$TypedDataDomainFromJson(Map<String, dynamic> json) {
-  return _TypedDataDomain.fromJson(json);
-}
-
-/// @nodoc
-mixin _$TypedDataDomain {
-  String get name => throw _privateConstructorUsedError;
-  String get version => throw _privateConstructorUsedError;
-  @JsonKey(name: 'chainId')
-  String get chainId => throw _privateConstructorUsedError;
-  String get revision => throw _privateConstructorUsedError;
-
-  /// Serializes this TypedDataDomain to a JSON map.
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-
-  /// Create a copy of TypedDataDomain
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  $TypedDataDomainCopyWith<TypedDataDomain> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $TypedDataDomainCopyWith<$Res> {
-  factory $TypedDataDomainCopyWith(
-          TypedDataDomain value, $Res Function(TypedDataDomain) then) =
-      _$TypedDataDomainCopyWithImpl<$Res, TypedDataDomain>;
-  @useResult
-  $Res call(
-      {String name,
-      String version,
-      @JsonKey(name: 'chainId') String chainId,
-      String revision});
-}
-
-/// @nodoc
-class _$TypedDataDomainCopyWithImpl<$Res, $Val extends TypedDataDomain>
-    implements $TypedDataDomainCopyWith<$Res> {
-  _$TypedDataDomainCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-
-  /// Create a copy of TypedDataDomain
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? name = null,
-    Object? version = null,
-    Object? chainId = null,
-    Object? revision = null,
+    Object? type = null,
+    Object? contains = freezed,
   }) {
-    return _then(_value.copyWith(
+    return _then(_self.copyWith(
       name: null == name
-          ? _value.name
+          ? _self.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
-      version: null == version
-          ? _value.version
-          : version // ignore: cast_nullable_to_non_nullable
+      type: null == type
+          ? _self.type
+          : type // ignore: cast_nullable_to_non_nullable
               as String,
-      chainId: null == chainId
-          ? _value.chainId
-          : chainId // ignore: cast_nullable_to_non_nullable
-              as String,
-      revision: null == revision
-          ? _value.revision
-          : revision // ignore: cast_nullable_to_non_nullable
-              as String,
-    ) as $Val);
-  }
-}
-
-/// @nodoc
-abstract class _$$TypedDataDomainImplCopyWith<$Res>
-    implements $TypedDataDomainCopyWith<$Res> {
-  factory _$$TypedDataDomainImplCopyWith(_$TypedDataDomainImpl value,
-          $Res Function(_$TypedDataDomainImpl) then) =
-      __$$TypedDataDomainImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call(
-      {String name,
-      String version,
-      @JsonKey(name: 'chainId') String chainId,
-      String revision});
-}
-
-/// @nodoc
-class __$$TypedDataDomainImplCopyWithImpl<$Res>
-    extends _$TypedDataDomainCopyWithImpl<$Res, _$TypedDataDomainImpl>
-    implements _$$TypedDataDomainImplCopyWith<$Res> {
-  __$$TypedDataDomainImplCopyWithImpl(
-      _$TypedDataDomainImpl _value, $Res Function(_$TypedDataDomainImpl) _then)
-      : super(_value, _then);
-
-  /// Create a copy of TypedDataDomain
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? name = null,
-    Object? version = null,
-    Object? chainId = null,
-    Object? revision = null,
-  }) {
-    return _then(_$TypedDataDomainImpl(
-      name: null == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
-              as String,
-      version: null == version
-          ? _value.version
-          : version // ignore: cast_nullable_to_non_nullable
-              as String,
-      chainId: null == chainId
-          ? _value.chainId
-          : chainId // ignore: cast_nullable_to_non_nullable
-              as String,
-      revision: null == revision
-          ? _value.revision
-          : revision // ignore: cast_nullable_to_non_nullable
-              as String,
+      contains: freezed == contains
+          ? _self.contains
+          : contains // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
 
-/// @nodoc
-@JsonSerializable()
-class _$TypedDataDomainImpl extends _TypedDataDomain {
-  const _$TypedDataDomainImpl(
-      {required this.name,
-      required this.version,
-      @JsonKey(name: 'chainId') required this.chainId,
-      this.revision = '0'})
-      : super._();
+/// Adds pattern-matching-related methods to [SNIP12TypedParameter].
+extension SNIP12TypedParameterPatterns on SNIP12TypedParameter {
+  /// A variant of `map` that fallback to returning `orElse`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
 
-  factory _$TypedDataDomainImpl.fromJson(Map<String, dynamic> json) =>
-      _$$TypedDataDomainImplFromJson(json);
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(_SNIP12TypedParameter value)? $default, {
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _SNIP12TypedParameter() when $default != null:
+        return $default(_that);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// Callbacks receives the raw object, upcasted.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case final Subclass2 value:
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(_SNIP12TypedParameter value) $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _SNIP12TypedParameter():
+        return $default(_that);
+      case _:
+        throw StateError('Unexpected subclass');
+    }
+  }
+
+  /// A variant of `map` that fallback to returning `null`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>(
+    TResult? Function(_SNIP12TypedParameter value)? $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _SNIP12TypedParameter() when $default != null:
+        return $default(_that);
+      case _:
+        return null;
+    }
+  }
+
+  /// A variant of `when` that fallback to an `orElse` callback.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(String name, String type, String? contains)? $default, {
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _SNIP12TypedParameter() when $default != null:
+        return $default(_that.name, _that.type, _that.contains);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// As opposed to `map`, this offers destructuring.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case Subclass2(:final field2):
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>(
+    TResult Function(String name, String type, String? contains) $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _SNIP12TypedParameter():
+        return $default(_that.name, _that.type, _that.contains);
+      case _:
+        throw StateError('Unexpected subclass');
+    }
+  }
+
+  /// A variant of `when` that fallback to returning `null`
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>(
+    TResult? Function(String name, String type, String? contains)? $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _SNIP12TypedParameter() when $default != null:
+        return $default(_that.name, _that.type, _that.contains);
+      case _:
+        return null;
+    }
+  }
+}
+
+/// @nodoc
+
+@JsonSerializable(includeIfNull: false)
+class _SNIP12TypedParameter implements SNIP12TypedParameter {
+  const _SNIP12TypedParameter(
+      {required this.name, required this.type, this.contains});
+  factory _SNIP12TypedParameter.fromJson(Map<String, dynamic> json) =>
+      _$SNIP12TypedParameterFromJson(json);
 
   @override
   final String name;
   @override
-  final String version;
+  final String type;
   @override
-  @JsonKey(name: 'chainId')
-  final String chainId;
+  final String? contains;
+
+  /// Create a copy of SNIP12TypedParameter
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey()
-  final String revision;
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  _$SNIP12TypedParameterCopyWith<_SNIP12TypedParameter> get copyWith =>
+      __$SNIP12TypedParameterCopyWithImpl<_SNIP12TypedParameter>(
+          this, _$identity);
 
   @override
-  String toString() {
-    return 'TypedDataDomain(name: $name, version: $version, chainId: $chainId, revision: $revision)';
+  Map<String, dynamic> toJson() {
+    return _$SNIP12TypedParameterToJson(
+      this,
+    );
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$TypedDataDomainImpl &&
+            other is _SNIP12TypedParameter &&
+            (identical(other.name, name) || other.name == name) &&
+            (identical(other.type, type) || other.type == type) &&
+            (identical(other.contains, contains) ||
+                other.contains == contains));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(runtimeType, name, type, contains);
+
+  @override
+  String toString() {
+    return 'SNIP12TypedParameter(name: $name, type: $type, contains: $contains)';
+  }
+}
+
+/// @nodoc
+abstract mixin class _$SNIP12TypedParameterCopyWith<$Res>
+    implements $SNIP12TypedParameterCopyWith<$Res> {
+  factory _$SNIP12TypedParameterCopyWith(_SNIP12TypedParameter value,
+          $Res Function(_SNIP12TypedParameter) _then) =
+      __$SNIP12TypedParameterCopyWithImpl;
+  @override
+  @useResult
+  $Res call({String name, String type, String? contains});
+}
+
+/// @nodoc
+class __$SNIP12TypedParameterCopyWithImpl<$Res>
+    implements _$SNIP12TypedParameterCopyWith<$Res> {
+  __$SNIP12TypedParameterCopyWithImpl(this._self, this._then);
+
+  final _SNIP12TypedParameter _self;
+  final $Res Function(_SNIP12TypedParameter) _then;
+
+  /// Create a copy of SNIP12TypedParameter
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $Res call({
+    Object? name = null,
+    Object? type = null,
+    Object? contains = freezed,
+  }) {
+    return _then(_SNIP12TypedParameter(
+      name: null == name
+          ? _self.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
+      type: null == type
+          ? _self.type
+          : type // ignore: cast_nullable_to_non_nullable
+              as String,
+      contains: freezed == contains
+          ? _self.contains
+          : contains // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
+  }
+}
+
+/// @nodoc
+mixin _$TypedDataDomain {
+  String get name;
+  String get version;
+  @JsonKey(name: 'chainId')
+  String get chainId;
+  String get revision;
+
+  /// Create a copy of TypedDataDomain
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  $TypedDataDomainCopyWith<TypedDataDomain> get copyWith =>
+      _$TypedDataDomainCopyWithImpl<TypedDataDomain>(
+          this as TypedDataDomain, _$identity);
+
+  /// Serializes this TypedDataDomain to a JSON map.
+  Map<String, dynamic> toJson();
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is TypedDataDomain &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.version, version) || other.version == version) &&
             (identical(other.chainId, chainId) || other.chainId == chainId) &&
@@ -380,48 +384,343 @@ class _$TypedDataDomainImpl extends _TypedDataDomain {
   int get hashCode =>
       Object.hash(runtimeType, name, version, chainId, revision);
 
-  /// Create a copy of TypedDataDomain
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  @pragma('vm:prefer-inline')
-  _$$TypedDataDomainImplCopyWith<_$TypedDataDomainImpl> get copyWith =>
-      __$$TypedDataDomainImplCopyWithImpl<_$TypedDataDomainImpl>(
-          this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$TypedDataDomainImplToJson(
-      this,
-    );
+  String toString() {
+    return 'TypedDataDomain(name: $name, version: $version, chainId: $chainId, revision: $revision)';
   }
 }
 
-abstract class _TypedDataDomain extends TypedDataDomain {
-  const factory _TypedDataDomain(
-      {required final String name,
-      required final String version,
-      @JsonKey(name: 'chainId') required final String chainId,
-      final String revision}) = _$TypedDataDomainImpl;
-  const _TypedDataDomain._() : super._();
+/// @nodoc
+abstract mixin class $TypedDataDomainCopyWith<$Res> {
+  factory $TypedDataDomainCopyWith(
+          TypedDataDomain value, $Res Function(TypedDataDomain) _then) =
+      _$TypedDataDomainCopyWithImpl;
+  @useResult
+  $Res call(
+      {String name,
+      String version,
+      @JsonKey(name: 'chainId') String chainId,
+      String revision});
+}
 
-  factory _TypedDataDomain.fromJson(Map<String, dynamic> json) =
-      _$TypedDataDomainImpl.fromJson;
+/// @nodoc
+class _$TypedDataDomainCopyWithImpl<$Res>
+    implements $TypedDataDomainCopyWith<$Res> {
+  _$TypedDataDomainCopyWithImpl(this._self, this._then);
+
+  final TypedDataDomain _self;
+  final $Res Function(TypedDataDomain) _then;
+
+  /// Create a copy of TypedDataDomain
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? name = null,
+    Object? version = null,
+    Object? chainId = null,
+    Object? revision = null,
+  }) {
+    return _then(_self.copyWith(
+      name: null == name
+          ? _self.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
+      version: null == version
+          ? _self.version
+          : version // ignore: cast_nullable_to_non_nullable
+              as String,
+      chainId: null == chainId
+          ? _self.chainId
+          : chainId // ignore: cast_nullable_to_non_nullable
+              as String,
+      revision: null == revision
+          ? _self.revision
+          : revision // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// Adds pattern-matching-related methods to [TypedDataDomain].
+extension TypedDataDomainPatterns on TypedDataDomain {
+  /// A variant of `map` that fallback to returning `orElse`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(_TypedDataDomain value)? $default, {
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _TypedDataDomain() when $default != null:
+        return $default(_that);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// Callbacks receives the raw object, upcasted.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case final Subclass2 value:
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(_TypedDataDomain value) $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _TypedDataDomain():
+        return $default(_that);
+      case _:
+        throw StateError('Unexpected subclass');
+    }
+  }
+
+  /// A variant of `map` that fallback to returning `null`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>(
+    TResult? Function(_TypedDataDomain value)? $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _TypedDataDomain() when $default != null:
+        return $default(_that);
+      case _:
+        return null;
+    }
+  }
+
+  /// A variant of `when` that fallback to an `orElse` callback.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(String name, String version,
+            @JsonKey(name: 'chainId') String chainId, String revision)?
+        $default, {
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _TypedDataDomain() when $default != null:
+        return $default(
+            _that.name, _that.version, _that.chainId, _that.revision);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// As opposed to `map`, this offers destructuring.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case Subclass2(:final field2):
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>(
+    TResult Function(String name, String version,
+            @JsonKey(name: 'chainId') String chainId, String revision)
+        $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _TypedDataDomain():
+        return $default(
+            _that.name, _that.version, _that.chainId, _that.revision);
+      case _:
+        throw StateError('Unexpected subclass');
+    }
+  }
+
+  /// A variant of `when` that fallback to returning `null`
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>(
+    TResult? Function(String name, String version,
+            @JsonKey(name: 'chainId') String chainId, String revision)?
+        $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _TypedDataDomain() when $default != null:
+        return $default(
+            _that.name, _that.version, _that.chainId, _that.revision);
+      case _:
+        return null;
+    }
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _TypedDataDomain extends TypedDataDomain {
+  const _TypedDataDomain(
+      {required this.name,
+      required this.version,
+      @JsonKey(name: 'chainId') required this.chainId,
+      this.revision = '0'})
+      : super._();
+  factory _TypedDataDomain.fromJson(Map<String, dynamic> json) =>
+      _$TypedDataDomainFromJson(json);
 
   @override
-  String get name;
+  final String name;
   @override
-  String get version;
+  final String version;
   @override
   @JsonKey(name: 'chainId')
-  String get chainId;
+  final String chainId;
   @override
-  String get revision;
+  @JsonKey()
+  final String revision;
 
   /// Create a copy of TypedDataDomain
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$TypedDataDomainImplCopyWith<_$TypedDataDomainImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  @pragma('vm:prefer-inline')
+  _$TypedDataDomainCopyWith<_TypedDataDomain> get copyWith =>
+      __$TypedDataDomainCopyWithImpl<_TypedDataDomain>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$TypedDataDomainToJson(
+      this,
+    );
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _TypedDataDomain &&
+            (identical(other.name, name) || other.name == name) &&
+            (identical(other.version, version) || other.version == version) &&
+            (identical(other.chainId, chainId) || other.chainId == chainId) &&
+            (identical(other.revision, revision) ||
+                other.revision == revision));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, name, version, chainId, revision);
+
+  @override
+  String toString() {
+    return 'TypedDataDomain(name: $name, version: $version, chainId: $chainId, revision: $revision)';
+  }
 }
+
+/// @nodoc
+abstract mixin class _$TypedDataDomainCopyWith<$Res>
+    implements $TypedDataDomainCopyWith<$Res> {
+  factory _$TypedDataDomainCopyWith(
+          _TypedDataDomain value, $Res Function(_TypedDataDomain) _then) =
+      __$TypedDataDomainCopyWithImpl;
+  @override
+  @useResult
+  $Res call(
+      {String name,
+      String version,
+      @JsonKey(name: 'chainId') String chainId,
+      String revision});
+}
+
+/// @nodoc
+class __$TypedDataDomainCopyWithImpl<$Res>
+    implements _$TypedDataDomainCopyWith<$Res> {
+  __$TypedDataDomainCopyWithImpl(this._self, this._then);
+
+  final _TypedDataDomain _self;
+  final $Res Function(_TypedDataDomain) _then;
+
+  /// Create a copy of TypedDataDomain
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $Res call({
+    Object? name = null,
+    Object? version = null,
+    Object? chainId = null,
+    Object? revision = null,
+  }) {
+    return _then(_TypedDataDomain(
+      name: null == name
+          ? _self.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
+      version: null == version
+          ? _self.version
+          : version // ignore: cast_nullable_to_non_nullable
+              as String,
+      chainId: null == chainId
+          ? _self.chainId
+          : chainId // ignore: cast_nullable_to_non_nullable
+              as String,
+      revision: null == revision
+          ? _self.revision
+          : revision // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+// dart format on

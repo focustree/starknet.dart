@@ -1,5 +1,5 @@
-// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// coverage:ignore-file
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
@@ -9,11 +9,8 @@ part of 'wss_subscribe_pending_transactions.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// dart format off
 T _$identity<T>(T value) => value;
-
-final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
-
 WssSubscribePendingTransactionsResponse
     _$WssSubscribePendingTransactionsResponseFromJson(
         Map<String, dynamic> json) {
@@ -34,142 +31,250 @@ WssSubscribePendingTransactionsResponse
 
 /// @nodoc
 mixin _$WssSubscribePendingTransactionsResponse {
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(@JsonKey(name: 'result') String subscription_id)
-        result,
-    required TResult Function(JsonWssApiError error) error,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(@JsonKey(name: 'result') String subscription_id)? result,
-    TResult? Function(JsonWssApiError error)? error,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(@JsonKey(name: 'result') String subscription_id)? result,
-    TResult Function(JsonWssApiError error)? error,
-    required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(WssSubscribePendingTransactionsResult value)
-        result,
-    required TResult Function(WssSubscribePendingTransactionsError value) error,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(WssSubscribePendingTransactionsResult value)? result,
-    TResult? Function(WssSubscribePendingTransactionsError value)? error,
-  }) =>
-      throw _privateConstructorUsedError;
+  /// Serializes this WssSubscribePendingTransactionsResponse to a JSON map.
+  Map<String, dynamic> toJson();
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is WssSubscribePendingTransactionsResponse);
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  String toString() {
+    return 'WssSubscribePendingTransactionsResponse()';
+  }
+}
+
+/// @nodoc
+class $WssSubscribePendingTransactionsResponseCopyWith<$Res> {
+  $WssSubscribePendingTransactionsResponseCopyWith(
+      WssSubscribePendingTransactionsResponse _,
+      $Res Function(WssSubscribePendingTransactionsResponse) __);
+}
+
+/// Adds pattern-matching-related methods to [WssSubscribePendingTransactionsResponse].
+extension WssSubscribePendingTransactionsResponsePatterns
+    on WssSubscribePendingTransactionsResponse {
+  /// A variant of `map` that fallback to returning `orElse`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(WssSubscribePendingTransactionsResult value)? result,
     TResult Function(WssSubscribePendingTransactionsError value)? error,
     required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
-
-  /// Serializes this WssSubscribePendingTransactionsResponse to a JSON map.
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $WssSubscribePendingTransactionsResponseCopyWith<$Res> {
-  factory $WssSubscribePendingTransactionsResponseCopyWith(
-          WssSubscribePendingTransactionsResponse value,
-          $Res Function(WssSubscribePendingTransactionsResponse) then) =
-      _$WssSubscribePendingTransactionsResponseCopyWithImpl<$Res,
-          WssSubscribePendingTransactionsResponse>;
-}
-
-/// @nodoc
-class _$WssSubscribePendingTransactionsResponseCopyWithImpl<$Res,
-        $Val extends WssSubscribePendingTransactionsResponse>
-    implements $WssSubscribePendingTransactionsResponseCopyWith<$Res> {
-  _$WssSubscribePendingTransactionsResponseCopyWithImpl(
-      this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-
-  /// Create a copy of WssSubscribePendingTransactionsResponse
-  /// with the given fields replaced by the non-null parameter values.
-}
-
-/// @nodoc
-abstract class _$$WssSubscribePendingTransactionsResultImplCopyWith<$Res> {
-  factory _$$WssSubscribePendingTransactionsResultImplCopyWith(
-          _$WssSubscribePendingTransactionsResultImpl value,
-          $Res Function(_$WssSubscribePendingTransactionsResultImpl) then) =
-      __$$WssSubscribePendingTransactionsResultImplCopyWithImpl<$Res>;
-  @useResult
-  $Res call({@JsonKey(name: 'result') String subscription_id});
-}
-
-/// @nodoc
-class __$$WssSubscribePendingTransactionsResultImplCopyWithImpl<$Res>
-    extends _$WssSubscribePendingTransactionsResponseCopyWithImpl<$Res,
-        _$WssSubscribePendingTransactionsResultImpl>
-    implements _$$WssSubscribePendingTransactionsResultImplCopyWith<$Res> {
-  __$$WssSubscribePendingTransactionsResultImplCopyWithImpl(
-      _$WssSubscribePendingTransactionsResultImpl _value,
-      $Res Function(_$WssSubscribePendingTransactionsResultImpl) _then)
-      : super(_value, _then);
-
-  /// Create a copy of WssSubscribePendingTransactionsResponse
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? subscription_id = null,
   }) {
-    return _then(_$WssSubscribePendingTransactionsResultImpl(
-      subscription_id: null == subscription_id
-          ? _value.subscription_id
-          : subscription_id // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
+    final _that = this;
+    switch (_that) {
+      case WssSubscribePendingTransactionsResult() when result != null:
+        return result(_that);
+      case WssSubscribePendingTransactionsError() when error != null:
+        return error(_that);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// Callbacks receives the raw object, upcasted.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case final Subclass2 value:
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(WssSubscribePendingTransactionsResult value)
+        result,
+    required TResult Function(WssSubscribePendingTransactionsError value) error,
+  }) {
+    final _that = this;
+    switch (_that) {
+      case WssSubscribePendingTransactionsResult():
+        return result(_that);
+      case WssSubscribePendingTransactionsError():
+        return error(_that);
+      case _:
+        throw StateError('Unexpected subclass');
+    }
+  }
+
+  /// A variant of `map` that fallback to returning `null`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(WssSubscribePendingTransactionsResult value)? result,
+    TResult? Function(WssSubscribePendingTransactionsError value)? error,
+  }) {
+    final _that = this;
+    switch (_that) {
+      case WssSubscribePendingTransactionsResult() when result != null:
+        return result(_that);
+      case WssSubscribePendingTransactionsError() when error != null:
+        return error(_that);
+      case _:
+        return null;
+    }
+  }
+
+  /// A variant of `when` that fallback to an `orElse` callback.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(@JsonKey(name: 'result') String subscription_id)? result,
+    TResult Function(JsonWssApiError error)? error,
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case WssSubscribePendingTransactionsResult() when result != null:
+        return result(_that.subscription_id);
+      case WssSubscribePendingTransactionsError() when error != null:
+        return error(_that.error);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// As opposed to `map`, this offers destructuring.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case Subclass2(:final field2):
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(@JsonKey(name: 'result') String subscription_id)
+        result,
+    required TResult Function(JsonWssApiError error) error,
+  }) {
+    final _that = this;
+    switch (_that) {
+      case WssSubscribePendingTransactionsResult():
+        return result(_that.subscription_id);
+      case WssSubscribePendingTransactionsError():
+        return error(_that.error);
+      case _:
+        throw StateError('Unexpected subclass');
+    }
+  }
+
+  /// A variant of `when` that fallback to returning `null`
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(@JsonKey(name: 'result') String subscription_id)? result,
+    TResult? Function(JsonWssApiError error)? error,
+  }) {
+    final _that = this;
+    switch (_that) {
+      case WssSubscribePendingTransactionsResult() when result != null:
+        return result(_that.subscription_id);
+      case WssSubscribePendingTransactionsError() when error != null:
+        return error(_that.error);
+      case _:
+        return null;
+    }
   }
 }
 
 /// @nodoc
 @JsonSerializable()
-class _$WssSubscribePendingTransactionsResultImpl
-    implements WssSubscribePendingTransactionsResult {
-  const _$WssSubscribePendingTransactionsResultImpl(
+class WssSubscribePendingTransactionsResult
+    implements WssSubscribePendingTransactionsResponse {
+  const WssSubscribePendingTransactionsResult(
       {@JsonKey(name: 'result') required this.subscription_id,
       final String? $type})
       : $type = $type ?? 'result';
-
-  factory _$WssSubscribePendingTransactionsResultImpl.fromJson(
+  factory WssSubscribePendingTransactionsResult.fromJson(
           Map<String, dynamic> json) =>
-      _$$WssSubscribePendingTransactionsResultImplFromJson(json);
+      _$WssSubscribePendingTransactionsResultFromJson(json);
 
-  @override
   @JsonKey(name: 'result')
   final String subscription_id;
 
   @JsonKey(name: 'starkNetRuntimeTypeToRemove')
   final String $type;
 
+  /// Create a copy of WssSubscribePendingTransactionsResponse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  $WssSubscribePendingTransactionsResultCopyWith<
+          WssSubscribePendingTransactionsResult>
+      get copyWith => _$WssSubscribePendingTransactionsResultCopyWithImpl<
+          WssSubscribePendingTransactionsResult>(this, _$identity);
+
   @override
-  String toString() {
-    return 'WssSubscribePendingTransactionsResponse.result(subscription_id: $subscription_id)';
+  Map<String, dynamic> toJson() {
+    return _$WssSubscribePendingTransactionsResultToJson(
+      this,
+    );
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$WssSubscribePendingTransactionsResultImpl &&
+            other is WssSubscribePendingTransactionsResult &&
             (identical(other.subscription_id, subscription_id) ||
                 other.subscription_id == subscription_id));
   }
@@ -178,115 +283,103 @@ class _$WssSubscribePendingTransactionsResultImpl
   @override
   int get hashCode => Object.hash(runtimeType, subscription_id);
 
-  /// Create a copy of WssSubscribePendingTransactionsResponse
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  @pragma('vm:prefer-inline')
-  _$$WssSubscribePendingTransactionsResultImplCopyWith<
-          _$WssSubscribePendingTransactionsResultImpl>
-      get copyWith => __$$WssSubscribePendingTransactionsResultImplCopyWithImpl<
-          _$WssSubscribePendingTransactionsResultImpl>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(@JsonKey(name: 'result') String subscription_id)
-        result,
-    required TResult Function(JsonWssApiError error) error,
-  }) {
-    return result(subscription_id);
+  String toString() {
+    return 'WssSubscribePendingTransactionsResponse.result(subscription_id: $subscription_id)';
   }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(@JsonKey(name: 'result') String subscription_id)? result,
-    TResult? Function(JsonWssApiError error)? error,
-  }) {
-    return result?.call(subscription_id);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(@JsonKey(name: 'result') String subscription_id)? result,
-    TResult Function(JsonWssApiError error)? error,
-    required TResult orElse(),
-  }) {
-    if (result != null) {
-      return result(subscription_id);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(WssSubscribePendingTransactionsResult value)
-        result,
-    required TResult Function(WssSubscribePendingTransactionsError value) error,
-  }) {
-    return result(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(WssSubscribePendingTransactionsResult value)? result,
-    TResult? Function(WssSubscribePendingTransactionsError value)? error,
-  }) {
-    return result?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(WssSubscribePendingTransactionsResult value)? result,
-    TResult Function(WssSubscribePendingTransactionsError value)? error,
-    required TResult orElse(),
-  }) {
-    if (result != null) {
-      return result(this);
-    }
-    return orElse();
-  }
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$WssSubscribePendingTransactionsResultImplToJson(
-      this,
-    );
-  }
-}
-
-abstract class WssSubscribePendingTransactionsResult
-    implements WssSubscribePendingTransactionsResponse {
-  const factory WssSubscribePendingTransactionsResult(
-          {@JsonKey(name: 'result') required final String subscription_id}) =
-      _$WssSubscribePendingTransactionsResultImpl;
-
-  factory WssSubscribePendingTransactionsResult.fromJson(
-          Map<String, dynamic> json) =
-      _$WssSubscribePendingTransactionsResultImpl.fromJson;
-
-  @JsonKey(name: 'result')
-  String get subscription_id;
-
-  /// Create a copy of WssSubscribePendingTransactionsResponse
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$WssSubscribePendingTransactionsResultImplCopyWith<
-          _$WssSubscribePendingTransactionsResultImpl>
-      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$WssSubscribePendingTransactionsErrorImplCopyWith<$Res> {
-  factory _$$WssSubscribePendingTransactionsErrorImplCopyWith(
-          _$WssSubscribePendingTransactionsErrorImpl value,
-          $Res Function(_$WssSubscribePendingTransactionsErrorImpl) then) =
-      __$$WssSubscribePendingTransactionsErrorImplCopyWithImpl<$Res>;
+abstract mixin class $WssSubscribePendingTransactionsResultCopyWith<$Res>
+    implements $WssSubscribePendingTransactionsResponseCopyWith<$Res> {
+  factory $WssSubscribePendingTransactionsResultCopyWith(
+          WssSubscribePendingTransactionsResult value,
+          $Res Function(WssSubscribePendingTransactionsResult) _then) =
+      _$WssSubscribePendingTransactionsResultCopyWithImpl;
+  @useResult
+  $Res call({@JsonKey(name: 'result') String subscription_id});
+}
+
+/// @nodoc
+class _$WssSubscribePendingTransactionsResultCopyWithImpl<$Res>
+    implements $WssSubscribePendingTransactionsResultCopyWith<$Res> {
+  _$WssSubscribePendingTransactionsResultCopyWithImpl(this._self, this._then);
+
+  final WssSubscribePendingTransactionsResult _self;
+  final $Res Function(WssSubscribePendingTransactionsResult) _then;
+
+  /// Create a copy of WssSubscribePendingTransactionsResponse
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  $Res call({
+    Object? subscription_id = null,
+  }) {
+    return _then(WssSubscribePendingTransactionsResult(
+      subscription_id: null == subscription_id
+          ? _self.subscription_id
+          : subscription_id // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class WssSubscribePendingTransactionsError
+    implements WssSubscribePendingTransactionsResponse {
+  const WssSubscribePendingTransactionsError(
+      {required this.error, final String? $type})
+      : $type = $type ?? 'error';
+  factory WssSubscribePendingTransactionsError.fromJson(
+          Map<String, dynamic> json) =>
+      _$WssSubscribePendingTransactionsErrorFromJson(json);
+
+  final JsonWssApiError error;
+
+  @JsonKey(name: 'starkNetRuntimeTypeToRemove')
+  final String $type;
+
+  /// Create a copy of WssSubscribePendingTransactionsResponse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  $WssSubscribePendingTransactionsErrorCopyWith<
+          WssSubscribePendingTransactionsError>
+      get copyWith => _$WssSubscribePendingTransactionsErrorCopyWithImpl<
+          WssSubscribePendingTransactionsError>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$WssSubscribePendingTransactionsErrorToJson(
+      this,
+    );
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is WssSubscribePendingTransactionsError &&
+            (identical(other.error, error) || other.error == error));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(runtimeType, error);
+
+  @override
+  String toString() {
+    return 'WssSubscribePendingTransactionsResponse.error(error: $error)';
+  }
+}
+
+/// @nodoc
+abstract mixin class $WssSubscribePendingTransactionsErrorCopyWith<$Res>
+    implements $WssSubscribePendingTransactionsResponseCopyWith<$Res> {
+  factory $WssSubscribePendingTransactionsErrorCopyWith(
+          WssSubscribePendingTransactionsError value,
+          $Res Function(WssSubscribePendingTransactionsError) _then) =
+      _$WssSubscribePendingTransactionsErrorCopyWithImpl;
   @useResult
   $Res call({JsonWssApiError error});
 
@@ -294,25 +387,22 @@ abstract class _$$WssSubscribePendingTransactionsErrorImplCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$WssSubscribePendingTransactionsErrorImplCopyWithImpl<$Res>
-    extends _$WssSubscribePendingTransactionsResponseCopyWithImpl<$Res,
-        _$WssSubscribePendingTransactionsErrorImpl>
-    implements _$$WssSubscribePendingTransactionsErrorImplCopyWith<$Res> {
-  __$$WssSubscribePendingTransactionsErrorImplCopyWithImpl(
-      _$WssSubscribePendingTransactionsErrorImpl _value,
-      $Res Function(_$WssSubscribePendingTransactionsErrorImpl) _then)
-      : super(_value, _then);
+class _$WssSubscribePendingTransactionsErrorCopyWithImpl<$Res>
+    implements $WssSubscribePendingTransactionsErrorCopyWith<$Res> {
+  _$WssSubscribePendingTransactionsErrorCopyWithImpl(this._self, this._then);
+
+  final WssSubscribePendingTransactionsError _self;
+  final $Res Function(WssSubscribePendingTransactionsError) _then;
 
   /// Create a copy of WssSubscribePendingTransactionsResponse
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
-  @override
   $Res call({
     Object? error = null,
   }) {
-    return _then(_$WssSubscribePendingTransactionsErrorImpl(
+    return _then(WssSubscribePendingTransactionsError(
       error: null == error
-          ? _value.error
+          ? _self.error
           : error // ignore: cast_nullable_to_non_nullable
               as JsonWssApiError,
     ));
@@ -323,145 +413,10 @@ class __$$WssSubscribePendingTransactionsErrorImplCopyWithImpl<$Res>
   @override
   @pragma('vm:prefer-inline')
   $JsonWssApiErrorCopyWith<$Res> get error {
-    return $JsonWssApiErrorCopyWith<$Res>(_value.error, (value) {
-      return _then(_value.copyWith(error: value));
+    return $JsonWssApiErrorCopyWith<$Res>(_self.error, (value) {
+      return _then(_self.copyWith(error: value));
     });
   }
 }
 
-/// @nodoc
-@JsonSerializable()
-class _$WssSubscribePendingTransactionsErrorImpl
-    implements WssSubscribePendingTransactionsError {
-  const _$WssSubscribePendingTransactionsErrorImpl(
-      {required this.error, final String? $type})
-      : $type = $type ?? 'error';
-
-  factory _$WssSubscribePendingTransactionsErrorImpl.fromJson(
-          Map<String, dynamic> json) =>
-      _$$WssSubscribePendingTransactionsErrorImplFromJson(json);
-
-  @override
-  final JsonWssApiError error;
-
-  @JsonKey(name: 'starkNetRuntimeTypeToRemove')
-  final String $type;
-
-  @override
-  String toString() {
-    return 'WssSubscribePendingTransactionsResponse.error(error: $error)';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$WssSubscribePendingTransactionsErrorImpl &&
-            (identical(other.error, error) || other.error == error));
-  }
-
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  int get hashCode => Object.hash(runtimeType, error);
-
-  /// Create a copy of WssSubscribePendingTransactionsResponse
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$WssSubscribePendingTransactionsErrorImplCopyWith<
-          _$WssSubscribePendingTransactionsErrorImpl>
-      get copyWith => __$$WssSubscribePendingTransactionsErrorImplCopyWithImpl<
-          _$WssSubscribePendingTransactionsErrorImpl>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(@JsonKey(name: 'result') String subscription_id)
-        result,
-    required TResult Function(JsonWssApiError error) error,
-  }) {
-    return error(this.error);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(@JsonKey(name: 'result') String subscription_id)? result,
-    TResult? Function(JsonWssApiError error)? error,
-  }) {
-    return error?.call(this.error);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(@JsonKey(name: 'result') String subscription_id)? result,
-    TResult Function(JsonWssApiError error)? error,
-    required TResult orElse(),
-  }) {
-    if (error != null) {
-      return error(this.error);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(WssSubscribePendingTransactionsResult value)
-        result,
-    required TResult Function(WssSubscribePendingTransactionsError value) error,
-  }) {
-    return error(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(WssSubscribePendingTransactionsResult value)? result,
-    TResult? Function(WssSubscribePendingTransactionsError value)? error,
-  }) {
-    return error?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(WssSubscribePendingTransactionsResult value)? result,
-    TResult Function(WssSubscribePendingTransactionsError value)? error,
-    required TResult orElse(),
-  }) {
-    if (error != null) {
-      return error(this);
-    }
-    return orElse();
-  }
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$WssSubscribePendingTransactionsErrorImplToJson(
-      this,
-    );
-  }
-}
-
-abstract class WssSubscribePendingTransactionsError
-    implements WssSubscribePendingTransactionsResponse {
-  const factory WssSubscribePendingTransactionsError(
-          {required final JsonWssApiError error}) =
-      _$WssSubscribePendingTransactionsErrorImpl;
-
-  factory WssSubscribePendingTransactionsError.fromJson(
-          Map<String, dynamic> json) =
-      _$WssSubscribePendingTransactionsErrorImpl.fromJson;
-
-  JsonWssApiError get error;
-
-  /// Create a copy of WssSubscribePendingTransactionsResponse
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$WssSubscribePendingTransactionsErrorImplCopyWith<
-          _$WssSubscribePendingTransactionsErrorImpl>
-      get copyWith => throw _privateConstructorUsedError;
-}
+// dart format on

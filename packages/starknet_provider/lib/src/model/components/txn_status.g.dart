@@ -6,9 +6,8 @@ part of 'txn_status.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$TxnStatusResultImpl _$$TxnStatusResultImplFromJson(
-        Map<String, dynamic> json) =>
-    _$TxnStatusResultImpl(
+_TxnStatusResult _$TxnStatusResultFromJson(Map<String, dynamic> json) =>
+    _TxnStatusResult(
       finalityStatus:
           $enumDecode(_$TxnFinalityStatusEnumMap, json['finality_status']),
       executionStatus: $enumDecodeNullable(
@@ -16,8 +15,7 @@ _$TxnStatusResultImpl _$$TxnStatusResultImplFromJson(
       failureReason: json['failure_reason'] as String?,
     );
 
-Map<String, dynamic> _$$TxnStatusResultImplToJson(
-        _$TxnStatusResultImpl instance) =>
+Map<String, dynamic> _$TxnStatusResultToJson(_TxnStatusResult instance) =>
     <String, dynamic>{
       'finality_status': _$TxnFinalityStatusEnumMap[instance.finalityStatus]!,
       'execution_status': _$TxnExecutionStatusEnumMap[instance.executionStatus],

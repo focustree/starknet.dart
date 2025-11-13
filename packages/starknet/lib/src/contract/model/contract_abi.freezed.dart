@@ -1,5 +1,5 @@
-// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// coverage:ignore-file
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
@@ -9,11 +9,8 @@ part of 'contract_abi.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// dart format off
 T _$identity<T>(T value) => value;
-
-final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
-
 SierraContractAbiEntry _$SierraContractAbiEntryFromJson(
     Map<String, dynamic> json) {
   switch (json['starkNetRuntimeTypeToRemove']) {
@@ -45,8 +42,296 @@ SierraContractAbiEntry _$SierraContractAbiEntryFromJson(
 
 /// @nodoc
 mixin _$SierraContractAbiEntry {
-  String get type => throw _privateConstructorUsedError;
-  String get name => throw _privateConstructorUsedError;
+  String get type;
+  String get name;
+
+  /// Create a copy of SierraContractAbiEntry
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  $SierraContractAbiEntryCopyWith<SierraContractAbiEntry> get copyWith =>
+      _$SierraContractAbiEntryCopyWithImpl<SierraContractAbiEntry>(
+          this as SierraContractAbiEntry, _$identity);
+
+  /// Serializes this SierraContractAbiEntry to a JSON map.
+  Map<String, dynamic> toJson();
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is SierraContractAbiEntry &&
+            (identical(other.type, type) || other.type == type) &&
+            (identical(other.name, name) || other.name == name));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(runtimeType, type, name);
+
+  @override
+  String toString() {
+    return 'SierraContractAbiEntry(type: $type, name: $name)';
+  }
+}
+
+/// @nodoc
+abstract mixin class $SierraContractAbiEntryCopyWith<$Res> {
+  factory $SierraContractAbiEntryCopyWith(SierraContractAbiEntry value,
+          $Res Function(SierraContractAbiEntry) _then) =
+      _$SierraContractAbiEntryCopyWithImpl;
+  @useResult
+  $Res call({String type, String name});
+}
+
+/// @nodoc
+class _$SierraContractAbiEntryCopyWithImpl<$Res>
+    implements $SierraContractAbiEntryCopyWith<$Res> {
+  _$SierraContractAbiEntryCopyWithImpl(this._self, this._then);
+
+  final SierraContractAbiEntry _self;
+  final $Res Function(SierraContractAbiEntry) _then;
+
+  /// Create a copy of SierraContractAbiEntry
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? type = null,
+    Object? name = null,
+  }) {
+    return _then(_self.copyWith(
+      type: null == type
+          ? _self.type
+          : type // ignore: cast_nullable_to_non_nullable
+              as String,
+      name: null == name
+          ? _self.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// Adds pattern-matching-related methods to [SierraContractAbiEntry].
+extension SierraContractAbiEntryPatterns on SierraContractAbiEntry {
+  /// A variant of `map` that fallback to returning `orElse`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(SierraFunctionAbiEntry value)? function,
+    TResult Function(SierraEventAbiEntry value)? event,
+    TResult Function(SierraEnumAbiEntry value)? enumeration,
+    TResult Function(SierraStructAbiEntry value)? struct,
+    TResult Function(SierraImplAbiEntry value)? impl,
+    TResult Function(SierraInterfaceAbiEntry value)? interface,
+    TResult Function(SierraConstructorAbiEntry value)? constructor,
+    TResult Function(SierraL1HandlerAbiEntry value)? l1Handler,
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case SierraFunctionAbiEntry() when function != null:
+        return function(_that);
+      case SierraEventAbiEntry() when event != null:
+        return event(_that);
+      case SierraEnumAbiEntry() when enumeration != null:
+        return enumeration(_that);
+      case SierraStructAbiEntry() when struct != null:
+        return struct(_that);
+      case SierraImplAbiEntry() when impl != null:
+        return impl(_that);
+      case SierraInterfaceAbiEntry() when interface != null:
+        return interface(_that);
+      case SierraConstructorAbiEntry() when constructor != null:
+        return constructor(_that);
+      case SierraL1HandlerAbiEntry() when l1Handler != null:
+        return l1Handler(_that);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// Callbacks receives the raw object, upcasted.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case final Subclass2 value:
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(SierraFunctionAbiEntry value) function,
+    required TResult Function(SierraEventAbiEntry value) event,
+    required TResult Function(SierraEnumAbiEntry value) enumeration,
+    required TResult Function(SierraStructAbiEntry value) struct,
+    required TResult Function(SierraImplAbiEntry value) impl,
+    required TResult Function(SierraInterfaceAbiEntry value) interface,
+    required TResult Function(SierraConstructorAbiEntry value) constructor,
+    required TResult Function(SierraL1HandlerAbiEntry value) l1Handler,
+  }) {
+    final _that = this;
+    switch (_that) {
+      case SierraFunctionAbiEntry():
+        return function(_that);
+      case SierraEventAbiEntry():
+        return event(_that);
+      case SierraEnumAbiEntry():
+        return enumeration(_that);
+      case SierraStructAbiEntry():
+        return struct(_that);
+      case SierraImplAbiEntry():
+        return impl(_that);
+      case SierraInterfaceAbiEntry():
+        return interface(_that);
+      case SierraConstructorAbiEntry():
+        return constructor(_that);
+      case SierraL1HandlerAbiEntry():
+        return l1Handler(_that);
+      case _:
+        throw StateError('Unexpected subclass');
+    }
+  }
+
+  /// A variant of `map` that fallback to returning `null`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(SierraFunctionAbiEntry value)? function,
+    TResult? Function(SierraEventAbiEntry value)? event,
+    TResult? Function(SierraEnumAbiEntry value)? enumeration,
+    TResult? Function(SierraStructAbiEntry value)? struct,
+    TResult? Function(SierraImplAbiEntry value)? impl,
+    TResult? Function(SierraInterfaceAbiEntry value)? interface,
+    TResult? Function(SierraConstructorAbiEntry value)? constructor,
+    TResult? Function(SierraL1HandlerAbiEntry value)? l1Handler,
+  }) {
+    final _that = this;
+    switch (_that) {
+      case SierraFunctionAbiEntry() when function != null:
+        return function(_that);
+      case SierraEventAbiEntry() when event != null:
+        return event(_that);
+      case SierraEnumAbiEntry() when enumeration != null:
+        return enumeration(_that);
+      case SierraStructAbiEntry() when struct != null:
+        return struct(_that);
+      case SierraImplAbiEntry() when impl != null:
+        return impl(_that);
+      case SierraInterfaceAbiEntry() when interface != null:
+        return interface(_that);
+      case SierraConstructorAbiEntry() when constructor != null:
+        return constructor(_that);
+      case SierraL1HandlerAbiEntry() when l1Handler != null:
+        return l1Handler(_that);
+      case _:
+        return null;
+    }
+  }
+
+  /// A variant of `when` that fallback to an `orElse` callback.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(
+            String type,
+            String name,
+            List<InputParameter> inputs,
+            List<OutputParameter> outputs,
+            @JsonKey(includeIfNull: false) String? stateMutability)?
+        function,
+    TResult Function(String type, String name, String kind)? event,
+    TResult Function(String type, String name, List<VariantParameter> variants)?
+        enumeration,
+    TResult Function(String type, String name, List<MemberParameter> members)?
+        struct,
+    TResult Function(String type, String name, String interfaceName)? impl,
+    TResult Function(String type, String name)? interface,
+    TResult Function(String type, String name, List<InputParameter> inputs)?
+        constructor,
+    TResult Function(
+            String type,
+            String name,
+            List<InputParameter> inputs,
+            List<OutputParameter> outputs,
+            @JsonKey(includeIfNull: false) String? stateMutability)?
+        l1Handler,
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case SierraFunctionAbiEntry() when function != null:
+        return function(_that.type, _that.name, _that.inputs, _that.outputs,
+            _that.stateMutability);
+      case SierraEventAbiEntry() when event != null:
+        return event(_that.type, _that.name, _that.kind);
+      case SierraEnumAbiEntry() when enumeration != null:
+        return enumeration(_that.type, _that.name, _that.variants);
+      case SierraStructAbiEntry() when struct != null:
+        return struct(_that.type, _that.name, _that.members);
+      case SierraImplAbiEntry() when impl != null:
+        return impl(_that.type, _that.name, _that.interfaceName);
+      case SierraInterfaceAbiEntry() when interface != null:
+        return interface(_that.type, _that.name);
+      case SierraConstructorAbiEntry() when constructor != null:
+        return constructor(_that.type, _that.name, _that.inputs);
+      case SierraL1HandlerAbiEntry() when l1Handler != null:
+        return l1Handler(_that.type, _that.name, _that.inputs, _that.outputs,
+            _that.stateMutability);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// As opposed to `map`, this offers destructuring.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case Subclass2(:final field2):
+  ///     return ...;
+  /// }
+  /// ```
+
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(
@@ -76,8 +361,44 @@ mixin _$SierraContractAbiEntry {
             List<OutputParameter> outputs,
             @JsonKey(includeIfNull: false) String? stateMutability)
         l1Handler,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) {
+    final _that = this;
+    switch (_that) {
+      case SierraFunctionAbiEntry():
+        return function(_that.type, _that.name, _that.inputs, _that.outputs,
+            _that.stateMutability);
+      case SierraEventAbiEntry():
+        return event(_that.type, _that.name, _that.kind);
+      case SierraEnumAbiEntry():
+        return enumeration(_that.type, _that.name, _that.variants);
+      case SierraStructAbiEntry():
+        return struct(_that.type, _that.name, _that.members);
+      case SierraImplAbiEntry():
+        return impl(_that.type, _that.name, _that.interfaceName);
+      case SierraInterfaceAbiEntry():
+        return interface(_that.type, _that.name);
+      case SierraConstructorAbiEntry():
+        return constructor(_that.type, _that.name, _that.inputs);
+      case SierraL1HandlerAbiEntry():
+        return l1Handler(_that.type, _that.name, _that.inputs, _that.outputs,
+            _that.stateMutability);
+      case _:
+        throw StateError('Unexpected subclass');
+    }
+  }
+
+  /// A variant of `when` that fallback to returning `null`
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(
@@ -104,192 +425,37 @@ mixin _$SierraContractAbiEntry {
             List<OutputParameter> outputs,
             @JsonKey(includeIfNull: false) String? stateMutability)?
         l1Handler,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(
-            String type,
-            String name,
-            List<InputParameter> inputs,
-            List<OutputParameter> outputs,
-            @JsonKey(includeIfNull: false) String? stateMutability)?
-        function,
-    TResult Function(String type, String name, String kind)? event,
-    TResult Function(String type, String name, List<VariantParameter> variants)?
-        enumeration,
-    TResult Function(String type, String name, List<MemberParameter> members)?
-        struct,
-    TResult Function(String type, String name, String interfaceName)? impl,
-    TResult Function(String type, String name)? interface,
-    TResult Function(String type, String name, List<InputParameter> inputs)?
-        constructor,
-    TResult Function(
-            String type,
-            String name,
-            List<InputParameter> inputs,
-            List<OutputParameter> outputs,
-            @JsonKey(includeIfNull: false) String? stateMutability)?
-        l1Handler,
-    required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(SierraFunctionAbiEntry value) function,
-    required TResult Function(SierraEventAbiEntry value) event,
-    required TResult Function(SierraEnumAbiEntry value) enumeration,
-    required TResult Function(SierraStructAbiEntry value) struct,
-    required TResult Function(SierraImplAbiEntry value) impl,
-    required TResult Function(SierraInterfaceAbiEntry value) interface,
-    required TResult Function(SierraConstructorAbiEntry value) constructor,
-    required TResult Function(SierraL1HandlerAbiEntry value) l1Handler,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(SierraFunctionAbiEntry value)? function,
-    TResult? Function(SierraEventAbiEntry value)? event,
-    TResult? Function(SierraEnumAbiEntry value)? enumeration,
-    TResult? Function(SierraStructAbiEntry value)? struct,
-    TResult? Function(SierraImplAbiEntry value)? impl,
-    TResult? Function(SierraInterfaceAbiEntry value)? interface,
-    TResult? Function(SierraConstructorAbiEntry value)? constructor,
-    TResult? Function(SierraL1HandlerAbiEntry value)? l1Handler,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(SierraFunctionAbiEntry value)? function,
-    TResult Function(SierraEventAbiEntry value)? event,
-    TResult Function(SierraEnumAbiEntry value)? enumeration,
-    TResult Function(SierraStructAbiEntry value)? struct,
-    TResult Function(SierraImplAbiEntry value)? impl,
-    TResult Function(SierraInterfaceAbiEntry value)? interface,
-    TResult Function(SierraConstructorAbiEntry value)? constructor,
-    TResult Function(SierraL1HandlerAbiEntry value)? l1Handler,
-    required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
-
-  /// Serializes this SierraContractAbiEntry to a JSON map.
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-
-  /// Create a copy of SierraContractAbiEntry
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  $SierraContractAbiEntryCopyWith<SierraContractAbiEntry> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $SierraContractAbiEntryCopyWith<$Res> {
-  factory $SierraContractAbiEntryCopyWith(SierraContractAbiEntry value,
-          $Res Function(SierraContractAbiEntry) then) =
-      _$SierraContractAbiEntryCopyWithImpl<$Res, SierraContractAbiEntry>;
-  @useResult
-  $Res call({String type, String name});
-}
-
-/// @nodoc
-class _$SierraContractAbiEntryCopyWithImpl<$Res,
-        $Val extends SierraContractAbiEntry>
-    implements $SierraContractAbiEntryCopyWith<$Res> {
-  _$SierraContractAbiEntryCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-
-  /// Create a copy of SierraContractAbiEntry
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? type = null,
-    Object? name = null,
   }) {
-    return _then(_value.copyWith(
-      type: null == type
-          ? _value.type
-          : type // ignore: cast_nullable_to_non_nullable
-              as String,
-      name: null == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
-              as String,
-    ) as $Val);
-  }
-}
-
-/// @nodoc
-abstract class _$$SierraFunctionAbiEntryImplCopyWith<$Res>
-    implements $SierraContractAbiEntryCopyWith<$Res> {
-  factory _$$SierraFunctionAbiEntryImplCopyWith(
-          _$SierraFunctionAbiEntryImpl value,
-          $Res Function(_$SierraFunctionAbiEntryImpl) then) =
-      __$$SierraFunctionAbiEntryImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call(
-      {String type,
-      String name,
-      List<InputParameter> inputs,
-      List<OutputParameter> outputs,
-      @JsonKey(includeIfNull: false) String? stateMutability});
-}
-
-/// @nodoc
-class __$$SierraFunctionAbiEntryImplCopyWithImpl<$Res>
-    extends _$SierraContractAbiEntryCopyWithImpl<$Res,
-        _$SierraFunctionAbiEntryImpl>
-    implements _$$SierraFunctionAbiEntryImplCopyWith<$Res> {
-  __$$SierraFunctionAbiEntryImplCopyWithImpl(
-      _$SierraFunctionAbiEntryImpl _value,
-      $Res Function(_$SierraFunctionAbiEntryImpl) _then)
-      : super(_value, _then);
-
-  /// Create a copy of SierraContractAbiEntry
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? type = null,
-    Object? name = null,
-    Object? inputs = null,
-    Object? outputs = null,
-    Object? stateMutability = freezed,
-  }) {
-    return _then(_$SierraFunctionAbiEntryImpl(
-      type: null == type
-          ? _value.type
-          : type // ignore: cast_nullable_to_non_nullable
-              as String,
-      name: null == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
-              as String,
-      inputs: null == inputs
-          ? _value._inputs
-          : inputs // ignore: cast_nullable_to_non_nullable
-              as List<InputParameter>,
-      outputs: null == outputs
-          ? _value._outputs
-          : outputs // ignore: cast_nullable_to_non_nullable
-              as List<OutputParameter>,
-      stateMutability: freezed == stateMutability
-          ? _value.stateMutability
-          : stateMutability // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ));
+    final _that = this;
+    switch (_that) {
+      case SierraFunctionAbiEntry() when function != null:
+        return function(_that.type, _that.name, _that.inputs, _that.outputs,
+            _that.stateMutability);
+      case SierraEventAbiEntry() when event != null:
+        return event(_that.type, _that.name, _that.kind);
+      case SierraEnumAbiEntry() when enumeration != null:
+        return enumeration(_that.type, _that.name, _that.variants);
+      case SierraStructAbiEntry() when struct != null:
+        return struct(_that.type, _that.name, _that.members);
+      case SierraImplAbiEntry() when impl != null:
+        return impl(_that.type, _that.name, _that.interfaceName);
+      case SierraInterfaceAbiEntry() when interface != null:
+        return interface(_that.type, _that.name);
+      case SierraConstructorAbiEntry() when constructor != null:
+        return constructor(_that.type, _that.name, _that.inputs);
+      case SierraL1HandlerAbiEntry() when l1Handler != null:
+        return l1Handler(_that.type, _that.name, _that.inputs, _that.outputs,
+            _that.stateMutability);
+      case _:
+        return null;
+    }
   }
 }
 
 /// @nodoc
 @JsonSerializable()
-class _$SierraFunctionAbiEntryImpl implements SierraFunctionAbiEntry {
-  const _$SierraFunctionAbiEntryImpl(
+class SierraFunctionAbiEntry implements SierraContractAbiEntry {
+  const SierraFunctionAbiEntry(
       {required this.type,
       required this.name,
       required final List<InputParameter> inputs,
@@ -299,16 +465,14 @@ class _$SierraFunctionAbiEntryImpl implements SierraFunctionAbiEntry {
       : _inputs = inputs,
         _outputs = outputs,
         $type = $type ?? 'function';
-
-  factory _$SierraFunctionAbiEntryImpl.fromJson(Map<String, dynamic> json) =>
-      _$$SierraFunctionAbiEntryImplFromJson(json);
+  factory SierraFunctionAbiEntry.fromJson(Map<String, dynamic> json) =>
+      _$SierraFunctionAbiEntryFromJson(json);
 
   @override
   final String type;
   @override
   final String name;
   final List<InputParameter> _inputs;
-  @override
   List<InputParameter> get inputs {
     if (_inputs is EqualUnmodifiableListView) return _inputs;
     // ignore: implicit_dynamic_type
@@ -316,30 +480,39 @@ class _$SierraFunctionAbiEntryImpl implements SierraFunctionAbiEntry {
   }
 
   final List<OutputParameter> _outputs;
-  @override
   List<OutputParameter> get outputs {
     if (_outputs is EqualUnmodifiableListView) return _outputs;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_outputs);
   }
 
-  @override
   @JsonKey(includeIfNull: false)
   final String? stateMutability;
 
   @JsonKey(name: 'starkNetRuntimeTypeToRemove')
   final String $type;
 
+  /// Create a copy of SierraContractAbiEntry
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  String toString() {
-    return 'SierraContractAbiEntry.function(type: $type, name: $name, inputs: $inputs, outputs: $outputs, stateMutability: $stateMutability)';
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  $SierraFunctionAbiEntryCopyWith<SierraFunctionAbiEntry> get copyWith =>
+      _$SierraFunctionAbiEntryCopyWithImpl<SierraFunctionAbiEntry>(
+          this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$SierraFunctionAbiEntryToJson(
+      this,
+    );
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$SierraFunctionAbiEntryImpl &&
+            other is SierraFunctionAbiEntry &&
             (identical(other.type, type) || other.type == type) &&
             (identical(other.name, name) || other.name == name) &&
             const DeepCollectionEquality().equals(other._inputs, _inputs) &&
@@ -358,280 +531,114 @@ class _$SierraFunctionAbiEntryImpl implements SierraFunctionAbiEntry {
       const DeepCollectionEquality().hash(_outputs),
       stateMutability);
 
-  /// Create a copy of SierraContractAbiEntry
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  @pragma('vm:prefer-inline')
-  _$$SierraFunctionAbiEntryImplCopyWith<_$SierraFunctionAbiEntryImpl>
-      get copyWith => __$$SierraFunctionAbiEntryImplCopyWithImpl<
-          _$SierraFunctionAbiEntryImpl>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(
-            String type,
-            String name,
-            List<InputParameter> inputs,
-            List<OutputParameter> outputs,
-            @JsonKey(includeIfNull: false) String? stateMutability)
-        function,
-    required TResult Function(String type, String name, String kind) event,
-    required TResult Function(
-            String type, String name, List<VariantParameter> variants)
-        enumeration,
-    required TResult Function(
-            String type, String name, List<MemberParameter> members)
-        struct,
-    required TResult Function(String type, String name, String interfaceName)
-        impl,
-    required TResult Function(String type, String name) interface,
-    required TResult Function(
-            String type, String name, List<InputParameter> inputs)
-        constructor,
-    required TResult Function(
-            String type,
-            String name,
-            List<InputParameter> inputs,
-            List<OutputParameter> outputs,
-            @JsonKey(includeIfNull: false) String? stateMutability)
-        l1Handler,
-  }) {
-    return function(type, name, inputs, outputs, stateMutability);
+  String toString() {
+    return 'SierraContractAbiEntry.function(type: $type, name: $name, inputs: $inputs, outputs: $outputs, stateMutability: $stateMutability)';
   }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(
-            String type,
-            String name,
-            List<InputParameter> inputs,
-            List<OutputParameter> outputs,
-            @JsonKey(includeIfNull: false) String? stateMutability)?
-        function,
-    TResult? Function(String type, String name, String kind)? event,
-    TResult? Function(
-            String type, String name, List<VariantParameter> variants)?
-        enumeration,
-    TResult? Function(String type, String name, List<MemberParameter> members)?
-        struct,
-    TResult? Function(String type, String name, String interfaceName)? impl,
-    TResult? Function(String type, String name)? interface,
-    TResult? Function(String type, String name, List<InputParameter> inputs)?
-        constructor,
-    TResult? Function(
-            String type,
-            String name,
-            List<InputParameter> inputs,
-            List<OutputParameter> outputs,
-            @JsonKey(includeIfNull: false) String? stateMutability)?
-        l1Handler,
-  }) {
-    return function?.call(type, name, inputs, outputs, stateMutability);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(
-            String type,
-            String name,
-            List<InputParameter> inputs,
-            List<OutputParameter> outputs,
-            @JsonKey(includeIfNull: false) String? stateMutability)?
-        function,
-    TResult Function(String type, String name, String kind)? event,
-    TResult Function(String type, String name, List<VariantParameter> variants)?
-        enumeration,
-    TResult Function(String type, String name, List<MemberParameter> members)?
-        struct,
-    TResult Function(String type, String name, String interfaceName)? impl,
-    TResult Function(String type, String name)? interface,
-    TResult Function(String type, String name, List<InputParameter> inputs)?
-        constructor,
-    TResult Function(
-            String type,
-            String name,
-            List<InputParameter> inputs,
-            List<OutputParameter> outputs,
-            @JsonKey(includeIfNull: false) String? stateMutability)?
-        l1Handler,
-    required TResult orElse(),
-  }) {
-    if (function != null) {
-      return function(type, name, inputs, outputs, stateMutability);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(SierraFunctionAbiEntry value) function,
-    required TResult Function(SierraEventAbiEntry value) event,
-    required TResult Function(SierraEnumAbiEntry value) enumeration,
-    required TResult Function(SierraStructAbiEntry value) struct,
-    required TResult Function(SierraImplAbiEntry value) impl,
-    required TResult Function(SierraInterfaceAbiEntry value) interface,
-    required TResult Function(SierraConstructorAbiEntry value) constructor,
-    required TResult Function(SierraL1HandlerAbiEntry value) l1Handler,
-  }) {
-    return function(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(SierraFunctionAbiEntry value)? function,
-    TResult? Function(SierraEventAbiEntry value)? event,
-    TResult? Function(SierraEnumAbiEntry value)? enumeration,
-    TResult? Function(SierraStructAbiEntry value)? struct,
-    TResult? Function(SierraImplAbiEntry value)? impl,
-    TResult? Function(SierraInterfaceAbiEntry value)? interface,
-    TResult? Function(SierraConstructorAbiEntry value)? constructor,
-    TResult? Function(SierraL1HandlerAbiEntry value)? l1Handler,
-  }) {
-    return function?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(SierraFunctionAbiEntry value)? function,
-    TResult Function(SierraEventAbiEntry value)? event,
-    TResult Function(SierraEnumAbiEntry value)? enumeration,
-    TResult Function(SierraStructAbiEntry value)? struct,
-    TResult Function(SierraImplAbiEntry value)? impl,
-    TResult Function(SierraInterfaceAbiEntry value)? interface,
-    TResult Function(SierraConstructorAbiEntry value)? constructor,
-    TResult Function(SierraL1HandlerAbiEntry value)? l1Handler,
-    required TResult orElse(),
-  }) {
-    if (function != null) {
-      return function(this);
-    }
-    return orElse();
-  }
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$SierraFunctionAbiEntryImplToJson(
-      this,
-    );
-  }
-}
-
-abstract class SierraFunctionAbiEntry implements SierraContractAbiEntry {
-  const factory SierraFunctionAbiEntry(
-          {required final String type,
-          required final String name,
-          required final List<InputParameter> inputs,
-          required final List<OutputParameter> outputs,
-          @JsonKey(includeIfNull: false) final String? stateMutability}) =
-      _$SierraFunctionAbiEntryImpl;
-
-  factory SierraFunctionAbiEntry.fromJson(Map<String, dynamic> json) =
-      _$SierraFunctionAbiEntryImpl.fromJson;
-
-  @override
-  String get type;
-  @override
-  String get name;
-  List<InputParameter> get inputs;
-  List<OutputParameter> get outputs;
-  @JsonKey(includeIfNull: false)
-  String? get stateMutability;
-
-  /// Create a copy of SierraContractAbiEntry
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$SierraFunctionAbiEntryImplCopyWith<_$SierraFunctionAbiEntryImpl>
-      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$SierraEventAbiEntryImplCopyWith<$Res>
+abstract mixin class $SierraFunctionAbiEntryCopyWith<$Res>
     implements $SierraContractAbiEntryCopyWith<$Res> {
-  factory _$$SierraEventAbiEntryImplCopyWith(_$SierraEventAbiEntryImpl value,
-          $Res Function(_$SierraEventAbiEntryImpl) then) =
-      __$$SierraEventAbiEntryImplCopyWithImpl<$Res>;
+  factory $SierraFunctionAbiEntryCopyWith(SierraFunctionAbiEntry value,
+          $Res Function(SierraFunctionAbiEntry) _then) =
+      _$SierraFunctionAbiEntryCopyWithImpl;
   @override
   @useResult
-  $Res call({String type, String name, String kind});
+  $Res call(
+      {String type,
+      String name,
+      List<InputParameter> inputs,
+      List<OutputParameter> outputs,
+      @JsonKey(includeIfNull: false) String? stateMutability});
 }
 
 /// @nodoc
-class __$$SierraEventAbiEntryImplCopyWithImpl<$Res>
-    extends _$SierraContractAbiEntryCopyWithImpl<$Res,
-        _$SierraEventAbiEntryImpl>
-    implements _$$SierraEventAbiEntryImplCopyWith<$Res> {
-  __$$SierraEventAbiEntryImplCopyWithImpl(_$SierraEventAbiEntryImpl _value,
-      $Res Function(_$SierraEventAbiEntryImpl) _then)
-      : super(_value, _then);
+class _$SierraFunctionAbiEntryCopyWithImpl<$Res>
+    implements $SierraFunctionAbiEntryCopyWith<$Res> {
+  _$SierraFunctionAbiEntryCopyWithImpl(this._self, this._then);
+
+  final SierraFunctionAbiEntry _self;
+  final $Res Function(SierraFunctionAbiEntry) _then;
 
   /// Create a copy of SierraContractAbiEntry
   /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
   @override
+  @pragma('vm:prefer-inline')
   $Res call({
     Object? type = null,
     Object? name = null,
-    Object? kind = null,
+    Object? inputs = null,
+    Object? outputs = null,
+    Object? stateMutability = freezed,
   }) {
-    return _then(_$SierraEventAbiEntryImpl(
+    return _then(SierraFunctionAbiEntry(
       type: null == type
-          ? _value.type
+          ? _self.type
           : type // ignore: cast_nullable_to_non_nullable
               as String,
       name: null == name
-          ? _value.name
+          ? _self.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
-      kind: null == kind
-          ? _value.kind
-          : kind // ignore: cast_nullable_to_non_nullable
-              as String,
+      inputs: null == inputs
+          ? _self._inputs
+          : inputs // ignore: cast_nullable_to_non_nullable
+              as List<InputParameter>,
+      outputs: null == outputs
+          ? _self._outputs
+          : outputs // ignore: cast_nullable_to_non_nullable
+              as List<OutputParameter>,
+      stateMutability: freezed == stateMutability
+          ? _self.stateMutability
+          : stateMutability // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
 
 /// @nodoc
 @JsonSerializable()
-class _$SierraEventAbiEntryImpl implements SierraEventAbiEntry {
-  const _$SierraEventAbiEntryImpl(
+class SierraEventAbiEntry implements SierraContractAbiEntry {
+  const SierraEventAbiEntry(
       {required this.type,
       required this.name,
       required this.kind,
       final String? $type})
       : $type = $type ?? 'event';
-
-  factory _$SierraEventAbiEntryImpl.fromJson(Map<String, dynamic> json) =>
-      _$$SierraEventAbiEntryImplFromJson(json);
+  factory SierraEventAbiEntry.fromJson(Map<String, dynamic> json) =>
+      _$SierraEventAbiEntryFromJson(json);
 
   @override
   final String type;
   @override
   final String name;
 // TODO: switch to enum?
-  @override
   final String kind;
 
   @JsonKey(name: 'starkNetRuntimeTypeToRemove')
   final String $type;
 
+  /// Create a copy of SierraContractAbiEntry
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  String toString() {
-    return 'SierraContractAbiEntry.event(type: $type, name: $name, kind: $kind)';
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  $SierraEventAbiEntryCopyWith<SierraEventAbiEntry> get copyWith =>
+      _$SierraEventAbiEntryCopyWithImpl<SierraEventAbiEntry>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$SierraEventAbiEntryToJson(
+      this,
+    );
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$SierraEventAbiEntryImpl &&
+            other is SierraEventAbiEntry &&
             (identical(other.type, type) || other.type == type) &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.kind, kind) || other.kind == kind));
@@ -641,259 +648,75 @@ class _$SierraEventAbiEntryImpl implements SierraEventAbiEntry {
   @override
   int get hashCode => Object.hash(runtimeType, type, name, kind);
 
-  /// Create a copy of SierraContractAbiEntry
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  @pragma('vm:prefer-inline')
-  _$$SierraEventAbiEntryImplCopyWith<_$SierraEventAbiEntryImpl> get copyWith =>
-      __$$SierraEventAbiEntryImplCopyWithImpl<_$SierraEventAbiEntryImpl>(
-          this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(
-            String type,
-            String name,
-            List<InputParameter> inputs,
-            List<OutputParameter> outputs,
-            @JsonKey(includeIfNull: false) String? stateMutability)
-        function,
-    required TResult Function(String type, String name, String kind) event,
-    required TResult Function(
-            String type, String name, List<VariantParameter> variants)
-        enumeration,
-    required TResult Function(
-            String type, String name, List<MemberParameter> members)
-        struct,
-    required TResult Function(String type, String name, String interfaceName)
-        impl,
-    required TResult Function(String type, String name) interface,
-    required TResult Function(
-            String type, String name, List<InputParameter> inputs)
-        constructor,
-    required TResult Function(
-            String type,
-            String name,
-            List<InputParameter> inputs,
-            List<OutputParameter> outputs,
-            @JsonKey(includeIfNull: false) String? stateMutability)
-        l1Handler,
-  }) {
-    return event(type, name, kind);
+  String toString() {
+    return 'SierraContractAbiEntry.event(type: $type, name: $name, kind: $kind)';
   }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(
-            String type,
-            String name,
-            List<InputParameter> inputs,
-            List<OutputParameter> outputs,
-            @JsonKey(includeIfNull: false) String? stateMutability)?
-        function,
-    TResult? Function(String type, String name, String kind)? event,
-    TResult? Function(
-            String type, String name, List<VariantParameter> variants)?
-        enumeration,
-    TResult? Function(String type, String name, List<MemberParameter> members)?
-        struct,
-    TResult? Function(String type, String name, String interfaceName)? impl,
-    TResult? Function(String type, String name)? interface,
-    TResult? Function(String type, String name, List<InputParameter> inputs)?
-        constructor,
-    TResult? Function(
-            String type,
-            String name,
-            List<InputParameter> inputs,
-            List<OutputParameter> outputs,
-            @JsonKey(includeIfNull: false) String? stateMutability)?
-        l1Handler,
-  }) {
-    return event?.call(type, name, kind);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(
-            String type,
-            String name,
-            List<InputParameter> inputs,
-            List<OutputParameter> outputs,
-            @JsonKey(includeIfNull: false) String? stateMutability)?
-        function,
-    TResult Function(String type, String name, String kind)? event,
-    TResult Function(String type, String name, List<VariantParameter> variants)?
-        enumeration,
-    TResult Function(String type, String name, List<MemberParameter> members)?
-        struct,
-    TResult Function(String type, String name, String interfaceName)? impl,
-    TResult Function(String type, String name)? interface,
-    TResult Function(String type, String name, List<InputParameter> inputs)?
-        constructor,
-    TResult Function(
-            String type,
-            String name,
-            List<InputParameter> inputs,
-            List<OutputParameter> outputs,
-            @JsonKey(includeIfNull: false) String? stateMutability)?
-        l1Handler,
-    required TResult orElse(),
-  }) {
-    if (event != null) {
-      return event(type, name, kind);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(SierraFunctionAbiEntry value) function,
-    required TResult Function(SierraEventAbiEntry value) event,
-    required TResult Function(SierraEnumAbiEntry value) enumeration,
-    required TResult Function(SierraStructAbiEntry value) struct,
-    required TResult Function(SierraImplAbiEntry value) impl,
-    required TResult Function(SierraInterfaceAbiEntry value) interface,
-    required TResult Function(SierraConstructorAbiEntry value) constructor,
-    required TResult Function(SierraL1HandlerAbiEntry value) l1Handler,
-  }) {
-    return event(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(SierraFunctionAbiEntry value)? function,
-    TResult? Function(SierraEventAbiEntry value)? event,
-    TResult? Function(SierraEnumAbiEntry value)? enumeration,
-    TResult? Function(SierraStructAbiEntry value)? struct,
-    TResult? Function(SierraImplAbiEntry value)? impl,
-    TResult? Function(SierraInterfaceAbiEntry value)? interface,
-    TResult? Function(SierraConstructorAbiEntry value)? constructor,
-    TResult? Function(SierraL1HandlerAbiEntry value)? l1Handler,
-  }) {
-    return event?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(SierraFunctionAbiEntry value)? function,
-    TResult Function(SierraEventAbiEntry value)? event,
-    TResult Function(SierraEnumAbiEntry value)? enumeration,
-    TResult Function(SierraStructAbiEntry value)? struct,
-    TResult Function(SierraImplAbiEntry value)? impl,
-    TResult Function(SierraInterfaceAbiEntry value)? interface,
-    TResult Function(SierraConstructorAbiEntry value)? constructor,
-    TResult Function(SierraL1HandlerAbiEntry value)? l1Handler,
-    required TResult orElse(),
-  }) {
-    if (event != null) {
-      return event(this);
-    }
-    return orElse();
-  }
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$SierraEventAbiEntryImplToJson(
-      this,
-    );
-  }
-}
-
-abstract class SierraEventAbiEntry implements SierraContractAbiEntry {
-  const factory SierraEventAbiEntry(
-      {required final String type,
-      required final String name,
-      required final String kind}) = _$SierraEventAbiEntryImpl;
-
-  factory SierraEventAbiEntry.fromJson(Map<String, dynamic> json) =
-      _$SierraEventAbiEntryImpl.fromJson;
-
-  @override
-  String get type;
-  @override
-  String get name; // TODO: switch to enum?
-  String get kind;
-
-  /// Create a copy of SierraContractAbiEntry
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$SierraEventAbiEntryImplCopyWith<_$SierraEventAbiEntryImpl> get copyWith =>
-      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$SierraEnumAbiEntryImplCopyWith<$Res>
+abstract mixin class $SierraEventAbiEntryCopyWith<$Res>
     implements $SierraContractAbiEntryCopyWith<$Res> {
-  factory _$$SierraEnumAbiEntryImplCopyWith(_$SierraEnumAbiEntryImpl value,
-          $Res Function(_$SierraEnumAbiEntryImpl) then) =
-      __$$SierraEnumAbiEntryImplCopyWithImpl<$Res>;
+  factory $SierraEventAbiEntryCopyWith(
+          SierraEventAbiEntry value, $Res Function(SierraEventAbiEntry) _then) =
+      _$SierraEventAbiEntryCopyWithImpl;
   @override
   @useResult
-  $Res call({String type, String name, List<VariantParameter> variants});
+  $Res call({String type, String name, String kind});
 }
 
 /// @nodoc
-class __$$SierraEnumAbiEntryImplCopyWithImpl<$Res>
-    extends _$SierraContractAbiEntryCopyWithImpl<$Res, _$SierraEnumAbiEntryImpl>
-    implements _$$SierraEnumAbiEntryImplCopyWith<$Res> {
-  __$$SierraEnumAbiEntryImplCopyWithImpl(_$SierraEnumAbiEntryImpl _value,
-      $Res Function(_$SierraEnumAbiEntryImpl) _then)
-      : super(_value, _then);
+class _$SierraEventAbiEntryCopyWithImpl<$Res>
+    implements $SierraEventAbiEntryCopyWith<$Res> {
+  _$SierraEventAbiEntryCopyWithImpl(this._self, this._then);
+
+  final SierraEventAbiEntry _self;
+  final $Res Function(SierraEventAbiEntry) _then;
 
   /// Create a copy of SierraContractAbiEntry
   /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
   @override
+  @pragma('vm:prefer-inline')
   $Res call({
     Object? type = null,
     Object? name = null,
-    Object? variants = null,
+    Object? kind = null,
   }) {
-    return _then(_$SierraEnumAbiEntryImpl(
+    return _then(SierraEventAbiEntry(
       type: null == type
-          ? _value.type
+          ? _self.type
           : type // ignore: cast_nullable_to_non_nullable
               as String,
       name: null == name
-          ? _value.name
+          ? _self.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
-      variants: null == variants
-          ? _value._variants
-          : variants // ignore: cast_nullable_to_non_nullable
-              as List<VariantParameter>,
+      kind: null == kind
+          ? _self.kind
+          : kind // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
 
 /// @nodoc
 @JsonSerializable()
-class _$SierraEnumAbiEntryImpl implements SierraEnumAbiEntry {
-  const _$SierraEnumAbiEntryImpl(
+class SierraEnumAbiEntry implements SierraContractAbiEntry {
+  const SierraEnumAbiEntry(
       {required this.type,
       required this.name,
       required final List<VariantParameter> variants,
       final String? $type})
       : _variants = variants,
         $type = $type ?? 'enumeration';
-
-  factory _$SierraEnumAbiEntryImpl.fromJson(Map<String, dynamic> json) =>
-      _$$SierraEnumAbiEntryImplFromJson(json);
+  factory SierraEnumAbiEntry.fromJson(Map<String, dynamic> json) =>
+      _$SierraEnumAbiEntryFromJson(json);
 
   @override
   final String type;
   @override
   final String name;
   final List<VariantParameter> _variants;
-  @override
   List<VariantParameter> get variants {
     if (_variants is EqualUnmodifiableListView) return _variants;
     // ignore: implicit_dynamic_type
@@ -903,16 +726,26 @@ class _$SierraEnumAbiEntryImpl implements SierraEnumAbiEntry {
   @JsonKey(name: 'starkNetRuntimeTypeToRemove')
   final String $type;
 
+  /// Create a copy of SierraContractAbiEntry
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  String toString() {
-    return 'SierraContractAbiEntry.enumeration(type: $type, name: $name, variants: $variants)';
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  $SierraEnumAbiEntryCopyWith<SierraEnumAbiEntry> get copyWith =>
+      _$SierraEnumAbiEntryCopyWithImpl<SierraEnumAbiEntry>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$SierraEnumAbiEntryToJson(
+      this,
+    );
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$SierraEnumAbiEntryImpl &&
+            other is SierraEnumAbiEntry &&
             (identical(other.type, type) || other.type == type) &&
             (identical(other.name, name) || other.name == name) &&
             const DeepCollectionEquality().equals(other._variants, _variants));
@@ -923,261 +756,75 @@ class _$SierraEnumAbiEntryImpl implements SierraEnumAbiEntry {
   int get hashCode => Object.hash(
       runtimeType, type, name, const DeepCollectionEquality().hash(_variants));
 
-  /// Create a copy of SierraContractAbiEntry
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  @pragma('vm:prefer-inline')
-  _$$SierraEnumAbiEntryImplCopyWith<_$SierraEnumAbiEntryImpl> get copyWith =>
-      __$$SierraEnumAbiEntryImplCopyWithImpl<_$SierraEnumAbiEntryImpl>(
-          this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(
-            String type,
-            String name,
-            List<InputParameter> inputs,
-            List<OutputParameter> outputs,
-            @JsonKey(includeIfNull: false) String? stateMutability)
-        function,
-    required TResult Function(String type, String name, String kind) event,
-    required TResult Function(
-            String type, String name, List<VariantParameter> variants)
-        enumeration,
-    required TResult Function(
-            String type, String name, List<MemberParameter> members)
-        struct,
-    required TResult Function(String type, String name, String interfaceName)
-        impl,
-    required TResult Function(String type, String name) interface,
-    required TResult Function(
-            String type, String name, List<InputParameter> inputs)
-        constructor,
-    required TResult Function(
-            String type,
-            String name,
-            List<InputParameter> inputs,
-            List<OutputParameter> outputs,
-            @JsonKey(includeIfNull: false) String? stateMutability)
-        l1Handler,
-  }) {
-    return enumeration(type, name, variants);
+  String toString() {
+    return 'SierraContractAbiEntry.enumeration(type: $type, name: $name, variants: $variants)';
   }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(
-            String type,
-            String name,
-            List<InputParameter> inputs,
-            List<OutputParameter> outputs,
-            @JsonKey(includeIfNull: false) String? stateMutability)?
-        function,
-    TResult? Function(String type, String name, String kind)? event,
-    TResult? Function(
-            String type, String name, List<VariantParameter> variants)?
-        enumeration,
-    TResult? Function(String type, String name, List<MemberParameter> members)?
-        struct,
-    TResult? Function(String type, String name, String interfaceName)? impl,
-    TResult? Function(String type, String name)? interface,
-    TResult? Function(String type, String name, List<InputParameter> inputs)?
-        constructor,
-    TResult? Function(
-            String type,
-            String name,
-            List<InputParameter> inputs,
-            List<OutputParameter> outputs,
-            @JsonKey(includeIfNull: false) String? stateMutability)?
-        l1Handler,
-  }) {
-    return enumeration?.call(type, name, variants);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(
-            String type,
-            String name,
-            List<InputParameter> inputs,
-            List<OutputParameter> outputs,
-            @JsonKey(includeIfNull: false) String? stateMutability)?
-        function,
-    TResult Function(String type, String name, String kind)? event,
-    TResult Function(String type, String name, List<VariantParameter> variants)?
-        enumeration,
-    TResult Function(String type, String name, List<MemberParameter> members)?
-        struct,
-    TResult Function(String type, String name, String interfaceName)? impl,
-    TResult Function(String type, String name)? interface,
-    TResult Function(String type, String name, List<InputParameter> inputs)?
-        constructor,
-    TResult Function(
-            String type,
-            String name,
-            List<InputParameter> inputs,
-            List<OutputParameter> outputs,
-            @JsonKey(includeIfNull: false) String? stateMutability)?
-        l1Handler,
-    required TResult orElse(),
-  }) {
-    if (enumeration != null) {
-      return enumeration(type, name, variants);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(SierraFunctionAbiEntry value) function,
-    required TResult Function(SierraEventAbiEntry value) event,
-    required TResult Function(SierraEnumAbiEntry value) enumeration,
-    required TResult Function(SierraStructAbiEntry value) struct,
-    required TResult Function(SierraImplAbiEntry value) impl,
-    required TResult Function(SierraInterfaceAbiEntry value) interface,
-    required TResult Function(SierraConstructorAbiEntry value) constructor,
-    required TResult Function(SierraL1HandlerAbiEntry value) l1Handler,
-  }) {
-    return enumeration(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(SierraFunctionAbiEntry value)? function,
-    TResult? Function(SierraEventAbiEntry value)? event,
-    TResult? Function(SierraEnumAbiEntry value)? enumeration,
-    TResult? Function(SierraStructAbiEntry value)? struct,
-    TResult? Function(SierraImplAbiEntry value)? impl,
-    TResult? Function(SierraInterfaceAbiEntry value)? interface,
-    TResult? Function(SierraConstructorAbiEntry value)? constructor,
-    TResult? Function(SierraL1HandlerAbiEntry value)? l1Handler,
-  }) {
-    return enumeration?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(SierraFunctionAbiEntry value)? function,
-    TResult Function(SierraEventAbiEntry value)? event,
-    TResult Function(SierraEnumAbiEntry value)? enumeration,
-    TResult Function(SierraStructAbiEntry value)? struct,
-    TResult Function(SierraImplAbiEntry value)? impl,
-    TResult Function(SierraInterfaceAbiEntry value)? interface,
-    TResult Function(SierraConstructorAbiEntry value)? constructor,
-    TResult Function(SierraL1HandlerAbiEntry value)? l1Handler,
-    required TResult orElse(),
-  }) {
-    if (enumeration != null) {
-      return enumeration(this);
-    }
-    return orElse();
-  }
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$SierraEnumAbiEntryImplToJson(
-      this,
-    );
-  }
-}
-
-abstract class SierraEnumAbiEntry implements SierraContractAbiEntry {
-  const factory SierraEnumAbiEntry(
-          {required final String type,
-          required final String name,
-          required final List<VariantParameter> variants}) =
-      _$SierraEnumAbiEntryImpl;
-
-  factory SierraEnumAbiEntry.fromJson(Map<String, dynamic> json) =
-      _$SierraEnumAbiEntryImpl.fromJson;
-
-  @override
-  String get type;
-  @override
-  String get name;
-  List<VariantParameter> get variants;
-
-  /// Create a copy of SierraContractAbiEntry
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$SierraEnumAbiEntryImplCopyWith<_$SierraEnumAbiEntryImpl> get copyWith =>
-      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$SierraStructAbiEntryImplCopyWith<$Res>
+abstract mixin class $SierraEnumAbiEntryCopyWith<$Res>
     implements $SierraContractAbiEntryCopyWith<$Res> {
-  factory _$$SierraStructAbiEntryImplCopyWith(_$SierraStructAbiEntryImpl value,
-          $Res Function(_$SierraStructAbiEntryImpl) then) =
-      __$$SierraStructAbiEntryImplCopyWithImpl<$Res>;
+  factory $SierraEnumAbiEntryCopyWith(
+          SierraEnumAbiEntry value, $Res Function(SierraEnumAbiEntry) _then) =
+      _$SierraEnumAbiEntryCopyWithImpl;
   @override
   @useResult
-  $Res call({String type, String name, List<MemberParameter> members});
+  $Res call({String type, String name, List<VariantParameter> variants});
 }
 
 /// @nodoc
-class __$$SierraStructAbiEntryImplCopyWithImpl<$Res>
-    extends _$SierraContractAbiEntryCopyWithImpl<$Res,
-        _$SierraStructAbiEntryImpl>
-    implements _$$SierraStructAbiEntryImplCopyWith<$Res> {
-  __$$SierraStructAbiEntryImplCopyWithImpl(_$SierraStructAbiEntryImpl _value,
-      $Res Function(_$SierraStructAbiEntryImpl) _then)
-      : super(_value, _then);
+class _$SierraEnumAbiEntryCopyWithImpl<$Res>
+    implements $SierraEnumAbiEntryCopyWith<$Res> {
+  _$SierraEnumAbiEntryCopyWithImpl(this._self, this._then);
+
+  final SierraEnumAbiEntry _self;
+  final $Res Function(SierraEnumAbiEntry) _then;
 
   /// Create a copy of SierraContractAbiEntry
   /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
   @override
+  @pragma('vm:prefer-inline')
   $Res call({
     Object? type = null,
     Object? name = null,
-    Object? members = null,
+    Object? variants = null,
   }) {
-    return _then(_$SierraStructAbiEntryImpl(
+    return _then(SierraEnumAbiEntry(
       type: null == type
-          ? _value.type
+          ? _self.type
           : type // ignore: cast_nullable_to_non_nullable
               as String,
       name: null == name
-          ? _value.name
+          ? _self.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
-      members: null == members
-          ? _value._members
-          : members // ignore: cast_nullable_to_non_nullable
-              as List<MemberParameter>,
+      variants: null == variants
+          ? _self._variants
+          : variants // ignore: cast_nullable_to_non_nullable
+              as List<VariantParameter>,
     ));
   }
 }
 
 /// @nodoc
 @JsonSerializable()
-class _$SierraStructAbiEntryImpl implements SierraStructAbiEntry {
-  const _$SierraStructAbiEntryImpl(
+class SierraStructAbiEntry implements SierraContractAbiEntry {
+  const SierraStructAbiEntry(
       {required this.type,
       required this.name,
       required final List<MemberParameter> members,
       final String? $type})
       : _members = members,
         $type = $type ?? 'struct';
-
-  factory _$SierraStructAbiEntryImpl.fromJson(Map<String, dynamic> json) =>
-      _$$SierraStructAbiEntryImplFromJson(json);
+  factory SierraStructAbiEntry.fromJson(Map<String, dynamic> json) =>
+      _$SierraStructAbiEntryFromJson(json);
 
   @override
   final String type;
   @override
   final String name;
   final List<MemberParameter> _members;
-  @override
   List<MemberParameter> get members {
     if (_members is EqualUnmodifiableListView) return _members;
     // ignore: implicit_dynamic_type
@@ -1187,16 +834,27 @@ class _$SierraStructAbiEntryImpl implements SierraStructAbiEntry {
   @JsonKey(name: 'starkNetRuntimeTypeToRemove')
   final String $type;
 
+  /// Create a copy of SierraContractAbiEntry
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  String toString() {
-    return 'SierraContractAbiEntry.struct(type: $type, name: $name, members: $members)';
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  $SierraStructAbiEntryCopyWith<SierraStructAbiEntry> get copyWith =>
+      _$SierraStructAbiEntryCopyWithImpl<SierraStructAbiEntry>(
+          this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$SierraStructAbiEntryToJson(
+      this,
+    );
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$SierraStructAbiEntryImpl &&
+            other is SierraStructAbiEntry &&
             (identical(other.type, type) || other.type == type) &&
             (identical(other.name, name) || other.name == name) &&
             const DeepCollectionEquality().equals(other._members, _members));
@@ -1207,274 +865,98 @@ class _$SierraStructAbiEntryImpl implements SierraStructAbiEntry {
   int get hashCode => Object.hash(
       runtimeType, type, name, const DeepCollectionEquality().hash(_members));
 
-  /// Create a copy of SierraContractAbiEntry
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  @pragma('vm:prefer-inline')
-  _$$SierraStructAbiEntryImplCopyWith<_$SierraStructAbiEntryImpl>
-      get copyWith =>
-          __$$SierraStructAbiEntryImplCopyWithImpl<_$SierraStructAbiEntryImpl>(
-              this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(
-            String type,
-            String name,
-            List<InputParameter> inputs,
-            List<OutputParameter> outputs,
-            @JsonKey(includeIfNull: false) String? stateMutability)
-        function,
-    required TResult Function(String type, String name, String kind) event,
-    required TResult Function(
-            String type, String name, List<VariantParameter> variants)
-        enumeration,
-    required TResult Function(
-            String type, String name, List<MemberParameter> members)
-        struct,
-    required TResult Function(String type, String name, String interfaceName)
-        impl,
-    required TResult Function(String type, String name) interface,
-    required TResult Function(
-            String type, String name, List<InputParameter> inputs)
-        constructor,
-    required TResult Function(
-            String type,
-            String name,
-            List<InputParameter> inputs,
-            List<OutputParameter> outputs,
-            @JsonKey(includeIfNull: false) String? stateMutability)
-        l1Handler,
-  }) {
-    return struct(type, name, members);
+  String toString() {
+    return 'SierraContractAbiEntry.struct(type: $type, name: $name, members: $members)';
   }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(
-            String type,
-            String name,
-            List<InputParameter> inputs,
-            List<OutputParameter> outputs,
-            @JsonKey(includeIfNull: false) String? stateMutability)?
-        function,
-    TResult? Function(String type, String name, String kind)? event,
-    TResult? Function(
-            String type, String name, List<VariantParameter> variants)?
-        enumeration,
-    TResult? Function(String type, String name, List<MemberParameter> members)?
-        struct,
-    TResult? Function(String type, String name, String interfaceName)? impl,
-    TResult? Function(String type, String name)? interface,
-    TResult? Function(String type, String name, List<InputParameter> inputs)?
-        constructor,
-    TResult? Function(
-            String type,
-            String name,
-            List<InputParameter> inputs,
-            List<OutputParameter> outputs,
-            @JsonKey(includeIfNull: false) String? stateMutability)?
-        l1Handler,
-  }) {
-    return struct?.call(type, name, members);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(
-            String type,
-            String name,
-            List<InputParameter> inputs,
-            List<OutputParameter> outputs,
-            @JsonKey(includeIfNull: false) String? stateMutability)?
-        function,
-    TResult Function(String type, String name, String kind)? event,
-    TResult Function(String type, String name, List<VariantParameter> variants)?
-        enumeration,
-    TResult Function(String type, String name, List<MemberParameter> members)?
-        struct,
-    TResult Function(String type, String name, String interfaceName)? impl,
-    TResult Function(String type, String name)? interface,
-    TResult Function(String type, String name, List<InputParameter> inputs)?
-        constructor,
-    TResult Function(
-            String type,
-            String name,
-            List<InputParameter> inputs,
-            List<OutputParameter> outputs,
-            @JsonKey(includeIfNull: false) String? stateMutability)?
-        l1Handler,
-    required TResult orElse(),
-  }) {
-    if (struct != null) {
-      return struct(type, name, members);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(SierraFunctionAbiEntry value) function,
-    required TResult Function(SierraEventAbiEntry value) event,
-    required TResult Function(SierraEnumAbiEntry value) enumeration,
-    required TResult Function(SierraStructAbiEntry value) struct,
-    required TResult Function(SierraImplAbiEntry value) impl,
-    required TResult Function(SierraInterfaceAbiEntry value) interface,
-    required TResult Function(SierraConstructorAbiEntry value) constructor,
-    required TResult Function(SierraL1HandlerAbiEntry value) l1Handler,
-  }) {
-    return struct(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(SierraFunctionAbiEntry value)? function,
-    TResult? Function(SierraEventAbiEntry value)? event,
-    TResult? Function(SierraEnumAbiEntry value)? enumeration,
-    TResult? Function(SierraStructAbiEntry value)? struct,
-    TResult? Function(SierraImplAbiEntry value)? impl,
-    TResult? Function(SierraInterfaceAbiEntry value)? interface,
-    TResult? Function(SierraConstructorAbiEntry value)? constructor,
-    TResult? Function(SierraL1HandlerAbiEntry value)? l1Handler,
-  }) {
-    return struct?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(SierraFunctionAbiEntry value)? function,
-    TResult Function(SierraEventAbiEntry value)? event,
-    TResult Function(SierraEnumAbiEntry value)? enumeration,
-    TResult Function(SierraStructAbiEntry value)? struct,
-    TResult Function(SierraImplAbiEntry value)? impl,
-    TResult Function(SierraInterfaceAbiEntry value)? interface,
-    TResult Function(SierraConstructorAbiEntry value)? constructor,
-    TResult Function(SierraL1HandlerAbiEntry value)? l1Handler,
-    required TResult orElse(),
-  }) {
-    if (struct != null) {
-      return struct(this);
-    }
-    return orElse();
-  }
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$SierraStructAbiEntryImplToJson(
-      this,
-    );
-  }
-}
-
-abstract class SierraStructAbiEntry implements SierraContractAbiEntry {
-  const factory SierraStructAbiEntry(
-          {required final String type,
-          required final String name,
-          required final List<MemberParameter> members}) =
-      _$SierraStructAbiEntryImpl;
-
-  factory SierraStructAbiEntry.fromJson(Map<String, dynamic> json) =
-      _$SierraStructAbiEntryImpl.fromJson;
-
-  @override
-  String get type;
-  @override
-  String get name;
-  List<MemberParameter> get members;
-
-  /// Create a copy of SierraContractAbiEntry
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$SierraStructAbiEntryImplCopyWith<_$SierraStructAbiEntryImpl>
-      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$SierraImplAbiEntryImplCopyWith<$Res>
+abstract mixin class $SierraStructAbiEntryCopyWith<$Res>
     implements $SierraContractAbiEntryCopyWith<$Res> {
-  factory _$$SierraImplAbiEntryImplCopyWith(_$SierraImplAbiEntryImpl value,
-          $Res Function(_$SierraImplAbiEntryImpl) then) =
-      __$$SierraImplAbiEntryImplCopyWithImpl<$Res>;
+  factory $SierraStructAbiEntryCopyWith(SierraStructAbiEntry value,
+          $Res Function(SierraStructAbiEntry) _then) =
+      _$SierraStructAbiEntryCopyWithImpl;
   @override
   @useResult
-  $Res call({String type, String name, String interfaceName});
+  $Res call({String type, String name, List<MemberParameter> members});
 }
 
 /// @nodoc
-class __$$SierraImplAbiEntryImplCopyWithImpl<$Res>
-    extends _$SierraContractAbiEntryCopyWithImpl<$Res, _$SierraImplAbiEntryImpl>
-    implements _$$SierraImplAbiEntryImplCopyWith<$Res> {
-  __$$SierraImplAbiEntryImplCopyWithImpl(_$SierraImplAbiEntryImpl _value,
-      $Res Function(_$SierraImplAbiEntryImpl) _then)
-      : super(_value, _then);
+class _$SierraStructAbiEntryCopyWithImpl<$Res>
+    implements $SierraStructAbiEntryCopyWith<$Res> {
+  _$SierraStructAbiEntryCopyWithImpl(this._self, this._then);
+
+  final SierraStructAbiEntry _self;
+  final $Res Function(SierraStructAbiEntry) _then;
 
   /// Create a copy of SierraContractAbiEntry
   /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
   @override
+  @pragma('vm:prefer-inline')
   $Res call({
     Object? type = null,
     Object? name = null,
-    Object? interfaceName = null,
+    Object? members = null,
   }) {
-    return _then(_$SierraImplAbiEntryImpl(
+    return _then(SierraStructAbiEntry(
       type: null == type
-          ? _value.type
+          ? _self.type
           : type // ignore: cast_nullable_to_non_nullable
               as String,
       name: null == name
-          ? _value.name
+          ? _self.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
-      interfaceName: null == interfaceName
-          ? _value.interfaceName
-          : interfaceName // ignore: cast_nullable_to_non_nullable
-              as String,
+      members: null == members
+          ? _self._members
+          : members // ignore: cast_nullable_to_non_nullable
+              as List<MemberParameter>,
     ));
   }
 }
 
 /// @nodoc
 @JsonSerializable()
-class _$SierraImplAbiEntryImpl implements SierraImplAbiEntry {
-  const _$SierraImplAbiEntryImpl(
+class SierraImplAbiEntry implements SierraContractAbiEntry {
+  const SierraImplAbiEntry(
       {required this.type,
       required this.name,
       required this.interfaceName,
       final String? $type})
       : $type = $type ?? 'impl';
-
-  factory _$SierraImplAbiEntryImpl.fromJson(Map<String, dynamic> json) =>
-      _$$SierraImplAbiEntryImplFromJson(json);
+  factory SierraImplAbiEntry.fromJson(Map<String, dynamic> json) =>
+      _$SierraImplAbiEntryFromJson(json);
 
   @override
   final String type;
   @override
   final String name;
-  @override
   final String interfaceName;
 
   @JsonKey(name: 'starkNetRuntimeTypeToRemove')
   final String $type;
 
+  /// Create a copy of SierraContractAbiEntry
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  String toString() {
-    return 'SierraContractAbiEntry.impl(type: $type, name: $name, interfaceName: $interfaceName)';
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  $SierraImplAbiEntryCopyWith<SierraImplAbiEntry> get copyWith =>
+      _$SierraImplAbiEntryCopyWithImpl<SierraImplAbiEntry>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$SierraImplAbiEntryToJson(
+      this,
+    );
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$SierraImplAbiEntryImpl &&
+            other is SierraImplAbiEntry &&
             (identical(other.type, type) || other.type == type) &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.interfaceName, interfaceName) ||
@@ -1485,232 +967,52 @@ class _$SierraImplAbiEntryImpl implements SierraImplAbiEntry {
   @override
   int get hashCode => Object.hash(runtimeType, type, name, interfaceName);
 
-  /// Create a copy of SierraContractAbiEntry
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  @pragma('vm:prefer-inline')
-  _$$SierraImplAbiEntryImplCopyWith<_$SierraImplAbiEntryImpl> get copyWith =>
-      __$$SierraImplAbiEntryImplCopyWithImpl<_$SierraImplAbiEntryImpl>(
-          this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(
-            String type,
-            String name,
-            List<InputParameter> inputs,
-            List<OutputParameter> outputs,
-            @JsonKey(includeIfNull: false) String? stateMutability)
-        function,
-    required TResult Function(String type, String name, String kind) event,
-    required TResult Function(
-            String type, String name, List<VariantParameter> variants)
-        enumeration,
-    required TResult Function(
-            String type, String name, List<MemberParameter> members)
-        struct,
-    required TResult Function(String type, String name, String interfaceName)
-        impl,
-    required TResult Function(String type, String name) interface,
-    required TResult Function(
-            String type, String name, List<InputParameter> inputs)
-        constructor,
-    required TResult Function(
-            String type,
-            String name,
-            List<InputParameter> inputs,
-            List<OutputParameter> outputs,
-            @JsonKey(includeIfNull: false) String? stateMutability)
-        l1Handler,
-  }) {
-    return impl(type, name, interfaceName);
+  String toString() {
+    return 'SierraContractAbiEntry.impl(type: $type, name: $name, interfaceName: $interfaceName)';
   }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(
-            String type,
-            String name,
-            List<InputParameter> inputs,
-            List<OutputParameter> outputs,
-            @JsonKey(includeIfNull: false) String? stateMutability)?
-        function,
-    TResult? Function(String type, String name, String kind)? event,
-    TResult? Function(
-            String type, String name, List<VariantParameter> variants)?
-        enumeration,
-    TResult? Function(String type, String name, List<MemberParameter> members)?
-        struct,
-    TResult? Function(String type, String name, String interfaceName)? impl,
-    TResult? Function(String type, String name)? interface,
-    TResult? Function(String type, String name, List<InputParameter> inputs)?
-        constructor,
-    TResult? Function(
-            String type,
-            String name,
-            List<InputParameter> inputs,
-            List<OutputParameter> outputs,
-            @JsonKey(includeIfNull: false) String? stateMutability)?
-        l1Handler,
-  }) {
-    return impl?.call(type, name, interfaceName);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(
-            String type,
-            String name,
-            List<InputParameter> inputs,
-            List<OutputParameter> outputs,
-            @JsonKey(includeIfNull: false) String? stateMutability)?
-        function,
-    TResult Function(String type, String name, String kind)? event,
-    TResult Function(String type, String name, List<VariantParameter> variants)?
-        enumeration,
-    TResult Function(String type, String name, List<MemberParameter> members)?
-        struct,
-    TResult Function(String type, String name, String interfaceName)? impl,
-    TResult Function(String type, String name)? interface,
-    TResult Function(String type, String name, List<InputParameter> inputs)?
-        constructor,
-    TResult Function(
-            String type,
-            String name,
-            List<InputParameter> inputs,
-            List<OutputParameter> outputs,
-            @JsonKey(includeIfNull: false) String? stateMutability)?
-        l1Handler,
-    required TResult orElse(),
-  }) {
-    if (impl != null) {
-      return impl(type, name, interfaceName);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(SierraFunctionAbiEntry value) function,
-    required TResult Function(SierraEventAbiEntry value) event,
-    required TResult Function(SierraEnumAbiEntry value) enumeration,
-    required TResult Function(SierraStructAbiEntry value) struct,
-    required TResult Function(SierraImplAbiEntry value) impl,
-    required TResult Function(SierraInterfaceAbiEntry value) interface,
-    required TResult Function(SierraConstructorAbiEntry value) constructor,
-    required TResult Function(SierraL1HandlerAbiEntry value) l1Handler,
-  }) {
-    return impl(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(SierraFunctionAbiEntry value)? function,
-    TResult? Function(SierraEventAbiEntry value)? event,
-    TResult? Function(SierraEnumAbiEntry value)? enumeration,
-    TResult? Function(SierraStructAbiEntry value)? struct,
-    TResult? Function(SierraImplAbiEntry value)? impl,
-    TResult? Function(SierraInterfaceAbiEntry value)? interface,
-    TResult? Function(SierraConstructorAbiEntry value)? constructor,
-    TResult? Function(SierraL1HandlerAbiEntry value)? l1Handler,
-  }) {
-    return impl?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(SierraFunctionAbiEntry value)? function,
-    TResult Function(SierraEventAbiEntry value)? event,
-    TResult Function(SierraEnumAbiEntry value)? enumeration,
-    TResult Function(SierraStructAbiEntry value)? struct,
-    TResult Function(SierraImplAbiEntry value)? impl,
-    TResult Function(SierraInterfaceAbiEntry value)? interface,
-    TResult Function(SierraConstructorAbiEntry value)? constructor,
-    TResult Function(SierraL1HandlerAbiEntry value)? l1Handler,
-    required TResult orElse(),
-  }) {
-    if (impl != null) {
-      return impl(this);
-    }
-    return orElse();
-  }
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$SierraImplAbiEntryImplToJson(
-      this,
-    );
-  }
-}
-
-abstract class SierraImplAbiEntry implements SierraContractAbiEntry {
-  const factory SierraImplAbiEntry(
-      {required final String type,
-      required final String name,
-      required final String interfaceName}) = _$SierraImplAbiEntryImpl;
-
-  factory SierraImplAbiEntry.fromJson(Map<String, dynamic> json) =
-      _$SierraImplAbiEntryImpl.fromJson;
-
-  @override
-  String get type;
-  @override
-  String get name;
-  String get interfaceName;
-
-  /// Create a copy of SierraContractAbiEntry
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$SierraImplAbiEntryImplCopyWith<_$SierraImplAbiEntryImpl> get copyWith =>
-      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$SierraInterfaceAbiEntryImplCopyWith<$Res>
+abstract mixin class $SierraImplAbiEntryCopyWith<$Res>
     implements $SierraContractAbiEntryCopyWith<$Res> {
-  factory _$$SierraInterfaceAbiEntryImplCopyWith(
-          _$SierraInterfaceAbiEntryImpl value,
-          $Res Function(_$SierraInterfaceAbiEntryImpl) then) =
-      __$$SierraInterfaceAbiEntryImplCopyWithImpl<$Res>;
+  factory $SierraImplAbiEntryCopyWith(
+          SierraImplAbiEntry value, $Res Function(SierraImplAbiEntry) _then) =
+      _$SierraImplAbiEntryCopyWithImpl;
   @override
   @useResult
-  $Res call({String type, String name});
+  $Res call({String type, String name, String interfaceName});
 }
 
 /// @nodoc
-class __$$SierraInterfaceAbiEntryImplCopyWithImpl<$Res>
-    extends _$SierraContractAbiEntryCopyWithImpl<$Res,
-        _$SierraInterfaceAbiEntryImpl>
-    implements _$$SierraInterfaceAbiEntryImplCopyWith<$Res> {
-  __$$SierraInterfaceAbiEntryImplCopyWithImpl(
-      _$SierraInterfaceAbiEntryImpl _value,
-      $Res Function(_$SierraInterfaceAbiEntryImpl) _then)
-      : super(_value, _then);
+class _$SierraImplAbiEntryCopyWithImpl<$Res>
+    implements $SierraImplAbiEntryCopyWith<$Res> {
+  _$SierraImplAbiEntryCopyWithImpl(this._self, this._then);
+
+  final SierraImplAbiEntry _self;
+  final $Res Function(SierraImplAbiEntry) _then;
 
   /// Create a copy of SierraContractAbiEntry
   /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
   @override
+  @pragma('vm:prefer-inline')
   $Res call({
     Object? type = null,
     Object? name = null,
+    Object? interfaceName = null,
   }) {
-    return _then(_$SierraInterfaceAbiEntryImpl(
+    return _then(SierraImplAbiEntry(
       type: null == type
-          ? _value.type
+          ? _self.type
           : type // ignore: cast_nullable_to_non_nullable
               as String,
       name: null == name
-          ? _value.name
+          ? _self.name
           : name // ignore: cast_nullable_to_non_nullable
+              as String,
+      interfaceName: null == interfaceName
+          ? _self.interfaceName
+          : interfaceName // ignore: cast_nullable_to_non_nullable
               as String,
     ));
   }
@@ -1718,13 +1020,12 @@ class __$$SierraInterfaceAbiEntryImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$SierraInterfaceAbiEntryImpl implements SierraInterfaceAbiEntry {
-  const _$SierraInterfaceAbiEntryImpl(
+class SierraInterfaceAbiEntry implements SierraContractAbiEntry {
+  const SierraInterfaceAbiEntry(
       {required this.type, required this.name, final String? $type})
       : $type = $type ?? 'interface';
-
-  factory _$SierraInterfaceAbiEntryImpl.fromJson(Map<String, dynamic> json) =>
-      _$$SierraInterfaceAbiEntryImplFromJson(json);
+  factory SierraInterfaceAbiEntry.fromJson(Map<String, dynamic> json) =>
+      _$SierraInterfaceAbiEntryFromJson(json);
 
   @override
   final String type;
@@ -1734,16 +1035,27 @@ class _$SierraInterfaceAbiEntryImpl implements SierraInterfaceAbiEntry {
   @JsonKey(name: 'starkNetRuntimeTypeToRemove')
   final String $type;
 
+  /// Create a copy of SierraContractAbiEntry
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  String toString() {
-    return 'SierraContractAbiEntry.interface(type: $type, name: $name)';
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  $SierraInterfaceAbiEntryCopyWith<SierraInterfaceAbiEntry> get copyWith =>
+      _$SierraInterfaceAbiEntryCopyWithImpl<SierraInterfaceAbiEntry>(
+          this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$SierraInterfaceAbiEntryToJson(
+      this,
+    );
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$SierraInterfaceAbiEntryImpl &&
+            other is SierraInterfaceAbiEntry &&
             (identical(other.type, type) || other.type == type) &&
             (identical(other.name, name) || other.name == name));
   }
@@ -1752,260 +1064,70 @@ class _$SierraInterfaceAbiEntryImpl implements SierraInterfaceAbiEntry {
   @override
   int get hashCode => Object.hash(runtimeType, type, name);
 
-  /// Create a copy of SierraContractAbiEntry
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  @pragma('vm:prefer-inline')
-  _$$SierraInterfaceAbiEntryImplCopyWith<_$SierraInterfaceAbiEntryImpl>
-      get copyWith => __$$SierraInterfaceAbiEntryImplCopyWithImpl<
-          _$SierraInterfaceAbiEntryImpl>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(
-            String type,
-            String name,
-            List<InputParameter> inputs,
-            List<OutputParameter> outputs,
-            @JsonKey(includeIfNull: false) String? stateMutability)
-        function,
-    required TResult Function(String type, String name, String kind) event,
-    required TResult Function(
-            String type, String name, List<VariantParameter> variants)
-        enumeration,
-    required TResult Function(
-            String type, String name, List<MemberParameter> members)
-        struct,
-    required TResult Function(String type, String name, String interfaceName)
-        impl,
-    required TResult Function(String type, String name) interface,
-    required TResult Function(
-            String type, String name, List<InputParameter> inputs)
-        constructor,
-    required TResult Function(
-            String type,
-            String name,
-            List<InputParameter> inputs,
-            List<OutputParameter> outputs,
-            @JsonKey(includeIfNull: false) String? stateMutability)
-        l1Handler,
-  }) {
-    return interface(type, name);
+  String toString() {
+    return 'SierraContractAbiEntry.interface(type: $type, name: $name)';
   }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(
-            String type,
-            String name,
-            List<InputParameter> inputs,
-            List<OutputParameter> outputs,
-            @JsonKey(includeIfNull: false) String? stateMutability)?
-        function,
-    TResult? Function(String type, String name, String kind)? event,
-    TResult? Function(
-            String type, String name, List<VariantParameter> variants)?
-        enumeration,
-    TResult? Function(String type, String name, List<MemberParameter> members)?
-        struct,
-    TResult? Function(String type, String name, String interfaceName)? impl,
-    TResult? Function(String type, String name)? interface,
-    TResult? Function(String type, String name, List<InputParameter> inputs)?
-        constructor,
-    TResult? Function(
-            String type,
-            String name,
-            List<InputParameter> inputs,
-            List<OutputParameter> outputs,
-            @JsonKey(includeIfNull: false) String? stateMutability)?
-        l1Handler,
-  }) {
-    return interface?.call(type, name);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(
-            String type,
-            String name,
-            List<InputParameter> inputs,
-            List<OutputParameter> outputs,
-            @JsonKey(includeIfNull: false) String? stateMutability)?
-        function,
-    TResult Function(String type, String name, String kind)? event,
-    TResult Function(String type, String name, List<VariantParameter> variants)?
-        enumeration,
-    TResult Function(String type, String name, List<MemberParameter> members)?
-        struct,
-    TResult Function(String type, String name, String interfaceName)? impl,
-    TResult Function(String type, String name)? interface,
-    TResult Function(String type, String name, List<InputParameter> inputs)?
-        constructor,
-    TResult Function(
-            String type,
-            String name,
-            List<InputParameter> inputs,
-            List<OutputParameter> outputs,
-            @JsonKey(includeIfNull: false) String? stateMutability)?
-        l1Handler,
-    required TResult orElse(),
-  }) {
-    if (interface != null) {
-      return interface(type, name);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(SierraFunctionAbiEntry value) function,
-    required TResult Function(SierraEventAbiEntry value) event,
-    required TResult Function(SierraEnumAbiEntry value) enumeration,
-    required TResult Function(SierraStructAbiEntry value) struct,
-    required TResult Function(SierraImplAbiEntry value) impl,
-    required TResult Function(SierraInterfaceAbiEntry value) interface,
-    required TResult Function(SierraConstructorAbiEntry value) constructor,
-    required TResult Function(SierraL1HandlerAbiEntry value) l1Handler,
-  }) {
-    return interface(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(SierraFunctionAbiEntry value)? function,
-    TResult? Function(SierraEventAbiEntry value)? event,
-    TResult? Function(SierraEnumAbiEntry value)? enumeration,
-    TResult? Function(SierraStructAbiEntry value)? struct,
-    TResult? Function(SierraImplAbiEntry value)? impl,
-    TResult? Function(SierraInterfaceAbiEntry value)? interface,
-    TResult? Function(SierraConstructorAbiEntry value)? constructor,
-    TResult? Function(SierraL1HandlerAbiEntry value)? l1Handler,
-  }) {
-    return interface?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(SierraFunctionAbiEntry value)? function,
-    TResult Function(SierraEventAbiEntry value)? event,
-    TResult Function(SierraEnumAbiEntry value)? enumeration,
-    TResult Function(SierraStructAbiEntry value)? struct,
-    TResult Function(SierraImplAbiEntry value)? impl,
-    TResult Function(SierraInterfaceAbiEntry value)? interface,
-    TResult Function(SierraConstructorAbiEntry value)? constructor,
-    TResult Function(SierraL1HandlerAbiEntry value)? l1Handler,
-    required TResult orElse(),
-  }) {
-    if (interface != null) {
-      return interface(this);
-    }
-    return orElse();
-  }
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$SierraInterfaceAbiEntryImplToJson(
-      this,
-    );
-  }
-}
-
-abstract class SierraInterfaceAbiEntry implements SierraContractAbiEntry {
-  const factory SierraInterfaceAbiEntry(
-      {required final String type,
-      required final String name}) = _$SierraInterfaceAbiEntryImpl;
-
-  factory SierraInterfaceAbiEntry.fromJson(Map<String, dynamic> json) =
-      _$SierraInterfaceAbiEntryImpl.fromJson;
-
-  @override
-  String get type;
-  @override
-  String get name;
-
-  /// Create a copy of SierraContractAbiEntry
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$SierraInterfaceAbiEntryImplCopyWith<_$SierraInterfaceAbiEntryImpl>
-      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$SierraConstructorAbiEntryImplCopyWith<$Res>
+abstract mixin class $SierraInterfaceAbiEntryCopyWith<$Res>
     implements $SierraContractAbiEntryCopyWith<$Res> {
-  factory _$$SierraConstructorAbiEntryImplCopyWith(
-          _$SierraConstructorAbiEntryImpl value,
-          $Res Function(_$SierraConstructorAbiEntryImpl) then) =
-      __$$SierraConstructorAbiEntryImplCopyWithImpl<$Res>;
+  factory $SierraInterfaceAbiEntryCopyWith(SierraInterfaceAbiEntry value,
+          $Res Function(SierraInterfaceAbiEntry) _then) =
+      _$SierraInterfaceAbiEntryCopyWithImpl;
   @override
   @useResult
-  $Res call({String type, String name, List<InputParameter> inputs});
+  $Res call({String type, String name});
 }
 
 /// @nodoc
-class __$$SierraConstructorAbiEntryImplCopyWithImpl<$Res>
-    extends _$SierraContractAbiEntryCopyWithImpl<$Res,
-        _$SierraConstructorAbiEntryImpl>
-    implements _$$SierraConstructorAbiEntryImplCopyWith<$Res> {
-  __$$SierraConstructorAbiEntryImplCopyWithImpl(
-      _$SierraConstructorAbiEntryImpl _value,
-      $Res Function(_$SierraConstructorAbiEntryImpl) _then)
-      : super(_value, _then);
+class _$SierraInterfaceAbiEntryCopyWithImpl<$Res>
+    implements $SierraInterfaceAbiEntryCopyWith<$Res> {
+  _$SierraInterfaceAbiEntryCopyWithImpl(this._self, this._then);
+
+  final SierraInterfaceAbiEntry _self;
+  final $Res Function(SierraInterfaceAbiEntry) _then;
 
   /// Create a copy of SierraContractAbiEntry
   /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
   @override
+  @pragma('vm:prefer-inline')
   $Res call({
     Object? type = null,
     Object? name = null,
-    Object? inputs = null,
   }) {
-    return _then(_$SierraConstructorAbiEntryImpl(
+    return _then(SierraInterfaceAbiEntry(
       type: null == type
-          ? _value.type
+          ? _self.type
           : type // ignore: cast_nullable_to_non_nullable
               as String,
       name: null == name
-          ? _value.name
+          ? _self.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
-      inputs: null == inputs
-          ? _value._inputs
-          : inputs // ignore: cast_nullable_to_non_nullable
-              as List<InputParameter>,
     ));
   }
 }
 
 /// @nodoc
 @JsonSerializable()
-class _$SierraConstructorAbiEntryImpl implements SierraConstructorAbiEntry {
-  const _$SierraConstructorAbiEntryImpl(
+class SierraConstructorAbiEntry implements SierraContractAbiEntry {
+  const SierraConstructorAbiEntry(
       {required this.type,
       required this.name,
       required final List<InputParameter> inputs,
       final String? $type})
       : _inputs = inputs,
         $type = $type ?? 'constructor';
-
-  factory _$SierraConstructorAbiEntryImpl.fromJson(Map<String, dynamic> json) =>
-      _$$SierraConstructorAbiEntryImplFromJson(json);
+  factory SierraConstructorAbiEntry.fromJson(Map<String, dynamic> json) =>
+      _$SierraConstructorAbiEntryFromJson(json);
 
   @override
   final String type;
   @override
   final String name;
   final List<InputParameter> _inputs;
-  @override
   List<InputParameter> get inputs {
     if (_inputs is EqualUnmodifiableListView) return _inputs;
     // ignore: implicit_dynamic_type
@@ -2015,16 +1137,27 @@ class _$SierraConstructorAbiEntryImpl implements SierraConstructorAbiEntry {
   @JsonKey(name: 'starkNetRuntimeTypeToRemove')
   final String $type;
 
+  /// Create a copy of SierraContractAbiEntry
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  String toString() {
-    return 'SierraContractAbiEntry.constructor(type: $type, name: $name, inputs: $inputs)';
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  $SierraConstructorAbiEntryCopyWith<SierraConstructorAbiEntry> get copyWith =>
+      _$SierraConstructorAbiEntryCopyWithImpl<SierraConstructorAbiEntry>(
+          this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$SierraConstructorAbiEntryToJson(
+      this,
+    );
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$SierraConstructorAbiEntryImpl &&
+            other is SierraConstructorAbiEntry &&
             (identical(other.type, type) || other.type == type) &&
             (identical(other.name, name) || other.name == name) &&
             const DeepCollectionEquality().equals(other._inputs, _inputs));
@@ -2035,262 +1168,61 @@ class _$SierraConstructorAbiEntryImpl implements SierraConstructorAbiEntry {
   int get hashCode => Object.hash(
       runtimeType, type, name, const DeepCollectionEquality().hash(_inputs));
 
-  /// Create a copy of SierraContractAbiEntry
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  @pragma('vm:prefer-inline')
-  _$$SierraConstructorAbiEntryImplCopyWith<_$SierraConstructorAbiEntryImpl>
-      get copyWith => __$$SierraConstructorAbiEntryImplCopyWithImpl<
-          _$SierraConstructorAbiEntryImpl>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(
-            String type,
-            String name,
-            List<InputParameter> inputs,
-            List<OutputParameter> outputs,
-            @JsonKey(includeIfNull: false) String? stateMutability)
-        function,
-    required TResult Function(String type, String name, String kind) event,
-    required TResult Function(
-            String type, String name, List<VariantParameter> variants)
-        enumeration,
-    required TResult Function(
-            String type, String name, List<MemberParameter> members)
-        struct,
-    required TResult Function(String type, String name, String interfaceName)
-        impl,
-    required TResult Function(String type, String name) interface,
-    required TResult Function(
-            String type, String name, List<InputParameter> inputs)
-        constructor,
-    required TResult Function(
-            String type,
-            String name,
-            List<InputParameter> inputs,
-            List<OutputParameter> outputs,
-            @JsonKey(includeIfNull: false) String? stateMutability)
-        l1Handler,
-  }) {
-    return constructor(type, name, inputs);
+  String toString() {
+    return 'SierraContractAbiEntry.constructor(type: $type, name: $name, inputs: $inputs)';
   }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(
-            String type,
-            String name,
-            List<InputParameter> inputs,
-            List<OutputParameter> outputs,
-            @JsonKey(includeIfNull: false) String? stateMutability)?
-        function,
-    TResult? Function(String type, String name, String kind)? event,
-    TResult? Function(
-            String type, String name, List<VariantParameter> variants)?
-        enumeration,
-    TResult? Function(String type, String name, List<MemberParameter> members)?
-        struct,
-    TResult? Function(String type, String name, String interfaceName)? impl,
-    TResult? Function(String type, String name)? interface,
-    TResult? Function(String type, String name, List<InputParameter> inputs)?
-        constructor,
-    TResult? Function(
-            String type,
-            String name,
-            List<InputParameter> inputs,
-            List<OutputParameter> outputs,
-            @JsonKey(includeIfNull: false) String? stateMutability)?
-        l1Handler,
-  }) {
-    return constructor?.call(type, name, inputs);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(
-            String type,
-            String name,
-            List<InputParameter> inputs,
-            List<OutputParameter> outputs,
-            @JsonKey(includeIfNull: false) String? stateMutability)?
-        function,
-    TResult Function(String type, String name, String kind)? event,
-    TResult Function(String type, String name, List<VariantParameter> variants)?
-        enumeration,
-    TResult Function(String type, String name, List<MemberParameter> members)?
-        struct,
-    TResult Function(String type, String name, String interfaceName)? impl,
-    TResult Function(String type, String name)? interface,
-    TResult Function(String type, String name, List<InputParameter> inputs)?
-        constructor,
-    TResult Function(
-            String type,
-            String name,
-            List<InputParameter> inputs,
-            List<OutputParameter> outputs,
-            @JsonKey(includeIfNull: false) String? stateMutability)?
-        l1Handler,
-    required TResult orElse(),
-  }) {
-    if (constructor != null) {
-      return constructor(type, name, inputs);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(SierraFunctionAbiEntry value) function,
-    required TResult Function(SierraEventAbiEntry value) event,
-    required TResult Function(SierraEnumAbiEntry value) enumeration,
-    required TResult Function(SierraStructAbiEntry value) struct,
-    required TResult Function(SierraImplAbiEntry value) impl,
-    required TResult Function(SierraInterfaceAbiEntry value) interface,
-    required TResult Function(SierraConstructorAbiEntry value) constructor,
-    required TResult Function(SierraL1HandlerAbiEntry value) l1Handler,
-  }) {
-    return constructor(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(SierraFunctionAbiEntry value)? function,
-    TResult? Function(SierraEventAbiEntry value)? event,
-    TResult? Function(SierraEnumAbiEntry value)? enumeration,
-    TResult? Function(SierraStructAbiEntry value)? struct,
-    TResult? Function(SierraImplAbiEntry value)? impl,
-    TResult? Function(SierraInterfaceAbiEntry value)? interface,
-    TResult? Function(SierraConstructorAbiEntry value)? constructor,
-    TResult? Function(SierraL1HandlerAbiEntry value)? l1Handler,
-  }) {
-    return constructor?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(SierraFunctionAbiEntry value)? function,
-    TResult Function(SierraEventAbiEntry value)? event,
-    TResult Function(SierraEnumAbiEntry value)? enumeration,
-    TResult Function(SierraStructAbiEntry value)? struct,
-    TResult Function(SierraImplAbiEntry value)? impl,
-    TResult Function(SierraInterfaceAbiEntry value)? interface,
-    TResult Function(SierraConstructorAbiEntry value)? constructor,
-    TResult Function(SierraL1HandlerAbiEntry value)? l1Handler,
-    required TResult orElse(),
-  }) {
-    if (constructor != null) {
-      return constructor(this);
-    }
-    return orElse();
-  }
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$SierraConstructorAbiEntryImplToJson(
-      this,
-    );
-  }
-}
-
-abstract class SierraConstructorAbiEntry implements SierraContractAbiEntry {
-  const factory SierraConstructorAbiEntry(
-          {required final String type,
-          required final String name,
-          required final List<InputParameter> inputs}) =
-      _$SierraConstructorAbiEntryImpl;
-
-  factory SierraConstructorAbiEntry.fromJson(Map<String, dynamic> json) =
-      _$SierraConstructorAbiEntryImpl.fromJson;
-
-  @override
-  String get type;
-  @override
-  String get name;
-  List<InputParameter> get inputs;
-
-  /// Create a copy of SierraContractAbiEntry
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$SierraConstructorAbiEntryImplCopyWith<_$SierraConstructorAbiEntryImpl>
-      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$SierraL1HandlerAbiEntryImplCopyWith<$Res>
+abstract mixin class $SierraConstructorAbiEntryCopyWith<$Res>
     implements $SierraContractAbiEntryCopyWith<$Res> {
-  factory _$$SierraL1HandlerAbiEntryImplCopyWith(
-          _$SierraL1HandlerAbiEntryImpl value,
-          $Res Function(_$SierraL1HandlerAbiEntryImpl) then) =
-      __$$SierraL1HandlerAbiEntryImplCopyWithImpl<$Res>;
+  factory $SierraConstructorAbiEntryCopyWith(SierraConstructorAbiEntry value,
+          $Res Function(SierraConstructorAbiEntry) _then) =
+      _$SierraConstructorAbiEntryCopyWithImpl;
   @override
   @useResult
-  $Res call(
-      {String type,
-      String name,
-      List<InputParameter> inputs,
-      List<OutputParameter> outputs,
-      @JsonKey(includeIfNull: false) String? stateMutability});
+  $Res call({String type, String name, List<InputParameter> inputs});
 }
 
 /// @nodoc
-class __$$SierraL1HandlerAbiEntryImplCopyWithImpl<$Res>
-    extends _$SierraContractAbiEntryCopyWithImpl<$Res,
-        _$SierraL1HandlerAbiEntryImpl>
-    implements _$$SierraL1HandlerAbiEntryImplCopyWith<$Res> {
-  __$$SierraL1HandlerAbiEntryImplCopyWithImpl(
-      _$SierraL1HandlerAbiEntryImpl _value,
-      $Res Function(_$SierraL1HandlerAbiEntryImpl) _then)
-      : super(_value, _then);
+class _$SierraConstructorAbiEntryCopyWithImpl<$Res>
+    implements $SierraConstructorAbiEntryCopyWith<$Res> {
+  _$SierraConstructorAbiEntryCopyWithImpl(this._self, this._then);
+
+  final SierraConstructorAbiEntry _self;
+  final $Res Function(SierraConstructorAbiEntry) _then;
 
   /// Create a copy of SierraContractAbiEntry
   /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
   @override
+  @pragma('vm:prefer-inline')
   $Res call({
     Object? type = null,
     Object? name = null,
     Object? inputs = null,
-    Object? outputs = null,
-    Object? stateMutability = freezed,
   }) {
-    return _then(_$SierraL1HandlerAbiEntryImpl(
+    return _then(SierraConstructorAbiEntry(
       type: null == type
-          ? _value.type
+          ? _self.type
           : type // ignore: cast_nullable_to_non_nullable
               as String,
       name: null == name
-          ? _value.name
+          ? _self.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
       inputs: null == inputs
-          ? _value._inputs
+          ? _self._inputs
           : inputs // ignore: cast_nullable_to_non_nullable
               as List<InputParameter>,
-      outputs: null == outputs
-          ? _value._outputs
-          : outputs // ignore: cast_nullable_to_non_nullable
-              as List<OutputParameter>,
-      stateMutability: freezed == stateMutability
-          ? _value.stateMutability
-          : stateMutability // ignore: cast_nullable_to_non_nullable
-              as String?,
     ));
   }
 }
 
 /// @nodoc
 @JsonSerializable()
-class _$SierraL1HandlerAbiEntryImpl implements SierraL1HandlerAbiEntry {
-  const _$SierraL1HandlerAbiEntryImpl(
+class SierraL1HandlerAbiEntry implements SierraContractAbiEntry {
+  const SierraL1HandlerAbiEntry(
       {required this.type,
       required this.name,
       required final List<InputParameter> inputs,
@@ -2300,16 +1232,14 @@ class _$SierraL1HandlerAbiEntryImpl implements SierraL1HandlerAbiEntry {
       : _inputs = inputs,
         _outputs = outputs,
         $type = $type ?? 'l1Handler';
-
-  factory _$SierraL1HandlerAbiEntryImpl.fromJson(Map<String, dynamic> json) =>
-      _$$SierraL1HandlerAbiEntryImplFromJson(json);
+  factory SierraL1HandlerAbiEntry.fromJson(Map<String, dynamic> json) =>
+      _$SierraL1HandlerAbiEntryFromJson(json);
 
   @override
   final String type;
   @override
   final String name;
   final List<InputParameter> _inputs;
-  @override
   List<InputParameter> get inputs {
     if (_inputs is EqualUnmodifiableListView) return _inputs;
     // ignore: implicit_dynamic_type
@@ -2317,30 +1247,39 @@ class _$SierraL1HandlerAbiEntryImpl implements SierraL1HandlerAbiEntry {
   }
 
   final List<OutputParameter> _outputs;
-  @override
   List<OutputParameter> get outputs {
     if (_outputs is EqualUnmodifiableListView) return _outputs;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_outputs);
   }
 
-  @override
   @JsonKey(includeIfNull: false)
   final String? stateMutability;
 
   @JsonKey(name: 'starkNetRuntimeTypeToRemove')
   final String $type;
 
+  /// Create a copy of SierraContractAbiEntry
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  String toString() {
-    return 'SierraContractAbiEntry.l1Handler(type: $type, name: $name, inputs: $inputs, outputs: $outputs, stateMutability: $stateMutability)';
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  $SierraL1HandlerAbiEntryCopyWith<SierraL1HandlerAbiEntry> get copyWith =>
+      _$SierraL1HandlerAbiEntryCopyWithImpl<SierraL1HandlerAbiEntry>(
+          this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$SierraL1HandlerAbiEntryToJson(
+      this,
+    );
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$SierraL1HandlerAbiEntryImpl &&
+            other is SierraL1HandlerAbiEntry &&
             (identical(other.type, type) || other.type == type) &&
             (identical(other.name, name) || other.name == name) &&
             const DeepCollectionEquality().equals(other._inputs, _inputs) &&
@@ -2359,322 +1298,93 @@ class _$SierraL1HandlerAbiEntryImpl implements SierraL1HandlerAbiEntry {
       const DeepCollectionEquality().hash(_outputs),
       stateMutability);
 
-  /// Create a copy of SierraContractAbiEntry
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  @pragma('vm:prefer-inline')
-  _$$SierraL1HandlerAbiEntryImplCopyWith<_$SierraL1HandlerAbiEntryImpl>
-      get copyWith => __$$SierraL1HandlerAbiEntryImplCopyWithImpl<
-          _$SierraL1HandlerAbiEntryImpl>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(
-            String type,
-            String name,
-            List<InputParameter> inputs,
-            List<OutputParameter> outputs,
-            @JsonKey(includeIfNull: false) String? stateMutability)
-        function,
-    required TResult Function(String type, String name, String kind) event,
-    required TResult Function(
-            String type, String name, List<VariantParameter> variants)
-        enumeration,
-    required TResult Function(
-            String type, String name, List<MemberParameter> members)
-        struct,
-    required TResult Function(String type, String name, String interfaceName)
-        impl,
-    required TResult Function(String type, String name) interface,
-    required TResult Function(
-            String type, String name, List<InputParameter> inputs)
-        constructor,
-    required TResult Function(
-            String type,
-            String name,
-            List<InputParameter> inputs,
-            List<OutputParameter> outputs,
-            @JsonKey(includeIfNull: false) String? stateMutability)
-        l1Handler,
-  }) {
-    return l1Handler(type, name, inputs, outputs, stateMutability);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(
-            String type,
-            String name,
-            List<InputParameter> inputs,
-            List<OutputParameter> outputs,
-            @JsonKey(includeIfNull: false) String? stateMutability)?
-        function,
-    TResult? Function(String type, String name, String kind)? event,
-    TResult? Function(
-            String type, String name, List<VariantParameter> variants)?
-        enumeration,
-    TResult? Function(String type, String name, List<MemberParameter> members)?
-        struct,
-    TResult? Function(String type, String name, String interfaceName)? impl,
-    TResult? Function(String type, String name)? interface,
-    TResult? Function(String type, String name, List<InputParameter> inputs)?
-        constructor,
-    TResult? Function(
-            String type,
-            String name,
-            List<InputParameter> inputs,
-            List<OutputParameter> outputs,
-            @JsonKey(includeIfNull: false) String? stateMutability)?
-        l1Handler,
-  }) {
-    return l1Handler?.call(type, name, inputs, outputs, stateMutability);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(
-            String type,
-            String name,
-            List<InputParameter> inputs,
-            List<OutputParameter> outputs,
-            @JsonKey(includeIfNull: false) String? stateMutability)?
-        function,
-    TResult Function(String type, String name, String kind)? event,
-    TResult Function(String type, String name, List<VariantParameter> variants)?
-        enumeration,
-    TResult Function(String type, String name, List<MemberParameter> members)?
-        struct,
-    TResult Function(String type, String name, String interfaceName)? impl,
-    TResult Function(String type, String name)? interface,
-    TResult Function(String type, String name, List<InputParameter> inputs)?
-        constructor,
-    TResult Function(
-            String type,
-            String name,
-            List<InputParameter> inputs,
-            List<OutputParameter> outputs,
-            @JsonKey(includeIfNull: false) String? stateMutability)?
-        l1Handler,
-    required TResult orElse(),
-  }) {
-    if (l1Handler != null) {
-      return l1Handler(type, name, inputs, outputs, stateMutability);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(SierraFunctionAbiEntry value) function,
-    required TResult Function(SierraEventAbiEntry value) event,
-    required TResult Function(SierraEnumAbiEntry value) enumeration,
-    required TResult Function(SierraStructAbiEntry value) struct,
-    required TResult Function(SierraImplAbiEntry value) impl,
-    required TResult Function(SierraInterfaceAbiEntry value) interface,
-    required TResult Function(SierraConstructorAbiEntry value) constructor,
-    required TResult Function(SierraL1HandlerAbiEntry value) l1Handler,
-  }) {
-    return l1Handler(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(SierraFunctionAbiEntry value)? function,
-    TResult? Function(SierraEventAbiEntry value)? event,
-    TResult? Function(SierraEnumAbiEntry value)? enumeration,
-    TResult? Function(SierraStructAbiEntry value)? struct,
-    TResult? Function(SierraImplAbiEntry value)? impl,
-    TResult? Function(SierraInterfaceAbiEntry value)? interface,
-    TResult? Function(SierraConstructorAbiEntry value)? constructor,
-    TResult? Function(SierraL1HandlerAbiEntry value)? l1Handler,
-  }) {
-    return l1Handler?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(SierraFunctionAbiEntry value)? function,
-    TResult Function(SierraEventAbiEntry value)? event,
-    TResult Function(SierraEnumAbiEntry value)? enumeration,
-    TResult Function(SierraStructAbiEntry value)? struct,
-    TResult Function(SierraImplAbiEntry value)? impl,
-    TResult Function(SierraInterfaceAbiEntry value)? interface,
-    TResult Function(SierraConstructorAbiEntry value)? constructor,
-    TResult Function(SierraL1HandlerAbiEntry value)? l1Handler,
-    required TResult orElse(),
-  }) {
-    if (l1Handler != null) {
-      return l1Handler(this);
-    }
-    return orElse();
-  }
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$SierraL1HandlerAbiEntryImplToJson(
-      this,
-    );
+  String toString() {
+    return 'SierraContractAbiEntry.l1Handler(type: $type, name: $name, inputs: $inputs, outputs: $outputs, stateMutability: $stateMutability)';
   }
 }
 
-abstract class SierraL1HandlerAbiEntry implements SierraContractAbiEntry {
-  const factory SierraL1HandlerAbiEntry(
-          {required final String type,
-          required final String name,
-          required final List<InputParameter> inputs,
-          required final List<OutputParameter> outputs,
-          @JsonKey(includeIfNull: false) final String? stateMutability}) =
-      _$SierraL1HandlerAbiEntryImpl;
-
-  factory SierraL1HandlerAbiEntry.fromJson(Map<String, dynamic> json) =
-      _$SierraL1HandlerAbiEntryImpl.fromJson;
-
+/// @nodoc
+abstract mixin class $SierraL1HandlerAbiEntryCopyWith<$Res>
+    implements $SierraContractAbiEntryCopyWith<$Res> {
+  factory $SierraL1HandlerAbiEntryCopyWith(SierraL1HandlerAbiEntry value,
+          $Res Function(SierraL1HandlerAbiEntry) _then) =
+      _$SierraL1HandlerAbiEntryCopyWithImpl;
   @override
-  String get type;
-  @override
-  String get name;
-  List<InputParameter> get inputs;
-  List<OutputParameter> get outputs;
-  @JsonKey(includeIfNull: false)
-  String? get stateMutability;
+  @useResult
+  $Res call(
+      {String type,
+      String name,
+      List<InputParameter> inputs,
+      List<OutputParameter> outputs,
+      @JsonKey(includeIfNull: false) String? stateMutability});
+}
+
+/// @nodoc
+class _$SierraL1HandlerAbiEntryCopyWithImpl<$Res>
+    implements $SierraL1HandlerAbiEntryCopyWith<$Res> {
+  _$SierraL1HandlerAbiEntryCopyWithImpl(this._self, this._then);
+
+  final SierraL1HandlerAbiEntry _self;
+  final $Res Function(SierraL1HandlerAbiEntry) _then;
 
   /// Create a copy of SierraContractAbiEntry
   /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$SierraL1HandlerAbiEntryImplCopyWith<_$SierraL1HandlerAbiEntryImpl>
-      get copyWith => throw _privateConstructorUsedError;
-}
-
-InputParameter _$InputParameterFromJson(Map<String, dynamic> json) {
-  return _InputParameter.fromJson(json);
-}
-
-/// @nodoc
-mixin _$InputParameter {
-  String get name => throw _privateConstructorUsedError;
-  String get type => throw _privateConstructorUsedError;
-
-  /// Serializes this InputParameter to a JSON map.
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-
-  /// Create a copy of InputParameter
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  $InputParameterCopyWith<InputParameter> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $InputParameterCopyWith<$Res> {
-  factory $InputParameterCopyWith(
-          InputParameter value, $Res Function(InputParameter) then) =
-      _$InputParameterCopyWithImpl<$Res, InputParameter>;
-  @useResult
-  $Res call({String name, String type});
-}
-
-/// @nodoc
-class _$InputParameterCopyWithImpl<$Res, $Val extends InputParameter>
-    implements $InputParameterCopyWith<$Res> {
-  _$InputParameterCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-
-  /// Create a copy of InputParameter
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
-  @override
   $Res call({
-    Object? name = null,
     Object? type = null,
+    Object? name = null,
+    Object? inputs = null,
+    Object? outputs = null,
+    Object? stateMutability = freezed,
   }) {
-    return _then(_value.copyWith(
-      name: null == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
-              as String,
+    return _then(SierraL1HandlerAbiEntry(
       type: null == type
-          ? _value.type
+          ? _self.type
           : type // ignore: cast_nullable_to_non_nullable
               as String,
-    ) as $Val);
-  }
-}
-
-/// @nodoc
-abstract class _$$InputParameterImplCopyWith<$Res>
-    implements $InputParameterCopyWith<$Res> {
-  factory _$$InputParameterImplCopyWith(_$InputParameterImpl value,
-          $Res Function(_$InputParameterImpl) then) =
-      __$$InputParameterImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call({String name, String type});
-}
-
-/// @nodoc
-class __$$InputParameterImplCopyWithImpl<$Res>
-    extends _$InputParameterCopyWithImpl<$Res, _$InputParameterImpl>
-    implements _$$InputParameterImplCopyWith<$Res> {
-  __$$InputParameterImplCopyWithImpl(
-      _$InputParameterImpl _value, $Res Function(_$InputParameterImpl) _then)
-      : super(_value, _then);
-
-  /// Create a copy of InputParameter
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? name = null,
-    Object? type = null,
-  }) {
-    return _then(_$InputParameterImpl(
       name: null == name
-          ? _value.name
+          ? _self.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
-      type: null == type
-          ? _value.type
-          : type // ignore: cast_nullable_to_non_nullable
-              as String,
+      inputs: null == inputs
+          ? _self._inputs
+          : inputs // ignore: cast_nullable_to_non_nullable
+              as List<InputParameter>,
+      outputs: null == outputs
+          ? _self._outputs
+          : outputs // ignore: cast_nullable_to_non_nullable
+              as List<OutputParameter>,
+      stateMutability: freezed == stateMutability
+          ? _self.stateMutability
+          : stateMutability // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
 
 /// @nodoc
-@JsonSerializable()
-class _$InputParameterImpl implements _InputParameter {
-  const _$InputParameterImpl({required this.name, required this.type});
+mixin _$InputParameter {
+  String get name;
+  String get type;
 
-  factory _$InputParameterImpl.fromJson(Map<String, dynamic> json) =>
-      _$$InputParameterImplFromJson(json);
+  /// Create a copy of InputParameter
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  $InputParameterCopyWith<InputParameter> get copyWith =>
+      _$InputParameterCopyWithImpl<InputParameter>(
+          this as InputParameter, _$identity);
 
-  @override
-  final String name;
-  @override
-  final String type;
-
-  @override
-  String toString() {
-    return 'InputParameter(name: $name, type: $type)';
-  }
+  /// Serializes this InputParameter to a JSON map.
+  Map<String, dynamic> toJson();
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$InputParameterImpl &&
+            other is InputParameter &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.type, type) || other.type == type));
   }
@@ -2683,126 +1393,287 @@ class _$InputParameterImpl implements _InputParameter {
   @override
   int get hashCode => Object.hash(runtimeType, name, type);
 
+  @override
+  String toString() {
+    return 'InputParameter(name: $name, type: $type)';
+  }
+}
+
+/// @nodoc
+abstract mixin class $InputParameterCopyWith<$Res> {
+  factory $InputParameterCopyWith(
+          InputParameter value, $Res Function(InputParameter) _then) =
+      _$InputParameterCopyWithImpl;
+  @useResult
+  $Res call({String name, String type});
+}
+
+/// @nodoc
+class _$InputParameterCopyWithImpl<$Res>
+    implements $InputParameterCopyWith<$Res> {
+  _$InputParameterCopyWithImpl(this._self, this._then);
+
+  final InputParameter _self;
+  final $Res Function(InputParameter) _then;
+
   /// Create a copy of InputParameter
   /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
   @pragma('vm:prefer-inline')
-  _$$InputParameterImplCopyWith<_$InputParameterImpl> get copyWith =>
-      __$$InputParameterImplCopyWithImpl<_$InputParameterImpl>(
-          this, _$identity);
+  @override
+  $Res call({
+    Object? name = null,
+    Object? type = null,
+  }) {
+    return _then(_self.copyWith(
+      name: null == name
+          ? _self.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
+      type: null == type
+          ? _self.type
+          : type // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// Adds pattern-matching-related methods to [InputParameter].
+extension InputParameterPatterns on InputParameter {
+  /// A variant of `map` that fallback to returning `orElse`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(_InputParameter value)? $default, {
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _InputParameter() when $default != null:
+        return $default(_that);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// Callbacks receives the raw object, upcasted.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case final Subclass2 value:
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(_InputParameter value) $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _InputParameter():
+        return $default(_that);
+      case _:
+        throw StateError('Unexpected subclass');
+    }
+  }
+
+  /// A variant of `map` that fallback to returning `null`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>(
+    TResult? Function(_InputParameter value)? $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _InputParameter() when $default != null:
+        return $default(_that);
+      case _:
+        return null;
+    }
+  }
+
+  /// A variant of `when` that fallback to an `orElse` callback.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(String name, String type)? $default, {
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _InputParameter() when $default != null:
+        return $default(_that.name, _that.type);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// As opposed to `map`, this offers destructuring.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case Subclass2(:final field2):
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>(
+    TResult Function(String name, String type) $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _InputParameter():
+        return $default(_that.name, _that.type);
+      case _:
+        throw StateError('Unexpected subclass');
+    }
+  }
+
+  /// A variant of `when` that fallback to returning `null`
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>(
+    TResult? Function(String name, String type)? $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _InputParameter() when $default != null:
+        return $default(_that.name, _that.type);
+      case _:
+        return null;
+    }
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _InputParameter implements InputParameter {
+  const _InputParameter({required this.name, required this.type});
+  factory _InputParameter.fromJson(Map<String, dynamic> json) =>
+      _$InputParameterFromJson(json);
+
+  @override
+  final String name;
+  @override
+  final String type;
+
+  /// Create a copy of InputParameter
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  _$InputParameterCopyWith<_InputParameter> get copyWith =>
+      __$InputParameterCopyWithImpl<_InputParameter>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$InputParameterImplToJson(
+    return _$InputParameterToJson(
       this,
     );
   }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _InputParameter &&
+            (identical(other.name, name) || other.name == name) &&
+            (identical(other.type, type) || other.type == type));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(runtimeType, name, type);
+
+  @override
+  String toString() {
+    return 'InputParameter(name: $name, type: $type)';
+  }
 }
 
-abstract class _InputParameter implements InputParameter {
-  const factory _InputParameter(
-      {required final String name,
-      required final String type}) = _$InputParameterImpl;
-
-  factory _InputParameter.fromJson(Map<String, dynamic> json) =
-      _$InputParameterImpl.fromJson;
-
+/// @nodoc
+abstract mixin class _$InputParameterCopyWith<$Res>
+    implements $InputParameterCopyWith<$Res> {
+  factory _$InputParameterCopyWith(
+          _InputParameter value, $Res Function(_InputParameter) _then) =
+      __$InputParameterCopyWithImpl;
   @override
-  String get name;
-  @override
-  String get type;
+  @useResult
+  $Res call({String name, String type});
+}
+
+/// @nodoc
+class __$InputParameterCopyWithImpl<$Res>
+    implements _$InputParameterCopyWith<$Res> {
+  __$InputParameterCopyWithImpl(this._self, this._then);
+
+  final _InputParameter _self;
+  final $Res Function(_InputParameter) _then;
 
   /// Create a copy of InputParameter
   /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$InputParameterImplCopyWith<_$InputParameterImpl> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-OutputParameter _$OutputParameterFromJson(Map<String, dynamic> json) {
-  return _OutputParameter.fromJson(json);
-}
-
-/// @nodoc
-mixin _$OutputParameter {
-  String get type => throw _privateConstructorUsedError;
-
-  /// Serializes this OutputParameter to a JSON map.
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-
-  /// Create a copy of OutputParameter
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  $OutputParameterCopyWith<OutputParameter> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $OutputParameterCopyWith<$Res> {
-  factory $OutputParameterCopyWith(
-          OutputParameter value, $Res Function(OutputParameter) then) =
-      _$OutputParameterCopyWithImpl<$Res, OutputParameter>;
-  @useResult
-  $Res call({String type});
-}
-
-/// @nodoc
-class _$OutputParameterCopyWithImpl<$Res, $Val extends OutputParameter>
-    implements $OutputParameterCopyWith<$Res> {
-  _$OutputParameterCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-
-  /// Create a copy of OutputParameter
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
-  @override
   $Res call({
+    Object? name = null,
     Object? type = null,
   }) {
-    return _then(_value.copyWith(
-      type: null == type
-          ? _value.type
-          : type // ignore: cast_nullable_to_non_nullable
+    return _then(_InputParameter(
+      name: null == name
+          ? _self.name
+          : name // ignore: cast_nullable_to_non_nullable
               as String,
-    ) as $Val);
-  }
-}
-
-/// @nodoc
-abstract class _$$OutputParameterImplCopyWith<$Res>
-    implements $OutputParameterCopyWith<$Res> {
-  factory _$$OutputParameterImplCopyWith(_$OutputParameterImpl value,
-          $Res Function(_$OutputParameterImpl) then) =
-      __$$OutputParameterImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call({String type});
-}
-
-/// @nodoc
-class __$$OutputParameterImplCopyWithImpl<$Res>
-    extends _$OutputParameterCopyWithImpl<$Res, _$OutputParameterImpl>
-    implements _$$OutputParameterImplCopyWith<$Res> {
-  __$$OutputParameterImplCopyWithImpl(
-      _$OutputParameterImpl _value, $Res Function(_$OutputParameterImpl) _then)
-      : super(_value, _then);
-
-  /// Create a copy of OutputParameter
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? type = null,
-  }) {
-    return _then(_$OutputParameterImpl(
       type: null == type
-          ? _value.type
+          ? _self.type
           : type // ignore: cast_nullable_to_non_nullable
               as String,
     ));
@@ -2810,26 +1681,25 @@ class __$$OutputParameterImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-@JsonSerializable()
-class _$OutputParameterImpl implements _OutputParameter {
-  const _$OutputParameterImpl({required this.type});
+mixin _$OutputParameter {
+  String get type;
 
-  factory _$OutputParameterImpl.fromJson(Map<String, dynamic> json) =>
-      _$$OutputParameterImplFromJson(json);
+  /// Create a copy of OutputParameter
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  $OutputParameterCopyWith<OutputParameter> get copyWith =>
+      _$OutputParameterCopyWithImpl<OutputParameter>(
+          this as OutputParameter, _$identity);
 
-  @override
-  final String type;
-
-  @override
-  String toString() {
-    return 'OutputParameter(type: $type)';
-  }
+  /// Serializes this OutputParameter to a JSON map.
+  Map<String, dynamic> toJson();
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$OutputParameterImpl &&
+            other is OutputParameter &&
             (identical(other.type, type) || other.type == type));
   }
 
@@ -2837,134 +1707,274 @@ class _$OutputParameterImpl implements _OutputParameter {
   @override
   int get hashCode => Object.hash(runtimeType, type);
 
+  @override
+  String toString() {
+    return 'OutputParameter(type: $type)';
+  }
+}
+
+/// @nodoc
+abstract mixin class $OutputParameterCopyWith<$Res> {
+  factory $OutputParameterCopyWith(
+          OutputParameter value, $Res Function(OutputParameter) _then) =
+      _$OutputParameterCopyWithImpl;
+  @useResult
+  $Res call({String type});
+}
+
+/// @nodoc
+class _$OutputParameterCopyWithImpl<$Res>
+    implements $OutputParameterCopyWith<$Res> {
+  _$OutputParameterCopyWithImpl(this._self, this._then);
+
+  final OutputParameter _self;
+  final $Res Function(OutputParameter) _then;
+
   /// Create a copy of OutputParameter
   /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
   @pragma('vm:prefer-inline')
-  _$$OutputParameterImplCopyWith<_$OutputParameterImpl> get copyWith =>
-      __$$OutputParameterImplCopyWithImpl<_$OutputParameterImpl>(
-          this, _$identity);
+  @override
+  $Res call({
+    Object? type = null,
+  }) {
+    return _then(_self.copyWith(
+      type: null == type
+          ? _self.type
+          : type // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// Adds pattern-matching-related methods to [OutputParameter].
+extension OutputParameterPatterns on OutputParameter {
+  /// A variant of `map` that fallback to returning `orElse`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(_OutputParameter value)? $default, {
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _OutputParameter() when $default != null:
+        return $default(_that);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// Callbacks receives the raw object, upcasted.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case final Subclass2 value:
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(_OutputParameter value) $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _OutputParameter():
+        return $default(_that);
+      case _:
+        throw StateError('Unexpected subclass');
+    }
+  }
+
+  /// A variant of `map` that fallback to returning `null`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>(
+    TResult? Function(_OutputParameter value)? $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _OutputParameter() when $default != null:
+        return $default(_that);
+      case _:
+        return null;
+    }
+  }
+
+  /// A variant of `when` that fallback to an `orElse` callback.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(String type)? $default, {
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _OutputParameter() when $default != null:
+        return $default(_that.type);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// As opposed to `map`, this offers destructuring.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case Subclass2(:final field2):
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>(
+    TResult Function(String type) $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _OutputParameter():
+        return $default(_that.type);
+      case _:
+        throw StateError('Unexpected subclass');
+    }
+  }
+
+  /// A variant of `when` that fallback to returning `null`
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>(
+    TResult? Function(String type)? $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _OutputParameter() when $default != null:
+        return $default(_that.type);
+      case _:
+        return null;
+    }
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _OutputParameter implements OutputParameter {
+  const _OutputParameter({required this.type});
+  factory _OutputParameter.fromJson(Map<String, dynamic> json) =>
+      _$OutputParameterFromJson(json);
+
+  @override
+  final String type;
+
+  /// Create a copy of OutputParameter
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  _$OutputParameterCopyWith<_OutputParameter> get copyWith =>
+      __$OutputParameterCopyWithImpl<_OutputParameter>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$OutputParameterImplToJson(
+    return _$OutputParameterToJson(
       this,
     );
   }
-}
-
-abstract class _OutputParameter implements OutputParameter {
-  const factory _OutputParameter({required final String type}) =
-      _$OutputParameterImpl;
-
-  factory _OutputParameter.fromJson(Map<String, dynamic> json) =
-      _$OutputParameterImpl.fromJson;
 
   @override
-  String get type;
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _OutputParameter &&
+            (identical(other.type, type) || other.type == type));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(runtimeType, type);
+
+  @override
+  String toString() {
+    return 'OutputParameter(type: $type)';
+  }
+}
+
+/// @nodoc
+abstract mixin class _$OutputParameterCopyWith<$Res>
+    implements $OutputParameterCopyWith<$Res> {
+  factory _$OutputParameterCopyWith(
+          _OutputParameter value, $Res Function(_OutputParameter) _then) =
+      __$OutputParameterCopyWithImpl;
+  @override
+  @useResult
+  $Res call({String type});
+}
+
+/// @nodoc
+class __$OutputParameterCopyWithImpl<$Res>
+    implements _$OutputParameterCopyWith<$Res> {
+  __$OutputParameterCopyWithImpl(this._self, this._then);
+
+  final _OutputParameter _self;
+  final $Res Function(_OutputParameter) _then;
 
   /// Create a copy of OutputParameter
   /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$OutputParameterImplCopyWith<_$OutputParameterImpl> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-MemberParameter _$MemberParameterFromJson(Map<String, dynamic> json) {
-  return _MemberParameter.fromJson(json);
-}
-
-/// @nodoc
-mixin _$MemberParameter {
-  String get name => throw _privateConstructorUsedError;
-  String get type => throw _privateConstructorUsedError;
-
-  /// Serializes this MemberParameter to a JSON map.
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-
-  /// Create a copy of MemberParameter
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  $MemberParameterCopyWith<MemberParameter> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $MemberParameterCopyWith<$Res> {
-  factory $MemberParameterCopyWith(
-          MemberParameter value, $Res Function(MemberParameter) then) =
-      _$MemberParameterCopyWithImpl<$Res, MemberParameter>;
-  @useResult
-  $Res call({String name, String type});
-}
-
-/// @nodoc
-class _$MemberParameterCopyWithImpl<$Res, $Val extends MemberParameter>
-    implements $MemberParameterCopyWith<$Res> {
-  _$MemberParameterCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-
-  /// Create a copy of MemberParameter
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
-  @override
   $Res call({
-    Object? name = null,
     Object? type = null,
   }) {
-    return _then(_value.copyWith(
-      name: null == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
-              as String,
+    return _then(_OutputParameter(
       type: null == type
-          ? _value.type
-          : type // ignore: cast_nullable_to_non_nullable
-              as String,
-    ) as $Val);
-  }
-}
-
-/// @nodoc
-abstract class _$$MemberParameterImplCopyWith<$Res>
-    implements $MemberParameterCopyWith<$Res> {
-  factory _$$MemberParameterImplCopyWith(_$MemberParameterImpl value,
-          $Res Function(_$MemberParameterImpl) then) =
-      __$$MemberParameterImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call({String name, String type});
-}
-
-/// @nodoc
-class __$$MemberParameterImplCopyWithImpl<$Res>
-    extends _$MemberParameterCopyWithImpl<$Res, _$MemberParameterImpl>
-    implements _$$MemberParameterImplCopyWith<$Res> {
-  __$$MemberParameterImplCopyWithImpl(
-      _$MemberParameterImpl _value, $Res Function(_$MemberParameterImpl) _then)
-      : super(_value, _then);
-
-  /// Create a copy of MemberParameter
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? name = null,
-    Object? type = null,
-  }) {
-    return _then(_$MemberParameterImpl(
-      name: null == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
-              as String,
-      type: null == type
-          ? _value.type
+          ? _self.type
           : type // ignore: cast_nullable_to_non_nullable
               as String,
     ));
@@ -2972,113 +1982,58 @@ class __$$MemberParameterImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-@JsonSerializable()
-class _$MemberParameterImpl implements _MemberParameter {
-  const _$MemberParameterImpl({required this.name, required this.type});
+mixin _$MemberParameter {
+  String get name;
+  String get type;
 
-  factory _$MemberParameterImpl.fromJson(Map<String, dynamic> json) =>
-      _$$MemberParameterImplFromJson(json);
+  /// Create a copy of MemberParameter
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  $MemberParameterCopyWith<MemberParameter> get copyWith =>
+      _$MemberParameterCopyWithImpl<MemberParameter>(
+          this as MemberParameter, _$identity);
+
+  /// Serializes this MemberParameter to a JSON map.
+  Map<String, dynamic> toJson();
 
   @override
-  final String name;
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is MemberParameter &&
+            (identical(other.name, name) || other.name == name) &&
+            (identical(other.type, type) || other.type == type));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  final String type;
+  int get hashCode => Object.hash(runtimeType, name, type);
 
   @override
   String toString() {
     return 'MemberParameter(name: $name, type: $type)';
   }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$MemberParameterImpl &&
-            (identical(other.name, name) || other.name == name) &&
-            (identical(other.type, type) || other.type == type));
-  }
-
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  int get hashCode => Object.hash(runtimeType, name, type);
-
-  /// Create a copy of MemberParameter
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$MemberParameterImplCopyWith<_$MemberParameterImpl> get copyWith =>
-      __$$MemberParameterImplCopyWithImpl<_$MemberParameterImpl>(
-          this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$MemberParameterImplToJson(
-      this,
-    );
-  }
-}
-
-abstract class _MemberParameter implements MemberParameter {
-  const factory _MemberParameter(
-      {required final String name,
-      required final String type}) = _$MemberParameterImpl;
-
-  factory _MemberParameter.fromJson(Map<String, dynamic> json) =
-      _$MemberParameterImpl.fromJson;
-
-  @override
-  String get name;
-  @override
-  String get type;
-
-  /// Create a copy of MemberParameter
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$MemberParameterImplCopyWith<_$MemberParameterImpl> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-VariantParameter _$VariantParameterFromJson(Map<String, dynamic> json) {
-  return _VariantParameter.fromJson(json);
 }
 
 /// @nodoc
-mixin _$VariantParameter {
-  String get name => throw _privateConstructorUsedError;
-  String get type => throw _privateConstructorUsedError;
-
-  /// Serializes this VariantParameter to a JSON map.
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-
-  /// Create a copy of VariantParameter
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  $VariantParameterCopyWith<VariantParameter> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $VariantParameterCopyWith<$Res> {
-  factory $VariantParameterCopyWith(
-          VariantParameter value, $Res Function(VariantParameter) then) =
-      _$VariantParameterCopyWithImpl<$Res, VariantParameter>;
+abstract mixin class $MemberParameterCopyWith<$Res> {
+  factory $MemberParameterCopyWith(
+          MemberParameter value, $Res Function(MemberParameter) _then) =
+      _$MemberParameterCopyWithImpl;
   @useResult
   $Res call({String name, String type});
 }
 
 /// @nodoc
-class _$VariantParameterCopyWithImpl<$Res, $Val extends VariantParameter>
-    implements $VariantParameterCopyWith<$Res> {
-  _$VariantParameterCopyWithImpl(this._value, this._then);
+class _$MemberParameterCopyWithImpl<$Res>
+    implements $MemberParameterCopyWith<$Res> {
+  _$MemberParameterCopyWithImpl(this._self, this._then);
 
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final MemberParameter _self;
+  final $Res Function(MemberParameter) _then;
 
-  /// Create a copy of VariantParameter
+  /// Create a copy of MemberParameter
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -3086,82 +2041,208 @@ class _$VariantParameterCopyWithImpl<$Res, $Val extends VariantParameter>
     Object? name = null,
     Object? type = null,
   }) {
-    return _then(_value.copyWith(
+    return _then(_self.copyWith(
       name: null == name
-          ? _value.name
+          ? _self.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
       type: null == type
-          ? _value.type
-          : type // ignore: cast_nullable_to_non_nullable
-              as String,
-    ) as $Val);
-  }
-}
-
-/// @nodoc
-abstract class _$$VariantParameterImplCopyWith<$Res>
-    implements $VariantParameterCopyWith<$Res> {
-  factory _$$VariantParameterImplCopyWith(_$VariantParameterImpl value,
-          $Res Function(_$VariantParameterImpl) then) =
-      __$$VariantParameterImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call({String name, String type});
-}
-
-/// @nodoc
-class __$$VariantParameterImplCopyWithImpl<$Res>
-    extends _$VariantParameterCopyWithImpl<$Res, _$VariantParameterImpl>
-    implements _$$VariantParameterImplCopyWith<$Res> {
-  __$$VariantParameterImplCopyWithImpl(_$VariantParameterImpl _value,
-      $Res Function(_$VariantParameterImpl) _then)
-      : super(_value, _then);
-
-  /// Create a copy of VariantParameter
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? name = null,
-    Object? type = null,
-  }) {
-    return _then(_$VariantParameterImpl(
-      name: null == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
-              as String,
-      type: null == type
-          ? _value.type
+          ? _self.type
           : type // ignore: cast_nullable_to_non_nullable
               as String,
     ));
   }
 }
 
+/// Adds pattern-matching-related methods to [MemberParameter].
+extension MemberParameterPatterns on MemberParameter {
+  /// A variant of `map` that fallback to returning `orElse`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(_MemberParameter value)? $default, {
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _MemberParameter() when $default != null:
+        return $default(_that);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// Callbacks receives the raw object, upcasted.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case final Subclass2 value:
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(_MemberParameter value) $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _MemberParameter():
+        return $default(_that);
+      case _:
+        throw StateError('Unexpected subclass');
+    }
+  }
+
+  /// A variant of `map` that fallback to returning `null`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>(
+    TResult? Function(_MemberParameter value)? $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _MemberParameter() when $default != null:
+        return $default(_that);
+      case _:
+        return null;
+    }
+  }
+
+  /// A variant of `when` that fallback to an `orElse` callback.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(String name, String type)? $default, {
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _MemberParameter() when $default != null:
+        return $default(_that.name, _that.type);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// As opposed to `map`, this offers destructuring.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case Subclass2(:final field2):
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>(
+    TResult Function(String name, String type) $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _MemberParameter():
+        return $default(_that.name, _that.type);
+      case _:
+        throw StateError('Unexpected subclass');
+    }
+  }
+
+  /// A variant of `when` that fallback to returning `null`
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>(
+    TResult? Function(String name, String type)? $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _MemberParameter() when $default != null:
+        return $default(_that.name, _that.type);
+      case _:
+        return null;
+    }
+  }
+}
+
 /// @nodoc
 @JsonSerializable()
-class _$VariantParameterImpl implements _VariantParameter {
-  const _$VariantParameterImpl({required this.name, required this.type});
-
-  factory _$VariantParameterImpl.fromJson(Map<String, dynamic> json) =>
-      _$$VariantParameterImplFromJson(json);
+class _MemberParameter implements MemberParameter {
+  const _MemberParameter({required this.name, required this.type});
+  factory _MemberParameter.fromJson(Map<String, dynamic> json) =>
+      _$MemberParameterFromJson(json);
 
   @override
   final String name;
   @override
   final String type;
 
+  /// Create a copy of MemberParameter
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  String toString() {
-    return 'VariantParameter(name: $name, type: $type)';
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  _$MemberParameterCopyWith<_MemberParameter> get copyWith =>
+      __$MemberParameterCopyWithImpl<_MemberParameter>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$MemberParameterToJson(
+      this,
+    );
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$VariantParameterImpl &&
+            other is _MemberParameter &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.type, type) || other.type == type));
   }
@@ -3170,153 +2251,388 @@ class _$VariantParameterImpl implements _VariantParameter {
   @override
   int get hashCode => Object.hash(runtimeType, name, type);
 
-  /// Create a copy of VariantParameter
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  @pragma('vm:prefer-inline')
-  _$$VariantParameterImplCopyWith<_$VariantParameterImpl> get copyWith =>
-      __$$VariantParameterImplCopyWithImpl<_$VariantParameterImpl>(
-          this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$VariantParameterImplToJson(
-      this,
-    );
-  }
-}
-
-abstract class _VariantParameter implements VariantParameter {
-  const factory _VariantParameter(
-      {required final String name,
-      required final String type}) = _$VariantParameterImpl;
-
-  factory _VariantParameter.fromJson(Map<String, dynamic> json) =
-      _$VariantParameterImpl.fromJson;
-
-  @override
-  String get name;
-  @override
-  String get type;
-
-  /// Create a copy of VariantParameter
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$VariantParameterImplCopyWith<_$VariantParameterImpl> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-SierraEventAbi _$SierraEventAbiFromJson(Map<String, dynamic> json) {
-  return _SierraEventAbi.fromJson(json);
-}
-
-/// @nodoc
-mixin _$SierraEventAbi {
-  SierraEventAbiInstance get inner => throw _privateConstructorUsedError;
-
-  /// Serializes this SierraEventAbi to a JSON map.
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-
-  /// Create a copy of SierraEventAbi
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  $SierraEventAbiCopyWith<SierraEventAbi> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $SierraEventAbiCopyWith<$Res> {
-  factory $SierraEventAbiCopyWith(
-          SierraEventAbi value, $Res Function(SierraEventAbi) then) =
-      _$SierraEventAbiCopyWithImpl<$Res, SierraEventAbi>;
-  @useResult
-  $Res call({SierraEventAbiInstance inner});
-}
-
-/// @nodoc
-class _$SierraEventAbiCopyWithImpl<$Res, $Val extends SierraEventAbi>
-    implements $SierraEventAbiCopyWith<$Res> {
-  _$SierraEventAbiCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-
-  /// Create a copy of SierraEventAbi
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? inner = null,
-  }) {
-    return _then(_value.copyWith(
-      inner: null == inner
-          ? _value.inner
-          : inner // ignore: cast_nullable_to_non_nullable
-              as SierraEventAbiInstance,
-    ) as $Val);
+  String toString() {
+    return 'MemberParameter(name: $name, type: $type)';
   }
 }
 
 /// @nodoc
-abstract class _$$SierraEventAbiImplCopyWith<$Res>
-    implements $SierraEventAbiCopyWith<$Res> {
-  factory _$$SierraEventAbiImplCopyWith(_$SierraEventAbiImpl value,
-          $Res Function(_$SierraEventAbiImpl) then) =
-      __$$SierraEventAbiImplCopyWithImpl<$Res>;
+abstract mixin class _$MemberParameterCopyWith<$Res>
+    implements $MemberParameterCopyWith<$Res> {
+  factory _$MemberParameterCopyWith(
+          _MemberParameter value, $Res Function(_MemberParameter) _then) =
+      __$MemberParameterCopyWithImpl;
   @override
   @useResult
-  $Res call({SierraEventAbiInstance inner});
+  $Res call({String name, String type});
 }
 
 /// @nodoc
-class __$$SierraEventAbiImplCopyWithImpl<$Res>
-    extends _$SierraEventAbiCopyWithImpl<$Res, _$SierraEventAbiImpl>
-    implements _$$SierraEventAbiImplCopyWith<$Res> {
-  __$$SierraEventAbiImplCopyWithImpl(
-      _$SierraEventAbiImpl _value, $Res Function(_$SierraEventAbiImpl) _then)
-      : super(_value, _then);
+class __$MemberParameterCopyWithImpl<$Res>
+    implements _$MemberParameterCopyWith<$Res> {
+  __$MemberParameterCopyWithImpl(this._self, this._then);
 
-  /// Create a copy of SierraEventAbi
+  final _MemberParameter _self;
+  final $Res Function(_MemberParameter) _then;
+
+  /// Create a copy of MemberParameter
   /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
   @override
+  @pragma('vm:prefer-inline')
   $Res call({
-    Object? inner = null,
+    Object? name = null,
+    Object? type = null,
   }) {
-    return _then(_$SierraEventAbiImpl(
-      inner: null == inner
-          ? _value.inner
-          : inner // ignore: cast_nullable_to_non_nullable
-              as SierraEventAbiInstance,
+    return _then(_MemberParameter(
+      name: null == name
+          ? _self.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
+      type: null == type
+          ? _self.type
+          : type // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
 
 /// @nodoc
-@JsonSerializable()
-class _$SierraEventAbiImpl implements _SierraEventAbi {
-  const _$SierraEventAbiImpl({required this.inner});
+mixin _$VariantParameter {
+  String get name;
+  String get type;
 
-  factory _$SierraEventAbiImpl.fromJson(Map<String, dynamic> json) =>
-      _$$SierraEventAbiImplFromJson(json);
+  /// Create a copy of VariantParameter
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  $VariantParameterCopyWith<VariantParameter> get copyWith =>
+      _$VariantParameterCopyWithImpl<VariantParameter>(
+          this as VariantParameter, _$identity);
+
+  /// Serializes this VariantParameter to a JSON map.
+  Map<String, dynamic> toJson();
 
   @override
-  final SierraEventAbiInstance inner;
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is VariantParameter &&
+            (identical(other.name, name) || other.name == name) &&
+            (identical(other.type, type) || other.type == type));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(runtimeType, name, type);
 
   @override
   String toString() {
-    return 'SierraEventAbi(inner: $inner)';
+    return 'VariantParameter(name: $name, type: $type)';
+  }
+}
+
+/// @nodoc
+abstract mixin class $VariantParameterCopyWith<$Res> {
+  factory $VariantParameterCopyWith(
+          VariantParameter value, $Res Function(VariantParameter) _then) =
+      _$VariantParameterCopyWithImpl;
+  @useResult
+  $Res call({String name, String type});
+}
+
+/// @nodoc
+class _$VariantParameterCopyWithImpl<$Res>
+    implements $VariantParameterCopyWith<$Res> {
+  _$VariantParameterCopyWithImpl(this._self, this._then);
+
+  final VariantParameter _self;
+  final $Res Function(VariantParameter) _then;
+
+  /// Create a copy of VariantParameter
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? name = null,
+    Object? type = null,
+  }) {
+    return _then(_self.copyWith(
+      name: null == name
+          ? _self.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
+      type: null == type
+          ? _self.type
+          : type // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// Adds pattern-matching-related methods to [VariantParameter].
+extension VariantParameterPatterns on VariantParameter {
+  /// A variant of `map` that fallback to returning `orElse`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(_VariantParameter value)? $default, {
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _VariantParameter() when $default != null:
+        return $default(_that);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// Callbacks receives the raw object, upcasted.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case final Subclass2 value:
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(_VariantParameter value) $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _VariantParameter():
+        return $default(_that);
+      case _:
+        throw StateError('Unexpected subclass');
+    }
+  }
+
+  /// A variant of `map` that fallback to returning `null`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>(
+    TResult? Function(_VariantParameter value)? $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _VariantParameter() when $default != null:
+        return $default(_that);
+      case _:
+        return null;
+    }
+  }
+
+  /// A variant of `when` that fallback to an `orElse` callback.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(String name, String type)? $default, {
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _VariantParameter() when $default != null:
+        return $default(_that.name, _that.type);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// As opposed to `map`, this offers destructuring.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case Subclass2(:final field2):
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>(
+    TResult Function(String name, String type) $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _VariantParameter():
+        return $default(_that.name, _that.type);
+      case _:
+        throw StateError('Unexpected subclass');
+    }
+  }
+
+  /// A variant of `when` that fallback to returning `null`
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>(
+    TResult? Function(String name, String type)? $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _VariantParameter() when $default != null:
+        return $default(_that.name, _that.type);
+      case _:
+        return null;
+    }
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _VariantParameter implements VariantParameter {
+  const _VariantParameter({required this.name, required this.type});
+  factory _VariantParameter.fromJson(Map<String, dynamic> json) =>
+      _$VariantParameterFromJson(json);
+
+  @override
+  final String name;
+  @override
+  final String type;
+
+  /// Create a copy of VariantParameter
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  _$VariantParameterCopyWith<_VariantParameter> get copyWith =>
+      __$VariantParameterCopyWithImpl<_VariantParameter>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$VariantParameterToJson(
+      this,
+    );
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$SierraEventAbiImpl &&
+            other is _VariantParameter &&
+            (identical(other.name, name) || other.name == name) &&
+            (identical(other.type, type) || other.type == type));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(runtimeType, name, type);
+
+  @override
+  String toString() {
+    return 'VariantParameter(name: $name, type: $type)';
+  }
+}
+
+/// @nodoc
+abstract mixin class _$VariantParameterCopyWith<$Res>
+    implements $VariantParameterCopyWith<$Res> {
+  factory _$VariantParameterCopyWith(
+          _VariantParameter value, $Res Function(_VariantParameter) _then) =
+      __$VariantParameterCopyWithImpl;
+  @override
+  @useResult
+  $Res call({String name, String type});
+}
+
+/// @nodoc
+class __$VariantParameterCopyWithImpl<$Res>
+    implements _$VariantParameterCopyWith<$Res> {
+  __$VariantParameterCopyWithImpl(this._self, this._then);
+
+  final _VariantParameter _self;
+  final $Res Function(_VariantParameter) _then;
+
+  /// Create a copy of VariantParameter
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $Res call({
+    Object? name = null,
+    Object? type = null,
+  }) {
+    return _then(_VariantParameter(
+      name: null == name
+          ? _self.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
+      type: null == type
+          ? _self.type
+          : type // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+mixin _$SierraEventAbi {
+  SierraEventAbiInstance get inner;
+
+  /// Create a copy of SierraEventAbi
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  $SierraEventAbiCopyWith<SierraEventAbi> get copyWith =>
+      _$SierraEventAbiCopyWithImpl<SierraEventAbi>(
+          this as SierraEventAbi, _$identity);
+
+  /// Serializes this SierraEventAbi to a JSON map.
+  Map<String, dynamic> toJson();
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is SierraEventAbi &&
             (identical(other.inner, inner) || other.inner == inner));
   }
 
@@ -3324,124 +2640,325 @@ class _$SierraEventAbiImpl implements _SierraEventAbi {
   @override
   int get hashCode => Object.hash(runtimeType, inner);
 
-  /// Create a copy of SierraEventAbi
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  @pragma('vm:prefer-inline')
-  _$$SierraEventAbiImplCopyWith<_$SierraEventAbiImpl> get copyWith =>
-      __$$SierraEventAbiImplCopyWithImpl<_$SierraEventAbiImpl>(
-          this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$SierraEventAbiImplToJson(
-      this,
-    );
+  String toString() {
+    return 'SierraEventAbi(inner: $inner)';
   }
 }
 
-abstract class _SierraEventAbi implements SierraEventAbi {
-  const factory _SierraEventAbi({required final SierraEventAbiInstance inner}) =
-      _$SierraEventAbiImpl;
+/// @nodoc
+abstract mixin class $SierraEventAbiCopyWith<$Res> {
+  factory $SierraEventAbiCopyWith(
+          SierraEventAbi value, $Res Function(SierraEventAbi) _then) =
+      _$SierraEventAbiCopyWithImpl;
+  @useResult
+  $Res call({SierraEventAbiInstance inner});
+}
 
-  factory _SierraEventAbi.fromJson(Map<String, dynamic> json) =
-      _$SierraEventAbiImpl.fromJson;
+/// @nodoc
+class _$SierraEventAbiCopyWithImpl<$Res>
+    implements $SierraEventAbiCopyWith<$Res> {
+  _$SierraEventAbiCopyWithImpl(this._self, this._then);
+
+  final SierraEventAbi _self;
+  final $Res Function(SierraEventAbi) _then;
+
+  /// Create a copy of SierraEventAbi
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? inner = null,
+  }) {
+    return _then(_self.copyWith(
+      inner: null == inner
+          ? _self.inner
+          : inner // ignore: cast_nullable_to_non_nullable
+              as SierraEventAbiInstance,
+    ));
+  }
+}
+
+/// Adds pattern-matching-related methods to [SierraEventAbi].
+extension SierraEventAbiPatterns on SierraEventAbi {
+  /// A variant of `map` that fallback to returning `orElse`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(_SierraEventAbi value)? $default, {
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _SierraEventAbi() when $default != null:
+        return $default(_that);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// Callbacks receives the raw object, upcasted.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case final Subclass2 value:
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(_SierraEventAbi value) $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _SierraEventAbi():
+        return $default(_that);
+      case _:
+        throw StateError('Unexpected subclass');
+    }
+  }
+
+  /// A variant of `map` that fallback to returning `null`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>(
+    TResult? Function(_SierraEventAbi value)? $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _SierraEventAbi() when $default != null:
+        return $default(_that);
+      case _:
+        return null;
+    }
+  }
+
+  /// A variant of `when` that fallback to an `orElse` callback.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(SierraEventAbiInstance inner)? $default, {
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _SierraEventAbi() when $default != null:
+        return $default(_that.inner);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// As opposed to `map`, this offers destructuring.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case Subclass2(:final field2):
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>(
+    TResult Function(SierraEventAbiInstance inner) $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _SierraEventAbi():
+        return $default(_that.inner);
+      case _:
+        throw StateError('Unexpected subclass');
+    }
+  }
+
+  /// A variant of `when` that fallback to returning `null`
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>(
+    TResult? Function(SierraEventAbiInstance inner)? $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _SierraEventAbi() when $default != null:
+        return $default(_that.inner);
+      case _:
+        return null;
+    }
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _SierraEventAbi implements SierraEventAbi {
+  const _SierraEventAbi({required this.inner});
+  factory _SierraEventAbi.fromJson(Map<String, dynamic> json) =>
+      _$SierraEventAbiFromJson(json);
 
   @override
-  SierraEventAbiInstance get inner;
+  final SierraEventAbiInstance inner;
 
   /// Create a copy of SierraEventAbi
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$SierraEventAbiImplCopyWith<_$SierraEventAbiImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  @pragma('vm:prefer-inline')
+  _$SierraEventAbiCopyWith<_SierraEventAbi> get copyWith =>
+      __$SierraEventAbiCopyWithImpl<_SierraEventAbi>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$SierraEventAbiToJson(
+      this,
+    );
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _SierraEventAbi &&
+            (identical(other.inner, inner) || other.inner == inner));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(runtimeType, inner);
+
+  @override
+  String toString() {
+    return 'SierraEventAbi(inner: $inner)';
+  }
 }
 
-SierraEventAbiEnum _$SierraEventAbiEnumFromJson(Map<String, dynamic> json) {
-  return _SierraEventAbiEnum.fromJson(json);
+/// @nodoc
+abstract mixin class _$SierraEventAbiCopyWith<$Res>
+    implements $SierraEventAbiCopyWith<$Res> {
+  factory _$SierraEventAbiCopyWith(
+          _SierraEventAbi value, $Res Function(_SierraEventAbi) _then) =
+      __$SierraEventAbiCopyWithImpl;
+  @override
+  @useResult
+  $Res call({SierraEventAbiInstance inner});
+}
+
+/// @nodoc
+class __$SierraEventAbiCopyWithImpl<$Res>
+    implements _$SierraEventAbiCopyWith<$Res> {
+  __$SierraEventAbiCopyWithImpl(this._self, this._then);
+
+  final _SierraEventAbi _self;
+  final $Res Function(_SierraEventAbi) _then;
+
+  /// Create a copy of SierraEventAbi
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $Res call({
+    Object? inner = null,
+  }) {
+    return _then(_SierraEventAbi(
+      inner: null == inner
+          ? _self.inner
+          : inner // ignore: cast_nullable_to_non_nullable
+              as SierraEventAbiInstance,
+    ));
+  }
 }
 
 /// @nodoc
 mixin _$SierraEventAbiEnum {
-  String get type => throw _privateConstructorUsedError;
-  String get name => throw _privateConstructorUsedError;
-  String get kind => throw _privateConstructorUsedError;
-  List<SierraEventAbiEnumVariant> get variants =>
-      throw _privateConstructorUsedError;
-
-  /// Serializes this SierraEventAbiEnum to a JSON map.
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  String get type;
+  String get name;
+  String get kind;
+  List<SierraEventAbiEnumVariant> get variants;
 
   /// Create a copy of SierraEventAbiEnum
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $SierraEventAbiEnumCopyWith<SierraEventAbiEnum> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $SierraEventAbiEnumCopyWith<$Res> {
-  factory $SierraEventAbiEnumCopyWith(
-          SierraEventAbiEnum value, $Res Function(SierraEventAbiEnum) then) =
-      _$SierraEventAbiEnumCopyWithImpl<$Res, SierraEventAbiEnum>;
-  @useResult
-  $Res call(
-      {String type,
-      String name,
-      String kind,
-      List<SierraEventAbiEnumVariant> variants});
-}
-
-/// @nodoc
-class _$SierraEventAbiEnumCopyWithImpl<$Res, $Val extends SierraEventAbiEnum>
-    implements $SierraEventAbiEnumCopyWith<$Res> {
-  _$SierraEventAbiEnumCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-
-  /// Create a copy of SierraEventAbiEnum
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
+  $SierraEventAbiEnumCopyWith<SierraEventAbiEnum> get copyWith =>
+      _$SierraEventAbiEnumCopyWithImpl<SierraEventAbiEnum>(
+          this as SierraEventAbiEnum, _$identity);
+
+  /// Serializes this SierraEventAbiEnum to a JSON map.
+  Map<String, dynamic> toJson();
+
   @override
-  $Res call({
-    Object? type = null,
-    Object? name = null,
-    Object? kind = null,
-    Object? variants = null,
-  }) {
-    return _then(_value.copyWith(
-      type: null == type
-          ? _value.type
-          : type // ignore: cast_nullable_to_non_nullable
-              as String,
-      name: null == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
-              as String,
-      kind: null == kind
-          ? _value.kind
-          : kind // ignore: cast_nullable_to_non_nullable
-              as String,
-      variants: null == variants
-          ? _value.variants
-          : variants // ignore: cast_nullable_to_non_nullable
-              as List<SierraEventAbiEnumVariant>,
-    ) as $Val);
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is SierraEventAbiEnum &&
+            (identical(other.type, type) || other.type == type) &&
+            (identical(other.name, name) || other.name == name) &&
+            (identical(other.kind, kind) || other.kind == kind) &&
+            const DeepCollectionEquality().equals(other.variants, variants));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(runtimeType, type, name, kind,
+      const DeepCollectionEquality().hash(variants));
+
+  @override
+  String toString() {
+    return 'SierraEventAbiEnum(type: $type, name: $name, kind: $kind, variants: $variants)';
   }
 }
 
 /// @nodoc
-abstract class _$$SierraEventAbiEnumImplCopyWith<$Res>
-    implements $SierraEventAbiEnumCopyWith<$Res> {
-  factory _$$SierraEventAbiEnumImplCopyWith(_$SierraEventAbiEnumImpl value,
-          $Res Function(_$SierraEventAbiEnumImpl) then) =
-      __$$SierraEventAbiEnumImplCopyWithImpl<$Res>;
-  @override
+abstract mixin class $SierraEventAbiEnumCopyWith<$Res> {
+  factory $SierraEventAbiEnumCopyWith(
+          SierraEventAbiEnum value, $Res Function(SierraEventAbiEnum) _then) =
+      _$SierraEventAbiEnumCopyWithImpl;
   @useResult
   $Res call(
       {String type,
@@ -3451,12 +2968,12 @@ abstract class _$$SierraEventAbiEnumImplCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$SierraEventAbiEnumImplCopyWithImpl<$Res>
-    extends _$SierraEventAbiEnumCopyWithImpl<$Res, _$SierraEventAbiEnumImpl>
-    implements _$$SierraEventAbiEnumImplCopyWith<$Res> {
-  __$$SierraEventAbiEnumImplCopyWithImpl(_$SierraEventAbiEnumImpl _value,
-      $Res Function(_$SierraEventAbiEnumImpl) _then)
-      : super(_value, _then);
+class _$SierraEventAbiEnumCopyWithImpl<$Res>
+    implements $SierraEventAbiEnumCopyWith<$Res> {
+  _$SierraEventAbiEnumCopyWithImpl(this._self, this._then);
+
+  final SierraEventAbiEnum _self;
+  final $Res Function(SierraEventAbiEnum) _then;
 
   /// Create a copy of SierraEventAbiEnum
   /// with the given fields replaced by the non-null parameter values.
@@ -3468,39 +2985,201 @@ class __$$SierraEventAbiEnumImplCopyWithImpl<$Res>
     Object? kind = null,
     Object? variants = null,
   }) {
-    return _then(_$SierraEventAbiEnumImpl(
+    return _then(_self.copyWith(
       type: null == type
-          ? _value.type
+          ? _self.type
           : type // ignore: cast_nullable_to_non_nullable
               as String,
       name: null == name
-          ? _value.name
+          ? _self.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
       kind: null == kind
-          ? _value.kind
+          ? _self.kind
           : kind // ignore: cast_nullable_to_non_nullable
               as String,
       variants: null == variants
-          ? _value._variants
+          ? _self.variants
           : variants // ignore: cast_nullable_to_non_nullable
               as List<SierraEventAbiEnumVariant>,
     ));
   }
 }
 
+/// Adds pattern-matching-related methods to [SierraEventAbiEnum].
+extension SierraEventAbiEnumPatterns on SierraEventAbiEnum {
+  /// A variant of `map` that fallback to returning `orElse`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(_SierraEventAbiEnum value)? $default, {
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _SierraEventAbiEnum() when $default != null:
+        return $default(_that);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// Callbacks receives the raw object, upcasted.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case final Subclass2 value:
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(_SierraEventAbiEnum value) $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _SierraEventAbiEnum():
+        return $default(_that);
+      case _:
+        throw StateError('Unexpected subclass');
+    }
+  }
+
+  /// A variant of `map` that fallback to returning `null`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>(
+    TResult? Function(_SierraEventAbiEnum value)? $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _SierraEventAbiEnum() when $default != null:
+        return $default(_that);
+      case _:
+        return null;
+    }
+  }
+
+  /// A variant of `when` that fallback to an `orElse` callback.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(String type, String name, String kind,
+            List<SierraEventAbiEnumVariant> variants)?
+        $default, {
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _SierraEventAbiEnum() when $default != null:
+        return $default(_that.type, _that.name, _that.kind, _that.variants);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// As opposed to `map`, this offers destructuring.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case Subclass2(:final field2):
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>(
+    TResult Function(String type, String name, String kind,
+            List<SierraEventAbiEnumVariant> variants)
+        $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _SierraEventAbiEnum():
+        return $default(_that.type, _that.name, _that.kind, _that.variants);
+      case _:
+        throw StateError('Unexpected subclass');
+    }
+  }
+
+  /// A variant of `when` that fallback to returning `null`
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>(
+    TResult? Function(String type, String name, String kind,
+            List<SierraEventAbiEnumVariant> variants)?
+        $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _SierraEventAbiEnum() when $default != null:
+        return $default(_that.type, _that.name, _that.kind, _that.variants);
+      case _:
+        return null;
+    }
+  }
+}
+
 /// @nodoc
 @JsonSerializable()
-class _$SierraEventAbiEnumImpl implements _SierraEventAbiEnum {
-  const _$SierraEventAbiEnumImpl(
+class _SierraEventAbiEnum implements SierraEventAbiEnum {
+  const _SierraEventAbiEnum(
       {required this.type,
       required this.name,
       required this.kind,
       required final List<SierraEventAbiEnumVariant> variants})
       : _variants = variants;
-
-  factory _$SierraEventAbiEnumImpl.fromJson(Map<String, dynamic> json) =>
-      _$$SierraEventAbiEnumImplFromJson(json);
+  factory _SierraEventAbiEnum.fromJson(Map<String, dynamic> json) =>
+      _$SierraEventAbiEnumFromJson(json);
 
   @override
   final String type;
@@ -3516,16 +3195,26 @@ class _$SierraEventAbiEnumImpl implements _SierraEventAbiEnum {
     return EqualUnmodifiableListView(_variants);
   }
 
+  /// Create a copy of SierraEventAbiEnum
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  String toString() {
-    return 'SierraEventAbiEnum(type: $type, name: $name, kind: $kind, variants: $variants)';
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  _$SierraEventAbiEnumCopyWith<_SierraEventAbiEnum> get copyWith =>
+      __$SierraEventAbiEnumCopyWithImpl<_SierraEventAbiEnum>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$SierraEventAbiEnumToJson(
+      this,
+    );
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$SierraEventAbiEnumImpl &&
+            other is _SierraEventAbiEnum &&
             (identical(other.type, type) || other.type == type) &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.kind, kind) || other.kind == kind) &&
@@ -3537,194 +3226,88 @@ class _$SierraEventAbiEnumImpl implements _SierraEventAbiEnum {
   int get hashCode => Object.hash(runtimeType, type, name, kind,
       const DeepCollectionEquality().hash(_variants));
 
-  /// Create a copy of SierraEventAbiEnum
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  @pragma('vm:prefer-inline')
-  _$$SierraEventAbiEnumImplCopyWith<_$SierraEventAbiEnumImpl> get copyWith =>
-      __$$SierraEventAbiEnumImplCopyWithImpl<_$SierraEventAbiEnumImpl>(
-          this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$SierraEventAbiEnumImplToJson(
-      this,
-    );
-  }
-}
-
-abstract class _SierraEventAbiEnum implements SierraEventAbiEnum {
-  const factory _SierraEventAbiEnum(
-          {required final String type,
-          required final String name,
-          required final String kind,
-          required final List<SierraEventAbiEnumVariant> variants}) =
-      _$SierraEventAbiEnumImpl;
-
-  factory _SierraEventAbiEnum.fromJson(Map<String, dynamic> json) =
-      _$SierraEventAbiEnumImpl.fromJson;
-
-  @override
-  String get type;
-  @override
-  String get name;
-  @override
-  String get kind;
-  @override
-  List<SierraEventAbiEnumVariant> get variants;
-
-  /// Create a copy of SierraEventAbiEnum
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$SierraEventAbiEnumImplCopyWith<_$SierraEventAbiEnumImpl> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-SierraEventAbiEnumVariant _$SierraEventAbiEnumVariantFromJson(
-    Map<String, dynamic> json) {
-  return _SierraEventAbiEnumVariant.fromJson(json);
-}
-
-/// @nodoc
-mixin _$SierraEventAbiEnumVariant {
-  String get name => throw _privateConstructorUsedError;
-  String get type =>
-      throw _privateConstructorUsedError; // TODO: switch to enum?
-  String get kind => throw _privateConstructorUsedError;
-
-  /// Serializes this SierraEventAbiEnumVariant to a JSON map.
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-
-  /// Create a copy of SierraEventAbiEnumVariant
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  $SierraEventAbiEnumVariantCopyWith<SierraEventAbiEnumVariant> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $SierraEventAbiEnumVariantCopyWith<$Res> {
-  factory $SierraEventAbiEnumVariantCopyWith(SierraEventAbiEnumVariant value,
-          $Res Function(SierraEventAbiEnumVariant) then) =
-      _$SierraEventAbiEnumVariantCopyWithImpl<$Res, SierraEventAbiEnumVariant>;
-  @useResult
-  $Res call({String name, String type, String kind});
-}
-
-/// @nodoc
-class _$SierraEventAbiEnumVariantCopyWithImpl<$Res,
-        $Val extends SierraEventAbiEnumVariant>
-    implements $SierraEventAbiEnumVariantCopyWith<$Res> {
-  _$SierraEventAbiEnumVariantCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-
-  /// Create a copy of SierraEventAbiEnumVariant
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? name = null,
-    Object? type = null,
-    Object? kind = null,
-  }) {
-    return _then(_value.copyWith(
-      name: null == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
-              as String,
-      type: null == type
-          ? _value.type
-          : type // ignore: cast_nullable_to_non_nullable
-              as String,
-      kind: null == kind
-          ? _value.kind
-          : kind // ignore: cast_nullable_to_non_nullable
-              as String,
-    ) as $Val);
+  String toString() {
+    return 'SierraEventAbiEnum(type: $type, name: $name, kind: $kind, variants: $variants)';
   }
 }
 
 /// @nodoc
-abstract class _$$SierraEventAbiEnumVariantImplCopyWith<$Res>
-    implements $SierraEventAbiEnumVariantCopyWith<$Res> {
-  factory _$$SierraEventAbiEnumVariantImplCopyWith(
-          _$SierraEventAbiEnumVariantImpl value,
-          $Res Function(_$SierraEventAbiEnumVariantImpl) then) =
-      __$$SierraEventAbiEnumVariantImplCopyWithImpl<$Res>;
+abstract mixin class _$SierraEventAbiEnumCopyWith<$Res>
+    implements $SierraEventAbiEnumCopyWith<$Res> {
+  factory _$SierraEventAbiEnumCopyWith(
+          _SierraEventAbiEnum value, $Res Function(_SierraEventAbiEnum) _then) =
+      __$SierraEventAbiEnumCopyWithImpl;
   @override
   @useResult
-  $Res call({String name, String type, String kind});
+  $Res call(
+      {String type,
+      String name,
+      String kind,
+      List<SierraEventAbiEnumVariant> variants});
 }
 
 /// @nodoc
-class __$$SierraEventAbiEnumVariantImplCopyWithImpl<$Res>
-    extends _$SierraEventAbiEnumVariantCopyWithImpl<$Res,
-        _$SierraEventAbiEnumVariantImpl>
-    implements _$$SierraEventAbiEnumVariantImplCopyWith<$Res> {
-  __$$SierraEventAbiEnumVariantImplCopyWithImpl(
-      _$SierraEventAbiEnumVariantImpl _value,
-      $Res Function(_$SierraEventAbiEnumVariantImpl) _then)
-      : super(_value, _then);
+class __$SierraEventAbiEnumCopyWithImpl<$Res>
+    implements _$SierraEventAbiEnumCopyWith<$Res> {
+  __$SierraEventAbiEnumCopyWithImpl(this._self, this._then);
 
-  /// Create a copy of SierraEventAbiEnumVariant
+  final _SierraEventAbiEnum _self;
+  final $Res Function(_SierraEventAbiEnum) _then;
+
+  /// Create a copy of SierraEventAbiEnum
   /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
   @override
+  @pragma('vm:prefer-inline')
   $Res call({
-    Object? name = null,
     Object? type = null,
+    Object? name = null,
     Object? kind = null,
+    Object? variants = null,
   }) {
-    return _then(_$SierraEventAbiEnumVariantImpl(
-      name: null == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
-              as String,
+    return _then(_SierraEventAbiEnum(
       type: null == type
-          ? _value.type
+          ? _self.type
           : type // ignore: cast_nullable_to_non_nullable
               as String,
+      name: null == name
+          ? _self.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
       kind: null == kind
-          ? _value.kind
+          ? _self.kind
           : kind // ignore: cast_nullable_to_non_nullable
               as String,
+      variants: null == variants
+          ? _self._variants
+          : variants // ignore: cast_nullable_to_non_nullable
+              as List<SierraEventAbiEnumVariant>,
     ));
   }
 }
 
 /// @nodoc
-@JsonSerializable()
-class _$SierraEventAbiEnumVariantImpl implements _SierraEventAbiEnumVariant {
-  const _$SierraEventAbiEnumVariantImpl(
-      {required this.name, required this.type, required this.kind});
+mixin _$SierraEventAbiEnumVariant {
+  String get name;
+  String get type; // TODO: switch to enum?
+  String get kind;
 
-  factory _$SierraEventAbiEnumVariantImpl.fromJson(Map<String, dynamic> json) =>
-      _$$SierraEventAbiEnumVariantImplFromJson(json);
+  /// Create a copy of SierraEventAbiEnumVariant
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  $SierraEventAbiEnumVariantCopyWith<SierraEventAbiEnumVariant> get copyWith =>
+      _$SierraEventAbiEnumVariantCopyWithImpl<SierraEventAbiEnumVariant>(
+          this as SierraEventAbiEnumVariant, _$identity);
 
-  @override
-  final String name;
-  @override
-  final String type;
-// TODO: switch to enum?
-  @override
-  final String kind;
-
-  @override
-  String toString() {
-    return 'SierraEventAbiEnumVariant(name: $name, type: $type, kind: $kind)';
-  }
+  /// Serializes this SierraEventAbiEnumVariant to a JSON map.
+  Map<String, dynamic> toJson();
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$SierraEventAbiEnumVariantImpl &&
+            other is SierraEventAbiEnumVariant &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.type, type) || other.type == type) &&
             (identical(other.kind, kind) || other.kind == kind));
@@ -3734,131 +3317,355 @@ class _$SierraEventAbiEnumVariantImpl implements _SierraEventAbiEnumVariant {
   @override
   int get hashCode => Object.hash(runtimeType, name, type, kind);
 
-  /// Create a copy of SierraEventAbiEnumVariant
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  @pragma('vm:prefer-inline')
-  _$$SierraEventAbiEnumVariantImplCopyWith<_$SierraEventAbiEnumVariantImpl>
-      get copyWith => __$$SierraEventAbiEnumVariantImplCopyWithImpl<
-          _$SierraEventAbiEnumVariantImpl>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$SierraEventAbiEnumVariantImplToJson(
-      this,
-    );
+  String toString() {
+    return 'SierraEventAbiEnumVariant(name: $name, type: $type, kind: $kind)';
   }
 }
 
-abstract class _SierraEventAbiEnumVariant implements SierraEventAbiEnumVariant {
-  const factory _SierraEventAbiEnumVariant(
-      {required final String name,
-      required final String type,
-      required final String kind}) = _$SierraEventAbiEnumVariantImpl;
+/// @nodoc
+abstract mixin class $SierraEventAbiEnumVariantCopyWith<$Res> {
+  factory $SierraEventAbiEnumVariantCopyWith(SierraEventAbiEnumVariant value,
+          $Res Function(SierraEventAbiEnumVariant) _then) =
+      _$SierraEventAbiEnumVariantCopyWithImpl;
+  @useResult
+  $Res call({String name, String type, String kind});
+}
 
-  factory _SierraEventAbiEnumVariant.fromJson(Map<String, dynamic> json) =
-      _$SierraEventAbiEnumVariantImpl.fromJson;
+/// @nodoc
+class _$SierraEventAbiEnumVariantCopyWithImpl<$Res>
+    implements $SierraEventAbiEnumVariantCopyWith<$Res> {
+  _$SierraEventAbiEnumVariantCopyWithImpl(this._self, this._then);
+
+  final SierraEventAbiEnumVariant _self;
+  final $Res Function(SierraEventAbiEnumVariant) _then;
+
+  /// Create a copy of SierraEventAbiEnumVariant
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? name = null,
+    Object? type = null,
+    Object? kind = null,
+  }) {
+    return _then(_self.copyWith(
+      name: null == name
+          ? _self.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
+      type: null == type
+          ? _self.type
+          : type // ignore: cast_nullable_to_non_nullable
+              as String,
+      kind: null == kind
+          ? _self.kind
+          : kind // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// Adds pattern-matching-related methods to [SierraEventAbiEnumVariant].
+extension SierraEventAbiEnumVariantPatterns on SierraEventAbiEnumVariant {
+  /// A variant of `map` that fallback to returning `orElse`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(_SierraEventAbiEnumVariant value)? $default, {
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _SierraEventAbiEnumVariant() when $default != null:
+        return $default(_that);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// Callbacks receives the raw object, upcasted.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case final Subclass2 value:
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(_SierraEventAbiEnumVariant value) $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _SierraEventAbiEnumVariant():
+        return $default(_that);
+      case _:
+        throw StateError('Unexpected subclass');
+    }
+  }
+
+  /// A variant of `map` that fallback to returning `null`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>(
+    TResult? Function(_SierraEventAbiEnumVariant value)? $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _SierraEventAbiEnumVariant() when $default != null:
+        return $default(_that);
+      case _:
+        return null;
+    }
+  }
+
+  /// A variant of `when` that fallback to an `orElse` callback.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(String name, String type, String kind)? $default, {
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _SierraEventAbiEnumVariant() when $default != null:
+        return $default(_that.name, _that.type, _that.kind);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// As opposed to `map`, this offers destructuring.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case Subclass2(:final field2):
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>(
+    TResult Function(String name, String type, String kind) $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _SierraEventAbiEnumVariant():
+        return $default(_that.name, _that.type, _that.kind);
+      case _:
+        throw StateError('Unexpected subclass');
+    }
+  }
+
+  /// A variant of `when` that fallback to returning `null`
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>(
+    TResult? Function(String name, String type, String kind)? $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _SierraEventAbiEnumVariant() when $default != null:
+        return $default(_that.name, _that.type, _that.kind);
+      case _:
+        return null;
+    }
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _SierraEventAbiEnumVariant implements SierraEventAbiEnumVariant {
+  const _SierraEventAbiEnumVariant(
+      {required this.name, required this.type, required this.kind});
+  factory _SierraEventAbiEnumVariant.fromJson(Map<String, dynamic> json) =>
+      _$SierraEventAbiEnumVariantFromJson(json);
 
   @override
-  String get name;
+  final String name;
   @override
-  String get type; // TODO: switch to enum?
+  final String type;
+// TODO: switch to enum?
   @override
-  String get kind;
+  final String kind;
 
   /// Create a copy of SierraEventAbiEnumVariant
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$SierraEventAbiEnumVariantImplCopyWith<_$SierraEventAbiEnumVariantImpl>
-      get copyWith => throw _privateConstructorUsedError;
+  @pragma('vm:prefer-inline')
+  _$SierraEventAbiEnumVariantCopyWith<_SierraEventAbiEnumVariant>
+      get copyWith =>
+          __$SierraEventAbiEnumVariantCopyWithImpl<_SierraEventAbiEnumVariant>(
+              this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$SierraEventAbiEnumVariantToJson(
+      this,
+    );
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _SierraEventAbiEnumVariant &&
+            (identical(other.name, name) || other.name == name) &&
+            (identical(other.type, type) || other.type == type) &&
+            (identical(other.kind, kind) || other.kind == kind));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(runtimeType, name, type, kind);
+
+  @override
+  String toString() {
+    return 'SierraEventAbiEnumVariant(name: $name, type: $type, kind: $kind)';
+  }
 }
 
-SierraEventAbiStruct _$SierraEventAbiStructFromJson(Map<String, dynamic> json) {
-  return _SierraEventAbiStruct.fromJson(json);
+/// @nodoc
+abstract mixin class _$SierraEventAbiEnumVariantCopyWith<$Res>
+    implements $SierraEventAbiEnumVariantCopyWith<$Res> {
+  factory _$SierraEventAbiEnumVariantCopyWith(_SierraEventAbiEnumVariant value,
+          $Res Function(_SierraEventAbiEnumVariant) _then) =
+      __$SierraEventAbiEnumVariantCopyWithImpl;
+  @override
+  @useResult
+  $Res call({String name, String type, String kind});
+}
+
+/// @nodoc
+class __$SierraEventAbiEnumVariantCopyWithImpl<$Res>
+    implements _$SierraEventAbiEnumVariantCopyWith<$Res> {
+  __$SierraEventAbiEnumVariantCopyWithImpl(this._self, this._then);
+
+  final _SierraEventAbiEnumVariant _self;
+  final $Res Function(_SierraEventAbiEnumVariant) _then;
+
+  /// Create a copy of SierraEventAbiEnumVariant
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $Res call({
+    Object? name = null,
+    Object? type = null,
+    Object? kind = null,
+  }) {
+    return _then(_SierraEventAbiEnumVariant(
+      name: null == name
+          ? _self.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
+      type: null == type
+          ? _self.type
+          : type // ignore: cast_nullable_to_non_nullable
+              as String,
+      kind: null == kind
+          ? _self.kind
+          : kind // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
 }
 
 /// @nodoc
 mixin _$SierraEventAbiStruct {
-  String get type => throw _privateConstructorUsedError;
-  String get name => throw _privateConstructorUsedError;
-  String get kind => throw _privateConstructorUsedError;
-  List<SierraEventAbiStructMember> get members =>
-      throw _privateConstructorUsedError;
-
-  /// Serializes this SierraEventAbiStruct to a JSON map.
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  String get type;
+  String get name;
+  String get kind;
+  List<SierraEventAbiStructMember> get members;
 
   /// Create a copy of SierraEventAbiStruct
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $SierraEventAbiStructCopyWith<SierraEventAbiStruct> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $SierraEventAbiStructCopyWith<$Res> {
-  factory $SierraEventAbiStructCopyWith(SierraEventAbiStruct value,
-          $Res Function(SierraEventAbiStruct) then) =
-      _$SierraEventAbiStructCopyWithImpl<$Res, SierraEventAbiStruct>;
-  @useResult
-  $Res call(
-      {String type,
-      String name,
-      String kind,
-      List<SierraEventAbiStructMember> members});
-}
-
-/// @nodoc
-class _$SierraEventAbiStructCopyWithImpl<$Res,
-        $Val extends SierraEventAbiStruct>
-    implements $SierraEventAbiStructCopyWith<$Res> {
-  _$SierraEventAbiStructCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-
-  /// Create a copy of SierraEventAbiStruct
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
+  $SierraEventAbiStructCopyWith<SierraEventAbiStruct> get copyWith =>
+      _$SierraEventAbiStructCopyWithImpl<SierraEventAbiStruct>(
+          this as SierraEventAbiStruct, _$identity);
+
+  /// Serializes this SierraEventAbiStruct to a JSON map.
+  Map<String, dynamic> toJson();
+
   @override
-  $Res call({
-    Object? type = null,
-    Object? name = null,
-    Object? kind = null,
-    Object? members = null,
-  }) {
-    return _then(_value.copyWith(
-      type: null == type
-          ? _value.type
-          : type // ignore: cast_nullable_to_non_nullable
-              as String,
-      name: null == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
-              as String,
-      kind: null == kind
-          ? _value.kind
-          : kind // ignore: cast_nullable_to_non_nullable
-              as String,
-      members: null == members
-          ? _value.members
-          : members // ignore: cast_nullable_to_non_nullable
-              as List<SierraEventAbiStructMember>,
-    ) as $Val);
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is SierraEventAbiStruct &&
+            (identical(other.type, type) || other.type == type) &&
+            (identical(other.name, name) || other.name == name) &&
+            (identical(other.kind, kind) || other.kind == kind) &&
+            const DeepCollectionEquality().equals(other.members, members));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(runtimeType, type, name, kind,
+      const DeepCollectionEquality().hash(members));
+
+  @override
+  String toString() {
+    return 'SierraEventAbiStruct(type: $type, name: $name, kind: $kind, members: $members)';
   }
 }
 
 /// @nodoc
-abstract class _$$SierraEventAbiStructImplCopyWith<$Res>
-    implements $SierraEventAbiStructCopyWith<$Res> {
-  factory _$$SierraEventAbiStructImplCopyWith(_$SierraEventAbiStructImpl value,
-          $Res Function(_$SierraEventAbiStructImpl) then) =
-      __$$SierraEventAbiStructImplCopyWithImpl<$Res>;
-  @override
+abstract mixin class $SierraEventAbiStructCopyWith<$Res> {
+  factory $SierraEventAbiStructCopyWith(SierraEventAbiStruct value,
+          $Res Function(SierraEventAbiStruct) _then) =
+      _$SierraEventAbiStructCopyWithImpl;
   @useResult
   $Res call(
       {String type,
@@ -3868,12 +3675,12 @@ abstract class _$$SierraEventAbiStructImplCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$SierraEventAbiStructImplCopyWithImpl<$Res>
-    extends _$SierraEventAbiStructCopyWithImpl<$Res, _$SierraEventAbiStructImpl>
-    implements _$$SierraEventAbiStructImplCopyWith<$Res> {
-  __$$SierraEventAbiStructImplCopyWithImpl(_$SierraEventAbiStructImpl _value,
-      $Res Function(_$SierraEventAbiStructImpl) _then)
-      : super(_value, _then);
+class _$SierraEventAbiStructCopyWithImpl<$Res>
+    implements $SierraEventAbiStructCopyWith<$Res> {
+  _$SierraEventAbiStructCopyWithImpl(this._self, this._then);
+
+  final SierraEventAbiStruct _self;
+  final $Res Function(SierraEventAbiStruct) _then;
 
   /// Create a copy of SierraEventAbiStruct
   /// with the given fields replaced by the non-null parameter values.
@@ -3885,39 +3692,201 @@ class __$$SierraEventAbiStructImplCopyWithImpl<$Res>
     Object? kind = null,
     Object? members = null,
   }) {
-    return _then(_$SierraEventAbiStructImpl(
+    return _then(_self.copyWith(
       type: null == type
-          ? _value.type
+          ? _self.type
           : type // ignore: cast_nullable_to_non_nullable
               as String,
       name: null == name
-          ? _value.name
+          ? _self.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
       kind: null == kind
-          ? _value.kind
+          ? _self.kind
           : kind // ignore: cast_nullable_to_non_nullable
               as String,
       members: null == members
-          ? _value._members
+          ? _self.members
           : members // ignore: cast_nullable_to_non_nullable
               as List<SierraEventAbiStructMember>,
     ));
   }
 }
 
+/// Adds pattern-matching-related methods to [SierraEventAbiStruct].
+extension SierraEventAbiStructPatterns on SierraEventAbiStruct {
+  /// A variant of `map` that fallback to returning `orElse`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(_SierraEventAbiStruct value)? $default, {
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _SierraEventAbiStruct() when $default != null:
+        return $default(_that);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// Callbacks receives the raw object, upcasted.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case final Subclass2 value:
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(_SierraEventAbiStruct value) $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _SierraEventAbiStruct():
+        return $default(_that);
+      case _:
+        throw StateError('Unexpected subclass');
+    }
+  }
+
+  /// A variant of `map` that fallback to returning `null`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>(
+    TResult? Function(_SierraEventAbiStruct value)? $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _SierraEventAbiStruct() when $default != null:
+        return $default(_that);
+      case _:
+        return null;
+    }
+  }
+
+  /// A variant of `when` that fallback to an `orElse` callback.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(String type, String name, String kind,
+            List<SierraEventAbiStructMember> members)?
+        $default, {
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _SierraEventAbiStruct() when $default != null:
+        return $default(_that.type, _that.name, _that.kind, _that.members);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// As opposed to `map`, this offers destructuring.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case Subclass2(:final field2):
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>(
+    TResult Function(String type, String name, String kind,
+            List<SierraEventAbiStructMember> members)
+        $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _SierraEventAbiStruct():
+        return $default(_that.type, _that.name, _that.kind, _that.members);
+      case _:
+        throw StateError('Unexpected subclass');
+    }
+  }
+
+  /// A variant of `when` that fallback to returning `null`
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>(
+    TResult? Function(String type, String name, String kind,
+            List<SierraEventAbiStructMember> members)?
+        $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _SierraEventAbiStruct() when $default != null:
+        return $default(_that.type, _that.name, _that.kind, _that.members);
+      case _:
+        return null;
+    }
+  }
+}
+
 /// @nodoc
 @JsonSerializable()
-class _$SierraEventAbiStructImpl implements _SierraEventAbiStruct {
-  const _$SierraEventAbiStructImpl(
+class _SierraEventAbiStruct implements SierraEventAbiStruct {
+  const _SierraEventAbiStruct(
       {required this.type,
       required this.name,
       required this.kind,
       required final List<SierraEventAbiStructMember> members})
       : _members = members;
-
-  factory _$SierraEventAbiStructImpl.fromJson(Map<String, dynamic> json) =>
-      _$$SierraEventAbiStructImplFromJson(json);
+  factory _SierraEventAbiStruct.fromJson(Map<String, dynamic> json) =>
+      _$SierraEventAbiStructFromJson(json);
 
   @override
   final String type;
@@ -3933,16 +3902,27 @@ class _$SierraEventAbiStructImpl implements _SierraEventAbiStruct {
     return EqualUnmodifiableListView(_members);
   }
 
+  /// Create a copy of SierraEventAbiStruct
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  String toString() {
-    return 'SierraEventAbiStruct(type: $type, name: $name, kind: $kind, members: $members)';
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  _$SierraEventAbiStructCopyWith<_SierraEventAbiStruct> get copyWith =>
+      __$SierraEventAbiStructCopyWithImpl<_SierraEventAbiStruct>(
+          this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$SierraEventAbiStructToJson(
+      this,
+    );
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$SierraEventAbiStructImpl &&
+            other is _SierraEventAbiStruct &&
             (identical(other.type, type) || other.type == type) &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.kind, kind) || other.kind == kind) &&
@@ -3954,197 +3934,89 @@ class _$SierraEventAbiStructImpl implements _SierraEventAbiStruct {
   int get hashCode => Object.hash(runtimeType, type, name, kind,
       const DeepCollectionEquality().hash(_members));
 
-  /// Create a copy of SierraEventAbiStruct
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  @pragma('vm:prefer-inline')
-  _$$SierraEventAbiStructImplCopyWith<_$SierraEventAbiStructImpl>
-      get copyWith =>
-          __$$SierraEventAbiStructImplCopyWithImpl<_$SierraEventAbiStructImpl>(
-              this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$SierraEventAbiStructImplToJson(
-      this,
-    );
-  }
-}
-
-abstract class _SierraEventAbiStruct implements SierraEventAbiStruct {
-  const factory _SierraEventAbiStruct(
-          {required final String type,
-          required final String name,
-          required final String kind,
-          required final List<SierraEventAbiStructMember> members}) =
-      _$SierraEventAbiStructImpl;
-
-  factory _SierraEventAbiStruct.fromJson(Map<String, dynamic> json) =
-      _$SierraEventAbiStructImpl.fromJson;
-
-  @override
-  String get type;
-  @override
-  String get name;
-  @override
-  String get kind;
-  @override
-  List<SierraEventAbiStructMember> get members;
-
-  /// Create a copy of SierraEventAbiStruct
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$SierraEventAbiStructImplCopyWith<_$SierraEventAbiStructImpl>
-      get copyWith => throw _privateConstructorUsedError;
-}
-
-SierraEventAbiStructMember _$SierraEventAbiStructMemberFromJson(
-    Map<String, dynamic> json) {
-  return _SierraEventAbiStructMember.fromJson(json);
-}
-
-/// @nodoc
-mixin _$SierraEventAbiStructMember {
-  String get name => throw _privateConstructorUsedError;
-  String get type =>
-      throw _privateConstructorUsedError; // TODO: switch to enum ?
-  String get kind => throw _privateConstructorUsedError;
-
-  /// Serializes this SierraEventAbiStructMember to a JSON map.
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-
-  /// Create a copy of SierraEventAbiStructMember
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  $SierraEventAbiStructMemberCopyWith<SierraEventAbiStructMember>
-      get copyWith => throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $SierraEventAbiStructMemberCopyWith<$Res> {
-  factory $SierraEventAbiStructMemberCopyWith(SierraEventAbiStructMember value,
-          $Res Function(SierraEventAbiStructMember) then) =
-      _$SierraEventAbiStructMemberCopyWithImpl<$Res,
-          SierraEventAbiStructMember>;
-  @useResult
-  $Res call({String name, String type, String kind});
-}
-
-/// @nodoc
-class _$SierraEventAbiStructMemberCopyWithImpl<$Res,
-        $Val extends SierraEventAbiStructMember>
-    implements $SierraEventAbiStructMemberCopyWith<$Res> {
-  _$SierraEventAbiStructMemberCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-
-  /// Create a copy of SierraEventAbiStructMember
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? name = null,
-    Object? type = null,
-    Object? kind = null,
-  }) {
-    return _then(_value.copyWith(
-      name: null == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
-              as String,
-      type: null == type
-          ? _value.type
-          : type // ignore: cast_nullable_to_non_nullable
-              as String,
-      kind: null == kind
-          ? _value.kind
-          : kind // ignore: cast_nullable_to_non_nullable
-              as String,
-    ) as $Val);
+  String toString() {
+    return 'SierraEventAbiStruct(type: $type, name: $name, kind: $kind, members: $members)';
   }
 }
 
 /// @nodoc
-abstract class _$$SierraEventAbiStructMemberImplCopyWith<$Res>
-    implements $SierraEventAbiStructMemberCopyWith<$Res> {
-  factory _$$SierraEventAbiStructMemberImplCopyWith(
-          _$SierraEventAbiStructMemberImpl value,
-          $Res Function(_$SierraEventAbiStructMemberImpl) then) =
-      __$$SierraEventAbiStructMemberImplCopyWithImpl<$Res>;
+abstract mixin class _$SierraEventAbiStructCopyWith<$Res>
+    implements $SierraEventAbiStructCopyWith<$Res> {
+  factory _$SierraEventAbiStructCopyWith(_SierraEventAbiStruct value,
+          $Res Function(_SierraEventAbiStruct) _then) =
+      __$SierraEventAbiStructCopyWithImpl;
   @override
   @useResult
-  $Res call({String name, String type, String kind});
+  $Res call(
+      {String type,
+      String name,
+      String kind,
+      List<SierraEventAbiStructMember> members});
 }
 
 /// @nodoc
-class __$$SierraEventAbiStructMemberImplCopyWithImpl<$Res>
-    extends _$SierraEventAbiStructMemberCopyWithImpl<$Res,
-        _$SierraEventAbiStructMemberImpl>
-    implements _$$SierraEventAbiStructMemberImplCopyWith<$Res> {
-  __$$SierraEventAbiStructMemberImplCopyWithImpl(
-      _$SierraEventAbiStructMemberImpl _value,
-      $Res Function(_$SierraEventAbiStructMemberImpl) _then)
-      : super(_value, _then);
+class __$SierraEventAbiStructCopyWithImpl<$Res>
+    implements _$SierraEventAbiStructCopyWith<$Res> {
+  __$SierraEventAbiStructCopyWithImpl(this._self, this._then);
 
-  /// Create a copy of SierraEventAbiStructMember
+  final _SierraEventAbiStruct _self;
+  final $Res Function(_SierraEventAbiStruct) _then;
+
+  /// Create a copy of SierraEventAbiStruct
   /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
   @override
+  @pragma('vm:prefer-inline')
   $Res call({
-    Object? name = null,
     Object? type = null,
+    Object? name = null,
     Object? kind = null,
+    Object? members = null,
   }) {
-    return _then(_$SierraEventAbiStructMemberImpl(
-      name: null == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
-              as String,
+    return _then(_SierraEventAbiStruct(
       type: null == type
-          ? _value.type
+          ? _self.type
           : type // ignore: cast_nullable_to_non_nullable
               as String,
+      name: null == name
+          ? _self.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
       kind: null == kind
-          ? _value.kind
+          ? _self.kind
           : kind // ignore: cast_nullable_to_non_nullable
               as String,
+      members: null == members
+          ? _self._members
+          : members // ignore: cast_nullable_to_non_nullable
+              as List<SierraEventAbiStructMember>,
     ));
   }
 }
 
 /// @nodoc
-@JsonSerializable()
-class _$SierraEventAbiStructMemberImpl implements _SierraEventAbiStructMember {
-  const _$SierraEventAbiStructMemberImpl(
-      {required this.name, required this.type, required this.kind});
+mixin _$SierraEventAbiStructMember {
+  String get name;
+  String get type; // TODO: switch to enum ?
+  String get kind;
 
-  factory _$SierraEventAbiStructMemberImpl.fromJson(
-          Map<String, dynamic> json) =>
-      _$$SierraEventAbiStructMemberImplFromJson(json);
+  /// Create a copy of SierraEventAbiStructMember
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  $SierraEventAbiStructMemberCopyWith<SierraEventAbiStructMember>
+      get copyWith =>
+          _$SierraEventAbiStructMemberCopyWithImpl<SierraEventAbiStructMember>(
+              this as SierraEventAbiStructMember, _$identity);
 
-  @override
-  final String name;
-  @override
-  final String type;
-// TODO: switch to enum ?
-  @override
-  final String kind;
-
-  @override
-  String toString() {
-    return 'SierraEventAbiStructMember(name: $name, type: $type, kind: $kind)';
-  }
+  /// Serializes this SierraEventAbiStructMember to a JSON map.
+  Map<String, dynamic> toJson();
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$SierraEventAbiStructMemberImpl &&
+            other is SierraEventAbiStructMember &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.type, type) || other.type == type) &&
             (identical(other.kind, kind) || other.kind == kind));
@@ -4154,46 +4026,308 @@ class _$SierraEventAbiStructMemberImpl implements _SierraEventAbiStructMember {
   @override
   int get hashCode => Object.hash(runtimeType, name, type, kind);
 
-  /// Create a copy of SierraEventAbiStructMember
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  @pragma('vm:prefer-inline')
-  _$$SierraEventAbiStructMemberImplCopyWith<_$SierraEventAbiStructMemberImpl>
-      get copyWith => __$$SierraEventAbiStructMemberImplCopyWithImpl<
-          _$SierraEventAbiStructMemberImpl>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$SierraEventAbiStructMemberImplToJson(
-      this,
-    );
+  String toString() {
+    return 'SierraEventAbiStructMember(name: $name, type: $type, kind: $kind)';
   }
 }
 
-abstract class _SierraEventAbiStructMember
-    implements SierraEventAbiStructMember {
-  const factory _SierraEventAbiStructMember(
-      {required final String name,
-      required final String type,
-      required final String kind}) = _$SierraEventAbiStructMemberImpl;
+/// @nodoc
+abstract mixin class $SierraEventAbiStructMemberCopyWith<$Res> {
+  factory $SierraEventAbiStructMemberCopyWith(SierraEventAbiStructMember value,
+          $Res Function(SierraEventAbiStructMember) _then) =
+      _$SierraEventAbiStructMemberCopyWithImpl;
+  @useResult
+  $Res call({String name, String type, String kind});
+}
 
-  factory _SierraEventAbiStructMember.fromJson(Map<String, dynamic> json) =
-      _$SierraEventAbiStructMemberImpl.fromJson;
+/// @nodoc
+class _$SierraEventAbiStructMemberCopyWithImpl<$Res>
+    implements $SierraEventAbiStructMemberCopyWith<$Res> {
+  _$SierraEventAbiStructMemberCopyWithImpl(this._self, this._then);
+
+  final SierraEventAbiStructMember _self;
+  final $Res Function(SierraEventAbiStructMember) _then;
+
+  /// Create a copy of SierraEventAbiStructMember
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? name = null,
+    Object? type = null,
+    Object? kind = null,
+  }) {
+    return _then(_self.copyWith(
+      name: null == name
+          ? _self.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
+      type: null == type
+          ? _self.type
+          : type // ignore: cast_nullable_to_non_nullable
+              as String,
+      kind: null == kind
+          ? _self.kind
+          : kind // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// Adds pattern-matching-related methods to [SierraEventAbiStructMember].
+extension SierraEventAbiStructMemberPatterns on SierraEventAbiStructMember {
+  /// A variant of `map` that fallback to returning `orElse`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(_SierraEventAbiStructMember value)? $default, {
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _SierraEventAbiStructMember() when $default != null:
+        return $default(_that);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// Callbacks receives the raw object, upcasted.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case final Subclass2 value:
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(_SierraEventAbiStructMember value) $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _SierraEventAbiStructMember():
+        return $default(_that);
+      case _:
+        throw StateError('Unexpected subclass');
+    }
+  }
+
+  /// A variant of `map` that fallback to returning `null`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>(
+    TResult? Function(_SierraEventAbiStructMember value)? $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _SierraEventAbiStructMember() when $default != null:
+        return $default(_that);
+      case _:
+        return null;
+    }
+  }
+
+  /// A variant of `when` that fallback to an `orElse` callback.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(String name, String type, String kind)? $default, {
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _SierraEventAbiStructMember() when $default != null:
+        return $default(_that.name, _that.type, _that.kind);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// As opposed to `map`, this offers destructuring.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case Subclass2(:final field2):
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>(
+    TResult Function(String name, String type, String kind) $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _SierraEventAbiStructMember():
+        return $default(_that.name, _that.type, _that.kind);
+      case _:
+        throw StateError('Unexpected subclass');
+    }
+  }
+
+  /// A variant of `when` that fallback to returning `null`
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>(
+    TResult? Function(String name, String type, String kind)? $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _SierraEventAbiStructMember() when $default != null:
+        return $default(_that.name, _that.type, _that.kind);
+      case _:
+        return null;
+    }
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _SierraEventAbiStructMember implements SierraEventAbiStructMember {
+  const _SierraEventAbiStructMember(
+      {required this.name, required this.type, required this.kind});
+  factory _SierraEventAbiStructMember.fromJson(Map<String, dynamic> json) =>
+      _$SierraEventAbiStructMemberFromJson(json);
 
   @override
-  String get name;
+  final String name;
   @override
-  String get type; // TODO: switch to enum ?
+  final String type;
+// TODO: switch to enum ?
   @override
-  String get kind;
+  final String kind;
 
   /// Create a copy of SierraEventAbiStructMember
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$SierraEventAbiStructMemberImplCopyWith<_$SierraEventAbiStructMemberImpl>
-      get copyWith => throw _privateConstructorUsedError;
+  @pragma('vm:prefer-inline')
+  _$SierraEventAbiStructMemberCopyWith<_SierraEventAbiStructMember>
+      get copyWith => __$SierraEventAbiStructMemberCopyWithImpl<
+          _SierraEventAbiStructMember>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$SierraEventAbiStructMemberToJson(
+      this,
+    );
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _SierraEventAbiStructMember &&
+            (identical(other.name, name) || other.name == name) &&
+            (identical(other.type, type) || other.type == type) &&
+            (identical(other.kind, kind) || other.kind == kind));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(runtimeType, name, type, kind);
+
+  @override
+  String toString() {
+    return 'SierraEventAbiStructMember(name: $name, type: $type, kind: $kind)';
+  }
+}
+
+/// @nodoc
+abstract mixin class _$SierraEventAbiStructMemberCopyWith<$Res>
+    implements $SierraEventAbiStructMemberCopyWith<$Res> {
+  factory _$SierraEventAbiStructMemberCopyWith(
+          _SierraEventAbiStructMember value,
+          $Res Function(_SierraEventAbiStructMember) _then) =
+      __$SierraEventAbiStructMemberCopyWithImpl;
+  @override
+  @useResult
+  $Res call({String name, String type, String kind});
+}
+
+/// @nodoc
+class __$SierraEventAbiStructMemberCopyWithImpl<$Res>
+    implements _$SierraEventAbiStructMemberCopyWith<$Res> {
+  __$SierraEventAbiStructMemberCopyWithImpl(this._self, this._then);
+
+  final _SierraEventAbiStructMember _self;
+  final $Res Function(_SierraEventAbiStructMember) _then;
+
+  /// Create a copy of SierraEventAbiStructMember
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $Res call({
+    Object? name = null,
+    Object? type = null,
+    Object? kind = null,
+  }) {
+    return _then(_SierraEventAbiStructMember(
+      name: null == name
+          ? _self.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
+      type: null == type
+          ? _self.type
+          : type // ignore: cast_nullable_to_non_nullable
+              as String,
+      kind: null == kind
+          ? _self.kind
+          : kind // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
 }
 
 DeprecatedContractAbiEntry _$DeprecatedContractAbiEntryFromJson(
@@ -4219,50 +4353,196 @@ DeprecatedContractAbiEntry _$DeprecatedContractAbiEntryFromJson(
 
 /// @nodoc
 mixin _$DeprecatedContractAbiEntry {
-  String get type => throw _privateConstructorUsedError;
-  String get name => throw _privateConstructorUsedError;
+  String get type;
+  String get name;
+
+  /// Create a copy of DeprecatedContractAbiEntry
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  $DeprecatedContractAbiEntryCopyWith<DeprecatedContractAbiEntry>
+      get copyWith =>
+          _$DeprecatedContractAbiEntryCopyWithImpl<DeprecatedContractAbiEntry>(
+              this as DeprecatedContractAbiEntry, _$identity);
+
+  /// Serializes this DeprecatedContractAbiEntry to a JSON map.
+  Map<String, dynamic> toJson();
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is DeprecatedContractAbiEntry &&
+            (identical(other.type, type) || other.type == type) &&
+            (identical(other.name, name) || other.name == name));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(runtimeType, type, name);
+
+  @override
+  String toString() {
+    return 'DeprecatedContractAbiEntry(type: $type, name: $name)';
+  }
+}
+
+/// @nodoc
+abstract mixin class $DeprecatedContractAbiEntryCopyWith<$Res> {
+  factory $DeprecatedContractAbiEntryCopyWith(DeprecatedContractAbiEntry value,
+          $Res Function(DeprecatedContractAbiEntry) _then) =
+      _$DeprecatedContractAbiEntryCopyWithImpl;
+  @useResult
+  $Res call({String type, String name});
+}
+
+/// @nodoc
+class _$DeprecatedContractAbiEntryCopyWithImpl<$Res>
+    implements $DeprecatedContractAbiEntryCopyWith<$Res> {
+  _$DeprecatedContractAbiEntryCopyWithImpl(this._self, this._then);
+
+  final DeprecatedContractAbiEntry _self;
+  final $Res Function(DeprecatedContractAbiEntry) _then;
+
+  /// Create a copy of DeprecatedContractAbiEntry
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? type = null,
+    Object? name = null,
+  }) {
+    return _then(_self.copyWith(
+      type: null == type
+          ? _self.type
+          : type // ignore: cast_nullable_to_non_nullable
+              as String,
+      name: null == name
+          ? _self.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// Adds pattern-matching-related methods to [DeprecatedContractAbiEntry].
+extension DeprecatedContractAbiEntryPatterns on DeprecatedContractAbiEntry {
+  /// A variant of `map` that fallback to returning `orElse`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
   @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(
-            String type,
-            String name,
-            List<TypedParameter> inputs,
-            List<TypedParameter> outputs,
-            @JsonKey(name: 'stateMutability', includeIfNull: false)
-            String? stateMutability)
-        function,
-    required TResult Function(String type, String name,
-            List<TypedParameter> keys, List<TypedParameter> data)
-        event,
-    required TResult Function(
-            String type, String name, int size, List<StructMember> members)
-        struct,
-    required TResult Function(String type, String name,
-            List<TypedParameter> inputs, List<TypedParameter> outputs)
-        constructor,
-  }) =>
-      throw _privateConstructorUsedError;
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(DeprecatedFunctionAbiEntry value)? function,
+    TResult Function(DeprecatedEventAbiEntry value)? event,
+    TResult Function(DeprecatedStructAbiEntry value)? struct,
+    TResult Function(DeprecatedConstructorAbiEntry value)? constructor,
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case DeprecatedFunctionAbiEntry() when function != null:
+        return function(_that);
+      case DeprecatedEventAbiEntry() when event != null:
+        return event(_that);
+      case DeprecatedStructAbiEntry() when struct != null:
+        return struct(_that);
+      case DeprecatedConstructorAbiEntry() when constructor != null:
+        return constructor(_that);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// Callbacks receives the raw object, upcasted.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case final Subclass2 value:
+  ///     return ...;
+  /// }
+  /// ```
+
   @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(
-            String type,
-            String name,
-            List<TypedParameter> inputs,
-            List<TypedParameter> outputs,
-            @JsonKey(name: 'stateMutability', includeIfNull: false)
-            String? stateMutability)?
-        function,
-    TResult? Function(String type, String name, List<TypedParameter> keys,
-            List<TypedParameter> data)?
-        event,
-    TResult? Function(
-            String type, String name, int size, List<StructMember> members)?
-        struct,
-    TResult? Function(String type, String name, List<TypedParameter> inputs,
-            List<TypedParameter> outputs)?
-        constructor,
-  }) =>
-      throw _privateConstructorUsedError;
+  TResult map<TResult extends Object?>({
+    required TResult Function(DeprecatedFunctionAbiEntry value) function,
+    required TResult Function(DeprecatedEventAbiEntry value) event,
+    required TResult Function(DeprecatedStructAbiEntry value) struct,
+    required TResult Function(DeprecatedConstructorAbiEntry value) constructor,
+  }) {
+    final _that = this;
+    switch (_that) {
+      case DeprecatedFunctionAbiEntry():
+        return function(_that);
+      case DeprecatedEventAbiEntry():
+        return event(_that);
+      case DeprecatedStructAbiEntry():
+        return struct(_that);
+      case DeprecatedConstructorAbiEntry():
+        return constructor(_that);
+      case _:
+        throw StateError('Unexpected subclass');
+    }
+  }
+
+  /// A variant of `map` that fallback to returning `null`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(DeprecatedFunctionAbiEntry value)? function,
+    TResult? Function(DeprecatedEventAbiEntry value)? event,
+    TResult? Function(DeprecatedStructAbiEntry value)? struct,
+    TResult? Function(DeprecatedConstructorAbiEntry value)? constructor,
+  }) {
+    final _that = this;
+    switch (_that) {
+      case DeprecatedFunctionAbiEntry() when function != null:
+        return function(_that);
+      case DeprecatedEventAbiEntry() when event != null:
+        return event(_that);
+      case DeprecatedStructAbiEntry() when struct != null:
+        return struct(_that);
+      case DeprecatedConstructorAbiEntry() when constructor != null:
+        return constructor(_that);
+      case _:
+        return null;
+    }
+  }
+
+  /// A variant of `when` that fallback to an `orElse` callback.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(
@@ -4283,154 +4563,125 @@ mixin _$DeprecatedContractAbiEntry {
             List<TypedParameter> outputs)?
         constructor,
     required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(DeprecatedFunctionAbiEntry value) function,
-    required TResult Function(DeprecatedEventAbiEntry value) event,
-    required TResult Function(DeprecatedStructAbiEntry value) struct,
-    required TResult Function(DeprecatedConstructorAbiEntry value) constructor,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(DeprecatedFunctionAbiEntry value)? function,
-    TResult? Function(DeprecatedEventAbiEntry value)? event,
-    TResult? Function(DeprecatedStructAbiEntry value)? struct,
-    TResult? Function(DeprecatedConstructorAbiEntry value)? constructor,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(DeprecatedFunctionAbiEntry value)? function,
-    TResult Function(DeprecatedEventAbiEntry value)? event,
-    TResult Function(DeprecatedStructAbiEntry value)? struct,
-    TResult Function(DeprecatedConstructorAbiEntry value)? constructor,
-    required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
-
-  /// Serializes this DeprecatedContractAbiEntry to a JSON map.
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-
-  /// Create a copy of DeprecatedContractAbiEntry
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  $DeprecatedContractAbiEntryCopyWith<DeprecatedContractAbiEntry>
-      get copyWith => throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $DeprecatedContractAbiEntryCopyWith<$Res> {
-  factory $DeprecatedContractAbiEntryCopyWith(DeprecatedContractAbiEntry value,
-          $Res Function(DeprecatedContractAbiEntry) then) =
-      _$DeprecatedContractAbiEntryCopyWithImpl<$Res,
-          DeprecatedContractAbiEntry>;
-  @useResult
-  $Res call({String type, String name});
-}
-
-/// @nodoc
-class _$DeprecatedContractAbiEntryCopyWithImpl<$Res,
-        $Val extends DeprecatedContractAbiEntry>
-    implements $DeprecatedContractAbiEntryCopyWith<$Res> {
-  _$DeprecatedContractAbiEntryCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-
-  /// Create a copy of DeprecatedContractAbiEntry
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? type = null,
-    Object? name = null,
   }) {
-    return _then(_value.copyWith(
-      type: null == type
-          ? _value.type
-          : type // ignore: cast_nullable_to_non_nullable
-              as String,
-      name: null == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
-              as String,
-    ) as $Val);
+    final _that = this;
+    switch (_that) {
+      case DeprecatedFunctionAbiEntry() when function != null:
+        return function(_that.type, _that.name, _that.inputs, _that.outputs,
+            _that.stateMutability);
+      case DeprecatedEventAbiEntry() when event != null:
+        return event(_that.type, _that.name, _that.keys, _that.data);
+      case DeprecatedStructAbiEntry() when struct != null:
+        return struct(_that.type, _that.name, _that.size, _that.members);
+      case DeprecatedConstructorAbiEntry() when constructor != null:
+        return constructor(_that.type, _that.name, _that.inputs, _that.outputs);
+      case _:
+        return orElse();
+    }
   }
-}
 
-/// @nodoc
-abstract class _$$DeprecatedFunctionAbiEntryImplCopyWith<$Res>
-    implements $DeprecatedContractAbiEntryCopyWith<$Res> {
-  factory _$$DeprecatedFunctionAbiEntryImplCopyWith(
-          _$DeprecatedFunctionAbiEntryImpl value,
-          $Res Function(_$DeprecatedFunctionAbiEntryImpl) then) =
-      __$$DeprecatedFunctionAbiEntryImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call(
-      {String type,
-      String name,
-      List<TypedParameter> inputs,
-      List<TypedParameter> outputs,
-      @JsonKey(name: 'stateMutability', includeIfNull: false)
-      String? stateMutability});
-}
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// As opposed to `map`, this offers destructuring.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case Subclass2(:final field2):
+  ///     return ...;
+  /// }
+  /// ```
 
-/// @nodoc
-class __$$DeprecatedFunctionAbiEntryImplCopyWithImpl<$Res>
-    extends _$DeprecatedContractAbiEntryCopyWithImpl<$Res,
-        _$DeprecatedFunctionAbiEntryImpl>
-    implements _$$DeprecatedFunctionAbiEntryImplCopyWith<$Res> {
-  __$$DeprecatedFunctionAbiEntryImplCopyWithImpl(
-      _$DeprecatedFunctionAbiEntryImpl _value,
-      $Res Function(_$DeprecatedFunctionAbiEntryImpl) _then)
-      : super(_value, _then);
-
-  /// Create a copy of DeprecatedContractAbiEntry
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? type = null,
-    Object? name = null,
-    Object? inputs = null,
-    Object? outputs = null,
-    Object? stateMutability = freezed,
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(
+            String type,
+            String name,
+            List<TypedParameter> inputs,
+            List<TypedParameter> outputs,
+            @JsonKey(name: 'stateMutability', includeIfNull: false)
+            String? stateMutability)
+        function,
+    required TResult Function(String type, String name,
+            List<TypedParameter> keys, List<TypedParameter> data)
+        event,
+    required TResult Function(
+            String type, String name, int size, List<StructMember> members)
+        struct,
+    required TResult Function(String type, String name,
+            List<TypedParameter> inputs, List<TypedParameter> outputs)
+        constructor,
   }) {
-    return _then(_$DeprecatedFunctionAbiEntryImpl(
-      type: null == type
-          ? _value.type
-          : type // ignore: cast_nullable_to_non_nullable
-              as String,
-      name: null == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
-              as String,
-      inputs: null == inputs
-          ? _value._inputs
-          : inputs // ignore: cast_nullable_to_non_nullable
-              as List<TypedParameter>,
-      outputs: null == outputs
-          ? _value._outputs
-          : outputs // ignore: cast_nullable_to_non_nullable
-              as List<TypedParameter>,
-      stateMutability: freezed == stateMutability
-          ? _value.stateMutability
-          : stateMutability // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ));
+    final _that = this;
+    switch (_that) {
+      case DeprecatedFunctionAbiEntry():
+        return function(_that.type, _that.name, _that.inputs, _that.outputs,
+            _that.stateMutability);
+      case DeprecatedEventAbiEntry():
+        return event(_that.type, _that.name, _that.keys, _that.data);
+      case DeprecatedStructAbiEntry():
+        return struct(_that.type, _that.name, _that.size, _that.members);
+      case DeprecatedConstructorAbiEntry():
+        return constructor(_that.type, _that.name, _that.inputs, _that.outputs);
+      case _:
+        throw StateError('Unexpected subclass');
+    }
+  }
+
+  /// A variant of `when` that fallback to returning `null`
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(
+            String type,
+            String name,
+            List<TypedParameter> inputs,
+            List<TypedParameter> outputs,
+            @JsonKey(name: 'stateMutability', includeIfNull: false)
+            String? stateMutability)?
+        function,
+    TResult? Function(String type, String name, List<TypedParameter> keys,
+            List<TypedParameter> data)?
+        event,
+    TResult? Function(
+            String type, String name, int size, List<StructMember> members)?
+        struct,
+    TResult? Function(String type, String name, List<TypedParameter> inputs,
+            List<TypedParameter> outputs)?
+        constructor,
+  }) {
+    final _that = this;
+    switch (_that) {
+      case DeprecatedFunctionAbiEntry() when function != null:
+        return function(_that.type, _that.name, _that.inputs, _that.outputs,
+            _that.stateMutability);
+      case DeprecatedEventAbiEntry() when event != null:
+        return event(_that.type, _that.name, _that.keys, _that.data);
+      case DeprecatedStructAbiEntry() when struct != null:
+        return struct(_that.type, _that.name, _that.size, _that.members);
+      case DeprecatedConstructorAbiEntry() when constructor != null:
+        return constructor(_that.type, _that.name, _that.inputs, _that.outputs);
+      case _:
+        return null;
+    }
   }
 }
 
 /// @nodoc
 @JsonSerializable()
-class _$DeprecatedFunctionAbiEntryImpl implements DeprecatedFunctionAbiEntry {
-  const _$DeprecatedFunctionAbiEntryImpl(
+class DeprecatedFunctionAbiEntry implements DeprecatedContractAbiEntry {
+  const DeprecatedFunctionAbiEntry(
       {required this.type,
       required this.name,
       required final List<TypedParameter> inputs,
@@ -4441,17 +4692,14 @@ class _$DeprecatedFunctionAbiEntryImpl implements DeprecatedFunctionAbiEntry {
       : _inputs = inputs,
         _outputs = outputs,
         $type = $type ?? 'function';
-
-  factory _$DeprecatedFunctionAbiEntryImpl.fromJson(
-          Map<String, dynamic> json) =>
-      _$$DeprecatedFunctionAbiEntryImplFromJson(json);
+  factory DeprecatedFunctionAbiEntry.fromJson(Map<String, dynamic> json) =>
+      _$DeprecatedFunctionAbiEntryFromJson(json);
 
   @override
   final String type;
   @override
   final String name;
   final List<TypedParameter> _inputs;
-  @override
   List<TypedParameter> get inputs {
     if (_inputs is EqualUnmodifiableListView) return _inputs;
     // ignore: implicit_dynamic_type
@@ -4459,30 +4707,40 @@ class _$DeprecatedFunctionAbiEntryImpl implements DeprecatedFunctionAbiEntry {
   }
 
   final List<TypedParameter> _outputs;
-  @override
   List<TypedParameter> get outputs {
     if (_outputs is EqualUnmodifiableListView) return _outputs;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_outputs);
   }
 
-  @override
   @JsonKey(name: 'stateMutability', includeIfNull: false)
   final String? stateMutability;
 
   @JsonKey(name: 'starkNetRuntimeTypeToRemove')
   final String $type;
 
+  /// Create a copy of DeprecatedContractAbiEntry
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  String toString() {
-    return 'DeprecatedContractAbiEntry.function(type: $type, name: $name, inputs: $inputs, outputs: $outputs, stateMutability: $stateMutability)';
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  $DeprecatedFunctionAbiEntryCopyWith<DeprecatedFunctionAbiEntry>
+      get copyWith =>
+          _$DeprecatedFunctionAbiEntryCopyWithImpl<DeprecatedFunctionAbiEntry>(
+              this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$DeprecatedFunctionAbiEntryToJson(
+      this,
+    );
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$DeprecatedFunctionAbiEntryImpl &&
+            other is DeprecatedFunctionAbiEntry &&
             (identical(other.type, type) || other.type == type) &&
             (identical(other.name, name) || other.name == name) &&
             const DeepCollectionEquality().equals(other._inputs, _inputs) &&
@@ -4501,227 +4759,77 @@ class _$DeprecatedFunctionAbiEntryImpl implements DeprecatedFunctionAbiEntry {
       const DeepCollectionEquality().hash(_outputs),
       stateMutability);
 
-  /// Create a copy of DeprecatedContractAbiEntry
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  @pragma('vm:prefer-inline')
-  _$$DeprecatedFunctionAbiEntryImplCopyWith<_$DeprecatedFunctionAbiEntryImpl>
-      get copyWith => __$$DeprecatedFunctionAbiEntryImplCopyWithImpl<
-          _$DeprecatedFunctionAbiEntryImpl>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(
-            String type,
-            String name,
-            List<TypedParameter> inputs,
-            List<TypedParameter> outputs,
-            @JsonKey(name: 'stateMutability', includeIfNull: false)
-            String? stateMutability)
-        function,
-    required TResult Function(String type, String name,
-            List<TypedParameter> keys, List<TypedParameter> data)
-        event,
-    required TResult Function(
-            String type, String name, int size, List<StructMember> members)
-        struct,
-    required TResult Function(String type, String name,
-            List<TypedParameter> inputs, List<TypedParameter> outputs)
-        constructor,
-  }) {
-    return function(type, name, inputs, outputs, stateMutability);
+  String toString() {
+    return 'DeprecatedContractAbiEntry.function(type: $type, name: $name, inputs: $inputs, outputs: $outputs, stateMutability: $stateMutability)';
   }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(
-            String type,
-            String name,
-            List<TypedParameter> inputs,
-            List<TypedParameter> outputs,
-            @JsonKey(name: 'stateMutability', includeIfNull: false)
-            String? stateMutability)?
-        function,
-    TResult? Function(String type, String name, List<TypedParameter> keys,
-            List<TypedParameter> data)?
-        event,
-    TResult? Function(
-            String type, String name, int size, List<StructMember> members)?
-        struct,
-    TResult? Function(String type, String name, List<TypedParameter> inputs,
-            List<TypedParameter> outputs)?
-        constructor,
-  }) {
-    return function?.call(type, name, inputs, outputs, stateMutability);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(
-            String type,
-            String name,
-            List<TypedParameter> inputs,
-            List<TypedParameter> outputs,
-            @JsonKey(name: 'stateMutability', includeIfNull: false)
-            String? stateMutability)?
-        function,
-    TResult Function(String type, String name, List<TypedParameter> keys,
-            List<TypedParameter> data)?
-        event,
-    TResult Function(
-            String type, String name, int size, List<StructMember> members)?
-        struct,
-    TResult Function(String type, String name, List<TypedParameter> inputs,
-            List<TypedParameter> outputs)?
-        constructor,
-    required TResult orElse(),
-  }) {
-    if (function != null) {
-      return function(type, name, inputs, outputs, stateMutability);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(DeprecatedFunctionAbiEntry value) function,
-    required TResult Function(DeprecatedEventAbiEntry value) event,
-    required TResult Function(DeprecatedStructAbiEntry value) struct,
-    required TResult Function(DeprecatedConstructorAbiEntry value) constructor,
-  }) {
-    return function(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(DeprecatedFunctionAbiEntry value)? function,
-    TResult? Function(DeprecatedEventAbiEntry value)? event,
-    TResult? Function(DeprecatedStructAbiEntry value)? struct,
-    TResult? Function(DeprecatedConstructorAbiEntry value)? constructor,
-  }) {
-    return function?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(DeprecatedFunctionAbiEntry value)? function,
-    TResult Function(DeprecatedEventAbiEntry value)? event,
-    TResult Function(DeprecatedStructAbiEntry value)? struct,
-    TResult Function(DeprecatedConstructorAbiEntry value)? constructor,
-    required TResult orElse(),
-  }) {
-    if (function != null) {
-      return function(this);
-    }
-    return orElse();
-  }
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$DeprecatedFunctionAbiEntryImplToJson(
-      this,
-    );
-  }
-}
-
-abstract class DeprecatedFunctionAbiEntry
-    implements DeprecatedContractAbiEntry {
-  const factory DeprecatedFunctionAbiEntry(
-      {required final String type,
-      required final String name,
-      required final List<TypedParameter> inputs,
-      required final List<TypedParameter> outputs,
-      @JsonKey(name: 'stateMutability', includeIfNull: false)
-      final String? stateMutability}) = _$DeprecatedFunctionAbiEntryImpl;
-
-  factory DeprecatedFunctionAbiEntry.fromJson(Map<String, dynamic> json) =
-      _$DeprecatedFunctionAbiEntryImpl.fromJson;
-
-  @override
-  String get type;
-  @override
-  String get name;
-  List<TypedParameter> get inputs;
-  List<TypedParameter> get outputs;
-  @JsonKey(name: 'stateMutability', includeIfNull: false)
-  String? get stateMutability;
-
-  /// Create a copy of DeprecatedContractAbiEntry
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$DeprecatedFunctionAbiEntryImplCopyWith<_$DeprecatedFunctionAbiEntryImpl>
-      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$DeprecatedEventAbiEntryImplCopyWith<$Res>
+abstract mixin class $DeprecatedFunctionAbiEntryCopyWith<$Res>
     implements $DeprecatedContractAbiEntryCopyWith<$Res> {
-  factory _$$DeprecatedEventAbiEntryImplCopyWith(
-          _$DeprecatedEventAbiEntryImpl value,
-          $Res Function(_$DeprecatedEventAbiEntryImpl) then) =
-      __$$DeprecatedEventAbiEntryImplCopyWithImpl<$Res>;
+  factory $DeprecatedFunctionAbiEntryCopyWith(DeprecatedFunctionAbiEntry value,
+          $Res Function(DeprecatedFunctionAbiEntry) _then) =
+      _$DeprecatedFunctionAbiEntryCopyWithImpl;
   @override
   @useResult
   $Res call(
       {String type,
       String name,
-      List<TypedParameter> keys,
-      List<TypedParameter> data});
+      List<TypedParameter> inputs,
+      List<TypedParameter> outputs,
+      @JsonKey(name: 'stateMutability', includeIfNull: false)
+      String? stateMutability});
 }
 
 /// @nodoc
-class __$$DeprecatedEventAbiEntryImplCopyWithImpl<$Res>
-    extends _$DeprecatedContractAbiEntryCopyWithImpl<$Res,
-        _$DeprecatedEventAbiEntryImpl>
-    implements _$$DeprecatedEventAbiEntryImplCopyWith<$Res> {
-  __$$DeprecatedEventAbiEntryImplCopyWithImpl(
-      _$DeprecatedEventAbiEntryImpl _value,
-      $Res Function(_$DeprecatedEventAbiEntryImpl) _then)
-      : super(_value, _then);
+class _$DeprecatedFunctionAbiEntryCopyWithImpl<$Res>
+    implements $DeprecatedFunctionAbiEntryCopyWith<$Res> {
+  _$DeprecatedFunctionAbiEntryCopyWithImpl(this._self, this._then);
+
+  final DeprecatedFunctionAbiEntry _self;
+  final $Res Function(DeprecatedFunctionAbiEntry) _then;
 
   /// Create a copy of DeprecatedContractAbiEntry
   /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
   @override
+  @pragma('vm:prefer-inline')
   $Res call({
     Object? type = null,
     Object? name = null,
-    Object? keys = null,
-    Object? data = null,
+    Object? inputs = null,
+    Object? outputs = null,
+    Object? stateMutability = freezed,
   }) {
-    return _then(_$DeprecatedEventAbiEntryImpl(
+    return _then(DeprecatedFunctionAbiEntry(
       type: null == type
-          ? _value.type
+          ? _self.type
           : type // ignore: cast_nullable_to_non_nullable
               as String,
       name: null == name
-          ? _value.name
+          ? _self.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
-      keys: null == keys
-          ? _value._keys
-          : keys // ignore: cast_nullable_to_non_nullable
+      inputs: null == inputs
+          ? _self._inputs
+          : inputs // ignore: cast_nullable_to_non_nullable
               as List<TypedParameter>,
-      data: null == data
-          ? _value._data
-          : data // ignore: cast_nullable_to_non_nullable
+      outputs: null == outputs
+          ? _self._outputs
+          : outputs // ignore: cast_nullable_to_non_nullable
               as List<TypedParameter>,
+      stateMutability: freezed == stateMutability
+          ? _self.stateMutability
+          : stateMutability // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
 
 /// @nodoc
 @JsonSerializable()
-class _$DeprecatedEventAbiEntryImpl implements DeprecatedEventAbiEntry {
-  const _$DeprecatedEventAbiEntryImpl(
+class DeprecatedEventAbiEntry implements DeprecatedContractAbiEntry {
+  const DeprecatedEventAbiEntry(
       {required this.type,
       required this.name,
       required final List<TypedParameter> keys,
@@ -4730,16 +4838,14 @@ class _$DeprecatedEventAbiEntryImpl implements DeprecatedEventAbiEntry {
       : _keys = keys,
         _data = data,
         $type = $type ?? 'event';
-
-  factory _$DeprecatedEventAbiEntryImpl.fromJson(Map<String, dynamic> json) =>
-      _$$DeprecatedEventAbiEntryImplFromJson(json);
+  factory DeprecatedEventAbiEntry.fromJson(Map<String, dynamic> json) =>
+      _$DeprecatedEventAbiEntryFromJson(json);
 
   @override
   final String type;
   @override
   final String name;
   final List<TypedParameter> _keys;
-  @override
   List<TypedParameter> get keys {
     if (_keys is EqualUnmodifiableListView) return _keys;
     // ignore: implicit_dynamic_type
@@ -4747,7 +4853,6 @@ class _$DeprecatedEventAbiEntryImpl implements DeprecatedEventAbiEntry {
   }
 
   final List<TypedParameter> _data;
-  @override
   List<TypedParameter> get data {
     if (_data is EqualUnmodifiableListView) return _data;
     // ignore: implicit_dynamic_type
@@ -4757,16 +4862,27 @@ class _$DeprecatedEventAbiEntryImpl implements DeprecatedEventAbiEntry {
   @JsonKey(name: 'starkNetRuntimeTypeToRemove')
   final String $type;
 
+  /// Create a copy of DeprecatedContractAbiEntry
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  String toString() {
-    return 'DeprecatedContractAbiEntry.event(type: $type, name: $name, keys: $keys, data: $data)';
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  $DeprecatedEventAbiEntryCopyWith<DeprecatedEventAbiEntry> get copyWith =>
+      _$DeprecatedEventAbiEntryCopyWithImpl<DeprecatedEventAbiEntry>(
+          this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$DeprecatedEventAbiEntryToJson(
+      this,
+    );
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$DeprecatedEventAbiEntryImpl &&
+            other is DeprecatedEventAbiEntry &&
             (identical(other.type, type) || other.type == type) &&
             (identical(other.name, name) || other.name == name) &&
             const DeepCollectionEquality().equals(other._keys, _keys) &&
@@ -4782,219 +4898,70 @@ class _$DeprecatedEventAbiEntryImpl implements DeprecatedEventAbiEntry {
       const DeepCollectionEquality().hash(_keys),
       const DeepCollectionEquality().hash(_data));
 
-  /// Create a copy of DeprecatedContractAbiEntry
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  @pragma('vm:prefer-inline')
-  _$$DeprecatedEventAbiEntryImplCopyWith<_$DeprecatedEventAbiEntryImpl>
-      get copyWith => __$$DeprecatedEventAbiEntryImplCopyWithImpl<
-          _$DeprecatedEventAbiEntryImpl>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(
-            String type,
-            String name,
-            List<TypedParameter> inputs,
-            List<TypedParameter> outputs,
-            @JsonKey(name: 'stateMutability', includeIfNull: false)
-            String? stateMutability)
-        function,
-    required TResult Function(String type, String name,
-            List<TypedParameter> keys, List<TypedParameter> data)
-        event,
-    required TResult Function(
-            String type, String name, int size, List<StructMember> members)
-        struct,
-    required TResult Function(String type, String name,
-            List<TypedParameter> inputs, List<TypedParameter> outputs)
-        constructor,
-  }) {
-    return event(type, name, keys, data);
+  String toString() {
+    return 'DeprecatedContractAbiEntry.event(type: $type, name: $name, keys: $keys, data: $data)';
   }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(
-            String type,
-            String name,
-            List<TypedParameter> inputs,
-            List<TypedParameter> outputs,
-            @JsonKey(name: 'stateMutability', includeIfNull: false)
-            String? stateMutability)?
-        function,
-    TResult? Function(String type, String name, List<TypedParameter> keys,
-            List<TypedParameter> data)?
-        event,
-    TResult? Function(
-            String type, String name, int size, List<StructMember> members)?
-        struct,
-    TResult? Function(String type, String name, List<TypedParameter> inputs,
-            List<TypedParameter> outputs)?
-        constructor,
-  }) {
-    return event?.call(type, name, keys, data);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(
-            String type,
-            String name,
-            List<TypedParameter> inputs,
-            List<TypedParameter> outputs,
-            @JsonKey(name: 'stateMutability', includeIfNull: false)
-            String? stateMutability)?
-        function,
-    TResult Function(String type, String name, List<TypedParameter> keys,
-            List<TypedParameter> data)?
-        event,
-    TResult Function(
-            String type, String name, int size, List<StructMember> members)?
-        struct,
-    TResult Function(String type, String name, List<TypedParameter> inputs,
-            List<TypedParameter> outputs)?
-        constructor,
-    required TResult orElse(),
-  }) {
-    if (event != null) {
-      return event(type, name, keys, data);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(DeprecatedFunctionAbiEntry value) function,
-    required TResult Function(DeprecatedEventAbiEntry value) event,
-    required TResult Function(DeprecatedStructAbiEntry value) struct,
-    required TResult Function(DeprecatedConstructorAbiEntry value) constructor,
-  }) {
-    return event(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(DeprecatedFunctionAbiEntry value)? function,
-    TResult? Function(DeprecatedEventAbiEntry value)? event,
-    TResult? Function(DeprecatedStructAbiEntry value)? struct,
-    TResult? Function(DeprecatedConstructorAbiEntry value)? constructor,
-  }) {
-    return event?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(DeprecatedFunctionAbiEntry value)? function,
-    TResult Function(DeprecatedEventAbiEntry value)? event,
-    TResult Function(DeprecatedStructAbiEntry value)? struct,
-    TResult Function(DeprecatedConstructorAbiEntry value)? constructor,
-    required TResult orElse(),
-  }) {
-    if (event != null) {
-      return event(this);
-    }
-    return orElse();
-  }
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$DeprecatedEventAbiEntryImplToJson(
-      this,
-    );
-  }
-}
-
-abstract class DeprecatedEventAbiEntry implements DeprecatedContractAbiEntry {
-  const factory DeprecatedEventAbiEntry(
-          {required final String type,
-          required final String name,
-          required final List<TypedParameter> keys,
-          required final List<TypedParameter> data}) =
-      _$DeprecatedEventAbiEntryImpl;
-
-  factory DeprecatedEventAbiEntry.fromJson(Map<String, dynamic> json) =
-      _$DeprecatedEventAbiEntryImpl.fromJson;
-
-  @override
-  String get type;
-  @override
-  String get name;
-  List<TypedParameter> get keys;
-  List<TypedParameter> get data;
-
-  /// Create a copy of DeprecatedContractAbiEntry
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$DeprecatedEventAbiEntryImplCopyWith<_$DeprecatedEventAbiEntryImpl>
-      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$DeprecatedStructAbiEntryImplCopyWith<$Res>
+abstract mixin class $DeprecatedEventAbiEntryCopyWith<$Res>
     implements $DeprecatedContractAbiEntryCopyWith<$Res> {
-  factory _$$DeprecatedStructAbiEntryImplCopyWith(
-          _$DeprecatedStructAbiEntryImpl value,
-          $Res Function(_$DeprecatedStructAbiEntryImpl) then) =
-      __$$DeprecatedStructAbiEntryImplCopyWithImpl<$Res>;
+  factory $DeprecatedEventAbiEntryCopyWith(DeprecatedEventAbiEntry value,
+          $Res Function(DeprecatedEventAbiEntry) _then) =
+      _$DeprecatedEventAbiEntryCopyWithImpl;
   @override
   @useResult
-  $Res call({String type, String name, int size, List<StructMember> members});
+  $Res call(
+      {String type,
+      String name,
+      List<TypedParameter> keys,
+      List<TypedParameter> data});
 }
 
 /// @nodoc
-class __$$DeprecatedStructAbiEntryImplCopyWithImpl<$Res>
-    extends _$DeprecatedContractAbiEntryCopyWithImpl<$Res,
-        _$DeprecatedStructAbiEntryImpl>
-    implements _$$DeprecatedStructAbiEntryImplCopyWith<$Res> {
-  __$$DeprecatedStructAbiEntryImplCopyWithImpl(
-      _$DeprecatedStructAbiEntryImpl _value,
-      $Res Function(_$DeprecatedStructAbiEntryImpl) _then)
-      : super(_value, _then);
+class _$DeprecatedEventAbiEntryCopyWithImpl<$Res>
+    implements $DeprecatedEventAbiEntryCopyWith<$Res> {
+  _$DeprecatedEventAbiEntryCopyWithImpl(this._self, this._then);
+
+  final DeprecatedEventAbiEntry _self;
+  final $Res Function(DeprecatedEventAbiEntry) _then;
 
   /// Create a copy of DeprecatedContractAbiEntry
   /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
   @override
+  @pragma('vm:prefer-inline')
   $Res call({
     Object? type = null,
     Object? name = null,
-    Object? size = null,
-    Object? members = null,
+    Object? keys = null,
+    Object? data = null,
   }) {
-    return _then(_$DeprecatedStructAbiEntryImpl(
+    return _then(DeprecatedEventAbiEntry(
       type: null == type
-          ? _value.type
+          ? _self.type
           : type // ignore: cast_nullable_to_non_nullable
               as String,
       name: null == name
-          ? _value.name
+          ? _self.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
-      size: null == size
-          ? _value.size
-          : size // ignore: cast_nullable_to_non_nullable
-              as int,
-      members: null == members
-          ? _value._members
-          : members // ignore: cast_nullable_to_non_nullable
-              as List<StructMember>,
+      keys: null == keys
+          ? _self._keys
+          : keys // ignore: cast_nullable_to_non_nullable
+              as List<TypedParameter>,
+      data: null == data
+          ? _self._data
+          : data // ignore: cast_nullable_to_non_nullable
+              as List<TypedParameter>,
     ));
   }
 }
 
 /// @nodoc
 @JsonSerializable()
-class _$DeprecatedStructAbiEntryImpl implements DeprecatedStructAbiEntry {
-  const _$DeprecatedStructAbiEntryImpl(
+class DeprecatedStructAbiEntry implements DeprecatedContractAbiEntry {
+  const DeprecatedStructAbiEntry(
       {required this.type,
       required this.name,
       required this.size,
@@ -5002,18 +4969,15 @@ class _$DeprecatedStructAbiEntryImpl implements DeprecatedStructAbiEntry {
       final String? $type})
       : _members = members,
         $type = $type ?? 'struct';
-
-  factory _$DeprecatedStructAbiEntryImpl.fromJson(Map<String, dynamic> json) =>
-      _$$DeprecatedStructAbiEntryImplFromJson(json);
+  factory DeprecatedStructAbiEntry.fromJson(Map<String, dynamic> json) =>
+      _$DeprecatedStructAbiEntryFromJson(json);
 
   @override
   final String type;
   @override
   final String name;
-  @override
   final int size;
   final List<StructMember> _members;
-  @override
   List<StructMember> get members {
     if (_members is EqualUnmodifiableListView) return _members;
     // ignore: implicit_dynamic_type
@@ -5023,16 +4987,27 @@ class _$DeprecatedStructAbiEntryImpl implements DeprecatedStructAbiEntry {
   @JsonKey(name: 'starkNetRuntimeTypeToRemove')
   final String $type;
 
+  /// Create a copy of DeprecatedContractAbiEntry
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  String toString() {
-    return 'DeprecatedContractAbiEntry.struct(type: $type, name: $name, size: $size, members: $members)';
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  $DeprecatedStructAbiEntryCopyWith<DeprecatedStructAbiEntry> get copyWith =>
+      _$DeprecatedStructAbiEntryCopyWithImpl<DeprecatedStructAbiEntry>(
+          this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$DeprecatedStructAbiEntryToJson(
+      this,
+    );
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$DeprecatedStructAbiEntryImpl &&
+            other is DeprecatedStructAbiEntry &&
             (identical(other.type, type) || other.type == type) &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.size, size) || other.size == size) &&
@@ -5044,224 +5019,66 @@ class _$DeprecatedStructAbiEntryImpl implements DeprecatedStructAbiEntry {
   int get hashCode => Object.hash(runtimeType, type, name, size,
       const DeepCollectionEquality().hash(_members));
 
-  /// Create a copy of DeprecatedContractAbiEntry
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  @pragma('vm:prefer-inline')
-  _$$DeprecatedStructAbiEntryImplCopyWith<_$DeprecatedStructAbiEntryImpl>
-      get copyWith => __$$DeprecatedStructAbiEntryImplCopyWithImpl<
-          _$DeprecatedStructAbiEntryImpl>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(
-            String type,
-            String name,
-            List<TypedParameter> inputs,
-            List<TypedParameter> outputs,
-            @JsonKey(name: 'stateMutability', includeIfNull: false)
-            String? stateMutability)
-        function,
-    required TResult Function(String type, String name,
-            List<TypedParameter> keys, List<TypedParameter> data)
-        event,
-    required TResult Function(
-            String type, String name, int size, List<StructMember> members)
-        struct,
-    required TResult Function(String type, String name,
-            List<TypedParameter> inputs, List<TypedParameter> outputs)
-        constructor,
-  }) {
-    return struct(type, name, size, members);
+  String toString() {
+    return 'DeprecatedContractAbiEntry.struct(type: $type, name: $name, size: $size, members: $members)';
   }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(
-            String type,
-            String name,
-            List<TypedParameter> inputs,
-            List<TypedParameter> outputs,
-            @JsonKey(name: 'stateMutability', includeIfNull: false)
-            String? stateMutability)?
-        function,
-    TResult? Function(String type, String name, List<TypedParameter> keys,
-            List<TypedParameter> data)?
-        event,
-    TResult? Function(
-            String type, String name, int size, List<StructMember> members)?
-        struct,
-    TResult? Function(String type, String name, List<TypedParameter> inputs,
-            List<TypedParameter> outputs)?
-        constructor,
-  }) {
-    return struct?.call(type, name, size, members);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(
-            String type,
-            String name,
-            List<TypedParameter> inputs,
-            List<TypedParameter> outputs,
-            @JsonKey(name: 'stateMutability', includeIfNull: false)
-            String? stateMutability)?
-        function,
-    TResult Function(String type, String name, List<TypedParameter> keys,
-            List<TypedParameter> data)?
-        event,
-    TResult Function(
-            String type, String name, int size, List<StructMember> members)?
-        struct,
-    TResult Function(String type, String name, List<TypedParameter> inputs,
-            List<TypedParameter> outputs)?
-        constructor,
-    required TResult orElse(),
-  }) {
-    if (struct != null) {
-      return struct(type, name, size, members);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(DeprecatedFunctionAbiEntry value) function,
-    required TResult Function(DeprecatedEventAbiEntry value) event,
-    required TResult Function(DeprecatedStructAbiEntry value) struct,
-    required TResult Function(DeprecatedConstructorAbiEntry value) constructor,
-  }) {
-    return struct(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(DeprecatedFunctionAbiEntry value)? function,
-    TResult? Function(DeprecatedEventAbiEntry value)? event,
-    TResult? Function(DeprecatedStructAbiEntry value)? struct,
-    TResult? Function(DeprecatedConstructorAbiEntry value)? constructor,
-  }) {
-    return struct?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(DeprecatedFunctionAbiEntry value)? function,
-    TResult Function(DeprecatedEventAbiEntry value)? event,
-    TResult Function(DeprecatedStructAbiEntry value)? struct,
-    TResult Function(DeprecatedConstructorAbiEntry value)? constructor,
-    required TResult orElse(),
-  }) {
-    if (struct != null) {
-      return struct(this);
-    }
-    return orElse();
-  }
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$DeprecatedStructAbiEntryImplToJson(
-      this,
-    );
-  }
-}
-
-abstract class DeprecatedStructAbiEntry implements DeprecatedContractAbiEntry {
-  const factory DeprecatedStructAbiEntry(
-          {required final String type,
-          required final String name,
-          required final int size,
-          required final List<StructMember> members}) =
-      _$DeprecatedStructAbiEntryImpl;
-
-  factory DeprecatedStructAbiEntry.fromJson(Map<String, dynamic> json) =
-      _$DeprecatedStructAbiEntryImpl.fromJson;
-
-  @override
-  String get type;
-  @override
-  String get name;
-  int get size;
-  List<StructMember> get members;
-
-  /// Create a copy of DeprecatedContractAbiEntry
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$DeprecatedStructAbiEntryImplCopyWith<_$DeprecatedStructAbiEntryImpl>
-      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$DeprecatedConstructorAbiEntryImplCopyWith<$Res>
+abstract mixin class $DeprecatedStructAbiEntryCopyWith<$Res>
     implements $DeprecatedContractAbiEntryCopyWith<$Res> {
-  factory _$$DeprecatedConstructorAbiEntryImplCopyWith(
-          _$DeprecatedConstructorAbiEntryImpl value,
-          $Res Function(_$DeprecatedConstructorAbiEntryImpl) then) =
-      __$$DeprecatedConstructorAbiEntryImplCopyWithImpl<$Res>;
+  factory $DeprecatedStructAbiEntryCopyWith(DeprecatedStructAbiEntry value,
+          $Res Function(DeprecatedStructAbiEntry) _then) =
+      _$DeprecatedStructAbiEntryCopyWithImpl;
   @override
   @useResult
-  $Res call(
-      {String type,
-      String name,
-      List<TypedParameter> inputs,
-      List<TypedParameter> outputs});
+  $Res call({String type, String name, int size, List<StructMember> members});
 }
 
 /// @nodoc
-class __$$DeprecatedConstructorAbiEntryImplCopyWithImpl<$Res>
-    extends _$DeprecatedContractAbiEntryCopyWithImpl<$Res,
-        _$DeprecatedConstructorAbiEntryImpl>
-    implements _$$DeprecatedConstructorAbiEntryImplCopyWith<$Res> {
-  __$$DeprecatedConstructorAbiEntryImplCopyWithImpl(
-      _$DeprecatedConstructorAbiEntryImpl _value,
-      $Res Function(_$DeprecatedConstructorAbiEntryImpl) _then)
-      : super(_value, _then);
+class _$DeprecatedStructAbiEntryCopyWithImpl<$Res>
+    implements $DeprecatedStructAbiEntryCopyWith<$Res> {
+  _$DeprecatedStructAbiEntryCopyWithImpl(this._self, this._then);
+
+  final DeprecatedStructAbiEntry _self;
+  final $Res Function(DeprecatedStructAbiEntry) _then;
 
   /// Create a copy of DeprecatedContractAbiEntry
   /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
   @override
+  @pragma('vm:prefer-inline')
   $Res call({
     Object? type = null,
     Object? name = null,
-    Object? inputs = null,
-    Object? outputs = null,
+    Object? size = null,
+    Object? members = null,
   }) {
-    return _then(_$DeprecatedConstructorAbiEntryImpl(
+    return _then(DeprecatedStructAbiEntry(
       type: null == type
-          ? _value.type
+          ? _self.type
           : type // ignore: cast_nullable_to_non_nullable
               as String,
       name: null == name
-          ? _value.name
+          ? _self.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
-      inputs: null == inputs
-          ? _value._inputs
-          : inputs // ignore: cast_nullable_to_non_nullable
-              as List<TypedParameter>,
-      outputs: null == outputs
-          ? _value._outputs
-          : outputs // ignore: cast_nullable_to_non_nullable
-              as List<TypedParameter>,
+      size: null == size
+          ? _self.size
+          : size // ignore: cast_nullable_to_non_nullable
+              as int,
+      members: null == members
+          ? _self._members
+          : members // ignore: cast_nullable_to_non_nullable
+              as List<StructMember>,
     ));
   }
 }
 
 /// @nodoc
 @JsonSerializable()
-class _$DeprecatedConstructorAbiEntryImpl
-    implements DeprecatedConstructorAbiEntry {
-  const _$DeprecatedConstructorAbiEntryImpl(
+class DeprecatedConstructorAbiEntry implements DeprecatedContractAbiEntry {
+  const DeprecatedConstructorAbiEntry(
       {required this.type,
       required this.name,
       required final List<TypedParameter> inputs,
@@ -5270,17 +5087,14 @@ class _$DeprecatedConstructorAbiEntryImpl
       : _inputs = inputs,
         _outputs = outputs,
         $type = $type ?? 'constructor';
-
-  factory _$DeprecatedConstructorAbiEntryImpl.fromJson(
-          Map<String, dynamic> json) =>
-      _$$DeprecatedConstructorAbiEntryImplFromJson(json);
+  factory DeprecatedConstructorAbiEntry.fromJson(Map<String, dynamic> json) =>
+      _$DeprecatedConstructorAbiEntryFromJson(json);
 
   @override
   final String type;
   @override
   final String name;
   final List<TypedParameter> _inputs;
-  @override
   List<TypedParameter> get inputs {
     if (_inputs is EqualUnmodifiableListView) return _inputs;
     // ignore: implicit_dynamic_type
@@ -5288,7 +5102,6 @@ class _$DeprecatedConstructorAbiEntryImpl
   }
 
   final List<TypedParameter> _outputs;
-  @override
   List<TypedParameter> get outputs {
     if (_outputs is EqualUnmodifiableListView) return _outputs;
     // ignore: implicit_dynamic_type
@@ -5298,16 +5111,27 @@ class _$DeprecatedConstructorAbiEntryImpl
   @JsonKey(name: 'starkNetRuntimeTypeToRemove')
   final String $type;
 
+  /// Create a copy of DeprecatedContractAbiEntry
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  String toString() {
-    return 'DeprecatedContractAbiEntry.constructor(type: $type, name: $name, inputs: $inputs, outputs: $outputs)';
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  $DeprecatedConstructorAbiEntryCopyWith<DeprecatedConstructorAbiEntry>
+      get copyWith => _$DeprecatedConstructorAbiEntryCopyWithImpl<
+          DeprecatedConstructorAbiEntry>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$DeprecatedConstructorAbiEntryToJson(
+      this,
+    );
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$DeprecatedConstructorAbiEntryImpl &&
+            other is DeprecatedConstructorAbiEntry &&
             (identical(other.type, type) || other.type == type) &&
             (identical(other.name, name) || other.name == name) &&
             const DeepCollectionEquality().equals(other._inputs, _inputs) &&
@@ -5323,287 +5147,88 @@ class _$DeprecatedConstructorAbiEntryImpl
       const DeepCollectionEquality().hash(_inputs),
       const DeepCollectionEquality().hash(_outputs));
 
-  /// Create a copy of DeprecatedContractAbiEntry
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  @pragma('vm:prefer-inline')
-  _$$DeprecatedConstructorAbiEntryImplCopyWith<
-          _$DeprecatedConstructorAbiEntryImpl>
-      get copyWith => __$$DeprecatedConstructorAbiEntryImplCopyWithImpl<
-          _$DeprecatedConstructorAbiEntryImpl>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(
-            String type,
-            String name,
-            List<TypedParameter> inputs,
-            List<TypedParameter> outputs,
-            @JsonKey(name: 'stateMutability', includeIfNull: false)
-            String? stateMutability)
-        function,
-    required TResult Function(String type, String name,
-            List<TypedParameter> keys, List<TypedParameter> data)
-        event,
-    required TResult Function(
-            String type, String name, int size, List<StructMember> members)
-        struct,
-    required TResult Function(String type, String name,
-            List<TypedParameter> inputs, List<TypedParameter> outputs)
-        constructor,
-  }) {
-    return constructor(type, name, inputs, outputs);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(
-            String type,
-            String name,
-            List<TypedParameter> inputs,
-            List<TypedParameter> outputs,
-            @JsonKey(name: 'stateMutability', includeIfNull: false)
-            String? stateMutability)?
-        function,
-    TResult? Function(String type, String name, List<TypedParameter> keys,
-            List<TypedParameter> data)?
-        event,
-    TResult? Function(
-            String type, String name, int size, List<StructMember> members)?
-        struct,
-    TResult? Function(String type, String name, List<TypedParameter> inputs,
-            List<TypedParameter> outputs)?
-        constructor,
-  }) {
-    return constructor?.call(type, name, inputs, outputs);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(
-            String type,
-            String name,
-            List<TypedParameter> inputs,
-            List<TypedParameter> outputs,
-            @JsonKey(name: 'stateMutability', includeIfNull: false)
-            String? stateMutability)?
-        function,
-    TResult Function(String type, String name, List<TypedParameter> keys,
-            List<TypedParameter> data)?
-        event,
-    TResult Function(
-            String type, String name, int size, List<StructMember> members)?
-        struct,
-    TResult Function(String type, String name, List<TypedParameter> inputs,
-            List<TypedParameter> outputs)?
-        constructor,
-    required TResult orElse(),
-  }) {
-    if (constructor != null) {
-      return constructor(type, name, inputs, outputs);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(DeprecatedFunctionAbiEntry value) function,
-    required TResult Function(DeprecatedEventAbiEntry value) event,
-    required TResult Function(DeprecatedStructAbiEntry value) struct,
-    required TResult Function(DeprecatedConstructorAbiEntry value) constructor,
-  }) {
-    return constructor(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(DeprecatedFunctionAbiEntry value)? function,
-    TResult? Function(DeprecatedEventAbiEntry value)? event,
-    TResult? Function(DeprecatedStructAbiEntry value)? struct,
-    TResult? Function(DeprecatedConstructorAbiEntry value)? constructor,
-  }) {
-    return constructor?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(DeprecatedFunctionAbiEntry value)? function,
-    TResult Function(DeprecatedEventAbiEntry value)? event,
-    TResult Function(DeprecatedStructAbiEntry value)? struct,
-    TResult Function(DeprecatedConstructorAbiEntry value)? constructor,
-    required TResult orElse(),
-  }) {
-    if (constructor != null) {
-      return constructor(this);
-    }
-    return orElse();
-  }
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$DeprecatedConstructorAbiEntryImplToJson(
-      this,
-    );
+  String toString() {
+    return 'DeprecatedContractAbiEntry.constructor(type: $type, name: $name, inputs: $inputs, outputs: $outputs)';
   }
 }
 
-abstract class DeprecatedConstructorAbiEntry
-    implements DeprecatedContractAbiEntry {
-  const factory DeprecatedConstructorAbiEntry(
-          {required final String type,
-          required final String name,
-          required final List<TypedParameter> inputs,
-          required final List<TypedParameter> outputs}) =
-      _$DeprecatedConstructorAbiEntryImpl;
-
-  factory DeprecatedConstructorAbiEntry.fromJson(Map<String, dynamic> json) =
-      _$DeprecatedConstructorAbiEntryImpl.fromJson;
-
+/// @nodoc
+abstract mixin class $DeprecatedConstructorAbiEntryCopyWith<$Res>
+    implements $DeprecatedContractAbiEntryCopyWith<$Res> {
+  factory $DeprecatedConstructorAbiEntryCopyWith(
+          DeprecatedConstructorAbiEntry value,
+          $Res Function(DeprecatedConstructorAbiEntry) _then) =
+      _$DeprecatedConstructorAbiEntryCopyWithImpl;
   @override
-  String get type;
-  @override
-  String get name;
-  List<TypedParameter> get inputs;
-  List<TypedParameter> get outputs;
+  @useResult
+  $Res call(
+      {String type,
+      String name,
+      List<TypedParameter> inputs,
+      List<TypedParameter> outputs});
+}
+
+/// @nodoc
+class _$DeprecatedConstructorAbiEntryCopyWithImpl<$Res>
+    implements $DeprecatedConstructorAbiEntryCopyWith<$Res> {
+  _$DeprecatedConstructorAbiEntryCopyWithImpl(this._self, this._then);
+
+  final DeprecatedConstructorAbiEntry _self;
+  final $Res Function(DeprecatedConstructorAbiEntry) _then;
 
   /// Create a copy of DeprecatedContractAbiEntry
   /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$DeprecatedConstructorAbiEntryImplCopyWith<
-          _$DeprecatedConstructorAbiEntryImpl>
-      get copyWith => throw _privateConstructorUsedError;
-}
-
-TypedParameter _$TypedParameterFromJson(Map<String, dynamic> json) {
-  return _TypedParameter.fromJson(json);
-}
-
-/// @nodoc
-mixin _$TypedParameter {
-  String get name => throw _privateConstructorUsedError;
-  String get type => throw _privateConstructorUsedError;
-
-  /// Serializes this TypedParameter to a JSON map.
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-
-  /// Create a copy of TypedParameter
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  $TypedParameterCopyWith<TypedParameter> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $TypedParameterCopyWith<$Res> {
-  factory $TypedParameterCopyWith(
-          TypedParameter value, $Res Function(TypedParameter) then) =
-      _$TypedParameterCopyWithImpl<$Res, TypedParameter>;
-  @useResult
-  $Res call({String name, String type});
-}
-
-/// @nodoc
-class _$TypedParameterCopyWithImpl<$Res, $Val extends TypedParameter>
-    implements $TypedParameterCopyWith<$Res> {
-  _$TypedParameterCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-
-  /// Create a copy of TypedParameter
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
-  @override
   $Res call({
-    Object? name = null,
     Object? type = null,
+    Object? name = null,
+    Object? inputs = null,
+    Object? outputs = null,
   }) {
-    return _then(_value.copyWith(
-      name: null == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
-              as String,
+    return _then(DeprecatedConstructorAbiEntry(
       type: null == type
-          ? _value.type
+          ? _self.type
           : type // ignore: cast_nullable_to_non_nullable
               as String,
-    ) as $Val);
-  }
-}
-
-/// @nodoc
-abstract class _$$TypedParameterImplCopyWith<$Res>
-    implements $TypedParameterCopyWith<$Res> {
-  factory _$$TypedParameterImplCopyWith(_$TypedParameterImpl value,
-          $Res Function(_$TypedParameterImpl) then) =
-      __$$TypedParameterImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call({String name, String type});
-}
-
-/// @nodoc
-class __$$TypedParameterImplCopyWithImpl<$Res>
-    extends _$TypedParameterCopyWithImpl<$Res, _$TypedParameterImpl>
-    implements _$$TypedParameterImplCopyWith<$Res> {
-  __$$TypedParameterImplCopyWithImpl(
-      _$TypedParameterImpl _value, $Res Function(_$TypedParameterImpl) _then)
-      : super(_value, _then);
-
-  /// Create a copy of TypedParameter
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? name = null,
-    Object? type = null,
-  }) {
-    return _then(_$TypedParameterImpl(
       name: null == name
-          ? _value.name
+          ? _self.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
-      type: null == type
-          ? _value.type
-          : type // ignore: cast_nullable_to_non_nullable
-              as String,
+      inputs: null == inputs
+          ? _self._inputs
+          : inputs // ignore: cast_nullable_to_non_nullable
+              as List<TypedParameter>,
+      outputs: null == outputs
+          ? _self._outputs
+          : outputs // ignore: cast_nullable_to_non_nullable
+              as List<TypedParameter>,
     ));
   }
 }
 
 /// @nodoc
-@JsonSerializable()
-class _$TypedParameterImpl implements _TypedParameter {
-  const _$TypedParameterImpl({required this.name, required this.type});
+mixin _$TypedParameter {
+  String get name;
+  String get type;
 
-  factory _$TypedParameterImpl.fromJson(Map<String, dynamic> json) =>
-      _$$TypedParameterImplFromJson(json);
+  /// Create a copy of TypedParameter
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  $TypedParameterCopyWith<TypedParameter> get copyWith =>
+      _$TypedParameterCopyWithImpl<TypedParameter>(
+          this as TypedParameter, _$identity);
 
-  @override
-  final String name;
-  @override
-  final String type;
-
-  @override
-  String toString() {
-    return 'TypedParameter(name: $name, type: $type)';
-  }
+  /// Serializes this TypedParameter to a JSON map.
+  Map<String, dynamic> toJson();
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$TypedParameterImpl &&
+            other is TypedParameter &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.type, type) || other.type == type));
   }
@@ -5612,180 +5237,315 @@ class _$TypedParameterImpl implements _TypedParameter {
   @override
   int get hashCode => Object.hash(runtimeType, name, type);
 
-  /// Create a copy of TypedParameter
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  @pragma('vm:prefer-inline')
-  _$$TypedParameterImplCopyWith<_$TypedParameterImpl> get copyWith =>
-      __$$TypedParameterImplCopyWithImpl<_$TypedParameterImpl>(
-          this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$TypedParameterImplToJson(
-      this,
-    );
+  String toString() {
+    return 'TypedParameter(name: $name, type: $type)';
   }
 }
 
-abstract class _TypedParameter implements TypedParameter {
-  const factory _TypedParameter(
-      {required final String name,
-      required final String type}) = _$TypedParameterImpl;
+/// @nodoc
+abstract mixin class $TypedParameterCopyWith<$Res> {
+  factory $TypedParameterCopyWith(
+          TypedParameter value, $Res Function(TypedParameter) _then) =
+      _$TypedParameterCopyWithImpl;
+  @useResult
+  $Res call({String name, String type});
+}
 
-  factory _TypedParameter.fromJson(Map<String, dynamic> json) =
-      _$TypedParameterImpl.fromJson;
+/// @nodoc
+class _$TypedParameterCopyWithImpl<$Res>
+    implements $TypedParameterCopyWith<$Res> {
+  _$TypedParameterCopyWithImpl(this._self, this._then);
 
-  @override
-  String get name;
-  @override
-  String get type;
+  final TypedParameter _self;
+  final $Res Function(TypedParameter) _then;
 
   /// Create a copy of TypedParameter
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$TypedParameterImplCopyWith<_$TypedParameterImpl> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-StructMember _$StructMemberFromJson(Map<String, dynamic> json) {
-  return _StructMember.fromJson(json);
-}
-
-/// @nodoc
-mixin _$StructMember {
-  String get name => throw _privateConstructorUsedError;
-  String get type => throw _privateConstructorUsedError;
-  int get offset => throw _privateConstructorUsedError;
-
-  /// Serializes this StructMember to a JSON map.
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-
-  /// Create a copy of StructMember
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  $StructMemberCopyWith<StructMember> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $StructMemberCopyWith<$Res> {
-  factory $StructMemberCopyWith(
-          StructMember value, $Res Function(StructMember) then) =
-      _$StructMemberCopyWithImpl<$Res, StructMember>;
-  @useResult
-  $Res call({String name, String type, int offset});
-}
-
-/// @nodoc
-class _$StructMemberCopyWithImpl<$Res, $Val extends StructMember>
-    implements $StructMemberCopyWith<$Res> {
-  _$StructMemberCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-
-  /// Create a copy of StructMember
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? name = null,
     Object? type = null,
-    Object? offset = null,
   }) {
-    return _then(_value.copyWith(
+    return _then(_self.copyWith(
       name: null == name
-          ? _value.name
+          ? _self.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
       type: null == type
-          ? _value.type
+          ? _self.type
           : type // ignore: cast_nullable_to_non_nullable
               as String,
-      offset: null == offset
-          ? _value.offset
-          : offset // ignore: cast_nullable_to_non_nullable
-              as int,
-    ) as $Val);
-  }
-}
-
-/// @nodoc
-abstract class _$$StructMemberImplCopyWith<$Res>
-    implements $StructMemberCopyWith<$Res> {
-  factory _$$StructMemberImplCopyWith(
-          _$StructMemberImpl value, $Res Function(_$StructMemberImpl) then) =
-      __$$StructMemberImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call({String name, String type, int offset});
-}
-
-/// @nodoc
-class __$$StructMemberImplCopyWithImpl<$Res>
-    extends _$StructMemberCopyWithImpl<$Res, _$StructMemberImpl>
-    implements _$$StructMemberImplCopyWith<$Res> {
-  __$$StructMemberImplCopyWithImpl(
-      _$StructMemberImpl _value, $Res Function(_$StructMemberImpl) _then)
-      : super(_value, _then);
-
-  /// Create a copy of StructMember
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? name = null,
-    Object? type = null,
-    Object? offset = null,
-  }) {
-    return _then(_$StructMemberImpl(
-      name: null == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
-              as String,
-      type: null == type
-          ? _value.type
-          : type // ignore: cast_nullable_to_non_nullable
-              as String,
-      offset: null == offset
-          ? _value.offset
-          : offset // ignore: cast_nullable_to_non_nullable
-              as int,
     ));
+  }
+}
+
+/// Adds pattern-matching-related methods to [TypedParameter].
+extension TypedParameterPatterns on TypedParameter {
+  /// A variant of `map` that fallback to returning `orElse`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(_TypedParameter value)? $default, {
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _TypedParameter() when $default != null:
+        return $default(_that);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// Callbacks receives the raw object, upcasted.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case final Subclass2 value:
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(_TypedParameter value) $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _TypedParameter():
+        return $default(_that);
+      case _:
+        throw StateError('Unexpected subclass');
+    }
+  }
+
+  /// A variant of `map` that fallback to returning `null`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>(
+    TResult? Function(_TypedParameter value)? $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _TypedParameter() when $default != null:
+        return $default(_that);
+      case _:
+        return null;
+    }
+  }
+
+  /// A variant of `when` that fallback to an `orElse` callback.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(String name, String type)? $default, {
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _TypedParameter() when $default != null:
+        return $default(_that.name, _that.type);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// As opposed to `map`, this offers destructuring.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case Subclass2(:final field2):
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>(
+    TResult Function(String name, String type) $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _TypedParameter():
+        return $default(_that.name, _that.type);
+      case _:
+        throw StateError('Unexpected subclass');
+    }
+  }
+
+  /// A variant of `when` that fallback to returning `null`
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>(
+    TResult? Function(String name, String type)? $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _TypedParameter() when $default != null:
+        return $default(_that.name, _that.type);
+      case _:
+        return null;
+    }
   }
 }
 
 /// @nodoc
 @JsonSerializable()
-class _$StructMemberImpl implements _StructMember {
-  const _$StructMemberImpl(
-      {required this.name, required this.type, required this.offset});
-
-  factory _$StructMemberImpl.fromJson(Map<String, dynamic> json) =>
-      _$$StructMemberImplFromJson(json);
+class _TypedParameter implements TypedParameter {
+  const _TypedParameter({required this.name, required this.type});
+  factory _TypedParameter.fromJson(Map<String, dynamic> json) =>
+      _$TypedParameterFromJson(json);
 
   @override
   final String name;
   @override
   final String type;
+
+  /// Create a copy of TypedParameter
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  final int offset;
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  _$TypedParameterCopyWith<_TypedParameter> get copyWith =>
+      __$TypedParameterCopyWithImpl<_TypedParameter>(this, _$identity);
 
   @override
-  String toString() {
-    return 'StructMember(name: $name, type: $type, offset: $offset)';
+  Map<String, dynamic> toJson() {
+    return _$TypedParameterToJson(
+      this,
+    );
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$StructMemberImpl &&
+            other is _TypedParameter &&
+            (identical(other.name, name) || other.name == name) &&
+            (identical(other.type, type) || other.type == type));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(runtimeType, name, type);
+
+  @override
+  String toString() {
+    return 'TypedParameter(name: $name, type: $type)';
+  }
+}
+
+/// @nodoc
+abstract mixin class _$TypedParameterCopyWith<$Res>
+    implements $TypedParameterCopyWith<$Res> {
+  factory _$TypedParameterCopyWith(
+          _TypedParameter value, $Res Function(_TypedParameter) _then) =
+      __$TypedParameterCopyWithImpl;
+  @override
+  @useResult
+  $Res call({String name, String type});
+}
+
+/// @nodoc
+class __$TypedParameterCopyWithImpl<$Res>
+    implements _$TypedParameterCopyWith<$Res> {
+  __$TypedParameterCopyWithImpl(this._self, this._then);
+
+  final _TypedParameter _self;
+  final $Res Function(_TypedParameter) _then;
+
+  /// Create a copy of TypedParameter
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $Res call({
+    Object? name = null,
+    Object? type = null,
+  }) {
+    return _then(_TypedParameter(
+      name: null == name
+          ? _self.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
+      type: null == type
+          ? _self.type
+          : type // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+mixin _$StructMember {
+  String get name;
+  String get type;
+  int get offset;
+
+  /// Create a copy of StructMember
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  $StructMemberCopyWith<StructMember> get copyWith =>
+      _$StructMemberCopyWithImpl<StructMember>(
+          this as StructMember, _$identity);
+
+  /// Serializes this StructMember to a JSON map.
+  Map<String, dynamic> toJson();
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is StructMember &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.type, type) || other.type == type) &&
             (identical(other.offset, offset) || other.offset == offset));
@@ -5795,42 +5555,304 @@ class _$StructMemberImpl implements _StructMember {
   @override
   int get hashCode => Object.hash(runtimeType, name, type, offset);
 
-  /// Create a copy of StructMember
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  @pragma('vm:prefer-inline')
-  _$$StructMemberImplCopyWith<_$StructMemberImpl> get copyWith =>
-      __$$StructMemberImplCopyWithImpl<_$StructMemberImpl>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$StructMemberImplToJson(
-      this,
-    );
+  String toString() {
+    return 'StructMember(name: $name, type: $type, offset: $offset)';
   }
 }
 
-abstract class _StructMember implements StructMember {
-  const factory _StructMember(
-      {required final String name,
-      required final String type,
-      required final int offset}) = _$StructMemberImpl;
+/// @nodoc
+abstract mixin class $StructMemberCopyWith<$Res> {
+  factory $StructMemberCopyWith(
+          StructMember value, $Res Function(StructMember) _then) =
+      _$StructMemberCopyWithImpl;
+  @useResult
+  $Res call({String name, String type, int offset});
+}
 
-  factory _StructMember.fromJson(Map<String, dynamic> json) =
-      _$StructMemberImpl.fromJson;
+/// @nodoc
+class _$StructMemberCopyWithImpl<$Res> implements $StructMemberCopyWith<$Res> {
+  _$StructMemberCopyWithImpl(this._self, this._then);
+
+  final StructMember _self;
+  final $Res Function(StructMember) _then;
+
+  /// Create a copy of StructMember
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? name = null,
+    Object? type = null,
+    Object? offset = null,
+  }) {
+    return _then(_self.copyWith(
+      name: null == name
+          ? _self.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
+      type: null == type
+          ? _self.type
+          : type // ignore: cast_nullable_to_non_nullable
+              as String,
+      offset: null == offset
+          ? _self.offset
+          : offset // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
+  }
+}
+
+/// Adds pattern-matching-related methods to [StructMember].
+extension StructMemberPatterns on StructMember {
+  /// A variant of `map` that fallback to returning `orElse`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(_StructMember value)? $default, {
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _StructMember() when $default != null:
+        return $default(_that);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// Callbacks receives the raw object, upcasted.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case final Subclass2 value:
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(_StructMember value) $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _StructMember():
+        return $default(_that);
+      case _:
+        throw StateError('Unexpected subclass');
+    }
+  }
+
+  /// A variant of `map` that fallback to returning `null`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>(
+    TResult? Function(_StructMember value)? $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _StructMember() when $default != null:
+        return $default(_that);
+      case _:
+        return null;
+    }
+  }
+
+  /// A variant of `when` that fallback to an `orElse` callback.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(String name, String type, int offset)? $default, {
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _StructMember() when $default != null:
+        return $default(_that.name, _that.type, _that.offset);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// As opposed to `map`, this offers destructuring.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case Subclass2(:final field2):
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>(
+    TResult Function(String name, String type, int offset) $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _StructMember():
+        return $default(_that.name, _that.type, _that.offset);
+      case _:
+        throw StateError('Unexpected subclass');
+    }
+  }
+
+  /// A variant of `when` that fallback to returning `null`
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>(
+    TResult? Function(String name, String type, int offset)? $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _StructMember() when $default != null:
+        return $default(_that.name, _that.type, _that.offset);
+      case _:
+        return null;
+    }
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _StructMember implements StructMember {
+  const _StructMember(
+      {required this.name, required this.type, required this.offset});
+  factory _StructMember.fromJson(Map<String, dynamic> json) =>
+      _$StructMemberFromJson(json);
 
   @override
-  String get name;
+  final String name;
   @override
-  String get type;
+  final String type;
   @override
-  int get offset;
+  final int offset;
 
   /// Create a copy of StructMember
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$StructMemberImplCopyWith<_$StructMemberImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  @pragma('vm:prefer-inline')
+  _$StructMemberCopyWith<_StructMember> get copyWith =>
+      __$StructMemberCopyWithImpl<_StructMember>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$StructMemberToJson(
+      this,
+    );
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _StructMember &&
+            (identical(other.name, name) || other.name == name) &&
+            (identical(other.type, type) || other.type == type) &&
+            (identical(other.offset, offset) || other.offset == offset));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(runtimeType, name, type, offset);
+
+  @override
+  String toString() {
+    return 'StructMember(name: $name, type: $type, offset: $offset)';
+  }
 }
+
+/// @nodoc
+abstract mixin class _$StructMemberCopyWith<$Res>
+    implements $StructMemberCopyWith<$Res> {
+  factory _$StructMemberCopyWith(
+          _StructMember value, $Res Function(_StructMember) _then) =
+      __$StructMemberCopyWithImpl;
+  @override
+  @useResult
+  $Res call({String name, String type, int offset});
+}
+
+/// @nodoc
+class __$StructMemberCopyWithImpl<$Res>
+    implements _$StructMemberCopyWith<$Res> {
+  __$StructMemberCopyWithImpl(this._self, this._then);
+
+  final _StructMember _self;
+  final $Res Function(_StructMember) _then;
+
+  /// Create a copy of StructMember
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $Res call({
+    Object? name = null,
+    Object? type = null,
+    Object? offset = null,
+  }) {
+    return _then(_StructMember(
+      name: null == name
+          ? _self.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
+      type: null == type
+          ? _self.type
+          : type // ignore: cast_nullable_to_non_nullable
+              as String,
+      offset: null == offset
+          ? _self.offset
+          : offset // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
+  }
+}
+
+// dart format on

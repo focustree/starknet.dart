@@ -39,4 +39,5 @@ coverage/
 pubspec_overrides.yaml
 *.iml
 
-.fvm
+# FVM Version Cache
+.fvm/

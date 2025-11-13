@@ -1,5 +1,5 @@
-// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// coverage:ignore-file
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
@@ -9,11 +9,8 @@ part of 'get_class.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// dart format off
 T _$identity<T>(T value) => value;
-
-final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
-
 GetClass _$GetClassFromJson(Map<String, dynamic> json) {
   switch (json['starkNetRuntimeTypeToRemove']) {
     case 'result':
@@ -32,96 +29,277 @@ GetClass _$GetClassFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$GetClass {
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(IContractClass result) result,
-    required TResult Function(JsonRpcApiError error) error,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(IContractClass result)? result,
-    TResult? Function(JsonRpcApiError error)? error,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(IContractClass result)? result,
-    TResult Function(JsonRpcApiError error)? error,
-    required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_GetClassResult value) result,
-    required TResult Function(_GetClassError value) error,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_GetClassResult value)? result,
-    TResult? Function(_GetClassError value)? error,
-  }) =>
-      throw _privateConstructorUsedError;
+  /// Serializes this GetClass to a JSON map.
+  Map<String, dynamic> toJson();
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is GetClass);
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  String toString() {
+    return 'GetClass()';
+  }
+}
+
+/// @nodoc
+class $GetClassCopyWith<$Res> {
+  $GetClassCopyWith(GetClass _, $Res Function(GetClass) __);
+}
+
+/// Adds pattern-matching-related methods to [GetClass].
+extension GetClassPatterns on GetClass {
+  /// A variant of `map` that fallback to returning `orElse`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_GetClassResult value)? result,
     TResult Function(_GetClassError value)? error,
     required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _GetClassResult() when result != null:
+        return result(_that);
+      case _GetClassError() when error != null:
+        return error(_that);
+      case _:
+        return orElse();
+    }
+  }
 
-  /// Serializes this GetClass to a JSON map.
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// Callbacks receives the raw object, upcasted.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case final Subclass2 value:
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_GetClassResult value) result,
+    required TResult Function(_GetClassError value) error,
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _GetClassResult():
+        return result(_that);
+      case _GetClassError():
+        return error(_that);
+      case _:
+        throw StateError('Unexpected subclass');
+    }
+  }
+
+  /// A variant of `map` that fallback to returning `null`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_GetClassResult value)? result,
+    TResult? Function(_GetClassError value)? error,
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _GetClassResult() when result != null:
+        return result(_that);
+      case _GetClassError() when error != null:
+        return error(_that);
+      case _:
+        return null;
+    }
+  }
+
+  /// A variant of `when` that fallback to an `orElse` callback.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(IContractClass result)? result,
+    TResult Function(JsonRpcApiError error)? error,
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _GetClassResult() when result != null:
+        return result(_that.result);
+      case _GetClassError() when error != null:
+        return error(_that.error);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// As opposed to `map`, this offers destructuring.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case Subclass2(:final field2):
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(IContractClass result) result,
+    required TResult Function(JsonRpcApiError error) error,
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _GetClassResult():
+        return result(_that.result);
+      case _GetClassError():
+        return error(_that.error);
+      case _:
+        throw StateError('Unexpected subclass');
+    }
+  }
+
+  /// A variant of `when` that fallback to returning `null`
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(IContractClass result)? result,
+    TResult? Function(JsonRpcApiError error)? error,
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _GetClassResult() when result != null:
+        return result(_that.result);
+      case _GetClassError() when error != null:
+        return error(_that.error);
+      case _:
+        return null;
+    }
+  }
 }
 
 /// @nodoc
-abstract class $GetClassCopyWith<$Res> {
-  factory $GetClassCopyWith(GetClass value, $Res Function(GetClass) then) =
-      _$GetClassCopyWithImpl<$Res, GetClass>;
-}
+@JsonSerializable()
+class _GetClassResult implements GetClass {
+  const _GetClassResult({required this.result, final String? $type})
+      : $type = $type ?? 'result';
+  factory _GetClassResult.fromJson(Map<String, dynamic> json) =>
+      _$GetClassResultFromJson(json);
 
-/// @nodoc
-class _$GetClassCopyWithImpl<$Res, $Val extends GetClass>
-    implements $GetClassCopyWith<$Res> {
-  _$GetClassCopyWithImpl(this._value, this._then);
+  final IContractClass result;
 
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  @JsonKey(name: 'starkNetRuntimeTypeToRemove')
+  final String $type;
 
   /// Create a copy of GetClass
   /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  _$GetClassResultCopyWith<_GetClassResult> get copyWith =>
+      __$GetClassResultCopyWithImpl<_GetClassResult>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$GetClassResultToJson(
+      this,
+    );
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _GetClassResult &&
+            (identical(other.result, result) || other.result == result));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(runtimeType, result);
+
+  @override
+  String toString() {
+    return 'GetClass.result(result: $result)';
+  }
 }
 
 /// @nodoc
-abstract class _$$GetClassResultImplCopyWith<$Res> {
-  factory _$$GetClassResultImplCopyWith(_$GetClassResultImpl value,
-          $Res Function(_$GetClassResultImpl) then) =
-      __$$GetClassResultImplCopyWithImpl<$Res>;
+abstract mixin class _$GetClassResultCopyWith<$Res>
+    implements $GetClassCopyWith<$Res> {
+  factory _$GetClassResultCopyWith(
+          _GetClassResult value, $Res Function(_GetClassResult) _then) =
+      __$GetClassResultCopyWithImpl;
   @useResult
   $Res call({IContractClass result});
 }
 
 /// @nodoc
-class __$$GetClassResultImplCopyWithImpl<$Res>
-    extends _$GetClassCopyWithImpl<$Res, _$GetClassResultImpl>
-    implements _$$GetClassResultImplCopyWith<$Res> {
-  __$$GetClassResultImplCopyWithImpl(
-      _$GetClassResultImpl _value, $Res Function(_$GetClassResultImpl) _then)
-      : super(_value, _then);
+class __$GetClassResultCopyWithImpl<$Res>
+    implements _$GetClassResultCopyWith<$Res> {
+  __$GetClassResultCopyWithImpl(this._self, this._then);
+
+  final _GetClassResult _self;
+  final $Res Function(_GetClassResult) _then;
 
   /// Create a copy of GetClass
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
-  @override
   $Res call({
     Object? result = null,
   }) {
-    return _then(_$GetClassResultImpl(
+    return _then(_GetClassResult(
       result: null == result
-          ? _value.result
+          ? _self.result
           : result // ignore: cast_nullable_to_non_nullable
               as IContractClass,
     ));
@@ -130,136 +308,55 @@ class __$$GetClassResultImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$GetClassResultImpl implements _GetClassResult {
-  const _$GetClassResultImpl({required this.result, final String? $type})
-      : $type = $type ?? 'result';
+class _GetClassError implements GetClass {
+  const _GetClassError({required this.error, final String? $type})
+      : $type = $type ?? 'error';
+  factory _GetClassError.fromJson(Map<String, dynamic> json) =>
+      _$GetClassErrorFromJson(json);
 
-  factory _$GetClassResultImpl.fromJson(Map<String, dynamic> json) =>
-      _$$GetClassResultImplFromJson(json);
-
-  @override
-  final IContractClass result;
+  final JsonRpcApiError error;
 
   @JsonKey(name: 'starkNetRuntimeTypeToRemove')
   final String $type;
 
+  /// Create a copy of GetClass
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  _$GetClassErrorCopyWith<_GetClassError> get copyWith =>
+      __$GetClassErrorCopyWithImpl<_GetClassError>(this, _$identity);
+
   @override
-  String toString() {
-    return 'GetClass.result(result: $result)';
+  Map<String, dynamic> toJson() {
+    return _$GetClassErrorToJson(
+      this,
+    );
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$GetClassResultImpl &&
-            (identical(other.result, result) || other.result == result));
+            other is _GetClassError &&
+            (identical(other.error, error) || other.error == error));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, result);
-
-  /// Create a copy of GetClass
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$GetClassResultImplCopyWith<_$GetClassResultImpl> get copyWith =>
-      __$$GetClassResultImplCopyWithImpl<_$GetClassResultImpl>(
-          this, _$identity);
+  int get hashCode => Object.hash(runtimeType, error);
 
   @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(IContractClass result) result,
-    required TResult Function(JsonRpcApiError error) error,
-  }) {
-    return result(this.result);
+  String toString() {
+    return 'GetClass.error(error: $error)';
   }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(IContractClass result)? result,
-    TResult? Function(JsonRpcApiError error)? error,
-  }) {
-    return result?.call(this.result);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(IContractClass result)? result,
-    TResult Function(JsonRpcApiError error)? error,
-    required TResult orElse(),
-  }) {
-    if (result != null) {
-      return result(this.result);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_GetClassResult value) result,
-    required TResult Function(_GetClassError value) error,
-  }) {
-    return result(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_GetClassResult value)? result,
-    TResult? Function(_GetClassError value)? error,
-  }) {
-    return result?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_GetClassResult value)? result,
-    TResult Function(_GetClassError value)? error,
-    required TResult orElse(),
-  }) {
-    if (result != null) {
-      return result(this);
-    }
-    return orElse();
-  }
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$GetClassResultImplToJson(
-      this,
-    );
-  }
-}
-
-abstract class _GetClassResult implements GetClass {
-  const factory _GetClassResult({required final IContractClass result}) =
-      _$GetClassResultImpl;
-
-  factory _GetClassResult.fromJson(Map<String, dynamic> json) =
-      _$GetClassResultImpl.fromJson;
-
-  IContractClass get result;
-
-  /// Create a copy of GetClass
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$GetClassResultImplCopyWith<_$GetClassResultImpl> get copyWith =>
-      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$GetClassErrorImplCopyWith<$Res> {
-  factory _$$GetClassErrorImplCopyWith(
-          _$GetClassErrorImpl value, $Res Function(_$GetClassErrorImpl) then) =
-      __$$GetClassErrorImplCopyWithImpl<$Res>;
+abstract mixin class _$GetClassErrorCopyWith<$Res>
+    implements $GetClassCopyWith<$Res> {
+  factory _$GetClassErrorCopyWith(
+          _GetClassError value, $Res Function(_GetClassError) _then) =
+      __$GetClassErrorCopyWithImpl;
   @useResult
   $Res call({JsonRpcApiError error});
 
@@ -267,23 +364,22 @@ abstract class _$$GetClassErrorImplCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$GetClassErrorImplCopyWithImpl<$Res>
-    extends _$GetClassCopyWithImpl<$Res, _$GetClassErrorImpl>
-    implements _$$GetClassErrorImplCopyWith<$Res> {
-  __$$GetClassErrorImplCopyWithImpl(
-      _$GetClassErrorImpl _value, $Res Function(_$GetClassErrorImpl) _then)
-      : super(_value, _then);
+class __$GetClassErrorCopyWithImpl<$Res>
+    implements _$GetClassErrorCopyWith<$Res> {
+  __$GetClassErrorCopyWithImpl(this._self, this._then);
+
+  final _GetClassError _self;
+  final $Res Function(_GetClassError) _then;
 
   /// Create a copy of GetClass
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
-  @override
   $Res call({
     Object? error = null,
   }) {
-    return _then(_$GetClassErrorImpl(
+    return _then(_GetClassError(
       error: null == error
-          ? _value.error
+          ? _self.error
           : error // ignore: cast_nullable_to_non_nullable
               as JsonRpcApiError,
     ));
@@ -294,134 +390,10 @@ class __$$GetClassErrorImplCopyWithImpl<$Res>
   @override
   @pragma('vm:prefer-inline')
   $JsonRpcApiErrorCopyWith<$Res> get error {
-    return $JsonRpcApiErrorCopyWith<$Res>(_value.error, (value) {
-      return _then(_value.copyWith(error: value));
+    return $JsonRpcApiErrorCopyWith<$Res>(_self.error, (value) {
+      return _then(_self.copyWith(error: value));
     });
   }
 }
 
-/// @nodoc
-@JsonSerializable()
-class _$GetClassErrorImpl implements _GetClassError {
-  const _$GetClassErrorImpl({required this.error, final String? $type})
-      : $type = $type ?? 'error';
-
-  factory _$GetClassErrorImpl.fromJson(Map<String, dynamic> json) =>
-      _$$GetClassErrorImplFromJson(json);
-
-  @override
-  final JsonRpcApiError error;
-
-  @JsonKey(name: 'starkNetRuntimeTypeToRemove')
-  final String $type;
-
-  @override
-  String toString() {
-    return 'GetClass.error(error: $error)';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$GetClassErrorImpl &&
-            (identical(other.error, error) || other.error == error));
-  }
-
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  int get hashCode => Object.hash(runtimeType, error);
-
-  /// Create a copy of GetClass
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$GetClassErrorImplCopyWith<_$GetClassErrorImpl> get copyWith =>
-      __$$GetClassErrorImplCopyWithImpl<_$GetClassErrorImpl>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(IContractClass result) result,
-    required TResult Function(JsonRpcApiError error) error,
-  }) {
-    return error(this.error);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(IContractClass result)? result,
-    TResult? Function(JsonRpcApiError error)? error,
-  }) {
-    return error?.call(this.error);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(IContractClass result)? result,
-    TResult Function(JsonRpcApiError error)? error,
-    required TResult orElse(),
-  }) {
-    if (error != null) {
-      return error(this.error);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_GetClassResult value) result,
-    required TResult Function(_GetClassError value) error,
-  }) {
-    return error(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_GetClassResult value)? result,
-    TResult? Function(_GetClassError value)? error,
-  }) {
-    return error?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_GetClassResult value)? result,
-    TResult Function(_GetClassError value)? error,
-    required TResult orElse(),
-  }) {
-    if (error != null) {
-      return error(this);
-    }
-    return orElse();
-  }
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$GetClassErrorImplToJson(
-      this,
-    );
-  }
-}
-
-abstract class _GetClassError implements GetClass {
-  const factory _GetClassError({required final JsonRpcApiError error}) =
-      _$GetClassErrorImpl;
-
-  factory _GetClassError.fromJson(Map<String, dynamic> json) =
-      _$GetClassErrorImpl.fromJson;
-
-  JsonRpcApiError get error;
-
-  /// Create a copy of GetClass
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$GetClassErrorImplCopyWith<_$GetClassErrorImpl> get copyWith =>
-      throw _privateConstructorUsedError;
-}
+// dart format on

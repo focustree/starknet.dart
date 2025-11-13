@@ -6,20 +6,18 @@ part of 'block_id.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$BlockIdHashImpl _$$BlockIdHashImplFromJson(Map<String, dynamic> json) =>
-    _$BlockIdHashImpl(
+BlockIdHash _$BlockIdHashFromJson(Map<String, dynamic> json) => BlockIdHash(
       Felt.fromJson(json['block_hash'] as String),
       $type: json['starkNetRuntimeTypeToRemove'] as String?,
     );
 
-_$BlockIdNumberImpl _$$BlockIdNumberImplFromJson(Map<String, dynamic> json) =>
-    _$BlockIdNumberImpl(
+BlockIdNumber _$BlockIdNumberFromJson(Map<String, dynamic> json) =>
+    BlockIdNumber(
       (json['block_number'] as num).toInt(),
       $type: json['starkNetRuntimeTypeToRemove'] as String?,
     );
 
-_$BlockIdTagImpl _$$BlockIdTagImplFromJson(Map<String, dynamic> json) =>
-    _$BlockIdTagImpl(
+BlockIdTag _$BlockIdTagFromJson(Map<String, dynamic> json) => BlockIdTag(
       json['block_tag'] as String,
       $type: json['starkNetRuntimeTypeToRemove'] as String?,
     );

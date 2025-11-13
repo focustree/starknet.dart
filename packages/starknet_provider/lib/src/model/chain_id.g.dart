@@ -6,25 +6,24 @@ part of 'chain_id.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$ChainIdResultImpl _$$ChainIdResultImplFromJson(Map<String, dynamic> json) =>
-    _$ChainIdResultImpl(
+ChainIdResult _$ChainIdResultFromJson(Map<String, dynamic> json) =>
+    ChainIdResult(
       result: json['result'] as String,
       $type: json['starkNetRuntimeTypeToRemove'] as String?,
     );
 
-Map<String, dynamic> _$$ChainIdResultImplToJson(_$ChainIdResultImpl instance) =>
+Map<String, dynamic> _$ChainIdResultToJson(ChainIdResult instance) =>
     <String, dynamic>{
       'result': instance.result,
       'starkNetRuntimeTypeToRemove': instance.$type,
     };
 
-_$ChainIdErrorImpl _$$ChainIdErrorImplFromJson(Map<String, dynamic> json) =>
-    _$ChainIdErrorImpl(
+ChainIdError _$ChainIdErrorFromJson(Map<String, dynamic> json) => ChainIdError(
       error: JsonRpcApiError.fromJson(json['error'] as Map<String, dynamic>),
       $type: json['starkNetRuntimeTypeToRemove'] as String?,
     );
 
-Map<String, dynamic> _$$ChainIdErrorImplToJson(_$ChainIdErrorImpl instance) =>
+Map<String, dynamic> _$ChainIdErrorToJson(ChainIdError instance) =>
     <String, dynamic>{
       'error': instance.error.toJson(),
       'starkNetRuntimeTypeToRemove': instance.$type,

@@ -6,23 +6,22 @@ part of 'block_with_receipts.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$TransactionWithReceiptImpl _$$TransactionWithReceiptImplFromJson(
+_TransactionWithReceipt _$TransactionWithReceiptFromJson(
         Map<String, dynamic> json) =>
-    _$TransactionWithReceiptImpl(
+    _TransactionWithReceipt(
       transactionHash: Felt.fromJson(json['transaction_hash'] as String),
       receipt: TxnReceipt.fromJson(json['receipt'] as Map<String, dynamic>),
     );
 
-Map<String, dynamic> _$$TransactionWithReceiptImplToJson(
-        _$TransactionWithReceiptImpl instance) =>
+Map<String, dynamic> _$TransactionWithReceiptToJson(
+        _TransactionWithReceipt instance) =>
     <String, dynamic>{
       'transaction_hash': instance.transactionHash.toJson(),
       'receipt': instance.receipt.toJson(),
     };
 
-_$BlockWithReceiptsImpl _$$BlockWithReceiptsImplFromJson(
-        Map<String, dynamic> json) =>
-    _$BlockWithReceiptsImpl(
+_BlockWithReceipts _$BlockWithReceiptsFromJson(Map<String, dynamic> json) =>
+    _BlockWithReceipts(
       blockHash: json['block_hash'] == null
           ? null
           : Felt.fromJson(json['block_hash'] as String),
@@ -54,8 +53,7 @@ _$BlockWithReceiptsImpl _$$BlockWithReceiptsImplFromJson(
       status: json['status'] as String?,
     );
 
-Map<String, dynamic> _$$BlockWithReceiptsImplToJson(
-        _$BlockWithReceiptsImpl instance) =>
+Map<String, dynamic> _$BlockWithReceiptsToJson(_BlockWithReceipts instance) =>
     <String, dynamic>{
       'block_hash': instance.blockHash?.toJson(),
       'parent_hash': instance.parentHash?.toJson(),
@@ -71,13 +69,13 @@ Map<String, dynamic> _$$BlockWithReceiptsImplToJson(
       'status': instance.status,
     };
 
-_$ResourcePriceImpl _$$ResourcePriceImplFromJson(Map<String, dynamic> json) =>
-    _$ResourcePriceImpl(
+_ResourcePrice _$ResourcePriceFromJson(Map<String, dynamic> json) =>
+    _ResourcePrice(
       priceInFri: Felt.fromJson(json['price_in_fri'] as String),
       priceInWei: Felt.fromJson(json['price_in_wei'] as String),
     );
 
-Map<String, dynamic> _$$ResourcePriceImplToJson(_$ResourcePriceImpl instance) =>
+Map<String, dynamic> _$ResourcePriceToJson(_ResourcePrice instance) =>
     <String, dynamic>{
       'price_in_fri': instance.priceInFri.toJson(),
       'price_in_wei': instance.priceInWei.toJson(),

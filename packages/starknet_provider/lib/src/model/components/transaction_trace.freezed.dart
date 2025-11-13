@@ -1,5 +1,5 @@
-// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// coverage:ignore-file
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
@@ -9,11 +9,8 @@ part of 'transaction_trace.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// dart format off
 T _$identity<T>(T value) => value;
-
-final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
-
 TransactionTrace _$TransactionTraceFromJson(Map<String, dynamic> json) {
   switch (json['type']) {
     case 'INVOKE':
@@ -34,96 +31,227 @@ TransactionTrace _$TransactionTraceFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$TransactionTrace {
   @JsonKey(name: 'state_diff')
-  StateDiff? get stateDiff => throw _privateConstructorUsedError;
+  StateDiff? get stateDiff;
   @JsonKey(name: 'execution_resources')
-  ExecutionResources get executionResources =>
-      throw _privateConstructorUsedError;
+  ExecutionResources get executionResources;
+
+  /// Create a copy of TransactionTrace
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  $TransactionTraceCopyWith<TransactionTrace> get copyWith =>
+      _$TransactionTraceCopyWithImpl<TransactionTrace>(
+          this as TransactionTrace, _$identity);
+
+  /// Serializes this TransactionTrace to a JSON map.
+  Map<String, dynamic> toJson();
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is TransactionTrace &&
+            (identical(other.stateDiff, stateDiff) ||
+                other.stateDiff == stateDiff) &&
+            (identical(other.executionResources, executionResources) ||
+                other.executionResources == executionResources));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(runtimeType, stateDiff, executionResources);
+
+  @override
+  String toString() {
+    return 'TransactionTrace(stateDiff: $stateDiff, executionResources: $executionResources)';
+  }
+}
+
+/// @nodoc
+abstract mixin class $TransactionTraceCopyWith<$Res> {
+  factory $TransactionTraceCopyWith(
+          TransactionTrace value, $Res Function(TransactionTrace) _then) =
+      _$TransactionTraceCopyWithImpl;
+  @useResult
+  $Res call(
+      {@JsonKey(name: 'state_diff') StateDiff? stateDiff,
+      @JsonKey(name: 'execution_resources')
+      ExecutionResources executionResources});
+
+  $StateDiffCopyWith<$Res>? get stateDiff;
+  $ExecutionResourcesCopyWith<$Res> get executionResources;
+}
+
+/// @nodoc
+class _$TransactionTraceCopyWithImpl<$Res>
+    implements $TransactionTraceCopyWith<$Res> {
+  _$TransactionTraceCopyWithImpl(this._self, this._then);
+
+  final TransactionTrace _self;
+  final $Res Function(TransactionTrace) _then;
+
+  /// Create a copy of TransactionTrace
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? stateDiff = freezed,
+    Object? executionResources = null,
+  }) {
+    return _then(_self.copyWith(
+      stateDiff: freezed == stateDiff
+          ? _self.stateDiff
+          : stateDiff // ignore: cast_nullable_to_non_nullable
+              as StateDiff?,
+      executionResources: null == executionResources
+          ? _self.executionResources
+          : executionResources // ignore: cast_nullable_to_non_nullable
+              as ExecutionResources,
+    ));
+  }
+
+  /// Create a copy of TransactionTrace
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $StateDiffCopyWith<$Res>? get stateDiff {
+    if (_self.stateDiff == null) {
+      return null;
+    }
+
+    return $StateDiffCopyWith<$Res>(_self.stateDiff!, (value) {
+      return _then(_self.copyWith(stateDiff: value));
+    });
+  }
+
+  /// Create a copy of TransactionTrace
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $ExecutionResourcesCopyWith<$Res> get executionResources {
+    return $ExecutionResourcesCopyWith<$Res>(_self.executionResources, (value) {
+      return _then(_self.copyWith(executionResources: value));
+    });
+  }
+}
+
+/// Adds pattern-matching-related methods to [TransactionTrace].
+extension TransactionTracePatterns on TransactionTrace {
+  /// A variant of `map` that fallback to returning `orElse`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
   @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(
-            @JsonKey(name: 'validate_invocation')
-            FunctionInvocation? validateInvocation,
-            @JsonKey(name: 'execute_invocation')
-            @ExecuteInvocationConverter()
-            ExecuteInvocation executeInvocation,
-            @JsonKey(name: 'fee_transfer_invocation')
-            FunctionInvocation? feeTransferInvocation,
-            @JsonKey(name: 'state_diff') StateDiff? stateDiff,
-            @JsonKey(name: 'execution_resources')
-            ExecutionResources executionResources)
-        INVOKE,
-    required TResult Function(
-            @JsonKey(name: 'validate_invocation')
-            FunctionInvocation? validateInvocation,
-            @JsonKey(name: 'fee_transfer_invocation')
-            FunctionInvocation? feeTransferInvocation,
-            @JsonKey(name: 'state_diff') StateDiff? stateDiff,
-            @JsonKey(name: 'execution_resources')
-            ExecutionResources executionResources)
-        DECLARE,
-    required TResult Function(
-            @JsonKey(name: 'validate_invocation')
-            FunctionInvocation? validateInvocation,
-            @JsonKey(name: 'constructor_invocation')
-            FunctionInvocation constructorInvocation,
-            @JsonKey(name: 'fee_transfer_invocation')
-            FunctionInvocation? feeTransferInvocation,
-            @JsonKey(name: 'state_diff') StateDiff? stateDiff,
-            @JsonKey(name: 'execution_resources')
-            ExecutionResources executionResources)
-        DEPLOY_ACCOUNT,
-    required TResult Function(
-            @JsonKey(name: 'function_invocation')
-            FunctionInvocation functionInvocation,
-            @JsonKey(name: 'state_diff') StateDiff? stateDiff,
-            @JsonKey(name: 'execution_resources')
-            ExecutionResources executionResources)
-        L1_HANDLER,
-  }) =>
-      throw _privateConstructorUsedError;
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(InvokeTransactionTrace value)? INVOKE,
+    TResult Function(DeclareTransactionTrace value)? DECLARE,
+    TResult Function(DeployAccountTransactionTrace value)? DEPLOY_ACCOUNT,
+    TResult Function(L1HandlerTransactionTrace value)? L1_HANDLER,
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case InvokeTransactionTrace() when INVOKE != null:
+        return INVOKE(_that);
+      case DeclareTransactionTrace() when DECLARE != null:
+        return DECLARE(_that);
+      case DeployAccountTransactionTrace() when DEPLOY_ACCOUNT != null:
+        return DEPLOY_ACCOUNT(_that);
+      case L1HandlerTransactionTrace() when L1_HANDLER != null:
+        return L1_HANDLER(_that);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// Callbacks receives the raw object, upcasted.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case final Subclass2 value:
+  ///     return ...;
+  /// }
+  /// ```
+
   @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(
-            @JsonKey(name: 'validate_invocation')
-            FunctionInvocation? validateInvocation,
-            @JsonKey(name: 'execute_invocation')
-            @ExecuteInvocationConverter()
-            ExecuteInvocation executeInvocation,
-            @JsonKey(name: 'fee_transfer_invocation')
-            FunctionInvocation? feeTransferInvocation,
-            @JsonKey(name: 'state_diff') StateDiff? stateDiff,
-            @JsonKey(name: 'execution_resources')
-            ExecutionResources executionResources)?
-        INVOKE,
-    TResult? Function(
-            @JsonKey(name: 'validate_invocation')
-            FunctionInvocation? validateInvocation,
-            @JsonKey(name: 'fee_transfer_invocation')
-            FunctionInvocation? feeTransferInvocation,
-            @JsonKey(name: 'state_diff') StateDiff? stateDiff,
-            @JsonKey(name: 'execution_resources')
-            ExecutionResources executionResources)?
-        DECLARE,
-    TResult? Function(
-            @JsonKey(name: 'validate_invocation')
-            FunctionInvocation? validateInvocation,
-            @JsonKey(name: 'constructor_invocation')
-            FunctionInvocation constructorInvocation,
-            @JsonKey(name: 'fee_transfer_invocation')
-            FunctionInvocation? feeTransferInvocation,
-            @JsonKey(name: 'state_diff') StateDiff? stateDiff,
-            @JsonKey(name: 'execution_resources')
-            ExecutionResources executionResources)?
+  TResult map<TResult extends Object?>({
+    required TResult Function(InvokeTransactionTrace value) INVOKE,
+    required TResult Function(DeclareTransactionTrace value) DECLARE,
+    required TResult Function(DeployAccountTransactionTrace value)
         DEPLOY_ACCOUNT,
-    TResult? Function(
-            @JsonKey(name: 'function_invocation')
-            FunctionInvocation functionInvocation,
-            @JsonKey(name: 'state_diff') StateDiff? stateDiff,
-            @JsonKey(name: 'execution_resources')
-            ExecutionResources executionResources)?
-        L1_HANDLER,
-  }) =>
-      throw _privateConstructorUsedError;
+    required TResult Function(L1HandlerTransactionTrace value) L1_HANDLER,
+  }) {
+    final _that = this;
+    switch (_that) {
+      case InvokeTransactionTrace():
+        return INVOKE(_that);
+      case DeclareTransactionTrace():
+        return DECLARE(_that);
+      case DeployAccountTransactionTrace():
+        return DEPLOY_ACCOUNT(_that);
+      case L1HandlerTransactionTrace():
+        return L1_HANDLER(_that);
+    }
+  }
+
+  /// A variant of `map` that fallback to returning `null`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(InvokeTransactionTrace value)? INVOKE,
+    TResult? Function(DeclareTransactionTrace value)? DECLARE,
+    TResult? Function(DeployAccountTransactionTrace value)? DEPLOY_ACCOUNT,
+    TResult? Function(L1HandlerTransactionTrace value)? L1_HANDLER,
+  }) {
+    final _that = this;
+    switch (_that) {
+      case InvokeTransactionTrace() when INVOKE != null:
+        return INVOKE(_that);
+      case DeclareTransactionTrace() when DECLARE != null:
+        return DECLARE(_that);
+      case DeployAccountTransactionTrace() when DEPLOY_ACCOUNT != null:
+        return DEPLOY_ACCOUNT(_that);
+      case L1HandlerTransactionTrace() when L1_HANDLER != null:
+        return L1_HANDLER(_that);
+      case _:
+        return null;
+    }
+  }
+
+  /// A variant of `when` that fallback to an `orElse` callback.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(
@@ -166,123 +294,279 @@ mixin _$TransactionTrace {
             ExecutionResources executionResources)?
         L1_HANDLER,
     required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(InvokeTransactionTrace value) INVOKE,
-    required TResult Function(DeclareTransactionTrace value) DECLARE,
-    required TResult Function(DeployAccountTransactionTrace value)
-        DEPLOY_ACCOUNT,
-    required TResult Function(L1HandlerTransactionTrace value) L1_HANDLER,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(InvokeTransactionTrace value)? INVOKE,
-    TResult? Function(DeclareTransactionTrace value)? DECLARE,
-    TResult? Function(DeployAccountTransactionTrace value)? DEPLOY_ACCOUNT,
-    TResult? Function(L1HandlerTransactionTrace value)? L1_HANDLER,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(InvokeTransactionTrace value)? INVOKE,
-    TResult Function(DeclareTransactionTrace value)? DECLARE,
-    TResult Function(DeployAccountTransactionTrace value)? DEPLOY_ACCOUNT,
-    TResult Function(L1HandlerTransactionTrace value)? L1_HANDLER,
-    required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
-
-  /// Serializes this TransactionTrace to a JSON map.
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-
-  /// Create a copy of TransactionTrace
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  $TransactionTraceCopyWith<TransactionTrace> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $TransactionTraceCopyWith<$Res> {
-  factory $TransactionTraceCopyWith(
-          TransactionTrace value, $Res Function(TransactionTrace) then) =
-      _$TransactionTraceCopyWithImpl<$Res, TransactionTrace>;
-  @useResult
-  $Res call(
-      {@JsonKey(name: 'state_diff') StateDiff? stateDiff,
-      @JsonKey(name: 'execution_resources')
-      ExecutionResources executionResources});
-
-  $StateDiffCopyWith<$Res>? get stateDiff;
-  $ExecutionResourcesCopyWith<$Res> get executionResources;
-}
-
-/// @nodoc
-class _$TransactionTraceCopyWithImpl<$Res, $Val extends TransactionTrace>
-    implements $TransactionTraceCopyWith<$Res> {
-  _$TransactionTraceCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-
-  /// Create a copy of TransactionTrace
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? stateDiff = freezed,
-    Object? executionResources = null,
   }) {
-    return _then(_value.copyWith(
-      stateDiff: freezed == stateDiff
-          ? _value.stateDiff
-          : stateDiff // ignore: cast_nullable_to_non_nullable
-              as StateDiff?,
-      executionResources: null == executionResources
-          ? _value.executionResources
-          : executionResources // ignore: cast_nullable_to_non_nullable
-              as ExecutionResources,
-    ) as $Val);
-  }
-
-  /// Create a copy of TransactionTrace
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $StateDiffCopyWith<$Res>? get stateDiff {
-    if (_value.stateDiff == null) {
-      return null;
+    final _that = this;
+    switch (_that) {
+      case InvokeTransactionTrace() when INVOKE != null:
+        return INVOKE(
+            _that.validateInvocation,
+            _that.executeInvocation,
+            _that.feeTransferInvocation,
+            _that.stateDiff,
+            _that.executionResources);
+      case DeclareTransactionTrace() when DECLARE != null:
+        return DECLARE(_that.validateInvocation, _that.feeTransferInvocation,
+            _that.stateDiff, _that.executionResources);
+      case DeployAccountTransactionTrace() when DEPLOY_ACCOUNT != null:
+        return DEPLOY_ACCOUNT(
+            _that.validateInvocation,
+            _that.constructorInvocation,
+            _that.feeTransferInvocation,
+            _that.stateDiff,
+            _that.executionResources);
+      case L1HandlerTransactionTrace() when L1_HANDLER != null:
+        return L1_HANDLER(_that.functionInvocation, _that.stateDiff,
+            _that.executionResources);
+      case _:
+        return orElse();
     }
-
-    return $StateDiffCopyWith<$Res>(_value.stateDiff!, (value) {
-      return _then(_value.copyWith(stateDiff: value) as $Val);
-    });
   }
 
-  /// Create a copy of TransactionTrace
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $ExecutionResourcesCopyWith<$Res> get executionResources {
-    return $ExecutionResourcesCopyWith<$Res>(_value.executionResources,
-        (value) {
-      return _then(_value.copyWith(executionResources: value) as $Val);
-    });
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// As opposed to `map`, this offers destructuring.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case Subclass2(:final field2):
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(
+            @JsonKey(name: 'validate_invocation')
+            FunctionInvocation? validateInvocation,
+            @JsonKey(name: 'execute_invocation')
+            @ExecuteInvocationConverter()
+            ExecuteInvocation executeInvocation,
+            @JsonKey(name: 'fee_transfer_invocation')
+            FunctionInvocation? feeTransferInvocation,
+            @JsonKey(name: 'state_diff') StateDiff? stateDiff,
+            @JsonKey(name: 'execution_resources')
+            ExecutionResources executionResources)
+        INVOKE,
+    required TResult Function(
+            @JsonKey(name: 'validate_invocation')
+            FunctionInvocation? validateInvocation,
+            @JsonKey(name: 'fee_transfer_invocation')
+            FunctionInvocation? feeTransferInvocation,
+            @JsonKey(name: 'state_diff') StateDiff? stateDiff,
+            @JsonKey(name: 'execution_resources')
+            ExecutionResources executionResources)
+        DECLARE,
+    required TResult Function(
+            @JsonKey(name: 'validate_invocation')
+            FunctionInvocation? validateInvocation,
+            @JsonKey(name: 'constructor_invocation')
+            FunctionInvocation constructorInvocation,
+            @JsonKey(name: 'fee_transfer_invocation')
+            FunctionInvocation? feeTransferInvocation,
+            @JsonKey(name: 'state_diff') StateDiff? stateDiff,
+            @JsonKey(name: 'execution_resources')
+            ExecutionResources executionResources)
+        DEPLOY_ACCOUNT,
+    required TResult Function(
+            @JsonKey(name: 'function_invocation')
+            FunctionInvocation functionInvocation,
+            @JsonKey(name: 'state_diff') StateDiff? stateDiff,
+            @JsonKey(name: 'execution_resources')
+            ExecutionResources executionResources)
+        L1_HANDLER,
+  }) {
+    final _that = this;
+    switch (_that) {
+      case InvokeTransactionTrace():
+        return INVOKE(
+            _that.validateInvocation,
+            _that.executeInvocation,
+            _that.feeTransferInvocation,
+            _that.stateDiff,
+            _that.executionResources);
+      case DeclareTransactionTrace():
+        return DECLARE(_that.validateInvocation, _that.feeTransferInvocation,
+            _that.stateDiff, _that.executionResources);
+      case DeployAccountTransactionTrace():
+        return DEPLOY_ACCOUNT(
+            _that.validateInvocation,
+            _that.constructorInvocation,
+            _that.feeTransferInvocation,
+            _that.stateDiff,
+            _that.executionResources);
+      case L1HandlerTransactionTrace():
+        return L1_HANDLER(_that.functionInvocation, _that.stateDiff,
+            _that.executionResources);
+    }
+  }
+
+  /// A variant of `when` that fallback to returning `null`
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(
+            @JsonKey(name: 'validate_invocation')
+            FunctionInvocation? validateInvocation,
+            @JsonKey(name: 'execute_invocation')
+            @ExecuteInvocationConverter()
+            ExecuteInvocation executeInvocation,
+            @JsonKey(name: 'fee_transfer_invocation')
+            FunctionInvocation? feeTransferInvocation,
+            @JsonKey(name: 'state_diff') StateDiff? stateDiff,
+            @JsonKey(name: 'execution_resources')
+            ExecutionResources executionResources)?
+        INVOKE,
+    TResult? Function(
+            @JsonKey(name: 'validate_invocation')
+            FunctionInvocation? validateInvocation,
+            @JsonKey(name: 'fee_transfer_invocation')
+            FunctionInvocation? feeTransferInvocation,
+            @JsonKey(name: 'state_diff') StateDiff? stateDiff,
+            @JsonKey(name: 'execution_resources')
+            ExecutionResources executionResources)?
+        DECLARE,
+    TResult? Function(
+            @JsonKey(name: 'validate_invocation')
+            FunctionInvocation? validateInvocation,
+            @JsonKey(name: 'constructor_invocation')
+            FunctionInvocation constructorInvocation,
+            @JsonKey(name: 'fee_transfer_invocation')
+            FunctionInvocation? feeTransferInvocation,
+            @JsonKey(name: 'state_diff') StateDiff? stateDiff,
+            @JsonKey(name: 'execution_resources')
+            ExecutionResources executionResources)?
+        DEPLOY_ACCOUNT,
+    TResult? Function(
+            @JsonKey(name: 'function_invocation')
+            FunctionInvocation functionInvocation,
+            @JsonKey(name: 'state_diff') StateDiff? stateDiff,
+            @JsonKey(name: 'execution_resources')
+            ExecutionResources executionResources)?
+        L1_HANDLER,
+  }) {
+    final _that = this;
+    switch (_that) {
+      case InvokeTransactionTrace() when INVOKE != null:
+        return INVOKE(
+            _that.validateInvocation,
+            _that.executeInvocation,
+            _that.feeTransferInvocation,
+            _that.stateDiff,
+            _that.executionResources);
+      case DeclareTransactionTrace() when DECLARE != null:
+        return DECLARE(_that.validateInvocation, _that.feeTransferInvocation,
+            _that.stateDiff, _that.executionResources);
+      case DeployAccountTransactionTrace() when DEPLOY_ACCOUNT != null:
+        return DEPLOY_ACCOUNT(
+            _that.validateInvocation,
+            _that.constructorInvocation,
+            _that.feeTransferInvocation,
+            _that.stateDiff,
+            _that.executionResources);
+      case L1HandlerTransactionTrace() when L1_HANDLER != null:
+        return L1_HANDLER(_that.functionInvocation, _that.stateDiff,
+            _that.executionResources);
+      case _:
+        return null;
+    }
   }
 }
 
 /// @nodoc
-abstract class _$$InvokeTransactionTraceImplCopyWith<$Res>
+@JsonSerializable()
+class InvokeTransactionTrace implements TransactionTrace {
+  const InvokeTransactionTrace(
+      {@JsonKey(name: 'validate_invocation') this.validateInvocation,
+      @JsonKey(name: 'execute_invocation')
+      @ExecuteInvocationConverter()
+      required this.executeInvocation,
+      @JsonKey(name: 'fee_transfer_invocation') this.feeTransferInvocation,
+      @JsonKey(name: 'state_diff') this.stateDiff,
+      @JsonKey(name: 'execution_resources') required this.executionResources,
+      final String? $type})
+      : $type = $type ?? 'INVOKE';
+  factory InvokeTransactionTrace.fromJson(Map<String, dynamic> json) =>
+      _$InvokeTransactionTraceFromJson(json);
+
+  @JsonKey(name: 'validate_invocation')
+  final FunctionInvocation? validateInvocation;
+  @JsonKey(name: 'execute_invocation')
+  @ExecuteInvocationConverter()
+  final ExecuteInvocation executeInvocation;
+  @JsonKey(name: 'fee_transfer_invocation')
+  final FunctionInvocation? feeTransferInvocation;
+  @override
+  @JsonKey(name: 'state_diff')
+  final StateDiff? stateDiff;
+  @override
+  @JsonKey(name: 'execution_resources')
+  final ExecutionResources executionResources;
+
+  @JsonKey(name: 'type')
+  final String $type;
+
+  /// Create a copy of TransactionTrace
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  $InvokeTransactionTraceCopyWith<InvokeTransactionTrace> get copyWith =>
+      _$InvokeTransactionTraceCopyWithImpl<InvokeTransactionTrace>(
+          this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$InvokeTransactionTraceToJson(
+      this,
+    );
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is InvokeTransactionTrace &&
+            (identical(other.validateInvocation, validateInvocation) ||
+                other.validateInvocation == validateInvocation) &&
+            (identical(other.executeInvocation, executeInvocation) ||
+                other.executeInvocation == executeInvocation) &&
+            (identical(other.feeTransferInvocation, feeTransferInvocation) ||
+                other.feeTransferInvocation == feeTransferInvocation) &&
+            (identical(other.stateDiff, stateDiff) ||
+                other.stateDiff == stateDiff) &&
+            (identical(other.executionResources, executionResources) ||
+                other.executionResources == executionResources));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(runtimeType, validateInvocation,
+      executeInvocation, feeTransferInvocation, stateDiff, executionResources);
+
+  @override
+  String toString() {
+    return 'TransactionTrace.INVOKE(validateInvocation: $validateInvocation, executeInvocation: $executeInvocation, feeTransferInvocation: $feeTransferInvocation, stateDiff: $stateDiff, executionResources: $executionResources)';
+  }
+}
+
+/// @nodoc
+abstract mixin class $InvokeTransactionTraceCopyWith<$Res>
     implements $TransactionTraceCopyWith<$Res> {
-  factory _$$InvokeTransactionTraceImplCopyWith(
-          _$InvokeTransactionTraceImpl value,
-          $Res Function(_$InvokeTransactionTraceImpl) then) =
-      __$$InvokeTransactionTraceImplCopyWithImpl<$Res>;
+  factory $InvokeTransactionTraceCopyWith(InvokeTransactionTrace value,
+          $Res Function(InvokeTransactionTrace) _then) =
+      _$InvokeTransactionTraceCopyWithImpl;
   @override
   @useResult
   $Res call(
@@ -307,18 +591,17 @@ abstract class _$$InvokeTransactionTraceImplCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$InvokeTransactionTraceImplCopyWithImpl<$Res>
-    extends _$TransactionTraceCopyWithImpl<$Res, _$InvokeTransactionTraceImpl>
-    implements _$$InvokeTransactionTraceImplCopyWith<$Res> {
-  __$$InvokeTransactionTraceImplCopyWithImpl(
-      _$InvokeTransactionTraceImpl _value,
-      $Res Function(_$InvokeTransactionTraceImpl) _then)
-      : super(_value, _then);
+class _$InvokeTransactionTraceCopyWithImpl<$Res>
+    implements $InvokeTransactionTraceCopyWith<$Res> {
+  _$InvokeTransactionTraceCopyWithImpl(this._self, this._then);
+
+  final InvokeTransactionTrace _self;
+  final $Res Function(InvokeTransactionTrace) _then;
 
   /// Create a copy of TransactionTrace
   /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
   @override
+  @pragma('vm:prefer-inline')
   $Res call({
     Object? validateInvocation = freezed,
     Object? executeInvocation = null,
@@ -326,25 +609,25 @@ class __$$InvokeTransactionTraceImplCopyWithImpl<$Res>
     Object? stateDiff = freezed,
     Object? executionResources = null,
   }) {
-    return _then(_$InvokeTransactionTraceImpl(
+    return _then(InvokeTransactionTrace(
       validateInvocation: freezed == validateInvocation
-          ? _value.validateInvocation
+          ? _self.validateInvocation
           : validateInvocation // ignore: cast_nullable_to_non_nullable
               as FunctionInvocation?,
       executeInvocation: null == executeInvocation
-          ? _value.executeInvocation
+          ? _self.executeInvocation
           : executeInvocation // ignore: cast_nullable_to_non_nullable
               as ExecuteInvocation,
       feeTransferInvocation: freezed == feeTransferInvocation
-          ? _value.feeTransferInvocation
+          ? _self.feeTransferInvocation
           : feeTransferInvocation // ignore: cast_nullable_to_non_nullable
               as FunctionInvocation?,
       stateDiff: freezed == stateDiff
-          ? _value.stateDiff
+          ? _self.stateDiff
           : stateDiff // ignore: cast_nullable_to_non_nullable
               as StateDiff?,
       executionResources: null == executionResources
-          ? _value.executionResources
+          ? _self.executionResources
           : executionResources // ignore: cast_nullable_to_non_nullable
               as ExecutionResources,
     ));
@@ -355,13 +638,13 @@ class __$$InvokeTransactionTraceImplCopyWithImpl<$Res>
   @override
   @pragma('vm:prefer-inline')
   $FunctionInvocationCopyWith<$Res>? get validateInvocation {
-    if (_value.validateInvocation == null) {
+    if (_self.validateInvocation == null) {
       return null;
     }
 
-    return $FunctionInvocationCopyWith<$Res>(_value.validateInvocation!,
+    return $FunctionInvocationCopyWith<$Res>(_self.validateInvocation!,
         (value) {
-      return _then(_value.copyWith(validateInvocation: value));
+      return _then(_self.copyWith(validateInvocation: value));
     });
   }
 
@@ -370,8 +653,8 @@ class __$$InvokeTransactionTraceImplCopyWithImpl<$Res>
   @override
   @pragma('vm:prefer-inline')
   $ExecuteInvocationCopyWith<$Res> get executeInvocation {
-    return $ExecuteInvocationCopyWith<$Res>(_value.executeInvocation, (value) {
-      return _then(_value.copyWith(executeInvocation: value));
+    return $ExecuteInvocationCopyWith<$Res>(_self.executeInvocation, (value) {
+      return _then(_self.copyWith(executeInvocation: value));
     });
   }
 
@@ -380,42 +663,56 @@ class __$$InvokeTransactionTraceImplCopyWithImpl<$Res>
   @override
   @pragma('vm:prefer-inline')
   $FunctionInvocationCopyWith<$Res>? get feeTransferInvocation {
-    if (_value.feeTransferInvocation == null) {
+    if (_self.feeTransferInvocation == null) {
       return null;
     }
 
-    return $FunctionInvocationCopyWith<$Res>(_value.feeTransferInvocation!,
+    return $FunctionInvocationCopyWith<$Res>(_self.feeTransferInvocation!,
         (value) {
-      return _then(_value.copyWith(feeTransferInvocation: value));
+      return _then(_self.copyWith(feeTransferInvocation: value));
+    });
+  }
+
+  /// Create a copy of TransactionTrace
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $StateDiffCopyWith<$Res>? get stateDiff {
+    if (_self.stateDiff == null) {
+      return null;
+    }
+
+    return $StateDiffCopyWith<$Res>(_self.stateDiff!, (value) {
+      return _then(_self.copyWith(stateDiff: value));
+    });
+  }
+
+  /// Create a copy of TransactionTrace
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $ExecutionResourcesCopyWith<$Res> get executionResources {
+    return $ExecutionResourcesCopyWith<$Res>(_self.executionResources, (value) {
+      return _then(_self.copyWith(executionResources: value));
     });
   }
 }
 
 /// @nodoc
 @JsonSerializable()
-class _$InvokeTransactionTraceImpl implements InvokeTransactionTrace {
-  const _$InvokeTransactionTraceImpl(
+class DeclareTransactionTrace implements TransactionTrace {
+  const DeclareTransactionTrace(
       {@JsonKey(name: 'validate_invocation') this.validateInvocation,
-      @JsonKey(name: 'execute_invocation')
-      @ExecuteInvocationConverter()
-      required this.executeInvocation,
       @JsonKey(name: 'fee_transfer_invocation') this.feeTransferInvocation,
       @JsonKey(name: 'state_diff') this.stateDiff,
       @JsonKey(name: 'execution_resources') required this.executionResources,
       final String? $type})
-      : $type = $type ?? 'INVOKE';
+      : $type = $type ?? 'DECLARE';
+  factory DeclareTransactionTrace.fromJson(Map<String, dynamic> json) =>
+      _$DeclareTransactionTraceFromJson(json);
 
-  factory _$InvokeTransactionTraceImpl.fromJson(Map<String, dynamic> json) =>
-      _$$InvokeTransactionTraceImplFromJson(json);
-
-  @override
   @JsonKey(name: 'validate_invocation')
   final FunctionInvocation? validateInvocation;
-  @override
-  @JsonKey(name: 'execute_invocation')
-  @ExecuteInvocationConverter()
-  final ExecuteInvocation executeInvocation;
-  @override
   @JsonKey(name: 'fee_transfer_invocation')
   final FunctionInvocation? feeTransferInvocation;
   @override
@@ -428,20 +725,29 @@ class _$InvokeTransactionTraceImpl implements InvokeTransactionTrace {
   @JsonKey(name: 'type')
   final String $type;
 
+  /// Create a copy of TransactionTrace
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  String toString() {
-    return 'TransactionTrace.INVOKE(validateInvocation: $validateInvocation, executeInvocation: $executeInvocation, feeTransferInvocation: $feeTransferInvocation, stateDiff: $stateDiff, executionResources: $executionResources)';
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  $DeclareTransactionTraceCopyWith<DeclareTransactionTrace> get copyWith =>
+      _$DeclareTransactionTraceCopyWithImpl<DeclareTransactionTrace>(
+          this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$DeclareTransactionTraceToJson(
+      this,
+    );
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$InvokeTransactionTraceImpl &&
+            other is DeclareTransactionTrace &&
             (identical(other.validateInvocation, validateInvocation) ||
                 other.validateInvocation == validateInvocation) &&
-            (identical(other.executeInvocation, executeInvocation) ||
-                other.executeInvocation == executeInvocation) &&
             (identical(other.feeTransferInvocation, feeTransferInvocation) ||
                 other.feeTransferInvocation == feeTransferInvocation) &&
             (identical(other.stateDiff, stateDiff) ||
@@ -453,254 +759,20 @@ class _$InvokeTransactionTraceImpl implements InvokeTransactionTrace {
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, validateInvocation,
-      executeInvocation, feeTransferInvocation, stateDiff, executionResources);
-
-  /// Create a copy of TransactionTrace
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$InvokeTransactionTraceImplCopyWith<_$InvokeTransactionTraceImpl>
-      get copyWith => __$$InvokeTransactionTraceImplCopyWithImpl<
-          _$InvokeTransactionTraceImpl>(this, _$identity);
+      feeTransferInvocation, stateDiff, executionResources);
 
   @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(
-            @JsonKey(name: 'validate_invocation')
-            FunctionInvocation? validateInvocation,
-            @JsonKey(name: 'execute_invocation')
-            @ExecuteInvocationConverter()
-            ExecuteInvocation executeInvocation,
-            @JsonKey(name: 'fee_transfer_invocation')
-            FunctionInvocation? feeTransferInvocation,
-            @JsonKey(name: 'state_diff') StateDiff? stateDiff,
-            @JsonKey(name: 'execution_resources')
-            ExecutionResources executionResources)
-        INVOKE,
-    required TResult Function(
-            @JsonKey(name: 'validate_invocation')
-            FunctionInvocation? validateInvocation,
-            @JsonKey(name: 'fee_transfer_invocation')
-            FunctionInvocation? feeTransferInvocation,
-            @JsonKey(name: 'state_diff') StateDiff? stateDiff,
-            @JsonKey(name: 'execution_resources')
-            ExecutionResources executionResources)
-        DECLARE,
-    required TResult Function(
-            @JsonKey(name: 'validate_invocation')
-            FunctionInvocation? validateInvocation,
-            @JsonKey(name: 'constructor_invocation')
-            FunctionInvocation constructorInvocation,
-            @JsonKey(name: 'fee_transfer_invocation')
-            FunctionInvocation? feeTransferInvocation,
-            @JsonKey(name: 'state_diff') StateDiff? stateDiff,
-            @JsonKey(name: 'execution_resources')
-            ExecutionResources executionResources)
-        DEPLOY_ACCOUNT,
-    required TResult Function(
-            @JsonKey(name: 'function_invocation')
-            FunctionInvocation functionInvocation,
-            @JsonKey(name: 'state_diff') StateDiff? stateDiff,
-            @JsonKey(name: 'execution_resources')
-            ExecutionResources executionResources)
-        L1_HANDLER,
-  }) {
-    return INVOKE(validateInvocation, executeInvocation, feeTransferInvocation,
-        stateDiff, executionResources);
+  String toString() {
+    return 'TransactionTrace.DECLARE(validateInvocation: $validateInvocation, feeTransferInvocation: $feeTransferInvocation, stateDiff: $stateDiff, executionResources: $executionResources)';
   }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(
-            @JsonKey(name: 'validate_invocation')
-            FunctionInvocation? validateInvocation,
-            @JsonKey(name: 'execute_invocation')
-            @ExecuteInvocationConverter()
-            ExecuteInvocation executeInvocation,
-            @JsonKey(name: 'fee_transfer_invocation')
-            FunctionInvocation? feeTransferInvocation,
-            @JsonKey(name: 'state_diff') StateDiff? stateDiff,
-            @JsonKey(name: 'execution_resources')
-            ExecutionResources executionResources)?
-        INVOKE,
-    TResult? Function(
-            @JsonKey(name: 'validate_invocation')
-            FunctionInvocation? validateInvocation,
-            @JsonKey(name: 'fee_transfer_invocation')
-            FunctionInvocation? feeTransferInvocation,
-            @JsonKey(name: 'state_diff') StateDiff? stateDiff,
-            @JsonKey(name: 'execution_resources')
-            ExecutionResources executionResources)?
-        DECLARE,
-    TResult? Function(
-            @JsonKey(name: 'validate_invocation')
-            FunctionInvocation? validateInvocation,
-            @JsonKey(name: 'constructor_invocation')
-            FunctionInvocation constructorInvocation,
-            @JsonKey(name: 'fee_transfer_invocation')
-            FunctionInvocation? feeTransferInvocation,
-            @JsonKey(name: 'state_diff') StateDiff? stateDiff,
-            @JsonKey(name: 'execution_resources')
-            ExecutionResources executionResources)?
-        DEPLOY_ACCOUNT,
-    TResult? Function(
-            @JsonKey(name: 'function_invocation')
-            FunctionInvocation functionInvocation,
-            @JsonKey(name: 'state_diff') StateDiff? stateDiff,
-            @JsonKey(name: 'execution_resources')
-            ExecutionResources executionResources)?
-        L1_HANDLER,
-  }) {
-    return INVOKE?.call(validateInvocation, executeInvocation,
-        feeTransferInvocation, stateDiff, executionResources);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(
-            @JsonKey(name: 'validate_invocation')
-            FunctionInvocation? validateInvocation,
-            @JsonKey(name: 'execute_invocation')
-            @ExecuteInvocationConverter()
-            ExecuteInvocation executeInvocation,
-            @JsonKey(name: 'fee_transfer_invocation')
-            FunctionInvocation? feeTransferInvocation,
-            @JsonKey(name: 'state_diff') StateDiff? stateDiff,
-            @JsonKey(name: 'execution_resources')
-            ExecutionResources executionResources)?
-        INVOKE,
-    TResult Function(
-            @JsonKey(name: 'validate_invocation')
-            FunctionInvocation? validateInvocation,
-            @JsonKey(name: 'fee_transfer_invocation')
-            FunctionInvocation? feeTransferInvocation,
-            @JsonKey(name: 'state_diff') StateDiff? stateDiff,
-            @JsonKey(name: 'execution_resources')
-            ExecutionResources executionResources)?
-        DECLARE,
-    TResult Function(
-            @JsonKey(name: 'validate_invocation')
-            FunctionInvocation? validateInvocation,
-            @JsonKey(name: 'constructor_invocation')
-            FunctionInvocation constructorInvocation,
-            @JsonKey(name: 'fee_transfer_invocation')
-            FunctionInvocation? feeTransferInvocation,
-            @JsonKey(name: 'state_diff') StateDiff? stateDiff,
-            @JsonKey(name: 'execution_resources')
-            ExecutionResources executionResources)?
-        DEPLOY_ACCOUNT,
-    TResult Function(
-            @JsonKey(name: 'function_invocation')
-            FunctionInvocation functionInvocation,
-            @JsonKey(name: 'state_diff') StateDiff? stateDiff,
-            @JsonKey(name: 'execution_resources')
-            ExecutionResources executionResources)?
-        L1_HANDLER,
-    required TResult orElse(),
-  }) {
-    if (INVOKE != null) {
-      return INVOKE(validateInvocation, executeInvocation,
-          feeTransferInvocation, stateDiff, executionResources);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(InvokeTransactionTrace value) INVOKE,
-    required TResult Function(DeclareTransactionTrace value) DECLARE,
-    required TResult Function(DeployAccountTransactionTrace value)
-        DEPLOY_ACCOUNT,
-    required TResult Function(L1HandlerTransactionTrace value) L1_HANDLER,
-  }) {
-    return INVOKE(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(InvokeTransactionTrace value)? INVOKE,
-    TResult? Function(DeclareTransactionTrace value)? DECLARE,
-    TResult? Function(DeployAccountTransactionTrace value)? DEPLOY_ACCOUNT,
-    TResult? Function(L1HandlerTransactionTrace value)? L1_HANDLER,
-  }) {
-    return INVOKE?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(InvokeTransactionTrace value)? INVOKE,
-    TResult Function(DeclareTransactionTrace value)? DECLARE,
-    TResult Function(DeployAccountTransactionTrace value)? DEPLOY_ACCOUNT,
-    TResult Function(L1HandlerTransactionTrace value)? L1_HANDLER,
-    required TResult orElse(),
-  }) {
-    if (INVOKE != null) {
-      return INVOKE(this);
-    }
-    return orElse();
-  }
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$InvokeTransactionTraceImplToJson(
-      this,
-    );
-  }
-}
-
-abstract class InvokeTransactionTrace implements TransactionTrace {
-  const factory InvokeTransactionTrace(
-          {@JsonKey(name: 'validate_invocation')
-          final FunctionInvocation? validateInvocation,
-          @JsonKey(name: 'execute_invocation')
-          @ExecuteInvocationConverter()
-          required final ExecuteInvocation executeInvocation,
-          @JsonKey(name: 'fee_transfer_invocation')
-          final FunctionInvocation? feeTransferInvocation,
-          @JsonKey(name: 'state_diff') final StateDiff? stateDiff,
-          @JsonKey(name: 'execution_resources')
-          required final ExecutionResources executionResources}) =
-      _$InvokeTransactionTraceImpl;
-
-  factory InvokeTransactionTrace.fromJson(Map<String, dynamic> json) =
-      _$InvokeTransactionTraceImpl.fromJson;
-
-  @JsonKey(name: 'validate_invocation')
-  FunctionInvocation? get validateInvocation;
-  @JsonKey(name: 'execute_invocation')
-  @ExecuteInvocationConverter()
-  ExecuteInvocation get executeInvocation;
-  @JsonKey(name: 'fee_transfer_invocation')
-  FunctionInvocation? get feeTransferInvocation;
-  @override
-  @JsonKey(name: 'state_diff')
-  StateDiff? get stateDiff;
-  @override
-  @JsonKey(name: 'execution_resources')
-  ExecutionResources get executionResources;
-
-  /// Create a copy of TransactionTrace
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$InvokeTransactionTraceImplCopyWith<_$InvokeTransactionTraceImpl>
-      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$DeclareTransactionTraceImplCopyWith<$Res>
+abstract mixin class $DeclareTransactionTraceCopyWith<$Res>
     implements $TransactionTraceCopyWith<$Res> {
-  factory _$$DeclareTransactionTraceImplCopyWith(
-          _$DeclareTransactionTraceImpl value,
-          $Res Function(_$DeclareTransactionTraceImpl) then) =
-      __$$DeclareTransactionTraceImplCopyWithImpl<$Res>;
+  factory $DeclareTransactionTraceCopyWith(DeclareTransactionTrace value,
+          $Res Function(DeclareTransactionTrace) _then) =
+      _$DeclareTransactionTraceCopyWithImpl;
   @override
   @useResult
   $Res call(
@@ -721,39 +793,38 @@ abstract class _$$DeclareTransactionTraceImplCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$DeclareTransactionTraceImplCopyWithImpl<$Res>
-    extends _$TransactionTraceCopyWithImpl<$Res, _$DeclareTransactionTraceImpl>
-    implements _$$DeclareTransactionTraceImplCopyWith<$Res> {
-  __$$DeclareTransactionTraceImplCopyWithImpl(
-      _$DeclareTransactionTraceImpl _value,
-      $Res Function(_$DeclareTransactionTraceImpl) _then)
-      : super(_value, _then);
+class _$DeclareTransactionTraceCopyWithImpl<$Res>
+    implements $DeclareTransactionTraceCopyWith<$Res> {
+  _$DeclareTransactionTraceCopyWithImpl(this._self, this._then);
+
+  final DeclareTransactionTrace _self;
+  final $Res Function(DeclareTransactionTrace) _then;
 
   /// Create a copy of TransactionTrace
   /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
   @override
+  @pragma('vm:prefer-inline')
   $Res call({
     Object? validateInvocation = freezed,
     Object? feeTransferInvocation = freezed,
     Object? stateDiff = freezed,
     Object? executionResources = null,
   }) {
-    return _then(_$DeclareTransactionTraceImpl(
+    return _then(DeclareTransactionTrace(
       validateInvocation: freezed == validateInvocation
-          ? _value.validateInvocation
+          ? _self.validateInvocation
           : validateInvocation // ignore: cast_nullable_to_non_nullable
               as FunctionInvocation?,
       feeTransferInvocation: freezed == feeTransferInvocation
-          ? _value.feeTransferInvocation
+          ? _self.feeTransferInvocation
           : feeTransferInvocation // ignore: cast_nullable_to_non_nullable
               as FunctionInvocation?,
       stateDiff: freezed == stateDiff
-          ? _value.stateDiff
+          ? _self.stateDiff
           : stateDiff // ignore: cast_nullable_to_non_nullable
               as StateDiff?,
       executionResources: null == executionResources
-          ? _value.executionResources
+          ? _self.executionResources
           : executionResources // ignore: cast_nullable_to_non_nullable
               as ExecutionResources,
     ));
@@ -764,13 +835,13 @@ class __$$DeclareTransactionTraceImplCopyWithImpl<$Res>
   @override
   @pragma('vm:prefer-inline')
   $FunctionInvocationCopyWith<$Res>? get validateInvocation {
-    if (_value.validateInvocation == null) {
+    if (_self.validateInvocation == null) {
       return null;
     }
 
-    return $FunctionInvocationCopyWith<$Res>(_value.validateInvocation!,
+    return $FunctionInvocationCopyWith<$Res>(_self.validateInvocation!,
         (value) {
-      return _then(_value.copyWith(validateInvocation: value));
+      return _then(_self.copyWith(validateInvocation: value));
     });
   }
 
@@ -779,35 +850,60 @@ class __$$DeclareTransactionTraceImplCopyWithImpl<$Res>
   @override
   @pragma('vm:prefer-inline')
   $FunctionInvocationCopyWith<$Res>? get feeTransferInvocation {
-    if (_value.feeTransferInvocation == null) {
+    if (_self.feeTransferInvocation == null) {
       return null;
     }
 
-    return $FunctionInvocationCopyWith<$Res>(_value.feeTransferInvocation!,
+    return $FunctionInvocationCopyWith<$Res>(_self.feeTransferInvocation!,
         (value) {
-      return _then(_value.copyWith(feeTransferInvocation: value));
+      return _then(_self.copyWith(feeTransferInvocation: value));
+    });
+  }
+
+  /// Create a copy of TransactionTrace
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $StateDiffCopyWith<$Res>? get stateDiff {
+    if (_self.stateDiff == null) {
+      return null;
+    }
+
+    return $StateDiffCopyWith<$Res>(_self.stateDiff!, (value) {
+      return _then(_self.copyWith(stateDiff: value));
+    });
+  }
+
+  /// Create a copy of TransactionTrace
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $ExecutionResourcesCopyWith<$Res> get executionResources {
+    return $ExecutionResourcesCopyWith<$Res>(_self.executionResources, (value) {
+      return _then(_self.copyWith(executionResources: value));
     });
   }
 }
 
 /// @nodoc
 @JsonSerializable()
-class _$DeclareTransactionTraceImpl implements DeclareTransactionTrace {
-  const _$DeclareTransactionTraceImpl(
+class DeployAccountTransactionTrace implements TransactionTrace {
+  const DeployAccountTransactionTrace(
       {@JsonKey(name: 'validate_invocation') this.validateInvocation,
+      @JsonKey(name: 'constructor_invocation')
+      required this.constructorInvocation,
       @JsonKey(name: 'fee_transfer_invocation') this.feeTransferInvocation,
       @JsonKey(name: 'state_diff') this.stateDiff,
       @JsonKey(name: 'execution_resources') required this.executionResources,
       final String? $type})
-      : $type = $type ?? 'DECLARE';
+      : $type = $type ?? 'DEPLOY_ACCOUNT';
+  factory DeployAccountTransactionTrace.fromJson(Map<String, dynamic> json) =>
+      _$DeployAccountTransactionTraceFromJson(json);
 
-  factory _$DeclareTransactionTraceImpl.fromJson(Map<String, dynamic> json) =>
-      _$$DeclareTransactionTraceImplFromJson(json);
-
-  @override
   @JsonKey(name: 'validate_invocation')
   final FunctionInvocation? validateInvocation;
-  @override
+  @JsonKey(name: 'constructor_invocation')
+  final FunctionInvocation constructorInvocation;
   @JsonKey(name: 'fee_transfer_invocation')
   final FunctionInvocation? feeTransferInvocation;
   @override
@@ -820,18 +916,31 @@ class _$DeclareTransactionTraceImpl implements DeclareTransactionTrace {
   @JsonKey(name: 'type')
   final String $type;
 
+  /// Create a copy of TransactionTrace
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  String toString() {
-    return 'TransactionTrace.DECLARE(validateInvocation: $validateInvocation, feeTransferInvocation: $feeTransferInvocation, stateDiff: $stateDiff, executionResources: $executionResources)';
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  $DeployAccountTransactionTraceCopyWith<DeployAccountTransactionTrace>
+      get copyWith => _$DeployAccountTransactionTraceCopyWithImpl<
+          DeployAccountTransactionTrace>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$DeployAccountTransactionTraceToJson(
+      this,
+    );
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$DeclareTransactionTraceImpl &&
+            other is DeployAccountTransactionTrace &&
             (identical(other.validateInvocation, validateInvocation) ||
                 other.validateInvocation == validateInvocation) &&
+            (identical(other.constructorInvocation, constructorInvocation) ||
+                other.constructorInvocation == constructorInvocation) &&
             (identical(other.feeTransferInvocation, feeTransferInvocation) ||
                 other.feeTransferInvocation == feeTransferInvocation) &&
             (identical(other.stateDiff, stateDiff) ||
@@ -842,249 +951,27 @@ class _$DeclareTransactionTraceImpl implements DeclareTransactionTrace {
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, validateInvocation,
-      feeTransferInvocation, stateDiff, executionResources);
-
-  /// Create a copy of TransactionTrace
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$DeclareTransactionTraceImplCopyWith<_$DeclareTransactionTraceImpl>
-      get copyWith => __$$DeclareTransactionTraceImplCopyWithImpl<
-          _$DeclareTransactionTraceImpl>(this, _$identity);
+  int get hashCode => Object.hash(
+      runtimeType,
+      validateInvocation,
+      constructorInvocation,
+      feeTransferInvocation,
+      stateDiff,
+      executionResources);
 
   @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(
-            @JsonKey(name: 'validate_invocation')
-            FunctionInvocation? validateInvocation,
-            @JsonKey(name: 'execute_invocation')
-            @ExecuteInvocationConverter()
-            ExecuteInvocation executeInvocation,
-            @JsonKey(name: 'fee_transfer_invocation')
-            FunctionInvocation? feeTransferInvocation,
-            @JsonKey(name: 'state_diff') StateDiff? stateDiff,
-            @JsonKey(name: 'execution_resources')
-            ExecutionResources executionResources)
-        INVOKE,
-    required TResult Function(
-            @JsonKey(name: 'validate_invocation')
-            FunctionInvocation? validateInvocation,
-            @JsonKey(name: 'fee_transfer_invocation')
-            FunctionInvocation? feeTransferInvocation,
-            @JsonKey(name: 'state_diff') StateDiff? stateDiff,
-            @JsonKey(name: 'execution_resources')
-            ExecutionResources executionResources)
-        DECLARE,
-    required TResult Function(
-            @JsonKey(name: 'validate_invocation')
-            FunctionInvocation? validateInvocation,
-            @JsonKey(name: 'constructor_invocation')
-            FunctionInvocation constructorInvocation,
-            @JsonKey(name: 'fee_transfer_invocation')
-            FunctionInvocation? feeTransferInvocation,
-            @JsonKey(name: 'state_diff') StateDiff? stateDiff,
-            @JsonKey(name: 'execution_resources')
-            ExecutionResources executionResources)
-        DEPLOY_ACCOUNT,
-    required TResult Function(
-            @JsonKey(name: 'function_invocation')
-            FunctionInvocation functionInvocation,
-            @JsonKey(name: 'state_diff') StateDiff? stateDiff,
-            @JsonKey(name: 'execution_resources')
-            ExecutionResources executionResources)
-        L1_HANDLER,
-  }) {
-    return DECLARE(validateInvocation, feeTransferInvocation, stateDiff,
-        executionResources);
+  String toString() {
+    return 'TransactionTrace.DEPLOY_ACCOUNT(validateInvocation: $validateInvocation, constructorInvocation: $constructorInvocation, feeTransferInvocation: $feeTransferInvocation, stateDiff: $stateDiff, executionResources: $executionResources)';
   }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(
-            @JsonKey(name: 'validate_invocation')
-            FunctionInvocation? validateInvocation,
-            @JsonKey(name: 'execute_invocation')
-            @ExecuteInvocationConverter()
-            ExecuteInvocation executeInvocation,
-            @JsonKey(name: 'fee_transfer_invocation')
-            FunctionInvocation? feeTransferInvocation,
-            @JsonKey(name: 'state_diff') StateDiff? stateDiff,
-            @JsonKey(name: 'execution_resources')
-            ExecutionResources executionResources)?
-        INVOKE,
-    TResult? Function(
-            @JsonKey(name: 'validate_invocation')
-            FunctionInvocation? validateInvocation,
-            @JsonKey(name: 'fee_transfer_invocation')
-            FunctionInvocation? feeTransferInvocation,
-            @JsonKey(name: 'state_diff') StateDiff? stateDiff,
-            @JsonKey(name: 'execution_resources')
-            ExecutionResources executionResources)?
-        DECLARE,
-    TResult? Function(
-            @JsonKey(name: 'validate_invocation')
-            FunctionInvocation? validateInvocation,
-            @JsonKey(name: 'constructor_invocation')
-            FunctionInvocation constructorInvocation,
-            @JsonKey(name: 'fee_transfer_invocation')
-            FunctionInvocation? feeTransferInvocation,
-            @JsonKey(name: 'state_diff') StateDiff? stateDiff,
-            @JsonKey(name: 'execution_resources')
-            ExecutionResources executionResources)?
-        DEPLOY_ACCOUNT,
-    TResult? Function(
-            @JsonKey(name: 'function_invocation')
-            FunctionInvocation functionInvocation,
-            @JsonKey(name: 'state_diff') StateDiff? stateDiff,
-            @JsonKey(name: 'execution_resources')
-            ExecutionResources executionResources)?
-        L1_HANDLER,
-  }) {
-    return DECLARE?.call(validateInvocation, feeTransferInvocation, stateDiff,
-        executionResources);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(
-            @JsonKey(name: 'validate_invocation')
-            FunctionInvocation? validateInvocation,
-            @JsonKey(name: 'execute_invocation')
-            @ExecuteInvocationConverter()
-            ExecuteInvocation executeInvocation,
-            @JsonKey(name: 'fee_transfer_invocation')
-            FunctionInvocation? feeTransferInvocation,
-            @JsonKey(name: 'state_diff') StateDiff? stateDiff,
-            @JsonKey(name: 'execution_resources')
-            ExecutionResources executionResources)?
-        INVOKE,
-    TResult Function(
-            @JsonKey(name: 'validate_invocation')
-            FunctionInvocation? validateInvocation,
-            @JsonKey(name: 'fee_transfer_invocation')
-            FunctionInvocation? feeTransferInvocation,
-            @JsonKey(name: 'state_diff') StateDiff? stateDiff,
-            @JsonKey(name: 'execution_resources')
-            ExecutionResources executionResources)?
-        DECLARE,
-    TResult Function(
-            @JsonKey(name: 'validate_invocation')
-            FunctionInvocation? validateInvocation,
-            @JsonKey(name: 'constructor_invocation')
-            FunctionInvocation constructorInvocation,
-            @JsonKey(name: 'fee_transfer_invocation')
-            FunctionInvocation? feeTransferInvocation,
-            @JsonKey(name: 'state_diff') StateDiff? stateDiff,
-            @JsonKey(name: 'execution_resources')
-            ExecutionResources executionResources)?
-        DEPLOY_ACCOUNT,
-    TResult Function(
-            @JsonKey(name: 'function_invocation')
-            FunctionInvocation functionInvocation,
-            @JsonKey(name: 'state_diff') StateDiff? stateDiff,
-            @JsonKey(name: 'execution_resources')
-            ExecutionResources executionResources)?
-        L1_HANDLER,
-    required TResult orElse(),
-  }) {
-    if (DECLARE != null) {
-      return DECLARE(validateInvocation, feeTransferInvocation, stateDiff,
-          executionResources);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(InvokeTransactionTrace value) INVOKE,
-    required TResult Function(DeclareTransactionTrace value) DECLARE,
-    required TResult Function(DeployAccountTransactionTrace value)
-        DEPLOY_ACCOUNT,
-    required TResult Function(L1HandlerTransactionTrace value) L1_HANDLER,
-  }) {
-    return DECLARE(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(InvokeTransactionTrace value)? INVOKE,
-    TResult? Function(DeclareTransactionTrace value)? DECLARE,
-    TResult? Function(DeployAccountTransactionTrace value)? DEPLOY_ACCOUNT,
-    TResult? Function(L1HandlerTransactionTrace value)? L1_HANDLER,
-  }) {
-    return DECLARE?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(InvokeTransactionTrace value)? INVOKE,
-    TResult Function(DeclareTransactionTrace value)? DECLARE,
-    TResult Function(DeployAccountTransactionTrace value)? DEPLOY_ACCOUNT,
-    TResult Function(L1HandlerTransactionTrace value)? L1_HANDLER,
-    required TResult orElse(),
-  }) {
-    if (DECLARE != null) {
-      return DECLARE(this);
-    }
-    return orElse();
-  }
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$DeclareTransactionTraceImplToJson(
-      this,
-    );
-  }
-}
-
-abstract class DeclareTransactionTrace implements TransactionTrace {
-  const factory DeclareTransactionTrace(
-          {@JsonKey(name: 'validate_invocation')
-          final FunctionInvocation? validateInvocation,
-          @JsonKey(name: 'fee_transfer_invocation')
-          final FunctionInvocation? feeTransferInvocation,
-          @JsonKey(name: 'state_diff') final StateDiff? stateDiff,
-          @JsonKey(name: 'execution_resources')
-          required final ExecutionResources executionResources}) =
-      _$DeclareTransactionTraceImpl;
-
-  factory DeclareTransactionTrace.fromJson(Map<String, dynamic> json) =
-      _$DeclareTransactionTraceImpl.fromJson;
-
-  @JsonKey(name: 'validate_invocation')
-  FunctionInvocation? get validateInvocation;
-  @JsonKey(name: 'fee_transfer_invocation')
-  FunctionInvocation? get feeTransferInvocation;
-  @override
-  @JsonKey(name: 'state_diff')
-  StateDiff? get stateDiff;
-  @override
-  @JsonKey(name: 'execution_resources')
-  ExecutionResources get executionResources;
-
-  /// Create a copy of TransactionTrace
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$DeclareTransactionTraceImplCopyWith<_$DeclareTransactionTraceImpl>
-      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$DeployAccountTransactionTraceImplCopyWith<$Res>
+abstract mixin class $DeployAccountTransactionTraceCopyWith<$Res>
     implements $TransactionTraceCopyWith<$Res> {
-  factory _$$DeployAccountTransactionTraceImplCopyWith(
-          _$DeployAccountTransactionTraceImpl value,
-          $Res Function(_$DeployAccountTransactionTraceImpl) then) =
-      __$$DeployAccountTransactionTraceImplCopyWithImpl<$Res>;
+  factory $DeployAccountTransactionTraceCopyWith(
+          DeployAccountTransactionTrace value,
+          $Res Function(DeployAccountTransactionTrace) _then) =
+      _$DeployAccountTransactionTraceCopyWithImpl;
   @override
   @useResult
   $Res call(
@@ -1108,19 +995,17 @@ abstract class _$$DeployAccountTransactionTraceImplCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$DeployAccountTransactionTraceImplCopyWithImpl<$Res>
-    extends _$TransactionTraceCopyWithImpl<$Res,
-        _$DeployAccountTransactionTraceImpl>
-    implements _$$DeployAccountTransactionTraceImplCopyWith<$Res> {
-  __$$DeployAccountTransactionTraceImplCopyWithImpl(
-      _$DeployAccountTransactionTraceImpl _value,
-      $Res Function(_$DeployAccountTransactionTraceImpl) _then)
-      : super(_value, _then);
+class _$DeployAccountTransactionTraceCopyWithImpl<$Res>
+    implements $DeployAccountTransactionTraceCopyWith<$Res> {
+  _$DeployAccountTransactionTraceCopyWithImpl(this._self, this._then);
+
+  final DeployAccountTransactionTrace _self;
+  final $Res Function(DeployAccountTransactionTrace) _then;
 
   /// Create a copy of TransactionTrace
   /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
   @override
+  @pragma('vm:prefer-inline')
   $Res call({
     Object? validateInvocation = freezed,
     Object? constructorInvocation = null,
@@ -1128,25 +1013,25 @@ class __$$DeployAccountTransactionTraceImplCopyWithImpl<$Res>
     Object? stateDiff = freezed,
     Object? executionResources = null,
   }) {
-    return _then(_$DeployAccountTransactionTraceImpl(
+    return _then(DeployAccountTransactionTrace(
       validateInvocation: freezed == validateInvocation
-          ? _value.validateInvocation
+          ? _self.validateInvocation
           : validateInvocation // ignore: cast_nullable_to_non_nullable
               as FunctionInvocation?,
       constructorInvocation: null == constructorInvocation
-          ? _value.constructorInvocation
+          ? _self.constructorInvocation
           : constructorInvocation // ignore: cast_nullable_to_non_nullable
               as FunctionInvocation,
       feeTransferInvocation: freezed == feeTransferInvocation
-          ? _value.feeTransferInvocation
+          ? _self.feeTransferInvocation
           : feeTransferInvocation // ignore: cast_nullable_to_non_nullable
               as FunctionInvocation?,
       stateDiff: freezed == stateDiff
-          ? _value.stateDiff
+          ? _self.stateDiff
           : stateDiff // ignore: cast_nullable_to_non_nullable
               as StateDiff?,
       executionResources: null == executionResources
-          ? _value.executionResources
+          ? _self.executionResources
           : executionResources // ignore: cast_nullable_to_non_nullable
               as ExecutionResources,
     ));
@@ -1157,13 +1042,13 @@ class __$$DeployAccountTransactionTraceImplCopyWithImpl<$Res>
   @override
   @pragma('vm:prefer-inline')
   $FunctionInvocationCopyWith<$Res>? get validateInvocation {
-    if (_value.validateInvocation == null) {
+    if (_self.validateInvocation == null) {
       return null;
     }
 
-    return $FunctionInvocationCopyWith<$Res>(_value.validateInvocation!,
+    return $FunctionInvocationCopyWith<$Res>(_self.validateInvocation!,
         (value) {
-      return _then(_value.copyWith(validateInvocation: value));
+      return _then(_self.copyWith(validateInvocation: value));
     });
   }
 
@@ -1172,9 +1057,9 @@ class __$$DeployAccountTransactionTraceImplCopyWithImpl<$Res>
   @override
   @pragma('vm:prefer-inline')
   $FunctionInvocationCopyWith<$Res> get constructorInvocation {
-    return $FunctionInvocationCopyWith<$Res>(_value.constructorInvocation,
+    return $FunctionInvocationCopyWith<$Res>(_self.constructorInvocation,
         (value) {
-      return _then(_value.copyWith(constructorInvocation: value));
+      return _then(_self.copyWith(constructorInvocation: value));
     });
   }
 
@@ -1183,44 +1068,55 @@ class __$$DeployAccountTransactionTraceImplCopyWithImpl<$Res>
   @override
   @pragma('vm:prefer-inline')
   $FunctionInvocationCopyWith<$Res>? get feeTransferInvocation {
-    if (_value.feeTransferInvocation == null) {
+    if (_self.feeTransferInvocation == null) {
       return null;
     }
 
-    return $FunctionInvocationCopyWith<$Res>(_value.feeTransferInvocation!,
+    return $FunctionInvocationCopyWith<$Res>(_self.feeTransferInvocation!,
         (value) {
-      return _then(_value.copyWith(feeTransferInvocation: value));
+      return _then(_self.copyWith(feeTransferInvocation: value));
+    });
+  }
+
+  /// Create a copy of TransactionTrace
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $StateDiffCopyWith<$Res>? get stateDiff {
+    if (_self.stateDiff == null) {
+      return null;
+    }
+
+    return $StateDiffCopyWith<$Res>(_self.stateDiff!, (value) {
+      return _then(_self.copyWith(stateDiff: value));
+    });
+  }
+
+  /// Create a copy of TransactionTrace
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $ExecutionResourcesCopyWith<$Res> get executionResources {
+    return $ExecutionResourcesCopyWith<$Res>(_self.executionResources, (value) {
+      return _then(_self.copyWith(executionResources: value));
     });
   }
 }
 
 /// @nodoc
 @JsonSerializable()
-class _$DeployAccountTransactionTraceImpl
-    implements DeployAccountTransactionTrace {
-  const _$DeployAccountTransactionTraceImpl(
-      {@JsonKey(name: 'validate_invocation') this.validateInvocation,
-      @JsonKey(name: 'constructor_invocation')
-      required this.constructorInvocation,
-      @JsonKey(name: 'fee_transfer_invocation') this.feeTransferInvocation,
+class L1HandlerTransactionTrace implements TransactionTrace {
+  const L1HandlerTransactionTrace(
+      {@JsonKey(name: 'function_invocation') required this.functionInvocation,
       @JsonKey(name: 'state_diff') this.stateDiff,
       @JsonKey(name: 'execution_resources') required this.executionResources,
       final String? $type})
-      : $type = $type ?? 'DEPLOY_ACCOUNT';
+      : $type = $type ?? 'L1_HANDLER';
+  factory L1HandlerTransactionTrace.fromJson(Map<String, dynamic> json) =>
+      _$L1HandlerTransactionTraceFromJson(json);
 
-  factory _$DeployAccountTransactionTraceImpl.fromJson(
-          Map<String, dynamic> json) =>
-      _$$DeployAccountTransactionTraceImplFromJson(json);
-
-  @override
-  @JsonKey(name: 'validate_invocation')
-  final FunctionInvocation? validateInvocation;
-  @override
-  @JsonKey(name: 'constructor_invocation')
-  final FunctionInvocation constructorInvocation;
-  @override
-  @JsonKey(name: 'fee_transfer_invocation')
-  final FunctionInvocation? feeTransferInvocation;
+  @JsonKey(name: 'function_invocation')
+  final FunctionInvocation functionInvocation;
   @override
   @JsonKey(name: 'state_diff')
   final StateDiff? stateDiff;
@@ -1231,22 +1127,29 @@ class _$DeployAccountTransactionTraceImpl
   @JsonKey(name: 'type')
   final String $type;
 
+  /// Create a copy of TransactionTrace
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  String toString() {
-    return 'TransactionTrace.DEPLOY_ACCOUNT(validateInvocation: $validateInvocation, constructorInvocation: $constructorInvocation, feeTransferInvocation: $feeTransferInvocation, stateDiff: $stateDiff, executionResources: $executionResources)';
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  $L1HandlerTransactionTraceCopyWith<L1HandlerTransactionTrace> get copyWith =>
+      _$L1HandlerTransactionTraceCopyWithImpl<L1HandlerTransactionTrace>(
+          this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$L1HandlerTransactionTraceToJson(
+      this,
+    );
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$DeployAccountTransactionTraceImpl &&
-            (identical(other.validateInvocation, validateInvocation) ||
-                other.validateInvocation == validateInvocation) &&
-            (identical(other.constructorInvocation, constructorInvocation) ||
-                other.constructorInvocation == constructorInvocation) &&
-            (identical(other.feeTransferInvocation, feeTransferInvocation) ||
-                other.feeTransferInvocation == feeTransferInvocation) &&
+            other is L1HandlerTransactionTrace &&
+            (identical(other.functionInvocation, functionInvocation) ||
+                other.functionInvocation == functionInvocation) &&
             (identical(other.stateDiff, stateDiff) ||
                 other.stateDiff == stateDiff) &&
             (identical(other.executionResources, executionResources) ||
@@ -1256,259 +1159,20 @@ class _$DeployAccountTransactionTraceImpl
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
-      runtimeType,
-      validateInvocation,
-      constructorInvocation,
-      feeTransferInvocation,
-      stateDiff,
-      executionResources);
-
-  /// Create a copy of TransactionTrace
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$DeployAccountTransactionTraceImplCopyWith<
-          _$DeployAccountTransactionTraceImpl>
-      get copyWith => __$$DeployAccountTransactionTraceImplCopyWithImpl<
-          _$DeployAccountTransactionTraceImpl>(this, _$identity);
+      runtimeType, functionInvocation, stateDiff, executionResources);
 
   @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(
-            @JsonKey(name: 'validate_invocation')
-            FunctionInvocation? validateInvocation,
-            @JsonKey(name: 'execute_invocation')
-            @ExecuteInvocationConverter()
-            ExecuteInvocation executeInvocation,
-            @JsonKey(name: 'fee_transfer_invocation')
-            FunctionInvocation? feeTransferInvocation,
-            @JsonKey(name: 'state_diff') StateDiff? stateDiff,
-            @JsonKey(name: 'execution_resources')
-            ExecutionResources executionResources)
-        INVOKE,
-    required TResult Function(
-            @JsonKey(name: 'validate_invocation')
-            FunctionInvocation? validateInvocation,
-            @JsonKey(name: 'fee_transfer_invocation')
-            FunctionInvocation? feeTransferInvocation,
-            @JsonKey(name: 'state_diff') StateDiff? stateDiff,
-            @JsonKey(name: 'execution_resources')
-            ExecutionResources executionResources)
-        DECLARE,
-    required TResult Function(
-            @JsonKey(name: 'validate_invocation')
-            FunctionInvocation? validateInvocation,
-            @JsonKey(name: 'constructor_invocation')
-            FunctionInvocation constructorInvocation,
-            @JsonKey(name: 'fee_transfer_invocation')
-            FunctionInvocation? feeTransferInvocation,
-            @JsonKey(name: 'state_diff') StateDiff? stateDiff,
-            @JsonKey(name: 'execution_resources')
-            ExecutionResources executionResources)
-        DEPLOY_ACCOUNT,
-    required TResult Function(
-            @JsonKey(name: 'function_invocation')
-            FunctionInvocation functionInvocation,
-            @JsonKey(name: 'state_diff') StateDiff? stateDiff,
-            @JsonKey(name: 'execution_resources')
-            ExecutionResources executionResources)
-        L1_HANDLER,
-  }) {
-    return DEPLOY_ACCOUNT(validateInvocation, constructorInvocation,
-        feeTransferInvocation, stateDiff, executionResources);
+  String toString() {
+    return 'TransactionTrace.L1_HANDLER(functionInvocation: $functionInvocation, stateDiff: $stateDiff, executionResources: $executionResources)';
   }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(
-            @JsonKey(name: 'validate_invocation')
-            FunctionInvocation? validateInvocation,
-            @JsonKey(name: 'execute_invocation')
-            @ExecuteInvocationConverter()
-            ExecuteInvocation executeInvocation,
-            @JsonKey(name: 'fee_transfer_invocation')
-            FunctionInvocation? feeTransferInvocation,
-            @JsonKey(name: 'state_diff') StateDiff? stateDiff,
-            @JsonKey(name: 'execution_resources')
-            ExecutionResources executionResources)?
-        INVOKE,
-    TResult? Function(
-            @JsonKey(name: 'validate_invocation')
-            FunctionInvocation? validateInvocation,
-            @JsonKey(name: 'fee_transfer_invocation')
-            FunctionInvocation? feeTransferInvocation,
-            @JsonKey(name: 'state_diff') StateDiff? stateDiff,
-            @JsonKey(name: 'execution_resources')
-            ExecutionResources executionResources)?
-        DECLARE,
-    TResult? Function(
-            @JsonKey(name: 'validate_invocation')
-            FunctionInvocation? validateInvocation,
-            @JsonKey(name: 'constructor_invocation')
-            FunctionInvocation constructorInvocation,
-            @JsonKey(name: 'fee_transfer_invocation')
-            FunctionInvocation? feeTransferInvocation,
-            @JsonKey(name: 'state_diff') StateDiff? stateDiff,
-            @JsonKey(name: 'execution_resources')
-            ExecutionResources executionResources)?
-        DEPLOY_ACCOUNT,
-    TResult? Function(
-            @JsonKey(name: 'function_invocation')
-            FunctionInvocation functionInvocation,
-            @JsonKey(name: 'state_diff') StateDiff? stateDiff,
-            @JsonKey(name: 'execution_resources')
-            ExecutionResources executionResources)?
-        L1_HANDLER,
-  }) {
-    return DEPLOY_ACCOUNT?.call(validateInvocation, constructorInvocation,
-        feeTransferInvocation, stateDiff, executionResources);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(
-            @JsonKey(name: 'validate_invocation')
-            FunctionInvocation? validateInvocation,
-            @JsonKey(name: 'execute_invocation')
-            @ExecuteInvocationConverter()
-            ExecuteInvocation executeInvocation,
-            @JsonKey(name: 'fee_transfer_invocation')
-            FunctionInvocation? feeTransferInvocation,
-            @JsonKey(name: 'state_diff') StateDiff? stateDiff,
-            @JsonKey(name: 'execution_resources')
-            ExecutionResources executionResources)?
-        INVOKE,
-    TResult Function(
-            @JsonKey(name: 'validate_invocation')
-            FunctionInvocation? validateInvocation,
-            @JsonKey(name: 'fee_transfer_invocation')
-            FunctionInvocation? feeTransferInvocation,
-            @JsonKey(name: 'state_diff') StateDiff? stateDiff,
-            @JsonKey(name: 'execution_resources')
-            ExecutionResources executionResources)?
-        DECLARE,
-    TResult Function(
-            @JsonKey(name: 'validate_invocation')
-            FunctionInvocation? validateInvocation,
-            @JsonKey(name: 'constructor_invocation')
-            FunctionInvocation constructorInvocation,
-            @JsonKey(name: 'fee_transfer_invocation')
-            FunctionInvocation? feeTransferInvocation,
-            @JsonKey(name: 'state_diff') StateDiff? stateDiff,
-            @JsonKey(name: 'execution_resources')
-            ExecutionResources executionResources)?
-        DEPLOY_ACCOUNT,
-    TResult Function(
-            @JsonKey(name: 'function_invocation')
-            FunctionInvocation functionInvocation,
-            @JsonKey(name: 'state_diff') StateDiff? stateDiff,
-            @JsonKey(name: 'execution_resources')
-            ExecutionResources executionResources)?
-        L1_HANDLER,
-    required TResult orElse(),
-  }) {
-    if (DEPLOY_ACCOUNT != null) {
-      return DEPLOY_ACCOUNT(validateInvocation, constructorInvocation,
-          feeTransferInvocation, stateDiff, executionResources);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(InvokeTransactionTrace value) INVOKE,
-    required TResult Function(DeclareTransactionTrace value) DECLARE,
-    required TResult Function(DeployAccountTransactionTrace value)
-        DEPLOY_ACCOUNT,
-    required TResult Function(L1HandlerTransactionTrace value) L1_HANDLER,
-  }) {
-    return DEPLOY_ACCOUNT(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(InvokeTransactionTrace value)? INVOKE,
-    TResult? Function(DeclareTransactionTrace value)? DECLARE,
-    TResult? Function(DeployAccountTransactionTrace value)? DEPLOY_ACCOUNT,
-    TResult? Function(L1HandlerTransactionTrace value)? L1_HANDLER,
-  }) {
-    return DEPLOY_ACCOUNT?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(InvokeTransactionTrace value)? INVOKE,
-    TResult Function(DeclareTransactionTrace value)? DECLARE,
-    TResult Function(DeployAccountTransactionTrace value)? DEPLOY_ACCOUNT,
-    TResult Function(L1HandlerTransactionTrace value)? L1_HANDLER,
-    required TResult orElse(),
-  }) {
-    if (DEPLOY_ACCOUNT != null) {
-      return DEPLOY_ACCOUNT(this);
-    }
-    return orElse();
-  }
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$DeployAccountTransactionTraceImplToJson(
-      this,
-    );
-  }
-}
-
-abstract class DeployAccountTransactionTrace implements TransactionTrace {
-  const factory DeployAccountTransactionTrace(
-          {@JsonKey(name: 'validate_invocation')
-          final FunctionInvocation? validateInvocation,
-          @JsonKey(name: 'constructor_invocation')
-          required final FunctionInvocation constructorInvocation,
-          @JsonKey(name: 'fee_transfer_invocation')
-          final FunctionInvocation? feeTransferInvocation,
-          @JsonKey(name: 'state_diff') final StateDiff? stateDiff,
-          @JsonKey(name: 'execution_resources')
-          required final ExecutionResources executionResources}) =
-      _$DeployAccountTransactionTraceImpl;
-
-  factory DeployAccountTransactionTrace.fromJson(Map<String, dynamic> json) =
-      _$DeployAccountTransactionTraceImpl.fromJson;
-
-  @JsonKey(name: 'validate_invocation')
-  FunctionInvocation? get validateInvocation;
-  @JsonKey(name: 'constructor_invocation')
-  FunctionInvocation get constructorInvocation;
-  @JsonKey(name: 'fee_transfer_invocation')
-  FunctionInvocation? get feeTransferInvocation;
-  @override
-  @JsonKey(name: 'state_diff')
-  StateDiff? get stateDiff;
-  @override
-  @JsonKey(name: 'execution_resources')
-  ExecutionResources get executionResources;
-
-  /// Create a copy of TransactionTrace
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$DeployAccountTransactionTraceImplCopyWith<
-          _$DeployAccountTransactionTraceImpl>
-      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$L1HandlerTransactionTraceImplCopyWith<$Res>
+abstract mixin class $L1HandlerTransactionTraceCopyWith<$Res>
     implements $TransactionTraceCopyWith<$Res> {
-  factory _$$L1HandlerTransactionTraceImplCopyWith(
-          _$L1HandlerTransactionTraceImpl value,
-          $Res Function(_$L1HandlerTransactionTraceImpl) then) =
-      __$$L1HandlerTransactionTraceImplCopyWithImpl<$Res>;
+  factory $L1HandlerTransactionTraceCopyWith(L1HandlerTransactionTrace value,
+          $Res Function(L1HandlerTransactionTrace) _then) =
+      _$L1HandlerTransactionTraceCopyWithImpl;
   @override
   @useResult
   $Res call(
@@ -1526,35 +1190,33 @@ abstract class _$$L1HandlerTransactionTraceImplCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$L1HandlerTransactionTraceImplCopyWithImpl<$Res>
-    extends _$TransactionTraceCopyWithImpl<$Res,
-        _$L1HandlerTransactionTraceImpl>
-    implements _$$L1HandlerTransactionTraceImplCopyWith<$Res> {
-  __$$L1HandlerTransactionTraceImplCopyWithImpl(
-      _$L1HandlerTransactionTraceImpl _value,
-      $Res Function(_$L1HandlerTransactionTraceImpl) _then)
-      : super(_value, _then);
+class _$L1HandlerTransactionTraceCopyWithImpl<$Res>
+    implements $L1HandlerTransactionTraceCopyWith<$Res> {
+  _$L1HandlerTransactionTraceCopyWithImpl(this._self, this._then);
+
+  final L1HandlerTransactionTrace _self;
+  final $Res Function(L1HandlerTransactionTrace) _then;
 
   /// Create a copy of TransactionTrace
   /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
   @override
+  @pragma('vm:prefer-inline')
   $Res call({
     Object? functionInvocation = null,
     Object? stateDiff = freezed,
     Object? executionResources = null,
   }) {
-    return _then(_$L1HandlerTransactionTraceImpl(
+    return _then(L1HandlerTransactionTrace(
       functionInvocation: null == functionInvocation
-          ? _value.functionInvocation
+          ? _self.functionInvocation
           : functionInvocation // ignore: cast_nullable_to_non_nullable
               as FunctionInvocation,
       stateDiff: freezed == stateDiff
-          ? _value.stateDiff
+          ? _self.stateDiff
           : stateDiff // ignore: cast_nullable_to_non_nullable
               as StateDiff?,
       executionResources: null == executionResources
-          ? _value.executionResources
+          ? _self.executionResources
           : executionResources // ignore: cast_nullable_to_non_nullable
               as ExecutionResources,
     ));
@@ -1565,356 +1227,268 @@ class __$$L1HandlerTransactionTraceImplCopyWithImpl<$Res>
   @override
   @pragma('vm:prefer-inline')
   $FunctionInvocationCopyWith<$Res> get functionInvocation {
-    return $FunctionInvocationCopyWith<$Res>(_value.functionInvocation,
-        (value) {
-      return _then(_value.copyWith(functionInvocation: value));
+    return $FunctionInvocationCopyWith<$Res>(_self.functionInvocation, (value) {
+      return _then(_self.copyWith(functionInvocation: value));
+    });
+  }
+
+  /// Create a copy of TransactionTrace
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $StateDiffCopyWith<$Res>? get stateDiff {
+    if (_self.stateDiff == null) {
+      return null;
+    }
+
+    return $StateDiffCopyWith<$Res>(_self.stateDiff!, (value) {
+      return _then(_self.copyWith(stateDiff: value));
+    });
+  }
+
+  /// Create a copy of TransactionTrace
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $ExecutionResourcesCopyWith<$Res> get executionResources {
+    return $ExecutionResourcesCopyWith<$Res>(_self.executionResources, (value) {
+      return _then(_self.copyWith(executionResources: value));
     });
   }
 }
 
 /// @nodoc
-@JsonSerializable()
-class _$L1HandlerTransactionTraceImpl implements L1HandlerTransactionTrace {
-  const _$L1HandlerTransactionTraceImpl(
-      {@JsonKey(name: 'function_invocation') required this.functionInvocation,
-      @JsonKey(name: 'state_diff') this.stateDiff,
-      @JsonKey(name: 'execution_resources') required this.executionResources,
-      final String? $type})
-      : $type = $type ?? 'L1_HANDLER';
-
-  factory _$L1HandlerTransactionTraceImpl.fromJson(Map<String, dynamic> json) =>
-      _$$L1HandlerTransactionTraceImplFromJson(json);
-
-  @override
-  @JsonKey(name: 'function_invocation')
-  final FunctionInvocation functionInvocation;
-  @override
-  @JsonKey(name: 'state_diff')
-  final StateDiff? stateDiff;
-  @override
-  @JsonKey(name: 'execution_resources')
-  final ExecutionResources executionResources;
-
-  @JsonKey(name: 'type')
-  final String $type;
-
-  @override
-  String toString() {
-    return 'TransactionTrace.L1_HANDLER(functionInvocation: $functionInvocation, stateDiff: $stateDiff, executionResources: $executionResources)';
-  }
-
+mixin _$ExecuteInvocation {
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$L1HandlerTransactionTraceImpl &&
-            (identical(other.functionInvocation, functionInvocation) ||
-                other.functionInvocation == functionInvocation) &&
-            (identical(other.stateDiff, stateDiff) ||
-                other.stateDiff == stateDiff) &&
-            (identical(other.executionResources, executionResources) ||
-                other.executionResources == executionResources));
-  }
-
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  int get hashCode => Object.hash(
-      runtimeType, functionInvocation, stateDiff, executionResources);
-
-  /// Create a copy of TransactionTrace
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$L1HandlerTransactionTraceImplCopyWith<_$L1HandlerTransactionTraceImpl>
-      get copyWith => __$$L1HandlerTransactionTraceImplCopyWithImpl<
-          _$L1HandlerTransactionTraceImpl>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(
-            @JsonKey(name: 'validate_invocation')
-            FunctionInvocation? validateInvocation,
-            @JsonKey(name: 'execute_invocation')
-            @ExecuteInvocationConverter()
-            ExecuteInvocation executeInvocation,
-            @JsonKey(name: 'fee_transfer_invocation')
-            FunctionInvocation? feeTransferInvocation,
-            @JsonKey(name: 'state_diff') StateDiff? stateDiff,
-            @JsonKey(name: 'execution_resources')
-            ExecutionResources executionResources)
-        INVOKE,
-    required TResult Function(
-            @JsonKey(name: 'validate_invocation')
-            FunctionInvocation? validateInvocation,
-            @JsonKey(name: 'fee_transfer_invocation')
-            FunctionInvocation? feeTransferInvocation,
-            @JsonKey(name: 'state_diff') StateDiff? stateDiff,
-            @JsonKey(name: 'execution_resources')
-            ExecutionResources executionResources)
-        DECLARE,
-    required TResult Function(
-            @JsonKey(name: 'validate_invocation')
-            FunctionInvocation? validateInvocation,
-            @JsonKey(name: 'constructor_invocation')
-            FunctionInvocation constructorInvocation,
-            @JsonKey(name: 'fee_transfer_invocation')
-            FunctionInvocation? feeTransferInvocation,
-            @JsonKey(name: 'state_diff') StateDiff? stateDiff,
-            @JsonKey(name: 'execution_resources')
-            ExecutionResources executionResources)
-        DEPLOY_ACCOUNT,
-    required TResult Function(
-            @JsonKey(name: 'function_invocation')
-            FunctionInvocation functionInvocation,
-            @JsonKey(name: 'state_diff') StateDiff? stateDiff,
-            @JsonKey(name: 'execution_resources')
-            ExecutionResources executionResources)
-        L1_HANDLER,
-  }) {
-    return L1_HANDLER(functionInvocation, stateDiff, executionResources);
+        (other.runtimeType == runtimeType && other is ExecuteInvocation);
   }
 
   @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(
-            @JsonKey(name: 'validate_invocation')
-            FunctionInvocation? validateInvocation,
-            @JsonKey(name: 'execute_invocation')
-            @ExecuteInvocationConverter()
-            ExecuteInvocation executeInvocation,
-            @JsonKey(name: 'fee_transfer_invocation')
-            FunctionInvocation? feeTransferInvocation,
-            @JsonKey(name: 'state_diff') StateDiff? stateDiff,
-            @JsonKey(name: 'execution_resources')
-            ExecutionResources executionResources)?
-        INVOKE,
-    TResult? Function(
-            @JsonKey(name: 'validate_invocation')
-            FunctionInvocation? validateInvocation,
-            @JsonKey(name: 'fee_transfer_invocation')
-            FunctionInvocation? feeTransferInvocation,
-            @JsonKey(name: 'state_diff') StateDiff? stateDiff,
-            @JsonKey(name: 'execution_resources')
-            ExecutionResources executionResources)?
-        DECLARE,
-    TResult? Function(
-            @JsonKey(name: 'validate_invocation')
-            FunctionInvocation? validateInvocation,
-            @JsonKey(name: 'constructor_invocation')
-            FunctionInvocation constructorInvocation,
-            @JsonKey(name: 'fee_transfer_invocation')
-            FunctionInvocation? feeTransferInvocation,
-            @JsonKey(name: 'state_diff') StateDiff? stateDiff,
-            @JsonKey(name: 'execution_resources')
-            ExecutionResources executionResources)?
-        DEPLOY_ACCOUNT,
-    TResult? Function(
-            @JsonKey(name: 'function_invocation')
-            FunctionInvocation functionInvocation,
-            @JsonKey(name: 'state_diff') StateDiff? stateDiff,
-            @JsonKey(name: 'execution_resources')
-            ExecutionResources executionResources)?
-        L1_HANDLER,
-  }) {
-    return L1_HANDLER?.call(functionInvocation, stateDiff, executionResources);
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  String toString() {
+    return 'ExecuteInvocation()';
   }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(
-            @JsonKey(name: 'validate_invocation')
-            FunctionInvocation? validateInvocation,
-            @JsonKey(name: 'execute_invocation')
-            @ExecuteInvocationConverter()
-            ExecuteInvocation executeInvocation,
-            @JsonKey(name: 'fee_transfer_invocation')
-            FunctionInvocation? feeTransferInvocation,
-            @JsonKey(name: 'state_diff') StateDiff? stateDiff,
-            @JsonKey(name: 'execution_resources')
-            ExecutionResources executionResources)?
-        INVOKE,
-    TResult Function(
-            @JsonKey(name: 'validate_invocation')
-            FunctionInvocation? validateInvocation,
-            @JsonKey(name: 'fee_transfer_invocation')
-            FunctionInvocation? feeTransferInvocation,
-            @JsonKey(name: 'state_diff') StateDiff? stateDiff,
-            @JsonKey(name: 'execution_resources')
-            ExecutionResources executionResources)?
-        DECLARE,
-    TResult Function(
-            @JsonKey(name: 'validate_invocation')
-            FunctionInvocation? validateInvocation,
-            @JsonKey(name: 'constructor_invocation')
-            FunctionInvocation constructorInvocation,
-            @JsonKey(name: 'fee_transfer_invocation')
-            FunctionInvocation? feeTransferInvocation,
-            @JsonKey(name: 'state_diff') StateDiff? stateDiff,
-            @JsonKey(name: 'execution_resources')
-            ExecutionResources executionResources)?
-        DEPLOY_ACCOUNT,
-    TResult Function(
-            @JsonKey(name: 'function_invocation')
-            FunctionInvocation functionInvocation,
-            @JsonKey(name: 'state_diff') StateDiff? stateDiff,
-            @JsonKey(name: 'execution_resources')
-            ExecutionResources executionResources)?
-        L1_HANDLER,
-    required TResult orElse(),
-  }) {
-    if (L1_HANDLER != null) {
-      return L1_HANDLER(functionInvocation, stateDiff, executionResources);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(InvokeTransactionTrace value) INVOKE,
-    required TResult Function(DeclareTransactionTrace value) DECLARE,
-    required TResult Function(DeployAccountTransactionTrace value)
-        DEPLOY_ACCOUNT,
-    required TResult Function(L1HandlerTransactionTrace value) L1_HANDLER,
-  }) {
-    return L1_HANDLER(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(InvokeTransactionTrace value)? INVOKE,
-    TResult? Function(DeclareTransactionTrace value)? DECLARE,
-    TResult? Function(DeployAccountTransactionTrace value)? DEPLOY_ACCOUNT,
-    TResult? Function(L1HandlerTransactionTrace value)? L1_HANDLER,
-  }) {
-    return L1_HANDLER?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(InvokeTransactionTrace value)? INVOKE,
-    TResult Function(DeclareTransactionTrace value)? DECLARE,
-    TResult Function(DeployAccountTransactionTrace value)? DEPLOY_ACCOUNT,
-    TResult Function(L1HandlerTransactionTrace value)? L1_HANDLER,
-    required TResult orElse(),
-  }) {
-    if (L1_HANDLER != null) {
-      return L1_HANDLER(this);
-    }
-    return orElse();
-  }
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$L1HandlerTransactionTraceImplToJson(
-      this,
-    );
-  }
-}
-
-abstract class L1HandlerTransactionTrace implements TransactionTrace {
-  const factory L1HandlerTransactionTrace(
-          {@JsonKey(name: 'function_invocation')
-          required final FunctionInvocation functionInvocation,
-          @JsonKey(name: 'state_diff') final StateDiff? stateDiff,
-          @JsonKey(name: 'execution_resources')
-          required final ExecutionResources executionResources}) =
-      _$L1HandlerTransactionTraceImpl;
-
-  factory L1HandlerTransactionTrace.fromJson(Map<String, dynamic> json) =
-      _$L1HandlerTransactionTraceImpl.fromJson;
-
-  @JsonKey(name: 'function_invocation')
-  FunctionInvocation get functionInvocation;
-  @override
-  @JsonKey(name: 'state_diff')
-  StateDiff? get stateDiff;
-  @override
-  @JsonKey(name: 'execution_resources')
-  ExecutionResources get executionResources;
-
-  /// Create a copy of TransactionTrace
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$L1HandlerTransactionTraceImplCopyWith<_$L1HandlerTransactionTraceImpl>
-      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-mixin _$ExecuteInvocation {
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(FunctionInvocation invocation) success,
-    required TResult Function(String revertReason) reverted,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(FunctionInvocation invocation)? success,
-    TResult? Function(String revertReason)? reverted,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(FunctionInvocation invocation)? success,
-    TResult Function(String revertReason)? reverted,
-    required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(SuccessInvocation value) success,
-    required TResult Function(RevertedInvocation value) reverted,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(SuccessInvocation value)? success,
-    TResult? Function(RevertedInvocation value)? reverted,
-  }) =>
-      throw _privateConstructorUsedError;
+class $ExecuteInvocationCopyWith<$Res> {
+  $ExecuteInvocationCopyWith(
+      ExecuteInvocation _, $Res Function(ExecuteInvocation) __);
+}
+
+/// Adds pattern-matching-related methods to [ExecuteInvocation].
+extension ExecuteInvocationPatterns on ExecuteInvocation {
+  /// A variant of `map` that fallback to returning `orElse`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(SuccessInvocation value)? success,
     TResult Function(RevertedInvocation value)? reverted,
     required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
+  }) {
+    final _that = this;
+    switch (_that) {
+      case SuccessInvocation() when success != null:
+        return success(_that);
+      case RevertedInvocation() when reverted != null:
+        return reverted(_that);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// Callbacks receives the raw object, upcasted.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case final Subclass2 value:
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(SuccessInvocation value) success,
+    required TResult Function(RevertedInvocation value) reverted,
+  }) {
+    final _that = this;
+    switch (_that) {
+      case SuccessInvocation():
+        return success(_that);
+      case RevertedInvocation():
+        return reverted(_that);
+    }
+  }
+
+  /// A variant of `map` that fallback to returning `null`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(SuccessInvocation value)? success,
+    TResult? Function(RevertedInvocation value)? reverted,
+  }) {
+    final _that = this;
+    switch (_that) {
+      case SuccessInvocation() when success != null:
+        return success(_that);
+      case RevertedInvocation() when reverted != null:
+        return reverted(_that);
+      case _:
+        return null;
+    }
+  }
+
+  /// A variant of `when` that fallback to an `orElse` callback.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(FunctionInvocation invocation)? success,
+    TResult Function(String revertReason)? reverted,
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case SuccessInvocation() when success != null:
+        return success(_that.invocation);
+      case RevertedInvocation() when reverted != null:
+        return reverted(_that.revertReason);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// As opposed to `map`, this offers destructuring.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case Subclass2(:final field2):
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(FunctionInvocation invocation) success,
+    required TResult Function(String revertReason) reverted,
+  }) {
+    final _that = this;
+    switch (_that) {
+      case SuccessInvocation():
+        return success(_that.invocation);
+      case RevertedInvocation():
+        return reverted(_that.revertReason);
+    }
+  }
+
+  /// A variant of `when` that fallback to returning `null`
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(FunctionInvocation invocation)? success,
+    TResult? Function(String revertReason)? reverted,
+  }) {
+    final _that = this;
+    switch (_that) {
+      case SuccessInvocation() when success != null:
+        return success(_that.invocation);
+      case RevertedInvocation() when reverted != null:
+        return reverted(_that.revertReason);
+      case _:
+        return null;
+    }
+  }
 }
 
 /// @nodoc
-abstract class $ExecuteInvocationCopyWith<$Res> {
-  factory $ExecuteInvocationCopyWith(
-          ExecuteInvocation value, $Res Function(ExecuteInvocation) then) =
-      _$ExecuteInvocationCopyWithImpl<$Res, ExecuteInvocation>;
-}
 
-/// @nodoc
-class _$ExecuteInvocationCopyWithImpl<$Res, $Val extends ExecuteInvocation>
-    implements $ExecuteInvocationCopyWith<$Res> {
-  _$ExecuteInvocationCopyWithImpl(this._value, this._then);
+class SuccessInvocation implements ExecuteInvocation {
+  const SuccessInvocation(this.invocation);
 
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final FunctionInvocation invocation;
 
   /// Create a copy of ExecuteInvocation
   /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  $SuccessInvocationCopyWith<SuccessInvocation> get copyWith =>
+      _$SuccessInvocationCopyWithImpl<SuccessInvocation>(this, _$identity);
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is SuccessInvocation &&
+            (identical(other.invocation, invocation) ||
+                other.invocation == invocation));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, invocation);
+
+  @override
+  String toString() {
+    return 'ExecuteInvocation.success(invocation: $invocation)';
+  }
 }
 
 /// @nodoc
-abstract class _$$SuccessInvocationImplCopyWith<$Res> {
-  factory _$$SuccessInvocationImplCopyWith(_$SuccessInvocationImpl value,
-          $Res Function(_$SuccessInvocationImpl) then) =
-      __$$SuccessInvocationImplCopyWithImpl<$Res>;
+abstract mixin class $SuccessInvocationCopyWith<$Res>
+    implements $ExecuteInvocationCopyWith<$Res> {
+  factory $SuccessInvocationCopyWith(
+          SuccessInvocation value, $Res Function(SuccessInvocation) _then) =
+      _$SuccessInvocationCopyWithImpl;
   @useResult
   $Res call({FunctionInvocation invocation});
 
@@ -1922,23 +1496,22 @@ abstract class _$$SuccessInvocationImplCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$SuccessInvocationImplCopyWithImpl<$Res>
-    extends _$ExecuteInvocationCopyWithImpl<$Res, _$SuccessInvocationImpl>
-    implements _$$SuccessInvocationImplCopyWith<$Res> {
-  __$$SuccessInvocationImplCopyWithImpl(_$SuccessInvocationImpl _value,
-      $Res Function(_$SuccessInvocationImpl) _then)
-      : super(_value, _then);
+class _$SuccessInvocationCopyWithImpl<$Res>
+    implements $SuccessInvocationCopyWith<$Res> {
+  _$SuccessInvocationCopyWithImpl(this._self, this._then);
+
+  final SuccessInvocation _self;
+  final $Res Function(SuccessInvocation) _then;
 
   /// Create a copy of ExecuteInvocation
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
-  @override
   $Res call({
     Object? invocation = null,
   }) {
-    return _then(_$SuccessInvocationImpl(
+    return _then(SuccessInvocation(
       null == invocation
-          ? _value.invocation
+          ? _self.invocation
           : invocation // ignore: cast_nullable_to_non_nullable
               as FunctionInvocation,
     ));
@@ -1949,173 +1522,31 @@ class __$$SuccessInvocationImplCopyWithImpl<$Res>
   @override
   @pragma('vm:prefer-inline')
   $FunctionInvocationCopyWith<$Res> get invocation {
-    return $FunctionInvocationCopyWith<$Res>(_value.invocation, (value) {
-      return _then(_value.copyWith(invocation: value));
+    return $FunctionInvocationCopyWith<$Res>(_self.invocation, (value) {
+      return _then(_self.copyWith(invocation: value));
     });
   }
 }
 
 /// @nodoc
 
-class _$SuccessInvocationImpl implements SuccessInvocation {
-  const _$SuccessInvocationImpl(this.invocation);
+class RevertedInvocation implements ExecuteInvocation {
+  const RevertedInvocation({required this.revertReason});
 
-  @override
-  final FunctionInvocation invocation;
-
-  @override
-  String toString() {
-    return 'ExecuteInvocation.success(invocation: $invocation)';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$SuccessInvocationImpl &&
-            (identical(other.invocation, invocation) ||
-                other.invocation == invocation));
-  }
-
-  @override
-  int get hashCode => Object.hash(runtimeType, invocation);
-
-  /// Create a copy of ExecuteInvocation
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$SuccessInvocationImplCopyWith<_$SuccessInvocationImpl> get copyWith =>
-      __$$SuccessInvocationImplCopyWithImpl<_$SuccessInvocationImpl>(
-          this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(FunctionInvocation invocation) success,
-    required TResult Function(String revertReason) reverted,
-  }) {
-    return success(invocation);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(FunctionInvocation invocation)? success,
-    TResult? Function(String revertReason)? reverted,
-  }) {
-    return success?.call(invocation);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(FunctionInvocation invocation)? success,
-    TResult Function(String revertReason)? reverted,
-    required TResult orElse(),
-  }) {
-    if (success != null) {
-      return success(invocation);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(SuccessInvocation value) success,
-    required TResult Function(RevertedInvocation value) reverted,
-  }) {
-    return success(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(SuccessInvocation value)? success,
-    TResult? Function(RevertedInvocation value)? reverted,
-  }) {
-    return success?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(SuccessInvocation value)? success,
-    TResult Function(RevertedInvocation value)? reverted,
-    required TResult orElse(),
-  }) {
-    if (success != null) {
-      return success(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class SuccessInvocation implements ExecuteInvocation {
-  const factory SuccessInvocation(final FunctionInvocation invocation) =
-      _$SuccessInvocationImpl;
-
-  FunctionInvocation get invocation;
-
-  /// Create a copy of ExecuteInvocation
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$SuccessInvocationImplCopyWith<_$SuccessInvocationImpl> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class _$$RevertedInvocationImplCopyWith<$Res> {
-  factory _$$RevertedInvocationImplCopyWith(_$RevertedInvocationImpl value,
-          $Res Function(_$RevertedInvocationImpl) then) =
-      __$$RevertedInvocationImplCopyWithImpl<$Res>;
-  @useResult
-  $Res call({String revertReason});
-}
-
-/// @nodoc
-class __$$RevertedInvocationImplCopyWithImpl<$Res>
-    extends _$ExecuteInvocationCopyWithImpl<$Res, _$RevertedInvocationImpl>
-    implements _$$RevertedInvocationImplCopyWith<$Res> {
-  __$$RevertedInvocationImplCopyWithImpl(_$RevertedInvocationImpl _value,
-      $Res Function(_$RevertedInvocationImpl) _then)
-      : super(_value, _then);
-
-  /// Create a copy of ExecuteInvocation
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? revertReason = null,
-  }) {
-    return _then(_$RevertedInvocationImpl(
-      revertReason: null == revertReason
-          ? _value.revertReason
-          : revertReason // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
-  }
-}
-
-/// @nodoc
-
-class _$RevertedInvocationImpl implements RevertedInvocation {
-  const _$RevertedInvocationImpl({required this.revertReason});
-
-  @override
   final String revertReason;
 
-  @override
-  String toString() {
-    return 'ExecuteInvocation.reverted(revertReason: $revertReason)';
-  }
+  /// Create a copy of ExecuteInvocation
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  $RevertedInvocationCopyWith<RevertedInvocation> get copyWith =>
+      _$RevertedInvocationCopyWithImpl<RevertedInvocation>(this, _$identity);
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$RevertedInvocationImpl &&
+            other is RevertedInvocation &&
             (identical(other.revertReason, revertReason) ||
                 other.revertReason == revertReason));
   }
@@ -2123,87 +1554,43 @@ class _$RevertedInvocationImpl implements RevertedInvocation {
   @override
   int get hashCode => Object.hash(runtimeType, revertReason);
 
+  @override
+  String toString() {
+    return 'ExecuteInvocation.reverted(revertReason: $revertReason)';
+  }
+}
+
+/// @nodoc
+abstract mixin class $RevertedInvocationCopyWith<$Res>
+    implements $ExecuteInvocationCopyWith<$Res> {
+  factory $RevertedInvocationCopyWith(
+          RevertedInvocation value, $Res Function(RevertedInvocation) _then) =
+      _$RevertedInvocationCopyWithImpl;
+  @useResult
+  $Res call({String revertReason});
+}
+
+/// @nodoc
+class _$RevertedInvocationCopyWithImpl<$Res>
+    implements $RevertedInvocationCopyWith<$Res> {
+  _$RevertedInvocationCopyWithImpl(this._self, this._then);
+
+  final RevertedInvocation _self;
+  final $Res Function(RevertedInvocation) _then;
+
   /// Create a copy of ExecuteInvocation
   /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
   @pragma('vm:prefer-inline')
-  _$$RevertedInvocationImplCopyWith<_$RevertedInvocationImpl> get copyWith =>
-      __$$RevertedInvocationImplCopyWithImpl<_$RevertedInvocationImpl>(
-          this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(FunctionInvocation invocation) success,
-    required TResult Function(String revertReason) reverted,
+  $Res call({
+    Object? revertReason = null,
   }) {
-    return reverted(revertReason);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(FunctionInvocation invocation)? success,
-    TResult? Function(String revertReason)? reverted,
-  }) {
-    return reverted?.call(revertReason);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(FunctionInvocation invocation)? success,
-    TResult Function(String revertReason)? reverted,
-    required TResult orElse(),
-  }) {
-    if (reverted != null) {
-      return reverted(revertReason);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(SuccessInvocation value) success,
-    required TResult Function(RevertedInvocation value) reverted,
-  }) {
-    return reverted(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(SuccessInvocation value)? success,
-    TResult? Function(RevertedInvocation value)? reverted,
-  }) {
-    return reverted?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(SuccessInvocation value)? success,
-    TResult Function(RevertedInvocation value)? reverted,
-    required TResult orElse(),
-  }) {
-    if (reverted != null) {
-      return reverted(this);
-    }
-    return orElse();
+    return _then(RevertedInvocation(
+      revertReason: null == revertReason
+          ? _self.revertReason
+          : revertReason // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
   }
 }
 
-abstract class RevertedInvocation implements ExecuteInvocation {
-  const factory RevertedInvocation({required final String revertReason}) =
-      _$RevertedInvocationImpl;
-
-  String get revertReason;
-
-  /// Create a copy of ExecuteInvocation
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$RevertedInvocationImplCopyWith<_$RevertedInvocationImpl> get copyWith =>
-      throw _privateConstructorUsedError;
-}
+// dart format on

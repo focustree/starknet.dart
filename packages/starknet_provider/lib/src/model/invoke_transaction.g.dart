@@ -6,22 +6,21 @@ part of 'invoke_transaction.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$InvokeTransactionRequestImpl _$$InvokeTransactionRequestImplFromJson(
+_InvokeTransactionRequest _$InvokeTransactionRequestFromJson(
         Map<String, dynamic> json) =>
-    _$InvokeTransactionRequestImpl(
+    _InvokeTransactionRequest(
       invokeTransaction: InvokeTransaction.fromJson(
           json['invoke_transaction'] as Map<String, dynamic>),
     );
 
-Map<String, dynamic> _$$InvokeTransactionRequestImplToJson(
-        _$InvokeTransactionRequestImpl instance) =>
+Map<String, dynamic> _$InvokeTransactionRequestToJson(
+        _InvokeTransactionRequest instance) =>
     <String, dynamic>{
       'invoke_transaction': instance.invokeTransaction.toJson(),
     };
 
-_$InvokeTransactionV0Impl _$$InvokeTransactionV0ImplFromJson(
-        Map<String, dynamic> json) =>
-    _$InvokeTransactionV0Impl(
+_InvokeTransactionV0 _$InvokeTransactionV0FromJson(Map<String, dynamic> json) =>
+    _InvokeTransactionV0(
       type: json['type'] as String? ?? 'INVOKE',
       maxFee: Felt.fromJson(json['max_fee'] as String),
       version: json['version'] as String? ?? invokeTxnV0,
@@ -35,8 +34,8 @@ _$InvokeTransactionV0Impl _$$InvokeTransactionV0ImplFromJson(
           .toList(),
     );
 
-Map<String, dynamic> _$$InvokeTransactionV0ImplToJson(
-        _$InvokeTransactionV0Impl instance) =>
+Map<String, dynamic> _$InvokeTransactionV0ToJson(
+        _InvokeTransactionV0 instance) =>
     <String, dynamic>{
       'type': instance.type,
       'max_fee': maxFeeToJson(instance.maxFee),
@@ -47,9 +46,8 @@ Map<String, dynamic> _$$InvokeTransactionV0ImplToJson(
       'calldata': instance.calldata.map((e) => e.toJson()).toList(),
     };
 
-_$InvokeTransactionV1Impl _$$InvokeTransactionV1ImplFromJson(
-        Map<String, dynamic> json) =>
-    _$InvokeTransactionV1Impl(
+_InvokeTransactionV1 _$InvokeTransactionV1FromJson(Map<String, dynamic> json) =>
+    _InvokeTransactionV1(
       signature: (json['signature'] as List<dynamic>)
           .map((e) => Felt.fromJson(e as String))
           .toList(),
@@ -63,8 +61,8 @@ _$InvokeTransactionV1Impl _$$InvokeTransactionV1ImplFromJson(
       type: json['type'] as String? ?? 'INVOKE',
     );
 
-Map<String, dynamic> _$$InvokeTransactionV1ImplToJson(
-        _$InvokeTransactionV1Impl instance) =>
+Map<String, dynamic> _$InvokeTransactionV1ToJson(
+        _InvokeTransactionV1 instance) =>
     <String, dynamic>{
       'signature': instance.signature.map((e) => e.toJson()).toList(),
       'max_fee': maxFeeToJson(instance.maxFee),
@@ -75,9 +73,8 @@ Map<String, dynamic> _$$InvokeTransactionV1ImplToJson(
       'type': instance.type,
     };
 
-_$InvokeTransactionV3Impl _$$InvokeTransactionV3ImplFromJson(
-        Map<String, dynamic> json) =>
-    _$InvokeTransactionV3Impl(
+_InvokeTransactionV3 _$InvokeTransactionV3FromJson(Map<String, dynamic> json) =>
+    _InvokeTransactionV3(
       type: json['type'] as String? ?? 'INVOKE',
       accountDeploymentData: (json['account_deployment_data'] as List<dynamic>)
           .map((e) => Felt.fromJson(e as String))
@@ -103,8 +100,8 @@ _$InvokeTransactionV3Impl _$$InvokeTransactionV3ImplFromJson(
       version: json['version'] as String? ?? invokeTxnV3,
     );
 
-Map<String, dynamic> _$$InvokeTransactionV3ImplToJson(
-        _$InvokeTransactionV3Impl instance) =>
+Map<String, dynamic> _$InvokeTransactionV3ToJson(
+        _InvokeTransactionV3 instance) =>
     <String, dynamic>{
       'type': instance.type,
       'account_deployment_data':
@@ -122,43 +119,43 @@ Map<String, dynamic> _$$InvokeTransactionV3ImplToJson(
       'version': instance.version,
     };
 
-_$InvokeTransactionResultImpl _$$InvokeTransactionResultImplFromJson(
+InvokeTransactionResult _$InvokeTransactionResultFromJson(
         Map<String, dynamic> json) =>
-    _$InvokeTransactionResultImpl(
+    InvokeTransactionResult(
       result: InvokeTransactionResponseResult.fromJson(
           json['result'] as Map<String, dynamic>),
       $type: json['starkNetRuntimeTypeToRemove'] as String?,
     );
 
-Map<String, dynamic> _$$InvokeTransactionResultImplToJson(
-        _$InvokeTransactionResultImpl instance) =>
+Map<String, dynamic> _$InvokeTransactionResultToJson(
+        InvokeTransactionResult instance) =>
     <String, dynamic>{
       'result': instance.result.toJson(),
       'starkNetRuntimeTypeToRemove': instance.$type,
     };
 
-_$InvokeTransactionErrorImpl _$$InvokeTransactionErrorImplFromJson(
+InvokeTransactionError _$InvokeTransactionErrorFromJson(
         Map<String, dynamic> json) =>
-    _$InvokeTransactionErrorImpl(
+    InvokeTransactionError(
       error: JsonRpcApiError.fromJson(json['error'] as Map<String, dynamic>),
       $type: json['starkNetRuntimeTypeToRemove'] as String?,
     );
 
-Map<String, dynamic> _$$InvokeTransactionErrorImplToJson(
-        _$InvokeTransactionErrorImpl instance) =>
+Map<String, dynamic> _$InvokeTransactionErrorToJson(
+        InvokeTransactionError instance) =>
     <String, dynamic>{
       'error': instance.error.toJson(),
       'starkNetRuntimeTypeToRemove': instance.$type,
     };
 
-_$InvokeTransactionResponseResultImpl
-    _$$InvokeTransactionResponseResultImplFromJson(Map<String, dynamic> json) =>
-        _$InvokeTransactionResponseResultImpl(
-          transaction_hash: json['transaction_hash'] as String,
-        );
+_InvokeTransactionResponseResult _$InvokeTransactionResponseResultFromJson(
+        Map<String, dynamic> json) =>
+    _InvokeTransactionResponseResult(
+      transaction_hash: json['transaction_hash'] as String,
+    );
 
-Map<String, dynamic> _$$InvokeTransactionResponseResultImplToJson(
-        _$InvokeTransactionResponseResultImpl instance) =>
+Map<String, dynamic> _$InvokeTransactionResponseResultToJson(
+        _InvokeTransactionResponseResult instance) =>
     <String, dynamic>{
       'transaction_hash': instance.transaction_hash,
     };

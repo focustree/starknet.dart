@@ -6,81 +6,76 @@ part of 'json_rpc_api_error.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$ContractErrorDataImpl _$$ContractErrorDataImplFromJson(
-        Map<String, dynamic> json) =>
-    _$ContractErrorDataImpl(
+_ContractErrorData _$ContractErrorDataFromJson(Map<String, dynamic> json) =>
+    _ContractErrorData(
       revertError: json['revert_error'] as String,
     );
 
-Map<String, dynamic> _$$ContractErrorDataImplToJson(
-        _$ContractErrorDataImpl instance) =>
+Map<String, dynamic> _$ContractErrorDataToJson(_ContractErrorData instance) =>
     <String, dynamic>{
       'revert_error': instance.revertError,
     };
 
-_$TransactionExecutionErrorDataImpl
-    _$$TransactionExecutionErrorDataImplFromJson(Map<String, dynamic> json) =>
-        _$TransactionExecutionErrorDataImpl(
-          transactionIndex: (json['transaction_index'] as num).toInt(),
-          executionError: json['execution_error'] as String,
-        );
+_TransactionExecutionErrorData _$TransactionExecutionErrorDataFromJson(
+        Map<String, dynamic> json) =>
+    _TransactionExecutionErrorData(
+      transactionIndex: (json['transaction_index'] as num).toInt(),
+      executionError: json['execution_error'] as String,
+    );
 
-Map<String, dynamic> _$$TransactionExecutionErrorDataImplToJson(
-        _$TransactionExecutionErrorDataImpl instance) =>
+Map<String, dynamic> _$TransactionExecutionErrorDataToJson(
+        _TransactionExecutionErrorData instance) =>
     <String, dynamic>{
       'transaction_index': instance.transactionIndex,
       'execution_error': instance.executionError,
     };
 
-_$ContractErrorImpl _$$ContractErrorImplFromJson(Map<String, dynamic> json) =>
-    _$ContractErrorImpl(
+ContractError _$ContractErrorFromJson(Map<String, dynamic> json) =>
+    ContractError(
       data: ContractErrorData.fromJson(json['data'] as Map<String, dynamic>),
       $type: json['starkNetRuntimeTypeToRemove'] as String?,
     );
 
-Map<String, dynamic> _$$ContractErrorImplToJson(_$ContractErrorImpl instance) =>
+Map<String, dynamic> _$ContractErrorToJson(ContractError instance) =>
     <String, dynamic>{
       'data': instance.data.toJson(),
       'starkNetRuntimeTypeToRemove': instance.$type,
     };
 
-_$TransactionExecutionErrorImpl _$$TransactionExecutionErrorImplFromJson(
+TransactionExecutionError _$TransactionExecutionErrorFromJson(
         Map<String, dynamic> json) =>
-    _$TransactionExecutionErrorImpl(
+    TransactionExecutionError(
       data: TransactionExecutionErrorData.fromJson(
           json['data'] as Map<String, dynamic>),
       $type: json['starkNetRuntimeTypeToRemove'] as String?,
     );
 
-Map<String, dynamic> _$$TransactionExecutionErrorImplToJson(
-        _$TransactionExecutionErrorImpl instance) =>
+Map<String, dynamic> _$TransactionExecutionErrorToJson(
+        TransactionExecutionError instance) =>
     <String, dynamic>{
       'data': instance.data.toJson(),
       'starkNetRuntimeTypeToRemove': instance.$type,
     };
 
-_$StringErrorImpl _$$StringErrorImplFromJson(Map<String, dynamic> json) =>
-    _$StringErrorImpl(
+StringError _$StringErrorFromJson(Map<String, dynamic> json) => StringError(
       json['message'] as String,
       $type: json['starkNetRuntimeTypeToRemove'] as String?,
     );
 
-Map<String, dynamic> _$$StringErrorImplToJson(_$StringErrorImpl instance) =>
+Map<String, dynamic> _$StringErrorToJson(StringError instance) =>
     <String, dynamic>{
       'message': instance.message,
       'starkNetRuntimeTypeToRemove': instance.$type,
     };
 
-_$JsonRpcApiErrorImpl _$$JsonRpcApiErrorImplFromJson(
-        Map<String, dynamic> json) =>
-    _$JsonRpcApiErrorImpl(
+_JsonRpcApiError _$JsonRpcApiErrorFromJson(Map<String, dynamic> json) =>
+    _JsonRpcApiError(
       code: $enumDecode(_$JsonRpcApiErrorCodeEnumMap, json['code']),
       message: json['message'] as String,
       errorData: const JsonRpcApiErrorDataConverter().fromJson(json['data']),
     );
 
-Map<String, dynamic> _$$JsonRpcApiErrorImplToJson(
-        _$JsonRpcApiErrorImpl instance) =>
+Map<String, dynamic> _$JsonRpcApiErrorToJson(_JsonRpcApiError instance) =>
     <String, dynamic>{
       'code': _$JsonRpcApiErrorCodeEnumMap[instance.code]!,
       'message': instance.message,

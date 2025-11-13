@@ -6,9 +6,9 @@ part of 'avnu_sponsor_activity.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$AvnuSponsorActivityResultImpl _$$AvnuSponsorActivityResultImplFromJson(
+AvnuSponsorActivityResult _$AvnuSponsorActivityResultFromJson(
         Map<String, dynamic> json) =>
-    _$AvnuSponsorActivityResultImpl(
+    AvnuSponsorActivityResult(
       json['name'] as String,
       (json['succeededTxCount'] as num).toInt(),
       (json['revertedTxCount'] as num).toInt(),
@@ -20,8 +20,8 @@ _$AvnuSponsorActivityResultImpl _$$AvnuSponsorActivityResultImplFromJson(
       $type: json['runtimeType'] as String?,
     );
 
-Map<String, dynamic> _$$AvnuSponsorActivityResultImplToJson(
-        _$AvnuSponsorActivityResultImpl instance) =>
+Map<String, dynamic> _$AvnuSponsorActivityResultToJson(
+        AvnuSponsorActivityResult instance) =>
     <String, dynamic>{
       'name': instance.name,
       'succeededTxCount': instance.succeededTxCount,
@@ -34,16 +34,16 @@ Map<String, dynamic> _$$AvnuSponsorActivityResultImplToJson(
       'runtimeType': instance.$type,
     };
 
-_$AvnuSponsorActivityErrorImpl _$$AvnuSponsorActivityErrorImplFromJson(
+AvnuSponsorActivityError _$AvnuSponsorActivityErrorFromJson(
         Map<String, dynamic> json) =>
-    _$AvnuSponsorActivityErrorImpl(
+    AvnuSponsorActivityError(
       (json['messages'] as List<dynamic>).map((e) => e as String).toList(),
       json['revertError'] as String?,
       $type: json['runtimeType'] as String?,
     );
 
-Map<String, dynamic> _$$AvnuSponsorActivityErrorImplToJson(
-        _$AvnuSponsorActivityErrorImpl instance) =>
+Map<String, dynamic> _$AvnuSponsorActivityErrorToJson(
+        AvnuSponsorActivityError instance) =>
     <String, dynamic>{
       'messages': instance.messages,
       'revertError': instance.revertError,

@@ -6,16 +6,14 @@ part of 'msg_to_l2.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$MsgToL2Impl _$$MsgToL2ImplFromJson(Map<String, dynamic> json) =>
-    _$MsgToL2Impl(
+_MsgToL2 _$MsgToL2FromJson(Map<String, dynamic> json) => _MsgToL2(
       fromAddress: json['from_address'] as String?,
       payload: (json['payload'] as List<dynamic>?)
           ?.map((e) => Felt.fromJson(e as String))
           .toList(),
     );
 
-Map<String, dynamic> _$$MsgToL2ImplToJson(_$MsgToL2Impl instance) =>
-    <String, dynamic>{
+Map<String, dynamic> _$MsgToL2ToJson(_MsgToL2 instance) => <String, dynamic>{
       'from_address': instance.fromAddress,
       'payload': instance.payload?.map((e) => e.toJson()).toList(),
     };

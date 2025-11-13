@@ -1,5 +1,5 @@
-// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// coverage:ignore-file
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
@@ -9,101 +9,63 @@ part of 'avnu_deploy_account.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// dart format off
 T _$identity<T>(T value) => value;
-
-final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
-
-AvnuDeploymentData _$AvnuDeploymentDataFromJson(Map<String, dynamic> json) {
-  return _AvnuDeploymentData.fromJson(json);
-}
 
 /// @nodoc
 mixin _$AvnuDeploymentData {
   @JsonKey(name: 'class_hash')
-  String get classHash => throw _privateConstructorUsedError;
-  String get salt => throw _privateConstructorUsedError;
-  String get unique => throw _privateConstructorUsedError;
-  List<String> get calldata => throw _privateConstructorUsedError;
-  List<String> get sigdata => throw _privateConstructorUsedError;
-
-  /// Serializes this AvnuDeploymentData to a JSON map.
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  String get classHash;
+  String get salt;
+  String get unique;
+  List<String> get calldata;
+  List<String> get sigdata;
 
   /// Create a copy of AvnuDeploymentData
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $AvnuDeploymentDataCopyWith<AvnuDeploymentData> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $AvnuDeploymentDataCopyWith<$Res> {
-  factory $AvnuDeploymentDataCopyWith(
-          AvnuDeploymentData value, $Res Function(AvnuDeploymentData) then) =
-      _$AvnuDeploymentDataCopyWithImpl<$Res, AvnuDeploymentData>;
-  @useResult
-  $Res call(
-      {@JsonKey(name: 'class_hash') String classHash,
-      String salt,
-      String unique,
-      List<String> calldata,
-      List<String> sigdata});
-}
-
-/// @nodoc
-class _$AvnuDeploymentDataCopyWithImpl<$Res, $Val extends AvnuDeploymentData>
-    implements $AvnuDeploymentDataCopyWith<$Res> {
-  _$AvnuDeploymentDataCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-
-  /// Create a copy of AvnuDeploymentData
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
+  $AvnuDeploymentDataCopyWith<AvnuDeploymentData> get copyWith =>
+      _$AvnuDeploymentDataCopyWithImpl<AvnuDeploymentData>(
+          this as AvnuDeploymentData, _$identity);
+
+  /// Serializes this AvnuDeploymentData to a JSON map.
+  Map<String, dynamic> toJson();
+
   @override
-  $Res call({
-    Object? classHash = null,
-    Object? salt = null,
-    Object? unique = null,
-    Object? calldata = null,
-    Object? sigdata = null,
-  }) {
-    return _then(_value.copyWith(
-      classHash: null == classHash
-          ? _value.classHash
-          : classHash // ignore: cast_nullable_to_non_nullable
-              as String,
-      salt: null == salt
-          ? _value.salt
-          : salt // ignore: cast_nullable_to_non_nullable
-              as String,
-      unique: null == unique
-          ? _value.unique
-          : unique // ignore: cast_nullable_to_non_nullable
-              as String,
-      calldata: null == calldata
-          ? _value.calldata
-          : calldata // ignore: cast_nullable_to_non_nullable
-              as List<String>,
-      sigdata: null == sigdata
-          ? _value.sigdata
-          : sigdata // ignore: cast_nullable_to_non_nullable
-              as List<String>,
-    ) as $Val);
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is AvnuDeploymentData &&
+            (identical(other.classHash, classHash) ||
+                other.classHash == classHash) &&
+            (identical(other.salt, salt) || other.salt == salt) &&
+            (identical(other.unique, unique) || other.unique == unique) &&
+            const DeepCollectionEquality().equals(other.calldata, calldata) &&
+            const DeepCollectionEquality().equals(other.sigdata, sigdata));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(
+      runtimeType,
+      classHash,
+      salt,
+      unique,
+      const DeepCollectionEquality().hash(calldata),
+      const DeepCollectionEquality().hash(sigdata));
+
+  @override
+  String toString() {
+    return 'AvnuDeploymentData(classHash: $classHash, salt: $salt, unique: $unique, calldata: $calldata, sigdata: $sigdata)';
   }
 }
 
 /// @nodoc
-abstract class _$$AvnuDeploymentDataImplCopyWith<$Res>
-    implements $AvnuDeploymentDataCopyWith<$Res> {
-  factory _$$AvnuDeploymentDataImplCopyWith(_$AvnuDeploymentDataImpl value,
-          $Res Function(_$AvnuDeploymentDataImpl) then) =
-      __$$AvnuDeploymentDataImplCopyWithImpl<$Res>;
-  @override
+abstract mixin class $AvnuDeploymentDataCopyWith<$Res> {
+  factory $AvnuDeploymentDataCopyWith(
+          AvnuDeploymentData value, $Res Function(AvnuDeploymentData) _then) =
+      _$AvnuDeploymentDataCopyWithImpl;
   @useResult
   $Res call(
       {@JsonKey(name: 'class_hash') String classHash,
@@ -114,12 +76,12 @@ abstract class _$$AvnuDeploymentDataImplCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$AvnuDeploymentDataImplCopyWithImpl<$Res>
-    extends _$AvnuDeploymentDataCopyWithImpl<$Res, _$AvnuDeploymentDataImpl>
-    implements _$$AvnuDeploymentDataImplCopyWith<$Res> {
-  __$$AvnuDeploymentDataImplCopyWithImpl(_$AvnuDeploymentDataImpl _value,
-      $Res Function(_$AvnuDeploymentDataImpl) _then)
-      : super(_value, _then);
+class _$AvnuDeploymentDataCopyWithImpl<$Res>
+    implements $AvnuDeploymentDataCopyWith<$Res> {
+  _$AvnuDeploymentDataCopyWithImpl(this._self, this._then);
+
+  final AvnuDeploymentData _self;
+  final $Res Function(AvnuDeploymentData) _then;
 
   /// Create a copy of AvnuDeploymentData
   /// with the given fields replaced by the non-null parameter values.
@@ -132,35 +94,205 @@ class __$$AvnuDeploymentDataImplCopyWithImpl<$Res>
     Object? calldata = null,
     Object? sigdata = null,
   }) {
-    return _then(_$AvnuDeploymentDataImpl(
+    return _then(_self.copyWith(
       classHash: null == classHash
-          ? _value.classHash
+          ? _self.classHash
           : classHash // ignore: cast_nullable_to_non_nullable
               as String,
       salt: null == salt
-          ? _value.salt
+          ? _self.salt
           : salt // ignore: cast_nullable_to_non_nullable
               as String,
       unique: null == unique
-          ? _value.unique
+          ? _self.unique
           : unique // ignore: cast_nullable_to_non_nullable
               as String,
       calldata: null == calldata
-          ? _value._calldata
+          ? _self.calldata
           : calldata // ignore: cast_nullable_to_non_nullable
               as List<String>,
       sigdata: null == sigdata
-          ? _value._sigdata
+          ? _self.sigdata
           : sigdata // ignore: cast_nullable_to_non_nullable
               as List<String>,
     ));
   }
 }
 
+/// Adds pattern-matching-related methods to [AvnuDeploymentData].
+extension AvnuDeploymentDataPatterns on AvnuDeploymentData {
+  /// A variant of `map` that fallback to returning `orElse`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(_AvnuDeploymentData value)? $default, {
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _AvnuDeploymentData() when $default != null:
+        return $default(_that);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// Callbacks receives the raw object, upcasted.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case final Subclass2 value:
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(_AvnuDeploymentData value) $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _AvnuDeploymentData():
+        return $default(_that);
+      case _:
+        throw StateError('Unexpected subclass');
+    }
+  }
+
+  /// A variant of `map` that fallback to returning `null`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>(
+    TResult? Function(_AvnuDeploymentData value)? $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _AvnuDeploymentData() when $default != null:
+        return $default(_that);
+      case _:
+        return null;
+    }
+  }
+
+  /// A variant of `when` that fallback to an `orElse` callback.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(@JsonKey(name: 'class_hash') String classHash, String salt,
+            String unique, List<String> calldata, List<String> sigdata)?
+        $default, {
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _AvnuDeploymentData() when $default != null:
+        return $default(_that.classHash, _that.salt, _that.unique,
+            _that.calldata, _that.sigdata);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// As opposed to `map`, this offers destructuring.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case Subclass2(:final field2):
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>(
+    TResult Function(@JsonKey(name: 'class_hash') String classHash, String salt,
+            String unique, List<String> calldata, List<String> sigdata)
+        $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _AvnuDeploymentData():
+        return $default(_that.classHash, _that.salt, _that.unique,
+            _that.calldata, _that.sigdata);
+      case _:
+        throw StateError('Unexpected subclass');
+    }
+  }
+
+  /// A variant of `when` that fallback to returning `null`
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>(
+    TResult? Function(
+            @JsonKey(name: 'class_hash') String classHash,
+            String salt,
+            String unique,
+            List<String> calldata,
+            List<String> sigdata)?
+        $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _AvnuDeploymentData() when $default != null:
+        return $default(_that.classHash, _that.salt, _that.unique,
+            _that.calldata, _that.sigdata);
+      case _:
+        return null;
+    }
+  }
+}
+
 /// @nodoc
 @JsonSerializable()
-class _$AvnuDeploymentDataImpl implements _AvnuDeploymentData {
-  const _$AvnuDeploymentDataImpl(
+class _AvnuDeploymentData implements AvnuDeploymentData {
+  const _AvnuDeploymentData(
       {@JsonKey(name: 'class_hash') required this.classHash,
       required this.salt,
       required this.unique,
@@ -168,9 +300,8 @@ class _$AvnuDeploymentDataImpl implements _AvnuDeploymentData {
       required final List<String> sigdata})
       : _calldata = calldata,
         _sigdata = sigdata;
-
-  factory _$AvnuDeploymentDataImpl.fromJson(Map<String, dynamic> json) =>
-      _$$AvnuDeploymentDataImplFromJson(json);
+  factory _AvnuDeploymentData.fromJson(Map<String, dynamic> json) =>
+      _$AvnuDeploymentDataFromJson(json);
 
   @override
   @JsonKey(name: 'class_hash')
@@ -195,16 +326,26 @@ class _$AvnuDeploymentDataImpl implements _AvnuDeploymentData {
     return EqualUnmodifiableListView(_sigdata);
   }
 
+  /// Create a copy of AvnuDeploymentData
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  String toString() {
-    return 'AvnuDeploymentData(classHash: $classHash, salt: $salt, unique: $unique, calldata: $calldata, sigdata: $sigdata)';
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  _$AvnuDeploymentDataCopyWith<_AvnuDeploymentData> get copyWith =>
+      __$AvnuDeploymentDataCopyWithImpl<_AvnuDeploymentData>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$AvnuDeploymentDataToJson(
+      this,
+    );
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$AvnuDeploymentDataImpl &&
+            other is _AvnuDeploymentData &&
             (identical(other.classHash, classHash) ||
                 other.classHash == classHash) &&
             (identical(other.salt, salt) || other.salt == salt) &&
@@ -223,197 +364,93 @@ class _$AvnuDeploymentDataImpl implements _AvnuDeploymentData {
       const DeepCollectionEquality().hash(_calldata),
       const DeepCollectionEquality().hash(_sigdata));
 
-  /// Create a copy of AvnuDeploymentData
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  @pragma('vm:prefer-inline')
-  _$$AvnuDeploymentDataImplCopyWith<_$AvnuDeploymentDataImpl> get copyWith =>
-      __$$AvnuDeploymentDataImplCopyWithImpl<_$AvnuDeploymentDataImpl>(
-          this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$AvnuDeploymentDataImplToJson(
-      this,
-    );
+  String toString() {
+    return 'AvnuDeploymentData(classHash: $classHash, salt: $salt, unique: $unique, calldata: $calldata, sigdata: $sigdata)';
   }
 }
 
-abstract class _AvnuDeploymentData implements AvnuDeploymentData {
-  const factory _AvnuDeploymentData(
-      {@JsonKey(name: 'class_hash') required final String classHash,
-      required final String salt,
-      required final String unique,
-      required final List<String> calldata,
-      required final List<String> sigdata}) = _$AvnuDeploymentDataImpl;
+/// @nodoc
+abstract mixin class _$AvnuDeploymentDataCopyWith<$Res>
+    implements $AvnuDeploymentDataCopyWith<$Res> {
+  factory _$AvnuDeploymentDataCopyWith(
+          _AvnuDeploymentData value, $Res Function(_AvnuDeploymentData) _then) =
+      __$AvnuDeploymentDataCopyWithImpl;
+  @override
+  @useResult
+  $Res call(
+      {@JsonKey(name: 'class_hash') String classHash,
+      String salt,
+      String unique,
+      List<String> calldata,
+      List<String> sigdata});
+}
 
-  factory _AvnuDeploymentData.fromJson(Map<String, dynamic> json) =
-      _$AvnuDeploymentDataImpl.fromJson;
+/// @nodoc
+class __$AvnuDeploymentDataCopyWithImpl<$Res>
+    implements _$AvnuDeploymentDataCopyWith<$Res> {
+  __$AvnuDeploymentDataCopyWithImpl(this._self, this._then);
 
-  @override
-  @JsonKey(name: 'class_hash')
-  String get classHash;
-  @override
-  String get salt;
-  @override
-  String get unique;
-  @override
-  List<String> get calldata;
-  @override
-  List<String> get sigdata;
+  final _AvnuDeploymentData _self;
+  final $Res Function(_AvnuDeploymentData) _then;
 
   /// Create a copy of AvnuDeploymentData
   /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$AvnuDeploymentDataImplCopyWith<_$AvnuDeploymentDataImpl> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-AvnuDeployAccountRequest _$AvnuDeployAccountRequestFromJson(
-    Map<String, dynamic> json) {
-  return _AvnuDeployAccountRequest.fromJson(json);
-}
-
-/// @nodoc
-mixin _$AvnuDeployAccountRequest {
-  String get userAddress => throw _privateConstructorUsedError;
-  AvnuDeploymentData get deploymentData => throw _privateConstructorUsedError;
-
-  /// Serializes this AvnuDeployAccountRequest to a JSON map.
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-
-  /// Create a copy of AvnuDeployAccountRequest
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  $AvnuDeployAccountRequestCopyWith<AvnuDeployAccountRequest> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $AvnuDeployAccountRequestCopyWith<$Res> {
-  factory $AvnuDeployAccountRequestCopyWith(AvnuDeployAccountRequest value,
-          $Res Function(AvnuDeployAccountRequest) then) =
-      _$AvnuDeployAccountRequestCopyWithImpl<$Res, AvnuDeployAccountRequest>;
-  @useResult
-  $Res call({String userAddress, AvnuDeploymentData deploymentData});
-
-  $AvnuDeploymentDataCopyWith<$Res> get deploymentData;
-}
-
-/// @nodoc
-class _$AvnuDeployAccountRequestCopyWithImpl<$Res,
-        $Val extends AvnuDeployAccountRequest>
-    implements $AvnuDeployAccountRequestCopyWith<$Res> {
-  _$AvnuDeployAccountRequestCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-
-  /// Create a copy of AvnuDeployAccountRequest
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
-  @override
   $Res call({
-    Object? userAddress = null,
-    Object? deploymentData = null,
+    Object? classHash = null,
+    Object? salt = null,
+    Object? unique = null,
+    Object? calldata = null,
+    Object? sigdata = null,
   }) {
-    return _then(_value.copyWith(
-      userAddress: null == userAddress
-          ? _value.userAddress
-          : userAddress // ignore: cast_nullable_to_non_nullable
+    return _then(_AvnuDeploymentData(
+      classHash: null == classHash
+          ? _self.classHash
+          : classHash // ignore: cast_nullable_to_non_nullable
               as String,
-      deploymentData: null == deploymentData
-          ? _value.deploymentData
-          : deploymentData // ignore: cast_nullable_to_non_nullable
-              as AvnuDeploymentData,
-    ) as $Val);
-  }
-
-  /// Create a copy of AvnuDeployAccountRequest
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $AvnuDeploymentDataCopyWith<$Res> get deploymentData {
-    return $AvnuDeploymentDataCopyWith<$Res>(_value.deploymentData, (value) {
-      return _then(_value.copyWith(deploymentData: value) as $Val);
-    });
-  }
-}
-
-/// @nodoc
-abstract class _$$AvnuDeployAccountRequestImplCopyWith<$Res>
-    implements $AvnuDeployAccountRequestCopyWith<$Res> {
-  factory _$$AvnuDeployAccountRequestImplCopyWith(
-          _$AvnuDeployAccountRequestImpl value,
-          $Res Function(_$AvnuDeployAccountRequestImpl) then) =
-      __$$AvnuDeployAccountRequestImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call({String userAddress, AvnuDeploymentData deploymentData});
-
-  @override
-  $AvnuDeploymentDataCopyWith<$Res> get deploymentData;
-}
-
-/// @nodoc
-class __$$AvnuDeployAccountRequestImplCopyWithImpl<$Res>
-    extends _$AvnuDeployAccountRequestCopyWithImpl<$Res,
-        _$AvnuDeployAccountRequestImpl>
-    implements _$$AvnuDeployAccountRequestImplCopyWith<$Res> {
-  __$$AvnuDeployAccountRequestImplCopyWithImpl(
-      _$AvnuDeployAccountRequestImpl _value,
-      $Res Function(_$AvnuDeployAccountRequestImpl) _then)
-      : super(_value, _then);
-
-  /// Create a copy of AvnuDeployAccountRequest
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? userAddress = null,
-    Object? deploymentData = null,
-  }) {
-    return _then(_$AvnuDeployAccountRequestImpl(
-      userAddress: null == userAddress
-          ? _value.userAddress
-          : userAddress // ignore: cast_nullable_to_non_nullable
+      salt: null == salt
+          ? _self.salt
+          : salt // ignore: cast_nullable_to_non_nullable
               as String,
-      deploymentData: null == deploymentData
-          ? _value.deploymentData
-          : deploymentData // ignore: cast_nullable_to_non_nullable
-              as AvnuDeploymentData,
+      unique: null == unique
+          ? _self.unique
+          : unique // ignore: cast_nullable_to_non_nullable
+              as String,
+      calldata: null == calldata
+          ? _self._calldata
+          : calldata // ignore: cast_nullable_to_non_nullable
+              as List<String>,
+      sigdata: null == sigdata
+          ? _self._sigdata
+          : sigdata // ignore: cast_nullable_to_non_nullable
+              as List<String>,
     ));
   }
 }
 
 /// @nodoc
-@JsonSerializable()
-class _$AvnuDeployAccountRequestImpl implements _AvnuDeployAccountRequest {
-  const _$AvnuDeployAccountRequestImpl(
-      {required this.userAddress, required this.deploymentData});
+mixin _$AvnuDeployAccountRequest {
+  String get userAddress;
+  AvnuDeploymentData get deploymentData;
 
-  factory _$AvnuDeployAccountRequestImpl.fromJson(Map<String, dynamic> json) =>
-      _$$AvnuDeployAccountRequestImplFromJson(json);
+  /// Create a copy of AvnuDeployAccountRequest
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  $AvnuDeployAccountRequestCopyWith<AvnuDeployAccountRequest> get copyWith =>
+      _$AvnuDeployAccountRequestCopyWithImpl<AvnuDeployAccountRequest>(
+          this as AvnuDeployAccountRequest, _$identity);
 
-  @override
-  final String userAddress;
-  @override
-  final AvnuDeploymentData deploymentData;
-
-  @override
-  String toString() {
-    return 'AvnuDeployAccountRequest(userAddress: $userAddress, deploymentData: $deploymentData)';
-  }
+  /// Serializes this AvnuDeployAccountRequest to a JSON map.
+  Map<String, dynamic> toJson();
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$AvnuDeployAccountRequestImpl &&
+            other is AvnuDeployAccountRequest &&
             (identical(other.userAddress, userAddress) ||
                 other.userAddress == userAddress) &&
             (identical(other.deploymentData, deploymentData) ||
@@ -424,43 +461,323 @@ class _$AvnuDeployAccountRequestImpl implements _AvnuDeployAccountRequest {
   @override
   int get hashCode => Object.hash(runtimeType, userAddress, deploymentData);
 
-  /// Create a copy of AvnuDeployAccountRequest
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  @pragma('vm:prefer-inline')
-  _$$AvnuDeployAccountRequestImplCopyWith<_$AvnuDeployAccountRequestImpl>
-      get copyWith => __$$AvnuDeployAccountRequestImplCopyWithImpl<
-          _$AvnuDeployAccountRequestImpl>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$AvnuDeployAccountRequestImplToJson(
-      this,
-    );
+  String toString() {
+    return 'AvnuDeployAccountRequest(userAddress: $userAddress, deploymentData: $deploymentData)';
   }
 }
 
-abstract class _AvnuDeployAccountRequest implements AvnuDeployAccountRequest {
-  const factory _AvnuDeployAccountRequest(
-          {required final String userAddress,
-          required final AvnuDeploymentData deploymentData}) =
-      _$AvnuDeployAccountRequestImpl;
+/// @nodoc
+abstract mixin class $AvnuDeployAccountRequestCopyWith<$Res> {
+  factory $AvnuDeployAccountRequestCopyWith(AvnuDeployAccountRequest value,
+          $Res Function(AvnuDeployAccountRequest) _then) =
+      _$AvnuDeployAccountRequestCopyWithImpl;
+  @useResult
+  $Res call({String userAddress, AvnuDeploymentData deploymentData});
 
-  factory _AvnuDeployAccountRequest.fromJson(Map<String, dynamic> json) =
-      _$AvnuDeployAccountRequestImpl.fromJson;
+  $AvnuDeploymentDataCopyWith<$Res> get deploymentData;
+}
+
+/// @nodoc
+class _$AvnuDeployAccountRequestCopyWithImpl<$Res>
+    implements $AvnuDeployAccountRequestCopyWith<$Res> {
+  _$AvnuDeployAccountRequestCopyWithImpl(this._self, this._then);
+
+  final AvnuDeployAccountRequest _self;
+  final $Res Function(AvnuDeployAccountRequest) _then;
+
+  /// Create a copy of AvnuDeployAccountRequest
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? userAddress = null,
+    Object? deploymentData = null,
+  }) {
+    return _then(_self.copyWith(
+      userAddress: null == userAddress
+          ? _self.userAddress
+          : userAddress // ignore: cast_nullable_to_non_nullable
+              as String,
+      deploymentData: null == deploymentData
+          ? _self.deploymentData
+          : deploymentData // ignore: cast_nullable_to_non_nullable
+              as AvnuDeploymentData,
+    ));
+  }
+
+  /// Create a copy of AvnuDeployAccountRequest
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $AvnuDeploymentDataCopyWith<$Res> get deploymentData {
+    return $AvnuDeploymentDataCopyWith<$Res>(_self.deploymentData, (value) {
+      return _then(_self.copyWith(deploymentData: value));
+    });
+  }
+}
+
+/// Adds pattern-matching-related methods to [AvnuDeployAccountRequest].
+extension AvnuDeployAccountRequestPatterns on AvnuDeployAccountRequest {
+  /// A variant of `map` that fallback to returning `orElse`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(_AvnuDeployAccountRequest value)? $default, {
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _AvnuDeployAccountRequest() when $default != null:
+        return $default(_that);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// Callbacks receives the raw object, upcasted.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case final Subclass2 value:
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(_AvnuDeployAccountRequest value) $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _AvnuDeployAccountRequest():
+        return $default(_that);
+      case _:
+        throw StateError('Unexpected subclass');
+    }
+  }
+
+  /// A variant of `map` that fallback to returning `null`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>(
+    TResult? Function(_AvnuDeployAccountRequest value)? $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _AvnuDeployAccountRequest() when $default != null:
+        return $default(_that);
+      case _:
+        return null;
+    }
+  }
+
+  /// A variant of `when` that fallback to an `orElse` callback.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(String userAddress, AvnuDeploymentData deploymentData)?
+        $default, {
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _AvnuDeployAccountRequest() when $default != null:
+        return $default(_that.userAddress, _that.deploymentData);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// As opposed to `map`, this offers destructuring.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case Subclass2(:final field2):
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>(
+    TResult Function(String userAddress, AvnuDeploymentData deploymentData)
+        $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _AvnuDeployAccountRequest():
+        return $default(_that.userAddress, _that.deploymentData);
+      case _:
+        throw StateError('Unexpected subclass');
+    }
+  }
+
+  /// A variant of `when` that fallback to returning `null`
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>(
+    TResult? Function(String userAddress, AvnuDeploymentData deploymentData)?
+        $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _AvnuDeployAccountRequest() when $default != null:
+        return $default(_that.userAddress, _that.deploymentData);
+      case _:
+        return null;
+    }
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _AvnuDeployAccountRequest implements AvnuDeployAccountRequest {
+  const _AvnuDeployAccountRequest(
+      {required this.userAddress, required this.deploymentData});
+  factory _AvnuDeployAccountRequest.fromJson(Map<String, dynamic> json) =>
+      _$AvnuDeployAccountRequestFromJson(json);
 
   @override
-  String get userAddress;
+  final String userAddress;
   @override
-  AvnuDeploymentData get deploymentData;
+  final AvnuDeploymentData deploymentData;
 
   /// Create a copy of AvnuDeployAccountRequest
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$AvnuDeployAccountRequestImplCopyWith<_$AvnuDeployAccountRequestImpl>
-      get copyWith => throw _privateConstructorUsedError;
+  @pragma('vm:prefer-inline')
+  _$AvnuDeployAccountRequestCopyWith<_AvnuDeployAccountRequest> get copyWith =>
+      __$AvnuDeployAccountRequestCopyWithImpl<_AvnuDeployAccountRequest>(
+          this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$AvnuDeployAccountRequestToJson(
+      this,
+    );
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _AvnuDeployAccountRequest &&
+            (identical(other.userAddress, userAddress) ||
+                other.userAddress == userAddress) &&
+            (identical(other.deploymentData, deploymentData) ||
+                other.deploymentData == deploymentData));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(runtimeType, userAddress, deploymentData);
+
+  @override
+  String toString() {
+    return 'AvnuDeployAccountRequest(userAddress: $userAddress, deploymentData: $deploymentData)';
+  }
+}
+
+/// @nodoc
+abstract mixin class _$AvnuDeployAccountRequestCopyWith<$Res>
+    implements $AvnuDeployAccountRequestCopyWith<$Res> {
+  factory _$AvnuDeployAccountRequestCopyWith(_AvnuDeployAccountRequest value,
+          $Res Function(_AvnuDeployAccountRequest) _then) =
+      __$AvnuDeployAccountRequestCopyWithImpl;
+  @override
+  @useResult
+  $Res call({String userAddress, AvnuDeploymentData deploymentData});
+
+  @override
+  $AvnuDeploymentDataCopyWith<$Res> get deploymentData;
+}
+
+/// @nodoc
+class __$AvnuDeployAccountRequestCopyWithImpl<$Res>
+    implements _$AvnuDeployAccountRequestCopyWith<$Res> {
+  __$AvnuDeployAccountRequestCopyWithImpl(this._self, this._then);
+
+  final _AvnuDeployAccountRequest _self;
+  final $Res Function(_AvnuDeployAccountRequest) _then;
+
+  /// Create a copy of AvnuDeployAccountRequest
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $Res call({
+    Object? userAddress = null,
+    Object? deploymentData = null,
+  }) {
+    return _then(_AvnuDeployAccountRequest(
+      userAddress: null == userAddress
+          ? _self.userAddress
+          : userAddress // ignore: cast_nullable_to_non_nullable
+              as String,
+      deploymentData: null == deploymentData
+          ? _self.deploymentData
+          : deploymentData // ignore: cast_nullable_to_non_nullable
+              as AvnuDeploymentData,
+    ));
+  }
+
+  /// Create a copy of AvnuDeployAccountRequest
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $AvnuDeploymentDataCopyWith<$Res> get deploymentData {
+    return $AvnuDeploymentDataCopyWith<$Res>(_self.deploymentData, (value) {
+      return _then(_self.copyWith(deploymentData: value));
+    });
+  }
 }
 
 AvnuDeployAccountResponse _$AvnuDeployAccountResponseFromJson(
@@ -482,133 +799,240 @@ AvnuDeployAccountResponse _$AvnuDeployAccountResponseFromJson(
 
 /// @nodoc
 mixin _$AvnuDeployAccountResponse {
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(String transactionHash) result,
-    required TResult Function(List<String> messages, String? revertError) error,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String transactionHash)? result,
-    TResult? Function(List<String> messages, String? revertError)? error,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String transactionHash)? result,
-    TResult Function(List<String> messages, String? revertError)? error,
-    required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(AvnuDeployAccountResult value) result,
-    required TResult Function(AvnuDeployAccountError value) error,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(AvnuDeployAccountResult value)? result,
-    TResult? Function(AvnuDeployAccountError value)? error,
-  }) =>
-      throw _privateConstructorUsedError;
+  /// Serializes this AvnuDeployAccountResponse to a JSON map.
+  Map<String, dynamic> toJson();
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is AvnuDeployAccountResponse);
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  String toString() {
+    return 'AvnuDeployAccountResponse()';
+  }
+}
+
+/// @nodoc
+class $AvnuDeployAccountResponseCopyWith<$Res> {
+  $AvnuDeployAccountResponseCopyWith(
+      AvnuDeployAccountResponse _, $Res Function(AvnuDeployAccountResponse) __);
+}
+
+/// Adds pattern-matching-related methods to [AvnuDeployAccountResponse].
+extension AvnuDeployAccountResponsePatterns on AvnuDeployAccountResponse {
+  /// A variant of `map` that fallback to returning `orElse`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(AvnuDeployAccountResult value)? result,
     TResult Function(AvnuDeployAccountError value)? error,
     required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
-
-  /// Serializes this AvnuDeployAccountResponse to a JSON map.
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $AvnuDeployAccountResponseCopyWith<$Res> {
-  factory $AvnuDeployAccountResponseCopyWith(AvnuDeployAccountResponse value,
-          $Res Function(AvnuDeployAccountResponse) then) =
-      _$AvnuDeployAccountResponseCopyWithImpl<$Res, AvnuDeployAccountResponse>;
-}
-
-/// @nodoc
-class _$AvnuDeployAccountResponseCopyWithImpl<$Res,
-        $Val extends AvnuDeployAccountResponse>
-    implements $AvnuDeployAccountResponseCopyWith<$Res> {
-  _$AvnuDeployAccountResponseCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-
-  /// Create a copy of AvnuDeployAccountResponse
-  /// with the given fields replaced by the non-null parameter values.
-}
-
-/// @nodoc
-abstract class _$$AvnuDeployAccountResultImplCopyWith<$Res> {
-  factory _$$AvnuDeployAccountResultImplCopyWith(
-          _$AvnuDeployAccountResultImpl value,
-          $Res Function(_$AvnuDeployAccountResultImpl) then) =
-      __$$AvnuDeployAccountResultImplCopyWithImpl<$Res>;
-  @useResult
-  $Res call({String transactionHash});
-}
-
-/// @nodoc
-class __$$AvnuDeployAccountResultImplCopyWithImpl<$Res>
-    extends _$AvnuDeployAccountResponseCopyWithImpl<$Res,
-        _$AvnuDeployAccountResultImpl>
-    implements _$$AvnuDeployAccountResultImplCopyWith<$Res> {
-  __$$AvnuDeployAccountResultImplCopyWithImpl(
-      _$AvnuDeployAccountResultImpl _value,
-      $Res Function(_$AvnuDeployAccountResultImpl) _then)
-      : super(_value, _then);
-
-  /// Create a copy of AvnuDeployAccountResponse
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? transactionHash = null,
   }) {
-    return _then(_$AvnuDeployAccountResultImpl(
-      null == transactionHash
-          ? _value.transactionHash
-          : transactionHash // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
+    final _that = this;
+    switch (_that) {
+      case AvnuDeployAccountResult() when result != null:
+        return result(_that);
+      case AvnuDeployAccountError() when error != null:
+        return error(_that);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// Callbacks receives the raw object, upcasted.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case final Subclass2 value:
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(AvnuDeployAccountResult value) result,
+    required TResult Function(AvnuDeployAccountError value) error,
+  }) {
+    final _that = this;
+    switch (_that) {
+      case AvnuDeployAccountResult():
+        return result(_that);
+      case AvnuDeployAccountError():
+        return error(_that);
+      case _:
+        throw StateError('Unexpected subclass');
+    }
+  }
+
+  /// A variant of `map` that fallback to returning `null`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(AvnuDeployAccountResult value)? result,
+    TResult? Function(AvnuDeployAccountError value)? error,
+  }) {
+    final _that = this;
+    switch (_that) {
+      case AvnuDeployAccountResult() when result != null:
+        return result(_that);
+      case AvnuDeployAccountError() when error != null:
+        return error(_that);
+      case _:
+        return null;
+    }
+  }
+
+  /// A variant of `when` that fallback to an `orElse` callback.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String transactionHash)? result,
+    TResult Function(List<String> messages, String? revertError)? error,
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case AvnuDeployAccountResult() when result != null:
+        return result(_that.transactionHash);
+      case AvnuDeployAccountError() when error != null:
+        return error(_that.messages, _that.revertError);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// As opposed to `map`, this offers destructuring.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case Subclass2(:final field2):
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String transactionHash) result,
+    required TResult Function(List<String> messages, String? revertError) error,
+  }) {
+    final _that = this;
+    switch (_that) {
+      case AvnuDeployAccountResult():
+        return result(_that.transactionHash);
+      case AvnuDeployAccountError():
+        return error(_that.messages, _that.revertError);
+      case _:
+        throw StateError('Unexpected subclass');
+    }
+  }
+
+  /// A variant of `when` that fallback to returning `null`
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String transactionHash)? result,
+    TResult? Function(List<String> messages, String? revertError)? error,
+  }) {
+    final _that = this;
+    switch (_that) {
+      case AvnuDeployAccountResult() when result != null:
+        return result(_that.transactionHash);
+      case AvnuDeployAccountError() when error != null:
+        return error(_that.messages, _that.revertError);
+      case _:
+        return null;
+    }
   }
 }
 
 /// @nodoc
 @JsonSerializable()
-class _$AvnuDeployAccountResultImpl implements AvnuDeployAccountResult {
-  const _$AvnuDeployAccountResultImpl(this.transactionHash,
-      {final String? $type})
+class AvnuDeployAccountResult implements AvnuDeployAccountResponse {
+  const AvnuDeployAccountResult(this.transactionHash, {final String? $type})
       : $type = $type ?? 'result';
+  factory AvnuDeployAccountResult.fromJson(Map<String, dynamic> json) =>
+      _$AvnuDeployAccountResultFromJson(json);
 
-  factory _$AvnuDeployAccountResultImpl.fromJson(Map<String, dynamic> json) =>
-      _$$AvnuDeployAccountResultImplFromJson(json);
-
-  @override
   final String transactionHash;
 
   @JsonKey(name: 'runtimeType')
   final String $type;
 
+  /// Create a copy of AvnuDeployAccountResponse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  $AvnuDeployAccountResultCopyWith<AvnuDeployAccountResult> get copyWith =>
+      _$AvnuDeployAccountResultCopyWithImpl<AvnuDeployAccountResult>(
+          this, _$identity);
+
   @override
-  String toString() {
-    return 'AvnuDeployAccountResponse.result(transactionHash: $transactionHash)';
+  Map<String, dynamic> toJson() {
+    return _$AvnuDeployAccountResultToJson(
+      this,
+    );
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$AvnuDeployAccountResultImpl &&
+            other is AvnuDeployAccountResult &&
             (identical(other.transactionHash, transactionHash) ||
                 other.transactionHash == transactionHash));
   }
@@ -617,178 +1041,87 @@ class _$AvnuDeployAccountResultImpl implements AvnuDeployAccountResult {
   @override
   int get hashCode => Object.hash(runtimeType, transactionHash);
 
-  /// Create a copy of AvnuDeployAccountResponse
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  @pragma('vm:prefer-inline')
-  _$$AvnuDeployAccountResultImplCopyWith<_$AvnuDeployAccountResultImpl>
-      get copyWith => __$$AvnuDeployAccountResultImplCopyWithImpl<
-          _$AvnuDeployAccountResultImpl>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(String transactionHash) result,
-    required TResult Function(List<String> messages, String? revertError) error,
-  }) {
-    return result(transactionHash);
+  String toString() {
+    return 'AvnuDeployAccountResponse.result(transactionHash: $transactionHash)';
   }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String transactionHash)? result,
-    TResult? Function(List<String> messages, String? revertError)? error,
-  }) {
-    return result?.call(transactionHash);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String transactionHash)? result,
-    TResult Function(List<String> messages, String? revertError)? error,
-    required TResult orElse(),
-  }) {
-    if (result != null) {
-      return result(transactionHash);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(AvnuDeployAccountResult value) result,
-    required TResult Function(AvnuDeployAccountError value) error,
-  }) {
-    return result(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(AvnuDeployAccountResult value)? result,
-    TResult? Function(AvnuDeployAccountError value)? error,
-  }) {
-    return result?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(AvnuDeployAccountResult value)? result,
-    TResult Function(AvnuDeployAccountError value)? error,
-    required TResult orElse(),
-  }) {
-    if (result != null) {
-      return result(this);
-    }
-    return orElse();
-  }
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$AvnuDeployAccountResultImplToJson(
-      this,
-    );
-  }
-}
-
-abstract class AvnuDeployAccountResult implements AvnuDeployAccountResponse {
-  const factory AvnuDeployAccountResult(final String transactionHash) =
-      _$AvnuDeployAccountResultImpl;
-
-  factory AvnuDeployAccountResult.fromJson(Map<String, dynamic> json) =
-      _$AvnuDeployAccountResultImpl.fromJson;
-
-  String get transactionHash;
-
-  /// Create a copy of AvnuDeployAccountResponse
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$AvnuDeployAccountResultImplCopyWith<_$AvnuDeployAccountResultImpl>
-      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$AvnuDeployAccountErrorImplCopyWith<$Res> {
-  factory _$$AvnuDeployAccountErrorImplCopyWith(
-          _$AvnuDeployAccountErrorImpl value,
-          $Res Function(_$AvnuDeployAccountErrorImpl) then) =
-      __$$AvnuDeployAccountErrorImplCopyWithImpl<$Res>;
+abstract mixin class $AvnuDeployAccountResultCopyWith<$Res>
+    implements $AvnuDeployAccountResponseCopyWith<$Res> {
+  factory $AvnuDeployAccountResultCopyWith(AvnuDeployAccountResult value,
+          $Res Function(AvnuDeployAccountResult) _then) =
+      _$AvnuDeployAccountResultCopyWithImpl;
   @useResult
-  $Res call({List<String> messages, String? revertError});
+  $Res call({String transactionHash});
 }
 
 /// @nodoc
-class __$$AvnuDeployAccountErrorImplCopyWithImpl<$Res>
-    extends _$AvnuDeployAccountResponseCopyWithImpl<$Res,
-        _$AvnuDeployAccountErrorImpl>
-    implements _$$AvnuDeployAccountErrorImplCopyWith<$Res> {
-  __$$AvnuDeployAccountErrorImplCopyWithImpl(
-      _$AvnuDeployAccountErrorImpl _value,
-      $Res Function(_$AvnuDeployAccountErrorImpl) _then)
-      : super(_value, _then);
+class _$AvnuDeployAccountResultCopyWithImpl<$Res>
+    implements $AvnuDeployAccountResultCopyWith<$Res> {
+  _$AvnuDeployAccountResultCopyWithImpl(this._self, this._then);
+
+  final AvnuDeployAccountResult _self;
+  final $Res Function(AvnuDeployAccountResult) _then;
 
   /// Create a copy of AvnuDeployAccountResponse
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
-  @override
   $Res call({
-    Object? messages = null,
-    Object? revertError = freezed,
+    Object? transactionHash = null,
   }) {
-    return _then(_$AvnuDeployAccountErrorImpl(
-      null == messages
-          ? _value._messages
-          : messages // ignore: cast_nullable_to_non_nullable
-              as List<String>,
-      freezed == revertError
-          ? _value.revertError
-          : revertError // ignore: cast_nullable_to_non_nullable
-              as String?,
+    return _then(AvnuDeployAccountResult(
+      null == transactionHash
+          ? _self.transactionHash
+          : transactionHash // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
 
 /// @nodoc
 @JsonSerializable()
-class _$AvnuDeployAccountErrorImpl implements AvnuDeployAccountError {
-  const _$AvnuDeployAccountErrorImpl(
-      final List<String> messages, this.revertError,
+class AvnuDeployAccountError implements AvnuDeployAccountResponse {
+  const AvnuDeployAccountError(final List<String> messages, this.revertError,
       {final String? $type})
       : _messages = messages,
         $type = $type ?? 'error';
-
-  factory _$AvnuDeployAccountErrorImpl.fromJson(Map<String, dynamic> json) =>
-      _$$AvnuDeployAccountErrorImplFromJson(json);
+  factory AvnuDeployAccountError.fromJson(Map<String, dynamic> json) =>
+      _$AvnuDeployAccountErrorFromJson(json);
 
   final List<String> _messages;
-  @override
   List<String> get messages {
     if (_messages is EqualUnmodifiableListView) return _messages;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_messages);
   }
 
-  @override
   final String? revertError;
 
   @JsonKey(name: 'runtimeType')
   final String $type;
 
+  /// Create a copy of AvnuDeployAccountResponse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  $AvnuDeployAccountErrorCopyWith<AvnuDeployAccountError> get copyWith =>
+      _$AvnuDeployAccountErrorCopyWithImpl<AvnuDeployAccountError>(
+          this, _$identity);
+
   @override
-  String toString() {
-    return 'AvnuDeployAccountResponse.error(messages: $messages, revertError: $revertError)';
+  Map<String, dynamic> toJson() {
+    return _$AvnuDeployAccountErrorToJson(
+      this,
+    );
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$AvnuDeployAccountErrorImpl &&
+            other is AvnuDeployAccountError &&
             const DeepCollectionEquality().equals(other._messages, _messages) &&
             (identical(other.revertError, revertError) ||
                 other.revertError == revertError));
@@ -799,99 +1132,48 @@ class _$AvnuDeployAccountErrorImpl implements AvnuDeployAccountError {
   int get hashCode => Object.hash(
       runtimeType, const DeepCollectionEquality().hash(_messages), revertError);
 
+  @override
+  String toString() {
+    return 'AvnuDeployAccountResponse.error(messages: $messages, revertError: $revertError)';
+  }
+}
+
+/// @nodoc
+abstract mixin class $AvnuDeployAccountErrorCopyWith<$Res>
+    implements $AvnuDeployAccountResponseCopyWith<$Res> {
+  factory $AvnuDeployAccountErrorCopyWith(AvnuDeployAccountError value,
+          $Res Function(AvnuDeployAccountError) _then) =
+      _$AvnuDeployAccountErrorCopyWithImpl;
+  @useResult
+  $Res call({List<String> messages, String? revertError});
+}
+
+/// @nodoc
+class _$AvnuDeployAccountErrorCopyWithImpl<$Res>
+    implements $AvnuDeployAccountErrorCopyWith<$Res> {
+  _$AvnuDeployAccountErrorCopyWithImpl(this._self, this._then);
+
+  final AvnuDeployAccountError _self;
+  final $Res Function(AvnuDeployAccountError) _then;
+
   /// Create a copy of AvnuDeployAccountResponse
   /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
   @pragma('vm:prefer-inline')
-  _$$AvnuDeployAccountErrorImplCopyWith<_$AvnuDeployAccountErrorImpl>
-      get copyWith => __$$AvnuDeployAccountErrorImplCopyWithImpl<
-          _$AvnuDeployAccountErrorImpl>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(String transactionHash) result,
-    required TResult Function(List<String> messages, String? revertError) error,
+  $Res call({
+    Object? messages = null,
+    Object? revertError = freezed,
   }) {
-    return error(messages, revertError);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String transactionHash)? result,
-    TResult? Function(List<String> messages, String? revertError)? error,
-  }) {
-    return error?.call(messages, revertError);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String transactionHash)? result,
-    TResult Function(List<String> messages, String? revertError)? error,
-    required TResult orElse(),
-  }) {
-    if (error != null) {
-      return error(messages, revertError);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(AvnuDeployAccountResult value) result,
-    required TResult Function(AvnuDeployAccountError value) error,
-  }) {
-    return error(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(AvnuDeployAccountResult value)? result,
-    TResult? Function(AvnuDeployAccountError value)? error,
-  }) {
-    return error?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(AvnuDeployAccountResult value)? result,
-    TResult Function(AvnuDeployAccountError value)? error,
-    required TResult orElse(),
-  }) {
-    if (error != null) {
-      return error(this);
-    }
-    return orElse();
-  }
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$AvnuDeployAccountErrorImplToJson(
-      this,
-    );
+    return _then(AvnuDeployAccountError(
+      null == messages
+          ? _self._messages
+          : messages // ignore: cast_nullable_to_non_nullable
+              as List<String>,
+      freezed == revertError
+          ? _self.revertError
+          : revertError // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
   }
 }
 
-abstract class AvnuDeployAccountError implements AvnuDeployAccountResponse {
-  const factory AvnuDeployAccountError(
-          final List<String> messages, final String? revertError) =
-      _$AvnuDeployAccountErrorImpl;
-
-  factory AvnuDeployAccountError.fromJson(Map<String, dynamic> json) =
-      _$AvnuDeployAccountErrorImpl.fromJson;
-
-  List<String> get messages;
-  String? get revertError;
-
-  /// Create a copy of AvnuDeployAccountResponse
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$AvnuDeployAccountErrorImplCopyWith<_$AvnuDeployAccountErrorImpl>
-      get copyWith => throw _privateConstructorUsedError;
-}
+// dart format on

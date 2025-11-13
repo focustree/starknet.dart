@@ -6,29 +6,25 @@ part of 'avnu_status.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$AvnuStatusResultImpl _$$AvnuStatusResultImplFromJson(
-        Map<String, dynamic> json) =>
-    _$AvnuStatusResultImpl(
+AvnuStatusResult _$AvnuStatusResultFromJson(Map<String, dynamic> json) =>
+    AvnuStatusResult(
       json['status'] as bool,
       $type: json['runtimeType'] as String?,
     );
 
-Map<String, dynamic> _$$AvnuStatusResultImplToJson(
-        _$AvnuStatusResultImpl instance) =>
+Map<String, dynamic> _$AvnuStatusResultToJson(AvnuStatusResult instance) =>
     <String, dynamic>{
       'status': instance.status,
       'runtimeType': instance.$type,
     };
 
-_$AvnuStatusErrorImpl _$$AvnuStatusErrorImplFromJson(
-        Map<String, dynamic> json) =>
-    _$AvnuStatusErrorImpl(
+AvnuStatusError _$AvnuStatusErrorFromJson(Map<String, dynamic> json) =>
+    AvnuStatusError(
       (json['messages'] as List<dynamic>).map((e) => e as String).toList(),
       $type: json['runtimeType'] as String?,
     );
 
-Map<String, dynamic> _$$AvnuStatusErrorImplToJson(
-        _$AvnuStatusErrorImpl instance) =>
+Map<String, dynamic> _$AvnuStatusErrorToJson(AvnuStatusError instance) =>
     <String, dynamic>{
       'messages': instance.messages,
       'runtimeType': instance.$type,

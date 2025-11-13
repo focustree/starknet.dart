@@ -6,8 +6,7 @@ part of 'msg_to_l1.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$MsgToL1Impl _$$MsgToL1ImplFromJson(Map<String, dynamic> json) =>
-    _$MsgToL1Impl(
+_MsgToL1 _$MsgToL1FromJson(Map<String, dynamic> json) => _MsgToL1(
       toAddress: json['to_address'] == null
           ? null
           : Felt.fromJson(json['to_address'] as String),
@@ -16,8 +15,7 @@ _$MsgToL1Impl _$$MsgToL1ImplFromJson(Map<String, dynamic> json) =>
           .toList(),
     );
 
-Map<String, dynamic> _$$MsgToL1ImplToJson(_$MsgToL1Impl instance) =>
-    <String, dynamic>{
+Map<String, dynamic> _$MsgToL1ToJson(_MsgToL1 instance) => <String, dynamic>{
       'to_address': instance.toAddress?.toJson(),
       'payload': instance.payload?.map((e) => e.toJson()).toList(),
     };

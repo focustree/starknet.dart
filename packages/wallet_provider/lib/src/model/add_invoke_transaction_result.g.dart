@@ -6,14 +6,14 @@ part of 'add_invoke_transaction_result.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$AddInvokeTransactionResultImpl _$$AddInvokeTransactionResultImplFromJson(
+_AddInvokeTransactionResult _$AddInvokeTransactionResultFromJson(
         Map<String, dynamic> json) =>
-    _$AddInvokeTransactionResultImpl(
+    _AddInvokeTransactionResult(
       transactionHash: Felt.fromJson(json['transaction_hash'] as String),
     );
 
-Map<String, dynamic> _$$AddInvokeTransactionResultImplToJson(
-        _$AddInvokeTransactionResultImpl instance) =>
+Map<String, dynamic> _$AddInvokeTransactionResultToJson(
+        _AddInvokeTransactionResult instance) =>
     <String, dynamic>{
       'transaction_hash': instance.transactionHash.toJson(),
     };

@@ -6,26 +6,25 @@ part of 'get_nonce.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$GetNonceResultImpl _$$GetNonceResultImplFromJson(Map<String, dynamic> json) =>
-    _$GetNonceResultImpl(
+GetNonceResult _$GetNonceResultFromJson(Map<String, dynamic> json) =>
+    GetNonceResult(
       result: Felt.fromJson(json['result'] as String),
       $type: json['starkNetRuntimeTypeToRemove'] as String?,
     );
 
-Map<String, dynamic> _$$GetNonceResultImplToJson(
-        _$GetNonceResultImpl instance) =>
+Map<String, dynamic> _$GetNonceResultToJson(GetNonceResult instance) =>
     <String, dynamic>{
       'result': instance.result.toJson(),
       'starkNetRuntimeTypeToRemove': instance.$type,
     };
 
-_$GetNonceErrorImpl _$$GetNonceErrorImplFromJson(Map<String, dynamic> json) =>
-    _$GetNonceErrorImpl(
+GetNonceError _$GetNonceErrorFromJson(Map<String, dynamic> json) =>
+    GetNonceError(
       error: JsonRpcApiError.fromJson(json['error'] as Map<String, dynamic>),
       $type: json['starkNetRuntimeTypeToRemove'] as String?,
     );
 
-Map<String, dynamic> _$$GetNonceErrorImplToJson(_$GetNonceErrorImpl instance) =>
+Map<String, dynamic> _$GetNonceErrorToJson(GetNonceError instance) =>
     <String, dynamic>{
       'error': instance.error.toJson(),
       'starkNetRuntimeTypeToRemove': instance.$type,

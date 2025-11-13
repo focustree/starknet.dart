@@ -6,39 +6,35 @@ part of 'syncing.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$SynchronizedImpl _$$SynchronizedImplFromJson(Map<String, dynamic> json) =>
-    _$SynchronizedImpl(
+Synchronized _$SynchronizedFromJson(Map<String, dynamic> json) => Synchronized(
       result: SyncStatus.fromJson(json['result'] as Map<String, dynamic>),
       $type: json['starkNetRuntimeTypeToRemove'] as String?,
     );
 
-Map<String, dynamic> _$$SynchronizedImplToJson(_$SynchronizedImpl instance) =>
+Map<String, dynamic> _$SynchronizedToJson(Synchronized instance) =>
     <String, dynamic>{
       'result': instance.result.toJson(),
       'starkNetRuntimeTypeToRemove': instance.$type,
     };
 
-_$NotSynchronizedImpl _$$NotSynchronizedImplFromJson(
-        Map<String, dynamic> json) =>
-    _$NotSynchronizedImpl(
+NotSynchronized _$NotSynchronizedFromJson(Map<String, dynamic> json) =>
+    NotSynchronized(
       result: json['result'] as bool,
       $type: json['starkNetRuntimeTypeToRemove'] as String?,
     );
 
-Map<String, dynamic> _$$NotSynchronizedImplToJson(
-        _$NotSynchronizedImpl instance) =>
+Map<String, dynamic> _$NotSynchronizedToJson(NotSynchronized instance) =>
     <String, dynamic>{
       'result': instance.result,
       'starkNetRuntimeTypeToRemove': instance.$type,
     };
 
-_$SyncingErrorImpl _$$SyncingErrorImplFromJson(Map<String, dynamic> json) =>
-    _$SyncingErrorImpl(
+SyncingError _$SyncingErrorFromJson(Map<String, dynamic> json) => SyncingError(
       error: JsonRpcApiError.fromJson(json['error'] as Map<String, dynamic>),
       $type: json['starkNetRuntimeTypeToRemove'] as String?,
     );
 
-Map<String, dynamic> _$$SyncingErrorImplToJson(_$SyncingErrorImpl instance) =>
+Map<String, dynamic> _$SyncingErrorToJson(SyncingError instance) =>
     <String, dynamic>{
       'error': instance.error.toJson(),
       'starkNetRuntimeTypeToRemove': instance.$type,

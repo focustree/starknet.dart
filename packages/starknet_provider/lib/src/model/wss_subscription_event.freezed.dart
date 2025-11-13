@@ -1,5 +1,5 @@
-// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// coverage:ignore-file
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
@@ -9,158 +9,31 @@ part of 'wss_subscription_event.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// dart format off
 T _$identity<T>(T value) => value;
-
-final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
-
-WssSubscriptionEventResponse _$WssSubscriptionEventResponseFromJson(
-    Map<String, dynamic> json) {
-  return _WssSubscriptionEventResponse.fromJson(json);
-}
 
 /// @nodoc
 mixin _$WssSubscriptionEventResponse {
-  String get subscription_id => throw _privateConstructorUsedError;
-  WssSubscriptionEventResult get result => throw _privateConstructorUsedError;
-
-  /// Serializes this WssSubscriptionEventResponse to a JSON map.
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  String get subscription_id;
+  WssSubscriptionEventResult get result;
 
   /// Create a copy of WssSubscriptionEventResponse
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
   $WssSubscriptionEventResponseCopyWith<WssSubscriptionEventResponse>
-      get copyWith => throw _privateConstructorUsedError;
-}
+      get copyWith => _$WssSubscriptionEventResponseCopyWithImpl<
+              WssSubscriptionEventResponse>(
+          this as WssSubscriptionEventResponse, _$identity);
 
-/// @nodoc
-abstract class $WssSubscriptionEventResponseCopyWith<$Res> {
-  factory $WssSubscriptionEventResponseCopyWith(
-          WssSubscriptionEventResponse value,
-          $Res Function(WssSubscriptionEventResponse) then) =
-      _$WssSubscriptionEventResponseCopyWithImpl<$Res,
-          WssSubscriptionEventResponse>;
-  @useResult
-  $Res call({String subscription_id, WssSubscriptionEventResult result});
-
-  $WssSubscriptionEventResultCopyWith<$Res> get result;
-}
-
-/// @nodoc
-class _$WssSubscriptionEventResponseCopyWithImpl<$Res,
-        $Val extends WssSubscriptionEventResponse>
-    implements $WssSubscriptionEventResponseCopyWith<$Res> {
-  _$WssSubscriptionEventResponseCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-
-  /// Create a copy of WssSubscriptionEventResponse
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? subscription_id = null,
-    Object? result = null,
-  }) {
-    return _then(_value.copyWith(
-      subscription_id: null == subscription_id
-          ? _value.subscription_id
-          : subscription_id // ignore: cast_nullable_to_non_nullable
-              as String,
-      result: null == result
-          ? _value.result
-          : result // ignore: cast_nullable_to_non_nullable
-              as WssSubscriptionEventResult,
-    ) as $Val);
-  }
-
-  /// Create a copy of WssSubscriptionEventResponse
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $WssSubscriptionEventResultCopyWith<$Res> get result {
-    return $WssSubscriptionEventResultCopyWith<$Res>(_value.result, (value) {
-      return _then(_value.copyWith(result: value) as $Val);
-    });
-  }
-}
-
-/// @nodoc
-abstract class _$$WssSubscriptionEventResponseImplCopyWith<$Res>
-    implements $WssSubscriptionEventResponseCopyWith<$Res> {
-  factory _$$WssSubscriptionEventResponseImplCopyWith(
-          _$WssSubscriptionEventResponseImpl value,
-          $Res Function(_$WssSubscriptionEventResponseImpl) then) =
-      __$$WssSubscriptionEventResponseImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call({String subscription_id, WssSubscriptionEventResult result});
-
-  @override
-  $WssSubscriptionEventResultCopyWith<$Res> get result;
-}
-
-/// @nodoc
-class __$$WssSubscriptionEventResponseImplCopyWithImpl<$Res>
-    extends _$WssSubscriptionEventResponseCopyWithImpl<$Res,
-        _$WssSubscriptionEventResponseImpl>
-    implements _$$WssSubscriptionEventResponseImplCopyWith<$Res> {
-  __$$WssSubscriptionEventResponseImplCopyWithImpl(
-      _$WssSubscriptionEventResponseImpl _value,
-      $Res Function(_$WssSubscriptionEventResponseImpl) _then)
-      : super(_value, _then);
-
-  /// Create a copy of WssSubscriptionEventResponse
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? subscription_id = null,
-    Object? result = null,
-  }) {
-    return _then(_$WssSubscriptionEventResponseImpl(
-      subscription_id: null == subscription_id
-          ? _value.subscription_id
-          : subscription_id // ignore: cast_nullable_to_non_nullable
-              as String,
-      result: null == result
-          ? _value.result
-          : result // ignore: cast_nullable_to_non_nullable
-              as WssSubscriptionEventResult,
-    ));
-  }
-}
-
-/// @nodoc
-@JsonSerializable()
-class _$WssSubscriptionEventResponseImpl
-    implements _WssSubscriptionEventResponse {
-  const _$WssSubscriptionEventResponseImpl(
-      {required this.subscription_id, required this.result});
-
-  factory _$WssSubscriptionEventResponseImpl.fromJson(
-          Map<String, dynamic> json) =>
-      _$$WssSubscriptionEventResponseImplFromJson(json);
-
-  @override
-  final String subscription_id;
-  @override
-  final WssSubscriptionEventResult result;
-
-  @override
-  String toString() {
-    return 'WssSubscriptionEventResponse(subscription_id: $subscription_id, result: $result)';
-  }
+  /// Serializes this WssSubscriptionEventResponse to a JSON map.
+  Map<String, dynamic> toJson();
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$WssSubscriptionEventResponseImpl &&
+            other is WssSubscriptionEventResponse &&
             (identical(other.subscription_id, subscription_id) ||
                 other.subscription_id == subscription_id) &&
             (identical(other.result, result) || other.result == result));
@@ -170,148 +43,387 @@ class _$WssSubscriptionEventResponseImpl
   @override
   int get hashCode => Object.hash(runtimeType, subscription_id, result);
 
-  /// Create a copy of WssSubscriptionEventResponse
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  @pragma('vm:prefer-inline')
-  _$$WssSubscriptionEventResponseImplCopyWith<
-          _$WssSubscriptionEventResponseImpl>
-      get copyWith => __$$WssSubscriptionEventResponseImplCopyWithImpl<
-          _$WssSubscriptionEventResponseImpl>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$WssSubscriptionEventResponseImplToJson(
-      this,
-    );
+  String toString() {
+    return 'WssSubscriptionEventResponse(subscription_id: $subscription_id, result: $result)';
   }
 }
 
-abstract class _WssSubscriptionEventResponse
-    implements WssSubscriptionEventResponse {
-  const factory _WssSubscriptionEventResponse(
-          {required final String subscription_id,
-          required final WssSubscriptionEventResult result}) =
-      _$WssSubscriptionEventResponseImpl;
+/// @nodoc
+abstract mixin class $WssSubscriptionEventResponseCopyWith<$Res> {
+  factory $WssSubscriptionEventResponseCopyWith(
+          WssSubscriptionEventResponse value,
+          $Res Function(WssSubscriptionEventResponse) _then) =
+      _$WssSubscriptionEventResponseCopyWithImpl;
+  @useResult
+  $Res call({String subscription_id, WssSubscriptionEventResult result});
 
-  factory _WssSubscriptionEventResponse.fromJson(Map<String, dynamic> json) =
-      _$WssSubscriptionEventResponseImpl.fromJson;
+  $WssSubscriptionEventResultCopyWith<$Res> get result;
+}
+
+/// @nodoc
+class _$WssSubscriptionEventResponseCopyWithImpl<$Res>
+    implements $WssSubscriptionEventResponseCopyWith<$Res> {
+  _$WssSubscriptionEventResponseCopyWithImpl(this._self, this._then);
+
+  final WssSubscriptionEventResponse _self;
+  final $Res Function(WssSubscriptionEventResponse) _then;
+
+  /// Create a copy of WssSubscriptionEventResponse
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? subscription_id = null,
+    Object? result = null,
+  }) {
+    return _then(_self.copyWith(
+      subscription_id: null == subscription_id
+          ? _self.subscription_id
+          : subscription_id // ignore: cast_nullable_to_non_nullable
+              as String,
+      result: null == result
+          ? _self.result
+          : result // ignore: cast_nullable_to_non_nullable
+              as WssSubscriptionEventResult,
+    ));
+  }
+
+  /// Create a copy of WssSubscriptionEventResponse
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $WssSubscriptionEventResultCopyWith<$Res> get result {
+    return $WssSubscriptionEventResultCopyWith<$Res>(_self.result, (value) {
+      return _then(_self.copyWith(result: value));
+    });
+  }
+}
+
+/// Adds pattern-matching-related methods to [WssSubscriptionEventResponse].
+extension WssSubscriptionEventResponsePatterns on WssSubscriptionEventResponse {
+  /// A variant of `map` that fallback to returning `orElse`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(_WssSubscriptionEventResponse value)? $default, {
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _WssSubscriptionEventResponse() when $default != null:
+        return $default(_that);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// Callbacks receives the raw object, upcasted.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case final Subclass2 value:
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(_WssSubscriptionEventResponse value) $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _WssSubscriptionEventResponse():
+        return $default(_that);
+      case _:
+        throw StateError('Unexpected subclass');
+    }
+  }
+
+  /// A variant of `map` that fallback to returning `null`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>(
+    TResult? Function(_WssSubscriptionEventResponse value)? $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _WssSubscriptionEventResponse() when $default != null:
+        return $default(_that);
+      case _:
+        return null;
+    }
+  }
+
+  /// A variant of `when` that fallback to an `orElse` callback.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(String subscription_id, WssSubscriptionEventResult result)?
+        $default, {
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _WssSubscriptionEventResponse() when $default != null:
+        return $default(_that.subscription_id, _that.result);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// As opposed to `map`, this offers destructuring.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case Subclass2(:final field2):
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>(
+    TResult Function(String subscription_id, WssSubscriptionEventResult result)
+        $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _WssSubscriptionEventResponse():
+        return $default(_that.subscription_id, _that.result);
+      case _:
+        throw StateError('Unexpected subclass');
+    }
+  }
+
+  /// A variant of `when` that fallback to returning `null`
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>(
+    TResult? Function(
+            String subscription_id, WssSubscriptionEventResult result)?
+        $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _WssSubscriptionEventResponse() when $default != null:
+        return $default(_that.subscription_id, _that.result);
+      case _:
+        return null;
+    }
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _WssSubscriptionEventResponse implements WssSubscriptionEventResponse {
+  const _WssSubscriptionEventResponse(
+      {required this.subscription_id, required this.result});
+  factory _WssSubscriptionEventResponse.fromJson(Map<String, dynamic> json) =>
+      _$WssSubscriptionEventResponseFromJson(json);
 
   @override
-  String get subscription_id;
+  final String subscription_id;
   @override
-  WssSubscriptionEventResult get result;
+  final WssSubscriptionEventResult result;
 
   /// Create a copy of WssSubscriptionEventResponse
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$WssSubscriptionEventResponseImplCopyWith<
-          _$WssSubscriptionEventResponseImpl>
-      get copyWith => throw _privateConstructorUsedError;
+  @pragma('vm:prefer-inline')
+  _$WssSubscriptionEventResponseCopyWith<_WssSubscriptionEventResponse>
+      get copyWith => __$WssSubscriptionEventResponseCopyWithImpl<
+          _WssSubscriptionEventResponse>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$WssSubscriptionEventResponseToJson(
+      this,
+    );
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _WssSubscriptionEventResponse &&
+            (identical(other.subscription_id, subscription_id) ||
+                other.subscription_id == subscription_id) &&
+            (identical(other.result, result) || other.result == result));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(runtimeType, subscription_id, result);
+
+  @override
+  String toString() {
+    return 'WssSubscriptionEventResponse(subscription_id: $subscription_id, result: $result)';
+  }
 }
 
-WssSubscriptionEventResult _$WssSubscriptionEventResultFromJson(
-    Map<String, dynamic> json) {
-  return _WssSubscriptionEventResult.fromJson(json);
+/// @nodoc
+abstract mixin class _$WssSubscriptionEventResponseCopyWith<$Res>
+    implements $WssSubscriptionEventResponseCopyWith<$Res> {
+  factory _$WssSubscriptionEventResponseCopyWith(
+          _WssSubscriptionEventResponse value,
+          $Res Function(_WssSubscriptionEventResponse) _then) =
+      __$WssSubscriptionEventResponseCopyWithImpl;
+  @override
+  @useResult
+  $Res call({String subscription_id, WssSubscriptionEventResult result});
+
+  @override
+  $WssSubscriptionEventResultCopyWith<$Res> get result;
+}
+
+/// @nodoc
+class __$WssSubscriptionEventResponseCopyWithImpl<$Res>
+    implements _$WssSubscriptionEventResponseCopyWith<$Res> {
+  __$WssSubscriptionEventResponseCopyWithImpl(this._self, this._then);
+
+  final _WssSubscriptionEventResponse _self;
+  final $Res Function(_WssSubscriptionEventResponse) _then;
+
+  /// Create a copy of WssSubscriptionEventResponse
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $Res call({
+    Object? subscription_id = null,
+    Object? result = null,
+  }) {
+    return _then(_WssSubscriptionEventResponse(
+      subscription_id: null == subscription_id
+          ? _self.subscription_id
+          : subscription_id // ignore: cast_nullable_to_non_nullable
+              as String,
+      result: null == result
+          ? _self.result
+          : result // ignore: cast_nullable_to_non_nullable
+              as WssSubscriptionEventResult,
+    ));
+  }
+
+  /// Create a copy of WssSubscriptionEventResponse
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $WssSubscriptionEventResultCopyWith<$Res> get result {
+    return $WssSubscriptionEventResultCopyWith<$Res>(_self.result, (value) {
+      return _then(_self.copyWith(result: value));
+    });
+  }
 }
 
 /// @nodoc
 mixin _$WssSubscriptionEventResult {
-  Felt get blockHash => throw _privateConstructorUsedError;
-  int get blockNumber => throw _privateConstructorUsedError;
-  Felt get transactionHash => throw _privateConstructorUsedError;
-  Felt get fromAddress => throw _privateConstructorUsedError;
-  List<Felt> get keys => throw _privateConstructorUsedError;
-  List<Felt> get data => throw _privateConstructorUsedError;
-
-  /// Serializes this WssSubscriptionEventResult to a JSON map.
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  Felt get blockHash;
+  int get blockNumber;
+  Felt get transactionHash;
+  Felt get fromAddress;
+  List<Felt> get keys;
+  List<Felt> get data;
 
   /// Create a copy of WssSubscriptionEventResult
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $WssSubscriptionEventResultCopyWith<WssSubscriptionEventResult>
-      get copyWith => throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $WssSubscriptionEventResultCopyWith<$Res> {
-  factory $WssSubscriptionEventResultCopyWith(WssSubscriptionEventResult value,
-          $Res Function(WssSubscriptionEventResult) then) =
-      _$WssSubscriptionEventResultCopyWithImpl<$Res,
-          WssSubscriptionEventResult>;
-  @useResult
-  $Res call(
-      {Felt blockHash,
-      int blockNumber,
-      Felt transactionHash,
-      Felt fromAddress,
-      List<Felt> keys,
-      List<Felt> data});
-}
-
-/// @nodoc
-class _$WssSubscriptionEventResultCopyWithImpl<$Res,
-        $Val extends WssSubscriptionEventResult>
-    implements $WssSubscriptionEventResultCopyWith<$Res> {
-  _$WssSubscriptionEventResultCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-
-  /// Create a copy of WssSubscriptionEventResult
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
+  $WssSubscriptionEventResultCopyWith<WssSubscriptionEventResult>
+      get copyWith =>
+          _$WssSubscriptionEventResultCopyWithImpl<WssSubscriptionEventResult>(
+              this as WssSubscriptionEventResult, _$identity);
+
+  /// Serializes this WssSubscriptionEventResult to a JSON map.
+  Map<String, dynamic> toJson();
+
   @override
-  $Res call({
-    Object? blockHash = null,
-    Object? blockNumber = null,
-    Object? transactionHash = null,
-    Object? fromAddress = null,
-    Object? keys = null,
-    Object? data = null,
-  }) {
-    return _then(_value.copyWith(
-      blockHash: null == blockHash
-          ? _value.blockHash
-          : blockHash // ignore: cast_nullable_to_non_nullable
-              as Felt,
-      blockNumber: null == blockNumber
-          ? _value.blockNumber
-          : blockNumber // ignore: cast_nullable_to_non_nullable
-              as int,
-      transactionHash: null == transactionHash
-          ? _value.transactionHash
-          : transactionHash // ignore: cast_nullable_to_non_nullable
-              as Felt,
-      fromAddress: null == fromAddress
-          ? _value.fromAddress
-          : fromAddress // ignore: cast_nullable_to_non_nullable
-              as Felt,
-      keys: null == keys
-          ? _value.keys
-          : keys // ignore: cast_nullable_to_non_nullable
-              as List<Felt>,
-      data: null == data
-          ? _value.data
-          : data // ignore: cast_nullable_to_non_nullable
-              as List<Felt>,
-    ) as $Val);
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is WssSubscriptionEventResult &&
+            (identical(other.blockHash, blockHash) ||
+                other.blockHash == blockHash) &&
+            (identical(other.blockNumber, blockNumber) ||
+                other.blockNumber == blockNumber) &&
+            (identical(other.transactionHash, transactionHash) ||
+                other.transactionHash == transactionHash) &&
+            (identical(other.fromAddress, fromAddress) ||
+                other.fromAddress == fromAddress) &&
+            const DeepCollectionEquality().equals(other.keys, keys) &&
+            const DeepCollectionEquality().equals(other.data, data));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(
+      runtimeType,
+      blockHash,
+      blockNumber,
+      transactionHash,
+      fromAddress,
+      const DeepCollectionEquality().hash(keys),
+      const DeepCollectionEquality().hash(data));
+
+  @override
+  String toString() {
+    return 'WssSubscriptionEventResult(blockHash: $blockHash, blockNumber: $blockNumber, transactionHash: $transactionHash, fromAddress: $fromAddress, keys: $keys, data: $data)';
   }
 }
 
 /// @nodoc
-abstract class _$$WssSubscriptionEventResultImplCopyWith<$Res>
-    implements $WssSubscriptionEventResultCopyWith<$Res> {
-  factory _$$WssSubscriptionEventResultImplCopyWith(
-          _$WssSubscriptionEventResultImpl value,
-          $Res Function(_$WssSubscriptionEventResultImpl) then) =
-      __$$WssSubscriptionEventResultImplCopyWithImpl<$Res>;
-  @override
+abstract mixin class $WssSubscriptionEventResultCopyWith<$Res> {
+  factory $WssSubscriptionEventResultCopyWith(WssSubscriptionEventResult value,
+          $Res Function(WssSubscriptionEventResult) _then) =
+      _$WssSubscriptionEventResultCopyWithImpl;
   @useResult
   $Res call(
       {Felt blockHash,
@@ -323,14 +435,12 @@ abstract class _$$WssSubscriptionEventResultImplCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$WssSubscriptionEventResultImplCopyWithImpl<$Res>
-    extends _$WssSubscriptionEventResultCopyWithImpl<$Res,
-        _$WssSubscriptionEventResultImpl>
-    implements _$$WssSubscriptionEventResultImplCopyWith<$Res> {
-  __$$WssSubscriptionEventResultImplCopyWithImpl(
-      _$WssSubscriptionEventResultImpl _value,
-      $Res Function(_$WssSubscriptionEventResultImpl) _then)
-      : super(_value, _then);
+class _$WssSubscriptionEventResultCopyWithImpl<$Res>
+    implements $WssSubscriptionEventResultCopyWith<$Res> {
+  _$WssSubscriptionEventResultCopyWithImpl(this._self, this._then);
+
+  final WssSubscriptionEventResult _self;
+  final $Res Function(WssSubscriptionEventResult) _then;
 
   /// Create a copy of WssSubscriptionEventResult
   /// with the given fields replaced by the non-null parameter values.
@@ -344,39 +454,205 @@ class __$$WssSubscriptionEventResultImplCopyWithImpl<$Res>
     Object? keys = null,
     Object? data = null,
   }) {
-    return _then(_$WssSubscriptionEventResultImpl(
+    return _then(_self.copyWith(
       blockHash: null == blockHash
-          ? _value.blockHash
+          ? _self.blockHash
           : blockHash // ignore: cast_nullable_to_non_nullable
               as Felt,
       blockNumber: null == blockNumber
-          ? _value.blockNumber
+          ? _self.blockNumber
           : blockNumber // ignore: cast_nullable_to_non_nullable
               as int,
       transactionHash: null == transactionHash
-          ? _value.transactionHash
+          ? _self.transactionHash
           : transactionHash // ignore: cast_nullable_to_non_nullable
               as Felt,
       fromAddress: null == fromAddress
-          ? _value.fromAddress
+          ? _self.fromAddress
           : fromAddress // ignore: cast_nullable_to_non_nullable
               as Felt,
       keys: null == keys
-          ? _value._keys
+          ? _self.keys
           : keys // ignore: cast_nullable_to_non_nullable
               as List<Felt>,
       data: null == data
-          ? _value._data
+          ? _self.data
           : data // ignore: cast_nullable_to_non_nullable
               as List<Felt>,
     ));
   }
 }
 
+/// Adds pattern-matching-related methods to [WssSubscriptionEventResult].
+extension WssSubscriptionEventResultPatterns on WssSubscriptionEventResult {
+  /// A variant of `map` that fallback to returning `orElse`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(_WssSubscriptionEventResult value)? $default, {
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _WssSubscriptionEventResult() when $default != null:
+        return $default(_that);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// Callbacks receives the raw object, upcasted.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case final Subclass2 value:
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(_WssSubscriptionEventResult value) $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _WssSubscriptionEventResult():
+        return $default(_that);
+      case _:
+        throw StateError('Unexpected subclass');
+    }
+  }
+
+  /// A variant of `map` that fallback to returning `null`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>(
+    TResult? Function(_WssSubscriptionEventResult value)? $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _WssSubscriptionEventResult() when $default != null:
+        return $default(_that);
+      case _:
+        return null;
+    }
+  }
+
+  /// A variant of `when` that fallback to an `orElse` callback.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(Felt blockHash, int blockNumber, Felt transactionHash,
+            Felt fromAddress, List<Felt> keys, List<Felt> data)?
+        $default, {
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _WssSubscriptionEventResult() when $default != null:
+        return $default(_that.blockHash, _that.blockNumber,
+            _that.transactionHash, _that.fromAddress, _that.keys, _that.data);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// As opposed to `map`, this offers destructuring.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case Subclass2(:final field2):
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>(
+    TResult Function(Felt blockHash, int blockNumber, Felt transactionHash,
+            Felt fromAddress, List<Felt> keys, List<Felt> data)
+        $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _WssSubscriptionEventResult():
+        return $default(_that.blockHash, _that.blockNumber,
+            _that.transactionHash, _that.fromAddress, _that.keys, _that.data);
+      case _:
+        throw StateError('Unexpected subclass');
+    }
+  }
+
+  /// A variant of `when` that fallback to returning `null`
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>(
+    TResult? Function(Felt blockHash, int blockNumber, Felt transactionHash,
+            Felt fromAddress, List<Felt> keys, List<Felt> data)?
+        $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _WssSubscriptionEventResult() when $default != null:
+        return $default(_that.blockHash, _that.blockNumber,
+            _that.transactionHash, _that.fromAddress, _that.keys, _that.data);
+      case _:
+        return null;
+    }
+  }
+}
+
 /// @nodoc
 @JsonSerializable()
-class _$WssSubscriptionEventResultImpl implements _WssSubscriptionEventResult {
-  const _$WssSubscriptionEventResultImpl(
+class _WssSubscriptionEventResult implements WssSubscriptionEventResult {
+  const _WssSubscriptionEventResult(
       {required this.blockHash,
       required this.blockNumber,
       required this.transactionHash,
@@ -385,10 +661,8 @@ class _$WssSubscriptionEventResultImpl implements _WssSubscriptionEventResult {
       required final List<Felt> data})
       : _keys = keys,
         _data = data;
-
-  factory _$WssSubscriptionEventResultImpl.fromJson(
-          Map<String, dynamic> json) =>
-      _$$WssSubscriptionEventResultImplFromJson(json);
+  factory _WssSubscriptionEventResult.fromJson(Map<String, dynamic> json) =>
+      _$WssSubscriptionEventResultFromJson(json);
 
   @override
   final Felt blockHash;
@@ -414,16 +688,27 @@ class _$WssSubscriptionEventResultImpl implements _WssSubscriptionEventResult {
     return EqualUnmodifiableListView(_data);
   }
 
+  /// Create a copy of WssSubscriptionEventResult
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  String toString() {
-    return 'WssSubscriptionEventResult(blockHash: $blockHash, blockNumber: $blockNumber, transactionHash: $transactionHash, fromAddress: $fromAddress, keys: $keys, data: $data)';
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  _$WssSubscriptionEventResultCopyWith<_WssSubscriptionEventResult>
+      get copyWith => __$WssSubscriptionEventResultCopyWithImpl<
+          _WssSubscriptionEventResult>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$WssSubscriptionEventResultToJson(
+      this,
+    );
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$WssSubscriptionEventResultImpl &&
+            other is _WssSubscriptionEventResult &&
             (identical(other.blockHash, blockHash) ||
                 other.blockHash == blockHash) &&
             (identical(other.blockNumber, blockNumber) ||
@@ -447,53 +732,77 @@ class _$WssSubscriptionEventResultImpl implements _WssSubscriptionEventResult {
       const DeepCollectionEquality().hash(_keys),
       const DeepCollectionEquality().hash(_data));
 
-  /// Create a copy of WssSubscriptionEventResult
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  @pragma('vm:prefer-inline')
-  _$$WssSubscriptionEventResultImplCopyWith<_$WssSubscriptionEventResultImpl>
-      get copyWith => __$$WssSubscriptionEventResultImplCopyWithImpl<
-          _$WssSubscriptionEventResultImpl>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$WssSubscriptionEventResultImplToJson(
-      this,
-    );
+  String toString() {
+    return 'WssSubscriptionEventResult(blockHash: $blockHash, blockNumber: $blockNumber, transactionHash: $transactionHash, fromAddress: $fromAddress, keys: $keys, data: $data)';
   }
 }
 
-abstract class _WssSubscriptionEventResult
-    implements WssSubscriptionEventResult {
-  const factory _WssSubscriptionEventResult(
-      {required final Felt blockHash,
-      required final int blockNumber,
-      required final Felt transactionHash,
-      required final Felt fromAddress,
-      required final List<Felt> keys,
-      required final List<Felt> data}) = _$WssSubscriptionEventResultImpl;
+/// @nodoc
+abstract mixin class _$WssSubscriptionEventResultCopyWith<$Res>
+    implements $WssSubscriptionEventResultCopyWith<$Res> {
+  factory _$WssSubscriptionEventResultCopyWith(
+          _WssSubscriptionEventResult value,
+          $Res Function(_WssSubscriptionEventResult) _then) =
+      __$WssSubscriptionEventResultCopyWithImpl;
+  @override
+  @useResult
+  $Res call(
+      {Felt blockHash,
+      int blockNumber,
+      Felt transactionHash,
+      Felt fromAddress,
+      List<Felt> keys,
+      List<Felt> data});
+}
 
-  factory _WssSubscriptionEventResult.fromJson(Map<String, dynamic> json) =
-      _$WssSubscriptionEventResultImpl.fromJson;
+/// @nodoc
+class __$WssSubscriptionEventResultCopyWithImpl<$Res>
+    implements _$WssSubscriptionEventResultCopyWith<$Res> {
+  __$WssSubscriptionEventResultCopyWithImpl(this._self, this._then);
 
-  @override
-  Felt get blockHash;
-  @override
-  int get blockNumber;
-  @override
-  Felt get transactionHash;
-  @override
-  Felt get fromAddress;
-  @override
-  List<Felt> get keys;
-  @override
-  List<Felt> get data;
+  final _WssSubscriptionEventResult _self;
+  final $Res Function(_WssSubscriptionEventResult) _then;
 
   /// Create a copy of WssSubscriptionEventResult
   /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$WssSubscriptionEventResultImplCopyWith<_$WssSubscriptionEventResultImpl>
-      get copyWith => throw _privateConstructorUsedError;
+  @pragma('vm:prefer-inline')
+  $Res call({
+    Object? blockHash = null,
+    Object? blockNumber = null,
+    Object? transactionHash = null,
+    Object? fromAddress = null,
+    Object? keys = null,
+    Object? data = null,
+  }) {
+    return _then(_WssSubscriptionEventResult(
+      blockHash: null == blockHash
+          ? _self.blockHash
+          : blockHash // ignore: cast_nullable_to_non_nullable
+              as Felt,
+      blockNumber: null == blockNumber
+          ? _self.blockNumber
+          : blockNumber // ignore: cast_nullable_to_non_nullable
+              as int,
+      transactionHash: null == transactionHash
+          ? _self.transactionHash
+          : transactionHash // ignore: cast_nullable_to_non_nullable
+              as Felt,
+      fromAddress: null == fromAddress
+          ? _self.fromAddress
+          : fromAddress // ignore: cast_nullable_to_non_nullable
+              as Felt,
+      keys: null == keys
+          ? _self._keys
+          : keys // ignore: cast_nullable_to_non_nullable
+              as List<Felt>,
+      data: null == data
+          ? _self._data
+          : data // ignore: cast_nullable_to_non_nullable
+              as List<Felt>,
+    ));
+  }
 }
+
+// dart format on

@@ -6,37 +6,33 @@ part of 'get_events.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$GetEventsResultImpl _$$GetEventsResultImplFromJson(
-        Map<String, dynamic> json) =>
-    _$GetEventsResultImpl(
+GetEventsResult _$GetEventsResultFromJson(Map<String, dynamic> json) =>
+    GetEventsResult(
       result:
           GetEventsResponse.fromJson(json['result'] as Map<String, dynamic>),
       $type: json['starkNetRuntimeTypeToRemove'] as String?,
     );
 
-Map<String, dynamic> _$$GetEventsResultImplToJson(
-        _$GetEventsResultImpl instance) =>
+Map<String, dynamic> _$GetEventsResultToJson(GetEventsResult instance) =>
     <String, dynamic>{
       'result': instance.result.toJson(),
       'starkNetRuntimeTypeToRemove': instance.$type,
     };
 
-_$GetEventsErrorImpl _$$GetEventsErrorImplFromJson(Map<String, dynamic> json) =>
-    _$GetEventsErrorImpl(
+GetEventsError _$GetEventsErrorFromJson(Map<String, dynamic> json) =>
+    GetEventsError(
       error: JsonRpcApiError.fromJson(json['error'] as Map<String, dynamic>),
       $type: json['starkNetRuntimeTypeToRemove'] as String?,
     );
 
-Map<String, dynamic> _$$GetEventsErrorImplToJson(
-        _$GetEventsErrorImpl instance) =>
+Map<String, dynamic> _$GetEventsErrorToJson(GetEventsError instance) =>
     <String, dynamic>{
       'error': instance.error.toJson(),
       'starkNetRuntimeTypeToRemove': instance.$type,
     };
 
-_$GetEventsRequestImpl _$$GetEventsRequestImplFromJson(
-        Map<String, dynamic> json) =>
-    _$GetEventsRequestImpl(
+_GetEventsRequest _$GetEventsRequestFromJson(Map<String, dynamic> json) =>
+    _GetEventsRequest(
       fromBlock: json['from_block'] == null
           ? null
           : BlockId.fromJson(json['from_block'] as Map<String, dynamic>),
@@ -55,8 +51,7 @@ _$GetEventsRequestImpl _$$GetEventsRequestImplFromJson(
       continuationToken: json['continuation_token'] as String?,
     );
 
-Map<String, dynamic> _$$GetEventsRequestImplToJson(
-        _$GetEventsRequestImpl instance) =>
+Map<String, dynamic> _$GetEventsRequestToJson(_GetEventsRequest instance) =>
     <String, dynamic>{
       if (instance.fromBlock?.toJson() case final value?) 'from_block': value,
       if (instance.toBlock?.toJson() case final value?) 'to_block': value,
@@ -69,25 +64,23 @@ Map<String, dynamic> _$$GetEventsRequestImplToJson(
         'continuation_token': value,
     };
 
-_$GetEventsResponseImpl _$$GetEventsResponseImplFromJson(
-        Map<String, dynamic> json) =>
-    _$GetEventsResponseImpl(
+_GetEventsResponse _$GetEventsResponseFromJson(Map<String, dynamic> json) =>
+    _GetEventsResponse(
       events: (json['events'] as List<dynamic>)
           .map((e) => EmittedEvent.fromJson(e as Map<String, dynamic>))
           .toList(),
       continuation_token: json['continuation_token'] as String?,
     );
 
-Map<String, dynamic> _$$GetEventsResponseImplToJson(
-        _$GetEventsResponseImpl instance) =>
+Map<String, dynamic> _$GetEventsResponseToJson(_GetEventsResponse instance) =>
     <String, dynamic>{
       'events': instance.events.map((e) => e.toJson()).toList(),
       if (instance.continuation_token case final value?)
         'continuation_token': value,
     };
 
-_$EmittedEventImpl _$$EmittedEventImplFromJson(Map<String, dynamic> json) =>
-    _$EmittedEventImpl(
+_EmittedEvent _$EmittedEventFromJson(Map<String, dynamic> json) =>
+    _EmittedEvent(
       fromAddress: json['from_address'] == null
           ? null
           : Felt.fromJson(json['from_address'] as String),
@@ -106,7 +99,7 @@ _$EmittedEventImpl _$$EmittedEventImplFromJson(Map<String, dynamic> json) =>
       blockNumber: (json['block_number'] as num?)?.toInt(),
     );
 
-Map<String, dynamic> _$$EmittedEventImplToJson(_$EmittedEventImpl instance) =>
+Map<String, dynamic> _$EmittedEventToJson(_EmittedEvent instance) =>
     <String, dynamic>{
       if (instance.fromAddress?.toJson() case final value?)
         'from_address': value,

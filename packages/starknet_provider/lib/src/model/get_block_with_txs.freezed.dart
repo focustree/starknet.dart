@@ -1,5 +1,5 @@
-// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// coverage:ignore-file
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
@@ -9,11 +9,8 @@ part of 'get_block_with_txs.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// dart format off
 T _$identity<T>(T value) => value;
-
-final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
-
 GetBlockWithTxs _$GetBlockWithTxsFromJson(Map<String, dynamic> json) {
   switch (json['starkNetRuntimeTypeToRemove']) {
     case 'block':
@@ -32,76 +29,258 @@ GetBlockWithTxs _$GetBlockWithTxsFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$GetBlockWithTxs {
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(BlockWithTxs result) block,
-    required TResult Function(JsonRpcApiError error) error,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(BlockWithTxs result)? block,
-    TResult? Function(JsonRpcApiError error)? error,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(BlockWithTxs result)? block,
-    TResult Function(JsonRpcApiError error)? error,
-    required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(GetBlockWithTxsResult value) block,
-    required TResult Function(GetBlockWithTxsError value) error,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(GetBlockWithTxsResult value)? block,
-    TResult? Function(GetBlockWithTxsError value)? error,
-  }) =>
-      throw _privateConstructorUsedError;
+  /// Serializes this GetBlockWithTxs to a JSON map.
+  Map<String, dynamic> toJson();
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is GetBlockWithTxs);
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  String toString() {
+    return 'GetBlockWithTxs()';
+  }
+}
+
+/// @nodoc
+class $GetBlockWithTxsCopyWith<$Res> {
+  $GetBlockWithTxsCopyWith(
+      GetBlockWithTxs _, $Res Function(GetBlockWithTxs) __);
+}
+
+/// Adds pattern-matching-related methods to [GetBlockWithTxs].
+extension GetBlockWithTxsPatterns on GetBlockWithTxs {
+  /// A variant of `map` that fallback to returning `orElse`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(GetBlockWithTxsResult value)? block,
     TResult Function(GetBlockWithTxsError value)? error,
     required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
+  }) {
+    final _that = this;
+    switch (_that) {
+      case GetBlockWithTxsResult() when block != null:
+        return block(_that);
+      case GetBlockWithTxsError() when error != null:
+        return error(_that);
+      case _:
+        return orElse();
+    }
+  }
 
-  /// Serializes this GetBlockWithTxs to a JSON map.
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// Callbacks receives the raw object, upcasted.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case final Subclass2 value:
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(GetBlockWithTxsResult value) block,
+    required TResult Function(GetBlockWithTxsError value) error,
+  }) {
+    final _that = this;
+    switch (_that) {
+      case GetBlockWithTxsResult():
+        return block(_that);
+      case GetBlockWithTxsError():
+        return error(_that);
+      case _:
+        throw StateError('Unexpected subclass');
+    }
+  }
+
+  /// A variant of `map` that fallback to returning `null`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(GetBlockWithTxsResult value)? block,
+    TResult? Function(GetBlockWithTxsError value)? error,
+  }) {
+    final _that = this;
+    switch (_that) {
+      case GetBlockWithTxsResult() when block != null:
+        return block(_that);
+      case GetBlockWithTxsError() when error != null:
+        return error(_that);
+      case _:
+        return null;
+    }
+  }
+
+  /// A variant of `when` that fallback to an `orElse` callback.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(BlockWithTxs result)? block,
+    TResult Function(JsonRpcApiError error)? error,
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case GetBlockWithTxsResult() when block != null:
+        return block(_that.result);
+      case GetBlockWithTxsError() when error != null:
+        return error(_that.error);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// As opposed to `map`, this offers destructuring.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case Subclass2(:final field2):
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(BlockWithTxs result) block,
+    required TResult Function(JsonRpcApiError error) error,
+  }) {
+    final _that = this;
+    switch (_that) {
+      case GetBlockWithTxsResult():
+        return block(_that.result);
+      case GetBlockWithTxsError():
+        return error(_that.error);
+      case _:
+        throw StateError('Unexpected subclass');
+    }
+  }
+
+  /// A variant of `when` that fallback to returning `null`
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(BlockWithTxs result)? block,
+    TResult? Function(JsonRpcApiError error)? error,
+  }) {
+    final _that = this;
+    switch (_that) {
+      case GetBlockWithTxsResult() when block != null:
+        return block(_that.result);
+      case GetBlockWithTxsError() when error != null:
+        return error(_that.error);
+      case _:
+        return null;
+    }
+  }
 }
 
 /// @nodoc
-abstract class $GetBlockWithTxsCopyWith<$Res> {
-  factory $GetBlockWithTxsCopyWith(
-          GetBlockWithTxs value, $Res Function(GetBlockWithTxs) then) =
-      _$GetBlockWithTxsCopyWithImpl<$Res, GetBlockWithTxs>;
-}
+@JsonSerializable()
+class GetBlockWithTxsResult implements GetBlockWithTxs {
+  const GetBlockWithTxsResult({required this.result, final String? $type})
+      : $type = $type ?? 'block';
+  factory GetBlockWithTxsResult.fromJson(Map<String, dynamic> json) =>
+      _$GetBlockWithTxsResultFromJson(json);
 
-/// @nodoc
-class _$GetBlockWithTxsCopyWithImpl<$Res, $Val extends GetBlockWithTxs>
-    implements $GetBlockWithTxsCopyWith<$Res> {
-  _$GetBlockWithTxsCopyWithImpl(this._value, this._then);
+  final BlockWithTxs result;
 
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  @JsonKey(name: 'starkNetRuntimeTypeToRemove')
+  final String $type;
 
   /// Create a copy of GetBlockWithTxs
   /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  $GetBlockWithTxsResultCopyWith<GetBlockWithTxsResult> get copyWith =>
+      _$GetBlockWithTxsResultCopyWithImpl<GetBlockWithTxsResult>(
+          this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$GetBlockWithTxsResultToJson(
+      this,
+    );
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is GetBlockWithTxsResult &&
+            (identical(other.result, result) || other.result == result));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(runtimeType, result);
+
+  @override
+  String toString() {
+    return 'GetBlockWithTxs.block(result: $result)';
+  }
 }
 
 /// @nodoc
-abstract class _$$GetBlockWithTxsResultImplCopyWith<$Res> {
-  factory _$$GetBlockWithTxsResultImplCopyWith(
-          _$GetBlockWithTxsResultImpl value,
-          $Res Function(_$GetBlockWithTxsResultImpl) then) =
-      __$$GetBlockWithTxsResultImplCopyWithImpl<$Res>;
+abstract mixin class $GetBlockWithTxsResultCopyWith<$Res>
+    implements $GetBlockWithTxsCopyWith<$Res> {
+  factory $GetBlockWithTxsResultCopyWith(GetBlockWithTxsResult value,
+          $Res Function(GetBlockWithTxsResult) _then) =
+      _$GetBlockWithTxsResultCopyWithImpl;
   @useResult
   $Res call({BlockWithTxs result});
 
@@ -109,23 +288,22 @@ abstract class _$$GetBlockWithTxsResultImplCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$GetBlockWithTxsResultImplCopyWithImpl<$Res>
-    extends _$GetBlockWithTxsCopyWithImpl<$Res, _$GetBlockWithTxsResultImpl>
-    implements _$$GetBlockWithTxsResultImplCopyWith<$Res> {
-  __$$GetBlockWithTxsResultImplCopyWithImpl(_$GetBlockWithTxsResultImpl _value,
-      $Res Function(_$GetBlockWithTxsResultImpl) _then)
-      : super(_value, _then);
+class _$GetBlockWithTxsResultCopyWithImpl<$Res>
+    implements $GetBlockWithTxsResultCopyWith<$Res> {
+  _$GetBlockWithTxsResultCopyWithImpl(this._self, this._then);
+
+  final GetBlockWithTxsResult _self;
+  final $Res Function(GetBlockWithTxsResult) _then;
 
   /// Create a copy of GetBlockWithTxs
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
-  @override
   $Res call({
     Object? result = null,
   }) {
-    return _then(_$GetBlockWithTxsResultImpl(
+    return _then(GetBlockWithTxsResult(
       result: null == result
-          ? _value.result
+          ? _self.result
           : result // ignore: cast_nullable_to_non_nullable
               as BlockWithTxs,
     ));
@@ -136,144 +314,64 @@ class __$$GetBlockWithTxsResultImplCopyWithImpl<$Res>
   @override
   @pragma('vm:prefer-inline')
   $BlockWithTxsCopyWith<$Res> get result {
-    return $BlockWithTxsCopyWith<$Res>(_value.result, (value) {
-      return _then(_value.copyWith(result: value));
+    return $BlockWithTxsCopyWith<$Res>(_self.result, (value) {
+      return _then(_self.copyWith(result: value));
     });
   }
 }
 
 /// @nodoc
 @JsonSerializable()
-class _$GetBlockWithTxsResultImpl implements GetBlockWithTxsResult {
-  const _$GetBlockWithTxsResultImpl({required this.result, final String? $type})
-      : $type = $type ?? 'block';
+class GetBlockWithTxsError implements GetBlockWithTxs {
+  const GetBlockWithTxsError({required this.error, final String? $type})
+      : $type = $type ?? 'error';
+  factory GetBlockWithTxsError.fromJson(Map<String, dynamic> json) =>
+      _$GetBlockWithTxsErrorFromJson(json);
 
-  factory _$GetBlockWithTxsResultImpl.fromJson(Map<String, dynamic> json) =>
-      _$$GetBlockWithTxsResultImplFromJson(json);
-
-  @override
-  final BlockWithTxs result;
+  final JsonRpcApiError error;
 
   @JsonKey(name: 'starkNetRuntimeTypeToRemove')
   final String $type;
 
+  /// Create a copy of GetBlockWithTxs
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  $GetBlockWithTxsErrorCopyWith<GetBlockWithTxsError> get copyWith =>
+      _$GetBlockWithTxsErrorCopyWithImpl<GetBlockWithTxsError>(
+          this, _$identity);
+
   @override
-  String toString() {
-    return 'GetBlockWithTxs.block(result: $result)';
+  Map<String, dynamic> toJson() {
+    return _$GetBlockWithTxsErrorToJson(
+      this,
+    );
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$GetBlockWithTxsResultImpl &&
-            (identical(other.result, result) || other.result == result));
+            other is GetBlockWithTxsError &&
+            (identical(other.error, error) || other.error == error));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, result);
-
-  /// Create a copy of GetBlockWithTxs
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$GetBlockWithTxsResultImplCopyWith<_$GetBlockWithTxsResultImpl>
-      get copyWith => __$$GetBlockWithTxsResultImplCopyWithImpl<
-          _$GetBlockWithTxsResultImpl>(this, _$identity);
+  int get hashCode => Object.hash(runtimeType, error);
 
   @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(BlockWithTxs result) block,
-    required TResult Function(JsonRpcApiError error) error,
-  }) {
-    return block(result);
+  String toString() {
+    return 'GetBlockWithTxs.error(error: $error)';
   }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(BlockWithTxs result)? block,
-    TResult? Function(JsonRpcApiError error)? error,
-  }) {
-    return block?.call(result);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(BlockWithTxs result)? block,
-    TResult Function(JsonRpcApiError error)? error,
-    required TResult orElse(),
-  }) {
-    if (block != null) {
-      return block(result);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(GetBlockWithTxsResult value) block,
-    required TResult Function(GetBlockWithTxsError value) error,
-  }) {
-    return block(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(GetBlockWithTxsResult value)? block,
-    TResult? Function(GetBlockWithTxsError value)? error,
-  }) {
-    return block?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(GetBlockWithTxsResult value)? block,
-    TResult Function(GetBlockWithTxsError value)? error,
-    required TResult orElse(),
-  }) {
-    if (block != null) {
-      return block(this);
-    }
-    return orElse();
-  }
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$GetBlockWithTxsResultImplToJson(
-      this,
-    );
-  }
-}
-
-abstract class GetBlockWithTxsResult implements GetBlockWithTxs {
-  const factory GetBlockWithTxsResult({required final BlockWithTxs result}) =
-      _$GetBlockWithTxsResultImpl;
-
-  factory GetBlockWithTxsResult.fromJson(Map<String, dynamic> json) =
-      _$GetBlockWithTxsResultImpl.fromJson;
-
-  BlockWithTxs get result;
-
-  /// Create a copy of GetBlockWithTxs
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$GetBlockWithTxsResultImplCopyWith<_$GetBlockWithTxsResultImpl>
-      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$GetBlockWithTxsErrorImplCopyWith<$Res> {
-  factory _$$GetBlockWithTxsErrorImplCopyWith(_$GetBlockWithTxsErrorImpl value,
-          $Res Function(_$GetBlockWithTxsErrorImpl) then) =
-      __$$GetBlockWithTxsErrorImplCopyWithImpl<$Res>;
+abstract mixin class $GetBlockWithTxsErrorCopyWith<$Res>
+    implements $GetBlockWithTxsCopyWith<$Res> {
+  factory $GetBlockWithTxsErrorCopyWith(GetBlockWithTxsError value,
+          $Res Function(GetBlockWithTxsError) _then) =
+      _$GetBlockWithTxsErrorCopyWithImpl;
   @useResult
   $Res call({JsonRpcApiError error});
 
@@ -281,23 +379,22 @@ abstract class _$$GetBlockWithTxsErrorImplCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$GetBlockWithTxsErrorImplCopyWithImpl<$Res>
-    extends _$GetBlockWithTxsCopyWithImpl<$Res, _$GetBlockWithTxsErrorImpl>
-    implements _$$GetBlockWithTxsErrorImplCopyWith<$Res> {
-  __$$GetBlockWithTxsErrorImplCopyWithImpl(_$GetBlockWithTxsErrorImpl _value,
-      $Res Function(_$GetBlockWithTxsErrorImpl) _then)
-      : super(_value, _then);
+class _$GetBlockWithTxsErrorCopyWithImpl<$Res>
+    implements $GetBlockWithTxsErrorCopyWith<$Res> {
+  _$GetBlockWithTxsErrorCopyWithImpl(this._self, this._then);
+
+  final GetBlockWithTxsError _self;
+  final $Res Function(GetBlockWithTxsError) _then;
 
   /// Create a copy of GetBlockWithTxs
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
-  @override
   $Res call({
     Object? error = null,
   }) {
-    return _then(_$GetBlockWithTxsErrorImpl(
+    return _then(GetBlockWithTxsError(
       error: null == error
-          ? _value.error
+          ? _self.error
           : error // ignore: cast_nullable_to_non_nullable
               as JsonRpcApiError,
     ));
@@ -308,138 +405,10 @@ class __$$GetBlockWithTxsErrorImplCopyWithImpl<$Res>
   @override
   @pragma('vm:prefer-inline')
   $JsonRpcApiErrorCopyWith<$Res> get error {
-    return $JsonRpcApiErrorCopyWith<$Res>(_value.error, (value) {
-      return _then(_value.copyWith(error: value));
+    return $JsonRpcApiErrorCopyWith<$Res>(_self.error, (value) {
+      return _then(_self.copyWith(error: value));
     });
   }
-}
-
-/// @nodoc
-@JsonSerializable()
-class _$GetBlockWithTxsErrorImpl implements GetBlockWithTxsError {
-  const _$GetBlockWithTxsErrorImpl({required this.error, final String? $type})
-      : $type = $type ?? 'error';
-
-  factory _$GetBlockWithTxsErrorImpl.fromJson(Map<String, dynamic> json) =>
-      _$$GetBlockWithTxsErrorImplFromJson(json);
-
-  @override
-  final JsonRpcApiError error;
-
-  @JsonKey(name: 'starkNetRuntimeTypeToRemove')
-  final String $type;
-
-  @override
-  String toString() {
-    return 'GetBlockWithTxs.error(error: $error)';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$GetBlockWithTxsErrorImpl &&
-            (identical(other.error, error) || other.error == error));
-  }
-
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  int get hashCode => Object.hash(runtimeType, error);
-
-  /// Create a copy of GetBlockWithTxs
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$GetBlockWithTxsErrorImplCopyWith<_$GetBlockWithTxsErrorImpl>
-      get copyWith =>
-          __$$GetBlockWithTxsErrorImplCopyWithImpl<_$GetBlockWithTxsErrorImpl>(
-              this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(BlockWithTxs result) block,
-    required TResult Function(JsonRpcApiError error) error,
-  }) {
-    return error(this.error);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(BlockWithTxs result)? block,
-    TResult? Function(JsonRpcApiError error)? error,
-  }) {
-    return error?.call(this.error);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(BlockWithTxs result)? block,
-    TResult Function(JsonRpcApiError error)? error,
-    required TResult orElse(),
-  }) {
-    if (error != null) {
-      return error(this.error);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(GetBlockWithTxsResult value) block,
-    required TResult Function(GetBlockWithTxsError value) error,
-  }) {
-    return error(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(GetBlockWithTxsResult value)? block,
-    TResult? Function(GetBlockWithTxsError value)? error,
-  }) {
-    return error?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(GetBlockWithTxsResult value)? block,
-    TResult Function(GetBlockWithTxsError value)? error,
-    required TResult orElse(),
-  }) {
-    if (error != null) {
-      return error(this);
-    }
-    return orElse();
-  }
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$GetBlockWithTxsErrorImplToJson(
-      this,
-    );
-  }
-}
-
-abstract class GetBlockWithTxsError implements GetBlockWithTxs {
-  const factory GetBlockWithTxsError({required final JsonRpcApiError error}) =
-      _$GetBlockWithTxsErrorImpl;
-
-  factory GetBlockWithTxsError.fromJson(Map<String, dynamic> json) =
-      _$GetBlockWithTxsErrorImpl.fromJson;
-
-  JsonRpcApiError get error;
-
-  /// Create a copy of GetBlockWithTxs
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$GetBlockWithTxsErrorImplCopyWith<_$GetBlockWithTxsErrorImpl>
-      get copyWith => throw _privateConstructorUsedError;
 }
 
 BlockWithTxs _$BlockWithTxsFromJson(Map<String, dynamic> json) {
@@ -461,46 +430,204 @@ BlockWithTxs _$BlockWithTxsFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$BlockWithTxs {
 //Start of BLOCK_BODY_WITH_TXS
-  List<Txn> get transactions =>
-      throw _privateConstructorUsedError; //End of BLOCK_BODY_WITH_TXS
+  List<Txn> get transactions; //End of BLOCK_BODY_WITH_TXS
 //Start of BLOCK_HEADER
-  Felt get blockHash => throw _privateConstructorUsedError;
-  int get timestamp => throw _privateConstructorUsedError;
-  Felt get sequencerAddress => throw _privateConstructorUsedError;
+  Felt get blockHash; // End of BLOCK_BODY_WITH_TXS
+  int get timestamp;
+  Felt get sequencerAddress;
+
+  /// Create a copy of BlockWithTxs
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  $BlockWithTxsCopyWith<BlockWithTxs> get copyWith =>
+      _$BlockWithTxsCopyWithImpl<BlockWithTxs>(
+          this as BlockWithTxs, _$identity);
+
+  /// Serializes this BlockWithTxs to a JSON map.
+  Map<String, dynamic> toJson();
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is BlockWithTxs &&
+            const DeepCollectionEquality()
+                .equals(other.transactions, transactions) &&
+            (identical(other.blockHash, blockHash) ||
+                other.blockHash == blockHash) &&
+            (identical(other.timestamp, timestamp) ||
+                other.timestamp == timestamp) &&
+            (identical(other.sequencerAddress, sequencerAddress) ||
+                other.sequencerAddress == sequencerAddress));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(transactions),
+      blockHash,
+      timestamp,
+      sequencerAddress);
+
+  @override
+  String toString() {
+    return 'BlockWithTxs(transactions: $transactions, blockHash: $blockHash, timestamp: $timestamp, sequencerAddress: $sequencerAddress)';
+  }
+}
+
+/// @nodoc
+abstract mixin class $BlockWithTxsCopyWith<$Res> {
+  factory $BlockWithTxsCopyWith(
+          BlockWithTxs value, $Res Function(BlockWithTxs) _then) =
+      _$BlockWithTxsCopyWithImpl;
+  @useResult
+  $Res call(
+      {List<Txn> transactions,
+      Felt blockHash,
+      int timestamp,
+      Felt sequencerAddress});
+}
+
+/// @nodoc
+class _$BlockWithTxsCopyWithImpl<$Res> implements $BlockWithTxsCopyWith<$Res> {
+  _$BlockWithTxsCopyWithImpl(this._self, this._then);
+
+  final BlockWithTxs _self;
+  final $Res Function(BlockWithTxs) _then;
+
+  /// Create a copy of BlockWithTxs
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? transactions = null,
+    Object? blockHash = null,
+    Object? timestamp = null,
+    Object? sequencerAddress = null,
+  }) {
+    return _then(_self.copyWith(
+      transactions: null == transactions
+          ? _self.transactions
+          : transactions // ignore: cast_nullable_to_non_nullable
+              as List<Txn>,
+      blockHash: null == blockHash
+          ? _self.blockHash
+          : blockHash // ignore: cast_nullable_to_non_nullable
+              as Felt,
+      timestamp: null == timestamp
+          ? _self.timestamp
+          : timestamp // ignore: cast_nullable_to_non_nullable
+              as int,
+      sequencerAddress: null == sequencerAddress
+          ? _self.sequencerAddress
+          : sequencerAddress // ignore: cast_nullable_to_non_nullable
+              as Felt,
+    ));
+  }
+}
+
+/// Adds pattern-matching-related methods to [BlockWithTxs].
+extension BlockWithTxsPatterns on BlockWithTxs {
+  /// A variant of `map` that fallback to returning `orElse`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
   @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(
-            String status,
-            List<Txn> transactions,
-            Felt blockHash,
-            Felt parentHash,
-            int blockNumber,
-            Felt newRoot,
-            int timestamp,
-            Felt sequencerAddress)
-        resultingBlock,
-    required TResult Function(List<Txn> transactions, int timestamp,
-            Felt sequencerAddress, Felt blockHash)
-        pendingBlock,
-  }) =>
-      throw _privateConstructorUsedError;
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(BlockWithTxsResponse value)? resultingBlock,
+    TResult Function(PendingBlockWithTxsResult value)? pendingBlock,
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case BlockWithTxsResponse() when resultingBlock != null:
+        return resultingBlock(_that);
+      case PendingBlockWithTxsResult() when pendingBlock != null:
+        return pendingBlock(_that);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// Callbacks receives the raw object, upcasted.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case final Subclass2 value:
+  ///     return ...;
+  /// }
+  /// ```
+
   @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(
-            String status,
-            List<Txn> transactions,
-            Felt blockHash,
-            Felt parentHash,
-            int blockNumber,
-            Felt newRoot,
-            int timestamp,
-            Felt sequencerAddress)?
-        resultingBlock,
-    TResult? Function(List<Txn> transactions, int timestamp,
-            Felt sequencerAddress, Felt blockHash)?
-        pendingBlock,
-  }) =>
-      throw _privateConstructorUsedError;
+  TResult map<TResult extends Object?>({
+    required TResult Function(BlockWithTxsResponse value) resultingBlock,
+    required TResult Function(PendingBlockWithTxsResult value) pendingBlock,
+  }) {
+    final _that = this;
+    switch (_that) {
+      case BlockWithTxsResponse():
+        return resultingBlock(_that);
+      case PendingBlockWithTxsResult():
+        return pendingBlock(_that);
+      case _:
+        throw StateError('Unexpected subclass');
+    }
+  }
+
+  /// A variant of `map` that fallback to returning `null`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(BlockWithTxsResponse value)? resultingBlock,
+    TResult? Function(PendingBlockWithTxsResult value)? pendingBlock,
+  }) {
+    final _that = this;
+    switch (_that) {
+      case BlockWithTxsResponse() when resultingBlock != null:
+        return resultingBlock(_that);
+      case PendingBlockWithTxsResult() when pendingBlock != null:
+        return pendingBlock(_that);
+      case _:
+        return null;
+    }
+  }
+
+  /// A variant of `when` that fallback to an `orElse` callback.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(
@@ -517,174 +644,129 @@ mixin _$BlockWithTxs {
             Felt sequencerAddress, Felt blockHash)?
         pendingBlock,
     required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(BlockWithTxsResponse value) resultingBlock,
-    required TResult Function(PendingBlockWithTxsResult value) pendingBlock,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(BlockWithTxsResponse value)? resultingBlock,
-    TResult? Function(PendingBlockWithTxsResult value)? pendingBlock,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(BlockWithTxsResponse value)? resultingBlock,
-    TResult Function(PendingBlockWithTxsResult value)? pendingBlock,
-    required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
-
-  /// Serializes this BlockWithTxs to a JSON map.
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-
-  /// Create a copy of BlockWithTxs
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  $BlockWithTxsCopyWith<BlockWithTxs> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $BlockWithTxsCopyWith<$Res> {
-  factory $BlockWithTxsCopyWith(
-          BlockWithTxs value, $Res Function(BlockWithTxs) then) =
-      _$BlockWithTxsCopyWithImpl<$Res, BlockWithTxs>;
-  @useResult
-  $Res call(
-      {List<Txn> transactions,
-      Felt blockHash,
-      int timestamp,
-      Felt sequencerAddress});
-}
-
-/// @nodoc
-class _$BlockWithTxsCopyWithImpl<$Res, $Val extends BlockWithTxs>
-    implements $BlockWithTxsCopyWith<$Res> {
-  _$BlockWithTxsCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-
-  /// Create a copy of BlockWithTxs
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? transactions = null,
-    Object? blockHash = null,
-    Object? timestamp = null,
-    Object? sequencerAddress = null,
   }) {
-    return _then(_value.copyWith(
-      transactions: null == transactions
-          ? _value.transactions
-          : transactions // ignore: cast_nullable_to_non_nullable
-              as List<Txn>,
-      blockHash: null == blockHash
-          ? _value.blockHash
-          : blockHash // ignore: cast_nullable_to_non_nullable
-              as Felt,
-      timestamp: null == timestamp
-          ? _value.timestamp
-          : timestamp // ignore: cast_nullable_to_non_nullable
-              as int,
-      sequencerAddress: null == sequencerAddress
-          ? _value.sequencerAddress
-          : sequencerAddress // ignore: cast_nullable_to_non_nullable
-              as Felt,
-    ) as $Val);
+    final _that = this;
+    switch (_that) {
+      case BlockWithTxsResponse() when resultingBlock != null:
+        return resultingBlock(
+            _that.status,
+            _that.transactions,
+            _that.blockHash,
+            _that.parentHash,
+            _that.blockNumber,
+            _that.newRoot,
+            _that.timestamp,
+            _that.sequencerAddress);
+      case PendingBlockWithTxsResult() when pendingBlock != null:
+        return pendingBlock(_that.transactions, _that.timestamp,
+            _that.sequencerAddress, _that.blockHash);
+      case _:
+        return orElse();
+    }
   }
-}
 
-/// @nodoc
-abstract class _$$BlockWithTxsResponseImplCopyWith<$Res>
-    implements $BlockWithTxsCopyWith<$Res> {
-  factory _$$BlockWithTxsResponseImplCopyWith(_$BlockWithTxsResponseImpl value,
-          $Res Function(_$BlockWithTxsResponseImpl) then) =
-      __$$BlockWithTxsResponseImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call(
-      {String status,
-      List<Txn> transactions,
-      Felt blockHash,
-      Felt parentHash,
-      int blockNumber,
-      Felt newRoot,
-      int timestamp,
-      Felt sequencerAddress});
-}
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// As opposed to `map`, this offers destructuring.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case Subclass2(:final field2):
+  ///     return ...;
+  /// }
+  /// ```
 
-/// @nodoc
-class __$$BlockWithTxsResponseImplCopyWithImpl<$Res>
-    extends _$BlockWithTxsCopyWithImpl<$Res, _$BlockWithTxsResponseImpl>
-    implements _$$BlockWithTxsResponseImplCopyWith<$Res> {
-  __$$BlockWithTxsResponseImplCopyWithImpl(_$BlockWithTxsResponseImpl _value,
-      $Res Function(_$BlockWithTxsResponseImpl) _then)
-      : super(_value, _then);
-
-  /// Create a copy of BlockWithTxs
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? status = null,
-    Object? transactions = null,
-    Object? blockHash = null,
-    Object? parentHash = null,
-    Object? blockNumber = null,
-    Object? newRoot = null,
-    Object? timestamp = null,
-    Object? sequencerAddress = null,
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(
+            String status,
+            List<Txn> transactions,
+            Felt blockHash,
+            Felt parentHash,
+            int blockNumber,
+            Felt newRoot,
+            int timestamp,
+            Felt sequencerAddress)
+        resultingBlock,
+    required TResult Function(List<Txn> transactions, int timestamp,
+            Felt sequencerAddress, Felt blockHash)
+        pendingBlock,
   }) {
-    return _then(_$BlockWithTxsResponseImpl(
-      status: null == status
-          ? _value.status
-          : status // ignore: cast_nullable_to_non_nullable
-              as String,
-      transactions: null == transactions
-          ? _value._transactions
-          : transactions // ignore: cast_nullable_to_non_nullable
-              as List<Txn>,
-      blockHash: null == blockHash
-          ? _value.blockHash
-          : blockHash // ignore: cast_nullable_to_non_nullable
-              as Felt,
-      parentHash: null == parentHash
-          ? _value.parentHash
-          : parentHash // ignore: cast_nullable_to_non_nullable
-              as Felt,
-      blockNumber: null == blockNumber
-          ? _value.blockNumber
-          : blockNumber // ignore: cast_nullable_to_non_nullable
-              as int,
-      newRoot: null == newRoot
-          ? _value.newRoot
-          : newRoot // ignore: cast_nullable_to_non_nullable
-              as Felt,
-      timestamp: null == timestamp
-          ? _value.timestamp
-          : timestamp // ignore: cast_nullable_to_non_nullable
-              as int,
-      sequencerAddress: null == sequencerAddress
-          ? _value.sequencerAddress
-          : sequencerAddress // ignore: cast_nullable_to_non_nullable
-              as Felt,
-    ));
+    final _that = this;
+    switch (_that) {
+      case BlockWithTxsResponse():
+        return resultingBlock(
+            _that.status,
+            _that.transactions,
+            _that.blockHash,
+            _that.parentHash,
+            _that.blockNumber,
+            _that.newRoot,
+            _that.timestamp,
+            _that.sequencerAddress);
+      case PendingBlockWithTxsResult():
+        return pendingBlock(_that.transactions, _that.timestamp,
+            _that.sequencerAddress, _that.blockHash);
+      case _:
+        throw StateError('Unexpected subclass');
+    }
+  }
+
+  /// A variant of `when` that fallback to returning `null`
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(
+            String status,
+            List<Txn> transactions,
+            Felt blockHash,
+            Felt parentHash,
+            int blockNumber,
+            Felt newRoot,
+            int timestamp,
+            Felt sequencerAddress)?
+        resultingBlock,
+    TResult? Function(List<Txn> transactions, int timestamp,
+            Felt sequencerAddress, Felt blockHash)?
+        pendingBlock,
+  }) {
+    final _that = this;
+    switch (_that) {
+      case BlockWithTxsResponse() when resultingBlock != null:
+        return resultingBlock(
+            _that.status,
+            _that.transactions,
+            _that.blockHash,
+            _that.parentHash,
+            _that.blockNumber,
+            _that.newRoot,
+            _that.timestamp,
+            _that.sequencerAddress);
+      case PendingBlockWithTxsResult() when pendingBlock != null:
+        return pendingBlock(_that.transactions, _that.timestamp,
+            _that.sequencerAddress, _that.blockHash);
+      case _:
+        return null;
+    }
   }
 }
 
 /// @nodoc
 @JsonSerializable()
-class _$BlockWithTxsResponseImpl implements BlockWithTxsResponse {
-  const _$BlockWithTxsResponseImpl(
+class BlockWithTxsResponse implements BlockWithTxs {
+  const BlockWithTxsResponse(
       {required this.status,
       required final List<Txn> transactions,
       required this.blockHash,
@@ -696,11 +778,9 @@ class _$BlockWithTxsResponseImpl implements BlockWithTxsResponse {
       final String? $type})
       : _transactions = transactions,
         $type = $type ?? 'resultingBlock';
+  factory BlockWithTxsResponse.fromJson(Map<String, dynamic> json) =>
+      _$BlockWithTxsResponseFromJson(json);
 
-  factory _$BlockWithTxsResponseImpl.fromJson(Map<String, dynamic> json) =>
-      _$$BlockWithTxsResponseImplFromJson(json);
-
-  @override
   final String status;
 //Start of BLOCK_BODY_WITH_TXS
   final List<Txn> _transactions;
@@ -716,11 +796,8 @@ class _$BlockWithTxsResponseImpl implements BlockWithTxsResponse {
 //Start of BLOCK_HEADER
   @override
   final Felt blockHash;
-  @override
   final Felt parentHash;
-  @override
   final int blockNumber;
-  @override
   final Felt newRoot;
   @override
   final int timestamp;
@@ -730,16 +807,27 @@ class _$BlockWithTxsResponseImpl implements BlockWithTxsResponse {
   @JsonKey(name: 'starkNetRuntimeTypeToRemove')
   final String $type;
 
+  /// Create a copy of BlockWithTxs
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  String toString() {
-    return 'BlockWithTxs.resultingBlock(status: $status, transactions: $transactions, blockHash: $blockHash, parentHash: $parentHash, blockNumber: $blockNumber, newRoot: $newRoot, timestamp: $timestamp, sequencerAddress: $sequencerAddress)';
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  $BlockWithTxsResponseCopyWith<BlockWithTxsResponse> get copyWith =>
+      _$BlockWithTxsResponseCopyWithImpl<BlockWithTxsResponse>(
+          this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$BlockWithTxsResponseToJson(
+      this,
+    );
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$BlockWithTxsResponseImpl &&
+            other is BlockWithTxsResponse &&
             (identical(other.status, status) || other.status == status) &&
             const DeepCollectionEquality()
                 .equals(other._transactions, _transactions) &&
@@ -769,209 +857,85 @@ class _$BlockWithTxsResponseImpl implements BlockWithTxsResponse {
       timestamp,
       sequencerAddress);
 
-  /// Create a copy of BlockWithTxs
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  @pragma('vm:prefer-inline')
-  _$$BlockWithTxsResponseImplCopyWith<_$BlockWithTxsResponseImpl>
-      get copyWith =>
-          __$$BlockWithTxsResponseImplCopyWithImpl<_$BlockWithTxsResponseImpl>(
-              this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(
-            String status,
-            List<Txn> transactions,
-            Felt blockHash,
-            Felt parentHash,
-            int blockNumber,
-            Felt newRoot,
-            int timestamp,
-            Felt sequencerAddress)
-        resultingBlock,
-    required TResult Function(List<Txn> transactions, int timestamp,
-            Felt sequencerAddress, Felt blockHash)
-        pendingBlock,
-  }) {
-    return resultingBlock(status, transactions, blockHash, parentHash,
-        blockNumber, newRoot, timestamp, sequencerAddress);
+  String toString() {
+    return 'BlockWithTxs.resultingBlock(status: $status, transactions: $transactions, blockHash: $blockHash, parentHash: $parentHash, blockNumber: $blockNumber, newRoot: $newRoot, timestamp: $timestamp, sequencerAddress: $sequencerAddress)';
   }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(
-            String status,
-            List<Txn> transactions,
-            Felt blockHash,
-            Felt parentHash,
-            int blockNumber,
-            Felt newRoot,
-            int timestamp,
-            Felt sequencerAddress)?
-        resultingBlock,
-    TResult? Function(List<Txn> transactions, int timestamp,
-            Felt sequencerAddress, Felt blockHash)?
-        pendingBlock,
-  }) {
-    return resultingBlock?.call(status, transactions, blockHash, parentHash,
-        blockNumber, newRoot, timestamp, sequencerAddress);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(
-            String status,
-            List<Txn> transactions,
-            Felt blockHash,
-            Felt parentHash,
-            int blockNumber,
-            Felt newRoot,
-            int timestamp,
-            Felt sequencerAddress)?
-        resultingBlock,
-    TResult Function(List<Txn> transactions, int timestamp,
-            Felt sequencerAddress, Felt blockHash)?
-        pendingBlock,
-    required TResult orElse(),
-  }) {
-    if (resultingBlock != null) {
-      return resultingBlock(status, transactions, blockHash, parentHash,
-          blockNumber, newRoot, timestamp, sequencerAddress);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(BlockWithTxsResponse value) resultingBlock,
-    required TResult Function(PendingBlockWithTxsResult value) pendingBlock,
-  }) {
-    return resultingBlock(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(BlockWithTxsResponse value)? resultingBlock,
-    TResult? Function(PendingBlockWithTxsResult value)? pendingBlock,
-  }) {
-    return resultingBlock?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(BlockWithTxsResponse value)? resultingBlock,
-    TResult Function(PendingBlockWithTxsResult value)? pendingBlock,
-    required TResult orElse(),
-  }) {
-    if (resultingBlock != null) {
-      return resultingBlock(this);
-    }
-    return orElse();
-  }
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$BlockWithTxsResponseImplToJson(
-      this,
-    );
-  }
-}
-
-abstract class BlockWithTxsResponse implements BlockWithTxs {
-  const factory BlockWithTxsResponse(
-      {required final String status,
-      required final List<Txn> transactions,
-      required final Felt blockHash,
-      required final Felt parentHash,
-      required final int blockNumber,
-      required final Felt newRoot,
-      required final int timestamp,
-      required final Felt sequencerAddress}) = _$BlockWithTxsResponseImpl;
-
-  factory BlockWithTxsResponse.fromJson(Map<String, dynamic> json) =
-      _$BlockWithTxsResponseImpl.fromJson;
-
-  String get status; //Start of BLOCK_BODY_WITH_TXS
-  @override
-  List<Txn> get transactions; //End of BLOCK_BODY_WITH_TXS
-//Start of BLOCK_HEADER
-  @override
-  Felt get blockHash;
-  Felt get parentHash;
-  int get blockNumber;
-  Felt get newRoot;
-  @override
-  int get timestamp;
-  @override
-  Felt get sequencerAddress;
-
-  /// Create a copy of BlockWithTxs
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$BlockWithTxsResponseImplCopyWith<_$BlockWithTxsResponseImpl>
-      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$PendingBlockWithTxsResultImplCopyWith<$Res>
+abstract mixin class $BlockWithTxsResponseCopyWith<$Res>
     implements $BlockWithTxsCopyWith<$Res> {
-  factory _$$PendingBlockWithTxsResultImplCopyWith(
-          _$PendingBlockWithTxsResultImpl value,
-          $Res Function(_$PendingBlockWithTxsResultImpl) then) =
-      __$$PendingBlockWithTxsResultImplCopyWithImpl<$Res>;
+  factory $BlockWithTxsResponseCopyWith(BlockWithTxsResponse value,
+          $Res Function(BlockWithTxsResponse) _then) =
+      _$BlockWithTxsResponseCopyWithImpl;
   @override
   @useResult
   $Res call(
-      {List<Txn> transactions,
+      {String status,
+      List<Txn> transactions,
+      Felt blockHash,
+      Felt parentHash,
+      int blockNumber,
+      Felt newRoot,
       int timestamp,
-      Felt sequencerAddress,
-      Felt blockHash});
+      Felt sequencerAddress});
 }
 
 /// @nodoc
-class __$$PendingBlockWithTxsResultImplCopyWithImpl<$Res>
-    extends _$BlockWithTxsCopyWithImpl<$Res, _$PendingBlockWithTxsResultImpl>
-    implements _$$PendingBlockWithTxsResultImplCopyWith<$Res> {
-  __$$PendingBlockWithTxsResultImplCopyWithImpl(
-      _$PendingBlockWithTxsResultImpl _value,
-      $Res Function(_$PendingBlockWithTxsResultImpl) _then)
-      : super(_value, _then);
+class _$BlockWithTxsResponseCopyWithImpl<$Res>
+    implements $BlockWithTxsResponseCopyWith<$Res> {
+  _$BlockWithTxsResponseCopyWithImpl(this._self, this._then);
+
+  final BlockWithTxsResponse _self;
+  final $Res Function(BlockWithTxsResponse) _then;
 
   /// Create a copy of BlockWithTxs
   /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
   @override
+  @pragma('vm:prefer-inline')
   $Res call({
+    Object? status = null,
     Object? transactions = null,
+    Object? blockHash = null,
+    Object? parentHash = null,
+    Object? blockNumber = null,
+    Object? newRoot = null,
     Object? timestamp = null,
     Object? sequencerAddress = null,
-    Object? blockHash = null,
   }) {
-    return _then(_$PendingBlockWithTxsResultImpl(
+    return _then(BlockWithTxsResponse(
+      status: null == status
+          ? _self.status
+          : status // ignore: cast_nullable_to_non_nullable
+              as String,
       transactions: null == transactions
-          ? _value._transactions
+          ? _self._transactions
           : transactions // ignore: cast_nullable_to_non_nullable
               as List<Txn>,
+      blockHash: null == blockHash
+          ? _self.blockHash
+          : blockHash // ignore: cast_nullable_to_non_nullable
+              as Felt,
+      parentHash: null == parentHash
+          ? _self.parentHash
+          : parentHash // ignore: cast_nullable_to_non_nullable
+              as Felt,
+      blockNumber: null == blockNumber
+          ? _self.blockNumber
+          : blockNumber // ignore: cast_nullable_to_non_nullable
+              as int,
+      newRoot: null == newRoot
+          ? _self.newRoot
+          : newRoot // ignore: cast_nullable_to_non_nullable
+              as Felt,
       timestamp: null == timestamp
-          ? _value.timestamp
+          ? _self.timestamp
           : timestamp // ignore: cast_nullable_to_non_nullable
               as int,
       sequencerAddress: null == sequencerAddress
-          ? _value.sequencerAddress
+          ? _self.sequencerAddress
           : sequencerAddress // ignore: cast_nullable_to_non_nullable
-              as Felt,
-      blockHash: null == blockHash
-          ? _value.blockHash
-          : blockHash // ignore: cast_nullable_to_non_nullable
               as Felt,
     ));
   }
@@ -979,8 +943,8 @@ class __$$PendingBlockWithTxsResultImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$PendingBlockWithTxsResultImpl implements PendingBlockWithTxsResult {
-  const _$PendingBlockWithTxsResultImpl(
+class PendingBlockWithTxsResult implements BlockWithTxs {
+  const PendingBlockWithTxsResult(
       {required final List<Txn> transactions,
       required this.timestamp,
       required this.sequencerAddress,
@@ -988,9 +952,8 @@ class _$PendingBlockWithTxsResultImpl implements PendingBlockWithTxsResult {
       final String? $type})
       : _transactions = transactions,
         $type = $type ?? 'pendingBlock';
-
-  factory _$PendingBlockWithTxsResultImpl.fromJson(Map<String, dynamic> json) =>
-      _$$PendingBlockWithTxsResultImplFromJson(json);
+  factory PendingBlockWithTxsResult.fromJson(Map<String, dynamic> json) =>
+      _$PendingBlockWithTxsResultFromJson(json);
 
 // Start of BLOCK_BODY_WITH_TXS
   final List<Txn> _transactions;
@@ -1013,16 +976,27 @@ class _$PendingBlockWithTxsResultImpl implements PendingBlockWithTxsResult {
   @JsonKey(name: 'starkNetRuntimeTypeToRemove')
   final String $type;
 
+  /// Create a copy of BlockWithTxs
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  String toString() {
-    return 'BlockWithTxs.pendingBlock(transactions: $transactions, timestamp: $timestamp, sequencerAddress: $sequencerAddress, blockHash: $blockHash)';
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  $PendingBlockWithTxsResultCopyWith<PendingBlockWithTxsResult> get copyWith =>
+      _$PendingBlockWithTxsResultCopyWithImpl<PendingBlockWithTxsResult>(
+          this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$PendingBlockWithTxsResultToJson(
+      this,
+    );
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$PendingBlockWithTxsResultImpl &&
+            other is PendingBlockWithTxsResult &&
             const DeepCollectionEquality()
                 .equals(other._transactions, _transactions) &&
             (identical(other.timestamp, timestamp) ||
@@ -1042,143 +1016,64 @@ class _$PendingBlockWithTxsResultImpl implements PendingBlockWithTxsResult {
       sequencerAddress,
       blockHash);
 
+  @override
+  String toString() {
+    return 'BlockWithTxs.pendingBlock(transactions: $transactions, timestamp: $timestamp, sequencerAddress: $sequencerAddress, blockHash: $blockHash)';
+  }
+}
+
+/// @nodoc
+abstract mixin class $PendingBlockWithTxsResultCopyWith<$Res>
+    implements $BlockWithTxsCopyWith<$Res> {
+  factory $PendingBlockWithTxsResultCopyWith(PendingBlockWithTxsResult value,
+          $Res Function(PendingBlockWithTxsResult) _then) =
+      _$PendingBlockWithTxsResultCopyWithImpl;
+  @override
+  @useResult
+  $Res call(
+      {List<Txn> transactions,
+      int timestamp,
+      Felt sequencerAddress,
+      Felt blockHash});
+}
+
+/// @nodoc
+class _$PendingBlockWithTxsResultCopyWithImpl<$Res>
+    implements $PendingBlockWithTxsResultCopyWith<$Res> {
+  _$PendingBlockWithTxsResultCopyWithImpl(this._self, this._then);
+
+  final PendingBlockWithTxsResult _self;
+  final $Res Function(PendingBlockWithTxsResult) _then;
+
   /// Create a copy of BlockWithTxs
   /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$PendingBlockWithTxsResultImplCopyWith<_$PendingBlockWithTxsResultImpl>
-      get copyWith => __$$PendingBlockWithTxsResultImplCopyWithImpl<
-          _$PendingBlockWithTxsResultImpl>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(
-            String status,
-            List<Txn> transactions,
-            Felt blockHash,
-            Felt parentHash,
-            int blockNumber,
-            Felt newRoot,
-            int timestamp,
-            Felt sequencerAddress)
-        resultingBlock,
-    required TResult Function(List<Txn> transactions, int timestamp,
-            Felt sequencerAddress, Felt blockHash)
-        pendingBlock,
+  $Res call({
+    Object? transactions = null,
+    Object? timestamp = null,
+    Object? sequencerAddress = null,
+    Object? blockHash = null,
   }) {
-    return pendingBlock(transactions, timestamp, sequencerAddress, blockHash);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(
-            String status,
-            List<Txn> transactions,
-            Felt blockHash,
-            Felt parentHash,
-            int blockNumber,
-            Felt newRoot,
-            int timestamp,
-            Felt sequencerAddress)?
-        resultingBlock,
-    TResult? Function(List<Txn> transactions, int timestamp,
-            Felt sequencerAddress, Felt blockHash)?
-        pendingBlock,
-  }) {
-    return pendingBlock?.call(
-        transactions, timestamp, sequencerAddress, blockHash);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(
-            String status,
-            List<Txn> transactions,
-            Felt blockHash,
-            Felt parentHash,
-            int blockNumber,
-            Felt newRoot,
-            int timestamp,
-            Felt sequencerAddress)?
-        resultingBlock,
-    TResult Function(List<Txn> transactions, int timestamp,
-            Felt sequencerAddress, Felt blockHash)?
-        pendingBlock,
-    required TResult orElse(),
-  }) {
-    if (pendingBlock != null) {
-      return pendingBlock(transactions, timestamp, sequencerAddress, blockHash);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(BlockWithTxsResponse value) resultingBlock,
-    required TResult Function(PendingBlockWithTxsResult value) pendingBlock,
-  }) {
-    return pendingBlock(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(BlockWithTxsResponse value)? resultingBlock,
-    TResult? Function(PendingBlockWithTxsResult value)? pendingBlock,
-  }) {
-    return pendingBlock?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(BlockWithTxsResponse value)? resultingBlock,
-    TResult Function(PendingBlockWithTxsResult value)? pendingBlock,
-    required TResult orElse(),
-  }) {
-    if (pendingBlock != null) {
-      return pendingBlock(this);
-    }
-    return orElse();
-  }
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$PendingBlockWithTxsResultImplToJson(
-      this,
-    );
+    return _then(PendingBlockWithTxsResult(
+      transactions: null == transactions
+          ? _self._transactions
+          : transactions // ignore: cast_nullable_to_non_nullable
+              as List<Txn>,
+      timestamp: null == timestamp
+          ? _self.timestamp
+          : timestamp // ignore: cast_nullable_to_non_nullable
+              as int,
+      sequencerAddress: null == sequencerAddress
+          ? _self.sequencerAddress
+          : sequencerAddress // ignore: cast_nullable_to_non_nullable
+              as Felt,
+      blockHash: null == blockHash
+          ? _self.blockHash
+          : blockHash // ignore: cast_nullable_to_non_nullable
+              as Felt,
+    ));
   }
 }
 
-abstract class PendingBlockWithTxsResult implements BlockWithTxs {
-  const factory PendingBlockWithTxsResult(
-      {required final List<Txn> transactions,
-      required final int timestamp,
-      required final Felt sequencerAddress,
-      required final Felt blockHash}) = _$PendingBlockWithTxsResultImpl;
-
-  factory PendingBlockWithTxsResult.fromJson(Map<String, dynamic> json) =
-      _$PendingBlockWithTxsResultImpl.fromJson;
-
-// Start of BLOCK_BODY_WITH_TXS
-  @override
-  List<Txn> get transactions; // End of BLOCK_BODY_WITH_TXS
-  @override
-  int get timestamp;
-  @override
-  Felt get sequencerAddress;
-  @override
-  Felt get blockHash;
-
-  /// Create a copy of BlockWithTxs
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$PendingBlockWithTxsResultImplCopyWith<_$PendingBlockWithTxsResultImpl>
-      get copyWith => throw _privateConstructorUsedError;
-}
+// dart format on

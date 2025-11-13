@@ -1,5 +1,5 @@
-// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// coverage:ignore-file
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
@@ -9,11 +9,8 @@ part of 'block_id.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// dart format off
 T _$identity<T>(T value) => value;
-
-final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
-
 BlockId _$BlockIdFromJson(Map<String, dynamic> json) {
   switch (json['starkNetRuntimeTypeToRemove']) {
     case 'blockHash':
@@ -34,131 +31,246 @@ BlockId _$BlockIdFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$BlockId {
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(Felt blockHash) blockHash,
-    required TResult Function(int blockNumber) blockNumber,
-    required TResult Function(String blockTag) blockTag,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(Felt blockHash)? blockHash,
-    TResult? Function(int blockNumber)? blockNumber,
-    TResult? Function(String blockTag)? blockTag,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(Felt blockHash)? blockHash,
-    TResult Function(int blockNumber)? blockNumber,
-    TResult Function(String blockTag)? blockTag,
-    required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(BlockIdHash value) blockHash,
-    required TResult Function(BlockIdNumber value) blockNumber,
-    required TResult Function(BlockIdTag value) blockTag,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(BlockIdHash value)? blockHash,
-    TResult? Function(BlockIdNumber value)? blockNumber,
-    TResult? Function(BlockIdTag value)? blockTag,
-  }) =>
-      throw _privateConstructorUsedError;
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is BlockId);
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  String toString() {
+    return 'BlockId()';
+  }
+}
+
+/// @nodoc
+class $BlockIdCopyWith<$Res> {
+  $BlockIdCopyWith(BlockId _, $Res Function(BlockId) __);
+}
+
+/// Adds pattern-matching-related methods to [BlockId].
+extension BlockIdPatterns on BlockId {
+  /// A variant of `map` that fallback to returning `orElse`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(BlockIdHash value)? blockHash,
     TResult Function(BlockIdNumber value)? blockNumber,
     TResult Function(BlockIdTag value)? blockTag,
     required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $BlockIdCopyWith<$Res> {
-  factory $BlockIdCopyWith(BlockId value, $Res Function(BlockId) then) =
-      _$BlockIdCopyWithImpl<$Res, BlockId>;
-}
-
-/// @nodoc
-class _$BlockIdCopyWithImpl<$Res, $Val extends BlockId>
-    implements $BlockIdCopyWith<$Res> {
-  _$BlockIdCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-
-  /// Create a copy of BlockId
-  /// with the given fields replaced by the non-null parameter values.
-}
-
-/// @nodoc
-abstract class _$$BlockIdHashImplCopyWith<$Res> {
-  factory _$$BlockIdHashImplCopyWith(
-          _$BlockIdHashImpl value, $Res Function(_$BlockIdHashImpl) then) =
-      __$$BlockIdHashImplCopyWithImpl<$Res>;
-  @useResult
-  $Res call({Felt blockHash});
-}
-
-/// @nodoc
-class __$$BlockIdHashImplCopyWithImpl<$Res>
-    extends _$BlockIdCopyWithImpl<$Res, _$BlockIdHashImpl>
-    implements _$$BlockIdHashImplCopyWith<$Res> {
-  __$$BlockIdHashImplCopyWithImpl(
-      _$BlockIdHashImpl _value, $Res Function(_$BlockIdHashImpl) _then)
-      : super(_value, _then);
-
-  /// Create a copy of BlockId
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? blockHash = null,
   }) {
-    return _then(_$BlockIdHashImpl(
-      null == blockHash
-          ? _value.blockHash
-          : blockHash // ignore: cast_nullable_to_non_nullable
-              as Felt,
-    ));
+    final _that = this;
+    switch (_that) {
+      case BlockIdHash() when blockHash != null:
+        return blockHash(_that);
+      case BlockIdNumber() when blockNumber != null:
+        return blockNumber(_that);
+      case BlockIdTag() when blockTag != null:
+        return blockTag(_that);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// Callbacks receives the raw object, upcasted.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case final Subclass2 value:
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(BlockIdHash value) blockHash,
+    required TResult Function(BlockIdNumber value) blockNumber,
+    required TResult Function(BlockIdTag value) blockTag,
+  }) {
+    final _that = this;
+    switch (_that) {
+      case BlockIdHash():
+        return blockHash(_that);
+      case BlockIdNumber():
+        return blockNumber(_that);
+      case BlockIdTag():
+        return blockTag(_that);
+      case _:
+        throw StateError('Unexpected subclass');
+    }
+  }
+
+  /// A variant of `map` that fallback to returning `null`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(BlockIdHash value)? blockHash,
+    TResult? Function(BlockIdNumber value)? blockNumber,
+    TResult? Function(BlockIdTag value)? blockTag,
+  }) {
+    final _that = this;
+    switch (_that) {
+      case BlockIdHash() when blockHash != null:
+        return blockHash(_that);
+      case BlockIdNumber() when blockNumber != null:
+        return blockNumber(_that);
+      case BlockIdTag() when blockTag != null:
+        return blockTag(_that);
+      case _:
+        return null;
+    }
+  }
+
+  /// A variant of `when` that fallback to an `orElse` callback.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(Felt blockHash)? blockHash,
+    TResult Function(int blockNumber)? blockNumber,
+    TResult Function(String blockTag)? blockTag,
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case BlockIdHash() when blockHash != null:
+        return blockHash(_that.blockHash);
+      case BlockIdNumber() when blockNumber != null:
+        return blockNumber(_that.blockNumber);
+      case BlockIdTag() when blockTag != null:
+        return blockTag(_that.blockTag);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// As opposed to `map`, this offers destructuring.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case Subclass2(:final field2):
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(Felt blockHash) blockHash,
+    required TResult Function(int blockNumber) blockNumber,
+    required TResult Function(String blockTag) blockTag,
+  }) {
+    final _that = this;
+    switch (_that) {
+      case BlockIdHash():
+        return blockHash(_that.blockHash);
+      case BlockIdNumber():
+        return blockNumber(_that.blockNumber);
+      case BlockIdTag():
+        return blockTag(_that.blockTag);
+      case _:
+        throw StateError('Unexpected subclass');
+    }
+  }
+
+  /// A variant of `when` that fallback to returning `null`
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(Felt blockHash)? blockHash,
+    TResult? Function(int blockNumber)? blockNumber,
+    TResult? Function(String blockTag)? blockTag,
+  }) {
+    final _that = this;
+    switch (_that) {
+      case BlockIdHash() when blockHash != null:
+        return blockHash(_that.blockHash);
+      case BlockIdNumber() when blockNumber != null:
+        return blockNumber(_that.blockNumber);
+      case BlockIdTag() when blockTag != null:
+        return blockTag(_that.blockTag);
+      case _:
+        return null;
+    }
   }
 }
 
 /// @nodoc
 @JsonSerializable(createToJson: false)
-class _$BlockIdHashImpl extends BlockIdHash {
-  const _$BlockIdHashImpl(this.blockHash, {final String? $type})
+class BlockIdHash extends BlockId {
+  const BlockIdHash(this.blockHash, {final String? $type})
       : $type = $type ?? 'blockHash',
         super._();
+  factory BlockIdHash.fromJson(Map<String, dynamic> json) =>
+      _$BlockIdHashFromJson(json);
 
-  factory _$BlockIdHashImpl.fromJson(Map<String, dynamic> json) =>
-      _$$BlockIdHashImplFromJson(json);
-
-  @override
   final Felt blockHash;
 
   @JsonKey(name: 'starkNetRuntimeTypeToRemove')
   final String $type;
 
-  @override
-  String toString() {
-    return 'BlockId.blockHash(blockHash: $blockHash)';
-  }
+  /// Create a copy of BlockId
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  $BlockIdHashCopyWith<BlockIdHash> get copyWith =>
+      _$BlockIdHashCopyWithImpl<BlockIdHash>(this, _$identity);
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$BlockIdHashImpl &&
+            other is BlockIdHash &&
             (identical(other.blockHash, blockHash) ||
                 other.blockHash == blockHash));
   }
@@ -167,158 +279,70 @@ class _$BlockIdHashImpl extends BlockIdHash {
   @override
   int get hashCode => Object.hash(runtimeType, blockHash);
 
-  /// Create a copy of BlockId
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  @pragma('vm:prefer-inline')
-  _$$BlockIdHashImplCopyWith<_$BlockIdHashImpl> get copyWith =>
-      __$$BlockIdHashImplCopyWithImpl<_$BlockIdHashImpl>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(Felt blockHash) blockHash,
-    required TResult Function(int blockNumber) blockNumber,
-    required TResult Function(String blockTag) blockTag,
-  }) {
-    return blockHash(this.blockHash);
+  String toString() {
+    return 'BlockId.blockHash(blockHash: $blockHash)';
   }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(Felt blockHash)? blockHash,
-    TResult? Function(int blockNumber)? blockNumber,
-    TResult? Function(String blockTag)? blockTag,
-  }) {
-    return blockHash?.call(this.blockHash);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(Felt blockHash)? blockHash,
-    TResult Function(int blockNumber)? blockNumber,
-    TResult Function(String blockTag)? blockTag,
-    required TResult orElse(),
-  }) {
-    if (blockHash != null) {
-      return blockHash(this.blockHash);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(BlockIdHash value) blockHash,
-    required TResult Function(BlockIdNumber value) blockNumber,
-    required TResult Function(BlockIdTag value) blockTag,
-  }) {
-    return blockHash(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(BlockIdHash value)? blockHash,
-    TResult? Function(BlockIdNumber value)? blockNumber,
-    TResult? Function(BlockIdTag value)? blockTag,
-  }) {
-    return blockHash?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(BlockIdHash value)? blockHash,
-    TResult Function(BlockIdNumber value)? blockNumber,
-    TResult Function(BlockIdTag value)? blockTag,
-    required TResult orElse(),
-  }) {
-    if (blockHash != null) {
-      return blockHash(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class BlockIdHash extends BlockId {
-  const factory BlockIdHash(final Felt blockHash) = _$BlockIdHashImpl;
-  const BlockIdHash._() : super._();
-
-  factory BlockIdHash.fromJson(Map<String, dynamic> json) =
-      _$BlockIdHashImpl.fromJson;
-
-  Felt get blockHash;
-
-  /// Create a copy of BlockId
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$BlockIdHashImplCopyWith<_$BlockIdHashImpl> get copyWith =>
-      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$BlockIdNumberImplCopyWith<$Res> {
-  factory _$$BlockIdNumberImplCopyWith(
-          _$BlockIdNumberImpl value, $Res Function(_$BlockIdNumberImpl) then) =
-      __$$BlockIdNumberImplCopyWithImpl<$Res>;
+abstract mixin class $BlockIdHashCopyWith<$Res>
+    implements $BlockIdCopyWith<$Res> {
+  factory $BlockIdHashCopyWith(
+          BlockIdHash value, $Res Function(BlockIdHash) _then) =
+      _$BlockIdHashCopyWithImpl;
   @useResult
-  $Res call({int blockNumber});
+  $Res call({Felt blockHash});
 }
 
 /// @nodoc
-class __$$BlockIdNumberImplCopyWithImpl<$Res>
-    extends _$BlockIdCopyWithImpl<$Res, _$BlockIdNumberImpl>
-    implements _$$BlockIdNumberImplCopyWith<$Res> {
-  __$$BlockIdNumberImplCopyWithImpl(
-      _$BlockIdNumberImpl _value, $Res Function(_$BlockIdNumberImpl) _then)
-      : super(_value, _then);
+class _$BlockIdHashCopyWithImpl<$Res> implements $BlockIdHashCopyWith<$Res> {
+  _$BlockIdHashCopyWithImpl(this._self, this._then);
+
+  final BlockIdHash _self;
+  final $Res Function(BlockIdHash) _then;
 
   /// Create a copy of BlockId
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
-  @override
   $Res call({
-    Object? blockNumber = null,
+    Object? blockHash = null,
   }) {
-    return _then(_$BlockIdNumberImpl(
-      null == blockNumber
-          ? _value.blockNumber
-          : blockNumber // ignore: cast_nullable_to_non_nullable
-              as int,
+    return _then(BlockIdHash(
+      null == blockHash
+          ? _self.blockHash
+          : blockHash // ignore: cast_nullable_to_non_nullable
+              as Felt,
     ));
   }
 }
 
 /// @nodoc
 @JsonSerializable(createToJson: false)
-class _$BlockIdNumberImpl extends BlockIdNumber {
-  const _$BlockIdNumberImpl(this.blockNumber, {final String? $type})
+class BlockIdNumber extends BlockId {
+  const BlockIdNumber(this.blockNumber, {final String? $type})
       : $type = $type ?? 'blockNumber',
         super._();
+  factory BlockIdNumber.fromJson(Map<String, dynamic> json) =>
+      _$BlockIdNumberFromJson(json);
 
-  factory _$BlockIdNumberImpl.fromJson(Map<String, dynamic> json) =>
-      _$$BlockIdNumberImplFromJson(json);
-
-  @override
   final int blockNumber;
 
   @JsonKey(name: 'starkNetRuntimeTypeToRemove')
   final String $type;
 
-  @override
-  String toString() {
-    return 'BlockId.blockNumber(blockNumber: $blockNumber)';
-  }
+  /// Create a copy of BlockId
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  $BlockIdNumberCopyWith<BlockIdNumber> get copyWith =>
+      _$BlockIdNumberCopyWithImpl<BlockIdNumber>(this, _$identity);
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$BlockIdNumberImpl &&
+            other is BlockIdNumber &&
             (identical(other.blockNumber, blockNumber) ||
                 other.blockNumber == blockNumber));
   }
@@ -327,158 +351,71 @@ class _$BlockIdNumberImpl extends BlockIdNumber {
   @override
   int get hashCode => Object.hash(runtimeType, blockNumber);
 
-  /// Create a copy of BlockId
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  @pragma('vm:prefer-inline')
-  _$$BlockIdNumberImplCopyWith<_$BlockIdNumberImpl> get copyWith =>
-      __$$BlockIdNumberImplCopyWithImpl<_$BlockIdNumberImpl>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(Felt blockHash) blockHash,
-    required TResult Function(int blockNumber) blockNumber,
-    required TResult Function(String blockTag) blockTag,
-  }) {
-    return blockNumber(this.blockNumber);
+  String toString() {
+    return 'BlockId.blockNumber(blockNumber: $blockNumber)';
   }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(Felt blockHash)? blockHash,
-    TResult? Function(int blockNumber)? blockNumber,
-    TResult? Function(String blockTag)? blockTag,
-  }) {
-    return blockNumber?.call(this.blockNumber);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(Felt blockHash)? blockHash,
-    TResult Function(int blockNumber)? blockNumber,
-    TResult Function(String blockTag)? blockTag,
-    required TResult orElse(),
-  }) {
-    if (blockNumber != null) {
-      return blockNumber(this.blockNumber);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(BlockIdHash value) blockHash,
-    required TResult Function(BlockIdNumber value) blockNumber,
-    required TResult Function(BlockIdTag value) blockTag,
-  }) {
-    return blockNumber(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(BlockIdHash value)? blockHash,
-    TResult? Function(BlockIdNumber value)? blockNumber,
-    TResult? Function(BlockIdTag value)? blockTag,
-  }) {
-    return blockNumber?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(BlockIdHash value)? blockHash,
-    TResult Function(BlockIdNumber value)? blockNumber,
-    TResult Function(BlockIdTag value)? blockTag,
-    required TResult orElse(),
-  }) {
-    if (blockNumber != null) {
-      return blockNumber(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class BlockIdNumber extends BlockId {
-  const factory BlockIdNumber(final int blockNumber) = _$BlockIdNumberImpl;
-  const BlockIdNumber._() : super._();
-
-  factory BlockIdNumber.fromJson(Map<String, dynamic> json) =
-      _$BlockIdNumberImpl.fromJson;
-
-  int get blockNumber;
-
-  /// Create a copy of BlockId
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$BlockIdNumberImplCopyWith<_$BlockIdNumberImpl> get copyWith =>
-      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$BlockIdTagImplCopyWith<$Res> {
-  factory _$$BlockIdTagImplCopyWith(
-          _$BlockIdTagImpl value, $Res Function(_$BlockIdTagImpl) then) =
-      __$$BlockIdTagImplCopyWithImpl<$Res>;
+abstract mixin class $BlockIdNumberCopyWith<$Res>
+    implements $BlockIdCopyWith<$Res> {
+  factory $BlockIdNumberCopyWith(
+          BlockIdNumber value, $Res Function(BlockIdNumber) _then) =
+      _$BlockIdNumberCopyWithImpl;
   @useResult
-  $Res call({String blockTag});
+  $Res call({int blockNumber});
 }
 
 /// @nodoc
-class __$$BlockIdTagImplCopyWithImpl<$Res>
-    extends _$BlockIdCopyWithImpl<$Res, _$BlockIdTagImpl>
-    implements _$$BlockIdTagImplCopyWith<$Res> {
-  __$$BlockIdTagImplCopyWithImpl(
-      _$BlockIdTagImpl _value, $Res Function(_$BlockIdTagImpl) _then)
-      : super(_value, _then);
+class _$BlockIdNumberCopyWithImpl<$Res>
+    implements $BlockIdNumberCopyWith<$Res> {
+  _$BlockIdNumberCopyWithImpl(this._self, this._then);
+
+  final BlockIdNumber _self;
+  final $Res Function(BlockIdNumber) _then;
 
   /// Create a copy of BlockId
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
-  @override
   $Res call({
-    Object? blockTag = null,
+    Object? blockNumber = null,
   }) {
-    return _then(_$BlockIdTagImpl(
-      null == blockTag
-          ? _value.blockTag
-          : blockTag // ignore: cast_nullable_to_non_nullable
-              as String,
+    return _then(BlockIdNumber(
+      null == blockNumber
+          ? _self.blockNumber
+          : blockNumber // ignore: cast_nullable_to_non_nullable
+              as int,
     ));
   }
 }
 
 /// @nodoc
 @JsonSerializable(createToJson: false)
-class _$BlockIdTagImpl extends BlockIdTag {
-  const _$BlockIdTagImpl(this.blockTag, {final String? $type})
+class BlockIdTag extends BlockId {
+  const BlockIdTag(this.blockTag, {final String? $type})
       : $type = $type ?? 'blockTag',
         super._();
+  factory BlockIdTag.fromJson(Map<String, dynamic> json) =>
+      _$BlockIdTagFromJson(json);
 
-  factory _$BlockIdTagImpl.fromJson(Map<String, dynamic> json) =>
-      _$$BlockIdTagImplFromJson(json);
-
-  @override
   final String blockTag;
 
   @JsonKey(name: 'starkNetRuntimeTypeToRemove')
   final String $type;
 
-  @override
-  String toString() {
-    return 'BlockId.blockTag(blockTag: $blockTag)';
-  }
+  /// Create a copy of BlockId
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  $BlockIdTagCopyWith<BlockIdTag> get copyWith =>
+      _$BlockIdTagCopyWithImpl<BlockIdTag>(this, _$identity);
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$BlockIdTagImpl &&
+            other is BlockIdTag &&
             (identical(other.blockTag, blockTag) ||
                 other.blockTag == blockTag));
   }
@@ -487,95 +424,42 @@ class _$BlockIdTagImpl extends BlockIdTag {
   @override
   int get hashCode => Object.hash(runtimeType, blockTag);
 
+  @override
+  String toString() {
+    return 'BlockId.blockTag(blockTag: $blockTag)';
+  }
+}
+
+/// @nodoc
+abstract mixin class $BlockIdTagCopyWith<$Res>
+    implements $BlockIdCopyWith<$Res> {
+  factory $BlockIdTagCopyWith(
+          BlockIdTag value, $Res Function(BlockIdTag) _then) =
+      _$BlockIdTagCopyWithImpl;
+  @useResult
+  $Res call({String blockTag});
+}
+
+/// @nodoc
+class _$BlockIdTagCopyWithImpl<$Res> implements $BlockIdTagCopyWith<$Res> {
+  _$BlockIdTagCopyWithImpl(this._self, this._then);
+
+  final BlockIdTag _self;
+  final $Res Function(BlockIdTag) _then;
+
   /// Create a copy of BlockId
   /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
   @pragma('vm:prefer-inline')
-  _$$BlockIdTagImplCopyWith<_$BlockIdTagImpl> get copyWith =>
-      __$$BlockIdTagImplCopyWithImpl<_$BlockIdTagImpl>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(Felt blockHash) blockHash,
-    required TResult Function(int blockNumber) blockNumber,
-    required TResult Function(String blockTag) blockTag,
+  $Res call({
+    Object? blockTag = null,
   }) {
-    return blockTag(this.blockTag);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(Felt blockHash)? blockHash,
-    TResult? Function(int blockNumber)? blockNumber,
-    TResult? Function(String blockTag)? blockTag,
-  }) {
-    return blockTag?.call(this.blockTag);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(Felt blockHash)? blockHash,
-    TResult Function(int blockNumber)? blockNumber,
-    TResult Function(String blockTag)? blockTag,
-    required TResult orElse(),
-  }) {
-    if (blockTag != null) {
-      return blockTag(this.blockTag);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(BlockIdHash value) blockHash,
-    required TResult Function(BlockIdNumber value) blockNumber,
-    required TResult Function(BlockIdTag value) blockTag,
-  }) {
-    return blockTag(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(BlockIdHash value)? blockHash,
-    TResult? Function(BlockIdNumber value)? blockNumber,
-    TResult? Function(BlockIdTag value)? blockTag,
-  }) {
-    return blockTag?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(BlockIdHash value)? blockHash,
-    TResult Function(BlockIdNumber value)? blockNumber,
-    TResult Function(BlockIdTag value)? blockTag,
-    required TResult orElse(),
-  }) {
-    if (blockTag != null) {
-      return blockTag(this);
-    }
-    return orElse();
+    return _then(BlockIdTag(
+      null == blockTag
+          ? _self.blockTag
+          : blockTag // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
   }
 }
 
-abstract class BlockIdTag extends BlockId {
-  const factory BlockIdTag(final String blockTag) = _$BlockIdTagImpl;
-  const BlockIdTag._() : super._();
-
-  factory BlockIdTag.fromJson(Map<String, dynamic> json) =
-      _$BlockIdTagImpl.fromJson;
-
-  String get blockTag;
-
-  /// Create a copy of BlockId
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$BlockIdTagImplCopyWith<_$BlockIdTagImpl> get copyWith =>
-      throw _privateConstructorUsedError;
-}
+// dart format on

@@ -6,9 +6,9 @@ part of 'deploy_account_transaction.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$DeployAccountTransactionV1Impl _$$DeployAccountTransactionV1ImplFromJson(
+_DeployAccountTransactionV1 _$DeployAccountTransactionV1FromJson(
         Map<String, dynamic> json) =>
-    _$DeployAccountTransactionV1Impl(
+    _DeployAccountTransactionV1(
       signature: (json['signature'] as List<dynamic>)
           .map((e) => Felt.fromJson(e as String))
           .toList(),
@@ -24,8 +24,8 @@ _$DeployAccountTransactionV1Impl _$$DeployAccountTransactionV1ImplFromJson(
       type: json['type'] as String? ?? 'DEPLOY_ACCOUNT',
     );
 
-Map<String, dynamic> _$$DeployAccountTransactionV1ImplToJson(
-        _$DeployAccountTransactionV1Impl instance) =>
+Map<String, dynamic> _$DeployAccountTransactionV1ToJson(
+        _DeployAccountTransactionV1 instance) =>
     <String, dynamic>{
       'signature': instance.signature.map((e) => e.toJson()).toList(),
       'max_fee': maxFeeToJson(instance.maxFee),
@@ -38,9 +38,9 @@ Map<String, dynamic> _$$DeployAccountTransactionV1ImplToJson(
       'type': instance.type,
     };
 
-_$DeployAccountTransactionV3Impl _$$DeployAccountTransactionV3ImplFromJson(
+_DeployAccountTransactionV3 _$DeployAccountTransactionV3FromJson(
         Map<String, dynamic> json) =>
-    _$DeployAccountTransactionV3Impl(
+    _DeployAccountTransactionV3(
       type: json['type'] as String? ?? 'DEPLOY_ACCOUNT',
       version: json['version'] as String? ?? deployAccountTxnV3,
       classHash: Felt.fromJson(json['class_hash'] as String),
@@ -65,8 +65,8 @@ _$DeployAccountTransactionV3Impl _$$DeployAccountTransactionV3ImplFromJson(
       tip: json['tip'] as String,
     );
 
-Map<String, dynamic> _$$DeployAccountTransactionV3ImplToJson(
-        _$DeployAccountTransactionV3Impl instance) =>
+Map<String, dynamic> _$DeployAccountTransactionV3ToJson(
+        _DeployAccountTransactionV3 instance) =>
     <String, dynamic>{
       'type': instance.type,
       'version': instance.version,
@@ -84,59 +84,58 @@ Map<String, dynamic> _$$DeployAccountTransactionV3ImplToJson(
       'tip': instance.tip,
     };
 
-_$DeployAccountTransactionRequestImpl
-    _$$DeployAccountTransactionRequestImplFromJson(Map<String, dynamic> json) =>
-        _$DeployAccountTransactionRequestImpl(
-          deployAccountTransaction: DeployAccountTransaction.fromJson(
-              json['deploy_account_transaction'] as Map<String, dynamic>),
-        );
+_DeployAccountTransactionRequest _$DeployAccountTransactionRequestFromJson(
+        Map<String, dynamic> json) =>
+    _DeployAccountTransactionRequest(
+      deployAccountTransaction: DeployAccountTransaction.fromJson(
+          json['deploy_account_transaction'] as Map<String, dynamic>),
+    );
 
-Map<String, dynamic> _$$DeployAccountTransactionRequestImplToJson(
-        _$DeployAccountTransactionRequestImpl instance) =>
+Map<String, dynamic> _$DeployAccountTransactionRequestToJson(
+        _DeployAccountTransactionRequest instance) =>
     <String, dynamic>{
       'deploy_account_transaction': instance.deployAccountTransaction.toJson(),
     };
 
-_$DeployAccountTransactionResultImpl
-    _$$DeployAccountTransactionResultImplFromJson(Map<String, dynamic> json) =>
-        _$DeployAccountTransactionResultImpl(
-          result: DeployAccountTransactionResponseResult.fromJson(
-              json['result'] as Map<String, dynamic>),
-          $type: json['starkNetRuntimeTypeToRemove'] as String?,
-        );
+DeployAccountTransactionResult _$DeployAccountTransactionResultFromJson(
+        Map<String, dynamic> json) =>
+    DeployAccountTransactionResult(
+      result: DeployAccountTransactionResponseResult.fromJson(
+          json['result'] as Map<String, dynamic>),
+      $type: json['starkNetRuntimeTypeToRemove'] as String?,
+    );
 
-Map<String, dynamic> _$$DeployAccountTransactionResultImplToJson(
-        _$DeployAccountTransactionResultImpl instance) =>
+Map<String, dynamic> _$DeployAccountTransactionResultToJson(
+        DeployAccountTransactionResult instance) =>
     <String, dynamic>{
       'result': instance.result.toJson(),
       'starkNetRuntimeTypeToRemove': instance.$type,
     };
 
-_$DeployAccountTransactionErrorImpl
-    _$$DeployAccountTransactionErrorImplFromJson(Map<String, dynamic> json) =>
-        _$DeployAccountTransactionErrorImpl(
-          error:
-              JsonRpcApiError.fromJson(json['error'] as Map<String, dynamic>),
-          $type: json['starkNetRuntimeTypeToRemove'] as String?,
-        );
+DeployAccountTransactionError _$DeployAccountTransactionErrorFromJson(
+        Map<String, dynamic> json) =>
+    DeployAccountTransactionError(
+      error: JsonRpcApiError.fromJson(json['error'] as Map<String, dynamic>),
+      $type: json['starkNetRuntimeTypeToRemove'] as String?,
+    );
 
-Map<String, dynamic> _$$DeployAccountTransactionErrorImplToJson(
-        _$DeployAccountTransactionErrorImpl instance) =>
+Map<String, dynamic> _$DeployAccountTransactionErrorToJson(
+        DeployAccountTransactionError instance) =>
     <String, dynamic>{
       'error': instance.error.toJson(),
       'starkNetRuntimeTypeToRemove': instance.$type,
     };
 
-_$DeployAccountTransactionResponseResultImpl
-    _$$DeployAccountTransactionResponseResultImplFromJson(
+_DeployAccountTransactionResponseResult
+    _$DeployAccountTransactionResponseResultFromJson(
             Map<String, dynamic> json) =>
-        _$DeployAccountTransactionResponseResultImpl(
+        _DeployAccountTransactionResponseResult(
           transactionHash: Felt.fromJson(json['transaction_hash'] as String),
           contractAddress: Felt.fromJson(json['contract_address'] as String),
         );
 
-Map<String, dynamic> _$$DeployAccountTransactionResponseResultImplToJson(
-        _$DeployAccountTransactionResponseResultImpl instance) =>
+Map<String, dynamic> _$DeployAccountTransactionResponseResultToJson(
+        _DeployAccountTransactionResponseResult instance) =>
     <String, dynamic>{
       'transaction_hash': instance.transactionHash.toJson(),
       'contract_address': instance.contractAddress.toJson(),

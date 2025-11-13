@@ -6,24 +6,24 @@ part of 'wss_subscription_event.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$WssSubscriptionEventResponseImpl _$$WssSubscriptionEventResponseImplFromJson(
+_WssSubscriptionEventResponse _$WssSubscriptionEventResponseFromJson(
         Map<String, dynamic> json) =>
-    _$WssSubscriptionEventResponseImpl(
+    _WssSubscriptionEventResponse(
       subscription_id: json['subscription_id'] as String,
       result: WssSubscriptionEventResult.fromJson(
           json['result'] as Map<String, dynamic>),
     );
 
-Map<String, dynamic> _$$WssSubscriptionEventResponseImplToJson(
-        _$WssSubscriptionEventResponseImpl instance) =>
+Map<String, dynamic> _$WssSubscriptionEventResponseToJson(
+        _WssSubscriptionEventResponse instance) =>
     <String, dynamic>{
       'subscription_id': instance.subscription_id,
       'result': instance.result.toJson(),
     };
 
-_$WssSubscriptionEventResultImpl _$$WssSubscriptionEventResultImplFromJson(
+_WssSubscriptionEventResult _$WssSubscriptionEventResultFromJson(
         Map<String, dynamic> json) =>
-    _$WssSubscriptionEventResultImpl(
+    _WssSubscriptionEventResult(
       blockHash: Felt.fromJson(json['block_hash'] as String),
       blockNumber: (json['block_number'] as num).toInt(),
       transactionHash: Felt.fromJson(json['transaction_hash'] as String),
@@ -36,8 +36,8 @@ _$WssSubscriptionEventResultImpl _$$WssSubscriptionEventResultImplFromJson(
           .toList(),
     );
 
-Map<String, dynamic> _$$WssSubscriptionEventResultImplToJson(
-        _$WssSubscriptionEventResultImpl instance) =>
+Map<String, dynamic> _$WssSubscriptionEventResultToJson(
+        _WssSubscriptionEventResult instance) =>
     <String, dynamic>{
       'block_hash': instance.blockHash.toJson(),
       'block_number': instance.blockNumber,

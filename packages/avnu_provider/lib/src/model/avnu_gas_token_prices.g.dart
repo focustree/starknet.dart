@@ -6,9 +6,9 @@ part of 'avnu_gas_token_prices.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$AvnuGasTokenPriceResultImpl _$$AvnuGasTokenPriceResultImplFromJson(
+AvnuGasTokenPriceResult _$AvnuGasTokenPriceResultFromJson(
         Map<String, dynamic> json) =>
-    _$AvnuGasTokenPriceResultImpl(
+    AvnuGasTokenPriceResult(
       tokenAddress: json['tokenAddress'] as String,
       priceInETH: json['priceInETH'] as String,
       priceInUSD: (json['priceInUSD'] as num).toDouble(),
@@ -16,8 +16,8 @@ _$AvnuGasTokenPriceResultImpl _$$AvnuGasTokenPriceResultImplFromJson(
       $type: json['runtimeType'] as String?,
     );
 
-Map<String, dynamic> _$$AvnuGasTokenPriceResultImplToJson(
-        _$AvnuGasTokenPriceResultImpl instance) =>
+Map<String, dynamic> _$AvnuGasTokenPriceResultToJson(
+        AvnuGasTokenPriceResult instance) =>
     <String, dynamic>{
       'tokenAddress': instance.tokenAddress,
       'priceInETH': instance.priceInETH,
@@ -26,48 +26,48 @@ Map<String, dynamic> _$$AvnuGasTokenPriceResultImplToJson(
       'runtimeType': instance.$type,
     };
 
-_$AvnuGasTokenPriceErrorImpl _$$AvnuGasTokenPriceErrorImplFromJson(
+AvnuGasTokenPriceError _$AvnuGasTokenPriceErrorFromJson(
         Map<String, dynamic> json) =>
-    _$AvnuGasTokenPriceErrorImpl(
+    AvnuGasTokenPriceError(
       (json['messages'] as List<dynamic>).map((e) => e as String).toList(),
       json['revertError'] as String?,
       $type: json['runtimeType'] as String?,
     );
 
-Map<String, dynamic> _$$AvnuGasTokenPriceErrorImplToJson(
-        _$AvnuGasTokenPriceErrorImpl instance) =>
+Map<String, dynamic> _$AvnuGasTokenPriceErrorToJson(
+        AvnuGasTokenPriceError instance) =>
     <String, dynamic>{
       'messages': instance.messages,
       'revertError': instance.revertError,
       'runtimeType': instance.$type,
     };
 
-_$AvnuGasTokenPricesResultImpl _$$AvnuGasTokenPricesResultImplFromJson(
+AvnuGasTokenPricesResult _$AvnuGasTokenPricesResultFromJson(
         Map<String, dynamic> json) =>
-    _$AvnuGasTokenPricesResultImpl(
+    AvnuGasTokenPricesResult(
       (json['prices'] as List<dynamic>)
           .map((e) => AvnuGasTokenPrice.fromJson(e as Map<String, dynamic>))
           .toList(),
       $type: json['runtimeType'] as String?,
     );
 
-Map<String, dynamic> _$$AvnuGasTokenPricesResultImplToJson(
-        _$AvnuGasTokenPricesResultImpl instance) =>
+Map<String, dynamic> _$AvnuGasTokenPricesResultToJson(
+        AvnuGasTokenPricesResult instance) =>
     <String, dynamic>{
       'prices': instance.prices,
       'runtimeType': instance.$type,
     };
 
-_$AvnuGasTokenPricesErrorImpl _$$AvnuGasTokenPricesErrorImplFromJson(
+AvnuGasTokenPricesError _$AvnuGasTokenPricesErrorFromJson(
         Map<String, dynamic> json) =>
-    _$AvnuGasTokenPricesErrorImpl(
+    AvnuGasTokenPricesError(
       (json['messages'] as List<dynamic>).map((e) => e as String).toList(),
       json['revertError'] as String?,
       $type: json['runtimeType'] as String?,
     );
 
-Map<String, dynamic> _$$AvnuGasTokenPricesErrorImplToJson(
-        _$AvnuGasTokenPricesErrorImpl instance) =>
+Map<String, dynamic> _$AvnuGasTokenPricesErrorToJson(
+        AvnuGasTokenPricesError instance) =>
     <String, dynamic>{
       'messages': instance.messages,
       'revertError': instance.revertError,

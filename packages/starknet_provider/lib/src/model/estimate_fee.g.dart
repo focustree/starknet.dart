@@ -31,39 +31,35 @@ const _$SimulationFlagEnumMap = {
   SimulationFlag.skipFeeCharge: 'SKIP_FEE_CHARGE',
 };
 
-_$EstimateFeeResultImpl _$$EstimateFeeResultImplFromJson(
-        Map<String, dynamic> json) =>
-    _$EstimateFeeResultImpl(
+EstimateFeeResult _$EstimateFeeResultFromJson(Map<String, dynamic> json) =>
+    EstimateFeeResult(
       result: (json['result'] as List<dynamic>)
           .map((e) => FeeEstimate.fromJson(e as Map<String, dynamic>))
           .toList(),
       $type: json['starkNetRuntimeTypeToRemove'] as String?,
     );
 
-Map<String, dynamic> _$$EstimateFeeResultImplToJson(
-        _$EstimateFeeResultImpl instance) =>
+Map<String, dynamic> _$EstimateFeeResultToJson(EstimateFeeResult instance) =>
     <String, dynamic>{
       'result': instance.result.map((e) => e.toJson()).toList(),
       'starkNetRuntimeTypeToRemove': instance.$type,
     };
 
-_$EstimateFeeErrorImpl _$$EstimateFeeErrorImplFromJson(
-        Map<String, dynamic> json) =>
-    _$EstimateFeeErrorImpl(
+EstimateFeeError _$EstimateFeeErrorFromJson(Map<String, dynamic> json) =>
+    EstimateFeeError(
       error: JsonRpcApiError.fromJson(json['error'] as Map<String, dynamic>),
       $type: json['starkNetRuntimeTypeToRemove'] as String?,
     );
 
-Map<String, dynamic> _$$EstimateFeeErrorImplToJson(
-        _$EstimateFeeErrorImpl instance) =>
+Map<String, dynamic> _$EstimateFeeErrorToJson(EstimateFeeError instance) =>
     <String, dynamic>{
       'error': instance.error.toJson(),
       'starkNetRuntimeTypeToRemove': instance.$type,
     };
 
-_$BroadcastedInvokeTxnV3Impl _$$BroadcastedInvokeTxnV3ImplFromJson(
+BroadcastedInvokeTxnV3 _$BroadcastedInvokeTxnV3FromJson(
         Map<String, dynamic> json) =>
-    _$BroadcastedInvokeTxnV3Impl(
+    BroadcastedInvokeTxnV3(
       type: json['type'] as String,
       version: json['version'] as String,
       signature: (json['signature'] as List<dynamic>)
@@ -90,8 +86,8 @@ _$BroadcastedInvokeTxnV3Impl _$$BroadcastedInvokeTxnV3ImplFromJson(
       $type: json['starkNetRuntimeTypeToRemove'] as String?,
     );
 
-Map<String, dynamic> _$$BroadcastedInvokeTxnV3ImplToJson(
-        _$BroadcastedInvokeTxnV3Impl instance) =>
+Map<String, dynamic> _$BroadcastedInvokeTxnV3ToJson(
+        BroadcastedInvokeTxnV3 instance) =>
     <String, dynamic>{
       'type': instance.type,
       'version': instance.version,
@@ -110,9 +106,9 @@ Map<String, dynamic> _$$BroadcastedInvokeTxnV3ImplToJson(
       'starkNetRuntimeTypeToRemove': instance.$type,
     };
 
-_$BroadcastedDeclareTxnV3Impl _$$BroadcastedDeclareTxnV3ImplFromJson(
+BroadcastedDeclareTxnV3 _$BroadcastedDeclareTxnV3FromJson(
         Map<String, dynamic> json) =>
-    _$BroadcastedDeclareTxnV3Impl(
+    BroadcastedDeclareTxnV3(
       type: json['type'] as String,
       version: json['version'] as String,
       signature: (json['signature'] as List<dynamic>)
@@ -139,8 +135,8 @@ _$BroadcastedDeclareTxnV3Impl _$$BroadcastedDeclareTxnV3ImplFromJson(
       $type: json['starkNetRuntimeTypeToRemove'] as String?,
     );
 
-Map<String, dynamic> _$$BroadcastedDeclareTxnV3ImplToJson(
-        _$BroadcastedDeclareTxnV3Impl instance) =>
+Map<String, dynamic> _$BroadcastedDeclareTxnV3ToJson(
+        BroadcastedDeclareTxnV3 instance) =>
     <String, dynamic>{
       'type': instance.type,
       'version': instance.version,
@@ -160,37 +156,36 @@ Map<String, dynamic> _$$BroadcastedDeclareTxnV3ImplToJson(
       'starkNetRuntimeTypeToRemove': instance.$type,
     };
 
-_$BroadcastedDeployAccountTxnV3Impl
-    _$$BroadcastedDeployAccountTxnV3ImplFromJson(Map<String, dynamic> json) =>
-        _$BroadcastedDeployAccountTxnV3Impl(
-          type: json['type'] as String,
-          version: json['version'] as String,
-          signature: (json['signature'] as List<dynamic>)
-              .map((e) => Felt.fromJson(e as String))
-              .toList(),
-          nonce: Felt.fromJson(json['nonce'] as String),
-          classHash: Felt.fromJson(json['class_hash'] as String),
-          constructorCalldata: (json['constructor_calldata'] as List<dynamic>)
-              .map((e) => Felt.fromJson(e as String))
-              .toList(),
-          contractAddressSalt:
-              Felt.fromJson(json['contract_address_salt'] as String),
-          feeDataAvailabilityMode: json['fee_data_availability_mode'] as String,
-          nonceDataAvailabilityMode:
-              json['nonce_data_availability_mode'] as String,
-          paymasterData: (json['paymaster_data'] as List<dynamic>)
-              .map((e) => Felt.fromJson(e as String))
-              .toList(),
-          resourceBounds: (json['resource_bounds'] as Map<String, dynamic>).map(
-            (k, e) =>
-                MapEntry(k, ResourceBounds.fromJson(e as Map<String, dynamic>)),
-          ),
-          tip: json['tip'] as String,
-          $type: json['starkNetRuntimeTypeToRemove'] as String?,
-        );
+BroadcastedDeployAccountTxnV3 _$BroadcastedDeployAccountTxnV3FromJson(
+        Map<String, dynamic> json) =>
+    BroadcastedDeployAccountTxnV3(
+      type: json['type'] as String,
+      version: json['version'] as String,
+      signature: (json['signature'] as List<dynamic>)
+          .map((e) => Felt.fromJson(e as String))
+          .toList(),
+      nonce: Felt.fromJson(json['nonce'] as String),
+      classHash: Felt.fromJson(json['class_hash'] as String),
+      constructorCalldata: (json['constructor_calldata'] as List<dynamic>)
+          .map((e) => Felt.fromJson(e as String))
+          .toList(),
+      contractAddressSalt:
+          Felt.fromJson(json['contract_address_salt'] as String),
+      feeDataAvailabilityMode: json['fee_data_availability_mode'] as String,
+      nonceDataAvailabilityMode: json['nonce_data_availability_mode'] as String,
+      paymasterData: (json['paymaster_data'] as List<dynamic>)
+          .map((e) => Felt.fromJson(e as String))
+          .toList(),
+      resourceBounds: (json['resource_bounds'] as Map<String, dynamic>).map(
+        (k, e) =>
+            MapEntry(k, ResourceBounds.fromJson(e as Map<String, dynamic>)),
+      ),
+      tip: json['tip'] as String,
+      $type: json['starkNetRuntimeTypeToRemove'] as String?,
+    );
 
-Map<String, dynamic> _$$BroadcastedDeployAccountTxnV3ImplToJson(
-        _$BroadcastedDeployAccountTxnV3Impl instance) =>
+Map<String, dynamic> _$BroadcastedDeployAccountTxnV3ToJson(
+        BroadcastedDeployAccountTxnV3 instance) =>
     <String, dynamic>{
       'type': instance.type,
       'version': instance.version,

@@ -6,29 +6,29 @@ part of 'get_transaction_receipt.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$GetTransactionReceiptResultImpl _$$GetTransactionReceiptResultImplFromJson(
+GetTransactionReceiptResult _$GetTransactionReceiptResultFromJson(
         Map<String, dynamic> json) =>
-    _$GetTransactionReceiptResultImpl(
+    GetTransactionReceiptResult(
       result: TxnReceipt.fromJson(json['result'] as Map<String, dynamic>),
       $type: json['starkNetRuntimeTypeToRemove'] as String?,
     );
 
-Map<String, dynamic> _$$GetTransactionReceiptResultImplToJson(
-        _$GetTransactionReceiptResultImpl instance) =>
+Map<String, dynamic> _$GetTransactionReceiptResultToJson(
+        GetTransactionReceiptResult instance) =>
     <String, dynamic>{
       'result': instance.result.toJson(),
       'starkNetRuntimeTypeToRemove': instance.$type,
     };
 
-_$GetTransactionReceiptErrorImpl _$$GetTransactionReceiptErrorImplFromJson(
+GetTransactionReceiptError _$GetTransactionReceiptErrorFromJson(
         Map<String, dynamic> json) =>
-    _$GetTransactionReceiptErrorImpl(
+    GetTransactionReceiptError(
       error: JsonRpcApiError.fromJson(json['error'] as Map<String, dynamic>),
       $type: json['starkNetRuntimeTypeToRemove'] as String?,
     );
 
-Map<String, dynamic> _$$GetTransactionReceiptErrorImplToJson(
-        _$GetTransactionReceiptErrorImpl instance) =>
+Map<String, dynamic> _$GetTransactionReceiptErrorToJson(
+        GetTransactionReceiptError instance) =>
     <String, dynamic>{
       'error': instance.error.toJson(),
       'starkNetRuntimeTypeToRemove': instance.$type,

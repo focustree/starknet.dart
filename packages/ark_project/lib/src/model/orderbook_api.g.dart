@@ -6,8 +6,8 @@ part of 'orderbook_api.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$OrderBookNFTImpl _$$OrderBookNFTImplFromJson(Map<String, dynamic> json) =>
-    _$OrderBookNFTImpl(
+_OrderBookNFT _$OrderBookNFTFromJson(Map<String, dynamic> json) =>
+    _OrderBookNFT(
       orderHash: json['order_hash'] as String,
       tokenChainId: json['token_chain_id'] as String,
       tokenAddress: json['token_address'] as String,
@@ -33,7 +33,7 @@ _$OrderBookNFTImpl _$$OrderBookNFTImplFromJson(Map<String, dynamic> json) =>
       buyInProgress: json['buy_in_progress'] as bool,
     );
 
-Map<String, dynamic> _$$OrderBookNFTImplToJson(_$OrderBookNFTImpl instance) =>
+Map<String, dynamic> _$OrderBookNFTToJson(_OrderBookNFT instance) =>
     <String, dynamic>{
       'order_hash': instance.orderHash,
       'token_chain_id': instance.tokenChainId,
@@ -58,20 +58,19 @@ Map<String, dynamic> _$$OrderBookNFTImplToJson(_$OrderBookNFTImpl instance) =>
       'buy_in_progress': instance.buyInProgress,
     };
 
-_$TopBidImpl _$$TopBidImplFromJson(Map<String, dynamic> json) => _$TopBidImpl(
+_TopBid _$TopBidFromJson(Map<String, dynamic> json) => _TopBid(
       amount: json['amount'] as String?,
       orderHash: json['order_hash'] as String?,
     );
 
-Map<String, dynamic> _$$TopBidImplToJson(_$TopBidImpl instance) =>
-    <String, dynamic>{
+Map<String, dynamic> _$TopBidToJson(_TopBid instance) => <String, dynamic>{
       'amount': instance.amount,
       'order_hash': instance.orderHash,
     };
 
-_$GetOffersForTokenResponseImpl _$$GetOffersForTokenResponseImplFromJson(
+_GetOffersForTokenResponse _$GetOffersForTokenResponseFromJson(
         Map<String, dynamic> json) =>
-    _$GetOffersForTokenResponseImpl(
+    _GetOffersForTokenResponse(
       tokenAddress: json['token_address'] as String,
       tokenId: json['token_id'] as String,
       offers: (json['offers'] as List<dynamic>)
@@ -81,8 +80,8 @@ _$GetOffersForTokenResponseImpl _$$GetOffersForTokenResponseImplFromJson(
       lastPrice: json['last_price'] as String?,
     );
 
-Map<String, dynamic> _$$GetOffersForTokenResponseImplToJson(
-        _$GetOffersForTokenResponseImpl instance) =>
+Map<String, dynamic> _$GetOffersForTokenResponseToJson(
+        _GetOffersForTokenResponse instance) =>
     <String, dynamic>{
       'token_address': instance.tokenAddress,
       'token_id': instance.tokenId,
@@ -91,7 +90,7 @@ Map<String, dynamic> _$$GetOffersForTokenResponseImplToJson(
       'last_price': instance.lastPrice,
     };
 
-_$OfferImpl _$$OfferImplFromJson(Map<String, dynamic> json) => _$OfferImpl(
+_Offer _$OfferFromJson(Map<String, dynamic> json) => _Offer(
       offerAmount: json['offer_amount'] as String,
       orderHash: json['order_hash'] as String,
       offerMaker: json['offer_maker'] as String,
@@ -104,8 +103,7 @@ _$OfferImpl _$$OfferImplFromJson(Map<String, dynamic> json) => _$OfferImpl(
       status: json['status'] as String,
     );
 
-Map<String, dynamic> _$$OfferImplToJson(_$OfferImpl instance) =>
-    <String, dynamic>{
+Map<String, dynamic> _$OfferToJson(_Offer instance) => <String, dynamic>{
       'offer_amount': instance.offerAmount,
       'order_hash': instance.orderHash,
       'offer_maker': instance.offerMaker,

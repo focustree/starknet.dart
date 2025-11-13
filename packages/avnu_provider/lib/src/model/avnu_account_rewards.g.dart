@@ -6,23 +6,21 @@ part of 'avnu_account_rewards.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$WhitelistedCallImpl _$$WhitelistedCallImplFromJson(
-        Map<String, dynamic> json) =>
-    _$WhitelistedCallImpl(
+_WhitelistedCall _$WhitelistedCallFromJson(Map<String, dynamic> json) =>
+    _WhitelistedCall(
       contractAddress: json['contractAddress'] as String,
       entrypoint: json['entrypoint'] as String,
     );
 
-Map<String, dynamic> _$$WhitelistedCallImplToJson(
-        _$WhitelistedCallImpl instance) =>
+Map<String, dynamic> _$WhitelistedCallToJson(_WhitelistedCall instance) =>
     <String, dynamic>{
       'contractAddress': instance.contractAddress,
       'entrypoint': instance.entrypoint,
     };
 
-_$AvnuAccountRewardResultImpl _$$AvnuAccountRewardResultImplFromJson(
+AvnuAccountRewardResult _$AvnuAccountRewardResultFromJson(
         Map<String, dynamic> json) =>
-    _$AvnuAccountRewardResultImpl(
+    AvnuAccountRewardResult(
       date:
           json['date'] == null ? null : DateTime.parse(json['date'] as String),
       address: json['address'] as String?,
@@ -40,8 +38,8 @@ _$AvnuAccountRewardResultImpl _$$AvnuAccountRewardResultImplFromJson(
       $type: json['runtimeType'] as String?,
     );
 
-Map<String, dynamic> _$$AvnuAccountRewardResultImplToJson(
-        _$AvnuAccountRewardResultImpl instance) =>
+Map<String, dynamic> _$AvnuAccountRewardResultToJson(
+        AvnuAccountRewardResult instance) =>
     <String, dynamic>{
       'date': instance.date?.toIso8601String(),
       'address': instance.address,
@@ -55,16 +53,16 @@ Map<String, dynamic> _$$AvnuAccountRewardResultImplToJson(
       'runtimeType': instance.$type,
     };
 
-_$AvnuAccountRewardErrorImpl _$$AvnuAccountRewardErrorImplFromJson(
+AvnuAccountRewardError _$AvnuAccountRewardErrorFromJson(
         Map<String, dynamic> json) =>
-    _$AvnuAccountRewardErrorImpl(
+    AvnuAccountRewardError(
       (json['messages'] as List<dynamic>).map((e) => e as String).toList(),
       json['revertError'] as String?,
       $type: json['runtimeType'] as String?,
     );
 
-Map<String, dynamic> _$$AvnuAccountRewardErrorImplToJson(
-        _$AvnuAccountRewardErrorImpl instance) =>
+Map<String, dynamic> _$AvnuAccountRewardErrorToJson(
+        AvnuAccountRewardError instance) =>
     <String, dynamic>{
       'messages': instance.messages,
       'revertError': instance.revertError,

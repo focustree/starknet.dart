@@ -20,29 +20,29 @@ Map<String, dynamic> _$EstimateMessageFeeRequestToJson(
       'block_id': instance.blockId.toJson(),
     };
 
-_$EstimateMessageFeeResultImpl _$$EstimateMessageFeeResultImplFromJson(
+EstimateMessageFeeResult _$EstimateMessageFeeResultFromJson(
         Map<String, dynamic> json) =>
-    _$EstimateMessageFeeResultImpl(
+    EstimateMessageFeeResult(
       result: FeeEstimate.fromJson(json['result'] as Map<String, dynamic>),
       $type: json['starkNetRuntimeTypeToRemove'] as String?,
     );
 
-Map<String, dynamic> _$$EstimateMessageFeeResultImplToJson(
-        _$EstimateMessageFeeResultImpl instance) =>
+Map<String, dynamic> _$EstimateMessageFeeResultToJson(
+        EstimateMessageFeeResult instance) =>
     <String, dynamic>{
       'result': instance.result.toJson(),
       'starkNetRuntimeTypeToRemove': instance.$type,
     };
 
-_$EstimateMessageFeeErrorImpl _$$EstimateMessageFeeErrorImplFromJson(
+EstimateMessageFeeError _$EstimateMessageFeeErrorFromJson(
         Map<String, dynamic> json) =>
-    _$EstimateMessageFeeErrorImpl(
+    EstimateMessageFeeError(
       error: JsonRpcApiError.fromJson(json['error'] as Map<String, dynamic>),
       $type: json['starkNetRuntimeTypeToRemove'] as String?,
     );
 
-Map<String, dynamic> _$$EstimateMessageFeeErrorImplToJson(
-        _$EstimateMessageFeeErrorImpl instance) =>
+Map<String, dynamic> _$EstimateMessageFeeErrorToJson(
+        EstimateMessageFeeError instance) =>
     <String, dynamic>{
       'error': instance.error.toJson(),
       'starkNetRuntimeTypeToRemove': instance.$type,

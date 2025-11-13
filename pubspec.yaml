@@ -1,13 +1,145 @@
-name: monorepo
-
+name: starknet_workspace
+publish_to: none
 environment:
-  sdk: ">=3.0.0 <4.0.0"
+  sdk: ^3.9.0
+
+workspace:
+  - packages/starknet
+  - packages/starknet_provider
+  - packages/secure_store
+  - packages/wallet_kit
+  - packages/avnu_provider
+  - packages/wallet_provider
+  - packages/ark_project
+
+dependencies: 
+  freezed_annotation: ^3.0.0
+  json_annotation: ^4.9.0
+  pointycastle: ^3.9.1
+
 dev_dependencies:
-  build_runner: ^2.4.9
-  freezed: ^2.5.2
-  melos: ^6.2.0
+  build_runner: ^2.4.15
+  freezed: ^3.0.6
+  json_serializable: ^6.9.4
+  lints: ^5.1.1
+  melos: ^7.1.0
   starklints:
     path: packages/starklints
 
-dependencies:
-  starknet_provider: ^0.1.0
+melos:
+  scripts:
+    validate-gh-actions:
+      run: |
+        action-validator .github/workflows/ci.yaml
+    analyze:
+      description: Analyze all packages
+      exec: dart analyze --fatal-infos
+    format:
+      run: |
+        dart pub global run flutter_plugin_tools format && swiftformat .
+      description: |
+        Formats the code of all packages (Java, Objective-C, and Dart).
+         - Requires `flutter_plugin_tools` (`pub global activate flutter_plugin_tools`).
+         - Requires `git`.
+         - Requires `clang-format` (can be installed via Brew on MacOS).
+         - Requires `swiftformat` (can be installed via Brew on macOS).
+    format:check:
+      description: Format check all packages
+      exec: dart format --set-exit-if-changed .
+
+    starknet:setup:
+      description: Install starknet dev env
+      run: |
+        melos asdf:devnet
+        melos asdf:scarb
+        melos asdf:starkli
+
+        asdf plugin add action-validator
+        asdf install action-validator latest
+
+        melos versions
+
+    asdf:devnet:
+      description: Install starknet devnet
+      run: |
+        (asdf plugin list | grep -q starknet-devnet) || asdf plugin add starknet-devnet
+        (asdf list starknet-devnet | grep -q $STARKNET_DEVNET_VERSION) || asdf install starknet-devnet $STARKNET_DEVNET_VERSION
+        (asdf set starknet-devnet $STARKNET_DEVNET_VERSION) || asdf local starknet-devnet $STARKNET_DEVNET_VERSION
+
+    asdf:scarb:
+      description: Install scarb
+      run: |
+        (asdf plugin list | grep -q scarb) || asdf plugin add scarb
+        (asdf list scarb | grep -q $SCARB_VERSION) || asdf install scarb $SCARB_VERSION
+        (asdf set scarb $SCARB_VERSION) || asdf local scarb $SCARB_VERSION
+
+    asdf:starkli:
+      description: Install starkli
+      run: |
+        (asdf plugin list | grep -q starkli) || asdf plugin add starkli
+        (asdf list starkli | grep -q $STARKLI_VERSION) || asdf install starkli $STARKLI_VERSION
+        (asdf set starkli $STARKLI_VERSION) || asdf local starkli $STARKLI_VERSION
+
+    versions:
+      description: Display toolchain versions
+      run: |
+        echo "starkli: $(starkli --version)"
+        scarb --version
+        starknet-devnet --version
+
+    devnet:start:
+      description: Start local devnet
+      run: |
+        starknet-devnet --seed 0 --dump-path $DEVNET_DUMP_PATH --state-archive-capacity full --port 5050
+    devnet:start:dump:
+      description: Start local devnet from scratch and dump on exit
+      run: |
+        rm $DEVNET_DUMP_PATH
+        starknet-devnet --seed 0 --dump-path $DEVNET_DUMP_PATH --state-archive-capacity full --dump-on exit --port 5050
+    devnet:setup:
+      description: Setup local devnet
+      run: |
+        melos contracts:build
+        melos contracts:declare
+        melos contracts:deploy
+        melos contracts:invoke
+        melos contracts:argent:declare
+
+    contracts:build:
+      description: Build cairo contracts
+      run: |
+        cd contracts/v$CAIRO_VERSION
+        scarb build
+    contracts:declare:
+      description: Declare cairo contracts
+      run: |
+        starkli declare --watch contracts/v$CAIRO_VERSION/target/dev/contract2_hello.contract_class.json --compiler-version $CAIRO_VERSION 2>&1
+    contracts:deploy:
+      description: Deploy cairo contracts
+      run: |
+        starkli deploy --watch $HELLO_CLASS_HASH --salt $SALT 0x0 2>&1
+    contracts:check:
+      description: Check cairo contracts
+      run: |
+        cd contracts/v$CAIRO_VERSION
+        asdf install scarb $SCARB_VERSION
+        scarb check
+
+    contracts:invoke:
+      description: Invoke hello contract set_name
+      run: |
+        starkli invoke --watch $HELLO_CONTRACT_ADDRESS set_name 0x49276d2068657265 2>&1
+
+    contracts:token:declare:
+      description: declare the ERC20 contract
+      run: |
+        starkli declare --watch contracts/v$CAIRO_VERSION/target/dev/contract2_MyToken.contract_class.json --compiler-version $CAIRO_VERSION 2>&1
+    contracts:token:deploy:
+      description: deploy the ERC20 contract
+      run: |
+        starkli deploy --watch --salt 0x12345678 0x07d4ee0e4494fe12b26da8e7d2cb114185f768f2bce3e7b1b356cecc9596474b u256:1000000000000000000000000000 0x64b48806902a367c8598f4f95c305e8c1a1acba5f082d294a43793113115691 2>&1
+
+    contracts:argent:declare:
+      description: declare the Argent contract
+      run: |
+        starkli declare --watch contracts/argent/v0.4.0/argent_ArgentAccount.contract_class.json 2>&1

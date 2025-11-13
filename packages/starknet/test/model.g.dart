@@ -6,14 +6,12 @@ part of 'model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$ProductImpl _$$ProductImplFromJson(Map<String, dynamic> json) =>
-    _$ProductImpl(
+_Product _$ProductFromJson(Map<String, dynamic> json) => _Product(
       name: json['name'] as String,
       price: Uint256.fromJson(json['price'] as Map<String, dynamic>),
     );
 
-Map<String, dynamic> _$$ProductImplToJson(_$ProductImpl instance) =>
-    <String, dynamic>{
+Map<String, dynamic> _$ProductToJson(_Product instance) => <String, dynamic>{
       'name': instance.name,
       'price': instance.price.toJson(),
     };

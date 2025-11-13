@@ -1,5 +1,5 @@
-// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// coverage:ignore-file
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
@@ -9,38 +9,61 @@ part of 'compiled_contract.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// dart format off
 T _$identity<T>(T value) => value;
-
-final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
-
-SierraCompiledContract _$SierraCompiledContractFromJson(
-    Map<String, dynamic> json) {
-  return _SierraCompiledContract.fromJson(json);
-}
 
 /// @nodoc
 mixin _$SierraCompiledContract {
-  List<BigInt> get sierraProgram => throw _privateConstructorUsedError;
-  EntryPointsByType get entryPointsByType => throw _privateConstructorUsedError;
-  String get contractClassVersion => throw _privateConstructorUsedError;
-  List<SierraContractAbiEntry> get abi => throw _privateConstructorUsedError;
-
-  /// Serializes this SierraCompiledContract to a JSON map.
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  List<BigInt> get sierraProgram;
+  EntryPointsByType get entryPointsByType;
+  String get contractClassVersion;
+  List<SierraContractAbiEntry> get abi;
 
   /// Create a copy of SierraCompiledContract
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
   $SierraCompiledContractCopyWith<SierraCompiledContract> get copyWith =>
-      throw _privateConstructorUsedError;
+      _$SierraCompiledContractCopyWithImpl<SierraCompiledContract>(
+          this as SierraCompiledContract, _$identity);
+
+  /// Serializes this SierraCompiledContract to a JSON map.
+  Map<String, dynamic> toJson();
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is SierraCompiledContract &&
+            const DeepCollectionEquality()
+                .equals(other.sierraProgram, sierraProgram) &&
+            (identical(other.entryPointsByType, entryPointsByType) ||
+                other.entryPointsByType == entryPointsByType) &&
+            (identical(other.contractClassVersion, contractClassVersion) ||
+                other.contractClassVersion == contractClassVersion) &&
+            const DeepCollectionEquality().equals(other.abi, abi));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(sierraProgram),
+      entryPointsByType,
+      contractClassVersion,
+      const DeepCollectionEquality().hash(abi));
+
+  @override
+  String toString() {
+    return 'SierraCompiledContract(sierraProgram: $sierraProgram, entryPointsByType: $entryPointsByType, contractClassVersion: $contractClassVersion, abi: $abi)';
+  }
 }
 
 /// @nodoc
-abstract class $SierraCompiledContractCopyWith<$Res> {
+abstract mixin class $SierraCompiledContractCopyWith<$Res> {
   factory $SierraCompiledContractCopyWith(SierraCompiledContract value,
-          $Res Function(SierraCompiledContract) then) =
-      _$SierraCompiledContractCopyWithImpl<$Res, SierraCompiledContract>;
+          $Res Function(SierraCompiledContract) _then) =
+      _$SierraCompiledContractCopyWithImpl;
   @useResult
   $Res call(
       {List<BigInt> sierraProgram,
@@ -52,15 +75,12 @@ abstract class $SierraCompiledContractCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$SierraCompiledContractCopyWithImpl<$Res,
-        $Val extends SierraCompiledContract>
+class _$SierraCompiledContractCopyWithImpl<$Res>
     implements $SierraCompiledContractCopyWith<$Res> {
-  _$SierraCompiledContractCopyWithImpl(this._value, this._then);
+  _$SierraCompiledContractCopyWithImpl(this._self, this._then);
 
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final SierraCompiledContract _self;
+  final $Res Function(SierraCompiledContract) _then;
 
   /// Create a copy of SierraCompiledContract
   /// with the given fields replaced by the non-null parameter values.
@@ -72,24 +92,24 @@ class _$SierraCompiledContractCopyWithImpl<$Res,
     Object? contractClassVersion = null,
     Object? abi = null,
   }) {
-    return _then(_value.copyWith(
+    return _then(_self.copyWith(
       sierraProgram: null == sierraProgram
-          ? _value.sierraProgram
+          ? _self.sierraProgram
           : sierraProgram // ignore: cast_nullable_to_non_nullable
               as List<BigInt>,
       entryPointsByType: null == entryPointsByType
-          ? _value.entryPointsByType
+          ? _self.entryPointsByType
           : entryPointsByType // ignore: cast_nullable_to_non_nullable
               as EntryPointsByType,
       contractClassVersion: null == contractClassVersion
-          ? _value.contractClassVersion
+          ? _self.contractClassVersion
           : contractClassVersion // ignore: cast_nullable_to_non_nullable
               as String,
       abi: null == abi
-          ? _value.abi
+          ? _self.abi
           : abi // ignore: cast_nullable_to_non_nullable
               as List<SierraContractAbiEntry>,
-    ) as $Val);
+    ));
   }
 
   /// Create a copy of SierraCompiledContract
@@ -97,76 +117,191 @@ class _$SierraCompiledContractCopyWithImpl<$Res,
   @override
   @pragma('vm:prefer-inline')
   $EntryPointsByTypeCopyWith<$Res> get entryPointsByType {
-    return $EntryPointsByTypeCopyWith<$Res>(_value.entryPointsByType, (value) {
-      return _then(_value.copyWith(entryPointsByType: value) as $Val);
+    return $EntryPointsByTypeCopyWith<$Res>(_self.entryPointsByType, (value) {
+      return _then(_self.copyWith(entryPointsByType: value));
     });
   }
 }
 
-/// @nodoc
-abstract class _$$SierraCompiledContractImplCopyWith<$Res>
-    implements $SierraCompiledContractCopyWith<$Res> {
-  factory _$$SierraCompiledContractImplCopyWith(
-          _$SierraCompiledContractImpl value,
-          $Res Function(_$SierraCompiledContractImpl) then) =
-      __$$SierraCompiledContractImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call(
-      {List<BigInt> sierraProgram,
-      EntryPointsByType entryPointsByType,
-      String contractClassVersion,
-      List<SierraContractAbiEntry> abi});
+/// Adds pattern-matching-related methods to [SierraCompiledContract].
+extension SierraCompiledContractPatterns on SierraCompiledContract {
+  /// A variant of `map` that fallback to returning `orElse`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
 
-  @override
-  $EntryPointsByTypeCopyWith<$Res> get entryPointsByType;
-}
-
-/// @nodoc
-class __$$SierraCompiledContractImplCopyWithImpl<$Res>
-    extends _$SierraCompiledContractCopyWithImpl<$Res,
-        _$SierraCompiledContractImpl>
-    implements _$$SierraCompiledContractImplCopyWith<$Res> {
-  __$$SierraCompiledContractImplCopyWithImpl(
-      _$SierraCompiledContractImpl _value,
-      $Res Function(_$SierraCompiledContractImpl) _then)
-      : super(_value, _then);
-
-  /// Create a copy of SierraCompiledContract
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? sierraProgram = null,
-    Object? entryPointsByType = null,
-    Object? contractClassVersion = null,
-    Object? abi = null,
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(_SierraCompiledContract value)? $default, {
+    required TResult orElse(),
   }) {
-    return _then(_$SierraCompiledContractImpl(
-      sierraProgram: null == sierraProgram
-          ? _value._sierraProgram
-          : sierraProgram // ignore: cast_nullable_to_non_nullable
-              as List<BigInt>,
-      entryPointsByType: null == entryPointsByType
-          ? _value.entryPointsByType
-          : entryPointsByType // ignore: cast_nullable_to_non_nullable
-              as EntryPointsByType,
-      contractClassVersion: null == contractClassVersion
-          ? _value.contractClassVersion
-          : contractClassVersion // ignore: cast_nullable_to_non_nullable
-              as String,
-      abi: null == abi
-          ? _value._abi
-          : abi // ignore: cast_nullable_to_non_nullable
-              as List<SierraContractAbiEntry>,
-    ));
+    final _that = this;
+    switch (_that) {
+      case _SierraCompiledContract() when $default != null:
+        return $default(_that);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// Callbacks receives the raw object, upcasted.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case final Subclass2 value:
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(_SierraCompiledContract value) $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _SierraCompiledContract():
+        return $default(_that);
+      case _:
+        throw StateError('Unexpected subclass');
+    }
+  }
+
+  /// A variant of `map` that fallback to returning `null`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>(
+    TResult? Function(_SierraCompiledContract value)? $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _SierraCompiledContract() when $default != null:
+        return $default(_that);
+      case _:
+        return null;
+    }
+  }
+
+  /// A variant of `when` that fallback to an `orElse` callback.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(
+            List<BigInt> sierraProgram,
+            EntryPointsByType entryPointsByType,
+            String contractClassVersion,
+            List<SierraContractAbiEntry> abi)?
+        $default, {
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _SierraCompiledContract() when $default != null:
+        return $default(_that.sierraProgram, _that.entryPointsByType,
+            _that.contractClassVersion, _that.abi);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// As opposed to `map`, this offers destructuring.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case Subclass2(:final field2):
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>(
+    TResult Function(
+            List<BigInt> sierraProgram,
+            EntryPointsByType entryPointsByType,
+            String contractClassVersion,
+            List<SierraContractAbiEntry> abi)
+        $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _SierraCompiledContract():
+        return $default(_that.sierraProgram, _that.entryPointsByType,
+            _that.contractClassVersion, _that.abi);
+      case _:
+        throw StateError('Unexpected subclass');
+    }
+  }
+
+  /// A variant of `when` that fallback to returning `null`
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>(
+    TResult? Function(
+            List<BigInt> sierraProgram,
+            EntryPointsByType entryPointsByType,
+            String contractClassVersion,
+            List<SierraContractAbiEntry> abi)?
+        $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _SierraCompiledContract() when $default != null:
+        return $default(_that.sierraProgram, _that.entryPointsByType,
+            _that.contractClassVersion, _that.abi);
+      case _:
+        return null;
+    }
   }
 }
 
 /// @nodoc
 @JsonSerializable()
-class _$SierraCompiledContractImpl extends _SierraCompiledContract {
-  _$SierraCompiledContractImpl(
+class _SierraCompiledContract extends SierraCompiledContract {
+  _SierraCompiledContract(
       {required final List<BigInt> sierraProgram,
       required this.entryPointsByType,
       required this.contractClassVersion,
@@ -174,9 +309,8 @@ class _$SierraCompiledContractImpl extends _SierraCompiledContract {
       : _sierraProgram = sierraProgram,
         _abi = abi,
         super._();
-
-  factory _$SierraCompiledContractImpl.fromJson(Map<String, dynamic> json) =>
-      _$$SierraCompiledContractImplFromJson(json);
+  factory _SierraCompiledContract.fromJson(Map<String, dynamic> json) =>
+      _$SierraCompiledContractFromJson(json);
 
   final List<BigInt> _sierraProgram;
   @override
@@ -198,16 +332,27 @@ class _$SierraCompiledContractImpl extends _SierraCompiledContract {
     return EqualUnmodifiableListView(_abi);
   }
 
+  /// Create a copy of SierraCompiledContract
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  String toString() {
-    return 'SierraCompiledContract(sierraProgram: $sierraProgram, entryPointsByType: $entryPointsByType, contractClassVersion: $contractClassVersion, abi: $abi)';
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  _$SierraCompiledContractCopyWith<_SierraCompiledContract> get copyWith =>
+      __$SierraCompiledContractCopyWithImpl<_SierraCompiledContract>(
+          this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$SierraCompiledContractToJson(
+      this,
+    );
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$SierraCompiledContractImpl &&
+            other is _SierraCompiledContract &&
             const DeepCollectionEquality()
                 .equals(other._sierraProgram, _sierraProgram) &&
             (identical(other.entryPointsByType, entryPointsByType) ||
@@ -226,50 +371,77 @@ class _$SierraCompiledContractImpl extends _SierraCompiledContract {
       contractClassVersion,
       const DeepCollectionEquality().hash(_abi));
 
-  /// Create a copy of SierraCompiledContract
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  @pragma('vm:prefer-inline')
-  _$$SierraCompiledContractImplCopyWith<_$SierraCompiledContractImpl>
-      get copyWith => __$$SierraCompiledContractImplCopyWithImpl<
-          _$SierraCompiledContractImpl>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$SierraCompiledContractImplToJson(
-      this,
-    );
+  String toString() {
+    return 'SierraCompiledContract(sierraProgram: $sierraProgram, entryPointsByType: $entryPointsByType, contractClassVersion: $contractClassVersion, abi: $abi)';
   }
 }
 
-abstract class _SierraCompiledContract extends SierraCompiledContract {
-  factory _SierraCompiledContract(
-          {required final List<BigInt> sierraProgram,
-          required final EntryPointsByType entryPointsByType,
-          required final String contractClassVersion,
-          required final List<SierraContractAbiEntry> abi}) =
-      _$SierraCompiledContractImpl;
-  _SierraCompiledContract._() : super._();
+/// @nodoc
+abstract mixin class _$SierraCompiledContractCopyWith<$Res>
+    implements $SierraCompiledContractCopyWith<$Res> {
+  factory _$SierraCompiledContractCopyWith(_SierraCompiledContract value,
+          $Res Function(_SierraCompiledContract) _then) =
+      __$SierraCompiledContractCopyWithImpl;
+  @override
+  @useResult
+  $Res call(
+      {List<BigInt> sierraProgram,
+      EntryPointsByType entryPointsByType,
+      String contractClassVersion,
+      List<SierraContractAbiEntry> abi});
 
-  factory _SierraCompiledContract.fromJson(Map<String, dynamic> json) =
-      _$SierraCompiledContractImpl.fromJson;
+  @override
+  $EntryPointsByTypeCopyWith<$Res> get entryPointsByType;
+}
 
-  @override
-  List<BigInt> get sierraProgram;
-  @override
-  EntryPointsByType get entryPointsByType;
-  @override
-  String get contractClassVersion;
-  @override
-  List<SierraContractAbiEntry> get abi;
+/// @nodoc
+class __$SierraCompiledContractCopyWithImpl<$Res>
+    implements _$SierraCompiledContractCopyWith<$Res> {
+  __$SierraCompiledContractCopyWithImpl(this._self, this._then);
+
+  final _SierraCompiledContract _self;
+  final $Res Function(_SierraCompiledContract) _then;
 
   /// Create a copy of SierraCompiledContract
   /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$SierraCompiledContractImplCopyWith<_$SierraCompiledContractImpl>
-      get copyWith => throw _privateConstructorUsedError;
+  @pragma('vm:prefer-inline')
+  $Res call({
+    Object? sierraProgram = null,
+    Object? entryPointsByType = null,
+    Object? contractClassVersion = null,
+    Object? abi = null,
+  }) {
+    return _then(_SierraCompiledContract(
+      sierraProgram: null == sierraProgram
+          ? _self._sierraProgram
+          : sierraProgram // ignore: cast_nullable_to_non_nullable
+              as List<BigInt>,
+      entryPointsByType: null == entryPointsByType
+          ? _self.entryPointsByType
+          : entryPointsByType // ignore: cast_nullable_to_non_nullable
+              as EntryPointsByType,
+      contractClassVersion: null == contractClassVersion
+          ? _self.contractClassVersion
+          : contractClassVersion // ignore: cast_nullable_to_non_nullable
+              as String,
+      abi: null == abi
+          ? _self._abi
+          : abi // ignore: cast_nullable_to_non_nullable
+              as List<SierraContractAbiEntry>,
+    ));
+  }
+
+  /// Create a copy of SierraCompiledContract
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $EntryPointsByTypeCopyWith<$Res> get entryPointsByType {
+    return $EntryPointsByTypeCopyWith<$Res>(_self.entryPointsByType, (value) {
+      return _then(_self.copyWith(entryPointsByType: value));
+    });
+  }
 }
 
 FlattenSierraContractClass _$FlattenSierraContractClassFromJson(
@@ -279,27 +451,57 @@ FlattenSierraContractClass _$FlattenSierraContractClassFromJson(
 
 /// @nodoc
 mixin _$FlattenSierraContractClass {
-  List<String> get sierraProgram => throw _privateConstructorUsedError;
-  EntryPointsByType get entryPointsByType => throw _privateConstructorUsedError;
-  String get contractClassVersion => throw _privateConstructorUsedError;
-  String get abi => throw _privateConstructorUsedError;
-
-  /// Serializes this FlattenSierraContractClass to a JSON map.
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  List<String> get sierraProgram;
+  EntryPointsByType get entryPointsByType;
+  String get contractClassVersion;
+  String get abi;
 
   /// Create a copy of FlattenSierraContractClass
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
   $FlattenSierraContractClassCopyWith<FlattenSierraContractClass>
-      get copyWith => throw _privateConstructorUsedError;
+      get copyWith =>
+          _$FlattenSierraContractClassCopyWithImpl<FlattenSierraContractClass>(
+              this as FlattenSierraContractClass, _$identity);
+
+  /// Serializes this FlattenSierraContractClass to a JSON map.
+  Map<String, dynamic> toJson();
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is FlattenSierraContractClass &&
+            const DeepCollectionEquality()
+                .equals(other.sierraProgram, sierraProgram) &&
+            (identical(other.entryPointsByType, entryPointsByType) ||
+                other.entryPointsByType == entryPointsByType) &&
+            (identical(other.contractClassVersion, contractClassVersion) ||
+                other.contractClassVersion == contractClassVersion) &&
+            (identical(other.abi, abi) || other.abi == abi));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(sierraProgram),
+      entryPointsByType,
+      contractClassVersion,
+      abi);
+
+  @override
+  String toString() {
+    return 'FlattenSierraContractClass(sierraProgram: $sierraProgram, entryPointsByType: $entryPointsByType, contractClassVersion: $contractClassVersion, abi: $abi)';
+  }
 }
 
 /// @nodoc
-abstract class $FlattenSierraContractClassCopyWith<$Res> {
+abstract mixin class $FlattenSierraContractClassCopyWith<$Res> {
   factory $FlattenSierraContractClassCopyWith(FlattenSierraContractClass value,
-          $Res Function(FlattenSierraContractClass) then) =
-      _$FlattenSierraContractClassCopyWithImpl<$Res,
-          FlattenSierraContractClass>;
+          $Res Function(FlattenSierraContractClass) _then) =
+      _$FlattenSierraContractClassCopyWithImpl;
   @useResult
   $Res call(
       {List<String> sierraProgram,
@@ -311,15 +513,12 @@ abstract class $FlattenSierraContractClassCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$FlattenSierraContractClassCopyWithImpl<$Res,
-        $Val extends FlattenSierraContractClass>
+class _$FlattenSierraContractClassCopyWithImpl<$Res>
     implements $FlattenSierraContractClassCopyWith<$Res> {
-  _$FlattenSierraContractClassCopyWithImpl(this._value, this._then);
+  _$FlattenSierraContractClassCopyWithImpl(this._self, this._then);
 
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final FlattenSierraContractClass _self;
+  final $Res Function(FlattenSierraContractClass) _then;
 
   /// Create a copy of FlattenSierraContractClass
   /// with the given fields replaced by the non-null parameter values.
@@ -331,24 +530,24 @@ class _$FlattenSierraContractClassCopyWithImpl<$Res,
     Object? contractClassVersion = null,
     Object? abi = null,
   }) {
-    return _then(_value.copyWith(
+    return _then(_self.copyWith(
       sierraProgram: null == sierraProgram
-          ? _value.sierraProgram
+          ? _self.sierraProgram
           : sierraProgram // ignore: cast_nullable_to_non_nullable
               as List<String>,
       entryPointsByType: null == entryPointsByType
-          ? _value.entryPointsByType
+          ? _self.entryPointsByType
           : entryPointsByType // ignore: cast_nullable_to_non_nullable
               as EntryPointsByType,
       contractClassVersion: null == contractClassVersion
-          ? _value.contractClassVersion
+          ? _self.contractClassVersion
           : contractClassVersion // ignore: cast_nullable_to_non_nullable
               as String,
       abi: null == abi
-          ? _value.abi
+          ? _self.abi
           : abi // ignore: cast_nullable_to_non_nullable
               as String,
-    ) as $Val);
+    ));
   }
 
   /// Create a copy of FlattenSierraContractClass
@@ -356,82 +555,198 @@ class _$FlattenSierraContractClassCopyWithImpl<$Res,
   @override
   @pragma('vm:prefer-inline')
   $EntryPointsByTypeCopyWith<$Res> get entryPointsByType {
-    return $EntryPointsByTypeCopyWith<$Res>(_value.entryPointsByType, (value) {
-      return _then(_value.copyWith(entryPointsByType: value) as $Val);
+    return $EntryPointsByTypeCopyWith<$Res>(_self.entryPointsByType, (value) {
+      return _then(_self.copyWith(entryPointsByType: value));
     });
   }
 }
 
-/// @nodoc
-abstract class _$$FlattenSierraClassImplCopyWith<$Res>
-    implements $FlattenSierraContractClassCopyWith<$Res> {
-  factory _$$FlattenSierraClassImplCopyWith(_$FlattenSierraClassImpl value,
-          $Res Function(_$FlattenSierraClassImpl) then) =
-      __$$FlattenSierraClassImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call(
-      {List<String> sierraProgram,
-      EntryPointsByType entryPointsByType,
-      String contractClassVersion,
-      String abi});
+/// Adds pattern-matching-related methods to [FlattenSierraContractClass].
+extension FlattenSierraContractClassPatterns on FlattenSierraContractClass {
+  /// A variant of `map` that fallback to returning `orElse`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
 
-  @override
-  $EntryPointsByTypeCopyWith<$Res> get entryPointsByType;
-}
-
-/// @nodoc
-class __$$FlattenSierraClassImplCopyWithImpl<$Res>
-    extends _$FlattenSierraContractClassCopyWithImpl<$Res,
-        _$FlattenSierraClassImpl>
-    implements _$$FlattenSierraClassImplCopyWith<$Res> {
-  __$$FlattenSierraClassImplCopyWithImpl(_$FlattenSierraClassImpl _value,
-      $Res Function(_$FlattenSierraClassImpl) _then)
-      : super(_value, _then);
-
-  /// Create a copy of FlattenSierraContractClass
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? sierraProgram = null,
-    Object? entryPointsByType = null,
-    Object? contractClassVersion = null,
-    Object? abi = null,
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(_FlattenSierraClass value)? $default, {
+    required TResult orElse(),
   }) {
-    return _then(_$FlattenSierraClassImpl(
-      sierraProgram: null == sierraProgram
-          ? _value._sierraProgram
-          : sierraProgram // ignore: cast_nullable_to_non_nullable
-              as List<String>,
-      entryPointsByType: null == entryPointsByType
-          ? _value.entryPointsByType
-          : entryPointsByType // ignore: cast_nullable_to_non_nullable
-              as EntryPointsByType,
-      contractClassVersion: null == contractClassVersion
-          ? _value.contractClassVersion
-          : contractClassVersion // ignore: cast_nullable_to_non_nullable
-              as String,
-      abi: null == abi
-          ? _value.abi
-          : abi // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
+    final _that = this;
+    switch (_that) {
+      case _FlattenSierraClass() when $default != null:
+        return $default(_that);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// Callbacks receives the raw object, upcasted.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case final Subclass2 value:
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(_FlattenSierraClass value) $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _FlattenSierraClass():
+        return $default(_that);
+      case _:
+        throw StateError('Unexpected subclass');
+    }
+  }
+
+  /// A variant of `map` that fallback to returning `null`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>(
+    TResult? Function(_FlattenSierraClass value)? $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _FlattenSierraClass() when $default != null:
+        return $default(_that);
+      case _:
+        return null;
+    }
+  }
+
+  /// A variant of `when` that fallback to an `orElse` callback.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(
+            List<String> sierraProgram,
+            EntryPointsByType entryPointsByType,
+            String contractClassVersion,
+            String abi)?
+        $default, {
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _FlattenSierraClass() when $default != null:
+        return $default(_that.sierraProgram, _that.entryPointsByType,
+            _that.contractClassVersion, _that.abi);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// As opposed to `map`, this offers destructuring.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case Subclass2(:final field2):
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>(
+    TResult Function(
+            List<String> sierraProgram,
+            EntryPointsByType entryPointsByType,
+            String contractClassVersion,
+            String abi)
+        $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _FlattenSierraClass():
+        return $default(_that.sierraProgram, _that.entryPointsByType,
+            _that.contractClassVersion, _that.abi);
+      case _:
+        throw StateError('Unexpected subclass');
+    }
+  }
+
+  /// A variant of `when` that fallback to returning `null`
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>(
+    TResult? Function(
+            List<String> sierraProgram,
+            EntryPointsByType entryPointsByType,
+            String contractClassVersion,
+            String abi)?
+        $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _FlattenSierraClass() when $default != null:
+        return $default(_that.sierraProgram, _that.entryPointsByType,
+            _that.contractClassVersion, _that.abi);
+      case _:
+        return null;
+    }
   }
 }
 
 /// @nodoc
 @JsonSerializable()
-class _$FlattenSierraClassImpl implements _FlattenSierraClass {
-  _$FlattenSierraClassImpl(
+class _FlattenSierraClass implements FlattenSierraContractClass {
+  _FlattenSierraClass(
       {required final List<String> sierraProgram,
       required this.entryPointsByType,
       required this.contractClassVersion,
       required this.abi})
       : _sierraProgram = sierraProgram;
-
-  factory _$FlattenSierraClassImpl.fromJson(Map<String, dynamic> json) =>
-      _$$FlattenSierraClassImplFromJson(json);
+  factory _FlattenSierraClass.fromJson(Map<String, dynamic> json) =>
+      _$FlattenSierraClassFromJson(json);
 
   final List<String> _sierraProgram;
   @override
@@ -448,16 +763,26 @@ class _$FlattenSierraClassImpl implements _FlattenSierraClass {
   @override
   final String abi;
 
+  /// Create a copy of FlattenSierraContractClass
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  String toString() {
-    return 'FlattenSierraContractClass(sierraProgram: $sierraProgram, entryPointsByType: $entryPointsByType, contractClassVersion: $contractClassVersion, abi: $abi)';
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  _$FlattenSierraClassCopyWith<_FlattenSierraClass> get copyWith =>
+      __$FlattenSierraClassCopyWithImpl<_FlattenSierraClass>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$FlattenSierraClassToJson(
+      this,
+    );
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$FlattenSierraClassImpl &&
+            other is _FlattenSierraClass &&
             const DeepCollectionEquality()
                 .equals(other._sierraProgram, _sierraProgram) &&
             (identical(other.entryPointsByType, entryPointsByType) ||
@@ -476,77 +801,131 @@ class _$FlattenSierraClassImpl implements _FlattenSierraClass {
       contractClassVersion,
       abi);
 
-  /// Create a copy of FlattenSierraContractClass
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  @pragma('vm:prefer-inline')
-  _$$FlattenSierraClassImplCopyWith<_$FlattenSierraClassImpl> get copyWith =>
-      __$$FlattenSierraClassImplCopyWithImpl<_$FlattenSierraClassImpl>(
-          this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$FlattenSierraClassImplToJson(
-      this,
-    );
+  String toString() {
+    return 'FlattenSierraContractClass(sierraProgram: $sierraProgram, entryPointsByType: $entryPointsByType, contractClassVersion: $contractClassVersion, abi: $abi)';
   }
 }
 
-abstract class _FlattenSierraClass implements FlattenSierraContractClass {
-  factory _FlattenSierraClass(
-      {required final List<String> sierraProgram,
-      required final EntryPointsByType entryPointsByType,
-      required final String contractClassVersion,
-      required final String abi}) = _$FlattenSierraClassImpl;
+/// @nodoc
+abstract mixin class _$FlattenSierraClassCopyWith<$Res>
+    implements $FlattenSierraContractClassCopyWith<$Res> {
+  factory _$FlattenSierraClassCopyWith(
+          _FlattenSierraClass value, $Res Function(_FlattenSierraClass) _then) =
+      __$FlattenSierraClassCopyWithImpl;
+  @override
+  @useResult
+  $Res call(
+      {List<String> sierraProgram,
+      EntryPointsByType entryPointsByType,
+      String contractClassVersion,
+      String abi});
 
-  factory _FlattenSierraClass.fromJson(Map<String, dynamic> json) =
-      _$FlattenSierraClassImpl.fromJson;
+  @override
+  $EntryPointsByTypeCopyWith<$Res> get entryPointsByType;
+}
 
-  @override
-  List<String> get sierraProgram;
-  @override
-  EntryPointsByType get entryPointsByType;
-  @override
-  String get contractClassVersion;
-  @override
-  String get abi;
+/// @nodoc
+class __$FlattenSierraClassCopyWithImpl<$Res>
+    implements _$FlattenSierraClassCopyWith<$Res> {
+  __$FlattenSierraClassCopyWithImpl(this._self, this._then);
+
+  final _FlattenSierraClass _self;
+  final $Res Function(_FlattenSierraClass) _then;
 
   /// Create a copy of FlattenSierraContractClass
   /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$FlattenSierraClassImplCopyWith<_$FlattenSierraClassImpl> get copyWith =>
-      throw _privateConstructorUsedError;
-}
+  @pragma('vm:prefer-inline')
+  $Res call({
+    Object? sierraProgram = null,
+    Object? entryPointsByType = null,
+    Object? contractClassVersion = null,
+    Object? abi = null,
+  }) {
+    return _then(_FlattenSierraClass(
+      sierraProgram: null == sierraProgram
+          ? _self._sierraProgram
+          : sierraProgram // ignore: cast_nullable_to_non_nullable
+              as List<String>,
+      entryPointsByType: null == entryPointsByType
+          ? _self.entryPointsByType
+          : entryPointsByType // ignore: cast_nullable_to_non_nullable
+              as EntryPointsByType,
+      contractClassVersion: null == contractClassVersion
+          ? _self.contractClassVersion
+          : contractClassVersion // ignore: cast_nullable_to_non_nullable
+              as String,
+      abi: null == abi
+          ? _self.abi
+          : abi // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
 
-CASMCompiledContract _$CASMCompiledContractFromJson(Map<String, dynamic> json) {
-  return _CASMCompiledContract.fromJson(json);
+  /// Create a copy of FlattenSierraContractClass
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $EntryPointsByTypeCopyWith<$Res> get entryPointsByType {
+    return $EntryPointsByTypeCopyWith<$Res>(_self.entryPointsByType, (value) {
+      return _then(_self.copyWith(entryPointsByType: value));
+    });
+  }
 }
 
 /// @nodoc
 mixin _$CASMCompiledContract {
-  List<BigInt> get bytecode => throw _privateConstructorUsedError;
-  CASMEntryPointsByType get entryPointsByType =>
-      throw _privateConstructorUsedError;
-  String get compilerVersion => throw _privateConstructorUsedError;
-  List<int> get bytecodeSegmentLengths => throw _privateConstructorUsedError;
-
-  /// Serializes this CASMCompiledContract to a JSON map.
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  List<BigInt> get bytecode;
+  CASMEntryPointsByType get entryPointsByType;
+  String get compilerVersion;
+  List<int> get bytecodeSegmentLengths;
 
   /// Create a copy of CASMCompiledContract
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
   $CASMCompiledContractCopyWith<CASMCompiledContract> get copyWith =>
-      throw _privateConstructorUsedError;
+      _$CASMCompiledContractCopyWithImpl<CASMCompiledContract>(
+          this as CASMCompiledContract, _$identity);
+
+  /// Serializes this CASMCompiledContract to a JSON map.
+  Map<String, dynamic> toJson();
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is CASMCompiledContract &&
+            const DeepCollectionEquality().equals(other.bytecode, bytecode) &&
+            (identical(other.entryPointsByType, entryPointsByType) ||
+                other.entryPointsByType == entryPointsByType) &&
+            (identical(other.compilerVersion, compilerVersion) ||
+                other.compilerVersion == compilerVersion) &&
+            const DeepCollectionEquality()
+                .equals(other.bytecodeSegmentLengths, bytecodeSegmentLengths));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(bytecode),
+      entryPointsByType,
+      compilerVersion,
+      const DeepCollectionEquality().hash(bytecodeSegmentLengths));
+
+  @override
+  String toString() {
+    return 'CASMCompiledContract(bytecode: $bytecode, entryPointsByType: $entryPointsByType, compilerVersion: $compilerVersion, bytecodeSegmentLengths: $bytecodeSegmentLengths)';
+  }
 }
 
 /// @nodoc
-abstract class $CASMCompiledContractCopyWith<$Res> {
+abstract mixin class $CASMCompiledContractCopyWith<$Res> {
   factory $CASMCompiledContractCopyWith(CASMCompiledContract value,
-          $Res Function(CASMCompiledContract) then) =
-      _$CASMCompiledContractCopyWithImpl<$Res, CASMCompiledContract>;
+          $Res Function(CASMCompiledContract) _then) =
+      _$CASMCompiledContractCopyWithImpl;
   @useResult
   $Res call(
       {List<BigInt> bytecode,
@@ -558,15 +937,12 @@ abstract class $CASMCompiledContractCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$CASMCompiledContractCopyWithImpl<$Res,
-        $Val extends CASMCompiledContract>
+class _$CASMCompiledContractCopyWithImpl<$Res>
     implements $CASMCompiledContractCopyWith<$Res> {
-  _$CASMCompiledContractCopyWithImpl(this._value, this._then);
+  _$CASMCompiledContractCopyWithImpl(this._self, this._then);
 
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final CASMCompiledContract _self;
+  final $Res Function(CASMCompiledContract) _then;
 
   /// Create a copy of CASMCompiledContract
   /// with the given fields replaced by the non-null parameter values.
@@ -578,24 +954,24 @@ class _$CASMCompiledContractCopyWithImpl<$Res,
     Object? compilerVersion = null,
     Object? bytecodeSegmentLengths = null,
   }) {
-    return _then(_value.copyWith(
+    return _then(_self.copyWith(
       bytecode: null == bytecode
-          ? _value.bytecode
+          ? _self.bytecode
           : bytecode // ignore: cast_nullable_to_non_nullable
               as List<BigInt>,
       entryPointsByType: null == entryPointsByType
-          ? _value.entryPointsByType
+          ? _self.entryPointsByType
           : entryPointsByType // ignore: cast_nullable_to_non_nullable
               as CASMEntryPointsByType,
       compilerVersion: null == compilerVersion
-          ? _value.compilerVersion
+          ? _self.compilerVersion
           : compilerVersion // ignore: cast_nullable_to_non_nullable
               as String,
       bytecodeSegmentLengths: null == bytecodeSegmentLengths
-          ? _value.bytecodeSegmentLengths
+          ? _self.bytecodeSegmentLengths
           : bytecodeSegmentLengths // ignore: cast_nullable_to_non_nullable
               as List<int>,
-    ) as $Val);
+    ));
   }
 
   /// Create a copy of CASMCompiledContract
@@ -603,74 +979,192 @@ class _$CASMCompiledContractCopyWithImpl<$Res,
   @override
   @pragma('vm:prefer-inline')
   $CASMEntryPointsByTypeCopyWith<$Res> get entryPointsByType {
-    return $CASMEntryPointsByTypeCopyWith<$Res>(_value.entryPointsByType,
+    return $CASMEntryPointsByTypeCopyWith<$Res>(_self.entryPointsByType,
         (value) {
-      return _then(_value.copyWith(entryPointsByType: value) as $Val);
+      return _then(_self.copyWith(entryPointsByType: value));
     });
   }
 }
 
-/// @nodoc
-abstract class _$$CASMCompiledContractImplCopyWith<$Res>
-    implements $CASMCompiledContractCopyWith<$Res> {
-  factory _$$CASMCompiledContractImplCopyWith(_$CASMCompiledContractImpl value,
-          $Res Function(_$CASMCompiledContractImpl) then) =
-      __$$CASMCompiledContractImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call(
-      {List<BigInt> bytecode,
-      CASMEntryPointsByType entryPointsByType,
-      String compilerVersion,
-      List<int> bytecodeSegmentLengths});
+/// Adds pattern-matching-related methods to [CASMCompiledContract].
+extension CASMCompiledContractPatterns on CASMCompiledContract {
+  /// A variant of `map` that fallback to returning `orElse`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
 
-  @override
-  $CASMEntryPointsByTypeCopyWith<$Res> get entryPointsByType;
-}
-
-/// @nodoc
-class __$$CASMCompiledContractImplCopyWithImpl<$Res>
-    extends _$CASMCompiledContractCopyWithImpl<$Res, _$CASMCompiledContractImpl>
-    implements _$$CASMCompiledContractImplCopyWith<$Res> {
-  __$$CASMCompiledContractImplCopyWithImpl(_$CASMCompiledContractImpl _value,
-      $Res Function(_$CASMCompiledContractImpl) _then)
-      : super(_value, _then);
-
-  /// Create a copy of CASMCompiledContract
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? bytecode = null,
-    Object? entryPointsByType = null,
-    Object? compilerVersion = null,
-    Object? bytecodeSegmentLengths = null,
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(_CASMCompiledContract value)? $default, {
+    required TResult orElse(),
   }) {
-    return _then(_$CASMCompiledContractImpl(
-      bytecode: null == bytecode
-          ? _value._bytecode
-          : bytecode // ignore: cast_nullable_to_non_nullable
-              as List<BigInt>,
-      entryPointsByType: null == entryPointsByType
-          ? _value.entryPointsByType
-          : entryPointsByType // ignore: cast_nullable_to_non_nullable
-              as CASMEntryPointsByType,
-      compilerVersion: null == compilerVersion
-          ? _value.compilerVersion
-          : compilerVersion // ignore: cast_nullable_to_non_nullable
-              as String,
-      bytecodeSegmentLengths: null == bytecodeSegmentLengths
-          ? _value._bytecodeSegmentLengths
-          : bytecodeSegmentLengths // ignore: cast_nullable_to_non_nullable
-              as List<int>,
-    ));
+    final _that = this;
+    switch (_that) {
+      case _CASMCompiledContract() when $default != null:
+        return $default(_that);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// Callbacks receives the raw object, upcasted.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case final Subclass2 value:
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(_CASMCompiledContract value) $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _CASMCompiledContract():
+        return $default(_that);
+      case _:
+        throw StateError('Unexpected subclass');
+    }
+  }
+
+  /// A variant of `map` that fallback to returning `null`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>(
+    TResult? Function(_CASMCompiledContract value)? $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _CASMCompiledContract() when $default != null:
+        return $default(_that);
+      case _:
+        return null;
+    }
+  }
+
+  /// A variant of `when` that fallback to an `orElse` callback.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(
+            List<BigInt> bytecode,
+            CASMEntryPointsByType entryPointsByType,
+            String compilerVersion,
+            List<int> bytecodeSegmentLengths)?
+        $default, {
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _CASMCompiledContract() when $default != null:
+        return $default(_that.bytecode, _that.entryPointsByType,
+            _that.compilerVersion, _that.bytecodeSegmentLengths);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// As opposed to `map`, this offers destructuring.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case Subclass2(:final field2):
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>(
+    TResult Function(
+            List<BigInt> bytecode,
+            CASMEntryPointsByType entryPointsByType,
+            String compilerVersion,
+            List<int> bytecodeSegmentLengths)
+        $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _CASMCompiledContract():
+        return $default(_that.bytecode, _that.entryPointsByType,
+            _that.compilerVersion, _that.bytecodeSegmentLengths);
+      case _:
+        throw StateError('Unexpected subclass');
+    }
+  }
+
+  /// A variant of `when` that fallback to returning `null`
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>(
+    TResult? Function(
+            List<BigInt> bytecode,
+            CASMEntryPointsByType entryPointsByType,
+            String compilerVersion,
+            List<int> bytecodeSegmentLengths)?
+        $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _CASMCompiledContract() when $default != null:
+        return $default(_that.bytecode, _that.entryPointsByType,
+            _that.compilerVersion, _that.bytecodeSegmentLengths);
+      case _:
+        return null;
+    }
   }
 }
 
 /// @nodoc
 @JsonSerializable()
-class _$CASMCompiledContractImpl extends _CASMCompiledContract {
-  _$CASMCompiledContractImpl(
+class _CASMCompiledContract extends CASMCompiledContract {
+  _CASMCompiledContract(
       {required final List<BigInt> bytecode,
       required this.entryPointsByType,
       required this.compilerVersion,
@@ -678,9 +1172,8 @@ class _$CASMCompiledContractImpl extends _CASMCompiledContract {
       : _bytecode = bytecode,
         _bytecodeSegmentLengths = bytecodeSegmentLengths,
         super._();
-
-  factory _$CASMCompiledContractImpl.fromJson(Map<String, dynamic> json) =>
-      _$$CASMCompiledContractImplFromJson(json);
+  factory _CASMCompiledContract.fromJson(Map<String, dynamic> json) =>
+      _$CASMCompiledContractFromJson(json);
 
   final List<BigInt> _bytecode;
   @override
@@ -703,16 +1196,27 @@ class _$CASMCompiledContractImpl extends _CASMCompiledContract {
     return EqualUnmodifiableListView(_bytecodeSegmentLengths);
   }
 
+  /// Create a copy of CASMCompiledContract
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  String toString() {
-    return 'CASMCompiledContract(bytecode: $bytecode, entryPointsByType: $entryPointsByType, compilerVersion: $compilerVersion, bytecodeSegmentLengths: $bytecodeSegmentLengths)';
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  _$CASMCompiledContractCopyWith<_CASMCompiledContract> get copyWith =>
+      __$CASMCompiledContractCopyWithImpl<_CASMCompiledContract>(
+          this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$CASMCompiledContractToJson(
+      this,
+    );
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$CASMCompiledContractImpl &&
+            other is _CASMCompiledContract &&
             const DeepCollectionEquality().equals(other._bytecode, _bytecode) &&
             (identical(other.entryPointsByType, entryPointsByType) ||
                 other.entryPointsByType == entryPointsByType) &&
@@ -731,82 +1235,128 @@ class _$CASMCompiledContractImpl extends _CASMCompiledContract {
       compilerVersion,
       const DeepCollectionEquality().hash(_bytecodeSegmentLengths));
 
-  /// Create a copy of CASMCompiledContract
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  @pragma('vm:prefer-inline')
-  _$$CASMCompiledContractImplCopyWith<_$CASMCompiledContractImpl>
-      get copyWith =>
-          __$$CASMCompiledContractImplCopyWithImpl<_$CASMCompiledContractImpl>(
-              this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$CASMCompiledContractImplToJson(
-      this,
-    );
+  String toString() {
+    return 'CASMCompiledContract(bytecode: $bytecode, entryPointsByType: $entryPointsByType, compilerVersion: $compilerVersion, bytecodeSegmentLengths: $bytecodeSegmentLengths)';
   }
 }
 
-abstract class _CASMCompiledContract extends CASMCompiledContract {
-  factory _CASMCompiledContract(
-          {required final List<BigInt> bytecode,
-          required final CASMEntryPointsByType entryPointsByType,
-          required final String compilerVersion,
-          required final List<int> bytecodeSegmentLengths}) =
-      _$CASMCompiledContractImpl;
-  _CASMCompiledContract._() : super._();
+/// @nodoc
+abstract mixin class _$CASMCompiledContractCopyWith<$Res>
+    implements $CASMCompiledContractCopyWith<$Res> {
+  factory _$CASMCompiledContractCopyWith(_CASMCompiledContract value,
+          $Res Function(_CASMCompiledContract) _then) =
+      __$CASMCompiledContractCopyWithImpl;
+  @override
+  @useResult
+  $Res call(
+      {List<BigInt> bytecode,
+      CASMEntryPointsByType entryPointsByType,
+      String compilerVersion,
+      List<int> bytecodeSegmentLengths});
 
-  factory _CASMCompiledContract.fromJson(Map<String, dynamic> json) =
-      _$CASMCompiledContractImpl.fromJson;
+  @override
+  $CASMEntryPointsByTypeCopyWith<$Res> get entryPointsByType;
+}
 
-  @override
-  List<BigInt> get bytecode;
-  @override
-  CASMEntryPointsByType get entryPointsByType;
-  @override
-  String get compilerVersion;
-  @override
-  List<int> get bytecodeSegmentLengths;
+/// @nodoc
+class __$CASMCompiledContractCopyWithImpl<$Res>
+    implements _$CASMCompiledContractCopyWith<$Res> {
+  __$CASMCompiledContractCopyWithImpl(this._self, this._then);
+
+  final _CASMCompiledContract _self;
+  final $Res Function(_CASMCompiledContract) _then;
 
   /// Create a copy of CASMCompiledContract
   /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$CASMCompiledContractImplCopyWith<_$CASMCompiledContractImpl>
-      get copyWith => throw _privateConstructorUsedError;
-}
+  @pragma('vm:prefer-inline')
+  $Res call({
+    Object? bytecode = null,
+    Object? entryPointsByType = null,
+    Object? compilerVersion = null,
+    Object? bytecodeSegmentLengths = null,
+  }) {
+    return _then(_CASMCompiledContract(
+      bytecode: null == bytecode
+          ? _self._bytecode
+          : bytecode // ignore: cast_nullable_to_non_nullable
+              as List<BigInt>,
+      entryPointsByType: null == entryPointsByType
+          ? _self.entryPointsByType
+          : entryPointsByType // ignore: cast_nullable_to_non_nullable
+              as CASMEntryPointsByType,
+      compilerVersion: null == compilerVersion
+          ? _self.compilerVersion
+          : compilerVersion // ignore: cast_nullable_to_non_nullable
+              as String,
+      bytecodeSegmentLengths: null == bytecodeSegmentLengths
+          ? _self._bytecodeSegmentLengths
+          : bytecodeSegmentLengths // ignore: cast_nullable_to_non_nullable
+              as List<int>,
+    ));
+  }
 
-DeprecatedCompiledContract _$DeprecatedCompiledContractFromJson(
-    Map<String, dynamic> json) {
-  return _DeprecatedCompiledContract.fromJson(json);
+  /// Create a copy of CASMCompiledContract
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $CASMEntryPointsByTypeCopyWith<$Res> get entryPointsByType {
+    return $CASMEntryPointsByTypeCopyWith<$Res>(_self.entryPointsByType,
+        (value) {
+      return _then(_self.copyWith(entryPointsByType: value));
+    });
+  }
 }
 
 /// @nodoc
 mixin _$DeprecatedCompiledContract {
-  Map<String, Object?> get program => throw _privateConstructorUsedError;
-  DeprecatedCairoEntryPointsByType get entryPointsByType =>
-      throw _privateConstructorUsedError;
-  List<DeprecatedContractAbiEntry>? get abi =>
-      throw _privateConstructorUsedError;
-
-  /// Serializes this DeprecatedCompiledContract to a JSON map.
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  Map<String, Object?> get program;
+  DeprecatedCairoEntryPointsByType get entryPointsByType;
+  List<DeprecatedContractAbiEntry>? get abi;
 
   /// Create a copy of DeprecatedCompiledContract
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
   $DeprecatedCompiledContractCopyWith<DeprecatedCompiledContract>
-      get copyWith => throw _privateConstructorUsedError;
+      get copyWith =>
+          _$DeprecatedCompiledContractCopyWithImpl<DeprecatedCompiledContract>(
+              this as DeprecatedCompiledContract, _$identity);
+
+  /// Serializes this DeprecatedCompiledContract to a JSON map.
+  Map<String, dynamic> toJson();
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is DeprecatedCompiledContract &&
+            const DeepCollectionEquality().equals(other.program, program) &&
+            (identical(other.entryPointsByType, entryPointsByType) ||
+                other.entryPointsByType == entryPointsByType) &&
+            const DeepCollectionEquality().equals(other.abi, abi));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(program),
+      entryPointsByType,
+      const DeepCollectionEquality().hash(abi));
+
+  @override
+  String toString() {
+    return 'DeprecatedCompiledContract(program: $program, entryPointsByType: $entryPointsByType, abi: $abi)';
+  }
 }
 
 /// @nodoc
-abstract class $DeprecatedCompiledContractCopyWith<$Res> {
+abstract mixin class $DeprecatedCompiledContractCopyWith<$Res> {
   factory $DeprecatedCompiledContractCopyWith(DeprecatedCompiledContract value,
-          $Res Function(DeprecatedCompiledContract) then) =
-      _$DeprecatedCompiledContractCopyWithImpl<$Res,
-          DeprecatedCompiledContract>;
+          $Res Function(DeprecatedCompiledContract) _then) =
+      _$DeprecatedCompiledContractCopyWithImpl;
   @useResult
   $Res call(
       {Map<String, Object?> program,
@@ -817,15 +1367,12 @@ abstract class $DeprecatedCompiledContractCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$DeprecatedCompiledContractCopyWithImpl<$Res,
-        $Val extends DeprecatedCompiledContract>
+class _$DeprecatedCompiledContractCopyWithImpl<$Res>
     implements $DeprecatedCompiledContractCopyWith<$Res> {
-  _$DeprecatedCompiledContractCopyWithImpl(this._value, this._then);
+  _$DeprecatedCompiledContractCopyWithImpl(this._self, this._then);
 
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final DeprecatedCompiledContract _self;
+  final $Res Function(DeprecatedCompiledContract) _then;
 
   /// Create a copy of DeprecatedCompiledContract
   /// with the given fields replaced by the non-null parameter values.
@@ -836,20 +1383,20 @@ class _$DeprecatedCompiledContractCopyWithImpl<$Res,
     Object? entryPointsByType = null,
     Object? abi = freezed,
   }) {
-    return _then(_value.copyWith(
+    return _then(_self.copyWith(
       program: null == program
-          ? _value.program
+          ? _self.program
           : program // ignore: cast_nullable_to_non_nullable
               as Map<String, Object?>,
       entryPointsByType: null == entryPointsByType
-          ? _value.entryPointsByType
+          ? _self.entryPointsByType
           : entryPointsByType // ignore: cast_nullable_to_non_nullable
               as DeprecatedCairoEntryPointsByType,
       abi: freezed == abi
-          ? _value.abi
+          ? _self.abi
           : abi // ignore: cast_nullable_to_non_nullable
               as List<DeprecatedContractAbiEntry>?,
-    ) as $Val);
+    ));
   }
 
   /// Create a copy of DeprecatedCompiledContract
@@ -858,80 +1405,193 @@ class _$DeprecatedCompiledContractCopyWithImpl<$Res,
   @pragma('vm:prefer-inline')
   $DeprecatedCairoEntryPointsByTypeCopyWith<$Res> get entryPointsByType {
     return $DeprecatedCairoEntryPointsByTypeCopyWith<$Res>(
-        _value.entryPointsByType, (value) {
-      return _then(_value.copyWith(entryPointsByType: value) as $Val);
+        _self.entryPointsByType, (value) {
+      return _then(_self.copyWith(entryPointsByType: value));
     });
   }
 }
 
-/// @nodoc
-abstract class _$$DeprecatedCompiledContractImplCopyWith<$Res>
-    implements $DeprecatedCompiledContractCopyWith<$Res> {
-  factory _$$DeprecatedCompiledContractImplCopyWith(
-          _$DeprecatedCompiledContractImpl value,
-          $Res Function(_$DeprecatedCompiledContractImpl) then) =
-      __$$DeprecatedCompiledContractImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call(
-      {Map<String, Object?> program,
-      DeprecatedCairoEntryPointsByType entryPointsByType,
-      List<DeprecatedContractAbiEntry>? abi});
+/// Adds pattern-matching-related methods to [DeprecatedCompiledContract].
+extension DeprecatedCompiledContractPatterns on DeprecatedCompiledContract {
+  /// A variant of `map` that fallback to returning `orElse`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
 
-  @override
-  $DeprecatedCairoEntryPointsByTypeCopyWith<$Res> get entryPointsByType;
-}
-
-/// @nodoc
-class __$$DeprecatedCompiledContractImplCopyWithImpl<$Res>
-    extends _$DeprecatedCompiledContractCopyWithImpl<$Res,
-        _$DeprecatedCompiledContractImpl>
-    implements _$$DeprecatedCompiledContractImplCopyWith<$Res> {
-  __$$DeprecatedCompiledContractImplCopyWithImpl(
-      _$DeprecatedCompiledContractImpl _value,
-      $Res Function(_$DeprecatedCompiledContractImpl) _then)
-      : super(_value, _then);
-
-  /// Create a copy of DeprecatedCompiledContract
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? program = null,
-    Object? entryPointsByType = null,
-    Object? abi = freezed,
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(_DeprecatedCompiledContract value)? $default, {
+    required TResult orElse(),
   }) {
-    return _then(_$DeprecatedCompiledContractImpl(
-      program: null == program
-          ? _value._program
-          : program // ignore: cast_nullable_to_non_nullable
-              as Map<String, Object?>,
-      entryPointsByType: null == entryPointsByType
-          ? _value.entryPointsByType
-          : entryPointsByType // ignore: cast_nullable_to_non_nullable
-              as DeprecatedCairoEntryPointsByType,
-      abi: freezed == abi
-          ? _value._abi
-          : abi // ignore: cast_nullable_to_non_nullable
-              as List<DeprecatedContractAbiEntry>?,
-    ));
+    final _that = this;
+    switch (_that) {
+      case _DeprecatedCompiledContract() when $default != null:
+        return $default(_that);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// Callbacks receives the raw object, upcasted.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case final Subclass2 value:
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(_DeprecatedCompiledContract value) $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _DeprecatedCompiledContract():
+        return $default(_that);
+      case _:
+        throw StateError('Unexpected subclass');
+    }
+  }
+
+  /// A variant of `map` that fallback to returning `null`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>(
+    TResult? Function(_DeprecatedCompiledContract value)? $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _DeprecatedCompiledContract() when $default != null:
+        return $default(_that);
+      case _:
+        return null;
+    }
+  }
+
+  /// A variant of `when` that fallback to an `orElse` callback.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(
+            Map<String, Object?> program,
+            DeprecatedCairoEntryPointsByType entryPointsByType,
+            List<DeprecatedContractAbiEntry>? abi)?
+        $default, {
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _DeprecatedCompiledContract() when $default != null:
+        return $default(_that.program, _that.entryPointsByType, _that.abi);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// As opposed to `map`, this offers destructuring.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case Subclass2(:final field2):
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>(
+    TResult Function(
+            Map<String, Object?> program,
+            DeprecatedCairoEntryPointsByType entryPointsByType,
+            List<DeprecatedContractAbiEntry>? abi)
+        $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _DeprecatedCompiledContract():
+        return $default(_that.program, _that.entryPointsByType, _that.abi);
+      case _:
+        throw StateError('Unexpected subclass');
+    }
+  }
+
+  /// A variant of `when` that fallback to returning `null`
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>(
+    TResult? Function(
+            Map<String, Object?> program,
+            DeprecatedCairoEntryPointsByType entryPointsByType,
+            List<DeprecatedContractAbiEntry>? abi)?
+        $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _DeprecatedCompiledContract() when $default != null:
+        return $default(_that.program, _that.entryPointsByType, _that.abi);
+      case _:
+        return null;
+    }
   }
 }
 
 /// @nodoc
 @JsonSerializable()
-class _$DeprecatedCompiledContractImpl extends _DeprecatedCompiledContract {
-  const _$DeprecatedCompiledContractImpl(
+class _DeprecatedCompiledContract extends DeprecatedCompiledContract {
+  const _DeprecatedCompiledContract(
       {required final Map<String, Object?> program,
       required this.entryPointsByType,
       final List<DeprecatedContractAbiEntry>? abi})
       : _program = program,
         _abi = abi,
         super._();
-
-  factory _$DeprecatedCompiledContractImpl.fromJson(
-          Map<String, dynamic> json) =>
-      _$$DeprecatedCompiledContractImplFromJson(json);
+  factory _DeprecatedCompiledContract.fromJson(Map<String, dynamic> json) =>
+      _$DeprecatedCompiledContractFromJson(json);
 
   final Map<String, Object?> _program;
   @override
@@ -953,16 +1613,27 @@ class _$DeprecatedCompiledContractImpl extends _DeprecatedCompiledContract {
     return EqualUnmodifiableListView(value);
   }
 
+  /// Create a copy of DeprecatedCompiledContract
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  String toString() {
-    return 'DeprecatedCompiledContract(program: $program, entryPointsByType: $entryPointsByType, abi: $abi)';
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  _$DeprecatedCompiledContractCopyWith<_DeprecatedCompiledContract>
+      get copyWith => __$DeprecatedCompiledContractCopyWithImpl<
+          _DeprecatedCompiledContract>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$DeprecatedCompiledContractToJson(
+      this,
+    );
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$DeprecatedCompiledContractImpl &&
+            other is _DeprecatedCompiledContract &&
             const DeepCollectionEquality().equals(other._program, _program) &&
             (identical(other.entryPointsByType, entryPointsByType) ||
                 other.entryPointsByType == entryPointsByType) &&
@@ -977,45 +1648,73 @@ class _$DeprecatedCompiledContractImpl extends _DeprecatedCompiledContract {
       entryPointsByType,
       const DeepCollectionEquality().hash(_abi));
 
-  /// Create a copy of DeprecatedCompiledContract
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  @pragma('vm:prefer-inline')
-  _$$DeprecatedCompiledContractImplCopyWith<_$DeprecatedCompiledContractImpl>
-      get copyWith => __$$DeprecatedCompiledContractImplCopyWithImpl<
-          _$DeprecatedCompiledContractImpl>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$DeprecatedCompiledContractImplToJson(
-      this,
-    );
+  String toString() {
+    return 'DeprecatedCompiledContract(program: $program, entryPointsByType: $entryPointsByType, abi: $abi)';
   }
 }
 
-abstract class _DeprecatedCompiledContract extends DeprecatedCompiledContract {
-  const factory _DeprecatedCompiledContract(
-          {required final Map<String, Object?> program,
-          required final DeprecatedCairoEntryPointsByType entryPointsByType,
-          final List<DeprecatedContractAbiEntry>? abi}) =
-      _$DeprecatedCompiledContractImpl;
-  const _DeprecatedCompiledContract._() : super._();
+/// @nodoc
+abstract mixin class _$DeprecatedCompiledContractCopyWith<$Res>
+    implements $DeprecatedCompiledContractCopyWith<$Res> {
+  factory _$DeprecatedCompiledContractCopyWith(
+          _DeprecatedCompiledContract value,
+          $Res Function(_DeprecatedCompiledContract) _then) =
+      __$DeprecatedCompiledContractCopyWithImpl;
+  @override
+  @useResult
+  $Res call(
+      {Map<String, Object?> program,
+      DeprecatedCairoEntryPointsByType entryPointsByType,
+      List<DeprecatedContractAbiEntry>? abi});
 
-  factory _DeprecatedCompiledContract.fromJson(Map<String, dynamic> json) =
-      _$DeprecatedCompiledContractImpl.fromJson;
+  @override
+  $DeprecatedCairoEntryPointsByTypeCopyWith<$Res> get entryPointsByType;
+}
 
-  @override
-  Map<String, Object?> get program;
-  @override
-  DeprecatedCairoEntryPointsByType get entryPointsByType;
-  @override
-  List<DeprecatedContractAbiEntry>? get abi;
+/// @nodoc
+class __$DeprecatedCompiledContractCopyWithImpl<$Res>
+    implements _$DeprecatedCompiledContractCopyWith<$Res> {
+  __$DeprecatedCompiledContractCopyWithImpl(this._self, this._then);
+
+  final _DeprecatedCompiledContract _self;
+  final $Res Function(_DeprecatedCompiledContract) _then;
 
   /// Create a copy of DeprecatedCompiledContract
   /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$DeprecatedCompiledContractImplCopyWith<_$DeprecatedCompiledContractImpl>
-      get copyWith => throw _privateConstructorUsedError;
+  @pragma('vm:prefer-inline')
+  $Res call({
+    Object? program = null,
+    Object? entryPointsByType = null,
+    Object? abi = freezed,
+  }) {
+    return _then(_DeprecatedCompiledContract(
+      program: null == program
+          ? _self._program
+          : program // ignore: cast_nullable_to_non_nullable
+              as Map<String, Object?>,
+      entryPointsByType: null == entryPointsByType
+          ? _self.entryPointsByType
+          : entryPointsByType // ignore: cast_nullable_to_non_nullable
+              as DeprecatedCairoEntryPointsByType,
+      abi: freezed == abi
+          ? _self._abi
+          : abi // ignore: cast_nullable_to_non_nullable
+              as List<DeprecatedContractAbiEntry>?,
+    ));
+  }
+
+  /// Create a copy of DeprecatedCompiledContract
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $DeprecatedCairoEntryPointsByTypeCopyWith<$Res> get entryPointsByType {
+    return $DeprecatedCairoEntryPointsByTypeCopyWith<$Res>(
+        _self.entryPointsByType, (value) {
+      return _then(_self.copyWith(entryPointsByType: value));
+    });
+  }
 }
+
+// dart format on

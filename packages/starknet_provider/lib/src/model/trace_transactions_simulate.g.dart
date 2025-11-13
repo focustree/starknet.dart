@@ -48,9 +48,9 @@ Map<String, dynamic> _$SimulateTransactionResultToJson(
       'fee_estimate': instance.feeEstimate.toJson(),
     };
 
-_$SimulateTransactionsResultImpl _$$SimulateTransactionsResultImplFromJson(
+SimulateTransactionsResult _$SimulateTransactionsResultFromJson(
         Map<String, dynamic> json) =>
-    _$SimulateTransactionsResultImpl(
+    SimulateTransactionsResult(
       result: (json['result'] as List<dynamic>)
           .map((e) =>
               SimulateTransactionResult.fromJson(e as Map<String, dynamic>))
@@ -58,22 +58,22 @@ _$SimulateTransactionsResultImpl _$$SimulateTransactionsResultImplFromJson(
       $type: json['starkNetRuntimeTypeToRemove'] as String?,
     );
 
-Map<String, dynamic> _$$SimulateTransactionsResultImplToJson(
-        _$SimulateTransactionsResultImpl instance) =>
+Map<String, dynamic> _$SimulateTransactionsResultToJson(
+        SimulateTransactionsResult instance) =>
     <String, dynamic>{
       'result': instance.result.map((e) => e.toJson()).toList(),
       'starkNetRuntimeTypeToRemove': instance.$type,
     };
 
-_$SimulateTransactionsErrorImpl _$$SimulateTransactionsErrorImplFromJson(
+SimulateTransactionsError _$SimulateTransactionsErrorFromJson(
         Map<String, dynamic> json) =>
-    _$SimulateTransactionsErrorImpl(
+    SimulateTransactionsError(
       error: JsonRpcApiError.fromJson(json['error'] as Map<String, dynamic>),
       $type: json['starkNetRuntimeTypeToRemove'] as String?,
     );
 
-Map<String, dynamic> _$$SimulateTransactionsErrorImplToJson(
-        _$SimulateTransactionsErrorImpl instance) =>
+Map<String, dynamic> _$SimulateTransactionsErrorToJson(
+        SimulateTransactionsError instance) =>
     <String, dynamic>{
       'error': instance.error.toJson(),
       'starkNetRuntimeTypeToRemove': instance.$type,

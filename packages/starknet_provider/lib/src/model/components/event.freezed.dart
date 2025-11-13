@@ -1,5 +1,5 @@
-// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// coverage:ignore-file
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
@@ -9,92 +9,64 @@ part of 'event.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// dart format off
 T _$identity<T>(T value) => value;
-
-final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
-
-Event _$EventFromJson(Map<String, dynamic> json) {
-  return _Event.fromJson(json);
-}
 
 /// @nodoc
 mixin _$Event {
-  Felt? get fromAddress =>
-      throw _privateConstructorUsedError; // start of EVENT_CONTENT
-  List<Felt>? get keys => throw _privateConstructorUsedError;
-  List<Felt>? get data => throw _privateConstructorUsedError;
-
-  /// Serializes this Event to a JSON map.
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  Felt? get fromAddress; // start of EVENT_CONTENT
+  List<Felt>? get keys;
+  List<Felt>? get data;
 
   /// Create a copy of Event
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $EventCopyWith<Event> get copyWith => throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $EventCopyWith<$Res> {
-  factory $EventCopyWith(Event value, $Res Function(Event) then) =
-      _$EventCopyWithImpl<$Res, Event>;
-  @useResult
-  $Res call({Felt? fromAddress, List<Felt>? keys, List<Felt>? data});
-}
-
-/// @nodoc
-class _$EventCopyWithImpl<$Res, $Val extends Event>
-    implements $EventCopyWith<$Res> {
-  _$EventCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-
-  /// Create a copy of Event
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
+  $EventCopyWith<Event> get copyWith =>
+      _$EventCopyWithImpl<Event>(this as Event, _$identity);
+
+  /// Serializes this Event to a JSON map.
+  Map<String, dynamic> toJson();
+
   @override
-  $Res call({
-    Object? fromAddress = freezed,
-    Object? keys = freezed,
-    Object? data = freezed,
-  }) {
-    return _then(_value.copyWith(
-      fromAddress: freezed == fromAddress
-          ? _value.fromAddress
-          : fromAddress // ignore: cast_nullable_to_non_nullable
-              as Felt?,
-      keys: freezed == keys
-          ? _value.keys
-          : keys // ignore: cast_nullable_to_non_nullable
-              as List<Felt>?,
-      data: freezed == data
-          ? _value.data
-          : data // ignore: cast_nullable_to_non_nullable
-              as List<Felt>?,
-    ) as $Val);
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is Event &&
+            (identical(other.fromAddress, fromAddress) ||
+                other.fromAddress == fromAddress) &&
+            const DeepCollectionEquality().equals(other.keys, keys) &&
+            const DeepCollectionEquality().equals(other.data, data));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(
+      runtimeType,
+      fromAddress,
+      const DeepCollectionEquality().hash(keys),
+      const DeepCollectionEquality().hash(data));
+
+  @override
+  String toString() {
+    return 'Event(fromAddress: $fromAddress, keys: $keys, data: $data)';
   }
 }
 
 /// @nodoc
-abstract class _$$EventImplCopyWith<$Res> implements $EventCopyWith<$Res> {
-  factory _$$EventImplCopyWith(
-          _$EventImpl value, $Res Function(_$EventImpl) then) =
-      __$$EventImplCopyWithImpl<$Res>;
-  @override
+abstract mixin class $EventCopyWith<$Res> {
+  factory $EventCopyWith(Event value, $Res Function(Event) _then) =
+      _$EventCopyWithImpl;
   @useResult
   $Res call({Felt? fromAddress, List<Felt>? keys, List<Felt>? data});
 }
 
 /// @nodoc
-class __$$EventImplCopyWithImpl<$Res>
-    extends _$EventCopyWithImpl<$Res, _$EventImpl>
-    implements _$$EventImplCopyWith<$Res> {
-  __$$EventImplCopyWithImpl(
-      _$EventImpl _value, $Res Function(_$EventImpl) _then)
-      : super(_value, _then);
+class _$EventCopyWithImpl<$Res> implements $EventCopyWith<$Res> {
+  _$EventCopyWithImpl(this._self, this._then);
+
+  final Event _self;
+  final $Res Function(Event) _then;
 
   /// Create a copy of Event
   /// with the given fields replaced by the non-null parameter values.
@@ -105,35 +77,193 @@ class __$$EventImplCopyWithImpl<$Res>
     Object? keys = freezed,
     Object? data = freezed,
   }) {
-    return _then(_$EventImpl(
+    return _then(_self.copyWith(
       fromAddress: freezed == fromAddress
-          ? _value.fromAddress
+          ? _self.fromAddress
           : fromAddress // ignore: cast_nullable_to_non_nullable
               as Felt?,
       keys: freezed == keys
-          ? _value._keys
+          ? _self.keys
           : keys // ignore: cast_nullable_to_non_nullable
               as List<Felt>?,
       data: freezed == data
-          ? _value._data
+          ? _self.data
           : data // ignore: cast_nullable_to_non_nullable
               as List<Felt>?,
     ));
   }
 }
 
+/// Adds pattern-matching-related methods to [Event].
+extension EventPatterns on Event {
+  /// A variant of `map` that fallback to returning `orElse`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(_Event value)? $default, {
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _Event() when $default != null:
+        return $default(_that);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// Callbacks receives the raw object, upcasted.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case final Subclass2 value:
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(_Event value) $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _Event():
+        return $default(_that);
+      case _:
+        throw StateError('Unexpected subclass');
+    }
+  }
+
+  /// A variant of `map` that fallback to returning `null`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>(
+    TResult? Function(_Event value)? $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _Event() when $default != null:
+        return $default(_that);
+      case _:
+        return null;
+    }
+  }
+
+  /// A variant of `when` that fallback to an `orElse` callback.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(Felt? fromAddress, List<Felt>? keys, List<Felt>? data)?
+        $default, {
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _Event() when $default != null:
+        return $default(_that.fromAddress, _that.keys, _that.data);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// As opposed to `map`, this offers destructuring.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case Subclass2(:final field2):
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>(
+    TResult Function(Felt? fromAddress, List<Felt>? keys, List<Felt>? data)
+        $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _Event():
+        return $default(_that.fromAddress, _that.keys, _that.data);
+      case _:
+        throw StateError('Unexpected subclass');
+    }
+  }
+
+  /// A variant of `when` that fallback to returning `null`
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>(
+    TResult? Function(Felt? fromAddress, List<Felt>? keys, List<Felt>? data)?
+        $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _Event() when $default != null:
+        return $default(_that.fromAddress, _that.keys, _that.data);
+      case _:
+        return null;
+    }
+  }
+}
+
 /// @nodoc
 @JsonSerializable()
-class _$EventImpl implements _Event {
-  const _$EventImpl(
+class _Event implements Event {
+  const _Event(
       {required this.fromAddress,
       required final List<Felt>? keys,
       required final List<Felt>? data})
       : _keys = keys,
         _data = data;
-
-  factory _$EventImpl.fromJson(Map<String, dynamic> json) =>
-      _$$EventImplFromJson(json);
+  factory _Event.fromJson(Map<String, dynamic> json) => _$EventFromJson(json);
 
   @override
   final Felt? fromAddress;
@@ -159,16 +289,26 @@ class _$EventImpl implements _Event {
     return EqualUnmodifiableListView(value);
   }
 
+  /// Create a copy of Event
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  String toString() {
-    return 'Event(fromAddress: $fromAddress, keys: $keys, data: $data)';
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  _$EventCopyWith<_Event> get copyWith =>
+      __$EventCopyWithImpl<_Event>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$EventToJson(
+      this,
+    );
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$EventImpl &&
+            other is _Event &&
             (identical(other.fromAddress, fromAddress) ||
                 other.fromAddress == fromAddress) &&
             const DeepCollectionEquality().equals(other._keys, _keys) &&
@@ -183,41 +323,52 @@ class _$EventImpl implements _Event {
       const DeepCollectionEquality().hash(_keys),
       const DeepCollectionEquality().hash(_data));
 
-  /// Create a copy of Event
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  @pragma('vm:prefer-inline')
-  _$$EventImplCopyWith<_$EventImpl> get copyWith =>
-      __$$EventImplCopyWithImpl<_$EventImpl>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$EventImplToJson(
-      this,
-    );
+  String toString() {
+    return 'Event(fromAddress: $fromAddress, keys: $keys, data: $data)';
   }
 }
 
-abstract class _Event implements Event {
-  const factory _Event(
-      {required final Felt? fromAddress,
-      required final List<Felt>? keys,
-      required final List<Felt>? data}) = _$EventImpl;
+/// @nodoc
+abstract mixin class _$EventCopyWith<$Res> implements $EventCopyWith<$Res> {
+  factory _$EventCopyWith(_Event value, $Res Function(_Event) _then) =
+      __$EventCopyWithImpl;
+  @override
+  @useResult
+  $Res call({Felt? fromAddress, List<Felt>? keys, List<Felt>? data});
+}
 
-  factory _Event.fromJson(Map<String, dynamic> json) = _$EventImpl.fromJson;
+/// @nodoc
+class __$EventCopyWithImpl<$Res> implements _$EventCopyWith<$Res> {
+  __$EventCopyWithImpl(this._self, this._then);
 
-  @override
-  Felt? get fromAddress; // start of EVENT_CONTENT
-  @override
-  List<Felt>? get keys;
-  @override
-  List<Felt>? get data;
+  final _Event _self;
+  final $Res Function(_Event) _then;
 
   /// Create a copy of Event
   /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$EventImplCopyWith<_$EventImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  @pragma('vm:prefer-inline')
+  $Res call({
+    Object? fromAddress = freezed,
+    Object? keys = freezed,
+    Object? data = freezed,
+  }) {
+    return _then(_Event(
+      fromAddress: freezed == fromAddress
+          ? _self.fromAddress
+          : fromAddress // ignore: cast_nullable_to_non_nullable
+              as Felt?,
+      keys: freezed == keys
+          ? _self._keys
+          : keys // ignore: cast_nullable_to_non_nullable
+              as List<Felt>?,
+      data: freezed == data
+          ? _self._data
+          : data // ignore: cast_nullable_to_non_nullable
+              as List<Felt>?,
+    ));
+  }
 }
+
+// dart format on

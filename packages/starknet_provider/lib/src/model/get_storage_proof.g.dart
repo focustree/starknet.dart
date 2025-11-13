@@ -115,30 +115,30 @@ Map<String, dynamic> _$GlobalRootsToJson(GlobalRoots instance) =>
       'block_hash': instance.blockHash.toJson(),
     };
 
-_$GetStorageProofResultImpl _$$GetStorageProofResultImplFromJson(
+GetStorageProofResult _$GetStorageProofResultFromJson(
         Map<String, dynamic> json) =>
-    _$GetStorageProofResultImpl(
+    GetStorageProofResult(
       result:
           StorageProofResult.fromJson(json['result'] as Map<String, dynamic>),
       $type: json['starkNetRuntimeTypeToRemove'] as String?,
     );
 
-Map<String, dynamic> _$$GetStorageProofResultImplToJson(
-        _$GetStorageProofResultImpl instance) =>
+Map<String, dynamic> _$GetStorageProofResultToJson(
+        GetStorageProofResult instance) =>
     <String, dynamic>{
       'result': instance.result.toJson(),
       'starkNetRuntimeTypeToRemove': instance.$type,
     };
 
-_$GetStorageProofErrorImpl _$$GetStorageProofErrorImplFromJson(
+GetStorageProofError _$GetStorageProofErrorFromJson(
         Map<String, dynamic> json) =>
-    _$GetStorageProofErrorImpl(
+    GetStorageProofError(
       error: JsonRpcApiError.fromJson(json['error'] as Map<String, dynamic>),
       $type: json['starkNetRuntimeTypeToRemove'] as String?,
     );
 
-Map<String, dynamic> _$$GetStorageProofErrorImplToJson(
-        _$GetStorageProofErrorImpl instance) =>
+Map<String, dynamic> _$GetStorageProofErrorToJson(
+        GetStorageProofError instance) =>
     <String, dynamic>{
       'error': instance.error.toJson(),
       'starkNetRuntimeTypeToRemove': instance.$type,

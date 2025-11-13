@@ -6,32 +6,29 @@ part of 'wss_subscribe_transaction_status.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$WssSubscribeTransactionStatusResultImpl
-    _$$WssSubscribeTransactionStatusResultImplFromJson(
-            Map<String, dynamic> json) =>
-        _$WssSubscribeTransactionStatusResultImpl(
+WssSubscribeTransactionStatusResult
+    _$WssSubscribeTransactionStatusResultFromJson(Map<String, dynamic> json) =>
+        WssSubscribeTransactionStatusResult(
           subscription_id: json['result'] as String,
           $type: json['starkNetRuntimeTypeToRemove'] as String?,
         );
 
-Map<String, dynamic> _$$WssSubscribeTransactionStatusResultImplToJson(
-        _$WssSubscribeTransactionStatusResultImpl instance) =>
+Map<String, dynamic> _$WssSubscribeTransactionStatusResultToJson(
+        WssSubscribeTransactionStatusResult instance) =>
     <String, dynamic>{
       'result': instance.subscription_id,
       'starkNetRuntimeTypeToRemove': instance.$type,
     };
 
-_$WssSubscribeTransactionStatusErrorImpl
-    _$$WssSubscribeTransactionStatusErrorImplFromJson(
-            Map<String, dynamic> json) =>
-        _$WssSubscribeTransactionStatusErrorImpl(
-          error:
-              JsonWssApiError.fromJson(json['error'] as Map<String, dynamic>),
-          $type: json['starkNetRuntimeTypeToRemove'] as String?,
-        );
+WssSubscribeTransactionStatusError _$WssSubscribeTransactionStatusErrorFromJson(
+        Map<String, dynamic> json) =>
+    WssSubscribeTransactionStatusError(
+      error: JsonWssApiError.fromJson(json['error'] as Map<String, dynamic>),
+      $type: json['starkNetRuntimeTypeToRemove'] as String?,
+    );
 
-Map<String, dynamic> _$$WssSubscribeTransactionStatusErrorImplToJson(
-        _$WssSubscribeTransactionStatusErrorImpl instance) =>
+Map<String, dynamic> _$WssSubscribeTransactionStatusErrorToJson(
+        WssSubscribeTransactionStatusError instance) =>
     <String, dynamic>{
       'error': instance.error.toJson(),
       'starkNetRuntimeTypeToRemove': instance.$type,

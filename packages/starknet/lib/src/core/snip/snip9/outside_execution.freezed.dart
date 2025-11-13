@@ -1,5 +1,5 @@
-// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// coverage:ignore-file
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
@@ -9,111 +9,61 @@ part of 'outside_execution.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// dart format off
 T _$identity<T>(T value) => value;
-
-final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
-
-OutsideExecutionMessageV1 _$OutsideExecutionMessageV1FromJson(
-    Map<String, dynamic> json) {
-  return _OutsideExecutionMessageV1.fromJson(json);
-}
 
 /// @nodoc
 mixin _$OutsideExecutionMessageV1 {
-  String get caller => throw _privateConstructorUsedError;
-  String get nonce => throw _privateConstructorUsedError;
-  String get executeAfter => throw _privateConstructorUsedError;
-  String get executeBefore => throw _privateConstructorUsedError;
-  String get callsLen =>
-      throw _privateConstructorUsedError; // required by SNIP-9
-  List<OutsideExecutionCallV1> get calls => throw _privateConstructorUsedError;
-
-  /// Serializes this OutsideExecutionMessageV1 to a JSON map.
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  String get caller;
+  String get nonce;
+  String get executeAfter;
+  String get executeBefore;
+  String get callsLen; // required by SNIP-9
+  List<OutsideExecutionCallV1> get calls;
 
   /// Create a copy of OutsideExecutionMessageV1
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $OutsideExecutionMessageV1CopyWith<OutsideExecutionMessageV1> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $OutsideExecutionMessageV1CopyWith<$Res> {
-  factory $OutsideExecutionMessageV1CopyWith(OutsideExecutionMessageV1 value,
-          $Res Function(OutsideExecutionMessageV1) then) =
-      _$OutsideExecutionMessageV1CopyWithImpl<$Res, OutsideExecutionMessageV1>;
-  @useResult
-  $Res call(
-      {String caller,
-      String nonce,
-      String executeAfter,
-      String executeBefore,
-      String callsLen,
-      List<OutsideExecutionCallV1> calls});
-}
-
-/// @nodoc
-class _$OutsideExecutionMessageV1CopyWithImpl<$Res,
-        $Val extends OutsideExecutionMessageV1>
-    implements $OutsideExecutionMessageV1CopyWith<$Res> {
-  _$OutsideExecutionMessageV1CopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-
-  /// Create a copy of OutsideExecutionMessageV1
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
+  $OutsideExecutionMessageV1CopyWith<OutsideExecutionMessageV1> get copyWith =>
+      _$OutsideExecutionMessageV1CopyWithImpl<OutsideExecutionMessageV1>(
+          this as OutsideExecutionMessageV1, _$identity);
+
+  /// Serializes this OutsideExecutionMessageV1 to a JSON map.
+  Map<String, dynamic> toJson();
+
   @override
-  $Res call({
-    Object? caller = null,
-    Object? nonce = null,
-    Object? executeAfter = null,
-    Object? executeBefore = null,
-    Object? callsLen = null,
-    Object? calls = null,
-  }) {
-    return _then(_value.copyWith(
-      caller: null == caller
-          ? _value.caller
-          : caller // ignore: cast_nullable_to_non_nullable
-              as String,
-      nonce: null == nonce
-          ? _value.nonce
-          : nonce // ignore: cast_nullable_to_non_nullable
-              as String,
-      executeAfter: null == executeAfter
-          ? _value.executeAfter
-          : executeAfter // ignore: cast_nullable_to_non_nullable
-              as String,
-      executeBefore: null == executeBefore
-          ? _value.executeBefore
-          : executeBefore // ignore: cast_nullable_to_non_nullable
-              as String,
-      callsLen: null == callsLen
-          ? _value.callsLen
-          : callsLen // ignore: cast_nullable_to_non_nullable
-              as String,
-      calls: null == calls
-          ? _value.calls
-          : calls // ignore: cast_nullable_to_non_nullable
-              as List<OutsideExecutionCallV1>,
-    ) as $Val);
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is OutsideExecutionMessageV1 &&
+            (identical(other.caller, caller) || other.caller == caller) &&
+            (identical(other.nonce, nonce) || other.nonce == nonce) &&
+            (identical(other.executeAfter, executeAfter) ||
+                other.executeAfter == executeAfter) &&
+            (identical(other.executeBefore, executeBefore) ||
+                other.executeBefore == executeBefore) &&
+            (identical(other.callsLen, callsLen) ||
+                other.callsLen == callsLen) &&
+            const DeepCollectionEquality().equals(other.calls, calls));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(runtimeType, caller, nonce, executeAfter,
+      executeBefore, callsLen, const DeepCollectionEquality().hash(calls));
+
+  @override
+  String toString() {
+    return 'OutsideExecutionMessageV1(caller: $caller, nonce: $nonce, executeAfter: $executeAfter, executeBefore: $executeBefore, callsLen: $callsLen, calls: $calls)';
   }
 }
 
 /// @nodoc
-abstract class _$$OutsideExecutionMessageV1ImplCopyWith<$Res>
-    implements $OutsideExecutionMessageV1CopyWith<$Res> {
-  factory _$$OutsideExecutionMessageV1ImplCopyWith(
-          _$OutsideExecutionMessageV1Impl value,
-          $Res Function(_$OutsideExecutionMessageV1Impl) then) =
-      __$$OutsideExecutionMessageV1ImplCopyWithImpl<$Res>;
-  @override
+abstract mixin class $OutsideExecutionMessageV1CopyWith<$Res> {
+  factory $OutsideExecutionMessageV1CopyWith(OutsideExecutionMessageV1 value,
+          $Res Function(OutsideExecutionMessageV1) _then) =
+      _$OutsideExecutionMessageV1CopyWithImpl;
   @useResult
   $Res call(
       {String caller,
@@ -125,14 +75,12 @@ abstract class _$$OutsideExecutionMessageV1ImplCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$OutsideExecutionMessageV1ImplCopyWithImpl<$Res>
-    extends _$OutsideExecutionMessageV1CopyWithImpl<$Res,
-        _$OutsideExecutionMessageV1Impl>
-    implements _$$OutsideExecutionMessageV1ImplCopyWith<$Res> {
-  __$$OutsideExecutionMessageV1ImplCopyWithImpl(
-      _$OutsideExecutionMessageV1Impl _value,
-      $Res Function(_$OutsideExecutionMessageV1Impl) _then)
-      : super(_value, _then);
+class _$OutsideExecutionMessageV1CopyWithImpl<$Res>
+    implements $OutsideExecutionMessageV1CopyWith<$Res> {
+  _$OutsideExecutionMessageV1CopyWithImpl(this._self, this._then);
+
+  final OutsideExecutionMessageV1 _self;
+  final $Res Function(OutsideExecutionMessageV1) _then;
 
   /// Create a copy of OutsideExecutionMessageV1
   /// with the given fields replaced by the non-null parameter values.
@@ -146,39 +94,220 @@ class __$$OutsideExecutionMessageV1ImplCopyWithImpl<$Res>
     Object? callsLen = null,
     Object? calls = null,
   }) {
-    return _then(_$OutsideExecutionMessageV1Impl(
+    return _then(_self.copyWith(
       caller: null == caller
-          ? _value.caller
+          ? _self.caller
           : caller // ignore: cast_nullable_to_non_nullable
               as String,
       nonce: null == nonce
-          ? _value.nonce
+          ? _self.nonce
           : nonce // ignore: cast_nullable_to_non_nullable
               as String,
       executeAfter: null == executeAfter
-          ? _value.executeAfter
+          ? _self.executeAfter
           : executeAfter // ignore: cast_nullable_to_non_nullable
               as String,
       executeBefore: null == executeBefore
-          ? _value.executeBefore
+          ? _self.executeBefore
           : executeBefore // ignore: cast_nullable_to_non_nullable
               as String,
       callsLen: null == callsLen
-          ? _value.callsLen
+          ? _self.callsLen
           : callsLen // ignore: cast_nullable_to_non_nullable
               as String,
       calls: null == calls
-          ? _value._calls
+          ? _self.calls
           : calls // ignore: cast_nullable_to_non_nullable
               as List<OutsideExecutionCallV1>,
     ));
   }
 }
 
+/// Adds pattern-matching-related methods to [OutsideExecutionMessageV1].
+extension OutsideExecutionMessageV1Patterns on OutsideExecutionMessageV1 {
+  /// A variant of `map` that fallback to returning `orElse`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(_OutsideExecutionMessageV1 value)? $default, {
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _OutsideExecutionMessageV1() when $default != null:
+        return $default(_that);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// Callbacks receives the raw object, upcasted.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case final Subclass2 value:
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(_OutsideExecutionMessageV1 value) $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _OutsideExecutionMessageV1():
+        return $default(_that);
+      case _:
+        throw StateError('Unexpected subclass');
+    }
+  }
+
+  /// A variant of `map` that fallback to returning `null`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>(
+    TResult? Function(_OutsideExecutionMessageV1 value)? $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _OutsideExecutionMessageV1() when $default != null:
+        return $default(_that);
+      case _:
+        return null;
+    }
+  }
+
+  /// A variant of `when` that fallback to an `orElse` callback.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(
+            String caller,
+            String nonce,
+            String executeAfter,
+            String executeBefore,
+            String callsLen,
+            List<OutsideExecutionCallV1> calls)?
+        $default, {
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _OutsideExecutionMessageV1() when $default != null:
+        return $default(_that.caller, _that.nonce, _that.executeAfter,
+            _that.executeBefore, _that.callsLen, _that.calls);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// As opposed to `map`, this offers destructuring.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case Subclass2(:final field2):
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>(
+    TResult Function(
+            String caller,
+            String nonce,
+            String executeAfter,
+            String executeBefore,
+            String callsLen,
+            List<OutsideExecutionCallV1> calls)
+        $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _OutsideExecutionMessageV1():
+        return $default(_that.caller, _that.nonce, _that.executeAfter,
+            _that.executeBefore, _that.callsLen, _that.calls);
+      case _:
+        throw StateError('Unexpected subclass');
+    }
+  }
+
+  /// A variant of `when` that fallback to returning `null`
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>(
+    TResult? Function(
+            String caller,
+            String nonce,
+            String executeAfter,
+            String executeBefore,
+            String callsLen,
+            List<OutsideExecutionCallV1> calls)?
+        $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _OutsideExecutionMessageV1() when $default != null:
+        return $default(_that.caller, _that.nonce, _that.executeAfter,
+            _that.executeBefore, _that.callsLen, _that.calls);
+      case _:
+        return null;
+    }
+  }
+}
+
 /// @nodoc
 @JsonSerializable()
-class _$OutsideExecutionMessageV1Impl extends _OutsideExecutionMessageV1 {
-  const _$OutsideExecutionMessageV1Impl(
+class _OutsideExecutionMessageV1 extends OutsideExecutionMessageV1 {
+  const _OutsideExecutionMessageV1(
       {required this.caller,
       required this.nonce,
       required this.executeAfter,
@@ -187,9 +316,8 @@ class _$OutsideExecutionMessageV1Impl extends _OutsideExecutionMessageV1 {
       required final List<OutsideExecutionCallV1> calls})
       : _calls = calls,
         super._();
-
-  factory _$OutsideExecutionMessageV1Impl.fromJson(Map<String, dynamic> json) =>
-      _$$OutsideExecutionMessageV1ImplFromJson(json);
+  factory _OutsideExecutionMessageV1.fromJson(Map<String, dynamic> json) =>
+      _$OutsideExecutionMessageV1FromJson(json);
 
   @override
   final String caller;
@@ -211,16 +339,28 @@ class _$OutsideExecutionMessageV1Impl extends _OutsideExecutionMessageV1 {
     return EqualUnmodifiableListView(_calls);
   }
 
+  /// Create a copy of OutsideExecutionMessageV1
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  String toString() {
-    return 'OutsideExecutionMessageV1(caller: $caller, nonce: $nonce, executeAfter: $executeAfter, executeBefore: $executeBefore, callsLen: $callsLen, calls: $calls)';
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  _$OutsideExecutionMessageV1CopyWith<_OutsideExecutionMessageV1>
+      get copyWith =>
+          __$OutsideExecutionMessageV1CopyWithImpl<_OutsideExecutionMessageV1>(
+              this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$OutsideExecutionMessageV1ToJson(
+      this,
+    );
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$OutsideExecutionMessageV1Impl &&
+            other is _OutsideExecutionMessageV1 &&
             (identical(other.caller, caller) || other.caller == caller) &&
             (identical(other.nonce, nonce) || other.nonce == nonce) &&
             (identical(other.executeAfter, executeAfter) ||
@@ -237,155 +377,132 @@ class _$OutsideExecutionMessageV1Impl extends _OutsideExecutionMessageV1 {
   int get hashCode => Object.hash(runtimeType, caller, nonce, executeAfter,
       executeBefore, callsLen, const DeepCollectionEquality().hash(_calls));
 
-  /// Create a copy of OutsideExecutionMessageV1
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  @pragma('vm:prefer-inline')
-  _$$OutsideExecutionMessageV1ImplCopyWith<_$OutsideExecutionMessageV1Impl>
-      get copyWith => __$$OutsideExecutionMessageV1ImplCopyWithImpl<
-          _$OutsideExecutionMessageV1Impl>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$OutsideExecutionMessageV1ImplToJson(
-      this,
-    );
+  String toString() {
+    return 'OutsideExecutionMessageV1(caller: $caller, nonce: $nonce, executeAfter: $executeAfter, executeBefore: $executeBefore, callsLen: $callsLen, calls: $calls)';
   }
 }
 
-abstract class _OutsideExecutionMessageV1 extends OutsideExecutionMessageV1 {
-  const factory _OutsideExecutionMessageV1(
-          {required final String caller,
-          required final String nonce,
-          required final String executeAfter,
-          required final String executeBefore,
-          required final String callsLen,
-          required final List<OutsideExecutionCallV1> calls}) =
-      _$OutsideExecutionMessageV1Impl;
-  const _OutsideExecutionMessageV1._() : super._();
+/// @nodoc
+abstract mixin class _$OutsideExecutionMessageV1CopyWith<$Res>
+    implements $OutsideExecutionMessageV1CopyWith<$Res> {
+  factory _$OutsideExecutionMessageV1CopyWith(_OutsideExecutionMessageV1 value,
+          $Res Function(_OutsideExecutionMessageV1) _then) =
+      __$OutsideExecutionMessageV1CopyWithImpl;
+  @override
+  @useResult
+  $Res call(
+      {String caller,
+      String nonce,
+      String executeAfter,
+      String executeBefore,
+      String callsLen,
+      List<OutsideExecutionCallV1> calls});
+}
 
-  factory _OutsideExecutionMessageV1.fromJson(Map<String, dynamic> json) =
-      _$OutsideExecutionMessageV1Impl.fromJson;
+/// @nodoc
+class __$OutsideExecutionMessageV1CopyWithImpl<$Res>
+    implements _$OutsideExecutionMessageV1CopyWith<$Res> {
+  __$OutsideExecutionMessageV1CopyWithImpl(this._self, this._then);
 
-  @override
-  String get caller;
-  @override
-  String get nonce;
-  @override
-  String get executeAfter;
-  @override
-  String get executeBefore;
-  @override
-  String get callsLen; // required by SNIP-9
-  @override
-  List<OutsideExecutionCallV1> get calls;
+  final _OutsideExecutionMessageV1 _self;
+  final $Res Function(_OutsideExecutionMessageV1) _then;
 
   /// Create a copy of OutsideExecutionMessageV1
   /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$OutsideExecutionMessageV1ImplCopyWith<_$OutsideExecutionMessageV1Impl>
-      get copyWith => throw _privateConstructorUsedError;
-}
-
-OutsideExecutionMessageV2 _$OutsideExecutionMessageV2FromJson(
-    Map<String, dynamic> json) {
-  return _OutsideExecutionMessageV2.fromJson(json);
+  @pragma('vm:prefer-inline')
+  $Res call({
+    Object? caller = null,
+    Object? nonce = null,
+    Object? executeAfter = null,
+    Object? executeBefore = null,
+    Object? callsLen = null,
+    Object? calls = null,
+  }) {
+    return _then(_OutsideExecutionMessageV1(
+      caller: null == caller
+          ? _self.caller
+          : caller // ignore: cast_nullable_to_non_nullable
+              as String,
+      nonce: null == nonce
+          ? _self.nonce
+          : nonce // ignore: cast_nullable_to_non_nullable
+              as String,
+      executeAfter: null == executeAfter
+          ? _self.executeAfter
+          : executeAfter // ignore: cast_nullable_to_non_nullable
+              as String,
+      executeBefore: null == executeBefore
+          ? _self.executeBefore
+          : executeBefore // ignore: cast_nullable_to_non_nullable
+              as String,
+      callsLen: null == callsLen
+          ? _self.callsLen
+          : callsLen // ignore: cast_nullable_to_non_nullable
+              as String,
+      calls: null == calls
+          ? _self._calls
+          : calls // ignore: cast_nullable_to_non_nullable
+              as List<OutsideExecutionCallV1>,
+    ));
+  }
 }
 
 /// @nodoc
 mixin _$OutsideExecutionMessageV2 {
   @JsonKey(name: 'Caller')
-  String get caller => throw _privateConstructorUsedError;
+  String get caller;
   @JsonKey(name: 'Nonce')
-  String get nonce => throw _privateConstructorUsedError;
+  String get nonce;
   @JsonKey(name: 'Execute After')
-  String get executeAfter => throw _privateConstructorUsedError;
+  String get executeAfter;
   @JsonKey(name: 'Execute Before')
-  String get executeBefore => throw _privateConstructorUsedError;
+  String get executeBefore;
   @JsonKey(name: 'Calls')
-  List<OutsideExecutionCallV2> get calls => throw _privateConstructorUsedError;
-
-  /// Serializes this OutsideExecutionMessageV2 to a JSON map.
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  List<OutsideExecutionCallV2> get calls;
 
   /// Create a copy of OutsideExecutionMessageV2
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $OutsideExecutionMessageV2CopyWith<OutsideExecutionMessageV2> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $OutsideExecutionMessageV2CopyWith<$Res> {
-  factory $OutsideExecutionMessageV2CopyWith(OutsideExecutionMessageV2 value,
-          $Res Function(OutsideExecutionMessageV2) then) =
-      _$OutsideExecutionMessageV2CopyWithImpl<$Res, OutsideExecutionMessageV2>;
-  @useResult
-  $Res call(
-      {@JsonKey(name: 'Caller') String caller,
-      @JsonKey(name: 'Nonce') String nonce,
-      @JsonKey(name: 'Execute After') String executeAfter,
-      @JsonKey(name: 'Execute Before') String executeBefore,
-      @JsonKey(name: 'Calls') List<OutsideExecutionCallV2> calls});
-}
-
-/// @nodoc
-class _$OutsideExecutionMessageV2CopyWithImpl<$Res,
-        $Val extends OutsideExecutionMessageV2>
-    implements $OutsideExecutionMessageV2CopyWith<$Res> {
-  _$OutsideExecutionMessageV2CopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-
-  /// Create a copy of OutsideExecutionMessageV2
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
+  $OutsideExecutionMessageV2CopyWith<OutsideExecutionMessageV2> get copyWith =>
+      _$OutsideExecutionMessageV2CopyWithImpl<OutsideExecutionMessageV2>(
+          this as OutsideExecutionMessageV2, _$identity);
+
+  /// Serializes this OutsideExecutionMessageV2 to a JSON map.
+  Map<String, dynamic> toJson();
+
   @override
-  $Res call({
-    Object? caller = null,
-    Object? nonce = null,
-    Object? executeAfter = null,
-    Object? executeBefore = null,
-    Object? calls = null,
-  }) {
-    return _then(_value.copyWith(
-      caller: null == caller
-          ? _value.caller
-          : caller // ignore: cast_nullable_to_non_nullable
-              as String,
-      nonce: null == nonce
-          ? _value.nonce
-          : nonce // ignore: cast_nullable_to_non_nullable
-              as String,
-      executeAfter: null == executeAfter
-          ? _value.executeAfter
-          : executeAfter // ignore: cast_nullable_to_non_nullable
-              as String,
-      executeBefore: null == executeBefore
-          ? _value.executeBefore
-          : executeBefore // ignore: cast_nullable_to_non_nullable
-              as String,
-      calls: null == calls
-          ? _value.calls
-          : calls // ignore: cast_nullable_to_non_nullable
-              as List<OutsideExecutionCallV2>,
-    ) as $Val);
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is OutsideExecutionMessageV2 &&
+            (identical(other.caller, caller) || other.caller == caller) &&
+            (identical(other.nonce, nonce) || other.nonce == nonce) &&
+            (identical(other.executeAfter, executeAfter) ||
+                other.executeAfter == executeAfter) &&
+            (identical(other.executeBefore, executeBefore) ||
+                other.executeBefore == executeBefore) &&
+            const DeepCollectionEquality().equals(other.calls, calls));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(runtimeType, caller, nonce, executeAfter,
+      executeBefore, const DeepCollectionEquality().hash(calls));
+
+  @override
+  String toString() {
+    return 'OutsideExecutionMessageV2(caller: $caller, nonce: $nonce, executeAfter: $executeAfter, executeBefore: $executeBefore, calls: $calls)';
   }
 }
 
 /// @nodoc
-abstract class _$$OutsideExecutionMessageV2ImplCopyWith<$Res>
-    implements $OutsideExecutionMessageV2CopyWith<$Res> {
-  factory _$$OutsideExecutionMessageV2ImplCopyWith(
-          _$OutsideExecutionMessageV2Impl value,
-          $Res Function(_$OutsideExecutionMessageV2Impl) then) =
-      __$$OutsideExecutionMessageV2ImplCopyWithImpl<$Res>;
-  @override
+abstract mixin class $OutsideExecutionMessageV2CopyWith<$Res> {
+  factory $OutsideExecutionMessageV2CopyWith(OutsideExecutionMessageV2 value,
+          $Res Function(OutsideExecutionMessageV2) _then) =
+      _$OutsideExecutionMessageV2CopyWithImpl;
   @useResult
   $Res call(
       {@JsonKey(name: 'Caller') String caller,
@@ -396,14 +513,12 @@ abstract class _$$OutsideExecutionMessageV2ImplCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$OutsideExecutionMessageV2ImplCopyWithImpl<$Res>
-    extends _$OutsideExecutionMessageV2CopyWithImpl<$Res,
-        _$OutsideExecutionMessageV2Impl>
-    implements _$$OutsideExecutionMessageV2ImplCopyWith<$Res> {
-  __$$OutsideExecutionMessageV2ImplCopyWithImpl(
-      _$OutsideExecutionMessageV2Impl _value,
-      $Res Function(_$OutsideExecutionMessageV2Impl) _then)
-      : super(_value, _then);
+class _$OutsideExecutionMessageV2CopyWithImpl<$Res>
+    implements $OutsideExecutionMessageV2CopyWith<$Res> {
+  _$OutsideExecutionMessageV2CopyWithImpl(this._self, this._then);
+
+  final OutsideExecutionMessageV2 _self;
+  final $Res Function(OutsideExecutionMessageV2) _then;
 
   /// Create a copy of OutsideExecutionMessageV2
   /// with the given fields replaced by the non-null parameter values.
@@ -416,35 +531,213 @@ class __$$OutsideExecutionMessageV2ImplCopyWithImpl<$Res>
     Object? executeBefore = null,
     Object? calls = null,
   }) {
-    return _then(_$OutsideExecutionMessageV2Impl(
+    return _then(_self.copyWith(
       caller: null == caller
-          ? _value.caller
+          ? _self.caller
           : caller // ignore: cast_nullable_to_non_nullable
               as String,
       nonce: null == nonce
-          ? _value.nonce
+          ? _self.nonce
           : nonce // ignore: cast_nullable_to_non_nullable
               as String,
       executeAfter: null == executeAfter
-          ? _value.executeAfter
+          ? _self.executeAfter
           : executeAfter // ignore: cast_nullable_to_non_nullable
               as String,
       executeBefore: null == executeBefore
-          ? _value.executeBefore
+          ? _self.executeBefore
           : executeBefore // ignore: cast_nullable_to_non_nullable
               as String,
       calls: null == calls
-          ? _value._calls
+          ? _self.calls
           : calls // ignore: cast_nullable_to_non_nullable
               as List<OutsideExecutionCallV2>,
     ));
   }
 }
 
+/// Adds pattern-matching-related methods to [OutsideExecutionMessageV2].
+extension OutsideExecutionMessageV2Patterns on OutsideExecutionMessageV2 {
+  /// A variant of `map` that fallback to returning `orElse`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(_OutsideExecutionMessageV2 value)? $default, {
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _OutsideExecutionMessageV2() when $default != null:
+        return $default(_that);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// Callbacks receives the raw object, upcasted.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case final Subclass2 value:
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(_OutsideExecutionMessageV2 value) $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _OutsideExecutionMessageV2():
+        return $default(_that);
+      case _:
+        throw StateError('Unexpected subclass');
+    }
+  }
+
+  /// A variant of `map` that fallback to returning `null`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>(
+    TResult? Function(_OutsideExecutionMessageV2 value)? $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _OutsideExecutionMessageV2() when $default != null:
+        return $default(_that);
+      case _:
+        return null;
+    }
+  }
+
+  /// A variant of `when` that fallback to an `orElse` callback.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(
+            @JsonKey(name: 'Caller') String caller,
+            @JsonKey(name: 'Nonce') String nonce,
+            @JsonKey(name: 'Execute After') String executeAfter,
+            @JsonKey(name: 'Execute Before') String executeBefore,
+            @JsonKey(name: 'Calls') List<OutsideExecutionCallV2> calls)?
+        $default, {
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _OutsideExecutionMessageV2() when $default != null:
+        return $default(_that.caller, _that.nonce, _that.executeAfter,
+            _that.executeBefore, _that.calls);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// As opposed to `map`, this offers destructuring.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case Subclass2(:final field2):
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>(
+    TResult Function(
+            @JsonKey(name: 'Caller') String caller,
+            @JsonKey(name: 'Nonce') String nonce,
+            @JsonKey(name: 'Execute After') String executeAfter,
+            @JsonKey(name: 'Execute Before') String executeBefore,
+            @JsonKey(name: 'Calls') List<OutsideExecutionCallV2> calls)
+        $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _OutsideExecutionMessageV2():
+        return $default(_that.caller, _that.nonce, _that.executeAfter,
+            _that.executeBefore, _that.calls);
+      case _:
+        throw StateError('Unexpected subclass');
+    }
+  }
+
+  /// A variant of `when` that fallback to returning `null`
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>(
+    TResult? Function(
+            @JsonKey(name: 'Caller') String caller,
+            @JsonKey(name: 'Nonce') String nonce,
+            @JsonKey(name: 'Execute After') String executeAfter,
+            @JsonKey(name: 'Execute Before') String executeBefore,
+            @JsonKey(name: 'Calls') List<OutsideExecutionCallV2> calls)?
+        $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _OutsideExecutionMessageV2() when $default != null:
+        return $default(_that.caller, _that.nonce, _that.executeAfter,
+            _that.executeBefore, _that.calls);
+      case _:
+        return null;
+    }
+  }
+}
+
 /// @nodoc
 @JsonSerializable()
-class _$OutsideExecutionMessageV2Impl extends _OutsideExecutionMessageV2 {
-  const _$OutsideExecutionMessageV2Impl(
+class _OutsideExecutionMessageV2 extends OutsideExecutionMessageV2 {
+  const _OutsideExecutionMessageV2(
       {@JsonKey(name: 'Caller') required this.caller,
       @JsonKey(name: 'Nonce') required this.nonce,
       @JsonKey(name: 'Execute After') required this.executeAfter,
@@ -453,9 +746,8 @@ class _$OutsideExecutionMessageV2Impl extends _OutsideExecutionMessageV2 {
       required final List<OutsideExecutionCallV2> calls})
       : _calls = calls,
         super._();
-
-  factory _$OutsideExecutionMessageV2Impl.fromJson(Map<String, dynamic> json) =>
-      _$$OutsideExecutionMessageV2ImplFromJson(json);
+  factory _OutsideExecutionMessageV2.fromJson(Map<String, dynamic> json) =>
+      _$OutsideExecutionMessageV2FromJson(json);
 
   @override
   @JsonKey(name: 'Caller')
@@ -478,16 +770,28 @@ class _$OutsideExecutionMessageV2Impl extends _OutsideExecutionMessageV2 {
     return EqualUnmodifiableListView(_calls);
   }
 
+  /// Create a copy of OutsideExecutionMessageV2
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  String toString() {
-    return 'OutsideExecutionMessageV2(caller: $caller, nonce: $nonce, executeAfter: $executeAfter, executeBefore: $executeBefore, calls: $calls)';
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  _$OutsideExecutionMessageV2CopyWith<_OutsideExecutionMessageV2>
+      get copyWith =>
+          __$OutsideExecutionMessageV2CopyWithImpl<_OutsideExecutionMessageV2>(
+              this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$OutsideExecutionMessageV2ToJson(
+      this,
+    );
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$OutsideExecutionMessageV2Impl &&
+            other is _OutsideExecutionMessageV2 &&
             (identical(other.caller, caller) || other.caller == caller) &&
             (identical(other.nonce, nonce) || other.nonce == nonce) &&
             (identical(other.executeAfter, executeAfter) ||
@@ -502,147 +806,120 @@ class _$OutsideExecutionMessageV2Impl extends _OutsideExecutionMessageV2 {
   int get hashCode => Object.hash(runtimeType, caller, nonce, executeAfter,
       executeBefore, const DeepCollectionEquality().hash(_calls));
 
-  /// Create a copy of OutsideExecutionMessageV2
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  @pragma('vm:prefer-inline')
-  _$$OutsideExecutionMessageV2ImplCopyWith<_$OutsideExecutionMessageV2Impl>
-      get copyWith => __$$OutsideExecutionMessageV2ImplCopyWithImpl<
-          _$OutsideExecutionMessageV2Impl>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$OutsideExecutionMessageV2ImplToJson(
-      this,
-    );
+  String toString() {
+    return 'OutsideExecutionMessageV2(caller: $caller, nonce: $nonce, executeAfter: $executeAfter, executeBefore: $executeBefore, calls: $calls)';
   }
 }
 
-abstract class _OutsideExecutionMessageV2 extends OutsideExecutionMessageV2 {
-  const factory _OutsideExecutionMessageV2(
-          {@JsonKey(name: 'Caller') required final String caller,
-          @JsonKey(name: 'Nonce') required final String nonce,
-          @JsonKey(name: 'Execute After') required final String executeAfter,
-          @JsonKey(name: 'Execute Before') required final String executeBefore,
-          @JsonKey(name: 'Calls')
-          required final List<OutsideExecutionCallV2> calls}) =
-      _$OutsideExecutionMessageV2Impl;
-  const _OutsideExecutionMessageV2._() : super._();
+/// @nodoc
+abstract mixin class _$OutsideExecutionMessageV2CopyWith<$Res>
+    implements $OutsideExecutionMessageV2CopyWith<$Res> {
+  factory _$OutsideExecutionMessageV2CopyWith(_OutsideExecutionMessageV2 value,
+          $Res Function(_OutsideExecutionMessageV2) _then) =
+      __$OutsideExecutionMessageV2CopyWithImpl;
+  @override
+  @useResult
+  $Res call(
+      {@JsonKey(name: 'Caller') String caller,
+      @JsonKey(name: 'Nonce') String nonce,
+      @JsonKey(name: 'Execute After') String executeAfter,
+      @JsonKey(name: 'Execute Before') String executeBefore,
+      @JsonKey(name: 'Calls') List<OutsideExecutionCallV2> calls});
+}
 
-  factory _OutsideExecutionMessageV2.fromJson(Map<String, dynamic> json) =
-      _$OutsideExecutionMessageV2Impl.fromJson;
+/// @nodoc
+class __$OutsideExecutionMessageV2CopyWithImpl<$Res>
+    implements _$OutsideExecutionMessageV2CopyWith<$Res> {
+  __$OutsideExecutionMessageV2CopyWithImpl(this._self, this._then);
 
-  @override
-  @JsonKey(name: 'Caller')
-  String get caller;
-  @override
-  @JsonKey(name: 'Nonce')
-  String get nonce;
-  @override
-  @JsonKey(name: 'Execute After')
-  String get executeAfter;
-  @override
-  @JsonKey(name: 'Execute Before')
-  String get executeBefore;
-  @override
-  @JsonKey(name: 'Calls')
-  List<OutsideExecutionCallV2> get calls;
+  final _OutsideExecutionMessageV2 _self;
+  final $Res Function(_OutsideExecutionMessageV2) _then;
 
   /// Create a copy of OutsideExecutionMessageV2
   /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$OutsideExecutionMessageV2ImplCopyWith<_$OutsideExecutionMessageV2Impl>
-      get copyWith => throw _privateConstructorUsedError;
-}
-
-OutsideExecutionCallV1 _$OutsideExecutionCallV1FromJson(
-    Map<String, dynamic> json) {
-  return _OutsideExecutionCallV1.fromJson(json);
+  @pragma('vm:prefer-inline')
+  $Res call({
+    Object? caller = null,
+    Object? nonce = null,
+    Object? executeAfter = null,
+    Object? executeBefore = null,
+    Object? calls = null,
+  }) {
+    return _then(_OutsideExecutionMessageV2(
+      caller: null == caller
+          ? _self.caller
+          : caller // ignore: cast_nullable_to_non_nullable
+              as String,
+      nonce: null == nonce
+          ? _self.nonce
+          : nonce // ignore: cast_nullable_to_non_nullable
+              as String,
+      executeAfter: null == executeAfter
+          ? _self.executeAfter
+          : executeAfter // ignore: cast_nullable_to_non_nullable
+              as String,
+      executeBefore: null == executeBefore
+          ? _self.executeBefore
+          : executeBefore // ignore: cast_nullable_to_non_nullable
+              as String,
+      calls: null == calls
+          ? _self._calls
+          : calls // ignore: cast_nullable_to_non_nullable
+              as List<OutsideExecutionCallV2>,
+    ));
+  }
 }
 
 /// @nodoc
 mixin _$OutsideExecutionCallV1 {
-  String get to => throw _privateConstructorUsedError;
-  String get selector => throw _privateConstructorUsedError;
+  String get to;
+  String get selector;
   @JsonKey(name: 'calldata_len')
-  int get calldataLen => throw _privateConstructorUsedError;
-  List<String> get calldata => throw _privateConstructorUsedError;
-
-  /// Serializes this OutsideExecutionCallV1 to a JSON map.
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  int get calldataLen;
+  List<String> get calldata;
 
   /// Create a copy of OutsideExecutionCallV1
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $OutsideExecutionCallV1CopyWith<OutsideExecutionCallV1> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $OutsideExecutionCallV1CopyWith<$Res> {
-  factory $OutsideExecutionCallV1CopyWith(OutsideExecutionCallV1 value,
-          $Res Function(OutsideExecutionCallV1) then) =
-      _$OutsideExecutionCallV1CopyWithImpl<$Res, OutsideExecutionCallV1>;
-  @useResult
-  $Res call(
-      {String to,
-      String selector,
-      @JsonKey(name: 'calldata_len') int calldataLen,
-      List<String> calldata});
-}
-
-/// @nodoc
-class _$OutsideExecutionCallV1CopyWithImpl<$Res,
-        $Val extends OutsideExecutionCallV1>
-    implements $OutsideExecutionCallV1CopyWith<$Res> {
-  _$OutsideExecutionCallV1CopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-
-  /// Create a copy of OutsideExecutionCallV1
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
+  $OutsideExecutionCallV1CopyWith<OutsideExecutionCallV1> get copyWith =>
+      _$OutsideExecutionCallV1CopyWithImpl<OutsideExecutionCallV1>(
+          this as OutsideExecutionCallV1, _$identity);
+
+  /// Serializes this OutsideExecutionCallV1 to a JSON map.
+  Map<String, dynamic> toJson();
+
   @override
-  $Res call({
-    Object? to = null,
-    Object? selector = null,
-    Object? calldataLen = null,
-    Object? calldata = null,
-  }) {
-    return _then(_value.copyWith(
-      to: null == to
-          ? _value.to
-          : to // ignore: cast_nullable_to_non_nullable
-              as String,
-      selector: null == selector
-          ? _value.selector
-          : selector // ignore: cast_nullable_to_non_nullable
-              as String,
-      calldataLen: null == calldataLen
-          ? _value.calldataLen
-          : calldataLen // ignore: cast_nullable_to_non_nullable
-              as int,
-      calldata: null == calldata
-          ? _value.calldata
-          : calldata // ignore: cast_nullable_to_non_nullable
-              as List<String>,
-    ) as $Val);
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is OutsideExecutionCallV1 &&
+            (identical(other.to, to) || other.to == to) &&
+            (identical(other.selector, selector) ||
+                other.selector == selector) &&
+            (identical(other.calldataLen, calldataLen) ||
+                other.calldataLen == calldataLen) &&
+            const DeepCollectionEquality().equals(other.calldata, calldata));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(runtimeType, to, selector, calldataLen,
+      const DeepCollectionEquality().hash(calldata));
+
+  @override
+  String toString() {
+    return 'OutsideExecutionCallV1(to: $to, selector: $selector, calldataLen: $calldataLen, calldata: $calldata)';
   }
 }
 
 /// @nodoc
-abstract class _$$OutsideExecutionCallV1ImplCopyWith<$Res>
-    implements $OutsideExecutionCallV1CopyWith<$Res> {
-  factory _$$OutsideExecutionCallV1ImplCopyWith(
-          _$OutsideExecutionCallV1Impl value,
-          $Res Function(_$OutsideExecutionCallV1Impl) then) =
-      __$$OutsideExecutionCallV1ImplCopyWithImpl<$Res>;
-  @override
+abstract mixin class $OutsideExecutionCallV1CopyWith<$Res> {
+  factory $OutsideExecutionCallV1CopyWith(OutsideExecutionCallV1 value,
+          $Res Function(OutsideExecutionCallV1) _then) =
+      _$OutsideExecutionCallV1CopyWithImpl;
   @useResult
   $Res call(
       {String to,
@@ -652,14 +929,12 @@ abstract class _$$OutsideExecutionCallV1ImplCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$OutsideExecutionCallV1ImplCopyWithImpl<$Res>
-    extends _$OutsideExecutionCallV1CopyWithImpl<$Res,
-        _$OutsideExecutionCallV1Impl>
-    implements _$$OutsideExecutionCallV1ImplCopyWith<$Res> {
-  __$$OutsideExecutionCallV1ImplCopyWithImpl(
-      _$OutsideExecutionCallV1Impl _value,
-      $Res Function(_$OutsideExecutionCallV1Impl) _then)
-      : super(_value, _then);
+class _$OutsideExecutionCallV1CopyWithImpl<$Res>
+    implements $OutsideExecutionCallV1CopyWith<$Res> {
+  _$OutsideExecutionCallV1CopyWithImpl(this._self, this._then);
+
+  final OutsideExecutionCallV1 _self;
+  final $Res Function(OutsideExecutionCallV1) _then;
 
   /// Create a copy of OutsideExecutionCallV1
   /// with the given fields replaced by the non-null parameter values.
@@ -671,40 +946,214 @@ class __$$OutsideExecutionCallV1ImplCopyWithImpl<$Res>
     Object? calldataLen = null,
     Object? calldata = null,
   }) {
-    return _then(_$OutsideExecutionCallV1Impl(
+    return _then(_self.copyWith(
       to: null == to
-          ? _value.to
+          ? _self.to
           : to // ignore: cast_nullable_to_non_nullable
               as String,
       selector: null == selector
-          ? _value.selector
+          ? _self.selector
           : selector // ignore: cast_nullable_to_non_nullable
               as String,
       calldataLen: null == calldataLen
-          ? _value.calldataLen
+          ? _self.calldataLen
           : calldataLen // ignore: cast_nullable_to_non_nullable
               as int,
       calldata: null == calldata
-          ? _value._calldata
+          ? _self.calldata
           : calldata // ignore: cast_nullable_to_non_nullable
               as List<String>,
     ));
   }
 }
 
+/// Adds pattern-matching-related methods to [OutsideExecutionCallV1].
+extension OutsideExecutionCallV1Patterns on OutsideExecutionCallV1 {
+  /// A variant of `map` that fallback to returning `orElse`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(_OutsideExecutionCallV1 value)? $default, {
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _OutsideExecutionCallV1() when $default != null:
+        return $default(_that);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// Callbacks receives the raw object, upcasted.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case final Subclass2 value:
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(_OutsideExecutionCallV1 value) $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _OutsideExecutionCallV1():
+        return $default(_that);
+      case _:
+        throw StateError('Unexpected subclass');
+    }
+  }
+
+  /// A variant of `map` that fallback to returning `null`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>(
+    TResult? Function(_OutsideExecutionCallV1 value)? $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _OutsideExecutionCallV1() when $default != null:
+        return $default(_that);
+      case _:
+        return null;
+    }
+  }
+
+  /// A variant of `when` that fallback to an `orElse` callback.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(
+            String to,
+            String selector,
+            @JsonKey(name: 'calldata_len') int calldataLen,
+            List<String> calldata)?
+        $default, {
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _OutsideExecutionCallV1() when $default != null:
+        return $default(
+            _that.to, _that.selector, _that.calldataLen, _that.calldata);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// As opposed to `map`, this offers destructuring.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case Subclass2(:final field2):
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>(
+    TResult Function(
+            String to,
+            String selector,
+            @JsonKey(name: 'calldata_len') int calldataLen,
+            List<String> calldata)
+        $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _OutsideExecutionCallV1():
+        return $default(
+            _that.to, _that.selector, _that.calldataLen, _that.calldata);
+      case _:
+        throw StateError('Unexpected subclass');
+    }
+  }
+
+  /// A variant of `when` that fallback to returning `null`
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>(
+    TResult? Function(
+            String to,
+            String selector,
+            @JsonKey(name: 'calldata_len') int calldataLen,
+            List<String> calldata)?
+        $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _OutsideExecutionCallV1() when $default != null:
+        return $default(
+            _that.to, _that.selector, _that.calldataLen, _that.calldata);
+      case _:
+        return null;
+    }
+  }
+}
+
 /// @nodoc
 @JsonSerializable()
-class _$OutsideExecutionCallV1Impl extends _OutsideExecutionCallV1 {
-  const _$OutsideExecutionCallV1Impl(
+class _OutsideExecutionCallV1 extends OutsideExecutionCallV1 {
+  const _OutsideExecutionCallV1(
       {required this.to,
       required this.selector,
       @JsonKey(name: 'calldata_len') required this.calldataLen,
       required final List<String> calldata})
       : _calldata = calldata,
         super._();
-
-  factory _$OutsideExecutionCallV1Impl.fromJson(Map<String, dynamic> json) =>
-      _$$OutsideExecutionCallV1ImplFromJson(json);
+  factory _OutsideExecutionCallV1.fromJson(Map<String, dynamic> json) =>
+      _$OutsideExecutionCallV1FromJson(json);
 
   @override
   final String to;
@@ -721,16 +1170,27 @@ class _$OutsideExecutionCallV1Impl extends _OutsideExecutionCallV1 {
     return EqualUnmodifiableListView(_calldata);
   }
 
+  /// Create a copy of OutsideExecutionCallV1
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  String toString() {
-    return 'OutsideExecutionCallV1(to: $to, selector: $selector, calldataLen: $calldataLen, calldata: $calldata)';
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  _$OutsideExecutionCallV1CopyWith<_OutsideExecutionCallV1> get copyWith =>
+      __$OutsideExecutionCallV1CopyWithImpl<_OutsideExecutionCallV1>(
+          this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$OutsideExecutionCallV1ToJson(
+      this,
+    );
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$OutsideExecutionCallV1Impl &&
+            other is _OutsideExecutionCallV1 &&
             (identical(other.to, to) || other.to == to) &&
             (identical(other.selector, selector) ||
                 other.selector == selector) &&
@@ -744,170 +1204,60 @@ class _$OutsideExecutionCallV1Impl extends _OutsideExecutionCallV1 {
   int get hashCode => Object.hash(runtimeType, to, selector, calldataLen,
       const DeepCollectionEquality().hash(_calldata));
 
-  /// Create a copy of OutsideExecutionCallV1
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  @pragma('vm:prefer-inline')
-  _$$OutsideExecutionCallV1ImplCopyWith<_$OutsideExecutionCallV1Impl>
-      get copyWith => __$$OutsideExecutionCallV1ImplCopyWithImpl<
-          _$OutsideExecutionCallV1Impl>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$OutsideExecutionCallV1ImplToJson(
-      this,
-    );
-  }
-}
-
-abstract class _OutsideExecutionCallV1 extends OutsideExecutionCallV1 {
-  const factory _OutsideExecutionCallV1(
-      {required final String to,
-      required final String selector,
-      @JsonKey(name: 'calldata_len') required final int calldataLen,
-      required final List<String> calldata}) = _$OutsideExecutionCallV1Impl;
-  const _OutsideExecutionCallV1._() : super._();
-
-  factory _OutsideExecutionCallV1.fromJson(Map<String, dynamic> json) =
-      _$OutsideExecutionCallV1Impl.fromJson;
-
-  @override
-  String get to;
-  @override
-  String get selector;
-  @override
-  @JsonKey(name: 'calldata_len')
-  int get calldataLen;
-  @override
-  List<String> get calldata;
-
-  /// Create a copy of OutsideExecutionCallV1
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$OutsideExecutionCallV1ImplCopyWith<_$OutsideExecutionCallV1Impl>
-      get copyWith => throw _privateConstructorUsedError;
-}
-
-OutsideExecutionCallV2 _$OutsideExecutionCallV2FromJson(
-    Map<String, dynamic> json) {
-  return _OutsideExecutionCallV2.fromJson(json);
-}
-
-/// @nodoc
-mixin _$OutsideExecutionCallV2 {
-  @JsonKey(name: 'To')
-  String get to => throw _privateConstructorUsedError;
-  @JsonKey(name: 'Selector')
-  String get selector => throw _privateConstructorUsedError;
-  @JsonKey(name: 'Calldata')
-  List<String> get calldata => throw _privateConstructorUsedError;
-
-  /// Serializes this OutsideExecutionCallV2 to a JSON map.
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-
-  /// Create a copy of OutsideExecutionCallV2
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  $OutsideExecutionCallV2CopyWith<OutsideExecutionCallV2> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $OutsideExecutionCallV2CopyWith<$Res> {
-  factory $OutsideExecutionCallV2CopyWith(OutsideExecutionCallV2 value,
-          $Res Function(OutsideExecutionCallV2) then) =
-      _$OutsideExecutionCallV2CopyWithImpl<$Res, OutsideExecutionCallV2>;
-  @useResult
-  $Res call(
-      {@JsonKey(name: 'To') String to,
-      @JsonKey(name: 'Selector') String selector,
-      @JsonKey(name: 'Calldata') List<String> calldata});
-}
-
-/// @nodoc
-class _$OutsideExecutionCallV2CopyWithImpl<$Res,
-        $Val extends OutsideExecutionCallV2>
-    implements $OutsideExecutionCallV2CopyWith<$Res> {
-  _$OutsideExecutionCallV2CopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-
-  /// Create a copy of OutsideExecutionCallV2
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? to = null,
-    Object? selector = null,
-    Object? calldata = null,
-  }) {
-    return _then(_value.copyWith(
-      to: null == to
-          ? _value.to
-          : to // ignore: cast_nullable_to_non_nullable
-              as String,
-      selector: null == selector
-          ? _value.selector
-          : selector // ignore: cast_nullable_to_non_nullable
-              as String,
-      calldata: null == calldata
-          ? _value.calldata
-          : calldata // ignore: cast_nullable_to_non_nullable
-              as List<String>,
-    ) as $Val);
+  String toString() {
+    return 'OutsideExecutionCallV1(to: $to, selector: $selector, calldataLen: $calldataLen, calldata: $calldata)';
   }
 }
 
 /// @nodoc
-abstract class _$$OutsideExecutionCallV2ImplCopyWith<$Res>
-    implements $OutsideExecutionCallV2CopyWith<$Res> {
-  factory _$$OutsideExecutionCallV2ImplCopyWith(
-          _$OutsideExecutionCallV2Impl value,
-          $Res Function(_$OutsideExecutionCallV2Impl) then) =
-      __$$OutsideExecutionCallV2ImplCopyWithImpl<$Res>;
+abstract mixin class _$OutsideExecutionCallV1CopyWith<$Res>
+    implements $OutsideExecutionCallV1CopyWith<$Res> {
+  factory _$OutsideExecutionCallV1CopyWith(_OutsideExecutionCallV1 value,
+          $Res Function(_OutsideExecutionCallV1) _then) =
+      __$OutsideExecutionCallV1CopyWithImpl;
   @override
   @useResult
   $Res call(
-      {@JsonKey(name: 'To') String to,
-      @JsonKey(name: 'Selector') String selector,
-      @JsonKey(name: 'Calldata') List<String> calldata});
+      {String to,
+      String selector,
+      @JsonKey(name: 'calldata_len') int calldataLen,
+      List<String> calldata});
 }
 
 /// @nodoc
-class __$$OutsideExecutionCallV2ImplCopyWithImpl<$Res>
-    extends _$OutsideExecutionCallV2CopyWithImpl<$Res,
-        _$OutsideExecutionCallV2Impl>
-    implements _$$OutsideExecutionCallV2ImplCopyWith<$Res> {
-  __$$OutsideExecutionCallV2ImplCopyWithImpl(
-      _$OutsideExecutionCallV2Impl _value,
-      $Res Function(_$OutsideExecutionCallV2Impl) _then)
-      : super(_value, _then);
+class __$OutsideExecutionCallV1CopyWithImpl<$Res>
+    implements _$OutsideExecutionCallV1CopyWith<$Res> {
+  __$OutsideExecutionCallV1CopyWithImpl(this._self, this._then);
 
-  /// Create a copy of OutsideExecutionCallV2
+  final _OutsideExecutionCallV1 _self;
+  final $Res Function(_OutsideExecutionCallV1) _then;
+
+  /// Create a copy of OutsideExecutionCallV1
   /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
   @override
+  @pragma('vm:prefer-inline')
   $Res call({
     Object? to = null,
     Object? selector = null,
+    Object? calldataLen = null,
     Object? calldata = null,
   }) {
-    return _then(_$OutsideExecutionCallV2Impl(
+    return _then(_OutsideExecutionCallV1(
       to: null == to
-          ? _value.to
+          ? _self.to
           : to // ignore: cast_nullable_to_non_nullable
               as String,
       selector: null == selector
-          ? _value.selector
+          ? _self.selector
           : selector // ignore: cast_nullable_to_non_nullable
               as String,
+      calldataLen: null == calldataLen
+          ? _self.calldataLen
+          : calldataLen // ignore: cast_nullable_to_non_nullable
+              as int,
       calldata: null == calldata
-          ? _value._calldata
+          ? _self._calldata
           : calldata // ignore: cast_nullable_to_non_nullable
               as List<String>,
     ));
@@ -915,17 +1265,273 @@ class __$$OutsideExecutionCallV2ImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
+mixin _$OutsideExecutionCallV2 {
+  @JsonKey(name: 'To')
+  String get to;
+  @JsonKey(name: 'Selector')
+  String get selector;
+  @JsonKey(name: 'Calldata')
+  List<String> get calldata;
+
+  /// Create a copy of OutsideExecutionCallV2
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  $OutsideExecutionCallV2CopyWith<OutsideExecutionCallV2> get copyWith =>
+      _$OutsideExecutionCallV2CopyWithImpl<OutsideExecutionCallV2>(
+          this as OutsideExecutionCallV2, _$identity);
+
+  /// Serializes this OutsideExecutionCallV2 to a JSON map.
+  Map<String, dynamic> toJson();
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is OutsideExecutionCallV2 &&
+            (identical(other.to, to) || other.to == to) &&
+            (identical(other.selector, selector) ||
+                other.selector == selector) &&
+            const DeepCollectionEquality().equals(other.calldata, calldata));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(
+      runtimeType, to, selector, const DeepCollectionEquality().hash(calldata));
+
+  @override
+  String toString() {
+    return 'OutsideExecutionCallV2(to: $to, selector: $selector, calldata: $calldata)';
+  }
+}
+
+/// @nodoc
+abstract mixin class $OutsideExecutionCallV2CopyWith<$Res> {
+  factory $OutsideExecutionCallV2CopyWith(OutsideExecutionCallV2 value,
+          $Res Function(OutsideExecutionCallV2) _then) =
+      _$OutsideExecutionCallV2CopyWithImpl;
+  @useResult
+  $Res call(
+      {@JsonKey(name: 'To') String to,
+      @JsonKey(name: 'Selector') String selector,
+      @JsonKey(name: 'Calldata') List<String> calldata});
+}
+
+/// @nodoc
+class _$OutsideExecutionCallV2CopyWithImpl<$Res>
+    implements $OutsideExecutionCallV2CopyWith<$Res> {
+  _$OutsideExecutionCallV2CopyWithImpl(this._self, this._then);
+
+  final OutsideExecutionCallV2 _self;
+  final $Res Function(OutsideExecutionCallV2) _then;
+
+  /// Create a copy of OutsideExecutionCallV2
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? to = null,
+    Object? selector = null,
+    Object? calldata = null,
+  }) {
+    return _then(_self.copyWith(
+      to: null == to
+          ? _self.to
+          : to // ignore: cast_nullable_to_non_nullable
+              as String,
+      selector: null == selector
+          ? _self.selector
+          : selector // ignore: cast_nullable_to_non_nullable
+              as String,
+      calldata: null == calldata
+          ? _self.calldata
+          : calldata // ignore: cast_nullable_to_non_nullable
+              as List<String>,
+    ));
+  }
+}
+
+/// Adds pattern-matching-related methods to [OutsideExecutionCallV2].
+extension OutsideExecutionCallV2Patterns on OutsideExecutionCallV2 {
+  /// A variant of `map` that fallback to returning `orElse`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(_OutsideExecutionCallV2 value)? $default, {
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _OutsideExecutionCallV2() when $default != null:
+        return $default(_that);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// Callbacks receives the raw object, upcasted.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case final Subclass2 value:
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(_OutsideExecutionCallV2 value) $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _OutsideExecutionCallV2():
+        return $default(_that);
+      case _:
+        throw StateError('Unexpected subclass');
+    }
+  }
+
+  /// A variant of `map` that fallback to returning `null`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>(
+    TResult? Function(_OutsideExecutionCallV2 value)? $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _OutsideExecutionCallV2() when $default != null:
+        return $default(_that);
+      case _:
+        return null;
+    }
+  }
+
+  /// A variant of `when` that fallback to an `orElse` callback.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(
+            @JsonKey(name: 'To') String to,
+            @JsonKey(name: 'Selector') String selector,
+            @JsonKey(name: 'Calldata') List<String> calldata)?
+        $default, {
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _OutsideExecutionCallV2() when $default != null:
+        return $default(_that.to, _that.selector, _that.calldata);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// As opposed to `map`, this offers destructuring.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case Subclass2(:final field2):
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>(
+    TResult Function(
+            @JsonKey(name: 'To') String to,
+            @JsonKey(name: 'Selector') String selector,
+            @JsonKey(name: 'Calldata') List<String> calldata)
+        $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _OutsideExecutionCallV2():
+        return $default(_that.to, _that.selector, _that.calldata);
+      case _:
+        throw StateError('Unexpected subclass');
+    }
+  }
+
+  /// A variant of `when` that fallback to returning `null`
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>(
+    TResult? Function(
+            @JsonKey(name: 'To') String to,
+            @JsonKey(name: 'Selector') String selector,
+            @JsonKey(name: 'Calldata') List<String> calldata)?
+        $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _OutsideExecutionCallV2() when $default != null:
+        return $default(_that.to, _that.selector, _that.calldata);
+      case _:
+        return null;
+    }
+  }
+}
+
+/// @nodoc
 @JsonSerializable()
-class _$OutsideExecutionCallV2Impl extends _OutsideExecutionCallV2 {
-  const _$OutsideExecutionCallV2Impl(
+class _OutsideExecutionCallV2 extends OutsideExecutionCallV2 {
+  const _OutsideExecutionCallV2(
       {@JsonKey(name: 'To') required this.to,
       @JsonKey(name: 'Selector') required this.selector,
       @JsonKey(name: 'Calldata') required final List<String> calldata})
       : _calldata = calldata,
         super._();
-
-  factory _$OutsideExecutionCallV2Impl.fromJson(Map<String, dynamic> json) =>
-      _$$OutsideExecutionCallV2ImplFromJson(json);
+  factory _OutsideExecutionCallV2.fromJson(Map<String, dynamic> json) =>
+      _$OutsideExecutionCallV2FromJson(json);
 
   @override
   @JsonKey(name: 'To')
@@ -942,16 +1548,27 @@ class _$OutsideExecutionCallV2Impl extends _OutsideExecutionCallV2 {
     return EqualUnmodifiableListView(_calldata);
   }
 
+  /// Create a copy of OutsideExecutionCallV2
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  String toString() {
-    return 'OutsideExecutionCallV2(to: $to, selector: $selector, calldata: $calldata)';
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  _$OutsideExecutionCallV2CopyWith<_OutsideExecutionCallV2> get copyWith =>
+      __$OutsideExecutionCallV2CopyWithImpl<_OutsideExecutionCallV2>(
+          this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$OutsideExecutionCallV2ToJson(
+      this,
+    );
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$OutsideExecutionCallV2Impl &&
+            other is _OutsideExecutionCallV2 &&
             (identical(other.to, to) || other.to == to) &&
             (identical(other.selector, selector) ||
                 other.selector == selector) &&
@@ -963,48 +1580,58 @@ class _$OutsideExecutionCallV2Impl extends _OutsideExecutionCallV2 {
   int get hashCode => Object.hash(runtimeType, to, selector,
       const DeepCollectionEquality().hash(_calldata));
 
-  /// Create a copy of OutsideExecutionCallV2
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  @pragma('vm:prefer-inline')
-  _$$OutsideExecutionCallV2ImplCopyWith<_$OutsideExecutionCallV2Impl>
-      get copyWith => __$$OutsideExecutionCallV2ImplCopyWithImpl<
-          _$OutsideExecutionCallV2Impl>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$OutsideExecutionCallV2ImplToJson(
-      this,
-    );
+  String toString() {
+    return 'OutsideExecutionCallV2(to: $to, selector: $selector, calldata: $calldata)';
   }
 }
 
-abstract class _OutsideExecutionCallV2 extends OutsideExecutionCallV2 {
-  const factory _OutsideExecutionCallV2(
-          {@JsonKey(name: 'To') required final String to,
-          @JsonKey(name: 'Selector') required final String selector,
-          @JsonKey(name: 'Calldata') required final List<String> calldata}) =
-      _$OutsideExecutionCallV2Impl;
-  const _OutsideExecutionCallV2._() : super._();
+/// @nodoc
+abstract mixin class _$OutsideExecutionCallV2CopyWith<$Res>
+    implements $OutsideExecutionCallV2CopyWith<$Res> {
+  factory _$OutsideExecutionCallV2CopyWith(_OutsideExecutionCallV2 value,
+          $Res Function(_OutsideExecutionCallV2) _then) =
+      __$OutsideExecutionCallV2CopyWithImpl;
+  @override
+  @useResult
+  $Res call(
+      {@JsonKey(name: 'To') String to,
+      @JsonKey(name: 'Selector') String selector,
+      @JsonKey(name: 'Calldata') List<String> calldata});
+}
 
-  factory _OutsideExecutionCallV2.fromJson(Map<String, dynamic> json) =
-      _$OutsideExecutionCallV2Impl.fromJson;
+/// @nodoc
+class __$OutsideExecutionCallV2CopyWithImpl<$Res>
+    implements _$OutsideExecutionCallV2CopyWith<$Res> {
+  __$OutsideExecutionCallV2CopyWithImpl(this._self, this._then);
 
-  @override
-  @JsonKey(name: 'To')
-  String get to;
-  @override
-  @JsonKey(name: 'Selector')
-  String get selector;
-  @override
-  @JsonKey(name: 'Calldata')
-  List<String> get calldata;
+  final _OutsideExecutionCallV2 _self;
+  final $Res Function(_OutsideExecutionCallV2) _then;
 
   /// Create a copy of OutsideExecutionCallV2
   /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$OutsideExecutionCallV2ImplCopyWith<_$OutsideExecutionCallV2Impl>
-      get copyWith => throw _privateConstructorUsedError;
+  @pragma('vm:prefer-inline')
+  $Res call({
+    Object? to = null,
+    Object? selector = null,
+    Object? calldata = null,
+  }) {
+    return _then(_OutsideExecutionCallV2(
+      to: null == to
+          ? _self.to
+          : to // ignore: cast_nullable_to_non_nullable
+              as String,
+      selector: null == selector
+          ? _self.selector
+          : selector // ignore: cast_nullable_to_non_nullable
+              as String,
+      calldata: null == calldata
+          ? _self._calldata
+          : calldata // ignore: cast_nullable_to_non_nullable
+              as List<String>,
+    ));
+  }
 }
+
+// dart format on

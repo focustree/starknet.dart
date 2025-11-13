@@ -6,9 +6,9 @@ part of 'contract_abi.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$SierraFunctionAbiEntryImpl _$$SierraFunctionAbiEntryImplFromJson(
+SierraFunctionAbiEntry _$SierraFunctionAbiEntryFromJson(
         Map<String, dynamic> json) =>
-    _$SierraFunctionAbiEntryImpl(
+    SierraFunctionAbiEntry(
       type: json['type'] as String,
       name: json['name'] as String,
       inputs: (json['inputs'] as List<dynamic>)
@@ -21,8 +21,8 @@ _$SierraFunctionAbiEntryImpl _$$SierraFunctionAbiEntryImplFromJson(
       $type: json['starkNetRuntimeTypeToRemove'] as String?,
     );
 
-Map<String, dynamic> _$$SierraFunctionAbiEntryImplToJson(
-        _$SierraFunctionAbiEntryImpl instance) =>
+Map<String, dynamic> _$SierraFunctionAbiEntryToJson(
+        SierraFunctionAbiEntry instance) =>
     <String, dynamic>{
       'type': instance.type,
       'name': instance.name,
@@ -32,17 +32,16 @@ Map<String, dynamic> _$$SierraFunctionAbiEntryImplToJson(
       'starkNetRuntimeTypeToRemove': instance.$type,
     };
 
-_$SierraEventAbiEntryImpl _$$SierraEventAbiEntryImplFromJson(
-        Map<String, dynamic> json) =>
-    _$SierraEventAbiEntryImpl(
+SierraEventAbiEntry _$SierraEventAbiEntryFromJson(Map<String, dynamic> json) =>
+    SierraEventAbiEntry(
       type: json['type'] as String,
       name: json['name'] as String,
       kind: json['kind'] as String,
       $type: json['starkNetRuntimeTypeToRemove'] as String?,
     );
 
-Map<String, dynamic> _$$SierraEventAbiEntryImplToJson(
-        _$SierraEventAbiEntryImpl instance) =>
+Map<String, dynamic> _$SierraEventAbiEntryToJson(
+        SierraEventAbiEntry instance) =>
     <String, dynamic>{
       'type': instance.type,
       'name': instance.name,
@@ -50,9 +49,8 @@ Map<String, dynamic> _$$SierraEventAbiEntryImplToJson(
       'starkNetRuntimeTypeToRemove': instance.$type,
     };
 
-_$SierraEnumAbiEntryImpl _$$SierraEnumAbiEntryImplFromJson(
-        Map<String, dynamic> json) =>
-    _$SierraEnumAbiEntryImpl(
+SierraEnumAbiEntry _$SierraEnumAbiEntryFromJson(Map<String, dynamic> json) =>
+    SierraEnumAbiEntry(
       type: json['type'] as String,
       name: json['name'] as String,
       variants: (json['variants'] as List<dynamic>)
@@ -61,8 +59,7 @@ _$SierraEnumAbiEntryImpl _$$SierraEnumAbiEntryImplFromJson(
       $type: json['starkNetRuntimeTypeToRemove'] as String?,
     );
 
-Map<String, dynamic> _$$SierraEnumAbiEntryImplToJson(
-        _$SierraEnumAbiEntryImpl instance) =>
+Map<String, dynamic> _$SierraEnumAbiEntryToJson(SierraEnumAbiEntry instance) =>
     <String, dynamic>{
       'type': instance.type,
       'name': instance.name,
@@ -70,9 +67,9 @@ Map<String, dynamic> _$$SierraEnumAbiEntryImplToJson(
       'starkNetRuntimeTypeToRemove': instance.$type,
     };
 
-_$SierraStructAbiEntryImpl _$$SierraStructAbiEntryImplFromJson(
+SierraStructAbiEntry _$SierraStructAbiEntryFromJson(
         Map<String, dynamic> json) =>
-    _$SierraStructAbiEntryImpl(
+    SierraStructAbiEntry(
       type: json['type'] as String,
       name: json['name'] as String,
       members: (json['members'] as List<dynamic>)
@@ -81,8 +78,8 @@ _$SierraStructAbiEntryImpl _$$SierraStructAbiEntryImplFromJson(
       $type: json['starkNetRuntimeTypeToRemove'] as String?,
     );
 
-Map<String, dynamic> _$$SierraStructAbiEntryImplToJson(
-        _$SierraStructAbiEntryImpl instance) =>
+Map<String, dynamic> _$SierraStructAbiEntryToJson(
+        SierraStructAbiEntry instance) =>
     <String, dynamic>{
       'type': instance.type,
       'name': instance.name,
@@ -90,17 +87,15 @@ Map<String, dynamic> _$$SierraStructAbiEntryImplToJson(
       'starkNetRuntimeTypeToRemove': instance.$type,
     };
 
-_$SierraImplAbiEntryImpl _$$SierraImplAbiEntryImplFromJson(
-        Map<String, dynamic> json) =>
-    _$SierraImplAbiEntryImpl(
+SierraImplAbiEntry _$SierraImplAbiEntryFromJson(Map<String, dynamic> json) =>
+    SierraImplAbiEntry(
       type: json['type'] as String,
       name: json['name'] as String,
       interfaceName: json['interface_name'] as String,
       $type: json['starkNetRuntimeTypeToRemove'] as String?,
     );
 
-Map<String, dynamic> _$$SierraImplAbiEntryImplToJson(
-        _$SierraImplAbiEntryImpl instance) =>
+Map<String, dynamic> _$SierraImplAbiEntryToJson(SierraImplAbiEntry instance) =>
     <String, dynamic>{
       'type': instance.type,
       'name': instance.name,
@@ -108,25 +103,25 @@ Map<String, dynamic> _$$SierraImplAbiEntryImplToJson(
       'starkNetRuntimeTypeToRemove': instance.$type,
     };
 
-_$SierraInterfaceAbiEntryImpl _$$SierraInterfaceAbiEntryImplFromJson(
+SierraInterfaceAbiEntry _$SierraInterfaceAbiEntryFromJson(
         Map<String, dynamic> json) =>
-    _$SierraInterfaceAbiEntryImpl(
+    SierraInterfaceAbiEntry(
       type: json['type'] as String,
       name: json['name'] as String,
       $type: json['starkNetRuntimeTypeToRemove'] as String?,
     );
 
-Map<String, dynamic> _$$SierraInterfaceAbiEntryImplToJson(
-        _$SierraInterfaceAbiEntryImpl instance) =>
+Map<String, dynamic> _$SierraInterfaceAbiEntryToJson(
+        SierraInterfaceAbiEntry instance) =>
     <String, dynamic>{
       'type': instance.type,
       'name': instance.name,
       'starkNetRuntimeTypeToRemove': instance.$type,
     };
 
-_$SierraConstructorAbiEntryImpl _$$SierraConstructorAbiEntryImplFromJson(
+SierraConstructorAbiEntry _$SierraConstructorAbiEntryFromJson(
         Map<String, dynamic> json) =>
-    _$SierraConstructorAbiEntryImpl(
+    SierraConstructorAbiEntry(
       type: json['type'] as String,
       name: json['name'] as String,
       inputs: (json['inputs'] as List<dynamic>)
@@ -135,8 +130,8 @@ _$SierraConstructorAbiEntryImpl _$$SierraConstructorAbiEntryImplFromJson(
       $type: json['starkNetRuntimeTypeToRemove'] as String?,
     );
 
-Map<String, dynamic> _$$SierraConstructorAbiEntryImplToJson(
-        _$SierraConstructorAbiEntryImpl instance) =>
+Map<String, dynamic> _$SierraConstructorAbiEntryToJson(
+        SierraConstructorAbiEntry instance) =>
     <String, dynamic>{
       'type': instance.type,
       'name': instance.name,
@@ -144,9 +139,9 @@ Map<String, dynamic> _$$SierraConstructorAbiEntryImplToJson(
       'starkNetRuntimeTypeToRemove': instance.$type,
     };
 
-_$SierraL1HandlerAbiEntryImpl _$$SierraL1HandlerAbiEntryImplFromJson(
+SierraL1HandlerAbiEntry _$SierraL1HandlerAbiEntryFromJson(
         Map<String, dynamic> json) =>
-    _$SierraL1HandlerAbiEntryImpl(
+    SierraL1HandlerAbiEntry(
       type: json['type'] as String,
       name: json['name'] as String,
       inputs: (json['inputs'] as List<dynamic>)
@@ -159,8 +154,8 @@ _$SierraL1HandlerAbiEntryImpl _$$SierraL1HandlerAbiEntryImplFromJson(
       $type: json['starkNetRuntimeTypeToRemove'] as String?,
     );
 
-Map<String, dynamic> _$$SierraL1HandlerAbiEntryImplToJson(
-        _$SierraL1HandlerAbiEntryImpl instance) =>
+Map<String, dynamic> _$SierraL1HandlerAbiEntryToJson(
+        SierraL1HandlerAbiEntry instance) =>
     <String, dynamic>{
       'type': instance.type,
       'name': instance.name,
@@ -170,74 +165,65 @@ Map<String, dynamic> _$$SierraL1HandlerAbiEntryImplToJson(
       'starkNetRuntimeTypeToRemove': instance.$type,
     };
 
-_$InputParameterImpl _$$InputParameterImplFromJson(Map<String, dynamic> json) =>
-    _$InputParameterImpl(
+_InputParameter _$InputParameterFromJson(Map<String, dynamic> json) =>
+    _InputParameter(
       name: json['name'] as String,
       type: json['type'] as String,
     );
 
-Map<String, dynamic> _$$InputParameterImplToJson(
-        _$InputParameterImpl instance) =>
+Map<String, dynamic> _$InputParameterToJson(_InputParameter instance) =>
     <String, dynamic>{
       'name': instance.name,
       'type': instance.type,
     };
 
-_$OutputParameterImpl _$$OutputParameterImplFromJson(
-        Map<String, dynamic> json) =>
-    _$OutputParameterImpl(
+_OutputParameter _$OutputParameterFromJson(Map<String, dynamic> json) =>
+    _OutputParameter(
       type: json['type'] as String,
     );
 
-Map<String, dynamic> _$$OutputParameterImplToJson(
-        _$OutputParameterImpl instance) =>
+Map<String, dynamic> _$OutputParameterToJson(_OutputParameter instance) =>
     <String, dynamic>{
       'type': instance.type,
     };
 
-_$MemberParameterImpl _$$MemberParameterImplFromJson(
-        Map<String, dynamic> json) =>
-    _$MemberParameterImpl(
+_MemberParameter _$MemberParameterFromJson(Map<String, dynamic> json) =>
+    _MemberParameter(
       name: json['name'] as String,
       type: json['type'] as String,
     );
 
-Map<String, dynamic> _$$MemberParameterImplToJson(
-        _$MemberParameterImpl instance) =>
+Map<String, dynamic> _$MemberParameterToJson(_MemberParameter instance) =>
     <String, dynamic>{
       'name': instance.name,
       'type': instance.type,
     };
 
-_$VariantParameterImpl _$$VariantParameterImplFromJson(
-        Map<String, dynamic> json) =>
-    _$VariantParameterImpl(
+_VariantParameter _$VariantParameterFromJson(Map<String, dynamic> json) =>
+    _VariantParameter(
       name: json['name'] as String,
       type: json['type'] as String,
     );
 
-Map<String, dynamic> _$$VariantParameterImplToJson(
-        _$VariantParameterImpl instance) =>
+Map<String, dynamic> _$VariantParameterToJson(_VariantParameter instance) =>
     <String, dynamic>{
       'name': instance.name,
       'type': instance.type,
     };
 
-_$SierraEventAbiImpl _$$SierraEventAbiImplFromJson(Map<String, dynamic> json) =>
-    _$SierraEventAbiImpl(
+_SierraEventAbi _$SierraEventAbiFromJson(Map<String, dynamic> json) =>
+    _SierraEventAbi(
       inner: SierraEventAbiInstance.fromJson(
           json['inner'] as Map<String, dynamic>),
     );
 
-Map<String, dynamic> _$$SierraEventAbiImplToJson(
-        _$SierraEventAbiImpl instance) =>
+Map<String, dynamic> _$SierraEventAbiToJson(_SierraEventAbi instance) =>
     <String, dynamic>{
       'inner': instance.inner.toJson(),
     };
 
-_$SierraEventAbiEnumImpl _$$SierraEventAbiEnumImplFromJson(
-        Map<String, dynamic> json) =>
-    _$SierraEventAbiEnumImpl(
+_SierraEventAbiEnum _$SierraEventAbiEnumFromJson(Map<String, dynamic> json) =>
+    _SierraEventAbiEnum(
       type: json['type'] as String,
       name: json['name'] as String,
       kind: json['kind'] as String,
@@ -247,8 +233,7 @@ _$SierraEventAbiEnumImpl _$$SierraEventAbiEnumImplFromJson(
           .toList(),
     );
 
-Map<String, dynamic> _$$SierraEventAbiEnumImplToJson(
-        _$SierraEventAbiEnumImpl instance) =>
+Map<String, dynamic> _$SierraEventAbiEnumToJson(_SierraEventAbiEnum instance) =>
     <String, dynamic>{
       'type': instance.type,
       'name': instance.name,
@@ -256,25 +241,25 @@ Map<String, dynamic> _$$SierraEventAbiEnumImplToJson(
       'variants': instance.variants.map((e) => e.toJson()).toList(),
     };
 
-_$SierraEventAbiEnumVariantImpl _$$SierraEventAbiEnumVariantImplFromJson(
+_SierraEventAbiEnumVariant _$SierraEventAbiEnumVariantFromJson(
         Map<String, dynamic> json) =>
-    _$SierraEventAbiEnumVariantImpl(
+    _SierraEventAbiEnumVariant(
       name: json['name'] as String,
       type: json['type'] as String,
       kind: json['kind'] as String,
     );
 
-Map<String, dynamic> _$$SierraEventAbiEnumVariantImplToJson(
-        _$SierraEventAbiEnumVariantImpl instance) =>
+Map<String, dynamic> _$SierraEventAbiEnumVariantToJson(
+        _SierraEventAbiEnumVariant instance) =>
     <String, dynamic>{
       'name': instance.name,
       'type': instance.type,
       'kind': instance.kind,
     };
 
-_$SierraEventAbiStructImpl _$$SierraEventAbiStructImplFromJson(
+_SierraEventAbiStruct _$SierraEventAbiStructFromJson(
         Map<String, dynamic> json) =>
-    _$SierraEventAbiStructImpl(
+    _SierraEventAbiStruct(
       type: json['type'] as String,
       name: json['name'] as String,
       kind: json['kind'] as String,
@@ -284,8 +269,8 @@ _$SierraEventAbiStructImpl _$$SierraEventAbiStructImplFromJson(
           .toList(),
     );
 
-Map<String, dynamic> _$$SierraEventAbiStructImplToJson(
-        _$SierraEventAbiStructImpl instance) =>
+Map<String, dynamic> _$SierraEventAbiStructToJson(
+        _SierraEventAbiStruct instance) =>
     <String, dynamic>{
       'type': instance.type,
       'name': instance.name,
@@ -293,25 +278,25 @@ Map<String, dynamic> _$$SierraEventAbiStructImplToJson(
       'members': instance.members.map((e) => e.toJson()).toList(),
     };
 
-_$SierraEventAbiStructMemberImpl _$$SierraEventAbiStructMemberImplFromJson(
+_SierraEventAbiStructMember _$SierraEventAbiStructMemberFromJson(
         Map<String, dynamic> json) =>
-    _$SierraEventAbiStructMemberImpl(
+    _SierraEventAbiStructMember(
       name: json['name'] as String,
       type: json['type'] as String,
       kind: json['kind'] as String,
     );
 
-Map<String, dynamic> _$$SierraEventAbiStructMemberImplToJson(
-        _$SierraEventAbiStructMemberImpl instance) =>
+Map<String, dynamic> _$SierraEventAbiStructMemberToJson(
+        _SierraEventAbiStructMember instance) =>
     <String, dynamic>{
       'name': instance.name,
       'type': instance.type,
       'kind': instance.kind,
     };
 
-_$DeprecatedFunctionAbiEntryImpl _$$DeprecatedFunctionAbiEntryImplFromJson(
+DeprecatedFunctionAbiEntry _$DeprecatedFunctionAbiEntryFromJson(
         Map<String, dynamic> json) =>
-    _$DeprecatedFunctionAbiEntryImpl(
+    DeprecatedFunctionAbiEntry(
       type: json['type'] as String,
       name: json['name'] as String,
       inputs: (json['inputs'] as List<dynamic>)
@@ -324,8 +309,8 @@ _$DeprecatedFunctionAbiEntryImpl _$$DeprecatedFunctionAbiEntryImplFromJson(
       $type: json['starkNetRuntimeTypeToRemove'] as String?,
     );
 
-Map<String, dynamic> _$$DeprecatedFunctionAbiEntryImplToJson(
-        _$DeprecatedFunctionAbiEntryImpl instance) =>
+Map<String, dynamic> _$DeprecatedFunctionAbiEntryToJson(
+        DeprecatedFunctionAbiEntry instance) =>
     <String, dynamic>{
       'type': instance.type,
       'name': instance.name,
@@ -335,9 +320,9 @@ Map<String, dynamic> _$$DeprecatedFunctionAbiEntryImplToJson(
       'starkNetRuntimeTypeToRemove': instance.$type,
     };
 
-_$DeprecatedEventAbiEntryImpl _$$DeprecatedEventAbiEntryImplFromJson(
+DeprecatedEventAbiEntry _$DeprecatedEventAbiEntryFromJson(
         Map<String, dynamic> json) =>
-    _$DeprecatedEventAbiEntryImpl(
+    DeprecatedEventAbiEntry(
       type: json['type'] as String,
       name: json['name'] as String,
       keys: (json['keys'] as List<dynamic>)
@@ -349,8 +334,8 @@ _$DeprecatedEventAbiEntryImpl _$$DeprecatedEventAbiEntryImplFromJson(
       $type: json['starkNetRuntimeTypeToRemove'] as String?,
     );
 
-Map<String, dynamic> _$$DeprecatedEventAbiEntryImplToJson(
-        _$DeprecatedEventAbiEntryImpl instance) =>
+Map<String, dynamic> _$DeprecatedEventAbiEntryToJson(
+        DeprecatedEventAbiEntry instance) =>
     <String, dynamic>{
       'type': instance.type,
       'name': instance.name,
@@ -359,9 +344,9 @@ Map<String, dynamic> _$$DeprecatedEventAbiEntryImplToJson(
       'starkNetRuntimeTypeToRemove': instance.$type,
     };
 
-_$DeprecatedStructAbiEntryImpl _$$DeprecatedStructAbiEntryImplFromJson(
+DeprecatedStructAbiEntry _$DeprecatedStructAbiEntryFromJson(
         Map<String, dynamic> json) =>
-    _$DeprecatedStructAbiEntryImpl(
+    DeprecatedStructAbiEntry(
       type: json['type'] as String,
       name: json['name'] as String,
       size: (json['size'] as num).toInt(),
@@ -371,8 +356,8 @@ _$DeprecatedStructAbiEntryImpl _$$DeprecatedStructAbiEntryImplFromJson(
       $type: json['starkNetRuntimeTypeToRemove'] as String?,
     );
 
-Map<String, dynamic> _$$DeprecatedStructAbiEntryImplToJson(
-        _$DeprecatedStructAbiEntryImpl instance) =>
+Map<String, dynamic> _$DeprecatedStructAbiEntryToJson(
+        DeprecatedStructAbiEntry instance) =>
     <String, dynamic>{
       'type': instance.type,
       'name': instance.name,
@@ -381,22 +366,22 @@ Map<String, dynamic> _$$DeprecatedStructAbiEntryImplToJson(
       'starkNetRuntimeTypeToRemove': instance.$type,
     };
 
-_$DeprecatedConstructorAbiEntryImpl
-    _$$DeprecatedConstructorAbiEntryImplFromJson(Map<String, dynamic> json) =>
-        _$DeprecatedConstructorAbiEntryImpl(
-          type: json['type'] as String,
-          name: json['name'] as String,
-          inputs: (json['inputs'] as List<dynamic>)
-              .map((e) => TypedParameter.fromJson(e as Map<String, dynamic>))
-              .toList(),
-          outputs: (json['outputs'] as List<dynamic>)
-              .map((e) => TypedParameter.fromJson(e as Map<String, dynamic>))
-              .toList(),
-          $type: json['starkNetRuntimeTypeToRemove'] as String?,
-        );
+DeprecatedConstructorAbiEntry _$DeprecatedConstructorAbiEntryFromJson(
+        Map<String, dynamic> json) =>
+    DeprecatedConstructorAbiEntry(
+      type: json['type'] as String,
+      name: json['name'] as String,
+      inputs: (json['inputs'] as List<dynamic>)
+          .map((e) => TypedParameter.fromJson(e as Map<String, dynamic>))
+          .toList(),
+      outputs: (json['outputs'] as List<dynamic>)
+          .map((e) => TypedParameter.fromJson(e as Map<String, dynamic>))
+          .toList(),
+      $type: json['starkNetRuntimeTypeToRemove'] as String?,
+    );
 
-Map<String, dynamic> _$$DeprecatedConstructorAbiEntryImplToJson(
-        _$DeprecatedConstructorAbiEntryImpl instance) =>
+Map<String, dynamic> _$DeprecatedConstructorAbiEntryToJson(
+        DeprecatedConstructorAbiEntry instance) =>
     <String, dynamic>{
       'type': instance.type,
       'name': instance.name,
@@ -405,27 +390,26 @@ Map<String, dynamic> _$$DeprecatedConstructorAbiEntryImplToJson(
       'starkNetRuntimeTypeToRemove': instance.$type,
     };
 
-_$TypedParameterImpl _$$TypedParameterImplFromJson(Map<String, dynamic> json) =>
-    _$TypedParameterImpl(
+_TypedParameter _$TypedParameterFromJson(Map<String, dynamic> json) =>
+    _TypedParameter(
       name: json['name'] as String,
       type: json['type'] as String,
     );
 
-Map<String, dynamic> _$$TypedParameterImplToJson(
-        _$TypedParameterImpl instance) =>
+Map<String, dynamic> _$TypedParameterToJson(_TypedParameter instance) =>
     <String, dynamic>{
       'name': instance.name,
       'type': instance.type,
     };
 
-_$StructMemberImpl _$$StructMemberImplFromJson(Map<String, dynamic> json) =>
-    _$StructMemberImpl(
+_StructMember _$StructMemberFromJson(Map<String, dynamic> json) =>
+    _StructMember(
       name: json['name'] as String,
       type: json['type'] as String,
       offset: (json['offset'] as num).toInt(),
     );
 
-Map<String, dynamic> _$$StructMemberImplToJson(_$StructMemberImpl instance) =>
+Map<String, dynamic> _$StructMemberToJson(_StructMember instance) =>
     <String, dynamic>{
       'name': instance.name,
       'type': instance.type,

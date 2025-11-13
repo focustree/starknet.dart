@@ -1,5 +1,5 @@
-// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// coverage:ignore-file
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
@@ -9,110 +9,247 @@ part of 'nft_api.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// dart format off
 T _$identity<T>(T value) => value;
-
-final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
-
-ListNFTsResponse _$ListNFTsResponseFromJson(Map<String, dynamic> json) {
-  return _ListNFTsResponse.fromJson(json);
-}
 
 /// @nodoc
 mixin _$ListNFTsResponse {
-  List<NFT> get result => throw _privateConstructorUsedError;
-  String? get cursor => throw _privateConstructorUsedError;
+  List<NFT> get result;
+  String? get cursor;
 
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
-  $ListNFTsResponseCopyWith<ListNFTsResponse> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $ListNFTsResponseCopyWith<$Res> {
-  factory $ListNFTsResponseCopyWith(
-          ListNFTsResponse value, $Res Function(ListNFTsResponse) then) =
-      _$ListNFTsResponseCopyWithImpl<$Res, ListNFTsResponse>;
-  @useResult
-  $Res call({List<NFT> result, String? cursor});
-}
-
-/// @nodoc
-class _$ListNFTsResponseCopyWithImpl<$Res, $Val extends ListNFTsResponse>
-    implements $ListNFTsResponseCopyWith<$Res> {
-  _$ListNFTsResponseCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-
+  /// Create a copy of ListNFTsResponse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @pragma('vm:prefer-inline')
+  $ListNFTsResponseCopyWith<ListNFTsResponse> get copyWith =>
+      _$ListNFTsResponseCopyWithImpl<ListNFTsResponse>(
+          this as ListNFTsResponse, _$identity);
+
+  /// Serializes this ListNFTsResponse to a JSON map.
+  Map<String, dynamic> toJson();
+
   @override
-  $Res call({
-    Object? result = null,
-    Object? cursor = freezed,
-  }) {
-    return _then(_value.copyWith(
-      result: null == result
-          ? _value.result
-          : result // ignore: cast_nullable_to_non_nullable
-              as List<NFT>,
-      cursor: freezed == cursor
-          ? _value.cursor
-          : cursor // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ) as $Val);
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is ListNFTsResponse &&
+            const DeepCollectionEquality().equals(other.result, result) &&
+            (identical(other.cursor, cursor) || other.cursor == cursor));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(result), cursor);
+
+  @override
+  String toString() {
+    return 'ListNFTsResponse(result: $result, cursor: $cursor)';
   }
 }
 
 /// @nodoc
-abstract class _$$ListNFTsResponseImplCopyWith<$Res>
-    implements $ListNFTsResponseCopyWith<$Res> {
-  factory _$$ListNFTsResponseImplCopyWith(_$ListNFTsResponseImpl value,
-          $Res Function(_$ListNFTsResponseImpl) then) =
-      __$$ListNFTsResponseImplCopyWithImpl<$Res>;
-  @override
+abstract mixin class $ListNFTsResponseCopyWith<$Res> {
+  factory $ListNFTsResponseCopyWith(
+          ListNFTsResponse value, $Res Function(ListNFTsResponse) _then) =
+      _$ListNFTsResponseCopyWithImpl;
   @useResult
   $Res call({List<NFT> result, String? cursor});
 }
 
 /// @nodoc
-class __$$ListNFTsResponseImplCopyWithImpl<$Res>
-    extends _$ListNFTsResponseCopyWithImpl<$Res, _$ListNFTsResponseImpl>
-    implements _$$ListNFTsResponseImplCopyWith<$Res> {
-  __$$ListNFTsResponseImplCopyWithImpl(_$ListNFTsResponseImpl _value,
-      $Res Function(_$ListNFTsResponseImpl) _then)
-      : super(_value, _then);
+class _$ListNFTsResponseCopyWithImpl<$Res>
+    implements $ListNFTsResponseCopyWith<$Res> {
+  _$ListNFTsResponseCopyWithImpl(this._self, this._then);
 
+  final ListNFTsResponse _self;
+  final $Res Function(ListNFTsResponse) _then;
+
+  /// Create a copy of ListNFTsResponse
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? result = null,
     Object? cursor = freezed,
   }) {
-    return _then(_$ListNFTsResponseImpl(
+    return _then(_self.copyWith(
       result: null == result
-          ? _value._result
+          ? _self.result
           : result // ignore: cast_nullable_to_non_nullable
               as List<NFT>,
       cursor: freezed == cursor
-          ? _value.cursor
+          ? _self.cursor
           : cursor // ignore: cast_nullable_to_non_nullable
               as String?,
     ));
   }
 }
 
+/// Adds pattern-matching-related methods to [ListNFTsResponse].
+extension ListNFTsResponsePatterns on ListNFTsResponse {
+  /// A variant of `map` that fallback to returning `orElse`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(_ListNFTsResponse value)? $default, {
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _ListNFTsResponse() when $default != null:
+        return $default(_that);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// Callbacks receives the raw object, upcasted.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case final Subclass2 value:
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(_ListNFTsResponse value) $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _ListNFTsResponse():
+        return $default(_that);
+      case _:
+        throw StateError('Unexpected subclass');
+    }
+  }
+
+  /// A variant of `map` that fallback to returning `null`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>(
+    TResult? Function(_ListNFTsResponse value)? $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _ListNFTsResponse() when $default != null:
+        return $default(_that);
+      case _:
+        return null;
+    }
+  }
+
+  /// A variant of `when` that fallback to an `orElse` callback.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(List<NFT> result, String? cursor)? $default, {
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _ListNFTsResponse() when $default != null:
+        return $default(_that.result, _that.cursor);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// As opposed to `map`, this offers destructuring.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case Subclass2(:final field2):
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>(
+    TResult Function(List<NFT> result, String? cursor) $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _ListNFTsResponse():
+        return $default(_that.result, _that.cursor);
+      case _:
+        throw StateError('Unexpected subclass');
+    }
+  }
+
+  /// A variant of `when` that fallback to returning `null`
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>(
+    TResult? Function(List<NFT> result, String? cursor)? $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _ListNFTsResponse() when $default != null:
+        return $default(_that.result, _that.cursor);
+      case _:
+        return null;
+    }
+  }
+}
+
 /// @nodoc
 @JsonSerializable()
-class _$ListNFTsResponseImpl implements _ListNFTsResponse {
-  _$ListNFTsResponseImpl({required final List<NFT> result, this.cursor})
+class _ListNFTsResponse implements ListNFTsResponse {
+  _ListNFTsResponse({required final List<NFT> result, this.cursor})
       : _result = result;
-
-  factory _$ListNFTsResponseImpl.fromJson(Map<String, dynamic> json) =>
-      _$$ListNFTsResponseImplFromJson(json);
+  factory _ListNFTsResponse.fromJson(Map<String, dynamic> json) =>
+      _$ListNFTsResponseFromJson(json);
 
   final List<NFT> _result;
   @override
@@ -125,402 +262,769 @@ class _$ListNFTsResponseImpl implements _ListNFTsResponse {
   @override
   final String? cursor;
 
+  /// Create a copy of ListNFTsResponse
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  String toString() {
-    return 'ListNFTsResponse(result: $result, cursor: $cursor)';
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  _$ListNFTsResponseCopyWith<_ListNFTsResponse> get copyWith =>
+      __$ListNFTsResponseCopyWithImpl<_ListNFTsResponse>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$ListNFTsResponseToJson(
+      this,
+    );
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$ListNFTsResponseImpl &&
+            other is _ListNFTsResponse &&
             const DeepCollectionEquality().equals(other._result, _result) &&
             (identical(other.cursor, cursor) || other.cursor == cursor));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType, const DeepCollectionEquality().hash(_result), cursor);
 
-  @JsonKey(ignore: true)
   @override
-  @pragma('vm:prefer-inline')
-  _$$ListNFTsResponseImplCopyWith<_$ListNFTsResponseImpl> get copyWith =>
-      __$$ListNFTsResponseImplCopyWithImpl<_$ListNFTsResponseImpl>(
-          this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$ListNFTsResponseImplToJson(
-      this,
-    );
-  }
-}
-
-abstract class _ListNFTsResponse implements ListNFTsResponse {
-  factory _ListNFTsResponse(
-      {required final List<NFT> result,
-      final String? cursor}) = _$ListNFTsResponseImpl;
-
-  factory _ListNFTsResponse.fromJson(Map<String, dynamic> json) =
-      _$ListNFTsResponseImpl.fromJson;
-
-  @override
-  List<NFT> get result;
-  @override
-  String? get cursor;
-  @override
-  @JsonKey(ignore: true)
-  _$$ListNFTsResponseImplCopyWith<_$ListNFTsResponseImpl> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-GetNFTResponse _$GetNFTResponseFromJson(Map<String, dynamic> json) {
-  return _GetNFTResponse.fromJson(json);
-}
-
-/// @nodoc
-mixin _$GetNFTResponse {
-  NFT get result => throw _privateConstructorUsedError;
-
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
-  $GetNFTResponseCopyWith<GetNFTResponse> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $GetNFTResponseCopyWith<$Res> {
-  factory $GetNFTResponseCopyWith(
-          GetNFTResponse value, $Res Function(GetNFTResponse) then) =
-      _$GetNFTResponseCopyWithImpl<$Res, GetNFTResponse>;
-  @useResult
-  $Res call({NFT result});
-
-  $NFTCopyWith<$Res> get result;
-}
-
-/// @nodoc
-class _$GetNFTResponseCopyWithImpl<$Res, $Val extends GetNFTResponse>
-    implements $GetNFTResponseCopyWith<$Res> {
-  _$GetNFTResponseCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? result = null,
-  }) {
-    return _then(_value.copyWith(
-      result: null == result
-          ? _value.result
-          : result // ignore: cast_nullable_to_non_nullable
-              as NFT,
-    ) as $Val);
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $NFTCopyWith<$Res> get result {
-    return $NFTCopyWith<$Res>(_value.result, (value) {
-      return _then(_value.copyWith(result: value) as $Val);
-    });
+  String toString() {
+    return 'ListNFTsResponse(result: $result, cursor: $cursor)';
   }
 }
 
 /// @nodoc
-abstract class _$$GetNFTResponseImplCopyWith<$Res>
-    implements $GetNFTResponseCopyWith<$Res> {
-  factory _$$GetNFTResponseImplCopyWith(_$GetNFTResponseImpl value,
-          $Res Function(_$GetNFTResponseImpl) then) =
-      __$$GetNFTResponseImplCopyWithImpl<$Res>;
+abstract mixin class _$ListNFTsResponseCopyWith<$Res>
+    implements $ListNFTsResponseCopyWith<$Res> {
+  factory _$ListNFTsResponseCopyWith(
+          _ListNFTsResponse value, $Res Function(_ListNFTsResponse) _then) =
+      __$ListNFTsResponseCopyWithImpl;
   @override
   @useResult
-  $Res call({NFT result});
-
-  @override
-  $NFTCopyWith<$Res> get result;
+  $Res call({List<NFT> result, String? cursor});
 }
 
 /// @nodoc
-class __$$GetNFTResponseImplCopyWithImpl<$Res>
-    extends _$GetNFTResponseCopyWithImpl<$Res, _$GetNFTResponseImpl>
-    implements _$$GetNFTResponseImplCopyWith<$Res> {
-  __$$GetNFTResponseImplCopyWithImpl(
-      _$GetNFTResponseImpl _value, $Res Function(_$GetNFTResponseImpl) _then)
-      : super(_value, _then);
+class __$ListNFTsResponseCopyWithImpl<$Res>
+    implements _$ListNFTsResponseCopyWith<$Res> {
+  __$ListNFTsResponseCopyWithImpl(this._self, this._then);
 
-  @pragma('vm:prefer-inline')
+  final _ListNFTsResponse _self;
+  final $Res Function(_ListNFTsResponse) _then;
+
+  /// Create a copy of ListNFTsResponse
+  /// with the given fields replaced by the non-null parameter values.
   @override
+  @pragma('vm:prefer-inline')
   $Res call({
     Object? result = null,
+    Object? cursor = freezed,
   }) {
-    return _then(_$GetNFTResponseImpl(
+    return _then(_ListNFTsResponse(
       result: null == result
-          ? _value.result
+          ? _self._result
           : result // ignore: cast_nullable_to_non_nullable
-              as NFT,
+              as List<NFT>,
+      cursor: freezed == cursor
+          ? _self.cursor
+          : cursor // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
 
 /// @nodoc
-@JsonSerializable()
-class _$GetNFTResponseImpl implements _GetNFTResponse {
-  _$GetNFTResponseImpl({required this.result});
+mixin _$GetNFTResponse {
+  NFT get result;
 
-  factory _$GetNFTResponseImpl.fromJson(Map<String, dynamic> json) =>
-      _$$GetNFTResponseImplFromJson(json);
+  /// Create a copy of GetNFTResponse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  $GetNFTResponseCopyWith<GetNFTResponse> get copyWith =>
+      _$GetNFTResponseCopyWithImpl<GetNFTResponse>(
+          this as GetNFTResponse, _$identity);
+
+  /// Serializes this GetNFTResponse to a JSON map.
+  Map<String, dynamic> toJson();
 
   @override
-  final NFT result;
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is GetNFTResponse &&
+            (identical(other.result, result) || other.result == result));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(runtimeType, result);
 
   @override
   String toString() {
     return 'GetNFTResponse(result: $result)';
   }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$GetNFTResponseImpl &&
-            (identical(other.result, result) || other.result == result));
-  }
-
-  @JsonKey(ignore: true)
-  @override
-  int get hashCode => Object.hash(runtimeType, result);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$GetNFTResponseImplCopyWith<_$GetNFTResponseImpl> get copyWith =>
-      __$$GetNFTResponseImplCopyWithImpl<_$GetNFTResponseImpl>(
-          this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$GetNFTResponseImplToJson(
-      this,
-    );
-  }
-}
-
-abstract class _GetNFTResponse implements GetNFTResponse {
-  factory _GetNFTResponse({required final NFT result}) = _$GetNFTResponseImpl;
-
-  factory _GetNFTResponse.fromJson(Map<String, dynamic> json) =
-      _$GetNFTResponseImpl.fromJson;
-
-  @override
-  NFT get result;
-  @override
-  @JsonKey(ignore: true)
-  _$$GetNFTResponseImplCopyWith<_$GetNFTResponseImpl> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-NFT _$NFTFromJson(Map<String, dynamic> json) {
-  return _NFT.fromJson(json);
 }
 
 /// @nodoc
-mixin _$NFT {
-  @JsonKey(name: 'contract_address')
-  String get contractAddress => throw _privateConstructorUsedError;
-  @JsonKey(name: 'token_id')
-  String get tokenId => throw _privateConstructorUsedError;
-  @JsonKey(name: 'token_id_hex')
-  String get tokenIdHex => throw _privateConstructorUsedError;
-  String get owner => throw _privateConstructorUsedError;
-  @JsonKey(name: 'mint_info')
-  MintInfo? get mintInfo => throw _privateConstructorUsedError;
-  TokenMetadata? get metadata => throw _privateConstructorUsedError;
-  @JsonKey(name: 'awaiting_metadata_update')
-  bool get awaitingMetadataUpdate => throw _privateConstructorUsedError;
-
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
-  $NFTCopyWith<NFT> get copyWith => throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $NFTCopyWith<$Res> {
-  factory $NFTCopyWith(NFT value, $Res Function(NFT) then) =
-      _$NFTCopyWithImpl<$Res, NFT>;
+abstract mixin class $GetNFTResponseCopyWith<$Res> {
+  factory $GetNFTResponseCopyWith(
+          GetNFTResponse value, $Res Function(GetNFTResponse) _then) =
+      _$GetNFTResponseCopyWithImpl;
   @useResult
-  $Res call(
-      {@JsonKey(name: 'contract_address') String contractAddress,
-      @JsonKey(name: 'token_id') String tokenId,
-      @JsonKey(name: 'token_id_hex') String tokenIdHex,
-      String owner,
-      @JsonKey(name: 'mint_info') MintInfo? mintInfo,
-      TokenMetadata? metadata,
-      @JsonKey(name: 'awaiting_metadata_update') bool awaitingMetadataUpdate});
+  $Res call({NFT result});
 
-  $MintInfoCopyWith<$Res>? get mintInfo;
-  $TokenMetadataCopyWith<$Res>? get metadata;
+  $NFTCopyWith<$Res> get result;
 }
 
 /// @nodoc
-class _$NFTCopyWithImpl<$Res, $Val extends NFT> implements $NFTCopyWith<$Res> {
-  _$NFTCopyWithImpl(this._value, this._then);
+class _$GetNFTResponseCopyWithImpl<$Res>
+    implements $GetNFTResponseCopyWith<$Res> {
+  _$GetNFTResponseCopyWithImpl(this._self, this._then);
 
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final GetNFTResponse _self;
+  final $Res Function(GetNFTResponse) _then;
 
+  /// Create a copy of GetNFTResponse
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? contractAddress = null,
-    Object? tokenId = null,
-    Object? tokenIdHex = null,
-    Object? owner = null,
-    Object? mintInfo = freezed,
-    Object? metadata = freezed,
-    Object? awaitingMetadataUpdate = null,
+    Object? result = null,
   }) {
-    return _then(_value.copyWith(
-      contractAddress: null == contractAddress
-          ? _value.contractAddress
-          : contractAddress // ignore: cast_nullable_to_non_nullable
-              as String,
-      tokenId: null == tokenId
-          ? _value.tokenId
-          : tokenId // ignore: cast_nullable_to_non_nullable
-              as String,
-      tokenIdHex: null == tokenIdHex
-          ? _value.tokenIdHex
-          : tokenIdHex // ignore: cast_nullable_to_non_nullable
-              as String,
-      owner: null == owner
-          ? _value.owner
-          : owner // ignore: cast_nullable_to_non_nullable
-              as String,
-      mintInfo: freezed == mintInfo
-          ? _value.mintInfo
-          : mintInfo // ignore: cast_nullable_to_non_nullable
-              as MintInfo?,
-      metadata: freezed == metadata
-          ? _value.metadata
-          : metadata // ignore: cast_nullable_to_non_nullable
-              as TokenMetadata?,
-      awaitingMetadataUpdate: null == awaitingMetadataUpdate
-          ? _value.awaitingMetadataUpdate
-          : awaitingMetadataUpdate // ignore: cast_nullable_to_non_nullable
-              as bool,
-    ) as $Val);
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $MintInfoCopyWith<$Res>? get mintInfo {
-    if (_value.mintInfo == null) {
-      return null;
-    }
-
-    return $MintInfoCopyWith<$Res>(_value.mintInfo!, (value) {
-      return _then(_value.copyWith(mintInfo: value) as $Val);
-    });
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $TokenMetadataCopyWith<$Res>? get metadata {
-    if (_value.metadata == null) {
-      return null;
-    }
-
-    return $TokenMetadataCopyWith<$Res>(_value.metadata!, (value) {
-      return _then(_value.copyWith(metadata: value) as $Val);
-    });
-  }
-}
-
-/// @nodoc
-abstract class _$$NFTImplCopyWith<$Res> implements $NFTCopyWith<$Res> {
-  factory _$$NFTImplCopyWith(_$NFTImpl value, $Res Function(_$NFTImpl) then) =
-      __$$NFTImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call(
-      {@JsonKey(name: 'contract_address') String contractAddress,
-      @JsonKey(name: 'token_id') String tokenId,
-      @JsonKey(name: 'token_id_hex') String tokenIdHex,
-      String owner,
-      @JsonKey(name: 'mint_info') MintInfo? mintInfo,
-      TokenMetadata? metadata,
-      @JsonKey(name: 'awaiting_metadata_update') bool awaitingMetadataUpdate});
-
-  @override
-  $MintInfoCopyWith<$Res>? get mintInfo;
-  @override
-  $TokenMetadataCopyWith<$Res>? get metadata;
-}
-
-/// @nodoc
-class __$$NFTImplCopyWithImpl<$Res> extends _$NFTCopyWithImpl<$Res, _$NFTImpl>
-    implements _$$NFTImplCopyWith<$Res> {
-  __$$NFTImplCopyWithImpl(_$NFTImpl _value, $Res Function(_$NFTImpl) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? contractAddress = null,
-    Object? tokenId = null,
-    Object? tokenIdHex = null,
-    Object? owner = null,
-    Object? mintInfo = freezed,
-    Object? metadata = freezed,
-    Object? awaitingMetadataUpdate = null,
-  }) {
-    return _then(_$NFTImpl(
-      contractAddress: null == contractAddress
-          ? _value.contractAddress
-          : contractAddress // ignore: cast_nullable_to_non_nullable
-              as String,
-      tokenId: null == tokenId
-          ? _value.tokenId
-          : tokenId // ignore: cast_nullable_to_non_nullable
-              as String,
-      tokenIdHex: null == tokenIdHex
-          ? _value.tokenIdHex
-          : tokenIdHex // ignore: cast_nullable_to_non_nullable
-              as String,
-      owner: null == owner
-          ? _value.owner
-          : owner // ignore: cast_nullable_to_non_nullable
-              as String,
-      mintInfo: freezed == mintInfo
-          ? _value.mintInfo
-          : mintInfo // ignore: cast_nullable_to_non_nullable
-              as MintInfo?,
-      metadata: freezed == metadata
-          ? _value.metadata
-          : metadata // ignore: cast_nullable_to_non_nullable
-              as TokenMetadata?,
-      awaitingMetadataUpdate: null == awaitingMetadataUpdate
-          ? _value.awaitingMetadataUpdate
-          : awaitingMetadataUpdate // ignore: cast_nullable_to_non_nullable
-              as bool,
+    return _then(_self.copyWith(
+      result: null == result
+          ? _self.result
+          : result // ignore: cast_nullable_to_non_nullable
+              as NFT,
     ));
+  }
+
+  /// Create a copy of GetNFTResponse
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $NFTCopyWith<$Res> get result {
+    return $NFTCopyWith<$Res>(_self.result, (value) {
+      return _then(_self.copyWith(result: value));
+    });
+  }
+}
+
+/// Adds pattern-matching-related methods to [GetNFTResponse].
+extension GetNFTResponsePatterns on GetNFTResponse {
+  /// A variant of `map` that fallback to returning `orElse`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(_GetNFTResponse value)? $default, {
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _GetNFTResponse() when $default != null:
+        return $default(_that);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// Callbacks receives the raw object, upcasted.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case final Subclass2 value:
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(_GetNFTResponse value) $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _GetNFTResponse():
+        return $default(_that);
+      case _:
+        throw StateError('Unexpected subclass');
+    }
+  }
+
+  /// A variant of `map` that fallback to returning `null`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>(
+    TResult? Function(_GetNFTResponse value)? $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _GetNFTResponse() when $default != null:
+        return $default(_that);
+      case _:
+        return null;
+    }
+  }
+
+  /// A variant of `when` that fallback to an `orElse` callback.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(NFT result)? $default, {
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _GetNFTResponse() when $default != null:
+        return $default(_that.result);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// As opposed to `map`, this offers destructuring.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case Subclass2(:final field2):
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>(
+    TResult Function(NFT result) $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _GetNFTResponse():
+        return $default(_that.result);
+      case _:
+        throw StateError('Unexpected subclass');
+    }
+  }
+
+  /// A variant of `when` that fallback to returning `null`
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>(
+    TResult? Function(NFT result)? $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _GetNFTResponse() when $default != null:
+        return $default(_that.result);
+      case _:
+        return null;
+    }
   }
 }
 
 /// @nodoc
 @JsonSerializable()
-class _$NFTImpl implements _NFT {
-  _$NFTImpl(
+class _GetNFTResponse implements GetNFTResponse {
+  _GetNFTResponse({required this.result});
+  factory _GetNFTResponse.fromJson(Map<String, dynamic> json) =>
+      _$GetNFTResponseFromJson(json);
+
+  @override
+  final NFT result;
+
+  /// Create a copy of GetNFTResponse
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  _$GetNFTResponseCopyWith<_GetNFTResponse> get copyWith =>
+      __$GetNFTResponseCopyWithImpl<_GetNFTResponse>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$GetNFTResponseToJson(
+      this,
+    );
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _GetNFTResponse &&
+            (identical(other.result, result) || other.result == result));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(runtimeType, result);
+
+  @override
+  String toString() {
+    return 'GetNFTResponse(result: $result)';
+  }
+}
+
+/// @nodoc
+abstract mixin class _$GetNFTResponseCopyWith<$Res>
+    implements $GetNFTResponseCopyWith<$Res> {
+  factory _$GetNFTResponseCopyWith(
+          _GetNFTResponse value, $Res Function(_GetNFTResponse) _then) =
+      __$GetNFTResponseCopyWithImpl;
+  @override
+  @useResult
+  $Res call({NFT result});
+
+  @override
+  $NFTCopyWith<$Res> get result;
+}
+
+/// @nodoc
+class __$GetNFTResponseCopyWithImpl<$Res>
+    implements _$GetNFTResponseCopyWith<$Res> {
+  __$GetNFTResponseCopyWithImpl(this._self, this._then);
+
+  final _GetNFTResponse _self;
+  final $Res Function(_GetNFTResponse) _then;
+
+  /// Create a copy of GetNFTResponse
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $Res call({
+    Object? result = null,
+  }) {
+    return _then(_GetNFTResponse(
+      result: null == result
+          ? _self.result
+          : result // ignore: cast_nullable_to_non_nullable
+              as NFT,
+    ));
+  }
+
+  /// Create a copy of GetNFTResponse
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $NFTCopyWith<$Res> get result {
+    return $NFTCopyWith<$Res>(_self.result, (value) {
+      return _then(_self.copyWith(result: value));
+    });
+  }
+}
+
+/// @nodoc
+mixin _$NFT {
+  @JsonKey(name: 'contract_address')
+  String get contractAddress;
+  @JsonKey(name: 'token_id')
+  String get tokenId;
+  @JsonKey(name: 'token_id_hex')
+  String get tokenIdHex;
+  String get owner;
+  @JsonKey(name: 'mint_info')
+  MintInfo? get mintInfo;
+  TokenMetadata? get metadata;
+  @JsonKey(name: 'awaiting_metadata_update')
+  bool get awaitingMetadataUpdate;
+
+  /// Create a copy of NFT
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  $NFTCopyWith<NFT> get copyWith =>
+      _$NFTCopyWithImpl<NFT>(this as NFT, _$identity);
+
+  /// Serializes this NFT to a JSON map.
+  Map<String, dynamic> toJson();
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is NFT &&
+            (identical(other.contractAddress, contractAddress) ||
+                other.contractAddress == contractAddress) &&
+            (identical(other.tokenId, tokenId) || other.tokenId == tokenId) &&
+            (identical(other.tokenIdHex, tokenIdHex) ||
+                other.tokenIdHex == tokenIdHex) &&
+            (identical(other.owner, owner) || other.owner == owner) &&
+            (identical(other.mintInfo, mintInfo) ||
+                other.mintInfo == mintInfo) &&
+            (identical(other.metadata, metadata) ||
+                other.metadata == metadata) &&
+            (identical(other.awaitingMetadataUpdate, awaitingMetadataUpdate) ||
+                other.awaitingMetadataUpdate == awaitingMetadataUpdate));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(runtimeType, contractAddress, tokenId,
+      tokenIdHex, owner, mintInfo, metadata, awaitingMetadataUpdate);
+
+  @override
+  String toString() {
+    return 'NFT(contractAddress: $contractAddress, tokenId: $tokenId, tokenIdHex: $tokenIdHex, owner: $owner, mintInfo: $mintInfo, metadata: $metadata, awaitingMetadataUpdate: $awaitingMetadataUpdate)';
+  }
+}
+
+/// @nodoc
+abstract mixin class $NFTCopyWith<$Res> {
+  factory $NFTCopyWith(NFT value, $Res Function(NFT) _then) = _$NFTCopyWithImpl;
+  @useResult
+  $Res call(
+      {@JsonKey(name: 'contract_address') String contractAddress,
+      @JsonKey(name: 'token_id') String tokenId,
+      @JsonKey(name: 'token_id_hex') String tokenIdHex,
+      String owner,
+      @JsonKey(name: 'mint_info') MintInfo? mintInfo,
+      TokenMetadata? metadata,
+      @JsonKey(name: 'awaiting_metadata_update') bool awaitingMetadataUpdate});
+
+  $MintInfoCopyWith<$Res>? get mintInfo;
+  $TokenMetadataCopyWith<$Res>? get metadata;
+}
+
+/// @nodoc
+class _$NFTCopyWithImpl<$Res> implements $NFTCopyWith<$Res> {
+  _$NFTCopyWithImpl(this._self, this._then);
+
+  final NFT _self;
+  final $Res Function(NFT) _then;
+
+  /// Create a copy of NFT
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? contractAddress = null,
+    Object? tokenId = null,
+    Object? tokenIdHex = null,
+    Object? owner = null,
+    Object? mintInfo = freezed,
+    Object? metadata = freezed,
+    Object? awaitingMetadataUpdate = null,
+  }) {
+    return _then(_self.copyWith(
+      contractAddress: null == contractAddress
+          ? _self.contractAddress
+          : contractAddress // ignore: cast_nullable_to_non_nullable
+              as String,
+      tokenId: null == tokenId
+          ? _self.tokenId
+          : tokenId // ignore: cast_nullable_to_non_nullable
+              as String,
+      tokenIdHex: null == tokenIdHex
+          ? _self.tokenIdHex
+          : tokenIdHex // ignore: cast_nullable_to_non_nullable
+              as String,
+      owner: null == owner
+          ? _self.owner
+          : owner // ignore: cast_nullable_to_non_nullable
+              as String,
+      mintInfo: freezed == mintInfo
+          ? _self.mintInfo
+          : mintInfo // ignore: cast_nullable_to_non_nullable
+              as MintInfo?,
+      metadata: freezed == metadata
+          ? _self.metadata
+          : metadata // ignore: cast_nullable_to_non_nullable
+              as TokenMetadata?,
+      awaitingMetadataUpdate: null == awaitingMetadataUpdate
+          ? _self.awaitingMetadataUpdate
+          : awaitingMetadataUpdate // ignore: cast_nullable_to_non_nullable
+              as bool,
+    ));
+  }
+
+  /// Create a copy of NFT
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $MintInfoCopyWith<$Res>? get mintInfo {
+    if (_self.mintInfo == null) {
+      return null;
+    }
+
+    return $MintInfoCopyWith<$Res>(_self.mintInfo!, (value) {
+      return _then(_self.copyWith(mintInfo: value));
+    });
+  }
+
+  /// Create a copy of NFT
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $TokenMetadataCopyWith<$Res>? get metadata {
+    if (_self.metadata == null) {
+      return null;
+    }
+
+    return $TokenMetadataCopyWith<$Res>(_self.metadata!, (value) {
+      return _then(_self.copyWith(metadata: value));
+    });
+  }
+}
+
+/// Adds pattern-matching-related methods to [NFT].
+extension NFTPatterns on NFT {
+  /// A variant of `map` that fallback to returning `orElse`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(_NFT value)? $default, {
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _NFT() when $default != null:
+        return $default(_that);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// Callbacks receives the raw object, upcasted.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case final Subclass2 value:
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(_NFT value) $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _NFT():
+        return $default(_that);
+      case _:
+        throw StateError('Unexpected subclass');
+    }
+  }
+
+  /// A variant of `map` that fallback to returning `null`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>(
+    TResult? Function(_NFT value)? $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _NFT() when $default != null:
+        return $default(_that);
+      case _:
+        return null;
+    }
+  }
+
+  /// A variant of `when` that fallback to an `orElse` callback.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(
+            @JsonKey(name: 'contract_address') String contractAddress,
+            @JsonKey(name: 'token_id') String tokenId,
+            @JsonKey(name: 'token_id_hex') String tokenIdHex,
+            String owner,
+            @JsonKey(name: 'mint_info') MintInfo? mintInfo,
+            TokenMetadata? metadata,
+            @JsonKey(name: 'awaiting_metadata_update')
+            bool awaitingMetadataUpdate)?
+        $default, {
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _NFT() when $default != null:
+        return $default(
+            _that.contractAddress,
+            _that.tokenId,
+            _that.tokenIdHex,
+            _that.owner,
+            _that.mintInfo,
+            _that.metadata,
+            _that.awaitingMetadataUpdate);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// As opposed to `map`, this offers destructuring.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case Subclass2(:final field2):
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>(
+    TResult Function(
+            @JsonKey(name: 'contract_address') String contractAddress,
+            @JsonKey(name: 'token_id') String tokenId,
+            @JsonKey(name: 'token_id_hex') String tokenIdHex,
+            String owner,
+            @JsonKey(name: 'mint_info') MintInfo? mintInfo,
+            TokenMetadata? metadata,
+            @JsonKey(name: 'awaiting_metadata_update')
+            bool awaitingMetadataUpdate)
+        $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _NFT():
+        return $default(
+            _that.contractAddress,
+            _that.tokenId,
+            _that.tokenIdHex,
+            _that.owner,
+            _that.mintInfo,
+            _that.metadata,
+            _that.awaitingMetadataUpdate);
+      case _:
+        throw StateError('Unexpected subclass');
+    }
+  }
+
+  /// A variant of `when` that fallback to returning `null`
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>(
+    TResult? Function(
+            @JsonKey(name: 'contract_address') String contractAddress,
+            @JsonKey(name: 'token_id') String tokenId,
+            @JsonKey(name: 'token_id_hex') String tokenIdHex,
+            String owner,
+            @JsonKey(name: 'mint_info') MintInfo? mintInfo,
+            TokenMetadata? metadata,
+            @JsonKey(name: 'awaiting_metadata_update')
+            bool awaitingMetadataUpdate)?
+        $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _NFT() when $default != null:
+        return $default(
+            _that.contractAddress,
+            _that.tokenId,
+            _that.tokenIdHex,
+            _that.owner,
+            _that.mintInfo,
+            _that.metadata,
+            _that.awaitingMetadataUpdate);
+      case _:
+        return null;
+    }
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _NFT implements NFT {
+  _NFT(
       {@JsonKey(name: 'contract_address') required this.contractAddress,
       @JsonKey(name: 'token_id') required this.tokenId,
       @JsonKey(name: 'token_id_hex') required this.tokenIdHex,
@@ -529,9 +1033,7 @@ class _$NFTImpl implements _NFT {
       this.metadata,
       @JsonKey(name: 'awaiting_metadata_update')
       required this.awaitingMetadataUpdate});
-
-  factory _$NFTImpl.fromJson(Map<String, dynamic> json) =>
-      _$$NFTImplFromJson(json);
+  factory _NFT.fromJson(Map<String, dynamic> json) => _$NFTFromJson(json);
 
   @override
   @JsonKey(name: 'contract_address')
@@ -553,16 +1055,26 @@ class _$NFTImpl implements _NFT {
   @JsonKey(name: 'awaiting_metadata_update')
   final bool awaitingMetadataUpdate;
 
+  /// Create a copy of NFT
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  String toString() {
-    return 'NFT(contractAddress: $contractAddress, tokenId: $tokenId, tokenIdHex: $tokenIdHex, owner: $owner, mintInfo: $mintInfo, metadata: $metadata, awaitingMetadataUpdate: $awaitingMetadataUpdate)';
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  _$NFTCopyWith<_NFT> get copyWith =>
+      __$NFTCopyWithImpl<_NFT>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$NFTToJson(
+      this,
+    );
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$NFTImpl &&
+            other is _NFT &&
             (identical(other.contractAddress, contractAddress) ||
                 other.contractAddress == contractAddress) &&
             (identical(other.tokenId, tokenId) || other.tokenId == tokenId) &&
@@ -577,140 +1089,167 @@ class _$NFTImpl implements _NFT {
                 other.awaitingMetadataUpdate == awaitingMetadataUpdate));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, contractAddress, tokenId,
       tokenIdHex, owner, mintInfo, metadata, awaitingMetadataUpdate);
 
-  @JsonKey(ignore: true)
   @override
-  @pragma('vm:prefer-inline')
-  _$$NFTImplCopyWith<_$NFTImpl> get copyWith =>
-      __$$NFTImplCopyWithImpl<_$NFTImpl>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$NFTImplToJson(
-      this,
-    );
+  String toString() {
+    return 'NFT(contractAddress: $contractAddress, tokenId: $tokenId, tokenIdHex: $tokenIdHex, owner: $owner, mintInfo: $mintInfo, metadata: $metadata, awaitingMetadataUpdate: $awaitingMetadataUpdate)';
   }
 }
 
-abstract class _NFT implements NFT {
-  factory _NFT(
-      {@JsonKey(name: 'contract_address') required final String contractAddress,
-      @JsonKey(name: 'token_id') required final String tokenId,
-      @JsonKey(name: 'token_id_hex') required final String tokenIdHex,
-      required final String owner,
-      @JsonKey(name: 'mint_info') final MintInfo? mintInfo,
-      final TokenMetadata? metadata,
-      @JsonKey(name: 'awaiting_metadata_update')
-      required final bool awaitingMetadataUpdate}) = _$NFTImpl;
+/// @nodoc
+abstract mixin class _$NFTCopyWith<$Res> implements $NFTCopyWith<$Res> {
+  factory _$NFTCopyWith(_NFT value, $Res Function(_NFT) _then) =
+      __$NFTCopyWithImpl;
+  @override
+  @useResult
+  $Res call(
+      {@JsonKey(name: 'contract_address') String contractAddress,
+      @JsonKey(name: 'token_id') String tokenId,
+      @JsonKey(name: 'token_id_hex') String tokenIdHex,
+      String owner,
+      @JsonKey(name: 'mint_info') MintInfo? mintInfo,
+      TokenMetadata? metadata,
+      @JsonKey(name: 'awaiting_metadata_update') bool awaitingMetadataUpdate});
 
-  factory _NFT.fromJson(Map<String, dynamic> json) = _$NFTImpl.fromJson;
-
   @override
-  @JsonKey(name: 'contract_address')
-  String get contractAddress;
+  $MintInfoCopyWith<$Res>? get mintInfo;
   @override
-  @JsonKey(name: 'token_id')
-  String get tokenId;
-  @override
-  @JsonKey(name: 'token_id_hex')
-  String get tokenIdHex;
-  @override
-  String get owner;
-  @override
-  @JsonKey(name: 'mint_info')
-  MintInfo? get mintInfo;
-  @override
-  TokenMetadata? get metadata;
-  @override
-  @JsonKey(name: 'awaiting_metadata_update')
-  bool get awaitingMetadataUpdate;
-  @override
-  @JsonKey(ignore: true)
-  _$$NFTImplCopyWith<_$NFTImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  $TokenMetadataCopyWith<$Res>? get metadata;
 }
 
-MintInfo _$MintInfoFromJson(Map<String, dynamic> json) {
-  return _MintInfo.fromJson(json);
+/// @nodoc
+class __$NFTCopyWithImpl<$Res> implements _$NFTCopyWith<$Res> {
+  __$NFTCopyWithImpl(this._self, this._then);
+
+  final _NFT _self;
+  final $Res Function(_NFT) _then;
+
+  /// Create a copy of NFT
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $Res call({
+    Object? contractAddress = null,
+    Object? tokenId = null,
+    Object? tokenIdHex = null,
+    Object? owner = null,
+    Object? mintInfo = freezed,
+    Object? metadata = freezed,
+    Object? awaitingMetadataUpdate = null,
+  }) {
+    return _then(_NFT(
+      contractAddress: null == contractAddress
+          ? _self.contractAddress
+          : contractAddress // ignore: cast_nullable_to_non_nullable
+              as String,
+      tokenId: null == tokenId
+          ? _self.tokenId
+          : tokenId // ignore: cast_nullable_to_non_nullable
+              as String,
+      tokenIdHex: null == tokenIdHex
+          ? _self.tokenIdHex
+          : tokenIdHex // ignore: cast_nullable_to_non_nullable
+              as String,
+      owner: null == owner
+          ? _self.owner
+          : owner // ignore: cast_nullable_to_non_nullable
+              as String,
+      mintInfo: freezed == mintInfo
+          ? _self.mintInfo
+          : mintInfo // ignore: cast_nullable_to_non_nullable
+              as MintInfo?,
+      metadata: freezed == metadata
+          ? _self.metadata
+          : metadata // ignore: cast_nullable_to_non_nullable
+              as TokenMetadata?,
+      awaitingMetadataUpdate: null == awaitingMetadataUpdate
+          ? _self.awaitingMetadataUpdate
+          : awaitingMetadataUpdate // ignore: cast_nullable_to_non_nullable
+              as bool,
+    ));
+  }
+
+  /// Create a copy of NFT
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $MintInfoCopyWith<$Res>? get mintInfo {
+    if (_self.mintInfo == null) {
+      return null;
+    }
+
+    return $MintInfoCopyWith<$Res>(_self.mintInfo!, (value) {
+      return _then(_self.copyWith(mintInfo: value));
+    });
+  }
+
+  /// Create a copy of NFT
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $TokenMetadataCopyWith<$Res>? get metadata {
+    if (_self.metadata == null) {
+      return null;
+    }
+
+    return $TokenMetadataCopyWith<$Res>(_self.metadata!, (value) {
+      return _then(_self.copyWith(metadata: value));
+    });
+  }
 }
 
 /// @nodoc
 mixin _$MintInfo {
-  String get address => throw _privateConstructorUsedError;
-  int get timestamp => throw _privateConstructorUsedError;
+  String get address;
+  int get timestamp;
   @JsonKey(name: 'transaction_hash')
-  String get transactionHash => throw _privateConstructorUsedError;
+  String get transactionHash;
   @JsonKey(name: 'block_number')
-  int? get blockNumber => throw _privateConstructorUsedError;
+  int? get blockNumber;
 
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
-  $MintInfoCopyWith<MintInfo> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $MintInfoCopyWith<$Res> {
-  factory $MintInfoCopyWith(MintInfo value, $Res Function(MintInfo) then) =
-      _$MintInfoCopyWithImpl<$Res, MintInfo>;
-  @useResult
-  $Res call(
-      {String address,
-      int timestamp,
-      @JsonKey(name: 'transaction_hash') String transactionHash,
-      @JsonKey(name: 'block_number') int? blockNumber});
-}
-
-/// @nodoc
-class _$MintInfoCopyWithImpl<$Res, $Val extends MintInfo>
-    implements $MintInfoCopyWith<$Res> {
-  _$MintInfoCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-
+  /// Create a copy of MintInfo
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @pragma('vm:prefer-inline')
+  $MintInfoCopyWith<MintInfo> get copyWith =>
+      _$MintInfoCopyWithImpl<MintInfo>(this as MintInfo, _$identity);
+
+  /// Serializes this MintInfo to a JSON map.
+  Map<String, dynamic> toJson();
+
   @override
-  $Res call({
-    Object? address = null,
-    Object? timestamp = null,
-    Object? transactionHash = null,
-    Object? blockNumber = freezed,
-  }) {
-    return _then(_value.copyWith(
-      address: null == address
-          ? _value.address
-          : address // ignore: cast_nullable_to_non_nullable
-              as String,
-      timestamp: null == timestamp
-          ? _value.timestamp
-          : timestamp // ignore: cast_nullable_to_non_nullable
-              as int,
-      transactionHash: null == transactionHash
-          ? _value.transactionHash
-          : transactionHash // ignore: cast_nullable_to_non_nullable
-              as String,
-      blockNumber: freezed == blockNumber
-          ? _value.blockNumber
-          : blockNumber // ignore: cast_nullable_to_non_nullable
-              as int?,
-    ) as $Val);
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is MintInfo &&
+            (identical(other.address, address) || other.address == address) &&
+            (identical(other.timestamp, timestamp) ||
+                other.timestamp == timestamp) &&
+            (identical(other.transactionHash, transactionHash) ||
+                other.transactionHash == transactionHash) &&
+            (identical(other.blockNumber, blockNumber) ||
+                other.blockNumber == blockNumber));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(
+      runtimeType, address, timestamp, transactionHash, blockNumber);
+
+  @override
+  String toString() {
+    return 'MintInfo(address: $address, timestamp: $timestamp, transactionHash: $transactionHash, blockNumber: $blockNumber)';
   }
 }
 
 /// @nodoc
-abstract class _$$MintInfoImplCopyWith<$Res>
-    implements $MintInfoCopyWith<$Res> {
-  factory _$$MintInfoImplCopyWith(
-          _$MintInfoImpl value, $Res Function(_$MintInfoImpl) then) =
-      __$$MintInfoImplCopyWithImpl<$Res>;
-  @override
+abstract mixin class $MintInfoCopyWith<$Res> {
+  factory $MintInfoCopyWith(MintInfo value, $Res Function(MintInfo) _then) =
+      _$MintInfoCopyWithImpl;
   @useResult
   $Res call(
       {String address,
@@ -720,13 +1259,14 @@ abstract class _$$MintInfoImplCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$MintInfoImplCopyWithImpl<$Res>
-    extends _$MintInfoCopyWithImpl<$Res, _$MintInfoImpl>
-    implements _$$MintInfoImplCopyWith<$Res> {
-  __$$MintInfoImplCopyWithImpl(
-      _$MintInfoImpl _value, $Res Function(_$MintInfoImpl) _then)
-      : super(_value, _then);
+class _$MintInfoCopyWithImpl<$Res> implements $MintInfoCopyWith<$Res> {
+  _$MintInfoCopyWithImpl(this._self, this._then);
 
+  final MintInfo _self;
+  final $Res Function(MintInfo) _then;
+
+  /// Create a copy of MintInfo
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -735,38 +1275,212 @@ class __$$MintInfoImplCopyWithImpl<$Res>
     Object? transactionHash = null,
     Object? blockNumber = freezed,
   }) {
-    return _then(_$MintInfoImpl(
+    return _then(_self.copyWith(
       address: null == address
-          ? _value.address
+          ? _self.address
           : address // ignore: cast_nullable_to_non_nullable
               as String,
       timestamp: null == timestamp
-          ? _value.timestamp
+          ? _self.timestamp
           : timestamp // ignore: cast_nullable_to_non_nullable
               as int,
       transactionHash: null == transactionHash
-          ? _value.transactionHash
+          ? _self.transactionHash
           : transactionHash // ignore: cast_nullable_to_non_nullable
               as String,
       blockNumber: freezed == blockNumber
-          ? _value.blockNumber
+          ? _self.blockNumber
           : blockNumber // ignore: cast_nullable_to_non_nullable
               as int?,
     ));
   }
 }
 
+/// Adds pattern-matching-related methods to [MintInfo].
+extension MintInfoPatterns on MintInfo {
+  /// A variant of `map` that fallback to returning `orElse`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(_MintInfo value)? $default, {
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _MintInfo() when $default != null:
+        return $default(_that);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// Callbacks receives the raw object, upcasted.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case final Subclass2 value:
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(_MintInfo value) $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _MintInfo():
+        return $default(_that);
+      case _:
+        throw StateError('Unexpected subclass');
+    }
+  }
+
+  /// A variant of `map` that fallback to returning `null`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>(
+    TResult? Function(_MintInfo value)? $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _MintInfo() when $default != null:
+        return $default(_that);
+      case _:
+        return null;
+    }
+  }
+
+  /// A variant of `when` that fallback to an `orElse` callback.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(
+            String address,
+            int timestamp,
+            @JsonKey(name: 'transaction_hash') String transactionHash,
+            @JsonKey(name: 'block_number') int? blockNumber)?
+        $default, {
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _MintInfo() when $default != null:
+        return $default(_that.address, _that.timestamp, _that.transactionHash,
+            _that.blockNumber);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// As opposed to `map`, this offers destructuring.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case Subclass2(:final field2):
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>(
+    TResult Function(
+            String address,
+            int timestamp,
+            @JsonKey(name: 'transaction_hash') String transactionHash,
+            @JsonKey(name: 'block_number') int? blockNumber)
+        $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _MintInfo():
+        return $default(_that.address, _that.timestamp, _that.transactionHash,
+            _that.blockNumber);
+      case _:
+        throw StateError('Unexpected subclass');
+    }
+  }
+
+  /// A variant of `when` that fallback to returning `null`
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>(
+    TResult? Function(
+            String address,
+            int timestamp,
+            @JsonKey(name: 'transaction_hash') String transactionHash,
+            @JsonKey(name: 'block_number') int? blockNumber)?
+        $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _MintInfo() when $default != null:
+        return $default(_that.address, _that.timestamp, _that.transactionHash,
+            _that.blockNumber);
+      case _:
+        return null;
+    }
+  }
+}
+
 /// @nodoc
 @JsonSerializable()
-class _$MintInfoImpl implements _MintInfo {
-  _$MintInfoImpl(
+class _MintInfo implements MintInfo {
+  _MintInfo(
       {required this.address,
       required this.timestamp,
       @JsonKey(name: 'transaction_hash') required this.transactionHash,
       @JsonKey(name: 'block_number') this.blockNumber});
-
-  factory _$MintInfoImpl.fromJson(Map<String, dynamic> json) =>
-      _$$MintInfoImplFromJson(json);
+  factory _MintInfo.fromJson(Map<String, dynamic> json) =>
+      _$MintInfoFromJson(json);
 
   @override
   final String address;
@@ -779,16 +1493,26 @@ class _$MintInfoImpl implements _MintInfo {
   @JsonKey(name: 'block_number')
   final int? blockNumber;
 
+  /// Create a copy of MintInfo
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  String toString() {
-    return 'MintInfo(address: $address, timestamp: $timestamp, transactionHash: $transactionHash, blockNumber: $blockNumber)';
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  _$MintInfoCopyWith<_MintInfo> get copyWith =>
+      __$MintInfoCopyWithImpl<_MintInfo>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$MintInfoToJson(
+      this,
+    );
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$MintInfoImpl &&
+            other is _MintInfo &&
             (identical(other.address, address) || other.address == address) &&
             (identical(other.timestamp, timestamp) ||
                 other.timestamp == timestamp) &&
@@ -798,183 +1522,340 @@ class _$MintInfoImpl implements _MintInfo {
                 other.blockNumber == blockNumber));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType, address, timestamp, transactionHash, blockNumber);
 
-  @JsonKey(ignore: true)
   @override
-  @pragma('vm:prefer-inline')
-  _$$MintInfoImplCopyWith<_$MintInfoImpl> get copyWith =>
-      __$$MintInfoImplCopyWithImpl<_$MintInfoImpl>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$MintInfoImplToJson(
-      this,
-    );
-  }
-}
-
-abstract class _MintInfo implements MintInfo {
-  factory _MintInfo(
-      {required final String address,
-      required final int timestamp,
-      @JsonKey(name: 'transaction_hash') required final String transactionHash,
-      @JsonKey(name: 'block_number') final int? blockNumber}) = _$MintInfoImpl;
-
-  factory _MintInfo.fromJson(Map<String, dynamic> json) =
-      _$MintInfoImpl.fromJson;
-
-  @override
-  String get address;
-  @override
-  int get timestamp;
-  @override
-  @JsonKey(name: 'transaction_hash')
-  String get transactionHash;
-  @override
-  @JsonKey(name: 'block_number')
-  int? get blockNumber;
-  @override
-  @JsonKey(ignore: true)
-  _$$MintInfoImplCopyWith<_$MintInfoImpl> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-TokenMetadata _$TokenMetadataFromJson(Map<String, dynamic> json) {
-  return _TokenMetadata.fromJson(json);
-}
-
-/// @nodoc
-mixin _$TokenMetadata {
-  NormalizedMetadata get normalized => throw _privateConstructorUsedError;
-  String get raw => throw _privateConstructorUsedError;
-  @JsonKey(name: 'metadata_updated_at')
-  int get metadataUpdatedAt => throw _privateConstructorUsedError;
-
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
-  $TokenMetadataCopyWith<TokenMetadata> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $TokenMetadataCopyWith<$Res> {
-  factory $TokenMetadataCopyWith(
-          TokenMetadata value, $Res Function(TokenMetadata) then) =
-      _$TokenMetadataCopyWithImpl<$Res, TokenMetadata>;
-  @useResult
-  $Res call(
-      {NormalizedMetadata normalized,
-      String raw,
-      @JsonKey(name: 'metadata_updated_at') int metadataUpdatedAt});
-
-  $NormalizedMetadataCopyWith<$Res> get normalized;
-}
-
-/// @nodoc
-class _$TokenMetadataCopyWithImpl<$Res, $Val extends TokenMetadata>
-    implements $TokenMetadataCopyWith<$Res> {
-  _$TokenMetadataCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? normalized = null,
-    Object? raw = null,
-    Object? metadataUpdatedAt = null,
-  }) {
-    return _then(_value.copyWith(
-      normalized: null == normalized
-          ? _value.normalized
-          : normalized // ignore: cast_nullable_to_non_nullable
-              as NormalizedMetadata,
-      raw: null == raw
-          ? _value.raw
-          : raw // ignore: cast_nullable_to_non_nullable
-              as String,
-      metadataUpdatedAt: null == metadataUpdatedAt
-          ? _value.metadataUpdatedAt
-          : metadataUpdatedAt // ignore: cast_nullable_to_non_nullable
-              as int,
-    ) as $Val);
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $NormalizedMetadataCopyWith<$Res> get normalized {
-    return $NormalizedMetadataCopyWith<$Res>(_value.normalized, (value) {
-      return _then(_value.copyWith(normalized: value) as $Val);
-    });
+  String toString() {
+    return 'MintInfo(address: $address, timestamp: $timestamp, transactionHash: $transactionHash, blockNumber: $blockNumber)';
   }
 }
 
 /// @nodoc
-abstract class _$$TokenMetadataImplCopyWith<$Res>
-    implements $TokenMetadataCopyWith<$Res> {
-  factory _$$TokenMetadataImplCopyWith(
-          _$TokenMetadataImpl value, $Res Function(_$TokenMetadataImpl) then) =
-      __$$TokenMetadataImplCopyWithImpl<$Res>;
+abstract mixin class _$MintInfoCopyWith<$Res>
+    implements $MintInfoCopyWith<$Res> {
+  factory _$MintInfoCopyWith(_MintInfo value, $Res Function(_MintInfo) _then) =
+      __$MintInfoCopyWithImpl;
   @override
   @useResult
   $Res call(
-      {NormalizedMetadata normalized,
-      String raw,
-      @JsonKey(name: 'metadata_updated_at') int metadataUpdatedAt});
-
-  @override
-  $NormalizedMetadataCopyWith<$Res> get normalized;
+      {String address,
+      int timestamp,
+      @JsonKey(name: 'transaction_hash') String transactionHash,
+      @JsonKey(name: 'block_number') int? blockNumber});
 }
 
 /// @nodoc
-class __$$TokenMetadataImplCopyWithImpl<$Res>
-    extends _$TokenMetadataCopyWithImpl<$Res, _$TokenMetadataImpl>
-    implements _$$TokenMetadataImplCopyWith<$Res> {
-  __$$TokenMetadataImplCopyWithImpl(
-      _$TokenMetadataImpl _value, $Res Function(_$TokenMetadataImpl) _then)
-      : super(_value, _then);
+class __$MintInfoCopyWithImpl<$Res> implements _$MintInfoCopyWith<$Res> {
+  __$MintInfoCopyWithImpl(this._self, this._then);
 
-  @pragma('vm:prefer-inline')
+  final _MintInfo _self;
+  final $Res Function(_MintInfo) _then;
+
+  /// Create a copy of MintInfo
+  /// with the given fields replaced by the non-null parameter values.
   @override
+  @pragma('vm:prefer-inline')
   $Res call({
-    Object? normalized = null,
-    Object? raw = null,
-    Object? metadataUpdatedAt = null,
+    Object? address = null,
+    Object? timestamp = null,
+    Object? transactionHash = null,
+    Object? blockNumber = freezed,
   }) {
-    return _then(_$TokenMetadataImpl(
-      normalized: null == normalized
-          ? _value.normalized
-          : normalized // ignore: cast_nullable_to_non_nullable
-              as NormalizedMetadata,
-      raw: null == raw
-          ? _value.raw
-          : raw // ignore: cast_nullable_to_non_nullable
+    return _then(_MintInfo(
+      address: null == address
+          ? _self.address
+          : address // ignore: cast_nullable_to_non_nullable
               as String,
-      metadataUpdatedAt: null == metadataUpdatedAt
-          ? _value.metadataUpdatedAt
-          : metadataUpdatedAt // ignore: cast_nullable_to_non_nullable
+      timestamp: null == timestamp
+          ? _self.timestamp
+          : timestamp // ignore: cast_nullable_to_non_nullable
               as int,
+      transactionHash: null == transactionHash
+          ? _self.transactionHash
+          : transactionHash // ignore: cast_nullable_to_non_nullable
+              as String,
+      blockNumber: freezed == blockNumber
+          ? _self.blockNumber
+          : blockNumber // ignore: cast_nullable_to_non_nullable
+              as int?,
     ));
   }
 }
 
 /// @nodoc
+mixin _$TokenMetadata {
+  NormalizedMetadata get normalized;
+  String get raw;
+  @JsonKey(name: 'metadata_updated_at')
+  int get metadataUpdatedAt;
+
+  /// Create a copy of TokenMetadata
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  $TokenMetadataCopyWith<TokenMetadata> get copyWith =>
+      _$TokenMetadataCopyWithImpl<TokenMetadata>(
+          this as TokenMetadata, _$identity);
+
+  /// Serializes this TokenMetadata to a JSON map.
+  Map<String, dynamic> toJson();
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is TokenMetadata &&
+            (identical(other.normalized, normalized) ||
+                other.normalized == normalized) &&
+            (identical(other.raw, raw) || other.raw == raw) &&
+            (identical(other.metadataUpdatedAt, metadataUpdatedAt) ||
+                other.metadataUpdatedAt == metadataUpdatedAt));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, normalized, raw, metadataUpdatedAt);
+
+  @override
+  String toString() {
+    return 'TokenMetadata(normalized: $normalized, raw: $raw, metadataUpdatedAt: $metadataUpdatedAt)';
+  }
+}
+
+/// @nodoc
+abstract mixin class $TokenMetadataCopyWith<$Res> {
+  factory $TokenMetadataCopyWith(
+          TokenMetadata value, $Res Function(TokenMetadata) _then) =
+      _$TokenMetadataCopyWithImpl;
+  @useResult
+  $Res call(
+      {NormalizedMetadata normalized,
+      String raw,
+      @JsonKey(name: 'metadata_updated_at') int metadataUpdatedAt});
+
+  $NormalizedMetadataCopyWith<$Res> get normalized;
+}
+
+/// @nodoc
+class _$TokenMetadataCopyWithImpl<$Res>
+    implements $TokenMetadataCopyWith<$Res> {
+  _$TokenMetadataCopyWithImpl(this._self, this._then);
+
+  final TokenMetadata _self;
+  final $Res Function(TokenMetadata) _then;
+
+  /// Create a copy of TokenMetadata
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? normalized = null,
+    Object? raw = null,
+    Object? metadataUpdatedAt = null,
+  }) {
+    return _then(_self.copyWith(
+      normalized: null == normalized
+          ? _self.normalized
+          : normalized // ignore: cast_nullable_to_non_nullable
+              as NormalizedMetadata,
+      raw: null == raw
+          ? _self.raw
+          : raw // ignore: cast_nullable_to_non_nullable
+              as String,
+      metadataUpdatedAt: null == metadataUpdatedAt
+          ? _self.metadataUpdatedAt
+          : metadataUpdatedAt // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
+  }
+
+  /// Create a copy of TokenMetadata
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $NormalizedMetadataCopyWith<$Res> get normalized {
+    return $NormalizedMetadataCopyWith<$Res>(_self.normalized, (value) {
+      return _then(_self.copyWith(normalized: value));
+    });
+  }
+}
+
+/// Adds pattern-matching-related methods to [TokenMetadata].
+extension TokenMetadataPatterns on TokenMetadata {
+  /// A variant of `map` that fallback to returning `orElse`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(_TokenMetadata value)? $default, {
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _TokenMetadata() when $default != null:
+        return $default(_that);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// Callbacks receives the raw object, upcasted.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case final Subclass2 value:
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(_TokenMetadata value) $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _TokenMetadata():
+        return $default(_that);
+      case _:
+        throw StateError('Unexpected subclass');
+    }
+  }
+
+  /// A variant of `map` that fallback to returning `null`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>(
+    TResult? Function(_TokenMetadata value)? $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _TokenMetadata() when $default != null:
+        return $default(_that);
+      case _:
+        return null;
+    }
+  }
+
+  /// A variant of `when` that fallback to an `orElse` callback.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(NormalizedMetadata normalized, String raw,
+            @JsonKey(name: 'metadata_updated_at') int metadataUpdatedAt)?
+        $default, {
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _TokenMetadata() when $default != null:
+        return $default(_that.normalized, _that.raw, _that.metadataUpdatedAt);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// As opposed to `map`, this offers destructuring.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case Subclass2(:final field2):
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>(
+    TResult Function(NormalizedMetadata normalized, String raw,
+            @JsonKey(name: 'metadata_updated_at') int metadataUpdatedAt)
+        $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _TokenMetadata():
+        return $default(_that.normalized, _that.raw, _that.metadataUpdatedAt);
+      case _:
+        throw StateError('Unexpected subclass');
+    }
+  }
+
+  /// A variant of `when` that fallback to returning `null`
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>(
+    TResult? Function(NormalizedMetadata normalized, String raw,
+            @JsonKey(name: 'metadata_updated_at') int metadataUpdatedAt)?
+        $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _TokenMetadata() when $default != null:
+        return $default(_that.normalized, _that.raw, _that.metadataUpdatedAt);
+      case _:
+        return null;
+    }
+  }
+}
+
+/// @nodoc
 @JsonSerializable()
-class _$TokenMetadataImpl implements _TokenMetadata {
-  _$TokenMetadataImpl(
+class _TokenMetadata implements TokenMetadata {
+  _TokenMetadata(
       {required this.normalized,
       required this.raw,
       @JsonKey(name: 'metadata_updated_at') required this.metadataUpdatedAt});
-
-  factory _$TokenMetadataImpl.fromJson(Map<String, dynamic> json) =>
-      _$$TokenMetadataImplFromJson(json);
+  factory _TokenMetadata.fromJson(Map<String, dynamic> json) =>
+      _$TokenMetadataFromJson(json);
 
   @override
   final NormalizedMetadata normalized;
@@ -984,16 +1865,26 @@ class _$TokenMetadataImpl implements _TokenMetadata {
   @JsonKey(name: 'metadata_updated_at')
   final int metadataUpdatedAt;
 
+  /// Create a copy of TokenMetadata
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  String toString() {
-    return 'TokenMetadata(normalized: $normalized, raw: $raw, metadataUpdatedAt: $metadataUpdatedAt)';
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  _$TokenMetadataCopyWith<_TokenMetadata> get copyWith =>
+      __$TokenMetadataCopyWithImpl<_TokenMetadata>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$TokenMetadataToJson(
+      this,
+    );
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$TokenMetadataImpl &&
+            other is _TokenMetadata &&
             (identical(other.normalized, normalized) ||
                 other.normalized == normalized) &&
             (identical(other.raw, raw) || other.raw == raw) &&
@@ -1001,196 +1892,174 @@ class _$TokenMetadataImpl implements _TokenMetadata {
                 other.metadataUpdatedAt == metadataUpdatedAt));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode =>
       Object.hash(runtimeType, normalized, raw, metadataUpdatedAt);
 
-  @JsonKey(ignore: true)
   @override
-  @pragma('vm:prefer-inline')
-  _$$TokenMetadataImplCopyWith<_$TokenMetadataImpl> get copyWith =>
-      __$$TokenMetadataImplCopyWithImpl<_$TokenMetadataImpl>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$TokenMetadataImplToJson(
-      this,
-    );
+  String toString() {
+    return 'TokenMetadata(normalized: $normalized, raw: $raw, metadataUpdatedAt: $metadataUpdatedAt)';
   }
 }
 
-abstract class _TokenMetadata implements TokenMetadata {
-  factory _TokenMetadata(
-      {required final NormalizedMetadata normalized,
-      required final String raw,
-      @JsonKey(name: 'metadata_updated_at')
-      required final int metadataUpdatedAt}) = _$TokenMetadataImpl;
+/// @nodoc
+abstract mixin class _$TokenMetadataCopyWith<$Res>
+    implements $TokenMetadataCopyWith<$Res> {
+  factory _$TokenMetadataCopyWith(
+          _TokenMetadata value, $Res Function(_TokenMetadata) _then) =
+      __$TokenMetadataCopyWithImpl;
+  @override
+  @useResult
+  $Res call(
+      {NormalizedMetadata normalized,
+      String raw,
+      @JsonKey(name: 'metadata_updated_at') int metadataUpdatedAt});
 
-  factory _TokenMetadata.fromJson(Map<String, dynamic> json) =
-      _$TokenMetadataImpl.fromJson;
-
   @override
-  NormalizedMetadata get normalized;
-  @override
-  String get raw;
-  @override
-  @JsonKey(name: 'metadata_updated_at')
-  int get metadataUpdatedAt;
-  @override
-  @JsonKey(ignore: true)
-  _$$TokenMetadataImplCopyWith<_$TokenMetadataImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  $NormalizedMetadataCopyWith<$Res> get normalized;
 }
 
-NormalizedMetadata _$NormalizedMetadataFromJson(Map<String, dynamic> json) {
-  return _NormalizedMetadata.fromJson(json);
+/// @nodoc
+class __$TokenMetadataCopyWithImpl<$Res>
+    implements _$TokenMetadataCopyWith<$Res> {
+  __$TokenMetadataCopyWithImpl(this._self, this._then);
+
+  final _TokenMetadata _self;
+  final $Res Function(_TokenMetadata) _then;
+
+  /// Create a copy of TokenMetadata
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $Res call({
+    Object? normalized = null,
+    Object? raw = null,
+    Object? metadataUpdatedAt = null,
+  }) {
+    return _then(_TokenMetadata(
+      normalized: null == normalized
+          ? _self.normalized
+          : normalized // ignore: cast_nullable_to_non_nullable
+              as NormalizedMetadata,
+      raw: null == raw
+          ? _self.raw
+          : raw // ignore: cast_nullable_to_non_nullable
+              as String,
+      metadataUpdatedAt: null == metadataUpdatedAt
+          ? _self.metadataUpdatedAt
+          : metadataUpdatedAt // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
+  }
+
+  /// Create a copy of TokenMetadata
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $NormalizedMetadataCopyWith<$Res> get normalized {
+    return $NormalizedMetadataCopyWith<$Res>(_self.normalized, (value) {
+      return _then(_self.copyWith(normalized: value));
+    });
+  }
 }
 
 /// @nodoc
 mixin _$NormalizedMetadata {
   @JsonKey(name: 'image_mime_type')
-  String get imageMimeType => throw _privateConstructorUsedError;
+  String get imageMimeType;
   @JsonKey(name: 'image_key')
-  String get imageKey => throw _privateConstructorUsedError;
-  String get image => throw _privateConstructorUsedError;
+  String get imageKey;
+  String get image;
   @JsonKey(name: 'image_data')
-  String get imageData => throw _privateConstructorUsedError;
+  String get imageData;
   @JsonKey(name: 'external_url')
-  String get externalUrl => throw _privateConstructorUsedError;
-  String get description => throw _privateConstructorUsedError;
-  String get name => throw _privateConstructorUsedError;
-  List<Attribute> get attributes => throw _privateConstructorUsedError;
+  String get externalUrl;
+  String get description;
+  String get name;
+  List<Attribute> get attributes;
   @JsonKey(name: 'background_color')
-  String get backgroundColor => throw _privateConstructorUsedError;
+  String get backgroundColor;
   @JsonKey(name: 'animation_url')
-  String get animationUrl => throw _privateConstructorUsedError;
+  String get animationUrl;
   @JsonKey(name: 'animation_key')
-  String get animationKey => throw _privateConstructorUsedError;
+  String get animationKey;
   @JsonKey(name: 'animation_mime_type')
-  String get animationMimeType => throw _privateConstructorUsedError;
+  String get animationMimeType;
   @JsonKey(name: 'youtube_url')
-  String get youtubeUrl => throw _privateConstructorUsedError;
+  String get youtubeUrl;
 
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
-  $NormalizedMetadataCopyWith<NormalizedMetadata> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $NormalizedMetadataCopyWith<$Res> {
-  factory $NormalizedMetadataCopyWith(
-          NormalizedMetadata value, $Res Function(NormalizedMetadata) then) =
-      _$NormalizedMetadataCopyWithImpl<$Res, NormalizedMetadata>;
-  @useResult
-  $Res call(
-      {@JsonKey(name: 'image_mime_type') String imageMimeType,
-      @JsonKey(name: 'image_key') String imageKey,
-      String image,
-      @JsonKey(name: 'image_data') String imageData,
-      @JsonKey(name: 'external_url') String externalUrl,
-      String description,
-      String name,
-      List<Attribute> attributes,
-      @JsonKey(name: 'background_color') String backgroundColor,
-      @JsonKey(name: 'animation_url') String animationUrl,
-      @JsonKey(name: 'animation_key') String animationKey,
-      @JsonKey(name: 'animation_mime_type') String animationMimeType,
-      @JsonKey(name: 'youtube_url') String youtubeUrl});
-}
-
-/// @nodoc
-class _$NormalizedMetadataCopyWithImpl<$Res, $Val extends NormalizedMetadata>
-    implements $NormalizedMetadataCopyWith<$Res> {
-  _$NormalizedMetadataCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-
+  /// Create a copy of NormalizedMetadata
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @pragma('vm:prefer-inline')
+  $NormalizedMetadataCopyWith<NormalizedMetadata> get copyWith =>
+      _$NormalizedMetadataCopyWithImpl<NormalizedMetadata>(
+          this as NormalizedMetadata, _$identity);
+
+  /// Serializes this NormalizedMetadata to a JSON map.
+  Map<String, dynamic> toJson();
+
   @override
-  $Res call({
-    Object? imageMimeType = null,
-    Object? imageKey = null,
-    Object? image = null,
-    Object? imageData = null,
-    Object? externalUrl = null,
-    Object? description = null,
-    Object? name = null,
-    Object? attributes = null,
-    Object? backgroundColor = null,
-    Object? animationUrl = null,
-    Object? animationKey = null,
-    Object? animationMimeType = null,
-    Object? youtubeUrl = null,
-  }) {
-    return _then(_value.copyWith(
-      imageMimeType: null == imageMimeType
-          ? _value.imageMimeType
-          : imageMimeType // ignore: cast_nullable_to_non_nullable
-              as String,
-      imageKey: null == imageKey
-          ? _value.imageKey
-          : imageKey // ignore: cast_nullable_to_non_nullable
-              as String,
-      image: null == image
-          ? _value.image
-          : image // ignore: cast_nullable_to_non_nullable
-              as String,
-      imageData: null == imageData
-          ? _value.imageData
-          : imageData // ignore: cast_nullable_to_non_nullable
-              as String,
-      externalUrl: null == externalUrl
-          ? _value.externalUrl
-          : externalUrl // ignore: cast_nullable_to_non_nullable
-              as String,
-      description: null == description
-          ? _value.description
-          : description // ignore: cast_nullable_to_non_nullable
-              as String,
-      name: null == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
-              as String,
-      attributes: null == attributes
-          ? _value.attributes
-          : attributes // ignore: cast_nullable_to_non_nullable
-              as List<Attribute>,
-      backgroundColor: null == backgroundColor
-          ? _value.backgroundColor
-          : backgroundColor // ignore: cast_nullable_to_non_nullable
-              as String,
-      animationUrl: null == animationUrl
-          ? _value.animationUrl
-          : animationUrl // ignore: cast_nullable_to_non_nullable
-              as String,
-      animationKey: null == animationKey
-          ? _value.animationKey
-          : animationKey // ignore: cast_nullable_to_non_nullable
-              as String,
-      animationMimeType: null == animationMimeType
-          ? _value.animationMimeType
-          : animationMimeType // ignore: cast_nullable_to_non_nullable
-              as String,
-      youtubeUrl: null == youtubeUrl
-          ? _value.youtubeUrl
-          : youtubeUrl // ignore: cast_nullable_to_non_nullable
-              as String,
-    ) as $Val);
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is NormalizedMetadata &&
+            (identical(other.imageMimeType, imageMimeType) ||
+                other.imageMimeType == imageMimeType) &&
+            (identical(other.imageKey, imageKey) ||
+                other.imageKey == imageKey) &&
+            (identical(other.image, image) || other.image == image) &&
+            (identical(other.imageData, imageData) ||
+                other.imageData == imageData) &&
+            (identical(other.externalUrl, externalUrl) ||
+                other.externalUrl == externalUrl) &&
+            (identical(other.description, description) ||
+                other.description == description) &&
+            (identical(other.name, name) || other.name == name) &&
+            const DeepCollectionEquality()
+                .equals(other.attributes, attributes) &&
+            (identical(other.backgroundColor, backgroundColor) ||
+                other.backgroundColor == backgroundColor) &&
+            (identical(other.animationUrl, animationUrl) ||
+                other.animationUrl == animationUrl) &&
+            (identical(other.animationKey, animationKey) ||
+                other.animationKey == animationKey) &&
+            (identical(other.animationMimeType, animationMimeType) ||
+                other.animationMimeType == animationMimeType) &&
+            (identical(other.youtubeUrl, youtubeUrl) ||
+                other.youtubeUrl == youtubeUrl));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(
+      runtimeType,
+      imageMimeType,
+      imageKey,
+      image,
+      imageData,
+      externalUrl,
+      description,
+      name,
+      const DeepCollectionEquality().hash(attributes),
+      backgroundColor,
+      animationUrl,
+      animationKey,
+      animationMimeType,
+      youtubeUrl);
+
+  @override
+  String toString() {
+    return 'NormalizedMetadata(imageMimeType: $imageMimeType, imageKey: $imageKey, image: $image, imageData: $imageData, externalUrl: $externalUrl, description: $description, name: $name, attributes: $attributes, backgroundColor: $backgroundColor, animationUrl: $animationUrl, animationKey: $animationKey, animationMimeType: $animationMimeType, youtubeUrl: $youtubeUrl)';
   }
 }
 
 /// @nodoc
-abstract class _$$NormalizedMetadataImplCopyWith<$Res>
-    implements $NormalizedMetadataCopyWith<$Res> {
-  factory _$$NormalizedMetadataImplCopyWith(_$NormalizedMetadataImpl value,
-          $Res Function(_$NormalizedMetadataImpl) then) =
-      __$$NormalizedMetadataImplCopyWithImpl<$Res>;
-  @override
+abstract mixin class $NormalizedMetadataCopyWith<$Res> {
+  factory $NormalizedMetadataCopyWith(
+          NormalizedMetadata value, $Res Function(NormalizedMetadata) _then) =
+      _$NormalizedMetadataCopyWithImpl;
   @useResult
   $Res call(
       {@JsonKey(name: 'image_mime_type') String imageMimeType,
@@ -1209,13 +2078,15 @@ abstract class _$$NormalizedMetadataImplCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$NormalizedMetadataImplCopyWithImpl<$Res>
-    extends _$NormalizedMetadataCopyWithImpl<$Res, _$NormalizedMetadataImpl>
-    implements _$$NormalizedMetadataImplCopyWith<$Res> {
-  __$$NormalizedMetadataImplCopyWithImpl(_$NormalizedMetadataImpl _value,
-      $Res Function(_$NormalizedMetadataImpl) _then)
-      : super(_value, _then);
+class _$NormalizedMetadataCopyWithImpl<$Res>
+    implements $NormalizedMetadataCopyWith<$Res> {
+  _$NormalizedMetadataCopyWithImpl(this._self, this._then);
 
+  final NormalizedMetadata _self;
+  final $Res Function(NormalizedMetadata) _then;
+
+  /// Create a copy of NormalizedMetadata
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1233,67 +2104,305 @@ class __$$NormalizedMetadataImplCopyWithImpl<$Res>
     Object? animationMimeType = null,
     Object? youtubeUrl = null,
   }) {
-    return _then(_$NormalizedMetadataImpl(
+    return _then(_self.copyWith(
       imageMimeType: null == imageMimeType
-          ? _value.imageMimeType
+          ? _self.imageMimeType
           : imageMimeType // ignore: cast_nullable_to_non_nullable
               as String,
       imageKey: null == imageKey
-          ? _value.imageKey
+          ? _self.imageKey
           : imageKey // ignore: cast_nullable_to_non_nullable
               as String,
       image: null == image
-          ? _value.image
+          ? _self.image
           : image // ignore: cast_nullable_to_non_nullable
               as String,
       imageData: null == imageData
-          ? _value.imageData
+          ? _self.imageData
           : imageData // ignore: cast_nullable_to_non_nullable
               as String,
       externalUrl: null == externalUrl
-          ? _value.externalUrl
+          ? _self.externalUrl
           : externalUrl // ignore: cast_nullable_to_non_nullable
               as String,
       description: null == description
-          ? _value.description
+          ? _self.description
           : description // ignore: cast_nullable_to_non_nullable
               as String,
       name: null == name
-          ? _value.name
+          ? _self.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
       attributes: null == attributes
-          ? _value._attributes
+          ? _self.attributes
           : attributes // ignore: cast_nullable_to_non_nullable
               as List<Attribute>,
       backgroundColor: null == backgroundColor
-          ? _value.backgroundColor
+          ? _self.backgroundColor
           : backgroundColor // ignore: cast_nullable_to_non_nullable
               as String,
       animationUrl: null == animationUrl
-          ? _value.animationUrl
+          ? _self.animationUrl
           : animationUrl // ignore: cast_nullable_to_non_nullable
               as String,
       animationKey: null == animationKey
-          ? _value.animationKey
+          ? _self.animationKey
           : animationKey // ignore: cast_nullable_to_non_nullable
               as String,
       animationMimeType: null == animationMimeType
-          ? _value.animationMimeType
+          ? _self.animationMimeType
           : animationMimeType // ignore: cast_nullable_to_non_nullable
               as String,
       youtubeUrl: null == youtubeUrl
-          ? _value.youtubeUrl
+          ? _self.youtubeUrl
           : youtubeUrl // ignore: cast_nullable_to_non_nullable
               as String,
     ));
   }
 }
 
+/// Adds pattern-matching-related methods to [NormalizedMetadata].
+extension NormalizedMetadataPatterns on NormalizedMetadata {
+  /// A variant of `map` that fallback to returning `orElse`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(_NormalizedMetadata value)? $default, {
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _NormalizedMetadata() when $default != null:
+        return $default(_that);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// Callbacks receives the raw object, upcasted.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case final Subclass2 value:
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(_NormalizedMetadata value) $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _NormalizedMetadata():
+        return $default(_that);
+      case _:
+        throw StateError('Unexpected subclass');
+    }
+  }
+
+  /// A variant of `map` that fallback to returning `null`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>(
+    TResult? Function(_NormalizedMetadata value)? $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _NormalizedMetadata() when $default != null:
+        return $default(_that);
+      case _:
+        return null;
+    }
+  }
+
+  /// A variant of `when` that fallback to an `orElse` callback.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(
+            @JsonKey(name: 'image_mime_type') String imageMimeType,
+            @JsonKey(name: 'image_key') String imageKey,
+            String image,
+            @JsonKey(name: 'image_data') String imageData,
+            @JsonKey(name: 'external_url') String externalUrl,
+            String description,
+            String name,
+            List<Attribute> attributes,
+            @JsonKey(name: 'background_color') String backgroundColor,
+            @JsonKey(name: 'animation_url') String animationUrl,
+            @JsonKey(name: 'animation_key') String animationKey,
+            @JsonKey(name: 'animation_mime_type') String animationMimeType,
+            @JsonKey(name: 'youtube_url') String youtubeUrl)?
+        $default, {
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _NormalizedMetadata() when $default != null:
+        return $default(
+            _that.imageMimeType,
+            _that.imageKey,
+            _that.image,
+            _that.imageData,
+            _that.externalUrl,
+            _that.description,
+            _that.name,
+            _that.attributes,
+            _that.backgroundColor,
+            _that.animationUrl,
+            _that.animationKey,
+            _that.animationMimeType,
+            _that.youtubeUrl);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// As opposed to `map`, this offers destructuring.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case Subclass2(:final field2):
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>(
+    TResult Function(
+            @JsonKey(name: 'image_mime_type') String imageMimeType,
+            @JsonKey(name: 'image_key') String imageKey,
+            String image,
+            @JsonKey(name: 'image_data') String imageData,
+            @JsonKey(name: 'external_url') String externalUrl,
+            String description,
+            String name,
+            List<Attribute> attributes,
+            @JsonKey(name: 'background_color') String backgroundColor,
+            @JsonKey(name: 'animation_url') String animationUrl,
+            @JsonKey(name: 'animation_key') String animationKey,
+            @JsonKey(name: 'animation_mime_type') String animationMimeType,
+            @JsonKey(name: 'youtube_url') String youtubeUrl)
+        $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _NormalizedMetadata():
+        return $default(
+            _that.imageMimeType,
+            _that.imageKey,
+            _that.image,
+            _that.imageData,
+            _that.externalUrl,
+            _that.description,
+            _that.name,
+            _that.attributes,
+            _that.backgroundColor,
+            _that.animationUrl,
+            _that.animationKey,
+            _that.animationMimeType,
+            _that.youtubeUrl);
+      case _:
+        throw StateError('Unexpected subclass');
+    }
+  }
+
+  /// A variant of `when` that fallback to returning `null`
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>(
+    TResult? Function(
+            @JsonKey(name: 'image_mime_type') String imageMimeType,
+            @JsonKey(name: 'image_key') String imageKey,
+            String image,
+            @JsonKey(name: 'image_data') String imageData,
+            @JsonKey(name: 'external_url') String externalUrl,
+            String description,
+            String name,
+            List<Attribute> attributes,
+            @JsonKey(name: 'background_color') String backgroundColor,
+            @JsonKey(name: 'animation_url') String animationUrl,
+            @JsonKey(name: 'animation_key') String animationKey,
+            @JsonKey(name: 'animation_mime_type') String animationMimeType,
+            @JsonKey(name: 'youtube_url') String youtubeUrl)?
+        $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _NormalizedMetadata() when $default != null:
+        return $default(
+            _that.imageMimeType,
+            _that.imageKey,
+            _that.image,
+            _that.imageData,
+            _that.externalUrl,
+            _that.description,
+            _that.name,
+            _that.attributes,
+            _that.backgroundColor,
+            _that.animationUrl,
+            _that.animationKey,
+            _that.animationMimeType,
+            _that.youtubeUrl);
+      case _:
+        return null;
+    }
+  }
+}
+
 /// @nodoc
 @JsonSerializable()
-class _$NormalizedMetadataImpl implements _NormalizedMetadata {
-  _$NormalizedMetadataImpl(
+class _NormalizedMetadata implements NormalizedMetadata {
+  _NormalizedMetadata(
       {@JsonKey(name: 'image_mime_type') required this.imageMimeType,
       @JsonKey(name: 'image_key') required this.imageKey,
       required this.image,
@@ -1308,9 +2417,8 @@ class _$NormalizedMetadataImpl implements _NormalizedMetadata {
       @JsonKey(name: 'animation_mime_type') required this.animationMimeType,
       @JsonKey(name: 'youtube_url') required this.youtubeUrl})
       : _attributes = attributes;
-
-  factory _$NormalizedMetadataImpl.fromJson(Map<String, dynamic> json) =>
-      _$$NormalizedMetadataImplFromJson(json);
+  factory _NormalizedMetadata.fromJson(Map<String, dynamic> json) =>
+      _$NormalizedMetadataFromJson(json);
 
   @override
   @JsonKey(name: 'image_mime_type')
@@ -1354,16 +2462,26 @@ class _$NormalizedMetadataImpl implements _NormalizedMetadata {
   @JsonKey(name: 'youtube_url')
   final String youtubeUrl;
 
+  /// Create a copy of NormalizedMetadata
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  String toString() {
-    return 'NormalizedMetadata(imageMimeType: $imageMimeType, imageKey: $imageKey, image: $image, imageData: $imageData, externalUrl: $externalUrl, description: $description, name: $name, attributes: $attributes, backgroundColor: $backgroundColor, animationUrl: $animationUrl, animationKey: $animationKey, animationMimeType: $animationMimeType, youtubeUrl: $youtubeUrl)';
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  _$NormalizedMetadataCopyWith<_NormalizedMetadata> get copyWith =>
+      __$NormalizedMetadataCopyWithImpl<_NormalizedMetadata>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$NormalizedMetadataToJson(
+      this,
+    );
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$NormalizedMetadataImpl &&
+            other is _NormalizedMetadata &&
             (identical(other.imageMimeType, imageMimeType) ||
                 other.imageMimeType == imageMimeType) &&
             (identical(other.imageKey, imageKey) ||
@@ -1390,7 +2508,7 @@ class _$NormalizedMetadataImpl implements _NormalizedMetadata {
                 other.youtubeUrl == youtubeUrl));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -1408,202 +2526,376 @@ class _$NormalizedMetadataImpl implements _NormalizedMetadata {
       animationMimeType,
       youtubeUrl);
 
-  @JsonKey(ignore: true)
   @override
-  @pragma('vm:prefer-inline')
-  _$$NormalizedMetadataImplCopyWith<_$NormalizedMetadataImpl> get copyWith =>
-      __$$NormalizedMetadataImplCopyWithImpl<_$NormalizedMetadataImpl>(
-          this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$NormalizedMetadataImplToJson(
-      this,
-    );
-  }
-}
-
-abstract class _NormalizedMetadata implements NormalizedMetadata {
-  factory _NormalizedMetadata(
-      {@JsonKey(name: 'image_mime_type') required final String imageMimeType,
-      @JsonKey(name: 'image_key') required final String imageKey,
-      required final String image,
-      @JsonKey(name: 'image_data') required final String imageData,
-      @JsonKey(name: 'external_url') required final String externalUrl,
-      required final String description,
-      required final String name,
-      required final List<Attribute> attributes,
-      @JsonKey(name: 'background_color') required final String backgroundColor,
-      @JsonKey(name: 'animation_url') required final String animationUrl,
-      @JsonKey(name: 'animation_key') required final String animationKey,
-      @JsonKey(name: 'animation_mime_type')
-      required final String animationMimeType,
-      @JsonKey(name: 'youtube_url')
-      required final String youtubeUrl}) = _$NormalizedMetadataImpl;
-
-  factory _NormalizedMetadata.fromJson(Map<String, dynamic> json) =
-      _$NormalizedMetadataImpl.fromJson;
-
-  @override
-  @JsonKey(name: 'image_mime_type')
-  String get imageMimeType;
-  @override
-  @JsonKey(name: 'image_key')
-  String get imageKey;
-  @override
-  String get image;
-  @override
-  @JsonKey(name: 'image_data')
-  String get imageData;
-  @override
-  @JsonKey(name: 'external_url')
-  String get externalUrl;
-  @override
-  String get description;
-  @override
-  String get name;
-  @override
-  List<Attribute> get attributes;
-  @override
-  @JsonKey(name: 'background_color')
-  String get backgroundColor;
-  @override
-  @JsonKey(name: 'animation_url')
-  String get animationUrl;
-  @override
-  @JsonKey(name: 'animation_key')
-  String get animationKey;
-  @override
-  @JsonKey(name: 'animation_mime_type')
-  String get animationMimeType;
-  @override
-  @JsonKey(name: 'youtube_url')
-  String get youtubeUrl;
-  @override
-  @JsonKey(ignore: true)
-  _$$NormalizedMetadataImplCopyWith<_$NormalizedMetadataImpl> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-Attribute _$AttributeFromJson(Map<String, dynamic> json) {
-  return _Attribute.fromJson(json);
-}
-
-/// @nodoc
-mixin _$Attribute {
-  @JsonKey(name: 'display_type')
-  String? get displayType => throw _privateConstructorUsedError;
-  @JsonKey(name: 'trait_type')
-  String get traitType => throw _privateConstructorUsedError;
-  String get value => throw _privateConstructorUsedError;
-
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
-  $AttributeCopyWith<Attribute> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $AttributeCopyWith<$Res> {
-  factory $AttributeCopyWith(Attribute value, $Res Function(Attribute) then) =
-      _$AttributeCopyWithImpl<$Res, Attribute>;
-  @useResult
-  $Res call(
-      {@JsonKey(name: 'display_type') String? displayType,
-      @JsonKey(name: 'trait_type') String traitType,
-      String value});
-}
-
-/// @nodoc
-class _$AttributeCopyWithImpl<$Res, $Val extends Attribute>
-    implements $AttributeCopyWith<$Res> {
-  _$AttributeCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? displayType = freezed,
-    Object? traitType = null,
-    Object? value = null,
-  }) {
-    return _then(_value.copyWith(
-      displayType: freezed == displayType
-          ? _value.displayType
-          : displayType // ignore: cast_nullable_to_non_nullable
-              as String?,
-      traitType: null == traitType
-          ? _value.traitType
-          : traitType // ignore: cast_nullable_to_non_nullable
-              as String,
-      value: null == value
-          ? _value.value
-          : value // ignore: cast_nullable_to_non_nullable
-              as String,
-    ) as $Val);
+  String toString() {
+    return 'NormalizedMetadata(imageMimeType: $imageMimeType, imageKey: $imageKey, image: $image, imageData: $imageData, externalUrl: $externalUrl, description: $description, name: $name, attributes: $attributes, backgroundColor: $backgroundColor, animationUrl: $animationUrl, animationKey: $animationKey, animationMimeType: $animationMimeType, youtubeUrl: $youtubeUrl)';
   }
 }
 
 /// @nodoc
-abstract class _$$AttributeImplCopyWith<$Res>
-    implements $AttributeCopyWith<$Res> {
-  factory _$$AttributeImplCopyWith(
-          _$AttributeImpl value, $Res Function(_$AttributeImpl) then) =
-      __$$AttributeImplCopyWithImpl<$Res>;
+abstract mixin class _$NormalizedMetadataCopyWith<$Res>
+    implements $NormalizedMetadataCopyWith<$Res> {
+  factory _$NormalizedMetadataCopyWith(
+          _NormalizedMetadata value, $Res Function(_NormalizedMetadata) _then) =
+      __$NormalizedMetadataCopyWithImpl;
   @override
   @useResult
   $Res call(
-      {@JsonKey(name: 'display_type') String? displayType,
-      @JsonKey(name: 'trait_type') String traitType,
-      String value});
+      {@JsonKey(name: 'image_mime_type') String imageMimeType,
+      @JsonKey(name: 'image_key') String imageKey,
+      String image,
+      @JsonKey(name: 'image_data') String imageData,
+      @JsonKey(name: 'external_url') String externalUrl,
+      String description,
+      String name,
+      List<Attribute> attributes,
+      @JsonKey(name: 'background_color') String backgroundColor,
+      @JsonKey(name: 'animation_url') String animationUrl,
+      @JsonKey(name: 'animation_key') String animationKey,
+      @JsonKey(name: 'animation_mime_type') String animationMimeType,
+      @JsonKey(name: 'youtube_url') String youtubeUrl});
 }
 
 /// @nodoc
-class __$$AttributeImplCopyWithImpl<$Res>
-    extends _$AttributeCopyWithImpl<$Res, _$AttributeImpl>
-    implements _$$AttributeImplCopyWith<$Res> {
-  __$$AttributeImplCopyWithImpl(
-      _$AttributeImpl _value, $Res Function(_$AttributeImpl) _then)
-      : super(_value, _then);
+class __$NormalizedMetadataCopyWithImpl<$Res>
+    implements _$NormalizedMetadataCopyWith<$Res> {
+  __$NormalizedMetadataCopyWithImpl(this._self, this._then);
 
-  @pragma('vm:prefer-inline')
+  final _NormalizedMetadata _self;
+  final $Res Function(_NormalizedMetadata) _then;
+
+  /// Create a copy of NormalizedMetadata
+  /// with the given fields replaced by the non-null parameter values.
   @override
+  @pragma('vm:prefer-inline')
   $Res call({
-    Object? displayType = freezed,
-    Object? traitType = null,
-    Object? value = null,
+    Object? imageMimeType = null,
+    Object? imageKey = null,
+    Object? image = null,
+    Object? imageData = null,
+    Object? externalUrl = null,
+    Object? description = null,
+    Object? name = null,
+    Object? attributes = null,
+    Object? backgroundColor = null,
+    Object? animationUrl = null,
+    Object? animationKey = null,
+    Object? animationMimeType = null,
+    Object? youtubeUrl = null,
   }) {
-    return _then(_$AttributeImpl(
-      displayType: freezed == displayType
-          ? _value.displayType
-          : displayType // ignore: cast_nullable_to_non_nullable
-              as String?,
-      traitType: null == traitType
-          ? _value.traitType
-          : traitType // ignore: cast_nullable_to_non_nullable
+    return _then(_NormalizedMetadata(
+      imageMimeType: null == imageMimeType
+          ? _self.imageMimeType
+          : imageMimeType // ignore: cast_nullable_to_non_nullable
               as String,
-      value: null == value
-          ? _value.value
-          : value // ignore: cast_nullable_to_non_nullable
+      imageKey: null == imageKey
+          ? _self.imageKey
+          : imageKey // ignore: cast_nullable_to_non_nullable
+              as String,
+      image: null == image
+          ? _self.image
+          : image // ignore: cast_nullable_to_non_nullable
+              as String,
+      imageData: null == imageData
+          ? _self.imageData
+          : imageData // ignore: cast_nullable_to_non_nullable
+              as String,
+      externalUrl: null == externalUrl
+          ? _self.externalUrl
+          : externalUrl // ignore: cast_nullable_to_non_nullable
+              as String,
+      description: null == description
+          ? _self.description
+          : description // ignore: cast_nullable_to_non_nullable
+              as String,
+      name: null == name
+          ? _self.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
+      attributes: null == attributes
+          ? _self._attributes
+          : attributes // ignore: cast_nullable_to_non_nullable
+              as List<Attribute>,
+      backgroundColor: null == backgroundColor
+          ? _self.backgroundColor
+          : backgroundColor // ignore: cast_nullable_to_non_nullable
+              as String,
+      animationUrl: null == animationUrl
+          ? _self.animationUrl
+          : animationUrl // ignore: cast_nullable_to_non_nullable
+              as String,
+      animationKey: null == animationKey
+          ? _self.animationKey
+          : animationKey // ignore: cast_nullable_to_non_nullable
+              as String,
+      animationMimeType: null == animationMimeType
+          ? _self.animationMimeType
+          : animationMimeType // ignore: cast_nullable_to_non_nullable
+              as String,
+      youtubeUrl: null == youtubeUrl
+          ? _self.youtubeUrl
+          : youtubeUrl // ignore: cast_nullable_to_non_nullable
               as String,
     ));
   }
 }
 
 /// @nodoc
+mixin _$Attribute {
+  @JsonKey(name: 'display_type')
+  String? get displayType;
+  @JsonKey(name: 'trait_type')
+  String get traitType;
+  String get value;
+
+  /// Create a copy of Attribute
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  $AttributeCopyWith<Attribute> get copyWith =>
+      _$AttributeCopyWithImpl<Attribute>(this as Attribute, _$identity);
+
+  /// Serializes this Attribute to a JSON map.
+  Map<String, dynamic> toJson();
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is Attribute &&
+            (identical(other.displayType, displayType) ||
+                other.displayType == displayType) &&
+            (identical(other.traitType, traitType) ||
+                other.traitType == traitType) &&
+            (identical(other.value, value) || other.value == value));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(runtimeType, displayType, traitType, value);
+
+  @override
+  String toString() {
+    return 'Attribute(displayType: $displayType, traitType: $traitType, value: $value)';
+  }
+}
+
+/// @nodoc
+abstract mixin class $AttributeCopyWith<$Res> {
+  factory $AttributeCopyWith(Attribute value, $Res Function(Attribute) _then) =
+      _$AttributeCopyWithImpl;
+  @useResult
+  $Res call(
+      {@JsonKey(name: 'display_type') String? displayType,
+      @JsonKey(name: 'trait_type') String traitType,
+      String value});
+}
+
+/// @nodoc
+class _$AttributeCopyWithImpl<$Res> implements $AttributeCopyWith<$Res> {
+  _$AttributeCopyWithImpl(this._self, this._then);
+
+  final Attribute _self;
+  final $Res Function(Attribute) _then;
+
+  /// Create a copy of Attribute
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? displayType = freezed,
+    Object? traitType = null,
+    Object? value = null,
+  }) {
+    return _then(_self.copyWith(
+      displayType: freezed == displayType
+          ? _self.displayType
+          : displayType // ignore: cast_nullable_to_non_nullable
+              as String?,
+      traitType: null == traitType
+          ? _self.traitType
+          : traitType // ignore: cast_nullable_to_non_nullable
+              as String,
+      value: null == value
+          ? _self.value
+          : value // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// Adds pattern-matching-related methods to [Attribute].
+extension AttributePatterns on Attribute {
+  /// A variant of `map` that fallback to returning `orElse`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(_Attribute value)? $default, {
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _Attribute() when $default != null:
+        return $default(_that);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// Callbacks receives the raw object, upcasted.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case final Subclass2 value:
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(_Attribute value) $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _Attribute():
+        return $default(_that);
+      case _:
+        throw StateError('Unexpected subclass');
+    }
+  }
+
+  /// A variant of `map` that fallback to returning `null`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>(
+    TResult? Function(_Attribute value)? $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _Attribute() when $default != null:
+        return $default(_that);
+      case _:
+        return null;
+    }
+  }
+
+  /// A variant of `when` that fallback to an `orElse` callback.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(@JsonKey(name: 'display_type') String? displayType,
+            @JsonKey(name: 'trait_type') String traitType, String value)?
+        $default, {
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _Attribute() when $default != null:
+        return $default(_that.displayType, _that.traitType, _that.value);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// As opposed to `map`, this offers destructuring.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case Subclass2(:final field2):
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>(
+    TResult Function(@JsonKey(name: 'display_type') String? displayType,
+            @JsonKey(name: 'trait_type') String traitType, String value)
+        $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _Attribute():
+        return $default(_that.displayType, _that.traitType, _that.value);
+      case _:
+        throw StateError('Unexpected subclass');
+    }
+  }
+
+  /// A variant of `when` that fallback to returning `null`
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>(
+    TResult? Function(@JsonKey(name: 'display_type') String? displayType,
+            @JsonKey(name: 'trait_type') String traitType, String value)?
+        $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _Attribute() when $default != null:
+        return $default(_that.displayType, _that.traitType, _that.value);
+      case _:
+        return null;
+    }
+  }
+}
+
+/// @nodoc
 @JsonSerializable()
-class _$AttributeImpl implements _Attribute {
-  _$AttributeImpl(
+class _Attribute implements Attribute {
+  _Attribute(
       {@JsonKey(name: 'display_type') this.displayType,
       @JsonKey(name: 'trait_type') required this.traitType,
       required this.value});
-
-  factory _$AttributeImpl.fromJson(Map<String, dynamic> json) =>
-      _$$AttributeImplFromJson(json);
+  factory _Attribute.fromJson(Map<String, dynamic> json) =>
+      _$AttributeFromJson(json);
 
   @override
   @JsonKey(name: 'display_type')
@@ -1614,16 +2906,26 @@ class _$AttributeImpl implements _Attribute {
   @override
   final String value;
 
+  /// Create a copy of Attribute
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  String toString() {
-    return 'Attribute(displayType: $displayType, traitType: $traitType, value: $value)';
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  _$AttributeCopyWith<_Attribute> get copyWith =>
+      __$AttributeCopyWithImpl<_Attribute>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$AttributeToJson(
+      this,
+    );
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$AttributeImpl &&
+            other is _Attribute &&
             (identical(other.displayType, displayType) ||
                 other.displayType == displayType) &&
             (identical(other.traitType, traitType) ||
@@ -1631,43 +2933,61 @@ class _$AttributeImpl implements _Attribute {
             (identical(other.value, value) || other.value == value));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, displayType, traitType, value);
 
-  @JsonKey(ignore: true)
   @override
-  @pragma('vm:prefer-inline')
-  _$$AttributeImplCopyWith<_$AttributeImpl> get copyWith =>
-      __$$AttributeImplCopyWithImpl<_$AttributeImpl>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$AttributeImplToJson(
-      this,
-    );
+  String toString() {
+    return 'Attribute(displayType: $displayType, traitType: $traitType, value: $value)';
   }
 }
 
-abstract class _Attribute implements Attribute {
-  factory _Attribute(
-      {@JsonKey(name: 'display_type') final String? displayType,
-      @JsonKey(name: 'trait_type') required final String traitType,
-      required final String value}) = _$AttributeImpl;
-
-  factory _Attribute.fromJson(Map<String, dynamic> json) =
-      _$AttributeImpl.fromJson;
-
+/// @nodoc
+abstract mixin class _$AttributeCopyWith<$Res>
+    implements $AttributeCopyWith<$Res> {
+  factory _$AttributeCopyWith(
+          _Attribute value, $Res Function(_Attribute) _then) =
+      __$AttributeCopyWithImpl;
   @override
-  @JsonKey(name: 'display_type')
-  String? get displayType;
-  @override
-  @JsonKey(name: 'trait_type')
-  String get traitType;
-  @override
-  String get value;
-  @override
-  @JsonKey(ignore: true)
-  _$$AttributeImplCopyWith<_$AttributeImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  @useResult
+  $Res call(
+      {@JsonKey(name: 'display_type') String? displayType,
+      @JsonKey(name: 'trait_type') String traitType,
+      String value});
 }
+
+/// @nodoc
+class __$AttributeCopyWithImpl<$Res> implements _$AttributeCopyWith<$Res> {
+  __$AttributeCopyWithImpl(this._self, this._then);
+
+  final _Attribute _self;
+  final $Res Function(_Attribute) _then;
+
+  /// Create a copy of Attribute
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $Res call({
+    Object? displayType = freezed,
+    Object? traitType = null,
+    Object? value = null,
+  }) {
+    return _then(_Attribute(
+      displayType: freezed == displayType
+          ? _self.displayType
+          : displayType // ignore: cast_nullable_to_non_nullable
+              as String?,
+      traitType: null == traitType
+          ? _self.traitType
+          : traitType // ignore: cast_nullable_to_non_nullable
+              as String,
+      value: null == value
+          ? _self.value
+          : value // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+// dart format on

@@ -1,5 +1,5 @@
-// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// coverage:ignore-file
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
@@ -9,52 +9,90 @@ part of 'function_invocation.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// dart format off
 T _$identity<T>(T value) => value;
-
-final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
-
-FunctionInvocation _$FunctionInvocationFromJson(Map<String, dynamic> json) {
-  return _FunctionInvocation.fromJson(json);
-}
 
 /// @nodoc
 mixin _$FunctionInvocation {
   @JsonKey(name: 'caller_address')
-  Felt get callerAddress => throw _privateConstructorUsedError;
+  Felt get callerAddress;
   @JsonKey(name: 'class_hash')
-  Felt get classHash => throw _privateConstructorUsedError;
+  Felt get classHash;
   @JsonKey(name: 'entry_point_type')
-  EntryPointType get entryPointType => throw _privateConstructorUsedError;
+  EntryPointType get entryPointType;
   @JsonKey(name: 'call_type')
-  CallType get callType => throw _privateConstructorUsedError;
-  List<Felt> get result => throw _privateConstructorUsedError;
-  List<FunctionInvocation> get calls => throw _privateConstructorUsedError;
+  CallType get callType;
+  List<Felt> get result;
+  List<FunctionInvocation> get calls;
   @JsonKey(defaultValue: [])
-  List<OrderedEvent> get events => throw _privateConstructorUsedError;
+  List<OrderedEvent> get events;
   @JsonKey(defaultValue: [])
-  List<OrderedMessage> get messages => throw _privateConstructorUsedError;
+  List<OrderedMessage> get messages;
   @JsonKey(name: 'execution_resources')
-  InnerCallExecutionResources get executionResources =>
-      throw _privateConstructorUsedError;
+  InnerCallExecutionResources get executionResources;
   @JsonKey(name: 'is_reverted', defaultValue: false)
-  bool get isReverted => throw _privateConstructorUsedError;
-
-  /// Serializes this FunctionInvocation to a JSON map.
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  bool get isReverted;
 
   /// Create a copy of FunctionInvocation
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
   $FunctionInvocationCopyWith<FunctionInvocation> get copyWith =>
-      throw _privateConstructorUsedError;
+      _$FunctionInvocationCopyWithImpl<FunctionInvocation>(
+          this as FunctionInvocation, _$identity);
+
+  /// Serializes this FunctionInvocation to a JSON map.
+  Map<String, dynamic> toJson();
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is FunctionInvocation &&
+            (identical(other.callerAddress, callerAddress) ||
+                other.callerAddress == callerAddress) &&
+            (identical(other.classHash, classHash) ||
+                other.classHash == classHash) &&
+            (identical(other.entryPointType, entryPointType) ||
+                other.entryPointType == entryPointType) &&
+            (identical(other.callType, callType) ||
+                other.callType == callType) &&
+            const DeepCollectionEquality().equals(other.result, result) &&
+            const DeepCollectionEquality().equals(other.calls, calls) &&
+            const DeepCollectionEquality().equals(other.events, events) &&
+            const DeepCollectionEquality().equals(other.messages, messages) &&
+            (identical(other.executionResources, executionResources) ||
+                other.executionResources == executionResources) &&
+            (identical(other.isReverted, isReverted) ||
+                other.isReverted == isReverted));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(
+      runtimeType,
+      callerAddress,
+      classHash,
+      entryPointType,
+      callType,
+      const DeepCollectionEquality().hash(result),
+      const DeepCollectionEquality().hash(calls),
+      const DeepCollectionEquality().hash(events),
+      const DeepCollectionEquality().hash(messages),
+      executionResources,
+      isReverted);
+
+  @override
+  String toString() {
+    return 'FunctionInvocation(callerAddress: $callerAddress, classHash: $classHash, entryPointType: $entryPointType, callType: $callType, result: $result, calls: $calls, events: $events, messages: $messages, executionResources: $executionResources, isReverted: $isReverted)';
+  }
 }
 
 /// @nodoc
-abstract class $FunctionInvocationCopyWith<$Res> {
+abstract mixin class $FunctionInvocationCopyWith<$Res> {
   factory $FunctionInvocationCopyWith(
-          FunctionInvocation value, $Res Function(FunctionInvocation) then) =
-      _$FunctionInvocationCopyWithImpl<$Res, FunctionInvocation>;
+          FunctionInvocation value, $Res Function(FunctionInvocation) _then) =
+      _$FunctionInvocationCopyWithImpl;
   @useResult
   $Res call(
       {@JsonKey(name: 'caller_address') Felt callerAddress,
@@ -73,14 +111,12 @@ abstract class $FunctionInvocationCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$FunctionInvocationCopyWithImpl<$Res, $Val extends FunctionInvocation>
+class _$FunctionInvocationCopyWithImpl<$Res>
     implements $FunctionInvocationCopyWith<$Res> {
-  _$FunctionInvocationCopyWithImpl(this._value, this._then);
+  _$FunctionInvocationCopyWithImpl(this._self, this._then);
 
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final FunctionInvocation _self;
+  final $Res Function(FunctionInvocation) _then;
 
   /// Create a copy of FunctionInvocation
   /// with the given fields replaced by the non-null parameter values.
@@ -98,48 +134,48 @@ class _$FunctionInvocationCopyWithImpl<$Res, $Val extends FunctionInvocation>
     Object? executionResources = null,
     Object? isReverted = null,
   }) {
-    return _then(_value.copyWith(
+    return _then(_self.copyWith(
       callerAddress: null == callerAddress
-          ? _value.callerAddress
+          ? _self.callerAddress
           : callerAddress // ignore: cast_nullable_to_non_nullable
               as Felt,
       classHash: null == classHash
-          ? _value.classHash
+          ? _self.classHash
           : classHash // ignore: cast_nullable_to_non_nullable
               as Felt,
       entryPointType: null == entryPointType
-          ? _value.entryPointType
+          ? _self.entryPointType
           : entryPointType // ignore: cast_nullable_to_non_nullable
               as EntryPointType,
       callType: null == callType
-          ? _value.callType
+          ? _self.callType
           : callType // ignore: cast_nullable_to_non_nullable
               as CallType,
       result: null == result
-          ? _value.result
+          ? _self.result
           : result // ignore: cast_nullable_to_non_nullable
               as List<Felt>,
       calls: null == calls
-          ? _value.calls
+          ? _self.calls
           : calls // ignore: cast_nullable_to_non_nullable
               as List<FunctionInvocation>,
       events: null == events
-          ? _value.events
+          ? _self.events
           : events // ignore: cast_nullable_to_non_nullable
               as List<OrderedEvent>,
       messages: null == messages
-          ? _value.messages
+          ? _self.messages
           : messages // ignore: cast_nullable_to_non_nullable
               as List<OrderedMessage>,
       executionResources: null == executionResources
-          ? _value.executionResources
+          ? _self.executionResources
           : executionResources // ignore: cast_nullable_to_non_nullable
               as InnerCallExecutionResources,
       isReverted: null == isReverted
-          ? _value.isReverted
+          ? _self.isReverted
           : isReverted // ignore: cast_nullable_to_non_nullable
               as bool,
-    ) as $Val);
+    ));
   }
 
   /// Create a copy of FunctionInvocation
@@ -147,111 +183,240 @@ class _$FunctionInvocationCopyWithImpl<$Res, $Val extends FunctionInvocation>
   @override
   @pragma('vm:prefer-inline')
   $InnerCallExecutionResourcesCopyWith<$Res> get executionResources {
-    return $InnerCallExecutionResourcesCopyWith<$Res>(_value.executionResources,
+    return $InnerCallExecutionResourcesCopyWith<$Res>(_self.executionResources,
         (value) {
-      return _then(_value.copyWith(executionResources: value) as $Val);
+      return _then(_self.copyWith(executionResources: value));
     });
   }
 }
 
-/// @nodoc
-abstract class _$$FunctionInvocationImplCopyWith<$Res>
-    implements $FunctionInvocationCopyWith<$Res> {
-  factory _$$FunctionInvocationImplCopyWith(_$FunctionInvocationImpl value,
-          $Res Function(_$FunctionInvocationImpl) then) =
-      __$$FunctionInvocationImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call(
-      {@JsonKey(name: 'caller_address') Felt callerAddress,
-      @JsonKey(name: 'class_hash') Felt classHash,
-      @JsonKey(name: 'entry_point_type') EntryPointType entryPointType,
-      @JsonKey(name: 'call_type') CallType callType,
-      List<Felt> result,
-      List<FunctionInvocation> calls,
-      @JsonKey(defaultValue: []) List<OrderedEvent> events,
-      @JsonKey(defaultValue: []) List<OrderedMessage> messages,
-      @JsonKey(name: 'execution_resources')
-      InnerCallExecutionResources executionResources,
-      @JsonKey(name: 'is_reverted', defaultValue: false) bool isReverted});
+/// Adds pattern-matching-related methods to [FunctionInvocation].
+extension FunctionInvocationPatterns on FunctionInvocation {
+  /// A variant of `map` that fallback to returning `orElse`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
 
-  @override
-  $InnerCallExecutionResourcesCopyWith<$Res> get executionResources;
-}
-
-/// @nodoc
-class __$$FunctionInvocationImplCopyWithImpl<$Res>
-    extends _$FunctionInvocationCopyWithImpl<$Res, _$FunctionInvocationImpl>
-    implements _$$FunctionInvocationImplCopyWith<$Res> {
-  __$$FunctionInvocationImplCopyWithImpl(_$FunctionInvocationImpl _value,
-      $Res Function(_$FunctionInvocationImpl) _then)
-      : super(_value, _then);
-
-  /// Create a copy of FunctionInvocation
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? callerAddress = null,
-    Object? classHash = null,
-    Object? entryPointType = null,
-    Object? callType = null,
-    Object? result = null,
-    Object? calls = null,
-    Object? events = null,
-    Object? messages = null,
-    Object? executionResources = null,
-    Object? isReverted = null,
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(_FunctionInvocation value)? $default, {
+    required TResult orElse(),
   }) {
-    return _then(_$FunctionInvocationImpl(
-      callerAddress: null == callerAddress
-          ? _value.callerAddress
-          : callerAddress // ignore: cast_nullable_to_non_nullable
-              as Felt,
-      classHash: null == classHash
-          ? _value.classHash
-          : classHash // ignore: cast_nullable_to_non_nullable
-              as Felt,
-      entryPointType: null == entryPointType
-          ? _value.entryPointType
-          : entryPointType // ignore: cast_nullable_to_non_nullable
-              as EntryPointType,
-      callType: null == callType
-          ? _value.callType
-          : callType // ignore: cast_nullable_to_non_nullable
-              as CallType,
-      result: null == result
-          ? _value._result
-          : result // ignore: cast_nullable_to_non_nullable
-              as List<Felt>,
-      calls: null == calls
-          ? _value._calls
-          : calls // ignore: cast_nullable_to_non_nullable
-              as List<FunctionInvocation>,
-      events: null == events
-          ? _value._events
-          : events // ignore: cast_nullable_to_non_nullable
-              as List<OrderedEvent>,
-      messages: null == messages
-          ? _value._messages
-          : messages // ignore: cast_nullable_to_non_nullable
-              as List<OrderedMessage>,
-      executionResources: null == executionResources
-          ? _value.executionResources
-          : executionResources // ignore: cast_nullable_to_non_nullable
-              as InnerCallExecutionResources,
-      isReverted: null == isReverted
-          ? _value.isReverted
-          : isReverted // ignore: cast_nullable_to_non_nullable
-              as bool,
-    ));
+    final _that = this;
+    switch (_that) {
+      case _FunctionInvocation() when $default != null:
+        return $default(_that);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// Callbacks receives the raw object, upcasted.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case final Subclass2 value:
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(_FunctionInvocation value) $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _FunctionInvocation():
+        return $default(_that);
+      case _:
+        throw StateError('Unexpected subclass');
+    }
+  }
+
+  /// A variant of `map` that fallback to returning `null`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>(
+    TResult? Function(_FunctionInvocation value)? $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _FunctionInvocation() when $default != null:
+        return $default(_that);
+      case _:
+        return null;
+    }
+  }
+
+  /// A variant of `when` that fallback to an `orElse` callback.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(
+            @JsonKey(name: 'caller_address') Felt callerAddress,
+            @JsonKey(name: 'class_hash') Felt classHash,
+            @JsonKey(name: 'entry_point_type') EntryPointType entryPointType,
+            @JsonKey(name: 'call_type') CallType callType,
+            List<Felt> result,
+            List<FunctionInvocation> calls,
+            @JsonKey(defaultValue: []) List<OrderedEvent> events,
+            @JsonKey(defaultValue: []) List<OrderedMessage> messages,
+            @JsonKey(name: 'execution_resources')
+            InnerCallExecutionResources executionResources,
+            @JsonKey(name: 'is_reverted', defaultValue: false) bool isReverted)?
+        $default, {
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _FunctionInvocation() when $default != null:
+        return $default(
+            _that.callerAddress,
+            _that.classHash,
+            _that.entryPointType,
+            _that.callType,
+            _that.result,
+            _that.calls,
+            _that.events,
+            _that.messages,
+            _that.executionResources,
+            _that.isReverted);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// As opposed to `map`, this offers destructuring.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case Subclass2(:final field2):
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>(
+    TResult Function(
+            @JsonKey(name: 'caller_address') Felt callerAddress,
+            @JsonKey(name: 'class_hash') Felt classHash,
+            @JsonKey(name: 'entry_point_type') EntryPointType entryPointType,
+            @JsonKey(name: 'call_type') CallType callType,
+            List<Felt> result,
+            List<FunctionInvocation> calls,
+            @JsonKey(defaultValue: []) List<OrderedEvent> events,
+            @JsonKey(defaultValue: []) List<OrderedMessage> messages,
+            @JsonKey(name: 'execution_resources')
+            InnerCallExecutionResources executionResources,
+            @JsonKey(name: 'is_reverted', defaultValue: false) bool isReverted)
+        $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _FunctionInvocation():
+        return $default(
+            _that.callerAddress,
+            _that.classHash,
+            _that.entryPointType,
+            _that.callType,
+            _that.result,
+            _that.calls,
+            _that.events,
+            _that.messages,
+            _that.executionResources,
+            _that.isReverted);
+      case _:
+        throw StateError('Unexpected subclass');
+    }
+  }
+
+  /// A variant of `when` that fallback to returning `null`
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>(
+    TResult? Function(
+            @JsonKey(name: 'caller_address') Felt callerAddress,
+            @JsonKey(name: 'class_hash') Felt classHash,
+            @JsonKey(name: 'entry_point_type') EntryPointType entryPointType,
+            @JsonKey(name: 'call_type') CallType callType,
+            List<Felt> result,
+            List<FunctionInvocation> calls,
+            @JsonKey(defaultValue: []) List<OrderedEvent> events,
+            @JsonKey(defaultValue: []) List<OrderedMessage> messages,
+            @JsonKey(name: 'execution_resources')
+            InnerCallExecutionResources executionResources,
+            @JsonKey(name: 'is_reverted', defaultValue: false) bool isReverted)?
+        $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _FunctionInvocation() when $default != null:
+        return $default(
+            _that.callerAddress,
+            _that.classHash,
+            _that.entryPointType,
+            _that.callType,
+            _that.result,
+            _that.calls,
+            _that.events,
+            _that.messages,
+            _that.executionResources,
+            _that.isReverted);
+      case _:
+        return null;
+    }
   }
 }
 
 /// @nodoc
 @JsonSerializable()
-class _$FunctionInvocationImpl implements _FunctionInvocation {
-  const _$FunctionInvocationImpl(
+class _FunctionInvocation implements FunctionInvocation {
+  const _FunctionInvocation(
       {@JsonKey(name: 'caller_address') required this.callerAddress,
       @JsonKey(name: 'class_hash') required this.classHash,
       @JsonKey(name: 'entry_point_type') required this.entryPointType,
@@ -267,9 +432,8 @@ class _$FunctionInvocationImpl implements _FunctionInvocation {
         _calls = calls,
         _events = events,
         _messages = messages;
-
-  factory _$FunctionInvocationImpl.fromJson(Map<String, dynamic> json) =>
-      _$$FunctionInvocationImplFromJson(json);
+  factory _FunctionInvocation.fromJson(Map<String, dynamic> json) =>
+      _$FunctionInvocationFromJson(json);
 
   @override
   @JsonKey(name: 'caller_address')
@@ -324,16 +488,26 @@ class _$FunctionInvocationImpl implements _FunctionInvocation {
   @JsonKey(name: 'is_reverted', defaultValue: false)
   final bool isReverted;
 
+  /// Create a copy of FunctionInvocation
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  String toString() {
-    return 'FunctionInvocation(callerAddress: $callerAddress, classHash: $classHash, entryPointType: $entryPointType, callType: $callType, result: $result, calls: $calls, events: $events, messages: $messages, executionResources: $executionResources, isReverted: $isReverted)';
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  _$FunctionInvocationCopyWith<_FunctionInvocation> get copyWith =>
+      __$FunctionInvocationCopyWithImpl<_FunctionInvocation>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$FunctionInvocationToJson(
+      this,
+    );
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$FunctionInvocationImpl &&
+            other is _FunctionInvocation &&
             (identical(other.callerAddress, callerAddress) ||
                 other.callerAddress == callerAddress) &&
             (identical(other.classHash, classHash) ||
@@ -367,75 +541,115 @@ class _$FunctionInvocationImpl implements _FunctionInvocation {
       executionResources,
       isReverted);
 
-  /// Create a copy of FunctionInvocation
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  @pragma('vm:prefer-inline')
-  _$$FunctionInvocationImplCopyWith<_$FunctionInvocationImpl> get copyWith =>
-      __$$FunctionInvocationImplCopyWithImpl<_$FunctionInvocationImpl>(
-          this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$FunctionInvocationImplToJson(
-      this,
-    );
+  String toString() {
+    return 'FunctionInvocation(callerAddress: $callerAddress, classHash: $classHash, entryPointType: $entryPointType, callType: $callType, result: $result, calls: $calls, events: $events, messages: $messages, executionResources: $executionResources, isReverted: $isReverted)';
   }
 }
 
-abstract class _FunctionInvocation implements FunctionInvocation {
-  const factory _FunctionInvocation(
-      {@JsonKey(name: 'caller_address') required final Felt callerAddress,
-      @JsonKey(name: 'class_hash') required final Felt classHash,
-      @JsonKey(name: 'entry_point_type')
-      required final EntryPointType entryPointType,
-      @JsonKey(name: 'call_type') required final CallType callType,
-      required final List<Felt> result,
-      required final List<FunctionInvocation> calls,
-      @JsonKey(defaultValue: []) required final List<OrderedEvent> events,
-      @JsonKey(defaultValue: []) required final List<OrderedMessage> messages,
+/// @nodoc
+abstract mixin class _$FunctionInvocationCopyWith<$Res>
+    implements $FunctionInvocationCopyWith<$Res> {
+  factory _$FunctionInvocationCopyWith(
+          _FunctionInvocation value, $Res Function(_FunctionInvocation) _then) =
+      __$FunctionInvocationCopyWithImpl;
+  @override
+  @useResult
+  $Res call(
+      {@JsonKey(name: 'caller_address') Felt callerAddress,
+      @JsonKey(name: 'class_hash') Felt classHash,
+      @JsonKey(name: 'entry_point_type') EntryPointType entryPointType,
+      @JsonKey(name: 'call_type') CallType callType,
+      List<Felt> result,
+      List<FunctionInvocation> calls,
+      @JsonKey(defaultValue: []) List<OrderedEvent> events,
+      @JsonKey(defaultValue: []) List<OrderedMessage> messages,
       @JsonKey(name: 'execution_resources')
-      required final InnerCallExecutionResources executionResources,
-      @JsonKey(name: 'is_reverted', defaultValue: false)
-      required final bool isReverted}) = _$FunctionInvocationImpl;
-
-  factory _FunctionInvocation.fromJson(Map<String, dynamic> json) =
-      _$FunctionInvocationImpl.fromJson;
+      InnerCallExecutionResources executionResources,
+      @JsonKey(name: 'is_reverted', defaultValue: false) bool isReverted});
 
   @override
-  @JsonKey(name: 'caller_address')
-  Felt get callerAddress;
-  @override
-  @JsonKey(name: 'class_hash')
-  Felt get classHash;
-  @override
-  @JsonKey(name: 'entry_point_type')
-  EntryPointType get entryPointType;
-  @override
-  @JsonKey(name: 'call_type')
-  CallType get callType;
-  @override
-  List<Felt> get result;
-  @override
-  List<FunctionInvocation> get calls;
-  @override
-  @JsonKey(defaultValue: [])
-  List<OrderedEvent> get events;
-  @override
-  @JsonKey(defaultValue: [])
-  List<OrderedMessage> get messages;
-  @override
-  @JsonKey(name: 'execution_resources')
-  InnerCallExecutionResources get executionResources;
-  @override
-  @JsonKey(name: 'is_reverted', defaultValue: false)
-  bool get isReverted;
+  $InnerCallExecutionResourcesCopyWith<$Res> get executionResources;
+}
+
+/// @nodoc
+class __$FunctionInvocationCopyWithImpl<$Res>
+    implements _$FunctionInvocationCopyWith<$Res> {
+  __$FunctionInvocationCopyWithImpl(this._self, this._then);
+
+  final _FunctionInvocation _self;
+  final $Res Function(_FunctionInvocation) _then;
 
   /// Create a copy of FunctionInvocation
   /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$FunctionInvocationImplCopyWith<_$FunctionInvocationImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  @pragma('vm:prefer-inline')
+  $Res call({
+    Object? callerAddress = null,
+    Object? classHash = null,
+    Object? entryPointType = null,
+    Object? callType = null,
+    Object? result = null,
+    Object? calls = null,
+    Object? events = null,
+    Object? messages = null,
+    Object? executionResources = null,
+    Object? isReverted = null,
+  }) {
+    return _then(_FunctionInvocation(
+      callerAddress: null == callerAddress
+          ? _self.callerAddress
+          : callerAddress // ignore: cast_nullable_to_non_nullable
+              as Felt,
+      classHash: null == classHash
+          ? _self.classHash
+          : classHash // ignore: cast_nullable_to_non_nullable
+              as Felt,
+      entryPointType: null == entryPointType
+          ? _self.entryPointType
+          : entryPointType // ignore: cast_nullable_to_non_nullable
+              as EntryPointType,
+      callType: null == callType
+          ? _self.callType
+          : callType // ignore: cast_nullable_to_non_nullable
+              as CallType,
+      result: null == result
+          ? _self._result
+          : result // ignore: cast_nullable_to_non_nullable
+              as List<Felt>,
+      calls: null == calls
+          ? _self._calls
+          : calls // ignore: cast_nullable_to_non_nullable
+              as List<FunctionInvocation>,
+      events: null == events
+          ? _self._events
+          : events // ignore: cast_nullable_to_non_nullable
+              as List<OrderedEvent>,
+      messages: null == messages
+          ? _self._messages
+          : messages // ignore: cast_nullable_to_non_nullable
+              as List<OrderedMessage>,
+      executionResources: null == executionResources
+          ? _self.executionResources
+          : executionResources // ignore: cast_nullable_to_non_nullable
+              as InnerCallExecutionResources,
+      isReverted: null == isReverted
+          ? _self.isReverted
+          : isReverted // ignore: cast_nullable_to_non_nullable
+              as bool,
+    ));
+  }
+
+  /// Create a copy of FunctionInvocation
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $InnerCallExecutionResourcesCopyWith<$Res> get executionResources {
+    return $InnerCallExecutionResourcesCopyWith<$Res>(_self.executionResources,
+        (value) {
+      return _then(_self.copyWith(executionResources: value));
+    });
+  }
 }
+
+// dart format on

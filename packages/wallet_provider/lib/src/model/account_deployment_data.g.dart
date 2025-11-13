@@ -6,9 +6,9 @@ part of 'account_deployment_data.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$AccountDeploymentDataImpl _$$AccountDeploymentDataImplFromJson(
+_AccountDeploymentData _$AccountDeploymentDataFromJson(
         Map<String, dynamic> json) =>
-    _$AccountDeploymentDataImpl(
+    _AccountDeploymentData(
       address: Felt.fromJson(json['address'] as String),
       classHash: Felt.fromJson(json['class_hash'] as String),
       salt: Felt.fromJson(json['salt'] as String),
@@ -21,8 +21,8 @@ _$AccountDeploymentDataImpl _$$AccountDeploymentDataImplFromJson(
       version: $enumDecode(_$DeploymentVersionEnumMap, json['version']),
     );
 
-Map<String, dynamic> _$$AccountDeploymentDataImplToJson(
-        _$AccountDeploymentDataImpl instance) =>
+Map<String, dynamic> _$AccountDeploymentDataToJson(
+        _AccountDeploymentData instance) =>
     <String, dynamic>{
       'address': instance.address.toJson(),
       'class_hash': instance.classHash.toJson(),

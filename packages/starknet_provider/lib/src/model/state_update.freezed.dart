@@ -1,5 +1,5 @@
-// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// coverage:ignore-file
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
@@ -9,178 +9,31 @@ part of 'state_update.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// dart format off
 T _$identity<T>(T value) => value;
-
-final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
-
-StateUpdate _$StateUpdateFromJson(Map<String, dynamic> json) {
-  return _StateUpdate.fromJson(json);
-}
 
 /// @nodoc
 mixin _$StateUpdate {
-  Felt get blockHash => throw _privateConstructorUsedError;
-  Felt get newRoot => throw _privateConstructorUsedError;
-  Felt get oldRoot => throw _privateConstructorUsedError;
-  StateDiff get stateDiff => throw _privateConstructorUsedError;
-
-  /// Serializes this StateUpdate to a JSON map.
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  Felt get blockHash;
+  Felt get newRoot;
+  Felt get oldRoot;
+  StateDiff get stateDiff;
 
   /// Create a copy of StateUpdate
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
   $StateUpdateCopyWith<StateUpdate> get copyWith =>
-      throw _privateConstructorUsedError;
-}
+      _$StateUpdateCopyWithImpl<StateUpdate>(this as StateUpdate, _$identity);
 
-/// @nodoc
-abstract class $StateUpdateCopyWith<$Res> {
-  factory $StateUpdateCopyWith(
-          StateUpdate value, $Res Function(StateUpdate) then) =
-      _$StateUpdateCopyWithImpl<$Res, StateUpdate>;
-  @useResult
-  $Res call({Felt blockHash, Felt newRoot, Felt oldRoot, StateDiff stateDiff});
-
-  $StateDiffCopyWith<$Res> get stateDiff;
-}
-
-/// @nodoc
-class _$StateUpdateCopyWithImpl<$Res, $Val extends StateUpdate>
-    implements $StateUpdateCopyWith<$Res> {
-  _$StateUpdateCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-
-  /// Create a copy of StateUpdate
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? blockHash = null,
-    Object? newRoot = null,
-    Object? oldRoot = null,
-    Object? stateDiff = null,
-  }) {
-    return _then(_value.copyWith(
-      blockHash: null == blockHash
-          ? _value.blockHash
-          : blockHash // ignore: cast_nullable_to_non_nullable
-              as Felt,
-      newRoot: null == newRoot
-          ? _value.newRoot
-          : newRoot // ignore: cast_nullable_to_non_nullable
-              as Felt,
-      oldRoot: null == oldRoot
-          ? _value.oldRoot
-          : oldRoot // ignore: cast_nullable_to_non_nullable
-              as Felt,
-      stateDiff: null == stateDiff
-          ? _value.stateDiff
-          : stateDiff // ignore: cast_nullable_to_non_nullable
-              as StateDiff,
-    ) as $Val);
-  }
-
-  /// Create a copy of StateUpdate
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $StateDiffCopyWith<$Res> get stateDiff {
-    return $StateDiffCopyWith<$Res>(_value.stateDiff, (value) {
-      return _then(_value.copyWith(stateDiff: value) as $Val);
-    });
-  }
-}
-
-/// @nodoc
-abstract class _$$StateUpdateImplCopyWith<$Res>
-    implements $StateUpdateCopyWith<$Res> {
-  factory _$$StateUpdateImplCopyWith(
-          _$StateUpdateImpl value, $Res Function(_$StateUpdateImpl) then) =
-      __$$StateUpdateImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call({Felt blockHash, Felt newRoot, Felt oldRoot, StateDiff stateDiff});
-
-  @override
-  $StateDiffCopyWith<$Res> get stateDiff;
-}
-
-/// @nodoc
-class __$$StateUpdateImplCopyWithImpl<$Res>
-    extends _$StateUpdateCopyWithImpl<$Res, _$StateUpdateImpl>
-    implements _$$StateUpdateImplCopyWith<$Res> {
-  __$$StateUpdateImplCopyWithImpl(
-      _$StateUpdateImpl _value, $Res Function(_$StateUpdateImpl) _then)
-      : super(_value, _then);
-
-  /// Create a copy of StateUpdate
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? blockHash = null,
-    Object? newRoot = null,
-    Object? oldRoot = null,
-    Object? stateDiff = null,
-  }) {
-    return _then(_$StateUpdateImpl(
-      blockHash: null == blockHash
-          ? _value.blockHash
-          : blockHash // ignore: cast_nullable_to_non_nullable
-              as Felt,
-      newRoot: null == newRoot
-          ? _value.newRoot
-          : newRoot // ignore: cast_nullable_to_non_nullable
-              as Felt,
-      oldRoot: null == oldRoot
-          ? _value.oldRoot
-          : oldRoot // ignore: cast_nullable_to_non_nullable
-              as Felt,
-      stateDiff: null == stateDiff
-          ? _value.stateDiff
-          : stateDiff // ignore: cast_nullable_to_non_nullable
-              as StateDiff,
-    ));
-  }
-}
-
-/// @nodoc
-@JsonSerializable()
-class _$StateUpdateImpl implements _StateUpdate {
-  const _$StateUpdateImpl(
-      {required this.blockHash,
-      required this.newRoot,
-      required this.oldRoot,
-      required this.stateDiff});
-
-  factory _$StateUpdateImpl.fromJson(Map<String, dynamic> json) =>
-      _$$StateUpdateImplFromJson(json);
-
-  @override
-  final Felt blockHash;
-  @override
-  final Felt newRoot;
-  @override
-  final Felt oldRoot;
-  @override
-  final StateDiff stateDiff;
-
-  @override
-  String toString() {
-    return 'StateUpdate(blockHash: $blockHash, newRoot: $newRoot, oldRoot: $oldRoot, stateDiff: $stateDiff)';
-  }
+  /// Serializes this StateUpdate to a JSON map.
+  Map<String, dynamic> toJson();
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$StateUpdateImpl &&
+            other is StateUpdate &&
             (identical(other.blockHash, blockHash) ||
                 other.blockHash == blockHash) &&
             (identical(other.newRoot, newRoot) || other.newRoot == newRoot) &&
@@ -194,156 +47,421 @@ class _$StateUpdateImpl implements _StateUpdate {
   int get hashCode =>
       Object.hash(runtimeType, blockHash, newRoot, oldRoot, stateDiff);
 
-  /// Create a copy of StateUpdate
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  @pragma('vm:prefer-inline')
-  _$$StateUpdateImplCopyWith<_$StateUpdateImpl> get copyWith =>
-      __$$StateUpdateImplCopyWithImpl<_$StateUpdateImpl>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$StateUpdateImplToJson(
-      this,
-    );
+  String toString() {
+    return 'StateUpdate(blockHash: $blockHash, newRoot: $newRoot, oldRoot: $oldRoot, stateDiff: $stateDiff)';
   }
 }
 
-abstract class _StateUpdate implements StateUpdate {
-  const factory _StateUpdate(
-      {required final Felt blockHash,
-      required final Felt newRoot,
-      required final Felt oldRoot,
-      required final StateDiff stateDiff}) = _$StateUpdateImpl;
+/// @nodoc
+abstract mixin class $StateUpdateCopyWith<$Res> {
+  factory $StateUpdateCopyWith(
+          StateUpdate value, $Res Function(StateUpdate) _then) =
+      _$StateUpdateCopyWithImpl;
+  @useResult
+  $Res call({Felt blockHash, Felt newRoot, Felt oldRoot, StateDiff stateDiff});
 
-  factory _StateUpdate.fromJson(Map<String, dynamic> json) =
-      _$StateUpdateImpl.fromJson;
+  $StateDiffCopyWith<$Res> get stateDiff;
+}
+
+/// @nodoc
+class _$StateUpdateCopyWithImpl<$Res> implements $StateUpdateCopyWith<$Res> {
+  _$StateUpdateCopyWithImpl(this._self, this._then);
+
+  final StateUpdate _self;
+  final $Res Function(StateUpdate) _then;
+
+  /// Create a copy of StateUpdate
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? blockHash = null,
+    Object? newRoot = null,
+    Object? oldRoot = null,
+    Object? stateDiff = null,
+  }) {
+    return _then(_self.copyWith(
+      blockHash: null == blockHash
+          ? _self.blockHash
+          : blockHash // ignore: cast_nullable_to_non_nullable
+              as Felt,
+      newRoot: null == newRoot
+          ? _self.newRoot
+          : newRoot // ignore: cast_nullable_to_non_nullable
+              as Felt,
+      oldRoot: null == oldRoot
+          ? _self.oldRoot
+          : oldRoot // ignore: cast_nullable_to_non_nullable
+              as Felt,
+      stateDiff: null == stateDiff
+          ? _self.stateDiff
+          : stateDiff // ignore: cast_nullable_to_non_nullable
+              as StateDiff,
+    ));
+  }
+
+  /// Create a copy of StateUpdate
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $StateDiffCopyWith<$Res> get stateDiff {
+    return $StateDiffCopyWith<$Res>(_self.stateDiff, (value) {
+      return _then(_self.copyWith(stateDiff: value));
+    });
+  }
+}
+
+/// Adds pattern-matching-related methods to [StateUpdate].
+extension StateUpdatePatterns on StateUpdate {
+  /// A variant of `map` that fallback to returning `orElse`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(_StateUpdate value)? $default, {
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _StateUpdate() when $default != null:
+        return $default(_that);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// Callbacks receives the raw object, upcasted.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case final Subclass2 value:
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(_StateUpdate value) $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _StateUpdate():
+        return $default(_that);
+      case _:
+        throw StateError('Unexpected subclass');
+    }
+  }
+
+  /// A variant of `map` that fallback to returning `null`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>(
+    TResult? Function(_StateUpdate value)? $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _StateUpdate() when $default != null:
+        return $default(_that);
+      case _:
+        return null;
+    }
+  }
+
+  /// A variant of `when` that fallback to an `orElse` callback.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(
+            Felt blockHash, Felt newRoot, Felt oldRoot, StateDiff stateDiff)?
+        $default, {
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _StateUpdate() when $default != null:
+        return $default(
+            _that.blockHash, _that.newRoot, _that.oldRoot, _that.stateDiff);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// As opposed to `map`, this offers destructuring.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case Subclass2(:final field2):
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>(
+    TResult Function(
+            Felt blockHash, Felt newRoot, Felt oldRoot, StateDiff stateDiff)
+        $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _StateUpdate():
+        return $default(
+            _that.blockHash, _that.newRoot, _that.oldRoot, _that.stateDiff);
+      case _:
+        throw StateError('Unexpected subclass');
+    }
+  }
+
+  /// A variant of `when` that fallback to returning `null`
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>(
+    TResult? Function(
+            Felt blockHash, Felt newRoot, Felt oldRoot, StateDiff stateDiff)?
+        $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _StateUpdate() when $default != null:
+        return $default(
+            _that.blockHash, _that.newRoot, _that.oldRoot, _that.stateDiff);
+      case _:
+        return null;
+    }
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _StateUpdate implements StateUpdate {
+  const _StateUpdate(
+      {required this.blockHash,
+      required this.newRoot,
+      required this.oldRoot,
+      required this.stateDiff});
+  factory _StateUpdate.fromJson(Map<String, dynamic> json) =>
+      _$StateUpdateFromJson(json);
 
   @override
-  Felt get blockHash;
+  final Felt blockHash;
   @override
-  Felt get newRoot;
+  final Felt newRoot;
   @override
-  Felt get oldRoot;
+  final Felt oldRoot;
   @override
-  StateDiff get stateDiff;
+  final StateDiff stateDiff;
 
   /// Create a copy of StateUpdate
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$StateUpdateImplCopyWith<_$StateUpdateImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  @pragma('vm:prefer-inline')
+  _$StateUpdateCopyWith<_StateUpdate> get copyWith =>
+      __$StateUpdateCopyWithImpl<_StateUpdate>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$StateUpdateToJson(
+      this,
+    );
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _StateUpdate &&
+            (identical(other.blockHash, blockHash) ||
+                other.blockHash == blockHash) &&
+            (identical(other.newRoot, newRoot) || other.newRoot == newRoot) &&
+            (identical(other.oldRoot, oldRoot) || other.oldRoot == oldRoot) &&
+            (identical(other.stateDiff, stateDiff) ||
+                other.stateDiff == stateDiff));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, blockHash, newRoot, oldRoot, stateDiff);
+
+  @override
+  String toString() {
+    return 'StateUpdate(blockHash: $blockHash, newRoot: $newRoot, oldRoot: $oldRoot, stateDiff: $stateDiff)';
+  }
 }
 
-StateDiff _$StateDiffFromJson(Map<String, dynamic> json) {
-  return _StateDiff.fromJson(json);
+/// @nodoc
+abstract mixin class _$StateUpdateCopyWith<$Res>
+    implements $StateUpdateCopyWith<$Res> {
+  factory _$StateUpdateCopyWith(
+          _StateUpdate value, $Res Function(_StateUpdate) _then) =
+      __$StateUpdateCopyWithImpl;
+  @override
+  @useResult
+  $Res call({Felt blockHash, Felt newRoot, Felt oldRoot, StateDiff stateDiff});
+
+  @override
+  $StateDiffCopyWith<$Res> get stateDiff;
+}
+
+/// @nodoc
+class __$StateUpdateCopyWithImpl<$Res> implements _$StateUpdateCopyWith<$Res> {
+  __$StateUpdateCopyWithImpl(this._self, this._then);
+
+  final _StateUpdate _self;
+  final $Res Function(_StateUpdate) _then;
+
+  /// Create a copy of StateUpdate
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $Res call({
+    Object? blockHash = null,
+    Object? newRoot = null,
+    Object? oldRoot = null,
+    Object? stateDiff = null,
+  }) {
+    return _then(_StateUpdate(
+      blockHash: null == blockHash
+          ? _self.blockHash
+          : blockHash // ignore: cast_nullable_to_non_nullable
+              as Felt,
+      newRoot: null == newRoot
+          ? _self.newRoot
+          : newRoot // ignore: cast_nullable_to_non_nullable
+              as Felt,
+      oldRoot: null == oldRoot
+          ? _self.oldRoot
+          : oldRoot // ignore: cast_nullable_to_non_nullable
+              as Felt,
+      stateDiff: null == stateDiff
+          ? _self.stateDiff
+          : stateDiff // ignore: cast_nullable_to_non_nullable
+              as StateDiff,
+    ));
+  }
+
+  /// Create a copy of StateUpdate
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $StateDiffCopyWith<$Res> get stateDiff {
+    return $StateDiffCopyWith<$Res>(_self.stateDiff, (value) {
+      return _then(_self.copyWith(stateDiff: value));
+    });
+  }
 }
 
 /// @nodoc
 mixin _$StateDiff {
   @JsonKey(name: 'storage_diffs')
-  List<ContractStorageDiffItem> get storageDiffs =>
-      throw _privateConstructorUsedError;
+  List<ContractStorageDiffItem> get storageDiffs;
   @JsonKey(name: 'deprecated_declared_classes')
-  List<Felt> get deprecatedDeclaredClasses =>
-      throw _privateConstructorUsedError;
+  List<Felt> get deprecatedDeclaredClasses;
   @JsonKey(name: 'declared_classes')
-  List<DeclaredClass> get declaredClasses => throw _privateConstructorUsedError;
+  List<DeclaredClass> get declaredClasses;
   @JsonKey(name: 'deployed_contracts')
-  List<DeployedContractItem> get deployedContracts =>
-      throw _privateConstructorUsedError;
+  List<DeployedContractItem> get deployedContracts;
   @JsonKey(name: 'replaced_classes')
-  List<ReplacedClass> get replacedClasses => throw _privateConstructorUsedError;
-  List<NonceAndContractAddress> get nonces =>
-      throw _privateConstructorUsedError;
-
-  /// Serializes this StateDiff to a JSON map.
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  List<ReplacedClass> get replacedClasses;
+  List<NonceAndContractAddress> get nonces;
 
   /// Create a copy of StateDiff
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $StateDiffCopyWith<StateDiff> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $StateDiffCopyWith<$Res> {
-  factory $StateDiffCopyWith(StateDiff value, $Res Function(StateDiff) then) =
-      _$StateDiffCopyWithImpl<$Res, StateDiff>;
-  @useResult
-  $Res call(
-      {@JsonKey(name: 'storage_diffs')
-      List<ContractStorageDiffItem> storageDiffs,
-      @JsonKey(name: 'deprecated_declared_classes')
-      List<Felt> deprecatedDeclaredClasses,
-      @JsonKey(name: 'declared_classes') List<DeclaredClass> declaredClasses,
-      @JsonKey(name: 'deployed_contracts')
-      List<DeployedContractItem> deployedContracts,
-      @JsonKey(name: 'replaced_classes') List<ReplacedClass> replacedClasses,
-      List<NonceAndContractAddress> nonces});
-}
-
-/// @nodoc
-class _$StateDiffCopyWithImpl<$Res, $Val extends StateDiff>
-    implements $StateDiffCopyWith<$Res> {
-  _$StateDiffCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-
-  /// Create a copy of StateDiff
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
+  $StateDiffCopyWith<StateDiff> get copyWith =>
+      _$StateDiffCopyWithImpl<StateDiff>(this as StateDiff, _$identity);
+
+  /// Serializes this StateDiff to a JSON map.
+  Map<String, dynamic> toJson();
+
   @override
-  $Res call({
-    Object? storageDiffs = null,
-    Object? deprecatedDeclaredClasses = null,
-    Object? declaredClasses = null,
-    Object? deployedContracts = null,
-    Object? replacedClasses = null,
-    Object? nonces = null,
-  }) {
-    return _then(_value.copyWith(
-      storageDiffs: null == storageDiffs
-          ? _value.storageDiffs
-          : storageDiffs // ignore: cast_nullable_to_non_nullable
-              as List<ContractStorageDiffItem>,
-      deprecatedDeclaredClasses: null == deprecatedDeclaredClasses
-          ? _value.deprecatedDeclaredClasses
-          : deprecatedDeclaredClasses // ignore: cast_nullable_to_non_nullable
-              as List<Felt>,
-      declaredClasses: null == declaredClasses
-          ? _value.declaredClasses
-          : declaredClasses // ignore: cast_nullable_to_non_nullable
-              as List<DeclaredClass>,
-      deployedContracts: null == deployedContracts
-          ? _value.deployedContracts
-          : deployedContracts // ignore: cast_nullable_to_non_nullable
-              as List<DeployedContractItem>,
-      replacedClasses: null == replacedClasses
-          ? _value.replacedClasses
-          : replacedClasses // ignore: cast_nullable_to_non_nullable
-              as List<ReplacedClass>,
-      nonces: null == nonces
-          ? _value.nonces
-          : nonces // ignore: cast_nullable_to_non_nullable
-              as List<NonceAndContractAddress>,
-    ) as $Val);
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is StateDiff &&
+            const DeepCollectionEquality()
+                .equals(other.storageDiffs, storageDiffs) &&
+            const DeepCollectionEquality().equals(
+                other.deprecatedDeclaredClasses, deprecatedDeclaredClasses) &&
+            const DeepCollectionEquality()
+                .equals(other.declaredClasses, declaredClasses) &&
+            const DeepCollectionEquality()
+                .equals(other.deployedContracts, deployedContracts) &&
+            const DeepCollectionEquality()
+                .equals(other.replacedClasses, replacedClasses) &&
+            const DeepCollectionEquality().equals(other.nonces, nonces));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(storageDiffs),
+      const DeepCollectionEquality().hash(deprecatedDeclaredClasses),
+      const DeepCollectionEquality().hash(declaredClasses),
+      const DeepCollectionEquality().hash(deployedContracts),
+      const DeepCollectionEquality().hash(replacedClasses),
+      const DeepCollectionEquality().hash(nonces));
+
+  @override
+  String toString() {
+    return 'StateDiff(storageDiffs: $storageDiffs, deprecatedDeclaredClasses: $deprecatedDeclaredClasses, declaredClasses: $declaredClasses, deployedContracts: $deployedContracts, replacedClasses: $replacedClasses, nonces: $nonces)';
   }
 }
 
 /// @nodoc
-abstract class _$$StateDiffImplCopyWith<$Res>
-    implements $StateDiffCopyWith<$Res> {
-  factory _$$StateDiffImplCopyWith(
-          _$StateDiffImpl value, $Res Function(_$StateDiffImpl) then) =
-      __$$StateDiffImplCopyWithImpl<$Res>;
-  @override
+abstract mixin class $StateDiffCopyWith<$Res> {
+  factory $StateDiffCopyWith(StateDiff value, $Res Function(StateDiff) _then) =
+      _$StateDiffCopyWithImpl;
   @useResult
   $Res call(
       {@JsonKey(name: 'storage_diffs')
@@ -358,12 +476,11 @@ abstract class _$$StateDiffImplCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$StateDiffImplCopyWithImpl<$Res>
-    extends _$StateDiffCopyWithImpl<$Res, _$StateDiffImpl>
-    implements _$$StateDiffImplCopyWith<$Res> {
-  __$$StateDiffImplCopyWithImpl(
-      _$StateDiffImpl _value, $Res Function(_$StateDiffImpl) _then)
-      : super(_value, _then);
+class _$StateDiffCopyWithImpl<$Res> implements $StateDiffCopyWith<$Res> {
+  _$StateDiffCopyWithImpl(this._self, this._then);
+
+  final StateDiff _self;
+  final $Res Function(StateDiff) _then;
 
   /// Create a copy of StateDiff
   /// with the given fields replaced by the non-null parameter values.
@@ -377,39 +494,250 @@ class __$$StateDiffImplCopyWithImpl<$Res>
     Object? replacedClasses = null,
     Object? nonces = null,
   }) {
-    return _then(_$StateDiffImpl(
+    return _then(_self.copyWith(
       storageDiffs: null == storageDiffs
-          ? _value._storageDiffs
+          ? _self.storageDiffs
           : storageDiffs // ignore: cast_nullable_to_non_nullable
               as List<ContractStorageDiffItem>,
       deprecatedDeclaredClasses: null == deprecatedDeclaredClasses
-          ? _value._deprecatedDeclaredClasses
+          ? _self.deprecatedDeclaredClasses
           : deprecatedDeclaredClasses // ignore: cast_nullable_to_non_nullable
               as List<Felt>,
       declaredClasses: null == declaredClasses
-          ? _value._declaredClasses
+          ? _self.declaredClasses
           : declaredClasses // ignore: cast_nullable_to_non_nullable
               as List<DeclaredClass>,
       deployedContracts: null == deployedContracts
-          ? _value._deployedContracts
+          ? _self.deployedContracts
           : deployedContracts // ignore: cast_nullable_to_non_nullable
               as List<DeployedContractItem>,
       replacedClasses: null == replacedClasses
-          ? _value._replacedClasses
+          ? _self.replacedClasses
           : replacedClasses // ignore: cast_nullable_to_non_nullable
               as List<ReplacedClass>,
       nonces: null == nonces
-          ? _value._nonces
+          ? _self.nonces
           : nonces // ignore: cast_nullable_to_non_nullable
               as List<NonceAndContractAddress>,
     ));
   }
 }
 
+/// Adds pattern-matching-related methods to [StateDiff].
+extension StateDiffPatterns on StateDiff {
+  /// A variant of `map` that fallback to returning `orElse`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(_StateDiff value)? $default, {
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _StateDiff() when $default != null:
+        return $default(_that);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// Callbacks receives the raw object, upcasted.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case final Subclass2 value:
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(_StateDiff value) $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _StateDiff():
+        return $default(_that);
+      case _:
+        throw StateError('Unexpected subclass');
+    }
+  }
+
+  /// A variant of `map` that fallback to returning `null`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>(
+    TResult? Function(_StateDiff value)? $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _StateDiff() when $default != null:
+        return $default(_that);
+      case _:
+        return null;
+    }
+  }
+
+  /// A variant of `when` that fallback to an `orElse` callback.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(
+            @JsonKey(name: 'storage_diffs')
+            List<ContractStorageDiffItem> storageDiffs,
+            @JsonKey(name: 'deprecated_declared_classes')
+            List<Felt> deprecatedDeclaredClasses,
+            @JsonKey(name: 'declared_classes')
+            List<DeclaredClass> declaredClasses,
+            @JsonKey(name: 'deployed_contracts')
+            List<DeployedContractItem> deployedContracts,
+            @JsonKey(name: 'replaced_classes')
+            List<ReplacedClass> replacedClasses,
+            List<NonceAndContractAddress> nonces)?
+        $default, {
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _StateDiff() when $default != null:
+        return $default(
+            _that.storageDiffs,
+            _that.deprecatedDeclaredClasses,
+            _that.declaredClasses,
+            _that.deployedContracts,
+            _that.replacedClasses,
+            _that.nonces);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// As opposed to `map`, this offers destructuring.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case Subclass2(:final field2):
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>(
+    TResult Function(
+            @JsonKey(name: 'storage_diffs')
+            List<ContractStorageDiffItem> storageDiffs,
+            @JsonKey(name: 'deprecated_declared_classes')
+            List<Felt> deprecatedDeclaredClasses,
+            @JsonKey(name: 'declared_classes')
+            List<DeclaredClass> declaredClasses,
+            @JsonKey(name: 'deployed_contracts')
+            List<DeployedContractItem> deployedContracts,
+            @JsonKey(name: 'replaced_classes')
+            List<ReplacedClass> replacedClasses,
+            List<NonceAndContractAddress> nonces)
+        $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _StateDiff():
+        return $default(
+            _that.storageDiffs,
+            _that.deprecatedDeclaredClasses,
+            _that.declaredClasses,
+            _that.deployedContracts,
+            _that.replacedClasses,
+            _that.nonces);
+      case _:
+        throw StateError('Unexpected subclass');
+    }
+  }
+
+  /// A variant of `when` that fallback to returning `null`
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>(
+    TResult? Function(
+            @JsonKey(name: 'storage_diffs')
+            List<ContractStorageDiffItem> storageDiffs,
+            @JsonKey(name: 'deprecated_declared_classes')
+            List<Felt> deprecatedDeclaredClasses,
+            @JsonKey(name: 'declared_classes')
+            List<DeclaredClass> declaredClasses,
+            @JsonKey(name: 'deployed_contracts')
+            List<DeployedContractItem> deployedContracts,
+            @JsonKey(name: 'replaced_classes')
+            List<ReplacedClass> replacedClasses,
+            List<NonceAndContractAddress> nonces)?
+        $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _StateDiff() when $default != null:
+        return $default(
+            _that.storageDiffs,
+            _that.deprecatedDeclaredClasses,
+            _that.declaredClasses,
+            _that.deployedContracts,
+            _that.replacedClasses,
+            _that.nonces);
+      case _:
+        return null;
+    }
+  }
+}
+
 /// @nodoc
 @JsonSerializable()
-class _$StateDiffImpl implements _StateDiff {
-  const _$StateDiffImpl(
+class _StateDiff implements StateDiff {
+  const _StateDiff(
       {@JsonKey(name: 'storage_diffs')
       required final List<ContractStorageDiffItem> storageDiffs,
       @JsonKey(name: 'deprecated_declared_classes')
@@ -427,9 +755,8 @@ class _$StateDiffImpl implements _StateDiff {
         _deployedContracts = deployedContracts,
         _replacedClasses = replacedClasses,
         _nonces = nonces;
-
-  factory _$StateDiffImpl.fromJson(Map<String, dynamic> json) =>
-      _$$StateDiffImplFromJson(json);
+  factory _StateDiff.fromJson(Map<String, dynamic> json) =>
+      _$StateDiffFromJson(json);
 
   final List<ContractStorageDiffItem> _storageDiffs;
   @override
@@ -486,16 +813,26 @@ class _$StateDiffImpl implements _StateDiff {
     return EqualUnmodifiableListView(_nonces);
   }
 
+  /// Create a copy of StateDiff
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  String toString() {
-    return 'StateDiff(storageDiffs: $storageDiffs, deprecatedDeclaredClasses: $deprecatedDeclaredClasses, declaredClasses: $declaredClasses, deployedContracts: $deployedContracts, replacedClasses: $replacedClasses, nonces: $nonces)';
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  _$StateDiffCopyWith<_StateDiff> get copyWith =>
+      __$StateDiffCopyWithImpl<_StateDiff>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$StateDiffToJson(
+      this,
+    );
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$StateDiffImpl &&
+            other is _StateDiff &&
             const DeepCollectionEquality()
                 .equals(other._storageDiffs, _storageDiffs) &&
             const DeepCollectionEquality().equals(
@@ -520,193 +857,101 @@ class _$StateDiffImpl implements _StateDiff {
       const DeepCollectionEquality().hash(_replacedClasses),
       const DeepCollectionEquality().hash(_nonces));
 
-  /// Create a copy of StateDiff
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  @pragma('vm:prefer-inline')
-  _$$StateDiffImplCopyWith<_$StateDiffImpl> get copyWith =>
-      __$$StateDiffImplCopyWithImpl<_$StateDiffImpl>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$StateDiffImplToJson(
-      this,
-    );
+  String toString() {
+    return 'StateDiff(storageDiffs: $storageDiffs, deprecatedDeclaredClasses: $deprecatedDeclaredClasses, declaredClasses: $declaredClasses, deployedContracts: $deployedContracts, replacedClasses: $replacedClasses, nonces: $nonces)';
   }
 }
 
-abstract class _StateDiff implements StateDiff {
-  const factory _StateDiff(
+/// @nodoc
+abstract mixin class _$StateDiffCopyWith<$Res>
+    implements $StateDiffCopyWith<$Res> {
+  factory _$StateDiffCopyWith(
+          _StateDiff value, $Res Function(_StateDiff) _then) =
+      __$StateDiffCopyWithImpl;
+  @override
+  @useResult
+  $Res call(
       {@JsonKey(name: 'storage_diffs')
-      required final List<ContractStorageDiffItem> storageDiffs,
+      List<ContractStorageDiffItem> storageDiffs,
       @JsonKey(name: 'deprecated_declared_classes')
-      required final List<Felt> deprecatedDeclaredClasses,
-      @JsonKey(name: 'declared_classes')
-      required final List<DeclaredClass> declaredClasses,
+      List<Felt> deprecatedDeclaredClasses,
+      @JsonKey(name: 'declared_classes') List<DeclaredClass> declaredClasses,
       @JsonKey(name: 'deployed_contracts')
-      required final List<DeployedContractItem> deployedContracts,
-      @JsonKey(name: 'replaced_classes')
-      required final List<ReplacedClass> replacedClasses,
-      required final List<NonceAndContractAddress> nonces}) = _$StateDiffImpl;
+      List<DeployedContractItem> deployedContracts,
+      @JsonKey(name: 'replaced_classes') List<ReplacedClass> replacedClasses,
+      List<NonceAndContractAddress> nonces});
+}
 
-  factory _StateDiff.fromJson(Map<String, dynamic> json) =
-      _$StateDiffImpl.fromJson;
+/// @nodoc
+class __$StateDiffCopyWithImpl<$Res> implements _$StateDiffCopyWith<$Res> {
+  __$StateDiffCopyWithImpl(this._self, this._then);
 
-  @override
-  @JsonKey(name: 'storage_diffs')
-  List<ContractStorageDiffItem> get storageDiffs;
-  @override
-  @JsonKey(name: 'deprecated_declared_classes')
-  List<Felt> get deprecatedDeclaredClasses;
-  @override
-  @JsonKey(name: 'declared_classes')
-  List<DeclaredClass> get declaredClasses;
-  @override
-  @JsonKey(name: 'deployed_contracts')
-  List<DeployedContractItem> get deployedContracts;
-  @override
-  @JsonKey(name: 'replaced_classes')
-  List<ReplacedClass> get replacedClasses;
-  @override
-  List<NonceAndContractAddress> get nonces;
+  final _StateDiff _self;
+  final $Res Function(_StateDiff) _then;
 
   /// Create a copy of StateDiff
   /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$StateDiffImplCopyWith<_$StateDiffImpl> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-NonceAndContractAddress _$NonceAndContractAddressFromJson(
-    Map<String, dynamic> json) {
-  return _NonceAndContractAddress.fromJson(json);
-}
-
-/// @nodoc
-mixin _$NonceAndContractAddress {
-  Felt get nonce => throw _privateConstructorUsedError;
-  Felt get contractAddress => throw _privateConstructorUsedError;
-
-  /// Serializes this NonceAndContractAddress to a JSON map.
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-
-  /// Create a copy of NonceAndContractAddress
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  $NonceAndContractAddressCopyWith<NonceAndContractAddress> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $NonceAndContractAddressCopyWith<$Res> {
-  factory $NonceAndContractAddressCopyWith(NonceAndContractAddress value,
-          $Res Function(NonceAndContractAddress) then) =
-      _$NonceAndContractAddressCopyWithImpl<$Res, NonceAndContractAddress>;
-  @useResult
-  $Res call({Felt nonce, Felt contractAddress});
-}
-
-/// @nodoc
-class _$NonceAndContractAddressCopyWithImpl<$Res,
-        $Val extends NonceAndContractAddress>
-    implements $NonceAndContractAddressCopyWith<$Res> {
-  _$NonceAndContractAddressCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-
-  /// Create a copy of NonceAndContractAddress
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
-  @override
   $Res call({
-    Object? nonce = null,
-    Object? contractAddress = null,
+    Object? storageDiffs = null,
+    Object? deprecatedDeclaredClasses = null,
+    Object? declaredClasses = null,
+    Object? deployedContracts = null,
+    Object? replacedClasses = null,
+    Object? nonces = null,
   }) {
-    return _then(_value.copyWith(
-      nonce: null == nonce
-          ? _value.nonce
-          : nonce // ignore: cast_nullable_to_non_nullable
-              as Felt,
-      contractAddress: null == contractAddress
-          ? _value.contractAddress
-          : contractAddress // ignore: cast_nullable_to_non_nullable
-              as Felt,
-    ) as $Val);
-  }
-}
-
-/// @nodoc
-abstract class _$$NonceAndContractAddressImplCopyWith<$Res>
-    implements $NonceAndContractAddressCopyWith<$Res> {
-  factory _$$NonceAndContractAddressImplCopyWith(
-          _$NonceAndContractAddressImpl value,
-          $Res Function(_$NonceAndContractAddressImpl) then) =
-      __$$NonceAndContractAddressImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call({Felt nonce, Felt contractAddress});
-}
-
-/// @nodoc
-class __$$NonceAndContractAddressImplCopyWithImpl<$Res>
-    extends _$NonceAndContractAddressCopyWithImpl<$Res,
-        _$NonceAndContractAddressImpl>
-    implements _$$NonceAndContractAddressImplCopyWith<$Res> {
-  __$$NonceAndContractAddressImplCopyWithImpl(
-      _$NonceAndContractAddressImpl _value,
-      $Res Function(_$NonceAndContractAddressImpl) _then)
-      : super(_value, _then);
-
-  /// Create a copy of NonceAndContractAddress
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? nonce = null,
-    Object? contractAddress = null,
-  }) {
-    return _then(_$NonceAndContractAddressImpl(
-      nonce: null == nonce
-          ? _value.nonce
-          : nonce // ignore: cast_nullable_to_non_nullable
-              as Felt,
-      contractAddress: null == contractAddress
-          ? _value.contractAddress
-          : contractAddress // ignore: cast_nullable_to_non_nullable
-              as Felt,
+    return _then(_StateDiff(
+      storageDiffs: null == storageDiffs
+          ? _self._storageDiffs
+          : storageDiffs // ignore: cast_nullable_to_non_nullable
+              as List<ContractStorageDiffItem>,
+      deprecatedDeclaredClasses: null == deprecatedDeclaredClasses
+          ? _self._deprecatedDeclaredClasses
+          : deprecatedDeclaredClasses // ignore: cast_nullable_to_non_nullable
+              as List<Felt>,
+      declaredClasses: null == declaredClasses
+          ? _self._declaredClasses
+          : declaredClasses // ignore: cast_nullable_to_non_nullable
+              as List<DeclaredClass>,
+      deployedContracts: null == deployedContracts
+          ? _self._deployedContracts
+          : deployedContracts // ignore: cast_nullable_to_non_nullable
+              as List<DeployedContractItem>,
+      replacedClasses: null == replacedClasses
+          ? _self._replacedClasses
+          : replacedClasses // ignore: cast_nullable_to_non_nullable
+              as List<ReplacedClass>,
+      nonces: null == nonces
+          ? _self._nonces
+          : nonces // ignore: cast_nullable_to_non_nullable
+              as List<NonceAndContractAddress>,
     ));
   }
 }
 
 /// @nodoc
-@JsonSerializable()
-class _$NonceAndContractAddressImpl implements _NonceAndContractAddress {
-  const _$NonceAndContractAddressImpl(
-      {required this.nonce, required this.contractAddress});
+mixin _$NonceAndContractAddress {
+  Felt get nonce;
+  Felt get contractAddress;
 
-  factory _$NonceAndContractAddressImpl.fromJson(Map<String, dynamic> json) =>
-      _$$NonceAndContractAddressImplFromJson(json);
+  /// Create a copy of NonceAndContractAddress
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  $NonceAndContractAddressCopyWith<NonceAndContractAddress> get copyWith =>
+      _$NonceAndContractAddressCopyWithImpl<NonceAndContractAddress>(
+          this as NonceAndContractAddress, _$identity);
 
-  @override
-  final Felt nonce;
-  @override
-  final Felt contractAddress;
-
-  @override
-  String toString() {
-    return 'NonceAndContractAddress(nonce: $nonce, contractAddress: $contractAddress)';
-  }
+  /// Serializes this NonceAndContractAddress to a JSON map.
+  Map<String, dynamic> toJson();
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$NonceAndContractAddressImpl &&
+            other is NonceAndContractAddress &&
             (identical(other.nonce, nonce) || other.nonce == nonce) &&
             (identical(other.contractAddress, contractAddress) ||
                 other.contractAddress == contractAddress));
@@ -716,167 +961,317 @@ class _$NonceAndContractAddressImpl implements _NonceAndContractAddress {
   @override
   int get hashCode => Object.hash(runtimeType, nonce, contractAddress);
 
-  /// Create a copy of NonceAndContractAddress
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  @pragma('vm:prefer-inline')
-  _$$NonceAndContractAddressImplCopyWith<_$NonceAndContractAddressImpl>
-      get copyWith => __$$NonceAndContractAddressImplCopyWithImpl<
-          _$NonceAndContractAddressImpl>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$NonceAndContractAddressImplToJson(
-      this,
-    );
-  }
-}
-
-abstract class _NonceAndContractAddress implements NonceAndContractAddress {
-  const factory _NonceAndContractAddress(
-      {required final Felt nonce,
-      required final Felt contractAddress}) = _$NonceAndContractAddressImpl;
-
-  factory _NonceAndContractAddress.fromJson(Map<String, dynamic> json) =
-      _$NonceAndContractAddressImpl.fromJson;
-
-  @override
-  Felt get nonce;
-  @override
-  Felt get contractAddress;
-
-  /// Create a copy of NonceAndContractAddress
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$NonceAndContractAddressImplCopyWith<_$NonceAndContractAddressImpl>
-      get copyWith => throw _privateConstructorUsedError;
-}
-
-DeclaredClass _$DeclaredClassFromJson(Map<String, dynamic> json) {
-  return _DeclaredClass.fromJson(json);
-}
-
-/// @nodoc
-mixin _$DeclaredClass {
-  Felt get classHash => throw _privateConstructorUsedError;
-  Felt get compiledClassHash => throw _privateConstructorUsedError;
-
-  /// Serializes this DeclaredClass to a JSON map.
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-
-  /// Create a copy of DeclaredClass
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  $DeclaredClassCopyWith<DeclaredClass> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $DeclaredClassCopyWith<$Res> {
-  factory $DeclaredClassCopyWith(
-          DeclaredClass value, $Res Function(DeclaredClass) then) =
-      _$DeclaredClassCopyWithImpl<$Res, DeclaredClass>;
-  @useResult
-  $Res call({Felt classHash, Felt compiledClassHash});
-}
-
-/// @nodoc
-class _$DeclaredClassCopyWithImpl<$Res, $Val extends DeclaredClass>
-    implements $DeclaredClassCopyWith<$Res> {
-  _$DeclaredClassCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-
-  /// Create a copy of DeclaredClass
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? classHash = null,
-    Object? compiledClassHash = null,
-  }) {
-    return _then(_value.copyWith(
-      classHash: null == classHash
-          ? _value.classHash
-          : classHash // ignore: cast_nullable_to_non_nullable
-              as Felt,
-      compiledClassHash: null == compiledClassHash
-          ? _value.compiledClassHash
-          : compiledClassHash // ignore: cast_nullable_to_non_nullable
-              as Felt,
-    ) as $Val);
+  String toString() {
+    return 'NonceAndContractAddress(nonce: $nonce, contractAddress: $contractAddress)';
   }
 }
 
 /// @nodoc
-abstract class _$$DeclaredClassImplCopyWith<$Res>
-    implements $DeclaredClassCopyWith<$Res> {
-  factory _$$DeclaredClassImplCopyWith(
-          _$DeclaredClassImpl value, $Res Function(_$DeclaredClassImpl) then) =
-      __$$DeclaredClassImplCopyWithImpl<$Res>;
-  @override
+abstract mixin class $NonceAndContractAddressCopyWith<$Res> {
+  factory $NonceAndContractAddressCopyWith(NonceAndContractAddress value,
+          $Res Function(NonceAndContractAddress) _then) =
+      _$NonceAndContractAddressCopyWithImpl;
   @useResult
-  $Res call({Felt classHash, Felt compiledClassHash});
+  $Res call({Felt nonce, Felt contractAddress});
 }
 
 /// @nodoc
-class __$$DeclaredClassImplCopyWithImpl<$Res>
-    extends _$DeclaredClassCopyWithImpl<$Res, _$DeclaredClassImpl>
-    implements _$$DeclaredClassImplCopyWith<$Res> {
-  __$$DeclaredClassImplCopyWithImpl(
-      _$DeclaredClassImpl _value, $Res Function(_$DeclaredClassImpl) _then)
-      : super(_value, _then);
+class _$NonceAndContractAddressCopyWithImpl<$Res>
+    implements $NonceAndContractAddressCopyWith<$Res> {
+  _$NonceAndContractAddressCopyWithImpl(this._self, this._then);
 
-  /// Create a copy of DeclaredClass
+  final NonceAndContractAddress _self;
+  final $Res Function(NonceAndContractAddress) _then;
+
+  /// Create a copy of NonceAndContractAddress
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? classHash = null,
-    Object? compiledClassHash = null,
+    Object? nonce = null,
+    Object? contractAddress = null,
   }) {
-    return _then(_$DeclaredClassImpl(
-      classHash: null == classHash
-          ? _value.classHash
-          : classHash // ignore: cast_nullable_to_non_nullable
+    return _then(_self.copyWith(
+      nonce: null == nonce
+          ? _self.nonce
+          : nonce // ignore: cast_nullable_to_non_nullable
               as Felt,
-      compiledClassHash: null == compiledClassHash
-          ? _value.compiledClassHash
-          : compiledClassHash // ignore: cast_nullable_to_non_nullable
+      contractAddress: null == contractAddress
+          ? _self.contractAddress
+          : contractAddress // ignore: cast_nullable_to_non_nullable
               as Felt,
     ));
   }
 }
 
+/// Adds pattern-matching-related methods to [NonceAndContractAddress].
+extension NonceAndContractAddressPatterns on NonceAndContractAddress {
+  /// A variant of `map` that fallback to returning `orElse`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(_NonceAndContractAddress value)? $default, {
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _NonceAndContractAddress() when $default != null:
+        return $default(_that);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// Callbacks receives the raw object, upcasted.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case final Subclass2 value:
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(_NonceAndContractAddress value) $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _NonceAndContractAddress():
+        return $default(_that);
+      case _:
+        throw StateError('Unexpected subclass');
+    }
+  }
+
+  /// A variant of `map` that fallback to returning `null`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>(
+    TResult? Function(_NonceAndContractAddress value)? $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _NonceAndContractAddress() when $default != null:
+        return $default(_that);
+      case _:
+        return null;
+    }
+  }
+
+  /// A variant of `when` that fallback to an `orElse` callback.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(Felt nonce, Felt contractAddress)? $default, {
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _NonceAndContractAddress() when $default != null:
+        return $default(_that.nonce, _that.contractAddress);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// As opposed to `map`, this offers destructuring.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case Subclass2(:final field2):
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>(
+    TResult Function(Felt nonce, Felt contractAddress) $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _NonceAndContractAddress():
+        return $default(_that.nonce, _that.contractAddress);
+      case _:
+        throw StateError('Unexpected subclass');
+    }
+  }
+
+  /// A variant of `when` that fallback to returning `null`
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>(
+    TResult? Function(Felt nonce, Felt contractAddress)? $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _NonceAndContractAddress() when $default != null:
+        return $default(_that.nonce, _that.contractAddress);
+      case _:
+        return null;
+    }
+  }
+}
+
 /// @nodoc
 @JsonSerializable()
-class _$DeclaredClassImpl implements _DeclaredClass {
-  const _$DeclaredClassImpl(
-      {required this.classHash, required this.compiledClassHash});
-
-  factory _$DeclaredClassImpl.fromJson(Map<String, dynamic> json) =>
-      _$$DeclaredClassImplFromJson(json);
-
-  @override
-  final Felt classHash;
-  @override
-  final Felt compiledClassHash;
+class _NonceAndContractAddress implements NonceAndContractAddress {
+  const _NonceAndContractAddress(
+      {required this.nonce, required this.contractAddress});
+  factory _NonceAndContractAddress.fromJson(Map<String, dynamic> json) =>
+      _$NonceAndContractAddressFromJson(json);
 
   @override
-  String toString() {
-    return 'DeclaredClass(classHash: $classHash, compiledClassHash: $compiledClassHash)';
+  final Felt nonce;
+  @override
+  final Felt contractAddress;
+
+  /// Create a copy of NonceAndContractAddress
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  _$NonceAndContractAddressCopyWith<_NonceAndContractAddress> get copyWith =>
+      __$NonceAndContractAddressCopyWithImpl<_NonceAndContractAddress>(
+          this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$NonceAndContractAddressToJson(
+      this,
+    );
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$DeclaredClassImpl &&
+            other is _NonceAndContractAddress &&
+            (identical(other.nonce, nonce) || other.nonce == nonce) &&
+            (identical(other.contractAddress, contractAddress) ||
+                other.contractAddress == contractAddress));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(runtimeType, nonce, contractAddress);
+
+  @override
+  String toString() {
+    return 'NonceAndContractAddress(nonce: $nonce, contractAddress: $contractAddress)';
+  }
+}
+
+/// @nodoc
+abstract mixin class _$NonceAndContractAddressCopyWith<$Res>
+    implements $NonceAndContractAddressCopyWith<$Res> {
+  factory _$NonceAndContractAddressCopyWith(_NonceAndContractAddress value,
+          $Res Function(_NonceAndContractAddress) _then) =
+      __$NonceAndContractAddressCopyWithImpl;
+  @override
+  @useResult
+  $Res call({Felt nonce, Felt contractAddress});
+}
+
+/// @nodoc
+class __$NonceAndContractAddressCopyWithImpl<$Res>
+    implements _$NonceAndContractAddressCopyWith<$Res> {
+  __$NonceAndContractAddressCopyWithImpl(this._self, this._then);
+
+  final _NonceAndContractAddress _self;
+  final $Res Function(_NonceAndContractAddress) _then;
+
+  /// Create a copy of NonceAndContractAddress
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $Res call({
+    Object? nonce = null,
+    Object? contractAddress = null,
+  }) {
+    return _then(_NonceAndContractAddress(
+      nonce: null == nonce
+          ? _self.nonce
+          : nonce // ignore: cast_nullable_to_non_nullable
+              as Felt,
+      contractAddress: null == contractAddress
+          ? _self.contractAddress
+          : contractAddress // ignore: cast_nullable_to_non_nullable
+              as Felt,
+    ));
+  }
+}
+
+/// @nodoc
+mixin _$DeclaredClass {
+  Felt get classHash;
+  Felt get compiledClassHash;
+
+  /// Create a copy of DeclaredClass
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  $DeclaredClassCopyWith<DeclaredClass> get copyWith =>
+      _$DeclaredClassCopyWithImpl<DeclaredClass>(
+          this as DeclaredClass, _$identity);
+
+  /// Serializes this DeclaredClass to a JSON map.
+  Map<String, dynamic> toJson();
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is DeclaredClass &&
             (identical(other.classHash, classHash) ||
                 other.classHash == classHash) &&
             (identical(other.compiledClassHash, compiledClassHash) ||
@@ -887,166 +1282,317 @@ class _$DeclaredClassImpl implements _DeclaredClass {
   @override
   int get hashCode => Object.hash(runtimeType, classHash, compiledClassHash);
 
-  /// Create a copy of DeclaredClass
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  @pragma('vm:prefer-inline')
-  _$$DeclaredClassImplCopyWith<_$DeclaredClassImpl> get copyWith =>
-      __$$DeclaredClassImplCopyWithImpl<_$DeclaredClassImpl>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$DeclaredClassImplToJson(
-      this,
-    );
-  }
-}
-
-abstract class _DeclaredClass implements DeclaredClass {
-  const factory _DeclaredClass(
-      {required final Felt classHash,
-      required final Felt compiledClassHash}) = _$DeclaredClassImpl;
-
-  factory _DeclaredClass.fromJson(Map<String, dynamic> json) =
-      _$DeclaredClassImpl.fromJson;
-
-  @override
-  Felt get classHash;
-  @override
-  Felt get compiledClassHash;
-
-  /// Create a copy of DeclaredClass
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$DeclaredClassImplCopyWith<_$DeclaredClassImpl> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-ReplacedClass _$ReplacedClassFromJson(Map<String, dynamic> json) {
-  return _ReplacedClass.fromJson(json);
-}
-
-/// @nodoc
-mixin _$ReplacedClass {
-  Felt get contractAddress => throw _privateConstructorUsedError;
-  Felt get classHash => throw _privateConstructorUsedError;
-
-  /// Serializes this ReplacedClass to a JSON map.
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-
-  /// Create a copy of ReplacedClass
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  $ReplacedClassCopyWith<ReplacedClass> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $ReplacedClassCopyWith<$Res> {
-  factory $ReplacedClassCopyWith(
-          ReplacedClass value, $Res Function(ReplacedClass) then) =
-      _$ReplacedClassCopyWithImpl<$Res, ReplacedClass>;
-  @useResult
-  $Res call({Felt contractAddress, Felt classHash});
-}
-
-/// @nodoc
-class _$ReplacedClassCopyWithImpl<$Res, $Val extends ReplacedClass>
-    implements $ReplacedClassCopyWith<$Res> {
-  _$ReplacedClassCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-
-  /// Create a copy of ReplacedClass
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? contractAddress = null,
-    Object? classHash = null,
-  }) {
-    return _then(_value.copyWith(
-      contractAddress: null == contractAddress
-          ? _value.contractAddress
-          : contractAddress // ignore: cast_nullable_to_non_nullable
-              as Felt,
-      classHash: null == classHash
-          ? _value.classHash
-          : classHash // ignore: cast_nullable_to_non_nullable
-              as Felt,
-    ) as $Val);
+  String toString() {
+    return 'DeclaredClass(classHash: $classHash, compiledClassHash: $compiledClassHash)';
   }
 }
 
 /// @nodoc
-abstract class _$$ReplacedClassImplCopyWith<$Res>
-    implements $ReplacedClassCopyWith<$Res> {
-  factory _$$ReplacedClassImplCopyWith(
-          _$ReplacedClassImpl value, $Res Function(_$ReplacedClassImpl) then) =
-      __$$ReplacedClassImplCopyWithImpl<$Res>;
-  @override
+abstract mixin class $DeclaredClassCopyWith<$Res> {
+  factory $DeclaredClassCopyWith(
+          DeclaredClass value, $Res Function(DeclaredClass) _then) =
+      _$DeclaredClassCopyWithImpl;
   @useResult
-  $Res call({Felt contractAddress, Felt classHash});
+  $Res call({Felt classHash, Felt compiledClassHash});
 }
 
 /// @nodoc
-class __$$ReplacedClassImplCopyWithImpl<$Res>
-    extends _$ReplacedClassCopyWithImpl<$Res, _$ReplacedClassImpl>
-    implements _$$ReplacedClassImplCopyWith<$Res> {
-  __$$ReplacedClassImplCopyWithImpl(
-      _$ReplacedClassImpl _value, $Res Function(_$ReplacedClassImpl) _then)
-      : super(_value, _then);
+class _$DeclaredClassCopyWithImpl<$Res>
+    implements $DeclaredClassCopyWith<$Res> {
+  _$DeclaredClassCopyWithImpl(this._self, this._then);
 
-  /// Create a copy of ReplacedClass
+  final DeclaredClass _self;
+  final $Res Function(DeclaredClass) _then;
+
+  /// Create a copy of DeclaredClass
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? contractAddress = null,
     Object? classHash = null,
+    Object? compiledClassHash = null,
   }) {
-    return _then(_$ReplacedClassImpl(
-      contractAddress: null == contractAddress
-          ? _value.contractAddress
-          : contractAddress // ignore: cast_nullable_to_non_nullable
-              as Felt,
+    return _then(_self.copyWith(
       classHash: null == classHash
-          ? _value.classHash
+          ? _self.classHash
           : classHash // ignore: cast_nullable_to_non_nullable
+              as Felt,
+      compiledClassHash: null == compiledClassHash
+          ? _self.compiledClassHash
+          : compiledClassHash // ignore: cast_nullable_to_non_nullable
               as Felt,
     ));
   }
 }
 
+/// Adds pattern-matching-related methods to [DeclaredClass].
+extension DeclaredClassPatterns on DeclaredClass {
+  /// A variant of `map` that fallback to returning `orElse`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(_DeclaredClass value)? $default, {
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _DeclaredClass() when $default != null:
+        return $default(_that);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// Callbacks receives the raw object, upcasted.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case final Subclass2 value:
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(_DeclaredClass value) $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _DeclaredClass():
+        return $default(_that);
+      case _:
+        throw StateError('Unexpected subclass');
+    }
+  }
+
+  /// A variant of `map` that fallback to returning `null`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>(
+    TResult? Function(_DeclaredClass value)? $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _DeclaredClass() when $default != null:
+        return $default(_that);
+      case _:
+        return null;
+    }
+  }
+
+  /// A variant of `when` that fallback to an `orElse` callback.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(Felt classHash, Felt compiledClassHash)? $default, {
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _DeclaredClass() when $default != null:
+        return $default(_that.classHash, _that.compiledClassHash);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// As opposed to `map`, this offers destructuring.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case Subclass2(:final field2):
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>(
+    TResult Function(Felt classHash, Felt compiledClassHash) $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _DeclaredClass():
+        return $default(_that.classHash, _that.compiledClassHash);
+      case _:
+        throw StateError('Unexpected subclass');
+    }
+  }
+
+  /// A variant of `when` that fallback to returning `null`
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>(
+    TResult? Function(Felt classHash, Felt compiledClassHash)? $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _DeclaredClass() when $default != null:
+        return $default(_that.classHash, _that.compiledClassHash);
+      case _:
+        return null;
+    }
+  }
+}
+
 /// @nodoc
 @JsonSerializable()
-class _$ReplacedClassImpl implements _ReplacedClass {
-  const _$ReplacedClassImpl(
-      {required this.contractAddress, required this.classHash});
+class _DeclaredClass implements DeclaredClass {
+  const _DeclaredClass(
+      {required this.classHash, required this.compiledClassHash});
+  factory _DeclaredClass.fromJson(Map<String, dynamic> json) =>
+      _$DeclaredClassFromJson(json);
 
-  factory _$ReplacedClassImpl.fromJson(Map<String, dynamic> json) =>
-      _$$ReplacedClassImplFromJson(json);
-
-  @override
-  final Felt contractAddress;
   @override
   final Felt classHash;
+  @override
+  final Felt compiledClassHash;
+
+  /// Create a copy of DeclaredClass
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  _$DeclaredClassCopyWith<_DeclaredClass> get copyWith =>
+      __$DeclaredClassCopyWithImpl<_DeclaredClass>(this, _$identity);
 
   @override
-  String toString() {
-    return 'ReplacedClass(contractAddress: $contractAddress, classHash: $classHash)';
+  Map<String, dynamic> toJson() {
+    return _$DeclaredClassToJson(
+      this,
+    );
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$ReplacedClassImpl &&
+            other is _DeclaredClass &&
+            (identical(other.classHash, classHash) ||
+                other.classHash == classHash) &&
+            (identical(other.compiledClassHash, compiledClassHash) ||
+                other.compiledClassHash == compiledClassHash));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(runtimeType, classHash, compiledClassHash);
+
+  @override
+  String toString() {
+    return 'DeclaredClass(classHash: $classHash, compiledClassHash: $compiledClassHash)';
+  }
+}
+
+/// @nodoc
+abstract mixin class _$DeclaredClassCopyWith<$Res>
+    implements $DeclaredClassCopyWith<$Res> {
+  factory _$DeclaredClassCopyWith(
+          _DeclaredClass value, $Res Function(_DeclaredClass) _then) =
+      __$DeclaredClassCopyWithImpl;
+  @override
+  @useResult
+  $Res call({Felt classHash, Felt compiledClassHash});
+}
+
+/// @nodoc
+class __$DeclaredClassCopyWithImpl<$Res>
+    implements _$DeclaredClassCopyWith<$Res> {
+  __$DeclaredClassCopyWithImpl(this._self, this._then);
+
+  final _DeclaredClass _self;
+  final $Res Function(_DeclaredClass) _then;
+
+  /// Create a copy of DeclaredClass
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $Res call({
+    Object? classHash = null,
+    Object? compiledClassHash = null,
+  }) {
+    return _then(_DeclaredClass(
+      classHash: null == classHash
+          ? _self.classHash
+          : classHash // ignore: cast_nullable_to_non_nullable
+              as Felt,
+      compiledClassHash: null == compiledClassHash
+          ? _self.compiledClassHash
+          : compiledClassHash // ignore: cast_nullable_to_non_nullable
+              as Felt,
+    ));
+  }
+}
+
+/// @nodoc
+mixin _$ReplacedClass {
+  Felt get contractAddress;
+  Felt get classHash;
+
+  /// Create a copy of ReplacedClass
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  $ReplacedClassCopyWith<ReplacedClass> get copyWith =>
+      _$ReplacedClassCopyWithImpl<ReplacedClass>(
+          this as ReplacedClass, _$identity);
+
+  /// Serializes this ReplacedClass to a JSON map.
+  Map<String, dynamic> toJson();
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is ReplacedClass &&
             (identical(other.contractAddress, contractAddress) ||
                 other.contractAddress == contractAddress) &&
             (identical(other.classHash, classHash) ||
@@ -1057,39 +1603,294 @@ class _$ReplacedClassImpl implements _ReplacedClass {
   @override
   int get hashCode => Object.hash(runtimeType, contractAddress, classHash);
 
-  /// Create a copy of ReplacedClass
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  @pragma('vm:prefer-inline')
-  _$$ReplacedClassImplCopyWith<_$ReplacedClassImpl> get copyWith =>
-      __$$ReplacedClassImplCopyWithImpl<_$ReplacedClassImpl>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$ReplacedClassImplToJson(
-      this,
-    );
+  String toString() {
+    return 'ReplacedClass(contractAddress: $contractAddress, classHash: $classHash)';
   }
 }
 
-abstract class _ReplacedClass implements ReplacedClass {
-  const factory _ReplacedClass(
-      {required final Felt contractAddress,
-      required final Felt classHash}) = _$ReplacedClassImpl;
+/// @nodoc
+abstract mixin class $ReplacedClassCopyWith<$Res> {
+  factory $ReplacedClassCopyWith(
+          ReplacedClass value, $Res Function(ReplacedClass) _then) =
+      _$ReplacedClassCopyWithImpl;
+  @useResult
+  $Res call({Felt contractAddress, Felt classHash});
+}
 
-  factory _ReplacedClass.fromJson(Map<String, dynamic> json) =
-      _$ReplacedClassImpl.fromJson;
+/// @nodoc
+class _$ReplacedClassCopyWithImpl<$Res>
+    implements $ReplacedClassCopyWith<$Res> {
+  _$ReplacedClassCopyWithImpl(this._self, this._then);
+
+  final ReplacedClass _self;
+  final $Res Function(ReplacedClass) _then;
+
+  /// Create a copy of ReplacedClass
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? contractAddress = null,
+    Object? classHash = null,
+  }) {
+    return _then(_self.copyWith(
+      contractAddress: null == contractAddress
+          ? _self.contractAddress
+          : contractAddress // ignore: cast_nullable_to_non_nullable
+              as Felt,
+      classHash: null == classHash
+          ? _self.classHash
+          : classHash // ignore: cast_nullable_to_non_nullable
+              as Felt,
+    ));
+  }
+}
+
+/// Adds pattern-matching-related methods to [ReplacedClass].
+extension ReplacedClassPatterns on ReplacedClass {
+  /// A variant of `map` that fallback to returning `orElse`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(_ReplacedClass value)? $default, {
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _ReplacedClass() when $default != null:
+        return $default(_that);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// Callbacks receives the raw object, upcasted.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case final Subclass2 value:
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(_ReplacedClass value) $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _ReplacedClass():
+        return $default(_that);
+      case _:
+        throw StateError('Unexpected subclass');
+    }
+  }
+
+  /// A variant of `map` that fallback to returning `null`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>(
+    TResult? Function(_ReplacedClass value)? $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _ReplacedClass() when $default != null:
+        return $default(_that);
+      case _:
+        return null;
+    }
+  }
+
+  /// A variant of `when` that fallback to an `orElse` callback.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(Felt contractAddress, Felt classHash)? $default, {
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _ReplacedClass() when $default != null:
+        return $default(_that.contractAddress, _that.classHash);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// As opposed to `map`, this offers destructuring.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case Subclass2(:final field2):
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>(
+    TResult Function(Felt contractAddress, Felt classHash) $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _ReplacedClass():
+        return $default(_that.contractAddress, _that.classHash);
+      case _:
+        throw StateError('Unexpected subclass');
+    }
+  }
+
+  /// A variant of `when` that fallback to returning `null`
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>(
+    TResult? Function(Felt contractAddress, Felt classHash)? $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _ReplacedClass() when $default != null:
+        return $default(_that.contractAddress, _that.classHash);
+      case _:
+        return null;
+    }
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _ReplacedClass implements ReplacedClass {
+  const _ReplacedClass(
+      {required this.contractAddress, required this.classHash});
+  factory _ReplacedClass.fromJson(Map<String, dynamic> json) =>
+      _$ReplacedClassFromJson(json);
 
   @override
-  Felt get contractAddress;
+  final Felt contractAddress;
   @override
-  Felt get classHash;
+  final Felt classHash;
 
   /// Create a copy of ReplacedClass
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$ReplacedClassImplCopyWith<_$ReplacedClassImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  @pragma('vm:prefer-inline')
+  _$ReplacedClassCopyWith<_ReplacedClass> get copyWith =>
+      __$ReplacedClassCopyWithImpl<_ReplacedClass>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$ReplacedClassToJson(
+      this,
+    );
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _ReplacedClass &&
+            (identical(other.contractAddress, contractAddress) ||
+                other.contractAddress == contractAddress) &&
+            (identical(other.classHash, classHash) ||
+                other.classHash == classHash));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(runtimeType, contractAddress, classHash);
+
+  @override
+  String toString() {
+    return 'ReplacedClass(contractAddress: $contractAddress, classHash: $classHash)';
+  }
 }
+
+/// @nodoc
+abstract mixin class _$ReplacedClassCopyWith<$Res>
+    implements $ReplacedClassCopyWith<$Res> {
+  factory _$ReplacedClassCopyWith(
+          _ReplacedClass value, $Res Function(_ReplacedClass) _then) =
+      __$ReplacedClassCopyWithImpl;
+  @override
+  @useResult
+  $Res call({Felt contractAddress, Felt classHash});
+}
+
+/// @nodoc
+class __$ReplacedClassCopyWithImpl<$Res>
+    implements _$ReplacedClassCopyWith<$Res> {
+  __$ReplacedClassCopyWithImpl(this._self, this._then);
+
+  final _ReplacedClass _self;
+  final $Res Function(_ReplacedClass) _then;
+
+  /// Create a copy of ReplacedClass
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $Res call({
+    Object? contractAddress = null,
+    Object? classHash = null,
+  }) {
+    return _then(_ReplacedClass(
+      contractAddress: null == contractAddress
+          ? _self.contractAddress
+          : contractAddress // ignore: cast_nullable_to_non_nullable
+              as Felt,
+      classHash: null == classHash
+          ? _self.classHash
+          : classHash // ignore: cast_nullable_to_non_nullable
+              as Felt,
+    ));
+  }
+}
+
+// dart format on

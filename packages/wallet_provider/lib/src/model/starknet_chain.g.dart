@@ -6,8 +6,8 @@ part of 'starknet_chain.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$StarknetChainImpl _$$StarknetChainImplFromJson(Map<String, dynamic> json) =>
-    _$StarknetChainImpl(
+_StarknetChain _$StarknetChainFromJson(Map<String, dynamic> json) =>
+    _StarknetChain(
       id: json['id'] as String,
       chainId: Felt.fromJson(json['chain_id'] as String),
       chainName: json['chain_name'] as String,
@@ -25,7 +25,7 @@ _$StarknetChainImpl _$$StarknetChainImplFromJson(Map<String, dynamic> json) =>
           .toList(),
     );
 
-Map<String, dynamic> _$$StarknetChainImplToJson(_$StarknetChainImpl instance) =>
+Map<String, dynamic> _$StarknetChainToJson(_StarknetChain instance) =>
     <String, dynamic>{
       'id': instance.id,
       'chain_id': instance.chainId.toJson(),

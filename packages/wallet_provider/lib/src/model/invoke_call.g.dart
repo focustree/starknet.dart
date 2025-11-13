@@ -6,8 +6,7 @@ part of 'invoke_call.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$InvokeCallImpl _$$InvokeCallImplFromJson(Map<String, dynamic> json) =>
-    _$InvokeCallImpl(
+_InvokeCall _$InvokeCallFromJson(Map<String, dynamic> json) => _InvokeCall(
       contractAddress: Felt.fromJson(json['contract_address'] as String),
       entryPoint: json['entry_point'] as String,
       calldata: (json['calldata'] as List<dynamic>?)
@@ -15,7 +14,7 @@ _$InvokeCallImpl _$$InvokeCallImplFromJson(Map<String, dynamic> json) =>
           .toList(),
     );
 
-Map<String, dynamic> _$$InvokeCallImplToJson(_$InvokeCallImpl instance) =>
+Map<String, dynamic> _$InvokeCallToJson(_InvokeCall instance) =>
     <String, dynamic>{
       'contract_address': instance.contractAddress.toJson(),
       'entry_point': instance.entryPoint,

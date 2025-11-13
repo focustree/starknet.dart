@@ -6,29 +6,29 @@ part of 'wss_subscribe_events.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$WssSubscribeEventsResultImpl _$$WssSubscribeEventsResultImplFromJson(
+WssSubscribeEventsResult _$WssSubscribeEventsResultFromJson(
         Map<String, dynamic> json) =>
-    _$WssSubscribeEventsResultImpl(
+    WssSubscribeEventsResult(
       subscription_id: json['result'] as String,
       $type: json['starkNetRuntimeTypeToRemove'] as String?,
     );
 
-Map<String, dynamic> _$$WssSubscribeEventsResultImplToJson(
-        _$WssSubscribeEventsResultImpl instance) =>
+Map<String, dynamic> _$WssSubscribeEventsResultToJson(
+        WssSubscribeEventsResult instance) =>
     <String, dynamic>{
       'result': instance.subscription_id,
       'starkNetRuntimeTypeToRemove': instance.$type,
     };
 
-_$WssSubscribeEventsErrorImpl _$$WssSubscribeEventsErrorImplFromJson(
+WssSubscribeEventsError _$WssSubscribeEventsErrorFromJson(
         Map<String, dynamic> json) =>
-    _$WssSubscribeEventsErrorImpl(
+    WssSubscribeEventsError(
       error: JsonWssApiError.fromJson(json['error'] as Map<String, dynamic>),
       $type: json['starkNetRuntimeTypeToRemove'] as String?,
     );
 
-Map<String, dynamic> _$$WssSubscribeEventsErrorImplToJson(
-        _$WssSubscribeEventsErrorImpl instance) =>
+Map<String, dynamic> _$WssSubscribeEventsErrorToJson(
+        WssSubscribeEventsError instance) =>
     <String, dynamic>{
       'error': instance.error.toJson(),
       'starkNetRuntimeTypeToRemove': instance.$type,

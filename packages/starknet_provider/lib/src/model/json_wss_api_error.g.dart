@@ -6,15 +6,13 @@ part of 'json_wss_api_error.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$JsonWssApiErrorImpl _$$JsonWssApiErrorImplFromJson(
-        Map<String, dynamic> json) =>
-    _$JsonWssApiErrorImpl(
+_JsonWssApiError _$JsonWssApiErrorFromJson(Map<String, dynamic> json) =>
+    _JsonWssApiError(
       code: $enumDecode(_$JsonWssApiErrorCodeEnumMap, json['code']),
       message: json['message'] as String,
     );
 
-Map<String, dynamic> _$$JsonWssApiErrorImplToJson(
-        _$JsonWssApiErrorImpl instance) =>
+Map<String, dynamic> _$JsonWssApiErrorToJson(_JsonWssApiError instance) =>
     <String, dynamic>{
       'code': _$JsonWssApiErrorCodeEnumMap[instance.code]!,
       'message': instance.message,

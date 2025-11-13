@@ -6,9 +6,9 @@ part of 'transaction_trace.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$InvokeTransactionTraceImpl _$$InvokeTransactionTraceImplFromJson(
+InvokeTransactionTrace _$InvokeTransactionTraceFromJson(
         Map<String, dynamic> json) =>
-    _$InvokeTransactionTraceImpl(
+    InvokeTransactionTrace(
       validateInvocation: json['validate_invocation'] == null
           ? null
           : FunctionInvocation.fromJson(
@@ -27,8 +27,8 @@ _$InvokeTransactionTraceImpl _$$InvokeTransactionTraceImplFromJson(
       $type: json['type'] as String?,
     );
 
-Map<String, dynamic> _$$InvokeTransactionTraceImplToJson(
-        _$InvokeTransactionTraceImpl instance) =>
+Map<String, dynamic> _$InvokeTransactionTraceToJson(
+        InvokeTransactionTrace instance) =>
     <String, dynamic>{
       'validate_invocation': instance.validateInvocation?.toJson(),
       'execute_invocation':
@@ -39,9 +39,9 @@ Map<String, dynamic> _$$InvokeTransactionTraceImplToJson(
       'type': instance.$type,
     };
 
-_$DeclareTransactionTraceImpl _$$DeclareTransactionTraceImplFromJson(
+DeclareTransactionTrace _$DeclareTransactionTraceFromJson(
         Map<String, dynamic> json) =>
-    _$DeclareTransactionTraceImpl(
+    DeclareTransactionTrace(
       validateInvocation: json['validate_invocation'] == null
           ? null
           : FunctionInvocation.fromJson(
@@ -58,8 +58,8 @@ _$DeclareTransactionTraceImpl _$$DeclareTransactionTraceImplFromJson(
       $type: json['type'] as String?,
     );
 
-Map<String, dynamic> _$$DeclareTransactionTraceImplToJson(
-        _$DeclareTransactionTraceImpl instance) =>
+Map<String, dynamic> _$DeclareTransactionTraceToJson(
+        DeclareTransactionTrace instance) =>
     <String, dynamic>{
       'validate_invocation': instance.validateInvocation?.toJson(),
       'fee_transfer_invocation': instance.feeTransferInvocation?.toJson(),
@@ -68,29 +68,29 @@ Map<String, dynamic> _$$DeclareTransactionTraceImplToJson(
       'type': instance.$type,
     };
 
-_$DeployAccountTransactionTraceImpl
-    _$$DeployAccountTransactionTraceImplFromJson(Map<String, dynamic> json) =>
-        _$DeployAccountTransactionTraceImpl(
-          validateInvocation: json['validate_invocation'] == null
-              ? null
-              : FunctionInvocation.fromJson(
-                  json['validate_invocation'] as Map<String, dynamic>),
-          constructorInvocation: FunctionInvocation.fromJson(
-              json['constructor_invocation'] as Map<String, dynamic>),
-          feeTransferInvocation: json['fee_transfer_invocation'] == null
-              ? null
-              : FunctionInvocation.fromJson(
-                  json['fee_transfer_invocation'] as Map<String, dynamic>),
-          stateDiff: json['state_diff'] == null
-              ? null
-              : StateDiff.fromJson(json['state_diff'] as Map<String, dynamic>),
-          executionResources: ExecutionResources.fromJson(
-              json['execution_resources'] as Map<String, dynamic>),
-          $type: json['type'] as String?,
-        );
+DeployAccountTransactionTrace _$DeployAccountTransactionTraceFromJson(
+        Map<String, dynamic> json) =>
+    DeployAccountTransactionTrace(
+      validateInvocation: json['validate_invocation'] == null
+          ? null
+          : FunctionInvocation.fromJson(
+              json['validate_invocation'] as Map<String, dynamic>),
+      constructorInvocation: FunctionInvocation.fromJson(
+          json['constructor_invocation'] as Map<String, dynamic>),
+      feeTransferInvocation: json['fee_transfer_invocation'] == null
+          ? null
+          : FunctionInvocation.fromJson(
+              json['fee_transfer_invocation'] as Map<String, dynamic>),
+      stateDiff: json['state_diff'] == null
+          ? null
+          : StateDiff.fromJson(json['state_diff'] as Map<String, dynamic>),
+      executionResources: ExecutionResources.fromJson(
+          json['execution_resources'] as Map<String, dynamic>),
+      $type: json['type'] as String?,
+    );
 
-Map<String, dynamic> _$$DeployAccountTransactionTraceImplToJson(
-        _$DeployAccountTransactionTraceImpl instance) =>
+Map<String, dynamic> _$DeployAccountTransactionTraceToJson(
+        DeployAccountTransactionTrace instance) =>
     <String, dynamic>{
       'validate_invocation': instance.validateInvocation?.toJson(),
       'constructor_invocation': instance.constructorInvocation.toJson(),
@@ -100,9 +100,9 @@ Map<String, dynamic> _$$DeployAccountTransactionTraceImplToJson(
       'type': instance.$type,
     };
 
-_$L1HandlerTransactionTraceImpl _$$L1HandlerTransactionTraceImplFromJson(
+L1HandlerTransactionTrace _$L1HandlerTransactionTraceFromJson(
         Map<String, dynamic> json) =>
-    _$L1HandlerTransactionTraceImpl(
+    L1HandlerTransactionTrace(
       functionInvocation: FunctionInvocation.fromJson(
           json['function_invocation'] as Map<String, dynamic>),
       stateDiff: json['state_diff'] == null
@@ -113,8 +113,8 @@ _$L1HandlerTransactionTraceImpl _$$L1HandlerTransactionTraceImplFromJson(
       $type: json['type'] as String?,
     );
 
-Map<String, dynamic> _$$L1HandlerTransactionTraceImplToJson(
-        _$L1HandlerTransactionTraceImpl instance) =>
+Map<String, dynamic> _$L1HandlerTransactionTraceToJson(
+        L1HandlerTransactionTrace instance) =>
     <String, dynamic>{
       'function_invocation': instance.functionInvocation.toJson(),
       'state_diff': instance.stateDiff?.toJson(),

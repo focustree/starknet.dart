@@ -1,5 +1,5 @@
-// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// coverage:ignore-file
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
@@ -9,11 +9,8 @@ part of 'trace_transactions_block.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// dart format off
 T _$identity<T>(T value) => value;
-
-final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
-
 GetBlockTransactionTraces _$GetBlockTransactionTracesFromJson(
     Map<String, dynamic> json) {
   switch (json['starkNetRuntimeTypeToRemove']) {
@@ -33,122 +30,218 @@ GetBlockTransactionTraces _$GetBlockTransactionTracesFromJson(
 
 /// @nodoc
 mixin _$GetBlockTransactionTraces {
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(List<BlockTransactionTrace> result) result,
-    required TResult Function(JsonRpcApiError error) error,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(List<BlockTransactionTrace> result)? result,
-    TResult? Function(JsonRpcApiError error)? error,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(List<BlockTransactionTrace> result)? result,
-    TResult Function(JsonRpcApiError error)? error,
-    required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(GetBlockTransactionTracesResult value) result,
-    required TResult Function(GetBlockTransactionTracesError value) error,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(GetBlockTransactionTracesResult value)? result,
-    TResult? Function(GetBlockTransactionTracesError value)? error,
-  }) =>
-      throw _privateConstructorUsedError;
+  /// Serializes this GetBlockTransactionTraces to a JSON map.
+  Map<String, dynamic> toJson();
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is GetBlockTransactionTraces);
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  String toString() {
+    return 'GetBlockTransactionTraces()';
+  }
+}
+
+/// @nodoc
+class $GetBlockTransactionTracesCopyWith<$Res> {
+  $GetBlockTransactionTracesCopyWith(
+      GetBlockTransactionTraces _, $Res Function(GetBlockTransactionTraces) __);
+}
+
+/// Adds pattern-matching-related methods to [GetBlockTransactionTraces].
+extension GetBlockTransactionTracesPatterns on GetBlockTransactionTraces {
+  /// A variant of `map` that fallback to returning `orElse`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(GetBlockTransactionTracesResult value)? result,
     TResult Function(GetBlockTransactionTracesError value)? error,
     required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
-
-  /// Serializes this GetBlockTransactionTraces to a JSON map.
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $GetBlockTransactionTracesCopyWith<$Res> {
-  factory $GetBlockTransactionTracesCopyWith(GetBlockTransactionTraces value,
-          $Res Function(GetBlockTransactionTraces) then) =
-      _$GetBlockTransactionTracesCopyWithImpl<$Res, GetBlockTransactionTraces>;
-}
-
-/// @nodoc
-class _$GetBlockTransactionTracesCopyWithImpl<$Res,
-        $Val extends GetBlockTransactionTraces>
-    implements $GetBlockTransactionTracesCopyWith<$Res> {
-  _$GetBlockTransactionTracesCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-
-  /// Create a copy of GetBlockTransactionTraces
-  /// with the given fields replaced by the non-null parameter values.
-}
-
-/// @nodoc
-abstract class _$$GetBlockTransactionTracesResultImplCopyWith<$Res> {
-  factory _$$GetBlockTransactionTracesResultImplCopyWith(
-          _$GetBlockTransactionTracesResultImpl value,
-          $Res Function(_$GetBlockTransactionTracesResultImpl) then) =
-      __$$GetBlockTransactionTracesResultImplCopyWithImpl<$Res>;
-  @useResult
-  $Res call({List<BlockTransactionTrace> result});
-}
-
-/// @nodoc
-class __$$GetBlockTransactionTracesResultImplCopyWithImpl<$Res>
-    extends _$GetBlockTransactionTracesCopyWithImpl<$Res,
-        _$GetBlockTransactionTracesResultImpl>
-    implements _$$GetBlockTransactionTracesResultImplCopyWith<$Res> {
-  __$$GetBlockTransactionTracesResultImplCopyWithImpl(
-      _$GetBlockTransactionTracesResultImpl _value,
-      $Res Function(_$GetBlockTransactionTracesResultImpl) _then)
-      : super(_value, _then);
-
-  /// Create a copy of GetBlockTransactionTraces
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? result = null,
   }) {
-    return _then(_$GetBlockTransactionTracesResultImpl(
-      result: null == result
-          ? _value._result
-          : result // ignore: cast_nullable_to_non_nullable
-              as List<BlockTransactionTrace>,
-    ));
+    final _that = this;
+    switch (_that) {
+      case GetBlockTransactionTracesResult() when result != null:
+        return result(_that);
+      case GetBlockTransactionTracesError() when error != null:
+        return error(_that);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// Callbacks receives the raw object, upcasted.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case final Subclass2 value:
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(GetBlockTransactionTracesResult value) result,
+    required TResult Function(GetBlockTransactionTracesError value) error,
+  }) {
+    final _that = this;
+    switch (_that) {
+      case GetBlockTransactionTracesResult():
+        return result(_that);
+      case GetBlockTransactionTracesError():
+        return error(_that);
+      case _:
+        throw StateError('Unexpected subclass');
+    }
+  }
+
+  /// A variant of `map` that fallback to returning `null`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(GetBlockTransactionTracesResult value)? result,
+    TResult? Function(GetBlockTransactionTracesError value)? error,
+  }) {
+    final _that = this;
+    switch (_that) {
+      case GetBlockTransactionTracesResult() when result != null:
+        return result(_that);
+      case GetBlockTransactionTracesError() when error != null:
+        return error(_that);
+      case _:
+        return null;
+    }
+  }
+
+  /// A variant of `when` that fallback to an `orElse` callback.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(List<BlockTransactionTrace> result)? result,
+    TResult Function(JsonRpcApiError error)? error,
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case GetBlockTransactionTracesResult() when result != null:
+        return result(_that.result);
+      case GetBlockTransactionTracesError() when error != null:
+        return error(_that.error);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// As opposed to `map`, this offers destructuring.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case Subclass2(:final field2):
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(List<BlockTransactionTrace> result) result,
+    required TResult Function(JsonRpcApiError error) error,
+  }) {
+    final _that = this;
+    switch (_that) {
+      case GetBlockTransactionTracesResult():
+        return result(_that.result);
+      case GetBlockTransactionTracesError():
+        return error(_that.error);
+      case _:
+        throw StateError('Unexpected subclass');
+    }
+  }
+
+  /// A variant of `when` that fallback to returning `null`
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(List<BlockTransactionTrace> result)? result,
+    TResult? Function(JsonRpcApiError error)? error,
+  }) {
+    final _that = this;
+    switch (_that) {
+      case GetBlockTransactionTracesResult() when result != null:
+        return result(_that.result);
+      case GetBlockTransactionTracesError() when error != null:
+        return error(_that.error);
+      case _:
+        return null;
+    }
   }
 }
 
 /// @nodoc
 @JsonSerializable()
-class _$GetBlockTransactionTracesResultImpl
-    implements GetBlockTransactionTracesResult {
-  const _$GetBlockTransactionTracesResultImpl(
+class GetBlockTransactionTracesResult implements GetBlockTransactionTraces {
+  const GetBlockTransactionTracesResult(
       {required final List<BlockTransactionTrace> result, final String? $type})
       : _result = result,
         $type = $type ?? 'result';
-
-  factory _$GetBlockTransactionTracesResultImpl.fromJson(
-          Map<String, dynamic> json) =>
-      _$$GetBlockTransactionTracesResultImplFromJson(json);
+  factory GetBlockTransactionTracesResult.fromJson(Map<String, dynamic> json) =>
+      _$GetBlockTransactionTracesResultFromJson(json);
 
   final List<BlockTransactionTrace> _result;
-  @override
   List<BlockTransactionTrace> get result {
     if (_result is EqualUnmodifiableListView) return _result;
     // ignore: implicit_dynamic_type
@@ -158,16 +251,26 @@ class _$GetBlockTransactionTracesResultImpl
   @JsonKey(name: 'starkNetRuntimeTypeToRemove')
   final String $type;
 
+  /// Create a copy of GetBlockTransactionTraces
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  $GetBlockTransactionTracesResultCopyWith<GetBlockTransactionTracesResult>
+      get copyWith => _$GetBlockTransactionTracesResultCopyWithImpl<
+          GetBlockTransactionTracesResult>(this, _$identity);
+
   @override
-  String toString() {
-    return 'GetBlockTransactionTraces.result(result: $result)';
+  Map<String, dynamic> toJson() {
+    return _$GetBlockTransactionTracesResultToJson(
+      this,
+    );
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$GetBlockTransactionTracesResultImpl &&
+            other is GetBlockTransactionTracesResult &&
             const DeepCollectionEquality().equals(other._result, _result));
   }
 
@@ -176,111 +279,100 @@ class _$GetBlockTransactionTracesResultImpl
   int get hashCode =>
       Object.hash(runtimeType, const DeepCollectionEquality().hash(_result));
 
-  /// Create a copy of GetBlockTransactionTraces
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  @pragma('vm:prefer-inline')
-  _$$GetBlockTransactionTracesResultImplCopyWith<
-          _$GetBlockTransactionTracesResultImpl>
-      get copyWith => __$$GetBlockTransactionTracesResultImplCopyWithImpl<
-          _$GetBlockTransactionTracesResultImpl>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(List<BlockTransactionTrace> result) result,
-    required TResult Function(JsonRpcApiError error) error,
-  }) {
-    return result(this.result);
+  String toString() {
+    return 'GetBlockTransactionTraces.result(result: $result)';
   }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(List<BlockTransactionTrace> result)? result,
-    TResult? Function(JsonRpcApiError error)? error,
-  }) {
-    return result?.call(this.result);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(List<BlockTransactionTrace> result)? result,
-    TResult Function(JsonRpcApiError error)? error,
-    required TResult orElse(),
-  }) {
-    if (result != null) {
-      return result(this.result);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(GetBlockTransactionTracesResult value) result,
-    required TResult Function(GetBlockTransactionTracesError value) error,
-  }) {
-    return result(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(GetBlockTransactionTracesResult value)? result,
-    TResult? Function(GetBlockTransactionTracesError value)? error,
-  }) {
-    return result?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(GetBlockTransactionTracesResult value)? result,
-    TResult Function(GetBlockTransactionTracesError value)? error,
-    required TResult orElse(),
-  }) {
-    if (result != null) {
-      return result(this);
-    }
-    return orElse();
-  }
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$GetBlockTransactionTracesResultImplToJson(
-      this,
-    );
-  }
-}
-
-abstract class GetBlockTransactionTracesResult
-    implements GetBlockTransactionTraces {
-  const factory GetBlockTransactionTracesResult(
-          {required final List<BlockTransactionTrace> result}) =
-      _$GetBlockTransactionTracesResultImpl;
-
-  factory GetBlockTransactionTracesResult.fromJson(Map<String, dynamic> json) =
-      _$GetBlockTransactionTracesResultImpl.fromJson;
-
-  List<BlockTransactionTrace> get result;
-
-  /// Create a copy of GetBlockTransactionTraces
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$GetBlockTransactionTracesResultImplCopyWith<
-          _$GetBlockTransactionTracesResultImpl>
-      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$GetBlockTransactionTracesErrorImplCopyWith<$Res> {
-  factory _$$GetBlockTransactionTracesErrorImplCopyWith(
-          _$GetBlockTransactionTracesErrorImpl value,
-          $Res Function(_$GetBlockTransactionTracesErrorImpl) then) =
-      __$$GetBlockTransactionTracesErrorImplCopyWithImpl<$Res>;
+abstract mixin class $GetBlockTransactionTracesResultCopyWith<$Res>
+    implements $GetBlockTransactionTracesCopyWith<$Res> {
+  factory $GetBlockTransactionTracesResultCopyWith(
+          GetBlockTransactionTracesResult value,
+          $Res Function(GetBlockTransactionTracesResult) _then) =
+      _$GetBlockTransactionTracesResultCopyWithImpl;
+  @useResult
+  $Res call({List<BlockTransactionTrace> result});
+}
+
+/// @nodoc
+class _$GetBlockTransactionTracesResultCopyWithImpl<$Res>
+    implements $GetBlockTransactionTracesResultCopyWith<$Res> {
+  _$GetBlockTransactionTracesResultCopyWithImpl(this._self, this._then);
+
+  final GetBlockTransactionTracesResult _self;
+  final $Res Function(GetBlockTransactionTracesResult) _then;
+
+  /// Create a copy of GetBlockTransactionTraces
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  $Res call({
+    Object? result = null,
+  }) {
+    return _then(GetBlockTransactionTracesResult(
+      result: null == result
+          ? _self._result
+          : result // ignore: cast_nullable_to_non_nullable
+              as List<BlockTransactionTrace>,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class GetBlockTransactionTracesError implements GetBlockTransactionTraces {
+  const GetBlockTransactionTracesError(
+      {required this.error, final String? $type})
+      : $type = $type ?? 'error';
+  factory GetBlockTransactionTracesError.fromJson(Map<String, dynamic> json) =>
+      _$GetBlockTransactionTracesErrorFromJson(json);
+
+  final JsonRpcApiError error;
+
+  @JsonKey(name: 'starkNetRuntimeTypeToRemove')
+  final String $type;
+
+  /// Create a copy of GetBlockTransactionTraces
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  $GetBlockTransactionTracesErrorCopyWith<GetBlockTransactionTracesError>
+      get copyWith => _$GetBlockTransactionTracesErrorCopyWithImpl<
+          GetBlockTransactionTracesError>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$GetBlockTransactionTracesErrorToJson(
+      this,
+    );
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is GetBlockTransactionTracesError &&
+            (identical(other.error, error) || other.error == error));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(runtimeType, error);
+
+  @override
+  String toString() {
+    return 'GetBlockTransactionTraces.error(error: $error)';
+  }
+}
+
+/// @nodoc
+abstract mixin class $GetBlockTransactionTracesErrorCopyWith<$Res>
+    implements $GetBlockTransactionTracesCopyWith<$Res> {
+  factory $GetBlockTransactionTracesErrorCopyWith(
+          GetBlockTransactionTracesError value,
+          $Res Function(GetBlockTransactionTracesError) _then) =
+      _$GetBlockTransactionTracesErrorCopyWithImpl;
   @useResult
   $Res call({JsonRpcApiError error});
 
@@ -288,25 +380,22 @@ abstract class _$$GetBlockTransactionTracesErrorImplCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$GetBlockTransactionTracesErrorImplCopyWithImpl<$Res>
-    extends _$GetBlockTransactionTracesCopyWithImpl<$Res,
-        _$GetBlockTransactionTracesErrorImpl>
-    implements _$$GetBlockTransactionTracesErrorImplCopyWith<$Res> {
-  __$$GetBlockTransactionTracesErrorImplCopyWithImpl(
-      _$GetBlockTransactionTracesErrorImpl _value,
-      $Res Function(_$GetBlockTransactionTracesErrorImpl) _then)
-      : super(_value, _then);
+class _$GetBlockTransactionTracesErrorCopyWithImpl<$Res>
+    implements $GetBlockTransactionTracesErrorCopyWith<$Res> {
+  _$GetBlockTransactionTracesErrorCopyWithImpl(this._self, this._then);
+
+  final GetBlockTransactionTracesError _self;
+  final $Res Function(GetBlockTransactionTracesError) _then;
 
   /// Create a copy of GetBlockTransactionTraces
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
-  @override
   $Res call({
     Object? error = null,
   }) {
-    return _then(_$GetBlockTransactionTracesErrorImpl(
+    return _then(GetBlockTransactionTracesError(
       error: null == error
-          ? _value.error
+          ? _self.error
           : error // ignore: cast_nullable_to_non_nullable
               as JsonRpcApiError,
     ));
@@ -317,142 +406,10 @@ class __$$GetBlockTransactionTracesErrorImplCopyWithImpl<$Res>
   @override
   @pragma('vm:prefer-inline')
   $JsonRpcApiErrorCopyWith<$Res> get error {
-    return $JsonRpcApiErrorCopyWith<$Res>(_value.error, (value) {
-      return _then(_value.copyWith(error: value));
+    return $JsonRpcApiErrorCopyWith<$Res>(_self.error, (value) {
+      return _then(_self.copyWith(error: value));
     });
   }
 }
 
-/// @nodoc
-@JsonSerializable()
-class _$GetBlockTransactionTracesErrorImpl
-    implements GetBlockTransactionTracesError {
-  const _$GetBlockTransactionTracesErrorImpl(
-      {required this.error, final String? $type})
-      : $type = $type ?? 'error';
-
-  factory _$GetBlockTransactionTracesErrorImpl.fromJson(
-          Map<String, dynamic> json) =>
-      _$$GetBlockTransactionTracesErrorImplFromJson(json);
-
-  @override
-  final JsonRpcApiError error;
-
-  @JsonKey(name: 'starkNetRuntimeTypeToRemove')
-  final String $type;
-
-  @override
-  String toString() {
-    return 'GetBlockTransactionTraces.error(error: $error)';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$GetBlockTransactionTracesErrorImpl &&
-            (identical(other.error, error) || other.error == error));
-  }
-
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  int get hashCode => Object.hash(runtimeType, error);
-
-  /// Create a copy of GetBlockTransactionTraces
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$GetBlockTransactionTracesErrorImplCopyWith<
-          _$GetBlockTransactionTracesErrorImpl>
-      get copyWith => __$$GetBlockTransactionTracesErrorImplCopyWithImpl<
-          _$GetBlockTransactionTracesErrorImpl>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(List<BlockTransactionTrace> result) result,
-    required TResult Function(JsonRpcApiError error) error,
-  }) {
-    return error(this.error);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(List<BlockTransactionTrace> result)? result,
-    TResult? Function(JsonRpcApiError error)? error,
-  }) {
-    return error?.call(this.error);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(List<BlockTransactionTrace> result)? result,
-    TResult Function(JsonRpcApiError error)? error,
-    required TResult orElse(),
-  }) {
-    if (error != null) {
-      return error(this.error);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(GetBlockTransactionTracesResult value) result,
-    required TResult Function(GetBlockTransactionTracesError value) error,
-  }) {
-    return error(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(GetBlockTransactionTracesResult value)? result,
-    TResult? Function(GetBlockTransactionTracesError value)? error,
-  }) {
-    return error?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(GetBlockTransactionTracesResult value)? result,
-    TResult Function(GetBlockTransactionTracesError value)? error,
-    required TResult orElse(),
-  }) {
-    if (error != null) {
-      return error(this);
-    }
-    return orElse();
-  }
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$GetBlockTransactionTracesErrorImplToJson(
-      this,
-    );
-  }
-}
-
-abstract class GetBlockTransactionTracesError
-    implements GetBlockTransactionTraces {
-  const factory GetBlockTransactionTracesError(
-          {required final JsonRpcApiError error}) =
-      _$GetBlockTransactionTracesErrorImpl;
-
-  factory GetBlockTransactionTracesError.fromJson(Map<String, dynamic> json) =
-      _$GetBlockTransactionTracesErrorImpl.fromJson;
-
-  JsonRpcApiError get error;
-
-  /// Create a copy of GetBlockTransactionTraces
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$GetBlockTransactionTracesErrorImplCopyWith<
-          _$GetBlockTransactionTracesErrorImpl>
-      get copyWith => throw _privateConstructorUsedError;
-}
+// dart format on

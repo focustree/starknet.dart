@@ -6,29 +6,29 @@ part of 'wss_subscribe_newhead.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$WssSubscribeNewHeadResultImpl _$$WssSubscribeNewHeadResultImplFromJson(
+WssSubscribeNewHeadResult _$WssSubscribeNewHeadResultFromJson(
         Map<String, dynamic> json) =>
-    _$WssSubscribeNewHeadResultImpl(
+    WssSubscribeNewHeadResult(
       subscription_id: json['result'] as String,
       $type: json['starkNetRuntimeTypeToRemove'] as String?,
     );
 
-Map<String, dynamic> _$$WssSubscribeNewHeadResultImplToJson(
-        _$WssSubscribeNewHeadResultImpl instance) =>
+Map<String, dynamic> _$WssSubscribeNewHeadResultToJson(
+        WssSubscribeNewHeadResult instance) =>
     <String, dynamic>{
       'result': instance.subscription_id,
       'starkNetRuntimeTypeToRemove': instance.$type,
     };
 
-_$WssSubscribeNewHeadErrorImpl _$$WssSubscribeNewHeadErrorImplFromJson(
+WssSubscribeNewHeadError _$WssSubscribeNewHeadErrorFromJson(
         Map<String, dynamic> json) =>
-    _$WssSubscribeNewHeadErrorImpl(
+    WssSubscribeNewHeadError(
       error: JsonWssApiError.fromJson(json['error'] as Map<String, dynamic>),
       $type: json['starkNetRuntimeTypeToRemove'] as String?,
     );
 
-Map<String, dynamic> _$$WssSubscribeNewHeadErrorImplToJson(
-        _$WssSubscribeNewHeadErrorImpl instance) =>
+Map<String, dynamic> _$WssSubscribeNewHeadErrorToJson(
+        WssSubscribeNewHeadError instance) =>
     <String, dynamic>{
       'error': instance.error.toJson(),
       'starkNetRuntimeTypeToRemove': instance.$type,

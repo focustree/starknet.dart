@@ -6,8 +6,8 @@ part of 'poseidon_params.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$PoseidonParamsImpl _$$PoseidonParamsImplFromJson(Map<String, dynamic> json) =>
-    _$PoseidonParamsImpl(
+_PoseidonParams _$PoseidonParamsFromJson(Map<String, dynamic> json) =>
+    _PoseidonParams(
       fieldPrime: BigInt.parse(json['FIELD_PRIME'] as String),
       rate: BigInt.parse(json['RATE'] as String),
       capacity: BigInt.parse(json['CAPACITY'] as String),
@@ -25,8 +25,7 @@ _$PoseidonParamsImpl _$$PoseidonParamsImplFromJson(Map<String, dynamic> json) =>
           .toList(),
     );
 
-Map<String, dynamic> _$$PoseidonParamsImplToJson(
-        _$PoseidonParamsImpl instance) =>
+Map<String, dynamic> _$PoseidonParamsToJson(_PoseidonParams instance) =>
     <String, dynamic>{
       'FIELD_PRIME': instance.fieldPrime.toString(),
       'RATE': instance.rate.toString(),

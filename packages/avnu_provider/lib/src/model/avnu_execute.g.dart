@@ -6,30 +6,26 @@ part of 'avnu_execute.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$AvnuExecuteResultImpl _$$AvnuExecuteResultImplFromJson(
-        Map<String, dynamic> json) =>
-    _$AvnuExecuteResultImpl(
+AvnuExecuteResult _$AvnuExecuteResultFromJson(Map<String, dynamic> json) =>
+    AvnuExecuteResult(
       json['transactionHash'] as String,
       $type: json['runtimeType'] as String?,
     );
 
-Map<String, dynamic> _$$AvnuExecuteResultImplToJson(
-        _$AvnuExecuteResultImpl instance) =>
+Map<String, dynamic> _$AvnuExecuteResultToJson(AvnuExecuteResult instance) =>
     <String, dynamic>{
       'transactionHash': instance.transactionHash,
       'runtimeType': instance.$type,
     };
 
-_$AvnuExecuteErrorImpl _$$AvnuExecuteErrorImplFromJson(
-        Map<String, dynamic> json) =>
-    _$AvnuExecuteErrorImpl(
+AvnuExecuteError _$AvnuExecuteErrorFromJson(Map<String, dynamic> json) =>
+    AvnuExecuteError(
       (json['messages'] as List<dynamic>).map((e) => e as String).toList(),
       json['revertError'] as String?,
       $type: json['runtimeType'] as String?,
     );
 
-Map<String, dynamic> _$$AvnuExecuteErrorImplToJson(
-        _$AvnuExecuteErrorImpl instance) =>
+Map<String, dynamic> _$AvnuExecuteErrorToJson(AvnuExecuteError instance) =>
     <String, dynamic>{
       'messages': instance.messages,
       'revertError': instance.revertError,

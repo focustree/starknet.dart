@@ -6,9 +6,9 @@ part of 'marketplace_api.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$ListMarketplaceNFTsResponseImpl _$$ListMarketplaceNFTsResponseImplFromJson(
+_ListMarketplaceNFTsResponse _$ListMarketplaceNFTsResponseFromJson(
         Map<String, dynamic> json) =>
-    _$ListMarketplaceNFTsResponseImpl(
+    _ListMarketplaceNFTsResponse(
       data: (json['data'] as List<dynamic>)
           .map((e) => MarketPlaceNFT.fromJson(e as Map<String, dynamic>))
           .toList(),
@@ -16,16 +16,16 @@ _$ListMarketplaceNFTsResponseImpl _$$ListMarketplaceNFTsResponseImplFromJson(
       nextPage: (json['next_page'] as num).toInt(),
     );
 
-Map<String, dynamic> _$$ListMarketplaceNFTsResponseImplToJson(
-        _$ListMarketplaceNFTsResponseImpl instance) =>
+Map<String, dynamic> _$ListMarketplaceNFTsResponseToJson(
+        _ListMarketplaceNFTsResponse instance) =>
     <String, dynamic>{
       'data': instance.data,
       'token_count': instance.tokenCount,
       'next_page': instance.nextPage,
     };
 
-_$MarketPlaceNFTImpl _$$MarketPlaceNFTImplFromJson(Map<String, dynamic> json) =>
-    _$MarketPlaceNFTImpl(
+_MarketPlaceNFT _$MarketPlaceNFTFromJson(Map<String, dynamic> json) =>
+    _MarketPlaceNFT(
       tokenId: json['token_id'] as String?,
       lastPrice: json['last_price'] as String?,
       floorDifference: (json['floor_difference'] as num?)?.toInt(),
@@ -42,8 +42,7 @@ _$MarketPlaceNFTImpl _$$MarketPlaceNFTImplFromJson(Map<String, dynamic> json) =>
               json['metadata'] as Map<String, dynamic>),
     );
 
-Map<String, dynamic> _$$MarketPlaceNFTImplToJson(
-        _$MarketPlaceNFTImpl instance) =>
+Map<String, dynamic> _$MarketPlaceNFTToJson(_MarketPlaceNFT instance) =>
     <String, dynamic>{
       'token_id': instance.tokenId,
       'last_price': instance.lastPrice,
@@ -58,36 +57,33 @@ Map<String, dynamic> _$$MarketPlaceNFTImplToJson(
       'metadata': instance.metadata,
     };
 
-_$MarketplaceNFTMetadataImpl _$$MarketplaceNFTMetadataImplFromJson(
+_MarketplaceNFTMetadata _$MarketplaceNFTMetadataFromJson(
         Map<String, dynamic> json) =>
-    _$MarketplaceNFTMetadataImpl(
+    _MarketplaceNFTMetadata(
       name: json['name'] as String,
       description: json['description'] as String,
       image: json['image'] as String,
     );
 
-Map<String, dynamic> _$$MarketplaceNFTMetadataImplToJson(
-        _$MarketplaceNFTMetadataImpl instance) =>
+Map<String, dynamic> _$MarketplaceNFTMetadataToJson(
+        _MarketplaceNFTMetadata instance) =>
     <String, dynamic>{
       'name': instance.name,
       'description': instance.description,
       'image': instance.image,
     };
 
-_$MarketdataResponseImpl _$$MarketdataResponseImplFromJson(
-        Map<String, dynamic> json) =>
-    _$MarketdataResponseImpl(
+_MarketdataResponse _$MarketdataResponseFromJson(Map<String, dynamic> json) =>
+    _MarketdataResponse(
       data: Marketdata.fromJson(json['data'] as Map<String, dynamic>),
     );
 
-Map<String, dynamic> _$$MarketdataResponseImplToJson(
-        _$MarketdataResponseImpl instance) =>
+Map<String, dynamic> _$MarketdataResponseToJson(_MarketdataResponse instance) =>
     <String, dynamic>{
       'data': instance.data,
     };
 
-_$MarketdataImpl _$$MarketdataImplFromJson(Map<String, dynamic> json) =>
-    _$MarketdataImpl(
+_Marketdata _$MarketdataFromJson(Map<String, dynamic> json) => _Marketdata(
       createdTimestamp: (json['created_timestamp'] as num?)?.toInt(),
       updatedTimestamp: (json['updated_timestamp'] as num?)?.toInt(),
       lastPrice: json['last_price'] as String?,
@@ -103,7 +99,7 @@ _$MarketdataImpl _$$MarketdataImplFromJson(Map<String, dynamic> json) =>
           : TopOffer.fromJson(json['top_offer'] as Map<String, dynamic>),
     );
 
-Map<String, dynamic> _$$MarketdataImplToJson(_$MarketdataImpl instance) =>
+Map<String, dynamic> _$MarketdataToJson(_Marketdata instance) =>
     <String, dynamic>{
       'created_timestamp': instance.createdTimestamp,
       'updated_timestamp': instance.updatedTimestamp,
@@ -116,8 +112,7 @@ Map<String, dynamic> _$$MarketdataImplToJson(_$MarketdataImpl instance) =>
       'top_offer': instance.topOffer,
     };
 
-_$ListingImpl _$$ListingImplFromJson(Map<String, dynamic> json) =>
-    _$ListingImpl(
+_Listing _$ListingFromJson(Map<String, dynamic> json) => _Listing(
       currencyAddress: json['currency_address'] as String?,
       endAmount: json['end_amount'] as String?,
       endDate: (json['end_date'] as num?)?.toInt(),
@@ -127,8 +122,7 @@ _$ListingImpl _$$ListingImplFromJson(Map<String, dynamic> json) =>
       orderHash: json['order_hash'] as String?,
     );
 
-Map<String, dynamic> _$$ListingImplToJson(_$ListingImpl instance) =>
-    <String, dynamic>{
+Map<String, dynamic> _$ListingToJson(_Listing instance) => <String, dynamic>{
       'currency_address': instance.currencyAddress,
       'end_amount': instance.endAmount,
       'end_date': instance.endDate,
@@ -138,8 +132,7 @@ Map<String, dynamic> _$$ListingImplToJson(_$ListingImpl instance) =>
       'order_hash': instance.orderHash,
     };
 
-_$TopOfferImpl _$$TopOfferImplFromJson(Map<String, dynamic> json) =>
-    _$TopOfferImpl(
+_TopOffer _$TopOfferFromJson(Map<String, dynamic> json) => _TopOffer(
       currencyAddress: json['currency_address'] as String?,
       amount: json['amount'] as String?,
       endDate: (json['end_date'] as num?)?.toInt(),
@@ -147,8 +140,7 @@ _$TopOfferImpl _$$TopOfferImplFromJson(Map<String, dynamic> json) =>
       orderHash: json['order_hash'] as String?,
     );
 
-Map<String, dynamic> _$$TopOfferImplToJson(_$TopOfferImpl instance) =>
-    <String, dynamic>{
+Map<String, dynamic> _$TopOfferToJson(_TopOffer instance) => <String, dynamic>{
       'currency_address': instance.currencyAddress,
       'amount': instance.amount,
       'end_date': instance.endDate,
@@ -156,9 +148,9 @@ Map<String, dynamic> _$$TopOfferImplToJson(_$TopOfferImpl instance) =>
       'order_hash': instance.orderHash,
     };
 
-_$GetTokenOffersResponseImpl _$$GetTokenOffersResponseImplFromJson(
+_GetTokenOffersResponse _$GetTokenOffersResponseFromJson(
         Map<String, dynamic> json) =>
-    _$GetTokenOffersResponseImpl(
+    _GetTokenOffersResponse(
       data: (json['data'] as List<dynamic>)
           .map((e) => TokenOffer.fromJson(e as Map<String, dynamic>))
           .toList(),
@@ -166,16 +158,15 @@ _$GetTokenOffersResponseImpl _$$GetTokenOffersResponseImplFromJson(
       nextPage: (json['next_page'] as num?)?.toInt(),
     );
 
-Map<String, dynamic> _$$GetTokenOffersResponseImplToJson(
-        _$GetTokenOffersResponseImpl instance) =>
+Map<String, dynamic> _$GetTokenOffersResponseToJson(
+        _GetTokenOffersResponse instance) =>
     <String, dynamic>{
       'data': instance.data,
       'count': instance.count,
       'next_page': instance.nextPage,
     };
 
-_$TokenOfferImpl _$$TokenOfferImplFromJson(Map<String, dynamic> json) =>
-    _$TokenOfferImpl(
+_TokenOffer _$TokenOfferFromJson(Map<String, dynamic> json) => _TokenOffer(
       expireAt: (json['expire_at'] as num).toInt(),
       floorDifference: json['floor_difference'] as String,
       hash: json['hash'] as String,
@@ -184,7 +175,7 @@ _$TokenOfferImpl _$$TokenOfferImplFromJson(Map<String, dynamic> json) =>
       source: json['source'] as String,
     );
 
-Map<String, dynamic> _$$TokenOfferImplToJson(_$TokenOfferImpl instance) =>
+Map<String, dynamic> _$TokenOfferToJson(_TokenOffer instance) =>
     <String, dynamic>{
       'expire_at': instance.expireAt,
       'floor_difference': instance.floorDifference,

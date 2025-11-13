@@ -6,9 +6,9 @@ part of 'compiled_contract.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$SierraCompiledContractImpl _$$SierraCompiledContractImplFromJson(
+_SierraCompiledContract _$SierraCompiledContractFromJson(
         Map<String, dynamic> json) =>
-    _$SierraCompiledContractImpl(
+    _SierraCompiledContract(
       sierraProgram: (json['sierra_program'] as List<dynamic>)
           .map((e) => BigInt.parse(e as String))
           .toList(),
@@ -21,8 +21,8 @@ _$SierraCompiledContractImpl _$$SierraCompiledContractImplFromJson(
           .toList(),
     );
 
-Map<String, dynamic> _$$SierraCompiledContractImplToJson(
-        _$SierraCompiledContractImpl instance) =>
+Map<String, dynamic> _$SierraCompiledContractToJson(
+        _SierraCompiledContract instance) =>
     <String, dynamic>{
       'sierra_program':
           instance.sierraProgram.map((e) => e.toString()).toList(),
@@ -31,9 +31,8 @@ Map<String, dynamic> _$$SierraCompiledContractImplToJson(
       'abi': instance.abi.map((e) => e.toJson()).toList(),
     };
 
-_$FlattenSierraClassImpl _$$FlattenSierraClassImplFromJson(
-        Map<String, dynamic> json) =>
-    _$FlattenSierraClassImpl(
+_FlattenSierraClass _$FlattenSierraClassFromJson(Map<String, dynamic> json) =>
+    _FlattenSierraClass(
       sierraProgram: (json['sierra_program'] as List<dynamic>)
           .map((e) => e as String)
           .toList(),
@@ -43,8 +42,7 @@ _$FlattenSierraClassImpl _$$FlattenSierraClassImplFromJson(
       abi: json['abi'] as String,
     );
 
-Map<String, dynamic> _$$FlattenSierraClassImplToJson(
-        _$FlattenSierraClassImpl instance) =>
+Map<String, dynamic> _$FlattenSierraClassToJson(_FlattenSierraClass instance) =>
     <String, dynamic>{
       'sierra_program': instance.sierraProgram,
       'entry_points_by_type': instance.entryPointsByType.toJson(),
@@ -52,9 +50,9 @@ Map<String, dynamic> _$$FlattenSierraClassImplToJson(
       'abi': instance.abi,
     };
 
-_$CASMCompiledContractImpl _$$CASMCompiledContractImplFromJson(
+_CASMCompiledContract _$CASMCompiledContractFromJson(
         Map<String, dynamic> json) =>
-    _$CASMCompiledContractImpl(
+    _CASMCompiledContract(
       bytecode: (json['bytecode'] as List<dynamic>)
           .map((e) => BigInt.parse(e as String))
           .toList(),
@@ -67,8 +65,8 @@ _$CASMCompiledContractImpl _$$CASMCompiledContractImplFromJson(
               .toList(),
     );
 
-Map<String, dynamic> _$$CASMCompiledContractImplToJson(
-        _$CASMCompiledContractImpl instance) =>
+Map<String, dynamic> _$CASMCompiledContractToJson(
+        _CASMCompiledContract instance) =>
     <String, dynamic>{
       'bytecode': instance.bytecode.map((e) => e.toString()).toList(),
       'entry_points_by_type': instance.entryPointsByType.toJson(),
@@ -76,9 +74,9 @@ Map<String, dynamic> _$$CASMCompiledContractImplToJson(
       'bytecode_segment_lengths': instance.bytecodeSegmentLengths,
     };
 
-_$DeprecatedCompiledContractImpl _$$DeprecatedCompiledContractImplFromJson(
+_DeprecatedCompiledContract _$DeprecatedCompiledContractFromJson(
         Map<String, dynamic> json) =>
-    _$DeprecatedCompiledContractImpl(
+    _DeprecatedCompiledContract(
       program: json['program'] as Map<String, dynamic>,
       entryPointsByType: DeprecatedCairoEntryPointsByType.fromJson(
           json['entry_points_by_type'] as Map<String, dynamic>),
@@ -88,8 +86,8 @@ _$DeprecatedCompiledContractImpl _$$DeprecatedCompiledContractImplFromJson(
           .toList(),
     );
 
-Map<String, dynamic> _$$DeprecatedCompiledContractImplToJson(
-        _$DeprecatedCompiledContractImpl instance) =>
+Map<String, dynamic> _$DeprecatedCompiledContractToJson(
+        _DeprecatedCompiledContract instance) =>
     <String, dynamic>{
       'program': instance.program,
       'entry_points_by_type': instance.entryPointsByType.toJson(),

@@ -6,32 +6,31 @@ part of 'wss_subscribe_pending_transactions.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$WssSubscribePendingTransactionsResultImpl
-    _$$WssSubscribePendingTransactionsResultImplFromJson(
+WssSubscribePendingTransactionsResult
+    _$WssSubscribePendingTransactionsResultFromJson(
             Map<String, dynamic> json) =>
-        _$WssSubscribePendingTransactionsResultImpl(
+        WssSubscribePendingTransactionsResult(
           subscription_id: json['result'] as String,
           $type: json['starkNetRuntimeTypeToRemove'] as String?,
         );
 
-Map<String, dynamic> _$$WssSubscribePendingTransactionsResultImplToJson(
-        _$WssSubscribePendingTransactionsResultImpl instance) =>
+Map<String, dynamic> _$WssSubscribePendingTransactionsResultToJson(
+        WssSubscribePendingTransactionsResult instance) =>
     <String, dynamic>{
       'result': instance.subscription_id,
       'starkNetRuntimeTypeToRemove': instance.$type,
     };
 
-_$WssSubscribePendingTransactionsErrorImpl
-    _$$WssSubscribePendingTransactionsErrorImplFromJson(
-            Map<String, dynamic> json) =>
-        _$WssSubscribePendingTransactionsErrorImpl(
+WssSubscribePendingTransactionsError
+    _$WssSubscribePendingTransactionsErrorFromJson(Map<String, dynamic> json) =>
+        WssSubscribePendingTransactionsError(
           error:
               JsonWssApiError.fromJson(json['error'] as Map<String, dynamic>),
           $type: json['starkNetRuntimeTypeToRemove'] as String?,
         );
 
-Map<String, dynamic> _$$WssSubscribePendingTransactionsErrorImplToJson(
-        _$WssSubscribePendingTransactionsErrorImpl instance) =>
+Map<String, dynamic> _$WssSubscribePendingTransactionsErrorToJson(
+        WssSubscribePendingTransactionsError instance) =>
     <String, dynamic>{
       'error': instance.error.toJson(),
       'starkNetRuntimeTypeToRemove': instance.$type,

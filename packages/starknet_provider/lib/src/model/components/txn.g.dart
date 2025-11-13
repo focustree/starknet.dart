@@ -6,8 +6,7 @@ part of 'txn.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$InvokeTxnV0Impl _$$InvokeTxnV0ImplFromJson(Map<String, dynamic> json) =>
-    _$InvokeTxnV0Impl(
+InvokeTxnV0 _$InvokeTxnV0FromJson(Map<String, dynamic> json) => InvokeTxnV0(
       transactionHash: json['transaction_hash'] == null
           ? null
           : Felt.fromJson(json['transaction_hash'] as String),
@@ -33,7 +32,7 @@ _$InvokeTxnV0Impl _$$InvokeTxnV0ImplFromJson(Map<String, dynamic> json) =>
       $type: json['starkNetRuntimeTypeToRemove'] as String?,
     );
 
-Map<String, dynamic> _$$InvokeTxnV0ImplToJson(_$InvokeTxnV0Impl instance) =>
+Map<String, dynamic> _$InvokeTxnV0ToJson(InvokeTxnV0 instance) =>
     <String, dynamic>{
       'transaction_hash': instance.transactionHash?.toJson(),
       'max_fee': maxFeeToJson(instance.maxFee),
@@ -47,8 +46,7 @@ Map<String, dynamic> _$$InvokeTxnV0ImplToJson(_$InvokeTxnV0Impl instance) =>
       'starkNetRuntimeTypeToRemove': instance.$type,
     };
 
-_$InvokeTxnV1Impl _$$InvokeTxnV1ImplFromJson(Map<String, dynamic> json) =>
-    _$InvokeTxnV1Impl(
+InvokeTxnV1 _$InvokeTxnV1FromJson(Map<String, dynamic> json) => InvokeTxnV1(
       transactionHash: json['transaction_hash'] == null
           ? null
           : Felt.fromJson(json['transaction_hash'] as String),
@@ -71,7 +69,7 @@ _$InvokeTxnV1Impl _$$InvokeTxnV1ImplFromJson(Map<String, dynamic> json) =>
       $type: json['starkNetRuntimeTypeToRemove'] as String?,
     );
 
-Map<String, dynamic> _$$InvokeTxnV1ImplToJson(_$InvokeTxnV1Impl instance) =>
+Map<String, dynamic> _$InvokeTxnV1ToJson(InvokeTxnV1 instance) =>
     <String, dynamic>{
       'transaction_hash': instance.transactionHash?.toJson(),
       'max_fee': maxFeeToJson(instance.maxFee),
@@ -84,8 +82,7 @@ Map<String, dynamic> _$$InvokeTxnV1ImplToJson(_$InvokeTxnV1Impl instance) =>
       'starkNetRuntimeTypeToRemove': instance.$type,
     };
 
-_$DeclareTxnImpl _$$DeclareTxnImplFromJson(Map<String, dynamic> json) =>
-    _$DeclareTxnImpl(
+DeclareTxn _$DeclareTxnFromJson(Map<String, dynamic> json) => DeclareTxn(
       transactionHash: json['transaction_hash'] == null
           ? null
           : Felt.fromJson(json['transaction_hash'] as String),
@@ -108,7 +105,7 @@ _$DeclareTxnImpl _$$DeclareTxnImplFromJson(Map<String, dynamic> json) =>
       $type: json['starkNetRuntimeTypeToRemove'] as String?,
     );
 
-Map<String, dynamic> _$$DeclareTxnImplToJson(_$DeclareTxnImpl instance) =>
+Map<String, dynamic> _$DeclareTxnToJson(DeclareTxn instance) =>
     <String, dynamic>{
       'transaction_hash': instance.transactionHash?.toJson(),
       'max_fee': maxFeeToJson(instance.maxFee),
@@ -121,8 +118,7 @@ Map<String, dynamic> _$$DeclareTxnImplToJson(_$DeclareTxnImpl instance) =>
       'starkNetRuntimeTypeToRemove': instance.$type,
     };
 
-_$DeployTxnImpl _$$DeployTxnImplFromJson(Map<String, dynamic> json) =>
-    _$DeployTxnImpl(
+DeployTxn _$DeployTxnFromJson(Map<String, dynamic> json) => DeployTxn(
       transactionHash: json['transaction_hash'] == null
           ? null
           : Felt.fromJson(json['transaction_hash'] as String),
@@ -140,8 +136,7 @@ _$DeployTxnImpl _$$DeployTxnImplFromJson(Map<String, dynamic> json) =>
       $type: json['starkNetRuntimeTypeToRemove'] as String?,
     );
 
-Map<String, dynamic> _$$DeployTxnImplToJson(_$DeployTxnImpl instance) =>
-    <String, dynamic>{
+Map<String, dynamic> _$DeployTxnToJson(DeployTxn instance) => <String, dynamic>{
       'transaction_hash': instance.transactionHash?.toJson(),
       'class_hash': instance.classHash?.toJson(),
       'version': instance.version,
@@ -152,9 +147,8 @@ Map<String, dynamic> _$$DeployTxnImplToJson(_$DeployTxnImpl instance) =>
       'starkNetRuntimeTypeToRemove': instance.$type,
     };
 
-_$DeployAccountTxnImpl _$$DeployAccountTxnImplFromJson(
-        Map<String, dynamic> json) =>
-    _$DeployAccountTxnImpl(
+DeployAccountTxn _$DeployAccountTxnFromJson(Map<String, dynamic> json) =>
+    DeployAccountTxn(
       transactionHash: json['transaction_hash'] == null
           ? null
           : Felt.fromJson(json['transaction_hash'] as String),
@@ -180,8 +174,7 @@ _$DeployAccountTxnImpl _$$DeployAccountTxnImplFromJson(
       $type: json['starkNetRuntimeTypeToRemove'] as String?,
     );
 
-Map<String, dynamic> _$$DeployAccountTxnImplToJson(
-        _$DeployAccountTxnImpl instance) =>
+Map<String, dynamic> _$DeployAccountTxnToJson(DeployAccountTxn instance) =>
     <String, dynamic>{
       'transaction_hash': instance.transactionHash?.toJson(),
       'max_fee': maxFeeToJson(instance.maxFee),
@@ -196,8 +189,7 @@ Map<String, dynamic> _$$DeployAccountTxnImplToJson(
       'starkNetRuntimeTypeToRemove': instance.$type,
     };
 
-_$L1HandlerTxnImpl _$$L1HandlerTxnImplFromJson(Map<String, dynamic> json) =>
-    _$L1HandlerTxnImpl(
+L1HandlerTxn _$L1HandlerTxnFromJson(Map<String, dynamic> json) => L1HandlerTxn(
       transactionHash: json['transaction_hash'] == null
           ? null
           : Felt.fromJson(json['transaction_hash'] as String),
@@ -217,7 +209,7 @@ _$L1HandlerTxnImpl _$$L1HandlerTxnImplFromJson(Map<String, dynamic> json) =>
       $type: json['starkNetRuntimeTypeToRemove'] as String?,
     );
 
-Map<String, dynamic> _$$L1HandlerTxnImplToJson(_$L1HandlerTxnImpl instance) =>
+Map<String, dynamic> _$L1HandlerTxnToJson(L1HandlerTxn instance) =>
     <String, dynamic>{
       'transaction_hash': instance.transactionHash?.toJson(),
       'version': instance.version,

@@ -6,9 +6,8 @@ part of 'function_invocation.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$FunctionInvocationImpl _$$FunctionInvocationImplFromJson(
-        Map<String, dynamic> json) =>
-    _$FunctionInvocationImpl(
+_FunctionInvocation _$FunctionInvocationFromJson(Map<String, dynamic> json) =>
+    _FunctionInvocation(
       callerAddress: Felt.fromJson(json['caller_address'] as String),
       classHash: Felt.fromJson(json['class_hash'] as String),
       entryPointType:
@@ -33,8 +32,7 @@ _$FunctionInvocationImpl _$$FunctionInvocationImplFromJson(
       isReverted: json['is_reverted'] as bool? ?? false,
     );
 
-Map<String, dynamic> _$$FunctionInvocationImplToJson(
-        _$FunctionInvocationImpl instance) =>
+Map<String, dynamic> _$FunctionInvocationToJson(_FunctionInvocation instance) =>
     <String, dynamic>{
       'caller_address': instance.callerAddress.toJson(),
       'class_hash': instance.classHash.toJson(),

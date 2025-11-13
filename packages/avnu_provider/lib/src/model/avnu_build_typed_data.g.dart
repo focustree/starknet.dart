@@ -6,9 +6,9 @@ part of 'avnu_build_typed_data.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$AvnuBuildTypedDataResultImpl _$$AvnuBuildTypedDataResultImplFromJson(
+AvnuBuildTypedDataResult _$AvnuBuildTypedDataResultFromJson(
         Map<String, dynamic> json) =>
-    _$AvnuBuildTypedDataResultImpl(
+    AvnuBuildTypedDataResult(
       types: (json['types'] as Map<String, dynamic>).map(
         (k, e) => MapEntry(
             k,
@@ -23,8 +23,8 @@ _$AvnuBuildTypedDataResultImpl _$$AvnuBuildTypedDataResultImplFromJson(
       $type: json['runtimeType'] as String?,
     );
 
-Map<String, dynamic> _$$AvnuBuildTypedDataResultImplToJson(
-        _$AvnuBuildTypedDataResultImpl instance) =>
+Map<String, dynamic> _$AvnuBuildTypedDataResultToJson(
+        AvnuBuildTypedDataResult instance) =>
     <String, dynamic>{
       'types': instance.types,
       'primaryType': instance.primaryType,
@@ -33,45 +33,42 @@ Map<String, dynamic> _$$AvnuBuildTypedDataResultImplToJson(
       'runtimeType': instance.$type,
     };
 
-_$AvnuBuildTypedDataErrorImpl _$$AvnuBuildTypedDataErrorImplFromJson(
+AvnuBuildTypedDataError _$AvnuBuildTypedDataErrorFromJson(
         Map<String, dynamic> json) =>
-    _$AvnuBuildTypedDataErrorImpl(
+    AvnuBuildTypedDataError(
       (json['messages'] as List<dynamic>).map((e) => e as String).toList(),
       json['revertError'] as String?,
       $type: json['runtimeType'] as String?,
     );
 
-Map<String, dynamic> _$$AvnuBuildTypedDataErrorImplToJson(
-        _$AvnuBuildTypedDataErrorImpl instance) =>
+Map<String, dynamic> _$AvnuBuildTypedDataErrorToJson(
+        AvnuBuildTypedDataError instance) =>
     <String, dynamic>{
       'messages': instance.messages,
       'revertError': instance.revertError,
       'runtimeType': instance.$type,
     };
 
-_$AvnuTypeDefinitionImpl _$$AvnuTypeDefinitionImplFromJson(
-        Map<String, dynamic> json) =>
-    _$AvnuTypeDefinitionImpl(
+_AvnuTypeDefinition _$AvnuTypeDefinitionFromJson(Map<String, dynamic> json) =>
+    _AvnuTypeDefinition(
       name: json['name'] as String,
       type: json['type'] as String,
     );
 
-Map<String, dynamic> _$$AvnuTypeDefinitionImplToJson(
-        _$AvnuTypeDefinitionImpl instance) =>
+Map<String, dynamic> _$AvnuTypeDefinitionToJson(_AvnuTypeDefinition instance) =>
     <String, dynamic>{
       'name': instance.name,
       'type': instance.type,
     };
 
-_$AvnuDomainImpl _$$AvnuDomainImplFromJson(Map<String, dynamic> json) =>
-    _$AvnuDomainImpl(
+_AvnuDomain _$AvnuDomainFromJson(Map<String, dynamic> json) => _AvnuDomain(
       name: json['name'] as String,
       version: json['version'] as String,
       chainId: json['chainId'] as String,
       revision: json['revision'] as String?,
     );
 
-Map<String, dynamic> _$$AvnuDomainImplToJson(_$AvnuDomainImpl instance) =>
+Map<String, dynamic> _$AvnuDomainToJson(_AvnuDomain instance) =>
     <String, dynamic>{
       'name': instance.name,
       'version': instance.version,
@@ -79,8 +76,7 @@ Map<String, dynamic> _$$AvnuDomainImplToJson(_$AvnuDomainImpl instance) =>
       'revision': instance.revision,
     };
 
-_$AvnuMessageImpl _$$AvnuMessageImplFromJson(Map<String, dynamic> json) =>
-    _$AvnuMessageImpl(
+_AvnuMessage _$AvnuMessageFromJson(Map<String, dynamic> json) => _AvnuMessage(
       callerv1: json['caller'] as String?,
       callerv2: json['Caller'] as String?,
       noncev1: json['nonce'] as String?,
@@ -98,7 +94,7 @@ _$AvnuMessageImpl _$$AvnuMessageImplFromJson(Map<String, dynamic> json) =>
           .toList(),
     );
 
-Map<String, dynamic> _$$AvnuMessageImplToJson(_$AvnuMessageImpl instance) =>
+Map<String, dynamic> _$AvnuMessageToJson(_AvnuMessage instance) =>
     <String, dynamic>{
       'caller': instance.callerv1,
       'Caller': instance.callerv2,
@@ -113,8 +109,7 @@ Map<String, dynamic> _$$AvnuMessageImplToJson(_$AvnuMessageImpl instance) =>
       'Calls': instance.callsv2,
     };
 
-_$AvnuCallImpl _$$AvnuCallImplFromJson(Map<String, dynamic> json) =>
-    _$AvnuCallImpl(
+_AvnuCall _$AvnuCallFromJson(Map<String, dynamic> json) => _AvnuCall(
       tov1: json['to'] as String?,
       tov2: json['To'] as String?,
       selectorv1: json['selector'] as String?,
@@ -128,8 +123,7 @@ _$AvnuCallImpl _$$AvnuCallImplFromJson(Map<String, dynamic> json) =>
           .toList(),
     );
 
-Map<String, dynamic> _$$AvnuCallImplToJson(_$AvnuCallImpl instance) =>
-    <String, dynamic>{
+Map<String, dynamic> _$AvnuCallToJson(_AvnuCall instance) => <String, dynamic>{
       'to': instance.tov1,
       'To': instance.tov2,
       'selector': instance.selectorv1,

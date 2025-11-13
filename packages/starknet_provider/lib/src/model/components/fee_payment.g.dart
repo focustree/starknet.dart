@@ -6,13 +6,12 @@ part of 'fee_payment.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$FeePaymentImpl _$$FeePaymentImplFromJson(Map<String, dynamic> json) =>
-    _$FeePaymentImpl(
+_FeePayment _$FeePaymentFromJson(Map<String, dynamic> json) => _FeePayment(
       amount: Felt.fromJson(json['amount'] as String),
       unit: json['unit'] as String,
     );
 
-Map<String, dynamic> _$$FeePaymentImplToJson(_$FeePaymentImpl instance) =>
+Map<String, dynamic> _$FeePaymentToJson(_FeePayment instance) =>
     <String, dynamic>{
       'amount': instance.amount.toJson(),
       'unit': instance.unit,
