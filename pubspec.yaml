@@ -5,7 +5,7 @@ environment:
 dev_dependencies:
   build_runner: ^2.4.9
   freezed: ^2.5.2
-  melos: ^6.2.0
+  melos: ^8.0.0
   starklints:
     path: packages/starklints
 
