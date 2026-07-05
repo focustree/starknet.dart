@@ -9,76 +9,82 @@ part of 'block_with_receipts.dart';
 _$TransactionWithReceiptImpl _$$TransactionWithReceiptImplFromJson(
         Map<String, dynamic> json) =>
     _$TransactionWithReceiptImpl(
-      transactionHash: Felt.fromJson(json['transaction_hash'] as String),
+      transaction: Txn.fromJson(json['transaction'] as Map<String, dynamic>),
       receipt: TxnReceipt.fromJson(json['receipt'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$$TransactionWithReceiptImplToJson(
         _$TransactionWithReceiptImpl instance) =>
     <String, dynamic>{
-      'transaction_hash': instance.transactionHash.toJson(),
+      'transaction': instance.transaction.toJson(),
       'receipt': instance.receipt.toJson(),
     };
 
 _$BlockWithReceiptsImpl _$$BlockWithReceiptsImplFromJson(
         Map<String, dynamic> json) =>
     _$BlockWithReceiptsImpl(
-      blockHash: json['block_hash'] == null
-          ? null
-          : Felt.fromJson(json['block_hash'] as String),
-      parentHash: json['parent_hash'] == null
-          ? null
-          : Felt.fromJson(json['parent_hash'] as String),
-      blockNumber: (json['block_number'] as num?)?.toInt(),
-      sequencerAddress: json['sequencer_address'] == null
-          ? null
-          : Felt.fromJson(json['sequencer_address'] as String),
-      newRoot: json['new_root'] == null
-          ? null
-          : Felt.fromJson(json['new_root'] as String),
-      timestamp: (json['timestamp'] as num?)?.toInt(),
-      starknetVersion: json['starknet_version'] as String?,
-      l1GasPrice: json['l1_gas_price'] == null
-          ? null
-          : ResourcePrice.fromJson(
-              json['l1_gas_price'] as Map<String, dynamic>),
-      l1DataGasPrice: json['l1_data_gas_price'] == null
-          ? null
-          : ResourcePrice.fromJson(
-              json['l1_data_gas_price'] as Map<String, dynamic>),
-      l1DaMode: json['l1_da_mode'] as String?,
-      transactions: (json['transactions'] as List<dynamic>?)
-          ?.map(
+      blockHash: Felt.fromJson(json['block_hash'] as String),
+      parentHash: Felt.fromJson(json['parent_hash'] as String),
+      blockNumber: (json['block_number'] as num).toInt(),
+      newRoot: Felt.fromJson(json['new_root'] as String),
+      timestamp: (json['timestamp'] as num).toInt(),
+      sequencerAddress: Felt.fromJson(json['sequencer_address'] as String),
+      l1GasPrice:
+          ResourcePrice.fromJson(json['l1_gas_price'] as Map<String, dynamic>),
+      l2GasPrice:
+          ResourcePrice.fromJson(json['l2_gas_price'] as Map<String, dynamic>),
+      l1DataGasPrice: ResourcePrice.fromJson(
+          json['l1_data_gas_price'] as Map<String, dynamic>),
+      l1DaMode: $enumDecode(_$L1DaModeEnumMap, json['l1_da_mode']),
+      starknetVersion: json['starknet_version'] as String,
+      eventCommitment: Felt.fromJson(json['event_commitment'] as String),
+      transactionCommitment:
+          Felt.fromJson(json['transaction_commitment'] as String),
+      receiptCommitment: Felt.fromJson(json['receipt_commitment'] as String),
+      stateDiffCommitment:
+          Felt.fromJson(json['state_diff_commitment'] as String),
+      eventCount: (json['event_count'] as num).toInt(),
+      transactionCount: (json['transaction_count'] as num).toInt(),
+      stateDiffLength: (json['state_diff_length'] as num).toInt(),
+      transactions: (json['transactions'] as List<dynamic>)
+          .map(
               (e) => TransactionWithReceipt.fromJson(e as Map<String, dynamic>))
           .toList(),
-      status: json['status'] as String?,
+      status: $enumDecode(_$BlockStatusEnumMap, json['status']),
     );
 
 Map<String, dynamic> _$$BlockWithReceiptsImplToJson(
         _$BlockWithReceiptsImpl instance) =>
     <String, dynamic>{
-      'block_hash': instance.blockHash?.toJson(),
-      'parent_hash': instance.parentHash?.toJson(),
+      'block_hash': instance.blockHash.toJson(),
+      'parent_hash': instance.parentHash.toJson(),
       'block_number': instance.blockNumber,
-      'sequencer_address': instance.sequencerAddress?.toJson(),
-      'new_root': instance.newRoot?.toJson(),
+      'new_root': instance.newRoot.toJson(),
       'timestamp': instance.timestamp,
+      'sequencer_address': instance.sequencerAddress.toJson(),
+      'l1_gas_price': instance.l1GasPrice.toJson(),
+      'l2_gas_price': instance.l2GasPrice.toJson(),
+      'l1_data_gas_price': instance.l1DataGasPrice.toJson(),
+      'l1_da_mode': _$L1DaModeEnumMap[instance.l1DaMode]!,
       'starknet_version': instance.starknetVersion,
-      'l1_gas_price': instance.l1GasPrice?.toJson(),
-      'l1_data_gas_price': instance.l1DataGasPrice?.toJson(),
-      'l1_da_mode': instance.l1DaMode,
-      'transactions': instance.transactions?.map((e) => e.toJson()).toList(),
-      'status': instance.status,
+      'event_commitment': instance.eventCommitment.toJson(),
+      'transaction_commitment': instance.transactionCommitment.toJson(),
+      'receipt_commitment': instance.receiptCommitment.toJson(),
+      'state_diff_commitment': instance.stateDiffCommitment.toJson(),
+      'event_count': instance.eventCount,
+      'transaction_count': instance.transactionCount,
+      'state_diff_length': instance.stateDiffLength,
+      'transactions': instance.transactions.map((e) => e.toJson()).toList(),
+      'status': _$BlockStatusEnumMap[instance.status]!,
     };
 
-_$ResourcePriceImpl _$$ResourcePriceImplFromJson(Map<String, dynamic> json) =>
-    _$ResourcePriceImpl(
-      priceInFri: Felt.fromJson(json['price_in_fri'] as String),
-      priceInWei: Felt.fromJson(json['price_in_wei'] as String),
-    );
+const _$L1DaModeEnumMap = {
+  L1DaMode.BLOB: 'BLOB',
+  L1DaMode.CALLDATA: 'CALLDATA',
+};
 
-Map<String, dynamic> _$$ResourcePriceImplToJson(_$ResourcePriceImpl instance) =>
-    <String, dynamic>{
-      'price_in_fri': instance.priceInFri.toJson(),
-      'price_in_wei': instance.priceInWei.toJson(),
-    };
+const _$BlockStatusEnumMap = {
+  BlockStatus.PRE_CONFIRMED: 'PRE_CONFIRMED',
+  BlockStatus.ACCEPTED_ON_L2: 'ACCEPTED_ON_L2',
+  BlockStatus.ACCEPTED_ON_L1: 'ACCEPTED_ON_L1',
+};

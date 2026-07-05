@@ -14,6 +14,7 @@ const String deployAccountTxnV1 = '0x1';
 const String deployAccountTxnV3 = '0x3';
 const String deployAccountTxnV1OldCompat = '0x01';
 const String deployAccountTxnV3OldCompat = '0x03';
+const String deployAccountTxnV3Query = '0x100000000000000000000000000000003';
 
 abstract class DeployAccountTransaction {
   factory DeployAccountTransaction.fromJson(Map<String, Object?> json) =>
@@ -24,6 +25,7 @@ abstract class DeployAccountTransaction {
         deployAccountTxnV3 => DeployAccountTransactionV3.fromJson(json),
         deployAccountTxnV3OldCompat =>
           DeployAccountTransactionV3.fromJson(json),
+        deployAccountTxnV3Query => DeployAccountTransactionV3.fromJson(json),
         _ => throw Exception("Unsupported version ${json['version']}"),
       };
 

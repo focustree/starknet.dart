@@ -20,8 +20,10 @@ ResourceBounds _$ResourceBoundsFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$ResourceBounds {
+  @JsonKey(name: 'max_amount')
   @JsonFeltu64Converter()
-  Felt get maxAmount => throw _privateConstructorUsedError; // u64
+  Felt get maxAmount => throw _privateConstructorUsedError;
+  @JsonKey(name: 'max_price_per_unit')
   @JsonFeltu128Converter()
   Felt get maxPricePerUnit => throw _privateConstructorUsedError;
 
@@ -42,8 +44,10 @@ abstract class $ResourceBoundsCopyWith<$Res> {
       _$ResourceBoundsCopyWithImpl<$Res, ResourceBounds>;
   @useResult
   $Res call(
-      {@JsonFeltu64Converter() Felt maxAmount,
-      @JsonFeltu128Converter() Felt maxPricePerUnit});
+      {@JsonKey(name: 'max_amount') @JsonFeltu64Converter() Felt maxAmount,
+      @JsonKey(name: 'max_price_per_unit')
+      @JsonFeltu128Converter()
+      Felt maxPricePerUnit});
 }
 
 /// @nodoc
@@ -86,8 +90,10 @@ abstract class _$$ResourceBoundsImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {@JsonFeltu64Converter() Felt maxAmount,
-      @JsonFeltu128Converter() Felt maxPricePerUnit});
+      {@JsonKey(name: 'max_amount') @JsonFeltu64Converter() Felt maxAmount,
+      @JsonKey(name: 'max_price_per_unit')
+      @JsonFeltu128Converter()
+      Felt maxPricePerUnit});
 }
 
 /// @nodoc
@@ -123,17 +129,22 @@ class __$$ResourceBoundsImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$ResourceBoundsImpl implements _ResourceBounds {
   const _$ResourceBoundsImpl(
-      {@JsonFeltu64Converter() required this.maxAmount,
-      @JsonFeltu128Converter() required this.maxPricePerUnit});
+      {@JsonKey(name: 'max_amount')
+      @JsonFeltu64Converter()
+      required this.maxAmount,
+      @JsonKey(name: 'max_price_per_unit')
+      @JsonFeltu128Converter()
+      required this.maxPricePerUnit});
 
   factory _$ResourceBoundsImpl.fromJson(Map<String, dynamic> json) =>
       _$$ResourceBoundsImplFromJson(json);
 
   @override
+  @JsonKey(name: 'max_amount')
   @JsonFeltu64Converter()
   final Felt maxAmount;
-// u64
   @override
+  @JsonKey(name: 'max_price_per_unit')
   @JsonFeltu128Converter()
   final Felt maxPricePerUnit;
 
@@ -176,17 +187,22 @@ class _$ResourceBoundsImpl implements _ResourceBounds {
 
 abstract class _ResourceBounds implements ResourceBounds {
   const factory _ResourceBounds(
-          {@JsonFeltu64Converter() required final Felt maxAmount,
-          @JsonFeltu128Converter() required final Felt maxPricePerUnit}) =
-      _$ResourceBoundsImpl;
+      {@JsonKey(name: 'max_amount')
+      @JsonFeltu64Converter()
+      required final Felt maxAmount,
+      @JsonKey(name: 'max_price_per_unit')
+      @JsonFeltu128Converter()
+      required final Felt maxPricePerUnit}) = _$ResourceBoundsImpl;
 
   factory _ResourceBounds.fromJson(Map<String, dynamic> json) =
       _$ResourceBoundsImpl.fromJson;
 
   @override
+  @JsonKey(name: 'max_amount')
   @JsonFeltu64Converter()
-  Felt get maxAmount; // u64
+  Felt get maxAmount;
   @override
+  @JsonKey(name: 'max_price_per_unit')
   @JsonFeltu128Converter()
   Felt get maxPricePerUnit;
 

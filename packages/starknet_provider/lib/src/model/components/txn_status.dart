@@ -5,72 +5,55 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 part 'txn_status.freezed.dart';
 part 'txn_status.g.dart';
 
-class TxnStatusValues {
-  static const String received = "RECEIVED";
-  static const String rejected = "REJECTED";
-  static const String acceptedOnL2 = "ACCEPTED_ON_L2";
-  static const String acceptedOnL1 = "ACCEPTED_ON_L1";
-  static const String candidate = "CANDIDATE";
-  static const String preConfirmed = "PRE_CONFIRMED";
-}
-
-class TxnFinalityStatusValues {
-  static const String preConfirmed = "PRE_CONFIRMED";
-  static const String acceptedOnL2 = "ACCEPTED_ON_L2";
-  static const String acceptedOnL1 = "ACCEPTED_ON_L1";
-}
-
-class TxnExecutionStatusValues {
-  static const String succeeded = "SUCCEEDED";
-  static const String reverted = "REVERTED";
-}
-
 enum TxnStatus {
-  @JsonValue(TxnStatusValues.received)
+  @JsonValue('RECEIVED')
   RECEIVED,
-
-  /// RPC v0.8
-  @JsonValue(TxnStatusValues.rejected)
-  REJECTED,
-  @JsonValue(TxnStatusValues.acceptedOnL2)
-  ACCEPTED_ON_L2,
-  @JsonValue(TxnStatusValues.acceptedOnL1)
-  ACCEPTED_ON_L1,
-
-  /// Added in RPC v0.9
-  @JsonValue(TxnStatusValues.candidate)
+  @JsonValue('CANDIDATE')
   CANDIDATE,
-
-  /// Added in RPC v0.9
-  @JsonValue(TxnStatusValues.preConfirmed)
+  @JsonValue('PRE_CONFIRMED')
   PRE_CONFIRMED,
+  @JsonValue('ACCEPTED_ON_L2')
+  ACCEPTED_ON_L2,
+  @JsonValue('ACCEPTED_ON_L1')
+  ACCEPTED_ON_L1,
 }
 
 enum TxnFinalityStatus {
-  /// Added in RPC v0.9
-  @JsonValue(TxnFinalityStatusValues.preConfirmed)
+  @JsonValue('PRE_CONFIRMED')
   PRE_CONFIRMED,
-  @JsonValue(TxnFinalityStatusValues.acceptedOnL2)
+  @JsonValue('ACCEPTED_ON_L2')
   ACCEPTED_ON_L2,
-  @JsonValue(TxnFinalityStatusValues.acceptedOnL1)
+  @JsonValue('ACCEPTED_ON_L1')
   ACCEPTED_ON_L1,
 }
 
 enum TxnExecutionStatus {
-  @JsonValue(TxnExecutionStatusValues.succeeded)
+  @JsonValue('SUCCEEDED')
   SUCCEEDED,
-
-  /// RPC v0.8
-  @JsonValue(TxnExecutionStatusValues.reverted)
+  @JsonValue('REVERTED')
   REVERTED,
+}
+
+/// Maps to OpenAPI `TXN_STATUS_WITHOUT_L1`.
+///
+/// Same as [TxnStatus], but `ACCEPTED_ON_L1` is excluded.
+enum TxnStatusWithoutL1 {
+  @JsonValue('RECEIVED')
+  RECEIVED,
+  @JsonValue('CANDIDATE')
+  CANDIDATE,
+  @JsonValue('PRE_CONFIRMED')
+  PRE_CONFIRMED,
+  @JsonValue('ACCEPTED_ON_L2')
+  ACCEPTED_ON_L2,
 }
 
 @freezed
 class TxnStatusResult with _$TxnStatusResult {
   const factory TxnStatusResult({
-    required TxnFinalityStatus finalityStatus,
-    TxnExecutionStatus? executionStatus,
-    String? failureReason,
+    @JsonKey(name: 'finality_status') required TxnStatus finalityStatus,
+    @JsonKey(name: 'execution_status') TxnExecutionStatus? executionStatus,
+    @JsonKey(name: 'failure_reason') String? failureReason,
   }) = _TxnStatusResult;
 
   factory TxnStatusResult.fromJson(Map<String, dynamic> json) =>

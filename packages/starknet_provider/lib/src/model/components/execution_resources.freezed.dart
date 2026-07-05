@@ -20,11 +20,11 @@ ExecutionResources _$ExecutionResourcesFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$ExecutionResources {
-  @JsonKey(name: 'l1_gas', fromJson: l1GasFromJson)
+  @JsonKey(name: 'l1_gas')
   int get l1Gas => throw _privateConstructorUsedError;
-  @JsonKey(name: 'l1_data_gas', fromJson: l1DataGasFromJson)
+  @JsonKey(name: 'l1_data_gas')
   int get l1DataGas => throw _privateConstructorUsedError;
-  @JsonKey(name: 'l2_gas', fromJson: l2GasFromJson)
+  @JsonKey(name: 'l2_gas')
   int get l2Gas => throw _privateConstructorUsedError;
 
   /// Serializes this ExecutionResources to a JSON map.
@@ -44,9 +44,9 @@ abstract class $ExecutionResourcesCopyWith<$Res> {
       _$ExecutionResourcesCopyWithImpl<$Res, ExecutionResources>;
   @useResult
   $Res call(
-      {@JsonKey(name: 'l1_gas', fromJson: l1GasFromJson) int l1Gas,
-      @JsonKey(name: 'l1_data_gas', fromJson: l1DataGasFromJson) int l1DataGas,
-      @JsonKey(name: 'l2_gas', fromJson: l2GasFromJson) int l2Gas});
+      {@JsonKey(name: 'l1_gas') int l1Gas,
+      @JsonKey(name: 'l1_data_gas') int l1DataGas,
+      @JsonKey(name: 'l2_gas') int l2Gas});
 }
 
 /// @nodoc
@@ -94,9 +94,9 @@ abstract class _$$ExecutionResourcesImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {@JsonKey(name: 'l1_gas', fromJson: l1GasFromJson) int l1Gas,
-      @JsonKey(name: 'l1_data_gas', fromJson: l1DataGasFromJson) int l1DataGas,
-      @JsonKey(name: 'l2_gas', fromJson: l2GasFromJson) int l2Gas});
+      {@JsonKey(name: 'l1_gas') int l1Gas,
+      @JsonKey(name: 'l1_data_gas') int l1DataGas,
+      @JsonKey(name: 'l2_gas') int l2Gas});
 }
 
 /// @nodoc
@@ -137,22 +137,21 @@ class __$$ExecutionResourcesImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$ExecutionResourcesImpl implements _ExecutionResources {
   const _$ExecutionResourcesImpl(
-      {@JsonKey(name: 'l1_gas', fromJson: l1GasFromJson) required this.l1Gas,
-      @JsonKey(name: 'l1_data_gas', fromJson: l1DataGasFromJson)
-      required this.l1DataGas,
-      @JsonKey(name: 'l2_gas', fromJson: l2GasFromJson) required this.l2Gas});
+      {@JsonKey(name: 'l1_gas') required this.l1Gas,
+      @JsonKey(name: 'l1_data_gas') required this.l1DataGas,
+      @JsonKey(name: 'l2_gas') required this.l2Gas});
 
   factory _$ExecutionResourcesImpl.fromJson(Map<String, dynamic> json) =>
       _$$ExecutionResourcesImplFromJson(json);
 
   @override
-  @JsonKey(name: 'l1_gas', fromJson: l1GasFromJson)
+  @JsonKey(name: 'l1_gas')
   final int l1Gas;
   @override
-  @JsonKey(name: 'l1_data_gas', fromJson: l1DataGasFromJson)
+  @JsonKey(name: 'l1_data_gas')
   final int l1DataGas;
   @override
-  @JsonKey(name: 'l2_gas', fromJson: l2GasFromJson)
+  @JsonKey(name: 'l2_gas')
   final int l2Gas;
 
   @override
@@ -194,24 +193,22 @@ class _$ExecutionResourcesImpl implements _ExecutionResources {
 
 abstract class _ExecutionResources implements ExecutionResources {
   const factory _ExecutionResources(
-      {@JsonKey(name: 'l1_gas', fromJson: l1GasFromJson)
-      required final int l1Gas,
-      @JsonKey(name: 'l1_data_gas', fromJson: l1DataGasFromJson)
-      required final int l1DataGas,
-      @JsonKey(name: 'l2_gas', fromJson: l2GasFromJson)
-      required final int l2Gas}) = _$ExecutionResourcesImpl;
+          {@JsonKey(name: 'l1_gas') required final int l1Gas,
+          @JsonKey(name: 'l1_data_gas') required final int l1DataGas,
+          @JsonKey(name: 'l2_gas') required final int l2Gas}) =
+      _$ExecutionResourcesImpl;
 
   factory _ExecutionResources.fromJson(Map<String, dynamic> json) =
       _$ExecutionResourcesImpl.fromJson;
 
   @override
-  @JsonKey(name: 'l1_gas', fromJson: l1GasFromJson)
+  @JsonKey(name: 'l1_gas')
   int get l1Gas;
   @override
-  @JsonKey(name: 'l1_data_gas', fromJson: l1DataGasFromJson)
+  @JsonKey(name: 'l1_data_gas')
   int get l1DataGas;
   @override
-  @JsonKey(name: 'l2_gas', fromJson: l2GasFromJson)
+  @JsonKey(name: 'l2_gas')
   int get l2Gas;
 
   /// Create a copy of ExecutionResources

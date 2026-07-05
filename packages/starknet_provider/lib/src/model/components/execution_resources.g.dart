@@ -9,9 +9,9 @@ part of 'execution_resources.dart';
 _$ExecutionResourcesImpl _$$ExecutionResourcesImplFromJson(
         Map<String, dynamic> json) =>
     _$ExecutionResourcesImpl(
-      l1Gas: l1GasFromJson(json['l1_gas']),
-      l1DataGas: l1DataGasFromJson(json['l1_data_gas']),
-      l2Gas: l2GasFromJson(json['l2_gas']),
+      l1Gas: (json['l1_gas'] as num).toInt(),
+      l1DataGas: (json['l1_data_gas'] as num).toInt(),
+      l2Gas: (json['l2_gas'] as num).toInt(),
     );
 
 Map<String, dynamic> _$$ExecutionResourcesImplToJson(

@@ -10,7 +10,7 @@ EstimateMessageFeeRequest _$EstimateMessageFeeRequestFromJson(
         Map<String, dynamic> json) =>
     EstimateMessageFeeRequest(
       message: MsgFromL1.fromJson(json['message'] as Map<String, dynamic>),
-      blockId: BlockId.fromJson(json['block_id'] as Map<String, dynamic>),
+      blockId: BlockId.fromJson(json['block_id']),
     );
 
 Map<String, dynamic> _$EstimateMessageFeeRequestToJson(

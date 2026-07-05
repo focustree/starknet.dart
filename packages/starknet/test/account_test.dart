@@ -107,7 +107,6 @@ void main() {
                 ),
               ),
             );
-            print('Address $contractAddress');
           },
           skip: true,
         ); // We don't have this class hash in starknet. But deploy cairo 1 contract is supported
@@ -253,7 +252,6 @@ void main() {
               provider: account3.provider,
             );
           } catch (e) {
-            print(e.toString());
             if (!e.toString().contains('Contract error')) {
               // If already declared just continue
               rethrow;

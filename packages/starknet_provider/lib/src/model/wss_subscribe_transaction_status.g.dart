@@ -36,3 +36,16 @@ Map<String, dynamic> _$$WssSubscribeTransactionStatusErrorImplToJson(
       'error': instance.error.toJson(),
       'starkNetRuntimeTypeToRemove': instance.$type,
     };
+
+_$WssSubscribeTransactionStatusRequestImpl
+    _$$WssSubscribeTransactionStatusRequestImplFromJson(
+            Map<String, dynamic> json) =>
+        _$WssSubscribeTransactionStatusRequestImpl(
+          transactionHash: Felt.fromJson(json['transaction_hash'] as String),
+        );
+
+Map<String, dynamic> _$$WssSubscribeTransactionStatusRequestImplToJson(
+        _$WssSubscribeTransactionStatusRequestImpl instance) =>
+    <String, dynamic>{
+      'transaction_hash': instance.transactionHash.toJson(),
+    };

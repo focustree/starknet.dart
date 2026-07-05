@@ -20,7 +20,7 @@ EdgeNode _$EdgeNodeFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$EdgeNode {
-  Felt get path => throw _privateConstructorUsedError;
+  String get path => throw _privateConstructorUsedError;
   int get length => throw _privateConstructorUsedError;
   Felt get child => throw _privateConstructorUsedError;
 
@@ -39,7 +39,7 @@ abstract class $EdgeNodeCopyWith<$Res> {
   factory $EdgeNodeCopyWith(EdgeNode value, $Res Function(EdgeNode) then) =
       _$EdgeNodeCopyWithImpl<$Res, EdgeNode>;
   @useResult
-  $Res call({Felt path, int length, Felt child});
+  $Res call({String path, int length, Felt child});
 }
 
 /// @nodoc
@@ -65,7 +65,7 @@ class _$EdgeNodeCopyWithImpl<$Res, $Val extends EdgeNode>
       path: null == path
           ? _value.path
           : path // ignore: cast_nullable_to_non_nullable
-              as Felt,
+              as String,
       length: null == length
           ? _value.length
           : length // ignore: cast_nullable_to_non_nullable
@@ -86,7 +86,7 @@ abstract class _$$EdgeNodeImplCopyWith<$Res>
       __$$EdgeNodeImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({Felt path, int length, Felt child});
+  $Res call({String path, int length, Felt child});
 }
 
 /// @nodoc
@@ -110,7 +110,7 @@ class __$$EdgeNodeImplCopyWithImpl<$Res>
       path: null == path
           ? _value.path
           : path // ignore: cast_nullable_to_non_nullable
-              as Felt,
+              as String,
       length: null == length
           ? _value.length
           : length // ignore: cast_nullable_to_non_nullable
@@ -133,7 +133,7 @@ class _$EdgeNodeImpl implements _EdgeNode {
       _$$EdgeNodeImplFromJson(json);
 
   @override
-  final Felt path;
+  final String path;
   @override
   final int length;
   @override
@@ -176,7 +176,7 @@ class _$EdgeNodeImpl implements _EdgeNode {
 
 abstract class _EdgeNode implements EdgeNode {
   const factory _EdgeNode(
-      {required final Felt path,
+      {required final String path,
       required final int length,
       required final Felt child}) = _$EdgeNodeImpl;
 
@@ -184,7 +184,7 @@ abstract class _EdgeNode implements EdgeNode {
       _$EdgeNodeImpl.fromJson;
 
   @override
-  Felt get path;
+  String get path;
   @override
   int get length;
   @override

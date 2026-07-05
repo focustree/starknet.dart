@@ -8,37 +8,35 @@ class JsonFeltu64Converter implements JsonConverter<Felt, String> {
   const JsonFeltu64Converter();
 
   @override
-  Felt fromJson(String json) {
-    return Felt.fromHexString(json);
-  }
+  Felt fromJson(String json) => Felt.fromHexString(json);
 
   @override
-  String toJson(Felt object) {
-    return '0x${object.toBigInt().toRadixString(16).padLeft(16, "0")}';
-  }
+  String toJson(Felt object) =>
+      '0x${object.toBigInt().toRadixString(16).padLeft(16, '0')}';
 }
 
 class JsonFeltu128Converter implements JsonConverter<Felt, String> {
   const JsonFeltu128Converter();
 
   @override
-  Felt fromJson(String json) {
-    return Felt.fromHexString(json);
-  }
+  Felt fromJson(String json) => Felt.fromHexString(json);
 
   @override
-  String toJson(Felt object) {
-    return '0x${object.toBigInt().toRadixString(16).padLeft(32, "0")}';
-  }
+  String toJson(Felt object) =>
+      '0x${object.toBigInt().toRadixString(16).padLeft(32, '0')}';
 }
 
 @freezed
 class ResourceBounds with _$ResourceBounds {
   const factory ResourceBounds({
-    @JsonFeltu64Converter() required Felt maxAmount, // u64
-    @JsonFeltu128Converter() required Felt maxPricePerUnit, // u128
+    @JsonKey(name: 'max_amount')
+    @JsonFeltu64Converter()
+    required Felt maxAmount,
+    @JsonKey(name: 'max_price_per_unit')
+    @JsonFeltu128Converter()
+    required Felt maxPricePerUnit,
   }) = _ResourceBounds;
 
-  factory ResourceBounds.fromJson(Map<String, Object?> json) =>
+  factory ResourceBounds.fromJson(Map<String, dynamic> json) =>
       _$ResourceBoundsFromJson(json);
 }

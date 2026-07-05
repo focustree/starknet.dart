@@ -24,6 +24,7 @@ const _$JsonWssApiErrorCodeEnumMap = {
   JsonWssApiErrorCode.invalidSubscriptionId: 66,
   JsonWssApiErrorCode.tooManyAddressesInFilter: 67,
   JsonWssApiErrorCode.tooManyBlocksBack: 68,
+  JsonWssApiErrorCode.tooManyKeysInFilter: 34,
   JsonWssApiErrorCode.blockNotFound: 24,
   JsonWssApiErrorCode.alreadySubscribed: -1,
   JsonWssApiErrorCode.notSubscribed: -2,

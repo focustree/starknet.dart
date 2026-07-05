@@ -18,29 +18,6 @@ Map<String, dynamic> _$GetMessagesStatusRequestToJson(
       'transaction_hash': instance.transactionHash.toJson(),
     };
 
-MessageStatus _$MessageStatusFromJson(Map<String, dynamic> json) =>
-    MessageStatus(
-      transactionHash: Felt.fromJson(json['transaction_hash'] as String),
-      finalityStatus: $enumDecode(_$TxnStatusEnumMap, json['finality_status']),
-      failureReason: json['failure_reason'] as String?,
-    );
-
-Map<String, dynamic> _$MessageStatusToJson(MessageStatus instance) =>
-    <String, dynamic>{
-      'transaction_hash': instance.transactionHash.toJson(),
-      'finality_status': _$TxnStatusEnumMap[instance.finalityStatus]!,
-      'failure_reason': instance.failureReason,
-    };
-
-const _$TxnStatusEnumMap = {
-  TxnStatus.RECEIVED: 'RECEIVED',
-  TxnStatus.REJECTED: 'REJECTED',
-  TxnStatus.ACCEPTED_ON_L2: 'ACCEPTED_ON_L2',
-  TxnStatus.ACCEPTED_ON_L1: 'ACCEPTED_ON_L1',
-  TxnStatus.CANDIDATE: 'CANDIDATE',
-  TxnStatus.PRE_CONFIRMED: 'PRE_CONFIRMED',
-};
-
 _$GetMessagesStatusResultImpl _$$GetMessagesStatusResultImplFromJson(
         Map<String, dynamic> json) =>
     _$GetMessagesStatusResultImpl(

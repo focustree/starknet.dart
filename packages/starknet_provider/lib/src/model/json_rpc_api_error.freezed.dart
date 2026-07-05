@@ -14,6 +14,479 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
+/// @nodoc
+mixin _$ContractExecutionError {
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String message) message,
+    required TResult Function(
+            @JsonKey(name: 'contract_address') Felt contractAddress,
+            @JsonKey(name: 'class_hash') Felt classHash,
+            Felt selector,
+            @ContractExecutionErrorConverter() ContractExecutionError error)
+        structured,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String message)? message,
+    TResult? Function(
+            @JsonKey(name: 'contract_address') Felt contractAddress,
+            @JsonKey(name: 'class_hash') Felt classHash,
+            Felt selector,
+            @ContractExecutionErrorConverter() ContractExecutionError error)?
+        structured,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String message)? message,
+    TResult Function(
+            @JsonKey(name: 'contract_address') Felt contractAddress,
+            @JsonKey(name: 'class_hash') Felt classHash,
+            Felt selector,
+            @ContractExecutionErrorConverter() ContractExecutionError error)?
+        structured,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(ContractExecutionErrorMessage value) message,
+    required TResult Function(ContractExecutionErrorStructured value)
+        structured,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(ContractExecutionErrorMessage value)? message,
+    TResult? Function(ContractExecutionErrorStructured value)? structured,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(ContractExecutionErrorMessage value)? message,
+    TResult Function(ContractExecutionErrorStructured value)? structured,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $ContractExecutionErrorCopyWith<$Res> {
+  factory $ContractExecutionErrorCopyWith(ContractExecutionError value,
+          $Res Function(ContractExecutionError) then) =
+      _$ContractExecutionErrorCopyWithImpl<$Res, ContractExecutionError>;
+}
+
+/// @nodoc
+class _$ContractExecutionErrorCopyWithImpl<$Res,
+        $Val extends ContractExecutionError>
+    implements $ContractExecutionErrorCopyWith<$Res> {
+  _$ContractExecutionErrorCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  /// Create a copy of ContractExecutionError
+  /// with the given fields replaced by the non-null parameter values.
+}
+
+/// @nodoc
+abstract class _$$ContractExecutionErrorMessageImplCopyWith<$Res> {
+  factory _$$ContractExecutionErrorMessageImplCopyWith(
+          _$ContractExecutionErrorMessageImpl value,
+          $Res Function(_$ContractExecutionErrorMessageImpl) then) =
+      __$$ContractExecutionErrorMessageImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String message});
+}
+
+/// @nodoc
+class __$$ContractExecutionErrorMessageImplCopyWithImpl<$Res>
+    extends _$ContractExecutionErrorCopyWithImpl<$Res,
+        _$ContractExecutionErrorMessageImpl>
+    implements _$$ContractExecutionErrorMessageImplCopyWith<$Res> {
+  __$$ContractExecutionErrorMessageImplCopyWithImpl(
+      _$ContractExecutionErrorMessageImpl _value,
+      $Res Function(_$ContractExecutionErrorMessageImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of ContractExecutionError
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? message = null,
+  }) {
+    return _then(_$ContractExecutionErrorMessageImpl(
+      null == message
+          ? _value.message
+          : message // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$ContractExecutionErrorMessageImpl
+    extends ContractExecutionErrorMessage {
+  const _$ContractExecutionErrorMessageImpl(this.message) : super._();
+
+  @override
+  final String message;
+
+  @override
+  String toString() {
+    return 'ContractExecutionError.message(message: $message)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$ContractExecutionErrorMessageImpl &&
+            (identical(other.message, message) || other.message == message));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, message);
+
+  /// Create a copy of ContractExecutionError
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$ContractExecutionErrorMessageImplCopyWith<
+          _$ContractExecutionErrorMessageImpl>
+      get copyWith => __$$ContractExecutionErrorMessageImplCopyWithImpl<
+          _$ContractExecutionErrorMessageImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String message) message,
+    required TResult Function(
+            @JsonKey(name: 'contract_address') Felt contractAddress,
+            @JsonKey(name: 'class_hash') Felt classHash,
+            Felt selector,
+            @ContractExecutionErrorConverter() ContractExecutionError error)
+        structured,
+  }) {
+    return message(this.message);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String message)? message,
+    TResult? Function(
+            @JsonKey(name: 'contract_address') Felt contractAddress,
+            @JsonKey(name: 'class_hash') Felt classHash,
+            Felt selector,
+            @ContractExecutionErrorConverter() ContractExecutionError error)?
+        structured,
+  }) {
+    return message?.call(this.message);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String message)? message,
+    TResult Function(
+            @JsonKey(name: 'contract_address') Felt contractAddress,
+            @JsonKey(name: 'class_hash') Felt classHash,
+            Felt selector,
+            @ContractExecutionErrorConverter() ContractExecutionError error)?
+        structured,
+    required TResult orElse(),
+  }) {
+    if (message != null) {
+      return message(this.message);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(ContractExecutionErrorMessage value) message,
+    required TResult Function(ContractExecutionErrorStructured value)
+        structured,
+  }) {
+    return message(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(ContractExecutionErrorMessage value)? message,
+    TResult? Function(ContractExecutionErrorStructured value)? structured,
+  }) {
+    return message?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(ContractExecutionErrorMessage value)? message,
+    TResult Function(ContractExecutionErrorStructured value)? structured,
+    required TResult orElse(),
+  }) {
+    if (message != null) {
+      return message(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class ContractExecutionErrorMessage extends ContractExecutionError {
+  const factory ContractExecutionErrorMessage(final String message) =
+      _$ContractExecutionErrorMessageImpl;
+  const ContractExecutionErrorMessage._() : super._();
+
+  String get message;
+
+  /// Create a copy of ContractExecutionError
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$ContractExecutionErrorMessageImplCopyWith<
+          _$ContractExecutionErrorMessageImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$ContractExecutionErrorStructuredImplCopyWith<$Res> {
+  factory _$$ContractExecutionErrorStructuredImplCopyWith(
+          _$ContractExecutionErrorStructuredImpl value,
+          $Res Function(_$ContractExecutionErrorStructuredImpl) then) =
+      __$$ContractExecutionErrorStructuredImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call(
+      {@JsonKey(name: 'contract_address') Felt contractAddress,
+      @JsonKey(name: 'class_hash') Felt classHash,
+      Felt selector,
+      @ContractExecutionErrorConverter() ContractExecutionError error});
+
+  $ContractExecutionErrorCopyWith<$Res> get error;
+}
+
+/// @nodoc
+class __$$ContractExecutionErrorStructuredImplCopyWithImpl<$Res>
+    extends _$ContractExecutionErrorCopyWithImpl<$Res,
+        _$ContractExecutionErrorStructuredImpl>
+    implements _$$ContractExecutionErrorStructuredImplCopyWith<$Res> {
+  __$$ContractExecutionErrorStructuredImplCopyWithImpl(
+      _$ContractExecutionErrorStructuredImpl _value,
+      $Res Function(_$ContractExecutionErrorStructuredImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of ContractExecutionError
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? contractAddress = null,
+    Object? classHash = null,
+    Object? selector = null,
+    Object? error = null,
+  }) {
+    return _then(_$ContractExecutionErrorStructuredImpl(
+      contractAddress: null == contractAddress
+          ? _value.contractAddress
+          : contractAddress // ignore: cast_nullable_to_non_nullable
+              as Felt,
+      classHash: null == classHash
+          ? _value.classHash
+          : classHash // ignore: cast_nullable_to_non_nullable
+              as Felt,
+      selector: null == selector
+          ? _value.selector
+          : selector // ignore: cast_nullable_to_non_nullable
+              as Felt,
+      error: null == error
+          ? _value.error
+          : error // ignore: cast_nullable_to_non_nullable
+              as ContractExecutionError,
+    ));
+  }
+
+  /// Create a copy of ContractExecutionError
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $ContractExecutionErrorCopyWith<$Res> get error {
+    return $ContractExecutionErrorCopyWith<$Res>(_value.error, (value) {
+      return _then(_value.copyWith(error: value));
+    });
+  }
+}
+
+/// @nodoc
+
+class _$ContractExecutionErrorStructuredImpl
+    extends ContractExecutionErrorStructured {
+  const _$ContractExecutionErrorStructuredImpl(
+      {@JsonKey(name: 'contract_address') required this.contractAddress,
+      @JsonKey(name: 'class_hash') required this.classHash,
+      required this.selector,
+      @ContractExecutionErrorConverter() required this.error})
+      : super._();
+
+  @override
+  @JsonKey(name: 'contract_address')
+  final Felt contractAddress;
+  @override
+  @JsonKey(name: 'class_hash')
+  final Felt classHash;
+  @override
+  final Felt selector;
+  @override
+  @ContractExecutionErrorConverter()
+  final ContractExecutionError error;
+
+  @override
+  String toString() {
+    return 'ContractExecutionError.structured(contractAddress: $contractAddress, classHash: $classHash, selector: $selector, error: $error)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$ContractExecutionErrorStructuredImpl &&
+            (identical(other.contractAddress, contractAddress) ||
+                other.contractAddress == contractAddress) &&
+            (identical(other.classHash, classHash) ||
+                other.classHash == classHash) &&
+            (identical(other.selector, selector) ||
+                other.selector == selector) &&
+            (identical(other.error, error) || other.error == error));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, contractAddress, classHash, selector, error);
+
+  /// Create a copy of ContractExecutionError
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$ContractExecutionErrorStructuredImplCopyWith<
+          _$ContractExecutionErrorStructuredImpl>
+      get copyWith => __$$ContractExecutionErrorStructuredImplCopyWithImpl<
+          _$ContractExecutionErrorStructuredImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String message) message,
+    required TResult Function(
+            @JsonKey(name: 'contract_address') Felt contractAddress,
+            @JsonKey(name: 'class_hash') Felt classHash,
+            Felt selector,
+            @ContractExecutionErrorConverter() ContractExecutionError error)
+        structured,
+  }) {
+    return structured(contractAddress, classHash, selector, error);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String message)? message,
+    TResult? Function(
+            @JsonKey(name: 'contract_address') Felt contractAddress,
+            @JsonKey(name: 'class_hash') Felt classHash,
+            Felt selector,
+            @ContractExecutionErrorConverter() ContractExecutionError error)?
+        structured,
+  }) {
+    return structured?.call(contractAddress, classHash, selector, error);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String message)? message,
+    TResult Function(
+            @JsonKey(name: 'contract_address') Felt contractAddress,
+            @JsonKey(name: 'class_hash') Felt classHash,
+            Felt selector,
+            @ContractExecutionErrorConverter() ContractExecutionError error)?
+        structured,
+    required TResult orElse(),
+  }) {
+    if (structured != null) {
+      return structured(contractAddress, classHash, selector, error);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(ContractExecutionErrorMessage value) message,
+    required TResult Function(ContractExecutionErrorStructured value)
+        structured,
+  }) {
+    return structured(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(ContractExecutionErrorMessage value)? message,
+    TResult? Function(ContractExecutionErrorStructured value)? structured,
+  }) {
+    return structured?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(ContractExecutionErrorMessage value)? message,
+    TResult Function(ContractExecutionErrorStructured value)? structured,
+    required TResult orElse(),
+  }) {
+    if (structured != null) {
+      return structured(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class ContractExecutionErrorStructured extends ContractExecutionError {
+  const factory ContractExecutionErrorStructured(
+      {@JsonKey(name: 'contract_address') required final Felt contractAddress,
+      @JsonKey(name: 'class_hash') required final Felt classHash,
+      required final Felt selector,
+      @ContractExecutionErrorConverter()
+      required final ContractExecutionError
+          error}) = _$ContractExecutionErrorStructuredImpl;
+  const ContractExecutionErrorStructured._() : super._();
+
+  @JsonKey(name: 'contract_address')
+  Felt get contractAddress;
+  @JsonKey(name: 'class_hash')
+  Felt get classHash;
+  Felt get selector;
+  @ContractExecutionErrorConverter()
+  ContractExecutionError get error;
+
+  /// Create a copy of ContractExecutionError
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$ContractExecutionErrorStructuredImplCopyWith<
+          _$ContractExecutionErrorStructuredImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
 ContractErrorData _$ContractErrorDataFromJson(Map<String, dynamic> json) {
   return _ContractErrorData.fromJson(json);
 }
@@ -21,7 +494,8 @@ ContractErrorData _$ContractErrorDataFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$ContractErrorData {
   @JsonKey(name: 'revert_error')
-  String get revertError => throw _privateConstructorUsedError;
+  @ContractExecutionErrorConverter()
+  ContractExecutionError get revertError => throw _privateConstructorUsedError;
 
   /// Serializes this ContractErrorData to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -39,7 +513,12 @@ abstract class $ContractErrorDataCopyWith<$Res> {
           ContractErrorData value, $Res Function(ContractErrorData) then) =
       _$ContractErrorDataCopyWithImpl<$Res, ContractErrorData>;
   @useResult
-  $Res call({@JsonKey(name: 'revert_error') String revertError});
+  $Res call(
+      {@JsonKey(name: 'revert_error')
+      @ContractExecutionErrorConverter()
+      ContractExecutionError revertError});
+
+  $ContractExecutionErrorCopyWith<$Res> get revertError;
 }
 
 /// @nodoc
@@ -63,8 +542,18 @@ class _$ContractErrorDataCopyWithImpl<$Res, $Val extends ContractErrorData>
       revertError: null == revertError
           ? _value.revertError
           : revertError // ignore: cast_nullable_to_non_nullable
-              as String,
+              as ContractExecutionError,
     ) as $Val);
+  }
+
+  /// Create a copy of ContractErrorData
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $ContractExecutionErrorCopyWith<$Res> get revertError {
+    return $ContractExecutionErrorCopyWith<$Res>(_value.revertError, (value) {
+      return _then(_value.copyWith(revertError: value) as $Val);
+    });
   }
 }
 
@@ -76,7 +565,13 @@ abstract class _$$ContractErrorDataImplCopyWith<$Res>
       __$$ContractErrorDataImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({@JsonKey(name: 'revert_error') String revertError});
+  $Res call(
+      {@JsonKey(name: 'revert_error')
+      @ContractExecutionErrorConverter()
+      ContractExecutionError revertError});
+
+  @override
+  $ContractExecutionErrorCopyWith<$Res> get revertError;
 }
 
 /// @nodoc
@@ -98,7 +593,7 @@ class __$$ContractErrorDataImplCopyWithImpl<$Res>
       revertError: null == revertError
           ? _value.revertError
           : revertError // ignore: cast_nullable_to_non_nullable
-              as String,
+              as ContractExecutionError,
     ));
   }
 }
@@ -107,14 +602,17 @@ class __$$ContractErrorDataImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$ContractErrorDataImpl implements _ContractErrorData {
   const _$ContractErrorDataImpl(
-      {@JsonKey(name: 'revert_error') required this.revertError});
+      {@JsonKey(name: 'revert_error')
+      @ContractExecutionErrorConverter()
+      required this.revertError});
 
   factory _$ContractErrorDataImpl.fromJson(Map<String, dynamic> json) =>
       _$$ContractErrorDataImplFromJson(json);
 
   @override
   @JsonKey(name: 'revert_error')
-  final String revertError;
+  @ContractExecutionErrorConverter()
+  final ContractExecutionError revertError;
 
   @override
   String toString() {
@@ -153,7 +651,9 @@ class _$ContractErrorDataImpl implements _ContractErrorData {
 
 abstract class _ContractErrorData implements ContractErrorData {
   const factory _ContractErrorData(
-          {@JsonKey(name: 'revert_error') required final String revertError}) =
+          {@JsonKey(name: 'revert_error')
+          @ContractExecutionErrorConverter()
+          required final ContractExecutionError revertError}) =
       _$ContractErrorDataImpl;
 
   factory _ContractErrorData.fromJson(Map<String, dynamic> json) =
@@ -161,7 +661,8 @@ abstract class _ContractErrorData implements ContractErrorData {
 
   @override
   @JsonKey(name: 'revert_error')
-  String get revertError;
+  @ContractExecutionErrorConverter()
+  ContractExecutionError get revertError;
 
   /// Create a copy of ContractErrorData
   /// with the given fields replaced by the non-null parameter values.
@@ -181,7 +682,9 @@ mixin _$TransactionExecutionErrorData {
   @JsonKey(name: 'transaction_index')
   int get transactionIndex => throw _privateConstructorUsedError;
   @JsonKey(name: 'execution_error')
-  String get executionError => throw _privateConstructorUsedError;
+  @ContractExecutionErrorConverter()
+  ContractExecutionError get executionError =>
+      throw _privateConstructorUsedError;
 
   /// Serializes this TransactionExecutionErrorData to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -203,7 +706,11 @@ abstract class $TransactionExecutionErrorDataCopyWith<$Res> {
   @useResult
   $Res call(
       {@JsonKey(name: 'transaction_index') int transactionIndex,
-      @JsonKey(name: 'execution_error') String executionError});
+      @JsonKey(name: 'execution_error')
+      @ContractExecutionErrorConverter()
+      ContractExecutionError executionError});
+
+  $ContractExecutionErrorCopyWith<$Res> get executionError;
 }
 
 /// @nodoc
@@ -233,8 +740,19 @@ class _$TransactionExecutionErrorDataCopyWithImpl<$Res,
       executionError: null == executionError
           ? _value.executionError
           : executionError // ignore: cast_nullable_to_non_nullable
-              as String,
+              as ContractExecutionError,
     ) as $Val);
+  }
+
+  /// Create a copy of TransactionExecutionErrorData
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $ContractExecutionErrorCopyWith<$Res> get executionError {
+    return $ContractExecutionErrorCopyWith<$Res>(_value.executionError,
+        (value) {
+      return _then(_value.copyWith(executionError: value) as $Val);
+    });
   }
 }
 
@@ -249,7 +767,12 @@ abstract class _$$TransactionExecutionErrorDataImplCopyWith<$Res>
   @useResult
   $Res call(
       {@JsonKey(name: 'transaction_index') int transactionIndex,
-      @JsonKey(name: 'execution_error') String executionError});
+      @JsonKey(name: 'execution_error')
+      @ContractExecutionErrorConverter()
+      ContractExecutionError executionError});
+
+  @override
+  $ContractExecutionErrorCopyWith<$Res> get executionError;
 }
 
 /// @nodoc
@@ -278,7 +801,7 @@ class __$$TransactionExecutionErrorDataImplCopyWithImpl<$Res>
       executionError: null == executionError
           ? _value.executionError
           : executionError // ignore: cast_nullable_to_non_nullable
-              as String,
+              as ContractExecutionError,
     ));
   }
 }
@@ -289,7 +812,9 @@ class _$TransactionExecutionErrorDataImpl
     implements _TransactionExecutionErrorData {
   const _$TransactionExecutionErrorDataImpl(
       {@JsonKey(name: 'transaction_index') required this.transactionIndex,
-      @JsonKey(name: 'execution_error') required this.executionError});
+      @JsonKey(name: 'execution_error')
+      @ContractExecutionErrorConverter()
+      required this.executionError});
 
   factory _$TransactionExecutionErrorDataImpl.fromJson(
           Map<String, dynamic> json) =>
@@ -300,7 +825,8 @@ class _$TransactionExecutionErrorDataImpl
   final int transactionIndex;
   @override
   @JsonKey(name: 'execution_error')
-  final String executionError;
+  @ContractExecutionErrorConverter()
+  final ContractExecutionError executionError;
 
   @override
   String toString() {
@@ -346,7 +872,8 @@ abstract class _TransactionExecutionErrorData
   const factory _TransactionExecutionErrorData(
       {@JsonKey(name: 'transaction_index') required final int transactionIndex,
       @JsonKey(name: 'execution_error')
-      required final String
+      @ContractExecutionErrorConverter()
+      required final ContractExecutionError
           executionError}) = _$TransactionExecutionErrorDataImpl;
 
   factory _TransactionExecutionErrorData.fromJson(Map<String, dynamic> json) =
@@ -357,7 +884,8 @@ abstract class _TransactionExecutionErrorData
   int get transactionIndex;
   @override
   @JsonKey(name: 'execution_error')
-  String get executionError;
+  @ContractExecutionErrorConverter()
+  ContractExecutionError get executionError;
 
   /// Create a copy of TransactionExecutionErrorData
   /// with the given fields replaced by the non-null parameter values.

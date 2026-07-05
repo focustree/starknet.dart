@@ -1,3 +1,12 @@
+## 0.2.0
+
+> Note: This release has breaking changes.
+
+ - **BREAKING** **FEAT**: migrate `avnu_provider` to SNIP-29 JSON-RPC paymaster API (`AvnuPaymasterProvider`, `paymaster_buildTransaction`, `paymaster_executeTransaction`, etc.).
+ - **BREAKING**: remove legacy REST methods (`buildTypedData`, `execute`, `deployAccount`, `avnuStatus`, `getGasTokenPrices`, `checkAccountCompatible`, `getSponsorActivity`).
+ - **FEAT**: add SNIP-29 models (`UserTransaction`, `UserParameters`, `FeeMode`, `PaymasterBuildResponse`, tracking helpers).
+ - **FEAT**: add `PaymasterCall.fromEntrypoint` for canonical selector felts.
+
 ## 0.1.0
 
 > Note: This release has breaking changes.

@@ -9,14 +9,14 @@ part of 'get_storage.dart';
 _$GetStorageResultImpl _$$GetStorageResultImplFromJson(
         Map<String, dynamic> json) =>
     _$GetStorageResultImpl(
-      result: Felt.fromJson(json['result'] as String),
+      result: _storageAtValueFromJson(json['result']),
       $type: json['starkNetRuntimeTypeToRemove'] as String?,
     );
 
 Map<String, dynamic> _$$GetStorageResultImplToJson(
         _$GetStorageResultImpl instance) =>
     <String, dynamic>{
-      'result': instance.result.toJson(),
+      'result': _storageAtValueToJson(instance.result),
       'starkNetRuntimeTypeToRemove': instance.$type,
     };
 

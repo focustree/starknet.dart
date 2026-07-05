@@ -34,19 +34,34 @@ GetStorage _$GetStorageFromJson(Map<String, dynamic> json) {
 mixin _$GetStorage {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(Felt result) result,
+    required TResult Function(
+            @JsonKey(
+                fromJson: _storageAtValueFromJson,
+                toJson: _storageAtValueToJson)
+            StorageAtValue result)
+        result,
     required TResult Function(JsonRpcApiError error) error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(Felt result)? result,
+    TResult? Function(
+            @JsonKey(
+                fromJson: _storageAtValueFromJson,
+                toJson: _storageAtValueToJson)
+            StorageAtValue result)?
+        result,
     TResult? Function(JsonRpcApiError error)? error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(Felt result)? result,
+    TResult Function(
+            @JsonKey(
+                fromJson: _storageAtValueFromJson,
+                toJson: _storageAtValueToJson)
+            StorageAtValue result)?
+        result,
     TResult Function(JsonRpcApiError error)? error,
     required TResult orElse(),
   }) =>
@@ -102,7 +117,10 @@ abstract class _$$GetStorageResultImplCopyWith<$Res> {
           $Res Function(_$GetStorageResultImpl) then) =
       __$$GetStorageResultImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({Felt result});
+  $Res call(
+      {@JsonKey(
+          fromJson: _storageAtValueFromJson, toJson: _storageAtValueToJson)
+      StorageAtValue result});
 }
 
 /// @nodoc
@@ -124,7 +142,7 @@ class __$$GetStorageResultImplCopyWithImpl<$Res>
       result: null == result
           ? _value.result
           : result // ignore: cast_nullable_to_non_nullable
-              as Felt,
+              as StorageAtValue,
     ));
   }
 }
@@ -132,14 +150,19 @@ class __$$GetStorageResultImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$GetStorageResultImpl implements GetStorageResult {
-  const _$GetStorageResultImpl({required this.result, final String? $type})
+  const _$GetStorageResultImpl(
+      {@JsonKey(
+          fromJson: _storageAtValueFromJson, toJson: _storageAtValueToJson)
+      required this.result,
+      final String? $type})
       : $type = $type ?? 'result';
 
   factory _$GetStorageResultImpl.fromJson(Map<String, dynamic> json) =>
       _$$GetStorageResultImplFromJson(json);
 
   @override
-  final Felt result;
+  @JsonKey(fromJson: _storageAtValueFromJson, toJson: _storageAtValueToJson)
+  final StorageAtValue result;
 
   @JsonKey(name: 'starkNetRuntimeTypeToRemove')
   final String $type;
@@ -173,7 +196,12 @@ class _$GetStorageResultImpl implements GetStorageResult {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(Felt result) result,
+    required TResult Function(
+            @JsonKey(
+                fromJson: _storageAtValueFromJson,
+                toJson: _storageAtValueToJson)
+            StorageAtValue result)
+        result,
     required TResult Function(JsonRpcApiError error) error,
   }) {
     return result(this.result);
@@ -182,7 +210,12 @@ class _$GetStorageResultImpl implements GetStorageResult {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(Felt result)? result,
+    TResult? Function(
+            @JsonKey(
+                fromJson: _storageAtValueFromJson,
+                toJson: _storageAtValueToJson)
+            StorageAtValue result)?
+        result,
     TResult? Function(JsonRpcApiError error)? error,
   }) {
     return result?.call(this.result);
@@ -191,7 +224,12 @@ class _$GetStorageResultImpl implements GetStorageResult {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(Felt result)? result,
+    TResult Function(
+            @JsonKey(
+                fromJson: _storageAtValueFromJson,
+                toJson: _storageAtValueToJson)
+            StorageAtValue result)?
+        result,
     TResult Function(JsonRpcApiError error)? error,
     required TResult orElse(),
   }) {
@@ -241,13 +279,16 @@ class _$GetStorageResultImpl implements GetStorageResult {
 }
 
 abstract class GetStorageResult implements GetStorage {
-  const factory GetStorageResult({required final Felt result}) =
-      _$GetStorageResultImpl;
+  const factory GetStorageResult(
+      {@JsonKey(
+          fromJson: _storageAtValueFromJson, toJson: _storageAtValueToJson)
+      required final StorageAtValue result}) = _$GetStorageResultImpl;
 
   factory GetStorageResult.fromJson(Map<String, dynamic> json) =
       _$GetStorageResultImpl.fromJson;
 
-  Felt get result;
+  @JsonKey(fromJson: _storageAtValueFromJson, toJson: _storageAtValueToJson)
+  StorageAtValue get result;
 
   /// Create a copy of GetStorage
   /// with the given fields replaced by the non-null parameter values.
@@ -345,7 +386,12 @@ class _$GetStorageErrorImpl implements GetStorageError {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(Felt result) result,
+    required TResult Function(
+            @JsonKey(
+                fromJson: _storageAtValueFromJson,
+                toJson: _storageAtValueToJson)
+            StorageAtValue result)
+        result,
     required TResult Function(JsonRpcApiError error) error,
   }) {
     return error(this.error);
@@ -354,7 +400,12 @@ class _$GetStorageErrorImpl implements GetStorageError {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(Felt result)? result,
+    TResult? Function(
+            @JsonKey(
+                fromJson: _storageAtValueFromJson,
+                toJson: _storageAtValueToJson)
+            StorageAtValue result)?
+        result,
     TResult? Function(JsonRpcApiError error)? error,
   }) {
     return error?.call(this.error);
@@ -363,7 +414,12 @@ class _$GetStorageErrorImpl implements GetStorageError {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(Felt result)? result,
+    TResult Function(
+            @JsonKey(
+                fromJson: _storageAtValueFromJson,
+                toJson: _storageAtValueToJson)
+            StorageAtValue result)?
+        result,
     TResult Function(JsonRpcApiError error)? error,
     required TResult orElse(),
   }) {

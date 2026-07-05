@@ -101,6 +101,11 @@ _$InvokeTransactionV3Impl _$$InvokeTransactionV3ImplFromJson(
           .toList(),
       tip: json['tip'] as String,
       version: json['version'] as String? ?? invokeTxnV3,
+      proofFacts: (json['proof_facts'] as List<dynamic>?)
+              ?.map((e) => Felt.fromJson(e as String))
+              .toList() ??
+          const [],
+      proof: json['proof'] as String?,
     );
 
 Map<String, dynamic> _$$InvokeTransactionV3ImplToJson(
@@ -120,6 +125,8 @@ Map<String, dynamic> _$$InvokeTransactionV3ImplToJson(
       'signature': instance.signature.map((e) => e.toJson()).toList(),
       'tip': instance.tip,
       'version': instance.version,
+      'proof_facts': instance.proofFacts.map((e) => e.toJson()).toList(),
+      if (instance.proof case final value?) 'proof': value,
     };
 
 _$InvokeTransactionResultImpl _$$InvokeTransactionResultImplFromJson(
@@ -154,11 +161,11 @@ Map<String, dynamic> _$$InvokeTransactionErrorImplToJson(
 _$InvokeTransactionResponseResultImpl
     _$$InvokeTransactionResponseResultImplFromJson(Map<String, dynamic> json) =>
         _$InvokeTransactionResponseResultImpl(
-          transaction_hash: json['transaction_hash'] as String,
+          transactionHash: Felt.fromJson(json['transaction_hash'] as String),
         );
 
 Map<String, dynamic> _$$InvokeTransactionResponseResultImplToJson(
         _$InvokeTransactionResponseResultImpl instance) =>
     <String, dynamic>{
-      'transaction_hash': instance.transaction_hash,
+      'transaction_hash': instance.transactionHash.toJson(),
     };

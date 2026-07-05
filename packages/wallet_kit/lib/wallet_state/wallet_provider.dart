@@ -447,7 +447,7 @@ Future<double> getEthBalance(
       entryPointSelector: s.getSelectorByName('balanceOf'),
       calldata: [accountAddress],
     ),
-    blockId: const sp.BlockId.blockTag("latest"),
+    blockId: sp.BlockId.latest,
   );
 
   return response.when<double>(
@@ -473,7 +473,7 @@ Future<double> getStrkBalance(
       entryPointSelector: s.getSelectorByName('balanceOf'),
       calldata: [accountAddress],
     ),
-    blockId: const sp.BlockId.blockTag("latest"),
+    blockId: sp.BlockId.latest,
   );
   return response.when<double>(
     error: (error) {

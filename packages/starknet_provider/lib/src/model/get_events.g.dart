@@ -39,10 +39,9 @@ _$GetEventsRequestImpl _$$GetEventsRequestImplFromJson(
     _$GetEventsRequestImpl(
       fromBlock: json['from_block'] == null
           ? null
-          : BlockId.fromJson(json['from_block'] as Map<String, dynamic>),
-      toBlock: json['to_block'] == null
-          ? null
-          : BlockId.fromJson(json['to_block'] as Map<String, dynamic>),
+          : BlockId.fromJson(json['from_block']),
+      toBlock:
+          json['to_block'] == null ? null : BlockId.fromJson(json['to_block']),
       address: json['address'] == null
           ? null
           : Felt.fromJson(json['address'] as String),

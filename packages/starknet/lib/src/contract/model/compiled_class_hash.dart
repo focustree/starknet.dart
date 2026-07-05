@@ -2,7 +2,7 @@
 // This implementation here is basically based in
 // `cairo-lang` v0.13.1, starknet-py and starkli implementations.
 // https://github.com/starkware-libs/cairo/pull/4515
-import '../../core/crypto/poseidon.dart';
+import '../../core/crypto/blake.dart';
 
 typedef NestedIntList = dynamic;
 
@@ -25,7 +25,7 @@ class BytecodeLeaf extends BytecodeSegmentStructure {
 
   @override
   BigInt hash() {
-    return (poseidonHasher.hashMany(data.map((e) => e).toList()));
+    return (blakeHasher.hashMany(data.map((e) => e).toList()));
   }
 
   @override
@@ -46,7 +46,7 @@ class BytecodeSegmentedNode extends BytecodeSegmentStructure {
       hashInputs.add(node.segmentLength);
       hashInputs.add(node.innerStructure.hash());
     }
-    return (poseidonHasher.hashMany(hashInputs.map((e) => e).toList())) +
+    return (blakeHasher.hashMany(hashInputs.map((e) => e).toList())) +
         BigInt.from(1);
   }
 

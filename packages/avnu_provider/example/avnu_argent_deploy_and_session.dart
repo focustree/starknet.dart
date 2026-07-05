@@ -1,4 +1,3 @@
-import 'dart:convert';
 import 'dart:io';
 
 import 'package:avnu_provider/avnu_provider.dart';
@@ -9,39 +8,31 @@ final argentClassHash = Felt.fromHexString(
   '0x036078334509b514626504edc9fb252328d1a240e4e948bef8d0c08dff45927f',
 );
 
-// helpers
-
-// constructor call data for Argent account 0.4.0
 List<Felt> buildArgentConstructorCalldata({
   required Felt ownerPublicKey,
   required Felt guardianPublicKey,
 }) {
-  final starkSignerId = Felt.zero;
-  final args = [
-    starkSignerId,
+  return [
+    Felt.zero,
     ownerPublicKey,
-    Felt.zero, // Some
-    starkSignerId,
+    Felt.zero,
+    Felt.zero,
     guardianPublicKey,
   ];
-  return args;
 }
 
 Felt computeArgentAddress({
   required Felt ownerPublicKey,
   required Felt guardianPublicKey,
 }) {
-  final calldata = buildArgentConstructorCalldata(
-    ownerPublicKey: ownerPublicKey,
-    guardianPublicKey: guardianPublicKey,
-  );
-  final salt = ownerPublicKey;
-  final accountAddress = Contract.computeAddress(
+  return Contract.computeAddress(
     classHash: argentClassHash,
-    calldata: calldata,
-    salt: salt,
+    calldata: buildArgentConstructorCalldata(
+      ownerPublicKey: ownerPublicKey,
+      guardianPublicKey: guardianPublicKey,
+    ),
+    salt: ownerPublicKey,
   );
-  return accountAddress;
 }
 
 Future<Uint256> getAllowance(
@@ -51,94 +42,104 @@ Future<Uint256> getAllowance(
   Felt spender,
 ) async {
   return (await provider.call(
-          request: FunctionCall(
-              contractAddress: contractAddress,
-              entryPointSelector: getSelectorByName('allowance'),
-              calldata: [owner, spender]),
-          blockId: BlockId.latest))
+    request: FunctionCall(
+      contractAddress: contractAddress,
+      entryPointSelector: getSelectorByName('allowance'),
+      calldata: [owner, spender],
+    ),
+    blockId: BlockId.latest,
+  ))
       .when(
-          result: (result) {
-            return Uint256.fromFeltList(result);
-          },
-          error: (error) =>
-              throw Exception('Failed to retrieve allowance $error'));
+    result: (result) => Uint256.fromFeltList(result),
+    error: (error) => throw Exception('Failed to retrieve allowance $error'),
+  );
 }
 
-void main() async {
+Future<void> main() async {
   final apiKey = Platform.environment['AVNU_API_KEY']!;
   final provider = JsonRpcProvider(
-      nodeUri: Uri.parse(Platform.environment['STARKNET_RPC']!));
+    nodeUri: Uri.parse(Platform.environment['STARKNET_RPC']!),
+  );
   final chainId = (await provider.chainId()).when(
     result: (result) => result,
     error: (error) => throw Exception('Failed to retrieve chain id: $error'),
   );
 
-  final avnuProvider = AvnuJsonRpcProvider(
-      nodeUri: Uri.parse(Platform.environment['AVNU_RPC']!), apiKey: apiKey);
+  final paymaster = AvnuPaymasterProviderImpl(
+    nodeUri: Uri.parse(Platform.environment['AVNU_RPC']!),
+    apiKey: apiKey,
+  );
 
-  /// Prepare signers
   final guardianSigner = StarkSigner(
-      privateKey:
-          Felt.fromHexString(Platform.environment['GUARDIAN_PRIVATE_KEY']!));
+    privateKey:
+        Felt.fromHexString(Platform.environment['GUARDIAN_PRIVATE_KEY']!),
+  );
   final ownerSigner = StarkSigner(
-      privateKey:
-          Felt.fromHexString(Platform.environment['OWNER_PRIVATE_KEY']!));
+    privateKey: Felt.fromHexString(Platform.environment['OWNER_PRIVATE_KEY']!),
+  );
   final ownerAccountSigner = ArgentXGuardianAccountSigner(
     ownerSigner: ownerSigner,
     guardianSigner: guardianSigner,
   );
-
   final appSigner = StarkSigner(
-      privateKey: Felt.fromHexString(Platform.environment['APP_PRIVATE_KEY']!));
+    privateKey: Felt.fromHexString(Platform.environment['APP_PRIVATE_KEY']!),
+  );
 
-  /// Prepare Argent account deployment
   final accountAddress = computeArgentAddress(
     ownerPublicKey: ownerSigner.publicKey,
     guardianPublicKey: guardianSigner.publicKey,
   );
   print('ACCOUNT ADDRESS: ${accountAddress.toHexString()}');
+
   final isDeployed = (await provider.getClassHashAt(
     contractAddress: accountAddress,
     blockId: BlockId.latest,
   ))
       .when(result: (_) => true, error: (_) => false);
-  final constructorCalldata = buildArgentConstructorCalldata(
-    ownerPublicKey: ownerSigner.publicKey,
-    guardianPublicKey: guardianSigner.publicKey,
-  )
-      .map(
-        (e) => e.toHexString(),
-      )
-      .toList();
 
-  final deploymentData = {
-    'class_hash': argentClassHash.toHexString(),
-    'salt': ownerSigner.publicKey.toHexString(),
-    'unique': Felt.zero.toHexString(),
-    'calldata': constructorCalldata,
-  };
+  final deployment = AccountDeploymentData(
+    address: accountAddress.toHexString(),
+    classHash: argentClassHash.toHexString(),
+    salt: ownerSigner.publicKey.toHexString(),
+    calldata: buildArgentConstructorCalldata(
+      ownerPublicKey: ownerSigner.publicKey,
+      guardianPublicKey: guardianSigner.publicKey,
+    ).map((e) => e.toHexString()).toList(),
+  );
 
-///// SESSION KEY START HERE
-  /// Prepare session key
-  print('PREPARE SESSION KEY');
   const strkContractAddress =
-      '0x4718F5A0FC34CC1AF16A1CDEE98FFB20C31F5CD61D6AB07201858F4287C938D';
+      '0x4718f5a0fc34cc1af16a1cdee98ffb20c31f5cd61d6ab07201858f4287c938d';
   const ethContractAddress =
-      '0x49D36570D4E46F48E99674BD3FCC84644DDD6B96F7C741B1562B82F9E004DC7';
-  const approve = 'approve';
-
+      '0x049d36570d4e46f48e99674bd3fcc84644ddd6b96f7c741b1562b82f9e004dc7';
   const approvedStrk = '0x123';
   const approvedEth = '0x456';
 
-  final currentEpoch = (DateTime.now().millisecondsSinceEpoch / 1000).floor();
+  final invoke = UserInvoke(
+    userAddress: accountAddress.toHexString(),
+    calls: [
+      PaymasterCall.fromEntrypoint(
+        to: strkContractAddress,
+        entrypoint: 'approve',
+        calldata: [approvedStrk, '0xaaa', '0x0'],
+      ),
+      PaymasterCall.fromEntrypoint(
+        to: ethContractAddress,
+        entrypoint: 'approve',
+        calldata: [approvedEth, '0xff', '0x0'],
+      ),
+    ],
+  );
+
+  const parameters = UserParameters(feeMode: FeeMode.sponsored());
+
   final allowedMethods = [
     AllowedMethod(
       contractAddress: Felt.fromHexString(strkContractAddress),
-      selector: getSelectorByName(approve),
+      selector: getSelectorByName('approve'),
     ),
     AllowedMethod(
       contractAddress: Felt.fromHexString(ethContractAddress),
-      selector: getSelectorByName(approve),
+      selector: getSelectorByName('approve'),
     ),
   ];
 
@@ -146,75 +147,73 @@ void main() async {
     accountAddress: accountAddress,
     guardianSigner: guardianSigner,
     allowedMethods: allowedMethods
-        .map((e) => (
-              contractAddress: e.contractAddress.toHexString(),
-              selector: e.selector.toHexString(),
-            ))
+        .map(
+          (e) => (
+            contractAddress: e.contractAddress.toHexString(),
+            selector: e.selector.toHexString(),
+          ),
+        )
         .toList(),
     metadata: '2342',
-    expiresAt: currentEpoch + 60 * 60 * 24,
+    expiresAt:
+        (DateTime.now().millisecondsSinceEpoch / 1000).floor() + 60 * 60 * 24,
     chainId: Felt.fromHexString(chainId),
     appSigner: appSigner,
   );
 
-  final authorizationSignature = await ownerAccountSigner.sign(
+  argentSession.authorizationSignature = await ownerAccountSigner.sign(
     argentSession.hash,
     null,
   );
-  argentSession.authorizationSignature = authorizationSignature;
 
-  /// Prepare outside execution message
-  print('PREPARE OUTSIDE EXECUTION MESSAGE');
-  final avnuBuildTypedDataResponse = await avnuProvider.buildTypedData(
-    accountAddress.toHexString(),
-    [
-      {
-        'contractAddress': strkContractAddress,
-        'entrypoint': approve,
-        'calldata': [approvedStrk, '0xaaa', '0x0']
-      },
-      {
-        'contractAddress': ethContractAddress,
-        'entrypoint': approve,
-        'calldata': [approvedEth, '0xff', '0x0']
-      },
-    ],
-    '',
-    '',
-    argentClassHash.toHexString(),
+  final build = await paymaster.buildTransaction(
+    isDeployed
+        ? UserTransaction.invoke(invoke: invoke)
+        : UserTransaction.deployAndInvoke(
+            deployment: deployment,
+            invoke: invoke,
+          ),
+    parameters,
   );
-  if (avnuBuildTypedDataResponse is AvnuBuildTypedDataError) {
-    throw Exception('Failed to build typed data: $avnuBuildTypedDataResponse');
-  }
-  final avnuTypedData = avnuBuildTypedDataResponse as AvnuBuildTypedDataResult;
-  final outsideExecutionMessage =
-      OutsideExecutionMessageV2.fromJson(avnuTypedData.toTypedData().message);
-  print('PREPARE SIGNATURE');
-  final sessionTokenSignature =
-      await argentSession.outsideExecutionMessageToken(outsideExecutionMessage);
 
-  /// Prepare session token
-  print('PREPARE SESSION TOKEN');
-  final signature = sessionTokenSignature.map((e) => e.toHexString()).toList();
+  final typedData = build.typedData!;
+  final outsideExecutionMessage = OutsideExecutionMessageV2.fromJson(
+    typedData.toTypedData().message,
+  );
+  final sessionSignature = await argentSession.outsideExecutionMessageToken(
+    outsideExecutionMessage,
+  );
 
-  print('AVNU EXECUTE');
+  final executable = isDeployed
+      ? ExecutableUserTransaction.invoke(
+          invoke: ExecutableUserInvoke(
+            userAddress: accountAddress.toHexString(),
+            typedData: typedData.toExecuteJson(),
+            signature: sessionSignature.map((e) => e.toHexString()).toList(),
+          ),
+        )
+      : ExecutableUserTransaction.deployAndInvoke(
+          deployment: deployment,
+          invoke: ExecutableUserInvoke(
+            userAddress: accountAddress.toHexString(),
+            typedData: typedData.toExecuteJson(),
+            signature: sessionSignature.map((e) => e.toHexString()).toList(),
+          ),
+        );
+
   if (!isDeployed) {
     print('DEPLOYING ACCOUNT');
   }
-  final avnuExecute = await avnuProvider.execute(
-    accountAddress.toHexString(),
-    jsonEncode(avnuTypedData.toTypedData()),
-    signature,
-    isDeployed ? null : deploymentData,
-  );
-  if (avnuExecute is AvnuExecuteError) {
-    throw Exception('Failed to execute: $avnuExecute');
-  }
-  print(avnuExecute);
+
+  final result =
+      await paymaster.executeTransaction(executable, build.parameters);
+  print(result);
+
   await waitForAcceptance(
-    transactionHash: (avnuExecute as AvnuExecuteResult).transactionHash,
+    transactionHash: result.transactionHash,
     provider: provider,
   );
+
   final strkAllowance = await getAllowance(
     provider,
     Felt.fromHexString(strkContractAddress),

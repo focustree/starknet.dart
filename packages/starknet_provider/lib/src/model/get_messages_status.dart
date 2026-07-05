@@ -2,8 +2,8 @@
 
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:starknet/starknet.dart';
-import 'components/txn_status.dart';
 
+import 'components/message_status.dart';
 import 'json_rpc_api_error.dart';
 
 part 'get_messages_status.freezed.dart';
@@ -36,24 +36,4 @@ class GetMessagesStatusRequest {
   factory GetMessagesStatusRequest.fromJson(Map<String, dynamic> json) =>
       _$GetMessagesStatusRequestFromJson(json);
   Map<String, dynamic> toJson() => _$GetMessagesStatusRequestToJson(this);
-}
-
-@JsonSerializable()
-class MessageStatus {
-  @JsonKey(name: 'transaction_hash')
-  final Felt transactionHash;
-  @JsonKey(name: 'finality_status')
-  final TxnStatus finalityStatus;
-  @JsonKey(name: 'failure_reason')
-  final String? failureReason;
-
-  MessageStatus({
-    required this.transactionHash,
-    required this.finalityStatus,
-    this.failureReason,
-  });
-
-  factory MessageStatus.fromJson(Map<String, dynamic> json) =>
-      _$MessageStatusFromJson(json);
-  Map<String, dynamic> toJson() => _$MessageStatusToJson(this);
 }

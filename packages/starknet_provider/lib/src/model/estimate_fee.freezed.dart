@@ -481,7 +481,9 @@ mixin _$BroadcastedTxn {
             List<Felt> paymasterData,
             Map<String, ResourceBounds> resourceBounds,
             Felt senderAddress,
-            String tip)
+            String tip,
+            @JsonKey(name: 'proof_facts') List<Felt> proofFacts,
+            @JsonKey(includeIfNull: false) String? proof)
         broadcastedInvokeTxnV3,
     required TResult Function(
             String type,
@@ -528,7 +530,9 @@ mixin _$BroadcastedTxn {
             List<Felt> paymasterData,
             Map<String, ResourceBounds> resourceBounds,
             Felt senderAddress,
-            String tip)?
+            String tip,
+            @JsonKey(name: 'proof_facts') List<Felt> proofFacts,
+            @JsonKey(includeIfNull: false) String? proof)?
         broadcastedInvokeTxnV3,
     TResult? Function(
             String type,
@@ -575,7 +579,9 @@ mixin _$BroadcastedTxn {
             List<Felt> paymasterData,
             Map<String, ResourceBounds> resourceBounds,
             Felt senderAddress,
-            String tip)?
+            String tip,
+            @JsonKey(name: 'proof_facts') List<Felt> proofFacts,
+            @JsonKey(includeIfNull: false) String? proof)?
         broadcastedInvokeTxnV3,
     TResult Function(
             String type,
@@ -752,7 +758,9 @@ abstract class _$$BroadcastedInvokeTxnV3ImplCopyWith<$Res>
       List<Felt> paymasterData,
       Map<String, ResourceBounds> resourceBounds,
       Felt senderAddress,
-      String tip});
+      String tip,
+      @JsonKey(name: 'proof_facts') List<Felt> proofFacts,
+      @JsonKey(includeIfNull: false) String? proof});
 }
 
 /// @nodoc
@@ -781,6 +789,8 @@ class __$$BroadcastedInvokeTxnV3ImplCopyWithImpl<$Res>
     Object? resourceBounds = null,
     Object? senderAddress = null,
     Object? tip = null,
+    Object? proofFacts = null,
+    Object? proof = freezed,
   }) {
     return _then(_$BroadcastedInvokeTxnV3Impl(
       type: null == type
@@ -831,6 +841,14 @@ class __$$BroadcastedInvokeTxnV3ImplCopyWithImpl<$Res>
           ? _value.tip
           : tip // ignore: cast_nullable_to_non_nullable
               as String,
+      proofFacts: null == proofFacts
+          ? _value._proofFacts
+          : proofFacts // ignore: cast_nullable_to_non_nullable
+              as List<Felt>,
+      proof: freezed == proof
+          ? _value.proof
+          : proof // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -852,12 +870,15 @@ class _$BroadcastedInvokeTxnV3Impl implements BroadcastedInvokeTxnV3 {
       required final Map<String, ResourceBounds> resourceBounds,
       required this.senderAddress,
       required this.tip,
+      @JsonKey(name: 'proof_facts') final List<Felt> proofFacts = const [],
+      @JsonKey(includeIfNull: false) this.proof,
       final String? $type})
       : _signature = signature,
         _accountDeploymentData = accountDeploymentData,
         _calldata = calldata,
         _paymasterData = paymasterData,
         _resourceBounds = resourceBounds,
+        _proofFacts = proofFacts,
         $type = $type ?? 'broadcastedInvokeTxnV3';
 
   factory _$BroadcastedInvokeTxnV3Impl.fromJson(Map<String, dynamic> json) =>
@@ -923,13 +944,25 @@ class _$BroadcastedInvokeTxnV3Impl implements BroadcastedInvokeTxnV3 {
   final Felt senderAddress;
   @override
   final String tip;
+  final List<Felt> _proofFacts;
+  @override
+  @JsonKey(name: 'proof_facts')
+  List<Felt> get proofFacts {
+    if (_proofFacts is EqualUnmodifiableListView) return _proofFacts;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_proofFacts);
+  }
+
+  @override
+  @JsonKey(includeIfNull: false)
+  final String? proof;
 
   @JsonKey(name: 'starkNetRuntimeTypeToRemove')
   final String $type;
 
   @override
   String toString() {
-    return 'BroadcastedTxn.broadcastedInvokeTxnV3(type: $type, version: $version, signature: $signature, nonce: $nonce, accountDeploymentData: $accountDeploymentData, calldata: $calldata, feeDataAvailabilityMode: $feeDataAvailabilityMode, nonceDataAvailabilityMode: $nonceDataAvailabilityMode, paymasterData: $paymasterData, resourceBounds: $resourceBounds, senderAddress: $senderAddress, tip: $tip)';
+    return 'BroadcastedTxn.broadcastedInvokeTxnV3(type: $type, version: $version, signature: $signature, nonce: $nonce, accountDeploymentData: $accountDeploymentData, calldata: $calldata, feeDataAvailabilityMode: $feeDataAvailabilityMode, nonceDataAvailabilityMode: $nonceDataAvailabilityMode, paymasterData: $paymasterData, resourceBounds: $resourceBounds, senderAddress: $senderAddress, tip: $tip, proofFacts: $proofFacts, proof: $proof)';
   }
 
   @override
@@ -957,7 +990,10 @@ class _$BroadcastedInvokeTxnV3Impl implements BroadcastedInvokeTxnV3 {
                 .equals(other._resourceBounds, _resourceBounds) &&
             (identical(other.senderAddress, senderAddress) ||
                 other.senderAddress == senderAddress) &&
-            (identical(other.tip, tip) || other.tip == tip));
+            (identical(other.tip, tip) || other.tip == tip) &&
+            const DeepCollectionEquality()
+                .equals(other._proofFacts, _proofFacts) &&
+            (identical(other.proof, proof) || other.proof == proof));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
@@ -975,7 +1011,9 @@ class _$BroadcastedInvokeTxnV3Impl implements BroadcastedInvokeTxnV3 {
       const DeepCollectionEquality().hash(_paymasterData),
       const DeepCollectionEquality().hash(_resourceBounds),
       senderAddress,
-      tip);
+      tip,
+      const DeepCollectionEquality().hash(_proofFacts),
+      proof);
 
   /// Create a copy of BroadcastedTxn
   /// with the given fields replaced by the non-null parameter values.
@@ -1001,7 +1039,9 @@ class _$BroadcastedInvokeTxnV3Impl implements BroadcastedInvokeTxnV3 {
             List<Felt> paymasterData,
             Map<String, ResourceBounds> resourceBounds,
             Felt senderAddress,
-            String tip)
+            String tip,
+            @JsonKey(name: 'proof_facts') List<Felt> proofFacts,
+            @JsonKey(includeIfNull: false) String? proof)
         broadcastedInvokeTxnV3,
     required TResult Function(
             String type,
@@ -1045,7 +1085,9 @@ class _$BroadcastedInvokeTxnV3Impl implements BroadcastedInvokeTxnV3 {
         paymasterData,
         resourceBounds,
         senderAddress,
-        tip);
+        tip,
+        proofFacts,
+        proof);
   }
 
   @override
@@ -1063,7 +1105,9 @@ class _$BroadcastedInvokeTxnV3Impl implements BroadcastedInvokeTxnV3 {
             List<Felt> paymasterData,
             Map<String, ResourceBounds> resourceBounds,
             Felt senderAddress,
-            String tip)?
+            String tip,
+            @JsonKey(name: 'proof_facts') List<Felt> proofFacts,
+            @JsonKey(includeIfNull: false) String? proof)?
         broadcastedInvokeTxnV3,
     TResult? Function(
             String type,
@@ -1107,7 +1151,9 @@ class _$BroadcastedInvokeTxnV3Impl implements BroadcastedInvokeTxnV3 {
         paymasterData,
         resourceBounds,
         senderAddress,
-        tip);
+        tip,
+        proofFacts,
+        proof);
   }
 
   @override
@@ -1125,7 +1171,9 @@ class _$BroadcastedInvokeTxnV3Impl implements BroadcastedInvokeTxnV3 {
             List<Felt> paymasterData,
             Map<String, ResourceBounds> resourceBounds,
             Felt senderAddress,
-            String tip)?
+            String tip,
+            @JsonKey(name: 'proof_facts') List<Felt> proofFacts,
+            @JsonKey(includeIfNull: false) String? proof)?
         broadcastedInvokeTxnV3,
     TResult Function(
             String type,
@@ -1171,7 +1219,9 @@ class _$BroadcastedInvokeTxnV3Impl implements BroadcastedInvokeTxnV3 {
           paymasterData,
           resourceBounds,
           senderAddress,
-          tip);
+          tip,
+          proofFacts,
+          proof);
     }
     return orElse();
   }
@@ -1225,18 +1275,21 @@ class _$BroadcastedInvokeTxnV3Impl implements BroadcastedInvokeTxnV3 {
 
 abstract class BroadcastedInvokeTxnV3 implements BroadcastedTxn {
   const factory BroadcastedInvokeTxnV3(
-      {required final String type,
-      required final String version,
-      required final List<Felt> signature,
-      required final Felt nonce,
-      required final List<Felt> accountDeploymentData,
-      required final List<Felt> calldata,
-      required final String feeDataAvailabilityMode,
-      required final String nonceDataAvailabilityMode,
-      required final List<Felt> paymasterData,
-      required final Map<String, ResourceBounds> resourceBounds,
-      required final Felt senderAddress,
-      required final String tip}) = _$BroadcastedInvokeTxnV3Impl;
+          {required final String type,
+          required final String version,
+          required final List<Felt> signature,
+          required final Felt nonce,
+          required final List<Felt> accountDeploymentData,
+          required final List<Felt> calldata,
+          required final String feeDataAvailabilityMode,
+          required final String nonceDataAvailabilityMode,
+          required final List<Felt> paymasterData,
+          required final Map<String, ResourceBounds> resourceBounds,
+          required final Felt senderAddress,
+          required final String tip,
+          @JsonKey(name: 'proof_facts') final List<Felt> proofFacts,
+          @JsonKey(includeIfNull: false) final String? proof}) =
+      _$BroadcastedInvokeTxnV3Impl;
 
   factory BroadcastedInvokeTxnV3.fromJson(Map<String, dynamic> json) =
       _$BroadcastedInvokeTxnV3Impl.fromJson;
@@ -1264,6 +1317,10 @@ abstract class BroadcastedInvokeTxnV3 implements BroadcastedTxn {
   Felt get senderAddress;
   @override
   String get tip;
+  @JsonKey(name: 'proof_facts')
+  List<Felt> get proofFacts;
+  @JsonKey(includeIfNull: false)
+  String? get proof;
 
   /// Create a copy of BroadcastedTxn
   /// with the given fields replaced by the non-null parameter values.
@@ -1562,7 +1619,9 @@ class _$BroadcastedDeclareTxnV3Impl implements BroadcastedDeclareTxnV3 {
             List<Felt> paymasterData,
             Map<String, ResourceBounds> resourceBounds,
             Felt senderAddress,
-            String tip)
+            String tip,
+            @JsonKey(name: 'proof_facts') List<Felt> proofFacts,
+            @JsonKey(includeIfNull: false) String? proof)
         broadcastedInvokeTxnV3,
     required TResult Function(
             String type,
@@ -1625,7 +1684,9 @@ class _$BroadcastedDeclareTxnV3Impl implements BroadcastedDeclareTxnV3 {
             List<Felt> paymasterData,
             Map<String, ResourceBounds> resourceBounds,
             Felt senderAddress,
-            String tip)?
+            String tip,
+            @JsonKey(name: 'proof_facts') List<Felt> proofFacts,
+            @JsonKey(includeIfNull: false) String? proof)?
         broadcastedInvokeTxnV3,
     TResult? Function(
             String type,
@@ -1688,7 +1749,9 @@ class _$BroadcastedDeclareTxnV3Impl implements BroadcastedDeclareTxnV3 {
             List<Felt> paymasterData,
             Map<String, ResourceBounds> resourceBounds,
             Felt senderAddress,
-            String tip)?
+            String tip,
+            @JsonKey(name: 'proof_facts') List<Felt> proofFacts,
+            @JsonKey(includeIfNull: false) String? proof)?
         broadcastedInvokeTxnV3,
     TResult Function(
             String type,
@@ -2105,7 +2168,9 @@ class _$BroadcastedDeployAccountTxnV3Impl
             List<Felt> paymasterData,
             Map<String, ResourceBounds> resourceBounds,
             Felt senderAddress,
-            String tip)
+            String tip,
+            @JsonKey(name: 'proof_facts') List<Felt> proofFacts,
+            @JsonKey(includeIfNull: false) String? proof)
         broadcastedInvokeTxnV3,
     required TResult Function(
             String type,
@@ -2167,7 +2232,9 @@ class _$BroadcastedDeployAccountTxnV3Impl
             List<Felt> paymasterData,
             Map<String, ResourceBounds> resourceBounds,
             Felt senderAddress,
-            String tip)?
+            String tip,
+            @JsonKey(name: 'proof_facts') List<Felt> proofFacts,
+            @JsonKey(includeIfNull: false) String? proof)?
         broadcastedInvokeTxnV3,
     TResult? Function(
             String type,
@@ -2229,7 +2296,9 @@ class _$BroadcastedDeployAccountTxnV3Impl
             List<Felt> paymasterData,
             Map<String, ResourceBounds> resourceBounds,
             Felt senderAddress,
-            String tip)?
+            String tip,
+            @JsonKey(name: 'proof_facts') List<Felt> proofFacts,
+            @JsonKey(includeIfNull: false) String? proof)?
         broadcastedInvokeTxnV3,
     TResult Function(
             String type,

@@ -862,7 +862,7 @@ Felt? getDeployedContractAddress(GetTransactionReceipt txReceipt) {
       for (final event in r.events) {
         // contract constructor can generate some event also
         if (event.fromAddress == udcAddress) {
-          return event.data?[0];
+          return event.data[0];
         }
       }
       throw Exception('UDC deployer event not found');

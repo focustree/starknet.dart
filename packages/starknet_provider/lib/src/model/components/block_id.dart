@@ -1,74 +1,61 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:starknet/starknet.dart'; // for Felt
+import 'package:starknet/starknet.dart';
+
+import 'block_tag.dart';
 
 part 'block_id.freezed.dart';
-part 'block_id.g.dart';
 
-@Freezed(fromJson: true, toJson: false)
+@Freezed(fromJson: false, toJson: false)
 class BlockId with _$BlockId {
   const BlockId._();
 
-  const factory BlockId.blockHash(
-    Felt blockHash,
-  ) = BlockIdHash;
-  const factory BlockId.blockNumber(
-    int blockNumber,
-  ) = BlockIdNumber;
-  const factory BlockId.blockTag(
-    String blockTag,
-  ) = BlockIdTag;
+  const factory BlockId.blockHash(Felt blockHash) = BlockIdHash;
+  const factory BlockId.blockNumber(int blockNumber) = BlockIdNumber;
+  const factory BlockId.blockTag(BlockTag blockTag) = BlockIdTag;
 
-  static const BlockId latest = BlockId.blockTag('latest');
+  /// Accepts a raw [BLOCK_TAG] string (`latest`, `l1_accepted`, `pre_confirmed`).
+  factory BlockId.tag(String blockTag) =>
+      BlockId.blockTag(_blockTagFromString(blockTag));
 
-  factory BlockId.fromJson(Map<String, dynamic> json) =>
-      _$BlockIdFromJson(json);
+  static const BlockId latest = BlockId.blockTag(BlockTag.latest);
+
+  factory BlockId.fromJson(dynamic json) {
+    if (json is String) {
+      return BlockId.blockTag(_blockTagFromString(json));
+    }
+    if (json is Map<String, dynamic>) {
+      if (json.containsKey('block_hash')) {
+        return BlockId.blockHash(Felt.fromJson(json['block_hash'] as String));
+      }
+      if (json.containsKey('block_number')) {
+        return BlockId.blockNumber((json['block_number'] as num).toInt());
+      }
+    }
+    throw FormatException('Invalid BLOCK_ID: $json');
+  }
+
+  static BlockTag _blockTagFromString(String value) {
+    return switch (value) {
+      'l1_accepted' => BlockTag.l1Accepted,
+      'latest' => BlockTag.latest,
+      'pre_confirmed' => BlockTag.preConfirmed,
+      _ => throw FormatException('Invalid BLOCK_TAG: $value'),
+    };
+  }
+
+  static String _blockTagToString(BlockTag tag) {
+    return switch (tag) {
+      BlockTag.l1Accepted => 'l1_accepted',
+      BlockTag.latest => 'latest',
+      BlockTag.preConfirmed => 'pre_confirmed',
+    };
+  }
 
   dynamic toJson() {
     return map(
-      blockHash: (blockIdHash) {
-        return {'block_hash': blockIdHash.blockHash.toJson()};
-      },
-      blockNumber: (blockIdNumber) {
-        return {'block_number': blockIdNumber.blockNumber};
-      },
-      blockTag: (blockIdTag) {
-        return blockIdTag.blockTag;
-      },
+      blockHash: (id) => {'block_hash': id.blockHash.toJson()},
+      blockNumber: (id) => {'block_number': id.blockNumber},
+      blockTag: (id) => _blockTagToString(id.blockTag),
     );
   }
 }
-
-// Currently not used.
-// class BlockIdConverter implements JsonConverter<BlockId, dynamic> {
-//   const BlockIdConverter();
-//
-//   // BlockId can be constructed from a Map as well as a String.
-//   @override
-//   BlockId fromJson(dynamic value) {
-//     if (value is Map) {
-//       Map<String, dynamic> json = value as Map<String, dynamic>;
-//
-//       // you need to find some condition to know which type it is. e.g. check the presence of some field in the json
-//       if (json.containsKey('block_hash')) {
-//         return BlockId.blockHash(blockHash: json['block_hash']);
-//       } else if (json.containsKey('block_number')) {
-//         return BlockId.blockNumber(blockNumber: json['block_number']);
-//       }
-//     } else if (value is String) {
-//       return BlockId.blockTag(blockTag: value);
-//     }
-//
-//     throw Exception('Could not determine the BlockId from given value: $json');
-//   }
-//
-//   @override
-//   dynamic toJson(BlockId data) {
-//     return data.when<dynamic>(blockHash: (Felt blockHash) {
-//       return <String, dynamic>{'block_hash': blockHash};
-//     }, blockNumber: (int blockNumber) {
-//       return <String, dynamic>{'block_number': blockNumber};
-//     }, blockTag: (String blockTag) {
-//       return blockTag;
-//     });
-//   }
-// }

@@ -105,7 +105,7 @@ void main() {
         response.when(
           error: (error) => expect(
             error.code,
-            JsonRpcApiErrorCode.INVALID_CONTRACT_CLASS,
+            JsonRpcApiErrorCode.COMPILATION_FAILED,
           ),
           result: (result) {
             expect(result, equals(1));

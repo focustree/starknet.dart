@@ -446,3 +446,273 @@ abstract class WssSubscribeEventsError implements WssSubscribeEventsResponse {
   _$$WssSubscribeEventsErrorImplCopyWith<_$WssSubscribeEventsErrorImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
+
+/// @nodoc
+mixin _$WssSubscribeEventsRequest {
+  @JsonKey(name: 'from_address')
+  WssFromAddressFilter? get fromAddress => throw _privateConstructorUsedError;
+  List<List<Felt>>? get keys => throw _privateConstructorUsedError;
+  @JsonKey(name: 'block_id')
+  SubscriptionBlockId? get blockId => throw _privateConstructorUsedError;
+  @JsonKey(name: 'finality_status')
+  SubscriptionFinalityStatus? get finalityStatus =>
+      throw _privateConstructorUsedError;
+
+  /// Serializes this WssSubscribeEventsRequest to a JSON map.
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+
+  /// Create a copy of WssSubscribeEventsRequest
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  $WssSubscribeEventsRequestCopyWith<WssSubscribeEventsRequest> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $WssSubscribeEventsRequestCopyWith<$Res> {
+  factory $WssSubscribeEventsRequestCopyWith(WssSubscribeEventsRequest value,
+          $Res Function(WssSubscribeEventsRequest) then) =
+      _$WssSubscribeEventsRequestCopyWithImpl<$Res, WssSubscribeEventsRequest>;
+  @useResult
+  $Res call(
+      {@JsonKey(name: 'from_address') WssFromAddressFilter? fromAddress,
+      List<List<Felt>>? keys,
+      @JsonKey(name: 'block_id') SubscriptionBlockId? blockId,
+      @JsonKey(name: 'finality_status')
+      SubscriptionFinalityStatus? finalityStatus});
+
+  $WssFromAddressFilterCopyWith<$Res>? get fromAddress;
+  $SubscriptionBlockIdCopyWith<$Res>? get blockId;
+}
+
+/// @nodoc
+class _$WssSubscribeEventsRequestCopyWithImpl<$Res,
+        $Val extends WssSubscribeEventsRequest>
+    implements $WssSubscribeEventsRequestCopyWith<$Res> {
+  _$WssSubscribeEventsRequestCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  /// Create a copy of WssSubscribeEventsRequest
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? fromAddress = freezed,
+    Object? keys = freezed,
+    Object? blockId = freezed,
+    Object? finalityStatus = freezed,
+  }) {
+    return _then(_value.copyWith(
+      fromAddress: freezed == fromAddress
+          ? _value.fromAddress
+          : fromAddress // ignore: cast_nullable_to_non_nullable
+              as WssFromAddressFilter?,
+      keys: freezed == keys
+          ? _value.keys
+          : keys // ignore: cast_nullable_to_non_nullable
+              as List<List<Felt>>?,
+      blockId: freezed == blockId
+          ? _value.blockId
+          : blockId // ignore: cast_nullable_to_non_nullable
+              as SubscriptionBlockId?,
+      finalityStatus: freezed == finalityStatus
+          ? _value.finalityStatus
+          : finalityStatus // ignore: cast_nullable_to_non_nullable
+              as SubscriptionFinalityStatus?,
+    ) as $Val);
+  }
+
+  /// Create a copy of WssSubscribeEventsRequest
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $WssFromAddressFilterCopyWith<$Res>? get fromAddress {
+    if (_value.fromAddress == null) {
+      return null;
+    }
+
+    return $WssFromAddressFilterCopyWith<$Res>(_value.fromAddress!, (value) {
+      return _then(_value.copyWith(fromAddress: value) as $Val);
+    });
+  }
+
+  /// Create a copy of WssSubscribeEventsRequest
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $SubscriptionBlockIdCopyWith<$Res>? get blockId {
+    if (_value.blockId == null) {
+      return null;
+    }
+
+    return $SubscriptionBlockIdCopyWith<$Res>(_value.blockId!, (value) {
+      return _then(_value.copyWith(blockId: value) as $Val);
+    });
+  }
+}
+
+/// @nodoc
+abstract class _$$WssSubscribeEventsRequestImplCopyWith<$Res>
+    implements $WssSubscribeEventsRequestCopyWith<$Res> {
+  factory _$$WssSubscribeEventsRequestImplCopyWith(
+          _$WssSubscribeEventsRequestImpl value,
+          $Res Function(_$WssSubscribeEventsRequestImpl) then) =
+      __$$WssSubscribeEventsRequestImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call(
+      {@JsonKey(name: 'from_address') WssFromAddressFilter? fromAddress,
+      List<List<Felt>>? keys,
+      @JsonKey(name: 'block_id') SubscriptionBlockId? blockId,
+      @JsonKey(name: 'finality_status')
+      SubscriptionFinalityStatus? finalityStatus});
+
+  @override
+  $WssFromAddressFilterCopyWith<$Res>? get fromAddress;
+  @override
+  $SubscriptionBlockIdCopyWith<$Res>? get blockId;
+}
+
+/// @nodoc
+class __$$WssSubscribeEventsRequestImplCopyWithImpl<$Res>
+    extends _$WssSubscribeEventsRequestCopyWithImpl<$Res,
+        _$WssSubscribeEventsRequestImpl>
+    implements _$$WssSubscribeEventsRequestImplCopyWith<$Res> {
+  __$$WssSubscribeEventsRequestImplCopyWithImpl(
+      _$WssSubscribeEventsRequestImpl _value,
+      $Res Function(_$WssSubscribeEventsRequestImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of WssSubscribeEventsRequest
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? fromAddress = freezed,
+    Object? keys = freezed,
+    Object? blockId = freezed,
+    Object? finalityStatus = freezed,
+  }) {
+    return _then(_$WssSubscribeEventsRequestImpl(
+      fromAddress: freezed == fromAddress
+          ? _value.fromAddress
+          : fromAddress // ignore: cast_nullable_to_non_nullable
+              as WssFromAddressFilter?,
+      keys: freezed == keys
+          ? _value._keys
+          : keys // ignore: cast_nullable_to_non_nullable
+              as List<List<Felt>>?,
+      blockId: freezed == blockId
+          ? _value.blockId
+          : blockId // ignore: cast_nullable_to_non_nullable
+              as SubscriptionBlockId?,
+      finalityStatus: freezed == finalityStatus
+          ? _value.finalityStatus
+          : finalityStatus // ignore: cast_nullable_to_non_nullable
+              as SubscriptionFinalityStatus?,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable(createFactory: false)
+class _$WssSubscribeEventsRequestImpl implements _WssSubscribeEventsRequest {
+  const _$WssSubscribeEventsRequestImpl(
+      {@JsonKey(name: 'from_address') this.fromAddress,
+      final List<List<Felt>>? keys,
+      @JsonKey(name: 'block_id') this.blockId,
+      @JsonKey(name: 'finality_status') this.finalityStatus})
+      : _keys = keys;
+
+  @override
+  @JsonKey(name: 'from_address')
+  final WssFromAddressFilter? fromAddress;
+  final List<List<Felt>>? _keys;
+  @override
+  List<List<Felt>>? get keys {
+    final value = _keys;
+    if (value == null) return null;
+    if (_keys is EqualUnmodifiableListView) return _keys;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
+
+  @override
+  @JsonKey(name: 'block_id')
+  final SubscriptionBlockId? blockId;
+  @override
+  @JsonKey(name: 'finality_status')
+  final SubscriptionFinalityStatus? finalityStatus;
+
+  @override
+  String toString() {
+    return 'WssSubscribeEventsRequest(fromAddress: $fromAddress, keys: $keys, blockId: $blockId, finalityStatus: $finalityStatus)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$WssSubscribeEventsRequestImpl &&
+            (identical(other.fromAddress, fromAddress) ||
+                other.fromAddress == fromAddress) &&
+            const DeepCollectionEquality().equals(other._keys, _keys) &&
+            (identical(other.blockId, blockId) || other.blockId == blockId) &&
+            (identical(other.finalityStatus, finalityStatus) ||
+                other.finalityStatus == finalityStatus));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(runtimeType, fromAddress,
+      const DeepCollectionEquality().hash(_keys), blockId, finalityStatus);
+
+  /// Create a copy of WssSubscribeEventsRequest
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$WssSubscribeEventsRequestImplCopyWith<_$WssSubscribeEventsRequestImpl>
+      get copyWith => __$$WssSubscribeEventsRequestImplCopyWithImpl<
+          _$WssSubscribeEventsRequestImpl>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$WssSubscribeEventsRequestImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class _WssSubscribeEventsRequest implements WssSubscribeEventsRequest {
+  const factory _WssSubscribeEventsRequest(
+      {@JsonKey(name: 'from_address') final WssFromAddressFilter? fromAddress,
+      final List<List<Felt>>? keys,
+      @JsonKey(name: 'block_id') final SubscriptionBlockId? blockId,
+      @JsonKey(name: 'finality_status')
+      final SubscriptionFinalityStatus?
+          finalityStatus}) = _$WssSubscribeEventsRequestImpl;
+
+  @override
+  @JsonKey(name: 'from_address')
+  WssFromAddressFilter? get fromAddress;
+  @override
+  List<List<Felt>>? get keys;
+  @override
+  @JsonKey(name: 'block_id')
+  SubscriptionBlockId? get blockId;
+  @override
+  @JsonKey(name: 'finality_status')
+  SubscriptionFinalityStatus? get finalityStatus;
+
+  /// Create a copy of WssSubscribeEventsRequest
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$WssSubscribeEventsRequestImplCopyWith<_$WssSubscribeEventsRequestImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}

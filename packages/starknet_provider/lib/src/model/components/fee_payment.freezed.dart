@@ -21,7 +21,7 @@ FeePayment _$FeePaymentFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$FeePayment {
   Felt get amount => throw _privateConstructorUsedError;
-  String get unit => throw _privateConstructorUsedError;
+  PriceUnit get unit => throw _privateConstructorUsedError;
 
   /// Serializes this FeePayment to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -39,7 +39,7 @@ abstract class $FeePaymentCopyWith<$Res> {
           FeePayment value, $Res Function(FeePayment) then) =
       _$FeePaymentCopyWithImpl<$Res, FeePayment>;
   @useResult
-  $Res call({Felt amount, String unit});
+  $Res call({Felt amount, PriceUnit unit});
 }
 
 /// @nodoc
@@ -68,7 +68,7 @@ class _$FeePaymentCopyWithImpl<$Res, $Val extends FeePayment>
       unit: null == unit
           ? _value.unit
           : unit // ignore: cast_nullable_to_non_nullable
-              as String,
+              as PriceUnit,
     ) as $Val);
   }
 }
@@ -81,7 +81,7 @@ abstract class _$$FeePaymentImplCopyWith<$Res>
       __$$FeePaymentImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({Felt amount, String unit});
+  $Res call({Felt amount, PriceUnit unit});
 }
 
 /// @nodoc
@@ -108,7 +108,7 @@ class __$$FeePaymentImplCopyWithImpl<$Res>
       unit: null == unit
           ? _value.unit
           : unit // ignore: cast_nullable_to_non_nullable
-              as String,
+              as PriceUnit,
     ));
   }
 }
@@ -124,7 +124,7 @@ class _$FeePaymentImpl implements _FeePayment {
   @override
   final Felt amount;
   @override
-  final String unit;
+  final PriceUnit unit;
 
   @override
   String toString() {
@@ -163,7 +163,7 @@ class _$FeePaymentImpl implements _FeePayment {
 abstract class _FeePayment implements FeePayment {
   const factory _FeePayment(
       {required final Felt amount,
-      required final String unit}) = _$FeePaymentImpl;
+      required final PriceUnit unit}) = _$FeePaymentImpl;
 
   factory _FeePayment.fromJson(Map<String, dynamic> json) =
       _$FeePaymentImpl.fromJson;
@@ -171,7 +171,7 @@ abstract class _FeePayment implements FeePayment {
   @override
   Felt get amount;
   @override
-  String get unit;
+  PriceUnit get unit;
 
   /// Create a copy of FeePayment
   /// with the given fields replaced by the non-null parameter values.

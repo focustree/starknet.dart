@@ -9,7 +9,7 @@ part of 'get_storage_proof.dart';
 GetStorageProofRequest _$GetStorageProofRequestFromJson(
         Map<String, dynamic> json) =>
     GetStorageProofRequest(
-      blockId: BlockId.fromJson(json['block_id'] as Map<String, dynamic>),
+      blockId: BlockId.fromJson(json['block_id']),
       classHashes: (json['class_hashes'] as List<dynamic>?)
           ?.map((e) => Felt.fromJson(e as String))
           .toList(),
@@ -49,31 +49,27 @@ Map<String, dynamic> _$ContractStorageKeysToJson(
 
 StorageProofResult _$StorageProofResultFromJson(Map<String, dynamic> json) =>
     StorageProofResult(
-      classesProof: NodeHashToNodeMapping.fromJson(
-          json['classes_proof'] as Map<String, dynamic>),
+      classesProof: nodeHashToNodeMappingFromJson(json['classes_proof']),
       contractsProof: ContractsProof.fromJson(
           json['contracts_proof'] as Map<String, dynamic>),
-      contractsStorageProofs: (json['contracts_storage_proofs']
-              as List<dynamic>)
-          .map((e) => NodeHashToNodeMapping.fromJson(e as Map<String, dynamic>))
-          .toList(),
+      contractsStorageProofs: _contractsStorageProofsFromJson(
+          json['contracts_storage_proofs'] as List),
       globalRoots:
           GlobalRoots.fromJson(json['global_roots'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$StorageProofResultToJson(StorageProofResult instance) =>
     <String, dynamic>{
-      'classes_proof': instance.classesProof.toJson(),
+      'classes_proof': nodeHashToNodeMappingToJson(instance.classesProof),
       'contracts_proof': instance.contractsProof.toJson(),
       'contracts_storage_proofs':
-          instance.contractsStorageProofs.map((e) => e.toJson()).toList(),
+          _contractsStorageProofsToJson(instance.contractsStorageProofs),
       'global_roots': instance.globalRoots.toJson(),
     };
 
 ContractsProof _$ContractsProofFromJson(Map<String, dynamic> json) =>
     ContractsProof(
-      nodes:
-          NodeHashToNodeMapping.fromJson(json['nodes'] as Map<String, dynamic>),
+      nodes: nodeHashToNodeMappingFromJson(json['nodes']),
       contractLeavesData: (json['contract_leaves_data'] as List<dynamic>)
           .map((e) => ContractLeavesData.fromJson(e as Map<String, dynamic>))
           .toList(),
@@ -81,7 +77,7 @@ ContractsProof _$ContractsProofFromJson(Map<String, dynamic> json) =>
 
 Map<String, dynamic> _$ContractsProofToJson(ContractsProof instance) =>
     <String, dynamic>{
-      'nodes': instance.nodes.toJson(),
+      'nodes': nodeHashToNodeMappingToJson(instance.nodes),
       'contract_leaves_data':
           instance.contractLeavesData.map((e) => e.toJson()).toList(),
     };

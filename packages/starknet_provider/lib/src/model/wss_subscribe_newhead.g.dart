@@ -33,3 +33,17 @@ Map<String, dynamic> _$$WssSubscribeNewHeadErrorImplToJson(
       'error': instance.error.toJson(),
       'starkNetRuntimeTypeToRemove': instance.$type,
     };
+
+_$WssSubscribeNewHeadsRequestImpl _$$WssSubscribeNewHeadsRequestImplFromJson(
+        Map<String, dynamic> json) =>
+    _$WssSubscribeNewHeadsRequestImpl(
+      blockId: json['block_id'] == null
+          ? null
+          : SubscriptionBlockId.fromJson(json['block_id']),
+    );
+
+Map<String, dynamic> _$$WssSubscribeNewHeadsRequestImplToJson(
+        _$WssSubscribeNewHeadsRequestImpl instance) =>
+    <String, dynamic>{
+      if (instance.blockId?.toJson() case final value?) 'block_id': value,
+    };

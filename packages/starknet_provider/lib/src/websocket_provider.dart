@@ -11,7 +11,8 @@ enum WSSubscriptions {
   newHeads('newHeads'),
   events('events'),
   transactionStatus('transactionStatus'),
-  pendingTransaction('pendingTransaction');
+  newTransactions('newTransactions'),
+  newTransactionReceipts('newTransactionReceipts');
 
   final String value;
   const WSSubscriptions(this.value);
@@ -50,8 +51,10 @@ class StarknetWebSocketChannel {
           StarknetWebSocketChannel, WssSubscriptionTransactionsStatusResponse)?
       onTransactionStatus;
   void Function(
-          StarknetWebSocketChannel, WssSubscriptionPendingTransactionsResponse)?
-      onPendingTransaction;
+          StarknetWebSocketChannel, WssSubscriptionNewTransactionResponse)?
+      onNewTransaction;
+  void Function(StarknetWebSocketChannel,
+      WssSubscriptionNewTransactionReceiptsResponse)? onNewTransactionReceipts;
   void Function(StarknetWebSocketChannel, dynamic)? onOpen;
   void Function(StarknetWebSocketChannel, dynamic)? onClose;
   void Function(StarknetWebSocketChannel, dynamic)? onMessage;
@@ -223,7 +226,6 @@ class StarknetWebSocketChannel {
       for (int i = 0; i < 3; i++) {
         try {
           final delay = Duration(milliseconds: 1000 * (1 << i)); // 1s, 2s, 4s
-          //print("Waiting ${delay.inMilliseconds}ms before retry ${i+1}...");
           await Future.delayed(delay);
           _channel = IOWebSocketChannel.connect(nodeUrl);
           _setupEventListeners();
@@ -243,7 +245,7 @@ class StarknetWebSocketChannel {
       await waitForConnection();
       _isConnected = true;
     } catch (e) {
-      print('Error during reconnect: $e');
+      //Error during reconnect
       rethrow;
     }
   }
@@ -387,51 +389,104 @@ class StarknetWebSocketChannel {
     return await unsubscribe(subId, WSSubscriptions.transactionStatus.value);
   }
 
-  /// Subscribe to pending transactions
-  Future<WssSubscribePendingTransactionsResponse> subscribePendingTransaction([
-    bool? transactionDetails,
+  /// Subscribe to new transactions
+  Future<WssSubscribeNewTransactionsResponse> subscribeNewTransactions([
+    List<TxnStatusWithoutL1>? finalityStatus,
     List<Felt>? senderAddress,
+    List<TxnResponseFlag>? tags,
   ]) async {
-    if (subscriptions.containsKey(WSSubscriptions.pendingTransaction.value)) {
-      return WssSubscribePendingTransactionsResponse.error(
+    if (subscriptions.containsKey(WSSubscriptions.newTransactions.value)) {
+      return WssSubscribeNewTransactionsResponse.error(
           error: JsonWssApiError.alreadySubscribed());
     }
-    final result = await subscribePendingTransactionUnmanaged(
-      transactionDetails,
+    final result = await subscribeNewTransactionsUnmanaged(
+      finalityStatus,
       senderAddress,
+      tags,
     );
     result.when(
         result: (subscription_id) {
-          subscriptions[WSSubscriptions.pendingTransaction.value] =
+          subscriptions[WSSubscriptions.newTransactions.value] =
               subscription_id;
         },
         error: (_) {});
     return result;
   }
 
-  /// Subscribe to pending transactions (unmanaged)
-  Future<WssSubscribePendingTransactionsResponse>
-      subscribePendingTransactionUnmanaged([
-    bool? transactionDetails,
+  /// Subscribe to new transactions (unmanaged)
+  Future<WssSubscribeNewTransactionsResponse>
+      subscribeNewTransactionsUnmanaged([
+    List<TxnStatusWithoutL1>? finalityStatus,
     List<Felt>? senderAddress,
+    List<TxnResponseFlag>? tags,
   ]) async {
-    final result = await sendReceive('starknet_subscribePendingTransactions', {
-      if (transactionDetails != null) 'transaction_details': transactionDetails,
-      if (senderAddress != null)
-        'sender_address':
-            senderAddress.map((address) => address.toHexString()).toList(),
-    });
-    return WssSubscribePendingTransactionsResponse.fromJson(result);
+    final params = WssSubscribeNewTransactionsRequest(
+      finalityStatus: finalityStatus,
+      senderAddress: senderAddress,
+      tags: tags,
+    ).toJson();
+    final result =
+        await sendReceive('starknet_subscribeNewTransactions', params);
+    return WssSubscribeNewTransactionsResponse.fromJson(result);
   }
 
-  /// Unsubscribe from pending transactions
-  Future<WssUnsubscribeResponse> unsubscribePendingTransaction() async {
-    final subId = subscriptions[WSSubscriptions.pendingTransaction.value];
+  /// Unsubscribe from new transactions
+  Future<WssUnsubscribeResponse> unsubscribeNewTransactions() async {
+    final subId = subscriptions[WSSubscriptions.newTransactions.value];
     if (subId == null) {
       return WssUnsubscribeResponse.error(
           error: JsonWssApiError.notSubscribed());
     }
-    return unsubscribe(subId, WSSubscriptions.pendingTransaction.value);
+    return unsubscribe(subId, WSSubscriptions.newTransactions.value);
+  }
+
+  /// Subscribe to new transaction receipts
+  Future<WssSubscribeNewTransactionReceiptsResponse>
+      subscribeNewTransactionReceipts([
+    List<SubscriptionFinalityStatus>? finalityStatus,
+    List<Felt>? senderAddress,
+  ]) async {
+    if (subscriptions
+        .containsKey(WSSubscriptions.newTransactionReceipts.value)) {
+      return WssSubscribeNewTransactionReceiptsResponse.error(
+          error: JsonWssApiError.alreadySubscribed());
+    }
+    final result = await subscribeNewTransactionReceiptsUnmanaged(
+      finalityStatus,
+      senderAddress,
+    );
+    result.when(
+        result: (subscription_id) {
+          subscriptions[WSSubscriptions.newTransactionReceipts.value] =
+              subscription_id;
+        },
+        error: (_) {});
+    return result;
+  }
+
+  /// Subscribe to new transaction receipts (unmanaged)
+  Future<WssSubscribeNewTransactionReceiptsResponse>
+      subscribeNewTransactionReceiptsUnmanaged([
+    List<SubscriptionFinalityStatus>? finalityStatus,
+    List<Felt>? senderAddress,
+  ]) async {
+    final params = WssSubscribeNewTransactionReceiptsRequest(
+      finalityStatus: finalityStatus,
+      senderAddress: senderAddress,
+    ).toJson();
+    final result =
+        await sendReceive('starknet_subscribeNewTransactionReceipts', params);
+    return WssSubscribeNewTransactionReceiptsResponse.fromJson(result);
+  }
+
+  /// Unsubscribe from new transaction receipts
+  Future<WssUnsubscribeResponse> unsubscribeNewTransactionReceipts() async {
+    final subId = subscriptions[WSSubscriptions.newTransactionReceipts.value];
+    if (subId == null) {
+      return WssUnsubscribeResponse.error(
+          error: JsonWssApiError.notSubscribed());
+    }
+    return unsubscribe(subId, WSSubscriptions.newTransactionReceipts.value);
   }
 
   void _handleMessage(dynamic event) {
@@ -476,11 +531,21 @@ class StarknetWebSocketChannel {
               onTransactionStatus!(this, response);
             }
             break;
-          case 'starknet_subscriptionPendingTransactions':
-            if (onPendingTransaction != null) {
-              onPendingTransaction!(
+          case 'starknet_subscriptionNewTransaction':
+          case 'starknet_subscriptionNewTransactions':
+            if (onNewTransaction != null) {
+              onNewTransaction!(
                 this,
-                WssSubscriptionPendingTransactionsResponse.fromJson(
+                WssSubscriptionNewTransactionResponse.fromJson(
+                    message['params']),
+              );
+            }
+            break;
+          case 'starknet_subscriptionNewTransactionReceipts':
+            if (onNewTransactionReceipts != null) {
+              onNewTransactionReceipts!(
+                this,
+                WssSubscriptionNewTransactionReceiptsResponse.fromJson(
                     message['params']),
               );
             }

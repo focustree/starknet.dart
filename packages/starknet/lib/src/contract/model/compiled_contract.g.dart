@@ -40,7 +40,7 @@ _$FlattenSierraClassImpl _$$FlattenSierraClassImplFromJson(
       entryPointsByType: EntryPointsByType.fromJson(
           json['entry_points_by_type'] as Map<String, dynamic>),
       contractClassVersion: json['contract_class_version'] as String,
-      abi: json['abi'] as String,
+      abi: json['abi'] as String?,
     );
 
 Map<String, dynamic> _$$FlattenSierraClassImplToJson(
@@ -49,7 +49,7 @@ Map<String, dynamic> _$$FlattenSierraClassImplToJson(
       'sierra_program': instance.sierraProgram,
       'entry_points_by_type': instance.entryPointsByType.toJson(),
       'contract_class_version': instance.contractClassVersion,
-      'abi': instance.abi,
+      if (instance.abi case final value?) 'abi': value,
     };
 
 _$CASMCompiledContractImpl _$$CASMCompiledContractImplFromJson(

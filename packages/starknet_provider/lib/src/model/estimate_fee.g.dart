@@ -11,9 +11,9 @@ EstimateFeeRequest _$EstimateFeeRequestFromJson(Map<String, dynamic> json) =>
       request: (json['request'] as List<dynamic>)
           .map((e) => BroadcastedTxn.fromJson(e as Map<String, dynamic>))
           .toList(),
-      blockId: BlockId.fromJson(json['block_id'] as Map<String, dynamic>),
+      blockId: BlockId.fromJson(json['block_id']),
       simulation_flags: (json['simulation_flags'] as List<dynamic>)
-          .map((e) => $enumDecode(_$SimulationFlagEnumMap, e))
+          .map((e) => $enumDecode(_$SimulationFlagForEstimateFeeEnumMap, e))
           .toList(),
     );
 
@@ -22,13 +22,12 @@ Map<String, dynamic> _$EstimateFeeRequestToJson(EstimateFeeRequest instance) =>
       'request': instance.request.map((e) => e.toJson()).toList(),
       'block_id': instance.blockId.toJson(),
       'simulation_flags': instance.simulation_flags
-          .map((e) => _$SimulationFlagEnumMap[e]!)
+          .map((e) => _$SimulationFlagForEstimateFeeEnumMap[e]!)
           .toList(),
     };
 
-const _$SimulationFlagEnumMap = {
-  SimulationFlag.skipValidate: 'SKIP_VALIDATE',
-  SimulationFlag.skipFeeCharge: 'SKIP_FEE_CHARGE',
+const _$SimulationFlagForEstimateFeeEnumMap = {
+  SimulationFlagForEstimateFee.skipValidate: 'SKIP_VALIDATE',
 };
 
 _$EstimateFeeResultImpl _$$EstimateFeeResultImplFromJson(
@@ -87,6 +86,11 @@ _$BroadcastedInvokeTxnV3Impl _$$BroadcastedInvokeTxnV3ImplFromJson(
       ),
       senderAddress: Felt.fromJson(json['sender_address'] as String),
       tip: json['tip'] as String,
+      proofFacts: (json['proof_facts'] as List<dynamic>?)
+              ?.map((e) => Felt.fromJson(e as String))
+              .toList() ??
+          const [],
+      proof: json['proof'] as String?,
       $type: json['starkNetRuntimeTypeToRemove'] as String?,
     );
 
@@ -107,6 +111,8 @@ Map<String, dynamic> _$$BroadcastedInvokeTxnV3ImplToJson(
           instance.resourceBounds.map((k, e) => MapEntry(k, e.toJson())),
       'sender_address': instance.senderAddress.toJson(),
       'tip': instance.tip,
+      'proof_facts': instance.proofFacts.map((e) => e.toJson()).toList(),
+      if (instance.proof case final value?) 'proof': value,
       'starkNetRuntimeTypeToRemove': instance.$type,
     };
 

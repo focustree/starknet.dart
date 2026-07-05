@@ -432,3 +432,165 @@ abstract class WssUnsubscribeError implements WssUnsubscribeResponse {
   _$$WssUnsubscribeErrorImplCopyWith<_$WssUnsubscribeErrorImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
+
+WssUnsubscribeRequest _$WssUnsubscribeRequestFromJson(
+    Map<String, dynamic> json) {
+  return _WssUnsubscribeRequest.fromJson(json);
+}
+
+/// @nodoc
+mixin _$WssUnsubscribeRequest {
+  @JsonKey(name: 'subscription_id')
+  String get subscriptionId => throw _privateConstructorUsedError;
+
+  /// Serializes this WssUnsubscribeRequest to a JSON map.
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+
+  /// Create a copy of WssUnsubscribeRequest
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  $WssUnsubscribeRequestCopyWith<WssUnsubscribeRequest> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $WssUnsubscribeRequestCopyWith<$Res> {
+  factory $WssUnsubscribeRequestCopyWith(WssUnsubscribeRequest value,
+          $Res Function(WssUnsubscribeRequest) then) =
+      _$WssUnsubscribeRequestCopyWithImpl<$Res, WssUnsubscribeRequest>;
+  @useResult
+  $Res call({@JsonKey(name: 'subscription_id') String subscriptionId});
+}
+
+/// @nodoc
+class _$WssUnsubscribeRequestCopyWithImpl<$Res,
+        $Val extends WssUnsubscribeRequest>
+    implements $WssUnsubscribeRequestCopyWith<$Res> {
+  _$WssUnsubscribeRequestCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  /// Create a copy of WssUnsubscribeRequest
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? subscriptionId = null,
+  }) {
+    return _then(_value.copyWith(
+      subscriptionId: null == subscriptionId
+          ? _value.subscriptionId
+          : subscriptionId // ignore: cast_nullable_to_non_nullable
+              as String,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$WssUnsubscribeRequestImplCopyWith<$Res>
+    implements $WssUnsubscribeRequestCopyWith<$Res> {
+  factory _$$WssUnsubscribeRequestImplCopyWith(
+          _$WssUnsubscribeRequestImpl value,
+          $Res Function(_$WssUnsubscribeRequestImpl) then) =
+      __$$WssUnsubscribeRequestImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({@JsonKey(name: 'subscription_id') String subscriptionId});
+}
+
+/// @nodoc
+class __$$WssUnsubscribeRequestImplCopyWithImpl<$Res>
+    extends _$WssUnsubscribeRequestCopyWithImpl<$Res,
+        _$WssUnsubscribeRequestImpl>
+    implements _$$WssUnsubscribeRequestImplCopyWith<$Res> {
+  __$$WssUnsubscribeRequestImplCopyWithImpl(_$WssUnsubscribeRequestImpl _value,
+      $Res Function(_$WssUnsubscribeRequestImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of WssUnsubscribeRequest
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? subscriptionId = null,
+  }) {
+    return _then(_$WssUnsubscribeRequestImpl(
+      subscriptionId: null == subscriptionId
+          ? _value.subscriptionId
+          : subscriptionId // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+@JsonSerializable(includeIfNull: false)
+class _$WssUnsubscribeRequestImpl implements _WssUnsubscribeRequest {
+  const _$WssUnsubscribeRequestImpl(
+      {@JsonKey(name: 'subscription_id') required this.subscriptionId});
+
+  factory _$WssUnsubscribeRequestImpl.fromJson(Map<String, dynamic> json) =>
+      _$$WssUnsubscribeRequestImplFromJson(json);
+
+  @override
+  @JsonKey(name: 'subscription_id')
+  final String subscriptionId;
+
+  @override
+  String toString() {
+    return 'WssUnsubscribeRequest(subscriptionId: $subscriptionId)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$WssUnsubscribeRequestImpl &&
+            (identical(other.subscriptionId, subscriptionId) ||
+                other.subscriptionId == subscriptionId));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(runtimeType, subscriptionId);
+
+  /// Create a copy of WssUnsubscribeRequest
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$WssUnsubscribeRequestImplCopyWith<_$WssUnsubscribeRequestImpl>
+      get copyWith => __$$WssUnsubscribeRequestImplCopyWithImpl<
+          _$WssUnsubscribeRequestImpl>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$WssUnsubscribeRequestImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class _WssUnsubscribeRequest implements WssUnsubscribeRequest {
+  const factory _WssUnsubscribeRequest(
+      {@JsonKey(name: 'subscription_id')
+      required final String subscriptionId}) = _$WssUnsubscribeRequestImpl;
+
+  factory _WssUnsubscribeRequest.fromJson(Map<String, dynamic> json) =
+      _$WssUnsubscribeRequestImpl.fromJson;
+
+  @override
+  @JsonKey(name: 'subscription_id')
+  String get subscriptionId;
+
+  /// Create a copy of WssUnsubscribeRequest
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$WssUnsubscribeRequestImplCopyWith<_$WssUnsubscribeRequestImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}

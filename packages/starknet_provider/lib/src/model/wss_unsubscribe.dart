@@ -21,3 +21,14 @@ class WssUnsubscribeResponse with _$WssUnsubscribeResponse {
           ? WssUnsubscribeError.fromJson(json)
           : WssUnsubscribeResult.fromJson(json);
 }
+
+@freezed
+class WssUnsubscribeRequest with _$WssUnsubscribeRequest {
+  @JsonSerializable(includeIfNull: false)
+  const factory WssUnsubscribeRequest({
+    @JsonKey(name: 'subscription_id') required String subscriptionId,
+  }) = _WssUnsubscribeRequest;
+
+  factory WssUnsubscribeRequest.fromJson(Map<String, Object?> json) =>
+      _$WssUnsubscribeRequestFromJson(json);
+}

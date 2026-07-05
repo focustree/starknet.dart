@@ -14,45 +14,27 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
-BlockId _$BlockIdFromJson(Map<String, dynamic> json) {
-  switch (json['starkNetRuntimeTypeToRemove']) {
-    case 'blockHash':
-      return BlockIdHash.fromJson(json);
-    case 'blockNumber':
-      return BlockIdNumber.fromJson(json);
-    case 'blockTag':
-      return BlockIdTag.fromJson(json);
-
-    default:
-      throw CheckedFromJsonException(
-          json,
-          'starkNetRuntimeTypeToRemove',
-          'BlockId',
-          'Invalid union type "${json['starkNetRuntimeTypeToRemove']}"!');
-  }
-}
-
 /// @nodoc
 mixin _$BlockId {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(Felt blockHash) blockHash,
     required TResult Function(int blockNumber) blockNumber,
-    required TResult Function(String blockTag) blockTag,
+    required TResult Function(BlockTag blockTag) blockTag,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(Felt blockHash)? blockHash,
     TResult? Function(int blockNumber)? blockNumber,
-    TResult? Function(String blockTag)? blockTag,
+    TResult? Function(BlockTag blockTag)? blockTag,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(Felt blockHash)? blockHash,
     TResult Function(int blockNumber)? blockNumber,
-    TResult Function(String blockTag)? blockTag,
+    TResult Function(BlockTag blockTag)? blockTag,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -134,20 +116,12 @@ class __$$BlockIdHashImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-@JsonSerializable(createToJson: false)
-class _$BlockIdHashImpl extends BlockIdHash {
-  const _$BlockIdHashImpl(this.blockHash, {final String? $type})
-      : $type = $type ?? 'blockHash',
-        super._();
 
-  factory _$BlockIdHashImpl.fromJson(Map<String, dynamic> json) =>
-      _$$BlockIdHashImplFromJson(json);
+class _$BlockIdHashImpl extends BlockIdHash {
+  const _$BlockIdHashImpl(this.blockHash) : super._();
 
   @override
   final Felt blockHash;
-
-  @JsonKey(name: 'starkNetRuntimeTypeToRemove')
-  final String $type;
 
   @override
   String toString() {
@@ -163,7 +137,6 @@ class _$BlockIdHashImpl extends BlockIdHash {
                 other.blockHash == blockHash));
   }
 
-  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, blockHash);
 
@@ -180,7 +153,7 @@ class _$BlockIdHashImpl extends BlockIdHash {
   TResult when<TResult extends Object?>({
     required TResult Function(Felt blockHash) blockHash,
     required TResult Function(int blockNumber) blockNumber,
-    required TResult Function(String blockTag) blockTag,
+    required TResult Function(BlockTag blockTag) blockTag,
   }) {
     return blockHash(this.blockHash);
   }
@@ -190,7 +163,7 @@ class _$BlockIdHashImpl extends BlockIdHash {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(Felt blockHash)? blockHash,
     TResult? Function(int blockNumber)? blockNumber,
-    TResult? Function(String blockTag)? blockTag,
+    TResult? Function(BlockTag blockTag)? blockTag,
   }) {
     return blockHash?.call(this.blockHash);
   }
@@ -200,7 +173,7 @@ class _$BlockIdHashImpl extends BlockIdHash {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(Felt blockHash)? blockHash,
     TResult Function(int blockNumber)? blockNumber,
-    TResult Function(String blockTag)? blockTag,
+    TResult Function(BlockTag blockTag)? blockTag,
     required TResult orElse(),
   }) {
     if (blockHash != null) {
@@ -248,9 +221,6 @@ abstract class BlockIdHash extends BlockId {
   const factory BlockIdHash(final Felt blockHash) = _$BlockIdHashImpl;
   const BlockIdHash._() : super._();
 
-  factory BlockIdHash.fromJson(Map<String, dynamic> json) =
-      _$BlockIdHashImpl.fromJson;
-
   Felt get blockHash;
 
   /// Create a copy of BlockId
@@ -294,20 +264,12 @@ class __$$BlockIdNumberImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-@JsonSerializable(createToJson: false)
-class _$BlockIdNumberImpl extends BlockIdNumber {
-  const _$BlockIdNumberImpl(this.blockNumber, {final String? $type})
-      : $type = $type ?? 'blockNumber',
-        super._();
 
-  factory _$BlockIdNumberImpl.fromJson(Map<String, dynamic> json) =>
-      _$$BlockIdNumberImplFromJson(json);
+class _$BlockIdNumberImpl extends BlockIdNumber {
+  const _$BlockIdNumberImpl(this.blockNumber) : super._();
 
   @override
   final int blockNumber;
-
-  @JsonKey(name: 'starkNetRuntimeTypeToRemove')
-  final String $type;
 
   @override
   String toString() {
@@ -323,7 +285,6 @@ class _$BlockIdNumberImpl extends BlockIdNumber {
                 other.blockNumber == blockNumber));
   }
 
-  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, blockNumber);
 
@@ -340,7 +301,7 @@ class _$BlockIdNumberImpl extends BlockIdNumber {
   TResult when<TResult extends Object?>({
     required TResult Function(Felt blockHash) blockHash,
     required TResult Function(int blockNumber) blockNumber,
-    required TResult Function(String blockTag) blockTag,
+    required TResult Function(BlockTag blockTag) blockTag,
   }) {
     return blockNumber(this.blockNumber);
   }
@@ -350,7 +311,7 @@ class _$BlockIdNumberImpl extends BlockIdNumber {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(Felt blockHash)? blockHash,
     TResult? Function(int blockNumber)? blockNumber,
-    TResult? Function(String blockTag)? blockTag,
+    TResult? Function(BlockTag blockTag)? blockTag,
   }) {
     return blockNumber?.call(this.blockNumber);
   }
@@ -360,7 +321,7 @@ class _$BlockIdNumberImpl extends BlockIdNumber {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(Felt blockHash)? blockHash,
     TResult Function(int blockNumber)? blockNumber,
-    TResult Function(String blockTag)? blockTag,
+    TResult Function(BlockTag blockTag)? blockTag,
     required TResult orElse(),
   }) {
     if (blockNumber != null) {
@@ -408,9 +369,6 @@ abstract class BlockIdNumber extends BlockId {
   const factory BlockIdNumber(final int blockNumber) = _$BlockIdNumberImpl;
   const BlockIdNumber._() : super._();
 
-  factory BlockIdNumber.fromJson(Map<String, dynamic> json) =
-      _$BlockIdNumberImpl.fromJson;
-
   int get blockNumber;
 
   /// Create a copy of BlockId
@@ -426,7 +384,7 @@ abstract class _$$BlockIdTagImplCopyWith<$Res> {
           _$BlockIdTagImpl value, $Res Function(_$BlockIdTagImpl) then) =
       __$$BlockIdTagImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({String blockTag});
+  $Res call({BlockTag blockTag});
 }
 
 /// @nodoc
@@ -448,26 +406,18 @@ class __$$BlockIdTagImplCopyWithImpl<$Res>
       null == blockTag
           ? _value.blockTag
           : blockTag // ignore: cast_nullable_to_non_nullable
-              as String,
+              as BlockTag,
     ));
   }
 }
 
 /// @nodoc
-@JsonSerializable(createToJson: false)
-class _$BlockIdTagImpl extends BlockIdTag {
-  const _$BlockIdTagImpl(this.blockTag, {final String? $type})
-      : $type = $type ?? 'blockTag',
-        super._();
 
-  factory _$BlockIdTagImpl.fromJson(Map<String, dynamic> json) =>
-      _$$BlockIdTagImplFromJson(json);
+class _$BlockIdTagImpl extends BlockIdTag {
+  const _$BlockIdTagImpl(this.blockTag) : super._();
 
   @override
-  final String blockTag;
-
-  @JsonKey(name: 'starkNetRuntimeTypeToRemove')
-  final String $type;
+  final BlockTag blockTag;
 
   @override
   String toString() {
@@ -483,7 +433,6 @@ class _$BlockIdTagImpl extends BlockIdTag {
                 other.blockTag == blockTag));
   }
 
-  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, blockTag);
 
@@ -500,7 +449,7 @@ class _$BlockIdTagImpl extends BlockIdTag {
   TResult when<TResult extends Object?>({
     required TResult Function(Felt blockHash) blockHash,
     required TResult Function(int blockNumber) blockNumber,
-    required TResult Function(String blockTag) blockTag,
+    required TResult Function(BlockTag blockTag) blockTag,
   }) {
     return blockTag(this.blockTag);
   }
@@ -510,7 +459,7 @@ class _$BlockIdTagImpl extends BlockIdTag {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(Felt blockHash)? blockHash,
     TResult? Function(int blockNumber)? blockNumber,
-    TResult? Function(String blockTag)? blockTag,
+    TResult? Function(BlockTag blockTag)? blockTag,
   }) {
     return blockTag?.call(this.blockTag);
   }
@@ -520,7 +469,7 @@ class _$BlockIdTagImpl extends BlockIdTag {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(Felt blockHash)? blockHash,
     TResult Function(int blockNumber)? blockNumber,
-    TResult Function(String blockTag)? blockTag,
+    TResult Function(BlockTag blockTag)? blockTag,
     required TResult orElse(),
   }) {
     if (blockTag != null) {
@@ -565,13 +514,10 @@ class _$BlockIdTagImpl extends BlockIdTag {
 }
 
 abstract class BlockIdTag extends BlockId {
-  const factory BlockIdTag(final String blockTag) = _$BlockIdTagImpl;
+  const factory BlockIdTag(final BlockTag blockTag) = _$BlockIdTagImpl;
   const BlockIdTag._() : super._();
 
-  factory BlockIdTag.fromJson(Map<String, dynamic> json) =
-      _$BlockIdTagImpl.fromJson;
-
-  String get blockTag;
+  BlockTag get blockTag;
 
   /// Create a copy of BlockId
   /// with the given fields replaced by the non-null parameter values.

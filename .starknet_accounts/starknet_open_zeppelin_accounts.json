@@ -1,0 +1,31 @@
+{
+  "alpha-sepolia": {
+    "account1": {
+      "address": "0x64b48806902a367c8598f4f95c305e8c1a1acba5f082d294a43793113115691",
+      "class_hash": "0x5b4b537eaa2399e3aa99c4e2e0208ebd6c71bc1467938cd52c798c601e43564",
+      "deployed": true,
+      "legacy": false,
+      "private_key": "0x71d7bb07b9a64f6f78ac4c816aff4da9",
+      "public_key": "0x39d9e6ce352ad4530a0ef5d5a18fd3303c3606a7fa6ac5b620020ad681cc33b",
+      "type": "open_zeppelin"
+    },
+    "account2": {
+      "address": "0x49dfb8ce986e21d354ac93ea65e6a11f639c1934ea253e5ff14ca62eca0f38e",
+      "class_hash": "0x5b4b537eaa2399e3aa99c4e2e0208ebd6c71bc1467938cd52c798c601e43564",
+      "deployed": true,
+      "legacy": false,
+      "private_key": "0xa20a02f0ac53692d144b20cb371a60d7",
+      "public_key": "0xb8fd4ddd415902d96f61b7ad201022d495997c2dff8eb9e0eb86253e30fabc",
+      "type": "open_zeppelin"
+    },
+    "devnet": {
+      "address": "0x64b48806902a367c8598f4f95c305e8c1a1acba5f082d294a43793113115691",
+      "class_hash": "0x5b4b537eaa2399e3aa99c4e2e0208ebd6c71bc1467938cd52c798c601e43564",
+      "deployed": true,
+      "legacy": false,
+      "private_key": "0x71d7bb07b9a64f6f78ac4c816aff4da9",
+      "public_key": "0x39d9e6ce352ad4530a0ef5d5a18fd3303c3606a7fa6ac5b620020ad681cc33b",
+      "type": "open_zeppelin"
+    }
+  }
+}

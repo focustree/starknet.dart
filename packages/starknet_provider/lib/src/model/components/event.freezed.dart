@@ -20,10 +20,10 @@ Event _$EventFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$Event {
-  Felt? get fromAddress =>
-      throw _privateConstructorUsedError; // start of EVENT_CONTENT
-  List<Felt>? get keys => throw _privateConstructorUsedError;
-  List<Felt>? get data => throw _privateConstructorUsedError;
+  @JsonKey(name: 'from_address')
+  Felt get fromAddress => throw _privateConstructorUsedError;
+  List<Felt> get keys => throw _privateConstructorUsedError;
+  List<Felt> get data => throw _privateConstructorUsedError;
 
   /// Serializes this Event to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -39,7 +39,10 @@ abstract class $EventCopyWith<$Res> {
   factory $EventCopyWith(Event value, $Res Function(Event) then) =
       _$EventCopyWithImpl<$Res, Event>;
   @useResult
-  $Res call({Felt? fromAddress, List<Felt>? keys, List<Felt>? data});
+  $Res call(
+      {@JsonKey(name: 'from_address') Felt fromAddress,
+      List<Felt> keys,
+      List<Felt> data});
 }
 
 /// @nodoc
@@ -57,23 +60,23 @@ class _$EventCopyWithImpl<$Res, $Val extends Event>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? fromAddress = freezed,
-    Object? keys = freezed,
-    Object? data = freezed,
+    Object? fromAddress = null,
+    Object? keys = null,
+    Object? data = null,
   }) {
     return _then(_value.copyWith(
-      fromAddress: freezed == fromAddress
+      fromAddress: null == fromAddress
           ? _value.fromAddress
           : fromAddress // ignore: cast_nullable_to_non_nullable
-              as Felt?,
-      keys: freezed == keys
+              as Felt,
+      keys: null == keys
           ? _value.keys
           : keys // ignore: cast_nullable_to_non_nullable
-              as List<Felt>?,
-      data: freezed == data
+              as List<Felt>,
+      data: null == data
           ? _value.data
           : data // ignore: cast_nullable_to_non_nullable
-              as List<Felt>?,
+              as List<Felt>,
     ) as $Val);
   }
 }
@@ -85,7 +88,10 @@ abstract class _$$EventImplCopyWith<$Res> implements $EventCopyWith<$Res> {
       __$$EventImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({Felt? fromAddress, List<Felt>? keys, List<Felt>? data});
+  $Res call(
+      {@JsonKey(name: 'from_address') Felt fromAddress,
+      List<Felt> keys,
+      List<Felt> data});
 }
 
 /// @nodoc
@@ -101,23 +107,23 @@ class __$$EventImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? fromAddress = freezed,
-    Object? keys = freezed,
-    Object? data = freezed,
+    Object? fromAddress = null,
+    Object? keys = null,
+    Object? data = null,
   }) {
     return _then(_$EventImpl(
-      fromAddress: freezed == fromAddress
+      fromAddress: null == fromAddress
           ? _value.fromAddress
           : fromAddress // ignore: cast_nullable_to_non_nullable
-              as Felt?,
-      keys: freezed == keys
+              as Felt,
+      keys: null == keys
           ? _value._keys
           : keys // ignore: cast_nullable_to_non_nullable
-              as List<Felt>?,
-      data: freezed == data
+              as List<Felt>,
+      data: null == data
           ? _value._data
           : data // ignore: cast_nullable_to_non_nullable
-              as List<Felt>?,
+              as List<Felt>,
     ));
   }
 }
@@ -126,9 +132,9 @@ class __$$EventImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$EventImpl implements _Event {
   const _$EventImpl(
-      {required this.fromAddress,
-      required final List<Felt>? keys,
-      required final List<Felt>? data})
+      {@JsonKey(name: 'from_address') required this.fromAddress,
+      required final List<Felt> keys,
+      required final List<Felt> data})
       : _keys = keys,
         _data = data;
 
@@ -136,27 +142,22 @@ class _$EventImpl implements _Event {
       _$$EventImplFromJson(json);
 
   @override
-  final Felt? fromAddress;
-// start of EVENT_CONTENT
-  final List<Felt>? _keys;
-// start of EVENT_CONTENT
+  @JsonKey(name: 'from_address')
+  final Felt fromAddress;
+  final List<Felt> _keys;
   @override
-  List<Felt>? get keys {
-    final value = _keys;
-    if (value == null) return null;
+  List<Felt> get keys {
     if (_keys is EqualUnmodifiableListView) return _keys;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(value);
+    return EqualUnmodifiableListView(_keys);
   }
 
-  final List<Felt>? _data;
+  final List<Felt> _data;
   @override
-  List<Felt>? get data {
-    final value = _data;
-    if (value == null) return null;
+  List<Felt> get data {
     if (_data is EqualUnmodifiableListView) return _data;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(value);
+    return EqualUnmodifiableListView(_data);
   }
 
   @override
@@ -201,18 +202,19 @@ class _$EventImpl implements _Event {
 
 abstract class _Event implements Event {
   const factory _Event(
-      {required final Felt? fromAddress,
-      required final List<Felt>? keys,
-      required final List<Felt>? data}) = _$EventImpl;
+      {@JsonKey(name: 'from_address') required final Felt fromAddress,
+      required final List<Felt> keys,
+      required final List<Felt> data}) = _$EventImpl;
 
   factory _Event.fromJson(Map<String, dynamic> json) = _$EventImpl.fromJson;
 
   @override
-  Felt? get fromAddress; // start of EVENT_CONTENT
+  @JsonKey(name: 'from_address')
+  Felt get fromAddress;
   @override
-  List<Felt>? get keys;
+  List<Felt> get keys;
   @override
-  List<Felt>? get data;
+  List<Felt> get data;
 
   /// Create a copy of Event
   /// with the given fields replaced by the non-null parameter values.

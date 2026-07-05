@@ -20,8 +20,11 @@ TxnStatusResult _$TxnStatusResultFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$TxnStatusResult {
-  TxnFinalityStatus get finalityStatus => throw _privateConstructorUsedError;
+  @JsonKey(name: 'finality_status')
+  TxnStatus get finalityStatus => throw _privateConstructorUsedError;
+  @JsonKey(name: 'execution_status')
   TxnExecutionStatus? get executionStatus => throw _privateConstructorUsedError;
+  @JsonKey(name: 'failure_reason')
   String? get failureReason => throw _privateConstructorUsedError;
 
   /// Serializes this TxnStatusResult to a JSON map.
@@ -41,9 +44,9 @@ abstract class $TxnStatusResultCopyWith<$Res> {
       _$TxnStatusResultCopyWithImpl<$Res, TxnStatusResult>;
   @useResult
   $Res call(
-      {TxnFinalityStatus finalityStatus,
-      TxnExecutionStatus? executionStatus,
-      String? failureReason});
+      {@JsonKey(name: 'finality_status') TxnStatus finalityStatus,
+      @JsonKey(name: 'execution_status') TxnExecutionStatus? executionStatus,
+      @JsonKey(name: 'failure_reason') String? failureReason});
 }
 
 /// @nodoc
@@ -69,7 +72,7 @@ class _$TxnStatusResultCopyWithImpl<$Res, $Val extends TxnStatusResult>
       finalityStatus: null == finalityStatus
           ? _value.finalityStatus
           : finalityStatus // ignore: cast_nullable_to_non_nullable
-              as TxnFinalityStatus,
+              as TxnStatus,
       executionStatus: freezed == executionStatus
           ? _value.executionStatus
           : executionStatus // ignore: cast_nullable_to_non_nullable
@@ -91,9 +94,9 @@ abstract class _$$TxnStatusResultImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {TxnFinalityStatus finalityStatus,
-      TxnExecutionStatus? executionStatus,
-      String? failureReason});
+      {@JsonKey(name: 'finality_status') TxnStatus finalityStatus,
+      @JsonKey(name: 'execution_status') TxnExecutionStatus? executionStatus,
+      @JsonKey(name: 'failure_reason') String? failureReason});
 }
 
 /// @nodoc
@@ -117,7 +120,7 @@ class __$$TxnStatusResultImplCopyWithImpl<$Res>
       finalityStatus: null == finalityStatus
           ? _value.finalityStatus
           : finalityStatus // ignore: cast_nullable_to_non_nullable
-              as TxnFinalityStatus,
+              as TxnStatus,
       executionStatus: freezed == executionStatus
           ? _value.executionStatus
           : executionStatus // ignore: cast_nullable_to_non_nullable
@@ -134,16 +137,21 @@ class __$$TxnStatusResultImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$TxnStatusResultImpl implements _TxnStatusResult {
   const _$TxnStatusResultImpl(
-      {required this.finalityStatus, this.executionStatus, this.failureReason});
+      {@JsonKey(name: 'finality_status') required this.finalityStatus,
+      @JsonKey(name: 'execution_status') this.executionStatus,
+      @JsonKey(name: 'failure_reason') this.failureReason});
 
   factory _$TxnStatusResultImpl.fromJson(Map<String, dynamic> json) =>
       _$$TxnStatusResultImplFromJson(json);
 
   @override
-  final TxnFinalityStatus finalityStatus;
+  @JsonKey(name: 'finality_status')
+  final TxnStatus finalityStatus;
   @override
+  @JsonKey(name: 'execution_status')
   final TxnExecutionStatus? executionStatus;
   @override
+  @JsonKey(name: 'failure_reason')
   final String? failureReason;
 
   @override
@@ -188,18 +196,24 @@ class _$TxnStatusResultImpl implements _TxnStatusResult {
 
 abstract class _TxnStatusResult implements TxnStatusResult {
   const factory _TxnStatusResult(
-      {required final TxnFinalityStatus finalityStatus,
-      final TxnExecutionStatus? executionStatus,
-      final String? failureReason}) = _$TxnStatusResultImpl;
+          {@JsonKey(name: 'finality_status')
+          required final TxnStatus finalityStatus,
+          @JsonKey(name: 'execution_status')
+          final TxnExecutionStatus? executionStatus,
+          @JsonKey(name: 'failure_reason') final String? failureReason}) =
+      _$TxnStatusResultImpl;
 
   factory _TxnStatusResult.fromJson(Map<String, dynamic> json) =
       _$TxnStatusResultImpl.fromJson;
 
   @override
-  TxnFinalityStatus get finalityStatus;
+  @JsonKey(name: 'finality_status')
+  TxnStatus get finalityStatus;
   @override
+  @JsonKey(name: 'execution_status')
   TxnExecutionStatus? get executionStatus;
   @override
+  @JsonKey(name: 'failure_reason')
   String? get failureReason;
 
   /// Create a copy of TxnStatusResult

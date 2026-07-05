@@ -460,3 +460,176 @@ abstract class WssSubscribeTransactionStatusError
           _$WssSubscribeTransactionStatusErrorImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
+
+WssSubscribeTransactionStatusRequest
+    _$WssSubscribeTransactionStatusRequestFromJson(Map<String, dynamic> json) {
+  return _WssSubscribeTransactionStatusRequest.fromJson(json);
+}
+
+/// @nodoc
+mixin _$WssSubscribeTransactionStatusRequest {
+  @JsonKey(name: 'transaction_hash')
+  Felt get transactionHash => throw _privateConstructorUsedError;
+
+  /// Serializes this WssSubscribeTransactionStatusRequest to a JSON map.
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+
+  /// Create a copy of WssSubscribeTransactionStatusRequest
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  $WssSubscribeTransactionStatusRequestCopyWith<
+          WssSubscribeTransactionStatusRequest>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $WssSubscribeTransactionStatusRequestCopyWith<$Res> {
+  factory $WssSubscribeTransactionStatusRequestCopyWith(
+          WssSubscribeTransactionStatusRequest value,
+          $Res Function(WssSubscribeTransactionStatusRequest) then) =
+      _$WssSubscribeTransactionStatusRequestCopyWithImpl<$Res,
+          WssSubscribeTransactionStatusRequest>;
+  @useResult
+  $Res call({@JsonKey(name: 'transaction_hash') Felt transactionHash});
+}
+
+/// @nodoc
+class _$WssSubscribeTransactionStatusRequestCopyWithImpl<$Res,
+        $Val extends WssSubscribeTransactionStatusRequest>
+    implements $WssSubscribeTransactionStatusRequestCopyWith<$Res> {
+  _$WssSubscribeTransactionStatusRequestCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  /// Create a copy of WssSubscribeTransactionStatusRequest
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? transactionHash = null,
+  }) {
+    return _then(_value.copyWith(
+      transactionHash: null == transactionHash
+          ? _value.transactionHash
+          : transactionHash // ignore: cast_nullable_to_non_nullable
+              as Felt,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$WssSubscribeTransactionStatusRequestImplCopyWith<$Res>
+    implements $WssSubscribeTransactionStatusRequestCopyWith<$Res> {
+  factory _$$WssSubscribeTransactionStatusRequestImplCopyWith(
+          _$WssSubscribeTransactionStatusRequestImpl value,
+          $Res Function(_$WssSubscribeTransactionStatusRequestImpl) then) =
+      __$$WssSubscribeTransactionStatusRequestImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({@JsonKey(name: 'transaction_hash') Felt transactionHash});
+}
+
+/// @nodoc
+class __$$WssSubscribeTransactionStatusRequestImplCopyWithImpl<$Res>
+    extends _$WssSubscribeTransactionStatusRequestCopyWithImpl<$Res,
+        _$WssSubscribeTransactionStatusRequestImpl>
+    implements _$$WssSubscribeTransactionStatusRequestImplCopyWith<$Res> {
+  __$$WssSubscribeTransactionStatusRequestImplCopyWithImpl(
+      _$WssSubscribeTransactionStatusRequestImpl _value,
+      $Res Function(_$WssSubscribeTransactionStatusRequestImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of WssSubscribeTransactionStatusRequest
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? transactionHash = null,
+  }) {
+    return _then(_$WssSubscribeTransactionStatusRequestImpl(
+      transactionHash: null == transactionHash
+          ? _value.transactionHash
+          : transactionHash // ignore: cast_nullable_to_non_nullable
+              as Felt,
+    ));
+  }
+}
+
+/// @nodoc
+
+@JsonSerializable(includeIfNull: false)
+class _$WssSubscribeTransactionStatusRequestImpl
+    implements _WssSubscribeTransactionStatusRequest {
+  const _$WssSubscribeTransactionStatusRequestImpl(
+      {@JsonKey(name: 'transaction_hash') required this.transactionHash});
+
+  factory _$WssSubscribeTransactionStatusRequestImpl.fromJson(
+          Map<String, dynamic> json) =>
+      _$$WssSubscribeTransactionStatusRequestImplFromJson(json);
+
+  @override
+  @JsonKey(name: 'transaction_hash')
+  final Felt transactionHash;
+
+  @override
+  String toString() {
+    return 'WssSubscribeTransactionStatusRequest(transactionHash: $transactionHash)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$WssSubscribeTransactionStatusRequestImpl &&
+            (identical(other.transactionHash, transactionHash) ||
+                other.transactionHash == transactionHash));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(runtimeType, transactionHash);
+
+  /// Create a copy of WssSubscribeTransactionStatusRequest
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$WssSubscribeTransactionStatusRequestImplCopyWith<
+          _$WssSubscribeTransactionStatusRequestImpl>
+      get copyWith => __$$WssSubscribeTransactionStatusRequestImplCopyWithImpl<
+          _$WssSubscribeTransactionStatusRequestImpl>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$WssSubscribeTransactionStatusRequestImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class _WssSubscribeTransactionStatusRequest
+    implements WssSubscribeTransactionStatusRequest {
+  const factory _WssSubscribeTransactionStatusRequest(
+          {@JsonKey(name: 'transaction_hash')
+          required final Felt transactionHash}) =
+      _$WssSubscribeTransactionStatusRequestImpl;
+
+  factory _WssSubscribeTransactionStatusRequest.fromJson(
+          Map<String, dynamic> json) =
+      _$WssSubscribeTransactionStatusRequestImpl.fromJson;
+
+  @override
+  @JsonKey(name: 'transaction_hash')
+  Felt get transactionHash;
+
+  /// Create a copy of WssSubscribeTransactionStatusRequest
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$WssSubscribeTransactionStatusRequestImplCopyWith<
+          _$WssSubscribeTransactionStatusRequestImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}

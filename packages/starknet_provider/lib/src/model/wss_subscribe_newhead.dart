@@ -1,6 +1,7 @@
 // ignore_for_file: invalid_annotation_target
 
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'components/subscription_block_id.dart';
 import 'json_wss_api_error.dart';
 
 part 'wss_subscribe_newhead.freezed.dart';
@@ -20,4 +21,15 @@ class WssSubscribeNewHeadResponse with _$WssSubscribeNewHeadResponse {
       json.containsKey('error')
           ? WssSubscribeNewHeadError.fromJson(json)
           : WssSubscribeNewHeadResult.fromJson(json);
+}
+
+@freezed
+class WssSubscribeNewHeadsRequest with _$WssSubscribeNewHeadsRequest {
+  @JsonSerializable(includeIfNull: false)
+  const factory WssSubscribeNewHeadsRequest({
+    @JsonKey(name: 'block_id') SubscriptionBlockId? blockId,
+  }) = _WssSubscribeNewHeadsRequest;
+
+  factory WssSubscribeNewHeadsRequest.fromJson(Map<String, Object?> json) =>
+      _$WssSubscribeNewHeadsRequestFromJson(json);
 }

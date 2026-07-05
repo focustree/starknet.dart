@@ -26,16 +26,21 @@ class EstimateFee with _$EstimateFee {
           : EstimateFeeResult.fromJson(json);
 }
 
-/// Flags that indicate how to simulate a given transaction.
+/// Maps to OpenAPI `SIMULATION_FLAG_FOR_ESTIMATE_FEE`.
+enum SimulationFlagForEstimateFee {
+  @JsonValue('SKIP_VALIDATE')
+  skipValidate,
+}
+
+/// Maps to OpenAPI `SIMULATION_FLAG` (e.g. `starknet_simulateTransactions`).
+///
 /// By default, the sequencer behavior is replicated locally (enough funds are expected to be in the
 /// account, and fee will be deducted from the balance before the simulation of the next
 /// transaction). To skip the fee charge, use the SKIP_FEE_CHARGE flag.
 enum SimulationFlag {
-  /// Skip the validation of the transaction. This is useful for testing purposes.
   @JsonValue('SKIP_VALIDATE')
   skipValidate,
 
-  /// Skip the fee charge. This is useful for testing purposes.
   @JsonValue('SKIP_FEE_CHARGE')
   skipFeeCharge,
 }
@@ -44,7 +49,7 @@ enum SimulationFlag {
 class EstimateFeeRequest {
   final List<BroadcastedTxn> request;
   final BlockId blockId;
-  final List<SimulationFlag> simulation_flags;
+  final List<SimulationFlagForEstimateFee> simulation_flags;
   EstimateFeeRequest({
     required this.request,
     required this.blockId,
@@ -76,6 +81,8 @@ class BroadcastedTxn with _$BroadcastedTxn {
     required Map<String, ResourceBounds> resourceBounds,
     required Felt senderAddress,
     required String tip,
+    @JsonKey(name: 'proof_facts') @Default([]) List<Felt> proofFacts,
+    @JsonKey(includeIfNull: false) String? proof,
     // end of invokeTxnV3
   }) = BroadcastedInvokeTxnV3;
 

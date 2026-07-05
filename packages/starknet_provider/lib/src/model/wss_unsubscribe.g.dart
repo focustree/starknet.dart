@@ -33,3 +33,15 @@ Map<String, dynamic> _$$WssUnsubscribeErrorImplToJson(
       'error': instance.error.toJson(),
       'starkNetRuntimeTypeToRemove': instance.$type,
     };
+
+_$WssUnsubscribeRequestImpl _$$WssUnsubscribeRequestImplFromJson(
+        Map<String, dynamic> json) =>
+    _$WssUnsubscribeRequestImpl(
+      subscriptionId: json['subscription_id'] as String,
+    );
+
+Map<String, dynamic> _$$WssUnsubscribeRequestImplToJson(
+        _$WssUnsubscribeRequestImpl instance) =>
+    <String, dynamic>{
+      'subscription_id': instance.subscriptionId,
+    };

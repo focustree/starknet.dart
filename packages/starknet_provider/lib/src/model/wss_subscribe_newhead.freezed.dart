@@ -448,3 +448,189 @@ abstract class WssSubscribeNewHeadError implements WssSubscribeNewHeadResponse {
   _$$WssSubscribeNewHeadErrorImplCopyWith<_$WssSubscribeNewHeadErrorImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
+
+WssSubscribeNewHeadsRequest _$WssSubscribeNewHeadsRequestFromJson(
+    Map<String, dynamic> json) {
+  return _WssSubscribeNewHeadsRequest.fromJson(json);
+}
+
+/// @nodoc
+mixin _$WssSubscribeNewHeadsRequest {
+  @JsonKey(name: 'block_id')
+  SubscriptionBlockId? get blockId => throw _privateConstructorUsedError;
+
+  /// Serializes this WssSubscribeNewHeadsRequest to a JSON map.
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+
+  /// Create a copy of WssSubscribeNewHeadsRequest
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  $WssSubscribeNewHeadsRequestCopyWith<WssSubscribeNewHeadsRequest>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $WssSubscribeNewHeadsRequestCopyWith<$Res> {
+  factory $WssSubscribeNewHeadsRequestCopyWith(
+          WssSubscribeNewHeadsRequest value,
+          $Res Function(WssSubscribeNewHeadsRequest) then) =
+      _$WssSubscribeNewHeadsRequestCopyWithImpl<$Res,
+          WssSubscribeNewHeadsRequest>;
+  @useResult
+  $Res call({@JsonKey(name: 'block_id') SubscriptionBlockId? blockId});
+
+  $SubscriptionBlockIdCopyWith<$Res>? get blockId;
+}
+
+/// @nodoc
+class _$WssSubscribeNewHeadsRequestCopyWithImpl<$Res,
+        $Val extends WssSubscribeNewHeadsRequest>
+    implements $WssSubscribeNewHeadsRequestCopyWith<$Res> {
+  _$WssSubscribeNewHeadsRequestCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  /// Create a copy of WssSubscribeNewHeadsRequest
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? blockId = freezed,
+  }) {
+    return _then(_value.copyWith(
+      blockId: freezed == blockId
+          ? _value.blockId
+          : blockId // ignore: cast_nullable_to_non_nullable
+              as SubscriptionBlockId?,
+    ) as $Val);
+  }
+
+  /// Create a copy of WssSubscribeNewHeadsRequest
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $SubscriptionBlockIdCopyWith<$Res>? get blockId {
+    if (_value.blockId == null) {
+      return null;
+    }
+
+    return $SubscriptionBlockIdCopyWith<$Res>(_value.blockId!, (value) {
+      return _then(_value.copyWith(blockId: value) as $Val);
+    });
+  }
+}
+
+/// @nodoc
+abstract class _$$WssSubscribeNewHeadsRequestImplCopyWith<$Res>
+    implements $WssSubscribeNewHeadsRequestCopyWith<$Res> {
+  factory _$$WssSubscribeNewHeadsRequestImplCopyWith(
+          _$WssSubscribeNewHeadsRequestImpl value,
+          $Res Function(_$WssSubscribeNewHeadsRequestImpl) then) =
+      __$$WssSubscribeNewHeadsRequestImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({@JsonKey(name: 'block_id') SubscriptionBlockId? blockId});
+
+  @override
+  $SubscriptionBlockIdCopyWith<$Res>? get blockId;
+}
+
+/// @nodoc
+class __$$WssSubscribeNewHeadsRequestImplCopyWithImpl<$Res>
+    extends _$WssSubscribeNewHeadsRequestCopyWithImpl<$Res,
+        _$WssSubscribeNewHeadsRequestImpl>
+    implements _$$WssSubscribeNewHeadsRequestImplCopyWith<$Res> {
+  __$$WssSubscribeNewHeadsRequestImplCopyWithImpl(
+      _$WssSubscribeNewHeadsRequestImpl _value,
+      $Res Function(_$WssSubscribeNewHeadsRequestImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of WssSubscribeNewHeadsRequest
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? blockId = freezed,
+  }) {
+    return _then(_$WssSubscribeNewHeadsRequestImpl(
+      blockId: freezed == blockId
+          ? _value.blockId
+          : blockId // ignore: cast_nullable_to_non_nullable
+              as SubscriptionBlockId?,
+    ));
+  }
+}
+
+/// @nodoc
+
+@JsonSerializable(includeIfNull: false)
+class _$WssSubscribeNewHeadsRequestImpl
+    implements _WssSubscribeNewHeadsRequest {
+  const _$WssSubscribeNewHeadsRequestImpl(
+      {@JsonKey(name: 'block_id') this.blockId});
+
+  factory _$WssSubscribeNewHeadsRequestImpl.fromJson(
+          Map<String, dynamic> json) =>
+      _$$WssSubscribeNewHeadsRequestImplFromJson(json);
+
+  @override
+  @JsonKey(name: 'block_id')
+  final SubscriptionBlockId? blockId;
+
+  @override
+  String toString() {
+    return 'WssSubscribeNewHeadsRequest(blockId: $blockId)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$WssSubscribeNewHeadsRequestImpl &&
+            (identical(other.blockId, blockId) || other.blockId == blockId));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(runtimeType, blockId);
+
+  /// Create a copy of WssSubscribeNewHeadsRequest
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$WssSubscribeNewHeadsRequestImplCopyWith<_$WssSubscribeNewHeadsRequestImpl>
+      get copyWith => __$$WssSubscribeNewHeadsRequestImplCopyWithImpl<
+          _$WssSubscribeNewHeadsRequestImpl>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$WssSubscribeNewHeadsRequestImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class _WssSubscribeNewHeadsRequest
+    implements WssSubscribeNewHeadsRequest {
+  const factory _WssSubscribeNewHeadsRequest(
+          {@JsonKey(name: 'block_id') final SubscriptionBlockId? blockId}) =
+      _$WssSubscribeNewHeadsRequestImpl;
+
+  factory _WssSubscribeNewHeadsRequest.fromJson(Map<String, dynamic> json) =
+      _$WssSubscribeNewHeadsRequestImpl.fromJson;
+
+  @override
+  @JsonKey(name: 'block_id')
+  SubscriptionBlockId? get blockId;
+
+  /// Create a copy of WssSubscribeNewHeadsRequest
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$WssSubscribeNewHeadsRequestImplCopyWith<_$WssSubscribeNewHeadsRequestImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}

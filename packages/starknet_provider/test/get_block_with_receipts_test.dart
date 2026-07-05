@@ -11,25 +11,33 @@ void main() {
   group('JsonRpcReadProvider - getBlockWithReceipts', () {
     test('should fetch block with receipts successfully', () async {
       final blockId = BlockId.latest;
-      final result = await provider.getBlockWithReceipts(blockId);
-      expect(result, isA<BlockWithReceipts>());
-      expect(result.blockHash, anyOf(isNull, isA<String>()));
-      expect(result.transactions,
-          anyOf(isNull, isA<List<TransactionWithReceipt>>()));
-      if (result.transactions != null) {
-        expect(result.transactions!.length, greaterThanOrEqualTo(0));
-      }
-      expect(result.status, anyOf(isNull, equals('ACCEPTED_ON_L2')));
+      final response = await provider.getBlockWithReceipts(
+        blockId,
+        responseFlags: const [],
+      );
+      response.when(
+        error: (error) => fail(error.message),
+        block: (blockResponse) {
+          blockResponse.when(
+            confirmed: (block) {
+              expect(block.status, BlockStatus.ACCEPTED_ON_L2);
+              expect(block.transactions, isA<List<TransactionWithReceipt>>());
+              expect(block.transactions.length, greaterThanOrEqualTo(0));
+            },
+            preConfirmed: (_) =>
+                fail('Expected confirmed block for latest tag'),
+          );
+        },
+      );
     }, tags: ['integration']);
 
-    test('should return null fields for invalid block id (devnet behavior)',
-        () async {
+    test('returns error when block id is invalid', () async {
       final invalidBlockId = BlockId.blockNumber(-1);
-      final result = await provider.getBlockWithReceipts(invalidBlockId);
-      expect(result, isA<BlockWithReceipts>());
-      expect(result.blockHash, isNull,
-          reason: 'Devnet returns null instead of BLOCK_NOT_FOUND');
-      expect(result.transactions, isNull);
+      final response = await provider.getBlockWithReceipts(invalidBlockId);
+      response.when(
+        error: (error) => expect(error.code, JsonRpcApiErrorCode.INVALID_QUERY),
+        block: (_) => fail('Expected INVALID_QUERY error'),
+      );
     }, tags: ['integration']);
   });
 }

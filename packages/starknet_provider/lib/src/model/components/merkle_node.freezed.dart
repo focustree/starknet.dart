@@ -14,65 +14,46 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
-MerkleNode _$MerkleNodeFromJson(Map<String, dynamic> json) {
-  switch (json['starkNetRuntimeTypeToRemove']) {
-    case 'binary':
-      return _BinaryNode.fromJson(json);
-    case 'edge':
-      return _EdgeNode.fromJson(json);
-
-    default:
-      throw CheckedFromJsonException(
-          json,
-          'starkNetRuntimeTypeToRemove',
-          'MerkleNode',
-          'Invalid union type "${json['starkNetRuntimeTypeToRemove']}"!');
-  }
-}
-
 /// @nodoc
 mixin _$MerkleNode {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(BinaryNode binaryNode) binary,
-    required TResult Function(EdgeNode edgeNode) edge,
+    required TResult Function(Felt left, Felt right) binary,
+    required TResult Function(String path, int length, Felt child) edge,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(BinaryNode binaryNode)? binary,
-    TResult? Function(EdgeNode edgeNode)? edge,
+    TResult? Function(Felt left, Felt right)? binary,
+    TResult? Function(String path, int length, Felt child)? edge,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(BinaryNode binaryNode)? binary,
-    TResult Function(EdgeNode edgeNode)? edge,
+    TResult Function(Felt left, Felt right)? binary,
+    TResult Function(String path, int length, Felt child)? edge,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_BinaryNode value) binary,
-    required TResult Function(_EdgeNode value) edge,
+    required TResult Function(MerkleNodeBinary value) binary,
+    required TResult Function(MerkleNodeEdge value) edge,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_BinaryNode value)? binary,
-    TResult? Function(_EdgeNode value)? edge,
+    TResult? Function(MerkleNodeBinary value)? binary,
+    TResult? Function(MerkleNodeEdge value)? edge,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_BinaryNode value)? binary,
-    TResult Function(_EdgeNode value)? edge,
+    TResult Function(MerkleNodeBinary value)? binary,
+    TResult Function(MerkleNodeEdge value)? edge,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
-
-  /// Serializes this MerkleNode to a JSON map.
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -97,22 +78,20 @@ class _$MerkleNodeCopyWithImpl<$Res, $Val extends MerkleNode>
 }
 
 /// @nodoc
-abstract class _$$BinaryNodeImplCopyWith<$Res> {
-  factory _$$BinaryNodeImplCopyWith(
-          _$BinaryNodeImpl value, $Res Function(_$BinaryNodeImpl) then) =
-      __$$BinaryNodeImplCopyWithImpl<$Res>;
+abstract class _$$MerkleNodeBinaryImplCopyWith<$Res> {
+  factory _$$MerkleNodeBinaryImplCopyWith(_$MerkleNodeBinaryImpl value,
+          $Res Function(_$MerkleNodeBinaryImpl) then) =
+      __$$MerkleNodeBinaryImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({BinaryNode binaryNode});
-
-  $BinaryNodeCopyWith<$Res> get binaryNode;
+  $Res call({Felt left, Felt right});
 }
 
 /// @nodoc
-class __$$BinaryNodeImplCopyWithImpl<$Res>
-    extends _$MerkleNodeCopyWithImpl<$Res, _$BinaryNodeImpl>
-    implements _$$BinaryNodeImplCopyWith<$Res> {
-  __$$BinaryNodeImplCopyWithImpl(
-      _$BinaryNodeImpl _value, $Res Function(_$BinaryNodeImpl) _then)
+class __$$MerkleNodeBinaryImplCopyWithImpl<$Res>
+    extends _$MerkleNodeCopyWithImpl<$Res, _$MerkleNodeBinaryImpl>
+    implements _$$MerkleNodeBinaryImplCopyWith<$Res> {
+  __$$MerkleNodeBinaryImplCopyWithImpl(_$MerkleNodeBinaryImpl _value,
+      $Res Function(_$MerkleNodeBinaryImpl) _then)
       : super(_value, _then);
 
   /// Create a copy of MerkleNode
@@ -120,95 +99,85 @@ class __$$BinaryNodeImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? binaryNode = null,
+    Object? left = null,
+    Object? right = null,
   }) {
-    return _then(_$BinaryNodeImpl(
-      binaryNode: null == binaryNode
-          ? _value.binaryNode
-          : binaryNode // ignore: cast_nullable_to_non_nullable
-              as BinaryNode,
+    return _then(_$MerkleNodeBinaryImpl(
+      left: null == left
+          ? _value.left
+          : left // ignore: cast_nullable_to_non_nullable
+              as Felt,
+      right: null == right
+          ? _value.right
+          : right // ignore: cast_nullable_to_non_nullable
+              as Felt,
     ));
-  }
-
-  /// Create a copy of MerkleNode
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $BinaryNodeCopyWith<$Res> get binaryNode {
-    return $BinaryNodeCopyWith<$Res>(_value.binaryNode, (value) {
-      return _then(_value.copyWith(binaryNode: value));
-    });
   }
 }
 
 /// @nodoc
-@JsonSerializable()
-class _$BinaryNodeImpl implements _BinaryNode {
-  const _$BinaryNodeImpl({required this.binaryNode, final String? $type})
-      : $type = $type ?? 'binary';
 
-  factory _$BinaryNodeImpl.fromJson(Map<String, dynamic> json) =>
-      _$$BinaryNodeImplFromJson(json);
+class _$MerkleNodeBinaryImpl implements MerkleNodeBinary {
+  const _$MerkleNodeBinaryImpl({required this.left, required this.right});
 
   @override
-  final BinaryNode binaryNode;
-
-  @JsonKey(name: 'starkNetRuntimeTypeToRemove')
-  final String $type;
+  final Felt left;
+  @override
+  final Felt right;
 
   @override
   String toString() {
-    return 'MerkleNode.binary(binaryNode: $binaryNode)';
+    return 'MerkleNode.binary(left: $left, right: $right)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$BinaryNodeImpl &&
-            (identical(other.binaryNode, binaryNode) ||
-                other.binaryNode == binaryNode));
+            other is _$MerkleNodeBinaryImpl &&
+            (identical(other.left, left) || other.left == left) &&
+            (identical(other.right, right) || other.right == right));
   }
 
-  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, binaryNode);
+  int get hashCode => Object.hash(runtimeType, left, right);
 
   /// Create a copy of MerkleNode
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$BinaryNodeImplCopyWith<_$BinaryNodeImpl> get copyWith =>
-      __$$BinaryNodeImplCopyWithImpl<_$BinaryNodeImpl>(this, _$identity);
+  _$$MerkleNodeBinaryImplCopyWith<_$MerkleNodeBinaryImpl> get copyWith =>
+      __$$MerkleNodeBinaryImplCopyWithImpl<_$MerkleNodeBinaryImpl>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(BinaryNode binaryNode) binary,
-    required TResult Function(EdgeNode edgeNode) edge,
+    required TResult Function(Felt left, Felt right) binary,
+    required TResult Function(String path, int length, Felt child) edge,
   }) {
-    return binary(binaryNode);
+    return binary(left, right);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(BinaryNode binaryNode)? binary,
-    TResult? Function(EdgeNode edgeNode)? edge,
+    TResult? Function(Felt left, Felt right)? binary,
+    TResult? Function(String path, int length, Felt child)? edge,
   }) {
-    return binary?.call(binaryNode);
+    return binary?.call(left, right);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(BinaryNode binaryNode)? binary,
-    TResult Function(EdgeNode edgeNode)? edge,
+    TResult Function(Felt left, Felt right)? binary,
+    TResult Function(String path, int length, Felt child)? edge,
     required TResult orElse(),
   }) {
     if (binary != null) {
-      return binary(binaryNode);
+      return binary(left, right);
     }
     return orElse();
   }
@@ -216,8 +185,8 @@ class _$BinaryNodeImpl implements _BinaryNode {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_BinaryNode value) binary,
-    required TResult Function(_EdgeNode value) edge,
+    required TResult Function(MerkleNodeBinary value) binary,
+    required TResult Function(MerkleNodeEdge value) edge,
   }) {
     return binary(this);
   }
@@ -225,8 +194,8 @@ class _$BinaryNodeImpl implements _BinaryNode {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_BinaryNode value)? binary,
-    TResult? Function(_EdgeNode value)? edge,
+    TResult? Function(MerkleNodeBinary value)? binary,
+    TResult? Function(MerkleNodeEdge value)? edge,
   }) {
     return binary?.call(this);
   }
@@ -234,8 +203,8 @@ class _$BinaryNodeImpl implements _BinaryNode {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_BinaryNode value)? binary,
-    TResult Function(_EdgeNode value)? edge,
+    TResult Function(MerkleNodeBinary value)? binary,
+    TResult Function(MerkleNodeEdge value)? edge,
     required TResult orElse(),
   }) {
     if (binary != null) {
@@ -243,48 +212,38 @@ class _$BinaryNodeImpl implements _BinaryNode {
     }
     return orElse();
   }
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$BinaryNodeImplToJson(
-      this,
-    );
-  }
 }
 
-abstract class _BinaryNode implements MerkleNode {
-  const factory _BinaryNode({required final BinaryNode binaryNode}) =
-      _$BinaryNodeImpl;
+abstract class MerkleNodeBinary implements MerkleNode {
+  const factory MerkleNodeBinary(
+      {required final Felt left,
+      required final Felt right}) = _$MerkleNodeBinaryImpl;
 
-  factory _BinaryNode.fromJson(Map<String, dynamic> json) =
-      _$BinaryNodeImpl.fromJson;
-
-  BinaryNode get binaryNode;
+  Felt get left;
+  Felt get right;
 
   /// Create a copy of MerkleNode
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$BinaryNodeImplCopyWith<_$BinaryNodeImpl> get copyWith =>
+  _$$MerkleNodeBinaryImplCopyWith<_$MerkleNodeBinaryImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$EdgeNodeImplCopyWith<$Res> {
-  factory _$$EdgeNodeImplCopyWith(
-          _$EdgeNodeImpl value, $Res Function(_$EdgeNodeImpl) then) =
-      __$$EdgeNodeImplCopyWithImpl<$Res>;
+abstract class _$$MerkleNodeEdgeImplCopyWith<$Res> {
+  factory _$$MerkleNodeEdgeImplCopyWith(_$MerkleNodeEdgeImpl value,
+          $Res Function(_$MerkleNodeEdgeImpl) then) =
+      __$$MerkleNodeEdgeImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({EdgeNode edgeNode});
-
-  $EdgeNodeCopyWith<$Res> get edgeNode;
+  $Res call({String path, int length, Felt child});
 }
 
 /// @nodoc
-class __$$EdgeNodeImplCopyWithImpl<$Res>
-    extends _$MerkleNodeCopyWithImpl<$Res, _$EdgeNodeImpl>
-    implements _$$EdgeNodeImplCopyWith<$Res> {
-  __$$EdgeNodeImplCopyWithImpl(
-      _$EdgeNodeImpl _value, $Res Function(_$EdgeNodeImpl) _then)
+class __$$MerkleNodeEdgeImplCopyWithImpl<$Res>
+    extends _$MerkleNodeCopyWithImpl<$Res, _$MerkleNodeEdgeImpl>
+    implements _$$MerkleNodeEdgeImplCopyWith<$Res> {
+  __$$MerkleNodeEdgeImplCopyWithImpl(
+      _$MerkleNodeEdgeImpl _value, $Res Function(_$MerkleNodeEdgeImpl) _then)
       : super(_value, _then);
 
   /// Create a copy of MerkleNode
@@ -292,95 +251,94 @@ class __$$EdgeNodeImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? edgeNode = null,
+    Object? path = null,
+    Object? length = null,
+    Object? child = null,
   }) {
-    return _then(_$EdgeNodeImpl(
-      edgeNode: null == edgeNode
-          ? _value.edgeNode
-          : edgeNode // ignore: cast_nullable_to_non_nullable
-              as EdgeNode,
+    return _then(_$MerkleNodeEdgeImpl(
+      path: null == path
+          ? _value.path
+          : path // ignore: cast_nullable_to_non_nullable
+              as String,
+      length: null == length
+          ? _value.length
+          : length // ignore: cast_nullable_to_non_nullable
+              as int,
+      child: null == child
+          ? _value.child
+          : child // ignore: cast_nullable_to_non_nullable
+              as Felt,
     ));
-  }
-
-  /// Create a copy of MerkleNode
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $EdgeNodeCopyWith<$Res> get edgeNode {
-    return $EdgeNodeCopyWith<$Res>(_value.edgeNode, (value) {
-      return _then(_value.copyWith(edgeNode: value));
-    });
   }
 }
 
 /// @nodoc
-@JsonSerializable()
-class _$EdgeNodeImpl implements _EdgeNode {
-  const _$EdgeNodeImpl({required this.edgeNode, final String? $type})
-      : $type = $type ?? 'edge';
 
-  factory _$EdgeNodeImpl.fromJson(Map<String, dynamic> json) =>
-      _$$EdgeNodeImplFromJson(json);
+class _$MerkleNodeEdgeImpl implements MerkleNodeEdge {
+  const _$MerkleNodeEdgeImpl(
+      {required this.path, required this.length, required this.child});
 
   @override
-  final EdgeNode edgeNode;
-
-  @JsonKey(name: 'starkNetRuntimeTypeToRemove')
-  final String $type;
+  final String path;
+  @override
+  final int length;
+  @override
+  final Felt child;
 
   @override
   String toString() {
-    return 'MerkleNode.edge(edgeNode: $edgeNode)';
+    return 'MerkleNode.edge(path: $path, length: $length, child: $child)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$EdgeNodeImpl &&
-            (identical(other.edgeNode, edgeNode) ||
-                other.edgeNode == edgeNode));
+            other is _$MerkleNodeEdgeImpl &&
+            (identical(other.path, path) || other.path == path) &&
+            (identical(other.length, length) || other.length == length) &&
+            (identical(other.child, child) || other.child == child));
   }
 
-  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, edgeNode);
+  int get hashCode => Object.hash(runtimeType, path, length, child);
 
   /// Create a copy of MerkleNode
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$EdgeNodeImplCopyWith<_$EdgeNodeImpl> get copyWith =>
-      __$$EdgeNodeImplCopyWithImpl<_$EdgeNodeImpl>(this, _$identity);
+  _$$MerkleNodeEdgeImplCopyWith<_$MerkleNodeEdgeImpl> get copyWith =>
+      __$$MerkleNodeEdgeImplCopyWithImpl<_$MerkleNodeEdgeImpl>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(BinaryNode binaryNode) binary,
-    required TResult Function(EdgeNode edgeNode) edge,
+    required TResult Function(Felt left, Felt right) binary,
+    required TResult Function(String path, int length, Felt child) edge,
   }) {
-    return edge(edgeNode);
+    return edge(path, length, child);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(BinaryNode binaryNode)? binary,
-    TResult? Function(EdgeNode edgeNode)? edge,
+    TResult? Function(Felt left, Felt right)? binary,
+    TResult? Function(String path, int length, Felt child)? edge,
   }) {
-    return edge?.call(edgeNode);
+    return edge?.call(path, length, child);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(BinaryNode binaryNode)? binary,
-    TResult Function(EdgeNode edgeNode)? edge,
+    TResult Function(Felt left, Felt right)? binary,
+    TResult Function(String path, int length, Felt child)? edge,
     required TResult orElse(),
   }) {
     if (edge != null) {
-      return edge(edgeNode);
+      return edge(path, length, child);
     }
     return orElse();
   }
@@ -388,8 +346,8 @@ class _$EdgeNodeImpl implements _EdgeNode {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_BinaryNode value) binary,
-    required TResult Function(_EdgeNode value) edge,
+    required TResult Function(MerkleNodeBinary value) binary,
+    required TResult Function(MerkleNodeEdge value) edge,
   }) {
     return edge(this);
   }
@@ -397,8 +355,8 @@ class _$EdgeNodeImpl implements _EdgeNode {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_BinaryNode value)? binary,
-    TResult? Function(_EdgeNode value)? edge,
+    TResult? Function(MerkleNodeBinary value)? binary,
+    TResult? Function(MerkleNodeEdge value)? edge,
   }) {
     return edge?.call(this);
   }
@@ -406,8 +364,8 @@ class _$EdgeNodeImpl implements _EdgeNode {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_BinaryNode value)? binary,
-    TResult Function(_EdgeNode value)? edge,
+    TResult Function(MerkleNodeBinary value)? binary,
+    TResult Function(MerkleNodeEdge value)? edge,
     required TResult orElse(),
   }) {
     if (edge != null) {
@@ -415,26 +373,21 @@ class _$EdgeNodeImpl implements _EdgeNode {
     }
     return orElse();
   }
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$EdgeNodeImplToJson(
-      this,
-    );
-  }
 }
 
-abstract class _EdgeNode implements MerkleNode {
-  const factory _EdgeNode({required final EdgeNode edgeNode}) = _$EdgeNodeImpl;
+abstract class MerkleNodeEdge implements MerkleNode {
+  const factory MerkleNodeEdge(
+      {required final String path,
+      required final int length,
+      required final Felt child}) = _$MerkleNodeEdgeImpl;
 
-  factory _EdgeNode.fromJson(Map<String, dynamic> json) =
-      _$EdgeNodeImpl.fromJson;
-
-  EdgeNode get edgeNode;
+  String get path;
+  int get length;
+  Felt get child;
 
   /// Create a copy of MerkleNode
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$EdgeNodeImplCopyWith<_$EdgeNodeImpl> get copyWith =>
+  _$$MerkleNodeEdgeImplCopyWith<_$MerkleNodeEdgeImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

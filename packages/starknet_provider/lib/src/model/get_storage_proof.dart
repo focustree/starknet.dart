@@ -67,11 +67,19 @@ class ContractStorageKeys {
 
 @JsonSerializable()
 class StorageProofResult {
-  @JsonKey(name: 'classes_proof')
+  @JsonKey(
+    name: 'classes_proof',
+    fromJson: nodeHashToNodeMappingFromJson,
+    toJson: nodeHashToNodeMappingToJson,
+  )
   final NodeHashToNodeMapping classesProof;
   @JsonKey(name: 'contracts_proof')
   final ContractsProof contractsProof;
-  @JsonKey(name: 'contracts_storage_proofs')
+  @JsonKey(
+    name: 'contracts_storage_proofs',
+    fromJson: _contractsStorageProofsFromJson,
+    toJson: _contractsStorageProofsToJson,
+  )
   final List<NodeHashToNodeMapping> contractsStorageProofs;
   @JsonKey(name: 'global_roots')
   final GlobalRoots globalRoots;
@@ -88,8 +96,19 @@ class StorageProofResult {
   Map<String, dynamic> toJson() => _$StorageProofResultToJson(this);
 }
 
+List<NodeHashToNodeMapping> _contractsStorageProofsFromJson(
+        List<dynamic> json) =>
+    json.map(nodeHashToNodeMappingFromJson).toList();
+
+List<dynamic> _contractsStorageProofsToJson(
+        List<NodeHashToNodeMapping> value) =>
+    value.map(nodeHashToNodeMappingToJson).toList();
+
 @JsonSerializable()
 class ContractsProof {
+  @JsonKey(
+      fromJson: nodeHashToNodeMappingFromJson,
+      toJson: nodeHashToNodeMappingToJson)
   final NodeHashToNodeMapping nodes;
   @JsonKey(name: 'contract_leaves_data')
   final List<ContractLeavesData> contractLeavesData;

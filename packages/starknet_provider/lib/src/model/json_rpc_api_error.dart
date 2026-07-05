@@ -1,20 +1,76 @@
 // ignore_for_file: constant_identifier_names
 
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:starknet/starknet.dart';
 
 part 'json_rpc_api_error.freezed.dart';
 part 'json_rpc_api_error.g.dart';
 
-// Add this JsonConverter to handle JsonRpcApiErrorData serialization
+class ContractExecutionErrorConverter
+    implements JsonConverter<ContractExecutionError, dynamic> {
+  const ContractExecutionErrorConverter();
+
+  @override
+  ContractExecutionError fromJson(dynamic json) =>
+      ContractExecutionError.parse(json);
+
+  @override
+  dynamic toJson(ContractExecutionError object) => object.toJsonValue();
+}
+
+@freezed
+class ContractExecutionError with _$ContractExecutionError {
+  const ContractExecutionError._();
+
+  const factory ContractExecutionError.message(String message) =
+      ContractExecutionErrorMessage;
+
+  const factory ContractExecutionError.structured({
+    @JsonKey(name: 'contract_address') required Felt contractAddress,
+    @JsonKey(name: 'class_hash') required Felt classHash,
+    required Felt selector,
+    @ContractExecutionErrorConverter() required ContractExecutionError error,
+  }) = ContractExecutionErrorStructured;
+
+  factory ContractExecutionError.parse(dynamic json) {
+    if (json is String) {
+      return ContractExecutionError.message(json);
+    }
+    if (json is Map) {
+      final map = Map<String, dynamic>.from(json);
+      return ContractExecutionError.structured(
+        contractAddress: Felt.fromJson(map['contract_address'] as String),
+        classHash: Felt.fromJson(map['class_hash'] as String),
+        selector: Felt.fromJson(map['selector'] as String),
+        error: ContractExecutionError.parse(map['error']),
+      );
+    }
+    throw FormatException('Invalid ContractExecutionError: $json');
+  }
+
+  dynamic toJsonValue() => when(
+        message: (msg) => msg,
+        structured: (contractAddress, classHash, selector, error) => {
+          'contract_address': contractAddress.toJson(),
+          'class_hash': classHash.toJson(),
+          'selector': selector.toJson(),
+          'error': error.toJsonValue(),
+        },
+      );
+
+  /// Flattened message for display or string matching.
+  String get displayMessage => when(
+        message: (msg) => msg,
+        structured: (_, __, ___, nested) => nested.displayMessage,
+      );
+}
+
 class JsonRpcApiErrorDataConverter
     implements JsonConverter<JsonRpcApiErrorData?, dynamic> {
   const JsonRpcApiErrorDataConverter();
 
   @override
   JsonRpcApiErrorData? fromJson(dynamic json) {
-    // This method will be called by the standard freezed deserializer
-    // But we can't use it effectively without the error code context
-    // The actual conversion happens in fromJsonWithCode below
     return null;
   }
 
@@ -23,7 +79,6 @@ class JsonRpcApiErrorDataConverter
     if (json == null) return null;
 
     switch (errorCode) {
-      // from api_openrpc
       case JsonRpcApiErrorCode.CONTRACT_ERROR:
         return JsonRpcApiErrorData.contractError(
           data: ContractErrorData.fromJson(json),
@@ -32,9 +87,12 @@ class JsonRpcApiErrorDataConverter
         return JsonRpcApiErrorData.transactionExecutionError(
           data: TransactionExecutionErrorData.fromJson(json),
         );
-      // from write_api
+      case JsonRpcApiErrorCode.INVALID_TRANSACTION_NONCE:
       case JsonRpcApiErrorCode.VALIDATION_FAILURE:
+      case JsonRpcApiErrorCode.COMPILATION_FAILED:
       case JsonRpcApiErrorCode.UNEXPECTED_ERROR:
+        return JsonRpcApiErrorData.stringData(
+            json is String ? json : json.toString());
       default:
         return JsonRpcApiErrorData.stringData(
             json is String ? json : json.toString());
@@ -53,22 +111,24 @@ class JsonRpcApiErrorDataConverter
 }
 
 @freezed
-// Define the specific data structure for CONTRACT_ERROR
 class ContractErrorData with _$ContractErrorData {
   const factory ContractErrorData({
-    @JsonKey(name: 'revert_error') required String revertError,
+    @JsonKey(name: 'revert_error')
+    @ContractExecutionErrorConverter()
+    required ContractExecutionError revertError,
   }) = _ContractErrorData;
 
   factory ContractErrorData.fromJson(Map<String, Object?> json) =>
       _$ContractErrorDataFromJson(json);
 }
 
-// Define the specific data structure for TRANSACTION_EXECUTION_ERROR
 @freezed
 class TransactionExecutionErrorData with _$TransactionExecutionErrorData {
   const factory TransactionExecutionErrorData({
     @JsonKey(name: 'transaction_index') required int transactionIndex,
-    @JsonKey(name: 'execution_error') required String executionError,
+    @JsonKey(name: 'execution_error')
+    @ContractExecutionErrorConverter()
+    required ContractExecutionError executionError,
   }) = _TransactionExecutionErrorData;
 
   factory TransactionExecutionErrorData.fromJson(Map<String, Object?> json) =>
@@ -91,22 +151,17 @@ class JsonRpcApiErrorData with _$JsonRpcApiErrorData {
       _$JsonRpcApiErrorDataFromJson(json);
 }
 
-// TODO: should be generated from JSON-RPC API specs
+// Starknet JSON-RPC API v0.10.2 error codes
+// (starknet_api_openrpc.json + starknet_write_api.json)
 enum JsonRpcApiErrorCode {
-  @JsonValue(-1)
-  DEVNET_WILDCARD_ERROR, // not in JSON-RPC API specs
   @JsonValue(1)
   FAILED_TO_RECEIVE_TXN,
   @JsonValue(20)
   CONTRACT_NOT_FOUND,
   @JsonValue(21)
-  INVALID_MESSAGE_SELECTOR, // removed in spec 0.3.0
-  @JsonValue(22)
-  INVALID_CALL_DATA, // removed in spec 0.3.0
+  ENTRYPOINT_NOT_FOUND,
   @JsonValue(24)
   BLOCK_NOT_FOUND,
-  @JsonValue(25)
-  TXN_HASH_NOT_FOUND_PRE_0_4_0, // modified in spec 0.4.0
   @JsonValue(27)
   INVALID_TXN_INDEX,
   @JsonValue(28)
@@ -120,48 +175,52 @@ enum JsonRpcApiErrorCode {
   @JsonValue(33)
   INVALID_CONTINUATION_TOKEN,
   @JsonValue(34)
-  TOO_MANY_KEYS_IN_FILTER, // new in spec 0.3.0
+  TOO_MANY_KEYS_IN_FILTER,
   @JsonValue(40)
   CONTRACT_ERROR,
   @JsonValue(41)
   TRANSACTION_EXECUTION_ERROR,
-  @JsonValue(50)
-  INVALID_CONTRACT_CLASS, // from pathfinder code
+  @JsonValue(42)
+  STORAGE_PROOF_NOT_SUPPORTED,
   @JsonValue(51)
-  CLASS_ALREADY_DECLARED, // from pathfinder code
+  CLASS_ALREADY_DECLARED,
   @JsonValue(52)
-  INVALID_TRANSACTION_NONCE, // from pathfinder code
+  INVALID_TRANSACTION_NONCE,
   @JsonValue(53)
-  INSUFFICIENT_MAX_FEE, // from pathfinder code
+  INSUFFICIENT_RESOURCES_FOR_VALIDATE,
   @JsonValue(54)
-  INSUFFICIENT_ACCOUNT_BALANCE, // from pathfinder code
+  INSUFFICIENT_ACCOUNT_BALANCE,
   @JsonValue(55)
-  VALIDATION_FAILURE, // from pathfinder code
+  VALIDATION_FAILURE,
   @JsonValue(56)
-  COMPILATION_FAILED, // from pathfinder code
+  COMPILATION_FAILED,
   @JsonValue(57)
-  CONTRACT_CLASS_SIZE_IS_TOO_LARGE, // from pathfinder code
+  CONTRACT_CLASS_SIZE_IS_TOO_LARGE,
   @JsonValue(58)
-  NON_ACCOUNT, // from pathfinder code
+  NON_ACCOUNT,
   @JsonValue(59)
-  DUPLICATE_TRANSACTION, // from pathfinder code
+  DUPLICATE_TX,
   @JsonValue(60)
-  COMPILED_CLASS_HASH_MISMATCH, // from pathfinder code
+  COMPILED_CLASS_HASH_MISMATCH,
   @JsonValue(61)
-  UNSUPPORTED_TX_VERSION, // from pathfinder code
+  UNSUPPORTED_TX_VERSION,
   @JsonValue(62)
-  UNSUPPORTED_CONTRACT_CLASS_VERSION, // from pathfinder code
+  UNSUPPORTED_CONTRACT_CLASS_VERSION,
   @JsonValue(63)
-  UNEXPECTED_ERROR, // from pathfinder code
-  @JsonValue(10000)
-  PROOF_LIMIT_EXCEEDED, // from pathfinder code
+  UNEXPECTED_ERROR,
+  @JsonValue(64)
+  REPLACEMENT_TRANSACTION_UNDERPRICED,
+  @JsonValue(65)
+  FEE_BELOW_MINIMUM,
+  @JsonValue(69)
+  INVALID_PROOF,
   @JsonValue(-32601)
   METHOD_NOT_FOUND,
   @JsonValue(-32602)
   INVALID_QUERY,
   @JsonValue(-32603)
   INTERNAL_SEQUENCER,
-  @JsonValue(-32604) // Last known error value - 1 for unknown error
+  @JsonValue(-32604)
   UNKNOWN,
 }
 
@@ -171,7 +230,7 @@ class JsonRpcApiError with _$JsonRpcApiError {
     required JsonRpcApiErrorCode code,
     required String message,
     @JsonKey(name: 'data')
-    @JsonRpcApiErrorDataConverter() // Apply the converter here
+    @JsonRpcApiErrorDataConverter()
     JsonRpcApiErrorData? errorData,
   }) = _JsonRpcApiError;
 
@@ -179,7 +238,6 @@ class JsonRpcApiError with _$JsonRpcApiError {
       JsonRpcApiError.fromJsonInternal(json);
 
   factory JsonRpcApiError.fromJsonInternal(Map<String, Object?> json) {
-    // Parse error code first
     final codeValue = json['code'];
     final errorCode = (codeValue is int)
         ? _$JsonRpcApiErrorCodeEnumMap.keys.firstWhere(
@@ -188,11 +246,9 @@ class JsonRpcApiError with _$JsonRpcApiError {
         : JsonRpcApiErrorCode.UNKNOWN;
 
     try {
-      // Create a base error object with standard freezed deserialization
       final baseError =
           _$JsonRpcApiErrorFromJson(json).copyWith(code: errorCode);
 
-      // Get the data field (could be any type)
       final data = json['data'];
       if (data != null) {
         final converter = const JsonRpcApiErrorDataConverter();
@@ -201,7 +257,6 @@ class JsonRpcApiError with _$JsonRpcApiError {
       }
       return baseError;
     } catch (e) {
-      // Fallback to a basic error if deserialization fails
       return JsonRpcApiError(
         code: errorCode,
         message: json['message'] as String? ?? 'Unknown error',

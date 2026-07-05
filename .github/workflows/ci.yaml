@@ -5,10 +5,11 @@ on:
 
 env:
   STARKNET_RPC: http://localhost:5050
-  STARKNET_WSS: wss://sepolia-pathfinder-rpc.spaceshard.io/rpc/v0_8
+  STARKNET_WSS: wss://api-starknet-sepolia.n.dwellir.com/9426eaad-aaf7-4367-bdae-81d1c6aa731e
   DEVNET_DUMP_PATH: /devnet-dump.json
-  AVNU_RPC: https://sepolia.api.avnu.fi
-  STARKLI_VERSION: 0.4.2
+  AVNU_RPC: https://sepolia.paymaster.avnu.fi
+  STARKNET_FOUNDRY_VERSION: 0.61.0
+  SNCAST_ACCOUNT: devnet
 
 jobs:
   lint:
@@ -42,8 +43,14 @@ jobs:
       - run: melos bootstrap
       - name: Install asdf
         uses: asdf-vm/actions/setup@v3
-      - name: Install starkli
-        run: melos asdf:starkli
+        with:
+          asdf_branch: v0.16.0
+      - name: Install starknet-foundry
+        shell: bash
+        run: |
+          export ASDF_DATA_DIR="$HOME/.asdf"
+          export PATH="$ASDF_DATA_DIR/shims:$PATH"
+          melos asdf:starknet-foundry
       - name: Retrieve starknet devnet version
         shell: bash
         run: |

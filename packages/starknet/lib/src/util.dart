@@ -43,22 +43,27 @@ enum _ExecutionStatus {
 enum _FinalityStatus {
   acceptedOnL1('ACCEPTED_ON_L1'),
   acceptedOnL2('ACCEPTED_ON_L2'),
-  received('RECEIVED'),
+  //received('RECEIVED'), // unused, only for completeness of the enum
   rejected('REJECTED'),
   pending('PENDING'),
   unknown('UNKNOWN');
 
   final String value;
   const _FinalityStatus(this.value);
-
-  // Convert a string to the enum value
-  static _FinalityStatus fromString(String value) {
-    return _FinalityStatus.values.firstWhere(
-      (status) => status.value == value,
-      orElse: () => throw ArgumentError('Invalid status: $value'),
-    );
-  }
 }
+
+_ExecutionStatus _executionStatusFromReceipt(TxnExecutionStatus status) =>
+    switch (status) {
+      TxnExecutionStatus.SUCCEEDED => _ExecutionStatus.succeeded,
+      TxnExecutionStatus.REVERTED => _ExecutionStatus.reverted,
+    };
+
+_FinalityStatus _finalityStatusFromReceipt(TxnFinalityStatus status) =>
+    switch (status) {
+      TxnFinalityStatus.PRE_CONFIRMED => _FinalityStatus.pending,
+      TxnFinalityStatus.ACCEPTED_ON_L2 => _FinalityStatus.acceptedOnL2,
+      TxnFinalityStatus.ACCEPTED_ON_L1 => _FinalityStatus.acceptedOnL1,
+    };
 
 Future<bool> _waitForTransactionStatus({
   required String transactionHash,
@@ -78,47 +83,20 @@ Future<bool> _waitForTransactionStatus({
     final receipt = await provider.getTransactionReceipt(txHash);
     receipt.when(
       result: (result) {
-        result.map(
-          invokeTxnReceipt: (receipt) => _status = _Status(
-            _ExecutionStatus.fromString(receipt.execution_status),
-            _FinalityStatus.fromString(receipt.finality_status),
-          ),
-          declareTxnReceipt: (receipt) => _status = _Status(
-            _ExecutionStatus.fromString(receipt.execution_status),
-            _FinalityStatus.fromString(receipt.finality_status),
-          ),
-          deployTxnReceipt: (receipt) => _status = _Status(
-            _ExecutionStatus.fromString(receipt.execution_status),
-            _FinalityStatus.fromString(receipt.finality_status),
-          ),
-          deployAccountTxnReceipt: (receipt) => _status = _Status(
-            _ExecutionStatus.fromString(receipt.execution_status),
-            _FinalityStatus.fromString(receipt.finality_status),
-          ),
-          l1HandlerTxnReceipt: (receipt) => _status = _Status(
-            _ExecutionStatus.fromString(receipt.execution_status),
-            _FinalityStatus.fromString(receipt.finality_status),
-          ),
-          pendingDeployTxnReceipt: (receipt) => _status =
-              _Status(_ExecutionStatus.pending, _FinalityStatus.pending),
-          pendingCommonReceiptProperties: (receipt) => _status =
-              _Status(_ExecutionStatus.pending, _FinalityStatus.pending),
+        _status = _Status(
+          _executionStatusFromReceipt(result.executionStatus),
+          _finalityStatusFromReceipt(result.finalityStatus),
         );
       },
       error: (error) {
         // 2022-12-07: a REJECTED transaction is not part of the blockchain
         // so transaction hash will not be known by Infura node
-        // 2023-09-25: TXN_HASH_NOT_FOUND error code has been modified in spec 0.4.0
-        if (!((error.code == JsonRpcApiErrorCode.TXN_HASH_NOT_FOUND ||
-                error.code ==
-                    JsonRpcApiErrorCode.TXN_HASH_NOT_FOUND_PRE_0_4_0) &&
+        if (!(error.code == JsonRpcApiErrorCode.TXN_HASH_NOT_FOUND &&
             ((provider as JsonRpcProvider).nodeUri == infuraGoerliTestnetUri ||
                 provider.nodeUri == infuraMainnetUri))) {
           debugLog?.call('An error occured: $error');
         }
-        if ((error.code == JsonRpcApiErrorCode.TXN_HASH_NOT_FOUND ||
-                error.code ==
-                    JsonRpcApiErrorCode.TXN_HASH_NOT_FOUND_PRE_0_4_0) &&
+        if (error.code == JsonRpcApiErrorCode.TXN_HASH_NOT_FOUND &&
             (count < maxRetries)) {
           count += 1;
           _status = _Status(_ExecutionStatus.unknown, _FinalityStatus.unknown);

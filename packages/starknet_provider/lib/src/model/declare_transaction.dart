@@ -16,6 +16,7 @@ const String declareTxnV3 = '0x3';
 const String declareTxnV1OldCompat = '0x01';
 const String declareTxnV2OldCompat = '0x02';
 const String declareTxnV3OldCompat = '0x03';
+const String declareTxnV3Query = '0x100000000000000000000000000000003';
 
 @freezed
 class DeclareTransactionRequest with _$DeclareTransactionRequest {
@@ -38,6 +39,7 @@ abstract class DeclareTransaction {
         return DeclareTransactionV2.fromJson(json);
       case declareTxnV3:
       case declareTxnV3OldCompat:
+      case declareTxnV3Query:
         return DeclareTransactionV3.fromJson(json);
       default:
         throw ArgumentError(

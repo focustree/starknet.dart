@@ -144,7 +144,7 @@ class FlattenSierraContractClass with _$FlattenSierraContractClass {
     required List<String> sierraProgram,
     required EntryPointsByType entryPointsByType,
     required String contractClassVersion,
-    required String abi,
+    @JsonKey(includeIfNull: false) String? abi,
   }) = _FlattenSierraClass;
 
   factory FlattenSierraContractClass.fromJson(Map<String, Object?> json) =>
@@ -184,9 +184,9 @@ class CASMCompiledContract
       for (final builtin in entrypoint.builtins) {
         builtins.add(Felt.fromString(builtin).toBigInt());
       }
-      buffer.add(poseidonHasher.hashMany(builtins));
+      buffer.add(blakeHasher.hashMany(builtins));
     }
-    final externals = poseidonHasher.hashMany(buffer);
+    final externals = blakeHasher.hashMany(buffer);
 
     buffer.clear();
     for (final entrypoint in entryPointsByType.l1Handler) {
@@ -197,9 +197,9 @@ class CASMCompiledContract
       for (final builtin in entrypoint.builtins) {
         builtins.add(Felt.fromString(builtin).toBigInt());
       }
-      buffer.add(poseidonHasher.hashMany(builtins));
+      buffer.add(blakeHasher.hashMany(builtins));
     }
-    final l1handlers = poseidonHasher.hashMany(buffer);
+    final l1handlers = blakeHasher.hashMany(buffer);
     buffer.clear();
 
     for (final entrypoint in entryPointsByType.constructor) {
@@ -210,15 +210,15 @@ class CASMCompiledContract
       for (final builtin in entrypoint.builtins) {
         builtins.add(Felt.fromString(builtin).toBigInt());
       }
-      buffer.add(poseidonHasher.hashMany(builtins));
+      buffer.add(blakeHasher.hashMany(builtins));
     }
-    final constructors = poseidonHasher.hashMany(buffer);
+    final constructors = blakeHasher.hashMany(buffer);
 
     return EntryPointsHashes(externals, l1handlers, constructors);
   }
 
   BigInt _byteCodeHash() {
-    return poseidonHasher.hashMany(bytecode);
+    return blakeHasher.hashMany(bytecode);
   }
 
   @override
@@ -244,7 +244,7 @@ class CASMCompiledContract
       elements
           .add(computeCompiledClassHashInner(bytecode, bytecodeSegmentLengths));
     }
-    return poseidonHasher.hashMany(elements);
+    return blakeHasher.hashMany(elements);
   }
 }
 

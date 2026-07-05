@@ -9,27 +9,31 @@ part of 'json_rpc_api_error.dart';
 _$ContractErrorDataImpl _$$ContractErrorDataImplFromJson(
         Map<String, dynamic> json) =>
     _$ContractErrorDataImpl(
-      revertError: json['revert_error'] as String,
+      revertError: const ContractExecutionErrorConverter()
+          .fromJson(json['revert_error']),
     );
 
 Map<String, dynamic> _$$ContractErrorDataImplToJson(
         _$ContractErrorDataImpl instance) =>
     <String, dynamic>{
-      'revert_error': instance.revertError,
+      'revert_error':
+          const ContractExecutionErrorConverter().toJson(instance.revertError),
     };
 
 _$TransactionExecutionErrorDataImpl
     _$$TransactionExecutionErrorDataImplFromJson(Map<String, dynamic> json) =>
         _$TransactionExecutionErrorDataImpl(
           transactionIndex: (json['transaction_index'] as num).toInt(),
-          executionError: json['execution_error'] as String,
+          executionError: const ContractExecutionErrorConverter()
+              .fromJson(json['execution_error']),
         );
 
 Map<String, dynamic> _$$TransactionExecutionErrorDataImplToJson(
         _$TransactionExecutionErrorDataImpl instance) =>
     <String, dynamic>{
       'transaction_index': instance.transactionIndex,
-      'execution_error': instance.executionError,
+      'execution_error': const ContractExecutionErrorConverter()
+          .toJson(instance.executionError),
     };
 
 _$ContractErrorImpl _$$ContractErrorImplFromJson(Map<String, dynamic> json) =>
@@ -88,13 +92,10 @@ Map<String, dynamic> _$$JsonRpcApiErrorImplToJson(
     };
 
 const _$JsonRpcApiErrorCodeEnumMap = {
-  JsonRpcApiErrorCode.DEVNET_WILDCARD_ERROR: -1,
   JsonRpcApiErrorCode.FAILED_TO_RECEIVE_TXN: 1,
   JsonRpcApiErrorCode.CONTRACT_NOT_FOUND: 20,
-  JsonRpcApiErrorCode.INVALID_MESSAGE_SELECTOR: 21,
-  JsonRpcApiErrorCode.INVALID_CALL_DATA: 22,
+  JsonRpcApiErrorCode.ENTRYPOINT_NOT_FOUND: 21,
   JsonRpcApiErrorCode.BLOCK_NOT_FOUND: 24,
-  JsonRpcApiErrorCode.TXN_HASH_NOT_FOUND_PRE_0_4_0: 25,
   JsonRpcApiErrorCode.INVALID_TXN_INDEX: 27,
   JsonRpcApiErrorCode.CLASS_HASH_NOT_FOUND: 28,
   JsonRpcApiErrorCode.TXN_HASH_NOT_FOUND: 29,
@@ -104,21 +105,23 @@ const _$JsonRpcApiErrorCodeEnumMap = {
   JsonRpcApiErrorCode.TOO_MANY_KEYS_IN_FILTER: 34,
   JsonRpcApiErrorCode.CONTRACT_ERROR: 40,
   JsonRpcApiErrorCode.TRANSACTION_EXECUTION_ERROR: 41,
-  JsonRpcApiErrorCode.INVALID_CONTRACT_CLASS: 50,
+  JsonRpcApiErrorCode.STORAGE_PROOF_NOT_SUPPORTED: 42,
   JsonRpcApiErrorCode.CLASS_ALREADY_DECLARED: 51,
   JsonRpcApiErrorCode.INVALID_TRANSACTION_NONCE: 52,
-  JsonRpcApiErrorCode.INSUFFICIENT_MAX_FEE: 53,
+  JsonRpcApiErrorCode.INSUFFICIENT_RESOURCES_FOR_VALIDATE: 53,
   JsonRpcApiErrorCode.INSUFFICIENT_ACCOUNT_BALANCE: 54,
   JsonRpcApiErrorCode.VALIDATION_FAILURE: 55,
   JsonRpcApiErrorCode.COMPILATION_FAILED: 56,
   JsonRpcApiErrorCode.CONTRACT_CLASS_SIZE_IS_TOO_LARGE: 57,
   JsonRpcApiErrorCode.NON_ACCOUNT: 58,
-  JsonRpcApiErrorCode.DUPLICATE_TRANSACTION: 59,
+  JsonRpcApiErrorCode.DUPLICATE_TX: 59,
   JsonRpcApiErrorCode.COMPILED_CLASS_HASH_MISMATCH: 60,
   JsonRpcApiErrorCode.UNSUPPORTED_TX_VERSION: 61,
   JsonRpcApiErrorCode.UNSUPPORTED_CONTRACT_CLASS_VERSION: 62,
   JsonRpcApiErrorCode.UNEXPECTED_ERROR: 63,
-  JsonRpcApiErrorCode.PROOF_LIMIT_EXCEEDED: 10000,
+  JsonRpcApiErrorCode.REPLACEMENT_TRANSACTION_UNDERPRICED: 64,
+  JsonRpcApiErrorCode.FEE_BELOW_MINIMUM: 65,
+  JsonRpcApiErrorCode.INVALID_PROOF: 69,
   JsonRpcApiErrorCode.METHOD_NOT_FOUND: -32601,
   JsonRpcApiErrorCode.INVALID_QUERY: -32602,
   JsonRpcApiErrorCode.INTERNAL_SEQUENCER: -32603,

@@ -48,7 +48,7 @@ class Udc extends Contract {
       nonceDataAvailabilityMode: nonceDataAvailabilityMode,
     );
     final trxHash = trx.when(
-      result: (result) => result.transaction_hash,
+      result: (result) => result.transactionHash.toHexString(),
       error: (error) => throw Exception,
     );
     return trxHash;

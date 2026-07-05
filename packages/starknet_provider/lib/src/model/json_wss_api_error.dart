@@ -12,6 +12,8 @@ enum JsonWssApiErrorCode {
   tooManyAddressesInFilter,
   @JsonValue(68)
   tooManyBlocksBack,
+  @JsonValue(34)
+  tooManyKeysInFilter,
   @JsonValue(24)
   blockNotFound,
   @JsonValue(-1)
@@ -43,6 +45,10 @@ class JsonWssApiError with _$JsonWssApiError {
   factory JsonWssApiError.tooManyBlocksBack() => const JsonWssApiError(
       code: JsonWssApiErrorCode.tooManyBlocksBack,
       message: 'Cannot go back more than 1024 blocks');
+
+  factory JsonWssApiError.tooManyKeysInFilter() => const JsonWssApiError(
+      code: JsonWssApiErrorCode.tooManyKeysInFilter,
+      message: 'Too many keys in filter');
 
   factory JsonWssApiError.alreadySubscribed() => const JsonWssApiError(
       code: JsonWssApiErrorCode.alreadySubscribed,

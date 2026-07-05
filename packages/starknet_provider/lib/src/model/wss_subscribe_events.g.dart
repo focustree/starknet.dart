@@ -33,3 +33,19 @@ Map<String, dynamic> _$$WssSubscribeEventsErrorImplToJson(
       'error': instance.error.toJson(),
       'starkNetRuntimeTypeToRemove': instance.$type,
     };
+
+Map<String, dynamic> _$$WssSubscribeEventsRequestImplToJson(
+        _$WssSubscribeEventsRequestImpl instance) =>
+    <String, dynamic>{
+      'from_address': instance.fromAddress?.toJson(),
+      'keys':
+          instance.keys?.map((e) => e.map((e) => e.toJson()).toList()).toList(),
+      'block_id': instance.blockId?.toJson(),
+      'finality_status':
+          _$SubscriptionFinalityStatusEnumMap[instance.finalityStatus],
+    };
+
+const _$SubscriptionFinalityStatusEnumMap = {
+  SubscriptionFinalityStatus.PRE_CONFIRMED: 'PRE_CONFIRMED',
+  SubscriptionFinalityStatus.ACCEPTED_ON_L2: 'ACCEPTED_ON_L2',
+};

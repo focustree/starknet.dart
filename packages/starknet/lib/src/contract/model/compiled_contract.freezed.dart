@@ -282,7 +282,8 @@ mixin _$FlattenSierraContractClass {
   List<String> get sierraProgram => throw _privateConstructorUsedError;
   EntryPointsByType get entryPointsByType => throw _privateConstructorUsedError;
   String get contractClassVersion => throw _privateConstructorUsedError;
-  String get abi => throw _privateConstructorUsedError;
+  @JsonKey(includeIfNull: false)
+  String? get abi => throw _privateConstructorUsedError;
 
   /// Serializes this FlattenSierraContractClass to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -305,7 +306,7 @@ abstract class $FlattenSierraContractClassCopyWith<$Res> {
       {List<String> sierraProgram,
       EntryPointsByType entryPointsByType,
       String contractClassVersion,
-      String abi});
+      @JsonKey(includeIfNull: false) String? abi});
 
   $EntryPointsByTypeCopyWith<$Res> get entryPointsByType;
 }
@@ -329,7 +330,7 @@ class _$FlattenSierraContractClassCopyWithImpl<$Res,
     Object? sierraProgram = null,
     Object? entryPointsByType = null,
     Object? contractClassVersion = null,
-    Object? abi = null,
+    Object? abi = freezed,
   }) {
     return _then(_value.copyWith(
       sierraProgram: null == sierraProgram
@@ -344,10 +345,10 @@ class _$FlattenSierraContractClassCopyWithImpl<$Res,
           ? _value.contractClassVersion
           : contractClassVersion // ignore: cast_nullable_to_non_nullable
               as String,
-      abi: null == abi
+      abi: freezed == abi
           ? _value.abi
           : abi // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
     ) as $Val);
   }
 
@@ -374,7 +375,7 @@ abstract class _$$FlattenSierraClassImplCopyWith<$Res>
       {List<String> sierraProgram,
       EntryPointsByType entryPointsByType,
       String contractClassVersion,
-      String abi});
+      @JsonKey(includeIfNull: false) String? abi});
 
   @override
   $EntryPointsByTypeCopyWith<$Res> get entryPointsByType;
@@ -397,7 +398,7 @@ class __$$FlattenSierraClassImplCopyWithImpl<$Res>
     Object? sierraProgram = null,
     Object? entryPointsByType = null,
     Object? contractClassVersion = null,
-    Object? abi = null,
+    Object? abi = freezed,
   }) {
     return _then(_$FlattenSierraClassImpl(
       sierraProgram: null == sierraProgram
@@ -412,10 +413,10 @@ class __$$FlattenSierraClassImplCopyWithImpl<$Res>
           ? _value.contractClassVersion
           : contractClassVersion // ignore: cast_nullable_to_non_nullable
               as String,
-      abi: null == abi
+      abi: freezed == abi
           ? _value.abi
           : abi // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
     ));
   }
 }
@@ -427,7 +428,7 @@ class _$FlattenSierraClassImpl implements _FlattenSierraClass {
       {required final List<String> sierraProgram,
       required this.entryPointsByType,
       required this.contractClassVersion,
-      required this.abi})
+      @JsonKey(includeIfNull: false) this.abi})
       : _sierraProgram = sierraProgram;
 
   factory _$FlattenSierraClassImpl.fromJson(Map<String, dynamic> json) =>
@@ -446,7 +447,8 @@ class _$FlattenSierraClassImpl implements _FlattenSierraClass {
   @override
   final String contractClassVersion;
   @override
-  final String abi;
+  @JsonKey(includeIfNull: false)
+  final String? abi;
 
   @override
   String toString() {
@@ -495,10 +497,11 @@ class _$FlattenSierraClassImpl implements _FlattenSierraClass {
 
 abstract class _FlattenSierraClass implements FlattenSierraContractClass {
   factory _FlattenSierraClass(
-      {required final List<String> sierraProgram,
-      required final EntryPointsByType entryPointsByType,
-      required final String contractClassVersion,
-      required final String abi}) = _$FlattenSierraClassImpl;
+          {required final List<String> sierraProgram,
+          required final EntryPointsByType entryPointsByType,
+          required final String contractClassVersion,
+          @JsonKey(includeIfNull: false) final String? abi}) =
+      _$FlattenSierraClassImpl;
 
   factory _FlattenSierraClass.fromJson(Map<String, dynamic> json) =
       _$FlattenSierraClassImpl.fromJson;
@@ -510,7 +513,8 @@ abstract class _FlattenSierraClass implements FlattenSierraContractClass {
   @override
   String get contractClassVersion;
   @override
-  String get abi;
+  @JsonKey(includeIfNull: false)
+  String? get abi;
 
   /// Create a copy of FlattenSierraContractClass
   /// with the given fields replaced by the non-null parameter values.

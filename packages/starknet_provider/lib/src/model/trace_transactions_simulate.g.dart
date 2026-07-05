@@ -12,7 +12,7 @@ SimulateTransactionsRequest _$SimulateTransactionsRequestFromJson(
       transactions: (json['transactions'] as List<dynamic>)
           .map((e) => BroadcastedTxn.fromJson(e as Map<String, dynamic>))
           .toList(),
-      blockId: BlockId.fromJson(json['block_id'] as Map<String, dynamic>),
+      blockId: BlockId.fromJson(json['block_id']),
       simulationFlags: (json['simulation_flags'] as List<dynamic>)
           .map((e) => $enumDecode(_$SimulationFlagEnumMap, e))
           .toList(),

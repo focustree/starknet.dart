@@ -797,6 +797,10 @@ mixin _$InvokeTransactionV3 {
   List<Felt> get signature => throw _privateConstructorUsedError;
   String get tip => throw _privateConstructorUsedError;
   String get version => throw _privateConstructorUsedError;
+  @JsonKey(name: 'proof_facts')
+  List<Felt> get proofFacts => throw _privateConstructorUsedError;
+  @JsonKey(includeIfNull: false)
+  String? get proof => throw _privateConstructorUsedError;
 
   /// Serializes this InvokeTransactionV3 to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -826,7 +830,9 @@ abstract class $InvokeTransactionV3CopyWith<$Res> {
       Felt senderAddress,
       List<Felt> signature,
       String tip,
-      String version});
+      String version,
+      @JsonKey(name: 'proof_facts') List<Felt> proofFacts,
+      @JsonKey(includeIfNull: false) String? proof});
 }
 
 /// @nodoc
@@ -856,6 +862,8 @@ class _$InvokeTransactionV3CopyWithImpl<$Res, $Val extends InvokeTransactionV3>
     Object? signature = null,
     Object? tip = null,
     Object? version = null,
+    Object? proofFacts = null,
+    Object? proof = freezed,
   }) {
     return _then(_value.copyWith(
       type: null == type
@@ -906,6 +914,14 @@ class _$InvokeTransactionV3CopyWithImpl<$Res, $Val extends InvokeTransactionV3>
           ? _value.version
           : version // ignore: cast_nullable_to_non_nullable
               as String,
+      proofFacts: null == proofFacts
+          ? _value.proofFacts
+          : proofFacts // ignore: cast_nullable_to_non_nullable
+              as List<Felt>,
+      proof: freezed == proof
+          ? _value.proof
+          : proof // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 }
@@ -930,7 +946,9 @@ abstract class _$$InvokeTransactionV3ImplCopyWith<$Res>
       Felt senderAddress,
       List<Felt> signature,
       String tip,
-      String version});
+      String version,
+      @JsonKey(name: 'proof_facts') List<Felt> proofFacts,
+      @JsonKey(includeIfNull: false) String? proof});
 }
 
 /// @nodoc
@@ -958,6 +976,8 @@ class __$$InvokeTransactionV3ImplCopyWithImpl<$Res>
     Object? signature = null,
     Object? tip = null,
     Object? version = null,
+    Object? proofFacts = null,
+    Object? proof = freezed,
   }) {
     return _then(_$InvokeTransactionV3Impl(
       type: null == type
@@ -1008,12 +1028,21 @@ class __$$InvokeTransactionV3ImplCopyWithImpl<$Res>
           ? _value.version
           : version // ignore: cast_nullable_to_non_nullable
               as String,
+      proofFacts: null == proofFacts
+          ? _value._proofFacts
+          : proofFacts // ignore: cast_nullable_to_non_nullable
+              as List<Felt>,
+      proof: freezed == proof
+          ? _value.proof
+          : proof // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
 
 /// @nodoc
-@JsonSerializable()
+
+@JsonSerializable(includeIfNull: false)
 class _$InvokeTransactionV3Impl implements _InvokeTransactionV3 {
   const _$InvokeTransactionV3Impl(
       {this.type = 'INVOKE',
@@ -1027,12 +1056,15 @@ class _$InvokeTransactionV3Impl implements _InvokeTransactionV3 {
       required this.senderAddress,
       required final List<Felt> signature,
       required this.tip,
-      this.version = invokeTxnV3})
+      this.version = invokeTxnV3,
+      @JsonKey(name: 'proof_facts') final List<Felt> proofFacts = const [],
+      @JsonKey(includeIfNull: false) this.proof})
       : _accountDeploymentData = accountDeploymentData,
         _calldata = calldata,
         _paymasterData = paymasterData,
         _resourceBounds = resourceBounds,
-        _signature = signature;
+        _signature = signature,
+        _proofFacts = proofFacts;
 
   factory _$InvokeTransactionV3Impl.fromJson(Map<String, dynamic> json) =>
       _$$InvokeTransactionV3ImplFromJson(json);
@@ -1094,10 +1126,22 @@ class _$InvokeTransactionV3Impl implements _InvokeTransactionV3 {
   @override
   @JsonKey()
   final String version;
+  final List<Felt> _proofFacts;
+  @override
+  @JsonKey(name: 'proof_facts')
+  List<Felt> get proofFacts {
+    if (_proofFacts is EqualUnmodifiableListView) return _proofFacts;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_proofFacts);
+  }
+
+  @override
+  @JsonKey(includeIfNull: false)
+  final String? proof;
 
   @override
   String toString() {
-    return 'InvokeTransactionV3(type: $type, accountDeploymentData: $accountDeploymentData, calldata: $calldata, feeDataAvailabilityMode: $feeDataAvailabilityMode, nonce: $nonce, nonceDataAvailabilityMode: $nonceDataAvailabilityMode, paymasterData: $paymasterData, resourceBounds: $resourceBounds, senderAddress: $senderAddress, signature: $signature, tip: $tip, version: $version)';
+    return 'InvokeTransactionV3(type: $type, accountDeploymentData: $accountDeploymentData, calldata: $calldata, feeDataAvailabilityMode: $feeDataAvailabilityMode, nonce: $nonce, nonceDataAvailabilityMode: $nonceDataAvailabilityMode, paymasterData: $paymasterData, resourceBounds: $resourceBounds, senderAddress: $senderAddress, signature: $signature, tip: $tip, version: $version, proofFacts: $proofFacts, proof: $proof)';
   }
 
   @override
@@ -1125,7 +1169,10 @@ class _$InvokeTransactionV3Impl implements _InvokeTransactionV3 {
             const DeepCollectionEquality()
                 .equals(other._signature, _signature) &&
             (identical(other.tip, tip) || other.tip == tip) &&
-            (identical(other.version, version) || other.version == version));
+            (identical(other.version, version) || other.version == version) &&
+            const DeepCollectionEquality()
+                .equals(other._proofFacts, _proofFacts) &&
+            (identical(other.proof, proof) || other.proof == proof));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
@@ -1143,7 +1190,9 @@ class _$InvokeTransactionV3Impl implements _InvokeTransactionV3 {
       senderAddress,
       const DeepCollectionEquality().hash(_signature),
       tip,
-      version);
+      version,
+      const DeepCollectionEquality().hash(_proofFacts),
+      proof);
 
   /// Create a copy of InvokeTransactionV3
   /// with the given fields replaced by the non-null parameter values.
@@ -1164,18 +1213,21 @@ class _$InvokeTransactionV3Impl implements _InvokeTransactionV3 {
 
 abstract class _InvokeTransactionV3 implements InvokeTransactionV3 {
   const factory _InvokeTransactionV3(
-      {final String type,
-      required final List<Felt> accountDeploymentData,
-      required final List<Felt> calldata,
-      required final String feeDataAvailabilityMode,
-      required final Felt nonce,
-      required final String nonceDataAvailabilityMode,
-      required final List<Felt> paymasterData,
-      required final Map<String, ResourceBounds> resourceBounds,
-      required final Felt senderAddress,
-      required final List<Felt> signature,
-      required final String tip,
-      final String version}) = _$InvokeTransactionV3Impl;
+          {final String type,
+          required final List<Felt> accountDeploymentData,
+          required final List<Felt> calldata,
+          required final String feeDataAvailabilityMode,
+          required final Felt nonce,
+          required final String nonceDataAvailabilityMode,
+          required final List<Felt> paymasterData,
+          required final Map<String, ResourceBounds> resourceBounds,
+          required final Felt senderAddress,
+          required final List<Felt> signature,
+          required final String tip,
+          final String version,
+          @JsonKey(name: 'proof_facts') final List<Felt> proofFacts,
+          @JsonKey(includeIfNull: false) final String? proof}) =
+      _$InvokeTransactionV3Impl;
 
   factory _InvokeTransactionV3.fromJson(Map<String, dynamic> json) =
       _$InvokeTransactionV3Impl.fromJson;
@@ -1204,6 +1256,12 @@ abstract class _InvokeTransactionV3 implements InvokeTransactionV3 {
   String get tip;
   @override
   String get version;
+  @override
+  @JsonKey(name: 'proof_facts')
+  List<Felt> get proofFacts;
+  @override
+  @JsonKey(includeIfNull: false)
+  String? get proof;
 
   /// Create a copy of InvokeTransactionV3
   /// with the given fields replaced by the non-null parameter values.
@@ -1657,7 +1715,8 @@ InvokeTransactionResponseResult _$InvokeTransactionResponseResultFromJson(
 
 /// @nodoc
 mixin _$InvokeTransactionResponseResult {
-  String get transaction_hash => throw _privateConstructorUsedError;
+  @JsonKey(name: 'transaction_hash')
+  Felt get transactionHash => throw _privateConstructorUsedError;
 
   /// Serializes this InvokeTransactionResponseResult to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -1677,7 +1736,7 @@ abstract class $InvokeTransactionResponseResultCopyWith<$Res> {
       _$InvokeTransactionResponseResultCopyWithImpl<$Res,
           InvokeTransactionResponseResult>;
   @useResult
-  $Res call({String transaction_hash});
+  $Res call({@JsonKey(name: 'transaction_hash') Felt transactionHash});
 }
 
 /// @nodoc
@@ -1696,13 +1755,13 @@ class _$InvokeTransactionResponseResultCopyWithImpl<$Res,
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? transaction_hash = null,
+    Object? transactionHash = null,
   }) {
     return _then(_value.copyWith(
-      transaction_hash: null == transaction_hash
-          ? _value.transaction_hash
-          : transaction_hash // ignore: cast_nullable_to_non_nullable
-              as String,
+      transactionHash: null == transactionHash
+          ? _value.transactionHash
+          : transactionHash // ignore: cast_nullable_to_non_nullable
+              as Felt,
     ) as $Val);
   }
 }
@@ -1716,7 +1775,7 @@ abstract class _$$InvokeTransactionResponseResultImplCopyWith<$Res>
       __$$InvokeTransactionResponseResultImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String transaction_hash});
+  $Res call({@JsonKey(name: 'transaction_hash') Felt transactionHash});
 }
 
 /// @nodoc
@@ -1734,13 +1793,13 @@ class __$$InvokeTransactionResponseResultImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? transaction_hash = null,
+    Object? transactionHash = null,
   }) {
     return _then(_$InvokeTransactionResponseResultImpl(
-      transaction_hash: null == transaction_hash
-          ? _value.transaction_hash
-          : transaction_hash // ignore: cast_nullable_to_non_nullable
-              as String,
+      transactionHash: null == transactionHash
+          ? _value.transactionHash
+          : transactionHash // ignore: cast_nullable_to_non_nullable
+              as Felt,
     ));
   }
 }
@@ -1749,18 +1808,20 @@ class __$$InvokeTransactionResponseResultImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$InvokeTransactionResponseResultImpl
     implements _InvokeTransactionResponseResult {
-  const _$InvokeTransactionResponseResultImpl({required this.transaction_hash});
+  const _$InvokeTransactionResponseResultImpl(
+      {@JsonKey(name: 'transaction_hash') required this.transactionHash});
 
   factory _$InvokeTransactionResponseResultImpl.fromJson(
           Map<String, dynamic> json) =>
       _$$InvokeTransactionResponseResultImplFromJson(json);
 
   @override
-  final String transaction_hash;
+  @JsonKey(name: 'transaction_hash')
+  final Felt transactionHash;
 
   @override
   String toString() {
-    return 'InvokeTransactionResponseResult(transaction_hash: $transaction_hash)';
+    return 'InvokeTransactionResponseResult(transactionHash: $transactionHash)';
   }
 
   @override
@@ -1768,13 +1829,13 @@ class _$InvokeTransactionResponseResultImpl
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$InvokeTransactionResponseResultImpl &&
-            (identical(other.transaction_hash, transaction_hash) ||
-                other.transaction_hash == transaction_hash));
+            (identical(other.transactionHash, transactionHash) ||
+                other.transactionHash == transactionHash));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, transaction_hash);
+  int get hashCode => Object.hash(runtimeType, transactionHash);
 
   /// Create a copy of InvokeTransactionResponseResult
   /// with the given fields replaced by the non-null parameter values.
@@ -1797,14 +1858,16 @@ class _$InvokeTransactionResponseResultImpl
 abstract class _InvokeTransactionResponseResult
     implements InvokeTransactionResponseResult {
   const factory _InvokeTransactionResponseResult(
-          {required final String transaction_hash}) =
+          {@JsonKey(name: 'transaction_hash')
+          required final Felt transactionHash}) =
       _$InvokeTransactionResponseResultImpl;
 
   factory _InvokeTransactionResponseResult.fromJson(Map<String, dynamic> json) =
       _$InvokeTransactionResponseResultImpl.fromJson;
 
   @override
-  String get transaction_hash;
+  @JsonKey(name: 'transaction_hash')
+  Felt get transactionHash;
 
   /// Create a copy of InvokeTransactionResponseResult
   /// with the given fields replaced by the non-null parameter values.

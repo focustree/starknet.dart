@@ -1,115 +1,358 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:starknet/starknet.dart';
 
+import 'event.dart';
+import 'execution_resources.dart';
 import 'fee_payment.dart';
 import 'msg_to_l1.dart';
-import 'event.dart';
+import 'num_as_hex.dart';
+import 'txn_status.dart';
 
 part 'txn_receipt.freezed.dart';
 part 'txn_receipt.g.dart';
 
-@freezed
+@Freezed(fromJson: false, toJson: true)
 class TxnReceipt with _$TxnReceipt {
   const factory TxnReceipt.invokeTxnReceipt({
-    // start of COMMON_RECEIPT_PROPERTIES
-    required Felt transactionHash,
-    required FeePayment actualFee,
-    required String execution_status,
-    required String finality_status,
-    Felt? blockHash,
-    int? blockNumber,
     required String type,
-    required List<MsgToL1> messagesSent,
+    @JsonKey(name: 'transaction_hash') required Felt transactionHash,
+    @JsonKey(name: 'actual_fee') required FeePayment actualFee,
+    @JsonKey(name: 'finality_status') required TxnFinalityStatus finalityStatus,
+    @JsonKey(name: 'execution_status')
+    required TxnExecutionStatus executionStatus,
+    @JsonKey(name: 'revert_reason') String? revertReason,
+    @JsonKey(name: 'messages_sent') required List<MsgToL1> messagesSent,
     required List<Event> events,
-    // end of COMMON_RECEIPT_PROPERTIES
+    @JsonKey(name: 'execution_resources')
+    required ExecutionResources executionResources,
+    @JsonKey(name: 'block_hash') Felt? blockHash,
+    @JsonKey(name: 'block_number') int? blockNumber,
   }) = InvokeTxnReceipt;
 
   const factory TxnReceipt.declareTxnReceipt({
-    // start of COMMON_RECEIPT_PROPERTIES
-    required Felt transactionHash,
-    required FeePayment actualFee,
-    required String execution_status,
-    required String finality_status,
-    Felt? blockHash,
-    int? blockNumber,
     required String type,
-    required List<MsgToL1> messagesSent,
+    @JsonKey(name: 'transaction_hash') required Felt transactionHash,
+    @JsonKey(name: 'actual_fee') required FeePayment actualFee,
+    @JsonKey(name: 'finality_status') required TxnFinalityStatus finalityStatus,
+    @JsonKey(name: 'execution_status')
+    required TxnExecutionStatus executionStatus,
+    @JsonKey(name: 'revert_reason') String? revertReason,
+    @JsonKey(name: 'messages_sent') required List<MsgToL1> messagesSent,
     required List<Event> events,
-    // end of COMMON_RECEIPT_PROPERTIES
+    @JsonKey(name: 'execution_resources')
+    required ExecutionResources executionResources,
+    @JsonKey(name: 'block_hash') Felt? blockHash,
+    @JsonKey(name: 'block_number') int? blockNumber,
   }) = DeclareTxnReceipt;
 
   const factory TxnReceipt.l1HandlerTxnReceipt({
-    // start of COMMON_RECEIPT_PROPERTIES
-    required Felt transactionHash,
-    required FeePayment actualFee,
-    required String execution_status,
-    required String finality_status,
-    Felt? blockHash,
+    required String type,
+    @JsonKey(name: 'message_hash') required NumAsHex messageHash,
+    @JsonKey(name: 'transaction_hash') required Felt transactionHash,
+    @JsonKey(name: 'actual_fee') required FeePayment actualFee,
+    @JsonKey(name: 'finality_status') required TxnFinalityStatus finalityStatus,
+    @JsonKey(name: 'execution_status')
+    required TxnExecutionStatus executionStatus,
+    @JsonKey(name: 'revert_reason') String? revertReason,
+    @JsonKey(name: 'messages_sent') required List<MsgToL1> messagesSent,
     required List<Event> events,
-    // end of COMMON_RECEIPT_PROPERTIES
+    @JsonKey(name: 'execution_resources')
+    required ExecutionResources executionResources,
+    @JsonKey(name: 'block_hash') Felt? blockHash,
+    @JsonKey(name: 'block_number') int? blockNumber,
   }) = L1HandlerTxnReceipt;
 
   const factory TxnReceipt.deployTxnReceipt({
-    // start of COMMON_RECEIPT_PROPERTIES
-    required Felt transactionHash,
-    required FeePayment actualFee,
-    required String execution_status,
-    required String finality_status,
-    Felt? blockHash,
-    int? blockNumber,
     required String type,
-    required List<MsgToL1> messagesSent,
+    @JsonKey(name: 'contract_address') required Felt contractAddress,
+    @JsonKey(name: 'transaction_hash') required Felt transactionHash,
+    @JsonKey(name: 'actual_fee') required FeePayment actualFee,
+    @JsonKey(name: 'finality_status') required TxnFinalityStatus finalityStatus,
+    @JsonKey(name: 'execution_status')
+    required TxnExecutionStatus executionStatus,
+    @JsonKey(name: 'revert_reason') String? revertReason,
+    @JsonKey(name: 'messages_sent') required List<MsgToL1> messagesSent,
     required List<Event> events,
-    // end of COMMON_RECEIPT_PROPERTIES
+    @JsonKey(name: 'execution_resources')
+    required ExecutionResources executionResources,
+    @JsonKey(name: 'block_hash') Felt? blockHash,
+    @JsonKey(name: 'block_number') int? blockNumber,
   }) = DeployTxnReceipt;
 
   const factory TxnReceipt.deployAccountTxnReceipt({
-    // start of COMMON_RECEIPT_PROPERTIES
-    required Felt transactionHash,
-    required FeePayment actualFee,
-    required String execution_status,
-    required String finality_status,
-    Felt? blockHash,
-    int? blockNumber,
     required String type,
-    required List<MsgToL1> messagesSent,
+    @JsonKey(name: 'contract_address') required Felt contractAddress,
+    @JsonKey(name: 'transaction_hash') required Felt transactionHash,
+    @JsonKey(name: 'actual_fee') required FeePayment actualFee,
+    @JsonKey(name: 'finality_status') required TxnFinalityStatus finalityStatus,
+    @JsonKey(name: 'execution_status')
+    required TxnExecutionStatus executionStatus,
+    @JsonKey(name: 'revert_reason') String? revertReason,
+    @JsonKey(name: 'messages_sent') required List<MsgToL1> messagesSent,
     required List<Event> events,
-    // end of COMMON_RECEIPT_PROPERTIES
+    @JsonKey(name: 'execution_resources')
+    required ExecutionResources executionResources,
+    @JsonKey(name: 'block_hash') Felt? blockHash,
+    @JsonKey(name: 'block_number') int? blockNumber,
   }) = DeployAccountTxnReceipt;
 
-  const factory TxnReceipt.pendingDeployTxnReceipt({
-    // start of PENDING_COMMON_RECEIPT_PROPERTIES
-    required Felt transactionHash,
-    required FeePayment actualFee,
-    required String? type,
-    required List<MsgToL1> messagesSent,
-    required List<Event> events,
-    // end of PENDING_COMMON_RECEIPT_PROPERTIES
-  }) = PendingDeployTxnReceipt;
+  factory TxnReceipt.fromJson(Map<String, dynamic> json) {
+    final type = json['type'] as String?;
+    if (type == null) {
+      throw FormatException('Missing receipt type: $json');
+    }
 
-  const factory TxnReceipt.pendingCommonReceiptProperties({
-    // start of PENDING_COMMON_RECEIPT_PROPERTIES
-    required Felt transactionHash,
-    required FeePayment actualFee,
-    required String? type,
-    required List<MsgToL1> messagesSent,
-    required List<Event> events,
-    // end of PENDING_COMMON_RECEIPT_PROPERTIES
-  }) = PendingCommonReceiptProperties;
+    return switch (type) {
+      'INVOKE' => _parseInvokeTxnReceipt(json),
+      'DECLARE' => _parseDeclareTxnReceipt(json),
+      'L1_HANDLER' => _parseL1HandlerTxnReceipt(json),
+      'DEPLOY' => _parseDeployTxnReceipt(json),
+      'DEPLOY_ACCOUNT' => _parseDeployAccountTxnReceipt(json),
+      _ => throw FormatException('Unknown receipt type: $type'),
+    };
+  }
+}
 
-  // User arrow func to have freezed generator work properly
-  factory TxnReceipt.fromJson(Map<String, Object?> json) =>
-      !json.containsKey('finality_status')
-          ? (json.containsKey('contract_address')
-              ? PendingDeployTxnReceipt.fromJson(json)
-              : PendingCommonReceiptProperties.fromJson(json))
-          : json['type'] == 'DECLARE'
-              ? DeclareTxnReceipt.fromJson(json)
-              : json['type'] == 'DEPLOY'
-                  ? DeployTxnReceipt.fromJson(json)
-                  : json['type'] == 'DEPLOY_ACCOUNT'
-                      ? DeployAccountTxnReceipt.fromJson(json)
-                      : json['type'] == 'L1_HANDLER'
-                          ? L1HandlerTxnReceipt.fromJson(json)
-                          : InvokeTxnReceipt.fromJson(json);
+class _CommonReceiptFields {
+  const _CommonReceiptFields({
+    required this.transactionHash,
+    required this.actualFee,
+    required this.finalityStatus,
+    required this.executionStatus,
+    this.revertReason,
+    required this.messagesSent,
+    required this.events,
+    required this.executionResources,
+    this.blockHash,
+    this.blockNumber,
+  });
+
+  final Felt transactionHash;
+  final FeePayment actualFee;
+  final TxnFinalityStatus finalityStatus;
+  final TxnExecutionStatus executionStatus;
+  final String? revertReason;
+  final List<MsgToL1> messagesSent;
+  final List<Event> events;
+  final ExecutionResources executionResources;
+  final Felt? blockHash;
+  final int? blockNumber;
+}
+
+_CommonReceiptFields _parseCommonReceiptFields(Map<String, dynamic> json) =>
+    _CommonReceiptFields(
+      transactionHash: Felt.fromJson(json['transaction_hash'] as String),
+      actualFee:
+          FeePayment.fromJson(json['actual_fee'] as Map<String, dynamic>),
+      finalityStatus:
+          _parseTxnFinalityStatus(json['finality_status'] as String),
+      executionStatus:
+          _parseTxnExecutionStatus(json['execution_status'] as String),
+      revertReason: json['revert_reason'] as String?,
+      messagesSent: (json['messages_sent'] as List<dynamic>)
+          .map((e) => MsgToL1.fromJson(e as Map<String, dynamic>))
+          .toList(),
+      events: (json['events'] as List<dynamic>)
+          .map((e) => Event.fromJson(e as Map<String, dynamic>))
+          .toList(),
+      executionResources: ExecutionResources.fromJson(
+        json['execution_resources'] as Map<String, dynamic>,
+      ),
+      blockHash: json['block_hash'] == null
+          ? null
+          : Felt.fromJson(json['block_hash'] as String),
+      blockNumber: (json['block_number'] as num?)?.toInt(),
+    );
+
+InvokeTxnReceipt _parseInvokeTxnReceipt(Map<String, dynamic> json) {
+  final common = _parseCommonReceiptFields(json);
+  return InvokeTxnReceipt(
+    type: json['type'] as String,
+    transactionHash: common.transactionHash,
+    actualFee: common.actualFee,
+    finalityStatus: common.finalityStatus,
+    executionStatus: common.executionStatus,
+    revertReason: common.revertReason,
+    messagesSent: common.messagesSent,
+    events: common.events,
+    executionResources: common.executionResources,
+    blockHash: common.blockHash,
+    blockNumber: common.blockNumber,
+  );
+}
+
+DeclareTxnReceipt _parseDeclareTxnReceipt(Map<String, dynamic> json) {
+  final common = _parseCommonReceiptFields(json);
+  return DeclareTxnReceipt(
+    type: json['type'] as String,
+    transactionHash: common.transactionHash,
+    actualFee: common.actualFee,
+    finalityStatus: common.finalityStatus,
+    executionStatus: common.executionStatus,
+    revertReason: common.revertReason,
+    messagesSent: common.messagesSent,
+    events: common.events,
+    executionResources: common.executionResources,
+    blockHash: common.blockHash,
+    blockNumber: common.blockNumber,
+  );
+}
+
+L1HandlerTxnReceipt _parseL1HandlerTxnReceipt(Map<String, dynamic> json) {
+  final common = _parseCommonReceiptFields(json);
+  return L1HandlerTxnReceipt(
+    type: json['type'] as String,
+    messageHash: json['message_hash'] as String,
+    transactionHash: common.transactionHash,
+    actualFee: common.actualFee,
+    finalityStatus: common.finalityStatus,
+    executionStatus: common.executionStatus,
+    revertReason: common.revertReason,
+    messagesSent: common.messagesSent,
+    events: common.events,
+    executionResources: common.executionResources,
+    blockHash: common.blockHash,
+    blockNumber: common.blockNumber,
+  );
+}
+
+DeployTxnReceipt _parseDeployTxnReceipt(Map<String, dynamic> json) {
+  final common = _parseCommonReceiptFields(json);
+  return DeployTxnReceipt(
+    type: json['type'] as String,
+    contractAddress: Felt.fromJson(json['contract_address'] as String),
+    transactionHash: common.transactionHash,
+    actualFee: common.actualFee,
+    finalityStatus: common.finalityStatus,
+    executionStatus: common.executionStatus,
+    revertReason: common.revertReason,
+    messagesSent: common.messagesSent,
+    events: common.events,
+    executionResources: common.executionResources,
+    blockHash: common.blockHash,
+    blockNumber: common.blockNumber,
+  );
+}
+
+DeployAccountTxnReceipt _parseDeployAccountTxnReceipt(
+    Map<String, dynamic> json) {
+  final common = _parseCommonReceiptFields(json);
+  return DeployAccountTxnReceipt(
+    type: json['type'] as String,
+    contractAddress: Felt.fromJson(json['contract_address'] as String),
+    transactionHash: common.transactionHash,
+    actualFee: common.actualFee,
+    finalityStatus: common.finalityStatus,
+    executionStatus: common.executionStatus,
+    revertReason: common.revertReason,
+    messagesSent: common.messagesSent,
+    events: common.events,
+    executionResources: common.executionResources,
+    blockHash: common.blockHash,
+    blockNumber: common.blockNumber,
+  );
+}
+
+TxnFinalityStatus _parseTxnFinalityStatus(String value) => switch (value) {
+      'PRE_CONFIRMED' => TxnFinalityStatus.PRE_CONFIRMED,
+      'ACCEPTED_ON_L2' => TxnFinalityStatus.ACCEPTED_ON_L2,
+      'ACCEPTED_ON_L1' => TxnFinalityStatus.ACCEPTED_ON_L1,
+      _ => throw FormatException('Invalid TXN_FINALITY_STATUS: $value'),
+    };
+
+TxnExecutionStatus _parseTxnExecutionStatus(String value) => switch (value) {
+      'SUCCEEDED' => TxnExecutionStatus.SUCCEEDED,
+      'REVERTED' => TxnExecutionStatus.REVERTED,
+      _ => throw FormatException('Invalid TXN_EXECUTION_STATUS: $value'),
+    };
+
+extension InvokeTxnReceiptLegacy on InvokeTxnReceipt {
+  String get execution_status => switch (executionStatus) {
+        TxnExecutionStatus.SUCCEEDED => 'SUCCEEDED',
+        TxnExecutionStatus.REVERTED => 'REVERTED',
+      };
+
+  String get finality_status => switch (finalityStatus) {
+        TxnFinalityStatus.PRE_CONFIRMED => 'PRE_CONFIRMED',
+        TxnFinalityStatus.ACCEPTED_ON_L2 => 'ACCEPTED_ON_L2',
+        TxnFinalityStatus.ACCEPTED_ON_L1 => 'ACCEPTED_ON_L1',
+      };
+}
+
+extension DeclareTxnReceiptLegacy on DeclareTxnReceipt {
+  String get execution_status => switch (executionStatus) {
+        TxnExecutionStatus.SUCCEEDED => 'SUCCEEDED',
+        TxnExecutionStatus.REVERTED => 'REVERTED',
+      };
+
+  String get finality_status => switch (finalityStatus) {
+        TxnFinalityStatus.PRE_CONFIRMED => 'PRE_CONFIRMED',
+        TxnFinalityStatus.ACCEPTED_ON_L2 => 'ACCEPTED_ON_L2',
+        TxnFinalityStatus.ACCEPTED_ON_L1 => 'ACCEPTED_ON_L1',
+      };
+}
+
+extension L1HandlerTxnReceiptLegacy on L1HandlerTxnReceipt {
+  String get execution_status => switch (executionStatus) {
+        TxnExecutionStatus.SUCCEEDED => 'SUCCEEDED',
+        TxnExecutionStatus.REVERTED => 'REVERTED',
+      };
+
+  String get finality_status => switch (finalityStatus) {
+        TxnFinalityStatus.PRE_CONFIRMED => 'PRE_CONFIRMED',
+        TxnFinalityStatus.ACCEPTED_ON_L2 => 'ACCEPTED_ON_L2',
+        TxnFinalityStatus.ACCEPTED_ON_L1 => 'ACCEPTED_ON_L1',
+      };
+}
+
+extension DeployTxnReceiptLegacy on DeployTxnReceipt {
+  String get execution_status => switch (executionStatus) {
+        TxnExecutionStatus.SUCCEEDED => 'SUCCEEDED',
+        TxnExecutionStatus.REVERTED => 'REVERTED',
+      };
+
+  String get finality_status => switch (finalityStatus) {
+        TxnFinalityStatus.PRE_CONFIRMED => 'PRE_CONFIRMED',
+        TxnFinalityStatus.ACCEPTED_ON_L2 => 'ACCEPTED_ON_L2',
+        TxnFinalityStatus.ACCEPTED_ON_L1 => 'ACCEPTED_ON_L1',
+      };
+}
+
+extension DeployAccountTxnReceiptLegacy on DeployAccountTxnReceipt {
+  String get execution_status => switch (executionStatus) {
+        TxnExecutionStatus.SUCCEEDED => 'SUCCEEDED',
+        TxnExecutionStatus.REVERTED => 'REVERTED',
+      };
+
+  String get finality_status => switch (finalityStatus) {
+        TxnFinalityStatus.PRE_CONFIRMED => 'PRE_CONFIRMED',
+        TxnFinalityStatus.ACCEPTED_ON_L2 => 'ACCEPTED_ON_L2',
+        TxnFinalityStatus.ACCEPTED_ON_L1 => 'ACCEPTED_ON_L1',
+      };
+}
+
+extension TxnReceiptCommonAccess on TxnReceipt {
+  Felt get transactionHash => map(
+        invokeTxnReceipt: (r) => r.transactionHash,
+        declareTxnReceipt: (r) => r.transactionHash,
+        l1HandlerTxnReceipt: (r) => r.transactionHash,
+        deployTxnReceipt: (r) => r.transactionHash,
+        deployAccountTxnReceipt: (r) => r.transactionHash,
+      );
+
+  FeePayment get actualFee => map(
+        invokeTxnReceipt: (r) => r.actualFee,
+        declareTxnReceipt: (r) => r.actualFee,
+        l1HandlerTxnReceipt: (r) => r.actualFee,
+        deployTxnReceipt: (r) => r.actualFee,
+        deployAccountTxnReceipt: (r) => r.actualFee,
+      );
+
+  List<Event> get events => map(
+        invokeTxnReceipt: (r) => r.events,
+        declareTxnReceipt: (r) => r.events,
+        l1HandlerTxnReceipt: (r) => r.events,
+        deployTxnReceipt: (r) => r.events,
+        deployAccountTxnReceipt: (r) => r.events,
+      );
 }

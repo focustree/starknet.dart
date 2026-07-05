@@ -16,6 +16,7 @@ const String invokeTxnV3 = '0x3';
 const String invokeTxnV0OldCompat = '0x00';
 const String invokeTxnV1OldCompat = '0x01';
 const String invokeTxnV3OldCompat = '0x03';
+const String invokeTxnV3Query = '0x100000000000000000000000000000003';
 
 @freezed
 class InvokeTransactionRequest with _$InvokeTransactionRequest {
@@ -38,6 +39,7 @@ abstract class InvokeTransaction {
         return InvokeTransactionV1.fromJson(json);
       case invokeTxnV3:
       case invokeTxnV3OldCompat:
+      case invokeTxnV3Query:
         return InvokeTransactionV3.fromJson(json);
       default:
         throw ArgumentError('Unsupported transaction version:');
@@ -87,6 +89,7 @@ class InvokeTransactionV1
 class InvokeTransactionV3
     with _$InvokeTransactionV3
     implements InvokeTransaction {
+  @JsonSerializable(includeIfNull: false)
   const factory InvokeTransactionV3({
     @Default('INVOKE') String type,
     required List<Felt> accountDeploymentData,
@@ -100,6 +103,8 @@ class InvokeTransactionV3
     required List<Felt> signature,
     required String tip,
     @Default(invokeTxnV3) String version,
+    @JsonKey(name: 'proof_facts') @Default([]) List<Felt> proofFacts,
+    @JsonKey(includeIfNull: false) String? proof,
   }) = _InvokeTransactionV3;
 
   factory InvokeTransactionV3.fromJson(Map<String, Object?> json) =>
@@ -124,9 +129,15 @@ class InvokeTransactionResponse with _$InvokeTransactionResponse {
 @freezed
 class InvokeTransactionResponseResult with _$InvokeTransactionResponseResult {
   const factory InvokeTransactionResponseResult({
-    required String transaction_hash,
+    @JsonKey(name: 'transaction_hash') required Felt transactionHash,
   }) = _InvokeTransactionResponseResult;
 
   factory InvokeTransactionResponseResult.fromJson(Map<String, Object?> json) =>
       _$InvokeTransactionResponseResultFromJson(json);
+}
+
+extension InvokeTransactionResponseResultCompat
+    on InvokeTransactionResponseResult {
+  /// Backward-compatible alias for [transactionHash].
+  String get transaction_hash => transactionHash.toHexString();
 }

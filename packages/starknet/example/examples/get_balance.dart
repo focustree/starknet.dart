@@ -16,7 +16,7 @@ void main() async {
       entryPointSelector: getSelectorByName('balanceOf'),
       calldata: [accountAddress],
     ),
-    blockId: BlockId.blockTag("latest"),
+    blockId: BlockId.latest,
   );
 
   response.when(

@@ -6,10 +6,10 @@
       "request": "launch",
       "type": "dart",
       "env": {
-        "STARKNET_RPC": "https://starknet-sepolia.public.blastapi.io/rpc/v0_8",
-        "STARKNET_WSS": "wss://sepolia-pathfinder-rpc.spaceshard.io/rpc/v0_8",
+        "STARKNET_RPC": "https://api-starknet-sepolia.n.dwellir.com/9426eaad-aaf7-4367-bdae-81d1c6aa731e",
+        "STARKNET_WSS": "wss://api-starknet-sepolia.n.dwellir.com/9426eaad-aaf7-4367-bdae-81d1c6aa731e",
         "DEVNET_DUMP_PATH": "./assets/devnet-dump.json",
-        "AVNU_RPC": "https://sepolia.api.avnu.fi"
+        "AVNU_RPC": "https://sepolia.paymaster.avnu.fi"
       },
       "templateFor": ""
     }

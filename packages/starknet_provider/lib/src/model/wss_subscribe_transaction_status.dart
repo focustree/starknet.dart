@@ -1,6 +1,8 @@
 // ignore_for_file: invalid_annotation_target
 
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:starknet/starknet.dart';
+
 import './json_wss_api_error.dart';
 
 part 'wss_subscribe_transaction_status.freezed.dart';
@@ -22,4 +24,17 @@ class WssSubscribeTransactionStatusResponse
       json.containsKey('error')
           ? WssSubscribeTransactionStatusError.fromJson(json)
           : WssSubscribeTransactionStatusResult.fromJson(json);
+}
+
+@freezed
+class WssSubscribeTransactionStatusRequest
+    with _$WssSubscribeTransactionStatusRequest {
+  @JsonSerializable(includeIfNull: false)
+  const factory WssSubscribeTransactionStatusRequest({
+    @JsonKey(name: 'transaction_hash') required Felt transactionHash,
+  }) = _WssSubscribeTransactionStatusRequest;
+
+  factory WssSubscribeTransactionStatusRequest.fromJson(
+          Map<String, Object?> json) =>
+      _$WssSubscribeTransactionStatusRequestFromJson(json);
 }
